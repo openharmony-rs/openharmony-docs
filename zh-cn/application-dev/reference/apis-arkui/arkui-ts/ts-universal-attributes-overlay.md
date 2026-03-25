@@ -28,7 +28,7 @@ ArkTS-Sta: overlay\<T extends Object>(value: string | CustomBuilder | ComponentC
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -41,7 +41,7 @@ ArkTS-Sta: overlay\<T extends Object>(value: string | CustomBuilder | ComponentC
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 >  **说明：**
 >
@@ -50,6 +50,10 @@ ArkTS-Sta: overlay\<T extends Object>(value: string | CustomBuilder | ComponentC
 ## OverlayOptions<sup>12+</sup>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 类型                                       | 只读 | 可选  | 说明                                                |
 | --------------------- | -------------------------------------------| --- | -------| --------------------------------------------------- |
@@ -74,12 +78,12 @@ ArkTS-Sta: overlay\<T extends Object>(value: string | CustomBuilder | ComponentC
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                                      | 只读 | 可选  | 说明                                                |
 | ------- | ---------------------------------------------------------| ---- | ------| --------------------------------------------------- |
-| x<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 横向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 22       |
-| y<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 纵向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 22       |
+| x<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 横向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23       |
+| y<sup>7+</sup>  | ArkTS-Dyn: number<br/>ArkTS-Sta: double          | 否   | 是    | 纵向偏移量。<br/>单位：vp<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23       |
 
 ## 示例
 

@@ -155,7 +155,8 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 
 ## bundleManager.getBundleInfo<sup>14+</sup>
 
-ArkTS-Dyn: getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback\<BundleInfo>): void<br>
+ArkTS-Dyn: getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback: AsyncCallback\<BundleInfo>): void
+
 ArkTS-Sta: getBundleInfo(bundleName: string, bundleFlags: int, userId: int, callback: AsyncCallback\<BundleInfo>): void
 
 根据给定的bundleName、bundleFlags和userId获取BundleInfo，使用callback异步回调。
@@ -241,7 +242,8 @@ try {
 
 ## bundleManager.getBundleInfo<sup>14+</sup>
 
-ArkTS-Dyn: getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void<br>
+ArkTS-Dyn: getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
+
 ArkTS-Sta: getBundleInfo(bundleName: string, bundleFlags: int, callback: AsyncCallback\<BundleInfo>): void
 
 根据给定的bundleName和bundleFlags获取BundleInfo，使用callback异步回调。
@@ -301,7 +303,8 @@ try {
 
 ## bundleManager.getBundleInfo<sup>14+</sup>
 
-ArkTS-Dyn: getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<BundleInfo><br>
+ArkTS-Dyn: getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<BundleInfo>
+
 ArkTS-Sta: getBundleInfo(bundleName: string, bundleFlags: int, userId?: int): Promise\<BundleInfo>
 
 根据给定的bundleName、bundleFlags和userId获取BundleInfo，使用Promise异步回调。
@@ -430,7 +433,8 @@ try {
 
 ## bundleManager.getApplicationInfo
 
-ArkTS-Dyn: getApplicationInfo(bundleName: string, appFlags: number, userId: number, callback: AsyncCallback\<ApplicationInfo>): void<br>
+ArkTS-Dyn: getApplicationInfo(bundleName: string, appFlags: number, userId: number, callback: AsyncCallback\<ApplicationInfo>): void
+
 ArkTS-Sta: getApplicationInfo(bundleName: string, appFlags: int, userId: int, callback: AsyncCallback\<ApplicationInfo>): void
 
 根据给定的bundleName、appFlags和userId获取ApplicationInfo，使用callback异步回调。
@@ -495,7 +499,8 @@ try {
 
 ## bundleManager.getApplicationInfo
 
-ArkTS-Dyn: getApplicationInfo(bundleName: string, appFlags: number, callback: AsyncCallback\<ApplicationInfo>): void<br>
+ArkTS-Dyn: getApplicationInfo(bundleName: string, appFlags: number, callback: AsyncCallback\<ApplicationInfo>): void
+
 ArkTS-Sta: getApplicationInfo(bundleName: string, appFlags: int, callback: AsyncCallback\<ApplicationInfo>): void
 
 根据给定的bundleName和appFlags获取ApplicationInfo，使用callback异步回调。
@@ -557,7 +562,8 @@ try {
 
 ## bundleManager.getApplicationInfo
 
-ArkTS-Dyn: getApplicationInfo(bundleName: string, appFlags: number, userId?: number): Promise\<ApplicationInfo><br>
+ArkTS-Dyn: getApplicationInfo(bundleName: string, appFlags: number, userId?: number): Promise\<ApplicationInfo>
+
 ArkTS-Sta: getApplicationInfo(bundleName: string, appFlags: int, userId?: int): Promise\<ApplicationInfo>
 
 根据给定的bundleName、appFlags和userId获取ApplicationInfo，使用Promise异步回调。
@@ -647,7 +653,8 @@ try {
 
 ## bundleManager.getAllBundleInfo
 
-ArkTS-Dyn: getAllBundleInfo(bundleFlags: number, userId: number, callback: AsyncCallback<Array\<BundleInfo>>): void<br>
+ArkTS-Dyn: getAllBundleInfo(bundleFlags: number, userId: number, callback: AsyncCallback<Array\<BundleInfo>>): void
+
 ArkTS-Sta: getAllBundleInfo(bundleFlags: int, userId: int, callback: AsyncCallback<Array\<BundleInfo>>): void
 
 根据给定的bundleFlags和userId获取系统中所有的BundleInfo，使用callback异步回调。
@@ -706,7 +713,8 @@ try {
 
 ## bundleManager.getAllBundleInfo
 
-ArkTS-Dyn: getAllBundleInfo(bundleFlags: number, callback: AsyncCallback<Array\<BundleInfo>>): void<br>
+ArkTS-Dyn: getAllBundleInfo(bundleFlags: number, callback: AsyncCallback<Array\<BundleInfo>>): void
+
 ArkTS-Sta: getAllBundleInfo(bundleFlags: int, callback: AsyncCallback<Array\<BundleInfo>>): void
 
 根据给定的bundleFlags获取系统中所有的BundleInfo，使用callback异步回调。
@@ -762,7 +770,8 @@ try {
 
 ## bundleManager.getAllBundleInfo
 
-ArkTS-Dyn: getAllBundleInfo(bundleFlags: number, userId?: number): Promise<Array\<BundleInfo>><br>
+ArkTS-Dyn: getAllBundleInfo(bundleFlags: number, userId?: number): Promise<Array\<BundleInfo>>
+
 ArkTS-Sta: getAllBundleInfo(bundleFlags: int, userId?: int): Promise<Array\<BundleInfo>>
 
 根据给定的bundleFlags和userId获取系统中所有的BundleInfo，使用Promise异步回调。
@@ -842,7 +851,8 @@ try {
 
 ## bundleManager.getAllApplicationInfo
 
-ArkTS-Dyn: getAllApplicationInfo(appFlags: number, userId: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void<br>
+ArkTS-Dyn: getAllApplicationInfo(appFlags: number, userId: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void
+
 ArkTS-Sta: getAllApplicationInfo(appFlags: int, userId: int, callback: AsyncCallback<Array\<ApplicationInfo>>): void
 
 根据给定的appFlags和userId获取系统中所有的ApplicationInfo，使用callback异步回调。
@@ -901,7 +911,8 @@ try {
 
 ## bundleManager.getAllApplicationInfo
 
-ArkTS-Dyn: getAllApplicationInfo(appFlags: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void<br>
+ArkTS-Dyn: getAllApplicationInfo(appFlags: number, callback: AsyncCallback<Array\<ApplicationInfo>>): void
+
 ArkTS-Sta: getAllApplicationInfo(appFlags: int, callback: AsyncCallback<Array\<ApplicationInfo>>): void
 
 根据给定的appFlags获取系统中所有的ApplicationInfo，使用callback异步回调。
@@ -957,7 +968,8 @@ try {
 
 ## bundleManager.getAllApplicationInfo
 
-ArkTS-Dyn: getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array\<ApplicationInfo>><br>
+ArkTS-Dyn: getAllApplicationInfo(appFlags: number, userId?: number): Promise<Array\<ApplicationInfo>>
+
 ArkTS-Sta: getAllApplicationInfo(appFlags: int, userId?: int): Promise<Array\<ApplicationInfo>>
 
 根据给定的appFlags和userId获取系统中所有的ApplicationInfo，使用Promise异步回调。
@@ -1038,7 +1050,8 @@ try {
 
 ## bundleManager.queryAbilityInfo
 
-ArkTS-Dyn: queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: AsyncCallback<Array\<AbilityInfo>>): void<br>
+ArkTS-Dyn: queryAbilityInfo(want: Want, abilityFlags: number, userId: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
+
 ArkTS-Sta: queryAbilityInfo(want: Want, abilityFlags: int, userId: int, callback: AsyncCallback<Array\<AbilityInfo>>): void
 
 根据给定的want、abilityFlags和userId获取多个AbilityInfo，使用callback异步回调。
@@ -1107,7 +1120,8 @@ try {
 
 ## bundleManager.queryAbilityInfo
 
-ArkTS-Dyn: queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array\<AbilityInfo>>): void<br>
+ArkTS-Dyn: queryAbilityInfo(want: Want, abilityFlags: number, callback: AsyncCallback<Array\<AbilityInfo>>): void
+
 ArkTS-Sta: queryAbilityInfo(want: Want, abilityFlags: int, callback: AsyncCallback<Array\<AbilityInfo>>): void
 
 根据给定的want和abilityFlags获取一个或多个AbilityInfo，使用callback异步回调。
@@ -1173,7 +1187,8 @@ try {
 
 ## bundleManager.queryAbilityInfo
 
-ArkTS-Dyn: queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>><br>
+ArkTS-Dyn: queryAbilityInfo(want: Want, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
+
 ArkTS-Sta: queryAbilityInfo(want: Want, abilityFlags: int, userId?: int): Promise<Array\<AbilityInfo>>
 
 根据给定的want、abilityFlags和userId获取一个或多个AbilityInfo，使用Promise异步回调。
@@ -1318,7 +1333,8 @@ try {
 
 ## bundleManager.queryAbilityInfoSync<sup>10+</sup>
 
-ArkTS-Dyn: queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<AbilityInfo><br>
+ArkTS-Dyn: queryAbilityInfoSync(want: Want, abilityFlags: number, userId?: number): Array\<AbilityInfo>
+
 ArkTS-Sta: queryAbilityInfoSync(want: Want, abilityFlags: int, userId?: int): Array\<AbilityInfo>
 
 以同步方法根据给定的want、abilityFlags和userId获取一个或多个AbilityInfo。
@@ -1408,7 +1424,8 @@ try {
 
 ## bundleManager.queryAbilityInfo<sup>12+</sup>
 
-ArkTS-Dyn: queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>><br>
+ArkTS-Dyn: queryAbilityInfo(wants: Array\<Want>, abilityFlags: number, userId?: number): Promise<Array\<AbilityInfo>>
+
 ArkTS-Sta: queryAbilityInfo(wants: Array\<Want>, abilityFlags: int, userId?: int): Promise<Array\<AbilityInfo>>
 
 根据给定的want列表、abilityFlags和userId获取一个或多个AbilityInfo，使用Promise异步回调。
@@ -1514,7 +1531,8 @@ try {
 
 ## bundleManager.queryExtensionAbilityInfo
 
-ArkTS-Dyn: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void<br>
+ArkTS-Dyn: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
+
 ArkTS-Sta: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: int, userId: int, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
 
 根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取一个或多个ExtensionAbilityInfo，使用callback异步回调。
@@ -1584,7 +1602,8 @@ try {
 
 ## bundleManager.queryExtensionAbilityInfo
 
-ArkTS-Dyn: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void<br>
+ArkTS-Dyn: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
+
 ArkTS-Sta: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: int, callback: AsyncCallback<Array\<ExtensionAbilityInfo>>): void
 
 根据给定的want、extensionAbilityType和extensionAbilityFlags获取一个或多个ExtensionAbilityInfo，使用callback异步回调。
@@ -1651,7 +1670,8 @@ try {
 
 ## bundleManager.queryExtensionAbilityInfo
 
-ArkTS-Dyn: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Promise<Array\<ExtensionAbilityInfo>><br>
+ArkTS-Dyn: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Promise<Array\<ExtensionAbilityInfo>>
+
 ArkTS-Sta: queryExtensionAbilityInfo(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: int, userId?: int): Promise<Array\<ExtensionAbilityInfo>>
 
 根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo，使用Promise异步回调。
@@ -1803,7 +1823,8 @@ try {
 
 ## bundleManager.queryExtensionAbilityInfoSync<sup>10+</sup>
 
-ArkTS-Dyn: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo><br>
+ArkTS-Dyn: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
+
 ArkTS-Sta: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: ExtensionAbilityType, extensionAbilityFlags: int, userId?: int): Array\<ExtensionAbilityInfo>
 
 以同步方法根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo。
@@ -1895,7 +1916,8 @@ try {
 
 ## bundleManager.getBundleNameByUid<sup>14+</sup>
 
-ArkTS-Dyn: getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void<br>
+ArkTS-Dyn: getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
+
 ArkTS-Sta: getBundleNameByUid(uid: int, callback: AsyncCallback\<string>): void
 
 根据给定的uid获取对应的bundleName，使用callback异步回调。
@@ -1948,7 +1970,8 @@ try {
 
 ## bundleManager.getBundleNameByUid<sup>14+</sup>
 
-ArkTS-Dyn: getBundleNameByUid(uid: number): Promise\<string><br>
+ArkTS-Dyn: getBundleNameByUid(uid: number): Promise\<string>
+
 ArkTS-Sta: getBundleNameByUid(uid: int): Promise\<string>
 
 根据给定的uid获取对应的bundleName，使用Promise异步回调。
@@ -2023,7 +2046,8 @@ try {
 
 ## bundleManager.getBundleNameByUidSync<sup>14+</sup>
 
-ArkTS-Dyn: getBundleNameByUidSync(uid: number): string<br>
+ArkTS-Dyn: getBundleNameByUidSync(uid: number): string
+
 ArkTS-Sta: getBundleNameByUidSync(uid: int): string
 
 以同步方法根据给定的uid获取对应的bundleName。
@@ -2076,7 +2100,8 @@ try {
 
 ## bundleManager.getBundleArchiveInfo
 
-ArkTS-Dyn: getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void<br>
+ArkTS-Dyn: getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback\<BundleInfo>): void
+
 ArkTS-Sta: getBundleArchiveInfo(hapFilePath: string, bundleFlags: int, callback: AsyncCallback\<BundleInfo>): void
 
 根据给定的hapFilePath和bundleFlags获取BundleInfo，使用callback异步回调。
@@ -2135,7 +2160,8 @@ try {
 
 ## bundleManager.getBundleArchiveInfo
 
-ArkTS-Dyn: getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<BundleInfo><br>
+ArkTS-Dyn: getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise\<BundleInfo>
+
 ArkTS-Sta: getBundleArchiveInfo(hapFilePath: string,  bundleFlags: int): Promise\<BundleInfo>
 
 根据给定的hapFilePath和bundleFlags获取BundleInfo，使用Promise异步回调。
@@ -2218,7 +2244,8 @@ try {
 
 ## bundleManager.getBundleArchiveInfoSync<sup>10+</sup>
 
-ArkTS-Dyn: getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: number): BundleInfo<br>
+ArkTS-Dyn: getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: number): BundleInfo
+
 ArkTS-Sta: getBundleArchiveInfoSync(hapFilePath: string, bundleFlags: int): BundleInfo
 
 以同步方法根据给定的hapFilePath和bundleFlags获取BundleInfo对象。
@@ -2277,7 +2304,8 @@ try {
 
 ## bundleManager.getAllBundleCacheSize<sup>15+</sup>
 
-ArkTS-Dyn: getAllBundleCacheSize(): Promise\<number><br>
+ArkTS-Dyn: getAllBundleCacheSize(): Promise\<number>
+
 ArkTS-Sta: getAllBundleCacheSize(): Promise\<long>
 
 获取全局缓存大小，使用Promise异步回调。
@@ -2557,7 +2585,8 @@ try {
 
 ## bundleManager.cleanBundleCacheFiles<sup>15+</sup>
 
-ArkTS-Dyn: cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise\<void><br>
+ArkTS-Dyn: cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise\<void>
+
 ArkTS-Sta: cleanBundleCacheFiles(bundleName: string, appIndex: int): Promise\<void>
 
 根据给定的bundleName和appIndex清理BundleCache，使用Promise异步回调。
@@ -2781,7 +2810,8 @@ try {
 
 ## bundleManager.setApplicationEnabled<sup>12+</sup>
 
-ArkTS-Dyn: setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean): Promise\<void><br>
+ArkTS-Dyn: setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean): Promise\<void>
+
 ArkTS-Sta: setApplicationEnabled(bundleName: string, appIndex: int, isEnabled: boolean): Promise\<void>
 
 设置指定应用或分身应用的禁用或使能状态，使用Promise异步回调。
@@ -3127,7 +3157,8 @@ try {
 
 ## bundleManager.setAbilityEnabled<sup>12+</sup>
 
-ArkTS-Dyn: setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Promise\<void><br>
+ArkTS-Dyn: setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Promise\<void>
+
 ArkTS-Sta: setAbilityEnabled(info: AbilityInfo, appIndex: int, isEnabled: boolean): Promise\<void>
 
 设置指定应用或分身应用组件的禁用或使能状态，使用Promise异步回调。
@@ -3471,7 +3502,8 @@ try {
 
 ## bundleManager.isApplicationEnabled<sup>12+</sup>
 
-ArkTS-Dyn: isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean><br>
+ArkTS-Dyn: isApplicationEnabled(bundleName: string, appIndex: number): Promise\<boolean>
+
 ArkTS-Sta: isApplicationEnabled(bundleName: string, appIndex: int): Promise\<boolean>
 
 获取指定应用或分身应用的禁用或使能状态，使用Promise异步回调。
@@ -3807,7 +3839,8 @@ try {
 
 ## bundleManager.isAbilityEnabled<sup>12+</sup>
 
-ArkTS-Dyn: isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean><br>
+ArkTS-Dyn: isAbilityEnabled(info: AbilityInfo, appIndex: number): Promise\<boolean>
+
 ArkTS-Sta: isAbilityEnabled(info: AbilityInfo, appIndex: int): Promise\<boolean>
 
 获取应用或指定分身应用组件的禁用或使能状态，使用Promise异步回调。
@@ -4020,7 +4053,8 @@ try {
 
 ## bundleManager.getLaunchWantForBundle
 
-ArkTS-Dyn: getLaunchWantForBundle(bundleName: string, userId: number, callback: AsyncCallback\<Want>): void<br>
+ArkTS-Dyn: getLaunchWantForBundle(bundleName: string, userId: number, callback: AsyncCallback\<Want>): void
+
 ArkTS-Sta: getLaunchWantForBundle(bundleName: string, userId: int, callback: AsyncCallback\<Want>): void
 
 根据给定的bundleName和userId获取用于启动应用程序的Want参数，使用callback异步回调。
@@ -4138,7 +4172,8 @@ try {
 
 ## bundleManager.getLaunchWantForBundle
 
-ArkTS-Dyn: getLaunchWantForBundle(bundleName: string, userId?: number): Promise\<Want><br>
+ArkTS-Dyn: getLaunchWantForBundle(bundleName: string, userId?: number): Promise\<Want>
+
 ArkTS-Sta: getLaunchWantForBundle(bundleName: string, userId?: int): Promise\<Want>
 
 根据给定的bundleName和userId获取用于启动应用程序的Want参数，使用Promise异步回调。
@@ -4223,7 +4258,8 @@ try {
 
 ## bundleManager.getLaunchWantForBundleSync<sup>10+</sup>
 
-ArkTS-Dyn: getLaunchWantForBundleSync(bundleName: string, userId?: number): Want<br>
+ArkTS-Dyn: getLaunchWantForBundleSync(bundleName: string, userId?: number): Want
+
 ArkTS-Sta: getLaunchWantForBundleSync(bundleName: string, userId?: int): Want
 
 以同步方法根据给定的bundleName和userId获取用于启动应用程序的Want参数。
@@ -4708,7 +4744,8 @@ try {
 
 ## bundleManager.getApplicationInfoSync
 
-ArkTS-Dyn: getApplicationInfoSync(bundleName: string, applicationFlags: number, userId: number) : ApplicationInfo<br>
+ArkTS-Dyn: getApplicationInfoSync(bundleName: string, applicationFlags: number, userId: number) : ApplicationInfo
+
 ArkTS-Sta: getApplicationInfoSync(bundleName: string, applicationFlags: int, userId: int) : ApplicationInfo
 
 以同步方法根据给定的bundleName、applicationFlags和userId获取ApplicationInfo。
@@ -4771,7 +4808,8 @@ try {
 
 ## bundleManager.getApplicationInfoSync
 
-ArkTS-Dyn: getApplicationInfoSync(bundleName: string, applicationFlags: number) : ApplicationInfo<br>
+ArkTS-Dyn: getApplicationInfoSync(bundleName: string, applicationFlags: number) : ApplicationInfo
+
 ArkTS-Sta: getApplicationInfoSync(bundleName: string, applicationFlags: int) : ApplicationInfo
 
 以同步方法根据给定的bundleName、applicationFlags获取ApplicationInfo。
@@ -4831,7 +4869,8 @@ try {
 
 ## bundleManager.getBundleInfoSync<sup>14+</sup>
 
-ArkTS-Dyn: getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): BundleInfo<br>
+ArkTS-Dyn: getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): BundleInfo
+
 ArkTS-Sta: getBundleInfoSync(bundleName: string, bundleFlags: int, userId: int): BundleInfo
 
 以同步方法根据给定的bundleName、bundleFlags和userId获取BundleInfo。
@@ -4893,7 +4932,8 @@ try {
 
 ## bundleManager.getBundleInfoSync<sup>14+</sup>
 
-ArkTS-Dyn: getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo<br>
+ArkTS-Dyn: getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
+
 ArkTS-Sta: getBundleInfoSync(bundleName: string, bundleFlags: int): BundleInfo
 
 以同步方法根据给定的bundleName、bundleFlags获取BundleInfo。
@@ -5269,7 +5309,8 @@ try {
 
 ## bundleManager.getAppProvisionInfo<sup>10+</sup>
 
-ArkTS-Dyn: getAppProvisionInfo(bundleName: string, userId: number, callback: AsyncCallback\<AppProvisionInfo\>): void<br>
+ArkTS-Dyn: getAppProvisionInfo(bundleName: string, userId: number, callback: AsyncCallback\<AppProvisionInfo\>): void
+
 ArkTS-Sta: getAppProvisionInfo(bundleName: string, userId: int, callback: AsyncCallback\<AppProvisionInfo\>): void
 
 获取指定bundleName和userId的provision配置文件信息，使用callback异步回调。
@@ -5330,7 +5371,8 @@ try {
 
 ## bundleManager.getAppProvisionInfo<sup>10+</sup>
 
-ArkTS-Dyn: getAppProvisionInfo(bundleName: string, userId?: number): Promise\<AppProvisionInfo\><br>
+ArkTS-Dyn: getAppProvisionInfo(bundleName: string, userId?: number): Promise\<AppProvisionInfo\>
+
 ArkTS-Sta: getAppProvisionInfo(bundleName: string, userId?: int): Promise\<AppProvisionInfo\>
 
 根据bundleName和userId获取应用的provision配置文件信息，使用Promise异步回调。
@@ -5438,7 +5480,8 @@ try {
 
 ## bundleManager.getAppProvisionInfoSync<sup>10+</sup>
 
-ArkTS-Dyn: getAppProvisionInfoSync(bundleName: string, userId?: number): AppProvisionInfo<br>
+ArkTS-Dyn: getAppProvisionInfoSync(bundleName: string, userId?: number): AppProvisionInfo
+
 ArkTS-Sta: getAppProvisionInfoSync(bundleName: string, userId?: int): AppProvisionInfo
 
 以同步方法根据bundleName和userId获取应用的provision配置文件信息并返回结果。
@@ -5809,7 +5852,8 @@ try {
 
 ## bundleManager.queryExtensionAbilityInfoSync<sup>11+</sup>
 
-ArkTS-Dyn: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo><br>
+ArkTS-Dyn: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
+
 ArkTS-Sta: queryExtensionAbilityInfoSync(want: Want, extensionAbilityType: string, extensionAbilityFlags: int, userId?: int): Array\<ExtensionAbilityInfo>
 
 根据给定的want、extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo，使用同步方式返回结果。
@@ -5904,7 +5948,8 @@ try {
 
 ## bundleManager.getJsonProfile<sup>11+</sup>
 
-ArkTS-Dyn: getJsonProfile(profileType: ProfileType, bundleName: string, moduleName?: string, userId?: number): string<br>
+ArkTS-Dyn: getJsonProfile(profileType: ProfileType, bundleName: string, moduleName?: string, userId?: number): string
+
 ArkTS-Sta: getJsonProfile(profileType: ProfileType, bundleName: string, moduleName?: string, userId?: int): string
 
 以同步的方法根据给定的profileType、bundleName和moduleName查询相应配置文件的JSON字符串。
@@ -6215,7 +6260,8 @@ try {
 
 ## bundleManager.queryExtensionAbilityInfoSync<sup>11+</sup>
 
-ArkTS-Dyn: queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo><br>
+ArkTS-Dyn: queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlags: number, userId?: number): Array\<ExtensionAbilityInfo>
+
 ArkTS-Sta: queryExtensionAbilityInfoSync(extensionAbilityType: string, extensionAbilityFlags: int, userId?: int): Array\<ExtensionAbilityInfo>
 
 根据给定的extensionAbilityType、extensionAbilityFlags和userId获取ExtensionAbilityInfo。
@@ -6354,7 +6400,8 @@ try {
 
 ## bundleManager.getDeveloperIds<sup>12+</sup>
 
-ArkTS-Dyn: getDeveloperIds(appDistributionType?: number): Array\<string><br>
+ArkTS-Dyn: getDeveloperIds(appDistributionType?: number): Array\<string>
+
 ArkTS-Sta: getDeveloperIds(appDistributionType?: int): Array\<string>
 
 根据给定的应用[分发类型](#appdistributiontype12)获取当前用户下的所有的开发者ID列表。
@@ -6461,7 +6508,8 @@ try {
 
 ## bundleManager.getAllPluginInfo<sup>19+</sup>
 
-ArkTS-Dyn: getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<PluginBundleInfo>><br>
+ArkTS-Dyn: getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array\<PluginBundleInfo>>
+
 ArkTS-Sta: getAllPluginInfo(hostBundleName: string, userId?: int): Promise<Array\<PluginBundleInfo>>
 
 根据给定的hostBundleName和userId获取所有的PluginBundleInfo，使用Promise异步回调。
@@ -7040,7 +7088,8 @@ try {
 
 ## bundleManager.getAppCloneIdentity<sup>14+</sup>
 
-ArkTS-Dyn: getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity><br>
+ArkTS-Dyn: getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>
+
 ArkTS-Sta: getAppCloneIdentity(uid: int): Promise\<AppCloneIdentity>
 
 根据uid查询分身应用的bundleName和appIndex。使用Promise异步回调。
@@ -7181,7 +7230,8 @@ try {
 
 ## bundleManager.getSandboxDataDir<sup>20+</sup>
 
-ArkTS-Dyn: getSandboxDataDir(bundleName: string, appIndex: number): string<br>
+ArkTS-Dyn: getSandboxDataDir(bundleName: string, appIndex: number): string
+
 ArkTS-Sta: getSandboxDataDir(bundleName: string, appIndex: int): string
 
 根据应用包名和分身索引获取对应的沙箱目录。
@@ -7240,7 +7290,8 @@ try {
 
 ## bundleManager.getAppCloneBundleInfo<sup>12+</sup>
 
-ArkTS-Dyn: getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags: number, userId?: number): Promise\<BundleInfo><br>
+ArkTS-Dyn: getAppCloneBundleInfo(bundleName: string, appIndex: number, bundleFlags: number, userId?: number): Promise\<BundleInfo>
+
 ArkTS-Sta: getAppCloneBundleInfo(bundleName: string, appIndex: int, bundleFlags: int, userId?: int): Promise\<BundleInfo>
 
 根据bundleName、分身索引、[bundleFlags](js-apis-bundleManager.md#bundleflag)以及用户ID查询主应用或分身应用的BundleInfo。使用Promise异步回调。
@@ -7332,7 +7383,8 @@ try {
 
 ## bundleManager.getAllAppCloneBundleInfo<sup>12+</sup>
 
-ArkTS-Dyn: getAllAppCloneBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<Array\<BundleInfo>><br>
+ArkTS-Dyn: getAllAppCloneBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise\<Array\<BundleInfo>>
+
 ArkTS-Sta: getAllAppCloneBundleInfo(bundleName: string, bundleFlags: int, userId?: int): Promise\<Array\<BundleInfo>>
 
 根据bundleName、[bundleFlags](js-apis-bundleManager.md#bundleflag)以及用户ID查询主应用和分身应用的BundleInfo列表。使用Promise异步回调。
@@ -7817,7 +7869,8 @@ try {
 
 ## bundleManager.getAllDynamicIconInfo<sup>20+</sup>
 
-ArkTS-Dyn: getAllDynamicIconInfo(userId?: number): Promise\<Array\<DynamicIconInfo>><br>
+ArkTS-Dyn: getAllDynamicIconInfo(userId?: number): Promise\<Array\<DynamicIconInfo>>
+
 ArkTS-Sta: getAllDynamicIconInfo(userId?: int): Promise\<Array\<DynamicIconInfo>>
 
 查询指定用户下所有应用和所有分身的动态图标信息。使用Promise异步回调。
@@ -8066,7 +8119,8 @@ type SharedBundleInfo = _SharedBundleInfo
 
 ## AppProvisionInfo<sup>10+</sup>
 
-ArkTS-Dyn: type AppProvisionInfo = _AppProvisionInfo.AppProvisionInfo<br>
+ArkTS-Dyn: type AppProvisionInfo = _AppProvisionInfo.AppProvisionInfo
+
 ArkTS-Sta: type AppProvisionInfo = _AppProvisionInfo
 
 应用[HarmonyAppProvision配置文件](../../security/app-provision-structure.md)中的信息。
@@ -8086,7 +8140,8 @@ ArkTS-Sta: type AppProvisionInfo = _AppProvisionInfo
 
 ## Validity<sup>10+</sup>
 
-ArkTS-Dyn: type Validity = _AppProvisionInfo.Validity<br>
+ArkTS-Dyn: type Validity = _AppProvisionInfo.Validity
+
 ArkTS-Sta: type Validity = _Validity
 
 配置文件中的有效期。
@@ -8177,7 +8232,8 @@ type PluginModuleInfo = _PluginModuleInfo
 
 ## DynamicIconInfo<sup>20+</sup>
 
-ArkTS-Dyn: type DynamicIconInfo = _BundleInfo.DynamicIconInfo<br>
+ArkTS-Dyn: type DynamicIconInfo = _BundleInfo.DynamicIconInfo
+
 ArkTS-Sta: type DynamicIconInfo = _DynamicIconInfo
 
 应用的动态图标信息。
@@ -8196,7 +8252,8 @@ ArkTS-Sta: type DynamicIconInfo = _DynamicIconInfo
 
 ## BundleOptions<sup>20+</sup>
 
-ArkTS-Dyn: type BundleOptions = _BundleInfo.BundleOptions<br>
+ArkTS-Dyn: type BundleOptions = _BundleInfo.BundleOptions
+
 ArkTS-Sta: type BundleOptions = _BundleOptions
 
 应用包选项，用于设置或查询应用相关信息。

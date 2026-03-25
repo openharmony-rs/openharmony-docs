@@ -223,6 +223,24 @@ The form can not support this operation.
 
 检查当前卡片对应[互动卡片配置项sceneAnimationParams](../../form/arkts-ui-widget-configuration.md#sceneanimationparams标签)是否正确。
 
+## 16501016 卡片位置信息无效
+
+**错误信息**
+
+The location of the widget is invalid.
+
+**错误描述**
+
+卡片位置信息是无效的。
+
+**可能原因**
+
+指定卡片位置信息不在系统定义范围内。
+
+**处理步骤**
+
+检查入参卡片位置是否在[FormLocation](js-apis-app-form-formInfo.md#formlocation20)配置列表。
+
 ## 2293761 内部服务错误
 
 **错误信息**

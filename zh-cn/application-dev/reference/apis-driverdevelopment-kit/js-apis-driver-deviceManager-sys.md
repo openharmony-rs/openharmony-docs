@@ -23,9 +23,9 @@ ArkTS-Sta: queryDeviceInfo(deviceId?: long): Array&lt;Readonly&lt;DeviceInfo&gt;
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
@@ -35,7 +35,7 @@ ArkTS-Sta: queryDeviceInfo(deviceId?: long): Array&lt;Readonly&lt;DeviceInfo&gt;
 
 | 参数名      | 类型     | 必填  | 说明                     |
 |----------|--------|-----|------------------------|
-| deviceId | ArkTs-Dyn: number<br> ArkTs-Sta: long | 否   | 设备ID，通过[queryDevices](js-apis-driver-deviceManager.md#devicemanagerquerydevices)获得。如果不传入设备ID，则默认获取所有的设备信息；如果没有外接设备，且没有传入设备ID则会返回空数组。 |
+| deviceId | ArkTS-Dyn: number<br> ArkTS-Sta: long | 否   | 设备ID，通过[queryDevices](js-apis-driver-deviceManager.md#devicemanagerquerydevices)获得。如果不传入设备ID，则默认获取所有的设备信息；如果没有外接设备，且没有传入设备ID则会返回空数组。 |
 
 **返回值：**
 
@@ -77,9 +77,9 @@ queryDriverInfo(driverUid?: string): Array&lt;Readonly&lt;DriverInfo&gt;&gt;
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
 
@@ -132,13 +132,13 @@ try {
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型      | 必填  | 说明          |
 |-----------------|---------|-----|-------------|
-| deviceId        | ArkTs-Dyn: number<br> ArkTs-Sta: long | 是   | 设备ID。|
+| deviceId        | ArkTS-Dyn: number<br> ArkTS-Sta: long | 是   | 设备ID。|
 | isDriverMatched | boolean | 是   | 设备是否匹配到驱动。  |
 | driverUid       | string  | 否   | 设备匹配的驱动UID。 |
 
@@ -150,14 +150,14 @@ USB设备详细信息，继承自[DeviceInfo](#deviceinfo)。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称                | 类型                                                                 | 必填  | 说明               |
 |-------------------|--------------------------------------------------------------------|-----|------------------|
-| vendorId          | ArkTs-Dyn: number<br> ArkTs-Sta: int     | 是   | USB设备Vendor ID。| 
-| productId         |  ArkTs-Dyn: number<br> ArkTs-Sta: int     | 是   | USB设备Product ID。|                                               
+| vendorId          | ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是   | USB设备Vendor ID。| 
+| productId         |  ArkTS-Dyn: number<br> ArkTS-Sta: int     | 是   | USB设备Product ID。|                                               
 | interfaceDescList | Array&lt;Readonly&lt;[USBInterfaceDesc](#usbinterfacedesc)&gt;&gt; | 是   | USB设备接口描述符列表。    |
 
 ## USBInterfaceDesc
@@ -168,16 +168,16 @@ USB设备接口描述符。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型     | 必填  | 说明     |
 |------------------|--------|-----|--------|
-| bInterfaceNumber | ArkTs-Dyn: number<br> ArkTs-Sta: int | 是   | 接口编号。|
-| bClass           | ArkTs-Dyn: number<br> ArkTs-Sta: int | 是   | 类型代码。|
-| bSubClass        | ArkTs-Dyn: number<br> ArkTs-Sta: int | 是   | 子类型代码。|
-| bProtocol        | ArkTs-Dyn: number<br> ArkTs-Sta: int | 是   | 协议代码。|
+| bInterfaceNumber | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是   | 接口编号。|
+| bClass           | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是   | 类型代码。|
+| bSubClass        | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是   | 子类型代码。|
+| bProtocol        | ArkTS-Dyn: number<br> ArkTS-Sta: int | 是   | 协议代码。|
 
 ## DriverInfo
 
@@ -187,9 +187,9 @@ USB设备接口描述符。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                                                 | 必填  | 说明             |
 |---------------|----------------------------------------------------|-----|----------------|
@@ -208,11 +208,11 @@ USB设备驱动详细信息，继承自[DriverInfo](#driverinfo)。
 
 **系统能力：** SystemCapability.Driver.ExternalDevice
 
-**ArkTS-Dyn起始版本**：12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本**：23
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                  | 必填  | 说明                      |
 |---------------|---------------------|-----|-------------------------|
-| productIdList | ArkTs-Dyn:Array&lt;number&gt;<br> ArkTs-Sta:  Array&lt;int&gt; | 是   | 驱动支持的USB设备product ID列表。|
-| vendorIdList  |ArkTs-Dyn:Array&lt;number&gt;<br> ArkTs-Sta:  Array&lt;int&gt; | 是   | 驱动支持的USB设备vendor ID列表。|
+| productIdList | ArkTS-Dyn:Array&lt;number&gt;<br> ArkTS-Sta:  Array&lt;int&gt; | 是   | 驱动支持的USB设备product ID列表。|
+| vendorIdList  |ArkTS-Dyn:Array&lt;number&gt;<br> ArkTS-Sta:  Array&lt;int&gt; | 是   | 驱动支持的USB设备vendor ID列表。|

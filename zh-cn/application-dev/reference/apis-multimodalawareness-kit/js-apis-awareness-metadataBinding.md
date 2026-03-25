@@ -33,7 +33,7 @@ submitMetadata(metadata: string): void;
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
 | metadata     | string                           | 是   | 要嵌入图片中的信息。 |
 
-**错误码**：  
+**错误码**：
 
 以下错误码的详细介绍请参见[回旋镖错误码](errorcode-metadataBinding.md)和[通用错误码](../errorcode-universal.md)。
 
@@ -136,7 +136,7 @@ onOperationSubmitMetadata(bundleName: string, callback: Callback&lt;int&gt;): vo
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |32100001|Internal handling failed. Service exception.|
-|32100004|Subscribe Failed. Possible causes: 1. Abnormal system capability; 2. IPC communication abnormality; 3. Algorithm loading exception.|
+|32100004|Subscribe Failed.|
 
 **示例**:
   
@@ -233,7 +233,7 @@ offOperationSubmitMetadata(bundleName: string, callback?: Callback&lt;int&gt;): 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 |32100001|Internal handling failed. Service exception.|
-|32100005|Unsubscribe Failed. Possible causes: 1. Abnormal system capability; 2. IPC communication abnormality|
+|32100005|Unsubscribe Failed.|
 
 **示例**：
 

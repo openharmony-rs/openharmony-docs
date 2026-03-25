@@ -20,6 +20,10 @@ Plugin组件模板参数。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型   | 只读 | 可选 | 说明                        |
 | ------- | ------ | ---- | ---- | --------------------------- |
 | source  | string | 否 | 否 | 组件模板名。                |
@@ -31,7 +35,9 @@ Plugin组件模板参数。
 
 ### KVObject
 
-type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
+ArkTS-Dyn: type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
+
+ArkTS-Sta: type KVObject = Record<string, int | long | double | string | boolean | Array<KVObject> | KVObject>;
 
 以键值对形式存储信息，符合json格式。
 
@@ -39,9 +45,13 @@ type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型   | 只读 | 可选 | 说明                        |
 | ------- | ------ | ---- | ---- | --------------------------- |
-|  [key: string]  | number \| string \| boolean \| [] \| [KVObject](#kvobject)  | 否 | 否   | 键值对形式存储。<br/>number：键值，表示值类型为数字。<br/> string：键值，表示值类型为字符串，可取空字符串。<br/> boolean：键值，表示值类型为布尔值。<br/> []：键值，可取值为[]。<br/>[KVObject](#kvobject)：键值，表示值类型为KVObject。            |
+|  [key: string]  | ArkTS-Dyn: number \| string \| boolean \| [] \| [KVObject](#kvobject)<br/>ArkTS-Sta: string, int \| long \| double \| string \| boolean \| Array<KVObject> \| KVObject  | 否 | 否   | 键值对形式存储。<br/>number：键值，表示值类型为数字。<br/> string：键值，表示值类型为字符串，可取空字符串。<br/> boolean：键值，表示值类型为布尔值。<br/> []：键值，可取值为[]。<br/>[KVObject](#kvobject)：键值，表示值类型为KVObject。            |
 
 
 ### PushParameters
@@ -51,6 +61,10 @@ type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称        | 类型                               | 只读 | 可选   | 说明                                       |
 | --------- | ----------------------------------- | ---- | ---- | ---------------------------------------- |
@@ -68,6 +82,10 @@ type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                               | 必填 | 可选 | 说明                                       |
 | -------- | ----------------------------------- | ---- | ---- |---------------------------------------- |
 | want     | [Want](../apis-ability-kit/js-apis-application-want.md) | 否 | 否    | 组件提供方Ability信息。                          |
@@ -83,6 +101,10 @@ PluginManager.Request方法接收到的回调结果。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称              | 类型                                      | 只读 | 可选 | 说明  |
 | ----------------- | ---------------------------------------- | ---- | ---- | ----- |
 | componentTemplate | [PluginComponentTemplate](#plugincomponenttemplate) | 否 | 否    | 组件模板。 |
@@ -96,6 +118,10 @@ PluginManager.Request方法接收到的回调结果。
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                  | 只读 | 可选  | 说明    |
 | --------- | --------------------- | ---- | ---- | ----- |
@@ -113,6 +139,10 @@ type OnPushEventCallback = (source: Want, template: PluginComponentTemplate, dat
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -148,6 +178,10 @@ type OnRequestEventCallback = (source: Want, name: string, data: KVObject) => Re
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -192,6 +226,10 @@ push(param: PushParameters , callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名      | 类型                                | 必填   | 说明           |
 | -------- | --------------------------------- | ---- | ------------ |
@@ -234,6 +272,9 @@ request(param: RequestParameters, callback: AsyncCallback&lt;RequestCallbackPara
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -277,6 +318,10 @@ on(eventType: string, callback: OnPushEventCallback | OnRequestEventCallback ): 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

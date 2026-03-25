@@ -25,13 +25,13 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType, callback: AsyncCallback\<int>\
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -80,13 +80,13 @@ ArkTS-Sta: getVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -128,13 +128,13 @@ ArkTS-Sta: getVolumeSync(volumeType: AudioVolumeType): int
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -197,13 +197,13 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -252,13 +252,13 @@ ArkTS-Sta: getMinVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -300,13 +300,13 @@ ArkTS-Sta: getMinVolumeSync(volumeType: AudioVolumeType): int
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMinVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getminvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -369,13 +369,13 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback&lt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -424,13 +424,13 @@ ArkTS-Sta: getMaxVolume(volumeType: AudioVolumeType): Promise&lt;int&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -472,13 +472,13 @@ ArkTS-Sta: getMaxVolumeSync(volumeType: AudioVolumeType): int
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getMaxVolumeByStream](arkts-apis-audio-AudioVolumeManager.md#getmaxvolumebystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -539,13 +539,13 @@ isMute(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): voi
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -592,13 +592,13 @@ isMute(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -628,13 +628,13 @@ isMuteSync(volumeType: AudioVolumeType): boolean
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[isSystemMutedForStream](arkts-apis-audio-AudioVolumeManager.md#issystemmutedforstream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -827,7 +827,7 @@ onRingerModeChange(callback: Callback\<AudioRingMode>): void
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1249,13 +1249,13 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1316,13 +1316,13 @@ ArkTS-Sta: getSystemVolumeInDb(volumeType: AudioVolumeType, volumeLevel: int, de
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1384,13 +1384,13 @@ ArkTS-Sta: getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[getVolumeInUnitOfDbByStream](arkts-apis-audio-AudioVolumeManager.md#getvolumeinunitofdbbystream20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1404,7 +1404,7 @@ ArkTS-Sta: getSystemVolumeInDbSync(volumeType: AudioVolumeType, volumeLevel: int
 
 | 类型                  | 说明                               |
 | --------------------- | ---------------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: doube | 返回对应的音量增益dB值。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: double | 返回对应的音量增益dB值。 |
 
 **错误码：**
 

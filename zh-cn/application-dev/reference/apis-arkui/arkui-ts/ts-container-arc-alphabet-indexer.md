@@ -275,7 +275,9 @@ itemSize(size: Optional&lt;LengthMetrics&gt;)
 
 ### selected
 
-selected(index: Optional&lt;number&gt;)
+ArkTS-Dyn: selected(index: Optional&lt;number&gt;)
+
+ArkTS-Sta: selected(index: Optional&lt;int&gt; | Bindable&lt;int&gt;)
 
 设置选中项索引值。未通过该接口设置时，选中项索引值默认为0。
 
@@ -293,7 +295,7 @@ selected(index: Optional&lt;number&gt;)
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;number&gt;</br>ArkTS-Sta: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;int&gt; \| Bindable&lt;int&gt; | 是   | 选中项索引值。<br/>取值为undefined时，选中项索引值为0。 <br/>该参数支持[!!](../../../ui/state-management/arkts-new-binding.md)双向绑定变量。|
+| index  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;number&gt;</br>ArkTS-Sta: [Optional](ts-universal-attributes-custom-property.md#optional12)&lt;int&gt; \| Bindable&lt;int&gt; | 是   | 选中项索引值。<br/>取值为undefined时，选中项索引值为0。 |
 
 ### autoCollapse
 

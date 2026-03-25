@@ -37,6 +37,10 @@
     - [Int](arkts-sta-int.md)
     - [ConcurrentSet (并发集合)](arkts-sta-concurrentset.md)
     - [ConcurrentHashMap](arkts-sta-concurrenthashmap.md)
+- Atomics
+    - [Atomics模块描述](arkts-sta-atomics-overview.md)
+    - [Atomics（实例化原子类型接口）](arkts-sta-atomics.md)
+    - [Atomics（基于typedArray的原子类型接口）](arkts-sta-legacyatomics.md)
 - EAWorker
   - [EAWorker 独占线程任务执行器（ArkTS）](eaworker_managed.md)
   - [EAWorker 独占线程任务执行器（C/C++）](eaworker_native.md)

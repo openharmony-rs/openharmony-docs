@@ -13,6 +13,8 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 该组件不支持在Wearable设备上使用。
 
 
@@ -42,7 +44,7 @@ TreeView({ treeController: TreeController })
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称 | 类型 | 必填 | 说明 |
@@ -60,7 +62,7 @@ TreeView({ treeController: TreeController })
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 ### addNode
@@ -76,7 +78,7 @@ addNode(nodeParam?: NodeParam): TreeController
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称 | 类型 | 必填 | 说明 |
@@ -101,7 +103,7 @@ removeNode(): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 ### modifyNode
@@ -117,7 +119,7 @@ modifyNode(): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 ### buildDone
@@ -132,12 +134,14 @@ buildDone(): void
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 
 ### refreshNode
 
-refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void
+ArkTS-Dyn: refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void
+
+ArkTS-Sta: refreshNode(parentId: int, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void
 
 更新树视图。调用该方法，更新当前节点的信息。
 
@@ -147,11 +151,11 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| parentId | number | 是 | 父节点Id。 |
+| parentId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 父节点Id。 |
 | parentSubTitle | [ResourceStr](ts-types.md#resourcestr) | 是 | 父节点副文本。 |
 | currentSubtitle | [ResourceStr](ts-types.md#resourcestr) | 是 | 当前节点副文本。 |
 
@@ -161,18 +165,18 @@ refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: Reso
 
 | 名称 | 类型 | 必填 | 说明                                                                                                                                               |
 | -------- | -------- | -------- |--------------------------------------------------------------------------------------------------------------------------------------------------|
-| parentNodeId | number | 否 | 父节点。<br />取值范围：大于等于-1。<br />默认值：-1，根节点id值为-1。若设置数值小于-1，做不生效处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22 |
-| currentNodeId | number | 否 | 当前子节点。<br />取值范围：大于等于-1。<br />不能为根节点id，不能为null，否则会抛出异常。且不能设置两个相同的currentNodeId。<br />默认值：-1 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22 |
-| isFolder | boolean | 否 | 是否是目录。默认值：false。true：是目录，false：不是目录。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22 |
-| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 图标。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22 |
-| symbolIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | Symbol图标，优先级大于icon。<br/>默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 22 |
-| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 选中图标。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22 |
-| symbolSelectedIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | Symbol选中图标，优先级大于selectedIcon。<br/>默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 22 |
-| editIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 编辑图标。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22 |
-| symbolEditIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | Symbol编辑图标，优先级大于editIcon。<br/>默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 22 |
-| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 主标题。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22  |
-| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 副标题。<br/>默认值：空字符串 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22 |
-| container | ()&nbsp;=&gt;&nbsp;void | 否 | 绑定在节点上的右键子组件，子组件由@Builder修饰。<br/>默认值：()&nbsp;=&gt;&nbsp;void <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 22 |
+| parentNodeId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 父节点。<br />取值范围：大于等于-1。<br />默认值：-1，根节点id值为-1。若设置数值小于-1，做不生效处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| currentNodeId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 当前子节点。<br />取值范围：大于等于-1。<br />不能为根节点id，不能为null，否则会抛出异常。且不能设置两个相同的currentNodeId。<br />默认值：-1 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| isFolder | boolean | 否 | 是否是目录。默认值：false。true：是目录，false：不是目录。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| icon | [ResourceStr](ts-types.md#resourcestr) | 否 | 图标。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| symbolIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | Symbol图标，优先级大于icon。<br/>默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23 |
+| selectedIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 选中图标。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| symbolSelectedIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | Symbol选中图标，优先级大于selectedIcon。<br/>默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23 |
+| editIcon | [ResourceStr](ts-types.md#resourcestr) | 否 | 编辑图标。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| symbolEditIconStyle<sup>18+</sup> | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | Symbol编辑图标，优先级大于editIcon。<br/>默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 18 <br/> **ArkTS-Sta起始版本：** 23 |
+| primaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 主标题。<br/>默认值：空字符串  <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23  |
+| secondaryTitle | [ResourceStr](ts-types.md#resourcestr) | 否 | 副标题。<br/>默认值：空字符串 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| container | ()&nbsp;=&gt;&nbsp;void | 否 | 绑定在节点上的右键子组件，子组件由@Builder修饰。<br/>默认值：()&nbsp;=&gt;&nbsp;void <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
 
 
 ## TreeListenerManager
@@ -192,7 +196,7 @@ static getInstance(): TreeListenerManager
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值**:
 
@@ -213,7 +217,7 @@ getTreeListener(): TreeListener
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值**:
 
@@ -229,7 +233,9 @@ getTreeListener(): TreeListener
 
 ### on
 
-on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void;
+ArkTS-Dyn: on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void
+
+ArkTS-Sta: on(type: TreeListenType, callback: OnChangedCallback): void
 
 注册监听。
 
@@ -239,17 +245,19 @@ on(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): v
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 是 | 节点信息。 |
+| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback23) | 是 | 节点信息。 |
 
 
 ### once
 
-once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void;
+ArkTS-Dyn: once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void): void
+
+ArkTS-Sta: once(type: TreeListenType, callback: OnChangedCallback): void
 
 注册一次监听。
 
@@ -259,18 +267,19 @@ once(type: TreeListenType, callback: (callbackParam: CallbackParam) =&gt; void):
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 是 | 节点信息。 |
+| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback23) | 是 | 节点信息。 |
 
 
 ### off
 
+ArkTS-Dyn: off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void): void
 
-off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void): void;
+ArkTS-Sta: off(type: TreeListenType, callback?: OnChangedCallback): void
 
 取消监听。
 
@@ -280,12 +289,12 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 否 | 节点信息。 |
+| callback | ArkTS-Dyn: (callbackParam: [CallbackParam](#callbackparam)) =&gt; void <br/>ArkTS-Sta: [OnChangedCallback](#onchangedcallback23) | 否 | 节点信息。 |
 
 ## TreeListenType
 
@@ -295,7 +304,7 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -313,13 +322,31 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明                                       |
 | -------- | -------- | -------- |------------------------------------------|
-| currentNodeId | number | 是 | 返回当前子节点id。<br />取值范围：大于等于0。              |
-| parentNodeId | number | 否 | 返回当前父节点id。<br />取值范围：大于等于-1。<br />默认值：-1 |
-| childIndex | number | 否 | 返回子索引。<br />取值范围：大于等于-1。<br />默认值：-1   |
+| currentNodeId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 返回当前子节点id。<br />取值范围：大于等于0。              |
+| parentNodeId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 返回当前父节点id。<br />取值范围：大于等于-1。<br />默认值：-1 |
+| childIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 返回子索引。<br />取值范围：大于等于-1。<br />默认值：-1   |
+
+## OnChangedCallback<sup>23+</sup>
+
+type OnChangedCallback = (callbackParam: CallbackParam) => void
+
+监听树节点的变化时的回调事件。回调函数的参数为树节点相关信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型  | 必填 | 说明                       |
+| ------ | ------ | ---- | -------------------------- |
+| callbackParam| [CallbackParam](#callbackparam) | 是   | 树节点相关信息。 |
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。

@@ -32,7 +32,7 @@ ArkTS-Sta: onSizeChange(event: SizeChangeCallback | undefined): this
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -44,7 +44,7 @@ ArkTS-Sta: onSizeChange(event: SizeChangeCallback | undefined): this
 
 | 类型 | 说明 |
 | -------- | -------- |
-| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## SizeChangeCallback
 
@@ -57,6 +57,10 @@ SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

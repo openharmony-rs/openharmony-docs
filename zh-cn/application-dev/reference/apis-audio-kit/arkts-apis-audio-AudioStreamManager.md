@@ -565,7 +565,7 @@ off(type: 'audioRendererChange', callback?: Callback&lt;AudioRendererChangeInfoA
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioRendererChange](#offAudioRendererChange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offAudioRendererChange](#offaudiorendererchange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -619,7 +619,7 @@ audioStreamManager.on('audioRendererChange', audioRendererChangeCallback);
 audioStreamManager.off('audioRendererChange', audioRendererChangeCallback);
 ```
 
-## offAudioRendererChange<sup>22+</sup>
+## offAudioRendererChange<sup>23+</sup>
 
 offAudioRendererChange(callback?: Callback&lt;AudioRendererChangeInfoArray&gt;): void
 
@@ -631,7 +631,7 @@ offAudioRendererChange(callback?: Callback&lt;AudioRendererChangeInfoArray&gt;):
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -913,13 +913,13 @@ isActive(volumeType: AudioVolumeType, callback: AsyncCallback&lt;boolean&gt;): v
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -966,13 +966,13 @@ isActive(volumeType: AudioVolumeType): Promise&lt;boolean&gt;
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 9开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1002,13 +1002,13 @@ isActiveSync(volumeType: AudioVolumeType): boolean
 
 > **说明：**
 >
-> 从API version 10开始支持，从API version 20开始废弃，替代接口仅面向系统应用开放。
+> 从API version 10开始支持，从API version 20开始废弃，建议使用[isStreamActive](#isstreamactive20)替代。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1042,6 +1042,52 @@ try {
 } catch (err) {
   let error = err as BusinessError;
   console.error(`Failed to obtain the active status of the stream ${error}.`);
+}
+```
+
+## isStreamActive<sup>20+</sup>
+
+isStreamActive(streamUsage: StreamUsage): boolean
+
+获取指定音频流是否为活跃状态。同步返回结果。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型                                | 必填 | 说明         |
+| ---------- | ----------------------------------- | ---- | ------------ |
+| streamUsage | [StreamUsage](arkts-apis-audio-e.md#streamusage) | 是   | 音频流使用类型。 |
+
+**返回值：**
+
+| 类型                   | 说明                                                     |
+| ---------------------- | -------------------------------------------------------- |
+| boolean | 流是否处于活跃状态。返回true表示活跃，返回false表示不活跃。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isStreamActive = audioStreamManager.isStreamActive(audio.StreamUsage.STREAM_USAGE_MUSIC);
+  console.info(`Succeeded in using isStreamActive function, IsStreamActive: ${isStreamActive}.`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`Failed to use isStreamActive function. code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -1376,4 +1422,50 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
     }
   }
 });
+```
+
+## isIntelligentNoiseReductionEnabledForCurrentDevice<sup>21+</sup>
+
+isIntelligentNoiseReductionEnabledForCurrentDevice(sourceType: SourceType): boolean
+
+查询指定的音源类型智能降噪开关是否打开。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名    | 类型                                | 必填     | 说明                         |
+| -------- | ----------------------------------- | -------- | --------------------------- |
+| sourceType    | [SourceType](arkts-apis-audio-e.md#sourcetype8)         | 是     |  表示音源类型。               |
+
+**返回值：**
+
+| 类型                                                                      | 说明                                    |
+| --------------------------------------------------------------------------| --------------------------------------- |
+|  boolean     | 智能降噪开关的状态。true表示打开，false表示关闭。        |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isSupport = audioStreamManager.isIntelligentNoiseReductionEnabledForCurrentDevice(audio.SourceType.SOURCE_TYPE_LIVE);
+  console.info(`SourceType: ${audio.SourceType.SOURCE_TYPE_LIVE} intelligent noise reduction enabled is: ${isSupport}`);
+} catch (err) {
+  let error = err as BusinessError;
+  console.error(`isIntelligentNoiseReductionEnabledForCurrentDevice ERROR: ${error}`);
+}
 ```

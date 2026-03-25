@@ -15,7 +15,7 @@ type AudioRendererChangeInfoArray = Array&lt;Readonly&lt;AudioRendererChangeInfo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型      | 说明                                                            |
 |---------|---------------------------------------------------------------|
@@ -32,7 +32,7 @@ type AudioCapturerChangeInfoArray = Array&lt;Readonly&lt;AudioCapturerChangeInfo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型      | 说明                                                              |
 |---------|-----------------------------------------------------------------|
@@ -49,7 +49,7 @@ type AudioEffectInfoArray = Array&lt;Readonly&lt;AudioEffectMode&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型      | 说明                                                            |
 |---------|---------------------------------------------------------------|
@@ -67,7 +67,7 @@ type AudioDeviceDescriptors = Array&lt;Readonly&lt;AudioDeviceDescriptor&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型      | 说明                                                            |
 |---------|---------------------------------------------------------------|

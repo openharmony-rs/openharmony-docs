@@ -10,9 +10,7 @@
 
 ## align
 
-ArkTS-Dyn: align(value: Alignment): T
-
-ArkTS-Sta: align(value: Alignment | undefined): this
+align(value: Alignment): T
 
 设置容器元素绘制区域内的子元素的对齐方式。
 
@@ -22,21 +20,23 @@ ArkTS-Sta: align(value: Alignment | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[align](#align23)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [Alignment](ts-appendix-enums.md#alignment)<br/>ArkTS-Sta: [Alignment](ts-appendix-enums.md#alignment) \| undefined | 是   | 设置容器元素绘制区域内的子元素的对齐方式。<br/>只在Stack、FolderStack、Shape、Button、Marquee、StepperItem、Text、TextArea、TextInput、[RichEditor](ts-basic-components-richeditor.md)、Hyperlink、SymbolGlyph、ListItem、GridItem、Scroll、FlowItem、ImageAnimator、LoadingProgress、PatternLock、Progress、QRCode、TextClock、TextTimer、MenuItem、Toggle、Checkbox、NodeContainer中生效，其中和文本相关的组件Marquee、Text、TextArea、TextInput、RichEditor、Hyperlink的align结果参考[textAlign](ts-basic-components-text.md#textalign)。<br/>不支持textAlign属性的组件则无法设置水平方向的文字对齐。<br/>默认值：Alignment.Center<br/>**说明：** <br/>该属性不支持镜像能力。<br/>在Stack中该属性与alignContent效果一致，只能设置子组件在容器内的对齐方式。 |
+| value  | ArkTS-Dyn: [Alignment](ts-appendix-enums.md#alignment) | 是   | 设置容器元素绘制区域内的子元素的对齐方式。<br/>只在Stack、FolderStack、Shape、Button、Marquee、StepperItem、Text、TextArea、TextInput、[RichEditor](ts-basic-components-richeditor.md)、Hyperlink、SymbolGlyph、ListItem、GridItem、Scroll、FlowItem、ImageAnimator、LoadingProgress、PatternLock、Progress、QRCode、TextClock、TextTimer、MenuItem、Toggle、Checkbox、NodeContainer中生效，其中和文本相关的组件Marquee、Text、TextArea、TextInput、RichEditor、Hyperlink的align结果参考[textAlign](ts-basic-components-text.md#textalign)。<br/>不支持textAlign属性的组件则无法设置水平方向的文字对齐。<br/>默认值：Alignment.Center<br/>**说明：** <br/>该属性不支持镜像能力。<br/>在Stack中该属性与alignContent效果一致，只能设置子组件在容器内的对齐方式。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
+|  T | 返回当前组件。 |
 
 ## align<sup>20+</sup>
 
@@ -52,6 +52,8 @@ align(alignment: Alignment | LocalizedAlignment): T
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[selected](#selected22)。
+
 **ArkTS-Dyn起始版本：** 20
 
 **参数：**
@@ -60,9 +62,15 @@ align(alignment: Alignment | LocalizedAlignment): T
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | alignment  | [Alignment](ts-appendix-enums.md#alignment) \| [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | 是   | 设置容器元素绘制区域内的子元素的对齐方式，增加支持镜像的能力。<br/>LocalizedAlignment只在[Shape](ts-drawing-components-shape.md)、[Button](ts-basic-components-button.md)、[GridItem](ts-container-griditem.md)、[FlowItem](ts-container-flowitem.md)、[ImageAnimator](ts-basic-components-imageanimator.md)、[LoadingProgress](ts-basic-components-loadingprogress.md)、[PatternLock](ts-basic-components-patternlock.md)、[Progress](ts-basic-components-progress.md)、[QRCode](ts-basic-components-qrcode.md)、[TextClock](ts-basic-components-textclock.md)、[TextTimer](ts-basic-components-texttimer.md)、[StepperItem](ts-basic-components-stepperitem.md)、[MenuItem](ts-basic-components-menuitem.md)、[Toggle](ts-basic-components-toggle.md)、[Checkbox](ts-basic-components-checkbox.md)、[ListItem](ts-container-listitem.md)中有效果，即支持镜像能力。<br/>其中，除[ListItem](ts-container-listitem.md)与Alignment的效果保持一致以外，其他组件镜像切换均生效；其他设置LocalizedAlignment无效果的组件按其默认效果显示。<br/>默认值：Alignment.Center<br/>**说明：** <br/>Alignment类型不支持镜像能力；LocalizedAlignment类型支持镜像能力，选择LocalizedAlignment中的枚举值，根据direction或系统语言方向的改变实现镜像切换。其中direction的优先级高于系统语言方向，当设置direction且不为auto时，LocalizedAlignment的镜像按照direction进行布局；当设置direction为auto或未设置时，LocalizedAlignment的镜像按照系统语言方向进行布局。<br/>align属性入参为undefined或null时按默认值处理，效果为居中显示。 |
 
-## align<sup>20+</sup>
+**返回值：**
 
-align(value: Alignment | undefined): this
+| 类型 | 说明 |
+| --- | --- |
+|  T | 返回当前组件。 |
+
+## align<sup>23+</sup>
+
+align(alignment: Alignment \| LocalizedAlignment | undefined): this
 
 设置容器元素绘制区域内的子元素的对齐方式，增加支持镜像的能力。
 
@@ -70,13 +78,15 @@ align(value: Alignment | undefined): this
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[selected](#selected22)。
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Alignment](ts-appendix-enums.md#alignment) \| undefined | 是   | 设置容器元素绘制区域内的子元素的对齐方式，增加支持镜像的能力。<br/>默认值：Alignment.Center<br/>**说明：** <br/>Alignment类型不支持镜像能力，<br/>align属性入参为undefined或null时按默认值处理，效果为居中显示。 |
+| value  | [Alignment](ts-appendix-enums.md#alignment) \| [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) \| undefined | 是   | 设置容器元素绘制区域内的子元素的对齐方式，增加支持镜像的能力。<br/>默认值：Alignment.Center<br/>**说明：** <br/>Alignment类型不支持镜像能力，<br/>align属性入参为undefined或null时按默认值处理，效果为居中显示。 |
 
 **返回值：**
 
@@ -100,7 +110,7 @@ ArkTS-Sta: direction(value: Direction | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -130,7 +140,7 @@ ArkTS-Sta: position(value: Position | Edges | LocalizedEdges | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -160,7 +170,7 @@ ArkTS-Sta: markAnchor(value: Position | LocalizedPosition | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -190,7 +200,7 @@ ArkTS-Sta: offset(value: Position | Edges | LocalizedEdges | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -232,7 +242,7 @@ alignRules(value: AlignRuleOption): T
 | --- | --- |
 |  T | 返回当前组件。 |
 
-## alignRulesWithAlignRuleOptionTypedValue<sup>22+</sup>
+## alignRulesWithAlignRuleOptionTypedValue<sup>23+</sup>
 
 alignRulesWithAlignRuleOptionTypedValue(value: AlignRuleOption | undefined): this
 
@@ -242,7 +252,7 @@ alignRulesWithAlignRuleOptionTypedValue(value: AlignRuleOption | undefined): thi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -284,7 +294,7 @@ alignRules(alignRule: LocalizedAlignRuleOptions): T
 | --- | --- |
 |  T | 返回当前组件。 |
 
-## alignRulesWithAlignRuleOptionTypedValue<sup>22+</sup>
+## alignRulesWithAlignRuleOptionTypedValue<sup>23+</sup>
 
 alignRulesWithAlignRuleOptionTypedValue(value: AlignRuleOption | undefined): this
 
@@ -294,7 +304,7 @@ alignRulesWithAlignRuleOptionTypedValue(value: AlignRuleOption | undefined): thi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -342,7 +352,7 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -354,7 +364,7 @@ layoutGravity(alignment: LocalizedAlignment): T
 | center | ArkTS-Dyn: { anchor: string, align: [VerticalAlign](ts-appendix-enums.md#verticalalign) }<br>ArkTS-Sta: [VerticalAlignParam](#verticalalignparam22对象说明) |否|是| 设置纵向居中对齐方式的参数。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                 |	
 | bias<sup>11+</sup>   | [Bias](#bias对象说明) |否|是| 设置组件在锚点约束下的偏移参数，其值为到左/上侧锚点的距离与锚点间总距离的比值。<br/>**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 
-## HorizontalAlignParam<sup>22+</sup>对象说明
+## HorizontalAlignParam<sup>23+</sup>对象说明
 
 定义在相对容器中子组件水平方向上的对齐规则。
 
@@ -362,14 +372,14 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | anchor  | string | 否 | 否 | 设置作为锚点的组件的id值。 |
 | align   | [HorizontalAlign](ts-appendix-enums.md#horizontalalign)  | 否 | 否 | 设置相对于锚点组件的横向对齐方式。 |
 
-## VerticalAlignParam<sup>22+</sup>对象说明
+## VerticalAlignParam<sup>23+</sup>对象说明
 
 定义在相对容器中子组件垂直方向上的对齐规则。
 
@@ -377,7 +387,7 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
@@ -449,7 +459,7 @@ ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

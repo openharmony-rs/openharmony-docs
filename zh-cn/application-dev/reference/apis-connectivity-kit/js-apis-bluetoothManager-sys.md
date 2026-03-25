@@ -27,11 +27,11 @@ cancelPairedDevice(deviceId: string): void
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[connection.cancelPairedDevice](js-apis-bluetooth-connection-sys.md#connectioncancelpaireddevice)替代。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.DISCOVER_BLUETOOTH
+**需要权限：** ohos.permission.DISCOVER_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -39,7 +39,7 @@ cancelPairedDevice(deviceId: string): void
 | -------- | ------ | ---- | ------------------------------------- |
 | deviceId | string | 是    | 表示要删除的远程设备的地址，例如："XX:XX:XX:XX:XX:XX"。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -75,11 +75,11 @@ connect(device: string): void
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[hid.HidHostProfile#connect](js-apis-bluetooth-hid-sys.md#connect)替代。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.DISCOVER_BLUETOOTH
+**需要权限：** ohos.permission.DISCOVER_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -87,7 +87,7 @@ connect(device: string): void
 | ------ | ------ | ---- | ------- |
 | device | string | 是    | 远端设备地址。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -125,11 +125,11 @@ disconnect(device: string): void
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[hid.HidHostProfile#disconnect](js-apis-bluetooth-hid-sys.md#disconnect)替代。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.DISCOVER_BLUETOOTH
+**需要权限：** ohos.permission.DISCOVER_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -137,7 +137,7 @@ disconnect(device: string): void
 | ------ | ------ | ---- | ------- |
 | device | string | 是    | 远端设备地址。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -176,11 +176,11 @@ disconnect(device: string): void
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[pan.PanProfile#disconnect](js-apis-bluetooth-pan-sys.md#disconnect)替代。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.USE_BLUETOOTH
+**需要权限：** ohos.permission.USE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -188,7 +188,7 @@ disconnect(device: string): void
 | ------ | ------ | ---- | ------- |
 | device | string | 是    | 远端设备地址。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -225,11 +225,11 @@ setTethering(enable: boolean): void
 >
 > 从API version 9开始支持，从API version 10开始废弃，替代接口仅向系统应用开放。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.DISCOVER_BLUETOOTH
+**需要权限：** ohos.permission.DISCOVER_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -237,7 +237,7 @@ setTethering(enable: boolean): void
 | ------ | ------ | ---- | ------- |
 | enable | boolean | 是    | 是否启用网络共享。true表示启用，false表示不启用。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -275,9 +275,9 @@ isTetheringOn(): boolean
 >
 > 从API version 9开始支持，从API version 10开始废弃，建议使用[isTetheringOn](js-apis-bluetooth-pan-sys.md#istetheringon)替代。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **返回值：**
 
@@ -285,7 +285,7 @@ isTetheringOn(): boolean
 | --------------------- | --------------------------------- |
 | boolean | 网络共享开启返回true，网络共享关闭返回false。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 

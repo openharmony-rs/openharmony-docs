@@ -15,9 +15,9 @@
 
 | 名称                         | 值   | 说明                                                              |
 | --------------------------- | ---- |-----------------------------------------------------------------|
-| CAMERA_POSITION_UNSPECIFIED | 0    | 相对于设备屏幕没有固定的朝向的相机。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| CAMERA_POSITION_BACK        | 1    | 后置相机。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22        |
-| CAMERA_POSITION_FRONT       | 2    | 前置相机。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22         |
+| CAMERA_POSITION_UNSPECIFIED | 0    | 相对于设备屏幕没有固定的朝向的相机。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| CAMERA_POSITION_BACK        | 1    | 后置相机。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23        |
+| CAMERA_POSITION_FRONT       | 2    | 前置相机。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23         |
 | CAMERA_POSITION_FOLD_INNER<sup>(deprecated)</sup>  | 3    | 折叠态相机。<br/> 从API version 11开始支持，从API version 12开始废弃。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 11 |
 
 ## CameraType
@@ -30,7 +30,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 值   | 说明            |
 | ----------------------- | ---- | -------------- |
@@ -50,7 +50,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明           |
 | ---------------------------- | ---- | ------------- |
@@ -66,9 +66,9 @@
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值       | 说明      |
 | ---------------------------- | ----     |---------|
@@ -86,7 +86,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 值   | 说明            |
 | ------------------------- | ---- | ------------    |
@@ -105,7 +105,7 @@
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 值   | 说明            |
 | ------------------------- | ---- | ------------    |
@@ -123,9 +123,9 @@
 
 | 名称                       | 值   | 说明                                                         |
 | -------------------------- | ---- | ------------------------------------------------------------ |
-| NORMAL_PHOTO               | 1    | 普通拍照模式。详情见[PhotoSession](arkts-apis-camera-PhotoSession.md)<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| NORMAL_VIDEO               | 2    | 普通录像模式。详情见[VideoSession](arkts-apis-camera-VideoSession.md)<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| SECURE_PHOTO<sup>12+</sup> | 12   | 安全相机模式。详情见[SecureSession](arkts-apis-camera-SecureSession.md)<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
+| NORMAL_PHOTO               | 1    | 普通拍照模式。详情见[PhotoSession](arkts-apis-camera-PhotoSession.md)<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| NORMAL_VIDEO               | 2    | 普通录像模式。详情见[VideoSession](arkts-apis-camera-VideoSession.md)<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| SECURE_PHOTO<sup>12+</sup> | 12   | 安全相机模式。详情见[SecureSession](arkts-apis-camera-SecureSession.md)<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## CameraErrorCode
 
@@ -139,17 +139,17 @@
 
 | 名称                       | 值          | 说明            |
 | -------------------------  | ----       | ------------    |
-| INVALID_ARGUMENT           | 7400101    | 参数缺失或者参数类型不对。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| OPERATION_NOT_ALLOWED      | 7400102    | 操作流程不对，不允许。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| SESSION_NOT_CONFIG         | 7400103    | session 未配置返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| SESSION_NOT_RUNNING        | 7400104    | session 未运行返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| SESSION_CONFIG_LOCKED      | 7400105    | session 配置已锁定返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| DEVICE_SETTING_LOCKED      | 7400106    | 设备设置已锁定返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| CONFLICT_CAMERA            | 7400107    | 设备重复打开返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| DEVICE_DISABLED            | 7400108    | 安全原因相机被禁用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| SERVICE_FATAL_ERROR        | 7400201    | 相机服务错误返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| INVALID_ARGUMENT           | 7400101    | 参数缺失或者参数类型不对。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| OPERATION_NOT_ALLOWED      | 7400102    | 操作流程不对，不允许。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| SESSION_NOT_CONFIG         | 7400103    | session 未配置返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| SESSION_NOT_RUNNING        | 7400104    | session 未运行返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| SESSION_CONFIG_LOCKED      | 7400105    | session 配置已锁定返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| DEVICE_SETTING_LOCKED      | 7400106    | 设备设置已锁定返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| CONFLICT_CAMERA            | 7400107    | 设备重复打开返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| DEVICE_DISABLED            | 7400108    | 安全原因相机被禁用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| SERVICE_FATAL_ERROR        | 7400201    | 相机服务错误返回。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## TorchMode<sup>11+</sup>
 
@@ -161,7 +161,7 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明           |
 | ---------------------------- | ---- | ------------- |
@@ -179,12 +179,12 @@
 
 | 名称                     | 值        | 说明         |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 22 |
-| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 22 |
+| CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
+| CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。<br/>**ArkTS-Dyn起始版本：** 13<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## VideoCodecType<sup>13+</sup>
 
@@ -196,7 +196,7 @@
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值    | 说明          |
 |------|------|-------------|
@@ -213,7 +213,7 @@
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值    | 说明          |
 |------|------|-------------|
@@ -230,7 +230,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值   | 说明           |
 | ------------ | ---- | ------------- |
@@ -249,7 +249,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 值   | 说明         |
 | -------------------- | ---- | ------------ |
@@ -261,17 +261,16 @@
 
 枚举，metadata流。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 值   | 说明              |
 | ------------------------- | ---- | ----------------- |
-| FACE_DETECTION            | 0    | metadata对象类型，用于人脸检测。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br>例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，<br>布局宽高为(w，h)， 返回点为(x，y)，则转换后的坐标点为(1-y，x)。 |
+| FACE_DETECTION            | 0    | metadata对象类型，用于人脸检测。<br> 检测点应在0-1坐标系内，该坐标系左上角为(0，0)，右下角为(1，1)。<br> 此坐标系以设备充电口在右侧时的横向设备方向为基准。<br>例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，<br>布局宽高为(w，h)， 返回点为(x，y)，则转换后的坐标点为(1-y，x)。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23 |
+| HUMAN_BODY<sup>23+</sup>     | 1    | 元数据的对象类型，用于人体检测。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 23 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## FlashMode
 
@@ -283,7 +282,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                    | 值   | 说明        |
 | ---------------------- | ---- | ---------- |
@@ -302,7 +301,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                           | 值   | 说明         |
 | ----------------------------- | ---- | ----------- |
@@ -320,7 +319,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                        | 值   | 说明          |
 | -------------------------- | ---- | ------------ |
@@ -339,7 +338,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 值   | 说明       |
 | --------------------- | ---- | --------- |
@@ -357,7 +356,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 值   | 说明         |
 | --------- | ---- | ------------ |
@@ -377,7 +376,7 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 值   | 说明            |
 | ------------ | ---- | -------------- |
@@ -387,20 +386,15 @@
 
 枚举，提供预配置的类型。
 
-**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
 
 | 名称                      | 值 | 说明         |
 |-------------------------|---|------------|
-| PRECONFIG_720P          | 0 | 720P预配置。   |
-| PRECONFIG_1080P         | 1 | 1080P预配置。  |
-| PRECONFIG_4K            | 2 | 4K预配置。     |
-| PRECONFIG_HIGH_QUALITY  | 3 | 高质量预配置。    |
+| PRECONFIG_720P          | 0 | 720P预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23   |
+| PRECONFIG_1080P         | 1 | 1080P预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23  |
+| PRECONFIG_4K            | 2 | 4K预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23     |
+| PRECONFIG_HIGH_QUALITY  | 3 | 高质量预配置。<br>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/> **ArkTS-Sta起始版本：** 23   |
+| PRECONFIG_HIGH_QUALITY_PHOTOSESSION_BT2020<sup>23+</sup>  | 4 | 预配置支持预览高动态范围显示和HDR动图拍摄。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br> **ArkTS-Sta起始版本：** 23 |
 
 ## PreconfigRatio<sup>12+</sup>
 
@@ -412,7 +406,7 @@
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 值 | 说明      |
 |--------------------------|---|---------|
@@ -430,7 +424,7 @@
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 值  | 说明       |
 | ------------- | --- | ---------- |
@@ -447,7 +441,7 @@
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称             | 值 | 说明         |
 |----------------|---| ----------- |
@@ -458,3 +452,57 @@
 | DAYLIGHT       | 4 | 日光 |
 | MANUAL         | 5 | 手动 |
 | LOCKED         | 6 | 锁定  |
+
+## SystemPressureLevel<sup>20+</sup>
+
+枚举，系统压力等级。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                     | 值 | 说明       | 
+|--------------------------|---|------------|
+| SYSTEM_PRESSURE_NORMAL   | 0 | 系统压力正常。 |
+| SYSTEM_PRESSURE_MILD     | 1 | 系统压力升高，但是系统不会主动管控。 |
+| SYSTEM_PRESSURE_SEVERE   | 2 | 系统压力可能对图像总质量、性能产生影响。 |
+| SYSTEM_PRESSURE_CRITICAL | 3 | 系统压力对图像质量、性能产生显著影响。 |
+| SYSTEM_PRESSURE_SHUTDOWN | 4 | 系统压力过高，停止工作。 |
+
+## ControlCenterEffectType<sup>20+</sup>
+
+枚举，相机控制器支持的效果类型。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称      | 值 | 说明    |
+|-----------|---|---------|
+| BEAUTY    | 0 | 美颜。   |
+| PORTRAIT  | 1 | 人像虚化。|
+
+## PhotoQualityPrioritization<sup>21+</sup>
+
+枚举，拍照画质优先策略。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 21
+
+| 名称         | 值     | 说明    |
+|--------------|-------|---------|
+| HIGH_QUALITY | 0     | 画质优先，拍照需要较长的时间，以输出高画质的图片。 |
+| SPEED        | 1     | 性能优先，会降低画质来提升拍照的速度。 |

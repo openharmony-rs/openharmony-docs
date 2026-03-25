@@ -7166,7 +7166,7 @@ ArkTS-Sta: setTargetDeviceStatus(deviceType: string, status: long): Promise\<voi
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| deviceType | string | 是   | 设备类型。当前仅支持`headset`（可穿戴式音频设备）、`liteWearable`（轻量级智能穿戴设备）、`wearable`（智能穿戴设备）、`current`（本设备）。 |
+| deviceType | string | 是   | 设备类型。当前仅支持`headset`（可穿戴式音频设备）、`liteWearable`（轻量级智能穿戴设备）、`wearable`（智能穿戴设备）、`glasses`（智能眼镜设备）、`current`（本设备）。 |
 | status | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是   | 设备状态。<br>- bit0：设备是否正在被使用。0表示未使用，1表示使用中。<br>- bit1：当前设备使用者是否为机主。0表示为非机主，1表示为机主。<br>- bit2：设备是否处于勿扰模式。0表示处于非勿扰模式，1表示处于勿扰模式。 |
 
 **返回值：**
@@ -8571,7 +8571,7 @@ try {
 }
 ```
 
-## isPriorityIntelligentEnabled<sup>23+</sup>
+## notificationManager.isPriorityIntelligentEnabled<sup>23+</sup>
 
 isPriorityIntelligentEnabled(): Promise\<boolean\>
 
@@ -8638,7 +8638,7 @@ try {
 }
 ```
 
-## setPriorityIntelligentEnabled<sup>23+</sup>
+## notificationManager.setPriorityIntelligentEnabled<sup>23+</sup>
 
 setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
 
@@ -8711,7 +8711,7 @@ try {
 }
 ```
 
-## getPriorityEnabledByBundles<sup>23+</sup>
+## notificationManager.getPriorityEnabledByBundles<sup>23+</sup>
 
 getPriorityEnabledByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean\>\>
 
@@ -8793,7 +8793,7 @@ try {
 }
 ```
 
-## setPriorityEnabledByBundles<sup>23+</sup>
+## notificationManager.setPriorityEnabledByBundles<sup>23+</sup>
 
 setPriorityEnabledByBundles(switches: Map\<BundleOption, boolean\>): Promise\<void\>
 
@@ -8871,9 +8871,11 @@ try {
 }
 ```
 
-## getPriorityStrategyByBundles<sup>23+</sup>
+## notificationManager.getPriorityStrategyByBundles<sup>23+</sup>
 
-getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, long\>\>;
+ArkTS-Dyn: getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>
+
+ArkTS-Sta: getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, long\>\>
 
 批量获取应用通知优先策略。使用Promise异步回调。
 
@@ -8899,7 +8901,7 @@ getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<Bund
 
 | 类型            | 说明                     |
 |-----------------|-------------------------|
-| Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\>\> | Promise对象，返回应用通知优先策略的键值对集合的Promise对象。 |
+| ArkTS-Dyn: Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\>\> <br/>ArkTS-Sta: Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\>\> | Promise对象，返回应用通知优先策略的键值对集合的Promise对象。 |
 
 **错误码**：
 
@@ -8953,9 +8955,11 @@ try {
 }
 ```
 
-## setPriorityStrategyByBundles<sup>23+</sup>
+## notificationManager.setPriorityStrategyByBundles<sup>23+</sup>
 
-setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): Promise\<void\>
+ArkTS-Dyn: setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<void\>
+
+ArkTS-Sta: setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): Promise\<void\>
 
 批量设置应用通知优先策略。使用Promise异步回调。
 
@@ -8975,7 +8979,7 @@ setPriorityStrategyByBundles(strategies: Map\<BundleOption, long\>): Promise\<vo
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| strategies | Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\> | 是 | 应用通知优先策略的键值对集合。与[PriorityStrategyStatus](#prioritystrategystatus23)的枚举进行按位或运算得到值。|
+| strategies | ArkTS-Dyn: Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\> <br/>ArkTS-Sta: Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), long\> | 是 | 应用通知优先策略的键值对集合。与[PriorityStrategyStatus](#prioritystrategystatus23)的枚举进行按位或运算得到值。|
 
 **返回值：**
 
@@ -9096,6 +9100,80 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 }).catch((e: Error) => {
   let err = e as BusinessError
   hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getNotificationStatisticsByBundle
+
+getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics)[]\>
+
+批量获取指定应用列表的通知统计信息，使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口仅在Phone/PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                         |
+| --------- | --------------------- | ---- | ---------------------------- |
+| bundles   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)[] | 是  | 应用的包信息列表。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics)[]\> | Promise对象。返回指定应用列表的通知统计信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 801 | Capability not supported. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: notificationManager.BundleOption[] = [
+  { bundle:"com.example.test01", } as notificationManager.BundleOption,
+  { bundle:"com.example.test02", } as notificationManager.BundleOption
+];
+notificationManager.getNotificationStatisticsByBundle(bundles).then(
+  (data: notificationManager.BundleNotificationStatistics[]) => {
+  console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
+}).catch((err: BusinessError):void => {
+  console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+});
+```
+
+ArkTS-Sta示例：
+```ts
+let bundles: notificationManager.BundleOption[] = [
+  { bundle:"com.example.test01", } as notificationManager.BundleOption,
+  { bundle:"com.example.test02", } as notificationManager.BundleOption
+];
+notificationManager.getNotificationStatisticsByBundle(bundles).then(
+  (data: notificationManager.BundleNotificationStatistics[]) => {
+  console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
+}).catch((err: Error):void => {
+  console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
 });
 ```
 
@@ -9346,6 +9424,10 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 
 **系统接口**：此接口为系统接口。
 
+**ArkTS-Dyn起始版本**：11
+
+**ArkTS-Sta起始版本**：23
+
 | 类型 | 说明 |
 | --- | --- |
 | [_NotificationLiveViewContent](js-apis-inner-notification-notificationContent-sys.md#notificationliveviewcontent11) | 描述普通实况通知。 |
@@ -9387,6 +9469,24 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
 | reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示通知提醒方式的标志位。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
+
+## BundleNotificationStatistics
+
+描述指定应用通知统计信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+| 名称      | 类型    | 只读 | 可选 | 说明           |
+| --------- | ------ | ---- | ---- | ------------- |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
+| lastTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 应用最后一次发布通知的时间。数据格式：时间戳。单位：ms。 |
+| recentCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否 | 否 | 应用最近7天发布的通知总量。 |
 
 ## PriorityNotificationType<sup>23+</sup>
 
@@ -9573,3 +9673,23 @@ type MonitorEvent = _MonitorEvent
 | STATUS_USER_DEFINED | 1<<3 | 仅用户自定义。 |
 | STATUS_APPLICATION_DEFINED | 1<<4 | 仅应用自定义。 |
 | STATUS_ALL_PRIORITY | 1<<5 | 全部通知优先。 |
+
+## GroupInfo
+
+type GroupInfo = _GroupInfo
+
+组通知定制信息。
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+| 类型 | 说明 |
+| --- | --- |
+| [_GroupInfo](js-apis-inner-notification-notificationRequest-sys.md#groupinfo) | 组通知定制信息的类型。 |

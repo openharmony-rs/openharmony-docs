@@ -16,8 +16,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 ## hilog.isLoggable
 
-ArkTS-Dyn: isLoggable(domain: number, tag: string, level: LogLevel) : boolean<br>
-ArkTS-Sta: isLoggable(domain: int, tag: string, level: LogLevel) : boolean
+ArkTS-Dyn: isLoggable(domain: number, tag: string, level: LogLevel): boolean
+
+ArkTS-Sta: isLoggable(domain: int, tag: string, level: LogLevel): boolean
 
 在打印日志前调用该接口，用于检查指定领域标识、日志标识和级别的日志是否可以打印。
 
@@ -25,9 +26,9 @@ ArkTS-Sta: isLoggable(domain: int, tag: string, level: LogLevel) : boolean
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -57,9 +58,9 @@ hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.INFO);
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本**：23
 
 | 名称  |   值   | 说明                                                         |
 | ----- | ------ | ------------------------------------------------------------ |
@@ -71,8 +72,9 @@ hilog.isLoggable(0x0001, "testTag", hilog.LogLevel.INFO);
 
 ## hilog.debug
 
-ArkTS-Dyn: debug(domain: number, tag: string, format: string, ...args: any[]) : void<br>
-ArkTS-Sta: debug(domain: int, tag: string, format: string, ...args: RecordData[]) : void
+ArkTS-Dyn: debug(domain: number, tag: string, format: string, ...args: any[]): void
+
+ArkTS-Sta: debug(domain: int, tag: string, format: string, ...args: RecordData[]): void
 
 打印DEBUG级别的日志。
 
@@ -82,9 +84,9 @@ DEBUG级别的日志在正式发布版本中默认不被打印，只有在调试
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -111,8 +113,9 @@ hilog.debug(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 ## hilog.info
 
-ArkTS-Dyn: info(domain: number, tag: string, format: string, ...args: any[]) : void<br>
-ArkTS-Sta: info(domain: int, tag: string, format: string, ...args: RecordData[]) : void
+ArkTS-Dyn: info(domain: number, tag: string, format: string, ...args: any[]): void
+
+ArkTS-Sta: info(domain: int, tag: string, format: string, ...args: RecordData[]): void
 
 打印INFO级别的日志。
 
@@ -120,9 +123,9 @@ ArkTS-Sta: info(domain: int, tag: string, format: string, ...args: RecordData[])
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -149,8 +152,9 @@ hilog.info(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 ## hilog.warn
 
-ArkTS-Dyn: warn(domain: number, tag: string, format: string, ...args: any[]) : void<br>
-ArkTS-Sta: warn(domain: int, tag: string, format: string, ...args: RecordData[]) : void
+ArkTS-Dyn: warn(domain: number, tag: string, format: string, ...args: any[]): void
+
+ArkTS-Sta: warn(domain: int, tag: string, format: string, ...args: RecordData[]): void
 
 打印WARN级别的日志。
 
@@ -158,9 +162,9 @@ ArkTS-Sta: warn(domain: int, tag: string, format: string, ...args: RecordData[])
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -187,8 +191,9 @@ hilog.warn(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 ## hilog.error
 
-ArkTS-Dyn: error(domain: number, tag: string, format: string, ...args: any[]) : void<br>
-ArkTS-Sta: error(domain: int, tag: string, format: string, ...args: RecordData[]) : void
+ArkTS-Dyn: error(domain: number, tag: string, format: string, ...args: any[]): void
+
+ArkTS-Sta: error(domain: int, tag: string, format: string, ...args: RecordData[]): void
 
 打印ERROR级别的日志。
 
@@ -196,9 +201,9 @@ ArkTS-Sta: error(domain: int, tag: string, format: string, ...args: RecordData[]
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -225,8 +230,9 @@ hilog.error(0x0001, "testTag", "%{public}s World %{private}d", "hello", 3);
 
 ## hilog.fatal
 
-ArkTS-Dyn: fatal(domain: number, tag: string, format: string, ...args: any[]) : void<br>
-ArkTS-Sta: fatal(domain: int, tag: string, format: string, ...args: RecordData[]) : void
+ArkTS-Dyn: fatal(domain: number, tag: string, format: string, ...args: any[]): void
+
+ArkTS-Sta: fatal(domain: int, tag: string, format: string, ...args: RecordData[]): void
 
 打印FATAL级别的日志。
 
@@ -234,9 +240,9 @@ ArkTS-Sta: fatal(domain: int, tag: string, format: string, ...args: RecordData[]
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本**：7
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -273,9 +279,9 @@ setMinLogLevel(level: LogLevel): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiLog
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本**：15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -311,6 +317,81 @@ hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
 08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 5
 ```
 <!--RP1End-->
+
+## hilog.setLogLevel<sup>21+</sup>
+
+setLogLevel(level: LogLevel, prefer: PreferStrategy): void
+
+设置当前应用程序进程的最低日志级别。
+
+可通过prefer参数配置不同的偏好策略。如果选择策略PREFER_CLOSE_LOG，等同于调用setMinLogLevel函数。
+
+> **注意：**
+>
+> [debug版本应用](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/performance-analysis-kit-terminology#debug版本应用)下，此函数不生效。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名 | 类型                  | 必填 | 说明                                                         |
+| ------ | --------------------- | ---- | ------------------------------------------------------------ |
+| level  | [LogLevel](#loglevel) | 是   | 日志级别。                                                   |
+| prefer  | [PreferStrategy](#preferstrategy21) | 是   | 偏好策略。                                                   |
+
+## PreferStrategy<sup>21+</sup>
+
+偏好策略。
+
+**原子化服务API**：从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiLog
+
+**ArkTS-Dyn起始版本**：21
+
+**ArkTS-Sta起始版本**：23
+
+| 名称  |   值   | 说明                                                         |
+| ------ | --------------------- | ------------------------------------------------------------ |
+| UNSET_LOGLEVEL | 0 | 清除设置, 实际生效的最低日志级别是系统控制的最低级别。 |
+| PREFER_CLOSE_LOG | 1 | 实际生效的最低日志级别是新设置的级别和系统控制的最低级别两个值的较大值。 |
+| PREFER_OPEN_LOG | 2 | 实际生效的最低日志级别是新设置的级别和系统控制的最低级别两个值的较小值。 |
+
+**示例：**
+
+以全局日志级别为INFO下，打印5条不同级别的hilog日志，在打印过程中调用两次setLogLevel接口为例：
+
+```js
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 1);
+hilog.setLogLevel(hilog.LogLevel.WARN, hilog.PreferStrategy.PREFER_OPEN_LOG);
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 2);
+hilog.error(0x0001, 'testTag', 'this is an error level log, id: %{public}d', 3);
+hilog.setLogLevel(hilog.LogLevel.DEBUG, hilog.PreferStrategy.PREFER_CLOSE_LOG);
+hilog.debug(0x0001, "testTag", 'this is a debug level log, id: %{public}d', 4);
+hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);
+```
+
+由于全局日志起始为INFO，第一条日志可以正常打印。
+
+在设置进程最低日志级别为WARN, 并选择策略PREFER_OPEN_LOG后，实际生效的最低日志级别是全局日志级别INFO，所以第二条和第三条日志均可正常打印。
+
+在设置进程最低日志级别为DEBUG，并选择策略PREFER_CLOSE_LOG后（等同于hilog.setMinLogLevel(hilog.LogLevel.DEBUG)），但是此时全局日志级别为INFO，所以第四条日志不满足全局日志级别，打印失败，第五条日志可以打印。
+
+<!--RP2-->
+最终打印结果如下所示：
+```text
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 1
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 2
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  E     this is an error level log, id: 3
+08-07 23:50:01.532   13694-13694   A00001/testTag                  com.example.hilogDemo  I     this is an info level log, id: 5
+```
+<!--RP2End-->
 
 ## 参数格式符
 

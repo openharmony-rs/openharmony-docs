@@ -948,7 +948,7 @@ ArkTS-Dyn: setExtBundleStats(userId: number, stats: ExtBundleStats): Promise&lt;
 
 ArkTS-Sta: setExtBundleStats(userId: int, stats: ExtBundleStats): Promise&lt;void&gt;
 
-系统应用或系统服务上报自身的空间占用信息。使用Promise异步回调。
+系统应用或系统服务上报自身的空间占用信息，使用Promise异步回调。
 
 > **说明**：
 >
@@ -1035,7 +1035,7 @@ ArkTS-Dyn: getExtBundleStats(userId: number, businessName: string): Promise&lt;E
 
 ArkTS-Sta: getExtBundleStats(userId: int, businessName: string): Promise&lt;ExtBundleStats&gt;
 
-获取指定用户、指定系统应用包名或系统服务名称的空间占用详情。使用Promise异步回调。
+获取指定用户、指定系统应用包名或系统服务名称的空间占用详情，使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -1110,7 +1110,7 @@ ArkTS-Dyn: getAllExtBundleStats(userId: number): Promise&lt;Array&lt;ExtBundleSt
 
 ArkTS-Sta: getAllExtBundleStats(userId: int): Promise&lt;Array&lt;ExtBundleStats&gt;&gt;
 
-获取指定用户下所有系统应用或系统服务的空间占用详情。使用Promise异步回调。
+获取指定用户下所有系统应用或系统服务的空间占用详情，使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -1200,7 +1200,7 @@ console.error(`getAllExtBundleStats failed with err, code is: ${err.code}, messa
 
 listUserdataDirInfo(): Promise&lt;Array&lt;UserdataDirInfo&gt;&gt;
 
-查询用户设备中/data目录下的空间占用详情。使用Promise异步回调。
+查询用户设备中/data目录下的空间占用详情，使用Promise异步回调。
 
 **需要权限**：ohos.permission.STORAGE_MANAGER
 
@@ -1240,5 +1240,70 @@ storageStatistics.listUserdataDirInfo().then((dirInfos: storageStatistics.Userda
 console.info("listUserdataDirInfo successfully.");
 }).catch((err) => {
 console.error(`listUserdataDirInfo failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```
+
+## storageStatistics.getSystemDataSize<sup>24+</sup>
+
+ArkTS-Dyn: getSystemDataSize(): Promise&lt;number&gt;
+
+ArkTS-Sta: getSystemDataSize(): Promise&lt;long&gt;
+
+获取系统数据的总空间大小，使用Promise异步回调。
+
+**需要权限**：ohos.permission.STORAGE_MANAGER
+
+**系统能力**：SystemCapability.FileManagement.StorageService.SpatialStatistics
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+**返回值：**
+
+| 类型                   | 说明    |
+| --------------------- | :---- |
+|  ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象，返回系统数据的总空间大小，单位：Byte。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission verification failed. |
+| 202 | The caller is not a system application. |
+| 13600001 | IPC error. |
+| 13600018 | Failed to query the system data size. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getSystemDataSize().then((systemDataSize: number) => {
+  console.info("getSystemDataSize successfully: " + systemDataSize);
+}).catch((err: BusinessError) => {
+  console.error(`getSystemDataSize failed with err, code is: ${err.code}, message is: ${err.message}`);
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { storageStatistics } from '@kit.CoreFileKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getSystemDataSize().then((systemDataSize: long) => {
+  console.info("getSystemDataSize successfully: " + systemDataSize);
+}).catch((err: BusinessError) => {
+  console.error(`getSystemDataSize failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 ```

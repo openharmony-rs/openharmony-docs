@@ -1133,7 +1133,7 @@ try {
 | ------ | ------- | ---- | --- | ---------------- |
 | bundle | string  | 是  | 否  | 应用的包名。       |
 | uid    | ArkTS-Dyn: number <br/>ArkTS-Sta: int  | 是  | 否  | 应用的uid。        |
-| enableStatus | [SwitchState](js-apis-notificationManager-sys.md#switchstate20) | 是  | 否  | 应用通知的静默提醒开关状态。<br> - USER_MODIFIED_OFF：用户设置的关闭状态。<br> - USER_MODIFIED_ON：用户设置的开启状态。<br> - SYSTEM_DEFAULT_OFF：用户设置前的初始关闭状态。<br> - SYSTEM_DEFAULT_ON：用户设置前的初始开启状态。|
+| enableStatus | [notificationManager.SwitchState](js-apis-notificationManager-sys.md#switchstate20) | 是  | 否  | 应用通知的静默提醒开关状态。<br> - USER_MODIFIED_OFF：用户设置的关闭状态。<br> - USER_MODIFIED_ON：用户设置的开启状态。<br> - SYSTEM_DEFAULT_OFF：用户设置前的初始关闭状态。<br> - SYSTEM_DEFAULT_ON：用户设置前的初始开启状态。|
 
 ## EnabledSilentReminderChangedCallback<sup>24+</sup>
 

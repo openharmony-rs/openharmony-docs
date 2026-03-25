@@ -322,9 +322,12 @@ workScheduler.getWorkStatus(50).then((res: workScheduler.WorkInfo) => {
 ## workScheduler.obtainAllWorks<sup>deprecated<sup>
 
 obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
-> 从API version 10开始不再维护，建议使用[workScheduler.obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代
 
 获取当前应用所有的延迟任务，使用Callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[obtainAllWorks<sup>10+<sup>](#workschedulerobtainallworks10)替代。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -333,6 +336,12 @@ obtainAllWorks(callback : AsyncCallback\<void>) : Array\<WorkInfo>
 | 参数名      | 类型                   | 必填   | 说明                              |
 | -------- | -------------------- | ---- | ------------------------------- |
 | callback |  AsyncCallback\<void> | 是    | 回调函数，获取成功时，err为undefined，否则为错误对象。 |
+  
+**返回值：**
+
+| 类型                              | 说明                                       |
+| ------------------------------- | ---------------------------------------- |
+| Array\<[WorkInfo](#workinfo)> | 延迟任务列表，如果已添加延迟任务到执行队列，则返回当前应用所有的延迟任务列表；否则返回空列表。|
 
 **错误码：**
 
@@ -499,9 +508,11 @@ try {
 
 isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 
-> 从API version 10开始不再维护，建议使用[workScheduler.isLastWorkTimeOut<sup>10+<sup>](#workschedulerislastworktimeout10)替代
-
 检查延迟任务的最后一次执行是否超时，使用Callback异步回调。
+
+> **说明：**
+>
+> 从API version 9开始支持，从API version 10开始废弃，建议使用[isLastWorkTimeOut<sup>10+<sup>](#workschedulerislastworktimeout10)替代。
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
@@ -511,6 +522,12 @@ isLastWorkTimeOut(workId: number, callback : AsyncCallback\<void>): boolean
 | -------- | -------------------- | ---- | ---------------------------------------- |
 | workId   | number               | 是    | 指定延迟任务的Id。                                 |
 | callback | AsyncCallback\<void> | 是    | 回调函数。 |
+
+**返回值：**
+
+| 类型                              | 说明                                       |
+| ------------------------------- | ---------------------------------------- |
+|boolean| 检查延迟任务最后一次执行是否超时，如果workId有效，则返回从WorkSchedulerService获取的任务最后一次执行是否超时；否则，抛出异常。<br>true表示对应workId延迟任务最后一次执行超时；false表示对应workId延迟任务最后一次执行未超时。|
 
 **错误码：**
 
@@ -665,24 +682,24 @@ workScheduler.isLastWorkTimeOut(500)
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称             | 类型                                | 必填   | 说明               |
-| --------------- | --------------------------------- | ---- | ---------------- |
-| workId          | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 是    | 延迟任务ID。          |
-| bundleName      | string                            | 是    | 延迟任务所在应用的包名。           |
-| abilityName     | string                            | 是    | 包内ability名称。 |
-| networkType     | [NetworkType](#networktype)       | 否    | 网络类型。             |
-| isCharging      | boolean                           | 否    | 是否充电，默认为false。<br>- true表示充电触发延迟回调。<br>- false表示不充电触发延迟回调。|
-| chargerType     | [ChargingType](#chargingtype)     | 否    | 充电类型。             |
-| batteryLevel    | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 电量。              |
-| batteryStatus   | [BatteryStatus](#batterystatus)   | 否    | 电池状态。             |
-| storageRequest  | [StorageRequest](#storagerequest) | 否    | 存储状态。             |
-| isRepeat        | boolean                           | 否    | 是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。 |
-| repeatCycleTime | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 循环间隔，单位为毫秒。             |
-| repeatCount     | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 循环次数。             |
-| isPersisted     | boolean                           | 否    | 注册的延迟任务是否可保存在系统中，默认为false。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
-| isDeepIdle      | boolean                           | 否    | 是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。   |
-| idleWaitTime    | ArkTS-Dyn: number <br> ArkTS-Sta: int                            | 否    | 空闲等待时间，单位为毫秒。           |
-| parameters      | ArkTS-Dyn: Record<string, number \| string \| boolean> <br> ArkTS-Sta: Record<string, int \| double \| string \| boolean>  | 否    | 携带参数信息。 |
+| 名称             | 类型                                |  只读   | 可选   | 说明               |
+| --------------- | --------------------------------- | ---- | ---- |---------------- |
+| workId          | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 否    |延迟任务ID。          |
+| bundleName      | string                                  | 否    | 否    |延迟任务所在应用的包名。           |
+| abilityName     | string                                  | 否    | 否    | 包内ability名称。 |
+| networkType     | [NetworkType](#networktype)             | 否    | 是    | 网络类型。             |
+| isCharging      | boolean                                 | 否    | 是    | 是否充电，默认为false。<br>- true表示充电触发延迟回调。<br>- false表示不充电触发延迟回调。|
+| chargerType     | [ChargingType](#chargingtype)           | 否    | 是    | 充电类型。             |
+| batteryLevel    | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 电量。              |
+| batteryStatus   | [BatteryStatus](#batterystatus)         | 否    | 是    | 电池状态。             |
+| storageRequest  | [StorageRequest](#storagerequest)       | 否    | 是    | 存储状态。             |
+| isRepeat        | boolean                                 | 否    | 是    | 是否循环任务，默认为false。<br>- true表示循环任务。 <br>- false表示非循环任务。 |
+| repeatCycleTime | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 循环间隔，单位为毫秒。             |
+| repeatCount     | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 循环次数。             |
+| isPersisted     | boolean                                 | 否    | 是    | 注册的延迟任务是否可保存在系统中，默认为false。<br>- true表示可保存，即系统重启后，任务可恢复。<br>- false表示不可保存。|
+| isDeepIdle      | boolean                                 | 否    | 是    | 是否要求设备进入空闲状态，默认为false。<br>- true表示需要。<br>- false表示不需要。   |
+| idleWaitTime    | ArkTS-Dyn: number <br> ArkTS-Sta: int   | 否    | 是    | 空闲等待时间，单位为毫秒。           |
+| parameters      | ArkTS-Dyn: Record<string, number \| string \| boolean> <br> ArkTS-Sta: Record<string, int \| double \| string \| boolean>  | 否    | 是    | 携带参数信息。 |
 
 ## NetworkType
 

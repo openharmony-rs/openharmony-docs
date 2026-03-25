@@ -28,7 +28,7 @@ isWhiteBalanceModeSupported(mode: WhiteBalanceMode): boolean
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -103,7 +103,7 @@ ArkTS-Sta: getWhiteBalanceRange(): Array\<int\>
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 

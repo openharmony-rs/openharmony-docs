@@ -1227,11 +1227,11 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| title | string | 是 | 按钮显示的标题。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| titleResource<sup>11+</sup> | string | 否 | 标题的资源ID，用于切换系统语言后读取对应标题信息。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| type | [ActionButtonType](#actionbuttontype) | 是 | 按钮的类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| title | string | 否 | 否 | 按钮显示的标题。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| titleResource<sup>11+</sup> | string | 否 | 是 | 标题的资源ID，用于切换系统语言后读取对应标题信息。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| type | [ActionButtonType](#actionbuttontype) | 否 | 否 | 按钮的类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 
 
 ## WantAgent
@@ -1241,12 +1241,12 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| pkgName | string | 是 | 指明跳转目标的包名。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| abilityName | string | 是 | 指明跳转目标的ability名称。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| parameters<sup>12+</sup> | ArkTS-Dyn: Record\<string, Object> <br> ArkTS-Sta: RecordData | 否 | 需要传递到目标的参数。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
-| uri<sup>12+</sup> | string | 否 | 指明跳转目标的uri信息。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| pkgName | string | 否 | 否 | 指明跳转目标的包名。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| abilityName | string | 否 | 否 | 指明跳转目标的ability名称。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| parameters<sup>12+</sup> | ArkTS-Dyn: Record\<string, Object> <br> ArkTS-Sta: RecordData | 否 | 是 | 需要传递到目标的参数。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| uri<sup>12+</sup> | string | 否 | 是 | 指明跳转目标的uri信息。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 
 ## MaxScreenWantAgent
@@ -1259,10 +1259,10 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| pkgName | string | 是 | 指明提醒到达时自动拉起的目标包名（如果设备在使用中，则只弹出通知横幅框）。 |
-| abilityName | string | 是 | 指明提醒到达时自动拉起的目标ability名（如果设备在使用中，则只弹出通知横幅框）。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| pkgName | string | 否 | 否 | 指明提醒到达时自动拉起的目标包名（如果设备在使用中，则只弹出通知横幅框）。 |
+| abilityName | string | 否 | 否 | 指明提醒到达时自动拉起的目标ability名（如果设备在使用中，则只弹出通知横幅框）。 |
 
 
 ## ReminderRequest
@@ -1271,31 +1271,31 @@ reminderAgentManager.updateReminder(reminderId, timer).then(() => {
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| reminderType | [ReminderType](#remindertype) | 是 | 指明代理提醒类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| actionButton | ArkTS-Dyn: [[ActionButton?, ActionButton?, ActionButton?]](#actionbutton) <br> ArkTS-Sta: Array\<[ActionButton](#actionbutton)> | 否 | 弹出的提醒通知中显示的按钮。<br>-普通应用：最多支持两个按钮。<br>-系统应用：API9最多支持两个按钮，在API10开始最多支持三个按钮。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| wantAgent | [WantAgent](#wantagent) | 否 | 点击通知后需要跳转的目标ability信息。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagent) | 否 | 提醒到达时，全屏显示自动拉起目标的ability信息。如果设备正在使用中，则弹出一个通知横幅框。 <br> 说明：该接口为预留接口，暂不支持使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| ringDuration | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 指明响铃时长（单位：秒），默认1秒。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| snoozeTimes | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明延时提醒次数，默认0次(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| timeInterval | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 执行延时提醒间隔（单位：秒），最少5分钟(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| title | string | 否 | 指明提醒标题。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| titleResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明提醒标题的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
-| content | string | 否 | 指明提醒内容。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| contentResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明提醒内容的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
-| expiredContent | string | 否 | 指明提醒过期后需要显示的内容。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| expiredContentResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明提醒过期后内容的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
-| snoozeContent | string | 否 | 指明延时提醒时需要显示的内容(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| snoozeContentResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明延时提醒内容的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
-| notificationId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 指明提醒使用的通知的id号，需开发者传入，相同id号的提醒会覆盖。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| groupId<sup>11+</sup> | string | 否 | 指明提醒使用相同的组id。相同组id中，一个提醒被点击不在提醒后，组内其他提醒也会被取消。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 指明提醒的通道渠道类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| tapDismissed<sup>10+</sup> | boolean | 否 | 通知是否自动清除，默认值为true，具体请参考[NotificationRequest.tapDismissed](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> - true：点击通知消息或通知按钮后，自动删除当前通知。<br> - false：点击通知消息或通知按钮后，保留当前通知。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
-| autoDeletedTime<sup>10+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 自动清除的时间，具体请参考[NotificationRequest.autoDeletedTime](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
-| snoozeSlotType<sup>11+</sup> | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 指明延时提醒的通道渠道类型(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| customRingUri<sup>11+</sup> | string | 否 | 指明自定义提示音的uri，提示音文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| ringChannel<sup>20+</sup> | [RingChannel](#ringchannel20) | 否 | 指明自定义提示音的音频播放通道，默认为闹钟通道。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| reminderType | [ReminderType](#remindertype) | 否 | 否 | 指明代理提醒类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| actionButton | ArkTS-Dyn: [[ActionButton?, ActionButton?, ActionButton?]](#actionbutton) <br> ArkTS-Sta: Array\<[ActionButton](#actionbutton)> | 否 | 是 | 弹出的提醒通知中显示的按钮。<br>-普通应用：最多支持两个按钮。<br>-系统应用：API9最多支持两个按钮，在API10开始最多支持三个按钮。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| wantAgent | [WantAgent](#wantagent) | 否 | 是 | 点击通知后需要跳转的目标ability信息。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagent) | 否 | 是 | 提醒到达时，全屏显示自动拉起目标的ability信息。如果设备正在使用中，则弹出一个通知横幅框。 <br> 说明：该接口为预留接口，暂不支持使用。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| ringDuration | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 是 | 指明响铃时长（单位：秒），默认1秒。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| snoozeTimes | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 指明延时提醒次数，默认0次(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| timeInterval | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 是 | 执行延时提醒间隔（单位：秒），最少5分钟(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| title | string | 否 | 是 | 指明提醒标题。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| titleResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 指明提醒标题的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
+| content | string | 否 | 是 | 指明提醒内容。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| contentResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 指明提醒内容的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
+| expiredContent | string | 否 | 是 | 指明提醒过期后需要显示的内容。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| expiredContentResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 指明提醒过期后内容的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
+| snoozeContent | string | 否 | 是 | 指明延时提醒时需要显示的内容(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| snoozeContentResourceId<sup>18+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 指明延时提醒内容的资源ID。<br> **ArkTS-Dyn起始版本：** 18 <br> **ArkTS-Sta起始版本：** 23 |
+| notificationId | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 指明提醒使用的通知的id号，需开发者传入，相同id号的提醒会覆盖。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| groupId<sup>11+</sup> | string | 否 | 是 | 指明提醒使用相同的组id。相同组id中，一个提醒被点击不在提醒后，组内其他提醒也会被取消。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明提醒的通道渠道类型。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| tapDismissed<sup>10+</sup> | boolean | 否 | 是 | 通知是否自动清除，默认值为true，具体请参考[NotificationRequest.tapDismissed](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> - true：点击通知消息或通知按钮后，自动删除当前通知。<br> - false：点击通知消息或通知按钮后，保留当前通知。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| autoDeletedTime<sup>10+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 是 | 自动清除的时间，具体请参考[NotificationRequest.autoDeletedTime](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> **ArkTS-Dyn起始版本：** 10 <br> **ArkTS-Sta起始版本：** 23 |
+| snoozeSlotType<sup>11+</sup> | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明延时提醒的通道渠道类型(不适用于倒计时提醒类型)。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| customRingUri<sup>11+</sup> | string | 否 | 是 | 指明自定义提示音的uri，提示音文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| ringChannel<sup>20+</sup> | [RingChannel](#ringchannel20) | 否 | 是 | 指明自定义提示音的音频播放通道，默认为闹钟通道。<br> **ArkTS-Dyn起始版本：** 20 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## ReminderRequestCalendar
 
@@ -1305,13 +1305,13 @@ ReminderRequestCalendar extends ReminderRequest
 
 **系统能力**：SystemCapability.Notification.ReminderAgent
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| dateTime | [LocalDateTime](#localdatetime) | 是 | 指明提醒的目标时间。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| repeatMonths | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 指明重复提醒的月份。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| repeatDays | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 指明重复提醒的日期。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
-| daysOfWeek<sup>11+</sup> | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
-| endDateTime<sup>12+</sup> | [LocalDateTime](#localdatetime) | 否 | 指明提醒的结束时间。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| dateTime | [LocalDateTime](#localdatetime) | 否 | 否 | 指明提醒的目标时间。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| repeatMonths | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 是 | 指明重复提醒的月份。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| repeatDays | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 是 | 指明重复提醒的日期。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
+| daysOfWeek<sup>11+</sup> | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 是 | 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7。<br> **ArkTS-Dyn起始版本：** 11 <br> **ArkTS-Sta起始版本：** 23 |
+| endDateTime<sup>12+</sup> | [LocalDateTime](#localdatetime) | 否 | 是 | 指明提醒的结束时间。<br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 
 ## ReminderRequestAlarm
@@ -1326,11 +1326,11 @@ ReminderRequestAlarm extends ReminderRequest
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| hour | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指明提醒的目标时刻。 |
-| minute | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 指明提醒的目标分钟。 |
-| daysOfWeek | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| hour | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 指明提醒的目标时刻。 |
+| minute | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 指明提醒的目标分钟。 |
+| daysOfWeek | ArkTS-Dyn: Array\<number> <br> ArkTS-Sta: Array\<int> | 否 | 是 | 指明每周哪几天需要重复提醒。范围为周一到周日，对应数字为1到7。 |
 
 
 ## ReminderRequestTimer
@@ -1345,9 +1345,9 @@ ReminderRequestTimer extends ReminderRequest
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| triggerTimeInSeconds | ArkTS-Dyn: number <br> ArkTS-Sta: long | 是 | 指明倒计时的秒数。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| triggerTimeInSeconds | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否 | 否 | 指明倒计时的秒数。 |
 
 
 ## LocalDateTime
@@ -1360,14 +1360,14 @@ ReminderRequestTimer extends ReminderRequest
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| year | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 年。 |
-| month | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 月，取值范围是[1, 12]。 |
-| day | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 日，取值范围是[1, 31]。 |
-| hour | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 时，取值范围是[0, 23]。 |
-| minute | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 分，取值范围是[0, 59]。 |
-| second | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 秒，取值范围是[0, 59]。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| year | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 年。 |
+| month | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 月，取值范围是[1, 12]。 |
+| day | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 日，取值范围是[1, 31]。 |
+| hour | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 时，取值范围是[0, 23]。 |
+| minute | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 否 | 分，取值范围是[0, 59]。 |
+| second | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否 | 是 | 秒，取值范围是[0, 59]。 |
 
 ## ReminderInfo<sup>12+</sup>
 

@@ -23,11 +23,11 @@ import { hichecker } from '@kit.PerformanceAnalysisKit';
 
 | 名称                                             | 类型      | 值         | 说明                                                   |
 | ------------------------------------------------ | -------- | -----------| ------------------------------------------------------ |
-| RULE_CAUTION_PRINT_LOG                           | bigint   | 1ULL << 63 | 告警规则，当有告警时记录日志。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：20                            |
-| RULE_CAUTION_TRIGGER_CRASH                       | bigint   | 1ULL << 62 | 告警规则，当有告警时让应用退出。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：20                          |
-| RULE_THREAD_CHECK_SLOW_PROCESS                   | bigint   | 1ULL       | 检测规则，检测是否有耗时函数被调用。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：20                      |
-| RULE_CHECK_ABILITY_CONNECTION_LEAK               | bigint   | 1ULL << 33 | 检测规则，检测是否发生ability泄露。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：20                      |
-| RULE_CHECK_ARKUI_PERFORMANCE<sup>11+</sup>       | bigint   | 1ULL << 34 | 检测规则，检测arkui性能。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：20                               |
+| RULE_CAUTION_PRINT_LOG                           | bigint   | 1ULL << 63 | 告警规则，当有告警时记录日志。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：23                            |
+| RULE_CAUTION_TRIGGER_CRASH                       | bigint   | 1ULL << 62 | 告警规则，当有告警时让应用退出。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：23                          |
+| RULE_THREAD_CHECK_SLOW_PROCESS                   | bigint   | 1ULL       | 检测规则，检测是否有耗时函数被调用。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：23                      |
+| RULE_CHECK_ABILITY_CONNECTION_LEAK               | bigint   | 1ULL << 33 | 检测规则，检测是否发生ability泄露。<br/>**ArkTS-Dyn起始版本**：8<br/>**ArkTS-Sta起始版本**：23                      |
+| RULE_CHECK_ARKUI_PERFORMANCE<sup>11+</sup>       | bigint   | 1ULL << 34 | 检测规则，检测arkui性能。<br/>**ArkTS-Dyn起始版本**：11<br/>**ArkTS-Sta起始版本**：23                               |
 
 ## hichecker.addCheckRule<sup>9+</sup>
 
@@ -37,9 +37,9 @@ addCheckRule(rule: bigint): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -77,9 +77,9 @@ removeCheckRule(rule: bigint): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -117,9 +117,9 @@ containsCheckRule(rule: bigint): boolean
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 
@@ -166,11 +166,11 @@ addRule(rule: bigint): void
 
 添加一条或多条规则到系统，系统根据添加的规则进行检测或反馈。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -203,7 +203,7 @@ removeRule(rule: bigint): void
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 
@@ -230,9 +230,9 @@ getRule(): bigint
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：8
+**ArkTS-Dyn起始版本**：8
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 
@@ -264,7 +264,7 @@ contains(rule: bigint): boolean
 
 **系统能力**：SystemCapability.HiviewDFX.HiChecker
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本**：9
 
 **参数：**
 

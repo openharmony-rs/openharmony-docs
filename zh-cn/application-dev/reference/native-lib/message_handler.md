@@ -60,7 +60,7 @@ console.info("has callback: ", handler.hasCallbacks(callback));// has callback: 
 ## hasMessages
 hasMessages(what: int): boolean
 
-检查消息中是否包含指定的标识符。
+检查消息中是否包含指定的标识符。当创建Message时未指定标识符时，调用此接口会返回false。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
 
 **ArkTS版本：** 本接口仅支持ArkTS1.2。
 
@@ -91,7 +91,7 @@ console.info("has message: ", handler.hasMessages(1));// has message: true
 ## hasMessages
 hasMessages(what: int, obj: Object): boolean
 
-检查消息中是否包含指定的标识符和数据对象。
+检查消息中是否包含指定的标识符和数据对象。当创建Message时未指定标识符时，调用此接口会返回false。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
 
 **ArkTS版本：** 本接口仅支持ArkTS1.2。
 
@@ -203,7 +203,7 @@ eaw.join();
 ## removeMessages
 removeMessages(what: int): boolean
 
-从消息队列中移除指定标识符的消息。
+从消息队列中移除指定标识符的消息。当创建Message时未指定标识符时，调用此接口会返回false且不会移除任何消息。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
 
 **ArkTS版本：** 本接口仅支持ArkTS1.2。
 
@@ -243,7 +243,7 @@ eaw.join();
 ## removeMessages
 removeMessages(what: int, obj: Object): boolean
 
-从消息队列中移除指定标识符和数据对象构建的消息。
+从消息队列中移除指定标识符和数据对象构建的消息。当创建Message时未指定标识符时，调用此接口会返回false且不会移除任何消息。Message的标识符默认为-1000000，避免调用此接口时传入-1000000。
 
 **ArkTS版本：** 本接口仅支持ArkTS1.2。
 

@@ -65,7 +65,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.onBlock<sup>22+</sup>
+### PrintTask.onBlock<sup>23+</sup>
 
 onBlock(callback: Callback&lt;void&gt;): void
 
@@ -79,7 +79,7 @@ onBlock(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -163,7 +163,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.onSucceed<sup>22+</sup>
+### PrintTask.onSucceed<sup>23+</sup>
 
 onSucceed(callback: Callback&lt;void&gt;): void
 
@@ -177,7 +177,7 @@ onSucceed(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -260,7 +260,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.onFail<sup>22+</sup>
+### PrintTask.onFail<sup>23+</sup>
 
 onFail(callback: Callback&lt;void&gt;): void
 
@@ -274,7 +274,7 @@ onFail(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -357,7 +357,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.onCancel<sup>22+</sup>
+### PrintTask.onCancel<sup>23+</sup>
 
 onCancel(callback: Callback&lt;void&gt;): void
 
@@ -371,7 +371,7 @@ onCancel(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -454,7 +454,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.offBlock<sup>22+</sup>
+### PrintTask.offBlock<sup>23+</sup>
 
 offBlock(callback?: Callback&lt;void&gt;): void
 
@@ -468,7 +468,7 @@ offBlock(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -551,7 +551,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.offSucceed<sup>22+</sup>
+### PrintTask.offSucceed<sup>23+</sup>
 
 offSucceed(callback?: Callback&lt;void&gt;): void
 
@@ -565,7 +565,7 @@ offSucceed(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -648,7 +648,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.offFail<sup>22+</sup>
+### PrintTask.offFail<sup>23+</sup>
 
 offFail(callback?: Callback&lt;void&gt;): void
 
@@ -662,7 +662,7 @@ offFail(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -745,7 +745,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 })
 ```
 
-### PrintTask.offCancel<sup>22+</sup>
+### PrintTask.offCancel<sup>23+</sup>
 
 offCancel(callback?: Callback&lt;void&gt;): void
 
@@ -759,7 +759,7 @@ offCancel(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -797,7 +797,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 
 第三方应用程序实现此接口来渲染要打印的文件。
 
-### onStartLayoutWrite
+### onStartLayoutWrite<sup>11+</sup>
 
 ArkTS-Dyn: onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttributes, fd: number, writeResultCallback: (jobId: string, writeResult: PrintFileCreationState) => void): void
 
@@ -811,7 +811,7 @@ ArkTS-Sta: onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -885,7 +885,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-### onJobStateChanged
+### onJobStateChanged<sup>11+</sup>
 
 onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void
 
@@ -897,7 +897,7 @@ onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -953,7 +953,7 @@ print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): voi
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1003,7 +1003,7 @@ print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
 **ArkTS-Dyn起始版本**：10
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1055,7 +1055,7 @@ print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;P
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1122,7 +1122,7 @@ print(files: Array&lt;string&gt;, context: Context): Promise&lt;PrintTask&gt;
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1191,7 +1191,7 @@ print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: Prin
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1271,7 +1271,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **属性：**
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1291,7 +1291,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **属性：**
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1309,7 +1309,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **属性：**
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1329,7 +1329,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1345,7 +1345,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1360,7 +1360,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1376,7 +1376,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1401,7 +1401,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1415,7 +1415,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：11
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 打印文件创建状态的枚举。
 
@@ -1435,7 +1435,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1454,7 +1454,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1472,39 +1472,43 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| PRINT_JOB_COMPLETED_SUCCESS | 0 | 表示打印任务成功。 |
-| PRINT_JOB_COMPLETED_FAILED | 1 | 表示打印任务失败。 |
-| PRINT_JOB_COMPLETED_CANCELLED | 2 | 表示打印任务已取消。|
-| PRINT_JOB_COMPLETED_FILE_CORRUPTED | 3 | 表示打印任务已损坏。 |
-| PRINT_JOB_BLOCK_OFFLINE | 4 | 表示打印处于离线状态。 |
-| PRINT_JOB_BLOCK_BUSY | 5 | 表示打印被其他进程占用。 |
-| PRINT_JOB_BLOCK_CANCELLED | 6 | 表示打印任务已取消。 |
-| PRINT_JOB_BLOCK_OUT_OF_PAPER | 7 | 表示打印纸张用完。 |
-| PRINT_JOB_BLOCK_OUT_OF_INK | 8 | 表示打印墨水用完。 |
-| PRINT_JOB_BLOCK_OUT_OF_TONER | 9 | 表示打印墨粉用完。 |
-| PRINT_JOB_BLOCK_JAMMED | 10 | 表示打印卡纸。 |
-| PRINT_JOB_BLOCK_DOOR_OPEN | 11 | 表示打印盖开启。 |
-| PRINT_JOB_BLOCK_SERVICE_REQUEST | 12 | 表示打印服务请求。 |
-| PRINT_JOB_BLOCK_LOW_ON_INK | 13 | 表示打印墨水不足。 |
-| PRINT_JOB_BLOCK_LOW_ON_TONER | 14 | 表示打印墨粉不足。 |
-| PRINT_JOB_BLOCK_REALLY_LOW_ON_INK | 15 | 表示打印墨水量非常低。 |
-| PRINT_JOB_BLOCK_BAD_CERTIFICATE | 16 | 表示打印证书有误。 |
-| PRINT_JOB_BLOCK_ACCOUNT_ERROR | 18 | 表示打印账户时出错。 |
-| PRINT_JOB_BLOCK_PRINT_PERMISSION_ERROR | 19 | 表示打印许可异常。 |
-| PRINT_JOB_BLOCK_PRINT_COLOR_PERMISSION_ERROR | 20 | 表示彩色打印权限异常。 |
-| PRINT_JOB_BLOCK_NETWORK_ERROR | 21 | 表示设备未连接到网络。 |
-| PRINT_JOB_BLOCK_SERVER_CONNECTION_ERROR | 22 | 表示无法连接服务器。 |
-| PRINT_JOB_BLOCK_LARGE_FILE_ERROR | 23 | 表示打印大文件异常。 |
-| PRINT_JOB_BLOCK_FILE_PARSING_ERROR | 24 | 表示文件分析异常。 |
-| PRINT_JOB_BLOCK_SLOW_FILE_CONVERSION | 25 | 表示文件转换太慢。 |
-| PRINT_JOB_RUNNING_UPLOADING_FILES | 26 | 表示正在上传文件。 |
-| PRINT_JOB_RUNNING_CONVERTING_FILES | 27 | 表示正在转换文件。 |
-| PRINT_JOB_BLOCK_FILE_UPLOADING_ERROR<sup>18+</sup> | 30 | 表示文件上传失败。 |
-| PRINT_JOB_BLOCK_UNKNOWN | 99 | 表示打印未知问题。 |
+| PRINT_JOB_COMPLETED_SUCCESS | 0 | 表示打印任务成功。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_COMPLETED_FAILED | 1 | 表示打印任务失败。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_COMPLETED_CANCELLED | 2 | 表示打印任务已取消。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23|
+| PRINT_JOB_COMPLETED_FILE_CORRUPTED | 3 | 表示打印任务已损坏。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_OFFLINE | 4 | 表示打印处于离线状态。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_BUSY | 5 | 表示打印被其他进程占用。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_CANCELLED | 6 | 表示打印任务已取消。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_OUT_OF_PAPER | 7 | 表示打印纸张用完。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_OUT_OF_INK | 8 | 表示打印墨水用完。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_OUT_OF_TONER | 9 | 表示打印墨粉用完。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_JAMMED | 10 | 表示打印卡纸。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_DOOR_OPEN | 11 | 表示打印盖开启。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_SERVICE_REQUEST | 12 | 表示打印服务请求。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_LOW_ON_INK | 13 | 表示打印墨水不足。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_LOW_ON_TONER | 14 | 表示打印墨粉不足。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_REALLY_LOW_ON_INK | 15 | 表示打印墨水量非常低。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_BAD_CERTIFICATE | 16 | 表示打印证书有误。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_DRIVER_EXCEPTION<sup>20+</sup> | 17 | 表示打印驱动异常。<br/> **ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_ACCOUNT_ERROR | 18 | 表示打印账户时出错。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_PRINT_PERMISSION_ERROR | 19 | 表示打印许可异常。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_PRINT_COLOR_PERMISSION_ERROR | 20 | 表示彩色打印权限异常。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_NETWORK_ERROR | 21 | 表示设备未连接到网络。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_SERVER_CONNECTION_ERROR | 22 | 表示无法连接服务器。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_LARGE_FILE_ERROR | 23 | 表示打印大文件异常。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_FILE_PARSING_ERROR | 24 | 表示文件分析异常。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_SLOW_FILE_CONVERSION | 25 | 表示文件转换太慢。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_RUNNING_UPLOADING_FILES | 26 | 表示正在上传文件。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_RUNNING_CONVERTING_FILES | 27 | 表示正在转换文件。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_FILE_UPLOADING_ERROR<sup>18+</sup> | 30 | 表示文件上传失败。<br/> **ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_DRIVER_MISSING<sup>20+</sup> | 34 | 表示打印驱动缺失。<br/> **ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_INTERRUPT<sup>20+</sup> | 35 | 表示打印任务中断。<br/> **ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_PRINTER_UNAVAILABLE<sup>20+</sup> | 98 | 表示打印机不可用。<br/> **ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
+| PRINT_JOB_BLOCK_UNKNOWN | 99 | 表示打印未知问题。<br/> **ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
 
 ## PrintErrorCode<sup>14+</sup>
 
@@ -1514,21 +1518,21 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
-| E_PRINT_NONE | 0 | 表示没有错误。 |
-| E_PRINT_NO_PERMISSION | 201 | 表示没有许可。 |
-| E_PRINT_INVALID_PARAMETER | 401 | 表示无效的参数。 |
-| E_PRINT_GENERIC_FAILURE | 13100001 | 表示一般打印失败。 |
-| E_PRINT_RPC_FAILURE | 13100002 | 表示RPC失败。 |
-| E_PRINT_SERVER_FAILURE | 13100003 | 表示打印服务失败。 |
-| E_PRINT_INVALID_EXTENSION | 13100004 | 表示打印扩展无效。 |
-| E_PRINT_INVALID_PRINTER | 13100005 | 表示打印机无效。 |
-| E_PRINT_INVALID_PRINT_JOB | 13100006 | 表示打印任务无效。 |
-| E_PRINT_FILE_IO | 13100007 | 表示文件输入/输出错误。 |
-| E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | 表示文件数量超过上限，当前上限99个。 |
+| E_PRINT_NONE | 0 | 表示没有错误。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_NO_PERMISSION | 201 | 表示没有许可。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_INVALID_PARAMETER | 401 | 表示无效的参数。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_GENERIC_FAILURE | 13100001 | 表示一般打印失败。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_RPC_FAILURE | 13100002 | 表示RPC失败。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_SERVER_FAILURE | 13100003 | 表示打印服务失败。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_INVALID_EXTENSION | 13100004 | 表示打印扩展无效。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_INVALID_PRINTER | 13100005 | 表示打印机无效。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_INVALID_PRINT_JOB | 13100006 | 表示打印任务无效。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_FILE_IO | 13100007 | 表示文件输入/输出错误。<br/>**ArkTS-Dyn起始版本**：14<br/>**ArkTS-Sta起始版本**：23 |
+| E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | 表示文件数量超过上限，当前上限99个。<br/>**ArkTS-Dyn起始版本**：18<br/>**ArkTS-Sta起始版本**：23 |
 
 ## ApplicationEvent<sup>14+</sup>
 
@@ -1538,7 +1542,7 @@ struct Index {
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1558,7 +1562,7 @@ addPrinterToDiscovery(printerInformation: PrinterInformation): Promise&lt;void&g
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1613,7 +1617,7 @@ updatePrinterInDiscovery(printerInformation: PrinterInformation): Promise&lt;voi
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1686,7 +1690,7 @@ removePrinterFromDiscovery(printerId: string): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1733,7 +1737,7 @@ getPrinterInformationById(printerId: string): Promise&lt;PrinterInformation&gt;
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1776,21 +1780,21 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **属性：**
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| printerId | string | 否 | 否 | 表示打印机ID。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20 |
-| printerName | string | 否 | 否 | 表示打印机名称。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20 |
-| printerStatus | [PrinterStatus](#printerstatus14) | 否 | 否 | 表示当前打印机状态。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20 |
-| description | string | 否 | 是 | 表示打印机说明。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20 |
-| capability | [PrinterCapabilities](#printercapabilities14) | 否 | 是 | 表示打印机能力。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20 |
-| uri | string | 否 | 是 | 表示打印机uri。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20 |
-| printerMake | string | 否 | 是 | 表示打印机型号。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20 |
-| preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | 否 | 是 | 表示打印机首选项。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20 |
-| alias<sup>18+</sup> | string | 否 | 是 | 表示打印机别名。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：20 |
-| options | string | 否 | 是 | 表示打印机详细信息。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：20 |
+| printerId | string | 否 | 否 | 表示打印机ID。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| printerName | string | 否 | 否 | 表示打印机名称。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| printerStatus | [PrinterStatus](#printerstatus14) | 否 | 否 | 表示当前打印机状态。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| description | string | 否 | 是 | 表示打印机说明。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| capability | [PrinterCapabilities](#printercapabilities14) | 否 | 是 | 表示打印机能力。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| uri | string | 否 | 是 | 表示打印机uri。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| printerMake | string | 否 | 是 | 表示打印机型号。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
+| preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | 否 | 是 | 表示打印机首选项。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
+| alias<sup>18+</sup> | string | 否 | 是 | 表示打印机别名。<br>**ArkTS-Dyn起始版本**：18<br>**ArkTS-Sta起始版本**：23 |
+| options | string | 否 | 是 | 表示打印机详细信息。<br>**ArkTS-Dyn起始版本**：14<br>**ArkTS-Sta起始版本**：23 |
 
 ## PrinterCapabilities<sup>14+</sup>
 
@@ -1800,7 +1804,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **属性：**
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1821,7 +1825,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1837,7 +1841,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1855,7 +1859,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1871,7 +1875,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **属性：**
 | 名称 | 类型 | 只读 | 可选 | 说明 |
@@ -1892,7 +1896,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1911,7 +1915,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -1930,7 +1934,7 @@ getAddedPrinters(): Promise&lt;Array&lt;string&gt;&gt;
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **返回值：**
 | 类型 | 说明 |
@@ -1969,7 +1973,7 @@ type PrinterChangeCallback = (event: PrinterEvent, printerInformation: PrinterIn
 
 **ArkTS-Dyn起始版本**：18
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2021,7 +2025,7 @@ let onPrinterChange =
 print.on('printerChange', onPrinterChange);
 ```
 
-## print.onPrinterChange<sup>22+</sup>
+## print.onPrinterChange<sup>23+</sup>
 
 onPrinterChange(callback: PrinterChangeCallback): void
 
@@ -2035,7 +2039,7 @@ onPrinterChange(callback: PrinterChangeCallback): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2108,7 +2112,7 @@ let offPrinterChange =
 print.off('printerChange', offPrinterChange);
 ```
 
-## print.offPrinterChange<sup>22+</sup>
+## print.offPrinterChange<sup>23+</sup>
 
 offPrinterChange(callback?: PrinterChangeCallback): void
 
@@ -2122,7 +2126,7 @@ offPrinterChange(callback?: PrinterChangeCallback): void
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-**ArkTS-Sta起始版本**：22
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2150,3 +2154,408 @@ let offPrinterChange =
     };
 print.offPrinterChange(offPrinterChange);
 ```
+
+## print.startDiscoverPrinter<sup>20+</sup>
+
+startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void
+
+通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备包含指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力。使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| extensionList | Array&lt;string&gt; | 是 | 要加载的[打印扩展能力](./js-apis-app-ability-PrintExtensionAbility.md)列表，列表成员为打印扩展能力的包名，空列表表示加载所有扩展能力。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异步开始发现打印机之后的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 加载所有打印扩展能力
+let extensionList: string[] = [];
+// 通过指定自己应用的包名，在发现时加载自己的打印扩展能力
+// let extensionList: string[] = ['com.myapplication.test'];
+print.startDiscoverPrinter(extensionList, (err: BusinessError) => {
+    if (err) {
+        console.error('failed to start Discover Printer because : ' + JSON.stringify(err));
+    } else {
+        console.info('start Discover Printer success');
+    }
+})
+```
+
+## print.startDiscoverPrinter<sup>20+</sup>
+
+startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
+
+通过指定“打印扩展能力列表”来发现打印机，发现的打印机具备包含指定的打印扩展能力。如果指定空的打印扩展能力列表，则表示加载所有扩展能力，使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| extensionList | Array&lt;string&gt; | 是 | 要加载的[打印扩展能力](./js-apis-app-ability-PrintExtensionAbility.md)列表，列表成员为打印扩展能力的包名，空列表表示加载所有扩展能力。 |
+
+**返回值：**
+| **类型** | **说明** |
+| -------- | -------- |
+| Promise&lt;void&gt; | 开始发现打印机的完成结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 加载所有打印扩展能力
+let extensionList: string[] = [];
+// 通过指定自己应用的包名，在发现时加载自己的打印扩展能力
+// let extensionList: string[] = ['com.myapplication.test'];
+print.startDiscoverPrinter(extensionList).then(() => {
+    console.info('start Discovery success');
+}).catch((error: BusinessError) => {
+    console.error('failed to start Discovery because : ' + JSON.stringify(error));
+})
+```
+
+## print.stopDiscoverPrinter<sup>20+</sup>
+
+stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
+
+停止发现打印机，使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| callback | AsyncCallback&lt;void&gt; | 是 | 停止发现打印机的异步回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+print.stopDiscoverPrinter((err: BusinessError) => {
+    if (err) {
+        console.error('failed to stop Discover Printer because : ' + JSON.stringify(err));
+    } else {
+        console.info('stop Discover Printer success');
+    }
+})
+```
+
+## print.stopDiscoverPrinter<sup>20+</sup>
+
+stopDiscoverPrinter(): Promise&lt;void&gt;
+
+停止发现打印机，使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**返回值：**
+| **类型** | **说明** |
+| -------- | -------- |
+| Promise&lt;void&gt; | 停止发现打印机的完成结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+print.stopDiscoverPrinter().then(() => {
+    console.info('stop Discovery success');
+}).catch((error: BusinessError) => {
+    console.error('failed to stop Discovery because : ' + JSON.stringify(error));
+})
+```
+
+## print.connectPrinter<sup>20+</sup>
+
+connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
+
+通过打印机ID连接打印机，使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| printerId | string | 是 | 打印机ID。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 通过打印机ID异步连接打印机的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerId: string = 'printerId_32';
+print.connectPrinter(printerId, (err: BusinessError) => {
+    if (err) {
+        console.error('failed to connect Printer because : ' + JSON.stringify(err));
+    } else {
+        console.info('start connect Printer success');
+    }
+})
+```
+
+## print.connectPrinter<sup>20+</sup>
+
+connectPrinter(printerId: string): Promise&lt;void&gt;
+
+通过打印机ID连接打印机，使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB 或 ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**ArkTS-Dyn起始版本**：20
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+| **参数名** | **类型** | **必填** | **说明** |
+| -------- | -------- | -------- | -------- |
+| printerId | string | 是 | 打印机ID |
+
+**返回值：**
+| **类型** | **说明** |
+| -------- | -------- |
+| Promise&lt;void&gt; |通过打印机ID连接打印机完成结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerId: string = 'printerId_32';
+print.connectPrinter(printerId).then(() => {
+    console.info('start connect Printer success');
+}).catch((error: BusinessError) => {
+    console.error('failed to connect Printer because : ' + JSON.stringify(error));
+})
+```
+
+## PrintJobData<sup>23+</sup>
+
+定义打印任务的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| printerId | string | 否 | 否 | 表示打印机ID。 |
+| jobName | string | 否 | 否 | 表示打印任务名称。 |
+| documentFormat | [PrintDocumentFormat](#printdocumentformat23) | 否 | 否 | 表示打印数据格式。 |
+| docFlavor | [DocFlavor](#docflavor23) | 否 | 否 | 表示打印数据来源形式。 |
+| copyNumber | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 表示文件列表副本数。 |
+| isLandscape | boolean | 否 | 否 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。 |
+| colorMode | [PrintColorMode](#printcolormode11) | 否 | 否 | 表示色彩模式。 |
+| duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 否 | 表示单双面打印模式。 |
+| pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
+| jobId | string | 否 | 是 | 表示打印任务的唯一标识符。 |
+| fdList | ArkTS-Dyn: number[]<br>ArkTS-Sta: int[] | 否 | 是 | 表示待打印文件fd列表。 |
+| binaryData | Uint8Array | 否 | 是 | 表示待打印二进制数据。 |
+| printQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示打印质量。 |
+| mediaType | string | 否 | 是 | 表示打印纸张类型。 |
+| isBorderless | boolean | 否 | 是 | 表示是否无边框打印。true表示无边框打印，false表示有边框打印。默认值为true。 |
+| isAutoRotate | boolean | 否 | 是 | 表示是否自动旋转页面。true表示自动旋转页面，false表示不自动旋转页面。默认值为true。 |
+| isReverse | boolean | 否 | 是 | 表示是否逆序打印。true表示逆序打印，false表示顺序打印。默认值为false。 |
+| isCollate | boolean | 否 | 是 | 表示打印顺序方式。true表示逐页打印，false表示逐份打印。默认值为true。 |
+| isSequential | boolean | 否 | 是 | 表示是否按照页面顺序打印。 |
+| options | string | 否 | 是 | 表示以JSON格式字符串化的对象。 |
+
+## print.startPrint<sup>23+</sup>
+
+startPrint(job: PrintJobData): Promise&lt;void&gt;
+
+打印接口，传入文件或者二进制数据进行打印，使用Promise异步回调。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| job | [PrintJobData](#printjobdata23) | 是 | 打印任务数据。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import fs from "@ohos.file.fs";
+
+let tempPath = '/data/stroage/el2/base/haps/entry/files/note.jpg';
+let file: fs.File;
+file = fs.openSync(tempPath, 4);
+
+let printJobData: print.PrintJobData = {
+    printerId: "printerId",
+    jobName: "jobName",
+    documentFormat: print.PrintDocumentFormat.DOCUMENT_FORMAT_AUTO,
+    docFlavor: print.DocFlavor.FILE_DESCRIPTOR,
+    copyNumber: 1,
+    isLandscape: false,
+    colorMode: print.PrintColorMode.COLOR_MODE_MONOCHROME,
+    duplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
+    pageSize: {id: "ISO_A4", name: "ISO_A4", width:8268, height: 11692},
+    fdList: [file.fd],
+}
+print.startPrint(printJobData).then(() => {
+    console.info('start print success');
+}).catch((error: BusinessError) => {
+    console.error('failed to print because : ' + JSON.stringify(error));
+})
+```
+
+## PrintDocumentFormat<sup>23+</sup>
+
+打印数据格式的枚举。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DOCUMENT_FORMAT_AUTO | 0 | 表示自动检测格式。 |
+| DOCUMENT_FORMAT_JPEG | 1 | 表示Jpeg格式。 |
+| DOCUMENT_FORMAT_PDF | 2 | 表示PDF格式。 |
+| DOCUMENT_FORMAT_POSTSCRIPT | 3 | 表示PostScript格式。 |
+| DOCUMENT_FORMAT_TEXT | 4 | 表示文本格式。 |
+| DOCUMENT_FORMAT_RAW | 5 | 表示RAW格式。 |
+
+## DocFlavor<sup>23+</sup>
+
+打印数据来源形式的枚举。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本**：23
+
+**ArkTS-Sta起始版本**：23
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| FILE_DESCRIPTOR | 0 | 表示文件数据。 |
+| BYTES | 1 | 表示二进制数据。 |
+
+

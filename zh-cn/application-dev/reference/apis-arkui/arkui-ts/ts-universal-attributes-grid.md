@@ -4,6 +4,8 @@
 
 >  **说明：**
 >
+> - 本模块仅适用于ArkTS-Dyn。
+>
 >  - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。 
 >
 >  - 从API version 9开始，该模块不再维护，推荐使用新组件[GridCol](ts-container-gridcol.md)、[GridRow](ts-container-gridrow.md)替代。

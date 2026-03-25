@@ -30,7 +30,7 @@ isFloatingBallEnabled(): boolean
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -57,7 +57,7 @@ create(config: FloatingBallConfiguration): Promise&lt;FloatingBallController&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
 
@@ -116,7 +116,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
@@ -142,7 +142,7 @@ startFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -203,7 +203,7 @@ updateFloatingBall(params: FloatingBallParams): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -265,7 +265,7 @@ stopFloatingBall(): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -304,7 +304,7 @@ on(type: 'stateChange', callback: Callback&lt;FloatingBallState&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStateChange](#onstatechange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -343,7 +343,7 @@ try {
 }
 ```
 
-### onStateChange<sup>22+</sup>
+### onStateChange<sup>23+</sup>
 
 onStateChange(callback: Callback&lt;FloatingBallState&gt;): void
 
@@ -355,7 +355,7 @@ onStateChange(callback: Callback&lt;FloatingBallState&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -397,7 +397,7 @@ off(type: 'stateChange', callback?: Callback&lt;FloatingBallState&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStateChange](#offstatechange23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -435,7 +435,7 @@ try {
 }
 ```
 
-### offStateChange<sup>22+</sup>
+### offStateChange<sup>23+</sup>
 
 offStateChange(callback?: Callback&lt;FloatingBallState&gt;): void
 
@@ -447,7 +447,7 @@ offStateChange(callback?: Callback&lt;FloatingBallState&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -488,7 +488,7 @@ on(type: 'click', callback: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onClick](#onclick22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onClick](#onclick23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -527,7 +527,7 @@ try {
 }
 ```
 
-### onClick<sup>22+</sup>
+### onClick<sup>23+</sup>
 
 onClick(callback: Callback&lt;void&gt;): void
 
@@ -539,7 +539,7 @@ onClick(callback: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -581,7 +581,7 @@ off(type: 'click', callback?: Callback&lt;void&gt;): void
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offClick](#offclick22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offClick](#offclick23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -619,7 +619,7 @@ try {
 }
 ```
 
-### offClick<sup>22+</sup>
+### offClick<sup>23+</sup>
 
 offClick(callback?: Callback&lt;void&gt;): void
 
@@ -631,7 +631,7 @@ offClick(callback?: Callback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -674,7 +674,7 @@ getFloatingBallWindowInfo(): Promise&lt;FloatingBallWindowInfo&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -720,7 +720,7 @@ restoreMainWindow(want: Want): Promise&lt;void&gt;
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -780,7 +780,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|
@@ -798,7 +798,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 |------------|------------|------------|
@@ -813,7 +813,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 |------------|------------|------------|
@@ -830,7 +830,7 @@ try {
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 |------------|------------|------------|------------|------------|

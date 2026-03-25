@@ -86,7 +86,7 @@ ArkTS-Sta: width(widthValue: Length | LayoutPolicy | undefined): this
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -116,7 +116,7 @@ ArkTS-Sta: height(heightValue: Length | LayoutPolicy | undefined): this
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -148,7 +148,7 @@ ArkTS-Sta: size(value: SizeOptions | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -180,7 +180,7 @@ ArkTS-Sta: padding(value: Padding | Length | LocalizedPadding | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -212,7 +212,7 @@ ArkTS-Sta: margin(value: Margin | Length | LocalizedMargin | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -242,7 +242,7 @@ ArkTS-Sta: safeAreaPadding(paddingValue: Padding | LengthMetrics | LocalizedPadd
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -278,7 +278,7 @@ ArkTS-Sta: layoutWeight(value: double | string | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -310,7 +310,7 @@ ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -346,6 +346,10 @@ ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined): this
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型                                       | 必填   | 说明                                       |
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
 | width  | [Length](ts-types.md#length) | &nbsp;否 | 设置组件宽度。 |
@@ -358,6 +362,10 @@ ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined): this
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型                                       | 必填   | 说明                                       |
 | ----- | ---------------------------------------- | ---- | ---------------------------------------- |
