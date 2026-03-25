@@ -982,7 +982,7 @@ ArkTS-Sta: mapRadius(radius: double): double
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 

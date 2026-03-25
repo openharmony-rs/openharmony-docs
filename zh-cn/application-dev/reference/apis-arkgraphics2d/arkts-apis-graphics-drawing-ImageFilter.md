@@ -86,7 +86,7 @@ ArkTS-Sta: static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.R
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -192,7 +192,7 @@ ArkTS-Sta: static createBlendImageFilter(mode: BlendMode, background: ImageFilte
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
