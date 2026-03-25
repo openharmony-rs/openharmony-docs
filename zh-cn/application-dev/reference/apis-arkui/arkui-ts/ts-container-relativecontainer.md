@@ -18,6 +18,8 @@
 
 ## 接口
 
+### RelativeContainer
+
 RelativeContainer()
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
@@ -25,6 +27,30 @@ RelativeContainer()
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[RelativeContainer](#relativecontainer23)。
+
+**ArkTS-Dyn起始版本：** 9
+
+### RelativeContainer<sup>23+</sup>
+
+RelativeContainer(content_?: CustomBuilder)
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[RelativeContainer](#relativecontainer-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ----- | --- | --- | --- |
+| content_  | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 定义子组件的Builder函数。 |
 
 ## 属性
 
@@ -66,7 +92,7 @@ ArkTS-Sta: barrier(value: Array&lt;BarrierStyle&gt; | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -95,6 +121,28 @@ ArkTS-Sta: barrier(barrierStyle: Array&lt;LocalizedBarrierStyle&gt; | undefined)
 | 参数名 | 类型                                   | 必填 | 说明                           |
 | ------ | -------------------------------------- | ---- | ------------------------------ |
 | barrierStyle  | ArkTS-Dyn: Array\<[LocalizedBarrierStyle](#localizedbarrierstyle12对象说明)\><br/>ArkTS-Sta: Array\<[LocalizedBarrierStyle](#localizedbarrierstyle12对象说明)\> \| undefined | 是   | RelativeContainer容器内的屏障。|
+
+### attributeModifier<sup>12+</sup>
+
+ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<RelativeContainerAttribute>)
+
+ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<RelativeContainerAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<RelativeContainerAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<RelativeContainerAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置RelativeContainer组件的属性。 |
 
 ## GuideLineStyle<sup>12+</sup>对象说明
 

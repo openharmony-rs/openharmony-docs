@@ -101,11 +101,13 @@ ArkUI框架会在自定义组件确定位置时，将该自定义组件的子节
 | 名称         | 类型       | 只读|可选|  说明                                                      |
 |--------------|---------------------------------- | ------|-----------------------------------------------------|---------------------|
 | measureResult| [MeasureResult](#measureresult10) |   否|否| 子组件测量后的尺寸信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br>单位：vp <br/> **ArkTS-Dyn起始版本：** 10 <br/> **ArkTS-Sta起始版本：** 23    |
-| uniqueId<sup>18+</sup>| number | 否 |否| 系统为子组件分配的唯一标识UniqueID。<br>取值范围[0,+∞)。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18<br/> **ArkTS-Sta起始版本：** 23|
+| uniqueId<sup>18+</sup>| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 |是| 系统为子组件分配的唯一标识UniqueID。<br>取值范围[0,+∞)。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18<br/> **ArkTS-Sta起始版本：** 23|
 
-### layout
+### layout<sup>10+</sup>
 
-layout(position: Position)
+ArkTS-Dyn: layout(position: Position): void
+
+ArkTS-Sta: layout(position: Position | undefined): void
 
 调用此方法对子组件的位置信息进行限制。
 
@@ -113,7 +115,7 @@ layout(position: Position)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -121,7 +123,7 @@ layout(position: Position)
 
 | 参数名         | 类型                                                    | 必填                 |说明         |
 |-----------------|---------------------------------------------------------|---------------------|-------------|
-|   position      | [Position](ts-types.md#position)                        | 是                  |   绝对位置。   |
+|   position      | ArkTS-Dyn: [Position](ts-types.md#position)<br/>ArkTS-Sta: [Position](ts-types.md#position) \| undefined                        | 是                  |   绝对位置。   |
 
 ### getMargin<sup>12+</sup>
 
@@ -219,7 +221,7 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double> | undefined
 
 ArkTS-Dyn: measure(constraint: ConstraintSizeOptions) : MeasureResult
 
-ArkTS-Sta: measure(constraint: ConstraintSizeOptions) : MeasureResult | undefined
+ArkTS-Sta: measure(constraint: ConstraintSizeOptions | undefined): MeasureResult | undefined
 
 调用此方法限制子组件的尺寸范围。
 
@@ -235,7 +237,7 @@ ArkTS-Sta: measure(constraint: ConstraintSizeOptions) : MeasureResult | undefine
 
 | 参数名         | 类型                                                    | 必填                 |说明         |
 |-----------------|---------------------------------------------------------|---------------------|-------------|
-|   constraint    | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)  | 是            |   约束尺寸。  |
+|   constraint    | ArkTS-Dyn: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions)<br/>ArkTS-Sta: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) \| undefined  | 是            |   约束尺寸。  |
 
 **返回值：**
 
@@ -336,8 +338,8 @@ ArkTS-Sta: getBorderWidth() : DirectionalEdgesT\<double\> | undefined
 
 | 名称     | 类型   |只读|可选| 说明    |
 |--------|--------|------|------|-------|
-| width  | number | 否|否|测量后的宽。<br>单位：vp |
-| height | number | 否|否|测量后的高。<br>单位：vp |
+| width  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否|否|测量后的宽。<br>单位：vp |
+| height | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否|否|测量后的高。<br>单位：vp |
 
 ## DirectionalEdgesT\<T><sup>12+</sup>
 
