@@ -239,7 +239,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | isForRecheck          | boolean  | 否 | 否 | 应用是否应该重新查询所有相册信息。true表示需要重新查询所有相册，false表示无需查询所有相册。<br>**注意：**<br>在大量相册操作或者异常通知的场景下，应用收到的isForRecheck为true，表示重新查询所有相册信息。  |
 
 ## GridPinchMode<sup>23+</sup>
- 	  	 
+
 picker内宫格的捏合模式。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
@@ -254,7 +254,7 @@ picker内宫格的捏合模式。
 | defaultGridLevel | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23) | 否 | 是 | 拉起picker后宫格档位，默认为STANDARD。|
 
 ## AssetCompatibleCapability<sup>24+</sup>
- 	  	 
+
 资产兼容能力。
 
 **模型约束**： 此接口仅可在Stage模型下使用。
