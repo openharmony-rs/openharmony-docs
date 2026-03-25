@@ -51,8 +51,6 @@ Creates a toolbar.
 
 ## ToolBarV2Item
 
-ToolbarV2({content?: ToolBarV2ItemText, action?: ToolBarV2ItemAction, icon?: 	ToolBarV2ItemIconType, state?: ToolBarV2ItemState, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
-
 Defines an item in the toolbar.
 
 **Decorator**: @ObservedV2
@@ -70,7 +68,7 @@ Defines an item in the toolbar.
 | content                      | [ToolBarV2ItemText](#toolbarv2itemtext)         | No | No| Text of the toolbar item.<br>Decorator: @Trace                                                                                                                                                                                                          |
 | action                       | [ToolBarV2ItemAction](#toolbarv2itemaction)     | No | Yes | Click event of the toolbar item.<br></div>By default, there is no click event.<br>Decorator: @Trace                                                                                                                                                                                     |
 | icon                         | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | No | Yes| Icon of the toolbar item.<br></div>By default, there is no icon.<br>Decorator: @Trace                                                                                                                                                                                       |
-| state                        | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | Yes| State of the toolbar item.<br>Default value: **ToolBarV2ItemState.ENABLE**.<br>Decorator: @Trace                                                                                                                                                                          |
+| state                        | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | Yes| State of the toolbar item.<br>Default value: **ToolBarV2ItemState.ENABLE**<br>Decorator: @Trace                                                                                                                                                                          |
 | accessibilityText     | [ResourceStr](ts-types.md#resourcestr)          | No | Yes| Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br></div>Default value: value of **content**<br>Decorator: @Trace                                          |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | No | Yes|  Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**<br>Decorator: @Trace                       |
 | accessibilityLevel  | string                                          | No | Yes| Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: This option is treated as "yes" by the system for this component.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>Decorator: @Trace|
@@ -95,8 +93,6 @@ A constructor used to create a **ToolBarV2Item** instance.
 
 ## ToolBarV2ItemOptions
 
-ToolBarV2ItemOptions({content?: ToolBarV2ItemText, action?: ToolBarV2ItemAction, icon?: ToolBarV2ItemIconType, state?: ToolBarV2ItemState, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
-
 Defines the options for initializing a **ToolBarV2Item** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
@@ -110,7 +106,7 @@ Defines the options for initializing a **ToolBarV2Item** object.
 | content                  | [ToolBarV2ItemText](#toolbarv2itemtext)         | No | No | Text of the toolbar item.                                                                                                                                                                                                          |
 | action                   | [ToolBarV2ItemAction](#toolbarv2itemaction)     | No | Yes | Click event of the toolbar item.<br>By default, there is no click event.                                                                                                                                                                                           |
 | icon                     | [ToolBarV2ItemIconType](#toolbarv2itemicontype) | No | Yes | Icon of the toolbar item.<br>By default, there is no icon.                                                                                                                                                                                            |
-| state                    | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | Yes | State of the toolbar item.<br>Default value: **ToolBarV2ItemState.ENABLE**.<br>                                                                                                                                                                 |
+| state                    | [ToolBarV2ItemState](#toolbarv2itemstate)       | No | Yes | State of the toolbar item.<br>Default value: **ToolBarV2ItemState.ENABLE**<br>                                                                                                                                                                 |
 | accessibilityText        | [ResourceStr](ts-types.md#resourcestr)          | No | Yes | Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of **content**<br>                                         |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)          | No | Yes | Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: **"Double-tap to activate"**                       |
 | accessibilityLevel       | string                                          | No | Yes | Accessibility level of the toolbar item. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: This option is treated as "yes" by the system for this component.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>|
@@ -135,8 +131,6 @@ Defines the callback for the click event of a toolbar item.
 
 ## ToolBarV2ItemText
 
-ToolBarV2ItemText({text?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
-
 Defines the text of a toolbar item.
 
 **Decorator**: @ObservedV2
@@ -152,8 +146,8 @@ Defines the text of a toolbar item.
 | Name                 | Type                                                         | Read-Only| Optional| Description                                                      |
 |:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
 | text                | [ResourceStr](ts-types.md#resourcestr)                      | No | No | Text of the toolbar item.<br>Decorator: @Trace                                               |
-| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**.<br>Decorator: @Trace      |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br></div>Default value: **$r('sys.color.font_emphasize')**.<br>Decorator: @Trace|
+| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**<br>Decorator: @Trace      |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br></div>Default value: **$r('sys.color.font_emphasize')**<br>Decorator: @Trace|
 
 ### constructor
 
@@ -175,8 +169,6 @@ A constructor used to create a **ToolBarV2ItemText** instance.
 
 ## ToolBarV2ItemTextOptions
 
-ToolBarV2ItemTextOptions({text?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
-
 Defines the options for initializing a **ToolBarV2ItemText** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
@@ -188,12 +180,10 @@ Defines the options for initializing a **ToolBarV2ItemText** object.
 | Name                 | Type                                                         | Read-Only| Optional| Description                                                      |
 | :------------------ |:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
 | text                | [ResourceStr](ts-types.md#resourcestr)                      | No | No | Text of the toolbar item.                                               |
-| color          | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**.      |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br>Default value: **$r('sys.color.font_emphasize')**.|
+| color          | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item.<br>Default value: **$r('sys.color.font_primary')**      |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Font color of the toolbar item in the activated state.<br>Default value: **$r('sys.color.font_emphasize')**|
 
 ## ToolBarV2ItemImage
-
-ToolBarV2ItemImage({src?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
 
 Defines the icon content of a toolbar item.
 
@@ -210,8 +200,8 @@ Defines the icon content of a toolbar item.
 | Name                | Type                                                         | Read-Only| Optional| Description                                                      |
 |:-------------------|:------------------------------------------------------------|:---|:---| :---------------------------------------------------------|
 | src                | [ResourceStr](ts-types.md#resourcestr)                      | No | No|  Icon of the toolbar item.<br>Decorator: @Trace                                               |
-| color              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes|  Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**.<br>Decorator: @Trace      |
-| activatedColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes| Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**.<br>Decorator: @Trace|
+| color              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes|  Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**<br>Decorator: @Trace      |
+| activatedColor     | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes| Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**<br>Decorator: @Trace|
 
 ### constructor
 
@@ -233,8 +223,6 @@ A constructor used to create a **ToolBarV2ItemImage** instance.
 
 ## ToolBarV2ItemImageOptions
 
-ToolBarV2ItemImageOptions({src?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
-
 Defines the options for initializing a **ToolBarV2ItemImage** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
@@ -246,8 +234,8 @@ Defines the options for initializing a **ToolBarV2ItemImage** object.
 | Name                 | Type                                                         | Read-Only| Optional| Description                                                      |
 |:--------------------|:------------------------------------------------------------|:---|:---|:---------------------------------------------------------|
 | src                 | [ResourceStr](ts-types.md#resourcestr)                      | No | No | Icon of the toolbar item.                                               |
-| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**.      |
-| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**.|
+| color               | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Color of the icon.<br>Default value: **$r('sys.color.icon_primary')**      |
+| activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | No | Yes | Color of the icon when the toolbar item is activated.<br>Default value: **$r('sys.color.icon_emphasize')**|
 
 ## ToolBarV2ItemIconType
 
@@ -390,8 +378,6 @@ Enumerates the states of the toolbar item.
 
 ## ToolBarV2SymbolGlyph
 
-ToolBarV2SymbolGlyph({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
-
 Defines the icon symbol options.
 
 **Decorator**: @ObservedV2
@@ -429,8 +415,6 @@ A constructor used to create a **ToolBarV2SymbolGlyph** object.
 
 ## ToolBarV2SymbolGlyphOptions
 
-ToolBarV2SymbolGlyphOptions({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
-
 Defines the options for initializing a **ToolBarV2SymbolGlyph** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
@@ -462,7 +446,7 @@ struct Index {
     this.toolbarList.push(new ToolBarV2Item({
       content: new ToolBarV2ItemText(
         {
-          text: 'Cut Super Long Text'
+          text: Long long long long long'
         }
       ),
       icon: new ToolBarV2ItemImage({
@@ -505,7 +489,7 @@ struct Index {
       new ToolBarV2Item({
         content: new ToolBarV2ItemText(
           {
-            text:'Select All'
+            text: 'All'
           }
         ),
         icon: new ToolBarV2ItemImage({
@@ -663,7 +647,7 @@ struct Index {
     this.toolbarList.push(
       new ToolBarV2Item({
         content: new ToolBarV2ItemText({
-          text: 'Share',
+          text: 'Share'
         }),
         icon: new ToolBarV2ItemImage({
           src: $r('sys.media.ohos_ic_public_share'),
@@ -726,16 +710,16 @@ struct Index {
     this.toolbarList.push(
       new ToolBarV2Item({
         content: new ToolBarV2ItemText({
-          text: 'Cut Super Long Text',
+          text: Long long long long long'
         }),
         icon: new ToolBarV2ItemImage({
           src: $r('sys.media.ohos_ic_public_share')
         }),
         action: () => {
         },
-        accessibilityText: 'Clip', // Screen reader announcement for the item.
-        accessibilityDescription: 'Double-tap to clip', // Screen reader announcement for the item.
-        accessibilityLevel: 'yes' // Configure this element to be focused by accessibility screen readers.
+        accessibilityText: 'Clip', // Screen reader announcement text for the item.
+        accessibilityDescription: 'Double-tap to clip', // Screen reader announcement description for the item.
+        accessibilityLevel: 'yes'  // Configure this element to be focused by accessibility screen readers.
       })
     )
     this.toolbarList.push(
@@ -767,7 +751,7 @@ struct Index {
     this.toolbarList.push(
       new ToolBarV2Item({
         content: new ToolBarV2ItemText({
-          text: 'Select All',
+          text: 'All',
         }),
         icon: new ToolBarV2ItemImage({
           src: $r('sys.media.ohos_ic_public_select_all'),
@@ -778,7 +762,7 @@ struct Index {
     this.toolbarList.push(
       new ToolBarV2Item({
         content: new ToolBarV2ItemText({
-          text: 'Share',
+          text: 'Share'
         }),
         icon: new ToolBarV2ItemImage({
           src: $r('sys.media.ohos_ic_public_share'),
@@ -789,7 +773,7 @@ struct Index {
     this.toolbarList.push(
       new ToolBarV2Item({
         content: new ToolBarV2ItemText({
-          text: 'Share',
+          text: 'Share'
         }),
         icon: new ToolBarV2ItemImage({
           src: $r('sys.media.ohos_ic_public_share'),

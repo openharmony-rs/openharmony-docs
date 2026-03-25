@@ -52,11 +52,11 @@ Basic event type.
 | tiltY<sup>9+</sup> | number | No| No|Angle between the projection of the stylus on the device plane and the y-axis.<br>Default value: **0**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | rollAngle<sup>17+</sup> | number | No| Yes| Angle between the stylus and the device's surface.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 17.<br>**Atomic service API**: This API can be used in atomic services since API version 17.|
 | sourceTool<sup>9+</sup> | [SourceTool](ts-gesture-settings.md#sourcetool9) | No| No| Event input source type.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| axisHorizontal<sup>12+</sup> | number | No| Yes| Horizontal axis value.<br>Default value: **0**<br>**NOTE**<br>This value is available only when the pan gesture is triggered by mouse wheel scrolling or two-finger touchpad sliding, or when the pinch gesture is triggered by Ctrl + mouse wheel scrolling.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| axisVertical<sup>12+</sup> | number | No| Yes| Vertical axis value.<br>Default value: **0**<br>**NOTE**<br>This value is available only when the pan gesture is triggered by mouse wheel scrolling or two-finger touchpad sliding, or when the pinch gesture is triggered by Ctrl + mouse wheel scrolling.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| axisPinch<sup>21+</sup> | number | No| Yes|  Two-finger pinch scaling ratio.<br>Default value: **0**<br>**NOTE**<br>This value is available only when a pinch gesture is triggered by a two-finger scaling operation on a touchpad or during axis events.<br>In other scenarios, the default value is returned. The scaling ratio represents the ratio of the current two-finger distance to the initial two-finger distance when first pressed during a pinch gesture.<br>Value range: [0, +∞).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 21.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
-| deviceId<sup>12+</sup> | number | No| Yes| ID of the input device that triggers the event.<br>Default value: **0**<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| targetDisplayId<sup>15+</sup> | number | No| Yes| ID of the screen where the event occurs.<br>Default value: **0**<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
+| axisHorizontal<sup>12+</sup> | number | No| Yes| Horizontal axis value.<br>Default value: **0**<br>**NOTE**<br>This value is available only when the pan gesture is triggered by mouse wheel scrolling or two-finger touchpad sliding, or when the pinch gesture is triggered by Ctrl + mouse wheel scrolling.<br>In the horizontal scrolling scenario triggered by Shift + mouse wheel scrolling, **axisHorizontal** is **0**, and the scrolling value is reflected in **axisVertical**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| axisVertical<sup>12+</sup> | number | No| Yes| Vertical axis value.<br>Default value: **0**<br>**NOTE**<br>This value is available only when the pan gesture is triggered by mouse wheel scrolling or two-finger touchpad sliding, or when the pinch gesture is triggered by Ctrl + mouse wheel scrolling.<br>In the horizontal scrolling scenario triggered by Shift + mouse wheel scrolling, the scrolling value is reflected in **axisVertical**.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| axisPinch<sup>21+</sup> | number | No| Yes|  Two-finger pinch scaling ratio.<br>Default value: **0**<br>**NOTE**<br>This value is available only when a pinch gesture is triggered by a two-finger scaling operation on a touchpad or during axis events.<br>In other scenarios, the default value is returned. The scaling ratio represents the ratio of the current two-finger distance to the initial two-finger distance when first pressed during a pinch gesture.<br>Value range: [0, +∞)<br>**Widget capability**: This API can be used in ArkTS widgets since API version 21.<br>**Atomic service API**: This API can be used in atomic services since API version 21.|
+| deviceId<sup>12+</sup> | number | No| Yes| ID of the input device that triggers the event.<br>Default value: **0**<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| targetDisplayId<sup>15+</sup> | number | No| Yes| ID of the screen where the event occurs.<br>Default value: **0**<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
 ### getModifierKeyState<sup>12+</sup>
 
@@ -265,7 +265,6 @@ struct Index {
   }
 }
 ```
-![gestures2](figures/gestures2.gif)
 
 ### Example 3: Implementing Real-time Monitoring of Active Touch Points in Gestures
 
@@ -352,4 +351,3 @@ struct GestureDetectorExample {
 }
 
 ```
-
