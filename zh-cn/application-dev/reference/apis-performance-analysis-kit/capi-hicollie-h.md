@@ -77,7 +77,7 @@ enum HiCollie_ErrorCode
 | HICOLLIE_INVALID_TIMEOUT_VALUE = 29800004 | 无效的函数执行超时时间阈值。<br>**起始版本：** 18                  |
 | HICOLLIE_WRONG_PROCESS_CONTEXT = 29800005 | 函数执行超时检测接入进程错误。<br>**起始版本：** 18                 |
 | HICOLLIE_WRONG_TIMER_ID_OUTPUT_PARAM = 29800006 | 用于保存返回的计时器id的指针不应为NULL。<br>**起始版本：** 18         |
-| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | 定义FreezeCallback返回的冻屏类型<br>**起始版本：** 24         |
+| OH_HICOLLIE_REACH_REPORT_LIMIT = 29800007 | 上报频率超过限制<br>**起始版本：** 24         |
 
 ### HiCollie_Flag
 
@@ -439,4 +439,4 @@ HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> [OH_HICOLLIE_REACH_REPORT_LIMIT](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br>|
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> [OH_HICOLLIE_REACH_REPORT_LIMIT](capi-hicollie-h.md#hicollie_errorcode) 29800007 - 上报过于频繁，1分钟内只允许上报一次。<br>|
