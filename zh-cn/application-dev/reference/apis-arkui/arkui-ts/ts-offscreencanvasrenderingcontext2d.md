@@ -1394,6 +1394,75 @@ justifyContent: FlexAlign.Center }) {
 
 ![letterSpacingDemo](figures/letterSpacingDemo.jpeg)
 
+
+### antialias<sup>24+</sup>
+
+用于设置绘制图形和文本时是否开启抗锯齿。设置此接口会覆盖[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果，未通过该接口设置时，默认值为undefined，与[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果保持一致。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ------ | ------ |
+| boolean | 否 | 否 | 设置绘制图形和文本时是否开启抗锯齿。<br/>true表示开启抗锯齿；false表示不开启抗锯齿。<br/>值为undefined时，与[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果保持一致。 |
+
+**示例：** 
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AntialiasDemoOff {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let offContext = this.offCanvas.getContext("2d", this.settings);
+          let anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+          // 设置antialias属性为非抗锯齿
+          offContext.antialias = false;
+          offContext.strokeStyle = 'rgb(0,0,0)';
+          offContext.lineWidth = 2;
+          offContext.beginPath();
+          offContext.arc(150, 150, 100, 0, Math.PI);
+          offContext.stroke();
+          offContext.font = 'normal bold 30vp monospace';
+          offContext.fillText("Hello World", 20, 100);
+          anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+
+          // 设置antialias属性为抗锯齿
+          offContext.antialias = true;
+          offContext.beginPath();
+          offContext.arc(150, 350, 100, 0, Math.PI);
+          offContext.stroke();
+          offContext.font = 'normal bold 30vp monospace';
+          offContext.fillText("Hello World", 20, 300);
+          anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+          let image = this.offCanvas.transferToImageBitmap();
+          this.context.transferFromImageBitmap(image);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![AntialiasDemo](figures/AntialiasOffDemo.jpeg)
+
 ## 方法
 
 
