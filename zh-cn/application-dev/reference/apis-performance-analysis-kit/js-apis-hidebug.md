@@ -337,7 +337,7 @@ dumpJsHeapData(filename: string): void
 
 | 参数名   | 类型   | 必填 | 说明                                            |
 | -------- | ------ | ---- | ----------------------------------------------- |
-| filename | string | 是   | 用户自定义的虚拟机堆数据转储输出的文件名，将在应用的`files`目录下生成以该参数命名的heapsnapshot文件。string长度的最大值为128。 |
+| filename | string | 是   | 用户自定义的虚拟机堆数据转储输出的文件名，将在应用的`files`目录下生成以该参数命名的heapsnapshot文件。string长度的最大值为128字节。 |
 
 **错误码**：
 
@@ -355,6 +355,42 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   hidebug.dumpJsHeapData("heapData");
+} catch (error) {
+  console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
+}
+```
+
+## hidebug.dumpJsHeapData<sup>24+</sup>
+
+dumpJsHeapData(filename: string, needClean: boolean): void
+
+虚拟机堆数据转储，支持清除nodeId缓存。
+
+> **注意**：
+>
+> 由于虚拟机堆导出极其耗时，且该接口为同步接口，建议不要在上架版本中调用该接口，以避免应用冻屏，影响用户体验。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在stage模型下使用。
+
+**参数**：
+
+| 参数名   | 类型   | 必填 | 说明                                            |
+| -------- | ------ | ---- | ----------------------------------------------- |
+| filename | string | 是   | 用户自定义的虚拟机堆转储文件名，将在应用的files目录下生成fileName.heapsnapshot格式文件。string长度的最大值为128字节。 |
+| needClean | boolean | 是  | 转储堆快照前是否需要清除nodeId缓存。true：需要清除；false：不需要清除。|
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  hidebug.dumpJsHeapData("heapData", true);
 } catch (error) {
   console.error(`error code: ${(error as BusinessError).code}, error msg: ${(error as BusinessError).message}`);
 }
@@ -1298,12 +1334,13 @@ hidebug.getGraphicsMemorySummary().then((ret: hidebug.GraphicsMemorySummary) => 
 
 dumpJsRawHeapData(needGC?: boolean): Promise&lt;string&gt;
 
-为当前线程转储虚拟机的原始堆快照，并生成的rawheap文件，该文件可通过[rawheap-translator工具](../../tools/rawheap-translator.md)将所生成文件转化为heapsnapshot文件进行解析。生成的文件路径使用Promise进行异步回调。
+为当前线程转储虚拟机的原始堆快照，并生成的rawheap格式文件，使用Promise异步回调完成。该文件可通过[rawheap-translator工具](../../tools/rawheap-translator.md)转化为heapsnapshot格式文件进行解析。
 
 > **注意**：
 >
 > 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
-> 建议仅在应用的灰度版本中使用。在正式版本中不推荐使用，避免影响应用流畅性。
+>
+> 当设置的开发者选项开关打开并重启设备后，此功能有效。
 
 **原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -1343,6 +1380,65 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 hidebug.dumpJsRawHeapData().then((filePath: string) => {
   console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`)
+}).catch((error: BusinessError) => {
+  console.error(`error code: ${error.code}, error msg: ${error.message}`);
+})
+```
+
+## hidebug.dumpJsRawHeapData<sup>24+</sup>
+
+dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise&lt;string&gt;
+
+为当前线程转储虚拟机的原始堆快照，并支持清除nodeId缓存。生成的文件为rawheap格式，使用Promise异步回调完成。该文件可通过[rawheap-translator工具](../../tools/rawheap-translator.md)转化为heapsnapshot格式文件进行解析。
+
+> **注意**：
+>
+> 系统通过该接口转存快照会消耗大量资源，因此严格限制了调用频率和次数。处理完生成的文件后，请立即删除。
+>
+> 当设置的开发者选项开关打开并重启设备后，此功能有效。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数**：
+
+| 参数名                     | 类型      | 必填 | 说明                                          |
+|-------------------------|---------|----|---------------------------------------------|
+| needGC         | boolean | 是  | 转储堆快照前是否需要GC。true：需要GC；false：不需要GC。 |
+| needClean      | boolean | 是  | 转储堆快照前是否需要清除nodeId。true：需要清除；false：不需要清除。|
+
+**返回值**：
+
+| 类型  | 说明                                                                                                   |
+| ------ |------------------------------------------------------------------------------------------------------|
+| Promise&lt;string&gt; | Promise对象，返回生成的快照文件路径（[应用沙箱内路径](../../file-management/app-sandbox-directory.md#应用沙箱路径和真实物理路径的对应关系)）。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[HiDebug错误码](errorcode-hiviewdfx-hidebug.md)。
+
+| 错误码ID    | 错误信息 |
+|----------| ----------------------------------------------------------------- |
+| 11400106 | Quota exceeded. |
+| 11400107 | Fork operation failed. |
+| 11400108 | Failed to wait for the child process to finish. |
+| 11400109 | Timeout while waiting for the child process to finish. |
+| 11400110 | Disk remaining space too low. |
+| 11400111 | Napi interface call exception. |
+| 11400112 | Repeated data dump. |
+| 11400113 | Failed to create dump file. |
+
+**示例**：
+
+```ts
+import { hidebug } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
+  console.info(`dumpJsRawHeapData success and generated file path is ${filePath}`);
 }).catch((error: BusinessError) => {
   console.error(`error code: ${error.code}, error msg: ${error.message}`);
 })
