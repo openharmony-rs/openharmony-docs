@@ -77,7 +77,7 @@ Defines the certificate data.
 
 certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
-Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application. This API uses a promise to return the result.
+Verifies the certificate passed by the application using the preset CA certificate and the CA certificate installed by the user in the certificate management. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -158,7 +158,7 @@ networkSecurity.certVerification(cert, caCert)
 
 certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
-Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application. This API returns the result synchronously.
+Verifies the certificate passed by the application using the preset CA certificate and the CA certificate installed by the user in the certificate management. This API returns the result synchronously.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -279,7 +279,7 @@ try {
 
 isCleartextPermittedByHostName(hostName: string): boolean
 
-Checks whether plaintext HTTP access by domain name is allowed from the preset **network_config.json** file of the application. By default, plaintext HTTP access is allowed.
+Checks whether host name–based plaintext HTTP access is allowed from the preset **network_config.json** file of the application. By default, plaintext HTTP access is allowed.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -295,7 +295,7 @@ Checks whether plaintext HTTP access by domain name is allowed from the preset *
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| boolean | Boolean value indicating whether host name-based plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite. The default value is **true**.|
+| boolean | Boolean value indicating whether host name–based plaintext HTTP is allowed. The value **true** indicates that plaintext HTTP is allowed, and the value **false** indicates the opposite. The default value is **true**.|
 
 **Error codes**
 

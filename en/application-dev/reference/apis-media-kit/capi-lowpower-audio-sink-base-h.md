@@ -61,7 +61,7 @@ Called when an error occurs in the LowPowerAudioSink.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | Pointer to an OH_LowPowerAudioSink instance.|
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) errorCode | Error code reported when an error occurs.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) errCode | Error code reported when an error occurs.|
 | const char* errorMsg | Pointer to an error message.|
 | void* userData | Pointer to user-defined data.|
 
