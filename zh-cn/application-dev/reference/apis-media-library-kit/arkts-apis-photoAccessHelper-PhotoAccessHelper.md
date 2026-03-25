@@ -2229,7 +2229,7 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise&lt;
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise<void> | 返回void。 |
+| Promise&lt;void&gt; | 返回void。 |
 
 **错误码：**
 

@@ -3888,7 +3888,7 @@ setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapa
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise<void> | 返回void。 |
+| Promise&lt;void&gt; | 返回void。 |
 
 **错误码：**
 
@@ -3898,8 +3898,7 @@ setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapa
 | -------- | ---------------------------------------- |
 | 202 | Called by non-system application. |
 | 23800151 | 23800151 - The bundleName or capability is invalid.|
-| 23800301 | Internal system error. It is recommended to retry and check the logs.
-Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
@@ -3921,7 +3920,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### getAssetCompatibleCapability<sup>24+</sup>
 
-getAssetCompatibleCapability(bundleName: string): Promise<AssetCompatibleCapability>
+getAssetCompatibleCapability(bundleName: string): Promise&lt;AssetCompatibleCapability&gt;
 
 根据bundleName获取资产兼容能力。应用程序获取文件时，可判断是否进行兼容性转换。
 
@@ -3941,7 +3940,7 @@ getAssetCompatibleCapability(bundleName: string): Promise<AssetCompatibleCapabil
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise<[AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)> | 返回指定的资产兼容功能。 |
+| Promise&lt;[AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)&gt; | 返回指定的资产兼容功能。 |
 
 **错误码：**
 
@@ -3951,8 +3950,7 @@ getAssetCompatibleCapability(bundleName: string): Promise<AssetCompatibleCapabil
 | -------- | ---------------------------------------- |
 | 202 | Called by non-system application. |
 | 23800151 | The bundleName is invalid, such as null, undefined and empty.|
-| 23800301 | Internal system error. It is recommended to retry and check the logs.
-Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
 
