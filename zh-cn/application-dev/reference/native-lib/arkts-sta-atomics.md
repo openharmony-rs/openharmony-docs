@@ -33,6 +33,10 @@ ArkTS-Sta提供了一组实例化的原子类型，用于直接对单个共享�
 
 AtomicReference\<T>用于对对象引用执行原子读写、交换和比较交换操作。
 
+> **说明：**
+>
+> AtomicReference\<T>在compareAndSwap操作中按引用比较expected与当前值是否相等，在exchange、store和load操作中读写的也是引用值本身。当T为数值类型时，相关操作处理的仍是引用而不是数值内容，因此不适合用于数值类型的原子操作；如需对数值执行原子操作，请使用对应的[AtomicInt](#atomicint)、[AtomicLong](#atomiclong)、[AtomicShort](#atomicshort)、[AtomicByte](#atomicbyte)、[AtomicFloat](#atomicfloat)或[AtomicDouble](#atomicdouble)。
+
 ### constructor
 
 constructor(ref: T)
@@ -42,15 +46,15 @@ constructor(ref: T)
 **参数：**
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| ref | T | 是 | AtomicReference\<T>的初始引用值。当泛型T包含null时，也可以传入null。 |
+| ref | T | 是 | AtomicReference\<T>的初始引用值。当泛型T包含null时，也可以传入null。不建议泛型T设置为数值类型使用，如需进行数值原子操作，请直接使用对应的数值原子类。|
 
 **示例：**
 ```ts
 class Container {
-    value: int = 1
+    value: int = 1;
 }
 
-let atomicRef = new AtomicReference<Container>(new Container())
+let atomicRef = new AtomicReference<Container>(new Container());
 ```
 
 ### load
@@ -66,8 +70,8 @@ load(): T
 
 **示例：**
 ```ts
-let atomicRef = new AtomicReference<string>("hello")
-console.info(atomicRef.load()) // hello
+let atomicRef = new AtomicReference<string>("hello");
+console.info(atomicRef.load()); // hello
 ```
 
 ### store
@@ -83,9 +87,9 @@ store(ref: T): void
 
 **示例：**
 ```ts
-let atomicRef = new AtomicReference<string>("hello")
-atomicRef.store("world")
-console.info(atomicRef.load()) // world
+let atomicRef = new AtomicReference<string>("hello");
+atomicRef.store("world");
+console.info(atomicRef.load()); // world
 ```
 
 ### exchange
@@ -106,10 +110,10 @@ exchange(ref: T): T
 
 **示例：**
 ```ts
-let atomicRef = new AtomicReference<string>("a")
-let oldValue = atomicRef.exchange("b")
-console.info(oldValue) // a
-console.info(atomicRef.load()) // b
+let atomicRef = new AtomicReference<string>("a");
+let oldValue = atomicRef.exchange("b");
+console.info(oldValue); // a
+console.info(atomicRef.load()); // b
 ```
 
 ### compareAndSwap
@@ -131,10 +135,10 @@ compareAndSwap(expected: T, ref: T): T
 
 **示例：**
 ```ts
-let atomicRef = new AtomicReference<string>("a")
-let oldValue = atomicRef.compareAndSwap("a", "b")
-console.info(oldValue) // a
-console.info(atomicRef.load()) // b
+let atomicRef = new AtomicReference<string>("a");
+let oldValue = atomicRef.compareAndSwap("a", "b");
+console.info(oldValue); // a
+console.info(atomicRef.load()); // b
 ```
 
 ### isLockFree
@@ -150,7 +154,7 @@ static isLockFree(): boolean
 
 **示例：**
 ```ts
-console.info(AtomicReference.isLockFree().toString())
+console.info(AtomicReference.isLockFree().toString());
 ```
 
 ## AtomicInt
@@ -166,11 +170,11 @@ constructor(val: int)
 **参数：**
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| val | int | 是 | AtomicInt的初始值。 |
+| val | int | 是 | AtomicInt的初始值。取值范围为[-2147483648, 2147483647]。 |
 
 **示例：**
 ```ts
-let atomicInt = new AtomicInt(1)
+let atomicInt = new AtomicInt(1);
 ```
 
 ### load
@@ -186,8 +190,8 @@ load(): int
 
 **示例：**
 ```ts
-let atomicInt = new AtomicInt(5)
-console.info(atomicInt.load().toString()) // 5
+let atomicInt = new AtomicInt(5);
+console.info(atomicInt.load().toString()); // 5
 ```
 
 ### store
@@ -203,9 +207,9 @@ store(val: int): void
 
 **示例：**
 ```ts
-let atomicInt = new AtomicInt(1)
-atomicInt.store(2)
-console.info(atomicInt.load().toString()) // 2
+let atomicInt = new AtomicInt(1);
+atomicInt.store(2);
+console.info(atomicInt.load().toString()); // 2
 ```
 
 ### exchange
@@ -226,10 +230,10 @@ exchange(val: int): int
 
 **示例：**
 ```ts
-let atomicInt = new AtomicInt(1)
-let oldValue = atomicInt.exchange(2)
-console.info(oldValue.toString()) // 1
-console.info(atomicInt.load().toString()) // 2
+let atomicInt = new AtomicInt(1);
+let oldValue = atomicInt.exchange(2);
+console.info(oldValue.toString()); // 1
+console.info(atomicInt.load().toString()); // 2
 ```
 
 ### compareAndSwap
@@ -251,10 +255,10 @@ compareAndSwap(expected: int, val: int): int
 
 **示例：**
 ```ts
-let atomicInt = new AtomicInt(1)
-let oldValue = atomicInt.compareAndSwap(1, 2)
-console.info(oldValue.toString()) // 1
-console.info(atomicInt.load().toString()) // 2
+let atomicInt = new AtomicInt(1);
+let oldValue = atomicInt.compareAndSwap(1, 2);
+console.info(oldValue.toString()); // 1
+console.info(atomicInt.load().toString()); // 2
 ```
 
 ### fetchAdd
@@ -275,10 +279,10 @@ fetchAdd(val: int): int
 
 **示例：**
 ```ts
-let atomicInt = new AtomicInt(1)
-let oldValue = atomicInt.fetchAdd(4)
-console.info(oldValue.toString()) // 1
-console.info(atomicInt.load().toString()) // 5
+let atomicInt = new AtomicInt(1);
+let oldValue = atomicInt.fetchAdd(4);
+console.info(oldValue.toString()); // 1
+console.info(atomicInt.load().toString()); // 5
 ```
 
 ### fetchSub
@@ -299,10 +303,10 @@ fetchSub(val: int): int
 
 **示例：**
 ```ts
-let atomicInt = new AtomicInt(10)
-let oldValue = atomicInt.fetchSub(3)
-console.info(oldValue.toString()) // 10
-console.info(atomicInt.load().toString()) // 7
+let atomicInt = new AtomicInt(10);
+let oldValue = atomicInt.fetchSub(3);
+console.info(oldValue.toString()); // 10
+console.info(atomicInt.load().toString()); // 7
 ```
 
 ### fetchAnd
@@ -323,10 +327,10 @@ fetchAnd(val: int): int
 
 **示例：**
 ```ts
-let atomicInt = new AtomicInt(15)
-let oldValue = atomicInt.fetchAnd(6)
-console.info(oldValue.toString()) // 15
-console.info(atomicInt.load().toString()) // 6
+let atomicInt = new AtomicInt(15);
+let oldValue = atomicInt.fetchAnd(6);
+console.info(oldValue.toString()); // 15
+console.info(atomicInt.load().toString()); // 6
 ```
 
 ### fetchOr
@@ -347,10 +351,10 @@ fetchOr(val: int): int
 
 **示例：**
 ```ts
-let atomicInt = new AtomicInt(3)
-let oldValue = atomicInt.fetchOr(4)
-console.info(oldValue.toString()) // 3
-console.info(atomicInt.load().toString()) // 7
+let atomicInt = new AtomicInt(3);
+let oldValue = atomicInt.fetchOr(4);
+console.info(oldValue.toString()); // 3
+console.info(atomicInt.load().toString()); // 7
 ```
 
 ### fetchXor
@@ -371,10 +375,10 @@ fetchXor(val: int): int
 
 **示例：**
 ```ts
-let atomicInt = new AtomicInt(5)
-let oldValue = atomicInt.fetchXor(3)
-console.info(oldValue.toString()) // 5
-console.info(atomicInt.load().toString()) // 6
+let atomicInt = new AtomicInt(5);
+let oldValue = atomicInt.fetchXor(3);
+console.info(oldValue.toString()); // 5
+console.info(atomicInt.load().toString()); // 6
 ```
 
 ### isLockFree
@@ -390,7 +394,7 @@ static isLockFree(): boolean
 
 **示例：**
 ```ts
-console.info(AtomicInt.isLockFree().toString())
+console.info(AtomicInt.isLockFree().toString());
 ```
 
 ## AtomicLong
@@ -406,11 +410,11 @@ constructor(val: long)
 **参数：**
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| val | long | 是 | AtomicLong的初始值。 |
+| val | long | 是 | AtomicLong的初始值。取值范围为[-9223372036854775808, 9223372036854775807]。 |
 
 **示例：**
 ```ts
-let atomicLong = new AtomicLong(16)
+let atomicLong = new AtomicLong(16);
 ```
 
 ### load
@@ -426,8 +430,8 @@ load(): long
 
 **示例：**
 ```ts
-let atomicLong = new AtomicLong(16)
-console.info(atomicLong.load().toString()) // 16
+let atomicLong = new AtomicLong(16);
+console.info(atomicLong.load().toString()); // 16
 ```
 
 ### store
@@ -443,9 +447,9 @@ store(val: long): void
 
 **示例：**
 ```ts
-let atomicLong = new AtomicLong(16)
-atomicLong.store(20)
-console.info(atomicLong.load().toString()) // 20
+let atomicLong = new AtomicLong(16);
+atomicLong.store(20);
+console.info(atomicLong.load().toString()); // 20
 ```
 
 ### exchange
@@ -466,10 +470,10 @@ exchange(val: long): long
 
 **示例：**
 ```ts
-let atomicLong = new AtomicLong(16)
-let oldValue = atomicLong.exchange(18)
-console.info(oldValue.toString()) // 16
-console.info(atomicLong.load().toString()) // 18
+let atomicLong = new AtomicLong(16);
+let oldValue = atomicLong.exchange(18);
+console.info(oldValue.toString()); // 16
+console.info(atomicLong.load().toString()); // 18
 ```
 
 ### compareAndSwap
@@ -491,10 +495,10 @@ compareAndSwap(expected: long, val: long): long
 
 **示例：**
 ```ts
-let atomicLong = new AtomicLong(16)
-let oldValue = atomicLong.compareAndSwap(16, 20)
-console.info(oldValue.toString()) // 16
-console.info(atomicLong.load().toString()) // 20
+let atomicLong = new AtomicLong(16);
+let oldValue = atomicLong.compareAndSwap(16, 20);
+console.info(oldValue.toString()); // 16
+console.info(atomicLong.load().toString()); // 20
 ```
 
 ### fetchAdd
@@ -515,10 +519,10 @@ fetchAdd(val: long): long
 
 **示例：**
 ```ts
-let atomicLong = new AtomicLong(16)
-let oldValue = atomicLong.fetchAdd(4)
-console.info(oldValue.toString()) // 16
-console.info(atomicLong.load().toString()) // 20
+let atomicLong = new AtomicLong(16);
+let oldValue = atomicLong.fetchAdd(4);
+console.info(oldValue.toString()); // 16
+console.info(atomicLong.load().toString()); // 20
 ```
 
 ### fetchSub
@@ -539,10 +543,10 @@ fetchSub(val: long): long
 
 **示例：**
 ```ts
-let atomicLong = new AtomicLong(16)
-let oldValue = atomicLong.fetchSub(6)
-console.info(oldValue.toString()) // 16
-console.info(atomicLong.load().toString()) // 10
+let atomicLong = new AtomicLong(16);
+let oldValue = atomicLong.fetchSub(6);
+console.info(oldValue.toString()); // 16
+console.info(atomicLong.load().toString()); // 10
 ```
 
 ### fetchAnd
@@ -563,10 +567,10 @@ fetchAnd(val: long): long
 
 **示例：**
 ```ts
-let atomicLong = new AtomicLong(10)
-let oldValue = atomicLong.fetchAnd(7)
-console.info(oldValue.toString()) // 10
-console.info(atomicLong.load().toString()) // 2
+let atomicLong = new AtomicLong(10);
+let oldValue = atomicLong.fetchAnd(7);
+console.info(oldValue.toString()); // 10
+console.info(atomicLong.load().toString()); // 2
 ```
 
 ### fetchOr
@@ -587,10 +591,10 @@ fetchOr(val: long): long
 
 **示例：**
 ```ts
-let atomicLong = new AtomicLong(2)
-let oldValue = atomicLong.fetchOr(4)
-console.info(oldValue.toString()) // 2
-console.info(atomicLong.load().toString()) // 6
+let atomicLong = new AtomicLong(2);
+let oldValue = atomicLong.fetchOr(4);
+console.info(oldValue.toString()); // 2
+console.info(atomicLong.load().toString()); // 6
 ```
 
 ### fetchXor
@@ -611,10 +615,10 @@ fetchXor(val: long): long
 
 **示例：**
 ```ts
-let atomicLong = new AtomicLong(5)
-let oldValue = atomicLong.fetchXor(3)
-console.info(oldValue.toString()) // 5
-console.info(atomicLong.load().toString()) // 6
+let atomicLong = new AtomicLong(5);
+let oldValue = atomicLong.fetchXor(3);
+console.info(oldValue.toString()); // 5
+console.info(atomicLong.load().toString()); // 6
 ```
 
 ### isLockFree
@@ -630,7 +634,7 @@ static isLockFree(): boolean
 
 **示例：**
 ```ts
-console.info(AtomicLong.isLockFree().toString())
+console.info(AtomicLong.isLockFree().toString());
 ```
 
 ## AtomicShort
@@ -646,11 +650,11 @@ constructor(val: short)
 **参数：**
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| val | short | 是 | AtomicShort的初始值。 |
+| val | short | 是 | AtomicShort的初始值。取值范围为[-32768, 32767]。 |
 
 **示例：**
 ```ts
-let atomicShort = new AtomicShort(3)
+let atomicShort = new AtomicShort(3);
 ```
 
 ### load
@@ -666,8 +670,8 @@ load(): short
 
 **示例：**
 ```ts
-let atomicShort = new AtomicShort(3)
-console.info(atomicShort.load().toString()) // 3
+let atomicShort = new AtomicShort(3);
+console.info(atomicShort.load().toString()); // 3
 ```
 
 ### store
@@ -683,9 +687,9 @@ store(val: short): void
 
 **示例：**
 ```ts
-let atomicShort = new AtomicShort(3)
-atomicShort.store(4)
-console.info(atomicShort.load().toString()) // 4
+let atomicShort = new AtomicShort(3);
+atomicShort.store(4);
+console.info(atomicShort.load().toString()); // 4
 ```
 
 ### exchange
@@ -706,10 +710,10 @@ exchange(val: short): short
 
 **示例：**
 ```ts
-let atomicShort = new AtomicShort(3)
-let oldValue = atomicShort.exchange(5)
-console.info(oldValue.toString()) // 3
-console.info(atomicShort.load().toString()) // 5
+let atomicShort = new AtomicShort(3);
+let oldValue = atomicShort.exchange(5);
+console.info(oldValue.toString()); // 3
+console.info(atomicShort.load().toString()); // 5
 ```
 
 ### compareAndSwap
@@ -731,10 +735,10 @@ compareAndSwap(expected: short, val: short): short
 
 **示例：**
 ```ts
-let atomicShort = new AtomicShort(7)
-let oldValue = atomicShort.compareAndSwap(7, 2)
-console.info(oldValue.toString()) // 7
-console.info(atomicShort.load().toString()) // 2
+let atomicShort = new AtomicShort(7);
+let oldValue = atomicShort.compareAndSwap(7, 2);
+console.info(oldValue.toString()); // 7
+console.info(atomicShort.load().toString()); // 2
 ```
 
 ### fetchAdd
@@ -755,10 +759,10 @@ fetchAdd(val: short): short
 
 **示例：**
 ```ts
-let atomicShort = new AtomicShort(2)
-let oldValue = atomicShort.fetchAdd(3)
-console.info(oldValue.toString()) // 2
-console.info(atomicShort.load().toString()) // 5
+let atomicShort = new AtomicShort(2);
+let oldValue = atomicShort.fetchAdd(3);
+console.info(oldValue.toString()); // 2
+console.info(atomicShort.load().toString()); // 5
 ```
 
 ### fetchSub
@@ -779,10 +783,10 @@ fetchSub(val: short): short
 
 **示例：**
 ```ts
-let atomicShort = new AtomicShort(8)
-let oldValue = atomicShort.fetchSub(3)
-console.info(oldValue.toString()) // 8
-console.info(atomicShort.load().toString()) // 5
+let atomicShort = new AtomicShort(8);
+let oldValue = atomicShort.fetchSub(3);
+console.info(oldValue.toString()); // 8
+console.info(atomicShort.load().toString()); // 5
 ```
 
 ### fetchAnd
@@ -803,10 +807,10 @@ fetchAnd(val: short): short
 
 **示例：**
 ```ts
-let atomicShort = new AtomicShort(7)
-let oldValue = atomicShort.fetchAnd(6)
-console.info(oldValue.toString()) // 7
-console.info(atomicShort.load().toString()) // 6
+let atomicShort = new AtomicShort(7);
+let oldValue = atomicShort.fetchAnd(6);
+console.info(oldValue.toString()); // 7
+console.info(atomicShort.load().toString()); // 6
 ```
 
 ### fetchOr
@@ -827,10 +831,10 @@ fetchOr(val: short): short
 
 **示例：**
 ```ts
-let atomicShort = new AtomicShort(3)
-let oldValue = atomicShort.fetchOr(4)
-console.info(oldValue.toString()) // 3
-console.info(atomicShort.load().toString()) // 7
+let atomicShort = new AtomicShort(3);
+let oldValue = atomicShort.fetchOr(4);
+console.info(oldValue.toString()); // 3
+console.info(atomicShort.load().toString()); // 7
 ```
 
 ### fetchXor
@@ -851,10 +855,10 @@ fetchXor(val: short): short
 
 **示例：**
 ```ts
-let atomicShort = new AtomicShort(5)
-let oldValue = atomicShort.fetchXor(3)
-console.info(oldValue.toString()) // 5
-console.info(atomicShort.load().toString()) // 6
+let atomicShort = new AtomicShort(5);
+let oldValue = atomicShort.fetchXor(3);
+console.info(oldValue.toString()); // 5
+console.info(atomicShort.load().toString()); // 6
 ```
 
 ### isLockFree
@@ -870,7 +874,7 @@ static isLockFree(): boolean
 
 **示例：**
 ```ts
-console.info(AtomicShort.isLockFree().toString())
+console.info(AtomicShort.isLockFree().toString());
 ```
 
 ## AtomicByte
@@ -886,11 +890,11 @@ constructor(val: byte)
 **参数：**
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| val | byte | 是 | AtomicByte的初始值。 |
+| val | byte | 是 | AtomicByte的初始值。取值范围为[-128, 127]。 |
 
 **示例：**
 ```ts
-let atomicByte = new AtomicByte(5)
+let atomicByte = new AtomicByte(5);
 ```
 
 ### load
@@ -906,8 +910,8 @@ load(): byte
 
 **示例：**
 ```ts
-let atomicByte = new AtomicByte(5)
-console.info(atomicByte.load().toString()) // 5
+let atomicByte = new AtomicByte(5);
+console.info(atomicByte.load().toString()); // 5
 ```
 
 ### store
@@ -923,9 +927,9 @@ store(val: byte): void
 
 **示例：**
 ```ts
-let atomicByte = new AtomicByte(5)
-atomicByte.store(6)
-console.info(atomicByte.load().toString()) // 6
+let atomicByte = new AtomicByte(5);
+atomicByte.store(6);
+console.info(atomicByte.load().toString()); // 6
 ```
 
 ### exchange
@@ -946,10 +950,10 @@ exchange(val: byte): byte
 
 **示例：**
 ```ts
-let atomicByte = new AtomicByte(5)
-let oldValue = atomicByte.exchange(1)
-console.info(oldValue.toString()) // 5
-console.info(atomicByte.load().toString()) // 1
+let atomicByte = new AtomicByte(5);
+let oldValue = atomicByte.exchange(1);
+console.info(oldValue.toString()); // 5
+console.info(atomicByte.load().toString()); // 1
 ```
 
 ### compareAndSwap
@@ -971,10 +975,10 @@ compareAndSwap(expected: byte, val: byte): byte
 
 **示例：**
 ```ts
-let atomicByte = new AtomicByte(5)
-let oldValue = atomicByte.compareAndSwap(5, 2)
-console.info(oldValue.toString()) // 5
-console.info(atomicByte.load().toString()) // 2
+let atomicByte = new AtomicByte(5);
+let oldValue = atomicByte.compareAndSwap(5, 2);
+console.info(oldValue.toString()); // 5
+console.info(atomicByte.load().toString()); // 2
 ```
 
 ### fetchAdd
@@ -995,10 +999,10 @@ fetchAdd(val: byte): byte
 
 **示例：**
 ```ts
-let atomicByte = new AtomicByte(1)
-let oldValue = atomicByte.fetchAdd(4)
-console.info(oldValue.toString()) // 1
-console.info(atomicByte.load().toString()) // 5
+let atomicByte = new AtomicByte(1);
+let oldValue = atomicByte.fetchAdd(4);
+console.info(oldValue.toString()); // 1
+console.info(atomicByte.load().toString()); // 5
 ```
 
 ### fetchSub
@@ -1019,10 +1023,10 @@ fetchSub(val: byte): byte
 
 **示例：**
 ```ts
-let atomicByte = new AtomicByte(8)
-let oldValue = atomicByte.fetchSub(3)
-console.info(oldValue.toString()) // 8
-console.info(atomicByte.load().toString()) // 5
+let atomicByte = new AtomicByte(8);
+let oldValue = atomicByte.fetchSub(3);
+console.info(oldValue.toString()); // 8
+console.info(atomicByte.load().toString()); // 5
 ```
 
 ### fetchAnd
@@ -1043,10 +1047,10 @@ fetchAnd(val: byte): byte
 
 **示例：**
 ```ts
-let atomicByte = new AtomicByte(7)
-let oldValue = atomicByte.fetchAnd(6)
-console.info(oldValue.toString()) // 7
-console.info(atomicByte.load().toString()) // 6
+let atomicByte = new AtomicByte(7);
+let oldValue = atomicByte.fetchAnd(6);
+console.info(oldValue.toString()); // 7
+console.info(atomicByte.load().toString()); // 6
 ```
 
 ### fetchOr
@@ -1067,10 +1071,10 @@ fetchOr(val: byte): byte
 
 **示例：**
 ```ts
-let atomicByte = new AtomicByte(3)
-let oldValue = atomicByte.fetchOr(4)
-console.info(oldValue.toString()) // 3
-console.info(atomicByte.load().toString()) // 7
+let atomicByte = new AtomicByte(3);
+let oldValue = atomicByte.fetchOr(4);
+console.info(oldValue.toString()); // 3
+console.info(atomicByte.load().toString()); // 7
 ```
 
 ### fetchXor
@@ -1091,10 +1095,10 @@ fetchXor(val: byte): byte
 
 **示例：**
 ```ts
-let atomicByte = new AtomicByte(5)
-let oldValue = atomicByte.fetchXor(3)
-console.info(oldValue.toString()) // 5
-console.info(atomicByte.load().toString()) // 6
+let atomicByte = new AtomicByte(5);
+let oldValue = atomicByte.fetchXor(3);
+console.info(oldValue.toString()); // 5
+console.info(atomicByte.load().toString()); // 6
 ```
 
 ### isLockFree
@@ -1110,7 +1114,7 @@ static isLockFree(): boolean
 
 **示例：**
 ```ts
-console.info(AtomicByte.isLockFree().toString())
+console.info(AtomicByte.isLockFree().toString());
 ```
 
 ## AtomicFloat
@@ -1126,11 +1130,11 @@ constructor(val: float)
 **参数：**
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| val | float | 是 | AtomicFloat的初始值。 |
+| val | float | 是 | AtomicFloat的初始值。有限值范围为[-3.40282346638528860e+38, 3.40282346638528860e+38]，最小正非零值为1.4e-45，并支持NaN、Float.POSITIVE_INFINITY和Float.NEGATIVE_INFINITY。 |
 
 **示例：**
 ```ts
-let atomicFloat = new AtomicFloat(1.5)
+let atomicFloat = new AtomicFloat(1.5);
 ```
 
 ### load
@@ -1146,8 +1150,8 @@ load(): float
 
 **示例：**
 ```ts
-let atomicFloat = new AtomicFloat(1.5)
-console.info(atomicFloat.load().toString()) // 1.5
+let atomicFloat = new AtomicFloat(1.5);
+console.info(atomicFloat.load().toString()); // 1.5
 ```
 
 ### store
@@ -1163,9 +1167,9 @@ store(val: float): void
 
 **示例：**
 ```ts
-let atomicFloat = new AtomicFloat(1.5)
-atomicFloat.store(2.5)
-console.info(atomicFloat.load().toString()) // 2.5
+let atomicFloat = new AtomicFloat(1.5);
+atomicFloat.store(2.5);
+console.info(atomicFloat.load().toString()); // 2.5
 ```
 
 ### exchange
@@ -1186,10 +1190,10 @@ exchange(val: float): float
 
 **示例：**
 ```ts
-let atomicFloat = new AtomicFloat(1.5)
-let oldValue = atomicFloat.exchange(2.5)
-console.info(oldValue.toString()) // 1.5
-console.info(atomicFloat.load().toString()) // 2.5
+let atomicFloat = new AtomicFloat(1.5);
+let oldValue = atomicFloat.exchange(2.5);
+console.info(oldValue.toString()); // 1.5
+console.info(atomicFloat.load().toString()); // 2.5
 ```
 
 ### compareAndSwap
@@ -1211,10 +1215,10 @@ compareAndSwap(expected: float, val: float): float
 
 **示例：**
 ```ts
-let atomicFloat = new AtomicFloat(1.5)
-let oldValue = atomicFloat.compareAndSwap(1.5, 3.0)
-console.info(oldValue.toString()) // 1.5
-console.info(atomicFloat.load().toString()) // 3
+let atomicFloat = new AtomicFloat(1.5);
+let oldValue = atomicFloat.compareAndSwap(1.5, 3.0);
+console.info(oldValue.toString()); // 1.5
+console.info(atomicFloat.load().toString()); // 3
 ```
 
 ### fetchAdd
@@ -1235,10 +1239,10 @@ fetchAdd(val: float): float
 
 **示例：**
 ```ts
-let atomicFloat = new AtomicFloat(1.5)
-let oldValue = atomicFloat.fetchAdd(0.5)
-console.info(oldValue.toString()) // 1.5
-console.info(atomicFloat.load().toString()) // 2
+let atomicFloat = new AtomicFloat(1.5);
+let oldValue = atomicFloat.fetchAdd(0.5);
+console.info(oldValue.toString()); // 1.5
+console.info(atomicFloat.load().toString()); // 2
 ```
 
 ### fetchSub
@@ -1259,10 +1263,10 @@ fetchSub(val: float): float
 
 **示例：**
 ```ts
-let atomicFloat = new AtomicFloat(3.5)
-let oldValue = atomicFloat.fetchSub(1.0)
-console.info(oldValue.toString()) // 3.5
-console.info(atomicFloat.load().toString()) // 2.5
+let atomicFloat = new AtomicFloat(3.5);
+let oldValue = atomicFloat.fetchSub(1.0);
+console.info(oldValue.toString()); // 3.5
+console.info(atomicFloat.load().toString()); // 2.5
 ```
 
 ### isLockFree
@@ -1278,7 +1282,7 @@ static isLockFree(): boolean
 
 **示例：**
 ```ts
-console.info(AtomicFloat.isLockFree().toString())
+console.info(AtomicFloat.isLockFree().toString());
 ```
 
 ## AtomicDouble
@@ -1294,11 +1298,11 @@ constructor(val: double)
 **参数：**
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| val | double | 是 | AtomicDouble的初始值。 |
+| val | double | 是 | AtomicDouble的初始值。有限值范围为[-1.7976931348623157e+308, 1.7976931348623157e+308]，最小正非零值为4.9e-324，并支持NaN、Double.POSITIVE_INFINITY和Double.NEGATIVE_INFINITY。 |
 
 **示例：**
 ```ts
-let atomicDouble = new AtomicDouble(10.0)
+let atomicDouble = new AtomicDouble(10.0);
 ```
 
 ### load
@@ -1314,8 +1318,8 @@ load(): double
 
 **示例：**
 ```ts
-let atomicDouble = new AtomicDouble(10.0)
-console.info(atomicDouble.load().toString()) // 10
+let atomicDouble = new AtomicDouble(10.0);
+console.info(atomicDouble.load().toString()); // 10
 ```
 
 ### store
@@ -1331,9 +1335,9 @@ store(val: double): void
 
 **示例：**
 ```ts
-let atomicDouble = new AtomicDouble(10.0)
-atomicDouble.store(11.5)
-console.info(atomicDouble.load().toString()) // 11.5
+let atomicDouble = new AtomicDouble(10.0);
+atomicDouble.store(11.5);
+console.info(atomicDouble.load().toString()); // 11.5
 ```
 
 ### exchange
@@ -1354,10 +1358,10 @@ exchange(val: double): double
 
 **示例：**
 ```ts
-let atomicDouble = new AtomicDouble(10.0)
-let oldValue = atomicDouble.exchange(12.0)
-console.info(oldValue.toString()) // 10
-console.info(atomicDouble.load().toString()) // 12
+let atomicDouble = new AtomicDouble(10.0);
+let oldValue = atomicDouble.exchange(12.0);
+console.info(oldValue.toString()); // 10
+console.info(atomicDouble.load().toString()); // 12
 ```
 
 ### compareAndSwap
@@ -1379,10 +1383,10 @@ compareAndSwap(expected: double, val: double): double
 
 **示例：**
 ```ts
-let atomicDouble = new AtomicDouble(7.5)
-let oldValue = atomicDouble.compareAndSwap(7.5, 12.0)
-console.info(oldValue.toString()) // 7.5
-console.info(atomicDouble.load().toString()) // 12
+let atomicDouble = new AtomicDouble(7.5);
+let oldValue = atomicDouble.compareAndSwap(7.5, 12.0);
+console.info(oldValue.toString()); // 7.5
+console.info(atomicDouble.load().toString()); // 12
 ```
 
 ### fetchAdd
@@ -1403,10 +1407,10 @@ fetchAdd(val: double): double
 
 **示例：**
 ```ts
-let atomicDouble = new AtomicDouble(1.5)
-let oldValue = atomicDouble.fetchAdd(0.5)
-console.info(oldValue.toString()) // 1.5
-console.info(atomicDouble.load().toString()) // 2
+let atomicDouble = new AtomicDouble(1.5);
+let oldValue = atomicDouble.fetchAdd(0.5);
+console.info(oldValue.toString()); // 1.5
+console.info(atomicDouble.load().toString()); // 2
 ```
 
 ### fetchSub
@@ -1427,10 +1431,10 @@ fetchSub(val: double): double
 
 **示例：**
 ```ts
-let atomicDouble = new AtomicDouble(10.0)
-let oldValue = atomicDouble.fetchSub(2.5)
-console.info(oldValue.toString()) // 10
-console.info(atomicDouble.load().toString()) // 7.5
+let atomicDouble = new AtomicDouble(10.0);
+let oldValue = atomicDouble.fetchSub(2.5);
+console.info(oldValue.toString()); // 10
+console.info(atomicDouble.load().toString()); // 7.5
 ```
 
 ### isLockFree
@@ -1446,7 +1450,7 @@ static isLockFree(): boolean
 
 **示例：**
 ```ts
-console.info(AtomicDouble.isLockFree().toString())
+console.info(AtomicDouble.isLockFree().toString());
 ```
 
 ## AtomicChar
@@ -1462,11 +1466,11 @@ constructor(val: char)
 **参数：**
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| val | char | 是 | AtomicChar的初始值。 |
+| val | char | 是 | AtomicChar的初始值。取值范围为[c'\u0000', c'\uFFFF']，表示一个UTF-16码元。 |
 
 **示例：**
 ```ts
-let atomicChar = new AtomicChar(c'a')
+let atomicChar = new AtomicChar(c'a');
 ```
 
 ### load
@@ -1482,8 +1486,8 @@ load(): char
 
 **示例：**
 ```ts
-let atomicChar = new AtomicChar(c'a')
-console.info(atomicChar.load()) // a
+let atomicChar = new AtomicChar(c'a');
+console.info(atomicChar.load()); // a
 ```
 
 ### store
@@ -1499,9 +1503,9 @@ store(val: char): void
 
 **示例：**
 ```ts
-let atomicChar = new AtomicChar(c'a')
-atomicChar.store(c'b')
-console.info(atomicChar.load()) // b
+let atomicChar = new AtomicChar(c'a');
+atomicChar.store(c'b');
+console.info(atomicChar.load()); // b
 ```
 
 ### exchange
@@ -1522,10 +1526,10 @@ exchange(val: char): char
 
 **示例：**
 ```ts
-let atomicChar = new AtomicChar(c'a')
-let oldValue = atomicChar.exchange(c'b')
-console.info(oldValue) // a
-console.info(atomicChar.load()) // b
+let atomicChar = new AtomicChar(c'a');
+let oldValue = atomicChar.exchange(c'b');
+console.info(oldValue); // a
+console.info(atomicChar.load()); // b
 ```
 
 ### compareAndSwap
@@ -1547,10 +1551,10 @@ compareAndSwap(expected: char, val: char): char
 
 **示例：**
 ```ts
-let atomicChar = new AtomicChar(c'a')
-let oldValue = atomicChar.compareAndSwap(c'a', c'b')
-console.info(oldValue) // a
-console.info(atomicChar.load()) // b
+let atomicChar = new AtomicChar(c'a');
+let oldValue = atomicChar.compareAndSwap(c'a', c'b');
+console.info(oldValue); // a
+console.info(atomicChar.load()); // b
 ```
 
 ### isLockFree
@@ -1566,7 +1570,7 @@ static isLockFree(): boolean
 
 **示例：**
 ```ts
-console.info(AtomicChar.isLockFree().toString())
+console.info(AtomicChar.isLockFree().toString());
 ```
 
 ## AtomicBoolean
@@ -1582,11 +1586,11 @@ constructor(val: boolean)
 **参数：**
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | ---- | -------- |
-| val | boolean | 是 | AtomicBoolean的初始值。 |
+| val | boolean | 是 | AtomicBoolean的初始值。取值为true时表示初始值为真，取值为false时表示初始值为假。 |
 
 **示例：**
 ```ts
-let atomicBoolean = new AtomicBoolean(false)
+let atomicBoolean = new AtomicBoolean(false);
 ```
 
 ### load
@@ -1602,8 +1606,8 @@ load(): boolean
 
 **示例：**
 ```ts
-let atomicBoolean = new AtomicBoolean(false)
-console.info(atomicBoolean.load().toString()) // false
+let atomicBoolean = new AtomicBoolean(false);
+console.info(atomicBoolean.load().toString()); // false
 ```
 
 ### store
@@ -1619,9 +1623,9 @@ store(val: boolean): void
 
 **示例：**
 ```ts
-let atomicBoolean = new AtomicBoolean(false)
-atomicBoolean.store(true)
-console.info(atomicBoolean.load().toString()) // true
+let atomicBoolean = new AtomicBoolean(false);
+atomicBoolean.store(true);
+console.info(atomicBoolean.load().toString()); // true
 ```
 
 ### exchange
@@ -1642,10 +1646,10 @@ exchange(val: boolean): boolean
 
 **示例：**
 ```ts
-let atomicBoolean = new AtomicBoolean(false)
-let oldValue = atomicBoolean.exchange(true)
-console.info(oldValue.toString()) // false
-console.info(atomicBoolean.load().toString()) // true
+let atomicBoolean = new AtomicBoolean(false);
+let oldValue = atomicBoolean.exchange(true);
+console.info(oldValue.toString()); // false
+console.info(atomicBoolean.load().toString()); // true
 ```
 
 ### compareAndSwap
@@ -1667,10 +1671,10 @@ compareAndSwap(expected: boolean, val: boolean): boolean
 
 **示例：**
 ```ts
-let atomicBoolean = new AtomicBoolean(false)
-let oldValue = atomicBoolean.compareAndSwap(false, true)
-console.info(oldValue.toString()) // false
-console.info(atomicBoolean.load().toString()) // true
+let atomicBoolean = new AtomicBoolean(false);
+let oldValue = atomicBoolean.compareAndSwap(false, true);
+console.info(oldValue.toString()); // false
+console.info(atomicBoolean.load().toString()); // true
 ```
 
 ### isLockFree
@@ -1686,5 +1690,5 @@ static isLockFree(): boolean
 
 **示例：**
 ```ts
-console.info(AtomicBoolean.isLockFree().toString())
+console.info(AtomicBoolean.isLockFree().toString());
 ```
