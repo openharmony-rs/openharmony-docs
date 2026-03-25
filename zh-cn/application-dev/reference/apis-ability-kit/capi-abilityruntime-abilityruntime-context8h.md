@@ -13,7 +13,7 @@ typedef struct AbilityRuntime_Context* AbilityRuntime_ContextHandle
 
 ## 概述
 
-定义指向AbilityRuntime_Context的指针。
+定义AbilityRuntime_Context对象指针。
 
 **起始版本：** 24
 

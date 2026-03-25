@@ -13,7 +13,7 @@ typedef struct AbilityRuntime_ExtensionInstance* AbilityRuntime_ExtensionInstanc
 
 ## 概述
 
-定义指向AbilityRuntime_ExtensionInstance的指针。
+定义AbilityRuntime_ExtensionInstance对象指针。
 
 **起始版本：** 24
 
