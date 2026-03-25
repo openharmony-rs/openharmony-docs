@@ -3437,3 +3437,121 @@ struct Index {
   }
 }
 ```
+
+## pointer.setMouseScrollDirection<sup>24+</sup>
+
+setMouseScrollDirection(inverted: boolean): Promise\<void>
+
+Sets the scroll direction of the mouse wheel. This API uses a promise to return the result asynchronously.
+
+**Required permissions**: ohos.permission.INPUT_DEVICE_CONTROLLER
+
+**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name| Type   | Mandatory| Description                                                                                                        |
+| ------ | ------- | ---- | ------------------------------------------------------------------------------------------------------------ |
+| inverted  | boolean | Yes  | Scroll direction of the mouse wheel.<br>The value **true** indicates that scroll direction matches the finger movement on the wheel, and the value **false** indicates that the scroll direction is opposite to the finger movement.<br>The default value is **true**.|
+
+**Return value**
+
+| Type          | Description                                  |
+| -------------- | -------------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Mouse Pointer Error Codes](./errorcode-pointer.md).
+
+| ID  | Error Message                       |
+|---------|-----------------------------|
+| 201     | Permission denied.          |
+| 202     | SystemAPI permission error. |
+| 3800001 | Input service exception.    |
+
+**Example**
+
+```js
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("setMouseScrollDirection")
+        .onClick(() => {
+          try {
+            pointer.setMouseScrollDirection(false).then(() => {
+              console.info(`setMouseScrollDirection success`);
+            }).catch((error: BusinessError) => {
+              console.error(`Set mouse scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
+          } catch (error) {
+            console.error(`setMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```
+
+## pointer.getMouseScrollDirection<sup>24+</sup>
+
+getMouseScrollDirection(): Promise\<boolean>
+
+Obtains the scroll direction of the mouse wheel. This API uses a promise to return the result asynchronously.
+
+**Required permissions**: ohos.permission.INPUT_DEVICE_CONTROLLER
+
+**System capability**: SystemCapability.MultimodalInput.Input.Pointer
+
+**System API**: This is a system API.
+
+**Return value**
+
+| Type             | Description                                                                                                                        |
+| ----------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Promise\<boolean> | Promise object, which returns the mouse wheel scroll direction asynchronously.<br>The value **true** indicates that scroll direction matches the finger movement on the wheel, and the value **false** indicates that the scroll direction is opposite to the finger movement.<br>The default value is **true**.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Mouse Pointer Error Codes](./errorcode-pointer.md).
+
+| ID  | Error Message                                                                                                                                      |
+|---------| ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| 201     | Permission denied.          |
+| 202     | SystemAPI permission error. |
+| 3800001 | Input service exception.    |
+
+**Example**
+
+```js
+import { pointer } from '@kit.InputKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    RelativeContainer() {
+      Button("getMouseScrollDirection")
+        .onClick(() => {
+          try {
+            pointer.getMouseScrollDirection().then((state: boolean) => {
+              console.info(`getMouseScrollDirection success, state: ${JSON.stringify(state)}`);
+            }).catch((error: BusinessError) => {
+              console.error(`Get mouse scroll direction failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+            })
+          } catch (error) {
+            console.error(`getMouseScrollDirection failed, error: ${JSON.stringify(error, [`code`, `message`])}`);
+          }
+        })
+    }
+  }
+}
+```

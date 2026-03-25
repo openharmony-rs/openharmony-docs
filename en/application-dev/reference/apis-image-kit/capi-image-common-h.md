@@ -31,7 +31,7 @@ The file declares the common enums and structs used by the image interface.
 | [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) | Image_PositionArea | Describes the area of image pixels to be read from or written to.|
 | [Image_Scale](capi-image-nativemodule-image-scale.md) | Image_Scale | Describes the image scaling factor.|
 | [Image_String](capi-image-nativemodule-image-string.md) | Image_String/Image_MimeType | Describes an image string.|
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | - | Describes the picture metadata.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | OH_PictureMetadata | Describes the picture metadata.|
 
 ### Enums
 
@@ -46,9 +46,9 @@ The file declares the common enums and structs used by the image interface.
 | Name| Description|
 | -- | -- |
 | [Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_PictureMetadata **metadata)](#oh_picturemetadata_create) | Creates the pointer to an OH_PictureMetadata struct.|
-| [Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getproperty) | Obtains a property of metadata based on the key.|
+| [Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getproperty) | Obtains a property of metadata based on the key. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.|
 | [Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_setproperty) | Sets a property of metadata based on the key.|
-| [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** is terminated with a string terminator.|
+| [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** ends with the string terminator **\0**.|
 | [Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)](#oh_picturemetadata_release) | Releases the pointer to an OH_PictureMetadata struct.|
 | [Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_PictureMetadata **newMetadata)](#oh_picturemetadata_clone) | Clones metadata.|
 
@@ -175,7 +175,7 @@ The file declares the common enums and structs used by the image interface.
 | static const char * OHOS_IMAGE_PROPERTY_LENS_MODEL = "LensModel" | Model of the lens.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_LENS_SERIAL_NUMBER = "LensSerialNumber" | Serial number of the lens.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_LENS_SPECIFICATION = "LensSpecification" | Specifications of the lens.<br>**Since**: 12|
-| static const char * OHOS_IMAGE_PROPERTY_NEW_SUBFILE_TYPE = "NewSubfileType" | Data type of a subfile, such as a full-resolution image, a thumbnail, or a part of a multi-frame image. The value is a bit mask. The value 0 indicates a full-resolution image, **1** indicates a thumbnail, and **2** indicates a part of a multi-frame image.<br>**Since**: 12|
+| static const char * OHOS_IMAGE_PROPERTY_NEW_SUBFILE_TYPE = "NewSubfileType" | In the Exif, the **NewSubfileType** field is used to identify the data type of a subfile, for example, full-resolution image, thumbnail, or part of a multi-frame image. The value is a bit mask. The value 0 indicates a full-resolution image, **1** indicates a thumbnail, and **2** indicates a part of a multi-frame image.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME = "OffsetTime" | Time with an offset from UTC when the image was captured, in the format of ±HH:MM.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME_DIGITIZED = "OffsetTimeDigitized" | Time with an offset from UTC when the image was digitized. It helps to accurately adjust the timestamp.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME_ORIGINAL = "OffsetTimeOriginal" | Time with an offset from UTC when the original image was created. It is critical for time-sensitive applications.<br>**Since**: 12|
@@ -233,6 +233,7 @@ Enumerates the error codes.
 | IMAGE_UNSUPPORTED_MIME_TYPE = 7600101 | Unsupported MIME type.|
 | IMAGE_UNKNOWN_MIME_TYPE = 7600102 | Unknown MIME type.|
 | IMAGE_TOO_LARGE = 7600103 | The data or image is too large.|
+| IMAGE_GET_IMAGE_DATA_FAILED = 7600104 |  Failed to obtain image data.<br>**Since**: 23|
 | IMAGE_DMA_NOT_EXIST = 7600173 | The memory is not the DMA memory.|
 | IMAGE_DMA_OPERATION_FAILED = 7600174 | The operation on the DMA memory fails.|
 | IMAGE_UNSUPPORTED_OPERATION = 7600201 | Unsupported operation.|
@@ -240,6 +241,7 @@ Enumerates the error codes.
 | IMAGE_UNSUPPORTED_CONVERSION = 7600203 | Unsupported conversion.|
 | IMAGE_INVALID_REGION = 7600204 | Invalid region.|
 | IMAGE_UNSUPPORTED_MEMORY_FORMAT = 7600205 |  The memory format is not supported.<br>**Since**: 13|
+| IMAGE_INVALID_PARAMETER = 7600206 |  Invalid parameter.<br>**Since**: 19|
 | IMAGE_UNSUPPORTED_DATA_FORMAT = 7600207 |  Unsupported data format.<br>**Since**: 22|
 | IMAGE_ALLOC_FAILED = 7600301 | Failed to allocate the memory.|
 | IMAGE_COPY_FAILED = 7600302 | Failed to copy the memory.|
@@ -252,6 +254,7 @@ Enumerates the error codes.
 | IMAGE_SOURCE_UNSUPPORTED_MIME_TYPE = 7700102 |  Unsupported MIME type during image decoding.<br>**Since**: 15|
 | IMAGE_SOURCE_TOO_LARGE = 7700103 |  The image is too large.<br>**Since**: 15|
 | IMAGE_SOURCE_UNSUPPORTED_ALLOCATOR_TYPE = 7700201 |  The allocator type is not supported. For example, decoding HDR images using shared memory is unsupported because only DMA supports HDR metadata.<br>**Since**: 15|
+| IMAGE_SOURCE_UNSUPPORTED_METADATA = 7700202 |  Unsupported metadata type. For example, the property name is not supported or the property value is invalid.<br>**Since**: 23|
 | IMAGE_SOURCE_UNSUPPORTED_OPTIONS = 7700203 |  Unsupported options. For example, an image cannot be converted into the required pixel format.<br>**Since**: 15|
 | IMAGE_SOURCE_INVALID_PARAMETER = 7700204 |  Invalid **ImageSource** parameter.<br>**Since**: 19|
 | IMAGE_DECODE_FAILED = 7700301 | Decoding failed.|
@@ -294,7 +297,7 @@ Enumerates the types of memory allocation for a PixelMap.
 | -- | -- |
 | IMAGE_ALLOCATOR_MODE_AUTO = 0 | The system determines the type of memory to allocate when creating a PixelMap.|
 | IMAGE_ALLOCATOR_MODE_DMA = 1 | Allocates a DMA-type memory buffer.|
-| IMAGE_ALLOCATOR_MODE_DMA = 2 | Uses shared memory to create a PixelMap.|
+| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | Uses shared memory to create a PixelMap.|
 
 
 ## Function Description
@@ -315,14 +318,14 @@ Creates the pointer to an OH_PictureMetadata struct.
 
 | Name| Description|
 | -- | -- |
-| [Image_MetadataType](#image_metadatatype) metadataType | Metadata type.|
+| [Image_MetadataType](capi-image-common-h.md#image_metadatatype) metadataType | Metadata type.|
 | [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) **metadata | Double pointer to the OH_PictureMetadata struct created.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_PictureMetadata_GetProperty()
 
@@ -332,7 +335,7 @@ Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Ima
 
 **Description**
 
-Obtains a property of metadata based on the key.
+Obtains a property of metadata based on the key. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
 
 **Since**: 13
 
@@ -348,7 +351,7 @@ Obtains a property of metadata based on the key.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
 
 ### OH_PictureMetadata_SetProperty()
 
@@ -374,7 +377,7 @@ Sets a property of metadata based on the key.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
 
 ### OH_PictureMetadata_GetPropertyWithNull()
 
@@ -384,7 +387,7 @@ Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metad
 
 **Description**
 
-Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** is terminated with a string terminator.
+Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** ends with the string terminator **\0**.
 
 **Since**: 19
 
@@ -400,7 +403,7 @@ Obtains the metadata value of an OH_PictureMetadata instance. The output **value
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_INVALID_PARAMETER**: The **metadata**, **key**, or **value** parameter is a null pointer.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_INVALID_PARAMETER**: The **metadata**, **key**, or **value** parameter is a null pointer.<br>         **IMAGE_UNSUPPORTED_METADATA**: The metadata type is not supported, or the metadata type and the auxiliary picture type do not match.|
 
 ### OH_PictureMetadata_Release()
 
@@ -424,7 +427,7 @@ Releases the pointer to an OH_PictureMetadata struct.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.|
 
 ### OH_PictureMetadata_Clone()
 
@@ -449,4 +452,4 @@ Clones metadata.
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_ALLOC_FAILED**: The memory allocation fails.<br>         **IMAGE_COPY_FAILED**: The memory copy fails.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: A parameter is incorrect.<br>         **IMAGE_ALLOC_FAILED**: The memory allocation fails.<br>         **IMAGE_COPY_FAILED**: The memory copy fails.|

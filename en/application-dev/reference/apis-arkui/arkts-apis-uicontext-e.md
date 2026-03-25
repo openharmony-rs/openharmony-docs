@@ -112,7 +112,11 @@ Enumerates resolution strategies for **UIContext** objects.
 
 ## CustomKeyboardContinueFeature<sup>23+</sup>
 
-Sets whether the input context persists when switching custom keyboards.
+Sets whether the custom keyboard remains persistent during input field switches.
+
+When enabled, the customer keyboard will remain displayed without being dismissed and re-launched during input field switches.
+
+When disabled, the customer keyboard will dismiss and re-launch during input field switches.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -122,5 +126,5 @@ Sets whether the input context persists when switching custom keyboards.
 
 | Name  | Value  | Description      |
 | ------ | ---- | ---------- |
-| ENABLED | 0 | The input context persists.|
-| DISABLED | 1 | The input context does not persist.|
+| ENABLED | 0 | The custom keyboard remains persistent.|
+| DISABLED | 1 | The custom keyboard does not remain persistent.|

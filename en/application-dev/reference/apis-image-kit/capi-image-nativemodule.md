@@ -28,7 +28,7 @@ You can refer to the corresponding development guide and samples based on your d
 | Name| Description|
 | -- | -- |
 | [image_common.h](capi-image-common-h.md) | Declares the common enums and structs used by the image interface.|
-| [image_native.h](capi-image-native-h.md) | Declares the cropping rectangle, size, and component data of an image.|
+| [image_native.h](capi-image-native-h.md) | Declares the APIs for cropping rectangle, size, and component data of an image.|
 | [image_packer_native.h](capi-image-packer-native-h.md) | Declares the APIs for image encoding.|
 | [image_receiver_native.h](capi-image-receiver-native-h.md) | Declares the APIs used to obtain image data from the native layer.|
 | [image_source_native.h](capi-image-source-native-h.md) | Declares the APIs for image decoding.|

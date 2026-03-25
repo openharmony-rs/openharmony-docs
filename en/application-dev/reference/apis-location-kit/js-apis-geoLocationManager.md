@@ -625,7 +625,7 @@ Subscribes to location change events with a location request initiated. This API
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -694,7 +694,7 @@ Unregisters the listener for location change events with the corresponding locat
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -748,7 +748,7 @@ Registers a listener for error codes generated during continuous location. This 
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -810,7 +810,7 @@ Unregisters the listener for error codes generated during continuous location.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -853,7 +853,7 @@ Subscribes to location service status change events. This API uses an asynchrono
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -894,7 +894,7 @@ Unsubscribes from location service status change events.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -939,7 +939,7 @@ Subscribes to cached GNSS location reports. This API is supported only by certai
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -988,7 +988,7 @@ Unsubscribes from cached GNSS location reports. This API is supported only by ce
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1038,7 +1038,7 @@ Subscribes to GNSS satellite status change events. This API uses an asynchronous
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1113,7 +1113,7 @@ Unsubscribes from GNSS satellite status change events.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1160,7 +1160,7 @@ Subscribes to GNSS NMEA message change events. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1207,7 +1207,7 @@ Unsubscribes from GNSS NMEA message change events.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1256,7 +1256,7 @@ Subscribes to status change events of a specified geofence. This API is supporte
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1321,7 +1321,7 @@ Unsubscribes from status change events of a specified geofence. This API is supp
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1384,7 +1384,7 @@ Subscribes to country code change events. This API uses an asynchronous callback
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1428,7 +1428,7 @@ Unsubscribes from country code change events.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1476,7 +1476,7 @@ Obtains the current position. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1554,7 +1554,7 @@ Obtains the current position. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1613,7 +1613,7 @@ Obtains the current position. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1685,7 +1685,7 @@ Obtains the last location.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1726,7 +1726,7 @@ Checks whether the location service is enabled.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1763,7 +1763,7 @@ Converts coordinates into geographic descriptions through reverse geocoding. Thi
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1819,7 +1819,7 @@ Converts coordinates into geographic descriptions through reverse geocoding. Thi
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1869,7 +1869,7 @@ Converts geographic descriptions into coordinates through geocoding. This API us
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1921,7 +1921,7 @@ Converts geographic descriptions into coordinates through geocoding. This API us
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1965,7 +1965,7 @@ Checks whether the geocoding and reverse geocoding services are available.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2003,7 +2003,7 @@ Obtains the number of cached GNSS locations. This API is supported only by certa
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2051,7 +2051,7 @@ Obtains the number of cached GNSS locations. This API is supported only by certa
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2097,7 +2097,7 @@ Obtains all cached GNSS locations and clears the GNSS cache queue. This API is s
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2143,7 +2143,7 @@ Obtains all cached GNSS locations and clears the GNSS cache queue. This API is s
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2189,7 +2189,7 @@ Sends an extended command to the location subsystem. This API uses an asynchrono
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2237,7 +2237,7 @@ Sends an extended command to the location subsystem. This API uses a promise to 
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2281,7 +2281,7 @@ Obtains the current country code. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2326,7 +2326,7 @@ Obtains the current country code. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2381,7 +2381,7 @@ This API is supported only by certain GNSS chip models. If the required chip mod
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2498,7 +2498,7 @@ This API is supported only by certain GNSS chip models. If the required chip mod
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2543,7 +2543,7 @@ Obtains the list of supported coordinate systems.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2582,7 +2582,7 @@ Obtains the Basic Service Set Identifier (BSSID) of the connected Wi-Fi access p
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2631,7 +2631,7 @@ Currently, only BLE device scanning is supported.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2678,7 +2678,7 @@ Disables listening for Bluetooth scan information reporting events.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2752,7 +2752,7 @@ Obtains the POI near the current location. This API uses a promise to return the
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2871,7 +2871,7 @@ The application can pass a callback in [BeaconFenceRequest](#beaconfencerequest2
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2960,7 +2960,7 @@ Removes a beacon fence and unsubscribes from beacon fence events. This API uses 
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -3058,7 +3058,7 @@ Checks whether a specified BSSID exists in the latest WLAN scan result. This API
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -3102,7 +3102,7 @@ Queries the current valid geofence information. This API uses a promise to retur
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
