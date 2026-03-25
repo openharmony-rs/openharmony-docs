@@ -11,7 +11,13 @@ appRecovery模块提供了应用在故障状态下的恢复能力。
 
 > **说明：**
 > 
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。API9仅支持单进程中单Ability的应用恢复。API10支持进程中包含多个Ability的场景。
+> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> API9仅支持单进程中单Ability的应用恢复。
+>
+> API10支持进程中包含多个Ability的场景。
+>
+> API24支持发生CPP_CRASH时应用恢复。
 
 ## 导入模块
 ```ts
@@ -22,16 +28,16 @@ import { appRecovery } from '@kit.AbilityKit';
 
 应用重启标志，[enableAppRecovery](#apprecoveryenableapprecovery)接口重启选项参数，该类型为枚举。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
-| ALWAYS_RESTART   | 0    | 总是重启应用。 |
-| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。 |
-| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。 |
-| NO_RESTART           | 0xFFFF    | 总是不重启应用。 |
+| ALWAYS_RESTART   | 0    | 总是重启应用。 <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。|
+| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| RESTART_WHEN_CPP_CRASH<sup>24+</sup>    | 0x0004    | 发生CPP_CRASH时重启应用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| NO_RESTART           | 0xFFFF    | 总是不重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## SaveOccasionFlag
 
