@@ -28,7 +28,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [CameraInput_Callbacks](capi-oh-camera-camerainput-callbacks.md) | CameraInput_Callbacks | 相机输入错误事件的回调。 |
-| [Camera_Input](capi-oh-camera-camera-input.md) | Camera_Input | 相机输入对象。可以使用[OH_CameraManager_CreateCameraInput](capi-camera-manager-h.md#oh_cameramanager_createcamerainput)方法创建指针。 |
+| [Camera_Input](capi-oh-camera-camera-input.md) | Camera_Input | 相机输入对象。可以使用{@link OH_CameraManager_CreateCameraInput}方法创建指针。 |
 
 ### 函数
 
@@ -67,17 +67,14 @@ typedef void (*OH_CameraInput_OnError)(const Camera_Input* cameraInput, Camera_E
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | 传递回调的Camera_Input。 |
+| (const Camera_Input\* cameraInput | 传递回调的Camera_Input。 |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) errorCode | 相机输入的Camera_ErrorCode。 |
 
 **参考：**
 
 [CAMERA_CONFLICT_CAMERA](capi-camera-h.md#camera_errorcode)
-
 [CAMERA_DEVICE_DISABLED](capi-camera-h.md#camera_errorcode)
-
 [CAMERA_DEVICE_PREEMPTED](capi-camera-h.md#camera_errorcode)
-
 [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
 
 
@@ -153,7 +150,7 @@ Camera_ErrorCode OH_CameraInput_Open(Camera_Input* cameraInput)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。<br>         CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。<br>         CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。<br>         CAMERA_MULTI_CAMERA_NOT_SUPPORTED：无法同时开启多个摄像头。 |
 
 ### OH_CameraInput_OpenSecureCamera()
 
@@ -178,7 +175,7 @@ Camera_ErrorCode OH_CameraInput_OpenSecureCamera(Camera_Input* cameraInput, uint
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。<br>         CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK：方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。<br>         CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。<br>         CAMERA_MULTI_CAMERA_NOT_SUPPORTED：无法同时开启多个摄像头。 |
 
 ### OH_CameraInput_OpenConcurrentCameras()
 
@@ -203,7 +200,7 @@ Camera_ErrorCode OH_CameraInput_OpenConcurrentCameras(Camera_Input* cameraInput,
 
 | 类型 | 说明 |
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK: 方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。<br>         CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。 |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | CAMERA_OK: 方法调用成功。<br>         CAMERA_INVALID_ARGUMENT：参数丢失或参数类型不正确。<br>         CAMERA_CONFLICT_CAMERA：因冲突而无法使用相机。<br>         CAMERA_DEVICE_DISABLED：由于安全原因禁用了相机。<br>         CAMERA_SERVICE_FATAL_ERROR：相机服务异常。<br>         CAMERA_MULTI_CAMERA_NOT_SUPPORTED：无法同时开启多个摄像头。 |
 
 ### OH_CameraInput_Close()
 
@@ -270,7 +267,7 @@ Camera_ErrorCode OH_CameraInput_IsPhysicalCameraOrientationVariable(Camera_Input
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
-| bool* isVariable | 查询设备不同折叠状态下，相机物理镜头角度是否可变。true表示可变，false表示不可变。 |
+| bool* isVariable | 查询不同折叠状态下相机物理镜头角度是否可变。true表示可变，false表示不可变。 |
 
 **返回：**
 
@@ -295,7 +292,7 @@ Camera_ErrorCode OH_CameraInput_GetPhysicalCameraOrientation(Camera_Input* camer
 | 参数项 | 描述 |
 | -- | -- |
 | [Camera_Input](capi-oh-camera-camera-input.md)* cameraInput | Camera_Input实例。 |
-| uint32_t* orientation | 如果方法调用成功，将返回设备当前折叠状态下的物理镜头角度。 |
+| uint32_t* orientation | 如果方法调用成功，将返回当前折叠状态下的物理镜头角度。 |
 
 **返回：**
 
@@ -344,7 +341,7 @@ typedef void (*OH_CameraInput_OnOcclusionDetectionCallback)(const Camera_Input* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| const Camera_Input* cameraInput | 传递回调的Camera_Input。 |
+| (const Camera_Input\* cameraInput | 传递回调的Camera_Input。 |
 | [Camera_OcclusionDetectionResult](capi-oh-camera-camera-occlusiondetectionresult.md) occlusionDetectionResult | 相机镜头遮挡、脏污检测结果。 |
 
 ### OH_CameraInput_RegisterOcclusionDetectionCallback()
