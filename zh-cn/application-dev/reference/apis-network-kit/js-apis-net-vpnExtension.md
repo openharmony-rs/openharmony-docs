@@ -222,6 +222,102 @@ struct Index {
 }
 ```
 
+## vpnExtension.createVpnObserver
+
+createVpnObserver(): VpnObserver
+
+创建一个VPN观察者。
+
+**系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                            | 说明                    |
+| :------------------------------ | :---------------------- |
+| [VpnObserver](#vpnobserver) | 返回一个VPN观察者对象。 |
+
+**示例：**
+Stage 模型示例：
+
+```ts
+import { vpnExtension } from '@kit.NetworkKit';
+
+let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
+```
+
+## VpnObserver
+
+VPN观察者对象。用于监听VPN相关事件。
+
+### onAuthorizationResult
+
+onAuthorizationResult(callback: Callback\<boolean\>): void
+
+注册用户授权结果监听器。授权结果在调用startVpnExtensionAbility后通知，仅接收当前VPN的结果。
+
+**系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback  | Callback\<boolean\> |是   | 回调函数，用于返回用户授权结果。true表示授权成功，false表示授权失败。 |
+
+**示例：**
+
+```ts
+import { vpnExtension } from '@kit.NetworkKit';
+
+let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
+vpnObserver.onAuthorizationResult((result: boolean) => {
+  if (result) {
+    console.info('VPN authorization succeeded');
+  } else {
+    console.error('VPN authorization failed');
+  }
+});
+```
+
+### offAuthorizationResult
+
+offAuthorizationResult(callback?: Callback\<boolean\>): void
+
+注销用户授权结果监听器。
+
+**系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback  | Callback\<boolean\> | 否   | 回调函数，用于返回用户授权结果。如果不传入，则注销所有监听器。 |
+
+**示例：**
+
+```ts
+import { vpnExtension } from '@kit.NetworkKit';
+
+let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
+
+// 注册监听器
+let callback = (result: boolean) => {
+  console.info('Authorization result: ' + result);
+};
+vpnObserver.onAuthorizationResult(callback);
+
+// 注销指定监听器
+vpnObserver.offAuthorizationResult(callback);
+
+// 注销所有监听器
+vpnObserver.offAuthorizationResult();
+```
+
 ## vpnExtension.createVpnConnection
 
 createVpnConnection(context: VpnExtensionContext): VpnConnection
