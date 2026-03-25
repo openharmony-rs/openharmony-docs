@@ -20,9 +20,9 @@ With TaskPool, you can submit tasks in the host thread to the task queue. The sy
 
 - Functions implementing tasks must be decorated with [\@Concurrent](#concurrent-decorator) and are supported only in .ets files.
 
-- Starting from API version 11, when passing instances with methods across concurrent instances, the class must be decorated with [@Sendable](arkts-sendable.md#sendable-decorator) and are supported only in .ets files.
+- Starting from API version 11, when passing instances with methods across concurrent instances, the class must be decorated with [@Sendable](arkts-sendable.md#sendable-decorator) and are supported only in .ets files. If the @Sendable decorator is not used, you can use the worker method. For details, see [Synchronous Calls to Host Thread Interfaces from Worker](worker-invoke-mainthread-interface.md).
 
-- A task function (except [LongTask](../reference/apis-arkts/js-apis-taskpool.md#longtask12)) must finish the execution in a TaskPool's worker thread within 3 minutes. Otherwise, it is forcibly terminated. Note that the 3-minute limit only applies to the synchronous running duration of the TaskPool thread, excluding the waiting duration of asynchronous operations (such as Promise or async/await calls). For example, when database insert, delete, and update operations are asynchronous, only the actual CPU processing time (such as SQL parsing) is counted, excluding network transmission or disk I/O waiting time. For synchronous database insert, delete, and update operations, the entire operation duration (including I/O blocking time) is counted. You can obtain the asynchronous I/O duration and CPU duration of the current task through the **ioDuration** and **cpuDuration** properties of [Task](../reference/apis-arkts/js-apis-taskpool.md#task).
+- A task function (except [LongTask](../reference/apis-arkts/js-apis-taskpool.md#longtask12)) must finish the execution in a TaskPool's worker thread within 3 minutes. Otherwise, if the task is blocked by the task logic and cannot be completed, the thread cannot schedule other tasks. If all threads are occupied due to timeout, subsequent tasks cannot be scheduled and executed. Note that the 3-minute limit only applies to the synchronous running duration of the TaskPool thread, excluding the waiting duration of asynchronous operations (such as Promise or async/await calls). For example, when database insert, delete, and update operations are asynchronous, only the actual CPU processing time (such as SQL parsing) is counted, excluding network transmission or disk I/O waiting time. For synchronous database insert, delete, and update operations, the entire operation duration (including I/O blocking time) is counted. You can obtain the asynchronous I/O duration and CPU duration of the current task through the **ioDuration** and **cpuDuration** properties of [Task](../reference/apis-arkts/js-apis-taskpool.md#task).
 
 - Parameters of functions implementing tasks must be of types supported by serialization. For details, see [Overview of Inter-Thread Communication Objects](serializable-overview.md). Currently, complex types decorated with [@State](../ui/state-management/arkts-state.md), [@Prop](../ui/state-management/arkts-prop.md), and [@Link](../ui/state-management/arkts-link.md) are not supported.
 
@@ -85,19 +85,17 @@ To pass function verification, concurrent functions executed in a [TaskPool](../
 | Variable types in decorated functions| Local variables, parameters, and variables imported through **import** are allowed. Closure variables cannot be used.|
 | Return value types in decorated functions| Supported types are listed in [Overview of Inter-Thread Communication Objects](serializable-overview.md).|
 
-> **NOTE**
->
-> Functions decorated with \@Concurrent cannot access closures. Therefore, they cannot call other functions within the same file. The following provides an example.
->
-> ```ts
-> function bar() {
-> }
-> 
-> @Concurrent
-> function foo() {
->   bar(); // This violates the closure principle. An error is reported.
-> }
-> ```
+Functions decorated with \@Concurrent cannot access closures. Therefore, they cannot call other functions within the same file. The following provides an example.
+
+```ts
+function bar() {
+}
+
+@Concurrent
+function foo() {
+  bar(); // This violates the closure principle. An error is reported.
+}
+```
 
 ## Decorator Usage Examples
 

@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_Node* ArkUI_NodeHandle
+```
+
 ## Overview
 
 Defines the pointer type for an ArkUI native component instance object.

@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Before developing a camera application, you must call the camera APIs to create an independent camera device.
+Before developing a camera application, you must call camera APIs to create a camera device management instance.
 
 ## How to Develop
 
@@ -67,7 +67,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
 During camera application development, you can listen for the camera status, including the appearance of a new camera, removal of a camera, and availability of a camera. The camera ID and camera status are included in the callback function. When a new camera appears, the new camera can be added to the supported camera list.
 
-Register the **'cameraStatus'** event and return the listening result through a callback, which carries the **CameraStatusInfo** parameter. For details about the parameter, see [CameraStatusInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#camerastatusinfo).
+  Register the **'cameraStatus'** event and return the listening result through a callback, which carries the **CameraStatusInfo** parameter. For details about the parameter, see [CameraStatusInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#camerastatusinfo).
 
 ```ts
 function onCameraStatusChange(cameraManager: camera.CameraManager): void {

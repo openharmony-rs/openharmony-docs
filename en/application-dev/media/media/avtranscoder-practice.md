@@ -38,6 +38,8 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
    ```ts
    // Create a Worker object.
    private workerInstance?: worker.ThreadWorker;
+   @State currentProgress: number = 0;
+   
    this.workerInstance = new worker.ThreadWorker('entry/ets/workers/task.ets');
 
    // Register the onmessage callback. When the host thread receives a message from the Worker thread through the workerPort.postMessage interface, this callback is invoked and executed in the host thread.
@@ -219,7 +221,7 @@ This example uses a Worker thread to perform asynchronous transcoding. For detai
 Refer to the sample project to use a Worker thread to implement asynchronous transcoding.
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVTranscoder/AsyncTranscoder), and copy its resources to the corresponding directories.
-    ```
+    ```txt
     AsyncTranscoder
     entry/build-profile.json5 (Configure fields to package Worker thread files into the application.)
     entry/src/main/ets/

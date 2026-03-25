@@ -46,7 +46,7 @@ import { insightIntent } from '@kit.AbilityKit';
 | uris<sup>18+</sup> | Array&lt;string&gt; | 否 | 是 | 意图执行返回的URI列表。该字段需要与flags字段配合使用，根据URI列表将flags字段的相应权限授权给系统入口。<br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 |
 | flags<sup>18+</sup> | number | 否 | 是 | 意图执行返回给系统入口的URI列表的授权权限。<br/>**原子化服务API**：从API version 18开始，该接口支持在原子化服务中使用。 <br/>**说明：**<br/>该参数仅支持FLAG_AUTH_READ_URI_PERMISSION、FLAG_AUTH_WRITE_URI_PERMISSION、FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION。权限介绍见[Flags](js-apis-app-ability-wantConstant.md#flags)。 |
 
-## IntentEntity<sup>20+<sup>
+## IntentEntity<sup>20+</sup>
 
 意图实体结构体定义，用于定义意图执行过程中涉及的关键信息对象，包括意图参数和意图执行结果等。
 
@@ -58,7 +58,7 @@ import { insightIntent } from '@kit.AbilityKit';
 | -------- | -------- | -------- | -------- | -------- |
 | entityId | string | 否 | 否 | 意图实体的ID。<br/>**原子化服务API**：从API version 20开始，该接口支持在原子化服务中使用。 |
 
-## IntentResult\<T><sup>20+<sup>
+## IntentResult\<T><sup>20+</sup>
 
 意图执行的返回结果，支持[泛型类型](../../quick-start/introduction-to-arkts.md#泛型类和接口)。
 

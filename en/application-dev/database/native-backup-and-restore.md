@@ -37,7 +37,7 @@ A database backup can be used to quickly restore an RDB store in abnormal state.
 
 3. Call **OH_Rdb_Backup** to back up the database.
 
-    <!-- @[BackupRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[BackupRdbStore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();
@@ -60,7 +60,7 @@ A database backup can be used to quickly restore an RDB store in abnormal state.
 
 4. Call **OH_Rdb_Restore** to restore the database.
 
-    <!-- @[rdb_OH_Rdb_Restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
+    <!-- @[rdb_OH_Rdb_Restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/NativeDataEncryption/entry/src/main/cpp/napi_init.cpp) -->
     
     ``` C++
     OH_Rdb_ConfigV2 *config = OH_Rdb_CreateConfig();

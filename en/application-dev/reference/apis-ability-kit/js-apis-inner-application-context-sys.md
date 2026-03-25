@@ -33,7 +33,7 @@ Creates the context based on the bundle name.
 >
 > If there are multiple modules in the stage model, resource ID conflicts may occur. You are advised to use [application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12) instead.
 >
-> This API is deprecated since API version 12. You are advised to use [application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext12) instead.
+> This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createBundleContext](./js-apis-app-ability-application-sys.md#applicationcreatebundlecontext12) instead.
 
 **System API**: This is a system API.
 
@@ -59,6 +59,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------------------------------- |
+| 201 | Permission denied. |
+| 202 | Permission denied, non-system app called system api. |
 | 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
 **Example**
@@ -88,7 +90,7 @@ Creates the context based on the bundle name and module name.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. You are advised to use [application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12) instead.
+> This API has been supported since API version 9 and deprecated since API version 12. You are advised to use [application.createModuleContext](./js-apis-app-ability-application-sys.md#applicationcreatemodulecontext12) instead.
 
 **System API**: This is a system API.
 

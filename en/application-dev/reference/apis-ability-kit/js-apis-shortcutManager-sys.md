@@ -21,7 +21,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 ```
 
 
-## shortcutManager.addDesktopShortcutInfo<sup>12+</sup>
+## shortcutManager.addDesktopShortcutInfo
 
 addDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
 
@@ -38,7 +38,7 @@ Adds a shortcut for the given user. This API uses a promise to return the result
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
 | shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | Yes  | Shortcut information.|
-| userId     | number | Yes  | User ID.|
+| userId     | number | Yes  | User ID,|
 
 **Return value**
 
@@ -106,7 +106,7 @@ struct ShortcutExample {
 }
 ```
 
-## shortcutManager.deleteDesktopShortcutInfo<sup>12+</sup>
+## shortcutManager.deleteDesktopShortcutInfo
 
 deleteDesktopShortcutInfo(shortcutInfo: [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md), userId: number) : Promise\<void>
 
@@ -123,7 +123,7 @@ Deletes a shortcut for the given user. This API uses a promise to return the res
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
 | shortcutInfo | [ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) | Yes  | Shortcut information.|
-| userId     | number | Yes  | User ID.|
+| userId     | number | Yes  | User ID,|
 
 **Return value**
 
@@ -187,7 +187,7 @@ struct ShortcutExample {
 }
 ```
 
-## shortcutManager.getAllDesktopShortcutInfo<sup>12+</sup>
+## shortcutManager.getAllDesktopShortcutInfo
 
 getAllDesktopShortcutInfo(userId: number) : Promise<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)>>
 
@@ -203,7 +203,7 @@ Obtains the information about all shortcuts of the given user.
 
 | Name    | Type  | Mandatory| Description        |
 | ---------- | ------ | ---- | -------------- |
-| userId     | number | Yes  | User ID.|
+| userId     | number | Yes  | User ID,|
 
 **Return value**
 

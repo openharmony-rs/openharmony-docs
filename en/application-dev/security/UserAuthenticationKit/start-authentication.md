@@ -15,12 +15,12 @@ For details about the parameters, return values, and error codes, see [User Auth
 
 | API| Description| 
 | -------- | -------- |
-| getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance | Obtains a **UserAuthInstance** object for user authentication. The unified [user authentication widget](#user-authentication-widget) is also supported.| 
+| getUserAuthInstance(authParam: AuthParam, widgetParam: WidgetParam): UserAuthInstance | Obtains the **UserAuthInstance** object to perform user identity authentication and support the use of the [unified user authentication widget](#unified-user-authentication-widget-introduction).| 
 | on(type: 'result', callback: IAuthCallback): void | Subscribes to the user authentication result.| 
 | off(type: 'result', callback?: IAuthCallback): void | Unsubscribes from the user authentication result.| 
 | start(): void | Starts user authentication.| 
 
-## User Authentication Widget
+## Unified User Authentication Widget Introduction
 
 The system provides a unified user authentication widget, which stands out with following features:
 
@@ -82,7 +82,7 @@ The user authentication widget supports the following types of authentication:
 
 **Example 1**
 
- Initiate facial authentication and lock screen password authentication at ATL3 or higher.
+ Initiate facial + fingerprint + lock screen password authentication at ATL3 or higher.
 
 <!-- @[authentication_example1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 
@@ -249,6 +249,9 @@ Initiate facial authentication at ATL3 or higher, and enable the device unlock r
 **Example 4**
 
 Start the user authentication widget in modal application mode.
+
+> **NOTE**
+> On PCs/2-in-1 devices, if an application initiates authentication in modal application mode (that is, a valid **uiContext** is passed when the user API parameter [widgetParam](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#widgetparam10) is configured), and if other windows need to be displayed after the authentication result is received, the application should obtain the flag message for releasing the widget pop-up window first, and subscribe to the widget release message (**authTipInfo.tipCode = UserAuthTipCode.WIDGET_RELEASED**) through the [on('authTip')](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#on20) API.
 
 <!-- @[authentication_example4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets) -->
 

@@ -23,6 +23,8 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 Describes the accessibility event information.
 
+**System API**: This is a system API.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 ### Properties
@@ -30,16 +32,17 @@ Describes the accessibility event information.
 | Name                           | Type                                      | Read-Only  | Optional  | Description                                      |
 | ----------------------------- | ---------------------------------------- | ---- | ---- | ---------------------------------------- |
 | eventType                     | [AccessibilityEventType](./js-apis-accessibility-sys.md#accessibilityeventtype) | No   | No   | Event type.                                |
-| target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement12) | No   | Yes   | Target component where the event occurs.                              |
+| target                        | [AccessibilityElement](js-apis-inner-application-accessibilityExtensionContext-sys.md#accessibilityelement) | No   | Yes   | Target component where the event occurs.                              |
 | timeStamp                     | number                                   | No   | Yes   | Timestamp of the event, in milliseconds. The default value is **0**.                      |
 | extraInfo                     | string                                   | No   | Yes   | Added or deleted text content carried by the **TextArea**, **TextInput**, **SearchField**, or **RichEdit** component.|
 
 
 ## AccessibilityExtensionAbility.onAccessibilityConnect
 
-onAccessibilityConnect(): void;
+onAccessibilityConnect(): void
 
 Called when the AccessibilityExtensionAbility is enabled and connected to the system service.
+
 In this API, you can have the service logic initialized. This API can be overridden as required. It returns the result to notify that the ability is successfully connected.
 
 **System API**: This is a system API.
@@ -64,16 +67,17 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityConnect(): void {
-    console.log('AxExtensionAbility onAccessibilityConnect');
+    console.info('AxExtensionAbility onAccessibilityConnect');
   }
 }
 ```
 
 ## AccessibilityExtensionAbility.onAccessibilityDisconnect
 
-onAccessibilityDisconnect(): void;
+onAccessibilityDisconnect(): void
 
 Called when the AccessibilityExtensionAbility is successfully disconnected from the system service.
+
 In this API, you can implement the service logic of resource release and exit. This API can be overridden as required.
 
 **System API**: This is a system API.
@@ -98,7 +102,7 @@ import { AccessibilityExtensionAbility } from '@kit.AccessibilityKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityDisconnect(): void {
-    console.log('AxExtensionAbility onAccessibilityDisconnect');
+    console.info('AxExtensionAbility onAccessibilityDisconnect');
   }
 }
 ```
@@ -137,9 +141,9 @@ import { AccessibilityExtensionAbility, AccessibilityEventInfo, AccessibilityEve
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityEventInfo(event: AccessibilityEventInfo): void {
-    console.log('AxExtensionAbility onAccessibilityEventInfo');
+    console.info('AxExtensionAbility onAccessibilityEventInfo');
     if (event.eventType === AccessibilityEventType.TYPE_CLICK) {
-      console.log('AxExtensionAbility onAccessibilityEventInfo: click');
+      console.info('AxExtensionAbility onAccessibilityEventInfo: click');
     }
   }
 }
@@ -166,7 +170,7 @@ Called when a physical key is pressed. In this API, you can determine whether to
 **Return value**
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| boolean | Returns **true** if the event is consumed and will not be transferred; returns **false** otherwise. |
+| boolean | Returns **true** if the event is consumed and will not be transferred; returns **false** if the event is not consumed and will be transferred.|
 
 **Error codes**
 
@@ -185,9 +189,9 @@ import { KeyEvent, KeyCode } from '@kit.InputKit';
 
 class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   onAccessibilityKeyEvent(keyEvent: KeyEvent): boolean {
-    console.log('AxExtensionAbility onAccessibilityKeyEvent');
+    console.info('AxExtensionAbility onAccessibilityKeyEvent');
     if (keyEvent.key.code === KeyCode.KEYCODE_VOLUME_UP) {
-      console.log('AxExtensionAbility onAccessibilityKeyEvent: intercept 16');
+      console.info('AxExtensionAbility onAccessibilityKeyEvent: intercept 16');
       return true;
     }
     return false;

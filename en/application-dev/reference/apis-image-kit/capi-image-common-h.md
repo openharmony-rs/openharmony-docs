@@ -31,7 +31,7 @@ The file declares the common enums and structs used by the image interface.
 | [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) | Image_PositionArea | Describes the area of image pixels to be read from or written to.|
 | [Image_Scale](capi-image-nativemodule-image-scale.md) | Image_Scale | Describes the image scaling factor.|
 | [Image_String](capi-image-nativemodule-image-string.md) | Image_String/Image_MimeType | Describes an image string.|
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | - | Describes the picture metadata.|
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | OH_PictureMetadata | Describes the picture metadata.|
 
 ### Enums
 
@@ -46,9 +46,9 @@ The file declares the common enums and structs used by the image interface.
 | Name| Description|
 | -- | -- |
 | [Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_PictureMetadata **metadata)](#oh_picturemetadata_create) | Creates the pointer to an OH_PictureMetadata struct.|
-| [Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getproperty) | Obtains a property of metadata based on the key.|
+| [Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getproperty) | Obtains a property of metadata based on the key. The **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.|
 | [Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_setproperty) | Sets a property of metadata based on the key.|
-| [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** is terminated with a string terminator.|
+| [Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metadata, Image_String *key, Image_String *value)](#oh_picturemetadata_getpropertywithnull) | Obtains the metadata value of an OH_PictureMetadata instance. The output of **value.data** ends with the string terminator **\0**.|
 | [Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)](#oh_picturemetadata_release) | Releases the pointer to an OH_PictureMetadata struct.|
 | [Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_PictureMetadata **newMetadata)](#oh_picturemetadata_clone) | Clones metadata.|
 
@@ -139,7 +139,7 @@ The file declares the common enums and structs used by the image interface.
 | static const char * OHOS_IMAGE_PROPERTY_SUBJECT_DISTANCE_RANGE = "SubjectDistanceRange" | Distance to the subject.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_IMAGE_UNIQUE_ID = "ImageUniqueID" | Unique identifier assigned to each image.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_GPS_VERSION_ID = "GPSVersionID" | Version of GPSInfoIFD.<br>**Since**: 12|
-| static const char * OHOS_IMAGE_PROPERTY_GPS_ALTITUDE_REF = "GPSAltitudeRef" | Whether the latitude is north or south latitude.<br>**Since**: 12|
+| static const char * OHOS_IMAGE_PROPERTY_GPS_ALTITUDE_REF = "GPSAltitudeRef" | Reference altitude for the GPS altitude.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_GPS_ALTITUDE = "GPSAltitude" | Altitude based on the reference in GPSAltitudeRef.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_GPS_SATELLITES = "GPSSatellites" | GPS satellites used for measurement.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_GPS_STATUS = "GPSStatus" | Status of the GPS receiver when the image was recorded.<br>**Since**: 12|
@@ -175,8 +175,8 @@ The file declares the common enums and structs used by the image interface.
 | static const char * OHOS_IMAGE_PROPERTY_LENS_MODEL = "LensModel" | Model of the lens.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_LENS_SERIAL_NUMBER = "LensSerialNumber" | Serial number of the lens.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_LENS_SPECIFICATION = "LensSpecification" | Specifications of the lens.<br>**Since**: 12|
-| static const char * OHOS_IMAGE_PROPERTY_NEW_SUBFILE_TYPE = "NewSubfileType" | Data type of a subfile, such as a full-resolution image, a thumbnail, or a part of a multi-frame image. The value is a bit mask. The value 0 indicates a full-resolution image, **1** indicates a thumbnail, and **2** indicates a part of a multi-frame image.<br>**Since**: 12|
-| static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME = "OffsetTime" | Time with an offset from UTC when the image was captured, in the format of ±HH:MM.<br>**Since**: 12|
+| static const char * OHOS_IMAGE_PROPERTY_NEW_SUBFILE_TYPE = "NewSubfileType" | In Exif, the **NewSubfileType** field is used to identify the data type of a subfile. The value is a bit mask. The value 0 indicates a full-resolution image, **1** indicates a thumbnail, and **2** indicates a part of a multi-frame image.<br>**Since**: 12|
+| static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME = "OffsetTime" | In Exif, the **OffsetTime** field is used to identify the time with an offset from UTC when the image was captured, in the format of ±HH:MM.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME_DIGITIZED = "OffsetTimeDigitized" | Time with an offset from UTC when the image was digitized. It helps to accurately adjust the timestamp.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_OFFSET_TIME_ORIGINAL = "OffsetTimeOriginal" | Time with an offset from UTC when the original image was created. It is critical for time-sensitive applications.<br>**Since**: 12|
 | static const char * OHOS_IMAGE_PROPERTY_SOURCE_EXPOSURE_TIMES_OF_COMPOSITE_IMAGE = "SourceExposureTimesOfCompositeImage" | Exposure time of source images of the composite image.<br>**Since**: 12|
@@ -240,6 +240,7 @@ Enumerates the error codes.
 | IMAGE_UNSUPPORTED_CONVERSION = 7600203 | Unsupported conversion.|
 | IMAGE_INVALID_REGION = 7600204 | Invalid region.|
 | IMAGE_UNSUPPORTED_MEMORY_FORMAT = 7600205 |  The memory format is not supported.<br>**Since**: 13|
+| IMAGE_INVALID_PARAMETER = 7600206 |  Invalid parameter.<br>**Since**: 19|
 | IMAGE_UNSUPPORTED_DATA_FORMAT = 7600207 |  Unsupported data format.<br>**Since**: 22|
 | IMAGE_ALLOC_FAILED = 7600301 | Failed to allocate the memory.|
 | IMAGE_COPY_FAILED = 7600302 | Failed to copy the memory.|
@@ -294,7 +295,7 @@ Enumerates the types of memory allocation for a PixelMap.
 | -- | -- |
 | IMAGE_ALLOCATOR_MODE_AUTO = 0 | The system determines the type of memory to allocate when creating a PixelMap.|
 | IMAGE_ALLOCATOR_MODE_DMA = 1 | Allocates a DMA-type memory buffer.|
-| IMAGE_ALLOCATOR_MODE_DMA = 2 | Uses shared memory to create a PixelMap.|
+| IMAGE_ALLOCATOR_MODE_SHARED_MEMORY = 2 | Uses shared memory to create a PixelMap.|
 
 
 ## Function Description
@@ -332,7 +333,7 @@ Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Ima
 
 **Description**
 
-Obtains a property of metadata based on the key.
+Obtains a property of metadata based on the key. The **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
 
 **Since**: 13
 
@@ -384,7 +385,7 @@ Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metad
 
 **Description**
 
-Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** is terminated with a string terminator.
+Obtains the metadata value of an OH_PictureMetadata instance. The output of **value.data** ends with the string terminator **\0**.
 
 **Since**: 19
 

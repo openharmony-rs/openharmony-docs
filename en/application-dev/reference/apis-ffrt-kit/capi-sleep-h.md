@@ -34,7 +34,7 @@ The **sleep.h** file declares the sleep and yield APIs in C.
 
 ### ffrt_usleep()
 
-```
+```c
 FFRT_C_API int ffrt_usleep(uint64_t usec)
 ```
 
@@ -43,7 +43,6 @@ FFRT_C_API int ffrt_usleep(uint64_t usec)
 Sets the fixed sleep time.
 
 **Since**: 10
-
 
 **Parameters**
 
@@ -59,7 +58,7 @@ Sets the fixed sleep time.
 
 ### ffrt_yield()
 
-```
+```c
 FFRT_C_API void ffrt_yield(void)
 ```
 

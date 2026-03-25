@@ -35,8 +35,6 @@ This file declares the functions for obtaining and using **NativeBuffer**.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_NativeBuffer_Usage](#oh_nativebuffer_usage) | OH_NativeBuffer_Usage | Defines an enum for the **OH_NativeBuffer** usages.|
-| [OH_NativeBuffer_Format](#oh_nativebuffer_format) | OH_NativeBuffer_Format | Defines an enum for the **OH_NativeBuffer** formats.|
-| [OH_NativeBuffer_TransformType](#oh_nativebuffer_transformtype) | OH_NativeBuffer_TransformType | Defines an enum for the transform types of an **OH_NativeBuffer** instance.|
 | [OH_NativeBuffer_ColorGamut](#oh_nativebuffer_colorgamut) | OH_NativeBuffer_ColorGamut | Defines an enum for the color gamuts of an **OH_NativeBuffer** instance.|
 
 ### Functions
@@ -56,13 +54,12 @@ This file declares the functions for obtaining and using **NativeBuffer**.
 | [int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace *colorSpace)](#oh_nativebuffer_getcolorspace) | Obtains the color space of an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)](#oh_nativebuffer_setmetadatavalue) | Sets a metadata value for an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
 | [int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t *size, uint8_t **metadata)](#oh_nativebuffer_getmetadatavalue) | Obtains the metadata value of an **OH_NativeBuffer** instance.<br>This function is not thread-safe.|
-| [int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)](#oh_nativebuffer_mapwaitfence) | Maps the ION memory corresponding to [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) to the process space, and permanently blocks the input **fenceFd**.<br>If **OK** is returned, the system closes **fenceFd**. For other return values, you need to close **fenceFd** by yourself.<br> This API must be used in pair with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).<br>This function is not thread-safe.|
 
 ## Enum Description
 
 ### OH_NativeBuffer_Usage
 
-```
+```c
 enum OH_NativeBuffer_Usage
 ```
 
@@ -85,99 +82,9 @@ Defines an enum for the **OH_NativeBuffer** usages.
 | NATIVEBUFFER_USAGE_CPU_READ_OFTEN = (1ULL << 16) | Direct mapping of CPU.<br>**Since**: 12|
 | NATIVEBUFFER_USAGE_ALIGNMENT_512 = (1ULL << 18) | 512-byte alignment.<br>**Since**: 12|
 
-### OH_NativeBuffer_Format
-
-```
-enum OH_NativeBuffer_Format
-```
-
-**Description**
-
-Defines an enum for the **OH_NativeBuffer** formats.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
-**Since**: 10
-
-| Enum| Description|
-| -- | -- |
-| NATIVEBUFFER_PIXEL_FMT_CLUT8 = 0 | CLUT8.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_CLUT1 | CLUT1.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_CLUT4 | CLUT4.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_RGB_565 = 3 | RGB565.|
-| NATIVEBUFFER_PIXEL_FMT_RGBA_5658 | RGBA5658.|
-| NATIVEBUFFER_PIXEL_FMT_RGBX_4444 | RGBX4444.|
-| NATIVEBUFFER_PIXEL_FMT_RGBA_4444 | RGBA4444.|
-| NATIVEBUFFER_PIXEL_FMT_RGB_444 | RGB444.|
-| NATIVEBUFFER_PIXEL_FMT_RGBX_5551 | RGBX5551.|
-| NATIVEBUFFER_PIXEL_FMT_RGBA_5551 | RGBA5551.|
-| NATIVEBUFFER_PIXEL_FMT_RGB_555 | RGB555.|
-| NATIVEBUFFER_PIXEL_FMT_RGBX_8888 | RGBX8888.|
-| NATIVEBUFFER_PIXEL_FMT_RGBA_8888 | RGBA8888.|
-| NATIVEBUFFER_PIXEL_FMT_RGB_888 | RGB888.|
-| NATIVEBUFFER_PIXEL_FMT_BGR_565 | BGR565.|
-| NATIVEBUFFER_PIXEL_FMT_BGRX_4444 | BGRX4444.|
-| NATIVEBUFFER_PIXEL_FMT_BGRA_4444 | BGRA4444.|
-| NATIVEBUFFER_PIXEL_FMT_BGRX_5551 | BGRX5551.|
-| NATIVEBUFFER_PIXEL_FMT_BGRA_5551 | BGRA5551.|
-| NATIVEBUFFER_PIXEL_FMT_BGRX_8888 | BGRX8888.|
-| NATIVEBUFFER_PIXEL_FMT_BGRA_8888 | BGRA8888.|
-| NATIVEBUFFER_PIXEL_FMT_YUV_422_I | YUV422 interleaved.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_SP | YCbCr422 semi-planar format.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_SP | YCrCb422 semi-planar.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_SP | YCbCr420 semi-planar.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP | YCrCb420 semi-planar.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_422_P | YCbCr422 planar.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_422_P | YCrCb422 planar.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_420_P | YCbCr420 planar.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_420_P | YCrCb420 planar.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_YUYV_422_PKG | YUYV422 packed.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_UYVY_422_PKG | UYVY422 packed.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_YVYU_422_PKG | YVYU422 packed.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_VYUY_422_PKG | VYUY422 packed.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_RGBA_1010102 | RGBA_1010102 packed.|
-| NATIVEBUFFER_PIXEL_FMT_YCBCR_P010 | YCBCR420 semi-planar 10-bit packed.|
-| NATIVEBUFFER_PIXEL_FMT_YCRCB_P010 | YCRCB420 semi-planar 10-bit packed.|
-| NATIVEBUFFER_PIXEL_FMT_RAW10 | Raw 10-bit packed.|
-| NATIVEBUFFER_PIXEL_FMT_BLOB | BLOB.<br>**Since**: 15|
-| NATIVEBUFFER_PIXEL_FMT_RGBA16_FLOAT | RGBA16 float.<br>**Since**: 15|
-| NATIVEBUFFER_PIXEL_FMT_Y8 = 40 | Y8.<br>**Since**: 20|
-| NATIVEBUFFER_PIXEL_FMT_Y16 = 41 | Y16.<br>**Since**: 20|
-| NATIVEBUFFER_PIXEL_FMT_VENDER_MASK = 0X7FFF0000 | Vender mask.<br>**Since**: 12|
-| NATIVEBUFFER_PIXEL_FMT_BUTT = 0X7FFFFFFF | Invalid format.|
-
-### OH_NativeBuffer_TransformType
-
-```
-enum OH_NativeBuffer_TransformType
-```
-
-**Description**
-
-Defines an enum for the transform types of an **OH_NativeBuffer** instance.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
-**Since**: 12
-
-| Enum| Description|
-| -- | -- |
-| NATIVEBUFFER_ROTATE_NONE = 0 | No rotation.|
-| NATIVEBUFFER_ROTATE_90 | Rotates by 90 degrees.|
-| NATIVEBUFFER_ROTATE_180 | Rotates by 180 degrees.|
-| NATIVEBUFFER_ROTATE_270 | Rotates by 270 degrees.|
-| NATIVEBUFFER_FLIP_H | Flips horizontally.|
-| NATIVEBUFFER_FLIP_V | Flips vertically.|
-| NATIVEBUFFER_FLIP_H_ROT90 | Flips horizontally and rotates by 90 degrees.|
-| NATIVEBUFFER_FLIP_V_ROT90 | Flips vertically and rotates by 90 degrees.|
-| NATIVEBUFFER_FLIP_H_ROT180 | Flips horizontally and rotates by 180 degrees.|
-| NATIVEBUFFER_FLIP_V_ROT180 | Flips vertically and rotates by 180 degrees.|
-| NATIVEBUFFER_FLIP_H_ROT270 | Flips horizontally and rotates by 270 degrees.|
-| NATIVEBUFFER_FLIP_V_ROT270 | Flips vertically and rotates by 270 degrees.|
-
 ### OH_NativeBuffer_ColorGamut
 
-```
+```c
 enum OH_NativeBuffer_ColorGamut
 ```
 
@@ -208,7 +115,7 @@ Defines an enum for the color gamuts of an **OH_NativeBuffer** instance.
 
 ### OH_NativeBuffer_Alloc()
 
-```
+```c
 OH_NativeBuffer* OH_NativeBuffer_Alloc(const OH_NativeBuffer_Config* config)
 ```
 
@@ -235,7 +142,7 @@ Creates an **OH_NativeBuffer** instance based on an **OH_NativeBuffer_Config** s
 
 ### OH_NativeBuffer_Reference()
 
-```
+```c
 int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)
 ```
 
@@ -262,7 +169,7 @@ Increases the reference count of an **OH_NativeBuffer** instance by 1.<br>This A
 
 ### OH_NativeBuffer_Unreference()
 
-```
+```c
 int32_t OH_NativeBuffer_Unreference(OH_NativeBuffer *buffer)
 ```
 
@@ -289,7 +196,7 @@ Decreases the reference count of an **OH_NativeBuffer** instance by 1 and, when 
 
 ### OH_NativeBuffer_GetConfig()
 
-```
+```c
 void OH_NativeBuffer_GetConfig(OH_NativeBuffer *buffer, OH_NativeBuffer_Config* config)
 ```
 
@@ -311,7 +218,7 @@ Obtains the properties of an **OH_NativeBuffer** instance.<br>This function is n
 
 ### OH_NativeBuffer_Map()
 
-```
+```c
 int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)
 ```
 
@@ -339,7 +246,7 @@ Maps the ION memory allocated to an **OH_NativeBuffer** instance to the process 
 
 ### OH_NativeBuffer_Unmap()
 
-```
+```c
 int32_t OH_NativeBuffer_Unmap(OH_NativeBuffer *buffer)
 ```
 
@@ -366,7 +273,7 @@ Unmaps the ION memory allocated to an **OH_NativeBuffer** instance from the proc
 
 ### OH_NativeBuffer_GetSeqNum()
 
-```
+```c
 uint32_t OH_NativeBuffer_GetSeqNum(OH_NativeBuffer *buffer)
 ```
 
@@ -393,7 +300,7 @@ Obtains the sequence number of an **OH_NativeBuffer** instance.<br>This function
 
 ### OH_NativeBuffer_SetColorSpace()
 
-```
+```c
 int32_t OH_NativeBuffer_SetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace colorSpace)
 ```
 
@@ -421,7 +328,7 @@ Sets the color space for an **OH_NativeBuffer** instance.<br>This function is no
 
 ### OH_NativeBuffer_MapPlanes()
 
-```
+```c
 int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_NativeBuffer_Planes *outPlanes)
 ```
 
@@ -450,7 +357,7 @@ Maps the multi-channel ION memory corresponding to an **OH_NativeBuffer** instan
 
 ### OH_NativeBuffer_FromNativeWindowBuffer()
 
-```
+```c
 int32_t OH_NativeBuffer_FromNativeWindowBuffer(OHNativeWindowBuffer *nativeWindowBuffer, OH_NativeBuffer **buffer)
 ```
 
@@ -478,7 +385,7 @@ Converts an **OHNativeWindowBuffer** instance to an **OH_NativeBuffer** instance
 
 ### OH_NativeBuffer_GetColorSpace()
 
-```
+```c
 int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_ColorSpace *colorSpace)
 ```
 
@@ -506,7 +413,7 @@ Obtains the color space of an **OH_NativeBuffer** instance.<br>This function is 
 
 ### OH_NativeBuffer_SetMetadataValue()
 
-```
+```c
 int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t size, uint8_t *metadata)
 ```
 
@@ -525,8 +432,8 @@ Sets a metadata value for an **OH_NativeBuffer** instance.<br>This function is n
 | -- | -- |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | Pointer to an **OH_NativeBuffer** instance.|
 | [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey) metadataKey | Metadata type of [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md). For details about the available options, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
-| int32_t size | Size of the uint8_t vector. For details about the value range, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
-| metaData |  Pointer to the uint8_t vector.|
+| int32_t size | Size of the **uint8_t** vector. For details about the value range, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
+| uint8_t *metadata |  Pointer to the **uint8_t** vector.|
 
 **Returns**
 
@@ -536,7 +443,7 @@ Sets a metadata value for an **OH_NativeBuffer** instance.<br>This function is n
 
 ### OH_NativeBuffer_GetMetadataValue()
 
-```
+```c
 int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffer_MetadataKey metadataKey,int32_t *size, uint8_t **metadata)
 ```
 
@@ -554,45 +461,11 @@ Obtains the metadata value of an **OH_NativeBuffer** instance.<br>This function 
 | -- | -- |
 | [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | Pointer to an **OH_NativeBuffer** instance.|
 | [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey) metadataKey | Metadata type of [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md). For details about the available options, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
-| int32_t *size | Size of the uint8_t vector. For details about the value range, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
-| metaData |  Double pointer to the uint8_t vector.|
+| int32_t *size | Size of the **uint8_t** vector. For details about the value range, see [OH_NativeBuffer_MetadataKey](capi-buffer-common-h.md#oh_nativebuffer_metadatakey).|
+| uint8_t **metadata |  Double pointer to the **uint8_t** vector.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
 | int32_t | Returns **0** if the operation is successful; returns an error code defined in [OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode) otherwise.|
-
-### OH_NativeBuffer_MapWaitFence()
-
-```
-int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, void **virAddr)
-```
-
-**Description**
-
-Maps the ION memory corresponding to [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) to the process space, and permanently blocks the input **fenceFd**.
-
-If **OK** is returned, the system closes **fenceFd**. For other return values, you need to close **fenceFd** by yourself.
-
-This API must be used in pair with [OH_NativeBuffer_Unmap](capi-native-buffer-h.md#oh_nativebuffer_unmap).
-
-This function is not thread-safe.
-
-**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
-
-**Since**: 22
-
-**Parameters**
-
-| Name| Description|
-| -- | -- |
-| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) *buffer | Pointer to an [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) instance.|
-| int32_t fenceFd | File descriptor handle, which is used for concurrent synchronization control.|
-| void **virAddr | Double pointer to the address of the virtual memory.|
-
-**Returns**
-
-| Type| Description|
-| -- | -- |
-| int32_t | Returns **SURFACE_ERROR_OK** if the execution is successful.<br>Returns **NATIVE_ERROR_INVALID_ARGUMENTS** if **buffer** or **virAddr** is a null pointer, or **fenceFd** is less than 0.|

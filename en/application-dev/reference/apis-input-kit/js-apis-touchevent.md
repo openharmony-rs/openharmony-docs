@@ -11,7 +11,7 @@ The **touchEvent** module provides touch events reported by a device. It is inhe
 
 > **NOTE**
 >
-> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -27,7 +27,7 @@ Enumerates the touch event types.
 
 | Name    | Value  | Description  |
 | ------ | ------ | ---- |
-| CANCEL | 0 | Touch cancellation.|
+| CANCEL | 0 | Touch cancellation. The down event of the touchscreen is interrupted unexpectedly and does not close normally. For example, the **CANCEL** event is triggered when the finger is pressed but not lifted, the screen is rotated or folded, or a new hover occurs.|
 | DOWN   | 1 | Touch press.|
 | MOVE   | 2 | Touch moving.|
 | UP     | 3 | Touch release.|

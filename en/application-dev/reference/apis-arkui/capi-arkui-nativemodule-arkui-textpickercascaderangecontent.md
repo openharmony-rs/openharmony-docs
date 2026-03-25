@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} ARKUI_TextPickerCascadeRangeContent
+```
+
 ## Overview
 
 Defines a struct for the multi-column cascade picker.

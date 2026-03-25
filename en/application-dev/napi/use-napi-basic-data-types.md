@@ -23,24 +23,24 @@ Before using Node-API to create and obtain numbers, you need to understand the f
 The following table lists the APIs provided by the Node-API module for converting number types between ArkTS and C/C++.
 | API| Description|
 | -------- | -------- |
-| napi_get_value_uint32 | Obtains a C uint32_t value from an ArkTS number.|
-| napi_get_value_int32 | Obtains a C int32_t value from an ArkTS number.|
-| napi_get_value_int64 | Obtains a C int64_t value from an ArkTS number.|
-| napi_get_value_double | Obtains a C double value from an ArkTS number.|
-| [napi_get_value_bool](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-primitive#napi_get_value_bool)| Obtains a C bool value from an ArkTS boolean.|
-| [napi_get_value_string_utf8](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_get_value_string_utf8) | Obtains a C UTF-8-encoded string value from an ArkTS string.|
-| [napi_get_value_string_utf16](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_get_value_string_utf16) | Obtains a C UTF-16-encoded string value from an ArkTS string.|
-| [napi_get_value_string_latin1](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_get_value_string_latin1) | Obtains a C ISO-8859-1-encoded string value from an ArkTS string.|
-| napi_create_int32 | Creates an ArkTS number from a 32-bit signed integer.|
-| napi_create_uint32 | Creates an ArkTS number from a 32-bit unsigned integer.|
-| napi_create_int64 | Creates an ArkTS number from a 64-bit signed integer.|
-| napi_create_double | Creates an ArkTS number from a double-precision floating-point number.|
-| [napi_get_boolean](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-primitive#napi_get_boolean) | Obtain an ArkTS boolean from a C bool.|
-| [napi_create_string_utf8](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf8) | Creates an ArkTS string from a C UTF-8-encoded string.|
-| [napi_create_string_utf16](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_string_utf16) | Creates an ArkTS string from a C UTF-16-encoded string.|
-| [napi_create_string_latin1](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_string_latin1) | Creates an ArkTS string from a C ISO-8859-1-encoded string.|
-| [napi_create_external_string_ascii](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_external_string_ascii) | Creates an ArkTS string from a C ASCII-encoded string without copying.|
-| [napi_create_external_string_utf16](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/use-napi-about-string#napi_create_external_string_utf16) | Creates an ArkTS string from a C UTF16-encoded string without copying.|
+| [napi_get_value_uint32](#napi_get_value_uint32) | Obtains a C uint32_t value from an ArkTS number.|
+| [napi_get_value_int32](#napi_get_value_int32) | Obtains a C int32_t value from an ArkTS number.|
+| [napi_get_value_int64](#napi_get_value_int64) | Obtains a C int64_t value from an ArkTS number.|
+| [napi_get_value_double](#napi_get_value_double) | Obtains a C double value from an ArkTS number.|
+| [napi_get_value_bool](use-napi-about-primitive.md#napi_get_value_bool) | Obtains a C bool value from an ArkTS boolean.|
+| [napi_get_value_string_utf8](use-napi-about-string.md#napi_get_value_string_utf8) | Obtains a C UTF-8-encoded string value from an ArkTS string.|
+| [napi_get_value_string_utf16](use-napi-about-string.md#napi_get_value_string_utf16) | Obtains a C UTF-16-encoded string value from an ArkTS string.|
+| [napi_get_value_string_latin1](use-napi-about-string.md#napi_get_value_string_latin1) | Obtains a C ISO-8859-1-encoded string value from an ArkTS string.|
+| [napi_create_int32](#napi_create_int32) | Creates an ArkTS number from a 32-bit signed integer.|
+| [napi_create_uint32](#napi_create_uint32) | Creates an ArkTS number from a 32-bit unsigned integer.|
+| [napi_create_int64](#napi_create_int64) | Creates an ArkTS number from a 64-bit signed integer.|
+| [napi_create_double](#napi_create_double) | Creates an ArkTS number from a double-precision floating-point number.|
+| [napi_get_boolean](use-napi-about-primitive.md#napi_get_boolean) | Obtain an ArkTS boolean from a C bool.|
+| [napi_create_string_utf8](use-napi-about-string.md#napi_create_string_utf8) | Creates an ArkTS string from a C UTF-8-encoded string.|
+| [napi_create_string_utf16](use-napi-about-string.md#napi_create_string_utf16) | Creates an ArkTS string from a C UTF-16-encoded string.|
+| [napi_create_string_latin1](use-napi-about-string.md#napi_create_string_latin1) | Creates an ArkTS string from a C ISO-8859-1-encoded string.|
+| [napi_create_external_string_ascii](use-napi-about-string.md#napi_create_external_string_ascii) | Creates an ArkTS string from a C ASCII-encoded string without copying.|
+| [napi_create_external_string_utf16](use-napi-about-string.md#napi_create_external_string_utf16) | Creates an ArkTS string from a C UTF16-encoded string without copying.|
 
 ## Example
 
@@ -207,7 +207,7 @@ import testNapi from 'libentry.so';
 
 // If a number within the int64 value range is passed in, the original number will be returned.
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number %{public}d', testNapi.getValueInt64(80));
-// If "sAs" (a non-number) is passed in, 'undefined' will be returned.
+// If "ss" (a non-number) is passed in, 'undefined' will be returned.
 hilog.info(0x0000, 'Node-API', 'get_value_int64_not_number %{public}s', testNapi.getValueInt64('sAs'));
 // If a number out of the int64 value range is passed in, it will cause integer overflow and loss of precision. The number returned is not equal to the number passed in.
 hilog.info(0x0000, 'Node-API', 'get_value_int64_number_oversize %{public}d', testNapi.getValueInt64(9223372036854775809));

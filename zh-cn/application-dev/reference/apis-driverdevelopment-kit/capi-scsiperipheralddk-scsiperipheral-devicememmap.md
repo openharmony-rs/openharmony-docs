@@ -30,6 +30,6 @@ typedef struct ScsiPeripheral_DeviceMemMap {...} ScsiPeripheral_DeviceMemMap
 | const size_t size | 缓冲区大小。 |
 | uint32_t offset | 已使用缓冲区的偏移量。默认值为0，表示没有偏移，缓冲区从指定地址开始。 |
 | uint32_t bufferLength | 已使用缓冲区的长度。默认情况下，该值等于缓冲区的大小，表示整个缓冲区都被使用。 |
-| uint32_t transferredLength | 传输数据的长度。 |
+| uint32_t transferredLength | 已传输数据的长度。 |
 
 

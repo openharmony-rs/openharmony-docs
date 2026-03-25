@@ -14,7 +14,7 @@
 > 
 > 从API version 9开始，该模块不再维护，建议使用[bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md)替代。
 
-## BundleInfo<sup>(deprecated)<sup>
+## BundleInfo<sup>(deprecated)</sup>
 
 > **说明：**
 >
@@ -50,11 +50,11 @@
 
 
 
-## ReqPermissionDetail<sup>(deprecated)<sup>
+## ReqPermissionDetail<sup>(deprecated)</sup>
 
 > **说明：**
 >
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[ReqPermissionDetail](js-apis-bundleManager-bundleInfo.md)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[ReqPermissionDetail](js-apis-bundleManager-bundleInfo.md#reqpermissiondetail)替代。
 
 应用运行时需向系统申请的权限集合的详细信息。
 
@@ -68,7 +68,7 @@
 
 
 
-## UsedScene<sup>(deprecated)<sup>
+## UsedScene<sup>(deprecated)</sup>
 
 > **说明：**
 >

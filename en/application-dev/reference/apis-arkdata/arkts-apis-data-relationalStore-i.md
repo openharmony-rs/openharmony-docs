@@ -16,7 +16,7 @@ Defines the RDB store configuration.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| name | string | No| No| Database file name, which is the unique identifier of the RDB store.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
+| name | string | No| No| Database file name, which is the unique identifier of the RDB store. Creating two databases with the same name in the same process is prohibited; otherwise, functions such as device-device sync, device-cloud sync, silent access, and key backup may malfunction.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | securityLevel | [SecurityLevel](arkts-apis-data-relationalStore-e.md#securitylevel) | No| No| Security level of the RDB store.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | encrypt | boolean | No| Yes| Whether to encrypt the RDB store.<br> **true**: encrypt the RDB store.<br> **false** (default): not encrypt the RDB store.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
 | dataGroupId<sup>10+</sup> | string | No| Yes| Application group ID. <!--RP1-->Currently, this parameter is not supported.<!--RP1End--><br>**Model restriction**: This parameter can be used only in the stage model.<br>This parameter is supported since API version 10. If **dataGroupId** is specified, the **RdbStore** instance will be created in the sandbox directory of the specified **dataGroupId**. However, the encrypted RDB store in this sandbox directory does not support multi-process access. If this parameter is left blank, the **RdbStore** instance will be created in the sandbox directory of the application by default.<br>**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core|
@@ -40,12 +40,12 @@ Represents the configuration of database encryption parameters. This configurati
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
-| encryptionKey  | Uint8Array | No| No| Key used for database encryption and decryption.<br>If this parameter is not specified, the RDB store generates a key, saves the key, and uses the key to open the database file.<br>If the key is not required, you need to set the key to 0.|
+| encryptionKey  | Uint8Array | No| No| Key used for database encryption and decryption.<br>If this parameter is not specified, the RDB store generates a key, saves the key, and uses the key to open the database file.<br>If the key is not required, you need to set the key to **0**.|
 | iterationCount | number | No| Yes| Number of iterations of the PBKDF2 algorithm used in the RDB store. The value is an integer. <br>Default value: **10000**.<br>The value must be an integer greater than 0. If it is not an integer, the value is rounded down.<br>If this parameter is not specified or is set to **0**, the default value **10000** and the default encryption algorithm **AES_256_GCM** are used.|
 | encryptionAlgo | [EncryptionAlgo](arkts-apis-data-relationalStore-e.md#encryptionalgo14) | No| Yes| Algorithm used for database encryption and decryption. <br>Default value: **AES_256_GCM**.|
 | hmacAlgo       | [HmacAlgo](arkts-apis-data-relationalStore-e.md#hmacalgo14) | No| Yes| HMAC algorithm used for database encryption and decryption. <br>Default value: **SHA256**.|
 | kdfAlgo        | [KdfAlgo](arkts-apis-data-relationalStore-e.md#kdfalgo14) | No| Yes| PBKDF2 algorithm used for database encryption and decryption. <br>Default value: the same as the HMAC algorithm used.|
-| cryptoPageSize | number | No| Yes| Page size used for database encryption and decryption, in bytes. <br>Default value: **1024**.<br>The value must be an integer within the range of 1024 to 65536 and must be 2<sup>n</sup>. If the specified value is not an integer, the value is rounded down.|
+| cryptoPageSize | number | No| Yes| Page size used for database encryption and decryption, in bytes. <br>Default value: **1024**.<br>The value must be an integer within the range of 1,024 to 65,536 and must be 2<sup>n</sup>. If the specified value is not an integer, the value is rounded down.|
 
 ## Asset<sup>10+</sup>
 
@@ -60,7 +60,7 @@ Represents the asset (such as a document, image, or video).
 | path | string | No| No| Path of an asset in the application sandbox.|
 | createTime | string | No| No| Time when an asset is created.|
 | modifyTime | string | No| No| Time when an asset is last modified.|
-| size | string | No| No| Asset size. In the device-cloud synchronization mechanism, this field is one of the key bases for determining whether an asset is changed. Ensure that the storage format and value logic are consistent across the end-to-end link. It is recommended that all system nodes use the standard processing format (unit: byte; value: a non-negative integer) to avoid synchronization exceptions or misjudgment caused by format differences.|
+| size | string | No| No| Asset size. In the device-cloud sync mechanism, this field is one of the key bases for determining whether an asset is changed. Ensure that the storage format and value logic are consistent across the end-to-end link. It is recommended that all system nodes use the standard processing format (unit: byte; value: a non-negative integer) to avoid sync exceptions or misjudgment caused by format differences.|
 | status | [AssetStatus](arkts-apis-data-relationalStore-e.md#assetstatus10) | No  | Yes  | Asset status. <br>Default value: **ASSET_NORMAL**.|
 
 ## ChangeInfo<sup>10+</sup>
@@ -88,6 +88,7 @@ Defines a struct for distributed configuration of a table.
 | autoSync | boolean | No| No| The value **true** means both auto sync and manual sync are supported for the table; **false** means only manual sync is supported for the table.|
 | asyncDownloadAsset<sup>18+</sup> | boolean | No| Yes| Whether to download assets synchronously or asynchronously when device-cloud sync is being performed for the current RDB store. The value **true** means to use an asynchronous task to download assets after all data is downloaded; **false** means to download assets synchronously. <br>Default value: **false**.|
 | enableCloud<sup>18+</sup> | boolean | No| Yes| Whether to enable device-cloud sync for this RDB store. The value **true** means to enable device-cloud sync; **false** means the opposite. The default value is **true**.|
+
 
 ## Statistic<sup>10+</sup>
 
@@ -174,14 +175,14 @@ Represents the configuration of a transaction object.
 
 ## Constraints and Examples of pluginLibs
 
-**Constraints**<br>1. The maximum number of dynamic library names is 16. If the number exceeds 16, the library fails to be opened and the error code 14800000 is returned.<br>2. The dynamic libraries must be those in the sandbox directory or system directory of the application. If a dynamic library fails to be loaded, the RDB store cannot be opened and the error code 14800010 is returned.<br>3. The dynamic library name must be a complete path that can be loaded by SQLite. The path is in the format of [context.bundleCodeDir+ "/libs/arm64/" + *name of the .so file*"], in which **context.bundleCodeDir** is the application sandbox path, **libs** is a fixed directory, and **arm64** is the subdirectory determined by the system architecture. For example, if the system architecture is arm64-v8a, the subdirectory is arm64.<br>Example: [context.bundleCodeDir+ "/libs/arm64/" + libtokenizer.so]. If this parameter is left blank, dynamic libraries are not loaded by default.<br>4. The dynamic library must contain all its dependencies to prevent the failure caused by the lack of dependencies.<br>Example: In an NDK project, **libtokenizer.so** is built using the default compilation parameters and depends on the C++ standard library. When the dynamic library is loaded, **libc++_shared.so** is linked by mistake because the namespace is different from that during compilation. As a result, the **__emutls_get_address** symbol cannot be found. To solve this problem, you need to statically link the C++ standard library during compilation. For details, see [NDK Project Building Overview](../../napi/build-with-ndk-overview.md).<br>
-The following is an example of using **pluginLibs** to load a custom tokenizer:<br>1. Implement an FTS5 loadable tokenizer extension and compile it into a .so file. For details about the compilation, see [Building an NDK Project with CMake](../../napi/build-with-ndk-cmake.md).<br>2. Copy the generated .so file to the corresponding subdirectory in the **entry/libs/** directory of the project. If the subdirectory does not exist, create one. The subdirectory is determined by the system architecture. For example, put the file in the **entry/libs/arm64-v8a** or **entry/libs/armeabi-v7a** directory, respectively, if the system architecture is arm64-v8a or armeabi-v7a.<br>3. Load the custom tokenizer.
+**Constraints**<br>1. The maximum number of dynamic library names is 16. If the number exceeds 16, the library fails to be opened and the error code 14800000 is returned.<br>2. The dynamic libraries must be those in the sandbox directory or system directory of the application. If a dynamic library fails to be loaded, the RDB store cannot be opened and the error code 14800010 is returned.<br>3. The dynamic library name must be a complete path that can be loaded by SQLite. The path is in the format of [context.bundleCodeDir + "/libs/arm64/" + *name of the .so file*"], in which **context.bundleCodeDir** is the application sandbox path, **libs** is a fixed directory, and **arm64** is the subdirectory determined by the system architecture. For example, if the system architecture is arm64-v8a, the subdirectory is arm64.<br>Example: [context.bundleCodeDir+ "/libs/arm64/" + libtokenizer.so]. If this parameter is left blank, dynamic libraries are not loaded by default.<br>4. The dynamic library must contain all its dependencies to prevent the failure caused by the lack of dependencies.<br>Example: In an NDK project, **libtokenizer.so** is built using the default compilation parameters and depends on the C++ standard library. When the dynamic library is loaded, **libc++_shared.so** is linked by mistake because the namespace is different from that during compilation. As a result, the **__emutls_get_address** symbol cannot be found. To solve this problem, you need to statically link the C++ standard library during compilation. For details, see [NDK Project Building Overview](../../napi/build-with-ndk-overview.md).<br>
+The following is an example of using **pluginLibs** to load a custom tokenizer:<br> 1. Implement an FTS5 loadable tokenizer extension and compile it into a .so file. For details about the compilation, see [Building an NDK Project with CMake](../../napi/build-with-ndk-cmake.md).<br>2. Copy the generated .so file to the corresponding subdirectory in the **entry/libs/** directory of the project. If the subdirectory does not exist, create one. The subdirectory is determined by the system architecture. For example, put the file in the **entry/libs/arm64-v8a** or **entry/libs/armeabi-v7a** directory, respectively, if the system architecture is arm64-v8a or armeabi-v7a.<br>3. Load the custom tokenizer.
 
 ```ts
-import relationalStore from '@ohos.data.relationalStore'
+import { relationalStore } from '@kit.ArkData'
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-import fs from '@ohos.file.fs';
+import { fileIo as fs } from '@kit.CoreFileKit'
 
 export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {

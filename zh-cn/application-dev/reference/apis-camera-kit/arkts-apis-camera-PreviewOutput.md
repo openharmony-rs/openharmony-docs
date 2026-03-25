@@ -236,6 +236,7 @@ function getSupportedFrameRates(previewOutput: camera.PreviewOutput): Array<came
 setFrameRate(minFps: number, maxFps: number): void
 
 设置预览流帧率范围，设置的范围必须在支持的帧率范围内。
+
 进行设置前，可通过[getSupportedFrameRates](#getsupportedframerates12)接口查询支持的帧率范围。
 
 > **说明：**

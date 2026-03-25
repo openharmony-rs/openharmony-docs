@@ -49,9 +49,9 @@ Defines APIs and enums related to transactions.
 | [int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const OH_Data_VBuckets *rows,Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdbtrans_batchinsert) | Inserts data into a table in batches.                  |
 | [int OH_RdbTrans_Update(OH_Rdb_Transaction *trans, const OH_VBucket *row, const OH_Predicates *predicates,int64_t *changes)](#oh_rdbtrans_update) | Updates data in an RDB store based on specified conditions.              |
 | [int OH_RdbTrans_UpdateWithConflictResolution(OH_Rdb_Transaction *trans, const OH_VBucket *row,const OH_Predicates *predicates, Rdb_ConflictResolution resolution, int64_t *changes)](#oh_rdbtrans_updatewithconflictresolution) | Updates data in the database based on specified conditions and supports conflict resolution.|
-| [int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, int64_t *changes)](#oh_rdbtrans_delete) | Deletes data from the database based on the specified conditions.                |
-| [OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *columns[],int len)](#oh_rdbtrans_query) | Queries data in the database based on specified conditions.              |
-| [OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args)](#oh_rdbtrans_querysql) | Queries data in the database using the specified SQL statement.                 |
+| [int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, int64_t *changes)](#oh_rdbtrans_delete) | Deletes data from the database based on specified conditions.                |
+| [OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *predicates, const char *columns[],int len)](#oh_rdbtrans_query) | Queries data from the database based on specified conditions.              |
+| [OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args)](#oh_rdbtrans_querysql) | Queries data from the database based on the SQL statement.                 |
 | [int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Data_Values *args, OH_Data_Value **result)](#oh_rdbtrans_execute) | Executes an SQL statement that contains specified parameters.                     |
 | [int OH_RdbTrans_Destroy(OH_Rdb_Transaction *trans)](#oh_rdbtrans_destroy) | Destroys a transaction object.                                  |
 
@@ -216,7 +216,7 @@ Inserts a row of data into a table.
 | Name                                                 | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Pointer to the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) instance.|
-| const char *table                                       | Pointer to the target table.                                                |
+| const char *table                                       | Name of the target table.                                                |
 | const [OH_VBucket](capi-rdb-oh-vbucket.md) *row             | Row of data to insert.                                  |
 | int64_t *rowId                                          | Pointer to the row number returned.                            |
 
@@ -224,7 +224,7 @@ Inserts a row of data into a table.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
+| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default limit.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the size limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
 
 ### OH_RdbTrans_InsertWithConflictResolution()
 
@@ -244,8 +244,8 @@ Inserts a row of data into a table with conflict resolutions.
 | Name                                                 | Description                                                        |
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Pointer to the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) instance.|
-| const char *table                                       | Name of the target table.                                            |
-| const [OH_VBucket](capi-rdb-oh-vbucket.md) *row             | Pointer to the row of data to insert.                                    |
+| const char *table                                       |  Name of the target table.                                            |
+| const [OH_VBucket](capi-rdb-oh-vbucket.md) *row             | Row of data to insert.                                    |
 | Rdb_ConflictResolution resolution                       | Policy used to resolve file conflicts.                                  |
 | int64_t *rowId                                          | Pointer to the row number returned.                        |
 
@@ -253,7 +253,7 @@ Inserts a row of data into a table with conflict resolutions.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
+| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default limit.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the size limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
 
 ### OH_RdbTrans_BatchInsert()
 
@@ -265,9 +265,9 @@ int OH_RdbTrans_BatchInsert(OH_Rdb_Transaction *trans, const char *table, const 
 
 Inserts data into a table in batches.
 
-A maximum of 32766 parameters can be inserted at a time. If the number of parameters exceeds the upper limit, the error code **RDB_E_INVALID_ARGS** is returned. The number of inserted data records multiplied by the size of the union across all fields in the inserted data equals the number of parameters.
+A maximum of 32,766 parameters can be inserted at a time. If the number of parameters exceeds this limit, the error code **RDB_E_INVALID_ARGS** is returned. The number of inserted data records multiplied by the size of the union set of all fields in the inserted data equals the number of parameters.
 
-For example, if the size of the union is 10, a maximum of 3276 data records can be inserted (3276 × 10 = 32760).
+For example, if the size of the union set is 10, a maximum of 3,276 data records can be inserted (3276 × 10 = 32760).
 
 Ensure that you comply with this constraint when calling this API to avoid errors caused by excessive parameters.
 
@@ -279,7 +279,7 @@ Ensure that you comply with this constraint when calling this API to avoid error
 | Name                                                  | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans  | Pointer to the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) instance.|
-| const char *table                                        | Pointer to the target table.                                                |
+| const char *table                                        | Name of the target table.                                                |
 | const [OH_Data_VBuckets](capi-rdb-oh-data-vbuckets.md) *rows | An array of data to insert.                                |
 | Rdb_ConflictResolution resolution                        | Policy used to resolve file conflicts.                                  |
 | int64_t *changes                                         | Pointer to the number of successful insertions.                              |
@@ -288,7 +288,7 @@ Ensure that you comply with this constraint when calling this API to avoid error
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
+| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default limit.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the size limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
 
 ### OH_RdbTrans_Update()
 
@@ -308,7 +308,7 @@ Updates data in an RDB store based on specified conditions.
 | Name                                                  | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans  | Pointer to the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) instance.|
-| const [OH_VBucket](capi-rdb-oh-vbucket.md) *row              | Pointer to the row of data to update.                                  |
+| const [OH_VBucket](capi-rdb-oh-vbucket.md) *row              | Row of data to update.                                  |
 | const [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance, specifying the update conditions.  |
 | int64_t *changes                                         | Pointer to the number of successful updates.                              |
 
@@ -316,7 +316,7 @@ Updates data in an RDB store based on specified conditions.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
+| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default limit.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the size limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
 
 ### OH_RdbTrans_UpdateWithConflictResolution()
 
@@ -336,7 +336,7 @@ Updates data in the database based on specified conditions and supports conflict
 | Name                                                  | Description                                                        |
 | -------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans  | Pointer to the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) instance.|
-| const [OH_VBucket](capi-rdb-oh-vbucket.md) *row              | Pointer to the row of data to update.                                    |
+| const [OH_VBucket](capi-rdb-oh-vbucket.md) *row              | Row of data to update.                                    |
 | const [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance, specifying the update conditions.  |
 | Rdb_ConflictResolution resolution                        | Policy used to resolve file conflicts.                                  |
 | int64_t *changes                                         | Pointer to the number of successful updates.                              |
@@ -345,7 +345,7 @@ Updates data in the database based on specified conditions and supports conflict
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
+| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default limit.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the size limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.<br>**RDB_E_SQLITE_CONSTRAINT** indicates an SQLite error code: SQLite constraint.|
 
 ### OH_RdbTrans_Delete()
 
@@ -355,7 +355,7 @@ int OH_RdbTrans_Delete(OH_Rdb_Transaction *trans, const OH_Predicates *predicate
 
 **Description**
 
-Deletes data from the database based on the specified conditions.
+Deletes data from the database based on specified conditions.
 
 **Since**: 18
 
@@ -372,7 +372,7 @@ Deletes data from the database based on the specified conditions.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
+| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default limit.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the size limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
 
 ### OH_RdbTrans_Query()
 
@@ -382,7 +382,7 @@ OH_Cursor *OH_RdbTrans_Query(OH_Rdb_Transaction *trans, const OH_Predicates *pre
 
 **Description**
 
-Queries data in the database based on specified conditions.
+Queries data from the database based on specified conditions.
 
 **Since**: 18
 
@@ -393,7 +393,7 @@ Queries data in the database based on specified conditions.
 | -------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans  | Pointer to the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) instance.|
 | const [OH_Predicates](capi-rdb-oh-predicates.md) *predicates | Pointer to the [OH_Predicates](capi-rdb-oh-predicates.md) instance, specifying the query conditions.  |
-| const char *columns[]                       | Pointer to the column to be queried. If the value is not specified, the query applies to all columns.          |
+| const char *columns[]                       | Columns to query. If null is passed in, all columns are queried.          |
 | int len                                                  | Number of elements in a column.                                        |
 
 **Returns**
@@ -410,7 +410,7 @@ OH_Cursor *OH_RdbTrans_QuerySql(OH_Rdb_Transaction *trans, const char *sql, cons
 
 **Description**
 
-Queries data in the database using the specified SQL statement.
+Queries data from the database based on the SQL statement.
 
 **Since**: 18
 
@@ -421,7 +421,7 @@ Queries data in the database using the specified SQL statement.
 | ------------------------------------------------------- | ------------------------------------------------------------ |
 | [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) *trans | Pointer to the [OH_Rdb_Transaction](capi-rdb-oh-rdb-transaction.md) instance.|
 | const char *sql                                         | Pointer to the SQL statement to execute.                                       |
-| const [OH_Data_Values](capi-rdb-oh-data-values.md) *args    | Pointer to the [OH_Data_Values](capi-rdb-oh-data-values.md) instance.    |
+| const [OH_Data_Values](capi-rdb-oh-data-values.md) *args    | Pointer to [OH_Data_Values](capi-rdb-oh-data-values.md).    |
 
 **Returns**
 
@@ -439,6 +439,8 @@ int OH_RdbTrans_Execute(OH_Rdb_Transaction *trans, const char *sql, const OH_Dat
 
 Executes an SQL statement that contains specified parameters.
 
+Statements starting with comments are not supported.
+
 **Since**: 18
 
 
@@ -455,7 +457,7 @@ Executes an SQL statement that contains specified parameters.
 
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
-| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default value.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
+| int  | Returns the execution result.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_ERROR** indicates a common database error.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.<br>**RDB_E_ALREADY_CLOSED** indicates that the database is already closed.<br>**RDB_E_WAL_SIZE_OVER_LIMIT** indicates that the size of the WAL log file exceeds the default limit.<br>**RDB_E_SQLITE_FULL** indicates an SQLite error: the database is full.<br>**RDB_E_SQLITE_CORRUPT** indicates that the database is corrupted.<br>**RDB_E_SQLITE_PERM** indicates an SQLite error: access denied.<br>**RDB_E_SQLITE_BUSY** indicates an SQLite error: database file locked.<br>**RDB_E_SQLITE_LOCKED** indicates an SQLite error: database table locked.<br>**RDB_E_SQLITE_NOMEM** indicates an SQLite: insufficient database memory.<br>**RDB_E_SQLITE_READONLY** indicates an SQLite error: attempt to write a read-only database.<br>**RDB_E_SQLITE_IOERR** indicates an SQLite: disk I/O error.<br>**RDB_E_SQLITE_TOO_BIG** indicates an SQLite error: TEXT or BLOB exceeds the size limit.<br>**RDB_E_SQLITE_MISMATCH** indicates an SQLite error: data types mismatch.|
 
 ### OH_RdbTrans_Destroy()
 
@@ -481,3 +483,4 @@ Destroys a transaction object.
 | Type| Description                                                        |
 | ---- | ------------------------------------------------------------ |
 | int  | Returns an error code.<br>**RDB_OK** indicates the operation is successful.<br>**RDB_E_INVALID_ARGS** indicates that invalid parameters are specified.|
+

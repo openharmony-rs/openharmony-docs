@@ -10,7 +10,7 @@ The overlay feature allows you to place elements on top of a component.
 
 >  **NOTE**
 >
->  The APIs of this module are supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+>  The feature is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
 
 ## overlay
 
@@ -32,8 +32,8 @@ Adds an overlay to this component, which can be text, a custom component, or [Co
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | string \| [CustomBuilder](ts-types.md#custombuilder8)<sup>10+</sup> \| [ComponentContent](#componentcontent12)<sup>12+</sup> | Yes  | Content of the overlay, which can be text or a custom component.<br>**NOTE**<br>When the overlay is a custom component, it cannot obtain focus through sequential keyboard navigation. Using **CustomBuilder** will cause the overlay content to be destroyed and recreated on page refresh, which may incur performance overhead. For scenarios with frequent page updates, using **ComponentContent** is recommended.|
-| options | [OverlayOptions](#overlayoptions12) | No  | Options for positioning the overlay.<br>**NOTE**<br>In versions earlier than API version 12, **options** is defined as follows:<br>{<br>align?: [Alignment](ts-appendix-enums.md#alignment), <br>offset?: {x?: number, y?: number}<br>} |
+| value   | string&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)<sup>10+</sup>&nbsp;\| [ComponentContent](#componentcontent12)<sup>12+</sup> | Yes  | Content of the overlay, which can be text or a custom component.<br>**NOTE**<br>When the overlay is a custom component, it cannot obtain focus through sequential keyboard navigation. Using **CustomBuilder** will cause the overlay content to be destroyed and recreated on page refresh, which may incur performance overhead. For scenarios with frequent page updates, using **ComponentContent** is recommended.|
+| options | [OverlayOptions](#overlayoptions12) | No  | Options for positioning the overlay.<br>**NOTE**<br>In versions earlier than API version 12, **options** is defined as follows:<br>{<br>align?:&nbsp;[Alignment](ts-appendix-enums.md#alignment),&nbsp;<br>offset?:&nbsp;{x?:&nbsp;number, y?:&nbsp;number}<br>} |
 
 **Return value**
 
@@ -87,7 +87,7 @@ Adds an overlay to this component, which can be text, a custom component, or [Co
 
 type ComponentContent\<T \= Object\> = ComponentContent\<T\>
 
-A constructor used to create a **ComponentContent** object.
+Represents a constructor used to create a **ComponentContent** object.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -95,7 +95,7 @@ A constructor used to create a **ComponentContent** object.
 
 | Type|Description|
 | ----- | ----------------- |
-| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | A constructor used to create a **ComponentContent** object.|
+| [ComponentContent](../js-apis-arkui-ComponentContent.md)\<T\> | Constructor used to create a **ComponentContent** object.|
 
 ## Example
 
@@ -114,6 +114,7 @@ struct OverlayExample {
         Text('floating layer')
           .fontSize(12).fontColor(0xCCCCCC).maxLines(1)
         Column() {
+          // Replace $r('app.media.img') with the image resource file you use.
           Image($r('app.media.img'))
             .width(240).height(240)
             .overlay("Winter is a beautiful season, especially when it snows.", {
@@ -127,7 +128,7 @@ struct OverlayExample {
 }
 ```
 
-![en-us_image_0000001212058472](figures/en-us_image_0000001212058472.png)
+![en-us_image_0000001205769446](figures/en-us_image_0000001205769446.png)
 
 ### Example 2: Setting an Overlay Using a Custom Builder
 
@@ -138,8 +139,10 @@ This example demonstrates how to set an overlay using a custom builder.
 @Entry
 @Component
 struct OverlayExample {
-  @Builder OverlayNode() {
+  @Builder
+  OverlayNode() {
     Column() {
+      // Replace $r('app.media.img1') with the image resource file you use.
       Image($r('app.media.img1'))
       Text("This is overlayNode").fontSize(20).fontColor(Color.White)
     }
@@ -151,6 +154,7 @@ struct OverlayExample {
 
   build() {
     Column() {
+      // Replace $r('app.media.img2') with the image resource file you use.
       Image($r('app.media.img2'))
         .overlay(this.OverlayNode(), { align: Alignment.Center })
         .objectFit(ImageFit.Contain)
@@ -169,16 +173,17 @@ This example demonstrates how to use **ComponentContent** to dynamically change 
 // xxx.ets
 import { ComponentContent } from '@kit.ArkUI';
 
-class Params{
+class Params {
   backgroundColor: string | Resource = ""
+
   constructor(backgroundColor: string | Resource) {
     this.backgroundColor = backgroundColor;
   }
 }
 
 @Builder
-function overlayBuilder(params: Params){
-  Row(){
+function overlayBuilder(params: Params) {
+  Row() {
   }.width('100%').height('100%').backgroundColor(params.backgroundColor)
 }
 
@@ -187,7 +192,8 @@ function overlayBuilder(params: Params){
 struct Page_4040 {
   @State overlayColor: string = 'rgba(0, 0, 0, 0.6)';
   private uiContext: UIContext = this.getUIContext();
-  private overlayNode: ComponentContent<Params> = new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor))
+  private overlayNode: ComponentContent<Params> =
+    new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor))
 
   aboutToAppear(): void {
     setInterval(() => {
@@ -203,7 +209,7 @@ struct Page_4040 {
 
   build() {
     Row() {
-      Column(){
+      Column() {
         Text(this.overlayColor)
           .fontSize(40)
           .fontWeight(FontWeight.Bold)

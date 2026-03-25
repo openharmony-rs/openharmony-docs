@@ -11,10 +11,9 @@ Applications can call photoAccessHelper APIs to manage media assets (images and 
 > **NOTE**
 >
 > - Before you get started, obtain a PhotoAccessHelper instance and apply for required permissions. For details, see [Before You Start](photoAccessHelper-preparation.md).
->
 > - Unless otherwise specified, the PhotoAccessHelper instance obtained in [Before You Start](photoAccessHelper-preparation.md) is used to call photoAccessHelper APIs. If the code for obtaining the PhotoAccessHelper instance is missing, an error will be reported to indicate that photoAccessHelper is not defined.
 
-To ensure application running efficiency, most PhotoAccessHelper APIs are asynchronously implemented in callback or promise mode. The following examples use promise-based APIs. For details about the APIs, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
+To ensure application running efficiency, most PhotoAccessHelper APIs are asynchronously implemented in callback or promise mode. The following example uses the promise function. For more methods, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
 
 ## Obtaining Media Assets
 
@@ -22,21 +21,20 @@ You can obtain media assets based on the specified conditions, such as the media
 
 Use [PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1) with the [FetchOptions](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#fetchoptions) object to specify the search criteria. Unless otherwise specified, all the media assets to be obtained in this document exist in the database. If no media asset is obtained, check whether the media assets exist in the database.
 
-> **NOTICE**
->
-> When [PhotoAccessHelper.PhotoKeys.URI](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys) is used as the search criterion, only the [DataSharePredicates.equalTo](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10) API is supported.
+> **NOTE**<br>
+> When [PhotoAccessHelper.PhotoKeys](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys) is used as the search criterion, only the [DataSharePredicates.equalTo](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10) API is supported.
 
 To obtain the object at the specified position (for example, the first one, the last one, or the one with the specified index) in the result set, use [FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md).
 
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 - The [dataSharePredicates](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md) module is imported.
 
 ### Obtaining an Image or Video by Name
 
-Example: Obtain the image **test.jpg**.
+The following example describes how to obtain the image **test.jpg**.
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -69,7 +67,7 @@ The thumbnails offer a quick preview on images and videos. You can use [PhotoAss
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 - The [dataSharePredicates](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md) module is imported.
 
 For example, obtain the file descriptor (FD) of an image, and decode the image into a PixelMap for display or processing. For details, see [Image Decoding](../image/image-decoding.md).
@@ -118,7 +116,7 @@ Use [MediaAssetChangeRequest](../../reference/apis-media-library-kit/arkts-apis-
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.WRITE_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.WRITE_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 ### Creating an Image or Video Asset (for System Applications Only)
 
@@ -159,14 +157,16 @@ You can also use **MediaAssetChangeRequest.addResource** to specify the data sou
 
 To rename a media asset, change the **PhotoAsset.displayName** attribute, that is, the file name (including the file name extension) displayed.
 
-Use [FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md) to obtain the file to rename, use [MediaAssetChangeRequest.setTitle](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#settitle11) to set the new name, and then use [PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) to apply the changes to the database.
+Use [MediaAssetChangeRequest.setTitle](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetChangeRequest.md#settitle11) to set the new name, and then use [PhotoAccessHelper.applyChanges](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#applychanges11) to apply the changes to the database.
+
+Use [FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md) to obtain the file to rename.
 
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.WRITE_IMAGEVIDEO** and **ohos.permission.READ_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
-Example: Rename an image named **oldTestPhoto**.
+The following example describes how to rename an image named **oldTestPhoto**.
 
 **How to Develop**
 
@@ -211,7 +211,7 @@ The file moved to the trash will be retained for 30 days before being deleted pe
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.WRITE_IMAGEVIDEO** and **ohos.permission.READ_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Move the first file in the result set to the trash.
 

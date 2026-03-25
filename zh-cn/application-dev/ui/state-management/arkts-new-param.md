@@ -524,6 +524,7 @@ class Info {
 @Entry
 @ComponentV2
 struct Index {
+  // 使用@Local装饰infoList数组，作为数据源传递给子组件的@Param。
   @Local infoList: Info[] = [new Info('Alice', 8, 0, 0), new Info('Barry', 10, 1, 20), new Info('Cindy', 18, 24, 40)];
 
   build() {
@@ -531,6 +532,7 @@ struct Index {
       ForEach(this.infoList, (info: Info) => {
         MiddleComponent({ info: info })
       })
+      // 修改数组元素及对象属性，触发MiddleComponent和SubComponent更新。
       Button('change')
         .onClick(() => {
           this.infoList[0] = new Info('Atom', 40, 27, 90);
@@ -543,12 +545,14 @@ struct Index {
 
 @ComponentV2
 struct MiddleComponent {
+  // 使用@Param接收父组件传入的Info对象，数据源变化时触发子组件更新。
   @Require @Param info: Info;
 
   build() {
     Column() {
       Text(`name: ${this.info.name}`)
       Text(`age: ${this.info.age}`)
+      // 将Region对象继续传递给子组件的@Param。
       SubComponent({ region: this.info.region })
     }
   }
@@ -556,6 +560,7 @@ struct MiddleComponent {
 
 @ComponentV2
 struct SubComponent {
+  // @Param接收父组件传入的Region对象，数据源变化时触发子组件更新。
   @Require @Param region: Region;
 
   build() {
@@ -574,6 +579,7 @@ struct SubComponent {
 ``` TypeScript
 @ComponentV2
 struct Child {
+  // 使用@Param接收父组件传入的Array类型变量。
   @Require @Param count: number[];
 
   build() {
@@ -590,21 +596,26 @@ struct Child {
 @Entry
 @ComponentV2
 struct Index {
+  // 使用@Local装饰Array类型变量，作为数据源传递给子组件的@Param。
   @Local count: number[] = [1, 2, 3];
 
   build() {
     Row() {
       Column() {
         Child({ count: this.count })
+        // 对数组整体重新赋值，触发子组件更新。
         Button('init array').onClick(() => {
           this.count = [9, 8, 7];
         })
+        // 新增数组元素，触发子组件更新。
         Button('push').onClick(() => {
           this.count.push(0);
         })
+        // 翻转数组元素，触发子组件更新。
         Button('reverse').onClick(() => {
           this.count.reverse();
         })
+        // 使用同一元素填充数组，触发子组件更新。
         Button('fill').onClick(() => {
           this.count.fill(6);
         })
@@ -625,6 +636,7 @@ struct Index {
 ``` TypeScript
 @ComponentV2
 struct DateComponent {
+  // 使用@Param接收父组件传入的Date类型变量。
   @Param selectedDate: Date = new Date('2024-01-01');
 
   build() {
@@ -641,25 +653,30 @@ struct DateComponent {
 @Entry
 @ComponentV2
 struct Index {
+  // 使用@Local装饰Date类型变量，作为数据源传递给子组件的@Param。
   @Local parentSelectedDate: Date = new Date('2021-08-08');
 
   build() {
     Column() {
+      // 对Date类型变量整体重新赋值，触发子组件更新。
       Button('parent update the new date')
         .margin(10)
         .onClick(() => {
           this.parentSelectedDate = new Date('2023-07-07');
         })
+      // 调用Date的setFullYear方法修改年份，触发子组件更新。
       Button('increase the year by 1')
         .margin(10)
         .onClick(() => {
           this.parentSelectedDate.setFullYear(this.parentSelectedDate.getFullYear() + 1);
         })
+      // 调用Date的setMonth方法修改月份，触发子组件更新。
       Button('increase the month by 1')
         .margin(10)
         .onClick(() => {
           this.parentSelectedDate.setMonth(this.parentSelectedDate.getMonth() + 1);
         })
+      // 调用Date的setDate方法修改日期，触发子组件更新。
       Button('parent increase the day by 1')
         .margin(10)
         .onClick(() => {
@@ -680,6 +697,7 @@ struct Index {
 ``` TypeScript
 @ComponentV2
 struct Child {
+  // 使用@Param接收父组件传入的Map类型变量。
   @Param value: Map<number, string> = new Map();
 
   build() {
@@ -696,24 +714,30 @@ struct Child {
 @Entry
 @ComponentV2
 struct Index {
+  // 使用@Local装饰Map类型变量，作为数据源传递给子组件的@Param。
   @Local message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
 
   build() {
     Row() {
       Column() {
         Child({ value: this.message })
+        // 对Map整体重新赋值，触发子组件更新。
         Button('init map').onClick(() => {
           this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
+        // 新增键值对，触发子组件更新。
         Button('set new one').onClick(() => {
           this.message.set(4, 'd');
         })
+        // 清空Map，触发子组件更新。
         Button('clear').onClick(() => {
           this.message.clear();
         })
+        // 更新键值对，触发子组件更新。
         Button('replace the first one').onClick(() => {
           this.message.set(0, 'aa');
         })
+        // 删除键值对，触发子组件更新。
         Button('delete the first one').onClick(() => {
           this.message.delete(0);
         })
@@ -734,6 +758,7 @@ struct Index {
 ``` TypeScript
 @ComponentV2
 struct Child {
+  // 使用@Param接收父组件传入的Set类型变量。
   @Param message: Set<number> = new Set();
 
   build() {
@@ -750,21 +775,26 @@ struct Child {
 @Entry
 @ComponentV2
 struct Index {
+  // 使用@Local装饰Set类型变量，作为数据源传递给子组件的@Param。
   @Local message: Set<number> = new Set([0, 1, 2, 3, 4]);
 
   build() {
     Row() {
       Column() {
         Child({ message: this.message })
+        // 对Set整体重新赋值，触发子组件更新。
         Button('init set').onClick(() => {
           this.message = new Set([0, 1, 2, 3, 4]);
         })
+        // 新增元素，触发子组件更新。
         Button('set new one').onClick(() => {
           this.message.add(5);
         })
+        // 清空Set，触发子组件更新。
         Button('clear').onClick(() => {
           this.message.clear();
         })
+        // 删除元素，触发子组件更新。
         Button('delete the first one').onClick(() => {
           this.message.delete(0);
         })
@@ -786,12 +816,13 @@ struct Index {
 @Entry
 @ComponentV2
 struct Index {
-  // 点击的数量，用于传给子组件，值可为undefined
+  // 使用@Local装饰联合类型变量，作为数据源传递给子组件的@Param。
   @Local count: number | undefined = 0;
 
   build() {
     Column() {
       MyComponent({ count: this.count })
+      // 修改联合类型值，触发子组件更新。
       Button('change')
         .onClick(() => {
           this.count = undefined;
@@ -802,7 +833,7 @@ struct Index {
 
 @ComponentV2
 struct MyComponent {
-  // 点击的数量，用于接收父组件传入的值，值可为undefined
+  // 使用@Param接收父组件传入的联合类型变量。
   @Param count: number | undefined = 0;
 
   build() {

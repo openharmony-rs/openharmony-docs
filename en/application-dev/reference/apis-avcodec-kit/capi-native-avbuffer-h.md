@@ -30,7 +30,7 @@ The file declares the functions of the media struct AVBuffer.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_AVBuffer](capi-core-oh-avbuffer.md) | OH_AVBuffer | Describes a native object for the media memory interface.|
-| [OH_NativeBuffer](capi-core-oh-nativebuffer.md) | OH_NativeBuffer | Describes a native object for the graphics memory interface.|
+| [OH_NativeBuffer](../apis-arkgraphics2d/capi-oh-nativebuffer.md) | OH_NativeBuffer | Describes a native object for the graphics memory interface.|
 
 ### Functions
 
@@ -50,7 +50,7 @@ The file declares the functions of the media struct AVBuffer.
 
 ### OH_AVBuffer_Create()
 
-```
+```c
 OH_AVBuffer *OH_AVBuffer_Create(int32_t capacity)
 ```
 
@@ -77,7 +77,7 @@ Creates an OH_AVBuffer instance. You must call [OH_AVBuffer_Destroy](#oh_avbuffe
 
 ### OH_AVBuffer_Destroy()
 
-```
+```c
 OH_AVErrCode OH_AVBuffer_Destroy(OH_AVBuffer *buffer)
 ```
 
@@ -104,7 +104,7 @@ Releases an OH_AVBuffer instance. A buffer cannot be destroyed repeatedly.
 
 ### OH_AVBuffer_GetBufferAttr()
 
-```
+```c
 OH_AVErrCode OH_AVBuffer_GetBufferAttr(OH_AVBuffer *buffer, OH_AVCodecBufferAttr *attr)
 ```
 
@@ -132,7 +132,7 @@ Obtains the basic attributes, including **pts**, **size**, **offset**, and **fla
 
 ### OH_AVBuffer_SetBufferAttr()
 
-```
+```c
 OH_AVErrCode OH_AVBuffer_SetBufferAttr(OH_AVBuffer *buffer, const OH_AVCodecBufferAttr *attr)
 ```
 
@@ -160,7 +160,7 @@ Sets the basic attributes, including **pts**, **size**, **offset**, and **flags*
 
 ### OH_AVBuffer_GetParameter()
 
-```
+```c
 OH_AVFormat *OH_AVBuffer_GetParameter(OH_AVBuffer *buffer)
 ```
 
@@ -187,7 +187,7 @@ Obtains parameters except basic attributes of a buffer. The information is carri
 
 ### OH_AVBuffer_SetParameter()
 
-```
+```c
 OH_AVErrCode OH_AVBuffer_SetParameter(OH_AVBuffer *buffer, const OH_AVFormat *format)
 ```
 
@@ -215,7 +215,7 @@ Sets parameters except basic attributes of a buffer. The information is carried 
 
 ### OH_AVBuffer_GetAddr()
 
-```
+```c
 uint8_t *OH_AVBuffer_GetAddr(OH_AVBuffer *buffer)
 ```
 
@@ -262,7 +262,7 @@ The capability to obtain virtual addresses varies in scenarios, as described in 
 
 ### OH_AVBuffer_GetCapacity()
 
-```
+```c
 int32_t OH_AVBuffer_GetCapacity(OH_AVBuffer *buffer)
 ```
 
@@ -289,7 +289,7 @@ Obtains the capacity (in bytes) of a buffer.
 
 ### OH_AVBuffer_GetNativeBuffer()
 
-```
+```c
 OH_NativeBuffer *OH_AVBuffer_GetNativeBuffer(OH_AVBuffer *buffer)
 ```
 
@@ -312,4 +312,4 @@ Obtains the pointer to an OH_NativeBuffer instance. You must call [OH_NativeBuff
 
 | Type| Description|
 | -- | -- |
-| [OH_NativeBuffer](capi-core-oh-nativebuffer.md) * | Pointer to the OH_NativeBuffer instance created. If the operation fails, NULL is returned.<br> The possible causes of an operation failure are as follows:<br> 1. The value of **buffer** is a null pointer.<br> 2. The value of **OH_AVBuffer** fails parameter structure verification.<br> 3. An internal error occurs.|
+| [OH_NativeBuffer](../apis-arkgraphics2d/capi-oh-nativebuffer.md) * | Pointer to the OH_NativeBuffer instance created. If the operation fails, NULL is returned.<br> The possible causes of an operation failure are as follows:<br> 1. The value of **buffer** is a null pointer.<br> 2. The value of **OH_AVBuffer** fails parameter structure verification.<br> 3. An internal error occurs.|

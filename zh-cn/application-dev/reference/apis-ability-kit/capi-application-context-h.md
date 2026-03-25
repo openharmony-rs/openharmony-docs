@@ -140,7 +140,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* bu
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收临时文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -166,7 +166,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* b
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收通用文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -192,7 +192,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDatabaseDir(char
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收数据库文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -218,7 +218,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetPreferencesDir(c
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收首选项文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -244,7 +244,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(ch
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收安装文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -270,7 +270,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFiles
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收分布式文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -296,7 +296,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(cha
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收云文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -349,7 +349,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(cons
 | 参数项 | 描述 |
 | -- | -- |
 | char* moduleName | 模块名。 |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收资源目录。 |
 | int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -439,7 +439,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(Ab
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 接口调用成功。<br>ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED - 调用方权限校验失败。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 调用方入参校验失败。<br>ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED - 设备类型不支持。<br>ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY - 指定的Ability名称不存在。<br>ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE - 接口调用Ability类型错误。<br>ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED - 众测应用到期。<br>ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE - Wukong模式，不允许启动/停止Ability。<br>ABILITY_RUNTIME_ERROR_CODE_CONTROLLED - 应用被管控。<br>ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED - 应用被EDM管控。<br>ABILITY_RUNTIME_ERROR_CODE_CROSS_APP - 限制API 11以上版本三方应用跳转。<br>ABILITY_RUNTIME_ERROR_CODE_INTERNAL - 内部错误。<br>ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY - 非顶层应用。<br>ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED - 不允许设置窗口启动可见性。<br>ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED - 不支持应用分身和多实例。<br>ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY - 无效多实例。<br> ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED - 应用多实例以达到上限。<br>ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED - 不支持应用多实例。<br>ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED - 不允许设置APP_INSTANCE_KEY。<br>详细内容参考AbilityRuntime_ErrorCode。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 接口调用成功。<br>ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED - 调用方权限校验失败。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 调用方入参校验失败。<br>ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED - 设备类型不支持。<br>ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY - 指定的Ability名称不存在。<br>ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE - 接口调用Ability类型错误。<br>ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED - 众测应用到期。<br>ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE - Wukong模式，不允许启动/停止Ability。<br>ABILITY_RUNTIME_ERROR_CODE_CONTROLLED - 应用被管控。<br>ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED - 应用被EDM管控。<br>ABILITY_RUNTIME_ERROR_CODE_CROSS_APP - 限制API 11以上版本三方应用跳转。<br>ABILITY_RUNTIME_ERROR_CODE_INTERNAL - 内部错误。<br>ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY - 非顶层应用。<br>ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED - 不允许设置窗口启动可见性。<br>ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED - 不支持应用分身和多实例。<br>ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY - 无效多实例。<br> ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED - 应用多实例已达到上限。<br>ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED - 不支持应用多实例。<br>ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED - 不允许设置APP_INSTANCE_KEY。<br>详细内容参考AbilityRuntime_ErrorCode。 |
 
 **示例代码：**
 
@@ -514,6 +514,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 通过StartOptions启动当前应用的UIAbility，并获取目标UIAbility的进程号。
 
 接口不能在应用主线程调用，但可以在应用创建的[子进程](capi-childprocess.md)的主线程中调用。
+
 如果在应用的主线程中调用，会返回ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED错误码。
 
 **需要权限：** ohos.permission.NDK_START_SELF_UI_ABILITY
@@ -534,7 +535,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 接口调用成功。<br>ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED - 调用方权限校验失败。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 调用方入参校验失败。<br>ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED - 设备类型不支持。<br>ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY - 指定的Ability名称不存在。<br>ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE - 接口调用Ability类型错误。<br>ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED - 众测应用到期。<br>ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE - Wukong模式，不允许启动/停止Ability。<br>ABILITY_RUNTIME_ERROR_CODE_CONTROLLED - 应用被管控。<br>ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED - 应用被EDM管控。<br>ABILITY_RUNTIME_ERROR_CODE_CROSS_APP - 限制API 11以上版本三方应用跳转。<br>ABILITY_RUNTIME_ERROR_CODE_INTERNAL - 内部错误。<br>ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY - 非顶层应用。<br>ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED - 不允许设置窗口启动可见性。<br>ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED - 不支持应用分身和多实例。<br>ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY - 无效多实例。<br> ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED - 应用多实例以达到上限。<br>ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED - 不支持应用多实例。<br>ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED - 不允许设置APP_INSTANCE_KEY。<br>ABILITY_RUNTIME_ERROR_CODE_START_TIMEOUT - 启动UIAbility超时。<br>ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED - 接口不允许在应用主线程被调用。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | ABILITY_RUNTIME_ERROR_CODE_NO_ERROR - 接口调用成功。<br>ABILITY_RUNTIME_ERROR_CODE_PERMISSION_DENIED - 调用方权限校验失败。<br>ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID - 调用方入参校验失败。<br>ABILITY_RUNTIME_ERROR_CODE_NOT_SUPPORTED - 设备类型不支持。<br>ABILITY_RUNTIME_ERROR_CODE_NO_SUCH_ABILITY - 指定的Ability名称不存在。<br>ABILITY_RUNTIME_ERROR_CODE_INCORRECT_ABILITY_TYPE - 接口调用Ability类型错误。<br>ABILITY_RUNTIME_ERROR_CODE_CROWDTEST_EXPIRED - 众测应用到期。<br>ABILITY_RUNTIME_ERROR_CODE_WUKONG_MODE - Wukong模式，不允许启动/停止Ability。<br>ABILITY_RUNTIME_ERROR_CODE_CONTROLLED - 应用被管控。<br>ABILITY_RUNTIME_ERROR_CODE_EDM_CONTROLLED - 应用被EDM管控。<br>ABILITY_RUNTIME_ERROR_CODE_CROSS_APP - 限制API 11以上版本三方应用跳转。<br>ABILITY_RUNTIME_ERROR_CODE_INTERNAL - 内部错误。<br>ABILITY_RUNTIME_ERROR_CODE_NOT_TOP_ABILITY - 非顶层应用。<br>ABILITY_RUNTIME_ERROR_VISIBILITY_SETTING_DISABLED - 不允许设置窗口启动可见性。<br>ABILITY_RUNTIME_ERROR_CODE_MULTI_APP_NOT_SUPPORTED - 不支持应用分身和多实例。<br>ABILITY_RUNTIME_ERROR_CODE_INVALID_APP_INSTANCE_KEY - 无效多实例。<br> ABILITY_RUNTIME_ERROR_CODE_UPPER_LIMIT_REACHED - 应用多实例已达到上限。<br>ABILITY_RUNTIME_ERROR_MULTI_INSTANCE_NOT_SUPPORTED - 不支持应用多实例。<br>ABILITY_RUNTIME_ERROR_CODE_APP_INSTANCE_KEY_NOT_SUPPORTED - 不允许设置APP_INSTANCE_KEY。<br>ABILITY_RUNTIME_ERROR_CODE_START_TIMEOUT - 启动UIAbility超时。<br>ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED - 接口不允许在应用主线程被调用。 |
 
 **示例代码：**
 

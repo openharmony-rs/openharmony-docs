@@ -62,13 +62,9 @@ export struct DefaultAndTopToastExample {
     // ···
       Column({ space: 10 }) {
         TextInput()
-        Button() {
-          Text('Toast of the DEFAULT type')
-            .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-        }
-        .height('100')
-        .width('100%')
+        Button('Toast of the DEFAULT type')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
         .onClick(() => {
           this.getUIContext().getPromptAction().showToast({
             message: 'ok, I am DEFAULT toast',
@@ -78,14 +74,9 @@ export struct DefaultAndTopToastExample {
           });
         })
 
-        Blank().height(200);
-        Button() {
-          Text('Toast of the TOPMOST type')
-            .fontSize(20)
-            .fontWeight(FontWeight.Bold)
-        }
-        .height('100')
-        .width('100%')
+        Button('Toast of the TOPMOST type')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
         .onClick(() => {
           this.getUIContext().getPromptAction().showToast({
             message: 'ok, I am TOP_MOST toast',
@@ -99,6 +90,8 @@ export struct DefaultAndTopToastExample {
   }
 }
 ```
+
+![defaultToast](figures/defaultToast.gif)
 
 ## 创建即时反馈
 
@@ -120,7 +113,7 @@ export struct CreateToastExample {
   private uiContext: UIContext = this.getUIContext();
   private promptAction: PromptAction = this.uiContext.getPromptAction();
   build() {
-    // ···
+    // ...
       Column() {
         Button('Show toast').fontSize(20)
           .onClick(() => {
@@ -136,7 +129,7 @@ export struct CreateToastExample {
             }
           })
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```
@@ -165,7 +158,7 @@ export struct OpenCloseToastExample {
   private promptAction: PromptAction = this.uiContext.getPromptAction();
 
   build() {
-    // ···
+    // ...
       Column() {
         Button('Open Toast')
           .height(100)
@@ -173,7 +166,7 @@ export struct OpenCloseToastExample {
           .onClick(() => {
             try {
               this.promptAction.openToast({
-                message: 'Toast Massage',
+                message: 'Toast Message',
                 duration: 10000,
               }).then((toastId: number) => {
                 this.toastId = toastId;
@@ -198,7 +191,7 @@ export struct OpenCloseToastExample {
             }
           })
       }.height('100%').width('100%').justifyContent(FlexAlign.Center)
-    // ···
+      // ...
   }
 }
 ```

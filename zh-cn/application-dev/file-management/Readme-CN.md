@@ -43,5 +43,5 @@
 - 分布式文件系统<!--distributed-fs-->
   - [分布式文件系统概述](distributed-fs-overview.md)
   - [设置分布式文件数据等级](set-security-label.md)
-  - [跨设备文件访问](file-access-across-devices.md)
+  - [跨设备文件共享和访问](file-access-across-devices.md)
   - [跨设备文件拷贝](file-copy-across-devices.md)

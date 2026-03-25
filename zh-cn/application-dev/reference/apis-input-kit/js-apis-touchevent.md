@@ -11,7 +11,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
 
@@ -27,7 +27,7 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 
 | 名称     | 值   | 说明   |
 | ------ | ------ | ---- |
-| CANCEL | 0 | 触屏取消。 |
+| CANCEL | 0 | 触屏取消。触屏down事件异常打断，未正常闭环，例如：手指按下后未抬起，屏幕发生旋转、折叠或有新hover等场景时触发cancel事件。 |
 | DOWN   | 1 | 触屏按下。 |
 | MOVE   | 2 | 触屏移动。 |
 | UP     | 3 | 触屏抬起。 |

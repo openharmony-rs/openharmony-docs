@@ -31,7 +31,7 @@ If you are just starting out with JSVM-API, see [JSVM-API Development Process](u
 
 ### OH_JSVM_GetArraybufferInfo
 
-Obtains the underlying data buffer of an **ArrayBuffer** object and its length.
+Use **OH_JSVM_GetArraybufferInfo** to obtain the underlying data buffer of an **ArrayBuffer** object and its length.
 
 CPP code:
 
@@ -74,14 +74,14 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"getArraybufferInfo", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
+// Sample test JS code.
 const char *srcCallNative = R"JS(
 getArraybufferInfo(new ArrayBuffer(10));
 )JS";
 ```
 
 Expected result:
-```
+```txt
 JSVM GetArraybufferInfo: success
 ```
 
@@ -89,7 +89,7 @@ JSVM GetArraybufferInfo: success
 
 ### OH_JSVM_IsArraybuffer
 
-Checks whether a JS object is an **ArrayBuffer** object.
+Use **OH_JSVM_IsArraybuffer** to check whether a JS object is an **ArrayBuffer** object.
 
 CPP code:
 
@@ -126,14 +126,14 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"isArrayBuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
+// Sample test JS code.
 const char *srcCallNative = R"JS(
 isArrayBuffer(new ArrayBuffer(8));
 )JS";
 ```
 
 Expected result:
-```
+```txt
 JSVM IsArrayBuffer: success
 JSVM IsArrayBuffer: 1
 ```
@@ -200,7 +200,7 @@ static JSVM_PropertyDescriptor descriptor[] = {
     {"detachArraybuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
     {"isDetachedArraybuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
+// Sample test JS code.
 const char *srcCallNative = R"JS(
 let arrayBuffer = new ArrayBuffer(10);
 detachArraybuffer(arrayBuffer);
@@ -209,7 +209,7 @@ isDetachedArraybuffer(arrayBuffer);
 ```
 
 Expected result:
-```
+```txt
 JSVM DetachArraybuffer: success
 JSVM IsDetachedArraybuffer: success
 JSVM IsArrayBuffer: 1
@@ -262,14 +262,14 @@ static JSVM_CallbackStruct *method = param;
 static JSVM_PropertyDescriptor descriptor[] = {
     {"createArraybuffer", nullptr, method++, nullptr, nullptr, nullptr, JSVM_DEFAULT},
 };
-// Call the C++ code from JS.
+// Sample test JS code.
 const char *srcCallNative = R"JS(
 createArraybuffer(8);
 )JS";
 ```
 
 Expected result:
-```
+```txt
 JSVM CreateArraybuffer: success
 JSVM ArrayBuffer length: 8
 ```

@@ -37,9 +37,9 @@
 
   **图2** 布局元素组成图
 
-![layout-element-omposition](figures/layout-element-omposition.png)
+![layout-element-composition](figures/layout-element-omposition.png)
 
-- 组件区域（蓝区方块）：组件区域表示组件的大小，[width](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)属性用于设置组件区域的大小。
+- 组件区域（蓝色方块）：组件区域表示组件的大小，[width](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width)、[height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height)属性用于设置组件区域的大小。
 
 - 组件内容区（黄色方块）：组件内容区大小为组件区域大小减去组件的[border](../reference/apis-arkui/arkui-ts/ts-universal-attributes-border.md#border)值，组件内容区大小会作为组件内容（或者子组件）进行大小测算时的布局测算限制。
 

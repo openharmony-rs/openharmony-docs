@@ -57,7 +57,8 @@ class DragInfo {
 @Entry
 @Component
 struct DragControllerPage {
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
     }
@@ -81,7 +82,9 @@ struct DragControllerPage {
                 extraParams: ''
               };
               let eve: DragInfo = new DragInfo();
-              this.getUIContext().getDragController().executeDrag(() => { this.DraggingBuilder() }, dragInfo, (err, eve) => {
+              this.getUIContext().getDragController().executeDrag(() => {
+                this.DraggingBuilder()
+              }, dragInfo, (err, eve) => {
                 if (eve.event) {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
@@ -94,9 +97,13 @@ struct DragControllerPage {
           }
         })
     }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
+
+![execute_drag_1](figures/execute_drag_1.gif)
 
 ## executeDrag<sup>11+</sup>
 
@@ -147,7 +154,8 @@ class DragInfo {
 struct DragControllerPage {
   @State pixmap: image.PixelMap | null = null;
 
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
     }
@@ -156,7 +164,8 @@ struct DragControllerPage {
     .backgroundColor(Color.Blue)
   }
 
-  @Builder PixmapBuilder() {
+  @Builder
+  PixmapBuilder() {
     Column() {
       Text("PixmapBuilder")
     }
@@ -179,16 +188,22 @@ struct DragControllerPage {
                 data: unifiedData,
                 extraParams: ''
               };
-              let pb: CustomBuilder = (): void => { this.PixmapBuilder() };
+              let pb: CustomBuilder = (): void => {
+                this.PixmapBuilder()
+              };
               this.getUIContext().getComponentSnapshot().createFromBuilder(pb).then((pix: image.PixelMap) => {
                 this.pixmap = pix;
                 let dragItemInfo: DragItemInfo = {
                   pixelMap: this.pixmap,
-                  builder: () => { this.DraggingBuilder() },
+                  builder: () => {
+                    this.DraggingBuilder()
+                  },
                   extraInfo: "DragItemInfoTest"
                 };
                 let eve: DragInfo = new DragInfo();
-                this.getUIContext().getDragController().executeDrag(dragItemInfo, dragInfo)
+                this.getUIContext()
+                  .getDragController()
+                  .executeDrag(dragItemInfo, dragInfo)
                   .then((eve) => {
                     if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                       // ...
@@ -208,6 +223,8 @@ struct DragControllerPage {
   }
 }
 ```
+
+![execute_drag_2](figures/execute_drag_2.gif)
 
 ## createDragAction<sup>11+</sup>
 
@@ -259,6 +276,7 @@ let localStorage: LocalStorage = new LocalStorage('uiContext');
 
 export default class EntryAbility extends UIAbility {
   storage: LocalStorage = localStorage;
+
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
   }
@@ -277,10 +295,9 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-      windowStage.getMainWindow((err, data) =>
-      {
+      windowStage.getMainWindow((err, data) => {
         if (err.code) {
-          console.error('Failed to obtain the main window. Cause:' + err.message);
+          console.error(`Failed to obtain the main window. Cause:${err.message}`);
           return;
         }
         let windowClass: window.Window = data;
@@ -321,7 +338,8 @@ struct DragControllerPage {
   customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
   storages = this.getUIContext().getSharedLocalStorage();
 
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
     }
@@ -332,21 +350,19 @@ struct DragControllerPage {
 
   build() {
     Column() {
-
-      Column() {
-        Text("测试")
-      }
-      .width(100)
-      .height(100)
-      .backgroundColor(Color.Red)
-
       Button('多对象dragAction customBuilder拖拽').onTouch((event?: TouchEvent) => {
         if (event) {
           if (event.type == TouchType.Down) {
-            console.info("muti drag Down by listener");
-            this.customBuilders.push(() => { this.DraggingBuilder() });
-            this.customBuilders.push(() => { this.DraggingBuilder() });
-            this.customBuilders.push(() => { this.DraggingBuilder() });
+            console.info("multi drag Down by listener");
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.Text();
             let unifiedData = new unifiedDataChannel.UnifiedData(text);
             let dragInfo: dragController.DragInfo = {
@@ -354,7 +370,7 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             };
-            try{
+            try {
               let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
               this.dragAction = uiContext.getDragController().createDragAction(this.customBuilders, dragInfo);
               if (!this.dragAction) {
@@ -373,19 +389,24 @@ struct DragControllerPage {
                   this.dragAction.off('statusChange');
                 }
               })
-              this.dragAction.startDrag().then(() => {}).catch((err: Error) => {
-                console.error("start drag Error:" + err.message);
+              this.dragAction.startDrag().then(() => {
+              }).catch((err: Error) => {
+                console.error(`start drag Error:${err.message}`);
               })
-            } catch(err) {
-              console.error("create dragAction Error:" + err.message);
+            } catch (err) {
+              console.error(`create dragAction Error:${err.message}`);
             }
           }
         }
       }).margin({ top: 20 })
     }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
+
+![multi_drag](figures/multi_drag.gif)
 
 ## getDragPreview<sup>11+</sup>
 
@@ -454,7 +475,7 @@ import { window, UIContext } from '@kit.ArkUI';
 
 cancelDataLoading(key: string): void
 
-当使用[startDataLoading](arkui-ts/ts-universal-events-drag-drop.md#dragevent7)获取拖拽数据时，可调用该接口取消数据传输。仅可在拖拽释放后调用。
+当使用[startDataLoading](arkui-ts/ts-universal-events-drag-drop.md#startdataloading15)获取拖拽数据时，可调用该接口取消数据传输。仅可在拖拽释放后调用。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -509,6 +530,7 @@ struct NormalEts {
   @State previewData: DragItemInfo | undefined = undefined;
 
   loadData() {
+    // 设置4s后才能发起拖拽
     let timeout = setTimeout(() => {
       this.getUIContext().getComponentSnapshot().get("image1", (error: Error, pixmap: image.PixelMap) => {
         this.pixmap = pixmap;
@@ -527,38 +549,43 @@ struct NormalEts {
     this.timeout1 = timeout;
   }
 
-
-    build() {
-      Column({space: 20}) {
-        Image($r("app.media.startIcon"))
-          .width(300)
-          .height(200)
-          .id("image1")
-          .draggable(true)
-          .dragPreview(this.previewData)
-          .onPreDrag((status: PreDragStatus) => {
-            if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
-              this.loadData();
-            } else {
-              clearTimeout(this.timeout1);
-            }
-          })
-          .onDragStart((event: DragEvent) => {
-            if (this.finished == false) {
-              this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
-            } else {
-              event.setData(this.unifiedData1);
-            }
-          })
-          .onDragEnd(() => {
-            this.finished = false;
-          })
-      }
-      .height(400)
-      .backgroundColor(Color.Pink)
+  build() {
+    Column({ space: 20 }) {
+      Image($r("app.media.startIcon"))
+        .width(150)
+        .height(150)
+        .id("image1")
+        .draggable(true)
+        .dragPreview(this.previewData)
+        .onPreDrag((status: PreDragStatus) => {
+          if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
+            this.loadData();
+          } else {
+            clearTimeout(this.timeout1);
+          }
+        })
+        .onDragStart((event: DragEvent) => {
+          if (this.finished == false) {
+            this.getUIContext()
+              .getDragController()
+              // 应用数据准备阶段，无法发起拖拽
+              .notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
+          } else {
+            event.setData(this.unifiedData1);
+          }
+        })
+        .onDragEnd(() => {
+          this.finished = false;
+        })
     }
+    .width('100%')
+    .height(400)
+  }
 }
 ```
+
+![notify_drag](figures/notify_drag.gif)
+
 ## enableDropDisallowedBadge<sup>20+</sup>
 
 enableDropDisallowedBadge(enabled: boolean): void
@@ -579,27 +606,54 @@ enableDropDisallowedBadge(enabled: boolean): void
 
 该示例通过enableDropDisallowedBadge接口实现了对目标进行拖拽时显示拖拽禁止角标的功能。
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window, UIContext } from '@kit.ArkUI';
+1. 在EntryAbility.ets中调用enableDropDisallowedBadge接口，设置enabled参数为true。
 
- export default class EntryAbility extends UIAbility {
-   onWindowStageCreate(windowStage: window.WindowStage): void {
-       windowStage.loadContent('pages/Index', (err, data) => {
-         if (err.code) {
-         return;
-       }
-       windowStage.getMainWindow((err, data) => {
-         if (err.code) {
-           return;
-         }
-         let windowClass: window.Window = data;
-         let uiContext: UIContext = windowClass.getUIContext();
-         uiContext.getDragController().enableDropDisallowedBadge(true);
-     });
-   });
- }
-}
-```
+   ```ts
+   import { UIAbility } from '@kit.AbilityKit';
+   import { window, UIContext } from '@kit.ArkUI';
+
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+          windowStage.loadContent('pages/Index', (err, data) => {
+            if (err.code) {
+            return;
+          }
+          windowStage.getMainWindow((err, data) => {
+            if (err.code) {
+              return;
+            }
+            let windowClass: window.Window = data;
+            let uiContext: UIContext = windowClass.getUIContext();
+            uiContext.getDragController().enableDropDisallowedBadge(true);
+        });
+      });
+    }
+   }
+   ```
+
+2. 在Index.ets中拖拽图标icon至下方空白区域，显示拖拽禁止角标。
+
+   ```ts
+   @Entry
+   @Component
+   struct Index {
+     build() {
+       Column({ space: 20 }) {
+         // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件
+         Image($r('app.media.startIcon'))
+           .width(120)
+           .height(120)
+         Text('这里是不能落入区域')
+         Column()
+           .width('100%')
+           .layoutWeight(1)
+           .allowDrop(null)
+           .onDrop(() => {
+           })
+       }.width('100%')
+     }
+   }
+   ```
+
 ![UIContext](figures/UIContext.png)
 

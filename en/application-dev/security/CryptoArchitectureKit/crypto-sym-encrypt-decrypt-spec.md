@@ -22,18 +22,18 @@ Because the data is padded to the block size, **PKCS5** and **PKCS7** used in th
 > **NOTE**
 >
 > In ECB and CBC modes, the plaintext must be padded if its length is not an integer multiple of 128 bits.
-> In CCM encryption mode, the additional authentication data (AAD) must be specified and its length must be greater than 1 byte and less than 2048 bytes.
+> In CCM encryption mode, the additional authentication data (AAD) must be specified and its length must be greater than 1 byte and fewer than 2,048 bytes.
 
-The AES encryption and decryption can be implemented based a string parameter. When creating a **Cipher** instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the symmetric key type (algorithm and key length), cipher block mode, and padding mode with a vertical bar (|) in between.
+The AES encryption and decryption can be implemented based on a string parameter. When creating a **Cipher** instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the symmetric key type (algorithm and key length), block cipher mode, and padding mode with a vertical bar (|) in between.
 
 - In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter.
   
   Example:
-  - If the cipher block mode is ECB and padding mode is **PKCS7** for a 128-bit AES key, the string parameter is **AES128|ECB|PKCS7**.
+  - If the block cipher mode is ECB and padding mode is **PKCS7** for a 128-bit AES key, the string parameter is **AES128|ECB|PKCS7**.
   
-  - If the cipher block mode is CFB and padding mode is **NoPadding** for a 256-bit AES key, the string parameter is **AES256|CFB|NoPadding**.
+  - If the block cipher mode is CFB and padding mode is **NoPadding** for a 256-bit AES key, the string parameter is **AES256|CFB|NoPadding**.
 
-  | Cipher Mode| Key Length (Bit)| Padding Mode| API Version| 
+  | Block Cipher Mode| Key Length (Bit)| Padding Mode| API Version| 
   | -------- | -------- | -------- | -------- |
   | ECB | [128\|192\|256] | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
   | CBC | [128\|192\|256] | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
@@ -45,7 +45,7 @@ The AES encryption and decryption can be implemented based a string parameter. W
 
 - Since API version 10, symmetric encryption and decryption support the algorithm specifications without the key length. If the symmetric key type does not contain the key length, the encryption and decryption operations vary with the actual key length.
   
-  For example, if the block mode is CFB and the padding mode is **NoPadding** for an AES key with key length not specified, the string parameter is **AES|CFB|NoPadding**.
+  For example, if the block cipher mode is CFB and the padding mode is **NoPadding** for an AES key with key length not specified, the string parameter is **AES|CFB|NoPadding**.
 
 ## DES
 
@@ -57,16 +57,16 @@ The Crypto framework provides the following cipher modes for DES encryption and 
 >
 > In ECB and CBC modes, the plaintext must be padded if its length is not an integer multiple of 64 bits.
 
-The DES encryption and decryption can be implemented based a string parameter. When creating a **Cipher** instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the symmetric key type (algorithm and key length), cipher block mode, and padding mode with a vertical bar (|) in between.
+The DES encryption and decryption can be implemented based on a string parameter. When creating a **Cipher** instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the symmetric key type (algorithm and key length), block cipher mode, and padding mode with a vertical bar (|) in between.
 
 - In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter.
   
   Example:
-  - If the cipher block mode is ECB and padding mode is **PKCS7** for a 64-bit DES key, the string parameter is **DES64|ECB|PKCS7**.
+  - If the block cipher mode is ECB and padding mode is **PKCS7** for a 64-bit DES key, the string parameter is **DES64|ECB|PKCS7**.
   
-  - If the cipher block mode is OFB and padding mode is **NoPadding** for a 64-bit DES key, the string parameter is **DES64|OFB|NoPadding**.
+  - If the block cipher mode is OFB and padding mode is **NoPadding** for a 64-bit DES key, the string parameter is **DES64|OFB|NoPadding**.
 
-  | Cipher Mode| Key Length (Bit)| Padding Mode| API Version| 
+  | Block Cipher Mode| Key Length (Bit)| Padding Mode| API Version| 
   | -------- | -------- | -------- | -------- |
   | ECB | 64 | [NoPadding\|PKCS5\|PKCS7] | 20+ | 
   | CBC | 64 | [NoPadding\|PKCS5\|PKCS7] | 20+ | 
@@ -74,7 +74,8 @@ The DES encryption and decryption can be implemented based a string parameter. W
   | CFB | 64 | [NoPadding\|PKCS5\|PKCS7] | 20+ | 
 
 - Since API version 10, symmetric encryption and decryption support the algorithm specifications without the key length. If the symmetric key type does not contain the key length, the encryption and decryption operations vary with the actual key length.
-  For example, if the block mode is CFB and the padding mode is **NoPadding** for a DES key with key length not specified, the string parameter is **DES|CFB|NoPadding**.
+
+  For example, if the block cipher mode is CFB and the padding mode is **NoPadding** for a DES key with key length not specified, the string parameter is **DES|CFB|NoPadding**.
 
 ## 3DES
 
@@ -90,16 +91,16 @@ Because the data is padded to the block size, **PKCS5** and **PKCS7** used in th
 >
 > In ECB and CBC modes, the plaintext must be padded if its length is not an integer multiple of 64 bits.
 
-The 3DES encryption and decryption can be implemented based a string parameter. When creating a **Cipher** instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the symmetric key type (algorithm and key length), cipher block mode, and padding mode with a vertical bar (|) in between.
+The 3DES encryption and decryption can be implemented based on a string parameter. When creating a **Cipher** instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the symmetric key type (algorithm and key length), block cipher mode, and padding mode with a vertical bar (|) in between.
 
 - In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter.
   
   Example:
-  - If the cipher block mode is ECB and padding mode is **PKCS7** for a 192-bit 3DES key, the string parameter is **3DES192|ECB|PKCS7**.
+  - If the block cipher mode is ECB and padding mode is **PKCS7** for a 192-bit 3DES key, the string parameter is **3DES192|ECB|PKCS7**.
   
-  - If the cipher block mode is OFB and padding mode is **NoPadding** for a 192-bit 3DES key, the string parameter is **3DES192|OFB|NoPadding**.
+  - If the block cipher mode is OFB and padding mode is **NoPadding** for a 192-bit 3DES key, the string parameter is **3DES192|OFB|NoPadding**.
 
-  | Cipher Mode| Key Length (Bit)| Padding Mode| API Version| 
+  | Block Cipher Mode| Key Length (Bit)| Padding Mode| API Version| 
   | -------- | -------- | -------- | -------- |
   | ECB | 192 | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
   | CBC | 192 | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
@@ -107,7 +108,8 @@ The 3DES encryption and decryption can be implemented based a string parameter. 
   | CFB | 192 | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
 
 - Since API version 10, symmetric encryption and decryption support the algorithm specifications without the key length. If the symmetric key type does not contain the key length, the encryption and decryption operations vary with the actual key length.
-  For example, if the block mode is CFB and the padding mode is **NoPadding** for a 3DES key with key length not specified, the string parameter is **3DES|CFB|NoPadding**.
+
+  For example, if the block cipher mode is CFB and the padding mode is **NoPadding** for a 3DES key with key length not specified, the string parameter is **3DES|CFB|NoPadding**.
 
 ## SM4
 
@@ -121,18 +123,18 @@ Because the data is padded to the block size, **PKCS5** and **PKCS7** used in th
 >
 > In ECB and CBC modes, the plaintext must be padded if its length is not an integer multiple of 128 bits.
 
-The SM4 encryption and decryption can be implemented based a string parameter. When creating a **Cipher** instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the symmetric key type (algorithm_key length), cipher block mode, and padding mode with a vertical bar (|) in between.
+The SM4 encryption and decryption can be implemented based on a string parameter. When creating a **Cipher** instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the symmetric key type (algorithm and key length), block cipher mode, and padding mode with a vertical bar (|) in between.
 
 - In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter. The SM4 algorithm and key length are separated by an underscore (_).
   
   Example:
-  - If the cipher block mode is ECB and padding mode is **PKCS7** for a 128-bit SM4 key, the string parameter is **SM4_128|ECB|PKCS7**.
+  - If the block cipher mode is ECB and padding mode is **PKCS7** for a 128-bit SM4 key, the string parameter is **SM4_128|ECB|PKCS7**.
   
-  - If the cipher block mode is CFB and padding mode is **NoPadding** for a 128-bit SM4 key, the string parameter is **SM4_128|CFB|NoPadding**.
+  - If the block cipher mode is CFB and padding mode is **NoPadding** for a 128-bit SM4 key, the string parameter is **SM4_128|CFB|NoPadding**.
 
-  - If the cipher block mode is GCM and padding mode is **NoPadding** for a 128-bit SM4 key, the string parameter is **SM4_128|GCM|NoPadding**.
+  - If the block cipher mode is GCM and padding mode is **NoPadding** for a 128-bit SM4 key, the string parameter is **SM4_128|GCM|NoPadding**.
 
-  | Cipher Mode| Key Length (Bit)| Padding Mode| API Version| 
+  | Block Cipher Mode| Key Length (Bit)| Padding Mode| API Version| 
   | -------- | -------- | -------- | -------- |
   | ECB | 128 | [NoPadding\|PKCS5\|PKCS7] | 10+ | 
   | CBC | 128 | [NoPadding\|PKCS5\|PKCS7] | 10+ | 
@@ -174,7 +176,7 @@ The most commonly used encryption mode is Poly1305, which works with the [Poly13
 
 ChaCha20 is a stream cipher, so no padding algorithm is required.
 
-ChaCha20 encryption and decryption can be implemented based on a string parameter. When creating a cipher instance, you need to specify the algorithm specifications in a string parameter, which consists of the symmetric key type and block mode separated by a vertical bar (|).
+ChaCha20 encryption and decryption can be implemented based on a string parameter. When creating a **Cipher** instance, you need to specify the algorithm specifications in a string parameter. The string parameter consists of the symmetric key type and block cipher mode with a vertical bar (|) in between.
 
 In the following table, the options included in the square brackets ([]) are mutually exclusive. You can use only one of them in a string parameter.
 

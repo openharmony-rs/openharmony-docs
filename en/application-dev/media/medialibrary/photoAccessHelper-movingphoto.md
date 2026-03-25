@@ -9,13 +9,13 @@ The media library provides the capabilities of accessing and managing moving pho
 - [Playing Moving Photos with MovingPhotoView](movingphotoview-guidelines.md)
 - [Reading Moving Photo Assets](#reading-moving-photo-assets)
 
-Camera Kit provides the capability of taking moving photos. For details, see [Moving Photos](../camera/camera-moving-photo.md).
+The capability of taking moving photos is provided by Camera Kit. For details, see [Moving Photos (ArkTS)](../camera/camera-moving-photo.md).
 
 ## Saving Moving Photo Assets
 
 Use the **SaveButton** security component to save the assets (image and video) of a moving photo.
 
-With the **SaveButton** security component, the application does not need the ohos.permission.WRITE_IMAGEVIDEO permission. When the user taps the button embedded with the **SaveButton** security component, the application obtains the temporary permission to save the assets to the specified media library directory.
+With the **SaveButton** security component, the application does not need the **ohos.permission.WRITE_IMAGEVIDEO** permission. When the user taps the button embedded with the **SaveButton** security component, the application obtains the temporary permission to save the assets to the specified media library directory.
 
 For details, see [SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md).
 
@@ -52,7 +52,7 @@ struct Index {
         Text(this.message)
           .fontSize(50)
           .fontWeight(FontWeight.Bold)
-        SaveButton(this.saveButtonOptions) // Create a button with SaveButton.
+        SaveButton(this.saveButtonOptions)// Create a SaveButton.
           .onClick(async (event, result: SaveButtonOnClickResult) => {
              if (result == SaveButtonOnClickResult.SUCCESS) {
                try {
@@ -90,11 +90,11 @@ struct Index {
 
 - Create a local moving photo object of the application by passing **fileUri** of an [application file](../../file-management/app-file-access.md) in the application sandbox.
 
-After obtaining a moving photo object, you can use [MovingPhotoView](movingphotoview-guidelines.md) to play it.
+If you want to play an obtained moving photo, see [Playing Moving Photos with MovingPhotoView](movingphotoview-guidelines.md).
 
 ### Obtaining a Moving Photo Object from the Media Library
 
-1. Select the [URI of a media file](../../file-management/user-file-uri-intro.md#media-file-uri) by using **Picker**.
+1. Select the [URI of a media file](../../file-management/user-file-uri-intro.md#media-file-uri) of the moving photo by using **Picker**.
 2. Call [PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1) and [FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1) to obtain the photo asset corresponding to the URI.
 3. Call [MediaAssetManager.requestMovingPhoto](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-MediaAssetManager.md#requestmovingphoto12) to obtain the moving photo object.
 

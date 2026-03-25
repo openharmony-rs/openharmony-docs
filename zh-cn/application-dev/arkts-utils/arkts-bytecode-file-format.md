@@ -50,7 +50,7 @@
 
 
 ## TypeDescriptor
-TypeDescriptor是类（[Class](#class)）名称的格式，由`'L'`、`'_'`、`ClassName`和`';'`组成：`L_ClassName;`。其中，`ClassName`是类的全名，名字中的`'.'`会被替换为`'/'`。
+TypeDescriptor是类（[Class](#class)）名称的格式，由`'L'`、`'_'`、`ClassName`和`';'`组成：`L_ClassName;`。其中，`ClassName`是类的全名，名称中的`'.'`会被替换为`'/'`。
 
 
 ## 字节码文件布局
@@ -426,16 +426,16 @@ MethodIndexData是一个无符号32位整数，划分为3个部分。
 
 | **操作码**  | **值** | **指令参数**   | **常量池参数**    | **参数说明** | **说明**  |
 | ----- | ----- | ------- | ---- | ------- | ------ |
-| `END_SEQUENCE`         | `0x00`  |       |          |        | 标记行号程序的结束。    |
-| `ADVANCE_PC`           | `0x01`  |    | `uleb128 addr_diff`   | `addr_diff`：`address`寄存器的值待增加的数值。    | `address`寄存器中的值加上`addr_diff`，指向下一个地址，而不生成位置条目。 |
-| `ADVANCE_LINE`         | `0x02` |     | `sleb128 line_diff`  | `line_diff`：`line`寄存器的值待增加的数值。    | `line`寄存器中的值加上`line_diff`，指向下一个行位置，而不生成位置条目。 |
+| `END_SEQUENCE`         | `0x00`  | - | - | - | 标记行号程序的结束。    |
+| `ADVANCE_PC`           | `0x01`  | - | `uleb128 addr_diff`   | `addr_diff`：`address`寄存器的值待增加的数值。    | `address`寄存器中的值加上`addr_diff`，指向下一个地址，而不生成位置条目。 |
+| `ADVANCE_LINE`         | `0x02` | - | `sleb128 line_diff`  | `line_diff`：`line`寄存器的值待增加的数值。    | `line`寄存器中的值加上`line_diff`，指向下一个行位置，而不生成位置条目。 |
 | `START_LOCAL`          | `0x03` | `sleb128 register_num` | `uleb128 name_idx`<br>`uleb128 type_idx`   | `register_num`：将包含局部变量的寄存器。<br>`name_idx`：一个偏移量，指向[字符串](#字符串)，表示变量的名称。<br>`type_idx`：一个偏移量，指向[字符串](#字符串)，表示变量的类型。 | 在当前地址中引入一个带有名称和类型的局部变量。将要包含这个变量的寄存器的编号被编码在指令中。如果寄存器的编号是-1，则表示这个寄存器是累加器寄存器。`name_idx`和`type_idx`的值可能为0，如果为0，则代表对应的信息不存在。 |
 | `START_LOCAL_EXTENDED` | `0x04` | `sleb128 register_num` | `uleb128 name_idx`<br>`uleb128 type_idx`<br>`uleb128 sig_idx` | `register_num`：将包含局部变量的寄存器。<br>`name_idx`：一个偏移量，指向[字符串](#字符串)，表示变量的名称。<br>`type_idx`：一个偏移量，指向[字符串](#字符串)，表示变量的类型。<br>`sig_idx`：一个偏移量，指向[字符串](#字符串)，表示变量的签名。 | 在当前地址中引入一个带有名称、类型和签名的局部变量。将要包含这个变量的寄存器的编号被编码在指令中。如果寄存器的编号是-1，则表示这个寄存器是累加器寄存器。`name_idx`、`type_idx`和`sig_idx`的值可能为0，如果为0，则代表对应的信息不存在。 |
-| `END_LOCAL`            | `0x05` | `sleb128 register_num` |    | `register_num`：包含局部变量的寄存器。  | 在当前地址将指定寄存器中的局部变量标记为超出范围。寄存器的编号为-1，则表示这个寄存器是累加器寄存器。 |
-| `SET_FILE`             | `0x09`  |    | `uleb128 name_idx`  | `name_idx`：一个偏移量，指向[字符串](#字符串)，表示文件的名称。 | 设置`file`寄存器的值。`name_idx`的值可能为0，如果为0，则代表对应的信息不存在。 |
-| `SET_SOURCE_CODE`      | `0x0a`  |    | `uleb128 source_idx` | `source_idx`：一个偏移量，指向[字符串](#字符串)，表示文件的源码。 | 设置`source_code`寄存器的值。`source_idx`的值可能为0，如果为0，则代表对应的信息不存在。 |
-| `SET_COLUMN`           | `0x0b` |    | `uleb128 column_num`   | `column_num`：待设置的列号。   | 设置`column`寄存器的值，并生成一个位置条目。  |
-| 特殊操作码           | `0x0c..0xff`   |   |  |   | 使 `line` 和 `address` 寄存器指向下一个地址，并生成一个位置条目。详情参阅下文中的说明。 |
+| `END_LOCAL`            | `0x05` | `sleb128 register_num` | - | `register_num`：包含局部变量的寄存器。  | 在当前地址将指定寄存器中的局部变量标记为超出范围。寄存器的编号为-1，则表示这个寄存器是累加器寄存器。 |
+| `SET_FILE`             | `0x09`  | - | `uleb128 name_idx`  | `name_idx`：一个偏移量，指向[字符串](#字符串)，表示文件的名称。 | 设置`file`寄存器的值。`name_idx`的值可能为0，如果为0，则代表对应的信息不存在。 |
+| `SET_SOURCE_CODE`      | `0x0a`  | - | `uleb128 source_idx` | `source_idx`：一个偏移量，指向[字符串](#字符串)，表示文件的源码。 | 设置`source_code`寄存器的值。`source_idx`的值可能为0，如果为0，则代表对应的信息不存在。 |
+| `SET_COLUMN`           | `0x0b` | - | `uleb128 column_num`   | `column_num`：待设置的列号。   | 设置`column`寄存器的值，并生成一个位置条目。  |
+| 特殊操作码           | `0x0c..0xff`   | - | - | - | 使 `line` 和 `address` 寄存器指向下一个地址，并生成一个位置条目。详情参阅下文中的说明。 |
 
 
 对于值在`0x0c`和`0xff`（含）之间的特殊操作码，状态机按照以下步骤将`line`和`address`寄存器移动一小部分，然后生成一个新的位置条目（参见[DWARF调试信息格式第3版](https://dwarfstd.org/dwarf3std.html)第6.2.5.1项 Special Opcodes）：
@@ -445,7 +445,7 @@ MethodIndexData是一个无符号32位整数，划分为3个部分。
 | 1     | `adjusted_opcode = opcode - OPCODE_BASE`            | 计算调整后的操作码。`OPCODE_BASE`的值是`0x0c`，是第一个特殊操作码。 |
 | 2     | `address += adjusted_opcode / LINE_RANGE`            | 增加`address`寄存器中的值。`LINE_RANGE`的值是15，用来计算行号信息的变化。 |
 | 3     | `line += LINE_BASE + (adjusted_opcode % LINE_RANGE)` | 增加`line`寄存器中的值。`LINE_BASE`的值是-4，是最小的行号增量值；最大的行号增量值是`LINE_BASE + LINE_RANGE - 1`。 |
-| 4     |                                                    | 生成一个新的位置条目。                                       |
+| 4     |         -                                          | 生成一个新的位置条目。                                       |
 
 > **注意：**
 > 

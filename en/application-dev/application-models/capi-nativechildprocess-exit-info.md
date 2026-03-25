@@ -8,7 +8,7 @@
 
 ## When to Use
 
-Starting from API version 20, parent processes can register a callback function to monitor child processes and obtain their abnormal exit information, facilitating further optimizations by the parent process. The child processes to be monitored must be created by calling [OH_Ability_StartNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess) or [startNativeChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13).
+Starting from API version 20, parent processes can register a callback function to monitor child processes and obtain their abnormal exit information, facilitating further optimizations by the parent process. The child processes to be monitored must be created by calling [OH_Ability_StartNativeChildProcess](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocess), [OH_Ability_StartNativeChildProcessWithConfigs](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_startnativechildprocesswithconfigs), or [startNativeChildProcess](../reference/apis-ability-kit/js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13).
 
 ## Available APIs
 
@@ -37,6 +37,7 @@ libchild_process.so
 1. (Main process) Register and unregister the callback for abnormal exit of native child processes.
 
     Call [OH_Ability_RegisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_registernativechildprocessexitcallback) to register a callback for detecting child process exits. If the return value is **NCP_NO_ERROR**, the registration is successful.
+    
     Call [OH_Ability_UnregisterNativeChildProcessExitCallback](../reference/apis-ability-kit/capi-native-child-process-h.md#oh_ability_unregisternativechildprocessexitcallback) to unregister the callback used for detecting child process exits. If the return value is **NCP_NO_ERROR**, the unregistration is successful.
 
     <!-- @[register_native_child_process_exit](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/NativeChildProcessExit/entry/src/main/cpp/MainProcessFile.cpp) -->

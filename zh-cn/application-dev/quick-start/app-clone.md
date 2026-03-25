@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-应用分身能在一个设备上安装多个相同的应用，实现多个账号同时登录使用和运行并且互不影响。主要应用场景有社交账号双开、游戏大小号双开等，无需账号切换，从而省去频繁登录的繁琐。
+应用分身能在一个设备上安装多个相同的应用，实现多个账号同时登录并独立运行。主要应用场景有社交账号双开、游戏大小号双开等，无需账号切换，从而省去频繁登录的繁琐。
 
 创建应用分身之后，桌面上会出现多个相同图标的应用，其中带有下角标的应用图标表示分身应用。
 
@@ -28,19 +28,18 @@
 
     在工程项目中对AppScope/app.json5配置文件配置[multiAppMode](app-configuration-file.md#multiappmode标签)字段。具体配置如下：
     <!-- @[app_clone](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/AppClone/AppScope/app.json5) -->
-
-``` JSON5
-{
-  "app": {
-	// ···
-    "multiAppMode": {
-      "multiAppModeType": "appClone",
-      "maxCount": 2
+    
+    ``` JSON5
+    {
+      "app": {
+        // ...
+        "multiAppMode": {
+          "multiAppModeType": "appClone",
+          "maxCount": 2
+        }
+      }
     }
-  }
-}
-```
-
+    ```
 
 2. 创建分身应用。
 

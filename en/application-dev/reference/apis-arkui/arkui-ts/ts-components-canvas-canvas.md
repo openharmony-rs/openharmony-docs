@@ -22,7 +22,7 @@ Not supported
 
 Canvas(context?: CanvasRenderingContext2D | DrawingRenderingContext)
 
-When you create a canvas component, the maximum size of the canvas component cannot exceed 10000 px x 10000 px. If the canvas component exceeds the maximum size, the canvas component cannot be created.
+Creates a **Canvas** component. The maximum allowed size cannot exceed 10000 px × 10000 px. If the size exceeds this limit, the **Canvas** component will fail to be created.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -34,13 +34,13 @@ When you create a canvas component, the maximum size of the canvas component can
 
 | Name | Type   | Mandatory| Description  |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| context | [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) \| [DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md) | No  | 2D rendering context for a canvas.<br>**CanvasRenderingContext2D**: Canvases cannot share one **CanvasRenderingContext2D** object. For details, see [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md). **DrawingRenderingContext**: Canvases cannot share one **DrawingRenderingContext** object. For details, see [DrawingRenderingContext](ts-drawingrenderingcontext.md).<br>The **null** value is treated as invalid.|
+| context | [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) \| [DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md) | No  | 2D rendering context for a canvas.<br>**CanvasRenderingContext2D**: Canvases cannot share one **CanvasRenderingContext2D** object. For details, see [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md). **DrawingRenderingContext**: Canvases cannot share one **DrawingRenderingContext** object. For details, see [DrawingRenderingContext](ts-drawingrenderingcontext.md).<br>If the value is **null** or **undefined**, **context** is considered unset.|
 
 ### Canvas<sup>12+</sup>
 
 Canvas(context: CanvasRenderingContext2D | DrawingRenderingContext, imageAIOptions: ImageAIOptions)
 
-Creates a canvas component. You can set the CanvasRenderingContext2D or DrawingRenderingContext object and AI analysis options.
+Creates a **Canvas** component. You can specify a **CanvasRenderingContext2D** or **DrawingRenderingContext** object, along with AI image analysis options.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -50,8 +50,8 @@ Creates a canvas component. You can set the CanvasRenderingContext2D or DrawingR
 
 | Name | Type | Mandatory| Description|
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| context | [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) \| [DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md) | Yes  | 2D rendering context for a canvas.<br>**CanvasRenderingContext2D**: Canvases cannot share one **CanvasRenderingContext2D** object. For details, see [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md). **DrawingRenderingContext**: Canvases cannot share one **DrawingRenderingContext** object. For details, see [DrawingRenderingContext](ts-drawingrenderingcontext.md).<br>The **null** value is treated as invalid.|
-| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | Yes  | AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.<br>The **null** and **undefined** values are handled as the default values of [ImageAIOptions](ts-image-common.md#imageaioptions12).|
+| context | [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md) \| [DrawingRenderingContext<sup>12+</sup>](ts-drawingrenderingcontext.md) | Yes  | 2D rendering context for a canvas.<br>**CanvasRenderingContext2D**: Canvases cannot share one **CanvasRenderingContext2D** object. For details, see [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md). **DrawingRenderingContext**: Canvases cannot share one **DrawingRenderingContext** object. For details, see [DrawingRenderingContext](ts-drawingrenderingcontext.md).<br>If the value is **null** or **undefined**, **context** is considered unset.|
+| imageAIOptions  | [ImageAIOptions](ts-image-common.md#imageaioptions12) | Yes  | AI image analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.<br>If the value is **null** or **undefined**, the default value of [ImageAIOptions](ts-image-common.md#imageaioptions12) is used. The default value is **{ type: [ImageAnalyzerType.SUBJECT, ImageAnalyzerType.TEXT], aiController: new ImageAnalyzerController() }**, indicating that subject recognition and text recognition are enabled.|
 
 ## Attributes
 
@@ -59,8 +59,10 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 ### enableAnalyzer<sup>12+</sup>
 
-Sets whether to enable the AI analyzer, which supports subject recognition, text recognition, and object lookup. Dynamic attribute setting using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) is supported.
+Sets whether to enable the AI image analyzer, which supports subject recognition, text recognition, and object lookup. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
+
 For the settings to take effect, this attribute must be used together with [StartImageAnalyzer](ts-canvasrenderingcontext2d.md#startimageanalyzer12) and [StopImageAnalyzer](ts-canvasrenderingcontext2d.md#stopimageanalyzer12) of [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md).
+
 This attribute cannot be used together with the [overlay](ts-universal-attributes-overlay.md#overlay) attribute. If they are set at the same time, the **CustomBuilder** attribute in **overlay** has no effect. This feature depends on device capabilities.
 
 >**NOTE**
@@ -75,7 +77,7 @@ This attribute cannot be used together with the [overlay](ts-universal-attribute
 
 | Name| Type   | Mandatory| Description|
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| enable  | boolean | Yes  | Whether to enable the AI analyzer, which requires component content to support subject recognition, text recognition, and object lookup.<br>**true**: Enable the AI analyzer. **false**: Disable the AI analyzer.<br>The **null** and **undefined** values are handled as the default value.<br>Default value: **false**|
+| enable  | boolean | Yes  | Whether to enable the AI image analyzer for subject recognition, text recognition, and object lookup within the component content.<br>**true**: Enable the AI image analyzer. **false**: Disable the AI analyzer.<br>The **null** and **undefined** values are handled as the default value.<br>Default value: **false**|
 
 ## Events
 
@@ -99,13 +101,13 @@ When this event is triggered, the canvas is cleared. The width and height of the
 
 | Name| Type   | Mandatory| Description|
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| event  | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Callback event triggered when the **Canvas** component is initialized or when its size changes.|
+| event  | [VoidCallback](ts-types.md#voidcallback12) | Yes  | Triggered when the **Canvas** component is initialized or when its size changes.|
 
 ## Example
 
 ### Example 1: Using APIs in CanvasRenderingContext2D
 
-This example describes how to use the APIs in **CanvasRenderingContext2D** for drawing on a canvas.
+This example describes how to use the APIs in [CanvasRenderingContext2D](./ts-canvasrenderingcontext2d.md) for drawing on a canvas.
 
 ```ts
 // xxx.ets
@@ -134,7 +136,7 @@ struct CanvasExample {
 
 ### Example 2: Using APIs in DrawingRenderingContext
 
-This example describes how to use the APIs in **DrawingRenderingContext** for drawing on a canvas.
+This example demonstrates how to use the APIs in [DrawingRenderingContext](./ts-drawingrenderingcontext.md) for drawing on a canvas.
 
 ```ts
 // xxx.ets
@@ -163,7 +165,11 @@ struct CanvasExample {
 
 ### Example 3: Dynamically Setting Attributes and Methods of the Canvas Component Using attributeModifier
 
-This example demonstrates how to dynamically set the **enableAnalyzer** attribute and **onReady** method of the **Canvas** component using **attributeModifier**.
+This example demonstrates how to use [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) to dynamically set the [enableAnalyzer](#enableanalyzer12) attribute and [onReady](#onready) method of the **Canvas** component.
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOption** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [copyCodeResource](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356) in **resOptions**.
 
 ```ts
 // xxx.ets
@@ -175,7 +181,8 @@ class MyCanvasModifier implements AttributeModifier<CanvasAttribute> {
   applyNormalAttribute(instance: CanvasAttribute): void {
     // Draw an image with the width and height of 200 vp from (0, 0).
     instance.onReady(() => {
-      let image = new ImageBitmap("image.png")
+      // Replace "common/img.png" with the image resource file you use.
+      let image = new ImageBitmap("common/img.png")
       this.context.drawImage(image, 0, 0, 200, 200)
     })
     // Enable the AI image analyzer, which can be triggered by a long press after the start button is tapped.
@@ -211,7 +218,8 @@ struct attributeDemo {
                 console.info("analysis complete")
               })
               .catch((error: BusinessError) => {
-                console.info("error code: " + error.code)
+                let e: BusinessError = error as BusinessError
+                console.error(`Error code: ${e.code}, message: ${e.message}`)
               })
           })
         Button('stop')

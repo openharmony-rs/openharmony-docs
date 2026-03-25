@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @foryourself-->
 
-- [Introduction to ArkTS](arkts-overview.md)
+- [About This Kit](arkts-overview.md)
 - ArkTS Common Library<!--arkts-utils-->
   - [Overview of the ArkTS Common Library](arkts-utils-overview.md)
   - XML Generation, Parsing, and Conversion<!--xml-generation-parsing-conversion-->
@@ -33,7 +33,6 @@
     - Inter-Thread Communication Objects<!--interthread-communication-object-->
       - [Overview of Inter-Thread Communication Objects](serializable-overview.md)
       - [Regular Object](normal-object.md)
-      - [Container Object](container-object.md)
       - [ArrayBuffer Object](arraybuffer-object.md)
       - [SharedArrayBuffer Object](shared-arraybuffer-object.md)
       - [Transferable Object (NativeBinding Object)](transferabled-object.md)
@@ -48,8 +47,8 @@
         - [Freezing Sendable Objects](sendable-freeze.md)
         - [Use Scenarios of Sendable](sendable-guide.md)
     - Communication Between Threads<!--interthread-communication-guide-->
-      - [Using TaskPool for Independent Time-Consuming Tasks](independent-time-consuming-task.md)
-      - [Using TaskPool for Multiple Time-Consuming Tasks](multi-time-consuming-tasks.md)
+      - [Using TaskPool for Independent Time-consuming Tasks](independent-time-consuming-task.md)
+      - [Using TaskPool for Multiple Time-consuming Tasks](multi-time-consuming-tasks.md)
       - [Communication Between the TaskPool Task and Host Thread](taskpool-communicates-with-mainthread.md)
       - [Real-Time Communication Between the Worker Thread and Host Thread](worker-communicates-with-mainthread.md)
       - [Synchronous Calls to Host Thread Interfaces from Worker](worker-invoke-mainthread-interface.md)
@@ -102,6 +101,7 @@
     - [Ark Bytecode Fundamentals](arkts-bytecode-fundamentals.md)
     - [Naming Conventions for Ark Bytecode Functions](arkts-bytecode-function-name.md)
     - [Customizing Ark Bytecode During Compilation](customize-bytecode-during-compilation.md)
+    - [Ark Bytecode Generation FAQs](es2abc-faq.md)
   - [Disassembler](tool-disassembler.md)
   - ArkGuard for Source Code Obfuscation<!--arkts-arkguard-->
     - [Overview of ArkGuard for Source Code Obfuscation](source-obfuscation-overview.md)

@@ -1,4 +1,4 @@
-# Widget Host Development (for System Applications Only)
+# ArkTS Widget Host Development (for System Applications Only)
 <!--Kit: Form Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
@@ -20,7 +20,7 @@ A widget usually appears as a part of the UI of another application (which curre
   
   - Widget Manager: a resident agent that provides widget management features such as periodic widget updates.
   
-   ![formHostMoudle](./figures/widget-host-development-guide-1.png)
+   ![formHostModule](./figures/widget-host-development-guide-1.png)
 
 ## When to Use
 
@@ -61,7 +61,6 @@ The **formHost** module provides a series of APIs for the widget host to update 
 
 ## Example
 <!-- @[form_host_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Form/FormHost/entry/src/main/ets/pages/Index.ets) -->
-
 ``` TypeScript
 //Index.ets
 import { HashMap, HashSet } from '@kit.ArkTS';

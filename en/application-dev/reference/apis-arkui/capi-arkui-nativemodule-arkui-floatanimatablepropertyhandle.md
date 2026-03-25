@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_FloatAnimatableProperty* ArkUI_FloatAnimatablePropertyHandle
+```
+
 ## Overview
 
 Defines a struct for the animatable float property pointer.

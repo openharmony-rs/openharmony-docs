@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-MetadataOutput implements metadata streams. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
+**MetadataOutput** implements metadata streams. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
@@ -178,7 +178,7 @@ Subscribes to events indicating available metadata objects. This API uses an asy
 
 | Name     | Type        | Mandatory| Description                                 |
 | -------- | -------------- | ---- | ------------------------------------ |
-| type     | string         | Yes  | Event type. The value is fixed at **'metadataObjectsAvailable'**. The event can be listened for when a metadataOutput instance is created. This event is triggered and the corresponding metadata is returned when valid metadata is detected.|
+| type     | string         | Yes  | Event type. The value is fixed at **'metadataObjectsAvailable'**. The event can be listened for when a metadataOutput instance is created.<br>This event is triggered and the corresponding metadata is returned when valid metadata is detected. If the input field is incorrect, no valid listening will be created.|
 | callback | AsyncCallback\<Array\<[MetadataObject](arkts-apis-camera-i.md#metadataobject)\>\> | Yes  | Callback used to return the metadata.|
 
 **Example**

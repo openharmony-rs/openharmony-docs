@@ -66,14 +66,14 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
     function setTorchModeSupported(cameraManager: camera.CameraManager, torchMode: camera.TorchMode) : void {
       cameraManager.setTorchMode(torchMode);
       let isTorchMode = cameraManager.getTorchMode();
-      console.info(`Returned with the torch mode supportd mode: ${isTorchMode}`);
+      console.info(`Returned with the torch mode supported mode: ${isTorchMode}`);
     }
     ```
 
 
 ## Status Listening
 
-During camera application development, you can listen for the flashlight status, including on, off, unavailable, and available.
+During camera application development, you can listen for the flashlight status, including on, off, unavailable, and available.  
 
 Register the **'torchStatusChange'** event and return the listening result through a callback, which carries the **TorchStatusInfo** parameter. For details about the parameter, see [TorchStatusInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#torchstatusinfo11).
 

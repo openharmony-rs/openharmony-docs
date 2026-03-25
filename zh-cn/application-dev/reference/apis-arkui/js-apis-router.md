@@ -651,7 +651,7 @@ router.pushNamedRoute({
   })
 ```
 
-详细示例请参考：[UI开发-页面路由](../../ui/arkts-routing.md#命名路由)
+详细示例请参考：[UI开发-命名路由](../../ui/arkts-routing.md#命名路由)
 
 ## router.pushNamedRoute<sup>(deprecated)</sup>
 
@@ -1542,7 +1542,7 @@ export default {
 > 
 > 直接使用router可能导致[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext获取[UIContext](arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter](arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
 
-<!--deperecated_code_no_check-->
+<!--deprecated_code_no_check-->
 ```ts
 // 通过router.pushUrl跳转至目标页携带params参数
 import { router } from '@kit.ArkUI';

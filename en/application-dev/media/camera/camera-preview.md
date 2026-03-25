@@ -38,13 +38,13 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
       imageWidth: number = 1920;
       imageHeight: number = 1080;
       private uiContext: UIContext = this.getUIContext();
+      private mXComponentOptions: XComponentOptions = {
+        type: XComponentType.SURFACE,
+        controller: this.xComponentCtl
+      }
 
       build() {
-        XComponent({
-          id: 'componentId',
-          type: XComponentType.SURFACE,
-          controller: this.xComponentCtl
-        })
+        XComponent(this.mXComponentOptions)
           .onLoad(async () => {
             console.info('onLoad is called');
             this.surfaceId = this.xComponentCtl.getXComponentSurfaceId(); // Obtain the surface ID of the component.
@@ -71,7 +71,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
      }
      let previewOutput: camera.PreviewOutput | undefined = undefined;
      try {
-       // Choose the preview profile from previewProfilesArray that matches the aspect ratio set in Step 2. Selecting the first item in the array is for illustrative purposes only.
+       // Choose the preview profile from previewProfilesArray that matches the aspect ratio set in Step 2. Selecting the first item in the array here is for API usage example only.
        previewOutput = cameraManager.createPreviewOutput(previewProfilesArray[0], surfaceId);
      } catch (error) {
        let err = error as BusinessError;
@@ -129,7 +129,7 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
 During camera application development, you can listen for the preview output stream status, including preview stream start, preview stream end, and preview stream output errors.
 
-- Register the **'frameStart'** event to listen for preview start events. This event can be registered when a PreviewOutput object is created and is triggered when the bottom layer starts exposure for the first time. The preview stream starts as long as a result is returned.
+- Register the [on('frameStart')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframestart) callback function to listen for preview stream start results. The callback is registered once the **previewOutput** is successfully created, and is triggered when the preview is exposed for the first time. If a result is returned, the preview stream is considered started.
     
   ```ts
   function onPreviewOutputFrameStart(previewOutput: camera.PreviewOutput): void {
@@ -142,7 +142,7 @@ During camera application development, you can listen for the preview output str
   }
   ```
 
-- Register the **'frameEnd'** event to listen for preview end events. This event can be registered when a PreviewOutput object is created and is triggered when the last frame of preview ends. The preview stream ends as long as a result is returned.
+- Register the [on('frameEnd')](../../reference/apis-camera-kit/arkts-apis-camera-PreviewOutput.md#onframeend) callback function to listen for preview stream end results. The callback is registered once the **previewOutput** is successfully created, and is triggered when the preview finishes the last frame. If a result is returned, the preview stream is considered ended.
     
   ```ts
   function onPreviewOutputFrameEnd(previewOutput: camera.PreviewOutput): void {
@@ -181,7 +181,7 @@ struct Index {
   @State imageWidth: number = 1920;
   @State imageHeight: number = 1080;
   private cameraManager: camera.CameraManager | undefined = undefined;
-  private cameras: Array<camera.CameraDevice> | Array<camera.CameraDevice> = [];
+  private cameras: Array<camera.CameraDevice> | undefined = [];
   private cameraInput: camera.CameraInput | undefined = undefined;
   private previewOutput: camera.PreviewOutput | undefined = undefined;
   private session: camera.VideoSession | undefined = undefined;
@@ -189,7 +189,10 @@ struct Index {
   private context: Context | undefined = this.uiContext.getHostContext();
   private cameraPermission: Permissions = 'ohos.permission.CAMERA'; // For details about how to request permissions, see the instructions provided at the beginning of this topic.
   @State isShow: boolean = false;
-
+  private mXComponentOptions: XComponentOptions = {
+    type: XComponentType.SURFACE,
+    controller: this.xComponentCtl
+  }
 
   async requestPermissionsFn(): Promise<void> {
     let atManager = abilityAccessCtrl.createAtManager();
@@ -222,11 +225,7 @@ struct Index {
   build() {
     Column() {
       if (this.isShow) {
-        XComponent({
-          id: 'componentId',
-          type: XComponentType.SURFACE,
-          controller: this.xComponentCtl
-        })
+        XComponent(this.mXComponentOptions)
           .onLoad(async () => {
             console.info('onLoad is called');
             this.xComponentSurfaceId = this.xComponentCtl.getXComponentSurfaceId(); // Obtain the surface ID of the component.

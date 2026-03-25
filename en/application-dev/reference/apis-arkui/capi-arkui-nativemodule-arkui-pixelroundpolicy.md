@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_PixelRoundPolicy ArkUI_PixelRoundPolicy
+```
+
 ## Overview
 
 Defines a struct for the component pixel rounding policy.

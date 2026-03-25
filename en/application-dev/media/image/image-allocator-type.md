@@ -1,4 +1,4 @@
-# Allocating Memory for Image Decoding (ArkTS)
+# Optimizing Memory for Image Decoding (ArkTS)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -8,7 +8,7 @@
 
 When an application performs image decoding, it needs to allocate the corresponding memory. This guide describes different types of memory and how to allocate them.
 
-The application obtains a PixelMap through the decoding API and passes it to the **Image** component for display.
+The application obtains the PixelMap through the decoding API and passes it to the [Image component](../../../application-dev/reference/apis-arkui/arkui-js/js-components-basic-image.md) for display.
 
 When the PixelMap is large and uses shared memory, the RS main thread will experience a longer texture upload time, leading to lag. The zero-copy feature of DMA memory provided by the graphics side can avoid the time cost of texture upload when the system renders images.
 
@@ -89,6 +89,7 @@ When memory is allocated using DMA_ALLOC, the stride must meet the hardware alig
 
 - The stride value must be an integer multiple of the number of bytes required by the hardware platform.
 - If the stride does not meet the alignment requirements, the system automatically pads the data.
+
 The stride value can be obtained by calling [getImageInfo()](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#getimageinfo-1).
 
 1. Call [getImageInfo()](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#getimageinfo-1) to obtain an ImageInfo object.

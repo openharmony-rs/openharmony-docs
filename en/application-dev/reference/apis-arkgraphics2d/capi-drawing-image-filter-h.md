@@ -15,6 +15,8 @@ This file declares the functions related to the image filter in the drawing modu
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -36,7 +38,7 @@ This file declares the functions related to the image filter in the drawing modu
 
 ### OH_Drawing_ImageFilterCreateBlur()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlur(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode,OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -66,7 +68,7 @@ Creates an image filter with a given blur effect.
 
 ### OH_Drawing_ImageFilterCreateBlurWithCrop()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateBlurWithCrop(float sigmaX, float sigmaY, OH_Drawing_TileMode tileMode, OH_Drawing_ImageFilter* input, const OH_Drawing_Rect* rect)
 ```
 
@@ -98,7 +100,7 @@ You can pass a cropping rectangle to limit the blur effect to take effect only i
 
 ### OH_Drawing_ImageFilterCreateFromColorFilter()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromColorFilter(OH_Drawing_ColorFilter* colorFilter,OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -125,7 +127,7 @@ Creates an **OH_Drawing_ImageFilter** object with a color filter effect. This AP
 
 ### OH_Drawing_ImageFilterCreateOffset()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateOffset(float x, float y, OH_Drawing_ImageFilter* imageFilter)
 ```
 
@@ -154,7 +156,7 @@ Creates an offset filter to translate the input filter based on the specified ve
 
 ### OH_Drawing_ImageFilterCreateFromShaderEffect()
 
-```
+```c
 OH_Drawing_ImageFilter* OH_Drawing_ImageFilterCreateFromShaderEffect(OH_Drawing_ShaderEffect* shaderEffect)
 ```
 
@@ -181,7 +183,7 @@ Creates an **ImageFilter** object based on a shader.
 
 ### OH_Drawing_ImageFilterDestroy()
 
-```
+```c
 void OH_Drawing_ImageFilterDestroy(OH_Drawing_ImageFilter* imageFilter)
 ```
 

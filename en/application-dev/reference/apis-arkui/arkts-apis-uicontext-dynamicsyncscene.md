@@ -4,7 +4,7 @@
 <!--Owner: @Hu_ZeQi-->
 <!--Designer: @jiangdayuan-->
 <!--Tester: @lxl007-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 Provides configuration for frame rates in custom component scenarios.
 
@@ -14,7 +14,7 @@ Provides configuration for frame rates in custom component scenarios.
 >
 > - The initial APIs of this class are supported since API version 12.
 >
-> - In the following API examples, you must first use **requireDynamicSyncScene()** in **UIContext** to obtain a **DynamicSyncScene** instance, and then call the APIs using the obtained instance.
+> - Before calling the following APIs, you need to use the [requireDynamicSyncScene](arkts-apis-uicontext-uicontext.md#requiredynamicsyncscene12) method in **UIContext** to obtain the **DynamicSyncScene** object and then call the corresponding API through this object.
 
 ## setFrameRateRange<sup>12+</sup>
 
@@ -48,8 +48,8 @@ struct Frame {
 
   build() {
     Column() {
-      Text("Animation"+ JSON.stringify(this.ANIMATION))
-      Text("Responsive"+ JSON.stringify(this.GESTURE))
+      Text("Animation" + JSON.stringify(this.ANIMATION))
+      Text("Gesture" + JSON.stringify(this.GESTURE))
       Row(){
         Swiper() {
           Text("one")
@@ -114,8 +114,8 @@ struct Frame {
 
   build() {
     Column() {
-      Text("Animation"+ JSON.stringify(this.ANIMATION))
-      Text("Responsive"+ JSON.stringify(this.GESTURE))
+      Text("Animation" + JSON.stringify(this.ANIMATION))
+      Text("Gesture" + JSON.stringify(this.GESTURE))
       Row(){
         Swiper() {
           Text("one")

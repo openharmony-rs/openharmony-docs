@@ -11,7 +11,7 @@ Bind the [DialogController](../reference/apis-arkui/js-apis-promptAction.md#dial
 
 ## Constraints
 
-Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18) and [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)) APIs support binding dialog controllers through the **controller** parameter. The [getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18) API can obtain the dialog controller for the custom component where the dialog box is located.
+Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18) and [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18) APIs support binding dialog controllers through the **controller** parameter. The [getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18) API can obtain the dialog controller for the custom component where the dialog box is located.
 
 > **NOTE**
 > 
@@ -22,52 +22,61 @@ Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-ap
 
 > **NOTE**
 > 
-> For details about the variables, see [Example](#example).
+> For details about the variables, see [Sample Code](#sample-code).
 
 1. Initialize a parameter class for the custom dialog box content area, which includes the dialog controller.
 
-   ```ts
+   <!-- @[dialog_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   
+   ``` TypeScript
    class Params {
-     public text: string = ''
-     public dialogController: promptAction.CommonController = new promptAction.DialogController()
+     public text: string = '';
+     public dialogController: promptAction.CommonController = new promptAction.DialogController();
+   
      constructor(text: string, dialogController: promptAction.CommonController) {
-       this.text = text
-       this.dialogController = dialogController
+       this.text = text;
+       this.dialogController = dialogController;
      }
    }
    ```
 
 2. Initialize a custom dialog box content area that includes a button, which closes the dialog box using the dialog controller provided by the custom component.
 
-   ```ts
+   <!-- @[dialog_my_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) --> 
+   
+   ``` TypeScript
    @Component
    struct MyComponent {
      build() {
        Column({ space: 5 }) {
-         Button('Close Dialog Box: Using Built-in DialogController')
+         // The value in the 'app.string.closeDialog_by_custom' resource file is "Close dialog box using custom component's DialogController."
+         Button($r('app.string.closeDialog_by_custom'))
            .onClick(() => {
-             let dialogController: promptAction.DialogController = this.getDialogController()
+             let dialogController: promptAction.DialogController = this.getDialogController();
              if (dialogController !== undefined) {
-               dialogController.close()
+               dialogController.close();
              }
            })
        }
      }
    }
    ```
-
+   
 3. Initialize another custom dialog box content area that includes a **Text** component and a button, which closes the dialog box using the externally passed dialog controller. This content area also includes the previous custom dialog box content area.
 
-   ```ts
+   <!-- @[build_text](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   
+   ``` TypeScript
    @Builder
    function buildText(params: Params) {
      Column({ space: 5 }) {
        Text(params.text)
          .fontSize(30)
        if (params.dialogController !== undefined) {
-         Button('Close Dialog Box: Using Externally Passed DialogController')
+         // The value in the 'app.string.closeDialog_by_controller' resource file is "Close dialog box using external DialogController."
+         Button($r('app.string.closeDialog_by_controller'))
            .onClick(() => {
-             params.dialogController.close()
+             params.dialogController.close();
            })
        }
        MyComponent()
@@ -77,36 +86,44 @@ Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-ap
      .backgroundColor('#FFF0F0F0')
    }
    ```
-
+   
 4. Initialize a dialog controller and create a dialog box content entity object by setting the **controller** parameter. Finally, obtain a [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object through the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API of [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md), and call the [openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18) API with the initialized content entity object and **controller** parameter to create the dialog box.
 
-   ```ts
-   let dialogController: promptAction.CommonController = new promptAction.DialogController()
+   <!-- @[content_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   
+   ``` TypeScript
+   let dialogController: promptAction.CommonController = new promptAction.DialogController();
    let contentNode: ComponentContent<Object> =
-     new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params(this.message, dialogController))
+     new ComponentContent(this.getUIContext(), wrapBuilder(buildText),
+       new Params(this.message, dialogController));
    this.getUIContext().getPromptAction().openCustomDialogWithController(
      contentNode, dialogController, this.baseDialogOptions).catch((err: BusinessError) => {
-     console.error('openCustomDialogWithController error: ' + err.code + ' ' + err.message)
-   })
+     hilog.error(0x0000, 'dialogController',
+       'openCustomDialogWithController error: ' + err.code + ' ' + err.message);
+   });
    ```
-
+   
 ## Creating a Dialog Box Controller with CustomBuilder as Custom Content
 
 > **NOTE**
 > 
-> For details about the variables, see [Example](#example).
+> For details about the variables, see [Sample Code](#sample-code).
 
 1. Initialize a custom dialog box content area that includes a **Text** component and a button, which closes the dialog box using the externally passed dialog controller.
 
-   ```ts
-   @Builder customDialogComponent(dialogController: promptAction.DialogController) {
+   <!-- @[dialog_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   
+   ``` TypeScript
+   @Builder
+   customDialogComponent(dialogController: promptAction.DialogController) {
      Column({ space: 5 }) {
        Text(this.message)
          .fontSize(30)
        if (dialogController !== undefined) {
-         Button('Close Dialog Box: Using Externally Passed DialogController')
+         // The value in the 'app.string.closeDialog_by_outside' resource file is "Close dialog box using external DialogController."
+         Button($r('app.string.closeDialog_by_outside'))
            .onClick(() => {
-             dialogController.close()
+             dialogController.close();
            })
        }
      }
@@ -116,81 +133,94 @@ Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-ap
      .backgroundColor('#FFF0F0F0')
    }
    ```
-
+   
 2. Initialize a dialog box controller and obtain a [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object through the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API of [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md), and call the [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18) API with the initialized content entity object and **controller** parameter to create the dialog box.
 
-   ```ts
-   let dialogController: promptAction.CommonController = new promptAction.DialogController()
+   <!-- @[dialog_controller_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   
+   ``` TypeScript
+   let dialogController: promptAction.CommonController = new promptAction.DialogController();
    this.getUIContext().getPromptAction().presentCustomDialog(() => {
-     this.customDialogComponent(dialogController)
+     this.customDialogComponent(dialogController);
    }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-     console.error('presentCustomDialog error: ' + err.code + ' ' + err.message)
-   })
+     hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+   });
    ```
-
+   
 ## Creating a Dialog Box Controller with CustomBuilderWithId as Custom Content
 
 > **NOTE**
 > 
-> For details about the variables, see [Example](#example).
+> For details about the variables, see [Sample Code](#sample-code).
 
 1. Initialize a dialog box content area that includes a **Text** component, a button that closes the dialog box using the externally passed dialog ID, and a button that closes the dialog box using the externally passed dialog controller.
-
-   ```ts
-   @Builder customDialogComponentWithId(dialogId: number, dialogController: promptAction.DialogController) {
+   
+   <!-- @[dialog_component_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   
+   ``` TypeScript
+   @Builder
+   customDialogComponentWithId(dialogId: number, dialogController: promptAction.DialogController) {
      Column({ space: 5 }) {
        Text(this.message)
          .fontSize(30)
        if (dialogId !== undefined) {
-         Button('Close Dialog Box: Using DialogID')
+         // The value in the 'app.string.closeDialog_by_id' resource file is 'Close dialog box using DialogID.'
+         Button($r('app.string.closeDialog_by_id'))
            .onClick(() => {
-             this.getUIContext().getPromptAction().closeCustomDialog(dialogId)
+             this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
            })
        }
        if (dialogController !== undefined) {
-         Button('Close Dialog Box: Using Externally Passed DialogController')
+         // The value in the 'app.string.closeDialog_by_dialog_controller' resource file is "Close dialog box using external DialogController."
+         Button($r('app.string.closeDialog_by_dialog_controller'))
            .onClick(() => {
-             dialogController.close()
+             dialogController.close();
            })
        }
      }
    }
    ```
-
+   
 2. Initialize a dialog box controller and obtain a [PromptAction](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md) object through the [getPromptAction](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getpromptaction) API of [UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md), and call the [presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18) API with the initialized content entity object and **controller** parameter to create the dialog box.
 
-   ```ts
-   let dialogController: promptAction.CommonController = new promptAction.DialogController()
+   <!-- @[dialog_controller_id](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   
+   ``` TypeScript
+   let dialogController: promptAction.CommonController = new promptAction.DialogController();
    this.getUIContext().getPromptAction().presentCustomDialog((dialogId: number) => {
-     this.customDialogComponentWithId(dialogId, dialogController)
+     this.customDialogComponentWithId(dialogId, dialogController);
    }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-     console.error('presentCustomDialog error: ' + err.code + ' ' + err.message)
-   })
+     hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+   });
    ```
-
+   
 ## Directly Obtaining the Dialog Box Controller in the CustomDialogController Content Area
 
 > **NOTE**
 > 
-> For details about the variables, see [Example](#example).
+> For details about the variables, see [Sample Code](#sample-code).
 
 1. Initialize a custom dialog box content area that includes a **Text** component and a button, which closes the dialog box using the dialog controller.
 
-   ```ts
+   <!-- @[custom_dialog_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   
+   ``` TypeScript
    @CustomDialog
    @Component
    struct CustomDialogExample {
-     controller?: CustomDialogController
-
+     controller?: CustomDialogController;
+   
      build() {
        Column({ space: 5 }) {
-         Text('I am content')
+         // The value in the 'app.string.my_content' resource file is "I am the content."
+         Text($r('app.string.my_content'))
            .fontSize(30)
-         Button('Close Dialog Box: Using Built-in DialogController')
+         // The value in the 'app.string.closeDialog_by_dialog' resource file is "Close dialog box using custom component's DialogController."
+         Button($r('app.string.closeDialog_by_dialog'))
            .onClick(() => {
-             let dialogController: PromptActionDialogController = this.getDialogController()
+             let dialogController: PromptActionDialogController = this.getDialogController();
              if (dialogController !== undefined) {
-               dialogController.close()
+               dialogController.close();
              }
            })
        }
@@ -199,14 +229,16 @@ Currently, the [openCustomDialogWithController](../reference/apis-arkui/arkts-ap
      }
    }
    ```
-
+   
 2. Initialize a custom dialog box constructor and associate it with the custom dialog box content area.
 
-   ```ts
+   <!-- @[custom_dialog_example_click](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+   
+   ``` TypeScript
    let customDialogController: CustomDialogController = new CustomDialogController({
      builder: CustomDialogExample(),
-   })
-   customDialogController.open()
+   });
+   customDialogController.open();
    ```
 
 ## Using the Controller to Obtain the Dialog Box Status
@@ -215,19 +247,140 @@ In custom dialog box implementations starting from API version 20, you can invok
 
 > **NOTE**
 > 
-> For details about the variables, see [Example](#example).
+> For details about the variables, see [Sample Code](#sample-code).
 
 Initialize the custom dialog box content area containing a **Text** component and a button. The button triggers **getState** to obtain the current dialog box state.
 
-  ```ts
-  @Builder customDialogComponent(dialogController: promptAction.DialogController) {
+<!-- @[dialog_component_get_state](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+
+``` TypeScript
+@Builder
+customDialogComponentGetState(dialogController: promptAction.DialogController) {
+  Column({ space: 5 }) {
+    Text(this.message)
+      .fontSize(30)
+    if (dialogController !== undefined) {
+      // The value in the 'app.string.click_check_status' resource is 'Check the dialog box status.'
+      Button($r('app.string.click_check_status'))
+        .onClick(() => {
+          hilog.info(0x0000, 'dialogController', 'state:' + dialogController.getState());
+        })
+    }
+  }
+  .height(200)
+  .padding(5)
+  .justifyContent(FlexAlign.SpaceBetween)
+  .backgroundColor('#FFF0F0F0')
+}
+```
+
+## Sample Code
+
+The example demonstrates how to use both the externally passed dialog controller and the dialog controller provided by the custom component to close the dialog box within the custom dialog box content area.
+
+<!-- @[dialog_example_controller](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/dialogcontroller/DialogController.ets) -->
+
+``` TypeScript
+import { ComponentContent, promptAction } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+class Params {
+  public text: string = '';
+  public dialogController: promptAction.CommonController = new promptAction.DialogController();
+
+  constructor(text: string, dialogController: promptAction.CommonController) {
+    this.text = text;
+    this.dialogController = dialogController;
+  }
+}
+
+
+@Component
+struct MyComponent {
+  build() {
+    Column({ space: 5 }) {
+      // The value in the 'app.string.closeDialog_by_custom' resource file is "Close Dialog Box Using Custom Component's DialogController."
+      Button($r('app.string.closeDialog_by_custom'))
+        .onClick(() => {
+          let dialogController: promptAction.DialogController = this.getDialogController();
+          if (dialogController !== undefined) {
+            dialogController.close();
+          }
+        })
+    }
+  }
+}
+
+
+@Builder
+function buildText(params: Params) {
+  Column({ space: 5 }) {
+    Text(params.text)
+      .fontSize(30)
+    if (params.dialogController !== undefined) {
+      // The value in the 'app.string.closeDialog_by_controller' resource file is "Close Dialog Box Using External DialogController."
+      Button($r('app.string.closeDialog_by_controller'))
+        .onClick(() => {
+          params.dialogController.close();
+        })
+    }
+    MyComponent()
+  }
+  .width(300)
+  .height(200)
+  .backgroundColor('#FFF0F0F0')
+}
+
+
+@CustomDialog
+@Component
+struct CustomDialogExample {
+  controller?: CustomDialogController;
+
+  build() {
+    Column({ space: 5 }) {
+      // The value in the 'app.string.my_content' resource file is "I Am Content."
+      Text($r('app.string.my_content'))
+        .fontSize(30)
+      // The value in the 'app.string.closeDialog_by_dialog' resource file is "Close Dialog Box Using Custom Component's DialogController."
+      Button($r('app.string.closeDialog_by_dialog'))
+        .onClick(() => {
+          let dialogController: PromptActionDialogController = this.getDialogController();
+          if (dialogController !== undefined) {
+            dialogController.close();
+          }
+        })
+    }
+    .height(200)
+    .backgroundColor('#FFF0F0F0')
+  }
+}
+
+
+@Entry
+@Component
+export struct DialogController {
+  private message = 'dialog';
+  private baseDialogOptions: promptAction.BaseDialogOptions = {
+    isModal: false,
+    autoCancel: false
+  };
+  private dialogOptions: promptAction.DialogOptions = {
+    isModal: false,
+    autoCancel: false
+  };
+
+  @Builder
+  customDialogComponent(dialogController: promptAction.DialogController) {
     Column({ space: 5 }) {
       Text(this.message)
         .fontSize(30)
       if (dialogController !== undefined) {
-        Button('Check Status')
+        // The value in the 'app.string.closeDialog_by_outside' resource file is "Close Dialog Box Using External DialogController."
+        Button($r('app.string.closeDialog_by_outside'))
           .onClick(() => {
-            console.info('state:' + this.dialogController.getState())
+            dialogController.close();
           })
       }
     }
@@ -236,169 +389,98 @@ Initialize the custom dialog box content area containing a **Text** component an
     .justifyContent(FlexAlign.SpaceBetween)
     .backgroundColor('#FFF0F0F0')
   }
-  ```
 
-## Example
-
-The example demonstrates how to use both the externally passed dialog controller and the dialog controller provided by the custom component to close the dialog box within the custom dialog box content area.
-
-  ```ts
-  import { ComponentContent, promptAction } from '@kit.ArkUI'
-  import { BusinessError } from '@kit.BasicServicesKit'
-
-  class Params {
-    public text: string = ''
-    public dialogController: promptAction.CommonController = new promptAction.DialogController()
-    constructor(text: string, dialogController: promptAction.CommonController) {
-      this.text = text
-      this.dialogController = dialogController
-    }
-  }
-
-  @Component
-  struct MyComponent {
-    build() {
-      Column({ space: 5 }) {
-        Button('Close Dialog Box: Using Built-in DialogController')
-          .onClick(() => {
-            let dialogController: promptAction.DialogController = this.getDialogController()
-            if (dialogController !== undefined) {
-              dialogController.close()
-            }
-          })
-      }
-    }
-  }
 
   @Builder
-  function buildText(params: Params) {
+  customDialogComponentWithId(dialogId: number, dialogController: promptAction.DialogController) {
     Column({ space: 5 }) {
-      Text(params.text)
+      Text(this.message)
         .fontSize(30)
-      if (params.dialogController !== undefined) {
-        Button('Close Dialog Box: Using Externally Passed DialogController')
+      if (dialogId !== undefined) {
+        // The value in the 'app.string.closeDialog_by_id' resource file is 'Close Dialog Box Using DialogID.'
+        Button($r('app.string.closeDialog_by_id'))
           .onClick(() => {
-            params.dialogController.close()
+            this.getUIContext().getPromptAction().closeCustomDialog(dialogId);
           })
       }
-      MyComponent()
+      if (dialogController !== undefined) {
+        // The value in the 'app.string.closeDialog_by_dialog_controller' resource file is "Close Dialog Box Using External DialogController."
+        Button($r('app.string.closeDialog_by_dialog_controller'))
+          .onClick(() => {
+            dialogController.close();
+          })
+      }
     }
-    .width(300)
+  }
+
+
+  @Builder
+  customDialogComponentGetState(dialogController: promptAction.DialogController) {
+    Column({ space: 5 }) {
+      Text(this.message)
+        .fontSize(30)
+      if (dialogController !== undefined) {
+        // The value in the 'app.string.click_check_status' resource is 'Check Dialog Box Status.'
+        Button($r('app.string.click_check_status'))
+          .onClick(() => {
+            hilog.info(0x0000, 'dialogController', 'state:' + dialogController.getState());
+          })
+      }
+    }
     .height(200)
+    .padding(5)
+    .justifyContent(FlexAlign.SpaceBetween)
     .backgroundColor('#FFF0F0F0')
   }
 
-  @CustomDialog
-  @Component
-  struct CustomDialogExample {
-    controller?: CustomDialogController
 
-    build() {
+  build() {
+    NavDestination() {
       Column({ space: 5 }) {
-        Text('I am content')
-          .fontSize(30)
-        Button('Close Dialog Box: Using Built-in DialogController')
+        // The value in the 'app.string.open_custom_dialog_with_controller' resource file is 'OpenCustomDialogWithController Dialog Box.'
+        Button($r('app.string.open_custom_dialog_with_controller'))
           .onClick(() => {
-            let dialogController: PromptActionDialogController = this.getDialogController()
-            if (dialogController !== undefined) {
-              dialogController.close()
-            }
-          })
-      }
-      .height(200)
-      .backgroundColor('#FFF0F0F0')
-    }
-  }
-
-  @Entry
-  @Component
-  export struct Index {
-    private message = 'Dialog box'
-    @Builder customDialogComponent(dialogController: promptAction.DialogController) {
-      Column({ space: 5 }) {
-        Text(this.message)
-          .fontSize(30)
-        if (dialogController !== undefined) {
-          Button('Close Dialog Box: Using Externally Passed DialogController')
-            .onClick(() => {
-              dialogController.close()
-            })
-        }
-      }
-      .height(200)
-      .padding(5)
-      .justifyContent(FlexAlign.SpaceBetween)
-      .backgroundColor('#FFF0F0F0')
-    }
-
-    @Builder customDialogComponentWithId(dialogId: number, dialogController: promptAction.DialogController) {
-      Column({ space: 5 }) {
-        Text(this.message)
-          .fontSize(30)
-        if (dialogId !== undefined) {
-          Button('Close Dialog Box: Using DialogID')
-            .onClick(() => {
-              this.getUIContext().getPromptAction().closeCustomDialog(dialogId)
-            })
-        }
-        if (dialogController !== undefined) {
-          Button('Close Dialog Box: Using Externally Passed DialogController')
-            .onClick(() => {
-              dialogController.close()
-            })
-        }
-      }
-    }
-
-    private baseDialogOptions: promptAction.BaseDialogOptions = {
-      isModal: false,
-      autoCancel: false
-    }
-
-    private dialogOptions: promptAction.DialogOptions = {
-      isModal: false,
-      autoCancel: false
-    }
-
-    build() {
-      Column({ space: 5 }) {
-        Button('openCustomDialogWithController')
-          .onClick(() => {
-            let dialogController: promptAction.CommonController = new promptAction.DialogController()
+            let dialogController: promptAction.CommonController = new promptAction.DialogController();
             let contentNode: ComponentContent<Object> =
-              new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params(this.message, dialogController))
+              new ComponentContent(this.getUIContext(), wrapBuilder(buildText),
+                new Params(this.message, dialogController));
             this.getUIContext().getPromptAction().openCustomDialogWithController(
               contentNode, dialogController, this.baseDialogOptions).catch((err: BusinessError) => {
-              console.error('openCustomDialogWithController error: ' + err.code + ' ' + err.message)
-            })
+              hilog.error(0x0000, 'dialogController',
+                'openCustomDialogWithController error: ' + err.code + ' ' + err.message);
+            });
           })
-        Button('presentCustomDialog+CustomBuilder')
+        // The value in the 'app.string.present_custom_dialog' resource file is 'PresentCustomDialog + CustomBuilder Dialog Box.'
+        Button($r('app.string.present_custom_dialog'))
           .onClick(() => {
-            let dialogController: promptAction.CommonController = new promptAction.DialogController()
+            let dialogController: promptAction.CommonController = new promptAction.DialogController();
             this.getUIContext().getPromptAction().presentCustomDialog(() => {
-              this.customDialogComponent(dialogController)
+              this.customDialogComponent(dialogController);
             }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-              console.error('presentCustomDialog error: ' + err.code + ' ' + err.message)
-            })
+              hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+            });
           })
-        Button('presentCustomDialog+CustomBuilderWithId')
+        // The value in the 'app.string.custom_builder_with_id' resource file is 'PresentCustomDialog + CustomBuilderWithId Dialog Box.'
+        Button($r('app.string.custom_builder_with_id'))
           .onClick(() => {
-            let dialogController: promptAction.CommonController = new promptAction.DialogController()
+            let dialogController: promptAction.CommonController = new promptAction.DialogController();
             this.getUIContext().getPromptAction().presentCustomDialog((dialogId: number) => {
-              this.customDialogComponentWithId(dialogId, dialogController)
+              this.customDialogComponentWithId(dialogId, dialogController);
             }, dialogController, this.dialogOptions).catch((err: BusinessError) => {
-              console.error('presentCustomDialog error: ' + err.code + ' ' + err.message)
-            })
+              hilog.error(0x0000, 'dialogController', 'presentCustomDialog error: ' + err.code + ' ' + err.message);
+            });
           })
-        Button('CustomDialogController')
+        // The value in the 'app.string.custom_dialog_controller_dialog' resource file is 'CustomDialogController Dialog Box.'
+        Button($r('app.string.custom_dialog_controller_dialog'))
           .onClick(() => {
             let customDialogController: CustomDialogController = new CustomDialogController({
               builder: CustomDialogExample(),
-            })
-            customDialogController.open()
+            });
+            customDialogController.open();
           })
       }.width('100%')
     }
   }
-  ```
+}
+```
 

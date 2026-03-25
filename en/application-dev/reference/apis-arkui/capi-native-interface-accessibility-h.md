@@ -2,16 +2,13 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @zhanghangkai10241-->
-<!--Designer: @lmleon-->
+<!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
 Declares the APIs for accessing Native Accessibility features.
-
-
-**Sample**: <!--RP1-->[AccessibilityCapi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi)<!--RP1End-->
 
 **File to include**: <arkui/native_interface_accessibility.h>
 
@@ -22,6 +19,8 @@ Declares the APIs for accessing Native Accessibility features.
 **Since**: 13
 
 **Related module**: [ArkUI_Accessibility](capi-arkui-accessibility.md)
+
+**Sample**: <!--RP1-->[AccessibilityCapi](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/AccessibilityCapi)<!--RP1End-->
 
 ## Summary
 
@@ -35,12 +34,12 @@ Declares the APIs for accessing Native Accessibility features.
 | [ArkUI_AccessibleGridInfo](capi-arkui-accessibility-arkui-accessiblegridinfo.md) | ArkUI_AccessibleGridInfo | Configures the number of rows, number of columns, and selection mode for specific components including **List**, **Flex**, **Select**, and **Swiper**.|
 | [ArkUI_AccessibleGridItemInfo](capi-arkui-accessibility-arkui-accessiblegriditeminfo.md) | ArkUI_AccessibleGridItemInfo | Configures attributes for specific components including **List**, **Flex**, **Select**, and **Swiper**.|
 | [ArkUI_AccessibilityProviderCallbacks](capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md) | ArkUI_AccessibilityProviderCallbacks | Defines a struct for third-party accessibility provider callback functions, which third-party platforms need to implement. These functions are registered with the system side through **OH_ArkUI_AccessibilityProviderRegisterCallback**.|
-| [ArkUI_AccessibilityProviderCallbacksWithInstance](capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) | ArkUI_AccessibilityProviderCallbacksWithInstance | Defines the callback function struct for third-party operation providers in multi-instance scenarios. These functions should be implemented by third-party platforms and registered with the system using **OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance**.|
+| [ArkUI_AccessibilityProviderCallbacksWithInstance](capi-arkui-accessibility-arkui-accessibilityprovidercallbackswithinstance.md) | ArkUI_AccessibilityProviderCallbacksWithInstance | Defines the callback function struct for third-party accessibility providers in multi-instance scenarios. These functions should be implemented by third-party platforms and registered with the system using **OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance**.|
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md) | ArkUI_AccessibilityElementInfo | Provides accessibility node information for accessibility services and assistive applications (such as screen readers).|
-| [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) | ArkUI_AccessibilityEventInfo | Provides accessibility event information. After a component completes an action requested by an accessibility service or application, it needs to send a success event to confirm the operation.|
-| [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | ArkUI_AccessibilityProvider |  Defines a third-party accessibility provider, which implements callback functions for accessibility services.|
+| [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md) | ArkUI_AccessibilityEventInfo | Describes the accessibility event information. After a component completes an action requested by an accessibility service or application, it needs to send a success event to confirm the operation.|
+| [ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md) | ArkUI_AccessibilityProvider |  Defines a third-party accessibility provider to implement callback functions.|
 | [ArkUI_AccessibilityActionArguments](capi-arkui-accessibility-arkui-accessibilityactionarguments.md) | ArkUI_AccessibilityActionArguments | Sets the parameters of accessibility actions.|
-| [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md) | ArkUI_AccessibilityElementInfoList | Provides an encapsulated **ArkUI_AccessibilityElementInfoList** instance.|
+| [ArkUI_AccessibilityElementInfoList](capi-arkui-accessibility-arkui-accessibilityelementinfolist.md) | ArkUI_AccessibilityElementInfoList | Provides a list instance of the encapsulated **ArkUI_AccessibilityElementInfo**.|
 
 ### Enums
 
@@ -57,9 +56,9 @@ Declares the APIs for accessing Native Accessibility features.
 
 | Name| Description|
 | -- | -- |
-| [int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacks* callbacks)](#oh_arkui_accessibilityproviderregistercallback) | Registers third-party accessibility provider callback functions with the system.|
+| [int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacks* callbacks)](#oh_arkui_accessibilityproviderregistercallback) | Defines a struct for third-party accessibility provider callback functions, which third-party platforms need to implement. These functions are registered with the system side through **OH_ArkUI_AccessibilityProviderRegisterCallback**.|
 | [int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* instanceId,ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacksWithInstance* callbacks)](#oh_arkui_accessibilityproviderregistercallbackwithinstance) | Registers accessibility provider callback functions for third-party platforms in multi-instance scenarios.|
-| [void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityEventInfo* eventInfo,void (\*callback)(int32_t errorCode))](#oh_arkui_sendaccessibilityasyncevent) | Proactively reports an event to notify the accessibility service.|
+| [void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityEventInfo* eventInfo,void (\*callback)(int32_t errorCode))](#oh_arkui_sendaccessibilityasyncevent) | Proactively sends an event to notify the accessibility service.|
 | [ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI_AccessibilityElementInfoList* list)](#oh_arkui_addandgetaccessibilityelementinfo) | Adds an **ArkUI_AccessibilityElementInfo** member to the specified list and returns the **ArkUI_AccessibilityElementInfo** struct.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t elementId)](#oh_arkui_accessibilityelementinfosetelementid) | Sets the component ID for an **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t parentId)](#oh_arkui_accessibilityelementinfosetparentid) | Sets the parent ID for an **ArkUI_AccessibilityElementInfo** object.|
@@ -76,7 +75,7 @@ Declares the APIs for accessing Native Accessibility features.
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElementInfo* elementInfo, bool focusable)](#oh_arkui_accessibilityelementinfosetfocusable) | Sets whether the **ArkUI_AccessibilityElementInfo** object is focusable.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool isFocused)](#oh_arkui_accessibilityelementinfosetfocused) | Sets whether the **ArkUI_AccessibilityElementInfo** object is focused.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementInfo* elementInfo, bool isVisible)](#oh_arkui_accessibilityelementinfosetvisible) | Sets whether an **ArkUI_AccessibilityElementInfo** object is visible.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityFocused)](#oh_arkui_accessibilityelementinfosetaccessibilityfocused) | Sets the accessibility focus state of an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityFocused)](#oh_arkui_accessibilityelementinfosetaccessibilityfocused) | Sets whether the element is focused for accessibility purposes for an **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementInfo* elementInfo, bool selected)](#oh_arkui_accessibilityelementinfosetselected) | Sets whether the **ArkUI_AccessibilityElementInfo** object is selected.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool clickable)](#oh_arkui_accessibilityelementinfosetclickable) | Sets whether the **ArkUI_AccessibilityElementInfo** object is clickable.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool longClickable)](#oh_arkui_accessibilityelementinfosetlongclickable) | Sets whether the **ArkUI_AccessibilityElementInfo** object supports long-press gestures.|
@@ -84,31 +83,31 @@ Declares the APIs for accessing Native Accessibility features.
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElementInfo* elementInfo, bool isPassword)](#oh_arkui_accessibilityelementinfosetispassword) | Sets whether the **ArkUI_AccessibilityElementInfo** object is a password.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElementInfo* elementInfo, bool scrollable)](#oh_arkui_accessibilityelementinfosetscrollable) | Sets whether the **ArkUI_AccessibilityElementInfo** object is scrollable.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementInfo* elementInfo, bool editable)](#oh_arkui_accessibilityelementinfoseteditable) | Sets whether the **ArkUI_AccessibilityElementInfo** object is editable.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInfo* elementInfo, bool isHint)](#oh_arkui_accessibilityelementinfosetishint) | Sets whether an **ArkUI_AccessibilityElementInfo** object represents a hint.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInfo* elementInfo, bool isHint)](#oh_arkui_accessibilityelementinfosetishint) | Sets the hint status for an **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRangeInfo* rangeInfo)](#oh_arkui_accessibilityelementinfosetrangeinfo) | Sets the range information for an **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridInfo* gridInfo)](#oh_arkui_accessibilityelementinfosetgridinfo) | Sets the grid layout information for an **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridItemInfo* gridItem)](#oh_arkui_accessibilityelementinfosetgriditeminfo) | Sets the grid item information for an **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextStart)](#oh_arkui_accessibilityelementinfosetselectedtextstart) | Sets the start position of selected text for an **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextEnd)](#oh_arkui_accessibilityelementinfosetselectedtextend) | Sets the end position of selected text for an **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t currentItemIndex)](#oh_arkui_accessibilityelementinfosetcurrentitemindex) | Sets the current item index for an **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t startItemIndex)](#oh_arkui_accessibilityelementinfosetstartitemindex) | Sets the start item index for an **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t endItemIndex)](#oh_arkui_accessibilityelementinfosetenditemindex) | Sets the end item index for an **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElementInfo* elementInfo, int32_t itemCount)](#oh_arkui_accessibilityelementinfosetitemcount) | Sets the total count of items for an **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)](#oh_arkui_accessibilityelementinfosetaccessibilityoffset) | Sets the offset for an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridInfo* gridInfo)](#oh_arkui_accessibilityelementinfosetgridinfo) | Sets the grid information for an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridItemInfo* gridItem)](#oh_arkui_accessibilityelementinfosetgriditeminfo) | Sets a single-item container within a grid container for an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextStart)](#oh_arkui_accessibilityelementinfosetselectedtextstart) | Sets the start position of the selected text for an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextEnd)](#oh_arkui_accessibilityelementinfosetselectedtextend) | Sets the end position of the selected text for an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t currentItemIndex)](#oh_arkui_accessibilityelementinfosetcurrentitemindex) | Sets the position information of the currently focused component for an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t startItemIndex)](#oh_arkui_accessibilityelementinfosetstartitemindex) | Sets the position information of the first element displayed on the current screen for an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t endItemIndex)](#oh_arkui_accessibilityelementinfosetenditemindex) | Sets the position information of the last element displayed on the current screen for an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElementInfo* elementInfo, int32_t itemCount)](#oh_arkui_accessibilityelementinfosetitemcount) | Sets the total number of elements of a specific component for an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)](#oh_arkui_accessibilityelementinfosetaccessibilityoffset) | Sets the scrolling pixel offset of the content area relative to the top coordinate of the element for an **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityGroup)](#oh_arkui_accessibilityelementinfosetaccessibilitygroup) | Sets whether the **ArkUI_AccessibilityElementInfo** object should be treated as an accessibility group.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityLevel)](#oh_arkui_accessibilityelementinfosetaccessibilitylevel) | Sets the accessibility level for the **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)](#oh_arkui_accessibilityelementinfosetzindex) | Sets the z-index for an **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)](#oh_arkui_accessibilityelementinfosetzindex) | Sets the z-order of the component for the **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_AccessibilityElementInfo* elementInfo, float opacity)](#oh_arkui_accessibilityelementinfosetaccessibilityopacity) | Sets the opacity for the **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)](#oh_arkui_accessibilityelementinfosetbackgroundcolor) | Sets the background color for the **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)](#oh_arkui_accessibilityelementinfosetbackgroundimage) | Sets the background image for the **ArkUI_AccessibilityElementInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo* elementInfo, const char* blur)](#oh_arkui_accessibilityelementinfosetblur) | Sets the blur value for the **ArkUI_AccessibilityElementInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)](#oh_arkui_accessibilityelementinfosethittestbehavior) | Sets the hit test mode for the **ArkUI_AccessibilityElementInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)](#oh_arkui_accessibilityelementinfosethittestbehavior) | Sets the response logic and node blocking rules for the hit test for an **ArkUI_AccessibilityElementInfo** object.|
 | [ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)](#oh_arkui_createaccessibilityelementinfo) | Creates an **ArkUI_AccessibilityElementInfo** object, which must be destroyed with **OH_ArkUI_DestoryAccessibilityElementInfo**.|
 | [void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_destoryaccessibilityelementinfo) | Destroys an **ArkUI_AccessibilityElementInfo** object.|
 | [ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)](#oh_arkui_createaccessibilityeventinfo) | Creates an **ArkUI_AccessibilityEventInfo** object, which must be destroyed with **OH_ArkUI_DestoryAccessibilityEventInfo**.|
 | [void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventInfo)](#oh_arkui_destoryaccessibilityeventinfo) | Destroys an **ArkUI_AccessibilityEventInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityEventType eventType)](#oh_arkui_accessibilityeventseteventtype) | Sets the event type for an **ArkUI_AccessibilityEventInfo** object.|
-| [int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo,  const char* textAnnouncedForAccessibility)](#oh_arkui_accessibilityeventsettextannouncedforaccessibility) | Sets the announcement text for an **ArkUI_AccessibilityEventInfo** object.|
+| [int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo,  const char* textAnnouncedForAccessibility)](#oh_arkui_accessibilityeventsettextannouncedforaccessibility) | Sets the content for auto-broadcasting for the **ArkUI_AccessibilityEventInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo,  int32_t requestFocusId)](#oh_arkui_accessibilityeventsetrequestfocusid) | Sets the focus request ID for an **ArkUI_AccessibilityEventInfo** object.|
 | [int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityElementInfo* elementInfo)](#oh_arkui_accessibilityeventsetelementinfo) | Sets the element information for an **ArkUI_AccessibilityEventInfo** object.|
 | [int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)](#oh_arkui_findaccessibilityactionargumentbykey) | Obtains the value associated with the specified key in **ArkUI_AccessibilityActionArguments**.|
@@ -117,7 +116,7 @@ Declares the APIs for accessing Native Accessibility features.
 
 ### ArkUI_Accessibility_ActionType
 
-```
+```c
 enum ArkUI_Accessibility_ActionType
 ```
 
@@ -140,15 +139,15 @@ Enumerates accessibility action types.
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_COPY = 0x00000400 | Copies the current text selection.                                                                                                                     |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PASTE = 0x00000800 | Pastes content to the text component.                                                                                                                     |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_CUT = 0x00001000 | Cuts the current text selection to the pasteboard.                                                                                                                     |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT = 0x00002000 | Selects a range of text within an editable area in a text component. Used together with **ArkUI_AccessibilityActionArguments** to configure **selectTextStart**, **selectTextEnd**, and **selectTextInForWard**.                                                                     |
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SELECT_TEXT = 0x00002000 | Selects a range of text within an editable area in a text component. Selects a range of text within an editable area by using **ArkUI_AccessibilityActionArguments** and setting **selectTextBegin** (indicates the start position of the selection), **selectTextEnd** (indicates the end position of the selection), and **selectTextInForWard** (**true** indicates to select text forward, and **false** indicates to select text backward).                                                                   |
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_TEXT = 0x00004000 | Sets the text content of the text component.                                                                                                                     |
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_CURSOR_POSITION = 0x00100000 | Sets the text cursor position. Used together with **ArkUI_AccessibilityActionArguments** to configure **offset**.|
-| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_NEXT_HTML_ITEM = 0x02000000 | Moves focus to the next focusable component. Note: "HTML" indicates the web-like navigation capability, not actual web elements. This API requires implementation of **findNextFocusAccessibilityNode**.<br>**Since**: 15|
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_SET_CURSOR_POSITION = 0x00100000 | Sets the cursor position where the text can be entered for the text component. This API is used together with **ArkUI_AccessibilityActionArguments**.|
+| ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_NEXT_HTML_ITEM = 0x02000000 | Moves focus to the next focusable component. Note: "HTML" indicates the web-like navigation capability, not actual web elements. This attribute is available only when the [findNextFocusAccessibilityNode](./capi-arkui-accessibility-arkui-accessibilityprovidercallbacks.md#findnextfocusaccessibilitynode) capability is implemented.<br>**Since**: 15|
 | ARKUI_ACCESSIBILITY_NATIVE_ACTION_TYPE_PREVIOUS_HTML_ITEM = 0x04000000 | Moves focus to the previous focusable component. Note: "HTML" indicates the web-like navigation capability, not actual web elements. This API requires implementation of **findNextFocusAccessibilityNode**.<br>**Since**: 15    |
 
 ### ArkUI_AccessibilityEventType
 
-```
+```c
 enum ArkUI_AccessibilityEventType
 ```
 
@@ -179,7 +178,7 @@ Enumerates accessibility event types.
 
 ### ArkUI_AcessbilityErrorCode
 
-```
+```c
 enum ArkUI_AcessbilityErrorCode
 ```
 
@@ -199,7 +198,7 @@ Enumerates accessibility error codes.
 
 ### ArkUI_AccessibilitySearchMode
 
-```
+```c
 enum ArkUI_AccessibilitySearchMode
 ```
 
@@ -220,7 +219,7 @@ Enumerates accessibility search modes.
 
 ### ArkUI_AccessibilityFocusType
 
-```
+```c
 enum ArkUI_AccessibilityFocusType
 ```
 
@@ -239,7 +238,7 @@ Enumerates accessibility focus types.
 
 ### ArkUI_AccessibilityFocusMoveDirection
 
-```
+```c
 enum ArkUI_AccessibilityFocusMoveDirection
 ```
 
@@ -265,7 +264,7 @@ Enumerates accessibility focus movement directions.
 
 ### OH_ArkUI_AccessibilityProviderRegisterCallback()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityProviderRegisterCallback(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacks* callbacks)
 ```
 
@@ -292,7 +291,7 @@ Defines a struct for third-party accessibility provider callback functions, whic
 
 ### OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityProviderRegisterCallbackWithInstance(const char* instanceId, ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityProviderCallbacksWithInstance* callbacks)
 ```
 
@@ -320,7 +319,7 @@ Registers accessibility provider callback functions for third-party platforms in
 
 ### OH_ArkUI_SendAccessibilityAsyncEvent()
 
-```
+```c
 void OH_ArkUI_SendAccessibilityAsyncEvent(ArkUI_AccessibilityProvider* provider, ArkUI_AccessibilityEventInfo* eventInfo, void (*callback)(int32_t errorCode))
 ```
 
@@ -342,7 +341,7 @@ Proactively sends an event to notify the accessibility service.
 
 ### OH_ArkUI_AddAndGetAccessibilityElementInfo()
 
-```
+```c
 ArkUI_AccessibilityElementInfo* OH_ArkUI_AddAndGetAccessibilityElementInfo(ArkUI_AccessibilityElementInfoList* list)
 ```
 
@@ -368,7 +367,7 @@ Adds an **ArkUI_AccessibilityElementInfo** member to the specified list and retu
 
 ### OH_ArkUI_AccessibilityElementInfoSetElementId()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetElementId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t elementId)
 ```
 
@@ -384,7 +383,7 @@ Sets the component ID for an **ArkUI_AccessibilityElementInfo** object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to an **ArkUI_AccessibilityElementInfo** instance.|
+| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to an **ArkUI_AccessibilityElementInfo** object.|
 | int32_t elementId | Unique ID of the accessibility element.|
 
 **Returns**
@@ -395,7 +394,7 @@ Sets the component ID for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetParentId()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetParentId(ArkUI_AccessibilityElementInfo* elementInfo, int32_t parentId)
 ```
 
@@ -422,7 +421,7 @@ Sets the parent ID for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetComponentType()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetComponentType(ArkUI_AccessibilityElementInfo* elementInfo, const char* componentType)
 ```
 
@@ -449,7 +448,7 @@ Sets the component type for the **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetContents()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetContents(ArkUI_AccessibilityElementInfo* elementInfo, const char* contents)
 ```
 
@@ -476,7 +475,7 @@ Sets the component text content for the **ArkUI_AccessibilityElementInfo** objec
 
 ### OH_ArkUI_AccessibilityElementInfoSetHintText()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetHintText(ArkUI_AccessibilityElementInfo* elementInfo, const char* hintText)
 ```
 
@@ -503,7 +502,7 @@ Sets the hint text for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityText()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityText(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityText)
 ```
 
@@ -530,7 +529,7 @@ Sets the accessibility text for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityDescription(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityDescription)
 ```
 
@@ -556,7 +555,7 @@ Sets the accessibility description for an **ArkUI_AccessibilityElementInfo** obj
 
 ### OH_ArkUI_AccessibilityElementInfoSetChildNodeIds()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetChildNodeIds(ArkUI_AccessibilityElementInfo* elementInfo, int32_t childCount, int64_t* childNodeIds)
 ```
 
@@ -583,7 +582,7 @@ Sets the child node count and IDs for an **ArkUI_AccessibilityElementInfo** obje
 
 ### OH_ArkUI_AccessibilityElementInfoSetOperationActions()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetOperationActions(ArkUI_AccessibilityElementInfo* elementInfo,int32_t operationCount, ArkUI_AccessibleAction* operationActions)
 ```
 
@@ -612,7 +611,7 @@ Sets the supported operations for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetScreenRect()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetScreenRect(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRect* screenRect)
 ```
 
@@ -639,7 +638,7 @@ Sets the screen coordinates for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetCheckable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetCheckable(ArkUI_AccessibilityElementInfo* elementInfo, bool checkable)
 ```
 
@@ -666,7 +665,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object is checkable.
 
 ### OH_ArkUI_AccessibilityElementInfoSetChecked()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetChecked(ArkUI_AccessibilityElementInfo* elementInfo, bool checked)
 ```
 
@@ -693,7 +692,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object is checked.
 
 ### OH_ArkUI_AccessibilityElementInfoSetFocusable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetFocusable(ArkUI_AccessibilityElementInfo* elementInfo, bool focusable)
 ```
 
@@ -720,7 +719,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object is focusable.
 
 ### OH_ArkUI_AccessibilityElementInfoSetFocused()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool isFocused)
 ```
 
@@ -747,7 +746,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object is focused.
 
 ### OH_ArkUI_AccessibilityElementInfoSetVisible()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetVisible(ArkUI_AccessibilityElementInfo* elementInfo, bool isVisible)
 ```
 
@@ -773,13 +772,13 @@ Sets whether an **ArkUI_AccessibilityElementInfo** object is visible.
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityFocused(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityFocused)
 ```
 
 **Description**
 
-Sets the accessibility focus state of an **ArkUI_AccessibilityElementInfo** object.
+Sets whether the element is focused for accessibility purposes for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -799,7 +798,7 @@ Sets the accessibility focus state of an **ArkUI_AccessibilityElementInfo** obje
 
 ### OH_ArkUI_AccessibilityElementInfoSetSelected()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetSelected(ArkUI_AccessibilityElementInfo* elementInfo, bool selected)
 ```
 
@@ -826,7 +825,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object is selected.
 
 ### OH_ArkUI_AccessibilityElementInfoSetClickable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool clickable)
 ```
 
@@ -853,7 +852,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object is clickable.
 
 ### OH_ArkUI_AccessibilityElementInfoSetLongClickable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetLongClickable(ArkUI_AccessibilityElementInfo* elementInfo, bool longClickable)
 ```
 
@@ -880,7 +879,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object supports long-press g
 
 ### OH_ArkUI_AccessibilityElementInfoSetEnabled()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetEnabled(ArkUI_AccessibilityElementInfo* elementInfo, bool isEnabled)
 ```
 
@@ -907,7 +906,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object is enabled.
 
 ### OH_ArkUI_AccessibilityElementInfoSetIsPassword()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetIsPassword(ArkUI_AccessibilityElementInfo* elementInfo, bool isPassword)
 ```
 
@@ -934,7 +933,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object is a password.
 
 ### OH_ArkUI_AccessibilityElementInfoSetScrollable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetScrollable(ArkUI_AccessibilityElementInfo* elementInfo, bool scrollable)
 ```
 
@@ -961,7 +960,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object is scrollable.
 
 ### OH_ArkUI_AccessibilityElementInfoSetEditable()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetEditable(ArkUI_AccessibilityElementInfo* elementInfo, bool editable)
 ```
 
@@ -988,14 +987,14 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object is editable.
 
 ### OH_ArkUI_AccessibilityElementInfoSetIsHint()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetIsHint(ArkUI_AccessibilityElementInfo* elementInfo, bool isHint)
 ```
 
 **Description**
 
 
-Sets whether the **ArkUI_AccessibilityElementInfo** object represents a hint.
+Sets the hint status for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1015,7 +1014,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object represents a hint.
 
 ### OH_ArkUI_AccessibilityElementInfoSetRangeInfo()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetRangeInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleRangeInfo* rangeInfo)
 ```
 
@@ -1031,7 +1030,7 @@ Sets the range information for an **ArkUI_AccessibilityElementInfo** object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to an **ArkUI_AccessibilityElementInfode** instance.|
+| [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
 | [ArkUI_AccessibleRangeInfo](capi-arkui-accessibility-arkui-accessiblerangeinfo.md)* rangeInfo | Current value, maximum value, and minimum value of the specific component.|
 
 **Returns**
@@ -1042,14 +1041,14 @@ Sets the range information for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetGridInfo()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetGridInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridInfo* gridInfo)
 ```
 
 **Description**
 
 
-Sets the grid layout information for an **ArkUI_AccessibilityElementInfo** object.
+Sets the grid information for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1069,14 +1068,14 @@ Sets the grid layout information for an **ArkUI_AccessibilityElementInfo** objec
 
 ### OH_ArkUI_AccessibilityElementInfoSetGridItemInfo()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetGridItemInfo(ArkUI_AccessibilityElementInfo* elementInfo, ArkUI_AccessibleGridItemInfo* gridItem)
 ```
 
 **Description**
 
 
-Sets the grid item information for an **ArkUI_AccessibilityElementInfo** object.
+Sets a single-item container within a grid container for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1096,14 +1095,14 @@ Sets the grid item information for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextStart(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextStart)
 ```
 
 **Description**
 
 
-Sets the start position of selected text for an **ArkUI_AccessibilityElementInfo** object.
+Sets the start position of the selected text for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1123,14 +1122,14 @@ Sets the start position of selected text for an **ArkUI_AccessibilityElementInfo
 
 ### OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetSelectedTextEnd(ArkUI_AccessibilityElementInfo* elementInfo, int32_t selectedTextEnd)
 ```
 
 **Description**
 
 
-Sets the end position of selected text for an **ArkUI_AccessibilityElementInfo** object.
+Sets the end position of the selected text for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1150,14 +1149,14 @@ Sets the end position of selected text for an **ArkUI_AccessibilityElementInfo**
 
 ### OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetCurrentItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t currentItemIndex)
 ```
 
 **Description**
 
 
-Sets the current item index for an **ArkUI_AccessibilityElementInfo** object.
+Sets the position information of the currently focused component for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1177,14 +1176,14 @@ Sets the current item index for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetStartItemIndex()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetStartItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t startItemIndex)
 ```
 
 **Description**
 
 
-Sets the start item index for an **ArkUI_AccessibilityElementInfo** object.
+Sets the position information of the first element displayed on the current screen for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1204,14 +1203,14 @@ Sets the start item index for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetEndItemIndex()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetEndItemIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t endItemIndex)
 ```
 
 **Description**
 
 
-Sets the end item index for an **ArkUI_AccessibilityElementInfo** object.
+Sets the position information of the last element displayed on the current screen for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1231,14 +1230,14 @@ Sets the end item index for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetItemCount()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetItemCount(ArkUI_AccessibilityElementInfo* elementInfo, int32_t itemCount)
 ```
 
 **Description**
 
 
-Sets the total count of items for an **ArkUI_AccessibilityElementInfo** object.
+Sets the total number of elements of a specific component for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1258,14 +1257,14 @@ Sets the total count of items for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOffset(ArkUI_AccessibilityElementInfo* elementInfo, int32_t offset)
 ```
 
 **Description**
 
 
-Sets the offset for an **ArkUI_AccessibilityElementInfo** object.
+Sets the scrolling pixel offset of the content area relative to the top coordinate of the element for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1275,7 +1274,7 @@ Sets the offset for an **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| int32_t offset | Scroll offset, in pixels, of the content area relative to the element's top coordinate. Applicable to scrollable components such as **List** and **Grid**.|
+| int32_t offset | Scrolling pixel offset of the content area relative to the top coordinate of the element for scrollable controls, such as [List](./arkui-ts/ts-container-list.md) and [Grid](./arkui-ts/ts-container-grid.md).|
 
 **Returns**
 
@@ -1285,7 +1284,7 @@ Sets the offset for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityGroup(ArkUI_AccessibilityElementInfo* elementInfo, bool accessibilityGroup)
 ```
 
@@ -1312,7 +1311,7 @@ Sets whether the **ArkUI_AccessibilityElementInfo** object should be treated as 
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityLevel(ArkUI_AccessibilityElementInfo* elementInfo, const char* accessibilityLevel)
 ```
 
@@ -1339,14 +1338,14 @@ Sets the accessibility level for the **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetZIndex()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetZIndex(ArkUI_AccessibilityElementInfo* elementInfo, int32_t zIndex)
 ```
 
 **Description**
 
 
-Sets the z-index for an **ArkUI_AccessibilityElementInfo** object.
+Sets the z-order of the component for the **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1356,7 +1355,7 @@ Sets the z-index for an **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| int32_t zIndex | Z-order of the component, used to control the position of the component along the z-axis perpendicular to the screen. Required for UITest.|
+| int32_t zIndex | Z-order of the component, used to control the position of the component along the z-axis perpendicular to the screen. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md).|
 
 **Returns**
 
@@ -1366,7 +1365,7 @@ Sets the z-index for an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetAccessibilityOpacity(ArkUI_AccessibilityElementInfo* elementInfo, float opacity)
 ```
 
@@ -1383,7 +1382,7 @@ Sets the opacity for the **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| float opacity | Opacity. The value ranges from 0 to 1, where **1** indicates opaque and **0** indicates completely transparent. Required for UITest.|
+| float opacity | Opacity. The value ranges from 0 to 1, where **1** indicates opaque and **0** indicates completely transparent. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md).|
 
 **Returns**
 
@@ -1393,7 +1392,7 @@ Sets the opacity for the **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetBackgroundColor()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundColor(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundColor)
 ```
 
@@ -1410,7 +1409,7 @@ Sets the background color for the **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| const char* backgroundColor | Background color. Required for UITest.|
+| const char* backgroundColor | Background color. The value is in the **#ARGB** format. For example, the value for non-transparent white is **"#FFFFFFFF"**. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md).|
 
 **Returns**
 
@@ -1420,7 +1419,7 @@ Sets the background color for the **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetBackgroundImage()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetBackgroundImage(ArkUI_AccessibilityElementInfo* elementInfo, const char* backgroundImage)
 ```
 
@@ -1437,7 +1436,7 @@ Sets the background image for the **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| const char* backgroundImage | Background image. Required for UITest.|
+| const char* backgroundImage | Background image. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md).|
 
 **Returns**
 
@@ -1447,7 +1446,7 @@ Sets the background image for the **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetBlur()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetBlur(ArkUI_AccessibilityElementInfo* elementInfo, const char* blur)
 ```
 
@@ -1464,7 +1463,7 @@ Sets the blur value for the **ArkUI_AccessibilityElementInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityElementInfo](capi-arkui-accessibility-arkui-accessibilityelementinfo.md)* elementInfo | Pointer to the target **ArkUI_AccessibilityElementInfo** object.|
-| const char* blur | Blur value. Required for UITest.|
+| const char* blur | Blur value. This parameter is required for [UiTest](../apis-test-kit/js-apis-uitest.md).|
 
 **Returns**
 
@@ -1474,14 +1473,14 @@ Sets the blur value for the **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityElementInfoSetHitTestBehavior(ArkUI_AccessibilityElementInfo* elementInfo, const char* hitTestBehavior)
 ```
 
 **Description**
 
 
-Sets the hit test mode for the **ArkUI_AccessibilityElementInfo** object.
+Sets the response logic and node blocking rules for the hit test for an **ArkUI_AccessibilityElementInfo** object.
 
 **Since**: 13
 
@@ -1501,14 +1500,14 @@ Sets the hit test mode for the **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_CreateAccessibilityElementInfo()
 
-```
+```c
 ArkUI_AccessibilityElementInfo* OH_ArkUI_CreateAccessibilityElementInfo(void)
 ```
 
 **Description**
 
 
-Creates an **ArkUI_AccessibilityElementInfo** object, which must be destroyed with **OH_ArkUI_DestroyAccessibilityElementInfo**.
+Creates an **ArkUI_AccessibilityElementInfo** object, which must be destroyed with **OH_ArkUI_DestoryAccessibilityElementInfo**.
 
 **Since**: 13
 
@@ -1520,7 +1519,7 @@ Creates an **ArkUI_AccessibilityElementInfo** object, which must be destroyed wi
 
 ### OH_ArkUI_DestoryAccessibilityElementInfo()
 
-```
+```c
 void OH_ArkUI_DestoryAccessibilityElementInfo(ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -1540,7 +1539,7 @@ Destroys an **ArkUI_AccessibilityElementInfo** object.
 
 ### OH_ArkUI_CreateAccessibilityEventInfo()
 
-```
+```c
 ArkUI_AccessibilityEventInfo* OH_ArkUI_CreateAccessibilityEventInfo(void)
 ```
 
@@ -1559,7 +1558,7 @@ Creates an **ArkUI_AccessibilityEventInfo** object, which must be destroyed with
 
 ### OH_ArkUI_DestoryAccessibilityEventInfo()
 
-```
+```c
 void OH_ArkUI_DestoryAccessibilityEventInfo(ArkUI_AccessibilityEventInfo* eventInfo)
 ```
 
@@ -1579,7 +1578,7 @@ Destroys an **ArkUI_AccessibilityEventInfo** object.
 
 ### OH_ArkUI_AccessibilityEventSetEventType()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityEventSetEventType(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityEventType eventType)
 ```
 
@@ -1606,14 +1605,14 @@ Sets the event type for an **ArkUI_AccessibilityEventInfo** object.
 
 ### OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityEventSetTextAnnouncedForAccessibility(ArkUI_AccessibilityEventInfo* eventInfo,  const char* textAnnouncedForAccessibility)
 ```
 
 **Description**
 
 
-Sets the announcement text for an **ArkUI_AccessibilityEventInfo** object.
+Sets the content for auto-broadcasting for the **ArkUI_AccessibilityEventInfo** object.
 
 **Since**: 13
 
@@ -1623,7 +1622,7 @@ Sets the announcement text for an **ArkUI_AccessibilityEventInfo** object.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityEventInfo](capi-arkui-accessibility-arkui-accessibilityeventinfo.md)* eventInfo | Pointer to an **ArkUI_AccessibilityEventInfo** object.|
-| const char* textAnnouncedForAccessibility | Announcement text.|
+| const char* textAnnouncedForAccessibility | Content for auto-broadcasting.|
 
 **Returns**
 
@@ -1633,7 +1632,7 @@ Sets the announcement text for an **ArkUI_AccessibilityEventInfo** object.
 
 ### OH_ArkUI_AccessibilityEventSetRequestFocusId()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityEventSetRequestFocusId(ArkUI_AccessibilityEventInfo* eventInfo,  int32_t requestFocusId)
 ```
 
@@ -1660,7 +1659,7 @@ Sets the focus request ID for an **ArkUI_AccessibilityEventInfo** object.
 
 ### OH_ArkUI_AccessibilityEventSetElementInfo()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityEventSetElementInfo(ArkUI_AccessibilityEventInfo* eventInfo,  ArkUI_AccessibilityElementInfo* elementInfo)
 ```
 
@@ -1687,7 +1686,7 @@ Sets the element information for an **ArkUI_AccessibilityEventInfo** object.
 
 ### OH_ArkUI_FindAccessibilityActionArgumentByKey()
 
-```
+```c
 int32_t OH_ArkUI_FindAccessibilityActionArgumentByKey(ArkUI_AccessibilityActionArguments* arguments, const char* key, char** value)
 ```
 

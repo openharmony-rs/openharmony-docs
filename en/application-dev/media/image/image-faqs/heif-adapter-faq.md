@@ -14,7 +14,7 @@ Most mainstream HEIF images currently use HEVC (H.265) encoding, which is also t
 
 The system has supported HEIF image encoding, decoding, and display since API version 12. If your application uses system modules such as Image Kit, ArkUI **Image** component, or ArkWeb to implement image processing, you can handle HEIF images in the same way as JPEG, PNG, and other formats.
 
-For details about how to decode HEIF images, see [Using ImageSource to Decode Images](../image-decoding.md) and [Using Image_NativeModule to Decode Images](../image-source-c.md).
+For details about how to decode HEIF images, see [Image Decoding Guide (ArkTS)](../image-decoding.md) and [Image Decoding Guide (C/C++)](../image-source-c.md).
 
 For details about how to display HEIF images, see [Image Display (Image)](../../../ui/arkts-graphics-display.md).
 
@@ -56,7 +56,9 @@ The sample code is as follows:
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { image } from '@kit.ImageKit';
-import { promptAction } from '@kit.ArkUI';
+import { PromptAction } from '@kit.ArkUI';
+
+const promptAction = new PromptAction();
 
 export async function reEncoding(context : Context, fd : number) {
   // Obtain the FD of the image file and create an ImageSource.

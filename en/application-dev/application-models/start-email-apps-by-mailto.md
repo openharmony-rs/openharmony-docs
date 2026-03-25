@@ -91,7 +91,6 @@ struct Index {
 }
 ```
 
-
 ## Developing a Target Application
 
 1. To be started by other applications in mailto mode, an application must declare its mailto configuration in the [module.json5 file](../quick-start/module-configuration-file.md).

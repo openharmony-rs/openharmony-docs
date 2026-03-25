@@ -1,10 +1,10 @@
 # Print_PageSize
-<!--Kit: Basic Services Kit-->  
-<!--Subsystem: Print--> 
-<!--Owner: @guoshengbang--> 
-<!--Designer: @Q-haosu-->   
-<!--Tester: @Q-haosu--> 
-<!--Adviser: @fang-jinxu-->
+ <!--Kit: Basic Services Kit-->   
+ <!--Subsystem: Print-->  
+ <!--Owner: @guoshengbang-->  
+ <!--Designer: @Q-haosu-->    
+ <!--Tester: @Q-haosu-->  
+ <!--Adviser: @fang-jinxu-->
 
 ```c
 typedef struct {...} Print_PageSize
@@ -12,7 +12,7 @@ typedef struct {...} Print_PageSize
 
 ## 概述
 
-纸张大小信息。
+表示纸张尺寸信息。
 
 **起始版本：** 12
 
@@ -24,11 +24,10 @@ typedef struct {...} Print_PageSize
 
 ### 成员变量
 
-| 名称 | 描述 |
-| -- | -- |
-| char *id | 纸张id。 |
-| char *name | 纸张名称。 |
-| uint32_t width | 纸张宽度。 |
+| 名称            | 描述       |
+| --------------- | ---------- |
+| char *id        | 纸张 ID。  |
+| char *name      | 纸张名称。 |
+| uint32_t width  | 纸张宽度。 |
 | uint32_t height | 纸张高度。 |
-
 

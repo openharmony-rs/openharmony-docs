@@ -4,7 +4,7 @@
 <!--Owner: @lushi871202-->
 <!--Designer: @lushi871202-->
 <!--Tester: @sally__-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 This topic describes tools for inspecting the UI hierarchy and profiling performance, designed to enhance development efficiency and optimize the developer experience.
 
@@ -20,9 +20,10 @@ The following parameters are available.
 - **r**: recursively displays element IDs of custom components and their child components from the root node. By default, only root node information is shown.
 - **viewId**: displays information for a specific custom component using its view ID.
 - **stateVariable**: displays state variable information, including associated components and synchronization objects. This command currently does not support recursive output (**r**).
-- **registerdElementIds**: displays element IDs of the current custom component.
+- **registeredElementIds**: displays element IDs of the current custom component.
 
 Example:
+
 The following example demonstrates a typical two-layer nested component structure using [\@State](./state-management/arkts-state.md) and [\@Link](./state-management/arkts-link.md) decorators. The commands above can be combined to display information such as the frontend component tree, state variables, and components affected by state variables.
 
 ```ts
@@ -66,15 +67,16 @@ struct GrandChild {
 ```
 
 Step 1: Obtain the ID of the currently active window.
-```
+``` shell
 hdc shell hidumper -s WindowManagerService -a '-a'
 ```
 
 Step 2: Execute commands to inspect state variable information.
+
 Assuming that the active window ID is 90, use the following commands:
 - Command 1: Recursively inspect all custom components from the root node:
 
-  ```
+  ``` shell
   hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -r'
   ```
   
@@ -89,7 +91,7 @@ Assuming that the active window ID is 90, use the following commands:
        - **variable assignment affects elmtIds**: components refreshed when the state variable changes, for example, **Text[6]**.
        - **Dependent elements**: components associated with the state variable and its synchronization objects.
    - **Registered Element IDs**: custom components and their child components declared in **build()**.
-   - **Dirty Registered Element IDs**: list of dirty nodes marked for re-rendering within the custom component. When a state variable changes, its associated components are marked as "dirty" and scheduled for re-rendering in the next rendering frame. These dirty components are re-rendered and the list is cleared during frame processing. During manual dump operations, the **Dirty Registered Element IDs** list typically appears empty because, given the frame intervals of most current devices, it is difficult to capture the dirty node list between frames.
+   - **Dirty Registered Element IDs**: list of dirty nodes marked for re-rendering within the custom component. When a state variable changes, its associated components are marked as "dirty" and scheduled for re-rendering in the next rendering frame. These dirty components are re-rendered and the list is cleared during frame processing. During manual dump operations, the **Dirty Registered Element IDs** list is typically empty because, given the frame intervals of most current devices, it is difficult to capture the dirty node list between two consecutive frames.
   ```ts
   --------------------ViewPUInfo--------------------
   [-dumpAll, viewId=4, isRecursive=true]
@@ -142,7 +144,7 @@ Assuming that the active window ID is 90, use the following commands:
   Total: 0
   ```
 - Command 2: Print state variable information for a specific custom component, for example, component ID 7:
-  ```
+  ``` shell
   hdc shell hidumper -s WindowManagerService -a '-w 90 -jsdump -dumpAll -viewId=7'
   ```
   The output is as follows.
@@ -204,7 +206,7 @@ Step 2: After recording, the ArkUI State lane shows trace points for state varia
 
 **Figure 1** ArkUI State lane recording process
 
-![UI-StateProfier1](figures/UI-StateProfier1.gif)
+![UI-StateProfiler1](figures/UI-StateProfiler1.gif)
 
 Step 3: Select a trace point to view triggering of component re-rendering and the time consumed for creation, measurement, and layout.
 

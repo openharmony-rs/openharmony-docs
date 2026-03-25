@@ -10,9 +10,15 @@
 >
 > The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
+## Modules to Import
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+```
+
 ## AVSessionType<sup>10+<sup>
 
-type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call'
+type AVSessionType = 'audio' | 'video' | 'voice_call' | 'video_call' | 'photo'
 
 Defines the session type supported by the session.
 
@@ -28,6 +34,7 @@ You can use the strings listed in the following table.
 | 'video' | Video session.|
 | 'voice_call'<sup>11+</sup> | Voice call.|
 | 'video_call'<sup>12+</sup> | Video call.|
+| 'photo'<sup>22+</sup> |  Image.|
 
 ## AVCastControlCommandType<sup>10+</sup>
 
@@ -58,7 +65,7 @@ Defines the commands that can be sent by a cast controller.
 
 ## ExtraInfo<sup>18+</sup>
 
-type ExtraInfo = Record\<string, Object\>  
+type ExtraInfo = {[key: string]: Object;} 
 
 Defines the custom media packet set by the provider.
 
@@ -66,7 +73,7 @@ Defines the custom media packet set by the provider.
 
 | Type                               | Description                         |
 | ----------------------------------- | ----------------------------- |
-|Record\<string, Object\>| **key** specifies the remote distributed event type. Currently, the following event types are supported:<br>**AUDIO_GET_VOLUME**: obtains the volume of the remote device.<br>**AUDIO_GET_AVAILABLE_DEVICES**: obtains all remote devices that can be connected.<br>**AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO**: obtains the actual remote audio device.<br>The provider returns the corresponding media packet object based on the event type.|
+|{[key: string]: Object;}| **key** specifies the remote distributed event type. Currently, the following event types are supported:<br>**AUDIO_GET_VOLUME**: obtains the volume of the remote device.<br>**AUDIO_GET_AVAILABLE_DEVICES**: obtains all remote devices that can be connected.<br>**AUDIO_GET_PREFERRED_OUTPUT_DEVICE_FOR_RENDERER_INFO**: obtains the actual remote audio device.<br>The provider returns the corresponding media packet object based on the event type.|
 
 ## KeyRequestCallback<sup>12+</sup>
 

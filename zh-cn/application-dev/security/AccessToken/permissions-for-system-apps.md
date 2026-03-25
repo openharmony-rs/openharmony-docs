@@ -17,6 +17,42 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
+## ohos.permission.RUNNING_LOCK
+
+允许应用获取运行锁，保证应用在后台的持续运行。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：7
+
+## ohos.permission.SET_WALLPAPER
+
+允许应用设置壁纸。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：7
+
+## ohos.permission.MODIFY_AUDIO_SETTINGS
+
+允许应用修改音频设置。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**起始版本**：8
+
 ## ohos.permission.RECEIVER_STARTUP_COMPLETED
 
 允许应用订阅开机广播。
@@ -3992,7 +4028,7 @@
 
 **ACL使能**：true
 
-**起始版本**：12
+**起始版本**：13
 
 ## ohos.permission.START_RESTORE_NOTIFICATION
 
@@ -4017,18 +4053,6 @@
 **ACL使能**：true
 
 **起始版本**：14
-
-## ohos.permission.ACCESS_MCU_LOG_DIR
-
-允许系统应用访问MCU（microcontroller unit）日志目录。
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**ACL使能**：true
-
-**起始版本**：12
 
 ## ohos.permission.GRANT_SHORT_TERM_WRITE_MEDIAVIDEO
 
@@ -4379,6 +4403,7 @@
 允许扩展外设驱动访问USBSerial DDK接口开发USB Serial扩展外设驱动。
 
 支持以下类型的外设扩展驱动开发：
+
 外设以USB总线接入主机，且满足：
 
 1. 外设InterfaceClass为通信设备控制类 (0x02)、InterfaceSubClass遵循ACMSubClass模型(0x02)。
@@ -4734,7 +4759,7 @@
 
 允许应用从文件管理目录读取录音文件。
 
-**权限级别**：system_core
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -4748,7 +4773,7 @@
 
 允许应用向文件管理目录写入录音文件。
 
-**权限级别**：system_core
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -5257,3 +5282,19 @@
 **ACL使能**：true
 
 **起始版本**：18
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
+ 	
+允许系统应用拉起其他应用卡片添加到桌面的预览面板。
+
+获取该权限后，应用可以拉起其他应用卡片加桌预览面板，以引导用户将希望分发的卡片添加到桌面。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
+**起始版本**：20

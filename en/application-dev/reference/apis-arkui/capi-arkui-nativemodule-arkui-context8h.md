@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_Context* ArkUI_ContextHandle
+```
+
 ## Overview
 
 Defines the handle to the ArkUI native UI context.

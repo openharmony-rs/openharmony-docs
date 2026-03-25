@@ -90,7 +90,7 @@ struct ComponentPage {
 
 ## 布局回调
 
-通过[@ohos.arkui.arkui.inspector(布局回调)](../reference/apis-arkui/js-apis-arkui-inspector.md)提供注册组件布局和组件绘制完成的回调通知能力。
+通过[@ohos.arkui.inspector (布局回调)](../reference/apis-arkui/js-apis-arkui-inspector.md)提供注册组件布局和组件绘制完成的回调通知能力。
 
 下述示例，展示了布局回调的基本用法。
 
@@ -106,7 +106,7 @@ struct ImageExample {
     Column() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
         Row({ space: 5 }) {
-          // 可以替换成本地存在的图片
+          // 请将$r('app.media.startIcon')替换为实际资源文件
           Image($r('app.media.startIcon'))
             .width(110)
             .height(110)

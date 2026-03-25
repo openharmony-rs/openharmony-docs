@@ -52,7 +52,7 @@
 
 > **说明：**
 >
-> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[API文档](../../reference/apis-asset-store-kit/js-apis-asset.md)。
+> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[@ohos.security.asset (关键资产存储服务)](../../reference/apis-asset-store-kit/js-apis-asset.md)。
 >
 > 在指定群组中查询一条关键资产明文的使用示例详见[查询单条群组关键资产明文](asset-js-group-access-control.md#查询单条群组关键资产明文)，在指定群组中查询一条关键资产属性的使用示例详见[查询单条群组关键资产属性](asset-js-group-access-control.md#查询单条群组关键资产属性)。
 > 
@@ -153,7 +153,7 @@ export async function queryAssetAttribute(): Promise<string> {
 
 ### 批量查询关键资产属性
 
-批量查询标签1为demo_label的关键资产属性，从第5条符合条件的结果开始返回，共返回10条，结果按DATA_LABEL_NORMAL_1属性内容排序。
+批量查询标签为demo_label的关键资产属性，共返回10条符合条件的查询结果，结果按DATA_LABEL_NORMAL_1属性内容排序。
 
 <!-- @[query_batch_attributes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_batch_attrs.ets) -->
 

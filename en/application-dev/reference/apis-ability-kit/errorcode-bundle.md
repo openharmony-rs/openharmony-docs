@@ -27,9 +27,9 @@ The specified bundle name does not exist.
 1. Check whether the spelling of the bundle name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check the command output. If the bundle is not installed, an error is reported.
     ```shell
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700002 Module Name Does Not Exist
 
@@ -47,9 +47,9 @@ The specified module name does not exist.
 1. Check whether the spelling of the module name is correct.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether the module name exists in the list of the **hapModuleNames** field in the output. If not, the module is not installed.
     ```shell
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700003 Ability Name Does Not Exist
 
@@ -69,9 +69,9 @@ The specified ability name does not exist.
 2. Run the [dump command](../../tools/bm-tool.md#dump), and check whether **abilityInfos** under the **hapModuleInfos** field in the output contains an entry where the name equals this ability name. If no such entry is found, the ability name does not exist.
 3. Run the [dump command](../../tools/bm-tool.md#dump), and check the **hapModuleNames** field in the output. If the specified module name is not in the list, the application has not installed the module, and the ability under that module also does not exist.
     ```shell
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell bm dump -n com.xxx.demo
-```
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell bm dump -n com.xxx.demo
+    ```
 
 ## 17700004 User ID Does Not Exist
 
@@ -201,10 +201,10 @@ Failed to install the HAPs because they have different configuration information
 Calling the [install](../apis-ability-kit/js-apis-installer-sys.md#bundleinstallerinstall) API of the installer module to install the bundle fails because the HAPs have different configuration information. When [BundleInstaller.install](js-apis-installer-sys.md#bundleinstallerinstall) throws this error code, an internal error code, for example, [8519687], is added to the error message to pinpoint the reason for the error.
 
 **Possible Causes**<br>
-The fields under **app** in the profiles of these HAPs are inconsistent.
+The field information or signature information under the **app** tag in the configuration files of multiple HAP bundles is inconsistent.
 
 **Solution**<br>
-Check whether the fields under **app** are the same.
+Check whether the field information under the **app** tag in the configuration files of multiple HAP bundles is consistent or whether the [signingConfigs](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile-app#section153288223224) configuration of the project is the same across all bundles.
 
 ## 17700016 Bundle Installation Failure Due to Insufficient System Disk Space
 
@@ -236,13 +236,13 @@ Ensure that the version of the bundle to install is not earlier than the version
 
 1. To query the version of an existing application, run [the dump command](../../dfx/hdc.md#environment-setup). The output contains the version code of the installed application. If multiple version codes are displayed, select the one greater than 0. If no result is displayed, the application is not installed.
     ```shell
-# Replace **com.xxx.demo** with the actual bundle name.
-hdc shell "bm dump -n com.xxx.demo |grep versionCode"
-```
+    # Replace **com.xxx.demo** with the actual bundle name.
+    hdc shell "bm dump -n com.xxx.demo |grep versionCode"
+    ```
 
 2. To query the version of a newly installed application, use DevEco Studio to open the HAP or HSP file and check the value of **versionCode** in the **module.json** file.
 
-![Example](figures/hap_verisonCode.PNG)
+    ![Example](figures/hap_versionCode.PNG)
 
 ## 17700018 Bundle Installation Failure Because the Dependent Module Does Not Exist
 
@@ -491,7 +491,7 @@ An API is called to obtain the overlayModuleInfo object based on the target modu
 The specified module is configured with the overlay feature.
 
 **Solution**<br>
-Check whether the specified module is configured with the overlay feature.
+Check whether the module is configured with the overlay feature.
 <!--Del-->
 ## 17700035 Application Contains Only Modules with the Overlay Feature
 
@@ -706,8 +706,7 @@ Failed to install the HAP because an enterprise normal/MDM bundle cannot be inst
 The current device prohibits the installation of enterprise MDM applications or standard enterprise applications.
 
 **Possible Causes**<br>
-The current device does not allow the installation of applications with the following two distribution types in the [profile signing file](../../security/app-provision-structure.md): **enterprise_mdm** (enterprise MDM application) and **enterprise_normal** (standard enterprise application).
-For details about the distribution types, see [ApplicationInfo.appDistributionType](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
+The current device does not allow the installation of applications with the following two distribution types in the [profile signing file](../../security/app-provision-structure.md): **enterprise_mdm** (enterprise MDM application) and **enterprise_normal** (standard enterprise application). For details about the distribution types, see [ApplicationInfo.appDistributionType](../../reference/apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1).
 
 **Solution**<br>
 Change the distribution type in the profile signing file.
@@ -1070,7 +1069,7 @@ The source paths are invalid.
 3. None of the paths can be resolved to the intended location.
 
 **Solution**<br>
-Pass in a valid path that does not include the special sequence **../**.
+Pass a valid path that does not include the special sequence **../**.
 
 ## 17700081 Invalid Destination Path
 
@@ -1086,7 +1085,7 @@ The destination path is invalid.
 3. The destination path cannot be resolved to the intended location.
 
 **Solution**<br>
-Pass in a valid path that does not include the special sequence **../**.
+Pass a valid path that does not include the special sequence **../**.
 
 ## 17700082 User Authentication Failed
 

@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> - 本模块首批接口从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
 > - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimedia.image (图片处理)](arkts-apis-image.md)。
 
@@ -20,7 +20,7 @@
 import { image } from '@kit.ImageKit';
 ```
 
-## DecodingOptions<sup>12+</sup>
+## DecodingOptions<sup>7+</sup>
 
 图像解码设置选项。
 
@@ -28,13 +28,13 @@ import { image } from '@kit.ImageKit';
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-**系统接口：** 该接口为系统接口
+**系统接口：** 该接口为系统接口。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
 | 名称               | 类型              | 只读 | 可选 | 说明             |
 | ----------------- | ----------------- | ---- | ---- | ---------------- |
-| resolutionQuality | [ResolutionQuality](#resolutionquality12) | 否   | 是   | 画质效果等级。 |
+| resolutionQuality<sup>12+</sup> | [ResolutionQuality](#resolutionquality12) | 否   | 是   | 画质效果等级。 |
 
 ## ResolutionQuality<sup>12+</sup>
 
@@ -114,5 +114,56 @@ async function CreatePictureTest(context: Context) {
   }).catch((error : BusinessError) => {
     console.error('Failed to pack the image. And the error is: ' + error);
   })
+}
+```
+
+## ImageSource<sup>6+</sup>
+
+ImageSource类，用于获取图片相关信息。
+
+在调用ImageSource的方法前，需要先通过[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource)构建一个ImageSource实例。
+
+ImageSource的所有方法均不支持并发调用。
+
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-apis-image-ImageSource.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+
+### isJpegProgressive<sup>22+</sup>
+
+isJpegProgressive(): Promise\<boolean>
+
+判断Jpeg图片是否是渐进式图片。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**返回值：**
+
+| 类型               | 说明              |
+| ------------------ | ----------------- |
+|Promise\<boolean> | Promise对象。返回true表示Jpeg图片是渐进式；返回false表示Jpeg图片不是渐进式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600201      | Bad source.|
+| 7600202      | Unsupported MIME type.|
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function IsJpegProgressive(imageSource : image.ImageSource) {
+  imageSource.isJpegProgressive()
+    .then((isProgressive: boolean) => {
+      console.info("isJpegProgressive: " + isProgressive);
+    }).catch((error: BusinessError) => {
+      console.error(`Failed to obtain the jpeg image isprogressive error.code is ${error.code}, message is ${error.message}`);
+    })
 }
 ```

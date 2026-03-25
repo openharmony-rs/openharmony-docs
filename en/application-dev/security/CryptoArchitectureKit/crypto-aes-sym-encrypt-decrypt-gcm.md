@@ -31,6 +31,7 @@ For details about the algorithm specifications, see [AES](crypto-sym-encrypt-dec
    - The output of **doFinal** may be **null**. Check the result before accessing the data.
 
 6. Obtain [GcmParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#gcmparamsspec).authTag as the authentication information for decryption.
+
    In GCM mode, the algorithm library supports only 16-byte **authTag**, which is used for initialization authentication during decryption. In the following example, **authTag** is of 16 bytes.
 
 **Decryption**

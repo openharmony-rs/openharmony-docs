@@ -29,15 +29,15 @@
 
 - 层级关系：系统音量是全局的，应用音量和音频流音量是局部的。
 
-  应用音量和音频流音量的调整范围受系统音量的限制。例如：系统媒体音量设置为50%，应用音量设置为100%，应用程序的最终输出音量只能达到50%。<br>
+  应用音量和音频流音量的调整范围受系统音量的限制。例如：系统媒体音量设置为50%，应用音量设置为100%，应用程序的最终输出音量只能达到50%（50% * 100%）。<br>
   音频流音量是对应用音量的更精细化控制。设置了应用音量的三方应用，还可以继续通过音频流音量对指定的音频流进行更加精细化的控制。
-- 协同关系：应用最终的输出音量是由系统音量、应用音量和音频流音量共同决定的。例如：系统媒体音量设置为50%，应用音量设置为50%，应用程序中对媒体音频流设置音频流音量为100%，则该音频流最终输出的音量为25%。
+- 协同关系：应用最终的输出音量是由系统音量、应用音量和音频流音量共同决定的。例如：系统媒体音量设置为50%，应用音量设置为50%，应用程序中对媒体音频流设置音频流音量为100%，则该音频流最终输出的音量为25%（50% * 50% * 100%）。
 
 OpenHarmony通过系统音量，应用音量和音频流音量协同的方式实现应用对音量的精确控制。
 
 ## 系统音量
 
-管理系统音量的接口由AudioVolumeManager提供，在使用之前，需要使用[getVolumeManager()](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9)获取AudioVolumeManager实例。
+管理系统音量的接口由AudioVolumeManager提供，在使用之前，需要使用[getVolumeManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9)获取AudioVolumeManager实例。
 
 通过AudioVolumeManager只能获取音量信息及监听音量变化，不能主动调节系统音量。如果应用需要调节系统音量，可以[使用音量面板调节系统音量](#使用音量面板调节系统音量)。
 
@@ -49,15 +49,6 @@ let audioVolumeManager = audioManager.getVolumeManager();
 ```
 
 ### 获取音量信息
-
-管理系统音量的接口由AudioVolumeManager提供，在使用之前，需要使用[getVolumeManager()](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9)获取AudioVolumeManager实例。
-
-```ts
-import { audio } from '@kit.AudioKit';
-
-let audioManager = audio.getAudioManager();
-let audioVolumeManager = audioManager.getVolumeManager();
-```
 
 使用[AudioVolumeManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeManager.md)获取指定流类型的音量信息。
 
@@ -85,9 +76,7 @@ audioVolumeManager.getMaxVolumeByStream(audio.StreamUsage.STREAM_USAGE_MUSIC);
 import { audio } from '@kit.AudioKit';
 
 audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC, (streamVolumeEvent: audio.StreamVolumeEvent) => {
-  console.info(`StreamUsagem: ${streamVolumeEvent.streamUsage} `);
-  console.info(`Volume level: ${streamVolumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${streamVolumeEvent.updateUi} `);
+  console.info(`Succeeded in using on function. StreamVolumeEvent: ${JSON.stringify(streamVolumeEvent)}`);
 });
 ```
 
@@ -101,11 +90,11 @@ audioVolumeManager.on('streamVolumeChange', audio.StreamUsage.STREAM_USAGE_MUSIC
 
 应用无法直接调节系统音量，可以通过系统音量面板，让用户通过界面操作来调节音量。当用户通过应用内音量面板调节音量时，系统会展示音量提示界面，显性地提示用户系统音量发生改变。
 
-系统提供了ArkTS组件AVVolumePanel（音量面板），应用可以创建该组件，具体样例和介绍请查看[AVVolumePanel参考文档](../../reference/apis-audio-kit/ohos-multimedia-avvolumepanel.md)。
+系统提供了ArkTS组件AVVolumePanel（音量面板），应用可以创建该组件，具体样例和介绍请查看参考文档：[avVolumePanel](../../reference/apis-audio-kit/ohos-multimedia-avvolumepanel.md)。
 
 ## 应用音量
 
-管理应用音量的接口由AudioVolumeManager提供，在使用之前，需要使用[getVolumeManager()](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9)获取AudioVolumeManager实例。
+管理应用音量的接口由AudioVolumeManager提供，在使用之前，需要使用[getVolumeManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioManager.md#getvolumemanager9)获取AudioVolumeManager实例。
 
 当[音量模式](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiovolumemode19)设置为APP_INDIVIDUAL时，可通过下面示例接口设置、查询应用音量。
 
@@ -119,19 +108,17 @@ let audioVolumeManager = audioManager.getVolumeManager();
 
 // 设置应用的音量（范围为0到100）。
 audioVolumeManager.setAppVolumePercentage(20).then(() => {
-  console.info(`set app volume success.`);
+  console.info('Succeeded in setting app volume percentage.');
 });
 
 // 查询应用音量。
 audioVolumeManager.getAppVolumePercentage().then((value: number) => {
-  console.info(`app volume is ${value}.`);
+  console.info(`Succeeded in getting app volume percentage, app volume is ${value}.`);
 });
 
 // 监听应用音量变化，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let appVolumeChangeCallback = (volumeEvent: audio.VolumeEvent) => {
-  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
-  console.info(`Volume level: ${volumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+  console.info(`Succeeded in using on or off function. VolumeEvent: ${JSON.stringify(volumeEvent)}`);
 };
 audioVolumeManager.on('appVolumeChange', appVolumeChangeCallback);
 audioVolumeManager.off('appVolumeChange', appVolumeChangeCallback);
@@ -150,29 +137,27 @@ let audioVolumeManager = audioManager.getVolumeManager();
 // 设置指定应用的音量（范围为0到100）。
 let volume: number = 20;    // 要设置的音量值。
 audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
-  console.info(`set app volume success.`);
+  console.info('Succeeded in setting app volume percentage for uid.');
 });
 
 // 获取指定应用的音量（范围为0到100）。
 audioVolumeManager.getAppVolumePercentageForUid(uid).then((value: number) => {
-  console.info(`app volume is ${value}.`);
+  console.info(`Succeeded in getting app volume percentage for uid, app volume is ${value}.`);
 });
 
 // 查询应用音量是否已静音。
 audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
-  console.info(`app muted state is ${value}.`);
+  console.info(`Succeeded in using isAppVolumeMutedForUid function, app muted state is ${value}.`);
 });
 
 // 设置应用静音状态。
 audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
-  console.info(`set app mute state success.`);
+  console.info('Succeeded in setting app volume muted for uid.');
 });
 
 // 监听应用音量变化，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let appVolumeChangeForUidCallback = (volumeEvent: audio.VolumeEvent) => {
-  console.info(`VolumeType of stream: ${volumeEvent.volumeType} `);
-  console.info(`Volume level: ${volumeEvent.volume} `);
-  console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
+  console.info(`Succeeded in using on or off function. VolumeEvent: ${JSON.stringify(volumeEvent)}`);
 };
 audioVolumeManager.on('appVolumeChangeForUid', uid, appVolumeChangeForUidCallback);
 audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
@@ -197,18 +182,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // 设置音频流音量。
 audioRenderer.setVolume(0.5).then(() => {  // 音量范围为[0.0-1.0]。
-  console.info('Invoke setVolume succeeded.');
+  console.info('Succeeded in setting volume.');
 }).catch((err: BusinessError) => {
-  console.error(`Invoke setVolume failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`Failed to set volume. Code: ${err.code}, message: ${err.message}`);
 });
 
 // 获取音频流音量。
 try {
   let value: number = audioRenderer.getVolume();
-  console.info(`Indicate that the volume is obtained ${value}.`);
+  console.info(`Succeeded in getting volume, volume is ${value}.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to obtain the volume, error ${error}.`);
+  console.error(`Failed to get volume. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -222,7 +207,7 @@ import { audio } from '@kit.AudioKit';
 
 // 监听活跃流变化，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let activeVolumeTypeChangeCallback = (volumeType: audio.AudioVolumeType) => {
-  console.info(`VolumeType of stream: ${volumeType} `);
+  console.info(`Succeeded in using on or off function. AudioVolumeType: ${JSON.stringify(volumeType)}`);
 };
 audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);

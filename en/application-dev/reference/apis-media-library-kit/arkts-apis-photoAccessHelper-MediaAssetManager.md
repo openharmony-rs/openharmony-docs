@@ -29,8 +29,8 @@ Requests an image. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
-- For the media assets saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
+- When this API is called in picker mode to request image resources, the ohos.permission.READ_IMAGEVIDEO permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+- For images saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
 
 **Parameters**
 
@@ -110,8 +110,8 @@ Requests image data. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
-- For the media assets saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
+- When this API is called in picker mode to request image resources, the ohos.permission.READ_IMAGEVIDEO permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+- For images saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
 
 **Parameters**
 
@@ -190,8 +190,8 @@ Requests a moving photo object, which can be used to request the asset data of t
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
-- For the moving photos saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
+- When this API is called in picker mode to request moving photos, the ohos.permission.READ_IMAGEVIDEO permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+- For moving photos saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
 
 **Parameters**
 
@@ -270,8 +270,8 @@ Requests a video and saves it to the specified sandbox directory. This API uses 
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
-- For the videos saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
+- When this API is called in picker mode to request video resources and save them to the specified sandbox directory, the ohos.permission.READ_IMAGEVIDEO permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+- For video resources saved to the media library by this application, the application can access them without the ohos.permission.READ_IMAGEVIDEO permission.
 
 **Parameters**
 
@@ -422,8 +422,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 async function example(context: Context) {
   try {
-    let imageFileUri: string = 'file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg'; // URI of the image file of the moving photo in the application sandbox.
-    let videoFileUri: string = 'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4'; // URI of the video file of the moving photo in the application sandbox.
+    let imageFileUri: string = 'file://com.example.temptest/data/storage/el2/base/haps/ImageFile.jpg'; // Image URI of the moving photo in the application sandbox.
+    let videoFileUri: string = 'file://com.example.temptest/data/storage/el2/base/haps/VideoFile.mp4'; // Video URI of the moving photo in the application sandbox.
     let movingPhoto: photoAccessHelper.MovingPhoto = await photoAccessHelper.MediaAssetManager.loadMovingPhoto(context, imageFileUri, videoFileUri);
   } catch (err) {
     console.error(`loadMovingPhoto failed with error: ${err.code}, ${err.message}`);
@@ -442,7 +442,7 @@ Requests an image quickly. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-- When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+- When this API is called in picker mode to request image resources, the ohos.permission.READ_IMAGEVIDEO permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 

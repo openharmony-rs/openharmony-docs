@@ -685,7 +685,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------- |
 | 201 | Permission denied. |
 | 202 | Not system application. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| 401 | If the input parameter is not valid parameter. |
 | 16000050 | Internal error. |
 
 **Example**
@@ -880,7 +880,7 @@ try {
 
 ## appManager.clearUpApplicationData
 
-clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>)
+clearUpApplicationData(bundleName: string, callback: AsyncCallback\<void>): void
 
 Clears application data by bundle name. This API uses an asynchronous callback to return the result.
 
@@ -2228,7 +2228,7 @@ Describes the filter for application lifecycle change events. It can be used as 
 
 | Name| Type| Read-Only| Optional | Description|
 | ------------------------- | ------ | ---- | ---- | --------- |
-| bundleTypes  | [FilterBundleType](#filterbundletype21) | No| Yes | Type of application to filter. The options are as follows:<br> - **0**: Do not listen for any application type.<br> - A bitwise OR combination of the enumerated values of [FilterBundleType](#filterbundletype21), for example, "appManager.FilterBundleType.APP \| appManager.FilterBundleType.ATOMIC_SERVICE" listens for both applications and atomic services.<br> - If this parameter is not set, all application types are listened for by default.|
+| bundleTypes  | [FilterBundleType](#filterbundletype21) | No| Yes | Type of application to filter. The options are as follows:<br> - **0**: Do not listen for any application type.<br> - A bitwise OR combination of the enumerated values of [FilterBundleType](#filterbundletype21), for example, "appManager.FilterBundleType.APP \| appManager.FilterBundleType.ATOMIC_SERVICE" listens for lifecycle change events for both applications and atomic services.<br> - If this parameter is not set, all application types are listened for by default.|
 | appStateTypes | [FilterAppStateType](#filterappstatetype21) | No| Yes| Type of application state to filter. The options are as follows:<br> - **0**: Do not listen for any application state.<br> - A bitwise OR combination of the enumerated values of [FilterAppStateType](#filterappstatetype21), for example, "appManager.FilterAppStateType.CREATE \| appManager.FilterAppStateType.FOREGROUND" listens for both the creating and foreground states of applications.<br> - If this parameter is not set, all application state types are listened for by default.|
 | processStateTypes | [FilterProcessStateType](#filterprocessstatetype21) | No| Yes| Type of process state to filter. The options are as follows:<br> - **0**: Do not listen for any process state.<br> - A bitwise OR combination of the enumerated values of [FilterProcessStateType](#filterprocessstatetype21), for example, "appManager.FilterProcessStateType.CREATE \| appManager.FilterProcessStateType.FOREGROUND" listens for both the creating and foreground states of processes.<br> - If this parameter is not set, all process state types are listened for by default.|
 | abilityStateTypes | [FilterAbilityStateType](#filterabilitystatetype21) | No| Yes | Type of ability state to filter. The options are as follows:<br> - **0**: Do not listen for any ability state.<br> - A bitwise OR combination of the enumerated values of [FilterAbilityStateType](#filterabilitystatetype21), for example, "appManager.FilterAbilityStateType.CREATE \| appManager.FilterAbilityStateType.FOREGROUND" listens for both the creating and foreground states of ability components.<br> - If this parameter is not set, all ability state types are listened for by default.|

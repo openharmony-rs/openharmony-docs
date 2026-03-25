@@ -70,6 +70,6 @@
     - [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md)
     - [Usb_DeviceArray](capi-usbddk-usb-devicearray.md)
     - [UsbSerial_Params](capi-serialddk-usbserial-params.md)
-    - [UsbSerial_DeviceHandle](capi-serialddk-usbserial-devicehandle.md)
+    - [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md)
 - 错误码<!--driver-development-errcode-->
   - [驱动错误码](errorcode-deviceManager.md)

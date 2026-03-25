@@ -11,6 +11,7 @@ Represents the event consumption result sent to the **Web** component. For detai
 If the application does not consume the event, set the consumption result to **false**, and the event will be consumed by the **Web** component. If the application consumes the event, set the consumption result to **true**, and the **Web** component will not consume the event. If the consumption result is not set according to the preceding specifications, exceptions may occur.
 
 For details about the sample code of the touch event, see [onNativeEmbedGestureEvent](./arkts-basic-components-web-events.md#onnativeembedgestureevent11).
+
 For details about the sample code of the mouse event, see [onNativeEmbedMouseEvent](./arkts-basic-components-web-events.md#onnativeembedmouseevent20).
 
 > **NOTE**
@@ -19,7 +20,7 @@ For details about the sample code of the mouse event, see [onNativeEmbedMouseEve
 >
 > - The initial APIs of this class are supported since API version 12.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor<sup>12+</sup>
 

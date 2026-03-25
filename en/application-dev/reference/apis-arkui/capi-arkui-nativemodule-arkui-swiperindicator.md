@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_SwiperIndicator ArkUI_SwiperIndicator
+```
+
 ## Overview
 
 Defines the navigation indicator style of the **Swiper** component.

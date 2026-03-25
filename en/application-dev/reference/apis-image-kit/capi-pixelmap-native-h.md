@@ -96,7 +96,7 @@ The file declares the APIs for accessing a PixelMap.
 | [Image_ErrorCode OH_PixelmapNative_CreateCroppedAndScaledPixelMap(OH_PixelmapNative *srcPixelmap, Image_Region *region, Image_Scale *scale, OH_PixelmapNative_AntiAliasingLevel level, OH_PixelmapNative **dstPixelmap)](#oh_pixelmapnative_createcroppedandscaledpixelmap) | Creates a PixelMap that is cropped and resized based on the source PixelMap.|
 | [Image_ErrorCode OH_PixelmapNative_Translate(OH_PixelmapNative *pixelmap, float x, float y)](#oh_pixelmapnative_translate) | Translates a PixelMap based on given coordinates.|
 | [Image_ErrorCode OH_PixelmapNative_Rotate(OH_PixelmapNative *pixelmap, float angle)](#oh_pixelmapnative_rotate) | Rotates a PixelMap based on a given angle.|
-| [Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldFilpHorizontally, bool shouldFilpVertically)](#oh_pixelmapnative_flip) | Flips a PixelMap based on a given angle.|
+| [Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldFlipHorizontally, bool shouldFlipVertically)](#oh_pixelmapnative_flip) | Flips a PixelMap based on a given angle.|
 | [Image_ErrorCode OH_PixelmapNative_Crop(OH_PixelmapNative *pixelmap, Image_Region *region)](#oh_pixelmapnative_crop) | Crops a PixelMap based on a given size.|
 | [Image_ErrorCode OH_PixelmapNative_Release(OH_PixelmapNative *pixelmap)](#oh_pixelmapnative_release) | Releases the pointer to an OH_PixelmapNative object. [OH_PixelmapNative_Destroy](#oh_pixelmapnative_destroy) is recommended.|
 | [Image_ErrorCode OH_PixelmapNative_Destroy(OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_destroy) | Releases the pointer to an OH_PixelmapNative object.|
@@ -104,7 +104,7 @@ The file declares the APIs for accessing a PixelMap.
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmap) | Creates an empty PixelMap object based on **OH_Pixelmap_InitializationOptions**. The memory data is 0.|
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmapusingallocator) | Creates an empty PixelMap object based on the options and memory type, where **allocator** specifies the memory type of the PixelMap. By default, the system selects an appropriate memory type based on the image type, image size, and platform capability. When processing the returned PixelMap object, consider the impact of stride.|
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurface(const char *surfaceId, size_t length, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromsurface) | Creates a PixelMap from a surface with the specified surface ID.|
-| [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer *nativeBuffer, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromnativebuffer) | Creates a PixelMap based on a NativeBuffer. If the CPU access permission is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.|
+| [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer *nativeBuffer, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromnativebuffer) | Creates a PixelMap based on a NativeBuffer. If the [CPU access permission](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage) is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.|
 | [Image_ErrorCode OH_PixelmapNative_GetNativeBuffer(OH_PixelmapNative *pixelmap, OH_NativeBuffer **nativeBuffer)](#oh_pixelmapnative_getnativebuffer) | Obtains the NativeBuffer object from a PixelMap in the DMA memory.|
 | [Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue **value)](#oh_pixelmapnative_getmetadata) | Obtains the metadata.|
 | [Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue *value)](#oh_pixelmapnative_setmetadata) | Sets the metadata.|
@@ -164,7 +164,7 @@ Enumerates the image pixel formats.
 | PIXEL_FORMAT_NV12 = 9 | NV12 format.|
 | PIXEL_FORMAT_RGBA_1010102 = 10 | RGBA_1010102 format.|
 | PIXEL_FORMAT_YCBCR_P010 = 11 | YCBCR_P010 format.|
-| PIXEL_FORMAT_YCRCB_P010 =12 | YCRCB_P010 format.|
+| PIXEL_FORMAT_YCRCB_P010 = 12 | YCRCB_P010 format.|
 
 ### OH_PixelmapNative_AntiAliasingLevel
 
@@ -567,7 +567,7 @@ Obtains the editable flag.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| bool *editable | Pointer to the editable flag.|
+| bool *editable | Pointer to the editable flag. **true** if editable, **false** otherwise.|
 
 **Returns**
 
@@ -592,7 +592,7 @@ Sets the editable flag.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_InitializationOptions](capi-image-nativemodule-oh-pixelmap-initializationoptions.md) *options | Pointer to an OH_Pixelmap_InitializationOptions struct.|
-| bool editable | Editable flag.|
+| bool editable | Editable flag. **true** if editable, **false** otherwise.|
 
 **Returns**
 
@@ -765,7 +765,7 @@ Obtains the pixel format.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| int32_t *pixelFormat | Pointer to the pixel format.|
+| int32_t *pixelFormat | Pointer to the pixel format. For details about the available options, see [PIXEL_FORMAT](#pixel_format).|
 
 **Returns**
 
@@ -815,7 +815,7 @@ Obtains the dynamic range of a PixelMap.
 | Name| Description|
 | -- | -- |
 | [OH_Pixelmap_ImageInfo](capi-image-nativemodule-oh-pixelmap-imageinfo.md) *info | Pointer to an OH_Pixelmap_ImageInfo struct.|
-| bool *isHdr | Pointer to a Boolean that specifies whether the HDR is used.|
+| bool *isHdr | Pointer to whether the image is an HDR image. The value **true** means that the image is an HDR image, and the value **false** means the opposite.|
 
 **Returns**
 
@@ -1396,7 +1396,7 @@ Rotates a PixelMap based on a given angle.
 ### OH_PixelmapNative_Flip()
 
 ```c
-Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldFilpHorizontally, bool shouldFilpVertically)
+Image_ErrorCode OH_PixelmapNative_Flip(OH_PixelmapNative *pixelmap, bool shouldFlipHorizontally, bool shouldFlipVertically)
 ```
 
 **Description**
@@ -1410,8 +1410,8 @@ Flips a PixelMap based on a given angle.
 | Name| Description|
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to an OH_PixelmapNative object.|
-| bool shouldFilpHorizontally | Whether to flip the image horizontally.|
-| bool shouldFilpVertically | Whether to flip the image vertically.|
+| bool shouldFlipHorizontally | Whether to flip the image horizontally. Whether to flip the image horizontally. **true** to flip the image horizontally, **false** otherwise.|
+| bool shouldFlipVertically | Whether to flip the image vertically. Whether to flip the image vertically. **true** to flip the image vertically, **false** otherwise.|
 
 **Returns**
 
@@ -1603,7 +1603,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer
 
 **Description**
 
-Creates a PixelMap from a NativeBuffer. If the CPU access permission is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.
+Creates a PixelMap from a NativeBuffer. If the [CPU access permission](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage) is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.
 
 **Since**: 22
 
@@ -1618,7 +1618,7 @@ Creates a PixelMap from a NativeBuffer. If the CPU access permission is not conf
 
 | Type| Description|
 | -- | -- |
-| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: Invalid parameters. For example, **nativeBuffer** or **pixelmap** is incorrect, the pixel format is not supported, or the CPU access permission is not configured.<br>         **IMAGE_CREATE_PIXELMAP_FAILED**: Creating the PixelMap fails.|
+| [Image_ErrorCode](capi-image-common-h.md#image_errorcode) | **IMAGE_SUCCESS**: The operation is successful.<br>         **IMAGE_BAD_PARAMETER**: The parameter is invalid. For example, **nativeBuffer** or **pixelmap** is incorrect, the pixel format is not supported, or the [CPU access permission](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage) is not configured.<br>         **IMAGE_CREATE_PIXELMAP_FAILED**: Creating the PixelMap fails.|
 
 ### OH_PixelmapNative_GetNativeBuffer()
 
@@ -1914,7 +1914,7 @@ Checks whether a PixelMap is released. If released, any attempt to access the in
 | Name| Description|
 | -- | -- |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *pixelmap | Pointer to the PixelMap.|
-| bool *released | Check result for whether the PixelMap is released.|
+| bool *released | Release status of the obtained PixelMap. The value **true** means that the PixelMap is released, and **false** means the opposite.|
 
 **Returns**
 

@@ -48,7 +48,7 @@ getComponent(componentType: ComponentType, callback: AsyncCallback\<Component>):
 
 | 参数名        | 类型                                    | 必填 | 说明                 |
 | ------------- | --------------------------------------- | ---- | -------------------- |
-| componentType | [ComponentType](arkts-apis-image-e.md#componenttype9)        | 是   | 图像的组件类型。（目前仅支持 ComponentType:JPEG，实际返回格式由生产者决定，如相机）    |
+| componentType | [ComponentType](arkts-apis-image-e.md#componenttype9)        | 是   | 图像的组件类型（目前仅支持ComponentType:JPEG，实际返回格式由生产者决定，如相机）。    |
 | callback      | AsyncCallback<[Component](arkts-apis-image-i.md#component9)> | 是   | 回调函数，当返回组件缓冲区成功，err为undefined，data为获取到的组件缓冲区；否则为错误对象。  |
 
 **示例：**
@@ -79,7 +79,7 @@ getComponent(componentType: ComponentType): Promise\<Component>
 
 | 参数名        | 类型                             | 必填 | 说明             |
 | ------------- | -------------------------------- | ---- | ---------------- |
-| componentType | [ComponentType](arkts-apis-image-e.md#componenttype9) | 是   | 图像的组件类型。（目前仅支持 ComponentType:JPEG，实际返回格式由生产者决定，如相机）。 |
+| componentType | [ComponentType](arkts-apis-image-e.md#componenttype9) | 是   | 图像的组件类型（目前仅支持ComponentType:JPEG，实际返回格式由生产者决定，如相机）。 |
 
 **返回值：**
 

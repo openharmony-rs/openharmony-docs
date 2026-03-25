@@ -47,6 +47,8 @@ The following table describes the attributes of **AssetMap** for removing an ass
 > The **asset** module provides an asynchronous API and a synchronous API for removing an asset. The following uses the asynchronous API as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
 > For details about how to remove an asset from a group, see [Removing an Asset from a Group](asset-js-group-access-control.md#removing-an-asset-from-a-group).
+>
+> Before removing an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
 
 Remove asset **demo_alias**.
 

@@ -139,7 +139,7 @@
 | const char * OH_MD_KEY_AUD_SAMPLE_RATE | 音频采样率键，值类型为int32_t。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_I_FRAME_INTERVAL | 关键帧间隔的键，值类型为int32_t，单位为毫秒。该键是可选的且只用于视频编码。<br> 负值表示只有第一帧是关键帧，0表示所有帧都是关键帧，正值表示每(frameRate * 设置值)/1000帧一个关键帧。默认值为1000。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_ROTATION | surface旋转角度的键，旋转方向为顺时针。值类型为int32_t，值为{0, 90, 180, 270}，默认值为0。<br> 该键只在视频解码Surface模式下使用。<br> 设置视频解码surface模式旋转时，推荐使用OH_MD_KEY_VIDEO_TRANSFORM_TYPE键。<br>**起始版本：** 9<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_TRANSFORM_TYPE | 视频翻转角度的键，值类型为int32_t，请参见[OH_NativeBuffer_TransformType](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)。<br>此键用于设置视频解码surface模式的翻转角度。若未指定，默认值为0 ([NATIVEBUFFER_ROTATE_NONE](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype))。<br> 此键与OH_MD_KEY_ROTATION互斥。若两者同时设置，以OH_MD_KEY_VIDEO_TRANSFORM_TYPE为准，推荐使用OH_MD_KEY_VIDEO_TRANSFORM_TYPE键。<br> 注意：OH_NativeBuffer_TransformType中指定的角度表示逆时针旋转，这与[OH_MD_KEY_ROTATION](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)定义的旋转方向相反。<br> 对应关系如下:<br> - [NATIVEBUFFER_ROTATE_NONE](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 0。<br> - [NATIVEBUFFER_ROTATE_90](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 270。<br> - [NATIVEBUFFER_ROTATE_180](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 180。<br> - [NATIVEBUFFER_ROTATE_270](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 90。<br><br>**起始版本：** 22 |
+| const char * OH_MD_KEY_VIDEO_TRANSFORM_TYPE | 视频翻转角度的键，值类型为int32_t，请参见[OH_NativeBuffer_TransformType](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)。<br>此键用于设置视频解码surface模式的翻转角度。若未指定，默认值为0 ([NATIVEBUFFER_ROTATE_NONE](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype))。<br> 此键与OH_MD_KEY_ROTATION互斥。若两者同时设置，以OH_MD_KEY_VIDEO_TRANSFORM_TYPE为准，推荐使用OH_MD_KEY_VIDEO_TRANSFORM_TYPE键。<br> 注意：OH_NativeBuffer_TransformType中指定的角度表示逆时针旋转，这与OH_MD_KEY_ROTATION定义的旋转方向相反。<br> 对应关系如下:<br> - [NATIVEBUFFER_ROTATE_NONE](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 0。<br> - [NATIVEBUFFER_ROTATE_90](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 270。<br> - [NATIVEBUFFER_ROTATE_180](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 180。<br> - [NATIVEBUFFER_ROTATE_270](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_transformtype)等同于OH_MD_KEY_ROTATION = 90。<br><br>**起始版本：** 22 |
 | const char * OH_MD_KEY_RANGE_FLAG | 视频YUV值域标志的键，值类型为int32_t，1表示full range，0表示limited range，默认值为0。配置非0值将按照配置1处理，表示full range。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_COLOR_PRIMARIES | 视频色域的键，值类型为int32_t，默认值为COLOR_PRIMARY_UNSPECIFIED。请参见[OH_ColorPrimary](capi-native-avcodec-base-h.md#oh_colorprimary)，遵循H.273标准Table2。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_TRANSFER_CHARACTERISTICS | 视频传递函数的键，值类型为int32_t，默认值为TRANSFER_CHARACTERISTIC_UNSPECIFIED。请参见[OH_TransferCharacteristic](capi-native-avcodec-base-h.md#oh_transfercharacteristic)，遵循H.273标准Table3。<br>**起始版本：** 10<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -216,7 +216,7 @@
 | const char * OH_MD_KEY_TRACK_REFERENCE_TYPE | 媒体文件辅助轨类型，值类型为string。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_TRACK_DESCRIPTION | 媒体文件辅助轨描述信息，值类型为string。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_ENABLE_SYNC_MODE | 使能音视频编解码同步模式的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选。<br>如果使能，需要注意：<br> 1. 编解码器不可设置回调函数。<br> 2. 必须使用缓冲区查询接口替代回调。<br> 3. 只能在Configure阶段使用。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
-| const char * OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | 用于指定视频解码器关闭时是否输出空白帧的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选的且仅用于视频解码Surface模式。<br> 使能后，视频解码器在停止或释放时将输出空白帧（通常为黑色），以确保显示设备平滑过渡到无信号状态。该机制可避免因解码器突然终止导致的显示残留或画面闪烁问题。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char * OH_MD_KEY_VIDEO_DECODER_BLANK_FRAME_ON_SHUTDOWN | 用于指定视频解码器关闭时是否输出空白帧的键，值类型为int32_t，1表示使能，0表示不使能，默认值为0。配置非0值将按照配置1处理，表示使能。该键是可选的且仅用于视频解码Surface模式。<br> 使能后，调用[OH_VideoDecoder_Stop](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_stop)接口或者[OH_VideoDecoder_Destroy](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_destroy)接口时，视频解码器将输出空白帧（通常为黑色）。该机制可避免因解码器突然终止导致的显示残留。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_MD_KEY_VIDEO_NATIVE_BUFFER_FORMAT | 用于查询视频编解码中native buffer像素格式的键，值类型为int32_t。<br> 具体取值请参见[OH_NativeBuffer_Format](../apis-arkgraphics2d/capi-buffer-common-h.md#oh_nativebuffer_format)中定义的像素格式。该键主要用于以下两种场景：<br> 1. 视频解码：调用[OH_VideoDecoder_GetOutputDescription](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_getoutputdescription)接口或[OH_AVCodecOnStreamChanged](capi-native-avcodec-base-h.md#oh_avcodeconstreamchanged)，从返回的OH_AVFormat对象中获取当前输出格式。<br> 2. 视频编码：调用[OH_VideoEncoder_GetInputDescription](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputdescription)接口，从返回的OH_AVFormat对象中获取当前输入格式。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 
 ## 枚举类型说明
@@ -515,8 +515,8 @@ enum OH_ScalingMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| SCALING_MODE_SCALE_TO_WINDOW = 1 | 根据窗口尺寸自适应调整图像大小。<br>**废弃版本：** 14 <br>**替代接口：** [OHScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#ohscalingmodev2).OH_SCALING_MODE_SCALE_TO_WINDOW_V2 |
-| SCALING_MODE_SCALE_CROP = 2 | 根据窗口尺寸裁剪图像大小。<br>**废弃版本：** 14 <br>**替代接口：** [OHScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#ohscalingmodev2).OH_SCALING_MODE_SCALE_CROP_V2  |
+| SCALING_MODE_SCALE_TO_WINDOW = 1 | 根据窗口尺寸自适应调整图像大小。<br>**替代接口：** [OHScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#ohscalingmodev2).OH_SCALING_MODE_SCALE_TO_WINDOW_V2 |
+| SCALING_MODE_SCALE_CROP = 2 | 根据窗口尺寸裁剪图像大小。<br>**替代接口：** [OHScalingModeV2](../apis-arkgraphics2d/capi-external-window-h.md#ohscalingmodev2).OH_SCALING_MODE_SCALE_CROP_V2  |
 
 ### OH_BitsPerSample
 
@@ -535,7 +535,7 @@ enum OH_BitsPerSample
 | 枚举项 | 描述 |
 | -- | -- |
 | SAMPLE_U8 = 0 | 8位无符号整数采样。 |
-| SAMPLE_S16LE = 1 | 16位有符号整数交样。 |
+| SAMPLE_S16LE = 1 | 16位有符号整数采样。 |
 | SAMPLE_S24LE = 2 | 24位有符号整数采样。 |
 | SAMPLE_S32LE = 3 | 32位有符号整数采样。 |
 | SAMPLE_F32LE = 4 | 32位浮点采样。 |

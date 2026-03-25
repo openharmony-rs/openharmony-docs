@@ -9,7 +9,7 @@
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用冻屏事件。接口的详细使用说明（参数限制、取值范围等）请参考[HiAppEvent C API文档](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
+本文介绍如何使用HiAppEvent提供的C/C++接口订阅应用冻屏事件。接口的详细使用说明（参数限制、取值范围等）请参考[hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
 
 ## 接口说明
 
@@ -22,7 +22,7 @@
 
 ### 添加事件观察者
 
-以实现对用户点击按钮触发应用无响应场景生成的应用冻屏事件订阅为例，说明开发步骤。
+以订阅应用冻屏事件为例，说明开发步骤。
 
 1. 获取该示例工程依赖的jsoncpp文件，从[三方开源库jsoncpp代码仓](https://github.com/open-source-parsers/jsoncpp)下载源码的压缩包，并按照README的**Amalgamated source**中介绍的操作步骤得到jsoncpp.cpp、json.h和json-forwards.h三个文件。
 
@@ -77,7 +77,7 @@
       编辑“napi_init.cpp”文件，定义onReceive类型观察者相关方法：
 
       ```c++
-      //定义一变量，用来缓存创建的观察者的指针。
+      // 定义一变量，用来缓存创建的观察者的指针。
       static HiAppEvent_Watcher *systemEventWatcher; 
       
       static void OnReceive(const char *domain, const struct HiAppEvent_AppEventGroup *appEventGroups, uint32_t groupLen) {
@@ -154,7 +154,7 @@
       编辑“napi_init.cpp”文件，定义OnTrigger类型观察者相关方法：
 
       ```c++
-      //定义一变量，用来缓存创建的观察者的指针。
+      // 定义一变量，用来缓存创建的观察者的指针。
       static HiAppEvent_Watcher *systemEventWatcher;
       
       // 开发者可以自行实现获取已监听到事件的回调函数，其中events指针指向内容仅在该函数内有效。

@@ -155,6 +155,115 @@ try {
 }
 ```
 
+## backgroundTaskManager.setBackgroundTaskState<sup>22+</sup>
+
+setBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): void
+
+Sets the authorization information of a continuous task.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.SET_BACKGROUND_TASK_STATE
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name    | Type     | Mandatory  | Description                   |
+| ------- | ------- | ---- |-----------------------|
+| stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | Yes   | Required authorization information, including the user ID, application bundle name, and application clone ID.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
+
+| ID | Error Message            |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 202 | Not System App. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**Example**
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    // Update the parameters based on the actual situation.
+    let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
+        userId: 100,
+        bundleName: 'com.example.continuoustask',
+        appIndex: 0,
+        authResult: backgroundTaskManager.UserAuthResult.DENIED
+    };
+    backgroundTaskManager.setBackgroundTaskState(backgroundTaskStateInfo);
+    console.info('Operation setBackgroundTaskState succeeded.');
+} catch (error) {
+    console.error(`Operation setBackgroundTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
+## backgroundTaskManager.getBackgroundTaskState<sup>22+</sup>
+
+getBackgroundTaskState(stateInfo: BackgroundTaskStateInfo): UserAuthResult
+
+Obtains the authorization information of a continuous task.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Required permissions**: ohos.permission.SET_BACKGROUND_TASK_STATE
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name    | Type     | Mandatory  | Description                   |
+| ------- | ------- | ---- |-----------------------|
+| stateInfo | [BackgroundTaskStateInfo](#backgroundtaskstateinfo22) | Yes   | Required authorization information, including the user ID, application bundle name, and application clone ID.|
+
+**Return value**
+
+| Type                                           | Description         |
+|-----------------------------------------------|-------------|
+|  [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | Authorization result.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [backgroundTaskManager Error Codes](errorcode-backgroundTaskMgr.md).
+
+| ID | Error Message            |
+| ---- | --------------------- |
+| 201 | Permission denied. |
+| 202 | Not System App. |
+| 9800004 | System service operation failed. |
+| 9800005 | Continuous task verification failed. |
+
+**Example**
+
+```ts
+import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+    // Update the parameters based on the actual situation.
+    let backgroundTaskStateInfo: backgroundTaskManager.BackgroundTaskStateInfo = {
+        userId: 100,
+        bundleName: 'com.example.continuoustask',
+        appIndex: 0
+    };
+    let auth = backgroundTaskManager.getBackgroundTaskState(backgroundTaskStateInfo);
+    console.info('Operation getBackgroundTaskState succeeded. data: ' + JSON.stringify(auth));
+} catch (error) {
+    console.error(`Operation getBackgroundTaskState failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+}
+```
+
 ## BackgroundMode
 
 Enumerates the continuous task modes.
@@ -204,7 +313,7 @@ Enumerates the efficiency resource types.
 
 ## EfficiencyResourcesInfo<sup>20+</sup>
 
-Efficiency resource information.
+Defines the efficiency resource information.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.EfficiencyResourcesApply
 
@@ -231,3 +340,20 @@ Defines the main type of a continuous task.
 | Name                    | Value | Description                   |
 | ------------------------ | ---- | --------------------- |
 | MODE_ALLOW_WIFI_AWARE           | 7         | WLAN-related services.           |
+
+## BackgroundTaskStateInfo<sup>22+</sup>
+
+Defines the authorization information of a continuous task.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+**System API**: This is a system API.
+
+| Name| Type                                 | Read-Only  | Optional| Description     |
+|--|-------------------------------------| ---- |----|---------|
+| userId | number                              | No   | No | User ID.  |
+| bundleName | string                              | No   | No | Application bundle name.  |
+| appIndex | number                              | No   | No | Index of an application clone.|
+| authResult | [UserAuthResult](./js-apis-resourceschedule-backgroundTaskManager.md#userauthresult22) | No   | Yes | Authorization result.  |

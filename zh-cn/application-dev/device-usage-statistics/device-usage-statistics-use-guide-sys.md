@@ -9,6 +9,7 @@
 ## 场景介绍
 
 设备使用信息统计，包括app usage/notification usage/system usage等使用统计。例如应用使用信息统计，用于保存和查询应用使用详情（app usage）、事件日志数据（event log）、应用分组（app group）情况。
+
 部件缓存的应用记录（使用历史统计和使用事件记录）会在事件上报后30分钟内刷新到数据库持久化保存。
 
 ## 接口说明
@@ -47,7 +48,9 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
 ## 开发步骤
 
 1. 获取设备使用信息之前，需要检查是否已经配置请求相应的权限。
-    系统提供的设备使用信息统计的权限是ohos.permission.BUNDLE_ACTIVE_INFO
+
+    系统提供的设备使用信息统计的权限是ohos.permission.BUNDLE_ACTIVE_INFO。
+
     具体配置方式请参考[申请应用权限](../security/AccessToken/determine-application-mode.md#system_basic等级应用申请权限的方式)。
 
 2. 通过指定起始和结束时间查询所有应用的事件集合，需要配置ohos.permission.BUNDLE_ACTIVE_INFO权限。
@@ -186,7 +189,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
         }
     });
 
-    //同步方式
+    // 同步方式
     let priorityGroup = usageStatistics.queryAppGroupSync();
 
     ```
@@ -212,7 +215,7 @@ import { usageStatistics } from '@kit.BackgroundTasksKit';
         }
     });
 
-    //同步方式
+    // 同步方式
     let isIdleState = usageStatistics.isIdleStateSync("com.ohos.camera");
     ```
 

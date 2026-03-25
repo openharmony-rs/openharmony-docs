@@ -20,6 +20,7 @@
     - [容器类库概述](container-overview.md)
     - [线性容器](linear-container.md)
     - [非线性容器](nonlinear-container.md)
+  - [基础库常见问题](commonlibrary-faq.md)
 - ArkTS并发<!--arkts-concurrency-->
   - [并发概述](concurrency-overview.md)
   - [异步并发](async-concurrency-overview.md)
@@ -33,7 +34,6 @@
     - 线程间通信对象<!--interthread-communication-object-->
       - [线程间通信对象概述](serializable-overview.md)
       - [普通对象](normal-object.md)
-      - [容器类对象](container-object.md)
       - [ArrayBuffer对象](arraybuffer-object.md)
       - [SharedArrayBuffer对象](shared-arraybuffer-object.md)
       - [Transferable对象（NativeBinding对象）](transferabled-object.md)

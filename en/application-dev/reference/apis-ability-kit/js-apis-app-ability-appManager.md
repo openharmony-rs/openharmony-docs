@@ -373,7 +373,7 @@ Registers an observer to listen for lifecycle changes of all applications.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | type | string | Yes| Type of the API to call. It is fixed at **'applicationState'**.|
-| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | Yes| Application state observer, which is used to listen for applications lifecycle changes.|
+| observer | [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md) | Yes| Application state observer, which is used to listen for application lifecycle changes.|
 
 **Return value**
 
@@ -760,7 +760,7 @@ Checks whether the application with the specified bundle name and application cl
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | bundleName | string | Yes| Bundle name.|
-| appCloneIndex | number | No| Index of an application clone. The value ranges from 0 to 1000. The value **0** means the main application, and a value greater than 0 means a specific application clone.|
+| appCloneIndex | number | No| Application clone index. The default value is **0**. The value ranges from 0 to 1000. The value **0** means the main application, and a value greater than 0 means a specific application clone.|
 
 **Return value**
 

@@ -15,7 +15,7 @@ This module provides system-related and enhanced [i18n](../../internationalizati
 >
 >  - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
->  - The APIs of this module conform to the [Common Locale Data Repository (CLDR)](https://cldr.unicode.org) internationalization database. The processing result may change with CLDR evolution. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, visit the official website.
+>  - The APIs of this module are based on the [CLDR](https://cldr.unicode.org) internationalization database. The processing results of the APIs may be adjusted as the CLDR standard evolves. For example, the return value of the [date and time formatting API](#simplenumberformat18) is used only for UI display. Do not hardcode the return value or make assumptions about the return value. Otherwise, version compatibility problems may occur. API version 12 corresponds to [CLDR 42](https://cldr.unicode.org/index/downloads/cldr-42). For details about data changes, see the official CLDR documentation.
 >
 >  - Since API version 11, some APIs of this module are supported in ArkTS widgets.
 
@@ -804,7 +804,7 @@ Obtains entity information in the **text** object.
 
 | Name | Type  | Mandatory  | Description               |
 | ---- | ---- | ---- | ----------------- |
-| text | string | Yes   | **text** object.|
+| text | string | Yes   | Input text.|
 
 **Return value**
 
@@ -1601,7 +1601,7 @@ Obtains the index of the **text** object.
 
 | Name | Type    | Mandatory  | Description          |
 | ---- | ------ | ---- | ------------ |
-| text | string | Yes   | **text** object.|
+| text | string | Yes   | Input text.|
 
 **Return value**
 
@@ -2477,7 +2477,7 @@ Converts the input text from the source format to the target format.
 
 | Name | Type    | Mandatory  | Description    |
 | ---- | ------ | ---- | ------ |
-| text | string | Yes   | **text** object.|
+| text | string | Yes   | Input text.|
 
 **Return value**
 
@@ -2490,7 +2490,7 @@ Converts the input text from the source format to the target format.
   import { i18n } from '@kit.LocalizationKit';
 
   let transliterator: i18n.Transliterator = i18n.Transliterator.getInstance('Any-Latn');
-  let wordArray: string[] = ['中国', '德国', '美国', '法国']
+  let wordArray: string[] = ['China', 'Germany', 'US', 'France"]
   for (let i = 0; i < wordArray.length; i++) {
     let transliterateLatn: string =
       transliterator.transform(wordArray[i]); // transliterateLatn: 'zhōng guó', 'dé guó', 'měi guó', 'fǎ guó'
@@ -2498,12 +2498,12 @@ Converts the input text from the source format to the target format.
 
   // Chinese transliteration and tone removal
   transliterator = i18n.Transliterator.getInstance('Any-Latn;Latin-Ascii');
-  let transliterateAscii: string = transliterator.transform('中国'); // transliterateAscii = 'zhong guo'
+  let transliterateAscii: string = transliterator.transform ('China'); // transliterateAscii = 'zhong guo'
 
   // Chinese surname pronunciation
   transliterator = i18n.Transliterator.getInstance('Han-Latin/Names');
-  let transliterateNames: string = transliterator.transform('单老师'); // transliterateNames = 'shàn lǎo shī'
-  transliterateNames = transliterator.transform('长孙无忌'); // transliterateNames = 'zhǎng sūn wú jì'
+  let transliterateNames: string = transliterator.transform('Teacher Shan'); // transliterateNames = 'shàn lǎo shī'
+  transliterateNames = transliterator.transform('Long Sun No Taboo'); // transliterateNames = 'zhǎng sūn wú jì'
   ```
 
 
@@ -3244,7 +3244,7 @@ Normalizes input strings.
 
 | Name   | Type    | Mandatory  | Description                       |
 | ------ | ------ | ---- | ------------------------- |
-| text | string | Yes   | **text** object.|
+| text | string | Yes   | Input text.|
 
 **Return value**
 
@@ -4143,7 +4143,7 @@ Obtains the system region.
 
 getSystemLocale(): string
 
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [System.getSystemLocaleInstance](#getsystemlocaleinstance20) instead.
+> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [System.getSystemLocale](#getsystemlocaledeprecated) instead.
 
 Obtains the system locale.
 
@@ -4576,5 +4576,3 @@ Obtains the type of the input character.
 | Type    | Description         |
 | ------ | ----------- |
 | string | Type of the input character.|
-
-<!--no_check-->

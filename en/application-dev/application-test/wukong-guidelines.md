@@ -17,7 +17,8 @@ In focus testing, specific components are injected. Available features include s
 
 ## Principles
 
-The following figure shows the wukong component architecture and the responsibilities of sub-modules. 
+The following figure shows the wukong component architecture and the responsibilities of sub-modules.
+  
 ![Alternate text](figures/wukongRandomTestFlow.png)
 
 - Command line parsing: obtains and parses parameters using commands.

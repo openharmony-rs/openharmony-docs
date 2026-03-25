@@ -1,9 +1,9 @@
 # AttributeUpdater
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 将属性直接设置给组件，无需标记为状态变量即可直接触发UI更新。
@@ -134,7 +134,7 @@ struct Index {
           .width('80%')
           .labelStyle({ maxLines: 2 })
           .onClick(() => {
-            this.flushTheButton = this.flushTheButton + ' Updated' ;
+            this.flushTheButton = this.flushTheButton + ' Updated';
           })
       }
       .width('100%')
@@ -276,8 +276,8 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
       .height(30);
   }
 
-  onComponentChanged(instance: ButtonAttribute) :void {
-    instance.backgroundColor('#ff2787d9')
+  onComponentChanged(instance: ButtonAttribute): void {
+    instance.backgroundColor('#ff519db4')
       .width('50%')
       .height(30);
   }
@@ -295,7 +295,7 @@ struct updaterDemo4 {
         Button("Test")
           .onClick(() => {
             this.btnState = !this.btnState;
-        })
+          }).margin({ bottom: 20 })
 
         if (this.btnState) {
           Button("Button")
@@ -311,3 +311,4 @@ struct updaterDemo4 {
   }
 }
 ```
+![](figures/attribute-updater4.gif)

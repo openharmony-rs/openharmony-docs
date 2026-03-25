@@ -6,7 +6,7 @@
 <!--Tester: @yippo; @logic42-->
 <!--Adviser: @ge-yafang-->
 
-Provides APIs to access the result set obtained by querying the RDB store. returned by **query()**.
+Provides APIs to access the result set obtained by querying the RDB store. This result set is the collection of results returned with the **query()** method called.
 
 The **ResultSet** instance is not refreshed in real time. After using the result set, if the data in the database is changed (by being added, deleted, or modified), you need to query the result set again to obtain the latest data.
 
@@ -588,7 +588,7 @@ if (resultSet != undefined) {
 
 getValue(columnIndex: number): ValueType
 
-Obtains the value from the specified column and current row. If the value type is any of **ValueType**, the value of the corresponding type will be returned. Otherwise, **14800000** will be returned. If the value type is INTEGER and the value is greater than **Number.MAX_SAFE_INTEGER** or less than **Number.MIN_SAFE_INTEGER**, you are advised to use the [getString](#getstring) API to obtain the value without losing precision.
+Obtains the value from the specified column in the current row. If the value type is any of **ValueType**, the value of the corresponding type will be returned. Otherwise, 14800000 will be returned. If the value type is INTEGER and the value is greater than **Number.MAX_SAFE_INTEGER** or less than **Number.MIN_SAFE_INTEGER**, you are advised to use the [getString](#getstring) API to obtain the value without losing precision.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -650,7 +650,7 @@ if (resultSet !== undefined) {
 getBlob(columnIndex: number): Uint8Array
 
 
-Obtains the value from the specified column and current row, and returns it in a byte array.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, the value will be converted into a byte array and returned. If the column is empty, an empty byte array will be returned. If the value is of any other type, **14800000** will be returned.
+Obtains the value from the specified column in the current row, and returns it in a byte array.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, the value will be converted into a byte array and returned. If the column is null/empty, an empty byte array will be returned. If the value is of any other type, 14800000 will be returned.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -705,7 +705,7 @@ if (resultSet != undefined) {
 
 getString(columnIndex: number): string
 
-Obtains the value from the specified column and current row, and returns it in the form of a string.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a string will be returned. If the value type is INTEGER and the column is empty, an empty string will be returned. If the value is of any other type, **14800000** will be returned. If the value in the current column is of the DOUBLE type, the precision may be lost. You are advised to use [getDouble](#getdouble) to obtain the value.
+Obtains the value from the specified column in the current row, and returns it in the form of a string.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a string will be returned. If the value type is INTEGER and the column is null/empty, an empty string **""** will be returned. If the value is of any other type, 14800000 will be returned. If the value in the current column is of the DOUBLE type, the precision may be lost. You are advised to use [getDouble](#getdouble) to obtain the value.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -760,7 +760,7 @@ if (resultSet != undefined) {
 
 getLong(columnIndex: number): number
 
-Obtains the value from the specified column and current row, and returns a value of Long type.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a value of Long type will be returned. If the column is empty, **0** will be returned. If the value is of any other type, **14800000** will be returned. If the data type in the specified column is INTEGER and the value is greater than **Number.MAX_SAFE_INTEGER** or less than **Number.MIN_SAFE_INTEGER**, you are advised to use the [getString](#getstring) API to obtain the value without losing precision. If the data type in the specified column is DOUBLE, you are advised to use the [getDouble](#getdouble) API to obtain the value without losing precision.
+Obtains the value from the specified column in the current row, and returns a value of Long type.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a value of Long type will be returned. If the column is null/empty, **0** will be returned. If the value is of any other type, 14800000 will be returned. If the data type in the specified column is INTEGER and the value is greater than **Number.MAX_SAFE_INTEGER** or less than **Number.MIN_SAFE_INTEGER**, you are advised to use the [getString](#getstring) API to obtain the value without losing precision. If the data type in the specified column is DOUBLE, you are advised to use the [getDouble](#getdouble) API to obtain the value without losing precision.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -821,7 +821,7 @@ if (resultSet !== undefined) {
 
 getDouble(columnIndex: number): number
 
-Obtains the value from the specified column and current row, and returns a value of double type.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a value of double type will be returned. If the column is empty, **0.0** will be returned. If the value is of any other type, **14800000** will be returned.
+Obtains the value from the specified column in the current row, and returns a value of Double type.<br>If the type of the value in the specified column is INTEGER, DOUBLE, TEXT, or BLOB, a value of Double type will be returned. If the column is null/empty, **0.0** will be returned. If the value is of any other type, 14800000 will be returned.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -882,7 +882,7 @@ if (resultSet !== undefined) {
 
 getAsset(columnIndex: number): Asset
 
-Obtains the value from the specified column and current row, and returns the value in the [Asset](arkts-apis-data-relationalStore-i.md#asset10) format. If the type of the value in the column is **Asset**, the value of the Asset type is returned. If the value in the column is null, **null** is returned. If the value in the column is of other types, **14800000** is returned.
+Obtains the value from the specified column in the current row, and returns the value in the [Asset](arkts-apis-data-relationalStore-i.md#asset10) format. If the type of the value in the column is **Asset**, the value of the Asset type is returned. If the value in the column is null, **null** is returned. If the value in the column is of other types, 14800000 is returned.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -937,7 +937,7 @@ if (resultSet != undefined) {
 
 getAssets(columnIndex: number): Assets
 
-Obtains the value from the specified column and current row, and returns the value in the [Assets](arkts-apis-data-relationalStore-t.md#assets10) format. If the type of the value in the column is **Assets**, the value of the Assets type is returned. If the value in the column is null, **null** is returned. If the value in the column is of other types, **14800000** is returned.
+Obtains the value from the specified column in the current row, and returns the value in the [Assets](arkts-apis-data-relationalStore-t.md#assets10) format. If the type of the value in the column is **Assets**, the value of the Assets type is returned. If the value in the column is null, **null** is returned. If the value in the column is of other types, 14800000 is returned.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -992,7 +992,7 @@ if (resultSet != undefined) {
 
 getRow(): ValuesBucket
 
-Obtains the current row.
+Obtains this row.
 
 **System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1056,7 +1056,7 @@ Obtains a specified amount of data from the result set. This API uses a promise 
 
 | Type             | Description                          |
 | ---------------- | ---------------------------- |
-| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | Promise used to return **maxCount** rows of data obtained. If the number of remaining records is less than **maxCount**, the remaining records are returned. Returning an empty array indicates that the end of the result set is reached. If the result set contains duplicate column names, the return values are not as expected.|
+| Promise<Array<[ValuesBucket](arkts-apis-data-relationalStore-t.md#valuesbucket)>> | Promise used to return **maxCount** rows of data obtained. If the number of remaining records is less than **maxCount**, the remaining records are returned. Returning an empty array indicates that the end of the result set is reached. If the result set contains duplicate column names, the return value is not as expected.|
 
 **Error codes**
 
@@ -1086,7 +1086,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // Obtain 100 rows of data.
-async function proccessRows(resultSet: relationalStore.ResultSet) {
+async function processRows(resultSet: relationalStore.ResultSet) {
   // Example 1: Specify only maxCount.
   if (resultSet != undefined) {
     let rows: Array<relationalStore.ValuesBucket>;

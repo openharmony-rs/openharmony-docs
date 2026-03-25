@@ -4159,7 +4159,7 @@ try {
 
 getResultSize(query: Query, callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the number of results that matches the specified **Query** object. This API uses an asynchronous callback to return the result.
+Obtains the number of results that match the specified **Query** object. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -4178,7 +4178,6 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 | 15100003     | Database corrupted.                    |
-| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **Example**
@@ -4223,7 +4222,7 @@ try {
 
 getResultSize(query: Query): Promise&lt;number&gt;
 
-Obtains the number of results that matches the specified **Query** object. This API uses a promise to return the result.
+Obtains the number of results that match the specified **Query** object. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.DistributedDataManager.KVStore.Core
 
@@ -4247,7 +4246,6 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.|
 | 15100003     | Database corrupted.                    |
-| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **Example**
@@ -7027,7 +7025,6 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
-| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **Example**
@@ -7096,7 +7093,6 @@ For details about the error codes, see [Distributed KV Store Error Codes](errorc
 | ------------ | -------------------------------------- |
 | 401          | Parameter error. Possible causes:1. Mandatory parameters are left unspecified; 2. Incorrect parameters types.  |
 | 15100003     | Database corrupted.                    |
-| 15100004     | Not found.                             |
 | 15100005     | Database or result set already closed. |
 
 **Example**
@@ -7139,7 +7135,7 @@ try {
 
 getResultSize(deviceId: string, query: Query, callback: AsyncCallback&lt;number&gt;): void;
 
-Obtains the number of results that matches the specified device ID and **Query** object. This API uses an asynchronous callback to return the result.
+Obtains the number of results that match the specified device ID and **Query** object. This API uses an asynchronous callback to return the result.
 > **NOTE**
 >
 > **deviceId** can be obtained by [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).
@@ -7212,7 +7208,7 @@ try {
 
 getResultSize(deviceId: string, query: Query): Promise&lt;number&gt;
 
-Obtains the number of results that matches the specified device ID and **Query** object. This API uses a promise to return the result.
+Obtains the number of results that match the specified device ID and **Query** object. This API uses a promise to return the result.
 > **NOTE**
 >
 > **deviceId** can be obtained by [deviceManager.getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync).

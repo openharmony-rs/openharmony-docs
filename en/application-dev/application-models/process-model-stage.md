@@ -1,4 +1,4 @@
-# Process Model (Stage Model)
+# Process Model
 <!--Kit: Ability Kit-->
 <!--Subsystem: Ability-->
 <!--Owner: @SKY2001-->
@@ -32,7 +32,6 @@ For a complex application with multiple [UIAbility](../reference/apis-ability-ki
 > - A single process can contain multiple AbilityStage instances, and a single AbilityStage can contain multiple Ability instances. The lifecycle of a process is closely related to the lifecycle of Ability instances. A process will only be destroyed after all Ability instances within it have exited. In other words, to exit a process, you must first exit all Ability instances within it.
 
 ### Other Process Types
-
 On 2-in-1 and tablet devices, the following special process types are supported for the UIAbility:
 - **Module-independent process**: For applications with multiple HAPs where each HAP's service logic is relatively independent, you can configure the **isolationMode** field in the [module.json5](../quick-start/module-configuration-file.md#tags-in-the-configuration-file) file to **isolationOnly** (run only in an independent process) or **isolationFirst** (prefer to run in an independent process). This way, all UIAbility instances within that HAP will run in a unified, separate process. For example, UIAbilityC in Figure 2 runs in "Main Process2" instead of "Main Process1".
 - **Dynamically specified process**: When UIAbility instances within the same HAP need to be dynamically allocated to different processes based on runtime conditions (for example, each process can support up to five instances), you can set the **isolationProcess** field under UIAbility in the **module.json5** file to **true**. When starting a UIAbility instance, the system calls the [onNewProcessRequest](../reference/apis-ability-kit/js-apis-app-ability-abilityStage.md#onnewprocessrequest11) callback of the [master process](ability-terminology.md#master-process). You can return a custom string in this callback. If the string matches an existing process, that process is reused; otherwise, a new process is created. For example, "Main Process3" and "Main Process4" in Figure 2 are multiple processes for UIAbilityD.
@@ -54,4 +53,5 @@ For system applications that provide various system capabilities, each capabilit
 ## Thread Model
 
 After the system creates an application process, it automatically creates a main thread and enters the message loop. All application components run on the main thread.
+
 In addition to the main thread, if an application has complex, time-consuming logic to handle, you can create[Worker](../reference/apis-arkts/js-apis-worker.md) threads or submit tasks to the [TaskPool](../reference/apis-arkts/js-apis-taskpool.md).

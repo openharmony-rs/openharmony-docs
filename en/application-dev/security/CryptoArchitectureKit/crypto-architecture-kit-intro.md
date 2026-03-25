@@ -1,4 +1,4 @@
-# Introduction to Crypto Architecture Kit
+# About This Kit
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->

@@ -1,4 +1,4 @@
-# Introduction to MindSpore Lite Kit
+# About This Kit
 
 <!--Kit: MindSpore Lite Kit-->
 <!--Subsystem: AI-->

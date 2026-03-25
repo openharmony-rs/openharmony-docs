@@ -108,7 +108,7 @@ The symmetric key used by HMAC can be generated based on a string parameter.
 | HMAC | SM3 | 256 | HMAC\|SM3 | 11+ | 
 | HMAC | - | [1, 32768] | HMAC | 11+ | 
 
-### ChaCha20
+## ChaCha20
 
 The Crypto framework supports this algorithm since API version 22.
 

@@ -44,11 +44,11 @@
 | 名称 | 描述 |
 | -- | -- |
 | [Image_ErrorCode OH_ImageSourceInfo_Create(OH_ImageSource_Info **info)](#oh_imagesourceinfo_create) | 创建OH_ImageSource_Info指针。 |
-| [Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t *width)](#oh_imagesourceinfo_getwidth) | 获取图片的宽。 |
-| [Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)](#oh_imagesourceinfo_getheight) | 获取图片的高。 |
+| [Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t *width)](#oh_imagesourceinfo_getwidth) | 获取图片的宽。对于没有width标签的SVG图片，返回默认值0。 |
+| [Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t *height)](#oh_imagesourceinfo_getheight) | 获取图片的高。对于没有height标签的SVG图片，返回默认值0。 |
 | [Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bool *isHdr)](#oh_imagesourceinfo_getdynamicrange) | 获取图片是否为高动态范围的信息。 |
 | [Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_MimeType *mimeType)](#oh_imagesourceinfo_getmimetype) | 获取图片源的MIME类型。 |
-| [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | 释放OH_ImageSource_Info指针。 |
+| [Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)](#oh_imagesourceinfo_release) | 释放OH_ImageSource_Info指针。调用该接口之后，与OH_ImageSourceInfo结构体相关的属性均会被释放。因此在调用该接口前，请务必确认相关属性已不再被需要或对相关属性已完成深拷贝操作。 |
 | [Image_ErrorCode OH_DecodingOptions_Create(OH_DecodingOptions **options)](#oh_decodingoptions_create) | 创建OH_DecodingOptions指针。 |
 | [Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options, int32_t *pixelFormat)](#oh_decodingoptions_getpixelformat) | 获取pixel格式。 |
 | [Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options, int32_t pixelFormat)](#oh_decodingoptions_setpixelformat) | 设置pixel格式。 |
@@ -57,7 +57,7 @@
 | [Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float *rotate)](#oh_decodingoptions_getrotate) | 获取旋转角度。 |
 | [Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float rotate)](#oh_decodingoptions_setrotate) | 设置旋转角度。 |
 | [Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_getdesiredsize) | 获取期望输出大小。 |
-| [Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_setdesiredsize) | 设置期望输出大小。 |
+| [Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options, Image_Size *desiredSize)](#oh_decodingoptions_setdesiredsize) | 设置期望输出大小。desiredSize参数决定解码得到的PixelMap大小，且宽、高须为正整数。若与原尺寸比例不一致，则会进行拉伸/缩放到指定尺寸。默认为原始尺寸。 |
 | [Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)](#oh_decodingoptions_getdesiredregion) | 获取解码区域。<br> 由于对应SetDesiredRegion接口无法满足区域解码诉求，从API version 19开始，推荐配套使用[OH_DecodingOptions_GetCropRegion](#oh_decodingoptions_getcropregion)接口替代。 |
 | [Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options, Image_Region *desiredRegion)](#oh_decodingoptions_setdesiredregion) | 设置解码区域。<br> 实际解码结果会按照原图解码，无区域解码效果。从API version 19开始，推荐使用接口[OH_DecodingOptions_SetCropRegion](#oh_decodingoptions_setcropregion)替代。 |
 | [Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *options, int32_t *desiredDynamicRange)](#oh_decodingoptions_getdesireddynamicrange) | 获取解码时设置的期望动态范围。 |
@@ -71,7 +71,7 @@
 | [Image_ErrorCode OH_DecodingOptions_Release(OH_DecodingOptions *options)](#oh_decodingoptions_release) | 释放OH_DecodingOptions指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromuri) | 通过uri创建OH_ImageSourceNative指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromFd(int32_t fd, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromfd) | 通过fd创建OH_ImageSourceNative指针。 |
-| [Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromdata) | 通过缓冲区数据创建OH_ImageSourceNative指针。<br> data数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)这一类接口。 |
+| [Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSize, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromdata) | 通过缓冲区数据创建OH_ImageSourceNative指针。<br> data数据应该是未解码的数据，不要传入类似于RGBA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)这一类接口。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromDataWithUserBuffer(uint8_t *data, size_t datalength, OH_ImageSourceNative **imageSource)](#oh_imagesourcenative_createfromdatawithuserbuffer) | 由数据缓存创建图片源。传入的数据缓存将在图片源对象中直接访问，在图片源对象的生命周期内，数据缓存需要保持可用。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFile, OH_ImageSourceNative **res)](#oh_imagesourcenative_createfromrawfile) | 通过图像资源文件的RawFileDescriptor创建OH_ImageSourceNative指针。 |
 | [Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source, OH_DecodingOptions *options, OH_PixelmapNative **pixelmap)](#oh_imagesourcenative_createpixelmap) | 通过图片解码参数创建OH_PixelmapNative指针。 |
@@ -183,7 +183,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetWidth(OH_ImageSource_Info *info, uint32_t 
 
 **描述**
 
-获取图片的宽。
+获取图片的宽。对于没有width标签的SVG图片，返回默认值0。
 
 **起始版本：** 12
 
@@ -209,7 +209,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t
 
 **描述**
 
-获取图片的高。
+获取图片的高。对于没有height标签的SVG图片，返回默认值0。
 
 **起始版本：** 12
 
@@ -219,7 +219,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetHeight(OH_ImageSource_Info *info, uint32_t
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| uint32_t *height | 图片的高，单位：像素高 |
+| uint32_t *height | 图片的高，单位：像素 |
 
 **返回：**
 
@@ -245,7 +245,7 @@ Image_ErrorCode OH_ImageSourceInfo_GetDynamicRange(OH_ImageSource_Info *info, bo
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 被操作的OH_ImageSource_Info指针。 |
-| bool *isHdr | 表示是否为HDR。true表示是HDR，false表示不是HDR。 |
+| bool *isHdr | 表示是否为高动态范围（HDR）的信息。true表示是高动态范围的信息，false表示不是高动态范围的信息。 |
 
 **返回：**
 
@@ -262,6 +262,12 @@ Image_ErrorCode OH_ImageSourceInfo_GetMimetype(OH_ImageSource_Info *info, Image_
 **描述**
 
 获取图片源的MIME类型。
+
+> **说明**
+>
+> - [mimeType结构体的成员变量](./capi-image-nativemodule-image-string.md#成员变量)data为char *类型指针，其指向info结构体内部持有的mimeType地址，释放info会导致该地址对应的内存也被释放。
+> - 开发者可以自行深拷贝一份mimeType.data，或者等mimeType使用完成后再释放info，以免出现乱码现象。
+> - mimeType.data没有以'\0'结尾，需要配合mimeType.size一起使用。
 
 **起始版本：** 20
 
@@ -287,7 +293,7 @@ Image_ErrorCode OH_ImageSourceInfo_Release(OH_ImageSource_Info *info)
 
 **描述**
 
-释放OH_ImageSource_Info指针。
+释放OH_ImageSource_Info指针。调用该接口之后，与OH_ImageSourceInfo结构体相关的属性均会被释放。因此在调用该接口前，请务必确认相关属性已不再被需要或对相关属性已完成深拷贝操作。
 
 **起始版本：** 12
 
@@ -347,7 +353,7 @@ Image_ErrorCode OH_DecodingOptions_GetPixelFormat(OH_DecodingOptions *options,in
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| int32_t *pixelFormat | pixel格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
+| int32_t *pixelFormat | pixel格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)，默认值为RGBA_8888。 |
 
 **返回：**
 
@@ -373,7 +379,7 @@ Image_ErrorCode OH_DecodingOptions_SetPixelFormat(OH_DecodingOptions *options,in
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| int32_t pixelFormat | pixel格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)。 |
+| int32_t pixelFormat | pixel格式[PIXEL_FORMAT](capi-pixelmap-native-h.md#pixel_format)，默认值为RGBA_8888。 |
 
 **返回：**
 
@@ -399,7 +405,7 @@ Image_ErrorCode OH_DecodingOptions_GetIndex(OH_DecodingOptions *options, uint32_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| uint32_t *index | 解码图片序号。 |
+| uint32_t *index | 解码图片序号，默认值为0。 |
 
 **返回：**
 
@@ -425,7 +431,7 @@ Image_ErrorCode OH_DecodingOptions_SetIndex(OH_DecodingOptions *options, uint32_
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| uint32_t index | 解码图片序号。 |
+| uint32_t index | 解码图片序号，默认值为0。 |
 
 **返回：**
 
@@ -451,7 +457,7 @@ Image_ErrorCode OH_DecodingOptions_GetRotate(OH_DecodingOptions *options, float 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| float *rotate | 旋转角度，单位为deg。 |
+| float *rotate | 旋转角度，单位为deg，默认值为0。 |
 
 **返回：**
 
@@ -477,7 +483,7 @@ Image_ErrorCode OH_DecodingOptions_SetRotate(OH_DecodingOptions *options, float 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| float rotate | 旋转角度，单位为deg。 |
+| float rotate | 旋转角度，单位为deg，默认值为0。 |
 
 **返回：**
 
@@ -503,7 +509,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredSize(OH_DecodingOptions *options,Im
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | 期望输出大小。 |
+| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | 期望输出大小，默认为原始图片尺寸。 |
 
 **返回：**
 
@@ -519,7 +525,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options,Im
 
 **描述**
 
-设置期望输出大小。
+设置期望输出大小。desiredSize参数决定解码得到的PixelMap大小，且宽、高须为正整数。若与原尺寸比例不一致，则会进行拉伸/缩放到指定尺寸。默认为原始尺寸。
 
 **起始版本：** 12
 
@@ -529,7 +535,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredSize(OH_DecodingOptions *options,Im
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | 期望输出大小。 |
+| [Image_Size](capi-image-nativemodule-image-size.md) *desiredSize | 期望输出大小，默认为原始图片尺寸。 |
 
 **返回：**
 
@@ -555,7 +561,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredRegion(OH_DecodingOptions *options,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | 解码区域。 |
+| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | 解码区域，默认为完整图片大小的区域。 |
 
 **返回：**
 
@@ -581,7 +587,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredRegion(OH_DecodingOptions *options,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | 解码区域。 |
+| [Image_Region](capi-image-nativemodule-image-region.md) *desiredRegion | 解码区域，默认为完整图片大小的区域。 |
 
 **返回：**
 
@@ -607,7 +613,7 @@ Image_ErrorCode OH_DecodingOptions_GetDesiredDynamicRange(OH_DecodingOptions *op
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| int32_t *desiredDynamicRange | 期望的动态范围值[IMAGE_DYNAMIC_RANGE](#image_dynamic_range)。 |
+| int32_t *desiredDynamicRange | 期望的动态范围值[IMAGE_DYNAMIC_RANGE](#image_dynamic_range)，默认值为SDR。 |
 
 **返回：**
 
@@ -633,7 +639,7 @@ Image_ErrorCode OH_DecodingOptions_SetDesiredDynamicRange(OH_DecodingOptions *op
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 被操作的OH_DecodingOptions指针。 |
-| int32_t desiredDynamicRange | 期望的动态范围值[IMAGE_DYNAMIC_RANGE](#image_dynamic_range)。 |
+| int32_t desiredDynamicRange | 期望的动态范围值[IMAGE_DYNAMIC_RANGE](#image_dynamic_range)，默认值为SDR。 |
 
 **返回：**
 
@@ -841,7 +847,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromUri(char *uri, size_t uriSize, OH
 | -- | -- |
 | char *uri | 指向图像源URI的指针。只接受文件URI或Base64 URI。当前文件资源只支持绝对路径。 |
 | size_t uriSize | URI长度。 |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) **res | 指向c++本地层创建的OH_ImageSourceNative对象的指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) **res | 指向c++本地层创建的OH_ImageSourceNative对象的指针。 |
 
 **返回：**
 
@@ -867,7 +873,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromFd(int32_t fd, OH_ImageSourceNati
 | 参数项 | 描述 |
 | -- | -- |
 | int32_t fd | 文件描述符fd。 |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) **res | 指向c++本地层创建的OH_ImageSourceNative对象的指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) **res | 指向c++本地层创建的OH_ImageSourceNative对象的指针。 |
 
 **返回：**
 
@@ -883,7 +889,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSi
 
 **描述**
 
-通过缓冲区数据创建OH_ImageSourceNative指针。<br> data数据应该是未解码的数据，不要传入类似于RBGA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)这一类接口。
+通过缓冲区数据创建OH_ImageSourceNative指针。<br> data数据应该是未解码的数据，不要传入类似于RGBA，YUV的像素buffer数据，如果想通过像素buffer数据创建pixelMap，可以调用[OH_PixelmapNative_CreatePixelmap](capi-pixelmap-native-h.md#oh_pixelmapnative_createpixelmap)这一类接口。
 
 **起始版本：** 12
 
@@ -894,7 +900,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromData(uint8_t *data, size_t dataSi
 | -- | -- |
 | uint8_t *data | 图像缓冲区数据。 |
 | size_t dataSize | 图像缓冲区数据长度。 |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) **res | 指向c++本地层创建的OH_ImageSourceNative对象的指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) **res | 指向c++本地层创建的OH_ImageSourceNative对象的指针。 |
 
 **返回：**
 
@@ -947,7 +953,7 @@ Image_ErrorCode OH_ImageSourceNative_CreateFromRawFile(RawFileDescriptor *rawFil
 | 参数项 | 描述 |
 | -- | -- |
 | [RawFileDescriptor](../apis-localization-kit/capi-rawfile-rawfiledescriptor.md) *rawFile | 指示raw文件的文件描述符。 |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) **res | 指向c++本地层创建的OH_ImageSourceNative对象的指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) **res | 指向c++本地层创建的OH_ImageSourceNative对象的指针。 |
 
 **返回：**
 
@@ -972,7 +978,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmap(OH_ImageSourceNative *source
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。 |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 解码参数。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | 指向c++本地层创建的OH_PixelmapNative对象的指针。 |
 
@@ -999,7 +1005,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapUsingAllocator(OH_ImageSource
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。 |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 解码参数。 |
 | [IMAGE_ALLOCATOR_TYPE](#image_allocator_type) allocator | 指示返回的PixelMap将使用哪种内存类型。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) **pixelmap | 指向c++本地层创建的OH_PixelmapNative对象的指针。 |
@@ -1027,7 +1033,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePixelmapList(OH_ImageSourceNative *so
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。 |
 | [OH_DecodingOptions](capi-image-nativemodule-oh-decodingoptions.md) *options | 解码参数。 |
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) *resVecPixMap[] | 指向c++本地层创建的OH_PixelmapNative对象的指针数组。 |
 | size_t size | 数组长度。 用户可以使用[OH_ImageSourceNative_GetFrameCount](#oh_imagesourcenative_getframecount)获取。 |
@@ -1055,7 +1061,7 @@ Image_ErrorCode OH_ImageSourceNative_CreatePicture(OH_ImageSourceNative *source,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。 |
 | [OH_DecodingOptionsForPicture](capi-image-nativemodule-oh-decodingoptionsforpicture.md) *options | 解码参数。 |
 | [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) **picture | 指向c++本地层创建的OH_PictureNative对象的指针。 |
 
@@ -1109,7 +1115,7 @@ Image_ErrorCode OH_ImageSourceNative_GetDelayTimeList(OH_ImageSourceNative *sour
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。 |
 | int32_t *delayTimeList | 指向获得的延迟时间列表的指针。它不能是空指针。 |
 | size_t size | delayTimeList的大小。用户可以从[OH_ImageSourceNative_GetFrameCount](#oh_imagesourcenative_getframecount)获得大小。 |
 
@@ -1136,7 +1142,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImageInfo(OH_ImageSourceNative *source, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。 |
 | int32_t index | 图片序号。对GIF图片可传入[0,N-1],N表示GIF的帧数。对只有一帧数据的图片格式，可传入0。 |
 | [OH_ImageSource_Info](capi-image-nativemodule-imagesource-info.md) *info | 指向获取的图像源信息的OH_ImageSource_Info指针。 |
 
@@ -1163,7 +1169,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImageProperty(OH_ImageSourceNative *sour
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性的指针。key的取值范围请参考image_common.h的[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *value | 指向获取的值的指针（输出参数）。调用本接口前，用户应将value->data置为空指针，并将value->size设为0。接口会为value->data自动分配所需内存，并对value->size赋值。完成对该内存的使用后，用户必须使用C标准库提供的free()函数释放value->data指向的内存，否则会出现内存泄漏。 |
 
@@ -1190,7 +1196,7 @@ Image_ErrorCode OH_ImageSourceNative_GetImagePropertyWithNull(OH_ImageSourceNati
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source |  被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source |  被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性键的指针。key的取值范围请参考image_common.h的[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *value | 指向属性值的指针（输出参数）。调用本接口前，用户应将value->data置为空指针，并将value->size设为0。接口会为value->data自动分配所需内存，并对value->size赋值。完成对该内存的使用后，用户必须使用C标准库提供的free()函数释放value->data指向的内存，否则可能导致内存泄漏。 |
 
@@ -1217,7 +1223,7 @@ Image_ErrorCode OH_ImageSourceNative_ModifyImageProperty(OH_ImageSourceNative *s
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。OH_ImageSourceNative使用完成后需要主动释放，参见[OH_ImageSourceNative_Release](#oh_imagesourcenative_release)。 |
 | [Image_String](capi-image-nativemodule-image-string.md) *key | 指向属性键的指针。key的取值范围请参考image_common.h的[变量](capi-image-common-h.md#变量)中定义的OHOS_IMAGE_PROPERTY_XXX系列常量。|
 | [Image_String](capi-image-nativemodule-image-string.md) *value | 需要修改的属性值。 |
 
@@ -1244,7 +1250,7 @@ Image_ErrorCode OH_ImageSourceNative_GetFrameCount(OH_ImageSourceNative *source,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 被操作的OH_ImageSourceNative指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 被操作的OH_ImageSourceNative指针。 |
 | uint32_t *frameCount | 图像帧数。 |
 
 **返回：**
@@ -1296,7 +1302,7 @@ Image_ErrorCode OH_ImageSourceNative_Release(OH_ImageSourceNative *source)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_ImageSourceNative](capi-image-imagesourcenative-.md) *source | 要释放的OH_ImageSourceNative指针。 |
+| [OH_ImageSourceNative](capi-image-nativemodule-oh-imagesourcenative.md) *source | 要释放的OH_ImageSourceNative指针。 |
 
 **返回：**
 

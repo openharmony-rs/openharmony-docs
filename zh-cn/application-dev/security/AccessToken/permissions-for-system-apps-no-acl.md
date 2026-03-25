@@ -17,6 +17,18 @@
 
 申请流程可参考[选择申请权限的方式](determine-application-mode.md)。
 
+## ohos.permission.hsdr.HSDR_ACCESS
+
+允许应用访问安全检测与响应框架。
+
+**权限级别**：normal
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：false
+
+**起始版本**：10
+
 ## ohos.permission.SYSTEM_LIGHT_CONTROL
 
 允许控制系统灯，包括打开、关闭等操作。

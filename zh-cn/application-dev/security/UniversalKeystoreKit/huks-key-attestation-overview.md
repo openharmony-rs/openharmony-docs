@@ -18,7 +18,7 @@ HUKS为密钥提供合法性证明能力，主要应用于非对称密钥的公�
 > 4. 支持生成密钥和导入密钥进行密钥证明，业务方在服务器侧需要通过业务证书中的密钥来源字段校验密钥来源是否符合预期。
 
 密钥证明扩展域段为Asn.1 DER标准编码格式，数据结构定义如下：
-```
+```asn1
 KeyAttestation ::= SEQUENCE {
   version            AttestationVersion DEFAULT v1,
   claim1             AttestationClaim,
@@ -71,7 +71,7 @@ ApplicationIDType类型取值说明：
 
 <!--RP2-->
 当前提供了两种密钥证明方式。
-- 匿名密钥证明：不会泄露设备信息，没有权限管理。面向所有应用开放。为了保护用户设备信息，三方应用开发者只能使用匿名密钥证明。
+- 匿名密钥证明：不会泄露设备信息，没有权限管理。面向所有应用开放。为了保护用户设备信息，三方应用开发者只能使用匿名密钥证明。默认情况下，每个应用调用匿名密钥证明接口的瞬时流量每秒不超过35次请求。<!--RP3--><!--RP3End-->
 - 非匿名密钥证明：可以看到调用方设备信息，有权限管控，需申请[ohos.permission.ATTEST_KEY](../AccessToken/permissions-for-system-apps.md#ohospermissionattest_key)权限。
 <!--RP2End-->
 

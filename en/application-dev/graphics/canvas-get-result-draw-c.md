@@ -9,31 +9,31 @@
 
 ## Overview
 
-Canvas provides the capability of drawing basic graphics, which is used to draw and process graphics on the screen. You can use Canvas to implement custom drawing effects and enhance user experience.
+Canvas provides the capability of drawing and processing basic graphics on the screen. You can use Canvas to implement custom drawing effects to enhance user experience.
 
-Canvas is the core of graphics drawing. All drawing operations mentioned in this chapter (including drawing basic graphics, text, and images, and transforming graphics) are based on Canvas.
+Canvas is the core of graphics drawing. All drawing operations mentioned in this topic (including drawing basic graphics, text, and images, and performing graphic transformation) are based on Canvas.
 
-Currently, C/C++ supports two methods of obtaining the canvas: obtaining the canvas that can be directly displayed on the screen and obtaining the off-screen canvas. For the former, you do not need to perform additional operations after calling the drawing API to display the drawing result on the screen. For the latter, you need to use existing display methods to display the drawing result.
+In C/C++, you can obtain a canvas in either of the following ways: obtaining a canvas that can be directly displayed; obtaining an offscreen canvas. The former does not require additional operations after the drawing API is called, and the latter requires existing display approaches to display the drawing result.
 
 
 ## Available APIs
 
-The following table lists the common APIs for creating a canvas. For details about the APIs and parameters, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
+The following table lists the APIs for creating a canvas. For details, see [drawing_canvas.h](../reference/apis-arkgraphics2d/capi-drawing-canvas-h.md).
 
 | API| Description|
 | -------- | -------- |
-| OH_Drawing_Canvas\* OH_Drawing_CanvasCreate (void) | Creates an **OH_Drawing_Canvas** object.|
-| void OH_Drawing_CanvasBind (OH_Drawing_Canvas\*, OH_Drawing_Bitmap\*) | Binds a bitmap object to the canvas so that the content drawn on the canvas is output to the bitmap.|
-| OH_Drawing_Canvas\* OH_Drawing_SurfaceGetCanvas (OH_Drawing_Surface \*) | Obtains a canvas from an **OH_Drawing_Surface** object.|
+| OH_Drawing_Canvas\* OH_Drawing_CanvasCreate (void) | Creates a canvas object.|
+| void OH_Drawing_CanvasBind (OH_Drawing_Canvas\*, OH_Drawing_Bitmap\*) | Binds a bitmap to a canvas so that the content drawn on the canvas is output to the bitmap.|
+| OH_Drawing_Canvas\* OH_Drawing_SurfaceGetCanvas (OH_Drawing_Surface \*) | Obtains a canvas from a surface object.|
 
 
-## Obtaining the Canvas That Can Be Directly Displayed
+## Obtaining a Canvas That Can Be Directly Displayed
 
-Obtain the canvas that can be directly displayed through XComponent.
+You can obtain a canvas that can be directly displayed via XComponent.
 
-1. Add the link library.
+1. Add link libraries.
 
-   Add the following link library to src/main/cpp/CMakeLists.txt of the native project:
+   Add the following link libraries to **src/main/cpp/CMakeLists.txt** of the Native project.
 
    ```c++
    // CMakeLists.txt
@@ -41,7 +41,7 @@ Obtain the canvas that can be directly displayed through XComponent.
    ```
    <!-- [ndk_graphics_draw_cmake_drawing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
 
-2. Imports the header files required for dependency.
+2. Import the required header files.
 
    ```c++
    // sample_graphics.h
@@ -55,12 +55,12 @@ Obtain the canvas that can be directly displayed through XComponent.
    ```
    <!-- [ndk_graphics_draw_include_native_drawing_surface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-3. Obtains the BufferHandle object from the NativeWindow corresponding to XComponent. For details about NativeWindow APIs, see _native_window_ (../reference/apis-arkgraphics2d/capi-nativewindow.md).
+3. Obtain the **BufferHandle** object from the **NativeWindow** corresponding to XComponent. For details about **NativeWindow** APIs, see [_native_window](../reference/apis-arkgraphics2d/capi-nativewindow.md).
 
    ```c++
    // sample_graphics.cpp
    uint64_t width, height;
-   // The NativeWindow and its width and height need to be obtained from the XComponent.
+   // Obtain NativeWindow and its width and height from XComponent.
    OHNativeWindow *nativeWindow;
    int32_t usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA;
    int ret = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_USAGE, usage);
@@ -79,7 +79,7 @@ Obtain the canvas that can be directly displayed through XComponent.
    ```
    <!-- [ndk_graphics_draw_get_buffer_handle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-4. Obtain the memory address of the buffer handle.
+4. Obtain the corresponding memory address from the buffer handle.
 
    ```c++
    // sample_graphics.cpp
@@ -87,14 +87,14 @@ Obtain the canvas that can be directly displayed through XComponent.
    ```
    <!-- [ndk_graphics_draw_get_mapped_addr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-5. Creates a window canvas.
+5. Create a window canvas.
 
    ```c++
    // sample_graphics.cpp
-   //Method 1 for creating a bitmap: Use OH_Drawing_BitmapCreateFromPixels to create cScreenBitmap_ of the OH_Drawing_Bitmap* type.
+   // Method 1 for creating a bitmap: Use OH_Drawing_BitmapCreateFromPixels to create cScreenBitmap_ of the OH_Drawing_Bitmap* type.
    // OH_Drawing_Image_Info screenImageInfo = {static_cast<int32_t>(width), static_cast<int32_t>(height), COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
    // OH_Drawing_Bitmap* cScreenBitmap_ = OH_Drawing_BitmapCreateFromPixels(&screenImageInfo, mappedAddr, bufferHandle->stride); 
-   //Method 2 for creating a bitmap: Use OH_Drawing_BitmapCreate to create cScreenBitmap_ of the OH_Drawing_Bitmap* type.
+   // Method 2 for creating a bitmap: Use OH_Drawing_BitmapCreate to create cScreenBitmap_ of the OH_Drawing_Bitmap* type.
    cScreenBitmap_ = OH_Drawing_BitmapCreate();
    // Define the pixel format of the bitmap.
    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_OPAQUE};
@@ -106,9 +106,9 @@ Obtain the canvas that can be directly displayed through XComponent.
    ```
    <!-- [ndk_graphics_draw_create_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-6. Customize drawing operations using the Canvas obtained in the previous step.
+6. Use the canvas obtained in the previous step to perform custom drawing operations.
 
-7. Use XComponent to display the Canvas.
+7. Use XComponent to complete the display.
 
    ```c++
    // sample_graphics.cpp
@@ -118,17 +118,17 @@ Obtain the canvas that can be directly displayed through XComponent.
    <!-- [ndk_graphics_draw_native_window_flush_buffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
-## Obtaining and Displaying the Off-Screen Canvas
+## Obtaining and Displaying an Offscreen Canvas
 
-Currently, there are two ways to create an off-screen Canvas: creating a CPU backend Canvas and creating a GPU backend Canvas. The drawing results of both Canvases need to be displayed on the screen using XComponent. Due to historical reasons, early Canvases are all CPU backend Canvases. Currently, GPU backend Canvases are supported. GPUs have stronger parallel computing capabilities and are more suitable for graphics drawing. However, GPU backend Canvases do not support some scenarios, such as complex paths. The drawing performance of short texts is not as good as that of CPU backend Canvases.
-
-
-### Creating and displaying a CPU backend Canvas
-
-Currently, the C/C++ API drawing depends on NativeWindow. The CPU backend Canvas needs to perform off-screen drawing to generate a bitmap or pixel map (supported since API version 20), and then use XComponent to display the bitmap or pixel map on the screen.
+There are two types of offscreen canvas: CPU backend canvas and GPU backend canvas, both of which rely on XComponent to display the drawing result on the screen. Due to historical reasons, early canvases are all CPU backend canvases. Currently, GPU backend canvases are supported. The parallel computing capability of the GPU is stronger and more suitable for graphics drawing. However, the GPU backend canvas does not support some scenarios, for example, complex paths. The drawing performance of short texts is also inferior to that of the CPU backend canvas.
 
 
-Method 1: Create a Canvas by binding a bitmap.
+### Creating and Displaying a CPU Backend Canvas
+
+Currently, the drawing of C/C++ APIs depends on **NativeWindow**. The CPU backend canvas needs to be drawn offscreen first to generate a bitmap or pixel map (supported since API version 20), and then displayed on the screen through XComponent.
+
+
+Method 1: Create a canvas by binding a bitmap.
 1. Import the required header files.
 
    ```c++
@@ -138,26 +138,26 @@ Method 1: Create a Canvas by binding a bitmap.
    ```
    <!-- [ndk_graphics_draw_include_native_drawing_canvas_and_bitmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.h) -->
 
-2. Create a CPU-based Canvas. You need to create a bitmap object by calling OH_Drawing_BitmapCreate() (for details, see [Image Drawing](pixelmap-drawing-c.md)) and bind the bitmap to the Canvas by calling OH_Drawing_CanvasBind() so that the content drawn by the Canvas can be output to the bitmap.
+2. Create a canvas based on the CPU. You need to create a bitmap object by calling **OH_Drawing_BitmapCreate()** (for details, see [Drawing Images](pixelmap-drawing-c.md)) and bind the bitmap to the canvas by calling **OH_Drawing_CanvasBind()**. In this way, the content drawn on the canvas can be output to the bitmap.
 
    ```c++
    // sample_graphics.cpp
-   // Create a bitmap object.
+   // Creates an OH_Drawing_Bitmap object.
    OH_Drawing_Bitmap* bitmap = OH_Drawing_BitmapCreate();
    OH_Drawing_BitmapFormat cFormat{COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_PREMUL};
-   // Set the width and height of the bitmap as required.
+   // Set the bitmap width and height as required.
    uint32_t width = 800;
    uint32_t height = 800;
    // Initialize the bitmap.
    OH_Drawing_BitmapBuild(bitmap, width, height, &cFormat);
-   // Create a Canvas object.
+   // Create an OH_Drawing_Canvas object.
    OH_Drawing_Canvas* bitmapCanvas = OH_Drawing_CanvasCreate();
-   // Bind the canvas to the bitmap. The content drawn on the canvas is output to the memory of the bound bitmap.
+   // Bind the canvas to the bitmap. The content drawn on the canvas will be output to the memory of the bitmap.
    OH_Drawing_CanvasBind(bitmapCanvas, bitmap);
    ```
    <!-- [ndk_graphics_draw_create_canvas_by_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-   To set the background color to white, perform the following steps:
+   To set the background to white, perform the following steps:
 
    ```c++
    // sample_graphics.cpp
@@ -165,7 +165,7 @@ Method 1: Create a Canvas by binding a bitmap.
    ```
    <!-- [ndk_graphics_draw_clear_canvas_cpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-3. Draw the bitmap created in the previous step on the window canvas (obtained in # Obtaining a Canvas That Can Be Directly Displayed).
+3. Draw the bitmap created in the previous step to the [canvas](#obtaining-a-canvas-that-can-be-directly-displayed).
 
    ```c++
    // sample_graphics.cpp
@@ -175,12 +175,13 @@ Method 1: Create a Canvas by binding a bitmap.
 
 
 
-Method 2: Create a canvas using a pixel map. From API version 20, this method can be used to create a canvas.
-A pixel map is a unified data structure used to represent images in the system. Compared with bitmaps provided by the drawing module, pixel maps are more universal and can better leverage system capabilities.
+Method 2: Create a canvas using a pixel map. This method is supported since API version 20.
 
-1. Add the link library.
+A pixel map is a unified data structure used to represent images in the system. Compared with bitmaps provided by the drawing module, pixel maps are more universal and can better leverage the system capabilities.
 
-   Add the following link library to src/main/cpp/CMakeLists.txt of the native project:
+1. Add link libraries.
+
+   Add the following link libraries to **src/main/cpp/CMakeLists.txt** of the Native project.
 
    ```c++
    // CMakeLists.txt
@@ -188,7 +189,7 @@ A pixel map is a unified data structure used to represent images in the system. 
    ```
    <!-- [ndk_graphics_draw_cmake_pixelmap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
 
-2. Imports the header files required for dependency.
+2. Import the required header files.
 
    ```c++
    // sample_graphics.cpp
@@ -203,44 +204,44 @@ A pixel map is a unified data structure used to represent images in the system. 
    <!-- [ndk_graphics_draw_include_drawing_pixel_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
-3. You need to create a pixel map object by calling OH_Drawing_PixelMapGetFromOhPixelMapNative() (for details, see [Drawing](pixelmap-drawing-c.md)), and create a canvas with the pixel map object by calling OH_Drawing_CanvasCreateWithPixelMap().
+3. You need to create a pixel map object by calling **OH_Drawing_PixelMapGetFromOhPixelMapNative()** (for details, see [Drawing Images](pixelmap-drawing-c.md)), and create a canvas by calling **OH_Drawing_CanvasCreateWithPixelMap()** based on the pixel map object.
 
    ```c++
    // sample_graphics.cpp
-   // Image width and height
+   // Image width and height.
    uint32_t width = 600;
    uint32_t height = 400;
-   // Set the bitmap format (width, height, color type, and transparency type).
+   // Set the pixel map format (length, width, color type, and alpha type).
    OH_Pixelmap_InitializationOptions *createOps = nullptr;
    OH_PixelmapInitializationOptions_Create(&createOps);
    OH_PixelmapInitializationOptions_SetWidth(createOps, width);
    OH_PixelmapInitializationOptions_SetHeight(createOps, height);
    OH_PixelmapInitializationOptions_SetPixelFormat(createOps, PIXEL_FORMAT_RGBA_8888);
    OH_PixelmapInitializationOptions_SetAlphaType(createOps, PIXELMAP_ALPHA_TYPE_UNKNOWN);
-   // Byte length. Each pixel of RGBA_8888 occupies four bytes.
+   // Byte length. Each RGBA_8888 pixel occupies 4 bytes.
    size_t bufferSize = width * height * 4;
    void *buffer = malloc(bufferSize);
    // Create an OH_PixelmapNative object.
    OH_PixelmapNative *pixelMapNative = nullptr;
    OH_PixelmapNative_CreatePixelmap(static_cast<uint8_t *>(buffer), bufferSize, createOps, &pixelMapNative);
-   // Create a pixel map object.
+   // Create an OH_Drawing_PixelMap object.
    OH_Drawing_PixelMap *pixelMap = OH_Drawing_PixelMapGetFromOhPixelMapNative(pixelMapNative);
-   // Create a Canvas object.
+   // Create an OH_Drawing_Canvas object.
    OH_Drawing_Canvas* pixelmapCanvas = OH_Drawing_CanvasCreateWithPixelMap(pixelMap);
    ```
    <!-- [ndk_graphics_draw_image](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-   To set the background color to white, perform the following steps:
+   To set the background to white, perform the following steps:
 
    ```c++
    OH_Drawing_CanvasClear(pixelmapCanvas, OH_Drawing_ColorSetArgb(0xFF, 0xFF, 0xFF, 0xFF));
    ```
 
-4. Draw the pixel map created in the previous step to the window canvas (obtained in # Obtaining the Canvas That Can Be Directly Displayed).
+4. Draw the pixel map created in the previous step to the [canvas](#obtaining-a-canvas-that-can-be-directly-displayed).
 
    ```c++
    // sample_graphics.cpp
-   // Area from which pixels are captured in PixelMap.
+   // Cropping area of the pixels in the pixel map.
    OH_Drawing_Rect *src = OH_Drawing_RectCreate(0, 0, width, height);
    // Area displayed on the canvas.
    OH_Drawing_Rect *dst = OH_Drawing_RectCreate(0, 0, width, height);
@@ -253,11 +254,11 @@ A pixel map is a unified data structure used to represent images in the system. 
    <!-- [ndk_graphics_draw_image_to_canvas](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
 
-### Creating and Displaying a Canvas with the GPU Backend
+### Creating and Displaying a GPU Backend Canvas
 
-The canvas with the GPU backend is drawn based on the GPU. The parallel computing capability of the GPU is better than that of the CPU. The canvas with the GPU backend is applicable to scenarios where images or large areas are drawn. However, the canvas with the GPU backend is not good at drawing complex paths. Similar to the canvas with the CPU backend, the drawing of the C/C++ API depends on XComponent. The canvas with the GPU backend needs to be drawn offscreen and then displayed on the screen through XComponent.
+A GPU backend canvas is a canvas that is drawn based on the GPU. The parallel computing capability of the GPU is better than that of the CPU. It is applicable to scenarios where images or large areas are drawn. However, the GPU backend canvas currently cannot draw complex paths. Similar to the CPU backend canvas, drawing using the C/C++ APIs depends on XComponent. The GPU backend canvas needs to be drawn offscreen and then displayed on the screen through XComponent.
 
-1. Currently, creating a canvas with the GPU backend depends on the EGL capability. You need to add the dynamic dependency library of EGL to CMakeList.txt.
+1. Currently, the creation of the GPU backend canvas depends on the EGL capability. You need to add the dynamic dependency library of the EGL to the **CMakeLists.txt** file.
 
    ```c++
    // CMakeLists.txt
@@ -265,7 +266,7 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
    ```
    <!-- [ndk_graphics_draw_cmake_EGL](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/CMakeLists.txt) -->
 
-2. Import the dependency header file.
+2. Import the required header files.
 
    ```c++
    // sample_graphics.h
@@ -281,11 +282,11 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
    ```
    <!-- [ndk_graphics_draw_include_native_drawing_surface_and_gpu_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-3. Initializes an EGL context.
+3. Initialize the EGL context.
 
    ```c++
    // sample_graphics.h
-   //Initialize EGL context parameters.
+   // Initialize context-related parameters.
    EGLDisplay mEGLDisplay = EGL_NO_DISPLAY;
    EGLConfig mEGLConfig = nullptr;
    EGLContext mEGLContext = EGL_NO_CONTEXT;
@@ -295,7 +296,7 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
 
    ```c++
    // sample_graphics.cpp
-   //Initialize EGL context configurations.
+   // Initialize context-related configurations.
    EGLConfig getConfig(int version, EGLDisplay eglDisplay)
    {
       int attribList[] = {EGL_SURFACE_TYPE,
@@ -321,7 +322,7 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
       return configs;
    }
 
-   // Call InitializeEglContext at the place where the EGL context needs to be initialized.
+   // Call InitializeEglContext where the EGL context needs to be initialized.
    int32_t InitializeEglContext(EGLDisplay mEGLDisplay, EGLConfig mEGLConfig,
       EGLContext mEGLContext, EGLSurface mEGLSurface)
    {
@@ -358,18 +359,18 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
    ```
    <!-- [ndk_graphics_draw_initialize_egl_context](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-4. Creates a GPU backend canvas. The GPU backend canvas can be obtained only through the surface object. You need to create a surface first. For details about the surface APIs, see [drawing_surface.h](../reference/apis-arkgraphics2d/capi-drawing-surface-h.md). Create a drawing context by calling OH_Drawing_GpuContextCreateFromGL, create a surface using the context, and obtain the canvas from the surface by calling OH_Drawing_SurfaceGetCanvas.
+4. Create a GPU backend canvas. The GPU backend canvas needs to be obtained using the surface object. You need to create a surface object first. For details about the surface APIs, see [drawing_surface.h](../reference/apis-arkgraphics2d/capi-drawing-surface-h.md). Create a drawing context by calling **OH_Drawing_GpuContextCreateFromGL**, create a surface object by passing the context as a parameter, and obtain the canvas from the surface by calling **OH_Drawing_SurfaceGetCanvas**.
 
    ```c++
    // sample_graphics.cpp
    // Set the width and height as required.
    int32_t cWidth = 800;
    int32_t cHeight = 800;
-   // Set the image, including the width, height, color format, and transparency format.
+   // Set the image, including the width, height, color format, and alpha format.
    OH_Drawing_Image_Info imageInfo = {cWidth, cHeight, COLOR_FORMAT_RGBA_8888, ALPHA_FORMAT_PREMUL};
    // GPU context options.
    OH_Drawing_GpuContextOptions options{false};
-   // Create a drawing context with OpenGL (GL) as the GPU backend.
+   // Create a drawing context that uses OpenGL (GL) as its GPU backend.
    OH_Drawing_GpuContext *gpuContext = OH_Drawing_GpuContextCreateFromGL(options);
    // Create a surface object.
    OH_Drawing_Surface *surface = OH_Drawing_SurfaceCreateFromGpuContext(gpuContext, true, imageInfo);
@@ -386,7 +387,7 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
    ```
    <!-- [ndk_graphics_draw_clear_canvas_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-5. Copy the drawing result in the previous step to the window canvas (obtained in #).
+5. Copy the drawing result in the previous step to the [canvas](#obtaining-a-canvas-that-can-be-directly-displayed).
 
    ```c++
    // sample_graphics.cpp
@@ -397,14 +398,14 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
    ```
    <!-- [ndk_graphics_draw_drawing_to_window_canvas_gpu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Drawing/NDKGraphicsDraw/entry/src/main/cpp/samples/sample_graphics.cpp) -->
 
-6. After using the EGL context, destroy it.
+6. Destroy the EGL context after using it.
 
    ```c++
    // sample_graphics.cpp
-   //Call DeInitializeEglContext to destroy the EGL context.
+   // Call DeInitializeEglContext to destroy the EGL context.
    void DeInitializeEglContext(EGLDisplay mEGLDisplay, EGLContext mEGLContext, EGLSurface mEGLSurface)
    {
-      //The following three methods return values to determine whether the EGL context is successfully destroyed. You can debug the methods if necessary.
+      // The following three methods return values to determine whether the EGL context is successfully destroyed. Debug the methods if necessary.
       eglDestroySurface(mEGLDisplay, mEGLSurface);
       eglDestroyContext(mEGLDisplay, mEGLContext);
       eglTerminate(mEGLDisplay);
@@ -419,7 +420,7 @@ The canvas with the GPU backend is drawn based on the GPU. The parallel computin
 <!--RP1-->
 ## Samples
 
-The following sample is available for Drawing (C/C++):
+The following samples are provided to help you better understand how to use the **Drawing** APIs (C/C++) for development:
 
 - [NDKGraphicsDraw (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Drawing/NDKGraphicsDraw)
 <!--RP1End-->

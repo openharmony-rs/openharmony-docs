@@ -29,9 +29,11 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) | ArkUI_DrawableDescriptor | 定义DrawableDescriptor对象。 |
+| [OH_PixelmapNative](../apis-image-kit/capi-image-nativemodule-oh-pixelmapnative.md) | - | 使用Image Kit定义的Native侧的OH_PixelmapNative对象。 |
 | [OH_PixelmapNative*](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | OH_PixelmapNativeHandle | 定义OH_PixelmapNative对象指针类型。 |
-| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | 定义ArkUI native组件实例对象指针定义。 |
-| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md) | ArkUI_DrawableDescriptor_AnimationController | 定义DrawableDescriptor动图控制器对象。 |
+| [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | - | 定义ArkUI native组件实例对象。<br>**起始版本：** 22|
+| [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | 定义ArkUI native组件实例对象指针定义。<br>**起始版本：** 22|
+| [ArkUI_DrawableDescriptor_AnimationController](capi-arkui-nativemodule-arkui-drawabledescriptoranimationcontroller.md) | ArkUI_DrawableDescriptor_AnimationController | 定义DrawableDescriptor动图控制器对象。<br>**起始版本：** 22|
 
 ### 枚举
 
@@ -107,7 +109,7 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_Pixe
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) pixelMap | PixelMap对象指针。 |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) pixelMap | [OH_PixelmapNative](./capi-struct.md)对象指针。 |
 
 **返回：**
 
@@ -186,7 +188,7 @@ OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_Draw
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | PixelMap对象指针。 |
+| [OH_PixelmapNativeHandle](capi-arkui-nativemodule-oh-pixelmapnative8h.md) | [OH_PixelmapNative](./capi-struct.md)对象指针。 |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray()
 
@@ -259,7 +261,7 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* 
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
-| int32_t duration | 播放总时长，单位毫秒。 |
+| int32_t duration | 播放总时长，单位ms。取值范围：[0, +∞)。传入负数时按0处理。 |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationDuration()
 
@@ -285,7 +287,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescripto
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 播放总时长，单位毫秒。 |
+| int32_t | 播放总时长，单位ms。 |
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationIteration()
 
@@ -306,7 +308,7 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor*
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
-| int32_t iteration | 播放次数。 |
+| int32_t iteration | 播放次数。取值范围：[0, +∞)，0表示无限循环播放。传入负数时按0处理。 |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationIteration()
 
@@ -351,14 +353,14 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDes
 | 参数项 | 描述 |
 | -- | -- |
 | [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawableDescriptor | DrawableDescriptor对象指针。 |
-| uint32_t* durations | 动图中的单帧播放时间数组，单位毫秒。<br/>不设置则按照总时间播放。设置的优先级高于duration，即同时设置了duration和frameDurations时，duration不生效。<br/>数组大小必须与PixelMap图片数组大小相同。<br/>每帧播放时间取值范围：[0, +∞)。 |
+| uint32_t* durations | 动图中的单帧播放时间数组，单位ms。<br/>不设置则按照总时间播放。设置的优先级高于[OH_ArkUI_DrawableDescriptor_SetAnimationDuration](#oh_arkui_drawabledescriptor_setanimationduration)，即同时设置了OH_ArkUI_DrawableDescriptor_SetAnimationDuration和OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations时，OH_ArkUI_DrawableDescriptor_SetAnimationDuration不生效。<br/>数组大小必须与PixelMap图片数组大小相同。<br/>每帧播放时间取值范围：[0, +∞)。默认值：均匀分配总时长。 |
 | size_t size | 数组大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_INVALID_PARAM](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations()
 
@@ -384,7 +386,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDes
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_INVALID_PARAM](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
 
 ### OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay()
 
@@ -410,7 +412,7 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescripto
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_INVALID_PARAM](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay()
 
@@ -435,7 +437,7 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescripto
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_INVALID_PARAM](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
 
 ### OH_ArkUI_DrawableDescriptor_CreateAnimationController()
 
@@ -462,7 +464,7 @@ int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDesc
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_INVALID_PARAM](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
 
 ### OH_ArkUI_DrawableDescriptor_DisposeAnimationController()
 
@@ -504,7 +506,7 @@ int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_Anim
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_INVALID_PARAM](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
 
 ### OH_ArkUI_DrawableDescriptor_StopAnimation()
 
@@ -528,7 +530,7 @@ int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_Anima
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_INVALID_PARAM](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
 
 ### OH_ArkUI_DrawableDescriptor_ResumeAnimation()
 
@@ -552,7 +554,7 @@ int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_Ani
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_INVALID_PARAM](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
 
 ### OH_ArkUI_DrawableDescriptor_PauseAnimation()
 
@@ -576,7 +578,7 @@ int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_Anim
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_INVALID_PARAM](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
 
 ### OH_ArkUI_DrawableDescriptor_GetAnimationStatus()
 
@@ -601,4 +603,4 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_INVALID_PARAM](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |
+| int32_t | 错误码。<br> [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) 成功。<br> [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) 输入参数错误。 |

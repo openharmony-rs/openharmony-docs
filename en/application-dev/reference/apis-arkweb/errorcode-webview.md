@@ -20,9 +20,13 @@ Init error. The WebviewController must be associated with a Web component.
 
 This error code is reported when the **WebviewController** object is not associated with any **Web** component.
 
+**Possible Causes**
+
+The **WebViewController** object is not associated with any **Web** component.
+
 **Solution**
 
-Use [onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10) to check whether the **WebViewController** object is attached with the **Web** component.
+Use [onControllerAttached()](./arkts-basic-components-web-events.md#oncontrollerattached10) to check whether the **WebViewController** object is attached with the **Web** component.<!--RP1--><!--RP1End-->
 
 
 ## 17100002 Invalid URL
@@ -34,6 +38,12 @@ URL error. Possible causes: 1. No valid cookie found for the specified URL. 2. T
 **Description**
 
 The URL is incorrect. Possible causes are as follows:
+
+1. No valid cookie is found for the specified URL.
+
+2. The web page corresponding to the URL is invalid, or the URL length exceeds 2 × 1024 × 1024 characters.
+
+**Possible Causes**
 
 1. No valid cookie is found for the specified URL.
 
@@ -72,6 +82,10 @@ Function not enabled.
 **Description**
 
 This error code is reported when the related function is not enabled.
+
+**Possible Causes**
+
+The related function is not set or enabled.
 
 **Solution**
 
@@ -384,4 +398,4 @@ The error code is not within the range of [WebNetErrorList](arkts-apis-netErrorL
 
 **Solution**
 
-Check whether the error code is within the range of [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) or whether **NET_OK** is used when the **difFail** API is called.
+Check whether the error code is within the range of [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) or whether **NET_OK** is used when the **didFail** API is called.

@@ -49,14 +49,11 @@ Constructs a URI object, and provides methods for determining whether this URI i
 
 Naming format:
 
-A standard URI mainly consists of three parts, as follows:
-[scheme:]scheme-specific-part[#fragment]
+A standard URI mainly consists of **[scheme:]scheme-specific-part[#fragment]**.
 
-Breaking down the URI format further, it can be divided into:
-[scheme:][//authority][path][?query][#fragment]
+An elaborated URI consists of **[scheme:][//authority][path][?query][#fragment]**.
 
-Further refining the URI format, it can be detailed as:
-[scheme:][//[user-info@]host[:port]][path][?query][#fragment]
+A further refined URI consists of **[scheme:][//[user-info@]host[:port]][path][?query][#fragment]**.
 
 - scheme: scheme name, which is separated from scheme-specific-part by a colon (:). The URI that contains the scheme component is an absolute URI, and the URI that does not contain the scheme component is a relative URI. Set this part as required. Example values: **http**, **https**, **ftp**, and **datashare**.
 - scheme-specific-part: specific part of the URI decoding scheme. It is located between [scheme:] and [#fragment] and consists of [//][authority][path][?query]. The URI that starts with a slash (/) is a hierarchical URI, and the URI that does not start with a slash (/) is an opaque URI. Set this part as required.
@@ -398,7 +395,7 @@ The query component follows the question mark (?) and consists of key-value pair
 
 | Type  | Description                         |
 | ------ | ----------------------------- |
-| string | Value of the URI query parameter after decoding. If no value is found, a null object is returned.|
+| string | Value of the first URI query parameter after decoding. If no value is found, a null object is returned.|
 
 **Error codes**
 

@@ -6,9 +6,8 @@
 <!--Tester: @csp1992-->
 <!--Adviser: @luwy2025-->
 
-> **说明：**
-
-> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/reference/errorcode-universal.md)。
+> **说明：**<br/>
+> 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
 
 
 ## 32200001 查询多模输入中所有设备信息失败

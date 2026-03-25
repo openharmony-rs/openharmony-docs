@@ -7,8 +7,8 @@
 <!--Tester: @cyakee-->
 <!--Adviser: @w_Machine_cc-->
 
-```
-typedef struct {...} OH_AVRange
+```c
+typedef struct OH_AVRange {...} OH_AVRange
 ```
 
 ## Overview

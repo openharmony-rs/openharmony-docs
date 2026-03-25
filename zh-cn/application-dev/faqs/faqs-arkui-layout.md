@@ -60,13 +60,13 @@
 
 **解决措施**
 
-1、如果做页面展示，可通过Text嵌套ImageSpan或者容器组件如Row、Colunm下嵌套Text&Image组件，推荐前者；
+1、如果做页面展示，可通过Text嵌套ImageSpan或者容器组件如Row、Column下嵌套Text&Image组件，推荐前者；
 
 2、如果要进行编辑，可使用RichEditor控件。
 
 **参考链接**
 
-[图文混排](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)
+[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)
 
 ## 如何实现协调布局的效果(API 10)
 
@@ -118,7 +118,7 @@ MyGlobalBuilderFunction()
 
 **参考链接**
 
-1. [自定义弹窗（CustomDialog）](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
+1. [自定义弹窗 (CustomDialog)](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md)
 2. [Popup控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md)
 3. [@Builder装饰器：自定义构建函数](../ui/state-management/arkts-builder.md)
 
@@ -126,8 +126,7 @@ MyGlobalBuilderFunction()
 
 **解决措施**
 
-白线、暗线通常是因为相邻的同色控件边界落在了浮点数坐标上，图形层做了抗锯齿处理，视觉上产生了一条白线或暗线。可以通过pixelRound通用属性设置，
-使产生白线、暗线两侧的组件边界对齐到整数像素坐标上。
+白线、暗线通常是因为相邻的同色控件边界落在了浮点数坐标上，图形层做了抗锯齿处理，视觉上产生了一条白线或暗线。可以通过pixelRound通用属性设置，使产生白线、暗线两侧的组件边界对齐到整数像素坐标上。
 
 使用方法：
 ```ts

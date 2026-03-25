@@ -15,7 +15,7 @@ WebNativeMessagingExtensionAbility provides the web native messaging capability 
 ## Modules to Import
 
 ```ts
-import WebNativeMessagingExtensionAbility from '@kit.ArkWeb';
+import { WebNativeMessagingExtensionAbility } from '@kit.ArkWeb';
 ```
 
 ## WebNativeMessagingExtensionAbility
@@ -56,7 +56,7 @@ import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb'
 export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
   onConnectNative(info: ConnectionInfo): void {
     console.info('Web Native connection established!');
-    console.info(`Connnection ID: ${info.connectionId}`);
+    console.info(`Connection ID: ${info.connectionId}`);
     console.info(`Caller bundle: ${info.bundleName}`);
     // Process the service logic after the connection is established.
   }
@@ -87,7 +87,7 @@ import { WebNativeMessagingExtensionAbility, ConnectionInfo } from '@kit.ArkWeb'
 export class MyWebNativeMessagingExtension extends WebNativeMessagingExtensionAbility {
   onDisconnectNative(info: ConnectionInfo): void {
     console.info('Web Native connection closed!');
-    console.info(`Connnection ID: ${info.connectionId}`);
+    console.info(`Connection ID: ${info.connectionId}`);
     // Process the cleanup after the connection is disconnected.
   }
 }

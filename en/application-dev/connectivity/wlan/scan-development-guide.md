@@ -39,8 +39,8 @@ The following table describes the related APIs.
 4. Enable Wi-Fi on the device.
 5. Sample code:
 
-> **NOTE**
-> The Wi-Fi scan API is deprecated since API version 10. The substitute API is available only for system applications.
+   > **NOTE**<br>
+   > The Wi-Fi scan API is deprecated since API version 10. The substitute API is available only for system applications.
 
    ```ts
    import { wifiManager } from '@kit.ConnectivityKit';
@@ -86,7 +86,7 @@ The following table describes the related APIs.
    }
    ```
 
- 5. For details about error codes, see [Wi-Fi Error Codes](../../reference/apis-connectivity-kit/errorcode-wifi.md).
+6. For details about error codes, see [Wi-Fi Error Codes](../../reference/apis-connectivity-kit/errorcode-wifi.md).
 
  ### PNO Scan
 

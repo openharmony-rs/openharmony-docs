@@ -14,7 +14,6 @@ HiLog provides logging functionalities. For example, you can use logging functio
 **System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 8
-
 ## Files
 
 | Name| Description|

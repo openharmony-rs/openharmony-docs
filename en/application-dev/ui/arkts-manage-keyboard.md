@@ -20,7 +20,7 @@ through the following methods:
 
 3. External keyboard navigation: pressing **Tab**, **Shift+Tab**, or arrow keys (which shows the physical keyboard toolbar instead of the soft keyboard)
 
-The system distinguishes between system soft keyboards and custom keyboards. The [enableKeyboardOnFocus](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enablekeyboardonfocus10) attribute affects system keyboard display but not custom keyboards. When **enableKeyboardOnFocus** is set to **false**, the system soft keyboard only appears when focus is acquired through clicking or key press interactions. External physical keyboards suppress system soft keyboards but do not affect custom keyboards.
+The system distinguishes between system soft keyboards and custom keyboards. The [enableKeyboardOnFocus](../reference/apis-arkui/arkui-ts/ts-basic-components-textarea.md#enablekeyboardonfocus10) attribute affects system keyboard display but not custom keyboards. When **enableKeyboardOnFocus** is set to **false**, the system soft keyboard only appears when focus is acquired through clicking or key press interactions. **enableKeyboardOnFocus** does not affect custom keyboards. External physical keyboards suppress system soft keyboards but do not affect custom keyboards.
 
 ### Interactive Focus
 
@@ -61,7 +61,7 @@ struct demo {
 
 ### External Keyboard Navigation
 
-When a physical keyboard is connected, users can use **Tab**, **Shift+Tab**, or arrow keys to navigate focus. When focus moves to a input field, the physical keyboard's floating toolbar appears. For details, see [Focus Traversal Guidelines](./arkts-common-events-focus-event.md#focus-traversal-guidelines).
+When a physical keyboard is connected, users can use **Tab**, **Shift+Tab**, or arrow keys to navigate focus. When focus moves to an input field, the physical keyboard's floating toolbar appears. For details, see [Focus Traversal Guidelines](./arkts-common-events-focus-event.md#focus-traversal-guidelines).
 
 The following example demonstrates focus navigation with a connected physical keyboard. Repeatedly pressing the **Tab** key cycles focus among the three page components. Focus transitions are visually indicated by the **Text** component's blue border and the **TextInput** component's blinking cursor. When the **TextInput** component gains focus, the cursor appears and the physical keyboard's floating toolbar is displayed.
 
@@ -173,7 +173,7 @@ Swipe gestures hide the soft keyboard. The figure below demonstrates this dismis
 
 Navigating away from the text input pages hides the keyboard.
 
-For details about the page navigation syntax, see [Component Navigation (Navigation) (Recommended)](./arkts-navigation-navigation.md).
+For details about the page navigation syntax, see [Component Navigation (Recommended)](./arkts-navigation-navigation.md).
 
 Source page:
 
@@ -365,7 +365,7 @@ struct Index {
 
 ## FAQs
 
-You may encounter specific scenarios or customization requirements when working with soft keyboards. This section addresses common challenges to help you better manage keyboard behavior.
+You may encounter specific scenarios or customization requirements when working with soft keyboards. This section addresses common challenges to help you better manage the keyboard behavior.
 
 ### Preventing Soft Keyboard Display When the Text Input Field Gains Focus
 

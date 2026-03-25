@@ -1,4 +1,4 @@
-# Introduction to Sensor Service Kit
+# About This Kit
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->

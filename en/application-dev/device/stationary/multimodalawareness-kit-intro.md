@@ -1,4 +1,4 @@
-# Introduction to Multimodal Awareness Kit
+# About This Kit
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->

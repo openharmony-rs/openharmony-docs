@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_AnimatorEvent ArkUI_AnimatorEvent
+```
+
 ## Overview
 
 Defines the animator callback event object.

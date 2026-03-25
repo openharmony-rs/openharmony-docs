@@ -41,7 +41,7 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
    documentSelectOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
    // Optional. Set the type of the documents to select. The default value is FILE. This parameter can be used on 2-in-1 devices but does not take effect on other devices.
    documentSelectOptions.selectMode = picker.DocumentSelectMode.FILE;
-   // (Optional. If this parameter is not transferred, all files are displayed by default.) Set the file name extension types ['File name extension description|File name extension type'] that can be selected. (Optional) Use a comma to separate multiple file name extensions, which cannot exceed 100. The wildcard ['All files (*.*)|.*'] is available for 2-in-1 devices (for mobile phones since API version 17).
+   // Select the file suffix type ['Suffix type description|Suffix type']. (Optional. If this parameter is not transferred, all files are displayed by default.) Use a comma to separate multiple file suffixes, which cannot exceed 100. The wildcard ['All files (*.*)|.*'] can be used on 2-in-1 devices (and smartphones since API version 17) to display all files.
     documentSelectOptions.fileSuffixFilters = ['Image(.png, .jpg)|.png, .jpg', 'Document|.txt', 'Video|.mp4', '.pdf'];
    // Whether to grant the permission for the specified files or directory. The value true means to grant the permission, and the value false (default) means the opposite. If this parameter is true, defaultFilePathUri is mandatory and the file management authorization page is displayed. If this parameter is false, a common file management page is displayed. This parameter can be used on 2-in-1 devices but does not take effect on other devices.
    documentSelectOptions.authMode = false;
@@ -49,7 +49,7 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
    documentSelectOptions.multiAuthMode = false;
    // Whether to pass the URIs for batch authorization. (Only files are supported and folders are not supported.) This parameter does not take effect when multiAuthMode is set to false. This parameter can be used on smartphones but does not take effect on other devices.
    documentSelectOptions.multiUriArray = ["file://docs/storage/Users/currentUser/test", "file://docs/storage/Users/currentUser/2test"];
-   // Whether to enable the aggregation view mode to launch the file management application. The value DEFAULT means that this parameter does not take effect and the aggregation view mode is disabled. Values other than DEFAULT indicate that other parameters do not take effect. For API version 22 and later versions, only the fileSuffixFilters parameter takes effect when this parameter is set to a value other than DEFAULT.
+   // Whether to enable the aggregation view mode to launch the file management application. The value DEFAULT means this parameter does not take effect and the aggregation view mode is disabled. Values other than DEFAULT indicate that other parameters do not take effect.
    // This parameter can be used on phones but has no effect on other devices.
    documentSelectOptions.mergeMode = picker.MergeTypeMode.DEFAULT;
    // Whether to support encryption (only files are supported). The default value is false. If this parameter is set to true, files can be encrypted on the Picker page. Note that this parameter is supported since API version 19.
@@ -152,11 +152,11 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
 
    ```ts
    if (uris.length > 0) {
-   	let uri: string = uris[0];
-   	// Note that the mode parameter of fs.openSync() is fs.OpenMode.READ_ONLY.
-  		let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
-   	console.info('file fd: ' + file.fd);
-    }
+      let uri: string = uris[0];
+      // Note that the mode parameter of fs.openSync() is fs.OpenMode.READ_ONLY.
+      let file = fs.openSync(uri, fs.OpenMode.READ_ONLY);
+      console.info('file fd: ' + file.fd);
+   }
    ```
 
 5. Call [fs.readSync](../reference/apis-core-file-kit/js-apis-file-fs.md#readsync) to read data from the audio clip based on the FD.
@@ -168,5 +168,6 @@ You can use [FilePicker](../reference/apis-core-file-kit/js-apis-file-picker.md)
    // Close the FD after the data is read.
    fs.closeSync(file);
    ```
+
 
 <!--RP1--><!--RP1End-->

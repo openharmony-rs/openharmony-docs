@@ -2,11 +2,7 @@
 
 You can use **MediaAssetManager** to copy a media asset to a sandbox directory. This topic walks you through on how to use **MediaAssetManager** to copy an image to the specified sandbox directory.
 
-The procedure is as follows:
-
-1. Create a MediaAssetManager instance.
-2. Set parameters for requesting an image and request the image.
-3. (Optional) Cancel the request.
+The procedure is as follows: 1. <br>Create a MediaAssetManager instance. 2.<br>Set parameters for requesting an image and request the image.<br>3. (Optional) Cancel the request.
 
 ## How to Develop
 
@@ -16,24 +12,22 @@ Add the dynamic library in the CMake script.
 target_link_libraries(sample PUBLIC libmedia_asset_manager.so)
 ```
 
-Include the [media_asset_manager_capi.h](../../reference/apis-media-library-kit/capi-media-asset-manager-capi-h.md) and [media_asset_base_capi.h](../../reference/apis-media-library-kit/capi-media-asset-base-capi-h.md) header files to use the APIs of MediaAssetManager. For details about the APIs, see [MediaAssetManager APIs](../../reference/apis-media-library-kit/capi-mediaassetmanager.md).
+Include the [media_asset_manager_capi.h](../../reference/apis-media-library-kit/capi-media-asset-manager-capi-h.md) and [media_asset_base_capi.h](../../reference/apis-media-library-kit/capi-media-asset-base-capi-h.md) header files to use the APIs of MediaAssetManager.
+For details about the APIs, see [MediaAssetManager APIs](../../reference/apis-media-library-kit/capi-mediaassetmanager.md).
 
-> **NOTE**
->
+> **NOTE**<br>
 > The application must have the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Before You Start](photoAccessHelper-preparation.md).
 
 1. Call **OH_MediaAssetManager_Create()** to create a MediaAssetManager instance.
 2. Set the URI of the image to request, destination URI, asset requesting policy, and callback used to return the result.
 3. Call **OH_MediaAssetManager_RequestImageForPath()** to copy the image to the target URI.
-4. (Optional) Call **OH_MediaAssetManager_CancelRequest()** to cancel the request.
+4. (Optional) Call **OH_MediaAssetManager_CancelRequest()** to cancel the request.  
 
 ## Example
 
 ```c
-#include "napi/native_api.h"
 #include "multimedia/media_library/media_asset_base_capi.h"
 #include "multimedia/media_library/media_asset_manager_capi.h"
-#include "hilog/log.h"
 #include <stdio.h>
 #include <string.h>
 

@@ -203,7 +203,7 @@ After obtaining the output stream capabilities supported by the camera, create a
         // Create a CameraManager object.
         Camera_ErrorCode ret = OH_Camera_GetCameraManager(&cameraManager);
         if (cameraManager == nullptr || ret != CAMERA_OK) {
-            OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraMananger failed.");
+            OH_LOG_ERROR(LOG_APP, "OH_Camera_GetCameraManager failed.");
             return;
         }
         // Listen for camera status changes.
@@ -283,7 +283,7 @@ After obtaining the output stream capabilities supported by the camera, create a
         // Create a photo output stream.
         ret = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager, photoProfile, &photoOutput);
 
-        // Listen for the one-time photo capture callback.
+        // Listen for the callback of one-time photo capture.
         ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
 
         // Create a session.

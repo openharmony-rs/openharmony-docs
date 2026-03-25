@@ -24,26 +24,24 @@ ArrayBuffer可以用来表示图片等资源，在应用开发中，处理图片
 
 在ArkTS中，TaskPool传递ArrayBuffer数据时，默认采用转移方式。通过调用setTransferList()接口，可以指定部分数据的传递方式为转移方式，其他部分数据可以切换为拷贝方式。
 
-首先，实现一个处理ArrayBuffer的接口，该接口在Task中执行。
-
-然后，通过拷贝方式将ArrayBuffer数据传递到Task中，并进行处理。
-
-最后，UI主线程接收到Task执行完毕后返回的ArrayBuffer数据，进行拼接并展示。
-
 ```ts
 // Index.ets
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 在Task执行的处理函数，用于处理ArrayBuffer数据
 @Concurrent
 function adjustImageValue(arrayBuffer: ArrayBuffer): ArrayBuffer {
   // 对arrayBuffer进行操作，返回值默认转移
   return arrayBuffer;
 }
 
+/*
+ * 创建一个Task，用于将ArrayBuffer传入Task执行
+ * isParamsByTransfer用于控制ArrayBuffer是“拷贝”还是“转移”传递
+ */
 function createImageTask(arrayBuffer: ArrayBuffer, isParamsByTransfer: boolean): taskpool.Task {
   let task: taskpool.Task = new taskpool.Task(adjustImageValue, arrayBuffer);
-  // 是否使用转移方式
   if (!isParamsByTransfer) {
     // 传递空数组[]，全部arrayBuffer参数传递均采用拷贝方式
     task.setTransferList([]);
@@ -67,6 +65,7 @@ struct Index {
           middle: { anchor: '__container__', align: HorizontalAlign.Center }
         })
         .onClick(() => {
+          // 创建待处理的ArrayBuffer，并按taskNum进行切分
           let taskNum = 4;
           let arrayBuffer = new ArrayBuffer(1024 * 1024);
           let taskPoolGroup = new taskpool.TaskGroup();
@@ -76,9 +75,9 @@ struct Index {
             // 使用拷贝方式传入ArrayBuffer，所以isParamsByTransfer为false
             taskPoolGroup.addTask(createImageTask(arrayBufferSlice, false));
           }
-          // 执行Task
+          // 执行Task，UI主线程接收处理完成后的结果
           taskpool.execute(taskPoolGroup).then((data) => {
-            // 返回结果，对数组拼接，获得最终结果
+            // 将各Task返回的ArrayBuffer数据进行拼接
           }).catch((e: BusinessError) => {
             console.error(e.message);
           })

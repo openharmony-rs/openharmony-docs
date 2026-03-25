@@ -45,17 +45,27 @@ The following example assumes that the source unit is cup (US), the target unit 
 
 **Development Example**
 
-```ts
-// Import the i18n module.
-import { i18n } from '@kit.LocalizationKit';
+1. Import the related modules.
 
-// Set the fromUnit and toUnit.
-let fromUnit: i18n.UnitInfo = {unit: 'cup', measureSystem: 'US'};
-let toUnit: i18n.UnitInfo = {unit: 'liter', measureSystem: 'SI'};
+   <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NumberMeasurementFormatting.ets) -->
+   
+   ``` TypeScript
+   import { i18n } from '@kit.LocalizationKit';
+   ```
 
-// Convert the unit based on the locale ID en-US.
-let convertedUnit: string = i18n.I18NUtil.unitConvert(fromUnit, toUnit, 1000, 'en-US'); // convertedUnit = '236.588 L'
+2. Convert the unit.
 
-// Display the complete unit.
-convertedUnit = i18n.I18NUtil.unitConvert(fromUnit, toUnit, 1000, 'en-US', 'long'); // convertedUnit = '236.588 liters'
-```
+   <!-- @[measurement_conversion](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/International/Internationalization/entry/src/main/ets/i18napplication/NumberMeasurementFormatting.ets) -->
+   
+   ``` TypeScript
+   // Set the fromUnit and toUnit.
+   let fromUnit: i18n.UnitInfo = {unit: 'cup', measureSystem: 'US'};
+   let toUnit: i18n.UnitInfo = {unit: 'liter', measureSystem: 'SI'};
+   
+   // Convert the unit based on the locale ID en-US.
+   let simplifyConvertedUnit = i18n.I18NUtil.unitConvert(fromUnit, toUnit, 1000, 'en-US'); // simplifyConvertedUnit = '236.588 L'
+   
+   // Display the complete unit.
+   let convertedUnit = i18n.I18NUtil.unitConvert(fromUnit, toUnit, 1000, 'en-US', 'long'); // convertedUnit = '236.588 liters'
+   ```
+   

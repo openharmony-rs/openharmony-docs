@@ -42,6 +42,15 @@ When data is added, deleted, or modified, a notification is sent to the subscrib
 
 - Distributed data change notification: subscription of the application data changes of other devices in the network. When the data in the local RDB store changes after being synced with data from another device in the same network, a notification is received.
 
+### Data Sync Storage Mechanism
+
+By default, cross-device data sync uses the multi-device collaborative table mode for management. In this mode, data on each device is stored in isolation in an independent distributed table instead of being written to the local table. The name of the distributed table is formed by prepending the peer device's **deviceID** to the original table name, as shown in the following figure.
+
+When a device receives data synchronized from another device, the data is automatically written to the corresponding distributed table. You can obtain the table name via **obtainDistributedTableName** and query the data.
+
+Note that modification of data synchronized from other devices is not supported in this mode. This restriction ensures data consistency and the stability of sync logic.
+
+![deviceRDBStore](figures/deviceRDBStore.jpg)
 
 ## Constraints
 
@@ -55,14 +64,14 @@ When data is added, deleted, or modified, a notification is sent to the subscrib
 
 The following table lists the APIs for cross-device data sync of RDB stores. Most of the APIs are executed asynchronously, using a callback or promise to return the result. The following table uses the callback-based APIs as an example. For more information about the APIs, see [RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore.md).
 
-| API| Description|
+| API| Description| 
 | -------- | -------- |
-| setDistributedTables(tables: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | Sets the distributed tables to be synced.|
-| sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;): void | Synchronizes data across devices.|
-| on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void | Subscribes to changes in the distributed data.|
-| off(event:'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void | Unsubscribe from changes in the distributed data.|
-| obtainDistributedTableName(device: string, table: string, callback: AsyncCallback&lt;string&gt;): void | Obtains the table name on the specified device based on the local table name.|
-| remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: Array&lt;string&gt; , callback: AsyncCallback&lt;ResultSet&gt;): void | Queries data from the RDB store of a remote device based on specified conditions.|
+| setDistributedTables(tables: Array&lt;string&gt;, callback: AsyncCallback&lt;void&gt;): void | Sets the distributed tables to be synced.| 
+| sync(mode: SyncMode, predicates: RdbPredicates, callback: AsyncCallback&lt;Array&lt;[string, number]&gt;&gt;): void | Synchronizes data across devices.| 
+| on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void | Subscribes to changes in the distributed data.| 
+| off(event:'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void | Unsubscribe from changes in the distributed data.| 
+| obtainDistributedTableName(device: string, table: string, callback: AsyncCallback&lt;string&gt;): void | Obtains the table name on the specified device based on the local table name.| 
+| remoteQuery(device: string, table: string, predicates: RdbPredicates, columns: Array&lt;string&gt; , callback: AsyncCallback&lt;ResultSet&gt;): void | Queries data from the RDB store of a remote device based on specified conditions.| 
 
 
 ## How to Develop
@@ -72,7 +81,7 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
 > The security level of the destination device (to which data is synced) cannot be higher than that of the source device. For details, see [Access Control Mechanism in Cross-Device Sync](access-control-by-device-and-data-level.md#access-control-mechanism-in-cross-device-sync).
 
 1. Import the related modules.
-   <!--@[sync_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   <!--@[sync_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
    
    ``` TypeScript
    import { relationalStore } from '@kit.ArkData'; // Import modules.
@@ -111,7 +120,7 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
 4. Subscribe to data changes of other devices in the network cluster.
    1. Call [on('dataChange')](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#ondatachange) to listen for data changes of other devices. This API is called when data changes and is synced to the current device. The input parameter is the list of device IDs whose data changes.
    2. Obtain the distributed table name corresponding to the device based on the device ID and query data in the distributed table.
-   <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   <!--@[on_data_change](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
    
    ``` TypeScript
    // Subscribe to data changes of other devices in the network cluster.
@@ -153,7 +162,7 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
    1. After the data in the distributed table of the current device changes, the [sync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#sync-1) API of **RdbStore** is called to pass the [SYNC_MODE_PUSH](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#syncmode) parameter to push data changes to other devices.
    2. Use the [inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices) method of the predicate to specify the target device for receiving data changes.
   
-   <!--@[data_sync_push](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   <!--@[data_sync_push](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
    
    ``` TypeScript
    // Sync data changes of the current device to other devices in the network cluster.
@@ -206,7 +215,7 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
    1. The current device can call the [sync](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#sync-1) API of **RdbStore** and pass the [SYNC_MODE_PULL](../reference/apis-arkdata/arkts-apis-data-relationalStore-e.md#syncmode) parameter to pull data changes from other devices in the network cluster.
    2. Use the [inDevices](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbPredicates.md#indevices) method of the predicate to specify the target device.
    
-   <!--@[data_sync_pull](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   <!--@[data_sync_pull](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
    
    ``` TypeScript
    // Obtain the data changes of other devices in the network cluster.
@@ -249,7 +258,7 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
    ```
 
 7. If data sync is not complete or not triggered, use the [remoteQuery](../reference/apis-arkdata/arkts-apis-data-relationalStore-RdbStore.md#remotequery-1) method of **RdbStore** to query the data in the distributed table on a specified device in the network cluster.
-   <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelatetionalStore/DataSync&Persistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
+   <!--@[data_remote_query](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/DataSyncAndPersistence/entry/src/main/ets/pages/datasync/RdbDataSync.ets)-->
    
    ``` TypeScript
    // Query data of the distributed table on a specified device in the network cluster.
@@ -267,7 +276,7 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
        hilog.error(DOMAIN, 'rdbDataSync', 'no device to query data');
        return;
      }
-     // Construct a predicate object for querying the distributed table.
+     // Construct the predicate object for querying the distributed table.
      const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
      try {
        // Query the distributed table on a specified device in the network cluster.
@@ -278,3 +287,13 @@ The following table lists the APIs for cross-device data sync of RDB stores. Mos
      }
    }
    ```
+
+##  
+
+ 
+
+-  
+
+-  
+
+-  

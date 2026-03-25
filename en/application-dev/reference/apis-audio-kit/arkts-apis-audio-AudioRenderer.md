@@ -979,7 +979,7 @@ Sets the playback speed.
 
 | Name| Type                                    | Mandatory| Description                  |
 | ------ | ---------------------------------------- | ---- |----------------------|
-| speed | number | Yes  | Playback speed, which ranges from 0.25 to 4.0.|
+| speed | number | Yes  | Playback rate, which ranges from 0.25 to 4.0.|
 
 **Error codes**
 
@@ -1719,7 +1719,7 @@ Subscribes to the audio interruption event, which is triggered when the audio fo
 
 The AudioRenderer instance proactively gains the focus when the **start** event occurs and releases the focus when the **pause** or **stop** event occurs. Therefore, you do not need to request to gain or release the focus.
 
-After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioRenderer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus and Audio Sessions](../../media/audio/audio-playback-concurrency.md).
+After this API is called, an [InterruptEvent](arkts-apis-audio-i.md#interruptevent9) is received when the AudioRenderer instance fails to obtain the focus or an audio interruption event occurs (for example, the audio stream is interrupted by others). It is recommended that the application perform further processing based on the **InterruptEvent** information. For details, see [Introduction to Audio Focus](../../media/audio/audio-playback-concurrency.md).
 
 **System capability**: SystemCapability.Multimedia.Audio.Interrupt
 
@@ -2045,7 +2045,7 @@ Unsubscribes from the audio renderer state change event. This API uses an asynch
 
 | Name| Type  | Mandatory| Description                                               |
 | :----- | :----- | :--- | :-------------------------------------------------- |
-| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the state of the audio renderer is changed.|
+| type   | string | Yes  | Event type. The event **'stateChange'** is triggered when the listening for audio renderer state change event is canceled.|
 | callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | No| Callback used to return the audio status.|
 
 **Error codes**
@@ -2348,7 +2348,6 @@ write(buffer: ArrayBuffer, callback: AsyncCallback\<number>): void
 Writes the buffer. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [on('writeData')](#onwritedata11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2414,7 +2413,6 @@ write(buffer: ArrayBuffer): Promise\<number>
 Writes the buffer. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [on('writeData')](#onwritedata11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2482,7 +2480,6 @@ setRenderRate(rate: AudioRendererRate, callback: AsyncCallback\<void>): void
 Sets the render rate. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [uninitialize][setSpeed](#setspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2515,7 +2512,6 @@ setRenderRate(rate: AudioRendererRate): Promise\<void>
 Sets the render rate. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [uninitialize][setSpeed](#setspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2551,7 +2547,6 @@ getRenderRate(callback: AsyncCallback\<AudioRendererRate>): void
 Obtains the audio renderer rate. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [getSpeed](#getspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2579,7 +2574,6 @@ getRenderRate(): Promise\<AudioRendererRate>
 Obtains the audio renderer rate. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 8 and deprecated since API version 11. You are advised to use [getSpeed](#getspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer
@@ -2609,7 +2603,6 @@ getRenderRateSync(): AudioRendererRate
 Obtains the audio renderer rate. This API returns the result synchronously.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getSpeed](#getspeed11) instead.
 
 **System capability**: SystemCapability.Multimedia.Audio.Renderer

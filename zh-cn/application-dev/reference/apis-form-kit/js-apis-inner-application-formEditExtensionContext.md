@@ -37,10 +37,11 @@ startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis
   | ------ | ------ | ---- | ------------------------------------- |
   | want  |  [Want](../apis-ability-kit/js-apis-app-ability-want.md)  | 是   | 第三方应用需要被桌面拉起的编辑页面信息。|
 
-**返回值：**  
-  | 类型 | 说明    | 
+**返回值：**
+
+  | 类型 | 说明    |
   | ------ | ------ |
-  | Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>  |  Promise对象，返回AbilityResult。  | 
+  | Promise<[AbilityResult](../apis-ability-kit/js-apis-inner-ability-abilityResult.md)>  |  Promise对象，返回AbilityResult。  |
 
 **错误码：**
 
@@ -56,8 +57,8 @@ startSecondPage(want: Want): Promise<[AbilityResult](../apis-ability-kit/js-apis
 **示例：**
 
 ```ts
-import { FormEditExtensionAbility } from '@kit.FormKit'
-import { Want, UIExtensionContentSession } from '@kit.AbilityKit';
+import { FormEditExtensionAbility } from '@kit.FormKit';
+import { UIExtensionContentSession, Want } from '@kit.AbilityKit';
 
 const TAG: string = '[testTag] ExampleFormEditExtensionAbility'
 
@@ -73,13 +74,12 @@ export default class ExampleFormEditAbility extends FormEditExtensionAbility {
         }
 
       }).then(data => {
-        console.info(TAG, `startSecondPage result want: ${JSON.stringify(data)}`)
+        console.info(TAG, `startSecondPage result want: ${data.resultCode}`)
       });
     } catch (e) {
-      console.error(TAG, `startSecondPage failed:${e}`)
+      console.error(TAG, `startSecondPage failed, code: ${e.code}, message: ${e.message}`)
       return
     }
   }
 }
-
 ```

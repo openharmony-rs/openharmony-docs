@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 9开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 >
 > - 目前调用WebStorage下的方法，都需要先加载Web组件。
 >
@@ -310,7 +310,7 @@ static getOriginQuota(origin: string, callback: AsyncCallback\<number>): void
 | 参数名   | 类型                  | 必填 | 说明               |
 | -------- | --------------------- | ---- | ------------------ |
 | origin   | string                | 是   | 指定源的字符串索引。 |
-| callback | AsyncCallback\<number> | 是   | 指定源的存储配额。<br>number是long型整数，范围为(-2,147,483,648)~(2,147,483,647)。   |
+| callback | AsyncCallback\<number> | 是   | 指定源的存储配额。<br>number是long型整数，范围为[-2147483648, 2147483647]。   |
 
 **错误码：**
 

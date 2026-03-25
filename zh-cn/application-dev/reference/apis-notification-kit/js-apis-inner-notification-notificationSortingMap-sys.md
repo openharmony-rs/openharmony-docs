@@ -1,4 +1,4 @@
-# NotificationSortingMap(系统接口)
+# NotificationSortingMap (系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @michael_woo888-->
@@ -14,7 +14,7 @@
 >
 > 本模块为系统接口。
 
-## 属性
+## NotificationSortingMap
 
 **系统能力**：SystemCapability.Notification.Notification
 

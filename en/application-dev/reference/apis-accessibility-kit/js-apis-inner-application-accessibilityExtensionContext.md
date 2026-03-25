@@ -33,6 +33,8 @@ class EntryAbility extends AccessibilityExtensionAbility {
 
 Provides attribute names and value types of a node element.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
 ### Attributes
@@ -44,7 +46,7 @@ Provides attribute names and value types of a node element.
 | bundleName           | string                                                             | No  | No  | Bundle name.|
 | checkable            | boolean                                                            | No  | No  | Whether the element is checkable. The value **true** indicates that the element is checkable, and **false** indicates the opposite.<br>Default value: **false**.|
 | checked              | boolean                                                            | No  | No  | Whether the element is checked. The value **true** indicates that the element is checked, and **false** indicates the opposite.<br>Default value: **false**.|
-| children             | Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;        | No  | No  | All child elements.|
+| children             | Array&lt;[AccessibilityElement](#accessibilityelement)&gt;        | No  | No  | All child elements.|
 | clickable            | boolean                                                            | No  | No  | Whether the element is clickable. The value **true** indicates that the element is clickable, and **false** indicates the opposite.<br>Default value: **false**.|
 | componentId          | number                                                             | No  | No  | ID of the component to which the element belongs. <br>Default value: **-1**.|
 | componentType        | string                                                             | No  | No  | Type of the component to which the element belongs, for example, **Button** for the button component and **Image** for the image component.|
@@ -69,11 +71,11 @@ Provides attribute names and value types of a node element.
 | layer                | number                                                             | No  | No  | Display layer of the element.|
 | longClickable        | boolean                                                            | No  | No  | Whether the element is long-clickable. The value **true** indicates that the element is long-clickable, and **false** indicates the opposite.<br>Default value: **false**.|
 | pageId               | number                                                             | No  | No  | Page ID. <br>Default value: **-1**.|
-| parent               | [AccessibilityElement](#accessibilityelement9)                     | No  | No  | Parent element of the element.|
+| parent               | [AccessibilityElement](#accessibilityelement)                     | No  | No  | Parent element of the element.|
 | pluralLineSupported  | boolean                                                            | No  | No  | Whether the element supports multiple lines of text. The value **true** indicates that the element supports multiple lines of text, and **false** indicates the opposite.<br>Default value: **false**.|
 | rect                 | [Rect](#rect)                                                      | No  | No  | Area of the element.|
 | resourceName         | string                                                             | No  | No  | Resource name of the element.|
-| rootElement          | [AccessibilityElement](#accessibilityelement9)                     | No  | No  | Root element of the window element.|
+| rootElement          | [AccessibilityElement](#accessibilityelement)                     | No  | No  | Root element of the window element.|
 | screenRect           | [Rect](#rect)                                                      | No  | No  | Display area of the element.|
 | scrollable           | boolean                                                            | No  | No  | Whether the element is scrollable. The value **true** indicates that the element is scrollable, and **false** indicates the opposite.<br>Default value: **false**.|
 | selected             | boolean                                                            | No  | No  | Whether the element is selected. The value **true** indicates that the element is selected, and **false** indicates the opposite.<br>Default value: **false**.|
@@ -160,7 +162,7 @@ Sets the concerned target bundle. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -205,7 +207,7 @@ Sets the concerned target bundle. This API uses an asynchronous callback to retu
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -251,7 +253,7 @@ Obtains the focus element. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -264,7 +266,7 @@ Obtains the focus element. This API uses a promise to return the result.
 **Return value**
 | Type                                 | Description                    |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the current focus element.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the current focus element.|
 
 **Error codes**
 
@@ -299,7 +301,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -307,7 +309,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 | Name     | Type                                      | Mandatory  | Description               |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the current focus element.|
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the current focus element.|
 
 **Error codes**
 
@@ -344,7 +346,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -353,7 +355,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 | Name                 | Type                                      | Mandatory  | Description               |
 | -------------------- | ---------------------------------------- | ---- | ----------------- |
 | isAccessibilityFocus | boolean                                  | Yes   | Whether the obtained focus element is an accessibility focus. The value **True** means that the obtained focus element is an accessibility focus, and **False** means the opposite.   |
-| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the current focus element.|
+| callback             | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the current focus element.|
 
 **Error codes**
 
@@ -391,7 +393,7 @@ Obtains the root element of a window. This API uses a promise to return the resu
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -399,13 +401,13 @@ Obtains the root element of a window. This API uses a promise to return the resu
 
 | Name     | Type    | Mandatory  | Description                    |
 | -------- | ------ | ---- | ---------------------- |
-| windowId | number | No   | Window for which you want to obtain the root element. If this parameter is not specified, it indicates the current active window.|
+| windowId | number | No   | ID of the window whose root element is to be obtained. If this parameter is not specified, it indicates the current active window.|
 
 **Return value**
 
 | Type                                 | Description                    |
 | ----------------------------------- | ---------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the root element of the specified window.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the root element of the specified window.|
 
 **Error codes**
 
@@ -440,7 +442,7 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -448,7 +450,7 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 | Name     | Type                                      | Mandatory  | Description                |
 | -------- | ---------------------------------------- | ---- | ------------------ |
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the root element.|
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the root element.|
 
 **Error codes**
 
@@ -485,7 +487,7 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -493,8 +495,8 @@ Obtains the root element of a window. This API uses an asynchronous callback to 
 
 | Name     | Type                                      | Mandatory  | Description                    |
 | -------- | ---------------------------------------- | ---- | ---------------------- |
-| windowId | number                                   | Yes   | Window for which you want to obtain the root element. If this parameter is not specified, it indicates the current active window.|
-| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the root element.    |
+| windowId | number                                   | Yes   | ID of the window whose root element is to be obtained. If this parameter is not specified, it indicates the current active window.|
+| callback | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the root element.    |
 
 **Error codes**
 
@@ -532,7 +534,7 @@ Obtains the list of windows on a display. This API uses a promise to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -546,7 +548,7 @@ Obtains the list of windows on a display. This API uses a promise to return the 
 
 | Type                                      | Description                    |
 | ---------------------------------------- | ---------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Promise used to return the window list.|
+| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Promise used to return the window list.|
 
 **Error codes**
 
@@ -578,7 +580,7 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -586,7 +588,7 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 
 | Name     | Type                                      | Mandatory  | Description               |
 | -------- | ---------------------------------------- | ---- | ----------------- |
-| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Yes   | Callback used to return the window list.|
+| callback | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Yes   | Callback used to return the window list.|
 
 **Error codes**
 
@@ -620,7 +622,7 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -629,7 +631,7 @@ Obtains the list of windows on a display. This API uses an asynchronous callback
 | Name      | Type                                      | Mandatory  | Description                   |
 | --------- | ---------------------------------------- | ---- | --------------------- |
 | displayId | number                                   | Yes   | ID of the display from which the window information is obtained. If this parameter is not specified, it indicates the default main display.|
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Yes   | Callback used to return the window list.    |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Yes   | Callback used to return the window list.    |
 
 **Error codes**
 
@@ -662,7 +664,7 @@ injectGesture(gesturePath: GesturePath): Promise\<void>;
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated) instead.
 
 Injects a gesture. This API uses a promise to return the result.
 
@@ -713,7 +715,7 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback\<void>): void
 
 > **NOTE**
 >
-> This API is deprecated since API version 10. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 10. You are advised to use [AccessibilityExtensionContext.injectGestureSync](#accessibilityextensioncontextinjectgesturesyncdeprecated) instead.
 
 Injects a gesture. This API uses an asynchronous callback to return the result.
 
@@ -762,7 +764,7 @@ Injects a gesture.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 10 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -794,9 +796,11 @@ for (let i = 0; i < 10; i++) {
 axContext.injectGestureSync(gesturePath);
 ```
 
-## AccessibilityElement<sup>9+</sup>
+## AccessibilityElement
 
 Defines the **AccessibilityElement**. Before calling APIs of **AccessibilityElement**, you must call [AccessibilityExtensionContext.getFocusElement()](#accessibilityextensioncontextgetfocuselementdeprecated) or [AccessibilityExtensionContext.getWindowRootElement()](#accessibilityextensioncontextgetwindowrootelementdeprecated) to obtain an **AccessibilityElement** instance.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -808,7 +812,7 @@ Obtains all attribute names of this element. This API uses a promise to return t
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -840,7 +844,7 @@ Obtains all attribute names of this element. This API uses an asynchronous callb
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -874,7 +878,7 @@ Obtains the attribute value based on an attribute name. This API uses a promise 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -919,14 +923,13 @@ rootElement.attributeValue(attributeName).then((data: string) => {
 
 ### attributeValue<sup>(deprecated)</sup>
 
-attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, 
-    callback: AsyncCallback\<ElementAttributeValues[T]>): void;
+attributeValue\<T extends keyof ElementAttributeValues>(attributeName: T, callback: AsyncCallback\<ElementAttributeValues[T]>): void
 
 Obtains the attribute value based on an attribute name. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -972,7 +975,7 @@ Obtains the names of all actions supported by this element. This API uses a prom
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1003,7 +1006,7 @@ Obtains the names of all actions supported by this element. This API uses an asy
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1034,7 +1037,7 @@ Performs an action based on the specified action name. This API uses a promise t
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1042,7 +1045,7 @@ Performs an action based on the specified action name. This API uses a promise t
 
 | Name        | Type                                    | Mandatory  | Description                                                      |
 | ----------- | ---------------------------------------- | ---- |----------------------------------------------------------|
-| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action). |
+| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action).| 
 | parameters | object | No   | Parameters required for performing the target action. Empty by default.                            |
 
 **Return value**
@@ -1097,8 +1100,8 @@ import { BusinessError } from '@kit.BasicServicesKit';
 // rootElement is an instance of AccessibilityElement.
 // Sample code of setSelection
 rootElement.performAction('setSelection', {
-  selectTextBegin: '0', // Indicates the start position of selection.
-  selectTextEnd: '8',   // Indicates the end position of selection.
+  selectTextBegin: '0', // Start position of the selection.
+  selectTextEnd: '8',   // End position of the selection.
   selectTextInForWard: true   // true indicates the insertion point, and false indicates the selection range.
 }).then(() => {
   console.info(`Succeeded in perform action`);
@@ -1129,7 +1132,7 @@ Performs an action based on the specified action name. This API uses an asynchro
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1137,7 +1140,7 @@ Performs an action based on the specified action name. This API uses an asynchro
 
 | Name        | Type                                    | Mandatory  | Description            |
 | ----------- | ---------------------------------------- | ---- | -------------- |
-| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action). |
+| actionName | string | Yes   | Action name. For details, see [Action](./js-apis-accessibility.md#action).| 
 | callback | AsyncCallback&lt;void&gt; | Yes   | Callback used to return the result.|
 
 **Error codes**
@@ -1174,7 +1177,7 @@ Performs an action based on the specified action name. This API uses an asynchro
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1221,7 +1224,7 @@ Finds an element based on the content type. This API uses a promise to return th
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1236,7 +1239,7 @@ Finds an element based on the content type. This API uses a promise to return th
 
 | Type                                      | Description                           |
 | ---------------------------------------- | ----------------------------- |
-| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Promise used to return the result.|
+| Promise&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -1269,7 +1272,7 @@ Finds an element based on the content type. This API uses an asynchronous callba
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1279,7 +1282,7 @@ Finds an element based on the content type. This API uses an asynchronous callba
 | --------- | ---------------------------------------- | ---- | ---------------------------- |
 | type      | string                                   | Yes   | Type of element finding. The value is fixed at **'content'**.|
 | condition | string                                   | Yes   | Search criteria.                    |
-| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement9)&gt;&gt; | Yes   | Callback used to return the result.    |
+| callback  | AsyncCallback&lt;Array&lt;[AccessibilityElement](#accessibilityelement)&gt;&gt; | Yes   | Callback used to return the result.    |
 
 **Error codes**
 
@@ -1314,7 +1317,7 @@ Finds an element based on the focus type. This API uses a promise to return the 
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1329,7 +1332,7 @@ Finds an element based on the focus type. This API uses a promise to return the 
 
 | Type                                 | Description                            |
 | ----------------------------------- | ------------------------------ |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the result.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -1363,7 +1366,7 @@ Finds an element based on the focus type. This API uses an asynchronous callback
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1373,7 +1376,7 @@ Finds an element based on the focus type. This API uses an asynchronous callback
 | --------- | ---------------------------------------- | ---- | ---------------------------------- |
 | type      | string                                   | Yes   | Type of element finding. The value is fixed at **'focusType'**.|
 | condition | [FocusType](#focustype)                  | Yes   | Focus type.                      |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the result.         |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the result.         |
 
 **Error codes**
 
@@ -1409,7 +1412,7 @@ Finds an element based on the focus direction. This API uses a promise to return
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1424,7 +1427,7 @@ Finds an element based on the focus direction. This API uses a promise to return
 
 | Type                                 | Description                              |
 | ----------------------------------- | -------------------------------- |
-| Promise&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Promise used to return the result.|
+| Promise&lt;[AccessibilityElement](#accessibilityelement)&gt; | Promise used to return the result.|
 
 **Error codes**
 
@@ -1458,7 +1461,7 @@ Finds an element based on the focus direction. This API uses an asynchronous cal
 
 > **NOTE**
 >
-> This API is deprecated since API version 12. Related capabilities are no longer available in the system.
+> This API is supported since API version 9 and deprecated since API version 12. Related capabilities are no longer available in the system.
 
 **System capability**: SystemCapability.BarrierFree.Accessibility.Core
 
@@ -1468,7 +1471,7 @@ Finds an element based on the focus direction. This API uses an asynchronous cal
 | --------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type      | string                                   | Yes   | Type of element finding. The value is fixed at **'focusDirection'**.|
 | condition | [FocusDirection](#focusdirection)        | Yes   | Direction of the next focus element.                          |
-| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement9)&gt; | Yes   | Callback used to return the result.             |
+| callback  | AsyncCallback&lt;[AccessibilityElement](#accessibilityelement)&gt; | Yes   | Callback used to return the result.             |
 
 **Error codes**
 

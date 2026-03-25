@@ -11,10 +11,11 @@ For details about the algorithm specifications, see [DH](crypto-key-agreement-ov
 
 ## How to Develop
 
-1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate a DH asymmetric key pair (**KeyPair**) with the named DH group **modp1536**.
+1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to generate an asymmetric key pair (**KeyPair**) that uses the DH key algorithm and the well-known security prime group modp1536.
+
    In addition to the example in this topic, [DH](crypto-asym-key-generation-conversion-spec.md#dh) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate a DH asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
 
-2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) with the string parameter **'DH_modp1536'** to create a key agreement (**KeyAgreement**) instance.
+2. Call [cryptoFramework.createKeyAgreement](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatekeyagreement) with the string parameter **'DH_modp1536'** to create a key agreement (**KeyAgreement**) that uses the DH key algorithm and the well-known security prime group modp1536.
 
 3. Call [KeyAgreement.generateSecret](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesecret-1) to perform key agreement with the specified private key (**KeyPair.priKey**) and public key (**KeyPair.pubKey**), and return the shared secret.
 

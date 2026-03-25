@@ -10,7 +10,7 @@ Before developing a camera application, you must [request required permissions](
 
 A camera application invokes and controls a camera device to perform basic operations such as preview, photo capture, and video recording.
 
-As another important function of the camera application, video recording is the process of cyclic frame capture. To smooth video recording, you can follow step 4 in [Photo Capture](camera-shooting.md) to set the resolution, flash, focal length, photo quality, and rotation angle.
+As another important function of the camera application, video recording is the process of cyclic frame capture. For the custom configuration of video recording, you can refer to step 4 in [Photo Capture](camera-shooting.md) to set information such as resolution, flash, focal length, photo quality, and rotation angle.
 
 ## How to Develop
 

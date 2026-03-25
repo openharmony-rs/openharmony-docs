@@ -97,19 +97,19 @@ function factorial(n: number): number {
   if (n <= 1) {
     return 1;
   }
-  return n * factorial(n - 1);
+  return n * (n - 1);
 }
 
-factorial(n1)  //  7.660344000000002
-factorial(n2)  //  7.680640444893748
-factorial(n3)  //  1
-factorial(n4)  //  9.33262154439441e+157
+factorial(n1) // 6.719600000000001
+factorial(n2) // 6.728008294464001
+factorial(n3) // 1
+factorial(n4) // 9900
 ```
 
-`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`BigInt`类型来确保精度：
+`number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`bigint`类型来确保精度：
 
 ```typescript
-let bigInt: BigInt = BigInt('999999999999999999999999999999999999999999999999999999999999');
+let bigInt: bigint = 999999999999999999999999999999999999999999999999999999999999n;
 console.info('bigInt:' + bigInt.toString());
 ```
 
@@ -859,7 +859,7 @@ foo(123);     //  OK，使用第一个定义
 foo('aa'); // OK，使用第二个定义
 ```
 
-不允许重载函数有相同的名字和参数列表，否则将导致编译错误。
+不允许重载函数有相同的参数列表，否则将导致编译错误。
 
 ## 类
 
@@ -1376,7 +1376,7 @@ let map: Record<string, number> = {
 map['John']; // 25
 ```
 
-类型`K`可以是字符串类型或数值类型(不包括BigInt)，而`V`可以是任何类型。
+类型`K`可以是字符串类型或数值类型(不包括bigint)，而`V`可以是任何类型。
 
 ```typescript
 interface PersonInfo {
@@ -1887,6 +1887,7 @@ export function add(a:number, b:number):number {
 }
 
 // Index.ets
+// ESObject是ArkTS跨语言调用场景中用于标注JS/TS对象的类型
 import('./Calc').then((obj: ESObject) => {
   console.info(obj.add(3, 5));
 }).catch((err: Error) => {
@@ -2037,7 +2038,7 @@ class MyClass {
 >**说明：**
 >
 > - 如果使用其他类型用作注解字段的类型，则会发生编译错误。
-> - 注解字段类型不支持BigInt。
+> - 注解字段类型不支持bigint。
 
 注解字段的默认值必须使用常量表达式来指定。<br>常量表达式的场景如下所示：
 * 数字字面量
@@ -2066,7 +2067,7 @@ import {X} from './a';
 注解不支持类型Typescript中的合并，否则会出现编译报错。
 ```typescript
 namespace ns {
-  @interface MataInfo { // 编译错误：注解必须定义在顶层作用域
+  @interface MetaInfo { // 编译错误：注解必须定义在顶层作用域
     // ...
   }
 }

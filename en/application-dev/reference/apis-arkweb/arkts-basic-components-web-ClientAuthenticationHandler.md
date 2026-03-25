@@ -14,7 +14,7 @@ Implements a **ClientAuthenticationHandler** object to handle SSL client certifi
 >
 > - The initial APIs of this class are supported since API version 9.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor<sup>9+</sup>
 
@@ -58,7 +58,7 @@ Instructs the **Web** component to use the specified credentials (obtained from 
 | authUri | string | Yes   | Key value of the credentials.|
 
 The following table lists the supported certificate signature algorithms and key lengths.
-| Signature Algorithm    | Key Length  | 
+| Signing Algorithm    | Key Length  | 
 | ------- | ------ |
 | SSL_SIGN_RSA_PKCS1_SHA256 | 1024 (supported since API version 18), 2048, 3072, and 4096| 
 | SSL_SIGN_RSA_PKCS1_SHA384 | 1024 (supported since API version 18), 2048, 3072, and 4096| 
@@ -85,6 +85,14 @@ Instructs the **Web** component to use the specified credential and credential t
 | identity | string | Yes   | Unique ID of a credential.|
 | credentialTypeOrCertChainFile | [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) \| string | Yes| [CredentialType](./arkts-basic-components-web-e.md#credentialtype22) indicates the credential type. **string** indicates the certificate chain file path.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID | Error Message                  |
+| -------- | ------------------------- |
+|  801     | Capability not supported. |
+
 ## cancel<sup>9+</sup>
 
 cancel(): void
@@ -100,5 +108,3 @@ ignore(): void
 Ignores this request.
 
 **System capability**: SystemCapability.Web.Webview.Core
-
-<!--no_check-->

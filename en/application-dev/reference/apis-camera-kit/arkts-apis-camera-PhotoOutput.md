@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-PhotoOutput implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
+**PhotoOutput** implements output information used in a photo session. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
 
 > **NOTE**
 >
@@ -112,7 +112,7 @@ Captures a photo with the specified photo capture parameters. This API uses an a
 
 | Name     | Type                                        | Mandatory| Description                 |
 | -------- | ------------------------------------------- | ---- | -------------------- |
-| setting  | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | Yes  | Photo capture settings.            |
+| setting  | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | Yes  | Photo capture settings. If the input data is of the **undefined** type, a photo capture operation is triggered based on the default settings.            |
 | callback | AsyncCallback\<void\>                        | Yes  | Callback used to return the result. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned. |
 
 **Error codes**
@@ -166,7 +166,7 @@ Captures a photo with the specified photo capture parameters. This API uses a pr
 
 | Name    | Type                                        | Mandatory| Description     |
 | ------- | ------------------------------------------- | ---- | -------- |
-| setting | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | Yes  | Photo capture parameters. The input of **undefined** is processed as if no parameters were passed.|
+| setting | [PhotoCaptureSetting](arkts-apis-camera-i.md#photocapturesetting) | Yes  | Photo capture settings. If the input data is of the **undefined** type, a photo capture operation is triggered based on the default settings.|
 
 **Return value**
 
@@ -213,7 +213,7 @@ function capture(photoOutput: camera.PhotoOutput): void {
 
 on(type: 'photoAvailable', callback: AsyncCallback\<Photo\>): void
 
-Subscribes to events indicating available high-resolution images. This API uses an asynchronous callback to return the result.
+Subscribes to the events of returning available photos. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
@@ -227,8 +227,8 @@ Subscribes to events indicating available high-resolution images. This API uses 
 
 | Name    | Type     | Mandatory| Description                                 |
 | -------- | ---------- | --- | ------------------------------------ |
-| type     | string     | Yes  | Event type. The value is fixed at **'photoAvailable'**. The event can be listened for when a photoOutput instance is created.|
-| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | Yes  | Callback used to return the high-resolution image.|
+| type     | string     | Yes  | Event type. The value is fixed at **'photoAvailable'**. The event can be listened for when a **photoOutput** instance is created.|
+| callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | Yes  | Callback used to listen for the events of returning available photos.|
 
 **Example**
 
@@ -254,7 +254,7 @@ function registerPhotoOutputPhotoAvailable(photoOutput: camera.PhotoOutput): voi
 
 off(type: 'photoAvailable', callback?: AsyncCallback\<Photo\>): void
 
-Unsubscribes from events indicating available high-resolution images.
+Unsubscribes from the events of returning available photos.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -264,7 +264,7 @@ Unsubscribes from events indicating available high-resolution images.
 
 | Name     | Type                   | Mandatory| Description                                      |
 | -------- | ---------------------- | ---- | ------------------------------------------ |
-| type     | string                 | Yes  | Event type. The value is fixed at **'photoAvailable'**. The event can be listened for when a photoOutput instance is created.|
+| type     | string                 | Yes  | Event type. The value is fixed at **'photoAvailable'**. The event can be listened for when a **photoOutput** instance is created.|
 | callback | AsyncCallback\<[Photo](arkts-apis-camera-Photo.md)\> | No  | Callback used to return the result. If this parameter is specified, the subscription to the specified event with the specified callback is canceled. (The callback object cannot be an anonymous function.) Otherwise, the subscriptions to the specified event with all the callbacks are canceled.|
 
 **Example**
@@ -533,7 +533,7 @@ function isMirrorSupported(photoOutput: camera.PhotoOutput): boolean {
 
 enableMirror(enabled: boolean): void
 
-Enables mirroring photo capture.
+Enables or disables mirroring photo capture.
 
 Before calling this API, check whether moving photo capture is supported by calling [isMovingPhotoSupported](#ismovingphotosupported12) and whether mirroring is supported by calling [isMirrorSupported](#ismirrorsupported).
 
@@ -545,7 +545,7 @@ Before calling this API, check whether moving photo capture is supported by call
 
 | Name     | Type                   | Mandatory| Description                       |
 |----------| ---------------------- | ---- |---------------------------|
-| enabled | boolean                | Yes  | Whether to enable or disable mirroring photo capture. **true** to enable, **false** otherwise.|
+| enabled | boolean                | Yes  | Whether to enable mirroring photo capture. **true** to enable, **false** otherwise.|
 
 **Error codes**
 
@@ -621,7 +621,7 @@ Sets a video codec type for moving photos.
 
 | Name       | Type                                 | Mandatory|  Description               |
 | ------------- |-------------------------------------|-------| ------------        |
-| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  Yes   |Video codec type. |
+| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  Yes   | Video codec type. |
 
 **Error codes**
 
@@ -1063,9 +1063,9 @@ function testGetActiveProfile(photoOutput: camera.PhotoOutput): camera.Profile |
 
 getPhotoRotation(deviceDegree: number): ImageRotation
 
-Obtains the photo rotation degree.
+Obtains the photo rotation angle.
 
-- Device' natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
+- Device's natural orientation: The default orientation of the device (phone) is in portrait mode, with the charging port facing downward.
 - Camera lens angle: equivalent to the angle at which the camera is rotated clockwise to match the device's natural direction. The rear camera sensor of a phone is installed in landscape mode. Therefore, it needs to be rotated by 90 degrees clockwise to match the device's natural direction.
 - Screen orientation: The top-left corner of the image displayed on the screen is the first pixel, which is the coordinate origin. In the case of lock screen, the direction is the same as the device's natural orientation.
 
@@ -1077,13 +1077,13 @@ Obtains the photo rotation degree.
 
 | Name    | Type        | Mandatory| Description                      |
 | -------- | --------------| ---- | ------------------------ |
-| deviceDegree | number | Yes  | Device rotation degree, measured in degrees, within the range of [0, 360].<br>If the input value goes beyond this range, the system uses the remainder of the input value divided by 360.|
+| deviceDegree | number | Yes  | Device rotation angle, measured in degrees, within the range of [0, 360].<br>If the input value goes beyond this range, the system uses the remainder of the input value divided by 360.|
 
 **Return value**
 
 |      Type     | Description       |
 | -------------  |-----------|
-| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Photo rotation degree. If the API call fails, undefined is returned.|
+| [ImageRotation](arkts-apis-camera-e.md#imagerotation) | Obtains the photo rotation angle. If the API call fails, undefined is returned.|
 
 **Error codes**
 

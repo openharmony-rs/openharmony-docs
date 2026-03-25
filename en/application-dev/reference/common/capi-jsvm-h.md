@@ -42,8 +42,8 @@ Defines JSVM-APIs. These APIs are used to provide independent, standard, and com
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetMicrotaskPolicy(JSVM_VM vm,JSVM_MicrotaskPolicy policy)](#oh_jsvm_setmicrotaskpolicy) | Sets the microtask execution policy for a VM instance. If this method is not called, the default policy **JSVM_MicrotaskPolicy::JSVM_MICROTASK_AUTO** is used.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_DestroyVM(JSVM_VM vm)](#oh_jsvm_destroyvm) | Destroys a VM instance.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateProxy(JSVM_Env env,JSVM_Value target,JSVM_Value handler,JSVM_Value* result)](#oh_jsvm_createproxy) | Creates a JavaScript proxy. This API is equivalent to calling **new Proxy(target, handler)** in JS.|
-| [JSVM_Status JSVM_CDECL OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isProxy)](#oh_jsvm_isproxy) | Checks whether the input value is a JavaScript proxy.|
-| [JSVM_Status JSVM_CDECL OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_proxygettarget) | Obtains the target object in the JavaScript Proxy.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isProxy)](#oh_jsvm_isproxy) | Checks whether the input value is a JavaScript proxy.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSVM_Value* result)](#oh_jsvm_proxygettarget) | Obtains the target object in the JavaScript Proxy.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_OpenVMScope(JSVM_VM vm,JSVM_VMScope* result)](#oh_jsvm_openvmscope) | Opens a new VM scope for a VM instance.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CloseVMScope(JSVM_VM vm,JSVM_VMScope scope)](#oh_jsvm_closevmscope) | Closes the VM scope of a VM instance.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateEnv(JSVM_VM vm,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Env* result)](#oh_jsvm_createenv) | Creates a new environment based on the optional properties of the new context.|
@@ -54,7 +54,7 @@ Defines JSVM-APIs. These APIs are used to provide independent, standard, and com
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetVM(JSVM_Env env,JSVM_VM* result)](#oh_jsvm_getvm) | Obtains a VM instance.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScript(JSVM_Env env,JSVM_Value script,const uint8_t* cachedData,size_t cacheDataLength,bool eagerCompile,bool* cacheRejected,JSVM_Script* result)](#oh_jsvm_compilescript) | Compiles a JavaScript code snippet and returns the compiled script.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOrigin(JSVM_Env env,JSVM_Value script,const uint8_t* cachedData,size_t cacheDataLength,bool eagerCompile,bool* cacheRejected,JSVM_ScriptOrigin* origin,JSVM_Script* result)](#oh_jsvm_compilescriptwithorigin) | Compiles a JavaScript code snippet that contains source map information and returns the compiled script.|
-| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value script,size_t optionCount,JSVM_CompileOptions options[],JSVM_Value* result)](#oh_jsvm_compilescriptwithoptions) | Compiles a JavaScript code snippet and returns the compiled script.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value script,size_t optionCount,JSVM_CompileOptions options[],JSVM_Script* result)](#oh_jsvm_compilescriptwithoptions) | Compiles a JavaScript code snippet and returns the compiled script.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateCodeCache(JSVM_Env env,JSVM_Script script,const uint8_t** data,size_t* length)](#oh_jsvm_createcodecache) | Creates a code cache for the compiled script.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_RunScript(JSVM_Env env,JSVM_Script script,JSVM_Value* result)](#oh_jsvm_runscript) | Runs a JavaScript code snippet and returns its result, including the following precautions: Unlike eval, this function does not allow the script to access the current lexical scope, and therefore does not allow the script to access the module scope. This means that pseudo-global variables such as **require** will be unavailable. The script can access the global scope. The functions and variable declarations in the script will be added to the global object. Variable declarations using **let** and **const** are globally visible, but are not added to the global object. The value of **this** is **global** in the script. Without the JIT permission, the script containing WebAssembly fails to be executed. The performance varies in specific scenarios, and a log is printed to notify you.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetInstanceData(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint)](#oh_jsvm_setinstancedata) | Sets instance data so that it is associated with the currently running JSVM environment. You can use **OH_JSVM_GetInstanceData()** to obtain data later. Any existing data set by a previous call to **OH_JSVM_SetInstanceData()** will be overwritten. If **finalizeCb** was previously provided, it will not be called.|
@@ -85,9 +85,9 @@ Defines JSVM-APIs. These APIs are used to provide independent, standard, and com
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArray(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createarray) | Creates an array. This API returns the JSVM-API value of the JavaScript Array type.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayWithLength(JSVM_Env env,size_t length,JSVM_Value* result)](#oh_jsvm_createarraywithlength) | Creates an array with a specified length. This API returns the JSVM-API value of the JavaScript Array type. The **length** property of the array is set to the input **length** parameter. However, there is no guarantee that the underlying buffer is pre-allocated by the VM when the array is created. This behavior is implemented by the underlying VM.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArraybuffer(JSVM_Env env,size_t byteLength,void** data,JSVM_Value* result)](#oh_jsvm_createarraybuffer) | Creates an array buffer. This API returns the JSVM-API value of the JavaScript ArrayBuffer type. ArrayBuffer is used to represent a fixed-length binary data buffer. It is usually used as the backup buffer of the **TypedArray** object. The allocated ArrayBuffer has an underlying byte buffer whose size is determined by the **length** parameter. The underlying buffer can be returned to and operated by the caller. This buffer can only be written directly from the native code. To write data from JavaScript to this buffer, you need to create a **TypedArray** or **DataView** object.|
-| [JSVM_Status JSVM_CDECL OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)](#oh_jsvm_allocatearraybufferbackingstoredata) | Allocates a segment of BackingStore memory to the array buffer.|
-| [JSVM_Status JSVM_CDECL OH_JSVM_FreeArrayBufferBackingStoreData(void *data)](#oh_jsvm_freearraybufferbackingstoredata) | Frees the BackingStore memory allocated by **OH_JSVM_AllocateArrayBufferBackingStoreData**.|
-| [JSVM_Status JSVM_CDECL OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)](#oh_jsvm_createarraybufferfrombackingstoredata) | Creates an array buffer in the allocated BackingStore memory.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)](#oh_jsvm_allocatearraybufferbackingstoredata) | Allocates a segment of BackingStore memory to the array buffer.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)](#oh_jsvm_freearraybufferbackingstoredata) | Frees the BackingStore memory allocated by **OH_JSVM_AllocateArrayBufferBackingStoreData**.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)](#oh_jsvm_createarraybufferfrombackingstoredata) | Creates an array buffer in the allocated BackingStore memory.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateDate(JSVM_Env env,double time,JSVM_Value* result)](#oh_jsvm_createdate) | Creates a date. This API ignores leap seconds because ECMAScript complies with the POSIX time specifications.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternal(JSVM_Env env,void* data,JSVM_Finalize finalizeCb,void* finalizeHint,JSVM_Value* result)](#oh_jsvm_createexternal) | Creates a JavaScript value with external data. This is used to pass external data through JavaScript code. You can use **OH_JSVM_GetValueExternal** to retrieve the value from the native code. This API adds a **JSVM_Finalize** callback, which will be called when the newly created JavaScript object is garbage-collected. The created value is not an object, so it does not support additional properties. It is considered as a unique value type: Calling **OH_JSVM_Typeof()** with an external value generates **JSVM_EXTERNAL**.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateObject(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createobject) | Creates a default JavaScript object. This function is equivalent to executing **new Object()** in JavaScript.|
@@ -191,6 +191,9 @@ Defines JSVM-APIs. These APIs are used to provide independent, standard, and com
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CloseInspector(JSVM_Env env)](#oh_jsvm_closeinspector) | Closes all remaining inspector connections.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_WaitForDebugger(JSVM_Env env,bool breakNextLine)](#oh_jsvm_waitfordebugger) | Waits for the host to set up a socket connection with an inspector. After the connection is set up, the application continues to run. **Runtime.runIfWaitingForDebugger** is sent.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithPropertyHandler(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_PropertyHandlerCfg propertyHandlerCfg,JSVM_Callback callAsFunctionCallback,JSVM_Value* result)](#oh_jsvm_defineclasswithpropertyhandler) | Defines a set of JavaScript class property handlers including **getter**, **setter**, **deleter**, and **enumerator** with the given class name, constructor, properties, and callback, which are called as callbacks.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsLocked(JSVM_Env env, bool* isLocked)](#oh_jsvm_islocked) | Checks whether the current thread holds a lock of the specified environment. Only the thread that holds the lock can use the environment.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_AcquireLock(JSVM_Env env)](#oh_jsvm_acquirelock) | Obtains a lock. Only the thread that holds the lock can use the environment.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseLock(JSVM_Env env)](#oh_jsvm_releaselock) | Releases a lock. Only the thread that holds the lock can use the environment.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_IsUndefined(JSVM_Env env,JSVM_Value value,bool* isUndefined)](#oh_jsvm_isundefined) | Checks whether the input value is **Undefined**. This API is equivalent to **value === undefined** in JavaScript code.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_IsNull(JSVM_Env env,JSVM_Value value,bool* isNull)](#oh_jsvm_isnull) | Checks whether the input value is a **Null** object. This API is equivalent to **value === null** in JavaScript code.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_IsNullOrUndefined(JSVM_Env env,JSVM_Value value,bool* isNullOrUndefined)](#oh_jsvm_isnullorundefined) | Checks whether the input value is **Null** or **Undefined**. This API is equivalent to **value == null** in JavaScript code.|
@@ -201,10 +204,10 @@ Defines JSVM-APIs. These APIs are used to provide independent, standard, and com
 | [JSVM_EXTERN JSVM_Status OH_JSVM_IsFunction(JSVM_Env env,JSVM_Value value,bool* isFunction)](#oh_jsvm_isfunction) | Checks whether the input value is a function. This API is equivalent to **typeof value === 'function'** in JavaScript code.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_IsObject(JSVM_Env env,JSVM_Value value,bool* isObject)](#oh_jsvm_isobject) | Checks whether the input value is an object.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_IsBigInt(JSVM_Env env,JSVM_Value value,bool* isBigInt)](#oh_jsvm_isbigint) | Checks whether the input value is a BigInt value. This API is equivalent to **typeof value === 'bigint'** in JavaScript code.|
-| [JSVM_Status JSVM_CDECL OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_createmap) | Creates a JavaScript value of the Map type.|
-| [JSVM_Status JSVM_CDECL OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)](#oh_jsvm_ismap) | Checks whether the input value is of the Map type.|
-| [JSVM_Status JSVM_CDECL OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool* isConstructor)](#oh_jsvm_isconstructor) | Checks whether the input value is a constructor.|
-| [JSVM_Status JSVM_CDECL OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_RegExpFlags flags,JSVM_Value* result)](#oh_jsvm_createregexp) | Creates a regular expression object corresponding to the input JavaScript string. This API may throw an exception.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)](#oh_jsvm_createmap) | Creates a JavaScript value of the Map type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)](#oh_jsvm_ismap) | Checks whether the input value is of the Map type.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool* isConstructor)](#oh_jsvm_isconstructor) | Checks whether the input value is a constructor.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_RegExpFlags flags,JSVM_Value* result)](#oh_jsvm_createregexp) | Creates a regular expression object corresponding to the input JavaScript string. This API may throw an exception.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectGetPrototypeOf(JSVM_Env env,JSVM_Value object,JSVM_Value* result)](#oh_jsvm_objectgetprototypeof) | Obtains the prototype of a JavaScript object.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_ObjectSetPrototypeOf(JSVM_Env env,JSVM_Value object,JSVM_Value prototype)](#oh_jsvm_objectsetprototypeof) | Sets the prototype of a JavaScript object.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateSet(JSVM_Env env,JSVM_Value* result)](#oh_jsvm_createset) | Creates a JavaScript value of the Set type.|
@@ -214,6 +217,7 @@ Defines JSVM-APIs. These APIs are used to provide independent, standard, and com
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreateFunctionWithScript(JSVM_Env env,const char* funcName,size_t length,size_t argc,const JSVM_Value* argv,JSVM_Value script,JSVM_Value* result)](#oh_jsvm_createfunctionwithscript) | Creates a function with the given JavaScript as the function body.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_PumpMessageLoop(JSVM_VM vm,bool* result)](#oh_jsvm_pumpmessageloop) | Starts the message loop in the VM. This message loop can be executed through the external event loop.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_PerformMicrotaskCheckpoint(JSVM_VM vm)](#oh_jsvm_performmicrotaskcheckpoint) | Checks whether there are microtasks waiting in the queue. If yes, execute them.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_IsCallable(JSVM_Env env, JSVM_Value value, bool* isCallable)](#oh_jsvm_iscallable) | Checks whether the input value is callable.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_RetainScript(JSVM_Env env, JSVM_Script script)](#oh_jsvm_retainscript) | Retains a **JSVM_Script** and extends its lifecycle beyond the current scope.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseScript(JSVM_Env env, JSVM_Script script)](#oh_jsvm_releasescript) | Releases the script retained by **OH_JSVM_RetainScript**. The released script cannot be used again.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_OpenInspectorWithName(JSVM_Env env,int pid,const char* name)](#oh_jsvm_openinspectorwithname) | Opens the **name** inspector and its corresponding Unix Domain port with the specified PID.|
@@ -246,9 +250,9 @@ Defines JSVM-APIs. These APIs are used to provide independent, standard, and com
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetDebugOption(JSVM_Env env, JSVM_DebugOption debugOption, bool isEnabled)](#oh_jsvm_setdebugoption) | Enables or disables a specific debugging option for a JSVM environment.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForFatalError(JSVM_VM vm,JSVM_HandlerForFatalError handler)](#oh_jsvm_sethandlerforfatalerror) | Sets a handler for fatal errors. If the API is called repeatedly, only the last call takes effect. If the input handler is null, the previous setting is canceled.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetHandlerForPromiseReject(JSVM_VM vm,JSVM_HandlerForPromiseReject handler)](#oh_jsvm_sethandlerforpromisereject) | Sets a handler for the PromiseReject error. If the API is called repeatedly, only the last call takes effect. If the input handler is null, the previous setting is canceled.|
-| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t optionCount,JSVM_DefineClassOptions options[],JSVM_Value* result)](#oh_jsvm_defineclasswithoptions) | Defines a class with options. When a C++ class is encapsulated, the C++ constructor callback passed through the constructor should be a static method in the class. This method calls the actual class constructor, encapsulates a new C++ instance into a JavaScript object based on the input options, and returns the encapsulated object.|
-| [JSVM_Status JSVM_CDECL OH_JSVM_CreateExternalStringLatin1(JSVM_Env env,char* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringlatin1) | Creates an external JavaScript string with an ISO-8859-1-encoded C string. If the creation fails, the original native string is copied.|
-| [JSVM_Status JSVM_CDECL OH_JSVM_CreateExternalStringUtf16(JSVM_Env env,char16_t* str,size_t length,JSVM_Finalize finalizecallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringutf16) | Creates an external JavaScript string with a UTF-16LE-encoded C string. If the creation fails, the original native string is copied.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t option_count,JSVM_DefineClassOptions options[],JSVM_Value* result)](#oh_jsvm_defineclasswithoptions) | Defines a class with options. When a C++ class is encapsulated, the C++ constructor callback passed through the constructor should be a static method in the class. This method calls the actual class constructor, encapsulates a new C++ instance into a JavaScript object based on the input options, and returns the encapsulated object.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringLatin1(JSVM_Env env,char* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringlatin1) | Creates an external JavaScript string with an ISO-8859-1-encoded C string. If the creation fails, the original native string is copied.|
+| [JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env,char16_t* str,size_t length,JSVM_Finalize finalizeCallback,void* finalizeHint,JSVM_Value* result,bool* copied)](#oh_jsvm_createexternalstringutf16) | Creates an external JavaScript string with a UTF-16LE-encoded C string. If the creation fails, the original native string is copied.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_CreatePrivate(JSVM_Env env,JSVM_Value description,JSVM_Data* result)](#oh_jsvm_createprivate) | Creates a JavaScript private key object.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_SetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value value)](#oh_jsvm_setprivate) | Sets the **private** property for an input object.|
 | [JSVM_EXTERN JSVM_Status OH_JSVM_GetPrivate(JSVM_Env env,JSVM_Value object,JSVM_Data key,JSVM_Value *result)](#oh_jsvm_getprivate) | Obtains the **private** property of an input object based on the private key.|
@@ -391,7 +395,7 @@ Creates a JavaScript proxy. This API is equivalent to calling **new Proxy(target
 ### OH_JSVM_IsProxy()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isProxy)
+JSVM_EXTERN JSVM_Status OH_JSVM_IsProxy(JSVM_Env env,JSVM_Value value,bool* isProxy)
 ```
 
 **Description**
@@ -418,7 +422,7 @@ Checks whether the input value is a JavaScript proxy.
 ### OH_JSVM_ProxyGetTarget()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSVM_Value* result)
+JSVM_EXTERN JSVM_Status OH_JSVM_ProxyGetTarget(JSVM_Env env,JSVM_Value value,JSVM_Value* result)
 ```
 
 **Description**
@@ -681,7 +685,7 @@ Compiles a JavaScript code snippet and returns the compiled script.
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input data is a null pointer.         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.<br>         [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status): JS execution failed.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CompileScriptWithOrigin()
 
@@ -713,12 +717,12 @@ Compiles a JavaScript code snippet that contains source map information and retu
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input data is a null pointer.         [JSVM_STRING_EXPECTED](capi-jsvm-types-h.md#jsvm_status): string expected. This code is returned if the input parameter is not of the string type.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure.<br>         [JSVM_CANNOT_RUN_JS](capi-jsvm-types-h.md#jsvm_status): JS execution failed.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.|
 
 ### OH_JSVM_CompileScriptWithOptions()
 
 ```c
-JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value script,size_t optionCount,JSVM_CompileOptions options[],JSVM_Value* result)
+JSVM_EXTERN JSVM_Status OH_JSVM_CompileScriptWithOptions(JSVM_Env env,JSVM_Value script,size_t optionCount,JSVM_CompileOptions options[],JSVM_Script* result)
 ```
 
 **Description**
@@ -736,7 +740,7 @@ Compiles a JavaScript code snippet and returns the compiled script.
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) script | JavaScript code that includes the script to be compiled.|
 | size_t optionCount | Length of the input options array.|
 | JSVM_CompileOptions options[] | Array of options, which stores all compilation options.|
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the compiled script.|
+| [JSVM_Script](capi-jsvm-jsvm-value--8h.md)* result | Pointer to the compiled script.|
 
 **Returns**
 
@@ -1555,7 +1559,7 @@ Creates an array buffer. This API returns the JSVM-API value of the JavaScript A
 ### OH_JSVM_AllocateArrayBufferBackingStoreData()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)
+JSVM_EXTERN JSVM_Status OH_JSVM_AllocateArrayBufferBackingStoreData(size_t byteLength,JSVM_InitializedFlag initialized,void **data)
 ```
 
 **Description**
@@ -1582,7 +1586,7 @@ Allocates a segment of BackingStore memory to the array buffer.
 ### OH_JSVM_FreeArrayBufferBackingStoreData()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_FreeArrayBufferBackingStoreData(void *data)
+JSVM_EXTERN JSVM_Status OH_JSVM_FreeArrayBufferBackingStoreData(void *data)
 ```
 
 **Description**
@@ -1607,7 +1611,7 @@ Frees the BackingStore memory allocated by **OH_JSVM_AllocateArrayBufferBackingS
 ### OH_JSVM_CreateArrayBufferFromBackingStoreData()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateArrayBufferFromBackingStoreData(JSVM_Env env,void *data,size_t backingStoreSize,size_t offset,size_t arrayBufferSize,JSVM_Value *result)
 ```
 
 **Description**
@@ -2206,7 +2210,7 @@ Obtains the properties of a typed array. If any property is not required, its ou
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) typedarray | **TypedArray** whose properties are to be queried.|
-| [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype)* type | Pointer to the scalar data type of an element in TypedArray.|
+| [JSVM_TypedarrayType](capi-jsvm-types-h.md#jsvm_typedarraytype)* type | Pointer to the scalar data type of an element in **TypedArray**.|
 | size_t* length | Pointer to the number of elements in **TypedArray**.|
 | void** data | Double pointer to the first element in **TypedArray**. The underlying data buffer of the **TypedArray** is adjusted by **byte_offset** so that it points to the first element. If the array length is **0**, **data** may be NULL or any other pointer value.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* arraybuffer | Pointer to the **ArrayBuffer** under **TypedArray**.|
@@ -2355,7 +2359,7 @@ Obtains the C int64_t primitive equivalent of a given JavaScript BigInt value. I
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BitInt expected. This code is returned if the input parameter is not of the BitInt type.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BigInt expected. This code is returned if the input parameter is not of the BigInt type.|
 
 ### OH_JSVM_GetValueBigintUint64()
 
@@ -2383,7 +2387,7 @@ Obtains the C uint64_t primitive equivalent of a given JavaScript BigInt value. 
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BigInt expected. This code is returned if the input parameter is not of the BitInt type.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BigInt expected. This code is returned if the input parameter is not of the BigInt type.|
 
 ### OH_JSVM_GetValueBigintWords()
 
@@ -2412,7 +2416,7 @@ Converts a BigInt value to the sign bit, 64-bit little-endian array, and number 
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BigInt expected. This code is returned if the input parameter is not of the BitInt type.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BigInt expected. This code is returned if the input parameter is not of the BigInt type.|
 
 ### OH_JSVM_GetValueExternal()
 
@@ -3031,7 +3035,7 @@ Provides a behavior similar to calling the strict equality algorithm (===).
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) lhs | JavaScript value to be checked.|
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | Another JavaScript value to be checked.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | JavaScript value to be checked.|
 | bool* result | Pointer to the check result. The value **true** indicates that two **JSVM_Value** objects are strictly equal, and **false** indicates the opposite.|
 
 **Returns**
@@ -3059,7 +3063,7 @@ Provides a behavior similar to calling the loose equality algorithm (==). Regard
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) lhs | JavaScript value to be checked.|
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | Another JavaScript value to be checked.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) rhs | JavaScript value to be checked.|
 | bool* result | Pointer to the check result. The value **true** indicates that two **JSVM_Value** objects are loosely equal, and **false** indicates the opposite.|
 
 **Returns**
@@ -3394,7 +3398,7 @@ Checks whether an object has the named property. This method is equivalent to ca
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be checked.|
 | const char* utf8name | Pointer to the name of the property to be checked.|
-| bool* result | Pointer to the check result. The value **true** indicates that the object has the named property, and **false** indicates the opposite.|
+| bool* result | Pointer to the check result. The value **true** indicates that the input object has the **key** property, and **false** indicates the opposite.|
 
 **Returns**
 
@@ -3478,7 +3482,7 @@ Checks whether an input object has an element at the specified index. If yes, th
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be checked.|
 | uint32_t index | Index to be checked.|
-| bool* result | Pointer to the check result. The value **true** indicates that the input object has the specified element, and **false** indicates the opposite.|
+| bool* result | Pointer to the check result. The value **true** indicates that the input object has the **key** property, and **false** indicates the opposite.|
 
 **Returns**
 
@@ -3504,7 +3508,7 @@ Deletes the element at the specified index from an object.
 | Name| Description|
 | -- | -- |
 | [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the JSVM-API.|
-| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Target object.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) object | Object to be checked.|
 | uint32_t index | Index of the element to be deleted.|
 | bool* result | Pointer to the operation result. The value **true** indicates that the element deletion is successful, and **false** indicates the opposite.|
 
@@ -4481,6 +4485,82 @@ Defines a set of JavaScript class property handlers including **getter**, **sett
 | -- | -- |
 | JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_PENDING_EXCEPTION](capi-jsvm-types-h.md#jsvm_status): pending exception.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure due to unknown reasons.|
 
+### OH_JSVM_IsLocked()
+
+```c++
+JSVM_EXTERN JSVM_Status OH_JSVM_IsLocked(JSVM_Env env, bool* isLocked)
+```
+
+**Description**
+
+Checks whether the current thread holds a lock of the specified environment. Only the thread that holds the lock can use the environment.
+
+**Since**: 12
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the API.|
+| bool* isLocked | Pointer to the result indicating whether the current thread holds the environment lock. The value **true** indicates that the environment lock is held, and the value **false** indicates the opposite.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
+
+### OH_JSVM_AcquireLock()
+
+```c++
+JSVM_EXTERN JSVM_Status OH_JSVM_AcquireLock(JSVM_Env env)
+```
+
+**Description**
+
+Obtains a lock. Only the thread that holds the lock can use the environment.
+
+**Since**: 12
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the API.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
+
+### OH_JSVM_ReleaseLock()
+
+```c++
+JSVM_EXTERN JSVM_Status OH_JSVM_ReleaseLock(JSVM_Env env)
+```
+
+**Description**
+
+Releases a lock. Only the thread that holds the lock can use the environment.
+
+**Since**: 12
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the API.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
+
 ### OH_JSVM_IsUndefined()
 
 ```c
@@ -4754,7 +4834,7 @@ Checks whether the input value is a BigInt value. This API is equivalent to **ty
 ### OH_JSVM_CreateMap()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateMap(JSVM_Env env, JSVM_Value* result)
 ```
 
 **Description**
@@ -4780,7 +4860,7 @@ Creates a JavaScript value of the Map type.
 ### OH_JSVM_IsMap()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)
+JSVM_EXTERN JSVM_Status OH_JSVM_IsMap(JSVM_Env env,JSVM_Value value,bool* isMap)
 ```
 
 **Description**
@@ -4807,7 +4887,7 @@ Checks whether the input value is of the Map type.
 ### OH_JSVM_IsConstructor()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool* isConstructor)
+JSVM_EXTERN JSVM_Status OH_JSVM_IsConstructor(JSVM_Env env,JSVM_Value value,bool* isConstructor)
 ```
 
 **Description**
@@ -4834,7 +4914,7 @@ Checks whether the input value is a constructor.
 ### OH_JSVM_CreateRegExp()
 
 ```c
-JSVM_Status JSVM_CDECL OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_RegExpFlags flags,JSVM_Value* result)
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateRegExp(JSVM_Env env,JSVM_Value value,JSVM_RegExpFlags flags,JSVM_Value* result)
 ```
 
 **Description**
@@ -4991,7 +5071,7 @@ Implements the abstract operation **ToBigInt()**.
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BitInt expected. This code is returned if the input JavaScript value cannot be converted to a BitInt value.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_BIGINT_EXPECTED](capi-jsvm-types-h.md#jsvm_status): BigInt expected. This code is returned if the input JavaScript value cannot be converted to a BigInt value.|
 
 ### OH_JSVM_IsRegExp()
 
@@ -5095,6 +5175,33 @@ Checks whether there are microtasks waiting in the queue. If yes, execute them.
 | Name| Description|
 | -- | -- |
 | [JSVM_VM](capi-jsvm-jsvm-vm--8h.md) vm | VM instance in which microtasks are to be checked.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.|
+
+### OH_JSVM_IsCallable()
+
+```
+JSVM_EXTERN JSVM_Status OH_JSVM_IsCallable(JSVM_Env env, JSVM_Value value, bool* isCallable)
+```
+
+**Description**
+
+Checks whether the input value is callable.
+
+**Since**: 12
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [JSVM_Env](capi-jsvm-jsvm-env--8h.md) env | Environment for calling the API.|
+| [JSVM_Value](capi-jsvm-jsvm-value--8h.md) value | JavaScript value to be checked.|
+| bool* isCallable | Pointer to the result indicating whether the given value is callable. The value **true** indicates that the given value is callable, and the value **false** indicates the opposite.|
 
 **Returns**
 
@@ -5852,7 +5959,7 @@ Removes the handler for GC from the VM.
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **vm** or **handler** is empty, the handler has been removed, or the handler has never been added.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if **vm** or **handler** is empty, the handler has been removed,<br> or the handler has never been added.|
 
 ### OH_JSVM_SetHandlerForOOMError()
 
@@ -5962,7 +6069,7 @@ Sets a handler for the PromiseReject error. If the API is called repeatedly, onl
 ### OH_JSVM_DefineClassWithOptions()
 
 ```c
-JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t optionCount,JSVM_DefineClassOptions options[],JSVM_Value* result)
+JSVM_EXTERN JSVM_Status OH_JSVM_DefineClassWithOptions(JSVM_Env env,const char* utf8name,size_t length,JSVM_Callback constructor,size_t propertyCount,const JSVM_PropertyDescriptor* properties,JSVM_Value parentClass,size_t option_count,JSVM_DefineClassOptions options[],JSVM_Value* result)
 ```
 
 **Description**
@@ -5983,7 +6090,7 @@ Defines a class with options. When a C++ class is encapsulated, the C++ construc
 | size_t propertyCount                                                              | Number of properties in the array.|
 | [const JSVM_PropertyDescriptor](capi-jsvm-jsvm-propertydescriptor.md)* properties | Pointer to the property descriptors, which are used to define the properties and methods of a class.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md) parentClass             | Parent class of the defined class.|
-| size_t optionCount                                                                | Number of options in the array.|
+| size_t option_count                                                                | Number of options in the array.|
 | [JSVM_DefineClassOptions](capi-jsvm-jsvm-defineclassoptions.md) options[]                                             | Array of options used to define the class.|
 | [JSVM_Value](capi-jsvm-jsvm-value--8h.md)* result                 | Pointer to the **JSVM_Value** of the constructor of a class.|
 
@@ -5991,7 +6098,7 @@ Defines a class with options. When a C++ class is encapsulated, the C++ construc
 
 | Type| Description|
 | -- | -- |
-| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input pointers contains a null pointer.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the execution fails due to invalid **utf8name**, **constructor**, or **properties**.|
+| JSVM_EXTERN [JSVM_Status](capi-jsvm-types-h.md#jsvm_status) |  Returns a JSVM status code.<br>         [JSVM_OK](capi-jsvm-types-h.md#jsvm_status): operation successful.<br>         [JSVM_INVALID_ARG](capi-jsvm-types-h.md#jsvm_status): invalid argument. This code is returned if the input pointer contains a null pointer.<br>         [JSVM_GENERIC_FAILURE](capi-jsvm-types-h.md#jsvm_status): generic failure. This code is returned if the execution fails due to invalid **utf8name**,| **constructor**,| or **properties**.|
 
 ### OH_JSVM_CreateExternalStringLatin1()
 
@@ -6027,7 +6134,7 @@ Creates an external JavaScript string with an ISO-8859-1-encoded C string. If th
 ### OH_JSVM_CreateExternalStringUtf16()
 
 ```c
-JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env, char16_t* str, size_t length, JSVM_Finalize finalizecallback, void* finalizeHint, JSVM_Value* result, bool* copied)
+JSVM_EXTERN JSVM_Status OH_JSVM_CreateExternalStringUtf16(JSVM_Env env, char16_t* str, size_t length, JSVM_Finalize finalizeCallback, void* finalizeHint, JSVM_Value* result, bool* copied)
 ```
 
 **Description**
@@ -6197,7 +6304,6 @@ Creates a reference to a given **JSVM_Data** object. The initial reference count
 
 ```c
 JSVM_EXTERN JSVM_Status OH_JSVM_GetReferenceData(JSVM_Env env,JSVM_Ref ref,JSVM_Data* result)
-EXTERN_C_END
 ```
 
 **Description**

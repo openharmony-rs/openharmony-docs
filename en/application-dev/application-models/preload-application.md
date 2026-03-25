@@ -59,11 +59,11 @@ When system resources are sufficient, the system preloads the application to a s
 
 2. Configure the entry UIAbility (automatically configured by default when you create a project).
 
-    For example, for an EntryAbility, in the [module.json5](../quick-start/module-configuration-file.md) file of the entry module, set **mainElement** to **EntryAbility**, and add **"entity.system.home"** to **entities** and **"ohos.want.action.home"** to **actions** in the **skills** tag of **EntryAbility**.
+    1. For example, for an EntryAbility, in the [module.json5](../quick-start/module-configuration-file.md) file of the entry module, set **mainElement** to **EntryAbility**, and add **"entity.system.home"** to **entities** and **"ohos.want.action.home"** to **actions** in the **skills** tag of **EntryAbility**.
 
-    If [appPreloadPhase](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) in the [app.json5](../quick-start/app-configuration-file.md) file is set to **windowStageCreated**, set **launchType** of the EntryAbility in the entry module's [module.json5](../quick-start/module-configuration-file.md) file to [singleton](uiability-launch-type.md#singleton) or [specified](uiability-launch-type.md#specified).
+    2. If [appPreloadPhase](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) in the [app.json5](../quick-start/app-configuration-file.md) file is set to **windowStageCreated**, set **launchType** of the EntryAbility in the entry module's [module.json5](../quick-start/module-configuration-file.md) file to [singleton](uiability-launch-type.md#singleton) or [specified](uiability-launch-type.md#specified).
 
-    ```json
+    ```json5
     {
       "module": {
         "name": "entry",

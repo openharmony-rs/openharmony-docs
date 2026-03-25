@@ -3,14 +3,14 @@
 <!--Subsystem: Request-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **request** module provides applications with the basic capabilities of file upload and download and background transfer proxy.
 
 - The child component **cacheDownload** provides the basic capability of caching application resources in advance.
 
-- **cacheDownload** uses the HTTP protocol to download data and caches data resources to the application memory or files in the application sandbox directory.
+- **cacheDownload** uses the HTTP to download data and caches data resources to the application memory or files in the application sandbox directory.
 
 - The cached data can be used by some ArkUI components, such as the **Image** component, to improve resource loading efficiency. Check whether the ArkUI components support this function by referring to the ArkUI component topics.
 
@@ -43,7 +43,7 @@ Provides configuration options for download and cache, including HTTP options, t
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
-| headers | Record\<string, string\> | No | Yes| Request header used by a download-and-cache task during HTTP transfer.|
+| headers | Record\<string, string\> | No | Yes| Request header used by a download task during HTTP transfer. The default value is empty.|
 | sslType<sup>21+</sup> | [SslType](#ssltype21) | No | Yes| Secure communication protocol, such as TSL or TLCP. TLS is used by default. Currently, TLS and TLCP do not support two-way authentication.|
 | caPath<sup>21+</sup> | string | No | Yes| CA certificate path. Currently, only the .pem certificate is supported. The CA certificate preset by the system is used by default.|
 
@@ -107,7 +107,7 @@ Downloads a task from a specified URL. If the transfer is successful, the data i
 
 - In addition, the system determines whether to store the target resource in a specified location based on each cache type's size limit in **cacheDownload**. By default, the LRU mode is used to replace the existing cached data.
 
-- This API uses a synchronous method and does not block the calling thread.
+- This API returns the result synchronously, without blocking the calling thread.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -117,7 +117,7 @@ Downloads a task from a specified URL. If the transfer is successful, the data i
 
 | Name    | Type                                                        | Mandatory| Description                            |
 |---------|------------------------------------------------------------|----|--------------------------------|
-| url     | string                                                     | Yes | URL of the target resource. Only the HTTP protocol is supported. The URL length cannot exceed 8192 bytes.|
+| url     | string                                                     | Yes | URL of the target resource. HTTP and HTTPS are supported. The URL length cannot exceed 8192 bytes.|
 | options | [CacheDownloadOptions](#cachedownloadoptions) | Yes | Cache download options for the target resource.                  |
 
 **Error codes**
@@ -134,7 +134,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```ts
   import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
 
-  // Provide configuration options for the download-and-cache task.
+  // Provide configuration options for the download task.
   let options: cacheDownload.CacheDownloadOptions = {
     headers: { 'Accept': 'application/json' },
     sslType: cacheDownload.SslType.TLS,
@@ -153,11 +153,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 cancel(url: string): void
 
-Cancels an ongoing download-and-cache task based on the URL. The saved memory cache and file cache are not affected.
+Cancels an ongoing download task based on the URL. The saved memory cache and file cache are not affected.
 
 - If the task corresponding to the URL does not exist, no operation is required.
 
-- This API uses a synchronous method and does not block the calling thread.
+- This API returns the result synchronously, without blocking the calling thread.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -165,7 +165,7 @@ Cancels an ongoing download-and-cache task based on the URL. The saved memory ca
 
 | Name | Type    | Mandatory| Description                            |
 |------|--------|----|--------------------------------|
-| url  | string | Yes | URL of the target resource. Only the HTTP protocol is supported. The URL length cannot exceed 8192 bytes.|
+| url  | string | Yes | URL of the target resource. HTTP and HTTPS are supported. The URL length cannot exceed 8192 bytes.|
 
 **Error codes**
 
@@ -180,7 +180,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```ts
   import { cacheDownload, BusinessError } from '@kit.BasicServicesKit';
 
-  // Provide configuration options for the download-and-cache task.
+  // Provide configuration options for the download task.
   let options: cacheDownload.CacheDownloadOptions = {};
   
   try {
@@ -193,7 +193,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   // Other service logic is omitted here.
   
   try {
-    // Cancel the download-and-cache task when it is not required. The cached data is not affected.
+    // Cancel the download task when it is not required. The cached data is not affected.
     cacheDownload.cancel("https://www.example.com");
   } catch (err) {
     console.error(`Failed to cancel the task. err code: ${err.code}, err message: ${err.message}`);
@@ -208,7 +208,7 @@ Sets the upper limit of the memory cache size for the **cacheDownload** componen
 
 - When this API is used to adjust the cache size, the LRU mode is used by default to clear redundant cached data in the memory.
 
-- This API uses a synchronous method and does not block the calling thread.
+- This API returns the result synchronously, without blocking the calling thread.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -247,6 +247,8 @@ Sets the upper limit of the file cache size for the **cacheDownload** component.
 
 - When this API is used to adjust the cache size, the LRU mode is used by default to clear redundant cached data in the file.
 
+- If **bytes** is set to **0**, all cached files will be deleted.
+
 - This API returns the result synchronously, without blocking the calling thread.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
@@ -278,8 +280,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   }
   ```
 
-> ​**NOTE**
->
+> **NOTE**
+​>
 > * Network cache files downloaded by the **cacheDownload** module are stored in the cache directory of the application sandbox.
 > * An application can use this API to clear cache files.
 > * Do not modify the cache directory and files directly to avoid function exceptions.
@@ -323,13 +325,13 @@ getDownloadInfo(url: string): DownloadInfo | undefined
 
 Obtains the download information based on the URL. The download information is stored in the download information list in memory and is cleared when the application exits.
 
-- If the specified URL can be found in the download information list, the last downloaded [DownloadInfo](#downloadinfo20) of the URL is returned.
+- If the specified URL can be found in the download information list, the latest [DownloadInfo](#downloadinfo20) of the URL is returned.
 
 - If the specified URL cannot be found in the download information list, **undefined** is returned.
 
 - If the download information has already cached in the URL, the new cached information will overwrite the old one.
 
-- When the target information is stored in memory, the existing cached information is replaced in LRU mode.
+- When the target information is stored in the memory, the existing cached information is replaced in LRU mode.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -365,7 +367,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     console.error(`Failed to set download information list size. err code: ${err.code}, err message: ${err.message}`);
   }
 
-  // Provide configuration options for the download-and-cache task.
+  // Provide configuration options for the download task.
   let options: cacheDownload.CacheDownloadOptions = {};
   
   try {
@@ -381,7 +383,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     // Obtain the download information after the download task is complete.
     let downloadInfo = cacheDownload.getDownloadInfo("https://www.example.com");
     if (downloadInfo == undefined) {
-      console.info(`CacheDownload get download info undefined.`);
+      console.error(`CacheDownload get download info undefined.`);
     } else {
       console.info(`CacheDownload get download info : ${JSON.stringify(downloadInfo)}`);
     }

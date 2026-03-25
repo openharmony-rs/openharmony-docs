@@ -11,10 +11,9 @@ The photoAccessHelper module provides APIs for managing system albums, including
 > **NOTE**
 >
 > Before you get started, obtain a PhotoAccessHelper instance and apply for required permissions. For details, see [Before You Start](photoAccessHelper-preparation.md).
->
 > Unless otherwise specified, the PhotoAccessHelper instance obtained in [Before You Start](photoAccessHelper-preparation.md) is used to call photoAccessHelper APIs. If the code for obtaining the PhotoAccessHelper instance is missing, an error will be reported to indicate that photoAccessHelper is not defined.
 
-To ensure application running efficiency, most PhotoAccessHelper APIs are asynchronously implemented in callback or promise mode. The following examples use promise-based APIs. For details about the APIs, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
+To ensure application running efficiency, most PhotoAccessHelper APIs are asynchronously implemented in callback or promise mode. The following examples of asynchronous API calls use the promise function. For more methods, see [Module Description](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md).
 
 Unless otherwise specified, all the media assets to be obtained in this document exist in the database. If no media asset is obtained when the sample code is executed, check whether the media assets exist in the database.
 
@@ -29,7 +28,7 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 **How to Develop**
 
@@ -59,7 +58,7 @@ Use [MediaAssetChangeRequest.setFavorite](../../reference/apis-media-library-kit
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Favorite an image.
 
@@ -102,7 +101,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Obtain an image from **Favorites**.
 
@@ -110,7 +109,7 @@ Example: Obtain an image from **Favorites**.
 
 1. [Obtain a Favorites object](#obtaining-a-favorites-object).
 2. Set **fetchOptions** for obtaining the image.
-3. Call **Album.getAssets** to obtain the image assets.
+3. Call **Album.getAssets** to obtain image assets.
 4. Call [FetchResult.getFirstObject](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md#getfirstobject-1) to obtain the first image from the result set.
 
 ```ts
@@ -148,7 +147,7 @@ Use [MediaAssetChangeRequest.setFavorite](../../reference/apis-media-library-kit
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO and ohos.permission.WRITE_IMAGEVIDEO permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** and **ohos.permission.WRITE_IMAGEVIDEO** permissions. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Unfavorite an image.
 
@@ -203,7 +202,7 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 **How to Develop**
 
@@ -232,7 +231,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Obtain a video in **Videos**.
 
@@ -282,7 +281,7 @@ Use [PhotoAccessHelper.getAlbums](../../reference/apis-media-library-kit/arkts-a
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 **How to Develop**
 
@@ -306,12 +305,12 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### Obtaining Media Assets in Screenshots
 
-[Obtain a Screenshots object](#obtaining-a-screenshots-object), and call [Album.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets-1) to obtain the media assets in **Screenshots**.
+[Obtain a Screenshots object](#obtaining-a-screenshots-object), and call [Album.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-AbsAlbum.md#getassets-1) to obtain the media assets in the **Screenshots** album.
 
 **Prerequisites**
 
 - A PhotoAccessHelper instance is obtained.
-- The application has the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
+- Request the **ohos.permission.READ_IMAGEVIDEO** permission. For details, see [Requesting Permissions](photoAccessHelper-preparation.md#requesting-permissions).
 
 Example: Obtain a media asset from **Screenshots**.
 

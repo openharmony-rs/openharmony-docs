@@ -17,7 +17,7 @@
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
-**起始版本：** 13
+**起始版本：** 11
 
 **相关模块：** [TransientTask](capi-transienttask.md)
 
@@ -29,6 +29,12 @@
 |------------------------------------------------------------------------------------------| -- | -- |
 | [TransientTask_DelaySuspendInfo](capi-transienttask-transienttask-delaysuspendinfo.md)   | TransientTask_DelaySuspendInfo | 定义短时任务返回信息结构体。 |
 | [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) | TransientTask_TransientTaskInfo | 定义所有短时任务信息结构体。 |
+
+### 宏定义
+
+| 名称 | 描述 |
+| -------- | -------- |
+| TRANSIENT_TASK_MAX_NUM 3| 同一时刻最大短时任务数量。<br/>**起始版本：** 20  |
 
 ### 枚举
 

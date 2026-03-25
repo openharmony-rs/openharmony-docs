@@ -45,8 +45,7 @@ console.info('power is active: ' + isActive);
 
 rebootDevice(reason: string): void
 
-> **NOTE**<br>This API is supported since API version 7 and is deprecated since API version 9. You are advised to use **power.reboot** instead. The substitute API is available only for system applications.
-
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9.<!--Del--> You are advised to use [power.reboot](js-apis-power-sys.md#powerreboot9) instead<!--DelEnd-->. The substitute API is available only for system applications.
 Reboots a device.
 
 **Required permissions**: ohos.permission.REBOOT (available only for system applications)
@@ -124,7 +123,7 @@ try {
 
 isScreenOn(callback: AsyncCallback&lt;boolean&gt;): void
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [power.isActive](#powerisactive9) instead.
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [power.isActive](#powerisactive9) instead.
 
 Checks the screen status of the current device. This API uses an asynchronous callback to return the result.
 
@@ -152,7 +151,7 @@ power.isScreenOn((err: Error, data: boolean) => {
 
 isScreenOn(): Promise&lt;boolean&gt;
 
-> **NOTE**<br>This API is deprecated since API version 9. You are advised to use [power.isActive](#powerisactive9) instead.
+> **NOTE**<br>This API is supported since API version 7 and deprecated since API version 9. You are advised to use [power.isActive](#powerisactive9) instead.
 
 Checks the screen status of the current device. This API uses a promise to return the result.
 

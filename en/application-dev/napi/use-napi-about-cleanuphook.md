@@ -46,29 +46,37 @@ Call **napi_remove_env_cleanup_hook** to remove the previously added environment
 
 CPP code:
 
-```cpp
+<!-- @[napi_remove_add_env_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/napi_init.cpp) -->
+
+``` C++
 #include <hilog/log.h>
 #include <string>
 #include "napi/native_api.h"
+#include "uv.h"
+
 // Define the memory struct, including the pointer to the data and the data size.
 typedef struct {
     char *data;
     size_t size;
 } Memory;
+
 // Callback for clearing the external buffer. It is used to release the allocated memory.
-void ExternalFinalize(napi_env env, void *finalize_data, void *finalize_hint)
+void ExternalFinalize(napi_env env, void *finalizeData, void *finalizeHint)
 {
-    Memory *wrapper = (Memory *)finalize_hint;
+    Memory *wrapper = (Memory *)finalizeHint;
+    // ...
     free(wrapper->data);
     free(wrapper);
     OH_LOG_INFO(LOG_APP, "Node-API napi_add_env_cleanup_hook ExternalFinalize");
 }
+
 // Perform cleanup operations when the environment is closed, for example, clear global variables or other resources.
 static void Cleanup(void *arg)
 {
     // Perform the cleanup operation.
     OH_LOG_INFO(LOG_APP, "Node-API napi_add_env_cleanup_hook cleanuped: %{public}d", *(int *)(arg));
 }
+
 // Create an external buffer and add the environment cleanup hook function.
 static napi_value NapiEnvCleanUpHook(napi_env env, napi_callback_info info)
 {
@@ -85,18 +93,18 @@ static napi_value NapiEnvCleanUpHook(napi_env env, napi_callback_info info)
         OH_LOG_ERROR(LOG_APP, "malloc for wrapper->data failed");
         return nullptr;
     }
-    memset(wrapper->data, 0, str.size() + 1);
-    strcpy(wrapper->data, str.c_str());
+    std::copy_n(str.c_str(), str.size() + 1, wrapper->data);
     wrapper->size = str.size();
     // Create an external buffer object and specify the cleanup callback function.
     // Note: The memory release of wrapper->data depends on the ExternalFinalize callback. ExternalFinalize is called only when the buffer is correctly held and finally reclaimed by GC. Otherwise, memory leaks occur.
     napi_value buffer = nullptr;
-    napi_status status = napi_create_external_buffer(env, wrapper->size, (void *)wrapper->data, ExternalFinalize, wrapper, &buffer);
+    napi_status status = napi_create_external_buffer(env, wrapper->size, (void *)wrapper->data,
+                                                     ExternalFinalize, wrapper, &buffer);
     if (status != napi_ok) {
         // If the creation fails, proactively release the memory to avoid memory leaks.
         free(wrapper->data);
         free(wrapper);
-        OH_LOG_ERROR(LOG_APP, "napi_create_external_buffer failed");
+        OH_LOG_ERROR(LOG_APP, "napi_create_external_buffer failed.");
         return nullptr;
     }
     // Use static variables as hook function parameters.
@@ -115,43 +123,40 @@ static napi_value NapiEnvCleanUpHook(napi_env env, napi_callback_info info)
         return nullptr;
     }
     // Remove the environment cleanup hook function immediately.
-    // Generally, use this API when the resource associated with the hook must be released.
+    // The hook function can be removed when it is no longer needed. If you want the hook function to execute when the environment exits, do not remove it.
     napi_remove_env_cleanup_hook(env, Cleanup, &hookArg);
     napi_remove_env_cleanup_hook(env, Cleanup, &hookParameter);
     // Return the created external buffer object.
     return buffer;
 }
 ```
-<!-- @[napi_remove_add_env_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/napi_init.cpp) -->
 
 API declaration:
 
-```ts
-// index.d.ts
+<!-- @[napi_remove_add_env_cleanup_hook_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const napiEnvCleanUpHook: () => Object | undefined;
 ```
-<!-- @[napi_remove_add_env_cleanup_hook_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS code:
 
-```ts
-// index.ets
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { worker } from '@kit.ArkTS';
+<!-- @[connect_with_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/pages/Index.ets) -->
 
-let wk = new worker.ThreadWorker("entry/ets/workers/worker.ts");
+``` TypeScript
+let wk = new worker.ThreadWorker('entry/ets/workers/worker.ts');
 // Send a message to the worker thread.
-wk.postMessage("test NapiEnvCleanUpHook");
+wk.postMessage('test NapiEnvCleanUpHook');
 // Process the message from the worker thread.
 wk.onmessage = (message) => {
-  hilog.info(0x0000, 'testTag', 'Test Node-API message from worker: %{public}s', JSON.stringify(message));
+  hilog.info(0x0000, 'testTag', 'Test Node-API message from worker: %{public}s',
+    JSON.stringify(message));
   wk.terminate();
 };
 ```
-<!-- @[connect_with_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[connect_with_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/workers/worker.ts) -->
 
-```ts
-// worker.ts
+``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { worker } from '@kit.ArkTS';
 import testNapi from 'libentry.so';
@@ -164,7 +169,6 @@ parent.onmessage = (message) => {
   parent.postMessage('Test Node-API worker:' + testNapi.napiEnvCleanUpHook());
 };
 ```
-<!-- @[connect_with_main_thread](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/workers/worker.ts) -->
 
 For details about the worker development, see:
 
@@ -180,19 +184,16 @@ Call **napi_remove_async_cleanup_hook** to remove an async cleanup hook function
 
 CPP code:
 
-```cpp
-#include <cstdlib>
-#include <string.h>
-#include "napi/native_api.h"
-#include "uv.h"
+<!-- @[napi_add_remove_async_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/napi_init.cpp) -->
 
-// Async operation content.
+``` C++
 typedef struct {
     napi_env env;
     void *testData;
     uv_async_s asyncUv;
     napi_async_cleanup_hook_handle cleanupHandle;
 } AsyncContent;
+
 // Delete the async work object and remove the hook function.
 static void FinalizeWork(uv_handle_s *handle)
 {
@@ -205,12 +206,12 @@ static void FinalizeWork(uv_handle_s *handle)
     // Release AsyncContent.
     free(asyncData);
 }
+
 // Asynchronously clear the environment.
 static void AsyncWork(uv_async_s *async)
 {
     // Perform cleanup operations, for example, release the dynamically allocated memory.
     AsyncContent *asyncData = reinterpret_cast<AsyncContent *>(async->data);
-    
     if (asyncData != nullptr && asyncData->testData != nullptr) {
         free(asyncData->testData);
         asyncData->testData = nullptr;
@@ -218,6 +219,7 @@ static void AsyncWork(uv_async_s *async)
     // Close the libuv handle and trigger the FinalizeWork callback to clear the handle.
     uv_close((uv_handle_s *)async, FinalizeWork);
 }
+
 // Create and trigger an async cleanup operation in an event loop.
 static void AsyncCleanup(napi_async_cleanup_hook_handle handle, void *info)
 {
@@ -237,10 +239,7 @@ static napi_value NapiAsyncCleanUpHook(napi_env env, napi_callback_info info)
 {
     // Allocate the AsyncContent memory.
     AsyncContent *data = reinterpret_cast<AsyncContent *>(malloc(sizeof(AsyncContent)));
-    if (data == nullptr) {
-        napi_throw_error(env, nullptr, "Test Node-API malloc AsyncContent failed");
-        return nullptr;
-    }
+    // ...
     data->env = env;
     data->cleanupHandle = nullptr;
     // Allocate memory and copy string data.
@@ -264,7 +263,6 @@ static napi_value NapiAsyncCleanUpHook(napi_env env, napi_callback_info info)
     return result;
 }
 ```
-<!-- @[napi_add_remove_async_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/napi_init.cpp) -->
 
 Since the uv.h library is used, add the following configuration to the CMakeLists file:
 ```text
@@ -274,25 +272,28 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libuv.so)
 
 API declaration:
 
-```ts
-// index.d.ts
+<!-- @[napi_add_remove_async_cleanup_hook_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/types/libentry/Index.d.ts) -->
+
+``` TypeScript
 export const napiAsyncCleanUpHook: () => boolean | undefined;
 ```
-<!-- @[napi_remove_add_env_cleanup_hook_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ArkTS code:
 
-```ts
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import testNapi from 'libentry.so';
+<!-- @[ark_napi_remove_add_env_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
 try {
-  hilog.info(0x0000, 'testTag', 'Test Node-API napi_add_async_cleanup_hook: %{public}s', testNapi.napiAsyncCleanUpHook());
+  hilog.info(0x0000, 'testTag', 'Test Node-API napi_add_async_cleanup_hook: %{public}s',
+    testNapi.napiAsyncCleanUpHook());
+  // ...
 } catch (error) {
-  hilog.error(0x0000, 'testTag', 'Test Node-API napi_add_async_cleanup_hook error.message: %{public}s', error.message);
+  hilog.error(0x0000, 'testTag',
+    'Test Node-API napi_add_async_cleanup_hook error.message: %{public}s',
+    error.message);
+  // ...
 }
 ```
-<!-- @[ark_napi_remove_add_env_cleanup_hook](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPICleanuphook/entry/src/main/ets/pages/Index.ets) -->
 
 To print logs in the native CPP, add the following information to the **CMakeLists.txt** file and add the header file by using **#include "hilog/log.h"**.
 

@@ -65,12 +65,10 @@ import { window } from '@kit.ArkUI';
 
 **系统接口：** 此接口为系统接口。
 
-**系统能力：** SystemCapability.Window.SessionManager
-
 | 名称 | 类型 | 只读 | 可选 | 说明                       |
 | ---------- | --------- | ---- | ---- |-------------- |
-| zIndex<sup>20+</sup>       | number | 否 | 是 | 当前系统窗口的层级，仅在[WindowType](#windowtype7)为TYPE_DYNAMIC时生效。|
-| defaultDensityEnabled<sup>20+</sup> | boolean| 否 | 是 |是否使用系统默认Density，使用系统默认Density之后，窗口不会跟随系统显示大小变化重新布局。<br>当创建的系统窗口设置此参数为true时，表示当前窗口使用系统默认Density，且不会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的相关影响。<br>当创建的系统窗口设置此参数为false时，表示当前窗口不使用系统默认Density，且会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的相关影响。<br>默认为false。|
+| zIndex<sup>20+</sup>       | number | 否 | 是 | 当前系统窗口的层级，仅在[WindowType](#windowtype7)为TYPE_DYNAMIC时生效。<br>**系统能力：** SystemCapability.Window.SessionManager|
+| defaultDensityEnabled<sup>20+</sup> | boolean| 否 | 是 |是否使用系统默认Density，使用系统默认Density之后，窗口不会跟随系统显示大小变化重新布局。<br>当创建的系统窗口设置此参数为true时，表示当前窗口使用系统默认Density，且不会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的相关影响。<br>当创建的系统窗口设置此参数为false时，表示当前窗口不使用系统默认Density，且会受到[setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12)和[setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15)设置的主窗口以及[setDefaultDensityEnabled()](#setdefaultdensityenabled20)设置的本窗口的相关影响。<br>默认为false。<br>**系统能力：** SystemCapability.Window.SessionManager|
 
 ## WindowMode<sup>7+</sup>
 
@@ -1520,7 +1518,7 @@ export default class EntryAbility extends UIAbility {
 
 bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-绑定模态窗口与目标窗口并添加模态窗口销毁监听，使用callback异步回调。
+绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1531,7 +1529,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | token       | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | 是   | 目标窗口token值。 |
-| deathCallback | Callback&lt;void&gt;        | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;        | 是   | 目标窗口销毁监听。 |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
@@ -1549,37 +1547,25 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, c
 
 ```ts
 import { rpc } from '@kit.IPCKit';
+import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ServiceExtensionAbility } from '@kit.AbilityKit';
 
-class MyDeathRecipient {
-  onRemoteDied() {
-    console.info('server died');
-  }
-}
+export class Property {
+  public value: Object
 
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  addDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  removeDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  isObjectDead(): boolean {
-    return false;
+  constructor(value: Object) {
+    this.value = value
   }
 }
 
 export default class ServiceExtAbility extends ServiceExtensionAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let token: TestRemoteObject = new TestRemoteObject('testObject');
-    let config: window.Configuration = { name: "test", windowType: window.WindowType.TYPE_DIALOG, ctx: this.context };
+  onRequest(want: Want, startId: number) {
+    console.info('onRequest');
+    let config: window.Configuration = {
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
     try {
       window.createWindow(config, (err: BusinessError, data) => {
         let errCode: number = err?.code;
@@ -1591,19 +1577,21 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
           console.error('data is null');
           return;
         }
-        data.bindDialogTarget(token, () => {
+        let token = want.parameters?.['ohos.ability.params.request.token'] as Property;
+        let value = token.value as rpc.RemoteObject;
+        data.bindDialogTarget(value, () => {
           console.info('Dialog Window Need Destroy.');
           }, (err: BusinessError) => {
           let errCode: number = err?.code;
           if (errCode) {
-            console.error(`Failed to bind dialog target. Error code: ${err?.code}, message: ${err?.message}`);
+            console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
             return;
           }
           console.info('Succeeded in binding dialog target.');
         });
       });
-    } catch (exception) {
-      console.error(`Failed to bind dialog target. Cause code: ${exception.code}, message: ${exception.message}`);
+    } catch (err) {
+      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
     }
   }
 }
@@ -1613,7 +1601,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): Promise&lt;void&gt;
 
-绑定模态窗口与目标窗口并添加模态窗口销毁监听，使用Promise异步回调。
+绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1624,7 +1612,7 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | token       | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | 是   | 目标窗口token值。 |
-| deathCallback | Callback&lt;void&gt;        | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;        | 是   | 目标窗口销毁监听。 |
 
 **返回值：**
 
@@ -1647,36 +1635,20 @@ bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): 
 
 ```ts
 import { rpc } from '@kit.IPCKit';
+import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ServiceExtensionAbility } from '@kit.AbilityKit';
 
-class MyDeathRecipient {
-  onRemoteDied() {
-    console.info('server died');
-  }
-}
+export class Property {
+  public value: Object
 
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  addDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  removeDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  isObjectDead(): boolean {
-    return false;
+  constructor(value: Object) {
+    this.value = value
   }
 }
 
 export default class ServiceExtAbility extends ServiceExtensionAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let token: TestRemoteObject = new TestRemoteObject('testObject');
+  onRequest(want: Want, startId: number) {
+    console.info('onRequest');
     let config: window.Configuration = {
       name: "test",
       windowType: window.WindowType.TYPE_DIALOG,
@@ -1693,17 +1665,19 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
           console.error('data is null');
           return;
         }
-        let promise = data.bindDialogTarget(token, () => {
+        let token = want.parameters?.['ohos.ability.params.request.token'] as Property;
+        let value = token.value as rpc.RemoteObject;
+        let promise = data.bindDialogTarget(value, () => {
           console.info('Dialog Window Need Destroy.');
         });
         promise.then(() => {
           console.info('Succeeded in binding dialog target.');
         }).catch((err: BusinessError) => {
-          console.error(`Failed to bind dialog target. Error code: ${err?.code}, message: ${err?.message}`);
+          console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
         });
       });
-    } catch (exception) {
-      console.error(`Failed to bind dialog target. Cause code: ${exception.code}, message: ${exception.message}`);
+    } catch (err) {
+      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
     }
   }
 }
@@ -1713,7 +1687,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback&lt;void&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-绑定模态窗口与目标窗口并添加模态窗口销毁监听，使用callback异步回调。
+绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用callback异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1724,7 +1698,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | 是   | 目标窗口RequestInfo值。 |
-| deathCallback | Callback&lt;void&gt;    | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;    | 是   | 目标窗口销毁监听。 |
 | callback    | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
@@ -1784,7 +1758,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback&lt;void&gt;): Promise&lt;void&gt;
 
-绑定模态窗口与目标窗口并添加模态窗口销毁监听，使用Promise异步回调。
+绑定模态窗口与目标窗口，成功绑定后，目标窗口不能响应用户操作。同时添加目标窗口销毁监听，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1795,7 +1769,7 @@ bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback
 | 参数名       | 类型                      | 必填 | 说明                  |
 | ----------- | ------------------------- | ---- | -------------------- |
 | requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | 是   | 目标窗口RequestInfo值。 |
-| deathCallback | Callback&lt;void&gt;    | 是   | 模态窗口销毁监听。 |
+| deathCallback | Callback&lt;void&gt;    | 是   | 目标窗口销毁监听。 |
 
 **返回值：**
 
@@ -2301,7 +2275,9 @@ try {
 setBackdropBlur(radius: number): void
 
 设置窗口背景模糊。
+
 窗口背景是指窗口覆盖的下层区域，与窗口大小相同。
+
 需要通过[setWindowBackgroundColor](arkts-apis-window-Window.md#setwindowbackgroundcolor9)将窗口内容背景设置成透明，否则无法看到模糊效果。
 
 **系统接口：** 此接口为系统接口。
@@ -2385,12 +2361,12 @@ setShadow(radius: number, color?: string, offsetX?: number, offsetY?: number): v
 
 **参数：**
 
-| 参数名  | 类型   | 必填 | 说明                                                          |
-| ------- | ------ | ---- |-------------------------------------------------------------|
-| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。     |
-| color   | string | 否   | 表示窗口边缘阴影的颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`#00FF00`或`#FF00FF00`。 |
-| offsetX | number | 否   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px。                              |
-| offsetY | number | 否   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px。                              |
+| 参数名  | 类型   | 必填 | 说明                                                                       |
+| ------- | ------ | ---- |--------------------------------------------------------------------------|
+| radius  | number | 是   | 表示窗口边缘阴影的模糊半径。该参数为浮点数，单位为px，取值范围为[0.0, +∞)，取值为0.0时表示关闭窗口边缘阴影。            |
+| color   | string | 否   | 表示窗口边缘阴影的颜色，为十六进制RGB或ARGB颜色，不区分大小写，例如`#00FF00`或`#FF00FF00`，默认值为'#000000'。 |
+| offsetX | number | 否   | 表示窗口边缘阴影的X轴的偏移量。该参数为浮点数，单位为px，默认值为0.0。                                    |
+| offsetY | number | 否   | 表示窗口边缘阴影的Y轴的偏移量。该参数为浮点数，单位为px，默认值为0.0。                                    |
 
 **错误码：**
 
@@ -2961,7 +2937,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
 }
 ```
 ```json5
-//module.json5
+// module.json5
 {
   "module": {
     "name": "entry",
@@ -4244,7 +4220,7 @@ export default class EntryAbility extends UIAbility {
 
 | 名称                  | 类型          | 只读 | 可选 | 说明             |
 | --------------------- | ----------------- | ---- | ---- | ---------------- |
-| toWindow<sup>9+</sup> | [Window](arkts-apis-window-Window.md) | 否   | 否   | 动画的目标窗口。 |
+| toWindow | [Window](arkts-apis-window-Window.md) | 否   | 否   | 动画的目标窗口。 |
 
 ### completeTransition<sup>9+</sup>
 
@@ -4316,7 +4292,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let windowClass: window.Window | undefined = undefined;
 let config: window.Configuration = {
   name: "systemTypeWindow",
-  windowType: window.WindowType.TYPE_PANEL, //根据需要自选系统窗口类型
+  windowType: window.WindowType.TYPE_PANEL, // 根据需要自选系统窗口类型
   ctx: this.context
 };
 let promise = window.createWindow(config);

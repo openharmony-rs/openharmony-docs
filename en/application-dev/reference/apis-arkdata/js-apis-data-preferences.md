@@ -8,7 +8,7 @@
 
 The **Preferences** module provides APIs for processing data in the form of key-value (KV) pairs, including querying, modifying, and persisting KV pairs.
 
-The key is of the string type, and the value can be a number, a string, a Boolean value, or an array of numbers, strings, or Boolean values.
+The key is of string type, and the value can be a number, string, boolean value, or an array of numbers, strings, or boolean values.
 
 The user preference persistent files are stored in the [preferencesDir](../../application-models/application-context-stage.md#obtaining-application-file-paths) directory. Before creating a preferences object, ensure that the **preferencesDir** directory is readable and writeable. The [encryption level](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode) of the persistent file directory determines the access to the files. For details, see [Application File Directory and Application File Path](../../file-management/app-sandbox-directory.md#application-file-directory-and-application-file-path).
 
@@ -32,7 +32,7 @@ import { preferences } from '@kit.ArkData';
 
 | Name            | Type     | Read-Only| Description                                   |
 | ---------------- | -------- | ---- | --------------------------------------- |
-| MAX_KEY_LENGTH   | number   | Yes  | Maximum key length, which is 1024 bytes.    |
+| MAX_KEY_LENGTH   | number   | Yes  | Maximum key length, which is 1,024 bytes.    |
 | MAX_VALUE_LENGTH | number   | Yes  | Maximum value length, which is 16 MB.|
 
 
@@ -1242,7 +1242,7 @@ Obtains the value of a key from this **Preferences** instance. This API uses an 
 
 | Name  | Type                                        | Mandatory| Description              |
 | -------- | -------------------------------------------- | ---- |---------------------------|
-| key      | string                                       | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).  |
+| key      | string                                       | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).  |
 | defValue | [ValueType](#valuetype)                      | Yes  | Default value to be returned.|
 | callback | AsyncCallback&lt;[ValueType](#valuetype)&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the value obtained. Otherwise, **err** is an error object.  |
 
@@ -1265,7 +1265,7 @@ dataPreferences.get('startup', 'default', (err: BusinessError, val: preferences.
     console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
     return;
   }
-  console.info("Obtained the value of 'startup' successfully. val: " + val);
+  console.info("Succeeded in getting value of 'startup'. val: " + val);
 })
 ```
 
@@ -1283,7 +1283,7 @@ Obtains the value of a key from this **Preferences** instance. This API uses a p
 
 | Name  | Type                   | Mandatory| Description |
 | -------- | ----------------------- | ---- |--------|
-| key      | string                  | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
+| key      | string                  | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
 | defValue | [ValueType](#valuetype) | Yes  | Default value to be returned.|
 
 **Return value**
@@ -1308,7 +1308,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let promise = dataPreferences.get('startup', 'default');
 promise.then((data: preferences.ValueType) => {
-  console.info("Got the value of 'startup'. Data: " + data);
+  console.info("Succeeded in getting value of 'startup'. Data: " + data);
 }).catch((err: BusinessError) => {
   console.error("Failed to get value of 'startup'. code =" + err.code + ", message =" + err.message);
 })
@@ -1328,7 +1328,7 @@ Obtains the value of a key from this **Preferences** instance. This API returns 
 
 | Name  | Type                   | Mandatory| Description           |
 | -------- | ----------------------- | ---- |---------------------|
-| key      | string                  | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
+| key      | string                  | Yes  | Key to be obtained. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
 | defValue | [ValueType](#valuetype) | Yes  | Default value to be returned.|
 
 **Return value**
@@ -1507,7 +1507,7 @@ Writes data to this **Preferences** instance. This API uses an asynchronous call
 
 | Name  | Type                     | Mandatory| Description                      |
 | -------- | ------------------------- | ---- |-------------------------|
-| key      | string                    | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key      | string                    | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 | value    | [ValueType](#valuetype)   | Yes  | Value to write.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
@@ -1530,7 +1530,7 @@ dataPreferences.put('startup', 'auto', (err: BusinessError) => {
     console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
     return;
   }
-  console.info("Successfully put the value of 'startup'.");
+  console.info("Succeeded in putting value of 'startup'.");
 })
 ```
 
@@ -1555,7 +1555,7 @@ Writes data to this **Preferences** instance. This API uses a promise to return 
 
 | Name| Type                   | Mandatory| Description                        |
 | ------ | ----------------------- | ---- |--------------------------|
-| key    | string                  | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
+| key    | string                  | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants). |
 | value  | [ValueType](#valuetype) | Yes  | Value to write.|
 
 **Return value**
@@ -1580,7 +1580,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let promise = dataPreferences.put('startup', 'auto');
 promise.then(() => {
-  console.info("Successfully put the value of 'startup'.");
+  console.info("Succeeded in putting value of 'startup'.");
 }).catch((err: BusinessError) => {
   console.error("Failed to put value of 'startup'. code =" + err.code + ", message =" + err.message);
 })
@@ -1607,7 +1607,7 @@ Writes data to this **Preferences** instance. This API returns the result synchr
 
 | Name| Type                   | Mandatory| Description                                                        |
 | ------ | ----------------------- | ---- | ------------------------ |
-| key    | string                  | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string                  | Yes  | Key to be modified. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 | value  | [ValueType](#valuetype) | Yes  | Value to write.|
 
 **Error codes**
@@ -1640,7 +1640,7 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name  | Type                        | Mandatory| Description                                                        |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| key      | string                       | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).                             |
+| key      | string                       | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).                             |
 | callback | AsyncCallback&lt;boolean&gt; | Yes  | Callback used to return the result. If the **Preferences** instance contains the KV pair, **true** will be returned. Otherwise, **false** will be returned.|
 
 **Error codes**
@@ -1685,7 +1685,7 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -1734,7 +1734,7 @@ Checks whether this **Preferences** instance contains the KV pair of the given k
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes  | Key to be checked. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -1777,7 +1777,7 @@ Deletes a KV pair from this **Preferences** instance. This API uses an asynchron
 
 | Name  | Type                     | Mandatory| Description                                                |
 | -------- | ------------------------- | ---- | ---------------------------------------------------- |
-| key      | string                    | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).                     |
+| key      | string                    | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).                     |
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1799,7 +1799,7 @@ dataPreferences.delete('startup', (err: BusinessError) => {
     console.error("Failed to delete the key 'startup'. code =" + err.code + ", message =" + err.message);
     return;
   }
-  console.info("Deleted the key 'startup'.");
+  console.info("Succeeded in deleting the key 'startup'.");
 })
 ```
 
@@ -1818,7 +1818,7 @@ Deletes a KV pair from this **Preferences** instance. This API uses a promise to
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Return value**
 
@@ -1842,7 +1842,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let promise = dataPreferences.delete('startup');
 promise.then(() => {
-  console.info("Deleted the key 'startup'.");
+  console.info("Succeeded in deleting the key 'startup'.");
 }).catch((err: BusinessError) => {
   console.error("Failed to delete the key 'startup'. code =" + err.code +", message =" + err.message);
 })
@@ -1863,7 +1863,7 @@ Deletes a KV pair from this **Preferences** instance. This API returns the resul
 
 | Name| Type  | Mandatory| Description                           |
 | ------ | ------ | ---- | ------------------------------- |
-| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
+| key    | string | Yes  | Key to be deleted. The value cannot be empty, and the maximum length is 1,024 bytes. For details, see [MAX_KEY_LENGTH](#constants).|
 
 **Error codes**
 
@@ -1922,7 +1922,7 @@ dataPreferences.flush((err: BusinessError) => {
     console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
     return;
   }
-  console.info("Successfully flushed data.");
+  console.info("Succeeded in flushing.");
 })
 ```
 
@@ -1964,7 +1964,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let promise = dataPreferences.flush();
 promise.then(() => {
-  console.info("Successfully flushed data.");
+  console.info("Succeeded in flushing.");
 }).catch((err: BusinessError) => {
   console.error("Failed to flush. code =" + err.code + ", message =" + err.message);
 })
@@ -2033,7 +2033,7 @@ dataPreferences.clear((err: BusinessError) =>{
     console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
     return;
   }
-  console.info("Successfully cleared data.");
+  console.info("Succeeded in clearing.");
 })
 ```
 
@@ -2069,7 +2069,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let promise = dataPreferences.clear();
 promise.then(() => {
-  console.info("Successfully cleared data.");
+  console.info("Succeeded in clearing.");
 }).catch((err: BusinessError) => {
   console.error("Failed to clear. code =" + err.code + ", message =" + err.message);
 })
@@ -2138,7 +2138,7 @@ dataPreferences.flush((err: BusinessError) => {
     console.error("Failed to flush. Cause: " + err);
     return;
   }
-  console.info("Successfully flushed data.");
+  console.info("Succeeded in flushing.");
 })
 ```
 
@@ -2192,7 +2192,7 @@ dataPreferences.flush((err: BusinessError) => {
     console.error("Failed to flush. Cause: " + err);
     return;
   }
-  console.info("Successfully flushed data.");
+  console.info("Succeeded in flushing.");
 })
 ```
 
@@ -2247,7 +2247,7 @@ dataPreferences.flush((err: BusinessError) => {
     console.error("Failed to flush. Cause: " + err);
     return;
   }
-  console.info("Successfully flushed data.");
+  console.info("Succeeded in flushing.");
 })
 ```
 
@@ -2292,7 +2292,7 @@ dataPreferences.flush((err: BusinessError) => {
     console.error("Failed to flush. Cause: " + err);
     return;
   }
-  console.info("Successfully flushed data.");
+  console.info("Succeeded in flushing.");
 })
 dataPreferences.off('change', observer);
 ```
@@ -2340,7 +2340,7 @@ dataPreferences.flush((err: BusinessError) => {
     console.error("Failed to flush. Cause: " + err);
     return;
   }
-  console.info("Successfully flushed data.");
+  console.info("Succeeded in flushing.");
 })
 dataPreferences.off('multiProcessChange', observer);
 ```
@@ -2391,7 +2391,7 @@ dataPreferences.flush((err: BusinessError) => {
     console.error("Failed to flush. Cause: " + err);
     return;
   }
-  console.info("Successfully flushed data.");
+  console.info("Succeeded in flushing.");
 })
 dataPreferences.off('dataChange', keys, observer);
 ```
@@ -2412,7 +2412,7 @@ Enumerates the value types.
 | string                   | The value is a string.       |
 | boolean                  | The value is true or false.       |
 | Array\<number>           | The value is an array of numbers.   |
-| Array\<boolean>          | The value is a Boolean array.   |
+| Array\<boolean>          | The value is a boolean array.   |
 | Array\<string>           | The value is an array of strings.  |
 | Uint8Array<sup>11+</sup> | The value is an array of 8-bit unsigned integers.|
 | object<sup>12+</sup>     | The value is an object.|

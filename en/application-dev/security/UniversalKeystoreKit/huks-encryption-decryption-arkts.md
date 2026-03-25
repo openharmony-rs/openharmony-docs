@@ -7,7 +7,7 @@
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
 
-This topic walks you through on how to perform encryption and decryption using AES128, RSA2048, and SM2. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
+This topic uses AES-128, RSA-2048, and SM2 as examples to describe the encryption and decryption workflows. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-encryption-decryption-overview.md#supported-algorithms).
 
 ## How to Develop
 
@@ -27,13 +27,13 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 2. Obtain the data to be encrypted.
 
-3. Obtain the [algorithm parameters](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) for encryption.
+3. Use [HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) to set encryption algorithm parameters.
 
    The parameters to be configured vary with the algorithm used.
    - If the AES algorithm is used for encryption, the block mode is CBC, and the padding mode is PKCS7, the **IV** parameter is mandatory. For details, see [AES/CBC/PKCS7](#aescbcpkcs7).
-   - If the AES algorithm is used for encryption and the block mode is GCM, the **NONCE** and**AAD** parameters are optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
+   - If the AES algorithm is used for encryption and the block mode is GCM, the **NONCE** and **AAD** parameters are optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
    - If the AES algorithm is used for encryption and the block mode is CCM, the **NONCE** and **AAD** parameters are optional. For details, see [AES/CCM/NoPadding](#aesccmnopadding).
-   - If the RSA algorithm is used for encryption, you need to select the corresponding block mode, padding mode, and digest algorithm. For details, see [RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5) and [RSA/ECB/OAEP/SHA256](#rsaecboaepsha256).
+   - If the RSA algorithm is used for encryption, the corresponding block mode, padding mode, and digest algorithm must be selected. For details, see [RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5) and [RSA/ECB/OAEP/SHA256](#rsaecboaepsha256).
    - If the SM2 algorithm is used for encryption, the digest algorithm must be SM3. For details, see [SM2](#sm2).
    <!--Del-->
    - If the DES algorithm is used for encryption and the block mode is CBC, the **IV** parameter is mandatory. For details, see [DES/CBC/NoPadding](#descbcnopadding).
@@ -51,7 +51,7 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 
 2. Obtain the ciphertext to be decrypted.
 
-3. Obtain the [algorithm parameters](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) for decryption.
+3. Use [HuksParam](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksparam) to set decryption algorithm parameters.
 
    The parameters to be configured vary with the algorithm used.
    - If the AES algorithm and GCM block mode are used for decryption, **NONCE** and **AEAD** are mandatory and **AAD** is optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
@@ -963,7 +963,7 @@ async function TestEncryptDecrypt()
 
 ```ts
 /*
- * The following uses RSA/ECB/OAEP/SHA256 with promise-based APIs.
+ * The following uses RSA/ECB/OAEP/SHA-256 with promise-based APIs.
  */
 import { huks } from '@kit.UniversalKeystoreKit';
 import { BusinessError } from "@kit.BasicServicesKit";

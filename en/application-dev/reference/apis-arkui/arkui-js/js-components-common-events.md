@@ -1,7 +1,7 @@
 # Universal Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -109,7 +109,7 @@ When a component triggers an event, the event callback receives an event object 
 
 | Attribute                  | Type    | Description                                      |
 | -------------------- | ------ | ---------------------------------------- |
-| dataSet<sup>6+</sup> | Object | Custom attribute set defined through [data-*](js-components-common-attributes.md).|
+| dataSet<sup>6+</sup> | Object | Custom attribute set defined through [data-*](js-components-common-attributes.md#common-attributes).|
 
 **Example**
 
@@ -159,14 +159,14 @@ Sets the data associated with the specified key. If there is no data associated 
 ```js
 // value in setData can be of a primitive type.
 dragStart(e) {
-	var isSetOK = e.dataTransfer.setData('name', 1);
+    var isSetOK = e.dataTransfer.setData('name', 1);
 },
 // value in setData can be of the object type.
 dragStart(e) {
-	var person = new Object();
-	person.name = "tom";
-	person.age = 21;
-	var isSetOK = e.dataTransfer.setData('person', person);
+    var person = new Object();
+    person.name = "tom";
+    person.age = 21;
+    var isSetOK = e.dataTransfer.setData('person', person);
 }
 ```
 ### getData<sup>9+</sup>
@@ -191,13 +191,13 @@ Obtains the data associated with the specified key. If no data is associated wit
 
 ```js
 dragStart(e) {
-	var person = new Object();
-	person.name = "tom";
-	person.age = 21;
-	e.dataTransfer.setData('person', person);
+    var person = new Object();
+    person.name = "tom";
+    person.age = 21;
+    e.dataTransfer.setData('person', person);
 },
 dragEnd(e){
-	var person = e.dataTransfer.getData('person');
+    var person = e.dataTransfer.getData('person');
 },
 ```
 ### clearData<sup>9+</sup>
@@ -223,7 +223,7 @@ If the key is null, all data will be deleted.
 
 ```js
 dragEnd(e) {
-	var isSuccess = e.dataTransfer.clearData('name');
+    var isSuccess = e.dataTransfer.clearData('name');
 }
 ```
 ### setDragImage<sup>9+</sup>
@@ -252,9 +252,11 @@ Sets a custom drag image.
 import image from '@ohos.multimedia.image';
 
 export default {
+    // Generate a PixelMap with a size of 96 × 96, create a color buffer and fill it with random color values, and generate an instance after configuring the PixelMap parameters.
     createPixelMap() {
         let color = new ArrayBuffer(4 * 96 * 96);
         var buffer = new Uint8Array(color);
+        // Fill the buffer color values in a loop.
         for (var i = 0; i < buffer.length; i++) {
             buffer[i] = (i + 1) % 255;
         }
@@ -267,6 +269,7 @@ export default {
                 height: 96, width: 96
             }
         }
+        // Call image.createPixelMap to generate a PixelMap instance.
         const promise = image.createPixelMap(color, opts);
         promise.then((data) => {
             console.error('-create pixelMap has info message:' + JSON.stringify(data));
@@ -275,10 +278,12 @@ export default {
         })
     },
 
+    // Initialization method. Call createPixelMap to generate a PixelMap.
     onInit() {
         this.createPixelMap()
     },
 
+    // Drag start callback, and set the drag preview image to the generated PixelMap with an offset of (50, 50).
     dragStart(e) {
         e.dataTransfer.setDragImage(this.pixelMapReader, 50, 50);
     }

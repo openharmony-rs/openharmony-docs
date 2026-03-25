@@ -63,7 +63,7 @@ Starts an [ArkTS child process](../../application-models/ability-terminology.md#
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | srcEntry | string | Yes| Path of the source file of the child process relative to the root directory **src/main**. The source file can be stored only in the module of the entry type. For example, if the source file of a child process is **src/main/ets/process/DemoProcess.ets** in the entry module, then **srcEntry** is **./ets/process/DemoProcess.ets**.<br>In addition, ensure that the source file of the child process is referenced by other files to prevent it from being optimized by the build tool. (For details, see the sample code below.)|
+  | srcEntry | string | Yes| Path of the source file of the child process relative to the root directory **src/main**. The source file can be stored only in the module of the entry type. For example, if the source file of a child process is **src/main/ets/process/DemoProcess.ets** in the **entry** module, then **srcEntry** is **./ets/process/DemoProcess.ets**.<br>In addition, ensure that the source file of the child process is referenced by other files to prevent it from being optimized by the build tool. (For details, see the sample code below.)|
   | startMode | [StartMode](#startmode) | Yes| Start mode of the child process.|
 
 **Return value**
@@ -138,7 +138,7 @@ Starts an [ArkTS child process](../../application-models/ability-terminology.md#
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | srcEntry | string | Yes| Path of the source file of the child process relative to the root directory **src/main**. The source file can be stored only in the module of the entry type. For example, if the source file of a child process is **src/main/ets/process/DemoProcess.ets** in the entry module, then **srcEntry** is **./ets/process/DemoProcess.ets**.<br>In addition, ensure that the source file of the child process is referenced by other files to prevent it from being optimized by the build tool. (For details, see the sample code below.)|
+  | srcEntry | string | Yes| Path of the source file of the child process relative to the root directory **src/main**. The source file can be stored only in the module of the entry type. For example, if the source file of a child process is **src/main/ets/process/DemoProcess.ets** in the **entry** module, then **srcEntry** is **./ets/process/DemoProcess.ets**.<br>In addition, ensure that the source file of the child process is referenced by other files to prevent it from being optimized by the build tool. (For details, see the sample code below.)|
   | startMode | [StartMode](#startmode) | Yes| Start mode of the child process.|
   | callback | AsyncCallback&lt;number&gt; | Yes| Callback used to return the result. If the subprocess is started, **err** is **undefined** and **data** is the PID of the child process. Otherwise, **data** is an error object.|
 
@@ -209,7 +209,7 @@ Starts an [ArkTS child process](../../application-models/ability-terminology.md#
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | srcEntry | string | Yes| Path of the source file of the child process relative to the root directory **src/main**. The source file cannot be stored in the module of the HAR type. The value consists of a module name, a slash (/), and a file path. For example, if the child process file is **src/main/ets/process/DemoProcess.ets** in module1, then **srcEntry** is **module1/ets/process/DemoProcess.ets**.<br>In addition, ensure that the source file of the child process is referenced by other files to prevent it from being optimized by the build tool. (For details, see the sample code below.)|
+  | srcEntry | string | Yes| Path of the source file of the child process relative to the root directory **src/main**. The source file cannot be stored in the module of the HAR type. The value consists of a module name, a slash (/), and a file path. For example, if the child process file is **src/main/ets/process/DemoProcess.ets** in **module1**, then **srcEntry** is **module1/ets/process/DemoProcess.ets**.<br>In addition, ensure that the source file of the child process is referenced by other files to prevent it from being optimized by the build tool. (For details, see the sample code below.)|
   | args | [ChildProcessArgs](js-apis-app-ability-childProcessArgs.md) | Yes| Parameters transferred to the child process.|
   | options | [ChildProcessOptions](js-apis-app-ability-childProcessOptions.md) | No| Startup configuration of the child process.|
 
@@ -346,7 +346,7 @@ Starts a [native child process](../../application-models/ability-terminology.md#
 
 **Example**
 
-Sample code for the child process is provided below. For details, see [Native Child Process Development (C/C++) - Creating a Native Child Process That Supports Pass-by-Parameter](../../application-models/capi_nativechildprocess_development_guideline.md#creating-a-native-child-process-that-supports-pass-by-parameter).
+Sample code for the child process is provided below. For details, see [Creating/Terminating Native Child Processes (C/C++) - Creating a Native Child Process That Supports Pass-by-Parameter](../../application-models/capi-nativechildprocess-development-guideline.md#creating-a-native-child-process-that-supports-pass-by-parameter).
 
 ```c++
 #include <AbilityKit/native_child_process.h>

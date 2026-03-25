@@ -13,7 +13,7 @@ There are many reasons for white screen issues on web pages. This topic describe
 3. In complex layout scenarios, check the rendering mode and component constraints.
 4. Handle the compatibility problem of the HTML5 code.
 5. Check the keywords related to the lifecycle and network loading in the log.
-6. Check whether the Secure Shield mode is enabled. For details about the restrictions after the Secure Shield mode is enabled, see [HTML5 Features Restricted by ArkWeb](./web-secure-shield-mode.md#html5-features-restricted-by-arkweb).
+6. Check whether the [Secure Shield mode](./web-secure-shield-mode.md) is enabled. For details about the restrictions after the Secure Shield mode is enabled, see [HTML5 Features Restricted by ArkWeb](./web-secure-shield-mode.md#html5-features-restricted-by-arkweb)
 
 ## Checking Permissions and Network Status
 If the network or file access permission is not added for the application, or the network status of the device is poor, the **Web** component will fail to be loaded or page elements will be missing, resulting in a white screen.
@@ -66,7 +66,7 @@ If the network or file access permission is not added for the application, or th
 * Modify the [UserAgent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10) and check whether the page is restored.
 
     <!-- @[ChangeUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry/src/main/ets/pages/ChangeUserAgent.ets) -->
-
+    
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -178,10 +178,10 @@ If a white screen issue persists after the network and permission configurations
     <!-- main/resources/rawfile/index.html -->
     <html>
     <head>
-  	  <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
     </head>
     <body>
-    <script crossorigin src="./js/script.js"></script>
+      <script crossorigin src="./js/script.js"></script>
     </body>
     </html>
     ```
@@ -205,8 +205,8 @@ If a white screen issue persists after the network and permission configurations
 
     2. The application resource directory and its subdirectories, which can be obtained through [Context.resourceDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context), such as:
 
-    * /data/storage/el1/bundle/entry/resource/resfile
-    * /data/storage/el1/bundle/entry/resource/resfile/example
+    * /data/storage/el1/bundle/entry/resources/resfile
+    * /data/storage/el1/bundle/entry/resources/resfile/example
 
     3. Since API version 21, the application cache directory is obtained through [Context.cacheDir](../reference/apis-ability-kit/js-apis-inner-application-context.md#context). Example subdirectories are as follows:
 
@@ -256,7 +256,7 @@ If a white screen issue persists after the network and permission configurations
     }
     ```
 
-	HTML code:
+	  HTML code:
 
     ```html
     <!-- main/resources/resfile/index.html -->
@@ -266,37 +266,37 @@ If a white screen issue persists after the network and permission configurations
     <head>
         <meta charset="utf-8">
         <title>Demo</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no,   viewport-fit=cover">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, viewport-fit=cover">
         <script>
-  		  function getFile() {
-  			  var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
-          // Use the file protocol to access the local JS file through XMLHttpRequest.
-  			  var xmlHttpReq = new XMLHttpRequest();
-  			  xmlHttpReq.onreadystatechange = function(){
-  			      console.info("readyState:" + xmlHttpReq.readyState);
-  			      console.info("status:" + xmlHttpReq.status);
-  				  if(xmlHttpReq.readyState == 4){
-  				      if (xmlHttpReq.status == 200) {
-                    // If the path list is set on eTS, resources can be obtained.
-  				          const element = document.getElementById('text');
-                            element.textContent = "load " + file + " success";
-  				      } else {
+            function getFile() {
+              var file = "file:///data/storage/el1/bundle/entry/resources/resfile/js/script.js";
+              // Use the file protocol to access the local JS file through XMLHttpRequest.
+              var xmlHttpReq = new XMLHttpRequest();
+              xmlHttpReq.onreadystatechange = function(){
+              console.info("readyState:" + xmlHttpReq.readyState);
+              console.info("status:" + xmlHttpReq.status);
+              if(xmlHttpReq.readyState == 4){
+                if (xmlHttpReq.status == 200) {
+                   // If the path list is set on eTS, resources can be obtained.
+                  const element = document.getElementById('text');
+                  element.textContent = "load " + file + " success";
+                } else {
                     // If the path list is not set on eTS, a CORS error is triggered.
-  				          const element = document.getElementById('text');
-                            element.textContent = "load " + file + " failed";
-  				      }
-  				  }
-  			  }
-  			  xmlHttpReq.open("GET", file);
-  			  xmlHttpReq.send(null);
-  		  }
+                    const element = document.getElementById('text');
+                    element.textContent = "load " + file + " failed";
+                  }
+              }
+            }
+            xmlHttpReq.open("GET", file);
+            xmlHttpReq.send(null);
+          }
         </script>
     </head>
 
     <body>
-    <div class="page">
-        <button id="example" onclick="getFile()">loadFile</button>
-    </div>
+      <div class="page">
+          <button id="example" onclick="getFile()">loadFile</button>
+      </div>
     <div id="text"></div>
     </body>
 
@@ -324,6 +324,7 @@ If a white screen issue persists after the network and permission configurations
 
 ## Resolving White Screen Issues Caused by Complex Layout and Rendering Modes
 If a page uses a complex layout or rendering mode, pay attention to its application scenarios and constraints. Improper use of the layout or rendering mode may cause layout disorder or white screen.
+
 The **Web** component provides two rendering modes, which can be adapted to different container sizes as required. For details, see [Rendering Modes of the Web Component](web-render-mode.md). Pay attention to the following points:
 - In asynchronous rendering mode (renderMode: [RenderMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#rendermode12).ASYNC_RENDER), the width and height of a **Web** component cannot exceed 7,680 px (physical pixels). Otherwise, a white screen is displayed.
 
@@ -392,6 +393,7 @@ The following table lists log keywords and the corresponding descriptions.
 | final url: ***, error_code xxx(net::ERR_XXX) | An error is reported during the main resource loading.|
 
 The following figure shows the key points contained during the **Web** component loading process. The following table lists the log keywords during the **Web** component loading process.
+
 ![web-white-page-load](figures/web-white-page-load.PNG)
 
 | Keyword  | Description |                       
@@ -402,7 +404,7 @@ The following figure shows the key points contained during the **Web** component
 | event_message: commit navigation in main frame, routing_id: 4, url: *** | The navigation is committed to the child process.|
 | RenderFrameImpl::CommitNavigation,<br> event_message: page load start | The child process receives the commit message.|
 | NWebHandlerDelegate::OnNavigationEntryCommitted,<br> event_message: Commit source_id xxx | The main process receives **DidCommitNavigation**.|
-| event_message: load_timing_info errpr_code:0,...| The main resource loading is complete, and the time required for each phase is displayed.|
+| event_message: load_timing_info error_code:0,...| The main resource loading is complete, and the time required for each phase is displayed.|
 | event_message: MarkFirstContentfulPaint| The tag identifies an element with displayable content.|
 | NWebHandlerDelegate::OnPageVisible| The first frame is displayed.|
 | NWebHandlerDelegate::OnFirstContentfulPaint| The first frame content is displayed.|

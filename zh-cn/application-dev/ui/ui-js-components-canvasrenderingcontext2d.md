@@ -578,7 +578,7 @@ export default {
 
 ## 添加图片
 
-创建图片对象后使用[drawImage](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#drawimage)属性画出图片，给图片设置一些动画样式如scale（缩放）、translate（平移）或rotate（旋转）。
+创建图片对象后使用[drawImage](../reference/apis-arkui/arkui-ts/ts-canvasrenderingcontext2d.md#drawimage)方法画出图片，给图片设置一些动画样式如scale（缩放）、translate（平移）或rotate（旋转）。
 
 
 ```html

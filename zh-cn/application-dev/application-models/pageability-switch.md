@@ -13,6 +13,7 @@
 1. 在Stage应用中[创建UIAbility](uiability-usage.md)。
 
 2. 将FA应用中PageAbility的代码迁移到新创建的UIAbility中。
+
    FA应用中PageAbility和Stage应用中的UIAbility生命周期基本一致，两者的生命周期详细对比见下表。
 
    | FA的PageAbility | Stage的UIAbility | 对应关系描述 |

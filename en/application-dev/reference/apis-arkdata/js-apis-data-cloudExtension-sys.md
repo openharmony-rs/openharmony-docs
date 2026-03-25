@@ -405,13 +405,13 @@ createAssetLoaderStub(instance: AssetLoader): Promise&lt;rpc.RemoteObject&gt;
 
 Creates a [RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) instance based on an [AssetLoader](#assetloader) instance. The system uses this object to call the APIs of the [AssetLoader](#assetloader) instance. This API uses a promise to return the result.
 
+**System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
+
 **Parameters**
 
 | Name  | Type                         | Mandatory| Description                                             |
 | -------- | ----------------------------- | ---- | ------------------------------------------------- |
 | instance | [AssetLoader](#assetloader) | Yes  | [AssetLoader](#assetloader) instance.|
-
-**System capability**: SystemCapability.DistributedDataManager.CloudSync.Server
 
 **Return value**
 
@@ -2017,4 +2017,4 @@ export default class MyServiceExtension extends ServiceExtensionAbility {
   }
 }
 ```
-
+ 

@@ -36,7 +36,7 @@
 | [InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool showKeyboard, InputMethod_RequestKeyboardReason requestKeyboardReason)](#oh_attachoptions_createwithrequestkeyboardreason) | 创建一个新的[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)实例。     |
 | [void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)](#oh_attachoptions_destroy) | 销毁一个[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)实例。    |
 | [InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions *options, bool *showKeyboard)](#oh_attachoptions_isshowkeyboard) | 从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取是否显示键盘的值。 |
-| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | 从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取请求软键盘输入的原因。 |
+| [InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_AttachOptions *options, int *requestKeyboardReason)](#oh_attachoptions_getrequestkeyboardreason) | 从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取触发输入法拉起的场景原因。 |
 
 ## 函数说明
 

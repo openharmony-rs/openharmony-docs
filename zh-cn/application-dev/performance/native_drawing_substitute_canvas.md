@@ -74,7 +74,7 @@ struct Index {
 
 ```ts
 // \entry\src\main\ets\view\GlassCoverView.ets
-
+import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 /**
  * 玻璃蒙层效果
  */

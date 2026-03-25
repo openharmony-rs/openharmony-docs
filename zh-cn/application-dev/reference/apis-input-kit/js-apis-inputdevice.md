@@ -12,7 +12,7 @@
 
 > **说明**：
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -26,7 +26,7 @@ import { inputDevice } from '@kit.InputKit';
 
 getDeviceList(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
-获取所有输入设备的ID列表，使用Callback回调。
+获取所有输入设备的ID列表，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -120,7 +120,7 @@ struct Index {
 
 getDeviceInfo(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): void
 
-获取指定输入设备的信息，使用Callback异步回调。
+获取指定输入设备的信息，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -129,7 +129,7 @@ getDeviceInfo(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;):
 | 参数名     | 类型                                                     | 必填 | 说明                                    |
 | -------- | -------------------------------------------------------- | ---- | --------------------------------------- |
 | deviceId | number                                                   | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。                  |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息。 |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数。返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
 **错误码**：
 
@@ -188,7 +188,7 @@ getDeviceInfo(deviceId: number): Promise&lt;InputDeviceData&gt;
 
 | 类型                                               | 说明                            |
 | -------------------------------------------------- | ------------------------------- |
-| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise对象，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息。 |
+| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise对象，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
 **错误码**：
 
@@ -245,7 +245,7 @@ getDeviceInfoSync(deviceId: number): InputDeviceData
 
 | 类型                                               | 说明                            |
 | -------------------------------------------------- | ------------------------------- |
-| [InputDeviceData](#inputdevicedata) | 返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息。 |
+| [InputDeviceData](#inputdevicedata) | 返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
 **错误码**：
 
@@ -280,11 +280,11 @@ struct Index {
 }
 ```
 
-## inputDevice.on<sup>9+</sup>
+## inputDevice.on('change')<sup>9+</sup>
 
 on(type: "change", listener: Callback&lt;DeviceListener&gt;): void
 
-注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。
+注册监听输入设备的热插拔事件，使用时需连接鼠标、键盘、触摸屏等外部设备。使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -368,11 +368,11 @@ struct Index {
 }
 ```
 
-## inputDevice.off<sup>9+</sup>
+## inputDevice.off('change')<sup>9+</sup>
 
 off(type: "change", listener?: Callback&lt;DeviceListener&gt;): void
 
-取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。
+取消监听输入设备的热插拔事件。在应用退出前调用，取消监听。使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 
@@ -436,7 +436,7 @@ struct Index {
 
 getDeviceIds(callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
-获取所有输入设备的ID列表，使用Callback异步回调。
+获取所有输入设备的ID列表，使用callback异步回调。
 
 > **说明**：
 >
@@ -522,7 +522,7 @@ struct Index {
 
 getDevice(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): void
 
-获取指定id的输入设备信息，使用Callback异步回调。
+获取指定id的输入设备信息，使用callback异步回调。
 
 > **说明**：
 >
@@ -535,7 +535,7 @@ getDevice(deviceId: number, callback: AsyncCallback&lt;InputDeviceData&gt;): voi
 | 参数名     | 类型                                                     | 必填 | 说明                             |
 | -------- | -------------------------------------------------------- | ---- | -------------------------------- |
 | deviceId | number                                                   | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。                     |
-| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息。 |
+| callback | AsyncCallback&lt;[InputDeviceData](#inputdevicedata)&gt; | 是   | 回调函数，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
 **示例**：
 
@@ -586,7 +586,7 @@ getDevice(deviceId: number): Promise&lt;InputDeviceData&gt;
 
 | 类型                                               | 说明                                |
 | -------------------------------------------------- | ----------------------------------- |
-| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise对象，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息。 |
+| Promise&lt;[InputDeviceData](#inputdevicedata)&gt; | Promise对象，返回输入设备信息，包括输入设备ID、名称、支持的输入能力、物理地址、版本信息及产品信息等。 |
 
 **示例**：
 
@@ -617,7 +617,7 @@ struct Index {
 
 supportKeys(deviceId: number, keys: Array&lt;KeyCode&gt;, callback: AsyncCallback &lt;Array&lt;boolean&gt;&gt;): void
 
-查询指定输入设备是否支持指定按键，使用Callback异步回调。
+查询指定输入设备是否支持指定按键，使用callback异步回调。
 
 **系统能力**：SystemCapability.MultimodalInput.Input.InputDevice
 

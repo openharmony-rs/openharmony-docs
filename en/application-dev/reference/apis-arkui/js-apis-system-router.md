@@ -10,7 +10,7 @@ The **Router** module provides APIs to access pages through URIs.
 
 > **NOTE**
 >
-> - The APIs of this module are no longer maintained since API version 8. You are advised to use [@ohos.router](js-apis-router.md) instead.
+> - The APIs of this module are no longer maintained since API version 8. You are advised to use [`@ohos.router`](js-apis-router.md) instead.
 >
 >
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
@@ -73,7 +73,6 @@ export default new B()
 ```
 
 > **NOTE**
->
 > The page routing stack supports a maximum of 32 pages.
 
 
@@ -201,8 +200,7 @@ export default new H()
 ```
 
 > **NOTE**
->
-> In the example, the **uri** field indicates the page route, which is specified by the **pages** list in the **config.json** file.
+> In the example, the **uri** field indicates the page route, which is specified by the **pages** list in the configuration file.
 
 ## router.getParams<sup>7+</sup>
 
@@ -259,7 +257,7 @@ import router from '@system.router';
 class J{
   getLength() {
     let size = router.getLength();
-    console.log('pages stack size = ' + size);
+    console.info('pages stack size = ' + size);
   }
 }
 export default new J()
@@ -286,9 +284,9 @@ import router from '@system.router';
 class K{
   getState() {
     let page = router.getState();
-    console.log('current index = ' + page.index);
-    console.log('current name = ' + page.name);
-    console.log('current path = ' + page.path);
+    console.info('current index = ' + page.index);
+    console.info('current name = ' + page.name);
+    console.info('current path = ' + page.path);
   }
 }
 export default new K()
@@ -317,10 +315,10 @@ class L{
     router.enableAlertBeforeBackPage({
       message: 'Message Info',
       success: ()=> {
-        console.log('success');
+        console.info('success');
       },
       cancel: ()=> {
-        console.log('cancel');
+        console.info('cancel');
       }
     });
   }
@@ -350,10 +348,10 @@ class Z{
   disableAlertBeforeBackPage() {
     router.disableAlertBeforeBackPage({
       success: ()=> {
-        console.log('success');
+        console.info('success');
       },
       cancel: ()=> {
-        console.log('cancel');
+        console.info('cancel');
       }
     });
   }
@@ -369,7 +367,7 @@ Defines the page routing parameters.
 
 | Name  | Type| Mandatory| Description                                                        |
 | ------ | -------- | ---- | ------------------------------------------------------------ |
-| uri | string   | Yes  | URI of the target page, in either of the following formats:<br>1. Absolute path, which is provided by the **pages** list in the **config.json** file. Example:<br>- pages/index/index<br> - pages/detail/detail<br>2. Specific path. If the URI is a slash (/), the home page is displayed.|
+| uri | string   | Yes  | URI of the target page, in either of the following formats:<br>1. Absolute path, which is provided by the page list in the **config.json** file. Examples:<br>- pages/index/index<br> - pages/detail/detail<br>2. Specific path. If the URI is a slash (/), the home page is displayed.|
 | params | Object   | No  | Data that needs to be passed to the target page during redirection. The target page can use **router.getParams()** to obtain the passed parameters, for example, **this.keyValue** (**keyValue** is the value of a key in **params**). In the web-like paradigm, these parameters can be directly used on the target page. If the field specified by **key** already exists on the target page, the passed value of the key will be displayed.|
 
 
@@ -386,7 +384,7 @@ Defines the parameters for routing back.
 
 ## RouterState
 
-Defines the page state.
+Defines the routing state.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -398,7 +396,7 @@ Defines the page state.
 
 ## EnableAlertBeforeBackPageOptions<sup>6+</sup>
 
-Defines the **EnableAlertBeforeBackPage** parameters.
+Defines the **EnableAlertBeforeBackPage** parameter.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -411,7 +409,7 @@ Defines the **EnableAlertBeforeBackPage** parameters.
 
 ## DisableAlertBeforeBackPageOptions<sup>6+</sup>
 
-Defines the **DisableAlertBeforeBackPage** parameters.
+Defines the **DisableAlertBeforeBackPage** parameter.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

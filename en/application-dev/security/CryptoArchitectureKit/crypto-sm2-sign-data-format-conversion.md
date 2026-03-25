@@ -8,6 +8,7 @@
 <!--Adviser: @zengyawen-->
 
 HarmonyOS supports the conversion between the DER and R|S formats.
+
 You can specify SM2 signature parameters and convert them to DER ciphertext. You can also extract SM2 signature data from DER ciphertext.
 
 **Converting Ciphertext Parameters to DER Ciphertext**

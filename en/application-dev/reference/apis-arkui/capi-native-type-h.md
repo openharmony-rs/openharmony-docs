@@ -4,7 +4,7 @@
 <!--Owner: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Designer: @piggyguy; @xiang-shouxing; @yangfan229-->
 <!--Tester: @fredyuan912-->
-<!--Adviser: @HelloCrease-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
 
@@ -20,7 +20,7 @@ Defines the common types for the native module.
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
-**Sample**: <!--PR1-->[native_type_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/native_type_sample)<!--PR1End-->
+**Sample**: <!--RP1-->[native_type_sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/NativeType/native_type_sample)<!--RP1End-->
 
 ## Summary
 
@@ -28,6 +28,7 @@ Defines the common types for the native module.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
+| [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md) | ArkUI_Node | Defines an ArkUI native component object.|
 | [ArkUI_ContextCallback](capi-arkui-nativemodule-arkui-contextcallback.md) | ArkUI_ContextCallback | Defines event callback.|
 | [ArkUI_NumberValue](capi-arkui-nativemodule-arkui-numbervalue.md) | ArkUI_NumberValue | Provides the number types of ArkUI on the native side.|
 | [ARKUI_TextPickerRangeContent](capi-arkui-nativemodule-arkui-textpickerrangecontent.md) | ARKUI_TextPickerRangeContent | Defines the struct of the single-column text picker with image resources.|
@@ -40,13 +41,18 @@ Defines the common types for the native module.
 | [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md) | ArkUI_TranslationOptions | Defines the translation options for component transition.|
 | [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md) | ArkUI_ScaleOptions | Defines the scaling options for component transition.|
 | [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md) | ArkUI_RotationOptions | Defines the rotation options for component transition.|
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md) | ArkUI_LayoutConstraint | Defines the size constraints of a component during component layout.|
+| [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | ArkUI_NativeDialog | Defines a custom dialog controller object for ArkUI on the native side.|
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md) | ArkUI_LayoutConstraint | Defines layout constraints for a component.|
 | [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md) | ArkUI_DrawContext | Defines the component drawing context.|
 | [ArkUI_Node*](capi-arkui-nativemodule-arkui-node8h.md) | ArkUI_NodeHandle | Defines the pointer to the ArkUI native component object.|
 | [ArkUI_NativeDialog*](capi-arkui-nativemodule-arkui-nativedialog8h.md) | ArkUI_NativeDialogHandle | Defines the handle to the custom dialog box controller of ArkUI on the native side.|
+| [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md) | ArkUI_GridItemSize | Defines the return value structure for the **onGetIrregularSizeByIndex** callback in **Grid** layout options.|
+| [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md) | ArkUI_GridItemRect | Defines the return value structure for the **onGetRectByIndex** callback in **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md) | ArkUI_GridLayoutOptions | Defines the **Grid** layout options.|
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md) | ArkUI_WaterFlowSectionOption | Defines the water flow section configuration.|
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md) | ArkUI_ListItemSwipeActionItem | Defines the item configuration for **ListItemSwipeActionOption**.|
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) | ArkUI_ListItemSwipeActionOption | Defines the configuration for **ListItemSwipeActionOption**.|
+| [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md) | ArkUI_Context | Defines a context object of the ArkUI native UI.|
 | [ArkUI_Context*](capi-arkui-nativemodule-arkui-context8h.md) | ArkUI_ContextHandle | Defines the handle to the ArkUI native UI context.|
 | [ArkUI_NodeContent*](capi-arkui-nativemodule-arkui-nodecontent8h.md) | ArkUI_NodeContentHandle | Defines the handle to the ArkUI NodeContent instance on the native side.|
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md) | ArkUI_AlignmentRuleOption | Defines the alignment rule in the relative container.|
@@ -59,26 +65,30 @@ Defines the common types for the native module.
 | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | Defines a struct for the host window information.|
 | [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | Defines a struct for active child node information.|
 | [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | Defines cross-language configuration options.|
-| [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | Declares Want objects.|
-| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | Defines the** EmbeddedComponentOption** struct for the **EmbeddedComponent** component.|
+| [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | Declares a **Want** object.|
+| [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | Defines the **EmbeddedComponentOption** parameter for **EmbeddedComponent**.|
 | [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md) | ArkUI_AccessibilityState | Defines a struct for the component accessibility state.|
 | [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md) | ArkUI_AccessibilityValue | Defines a struct for the component accessibility value.|
 | [ArkUI_SystemFontStyleEvent](capi-arkui-nativemodule-arkui-systemfontstyleevent.md) | ArkUI_SystemFontStyleEvent | Defines a struct for the system font style event.|
 | [ArkUI_CustomSpanMeasureInfo](capi-arkui-nativemodule-arkui-customspanmeasureinfo.md) | ArkUI_CustomSpanMeasureInfo | Defines a struct for the measurement information of a custom span.|
 | [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md) | ArkUI_CustomSpanMetrics | Defines a struct for the measurement metrics of a custom span.|
 | [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md) | ArkUI_CustomSpanDrawInfo | Defines a struct for the drawing information of a custom span.|
-| [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | Defines the navigation indicator style of the **Swiper** component.|
-| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | Defines the digit-style navigation indicator of the **Swiper** component.|
-| [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | Defines the arrow style for the **Swiper** component.|
+| [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md) | ArkUI_SwiperIndicator | Defines the style of the navigation indicator for the [Swiper](../apis-arkui/arkui-ts/ts-container-swiper.md) component.|
+| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | Defines the style of the digit navigation indicator for the **Swiper** component.|
+| [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | Defines the navigation arrow style for the **Swiper** component.|
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | Defines a struct for the styled string descriptor object supported by the text component.|
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines a struct for snapshot options.|
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | Defines the data selection list for the text picker.|
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | Defines the content array for a multi-column cascading data picker.|
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Returns the created instance of visible area change event parameters.|
 |[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)|ArkUI_PositionEdges|Provides position parameters relative to the boundaries of the container's content area.|
-|[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|Defines the pixel rounding policy structure of a component.|
+|[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|Defines a struct for the component pixel rounding policy.|
 |[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|Defines the content transition effect.|
-|[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)|Defines the counter configuration of a text input box.|
+|[ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)|ArkUI_ShowCounterConfig|Defines the text input character counter configuration.|
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md) | ArkUI_TextMenuItem | Defines the text menu item structure.|
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md) | ArkUI_TextMenuItemArray | Defines the text menu item array structure.|
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md) | ArkUI_TextEditMenuOptions | Defines the text menu extension structure.|
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md) | ArkUI_TextSelectionMenuOptions | Defines the custom text selection menu structure.|
 
 ### Enums
 
@@ -91,8 +101,8 @@ Defines the common types for the native module.
 | [ArkUI_TextAlignment](#arkui_textalignment)                         | ArkUI_TextAlignment             | Enumerates text alignment modes.                   |
 | [ArkUI_TextVerticalAlignment](#arkui_textverticalalignment)         | ArkUI_TextVerticalAlignment     | Enumerates text vertical alignment styles.                   |
 | [ArkUI_EnterKeyType](#arkui_enterkeytype)                           | ArkUI_EnterKeyType              | Enumerates the types of the Enter key for a single-line text box.               |
-| [ArkUI_TextInputType](#arkui_textinputtype)                         | ArkUI_TextInputType             | Enumerates the text input types.                  |
-| [ArkUI_TextAreaType](#arkui_textareatype)                           | ArkUI_TextAreaType              | Enumerates the text box types.                  |
+| [ArkUI_TextInputType](#arkui_textinputtype)                         | ArkUI_TextInputType             | Enumerates the input method type of a single-line text.                  |
+| [ArkUI_TextAreaType](#arkui_textareatype)                           | ArkUI_TextAreaType              | Enumerates the input method types of a multi-line text.                  |
 | [ArkUI_CancelButtonStyle](#arkui_cancelbuttonstyle)                 | ArkUI_CancelButtonStyle         | Enumerates the styles of the Cancel button.                     |
 | [ArkUI_XComponentType](#arkui_xcomponenttype)                       | ArkUI_XComponentType            | Enumerates the types of the **XComponent** component.               |
 | [ArkUI_ProgressType](#arkui_progresstype)                           | ArkUI_ProgressType              | Enumerates the styles of the progress indicator.                      |
@@ -106,7 +116,7 @@ Defines the common types for the native module.
 | [ArkUI_AccessibilityCheckedState](#arkui_accessibilitycheckedstate) | ArkUI_AccessibilityCheckedState | Enumerates the accessibility check box states.                 |
 | [ArkUI_AccessibilityActionType](#arkui_accessibilityactiontype)     | ArkUI_AccessibilityActionType   | Enumerates the accessibility action types.                       |
 | [ArkUI_EdgeEffect](#arkui_edgeeffect)                               | ArkUI_EdgeEffect                | Enumerates the effects used at the edges of the component when the boundary of the scrollable content is reached.                     |
-| [ArkUI_BarState](#arkui_barstate)                               | ArkUI_BarState                | Defines the enumeration values of the scroll bar status of the text control.                     |
+| [ArkUI_BarState](#arkui_barstate)                               | ArkUI_BarState                | Enumerates the text control scrollbar states.                     |
 | [ArkUI_EffectEdge](#arkui_effectedge)                               | ArkUI_EffectEdge                | Enumerates the edges for which the effect takes effect when the boundary of the scrollable content is reached.                |
 | [ArkUI_ScrollDirection](#arkui_scrolldirection)                     | ArkUI_ScrollDirection           | Enumerates the scroll directions of scrollable components.               |
 | [ArkUI_ScrollSnapAlign](#arkui_scrollsnapalign)                     | ArkUI_ScrollSnapAlign           | Enumerates the alignment modes of list items when scrolling ends.                |
@@ -126,7 +136,7 @@ Defines the common types for the native module.
 | [ArkUI_AccessibilityMode](#arkui_accessibilitymode)                 | ArkUI_AccessibilityMode         | Enumerates the accessibility modes.                     |
 | [ArkUI_TextCopyOptions](#arkui_textcopyoptions)                     | ArkUI_TextCopyOptions           | Enumerates copy options, which define whether copy and paste is allowed for text content.               |
 | [ArkUI_TextHeightAdaptivePolicy](#arkui_textheightadaptivepolicy)   | ArkUI_TextHeightAdaptivePolicy  | Defines how the adaptive height is determined for the text.                    |
-| [ArkUI_ScrollNestedMode](#arkui_scrollnestedmode)                   | ArkUI_ScrollNestedMode          | Enumerates nested scrolling options.                        |
+| [ArkUI_ScrollNestedMode](#arkui_scrollnestedmode)                   | ArkUI_ScrollNestedMode          | Enumerates nested scrolling modes.                        |
 | [ArkUI_ScrollEdge](#arkui_scrolledge)                               | ArkUI_ScrollEdge                | Enumerates the edges to which the component scrolls.                      |
 | [ArkUI_ScrollAlignment](#arkui_scrollalignment)                     | ArkUI_ScrollAlignment           | Defines how the list item to scroll to is aligned with the container.                 |
 | [ArkUI_ScrollState](#arkui_scrollstate)                             | ArkUI_ScrollState               | Enumerates the scrolling states.                        |
@@ -145,20 +155,20 @@ Defines the common types for the native module.
 | [ArkUI_HorizontalAlignment](#arkui_horizontalalignment)             | ArkUI_HorizontalAlignment       | Enumerates the alignment mode in the horizontal direction.                      |
 | [ArkUI_TextOverflow](#arkui_textoverflow)                           | ArkUI_TextOverflow              | Enumerates the display modes when the text is too long.                    |
 | [ArkUI_ImageSpanAlignment](#arkui_imagespanalignment)               | ArkUI_ImageSpanAlignment        | Enumerates the alignment mode of the image with the text.                   |
-| [ArkUI_ObjectFit](#arkui_objectfit)                                 | ArkUI_ObjectFit                 | Enumerates the image filling effects.ImageSpanAlignment    |
+| [ArkUI_ObjectFit](#arkui_objectfit)                                 | ArkUI_ObjectFit                 | Enumerates the image filling effects of the [Image](arkui-ts/ts-basic-components-image.md) component.   |
 | [ArkUI_ImageInterpolation](#arkui_imageinterpolation)               | ArkUI_ImageInterpolation        | Enumerates the image interpolation effects.                        |
-| [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode)                   | ArkUI_DynamicRangeMode          | Defines the image dynamic range mode (for example, SDR/HDR), which is used to control the brightness and color display range of the image.|
-| [ArkUI_ImageRotateOrientation](#arkui_imagerotateorientation)       | ArkUI_ImageRotateOrientation    | Defines the image rotation direction.                        |
+| [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode)                   | ArkUI_DynamicRangeMode          | Enumerates the dynamic range modes (for example, SDR/HDR) for images, controlling the display range of image brightness and color gamut.|
+| [ArkUI_ImageRotateOrientation](#arkui_imagerotateorientation)       | ArkUI_ImageRotateOrientation    | Enumerates image rotation directions.                        |
 | [ArkUI_BlendMode](#arkui_blendmode)                                 | ArkUI_BlendMode                 | Enumerates the blend modes.                         |
 | [ArkUI_Direction](#arkui_direction)                                 | ArkUI_Direction                 | Enumerates the modes in which components are laid out along the main axis of the container.              |
 | [ArkUI_ItemAlignment](#arkui_itemalignment)                         | ArkUI_ItemAlignment             | Enumerates the modes in which components are laid out along the cross axis of the container.            |
-| [ArkUI_ColorStrategy](#arkui_colorstrategy)                         | ArkUI_ColorStrategy             | Enumerates the foreground colors.                          |
+| [ArkUI_ColorStrategy](#arkui_colorstrategy)                         | ArkUI_ColorStrategy             | Enumerates the foreground and shadow colors.                          |
 | [ArkUI_FlexAlignment](#arkui_flexalignment)                         | ArkUI_FlexAlignment             | Enumerates the vertical alignment modes.                      |
 | [ArkUI_FlexDirection](#arkui_flexdirection)                         | ArkUI_FlexDirection             | Enumerates the directions of the main axis in the flex container.                   |
 | [ArkUI_FlexWrap](#arkui_flexwrap)                                   | ArkUI_FlexWrap                  | Defines whether the flex container has a single line or multiple lines.                  |
 | [ArkUI_Visibility](#arkui_visibility)                               | ArkUI_Visibility                | Enumerates the visibility values.                      |
 | [ArkUI_CalendarAlignment](#arkui_calendaralignment)                 | ArkUI_CalendarAlignment         | Enumerates the alignment modes between the calendar picker and the entry component.                  |
-| [ArkUI_MaskType](#arkui_masktype)                                   | ArkUI_MaskType                  | Enumerates the mask types.                          |
+| [ArkUI_MaskType](#arkui_masktype)                                   | ArkUI_MaskType                  | Enumerates the mask types. A mask is a means to limit the display area of a component. It uses a specific shape to crop the component content so that only the content in the mask area is visible.                          |
 | [ArkUI_ClipType](#arkui_cliptype)                                   | ArkUI_ClipType                  | Enumerates the clipping region types.                          |
 | [ArkUI_ShapeType](#arkui_shapetype)                                 | ArkUI_ShapeType                 | Enumerates custom shape types.                           |
 | [ArkUI_LinearGradientDirection](#arkui_lineargradientdirection)     | ArkUI_LinearGradientDirection   | Enumerates the gradient directions.                        |
@@ -166,7 +176,7 @@ Defines the common types for the native module.
 | [ArkUI_EllipsisMode](#arkui_ellipsismode)                           | ArkUI_EllipsisMode              | Enumerates the ellipsis positions.                        |
 | [ArkUI_ImageRenderMode](#arkui_imagerendermode)                     | ArkUI_ImageRenderMode           | Enumerates the image rendering modes.                        |
 | [ArkUI_TransitionEdge](#arkui_transitionedge)                       | ArkUI_TransitionEdge            | Enumerates the slide-in and slide-out positions of the component from the screen edge during transition.                 |
-| [ArkUI_FinishCallbackType](#arkui_finishcallbacktype)               | ArkUI_FinishCallbackType        | Enumerates the animation **onFinish** callback types.             |
+| [ArkUI_FinishCallbackType](#arkui_finishcallbacktype)               | ArkUI_FinishCallbackType        | Enumerates the callback types for [OH_ArkUI_AnimatorOption_RegisterOnFinishCallback](./capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback) in an animation.             |
 | [ArkUI_ListItemAlignment](#arkui_listitemalignment)                 | ArkUI_ListItemAlignment         | Enumerates the alignment modes of items along the cross axis.                      |
 | [ArkUI_BlendApplyType](#arkui_blendapplytype)                       | ArkUI_BlendApplyType            | Defines how the specified blend mode is applied.               |
 | [ArkUI_LengthMetricUnit](#arkui_lengthmetricunit)                   | ArkUI_LengthMetricUnit          | Enumerates the component units.                       |
@@ -179,10 +189,10 @@ Defines the common types for the native module.
 | [ArkUI_ButtonType](#arkui_buttontype)                               | ArkUI_ButtonType                | Enumerates the button types.                       |
 | [ArkUI_RenderFit](#arkui_renderfit)                                 | ArkUI_RenderFit   | Enumerates the sizing and positioning behaviors of animated content in its final state.|
 | [ArkUI_SwiperIndicatorType](#arkui_swiperindicatortype)             | ArkUI_SwiperIndicatorType       | Enumerates the navigation indicator types of the **Swiper** component.            |
-| [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | Enumerates the animation playback modes.                          |
-| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | Enumerates the swipe action item states of list items.|
-| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | Enumerates the swipe action item edge effects of list items.|
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | Defines the swipe-out direction of the Listitem component.|
+| [ArkUI_AnimationDirection](#arkui_animationdirection)               | ArkUI_AnimationDirection        | Enumerates the animation playback directions.                          |
+| [ArkUI_ListItemSwipeActionState](#arkui_listitemswipeactionstate)   | ArkUI_ListItemSwipeActionState  | Enumerates the item states of [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the [Listitem](./arkui-ts/ts-container-listitem.md#listitem10) component.|
+| [ArkUI_ListItemSwipeEdgeEffect](#arkui_listitemswipeedgeeffect)     | ArkUI_ListItemSwipeEdgeEffect   | Enumerates the item edge effects of [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the [Listitem](./arkui-ts/ts-container-listitem.md#listitem10) component.|
+| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) | ArkUI_ListItemSwipeActionDirection | Enumerates the swipe action menu display directions for **ListItem** components.|
 | [ArkUI_AnimationStatus](#arkui_animationstatus)                     | ArkUI_AnimationStatus           | Enumerates the playback states of the frame-by-frame animation.                      |
 | [ArkUI_AnimationFillMode](#arkui_animationfillmode)                 | ArkUI_AnimationFillMode         | Enumerates the states before and after execution of the frame-by-frame animation.            |
 | [ArkUI_ErrorCode](#arkui_errorcode)                                 | ArkUI_ErrorCode                 | Enumerates the error codes.                        |
@@ -198,310 +208,356 @@ Defines the common types for the native module.
 | [ArkUI_RouterPageState](#arkui_routerpagestate)                     | ArkUI_RouterPageState           | Enumerates the states of a page during routing.                |
 | [ArkUI_UIState](#arkui_uistate)                                     | ArkUI_UIState                   | Enumerates the UI states of a component, used for handling state-specific styles.              |
 | [ArkUI_FocusWrapMode](#arkui_focuswrapmode)                         | ArkUI_FocusWrapMode             | Enumerates the focus wrap mode of components.                        |
-| [ArkUI_EdgeDirection](#arkui_edgedirection)                         | ArkUI_EdgeDirection             | Defines the direction of a rectangle edge.                        |
-| [ArkUI_CornerDirection](#arkui_cornerdirection)                     | ArkUI_CornerDirection           | Defines the angle direction.                        |
-| [ArkUI_LayoutPolicy](#arkui_layoutpolicy)                         | ArkUI_LayoutPolicy             | Defines the layout policy.                        |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) | ArkUI_PixelRoundCalcPolicy | Defines the policy for rounding off pixels.|
+| [ArkUI_ItemFillPolicy](#arkui_itemfillpolicy)                         | ArkUI_ItemFillPolicy             | Enumerates preset column layouts for different responsive breakpoints.                        |
+| [ArkUI_EdgeDirection](#arkui_edgedirection)                         | ArkUI_EdgeDirection             | Enumerates rectangle edge directions.                        |
+| [ArkUI_CornerDirection](#arkui_cornerdirection)                     | ArkUI_CornerDirection           | Enumerates corner directions.                        |
+| [ArkUI_LayoutPolicy](#arkui_layoutpolicy)                         | ArkUI_LayoutPolicy             | Enumerates layout policies.                        |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) | ArkUI_PixelRoundCalcPolicy | Enumerates pixel rounding calculation policies.|
+| [ArkUI_GridItemStyle](#arkui_griditemstyle)                         | ArkUI_GridItemStyle             | Enumerates styles of grid items.                        |
+| [ArkUI_TextMenuItemId](#arkui_textmenuitemid) | ArkUI_TextMenuItemId | Enumerates the IDs of text menu items.|
+| [ArkUI_TextSpanType](#arkui_textspantype) | ArkUI_TextSpanType | Enumerates the text recognition types of a custom text selection menu.|
+| [ArkUI_TextResponseType](#arkui_textresponsetype) | ArkUI_TextResponseType | Enumerates the response types of a custom text selection menu.|
 
 ### Functions
 
-| Name| Description|
-| -- | -- |
-| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()](#oh_arkui_layoutconstraint_create) | Creates a size constraint.|
-| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_copy) | Performs a deep copy of a size constraint.|
-| [void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_dispose) | Disposes of the pointer to a size constraint.|
-| [int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxwidth) | Obtains the maximum width for a size constraint, in px.|
-| [int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminwidth) | Obtains the minimum width for a size constraint, in px.|
-| [int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxheight) | Obtains the maximum height for a size constraint, in px.|
-| [int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminheight) | Obtains the minimum height for a size constraint, in px.|
-| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferencewidth) | Obtains the width percentage reference for a size constraint, in px.|
-| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferenceheight) | Obtains the height percentage reference for a size constraint, in px.|
-| [void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxwidth) | Sets the maximum width.|
-| [void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setminwidth) | Sets the minimum width.|
-| [void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxheight) | Sets the maximum height.|
-| [void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setminheight) | Sets the minimum height.|
-| [void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setpercentreferencewidth) | Sets the width percentage reference.|
-| [void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setpercentreferenceheight) | Sets the height percentage reference.|
-| [void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getcanvas) | Obtains the pointer to a canvas for drawing, which can be converted into the **OH_Drawing_Canvas** in the **Drawing** module.|
-| [ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getsize) | Obtains the size of a drawing area.|
-| [ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()](#oh_arkui_waterflowsectionoption_create) | Creates a water flow section configuration.|
-| [void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_dispose) | Disposes of the pointer to a water flow section configuration.|
-| [void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* option, int32_t size)](#oh_arkui_waterflowsectionoption_setsize) | Sets the array length for a water flow section configuration.|
-| [int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_getsize) | Obtains the array length for a water flow section configuration.|
-| [void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t itemCount)](#oh_arkui_waterflowsectionoption_setitemcount) | Sets the number of items in a water flow section.|
-| [int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getitemcount) | Obtains the number of items in the water flow section that matches the specified index.|
-| [void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)](#oh_arkui_waterflowsectionoption_setcrosscount) | Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow.|
-| [int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcrosscount) | Obtains the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow.|
-| [void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float columnGap)](#oh_arkui_waterflowsectionoption_setcolumngap) | Sets the gap between columns in the specified water flow section.|
-| [float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcolumngap) | Obtains the gap between columns in the water flow section that matches the specified index.|
-| [void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float rowGap)](#oh_arkui_waterflowsectionoption_setrowgap) | Sets the gap between rows in the specified water flow section.|
-| [float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getrowgap) | Obtains the gap between rows in the water flow section that matches the specified index.|
-| [void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)](#oh_arkui_waterflowsectionoption_setmargin) | Sets the margins for the specified water flow section.|
-| [ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getmargin) | Obtains the margins of the water flow section that matches the specified index.|
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | Obtains the main axis size of a specified item based on **flowItemIndex** through a water flow section configuration.|
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | Obtains the main axis size of a specified item based on **flowItemIndex** through a water flow section configuration.|
-| [ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)](#oh_arkui_guidelineoption_create) | Creates a guideline configuration for this **RelativeContainer** component.|
-| [void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)](#oh_arkui_guidelineoption_dispose) | Disposes of a guideline configuration.|
-| [void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char* value, int32_t index)](#oh_arkui_guidelineoption_setid) | Sets the ID of a guideline.|
-| [void OH_ArkUI_GuidelineOption_SetDirection(ArkUI_GuidelineOption* guideline, ArkUI_Axis value, int32_t index)](#oh_arkui_guidelineoption_setdirection) | Sets the direction of a guideline.|
-| [void OH_ArkUI_GuidelineOption_SetPositionStart(ArkUI_GuidelineOption* guideline, float value, int32_t index)](#oh_arkui_guidelineoption_setpositionstart) | Sets the distance between a guideline and the left or top of the container.|
-| [void OH_ArkUI_GuidelineOption_SetPositionEnd(ArkUI_GuidelineOption* guideline, float value, int32_t index)](#oh_arkui_guidelineoption_setpositionend) | Sets the distance between a guideline and the right or bottom of the container.|
-| [const char* OH_ArkUI_GuidelineOption_GetId(ArkUI_GuidelineOption* guideline, int32_t index)](#oh_arkui_guidelineoption_getid) | Obtains the ID of a guideline.|
-| [ArkUI_Axis OH_ArkUI_GuidelineOption_GetDirection(ArkUI_GuidelineOption* guideline, int32_t index)](#oh_arkui_guidelineoption_getdirection) | Obtains the direction of a guideline.|
-| [float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline, int32_t index)](#oh_arkui_guidelineoption_getpositionstart) | Obtains the distance between a guideline and the left or top of the container.|
-| [float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, int32_t index)](#oh_arkui_guidelineoption_getpositionend) | Obtains the distance between a guideline and the right or bottom of the container.|
-| [ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)](#oh_arkui_barrieroption_create) | Creates a barrier configuration for this **RelativeContainer** component.|
-| [void OH_ArkUI_BarrierOption_Dispose(ArkUI_BarrierOption* barrierStyle)](#oh_arkui_barrieroption_dispose) | Disposes of a barrier configuration.|
-| [void OH_ArkUI_BarrierOption_SetId(ArkUI_BarrierOption* barrierStyle, const char* value, int32_t index)](#oh_arkui_barrieroption_setid) | Sets the ID of a barrier.|
-| [void OH_ArkUI_BarrierOption_SetDirection(ArkUI_BarrierOption* barrierStyle, ArkUI_BarrierDirection value, int32_t index)](#oh_arkui_barrieroption_setdirection) | Sets the direction of a barrier.|
-| [void OH_ArkUI_BarrierOption_SetReferencedId(ArkUI_BarrierOption* barrierStyle, const char* value, int32_t index)](#oh_arkui_barrieroption_setreferencedid) | Sets the referenced components of a barrier.|
-| [const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int32_t index)](#oh_arkui_barrieroption_getid) | Obtains the ID of a barrier.|
-| [ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* barrierStyle, int32_t index)](#oh_arkui_barrieroption_getdirection) | Obtains the direction of a barrier.|
-| [const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierStyle, int32_t index , int32_t referencedIndex)](#oh_arkui_barrieroption_getreferencedid) | Obtains the referenced components of a barrier.|
-| [int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierStyle, int32_t index)](#oh_arkui_barrieroption_getreferencedidsize) | Obtains the number of referenced components of a barrier.|
-| [ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()](#oh_arkui_alignmentruleoption_create) | Creates an alignment rule configuration for this **RelativeContainer** component.|
-| [void OH_ArkUI_AlignmentRuleOption_Dispose(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_dispose) | Disposes of an alignment rule configuration of this **RelativeContainer** component.|
-| [void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setstart) | Sets the left alignment parameters.|
-| [void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setend) | Sets the right alignment parameters.|
-| [void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setcenterhorizontal) | Sets the horizontal center alignment parameters.|
-| [void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_settop) | Sets the top alignment parameters.|
-| [void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_setbottom) | Sets the bottom alignment parameters.|
-| [void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_setcentervertical) | Sets the vertical center alignment parameters.|
-| [void OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(ArkUI_AlignmentRuleOption* option, float horizontal)](#oh_arkui_alignmentruleoption_setbiashorizontal) | Sets the bias value of the component in the horizontal direction under the anchor constraints.|
-| [void OH_ArkUI_AlignmentRuleOption_SetBiasVertical(ArkUI_AlignmentRuleOption* option, float vertical)](#oh_arkui_alignmentruleoption_setbiasvertical) | Sets the bias value of the component in the vertical direction under the anchor constraints.|
-| [const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getstartid) | Obtains the ID in the left alignment parameters.|
-| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getstartalignment) | Obtains the alignment mode in left alignment parameters.|
-| [const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getendid) | Obtains the alignment mode in the right alignment parameters.|
-| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getendalignment) | Obtains the alignment mode in the right alignment parameters.|
-| [const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteridhorizontal) | Obtains the alignment mode in horizontal center alignment parameters.|
-| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteralignmenthorizontal) | Obtains the alignment mode in horizontal center alignment parameters.|
-| [const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_gettopid) | Obtains the alignment mode in top alignment parameters.|
-| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_gettopalignment) | Obtains the alignment mode in top alignment parameters.|
-| [const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbottomid) | Obtains the alignment mode in bottom alignment parameters.|
-| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbottomalignment) | Obtains the alignment mode in bottom alignment parameters.|
-| [const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteridvertical) | Obtains the ID in vertical center alignment parameters.|
-| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteralignmentvertical) | Obtains the ID in vertical center alignment parameters.|
-| [float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbiashorizontal) | Obtains the bias value in the horizontal direction.|
-| [float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbiasvertical) | Obtains the bias value in the vertical direction.|
-| [ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType type)](#oh_arkui_swiperindicator_create) | Creates a navigation indicator for this **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_Dispose(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_dispose) | Disposes of the navigation indicator of this **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setstartposition) | Sets the distance between a navigation indicator and the left edge of the **Swiper** component.|
-| [float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getstartposition) | Obtains the distance between a navigation indicator and the left edge of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetTopPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_settopposition) | Sets the distance between the navigation indicator and the top edge of the **Swiper** component.|
-| [float OH_ArkUI_SwiperIndicator_GetTopPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_gettopposition) | Obtains the distance between the navigation indicator and the top edge of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setendposition) | Sets the distance between the navigation indicator and the right edge of the **Swiper** component.|
-| [float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getendposition) | Obtains the distance between a navigation indicator and the right edge of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setbottomposition) | Sets the distance between the navigation indicator and the bottom edge of the **Swiper** component.|
-| [float OH_ArkUI_SwiperIndicator_GetBottomPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getbottomposition) | Obtains the distance between the navigation indicator and the bottom edge of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator, int32_t ignoreSize)](#oh_arkui_swiperindicator_setignoresizeofbottom) | Sets whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
-| [int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getignoresizeofbottom) | Checks whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
-| [void OH_ArkUI_SwiperIndicator_SetItemWidth(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setitemwidth) | Sets the width of a dot-style navigation indicator for the **Swiper** component.|
-| [float OH_ArkUI_SwiperIndicator_GetItemWidth(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getitemwidth) | Obtains the width of a dot-style navigation indicator of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetItemHeight(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setitemheight) | Sets the height of a dot-style navigation indicator for the **Swiper** component.|
-| [float OH_ArkUI_SwiperIndicator_GetItemHeight(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getitemheight) | Obtains the height of a dot-style navigation indicator of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetSelectedItemWidth(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setselecteditemwidth) | Sets the width of the selected dot-style navigation indicator for the **Swiper** component.|
-| [float OH_ArkUI_SwiperIndicator_GetSelectedItemWidth(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getselecteditemwidth) | Obtains the width of the selected dot-style navigation indicator of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetSelectedItemHeight(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setselecteditemheight) | Sets the height of the selected dot-style navigation indicator for the **Swiper** component.|
-| [float OH_ArkUI_SwiperIndicator_GetSelectedItemHeight(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getselecteditemheight) | Obtains the height of the selected dot-style navigation indicator of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetMask(ArkUI_SwiperIndicator* indicator, int32_t mask)](#oh_arkui_swiperindicator_setmask) | Sets whether to enable the mask for a dot-style navigation indicator for the **Swiper** component.|
-| [int32_t OH_ArkUI_SwiperIndicator_GetMask(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getmask) | Obtains whether the mask is enabled for a dot-style navigation indicator of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetColor(ArkUI_SwiperIndicator* indicator, uint32_t color)](#oh_arkui_swiperindicator_setcolor) | Sets the color of a dot-style navigation indicator for the **Swiper** component.|
-| [uint32_t OH_ArkUI_SwiperIndicator_GetColor(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getcolor) | Obtains the color of a dot-style navigation indicator of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator, uint32_t selectedColor)](#oh_arkui_swiperindicator_setselectedcolor) | Sets the color of the selected dot-style navigation indicator for the **Swiper** component.|
-| [uint32_t OH_ArkUI_SwiperIndicator_GetSelectedColor(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getselectedcolor) | Obtains the color of the selected dot-style navigation indicator of the **Swiper** component.|
-| [int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indicator, int32_t maxDisplayCount)](#oh_arkui_swiperindicator_setmaxdisplaycount) | Sets the maximum number of dots for the dot-style navigation indicator.|
-| [int32_t OH_ArkUI_SwiperIndicator_GetMaxDisplayCount(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getmaxdisplaycount) | Obtains the maximum number of dots for the dot-style navigation indicator.|
-| [ArkUI_SwiperDigitIndicator *OH_ArkUI_SwiperDigitIndicator_Create()](#oh_arkui_swiperdigitindicator_create) | Creates a digit-style navigation indicator for this **Swiper** component.|
-| [void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_destroy) | Disposes of the digit-style navigation indicator of this **Swiper** component.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetStartPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_setstartposition) | Sets the start position of the digit-style navigation indicator for the **Swiper** component. This determines the distance from the left edge of the **Swiper** component. For right-to-left scripts, this determines the distance from the right edge.|
-| [float OH_ArkUI_SwiperDigitIndicator_GetStartPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getstartposition) | Obtains the start position of the digit-style navigation indicator for the **Swiper** component. This indicates the distance from the left edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the right edge.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetTopPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_settopposition) | Sets the distance from the digit-style navigation indicator to the top of the **Swiper** component.|
-| [float OH_ArkUI_SwiperDigitIndicator_GetTopPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_gettopposition) | Obtains the distance from the digit-style navigation indicator to the top of the **Swiper** component.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetEndPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_setendposition) | Sets the end position of the digit-style navigation indicator for the **Swiper** component. This determines the distance from the right edge of the **Swiper** component. For right-to-left scripts, this determines the distance from the left edge.|
-| [float OH_ArkUI_SwiperDigitIndicator_GetEndPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getendposition) | Obtains the end position of the digit-style navigation indicator for the **Swiper** component. This indicates the distance from the right edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the left edge.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_setbottomposition) | Sets the distance from the digit-style navigation indicator to the bottom of the **Swiper** component.|
-| [float OH_ArkUI_SwiperDigitIndicator_GetBottomPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getbottomposition) | Obtains the distance from the digit-style navigation indicator to the bottom of the **Swiper** component.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetFontColor(ArkUI_SwiperDigitIndicator* indicator, uint32_t color)](#oh_arkui_swiperdigitindicator_setfontcolor) | Sets the font color of the digit-style navigation indicator for the **Swiper** component.|
-| [uint32_t OH_ArkUI_SwiperDigitIndicator_GetFontColor(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getfontcolor) | Obtains the font color of the digit-style navigation indicator for the **Swiper** component.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontColor(ArkUI_SwiperDigitIndicator* indicator, uint32_t selectedColor)](#oh_arkui_swiperdigitindicator_setselectedfontcolor) | Sets the font color of the selected digit-style navigation indicator for the **Swiper** component.|
-| [uint32_t OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getselectedfontcolor) | Obtains the font color of the selected digit-style navigation indicator for the **Swiper** component.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetFontSize(ArkUI_SwiperDigitIndicator* indicator, float size)](#oh_arkui_swiperdigitindicator_setfontsize) | Sets the font size of the digit-style navigation indicator for the **Swiper** component.|
-| [float OH_ArkUI_SwiperDigitIndicator_GetFontSize(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getfontsize) | Obtains the font size of the digit-style navigation indicator for the **Swiper** component.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator, float size)](#oh_arkui_swiperdigitindicator_setselectedfontsize) | Sets the font size of the selected digit-style navigation indicator for the **Swiper** component.|
-| [float OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getselectedfontsize) | Obtains the font size of the selected digit-style navigation indicator for the **Swiper** component.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight fontWeight)](#oh_arkui_swiperdigitindicator_setfontweight) | Sets the font weight of the digit-style navigation indicator for the **Swiper** component.|
-| [ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetFontWeight(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getfontweight) | Obtains the font weight of the digit-style navigation indicator for the **Swiper** component.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight selectedFontWeight)](#oh_arkui_swiperdigitindicator_setselectedfontweight) | Sets the font weight of the selected digit-style navigation indicator for the **Swiper** component.|
-| [ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getselectedfontweight) | Obtains the font weight of the selected digit-style navigation indicator for the **Swiper** component.|
-| [ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()](#oh_arkui_swiperarrowstyle_create) | Creates an arrow style for the **Swiper** component.|
-| [void OH_ArkUI_SwiperArrowStyle_Destroy(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_destroy) | Disposes of the arrow of the **Swiper** component.|
-| [void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showBackground)](#oh_arkui_swiperarrowstyle_setshowbackground) | Sets whether to display the background of the arrow for the **Swiper** component.|
-| [int32_t OH_ArkUI_SwiperArrowStyle_GetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getshowbackground) | Checks whether the background of the arrow is displayed for the **Swiper** component.|
-| [void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showSidebarMiddle)](#oh_arkui_swiperarrowstyle_setshowsidebarmiddle) | Sets the position of the arrow for the **Swiper** component.|
-| [int32_t OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getshowsidebarmiddle) | Obtains the position of the arrow for the **Swiper** component.|
-| [void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle, float backgroundSize)](#oh_arkui_swiperarrowstyle_setbackgroundsize) | Sets the background size for the arrow of the **Swiper** component.|
-| [float OH_ArkUI_SwiperArrowStyle_GetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getbackgroundsize) | Obtains the background size of the arrow of the **Swiper** component.|
-| [void OH_ArkUI_SwiperArrowStyle_SetBackgroundColor(ArkUI_SwiperArrowStyle* arrowStyle, uint32_t backgroundColor)](#oh_arkui_swiperarrowstyle_setbackgroundcolor) | Sets the background color for the arrow of the **Swiper** component.|
-| [uint32_t OH_ArkUI_SwiperArrowStyle_GetBackgroundColor(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getbackgroundcolor) | Obtains the background color for the arrow of the **Swiper** component.|
-| [void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, float arrowSize)](#oh_arkui_swiperarrowstyle_setarrowsize) | Sets the size for the arrow of the **Swiper** component.|
-| [float OH_ArkUI_SwiperArrowStyle_GetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getarrowsize) | Obtains the size of the arrow of the **Swiper** component.|
-| [void OH_ArkUI_SwiperArrowStyle_SetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle, uint32_t arrowColor)](#oh_arkui_swiperarrowstyle_setarrowcolor) | Sets the color for the arrow of the **Swiper** component.|
-| [uint32_t OH_ArkUI_SwiperArrowStyle_GetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getarrowcolor) | Obtains the color of the arrow of the **Swiper** component.|
-| [void OH_ArkUI_SwiperIndicator_SetSpace(ArkUI_SwiperIndicator* indicator, float space)](#oh_arkui_swiperindicator_setspace) | Sets the spacing between navigation points.|
-| [float OH_ArkUI_SwiperIndicator_GetSpace(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getspace) | Obtains the spacing between navigation points.|
-| [void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator, int32_t ignoreSize)](#oh_arkui_swiperdigitindicator_setignoresizeofbottom) | Sets whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
-| [int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getignoresizeofbottom) | Checks whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
-| [ArkUI_ListItemSwipeActionItem* OH_ArkUI_ListItemSwipeActionItem_Create()](#oh_arkui_listitemswipeactionitem_create) | Creates a **ListItemSwipeActionItem** instance.|
-| [void OH_ArkUI_ListItemSwipeActionItem_Dispose(ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionitem_dispose) | Disposes of a **ListItemSwipeActionItem** instance.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetContent(ArkUI_ListItemSwipeActionItem* item, ArkUI_NodeHandle node)](#oh_arkui_listitemswipeactionitem_setcontent) | Sets the layout content for a **ListItemSwipeActionItem** instance.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item, float distance)](#oh_arkui_listitemswipeactionitem_setactionareadistance) | Sets the swipe distance threshold for deleting the list item.|
-| [float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionitem_getactionareadistance) | Obtains the swipe distance threshold for deleting the list item.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonenteractionarea) | Sets the callback invoked each time the list item enters the delete area.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData (ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonenteractionareawithuserdata) | Sets the callback invoked each time the list item enters the delete area.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonaction) | Sets the callback invoked when the list item is deleted while in the delete area.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonactionwithuserdata) | Sets the callback invoked when the list item is deleted while in the delete area.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonexitactionarea) | Sets the callback invoked each time the list item exits the delete area.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData (ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonexitactionareawithuserdata) | Sets the callback invoked each time the list item exits the delete area.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange (ArkUI_ListItemSwipeActionItem* item,void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState))](#oh_arkui_listitemswipeactionitem_setonstatechange) | Sets the callback invoked when the swipe state of the list item changes.|
-| [void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData (ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState, void* userData))](#oh_arkui_listitemswipeactionitem_setonstatechangewithuserdata) | Sets the callback invoked when the swipe state of the list item changes.|
-| [ArkUI_ListItemSwipeActionOption* OH_ArkUI_ListItemSwipeActionOption_Create()](#oh_arkui_listitemswipeactionoption_create) | Creates a **ListItemSwipeActionOption** instance.|
-| [void OH_ArkUI_ListItemSwipeActionOption_Dispose(ArkUI_ListItemSwipeActionOption* option)](#oh_arkui_listitemswipeactionoption_dispose) | Disposes of a **ListItemSwipeActionOption** instance.|
-| [void OH_ArkUI_ListItemSwipeActionOption_SetStart(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionoption_setstart) | Sets the layout content for the left edge (for a vertical layout) or top edge (for a horizontal layout) of a **ListItemSwipeActionItem** instance.|
-| [void OH_ArkUI_ListItemSwipeActionOption_SetEnd(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionoption_setend) | Sets the layout content for the right edge (for a vertical layout) or bottom edge (for a horizontal layout) of a **ListItemSwipeActionItem** instance.|
-| [void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeEdgeEffect edgeEffect)](#oh_arkui_listitemswipeactionoption_setedgeeffect) | Sets the edge effect used when the boundary of the scrolling area is reached.|
-| [int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActionOption* option)](#oh_arkui_listitemswipeactionoption_getedgeeffect) | Obtains the edge effect used when the boundary of the scrolling area is reached.|
-| [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeActionOption* option, void (\*callback)(float offset))](#oh_arkui_listitemswipeactionoption_setonoffsetchange) | Sets the callback invoked when the scroll offset changes.|
-| [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData (ArkUI_ListItemSwipeActionOption* option, void* userData, void (\*callback)(float offset, void* userData))](#oh_arkui_listitemswipeactionoption_setonoffsetchangewithuserdata) | Sets the callback invoked when the scroll offset changes.|
-| [int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListItemSwipeActionDirection direction)](#oh_arkui_listitemswipeaction_expand) |  Expands the menu of a specified list item.|
-| [int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)](#oh_arkui_listitemswipeaction_collapse) |  Collapses the menu of a specified list item.|
-| [ArkUI_AccessibilityState* OH_ArkUI_AccessibilityState_Create(void)](#oh_arkui_accessibilitystate_create) | Creates an accessibility state.|
-| [void OH_ArkUI_AccessibilityState_Dispose(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_dispose) | Disposes of the pointer to an accessibility state.|
-| [void OH_ArkUI_AccessibilityState_SetDisabled(ArkUI_AccessibilityState* state, int32_t isDisabled)](#oh_arkui_accessibilitystate_setdisabled) | Sets whether an accessibility state is disabled.|
-| [int32_t OH_ArkUI_AccessibilityState_IsDisabled(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_isdisabled) | Obtains whether an accessibility state is disabled.|
-| [void OH_ArkUI_AccessibilityState_SetSelected(ArkUI_AccessibilityState* state, int32_t isSelected)](#oh_arkui_accessibilitystate_setselected) | Sets whether an accessibility state is selected.|
-| [int32_t OH_ArkUI_AccessibilityState_IsSelected(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_isselected) | Obtains whether an accessibility state is selected.|
-| [void OH_ArkUI_AccessibilityState_SetCheckedState(ArkUI_AccessibilityState* state, int32_t checkedState)](#oh_arkui_accessibilitystate_setcheckedstate) | Sets the check box state of an accessibility state.|
-| [int32_t OH_ArkUI_AccessibilityState_GetCheckedState(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_getcheckedstate) | Obtains the check box state of an accessibility state.|
-| [ArkUI_AccessibilityValue* OH_ArkUI_AccessibilityValue_Create(void)](#oh_arkui_accessibilityvalue_create) | Creates an **AccessibilityValue** instance.|
-| [void OH_ArkUI_AccessibilityValue_Dispose(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_dispose) | Disposes of the pointer to an **AccessibilityValue** instance.|
-| [void OH_ArkUI_AccessibilityValue_SetMin(ArkUI_AccessibilityValue* value, int32_t min)](#oh_arkui_accessibilityvalue_setmin) | Sets the minimum accessibility value.|
-| [int32_t OH_ArkUI_AccessibilityValue_GetMin(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getmin) | Obtains the minimum accessibility value.|
-| [void OH_ArkUI_AccessibilityValue_SetMax(ArkUI_AccessibilityValue* value, int32_t max)](#oh_arkui_accessibilityvalue_setmax) | Sets the maximum accessibility value.|
-| [int32_t OH_ArkUI_AccessibilityValue_GetMax(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getmax) | Obtains the maximum accessibility value.|
-| [void OH_ArkUI_AccessibilityValue_SetCurrent(ArkUI_AccessibilityValue* value, int32_t current)](#oh_arkui_accessibilityvalue_setcurrent) | Sets the current accessibility value.|
-| [int32_t OH_ArkUI_AccessibilityValue_GetCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getcurrent) | Obtains the current accessibility value.|
-| [void OH_ArkUI_AccessibilityValue_SetRangeMin(ArkUI_AccessibilityValue* value, int32_t rangeMin)](#oh_arkui_accessibilityvalue_setrangemin) | Sets the minimum value for accessibility information of the range-based component.|
-| [int32_t OH_ArkUI_AccessibilityValue_GetRangeMin(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangemin) | Obtains the minimum value for accessibility information of the range-based component.|
-| [void OH_ArkUI_AccessibilityValue_SetRangeMax(ArkUI_AccessibilityValue* value, int32_t rangeMax)](#oh_arkui_accessibilityvalue_setrangemax) | Sets the maximum value for accessibility information of the range-based component.|
-| [int32_t OH_ArkUI_AccessibilityValue_GetRangeMax(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangemax) | Obtains the maximum value for accessibility information of the range-based component.|
-| [void OH_ArkUI_AccessibilityValue_SetRangeCurrent(ArkUI_AccessibilityValue* value, int32_t rangeCurrent)](#oh_arkui_accessibilityvalue_setrangecurrent) | Sets the current value for accessibility information of the range-based component.|
-| [int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangecurrent) | Obtains the current value for accessibility information of the range-based component.|
-| [void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const char* text)](#oh_arkui_accessibilityvalue_settext) | Sets the text description of an **AccessibilityValue** instance.|
-| [const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_gettext) | Obtains the text description of an **AccessibilityValue** instance.|
-| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)](#oh_arkui_imageanimatorframeinfo_createfromstring) | Creates an image frame information object based on an image path, with the image format being SVG, PNG, or JPG.|
-| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)](#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor) | Creates an image frame information object based on a **DrawableDescriptor** object, with the image format being Resource or PixelMap.|
-| [void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_dispose) | Disposes of the pointer to an image frame information object.|
-| [void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)](#oh_arkui_imageanimatorframeinfo_setwidth) | Sets the image width.|
-| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getwidth) | Obtains the image width.|
-| [void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t height)](#oh_arkui_imageanimatorframeinfo_setheight) | Sets the image height.|
-| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getheight) | Obtains the image height.|
-| [void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t top)](#oh_arkui_imageanimatorframeinfo_settop) | Sets the vertical coordinate of an image relative to the upper left corner of the component.|
-| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_gettop) | Obtains the vertical coordinate of an image relative to the upper left corner of the component.|
-| [void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t left)](#oh_arkui_imageanimatorframeinfo_setleft) | Sets the horizontal coordinate of an image relative to the upper left corner of the component.|
-| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getleft) | Obtains the horizontal coordinate of an image relative to the upper left corner of the component.|
-| [void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t duration)](#oh_arkui_imageanimatorframeinfo_setduration) | Sets the playback duration of an image.|
-| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getduration) | Obtains the playback duration of an image.|
-| [ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()](#oh_arkui_listchildrenmainsizeoption_create) | Creates a **ListChildrenMainSize** instance.|
-| [void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_dispose) | Destroys a ListChildrenMainSize instance.|
-| [int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildrenMainSize* option, float defaultMainSize)](#oh_arkui_listchildrenmainsizeoption_setdefaultmainsize) | Sets the default size in a **ListChildrenMainSize** instance.|
-| [float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_getdefaultmainsize) | Obtains the default size in a **ListChildrenMainSize** instance.|
-| [void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)](#oh_arkui_listchildrenmainsizeoption_resize) | Resets the array size in a **ListChildrenMainSize** instance.|
-| [int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)](#oh_arkui_listchildrenmainsizeoption_splice) | Changes the content of a **ChildrenMainSizeOption** array.|
-| [int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSize* option, int32_t index, float mainSize)](#oh_arkui_listchildrenmainsizeoption_updatesize) | Updates the values in a **ChildrenMainSizeOption** array of a **List** component.|
-| [float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize* option, int32_t index)](#oh_arkui_listchildrenmainsizeoption_getmainsize) | Obtains the value of the **ChildrenMainSizeOption** array of the **List** component.|
-| [ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)](#oh_arkui_customspanmeasureinfo_create) | Creates measurement information for this custom span.|
-| [void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)](#oh_arkui_customspanmeasureinfo_dispose) | Disposes of measurement information of a custom span.|
-| [float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* info)](#oh_arkui_customspanmeasureinfo_getfontsize) | Obtains the font size of the parent text node of a custom span.|
-| [ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)](#oh_arkui_customspanmetrics_create) | Creates measurement metrics for this custom span.|
-| [void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)](#oh_arkui_customspanmetrics_dispose) | Disposes of measurement metrics of this custom span.|
-| [int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, float width)](#oh_arkui_customspanmetrics_setwidth) | Sets the width for a custom span.|
-| [int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, float height)](#oh_arkui_customspanmetrics_setheight) | Sets the height for a custom span.|
-| [ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)](#oh_arkui_customspandrawinfo_create) | Creates drawing information for this custom span.|
-| [void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_dispose) | Disposes of drawing information for this custom span.|
-| [float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getxoffset) | Obtains the x-axis offset of the custom span relative to the mounted component.|
-| [float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getlinetop) | Obtains the top margin of the custom span relative to the mounted component.|
-| [float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getlinebottom) | Obtains the bottom margin of the custom span relative to the mounted component.|
-| [float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getbaseline) | Obtains the baseline offset of the custom span relative to the mounted component.|
-| [void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_destroy) | Destroys a **CustomProperty** instance.|
-| [const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_getstringvalue) | Obtains the value of a custom property.|
-| [const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_getname) | Obtains the window name from a **HostWindowInfo** object.|
-| [void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_destroy) | Destroys n **HostWindowInfo** object.|
-| [void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_destroy) | Destroys an **ActiveChildrenInfo** instance.|
-| [ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)](#oh_arkui_activechildreninfo_getnodebyindex) | Obtains the child node at the specified index in the specified **ActiveChildrenInfo** instance.|
-| [int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_getcount) | Obtains the number of nodes in the specified **ActiveChildrenInfo** instance.|
-| [ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)](#oh_arkui_progresslinearstyleoption_create) | Creates a **ProgressLinearStyleOption** instance.|
-| [void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_destroy) | Destroys a **ProgressLinearStyleOption** instance.|
-| [void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)](#oh_arkui_progresslinearstyleoption_setsmootheffectenabled) | Sets whether to enable the smooth progress effect.|
-| [void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)](#oh_arkui_progresslinearstyleoption_setscaneffectenabled) | Sets whether to enable the scan effect.|
-| [void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyleOption* option, float strokeWidth)](#oh_arkui_progresslinearstyleoption_setstrokewidth) | Sets the width of the progress indicator.|
-| [void OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(ArkUI_ProgressLinearStyleOption* option, float strokeRadius)](#oh_arkui_progresslinearstyleoption_setstrokeradius) | Sets the corner radius of the progress indicator.|
-| [bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getsmootheffectenabled) | Obtains the enabled status of the smooth progress effect.|
-| [bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getscaneffectenabled) | Obtains the enabled status of the scan effect.|
-| [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokewidth) | Obtains the stroke width of the progress indicator.|
-| [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokeradius) | Obtains the corner radius of the progress indicator.|
-| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | Creates a snapshot option. The snapshot option must be destroyed by calling [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when the return value is no longer used.|
-| [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | Destroys a snapshot options object.|
-| [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | Sets the scale property in the snapshot options.|
-| [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | Creates an instance of the cross-language configuration option.|
-| [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | Destroys an instance of the cross-language configuration option.|
-| [void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)](#oh_arkui_crosslanguageoption_setattributesettingstatus) | Sets whether cross-language attribute setting is allowed in the configuration option.|
-| [bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_getattributesettingstatus) | Checks whether cross-language attribute setting is allowed in the configuration option.|
-| [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | Creates an instance of visible area change event parameters.|
-| [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | Disposes of an instance of visible area change event parameters.|
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)](#oh_arkui_visibleareaeventoptions_setratios) | Sets the threshold ratios for visible area changes.|
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)](#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) | Sets the expected update interval for visible area changes.  |
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)](#oh_arkui_visibleareaeventoptions_getratios) | Obtains the threshold ratios for visible area changes.|
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) | Obtains the expected update interval for visible area changes.|
-| [ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(int32_t length)](#oh_arkui_textpickerrangecontentarray_create) | Creates a **TextPickerRangeContent** array object.|
-| [void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)](#oh_arkui_textpickerrangecontentarray_seticonatindex) | Sets the icon data at the specified position in the **TextPickerRangeContent** array.|
-| [void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textpickerrangecontentarray_settextatindex) | Sets the text data at the specified position in the **TextPickerRangeContent** array.|
-| [void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentArray* handle)](#oh_arkui_textpickerrangecontentarray_destroy) | Destroys a **TextPickerRangeContent** array object.|
-| [ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)](#oh_arkui_textcascadepickerrangecontentarray_create) | Destroys a **TextCascadePickerRangeContent** array object.|
-| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_settextatindex) | Sets the text data at the specified position in the **TextCascadePickerRangeContent** array.|
-| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_setchildatindex) | Sets the child data at the specified position in the **TextCascadePickerRangeContent** array.|
-| [void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy (ArkUI_TextCascadePickerRangeContentArray* handle)](#oh_arkui_textcascadepickerrangecontentarray_destroy) | Destroys a **TextCascadePickerRangeContent** array object.|
-| [ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()](#oh_arkui_embeddedcomponentoption_create) | Creates an **EmbeddedComponent** option object.|
-| [void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)](#oh_arkui_embeddedcomponentoption_dispose) | Disposes of an **EmbeddedComponent** option object.|
-| [void OH_ArkUI_EmbeddedComponentOption_SetOnError (ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, const char* name, const char* message))](#oh_arkui_embeddedcomponentoption_setonerror) | Sets the **onError** callback for the **EmbeddedComponent** component. This callback is triggered when an error occurs during the running of the **EmbeddedComponent** component.|
-| [void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated (ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, AbilityBase_Want* want))](#oh_arkui_embeddedcomponentoption_setonterminated) | Sets the **onTerminated** callback for the **EmbeddedComponent** component. This callback is triggered when the **EmbeddedComponent** component exits properly.|
-|[ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()](#oh_arkui_positionedges_create)|Creates a PositionEdges attribute object.|
-|[ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edges)](#oh_arkui_positionedges_copy)|Deeply copies a PositionEdges attribute object.|
-|[void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)](#oh_arkui_positionedges_dispose)|Destroys a PositionEdges attribute object.|
-|[void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_settop)|Sets the up direction of a PositionEdges attribute object.|
-|[int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_gettop)|Obtains the up direction of a PositionEdges attribute object.|
-|[void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setleft)|Sets the left direction of a PositionEdges attribute object.|
-|[int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getleft)|Obtains the left direction of a PositionEdges attribute object.|
-|[void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setbottom)|Sets the down direction of a PositionEdges attribute object.|
-|[int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getbottom)|Obtains the downward direction value of the PositionEdges attribute object.|
-|[void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setright)|Sets the right direction value of the PositionEdges attribute object.|
-|[int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getright)|Obtains the right direction value of the PositionEdges attribute object.|
-|[ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()](#oh_arkui_pixelroundpolicy_create)|Creates a PixelRoundPolicy attribute object.|
-|[void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)](#oh_arkui_pixelroundpolicy_dispose)|Releases the PixelRoundPolicy attribute object.|
-|[void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_settop)|Sets the upper direction value of the PixelRoundPolicy attribute object.|
-|[int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_gettop)|Obtains the top direction value of the PixelRoundPolicy attribute object.|
-|[void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setstart)|Sets the front direction value of the PixelRoundPolicy attribute object.|
-|[int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getstart)|Obtains the front direction value of the PixelRoundPolicy attribute object.|
-|[void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setbottom)|Sets the bottom direction value of the PixelRoundPolicy attribute object.|
-|[int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getbottom)|Obtains the bottom direction value of the PixelRoundPolicy attribute object.|
-|[void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setend)|Sets the tail direction value of the PixelRoundPolicy attribute object.|
-|[int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getend)|Obtains the end direction of the PixelRoundPolicy attribute object.|
-|[ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)](#oh_arkui_contenttransitioneffect_create)|Creates a ContentTransitionEffect attribute object.|
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()](#oh_arkui_layoutconstraint_create) | - | Creates layout constraints.|
+| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_copy) | - | Performs a deep copy of a layout constraint.|
+| [void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_dispose) | - | Disposes of a layout constraint pointer.|
+| [int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxwidth) | - | Obtains the maximum width using a layout constraint, in px.|
+| [int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminwidth) | - | Obtains the minimum width using a layout constraint, in px.|
+| [int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxheight) | - | Obtains the maximum height using a layout constraint, in px.|
+| [int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminheight) | - | Obtains the minimum height using a layout constraint, in px.|
+| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferencewidth) | - | Obtains the width percentage reference using a layout constraint.|
+| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferenceheight) | - | Obtains the height percentage reference using a layout constraint.|
+| [void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxwidth) | - | Sets the maximum width.|
+| [void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setminwidth) | - | Sets the minimum width.|
+| [void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxheight) | - | Sets the maximum height.|
+| [void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setminheight) | - | Sets the minimum height.|
+| [void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setpercentreferencewidth) | - | Sets the width percentage reference.|
+| [void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setpercentreferenceheight) | - | Sets the height percentage reference.|
+| [void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getcanvas) | - | Obtains the pointer to a canvas for drawing, which can be converted into the **OH_Drawing_Canvas** in the **Drawing** module.|
+| [ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getsize) | - | Obtains the size of a drawing area.|
+| [ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()](#oh_arkui_waterflowsectionoption_create) | - | Creates a water flow section configuration.|
+| [void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_dispose) | - | Disposes of the pointer to a water flow section configuration.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* option, int32_t size)](#oh_arkui_waterflowsectionoption_setsize) | - | Sets the array length for a water flow section configuration.|
+| [int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)](#oh_arkui_waterflowsectionoption_getsize) | - | Obtains the array length for a water flow section configuration.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t itemCount)](#oh_arkui_waterflowsectionoption_setitemcount) | - | Sets the number of items in a water flow section.|
+| [int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getitemcount) | - | Obtains the number of items in the water flow section that matches the specified index.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)](#oh_arkui_waterflowsectionoption_setcrosscount) | - | Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow.|
+| [int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcrosscount) | - | Obtains the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float columnGap)](#oh_arkui_waterflowsectionoption_setcolumngap) | - | Sets the gap between columns in the specified water flow section.|
+| [float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcolumngap) | - | Obtains the gap between columns in the water flow section that matches the specified index.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float rowGap)](#oh_arkui_waterflowsectionoption_setrowgap) | - | Sets the gap between rows in the specified water flow section.|
+| [float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getrowgap) | - | Obtains the gap between rows in the water flow section that matches the specified index.|
+| [void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)](#oh_arkui_waterflowsectionoption_setmargin) | - | Sets the margins for the specified water flow section.|
+| [ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getmargin) | - | Obtains the margins of the water flow section that matches the specified index.|
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | Obtains the main axis size of a specified item based on **flowItemIndex** through a water flow section configuration.|
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | Obtains the main axis size of a specified item based on **flowItemIndex** through a water flow section configuration.|
+| [ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)](#oh_arkui_guidelineoption_create) | - | Creates a guideline configuration for this **RelativeContainer** component.|
+| [void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)](#oh_arkui_guidelineoption_dispose) | - | Disposes of a guideline configuration.|
+| [void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char* value, int32_t index)](#oh_arkui_guidelineoption_setid) | - | Sets the ID of a guideline.|
+| [void OH_ArkUI_GuidelineOption_SetDirection(ArkUI_GuidelineOption* guideline, ArkUI_Axis value, int32_t index)](#oh_arkui_guidelineoption_setdirection) | - | Sets the direction of a guideline.|
+| [void OH_ArkUI_GuidelineOption_SetPositionStart(ArkUI_GuidelineOption* guideline, float value, int32_t index)](#oh_arkui_guidelineoption_setpositionstart) | - | Sets the distance between a guideline and the left or top of the container.|
+| [void OH_ArkUI_GuidelineOption_SetPositionEnd(ArkUI_GuidelineOption* guideline, float value, int32_t index)](#oh_arkui_guidelineoption_setpositionend) | - | Sets the distance between a guideline and the right or bottom of the container.|
+| [const char* OH_ArkUI_GuidelineOption_GetId(ArkUI_GuidelineOption* guideline, int32_t index)](#oh_arkui_guidelineoption_getid) | - | Obtains the ID of a guideline.|
+| [ArkUI_Axis OH_ArkUI_GuidelineOption_GetDirection(ArkUI_GuidelineOption* guideline, int32_t index)](#oh_arkui_guidelineoption_getdirection) | - | Obtains the direction of a guideline.|
+| [float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline, int32_t index)](#oh_arkui_guidelineoption_getpositionstart) | - | Obtains the distance between a guideline and the left or top of the container.|
+| [float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, int32_t index)](#oh_arkui_guidelineoption_getpositionend) | - | Obtains the distance between a guideline and the right or bottom of the container.|
+| [ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)](#oh_arkui_barrieroption_create) | - | Creates a barrier configuration for this **RelativeContainer** component.|
+| [void OH_ArkUI_BarrierOption_Dispose(ArkUI_BarrierOption* barrierStyle)](#oh_arkui_barrieroption_dispose) | - | Disposes of a barrier configuration.|
+| [void OH_ArkUI_BarrierOption_SetId(ArkUI_BarrierOption* barrierStyle, const char* value, int32_t index)](#oh_arkui_barrieroption_setid) | - | Sets the ID of a barrier.|
+| [void OH_ArkUI_BarrierOption_SetDirection(ArkUI_BarrierOption* barrierStyle, ArkUI_BarrierDirection value, int32_t index)](#oh_arkui_barrieroption_setdirection) | - | Sets the direction of a barrier.|
+| [void OH_ArkUI_BarrierOption_SetReferencedId(ArkUI_BarrierOption* barrierStyle, const char* value, int32_t index)](#oh_arkui_barrieroption_setreferencedid) | - | Sets the referenced components of a barrier.|
+| [const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int32_t index)](#oh_arkui_barrieroption_getid) | - | Obtains the ID of a barrier.|
+| [ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* barrierStyle, int32_t index)](#oh_arkui_barrieroption_getdirection) | - | Obtains the direction of a barrier.|
+| [const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierStyle, int32_t index , int32_t referencedIndex)](#oh_arkui_barrieroption_getreferencedid) | - | Obtains the referenced components of a barrier.|
+| [int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierStyle, int32_t index)](#oh_arkui_barrieroption_getreferencedidsize) | - | Obtains the number of referenced components of a barrier.|
+| [ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()](#oh_arkui_alignmentruleoption_create) | - | Creates an alignment rule configuration for this **RelativeContainer** component.|
+| [void OH_ArkUI_AlignmentRuleOption_Dispose(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_dispose) | - | Disposes of an alignment rule configuration of this **RelativeContainer** component.|
+| [void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setstart) | - | Sets the left alignment mode of a relative layout.|
+| [void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setend) | - | Sets the right alignment mode of a relative layout.|
+| [void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)](#oh_arkui_alignmentruleoption_setcenterhorizontal) | - | Sets the horizontal center alignment mode of a relative layout.|
+| [void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_settop) | - | Sets the top alignment mode of a relative layout.|
+| [void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_setbottom) | - | Sets the bottom alignment mode of a relative layout.|
+| [void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)](#oh_arkui_alignmentruleoption_setcentervertical) | - | Sets the vertical center alignment mode of a relative layout.|
+| [void OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(ArkUI_AlignmentRuleOption* option, float horizontal)](#oh_arkui_alignmentruleoption_setbiashorizontal) | - | Sets the bias value of the component in the horizontal direction under the anchor constraints.|
+| [void OH_ArkUI_AlignmentRuleOption_SetBiasVertical(ArkUI_AlignmentRuleOption* option, float vertical)](#oh_arkui_alignmentruleoption_setbiasvertical) | - | Sets the bias value of the component in the vertical direction under the anchor constraints.|
+| [const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getstartid) | - | Obtains the ID of the left alignment anchor component.|
+| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getstartalignment) | - | Obtains the left alignment mode.|
+| [const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getendid) | - | Obtains the ID of the right alignment anchor component.|
+| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getendalignment) | - | Obtains the right alignment mode.|
+| [const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteridhorizontal) | - | Obtains the ID of the horizontal center alignment anchor component.|
+| [ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteralignmenthorizontal) | - | Obtains the horizontal center alignment mode.|
+| [const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_gettopid) | - | Obtains the ID of the top alignment anchor component.|
+| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_gettopalignment) | - | Obtains the top alignment mode.|
+| [const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbottomid) | - | Obtains the ID of the bottom alignment anchor component.|
+| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbottomalignment) | - | Obtains the bottom alignment mode.|
+| [const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteridvertical) | - | Obtains the ID of the vertical center alignment anchor component.|
+| [ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getcenteralignmentvertical) | - | Obtains the vertical center alignment mode.|
+| [float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbiashorizontal) | - | Obtains the bias value in the horizontal direction.|
+| [float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* option)](#oh_arkui_alignmentruleoption_getbiasvertical) | - | Obtains the bias value in the vertical direction.|
+| [ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType type)](#oh_arkui_swiperindicator_create) | - | Creates a navigation indicator for the [Swiper](../apis-arkui/arkui-ts/ts-container-swiper.md) component.|
+| [void OH_ArkUI_SwiperIndicator_Dispose(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_dispose) | - | Disposes of the navigation indicator of this **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setstartposition) | - | Sets the distance between the navigation point and the left edge of the **Swiper** component.|
+| [float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getstartposition) | - | Obtains the distance between the navigation point and the left edge of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetTopPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_settopposition) | - | Sets the distance between the navigation point and the top edge of the **Swiper** component.|
+| [float OH_ArkUI_SwiperIndicator_GetTopPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_gettopposition) | - | Obtains the distance between the navigation point and the top edge of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setendposition) | - | Sets the distance between the navigation point and the right edge of the **Swiper** component.|
+| [float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getendposition) | - | Obtains the distance between the navigation point and the right edge of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setbottomposition) | - | Sets the distance between the navigation point and the bottom edge of the **Swiper** component.|
+| [float OH_ArkUI_SwiperIndicator_GetBottomPosition(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getbottomposition) | - | Obtains the distance between the navigation point and the bottom edge of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator, int32_t ignoreSize)](#oh_arkui_swiperindicator_setignoresizeofbottom) | - | Sets whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
+| [int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getignoresizeofbottom) | - | Checks whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
+| [void OH_ArkUI_SwiperIndicator_SetItemWidth(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setitemwidth) | - | Sets the width of a dot-style navigation indicator for the **Swiper** component.|
+| [float OH_ArkUI_SwiperIndicator_GetItemWidth(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getitemwidth) | - | Obtains the width of a dot-style navigation indicator of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetItemHeight(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setitemheight) | - | Sets the height of a dot-style navigation indicator for the **Swiper** component.|
+| [float OH_ArkUI_SwiperIndicator_GetItemHeight(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getitemheight) | - | Obtains the height of a dot-style navigation indicator of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetSelectedItemWidth(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setselecteditemwidth) | - | Sets the width of the selected dot-style navigation indicator for the **Swiper** component.|
+| [float OH_ArkUI_SwiperIndicator_GetSelectedItemWidth(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getselecteditemwidth) | - | Obtains the width of the selected dot-style navigation indicator of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetSelectedItemHeight(ArkUI_SwiperIndicator* indicator, float value)](#oh_arkui_swiperindicator_setselecteditemheight) | - | Sets the height of the selected dot-style navigation indicator for the **Swiper** component.|
+| [float OH_ArkUI_SwiperIndicator_GetSelectedItemHeight(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getselecteditemheight) | - | Obtains the height of the selected dot-style navigation indicator of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetMask(ArkUI_SwiperIndicator* indicator, int32_t mask)](#oh_arkui_swiperindicator_setmask) | - | Sets whether to enable the mask for a dot-style navigation indicator for the **Swiper** component.|
+| [int32_t OH_ArkUI_SwiperIndicator_GetMask(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getmask) | - | Obtains whether the mask is enabled for a dot-style navigation indicator of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetColor(ArkUI_SwiperIndicator* indicator, uint32_t color)](#oh_arkui_swiperindicator_setcolor) | - | Sets the color of a dot-style navigation indicator for the **Swiper** component.|
+| [uint32_t OH_ArkUI_SwiperIndicator_GetColor(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getcolor) | - | Obtains the color of a dot-style navigation indicator of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator, uint32_t selectedColor)](#oh_arkui_swiperindicator_setselectedcolor) | - | Sets the color of the selected dot-style navigation indicator for the **Swiper** component.|
+| [uint32_t OH_ArkUI_SwiperIndicator_GetSelectedColor(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getselectedcolor) | - | Obtains the color of the selected dot-style navigation indicator of the **Swiper** component.|
+| [int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indicator, int32_t maxDisplayCount)](#oh_arkui_swiperindicator_setmaxdisplaycount) | - | Sets the maximum number of dots for the dot-style navigation indicator.|
+| [int32_t OH_ArkUI_SwiperIndicator_GetMaxDisplayCount(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getmaxdisplaycount) | - | Obtains the maximum number of dots for the dot-style navigation indicator.|
+| [ArkUI_SwiperDigitIndicator *OH_ArkUI_SwiperDigitIndicator_Create()](#oh_arkui_swiperdigitindicator_create) | - | Creates a digit-style navigation indicator for the **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_destroy) | - | Disposes of the digit-style navigation indicator of this **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetStartPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_setstartposition) | - | Sets the start position of the digit-style navigation indicator for the **Swiper** component. This determines the distance from the left edge of the **Swiper** component. For right-to-left scripts, this determines the distance from the right edge of the **Swiper** component.|
+| [float OH_ArkUI_SwiperDigitIndicator_GetStartPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getstartposition) | - | Obtains the start position of the digit-style navigation indicator for the **Swiper** component. This indicates the distance from the left edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the right edge of the **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetTopPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_settopposition) | - | Sets the distance from the digit-style navigation indicator to the top edge of the **Swiper** component.|
+| [float OH_ArkUI_SwiperDigitIndicator_GetTopPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_gettopposition) | - | Obtains the distance from the digit-style navigation indicator to the top edge of the **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetEndPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_setendposition) | - | Sets the end position of the digit-style navigation indicator for the **Swiper** component. This determines the distance from the right edge of the **Swiper** component. For right-to-left scripts, this determines the distance from the left edge of the **Swiper** component.|
+| [float OH_ArkUI_SwiperDigitIndicator_GetEndPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getendposition) | - | Obtains the end position of the digit-style navigation indicator for the **Swiper** component. This indicates the distance from the right edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the left edge of the **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator* indicator, float value)](#oh_arkui_swiperdigitindicator_setbottomposition) | - | Sets the distance from the digit-style navigation indicator to the bottom edge of the **Swiper** component.|
+| [float OH_ArkUI_SwiperDigitIndicator_GetBottomPosition(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getbottomposition) | - | Obtains the distance from the digit-style navigation indicator to the bottom edge of the **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetFontColor(ArkUI_SwiperDigitIndicator* indicator, uint32_t color)](#oh_arkui_swiperdigitindicator_setfontcolor) | - | Sets the font color of the digit-style navigation indicator for the **Swiper** component.|
+| [uint32_t OH_ArkUI_SwiperDigitIndicator_GetFontColor(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getfontcolor) | - | Obtains the font color of the digit-style navigation indicator for the **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontColor(ArkUI_SwiperDigitIndicator* indicator, uint32_t selectedColor)](#oh_arkui_swiperdigitindicator_setselectedfontcolor) | - | Sets the font color of the selected digit-style navigation indicator for the **Swiper** component.|
+| [uint32_t OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getselectedfontcolor) | - | Obtains the font color of the selected digit-style navigation indicator of the **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetFontSize(ArkUI_SwiperDigitIndicator* indicator, float size)](#oh_arkui_swiperdigitindicator_setfontsize) | - | Sets the font size of the digit-style navigation indicator for the **Swiper** component.|
+| [float OH_ArkUI_SwiperDigitIndicator_GetFontSize(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getfontsize) | - | Obtains the font size of the digit-style navigation indicator of the **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator, float size)](#oh_arkui_swiperdigitindicator_setselectedfontsize) | - | Sets the font size of the selected digit-style navigation indicator for the **Swiper** component.|
+| [float OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getselectedfontsize) | - | Obtains the font size of the selected digit-style navigation indicator of the **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight fontWeight)](#oh_arkui_swiperdigitindicator_setfontweight) | - | Sets the font weight of the digit-style navigation indicator for the **Swiper** component.|
+| [ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetFontWeight(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getfontweight) | - | Obtains the font weight of the digit-style navigation indicator of the **Swiper** component.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight selectedFontWeight)](#oh_arkui_swiperdigitindicator_setselectedfontweight) | - | Sets the font weight of the selected digit-style navigation indicator for the **Swiper** component.|
+| [ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getselectedfontweight) | - | Obtains the font weight of the selected digit-style navigation indicator of the **Swiper** component.|
+| [ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()](#oh_arkui_swiperarrowstyle_create) | - | Creates a navigation arrow for the **Swiper** component.|
+| [void OH_ArkUI_SwiperArrowStyle_Destroy(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_destroy) | - | Destroys the navigation arrow pointer of the **Swiper** component.|
+| [void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showBackground)](#oh_arkui_swiperarrowstyle_setshowbackground) | - | Sets whether to display the background of the navigation arrow for the **Swiper** component.|
+| [int32_t OH_ArkUI_SwiperArrowStyle_GetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getshowbackground) | - | Checks whether the background of the navigation arrow is displayed for the **Swiper** component.|
+| [void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showSidebarMiddle)](#oh_arkui_swiperarrowstyle_setshowsidebarmiddle) | - | Sets the position of the navigation arrow for the **Swiper** component.|
+| [int32_t OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getshowsidebarmiddle) | - | Obtains the position of the navigation arrow for the **Swiper** component.|
+| [void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle, float backgroundSize)](#oh_arkui_swiperarrowstyle_setbackgroundsize) | - | Sets the background size for the navigation arrow of the **Swiper** component.|
+| [float OH_ArkUI_SwiperArrowStyle_GetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getbackgroundsize) | - | Obtains the background size of the navigation arrow of the **Swiper** component.|
+| [void OH_ArkUI_SwiperArrowStyle_SetBackgroundColor(ArkUI_SwiperArrowStyle* arrowStyle, uint32_t backgroundColor)](#oh_arkui_swiperarrowstyle_setbackgroundcolor) | - | Sets the background color for the navigation arrow of the **Swiper** component.|
+| [uint32_t OH_ArkUI_SwiperArrowStyle_GetBackgroundColor(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getbackgroundcolor) | - | Obtains the background color of the navigation arrow of the **Swiper** component.|
+| [void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, float arrowSize)](#oh_arkui_swiperarrowstyle_setarrowsize) | - | Sets the size for the navigation arrow of the **Swiper** component.|
+| [float OH_ArkUI_SwiperArrowStyle_GetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getarrowsize) | - | Obtains the size of the navigation arrow of the **Swiper** component.|
+| [void OH_ArkUI_SwiperArrowStyle_SetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle, uint32_t arrowColor)](#oh_arkui_swiperarrowstyle_setarrowcolor) | - | Sets the color for the navigation arrow of the **Swiper** component.|
+| [uint32_t OH_ArkUI_SwiperArrowStyle_GetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle)](#oh_arkui_swiperarrowstyle_getarrowcolor) | - | Obtains the color of the navigation arrow of the **Swiper** component.|
+| [void OH_ArkUI_SwiperIndicator_SetSpace(ArkUI_SwiperIndicator* indicator, float space)](#oh_arkui_swiperindicator_setspace) | - | Sets the spacing between navigation points.|
+| [float OH_ArkUI_SwiperIndicator_GetSpace(ArkUI_SwiperIndicator* indicator)](#oh_arkui_swiperindicator_getspace) | - | Obtains the spacing between navigation points.|
+| [void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator, int32_t ignoreSize)](#oh_arkui_swiperdigitindicator_setignoresizeofbottom) | - | Sets whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
+| [int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getignoresizeofbottom) | - | Checks whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the indicator size when positioning the indicator.|
+| [ArkUI_ListItemSwipeActionItem* OH_ArkUI_ListItemSwipeActionItem_Create()](#oh_arkui_listitemswipeactionitem_create) | - | Creates a **ListItemSwipeActionItem** instance.|
+| [void OH_ArkUI_ListItemSwipeActionItem_Dispose(ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionitem_dispose) | - | Disposes of a **ListItemSwipeActionItem** instance.|
+| [void OH_ArkUI_ListItemSwipeActionItem_SetContent(ArkUI_ListItemSwipeActionItem* item, ArkUI_NodeHandle node)](#oh_arkui_listitemswipeactionitem_setcontent) | - | Sets the layout content for a **ListItemSwipeActionItem** instance.|
+| [void OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item, float distance)](#oh_arkui_listitemswipeactionitem_setactionareadistance) | - | Sets the swipe distance threshold for deleting the list item.|
+| [float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionitem_getactionareadistance) | - | Obtains the swipe distance threshold for deleting the list item.|
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonenteractionarea) | - | Sets the callback invoked each time the list item enters the delete area.|
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData (ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonenteractionareawithuserdata) | - | Sets the callback invoked each time the list item enters the delete area. User-defined data will be passed to the callback event.|
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonaction) | - | Sets the callback invoked when the list item is deleted while in the delete area.|
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonactionwithuserdata) | - | Sets the callback invoked when the list item is deleted while in the delete area. User-defined data will be passed to the callback event.|
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea(ArkUI_ListItemSwipeActionItem* item, void (\*callback)())](#oh_arkui_listitemswipeactionitem_setonexitactionarea) | - | Sets the callback invoked each time the list item exits the delete area.|
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData (ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(void* userData))](#oh_arkui_listitemswipeactionitem_setonexitactionareawithuserdata) | - | Sets the callback invoked each time the list item exits the delete area. User-defined data will be passed to the callback event.|
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange (ArkUI_ListItemSwipeActionItem* item,void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState))](#oh_arkui_listitemswipeactionitem_setonstatechange) | - | Sets the callback invoked when the swipe state of the list item changes.|
+| [void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData (ArkUI_ListItemSwipeActionItem* item,void* userData, void (\*callback)(ArkUI_ListItemSwipeActionState swipeActionState, void* userData))](#oh_arkui_listitemswipeactionitem_setonstatechangewithuserdata) | - | Sets the callback invoked when the swipe state of the list item changes. User-defined data will be passed to the callback event.|
+| [ArkUI_ListItemSwipeActionOption* OH_ArkUI_ListItemSwipeActionOption_Create()](#oh_arkui_listitemswipeactionoption_create) | - | Creates a **ListItemSwipeActionOption** instance.|
+| [void OH_ArkUI_ListItemSwipeActionOption_Dispose(ArkUI_ListItemSwipeActionOption* option)](#oh_arkui_listitemswipeactionoption_dispose) | - | Disposes of a **ListItemSwipeActionOption** instance.|
+| [void OH_ArkUI_ListItemSwipeActionOption_SetStart(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionoption_setstart) | - | Sets the layout content for the left edge (for a vertical layout) or top edge (for a horizontal layout) of a **ListItemSwipeActionItem** instance.|
+| [void OH_ArkUI_ListItemSwipeActionOption_SetEnd(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeActionItem* item)](#oh_arkui_listitemswipeactionoption_setend) | - | Sets the layout content for the right edge (for a vertical layout) or bottom edge (for a horizontal layout) of a **ListItemSwipeActionItem** instance.|
+| [void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeEdgeEffect edgeEffect)](#oh_arkui_listitemswipeactionoption_setedgeeffect) | - | Sets the effect used when the scroll boundary is reached.|
+| [int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActionOption* option)](#oh_arkui_listitemswipeactionoption_getedgeeffect) | - | Obtains the effect used when the scroll boundary is reached.|
+| [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeActionOption* option, void (\*callback)(float offset))](#oh_arkui_listitemswipeactionoption_setonoffsetchange) | - | Sets the callback invoked when the scroll offset changes.|
+| [void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData (ArkUI_ListItemSwipeActionOption* option, void* userData, void (\*callback)(float offset, void* userData))](#oh_arkui_listitemswipeactionoption_setonoffsetchangewithuserdata) | - | Sets the callback invoked when the scroll offset changes. User-defined data will be passed to the callback event.|
+| [int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListItemSwipeActionDirection direction)](#oh_arkui_listitemswipeaction_expand) | - |  Expands the swipe action menu for the specified list item.|
+| [int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)](#oh_arkui_listitemswipeaction_collapse) | - |  Collapses the swipe action menu for the specified list item.|
+| [ArkUI_AccessibilityState* OH_ArkUI_AccessibilityState_Create(void)](#oh_arkui_accessibilitystate_create) | - | Creates an accessibility state.|
+| [void OH_ArkUI_AccessibilityState_Dispose(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_dispose) | - | Disposes of the pointer to an accessibility state.|
+| [void OH_ArkUI_AccessibilityState_SetDisabled(ArkUI_AccessibilityState* state, int32_t isDisabled)](#oh_arkui_accessibilitystate_setdisabled) | - | Sets whether an accessibility state is disabled.|
+| [int32_t OH_ArkUI_AccessibilityState_IsDisabled(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_isdisabled) | - | Obtains whether an accessibility state is disabled.|
+| [void OH_ArkUI_AccessibilityState_SetSelected(ArkUI_AccessibilityState* state, int32_t isSelected)](#oh_arkui_accessibilitystate_setselected) | - | Sets whether an accessibility state is selected.|
+| [int32_t OH_ArkUI_AccessibilityState_IsSelected(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_isselected) | - | Obtains whether an accessibility state is selected.|
+| [void OH_ArkUI_AccessibilityState_SetCheckedState(ArkUI_AccessibilityState* state, int32_t checkedState)](#oh_arkui_accessibilitystate_setcheckedstate) | - | Sets the check box state of an accessibility state.|
+| [int32_t OH_ArkUI_AccessibilityState_GetCheckedState(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_getcheckedstate) | - | Obtains the check box state of an accessibility state.|
+| [ArkUI_AccessibilityValue* OH_ArkUI_AccessibilityValue_Create(void)](#oh_arkui_accessibilityvalue_create) | - | Creates an **AccessibilityValue** instance.|
+| [void OH_ArkUI_AccessibilityValue_Dispose(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_dispose) | - | Disposes of the pointer to an **AccessibilityValue** instance.|
+| [void OH_ArkUI_AccessibilityValue_SetMin(ArkUI_AccessibilityValue* value, int32_t min)](#oh_arkui_accessibilityvalue_setmin) | - | Sets the minimum accessibility value.|
+| [int32_t OH_ArkUI_AccessibilityValue_GetMin(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getmin) | - | Obtains the minimum accessibility value.|
+| [void OH_ArkUI_AccessibilityValue_SetMax(ArkUI_AccessibilityValue* value, int32_t max)](#oh_arkui_accessibilityvalue_setmax) | - | Sets the maximum accessibility value.|
+| [int32_t OH_ArkUI_AccessibilityValue_GetMax(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getmax) | - | Obtains the maximum accessibility value.|
+| [void OH_ArkUI_AccessibilityValue_SetCurrent(ArkUI_AccessibilityValue* value, int32_t current)](#oh_arkui_accessibilityvalue_setcurrent) | - | Sets the current accessibility value.|
+| [int32_t OH_ArkUI_AccessibilityValue_GetCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getcurrent) | - | Obtains the current accessibility value.|
+| [void OH_ArkUI_AccessibilityValue_SetRangeMin(ArkUI_AccessibilityValue* value, int32_t rangeMin)](#oh_arkui_accessibilityvalue_setrangemin) | - | Sets the minimum value for accessibility information of the range-based component.|
+| [int32_t OH_ArkUI_AccessibilityValue_GetRangeMin(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangemin) | - | Obtains the minimum value for accessibility information of the range-based component.|
+| [void OH_ArkUI_AccessibilityValue_SetRangeMax(ArkUI_AccessibilityValue* value, int32_t rangeMax)](#oh_arkui_accessibilityvalue_setrangemax) | - | Sets the maximum value for accessibility information of the range-based component.|
+| [int32_t OH_ArkUI_AccessibilityValue_GetRangeMax(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangemax) | - | Obtains the maximum value for accessibility information of the range-based component.|
+| [void OH_ArkUI_AccessibilityValue_SetRangeCurrent(ArkUI_AccessibilityValue* value, int32_t rangeCurrent)](#oh_arkui_accessibilityvalue_setrangecurrent) | - | Sets the current value for accessibility information of the range-based component.|
+| [int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangecurrent) | - | Obtains the current value for accessibility information of the range-based component.|
+| [void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const char* text)](#oh_arkui_accessibilityvalue_settext) | - | Sets the text description of an **AccessibilityValue** instance.|
+| [const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_gettext) | - | Obtains the text description of an **AccessibilityValue** instance.|
+| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)](#oh_arkui_imageanimatorframeinfo_createfromstring) | - | Creates an image frame information object based on an image path, with the image format being SVG, PNG, or JPG.|
+| [ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)](#oh_arkui_imageanimatorframeinfo_createfromdrawabledescriptor) | - | Creates an image frame information object based on a **DrawableDescriptor** object, with the image format being Resource or PixelMap.|
+| [void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_dispose) | - | Disposes of the pointer to an image frame information object.|
+| [void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)](#oh_arkui_imageanimatorframeinfo_setwidth) | - | Sets the image width.|
+| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getwidth) | - | Obtains the image width.|
+| [void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t height)](#oh_arkui_imageanimatorframeinfo_setheight) | - | Sets the image height.|
+| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getheight) | - | Obtains the image height.|
+| [void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t top)](#oh_arkui_imageanimatorframeinfo_settop) | - | Sets the vertical coordinate of an image relative to the upper left corner of the component.|
+| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_gettop) | - | Obtains the vertical coordinate of an image relative to the upper left corner of the component.|
+| [void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t left)](#oh_arkui_imageanimatorframeinfo_setleft) | - | Sets the horizontal coordinate of an image relative to the upper left corner of the component.|
+| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getleft) | - | Obtains the horizontal coordinate of an image relative to the upper left corner of the component.|
+| [void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t duration)](#oh_arkui_imageanimatorframeinfo_setduration) | - | Sets the playback duration of an image.|
+| [int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo)](#oh_arkui_imageanimatorframeinfo_getduration) | - | Obtains the playback duration of an image.|
+| [ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()](#oh_arkui_listchildrenmainsizeoption_create) | - | Creates a **ListChildrenMainSize** instance.|
+| [void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_dispose) | - | Disposes of a **ListChildrenMainSize** instance.|
+| [int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildrenMainSize* option, float defaultMainSize)](#oh_arkui_listchildrenmainsizeoption_setdefaultmainsize) | - | Sets the default size of the list item in the **List** component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.|
+| [float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenMainSize* option)](#oh_arkui_listchildrenmainsizeoption_getdefaultmainsize) | - | Obtains the default size of the list item in the **List** component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.|
+| [void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)](#oh_arkui_listchildrenmainsizeoption_resize) | - | Adjusts the capacity of the children item size array in the **List** component along the main axis.|
+| [int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)](#oh_arkui_listchildrenmainsizeoption_splice) | - | Adjusts the children item size array in the **List** component along the main axis.|
+| [int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSize* option, int32_t index, float mainSize)](#oh_arkui_listchildrenmainsizeoption_updatesize) | - | Updates the size at the specified index in the child item size array of the **List** component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.|
+| [float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize* option, int32_t index)](#oh_arkui_listchildrenmainsizeoption_getmainsize) | - | Obtains the size at the specified index in the child item size array of the **List** component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.|
+| [ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)](#oh_arkui_customspanmeasureinfo_create) | - | Creates measurement information for this custom span.|
+| [void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)](#oh_arkui_customspanmeasureinfo_dispose) | - | Disposes of measurement information of a custom span.|
+| [float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* info)](#oh_arkui_customspanmeasureinfo_getfontsize) | - | Obtains the font size of the parent text node of a custom span.|
+| [ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)](#oh_arkui_customspanmetrics_create) | - | Creates measurement metrics for this custom span.|
+| [void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)](#oh_arkui_customspanmetrics_dispose) | - | Disposes of measurement metrics of this custom span.|
+| [int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, float width)](#oh_arkui_customspanmetrics_setwidth) | - | Sets the width for a custom span.|
+| [int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, float height)](#oh_arkui_customspanmetrics_setheight) | - | Sets the height for a custom span.|
+| [ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)](#oh_arkui_customspandrawinfo_create) | - | Creates drawing information for this custom span.|
+| [void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_dispose) | - | Disposes of drawing information for this custom span.|
+| [float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getxoffset) | - | Obtains the x-axis offset of the custom span relative to the mounted component.|
+| [float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getlinetop) | - | Obtains the top margin of the custom span relative to the mounted component.|
+| [float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getlinebottom) | - | Obtains the bottom margin of the custom span relative to the mounted component.|
+| [float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)](#oh_arkui_customspandrawinfo_getbaseline) | - | Obtains the baseline offset of the custom span relative to the mounted component.|
+| [void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_destroy) | - | Destroys a **CustomProperty** instance.|
+| [const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_getstringvalue) | - | Obtains the value of a custom property.|
+| [const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_getname) | - | Obtains the window name from a **HostWindowInfo** object.|
+| [void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_destroy) | - | Destroys a **HostWindowInfo** object.|
+| [void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_destroy) | - | Destroys an **ActiveChildrenInfo** instance.|
+| [ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)](#oh_arkui_activechildreninfo_getnodebyindex) | - | Obtains the child node at the specified index in the specified **ActiveChildrenInfo** instance.|
+| [int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_getcount) | - | Obtains the number of nodes in the specified **ActiveChildrenInfo** instance.|
+| [ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)](#oh_arkui_progresslinearstyleoption_create) | - | Creates a **ProgressLinearStyleOption** instance.|
+| [void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_destroy) | - | Destroys a **ProgressLinearStyleOption** instance.|
+| [void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)](#oh_arkui_progresslinearstyleoption_setsmootheffectenabled) | - | Sets whether to enable the smooth progress effect.|
+| [void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)](#oh_arkui_progresslinearstyleoption_setscaneffectenabled) | - | Sets whether to enable the scan effect.|
+| [void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyleOption* option, float strokeWidth)](#oh_arkui_progresslinearstyleoption_setstrokewidth) | - | Sets the width of the progress indicator.|
+| [void OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(ArkUI_ProgressLinearStyleOption* option, float strokeRadius)](#oh_arkui_progresslinearstyleoption_setstrokeradius) | - | Sets the corner radius of the progress indicator.|
+| [bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getsmootheffectenabled) | - | Obtains the enabled status of the smooth progress effect.|
+| [bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getscaneffectenabled) | - | Obtains the enabled status of the scan effect.|
+| [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokewidth) | - | Obtains the stroke width of the progress indicator.|
+| [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokeradius) | - | Obtains the corner radius of the progress indicator.|
+| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | - | Creates a snapshot options object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.|
+| [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | - | Destroys a snapshot options object.|
+| [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | - | Sets the scale property in the snapshot options.|
+| [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | - | Creates an instance of the cross-language configuration option.|
+| [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | - | Destroys an instance of the cross-language configuration option.|
+| [void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)](#oh_arkui_crosslanguageoption_setattributesettingstatus) | - | Sets whether cross-language attribute setting is allowed in the configuration option.|
+| [bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_getattributesettingstatus) | - | Checks whether cross-language attribute setting is allowed in the configuration option.|
+| [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | - | Creates an instance of visible area change event parameters.|
+| [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | - | Disposes of an instance of visible area change event parameters.|
+| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)](#oh_arkui_visibleareaeventoptions_setratios) | - | Sets the threshold ratios for visible area changes.|
+| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)](#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) | - | Sets the expected update interval for visible area changes.  |
+| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions *option, bool measureFromViewport)](#oh_arkui_visibleareaeventoptions_setmeasurefromviewport) | - | Sets the visible area calculation mode.|
+| [int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)](#oh_arkui_visibleareaeventoptions_getratios) | - | Obtains the threshold ratios for visible area changes.|
+| [int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) | - | Obtains the expected update interval for visible area changes.|
+| [bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getmeasurefromviewport) | - | Obtains the visible area calculation mode.|
+| [ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(int32_t length)](#oh_arkui_textpickerrangecontentarray_create) | - | Creates a **TextPickerRangeContent** array object.|
+| [void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)](#oh_arkui_textpickerrangecontentarray_seticonatindex) | - | Sets the icon data at the specified position in the **TextPickerRangeContent** array.|
+| [void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textpickerrangecontentarray_settextatindex) | - | Sets the text data at the specified position in the **TextPickerRangeContent** array.|
+| [void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentArray* handle)](#oh_arkui_textpickerrangecontentarray_destroy) | - | Destroys a **TextPickerRangeContent** array object.|
+| [ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)](#oh_arkui_textcascadepickerrangecontentarray_create) | - | Creates a **TextCascadePickerRangeContent** array object.|
+| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_settextatindex) | - | Sets the text data at the specified position in the **TextCascadePickerRangeContent** array.|
+| [void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex (ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)](#oh_arkui_textcascadepickerrangecontentarray_setchildatindex) | - | Sets the child data at the specified position in the **TextCascadePickerRangeContent** array.|
+| [void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy (ArkUI_TextCascadePickerRangeContentArray* handle)](#oh_arkui_textcascadepickerrangecontentarray_destroy) | - | Destroys a **TextCascadePickerRangeContent** array object.|
+| [ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()](#oh_arkui_embeddedcomponentoption_create) | - | Creates an **EmbeddedComponent** option object.|
+| [void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)](#oh_arkui_embeddedcomponentoption_dispose) | - | Disposes of an **EmbeddedComponent** option object.|
+| [void OH_ArkUI_EmbeddedComponentOption_SetOnError (ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, const char* name, const char* message))](#oh_arkui_embeddedcomponentoption_setonerror) | - | Sets the **onError** callback for the **EmbeddedComponent** component. This callback is triggered when an error occurs during the running of the **EmbeddedComponent** component.|
+| [void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated (ArkUI_EmbeddedComponentOption* option, void (\*callback)(int32_t code, AbilityBase_Want* want))](#oh_arkui_embeddedcomponentoption_setonterminated) | - | Sets the **onTerminated** callback for the **EmbeddedComponent** component. This callback is triggered when the **EmbeddedComponent** component exits properly.|
+| [ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()](#oh_arkui_positionedges_create) | - | Creates a **PositionEdges** object.|
+| [ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edges)](#oh_arkui_positionedges_copy) | - | Deeply copies a **PositionEdges** attribute object.|
+| [void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)](#oh_arkui_positionedges_dispose) | - | Disposes of the **PositionEdges** object.|
+| [void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_settop) | - | Sets the value of the **PositionEdges** object in the top direction.|
+| [int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_gettop) | - | Obtains the value of the **PositionEdges** object in the top direction.|
+| [void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setleft) | - | Sets the value of the **PositionEdges** object in the left direction.|
+| [int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getleft) | - | Obtains the value of the **PositionEdges** object in the left direction.|
+| [void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setbottom) | - | Obtains the value of the **PositionEdges** object in the bottom direction.|
+| [int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getbottom) | - | Obtains the value of the **PositionEdges** object in the bottom direction.|
+| [void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setright) | - | Sets the value of the **PositionEdges** object in the right direction.|
+| [int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getright) | - | Obtains the value of the **PositionEdges** object in the right direction.|
+| [ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()](#oh_arkui_pixelroundpolicy_create) | - | Creates a **PixelRoundPolicy** attribute object.|
+| [void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)](#oh_arkui_pixelroundpolicy_dispose) | - | Disposes of the **PixelRoundPolicy** object.|
+| [void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_settop) | - | Sets the top edge pixel rounding policy for the **PixelRoundPolicy** object.|
+| [int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_gettop) | - | Obtains the top edge pixel rounding policy from the **PixelRoundPolicy** object.|
+| [void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setstart) | - | Sets the start edge pixel rounding policy for the **PixelRoundPolicy** object.|
+| [int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getstart) | - | Obtains the start edge pixel rounding policy from the **PixelRoundPolicy** object. |
+| [void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setbottom) | - | Sets the bottom edge pixel rounding policy for the **PixelRoundPolicy** object.|
+| [int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getbottom) | - | Obtains the bottom edge pixel rounding policy from the **PixelRoundPolicy** object.|
+| [void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)](#oh_arkui_pixelroundpolicy_setend) | - | Sets the end edge pixel rounding policy for the **PixelRoundPolicy** object.|
+| [int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)](#oh_arkui_pixelroundpolicy_getend) | - | Obtains the end edge pixel rounding policy from the **PixelRoundPolicy** object.|
+| [ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)](#oh_arkui_contenttransitioneffect_create) | - | Creates a **ContentTransitionEffect** attribute object.|
+| [ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()](#oh_arkui_gridlayoutoptions_create) | - | Creates **Grid** layout options.|
+| [void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)](#oh_arkui_gridlayoutoptions_dispose) | - | Disposes of **Grid** layout options.|
+| [int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)](#oh_arkui_gridlayoutoptions_setirregularindexes) | - | Sets the irregular grid item index array for the grid layout.|
+| [int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)](#oh_arkui_gridlayoutoptions_getirregularindexes) | - | Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback** is not set, the grid item specified in this parameter occupies an entire row of the grid that scrolls vertically or an entire column of the grid that scrolls horizontally.|
+| [void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize(\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetirregularsizebyindexcallback) | - | Registers a callback to obtain the row and column span for the grid item at the specified index.|
+| [void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetrectbyindexcallback) | - | Registers a callback to obtain the starting row, starting column, row span, and column span for the grid item at the specified index.|
+| [ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()](#oh_arkui_textmenuitem_create) | - | Creates a text menu item object.|
+| [void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)](#oh_arkui_textmenuitem_dispose) | - | Releases a text menu item object.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetContent(ArkUI_TextMenuItem* item, const char* content)](#oh_arkui_textmenuitem_setcontent) | - | Sets the title of a text menu item.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetContent(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textmenuitem_getcontent) | - | Obtains the title of a text menu item.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetIcon(ArkUI_TextMenuItem* item, const char* icon)](#oh_arkui_textmenuitem_seticon) | - | Sets the icon path of a text menu item.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetIcon(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textmenuitem_geticon) | - | Obtains the icon path of a text menu item.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetLabelInfo(ArkUI_TextMenuItem* item, const char* labelInfo)](#oh_arkui_textmenuitem_setlabelinfo) | - | Sets the shortcut hint for a text menu item, for example, the shortcut hint for the **Copy** menu item can be set to **Ctrl+C**.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetLabelInfo(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textmenuitem_getlabelinfo) | - | Obtains the shortcut hint for a text menu item, for example, the shortcut hint for the **Copy** menu item is typically **Ctrl+C**.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetId(ArkUI_TextMenuItem* item, int32_t id)](#oh_arkui_textmenuitem_setid) | - | Sets the ID of a text menu item.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetId(const ArkUI_TextMenuItem* item, int32_t* id)](#oh_arkui_textmenuitem_getid) | - | Obtains the ID of a text menu item.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetSize(ArkUI_TextMenuItemArray* items, int32_t* size)](#oh_arkui_textmenuitemarray_getsize) | - | Obtains the size of the text menu item array.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetItem(ArkUI_TextMenuItemArray* items, int32_t index, ArkUI_TextMenuItem** item)](#oh_arkui_textmenuitemarray_getitem) | - | Obtains the text menu item at a specified index from the text menu item array.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Insert(ArkUI_TextMenuItemArray* items, ArkUI_TextMenuItem* item, int32_t index)](#oh_arkui_textmenuitemarray_insert) | - | Inserts a text menu item at a specified index into the text menu item array.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Erase(ArkUI_TextMenuItemArray* items, int32_t index)](#oh_arkui_textmenuitemarray_erase) | - | Deletes the text menu item at a specified index from the text menu item array.|
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Clear(ArkUI_TextMenuItemArray* items)](#oh_arkui_textmenuitemarray_clear) | - | Clears all text menu items in the text menu item array.|
+| [ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()](#oh_arkui_texteditmenuoptions_create) | - | Creates a text menu extension object.|
+| [void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOptions)](#oh_arkui_texteditmenuoptions_dispose) | - | Releases a text menu extension object.|
+| [typedef void (\*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)](#arkui_textcreatemenucallback) | ArkUI_TextCreateMenuCallback | Callback for the text menu creation event. This callback is triggered when a text menu is created, allowing you to set menu data in it.|
+| [typedef void (\*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)](#arkui_textpreparemenucallback) | ArkUI_TextPrepareMenuCallback | Callback for the text menu preparation event. This callback is called when the text selection area changes and before the menu is displayed, allowing you to set menu data in it.|
+| [typedef bool (\*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item,int32_t start, int32_t end, void* userData)](#arkui_textmenuitemclickcallback) | ArkUI_TextMenuItemClickCallback | Callback for the text menu item click event. This callback is called when a menu item is clicked. You can intercept the default processing behavior in this callback.|
+| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextCreateMenuCallback cb)](#oh_arkui_texteditmenuoptions_registeroncreatemenucallback) | - | Registers the callback for creating text menus.|
+| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextPrepareMenuCallback cb)](#oh_arkui_texteditmenuoptions_registeronpreparemenucallback) | - | Registers the callback for preparing text menus.|
+| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextMenuItemClickCallback cb)](#oh_arkui_texteditmenuoptions_registeronmenuitemclickcallback) | - | Registers the callback for text menu item clicks.|
+| [ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create()](#oh_arkui_textselectionmenuoptions_create) | - | Creates a custom text selection menu object.|
+| [void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* selectionMenuOptions)](#oh_arkui_textselectionmenuoptions_dispose) | - | Releases a custom text selection menu object.|
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType textSpanType)](#oh_arkui_textselectionmenuoptions_setspantype) | - | Sets the text recognition type of a custom text selection menu.|
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType* spanType)](#oh_arkui_textselectionmenuoptions_getspantype) | - | Obtains the text recognition type of a custom text selection menu.|
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle node)](#oh_arkui_textselectionmenuoptions_setcontentnode) | - | Sets the content node of a custom text selection menu.|
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle* node)](#oh_arkui_textselectionmenuoptions_getcontentnode) | - | Obtains the content node of a custom text selection menu.|
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType responseType)](#oh_arkui_textselectionmenuoptions_setresponsetype) | - | Sets the response type of a custom text selection menu.|
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType* responseType)](#oh_arkui_textselectionmenuoptions_getresponsetype) | - | Obtains the response type of a custom text selection menu.|
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenushowcallback) | - | Registers the callback for the event of showing a custom text selection menu.|
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenuhidecallback) | - | Registers the callback for the event of hiding a custom text selection menu.|
 
 ## Enum Description
 
 ### ArkUI_Alignment
 
-```
+```c
 enum ArkUI_Alignment
 ```
 
@@ -514,19 +570,19 @@ Enumerates the alignment modes.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_ALIGNMENT_TOP_START = 0 | Top start.|
-| ARKUI_ALIGNMENT_TOP | Top center.|
-| ARKUI_ALIGNMENT_TOP_END | Top end.|
-| ARKUI_ALIGNMENT_START | Vertically centered start.|
-| ARKUI_ALIGNMENT_CENTER | Horizontally and vertically centered.|
-| ARKUI_ALIGNMENT_END | Vertically centered end.|
-| ARKUI_ALIGNMENT_BOTTOM_START | Bottom start.|
-| ARKUI_ALIGNMENT_BOTTOM | Horizontally centered on the bottom.|
-| ARKUI_ALIGNMENT_BOTTOM_END | Bottom end.|
+| ARKUI_ALIGNMENT_TOP_START = 0 | Top start. This is the default value.|
+| ARKUI_ALIGNMENT_TOP = 1 | Top center.|
+| ARKUI_ALIGNMENT_TOP_END = 2 | Top end.|
+| ARKUI_ALIGNMENT_START = 3 | Vertically centered start.|
+| ARKUI_ALIGNMENT_CENTER = 4 | Horizontally and vertically centered.|
+| ARKUI_ALIGNMENT_END = 5 | Vertically centered end.|
+| ARKUI_ALIGNMENT_BOTTOM_START = 6 | Bottom start.|
+| ARKUI_ALIGNMENT_BOTTOM = 7 | Horizontally centered on the bottom.|
+| ARKUI_ALIGNMENT_BOTTOM_END = 8 | Bottom end.|
 
 ### ArkUI_ImageRepeat
 
-```
+```c
 enum ArkUI_ImageRepeat
 ```
 
@@ -540,13 +596,13 @@ Enumerates the image repeat patterns.
 | Value| Description|
 | -- | -- |
 | ARKUI_IMAGE_REPEAT_NONE = 0 | The image is not repeatedly drawn.|
-| ARKUI_IMAGE_REPEAT_X | The image is repeatedly drawn only along the x-axis.|
-| ARKUI_IMAGE_REPEAT_Y | The image is repeatedly drawn only along the y-axis.|
-| ARKUI_IMAGE_REPEAT_XY | The image is repeatedly drawn along both axes.|
+| ARKUI_IMAGE_REPEAT_X = 1 | The image is repeatedly drawn only along the x-axis.|
+| ARKUI_IMAGE_REPEAT_Y = 2 | The image is repeatedly drawn only along the y-axis.|
+| ARKUI_IMAGE_REPEAT_XY = 3 | The image is repeatedly drawn along both axes.|
 
 ### ArkUI_FontStyle
 
-```
+```c
 enum ArkUI_FontStyle
 ```
 
@@ -560,11 +616,11 @@ Enumerates the font styles.
 | Value| Description|
 | -- | -- |
 | ARKUI_FONT_STYLE_NORMAL = 0 | Standard font style.|
-| ARKUI_FONT_STYLE_ITALIC | Italic font style.|
+| ARKUI_FONT_STYLE_ITALIC = 1 | Italic font style.|
 
 ### ArkUI_FontWeight
 
-```
+```c
 enum ArkUI_FontWeight
 ```
 
@@ -578,44 +634,44 @@ Enumerates the font weights.
 | Value| Description|
 | -- | -- |
 | ARKUI_FONT_WEIGHT_W100 = 0 | 100 |
-| ARKUI_FONT_WEIGHT_W200 | 200 |
-| ARKUI_FONT_WEIGHT_W300 | 300 |
-| ARKUI_FONT_WEIGHT_W400 | 400 |
-| ARKUI_FONT_WEIGHT_W500 | 500 |
-| ARKUI_FONT_WEIGHT_W600 | 600 |
-| ARKUI_FONT_WEIGHT_W700 | 700 |
-| ARKUI_FONT_WEIGHT_W800 | 800 |
-| ARKUI_FONT_WEIGHT_W900 | 900 |
-| ARKUI_FONT_WEIGHT_BOLD | The font weight is bold.|
-| ARKUI_FONT_WEIGHT_NORMAL | The font weight is normal.|
-| ARKUI_FONT_WEIGHT_BOLDER | The font weight is bolder.|
-| ARKUI_FONT_WEIGHT_LIGHTER | The font weight is lighter.|
-| ARKUI_FONT_WEIGHT_MEDIUM | The font weight is medium.|
-| ARKUI_FONT_WEIGHT_REGULAR | The font weight is normal.|
+| ARKUI_FONT_WEIGHT_W200 = 1 | 200 |
+| ARKUI_FONT_WEIGHT_W300 = 2 | 300 |
+| ARKUI_FONT_WEIGHT_W400 = 3 | 400 |
+| ARKUI_FONT_WEIGHT_W500 = 4 | 500 |
+| ARKUI_FONT_WEIGHT_W600 = 5 | 600 |
+| ARKUI_FONT_WEIGHT_W700 = 6 | 700 |
+| ARKUI_FONT_WEIGHT_W800 = 7 | 800 |
+| ARKUI_FONT_WEIGHT_W900 = 8 | 900 |
+| ARKUI_FONT_WEIGHT_BOLD = 9 | The font weight is bold.|
+| ARKUI_FONT_WEIGHT_NORMAL = 10 | The font weight is normal.|
+| ARKUI_FONT_WEIGHT_BOLDER = 11 | The font weight is bolder.|
+| ARKUI_FONT_WEIGHT_LIGHTER = 12 | The font weight is lighter.|
+| ARKUI_FONT_WEIGHT_MEDIUM = 13 | The font weight is medium.|
+| ARKUI_FONT_WEIGHT_REGULAR = 14 | The font weight is normal.|
 
 ### ArkUI_TextAlignment
 
-```
+```c
 enum ArkUI_TextAlignment
 ```
 
 **Description**
 
 
-Enumerates the text alignment mode.
+Enumerates text alignment modes.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_TEXT_ALIGNMENT_START = 0 | Aligned with the start.|
-| ARKUI_TEXT_ALIGNMENT_CENTER | Horizontally centered.|
-| ARKUI_TEXT_ALIGNMENT_END | Aligned with the end.|
-| ARKUI_TEXT_ALIGNMENT_JUSTIFY | Aligned with both margins.|
+| ARKUI_TEXT_ALIGNMENT_CENTER = 1 | Horizontally centered.|
+| ARKUI_TEXT_ALIGNMENT_END = 2 | Aligned with the end.|
+| ARKUI_TEXT_ALIGNMENT_JUSTIFY = 3 | Aligned with both margins.|
 
 ### ArkUI_TextVerticalAlignment
 
-```
+```c
 enum ArkUI_TextVerticalAlignment
 ```
 
@@ -629,20 +685,20 @@ Enumerates text vertical alignment styles.
 | Value| Description|
 | -- | -- |
 | ARKUI_TEXT_VERTICAL_ALIGNMENT_BASELINE = 0 | Aligned to the baseline.|
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM | Bottom aligned.|
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER | The list item is centered along|
-| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP | Top aligned.|
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_BOTTOM = 1 | Bottom aligned.|
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_CENTER = 2 | The list item is centered along|
+| ARKUI_TEXT_VERTICAL_ALIGNMENT_TOP = 3 | Top aligned.|
 
 ### ArkUI_TextContentAlign
 
-```
+```c
 enum ArkUI_TextContentAlign
 ```
 
 **Description**
 
 
-Defines the enumerated values of the vertical alignment style of a text content area.
+Enumerates vertical alignment styles in the text content area.
 
 **Since**: 21
 
@@ -654,7 +710,7 @@ Defines the enumerated values of the vertical alignment style of a text content 
 
 ### ArkUI_EnterKeyType
 
-```
+```c
 enum ArkUI_EnterKeyType
 ```
 
@@ -669,22 +725,22 @@ Enumerates the types of the Enter key for a single-line text box.
 | -- | -- |
 | ARKUI_ENTER_KEY_TYPE_GO = 2 | The Enter key is labeled "Go."|
 | ARKUI_ENTER_KEY_TYPE_SEARCH = 3 | The Enter key is labeled "Search."|
-| ARKUI_ENTER_KEY_TYPE_SEND | The Enter key is labeled "Send."|
-| ARKUI_ENTER_KEY_TYPE_NEXT | The Enter key is labeled "Next."|
-| ARKUI_ENTER_KEY_TYPE_DONE | The Enter key is labeled "Done."|
-| ARKUI_ENTER_KEY_TYPE_PREVIOUS | The Enter key is labeled "Previous."|
-| ARKUI_ENTER_KEY_TYPE_NEW_LINE | The Enter key is labeled "Return."|
+| ARKUI_ENTER_KEY_TYPE_SEND = 4 | The Enter key is labeled "Send."|
+| ARKUI_ENTER_KEY_TYPE_NEXT = 5 | The Enter key is labeled "Next."|
+| ARKUI_ENTER_KEY_TYPE_DONE = 6 | The Enter key is labeled "Done."|
+| ARKUI_ENTER_KEY_TYPE_PREVIOUS = 7 | The Enter key is labeled "Previous."|
+| ARKUI_ENTER_KEY_TYPE_NEW_LINE = 8 | The Enter key is labeled "Return."|
 
 ### ArkUI_TextInputType
 
-```
+```c
 enum ArkUI_TextInputType
 ```
 
 **Description**
 
 
-Enumerates the text input types.
+Enumerates the input method type of a single-line text.
 
 **Since**: 12
 
@@ -704,14 +760,14 @@ Enumerates the text input types.
 
 ### ArkUI_TextAreaType
 
-```
+```c
 enum ArkUI_TextAreaType
 ```
 
 **Description**
 
 
-Enumerates the text box types.
+Enumerates the input method types of a multi-line text.
 
 **Since**: 12
 
@@ -725,7 +781,7 @@ Enumerates the text box types.
 
 ### ArkUI_CancelButtonStyle
 
-```
+```c
 enum ArkUI_CancelButtonStyle
 ```
 
@@ -739,12 +795,12 @@ Enumerates the styles of the Cancel button.
 | Value| Description|
 | -- | -- |
 | ARKUI_CANCELBUTTON_STYLE_CONSTANT = 0 | The Cancel button is always displayed.|
-| ARKUI_CANCELBUTTON_STYLE_INVISIBLE | The Cancel button is always hidden.|
-| ARKUI_CANCELBUTTON_STYLE_INPUT | The Cancel button is displayed when there is text input.|
+| ARKUI_CANCELBUTTON_STYLE_INVISIBLE = 1 | The Cancel button is always hidden.|
+| ARKUI_CANCELBUTTON_STYLE_INPUT = 2 | The Cancel button is displayed when there is text input.|
 
 ### ArkUI_XComponentType
 
-```
+```c
 enum ArkUI_XComponentType
 ```
 
@@ -762,7 +818,7 @@ Enumerates the types of the **XComponent** component.
 
 ### ArkUI_ProgressType
 
-```
+```c
 enum ArkUI_ProgressType
 ```
 
@@ -776,14 +832,14 @@ Enumerates the styles of the progress indicator.
 | Value| Description|
 | -- | -- |
 | ARKUI_PROGRESS_TYPE_LINEAR = 0 | Linear type.|
-| ARKUI_PROGRESS_TYPE_RING | Ring style without scale marks.|
-| ARKUI_PROGRESS_TYPE_ECLIPSE | Eclipse style.|
-| ARKUI_PROGRESS_TYPE_SCALE_RING | Ring style with scale marks.|
-| ARKUI_PROGRESS_TYPE_CAPSULE | Capsule style.|
+| ARKUI_PROGRESS_TYPE_RING = 1 | Ring style without scale marks.|
+| ARKUI_PROGRESS_TYPE_ECLIPSE = 2 | Eclipse style.|
+| ARKUI_PROGRESS_TYPE_SCALE_RING = 3 | Ring style with scale marks.|
+| ARKUI_PROGRESS_TYPE_CAPSULE = 4 | Capsule style.|
 
 ### ArkUI_TextDecorationType
 
-```
+```c
 enum ArkUI_TextDecorationType
 ```
 
@@ -797,13 +853,13 @@ Enumerates the text decoration types.
 | Value| Description|
 | -- | -- |
 | ARKUI_TEXT_DECORATION_TYPE_NONE = 0 | No text decoration.|
-| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE | Line under the text.|
-| ARKUI_TEXT_DECORATION_TYPE_OVERLINE | Line over the text.|
-| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH | Line through the text.|
+| ARKUI_TEXT_DECORATION_TYPE_UNDERLINE = 1 | Line under the text.|
+| ARKUI_TEXT_DECORATION_TYPE_OVERLINE = 2 | Line over the text.|
+| ARKUI_TEXT_DECORATION_TYPE_LINE_THROUGH = 3 | Line through the text.|
 
 ### ArkUI_TextDecorationStyle
 
-```
+```c
 enum ArkUI_TextDecorationStyle
 ```
 
@@ -817,14 +873,14 @@ Enumerates the text decoration styles.
 | Value| Description|
 | -- | -- |
 | ARKUI_TEXT_DECORATION_STYLE_SOLID = 0 | Single solid line.|
-| ARKUI_TEXT_DECORATION_STYLE_DOUBLE | Double solid line.|
-| ARKUI_TEXT_DECORATION_STYLE_DOTTED | Dotted line.|
-| ARKUI_TEXT_DECORATION_STYLE_DASHED | Dashed style.|
-| ARKUI_TEXT_DECORATION_STYLE_WAVY | Wavy line.|
+| ARKUI_TEXT_DECORATION_STYLE_DOUBLE = 1 | Double solid line.|
+| ARKUI_TEXT_DECORATION_STYLE_DOTTED = 2 | Dotted line.|
+| ARKUI_TEXT_DECORATION_STYLE_DASHED = 3 | Dashed style.|
+| ARKUI_TEXT_DECORATION_STYLE_WAVY = 4 | Wavy line.|
 
 ### ArkUI_TextCase
 
-```
+```c
 enum ArkUI_TextCase
 ```
 
@@ -838,12 +894,12 @@ Enumerates the text cases.
 | Value| Description|
 | -- | -- |
 | ARKUI_TEXT_CASE_NORMAL = 0 | The original case of the text is retained.|
-| ARKUI_TEXT_CASE_LOWER | All letters in the text are in lowercase.|
-| ARKUI_TEXT_CASE_UPPER | All letters in the text are in uppercase.|
+| ARKUI_TEXT_CASE_LOWER = 1 | All letters in the text are in lowercase.|
+| ARKUI_TEXT_CASE_UPPER = 2 | All letters in the text are in uppercase.|
 
 ### ArkUI_CopyOptions
 
-```
+```c
 enum ArkUI_CopyOptions
 ```
 
@@ -857,13 +913,13 @@ Enumerates the text copy and paste modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_COPY_OPTIONS_NONE = 0 | Copy is not allowed.|
-| ARKUI_COPY_OPTIONS_IN_APP | Intra-application copy is allowed.|
-| ARKUI_COPY_OPTIONS_LOCAL_DEVICE | Intra-device copy is allowed.|
-| ARKUI_COPY_OPTIONS_CROSS_DEVICE | Cross-device copy is allowed.|
+| ARKUI_COPY_OPTIONS_IN_APP = 1 | Intra-application copy is allowed.|
+| ARKUI_COPY_OPTIONS_LOCAL_DEVICE = 2 | Intra-device copy is allowed.|
+| ARKUI_COPY_OPTIONS_CROSS_DEVICE = 3 | Cross-device copy is allowed.|
 
 ### ArkUI_ShadowType
 
-```
+```c
 enum ArkUI_ShadowType
 ```
 
@@ -876,12 +932,12 @@ Enumerates shadow types.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_SHADOW_TYPE_COLOR = 0 | Color.|
-| ARKUI_SHADOW_TYPE_BLUR | Blur.|
+| ARKUI_SHADOW_TYPE_COLOR = 0 | Color shadow.|
+| ARKUI_SHADOW_TYPE_BLUR = 1 | Blur shadow.|
 
 ### ArkUI_DatePickerMode
 
-```
+```c
 enum ArkUI_DatePickerMode
 ```
 
@@ -900,7 +956,7 @@ Enumerates the column display modes of the date picker.
 
 ### ArkUI_TextPickerRangeType
 
-```
+```c
 enum ArkUI_TextPickerRangeType
 ```
 
@@ -914,13 +970,13 @@ Enumerates the types of the text picker.
 | Value| Description|
 | -- | -- |
 | ARKUI_TEXTPICKER_RANGETYPE_SINGLE = 0 | Single-column text picker.|
-| ARKUI_TEXTPICKER_RANGETYPE_MULTI | Multi-column text picker.|
-| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT | Single-column text picker with image resources.|
-| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT | Interconnected multi-column text picker.|
+| ARKUI_TEXTPICKER_RANGETYPE_MULTI = 1 | Multi-column text picker.|
+| ARKUI_TEXTPICKER_RANGETYPE_RANGE_CONTENT = 2 | Single-column text picker with image resources.|
+| ARKUI_TEXTPICKER_RANGETYPE_CASCADE_RANGE_CONTENT = 3 | Interconnected multi-column text picker.|
 
 ### ArkUI_AccessibilityCheckedState
 
-```
+```c
 enum ArkUI_AccessibilityCheckedState
 ```
 
@@ -934,11 +990,11 @@ Enumerates the accessibility check box states.
 | Value| Description|
 | -- | -- |
 | ARKUI_ACCESSIBILITY_UNCHECKED = 0 | The check box is not selected.|
-| ARKUI_ACCESSIBILITY_CHECKED | The check box is selected.|
+| ARKUI_ACCESSIBILITY_CHECKED = 1 | The check box is selected.|
 
 ### ArkUI_AccessibilityActionType
 
-```
+```c
 enum ArkUI_AccessibilityActionType
 ```
 
@@ -959,7 +1015,7 @@ Enumerates the accessibility action types.
 
 ### ArkUI_EdgeEffect
 
-```
+```c
 enum ArkUI_EdgeEffect
 ```
 
@@ -973,31 +1029,31 @@ Enumerates the effects used at the edges of the component when the boundary of t
 | Value| Description|
 | -- | -- |
 | ARKUI_EDGE_EFFECT_SPRING = 0 | Spring effect. When at one of the edges, the component can move beyond the bounds based on the initial speed or through touches, and produces a bounce effect when the user releases their finger.|
-| ARKUI_EDGE_EFFECT_FADE | Fade effect. When at one of the edges, the component produces a fade effect.|
-| ARKUI_EDGE_EFFECT_NONE | No effect when the component is at one of the edges.|
+| ARKUI_EDGE_EFFECT_FADE = 1 | Fade effect. When at one of the edges, the component produces a fade effect.|
+| ARKUI_EDGE_EFFECT_NONE = 2 | No effect when the component is at one of the edges.|
 
 ### ArkUI_BarState
 
-```
+```c
 enum ArkUI_BarState
 ```
 
 **Description**
 
 
-Defines the scrollbar status.
+Enumerates the text control scrollbar states.
 
-Start version: 22
+**Since**: 22
 
 | Value| Description|
 | -- | -- |
 | ARKUI_BAR_STATE_OFF = 0 | Not displayed.|
-| ARKUI_BAR_STATE_AUTO = 1 | Displayed as required.|
+| ARKUI_BAR_STATE_AUTO = 1 | Displayed when needed.|
 | ARKUI_BAR_STATE_ON = 2 | Always displayed.|
 
 ### ArkUI_EffectEdge
 
-```
+```c
 enum ArkUI_EffectEdge
 ```
 
@@ -1015,7 +1071,7 @@ Enumerates the edges for which the effect takes effect when the boundary of the 
 
 ### ArkUI_ScrollDirection
 
-```
+```c
 enum ArkUI_ScrollDirection
 ```
 
@@ -1029,13 +1085,13 @@ Enumerates the scroll directions of scrollable components.
 | Value| Description|
 | -- | -- |
 | ARKUI_SCROLL_DIRECTION_VERTICAL = 0 | Vertical scrolling only.|
-| ARKUI_SCROLL_DIRECTION_HORIZONTAL | Horizontal scrolling only.|
+| ARKUI_SCROLL_DIRECTION_HORIZONTAL = 1 | Horizontal scrolling only.|
 | ARKUI_SCROLL_DIRECTION_NONE = 3 | Scrolling disabled.|
 | ARKUI_SCROLL_DIRECTION_FREE = 4 | Free scrolling in both directions.<br>**Since**: 20|
 
 ### ArkUI_ScrollSnapAlign
 
-```
+```c
 enum ArkUI_ScrollSnapAlign
 ```
 
@@ -1049,13 +1105,13 @@ Enumerates the alignment modes of list items when scrolling ends.
 | Value| Description|
 | -- | -- |
 | ARKUI_SCROLL_SNAP_ALIGN_NONE = 0 | No alignment. This is the default value.|
-| ARKUI_SCROLL_SNAP_ALIGN_START | The first item in the view is aligned at the start of the list.|
-| ARKUI_SCROLL_SNAP_ALIGN_CENTER | The middle items in the view are aligned in the center of the list.|
-| ARKUI_SCROLL_SNAP_ALIGN_END | The last item in the view is aligned at the end of the list.|
+| ARKUI_SCROLL_SNAP_ALIGN_START = 1 | The first item in the view is aligned at the start of the list.|
+| ARKUI_SCROLL_SNAP_ALIGN_CENTER = 2 | The middle items in the view are aligned in the center of the list.|
+| ARKUI_SCROLL_SNAP_ALIGN_END = 3 | The last item in the view is aligned at the end of the list.|
 
 ### ArkUI_ScrollBarDisplayMode
 
-```
+```c
 enum ArkUI_ScrollBarDisplayMode
 ```
 
@@ -1069,30 +1125,30 @@ Enumerates the scrollbar display modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_SCROLL_BAR_DISPLAY_MODE_OFF = 0 | Not displayed.|
-| ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO | Displayed when the screen is touched and hidden after 2s.|
-| ARKUI_SCROLL_BAR_DISPLAY_MODE_ON | Always displayed.|
+| ARKUI_SCROLL_BAR_DISPLAY_MODE_AUTO = 1 | Displayed when the screen is touched and hidden after 2s.|
+| ARKUI_SCROLL_BAR_DISPLAY_MODE_ON = 2 | Always displayed.|
 
 ### ArkUI_Axis
 
-```
+```c
 enum ArkUI_Axis
 ```
 
 **Description**
 
 
-Enumerates the scroll directions.
+Enumerates scroll directions and [List](./arkui-ts/ts-container-list.md) component arrangement directions.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
-| ARKUI_AXIS_VERTICAL = 0 | Only vertical scrolling is supported.|
-| ARKUI_AXIS_HORIZONTAL | Only horizontal scrolling is supported.|
+| ARKUI_AXIS_VERTICAL = 0 | Vertical scrolling only. This is the default value.|
+| ARKUI_AXIS_HORIZONTAL = 1 | Horizontal scrolling only.|
 
 ### ArkUI_StickyStyle
 
-```
+```c
 enum ArkUI_StickyStyle
 ```
 
@@ -1105,14 +1161,14 @@ Enumerates the modes for pinning the header to the top or the footer to the bott
 
 | Value| Description|
 | -- | -- |
-| ARKUI_STICKY_STYLE_NONE = 0 | In the list item group, the header is not pinned to the top, and the footer is not pinned to the bottom.|
+| ARKUI_STICKY_STYLE_NONE = 0 | [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) and [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) of [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) are not pinned to the top and bottom, respectively.|
 | ARKUI_STICKY_STYLE_HEADER = 1 | In the list item group, the header is pinned to the top, and the footer is not pinned to the bottom.|
-| ARKUI_STICKY_STYLE_FOOTER = 2 | In the list item group, the footer is pinned to the bottom, and the header is not pinned to the top.|
-| ARKUI_STICKY_STYLE_BOTH = 3 | In the list item group, the footer is pinned to the bottom, and the header is pinned to the top.|
+| ARKUI_STICKY_STYLE_FOOTER = 2 | In the **ListItemGroup** component, the header is not pinned to the top, and the footer is pinned to the bottom.|
+| ARKUI_STICKY_STYLE_BOTH = 3 | In the **ListItemGroup** component, the header is pinned to the top, and the footer is pinned to the bottom.|
 
 ### ArkUI_ContentClipMode
 
-```
+```c
 enum ArkUI_ContentClipMode
 ```
 
@@ -1126,12 +1182,12 @@ Enumerates the content clipping modes of scrollable components.
 | Value| Description|
 | -- | -- |
 | ARKUI_CONTENT_CLIP_MODE_CONTENT_ONLY = 0 | Clip to the content area only.|
-| ARKUI_CONTENT_CLIP_MODE_BOUNDARY | Clip to the component's boundary area.|
-| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA | Clip to the safe area configured for the component.|
+| ARKUI_CONTENT_CLIP_MODE_BOUNDARY = 1 | Clip to the component's boundary area.|
+| ARKUI_CONTENT_CLIP_MODE_SAFE_AREA = 2 | Clip to the safe area configured for the component.|
 
 ### ArkUI_WaterFlowLayoutMode
 
-```
+```c
 enum ArkUI_WaterFlowLayoutMode
 ```
 
@@ -1145,11 +1201,11 @@ Enumerates the layout modes of the WaterFlow component.
 | Value| Description|
 | -- | -- |
 | ARKUI_WATER_FLOW_LAYOUT_MODE_ALWAYS_TOP_DOWN = 0 | Layout from top to bottom. In scenarios where column switching occurs, the layout starts from the first water flow item to the currently displayed water flow item.|
-| ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW | Sliding window layout. In scenarios where column switching occurs, only the range of water flow items currently on display is re-laid out. As the user scrolls down with their finger, water flow items that enter the display range from above are subsequently laid out.|
+| ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW = 1 | Sliding window layout. In scenarios where column switching occurs, only the range of water flow items currently on display is re-laid out. As the user scrolls down with their finger, water flow items that enter the display range from above are subsequently laid out.|
 
 ### ArkUI_BorderStyle
 
-```
+```c
 enum ArkUI_BorderStyle
 ```
 
@@ -1162,13 +1218,13 @@ Enumerates the border styles.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_BORDER_STYLE_SOLID = 0 | Solid border.|
-| ARKUI_BORDER_STYLE_DASHED | Dashed border.|
-| ARKUI_BORDER_STYLE_DOTTED | Dotted border.|
+| ARKUI_BORDER_STYLE_SOLID = 0 | Solid border. This is the default value.|
+| ARKUI_BORDER_STYLE_DASHED = 1 | Dashed border.|
+| ARKUI_BORDER_STYLE_DOTTED = 2 | Dotted border.|
 
 ### ArkUI_HitTestMode
 
-```
+```c
 enum ArkUI_HitTestMode
 ```
 
@@ -1181,16 +1237,16 @@ Enumerates the hit test modes.
 
 | Value| Description                                                    |
 | -- |--------------------------------------------------------|
-| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | Both the node and its child node respond to the hit test of a touch event, but its sibling node is blocked from the hit test.                                             |
-| ARKUI_HIT_TEST_MODE_BLOCK | The node responds to the hit test of a touch event, but its child node and sibling node are blocked from the hit test.                                             |
-| ARKUI_HIT_TEST_MODE_TRANSPARENT | Both the node and its child node respond to the hit test of a touch event, and its sibling node is also considered during the hit test.                                        |
-| ARKUI_HIT_TEST_MODE_NONE | The node does not respond to the hit test of a touch event.                                            |
-| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY | The node and its child nodes participate in hit tests, while blocking hit tests for all sibling nodes and parent nodes with lower priority.<br>**Since**: 20|
-| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS | The node does not respond to hit tests, and none of its descendants (including children and grandchildren) participate in hit tests either.<br>**Since**: 20                    |
+| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | Both the node and its child node respond to the hit test of a touch event, but its sibling node is blocked from the hit test. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes.                                             |
+| ARKUI_HIT_TEST_MODE_BLOCK = 1 | The node itself responds to the hit test and blocks the hit test of child nodes, sibling nodes, and ancestor nodes.                                             |
+| ARKUI_HIT_TEST_MODE_TRANSPARENT = 2 | Both the node itself and its child nodes respond to the hit test and do not block the hit test of sibling nodes and ancestor nodes.                                        |
+| ARKUI_HIT_TEST_MODE_NONE = 3 | The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes.                                            |
+| ARKUI_HIT_TEST_MODE_BLOCK_HIERARCHY = 4 | The node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.<br>**Since**: 20|
+| ARKUI_HIT_TEST_MODE_BLOCK_DESCENDANTS = 5 | The node itself does not respond to the hit test, and all its descendants (children, grandchildren, and more) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.<br>**Since**: 20                    |
 
 ### ArkUI_ShadowStyle
 
-```
+```c
 enum ArkUI_ShadowStyle
 ```
 
@@ -1203,16 +1259,16 @@ Enumerates shadow styles.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0 | Mini shadow.|
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM | Small shadow.|
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD | Medium shadow.|
-| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG | Large shadow.|
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM | Floating small shadow.|
-| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD | Floating medium shadow.|
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_XS = 0 | Mini shadow.<br>![defaultxs](figures/defaultxs.png) |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_SM = 1 | Small shadow.<br>![defaultsm](figures/defaultsm.png) |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_MD = 2 | Medium shadow.<br>![defaultmd](figures/defaultmd.png) |
+| ARKUI_SHADOW_STYLE_OUTER_DEFAULT_LG = 3 | Large shadow.<br>![defaultlg](figures/defaultlg.png) |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_SM = 4 | Floating small shadow.<br>![floatingsm](figures/floatingsm.png) |
+| ARKUI_SHADOW_STYLE_OUTER_FLOATING_MD = 5 | Floating medium shadow.<br>![floatingmd](figures/floatingmd.png) |
 
 ### ArkUI_AnimationCurve
 
-```
+```c
 enum ArkUI_AnimationCurve
 ```
 
@@ -1226,22 +1282,22 @@ Enumerates the animation curves.
 | Value| Description|
 | -- | -- |
 | ARKUI_CURVE_LINEAR = 0 | The animation speed keeps unchanged.|
-| ARKUI_CURVE_EASE | The animation starts slowly, accelerates, and then slows down towards the end.|
-| ARKUI_CURVE_EASE_IN | The animation starts at a low speed and then picks up speed until the end.|
-| ARKUI_CURVE_EASE_OUT | The animation ends at a low speed.|
-| ARKUI_CURVE_EASE_IN_OUT | The animation starts and ends at a low speed.|
-| ARKUI_CURVE_FAST_OUT_SLOW_IN | The animation uses the standard curve|
-| ARKUI_CURVE_LINEAR_OUT_SLOW_IN | The animation uses the deceleration curve.|
-| ARKUI_CURVE_FAST_OUT_LINEAR_IN | The animation uses the acceleration curve.|
-| ARKUI_CURVE_EXTREME_DECELERATION | The animation uses the extreme deceleration curve.|
-| ARKUI_CURVE_SHARP | The animation uses the sharp curve.|
-| ARKUI_CURVE_RHYTHM | The animation uses the rhythm curve.|
-| ARKUI_CURVE_SMOOTH | The animation uses the smooth curve.|
-| ARKUI_CURVE_FRICTION | The animation uses the friction curve|
+| ARKUI_CURVE_EASE = 1 | The animation starts slowly, accelerates, and then slows down towards the end.|
+| ARKUI_CURVE_EASE_IN = 2 | The animation starts at a low speed and then picks up speed until the end.|
+| ARKUI_CURVE_EASE_OUT = 3 | The animation ends at a low speed.|
+| ARKUI_CURVE_EASE_IN_OUT = 4 | The animation starts and ends at a low speed, providing a smooth and natural transition.|
+| ARKUI_CURVE_FAST_OUT_SLOW_IN = 5 | The animation uses the standard curve|
+| ARKUI_CURVE_LINEAR_OUT_SLOW_IN = 6 | The animation uses the deceleration curve.|
+| ARKUI_CURVE_FAST_OUT_LINEAR_IN = 7 | The animation uses the acceleration curve.|
+| ARKUI_CURVE_EXTREME_DECELERATION = 8 | The animation uses the extreme deceleration curve.|
+| ARKUI_CURVE_SHARP = 9 | The animation uses the sharp curve.|
+| ARKUI_CURVE_RHYTHM = 10 | The animation uses the rhythm curve.|
+| ARKUI_CURVE_SMOOTH = 11 | The animation uses the smooth curve.|
+| ARKUI_CURVE_FRICTION = 12 | The animation uses the friction curve|
 
 ### ArkUI_SwiperArrow
 
-```
+```c
 enum ArkUI_SwiperArrow
 ```
 
@@ -1255,67 +1311,67 @@ Enumerates arrow styles of the navigation indicator.
 | Value| Description|
 | -- | -- |
 | ARKUI_SWIPER_ARROW_HIDE = 0 | The arrow is not displayed for the navigation indicator.|
-| ARKUI_SWIPER_ARROW_SHOW | The arrow is displayed for the navigation indicator.|
-| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER | The arrow is displayed only when the mouse pointer hovers over the navigation indicator.|
+| ARKUI_SWIPER_ARROW_SHOW = 1 | The arrow is displayed for the navigation indicator.|
+| ARKUI_SWIPER_ARROW_SHOW_ON_HOVER = 2 | The arrow is displayed when the mouse pointer hovers over the navigation indicator.|
 
 ### ArkUI_SwiperNestedScrollMode
 
-```
+```c
 enum ArkUI_SwiperNestedScrollMode
 ```
 
 **Description**
 
 
-Enumerates the nested scrolling mode of the **Swiper** component and its parent container.
+Enumerates the nested scrolling modes of the **Swiper** component and its parent container.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_SWIPER_NESTED_SRCOLL_SELF_ONLY = 0 | The scrolling is contained within the **Swiper** component, and no scroll chaining occurs, that is, the parent container does not scroll when the component scrolling reaches the boundary.|
-| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST | The **Swiper** component scrolls first, and when it hits the boundary, the parent container scrolls. When the parent container hits the boundary, its edge effect is displayed. If no edge effect is specified for the parent container, the edge effect of the child component is displayed instead.|
+| ARKUI_SWIPER_NESTED_SRCOLL_SELF_FIRST = 1 | The **Swiper** component scrolls first, and when it hits the boundary, the parent container scrolls. When the parent container hits the boundary, its edge effect is displayed. If no edge effect is specified for the parent container, the edge effect of the child component is displayed instead.|
 
 ### ArkUI_PageFlipMode
 
-```
+```c
 enum ArkUI_PageFlipMode
 ```
 
 **Description**
 
 
-Enumerates the page flipping modes using the mouse wheel for the <b>Swiper</b> component.
+Enumerates the modes for flipping pages using the mouse wheel in the [Swiper](../apis-arkui/arkui-ts/ts-container-swiper.md) component.
 
 **Since**: 15
 
 | Value| Description|
 | -- | -- |
-| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | When the mouse wheel is scrolled continuously, multiple pages are flipped, which is determined by the number of times that mouse events are reported.|
-| ARKUI_PAGE_FLIP_MODE_SINGLE | The system does not respond to other mouse wheel events until the page flipping animation ends.|
+| ARKUI_PAGE_FLIP_MODE_CONTINUOUS = 0 | Continuous page flipping mode where multiple pages are turned continuously when the user scrolls the mouse wheel without interruption.|
+| ARKUI_PAGE_FLIP_MODE_SINGLE = 1 | The system does not respond to other mouse wheel events until the page flipping animation ends.|
 
 ### ArkUI_SwiperAnimationMode
 
-```
+```c
 enum ArkUI_SwiperAnimationMode
 ```
 
 **Description**
 
 
-Enumerates the animation modes for the **Swiper** component when jumping to the page with the specified index.
+Enumerates the animation modes for redirecting to a target page in the **Swiper** component.
 
 **Since**: 15
 
 | Value| Description|
 | -- | -- |
-| ARKUI_SWIPER_NO_ANIMATION = 0 | Jumps to the target page without any animation.|
-| ARKUI_SWIPER_DEFAULT_ANIMATION = 1 | Animates smoothly to the target page.|
-| ARKUI_SWIPER_FAST_ANIMATION = 2 | First jumps to a position near the target page without animation, then animates to the target page.|
+| ARKUI_SWIPER_NO_ANIMATION = 0 | No animation is displayed for redirecting to a target page.|
+| ARKUI_SWIPER_DEFAULT_ANIMATION = 1 | An animation is displayed for redirecting to a target page.|
+| ARKUI_SWIPER_FAST_ANIMATION = 2 | First redirects to a position near the target page without animation, then animates to a target page.|
 
 ### ArkUI_AccessibilityMode
 
-```
+```c
 enum ArkUI_AccessibilityMode
 ```
 
@@ -1329,13 +1385,13 @@ Enumerates the accessibility modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_ACCESSIBILITY_MODE_AUTO = 0 | The mode is automatically set to enabled or disabled based on the component.|
-| ARKUI_ACCESSIBILITY_MODE_ENABLED | The component can be identified by the accessibility service.|
-| ARKUI_ACCESSIBILITY_MODE_DISABLED | The component cannot be identified by the accessibility service.|
-| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS | The component and all its child components cannot be identified by the accessibility service.|
+| ARKUI_ACCESSIBILITY_MODE_ENABLED = 1 | The component can be identified by the accessibility service.|
+| ARKUI_ACCESSIBILITY_MODE_DISABLED = 2 | The component cannot be identified by the accessibility service.|
+| ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS = 3 | The component and all its child components cannot be identified by the accessibility service.|
 
 ### ArkUI_TextCopyOptions
 
-```
+```c
 enum ArkUI_TextCopyOptions
 ```
 
@@ -1349,13 +1405,13 @@ Enumerates copy options, which define whether copy and paste is allowed for text
 | Value| Description|
 | -- | -- |
 | ARKUI_TEXT_COPY_OPTIONS_NONE = 0 | Copy is not allowed.|
-| ARKUI_TEXT_COPY_OPTIONS_IN_APP | Intra-application copy is allowed.|
-| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE | Intra-device copy is allowed.|
-| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE | Cross-device copy is allowed.|
+| ARKUI_TEXT_COPY_OPTIONS_IN_APP = 1 | Intra-application copy is allowed.|
+| ARKUI_TEXT_COPY_OPTIONS_LOCAL_DEVICE = 2 | Intra-device copy is allowed.|
+| ARKUI_TEXT_COPY_OPTIONS_CROSS_DEVICE = 3 | Cross-device copy is allowed.|
 
 ### ArkUI_TextHeightAdaptivePolicy
 
-```
+```c
 enum ArkUI_TextHeightAdaptivePolicy
 ```
 
@@ -1369,12 +1425,12 @@ Defines how the adaptive height is determined for the text.
 | Value| Description|
 | -- | -- |
 | ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MAX_LINES_FIRST = 0 | Prioritize the **maxLines** settings.|
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST | Prioritize the **minFontSize** settings.|
-| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST | Prioritize the layout constraint settings in terms of height.|
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_MIN_FONT_SIZE_FIRST = 1 | Prioritize the **minFontSize** settings.|
+| ARKUI_TEXT_HEIGHT_ADAPTIVE_POLICY_LAYOUT_CONSTRAINT_FIRST = 2 | Prioritize the layout constraint settings in terms of height.|
 
 ### ArkUI_ScrollNestedMode
 
-```
+```c
 enum ArkUI_ScrollNestedMode
 ```
 
@@ -1388,13 +1444,13 @@ Enumerates the nested scrolling modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_SCROLL_NESTED_MODE_SELF_ONLY = 0 | The scrolling is contained within the component, and no scroll chaining occurs, that is, the parent component does not scroll when the component scrolling reaches the boundary.|
-| ARKUI_SCROLL_NESTED_MODE_SELF_FIRST | The component scrolls first, and when it hits the boundary, the parent component scrolls. When the parent component hits the boundary, its edge effect is displayed.|
-| ARKUI_SCROLL_NESTED_MODE_PARENT_FIRST | The parent component scrolls first, and when it hits the boundary, the component scrolls.|
-| ARKUI_SCROLL_NESTED_MODE_PARALLEL | The component and its parent component scroll at the same time. When both the component and its parent component hit the boundary, the edge effect of the component is displayed.|
+| ARKUI_SCROLL_NESTED_MODE_SELF_FIRST = 1 | The component scrolls first, and when it hits the boundary, the parent component scrolls. When the parent component hits the boundary, its edge effect is displayed.|
+| ARKUI_SCROLL_NESTED_MODE_PARENT_FIRST = 2 | The parent component scrolls first, and when it hits the boundary, the component scrolls.|
+| ARKUI_SCROLL_NESTED_MODE_PARALLEL = 3 | The component and its parent component scroll at the same time. When both the component and its parent component hit the boundary, the edge effect of the component is displayed.|
 
 ### ArkUI_ScrollEdge
 
-```
+```c
 enum ArkUI_ScrollEdge
 ```
 
@@ -1408,13 +1464,13 @@ Enumerates the edges to which the component scrolls.
 | Value| Description|
 | -- | -- |
 | ARKUI_SCROLL_EDGE_TOP = 0 | Top edge in the vertical direction.|
-| ARKUI_SCROLL_EDGE_BOTTOM | Bottom edge in the vertical direction.|
-| ARKUI_SCROLL_EDGE_START | Start position in the horizontal direction.|
-| ARKUI_SCROLL_EDGE_END | End position in the horizontal direction.|
+| ARKUI_SCROLL_EDGE_BOTTOM = 1 | Bottom edge in the vertical direction.|
+| ARKUI_SCROLL_EDGE_START = 2 | Start position in the horizontal direction.|
+| ARKUI_SCROLL_EDGE_END = 3 | End position in the horizontal direction.|
 
 ### ArkUI_ScrollAlignment
 
-```
+```c
 enum ArkUI_ScrollAlignment
 ```
 
@@ -1428,13 +1484,13 @@ Defines how the list item to scroll to is aligned with the container.
 | Value| Description|
 | -- | -- |
 | ARKUI_SCROLL_ALIGNMENT_START = 0 | The start edge of the list item is flush with the start edge of the container.|
-| ARKUI_SCROLL_ALIGNMENT_CENTER | The list item is centered along the main axis of the container.|
-| ARKUI_SCROLL_ALIGNMENT_END | The end edge of the list item is flush with the end edge of the container.|
-| ARKUI_SCROLL_ALIGNMENT_AUTO | The list item is automatically aligned. If the item is fully contained within the display area, no adjustment is performed. Otherwise, the item is aligned so that its start or end edge is flush with the start or end edge of the container, whichever requires a shorter scrolling distance.|
+| ARKUI_SCROLL_ALIGNMENT_CENTER = 1 | The list item is centered along the main axis of the container.|
+| ARKUI_SCROLL_ALIGNMENT_END = 2 | The end edge of the list item is flush with the end edge of the container.|
+| ARKUI_SCROLL_ALIGNMENT_AUTO = 3 | The list item is automatically aligned. If the item is fully contained within the display area, no adjustment is performed. Otherwise, the item is aligned so that its start or end edge is flush with the start or end edge of the container, whichever requires a shorter scrolling distance.|
 
 ### ArkUI_ScrollState
 
-```
+```c
 enum ArkUI_ScrollState
 ```
 
@@ -1448,12 +1504,12 @@ Enumerates the scrolling states.
 | Value| Description|
 | -- | -- |
 | ARKUI_SCROLL_STATE_IDLE = 0 | Idle. The container enters this state when an API in the controller is used to scroll the container or when the scrollbar is dragged.|
-| ARKUI_SCROLL_STATE_SCROLL | Scrolling. The container enters this state when the user drags the container to scroll.|
-| ARKUI_SCROLL_STATE_FLING | Inertial scrolling. The container enters this state when inertial scrolling occurs or when the container bounces back after being released from a fling.|
+| ARKUI_SCROLL_STATE_SCROLL = 1 | Scrolling. The container enters this state when the user drags the container to scroll.|
+| ARKUI_SCROLL_STATE_FLING = 2 | Inertial scrolling. The container enters this state when inertial scrolling occurs or when the container bounces back after being released from a fling.|
 
 ### ArkUI_SliderBlockStyle
 
-```
+```c
 enum ArkUI_SliderBlockStyle
 ```
 
@@ -1467,12 +1523,12 @@ Enumerates the styles of the slider in the block direction.
 | Value| Description|
 | -- | -- |
 | ARKUI_SLIDER_BLOCK_STYLE_DEFAULT = 0 | Round slider.|
-| ARKUI_SLIDER_BLOCK_STYLE_IMAGE | Slider with an image background.|
-| ARKUI_SLIDER_BLOCK_STYLE_SHAPE | Slider in a custom shape.|
+| ARKUI_SLIDER_BLOCK_STYLE_IMAGE = 1 | Slider with an image background.|
+| ARKUI_SLIDER_BLOCK_STYLE_SHAPE = 2 | Slider in a custom shape.|
 
 ### ArkUI_SliderDirection
 
-```
+```c
 enum ArkUI_SliderDirection
 ```
 
@@ -1486,11 +1542,11 @@ Enumerates the scroll directions of the slider.
 | Value| Description|
 | -- | -- |
 | ARKUI_SLIDER_DIRECTION_VERTICAL = 0 | Vertical direction.|
-| ARKUI_SLIDER_DIRECTION_HORIZONTAL | Horizontal direction.|
+| ARKUI_SLIDER_DIRECTION_HORIZONTAL = 1 | Horizontal direction.|
 
 ### ArkUI_SliderStyle
 
-```
+```c
 enum ArkUI_SliderStyle
 ```
 
@@ -1504,12 +1560,12 @@ Enumerates the slider styles.
 | Value| Description|
 | -- | -- |
 | ARKUI_SLIDER_STYLE_OUT_SET = 0 | The slider is on the slider rail.|
-| ARKUI_SLIDER_STYLE_IN_SET | The slider is in the slider rail.|
-| ARKUI_SLIDER_STYLE_NONE | There is no thumb.|
+| ARKUI_SLIDER_STYLE_IN_SET = 1 | The slider is in the slider rail.|
+| ARKUI_SLIDER_STYLE_NONE = 2 | There is no thumb.|
 
 ### ArkUI_CheckboxShape
 
-```
+```c
 enum ArkUI_CheckboxShape
 ```
 
@@ -1523,11 +1579,11 @@ Enumerates the shapes of the check box.
 | Value| Description|
 | -- | -- |
 | ArkUI_CHECKBOX_SHAPE_CIRCLE = 0 | Circle.|
-| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE | Rounded square.|
+| ArkUI_CHECKBOX_SHAPE_ROUNDED_SQUARE = 1 | Rounded square.|
 
 ### ArkUI_AnimationPlayMode
 
-```
+```c
 enum ArkUI_AnimationPlayMode
 ```
 
@@ -1541,13 +1597,13 @@ Enumerates the animation playback modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_ANIMATION_PLAY_MODE_NORMAL = 0 | The animation is played forwards.|
-| ARKUI_ANIMATION_PLAY_MODE_REVERSE | The animation is played backwards.|
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE | The animation is played forwards for an odd number of times (1, 3, 5...) and backwards for an even number of times (2, 4, 6...).|
-| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE | The animation is played backwards for an odd number of times (1, 3, 5...) and forwards for an even number of times (2, 4, 6...).|
+| ARKUI_ANIMATION_PLAY_MODE_REVERSE = 1 | The animation is played backwards.|
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE = 2 | The animation plays in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in reverse direction.|
+| ARKUI_ANIMATION_PLAY_MODE_ALTERNATE_REVERSE = 3 | The animation plays in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction.|
 
 ### ArkUI_ImageSize
 
-```
+```c
 enum ArkUI_ImageSize
 ```
 
@@ -1561,12 +1617,12 @@ Defines the image size.
 | Value| Description|
 | -- | -- |
 | ARKUI_IMAGE_SIZE_AUTO = 0 | The original image aspect ratio is retained.|
-| ARKUI_IMAGE_SIZE_COVER | The image is scaled with its aspect ratio retained for both sides to be greater than or equal to the display boundaries.|
-| ARKUI_IMAGE_SIZE_CONTAIN | The image is scaled with its aspect ratio retained for the content to be completely displayed within the display boundaries.|
+| ARKUI_IMAGE_SIZE_COVER = 1 | The image is scaled with its aspect ratio retained for both sides to be greater than or equal to the display boundaries.|
+| ARKUI_IMAGE_SIZE_CONTAIN = 2 | The image is scaled with its aspect ratio retained for the content to be completely displayed within the display boundaries.|
 
 ### ArkUI_AdaptiveColor
 
-```
+```c
 enum ArkUI_AdaptiveColor
 ```
 
@@ -1580,11 +1636,11 @@ Enumerates the adaptive color modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_ADAPTIVE_COLOR_DEFAULT = 0 | Adaptive color mode is not used.|
-| ARKUI_ADAPTIVE_COLOR_AVERAGE | Adaptive color mode is used.|
+| ARKUI_ADAPTIVE_COLOR_AVERAGE = 1 | Adaptive color mode is used.|
 
 ### ArkUI_ColorMode
 
-```
+```c
 enum ArkUI_ColorMode
 ```
 
@@ -1598,12 +1654,12 @@ Enumerates the color modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_COLOR_MODE_SYSTEM = 0 | Following the system color mode.|
-| ARKUI_COLOR_MODE_LIGHT | Light color mode.|
-| ARKUI_COLOR_MODE_DARK | Dark color mode.|
+| ARKUI_COLOR_MODE_LIGHT = 1 | Light color mode.|
+| ARKUI_COLOR_MODE_DARK = 2 | Dark color mode.|
 
 ### ArkUI_SystemColorMode
 
-```
+```c
 enum ArkUI_SystemColorMode
 ```
 
@@ -1617,11 +1673,11 @@ Enumerates the system color modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0 | Light mode.|
-| ARKUI_SYSTEM_COLOR_MODE_DARK | Dark mode.|
+| ARKUI_SYSTEM_COLOR_MODE_DARK = 1 | Dark mode.|
 
 ### ArkUI_BlurStyle
 
-```
+```c
 enum ArkUI_BlurStyle
 ```
 
@@ -1634,23 +1690,23 @@ Enumerates the blur styles.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_BLUR_STYLE_THIN = 0 | Thin material.|
-| ARKUI_BLUR_STYLE_REGULAR | Regular material.|
-| ARKUI_BLUR_STYLE_THICK | Thick material.|
-| ARKUI_BLUR_STYLE_BACKGROUND_THIN | Material that creates the minimum depth of field effect.|
-| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR | Material that creates a medium shallow depth of field effect.|
-| ARKUI_BLUR_STYLE_BACKGROUND_THICK | Material that creates a high shallow depth of field effect.|
-| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK | Material that creates the maximum depth of field effect.|
-| ARKUI_BLUR_STYLE_NONE | No blur.|
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN | Component ultra-thin material.|
-| ARKUI_BLUR_STYLE_COMPONENT_THIN | Component thin material.|
-| ARKUI_BLUR_STYLE_COMPONENT_REGULAR | Component regular material.|
-| ARKUI_BLUR_STYLE_COMPONENT_THICK | Component thick material.|
-| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK | Component ultra-thick material.|
+| ARKUI_BLUR_STYLE_THIN = 0 | Thin material.<br>![thin](figures/thin.png) |
+| ARKUI_BLUR_STYLE_REGULAR = 1 | Regular material.<br>![regular](figures/regular.png) |
+| ARKUI_BLUR_STYLE_THICK = 2 | Thick material.<br>![thick](figures/thick.png) |
+| ARKUI_BLUR_STYLE_BACKGROUND_THIN = 3 | Material that creates the minimum depth of field effect.<br>![backgroundthin](figures/backgroundthin.png) |
+| ARKUI_BLUR_STYLE_BACKGROUND_REGULAR = 4 | Material that creates a medium shallow depth of field effect.<br>![backgroundregular](figures/backgroundregular.png) |
+| ARKUI_BLUR_STYLE_BACKGROUND_THICK = 5 | Material that creates a high shallow depth of field effect.<br>![backgroundthick](figures/backgroundthick.png) |
+| ARKUI_BLUR_STYLE_BACKGROUND_ULTRA_THICK = 6 | Material that creates the maximum depth of field effect.<br>![backgroundultrathick](figures/backgroundultrathick.png) |
+| ARKUI_BLUR_STYLE_NONE = 7 | No blur.<br>![none](figures/none.png) |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THIN = 8 | Component ultra-thin material.<br>![componentultrathin](figures/componentultrathin.png) |
+| ARKUI_BLUR_STYLE_COMPONENT_THIN = 9 | Component thin material.<br>![componentthin](figures/componentthin.png) |
+| ARKUI_BLUR_STYLE_COMPONENT_REGULAR = 10 | Component regular material.<br>![componentregular](figures/componentregular.png) |
+| ARKUI_BLUR_STYLE_COMPONENT_THICK = 11 | Component thick material.<br>![componentthick](figures/componentthick.png) |
+| ARKUI_BLUR_STYLE_COMPONENT_ULTRA_THICK = 12 | Component ultra-thick material.<br>![componentultrathick](figures/componentultrathick.png) |
 
 ### ArkUI_BlurStyleActivePolicy
 
-```
+```c
 enum ArkUI_BlurStyleActivePolicy
 ```
 
@@ -1664,12 +1720,12 @@ Enumerates the activation policies for the background blur effect.
 | Value| Description|
 | -- | -- |
 | ARKUI_BLUR_STYLE_ACTIVE_POLICY_FOLLOWS_WINDOW_ACTIVE_STATE = 0 | The blur effect changes according to the window's focus state; it is inactive when the window is not in focus and active when the window is in focus.|
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE | The blur effect is always active.|
-| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE | The blur effect is always inactive.|
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_ACTIVE = 1 | The blur effect is always active.|
+| ARKUI_BLUR_STYLE_ACTIVE_POLICY_ALWAYS_INACTIVE = 2 | The blur effect is always inactive.|
 
 ### ArkUI_VerticalAlignment
 
-```
+```c
 enum ArkUI_VerticalAlignment
 ```
 
@@ -1683,12 +1739,12 @@ Enumerates the vertical alignment modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_VERTICAL_ALIGNMENT_TOP = 0 | Top aligned.|
-| ARKUI_VERTICAL_ALIGNMENT_CENTER | Aligned with the center. This is the default alignment mode.|
-| ARKUI_VERTICAL_ALIGNMENT_BOTTOM | Bottom aligned.|
+| ARKUI_VERTICAL_ALIGNMENT_CENTER = 1 | Aligned with the center. This is the default alignment mode.|
+| ARKUI_VERTICAL_ALIGNMENT_BOTTOM = 2 | Bottom aligned.|
 
 ### ArkUI_HorizontalAlignment
 
-```
+```c
 enum ArkUI_HorizontalAlignment
 ```
 
@@ -1702,12 +1758,12 @@ Enumerates the alignment mode in the horizontal direction.
 | Value| Description|
 | -- | -- |
 | ARKUI_HORIZONTAL_ALIGNMENT_START = 0 | Aligned with the start edge in the same direction as the language in use.|
-| ARKUI_HORIZONTAL_ALIGNMENT_CENTER | Aligned with the center. This is the default alignment mode.|
-| ARKUI_HORIZONTAL_ALIGNMENT_END | Aligned with the end edge in the same direction as the language in use.|
+| ARKUI_HORIZONTAL_ALIGNMENT_CENTER = 1 | Aligned with the center. This is the default alignment mode.|
+| ARKUI_HORIZONTAL_ALIGNMENT_END = 2 | Aligned with the end edge in the same direction as the language in use.|
 
 ### ArkUI_TextOverflow
 
-```
+```c
 enum ArkUI_TextOverflow
 ```
 
@@ -1721,13 +1777,13 @@ Enumerates the display modes when the text is too long.
 | Value| Description|
 | -- | -- |
 | ARKUI_TEXT_OVERFLOW_NONE = 0 | Extra-long text is not clipped.|
-| ARKUI_TEXT_OVERFLOW_CLIP | Extra-long text is clipped.|
-| ARKUI_TEXT_OVERFLOW_ELLIPSIS | An ellipsis (...) is used to represent text overflow.|
-| ARKUI_TEXT_OVERFLOW_MARQUEE | Text continuously scrolls when text overflow occurs.|
+| ARKUI_TEXT_OVERFLOW_CLIP = 1 | Extra-long text is clipped.|
+| ARKUI_TEXT_OVERFLOW_ELLIPSIS = 2 | An ellipsis (...) is used to represent text overflow.|
+| ARKUI_TEXT_OVERFLOW_MARQUEE = 3 | Text continuously scrolls when text overflow occurs.|
 
 ### ArkUI_ImageSpanAlignment
 
-```
+```c
 enum ArkUI_ImageSpanAlignment
 ```
 
@@ -1748,103 +1804,103 @@ Enumerates the alignment mode of the image with the text.
 
 ### ArkUI_ObjectFit
 
-```
+```c
 enum ArkUI_ObjectFit
 ```
 
 **Description**
 
 
-Enumerates the image filling effects.ImageSpanAlignment
+Enumerates the image filling effects of the [Image](arkui-ts/ts-basic-components-image.md) component.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_OBJECT_FIT_CONTAIN = 0 | The image is scaled with its aspect ratio retained for the content to be completely displayed within the display boundaries.|
-| ARKUI_OBJECT_FIT_COVER | The image is scaled with its aspect ratio retained for both sides to be greater than or equal to the display boundaries.|
-| ARKUI_OBJECT_FIT_AUTO | The image is scaled automatically to fit the display area.|
-| ARKUI_OBJECT_FIT_FILL | The image is scaled to fill the display area, and its aspect ratio is not retained.|
-| ARKUI_OBJECT_FIT_SCALE_DOWN | The image is displayed with its aspect ratio retained, in a size smaller than or equal to the original size.|
-| ARKUI_OBJECT_FIT_NONE | The original size is retained.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START | Not resized, the image is aligned with the start edge of the top of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP | Not resized, the image is horizontally centered at the top of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END | Not resized, the image is aligned with the end edge at the top of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START | Not resized, the image is vertically centered on the start edge of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER | Not resized, the image is horizontally and vertically centered in the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END | Not resized, the image is vertically centered on the end edge of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START | Not resized, the image is aligned with the start edge at the bottom of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM | Not resized, the image is horizontally centered at the bottom of the container.|
-| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END | Not resized, the image is aligned with the end edge at the bottom of the container.|
-| ARKUI_OBJECT_FIT_NONE_MATRIX | Keeps the original image size. This function must be used together with NODE_IMAGE_IMAGE_MATRIX.|
+| ARKUI_OBJECT_FIT_COVER = 1 | The image is scaled with its aspect ratio retained for both sides to be greater than or equal to the display boundaries.|
+| ARKUI_OBJECT_FIT_AUTO = 2 | The image is scaled automatically to fit the display area.|
+| ARKUI_OBJECT_FIT_FILL = 3 | The image is scaled to fill the display area, and its aspect ratio is not retained.|
+| ARKUI_OBJECT_FIT_SCALE_DOWN = 4 | The image is displayed with its aspect ratio retained, in a size smaller than or equal to the original size.|
+| ARKUI_OBJECT_FIT_NONE = 5 | The original size is retained.|
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_START = 6 | Not resized, the image is aligned with the start edge of the top of the container.|
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP = 7 | Not resized, the image is horizontally centered at the top of the container.|
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_TOP_END = 8 | Not resized, the image is aligned with the end edge at the top of the container.|
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_START = 9 | Not resized, the image is vertically centered on the start edge of the container.|
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_CENTER = 10 | Not resized, the image is horizontally and vertically centered in the container.|
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_END = 11 | Not resized, the image is vertically centered on the end edge of the container.|
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_START = 12 | Not resized, the image is aligned with the start edge at the bottom of the container.|
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM = 13 | Not resized, the image is horizontally centered at the bottom of the container.|
+| ARKUI_OBJECT_FIT_NONE_AND_ALIGN_BOTTOM_END = 14 | Not resized, the image is aligned with the end edge at the bottom of the container.|
+| ARKUI_OBJECT_FIT_NONE_MATRIX = 15 | The image maintains its original size. Must be used with [NODE_IMAGE_IMAGE_MATRIX](capi-native-node-h.md#arkui_nodeattributetype).<br>**Since**: 21|
 
 ### ArkUI_ImageInterpolation
 
-```
+```c
 enum ArkUI_ImageInterpolation
 ```
 
 **Description**
 
 
-Enumerates the image interpolation effects.
+Enumerates the image interpolation effects. This attribute mitigates aliasing during image scaling. This attribute is not applicable to SVG images.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_IMAGE_INTERPOLATION_NONE = 0 | No image interpolation.|
-| ARKUI_IMAGE_INTERPOLATION_LOW | Low quality interpolation.|
-| ARKUI_IMAGE_INTERPOLATION_MEDIUM | Medium quality interpolation.|
-| ARKUI_IMAGE_INTERPOLATION_HIGH | High quality interpolation. This mode produces scaled images of the highest possible quality.|
+| ARKUI_IMAGE_INTERPOLATION_LOW = 1 | Low quality interpolation.|
+| ARKUI_IMAGE_INTERPOLATION_MEDIUM = 2 | Medium quality interpolation.|
+| ARKUI_IMAGE_INTERPOLATION_HIGH = 3 | High quality interpolation. This mode produces scaled images of the highest possible quality.|
 
 ### ArkUI_DynamicRangeMode
 
-```
+```c
 enum ArkUI_DynamicRangeMode
 ```
 
 **Description**
 
 
-Defines the dynamic range mode (SDR/HDR) of an image, which is used to control the display range of the image brightness and color.
+Enumerates the dynamic range modes (for example, SDR/HDR) for images, controlling the display range of image brightness and color gamut.
 
 **Since**: 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | High dynamic range (HDR), which indicates the range of the minimum and maximum brightness values displayed in an image. The larger the range, the closer the image brightness is to the real environment. In a very bright environment, overexposure (all white) does not occur. In a very dark environment, the effect of overdarkness (all black) does not occur.|
-| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT | Limited high dynamic range, which contains richer brightness and color than SDR but is not complete HDR. It is generally used in scenarios where SDR compatibility is required.|
-| ARKUI_DYNAMIC_RANGE_MODE_STANDARD | Standard dynamic range (SDR), which indicates a limited brightness range, usually 0–100 nits (brightness unit). The contrast between bright and dark parts is small. Dark parts tend to be blurred into black, and bright parts tend to be overexposed into white.|
+| ARKUI_DYNAMIC_RANGE_MODE_HIGH = 0 | High dynamic range (HDR), representing the range between minimum and maximum brightness values in an image. A wider range makes image brightness closer to real-world conditions, preventing overexposure (all white) in bright environments and loss of detail (all black) in dark environments.|
+| ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT | Constrained high dynamic range, offering richer brightness and color than SDR while maintaining SDR compatibility. Typically used in scenarios requiring SDR backward compatibility.|
+| ARKUI_DYNAMIC_RANGE_MODE_STANDARD | Standard dynamic range (SDR), featuring a limited brightness range (typically 0-100 nits) with reduced contrast between bright and dark areas. Dark areas may lose detail to black, while bright areas may become overexposed to white.|
 
 ### ArkUI_ImageRotateOrientation
 
-```
+```c
 enum ArkUI_ImageRotateOrientation
 ```
 
 **Description**
 
 
-Defines the image rotation direction.
+Enumerates image rotation directions.
 
 **Since**: 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_ORIENTATION_AUTO = 0 | Reads the EXIF metadata carried by an image as the display direction, and supports rotation and mirroring.|
-| ARKUI_ORIENTATION_UP | By default, the image is displayed based on the pixel data without any processing.|
-| ARKUI_ORIENTATION_RIGHT | Rotates the image clockwise by 90 degrees and then displays it.|
-| ARKUI_ORIENTATION_DOWN  | Rotates the image clockwise by 180 degrees and then displays it.|
-| ARKUI_ORIENTATION_LEFT | Rotates the current image by 270 degrees clockwise and displays it.|
-| ARKUI_ORIENTATION_UP_MIRRORED | Flips the current image horizontally and displays it.|
-| ARKUI_ORIENTATION_RIGHT_MIRRORED  | Flips the current image horizontally and rotates it by 90 degrees clockwise and displays it.|
-| ARKUI_ORIENTATION_DOWN_MIRRORED | Flips the current image vertically and displays it.|
-| ARKUI_ORIENTATION_LEFT_MIRRORED | Flips the current image horizontally and rotates it by 270 degrees clockwise and displays it.|
+| ARKUI_ORIENTATION_AUTO = 0 | Use EXIF metadata for display orientation, with support for rotation and mirroring. EXIF is a file format dedicated for photos taken by digital cameras and is used to record attributes and shooting data of the photos.|
+| ARKUI_ORIENTATION_UP | Display original pixel data without transformation.|
+| ARKUI_ORIENTATION_RIGHT | Display the image after rotating it 90 degrees clockwise.|
+| ARKUI_ORIENTATION_DOWN  | Display the image after rotating it 180 degrees clockwise.|
+| ARKUI_ORIENTATION_LEFT | Display the image after rotating it 270 degrees clockwise.|
+| ARKUI_ORIENTATION_UP_MIRRORED | Display the image after flipping it horizontally.|
+| ARKUI_ORIENTATION_RIGHT_MIRRORED  | Display the image after flipping it horizontally and then rotating it 90 degrees clockwise.|
+| ARKUI_ORIENTATION_DOWN_MIRRORED | Display the image after flipping it vertically.|
+| ARKUI_ORIENTATION_LEFT_MIRRORED | Display the image after flipping it horizontally and then rotating it 270 degrees clockwise.|
 
 ### ArkUI_BlendMode
 
-```
+```c
 enum ArkUI_BlendMode
 ```
 
@@ -1858,39 +1914,39 @@ Enumerates the blend modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_BLEND_MODE_NONE = 0 | The top image is superimposed on the bottom image without any blending.|
-| ARKUI_BLEND_MODE_CLEAR | The target pixels covered by the source pixels are erased by being turned to completely transparent.|
-| ARKUI_BLEND_MODE_SRC | r = s: Only the source pixels are displayed.|
-| ARKUI_BLEND_MODE_DST | r = d: Only the target pixels are displayed.|
-| ARKUI_BLEND_MODE_SRC_OVER | r = s + (1 - sa) * d: The source pixels are blended based on opacity and cover the target pixels.|
-| ARKUI_BLEND_MODE_DST_OVER | r = d + (1 - da) * s: The target pixels are blended based on opacity and cover on the source pixels.|
-| ARKUI_BLEND_MODE_SRC_IN | r = s * da: Only the part of the source pixels that overlap with the target pixels is displayed.|
-| ARKUI_BLEND_MODE_DST_IN | r = d * sa: Only the part of the target pixels that overlap with the source pixels is displayed.|
-| ARKUI_BLEND_MODE_SRC_OUT | r = s * (1 - da): Only the part of the source pixels that do not overlap with the target pixels is displayed.|
-| ARKUI_BLEND_MODE_DST_OUT | r = d * (1 - sa): Only the part of the target pixels that do not overlap with the source pixels is displayed.|
-| ARKUI_BLEND_MODE_SRC_ATOP | r = s * da + d * (1 - sa): The part of the source pixels that overlap with the target pixels is displayed and the part of the target pixels that do not overlap with the source pixels are displayed.|
-| ARKUI_BLEND_MODE_DST_ATOP | r = d * sa + s * (1 - da): The part of the target pixels that overlap with the source pixels and the part of the source pixels that do not overlap with the target pixels are displayed.|
-| ARKUI_BLEND_MODE_XOR | r = s * (1 - da) + d * (1 - sa): Only the non-overlapping part between the source pixels and the target pixels is displayed.|
-| ARKUI_BLEND_MODE_PLUS | r = min(s + d, 1): New pixels resulting from adding the source pixels to the target pixels are displayed.|
-| ARKUI_BLEND_MODE_MODULATE | r = s * d: New pixels resulting from multiplying the source pixels with the target pixels are displayed.|
-| ARKUI_BLEND_MODE_SCREEN | r = s + d - s * d: Pixels are blended by adding the source pixels to the target pixels and subtracting the product of their multiplication.|
-| ARKUI_BLEND_MODE_OVERLAY | The MULTIPLY or SCREEN mode is used based on the target pixels.|
-| ARKUI_BLEND_MODE_DARKEN | rc = s + d - max(s * da, d * sa), ra = kSrcOver: When two colors overlap, whichever is darker is used.|
-| ARKUI_BLEND_MODE_LIGHTEN | rc = s + d - min(s * da, d * sa), ra = kSrcOver: Compares the pixels in the source image and destination image, and selects the brighter pixel as the final blending result.|
-| ARKUI_BLEND_MODE_COLOR_DODGE | The colors of the target pixels are lightened to reflect the source pixels.|
-| ARKUI_BLEND_MODE_COLOR_BURN | The colors of the target pixels are darkened to reflect the source pixels.|
-| ARKUI_BLEND_MODE_HARD_LIGHT | The MULTIPLY or SCREEN mode is used, depending on the source pixels.|
-| ARKUI_BLEND_MODE_SOFT_LIGHT | The LIGHTEN or DARKEN mode is used, depending on the source pixels.|
-| ARKUI_BLEND_MODE_DIFFERENCE | rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver: The final pixel is the result of subtracting the darker of the two pixels (source and target) from the lighter one.|
-| ARKUI_BLEND_MODE_EXCLUSION | rc = s + d - two(s * d), ra = kSrcOver: The final pixel is similar to <b>DIFFERENCE</b>, but with less contrast.|
-| ARKUI_BLEND_MODE_MULTIPLY | r = s * (1 - da) + d * (1 - sa) + s * d: The final pixel is the result of multiplying the source pixel by the target pixel.|
-| ARKUI_BLEND_MODE_HUE | The resultant image is created with the luminance and saturation of the source image and the hue of the target image.|
-| ARKUI_BLEND_MODE_SATURATION | The resultant image is created with the luminance and hue of the target image and the saturation of the source image.|
-| ARKUI_BLEND_MODE_COLOR | The resultant image is created with the saturation and hue of the source image and the luminance of the target image.|
-| ARKUI_BLEND_MODE_LUMINOSITY | The resultant image is created with the saturation and hue of the target image and the luminance of the source image.|
+| ARKUI_BLEND_MODE_CLEAR = 1 | The target pixels covered by the source pixels are erased by being turned to completely transparent.|
+| ARKUI_BLEND_MODE_SRC = 2 | r = s: Only the source pixels are displayed.|
+| ARKUI_BLEND_MODE_DST = 3 | r = d: Only the target pixels are displayed.|
+| ARKUI_BLEND_MODE_SRC_OVER = 4 | r = s + (1 - sa) * d: The source pixels are blended based on opacity and cover the target pixels.|
+| ARKUI_BLEND_MODE_DST_OVER = 5 | r = d + (1 - da) * s: The target pixels are blended based on opacity and cover on the source pixels.|
+| ARKUI_BLEND_MODE_SRC_IN = 6 | r = s * da: Only the part of the source pixels that overlap with the target pixels is displayed.|
+| ARKUI_BLEND_MODE_DST_IN = 7 | r = d * sa: Only the part of the target pixels that overlap with the source pixels is displayed.|
+| ARKUI_BLEND_MODE_SRC_OUT = 8 | r = s * (1 - da): Only the part of the source pixels that do not overlap with the target pixels is displayed.|
+| ARKUI_BLEND_MODE_DST_OUT = 9 | r = d * (1 - sa): Only the part of the target pixels that do not overlap with the source pixels is displayed.|
+| ARKUI_BLEND_MODE_SRC_ATOP = 10 | r = s * da + d * (1 - sa): The part of the source pixels that overlap with the target pixels is displayed and the part of the target pixels that do not overlap with the source pixels are displayed.|
+| ARKUI_BLEND_MODE_DST_ATOP = 11 | r = d * sa + s * (1 - da): The part of the target pixels that overlap with the source pixels and the part of the source pixels that do not overlap with the target pixels are displayed.|
+| ARKUI_BLEND_MODE_XOR = 12 | r = s * (1 - da) + d * (1 - sa): Only the non-overlapping part between the source pixels and the target pixels is displayed.|
+| ARKUI_BLEND_MODE_PLUS = 13 | r = min(s + d, 1): New pixels resulting from adding the source pixels to the target pixels are displayed.|
+| ARKUI_BLEND_MODE_MODULATE = 14 | r = s * d: New pixels resulting from multiplying the source pixels with the target pixels are displayed.|
+| ARKUI_BLEND_MODE_SCREEN = 15 | r = s + d - s * d: Pixels are blended by adding the source pixels to the target pixels and subtracting the product of their multiplication.|
+| ARKUI_BLEND_MODE_OVERLAY = 16 | The MULTIPLY or SCREEN mode is used based on the target pixels.|
+| ARKUI_BLEND_MODE_DARKEN = 17 | rc = s + d - max(s * da, d * sa), ra = kSrcOver: When two colors overlap, whichever is darker is used.|
+| ARKUI_BLEND_MODE_LIGHTEN = 18 | rc = s + d - min(s * da, d * sa), ra = kSrcOver: The darker of the pixels (source and target) is used.|
+| ARKUI_BLEND_MODE_COLOR_DODGE = 19 | The colors of the target pixels are lightened to reflect the source pixels.|
+| ARKUI_BLEND_MODE_COLOR_BURN = 20 | The colors of the target pixels are darkened to reflect the source pixels.|
+| ARKUI_BLEND_MODE_HARD_LIGHT = 21 | The MULTIPLY or SCREEN mode is used, depending on the source pixels.|
+| ARKUI_BLEND_MODE_SOFT_LIGHT = 22 | The LIGHTEN or DARKEN mode is used, depending on the source pixels.|
+| ARKUI_BLEND_MODE_DIFFERENCE = 23 | rc = s + d - 2 * (min(s * da, d * sa)), ra = kSrcOver: The final pixel is the result of subtracting the darker of the two pixels (source and target) from the lighter one.|
+| ARKUI_BLEND_MODE_EXCLUSION = 24 | rc = s + d - two(s * d), ra = kSrcOver: The final pixel is similar to <b>DIFFERENCE</b>, but with less contrast.|
+| ARKUI_BLEND_MODE_MULTIPLY = 25 | r = s * (1 - da) + d * (1 - sa) + s * d: The final pixel is the result of multiplying the source pixel by the target pixel.|
+| ARKUI_BLEND_MODE_HUE = 26 | The resultant image is created with the luminance and saturation of the source image and the hue of the target image.|
+| ARKUI_BLEND_MODE_SATURATION = 27 | The resultant image is created with the luminance and hue of the target image and the saturation of the source image.|
+| ARKUI_BLEND_MODE_COLOR = 28 | The resultant image is created with the saturation and hue of the source image and the luminance of the target image.|
+| ARKUI_BLEND_MODE_LUMINOSITY = 29 | The resultant image is created with the saturation and hue of the target image and the luminance of the source image.|
 
 ### ArkUI_Direction
 
-```
+```c
 enum ArkUI_Direction
 ```
 
@@ -1903,13 +1959,13 @@ Enumerates the modes in which components are laid out along the main axis of the
 
 | Value| Description|
 | -- | -- |
-| ARKUI_DIRECTION_LTR = 0 | Components are arranged from left to right.|
-| ARKUI_DIRECTION_RTL | Components are arranged from right to left.|
-| ARKUI_DIRECTION_AUTO = 3 | The default layout direction is used.|
+| ARKUI_DIRECTION_LTR = 0 | Components are arranged from left to right. This is the default value.|
+| ARKUI_DIRECTION_RTL = 1 | Components are arranged from right to left.|
+| ARKUI_DIRECTION_AUTO = 3 | The system layout direction is used.|
 
 ### ArkUI_ItemAlignment
 
-```
+```c
 enum ArkUI_ItemAlignment
 ```
 
@@ -1922,35 +1978,35 @@ Enumerates the modes in which components are laid out along the cross axis of th
 
 | Value| Description|
 | -- | -- |
-| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | The default configuration of the flex container is used.|
-| ARKUI_ITEM_ALIGNMENT_START | The items in the flex container are aligned with the cross-start edge.|
-| ARKUI_ITEM_ALIGNMENT_CENTER | The items in the flex container are centered along the cross axis.|
-| ARKUI_ITEM_ALIGNMENT_END | The items in the flex container are aligned with the cross-end edge.|
-| ARKUI_ITEM_ALIGNMENT_STRETCH | The items in the flex container are stretched and padded along the cross axis.|
-| ARKUI_ITEM_ALIGNMENT_BASELINE | The items in the flex container are aligned in such a manner that their text baselines are aligned along the cross axis.|
+| ARKUI_ITEM_ALIGNMENT_AUTO = 0 | The default configuration in the [Flex](..//apis-arkui/arkui-ts/ts-container-flex.md) container is used. This is the default value.|
+| ARKUI_ITEM_ALIGNMENT_START = 1 | The items in the flex container are aligned with the cross-start edge.|
+| ARKUI_ITEM_ALIGNMENT_CENTER = 2 | The items in the flex container are centered along the cross axis.|
+| ARKUI_ITEM_ALIGNMENT_END = 3 | The items in the flex container are aligned with the cross-end edge.|
+| ARKUI_ITEM_ALIGNMENT_STRETCH = 4 | The items in the flex container are stretched and padded along the cross axis.|
+| ARKUI_ITEM_ALIGNMENT_BASELINE = 5 | The items in the flex container are aligned in such a manner that their text baselines are aligned along the cross axis.|
 
 ### ArkUI_ColorStrategy
 
-```
+```c
 enum ArkUI_ColorStrategy
 ```
 
 **Description**
 
 
-Enumerates the foreground colors.
+Enumerates the foreground and shadow colors.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_COLOR_STRATEGY_INVERT = 0 | The foreground colors are the inverse of the component background colors.|
-| ARKUI_COLOR_STRATEGY_AVERAGE | The shadow colors of the component are the average color obtained from the component background shadow area.|
-| ARKUI_COLOR_STRATEGY_PRIMARY | The shadow colors of the component are the primary color obtained from the component background shadow area.|
+| ARKUI_COLOR_STRATEGY_AVERAGE = 1 | The shadow colors of the component are the average color obtained from the component background shadow area.|
+| ARKUI_COLOR_STRATEGY_PRIMARY = 2 | The shadow colors of the component are the primary color obtained from the component background shadow area.|
 
 ### ArkUI_FlexAlignment
 
-```
+```c
 enum ArkUI_FlexAlignment
 ```
 
@@ -1963,36 +2019,36 @@ Enumerates the vertical alignment modes.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_FLEX_ALIGNMENT_START = 1 | The child components are aligned with the start edge of the main axis.|
+| ARKUI_FLEX_ALIGNMENT_START = 1 | The child components are aligned with the start edge of the main axis. This is the default value.|
 | ARKUI_FLEX_ALIGNMENT_CENTER = 2 | The child components are aligned in the center of the main axis.|
 | ARKUI_FLEX_ALIGNMENT_END = 3 | The child components are aligned with the end edge of the main axis.|
-| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The first component is aligned with the main-start, and the last component is aligned with the main-end.|
+| ARKUI_FLEX_ALIGNMENT_SPACE_BETWEEN = 6 | The child components are evenly distributed along the main axis in [Flex](..//apis-arkui/arkui-ts/ts-container-flex.md). The space between any two adjacent components is the same. The first component is aligned with the main-start, and the last component is aligned with the main-end.|
 | ARKUI_FLEX_ALIGNMENT_SPACE_AROUND = 7 | The child components are evenly distributed along the main axis. The space between any two adjacent components is the same. The space between the first component and main-start, and that between the last component and cross-main are both half the size of the space between two adjacent components.|
 | ARKUI_FLEX_ALIGNMENT_SPACE_EVENLY = 8 | The child components are evenly distributed along the main axis. The space between the first component and main-start, the space between the last component and main-end, and the space between any two adjacent components are the same.|
 
 ### ArkUI_FlexDirection
 
-```
+```c
 enum ArkUI_FlexDirection
 ```
 
 **Description**
 
 
-Enumerates the directions of the main axis in the flex container.
+Enumerates the directions of the main axis in the [Flex](..//apis-arkui/arkui-ts/ts-container-flex.md) container.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
-| ARKUI_FLEX_DIRECTION_ROW = 0 | The child components are arranged in the same direction as the main axis runs along the rows.|
-| ARKUI_FLEX_DIRECTION_COLUMN | The child components are arranged in the same direction as the main axis runs down the columns.|
-| ARKUI_FLEX_DIRECTION_ROW_REVERSE | The child components are arranged opposite to the **ROW** direction.|
-| ARKUI_FLEX_DIRECTION_COLUMN_REVERSE | The child components are arranged opposite to the **COLUMN** direction.|
+| ARKUI_FLEX_DIRECTION_ROW = 0 | The child components are arranged in the same direction as the main axis runs down the rows. This is the default value.|
+| ARKUI_FLEX_DIRECTION_COLUMN = 1 | The child components are arranged in the same direction as the main axis runs down the columns.|
+| ARKUI_FLEX_DIRECTION_ROW_REVERSE = 2 | The child components are arranged opposite to the **ROW** direction.|
+| ARKUI_FLEX_DIRECTION_COLUMN_REVERSE = 3 | The child components are arranged opposite to the **COLUMN** direction.|
 
 ### ArkUI_FlexWrap
 
-```
+```c
 enum ArkUI_FlexWrap
 ```
 
@@ -2005,13 +2061,13 @@ Defines whether the flex container has a single line or multiple lines.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_FLEX_WRAP_NO_WRAP = 0 | The child components in the flex container are arranged in a single line, and they cannot overflow.|
-| ARKUI_FLEX_WRAP_WRAP | The child components in the flex container are arranged in multiple lines, and they may overflow.|
-| ARKUI_FLEX_WRAP_WRAP_REVERSE | The child components in the flex container are reversely arranged in multiple lines, and they may overflow.|
+| ARKUI_FLEX_WRAP_NO_WRAP = 0 | The child components in the flex container are arranged in a single line, and they cannot overflow. This is the default value.|
+| ARKUI_FLEX_WRAP_WRAP = 1 | The child components in the flex container are arranged in multiple lines, and they may overflow.|
+| ARKUI_FLEX_WRAP_WRAP_REVERSE = 2 | The child components in the flex container are reversely arranged in multiple lines, and they may overflow.|
 
 ### ArkUI_Visibility
 
-```
+```c
 enum ArkUI_Visibility
 ```
 
@@ -2025,12 +2081,12 @@ Enumerates the visibility values.
 | Value| Description|
 | -- | -- |
 | ARKUI_VISIBILITY_VISIBLE = 0 | The component is visible.|
-| ARKUI_VISIBILITY_HIDDEN | The component is hidden, and a placeholder is used for it in the layout.|
-| ARKUI_VISIBILITY_NONE | The component is hidden. It is not involved in the layout, and no placeholder is used for it.|
+| ARKUI_VISIBILITY_HIDDEN = 1 | The component is hidden, and a placeholder is used for it in the layout.|
+| ARKUI_VISIBILITY_NONE = 2 | The component is hidden. It is not involved in the layout, and no placeholder is used for it.|
 
 ### ArkUI_CalendarAlignment
 
-```
+```c
 enum ArkUI_CalendarAlignment
 ```
 
@@ -2044,33 +2100,32 @@ Enumerates the alignment modes between the calendar picker and the entry compone
 | Value| Description|
 | -- | -- |
 | ARKUI_CALENDAR_ALIGNMENT_START = 0 | Left aligned.|
-| ARKUI_CALENDAR_ALIGNMENT_CENTER | Center aligned.|
-| ARKUI_CALENDAR_ALIGNMENT_END | Right aligned.|
+| ARKUI_CALENDAR_ALIGNMENT_CENTER = 1 | Center aligned.|
+| ARKUI_CALENDAR_ALIGNMENT_END = 2 | Right aligned.|
 
 ### ArkUI_MaskType
 
-```
+```c
 enum ArkUI_MaskType
 ```
 
 **Description**
 
-
-Enumerates the mask types.
+Enumerates the mask types. A mask is a means to limit the display area of a component. It uses a specific shape to crop the component content so that only the content in the mask area is visible.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_MASK_TYPE_RECTANGLE = 0 | Rectangle.|
-| ARKUI_MASK_TYPE_CIRCLE | Circle.|
-| ARKUI_MASK_TYPE_ELLIPSE | Ellipse.|
-| ARKUI_MASK_TYPE_PATH | Path.|
-| ARKUI_MASK_TYPE_PROGRESS | Progress indicator.|
+| ARKUI_MASK_TYPE_CIRCLE = 1 | Circle.|
+| ARKUI_MASK_TYPE_ELLIPSE = 2 | Ellipse.|
+| ARKUI_MASK_TYPE_PATH = 3 | Path.|
+| ARKUI_MASK_TYPE_PROGRESS = 4 | Progress indicator.|
 
 ### ArkUI_ClipType
 
-```
+```c
 enum ArkUI_ClipType
 ```
 
@@ -2084,13 +2139,13 @@ Enumerates the clipping region types.
 | Value| Description|
 | -- | -- |
 | ARKUI_CLIP_TYPE_RECTANGLE = 0 | Rectangle.|
-| ARKUI_CLIP_TYPE_CIRCLE | Circle.|
-| ARKUI_CLIP_TYPE_ELLIPSE | Ellipse.|
-| ARKUI_CLIP_TYPE_PATH | Path.|
+| ARKUI_CLIP_TYPE_CIRCLE = 1 | Circle.|
+| ARKUI_CLIP_TYPE_ELLIPSE = 2 | Ellipse.|
+| ARKUI_CLIP_TYPE_PATH = 3 | Path.|
 
 ### ArkUI_ShapeType
 
-```
+```c
 enum ArkUI_ShapeType
 ```
 
@@ -2104,18 +2159,17 @@ Enumerates custom shape types.
 | Value| Description|
 | -- | -- |
 | ARKUI_SHAPE_TYPE_RECTANGLE = 0 | Rectangle.|
-| ARKUI_SHAPE_TYPE_CIRCLE | Circle.|
-| ARKUI_SHAPE_TYPE_ELLIPSE | Ellipse.|
-| ARKUI_SHAPE_TYPE_PATH | Path.|
+| ARKUI_SHAPE_TYPE_CIRCLE = 1 | Circle.|
+| ARKUI_SHAPE_TYPE_ELLIPSE = 2 | Ellipse.|
+| ARKUI_SHAPE_TYPE_PATH = 3 | Path.|
 
 ### ArkUI_LinearGradientDirection
 
-```
+```c
 enum ArkUI_LinearGradientDirection
 ```
 
 **Description**
-
 
 Enumerates the gradient directions.
 
@@ -2124,19 +2178,19 @@ Enumerates the gradient directions.
 | Value| Description|
 | -- | -- |
 | ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT = 0 | From right to left.|
-| ARKUI_LINEAR_GRADIENT_DIRECTION_TOP | From bottom to top.|
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT | From left to right.|
-| ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM | From top to bottom.|
-| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP | From lower right to upper left.|
-| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM | From upper right to lower left.|
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP | From lower left to upper right.|
-| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM | From upper left to lower right.|
-| ARKUI_LINEAR_GRADIENT_DIRECTION_NONE | No gradient.|
-| ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM | Custom direction.|
+| ARKUI_LINEAR_GRADIENT_DIRECTION_TOP = 1 | From bottom to top.|
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT = 2 | From left to right.|
+| ARKUI_LINEAR_GRADIENT_DIRECTION_BOTTOM = 3 | From top to bottom.|
+| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_TOP = 4 | From lower right to upper left.|
+| ARKUI_LINEAR_GRADIENT_DIRECTION_LEFT_BOTTOM = 5 | From upper right to lower left.|
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_TOP = 6 | From lower left to upper right.|
+| ARKUI_LINEAR_GRADIENT_DIRECTION_RIGHT_BOTTOM = 7 | From upper left to lower right.|
+| ARKUI_LINEAR_GRADIENT_DIRECTION_NONE = 8 | No gradient.|
+| ARKUI_LINEAR_GRADIENT_DIRECTION_CUSTOM = 9 | Custom direction.|
 
 ### ArkUI_WordBreak
 
-```
+```c
 enum ArkUI_WordBreak
 ```
 
@@ -2156,7 +2210,7 @@ Enumerates the word break rules.
 
 ### ArkUI_EllipsisMode
 
-```
+```c
 enum ArkUI_EllipsisMode
 ```
 
@@ -2175,7 +2229,7 @@ Enumerates the ellipsis positions.
 
 ### ArkUI_ImageRenderMode
 
-```
+```c
 enum ArkUI_ImageRenderMode
 ```
 
@@ -2189,11 +2243,11 @@ Enumerates the image rendering modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_IMAGE_RENDER_MODE_ORIGINAL = 0 | Render image pixels as they are in the original source image.|
-| ARKUI_IMAGE_RENDER_MODE_TEMPLATE | Render image pixels to create a monochrome template image.|
+| ARKUI_IMAGE_RENDER_MODE_TEMPLATE = 1 | Render image pixels to create a monochrome template image.|
 
 ### ArkUI_TransitionEdge
 
-```
+```c
 enum ArkUI_TransitionEdge
 ```
 
@@ -2206,51 +2260,51 @@ Enumerates the slide-in and slide-out positions of the component from the screen
 
 | Value| Description|
 | -- | -- |
-| ARKUI_TRANSITION_EDGE_TOP = 0 | Top edge of the window.|
-| ARKUI_TRANSITION_EDGE_BOTTOM | Bottom edge of the window.|
-| ARKUI_TRANSITION_EDGE_START | Left edge of the window.|
-| ARKUI_TRANSITION_EDGE_END | Right edge of the window.|
+| ARKUI_TRANSITION_EDGE_TOP = 0 | The component slides in and out from the top edge of the screen during transition.|
+| ARKUI_TRANSITION_EDGE_BOTTOM = 1 | The component slides in and out from the bottom edge of the screen during transition.|
+| ARKUI_TRANSITION_EDGE_START = 2 | The component slides in and out from the left edge of the screen during transition.|
+| ARKUI_TRANSITION_EDGE_END = 3 | The component slides in and out from the right edge of the screen during transition.|
 
 ### ArkUI_FinishCallbackType
 
-```
+```c
 enum ArkUI_FinishCallbackType
 ```
 
 **Description**
 
 
-Enumerates the animation **onFinish** callback types.
+Enumerates the callback types for [OH_ArkUI_AnimatorOption_RegisterOnFinishCallback](./capi-native-animate-h.md#oh_arkui_animatoroption_registeronfinishcallback) in an animation.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_FINISH_CALLBACK_REMOVED = 0 | The callback is invoked when the entire animation is removed once it has finished.|
-| ARKUI_FINISH_CALLBACK_LOGICALLY | The callback is invoked when the animation logically enters the falling state, though it may still be in its long tail state.|
+| ARKUI_FINISH_CALLBACK_LOGICALLY = 1 | The callback is invoked when the animation logically enters the falling state, though it may still be in its long tail state. The long tail state refers to the residual change process before the animation is completely stopped. In this state, the value change of the animation is very small and close to the target value.|
 
 ### ArkUI_ListItemAlignment
 
-```
+```c
 enum ArkUI_ListItemAlignment
 ```
 
 **Description**
 
 
-Enumerates the alignment modes of items along the cross axis.
+Enumerates the alignment modes of items along the cross axis. The default value is **ARKUI_LIST_ITEM_ALIGNMENT_START**.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
-| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | The list items are packed toward the start edge of the **List** component along the cross axis.|
-| ARKUI_LIST_ITEM_ALIGNMENT_CENTER | The list items are centered in the **List** component along the cross axis.|
-| ARKUI_LIST_ITEM_ALIGNMENT_END | The list items are packed toward the end edge of the **List** component along the cross axis.|
+| ARKUI_LIST_ITEM_ALIGNMENT_START = 0 | The [list items](./arkui-ts/ts-container-listitem.md#listitem10) are packed toward the start edge of the **List** component along the cross axis.|
+| ARKUI_LIST_ITEM_ALIGNMENT_CENTER = 1 | The list items are centered in the **List** component along the cross axis.|
+| ARKUI_LIST_ITEM_ALIGNMENT_END = 2 | The list items are packed toward the end edge of the **List** component along the cross axis.|
 
 ### ArkUI_BlendApplyType
 
-```
+```c
 enum ArkUI_BlendApplyType
 ```
 
@@ -2264,11 +2318,11 @@ Defines how the specified blend mode is applied.
 | Value| Description|
 | -- | -- |
 | BLEND_APPLY_TYPE_FAST = 0 | The content of the view is blended in sequence on the target image.|
-| BLEND_APPLY_TYPE_OFFSCREEN | The content of the component and its child components are drawn on the offscreen canvas, and then blended with the existing content on the canvas. |
+| BLEND_APPLY_TYPE_OFFSCREEN = 1 | The content of the component and its child components are drawn on the offscreen canvas, and then blended with the existing content on the canvas. |
 
 ### ArkUI_LengthMetricUnit
 
-```
+```c
 enum ArkUI_LengthMetricUnit
 ```
 
@@ -2283,12 +2337,12 @@ Enumerates the component units.
 | -- | -- |
 | ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | Default, which is fp for fonts and vp for non-fonts.|
 | ARKUI_LENGTH_METRIC_UNIT_PX = 0 | px.|
-| ARKUI_LENGTH_METRIC_UNIT_VP | vp.|
-| ARKUI_LENGTH_METRIC_UNIT_FP | fp.|
+| ARKUI_LENGTH_METRIC_UNIT_VP = 1 | vp.|
+| ARKUI_LENGTH_METRIC_UNIT_FP = 2 | fp.|
 
 ### ArkUI_TextInputContentType
 
-```
+```c
 enum ArkUI_TextInputContentType
 ```
 
@@ -2337,7 +2391,7 @@ Enumerates the autofill types.
 
 ### ArkUI_BarrierDirection
 
-```
+```c
 enum ArkUI_BarrierDirection
 ```
 
@@ -2350,14 +2404,14 @@ Enumerates the barrier directions.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_BARRIER_DIRECTION_START = 0 | The barrier is on the left side of all the referenced components specified by referencedId.|
-| ARKUI_BARRIER_DIRECTION_END | The barrier is on the right side of all the referenced components specified by referencedId.|
-| ARKUI_BARRIER_DIRECTION_TOP | The barrier is at the top of all the referenced components specified by referencedId.|
-| ARKUI_BARRIER_DIRECTION_BOTTOM | The barrier is at the bottom of all the referenced components specified by referencedId.|
+| ARKUI_BARRIER_DIRECTION_START = 0 | The barrier is on the left side of all the referenced components specified by [referencedId](..//apis-arkui/arkui-ts/ts-container-relativecontainer.md#barrierstyle12). This is the default value.|
+| ARKUI_BARRIER_DIRECTION_END = 1 | The barrier is on the right side of all the referenced components specified by referencedId.|
+| ARKUI_BARRIER_DIRECTION_TOP = 2 | The barrier is at the top of all the referenced components specified by referencedId.|
+| ARKUI_BARRIER_DIRECTION_BOTTOM = 3 | The barrier is at the bottom of all the referenced components specified by referencedId.|
 
 ### ArkUI_RelativeLayoutChainStyle
 
-```
+```c
 enum ArkUI_RelativeLayoutChainStyle
 ```
 
@@ -2370,13 +2424,13 @@ Enumerates the chain styles.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0 | Child components are evenly distributed among constraint anchors.|
-| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE | All child components except the first and last ones are evenly distributed among constraint anchors.|
-| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED | There is no gap between child components in the chain.|
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD = 0 | Child components are evenly distributed among constraint anchors. This is the default value.|
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_SPREAD_INSIDE = 1 | All child components except the first and last ones are evenly distributed among constraint anchors.|
+| ARKUI_RELATIVE_LAYOUT_CHAIN_STYLE_PACKED = 2 | There is no gap between child components in the chain.|
 
 ### ArkUI_TextInputStyle
 
-```
+```c
 enum ArkUI_TextInputStyle
 ```
 
@@ -2394,7 +2448,7 @@ Enumerates the text input styles.
 
 ### ArkUI_KeyboardAppearance
 
-```
+```c
 enum ArkUI_KeyboardAppearance
 ```
 
@@ -2414,7 +2468,7 @@ Enumerates the appearance modes of the keyboard when the text box is focused.
 
 ### ArkUI_TextDataDetectorType
 
-```
+```c
 enum ArkUI_TextDataDetectorType
 ```
 
@@ -2434,7 +2488,7 @@ Enumerates the entity types of text recognition.
 
 ### ArkUI_ButtonType
 
-```
+```c
 enum ArkUI_ButtonType
 ```
 
@@ -2448,13 +2502,13 @@ Enumerates the button types.
 | Value| Description                     |
 | -- |-------------------------|
 | ARKUI_BUTTON_TYPE_NORMAL = 0 | Normal button (without rounded corners by default).           |
-| ARKUI_BUTTON_TYPE_CAPSULE | Capsule-type button (the round corner is half of the height by default).      |
-| ARKUI_BUTTON_TYPE_CIRCLE | Circle button.                  |
+| ARKUI_BUTTON_TYPE_CAPSULE = 1 | Capsule-type button (the round corner is half of the height by default).      |
+| ARKUI_BUTTON_TYPE_CIRCLE = 2 | Circle button.                  |
 | ARKUI_BUTTON_ROUNDED_RECTANGLE = 8 | Rounded rectangle button<br>**Since**: 19|
 
 ### ArkUI_RenderFit
 
-```
+```c
 enum ArkUI_RenderFit
 ```
 
@@ -2468,25 +2522,25 @@ Enumerates the sizing and positioning behaviors of animated content in its final
 | Value| Description|
 | -- | -- |
 | ARKUI_RENDER_FIT_CENTER = 0 | The component's content stays at the final size and always aligned with the center of the component.|
-| ARKUI_RENDER_FIT_TOP | The component's content stays at the final size and always aligned with the top center of the component.|
-| ARKUI_RENDER_FIT_BOTTOM | The component's content stays at the final size and always aligned with the bottom center of the component.|
-| ARKUI_RENDER_FIT_LEFT | The component's content stays at the final size and always aligned with the left of the component.|
-| ARKUI_RENDER_FIT_RIGHT | The component's content stays at the final size and always aligned with the right of the component.|
-| ARKUI_RENDER_FIT_TOP_LEFT | The component's content stays at the final size and always aligned with the upper left corner of the component.|
-| ARKUI_RENDER_FIT_TOP_RIGHT | The component's content stays at the final size and always aligned with the upper right corner of the component.|
-| ARKUI_RENDER_FIT_BOTTOM_LEFT | The component's content stays at the final size and always aligned with the lower left corner of the component.|
-| ARKUI_RENDER_FIT_BOTTOM_RIGHT | The component's content stays at the final size and always aligned with the lower right corner of the component.|
-| ARKUI_RENDER_FIT_RESIZE_FILL | The component's content is always resized to fill the component's content box, without considering its aspect ratio in the final state.|
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN | While maintaining its aspect ratio in the final state, the component's content is scaled to fit within the component's content box. It is always aligned with the center of the component.|
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT | While maintaining its aspect ratio in the final state, the component's content is scaled to fit within the component's content box. When there is remaining space in the width direction of the component, the content is left-aligned with the component. When there is remaining space in the height direction of the component, the content is top-aligned with the component.|
-| ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT | While maintaining its aspect ratio in the final state, the component's content is scaled to fit within the component's content box. When there is remaining space in the width direction of the component, the content is right-aligned with the component. When there is remaining space in the height direction of the component, the content is bottom-aligned with the component.|
-| ARKUI_RENDER_FIT_RESIZE_COVER | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. It is always aligned with the center of the component, so that its middle part is displayed.|
-| ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. When there is remaining space in the width direction, the content is left-aligned with the component, so that its left part is displayed. When there is remaining space in the height direction, the content is top-aligned with the component, so that its top part is displayed.|
-| ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. When there is remaining space in the width direction, the content is right-aligned with the component, so that its right part is displayed. When there is remaining space in the height direction, the content is bottom-aligned with the component, so that its bottom part is displayed.|
+| ARKUI_RENDER_FIT_TOP = 1 | The component's content stays at the final size and always aligned with the top center of the component.|
+| ARKUI_RENDER_FIT_BOTTOM = 2 | The component's content stays at the final size and always aligned with the bottom center of the component.|
+| ARKUI_RENDER_FIT_LEFT = 3 | The component's content stays at the final size and always aligned with the left of the component.|
+| ARKUI_RENDER_FIT_RIGHT = 4 | The component's content stays at the final size and always aligned with the right of the component.|
+| ARKUI_RENDER_FIT_TOP_LEFT = 5 | The component's content stays at the final size and always aligned with the upper left corner of the component.|
+| ARKUI_RENDER_FIT_TOP_RIGHT = 6 | The component's content stays at the final size and always aligned with the upper right corner of the component.|
+| ARKUI_RENDER_FIT_BOTTOM_LEFT = 7 | The component's content stays at the final size and always aligned with the lower left corner of the component.|
+| ARKUI_RENDER_FIT_BOTTOM_RIGHT = 8 | The component's content stays at the final size and always aligned with the lower right corner of the component.|
+| ARKUI_RENDER_FIT_RESIZE_FILL = 9 | The component's content is always resized to fill the component's content box, without considering its aspect ratio in the final state.|
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN = 10 | While maintaining its aspect ratio in the final state, the component's content is scaled to fit within the component's content box. It is always aligned with the center of the component.|
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN_TOP_LEFT = 11 | While maintaining its aspect ratio in the final state, the component's content is scaled to fit within the component's content box. When there is remaining space in the width direction of the component, the content is left-aligned with the component. When there is remaining space in the height direction of the component, the content is top-aligned with the component.|
+| ARKUI_RENDER_FIT_RESIZE_CONTAIN_BOTTOM_RIGHT = 12 | While maintaining its aspect ratio in the final state, the component's content is scaled to fit within the component's content box. When there is remaining space in the width direction of the component, the content is right-aligned with the component. When there is remaining space in the height direction of the component, the content is bottom-aligned with the component.|
+| ARKUI_RENDER_FIT_RESIZE_COVER = 13 | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. It is always aligned with the center of the component, so that its middle part is displayed.|
+| ARKUI_RENDER_FIT_RESIZE_COVER_TOP_LEFT = 14 | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. When there is remaining space in the width direction, the content is left-aligned with the component, so that its left part is displayed. When there is remaining space in the height direction, the content is top-aligned with the component, so that its top part is displayed.|
+| ARKUI_RENDER_FIT_RESIZE_COVER_BOTTOM_RIGHT = 15 | While maintaining its aspect ratio in the final state, the component's content is scaled to cover the component's entire content box. When there is remaining space in the width direction, the content is right-aligned with the component, so that its right part is displayed. When there is remaining space in the height direction, the content is bottom-aligned with the component, so that its bottom part is displayed.|
 
 ### ArkUI_SwiperIndicatorType
 
-```
+```c
 enum ArkUI_SwiperIndicatorType
 ```
 
@@ -2499,86 +2553,86 @@ Enumerates the navigation indicator types of the **Swiper** component.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_SWIPER_INDICATOR_TYPE_DOT | Dot type.|
-| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT | Digit type.|
+| ARKUI_SWIPER_INDICATOR_TYPE_DOT = 0 | Dot type.|
+| ARKUI_SWIPER_INDICATOR_TYPE_DIGIT = 1 | Digit type.|
 
 ### ArkUI_AnimationDirection
 
-```
+```c
 enum ArkUI_AnimationDirection
 ```
 
 **Description**
 
 
-Enumerates the animation playback modes.
+Enumerates the animation playback directions.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_ANIMATION_DIRECTION_NORMAL = 0 | The animation plays in forward loop mode.|
-| ARKUI_ANIMATION_DIRECTION_REVERSE | The animation plays in reverse loop mode.|
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE | The animation plays in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in reverse direction.|
-| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE | The animation plays in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction.|
+| ARKUI_ANIMATION_DIRECTION_REVERSE = 1 | The animation plays in reverse loop mode.|
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE = 2 | The animation plays in alternating loop mode. When the animation is played for an odd number of times, the playback is in forward direction. When the animation is played for an even number of times, the playback is in reverse direction.|
+| ARKUI_ANIMATION_DIRECTION_ALTERNATE_REVERSE = 3 | The animation plays in reverse alternating loop mode. When the animation is played for an odd number of times, the playback is in reverse direction. When the animation is played for an even number of times, the playback is in forward direction.|
 
 ### ArkUI_ListItemSwipeActionState
 
-```
+```c
 enum ArkUI_ListItemSwipeActionState
 ```
 
 **Description**
 
 
-Enumerates the swipe action item states of list items.
+Enumerates the item states of [SwipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the [Listitem](./arkui-ts/ts-container-listitem.md#listitem10) component. The default value is **ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED**.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_COLLAPSED = 0 | Collapsed state. When the list item is swiped in the opposite direction of the main axis, the swipe action item is hidden.|
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED | Expanded state. When the list item is swiped in the opposite direction of the main axis, the swipe action item is shown.|
-| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING | In-action state. The list item is in this state when it enters the delete area.|
+| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_EXPANDED = 1 | Expanded state. When the list item is swiped in the opposite direction of the main axis, the swipe action item is shown.|
+| ARKUI_LIST_ITEM_SWIPE_ACTION_STATE_ACTIONING = 2 | In-action state. The list item is in this state when it enters the delete area.|
 
 ### ArkUI_ListItemSwipeEdgeEffect
 
-```
+```c
 enum ArkUI_ListItemSwipeEdgeEffect
 ```
 
 **Description**
 
 
-Enumerates the swipe action item edge effects of list items.
+Enumerates the item edge effects of [swipeAction](./arkui-ts/ts-container-listitem.md#swipeaction9) of the **Listitem** component. The default value is **ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING**.
 
 **Since**: 12
 
 | Value| Description|
 | -- | -- |
 | ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING = 0 | When the list item scrolls to the edge of the list, it can continue to scroll for a distance.|
-| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE | The list item cannot scroll beyond the edge of the list.|
+| ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_NONE = 1 | The list item cannot scroll beyond the edge of the list.|
 
 ### ArkUI_ListItemSwipeActionDirection
 
-```
+```c
 enum ArkUI_ListItemSwipeActionDirection
 ```
 
 **Description**
 
-Defines the direction in which the menu of ListItem is displayed.
+Enumerates the swipe action menu display directions for **ListItem** components.
 
 **Since**: 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | When the list is vertical, the value indicates the left side of ListItem in LTR mode and the right side of ListItem in RTL mode. When the list is horizontal, the value indicates the top side of ListItem.|
-| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | When the list is vertical, the value indicates the right side of ListItem in LTR mode and the left side of ListItem in RTL mode. When the list is horizontal, the value indicates the bottom side of ListItem.|
+| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_START = 0 | For vertical lists: left side in LTR mode, right side in RTL mode. For horizontal lists: top side.|
+| ARKUI_LIST_ITEM_SWIPE_ACTION_DIRECTION_END = 1 | For vertical lists: right side in LTR mode, left side in RTL mode. For horizontal lists: bottom side.|
 
 ### ArkUI_AnimationStatus
 
-```
+```c
 enum ArkUI_AnimationStatus
 ```
 
@@ -2591,14 +2645,14 @@ Enumerates the playback states of the frame-by-frame animation.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_ANIMATION_STATUS_INITIAL | The animation is in the initial state.|
-| ARKUI_ANIMATION_STATUS_RUNNING | The animation is being played.|
-| ARKUI_ANIMATION_STATUS_PAUSED | The animation is paused.|
-| ARKUI_ANIMATION_STATUS_STOPPED | The animation is stopped.|
+| ARKUI_ANIMATION_STATUS_INITIAL = 0 | The animation is in the initial state.|
+| ARKUI_ANIMATION_STATUS_RUNNING = 1 | The animation is being played.|
+| ARKUI_ANIMATION_STATUS_PAUSED = 2 | The animation is paused.|
+| ARKUI_ANIMATION_STATUS_STOPPED = 3 | The animation is stopped.|
 
 ### ArkUI_AnimationFillMode
 
-```
+```c
 enum ArkUI_AnimationFillMode
 ```
 
@@ -2611,14 +2665,14 @@ Enumerates the states before and after execution of the frame-by-frame animation
 
 | Value| Description|
 | -- | -- |
-| ARKUI_ANIMATION_FILL_MODE_NONE | Before execution, the animation does not apply any styles to the target component. After execution, the animation restores the target component to its default state.|
-| ARKUI_ANIMATION_FILL_MODE_FORWARDS | The target component retains the state set by the last keyframe encountered during execution of the animation.|
-| ARKUI_ANIMATION_FILL_MODE_BACKWARDS | The animation applies the values defined in the first relevant keyframe once it is applied to the target component, and retains the values during the period set by **delay**.|
-| ARKUI_ANIMATION_FILL_MODE_BOTH | The animation follows the rules for both **Forwards** and **Backwards**, extending the animation attributes in both directions.|
+| ARKUI_ANIMATION_FILL_MODE_NONE = 0 | Before execution, the animation does not apply any styles to the target component. After execution, the animation restores the target component to its default state.|
+| ARKUI_ANIMATION_FILL_MODE_FORWARDS = 1 | The target component retains the state set by the last keyframe encountered during execution of the animation.|
+| ARKUI_ANIMATION_FILL_MODE_BACKWARDS = 2 | The animation applies the values defined in the first relevantage keyframe once it is applied to the target component, and retains the values during the period set by [delay](./capi-native-animate-h.md#oh_arkui_animateoption_setdelay).|
+| ARKUI_ANIMATION_FILL_MODE_BOTH = 3 | The animation follows the rules of [ARKUI_ANIMATION_FILL_MODE_FORWARDS](#arkui_animationfillmode) and [ARKUI_ANIMATION_FILL_MODE_BACKWARDS](#arkui_animationfillmode) to extend the animation properties in both directions.|
 
 ### ArkUI_ErrorCode
 
-```
+```c
 enum ArkUI_ErrorCode
 ```
 
@@ -2635,46 +2689,55 @@ Enumerates the error codes.
 | ARKUI_ERROR_CODE_PARAM_INVALID = 401 | Parameter error.|
 | ARKUI_ERROR_CODE_CAPI_INIT_ERROR = 500 |  API initialization error.<br>**Since**: 18|
 | ARKUI_ERROR_CODE_INTERNAL_ERROR = 100001 |  Internal error, such as failure due to internal environment issues or operation failure caused by internal execution errors.<br>**Since**: 15|
-| ARKUI_ERROR_CODE_PARAM_ERROR = 100023 |  Parameter error. For details about the error codes, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md).<br>**Since**: 21|
-| ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 |  The **XComponent** is in an invalid or unsupported state. For details about the error codes, see [XComponent Error Codes](../apis-arkui/errorcode-xcomponent.md).<br>**Since**: 19|
-| ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | The component does not support specific attributes or events. For details about the error codes, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).|
-| ARKUI_ERROR_CODE_NOT_SUPPORTED_FOR_ARKTS_NODE = 106103 | The specific operation is not allowed on the node created by ArkTS. For details about the error codes, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md).|
-| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | The adapter for lazy loading is not bound to the component.|
-| ARKUI_ERROR_CODE_ADAPTER_EXIST = 106105 | The adapter already exists.|
-| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | Failed to add the adapter because the corresponding node already has a subnode.|
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | The parameter length in the parameter event exceeds the limit. For details about the error code, see [106107 Index Out of Range](../apis-arkui/errorcode-nodeadapter.md#106107-index-out-of-range).|
-| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | The data does not exist in the component event. For details about the error code, see [106108 Data Not Found](../apis-arkui/errorcode-nodeadapter.md#106108-data-not-found).|
-| ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | The component event does not support return values. For details about the error code, see [106109 Return Value Not Supported](../apis-arkui/errorcode-nodeadapter.md#106109-return-value-not-supported).|
-| ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE = 106110 | This event type is not supported. For details about the error code, see [106110 Unsupported Event Type](../apis-arkui/errorcode-nodeadapter.md#106110-unsupported-event-type).|
-| ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | Invalid index.<br>For details about the error code, see [Router Error Codes](../apis-arkui/errorcode-router.md#106200-invalid-index-value).|
-| ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | Failed to obtain the route navigation information.<br>For details about the error code, see [Router Error Codes](../apis-arkui/errorcode-router.md#106201-failed-to-obtain-route-navigation-information).|
-| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | Invalid buffer size.<br>For details about the error code, see [Router Error Codes](../apis-arkui/errorcode-router.md#106202-invalid-buffer-size).|
-| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  The passed node is not mounted to the component tree. For details about the error codes, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md).<br>**Since**: 16|
-| ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  Operations on the provided node are not supported on non-UI threads. For details about the error code, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md#106204-operations-on-the-provided-node-not-supported-on-non-ui-threads).<br>**Since**: 21|
-| ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  The current node is not a custom node. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  The current node already has child nodes. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  The current render node has a parent component. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 |  Corresponding render child node not found. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 |  The parameter value is out of range. For details about the error codes, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
-| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  The current node is not focusable. For details about the error code, see [Focus Error Codes](../apis-arkui/errorcode-focus.md#150001-component-not-focusable).<br>**Since**: 15|
-| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  An ancestor of the current node is not focusable. For details about the error code, see [Focus Error Codes](../apis-arkui/errorcode-focus.md#150002-ancestor-component-not-focusable).<br>**Since**: 15|
-| ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  The current node does not exist. For details about the error code, see [Focus Error Codes](../apis-arkui/errorcode-focus.md#150003-component-does-not-exist).<br>**Since**: 15|
-| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT = 160002 |  Snapshot timed out. For details about the error codes, see [Snapshot Error Codes](../apis-arkui/errorcode-snapshot.md).<br>**Since**: 15|
-| ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER = 180001 | The component is not a scrollable container. For details about the error codes, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).|
-| ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH = 180002 | The buffer is not large enough. For details about the error codes, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).|
-| ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT = 180003 |  The event is not a cloned event. For details about the error codes, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).<br>**Since**: 15|
-| ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL = 180004 |  The component status is abnormal. For details about the error codes, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).<br>**Since**: 15|
-| ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT = 180005 |  No component hit to respond to the event. For details about the error codes, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).<br>**Since**: 15|
+| ARKUI_ERROR_CODE_PARAM_ERROR = 100023 |  Parameter error. For details, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md#100023-parameter-error).<br>**Since**: 21|
+| ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID = 103501 |  The **XComponent** is in an invalid or unsupported state. For details, see [XComponent Error Codes](../apis-arkui/errorcode-xcomponent.md).<br>**Since**: 19|
+| ARKUI_ERROR_CODE_ATTRIBUTE_OR_EVENT_NOT_SUPPORTED = 106102 | The component does not support specific attributes or events. For details, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).|
+| ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE = 106103 | The corresponding operations cannot be performed on the node created by ArkTS. For details, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md#106103-operation-not-allowed-on-nodes-created-by-arkts).|
+| ARKUI_ERROR_CODE_ADAPTER_NOT_BOUND = 106104 | The adapter for lazy loading is not bound to the component. For details, see [106104 Adapter Not Bound](../apis-arkui/errorcode-nodeadapter.md#106104-adapter-not-bound).|
+| ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST = 106105 | The adapter already exists. For details, see [106105 Adapter Already Exists](../apis-arkui/errorcode-nodeadapter.md#106105-adapter-already-exists).|
+| ARKUI_ERROR_CODE_CHILD_NODE_EXIST = 106106 | Failed to add the adapter because the corresponding node already has a subnode. For details, see [106106 Child Node Exists](../apis-arkui/errorcode-nodeadapter.md#106106-child-node-exists).|
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INDEX_OUT_OF_RANGE = 106107 | The parameter length in the parameter event exceeds the limit. For details, see [106107 Index Out of Range](../apis-arkui/errorcode-nodeadapter.md#106107-index-out-of-range).|
+| ARKUI_ERROR_CODE_NODE_EVENT_PARAM_INVALID = 106108 | The data does not exist in the component event. For details, see [106108 Data Not Found](../apis-arkui/errorcode-nodeadapter.md#106108-data-not-found).|
+| ARKUI_ERROR_CODE_NODE_EVENT_NO_RETURN = 106109 | The component event does not support return values. For details, see [106109 Return Value Not Supported](../apis-arkui/errorcode-nodeadapter.md#106109-return-value-not-supported).|
+| ARKUI_ERROR_CODE_NODE_UNSUPPORTED_EVENT_TYPE = 106110 | This event type is not supported. For details, see [106110 Unsupported Event Type](../apis-arkui/errorcode-nodeadapter.md#106110-unsupported-event-type).<br>**Since**: 21|
+| ARKUI_ERROR_CODE_NODE_INDEX_INVALID = 106200 | Invalid index.<br>For details, see [106200 Invalid Index Value](../apis-arkui/errorcode-router.md#106200-invalid-index-value).|
+| ARKUI_ERROR_CODE_GET_INFO_FAILED = 106201 | Failed to obtain the route navigation information.<br>For details, see [106201 Failed to Obtain Route Navigation Information](../apis-arkui/errorcode-router.md#106201-failed-to-obtain-route-navigation-information).|
+| ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR = 106202 | The passed buffer size is invalid (the data is too large).<br>For details, see [106202 Invalid Buffer Size](../apis-arkui/errorcode-router.md#106202-invalid-buffer-size).|
+| ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE = 106203 |  The passed node is not mounted to the component tree. For details, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md#106203-passed-node-not-mounted-to-component-tree).<br>**Since**: 15|
+| ARKUI_ERROR_CODE_NODE_ON_INVALID_THREAD = 106204 |  Operations on the provided node are not supported on non-UI threads. For details, see [Custom Node Error Codes](../apis-arkui/errorcode-node.md#106204-operations-on-the-provided-node-not-supported-on-non-ui-threads).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_FORCE_DARK_CONFIG_INVALID = 106205 |  The input parameter for the color inversion capability is incorrect. For details, see [Color Inversion Error Codes](../apis-arkui/errorcode-force-dark.md).<br>**Since**: 20|
+| ARKUI_ERROR_CODE_NODE_IS_ADOPTED = 106206 |  The node has been accepted as an auxiliary node. For details, see [Auxiliary Node Error Codes](../apis-arkui/errorcode-adopt.md#106206-the-node-has-been-accepted-as-an-auxiliary-node).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_NODE_HAS_PARENT = 106207 |  The accepted node already has a parent node. For details, see [Auxiliary Node Error Codes](../apis-arkui/errorcode-adopt.md#106207-the-auxiliary-node-to-accept-has-a-parent-node).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_NODE_CAN_NOT_BE_ADOPTED = 106208 |  The node cannot be accepted as an auxiliary node. For details, see [Auxiliary Node Error Codes](../apis-arkui/errorcode-adopt.md#106208-the-node-cannot-be-accepted-as-an-auxiliary-node).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_NODE_CAN_NOT_ADOPT_TO = 106209 |  The node cannot accept other nodes. For details, see [Auxiliary Node Error Codes](../apis-arkui/errorcode-adopt.md#106209-the-node-cannot-accept-other-nodes).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_NODE_IS_NOT_IN_ADOPTED_CHILDREN = 106210 |  The node is not an auxiliary node accepted by the target node. For details, see [Auxiliary Node Error Codes](../apis-arkui/errorcode-adopt.md#106210-the-node-is-not-an-affiliated-node-accepted-by-the-target-node).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_NOT_CUSTOM_NODE = 106401 |  The current node is not a custom node. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
+| ARKUI_ERROR_CODE_CHILD_EXISTED = 106402 |  The current node already has child nodes. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
+| ARKUI_ERROR_CODE_RENDER_PARENT_EXISTED = 106403 |  The current render node has a parent component. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
+| ARKUI_ERROR_CODE_RENDER_CHILD_NOT_EXIST = 106404 |  Corresponding render child node not found. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
+| ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE = 106405 |  The parameter value is out of range. For details, see [Render Node Error Codes](../apis-arkui/errorcode-node-render.md).<br>**Since**: 20|
+| ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE = 106406 |  The current rendering node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md). For details about the error code, see [106406 Current Render Node Is Obtained from FrameNode](../apis-arkui/errorcode-node-render.md#106406-current-render-node-is-obtained-from-framenode).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE = 106407 |  The current rendering node is obtained from the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) and the [FrameNode](../apis-arkui/capi-arkui-nativemodule-arkui-node8h.md) has not been adopted as an affiliated node or has been disposed. For details about the error code, see [106407 Current Render Node Is Obtained from FrameNode and the FrameNode Is Disposed or No Longer Adopted](../apis-arkui/errorcode-node-render.md#106407-current-render-node-is-obtained-from-framenode-and-the-framenode-is-disposed-or-no-longer-adopted).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE = 106408 |  The current node is not in the adopted state. For details about the error code, see [106408 Current Node Is Not in Adopted State](../apis-arkui/errorcode-node-render.md#106408-current-node-is-not-in-adopted-state).<br>**Since**: 22|
+| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE = 150001 |  The current node is not focusable. For details, see [Focus Error Codes](../apis-arkui/errorcode-focus.md#150001-component-not-focusable).<br>**Since**: 15|
+| ARKUI_ERROR_CODE_FOCUS_NON_FOCUSABLE_ANCESTOR = 150002 |  An ancestor of the current node is not focusable. For details, see [Focus Error Codes](../apis-arkui/errorcode-focus.md#150002-ancestor-component-not-focusable).<br>**Since**: 15|
+| ARKUI_ERROR_CODE_FOCUS_NON_EXISTENT = 150003 |  The current node does not exist. For details, see [Focus Error Codes](../apis-arkui/errorcode-focus.md#150003-component-does-not-exist).<br>**Since**: 15|
+| ARKUI_ERROR_CODE_COMPONENT_SNAPSHOT_TIMEOUT = 160002 |  Snapshot timed out. For details, see [Snapshot Error Codes](../apis-arkui/errorcode-snapshot.md).<br>**Since**: 15|
+| ARKUI_ERROR_CODE_NON_SCROLLABLE_CONTAINER = 180001 | The component is not a scrollable container. For details, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).|
+| ARKUI_ERROR_CODE_BUFFER_SIZE_NOT_ENOUGH = 180002 | The buffer is not large enough. For details, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).|
+| ARKUI_ERROR_CODE_NOT_CLONED_POINTER_EVENT = 180003 |  The event is not a cloned event. For details, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).<br>**Since**: 15|
+| ARKUI_ERROR_CODE_POST_CLONED_COMPONENT_STATUS_ABNORMAL = 180004 |  The component status is abnormal. For details, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).<br>**Since**: 15|
+| ARKUI_ERROR_CODE_POST_CLONED_NO_COMPONENT_HIT_TO_RESPOND_TO_THE_EVENT = 180005 |  No component hit to respond to the event. For details, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).<br>**Since**: 15|
 | ARKUI_ERROR_INPUT_EVENT_TYPE_NOT_SUPPORTED = 180006 |  Input event type not supported.<br>**Since**: 20|
-| ARKUI_ERROR_CODE_INVALID_STYLED_STRING = 180101 |  Invalid styled string. For details about the error codes, see [Styled String Error Codes](../apis-arkui/errorcode-styled-string.md).<br>**Since**: 14|
-| ARKUI_ERROR_CODE_UI_CONTEXT_INVALID = 190001 |  Invalid UIContext object. For details about the error codes, see [UI Context Error Codes](../apis-arkui/errorcode-uicontext.md).<br>**Since**: 18|
-| ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 |  Invalid callback function. For details about the error codes, see [UI Context Error Codes](../apis-arkui/errorcode-uicontext.md).<br>**Since**: 18|
-| ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 |  The gesture recognizer type is not supported. For details about the error codes, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).<br>**Since**: 18|
-| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 |  The operation is not allowed in the current phase. For details about the error codes, see [Drag Event Error Codes](../apis-arkui/errorcode-drag-event.md).<br>**Since**: 19|
+| ARKUI_ERROR_CODE_INVALID_STYLED_STRING = 180101 |  Invalid styled string. For details, see [Styled String Error Codes](../apis-arkui/errorcode-styled-string.md).<br>**Since**: 14|
+| ARKUI_ERROR_CODE_UI_CONTEXT_INVALID = 190001 |  Invalid UIContext object. For details, see [UI Context Error Codes](../apis-arkui/errorcode-uicontext.md).<br>**Since**: 18|
+| ARKUI_ERROR_CODE_CALLBACK_INVALID = 190002 |  Invalid callback function. For details, see [UI Context Error Codes](../apis-arkui/errorcode-uicontext.md).<br>**Since**: 18|
+| ARKUI_ERROR_CODE_RECOGNIZER_TYPE_NOT_SUPPORTED = 180102 |  The gesture recognizer type is not supported. For details, see [Interaction Event Error Codes](../apis-arkui/errorcode-event.md).<br>**Since**: 18|
+| ARKUI_ERROR_CODE_DRAG_DROP_OPERATION_NOT_ALLOWED = 190004 |  The operation is not allowed in the current phase. For details, see [Drag Event Error Codes](../apis-arkui/errorcode-drag-event.md).<br>**Since**: 19|
 
 ### ArkUI_ScrollSource
 
-```
+```c
 enum ArkUI_ScrollSource
 ```
 
@@ -2688,17 +2751,17 @@ Enumerates scroll sources.
 | Value| Description|
 | -- | -- |
 | ARKUI_SCROLL_SOURCE_DRAG = 0 | Finger dragging.|
-| ARKUI_SCROLL_SOURCE_FLING | Inertia scrolling after finger dragging.|
-| ARKUI_SCROLL_SOURCE_EDGE_EFFECT | Cross-boundary bouncing.|
-| ARKUI_SCROLL_SOURCE_OTHER_USER_INPUT | User input other than dragging, such as mouse wheel and keyboard events.|
-| ARKUI_SCROLL_SOURCE_SCROLL_BAR | Scrollbar dragging.|
-| ARKUI_SCROLL_SOURCE_SCROLL_BAR_FLING | Inertial scrolling after scrollbar dragging.|
-| ARKUI_SCROLL_SOURCE_SCROLLER | Scrolling by the scroll controller (without animation).|
-| ARKUI_SCROLL_SOURCE_ANIMATION | Scrolling by the scroll controller (with animation).|
+| ARKUI_SCROLL_SOURCE_FLING = 1 | Inertia scrolling after finger dragging.|
+| ARKUI_SCROLL_SOURCE_EDGE_EFFECT = 2 | Cross-boundary bouncing.|
+| ARKUI_SCROLL_SOURCE_OTHER_USER_INPUT = 3 | User input other than dragging, such as mouse wheel and keyboard events.|
+| ARKUI_SCROLL_SOURCE_SCROLL_BAR = 4 | Scrollbar dragging.|
+| ARKUI_SCROLL_SOURCE_SCROLL_BAR_FLING = 5 | Inertial scrolling after scrollbar dragging.|
+| ARKUI_SCROLL_SOURCE_SCROLLER = 6 | Scrolling by the scroll controller (without animation).|
+| ARKUI_SCROLL_SOURCE_ANIMATION = 7 | Scrolling by the scroll controller (with animation).|
 
 ### ArkUI_SafeAreaType
 
-```
+```c
 enum ArkUI_SafeAreaType
 ```
 
@@ -2711,13 +2774,13 @@ Enumerates the types of expanded safe areas.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | Default non-safe area of the system, including the status bar and navigation bar.|
+| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | Default non-safe area of the system, including the status bar and navigation bar. This is the default value.|
 | ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | Non-safe area of the device, for example, the notch area.|
 | ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | Soft keyboard area.|
 
 ### ArkUI_SafeAreaEdge
 
-```
+```c
 enum ArkUI_SafeAreaEdge
 ```
 
@@ -2730,14 +2793,14 @@ Enumerates the edges for expanding the safe area.
 
 | Value| Description|
 | -- | -- |
-| ARKUI_SAFE_AREA_EDGE_TOP = 1 | Top edge.|
+| ARKUI_SAFE_AREA_EDGE_TOP = 1 | Top edge. This is the default value.|
 | ARKUI_SAFE_AREA_EDGE_BOTTOM = 1 << 1 | Bottom edge.|
 | ARKUI_SAFE_AREA_EDGE_START = 1 << 2 | Start edge.|
 | ARKUI_SAFE_AREA_EDGE_END = 1 << 3 | End edge.|
 
 ### ArkUI_FocusMove
 
-```
+```c
 enum ArkUI_FocusMove
 ```
 
@@ -2751,36 +2814,36 @@ Enumerates the focus movement directions.
 | Value| Description|
 | -- | -- |
 | ARKUI_FOCUS_MOVE_FORWARD = 0 | Move focus forward.|
-| ARKUI_FOCUS_MOVE_BACKWARD | Move focus backward.|
-| ARKUI_FOCUS_MOVE_UP | Move focus up.|
-| ARKUI_FOCUS_MOVE_DOWN | Move focus down.|
-| ARKUI_FOCUS_MOVE_LEFT | Move focus left.|
-| ARKUI_FOCUS_MOVE_RIGHT | Move focus right.|
+| ARKUI_FOCUS_MOVE_BACKWARD = 1 | Move focus backward.|
+| ARKUI_FOCUS_MOVE_UP = 2 | Move focus up.|
+| ARKUI_FOCUS_MOVE_DOWN = 3 | Move focus down.|
+| ARKUI_FOCUS_MOVE_LEFT = 4 | Move focus left.|
+| ARKUI_FOCUS_MOVE_RIGHT = 5 | Move focus right.|
 
 ### ArkUI_ListItemGroupArea
 
-```
+```c
 enum ArkUI_ListItemGroupArea
 ```
 
 **Description**
 
 
-Enumerates areas of the **ListItemGroup** component.
+Enumerates the areas in the [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) component. The default value is **ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE**.
 
 **Since**: 15
 
 | Value| Description|
 | -- | -- |
 | ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | Outside the area of the **ListItemGroup** component.|
-| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | Area when the **ListItemGroup** component does not have the header, footer, or list item.|
-| ARKUI_LIST_ITEM_SWIPE_AREA_ITEM | List item area of the **ListItemGroup** component.|
-| ARKUI_LIST_ITEM_SWIPE_AREA_HEADER | Header area of the **ListItemGroup** component.|
-| ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER | Footer area of the **ListItemGroup** component.|
+| ARKUI_LIST_ITEM_SWIPE_AREA_NONE = 1 | Area without the [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions), [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions), and [ListItem](./arkui-ts/ts-container-listitem.md#listitem10) in the **ListItemGroup** component.|
+| ARKUI_LIST_ITEM_SWIPE_AREA_ITEM = 2 | List item area of the **ListItemGroup** component.|
+| ARKUI_LIST_ITEM_SWIPE_AREA_HEADER = 3 | Header area of the **ListItemGroup** component.|
+| ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER = 4 | Footer area of the **ListItemGroup** component.|
 
 ### ArkUI_KeyboardAvoidMode
 
-```
+```c
 enum ArkUI_KeyboardAvoidMode
 ```
 
@@ -2794,11 +2857,11 @@ Enumerates the soft keyboard avoidance modes.
 | Value| Description|
 | -- | -- |
 | ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0 | Automatically avoids the soft keyboard and compresses the height when reaching the maximum limit.|
-| ARKUI_KEYBOARD_AVOID_MODE_NONE | The layout is not adjusted to avoid the keyboard.|
+| ARKUI_KEYBOARD_AVOID_MODE_NONE = 1 | The layout is not adjusted to avoid the keyboard.|
 
 ### ArkUI_HoverModeAreaType
 
-```
+```c
 enum ArkUI_HoverModeAreaType
 ```
 
@@ -2812,11 +2875,11 @@ Enumerates the types of display areas for the hover mode.
 | Value| Description|
 | -- | -- |
 | ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0 | Upper half screen.|
-| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM | Lower half screen.|
+| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM = 1 | Lower half screen.|
 
 ### ArkUI_ExpandMode
 
-```
+```c
 enum ArkUI_ExpandMode
 ```
 
@@ -2831,18 +2894,18 @@ Enumerates the expansion mode of child nodes.
 | -- | -- |
 | ARKUI_NOT_EXPAND = 0 | Child nodes are not expanded.|
 | ARKUI_EXPAND = 1 | Child nodes are expanded immediately upon rendering.|
-| ARKUI_LAZY_EXPAND = 2 | Child nodes are only expanded when needed or requested.|
+| ARKUI_LAZY_EXPAND = 2 | Lazy expansion, indicating that child nodes are only expanded when needed. For details about the node expansion conditions, see [LazyForEach: Lazy Data Loading](../../ui/rendering-control/arkts-rendering-control-lazyforeach.md).|
 
 ### ArkUI_NavDestinationState
 
-```
+```c
 enum ArkUI_NavDestinationState
 ```
 
 **Description**
 
 
-Enumerates the **NavDestination** component states.
+Enumerates the states of the [NavDestination](../apis-arkui/arkui-ts/ts-basic-components-navdestination.md) component.
 
 **Since**: 12
 
@@ -2860,14 +2923,14 @@ Enumerates the **NavDestination** component states.
 
 ### ArkUI_RouterPageState
 
-```
+```c
 enum ArkUI_RouterPageState
 ```
 
 **Description**
 
 
-Enumerates the states of a page during routing.
+Enumerates the states of [Router Page](arkts-apis-uicontext-router.md).
 
 **Since**: 12
 
@@ -2881,7 +2944,7 @@ Enumerates the states of a page during routing.
 
 ### ArkUI_UIState
 
-```
+```c
 enum ArkUI_UIState
 ```
 
@@ -2902,7 +2965,7 @@ Enumerates the UI states of a component, used for handling state-specific styles
 
 ### ArkUI_FocusWrapMode
 
-```
+```c
 enum ArkUI_FocusWrapMode
 ```
 
@@ -2918,34 +2981,54 @@ Enumerates the focus wrap mode of components.
 | ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0 | Default mode, where focus does not wrap when arrow keys are used.|
 | ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | Auto mode, where focus wraps automatically when arrow keys are used.|
 
+### ArkUI_ItemFillPolicy
+
+```c
+enum ArkUI_ItemFillPolicy
+```
+
+**Description**
+
+
+Enumerates column count policies for different [responsive breakpoints](../../ui/arkts-layout-development-grid-layout.md#breakpoints).
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| ARKUI_ITEMFILLPOLICY_NONE = -1 | No responsive breakpoint policy is set.|
+| ARKUI_ITEMFILLPOLICY_DEFAULT = 0 | **List** or **Swiper** component: 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger).<br> **Grid** or **WaterFlow** component: 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger).|
+| ARKUI_ITEMFILLPOLICY_SM1MD2LG3 = 1 | 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger).|
+| ARKUI_ITEMFILLPOLICY_SM2MD3LG5 = 2 | 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger).|
+
 ### ArkUI_ScrollSnapAnimationSpeed
 
-```
+```c
 enum ArkUI_ScrollSnapAnimationSpeed
 ```
 
 **Description**
 
 
-Speed of the list limit scrolling animation.
+Enumerates scroll snap animation speeds for list components.
 
-**Since**: 20
+**Since**: 22
 
 | Value| Description|
 | -- | -- |
-| ARKUI_SCROLL_SNAP_ANIMATION_NORMAL = 0 | Normal speed of the limit scrolling animation.|
-| ARKUI_SCROLL_SNAP_ANIMATION_SLOW = 1 | Slow speed of the limit scrolling animation.|
+| ARKUI_SCROLL_SNAP_ANIMATION_NORMAL = 0 | Normal scroll snap animation speed.|
+| ARKUI_SCROLL_SNAP_ANIMATION_SLOW = 1 | Slow scroll snap animation speed.|
 
 ### ArkUI_EdgeDirection
 
-```
+```c
 enum ArkUI_EdgeDirection
 ```
 
 **Description**
 
 
-Defines the direction of a rectangle.
+Enumerates rectangle edge directions.
 
 **Since**: 20
 
@@ -2959,14 +3042,14 @@ Defines the direction of a rectangle.
 
 ### ArkUI_CornerDirection
 
-```
+```c
 enum ArkUI_CornerDirection
 ```
 
 **Description**
 
 
-Defines the angle direction.
+Enumerates corner directions.
 
 **Since**: 20
 
@@ -2980,52 +3063,158 @@ Defines the angle direction.
 
 ### ArkUI_LayoutPolicy
 
-```
+```c
 enum ArkUI_LayoutPolicy
 ```
 
 **Description**
 
-Defines the layout policy.
+Enumerates layout policies.
 
 **Since**: 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_LAYOUTPOLICY_MATCHPARENT = 0 | The component adapts to the layout of the parent component.|
-| ARKUI_LAYOUTPOLICY_WRAPCONTENT | The component adapts to the child component (content), and the size of the component is restricted by the size of the content area of the parent component.|
-| ARKUI_LAYOUTPOLICY_FIXATIDEALSIZE | The component adapts to the child component (content), and the size of the component is not restricted by the size of the content area of the parent component.|
+| ARKUI_LAYOUTPOLICY_MATCHPARENT = 0 | The component size matches parent container dimensions.|
+| ARKUI_LAYOUTPOLICY_WRAPCONTENT = 1 | The component size wraps its content, constrained by parent container bounds.|
+| ARKUI_LAYOUTPOLICY_FIXATIDEALSIZE = 2 | The component size wraps its content, unconstrained by parent container bounds.|
 
 ### ArkUI_PixelRoundCalcPolicy
 
-```
+```c
 enum ArkUI_PixelRoundCalcPolicy
 ```
 
 **Description**
 
-Defines the enumeration of the pixel rounding calculation policy.
+Enumerates pixel rounding calculation policies.
 
 **Since**: 21
 
 | Value| Description|
 | -- | -- |
-| ARKUI_PIXELROUNDCALCPOLICY_NOFORCE = 0 | Non-rounding calculation.|
-| ARKUI_PIXELROUNDCALCPOLICY_FORCECEIL | Rounding up calculation.|
-| ARKUI_PIXELROUNDCALCPOLICY_FORCEFLOOR | Rounding down calculation.|
+| ARKUI_PIXELROUNDCALCPOLICY_NOFORCEROUND = 0 | No forced rounding calculation.|
+| ARKUI_PIXELROUNDCALCPOLICY_FORCECEIL = 1 | Round-up calculation.|
+| ARKUI_PIXELROUNDCALCPOLICY_FORCEFLOOR = 2 | Round-down calculation.|
+
+### ArkUI_GridItemAlignment
+
+```c
+enum ArkUI_GridItemAlignment
+```
+**Description**
+
+Enumerates the alignment modes of grid items.
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| GRID_ITEM_ALIGNMENT_DEFAULT = 0 | Use the default alignment mode of the grid.|
+| GRID_ITEM_ALIGNMENT_STRETCH  = 1  | Use the height of the tallest grid item in a row as the height for all other grid items in that row.|
+
+
+### ArkUI_GridItemStyle
+
+```c
+enum ArkUI_GridItemStyle
+```
+
+**Description**
+
+
+Enumerates styles of grid items.
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| GRID_ITEM_STYLE_NONE  = 0 | No style.|
+| GRID_ITEM_STYLE_PLAIN  = 1  | Hover or press style.|
+
+### ArkUI_TextMenuItemId
+
+```c
+enum ArkUI_TextMenuItemId
+```
+
+**Description**
+
+Enumerates the IDs of text menu items.
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| ARKUI_TEXT_MENU_ITEM_ID_CUT = 0 | Clip.|
+| ARKUI_TEXT_MENU_ITEM_ID_COPY = 1 | Copy.|
+| ARKUI_TEXT_MENU_ITEM_ID_PASTE = 2 | Paste.|
+| ARKUI_TEXT_MENU_ITEM_ID_SELECT_ALL = 3 | Select all.|
+| ARKUI_TEXT_MENU_ITEM_ID_COLLABORATION_SERVICE = 4 | Collaboration service. For example, cross-device interaction, including cross-device camera access.|
+| ARKUI_TEXT_MENU_ITEM_ID_CAMERA_INPUT = 5 | Camera input.|
+| ARKUI_TEXT_MENU_ITEM_ID_AI_WRITER = 6 | AI-assisted writing. This menu item requires the large language model. If no large language model is available, this menu item does not take effect.|
+| ARKUI_TEXT_MENU_ITEM_ID_TRANSLATE = 7 | Translate. The translation service is provided for the selected text.|
+| ARKUI_TEXT_MENU_ITEM_ID_SEARCH = 8 | Search. This menu item launches a browser to search for the selected text.|
+| ARKUI_TEXT_MENU_ITEM_ID_SHARE = 9 | Share. This menu item launches a window for sharing the selected text.|
+| ARKUI_TEXT_MENU_ITEM_ID_URL = 10 | Open a link. This menu item provides the redirection service for the selected URL, launching a browser search or application page.|
+| ARKUI_TEXT_MENU_ITEM_ID_EMAIL = 11 | New Email. This menu item provides the redirection service for the selected email address, launching the email application.|
+| ARKUI_TEXT_MENU_ITEM_ID_PHONE_NUMBER = 12 | Call. This menu item provides the redirection service for the selected phone number, launching the phone dialer page.|
+| ARKUI_TEXT_MENU_ITEM_ID_ADDRESS = 13 | Navigate. This menu item provides the redirection service for the selected address, launching the map application.|
+| ARKUI_TEXT_MENU_ITEM_ID_DATA_TIME = 14 | New event. This menu item provides the redirection service for the selected date and time, launching the page for creating a calendar event.|
+| ARKUI_TEXT_MENU_ITEM_ID_ASK_AI = 15 | Ask AI. This menu item provides the AI query capability for the selected text.|
+| ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_BEGIN = 10000 | Start ID of a custom menu item. In addition to the built-in menu item IDs, you can also customize menu item IDs.|
+| ARKUI_TEXT_MENU_ITEM_ID_APP_RESERVED_END = 20000 | End ID of a custom menu item. In addition to the built-in menu item IDs, you can also customize menu item IDs.|
+
+### ArkUI_TextSpanType
+
+```c
+enum ArkUI_TextSpanType
+```
+
+**Description**
+
+Enumerates the recognition types of a custom text selection menu.
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| ARKUI_TEXT_SPAN_TYPE_TEXT = 0 | Text.|
+| ARKUI_TEXT_SPAN_TYPE_IMAGE = 1 | Image.|
+| ARKUI_TEXT_SPAN_TYPE_MIXED = 2 | Mixed text and image.|
+| ARKUI_TEXT_SPAN_TYPE_DEFAULT = 3 | If this type and other types are set, the menu corresponding to the type of the selected text is displayed after the text is selected. If this type is set but other types are not set, the menu corresponding to this type is displayed after the text is selected. For example, if there are two menus whose recognition types are **ARKUI_TEXT_SPAN_TYPE_TEXT** and **ARKUI_TEXT_SPAN_TYPE_DEFAULT** respectively, the menu corresponding to **ARKUI_TEXT_SPAN_TYPE_TEXT** is displayed when the text is selected, and the menu corresponding to **ARKUI_TEXT_SPAN_TYPE_DEFAULT** is displayed when the image is selected.|
+
+### ArkUI_TextResponseType
+
+```c
+enum ArkUI_TextResponseType
+```
+
+**Description**
+
+Enumerates the response types of a custom text selection menu.
+
+**Since**: 22
+
+| Value| Description|
+| -- | -- |
+| ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK = 0 | The menu is displayed when the component is right-clicked.|
+| ARKUI_TEXT_RESPONSE_TYPE_LONG_PRESS = 1 | The menu is displayed when the component is long-pressed.|
+| ARKUI_TEXT_RESPONSE_TYPE_SELECT = 2 | The menu is displayed when the component is selected.|
+| ARKUI_TEXT_RESPONSE_TYPE_DEFAULT = 3 | If this type and other types are set, the menu corresponding to the type is displayed when the operation of another type is triggered. If this type is set but other types are not set, the menu corresponding to this type is displayed when an operation of another type is triggered. For example, if there are two menus whose response types are **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** and **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** respectively, the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_RIGHT_CLICK** is displayed when you right-click the menu, and the menu corresponding to **ARKUI_TEXT_RESPONSE_TYPE_DEFAULT** is displayed when you hold down the right mouse button.|
 
 ## Function Description
 
 ### OH_ArkUI_LayoutConstraint_Create()
 
-```
+```c
 ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()
 ```
 
 **Description**
 
 
-Creates a size constraint.
+Creates layout constraints.
 
 **Since**: 12
 
@@ -3033,18 +3222,18 @@ Creates a size constraint.
 
 | Type                         | Description|
 |-----------------------------| -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* | Pointer to the object of the constraint size.|
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* | Pointer to the created layout constraint.|
 
 ### OH_ArkUI_LayoutConstraint_Copy()
 
-```
+```c
 ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstraint* Constraint)
 ```
 
 **Description**
 
 
-Performs a deep copy of a size constraint.
+Performs a deep copy of a layout constraint.
 
 **Since**: 12
 
@@ -3053,24 +3242,24 @@ Performs a deep copy of a size constraint.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
 
 **Returns**
 
 | Type                         | Description|
 |-----------------------------| -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* | Pointer to the new size constraint.|
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* | Pointer to the new layout constraint.|
 
 ### OH_ArkUI_LayoutConstraint_Dispose()
 
-```
+```c
 void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)
 ```
 
 **Description**
 
 
-Disposes of the pointer to a size constraint.
+Disposes of a layout constraint pointer.
 
 **Since**: 12
 
@@ -3079,7 +3268,7 @@ Disposes of the pointer to a size constraint.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
 
 **Returns**
 
@@ -3089,14 +3278,14 @@ Disposes of the pointer to a size constraint.
 
 ### OH_ArkUI_LayoutConstraint_GetMaxWidth()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Constraint)
 ```
 
 **Description**
 
 
-Obtains the maximum width for a size constraint, in px.
+Obtains the maximum width using a layout constraint.
 
 **Since**: 12
 
@@ -3105,24 +3294,24 @@ Obtains the maximum width for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Maximum width.|
+| int32_t | Maximum width, in pixels.|
 
 ### OH_ArkUI_LayoutConstraint_GetMinWidth()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Constraint)
 ```
 
 **Description**
 
 
-Obtains the minimum width for a size constraint, in px.
+Obtains the minimum width using a layout constraint.
 
 **Since**: 12
 
@@ -3131,24 +3320,24 @@ Obtains the minimum width for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Minimum Width|
+| int32_t | Minimum width, in px.|
 
 ### OH_ArkUI_LayoutConstraint_GetMaxHeight()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Constraint)
 ```
 
 **Description**
 
 
-Obtains the maximum height for a size constraint, in px.
+Obtains the maximum height using a layout constraint.
 
 **Since**: 12
 
@@ -3157,24 +3346,24 @@ Obtains the maximum height for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Maximum height.|
+| int32_t | Maximum height, in px.|
 
 ### OH_ArkUI_LayoutConstraint_GetMinHeight()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Constraint)
 ```
 
 **Description**
 
 
-Obtains the minimum height for a size constraint, in px.
+Obtains the minimum height using a layout constraint.
 
 **Since**: 12
 
@@ -3183,24 +3372,24 @@ Obtains the minimum height for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Minimum height.|
+| int32_t | Minimum height, in px.|
 
 ### OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutConstraint* Constraint)
 ```
 
 **Description**
 
 
-Obtains the width percentage reference for a size constraint, in px.
+Obtains the width percentage reference using a layout constraint.
 
 **Since**: 12
 
@@ -3209,7 +3398,7 @@ Obtains the width percentage reference for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
 
 **Returns**
 
@@ -3219,14 +3408,14 @@ Obtains the width percentage reference for a size constraint, in px.
 
 ### OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight()
 
-```
+```c
 int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutConstraint* Constraint)
 ```
 
 **Description**
 
 
-Obtains the height percentage reference for a size constraint, in px.
+Obtains the height percentage reference using a layout constraint.
 
 **Since**: 12
 
@@ -3235,7 +3424,7 @@ Obtains the height percentage reference for a size constraint, in px.
 
 | Name| Description|
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
+| const [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
 
 **Returns**
 
@@ -3245,7 +3434,7 @@ Obtains the height percentage reference for a size constraint, in px.
 
 ### OH_ArkUI_LayoutConstraint_SetMaxWidth()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3261,12 +3450,12 @@ Sets the maximum width.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
-| int32_t value | Maximum width, in pixels.|
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
+| int32_t value | Maximum width, in px. The value range is [0, +∞).|
 
 ### OH_ArkUI_LayoutConstraint_SetMinWidth()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3282,12 +3471,12 @@ Sets the minimum width.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
-| int32_t value | Minimum width, in px.|
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
+| int32_t value | Minimum width, in px. The value range is [0, +∞).|
 
 ### OH_ArkUI_LayoutConstraint_SetMaxHeight()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3303,12 +3492,12 @@ Sets the maximum height.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
-| int32_t value | Maximum height, in px.|
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
+| int32_t value | Maximum height, in px. The value range is [0, +∞).|
 
 ### OH_ArkUI_LayoutConstraint_SetMinHeight()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3324,12 +3513,12 @@ Sets the minimum height.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
-| int32_t value | Minimum height, in px.|
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
+| int32_t value | Minimum height, in px. The value range is [0, +∞).|
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3345,12 +3534,12 @@ Sets the width percentage reference.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
-| int32_t value | Width percentage reference, in px.|
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
+| int32_t value | Width percentage reference. The value range is [0, +∞).|
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight()
 
-```
+```c
 void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)
 ```
 
@@ -3366,19 +3555,19 @@ Sets the height percentage reference.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Size constraint.|
-| int32_t value | Height percentage reference, in px.|
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint.|
+| int32_t value | Height percentage reference. The value range is [0, +∞).|
 
 ### OH_ArkUI_DrawContext_GetCanvas()
 
-```
+```c
 void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)
 ```
 
 **Description**
 
 
-Obtains the pointer to a canvas for drawing, which can be converted into the **OH_Drawing_Canvas** in the **Drawing** module.
+Obtains the pointer to the canvas for drawing, which can be converted into the [OH_Drawing_Canvas](../apis-arkgraphics2d/capi-drawing-oh-drawing-canvas.md) pointer of the graphics library for drawing.
 
 **Since**: 12
 
@@ -3397,7 +3586,7 @@ Obtains the pointer to a canvas for drawing, which can be converted into the **O
 
 ### OH_ArkUI_DrawContext_GetSize()
 
-```
+```c
 ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)
 ```
 
@@ -3423,7 +3612,7 @@ Obtains the size of a drawing area.
 
 ### OH_ArkUI_WaterFlowSectionOption_Create()
 
-```
+```c
 ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 ```
 
@@ -3442,7 +3631,7 @@ Creates a water flow section configuration.
 
 ### OH_ArkUI_WaterFlowSectionOption_Dispose()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* option)
 ```
 
@@ -3462,7 +3651,7 @@ Disposes of the pointer to a water flow section configuration.
 
 ### OH_ArkUI_WaterFlowSectionOption_SetSize()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* option,int32_t size)
 ```
 
@@ -3483,7 +3672,7 @@ Sets the array length for a water flow section configuration.
 
 ### OH_ArkUI_WaterFlowSectionOption_GetSize()
 
-```
+```c
 int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* option)
 ```
 
@@ -3509,7 +3698,7 @@ Obtains the array length for a water flow section configuration.
 
 ### OH_ArkUI_WaterFlowSectionOption_SetItemCount()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option,int32_t index, int32_t itemCount)
 ```
 
@@ -3531,7 +3720,7 @@ Sets the number of items in a water flow section.
 
 ### OH_ArkUI_WaterFlowSectionOption_GetItemCount()
 
-```
+```c
 int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
@@ -3558,7 +3747,7 @@ Obtains the number of items in the water flow section that matches the specified
 
 ### OH_ArkUI_WaterFlowSectionOption_SetCrossCount()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option,int32_t index, int32_t crossCount)
 ```
 
@@ -3580,7 +3769,7 @@ Sets the number of columns (in a vertical layout) or rows (in a horizontal layou
 
 ### OH_ArkUI_WaterFlowSectionOption_GetCrossCount()
 
-```
+```c
 int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
@@ -3607,7 +3796,7 @@ Obtains the number of columns (in a vertical layout) or rows (in a horizontal la
 
 ### OH_ArkUI_WaterFlowSectionOption_SetColumnGap()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option,int32_t index, float columnGap)
 ```
 
@@ -3629,7 +3818,7 @@ Sets the gap between columns in the specified water flow section.
 
 ### OH_ArkUI_WaterFlowSectionOption_GetColumnGap()
 
-```
+```c
 float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
@@ -3656,7 +3845,7 @@ Obtains the gap between columns in the water flow section that matches the speci
 
 ### OH_ArkUI_WaterFlowSectionOption_SetRowGap()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* option,int32_t index, float rowGap)
 ```
 
@@ -3678,7 +3867,7 @@ Sets the gap between rows in the specified water flow section.
 
 ### OH_ArkUI_WaterFlowSectionOption_GetRowGap()
 
-```
+```c
 float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
@@ -3705,7 +3894,7 @@ Obtains the gap between rows in the water flow section that matches the specifie
 
 ### OH_ArkUI_WaterFlowSectionOption_SetMargin()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)
 ```
 
@@ -3730,7 +3919,7 @@ Sets the margins for the specified water flow section.
 
 ### OH_ArkUI_WaterFlowSectionOption_GetMargin()
 
-```
+```c
 ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)
 ```
 
@@ -3757,7 +3946,7 @@ Obtains the margins of the water flow section that matches the specified index.
 
 ### OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkUI_WaterFlowSectionOption* option,int32_t index, float(*callback)(int32_t itemIndex))
 ```
 
@@ -3779,7 +3968,7 @@ Obtains the main axis size of a specified item based on **flowItemIndex** throug
 
 ### OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData()
 
-```
+```c
 void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData(ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData,float (*callback)(int32_t itemIndex, void* userData))
 ```
 
@@ -3802,14 +3991,14 @@ Obtains the main axis size of a specified item based on **flowItemIndex** throug
 
 ### OH_ArkUI_GuidelineOption_Create()
 
-```
+```c
 ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)
 ```
 
 **Description**
 
 
-Creates a guideline configuration for this **RelativeContainer** component.
+Creates guideline options in [RelativeContainer](..//apis-arkui/arkui-ts/ts-container-relativecontainer.md).
 
 **Since**: 12
 
@@ -3818,7 +4007,7 @@ Creates a guideline configuration for this **RelativeContainer** component.
 
 | Name| Description|
 | -- | -- |
-| int32_t size | Number of guidelines.|
+| int32_t size | Number of guidelines. The value range is [0, +∞).|
 
 **Returns**
 
@@ -3828,7 +4017,7 @@ Creates a guideline configuration for this **RelativeContainer** component.
 
 ### OH_ArkUI_GuidelineOption_Dispose()
 
-```
+```c
 void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)
 ```
 
@@ -3848,7 +4037,7 @@ Disposes of a guideline configuration.
 
 ### OH_ArkUI_GuidelineOption_SetId()
 
-```
+```c
 void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char* value, int32_t index)
 ```
 
@@ -3870,7 +4059,7 @@ Sets the ID of a guideline.
 
 ### OH_ArkUI_GuidelineOption_SetDirection()
 
-```
+```c
 void OH_ArkUI_GuidelineOption_SetDirection(ArkUI_GuidelineOption* guideline, ArkUI_Axis value, int32_t index)
 ```
 
@@ -3892,7 +4081,7 @@ Sets the direction of a guideline.
 
 ### OH_ArkUI_GuidelineOption_SetPositionStart()
 
-```
+```c
 void OH_ArkUI_GuidelineOption_SetPositionStart(ArkUI_GuidelineOption* guideline, float value, int32_t index)
 ```
 
@@ -3909,12 +4098,12 @@ Sets the distance between a guideline and the left or top of the container.
 | Name| Description|
 | -- | -- |
 | [ArkUI_GuidelineOption](capi-arkui-nativemodule-arkui-guidelineoption.md)* guideline | Pointer to a guideline configuration.|
-| float value | Distance between the guideline and the left or top of the container.|
+| float value | Distance between a guideline and the left or top edge of the container, in vp.|
 | int32_t index | Index of the guideline.|
 
 ### OH_ArkUI_GuidelineOption_SetPositionEnd()
 
-```
+```c
 void OH_ArkUI_GuidelineOption_SetPositionEnd(ArkUI_GuidelineOption* guideline, float value, int32_t index)
 ```
 
@@ -3931,12 +4120,12 @@ Sets the distance between a guideline and the right or bottom of the container.
 | Name| Description|
 | -- | -- |
 | [ArkUI_GuidelineOption](capi-arkui-nativemodule-arkui-guidelineoption.md)* guideline | Pointer to a guideline configuration.|
-| float value | Distance between the guideline and the right or bottom of the container.|
+| float value | Distance between a guideline and the right or bottom edge of the container, in vp.|
 | int32_t index | Index of the guideline.|
 
 ### OH_ArkUI_GuidelineOption_GetId()
 
-```
+```c
 const char* OH_ArkUI_GuidelineOption_GetId(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
@@ -3963,7 +4152,7 @@ Obtains the ID of a guideline.
 
 ### OH_ArkUI_GuidelineOption_GetDirection()
 
-```
+```c
 ArkUI_Axis OH_ArkUI_GuidelineOption_GetDirection(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
@@ -3990,14 +4179,14 @@ Obtains the direction of a guideline.
 
 ### OH_ArkUI_GuidelineOption_GetPositionStart()
 
-```
+```c
 float OH_ArkUI_GuidelineOption_GetPositionStart(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
 **Description**
 
 
-Obtains the distance between a guide line and the left or top of the container.
+Obtains the distance between the guideline and the left or top of the container.
 
 **Since**: 12
 
@@ -4013,18 +4202,18 @@ Obtains the distance between a guide line and the left or top of the container.
 
 | Type| Description|
 | -- | -- |
-| float | Distance between the guide line and the left or top of the container. The unit is vp.|
+| float | Distance between the guideline and the left or top of the container. The unit is vp.|
 
 ### OH_ArkUI_GuidelineOption_GetPositionEnd()
 
-```
+```c
 float OH_ArkUI_GuidelineOption_GetPositionEnd(ArkUI_GuidelineOption* guideline, int32_t index)
 ```
 
 **Description**
 
 
-Obtains the distance between a guideline and the right or bottom of the container.
+Obtains the distance between the guideline and the right or bottom of the container.
 
 **Since**: 12
 
@@ -4044,7 +4233,7 @@ Obtains the distance between a guideline and the right or bottom of the containe
 
 ### OH_ArkUI_BarrierOption_Create()
 
-```
+```c
 ArkUI_BarrierOption* OH_ArkUI_BarrierOption_Create(int32_t size)
 ```
 
@@ -4060,7 +4249,7 @@ Creates a barrier configuration for this **RelativeContainer** component.
 
 | Name| Description|
 | -- | -- |
-| int32_t size | Number of barriers.|
+| int32_t size | Number of barriers. The value range is [0, +∞).|
 
 **Returns**
 
@@ -4070,7 +4259,7 @@ Creates a barrier configuration for this **RelativeContainer** component.
 
 ### OH_ArkUI_BarrierOption_Dispose()
 
-```
+```c
 void OH_ArkUI_BarrierOption_Dispose(ArkUI_BarrierOption* barrierStyle)
 ```
 
@@ -4090,7 +4279,7 @@ Disposes of a barrier configuration.
 
 ### OH_ArkUI_BarrierOption_SetId()
 
-```
+```c
 void OH_ArkUI_BarrierOption_SetId(ArkUI_BarrierOption* barrierStyle, const char* value, int32_t index)
 ```
 
@@ -4112,7 +4301,7 @@ Sets the ID of a barrier.
 
 ### OH_ArkUI_BarrierOption_SetDirection()
 
-```
+```c
 void OH_ArkUI_BarrierOption_SetDirection(ArkUI_BarrierOption* barrierStyle, ArkUI_BarrierDirection value, int32_t index)
 ```
 
@@ -4134,7 +4323,7 @@ Sets the direction of a barrier.
 
 ### OH_ArkUI_BarrierOption_SetReferencedId()
 
-```
+```c
 void OH_ArkUI_BarrierOption_SetReferencedId(ArkUI_BarrierOption* barrierStyle, const char* value, int32_t index)
 ```
 
@@ -4156,7 +4345,7 @@ Sets the referenced components of a barrier.
 
 ### OH_ArkUI_BarrierOption_GetId()
 
-```
+```c
 const char* OH_ArkUI_BarrierOption_GetId(ArkUI_BarrierOption* barrierStyle, int32_t index)
 ```
 
@@ -4172,8 +4361,8 @@ Obtains the ID of a barrier.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to a guideline configuration.|
-| int32_t index | Index of the guideline.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
+| int32_t index | Index of the barrier.|
 
 **Returns**
 
@@ -4183,7 +4372,7 @@ Obtains the ID of a barrier.
 
 ### OH_ArkUI_BarrierOption_GetDirection()
 
-```
+```c
 ArkUI_BarrierDirection OH_ArkUI_BarrierOption_GetDirection(ArkUI_BarrierOption* barrierStyle, int32_t index)
 ```
 
@@ -4199,8 +4388,8 @@ Obtains the direction of a barrier.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to a guideline configuration.|
-| int32_t index | Index of the guideline.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
+| int32_t index | Index of the barrier.|
 
 **Returns**
 
@@ -4210,7 +4399,7 @@ Obtains the direction of a barrier.
 
 ### OH_ArkUI_BarrierOption_GetReferencedId()
 
-```
+```c
 const char* OH_ArkUI_BarrierOption_GetReferencedId(ArkUI_BarrierOption* barrierStyle, int32_t index , int32_t referencedIndex)
 ```
 
@@ -4226,8 +4415,8 @@ Obtains the referenced components of a barrier.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to a guideline configuration.|
-| int32_t index | Index of the guideline.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
+| int32_t index | Index of the barrier.|
 | int32_t referencedIndex | Index of the referenced component ID.|
 
 **Returns**
@@ -4238,7 +4427,7 @@ Obtains the referenced components of a barrier.
 
 ### OH_ArkUI_BarrierOption_GetReferencedIdSize()
 
-```
+```c
 int32_t OH_ArkUI_BarrierOption_GetReferencedIdSize(ArkUI_BarrierOption* barrierStyle, int32_t index)
 ```
 
@@ -4254,8 +4443,8 @@ Obtains the number of referenced components of a barrier.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to a guideline configuration.|
-| int32_t index | Index of the guideline.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
+| int32_t index | Index of the barrier.|
 
 **Returns**
 
@@ -4265,7 +4454,7 @@ Obtains the number of referenced components of a barrier.
 
 ### OH_ArkUI_AlignmentRuleOption_Create()
 
-```
+```c
 ArkUI_AlignmentRuleOption* OH_ArkUI_AlignmentRuleOption_Create()
 ```
 
@@ -4284,7 +4473,7 @@ Creates an alignment rule configuration for this **RelativeContainer** component
 
 ### OH_ArkUI_AlignmentRuleOption_Dispose()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_Dispose(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -4304,14 +4493,14 @@ Disposes of an alignment rule configuration of this **RelativeContainer** compon
 
 ### OH_ArkUI_AlignmentRuleOption_SetStart()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetStart(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)
 ```
 
 **Description**
 
 
-Sets the left alignment parameters.
+Sets the left alignment mode of a relative layout.
 
 **Since**: 12
 
@@ -4326,14 +4515,14 @@ Sets the left alignment parameters.
 
 ### OH_ArkUI_AlignmentRuleOption_SetEnd()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetEnd(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)
 ```
 
 **Description**
 
 
-Sets the right alignment parameters.
+Sets the right alignment mode of a relative layout.
 
 **Since**: 12
 
@@ -4348,14 +4537,14 @@ Sets the right alignment parameters.
 
 ### OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_HorizontalAlignment alignment)
 ```
 
 **Description**
 
 
-Sets the horizontal center alignment parameters.
+Sets the horizontal center alignment mode of a relative layout.
 
 **Since**: 12
 
@@ -4370,14 +4559,14 @@ Sets the horizontal center alignment parameters.
 
 ### OH_ArkUI_AlignmentRuleOption_SetTop()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetTop(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)
 ```
 
 **Description**
 
 
-Sets the top alignment parameters.
+Sets the top alignment mode of a relative layout.
 
 **Since**: 12
 
@@ -4392,14 +4581,14 @@ Sets the top alignment parameters.
 
 ### OH_ArkUI_AlignmentRuleOption_SetBottom()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetBottom(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)
 ```
 
 **Description**
 
 
-Sets the bottom alignment parameters.
+Sets the bottom alignment mode of a relative layout.
 
 **Since**: 12
 
@@ -4414,14 +4603,14 @@ Sets the bottom alignment parameters.
 
 ### OH_ArkUI_AlignmentRuleOption_SetCenterVertical()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetCenterVertical(ArkUI_AlignmentRuleOption* option, const char* id, ArkUI_VerticalAlignment alignment)
 ```
 
 **Description**
 
 
-Sets the vertical center alignment parameters.
+Sets the vertical center alignment mode of a relative layout.
 
 **Since**: 12
 
@@ -4436,7 +4625,7 @@ Sets the vertical center alignment parameters.
 
 ### OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal(ArkUI_AlignmentRuleOption* option, float horizontal)
 ```
 
@@ -4457,7 +4646,7 @@ Sets the bias value of the component in the horizontal direction under the ancho
 
 ### OH_ArkUI_AlignmentRuleOption_SetBiasVertical()
 
-```
+```c
 void OH_ArkUI_AlignmentRuleOption_SetBiasVertical(ArkUI_AlignmentRuleOption* option, float vertical)
 ```
 
@@ -4478,14 +4667,14 @@ Sets the bias value of the component in the vertical direction under the anchor 
 
 ### OH_ArkUI_AlignmentRuleOption_GetStartId()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetStartId(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the ID in the left alignment parameters.
+Obtains the ID of the left alignment anchor component.
 
 **Since**: 12
 
@@ -4500,18 +4689,18 @@ Obtains the ID in the left alignment parameters.
 
 | Type| Description|
 | -- | -- |
-| const char* | ID of the component that functions as the anchor point.|
+| const char* | ID of the left alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetStartAlignment()
 
-```
+```c
 ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetStartAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the alignment mode in left alignment parameters.
+Obtains the left alignment mode.
 
 **Since**: 12
 
@@ -4530,14 +4719,14 @@ Obtains the alignment mode in left alignment parameters.
 
 ### OH_ArkUI_AlignmentRuleOption_GetEndId()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetEndId(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the alignment mode in the right alignment parameters.
+Obtains the right alignment mode.
 
 **Since**: 12
 
@@ -4552,18 +4741,18 @@ Obtains the alignment mode in the right alignment parameters.
 
 | Type| Description|
 | -- | -- |
-| const char* | Returns the ID in the right alignment parameters.|
+| const char* | ID of the right alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetEndAlignment()
 
-```
+```c
 ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetEndAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the alignment mode in the right alignment parameters.
+Obtains the ID of the right alignment anchor component.
 
 **Since**: 12
 
@@ -4578,18 +4767,18 @@ Obtains the alignment mode in the right alignment parameters.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment) | Returns the alignment mode in the right alignment parameters.|
+| [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment) | Right alignment mode.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdHorizontal(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the alignment mode in horizontal center alignment parameters.
+Obtains the horizontal center alignment mode.
 
 **Since**: 12
 
@@ -4604,18 +4793,18 @@ Obtains the alignment mode in horizontal center alignment parameters.
 
 | Type| Description|
 | -- | -- |
-| const char* | Returns the ID in horizontal center alignment parameters.|
+| const char* | ID of the horizontal center alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal()
 
-```
+```c
 ArkUI_HorizontalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the alignment mode in horizontal center alignment parameters.
+Obtains the ID of the horizontal center alignment anchor component.
 
 **Since**: 12
 
@@ -4630,18 +4819,18 @@ Obtains the alignment mode in horizontal center alignment parameters.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment) | Returns the alignment mode in horizontal center alignment parameters.|
+| [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment) | Horizontal center alignment mode.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetTopId()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetTopId(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the alignment mode in top alignment parameters.
+Obtains the top alignment mode.
 
 **Since**: 12
 
@@ -4656,18 +4845,18 @@ Obtains the alignment mode in top alignment parameters.
 
 | Type| Description|
 | -- | -- |
-| const char* | Returns the ID in top alignment parameters.|
+| const char* | ID of the top alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetTopAlignment()
 
-```
+```c
 ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetTopAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the alignment mode in top alignment parameters.
+Obtains the ID of the top alignment anchor component.
 
 **Since**: 12
 
@@ -4682,18 +4871,18 @@ Obtains the alignment mode in top alignment parameters.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | Returns the alignment mode in top alignment parameters.|
+| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | Top alignment mode.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetBottomId()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetBottomId(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the alignment mode in bottom alignment parameters.
+Obtains the bottom alignment mode.
 
 **Since**: 12
 
@@ -4708,18 +4897,18 @@ Obtains the alignment mode in bottom alignment parameters.
 
 | Type| Description|
 | -- | -- |
-| const char* | Returns the ID in bottom alignment parameters.|
+| const char* | ID of the bottom alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetBottomAlignment()
 
-```
+```c
 ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetBottomAlignment(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the alignment mode in bottom alignment parameters.
+Obtains the ID of the bottom alignment anchor component.
 
 **Since**: 12
 
@@ -4734,18 +4923,18 @@ Obtains the alignment mode in bottom alignment parameters.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | Returns the alignment mode in bottom alignment parameters.|
+| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | Bottom alignment mode.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical()
 
-```
+```c
 const char* OH_ArkUI_AlignmentRuleOption_GetCenterIdVertical(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the ID in vertical center alignment parameters.
+Obtains the vertical center alignment mode.
 
 **Since**: 12
 
@@ -4760,18 +4949,18 @@ Obtains the ID in vertical center alignment parameters.
 
 | Type| Description|
 | -- | -- |
-| const char* | Returns the ID in vertical center alignment parameters.|
+| const char* | ID of the vertical center alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical()
 
-```
+```c
 ArkUI_VerticalAlignment OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical(ArkUI_AlignmentRuleOption* option)
 ```
 
 **Description**
 
 
-Obtains the ID in vertical center alignment parameters.
+Obtains the ID of the vertical center alignment anchor component.
 
 **Since**: 12
 
@@ -4786,11 +4975,11 @@ Obtains the ID in vertical center alignment parameters.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | Returns the vertical center alignment parameters.|
+| [ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment) | Vertical center alignment mode.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal()
 
-```
+```c
 float OH_ArkUI_AlignmentRuleOption_GetBiasHorizontal(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -4816,7 +5005,7 @@ Obtains the bias value in the horizontal direction.
 
 ### OH_ArkUI_AlignmentRuleOption_GetBiasVertical()
 
-```
+```c
 float OH_ArkUI_AlignmentRuleOption_GetBiasVertical(ArkUI_AlignmentRuleOption* option)
 ```
 
@@ -4842,14 +5031,14 @@ Obtains the bias value in the vertical direction.
 
 ### OH_ArkUI_SwiperIndicator_Create()
 
-```
+```c
 ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType type)
 ```
 
 **Description**
 
 
-Creates a navigation indicator for the Swiper component.
+Creates a navigation indicator for the **Swiper** component.
 
 **Since**: 12
 
@@ -4868,7 +5057,7 @@ Creates a navigation indicator for the Swiper component.
 
 ### OH_ArkUI_SwiperIndicator_Dispose()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_Dispose(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -4888,14 +5077,14 @@ Disposes of the navigation indicator of this **Swiper** component.
 
 ### OH_ArkUI_SwiperIndicator_SetStartPosition()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
 **Description**
 
 
-Sets the distance between the navigation indicator and the left edge of the **Swiper** component.
+Sets the distance between the navigation point and the left edge of the **Swiper** component.
 
 **Since**: 12
 
@@ -4905,18 +5094,18 @@ Sets the distance between the navigation indicator and the left edge of the **Sw
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator.|
-| float value | Returns the distance between the navigation indicator and the left edge of the **Swiper** component. Default value: **0**, in vp.|
+| float value | Distance between the navigation indicator and the left edge of the **Swiper** component. Default value: **0**, in vp.|
 
 ### OH_ArkUI_SwiperIndicator_GetStartPosition()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the distance between a navigation indicator and the left edge of the **Swiper** component.
+Obtains the distance between the navigation point and the left edge of the **Swiper** component.
 
 **Since**: 12
 
@@ -4935,14 +5124,14 @@ Obtains the distance between a navigation indicator and the left edge of the **S
 
 ### OH_ArkUI_SwiperIndicator_SetTopPosition()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetTopPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
 **Description**
 
 
-Sets the distance between the navigation indicator and the top edge of the **Swiper** component.
+Sets the distance between the navigation point and the top edge of the **Swiper** component.
 
 **Since**: 12
 
@@ -4956,14 +5145,14 @@ Sets the distance between the navigation indicator and the top edge of the **Swi
 
 ### OH_ArkUI_SwiperIndicator_GetTopPosition()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetTopPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the distance between the navigation indicator and the top edge of the **Swiper** component.
+Obtains the distance between the navigation point and the top edge of the **Swiper** component.
 
 **Since**: 12
 
@@ -4982,14 +5171,14 @@ Obtains the distance between the navigation indicator and the top edge of the **
 
 ### OH_ArkUI_SwiperIndicator_SetEndPosition()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
 **Description**
 
 
-Sets the distance between the navigation indicator and the right edge of the **Swiper** component.
+Sets the distance between the navigation point and the right edge of the **Swiper** component.
 
 **Since**: 12
 
@@ -5003,14 +5192,14 @@ Sets the distance between the navigation indicator and the right edge of the **S
 
 ### OH_ArkUI_SwiperIndicator_GetEndPosition()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the distance between a navigation indicator and the right edge of the **Swiper** component.
+Obtains the distance between the navigation point and the right edge of the **Swiper** component.
 
 **Since**: 12
 
@@ -5029,14 +5218,14 @@ Obtains the distance between a navigation indicator and the right edge of the **
 
 ### OH_ArkUI_SwiperIndicator_SetBottomPosition()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
 **Description**
 
 
-Sets the distance between the navigation indicator and the bottom edge of the **Swiper** component.
+Sets the distance between the navigation point and the bottom edge of the **Swiper** component.
 
 **Since**: 12
 
@@ -5050,14 +5239,14 @@ Sets the distance between the navigation indicator and the bottom edge of the **
 
 ### OH_ArkUI_SwiperIndicator_GetBottomPosition()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetBottomPosition(ArkUI_SwiperIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the distance between the navigation indicator and the bottom edge of the **Swiper** component.
+Obtains the distance between the navigation point and the bottom edge of the **Swiper** component.
 
 **Since**: 12
 
@@ -5076,7 +5265,7 @@ Obtains the distance between the navigation indicator and the bottom edge of the
 
 ### OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator, int32_t ignoreSize)
 ```
 
@@ -5097,7 +5286,7 @@ Sets whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the 
 
 ### OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom()
 
-```
+```c
 int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5123,7 +5312,7 @@ Checks whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores th
 
 ### OH_ArkUI_SwiperIndicator_SetItemWidth()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetItemWidth(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5144,7 +5333,7 @@ Sets the width of a dot-style navigation indicator for the **Swiper** component.
 
 ### OH_ArkUI_SwiperIndicator_GetItemWidth()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetItemWidth(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5170,7 +5359,7 @@ Obtains the width of a dot-style navigation indicator of the **Swiper** componen
 
 ### OH_ArkUI_SwiperIndicator_SetItemHeight()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetItemHeight(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5191,7 +5380,7 @@ Sets the height of a dot-style navigation indicator for the **Swiper** component
 
 ### OH_ArkUI_SwiperIndicator_GetItemHeight()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetItemHeight(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5217,7 +5406,7 @@ Obtains the height of a dot-style navigation indicator of the **Swiper** compone
 
 ### OH_ArkUI_SwiperIndicator_SetSelectedItemWidth()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetSelectedItemWidth(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5238,7 +5427,7 @@ Sets the width of the selected dot-style navigation indicator for the **Swiper**
 
 ### OH_ArkUI_SwiperIndicator_GetSelectedItemWidth()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetSelectedItemWidth(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5264,7 +5453,7 @@ Obtains the width of the selected dot-style navigation indicator of the **Swiper
 
 ### OH_ArkUI_SwiperIndicator_SetSelectedItemHeight()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetSelectedItemHeight(ArkUI_SwiperIndicator* indicator, float value)
 ```
 
@@ -5285,7 +5474,7 @@ Sets the height of the selected dot-style navigation indicator for the **Swiper*
 
 ### OH_ArkUI_SwiperIndicator_GetSelectedItemHeight()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetSelectedItemHeight(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5311,7 +5500,7 @@ Obtains the height of the selected dot-style navigation indicator of the **Swipe
 
 ### OH_ArkUI_SwiperIndicator_SetMask()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetMask(ArkUI_SwiperIndicator* indicator, int32_t mask)
 ```
 
@@ -5328,11 +5517,11 @@ Sets whether to enable the mask for a dot-style navigation indicator for the **S
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator.|
-| int32_t mask | Whether to enable the mask. The value **1** means to enable the mask, and **0** means the opposite.|
+| int32_t mask | Whether to enable the mask. The value **1** means to enable, and **0** means the opposite.<br>Default value: **0**|
 
 ### OH_ArkUI_SwiperIndicator_GetMask()
 
-```
+```c
 int32_t OH_ArkUI_SwiperIndicator_GetMask(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5354,11 +5543,11 @@ Obtains whether the mask is enabled for a dot-style navigation indicator of the 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns **1** if the mask is enabled; returns **0** otherwise.|
+| int32_t | The value **1** indicates that the mask is enabled; the value **0** indicates that the mask is disabled.|
 
 ### OH_ArkUI_SwiperIndicator_SetColor()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetColor(ArkUI_SwiperIndicator* indicator, uint32_t color)
 ```
 
@@ -5375,11 +5564,11 @@ Sets the color of a dot-style navigation indicator for the **Swiper** component.
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator.|
-| uint32_t color | Color, in 0xARGB format. For example, 0xFFFF0000 indicates red.|
+| uint32_t color | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br>Default value: **'#1A182431'** (light gray)|
 
 ### OH_ArkUI_SwiperIndicator_GetColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperIndicator_GetColor(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5405,7 +5594,7 @@ Obtains the color of a dot-style navigation indicator of the **Swiper** componen
 
 ### OH_ArkUI_SwiperIndicator_SetSelectedColor()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator, uint32_t selectedColor)
 ```
 
@@ -5422,11 +5611,11 @@ Sets the color of the selected dot-style navigation indicator for the **Swiper**
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator.|
-| uint32_t selectedColor | Color, in 0xARGB format. For example, 0xFFFF0000 indicates red.|
+| uint32_t selectedColor | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br>Default value: **'\#007DFF'** (blue)|
 
 ### OH_ArkUI_SwiperIndicator_GetSelectedColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperIndicator_GetSelectedColor(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5452,7 +5641,7 @@ Obtains the color of the selected dot-style navigation indicator of the **Swiper
 
 ### OH_ArkUI_SwiperIndicator_SetMaxDisplayCount()
 
-```
+```c
 int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indicator, int32_t maxDisplayCount)
 ```
 
@@ -5469,7 +5658,7 @@ Sets the maximum number of dots for the dot-style navigation indicator.
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperIndicator](capi-arkui-nativemodule-arkui-swiperindicator.md)* indicator | Pointer to the navigation indicator.|
-| int32_t maxDisplayCount | Maximum number of navigation dots that can be displayed. The value range is [6, 9].|
+| int32_t maxDisplayCount | Maximum number of navigation points. Value range: [6, 9].|
 
 **Returns**
 
@@ -5479,7 +5668,7 @@ Sets the maximum number of dots for the dot-style navigation indicator.
 
 ### OH_ArkUI_SwiperIndicator_GetMaxDisplayCount()
 
-```
+```c
 int32_t OH_ArkUI_SwiperIndicator_GetMaxDisplayCount(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -5501,18 +5690,18 @@ Obtains the maximum number of dots for the dot-style navigation indicator.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Maximum number of navigation dots that can be displayed. The value range is [6, 9].|
+| int32_t | Maximum number of navigation points. Value range: [6, 9].|
 
 ### OH_ArkUI_SwiperDigitIndicator_Create()
 
-```
+```c
 ArkUI_SwiperDigitIndicator *OH_ArkUI_SwiperDigitIndicator_Create()
 ```
 
 **Description**
 
 
-Creates a digit-style navigation indicator for this **Swiper** component.
+Creates a digit-style navigation indicator for the **Swiper** component.
 
 **Since**: 19
 
@@ -5524,7 +5713,7 @@ Creates a digit-style navigation indicator for this **Swiper** component.
 
 ### OH_ArkUI_SwiperDigitIndicator_Destroy()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -5544,14 +5733,14 @@ Disposes of the digit-style navigation indicator of this **Swiper** component.
 
 ### OH_ArkUI_SwiperDigitIndicator_SetStartPosition()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetStartPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
 **Description**
 
 
-Sets the start position of the digit-style navigation indicator for the **Swiper** component. This determines the distance from the left edge of the **Swiper** component. For right-to-left scripts, this determines the distance from the right edge.
+Sets the distance between the digit-style navigation indicator and the left edge of the **Swiper** component.
 
 **Since**: 19
 
@@ -5561,18 +5750,18 @@ Sets the start position of the digit-style navigation indicator for the **Swiper
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the digit-style navigation indicator.|
-| float value | Distance from the left edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the right edge. Default value: **0**, in vp.|
+| float value | Distance between the digit-style navigation indicator and the left edge of the **Swiper** component. For left-to-right scripts, set the distance between the digit-style navigation indicator and the left edge of the **Swiper** component. For right-to-left scripts, set the distance between the digit-style navigation indicator and the right side of the **Swiper** component.<br>Default value: **0**<br>Unit: vp|
 
 ### OH_ArkUI_SwiperDigitIndicator_GetStartPosition()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetStartPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the start position of the digit-style navigation indicator for the **Swiper** component. This indicates the distance from the left edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the right edge.
+Obtains the distance between the digit-style navigation indicator and the left edge of the **Swiper** component.
 
 **Since**: 19
 
@@ -5587,18 +5776,18 @@ Obtains the start position of the digit-style navigation indicator for the **Swi
 
 | Type| Description|
 | -- | -- |
-| float | Distance from the left edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the right edge. Unit: vp.|
+| float | Distance between the digit-style navigation indicator and the left edge of the **Swiper** component. For left-to-right scripts, the distance between the digit-style navigation indicator and the left edge of the **Swiper** component is returned. For right-to-left scripts, the distance between the digit-style navigation indicator and the right side of the **Swiper** component is returned.<br>Unit: vp|
 
 ### OH_ArkUI_SwiperDigitIndicator_SetTopPosition()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetTopPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
 **Description**
 
 
-Sets the distance from the digit-style navigation indicator to the top of the **Swiper** component.
+Sets the distance from the digit-style navigation indicator to the top edge of the **Swiper** component.
 
 **Since**: 19
 
@@ -5612,14 +5801,14 @@ Sets the distance from the digit-style navigation indicator to the top of the **
 
 ### OH_ArkUI_SwiperDigitIndicator_GetTopPosition()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetTopPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the distance from the digit-style navigation indicator to the top of the **Swiper** component.
+Obtains the distance from the digit-style navigation indicator to the top edge of the **Swiper** component.
 
 **Since**: 19
 
@@ -5638,14 +5827,14 @@ Obtains the distance from the digit-style navigation indicator to the top of the
 
 ### OH_ArkUI_SwiperDigitIndicator_SetEndPosition()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetEndPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
 **Description**
 
 
-Sets the end position of the digit-style navigation indicator for the **Swiper** component. This determines the distance from the right edge of the **Swiper** component. For right-to-left scripts, this determines the distance from the left edge.
+Sets the distance between the digit-style navigation indicator and the right edge of the **Swiper** component.
 
 **Since**: 19
 
@@ -5655,18 +5844,18 @@ Sets the end position of the digit-style navigation indicator for the **Swiper**
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the digit-style navigation indicator.|
-| float value | Distance from the right edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the left edge. Default value: **0**, in vp.|
+| float value | Distance between the digit-style navigation indicator and the right edge of the **Swiper** component. For left-to-right scripts, set the distance between the digit-style navigation indicator and the right edge of the **Swiper** component. For right-to-left scripts, set the digit-style navigation indicator and the left edge of the **Swiper** component.<br>Default value: **0**<br>Unit: vp|
 
 ### OH_ArkUI_SwiperDigitIndicator_GetEndPosition()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetEndPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the end position of the digit-style navigation indicator for the **Swiper** component. This indicates the distance from the right edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the left edge.
+Obtains the distance between the digit-style navigation indicator and the right edge of the **Swiper** component.
 
 **Since**: 19
 
@@ -5681,18 +5870,18 @@ Obtains the end position of the digit-style navigation indicator for the **Swipe
 
 | Type| Description|
 | -- | -- |
-| float | Distance from the right edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the left edge. Unit: vp.|
+| float | Distance between the digit-style navigation indicator and the right edge of the **Swiper** component. For left-to-right scripts, the distance between the digit-style navigation indicator and the right edge of the **Swiper** component is returned. For right-to-left scripts, the digit-style navigation indicator and the left edge of the **Swiper** component is returned.<br>Unit: vp|
 
 ### OH_ArkUI_SwiperDigitIndicator_SetBottomPosition()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator* indicator, float value)
 ```
 
 **Description**
 
 
-Sets the distance from the digit-style navigation indicator to the bottom of the **Swiper** component.
+Sets the distance from the digit-style navigation indicator to the bottom edge of the **Swiper** component.
 
 **Since**: 19
 
@@ -5706,14 +5895,14 @@ Sets the distance from the digit-style navigation indicator to the bottom of the
 
 ### OH_ArkUI_SwiperDigitIndicator_GetBottomPosition()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetBottomPosition(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the distance from the digit-style navigation indicator to the bottom of the **Swiper** component.
+Obtains the distance from the digit-style navigation indicator to the bottom edge of the **Swiper** component.
 
 **Since**: 19
 
@@ -5732,7 +5921,7 @@ Obtains the distance from the digit-style navigation indicator to the bottom of 
 
 ### OH_ArkUI_SwiperDigitIndicator_SetFontColor()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetFontColor(ArkUI_SwiperDigitIndicator* indicator, uint32_t color)
 ```
 
@@ -5749,11 +5938,11 @@ Sets the font color of the digit-style navigation indicator for the **Swiper** c
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the digit-style navigation indicator.|
-| uint32_t color | Returns the color, in 0xARGB format. For example, 0xFFFF0000 indicates red. Default value: **0xFF182431**.|
+| uint32_t color | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red. Default value: **0xFF182431**.|
 
 ### OH_ArkUI_SwiperDigitIndicator_GetFontColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperDigitIndicator_GetFontColor(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -5779,7 +5968,7 @@ Obtains the font color of the digit-style navigation indicator for the **Swiper*
 
 ### OH_ArkUI_SwiperDigitIndicator_SetSelectedFontColor()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontColor(ArkUI_SwiperDigitIndicator* indicator, uint32_t selectedColor)
 ```
 
@@ -5796,18 +5985,18 @@ Sets the font color of the selected digit-style navigation indicator for the **S
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the digit-style navigation indicator.|
-| uint32_t selectedColor | Returns the color, in 0xARGB format. For example, 0xFFFF0000 indicates red. Default value: **0xFF182431**.|
+| uint32_t selectedColor | Color, in 0xARGB format. For example, **0xFFFF0000** indicates red. Default value: **0xFF182431**.|
 
 ### OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the font color of the selected digit-style navigation indicator for the **Swiper** component.
+Obtains the font color of the selected digit-style navigation indicator of the **Swiper** component.
 
 **Since**: 19
 
@@ -5826,7 +6015,7 @@ Obtains the font color of the selected digit-style navigation indicator for the 
 
 ### OH_ArkUI_SwiperDigitIndicator_SetFontSize()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetFontSize(ArkUI_SwiperDigitIndicator* indicator, float size)
 ```
 
@@ -5843,18 +6032,18 @@ Sets the font size of the digit-style navigation indicator for the **Swiper** co
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the digit-style navigation indicator.|
-| float size | Font size, in fp.|
+| float size | Font size, in fp.<br>Default value: **14**|
 
 ### OH_ArkUI_SwiperDigitIndicator_GetFontSize()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetFontSize(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the font size of the digit-style navigation indicator for the **Swiper** component.
+Obtains the font size of the digit-style navigation indicator of the **Swiper** component.
 
 **Since**: 19
 
@@ -5873,7 +6062,7 @@ Obtains the font size of the digit-style navigation indicator for the **Swiper**
 
 ### OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator, float size)
 ```
 
@@ -5890,18 +6079,18 @@ Sets the font size of the selected digit-style navigation indicator for the **Sw
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the digit-style navigation indicator.|
-| float size | Font size, in fp.|
+| float size | Font size, in fp.<br>Default value: **14**|
 
 ### OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize()
 
-```
+```c
 float OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the font size of the selected digit-style navigation indicator for the **Swiper** component.
+Obtains the font size of the selected digit-style navigation indicator of the **Swiper** component.
 
 **Since**: 19
 
@@ -5920,7 +6109,7 @@ Obtains the font size of the selected digit-style navigation indicator for the *
 
 ### OH_ArkUI_SwiperDigitIndicator_SetFontWeight()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight fontWeight)
 ```
 
@@ -5941,14 +6130,14 @@ Sets the font weight of the digit-style navigation indicator for the **Swiper** 
 
 ### OH_ArkUI_SwiperDigitIndicator_GetFontWeight()
 
-```
+```c
 ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetFontWeight(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the font weight of the digit-style navigation indicator for the **Swiper** component.
+Obtains the font weight of the digit-style navigation indicator of the **Swiper** component.
 
 **Since**: 19
 
@@ -5967,7 +6156,7 @@ Obtains the font weight of the digit-style navigation indicator for the **Swiper
 
 ### OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight selectedFontWeight)
 ```
 
@@ -5988,14 +6177,14 @@ Sets the font weight of the selected digit-style navigation indicator for the **
 
 ### OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight()
 
-```
+```c
 ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
 **Description**
 
 
-Obtains the font weight of the selected digit-style navigation indicator for the **Swiper** component.
+Obtains the font weight of the selected digit-style navigation indicator of the **Swiper** component.
 
 **Since**: 19
 
@@ -6014,14 +6203,14 @@ Obtains the font weight of the selected digit-style navigation indicator for the
 
 ### OH_ArkUI_SwiperArrowStyle_Create()
 
-```
+```c
 ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()
 ```
 
 **Description**
 
 
-Creates an arrow style for the **Swiper** component.
+Creates a navigation arrow for the **Swiper** component.
 
 **Since**: 19
 
@@ -6033,14 +6222,14 @@ Creates an arrow style for the **Swiper** component.
 
 ### OH_ArkUI_SwiperArrowStyle_Destroy()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_Destroy(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
 **Description**
 
 
-Disposes of the arrow of the **Swiper** component.
+Destroys the navigation arrow pointer of the **Swiper** component.
 
 **Since**: 19
 
@@ -6053,14 +6242,14 @@ Disposes of the arrow of the **Swiper** component.
 
 ### OH_ArkUI_SwiperArrowStyle_SetShowBackground()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showBackground)
 ```
 
 **Description**
 
 
-Sets whether to display the background of the arrow for the **Swiper** component.
+Sets whether to display the background of the navigation arrow for the **Swiper** component.
 
 **Since**: 19
 
@@ -6074,14 +6263,14 @@ Sets whether to display the background of the arrow for the **Swiper** component
 
 ### OH_ArkUI_SwiperArrowStyle_GetShowBackground()
 
-```
+```c
 int32_t OH_ArkUI_SwiperArrowStyle_GetShowBackground(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
 **Description**
 
 
-Checks whether the background of the arrow is displayed for the **Swiper** component.
+Checks whether the background of the navigation arrow is displayed for the **Swiper** component.
 
 **Since**: 19
 
@@ -6100,14 +6289,14 @@ Checks whether the background of the arrow is displayed for the **Swiper** compo
 
 ### OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle, int32_t showSidebarMiddle)
 ```
 
 **Description**
 
 
-Sets the position of the arrow for the **Swiper** component.
+Sets the position of the navigation arrow for the **Swiper** component.
 
 **Since**: 19
 
@@ -6121,14 +6310,14 @@ Sets the position of the arrow for the **Swiper** component.
 
 ### OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle()
 
-```
+```c
 int32_t OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
 **Description**
 
 
-Obtains the position of the arrow for the **Swiper** component.
+Obtains the position of the navigation arrow for the **Swiper** component.
 
 **Since**: 19
 
@@ -6147,14 +6336,14 @@ Obtains the position of the arrow for the **Swiper** component.
 
 ### OH_ArkUI_SwiperArrowStyle_SetBackgroundSize()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle, float backgroundSize)
 ```
 
 **Description**
 
 
-Sets the background size for the arrow of the **Swiper** component.
+Sets the background size for the navigation arrow of the **Swiper** component.
 
 **Since**: 19
 
@@ -6168,14 +6357,14 @@ Sets the background size for the arrow of the **Swiper** component.
 
 ### OH_ArkUI_SwiperArrowStyle_GetBackgroundSize()
 
-```
+```c
 float OH_ArkUI_SwiperArrowStyle_GetBackgroundSize(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
 **Description**
 
 
-Obtains the background size of the arrow of the **Swiper** component.
+Obtains the background size of the navigation arrow of the **Swiper** component.
 
 **Since**: 19
 
@@ -6194,14 +6383,14 @@ Obtains the background size of the arrow of the **Swiper** component.
 
 ### OH_ArkUI_SwiperArrowStyle_SetBackgroundColor()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetBackgroundColor(ArkUI_SwiperArrowStyle* arrowStyle, uint32_t backgroundColor)
 ```
 
 **Description**
 
 
-Sets the background color for the arrow of the **Swiper** component.
+Sets the background color for the navigation arrow of the **Swiper** component.
 
 **Since**: 19
 
@@ -6215,14 +6404,14 @@ Sets the background color for the arrow of the **Swiper** component.
 
 ### OH_ArkUI_SwiperArrowStyle_GetBackgroundColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperArrowStyle_GetBackgroundColor(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
 **Description**
 
 
-Obtains the background color for the arrow of the **Swiper** component.
+Obtains the background color of the navigation arrow of the **Swiper** component.
 
 **Since**: 19
 
@@ -6241,14 +6430,14 @@ Obtains the background color for the arrow of the **Swiper** component.
 
 ### OH_ArkUI_SwiperArrowStyle_SetArrowSize()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, float arrowSize)
 ```
 
 **Description**
 
 
-Sets the size for the arrow of the **Swiper** component.
+Sets the size for the navigation arrow of the **Swiper** component.
 
 **Since**: 19
 
@@ -6258,18 +6447,18 @@ Sets the size for the arrow of the **Swiper** component.
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md)* arrowStyle | Pointer to the arrow object.|
-| float arrowSize | Size of the arrow, in vp. Default value: 18 vp when displayed on both sides of the navigation indicator and 24 vp when displayed on both sides of the **Swiper** component. When the arrow background is displayed, the value of **arrowSize** is fixed at 3/4 of the value of **backgroundSize**.|
+| float arrowSize | Size of the arrow, in vp.<br>Default value: 18 vp when displayed on both sides of the navigation indicator and 24 vp when displayed on both sides of the **Swiper** component. When the navigation arrow background is displayed, the value of **arrowSize** is fixed at 3/4 of the value of [backgroundSize](#oh_arkui_swiperarrowstyle_setbackgroundsize).|
 
 ### OH_ArkUI_SwiperArrowStyle_GetArrowSize()
 
-```
+```c
 float OH_ArkUI_SwiperArrowStyle_GetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
 **Description**
 
 
-Obtains the size of the arrow of the **Swiper** component.
+Obtains the size of the navigation arrow of the **Swiper** component.
 
 **Since**: 19
 
@@ -6288,14 +6477,14 @@ Obtains the size of the arrow of the **Swiper** component.
 
 ### OH_ArkUI_SwiperArrowStyle_SetArrowColor()
 
-```
+```c
 void OH_ArkUI_SwiperArrowStyle_SetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle, uint32_t arrowColor)
 ```
 
 **Description**
 
 
-Sets the color for the arrow of the **Swiper** component.
+Sets the color for the navigation arrow of the **Swiper** component.
 
 **Since**: 19
 
@@ -6305,18 +6494,18 @@ Sets the color for the arrow of the **Swiper** component.
 | Name| Description|
 | -- | -- |
 | [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md)* arrowStyle | Pointer to the arrow object.|
-| uint32_t arrowColor | Color of the arrow, in 0xARGB format. For example, 0xFFFF0000 indicates red.|
+| uint32_t arrowColor | Color of the navigation arrow, in 0xARGB format. For example, **0xFFFF0000** indicates red.<br>Default value: **'#182431'** (dark blue)|
 
 ### OH_ArkUI_SwiperArrowStyle_GetArrowColor()
 
-```
+```c
 uint32_t OH_ArkUI_SwiperArrowStyle_GetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle)
 ```
 
 **Description**
 
 
-Obtains the color of the arrow of the **Swiper** component.
+Obtains the color of the navigation arrow of the **Swiper** component.
 
 **Since**: 19
 
@@ -6335,7 +6524,7 @@ Obtains the color of the arrow of the **Swiper** component.
 
 ### OH_ArkUI_SwiperIndicator_SetSpace()
 
-```
+```c
 void OH_ArkUI_SwiperIndicator_SetSpace(ArkUI_SwiperIndicator* indicator, float space)
 ```
 
@@ -6356,7 +6545,7 @@ Sets the spacing between navigation points.
 
 ### OH_ArkUI_SwiperIndicator_GetSpace()
 
-```
+```c
 float OH_ArkUI_SwiperIndicator_GetSpace(ArkUI_SwiperIndicator* indicator)
 ```
 
@@ -6382,7 +6571,7 @@ Obtains the spacing between navigation points.
 
 ### OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom()
 
-```
+```c
 void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator, int32_t ignoreSize)
 ```
 
@@ -6403,7 +6592,7 @@ Sets whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores
 
 ### OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom()
 
-```
+```c
 int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndicator* indicator)
 ```
 
@@ -6425,11 +6614,11 @@ Checks whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignor
 
 | Type| Description|
 | -- | -- |
-| int32_t | Whether to ignore the indicator size when positioning the indicator.|
+| int32_t | The value **1** indicates that the navigation indicator size is ignored, and the value **0** indicates that the navigation indicator size is not ignored.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_Create()
 
-```
+```c
 ArkUI_ListItemSwipeActionItem* OH_ArkUI_ListItemSwipeActionItem_Create()
 ```
 
@@ -6448,7 +6637,7 @@ Creates a **ListItemSwipeActionItem** instance.
 
 ### OH_ArkUI_ListItemSwipeActionItem_Dispose()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_Dispose(ArkUI_ListItemSwipeActionItem* item)
 ```
 
@@ -6468,7 +6657,7 @@ Disposes of a **ListItemSwipeActionItem** instance.
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetContent()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetContent(ArkUI_ListItemSwipeActionItem* item, ArkUI_NodeHandle node)
 ```
 
@@ -6489,14 +6678,14 @@ Sets the layout content for a **ListItemSwipeActionItem** instance.
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item, float distance)
 ```
 
 **Description**
 
 
-Swipe distance threshold for deleting the list item.
+Sets the swipe distance threshold for deleting the list item.
 
 **Since**: 12
 
@@ -6506,11 +6695,11 @@ Swipe distance threshold for deleting the list item.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
-| float distance | Returns the swipe distance threshold for deleting the list item.|
+| float distance | Swipe distance threshold for deleting the list item, in vp.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance()
 
-```
+```c
 float OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance(ArkUI_ListItemSwipeActionItem* item)
 ```
 
@@ -6532,11 +6721,11 @@ Obtains the swipe distance threshold for deleting the list item.
 
 | Type| Description|
 | -- | -- |
-| float | Returns the swipe distance threshold for deleting the list item. Return **0** if an error occurs.|
+| float | Swipe distance threshold for deleting the list item, in vp. The value **0** is returned if an exception occurs.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionArea(ArkUI_ListItemSwipeActionItem* item, void (*callback)())
 ```
 
@@ -6557,14 +6746,14 @@ Sets the callback invoked each time the list item enters the delete area.
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(void* userData))
 ```
 
 **Description**
 
 
-Sets the callback invoked each time the list item enters the delete area.
+Sets the callback invoked each time the list item enters the delete area. User-defined data will be passed to the callback event.
 
 **Since**: 12
 
@@ -6574,19 +6763,19 @@ Sets the callback invoked each time the list item enters the delete area.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
-| void* userData | Custom data.|
+| void* userData | User-defined data.|
 | callback | Callback event.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnAction()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnAction(ArkUI_ListItemSwipeActionItem* item, void (*callback)())
 ```
 
 **Description**
 
 
-Sets the callback invoked when the list item is deleted while in the delete area.
+Sets the callback invoked when the [list item](./arkui-ts/ts-container-listitem.md) is deleted while in the delete area.
 
 **Since**: 12
 
@@ -6600,14 +6789,14 @@ Sets the callback invoked when the list item is deleted while in the delete area
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(void* userData))
 ```
 
 **Description**
 
 
-Sets the callback invoked when the list item is deleted while in the delete area.
+Sets the callback invoked when the list item is deleted while in the delete area. User-defined data will be passed to the callback event.
 
 **Since**: 12
 
@@ -6617,12 +6806,12 @@ Sets the callback invoked when the list item is deleted while in the delete area
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
-| void* userData | Custom data.|
+| void* userData | User-defined data.|
 | callback | Callback event.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea(ArkUI_ListItemSwipeActionItem* item, void (*callback)())
 ```
 
@@ -6643,14 +6832,14 @@ Sets the callback invoked each time the list item exits the delete area.
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(void* userData))
 ```
 
 **Description**
 
 
-Sets the callback invoked each time the list item exits the delete area.
+Sets the callback invoked each time the list item exits the delete area. User-defined data will be passed to the callback event.
 
 **Since**: 12
 
@@ -6660,12 +6849,12 @@ Sets the callback invoked each time the list item exits the delete area.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
-| void* userData | Custom data.|
+| void* userData | User-defined data.|
 | callback | Callback event.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange(ArkUI_ListItemSwipeActionItem* item,void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState))
 ```
 
@@ -6682,18 +6871,18 @@ Sets the callback invoked when the swipe state of the list item changes.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
-| callback | Callback event. **swipeActionState**: new state after the state change.|
+| callback | Callback event. The input parameter is **swipeActionState**, indicating the swipe state of the list item.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData(ArkUI_ListItemSwipeActionItem* item,void* userData, void (*callback)(ArkUI_ListItemSwipeActionState swipeActionState, void* userData))
 ```
 
 **Description**
 
 
-Sets the callback invoked when the swipe state of the list item changes.
+Sets the callback invoked when the swipe state of the list item changes. User-defined data will be passed to the callback event.
 
 **Since**: 12
 
@@ -6703,12 +6892,12 @@ Sets the callback invoked when the swipe state of the list item changes.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
-|  void* userData | Custom data.|
-| callback | Callback event. **swipeActionState**: new state after the state change.|
+|  void* userData | User-defined data.|
+| callback | Callback event. The input parameter is **swipeActionState**, indicating the swipe state of the list item.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_Create()
 
-```
+```c
 ArkUI_ListItemSwipeActionOption* OH_ArkUI_ListItemSwipeActionOption_Create()
 ```
 
@@ -6727,7 +6916,7 @@ Creates a **ListItemSwipeActionOption** instance.
 
 ### OH_ArkUI_ListItemSwipeActionOption_Dispose()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_Dispose(ArkUI_ListItemSwipeActionOption* option)
 ```
 
@@ -6747,7 +6936,7 @@ Disposes of a **ListItemSwipeActionOption** instance.
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetStart()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_SetStart(ArkUI_ListItemSwipeActionOption* option, ArkUI_ListItemSwipeActionItem* item)
 ```
 
@@ -6768,7 +6957,7 @@ Sets the layout content for the left edge (for a vertical layout) or top edge (f
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetEnd()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_SetEnd(ArkUI_ListItemSwipeActionOption* option,ArkUI_ListItemSwipeActionItem* item)
 ```
 
@@ -6789,14 +6978,14 @@ Sets the layout content for the right edge (for a vertical layout) or bottom edg
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect(ArkUI_ListItemSwipeActionOption* option,ArkUI_ListItemSwipeEdgeEffect edgeEffect)
 ```
 
 **Description**
 
 
-Sets the edge effect used when the boundary of the scrolling area is reached.
+Sets the effect used when the scroll boundary is reached.
 
 **Since**: 12
 
@@ -6806,18 +6995,18 @@ Sets the edge effect used when the boundary of the scrolling area is reached.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Target **ListItemSwipeActionItem** instance.|
-| [ArkUI_ListItemSwipeEdgeEffect](capi-native-type-h.md#arkui_listitemswipeedgeeffect) edgeEffect | Edge effect.|
+| [ArkUI_ListItemSwipeEdgeEffect](capi-native-type-h.md#arkui_listitemswipeedgeeffect) edgeEffect | Effect used when the boundary of the scrolling area is reached.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect()
 
-```
+```c
 int32_t OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect(ArkUI_ListItemSwipeActionOption* option)
 ```
 
 **Description**
 
 
-Obtains the edge effect used when the boundary of the scrolling area is reached.
+Obtains the effect used when the scroll boundary is reached.
 
 **Since**: 12
 
@@ -6832,11 +7021,11 @@ Obtains the edge effect used when the boundary of the scrolling area is reached.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Edge effect. The default return value is **ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING**.|
+| int32_t | Effect used when the boundary of the scrolling area is reached. The default return value is [ARKUI_LIST_ITEM_SWIPE_EDGE_EFFECT_SPRING](#arkui_listitemswipeedgeeffect).|
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChange(ArkUI_ListItemSwipeActionOption* option,void (*callback)(float offset))
 ```
 
@@ -6853,18 +7042,18 @@ Sets the callback invoked when the scroll offset changes.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Target **ListItemSwipeActionItem** instance.|
-| callback | Callback event. **offset**: scroll offset.|
+| callback | Callback event. **offset**: scroll offset, in vp.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData()
 
-```
+```c
 void OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData(ArkUI_ListItemSwipeActionOption* option,void* userData, void (*callback)(float offset, void* userData))
 ```
 
 **Description**
 
 
-Sets the callback invoked when the scroll offset changes.
+Sets the callback invoked when the scroll offset changes. User-defined data will be passed to the callback event.
 
 **Since**: 12
 
@@ -6874,18 +7063,18 @@ Sets the callback invoked when the scroll offset changes.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Target **ListItemSwipeActionItem** instance.|
-|  void* userData | Custom data.|
-| callback | Callback event. **offset**: scroll offset.|
+|  void* userData | User-defined data.|
+| callback | Callback event. **offset**: scroll offset, in vp.|
 
 ### OH_ArkUI_ListItemSwipeAction_Expand()
 
-```
+```c
 int32_t OH_ArkUI_ListItemSwipeAction_Expand(ArkUI_NodeHandle node, ArkUI_ListItemSwipeActionDirection direction)
 ```
 
 **Description**
 
-Expands the menu of a specified ListItem.
+Expands the swipe action menu for the specified list item.
 
 **Since**: 21
 
@@ -6893,28 +7082,28 @@ Expands the menu of a specified ListItem.
 
 | Name| Description|
 | -- | -- |
-| node | ListItem node object.|
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Expansion direction of the menu of a specified ListItem.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ListItem** node object.|
+| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Enumerates the swipe action menu display directions for **ListItem** components.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_ERROR](capi-native-type-h.md#arkui_errorcode) The node object type is incorrect.<br>         [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-native-type-h.md#arkui_errorcode) The node passed is not mounted to the component tree.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_ERROR](capi-native-type-h.md#arkui_errorcode) if the node object type is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-native-type-h.md#arkui_errorcode) if the passed node is not mounted to the component tree when the API is called.|
 
 > **NOTE**
 >
-> - If the NODE_LIST_CACHED_COUNT attribute of the List component is set to display preloaded ListItem, the ListItem that has been preloaded outside the List display area can be expanded. Otherwise, the node outside the List display area cannot be expanded.
+> - If the **List** component's **NODE_LIST_CACHED_COUNT** attribute is configured to preload **ListItem** child components, swipe action menus can be expanded for preloaded **ListItem** child components outside the visible area. Otherwise, child components outside the visible area cannot be expanded.
 
 ### OH_ArkUI_ListItemSwipeAction_Collapse()
 
-```
+```c
 int32_t OH_ArkUI_ListItemSwipeAction_Collapse(ArkUI_NodeHandle node)
 ```
 
 **Description**
 
-Collapses the menu of a specified ListItem.
+Collapses the swipe action menu for the specified list item.
 
 **Since**: 21
 
@@ -6922,17 +7111,17 @@ Collapses the menu of a specified ListItem.
 
 | Name| Description|
 | -- | -- |
-| node | ListItem node object.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ListItem** node object.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_ERROR](capi-native-type-h.md#arkui_errorcode) The node object type is incorrect.<br>         [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-native-type-h.md#arkui_errorcode) The node passed is not mounted to the component tree.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_ERROR](capi-native-type-h.md#arkui_errorcode) if the node object type is incorrect.<br>         Returns [ARKUI_ERROR_CODE_NODE_NOT_ON_MAIN_TREE](capi-native-type-h.md#arkui_errorcode) if the passed node is not mounted to the component tree when the API is called.|
 
 ### OH_ArkUI_AccessibilityState_Create()
 
-```
+```c
 ArkUI_AccessibilityState* OH_ArkUI_AccessibilityState_Create(void)
 ```
 
@@ -6951,7 +7140,7 @@ Creates an accessibility state.
 
 ### OH_ArkUI_AccessibilityState_Dispose()
 
-```
+```c
 void OH_ArkUI_AccessibilityState_Dispose(ArkUI_AccessibilityState* state)
 ```
 
@@ -6971,7 +7160,7 @@ Disposes of the pointer to an accessibility state.
 
 ### OH_ArkUI_AccessibilityState_SetDisabled()
 
-```
+```c
 void OH_ArkUI_AccessibilityState_SetDisabled(ArkUI_AccessibilityState* state, int32_t isDisabled)
 ```
 
@@ -6992,7 +7181,7 @@ Sets whether an accessibility state is disabled.
 
 ### OH_ArkUI_AccessibilityState_IsDisabled()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityState_IsDisabled(ArkUI_AccessibilityState* state)
 ```
 
@@ -7018,7 +7207,7 @@ Obtains whether an accessibility state is disabled.
 
 ### OH_ArkUI_AccessibilityState_SetSelected()
 
-```
+```c
 void OH_ArkUI_AccessibilityState_SetSelected(ArkUI_AccessibilityState* state, int32_t isSelected)
 ```
 
@@ -7039,7 +7228,7 @@ Sets whether an accessibility state is selected.
 
 ### OH_ArkUI_AccessibilityState_IsSelected()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityState_IsSelected(ArkUI_AccessibilityState* state)
 ```
 
@@ -7065,7 +7254,7 @@ Obtains whether an accessibility state is selected.
 
 ### OH_ArkUI_AccessibilityState_SetCheckedState()
 
-```
+```c
 void OH_ArkUI_AccessibilityState_SetCheckedState(ArkUI_AccessibilityState* state, int32_t checkedState)
 ```
 
@@ -7086,7 +7275,7 @@ Sets the check box state of an accessibility state.
 
 ### OH_ArkUI_AccessibilityState_GetCheckedState()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityState_GetCheckedState(ArkUI_AccessibilityState* state)
 ```
 
@@ -7112,7 +7301,7 @@ Obtains the check box state of an accessibility state.
 
 ### OH_ArkUI_AccessibilityValue_Create()
 
-```
+```c
 ArkUI_AccessibilityValue* OH_ArkUI_AccessibilityValue_Create(void)
 ```
 
@@ -7131,7 +7320,7 @@ Creates an **AccessibilityValue** instance.
 
 ### OH_ArkUI_AccessibilityValue_Dispose()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_Dispose(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7151,7 +7340,7 @@ Disposes of the pointer to an **AccessibilityValue** instance.
 
 ### OH_ArkUI_AccessibilityValue_SetMin()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetMin(ArkUI_AccessibilityValue* value, int32_t min)
 ```
 
@@ -7168,11 +7357,11 @@ Sets the minimum accessibility value.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Returns the pointer to the created **AccessibilityValue** instance.|
-| int32_t min | Minimum value based on the range component. The default value is **-1**.|
+| int32_t min | Minimum value for the range-based component. The default value is **-1**.|
 
 ### OH_ArkUI_AccessibilityValue_GetMin()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetMin(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7198,7 +7387,7 @@ Obtains the minimum accessibility value.
 
 ### OH_ArkUI_AccessibilityValue_SetMax()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetMax(ArkUI_AccessibilityValue* value, int32_t max)
 ```
 
@@ -7219,7 +7408,7 @@ Sets the maximum accessibility value.
 
 ### OH_ArkUI_AccessibilityValue_GetMax()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetMax(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7245,7 +7434,7 @@ Obtains the maximum accessibility value.
 
 ### OH_ArkUI_AccessibilityValue_SetCurrent()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetCurrent(ArkUI_AccessibilityValue* value, int32_t current)
 ```
 
@@ -7262,11 +7451,11 @@ Sets the current accessibility value.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Returns the pointer to the created **AccessibilityValue** instance.|
-| int32_t current | Current value based on the range component. The default value is **-1**.|
+| int32_t current | Current value for the range-based component. The default value is **-1**.|
 
 ### OH_ArkUI_AccessibilityValue_GetCurrent()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetCurrent(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7292,7 +7481,7 @@ Obtains the current accessibility value.
 
 ### OH_ArkUI_AccessibilityValue_SetRangeMin()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetRangeMin(ArkUI_AccessibilityValue* value, int32_t rangeMin)
 ```
 
@@ -7309,11 +7498,11 @@ Sets the minimum value for accessibility information of the range-based componen
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the accessibility information object of the range-based component for which you want to set the minimum value.|
-| int32_t rangeMin | Minimum value based on the range component. The default value is **-1**.|
+| int32_t rangeMin | Minimum value for the range-based component. The default value is **-1**.|
 
 ### OH_ArkUI_AccessibilityValue_GetRangeMin()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetRangeMin(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7339,7 +7528,7 @@ Obtains the minimum value for accessibility information of the range-based compo
 
 ### OH_ArkUI_AccessibilityValue_SetRangeMax()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetRangeMax(ArkUI_AccessibilityValue* value, int32_t rangeMax)
 ```
 
@@ -7360,7 +7549,7 @@ Sets the maximum value for accessibility information of the range-based componen
 
 ### OH_ArkUI_AccessibilityValue_GetRangeMax()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetRangeMax(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7386,7 +7575,7 @@ Obtains the maximum value for accessibility information of the range-based compo
 
 ### OH_ArkUI_AccessibilityValue_SetRangeCurrent()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetRangeCurrent(ArkUI_AccessibilityValue* value, int32_t rangeCurrent)
 ```
 
@@ -7403,11 +7592,11 @@ Sets the current value for accessibility information of the range-based componen
 | Name| Description|
 | -- | -- |
 | [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the accessibility information object of the range-based component for which you want to set the current value.|
-| int32_t rangeCurrent | Current value based on the range component. The default value is **-1**.|
+| int32_t rangeCurrent | Current value for the range-based component. The default value is **-1**.|
 
 ### OH_ArkUI_AccessibilityValue_GetRangeCurrent()
 
-```
+```c
 int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7433,7 +7622,7 @@ Obtains the current value for accessibility information of the range-based compo
 
 ### OH_ArkUI_AccessibilityValue_SetText()
 
-```
+```c
 void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const char* text)
 ```
 
@@ -7454,7 +7643,7 @@ Sets the text description of an **AccessibilityValue** instance.
 
 ### OH_ArkUI_AccessibilityValue_GetText()
 
-```
+```c
 const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)
 ```
 
@@ -7480,14 +7669,14 @@ Obtains the text description of an **AccessibilityValue** instance.
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString()
 
-```
+```c
 ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString(char* src)
 ```
 
 **Description**
 
 
-Creates an image frame information object based on an image path, with the image format being SVG, PNG, or JPG.
+Creates an image frame information object based on an image path, with the image format being SVG, PNG, or JPG. Both relative and absolute paths in the application sandbox are supported.
 
 **Since**: 12
 
@@ -7496,7 +7685,7 @@ Creates an image frame information object based on an image path, with the image
 
 | Name| Description|
 | -- | -- |
-| char* src | Image path.|
+| char* src | Image path, which can be a relative or absolute path in the application sandbox.|
 
 **Returns**
 
@@ -7506,14 +7695,14 @@ Creates an image frame information object based on an image path, with the image
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor()
 
-```
+```c
 ArkUI_ImageAnimatorFrameInfo* OH_ArkUI_ImageAnimatorFrameInfo_CreateFromDrawableDescriptor(ArkUI_DrawableDescriptor* drawable)
 ```
 
 **Description**
 
 
-Creates an image frame information object based on a **DrawableDescriptor** object, with the image format being Resource or PixelMap.
+Creates an image frame information object using an [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md) object.
 
 **Since**: 12
 
@@ -7522,7 +7711,7 @@ Creates an image frame information object based on a **DrawableDescriptor** obje
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawable | Pointer to an **ArkUI_DrawableDescriptor** object created using Resource or PixelMap.|
+| [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)* drawable | Pointer to the **ArkUI_DrawableDescriptor** object created using a PixelMap.|
 
 **Returns**
 
@@ -7532,7 +7721,7 @@ Creates an image frame information object based on a **DrawableDescriptor** obje
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_Dispose()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_Dispose(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -7552,7 +7741,7 @@ Disposes of the pointer to an image frame information object.
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetWidth()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_SetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t width)
 ```
 
@@ -7573,7 +7762,7 @@ Sets the image width.
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetWidth()
 
-```
+```c
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetWidth(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -7599,7 +7788,7 @@ Obtains the image width.
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetHeight()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_SetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t height)
 ```
 
@@ -7620,7 +7809,7 @@ Sets the image height.
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetHeight()
 
-```
+```c
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetHeight(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -7646,7 +7835,7 @@ Obtains the image height.
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetTop()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_SetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t top)
 ```
 
@@ -7667,7 +7856,7 @@ Sets the vertical coordinate of an image relative to the upper left corner of th
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetTop()
 
-```
+```c
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetTop(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -7693,7 +7882,7 @@ Obtains the vertical coordinate of an image relative to the upper left corner of
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetLeft()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_SetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t left)
 ```
 
@@ -7714,7 +7903,7 @@ Sets the horizontal coordinate of an image relative to the upper left corner of 
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetLeft()
 
-```
+```c
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetLeft(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -7740,7 +7929,7 @@ Obtains the horizontal coordinate of an image relative to the upper left corner 
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetDuration()
 
-```
+```c
 void OH_ArkUI_ImageAnimatorFrameInfo_SetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo, int32_t duration)
 ```
 
@@ -7757,11 +7946,11 @@ Sets the playback duration of an image.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ImageAnimatorFrameInfo](capi-arkui-nativemodule-arkui-imageanimatorframeinfo.md)* imageInfo | Pointer to the image frame information object.|
-| int32_t duration | Playback duration of an image, in milliseconds.|
+| int32_t duration | Playback duration of an image, in ms.|
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_GetDuration()
 
-```
+```c
 int32_t OH_ArkUI_ImageAnimatorFrameInfo_GetDuration(ArkUI_ImageAnimatorFrameInfo* imageInfo)
 ```
 
@@ -7787,7 +7976,7 @@ Obtains the playback duration of an image.
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Create()
 
-```
+```c
 ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 ```
 
@@ -7806,7 +7995,7 @@ Creates a **ListChildrenMainSize** instance.
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Dispose()
 
-```
+```c
 void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* option)
 ```
 
@@ -7826,14 +8015,14 @@ Disposes of a **ListChildrenMainSize** instance.
 
 ### OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize()
 
-```
+```c
 int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildrenMainSize* option, float defaultMainSize)
 ```
 
 **Description**
 
 
-Sets the default size in a **ListChildrenMainSize** instance.
+Sets the default size of the list item in the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.
 
 **Since**: 12
 
@@ -7843,7 +8032,7 @@ Sets the default size in a **ListChildrenMainSize** instance.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance.|
-| float defaultMainSize | Default size to set, in vp.|
+| float defaultMainSize | Default size of the list item along the main axis, in vp.|
 
 **Returns**
 
@@ -7853,14 +8042,14 @@ Sets the default size in a **ListChildrenMainSize** instance.
 
 ### OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize()
 
-```
+```c
 float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenMainSize* option)
 ```
 
 **Description**
 
 
-Obtains the default size in a **ListChildrenMainSize** instance.
+Obtains the default size of the list item in the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.
 
 **Since**: 12
 
@@ -7875,18 +8064,18 @@ Obtains the default size in a **ListChildrenMainSize** instance.
 
 | Type| Description|
 | -- | -- |
-| float | Default size, in vp. The default value is **0**. If **option** is a null pointer, **-1** is returned.|
+| float | Default size of the list item along the main axis. The default value is **0**. The unit is [vp](../apis-arkui/arkui-ts/ts-types.md#vp10). If **option** is a null pointer, **-1** is returned.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Resize()
 
-```
+```c
 void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* option, int32_t totalSize)
 ```
 
 **Description**
 
 
-Resets the array size in a **ListChildrenMainSize** instance.
+Adjusts the capacity of the children item size array in the [List](./arkui-ts/ts-container-list.md) component along the main axis.
 
 **Since**: 12
 
@@ -7896,18 +8085,18 @@ Resets the array size in a **ListChildrenMainSize** instance.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance.|
-| int32_t totalSize | Array size.|
+| int32_t totalSize | Capacity of the target array.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Splice()
 
-```
+```c
 int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* option, int32_t index, int32_t deleteCount, int32_t addCount)
 ```
 
 **Description**
 
 
-Changes the content of a **ChildrenMainSizeOption** array.
+Adjusts the children item size array in the [List](./arkui-ts/ts-container-list.md) component along the main axis.
 
 **Since**: 12
 
@@ -7917,9 +8106,9 @@ Changes the content of a **ChildrenMainSizeOption** array.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance.|
-| int32_t index | Index at which to start changing the values in the array.|
-| int32_t deleteCount | Number of elements in the array to remove from the position specified by **index**.|
-| int32_t addCount | Number of elements to add to the array from the position specified by **index**.|
+| int32_t index | Start index.|
+| int32_t deleteCount | Number of elements to be deleted from the start position.|
+| int32_t addCount | Number of elements to be added from the start position.|
 
 **Returns**
 
@@ -7929,14 +8118,14 @@ Changes the content of a **ChildrenMainSizeOption** array.
 
 ### OH_ArkUI_ListChildrenMainSizeOption_UpdateSize()
 
-```
+```c
 int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSize* option, int32_t index, float mainSize)
 ```
 
 **Description**
 
 
-Updates the values in a **ChildrenMainSizeOption** array of a **List** component.
+Updates the size at the specified index in the children item size array of the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.
 
 **Since**: 12
 
@@ -7946,8 +8135,8 @@ Updates the values in a **ChildrenMainSizeOption** array of a **List** component
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance.|
-| int32_t index | Index at which to start changing the values in the array.|
-| float mainSize | New size value to set at the specified index.|
+| int32_t index | Array index of the target element.|
+| float mainSize | Size of the main axis, in vp.|
 
 **Returns**
 
@@ -7957,14 +8146,14 @@ Updates the values in a **ChildrenMainSizeOption** array of a **List** component
 
 ### OH_ArkUI_ListChildrenMainSizeOption_GetMainSize()
 
-```
+```c
 float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize* option, int32_t index)
 ```
 
 **Description**
 
 
-Obtains the value of the **ChildrenMainSizeOption** array of the **List** component.
+Obtains the size at the specified index in the children item size array of the [List](./arkui-ts/ts-container-list.md) component along the main axis. The vertical axis indicates the height, and the horizontal axis indicates the width.
 
 **Since**: 12
 
@@ -7974,7 +8163,7 @@ Obtains the value of the **ChildrenMainSizeOption** array of the **List** compon
 | Name| Description|
 | -- | -- |
 | [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance.|
-| int32_t index | Index of the value to be obtained.|
+| int32_t index | Array index of the target element.|
 
 **Returns**
 
@@ -7984,7 +8173,7 @@ Obtains the value of the **ChildrenMainSizeOption** array of the **List** compon
 
 ### OH_ArkUI_CustomSpanMeasureInfo_Create()
 
-```
+```c
 ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)
 ```
 
@@ -8003,7 +8192,7 @@ Creates measurement information for this custom span.
 
 ### OH_ArkUI_CustomSpanMeasureInfo_Dispose()
 
-```
+```c
 void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)
 ```
 
@@ -8023,7 +8212,7 @@ Disposes of measurement information of a custom span.
 
 ### OH_ArkUI_CustomSpanMeasureInfo_GetFontSize()
 
-```
+```c
 float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* info)
 ```
 
@@ -8045,11 +8234,11 @@ Obtains the font size of the parent text node of a custom span.
 
 | Type| Description|
 | -- | -- |
-| float | Font size of the parent text node. If a parameter error occurs, **0.0f** is returned.<br> A possible cause is that mandatory parameters are left unspecified.|
+| float | Font size of the parent node text, in fp. If a parameter error occurs, **0.0f** is returned.<br> A possible cause is that mandatory parameters are left unspecified.|
 
 ### OH_ArkUI_CustomSpanMetrics_Create()
 
-```
+```c
 ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)
 ```
 
@@ -8064,11 +8253,11 @@ Creates measurement metrics for this custom span.
 
 | Type                          | Description|
 |------------------------------| -- |
-| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* | Returns a **CustomSpanMetrics** instance.<br> If a null pointer is returned, the memory may be insufficient.|
+| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* | **CustomSpanMetrics** instance.<br> If a null pointer is returned, the memory may be insufficient.|
 
 ### OH_ArkUI_CustomSpanMetrics_Dispose()
 
-```
+```c
 void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)
 ```
 
@@ -8084,11 +8273,11 @@ Disposes of measurement metrics of this custom span.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | Returns a **CustomSpanMetrics** instance.|
+| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | **CustomSpanMetrics** instance.|
 
 ### OH_ArkUI_CustomSpanMetrics_SetWidth()
 
-```
+```c
 int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, float width)
 ```
 
@@ -8104,8 +8293,8 @@ Sets the width for a custom span.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | Returns a **CustomSpanMetrics** instance.|
-| float width | Width, in vp.|
+| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | **CustomSpanMetrics** instance.|
+| float width | Width, in vp. The default value is **0.0f**. The negative value has the same effect as the default value.|
 
 **Returns**
 
@@ -8115,7 +8304,7 @@ Sets the width for a custom span.
 
 ### OH_ArkUI_CustomSpanMetrics_SetHeight()
 
-```
+```c
 int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, float height)
 ```
 
@@ -8131,8 +8320,8 @@ Sets the height for a custom span.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | Returns a **CustomSpanMetrics** instance.|
-| float height | Height, in vp.|
+| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | **CustomSpanMetrics** instance.|
+| float height | Height, in vp. The default value is **0.0f**. The negative value has the same effect as the default value.|
 
 **Returns**
 
@@ -8142,7 +8331,7 @@ Sets the height for a custom span.
 
 ### OH_ArkUI_CustomSpanDrawInfo_Create()
 
-```
+```c
 ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)
 ```
 
@@ -8161,7 +8350,7 @@ Creates drawing information for this custom span.
 
 ### OH_ArkUI_CustomSpanDrawInfo_Dispose()
 
-```
+```c
 void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -8181,7 +8370,7 @@ Disposes of drawing information for this custom span.
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetXOffset()
 
-```
+```c
 float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -8203,11 +8392,11 @@ Obtains the x-axis offset of the custom span relative to the mounted component.
 
 | Type| Description|
 | -- | -- |
-| float | Returns the x-axis offset. If a parameter error occurs, **0.0f** is returned.<br> A possible cause is that mandatory parameters are left unspecified.|
+| float | X-axis offset, in px. If a parameter error occurs, **0.0f** is returned.<br> A possible cause is that mandatory parameters are left unspecified.|
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetLineTop()
 
-```
+```c
 float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -8229,11 +8418,11 @@ Obtains the top margin of the custom span relative to the mounted component.
 
 | Type| Description|
 | -- | -- |
-| float | Top margin. If a parameter error occurs, **0.0f** is returned.<br> A possible cause is that mandatory parameters are left unspecified.|
+| float | Top margin, in px. If a parameter error occurs, **0.0f** is returned.<br> A possible cause is that mandatory parameters are left unspecified.|
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetLineBottom()
 
-```
+```c
 float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -8255,11 +8444,11 @@ Obtains the bottom margin of the custom span relative to the mounted component.
 
 | Type| Description|
 | -- | -- |
-| float | Bottom margin. If a parameter error occurs, **0.0f** is returned.<br> A possible cause is that mandatory parameters are left unspecified.|
+| float | Bottom margin, in px. If a parameter error occurs, **0.0f** is returned.<br> A possible cause is that mandatory parameters are left unspecified.|
 
 ### OH_ArkUI_CustomSpanDrawInfo_GetBaseline()
 
-```
+```c
 float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 ```
 
@@ -8281,18 +8470,18 @@ Obtains the baseline offset of the custom span relative to the mounted component
 
 | Type| Description|
 | -- | -- |
-| float | Baseline offset. If a parameter error occurs, **0.0f** is returned.<br> A possible cause is that mandatory parameters are left unspecified.|
+| float | Baseline offset, in px. If a parameter error occurs, **0.0f** is returned.<br> A possible cause is that mandatory parameters are left unspecified.|
 
 ### OH_ArkUI_CustomProperty_Destroy()
 
-```
+```c
 void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)
 ```
 
 **Description**
 
 
-Destroys a **CustomProperty** instance.
+Destroys an [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) instance.
 
 **Since**: 14
 
@@ -8301,18 +8490,18 @@ Destroys a **CustomProperty** instance.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)* handle | **CustomProperty** instance to destroy.|
+| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md)* handle | Pointer to the instance to be destroyed.|
 
 ### OH_ArkUI_CustomProperty_GetStringValue()
 
-```
+```c
 const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)
 ```
 
 **Description**
 
 
-Obtains the value of a custom property.
+Obtains the value of a custom property object.
 
 **Since**: 14
 
@@ -8327,18 +8516,18 @@ Obtains the value of a custom property.
 
 | Type| Description|
 | -- | -- |
-| const char* | Value of the custom property.|
+| const char* | Value of a custom property object.|
 
 ### OH_ArkUI_HostWindowInfo_GetName()
 
-```
+```c
 const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)
 ```
 
 **Description**
 
 
-Obtains the window name from a **HostWindowInfo** object.
+Obtains the window name in an [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) object.
 
 **Since**: 15
 
@@ -8353,18 +8542,18 @@ Obtains the window name from a **HostWindowInfo** object.
 
 | Type| Description|
 | -- | -- |
-| const char* | Returns the window name obtained from the **HostWindowInfo** object.|
+| const char* | Window name in the [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) object.|
 
 ### OH_ArkUI_HostWindowInfo_Destroy()
 
-```
+```c
 void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)
 ```
 
 **Description**
 
 
-Destroys n **HostWindowInfo** object.
+Destroys an [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) object.
 
 **Since**: 15
 
@@ -8373,18 +8562,18 @@ Destroys n **HostWindowInfo** object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)* info | **HostWindowInfo** object to be destroyed.|
+| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)* info | Pointer to the [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) object to be destroyed.|
 
 ### OH_ArkUI_ActiveChildrenInfo_Destroy()
 
-```
+```c
 void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)
 ```
 
 **Description**
 
 
-Destroys an **ActiveChildrenInfo** instance.
+Destroys an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance.
 
 **Since**: 14
 
@@ -8393,18 +8582,18 @@ Destroys an **ActiveChildrenInfo** instance.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | **ActiveChildrenInfo** instance to destroy.|
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | Pointer to the [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance to be destroyed.|
 
 ### OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex()
 
-```
+```c
 ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)
 ```
 
 **Description**
 
 
-Obtains the child node at the specified index in the specified **ActiveChildrenInfo** instance.
+Obtains the child node at the specified index in an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance.
 
 **Since**: 14
 
@@ -8413,7 +8602,7 @@ Obtains the child node at the specified index in the specified **ActiveChildrenI
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | **ActiveChildrenInfo** instance from which to obtain the information.|
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | Pointer to the [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance from which the information is to be obtained.|
 | int32_t index | Index of the target child node.|
 
 **Returns**
@@ -8424,14 +8613,14 @@ Obtains the child node at the specified index in the specified **ActiveChildrenI
 
 ### OH_ArkUI_ActiveChildrenInfo_GetCount()
 
-```
+```c
 int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)
 ```
 
 **Description**
 
 
-Obtains the number of nodes in the specified **ActiveChildrenInfo** instance.
+Obtains the number of nodes in an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance.
 
 **Since**: 14
 
@@ -8440,7 +8629,7 @@ Obtains the number of nodes in the specified **ActiveChildrenInfo** instance.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | **ActiveChildrenInfo** instance from which to obtain the information.|
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md)* handle | Pointer to the [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance from which the information is to be obtained.|
 
 **Returns**
 
@@ -8450,7 +8639,7 @@ Obtains the number of nodes in the specified **ActiveChildrenInfo** instance.
 
 ### OH_ArkUI_ProgressLinearStyleOption_Create()
 
-```
+```c
 ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)
 ```
 
@@ -8469,7 +8658,7 @@ Creates a **ProgressLinearStyleOption** instance.
 
 ### OH_ArkUI_ProgressLinearStyleOption_Destroy()
 
-```
+```c
 void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption* option)
 ```
 
@@ -8489,7 +8678,7 @@ Destroys a **ProgressLinearStyleOption** instance.
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled()
 
-```
+```c
 void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)
 ```
 
@@ -8506,11 +8695,11 @@ Sets whether to enable the smooth progress effect.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md)* option | Pointer to a **ProgressLinearStyleOption** instance.|
-| bool enabled | Whether to enable the smooth effect. When this effect is enabled, the progress changes smoothly from the current value to the target value. When this effect is disabled, the progress changes abruptly to the target value. The default value is **true**.|
+| bool enabled | Whether to enable the smooth effect. When this effect is enabled, the progress changes smoothly from the current value to the target value. When this effect is disabled, the progress changes abruptly to the target value.<br>**true**: The smooth effect is enabled.<br>**false**: The smooth effect is disabled.<br>The default value is **true**.|
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled()
 
-```
+```c
 void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option, bool enabled)
 ```
 
@@ -8527,11 +8716,11 @@ Sets whether to enable the scan effect.
 | Name| Description|
 | -- | -- |
 | [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md)* option | Pointer to a **ProgressLinearStyleOption** instance.|
-| bool enabled | Whether to enable the scan effect. The default value is **false**.|
+| bool enabled | Whether to enable the scan effect.<br>**true**: The scan effect is enabled.<br>**false**: The scan effect is disabled.<br>The default value is **false**.|
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth()
 
-```
+```c
 void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyleOption* option, float strokeWidth)
 ```
 
@@ -8552,7 +8741,7 @@ Sets the width of the progress indicator.
 
 ### OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius()
 
-```
+```c
 void OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(ArkUI_ProgressLinearStyleOption* option, float strokeRadius)
 ```
 
@@ -8573,7 +8762,7 @@ Sets the corner radius of the progress indicator.
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled()
 
-```
+```c
 bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLinearStyleOption* option)
 ```
 
@@ -8595,11 +8784,11 @@ Obtains the enabled status of the smooth progress effect.
 
 | Type| Description|
 | -- | -- |
-| bool | Returns the enabled status of the smooth progress effect.|
+| bool | Returns the enabled status of the smooth progress effect.<br>**true**: The smooth effect is enabled.<br>**false**: The smooth effect is disabled.<br>The default value is **true**.|
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled()
 
-```
+```c
 bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)
 ```
 
@@ -8621,11 +8810,11 @@ Obtains the enabled status of the scan effect.
 
 | Type| Description|
 | -- | -- |
-| bool | Returns the enabled status of the scan effect.|
+| bool | Returns the enabled status of the scan effect.<br>**true**: The scan effect is enabled.<br>**false**: The scan effect is disabled.<br>The default value is **false**.|
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth()
 
-```
+```c
 float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)
 ```
 
@@ -8651,7 +8840,7 @@ Obtains the stroke width of the progress indicator.
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius()
 
-```
+```c
 float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)
 ```
 
@@ -8677,14 +8866,14 @@ Obtains the corner radius of the progress indicator.
 
 ### OH_ArkUI_CreateSnapshotOptions()
 
-```
+```c
 ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 ```
 
 **Description**
 
 
-Creates a snapshot option. The snapshot option must be destroyed by calling [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when it is no longer used.
+Creates a snapshot options object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.
 
 **Since**: 15
 
@@ -8696,7 +8885,7 @@ Creates a snapshot option. The snapshot option must be destroyed by calling [OH_
 
 ### OH_ArkUI_DestroySnapshotOptions()
 
-```
+```c
 void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 ```
 
@@ -8716,7 +8905,7 @@ Destroys a snapshot options object.
 
 ### OH_ArkUI_SnapshotOptions_SetScale()
 
-```
+```c
 int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)
 ```
 
@@ -8743,7 +8932,7 @@ Sets the scale property in the snapshot options.
 
 ### OH_ArkUI_CrossLanguageOption_Create()
 
-```
+```c
 ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)
 ```
 
@@ -8762,7 +8951,7 @@ Creates an instance of the cross-language configuration option.
 
 ### OH_ArkUI_CrossLanguageOption_Destroy()
 
-```
+```c
 void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)
 ```
 
@@ -8782,7 +8971,7 @@ Destroys an instance of the cross-language configuration option.
 
 ### OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus()
 
-```
+```c
 void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)
 ```
 
@@ -8799,11 +8988,11 @@ Sets whether cross-language attribute setting is allowed in the configuration op
 | Name| Description|
 | -- | -- |
 | [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | Pointer to the cross-language configuration option instance.|
-| bool enabled | Whether cross-language attribute setting is allowed. The default value is **false**.|
+| bool enabled | Whether cross-language attribute setting is allowed. **true** means that cross-language attribute setting is allowed, and **false** means the opposite. The default value is **false**.|
 
 ### OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus()
 
-```
+```c
 bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)
 ```
 
@@ -8825,11 +9014,11 @@ Checks whether cross-language attribute setting is allowed in the configuration 
 
 | Type| Description|
 | -- | -- |
-| bool | Whether cross-language attribute setting is allowed.|
+| bool | Whether cross-language attribute setting is allowed. **true** means that cross-language attribute setting is allowed, and **false** means the opposite.|
 
 ### OH_ArkUI_VisibleAreaEventOptions_Create()
 
-```
+```c
 ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 ```
 
@@ -8848,7 +9037,7 @@ Creates an instance of visible area change event parameters.
 
 ### OH_ArkUI_VisibleAreaEventOptions_Dispose()
 
-```
+```c
 void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)
 ```
 
@@ -8868,7 +9057,7 @@ Disposes of an instance of visible area change event parameters.
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetRatios()
 
-```
+```c
 int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)
 ```
 
@@ -8896,7 +9085,7 @@ Sets the threshold ratios for visible area changes.
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval()
 
-```
+```c
 int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)
 ```
 
@@ -8913,7 +9102,33 @@ Sets the expected update interval for visible area changes.
 | Name| Description|
 | -- | -- |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) *option | Pointer to the instance of visible area change event parameters.|
-| int32_t value | Expected update interval, in ms. Default value: **1000**.|
+| int32_t value | Expected update interval, in ms.  Default value: **1000**.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         A possible cause is that mandatory parameters are left unspecified.|
+
+### OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport()
+
+```c
+int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option, bool measureFromViewport)
+```
+
+**Description**
+
+Sets the visible area calculation mode.
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters.|
+| bool measureFromViewport | Visible area calculation mode.<br>**true**: The calculation takes the parent component's **NODE_CLIP** attribute into account. If the parent component's **NODE_CLIP** attribute is **false**: Child components can render beyond the parent component's bounds, and the out-of-bounds area is counted as part of the visible area. If the parent component's **NODE_CLIP** attribute is **true**: Child components are clipped to the parent component's bounds, and the out-of-bounds area is treated as invisible. **false**: The area beyond the parent component's bounds is directly treated as invisible, ignoring the parent component's **NODE_CLIP** attribute.<br>Default value: **false**.|
 
 **Returns**
 
@@ -8923,7 +9138,7 @@ Sets the expected update interval for visible area changes.
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetRatios()
 
-```
+```c
 int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)
 ```
 
@@ -8951,7 +9166,7 @@ Obtains the threshold ratios for visible area changes.
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval()
 
-```
+```c
 int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)
 ```
 
@@ -8973,18 +9188,44 @@ Obtains the expected update interval for visible area changes.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Expected update interval, in ms. Default value: **1000**.|
+| int32_t | Expected update interval, in ms.  Default value: **1000**.|
+
+
+### OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport()
+
+```c
+bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)
+```
+
+**Description**
+
+Obtains the visible area calculation mode.
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| bool | Visible area calculation mode.<br>**true**: The calculation takes the parent component's **NODE_CLIP** attribute into account. If the parent component's **NODE_CLIP** attribute is **false**: Child components can render beyond the parent component's bounds, and the out-of-bounds area is counted as part of the visible area. If the parent component's **NODE_CLIP** attribute is **true**: Child components are clipped to the parent component's bounds, and the out-of-bounds area is treated as invisible. **false**: The area beyond the parent component's bounds is directly treated as invisible, ignoring the parent component's **NODE_CLIP** attribute.<br>Default value: **false**.|
 
 ### OH_ArkUI_TextPickerRangeContentArray_Create()
 
-```
+```c
 ArkUI_TextPickerRangeContentArray* OH_ArkUI_TextPickerRangeContentArray_Create(int32_t length)
 ```
 
 **Description**
 
 
-Creates a **TextPickerRangeContent** array object.
+Creates an object of the [TextPickerRangeContent](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) array.
 
 **Since**: 19
 
@@ -9003,14 +9244,14 @@ Creates a **TextPickerRangeContent** array object.
 
 ### OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex()
 
-```
+```c
 void OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* icon, int32_t index)
 ```
 
 **Description**
 
 
-Sets the icon data at the specified position in the **TextPickerRangeContent** array.
+Configures the icon data at a specified position in the **TextPickerRangeContent** array.
 
 **Since**: 19
 
@@ -9020,19 +9261,19 @@ Sets the icon data at the specified position in the **TextPickerRangeContent** a
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)* handle | Pointer to the **TextPickerRangeContent** array.|
-| char* icon | Pointer to the icon image address.|
-| int32_t index | Position in the array, starting from 0.|
+| char* icon | Icon path.|
+| int32_t index | Array index, starting from 0.|
 
 ### OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex()
 
-```
+```c
 void OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex(ArkUI_TextPickerRangeContentArray* handle, char* text, int32_t index)
 ```
 
 **Description**
 
 
-Sets the text data at the specified position in the **TextPickerRangeContent** array.
+Configures the text data at a specified position in the **TextPickerRangeContent** array.
 
 **Since**: 19
 
@@ -9047,7 +9288,7 @@ Sets the text data at the specified position in the **TextPickerRangeContent** a
 
 ### OH_ArkUI_TextPickerRangeContentArray_Destroy()
 
-```
+```c
 void OH_ArkUI_TextPickerRangeContentArray_Destroy(ArkUI_TextPickerRangeContentArray* handle)
 ```
 
@@ -9067,14 +9308,13 @@ Destroys a **TextPickerRangeContent** array object.
 
 ### OH_ArkUI_TextCascadePickerRangeContentArray_Create()
 
-```
+```c
 ArkUI_TextCascadePickerRangeContentArray* OH_ArkUI_TextCascadePickerRangeContentArray_Create(int32_t length)
 ```
 
 **Description**
 
-
-Destroys a **TextCascadePickerRangeContent** array object.
+Creates an object of the [TextCascadePickerRangeContent](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) array.
 
 **Since**: 19
 
@@ -9093,7 +9333,7 @@ Destroys a **TextCascadePickerRangeContent** array object.
 
 ### OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex()
 
-```
+```c
 void OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex(ArkUI_TextCascadePickerRangeContentArray* handle, char* text, int32_t index)
 ```
 
@@ -9109,20 +9349,20 @@ Sets the text data at the specified position in the **TextCascadePickerRangeCont
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* handle | Pointer to the **TextCascadePickerRangeContent** array.|
+| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* handle | Pointer to the **TextCascadePickerRangeContentHandle** instance.|
 | char* text | Pointer to the text content.|
 | int32_t index | Position in the array, starting from 0.|
 
 ### OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex()
 
-```
+```c
 void OH_ArkUI_TextCascadePickerRangeContentArray_SetChildAtIndex(ArkUI_TextCascadePickerRangeContentArray* handle, ArkUI_TextCascadePickerRangeContentArray* child, int32_t index)
 ```
 
 **Description**
 
 
-Sets the child data at the specified position in the **TextCascadePickerRangeContent** array.
+Configures the child data at a specified position in the **TextCascadePickerRangeContent** array.
 
 **Since**: 19
 
@@ -9131,13 +9371,13 @@ Sets the child data at the specified position in the **TextCascadePickerRangeCon
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* handle | Pointer to the **TextCascadePickerRangeContent** array.|
+| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* handle | Pointer to the **TextCascadePickerRangeContentHandle** instance.|
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* child | Pointer to the child node array.|
 | int32_t index | Position in the array, starting from 0.|
 
 ### OH_ArkUI_TextCascadePickerRangeContentArray_Destroy()
 
-```
+```c
 void OH_ArkUI_TextCascadePickerRangeContentArray_Destroy(ArkUI_TextCascadePickerRangeContentArray* handle)
 ```
 
@@ -9153,11 +9393,11 @@ Destroys a **TextCascadePickerRangeContent** array object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* handle | Pointer to the **TextCascadePickerRangeContent** array.|
+| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* handle | Pointer to the **TextCascadePickerRangeContentHandle** instance.|
 
 ### OH_ArkUI_EmbeddedComponentOption_Create()
 
-```
+```c
 ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()
 ```
 
@@ -9176,7 +9416,7 @@ Creates an **EmbeddedComponent** option object.
 
 ### OH_ArkUI_EmbeddedComponentOption_Dispose()
 
-```
+```c
 void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* option)
 ```
 
@@ -9196,14 +9436,14 @@ Disposes of an **EmbeddedComponent** option object.
 
 ### OH_ArkUI_EmbeddedComponentOption_SetOnError()
 
-```
+```c
 void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, const char* name, const char* message))
 ```
 
 **Description**
 
 
-Sets the **onError** callback for the **EmbeddedComponent** component. This callback is triggered when an error occurs during the running of the **EmbeddedComponent** component.
+Sets the [onError](../apis-arkui/arkui-ts/ts-container-embedded-component.md#onerror) callback for the **EmbeddedComponent** component. This callback is triggered when an error occurs during the running of the **EmbeddedComponent** component.
 
 **Since**: 20
 
@@ -9213,19 +9453,19 @@ Sets the **onError** callback for the **EmbeddedComponent** component. This call
 | Name| Description                          |
 | -- |------------------------------|
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)* option | Pointer to the **EmbeddedComponent** option object.|
-| void (\*callback)(int32_t code, const char* name, const char* message) | Callback function defined by the developer.<br>- code: result code returned when the API fails to be called. For details about error codes, see [UIExtension Error Codes](errorcode-uiextension.md).<br>- name: name returned when the API fails to be called.<br>- message: details returned when the API fails to be called.|
+| void (\*callback)(int32_t code, const char* name, const char* message) | User-defined callback function.<br>- **code**: error code returned when the API call fails. For details about error codes, see [UIExtension Error Codes](errorcode-uiextension.md).<br>- **name**: error name returned when the API call fails.<br>- **message**: detailed error message returned when the API call fails.|
 
 
 ### OH_ArkUI_EmbeddedComponentOption_SetOnTerminated()
 
-```
+```c
 void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOption* option, void (*callback)(int32_t code, AbilityBase_Want* want))
 ```
 
 **Description**
 
 
-Sets the **onTerminated** callback for the **EmbeddedComponent** component. This callback is triggered when the **EmbeddedComponent** component exits properly.
+Sets the [onTerminated](../apis-arkui/arkui-ts/ts-container-embedded-component.md#onterminated) callback for the **EmbeddedComponent** component. This callback is triggered when the **EmbeddedComponent** component exits properly.
 
 **Since**: 20
 
@@ -9235,17 +9475,17 @@ Sets the **onTerminated** callback for the **EmbeddedComponent** component. This
 | Name| Description                          |
 | -- |------------------------------|
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)* option | Pointer to the **EmbeddedComponent** option object.|
-| void (\*callback)(int32_t code, [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | Callback function defined by the developer.<br>- code: result code returned when the EmbeddedUIExtensionAbility is exited. If the ability is exited by calling terminateSelfWithResult, the result code is the value set for the ability. If the ability is exited by calling terminateSelf, the result code is the default value 0.<br>- want: data returned when the EmbeddedUIExtensionAbility is exited.  |
+| void (\*callback)(int32_t code, [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | User-defined callback function.<br>- **code**: result code returned when the started [EmbeddedUIExtensionAbility](../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) exits. If the EmbeddedUIExtensionAbility exits by calling [terminateSelfWithResult](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult), the result code is the value set by the EmbeddedUIExtensionAbility. If the EmbeddedUIExtensionAbility exits by calling [terminateSelf](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself), the result code is the default value **0**.<br>- **want**: data returned when the EmbeddedUIExtensionAbility exits.  |
 
 ### OH_ArkUI_PositionEdges_Create()
 
-```
+```c
 ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Create()
 ```
 
 **Description**
 
-Creates a PositionEdges object.
+Creates a **PositionEdges** object.
 
 **Since**: 21
 
@@ -9253,18 +9493,18 @@ Creates a PositionEdges object.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* | Pointer to the PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* | Pointer to the **PositionEdges** object.|
 
 
 ### OH_ArkUI_PositionEdges_Copy()
 
-```
+```c
 ArkUI_PositionEdges* OH_ArkUI_PositionEdges_Copy(const ArkUI_PositionEdges* edges)
 ```
 
 **Description**
 
-Copies the PositionEdges object.
+Deeply copies a **PositionEdges** attribute object.
 
 **Since**: 21
 
@@ -9272,23 +9512,23 @@ Copies the PositionEdges object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* | Pointer to the new PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* | Pointer to the new **PositionEdges** object.|
 
 ### OH_ArkUI_PositionEdges_Dispose()
 
-```
+```c
 void OH_ArkUI_PositionEdges_Dispose(ArkUI_PositionEdges* edges)
 ```
 
 **Description**
 
-Destroys the PositionEdges object.
+Disposes of the **PositionEdges** object.
 
 **Since**: 21
 
@@ -9296,17 +9536,17 @@ Destroys the PositionEdges object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
 
 ### OH_ArkUI_PositionEdges_SetTop()
 
-```
+```c
 void OH_ArkUI_PositionEdges_SetTop(ArkUI_PositionEdges* edges, float value)
 ```
 
 **Description**
 
-Sets the up direction of the PositionEdges object.
+Sets the value of the **PositionEdges** object in the top direction.
 
 **Since**: 21
 
@@ -9314,18 +9554,18 @@ Sets the up direction of the PositionEdges object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
-|float value|Value of the PositionEdges object in the up direction, in vp.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
+|float value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 ### OH_ArkUI_PositionEdges_GetTop()
 
-```
+```c
 int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)
 ```
 
 **Description**
 
-Obtains the value of the PositionEdges object in the up direction.
+Obtains the value of the **PositionEdges** object in the top direction.
 
 **Since**: 21
 
@@ -9333,24 +9573,24 @@ Obtains the value of the PositionEdges object in the up direction.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
-|float* value|Value of the PositionEdges object in the up direction, in vp.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
+|float* value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) Invalid function parameter.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PositionEdges_SetLeft()
 
-```
+```c
 void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)
 ```
 
 **Description**
 
-Sets the value of the PositionEdges object in the left direction.
+Sets the value of the **PositionEdges** object in the left direction.
 
 **Since**: 21
 
@@ -9358,18 +9598,18 @@ Sets the value of the PositionEdges object in the left direction.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
-|float value|Value of the PositionEdges object in the left direction, in vp.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
+|float value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 ### OH_ArkUI_PositionEdges_GetLeft()
 
-```
+```c
 int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)
 ```
 
 **Description**
 
-Obtains the left value of the PositionEdges attribute object.
+Obtains the value of the **PositionEdges** object in the left direction.
 
 **Since**: 21
 
@@ -9377,25 +9617,25 @@ Obtains the left value of the PositionEdges attribute object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
-|float* value|Value of the PositionEdges object in the left direction, in vp.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
+|float* value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) The function parameter is invalid.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 
 ### OH_ArkUI_PositionEdges_SetBottom()
 
-```
+```c
 void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)
 ```
 
 **Description**
 
-Sets the bottom value of the PositionEdges attribute object.
+Obtains the value of the **PositionEdges** object in the bottom direction.
 
 **Since**: 21
 
@@ -9403,18 +9643,18 @@ Sets the bottom value of the PositionEdges attribute object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
-|float value|Value of the PositionEdges object in the bottom direction, in vp.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
+|float value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 ### OH_ArkUI_PositionEdges_GetBottom()
 
-```
+```c
 int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* value)
 ```
 
 **Description**
 
-Obtains the bottom value of the PositionEdges attribute object.
+Obtains the value of the **PositionEdges** object in the bottom direction.
 
 **Since**: 21
 
@@ -9422,24 +9662,24 @@ Obtains the bottom value of the PositionEdges attribute object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
-|float* value|Value of the PositionEdges attribute in the right direction, in vp.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
+|float* value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) Invalid function parameter.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PositionEdges_SetRight()
 
-```
+```c
 void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)
 ```
 
 **Description**
 
-Sets the right direction value of the PositionEdges attribute.
+Sets the value of the **PositionEdges** object in the right direction.
 
 **Since**: 21
 
@@ -9447,18 +9687,18 @@ Sets the right direction value of the PositionEdges attribute.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
-|float value|Value of the PositionEdges attribute in the right direction, in vp.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
+|float value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 ### OH_ArkUI_PositionEdges_GetRight()
 
-```
+```c
 int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value)
 ```
 
 **Description**
 
-Obtains the right direction value of the PositionEdges attribute.
+Obtains the value of the **PositionEdges** object in the right direction.
 
 **Since**: 21
 
@@ -9466,24 +9706,24 @@ Obtains the right direction value of the PositionEdges attribute.
 
 | Name| Description                          |
 | -- |------------------------------|
-| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the PositionEdges object.|
-|float* value|Value of the PositionEdges attribute in the right direction, in vp.|
+| [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
+|float* value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) Invalid function parameter.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PixelRoundPolicy_Create()
 
-```
+```c
 ArkUI_PixelRoundPolicy* OH_ArkUI_PixelRoundPolicy_Create()
 ```
 
 **Description**
 
-Creates a PixelRoundPolicy attribute object.
+Creates a **PixelRoundPolicy** attribute object.
 
 **Since**: 21
 
@@ -9491,17 +9731,17 @@ Creates a PixelRoundPolicy attribute object.
 
 | Type                                                        | Description                            |
 | ------------------------------------------------------------ | -------------------------------- |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* | Pointer to the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* | Pointer to the **PixelRoundPolicy** object.|
 
 ### OH_ArkUI_PixelRoundPolicy_Dispose()
 
-```
+```c
 void OH_ArkUI_PixelRoundPolicy_Dispose(ArkUI_PixelRoundPolicy* policy)
 ```
 
 **Description**
 
-Releases a PixelRoundPolicy attribute object.
+Disposes of the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9509,17 +9749,17 @@ Releases a PixelRoundPolicy attribute object.
 
 | Name                                                      | Description                                    |
 | ------------------------------------------------------------ | ---------------------------------------- |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object to be released.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the target **PixelRoundPolicy** object.|
 
 ### OH_ArkUI_PixelRoundPolicy_SetTop()
 
-```
+```c
 void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
 **Description**
 
-Sets the upper direction value of a PixelRoundPolicy attribute object.
+Sets the top edge pixel rounding policy for the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9527,18 +9767,18 @@ Sets the upper direction value of a PixelRoundPolicy attribute object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Specific pixel rounding policy.|
 
 ### OH_ArkUI_PixelRoundPolicy_GetTop()
 
-```
+```c
 int32_t OH_ArkUI_PixelRoundPolicy_GetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
 **Description**
 
-Obtains the top direction value of the PixelRoundPolicy object.
+Obtains the top edge pixel rounding policy from the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9546,24 +9786,24 @@ Obtains the top direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
 
 **Returns**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) The function parameter is invalid.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PixelRoundPolicy_SetStart()
 
-```
+```c
 void OH_ArkUI_PixelRoundPolicy_SetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
 **Description**
 
-Sets the front direction value of the PixelRoundPolicy object.
+Sets the start edge pixel rounding policy for the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9571,18 +9811,18 @@ Sets the front direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Specific pixel rounding policy.|
 
 ### OH_ArkUI_PixelRoundPolicy_GetStart()
 
-```
+```c
 int32_t OH_ArkUI_PixelRoundPolicy_GetStart(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
 **Description**
 
-Obtains the lower direction value of the PixelRoundPolicy object.
+Obtains the start edge pixel rounding policy from the **PixelRoundPolicy** object. 
 
 **Since**: 21
 
@@ -9590,24 +9830,24 @@ Obtains the lower direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
 
 **Returns**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) Invalid function parameter.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PixelRoundPolicy_SetBottom()
 
-```
+```c
 void OH_ArkUI_PixelRoundPolicy_SetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
 **Description**
 
-Sets the lower direction value of the PixelRoundPolicy object.
+Sets the bottom edge pixel rounding policy for the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9615,18 +9855,18 @@ Sets the lower direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Specific pixel rounding policy.|
 
 ### OH_ArkUI_PixelRoundPolicy_GetBottom()
 
-```
+```c
 int32_t OH_ArkUI_PixelRoundPolicy_GetBottom(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
 **Description**
 
-Obtains the lower direction value of the PixelRoundPolicy object.
+Obtains the bottom edge pixel rounding policy from the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9634,24 +9874,24 @@ Obtains the lower direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
 
 **Returns**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) Invalid function parameter.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_PixelRoundPolicy_SetEnd()
 
-```
-void OH_ArkUI_PixelRoundPolicy_SetTop(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
+```c
+void OH_ArkUI_PixelRoundPolicy_SetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy value)
 ```
 
 **Description**
 
-Sets the lower direction value of the PixelRoundPolicy object.
+Sets the end edge pixel rounding policy for the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9659,18 +9899,18 @@ Sets the lower direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy) value | Specific pixel rounding policy.|
 
 ### OH_ArkUI_PixelRoundPolicy_GetEnd()
 
-```
+```c
 int32_t OH_ArkUI_PixelRoundPolicy_GetEnd(ArkUI_PixelRoundPolicy* policy, ArkUI_PixelRoundCalcPolicy* value)
 ```
 
 **Description**
 
-Obtains the tail direction value of the PixelRoundPolicy object.
+Obtains the end edge pixel rounding policy from the **PixelRoundPolicy** object.
 
 **Since**: 21
 
@@ -9678,24 +9918,24 @@ Obtains the tail direction value of the PixelRoundPolicy object.
 
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
-| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the PixelRoundPolicy object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Rounding policy of the PixelRoundPolicy object.|
+| [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
 
 **Returns**
 
 | Type   | Description                                                        |
 | ------- | ------------------------------------------------------------ |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) The function parameter is invalid.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_ContentTransitionEffect_Create()
 
-```
+```c
 ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)
 ```
 
 **Description**
 
-Creates a ContentTransitionEffect object.
+Creates a **ContentTransitionEffect** attribute object.
 
 **Since**: 21
 
@@ -9703,24 +9943,157 @@ Creates a ContentTransitionEffect object.
 
 | Name| Description                          |
 | -- |------------------------------|
-| int32_t | Transition mode of the specified animation. The value 0 indicates no transition animation, and the value 1 indicates a fade-in and fade-out transition animation.|
+| int32_t type | Transition animation type. **0**: No transition animation. **1**: Fade-in and fade-out transition animation.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)* | Pointer to the ContentTransitionEffect object.|
+| [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)* | Pointer to the **ContentTransitionEffect** object.|
 
+### OH_ArkUI_GridLayoutOptions_Create()
+
+```c
+ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
+```
+
+**Description**
+
+Creates **Grid** layout options.
+
+**Since**: 22
+
+**Returns**
+
+| Type                               | Description|
+|-----------------------------------| -- |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | **Grid** layout options.|
+
+### OH_ArkUI_GridLayoutOptions_Dispose()
+
+```c
+void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
+```
+
+**Description**
+
+Disposes of **Grid** layout options.
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | **Grid** layout options.|
+
+
+### OH_ArkUI_GridLayoutOptions_SetIrregularIndexes()
+
+```c
+int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t size)
+```
+
+**Description**
+
+Sets the irregular grid item index array for the grid layout.
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | **Grid** layout options.|
+| uint32_t* irregularIndexes |  **GridItem** index array.|
+| int32_t size | Size of the **GridItem** index array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         A possible cause is that mandatory parameters are left unspecified.|
+
+### OH_ArkUI_GridLayoutOptions_GetIrregularIndexes()
+
+```c
+int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* option, uint32_t* irregularIndexes, int32_t* size)
+```
+
+**Description**
+
+Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback** is not set, the grid item specified in this parameter occupies an entire row of the grid that scrolls vertically or an entire column of the grid that scrolls horizontally.
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | **Grid** layout options.|
+| uint32_t* irregularIndexes |  **GridItem** index array.|
+| int32_t size | Size of the **GridItem** index array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the provided buffer size is insufficient.<br>         A possible cause is that mandatory parameters are left unspecified.|
+
+### OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback()
+
+```c
+void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemSize (*callback)(int32_t itemIndex, void* userData))
+```
+
+**Description**
+
+Registers a callback to obtain the row and column span for the grid item at the specified index.
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | **Grid** layout options.|
+| void* userData | User-defined data.|
+| ArkUI_GridItemSize (\*callback)(int32_t itemIndex, void* userData) | Callback that returns the row and column span for the grid item at the specified index.<br> **itemIndex**: grid item index, which must be within the range set by [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes).|
+
+### OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback()
+
+```c
+void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemRect (*callback)(int32_t itemIndex, void* userData))
+```
+
+**Description**
+
+Registers a callback to obtain the starting row, starting column, row span, and column span for the grid item at the specified index.
+
+**Since**: 22
+
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | **Grid** layout options.|
+| void* userData | User-defined data.|
+| ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData) | Callback that returns the starting row, starting column, row span, and column span for the grid item at the specified index.<br>   **itemIndex**: grid item index.|
 ### OH_ArkUI_ShowCounterConfig_Create()
 
-```
+```c
 ArkUI_ShowCounterConfig* OH_ArkUI_ShowCounterConfig_Create()
 ```
 
 **Description**
 
 
-Creates a configuration object for the text box counter.
+Creates a text input counter configuration object.
 
 **Since**: 22
 
@@ -9729,18 +10102,18 @@ Creates a configuration object for the text box counter.
 
 | Type                        | Description|
 |----------------------------| -- |
-| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-swiperindicator.md)* | Pointer to the configuration object for the text box counter.|
+| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* | Pointer to the text input counter configuration object.|
 
 ### OH_ArkUI_ShowCounterConfig_Dispose()
 
-```
+```c
 void OH_ArkUI_ShowCounterConfig_Dispose(ArkUI_ShowCounterConfig* config)
 ```
 
 **Description**
 
 
-Destroys the configuration object for the text box counter.
+Disposes of the text input counter configuration object.
 
 **Since**: 22
 
@@ -9749,18 +10122,18 @@ Destroys the configuration object for the text box counter.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Destroys the configuration object for the text box counter.|
+| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object to be disposed.|
 
 ### OH_ArkUI_ShowCounterConfig_SetCounterTextColor()
 
-```
+```c
 void OH_ArkUI_ShowCounterConfig_SetCounterTextColor(ArkUI_ShowCounterConfig* config, uint32_t color)
 ```
 
 **Description**
 
 
-Sets the color of the counter when the text box reaches the maximum number of characters.
+Sets the text color of the counter when the text input has not reached the maximum character limit.
 
 **Since**: 22
 
@@ -9769,19 +10142,19 @@ Sets the color of the counter when the text box reaches the maximum number of ch
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the configuration object of the counter in the text input box.|
-| uint32_t color | Color of the counter when the text input box does not reach the maximum number of characters. The format is OxARGB.|
+| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object.|
+| uint32_t color | Counter text color in 0xARGB format.|
 
 ### OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor()
 
-```
+```c
 void OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config, uint32_t color)
 ```
 
 **Description**
 
 
-Sets the color of the counter when the text input box reaches the maximum number of characters.
+Sets the text color of the counter when the text input exceeds the maximum character limit.
 
 **Since**: 22
 
@@ -9790,19 +10163,19 @@ Sets the color of the counter when the text input box reaches the maximum number
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the configuration object of the counter in the text input box.|
-| uint32_t color | Color of the counter when the text input box does not reach the maximum number of characters. The format is OxARGB.|
+| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object.|
+| uint32_t color | Counter text color in 0xARGB format.|
 
 ### OH_ArkUI_ShowCounterConfig_GetCounterTextColor()
 
-```
+```c
 uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig* config)
 ```
 
 **Description**
 
 
-Obtains the color of the counter when the text input box does not reach the maximum number of characters.
+Obtains the text color of the counter when the text input has not reached the maximum character limit.
 
 **Since**: 22
 
@@ -9811,25 +10184,25 @@ Obtains the color of the counter when the text input box does not reach the maxi
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the configuration object of the counter in the text input box.|
+| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| uint32_t  | Color of the counter when the text input box does not reach the maximum number of characters. The format is OxARGB.|
+| uint32_t  | Counter text color in 0xARGB format. Returns **0** if no color has been set via [OH_ArkUI_ShowCounterConfig_SetCounterTextColor](#oh_arkui_showcounterconfig_setcountertextcolor).|
 
 
-### OH_ArkUI_ShowCounterConfig_GetCounterTextColor()
+### OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor()
 
-```
-uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextColor(ArkUI_ShowCounterConfig* config)
+```c
+uint32_t OH_ArkUI_ShowCounterConfig_GetCounterTextOverflowColor(ArkUI_ShowCounterConfig* config)
 ```
 
 **Description**
 
 
-Obtains the color of the counter when the text input box reaches the maximum number of characters.
+Obtains the text color of the counter when the text input exceeds the maximum character limit.
 
 **Since**: 22
 
@@ -9838,11 +10211,797 @@ Obtains the color of the counter when the text input box reaches the maximum num
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the configuration object of the counter of the text input box.|
+| [ArkUI_ShowCounterConfig](capi-arkui-nativemodule-arkui-textshowcounterconfig.md)* config | Pointer to the text input counter configuration object.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| uint32_t | Counter color when the text input box reaches the maximum number of characters. The format is OxARGB.|
-<!--no_check-->
+| uint32_t | Counter text color in 0xARGB format. Returns **0** if no color has been set via [OH_ArkUI_ShowCounterConfig_SetCounterTextOverflowColor](#oh_arkui_showcounterconfig_setcountertextoverflowcolor).|
+
+### OH_ArkUI_TextMenuItem_Create()
+
+```c
+ArkUI_TextMenuItem* OH_ArkUI_TextMenuItem_Create()
+```
+
+**Description**
+
+Creates a text menu item.
+
+**Since**: 22
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* | Pointer to the **ArkUI_TextMenuItem** object.|
+
+### OH_ArkUI_TextMenuItem_Dispose()
+
+```c
+void OH_ArkUI_TextMenuItem_Dispose(ArkUI_TextMenuItem* textMenuItem)
+```
+
+**Description**
+
+Releases a text menu item.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* textMenuItem | Pointer to the **ArkUI_TextMenuItem** object.|
+
+### OH_ArkUI_TextMenuItem_SetContent()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetContent(ArkUI_TextMenuItem* item, const char* content)
+```
+
+**Description**
+
+Sets the title of a text menu item.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
+| const char* content | Title of a text menu item. The default value is an empty string.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItem_GetContent()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetContent(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)
+```
+
+**Description**
+
+Obtains the title of a text menu item.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
+| char* buffer | Buffer. You can create it and allocate memory to store the title information of the text menu item.|
+| int32_t bufferSize | Buffer size.|
+| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode): The buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItem_SetIcon()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetIcon(ArkUI_TextMenuItem* item, const char* icon)
+```
+
+**Description**
+
+Sets the icon path of a text menu item.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
+| const char* icon | Icon path of the text menu item. The default value is an empty string.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItem_GetIcon()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetIcon(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)
+```
+
+**Description**
+
+Obtains the icon path of a text menu item.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
+| char* buffer | Buffer. You can create it and allocate memory to store the icon path of the text menu item.|
+| int32_t bufferSize | Buffer size.|
+| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode): The buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItem_SetLabelInfo()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetLabelInfo(ArkUI_TextMenuItem* item, const char* labelInfo)
+```
+
+**Description**
+
+Sets the shortcut hint for a text menu item, for example, the shortcut hint for the **Copy** menu item can be set to **Ctrl+C**.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
+| const char* labelInfo | Shortcut hint of a text menu item. The default value is an empty string.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItem_GetLabelInfo()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetLabelInfo(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)
+```
+
+**Description**
+
+Obtains the shortcut hint for a text menu item, for example, the shortcut hint for the **Copy** menu item is typically **Ctrl+C**.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| ------ | --- |
+| const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
+| char* buffer | Buffer. You can create it and allocate memory to store the shortcut hint of the text menu item.|
+| int32_t bufferSize | Buffer size.|
+| int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode): The buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItem_SetId()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetId(ArkUI_TextMenuItem* item, int32_t id)
+```
+
+**Description**
+
+Sets the ID of a text menu item.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
+| int32_t id | ID of a text menu item.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItem_GetId()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetId(const ArkUI_TextMenuItem* item, int32_t* id)
+```
+
+**Description**
+
+Obtains the ID of a text menu item.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
+| int32_t* id | ID of a text menu item.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItemArray_GetSize()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetSize(ArkUI_TextMenuItemArray* items, int32_t* size)
+```
+
+**Description**
+
+Obtains the size of the text menu item array.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object.|
+| int32_t* size | Size of the text menu item array.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItemArray_GetItem()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetItem(ArkUI_TextMenuItemArray* items, int32_t index, ArkUI_TextMenuItem** item)
+```
+
+**Description**
+
+Obtains the text menu item at a specified index from the text menu item array.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object.|
+| int32_t index | Index position.|
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)** item | Level-2 pointer to the **ArkUI_TextMenuItem** object.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItemArray_Insert()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Insert(ArkUI_TextMenuItemArray* items, ArkUI_TextMenuItem* item, int32_t index)
+```
+
+**Description**
+
+Inserts a text menu item at a specified index into the text menu item array.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object.|
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
+| int32_t index | Index position of the text menu item to be inserted.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItemArray_Erase()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Erase(ArkUI_TextMenuItemArray* items, int32_t index)
+```
+
+**Description**
+
+Deletes the text menu item at a specified index from the text menu item array.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object.|
+| int32_t index | Index of the text menu item to be deleted.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextMenuItemArray_Clear()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Clear(ArkUI_TextMenuItemArray* items)
+```
+
+**Description**
+
+Clears all text menu items in the text menu item array.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextEditMenuOptions_Create()
+
+```c
+ArkUI_TextEditMenuOptions* OH_ArkUI_TextEditMenuOptions_Create()
+```
+
+**Description**
+
+Creates a text menu extension object.
+
+**Since**: 22
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object.|
+
+
+### OH_ArkUI_TextEditMenuOptions_Dispose()
+
+```c
+void OH_ArkUI_TextEditMenuOptions_Dispose(ArkUI_TextEditMenuOptions* editMenuOptions)
+```
+
+**Description**
+
+Releases a text menu extension object.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object.|
+
+### ArkUI_TextCreateMenuCallback()
+
+```c
+typedef void (*ArkUI_TextCreateMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)
+```
+
+**Description**
+
+Callback for the text menu creation event. This callback is triggered when a text menu is created, allowing you to set menu data in it.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object, which is created and released by the system. You can call [OH_ArkUI_TextMenuItemArray_Insert](capi-native-type-h.md#oh_arkui_textmenuitemarray_insert) and [OH_ArkUI_TextMenuItemArray_Erase](capi-native-type-h.md#oh_arkui_textmenuitemarray_erase) to modify the array in the callback.|
+| void\* userData | User-defined data.|
+
+### ArkUI_TextPrepareMenuCallback()
+
+```c
+typedef void (*ArkUI_TextPrepareMenuCallback)(ArkUI_TextMenuItemArray* items, void* userData)
+```
+
+**Description**
+
+Callback for the text menu preparation event. This callback is called when the text selection area changes and before the menu is displayed, allowing you to set menu data in it.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object, which is created and released by the system. You can call [OH_ArkUI_TextMenuItemArray_Insert](capi-native-type-h.md#oh_arkui_textmenuitemarray_insert) and [OH_ArkUI_TextMenuItemArray_Erase](capi-native-type-h.md#oh_arkui_textmenuitemarray_erase) to modify the array in the callback.|
+| void\* userData | User-defined data.|
+
+### ArkUI_TextMenuItemClickCallback()
+
+```c
+typedef bool (*ArkUI_TextMenuItemClickCallback)(const ArkUI_TextMenuItem* item,int32_t start, int32_t end, void* userData)
+```
+
+**Description**
+
+Callback for the text menu item click event. This callback is called when a menu item is clicked. You can intercept the default processing behavior in this callback.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object, indicating the clicked text menu item.|
+| int32_t start | Start index of the selected text.|
+| int32_t end | End index of the selected text.|
+| void\* userData | User-defined data.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| bool | Whether to intercept the default processing behavior of the system.<br> **true**: Intercept the system's default processing behavior. For example, clicking text menu items such as **Paste** or **Copy** will only execute the custom processing behavior.<br> **false**: Do not intercept the system's default processing behavior. For example, clicking text menu items such as **Paste** or **Copy** will first execute the custom processing behavior and then the default processing behavior.|
+
+### OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextCreateMenuCallback cb)
+```
+
+**Description**
+
+Registers the callback for creating text menus.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object.|
+| void* userData | User-defined data.|
+| [ArkUI_TextCreateMenuCallback](capi-native-type-h.md#arkui_textcreatemenucallback) cb | Callback for creating text menus.|
+
+**Returns**
+
+| Type| Description|
+| ---- | --- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextPrepareMenuCallback cb)
+```
+
+**Description**
+
+Registers the callback for preparing text menus.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object.|
+| void* userData | User-defined data.|
+| [ArkUI_TextPrepareMenuCallback](capi-native-type-h.md#arkui_textpreparemenucallback) cb | Callback for preparing text menus.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextMenuItemClickCallback cb)
+```
+
+**Description**
+
+Registers the callback for text menu item clicks.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object.|
+| void* userData | User-defined data.|
+| [ArkUI_TextMenuItemClickCallback](capi-native-type-h.md#arkui_textmenuitemclickcallback) cb | Callback for text menu item clicks.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextSelectionMenuOptions_Create()
+
+```c
+ArkUI_TextSelectionMenuOptions* OH_ArkUI_TextSelectionMenuOptions_Create();
+```
+
+**Description**
+
+Creates a custom text selection menu.
+
+**Since**: 22
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
+
+
+### OH_ArkUI_TextSelectionMenuOptions_Dispose()
+
+```c
+void OH_ArkUI_TextSelectionMenuOptions_Dispose(ArkUI_TextSelectionMenuOptions* selectionMenuOptions)
+```
+
+**Description**
+
+Releases a custom text selection menu object.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
+
+### OH_ArkUI_TextSelectionMenuOptions_SetSpanType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType textSpanType)
+```
+
+**Description**
+
+Sets the recognition type of a custom text selection menu.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
+| [ArkUI_TextSpanType](capi-native-type-h.md#arkui_textspantype) textSpanType | Recognition type of a custom text selection menu.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextSelectionMenuOptions_GetSpanType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType* spanType)
+```
+
+**Description**
+
+Obtains the recognition type of a custom text selection menu.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
+| [ArkUI_TextSpanType](capi-native-type-h.md#arkui_textspantype)* spanType | Recognition type of a custom text selection menu.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextSelectionMenuOptions_SetContentNode()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle node)
+```
+
+**Description**
+
+Sets the content node of a custom text selection menu.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Content node of the custom text selection menu.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextSelectionMenuOptions_GetContentNode()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle* node)
+```
+
+**Description**
+
+Obtains the content node of a custom text selection menu.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | Content node of the custom text selection menu.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextSelectionMenuOptions_SetResponseType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType responseType)
+```
+
+**Description**
+
+Sets the response type of a custom text selection menu.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
+| [ArkUI_TextResponseType](capi-native-type-h.md#arkui_textresponsetype) responseType | Response type of the custom text selection menu.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextSelectionMenuOptions_GetResponseType()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType* responseType)
+```
+
+**Description**
+
+Obtains the response type of a custom text selection menu.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
+| [ArkUI_TextResponseType](capi-native-type-h.md#arkui_textresponsetype)* responseType | Response type of the custom text selection menu.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (*callback)(int32_t start, int32_t end, void* userData))
+```
+
+**Description**
+
+Registers the callback for the event of showing a custom text selection menu.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
+| void* userData | User-defined data, which can be any value. After the setting, the value is returned through the callback.|
+| void (\*callback)(int32_t start, int32_t end, void* userData) | Callback for the event of showing a custom text selection menu.<br> **start**: start position of the selected text.<br> **end**: end position of the selected text.<br> **userData**: user-defined data, which corresponds to the input parameter **userData** of the **OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback** API.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+
+### OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback()
+
+```c
+ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (*callback)(int32_t start, int32_t end, void* userData))
+```
+
+**Description**
+
+Registers the callback for the event of hiding a custom text selection menu.
+
+**Since**: 22
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
+| void* userData | User-defined data, which can be any value. After the setting, the value is returned through the callback.|
+| void (\*callback)(int32_t start, int32_t end, void* userData) | Callback for the event of hiding a custom text selection menu.<br> **start**: start position of the selected text.<br> **end**: end position of the selected text.<br> **userData**: user-defined data, which corresponds to the input parameter **userData** of the **OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback** API.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|

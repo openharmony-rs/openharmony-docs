@@ -48,7 +48,7 @@ dial\(phoneNumber: string, callback: AsyncCallback\<boolean\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.dial("138xxxxxxxx", (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -84,7 +84,7 @@ let dialOptions: call.DialOptions = {
     extras: false
 }
 call.dial("138xxxxxxxx", dialOptions, (err: BusinessError, data: boolean) => {
-    console.log(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
+    console.info(`callback: err->${JSON.stringify(err)}, data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -124,7 +124,7 @@ let dialOptions: call.DialOptions = {
     extras: false
 }
 call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
-    console.log(`dial success, promise: data->${JSON.stringify(data)}`);
+    console.info(`dial success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`dial fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -149,7 +149,7 @@ makeCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -168,7 +168,7 @@ call.makeCall("138xxxxxxxx", (err: BusinessError) => {
     if (err) {
         console.error(`makeCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`makeCall success`);
+        console.info(`makeCall success`);
     }
 });
 ```
@@ -198,7 +198,7 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -214,7 +214,7 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeCall("138xxxxxxxx").then(() => {
-    console.log(`makeCall success`);
+    console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -245,7 +245,7 @@ makeCall\(context: Context, phoneNumber: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -266,7 +266,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let context = this.getUIContext().getHostContext() as Context;
 // 从API15开始支持tel格式电话号码，如："tel:13xxxx"
 call.makeCall(context, "138xxxxxxxx").then(() => {
-    console.log(`makeCall success`);
+    console.info(`makeCall success`);
 }).catch((err: BusinessError) => {
     console.error(`makeCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -295,7 +295,7 @@ call.hasCall((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`hasCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`hasCall success, data->${JSON.stringify(data)}`);
+        console.info(`hasCall success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -321,7 +321,7 @@ hasCall\(\): Promise\<boolean\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hasCall().then(() => {
-    console.log(`hasCall success`);
+    console.info(`hasCall success`);
 }).catch((err: BusinessError) => {
     console.error(`hasCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -345,7 +345,7 @@ hasCallSync\(\): boolean
 
 ```ts
 let hasCall: boolean = call.hasCallSync();
-console.log(`hasCallSync success, has call is ` + hasCall);
+console.info(`hasCallSync success, has call is ` + hasCall);
 ```
 
 
@@ -372,7 +372,7 @@ call.getCallState((err: BusinessError, data: call.CallState) => {
     if (err) {
         console.error(`getCallState fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallState success, data->${JSON.stringify(data)}`);
+        console.info(`getCallState success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -398,7 +398,7 @@ getCallState\(\): Promise\<CallState\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallState().then((data: call.CallState) => {
-    console.log(`getCallState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallState fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -422,7 +422,7 @@ getCallStateSync\(\): CallState
 
 ```ts
 let callState: call.CallState = call.getCallStateSync();
-console.log(`the call state is:` + callState);
+console.info(`the call state is:` + callState);
 ```
 
 ## call.hasVoiceCapability<sup>7+</sup>
@@ -441,7 +441,7 @@ hasVoiceCapability\(\): boolean
 
 ```ts
 let result: boolean = call.hasVoiceCapability();
-console.log(`hasVoiceCapability: ${JSON.stringify(result)}`);
+console.info(`hasVoiceCapability: ${JSON.stringify(result)}`);
 ```
 
 ## call.isEmergencyPhoneNumber<sup>7+</sup>
@@ -461,7 +461,7 @@ isEmergencyPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<boolean\>\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -480,7 +480,7 @@ call.isEmergencyPhoneNumber("138xxxxxxxx", (err: BusinessError, data: boolean) =
     if (err) {
         console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -504,7 +504,7 @@ isEmergencyPhoneNumber\(phoneNumber: string, options: EmergencyNumberOptions, ca
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -524,7 +524,7 @@ call.isEmergencyPhoneNumber("112", options, (err: BusinessError, data: boolean) 
     if (err) {
         console.error(`isEmergencyPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`isEmergencyPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -553,7 +553,7 @@ isEmergencyPhoneNumber\(phoneNumber: string, options?: EmergencyNumberOptions\):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -570,7 +570,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let options: call.EmergencyNumberOptions = {slotId: 1}
 call.isEmergencyPhoneNumber("138xxxxxxxx", options).then((data: boolean) => {
-    console.log(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isEmergencyPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isEmergencyPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -582,7 +582,7 @@ formatPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<string\>\): voi
 
 格式化电话号码。使用callback异步回调。
 
-电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
+电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
@@ -595,7 +595,7 @@ formatPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<string\>\): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -614,7 +614,7 @@ call.formatPhoneNumber("138xxxxxxxx", (err: BusinessError, data: string) => {
     if (err) {
         console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -625,7 +625,7 @@ formatPhoneNumber\(phoneNumber: string, options: NumberFormatOptions, callback: 
 
 格式化电话号码，可设置格式化参数。使用callback异步回调。
 
-电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
+电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
@@ -639,7 +639,7 @@ formatPhoneNumber\(phoneNumber: string, options: NumberFormatOptions, callback: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -661,7 +661,7 @@ call.formatPhoneNumber("138xxxxxxxx", options, (err: BusinessError, data: string
     if (err) {
         console.error(`formatPhoneNumber fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumber success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -673,7 +673,7 @@ formatPhoneNumber\(phoneNumber: string, options?: NumberFormatOptions\): Promise
 
 格式化电话号码，可设置格式化参数。使用Promise异步回调。
 
-电话号码格式化后为标准数字字串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
+电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
@@ -692,7 +692,7 @@ formatPhoneNumber\(phoneNumber: string, options?: NumberFormatOptions\): Promise
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -711,7 +711,7 @@ let options: call.NumberFormatOptions = {
     countryCode: "CN"
 }
 call.formatPhoneNumber("138xxxxxxxx", options).then((data: string) => {
-    console.log(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
+    console.info(`formatPhoneNumber success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`formatPhoneNumber fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -737,7 +737,7 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string, callback: Asy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -756,7 +756,7 @@ call.formatPhoneNumberToE164("138xxxxxxxx", "CN", (err: BusinessError, data: str
     if (err) {
         console.error(`formatPhoneNumberToE164 fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
+        console.info(`formatPhoneNumberToE164 success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -789,7 +789,7 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string\): Promise\<st
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -805,7 +805,7 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string\): Promise\<st
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.formatPhoneNumberToE164("138xxxxxxxx", "CN").then((data: string) => {
-    console.log(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
+    console.info(`formatPhoneNumberToE164 success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`formatPhoneNumberToE164 fail, promise: err->${JSON.stringify(err)}`);
 });

@@ -551,7 +551,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)与[HiDebug-Trace错误码](errorcode-hiviewdfx-hidebug-trace.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)与[HiDebug Trace错误码](errorcode-hiviewdfx-hidebug-trace.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
@@ -593,7 +593,7 @@ stopAppTraceCapture(): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[HiDebug-Trace错误码](errorcode-hiviewdfx-hidebug-trace.md)。
+以下错误码的详细介绍请参见[HiDebug Trace错误码](errorcode-hiviewdfx-hidebug-trace.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
@@ -662,7 +662,7 @@ getSystemCpuUsage(): number
 
 **错误码**：
 
-以下错误码的详细介绍请参见[HiDebug-CpuUsage错误码](errorcode-hiviewdfx-hidebug-cpuusage.md)。
+以下错误码的详细介绍请参见[HiDebug CpuUsage错误码](errorcode-hiviewdfx-hidebug-cpuusage.md)。
 
 | 错误码ID | 错误信息                                            |
 | ------- |-------------------------------------------------|
@@ -920,7 +920,7 @@ try {
 
 | 名称      | 类型   | 只读 | 可选 | 说明         |
 | --------- | ------ | --|----| ------------ |
-| rssLimit    | bigint |  否  | 否  | 应用进程的驻留集的限制，以KB为单位。     |
+| rssLimit    | bigint |  否  | 否  | 应用程序进程可用的物理内存限制，以KB为单位，实际当前系统未对进程可用物理内存做限制，但是进程的可用物理内存仍然不会超过设备的实际最大可用物理内存，当前设备的物理内存使用情况可通过[hidebug.getSystemMemInfo](#hidebuggetsystemmeminfo12)获取。     |
 | vssLimit  | bigint |  否  | 否  | 进程的虚拟内存限制，以KB为单位。       |
 | vmHeapLimit | bigint |  否  | 否  | 当前线程的 JS VM 堆大小限制，以KB为单位。 |
 | vmTotalHeapSize | bigint |  否  | 否  | 当前进程的 JS 堆内存大小限制，以KB为单位。  |

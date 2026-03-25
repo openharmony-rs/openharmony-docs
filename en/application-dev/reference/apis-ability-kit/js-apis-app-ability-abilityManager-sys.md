@@ -71,10 +71,10 @@ import { abilityManager, Configuration, ConfigurationConstant } from '@kit.Abili
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const config: Configuration = {
-  language: 'Zh-Hans',                 // Simplified Chinese.
+  language: 'Zh-Hans',                 // Simplified Chinese
   colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // Light theme.
   direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // Vertical direction.
-  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // The screen pixel density is 'sdpi'.
+  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // The screen pixel density is sdpi.
   displayId: 1,                        // The application is displayed on the display with ID 1.
   hasPointerDevice: true,              // A pointer device is connected.
 };
@@ -136,10 +136,10 @@ import { abilityManager, Configuration, ConfigurationConstant } from '@kit.Abili
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const config: Configuration = {
-  language: 'Zh-Hans',                 // Simplified Chinese.
+  language: 'Zh-Hans',                 // Simplified Chinese
   colorMode: ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT,         // Light theme.
   direction: ConfigurationConstant.Direction.DIRECTION_VERTICAL,       // Vertical direction.
-  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // The screen pixel density is 'sdpi'.
+  screenDensity: ConfigurationConstant.ScreenDensity.SCREEN_DENSITY_SDPI,  // The screen pixel density is sdpi.
   displayId: 1,                        // The application is displayed on the display with ID 1.
   hasPointerDevice: true,              // A pointer device is connected.
 };
@@ -852,8 +852,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message|
 | ------- | -------- |
-| 201 | Permission denied. |
-| 202 | Not System App. Interface caller is not a system app. |
+| 201 | The application does not have permission to call the interface. |
+| 202 | Not system application. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 16000050 | Internal error. |
 
@@ -991,113 +991,6 @@ try {
 }
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## AtomicServiceStartupRule<sup>18+</sup>
 
 Describes the rule for launching an embedded atomic service.
@@ -1121,7 +1014,7 @@ Obtains the rule for launching an [EmbeddableUIAbility](js-apis-app-ability-embe
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
-**Device behavior differences**: This API can be properly called only on phones, tablets, and TVs. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called only on phones and tablets. If it is called on other device types, error code 801 is returned.
 
 **Parameters**
 
@@ -1196,15 +1089,3 @@ Defines the level-2 module AbilityForegroundStateObserver.
 | Type| Description|
 | --- | --- |
 | [_AbilityForegroundStateObserver.default](js-apis-inner-application-abilityForegroundStateObserver-sys.md) | AbilityForegroundStateObserver, a level-2 module that defines a listener to observe application foreground and background state changes.|
-
-
-
-
-
-
-
-
-
-
-
-

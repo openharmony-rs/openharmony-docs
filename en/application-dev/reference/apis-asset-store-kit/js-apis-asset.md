@@ -972,7 +972,7 @@ Enumerates the error codes.
 | SERVICE_UNAVAILABLE | 24000001    |The asset service is unavailable.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | NOT_FOUND | 24000002    |Failed to find the asset.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | DUPLICATED | 24000003    |The specified asset already exists.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| ACCESS_DENIED | 24000004    |The access to the asset is denied.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| ACCESS_DENIED | 24000004    |The access is denied.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | STATUS_MISMATCH | 24000005    |The screen lock status does not match.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | OUT_OF_MEMORY | 24000006    |The system memory is insufficient.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | DATA_CORRUPTED | 24000007    |The asset is corrupted.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
@@ -980,7 +980,7 @@ Enumerates the error codes.
 | CRYPTO_ERROR | 24000009   |The crypto operation failed.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | IPC_ERROR | 24000010   |IPC failed.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | BMS_ERROR | 24000011   |The Bundle Manager service is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| ACCOUNT_ERROR | 24000012   |The account service is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
+| ACCOUNT_ERROR | 24000012   |The account system service is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | ACCESS_TOKEN_ERROR | 24000013   |The Access Token service is abnormal.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | FILE_OPERATION_ERROR | 24000014   |The file operation failed.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | GET_SYSTEM_TIME_ERROR | 24000015   |Failed to obtain the system time.<br>**Atomic service API**: This API can be used in atomic services since API version 14.|

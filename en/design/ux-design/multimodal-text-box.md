@@ -14,7 +14,7 @@ A text box allows users to enter or select text (including numbers).
 
 - When the text length exceeds the width of the text box, users can slide the text horizontally in the text box without the cursor.
 
-- A text contained in a text field is selected by default, so that the text can be deleted at one tap when users perform operations with default recommended texts (such as creating a folder, saving as, and renaming a folder) Display an error message to inidcate duplicate names when users directly save the default name contained in a text field.
+- A text contained in a text field is selected by default, so that the text can be deleted at one tap when users perform operations with default recommended texts (such as creating a folder, saving as, and renaming a folder) Display an error message to indicate duplicate names when users directly save the default name contained in a text field.
 
 ![title-typing.png](figures/title-typing.png)
 
@@ -31,3 +31,5 @@ Forbid the submission if text input is not accepted. If a prompt cannot be displ
 ## Resources
 
 For details about the development guide related to the text box, see [TextInput](../../application-dev/reference/arkui-ts/ts-basic-components-textinput.md) and [TextArea](../../application-dev/reference/arkui-ts/ts-basic-components-textarea.md).
+
+<!--no_check-->

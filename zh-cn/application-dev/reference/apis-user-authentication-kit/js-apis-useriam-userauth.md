@@ -101,7 +101,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | 名称         | 类型   | 只读 | 可选 | 说明                 |
 | ------------ | ---------- | ---- | ---- | -------------------- |
 | reuseMode        | [ReuseMode](#reusemode12) | 否 | 否   | 复用解锁认证结果的模式。       |
-| reuseDuration    | number | 否 | 否 | 允许复用解锁认证结果的有效时长，有效时长的值应大于0，最大值为[MAX_ALLOWABLE_REUSE_DURATION](#常量)。 |
+| reuseDuration    | number | 否 | 否 | 允许复用解锁认证结果的有效时长，单位为毫秒。有效时长的值应大于0，最大值为[MAX_ALLOWABLE_REUSE_DURATION](#常量)。 |
 
 ## userAuth.getAuthLockState<sup>22+</sup>
 
@@ -1920,7 +1920,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 | ------------ | ---------- | ---- | ---- | -------------------|
 | token        | Uint8Array | 否 | 是 | 认证成功的令牌信息。 |
 | remainTimes  | number     | 否 | 是 | 剩余的认证操作次数。 |
-| freezingTime | number     | 否 | 是 | 认证操作的冻结时间。 |
+| freezingTime | number     | 否 | 是 | 认证操作的冻结时间。单位为毫秒。|
 
 ## ResultCode<sup>(deprecated)</sup>
 
@@ -2062,7 +2062,7 @@ getAuthenticator(): Authenticator
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[constructor](#constructordeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[getAuthInstance](#userauthgetauthinstancedeprecated)替代。
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -2085,7 +2085,7 @@ getAuthenticator(): Authenticator
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[UserAuth](#userauthdeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[AuthInstance](#authinstancedeprecated)替代。
 
 ### execute<sup>(deprecated)</sup>
 
@@ -2095,7 +2095,7 @@ execute(type: AuthType, level: SecureLevel, callback: AsyncCallback&lt;number&gt
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[auth](#authdeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[start](#startdeprecated)替代。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
@@ -2133,7 +2133,7 @@ execute(type : AuthType, level : SecureLevel): Promise&lt;number&gt;
 
 > **说明：**
 >
-> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[auth](#authdeprecated)替代。
+> 从 API version 6 开始支持，从 API version 8 开始废弃，请使用[start](#startdeprecated)替代。
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 

@@ -191,7 +191,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
 
     ``` TypeScript
-    //  1.导入模块
+    // 1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import hilog from '@ohos.hilog';
     ```
@@ -262,7 +262,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
 
     ``` TypeScript
-    //  1.导入模块
+    // 1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import hilog from '@ohos.hilog';
     ```
@@ -297,7 +297,7 @@ utd.json5文件需要在类型为entry的HAP中配置。
     <!-- @[import_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/Udmf/UniformDataTypeDescriptors/entry/src/main/ets/pages/Index.ets) -->
 
     ``` TypeScript
-    //  1.导入模块
+    // 1.导入模块
     import { uniformTypeDescriptor } from '@kit.ArkData';
     import hilog from '@ohos.hilog';
     ```

@@ -29,16 +29,16 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
 
   > **NOTE**
   > 
-  > The **ArkUI_NodeEvent* event** parameter in event callbacks is only valid during the callback execution. Do not cache this pointer or process it asynchronously.
+  > The [ArkUI_NodeEvent](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nodeevent.md)* event parameter in event callbacks is only valid during the callback execution. Do not cache this pointer or process it asynchronously.
 
-    Define a pointer of type ArkUI_NativeNodeAPI_1:
+    Define a pointer of type [ArkUI_NativeNodeAPI_1](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md):
     <!-- @[define_node](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Common.h) -->
     
     ``` C
     ArkUI_NativeNodeAPI_1 *nodeAPI = nullptr;
     ```
 
-    Call the **OH_ArkUI_GetModuleInterface** API to assign a value to the defined pointer.
+    Call the [OH_ArkUI_GetModuleInterface](../reference/apis-arkui/capi-native-interface-h.md#oh_arkui_getmoduleinterface) API to assign a value to the defined pointer:
     <!-- @[get_module_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NativeEntry.cpp) -->
     
     ``` C++
@@ -225,7 +225,7 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
         const char* darkMsg;
     };
     
-    // Register the callback.
+    // Register a callback.
     void onColorModeChange(ArkUI_SystemColorMode colorMode, void *userData)
     {
         ColorModeInfo* info = static_cast<ColorModeInfo*>(userData);
@@ -299,7 +299,7 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
             }
             nativeModule_->removeNodeEventReceiver(handle_, ArkUINode::NodeEventReceiver);
         }
-    
+        // Set the node brightness.
         void SetWidth(float width)
         {
             if (!handle_) {
@@ -309,6 +309,7 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_WIDTH, &item);
         }
+        // Set the node width (in percentage).
         void SetPercentWidth(float percent)
         {
             if (!handle_) {
@@ -318,6 +319,7 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_WIDTH_PERCENT, &item);
         }
+        // Set the node height.
         void SetHeight(float height)
         {
             if (!handle_) {
@@ -327,6 +329,7 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_HEIGHT, &item);
         }
+        // Set the node height (in percentage).
         void SetPercentHeight(float percent)
         {
             if (!handle_) {
@@ -336,6 +339,7 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
             ArkUI_AttributeItem item = {value, 1};
             nativeModule_->setAttribute(handle_, NODE_HEIGHT_PERCENT, &item);
         }
+        // Set the background color of the node.
         void SetBackgroundColor(uint32_t color)
         {
             if (!handle_) {
@@ -475,7 +479,6 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
     #define MYAPPLICATION_ARKUILISTNODE_H
     
     #include "ArkUINode.h"
-    #include <hilog/log.h>
     
     namespace NativeModule {
     class ArkUIListNode : public ArkUINode {
@@ -537,7 +540,7 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
     <!-- @[normal_text_list_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/NormalTextListExample.h) -->
     
     ``` C
-    // TextListExample.h
+    // NormalTextListExample.h
     // Text list example.
     
     #ifndef MYAPPLICATION_NORMALTEXTLISTEXAMPLE_H
@@ -548,7 +551,13 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
     #include "ArkUIListNode.h"
     #include "ArkUITextNode.h"
     #include <hilog/log.h>
-    #include "Function.h"
+    
+    const unsigned int LOG_PRINT_DOMAIN = 0xF811;
+    const unsigned int LOOP_SIZE = 30;
+    const unsigned int FONT_SIZE = 16;
+    const unsigned int HEIGHT_SIZE = 200;
+    const float PERCENT_WIDTH_1 = 1;
+    const float PERCENT_HEIGHT_1 = 1;
     
     namespace NativeModule {
     
@@ -658,7 +667,7 @@ The following example is based on the [Integrating with ArkTS Pages](ndk-access-
 
    Since log-related APIs are used, add a reference to **libhilog_ndk.z.so** in the **CMakeLists.txt** file as follows:
    
-   ```
+   ```text
    add_library(entry SHARED napi_init.cpp NativeEntry.cpp)
    target_link_libraries(entry PUBLIC libace_napi.z.so libace_ndk.z.so libhilog_ndk.z.so)
    ```

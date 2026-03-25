@@ -123,11 +123,11 @@ VSS（Virtual Set Size）指的是进程虚拟内存的大小，包括所有映�
 
 ### PSS
 
-PSS（Proportional Set Size）是一种更精确的内存使用度量方法，它将共享库所占的内存按比例分配给每个使用该库的进程。
+PSS（Proportional Set Size）指的是进程实际占用的物理内存总量。计算方式为：将共享内存按使用该内存的进程数量进行分摊后，再将其与进程私有内存相加。
 
 ### RSS
 
-RSS（Resident Set Size）表示当前进程中实际驻留在物理内存中的大小。
+RSS（Resident Set Size）指的是进程中实际驻留在物理内存中的大小。
 
 ### 脏页
 

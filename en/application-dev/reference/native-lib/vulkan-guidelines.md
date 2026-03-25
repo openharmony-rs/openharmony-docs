@@ -148,3 +148,8 @@ libnative_buffer.so
    }
    ```
 
+## Samples
+
+The following sample is provided to help you better understand how to use Vulkan:
+
+- [XComponent Component Connecting to Vulkan (API version 11)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/Native/NdkVulkan)

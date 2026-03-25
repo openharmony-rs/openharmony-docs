@@ -6,6 +6,10 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_CustomDialogOptions ArkUI_CustomDialogOptions
+```
+
 ## Overview
 
 Defines a struct for custom dialog box options.

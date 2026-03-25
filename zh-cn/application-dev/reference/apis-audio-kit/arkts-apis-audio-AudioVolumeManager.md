@@ -43,12 +43,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
 
-audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, value: audio.AudioVolumeGroupManager) => {
+audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, audioVolumeGroupManager: audio.AudioVolumeGroupManager) => {
   if (err) {
-    console.error(`Failed to getVolumeGroupManager. Code: ${err.code}, message: ${err.message}`);
+    console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
     return;
   }
-  console.info('Succeeded in doing getVolumeGroupManager.');
+  console.info('Succeeded in getting volume group manager.');
 });
 
 ```
@@ -82,9 +82,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let groupId: number = audio.DEFAULT_VOLUME_GROUP_ID;
 
 audioVolumeManager.getVolumeGroupManager(groupId).then((audioVolumeGroupManager: audio.AudioVolumeGroupManager) => {
-  console.info('Succeeded in doing getVolumeGroupManager.');
+  console.info('Succeeded in getting volume group manager.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to getVolumeGroupManager. Code: ${err.code}, message: ${err.message}`);
+  console.error(`Failed to get volume group manager. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -124,10 +124,10 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let audioVolumeGroupManager: audio.AudioVolumeGroupManager = audioVolumeManager.getVolumeGroupManagerSync(audio.DEFAULT_VOLUME_GROUP_ID);
-  console.info(`Get audioVolumeGroupManager success.`);
+  console.info('Succeeded in getting volume group manager.');
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to get audioVolumeGroupManager, error: ${error}`);
+  console.error(`Failed to get volume group manager. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -135,7 +135,7 @@ try {
 
 getAppVolumePercentage(): Promise<number\>
 
-获取应用的音量（范围为0到100）。使用Promise异步回调。
+获取应用的音量（范围为[0, 100]）。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -159,7 +159,7 @@ audioVolumeManager.getAppVolumePercentage().then((value: number) => {
 
 setAppVolumePercentage(volume: number\): Promise<void\>
 
-设置应用的音量（范围为0到100）。使用Promise异步回调。
+设置应用的音量（范围为[0, 100]）。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -280,7 +280,7 @@ audioVolumeManager.off('volumeChange', volumeChangeCallback);
 
 on(type: 'appVolumeChange', callback: Callback\<VolumeEvent>): void
 
-监听当前应用应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
+监听当前应用的应用级音量变化事件（当应用级音量发生变化时触发）。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -313,7 +313,7 @@ audioVolumeManager.on('appVolumeChange', (volumeEvent: audio.VolumeEvent) => {
 
 off(type: 'appVolumeChange', callback?: Callback\<VolumeEvent>): void
 
-取消监听当前应用应用级音量变化事件。使用callback异步回调。
+取消监听当前应用的应用级音量变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -321,7 +321,7 @@ off(type: 'appVolumeChange', callback?: Callback\<VolumeEvent>): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| type     | string                                 | 是   | 事件回调类型，支持的事件为'appVolumeChange'，当取消监听当前应用应用级音量变化事件时，触发该事件。 |
+| type     | string                                 | 是   | 事件回调类型，支持的事件为'appVolumeChange'，当取消监听当前应用的应用级音量变化事件时，触发该事件。 |
 | callback | Callback<[VolumeEvent](arkts-apis-audio-i.md#volumeevent9)> | 否   | 回调函数，返回变化后的音量信息。 |
 
 **错误码：**
@@ -530,7 +530,7 @@ try {
 
 getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, device: DeviceType): number
 
-获取系统通过音频流、音量等级和设备类型计算出的音量db值。
+获取系统通过音频流、音量等级和设备类型计算出的音量dB值。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
@@ -546,7 +546,7 @@ getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, devic
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
-| number | 音频流的音量db值。 |
+| number | 音频流的音量dB值。 |
 
 **错误码：**
 
@@ -559,7 +559,7 @@ getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, devic
 **示例：**
 
 ```ts
-// 获取系统通过音频流、音量等级和设备类型计算出的音量db值。
+// 获取系统通过音频流、音量等级和设备类型计算出的音量dB值。
 import { BusinessError } from '@kit.BasicServicesKit';
 import { audio } from '@kit.AudioKit'
 

@@ -51,56 +51,56 @@ You can set a USB device as a host to connect to a device for data transfer. The
    // Obtain the USB device list.
    let deviceList : Array<usbManager.USBDevice> = usbManager.getDevices();
    /*
-   Example deviceList structure:
-   [
-     {
-       name: "1-1",
-       serial: "",
-       manufacturerName: "",
-       productName: "",
-       version: "",
-       vendorId: 7531,
-       productId: 2,
-       clazz: 9,
-       subClass: 0,
-       protocol: 1,
-       devAddress: 1,
-       busNum: 1,
-       configs: [
-         {
-           id: 1,
-           attributes: 224,
-           isRemoteWakeup: true,
-           isSelfPowered: true,
-           maxPower: 0,
-           name: "1-1",
-           interfaces: [
-             {
-               id: 0,
-               protocol: 0,
-               clazz: 9,
-               subClass: 0,
-               alternateSetting: 0,
-               name: "1-1",
-               endpoints: [
-                 {
-                   address: 129,
-                   attributes: 3,
-                   interval: 12,
-                   maxPacketSize: 4,
-                   direction: 128,
-                   number: 1,
-                   type: 3,
-                   interfaceId: 0,
-                 }
-               ]
-             }
-           ]
-         }
-       ]
-     }
-   ]
-   */
+    Example deviceList structure:
+    [
+      {
+        name: "1-1",
+        serial: "",
+        manufacturerName: "",
+        productName: "",
+        version: "",
+        vendorId: 7531,
+        productId: 2,
+        clazz: 9,
+        subClass: 0,
+        protocol: 1,
+        devAddress: 1,
+        busNum: 1,
+        configs: [
+          {
+            id: 1,
+            attributes: 224,
+            isRemoteWakeup: true,
+            isSelfPowered: true,
+            maxPower: 0,
+            name: "1-1",
+            interfaces: [
+              {
+                id: 0,
+                protocol: 0,
+                clazz: 9,
+                subClass: 0,
+                alternateSetting: 0,
+                name: "1-1",
+                endpoints: [
+                  {
+                    address: 129,
+                    attributes: 3,
+                    interval: 12,
+                    maxPacketSize: 4,
+                    direction: 128,
+                    number: 1,
+                    type: 3,
+                    interfaceId: 0,
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+    */
    ```
 
 2. Obtain the device operation permissions.
@@ -125,9 +125,9 @@ You can set a USB device as a host to connect to a device for data transfer. The
    let pipe : usbManager.USBDevicePipe = usbManager.connectDevice(deviceList[0]);
    let interface1 : usbManager.USBInterface = deviceList[0].configs[0].interfaces[0];
    /*
-    Claim the corresponding interface from **deviceList**.
-   interface1 must be one present in the device configuration.
-   */
+     Claim the corresponding interface from **deviceList**.
+     interface1 must be one present in the device configuration.
+    */
    usbManager.claimInterface(pipe, interface1, true);
    ```
 
@@ -140,8 +140,8 @@ You can set a USB device as a host to connect to a device for data transfer. The
     import { BusinessError } from '@kit.BasicServicesKit';
     /*
       Read data. Select the corresponding RX endpoint from deviceList for data transfer.
-    (endpoint.direction == 0x80); dataUint8Array indicates the data to read. The data type is Uint8Array.
-    */
+     (endpoint.direction == 0x80); dataUint8Array indicates the data to read. The data type is Uint8Array.
+     */
     let inEndpoint : usbManager.USBEndpoint = interface1.endpoints[2];
     let outEndpoint : usbManager.USBEndpoint = interface1.endpoints[1];
     let dataUint8Array : Uint8Array = new Uint8Array(1024);
@@ -174,13 +174,13 @@ You can set a USB device as a host to connect to a device for data transfer. The
 
     /*
       Construct control transfer parameters.
-    */
+     */
     let param: usbManager.USBDeviceRequestParams = {
       bmRequestType: 0x80,    // 0x80 indicates a standard request for data transfer from the device to the host.
       bRequest: 0x06,    // 0x06 indicates a request for the descriptor.
       wValue:0x01 << 8 | 0,    // The value is of two bytes. The high byte indicates the descriptor type. Here, 0x01 indicates the device descriptor. The low byte indicates the descriptor index. The value is set to 0 because it is not involved for the device descriptor.
       wIndex: 0,    // Descriptor index. The value can be 0.
-      wLength: 18,    // Descriptor length. The value 18 indicates that a maximum of 1024 characters are supported.
+      wLength: 18,    // Descriptor length. The value 18 indicates the length of a device descriptor. A maximum of 1024 characters are supported.
       data: new Uint8Array(18)
     };
 

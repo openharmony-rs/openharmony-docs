@@ -1,5 +1,10 @@
 # NDK Usage
-
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @xiang-shouxing-->
+<!--Designer: @xiang-shouxing-->
+<!--Tester: @sally__-->
+<!--Adviser: @HelloCrease-->
 
 ## Where can I find the libc++ library? Is it packed into the HAP? (API version 10)
 
@@ -17,15 +22,15 @@ Currently, the official SDK supports only build with CMake. It also provides gui
 
 1. GN build: 
 
-    [Building a Third-Party Library Based on gn_example](https://gitee.com/openharmony/build/wikis/gn%E6%9E%84%E5%BB%BA%E4%B8%89%E6%96%B9%E5%BA%93/%E5%9F%BA%E4%BA%8Egn_example%E7%BC%96%E8%AF%91%E4%B8%89%E6%96%B9%E5%BA%93%E4%BB%A3%E7%A0%81) 
+    [Building a Third-Party Library Based on gn_example](https://gitcode.com/openharmony/build/wiki/gn%E6%9E%84%E5%BB%BA%E4%B8%89%E6%96%B9%E5%BA%93%2F%E5%9F%BA%E4%BA%8Egn_example%E7%BC%96%E8%AF%91%E4%B8%89%E6%96%B9%E5%BA%93%E4%BB%A3%E7%A0%81.md) 
 
-    [Porting OHOS Based on a Third-Party Build Framework](https://gitee.com/openharmony/build/wikis/gn%E6%9E%84%E5%BB%BA%E4%B8%89%E6%96%B9%E5%BA%93/%E5%9F%BA%E4%BA%8E%E4%B8%89%E6%96%B9%E7%BC%96%E8%AF%91%E6%A1%86%E6%9E%B6%E7%A7%BB%E6%A4%8DOHOS)
+    [Porting OHOS Based on a Third-Party Build Framework](https://gitcode.com/openharmony/build/wiki/gn%E6%9E%84%E5%BB%BA%E4%B8%89%E6%96%B9%E5%BA%93%2F%E5%9F%BA%E4%BA%8E%E4%B8%89%E6%96%B9%E7%BC%96%E8%AF%91%E6%A1%86%E6%9E%B6%E7%A7%BB%E6%A4%8DOHOS.md)
 
 2. CMake build:
 
-    linux: [HOW TO USE NDK (linux)](https://gitee.com/openharmony/build/wikis/NDK/HOW%20TO%20USE%20NDK%20(linux)) 
+    Linux: [HOW TO USE NDK (https://gitcode.com/openharmony/build/wiki/NDK%2FHOW%20TO%20USE%20NDK%20(linux).md)  
 
-    windows: [HOW TO USE NDK (windows)](https://gitee.com/openharmony/build/wikis/NDK/HOW%20TO%20USE%20NDK%20(windows))
+    Windows: [HOW TO USE NDK (windows)](https://gitcode.com/openharmony/build/wiki/NDK%2FHOW%20TO%20USE%20NDK%20(windows).md)
 
 ## What are the common attributes to be used and how do I implement the APIs when using Node-API to extend TS interfaces? How do I obtain env, implement callback- and promise-based APIs, and use libuv? (API version 10)
 
@@ -47,7 +52,7 @@ Currently, the official SDK supports only build with CMake. It also provides gui
     NAPI_MODULE_INIT()
     {
         napi_property_descriptor desc[] = {
-            {" callNapi ", nullptr, CallNapi, nullptr, nullptr, nullptr, napi_default, nullptr}};
+            {"callNapi", nullptr, CallNapi, nullptr, nullptr, nullptr, napi_default, nullptr}};
         napi_define_properties(env, exports, sizeof(desc) / sizeof(desc[0]), desc);
         return exports;
     }
@@ -289,7 +294,7 @@ Use **napi_create_threadsafe_function** to create a function that can be called 
 
 [Thread Safety Development Using Node-API](../napi/use-napi-thread-safety.md)
 
-## What should I do to permanently hold a JS object created by napi_create_object or passed in as a parameter? (API version 10)
+## What should I do if I want to permanently hold a JS object created by napi_create_object or passed in as a parameter? (API version 10)
 
 **Question**
 
@@ -297,7 +302,7 @@ What should I do if I need to permanently hold a JS object created by **napi_cre
 
 **Solution**
 
-To hold an object persistently, use **napi_create_reference** to create a strong reference and then save the reference for use. To destroy a reference, use **napi_delete_reference**. To increment the reference count, use **napi_reference_ref**; to decrement the reference count, use **api_reference_unref**.
+To hold an object persistently, use **napi_create_reference** to create a strong reference and then save the reference for use. To destroy a reference, use **napi_delete_reference**. To increment the reference count, use **napi_reference_ref**; to decrement the reference count, use **napi_reference_unref**.
 
 ## Can messages from C++ be passed to an ArkTS callback or object wrapped in a native object and synced to the application? (API version 11)
 
@@ -312,4 +317,3 @@ An ArkTS object or function cannot be wrapped to a native object. You need to im
 **Reference**
 
 1. [Wrapping a Native Object in an ArkTS Object](../napi/use-napi-object-wrap.md)
-

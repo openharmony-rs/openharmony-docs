@@ -1,4 +1,4 @@
-# Introduction to ArkTS
+# About This Kit
 
 <!--Kit: ArkTS-->
 <!--Subsystem: CommonLibrary-->

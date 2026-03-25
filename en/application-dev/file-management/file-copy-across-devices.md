@@ -11,9 +11,11 @@ The distributed file system provides the cross-device file copy capability for a
 ## How to Develop
 
 1. Connect the devices to form a Super Device.
+   
    Log in to the same account on two devices and ensure that Bluetooth and Wi-Fi are enabled. Bluetooth does not need to be connected, and Wi-Fi does not need to be connected to the same LAN.
 
 2. Grant the distributed data synchronization permission.
+   
    Use **requestPermissionsFromUser** to request user authorization for the ohos.permission.DISTRIBUTED_DATASYNC permission in the form of a dialog box. For details about how to obtain the application context, see [Obtaining the Context of UIAbility](../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
    ```ts
@@ -39,6 +41,7 @@ The distributed file system provides the cross-device file copy capability for a
 
 
 3. Copy files across devices.
+   
    Place the files in the **distributedfiles/** directory of the application sandbox directory to implement file copy from difference devices.
 
    Copy the file of device A from the sandbox directory to the **distributedfiles/** directory of device A.

@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 ## Overview
@@ -43,7 +43,7 @@ Provides methods for creating, destroying, reading, and writing the text box avo
 
 ### OH_TextAvoidInfo_Create()
 
-```
+```c
 InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double height)
 ```
 
@@ -58,8 +58,8 @@ Creates an [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinf
 
 | Name| Description|
 | -- | -- |
-| double positionY | Y coordinate of the text box.|
-| double height | Height of the text box.|
+| double positionY | Y coordinate of the text box, in px.|
+| double height | Height of the text box, in px.|
 
 **Returns**
 
@@ -69,7 +69,7 @@ Creates an [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinf
 
 ### OH_TextAvoidInfo_Destroy()
 
-```
+```c
 void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)
 ```
 
@@ -88,7 +88,7 @@ Destroys an [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidin
 
 ### OH_TextAvoidInfo_SetPositionY()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *info, double positionY)
 ```
 
@@ -104,7 +104,7 @@ Sets the Y coordinate in [InputMethod_TextAvoidInfo](capi-inputmethod-inputmetho
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | Pointer to the [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance whose value is to be set.|
-| double positionY | Absolute value of the distance between the text box's top vertex and the top edge of the physical screen, in px.|
+| double positionY | Y coordinate, that is, the absolute value of the distance between the text box's top vertex and the top edge of the physical screen, in px.|
 
 **Returns**
 
@@ -114,7 +114,7 @@ Sets the Y coordinate in [InputMethod_TextAvoidInfo](capi-inputmethod-inputmetho
 
 ### OH_TextAvoidInfo_SetHeight()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info, double height)
 ```
 
@@ -130,7 +130,7 @@ Sets the height in [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-text
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | Pointer to the [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance whose value is to be set.|
-| double height | Height.|
+| double height | Height, in px.|
 
 **Returns**
 
@@ -140,7 +140,7 @@ Sets the height in [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-text
 
 ### OH_TextAvoidInfo_GetPositionY()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *info, double *positionY)
 ```
 
@@ -156,7 +156,7 @@ Obtains the Y coordinate from [InputMethod_TextAvoidInfo](capi-inputmethod-input
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | Pointer to the [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance whose value is to be obtained.|
-| double *positionY | Absolute value of the distance between the text box's top vertex and the top edge of the physical screen, in px.|
+| double *positionY | Y coordinate, that is, the absolute value of the distance between the text box's top vertex and the top edge of the physical screen, in px.|
 
 **Returns**
 
@@ -166,7 +166,7 @@ Obtains the Y coordinate from [InputMethod_TextAvoidInfo](capi-inputmethod-input
 
 ### OH_TextAvoidInfo_GetHeight()
 
-```
+```c
 InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info, double *height)
 ```
 
@@ -182,7 +182,7 @@ Obtains the height from [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod
 | Name| Description|
 | -- | -- |
 | [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) *info | Pointer to the [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance whose value is to be obtained.|
-| double *height | Height of the text box.|
+| double *height | Height of the text box, in px.|
 
 **Returns**
 

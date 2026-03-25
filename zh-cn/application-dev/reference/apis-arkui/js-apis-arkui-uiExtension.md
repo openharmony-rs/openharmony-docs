@@ -6,7 +6,7 @@
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
 
-用于EmbeddedUIExtensionAbility（或UIExtensionAbility）中获取宿主应用的窗口信息或对应的EmbeddedComponent<!--Del-->（或UIExtensionComponent）<!--DelEnd-->组件的信息。
+用于[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)（或[UIExtensionAbility](../apis-ability-kit/js-apis-app-ability-uiExtensionAbility.md#uiextensionability)）中获取宿主应用的窗口信息或对应的[EmbeddedComponent](./arkui-ts/ts-container-embedded-component.md)<!--Del-->（或[UIExtensionComponent](../../reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md)）<!--DelEnd-->组件的信息。
 
 > **说明**
 >
@@ -47,13 +47,13 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| type |[window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 表示规避区类型。 |
+| type |[window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 表示避让区类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-|[window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 宿主窗口内容规避区域。 |
+|[window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 宿主窗口内容避让区域。 |
 
 **错误码**：
 
@@ -84,7 +84,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaInfo&gt;): void
 
-注册系统规避区变化的监听。
+注册系统避让区变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,8 +94,8 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaInfo&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
-| type   | string | 是 | 监听的事件类型，固定为'avoidAreaChange'，即系统规避区变化事件。 |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | 是 | 回调函数：入参用于接收当前规避区的信息。 |
+| type   | string | 是 | 监听的事件类型，固定为'avoidAreaChange'，即系统避让区变化事件。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | 是 | 回调函数：入参用于接收当前避让区的信息。 |
 
 **错误码**：
 
@@ -127,7 +127,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
-注销系统规避区变化的监听。
+注销系统避让区变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -137,8 +137,8 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaInfo&gt;): void
 
 | 参数名   | 类型 | 必填 | 说明 |
 | -------- | ---- | ---- | ---  |
-| type     | string | 是 | 注销的事件类型，固定为'avoidAreaChange'，即系统规避区变化事件。 |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统规避区变化的监听。 |
+| type     | string | 是 | 注销的事件类型，固定为'avoidAreaChange'，即系统避让区变化事件。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[AvoidAreaInfo](#avoidareainfo)> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统避让区变化的监听。 |
 
 **错误码**：
 
@@ -263,7 +263,7 @@ on(type: 'rectChange', reasons: number, callback: Callback&lt;RectChangeOptions&
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件，固定为'rectChange'，即组件（EmbeddedComponent或UIExtensionComponent）矩形变化事件。 |
-| reasons  | number                         | 是   | 触发组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的原因，具体取值可参考[RectChangeReason](#rectchangereason14)枚举值。
+| reasons  | number                         | 是   | 触发组件（EmbeddedComponent或UIExtensionComponent）位置及尺寸变化的原因，具体取值可参考[RectChangeReason](#rectchangereason14)枚举值。 |
 | callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<[RectChangeOptions](#rectchangeoptions14)> | 是 | 回调函数。返回当前组件（EmbeddedComponent或UIExtensionComponent）矩形变化值及变化原因。 |
 
 **错误码：**
@@ -466,7 +466,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
       try {
         let promise = extensionWindow.occupyEvents(uiExtension.EventFlag.EVENT_CLICK | uiExtension.EventFlag.EVENT_LONG_PRESS);
         promise.then(() => {
-          console.info(`Successed in occupy events`);
+          console.info(`Succeeded in occupying events`);
         }).catch((err: BusinessError) => {
           console.error(`Failed to occupy events. Cause code: ${err.code}, message: ${err.message}`);
         });
@@ -498,7 +498,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ## AvoidAreaInfo
 
-用于表示窗口规避区的信息。
+用于表示窗口避让区的信息。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -506,8 +506,8 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 | 名称 | 类型                 | 只读 | 可选 | 说明        |
 | ------ | -------------------- | ----- | ---- | ------------------ |
-| type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否 | 否 | 窗口规避区类型。|
-| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | 否 | 否 | 窗口内容规避区域。 |
+| type   | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 否 | 否 | 窗口避让区类型。|
+| area   | [window.AvoidArea](arkts-apis-window-i.md#avoidarea7)     | 否 | 否 | 窗口内容避让区域。 |
 
 ## WindowProxyProperties<sup>14+</sup>
 
@@ -548,7 +548,7 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
 
 ## 完整示例
 
-本示例展示文档中所有API在EmbeddedUIExtensionAbility中的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo", 被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。
+本示例展示文档中所有API在[EmbeddedUIExtensionAbility](../../application-models/embeddeduiextensionability.md)中的基础使用方式，示例应用的`bundleName`为"com.example.embeddeddemo"，被拉起的`EmbeddedUIExtensionAbility`为"ExampleEmbeddedAbility"。
 
 - 示例应用中的EntryAbility(UIAbility)加载首页文件：`pages/Index.ets`，其中内容如下：
 
@@ -664,9 +664,9 @@ export default class EntryAbility extends EmbeddedUIExtensionAbility {
           let rect = this.extensionWindow?.properties.uiExtensionHostWindowProxyRect;
           console.info(`EmbeddedComponent的位置和尺寸信息: ${JSON.stringify(rect)}`);
         })
-        Button("获取系统规避区信息").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+        Button("获取系统避让区信息").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let avoidArea: window.AvoidArea | undefined = this.extensionWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-          console.info(`系统规避区: ${JSON.stringify(avoidArea)}`);
+          console.info(`系统避让区: ${JSON.stringify(avoidArea)}`);
         })
         Button("创建子窗口").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let subWindowOpts: window.SubWindowOptions = {

@@ -633,8 +633,7 @@ try {
 
 getSelectedMediaInputDevice(): AudioDeviceDescriptor
 
-Obtains the media input device set by calling [selectMediaInputDevice](#selectmediainputdevice21).
-If no device has been specified, the device with **deviceType** set to **INVALID** is returned.
+Obtains the media input device set by calling [selectMediaInputDevice](#selectmediainputdevice21). If no device has been specified, the device with **deviceType** set to **INVALID** is returned.
 
 **System capability**: SystemCapability.Multimedia.Audio.Device
 
@@ -735,6 +734,8 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 | 6800101 | Parameter verification failed. |
 | 6800301 | Audio client call audio service error, System error. |
 
+**Example**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -767,6 +768,8 @@ For details about the error codes, see [Audio Error Codes](errorcode-audio.md).
 | ID| Error Message|
 | ------- | --------------------------------------------|
 | 6800301 | Audio client call audio service error, System error. |
+
+**Example**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

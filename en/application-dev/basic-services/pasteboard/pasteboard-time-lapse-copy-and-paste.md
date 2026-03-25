@@ -20,11 +20,9 @@ When a user copies data in an application that uses the delayed copy and paste f
 
 - NDK APIs support only record-based delayed copy and paste.
 
-- ArkTS APIs support only data-based delayed copy and paste.
-
 - If the amount of data to be copied is small and the time required for preparing data does not affect user experience, avoid using the delayed copy feature. Instead, you are advised to write data directly to the pasteboard.
 
-## Using Record-based Delayed Copy and Paste (Recommended)
+## Using Record-based Delayed Copy and Paste
 
 This solution allows you to query the data type before pasting. Applications can determine whether to request data from the pasteboard based on the query result.
 
@@ -196,6 +194,7 @@ For better code readability, the operation result verification of each step is o
        OH_Pasteboard* pasteboard = CreateAndSetPasteboardData();
        // 9. Record the number of changes to pasteboard data.
        uint32_t changeCount = OH_Pasteboard_GetChangeCount(pasteboard);
+   
        // 10. Obtain OH_UdmfData from the pasteboard.
        int status = -1;
        bool hasPermission = OH_AT_CheckSelfPermission("ohos.permission.READ_PASTEBOARD");
@@ -207,11 +206,13 @@ For better code readability, the operation result verification of each step is o
            // Handle the error case and clear resources.
            OH_LOG_ERROR(LOG_APP, "Failed to get data from pasteboard, status: %d\n", status);
        }
+   
        // 11. Obtain all OH_UdmfRecord objects from OH_UdmfData.
        unsigned int recordCount = 0;
        OH_UdmfRecord** getRecords = OH_UdmfData_GetRecords(getData, &recordCount);
        OH_UdsPlainText* udsText = nullptr;
        OH_UdsHtml* udsHtml = nullptr;
+   
        // 12. Traverse OH_UdmfRecord.
        for (unsigned int recordIndex = 0; recordIndex < recordCount; ++recordIndex) {
            OH_UdmfRecord* record = getRecords[recordIndex];
@@ -246,129 +247,5 @@ For better code readability, the operation result verification of each step is o
        OH_UdsHtml_Destroy(udsHtml);
        OH_UdmfData_Destroy(getData);
        OH_Pasteboard_Destroy(pasteboard);
-   }
-   ```
-
-
-
-## Using Data-based Delayed Copy and Paste (Not Recommended)
-
-You are not allowed to query data type before pasting.
-
-### Available APIs
-
-| Name| Description                                                                  |
-| -------- |----------------------------------------------------------------------|
-| setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise\<void> | Writes data of the unified data type to the system pasteboard. This API cannot be called in the same thread as **getUnifiedDataSync** when the delayed copy and paste function is used.|
-| setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void | Writes data of the unified data type to the system pasteboard. This API returns the result synchronously and cannot be called in the same thread as **getUnifiedDataSync** when the delayed copy and paste function is used.|
-| getUnifiedData(): Promise\<unifiedDataChannel.UnifiedData> | Reads data of the unified data type from the system pasteboard.|
-| getUnifiedDataSync(): unifiedDataChannel.UnifiedData | Reads data of the unified data type from the system pasteboard. This API returns the result synchronously and cannot be called in the same thread as **setUnifiedData** and **setUnifiedDataSync** when the delayed copy and paste function is used.|
-| setAppShareOptions(shareOptions: ShareOption): void | Sets pasteable range of pasteboard data for an application.|
-| removeAppShareOptions(): void | Removes the pasteable range configuration set for the application.|
-
-### How to Develop
-
-1. Import the **pasteboard**, **unifiedDataChannel**, and **uniformTypeDescriptor** modules.
-   
-   <!-- @[pasteboard_timelaps_PasteData1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
-   
-   ``` TypeScript
-   import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-   import { hilog } from '@kit.PerformanceAnalysisKit';
-   import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-   const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-   ```
-
-
-2. Construct a piece of PlainText data and write the function for obtaining the delay data.
-
-   <!-- @[pasteboard_timelaps_PasteData2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->   
-   
-   ``` TypeScript
-   let plainTextData = new unifiedDataChannel.UnifiedData();
-   let getDelayPlainText = ((dataType: string) => {
-     let plainText = new unifiedDataChannel.PlainText();
-     plainText.details = {
-       Key: 'delayPlaintext',
-       Value: 'delayPlaintext',
-     };
-     plainText.textContent = 'delayTextContent';
-     plainText.abstract = 'delayTextContent';
-     plainTextData.addRecord(plainText);
-     return plainTextData;
-   });
-   ```
-
-
-3. Save a piece of PlainText data to the system pasteboard.
-
-   <!-- @[pasteboard_timelaps_PasteData3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
-   
-   ``` TypeScript
-   let setDelayPlainText = () => {
-     plainTextData.properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
-     // For cross-application use, set this parameter to CROSS_APP. For intra-application use, set this parameter to IN_APP.
-     plainTextData.properties.getDelayData = getDelayPlainText;
-     pasteboard.getSystemPasteboard().setUnifiedData(plainTextData).then(() => {
-       hilog.info(0xFF00, '[Sample_pasteboard]', 'Succeeded in set PlainText.');
-       // The data is successfully saved, which is a normal case.
-     }).catch((error: BusinessError) => {
-       hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to set PlainText. Cause: ' + error.message);
-       // Error case
-     });
-   }
-   ```
-
-
-4. Read the text data from the system pasteboard.
-
-   <!-- @[pasteboard_timelaps_PasteData4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
-   
-   ``` TypeScript
-   let getPlainTextUnifiedData = (() => {
-     pasteboard.getSystemPasteboard().getUnifiedData().then((data) => {
-       let outputData = data;
-       let records = outputData.getRecords();
-       if (records[0].getType() == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
-         let record = records[0] as unifiedDataChannel.PlainText;
-         hilog.info(0xFF00, '[Sample_pasteboard]', 'GetPlainText success, type:' + records[0].getType());
-         // Note: The data copied by users is sensitive information. Do not print the data obtained from the pasteboard in plaintext in logs.
-       } else {
-         hilog.info(0xFF00, '[Sample_pasteboard]', 'Get Plain Text Data No Success, Type is: ' + records[0].getType());
-       }
-     }).catch((error: BusinessError) => {
-       hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to get PlainTextUnifiedData. Cause: ' + error.message);
-       // Error case
-     })
-   })
-   ```
-
-   
-5. Set pasteable range of pasteboard data for an application.
-
-   <!-- @[pasteboard_timelaps_PasteData5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
-   
-   ``` TypeScript
-   try {
-     systemPasteboard.setAppShareOptions(pasteboard.ShareOption.LOCALDEVICE);
-     hilog.info(0xFF00, '[Sample_pasteboard]', 'Set app share options success.');
-   } catch (err) {
-     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to Set app share options. Cause: ' + err.message);
-     // Error case
-   }
-   ```
-
-   
-6. Remove the pasteable range configuration set for the application.
-
-   <!-- @[pasteboard_timelaps_PasteData6](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/pasteboard/pasteboard_arkts_sample/entry/src/main/ets/pages/PasteboardModel.ets) -->    
-   
-   ``` TypeScript
-   try {
-     systemPasteboard.removeAppShareOptions();
-     hilog.info(0xFF00, '[Sample_pasteboard]', 'Remove app share options success.');
-   } catch (err) {
-     hilog.error(0xFF00, '[Sample_pasteboard]', 'Failed to Remove app share options. Cause: ' + err.message);
-     // Error case
    }
    ```

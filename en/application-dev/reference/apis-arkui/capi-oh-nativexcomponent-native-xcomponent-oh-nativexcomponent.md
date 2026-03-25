@@ -6,6 +6,10 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct OH_NativeXComponent OH_NativeXComponent
+```
+
 ## Overview
 
 Provides an encapsulated **OH_NativeXComponent** instance.

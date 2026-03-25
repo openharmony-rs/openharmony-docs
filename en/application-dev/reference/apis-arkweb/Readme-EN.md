@@ -43,7 +43,7 @@
     - [Interfaces (Others)](arkts-apis-webview-i.md)
     - [Enums](arkts-apis-webview-e.md)
     - [Types](arkts-apis-webview-t.md)
-  - [@ohos.web.netErrorList](arkts-apis-netErrorList.md)
+  - [@ohos.web.netErrorList (The List of ArkWeb Network Protocol Stack Errors)](arkts-apis-netErrorList.md)
   - [@ohos.web.webNativeMessagingExtensionAbility](arkts-apis-web-webNativeMessagingExtensionAbility.md)
   - [@ohos.web.webNativeMessagingExtensionContext](arkts-apis-web-webNativeMessagingExtensionContext.md)
   - [@ohos.web.webNativeMessagingExtensionManager](arkts-apis-web-webNativeMessagingExtensionManager.md)

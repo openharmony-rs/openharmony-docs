@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Starting from API version 20, you can configure white balance effects. White balance is a color correction technique used by cameras to produce different visual effects in photos. Currently, white balance effects are supported in the following sessions: photo session (for taking photos), video session (for recording videos), and secure session (for secure camera operations).
+Starting from API version 20, you can configure white balance effects. White balance is a color correction technique used by cameras to produce different visual effects in photos. Currently, white balance is supported for the following scenarios: photo capture ([PhotoSession](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md)), video recording ([VideoSession](../../reference/apis-camera-kit/arkts-apis-camera-VideoSession.md)), and the camera secure mode ([SecureSession](../../reference/apis-camera-kit/arkts-apis-camera-SecureSession.md)).
 
 ## How to Develop
 
@@ -30,12 +30,12 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
             let mode: camera.WhiteBalanceMode = camera.WhiteBalanceMode.DAYLIGHT;
             status = session.isWhiteBalanceModeSupported(mode);
             if(status){
-            session.setWhiteBalanceMode(mode);
+               session.setWhiteBalanceMode(mode);
             }
             whiteBalanceMode = session.getWhiteBalanceMode();
          } catch (error) {
-         let err = error as BusinessError;
-         console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
+            let err = error as BusinessError;
+            console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
          }
          return status;
       }
@@ -48,8 +48,8 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
          try {
             range = session.getWhiteBalanceRange();
             let whiteBalance: number = 3000;
-            if(whiteBalance > range[0] && whiteBalance < range[1]){
-            session.setWhiteBalance(whiteBalance);
+            if(whiteBalance >= range[0] && whiteBalance <= range[1]) {
+               session.setWhiteBalance(whiteBalance);
             }
             whiteBalance = session.getWhiteBalance();
          } catch (error) {

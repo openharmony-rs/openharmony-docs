@@ -69,7 +69,6 @@
 | [OH_AI_API void OH_AI_DeviceInfoSetPerformanceMode(OH_AI_DeviceInfoHandle device_info, OH_AI_PerformanceMode mode)](#oh_ai_deviceinfosetperformancemode) | 设置NNRt性能模式，仅NNRt设备可用。 |
 | [OH_AI_API OH_AI_PerformanceMode OH_AI_DeviceInfoGetPerformanceMode(const OH_AI_DeviceInfoHandle device_info)](#oh_ai_deviceinfogetperformancemode) | 获取NNRt性能模式，仅NNRt设备可用。 |
 | [OH_AI_API void OH_AI_DeviceInfoSetPriority(OH_AI_DeviceInfoHandle device_info, OH_AI_Priority priority)](#oh_ai_deviceinfosetpriority) | 设置NNRt任务优先级，仅NNRt设备可用。 |
-| [OH_AI_API OH_AI_Priority OH_AI_DeviceInfoGetPriority(const OH_AI_DeviceInfoHandle device_info)](#oh_ai_deviceinfogetpriority) | 获取NNRt任务优先级，仅NNRt设备可用。 |
 | [OH_AI_API OH_AI_Status OH_AI_DeviceInfoAddExtension(OH_AI_DeviceInfoHandle device_info, const char *name,const char *value, size_t value_size)](#oh_ai_deviceinfoaddextension) | 向设备信息中添加键/值对形式的扩展配置。只对NNRt设备信息有效。<br>当前仅支持配置以下11种键：{"CachePath": "YourCachePath"}，{"CacheVersion": "YourCacheVersion"}，<br> {"QuantBuffer": "YourQuantBuffer"}，{"ModelName": "YourModelName"}，<br> {"isProfiling": "YourProfilingSwitch"}，{"opLayout": "YourOpLayout"}，<br> {"InputDims": "YourInputDims"}，{"DynamicDims": "YourDynamicDims"}，<br> {"QuantConfigData": "YourQuantConfigData"}，{"BandMode": "YourBandMode"}，<br> {"NPU_FM_SHARED": "YourNPU_FM_SHARED"}，用户可根据使用情况配置各个键对应的值。 |
 
 ## 函数说明
@@ -866,31 +865,6 @@ OH_AI_API void OH_AI_DeviceInfoSetPriority(OH_AI_DeviceInfoHandle device_info, O
 | -- | -- |
 | [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md) device_info | 指向设备信息实例的[OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)。 |
 | [OH_AI_Priority](capi-types-h.md#oh_ai_priority) priority | [OH_AI_Priority](capi-types-h.md#oh_ai_priority) NNRt任务优先级。 |
-
-### OH_AI_DeviceInfoGetPriority()
-
-```c
-OH_AI_API OH_AI_Priority OH_AI_DeviceInfoGetPriority(const OH_AI_DeviceInfoHandle device_info)
-```
-
-**描述**
-
-获取NNRt任务优先级，仅NNRt设备可用。
-
-**起始版本：** 22
-
-
-**参数：**
-
-| 参数项 | 描述 |
-| -- | -- |
-| const [OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md) device_info | 指向设备信息实例的[OH_AI_DeviceInfoHandle](capi-mindspore-oh-ai-DeviceInfoHandle.md)。 |
-
-**返回：**
-
-| 类型 | 说明 |
-| -- | -- |
-| OH_AI_API [OH_AI_Priority](capi-types-h.md#oh_ai_priority) | [OH_AI_Priority](capi-types-h.md#oh_ai_priority) NNRt任务优先级。 |
 
 ### OH_AI_DeviceInfoAddExtension()
 

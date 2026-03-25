@@ -566,10 +566,10 @@
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称     | 说明       |
-| ------ | -------- |
-| Normal | 标准的字体样式。 |
-| Italic | 斜体的字体样式。 |
+| 名称     |值| 说明       |
+| ------ |-| -------- |
+| Normal |0| 标准的字体样式。 |
+| Italic |1| 斜体的字体样式。 |
 
 ## FontWeight
 
@@ -690,27 +690,31 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称        | 说明             |
-| --------- | -------------- |
-| Auto      | 使用组件的系统默认悬浮效果。 |
-| Scale     | 放大缩小的效果。        |
-| Highlight | 背景淡入淡出的强调效果。   |
-| None      | 不设置效果。         |
+| 名称        | 值 | 说明             |
+| --------- | --- | -------------- |
+| None      | 0 | 不设置效果。         |
+| Scale     | 2 | 放大缩小的效果。        |
+| Highlight | 3 | 背景淡入淡出的强调效果。   |
+| Auto      | 4 | 使用组件的系统默认悬浮效果。 |
 
 ## HitTestMode<sup>9+</sup>
 
 定义触摸测试的响应逻辑及节点阻塞规则。
 
+> **说明：**
+>
+> 当Stack组件中有多个节点触摸区域重叠时，如果最上层节点的子组件命中，则默认只会对显示在最上层的节点做触摸测试。此时只有给显示在最上层的节点设置[hitTestBehavior](./ts-universal-attributes-hit-test-behavior.md#hittestbehavior)为HitTestMode.Transparent时，才能使显示在下层的节点触发触摸测试。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称          | 说明                                       |
-| ----------- | ---------------------------------------- |
-| Default     | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Block       | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Transparent | 自身和子节点均响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| None        | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
-| BLOCK_HIERARCHY<sup>20+</sup>   | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| BLOCK_DESCENDANTS<sup>20+</sup> | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| 名称          | 值 | 说明                                       |
+| ----------- | --- | ---------------------------------------- |
+| Default     | 0 | 默认触摸测试效果。自身及子节点响应触摸测试，但阻塞兄弟节点的触摸测试，不影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Block       | 1 | 自身响应触摸测试，阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Transparent | 2 | 自身和子节点均响应触摸测试，不会阻塞兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| None        | 3 | 自身不响应触摸测试，不会阻塞子节点、兄弟节点和祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| BLOCK_HIERARCHY<sup>20+</sup>   | 4 | 自身和子节点响应触摸测试，阻止所有优先级较低的兄弟节点和父节点参与触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| BLOCK_DESCENDANTS<sup>20+</sup> | 5 | 自身不响应触摸测试，并且所有的后代（孩子，孙子等）也不响应触摸测试，不会影响祖先节点的触摸测试。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## HeightBreakpoint<sup>13+</sup>
 
@@ -927,6 +931,8 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 ## MouseButton<sup>8+</sup>
 
+定义鼠标按键的类型。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -944,14 +950,18 @@ FontWeight是字重[fontWeight](./ts-basic-components-text.md#fontweight)入参v
 
 定义鼠标操作的动作类型。
 
+> **说明：**
+>
+> 作为返回值时，可能会收到已定义的枚举值范围之外的值，开发者无需关注。
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称      |  值  | 说明      |
 | ------- | ----- |  ------- |
-| Press   |   -   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Release |   -   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| Move    |   -   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| Hover   |   -   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| Press   |   1   | 鼠标按键按下。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Release |   2   | 鼠标按键释放。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| Move    |   3   | 鼠标移动。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| Hover   |   4   | 鼠标悬浮。<br/>**说明：** 该枚举值无效。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
 | CANCEL<sup>18+</sup>  |  13  | 鼠标按键取消。通常在以下场景触发：<br/>1. 组件失去焦点：当前持有焦点的组件因系统事件（如弹窗打断、应用切换）失去焦点时，会触发该动作。<br/>2. 事件中断：鼠标操作过程中发生更高优先级事件（如系统级手势或强制回收事件流），导致当前鼠标操作被强制终止。<br/>3. 异常状态退出：如组件销毁、渲染环境异常等场景下，未完成的鼠标事件会被标记为取消。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 
 ## ModifierKey<sup>10+</sup>
@@ -1067,10 +1077,10 @@ type Nullable\<T> = T | undefined
 | Right                    | 气泡提示位于组件右侧，与组件右侧中心对齐。                   |
 | Top                      | 气泡提示位于组件上侧，与组件上侧中心对齐。                   |
 | Bottom                   | 气泡提示位于组件下侧，与组件下侧中心对齐。                   |
-| TopLeft                  | 气泡提示位于组件上侧，从API Version 9开始，与组件左侧边缘对齐。 |
-| TopRight                 | 气泡提示位于组件上侧，从API Version 9开始，与组件右侧边缘对齐。 |
-| BottomLeft               | 气泡提示位于组件下侧，从API Version 9开始，与组件左侧边缘对齐。 |
-| BottomRight              | 气泡提示位于组件下侧，从API Version 9开始，与组件右侧边缘对齐。 |
+| TopLeft                  | 气泡提示位于组件上侧，从API version 9开始，与组件左侧边缘对齐。 |
+| TopRight                 | 气泡提示位于组件上侧，从API version 9开始，与组件右侧边缘对齐。 |
+| BottomLeft               | 气泡提示位于组件下侧，从API version 9开始，与组件左侧边缘对齐。 |
+| BottomRight              | 气泡提示位于组件下侧，从API version 9开始，与组件右侧边缘对齐。 |
 | LeftTop<sup>9+</sup>     | 气泡提示位于组件左侧，与组件上侧边缘对齐。                   |
 | LeftBottom<sup>9+</sup>  | 气泡提示位于组件左侧，与组件下侧边缘对齐。                   |
 | RightTop<sup>9+</sup>    | 气泡提示位于组件右侧，与组件上侧边缘对齐。                   |
@@ -1124,7 +1134,7 @@ type Nullable\<T> = T | undefined
 
 ## PresetFillType<sup>22+</sup>
 
-为不同响应式[断点规格](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)指定列数。
+为不同响应式[栅格容器断点](../../../ui/arkts-layout-development-grid-layout.md#栅格容器断点)指定列数。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -1224,8 +1234,8 @@ type Nullable\<T> = T | undefined
 
 | 名称                                 | 值 | 说明                                       |
 | ---------------------------------- | --- | ---------------------------------------- |
-| FAST | 0 | 在线绘制模式，当前节点和它的子节点都会被裁切圆角后直接绘制到主画布上。<br/> **说明**：使用在线绘制模式，在部分场景下可能会有显示效果异常，例如：圆角组件内叠加模糊效果后背景色会有相互影响，导致出现渐变叠加的效果，具体表现可参考[示例3（设置离屏圆角）](./ts-universal-attributes-border.md#示例3设置离屏圆角)。|
-| OFFSCREEN | 1 | 离屏绘制模式，当前节点和子节点会先绘制到离屏画布上，随后进行一次圆角裁切并绘制到主画布上。<br/> **说明**：<br/>1. 离屏绘制模式效果更好，可以解决在线绘制模式显示效果异常的问题，但会带来额外的性能损失。<br/>2. 离屏绘制模式仅针对需要多层组件切圆角的场景使用，单组件需设置[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性、[背景色](./ts-universal-attributes-background.md)或[前景色](./ts-universal-attributes-foreground-color.md)时才可使能离屏绘制模式。  |
+| FAST | 0 | 在线绘制模式，组件进行圆角内容绘制时，绘制内容被裁剪成圆角，直接绘制到主画布上。<br/> **说明**：使用在线绘制模式，在部分场景下可能会有显示效果异常，例如：圆角组件内叠加模糊效果后背景色会有相互影响，导致出现渐变叠加的效果，具体表现可参考[示例3（设置离屏圆角）](./ts-universal-attributes-border.md#示例3设置离屏圆角)。|
+| OFFSCREEN | 1 | 离屏绘制模式，组件进行圆角内容绘制时，绘制内容先不带圆角绘制到离屏画布上，随后对离屏画布上的内容进行一次圆角裁切并绘制到主画布上。<br/> **说明**：<br/>1. 离屏绘制模式相比在线绘制模式会带来额外的性能损失。<br/>2. 离屏绘制模式是指将内容绘制到主画布之前，先在一个额外的画布上完成绘制工作，然后将绘制结果绘制到主画布上。<br/>3. 离屏绘制模式仅针对需要多层组件切圆角的场景使用，单组件需设置[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性、[背景色](./ts-universal-attributes-background.md)或[前景色](./ts-universal-attributes-foreground-color.md)时才可使能离屏绘制模式。  |
 
 ## ScrollSource<sup>12+</sup>
 
@@ -1267,10 +1277,10 @@ type Nullable\<T> = T | undefined
 
 | 名称    | 值   | 说明                               |
 | ------- | ---- | ---------------------------------- |
-| Down   | -    | 手指按下时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| Up     | -    | 手指抬起时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| Move   | -    | 手指按压并在屏幕上移动时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
-| Cancel | -    | 触摸事件取消时触发。例如：1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel；2.折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
+| Down   | 0    | 手指按下时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| Up     | 1    | 手指抬起时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| Move   | 2    | 手指按压并在屏幕上移动时触发。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。        |
+| Cancel | 3    | 触摸事件取消时触发。例如：1.手指按住屏幕同时点击Home键返回桌面，此时会触发Cancel；2.折叠屏手机，应用在按住屏幕的情况下折叠手机切换到外屏，此时会触发Cancel。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      |
 | HOVER_ENTER<sup>20+</sup> | 9    | 无障碍模式下，手指按下时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | HOVER_MOVE<sup>20+</sup>   | 10    | 无障碍模式下，触摸移动时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |
 | HOVER_EXIT<sup>20+</sup> | 11    | 无障碍模式下，抬手时触发。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。        |

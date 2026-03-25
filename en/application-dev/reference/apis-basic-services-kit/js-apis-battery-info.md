@@ -36,8 +36,8 @@ Describes battery information.
 | technology                                | string                                         | Yes  | Battery technology of the device.                              |
 | batteryTemperature                        | number                                         | Yes  | Battery temperature of the device, in unit of 0.1°C.                   |
 | isBatteryPresent<sup>7+</sup>             | boolean                                        | Yes  | Whether the battery is supported or present. The value **true** means that the battery is supported or present; **false** means the opposite.<br>Default value: **false**.                |
-| batteryCapacityLevel<sup>9+</sup>         | [BatteryCapacityLevel](#batterycapacitylevel9) | Yes  | Battery level of the device. |
-| nowCurrent<sup>12+</sup>                  | number                                         | Yes  | Battery current of the device, in unit of mA.                       |
+| batteryCapacityLevel<sup>9+</sup>         | [BatteryCapacityLevel](#batterycapacitylevel9) | Yes  | Battery level of the device.                             |                    
+| nowCurrent<sup>12+</sup>                  | number                                         | Yes  | Battery current of the device, in unit of mA.                       |         
 
 **Example**
 
@@ -98,9 +98,9 @@ Enumerates charging states.
 
 | Name     | Value | Description           |
 | ------- | ---- | --------------- |
-| NONE    | 0    | Unknown state.    |
+| NONE    | 0    | The battery is not being charged.    |
 | ENABLE  | 1    | The battery is being charged. |
-| DISABLE | 2    | The battery is not being charged. |
+| DISABLE | 2    | The battery charging is stopped. |
 | FULL    | 3    | The battery is fully charged.|
 
 ## BatteryHealthState

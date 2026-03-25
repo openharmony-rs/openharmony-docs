@@ -39,8 +39,7 @@ import { InsightIntentExecutor } from '@kit.AbilityKit';
 
 ### onExecuteInUIAbilityForegroundMode
 
-onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage):
-  insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 当意图执行依赖[UIAbility](./js-apis-app-ability-uiAbility.md)组件前台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。
 
@@ -153,8 +152,7 @@ onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, 
 
 ### onExecuteInUIAbilityBackgroundMode
 
-onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):
-    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 当意图执行依赖[UIAbility](./js-apis-app-ability-uiAbility.md)组件后台启动时，会在UIAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。
 
@@ -225,8 +223,7 @@ onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):
 
 ### onExecuteInUIExtensionAbility
 
-onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageLoader: UIExtensionContentSession):
-  insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageLoader: UIExtensionContentSession): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 当意图执行依赖[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)启动时，会在UIExtensionAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。
 
@@ -327,8 +324,7 @@ onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageL
 
 ### onExecuteInServiceExtensionAbility
 
-onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):
-    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 当意图执行依赖ServiceExtensionAbility组件启动时，会在ServiceExtensionAbility组件生命周期执行中触发本意图执行接口。支持同步返回和使用Promise异步返回。
 

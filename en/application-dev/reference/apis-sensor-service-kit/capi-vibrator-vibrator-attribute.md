@@ -6,6 +6,10 @@
 <!--Tester: @murphy84-->
 <!--Adviser: @hu-zhiqiong-->
 
+```c
+typedef struct Vibrator_Attribute { ... } Vibrator_Attribute
+```
+
 ## Overview
 
 Defines the vibrator attribute.
@@ -22,5 +26,5 @@ Defines the vibrator attribute.
 
 | Name| Description|
 | -- | -- |
-| int32_t id | Vibrator ID.|
+| int32_t vibratorId | Vibrator ID.|
 | [Vibrator_Usage](capi-vibrator-type-h.md#vibrator_usage) usage | Vibration scenario.|

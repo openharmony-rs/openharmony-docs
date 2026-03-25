@@ -107,3 +107,5 @@ Obtains the sandbox path of the **Document** root directory.
 | Type| Description|
 | -- | -- |
 | [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode) | Returns [FileManagement_ErrCode](capi-error-code-h.md#filemanagement_errcode).|
+
+

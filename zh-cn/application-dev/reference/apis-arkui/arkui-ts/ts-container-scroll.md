@@ -792,6 +792,7 @@ scrollTo(options: ScrollOptions)
 scrollEdge(value: Edge, options?: ScrollEdgeOptions)
 
 滚动到容器边缘，不区分滚动轴方向，Edge.Top和Edge.Start表现相同，Edge.Bottom和Edge.End表现相同。
+
 Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -820,7 +821,7 @@ fling(velocity: number): void
 
 | 参数名   | 类型 | 必填 | 说明                                                     |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| velocity | number   | 是   | 惯性滚动的初始速度值。单位：vp/s<br/>**说明：**<br/>velocity值设置为0，视为异常值，本次滚动不生效。如果值为正数，则向顶部滚动；如果值为负数，则向底部滚动。 <br/>取值范围：(-∞, +∞)|
+| velocity | number   | 是   | 惯性滚动的初始速度值。单位：vp/s<br/>**说明：**<br/>velocity值设置为0，视为异常值，本次滚动不生效。如果值为正数，则向顶部滚动；如果值为负数，则向底部滚动。|
 
 **错误码**：
 
@@ -881,7 +882,7 @@ Grid、List、WaterFlow组件有懒加载机制，组件内容没有加载并布
 
 | 类型  | 说明 |
 | -------- | -------- |
-|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。<br/>**说明：**<br/>当scroller控制器未绑定容器组件或者容器组件被异常释放时，currentOffset的返回值为空。|
+|  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。<br/>**说明：**<br/>当scroller控制器未绑定容器组件或者容器组件被异常释放时，currentOffset的返回值为undefined。|
 
 ### scrollToIndex
 

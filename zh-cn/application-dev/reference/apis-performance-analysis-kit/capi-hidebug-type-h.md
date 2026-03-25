@@ -146,7 +146,6 @@ enum HiDebug_StackFrameType
 | HIDEBUG_STACK_FRAME_TYPE_JS = 1 | js类型栈帧。 |
 | HIDEBUG_STACK_FRAME_TYPE_NATIVE = 2 | native类型栈帧。 |
 
-
 ## 宏定义说明
 
 ### HIDEBUG_TRACE_TAG_FFRT

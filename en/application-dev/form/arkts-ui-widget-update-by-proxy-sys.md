@@ -26,9 +26,9 @@ Compared with the [implementation of the ArkTS widget](arkts-form-overview.md#ho
 Processing flow of the widget provider (indicated by the blue arrows in the figure):
 
 1. The widget provider sets the `dataProxyEnabled` field to `true` in the `form_config.json` file to enable the update-through-proxy feature.
-> **NOTE**
->
-> After the update-through-proxy feature is enabled, the settings for [interval-based update](arkts-ui-widget-passive-refresh.md#interval-based-update) becomes invalid.
+    > **NOTE**
+    >
+    > After the update-through-proxy feature is enabled, the settings for [interval-based update](arkts-ui-widget-passive-refresh.md#interval-based-update) becomes invalid.
 
 2. In the [onAddForm](../reference/apis-form-kit/js-apis-app-form-formExtensionAbility.md#formextensionabilityonaddform) callback, the widget provider returns the `key + subscriberId` combination defined by the data provider to the Widget Manager.
 
@@ -131,7 +131,7 @@ For details, see [Data Management](../database/share-data-by-silent-access-sys.m
     @Component
     struct WidgetProcessDataCard {
       // Replace $r('app.string.loading') with the resource file you use.
-      @LocalStorageProp('datashareproxy://com.samples.widgetupdatebyproxy/weather') city: ResourceStr =
+      @LocalStorageProp('datashareproxy://com.samples.widgetupdatebyproxy/weather') city: ResourceStr = 
         $r('app.string.loading');
     
       build() {

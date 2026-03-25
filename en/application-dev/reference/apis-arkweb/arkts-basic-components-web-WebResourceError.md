@@ -14,7 +14,7 @@ Implements the **WebResourceError** object to manage resource errors. For detail
 >
 > - The initial APIs of this class are supported since API version 8.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## constructor
 
@@ -36,7 +36,7 @@ Obtains the error code for resource loading.
 
 | Type    | Description         |
 | ------ | ----------- |
-| number | Error code for resource loading. For details about error codes, see [WebNetErrorList](arkts-apis-netErrorList.md).|
+| number | Error code for resource loading. For details about the error code, see [WebNetErrorList](arkts-apis-netErrorList.md#webneterrorlist) and HTTP status codes.|
 
 ## getErrorInfo
 

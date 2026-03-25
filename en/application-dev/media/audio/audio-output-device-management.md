@@ -37,10 +37,11 @@ The table below lists the supported output devices.
 | BLUETOOTH_SCO | 7 | Bluetooth device using Synchronous Connection Oriented (SCO) links.| 
 | BLUETOOTH_A2DP | 8 | Bluetooth device using Advanced Audio Distribution Profile (A2DP) links.| 
 | USB_HEADSET | 22 | USB Type-C headset.| 
+| NEARLINK | 31 | NearLink device.| 
 
 ### Obtaining Output Device Information
 
-Use **getDevices()** to obtain information about all the output devices.
+Use the [getDevices](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getdevices9) method to obtain information about all output devices.
 
 ```ts
 import { audio } from '@kit.AudioKit';
@@ -113,7 +114,7 @@ async function selectOutputDevice() {
 
 ### Obtaining Information About the Output Device with the Highest Priority
 
-Call **getPreferOutputDeviceForRendererInfo()** to obtain the output device with the highest priority.
+Use the [getPreferOutputDeviceForRendererInfo](../../reference/apis-audio-kit/arkts-apis-audio-AudioRoutingManager.md#getpreferoutputdeviceforrendererinfo10) method to obtain information about the output device with the highest priority.
 
 > **NOTE**
 >
@@ -158,9 +159,9 @@ audioRoutingManager.off('preferOutputDeviceChangeForRendererInfo');
 ```
 
 ## Querying and Listening for Audio Output Devices Using AudioSession
-Applications using the player SDK to play audio streams do not hold an AudioRenderer object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. Starting from API version 20, AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For more information, refer to the following documentation:
+Applications using the player SDK to play audio streams do not hold an [AudioRenderer](../../reference/apis-audio-kit/arkts-apis-audio-AudioRenderer.md) object. As a result, they cannot flexibly control the selection of playback devices and listen for the device status. Starting from API version 20, AudioSession not only introduces focus management but also provides capabilities for managing audio output devices, including setting the default output device and listening for device changes. For more information, refer to the following documentation:
 - ArkTS APIs: [AudioSessionManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md)
-- C APIs: [OH_AudioSessionManager](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)
+- C APIs: [native_audio_session_manager.h](../../reference/apis-audio-kit/capi-native-audio-session-manager-h.md)
 
 ### Creating an AudioSession Instance
 Before using AudioSessionManager to manage audio devices, import the module and create an AudioSessionManager instance.
@@ -176,7 +177,7 @@ let audioSessionManager = audioManager.getSessionManager();  // Call an API of A
 
 Call [setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20) to set the default output device.
 > **NOTE**
->- As AudioSession is an application-level setting, calling this API to set the default audio output device will override the audio output device information set by the **setDefaultOutputDevice** API of AudioRenderer.
+> - As AudioSession is an application-level setting, calling this API to set the default audio output device will override the audio output device information set by the **setDefaultOutputDevice** API of AudioRenderer.
 > - To cancel the default output device set by calling **setDefaultOutputDevice**, you can set the parameter to **audio.DeviceType.DEFAULT**, which returns the device selection to the system. Otherwise, each time **activateAudioSession** is called, the default output device selected by the application takes effect.
 
 ```ts
@@ -189,7 +190,7 @@ audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => 
   console.error(`setDefaultOutputDevice Fail: ${err}`);
 });
 
-// Set the default output device to the default device, effectively canceling the application's default device setting.
+// Set the default output device to the system default device, i.e., cancel the default device set by the application and hand over the device selection to the system.
 audioSessionManager.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
   console.info('setDefaultOutputDevice Success!');
 }).catch((err: BusinessError) => {
@@ -226,7 +227,7 @@ let currentOutputDeviceChangedCallback = (currentOutputDeviceChangedEvent: audio
 
   switch (currentOutputDeviceChangedEvent.changeReason) {
     case audio.AudioStreamDeviceChangeReason.REASON_OLD_DEVICE_UNAVAILABLE:
-      // Handle the event where the old device is unavailable. If the application is playing, it should pause playback and update the UI.
+      // Handle the event where the old device is unavailable. If the application is in the playing state, the playback should be paused and the UX interface should be updated.
       break;
     case audio.AudioStreamDeviceChangeReason.REASON_NEW_DEVICE_AVAILABLE:
       // Handle the event where a new device is available based on the application's service logic.

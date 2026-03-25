@@ -50,6 +50,7 @@ mediatool list <resource-uri>
 ```
 
 该命令能够将`<resource-uri>`指定uri对应的媒体库内资源信息以csv格式打印出来。
+
 例如媒体库内图片资源A的uri为file://media/Photo/3/IMG_1721381297_001/MyImage.jpg, `mediatool list file://media/Photo/3`或者`mediatool list file://media/Photo/3/IMG_1721381297_001/MyImage.jpg`都能成功打印出该资源信息。
 
 所打印信息包含：

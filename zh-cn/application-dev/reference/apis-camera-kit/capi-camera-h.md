@@ -8,7 +8,7 @@
 
 ## 概述
 
-声明相机的基本概念。
+定义相机的基本接口和功能。
 
 **引用文件：** <ohcamera/camera.h>
 
@@ -153,7 +153,7 @@ enum Camera_SceneMode
 | -- | -- |
 | NORMAL_PHOTO = 1 | 普通相机模式。 |
 | NORMAL_VIDEO = 2 | 普通视频模式。 |
-| SECURE_PHOTO = 12 | 安全相机模式。 |
+| SECURE_PHOTO = 12 | 安全相机模式，主要为银行等有活体检测等安全诉求的应用提供。安全相机的使用需要加密算法框架及可信应用服务，详情请参见[Device Certificate Kit简介](../../security/DeviceCertificateKit/device-certificate-kit-intro.md)。 |
 
 ### Camera_Position
 
@@ -264,10 +264,9 @@ enum Camera_ExposureMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| EXPOSURE_MODE_LOCKED = 0 | 锁定曝光模式。 |
-| EXPOSURE_MODE_AUTO = 1 | 自动曝光模式。 |
-| EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | 连续自动曝光。 |
-
+| EXPOSURE_MODE_LOCKED = 0 | 锁定曝光模式。 不支持曝光区域中心点设置。<br>设置该模式后，每次拍照时曝光都会默认锁定。|
+| EXPOSURE_MODE_AUTO = 1 | 自动曝光模式。支持曝光区域中心点设置，可以使用[OH_CaptureSession_SetMeteringPoint](capi-capture-session-h.md#oh_capturesession_setmeteringpoint)接口设置曝光区域中心点。<br>设置该模式后，仅设置后的首次拍照生效。 |
+| EXPOSURE_MODE_CONTINUOUS_AUTO = 2 | 连续自动曝光。<br>设置该模式后，拍照系统会根据每次的环境变化自动调整曝光。 |
 ### Camera_FocusMode
 
 ```c
@@ -339,14 +338,10 @@ enum Camera_ImageRotation
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_0](#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_0 = 0 | 捕获图像旋转0度。<br>**起始版本：** 22 |
-| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_90](#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_90 = 90 | 捕获图像旋转90度。<br>**起始版本：** 22 |
-| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_180](#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_180 = 180 | 捕获图像旋转180度。<br>**起始版本：** 22 |
-| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_IMAGE_ROTATION_270](#camera_imagerotation)。 |
-| CAMERA_IMAGE_ROTATION_270 = 270 | 捕获图像旋转270度。<br>**起始版本：** 22 |
+| IAMGE_ROTATION_0 = 0 | 捕获图像旋转0度。|
+| IAMGE_ROTATION_90 = 90 | 捕获图像旋转90度。|
+| IAMGE_ROTATION_180 = 180 | 捕获图像旋转180度。|
+| IAMGE_ROTATION_270 = 270 | 捕获图像旋转270度。|
 
 ### Camera_QualityLevel
 
@@ -396,12 +391,9 @@ enum Camera_TorchMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OFF = 0 | 设备手电筒常关。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_TORCH_MODE_OFF](#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_OFF = 0 | 设备手电筒常关。<br>**起始版本：** 22 |
-| ON = 1 | 设备手电筒常开。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_TORCH_MODE_ON](#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_ON = 1 | 设备手电筒常开。<br>**起始版本：** 22 |
-| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_TORCH_MODE_AUTO](#camera_torchmode)。 |
-| CAMERA_TORCH_MODE_AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。<br>**起始版本：** 22 |
+| OFF = 0 | 设备手电筒常关。|
+| ON = 1 | 设备手电筒常开。|
+| AUTO = 2 | 设备手电筒自动模式，将根据环境光照水平打开手电筒。|
 
 ### Camera_SmoothZoomMode
 
@@ -417,8 +409,7 @@ enum Camera_SmoothZoomMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NORMAL = 0 | 贝塞尔曲线模式。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_SMOOTH_ZOOM_MODE_NORMAL](#camera_smoothzoommode)。 |
-| CAMERA_SMOOTH_ZOOM_MODE_NORMAL = 0 | 贝塞尔曲线模式。<br>**起始版本：** 22 |
+| NORMAL = 0 | 贝塞尔曲线模式。|
 
 ### Camera_SystemPressureLevel
 
@@ -509,12 +500,9 @@ enum Camera_FoldStatus
 
 | 枚举项 | 描述 |
 | -- | -- |
-| NON_FOLDABLE = 0 | 不可折叠状态。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_NON_FOLDABLE](#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_NON_FOLDABLE = 0 | 不可折叠状态。<br>**起始版本：** 22 |
-| EXPANDED = 1 | 展开状态。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_EXPANDED](#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_EXPANDED = 1 | 展开状态。<br>**起始版本：** 22 |
-| FOLDED = 2 | 折叠状态。<br> 从API version 22开始，推荐使用新枚举值[CAMERA_FOLD_STATUS_FOLDED](#camera_foldstatus)。 |
-| CAMERA_FOLD_STATUS_FOLDED = 2 | 折叠状态。<br>**起始版本：** 22 |
+| NON_FOLDABLE = 0 | 不可折叠状态。|
+| EXPANDED = 1 | 展开状态。|
+| FOLDED = 2 | 折叠状态。|
 
 ### Camera_QualityPrioritization
 

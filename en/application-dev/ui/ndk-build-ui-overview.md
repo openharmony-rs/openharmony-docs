@@ -7,12 +7,10 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-The ArkUI framework offers NDK APIs for building UIs with C/C++, including component creation, UI tree control, attribute configuration, and event handling. While ArkTS and the ArkUI declarative framework are recommended for most UI development, use the ArkUI NDK APIs when:
+The ArkUI framework offers [NDK APIs](../napi/ndk-development-overview.md) for building UIs with C/C++, including component creation, UI tree control, attribute configuration, and event listening. While ArkTS and the ArkUI declarative framework are recommended for most UI development, use the ArkUI NDK APIs when:
 
 
 - You need to dynamically create and mount UI components for bridging to your own UI framework.
-
-- You want to enhance UI performance by finely controlling component creation and attributes to reduce latency and handle high loads.
 
 - You aim to reuse C or C++ UI libraries developed by yourself or others.
 
@@ -34,7 +32,7 @@ The ArkUI NDK APIs provide the following capabilities:
 
 - **Animation**
 
-  Animations are one of the key elements of UI. The ArkUI NDK provides explicit animation APIs for crafting property animations that enhance the user experience with efficient and sophisticated effects.
+  Animations are one of the key elements of UI. The ArkUI NDK provides explicit animation APIs for crafting property animations that enhance user experience with efficient and sophisticated effects.
 
 - **Interaction event**
 
@@ -78,7 +76,7 @@ Using the NDK for UI development involves the following tasks.
 | [Launching EmbeddedUIExtensionAbility with EmbeddedComponent](ndk-embedded-component.md) | Introduces how to launch **EmbeddedUIExtensionAbility** with **EmbeddedComponent** on the native side. This is mainly used in modular development scenarios with process isolation requirements.|
 | [Using Text](ndk-styled-string.md) | Introduces how to use the **Text** component and font engine.|
 | [Ensuring Multi-Instance Functionality in the NDK](ndk-scope-task.md) | Introduces how to ensure the normal functionality of API calls in NDK multi-threaded scenarios.|
-| [Creating Multi-threaded Components with the NDK](ndk-build-on-multi-thread.md)| Introduces how to create multi-threaded UI components using NDK.|
+| [Parallelizing UI Page Building Using Multi-threaded NDK APIs](ndk-build-on-multi-thread.md)| Introduces how to create multi-threaded UI components using NDK.|
 
 
 ## Precautions

@@ -19,7 +19,7 @@
 ## Modules to Import
 
 ```ts
-import { InnerFullScreenLaunchComponent, LauncherController } from '@kit.ArkUI';
+import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 ```
 
 
@@ -88,7 +88,7 @@ import { InnerFullScreenLaunchComponent, LaunchController } from '@kit.ArkUI';
 struct Index {
 
   @Builder
-  ColumChild() {
+  ColumnChild() {
     Column() {
       Text('InnerFullScreenLaunchComponent').fontSize(16).margin({top: 100})
       Button('Start Sunrise/Sunset')
@@ -96,7 +96,7 @@ struct Index {
           let appId1: string = '576****************';
           this.controller.launchAtomicService(appId1, {});
         }).height(30).width('50%').margin({top: 50})
-      Button('Start Recharge')
+      Button('Start Top-up')
         .onClick(()=>{
           let appId2: string = '576****************';
           this.controller.launchAtomicService(appId2, {});
@@ -108,7 +108,7 @@ struct Index {
   build() {
     Column() {
       InnerFullScreenLaunchComponent({
-          content: this.ColumChild,
+          content: this.ColumnChild,
           controller: this.controller,
           onReceive: (data) => {
             console.info("onReceive, data: " + data['ohos.atomicService.window']);

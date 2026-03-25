@@ -24,7 +24,7 @@ Web组件内的H5页面加载完成后，自动识别并高亮标注页面内的
 
 页面中文本实体高亮后，将转变为超链接形式。触摸点击或鼠标左键点击实体，会根据实体类型弹出操作菜单。
 
-<!-- @[web_DataDetector_Hightlighting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) -->
+<!-- @[web_DataDetector_Highlighting](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebDataDetector/entry/src/main/ets/pages/WebDataDetectorHighlighting.ets) -->
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';

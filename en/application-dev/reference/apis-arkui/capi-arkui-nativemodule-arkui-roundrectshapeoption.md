@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_RoundRectShape ArkUI_RoundRectShapeOption
+```
+
 ## Overview
 
 Defines a struct for the rounded rectangle shape configuration.

@@ -141,7 +141,7 @@ Sets the intensity of haptic feedback for this audio-haptic player. This API use
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| Promise&amp;lt;void&amp;gt; | Promise that returns no value.|
+| Promise<void\> | Promise that returns no value.|
 
 **Error codes**
 
@@ -193,7 +193,7 @@ Sets the haptic ramp for this audio-haptic player. This API uses a promise to re
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| Promise&amp;lt;void&amp;gt; | Promise that returns no value.|
+| Promise<void\> | Promise that returns no value.|
 
 **Error codes**
 

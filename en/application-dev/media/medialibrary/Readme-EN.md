@@ -7,7 +7,7 @@
 <!--Tester: @wangbeibei; @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-- [Introduction to Media Library Kit](photoAccessHelper-overview.md)
+- [About This Kit](photoAccessHelper-overview.md)
 - [Selecting Media Assets Using Picker](photoAccessHelper-photoviewpicker.md)
 - [Saving Media Assets](photoAccessHelper-savebutton.md)<!--RP1--><!--RP1End-->
 - Moving Photos<!--movingphoto-->

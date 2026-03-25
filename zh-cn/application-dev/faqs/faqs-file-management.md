@@ -6,6 +6,8 @@
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @foryourself-->
 
+<!--deprecated_code_no_check-->
+
 ## 使用读写权限打开picker返回的uri失败(API 10)
 
 **问题现象**
@@ -64,7 +66,7 @@ let buffer = new ArrayBuffer(4096)
 let readOut = stream.readSync(buffer);
 let textDecoder = util.TextDecoder.create('utf-8', { ignoreBOM: true })
 let readString = textDecoder.decodeWithStream(new Uint8Array(buffer), { stream: false });
-console.log("读取的文件内容：" + readString);
+console.info("读取的文件内容：" + readString);
 ```
 
 

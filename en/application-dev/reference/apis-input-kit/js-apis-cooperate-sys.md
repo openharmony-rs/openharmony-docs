@@ -11,7 +11,7 @@ The **inputDeviceCooperate** module implements screen hopping for two or more ne
 
 > **NOTE**
 >
->- The APIs provided by this module are no longer maintained since API Version 10. You are advised to use [@ohos.cooperate (Screen Hopping)](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md).
+>- The APIs provided by this module are no longer maintained since API Version 10. You are advised to use [@ohos.cooperate (Screen Hopping) (System API)](../apis-distributedservice-kit/js-apis-devicestatus-cooperate-sys.md).
 > 
 >- The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
@@ -36,11 +36,11 @@ Specifies whether to enable screen hopping. This API uses an asynchronous callba
 | Name   | Type     | Mandatory | Description   |
 | -------- | ------------------------- | ---- | --------------------------- |
 | enable   | boolean                   | Yes  | Whether to enable screen hopping.|
-| callback | AsyncCallback&lt;void&gt;  | Yes |Callback used to return the result.  |
+| callback | AsyncCallback&lt;void&gt;  | Yes | Callback used to return the result.  |
 
 **Error codes**
 
-For details about the following error codes, see [Screen Hopping Error Codes](../apis-distributedservice-kit/errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | -----------------|
@@ -216,7 +216,7 @@ Starts screen hopping. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-cooperator.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-cooperator.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -421,7 +421,7 @@ Checks whether screen hopping is enabled. This API uses a promise to return the 
 
 | Type                       | Description                    |
 | -------------------        | ------------------------------- |
-| Promise<{ state: boolean }>| Promise used to return the result. The value **true** indicates that screen hopping is enabled, and the **false** indicates the opposite.      |
+| Promise<{ state: boolean }>| Promise used to return the result. The value **true** indicates that screen hopping is enabled, and the value **false** indicates the opposite.      |
 
 **Error codes**
 
@@ -461,7 +461,7 @@ struct Index {
 }
 ```
 
-## on('cooperation')
+## inputDeviceCooperate.on('cooperation')
 
 on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void
 
@@ -512,7 +512,7 @@ struct Index {
 }
 ```
 
-## off('cooperation')
+## inputDeviceCooperate.off('cooperation')
 
 off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 

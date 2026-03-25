@@ -87,9 +87,9 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
 
    ```ts
    function isDeferredImageDeliveryEnabled(photoOutput: camera.PhotoOutput): boolean {
-   	 let isEnabled: boolean = false;
+     let isEnabled: boolean = false;
      if (photoOutput !== null) {
-   	   isEnabled = photoOutput.isDeferredImageDeliveryEnabled(camera.DeferredDeliveryImageType.PHOTO);
+       isEnabled = photoOutput.isDeferredImageDeliveryEnabled(camera.DeferredDeliveryImageType.PHOTO);
      }
      console.info(`isDeferredImageDeliveryEnabled isEnabled: ${isEnabled}`);
      return isEnabled;
@@ -97,6 +97,8 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
    ```
 
 6. Trigger photo capture. This procedure is the same as that in the common photo capture mode. For details, see [Photo Capture](camera-shooting.md).
+
+
 
 ## Status Listening
 
@@ -119,6 +121,8 @@ Read [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md) for the API 
      });
    }
    ```
+
+   
 
 2. Call the mediaLibrary APIs to flush the thumbnail to the disk.
 

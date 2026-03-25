@@ -28,9 +28,9 @@ Create a native C++ application in DevEco Studio. The project created by default
 
 > **NOTE**
 >
-> According to the MIME protocol, the standard encoding format is image/jpeg. When the APIs provided by the image module are used for encoding, **image_MimeType** of the encoding parameters must be set to **image/jpeg**. The file name extension of the encoded image file can be .jpg or .jpeg, and the file can be used on platforms that support image/jpeg decoding.
+> - According to the MIME protocol, the standard encoding format is image/jpeg. When the APIs provided by the image module are used for encoding, **image_MimeType** of the encoding parameters must be set to **image/jpeg**. The file name extension of the encoded image file can be .jpg or .jpeg, and the file can be used on platforms that support image/jpeg decoding.
 >
-> Certain APIs are supported only in API version 20 or later. You should select an appropriate API version during development.
+> - Some APIs (such as [OH_ImagePackerNative_GetSupportedFormats](../../reference/apis-image-kit/capi-image-packer-native-h.md#oh_imagepackernative_getsupportedformats)) are supported only in API version 20 or later. You need to select a proper API version during development.
 
 1. Import the required header files.
 
@@ -110,6 +110,26 @@ Create a native C++ application in DevEco Studio. The project created by default
    <!-- @[pack_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageNativeSample/entry/src/main/cpp/loadImageSource.cpp) -->    
    
    ``` C++
+   // Obtain the encoding capability range.
+   Image_ErrorCode GetEncodeSupportedFormats()
+   {
+       Image_MimeType* mimeType = nullptr;
+       size_t length = 0;
+       Image_ErrorCode errCode = OH_ImagePackerNative_GetSupportedFormats(&mimeType, &length);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "OH_ImagePackerNative_GetSupportedFormats failed,"
+                                 "errCode: %{public}d.", errCode);
+           return errCode;
+       }
+       for (size_t count = 0; count < length; count++) {
+           if (mimeType[count].data != nullptr) {
+               g_encodeSupportedFormats.insert(std::string(mimeType[count].data));
+               OH_LOG_INFO(LOG_APP, "Encode supportedFormats: %{public}s", mimeType[count].data);
+           }
+       }
+       return IMAGE_SUCCESS;
+   }
+   
    Image_MimeType GetMimeTypeIfEncodable(const char *format)
    {
        auto it = g_encodeSupportedFormats.find(format);
@@ -131,19 +151,10 @@ Create a native C++ application in DevEco Studio. The project created by default
        }
        
        // Obtain the encoding capability range.
-       Image_MimeType* mimeType = nullptr;
-       size_t length = 0;
-       errCode = OH_ImagePackerNative_GetSupportedFormats(&mimeType, &length);
+       errCode = GetEncodeSupportedFormats();
        if (errCode != IMAGE_SUCCESS) {
-           OH_LOG_ERROR(LOG_APP, "packToFileFromImageSourceTest OH_ImagePackerNative_GetSupportedFormats failed,"
-                                 "errCode: %{public}d.", errCode);
+           OH_ImagePackerNative_Release(testPacker);
            return errCode;
-       }
-       for (size_t count = 0; count < length; count++) {
-           OH_LOG_INFO(LOG_APP, "Encode supportedFormats:%{public}s", mimeType[count].data);
-           if (mimeType[count].data != nullptr) {
-               g_encodeSupportedFormats.insert(std::string(mimeType[count].data));
-           }
        }
        
        // Specify encoding parameters and encode the ImageSource into a file.
@@ -158,6 +169,15 @@ Create a native C++ application in DevEco Studio. The project created by default
        OH_PackingOptions_SetMimeType(option, &image_MimeType);
        // HDR encoding is possible only when the device supports HDR encoding, the image resource is an HDR image, and the format of the image resource is JPEG.
        OH_PackingOptions_SetDesiredDynamicRange(option, IMAGE_PACKER_DYNAMIC_RANGE_AUTO);
+       // Set the encoding quality (default: 0; recommended ≥ 80).
+       uint32_t quality = 90;
+       OH_PackingOptions_SetQuality(option, quality);
+       errCode = OH_ImagePackerNative_PackToFileFromImageSource(testPacker, option, imageSource, fd);
+       if (errCode != IMAGE_SUCCESS) {
+           OH_LOG_ERROR(LOG_APP, "packToFileFromImageSourceTest OH_ImagePackerNative_PackToFileFromImageSource failed,"
+                                 "errCode: %{public}d.", errCode);
+           return errCode;
+       }
    
        // Release the ImagePacker instance.
        errCode = OH_ImagePackerNative_Release(testPacker);
@@ -196,6 +216,9 @@ Create a native C++ application in DevEco Studio. The project created by default
        char type[] = "image/jpeg";
        Image_MimeType image_MimeType = {type, strlen(type)};
        OH_PackingOptions_SetMimeType(option, &image_MimeType);
+       // Set the encoding quality (default: 0; recommended ≥ 80).
+       uint32_t quality = 90;
+       OH_PackingOptions_SetQuality(option, quality);
        errCode = OH_ImagePackerNative_PackToFileFromPixelmap(testPacker, option, pixelmap, fd);
        if (errCode != IMAGE_SUCCESS) {
            OH_LOG_ERROR(LOG_APP, "packToFileFromPixelmapTest OH_ImagePackerNative_PackToFileFromPixelmap failed,"

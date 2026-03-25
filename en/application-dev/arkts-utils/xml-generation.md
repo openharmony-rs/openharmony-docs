@@ -23,6 +23,7 @@ XML can also serve as a messaging format for communication between nodes in dist
 ## How to Develop
 
 The XML module provides the `XmlSerializer` and `XmlDynamicSerializer` classes to generate XML data. When using `XmlSerializer`, you need to pass an `ArrayBuffer` or `DataView` object of a fixed length as the output buffer to store the serialized XML data.
+
 The `XmlDynamicSerializer` class dynamically expands the capacity. The program automatically creates an `ArrayBuffer` based on the size of the generated data.
 
 You can call various methods to write different content. For example, call **startElement(name: string)** to write the start tag of an element and **setText(text: string)** to write the tag value.
@@ -86,7 +87,7 @@ The following is an example of generating an XML document using **XmlSerializer*
 
    The output is as follows:
 
-   ```
+   ```xml
    <?xml version="1.0" encoding="utf-8"?><bookstore>
      <book category="COOKING">
        <title lang="en">Everyday</title>
@@ -127,7 +128,7 @@ The following is an example of generating an XML document using `XmlDynamicSeria
    let arrayBuffer = DySerializer.getOutput();
    ```
 
-4. Use **Uint8Array** to manipulate the ArrayBuffer, use **TextDecoder** to decode the Uint8Array, and output it.
+3. Use **Uint8Array** to manipulate the ArrayBuffer, use **TextDecoder** to decode the Uint8Array, and output it.
 
    ```ts
    let uint8Array: Uint8Array = new Uint8Array(arrayBuffer);
@@ -137,7 +138,7 @@ The following is an example of generating an XML document using `XmlDynamicSeria
 
    The output is as follows:
 
-   ```
+   ```xml
    <?xml version="1.0" encoding="utf-8"?>
    <bookstore>
      <book category="COOKING">

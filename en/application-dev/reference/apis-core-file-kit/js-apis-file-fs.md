@@ -197,9 +197,9 @@ Checks whether the file or directory is stored locally or has the operation perm
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | Yes  | Application sandbox path of the file or directory.                                  |
-| mode<sup>12+</sup>   | [AccessModeType](#accessmodetype12) | Yes  | Permission on the file or directory to check.|
-| flag<sup>12+</sup>  | [AccessFlagType](#accessflagtype12) | Yes| Position of the file or directory to check.|
+| path | string | Yes  | Application sandbox path of the file or directory.                                  |
+| mode | [AccessModeType](#accessmodetype12) | Yes  | Permission on the file or directory to check.|
+| flag | [AccessFlagType](#accessflagtype12) | Yes| Position of the file or directory to check.|
 
 **Return value**
 
@@ -209,7 +209,7 @@ Checks whether the file or directory is stored locally or has the operation perm
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -324,9 +324,9 @@ Checks whether a file or directory is stored locally or has the operation permis
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| path   | string | Yes  | Application sandbox path of the file to check.                                  |
-| mode<sup>12+</sup>   | [AccessModeType](#accessmodetype12) | Yes  | Permission on the file or directory to check.|
-| flag<sup>12+</sup>  | [AccessFlagType](#accessflagtype12) | Yes  | Position of the file or directory to check.|
+| path  | string | Yes  | Application sandbox path of the file to check.                                  |
+| mode | [AccessModeType](#accessmodetype12) | Yes  | Permission on the file or directory to check.|
+| flag | [AccessFlagType](#accessflagtype12) | Yes  | Position of the file or directory to check.|
 
 **Return value**
 
@@ -336,7 +336,7 @@ Checks whether a file or directory is stored locally or has the operation permis
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -389,7 +389,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let file = fs.openSync(filePath);
   fs.close(file).then(() => {
-    console.info("File closed");
+    console.info("close file succeed");
   }).catch((err: BusinessError) => {
     console.error("close file failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -426,7 +426,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("close file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("File closed");
+      console.info("close file succeed");
     }
   });
   ```
@@ -486,7 +486,7 @@ A maximum of 10 cross-device copy tasks are allowed at the same time, and the nu
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -539,7 +539,7 @@ A maximum of 10 cross-device copy tasks are allowed at the same time, and the nu
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -588,7 +588,7 @@ A maximum of 10 cross-device copy tasks are allowed at the same time, and the nu
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -980,7 +980,7 @@ Triggers connection. If the peer device is abnormal, [onStatus](#onstatus12) in 
 
   | Name | Type    | Mandatory  | Description                                      |
   | ---- | ------ | ---- | ---------------------------------------- |
-  | networkId   | string | Yes   | Network ID of the device. The device network ID can be obtained from [deviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) using the related [distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) API.                            |
+  | networkId   | string | Yes   | Network ID of the device. The device network ID can be obtained from [DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) using the related [distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) API.                            |
   | listeners | [DfsListeners](#fsdfslisteners12) | Yes   | Listeners for distributed file system status.               |
 
 **Return value**
@@ -991,7 +991,7 @@ Triggers connection. If the peer device is abnormal, [onStatus](#onstatus12) in 
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1031,7 +1031,7 @@ Triggers disconnection.
 
   | Name | Type    | Mandatory  | Description                                      |
   | ---- | ------ | ---- | ---------------------------------------- |
-  | networkId   | string | Yes   | Network ID of the device. The device network ID can be obtained from [deviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) using the related [distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) API.                           |
+  | networkId   | string | Yes   | Network ID of the device. The device network ID can be obtained from [DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) using the related [distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) API.                           |
 
 **Return value**
 
@@ -1041,7 +1041,7 @@ Triggers disconnection.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Space Statistics Error Codes](errorcode-filemanagement.md#space-statistics-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1066,7 +1066,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
-Sets an extended attribute of a file or directory.
+Sets an extended attribute of a file or directory. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1086,7 +1086,7 @@ Sets an extended attribute of a file or directory.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1122,7 +1122,7 @@ Sets an extended attribute of a file or directory.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1146,7 +1146,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 getxattr(path: string, key: string): Promise&lt;string&gt;
 
-Obtains an extended attribute of a file or directory.
+Obtains an extended attribute of a file or directory. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -1165,7 +1165,7 @@ Obtains an extended attribute of a file or directory.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1206,7 +1206,7 @@ Obtains an extended attribute of a file. This API returns the result synchronous
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -1257,7 +1257,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir";
   fs.mkdir(dirPath).then(() => {
-    console.info("Directory created");
+    console.info("mkdir succeed");
   }).catch((err: BusinessError) => {
     console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -1296,7 +1296,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir1/testDir2/testDir3";
   fs.mkdir(dirPath, true).then(() => {
-    console.info("Directory created");
+    console.info("mkdir succeed");
   }).catch((err: BusinessError) => {
     console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -1332,7 +1332,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Directory created");
+      console.info("mkdir succeed");
     }
   });
   ```
@@ -1368,7 +1368,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Directory created");
+      console.info("mkdir succeed");
     }
   });
   ```
@@ -1617,7 +1617,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
   let arrayBuffer = new ArrayBuffer(4096);
   fs.read(file.fd, arrayBuffer).then((readLen: number) => {
-    console.info("Read file data successfully");
+    console.info("read file data succeed");
     let buf = buffer.from(arrayBuffer, 0, readLen);
     console.info(`The content of file: ${buf.toString()}`);
   }).catch((err: BusinessError) => {
@@ -1662,7 +1662,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("read failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Read file data successfully");
+      console.info("read file data succeed");
       let buf = buffer.from(arrayBuffer, 0, readLen);
       console.info(`The content of file: ${buf.toString()}`);
     }
@@ -1744,7 +1744,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir";
   fs.rmdir(dirPath).then(() => {
-    console.info("Directory removed");
+    console.info("rmdir succeed");
   }).catch((err: BusinessError) => {
     console.error("rmdir failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -1784,7 +1784,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("rmdir failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Directory removed");
+      console.info("rmdir succeed");
     }
   });
   ```
@@ -1797,7 +1797,7 @@ Removes a directory and all its subdirectories and files synchronously.
 
 > **NOTE**
 >
-> This API can be used to remove a single file. However, you are advised to use **unlink()** instead.
+> This API can be used to remove a single file. However, you are advised to use **unlinkSync** instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1852,7 +1852,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
   fs.unlink(filePath).then(() => {
-    console.info("File removed");
+    console.info("remove file succeed");
   }).catch((err: BusinessError) => {
     console.error("remove file failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -1888,7 +1888,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("remove file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("File removed");
+      console.info("remove file succeed");
     }
   });
   ```
@@ -2078,7 +2078,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let len: number = 5;
   fs.truncate(filePath, len).then(() => {
-    console.info("File truncated");
+    console.info("truncate file succeed");
   }).catch((err: BusinessError) => {
     console.error("truncate file failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -2296,7 +2296,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 > **NOTE**
 >
-> If the line read by ReaderIterator is not in UTF-8 format, error code 13900037 will be returned.
+> If the line read by **ReaderIterator** is not in UTF-8 format, error code 13900037 will be returned.
 
 **Example**
 
@@ -2591,7 +2591,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + "/new.txt";
   fs.rename(srcFile, dstFile).then(() => {
-    console.info("File renamed");
+    console.info("rename succeed");
   }).catch((err: BusinessError) => {
     console.error("rename failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -2633,7 +2633,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("rename failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("File renamed");
+      console.info("rename succeed");
     }
   });
   ```
@@ -2702,7 +2702,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let file = fs.openSync(filePath);
   fs.fsync(file.fd).then(() => {
-    console.info("Data flushed");
+    console.info("sync data succeed");
   }).catch((err: BusinessError) => {
     console.error("sync data failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
@@ -2804,7 +2804,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let file = fs.openSync(filePath);
   fs.fdatasync(file.fd).then(() => {
-    console.info("Data flushed");
+    console.info("sync data succeed");
   }).catch((err: BusinessError) => {
     console.error("sync data failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
@@ -2880,6 +2880,10 @@ symlink(target: string, srcPath: string): Promise&lt;void&gt;
 
 Creates a symbolic link based on a file path. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> Since API version 11, this API cannot be used by third-party applications.
+
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
 **Parameters**
@@ -2906,7 +2910,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + "/test";
   fs.symlink(srcFile, dstFile).then(() => {
-    console.info("Symbolic link created");
+    console.info("symlink succeed");
   }).catch((err: BusinessError) => {
     console.error("symlink failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -2917,6 +2921,10 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): void
 
 Creates a symbolic link based on the file path. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> Since API version 11, this API cannot be used by third-party applications.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2942,7 +2950,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("symlink failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Symbolic link created");
+      console.info("symlink succeed");
     }
   });
   ```
@@ -2952,6 +2960,10 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 symlinkSync(target: string, srcPath: string): void
 
 Creates a symbolic link based on the file path. This API returns the result synchronously.
+
+> **NOTE**
+>
+> Since API version 11, this API cannot be used by third-party applications.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -2997,7 +3009,7 @@ You can configure the **recursion** parameter in **options** to recursively list
 
   | Type                  | Description        |
   | --------------------- | ---------- |
-  | Promise&lt;string[]&gt; | Promise used to return the file names listed.|
+  | Promise&lt;string[]&gt; | Promise used to return the file name array, which is encoded in UTF-8 format by default.|
 
 **Error codes**
 
@@ -3044,7 +3056,7 @@ You can configure the **recursion** parameter in **options** to recursively list
   | ------ | ------ | ---- | --------------------------- |
   | path | string | Yes   | Application sandbox path of the directory.|
   | options | [ListFileOptions](#listfileoptions11) | No   | Options for filtering files. The files are not filtered by default.|
-  | callback | AsyncCallback&lt;string[]&gt; | Yes   | Callback used to return the file names listed.             |
+  | callback | AsyncCallback&lt;string[]&gt; | Yes   | Callback used to return the file names listed. The files are encoded in UTF-8 by default.|
 
 
 **Error codes**
@@ -3101,7 +3113,7 @@ You can configure the **recursion** parameter in **options** to recursively list
 
   | Type                  | Description        |
   | --------------------- | ---------- |
-  | string[] | File names obtained.|
+  | string[] | File name array, which is encoded in UTF-8 format by default.|
 
 **Error codes**
 
@@ -3809,8 +3821,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 ## fs.createRandomAccessFileSync<sup>12+</sup>
 
-createRandomAccessFileSync(file: string | File, mode?: number,
-  options?: RandomAccessFileOptions): RandomAccessFile
+createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomAccessFileOptions): RandomAccessFile
 
 Creates a **RandomAccessFile** instance based on a file path or file object.
 
@@ -3877,7 +3888,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   fs.createStream(filePath, "a+").then((stream: fs.Stream) => {
     stream.closeSync();
-    console.info("Stream created");
+    console.info("createStream succeed");
   }).catch((err: BusinessError) => {
     console.error("createStream failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -3916,7 +3927,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
       console.error("create stream failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       stream.closeSync();
-      console.info("Stream created");
+      console.info("createStream succeed");
     }
   })
   ```
@@ -3953,7 +3964,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   ```ts
   let filePath = pathDir + "/test.txt";
   let stream = fs.createStreamSync(filePath, "r+");
-  console.info("Stream created");
+  console.info("createStream succeed");
   stream.closeSync();
   ```
 
@@ -3992,7 +4003,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let file = fs.openSync(filePath);
   fs.fdopenStream(file.fd, "r+").then((stream: fs.Stream) => {
-    console.info("Stream opened");
+    console.info("openStream succeed");
     stream.closeSync();
   }).catch((err: BusinessError) => {
     console.error("openStream failed with error message: " + err.message + ", error code: " + err.code);
@@ -4112,7 +4123,7 @@ Creates a readable stream. This API returns the result synchronously.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -4154,7 +4165,7 @@ Creates a writeable stream. This API returns the result synchronously.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -4214,7 +4225,7 @@ The FD needs to be closed by calling **close()**.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4256,7 +4267,7 @@ Creates a **ReadStream** instance.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4307,7 +4318,7 @@ Reads all content of a file.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4358,7 +4369,7 @@ Call **finishWrite()** if the write operation is successful; call **failWrite()*
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4375,6 +4386,7 @@ try {
   let file = new fs.AtomicFile(`${pathDir}/write.txt`);
   let writeStream = file.startWrite();
   writeStream.write("hello, world", "utf-8", ()=> {
+    file.finishWrite();
     console.info('AtomicFile write finished!');
   })
 } catch (err) {
@@ -4392,7 +4404,7 @@ Finishes writing file data when the write operation is complete.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4426,7 +4438,7 @@ Rolls back the file after the file fails to be written.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4461,7 +4473,7 @@ Deletes the **AtomicFile** class, including the original files and temporary fil
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4608,7 +4620,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { fileUri } from '@kit.CoreFileKit';
-import common from '@ohos.app.ability.common';
+import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -4667,7 +4679,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { TaskSignal } from '@ohos.file.fs';
+import { TaskSignal } from '@kit.CoreFileKit';
 let copySignal: fs.TaskSignal = new TaskSignal();
 copySignal.onCancel();
 ```
@@ -4944,7 +4956,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let stream = fs.createStreamSync(filePath, "r+");
   stream.close().then(() => {
-    console.info("File stream closed");
+    console.info("close fileStream succeed");
   }).catch((err: BusinessError) => {
     console.error("close fileStream  failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -5034,7 +5046,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
   let filePath = pathDir + "/test.txt";
   let stream = fs.createStreamSync(filePath, "r+");
   stream.flush().then(() => {
-    console.info("Stream flushed");
+    console.info("flush succeed");
     stream.close();
   }).catch((err: BusinessError) => {
     console.error("flush failed with error message: " + err.message + ", error code: " + err.code);
@@ -5071,7 +5083,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("flush stream failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Stream flushed");
+      console.info("flush succeed");
       stream.close();
     }
   });
@@ -5276,7 +5288,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     length: 5
   };
   stream.read(arrayBuffer, readOption).then((readLen: number) => {
-    console.info("Read data successfully");
+    console.info("read data succeed");
     let buf = buffer.from(arrayBuffer, 0, readLen);
     console.info(`The content of file: ${buf.toString()}`);
     stream.close();
@@ -5324,7 +5336,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
     if (err) {
       console.error("read stream failed with error message: " + err.message + ", error code: " + err.code);
     } else {
-      console.info("Read data successfully");
+      console.info("read data succeed");
       let buf = buffer.from(arrayBuffer, 0, readLen);
       console.info(`The content of file: ${buf.toString()}`);
       stream.close();
@@ -5910,6 +5922,10 @@ Obtains a **ReadStream** instance of this **RandomAccessFile**.
   | ------------------ | --------- |
   | [ReadStream](#readstream12) | **ReadStream** instance obtained.|
 
+**Error codes**
+
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+
 **Example**
 
   ```ts
@@ -5933,6 +5949,10 @@ Obtains a **WriteStream** instance of this **RandomAccessFile**.
   | Type               | Description       |
   | ------------------ | --------- |
   | [WriteStream](#writestream12) | **WriteStream** instance obtained.|
+
+**Error codes**
+
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -6149,7 +6169,7 @@ Defines the options used in **listFile()**.
 
 ## ReadStream<sup>12+</sup>
 
-Defines a readable stream. You need to use [fs.createReadStream](#fscreatereadstream12) to create a **ReadStream** instance, which is inherited from the [stream base class](../apis-arkts/js-apis-stream.md#readable).
+Defines a readable stream. You need to use [fs.createReadStream](#fscreatereadstream12) to create a **ReadStream** instance, which is inherited from [stream.Readable](../apis-arkts/js-apis-stream.md#readable).
 
 The data obtained by **ReadStream** is a decoded string. Currently, only the UTF-8 format is supported.
 
@@ -6182,7 +6202,7 @@ Adjusts the position of the readable stream offset pointer.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 
@@ -6216,7 +6236,7 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 
 ## WriteStream<sup>12+</sup>
 
-Defines a writeable stream. You need to use [fs.createWriteStream](#fscreatewritestream12) to create a **WriteStream** instance, which is inherited from the [stream base class](../apis-arkts/js-apis-stream.md#writable).
+Defines a writeable stream. You need to use [fs.createWriteStream](#fscreatewritestream12) to create a **WriteStream** instance, which is inherited from [stream.Writable](../apis-arkts/js-apis-stream.md#writable).
 
 ### Properties
 
@@ -6227,7 +6247,7 @@ Defines a writeable stream. You need to use [fs.createWriteStream](#fscreatewrit
 | bytesWritten    | number | Yes   | No   | Number of bytes written to the writable stream.|
 | path    | string | Yes   | No   | Path of the file corresponding to the writeable stream.|
 
-### Seek<sup>12+</sup>
+### seek<sup>12+</sup>
 
 seek(offset: number, whence?: WhenceType): number;
 
@@ -6250,7 +6270,7 @@ Adjusts the position of the writeable stream offset pointer.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 

@@ -3,7 +3,7 @@
 <!--Subsystem: Ability-->
 <!--Owner: @cx983299475-->
 <!--Designer: @xueyulong-->
-<!--Tester: @chenmingze-->
+<!--Tester: @yangyuecheng-->
 <!--Adviser: @HelloShuo-->
 
 There are cases where multiple copies of the same widget are added to the home screen to accommodate different needs. In these cases, the widget content needs to be dynamically updated based on the state. This topic exemplifies how this is implemented. In the following example, two copies of the weather widget are added to the home screen: one for displaying the weather of London, and the other Beijing, both configured to be updated at 07:00 every morning. The widget provider detects the target city, and then displays the city-specific weather information on the widgets.
@@ -38,15 +38,16 @@ There are cases where multiple copies of the same widget are added to the home s
 
 - Widget page: A widget has different states and needs to be updated by state. When the state changes, **postCardAction** is called to notify the EntryFormAbility.
 
-    <!-- @[widget_update_by_status_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets) -->
+    <!-- @[widget_update_by_status_card](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/widgetupdatebystatus/pages/WidgetUpdateByStatusCard.ets
     let storageUpdateByStatus = new LocalStorage();
     
     @Entry(storageUpdateByStatus)
     @Component
     struct WidgetUpdateByStatusCard {
-    // Replace $r('app.string.to_be_refreshed') with the resource file you use.
+      // Replace $r('app.string.to_be_refreshed') with the resource file you use.
       @LocalStorageProp('textA') textA: Resource = $r('app.string.to_be_refreshed');
       @LocalStorageProp('textB') textB: Resource = $r('app.string.to_be_refreshed');
       @State selectA: boolean = false;
@@ -69,7 +70,7 @@ There are cases where multiple copies of the same widget are added to the home s
                     }
                   });
                 })
-            // Replace $r('app.string.status_a') with the resource file you use.
+              // Replace $r('app.string.status_a') with the resource file you use.
               Text($r('app.string.status_a'))
                 .fontColor('#000000')
                 .opacity(0.9)
@@ -94,7 +95,7 @@ There are cases where multiple copies of the same widget are added to the home s
                     }
                   });
                 })
-            // Replace $r('app.string.status_b') with the resource file you use.
+              // Replace $r('app.string.status_b') with the resource file you use.
               Text($r('app.string.status_b'))
                 .fontColor('#000000')
                 .opacity(0.9)
@@ -109,7 +110,8 @@ There are cases where multiple copies of the same widget are added to the home s
           .position({ y: 12 })
     
           Column() {
-            Row() { // Content that is updated only in state A
+            Row() {
+              // Content that is updated only in state A.
               Text($r('app.string.status_a'))
                 .fontColor('#000000')
                 .opacity(0.4)
@@ -122,7 +124,8 @@ There are cases where multiple copies of the same widget are added to the home s
             }
             .margin({ top: '12px', left: 26, right: '26px' })
     
-            Row() { // Content that is updated only in state B
+            Row() {
+              // Content that is updated only in state B.
               Text($r('app.string.status_b'))
                 .fontColor('#000000')
                 .opacity(0.4)
@@ -131,13 +134,19 @@ There are cases where multiple copies of the same widget are added to the home s
                 .fontColor('#000000')
                 .opacity(0.4)
                 .fontSize(12)
-          }.margin({ top: '12px', bottom: '21px', left: 26, right: '26px' })
+            }
+            .margin({
+              top: '12px',
+              bottom: '21px',
+              left: 26,
+              right: '26px'
+            })
           }
           .margin({ top: 80 })
           .width('100%')
           .alignItems(HorizontalAlign.Start)
         }.width('100%').height('100%')
-      // $r('app.media.CardUpdateByStatus') with the resource file you use.
+        // Replace $r('app.media.CardUpdateByStatus') with the resource file you use.
         .backgroundImage($r('app.media.CardUpdateByStatus'))
         .backgroundImageSize(ImageSize.Cover)
       }
@@ -146,9 +155,10 @@ There are cases where multiple copies of the same widget are added to the home s
 
 - EntryFormAbility: The widget state data is stored in the local database. When the update event callback is triggered, the current widget state is obtained through **formId**, and then content is updated based on the state obtained.
 
-    <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) -->
+    <!-- @[update_by_status_form_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts) --> 
     
     ``` TypeScript
+    // entry/src/main/ets/updatebystatusformability/UpdateByStatusFormAbility.ts
     import { Want } from '@kit.AbilityKit';
     import { preferences } from '@kit.ArkData';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -190,7 +200,8 @@ There are cases where multiple copies of the same widget are added to the home s
       }
     
       // This callback function is not required for the widget host.
-    onCastToNormalForm(formId: string): void { }
+      onCastToNormalForm(formId: string): void {
+      }
     
       onUpdateForm(formId: string): void {
         let promise: Promise<preferences.Preferences> = preferences.getPreferences(this.context, 'myStore');

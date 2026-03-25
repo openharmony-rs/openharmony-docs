@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 The **inputMethodEngine** module is oriented to input method applications (including system and third-party input method applications). With the APIs of this module, input method applications are able to create soft keyboard windows, insert or delete characters, select text, and listen for physical keyboard events.
@@ -113,7 +113,7 @@ Obtains an [InputMethodEngine](#inputmethodengine) instance for the input method
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getInputMethodAbility()](#inputmethodenginegetinputmethodability9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getInputMethodAbility](#inputmethodenginegetinputmethodability9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -137,7 +137,7 @@ Obtains a [KeyboardDelegate](#keyboarddelegate) instance for the input method. T
 
 > **NOTE**
 >
->This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getKeyboardDelegate()](#inputmethodenginegetkeyboarddelegate9) instead.
+>This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getKeyboardDelegate](#inputmethodenginegetkeyboarddelegate9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1100,7 +1100,7 @@ Disables listening for a keyboard event. This API uses an asynchronous callback 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'keyEvent'**.|
-| callback | function | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | (event: [InputKeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent)) => boolean | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
 
@@ -1672,7 +1672,7 @@ Obtains the window ID. This API uses a promise to return the result.
 
 | Type  | Description                            |
 | ------- | ------------------------------ |
-|Promise\<number>| Promise used to return the result. Returns the **displayId** of the window. |
+|Promise\<number>| Promise used to return the result. It returns the **displayId** of the window. |
 
 **Error codes**
 
@@ -2352,7 +2352,7 @@ Obtains the offset area of the soft keyboard relative to the system panel under 
 
 | Type  | Description                            |
 | ------- | ------------------------------ |
-| Promise\<[SystemPanelInsets](#systempanelinsets21)> | Promise used to return the result. Offset area between the input method keyboard and the system panel.|
+| Promise\<[SystemPanelInsets](#systempanelinsets21)> | Promise used to return the offset area between the input method keyboard and the system panel.|
 
 **Error codes**
 
@@ -2429,7 +2429,7 @@ try {
 
 ## KeyboardController
 
-In the following API examples, you must first use [on('inputStart')](#oninputstart9) to obtain a **KeyboardController** instance, and then call the APIs using the obtained instance.
+You must first use [on('inputStart')](#oninputstart9) to obtain a **KeyboardController** instance, and then use this instance to call the following APIs.
 
 ### hide<sup>9+</sup>
 
@@ -2782,7 +2782,7 @@ inputMethodEngine.getInputMethodAbility()
 
 ## InputClient<sup>9+</sup>
 
-In the following API examples, you must first use [on('inputStart')](#oninputstart9) to obtain an **InputClient** instance, and then call the APIs using the obtained instance.
+You must first use [on('inputStart')](#oninputstart9) to obtain a **InputClient** instance, and then use this instance to call the following APIs.
 
 ### sendKeyFunction<sup>9+</sup>
 
@@ -4022,7 +4022,9 @@ Sends an extended edit action. This API uses an asynchronous callback to return 
 
 > **NOTE**
 >
-> The input method calls this API to send an extended edit action to an edit box, which in turn listens for the corresponding event [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
+> The input method applications call this API to send extended edit actions to the edit box. The edit box listens for the corresponding event using [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
+>
+> When the edit box responds to the **PASTE** command of [ExtendAction](#extendaction10), the edit box application needs to apply for the [ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) permission.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -4065,7 +4067,9 @@ Sends an extended edit action. This API uses a promise to return the result.
 
 >**NOTE**
 >
-> The input method calls this API to send an extended edit action to an edit box, which in turn listens for the corresponding event [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
+> The input method applications call this API to send extended edit actions to the edit box. The edit box listens for the corresponding event using [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
+>
+> When the edit box responds to the **PASTE** command of [ExtendAction](#extendaction10), the edit box application needs to apply for the [ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) permission.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -4107,7 +4111,7 @@ inputClient.sendExtendAction(inputMethodEngine.ExtendAction.COPY).then(() => {
 
 sendPrivateCommand(commandData: Record&lt;string, CommandDataType&gt;): Promise&lt;void&gt;
 
-Sends private data to the system component that needs to communicate with the input method application.
+Sends private data to the system component that needs to communicate with the input method application. This API uses a promise to return the result.
 
 >**NOTE**
 >
@@ -4554,7 +4558,7 @@ Represents the attributes of the edit box.
 | enterKeyType | number   | Yes  | No  | Function attributes of the edit box. For details, see [function key definitions in constants](#constants).|
 | inputPattern | number   | Yes  | No  | Text attribute of the edit box. For details, see [edit box definitions in constants](#constants).|
 | isTextPreviewSupported<sup>12+</sup> | boolean | No| No| Whether text preview is supported.<br>- **true**: Supported.<br>- **false**: Unsupported.|
-| bundleName<sup>14+</sup> | string | Yes| Yes| Name of the application package to which the edit box belongs. The value may be **""** When this attribute is used, the scenario where the value is **""** must be considered.|
+| bundleName<sup>14+</sup> | string | Yes| Yes| Name of the application package to which the edit box belongs. The value may be **""**. Handle this scenario when using the attribute.|
 | immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | Yes  | Yes  | Immersive mode of the input method.|
 | windowId<sup>18+</sup> | number | Yes| Yes| ID of the window where the edit box is located.|
 | displayId<sup>18+</sup> | number | Yes  | Yes  | Screen ID of the window corresponding to the edit box. If window ID is not set, the screen ID of the focused window is used.|
@@ -4733,11 +4737,11 @@ Defines the offset area between the input method soft keyboard and the system pa
 
 ## TextInputClient<sup>(deprecated)</sup>
 
+You must first use [on('inputStart')](#oninputstart) to obtain a **TextInputClient** instance, and then use this instance to call the following APIs.
+
 > **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [InputClient](#inputclient9) instead.
-
-In the following API examples, you must first use [on('inputStart')](#oninputstart) to obtain a **TextInputClient** instance, and then call the APIs using the obtained instance.
 
 ### getForward<sup>(deprecated)</sup>
 

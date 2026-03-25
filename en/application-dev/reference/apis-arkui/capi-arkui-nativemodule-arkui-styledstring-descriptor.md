@@ -6,6 +6,10 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_StyledString_Descriptor ArkUI_StyledString_Descriptor
+```
+
 ## Overview
 
 Defines a struct for the styled string descriptor object supported by the text component.

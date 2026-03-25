@@ -58,7 +58,7 @@ Check whether the alias of the asset to add is correct. If the alias is incorrec
 1. Use [asset.remove](js-apis-asset.md#assetremove) to remove the asset with the same alias, and use [asset.add](js-apis-asset.md#assetadd) to add the asset.
 2. Call [asset.add](js-apis-asset.md#assetadd) with **asset.Tag.CONFLICT_RESOLUTION** set to **asset.ConflictResolution.OVERWRITE**.
 
-## 24000004 Access to Asset Denied
+## 24000004 Access Denied
 
 **Error Message**
 
@@ -178,7 +178,7 @@ The Bundle Manager service is abnormal.
 
 Locate the cause of the exception based on error information.
 
-## 24000012 Account Service Abnormal
+## 24000012 Account System Service Abnormal
 
 **Error Message**
 

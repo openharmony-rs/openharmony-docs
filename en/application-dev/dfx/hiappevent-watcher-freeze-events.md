@@ -10,17 +10,19 @@
 
 AppFreeze (application freeze) means that an application does not respond to user operations (for example, clicking) for a specified period of time. To address application freeze problems, the system provides the application freeze detection, maintenance and debugging log capturing, and log reporting capabilities to help you locate faults.
 
-## Detection Principles
-
-For details, see [Application Freeze Detection Principles](appfreeze-guidelines.md#detection-principles).
-
-## Available APIs
-
-You can subscribe to the application freeze event **hiAppEvent.event.APP_FREEZE** using the APIs provided by HiAppEvent. When detecting an application freeze, the system captures maintenance and debugging information and sends the freeze event to the application process through HiAppEvent.
+This topic describes the application freeze detection principles, fields, and specifications. You can subscribe to application freeze events using the ArkTS and C/C++ APIs provided by **HiAppEvent**. For details, see the following documents:
 
 - [Subscribing to Application Freeze Events (ArkTS)](hiappevent-watcher-freeze-events-arkts.md)
 
 - [Subscribing to Application Freeze Events (C/C++)](hiappevent-watcher-freeze-events-ndk.md)
+
+> **NOTE**
+>
+> Application freeze events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, this feature is also supported for [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide).
+
+## Detection Principles
+
+For details, see [Application Freeze Detection Principles](appfreeze-guidelines.md#detection-principles).
 
 ## Event Fields
 
@@ -39,7 +41,7 @@ The **params** attribute in the event information is described as follows.
 | uid | number | User ID of an application.|
 | uuid | string | Error ID, which is generated based on fault information and uniquely identifies crash faults of the same type.|
 | exception | object | Exception information. For details, see **exception**.|
-| hilog | string[] | Log information.|
+| hilog | string[] | Log information. For the application freeze event, a maximum of 100 lines of faulty process log information can be obtained from the hilog buffer.|
 | event_handler | string[] | Events not yet handled by the main thread.|
 | event_handler_size_3s | string | Number of tasks in the task stack at 3s during the [THREAD_BLOCK_6S event](appfreeze-guidelines.md#thread_block_6s-application-main-thread-timeout). This parameter is available only in the application freeze event.|
 | event_handler_size_6s | string | Number of tasks in the task stack at 6s during the [THREAD_BLOCK_6S event](appfreeze-guidelines.md#thread_block_6s-application-main-thread-timeout). This parameter is available only in the application freeze event.|
@@ -73,9 +75,11 @@ Native frame
 | -------- | -------- | -------- |
 | symbol | string | Function name. If the name length exceeds 256 bytes, the name is deleted to prevent unknown issues.|
 | file | string | File name.|
-| buildId | string | Unique file ID. The file may not contain **buildId**. For details, see [Log Specifications](cppcrash-guidelines.md#common-faults).|
+| buildId | string | Unique file ID. The file may not contain **buildId**.|
 | pc | string | Hexadecimal byte offset of the executed instruction within the file.|
 | offset | number | Byte offset of the executed instruction within the function.|
+
+For details, see [Call stack frame](cppcrash-guidelines.md#common-faults).
 
 JS frame
 
@@ -87,16 +91,18 @@ JS frame
 | line | number | Code line number.|
 | column | number | Code column number.|
 
+For details, see [JS hybrid stack frame](cppcrash-guidelines.md#common-faults).
+
 ### memory
 
 | Name| Type| Description|
 | -------- | -------- | -------- |
-| rss | number | Size of the memory allocated for a process, in KB.|
+| rss | number | Size of the memory allocated for a process, in KB. This field corresponds to the **Process Memory(kB)** field in [AppFreeze logs](appfreeze-guidelines.md#header-information).|
 | vss | number | Size of the virtual memory applied by a process from the system, in KB.|
 | pss | number | Size of the physical memory actually used by a process, in KB.|
-| sys_free_mem | number | Size of free memory, in KB.|
-| sys_avail_mem | number | Size of available memory, in KB.|
-| sys_total_mem | number | Total memory size, in KB.|
+| sys_free_mem | number | Size of free memory, in KB. This field corresponds to **Free** of the **Device Memory(kB)** field in [AppFreeze logs](appfreeze-guidelines.md#header-information).|
+| sys_avail_mem | number | Size of available memory, in KB. This field corresponds to **Available** of the **Device Memory(kB)** field in [AppFreeze logs](appfreeze-guidelines.md#header-information).|
+| sys_total_mem | number | Total memory size, in KB. This field corresponds to **Total** of the **Device Memory(kB)** field in [AppFreeze logs](appfreeze-guidelines.md#header-information).|
 | vm_heap_total_size | number | Total heap memory size of the main VM, in KB.<br>**Note**: This parameter is supported since API version 22.|
 | vm_heap_used_size | number | Size of the live objects in the main VM during its lifecycle, in KB.<br>**Note**: This parameter is supported since API version 22.|
 

@@ -10,7 +10,7 @@
 >
 > - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## WebOptions
 
@@ -21,7 +21,7 @@ Defines web options through the [APIs](./arkts-basic-components-web.md).
 | Name       | Type                         | Read-Only    | Optional  | Description                                    |
 | ---------- | ------------------------------|---- | ---- | ---------------------------------------- |
 | src        | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource)   | No   | No   | Address of a web page resource. To access local resource files, use the $rawfile or resource protocol. To load a local resource file (in HTML or TXT format) in the sandbox outside of the application package, use **file://** to specify the path of the sandbox.<br>**src** cannot be dynamically changed through a state variable (for example, @State). To change the value, call [loadUrl()](./arkts-apis-webview-WebviewController.md#loadurl).|
-| controller | [WebController](./arkts-basic-components-web-WebController.md) \| [WebviewController<sup>9+</sup>](./arkts-basic-components-web-t.md#webviewcontroller9)  | No   | No  | Controller that controls various behaviors of **Web** components, including page navigation, declaration period status, and JavaScript interaction. This API is deprecated since API version 9. You are advised to use **WebviewController** instead.|
+| controller | [WebController](./arkts-basic-components-web-WebController.md) \| WebviewController  | No   | No  | Controller that controls various behaviors of **Web** components, including page navigation, declaration period status, and JavaScript interaction. **WebController** is deprecated since API version 9. You are advised to use [WebviewController](./arkts-basic-components-web-t.md#webviewcontroller9) instead.|
 | renderMode<sup>12+</sup> | [RenderMode](./arkts-basic-components-web-e.md#rendermode12)| No   | Yes  | Rendering mode.<br>**RenderMode.ASYNC_RENDER** (default, cannot be dynamically adjusted): The **Web** component is rendered asynchronously.<br>**RenderMode.SYNC_RENDER**: The **Web** component is rendered synchronously.|
 | incognitoMode<sup>11+</sup> | boolean | No   | Yes| Whether to enable incognito mode. The value **true** means to enable incognito mode, and **false** means the opposite.<br> Default value: **false**.<br>If **undefined** or **null** is passed, the value is **false**.|
 | sharedRenderProcessToken<sup>12+</sup> | string | No   | Yes| Token of the shared rendering process specified by the **Web** component. In multi-rendering process mode, the **Web** component with the same token preferentially attempts to reuse the rendering process bound to the token. The token is bound to the rendering process when the rendering process is initialized. When the rendering process is not associated with a **Web** component, its binding to the token is removed.<br> Default value: **""**. |
@@ -74,8 +74,11 @@ Represents the configuration for [enabling the application to take over web page
 |  enable  | boolean | No| No| Whether to enable the application to take over web page media playback.<br> The value **true** means to enable the application to take over web page media playback, and **false** means the opposite.<br> Default value: **false**.|
 |  shouldOverlay | boolean | No| No| Whether the video player's display overlays the web page content when the application takes over the web page's video player.<br> The value **true** indicates that the video player's display overlays the web page content. This means that the height of the video layer is adjusted to cover the web page content. The value **false** indicates that the video player's display does not overlay the web page content. This means that the video player maintains its original height and is embedded within the web page.<br>Default value: **false**.|
 
-## ExpandedMenuItemOptions<sup>12+</sup>
+## ExpandedMenuItemOptions<sup>(deprecated)</sup>
 
+> **NOTE**
+>
+> This API is supported from API version 12 and deprecated from API version 20. You are advised to use [editMenuOptions](./arkts-basic-components-web-attributes.md#editmenuoptions12) instead.
 Represents the custom expanded menu item options.
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -403,6 +406,16 @@ Represents the callback invoked when an SSL client certificate is required from 
 | keyTypes | Array<string\>                           | No| No| Acceptable asymmetric private key types.   |
 | issuers  | Array<string\>                           | No| No| Issuer of the certificate that matches the private key.|
 
+## VerifyPinEvent<sup>22+</sup>
+Defines the callback triggered to notify the user of PIN verification.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
+| Name            | Type     | Read-Only| Optional  | Description                                      |
+| -------------- | ---- | ---- | ------------|---------------------------- |
+| handler  | [VerifyPinHandler](./arkts-basic-components-web-VerifyPinHandler.md) | No| No| User operation. |
+| identity     | string                                   | No| No| Certificate credential ID used for verification.   |
+
 ## OnWindowNewEvent<sup>12+</sup>
 
 Represents the callback invoked when the web page requests the user to create a window.
@@ -631,7 +644,7 @@ Provides detailed information about the same-layer tag.
 | url               | string                              | No   | Yes| URL of the same-layer tag.           |
 | tag<sup>12+</sup> | string              | No   | Yes| Tag name, which is in uppercase.             |
 | params<sup>12+</sup>            | Map<string, string> | No   | Yes| List of key-value pairs contained in the **object** tag that form a map of the Object type. Use the methods provided by the Object type, such as **embed.info?.param?.["name"]** to operate the map object. |
-| position<sup>12+</sup>          | Position            | No   | Yes| Position of the same-layer tag relative to the **Web** component in the screen coordinate system, which is different from the standard **Position**. The unit is px.|
+| position<sup>12+</sup>          | Position            | No   | Yes| Position of the same-layer tag relative to the upper left corner of the **Web** component as the coordinate origin, in pixels. This position is different from the standard position.|
 
 ## NativeEmbedParamItem<sup>21+</sup>
 
@@ -666,7 +679,7 @@ Represents input parameters of the callback used to intercept the soft keyboard 
 | Name            | Type  | Read-Only  | Optional  | Description                                      |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | controller | [WebKeyboardController](./arkts-basic-components-web-WebKeyboardController.md)  | No| No| Controller used to control the input, deletion, and closure of the custom keyboard.|
-| attributes | Record<string, string> | No| No| Attribute of the web page element that triggers the display of the soft keyboard.
+| attributes | Record<string, string> | No| No| Attribute of the web page element that triggers the display of the soft keyboard.|
 
 ## WebKeyboardOptions<sup>12+</sup>
 
@@ -678,7 +691,7 @@ Represents the return value of the callback that intercepts the soft keyboard st
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | useSystemKeyboard | boolean  | No| No| Whether to use the system's default soft keyboard.<br>The value **true** means to use the system's default soft keyboard, and **false** means the opposite.<br>Default value: **true**.|
 | enterKeyType | number | No| Yes| Type of the **Enter** key on the system soft keyboard. For details about the value range, see [EnterKeyType](../apis-ime-kit/js-apis-inputmethod.md#enterkeytype10). This parameter is optional and the default value is **UNSPECIFIED**. This parameter is valid only when **useSystemKeyboard** is set to **true** and **enterKeyType** is set to a valid value.|
-| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| Yes| Builder of a custom keyboard. This parameter is required when **useSystemKeyboard** is set to **false**. After it is set, the **Web** component starts the custom keyboard as configured.
+| customKeyboard | [CustomBuilder](../apis-arkui/arkui-ts/ts-types.md#custombuilder8) | No| Yes| Builder of a custom keyboard. This parameter is required when **useSystemKeyboard** is set to **false**. After it is set, the **Web** component starts the custom keyboard as configured.|
 
 
 ## FirstMeaningfulPaint<sup>12+</sup>
@@ -838,7 +851,7 @@ Defines details of the blank screen issue detected.
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
-| detectedContentfulNodesCount | int | No| Yes| This attribute may exist when the contentful node detection policy is used and the threshold for the number of detected nodes is set. Otherwise, this attribute does not exist.<br>Number of contentful nodes that are detected.   |
+| detectedContentfulNodesCount | number | No| Yes| This attribute may exist when the contentful node detection policy is used and the threshold for the number of detected nodes is set. Otherwise, this attribute does not exist.<br>Number of contentful nodes that are detected.   |
 
 ## BlankScreenDetectionConfig<sup>22+</sup>
 
@@ -849,6 +862,6 @@ Defines the configuration options of the blank screen detection policy.
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | enable | boolean | No| No| Whether to enable the blank screen policy.  |
-| detectionTiming | double[] | No| Yes| Interval for checking whether a blank screen occurs after the loading, in seconds.<br> <br>**NOTE**<br>1. Duplicate values are ignored.<br>2. The value must be greater than 0. Otherwise, the value is ignored.<br>Default value: **[1.0, 3.0, 5.0]**.|
+| detectionTiming | number[] | No| Yes| Interval for checking whether a blank screen occurs after the loading, in seconds.<br> <br>**NOTE**<br>1. Duplicate values are ignored.<br>2. The value must be greater than 0. Otherwise, the value is ignored.<br>Default value: **[1.0, 3.0, 5.0]**.|
 | detectionMethods | [BlankScreenDetectionMethod](./arkts-basic-components-web-e.md#blankscreendetectionmethod22)[] | No| Yes| Methods of the detection policy. The value is an array.<br>**NOTE**<br>1. Duplicate values are ignored.<br>Default value: **[BlankScreenDetectionMethod.DETECTION_CONTENTFUL_NODES_SEVENTEEN]**. |
-| contentfulNodesCountThreshold | int | No| Yes| Threshold for number of detected contentful nodes. This parameter takes effect only when the contentful node detection policy is used.<br>The value ranges from 0 to the maximum number of nodes in the detection policy. If the value is less than or equal to the threshold, the near-blank screen is triggered.<br>Default value: **0**.|
+| contentfulNodesCountThreshold | number | No| Yes| Threshold for number of detected contentful nodes. This parameter takes effect only when the contentful node detection policy is used.<br>The value ranges from 0 to the maximum number of nodes in the detection policy. If the value is less than or equal to the threshold, the near-blank screen is triggered.<br>Default value: **0**.|

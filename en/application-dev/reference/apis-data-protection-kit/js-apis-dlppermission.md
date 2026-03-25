@@ -947,6 +947,10 @@ startDLPManagerForResult(context: common.UIAbilityContext, want: Want): Promise&
 
 Starts the DLP manager application on the current UIAbility page in borderless mode. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> This API can be called only by domain accounts.
+
 **Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
@@ -1122,14 +1126,18 @@ async function ExampleFunction() {
 ## dlpPermission.isDLPFeatureProvided<sup>12+<sup>
 isDLPFeatureProvided(): Promise&lt;boolean&gt;
 
-Queries whether the current system provides the DLP feature. This API uses a promise to return the result.
+Queries whether the current system provides the data encryption feature. This API uses a promise to return the result.
+
+>**NOTE**
+>
+> This API is enabled by the [MDM](../../mdm/mdm-kit-intro.md) kit and is used for enterprise devices. For other devices (such as consumer devices), this API is inapplicable. Calling it returns **false**.
 
 **System capability**: SystemCapability.Security.DataLossPrevention
 
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the current system provides the DLP feature; the value **false** means the opposite.|
+| Promise&lt;boolean&gt; | Promise used to return the result. The value **true** means the current system provides the data encryption feature; the value **false** means the opposite.|
 
 **Error codes**
 
@@ -1324,9 +1332,10 @@ Represents an enterprise custom policy.
 generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, property: DLPProperty, customProperty: CustomProperty): Promise&lt;void&gt;
 
 Obtains a **DLPFile** object. This API uses a promise to return the result.
->**NOTE**
+
+> **NOTE**
 >
-> This API generates a DLP file, which is an encrypted file that can be accessed only by users with full control permissions.
+> This API can be called only by enterprise accounts. Enterprises need to set up their own enterprise account servers. This API generates a DLP file, which is an encrypted file that can be accessed only by users with full control permissions.
 
 **Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 

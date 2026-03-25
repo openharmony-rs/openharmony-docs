@@ -85,7 +85,7 @@ on(type: SensorId.FUSION_PRESSURE, callback: Callback&lt;FusionPressureResponse&
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE  |
-| callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse)&gt; | 是   | 回调函数，异步上报的传感器数据固定为FusionPressureResponse。 |
+| callback | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 是   | 回调函数，异步上报的传感器数据固定为FusionPressureResponse。 |
 | options  | [Options](#options)                                          | 否   | 可选参数列表，用于设置传感器上报频率，默认值为200000000ns。  |
 
 **错误码**：
@@ -406,8 +406,7 @@ try {
 
 ###  GYROSCOPE_UNCALIBRATED<sup>9+</sup>
 
-on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;,
-      options?: Options): void
+on(type: SensorId.GYROSCOPE_UNCALIBRATED, callback: Callback&lt;GyroscopeUncalibratedResponse&gt;, options?: Options): void
 
 订阅未校准陀螺仪传感器数据。
 
@@ -600,8 +599,7 @@ try {
 
 ###   LINEAR_ACCELEROMETER<sup>9+</sup>
 
-on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;,
-        options?: Options): void
+on(type: SensorId.LINEAR_ACCELEROMETER, callback: Callback&lt;LinearAccelerometerResponse&gt;, options?: Options): void
 
 订阅线性加速度传感器数据。
 
@@ -849,8 +847,7 @@ try {
 
 ### PEDOMETER_DETECTION<sup>9+</sup>
 
-on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;,
-        options?: Options): void
+on(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectionResponse&gt;, options?: Options): void
 
 订阅计步检测器传感器数据。
 
@@ -943,8 +940,7 @@ try {
 
 ### ROTATION_VECTOR<sup>9+</sup>
 
-on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;,
-        options?: Options): void
+on(type: SensorId.ROTATION_VECTOR, callback: Callback&lt;RotationVectorResponse&gt;, options?: Options): void
 
 订阅旋转矢量传感器数据。
 
@@ -1836,7 +1832,7 @@ once(type: SensorId.PEDOMETER_DETECTION, callback: Callback&lt;PedometerDetectio
 
 获取一次计步检测器传感器数据。
 
-**系需要权限**：ohos.permission.ACTIVITY_MOTION 
+**需要权限**：ohos.permission.ACTIVITY_MOTION 
 
 **系统能力**：SystemCapability.Sensors.Sensor 
 
@@ -2256,7 +2252,7 @@ off(type: SensorId.FUSION_PRESSURE, sensorInfoParam?: SensorInfoParam, callback?
 |------------------| ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type             | [SensorId](#sensorid9).FUSION_PRESSURE            | 是   | 传感器类型，该值固定为SensorId.FUSION_PRESSURE。  |
 | sensorInfoParam  | [SensorInfoParam](#sensorinfoparam19) |  否 | 传感器传入设置参数，可指定deviceId、sensorIndex |
-| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse)&gt; | 否   | 取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
+| callback         | Callback&lt;[FusionPressureResponse](#fusionpressureresponse22)&gt; | 否   | 取消订阅的回调函数，若无此参数，则取消订阅当前类型的所有回调函数。 |
 
 **错误码**：
 
@@ -5093,7 +5089,7 @@ getSensorListByDeviceSync(deviceId?: number): Array&lt;Sensor&gt;
 
 | 参数名          | 类型                                                         | 必填 | 说明     |
 | --------------- | ------------------------------------------------------------ | ---- |--------|
-| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[on](#sensorstatuschange19)获取。 |
+| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。 |
 
 
 **返回值**：
@@ -5135,7 +5131,7 @@ getSingleSensorByDeviceSync(type: SensorId, deviceId?: number): Array&lt;Sensor&
 | 参数名          | 类型                                                         | 必填 | 说明       |
 | --------------- | ------------------------------------------------------------ | ---- |----------|
 | type     | [SensorId](#sensorid9) | 是   | 指定传感器类型。 |
-| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[on](#sensorstatuschange19)获取。 |
+| deviceId | number                 | 否   | 设备ID，默认为查询本地设备，默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。 |
 
 
 **返回值**：
@@ -5480,8 +5476,7 @@ try {
 
 ## sensor.getAngleVariation<sup>9+</sup>
 
- getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;,
-        callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+getAngleVariation(currentRotationMatrix: Array&lt;number&gt;, preRotationMatrix: Array&lt;number&gt;, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 计算两个旋转矩阵之间的角度变化，使用Callback异步方式返回结果。
 
@@ -5711,8 +5706,7 @@ try {
 
 ## sensor.transformRotationMatrix<sup>9+</sup> 
 
-transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions,
-        callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
+transformRotationMatrix(inRotationVector: Array&lt;number&gt;, coordinates: CoordinatesOptions, callback: AsyncCallback&lt;Array&lt;number&gt;&gt;): void
 
 根据指定坐标系映射旋转矩阵，使用Callback异步方式返回结果。
 
@@ -6439,7 +6433,7 @@ try {
 | HEART_RATE                  | 278  | 心率传感器。                                                 |
 | WEAR_DETECTION              | 280  | 佩戴检测传感器。                                             |
 | ACCELEROMETER_UNCALIBRATED  | 281  | 未校准加速度计传感器。                                       |
-| FUSION_PRESSURE             | 283  | 融合压力传感器。<br/>仅智能表有该传感器                        |
+| FUSION_PRESSURE<sup>22+</sup>             | 283  | 融合压力传感器。<br/>仅智能表有该传感器                        |
 
 
 ## SensorInfoParam<sup>19+</sup>
@@ -6453,8 +6447,8 @@ try {
 
 | 名称          | 类型     | 只读  | 可选  | 说明             |
 |--------------|----------|-------|------|----------------- |
-| deviceId    | number    | 否    | 是    | 设备ID：默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[on](#sensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。      |
-| sensorIndex | number    | 否    | 是    | 传感器索引：默认值为0，为设备上的默认传感器，其它传感器ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[on](#sensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。 |
+| deviceId    | number    | 否    | 是    | 设备ID：默认值为-1，表示本地设备，设备ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。      |
+| sensorIndex | number    | 否    | 是    | 传感器索引：默认值为0，为设备上的默认传感器，其它传感器ID需通过[getSensorList](#sensorgetsensorlist9)查询或者监听设备上下线接口[sensorStatusChange](#sensorstatuschange19)获取。<br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。 |
 
 
 ## SensorStatusEvent<sup>19+</sup>
@@ -6570,7 +6564,7 @@ try {
 | biasZ | number | 否   | 否   | 施加在设备z轴未校准的加速度偏量，单位 : m/s²。 |
 
 
-## FusionPressureResponse
+## FusionPressureResponse<sup>22+</sup>
 
 融合压力传感器数据，继承于[Response](#response)。
 

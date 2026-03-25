@@ -17,7 +17,6 @@ This component is implemented based on [state management V2](../../../ui/state-m
 >
 > - This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - If the **SubHeaderV2** component has [universal attributes](ts-component-general-attributes.md) and [universal events](ts-component-general-events.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeaderV2** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeaderV2** component.
 
 
 ## Modules to Import
@@ -31,16 +30,13 @@ import { SubHeaderV2 } from '@kit.ArkUI';
 
 Not supported
 
+## Attributes
+
+The [universal attributes](ts-component-general-attributes.md) are not supported.
+
 ## SubHeaderV2
 
-SubHeaderV2({
-icon?: SubHeaderV2IconType,
-title?: SubHeaderV2Title,
-select?: SubHeaderV2Select,
-operationType?: SubHeaderV2OperationType,
-operationItems?: SubHeaderV2OperationItem[],
-titleBuild?: SubHeaderV2TitleBuilder;
-})
+SubHeaderV2({ icon?: SubHeaderV2IconType, title?: SubHeaderV2Title, select?: SubHeaderV2Select, operationType?: SubHeaderV2OperationType, operationItems?: SubHeaderV2OperationItem[], titleBuild?: SubHeaderV2TitleBuilder; })
 
 The **SubHeader** component represents a subheader that signifies the top of a list or the beginning a subdivision of content and tells the user what the list or subdivision is about.
 
@@ -54,11 +50,11 @@ The **SubHeader** component represents a subheader that signifies the top of a l
 
 | Name| Type                                                     | Mandatory| Decorator| Description                                    |
 | -------- |---------------------------------------------------------| -------- | -------- |----------------------------------------|
-| icon| [SubHeaderV2IconType](#subheaderv2icontype)             | No| @Param | Icon.<br>Default value: **undefined**.<br>The **icon** attribute takes effect only when the **secondaryTitle** attribute is used for **title**.             |
-| title| [SubHeaderV2Title](#subheaderv2title)                   | No| @Param| Title of the subheader.<br>Default value: **undefined**.             |
-| select| [SubHeaderV2Select](#subheaderv2select)                 | No| @Param | Content and events for selection.<br>Default value: **undefined**.      |
+| icon| [SubHeaderV2IconType](#subheaderv2icontype)             | No| @Param | Icon.<br>Default value: **undefined**<br>The **icon** attribute takes effect only when the **secondaryTitle** attribute is used for **title**.             |
+| title| [SubHeaderV2Title](#subheaderv2title)                   | No| @Param| Title of the subheader.<br>Default value: **undefined**             |
+| select| [SubHeaderV2Select](#subheaderv2select)                 | No| @Param | Content and events for selection.<br>Default value: **undefined**      |
 | operationType | [SubHeaderV2OperationType](#subheaderv2operationtype)   | No| @Param| Style of elements in the operation area.<br>Default value: **SubHeaderV2OperationType.BUTTON**|
-| operationItems | [SubHeaderV2OperationItem](#subheaderv2operationitem)[] | No| @Param| Items in the operation area.<br>Default value: **undefined**.           |
+| operationItems | [SubHeaderV2OperationItem](#subheaderv2operationitem)[] | No| @Param| Items in the operation area.<br>Default value: **undefined**           |
 | titleBuilder | [SubHeaderV2TitleBuilder](#subheaderv2titlebuilder)                            | No| @BuilderParam | Custom content for the title area.<br>Default value: **() => void**         |
 
 ## SubHeaderV2IconType
@@ -93,10 +89,10 @@ Defines the title settings for the subheader.
 
 | Name| Type| Read-Only| Optional| Description                          |
 | -------- | -------- |---|----|------------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Primary title.<br>Default value: **undefined**.<br>Decorator: @Trace<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously in [SubHeaderV2](#subheaderv2-1), the **primaryTitle** attribute will not take effect.                       |
-| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Secondary title.<br>Default value: **undefined**.<br>Decorator: @Trace                      |
-| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>Decorator: @Trace|
-| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.<br>Decorator: @Trace|
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Primary title.<br>When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously in [SubHeaderV2](#subheaderv2-1), the **primaryTitle** attribute will not take effect.<br>Default value: **undefined**<br>Decorator: @Trace                       |
+| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | No| Yes | Secondary title.<br>Default value: **undefined**<br>Decorator: @Trace                      |
+| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**<br>Decorator: @Trace|
+| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  | No| Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**<br>Decorator: @Trace|
 
 ### constructor
 
@@ -128,10 +124,10 @@ Defines the options for initializing a **SubHeaderV2Title** object.
 
 | Name| Type| Read-Only| Optional| Description                         |
 | -------- | -------- |----|----|-----------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  No | Yes | Primary title.<br>Default value: **undefined**.                      |
-| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  No | Yes | Secondary title.<br>Default value: **undefined**.                     |
-| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  |  No | Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.|
-| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  |  No | Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**.|
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  No | Yes | Primary title.<br>Default value: **undefined**                      |
+| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  No | Yes | Secondary title.<br>Default value: **undefined**                     |
+| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  |  No | Yes | Text attributes of the primary title, such as the font color, font size, and font weight.<br>Default value: **undefined**|
+| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#custom-modifier)  |  No | Yes | Text attributes of the secondary title, such as the font color, font size, and font weight.<br>Default value: **undefined**|
 
 ## SubHeaderV2Select
 
@@ -150,9 +146,9 @@ Defines the content and events for selection.
 | Name| Type                                                              | Read-Only| Optional| Description                                                                       |
 | -------- |------------------------------------------------------------------|----|----|---------------------------------------------------------------------------|
 | options | [SelectOption](ts-basic-components-select.md#selectoption)[] |  No | No | Options for the drop-down list box.<br>Decorator: @Trace                                                                  |
-| selectedIndex | number                                                           |  No | Yes | Index of the initially selected item in the drop-down list box.<br>The index of the first item is 0.<br>If this property is not set,<br>the default value **-1** is used, indicating that no item is selected.<br>Decorator: @Trace|
+| selectedIndex | number                                                           |  No | Yes | Index of the initially selected item in the drop-down list box.<br>The index of the first item is 0.<br>If this property is not set, the default value **-1** is used, indicating that no item is selected.<br>Decorator: @Trace|
 | selectedContent | [ResourceStr](ts-types.md#resourcestr)                         |  No | Yes | Text content of the drop-down button. Default value: **''**. The Resource type is supported since API version 20.<br>Decorator: @Trace                            |
-| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)                                   |  No | Yes | Callback invoked when an item in the drop-down list box is selected.<br>Default value: **undefined**.<br>Decorator: @Trace                                              |
+| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)                                   |  No | Yes | Callback invoked when an item in the drop-down list box is selected.<br>Default value: **undefined**<br>Decorator: @Trace                                              |
 | defaultFocus | boolean |  No | Yes |Whether the drop-down button is the default focus.<br>**true**: The drop-down button is the default focus.<br>**false**: The drop-down button is not the default focus.<br>Default value: **false**<br>Decorator: @Trace                                 |
 
 ### constructor
@@ -171,7 +167,7 @@ A constructor used to create a **SubHeaderV2SelectOptions** object.
 
 | Name   | Type                           | Mandatory| Description            |
 | --------- |-------------------------------| ------ | ------------------ |
-| options | [SubHeaderV2SelectOptions](#subheaderv2selectoptions) | Yes  | Configuration options of the drop-down list box.|
+| options | [SubHeaderV2SelectOptions](#subheaderv2selectoptions) | Yes  | Options of the drop-down list box.|
 
 ## SubHeaderV2SelectOptions
 
@@ -186,9 +182,9 @@ Defines the options for initializing a **SubHeaderV2Select** object.
 | Name| Type                                                              | Read-Only| Optional| Description                                                                       |
 | -------- |------------------------------------------------------------------|----|----|---------------------------------------------------------------------------| 
 | options | [SelectOption](ts-basic-components-select.md#selectoption)[] |  No | No | Options for the drop-down list box.                                                                  |
-| selectedIndex | number                                                           |  No | Yes | Index of the initially selected item in the drop-down list box.<br>The index of the first item is 0.<br>If this property is not set,<br>the default value **-1** is used, indicating that no item is selected.|
+| selectedIndex | number                                                           |  No | Yes | Index of the initially selected item in the drop-down list box.<br>The index of the first item is 0.<br>If this property is not set, the default value **-1** is used, indicating that no item is selected.|
 | selectedContent | [ResourceStr](ts-types.md#resourcestr)                                                           |  No | Yes | Text content of the drop-down button. Default value: **''**. The Resource type is supported since API version 20.                                                     |
-| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)          |  No | Yes | Callback invoked when an item in the drop-down list box is selected.<br>Default value: **undefined**.                                               |
+| onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)          |  No | Yes | Callback invoked when an item in the drop-down list box is selected.<br>Default value: **undefined**                                               |
 | defaultFocus | boolean |  No | Yes | Whether the drop-down button is the default focus.<br>**true**: The drop-down button is the default focus.<br>**false**: The drop-down button is not the default focus.<br>Default value: **false**                                 |
 
 ## SubHeaderV2SelectOnSelect
@@ -207,8 +203,8 @@ Defines the callback invoked when an item in the drop-down list box is selected.
 
 | Name           | Type    | Mandatory| Description                      |
 |:--------------|:-------|:---|:-------------------------|
-| selectedIndex   | number | Yes | Defines the callback invoked when an item in the drop-down list box is selected. Index of the selected item.|
-| selectedContent | string | No | Defines the callback invoked when an item in the drop-down list box is selected. Value of the selected item. |
+| selectedIndex   | number | Yes | Callback invoked when an item in the drop-down list box is selected. Index of the selected item.|
+| selectedContent | string | No | Callback invoked when an item in the drop-down list box is selected. Value of the selected item. |
 
 ## SubHeaderV2OperationType
 
@@ -261,8 +257,8 @@ Represents an item in the operation area.
 | Name| Type| Read-Only| Optional| Description                                                                                                                                                                                                                                             |
 | -------- | -------- |---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | content |  [SubHeaderV2OperationItemType](#subheaderv2operationitemtype)  | No| No| Content of the item in the operation area.<br>Decorator: @Trace                                                                                                                                                                                                                                       |
-| action | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)| No| Yes| Event triggered when the item is operated. Default value: **() => void**.<br>Decorator: @Trace                                                                                                                                                                                                                          |
-| accessibilityText |[ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text of the icon on the right side of the subheader..<br>Default value: **undefined**.<br>Decorator: @Trace                                                                                                                                                                                                          |
+| action | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)| No| Yes| Event triggered when the item is operated. Default value: **() => void**<br>Decorator: @Trace                                                                                                                                                                                                                          |
+| accessibilityText |[ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text of the icon on the right side of the subheader.<br>Default value: **undefined**<br>Decorator: @Trace                                                                                                                                                                                                          |
 | accessibilityLevel | string | No| Yes| Accessibility level of the icon on the right side of the subheader.<br>The options are as follows:<br>**"auto"**: The icon's recognizability by accessibility services is determined by the accessibility grouping service and ArkUI.<br>**"yes"**: The icon can be recognized by accessibility services.<br>**"no"**: The icon cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the icon nor its child components can be recognized by accessibility services.<br>Default value: **"yes"**<br>Decorator: @Trace| 
 | accessibilityDescription|[ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility description.<br>Default value: **"Double-tap to activate"**<br>Decorator: @Trace                                                                                                                                                                                            |
 | defaultFocus | boolean | No| Yes| Whether to receive default focus.<br>**true**: Receive default focus.<br>**false**: Do not receive default focus.<br>Default value: **false**<br>Decorator: @Trace                                                                                                                                                                 |
@@ -283,7 +279,7 @@ A constructor used to create a **SubHeaderV2OperationItem** object.
 
 | Name   | Type                                                                 | Mandatory| Description            |
 | --------- |---------------------------------------------------------------------| ------ | ------------------ |
-| options | [SubHeaderV2OperationItemOptions](#subheaderv2operationitemoptions) | Yes  | Configuration options of the operation item.|
+| options | [SubHeaderV2OperationItemOptions](#subheaderv2operationitemoptions) | Yes  | Options of the drop-down list box.|
 
 ## SubHeaderV2OperationItemAction
 
@@ -311,8 +307,8 @@ Defines the options for initializing a **SubHeaderV2OperationItem** object.
 | Name                      | Type                                         | Read-Only| Optional| Description                                                                                                                                                                                                                                             |
 |--------------------------|---------------------------------------------|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | content                  | [SubHeaderV2OperationItemType](#subheaderv2operationitemtype) | No| No| Content of the item in the operation area.                                                                                                                                                                                                                                          |
-| action                   | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)         | No| Yes| Event triggered when the item is operated. Default value: **() => void**.                                                                                                                                                                                                                         |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)      | No| Yes| Accessibility text of the icon on the right side of the subheader..<br>Default value: **undefined**.                                                                                                                                                                                                           |
+| action                   | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)         | No| Yes| Event triggered when the item is operated. Default value: **() => void**                                                                                                                                                                                                                         |
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)      | No| Yes| Accessibility text of the icon on the right side of the subheader.<br>Default value: **undefined**                                                                                                                                                                                                           |
 | accessibilityLevel       | string | No| Yes| Accessibility level of the icon on the right side of the subheader.<br>The options are as follows:<br>**"auto"**: The icon's recognizability by accessibility services is determined by the accessibility grouping service and ArkUI.<br>**"yes"**: The icon can be recognized by accessibility services.<br>**"no"**: The icon cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the icon nor its child components can be recognized by accessibility services.<br>Default value: **"yes"**| 
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)      | No| Yes| Accessibility description.<br>Default value: **"Double-tap to activate"**                                                                                                                                                                                            |
 | defaultFocus | boolean | No| Yes| Whether to receive default focus.<br>**true**: Receive default focus.<br>**false**: Do not receive default focus.<br>Default value: **false**                                                                                                                                                                 |
@@ -334,7 +330,7 @@ Defines the callback used to customize the content of the title area.
 The [universal events](ts-component-general-events.md) are not supported.
 
 ## Example
-### Example 1: Implementing an Efficiency-Oriented Subheader
+### Example 1: Implementing an Efficiency-oriented Subheader
 This example demonstrates how to implement a subheader where the left side contains an icon and a secondary title, and the right side has a text button.
 
 ```ts
@@ -417,7 +413,7 @@ struct SubHeaderExample {
 
   aboutToAppear(): void {
     this.title = new SubHeaderV2Title({
-      primaryTitle: 'Primary title',
+      primaryTitle: 'Title',
       secondaryTitle: 'Secondary title'
     });
     this.operationItems = [new SubHeaderV2OperationItem({
@@ -854,8 +850,10 @@ struct SubHeaderExample {
 ```
 ![Subheader 8](figures/en-us_image_subheader_example08.png)
 
-### Example 9: Implementing Announcement for the Button on the Right Side
-This example customizes the screen reader announcement text by setting the **accessibilityText**, **accessibilityDescription**, and **accessibilityLevel** properties of the button on the right side of the **SubHeaderV2** component.
+### Example 9: Setting the Right-Side Button to Obtain Focus by Default
+This example demonstrates how to set the **defaultFocus** attribute in **SubHeaderV2** to ensure the right-side button obtains focus by default in the focused state.
+
+The **defaultFocus** API is added to [SubHeaderV2OperationItem](#subheaderv2operationitemoptions) since API version 18.
 ```ts
 import {
   SubHeaderV2OperationType,
@@ -887,7 +885,7 @@ struct SubHeaderExample {
       secondaryTitle: this.secondaryTitle,
     });
     this.operationItems = [new SubHeaderV2OperationItem({
-      content: 'Operation',
+      content: 'Action',
       defaultFocus: true,
       action: () => {
         Prompt.showToast({ message: 'demo2' })

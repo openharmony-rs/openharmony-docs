@@ -41,7 +41,7 @@ The **background_process_manager.h** file declares the APIs for background child
 
 ### BackgroundProcessManager_ProcessPriority
 
-```
+```c
 enum BackgroundProcessManager_ProcessPriority
 ```
 
@@ -58,7 +58,7 @@ Enumerates child process priorities.
 
 ### BackgroundProcessManager_ErrorCode
 
-```
+```c
 enum BackgroundProcessManager_ErrorCode
 ```
 
@@ -79,7 +79,7 @@ Enumerates the error codes used by the background child process management.
 
 ### OH_BackgroundProcessManager_SetProcessPriority()
 
-```
+```c
 int OH_BackgroundProcessManager_SetProcessPriority(int pid, BackgroundProcessManager_ProcessPriority priority)
 ```
 
@@ -105,7 +105,7 @@ Sets the child process priority. After a child process is suppressed, the CPU re
 
 ### OH_BackgroundProcessManager_ResetProcessPriority()
 
-```
+```c
 int OH_BackgroundProcessManager_ResetProcessPriority(int pid)
 ```
 

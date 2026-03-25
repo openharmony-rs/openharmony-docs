@@ -31,7 +31,7 @@
 | [Image_PositionArea](capi-image-nativemodule-image-positionarea.md) | Image_PositionArea | 要读取或写入的图像像素区域。 |
 | [Image_Scale](capi-image-nativemodule-image-scale.md) | Image_Scale | 图像缩放倍数。 |
 | [Image_String](capi-image-nativemodule-image-string.md) | Image_String/Image_MimeType | 字符串结构。 |
-| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | - | 声明用于Picture的元数据。 |
+| [OH_PictureMetadata](capi-image-nativemodule-oh-picturemetadata.md) | OH_PictureMetadata | 声明用于Picture的元数据。 |
 
 ### 枚举
 

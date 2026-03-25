@@ -27,13 +27,12 @@ Due to the differences in the thread model and process model, certain APIs can b
   @Entry
   @Component
   struct PagePageAbilityFirst {
-    
     build() {
       Column() {
         List({ initialIndex: 0 }) {
           ListItem() {
             Flex({ justifyContent: FlexAlign.SpaceBetween, alignContent: FlexAlign.Center }) {
-              //...
+              // ...
             }
             .onClick(() => {
               (async (): Promise<void> => {
@@ -46,21 +45,16 @@ Due to the differences in the thread model and process model, certain APIs can b
                   };
                   await featureAbility.startAbility({ want: want });
                   hilog.info(domain, TAG, `Start ability succeed`);
-                }
-                catch (error) {
+                } catch (error) {
                   hilog.error(domain, TAG, 'Start ability failed with ' + error);
                 }
               })()
             })
           }
-          //...
         }
-        //...
       }
-      //...
     }
   }
-
   ```
 
 - Sample code in the stage model:
@@ -78,13 +72,12 @@ Due to the differences in the thread model and process model, certain APIs can b
   struct Page_UIAbilityComponentsInteractive {
     private context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     caller: Caller | undefined = undefined;
+
     build() {
       Column() {
-        //...
         List({ initialIndex: 0 }) {
           ListItem() {
             Row() {
-              //...
             }
             .onClick(() => {
               // Context is a member of the ability object and is required for invoking inside a non-ability object.
@@ -106,11 +99,8 @@ Due to the differences in the thread model and process model, certain APIs can b
               });
             })
           }
-          //...
         }
-        //...
       }
-      //...
     }
   }
   ```

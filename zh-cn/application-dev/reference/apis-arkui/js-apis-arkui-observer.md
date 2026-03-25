@@ -285,12 +285,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    // 注册监听
     uiObserver.on('navDestinationUpdate', (info) => {
       console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
   aboutToDisappear() {
+    // 注销监听
     uiObserver.off('navDestinationUpdate');
   }
 
@@ -377,12 +379,14 @@ struct Index {
   }
 
   aboutToAppear() {
+    // 注册监听，指定Navigation的id
     uiObserver.on('navDestinationUpdate', { navigationId: "testId" }, (info) => {
       console.info(`NavDestination state update ${JSON.stringify(info)}`);
     });
   }
 
   aboutToDisappear() {
+    // 注销监听
     uiObserver.off('navDestinationUpdate', { navigationId: "testId" });
   }
 
@@ -544,12 +548,14 @@ struct Index {
       Row() {
         Button('UIObserver on')
           .onClick(() => {
+            // 注册监听
             uiObserver.on('scrollEvent', (info) => {
               console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserver off')
           .onClick(() => {
+            // 注销监听
             uiObserver.off('scrollEvent');
           })
       }
@@ -557,12 +563,14 @@ struct Index {
       Row() {
         Button('UIObserverWithId on')
           .onClick(() => {
+            // 注册监听，指定组件的id
             uiObserver.on('scrollEvent', this.options, (info) => {
               console.info(`scrollEventInfo ${JSON.stringify(info)}`);
             });
           })
         Button('UIObserverWithId off')
           .onClick(() => {
+            // 注销监听
             uiObserver.off('scrollEvent',this.options);
           })
       }
@@ -687,7 +695,7 @@ on(type: 'densityUpdate', context: UIContext, callback: Callback\<DensityInfo\>)
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 监听事件，固定为'densityUpdate'，即屏幕像素密度变化。 |
 | context  | [UIContext](./arkts-apis-uicontext-uicontext.md) | 是   | 上下文信息，用以指定监听页面的范围。 |
-| callback | Callback\<[DensityInfo](#densityinfo12)\>        | 是   | 回调函数。携带densityInfo，返回变化后的屏幕像素密度。                 |
+| callback | Callback\<[DensityInfo](#densityinfo12)\>        | 是   | 回调函数。携带DensityInfo，返回变化后的屏幕像素密度。                 |
 
 **示例：**
 
@@ -1275,10 +1283,12 @@ function callbackFunc(info: uiObserver.TabContentInfo) {
 struct TabsExample {
 
   aboutToAppear(): void {
+    // 注册监听
     uiObserver.on('tabContentUpdate', callbackFunc);
   }
 
   aboutToDisappear(): void {
+    // 注销监听
     uiObserver.off('tabContentUpdate', callbackFunc);
   }
 
@@ -1363,10 +1373,12 @@ function callbackFunc(info: uiObserver.TabContentInfo) {
 struct TabsExample {
 
   aboutToAppear(): void {
+    // 注册监听，指定Tabs的id
     uiObserver.on('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 
   aboutToDisappear(): void {
+    // 注销监听
     uiObserver.off('tabContentUpdate', { id: 'tabsId' }, callbackFunc);
   }
 

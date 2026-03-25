@@ -306,6 +306,7 @@ EGLBoolean eglInitialize(EGLDisplay display,    // EGL display connection.
                          EGLint *minorVersion); // Minor version number of the EGL implementation. The value may be NULL.
 ```
 The function is used to initialize the internal data structure of the EGL, return the EGL version numbers, and save them in **majorVersion** and **minorVersion**.
+
 If the initialization is successful, **EGL_TRUE** is returned. Otherwise, **EGL_FALSE** is returned. You can also call **EGLint eglGetError()** to query the EGL error status.
 
 - **EGL_BAD_DISPLAY**: The specified EGL display is invalid.
@@ -316,7 +317,7 @@ If the initialization is successful, **EGL_TRUE** is returned. Otherwise, **EGL_
 After the EGL display connection is initialized, determine the type and configuration of the available surface in either of the following ways:
 - Specify a set of required configurations and use **eglChooseConfig** to enable EGL to recommend the optimal configuration.
 
-   You are advised to use this method if no special configuration is required, because it is easier to obtain the optimal configuration.
+  You are advised to use this method if no special configuration is required, because it is easier to obtain the optimal configuration.
 
   ```cpp
   EGLBoolean eglChooseConfig(EGLDisplay dpy,     // Handle to the EGL display connection for which configurations are selected.
@@ -337,12 +338,11 @@ After the EGL display connection is initialized, determine the type and configur
   };
   eglChooseConfig(mEGLDisplay, attribList, &mEGLConfig, 1, &configsNum);
   ```
-
   When you call the **eglChooseConfig** function, the system returns EGL configurations that match the specified attributes in **attribList**. The configurations are stored in the **mEGLConfig** parameter. In the sample code, **configsNum** is set to **1**, indicating that the **mEGLConfig** array can hold only one configuration. Although this setting limits the number of configurations returned, it is usually enough for most applications. Moreover, **configsNum** reflects the total number of configurations that meet the specified attributes, providing a full count of available options.
 
 - Use **eglGetConfigs** to query all supported configurations and use **eglGetConfigAttrib** to filter the desired ones.
 
-   The following describes how to use this method to obtain the desired configurations.
+  The following describes how to use this method to obtain the desired configurations.
 
   ```cpp
   #include <EGL/egl.h>
@@ -444,6 +444,8 @@ The possible causes of a failure to call **eglCreateWindowSurface** are as follo
 - **EGL_BAD_NATIVE_WINDOW**: The window handle is invalid.
 
 - **EGL_BAD_ALLOC**: Resources cannot be created for a new EGL window or there is already an EGL configuration associated with the window.
+
+
 
 ```cpp
 EGLint attribList[] = { EGL_RENDER_BUFFER, EGL_BACK_BUFFER, EGL_NONE };
@@ -820,5 +822,9 @@ Use **eglSwapBuffers** to swap the front and back buffers and display the render
 
 <!--RP1--><!--RP1End-->
 
+## Samples
 
+The following samples are provided to help you better understand how to develop the OpenGL ES service:
 
+- [Simple Native C++ Example](https://gitcode.com/openharmony/codelabs/tree/master/NativeAPI/NativeTemplateDemo)
+- [Native XComponent Usage](https://gitcode.com/openharmony/codelabs/tree/master/NativeAPI/XComponent)

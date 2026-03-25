@@ -27,7 +27,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+ When this API is called in picker mode to query the image or video resource corresponding to a specified URI, the **ohos.permission.READ_IMAGEVIDEO** permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -90,7 +90,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-When you call this API in Picker mode, you do not need to request the ohos.permission.READ_IMAGEVIDEO permission. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+ When this API is called in picker mode to query the image or video resource corresponding to a specified URI, the **ohos.permission.READ_IMAGEVIDEO** permission is not required. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -161,7 +161,7 @@ Obtains burst assets. This API uses a promise to return the result.
 
 | Name | Type               | Mandatory| Description            |
 | ------- | ------------------- | ---- | ---------------- |
-| burstKey | string   | Yes  | UUID of a set of burst photos (**BURST_KEY** of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)). The value is a string of 36 characters.|
+| burstKey | string   | Yes  | Universally Unique Identifier (UUID) of a group of burst photos, that is, **BURST_KEY** of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys). The string contains 36 bytes.|
 | options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions)   | Yes  | Retrieval options.    |
 
 **Return value**
@@ -217,7 +217,7 @@ createAsset(photoType: PhotoType, extension: string, options: CreateOptions, cal
 
 Creates an image or video asset with the specified file type, file name extension, and options. This API uses an asynchronous callback to return the result.
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -276,7 +276,7 @@ createAsset(photoType: PhotoType, extension: string, callback: AsyncCallback&lt;
 
 Creates an image or video asset with the specified file type and file name extension. This API uses an asynchronous callback to return the result.
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -331,7 +331,7 @@ createAsset(photoType: PhotoType, extension: string, options?: CreateOptions): P
 
 Creates an image or video asset with the specified file type, file name extension, and options. This API uses a promise to return the result.
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -630,11 +630,11 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   }
   let onCallback1 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback1 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something.
+    // file had changed, do something.
   }
   let onCallback2 = (changeData: photoAccessHelper.ChangeData) => {
       console.info('onCallback2 success, changData: ' + JSON.stringify(changeData));
-    //file had changed, do something.
+    // file had changed, do something.
   }
   // Register onCallback1.
   phAccessHelper.registerChange(photoAsset.uri, false, onCallback1);
@@ -715,7 +715,7 @@ Applies media changes. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_IMAGEVIDEO
 
-If you do not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can create a media asset by using a security component or an authorization pop-up. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -751,8 +751,8 @@ This API depends on the [MediaChangeRequest](arkts-apis-photoAccessHelper-i.md#m
 
 release(callback: AsyncCallback&lt;void&gt;): void
 
-Releases this PhotoAccessHelper instance. This API uses an asynchronous callback to return the result.
-
+Releases the **PhotoAccessHelper** instance. This API uses an asynchronous callback to return the result.
+ 
 Call this API when the APIs of the PhotoAccessHelper instance are no longer used.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -794,8 +794,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 release(): Promise&lt;void&gt;
 
-Releases this PhotoAccessHelper instance. This API uses a promise to return the result.
-
+Releases the **PhotoAccessHelper** instance. This API uses a promise to return the result.
+ 
 Call this API when the APIs of the PhotoAccessHelper instance are no longer used.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -838,11 +838,11 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 Displays a dialog box for the user to confirm whether to save the images or videos. If the user agrees to save the images or videos, this API returns a list of URIs that have been created and granted save permissions (this list is permanent), and the application can use these URIs to write the images or videos. If the user declines to save the images or videos, this API returns an empty list.
 
-The dialog box must display the application name, but this cannot be directly obtained. Therefore, when calling this API, ensure that the **abilities** tag in the **module.json5** file is configured with **label** and **icon** items. Note that the icon is not affected by the **icon** item in the **abilities** tag and cannot be modified.
+The dialog box must display the application name, but this cannot be directly obtained. Therefore, before calling this API, ensure that the **label** and **icon** items are configured in the **abilities** tag in the [module.json5 configuration file](../../../application-dev/quick-start/module-configuration-file.md). Note that the icon is not affected by the **icon** item in the **abilities** tag and cannot be modified.
 
 > **NOTE**
 >
-> If the passed URI is a sandbox path, photos or videos can be saved but cannot be previewed.
+> If the passed URI is a sandbox path, images or videos can be saved but cannot be previewed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -859,7 +859,7 @@ The dialog box must display the application name, but this cannot be directly ob
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return a URI list. The URIs are granted with the permission for the application to write data. If the URIs fail to be generated, a batch creation error code will be returned.<br>The error code **-3006** means that there are invalid characters; **-2004** means that the image type does not match the file name extension; **-203** means that the file operation is abnormal.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return a URI list. The URIs are granted with the permission for the application to write data. If the URIs fail to be generated, a batch creation error code will be returned.<br>The return values are as follows:<br>- **-3006**: Invalid characters, which are not allowed.<br>-**-2004**: The image type does not match the file name extension.<br>-**-203**: Invalid file operation.|
 
 **Error codes**
 
@@ -905,8 +905,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 createAssetWithShortTermPermission(photoCreationConfig: PhotoCreationConfig): Promise&lt;string&gt;
 
-Creates an asset with a temporary permission of the given period. When this API is called by an application for the first time, a dialog box will be displayed for the user to confirm whether to save the asset. If the user agrees to save the asset, the asset instance will be created and the file URI granted with the save permission will be returned. The application can write the asset based on the URI
-within 5 minutes after the user agrees to save the asset. If the same application calls this API again within the 5 minutes, the authorized URI can be automatically returned without the need to display the conformation dialog box.
+Creates an asset with a temporary permission of the given period. When this API is called by an application for the first time, a dialog box will be displayed for the user to confirm whether to save the asset. If the user agrees to save the asset, the asset instance will be created and the file URI granted with the save permission will be returned. The application can write the asset based on the URI.
+
+Within 5 minutes after the user agrees to save the asset, if the same application calls this API again, the authorized URI can be automatically returned without the need to display the confirmation dialog box. Exiting the application will terminate the authorization, and the user will need to re-trigger the pop-up dialog for authorization confirmation when the application is re-launched.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -980,7 +981,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Array&lt;string&gt;&gt;
 
-<!--RP1--><!--RP1End-->Grants the save permission for URIs. This API uses a promise to return the result.
+<!--RP1--><!--RP1End-->Grants the read permission for unauthorized URIs, returning a list of URIs that have been created and granted the permission.
 
 **Atomic service API**: This API can be used in atomic services since API version 14.
 
@@ -996,7 +997,7 @@ requestPhotoUrisReadPermission(srcFileUris: Array&lt;string&gt;): Promise&lt;Arr
 
 | Type                                   | Description             |
 | --------------------------------------- | ----------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs granted with the save permission.|
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the URIs granted with the permission.|
 
 **Error codes**
 
@@ -1516,7 +1517,7 @@ Obtains the information about the recent image or video when the application use
 
 | Name | Type   | Mandatory| Description                      |
 | ------- | ------- | ---- | -------------------------- |
-| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | No  | Options for retrieving the recent image or video. If this parameter is not provided, the API finds the recent image or video based on the timestamp.<br>If this parameter is specified, it must match the **options** configuration in the **RecentPhotoComponent**. Otherwise, there may be discrepancies where the API finds a recent image or video but the component does not.|
+| options | [RecentPhotoOptions](arkts-apis-photoAccessHelper-class.md#recentphotooptions20) | No  | Options for retrieving the recent image or video. If this parameter is not specified, the latest image is retrieved according to the creation time.<br>If this parameter is specified, it must match the **options** configuration in the **RecentPhotoComponent**. Otherwise, there may be discrepancies where the API finds a recent image or video but the component does not.|
 
 **Return value**
 
@@ -1553,7 +1554,7 @@ getAlbumIdByLpath(lpath: string): Promise&lt;number&gt;
 
 Obtains the album ID in the media library based on the album's virtual path. This API uses a promise to return the result.
 
-This API supports the following albums: camera application album ('/DCIM/Camera'), screenshot application album ('/Pictures/Screenshots'), and screen recording application album ('/Pictures/Screenrecords').
+This API supports the following albums: camera application album (**/DCIM/Camera**), screenshot application album (**/Pictures/Screenshots**), and screen recording application album (**/Pictures/Screenrecords**).
 
 ​**Model restriction**: This API can be used only in the stage model.
 

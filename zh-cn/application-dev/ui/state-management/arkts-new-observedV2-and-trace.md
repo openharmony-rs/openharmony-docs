@@ -442,6 +442,11 @@ struct Index {
 <!-- @[Nested_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/NestedClass.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArktsObservedV2AndTrace';
+
 @ObservedV2
 class Pencil {
   @Trace public length: number = 21; // 当length变化时，会刷新关联的组件
@@ -494,6 +499,7 @@ struct Page {
 ### 继承类场景
 
 \@Trace支持在类的继承场景中使用，无论是在基类还是继承类中，只有被\@Trace装饰的属性才具有被观测变化的能力。
+
 以下例子中，声明class GrandFather、Father、Uncle、Son、Cousin，继承关系如下图。
 
 ![arkts-old-state-management](figures/arkts-new-observed-and-track-extend-sample.png)
@@ -504,6 +510,11 @@ struct Page {
 <!-- @[Inheritance_Class](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/InheritanceClass.ets) -->
 
 ``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArktsObservedV2AndTrace';
+
 @ObservedV2
 class GrandFather {
   @Trace public age: number = 0;
@@ -579,6 +590,7 @@ struct Index {
 ### \@Trace装饰基础类型的数组
 
 \@Trace装饰数组时，使用支持的API能够观测到变化。支持的API见[观察变化](#观察变化)。
+
 在下面的示例中\@ObservedV2装饰的Arr类中的属性numberArr是\@Trace装饰的数组，当使用数组API操作numberArr时，可以观测到对应的变化。注意使用数组长度进行判断以防越界访问。
 
 <!-- @[Decoration_Foundation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/usagescenarios/DecorationFoundation.ets) -->
@@ -1175,7 +1187,7 @@ struct Detail {
 
 <!-- @[Router_Index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/RouterIndex.ets) -->
 
-```ts
+``` TypeScript
 @ObservedV2
 export class RouterModel {
   @Trace public id: number = -1;
@@ -1211,12 +1223,11 @@ struct RouterIndex {
     }
   }
 }
-
 ```
 
 <!-- @[Child_Page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedv2andtrace/entry/src/main/ets/pages/faqs/ChildPage.ets) -->
 
-```ts
+``` TypeScript
 import { RouterModel } from './RouterIndex';
 import { plainToInstance } from 'class-transformer'; // 导入三方库
 
@@ -1234,7 +1245,6 @@ struct Detail {
     }
   }
 }
-
 ```
 
 ![observedv2_router_deserialize.gif](./figures/observedv2_router_deserialize.gif)

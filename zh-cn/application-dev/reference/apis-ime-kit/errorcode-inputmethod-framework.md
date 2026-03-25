@@ -394,7 +394,7 @@ Invalid immersive effect.
 
 **错误信息**
 
-this operation is allowed only after adjustPanelRect or resize is called.
+This operation is allowed only after adjustPanelRect or resize is called.
 
 **错误描述**
 
@@ -421,7 +421,7 @@ this operation is allowed only after adjustPanelRect or resize is called.
 
 **错误信息**
 
-invalid displayId.
+Invalid displayId.
 
 **错误描述**
 

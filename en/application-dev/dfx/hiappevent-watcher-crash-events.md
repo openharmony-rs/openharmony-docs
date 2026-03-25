@@ -20,6 +20,10 @@ This topic describes the crash event detection principles, field meanings, and s
 
 - [Subscribing to Crash Events (C/C++)](hiappevent-watcher-crash-events-ndk.md)
 
+> **NOTE**
+>
+> Crash events can be subscribed to using HiAppEvent in [application clones](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/app-clone) and atomic services. Since API version 22, HiAppEvent can be used to subscribe to crash events in [input method applications](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/inputmethod-application-guide)
+
 ## Detection Principles
 
 ### NativeCrash
@@ -163,9 +167,11 @@ Native **frame**
 | -------- | -------- | -------- |
 | file | string | File name.|
 | symbol | string | Function name. The symbol may be empty due to the following reasons:<br>1. The function name is not saved in the binary file.<br>2. The function name is deleted because it contains more than 256 bytes.|
-| buildId | string | Unique file ID. The file may not contain **buildId**. For details, see [C++ Crash (Process Crash) Log Specifications](cppcrash-guidelines.md#common-faults).|
+| buildId | string | Unique file ID. The file may not contain **buildId**.|
 | pc | string | Hexadecimal byte offset of the executed instruction within the file.|
 | offset | number | Byte offset of the executed instruction within the function.|
+
+For details, see [Call stack frame](cppcrash-guidelines.md#common-faults).
 
 Js **frame**
 
@@ -177,14 +183,16 @@ Js **frame**
 | line | number | Code line number.|
 | column | number | Code column number.|
 
+For details, see [JS hybrid stack frame](cppcrash-guidelines.md#common-faults).
+
 ### memory
 
 | Name| Type| Description|
 | -------- | -------- | -------- |
-| rss | number | Size of the memory allocated for a process, in KB.|
-| sys_free_mem | number | Size of free memory, in KB.|
-| sys_avail_mem | number | Size of available memory, in KB.|
-| sys_total_mem | number | Total memory size, in KB.|
+| rss | number | Size of the memory allocated for a process, in KB. This field corresponds to the **Process Memory** field in [C++ crash logs](cppcrash-guidelines.md#log-specifications) or [JS crash logs](jscrash-guidelines.md#log-specifications)|
+| sys_free_mem | number | Size of free memory, in KB. This field corresponds to **Free** of the **Device Memory** field in [C++ crash logs](cppcrash-guidelines.md#log-specifications) or [JS crash logs](jscrash-guidelines.md#log-specifications).|
+| sys_avail_mem | number | Size of available memory, in KB. This field corresponds to **Available** of the **Device Memory** field in [C++ crash logs](cppcrash-guidelines.md#log-specifications) or [JS crash logs](jscrash-guidelines.md#log-specifications).|
+| sys_total_mem | number | Total memory size, in KB. This field corresponds to **Total** of the **Device Memory** field in [C++ crash logs](cppcrash-guidelines.md#log-specifications) or [JS crash logs](jscrash-guidelines.md#log-specifications).|
 
 ## Customizing Crash Event Parameters
 

@@ -93,7 +93,7 @@ export default {
 
 >  **说明：**
 >
->  事件冒泡机制从API Version 5开始支持。升级SDK后，运行存量JS应用，采用旧写法（onclick）的事件绑定还是按事件不冒泡进行处理。但如果使用新版本SDK重新打包JS应用，将旧写法按事件冒泡进行处理。为了避免业务逻辑错误，建议将旧写法（如onclick）改成新写法（grab:click）。
+>  事件冒泡机制从API version 5开始支持。升级SDK后，运行存量JS应用，采用旧写法（onclick）的事件绑定还是按事件不冒泡进行处理。但如果使用新版本SDK重新打包JS应用，将旧写法按事件冒泡进行处理。为了避免业务逻辑错误，建议将旧写法（如onclick）改成新写法（grab:click）。
 
 **示例：**
 
@@ -291,7 +291,7 @@ export default {
 }
 ```
 
-优化渲染优化：show方法。当show为真时，节点正常渲染；当为假时，仅仅设置display样式为none。
+渲染优化：show方法。当show为真时，节点正常渲染；当为假时，仅仅设置display样式为none。
 
 
 ```html

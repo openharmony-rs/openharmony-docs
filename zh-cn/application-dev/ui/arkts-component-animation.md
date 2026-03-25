@@ -54,9 +54,9 @@ struct ComponentDemo {
 
 - 在滑动或者点击操作时通过改变各个Scroll子组件的仿射属性来实现各种效果。
 
-- 如果要在滑动过程中定制动效，可在滑动回调onScroll中监控滑动距离，并计算每个组件的仿射属性。也可以自己定义手势，通过手势监控位置，手动调用ScrollTo改变滑动位置。
+- 如果要在滑动过程中定制动效，可在滑动回调[onScroll](../reference/apis-arkui/arkui-ts/ts-container-grid.md#onscrolldeprecated)中监控滑动距离，并计算每个组件的仿射属性。也可以自己定义手势，通过手势监控位置，手动调用ScrollTo改变滑动位置。
 
-- 在滑动回调onScrollStop或手势结束回调中对滑动的最终位置进行微调。
+- 在滑动回调[onScrollStop](../reference/apis-arkui/arkui-ts/ts-basic-components-textpicker.md#onscrollstop14)或手势结束回调中对滑动的最终位置进行微调。
 
 定制Scroll组件滑动动效示例代码和效果如下。
 

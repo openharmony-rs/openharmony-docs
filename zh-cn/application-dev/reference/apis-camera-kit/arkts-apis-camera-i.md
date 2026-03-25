@@ -24,7 +24,7 @@
 | cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | 是   | 否  | 相机位置。    |
 | cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | 是   | 否  | 相机类型。    |
 | connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | 是   | 否  | 相机连接类型。 |
-| cameraOrientation<sup>12+</sup> | number                              | 是   | 否  | 相机安装角度，不会随着屏幕旋转而改变，取值范围为0°-360°，单位：度。 |
+| cameraOrientation<sup>12+</sup> | number                              | 是   | 否  | 相机安装角度，不会随着屏幕旋转而改变。取值范围为[0, 360]，单位：度。 |
 | hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。若当前无远端设备，返回为空。 |
 | hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否  | 远端设备类型。 |
 
@@ -131,8 +131,8 @@
 
 | 名称   | 类型    | 只读 | 可选  | 说明         |
 | ------ | ------ | ---- |-----| ------------ |
-| height | number | 否   | 否   | 图像尺寸高(像素)。 |
-| width  | number | 否   | 否   | 图像尺寸宽(像素)。 |
+| height | number | 否   | 否   | 图像尺寸高（像素）。 |
+| width  | number | 否   | 否   | 图像尺寸宽（像素）。 |
 
 ## Point
 
@@ -258,7 +258,9 @@
 ## Rect
 
 矩形定义，返回的检测点坐标系以设备充电口在右侧时的横向设备方向为基准。该坐标系左上角为（0，0），右下角为（1，1），其中（topLeftX，topLeftY）表示矩形区域的左上角坐标，width和height分别表示矩形区域的宽和高。因此在实际使用中根据业务诉求需要裁剪或者选择人脸区域时，必须将矩形区域的x坐标和y坐标分别乘以实际相机预览输出流的宽和高，即可得到裁剪后的人脸矩形区域。
+
 实际预览流的宽高指的是相机输出流的分辨率，请参考[profile](arkts-apis-camera-i.md#profile)中的size。
+
 预览流的数据获取请参考[双路预览(ArkTs)](../../media/camera/camera-dual-channel-preview.md)。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。

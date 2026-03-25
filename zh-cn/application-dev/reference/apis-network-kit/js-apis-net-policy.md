@@ -66,7 +66,6 @@ showAppNetPolicySettings(context: Context): Promise\<void>
 <!--code_no_check-->
 ```ts
 import { policy } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
 let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;

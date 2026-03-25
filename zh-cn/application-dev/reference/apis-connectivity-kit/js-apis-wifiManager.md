@@ -439,7 +439,7 @@ WLAN热点信息。
 | infoElems | Array&lt;[WifiInfoElem](#wifiinfoelem)&gt; | 否 | 否 | 信息元素。 |
 | timestamp | number | 否 | 否 | 时间戳。 |
 | supportedWifiCategory<sup>12+</sup> | [WifiCategory](#wificategory12) | 否 | 否 | 热点支持的最高Wi-Fi级别。 |
-| isHiLinkNetwork<sup>20+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true表示支持，&nbsp;false表示不支持。 |
+| isHiLinkNetwork<sup>12+</sup> | boolean | 否 | 否| 热点是否支持hiLink，true表示支持，&nbsp;false表示不支持。 |
 
 ## DeviceAddressType<sup>10+</sup>
 
@@ -461,7 +461,6 @@ WLAN设备地址（MAC/BSSID）类型。是标识WLAN设备或接入点的唯一
 表示加密类型的枚举。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
-
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -587,9 +586,8 @@ WLAN配置信息。
 
 ## WifiWapiConfig<sup>12+</sup>
 
-WAPI身份验证协议配置。
-
 WAPI(Wireless LAN Authentication and Privacy Infrastructure) 身份验证协议配置。
+
 当用户通过WAPI身份验证协议连接无线网时，可通过以下方式配置参数或者证书进行连接。
 - 方式一:通过配置证书进行连接。WifiDeviceConfig中关键字段的配置如下:
   - preSharedKey无需传参;
@@ -1028,9 +1026,9 @@ connectToCandidateConfig(networkId: number): void
 
 connectToCandidateConfigWithUserAction(networkId: number): Promise&lt;void&gt;
 
-该接口用于应用连接到用户添加的候选网络，并在连接时提示用户进行信任确认。使用Promise异步回调用户响应结果。
+该接口用于应用连接到用户添加的候选网络，并在连接时提示用户进行信任确认。使用Promise异步回调。
 
-- 调用此接口时，系统将提示用户确认是否信任并连接到指定的候选网络，通过Promise异步返回用户响应结果。
+- 调用此接口时，系统将提示用户确认是否信任并连接到指定的候选网络。
 - 用户确认是连接过程中的必要步骤，未获得用户信任确认前，连接操作不会执行。
 - 建议在发起连接前先通过startScan接口触发一次WLAN扫描，通过[wifiManager.on('wifiScanStateChange')](#wifimanageronwifiscanstatechange)方法监听到扫描结果刷新后再连接，以提高连接成功率。
 
@@ -1442,9 +1440,9 @@ getLinkedInfoSync(): WifiLinkedInfo;
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | string | 否 | 否 | 热点的SSID，编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| bssid | string | 否 | 否 | 热点的BSSID。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| rssi | number | 否 | 否 | 热点的信号强度(dBm)。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| ssid | string | 否 | 否 | 热点的SSID（Service Set Identifier，服务集标识符），用于获取当前设备已连接的Wi-Fi热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| bssid | string | 否 | 否 | 热点的BSSID（Basic Service Set Identifier，基本服务集标识符）即无线网络的MAC地址。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| rssi | number | 否 | 否 | 热点的信号强度(dBm)。<br>RSSI（Received Signal Strength Indicator，接收信号强度指示），其标准取值范围为-127dBm至0dBm。在正常使用场景下，常见有效范围为-100dBm（弱信号）至-30dBm（强信号），接近0dBm表示信号极强。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | band | number | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 |
 | linkSpeed | number | 否 | 否 | WLAN接入点的上行速度，单位Mbps。 |
 | rxLinkSpeed<sup>10+</sup> | number | 否 | 否 | WLAN接入点的下行速度，单位Mbps。 |
@@ -1615,7 +1613,7 @@ isFeatureSupported(featureId: number): boolean
 以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
 
 | 错误码ID | 错误信息 |
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
@@ -3344,7 +3342,7 @@ off(type: 'p2pPeerDeviceChange', callback?: Callback&lt;WifiP2pDevice[]&gt;): vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------- |
-| 201<sup>10+</sup> | Permission denied.                 |
+| 201 | Permission denied.                 |
 | 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2801000  | Operation failed. |

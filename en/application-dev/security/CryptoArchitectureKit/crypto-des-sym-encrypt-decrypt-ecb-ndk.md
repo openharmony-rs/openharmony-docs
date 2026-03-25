@@ -50,7 +50,7 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
    
    - If a small amount of data is to be encrypted, you can use **OH_CryptoSymCipher_Final()** immediately after **OH_CryptoSymCipher_Init()**.
    - If a large amount of data is to be encrypted, you can call **OH_CryptoSymCipher_Update** multiple times to pass in the data by segment.
-   - You can determine the method to use based on the data size. For example, if the data size is greater than 20 bytes, use **OH_CryptoSymCipher_Update**.
+   - You can determine the method to use based on the data size. For example, if the message is greater than 20 bytes, use **Cipher.update**.
 
 4. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
 

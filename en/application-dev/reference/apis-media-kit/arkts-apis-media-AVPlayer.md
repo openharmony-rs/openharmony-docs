@@ -6,12 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **NOTE**
->
-> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The initial APIs of this interface are supported since API version 9.
-
 AVPlayer is a playback management class. It provides APIs to manage and play media assets. Before calling any API in AVPlayer, you must use [createAVPlayer()](arkts-apis-media-f.md#mediacreateavplayer9) to create an AVPlayer instance.
+
+When using the AVPlayer instance, you are advised to register the following callbacks to proactively obtain status changes: [on('stateChange')](#onstatechange9): listens for AVPlayer state changes. [on('error')](#onerror9): listens for error events.
 
 Applications must properly manage AVPlayer instances according to their specific needs, creating and freeing them when necessary. Holding too many AVPlayer instances can lead to high memory usage, and in some cases, the system might terminate applications to free up resources.
 
@@ -19,10 +16,8 @@ For details about the audio and video playback demo, see [Audio Playback](../../
 
 > **NOTE**
 >
-> When using the AVPlayer instance, you are advised to register the following callbacks to proactively obtain status changes:
->
-> - [on('stateChange')](#onstatechange9): listens for AVPlayer state changes.
-> - [on('error')](#onerror9): listens for error events.
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this interface are supported since API version 9.
 
 ## Modules to Import
 
@@ -66,7 +61,7 @@ Subscribes to AVPlayer state changes.
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'stateChange'** in this case. This event can be triggered by both user operations and the system.|
-| callback | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | Yes  | Callback invoked when the event is triggered.|
+| callback<sup>12+</sup> | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | Yes  | Callback invoked when the event is triggered.|
 
 **Example**
 
@@ -125,7 +120,7 @@ Unsubscribes from [AVPlayerState](arkts-apis-media-t.md#avplayerstate9) state ch
 | Name| Type  | Mandatory| Description                                                 |
 | ------ | ------ | ---- | ----------------------------------------------------- |
 | type   | string | Yes  | Event type, which is **'stateChange'** in this case.|
-| callback   | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | No  | Callback invoked when the event is triggered.<br>This parameter is supported since API version 12.|
+| callback<sup>12+</sup>   | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | No  | Callback invoked when the event is triggered.|
 
 **Example**
 
@@ -140,7 +135,7 @@ async function test(){
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to [AVPlayer](arkts-apis-media-AVPlayer.md) errors. This event is used only for error prompt and does not require the user to stop playback control. If the [AVPlayerState](arkts-apis-media-t.md#avplayerstate9) is also switched to error, call [reset()](#reset9) or [release()](#release9) to exit the playback.
+Subscribes to [AVPlayer](arkts-apis-media-AVPlayer.md) errors. This event is used only for error prompt and does not require the user to stop playback control. If the [AVPlayerState](arkts-apis-media-t.md#avplayerstate9) is also switched to error, call [reset()](#reset9) or [release()](#release9) to exit the playback. If the playback remains in the error state after the [reset()](#reset9) method is called, you are advised to directly invoke the [release()](#release9) method to exit the playback operation.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -155,7 +150,7 @@ Subscribes to [AVPlayer](arkts-apis-media-AVPlayer.md) errors. This event is use
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 In API versions 9 to 13, error code 5400103 is reported when the network or server data flow is abnormal. In API version 14 and later, error codes 5411001 to 5411011 are reported for refined management.
 
@@ -210,7 +205,7 @@ Unsubscribes from AVPlayer errors.
 | Name| Type  | Mandatory| Description                                     |
 | ------ | ------ | ---- | ----------------------------------------- |
 | type   | string | Yes  | Event type, which is **'error'** in this case.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the error code ID and error message.<br>This parameter is supported since API version 12.|
+| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No  | Callback used to return the error code ID and error message.|
 
 **Example**
 
@@ -248,7 +243,7 @@ Sets a source of streaming media that can be pre-downloaded, downloads the media
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -299,7 +294,7 @@ Sets a playback strategy. This API can be called only when the AVPlayer is in th
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -354,7 +349,7 @@ Sets the playback range and seeks to the start position of the range based on th
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -491,7 +486,7 @@ This API can be called only when the AVPlayer is in the prepared, playing, pause
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message|
 | -------- | ----------------------------------------- |
@@ -1066,8 +1061,8 @@ Obtains the playback information. This API can be called only when the AVPlayer 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let avPlayer: media.AVPlayer | undefined = undefined;
-let playbackInfo: media.PlaybackInfo | undefined = undefined;
+let avPlayer: media.AVPlayer | undefined;
+let playbackInfo: media.PlaybackInfo | undefined;
 media.createAVPlayer(async (err: BusinessError, player: media.AVPlayer) => {
   if (player != null) {
     avPlayer = player;
@@ -1132,7 +1127,7 @@ async function  test(){
 
 selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 
-Selects a track when the AVPlayer is used to play a resource with multiple audio and video tracks. This API uses a promise to return the result.
+Selects a track when the AVPlayer plays multimedia resources with multiple audio or video tracks. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1153,7 +1148,7 @@ Selects a track when the AVPlayer is used to play a resource with multiple audio
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1191,7 +1186,7 @@ async function  test(){
 
 deselectTrack(index: number): Promise\<void>
 
-Deselects a track when the AVPlayer is used to play a resource with multiple audio and video tracks. This API uses a promise to return the result.
+Deselects the specified track when the AVPlayer plays multimedia resources with multiple audio or video tracks. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1211,7 +1206,7 @@ Deselects a track when the AVPlayer is used to play a resource with multiple aud
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1264,7 +1259,7 @@ Sets the decryption configuration. When receiving a [mediaKeySystemInfoUpdate ev
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                 |
 | -------- | ----------------------------------------- |
@@ -1330,7 +1325,10 @@ async function  test(){
 seek(timeMs: number, mode?:SeekMode): void
 
 Seeks to the specified playback position. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. You can check whether the seek operation takes effect by subscribing to the [seekDone](#onseekdone9) event.
-This API is not supported in live mode.
+
+> **NOTE**
+>
+> This method is not supported in live streaming scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1340,7 +1338,7 @@ This API is not supported in live mode.
 
 | Name| Type                  | Mandatory| Description                                                        |
 | ------ | ---------------------- | ---- | ------------------------------------------------------------ |
-| timeMs | number                 | Yes  | Position to seek to, in ms. The value range is [0, [duration](#properties)]. In SEEK_CONTINUOU mode, the value **-1** can be used to indicate the end of SEEK_CONTINUOUS mode.|
+| timeMs | number                 | Yes  | Position to seek to, in ms. The value range is [0, [duration](#properties)].<br>When the seek mode is [SEEK_CONTINUOUS](arkts-apis-media-e.md#seekmode8), you can set this parameter to **-1** to end the **SEEK_CONTINUOUS** mode.|
 | mode   | [SeekMode](arkts-apis-media-e.md#seekmode8) | No  | Seek mode based on the video I frame. The default value is **SEEK_PREV_SYNC**. **Set this parameter only for video playback.**|
 
 **Example**
@@ -1381,7 +1379,7 @@ Checks whether the media source supports [seek](#seek9) in SEEK_CONTINUOUS mode 
 
 | Type          | Description                                      |
 | -------------- | ------------------------------------------ |
-| boolean | Check result for the support of the seek operation in SEEK_CONTINUOUS mode. **true** if supported, **false** otherwise.|
+| boolean | Check result for the support of the seek operation in **SEEK_CONTINUOUS** mode. **true** to support, **false** otherwise.|
 
 **Example**
 
@@ -1408,7 +1406,7 @@ Subscribes to the event to check whether the seek operation takes effect.
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'seekDone'** in this case. This event is triggered each time **seek()** is called, except in SEEK_CONTINUOUS mode.|
-| callback | Callback\<number> | Yes  |  Callback invoked when the event is triggered. It reports the time position requested by the user.<br>For video playback, [SeekMode](arkts-apis-media-e.md#seekmode8) may cause the actual position to be different from that requested by the user. The exact position can be obtained from the **currentTime** property. The time in this callback only means that the requested seek operation is complete.|
+| callback<sup>12+</sup> | Callback\<number> | No  |  Callback invoked when the event is triggered. It reports the time position requested by the user.<br>For video playback, [SeekMode](arkts-apis-media-e.md#seekmode8) may cause the actual position to be different from that requested by the user. The exact position can be obtained from the **currentTime** property. The time in this callback only means that the requested seek operation is complete.|
 
 **Example**
 
@@ -1452,7 +1450,10 @@ async function  test(){
 setSpeed(speed: PlaybackSpeed): void
 
 Sets the playback speed. This API can be called only when the AVPlayer is in the prepared, playing, paused, or completed state. You can check whether the setting takes effect by subscribing to the [speedDone](#onspeeddone9) event.
-This API is not supported in live mode.
+
+> **NOTE**
+>
+> This method is not supported in live streaming scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1517,7 +1518,7 @@ Unsubscribes from the event that checks whether the playback speed is successful
 | Name| Type  | Mandatory| Description                                                     |
 | ------ | ------ | ---- | --------------------------------------------------------- |
 | type   | string | Yes  | Event type, which is **'speedDone'** in this case.|
-| callback | Callback\<number> | No  | Callback used to return the result. When the call of **setSpeed** is successful, the effective speed mode is reported. For details, see [PlaybackSpeed](arkts-apis-media-e.md#playbackspeed8).<br>This parameter is supported since API version 12.|
+| callback<sup>12+</sup> | Callback\<number> | No  | Callback used to return the result. When the call of **setSpeed** is successful, the effective speed mode is reported. For details, see [PlaybackSpeed](arkts-apis-media-e.md#playbackspeed8).|
 
 **Example**
 
@@ -1582,7 +1583,7 @@ Subscribes to the event indicating that the playback rate set by calling [setPla
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'playbackRateDone'** in this case. This event is triggered each time **setPlaybackRate** is called.|
-| callback | [OnPlaybackRateDone](#onplaybackratedone20) | Yes  | Callback invoked when the event is triggered. It reports the new playback rate.<br>This parameter is supported since API version 20.|
+| callback | [OnPlaybackRateDone](#onplaybackratedone20) | Yes  | Callback invoked when the event is triggered. It reports the new playback rate.|
 
 **Example**
 
@@ -1610,7 +1611,7 @@ Unsubscribes from the event indicating that the playback rate set by calling [se
 | Name| Type  | Mandatory| Description                                                     |
 | ------ | ------ | ---- | --------------------------------------------------------- |
 | type   | string | Yes  | Event type, which is **'playbackRateDone'** in this case.|
-| callback | [OnPlaybackRateDone](#onplaybackratedone20) | No  |  Callback invoked when the event is triggered. It reports the new playback rate. If this parameter is specified, only the specified callback is unregistered. Otherwise, all callbacks associated with the specified event will be unregistered.<br>This parameter is supported since API version 20.|
+| callback | [OnPlaybackRateDone](#onplaybackratedone20) | No  |  Callback invoked when the event is triggered. It reports the new playback rate. If this parameter is specified, only the specified callback is unregistered. Otherwise, all callbacks associated with the specified event will be unregistered.|
 
 **Example**
 
@@ -1691,7 +1692,7 @@ Unsubscribes from the event that checks whether the bit rate is successfully set
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'bitrateDone'** in this case.|
-| callback | Callback\<number> | No  | Callback invoked when the event is triggered. It reports the effective bit rate.<br>This parameter is supported since API version 12.            |
+| callback<sup>12+</sup> | Callback\<number> | No  | Callback invoked when the event is triggered. It reports the effective bit rate.            |
 
 **Example**
 
@@ -1745,7 +1746,7 @@ Unsubscribes from available bit rates of HLS/DASH streams. This event is reporte
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'availableBitrates'** in this case.|
-| callback | Callback\<Array\<number>> | No  | Callback invoked when the event is triggered. It returns an array that holds the available bit rates. If the array length is 0, no bit rate can be set.<br>This parameter is supported since API version 12.|
+| callback<sup>12+</sup> | Callback\<Array\<number>> | No  | Callback invoked when the event is triggered. It returns an array that holds the available bit rates. If the array length is 0, no bit rate can be set.|
 
 **Example**
 
@@ -1938,7 +1939,7 @@ Unsubscribes from the event that checks whether the volume is successfully set.
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'volumeChange'** in this case.|
-| callback | Callback\<number> | No  | Callback invoked when the event is triggered. It reports the effective volume.<br>This parameter is supported since API version 12.           |
+| callback<sup>12+</sup> | Callback\<number> | No  | Callback invoked when the event is triggered. It reports the effective volume.           |
 
 **Example**
 
@@ -1992,7 +1993,7 @@ Unsubscribes from the event that indicates the end of the stream being played.
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'endOfStream'** in this case.|
-| callback | Callback\<void> | No  | Callback invoked when the event is triggered.<br>This parameter is supported since API version 12.                              |
+| callback<sup>12+</sup> | Callback\<void> | No  | Callback invoked when the event is triggered.                              |
 
 **Example**
 
@@ -2088,7 +2089,7 @@ Unsubscribes from playback position changes.
 | Name| Type  | Mandatory| Description                                              |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | type   | string | Yes  | Event type, which is **'timeUpdate'** in this case.|
-| callback | Callback\<number> | No  | Callback used to return the current time.<br>This parameter is supported since API version 12.            |
+| callback<sup>12+</sup> | Callback\<number> | No  | Callback used to return the current time.            |
 
 **Example**
 
@@ -2105,7 +2106,10 @@ async function test(){
 on(type: 'durationUpdate', callback: Callback\<number>): void
 
 Subscribes to media asset duration changes. It is used to refresh the length of the progress bar. By default, this event is reported once in the prepared state. However, it can be repeatedly reported for special streams that trigger duration changes.
-The **'durationUpdate'** event is not supported in live mode.
+
+> **NOTE**
+>
+> The **durationUpdate** event is not supported in live streaming scenarios.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2144,7 +2148,7 @@ Unsubscribes from media asset duration changes.
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | ------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'durationUpdate'** in this case.|
-| callback | Callback\<number> | No  | Callback used to return the resource duration.<br>This parameter is supported since API version 12.       |
+| callback<sup>12+</sup> | Callback\<number> | No  | Callback used to return the resource duration.       |
 
 **Example**
 
@@ -2252,7 +2256,7 @@ Unsubscribes from the event that indicates rendering starts for the first frame.
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'startRenderFrame'** in this case.|
-| callback | Callback\<void> | No  | Callback invoked when the event is triggered.<br>This parameter is supported since API version 12.                  |
+| callback<sup>12+</sup> | Callback\<void> | No  | Callback invoked when the event is triggered.                  |
 
 **Example**
 
@@ -2306,7 +2310,7 @@ Unsubscribes from video size changes.
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'videoSizeChange'** in this case.|
-| callback | [OnVideoSizeChangeHandler](arkts-apis-media-t.md#onvideosizechangehandler12) | No  | Callback invoked when the event is triggered.<br>This parameter is supported since API version 12.   |
+| callback<sup>12+</sup> | [OnVideoSizeChangeHandler](arkts-apis-media-t.md#onvideosizechangehandler12) | No  | Callback invoked when the event is triggered.   |
 
 **Example**
 
@@ -2362,7 +2366,7 @@ Unsubscribes from the audio interruption event.
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | Yes  | Event type, which is **'audioInterrupt'** in this case.|
-| callback | Callback\<[audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)> | No  | Callback invoked when the event is triggered.<br>This parameter is supported since API version 12.            |
+| callback<sup>12+</sup> | Callback\<[audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)> | No  | Callback invoked when the event is triggered.            |
 
 **Example**
 
@@ -2393,6 +2397,8 @@ When subscribing to this event, you are advised to implement the player behavior
 | callback | Callback\<[audio.AudioStreamDeviceChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiostreamdevicechangeinfo11)> | Yes  | Callback used to return the output device descriptor of the current audio stream and the change reason.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -2429,6 +2435,8 @@ Unsubscribes from audio stream output device changes and reasons. This API uses 
 | callback | Callback\<[audio.AudioStreamDeviceChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiostreamdevicechangeinfo11)> | No  | Callback used to return the output device descriptor of the current audio stream and the change reason.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -2468,6 +2476,8 @@ Adds an external subtitle to a video based on the FD. Currently, the external su
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -2510,6 +2520,8 @@ Adds an external subtitle to a video based on the URL. Currently, the external s
 | Promise\<void> | Promise that returns no value.|
 
 **Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Media Error Codes](errorcode-media.md).
 
 | ID| Error Message                                  |
 | -------- | ------------------------------------------ |
@@ -2577,7 +2589,7 @@ Unsubscribes from subtitle update events.
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type | string | Yes  | Event type, which is **'subtitleUpdate'** in this case. The event is triggered when the external subtitle is updated.|
-| callback | function | No  | Callback that has been registered to listen for subtitle update events.|
+| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#subtitleinfo12)> | No  | Callback that has been registered to listen for subtitle update events.|
 
 **Example**
 

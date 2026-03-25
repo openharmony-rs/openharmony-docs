@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 15开始支持。
 >
-> - 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
+> - 示例效果请以真机运行为准。
 
 ## getSchemeFilter<sup>15+</sup>
 
@@ -38,7 +38,7 @@ getSchemeFilter(): ProxySchemeFilter
 
 getUrl(): string
 
-获取代理规则中的代理的URL信息。
+获取代理规则中的代理的Url信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

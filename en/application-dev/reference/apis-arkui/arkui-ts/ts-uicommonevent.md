@@ -11,7 +11,7 @@
 >The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## UICommonEvent
-Implements a common event callback. If the method parameter is **undefined**, the corresponding event callback is reset.
+Implements a common event callback. Passing **undefined** as the input parameter resets the corresponding event callback.
 ### setOnClick
 
 setOnClick(callback: Callback\<ClickEvent> | undefined): void
@@ -59,7 +59,7 @@ Sets the callback for the [onAppear](./ts-universal-events-show-hide.md#onappear
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback function for the mounting display event.|
+| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback invoked when the component appears.|
 
 
 ### setOnDisappear
@@ -76,7 +76,7 @@ Sets the callback for the [onDisAppear](./ts-universal-events-show-hide.md#ondis
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback for the unmounting event.|
+| callback  | [Callback](./ts-types.md#callback12)\<void> \| undefined | Yes  | Callback invoked when the component disappears.|
 
 ### setOnKeyEvent
 
@@ -162,7 +162,7 @@ Sets the callback for the [onMouse](./ts-universal-mouse-key.md#onmouse) event.
 
 setOnSizeChange(callback: SizeChangeCallback | undefined): void
 
-Sets the callback for the [onSizeChange](./ts-universal-component-size-change-event.md#onsizechange) component area change event.
+Sets the callback for the [onSizeChange](./ts-universal-component-size-change-event.md#onsizechange) event, which is triggered when the component's size changes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -172,7 +172,7 @@ Sets the callback for the [onSizeChange](./ts-universal-component-size-change-ev
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | [SizeChangeCallback](./ts-universal-component-size-change-event.md#sizechangecallback)   \| undefined | Yes  | Callback for the component area change event.|
+| callback  | [SizeChangeCallback](./ts-universal-component-size-change-event.md#sizechangecallback)   \| undefined | Yes  | Callback invoked when the component's size changes.|
 
 ### setOnVisibleAreaApproximateChange
 
@@ -188,12 +188,12 @@ Sets the callback for the [onVisibleAreaChange](./ts-universal-component-visible
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| options  | [VisibleAreaEventOptions](./ts-universal-component-visible-area-change-event.md#visibleareaeventoptions12) | Yes  | Options of visible area changes.|
-| event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12)   \| undefined | Yes  | Callback function of the visible area change event. Called when the ratio of the component's visible area to its total area is greater than or less than the threshold.|
+| options  | [VisibleAreaEventOptions](./ts-universal-component-visible-area-change-event.md#visibleareaeventoptions12) | Yes  | Configuration options for visible area change detection.|
+| event  | [VisibleAreaChangeCallback](./ts-universal-component-visible-area-change-event.md#visibleareachangecallback12)   \| undefined | Yes  | Callback invoked when the ratio of the component's visible area to its total area crosses the threshold specified in **options**.|
 
 >**NOTE**
 >
-> This API is different from the [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) API in the following ways: onVisibleAreaChange calculates the visible area ratio in each frame. If too many nodes are registered, the system power consumption deteriorates. This API reduces the frequency of calculating the visible area ratio. The calculation interval is determined by the expectedUpdateInterval parameter of [VisibleAreaEventOptions](./ts-universal-component-visible-area-change-event.md#visibleareaeventoptions12).
+> Difference from [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange): **onVisibleAreaChange** calculates the visible area ratio every frame, which can lead to high power consumption when many nodes are registered. This API reduces the calculation frequency: The interval is controlled by the **expectedUpdateInterval** parameter in [VisibleAreaEventOptions](./ts-universal-component-visible-area-change-event.md#visibleareaeventoptions12).
 >
 > By default, the interval threshold of the visible area change callback includes 0. This means that, if the provided threshold is [0.5], the effective threshold will be [0.0, 0.5].
 
@@ -201,7 +201,7 @@ Sets the callback for the [onVisibleAreaChange](./ts-universal-component-visible
 
 type HoverCallback = (isHover: boolean, event: HoverEvent)=> void
 
-The **HoverCallback** type is used to represent the callback for the hover event.
+Defines the callback type for hover events.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -211,5 +211,5 @@ The **HoverCallback** type is used to represent the callback for the hover event
 
 | Name           | Type           | Mandatory        | Description                                      |
 | ------------- | ---------------------- |---------------------| --------------------------------------- |
-| isHover | boolean |  Yes |Whether the element is in the hover state. true: yes; false: no.|
+| isHover | boolean |  Yes |Whether the element is in the hover state. **true**: yes; **false**: no.|
 | event | [HoverEvent](ts-universal-events-hover.md#hoverevent10) |  Yes|  Position coordinates of the hovered mouse or stylus.|

@@ -1088,7 +1088,7 @@ try {
 
 createNdefMessage(data: number[]): [NdefMessage](js-apis-nfctech.md#ndefmessage9)
 
-Creates an NDEF message from raw byte data. The data must comply with the NDEF record format. Otherwise, the NDE record list contained in the **NdefMessage** object will be empty.
+Creates an NDEF message from raw byte data. The data must comply with the NDEF record format. Otherwise, the NDEF record list contained in the **NdefMessage** object will be empty.
 
 **System capability**: SystemCapability.Communication.NFC.Tag
 
@@ -1185,7 +1185,7 @@ Defines the **TagInfo** object, which provides information about the tag technol
 | ----------------------------- | ------------------------------------------------------------- | -------- | -------- | -------------------------------------------------------------------------------------------- |
 | uid<sup>9+</sup>              | number[]                                                      | No      | No      | Tag unique identifier (UID), which consists of hexadecimal numbers ranging from **0x00** to **0xFF**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
 | technology<sup>9+</sup>       | number[]                                                      | No      | No      | Supported tag technologies. Each number is a constant indicating the supported technology.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                    |
-| supportedProfiles             | number[]                                                      | No      | No      | Supported profiles. This parameter is not supported since API version 9. Use [tag.TagInfo#technology](#taginfo) instead.           |
+| supportedProfiles<sup>(deprecated)</sup>             | number[]                                                      | No      | No      |Supported profiles.<br>Note: This parameter is supported since API version 7 and deprecated since API version 9. Use **[tag.TagInfo#technology](#taginfo)** instead.           |
 
 ## NdefRecord<sup>9+</sup>
 Defines an NDEF record. For details, see *NFCForum-TS-NDEF_1.0*.
@@ -1208,15 +1208,15 @@ Enumerates the tag technology types.
 
 | **Name**                    |**Type**| **Value**| **Description**                   |
 | ---------------------------- | ------ | ------ | --------------------------- |
-| NFC_A<sup>7+</sup>                        |  number | 1      | NFC-A (ISO 14443-3A).<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| NFC_B<sup>7+</sup>                        |  number | 2      | NFC-B (ISO 14443-3B).<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| ISO_DEP<sup>7+</sup>                      |  number | 3      | ISO-DEP (ISO 14443-4).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| NFC_F<sup>7+</sup>                        |  number | 4      | NFC-F (JIS 6319-4).<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
-| NFC_V<sup>7+</sup>                        |  number | 5      | NFC-V (ISO 15693).<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
-| NDEF<sup>7+</sup>                         |  number | 6      | NDEF.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
+| NFC_A                        |  number | 1      | NFC-A (ISO 14443-3A).<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| NFC_B                        |  number | 2      | NFC-B (ISO 14443-3B).<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| ISO_DEP                      |  number | 3      | ISO-DEP (ISO 14443-4).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| NFC_F                        |  number | 4      | NFC-F (JIS 6319-4).<br>**Atomic service API**: This API can be used in atomic services since API version 12.   |
+| NFC_V                        |  number | 5      | NFC-V (ISO 15693).<br>**Atomic service API**: This API can be used in atomic services since API version 12.    |
+| NDEF                         |  number | 6      | NDEF.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                 |
 | NDEF_FORMATABLE<sup>9+</sup> |  number | 7      | NDEF formattable.<br>**Atomic service API**: This API can be used in atomic services since API version 12.      |
-| MIFARE_CLASSIC<sup>7+</sup>               |  number | 8      | MIFARE Classic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
-| MIFARE_ULTRALIGHT<sup>7+</sup>            |  number | 9      | MIFARE Ultralight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.     |
+| MIFARE_CLASSIC               |  number | 8      | MIFARE Classic.<br>**Atomic service API**: This API can be used in atomic services since API version 12.       |
+| MIFARE_ULTRALIGHT            |  number | 9      | MIFARE Ultralight.<br>**Atomic service API**: This API can be used in atomic services since API version 12.     |
 | NFC_BARCODE<sup>18+</sup>    |  number | 10     | BARCODE technology.<br>**Atomic service API**: This API can be used in atomic services since API version 18.              |
 
 ## TnfType<sup>9+</sup>
@@ -1304,11 +1304,11 @@ Enumerates the MIFARE Ultralight tag types.
 | TYPE_ULTRALIGHT   | 1      | MIFARE Ultralight.  |
 | TYPE_ULTRALIGHT_C | 2      | MIFARE Ultralight C.|
 
-## NfcATag<sup>7+</sup>
+## NfcATag
 
 type NfcATag = _NfcATag
 
-Defines an **NfcATag** object.
+Obtains an **NfcATag** object.
 
 **System capability**: SystemCapability.Communication.NFC.Tag
 
@@ -1316,9 +1316,9 @@ Defines an **NfcATag** object.
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| [_NfcATag](./js-apis-nfctech.md#nfcatag) | Object that implements access to NFC-A (ISO 15693) properties and I/O operations on a tag. |
+| [_NfcATag](./js-apis-nfctech.md#nfcatag) | Object that implements access to NFC-A(ISO 14443-3A) properties and I/O operations on a tag. |
 
-## NfcBTag<sup>7+</sup>
+## NfcBTag
 
 type NfcBTag = _NfcBTag
 
@@ -1332,7 +1332,7 @@ Obtains an **NfcBTag** object.
 | ------ | ------------------------------------------------------------ |
 | [_NfcBTag](./js-apis-nfctech.md#nfcbtag) | Object that implements access to NFC-B (ISO 14443-3B) properties and I/O operations on a tag. |
 
-## NfcFTag<sup>7+</sup>
+## NfcFTag
 
 type NfcFTag = _NfcFTag
 
@@ -1344,9 +1344,9 @@ Obtains an **NfcFTag** object.
 
 | Type  | Description                                                        |
 | ------ | ------------------------------------------------------------ |
-| [_NfcFTag](./js-apis-nfctech.md#nfcftag) | Object that implements access to NFC-F (ISO 6319-4) properties and I/O operations on a tag. |
+| [_NfcFTag](./js-apis-nfctech.md#nfcftag) | Object that implements access to NFC-F(JIS 6319-4) properties and I/O operations on a tag. |
 
-## NfcVTag<sup>7+</sup>
+## NfcVTag
 
 type NfcVTag = _NfcVTag
 
@@ -1458,7 +1458,7 @@ Obtains an **NdefMessage** object.
 | ------ | ------------------------------------------------------------ |
 | [_NdefMessage](./js-apis-nfctech.md#ndefmessage9) | Obtains all NDEF records.|
 
-## TagSession<sup>7+</sup>
+## TagSession
 
 type TagSession = _TagSession
 

@@ -305,7 +305,7 @@ export default{
     </div>
   </swiper>
   <div class="content">
-    <div class="content_item {{index == $idx?'actived':''}}" for="item in list" onclick="imageTo({{$idx}})">
+    <div class="content_item {{index == $idx?'activated':''}}" for="item in list" onclick="imageTo({{$idx}})">
       <image src="{{item.src}}"></image>
     </div>
   </div>
@@ -341,7 +341,7 @@ swiper{
   padding: 5px;
   transform: scale(0.5);
 }
-.actived{
+.activated{
   transform: scale(1);
   border: 1px solid #b20937ea;
 }
@@ -350,7 +350,6 @@ swiper{
 
 ```js
 // xxx.js
-import promptAction from '@ohos.promptAction';
 export default {
   data:{
     index: 0,

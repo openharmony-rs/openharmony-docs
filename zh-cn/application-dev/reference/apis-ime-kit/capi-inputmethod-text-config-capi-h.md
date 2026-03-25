@@ -504,7 +504,7 @@ InputMethod_ErrorCode OH_TextConfig_GetAbilityName(InputMethod_TextConfig *confi
 | -- | -- |
 | [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) *config | 指向即将被获取值的[InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md)实例的指针。 |
 | char16_t *abilityName | 用于存放abilityName，该指针内存由调用者维护。 |
-| size_t *length | abilityName长度，计数单位为双字节，长度包含字符串结尾符。1. 作为入参，代表abilityName指向的内存可用长度。作为出参，代表实际的abilityName长度。2. 如果abilityName为空指针，且length指向有效内存，则length会被填充实际的abilityName长度。接口会返错。3. 如果abilityName和length都指向有效内存，但length传入的长度小于实际的abilityName长度，则length会被填充实际的占位文本长度。接口会返错。 |
+| size_t *length | abilityName长度，计数单位为双字节，长度包含字符串结尾符。1. 作为入参，代表abilityName指向的内存可用长度。作为出参，代表实际的abilityName长度。2. 如果abilityName为空指针，且length指向有效内存，则length会被填充实际的abilityName长度。接口会返错。3. 如果abilityName和length都指向有效内存，但length传入的长度小于实际的abilityName长度，则length会被填充实际的abilityName长度。接口会返错。 |
 
 **返回：**
 

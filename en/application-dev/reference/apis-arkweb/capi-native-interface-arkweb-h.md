@@ -10,6 +10,8 @@
 
 Declares APIs used to register objects and execute JavaScript code.
 
+**File to include**: <web/native_interface_arkweb.h>
+
 **Library**: libohweb.so
 
 **System capability**: SystemCapability.Web.Webview.Core
@@ -24,7 +26,7 @@ Declares APIs used to register objects and execute JavaScript code.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md) | ArkWeb_BlanklessInfo | Prediction information about blankless loading, including the first screen similarity, first screen loading duration, and error code. The application determines whether to enable frame insertion for blankless loading based on the prediction information.|
+| [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md) | ArkWeb_BlanklessInfo | Defines the prediction information about blankless loading, including the first screen similarity, first screen loading duration, and error code. The application determines whether to enable frame insertion for blankless loading based on the prediction information.|
 
 ### Enums
 
@@ -59,12 +61,13 @@ Declares APIs used to register objects and execute JavaScript code.
 | [uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)](#oh_nativearkweb_setblanklessloadingcachecapacity) | - | Sets the persistent cache capacity of the blankless loading solution and returns the value that takes effect. The default cache capacity is 30 MB, and the maximum cache capacity is 100 MB. When this limit is exceeded, transition frames that are not frequently used are eliminated.|
 | [void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVersion)](#oh_nativearkweb_setactivewebengineversion) | - | Sets the ArkWeb kernel version. If the system does not support the specified version, the setting is invalid. This API is a global static method and must be called before **initializeWebEngine** is called. If any **Web** component has been loaded, the setting of this API is invalid.|
 | [ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()](#oh_nativearkweb_getactivewebengineversion) | - | Obtain the current ArkWeb kernel version.|
+| [void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)](#oh_nativearkweb_lazyinitializewebengineincookiemanager) | - | Sets whether to delay the initialization of the ArkWeb kernel. If this method is not called, the ArkWeb kernel is not delayed by default.|
 
 ## Enum Description
 
 ### ArkWebEngineVersion
 
-```
+```c
 enum ArkWebEngineVersion
 ```
 
@@ -89,7 +92,7 @@ For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 
 
 ### NativeArkWeb_OnJavaScriptCallback()
 
-```
+```c
 typedef void (*NativeArkWeb_OnJavaScriptCallback)(const char*)
 ```
 
@@ -101,7 +104,7 @@ Called to return the result after the JavaScript code is executed.
 
 ### NativeArkWeb_OnJavaScriptProxyCallback()
 
-```
+```c
 typedef char* (*NativeArkWeb_OnJavaScriptProxyCallback)(const char** argv, int32_t argc)
 ```
 
@@ -113,7 +116,7 @@ Called when a JavaScript proxy is registered.
 
 ### NativeArkWeb_OnValidCallback()
 
-```
+```c
 typedef void (*NativeArkWeb_OnValidCallback)(const char*)
 ```
 
@@ -125,7 +128,7 @@ Called when a **Web** component is valid.
 
 ### NativeArkWeb_OnDestroyCallback()
 
-```
+```c
 typedef void (*NativeArkWeb_OnDestroyCallback)(const char*)
 ```
 
@@ -137,7 +140,7 @@ Called when a **Web** component is destroyed.
 
 ### OH_ArkWeb_OnCookieSaveCallback()
 
-```
+```c
 typedef void (*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)
 ```
 
@@ -155,7 +158,7 @@ Called when a cookie is saved.
 
 ### OH_NativeArkWeb_RunJavaScript()
 
-```
+```c
 void OH_NativeArkWeb_RunJavaScript(const char* webTag, const char* jsCode, NativeArkWeb_OnJavaScriptCallback callback)
 ```
 
@@ -178,7 +181,7 @@ Loads and asynchronously executes a JavaScript code in the current page.
 
 ### OH_NativeArkWeb_RegisterJavaScriptProxy()
 
-```
+```c
 void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* objName, const char** methodList,NativeArkWeb_OnJavaScriptProxyCallback* callback, int32_t size, bool needRefresh)
 ```
 
@@ -200,11 +203,11 @@ Displays the list of registered objects and function names.
 | const char** methodList | Name of the registered method list.|
 | [NativeArkWeb_OnJavaScriptProxyCallback](#nativearkweb_onjavascriptproxycallback)* callback | Registered callback.|
 | int32_t size | Number of registered callbacks.|
-| bool needRefresh | Whether a page need to be refreshed.|
+| bool needRefresh | Whether a page need to be refreshed. The value **true** indicates that the page needs to be refreshed, and **false** indicates the opposite.|
 
 ### OH_NativeArkWeb_UnregisterJavaScriptProxy()
 
-```
+```c
 void OH_NativeArkWeb_UnregisterJavaScriptProxy(const char* webTag, const char* objName)
 ```
 
@@ -226,7 +229,7 @@ Deletes a registered object and its callback.
 
 ### OH_NativeArkWeb_SetJavaScriptProxyValidCallback()
 
-```
+```c
 void OH_NativeArkWeb_SetJavaScriptProxyValidCallback(const char* webTag, NativeArkWeb_OnValidCallback callback)
 ```
 
@@ -248,7 +251,7 @@ Sets a callback used when an object is valid.
 
 ### OH_NativeArkWeb_GetJavaScriptProxyValidCallback()
 
-```
+```c
 NativeArkWeb_OnValidCallback OH_NativeArkWeb_GetJavaScriptProxyValidCallback(const char* webTag)
 ```
 
@@ -275,7 +278,7 @@ Obtains the callback used when a registered object is valid.
 
 ### OH_NativeArkWeb_SetDestroyCallback()
 
-```
+```c
 void OH_NativeArkWeb_SetDestroyCallback(const char* webTag, NativeArkWeb_OnDestroyCallback callback)
 ```
 
@@ -297,7 +300,7 @@ Sets a callback used when a component is destroyed.
 
 ### OH_NativeArkWeb_GetDestroyCallback()
 
-```
+```c
 NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char* webTag)
 ```
 
@@ -324,7 +327,7 @@ Obtains the callback used when a registered component is destroyed.
 
 ### OH_NativeArkWeb_LoadData()
 
-```
+```c
 ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag,const char* data,const char* mimeType,const char* encoding,const char* baseUrl,const char* historyUrl)
 ```
 
@@ -356,7 +359,7 @@ Loads data or URLs. This function must be called in the main thread.
 
 ### OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy()
 
-```
+```c
 void OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy(const char* webTag,const ArkWeb_ProxyObjectWithResult* proxyObject, const char* permission)
 ```
 
@@ -377,7 +380,7 @@ Registers a JavaScript object that contains callback methods, which can have ret
 
 ### OH_ArkWebCookieManager_SaveCookieSync()
 
-```
+```c
 ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()
 ```
 
@@ -395,7 +398,7 @@ Saves all cookies that can be accessed through the **CookieManager** API to disk
 
 ### OH_ArkWebCookieManager_SaveCookieAsync()
 
-```
+```c
 void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callback)
 ```
 
@@ -412,7 +415,7 @@ Saves all cookies that can be accessed through the **CookieManager** API to disk
 | [OH_ArkWeb_OnCookieSaveCallback](#oh_arkweb_oncookiesavecallback)* callback | Callback triggered when cookies are saved.|
 ### OH_NativeArkWeb_GetBlanklessInfoWithKey()
 
-```
+```c
 ArkWeb_BlanklessInfo OH_NativeArkWeb_GetBlanklessInfoWithKey(const char* webTag, const char* key)
 ```
 
@@ -448,7 +451,7 @@ Obtains the first screen loading prediction information, and starts to generate 
 
 ### OH_NativeArkWeb_SetBlanklessLoadingWithKey()
 
-```
+```c
 ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char* webTag, const char* key, bool isStarted)
 ```
 
@@ -482,7 +485,7 @@ Sets whether to enable blankless loading. This API must be used together with th
 
 ### OH_NativeArkWeb_ClearBlanklessLoadingCache()
 
-```
+```c
 void OH_NativeArkWeb_ClearBlanklessLoadingCache(const char* key[], uint32_t size)
 ```
 
@@ -508,7 +511,7 @@ In an applet or web application, when the content changes significantly during p
 
 ### OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity()
 
-```
+```c
 uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)
 ```
 
@@ -532,7 +535,7 @@ Sets the persistent cache capacity of the blankless loading solution and returns
 
 ### OH_NativeArkWeb_SetActiveWebEngineVersion()
 
-```
+```c
 void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVersion)
 ```
 
@@ -556,7 +559,7 @@ Since OpenHarmony 6.0, some ArkWeb APIs do not take effect when the legacy kerne
 
 ### OH_NativeArkWeb_GetActiveWebEngineVersion()
 
-```
+```c
 ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()
 ```
 
@@ -571,3 +574,26 @@ Obtains the current ArkWeb kernel version.
 | Type| Description|
 | -- | -- |
 | ArkWebEngineVersion | The current ArkWeb kernel version defined by [ArkWebEngineVersion](#arkwebengineversion).|
+
+### OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager()
+
+```c
+void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)
+```
+
+**Description**
+
+Sets whether to delay the initialization of the ArkWeb kernel. If this method is not called, the ArkWeb kernel is not delayed by default.
+
+> **NOTE**
+>
+> - This API is a global static method and must be called before the **Web** component is used and the ArkWeb kernel is initialized. Otherwise, the setting is invalid.
+> - This API is applicable only to APIs that initialize the CookieManager after being called, for example, the [ArkWeb_CookieManagerAPI](capi-web-arkweb-cookiemanagerapi.md) APIs. When this API is called, the ArkWeb kernel is not initialized during the initialization of CookieManager. You need to initialize the ArkWeb kernel later.
+
+**Since**: 22
+
+**Parameters**
+
+| Name                                                | Description|
+|-----------------------------------------------------| -- |
+| bool lazy  | Whether to delay the initialization of the ArkWeb kernel. The value **true** means to delay the initialization, and **false** means the opposite.|

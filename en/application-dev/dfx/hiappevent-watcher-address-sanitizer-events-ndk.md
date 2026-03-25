@@ -8,7 +8,7 @@
 
 ## **Available APIs**
 
-For details about how to use the APIs (such as parameter usage restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
+For details about how to use the APIs (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
 
 **Subscription APIs**
 
@@ -23,7 +23,7 @@ The following describes how to subscribe an address sanitizer event for an array
 
 ### Step 1: Creating a Project
 
-1. Obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by referring to **Using JsonCpp in your project** in [JsonCpp](https://github.com/open-source-parsers/jsoncpp).
+1. Obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by referring to **Using JsonCpp in your project** in the **README** file of [JsonCpp](https://github.com/open-source-parsers/jsoncpp).
 
 2. Create a native C++ project and import the preceding files to the project. The directory structure is as follows:
 
@@ -75,7 +75,7 @@ The following describes how to subscribe an address sanitizer event for an array
 
    - Watcher of the onReceive type:
 
-      In the **napi_init.cpp** file, define the methods related to the watcher of the onReceive type.
+      In the **napi_init.cpp** file, define the methods related to the watcher of the **onReceive** type.
 
       ```c++
       // Define a variable to cache the pointer to the created watcher.
@@ -132,7 +132,7 @@ The following describes how to subscribe an address sanitizer event for an array
 
    - Watcher of the onTrigger type:
 
-      In the **napi_init.cpp** file, define the methods related to the watcher of the OnTrigger type.
+      In the **napi_init.cpp** file, define the methods related to the watcher of the **OnTrigger** type.
 
       ```c++
       // Define a variable to cache the pointer to the created watcher.
@@ -223,14 +223,14 @@ The following describes how to subscribe an address sanitizer event for an array
    }
    ```
 
-   In the **index.d.ts** file, define ArkTS APIs.
+   In the **index.d.ts** file, define the ArkTS API.
 
    ```typescript
    export const registerWatcher: () => void;
    export const test: () => void;
    ```
 
-3. In the **EntryAbility.ets** file, add the following interface invocation to **onCreate()**.
+3. In the **EntryAbility.ets** file, add the following API to **onCreate()**.
 
    ```typescript
    // Import the dependent module.

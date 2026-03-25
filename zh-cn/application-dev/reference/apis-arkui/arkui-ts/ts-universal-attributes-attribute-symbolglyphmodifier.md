@@ -7,7 +7,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-开发者可使用SymbolGlyphModifier构建组件并配置属性，通过此SymbolGlyphModifier可调用所封装组件的属性和样式接口。
+SymbolGlyphModifier用于动态设置SymbolGlyph组件的属性和样式，支持使用if/else语句进行设置。[SymbolGlyph](./ts-basic-components-symbolGlyph.md)是一个用于展示图标符号的组件。
 
 >  **说明：**
 >

@@ -9,7 +9,7 @@ Import the **\@ohos.display** module and call the **getDefaultDisplaySync()** AP
 
 **Example**
 
-```
+``` ts
 import display from '@ohos.display'; 
 let displayClass = null;
 try {
@@ -31,7 +31,7 @@ To obtain the window width and height information on a page, timing is crucial. 
 
 **Example**
 
-```
+``` ts
 import window from '@ohos.window';
 
 // To obtain the window width and height on a page, you are advised to place the following code in the onPageShow phase instead of aboutToAppear of the page lifecycle.
@@ -66,7 +66,7 @@ Import the **\@ohos.multimedia.image** and **\@ohos.effectKit** modules to proce
 
 **Example**
 
-```
+``` ts
 import image from "@ohos.multimedia.image";
 import effectKit from "@ohos.effectKit";
 
@@ -154,8 +154,8 @@ void CreateShareEglContext()
 
 **Solution**
 
-No, a custom transition animation cannot be used. The UIAbility displays only one widget on the multi-tasking screen. No customization is allowed for consistency purposes. 
-
+No, a custom transition animation cannot be used. The UIAbility displays only one widget on the multi-tasking screen. No customization is allowed for consistency purposes.
+  
 The UIAbility cannot be used to combine in-app screens. Instead, use the **Navigation** component to implement in-app redirection.
 
 **References**

@@ -10,13 +10,13 @@ The **usageStatistics** module provides APIs for collecting statistics on device
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs provided by this module are system APIs.
+> The APIs provided by this module are system APIs.
 
 ## Modules to Import
 
-```
+```ts
 import { usageStatistics } from '@kit.BackgroundTasksKit'
 ```
 
@@ -45,7 +45,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -96,7 +96,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -145,7 +145,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.         |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -320,7 +320,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -369,7 +369,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -424,7 +424,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -471,7 +471,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -521,7 +521,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -573,7 +573,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -628,7 +628,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -681,7 +681,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -733,7 +733,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -783,7 +783,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -842,7 +842,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -893,7 +893,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -951,7 +951,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -999,7 +999,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1054,7 +1054,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID | Error Message            |
 | ---- | --------------------- |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1110,7 +1110,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1158,7 +1158,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1213,7 +1213,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1261,7 +1261,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1301,7 +1301,7 @@ This API uses a promise to return a maximum of 1000 FA usage records sorted by t
 
 | Type                                      | Description                                |
 | ---------------------------------------- | ---------------------------------- |
-| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise used to return the result. A maximum of 1000 usage records can be returned.|
+| Promise&lt;Array&lt;[HapModuleInfo](#hapmoduleinfo)&gt;&gt; | Promise used to return the usage records of unused HAP files (no more than 1000 records).|
 
 **Error codes**
 
@@ -1311,7 +1311,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.           |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1525,7 +1525,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1579,7 +1579,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1634,7 +1634,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |
@@ -1678,7 +1678,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ---- | --------------------- |
 | 201  | Permission denied. |
 | 202  | Not System App. |
-| 401 | Parameter error. |
+| 401 | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed. |
 | 801 | Capability not supported.|
 | 10000001   | Memory operation failed.              |
 | 10000002   | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory.         |

@@ -9,7 +9,7 @@
 
 ## Overview
 
-This topic describes how to subscribe to application freeze events by using the ArkTS APIs provided by HiAppEvent. For details about how to use the APIs (such as parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+This topic describes how to subscribe to application freeze events by using the ArkTS APIs provided by HiAppEvent. For details about the APIs (including parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 ## Available APIs
 
@@ -22,7 +22,7 @@ This topic describes how to subscribe to application freeze events by using the 
 
 ### Adding an Event Watcher
 
-The following describes how to subscribe to the application freeze event triggered by button clicking.
+The following walks you through on how to subscribe to the application freeze events.
 
 1. Create an ArkTS application project. In the **entry/src/main/ets/entryability/EntryAbility.ets** file of the project, import the dependent modules. The sample code is as follows:
 

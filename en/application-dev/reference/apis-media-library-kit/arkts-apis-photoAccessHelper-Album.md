@@ -6,13 +6,13 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **NOTE**
->
-> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-
 Album extends [AbsAlbum](arkts-apis-photoAccessHelper-AbsAlbum.md).
 
 Album provides APIs to manage albums.
+
+> **NOTE**
+>
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
 
@@ -43,7 +43,7 @@ Commits the modification on the album attributes to the database. This API uses 
 
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the album properties are modified successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -173,7 +173,7 @@ Adds image and video assets to a user album. Before the operation, ensure that t
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Yes  | Array of the image and video assets to add.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If an image or video is added successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -315,7 +315,7 @@ Removes image and video assets from a user album. The album and file resources m
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | assets | Array&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Yes  | Array of the image and video assets to remove.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If an image or video is removed successfully, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 

@@ -137,8 +137,7 @@ In the following example, when a user clicks the **Upload** button on the fronte
 
 The **Web** component allows the frontend page to call the camera to take photos when uploading image files. You can use the [onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) API to process the request for uploading image files from the frontend page and start the camera. If no processing is performed, the **Web** component provides the default behavior to process the request for calling the camera.
 
-In the following example, the application listens for the [onShowFileSelector](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) event and returns **true** to intercept the default ArkWeb dialog box and invoke the system **CameraPicker** to start the camera.
-The application can obtain **AcceptType** to filter target files of different types in a more refined manner.
+In the following example, the application listens for the [onShowFileSelector](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9) event and returns **true** to intercept the default ArkWeb dialog box and invoke the system **CameraPicker** to start the camera. The application can obtain **AcceptType** to filter target files of different types in a more refined manner.
 
 ```ts
 // xxx.ets

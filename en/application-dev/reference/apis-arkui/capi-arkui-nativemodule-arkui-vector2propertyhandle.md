@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_Vector2Property* ArkUI_Vector2PropertyHandle
+```
+
 ## Overview
 
 Defines a struct for the 2D vector property pointer.

@@ -67,6 +67,7 @@ mailto:someone@example.com?key1=value1&key2=value2
 实际开发时，需要将邮箱地址替换为真实的邮箱，邮件内容可以根据需要进行配置。
 
 实现效果如下：
+
 ![image](figures/mailto-html.gif)
 
 ### 从应用拉起
@@ -95,6 +96,7 @@ struct Index {
 ```
 
 实现效果如下：
+
 ![image](figures/mailto-app.gif)
 
 ## 目标方开发步骤

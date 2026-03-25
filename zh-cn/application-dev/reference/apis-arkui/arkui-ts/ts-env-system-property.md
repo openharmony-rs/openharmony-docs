@@ -14,6 +14,7 @@
 
 
 ## \@Env
+Env: EnvDecorator
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -38,9 +39,11 @@ struct Index {
 ```
 
 ## EnvDecorator
-declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator
+type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 
 定义@Env装饰器类型。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -60,7 +63,7 @@ declare type EnvDecorator = (value: SystemProperties) => PropertyDecorator
 
 **错误码：**
 
-详细介绍请参见[\@Env错误码](../errorcode-env.md)。
+详细介绍请参见[环境变量错误码](../errorcode-env.md)。
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
 |140000|Invalid key for @Env|

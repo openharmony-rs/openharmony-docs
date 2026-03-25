@@ -139,7 +139,8 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
    }
    ```
 
-5. Call [OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapabilitywithscenemode) to obtain all output streams supported by the current device, such as preview streams and photo streams. The output streams supported are the value of each **profile** field under **CameraOutputCapability**. Different types of output streams must be added based on the value of [Camera_SceneMode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode) specified by the camera device.
+5. Call [OH_CameraManager_GetSupportedCameraOutputCapabilityWithSceneMode()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getsupportedcameraoutputcapabilitywithscenemode) to obtain all output streams supported by the camera device in the current mode, such as preview and photo streams. Output streams are specified in the **profile** fields of [Camera_OutputCapability](../../reference/apis-camera-kit/capi-oh-camera-camera-outputcapability.md). Add the output stream of the corresponding type to the session based on the [camera scene mode](../../reference/apis-camera-kit/capi-camera-h.md#camera_scenemode). For details, see step 6 in [How to Develop](./native-camera-session-management.md#how-to-develop) of camera session management.
+
 
    ```c++
    Camera_OutputCapability* GetSupportedCameraOutputCapability(Camera_Manager* cameraManager, Camera_Device &camera)

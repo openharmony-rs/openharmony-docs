@@ -102,6 +102,7 @@ Represents an incremental backup object, which inherits from [IncrementalBackupT
 ## File
 
 Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](#filedata).
+
  
 
 > **NOTE**
@@ -113,6 +114,7 @@ Defines a file object, which inherits from [FileMeta](#filemeta) and [FileData](
 ## File<sup>12+</sup>
 
 Defines a file object, which inherits from [FileMeta](#filemeta), [FileData](#filedata), and [FileManifestData](#filemanifestdata12).
+
  
 
 > **NOTE**
@@ -259,7 +261,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13600001 | IPC error.                       |
 | 13900005 | I/O error.                      |
 | 13900011 | Out of memory.                   |
-| 13900020 | Invalid argument.                |
 | 13900025 | No space left on device.         |
 | 13900042 | Unknown error.                   |
 
@@ -342,7 +343,7 @@ Called when the backup or restore is complete. If the callback is invoked succes
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-**Return value**
+**Parameters**
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -384,7 +385,7 @@ Called to report the backup or restore progress information. If the callback is 
 
 **System capability**: SystemCapability.FileManagement.StorageService.Backup
 
-**Return value**
+**Parameters**
 
 | Name    | Type  | Mandatory| Description                           |
 | ---------- | ------ | ---- | ------------------------------- |
@@ -644,7 +645,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13600001 | IPC error.                                                                                      |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -703,7 +703,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -756,7 +756,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -814,7 +814,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ----------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | 202      | Permission verification failed, application which is not a system application uses system API. |
-| 401      | The input parameter is invalid. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.|
 
 **Example**
 
@@ -1044,7 +1044,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
         fs.closeSync(fileData.fd);
@@ -1097,7 +1097,7 @@ The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-Obtains the amount of data to be backed up. This method is called before **appendBundles**. The scanning result is returned at a fixed interval of 5 seconds by calling the general callback **onBackupSizeReport** asynchronously until all application data in the datalist is returned.
+Obtains the amount of data to be backed up. This method is called before **appendBundles**. **getBackupDataSize** is used together with **onBackupSizeReport**. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1188,7 +1188,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application that is obtaining the data size.
+    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application whose data size is being retrieved. onBackupSizeReport in generalCallbacks returns the scan result every 5 seconds, or immediately if the data retrieval process is completed within 5 seconds, until all application data in dataList is returned.
       console.info('dataSizeCallback success');
       const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
       if (jsonObj) {
@@ -1219,7 +1219,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example of a JSON string returned asynchronously:**
 
-```json
+```json5
 {
  "scanned": [ // Scanned application. The result will not be returned in the next callback.
      {
@@ -2029,7 +2029,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
         fs.closeSync(fileData.fd);
@@ -2195,6 +2195,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
 appendBundles(remoteCapabilitiesFd: number, bundlesToBackup: string[], infos?: string[]): Promise&lt;void&gt;
 
 Appends the applications whose data needs to be restored. From API version 12, the optional parameter **infos** is added to carry information about each application to be restored. The mappings between **infos** and **bundlesToBackup** are identified by index.
+
 Currently, the obtained **SessionRestore** instance can be called only once in the entire restore process. This API uses a promise to return the result.
 
 > **NOTE**
@@ -3351,7 +3352,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         console.info('fileData info:' + fileData.fd);
         if (!fs.accessSync(basePath)) {
           fs.mkdirSync(basePath);
-          console.info('creat success' + basePath);
+          console.info('create success' + basePath);
         }
         fs.copyFileSync(fileData.fd, path); // Save the obtained local capability file to the local host.
         fs.closeSync(fileData.fd);
@@ -3404,7 +3405,7 @@ The capability file can be obtained by using [fs.stat](js-apis-file-fs.md#fsstat
 
 getBackupDataSize(isPreciseScan: boolean, dataList: Array\<IncrementalBackupTime\>): Promise&lt;void&gt;
 
-Obtains the amount of data to be backed up. This method is called before **appendBundles**. The scanning result is returned at a fixed interval of 5 seconds by calling the general callback **onBackupSizeReport** asynchronously until all application data in the datalist is returned.
+Obtains the amount of data to be backed up. This method is called before **appendBundles**. **getBackupDataSize** is used together with **onBackupSizeReport**. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -3495,7 +3496,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     onProcess: (bundleName: string, process: string) => {
       console.info(`onProcess success, bundleName: ${bundleName}, process: ${process}`);
     },
-    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application that is obtaining the data size.
+    onBackupSizeReport: (OnBackupSizeReport) => { // The callback function is used together with getBackupDataSize to return the obtained application data size and the bundle name of the application whose data size is being retrieved. onBackupSizeReport in generalCallbacks returns the scan result every 5 seconds, or immediately if the data retrieval process is completed within 5 seconds, until all application data in dataList is returned.
       console.info('dataSizeCallback success');
       const jsonObj: scannedInfos | null = JSON.parse(OnBackupSizeReport); // Parse and print the returned information.
       if (jsonObj) {
@@ -3527,7 +3528,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example of a JSON string returned asynchronously:**
 
-```json
+```json5
 {
  "scanned": [ // Scanned application. The result will not be returned in the next callback.
      {
@@ -3582,7 +3583,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 
@@ -3648,7 +3648,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ### appendBundles<sup>12+</sup>
 
-appendBundles(bundlesToBackup: Array&lt;IncrementalBackupData&gt;, infos: string[]): Promise&lt;void&gt;
+appendBundles(bundlesToAppend: Array&lt;IncrementalBackupData&gt;, infos: string[]): Promise&lt;void&gt;
 
 Appends applications that require incremental backup. In the current process, **appendBundles** can be called before **Release()** is called. This API uses a promise to return the result.
 
@@ -3662,7 +3662,7 @@ Appends applications that require incremental backup. In the current process, **
 
 | Name         | Type                                                          | Mandatory| Description                      |
 | --------------- | -------------------------------------------------------------- | ---- | -------------------------- |
-| bundlesToBackup | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes  | Array of applications that require incremental backup.|
+| bundlesToAppend | Array&lt;[IncrementalBackupData](#incrementalbackupdata12)&gt; | Yes  | Array of applications that require incremental backup.|
 | infos  | string[] | Yes  | Array of the information about each application to be backed up. The mappings between **infos** and **bundlesToBackup** are identified by index. This parameter is supported since API version 12.|
 
 **Return value**
@@ -3684,7 +3684,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 13900001 | Operation not permitted.                                                                        |
 | 13900005 | I/O error.                                                                                      |
 | 13900011 | Out of memory.                                                                                  |
-| 13900020 | Invalid argument.                                                                               |
 | 13900025 | No space left on device.                                                                        |
 | 13900042 | Unknown error.                                                                                  |
 

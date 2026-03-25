@@ -12,19 +12,21 @@ The **NotificationFlags** module implements a **NotificationFlags** instance.
 >
 > The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
-**System capability**: SystemCapability.Notification.Notification
+## NotificationFlags
 
-## Attributes
+Defines the notification flags.
+
+**System capability**: SystemCapability.Notification.Notification
 
 | Name            | Type                   | Read Only| Optional| Description                                        |
 | ---------------- | ---------------------- | ---- | -----|-------------------------------------------- |
 | soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | Yes | Yes| Settings of the sound alert for the notification.   |
-| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | Yes | Yes| Settings of the vibration for the notification.|
+| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | Yes | Yes| Settings of vibration for the notification.|
 
 
 ## NotificationFlagStatus<sup>11+</sup>
 
-Enumerates the notification flag statuses.
+Enumerates the notification flag states.
 
 **System capability**: SystemCapability.Notification.Notification
 

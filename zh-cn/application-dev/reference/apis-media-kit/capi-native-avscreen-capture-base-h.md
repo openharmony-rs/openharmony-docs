@@ -409,7 +409,7 @@ typedef void (*OH_AVScreenCaptureOnAudioBufferAvailable)(OH_AVScreenCapture *cap
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-|  bool isReady | 音频缓存区是否可用。 |
+|  bool isReady | 音频缓存区是否可用。true表示音频缓存区可用，false表示音频缓存区不可用。 |
 | [OH_AudioCaptureSourceType](#oh_audiocapturesourcetype) type | 音频源类型。 |
 
 ### OH_AVScreenCaptureOnVideoBufferAvailable()
@@ -431,7 +431,7 @@ typedef void (*OH_AVScreenCaptureOnVideoBufferAvailable)(OH_AVScreenCapture *cap
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVScreenCapture](capi-avscreencapture-oh-avscreencapture.md) *capture | 指向OH_AVScreenCapture实例的指针。 |
-|  bool isReady | 视频缓存区是否可用。 |
+|  bool isReady | 视频缓存区是否可用。true表示视频缓存区可用，false表示视频缓存区不可用。 |
 
 ### OH_AVScreenCapture_OnStateChange()
 

@@ -76,6 +76,12 @@ strokeWidth(value: number | string)
 
 设置分割线的宽度，支持[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)动态设置属性方法。
 
+> **说明：**
+> - 分割线的宽度不支持百分比设置。
+> - 使用水平分割线时，strokeWidth控制高度，优先级低于通用属性[height](ts-universal-attributes-size.md#height)；使用垂直分割线时，strokeWidth控制宽度，优先级低于通用属性[width](ts-universal-attributes-size.md#width)。
+> - 超过通用属性设置大小时，按照通用属性进行裁切。
+> - 如果设备硬件存在1像素取整后分割线不显示问题，建议使用2像素。
+
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -86,7 +92,7 @@ strokeWidth(value: number | string)
 
 | 参数名 | 类型                       | 必填 | 说明                                                         |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number&nbsp;\|&nbsp;string | 是   | 分割线宽度。<br/>默认值：1px。<br />非法值：按默认值处理 <br/>单位：vp<br/>**说明：**  <br>分割线的宽度不支持百分比设置。优先级低于[height](ts-universal-attributes-size.md#height)，超过通用属性设置大小时，按照通用属性进行裁切。部分设备硬件中存在1像素取整后分割线不显示问题，建议使用2像素。 |
+| value  | number&nbsp;\|&nbsp;string | 是   | 分割线宽度。<br/>默认值：1px。<br />非法值：按默认值处理。 <br/>单位：vp |
 
 ### lineCap
 

@@ -119,6 +119,58 @@ avSession.getAllSessionDescriptors((err: BusinessError, descriptors: avSession.A
 });
 ```
 
+## avSession.getSessionDescriptors<sup>22+</sup>
+
+getSessionDescriptors(category: SessionCategory): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
+
+Obtains the session description based on the session category. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.MANAGE_MEDIA_RESOURCES
+
+**System capability**: SystemCapability.Multimedia.AVSession.Manager
+
+**System API**: This is a system API.
+
+**Parameters**
+
+| Name   | Type                             | Mandatory| Description           |
+| --------  | ----------------------------------| ---- |  ---------------|
+| category  |  [SessionCategory](#sessioncategory22) |  Yes | Session category.|
+
+
+**Return value**
+
+| Type                                                                       | Description                                  |
+| --------------------------------------------------------------------------- | -------------------------------------- |
+| Promise\<Array\<Readonly\<[AVSessionDescriptor](#avsessiondescriptor)\>\>\> | Promise used to return a read-only session description object for the corresponding category.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [AVSession Error Codes](errorcode-avsession.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 201 | permission denied. |
+| 202 | Not System App. |
+| 6600101  | Session service exception. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((descriptors: avSession.AVSessionDescriptor[]) => {
+  console.info(`getSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+  if (descriptors.length > 0) {
+    console.info(`getSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
+    console.info(`GetSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
+    console.info(`GetSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
+  }
+}).catch((err: BusinessError) => {
+  console.error(`GetSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
+});
+```
+
 ## avSession.getHistoricalSessionDescriptors<sup>10+</sup>
 
 getHistoricalSessionDescriptors(maxSize?: number): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
@@ -187,9 +239,9 @@ Obtains the descriptors of all historical sessions. This API uses an asynchronou
 
 **Parameters**
 
-| Name  | Type                                                                           | Mandatory| Description                                                            |	
+| Name  | Type                                                                           | Mandatory| Description                                                            |
 | -------- | ------------------------------------------------------------------------------ | ---- |-----------------------------------------------------------------|
-| maxSize  | number                                                                         | Yes | Maximum number of descriptors to obtain. The value ranges from 0 to 10.|	
+| maxSize  | number                                                                         | Yes | Maximum number of descriptors to obtain. The value ranges from 0 to 10.|
 | callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](#avsessiondescriptor)\>\>\> | Yes  | Callback used to return an array of AVSessionDescriptor objects, each of which is read only.                             |
 
 **Error codes**
@@ -284,9 +336,9 @@ Obtains all the historical playlists. This API uses an asynchronous callback to 
 
 **Parameters**
 
-| Name  | Type                                                                           | Mandatory| Description                                                            |	
+| Name  | Type                                                                           | Mandatory| Description                                                            |
 | -------- | ----------------------------------------------------------------------------- | ---- |---------------------------------------------------------------|
-| maxSize  | number                                                                        | Yes  | Maximum number of playlists that can be obtained. Currently, the maximum number is restricted by the system.                     |	
+| maxSize  | number                                                                        | Yes  | Maximum number of playlists that can be obtained. Currently, the maximum number is restricted by the system.                     |
 | maxAppSize | number                                                                      | Yes  | Maximum number of applications to which the playlists to be obtained belong. Currently, the maximum number is restricted by the system.              |
 | callback | AsyncCallback<Array<Readonly<[AVQueueInfo](#avqueueinfo11)\>\>\> | Yes  | Callback used to return all the read-only historical playlists.                             |
 
@@ -379,7 +431,7 @@ Creates a session controller based on the session ID. Multiple session controlle
 
 **Parameters**
 
-| Name   | Type                                                       | Mandatory| Description                                                        |	
+| Name   | Type                                                       | Mandatory| Description                                                        |
 | --------- | ----------------------------------------------------------- | ---- |------------------------------------------------------------ |
 | sessionId | string                                                      | Yes  | Session ID. If the value is set to **'default'**, the system creates a default controller to control the system default session.                                                    |
 | callback  | AsyncCallback<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\> | Yes  | Callback used to return the session controller created, which can be used to obtain the session ID,<br>send commands and events to sessions, and obtain metadata and playback state information.|
@@ -496,7 +548,7 @@ Before calling this API, import the **ohos.multimedia.audio** module to obtain t
 | Name      | Type                                        | Mandatory| Description                                                        |
 | ------------ |--------------------------------------------| ---- | ------------------------------------------------------------ |
 | session      | [SessionToken](#sessiontoken) &#124; 'all' | Yes  | Session token. **SessionToken** indicates a specific token, and **'all'** indicates all tokens.|
-| audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\>   | Yes  | Audio devices.|	
+| audioDevices | Array\<[audio.AudioDeviceDescriptor](../apis-audio-kit/arkts-apis-audio-i.md#audiodevicedescriptor)\>   | Yes  | Audio devices.|
 | callback     | AsyncCallback\<void>     | Yes  | Callback used to return the result. If casting is successful, **err** is **undefined**; otherwise, **err** is an error object.     |
 
 **Error codes**
@@ -601,9 +653,9 @@ Starts an application to play a media asset. This API uses a promise to return t
 
 **Parameters**
 
-| Name       | Type                                                  | Mandatory| Description        |	
-| ------------ |------------------------------------------------------|----|------------|	
-| bundleName   | string                                               | Yes | Bundle name of the application.|	
+| Name       | Type                                                  | Mandatory| Description        |
+| ------------ |------------------------------------------------------|----|------------|
+| bundleName   | string                                               | Yes | Bundle name of the application.|
 | assetId      | string                                               | Yes | ID of the media asset.|
 | info      | [CommandInfo](arkts-apis-avsession-i.md#commandinfo22) | Yes | Command information.|
 
@@ -1010,7 +1062,7 @@ Subscribes to the latest distributed remote session change events.
 | Name  | Type                                                                                 | Mandatory| Description                                                                      |
 | -------- |-------------------------------------------------------------------------------------| ---- |--------------------------------------------------------------------------|
 | type     | string                                                                              | Yes  | Event type. The event **'distributedSessionChange'** is triggered when the latest distributed session is changed.|
-| distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | Yes  | Remote session type.                                                                 |	
+| distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | Yes  | Remote session type.                                                                 |
 | callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | Yes  | Callback used to return an array of session controller instances of the corresponding type. You can view the session ID, send commands and events to the session, and obtain metadata and playback status information.           |
 
 **Error codes**
@@ -1045,10 +1097,10 @@ Unsubscribes from the latest distributed remote session change events.
 
 **Parameters**
 
-| Name  | Type                                                                                 | Mandatory| Description                                                           |	
+| Name  | Type                                                                                 | Mandatory| Description                                                           |
 | -------- |-------------------------------------------------------------------------------------|----|---------------------------------------------------------------|
-| type     | string                                                                              | Yes | Event type. The event **'distributedSessionChange'** is triggered when the latest distributed session is changed.                   |	
-| distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | Yes | Remote session type.                                                      |	
+| type     | string                                                                              | Yes | Event type. The event **'distributedSessionChange'** is triggered when the latest distributed session is changed.                   |
+| distributedSessionType     | [DistributedSessionType](#distributedsessiontype18)             | Yes | Remote session type.                                                      |
 | callback | Callback<Array<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\>> | No | Callback used to return an array of session controller instances of the corresponding type. You can view the session ID, send commands and events to the session, and obtain metadata and playback status information.|
 
 **Error codes**
@@ -1080,7 +1132,7 @@ Sends a system key event to the top session. This API uses an asynchronous callb
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                 |	
+| Name  | Type                                                        | Mandatory| Description                                 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------- |
 | event    | [KeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent) | Yes  | Key event.                           |
 | callback | AsyncCallback\<void>                                         | Yes  | Callback used to return the result. If the event is sent, **err** is **undefined**; otherwise, **err** is an error object.|
@@ -1319,6 +1371,13 @@ Starts cast-enabled device discovery. This API uses an asynchronous callback to 
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If the command is sent and device discovery starts, **err** is **undefined**; otherwise, **err** is an error object.|
 
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message|
+| -------- | ---------------------------------------- |
+| 202 | Not System App. |
 
 **Example**
 
@@ -1362,7 +1421,7 @@ Starts cast-enabled device discovery with filter criteria specified. This API us
 
 | Name  | Type                                 | Mandatory| Description                                 |
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
-| filter | number | Yes| Filter criteria for device discovery. The value consists of **ProtocolType**s.|	
+| filter | number | Yes| Filter criteria for device discovery. The value consists of **ProtocolType**s.|
 | callback | AsyncCallback\<void>                  | Yes  | Callback used to return the result. If the command is sent and device discovery starts, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1644,6 +1703,7 @@ Unsubscribes from device discovery events.
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
 | type     | string                 | Yes   | Event type. The event **'deviceAvailable'** is triggered when a device is discovered.|
 | callback     | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void                 | No   | Callback used to return the device information.|
+
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
@@ -1745,7 +1805,7 @@ This API can be called on both the local and remote devices. You can use the API
 
 **Parameters**
 
-| Name   | Type                                                       | Mandatory| Description                                                        |	
+| Name   | Type                                                       | Mandatory| Description                                                        |
 | --------- | ----------------------------------------------------------- | ---- |------------------------------------------------------------ |
 | sessionId | string                    | Yes  |Session ID.|
 | callback  | AsyncCallback<[AVCastController](#avcastcontroller10)\> | Yes  | Callback used to return the cast controller.|
@@ -2178,7 +2238,7 @@ Subscribes to device log events.
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                                        |	
+| Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type, which is **'deviceLogEvent'** in this case.|
 | callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void        | Yes  | Callback function, in which **DeviceLogEventCode** is the return value of the current device log event.                     |
@@ -2214,7 +2274,7 @@ Unsubscribes from device log events.
 
 **Parameters**
 
-| Name  | Type                                                        | Mandatory| Description                                                        |	
+| Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type, which is **'deviceLogEvent'** in this case.|
 | callback | (callback: [DeviceLogEventCode](#devicelogeventcode13)) => void        | No | Callback used for unsubscription. If the unsubscription is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.           |
@@ -2265,9 +2325,9 @@ Subscribes to casting device connection state events.
 
 **Parameters**
 
-| Name  | Type                                                         | Mandatory | Description                                                        |	
+| Name  | Type                                                         | Mandatory | Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- |------------------------------------------------------------ |
-| type     | string                                                       | Yes  | Event type, which is **'deviceStateChanged'** in this case. This event is triggered when the connection state of the casting device changes.|	
+| type     | string                                                       | Yes  | Event type, which is **'deviceStateChanged'** in this case. This event is triggered when the connection state of the casting device changes.|
 | callback | (callback: [DeviceState](#devicestate20)) => void            | Yes  | Callback function, in which **DeviceState** contains the casting device ID, connection status code, connection error code, and system radar error code.|
 
 **Error codes**
@@ -2302,9 +2362,9 @@ Unsubscribes from casting device connection state events.
 
 **Parameters**
 
-| Name  | Type                                                         | Mandatory | Description                                                        |	
-| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |	
-| type     | string                                                       | Yes  | Event type, which is **'deviceStateChanged'** in this case. This event is triggered when the connection state of the casting device changes.|	
+| Name  | Type                                                         | Mandatory | Description                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| type     | string                                                       | Yes  | Event type, which is **'deviceStateChanged'** in this case. This event is triggered when the connection state of the casting device changes.|
 | callback | (callback: [DeviceState](#devicestate20)) => void            | No  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object. The **callback** parameter is optional. If it is not specified, all the subscriptions to the specified event are canceled for this session.|
 
 **Error codes**
@@ -2558,3 +2618,17 @@ Enumerates the return values of device log events.
 | --------------------------- | ---- | ----------- |
 | DEVICE_LOG_FULL       | 1    | The log file is full.   |
 | DEVICE_LOG_EXCEPTION       | 2    | An exception occurs during device logging.|
+
+## SessionCategory<sup>22+</sup>
+
+Enumerates the session categories in different scenarios.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Manager
+
+**System API**: This is a system API.
+
+| Name               |  Value | Description        |
+| --------------------| ---- | ----------- |
+| CATEGORY_ACTIVE     |  1   | Session category that appears in the system control interface.|
+| CATEGORY_NOT_ACTIVE |  2   | Session category that integrates some functions.|
+| CATEGORY_ALL        |  3   | All session categories.|

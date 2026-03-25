@@ -180,6 +180,10 @@ When using camera capabilities, you often need to create camera sessions and con
      private workerInstance: worker.ThreadWorker = new worker.ThreadWorker('entry/ets/workers/CameraWorker.ets');
      private uiContext: UIContext = this.getUIContext();
      private context: Context | undefined = this.uiContext.getHostContext();
+    private mXComponentOptions: XComponentOptions = {
+      type: XComponentType.SURFACE,
+      controller: this.mXComponentController
+    }
    
      onPageShow(): void {
        if ('' !== this.surfaceId) {
@@ -202,11 +206,7 @@ When using camera capabilities, you often need to create camera sessions and con
      build() {
        Column() {
          Column() {
-           XComponent({
-             id: 'componentId',
-             type: XComponentType.SURFACE,
-             controller: this.mXComponentController
-           })
+           XComponent(this.mXComponentOptions)
              .onLoad(async () => {
                console.info('onLoad is called');
                // Initialize the XComponent to obtain the surface ID of the preview stream.

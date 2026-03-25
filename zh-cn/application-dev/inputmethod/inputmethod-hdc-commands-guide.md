@@ -30,7 +30,7 @@ hdc shell ime [选项] [参数]
 
    ```shell
     # 输入：hdc命令启用输入法。
-    # 处理：检查为shell调用后，将接到启用输入法的接口。
+    # 处理：检查为shell调用后，将调用系统输入法管理接口。
     # 输出：效果等同于启用API调用。
     # 基础模式
     hdc shell ime -e com.xxx.yyy 

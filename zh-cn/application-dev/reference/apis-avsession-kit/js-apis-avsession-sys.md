@@ -681,7 +681,7 @@ startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-avSession.startAVPlayback("com.example.myapplication", "121278", "entry").then(() => {
+avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
   console.info('startAVPlayback : SUCCESS');
 }).catch((err: BusinessError) => {
   console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -1371,6 +1371,13 @@ startCastDeviceDiscovery(callback: AsyncCallback\<void>): void
 | -------- | ------------------------------------- | ---- | ------------------------------------- |
 | callback | AsyncCallback\<void>                  | 是   | 回调函数。当命令发送成功并开始搜索，err为undefined，否则返回错误对象。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Not System App. |
 
 **示例：**
 
@@ -1696,6 +1703,7 @@ off(type: 'deviceAvailable', callback?: (device: OutputDeviceInfo) => void): voi
 | ------   | ---------------------- | ---- | ------------------------------------------------------- |
 | type     | string                 | 是    | 事件回调类型，支持事件`'deviceAvailable'`：设备发现回调。|
 | callback     | (device: [OutputDeviceInfo](arkts-apis-avsession-i.md#outputdeviceinfo10)) => void                 | 否    | 用于返回设备信息。|
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
@@ -2621,6 +2629,6 @@ aVCastController.off('videoSizeChange');
 
 | 名称                |  值  | 说明         |
 | --------------------| ---- | ----------- |
-| CATEGORY_ACTIVE     |  1   | 可以在系统控制入口显示的会话类别。 |
-| CATEGORY_NOT_ACTIVE |  2   | 集成部分功能的会话类别。|
+| CATEGORY_ACTIVE     |  1   | 允许在系统控制入口显示的会话类别。 |
+| CATEGORY_NOT_ACTIVE |  2   | 禁止在系统控制入口显示的会话类别。 |
 | CATEGORY_ALL        |  3   | 所有会话类别。 |

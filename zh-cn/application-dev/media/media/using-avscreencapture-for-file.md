@@ -28,6 +28,7 @@
 ## 开发步骤及注意事项
 
 使用AVScreenCapture时要明确其状态的变化，在创建实例后，调用对应的方法可以进入指定的状态实现对应的行为。
+
 在确定的状态下执行不合适的方法会导致AVScreenCapture发生错误，开发者需要在调用状态转换的方法前进行状态检查，避免程序运行异常。
 
 **在 CMake 脚本中链接动态库**
@@ -75,7 +76,7 @@ target_link_libraries(entry PUBLIC libnative_avscreen_capture.so)
         .audioChannels = 2,
         .audioSource = OH_ALL_PLAYBACK
     };
-
+    // 录屏音频输出规格配置。audioBitrate保证输出文件的比特率为设置的预期比特率，和audioSampleRate无强关联。
     OH_AudioEncInfo audioEncInfo = {
         .audioBitrate = 48000,
         .audioCodecformat = OH_AAC_LC
@@ -204,6 +205,7 @@ void OnUserSelected(OH_AVScreenCapture* capture, OH_AVScreenCapture_UserSelectio
 
 // 开始录屏时调用StartScreenCapture。
 static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
+    // 初始化录屏参数，传入配置信息OH_AVScreenCaptureConfig。
     OH_AVScreenCaptureConfig config;
     OH_AudioCaptureInfo micCapInfo = {
         .audioSampleRate = 48000, 
@@ -255,7 +257,6 @@ static napi_value StartScreenCapture(napi_env env, napi_callback_info info) {
     // 实例化ScreenCapture。
     capture = OH_AVScreenCapture_Create();
 
-    // 初始化录屏参数，传入配置信息OH_AVScreenRecorderConfig。
     OH_RecorderInfo recorderInfo;
     const std::string SCREEN_CAPTURE_ROOT = "/data/storage/el2/base/files/";
     outputFd = open((SCREEN_CAPTURE_ROOT + "screen01.mp4").c_str(), O_RDWR | O_CREAT, 0777);

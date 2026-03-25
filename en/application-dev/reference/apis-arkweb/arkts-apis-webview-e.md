@@ -372,7 +372,7 @@ For details about the ArkWeb kernel version, see [Adaptation Guide for the M114 
 >**Table 1** Description of evergreen kernel and legacy kernel
 >| **Kernel Type** | **Name** | **Description** |
 >| ----------- | -------- | -------- |
->| Evergreen kernel     | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications. |
+>| Evergreen kernel     | EVERGREEN WebCore | Latest Web kernel of the system, based on which the complete functionalities are implemented. This kernel is recommended for applications.|
 >| Legacy kernel     | LEGACY WebCore | A previous-release kernel that receives only security and PR-related fixes, used solely for compatibility rollback, and is supported for a fixed duration only. |
 
 

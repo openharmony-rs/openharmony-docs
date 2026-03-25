@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Starting from API version 18, devices support multi-camera concurrent mode, enabling applications to use both front and rear cameras simultaneously for capturing photos and recording videos.
+The multi-camera concurrent mode has been supported since API version 18, meaning an application can enable the front/rear cameras simultaneously for preview and video recording (the function of capturing photos with front/rear cameras simultaneously is not yet available).
 
 >**NOTE**
 >
@@ -37,27 +37,25 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. Cal [getCameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18) to obtain the front and rear cameras.
+2. Cal [getCameraDevice](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameradevice18) to obtain the front and rear cameras. If the return value is **undefined**, based on the configuration information in the sample, it indicates that the current device does not support the default type of camera for the specified position (front/rear), and the multi-camera concurrent mode cannot be enabled.
    
    ```ts
    function getSupportedCamerasFn(cameraManager: camera.CameraManager)
    {
      let cameras = cameraManager.getSupportedCameras();
-
+   
      // Exit if fewer than two cameras are available (multi-camera not supported).
      if (cameras.length < 2) {
       return;
      }
-
+   
      // Obtain the logical rear and front cameras.
      let curCameraDeviceBack = cameraManager.getCameraDevice(camera.CameraPosition.CAMERA_POSITION_BACK, camera.CameraType.CAMERA_TYPE_DEFAULT);
      let curCameraDeviceFront = cameraManager.getCameraDevice(camera.CameraPosition.CAMERA_POSITION_FRONT, camera.CameraType.CAMERA_TYPE_DEFAULT);
    }
    ```
 
-3. Obtain the corresponding concurrent capability set.
-
-   Call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain an array of [CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18) objects, each of which includes the modes and output capabilities supported by the camera under the corresponding concurrency mode. If an empty array is returned, the current device does not support concurrency mode.
+3. Obtain the corresponding concurrent capability set. Call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain the [CameraConcurrentInfo](../../reference/apis-camera-kit/arkts-apis-camera-i.md#cameraconcurrentinfo18) array, which describes the supported modes and output capabilities of the camera under each concurrent scenario. **The modes and output capabilities you configure must fall within the bounds of this concurrent capability set.** If an empty array is returned, the current device does not support concurrent mode.
 
    ```ts
    function getSupportedOutputCapabilityFn(cameraManager: camera.CameraManager, curCameraDeviceFront: camera.CameraDevice, curCameraDeviceBack: camera.CameraDevice)
@@ -107,7 +105,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
          height: 1080
        }
      };
-     // Check whether the preview profile is supported.
+     // Check whether the preview profile exists. The preview profile must be included in the concurrent capability set obtained from getCameraConcurrentInfos.
      let previewProfiles = cameraOutputCapability.previewProfiles;
      if (previewProfiles.length < 1) {
        return;
@@ -142,7 +140,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
          height: 1080
        }
      };
-     // Check whether the photo profile is supported.
+     // Check whether the photo profile exists. The photo profile must be included in the concurrent capability set obtained from getCameraConcurrentInfos.
      let photoProfiles = cameraOutputCapability.photoProfiles;
      if (photoProfiles.length < 1) {
       return;
@@ -174,7 +172,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
      }
      return avRecorder;
    }
-
+  
    function initFd(context: common.Context): number {
      let filesDir = context.filesDir;
      let filePath = filesDir + `/${Date.now()}.mp4`;
@@ -182,7 +180,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
      let file: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
      return file.fd;
    }
-
+  
    async function prepareAVRecorder(videoProfileObj: camera.VideoProfile, curCameraDevice: camera.CameraDevice, avRecorder: media.AVRecorder, context: common.Context): Promise<void> {
      let fd = initFd(context);
      let videoConfig: media.AVRecorderConfig = {
@@ -207,10 +205,10 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
        console.error(`prepareAVRecorder prepare err`);
      });
    }
-
+  
    async function getVideoOutputFn(cameraManager: camera.CameraManager, cameraOutputCapability: camera.CameraOutputCapability, concurrentInfo: Array<camera.CameraConcurrentInfo>, curCameraDeviceFront: camera.CameraDevice, context: common.Context)
    {
-    // Create a video output stream using the video profile with the format 1003 and size 1920*1080 as an example.
+    // Create a video recording output stream with video profile (format: 1003, size: 1920*1080). The video profile must be included in the concurrent capability set obtained from getCameraConcurrentInfos.
      let videoProfileObj: camera.VideoProfile = {
        format: 1003,
        size: {
@@ -222,7 +220,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
          max: 60
        }
      };
-
+  
      // Replace the capability set.
      for (let i = 0; i < concurrentInfo.length; i++) {
        if (concurrentInfo[i].device.cameraPosition == camera.CameraPosition.CAMERA_POSITION_FRONT) {
@@ -258,9 +256,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
    }
    ```
   
-7. Open the camera.
-
-   Call [open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18) to open the specified camera in multi-camera concurrent mode. Before using this API, check whether the camera supports concurrent capabilities and call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain the concurrent capability set in the multi-camera concurrent mode. Do not use [open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18) without querying the concurrency capability set, as this will result in camera opening failure.
+7. Open the camera. Call [open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18) to open the specified camera in multi-camera concurrent mode. Before using this API, check whether the camera supports concurrent capabilities and call [getCameraConcurrentInfos](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#getcameraconcurrentinfos18) to obtain the concurrent capability set in the multi-camera concurrent mode. Do not use [open](../../reference/apis-camera-kit/arkts-apis-camera-CameraInput.md#open18) without querying the concurrency capability set, as this will result in camera opening failure.
 
    ```ts
    async function initCamera(cameraManager: camera.CameraManager, cameraDevice: camera.CameraDevice) {
@@ -387,7 +383,7 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
    }
    ```
 
-9. Take a photo using the front or rear camera configured in step 8.
+9. Take a photo using the front or rear camera configured via **photoOutput** in step 8. The function of capturing photos with front/rear cameras simultaneously is not yet available.
 
     ```ts
     async function takePicture(photoOutput: camera.PhotoOutput): Promise<void> {
@@ -445,31 +441,31 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
     ```ts
     // Flash.
     function hasFlashFn(flashMode: camera.FlashMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
+    
       // Check whether the camera device has flash.
       let hasFlash = session?.hasFlash();
-
+    
       // Check whether a flash mode is supported.
       let isFlashModeSupported = session?.isFlashModeSupported(flashMode);
-
+    
       // Set the flash mode.
       if (isFlashModeSupported) {
         session?.setFlashMode(flashMode);
       }
     }
-
+    
     // Exposure.
     function hasExposureFn(ExposureMode: camera.ExposureMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
+    
       // Check whether an exposure mode is supported.
       let hasFlash = session?.isExposureModeSupported(ExposureMode);
-  
+    
       // Set the exposure mode.
       if (hasFlash) {
         session?.setExposureMode(ExposureMode);
       }
     }
-
+    
     // Obtain the zoom ratio range.
     function getZoomRatioRange(session: camera.PhotoSession | camera.VideoSession | undefined = undefined): Array<number> {
       let zoomRatioRange: Array<number> = [];
@@ -478,10 +474,10 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
       }
       return zoomRatioRange;
     }
-
+    
     // Zoom.
     function setZoomRatioFn(zoomRatio: number, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
+    
       // Obtain the supported zoom ratio range.
       let zoomRatioRange = getZoomRatioRange();
       try {
@@ -490,24 +486,24 @@ For details about how to obtain the context, see [Obtaining the Context of UIAbi
         console.error(`setZoomRatioFn fail`);
       }
     }
-
+    
     // Exposure compensation.
     function setExposureBiasFn(exposureBias: number, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
+    
       // Obtain the exposure compensation values of the camera device.
       let biasRangeArray: Array<number> | undefined = [];
       biasRangeArray = session?.getExposureBiasRange();
-
+    
       // Set an exposure compensation value for the device.
       session?.setExposureBias(exposureBias);
     }
-
+    
     // Focus mode.
     function setFocusMode(focusMode: camera.FocusMode, session: camera.PhotoSession | camera.VideoSession | undefined = undefined): void {
-
+    
       // Check whether a focus mode is supported.
       let isSupported = session?.isFocusModeSupported(focusMode);
-
+    
       // Set the focus mode.
       if (!isSupported) {
         return;

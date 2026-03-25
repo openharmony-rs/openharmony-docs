@@ -15,7 +15,7 @@ To print logs, you can use HiLog or Console APIs. This topic focuses on how to u
 
 ## Available APIs
 
-HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides APIs to output logs of different levels. For details about the APIs, see [HiLog](../reference/apis-performance-analysis-kit/js-apis-hilog.md).
+HiLog defines five log levels (DEBUG, INFO, WARN, ERROR, and FATAL) and provides APIs to output logs of different levels. For details about the APIs, see [@ohos.hilog](../reference/apis-performance-analysis-kit/js-apis-hilog.md).
 
 | API| Description| 
 | -------- | -------- |
@@ -155,7 +155,7 @@ Add a click event in a button, which prints a log when the button is clicked.
    '%{public}s World %{public}d'
    ```
 
-   *%{public}s* indicates a string, and *%{public}d* indicates an integer. Both of them are displayed in plaintext.
+   *%{public}s* is a public string and *%{public}d* is a public integer.
 
    To output objects, use the following format string:
 

@@ -62,7 +62,7 @@ Repeat<string>(this.arr)
 
 each(itemGenerator: (repeatItem: RepeatItem\<T\>) => void)
 
-组件生成函数。当所有`.template()`的type和`.templateId()`返回值不匹配（即当前item不适用任何template定义的样式）时，将使用`.each()`处理数据项。
+组件生成函数。当所有[`.template()`](#template)的type和[`.templateId()`](#templateid)返回值不匹配（即当前item不适用任何template定义的样式）时，将使用`.each()`处理数据项。
 
 > **说明**
 >
@@ -81,7 +81,7 @@ each(itemGenerator: (repeatItem: RepeatItem\<T\>) => void)
 
 | 参数名 | 类型   | 必填 | 说明 |
 | ------ | ---------- | -------- | -------- |
-| repeatItem  | [RepeatItem](#repeatitemt)\<T\> | 否 | repeat数据项。 |
+| itemGenerator  | (repeatItem: [RepeatItem\<T\>](#repeatitemt)) => void | 是 | 组件生成函数。 |
 
 **示例：**
 ```ts
@@ -110,8 +110,7 @@ key(keyGenerator: (item: T, index: number) => string)
 
 | 参数名 | 类型   | 必填 | 说明  |
 | ------ | ---------- | -------- | -------- |
-| item  | T | 否 | `arr`数组中的数据项。 |
-| index  | number | 否 | `arr`数组中的数据项索引。 |
+| keyGenerator  | (item: T, index: number) => string | 是 | 键值生成函数。<br/>item：`arr`数组中的数据项，可选。<br/>index：`arr`数组中的数据项索引，可选。 |
 
 **示例：**
 ```ts
@@ -140,7 +139,7 @@ virtualScroll(virtualScrollOptions?: VirtualScrollOptions)
 
 | 参数名 | 类型   | 必填 | 说明  |
 | ------ | ---------- | -------- | -------- |
-| virtualScrollOptions  | [VirtualScrollOptions](#virtualscrolloptions)  | 否 | 虚拟滚动配置项。 |
+| virtualScrollOptions  | [VirtualScrollOptions](#virtualscrolloptions)  | 否 | 虚拟滚动配置项。<br/>默认值为undefined。 |
 
 **示例：**
 ```ts
@@ -173,7 +172,7 @@ template(type: string, itemBuilder: RepeatItemBuilder\<T\>, templateOptions?: Te
 | ------ | ---------- | -------- | -------- |
 | type | string | 是 | 当前模板类型。 |
 | itemBuilder  | [RepeatItemBuilder](#repeatitembuildert)\<T\> | 是 | 组件生成函数。 |
-| templateOptions | [TemplateOptions](#templateoptions对象说明) | 否 | 当前模板配置项。 |
+| templateOptions | [TemplateOptions](#templateoptions对象说明) | 否 | 当前模板配置项。<br/>默认值为undefined。 |
 
 **示例：**
 ```ts
@@ -342,7 +341,7 @@ type RepeatItemBuilder\<T\> = (repeatItem: RepeatItem\<T\>) => void
 
 | 参数名     | 类型          | 必填      | 说明                                    |
 | ---------- | ------------- | --------------------------------------- | --------------------------------------- |
-| repeatItem | [RepeatItem](#repeatitemt)\<T\> | 否 | 将item和index结合到一起的一个状态变量。 |
+| repeatItem | [RepeatItem](#repeatitemt)\<T\> | 否 | 将item和index结合到一起的一个状态变量。<br/>缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。 |
 
 ## TemplateOptions对象说明
 
@@ -388,5 +387,5 @@ type TemplateTypedFunc\<T\> = (item: T, index: number) => string
 
 | 参数名 | 类型   | 必填 | 说明                                         |
 | ------ | ------ | ---- | -------------------------------------------- |
-| item   | T      | 否   | arr中每一个数据项。T为开发者传入的数据类型。 |
-| index  | number | 否   | 当前数据项对应的索引。                       |
+| item   | T      | 否   | arr中每一个数据项。T为开发者传入的数据类型。<br/>缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。 |
+| index  | number | 否   | 当前数据项对应的索引。<br/>缺省时默认忽略该参数，请勿在闭包函数的实现中使用该参数，否则会编译报错。|

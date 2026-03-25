@@ -14,7 +14,7 @@ The full process of obtaining the metadata of a media asset includes creating an
 
 Read [AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md) for the API reference.
 
-1. Call **createAVMetadataExtractor()** to create an AVMetadataExtractor instance.
+1. Use [createAVMetadataExtractor()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavmetadataextractor11-1) to create an instance.
    ```ts
    import { media } from '@kit.MediaKit';
    // Create an AVMetadataExtractor instance.
@@ -163,8 +163,8 @@ Read [AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMet
    // Obtain the video thumbnail (promise mode).
    this.pixelMap = await avMetadataExtractor.fetchFrameByTime(timeUs, queryOption, param);
    ```
-   
-7. Call **release()** to release the AVMetadataExtractor instance.
+
+7. Call **release()** to release the AVImageGenerator instance.
    ```ts
    // Release the instance (callback mode).
    avMetadataExtractor.release((error) => {
@@ -184,20 +184,21 @@ Read [AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMet
 Refer to the sample project to obtain audio metadata and album cover.
 
 1. Create a project, download the [sample project](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/Media/AVMetadataExtractor/AVMetadataExtractorArkTS), and copy its resources to the corresponding directories.
-    ```
-    AVMetadataExtractorArkTS
-    entry/src/main/ets/
-    └── pages
-        └── Index.ets (metadata retrieval UI)
-    entry/src/main/resources/
-    ├── base
-    │   ├── element
-    │   │   ├── color.json
-    │   │   ├── float.json
-    │   │   └── string.json
-    │   └── media
-    │
-    └── rawfile
-        └── test.mp3 (audio resource)
-    ```
+
+   ```txt
+   AVMetadataExtractorArkTS
+   entry/src/main/ets/
+   └── pages
+       └── Index.ets (metadata retrieval UI)
+   entry/src/main/resources/
+   ├── base
+   │   ├── element
+   │   │   ├── color.json
+   │   │   ├── float.json
+   │   │   └── string.json
+   │   └── media
+   │
+   └── rawfile
+       └── test.mp3 (audio resource)
+   ```
 2. Compile and run the project.

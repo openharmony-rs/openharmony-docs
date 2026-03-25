@@ -25,13 +25,13 @@
 
 ### 结构体
 
-| 名称                                                                   | 描述                              |
-|----------------------------------------------------------------------|---------------------------------|
-| [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) | 张量数组结构体，用于存储张量数组指针和张量数组长度。      |
-| [OH_AI_ShapeInfo](capi-mindspore-oh-ai-shapeinfo.md)                 | 形状维度大小，预留最大维度是32，当前实际支持的最大维度是8。 |
-| [OH_AI_CallBackParam](capi-mindspore-oh-ai-callbackparam.md)         | 回调函数中传入的算子信息。                   |
-| [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md)                                                | 指向模型对象的指针。                                |
-| [OH_AI_TrainCfgHandle](capi-mindspore-oh-ai-traincfghandle.md)                                             | 指向训练配置对象的指针。                                |
+| 名称    | typedef关键字                                                               | 描述                              |
+|----------------------------------------------------------------------|--|---------------------------------|
+| OH_AI_TensorHandleArray | [OH_AI_TensorHandleArray](capi-mindspore-oh-ai-tensorhandlearray.md) | 张量数组结构体，用于存储张量数组指针和张量数组长度。      |
+| OH_AI_ShapeInfo | [OH_AI_ShapeInfo](capi-mindspore-oh-ai-shapeinfo.md)                 | 形状维度大小，预留最大维度是32，当前实际支持的最大维度是8。 |
+| OH_AI_CallBackParam | [OH_AI_CallBackParam](capi-mindspore-oh-ai-callbackparam.md)         | 回调函数中传入的算子信息。                   |
+| void * | [OH_AI_ModelHandle](capi-mindspore-oh-ai-modelhandle.md)                                                | 指向模型对象的指针。                                |
+| void * |[OH_AI_TrainCfgHandle](capi-mindspore-oh-ai-traincfghandle.md)                                             | 指向训练配置对象的指针。                                |
 
 ### 函数
 

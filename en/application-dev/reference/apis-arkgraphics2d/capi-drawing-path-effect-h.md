@@ -14,6 +14,8 @@ This file declares the functions related to the path effect in the drawing modul
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -42,7 +44,7 @@ This file declares the functions related to the path effect in the drawing modul
 
 ### OH_Drawing_PathDashStyle
 
-```
+```c
 enum OH_Drawing_PathDashStyle
 ```
 
@@ -63,7 +65,7 @@ Enumerates the drawing styles for path effects.
 
 ### OH_Drawing_CreateComposePathEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreateComposePathEffect(OH_Drawing_PathEffect* outer, OH_Drawing_PathEffect* inner)
 ```
 
@@ -91,7 +93,7 @@ Creates a path effect by sequentially applying the inner effect and then the out
 
 ### OH_Drawing_CreateCornerPathEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreateCornerPathEffect(float radius)
 ```
 
@@ -118,7 +120,7 @@ Creates a path effect that transforms the sharp angle between line segments into
 
 ### OH_Drawing_CreateDashPathEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreateDashPathEffect(float* intervals, int count, float phase)
 ```
 
@@ -147,7 +149,7 @@ Creates a dashed path effect. The dashed line effect is determined by a group of
 
 ### OH_Drawing_CreateDiscretePathEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreateDiscretePathEffect(float segLength, float deviation)
 ```
 
@@ -175,7 +177,7 @@ Creates a path effect that segments the path and scatters the segments in an irr
 
 ### OH_Drawing_CreatePathDashEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreatePathDashEffect(const OH_Drawing_Path* path, float advance, float phase,OH_Drawing_PathDashStyle type)
 ```
 
@@ -205,7 +207,7 @@ Creates a dashed path effect.
 
 ### OH_Drawing_CreateSumPathEffect()
 
-```
+```c
 OH_Drawing_PathEffect* OH_Drawing_CreateSumPathEffect(OH_Drawing_PathEffect* firstPathEffect,OH_Drawing_PathEffect* secondPathEffect)
 ```
 
@@ -233,7 +235,7 @@ Creates an overlay path effect based on two distinct path effects that take effe
 
 ### OH_Drawing_PathEffectDestroy()
 
-```
+```c
 void OH_Drawing_PathEffectDestroy(OH_Drawing_PathEffect* pathEffect)
 ```
 

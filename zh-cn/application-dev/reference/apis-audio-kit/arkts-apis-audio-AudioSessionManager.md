@@ -633,8 +633,7 @@ try {
 
 getSelectedMediaInputDevice(): AudioDeviceDescriptor
 
-获得通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。
-如果没有设置，返回一个deviceType属性为INVALID的设备。
+获得通过[selectMediaInputDevice](#selectmediainputdevice21)设置的媒体输入设备。如果没有设置，返回一个deviceType属性为INVALID的设备。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
@@ -735,6 +734,8 @@ setBluetoothAndNearlinkPreferredRecordCategory(category: BluetoothAndNearlinkPre
 | 6800101 | Parameter verification failed. |
 | 6800301 | Audio client call audio service error, System error. |
 
+**示例：**
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -767,6 +768,8 @@ getBluetoothAndNearlinkPreferredRecordCategory(): BluetoothAndNearlinkPreferredR
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 6800301 | Audio client call audio service error, System error. |
+
+**示例：**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';

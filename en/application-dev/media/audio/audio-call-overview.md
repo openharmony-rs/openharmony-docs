@@ -8,9 +8,10 @@
 
 Typically, audio calls are classified into VoIP calls and cellular calls.
 
-- Voice over Internet Protocol (VoIP) is a technology that enables you to make voice calls using a broadband Internet connection. During a VoIP call, call information is packed into data packets and transmitted over the network. Therefore, the VoIP call has high requirements on the network quality, and the call quality is closely related to the network connection speed.
-  
+- VoIP call is a technology that enables you to make voice calls using a broadband Internet connection. During a VoIP call, call information is packed into data packets and transmitted over the network. Therefore, the VoIP call has high requirements on the network quality, and the call quality is closely related to the network connection speed.
+
 - Cellular call refers to the traditional telephony service provided by carriers. Currently, APIs for developing cellular calling are available only for system applications.
+
 
 When developing the audio call service, you must use a proper audio processing strategy based on the [audio scene](#audio-scene) and [ringer mode](#ringer-mode).
 

@@ -9,7 +9,7 @@
 
 ## Overview
 
-This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to main thread jank events. For details about how to use the APIs (such as parameter restrictions and value ranges), see [@ohos.hiviewdfx.hiAppEvent (Application Event Logging)](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
+This topic describes how to use the ArkTS APIs provided by HiAppEvent to subscribe to main thread jank events. For details about the parameter restrictions and value ranges, see [@ohos.hiviewdfx.hiAppEvent](../reference/apis-performance-analysis-kit/js-apis-hiviewdfx-hiappevent.md).
 
 ## Available APIs
 
@@ -175,7 +175,7 @@ The following walks you through on how to subscribe to the main thread jank even
                    hilog.error(0x0000, 'testTag', `HiAppEvent err.code: ${err.code}, err.message: ${err.message}`)
                  });
                })
-             // The button for triggering the event that times out for 150 ms.
+             // Button to trigger the 150 ms timeout event.
              Button("timeOut150", { stateEffect:true, type: ButtonType.Capsule})
                .width('75%')
                .height(50)
@@ -236,7 +236,7 @@ The following walks you through on how to subscribe to the main thread jank even
 
    The main thread jank event is triggered when two consecutive timeout events are detected within the interval of the detection task.
   
-   You can quickly click the timeout button for two or three times to trigger the main thread jank event.
+   You can quickly click the timeout button for two or three times (for example, **timeOut350**, **timeOut150**, or **timeOut500**) to trigger the main thread jank event.
 
 ### Verifying the Subscription
 

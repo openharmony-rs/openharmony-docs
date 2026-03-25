@@ -35,9 +35,7 @@ Enumerates the [media error codes](errorcode-media.md).
 
 createVideoRecorder(callback: AsyncCallback\<VideoRecorder>): void
 
-Creates a VideoRecorder instance. This API uses an asynchronous callback to return the result.
-
-Only one VideoRecorder instance can be created per device.
+Creates a VideoRecorder instance. Each device supports only one VideoRecorder instance. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -78,8 +76,7 @@ media.createVideoRecorder((error: BusinessError, video: media.VideoRecorder) => 
 
 createVideoRecorder(): Promise\<VideoRecorder>
 
-Creates a VideoRecorder instance. This API uses a promise to return the result.
-Only one VideoRecorder instance can be created per device.
+Creates a VideoRecorder instance. Each device supports only one VideoRecorder instance. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -170,8 +167,8 @@ try {
     choice: 'true',  // Replace it with the user choice.
     displayId: -1, // Replace it with the ID of the display selected by the user.
     missionId: -1,   // Replace it with the ID of the window selected by the user.
-    checkBoxSelected: 'true',   // Replace it with the enabled status of screen protection.
-    isInnerAudioBoxSelected: 'true',   // Replace it the enabled status of internal audio recording.
+    checkBoxSelected: 'true',   // Replace it with whether the user has enabled screen protection.
+    isInnerAudioBoxSelected: 'true',   // Replace it with whether the user has enabled internal audio recording.
   }
   await media.reportAVScreenCaptureUserChoice(sessionId, JSON.stringify(jsonData));
 } catch (error: BusinessError) {
@@ -311,7 +308,7 @@ let audioRendererInfo: audio.AudioRendererInfo = {
 media.createParallelSoundPool(5, audioRendererInfo).then((soundpool_: media.SoundPool) => {
   if (soundpool_ != null) {
     soundPool = soundpool_;
-    console.info('Succceeded in creating SoundPool');
+    console.info('Succeeded in creating SoundPool');
   } else {
     console.error('Failed to create SoundPool');
   }
@@ -346,7 +343,8 @@ Enumerates the color formats supported by the video thumbnail.
 
 ## AVMetadataExtractor<sup>11+</sup>
 
-Provides APIs to obtain metadata from media assets. Before calling any API of AVMetadataExtractor, you must use [createAVMetadataExtractor()](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
+> **NOTE**
+> Provides APIs to obtain metadata from media assets. Before calling any API of AVMetadataExtractor, you must use [createAVMetadataExtractor()](arkts-apis-media-f.md#mediacreateavmetadataextractor11) to create an AVMetadataExtractor instance.
 
 ### getTimeByFrameIndex<sup>12+</sup>
 
@@ -503,12 +501,12 @@ This API can be called only after the [prepare()](arkts-apis-media-AVRecorder.md
 
 **Error codes**
 
-For details about the error codes, see [Media Error Codes](errorcode-media.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                |
 | -------- | --------------------------------------   |
-|   401    | The parameter check failed. Return by promise.            |
-|   801    | Capability not supported. Return by promise. |
+|   401    | The parameter check failed.            |
+|   801    | Capability not supported.              |
 
 **Example**
 

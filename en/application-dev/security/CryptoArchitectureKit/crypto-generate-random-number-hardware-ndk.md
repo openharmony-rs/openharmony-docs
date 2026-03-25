@@ -10,6 +10,7 @@
 From API version 21, you can generate secure random number with hardware entropy sources.
 
 Random numbers are used to generate temporary session keys and asymmetric encryption algorithm keys. In encryption and decryption, a secure random number generator must feature randomness, unrepeatability, and unpredictability.
+
 A stronger entropy source makes random numbers harder to predict or replicate, achieving true randomness.
 <!--Del-->You need to use HUKS for generating random numbers with hardware entropy sources. For systems or devices with a secure environment (such as TEE and secure chip), after the hardware entropy source is enabled, the secure random number (with hardware entropy source) is obtained from the TEE through HUKS as the entropy source of the algorithm library. The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.<!--DelEnd-->
 

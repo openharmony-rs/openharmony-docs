@@ -88,11 +88,11 @@
 
 > **说明：**
 >
-> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[API文档](../../reference/apis-asset-store-kit/js-apis-asset.md)。
+> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[@ohos.security.asset (关键资产存储服务)](../../reference/apis-asset-store-kit/js-apis-asset.md)。
 >
 > 在查询前，需确保已有需要用户认证的关键资产，可参考[指南文档](asset-js-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
 
-查询别名是demo_alias且需要用户认证的关键资产。示例中引入的@ohos.userIAM.userAuth用法详见[userAuth文档](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10)。
+查询别名是demo_alias且需要用户认证的关键资产。示例中引入的@ohos.userIAM.userAuth用法详见userAuth文档中的[start](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10)接口。
 
 <!-- @[query_user_auth_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_auth.ets) -->
 

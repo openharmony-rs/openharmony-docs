@@ -41,13 +41,13 @@ The [universal attributes](ts-component-general-attributes.md) are not supported
 
 ## AddFormMenuItem 
 
-
+```ts
 AddFormMenuItem(
   want: Want,
   componentId: string,
   options?: AddFormOptions
 ): void
-
+```
 
 **Decorator**: @Builder
 
@@ -70,7 +70,7 @@ AddFormMenuItem(
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name            | Type|Read-Only|Optional| Description                                                     |
+| Name| Type| Read-Only|Optional| Description|
 | --------------- | ---- | ---- | ---- | ---------------------------------------------------------------- |
 | formBindingData | [formBindingData.FormBindingData](../../apis-form-kit/js-apis-app-form-formBindingData.md#formbindingdata) | No| Yes| Service widget data.|
 | callback        | AsyncCallback\<string>                                                                                                | No| Yes | Callback used to return the result. The value **0** means that the service widget is added successfully, and a non-zero value means that the service widget fails to be added. For details about the error codes, see [Form Error Codes](../../apis-form-kit/errorcode-form.md). |
@@ -84,7 +84,7 @@ AddFormMenuItem(
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Parameters**
-| Name           | Type          | Read-Only|Optional| Description  
+| Name| Type| Read-Only|Optional| Description|
 | --------------- | ----------------- | ---- | ---- | ---- |
 | options | [MenuItemOptions](ts-basic-components-menuitem.md#menuitemoptions) | No  | Yes | Information about the menu item.|
 
@@ -129,17 +129,17 @@ struct Index {
           formBindingData: formBindingData.createFormBindingData({}),
           // formBindingData: formBindingData.createFormBindingData({ data: 'share' }),
           callback: (error, formId) => {
-            hilog.info(0x3900, tag, `callback info: error = ${JSON.stringify(error)}, formId = ${formId}`);
+            hilog.info(0x3900, tag, `callback info: formId = ${formId}`);
             if (error?.code === 0) {
               hilog.info(0x3900, tag, "Added to the home screen.")
             } else {
-              hilog.info(0x3900, tag, "Failed to add to the home screen. Try another method.")
+              hilog.error(0x3900, tag, `Failed to add to the home screen. Try another method. Error code: ${error?.code}, error message: ${error?.message}`)
             }
           },
           style: {
             // options: {
             // startIcon: $r("app.media.icon"), // Menu icon, which can be provided by yourself. The default value is "sys.media.ic_public_add."
-            //   content: "Add to home screen",  //  Menu content, which can be provided by yourself. The default value is "sys.string.ohos_add_form_to_desktop."
+            //   content: "Add to home screen",  // Menu content, which can be provided by yourself. The default value is "sys.string.ohos_add_form_to_desktop."
             //   endIcon: $r("app.media.icon") // Menu icon, which can be provided by yourself.
             // }
           }

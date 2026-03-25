@@ -33,6 +33,7 @@
 1. 选中模块或模块下的文件，右键单击`New` > `Insight Intent`，进入意图框架配置界面。
 2. 选择意图垂域、意图框架入口代码文件名以及意图配置。意图配置包含意图名称和绑定的Ability组件。
 3. 点击`Finish`，完成意图框架创建。
+
     此时将在module目录 > src > main > resources > base > profile中，生成insight_intent.json文件，可在该文件查看当前意图框架配置的相关信息。
 
     ```json

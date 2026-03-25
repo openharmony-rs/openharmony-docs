@@ -33,7 +33,7 @@
 
   - 自定义可动画属性：通过自定义属性动画机制抽象出的可动画属性。
 
-- 不可动画属性：zIndex、focusable等。
+- 不可动画属性：[zIndex](../reference/apis-arkui/arkui-ts/ts-universal-attributes-z-order.md#zindex)、[focusable](../reference/apis-arkui/arkui-ts/ts-universal-attributes-focus.md#focusable)等。
 
 
 通常，可动画属性的参数数据类型必须具备连续性，即可以通过插值方法来填补数据点之间的空隙，达到视觉上的连续效果。但属性的参数数据类型是否能够进行插值并非决定属性是否可动画的关键因素。例如，对于设置元素水平方向布局的[direction](../reference/apis-arkui/arkui-ts/ts-universal-attributes-location.md#direction)属性，其参数数据类型是枚举值。但是，由于位置属性是可动画属性，ArkUI同样支持在其属性值改变引起组件位置变化时添加动画。

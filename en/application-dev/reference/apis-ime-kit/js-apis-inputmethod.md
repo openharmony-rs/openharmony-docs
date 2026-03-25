@@ -3,7 +3,7 @@
 <!--Subsystem: MiscServices-->
 <!--Owner: @illybyy-->
 <!--Designer: @andeszhang-->
-<!--Tester: @murphy1984-->
+<!--Tester: @murphy84-->
 <!--Adviser: @zhang_yixin13-->
 
 The **inputMethod** module is oriented to common foreground applications (third-party applications and system applications such as Notes, Messaging, and Settings). It provides input method control and management capabilities, including displaying or hiding the soft keyboard, switching between input methods, and obtaining the list of all input methods.
@@ -577,7 +577,7 @@ Obtains an [InputMethodController](#inputmethodcontroller) instance.
 
 > **NOTE**
 >
-> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [getController()](#inputmethodgetcontroller9) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [getController](#inputmethodgetcontroller9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -601,7 +601,7 @@ Obtains an [InputMethodSetting](#inputmethodsetting8) instance.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getSetting()](#inputmethodgetsetting9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [getSetting](#inputmethodgetsetting9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -636,6 +636,65 @@ Enables or disables the simple keyboard.
 ```ts
   let enable: boolean = false;
   inputMethod.setSimpleKeyboardEnabled(enable);
+```
+
+## inputMethod.onAttachmentDidFail<sup>22+</sup>
+
+onAttachmentDidFail(callback: Callback&lt;AttachFailureReason&gt;): void
+
+Subscribes to attachment failure events. This API uses an asynchronous callback to return the result.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | Yes| Callback used to return the reason for attachment failure. This callback is only invoked when the attachment failure is triggered by the registrant's process.|
+
+**Example**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
+  (reason: inputMethod.AttachFailureReason): void => {
+    console.info(`Attachment failed with reason: ${reason}.`);
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
+  };
+inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
+```
+
+## inputMethod.offAttachmentDidFail<sup>22+</sup>
+
+offAttachmentDidFail(callback?:  Callback&lt;AttachFailureReason&gt;): void
+
+Unsubscribes from attachment failure events. This API uses an asynchronous callback to return the result.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+| -------- | -------- | -------- | -------- |
+| callback | Callback&lt;[AttachFailureReason](#attachfailurereason22)&gt; | No| Callback used for unsubscription, which must be the same as that passed by the subscription API. If no parameter is specified, all callback functions for this event will be unsubscribed from.|
+
+**Example**
+
+```ts
+import { Callback } from '@kit.BasicServicesKit';
+
+let attachmentDidFailCallback: Callback<inputMethod.AttachFailureReason> = 
+  (reason: inputMethod.AttachFailureReason): void => {
+    console.info(`Attachment failed with reason: ${reason}.`);
+  if (reason === inputMethod.AttachFailureReason.CALLER_NOT_FOCUSED) {
+    console.info(`Failure reason is CALLER_NOT_FOCUSED.`);
+  }
+  };
+inputMethod.onAttachmentDidFail(attachmentDidFailCallback);
+inputMethod.offAttachmentDidFail(attachmentDidFailCallback);
 ```
 
 ## TextInputType<sup>10+</sup>
@@ -726,7 +785,7 @@ Describes the type of the input method function key.
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| enterKeyType<sup>10+</sup>  | [EnterKeyType](#enterkeytype10) | No| No| Function type represented by the Enter key of the input method.|
+| enterKeyType  | [EnterKeyType](#enterkeytype10) | No| No| Function type represented by the Enter key of the input method.|
 
 ## InputAttribute<sup>10+</sup>
 
@@ -736,8 +795,8 @@ Describes the attributes of the edit box, including the text input type and Ente
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| textInputType<sup>10+</sup>  | [TextInputType](#textinputtype10) | No| No| Enumerates the text input types.|
-| enterKeyType<sup>10+</sup>  | [EnterKeyType](#enterkeytype10) | No| No| Function type represented by the Enter key.|
+| textInputType  | [TextInputType](#textinputtype10) | No| No| Enumerates the text input types.|
+| enterKeyType  | [EnterKeyType](#enterkeytype10) | No| No| Function type represented by the Enter key.|
 | placeholder<sup>20+</sup> | string | No| Yes| Placeholder information set for the edit box.<br>- When placeholder information is set for the edit box, the length cannot exceed 255 characters (a placeholder longer than 255 characters will be automatically truncated to 255 characters). It is used to prompt or guide users to enter temporary text or symbols. (For example, the placeholder prompts whether the input item is mandatory.)<br>- If no placeholder is set for the edit box, the value is an empty string by default.<br>- This field is provided for the input method application when [attach](#attach10) is called.|
 | abilityName<sup>20+</sup> | string | No| Yes| Ability name set for the edit box.<br>- If the ability name is set for the edit box, the length cannot exceed 127 characters. (A name longer than 127 characters will be automatically truncated to 127 characters.)<br>- If the ability name is not set for the edit box, the value is an empty string by default.<br>- This field is provided for the input method application when [attach](#attach10) is called.|
 
@@ -749,10 +808,10 @@ Describes the configuration of the edit box.
 
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| inputAttribute<sup>10+</sup>  | [InputAttribute](#inputattribute10) | No| No| Edit box attribute.|
-| cursorInfo<sup>10+</sup>  | [CursorInfo](#cursorinfo10) | No| Yes| Cursor information.|
-| selection<sup>10+</sup>  | [Range](#range10) | No| Yes| Text selection range.|
-| windowId<sup>10+</sup>  | number | No| Yes| ID of the window where the edit box is located. The value must be an integer.<br>You are advised to call [getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| inputAttribute  | [InputAttribute](#inputattribute10) | No| No| Edit box attribute.|
+| cursorInfo  | [CursorInfo](#cursorinfo10) | No| Yes| Cursor information.|
+| selection  | [Range](#range10) | No| Yes| Text selection range.|
+| windowId  | number | No| Yes| ID of the window where the edit box is located. The value must be an integer.<br>You are advised to call [getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
 | newEditBox<sup>20+</sup> | boolean | No| Yes| Whether the edit box is new. The value **true** means the edit box is new; the value **false** means the opposite.|
 | capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | No| Yes| Whether to capitalize the first letter in the edit box. If it is not set or is set to an invalid value, the first letter is not capitalized by default.|
 
@@ -849,7 +908,7 @@ Receives custom data sent by the input method application.
 
 > **NOTE**
 >
-> This callback is triggered when the registered MeesageHandler receives custom communication data sent by the input method application.
+> This callback is triggered when the registered MessageHandler receives custom communication data sent by the input method application.
 >
 > The **msgId** parameter is mandatory, and the **msgParam** parameter is optional. If only the custom **msgId** data is received, confirm it with the data sender.
 
@@ -922,6 +981,18 @@ Callback triggered when the input method framework needs to display the text pre
 | ------- | ----------------- | ---- | ----------------------------- |
 | text    | string            | Yes  | Text preview.                |
 | range   | [Range](#range10) | Yes  | Describes the range of the selected text.|
+
+## AttachFailureReason<sup>22+</sup>
+
+Enumerates the reasons for attachment failure.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
+| Name| Value|Description|
+| -------- | -------- |-------- |
+| CALLER_NOT_FOCUSED    | 0 |The caller does not belong to the application of the focused window.|
+| IME_ABNORMAL  | 1 |The input method application is abnormal.|
+| SERVICE_ABNORMAL  | 2 |The input method framework service is abnormal.|
 
 ## InputMethodController
 
@@ -2149,7 +2220,7 @@ Ends this input session. This API uses an asynchronous callback to return the re
 > 
 > This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
 > 
-> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [stopInputSession()](#stopinputsession9) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [stopInputSession](#stopinputsession9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2187,7 +2258,7 @@ Ends this input session. This API uses a promise to return the result.
 > 
 > This API can be called only when the edit box is attached to the input method. That is, it can be called to end the input session only when the edit box is focused.
 > 
-> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [stopInputSession()](#stopinputsession9) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [stopInputSession](#stopinputsession9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2575,7 +2646,7 @@ Disables listening for the cursor movement event of the input method.
 | Name | Type   | Mandatory| Description |
 | ------ | ------ | ---- | ---- |
 | type   | string | Yes  | Listening type. The value is fixed at **'moveCursor'**.|
-| callback | (direction: [Direction<sup>10+</sup>](#direction10)) => void | No| Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
+| callback | (direction: [Direction](#direction10)) => void | No| Callback used for disable listening, which must be the same as that passed by the **on** API.<br>If this parameter is not specified, listening will be disabled for all callbacks corresponding to the specified type.|
 
 **Example**
 
@@ -3765,7 +3836,7 @@ Displays a dialog box for selecting an input method. This API uses an asynchrono
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -3797,7 +3868,7 @@ Displays a dialog box for selecting an input method. This API uses a promise to 
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 9.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [inputmethodlistdialog](js-apis-inputmethodlist.md#inputmethodlistdialog) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 

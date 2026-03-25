@@ -16,7 +16,7 @@
 >  
 >  - 组件主动获取焦点不受窗口焦点的控制。
 >  
->  - 焦点开发参考[焦点开发指南](../../../ui/arkts-common-events-focus-event.md)。
+>  - 焦点开发参考[支持焦点处理](../../../ui/arkts-common-events-focus-event.md)。
 
 ## focusable
 
@@ -171,6 +171,7 @@ focusBox(style: FocusBoxStyle): T
 requestFocus(value: string): boolean
 
 方法语句中可使用的全局接口，调用此接口可以主动让焦点在下一帧渲染时转移至参数指定的组件上。
+
 如果需要指定组件立刻获焦，推荐使用FocusController中的焦点同步转移接口[requestFocus](../arkts-apis-uicontext-focuscontroller.md#requestfocus12)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
@@ -187,7 +188,7 @@ requestFocus(value: string): boolean
 
 | 类型 | 说明 |
 | ------- | ---- |
-| boolean | 返回值表示是否成功给目标组件申请到焦点。若参数指向的目标组件存在且可获焦，则返回true，否则返回false。 |
+| boolean | 返回值表示是否成功给目标组件申请到焦点。若参数指向的目标组件存在且已挂载组件树，并具备获焦能力，则返回true，否则返回false。 |
 
 >  **说明：**
 >
@@ -373,7 +374,7 @@ nextFocus(nextStep: Optional\<FocusMovement>): T
 
 > **说明：**
 > 
-> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
+> 直接使用focusControl可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../arkts-apis-uicontext-uicontext.md)实例，并使用[getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12)获取绑定实例的focusControl。
 
 ## 示例
 
@@ -397,7 +398,7 @@ struct FocusableExample {
               .width(165)
               .height(40)
               .fontColor(Color.White)
-              .focusOnTouch(true)           // 该Button组件点击后可获焦
+              .focusOnTouch(true) // 该Button组件点击后可获焦
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -407,8 +408,9 @@ struct FocusableExample {
                 .width(80)
                 .height(40)
                 .fontColor(Color.White)
-                .focusOnTouch(true)           // 该Button组件点击后可获焦
+                .focusOnTouch(true) // 该Button组件点击后可获焦
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -420,7 +422,7 @@ struct FocusableExample {
                 .fontColor(Color.White)
             }
           }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
-          .tabIndex(1)                      // 该Column组件为按TAB键走焦的第一个获焦的组件
+          .tabIndex(1) // 该Column组件为按TAB键走焦的第一个获焦的组件
           Column({ space: 5 }) {
             Button('Group2')
               .width(165)
@@ -435,8 +437,9 @@ struct FocusableExample {
                 .width(80)
                 .height(40)
                 .fontColor(Color.White)
-                .groupDefaultFocus(true)      // 该Button组件上级Column组件获焦时获焦
+                .groupDefaultFocus(true) // 该Button组件上级Column组件获焦时获焦
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -448,15 +451,16 @@ struct FocusableExample {
                 .fontColor(Color.White)
             }
           }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
-          .tabIndex(2)                      // 该Column组件为按TAB键走焦的第二个获焦的组件
+          .tabIndex(2) // 该Column组件为按TAB键走焦的第二个获焦的组件
         }
+
         Column({ space: 5 }) {
-          TextInput({placeholder: 'input', text: this.inputValue})
+          TextInput({ placeholder: 'input', text: this.inputValue })
             .onChange((value: string) => {
               this.inputValue = value
             })
             .width(156)
-            .defaultFocus(true)             // 该TextInput组件为层级页面的初始默认焦点
+            .defaultFocus(true) // 该TextInput组件为层级页面的初始默认焦点
           Button('Group3')
             .width(165)
             .height(40)
@@ -471,6 +475,7 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
@@ -485,6 +490,7 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
@@ -500,7 +506,7 @@ struct FocusableExample {
               .fontColor(Color.White)
           }
         }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
-        .tabIndex(3)                      // 该Column组件为按TAB键走焦的第三个获焦的组件
+        .tabIndex(3) // 该Column组件为按TAB键走焦的第三个获焦的组件
       }.alignItems(VerticalAlign.Top)
     }
   }
@@ -541,17 +547,20 @@ struct RequestFocusExample {
   @State selectId: string = 'LastPageId';
 
   build() {
-    Column({ space:20 }){
-      Row({space: 5}) {
+    Column({ space: 20 }) {
+      Row({ space: 5 }) {
         Button("id: " + this.idList[0] + " focusable(false)")
-          .width(180).height(70).fontColor(Color.White)
+          .width(180)
+          .height(70)
+          .fontColor(Color.White)
           .id(this.idList[0])
           .focusable(false)
         Button("id: " + this.idList[1])
           .width(180).height(70).fontColor(Color.White)
           .id(this.idList[1])
       }
-      Row({space: 5}) {
+
+      Row({ space: 5 }) {
         Button("id: " + this.idList[2])
           .width(180).height(70).fontColor(Color.White)
           .id(this.idList[2])
@@ -559,7 +568,8 @@ struct RequestFocusExample {
           .width(180).height(70).fontColor(Color.White)
           .id(this.idList[3])
       }
-      Row({space: 5}) {
+
+      Row({ space: 5 }) {
         Button("id: " + this.idList[4])
           .width(180).height(70).fontColor(Color.White)
           .id(this.idList[4])
@@ -567,14 +577,15 @@ struct RequestFocusExample {
           .width(180).height(70).fontColor(Color.White)
           .id(this.idList[5])
       }
-      Row({space: 5}) {
-        Select([{value: this.idList[0]},
-                {value: this.idList[1]},
-                {value: this.idList[2]},
-                {value: this.idList[3]},
-                {value: this.idList[4]},
-                {value: this.idList[5]},
-                {value: this.idList[6]}])
+
+      Row({ space: 5 }) {
+        Select([{ value: this.idList[0] },
+          { value: this.idList[1] },
+          { value: this.idList[2] },
+          { value: this.idList[3] },
+          { value: this.idList[4] },
+          { value: this.idList[5] },
+          { value: this.idList[6] }])
           .value(this.selectId)
           .onSelect((index: number) => {
             this.selectId = this.idList[index]
@@ -583,15 +594,15 @@ struct RequestFocusExample {
           .width(180).height(70).fontColor(Color.White)
           .onClick(() => {
             // 建议使用this.getUIContext().getFocusController().requestFocus()
-            let res = focusControl.requestFocus(this.selectId)      // 使选中的this.selectId的组件获焦
+            let res = focusControl.requestFocus(this.selectId) // 使选中的this.selectId的组件获焦
             if (res) {
-              this.getUIContext().getPromptAction().showToast({message: 'Request success'})
+              this.getUIContext().getPromptAction().showToast({ message: 'Request success' })
             } else {
-              this.getUIContext().getPromptAction().showToast({message: 'Request failed'})
+              this.getUIContext().getPromptAction().showToast({ message: 'Request failed' })
             }
           })
       }
-    }.width('100%').margin({ top:20 })
+    }.width('100%').margin({ top: 20 })
   }
 }
 ```
@@ -599,6 +610,7 @@ struct RequestFocusExample {
 示意图：
 
 按下TAB键，激活焦点态显示。
+
 申请不存在的组件获焦：
 
 ![requestFocus1](figures/requestFocus1.png)
@@ -658,7 +670,7 @@ struct FocusableExample {
   build() {
     Scroll() {
       Row({ space: 20 }) {
-        Column({ space: 20 }) {  // 标记为Column1
+        Column({ space: 20 }) { // 标记为Column1
           Column({ space: 5 }) {
             Button('Group1')
               .width(165)
@@ -674,6 +686,7 @@ struct FocusableExample {
                 .height(40)
                 .fontColor(Color.White)
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -685,6 +698,7 @@ struct FocusableExample {
                 .fontColor(Color.White)
             }
           }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+
           Column({ space: 5 }) {
             Button('Group2')
               .width(165)
@@ -699,8 +713,9 @@ struct FocusableExample {
                 .width(80)
                 .height(40)
                 .fontColor(Color.White)
-                .focusScopePriority('ColumnScope1', FocusPriority.PRIOR)  // Column1首次获焦时获焦
+                .focusScopePriority('ColumnScope1', FocusPriority.PRIOR) // Column1首次获焦时获焦
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -714,8 +729,9 @@ struct FocusableExample {
           }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
         }
         .focusScopeId('ColumnScope1')
-        Column({ space: 5 }) {  // 标记为Column2
-          TextInput({placeholder: 'input', text: this.inputValue})
+
+        Column({ space: 5 }) { // 标记为Column2
+          TextInput({ placeholder: 'input', text: this.inputValue })
             .onChange((value: string) => {
               this.inputValue = value
             })
@@ -734,11 +750,12 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
             .fontColor(Color.White)
-            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Column2获焦时获焦
+            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS) // Column2获焦时获焦
           Row({ space: 5 }) {
             Button()
               .width(80)
@@ -749,6 +766,7 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
@@ -764,7 +782,7 @@ struct FocusableExample {
               .fontColor(Color.White)
           }
         }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
-        .focusScopeId('ColumnScope2', true)  // Column2为焦点组
+        .focusScopeId('ColumnScope2', true) // Column2为焦点组
       }.alignItems(VerticalAlign.Top)
     }
   }
@@ -815,6 +833,7 @@ struct TabStop {
                 strokeWidth: LengthMetrics.px(10)
               })
           }
+
           Row({ space: 5 }) {
             Button("button 2")
               .width(200).height(70).fontColor(Color.White)
@@ -826,6 +845,7 @@ struct TabStop {
           }
         }.width('80%').margin({ top: 30 }).borderColor(Color.Black)
       }.width('95%').margin({ top: 60 }).borderColor(Color.Black)
+
       Column({ space: 20 }) {
         Column({ space: 20 }) {
           Row({ space: 5 }) {
@@ -882,13 +902,14 @@ struct TabStop {
 ### 示例6（设置自定义走焦）
 
 从API version 18开始，该示例通过配置[nextFocus](#nextfocus18)实现自定义走焦规则。
+
 如果不配置[nextFocus](#nextfocus18)，默认的点击tab的走焦顺序为：M->A->B->C；配置了[nextFocus](#nextfocus18)以后，走焦顺序变更为：M->D->F->B。
 
 ```ts
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.id('M')
-    instance.nextFocus({forward: 'D', up: 'C', down: 'D'})
+    instance.nextFocus({ forward: 'D', up: 'C', down: 'D' })
   }
 }
 
@@ -899,29 +920,38 @@ struct Index {
   @State idList: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   build() {
-    Column({space: 10}) {
-      Row({space: 10}) {
+    Column({ space: 10 }) {
+      Row({ space: 10 }) {
         Button("id: M")
           .attributeModifier(this.modifier)
         Button("id: " + this.idList[0])
           .id(this.idList[0])
-          .nextFocus({forward: 'C', backward: 'M', up: 'E', right: 'F', down: 'B', left: 'D'});
+          .nextFocus({
+            forward: 'C',
+            backward: 'M',
+            up: 'E',
+            right: 'F',
+            down: 'B',
+            left: 'D'
+          });
         Button("id: " + this.idList[1])
           .id(this.idList[1])
       }
-      Column({space: 10}) {
+
+      Column({ space: 10 }) {
         Button("id: " + this.idList[2])
           .id(this.idList[2]);
         Button("id: " + this.idList[3])
           .id(this.idList[3])
-          .nextFocus({forward: 'F'});
+          .nextFocus({ forward: 'F' });
       }
-      Row({space: 10}) {
+
+      Row({ space: 10 }) {
         Button("id: " + this.idList[4])
           .id(this.idList[4]);
         Button("id: " + this.idList[5])
           .id(this.idList[5])
-          .nextFocus({forward: 'B'});
+          .nextFocus({ forward: 'B' });
       }
     }
   }

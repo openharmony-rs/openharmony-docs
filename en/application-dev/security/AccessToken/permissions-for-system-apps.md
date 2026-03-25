@@ -17,6 +17,42 @@ Before requesting permissions for your application, read and understand the [per
 
 For details about the process for requesting permissions, see [Workflow for Requesting Permissions](determine-application-mode.md).
 
+## ohos.permission.RUNNING_LOCK
+
+Allows an application to obtain a running lock to keep running in the background.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 7
+
+## ohos.permission.SET_WALLPAPER
+
+Allows an application to set wallpapers.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 7
+
+## ohos.permission.MODIFY_AUDIO_SETTINGS
+
+Allows an application to modify audio settings.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 8
+
 ## ohos.permission.RECEIVER_STARTUP_COMPLETED
 
 Allows an application to subscribe to the startup broadcast.
@@ -914,6 +950,31 @@ Allows an application to invoke the system resource projection capability.
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 10
+
+## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
+
+Allows installation of enterprise MDM applications on enterprise devices.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 10
+
+## ohos.permission.INSTALL_SELF_BUNDLE
+
+Allows automatic updates of enterprise MDM applications on enterprise devices.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
 
 **Enable via ACL**: true
 
@@ -3967,7 +4028,7 @@ Allows a system service to access and read files in **/data/log/faultlog/faultlo
 
 **Enable via ACL**: true
 
-**Valid since**: 12
+**Valid since**: 13
 
 ## ohos.permission.START_RESTORE_NOTIFICATION
 
@@ -3992,18 +4053,6 @@ Allows an application to read weather data.
 **Enable via ACL**: true
 
 **Valid since**: 14
-
-## ohos.permission.ACCESS_MCU_LOG_DIR
-
-Allows a system application to access the microcontroller unit (MCU) log directory.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Valid since**: 12
 
 ## ohos.permission.GRANT_SHORT_TERM_WRITE_MEDIAVIDEO
 
@@ -4354,6 +4403,7 @@ Allows a system application to obtain the page information of a specified applic
 Allows a peripheral extension driver to access the USB Serial DDK APIs.
 
 The APIs can be used to develop the following types of peripheral extension drivers:
+
 Peripherals connected to the host via a USB bus and:
 
 1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
@@ -4709,7 +4759,7 @@ Allows an application to call the accessibility service extension APIs to query 
 
 Allows an application to read recording files from the file manager directory.
 
-**Permission level**: system_core
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
@@ -4723,7 +4773,7 @@ Allows an application to read recording files from the file manager directory.
 
 Allows an application to write recording files to the file manager directory.
 
-**Permission level**: system_core
+**Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
@@ -5141,7 +5191,7 @@ Allows an application to simulate user operations.
 
 ## ohos.permission.ACCESS_ANCO_APP_DATA
 
-Allows an application to access the directories of compatible applications.
+Allows an application to access the directory containing compatible applications.
 
 **Permission level**: system_core
 
@@ -5149,7 +5199,7 @@ Allows an application to access the directories of compatible applications.
 
 **Enable via ACL**: true
 
-**Supported devices**: Phone | PC/2in1 | Tablet
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 22
 
@@ -5211,7 +5261,7 @@ Allows a system application to set the launch reason when starting another appli
 
 ## ohos.permission.ACCESS_SUPER_HUB
 
-Allows an application to access Super Hub.
+Allows an application to access SuperHub.
 
 **Permission level**: system_basic
 
@@ -5232,3 +5282,19 @@ Allows an application to query and configure user identity authentication polici
 **Enable via ACL**: true
 
 **Valid since**: 18
+
+## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
+ 	
+Allows a system application to start the preview panel for adding application widgets to the home screen.
+
+With this permission, the system application can help users add the widgets to distribute to the home screen.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
+
+**Valid since**: 20

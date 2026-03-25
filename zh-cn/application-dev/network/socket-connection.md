@@ -93,7 +93,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
       ```
 
 4. 绑定IP地址和端口，端口可以指定或由系统随机分配，绑定成功后可以连接到指定的IP地址和端口，连接成功后可以发送数据。
-	 ```ts
+   ```ts
     // 绑定本地IP地址和端口。
     let ipAddress : socket.NetAddress = {} as socket.NetAddress;
     ipAddress.address = "192.168.xxx.xxx";
@@ -184,7 +184,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
     ```
 
 3. 绑定本地IP地址和端口，监听并接受与此套接字建立的客户端TCPSocket连接。
-	 ```ts
+   ```ts
     // 绑定本地IP地址和端口，进行监听。
     let ipAddress : socket.NetAddress = {} as socket.NetAddress;
     ipAddress.address = "192.168.xxx.xxx";
@@ -681,7 +681,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    });
    ```
 
-5. TLSSocket连接使用完毕后，主动关闭。
+4. TLSSocket连接使用完毕后，主动关闭。
 
    <!-- @[two-way_closeTlsSocket](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TwoWayTlsWorker.ets) -->
    
@@ -982,7 +982,7 @@ UDP与TCP流程大体类似，下面以TCP为例：
    });
    ```
 
-4. 订阅TLSSocketServer的连接事件，收到客户端连接，通过回调得到TLSSocketConnection对象，通过该对象可以实现订阅TLSSocketConnection相关的事件、向客户端发送数的动作，TLSSocketConnection连接使用完毕后，需要主动断开连接，进行取消订阅回调的动作。
+4. 订阅TLSSocketServer的连接事件，收到客户端连接，通过回调得到TLSSocketConnection对象，通过该对象可以实现订阅TLSSocketConnection相关的事件、向客户端发送数据的动作，TLSSocketConnection连接使用完毕后，需要主动断开连接，进行取消订阅回调的动作。
 
    <!-- @[tlsServer_connection_methods](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_Datatransmission/Socket/entry/src/main/ets/workers/TlsServerWorker.ets) -->
    

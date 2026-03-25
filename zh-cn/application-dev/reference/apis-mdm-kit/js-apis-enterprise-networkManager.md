@@ -285,7 +285,6 @@ setNetworkInterfaceDisabledSync(admin: Want, networkInterface: string, isDisable
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -319,7 +318,7 @@ setGlobalProxySync(admin: Want, httpProxy: connection.HttpProxy): void
 | 参数名    | 类型                                                         | 必填 | 说明                       |
 | --------- | ------------------------------------------------------------ | ---- | -------------------------- |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。             |
-| httpProxy | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 是   | 网络全局Http代理配置信息。 |
+| httpProxy | [connection.HttpProxy](../apis-network-kit/js-apis-net-connection.md#httpproxy10) | 是   | 网络全局HTTP代理配置信息。 |
 
 **错误码**：
 
@@ -740,6 +739,9 @@ addDomainFilterRule(admin: Want, domainFilterRule: DomainFilterRule): void
 为设备添加域名过滤规则，从API version 22开始，支持IPv4和IPv6。API version 21及之前版本，仅支持IPv4。<br/>
 添加了[Action](#action)为ALLOW规则后，将会默认添加DENY规则，不在ALLOW规则之内的域名解析数据包将会被丢弃或拦截。<br/>
 设备重启，将会清空域名过滤规则。
+> **说明：**
+>
+>为避免DNS缓存导致拦截规则失效，建议系统启动后立即配置域名过滤规则。若已因DNS缓存导致拦截失效，重启系统可清除缓存，恢复拦截功能。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_NETWORK
 
@@ -949,7 +951,6 @@ turnOnMobileData(admin: Want, isForce: boolean): void
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -997,7 +998,6 @@ turnOffMobileData(admin: Want): void
 ```ts
 import { networkManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -1048,12 +1048,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1103,11 +1103,11 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   networkManager.deleteApn(wantTemp, apnId);
   console.info(`Succeeded in deleting apn.`);
@@ -1153,18 +1153,18 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
   "mcc": "460",
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   networkManager.updateApn(wantTemp, apnInfo, apnId);
   console.info(`Succeeded in updating apn.`);
@@ -1209,11 +1209,11 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   networkManager.setPreferredApn(wantTemp, apnId);
   console.info(`Succeeded in setting preferred apn.`);
@@ -1264,12 +1264,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1325,11 +1325,11 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
-let apnId: string = "1"; //需根据实际情况进行替换
+let apnId: string = "1"; // 需根据实际情况进行替换
 try {
   let queryResult: Record<string, string> = networkManager.queryApn(wantTemp, apnId);
   console.info(`Succeeded in querying apn, result : ${JSON.stringify(queryResult)}`);

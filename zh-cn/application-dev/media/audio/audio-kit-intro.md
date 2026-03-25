@@ -107,11 +107,13 @@ audio模块下的接口支持PCM编码，包括AudioRenderer、AudioCapturer、T
 音频格式说明：
 
 - 支持的音频采样率（Hz）：8000、11025、12000、16000、22050、24000、32000、44100、48000、64000、88200<sup>12+</sup>、96000，176400<sup>12+</sup>、192000<sup>12+</sup>具体参考枚举[AudioSamplingRate](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosamplingrate8)。
+
   不同设备支持的采样率规格会存在差异。
 
 - 支持单声道、双声道，具体参考[AudioChannel](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiochannel8)。
 
 - 支持的采样格式：U8（无符号8位整数）、S16LE（带符号的16位整数，小尾数）、S24LE（带符号的24位整数，小尾数）、S32LE（带符号的32位整数，小尾数）、F32LE（带符号的32位浮点数，小尾数），具体参考[AudioSampleFormat](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audiosampleformat8)。
+
   由于系统限制，S24LE、S32LE、F32LE仅部分设备支持，请根据实际情况使用。
 
   小尾数指的是小端模式，即数据的高字节保存在内存的高地址中，而数据的低字节保存在内存的低地址中。这种存储模式将地址的高低和数据的位权有效结合起来，高地址部分权值高，低地址部分权值低。

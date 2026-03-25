@@ -292,7 +292,7 @@ async function deferredPhotoCase(context: Context, surfaceId: string): Promise<v
   console.info('isDeferredImageDeliverySupported res:' + isSupportDeferred);
   if (isSupportDeferred) {
     // Enable deferred photo delivery.
-	photoOutput.deferImageDelivery(camera.DeferredDeliveryImageType.PHOTO);
+  photoOutput.deferImageDelivery(camera.DeferredDeliveryImageType.PHOTO);
     // Check whether deferred photo delivery is enabled.
     let isSupportEnabled: boolean = photoOutput.isDeferredImageDeliveryEnabled(camera.DeferredDeliveryImageType.PHOTO);
     console.info('isDeferredImageDeliveryEnabled res:' + isSupportEnabled);

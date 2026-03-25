@@ -96,6 +96,7 @@ console.info(JSON.stringify(buf3)); // {"type":"Buffer","data":[104,101,108,108,
 allocUninitializedFromPool(size: number): Buffer
 
 Creates a **Buffer** object of the specified size from the buffer pool, without initializing it.
+
 You need to use [fill()](#fill) to initialize the **Buffer** object created.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -137,6 +138,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0,0,0,0,0,0,0,0
 allocUninitialized(size: number): Buffer
 
 Creates a **Buffer** object of the specified size, without initializing it. This API does not allocate memory from the buffer pool.
+
 You need to use [fill()](#fill) to initialize the **Buffer** object created.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -390,6 +392,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
 from(buffer: Buffer | Uint8Array): Buffer
 
 Copies the data of a passed **Buffer** object to create a new **Buffer** object and returns the new one.
+
 Creates a **Buffer** object based on the memory of a passed **Uint8Array** object and returns the new object, maintaining the memory association of the data.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.

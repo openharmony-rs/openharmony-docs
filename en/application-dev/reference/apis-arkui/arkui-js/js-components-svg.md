@@ -34,7 +34,7 @@ The [universal attributes](js-components-svg-common-attributes.md) and the attri
 | width   | &lt;length&gt;\|&lt;percentage&gt; | -             | No        | Component width.                         |
 | height  | &lt;length&gt;\|&lt;percentage&gt; | -             | No        | Component height.                        |
 | x       | &lt;length&gt;\|&lt;percentage&gt; | -             | No        | X-coordinate of the current **\<svg>** component. The settings do not work for the root **\<svg>** node. |
-| y       | &lt;length&gt;\|&lt;percentage&gt; |               | No        | Y-coordinate of the current **\<svg>** component. The settings do not work for the root **\<svg>** node. |
+| y       | &lt;length&gt;\|&lt;percentage&gt; | -             | No        | Y-coordinate of the current **\<svg>** component. The settings do not work for the root **\<svg>** node. |
 | viewBox | string                             | -             | No        | View box of the current **\<svg>** component. The supported format is \<number number number number>. The four parameters indicate **min-x**, **min-y**, **width**, and **height**, respectively. The width and height of the view box are different from those of the **\<svg>** component. The view box is scaled in center-aligned mode. |
 
 

@@ -101,7 +101,7 @@ This error code is reported if the result set is empty or the specified location
 
 **Possible Causes**
 
-The result set is empty, or the specified row number in the result set is out of range [0, m - 1]. **m** is **resultsetV9.rowCount**.
+The result set is empty, or the specified row number in the result set is out of range [0, m - 1]. **m** is **ResultSet.rowCount**.
 
 **Solution**
 
@@ -120,8 +120,8 @@ This error code is reported if the column value is null, or the column data type
 **Possible Causes**
 
 1. The result set is empty.
-2. The current row number in the result set is out of range [0, m - 1]. **m** is **resultsetV9.rowCount**.
-3. The column number is out of the range [0, n - 1]. **n** is **resultsetV9.columnCount**.
+2. The current row number in the result set is out of range [0, m - 1]. **m** is **ResultSet.rowCount**.
+3. The column number is out of the range [0, n - 1]. **n** is **ResultSet.columnCount**.
 4. The API called does not support the type of the column data.
 
 **Solution**
@@ -202,6 +202,7 @@ Key configuration, such as **area**, **securityLevel**, or the read/write permis
 **Solution**
 
 Restore the original configuration if required. Otherwise, delete the old RDB store, use the new configuration to create a new RDB store, and import the data to the new RDB store.
+
 Check whether the read/write permission on the database file is modified using chmod. Ensure that the current user has sufficient permissions to read and write the database file.
 
 ## 14800018 No Match
@@ -334,7 +335,7 @@ This error code is reported if the SQLite database file is locked.
 
 **Possible Causes**
 
-1. Two processes of the same application, for example, UIability and DataShareability, perform addition, deletion, and modification operations in the same database, or processes in the same group of different applications perform addition, deletion, and modification operations in the same database via the group.
+1. Two processes of the same application, for example, **UIAbility** and **DataShareExtensionAbility**, perform addition, deletion, and modification operations in the same database, or processes in the same group of different applications perform addition, deletion, and modification operations in the same database via the group.
 2. See SQLITE_BUSY.
 
 **Solution**
@@ -355,7 +356,7 @@ This error code is reported if an SQLite database table is locked.
 **Possible Causes**
 
 1. The database file to write has been locked by another process. A transaction is being performed in the RDB store, or the write attempt is blocked by a lock mechanism.
-2. See SQLITE_LOCKED.
+2. See **SQLITE_LOCKED**.
 
 **Solution**
 

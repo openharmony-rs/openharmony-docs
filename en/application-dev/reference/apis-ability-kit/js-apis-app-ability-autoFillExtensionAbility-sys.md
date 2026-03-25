@@ -7,7 +7,7 @@
 <!--Tester: @lixueqing513-->
 <!--Adviser: @huipeizi-->
 
-The AutoFillExtensionAbility module provides APIs for automatically filling in and saving accounts and passwords. It inherits from [ExtensionAbility](js-apis-app-ability-extensionAbility.md).
+The AutoFillExtensionAbility module supports auto-fill and auto-save of data of multiple types, such as accounts, passwords, and addresses. It is inherited from [ExtensionAbility](js-apis-app-ability-extensionAbility.md).
 
 > **NOTE**
 > 

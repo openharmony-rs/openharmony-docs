@@ -6,6 +6,10 @@
 <!--Tester: @sally__-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct ArkUI_FloatProperty* ArkUI_FloatPropertyHandle
+```
+
 ## Overview
 
 Defines a struct for the float property pointer.

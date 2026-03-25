@@ -1,10 +1,14 @@
 # ArkUI_NativeGestureAPI_2
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
+
+```c
+typedef struct {...} ArkUI_NativeGestureAPI_2
+```
 
 ## Overview
 
@@ -35,8 +39,8 @@ Defines a collection of gesture APIs.
 
 ### setGestureInterrupterToNode()
 
-```
-int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData,ArkUI_GestureInterruptResult (*interrupter)(ArkUI_GestureInterruptInfo* info))
+```c
+int32_t (*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureInterruptResult (*interrupter)(ArkUI_GestureInterruptInfo* info))
 ```
 
 **Description**
@@ -48,12 +52,12 @@ Sets the callback for gesture interruption events.
 
 | Name                      | Description|
 |---------------------------| -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Node for which you want to set a gesture interruption callback.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to the ArkUI node for which you want to set a gesture interruption callback.|
 | void* userData            | Pointer to user-defined data.|
-| interrupter               | Gesture interruption callback to set. **info** returns the gesture interruption data. If **interrupter** returns **GESTURE_INTERRUPT_RESULT_CONTINUE**, the gesture recognition process proceeds properly; if it returns **GESTURE_INTERRUPT_RESULT_REJECT**, the gesture recognition process is interrupted.|
+| [ArkUI_GestureInterruptResult](./capi-native-gesture-h.md#arkui_gestureinterruptresult) (\*interrupter)([ArkUI_GestureInterruptInfo](./capi-arkui-nativemodule-arkui-gestureinterruptinfo.md)* info)     | Gesture interruption callback to set. **info** returns the gesture interruption data. If **interrupter** returns **GESTURE_INTERRUPT_RESULT_CONTINUE**, the gesture recognition process continues. If it returns **GESTURE_INTERRUPT_RESULT_REJECT**, the gesture recognition process is paused. If this parameter is set to a null pointer, the callback function is unregistered.<br>Note: After the event interruption callback is registered, it will be available in subsequent single-gesture processing. That is, even if you use the **setGestureInterrupterToNode** API to reset the gesture interruption callback to undefined or use the [dispose](./capi-arkui-nativemodule-arkui-nativegestureapi-1.md#dispose) API to dispose of the gesture that is about to be triggered, the callback will still respond when the trigger condition is met. If the object used in the callback has been released before the callback is triggered, you need to protect the object.|
 
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | **0**: Success.<br>            **401**: Parameter error.|
+| int32_t | Error code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|

@@ -34,7 +34,7 @@ Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) com
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | Yes  | Callback used to return the result. Returns the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | Yes  | Callback used to return the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
 
 **Example**
 
@@ -129,7 +129,7 @@ Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) com
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value is fixed at **'navDestinationUpdate'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
 | options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | Yes  | ID of the target [Navigation](arkui-ts/ts-basic-components-navigation.md) component.                                  |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | Yes  | Callback used to return the result. Returns the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | Yes  | Callback used to return the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                |
 
 **Example**
 
@@ -226,7 +226,7 @@ Listens for [NavDestination](arkui-ts/ts-basic-components-navdestination.md) com
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | Yes  | Event type. The value is fixed at **'navDestinationUpdateByUniqueId'**, which indicates [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state changes.|
 | navigationUniqueId  | number | Yes  | Unique ID of the target [Navigation](arkui-ts/ts-basic-components-navigation.md) component, which can be obtained using [queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12).                                              |
-| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | Yes  | Callback used to return the result. Returns the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                            |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | Yes  | Callback used to return the current [NavDestination](arkui-ts/ts-basic-components-navdestination.md) component state.                            |
 
 **Example**
 
@@ -334,7 +334,7 @@ Listens for the start and end of scroll events of all scrollable components. Sup
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.     |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | Yes  | Callback used to return the result. Callback used to return the information about the scroll event.  |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | Yes  | Callback used to return the information about the scroll event.  |
 
 **Example**
 
@@ -426,7 +426,7 @@ Unregisters the listener for the start and end of scroll events of all scrollabl
 | Name  | Type                                                 | Mandatory| Description                                                        |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.     |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | No  | Callback used to return the result. It returns the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.  |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\> | No  | Callback used to return the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.  |
 
 **Example**
 
@@ -447,8 +447,8 @@ Listens for the start and end of scroll events of a specific scrollable componen
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | Yes  | Callback used to return the result. Callback used to return the information about the scroll event.                |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | Yes  | Callback used to return the information about the scroll event.                |
 
 **Example**
 
@@ -469,8 +469,8 @@ Unregisters the listener for the start and end of scroll events of a specific sc
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | Yes  | Event type. The value **'scrollEvent'** indicates the start and end of a scroll event.|
-| options  | [observer.ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
-| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | No  | Callback used to return the result. It returns the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.                |
+| options  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Observer options, including the ID of the target scrollable component.                   |
+| callback | Callback\<observer.[ScrollEventInfo](js-apis-arkui-observer.md#scrolleventinfo12)\>        | No  | Callback used to return the information about the scroll event. If no parameter is provided, all scroll event listeners are unregistered.                |
 
 **Example**
 
@@ -1676,6 +1676,174 @@ Unregisters the listener for tab switching events of the specified [Tabs](arkui-
 
 See the example for [on('tabChange')](#ontabchange22-1).
 
+## on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', callback: Callback\<observer.TextChangeEventInfo\>): void
+
+Listens globally for text input field changes events.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | Yes  | Callback used to return the text change information.|
+
+**Example**
+```ts
+import { UIObserver } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TextUiObserver {
+  observer: UIObserver = this.getUIContext().getUIObserver();
+  build() {
+    Column() {
+      TextArea({ text: "Hello World TextArea" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId1")
+      TextInput({ text: "Hello World TextInput" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId2")
+      Search({ value: "Hello World Search" })
+        .width(336)
+        .height(56)
+        .margin({bottom:5})
+        .backgroundColor('#FFFFFF')
+        .id("TestId3")
+      Row() {
+        // Enable global listening.
+        Button('UIObserver on')
+          .onClick(() => {
+            this.observer.on('textChange', (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+        // Disable global listening.
+        Button('UIObserver off')
+          .onClick(() => {
+            this.observer.off('textChange');
+          })
+      }.margin({bottom:5})
+      // Enable and disable listening for a specific ID.
+      Row() {
+        Button('UIObserver TestId1 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId1" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId1 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId1" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId2 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId2" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId2 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId2" });
+          })
+      }.margin({bottom:5})
+      Row() {
+        Button('UIObserver TestId3 on')
+          .onClick(() => {
+            this.observer.on('textChange', { id: "TestId3" }, (info) => {
+              console.info('textChangeInfo', JSON.stringify(info));
+            });
+          })
+
+        Button('UIObserver TestId3 off')
+          .onClick(() => {
+            this.observer.off('textChange', { id: "TestId3" });
+          })
+      }.margin({bottom:5})
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+## off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', callback?: Callback\<observer.TextChangeEventInfo\>): void
+
+Unregisters the global listener for text input field changes events.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | No  | Target listener to unregister. If no parameter is provided, all listeners registered for text input field changes events are unregistered.|
+
+**Example**
+
+For details, see [on('textChange')](#ontextchange22).
+
+## on('textChange')<sup>22+</sup>
+
+on(type: 'textChange', identity: observer.ObserverOptions, callback:Callback\<observer.TextChangeEventInfo\>): void
+
+Listens on the text input component with the specified ID.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the text input component to be listened on.                            |
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | Yes  | Callback used to return the text change information.|
+
+**Example**
+
+For details, see [on('textChange')](#ontextchange22).
+
+## off('textChange')<sup>22+</sup>
+
+off(type: 'textChange', identity: observer.ObserverOptions, callback?: Callback\<observer.TextChangeEventInfo\>): void
+
+Disables the listener for the text input component with the specified ID.
+
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters**
+
+| Name  | Type                                                 | Mandatory| Description                                                                    |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                | Yes  | Event type. The value is fixed at **'textChange'**, indicating text input field changes events.|
+| identity | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | ID of the text input component to be listened on.|
+| callback | Callback\<observer.[TextChangeEventInfo](js-apis-arkui-observer.md#textchangeeventinfo22)\> | No  | Target listener to unregister. If no parameter is passed, all listeners for the text input component with the specified IDs are canceled.|
+
+**Example**
+
+For details, see [on('textChange')](#ontextchange22).
+
 ## on('beforePanStart')<sup>19+</sup>
 
 on(type: 'beforePanStart', callback: PanListenerCallback): void
@@ -2428,13 +2596,13 @@ Unregisters previously registered window size layout breakpoint change listeners
 
 See the example for [on('windowSizeLayoutBreakpointChange')](#onwindowsizelayoutbreakpointchange22).
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(callback: Callback\<SwiperContentInfo\>): void
 
 Listens for content switching events of the **Swiper** component. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2442,7 +2610,7 @@ Listens for content switching events of the **Swiper** component. This API uses 
 
 | Name  | Type                         | Mandatory| Description                                                        |
 | -------- | ----------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\> | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
 
 **Example**
 
@@ -2496,13 +2664,13 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(callback?: Callback\<SwiperContentInfo\>): void
 
 Unregister the listener for content switching events of the **Swiper** component.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2510,19 +2678,19 @@ Unregister the listener for content switching events of the **Swiper** component
 
 | Name  | Type                        | Mandatory| Description                                                        |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
 
 **Example**
 
-See the example for the [onSwiperContentUpdate](#onswipercontentupdate23) API.
+See the example for the [onSwiperContentUpdate](#onswipercontentupdate22) API.
 
-## onSwiperContentUpdate<sup>23+</sup>
+## onSwiperContentUpdate<sup>22+</sup>
 
 onSwiperContentUpdate(config: observer.ObserverOptions, callback: Callback\<SwiperContentInfo\>): void
 
 Listens for content switching events of a specific **Swiper** component identified by its ID. This API uses an asynchronous callback to return the result.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2531,7 +2699,7 @@ Listens for content switching events of a specific **Swiper** component identifi
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Information about the target **Swiper** component.                                  |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\>  | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\>  | Yes  | Callback used to return the result. It provides the **Swiper** content switching information using a **SwiperContentInfo** object. |
 
 **Example**
 
@@ -2586,13 +2754,13 @@ struct SwiperExample {
 }
 ```
 
-## offSwiperContentUpdate<sup>23+</sup>
+## offSwiperContentUpdate<sup>22+</sup>
 
 offSwiperContentUpdate(config: observer.ObserverOptions, callback?: Callback\<SwiperContentInfo\>): void
 
 Unregister the listener for content switching events of a specific **Swiper** component identified by its ID.
 
-**Atomic service API**: This API can be used in atomic services since API version 23.
+**Atomic service API**: This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -2601,8 +2769,8 @@ Unregister the listener for content switching events of a specific **Swiper** co
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | config  | observer.[ObserverOptions](js-apis-arkui-observer.md#observeroptions12) | Yes  | Information about the target **Swiper** component.                                  |
-| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo23)\> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
+| callback | Callback\<[SwiperContentInfo](./arkts-apis-uicontext-i.md#swipercontentinfo22)\> | No  | Target listener to unregister. If no parameter is provided, all listeners for the **Swiper** component are unregistered.|
 
 **Example**
 
-See the example for the [onSwiperContentUpdate](#onswipercontentupdate23-1) API.
+See the example for the [onSwiperContentUpdate](#onswipercontentupdate22-1) API.

@@ -26,4 +26,4 @@
     - [Asset_ResultSet](capi-assettype-asset-resultset.md)
     - [Asset_SyncResult](capi-assettype-asset-syncresult.md)
 - 错误码<!--asset-store-arkts-errcode-->
-  - [Asset错误码](errorcode-asset.md)
+  - [关键资产存储服务错误码](errorcode-asset.md)

@@ -32,7 +32,7 @@ URIs can be expressed in different formats based on the available fields. Among 
 - The combination of **scheme** and **host** is configured: **scheme://host**
 - The combination of **scheme**, **host**, and **port** is configured: **scheme://host:port**
 - When **path**, **pathStartWith**, or **pathRegex** is configured, the formats are as follows.
-    The scheme of a third-party application cannot be the same as that of a system application. Otherwise, the third-party application cannot be started using the URI.
+ 
     - **Full path expression**: scheme://host:port/path
     - **Prefix expression**: scheme://host:port/pathStartWith
     - **Regular expression**: scheme://host:port/pathRegex

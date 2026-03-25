@@ -10,7 +10,7 @@
 >
 > - The initial APIs of this module are supported since API version 9. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
+> - The sample effect is subject to the actual device.
 
 ## WebStorageOrigin
 
@@ -193,8 +193,7 @@ Describes a historical page record.
 
 ## MediaInfo<sup>12+<sup>
 
-Represents a **MediaInfo** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback.
-The object contains information about media on the web page. The application may create, based on the information, a player that takes over media playback of the web page .
+Represents a **MediaInfo** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback. The object contains information about media on the web page. The application may create, based on the information, a player that takes over media playback of the web page.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

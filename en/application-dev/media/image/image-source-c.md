@@ -30,7 +30,7 @@ Create a native C++ application in DevEco Studio. The project created by default
 
 > **NOTE**
 >
-> Certain APIs are supported only in API version 20 or later. You should select an appropriate API version during development.
+> Some APIs (such as [OH_ImageSourceNative_GetSupportedFormats](../../reference/apis-image-kit/capi-image-source-native-h.md#oh_imagesourcenative_getsupportedformats)) are supported only in API version 20 or later. You need to select a proper API version during development.
 
 1. Import the required header files.
 

@@ -780,7 +780,7 @@ on(type: 'audioInterrupt', callback: Callback\<InterruptEvent>): void
 
 AudioCapturer对象在start事件时获取焦点，在pause、stop等事件时释放焦点，无需开发者主动申请。
 
-调用此方法后，如果AudioCapturer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点和音频会话介绍](../../media/audio/audio-playback-concurrency.md)。
+调用此方法后，如果AudioCapturer对象获取焦点失败或发生中断事件（如被其他音频打断等），会收到[InterruptEvent](arkts-apis-audio-i.md#interruptevent9)。建议应用根据InterruptEvent的信息进行进一步处理。更多信息请参阅文档[音频焦点介绍](../../media/audio/audio-playback-concurrency.md)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
@@ -888,7 +888,7 @@ on(type: 'inputDeviceChange', callback: Callback\<AudioDeviceDescriptors>): void
 | 参数名   | 类型                       | 必填 | 说明                                        |
 | :------- | :------------------------- | :--- | :------------------------------------------ |
 | type     | string                     | 是   | 事件回调类型，支持的事件为'inputDeviceChange'，当音频输入设备发生变化时，触发该事件。 |
-| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | 是   | 回调函数，返回监听的音频输入设备变化(返回数据为切换后的设备信息)。 |
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | 是   | 回调函数，返回变化后的音频输入设备信息。 |
 
 **错误码：**
 
@@ -921,7 +921,7 @@ off(type: 'inputDeviceChange', callback?: Callback\<AudioDeviceDescriptors>): vo
 | 参数名   | 类型                       | 必填 | 说明                                       |
 | :------- | :------------------------- | :--- |:-----------------------------------------|
 | type     | string                     | 是   | 事件回调类型，支持的事件为'inputDeviceChange'，当取消监听音频输入设备更改事件时，触发该事件。 |
-| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | 否   | 回调函数，返回监听的音频输入设备信息。 |
+| callback | Callback\<[AudioDeviceDescriptors](arkts-apis-audio-t.md#audiodevicedescriptors) > | 否   | 回调函数，返回音频输入设备信息。 |
 
 **错误码：**
 
@@ -1176,7 +1176,7 @@ audioCapturer.on('stateChange', (state: audio.AudioState) => {
 
 off(type: 'stateChange', callback?: Callback&lt;AudioState&gt;): void
 
-取消监听到达标记事件。使用callback异步回调。
+取消监听状态变化事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -1184,7 +1184,7 @@ off(type: 'stateChange', callback?: Callback&lt;AudioState&gt;): void
 
 | 参数名 | 类型   | 必填 | 说明                                                |
 | :----- | :----- | :--- | :-------------------------------------------------- |
-| type   | string | 是   | 事件回调类型，支持的事件为'stateChange'，当取消监听到达标记事件时，触发该事件。 |
+| type   | string | 是   | 事件回调类型，支持的事件为'stateChange'，当取消监听状态变化事件时，触发该事件。 |
 | callback | Callback\<[AudioState](arkts-apis-audio-e.md#audiostate8)> | 否 | 回调函数，返回当前音频的状态。 |
 
 **错误码：**

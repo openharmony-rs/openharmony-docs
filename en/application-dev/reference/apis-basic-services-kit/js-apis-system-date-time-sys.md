@@ -3,8 +3,8 @@
 <!--Subsystem: Time-->
 <!--Owner: @huaxin05-->
 <!--Designer: @hu-kai45-->
-<!--Tester: @murphy1984-->
-<!--Adviser: @zhang_yixin13-->
+<!--Tester: @liuhaonan2-->
+<!--Adviser: @fang-jinxu-->
 
 The **systemDateTime** module provides system time and time zone features. You can use the APIs of this module to set and obtain the system time and time zone.
 
@@ -404,7 +404,7 @@ For details about the error codes, see [Time and Time Zone Service Error Codes](
 
 | ID| Error Message                                                                                                   |
 |-------|-------------------------------------------------------------------------------------------------------------|
-| 13000002    | Location NTP time of the system is invalid.                                                           |
+| 13000002    | updateNtpTime() is not called successfully.                                                           |
 | 202   | Permission verification failed. A non-system application calls a system API.                                |
 
 **Example**
