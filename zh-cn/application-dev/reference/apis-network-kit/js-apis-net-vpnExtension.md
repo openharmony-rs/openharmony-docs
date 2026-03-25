@@ -296,7 +296,7 @@ offAuthorizationResult(callback?: Callback\<boolean\>): void
 
 | 参数名    | 类型                | 必填 | 说明                                                         |
 | --------- | ------------------- | ---- | ------------------------------------------------------------ |
-| callback  | Callback\<boolean\> | 否   | 回调函数，用于返回用户授权结果。如果不传入，则注销所有监听器。 |
+| callback  | Callback\<boolean\> | 否   | 回调函数，用于返回用户授权结果。 |
 
 **示例：**
 
@@ -314,7 +314,7 @@ vpnObserver.onAuthorizationResult(callback);
 // 注销指定监听器
 vpnObserver.offAuthorizationResult(callback);
 
-// 注销所有监听器
+// 注销已注册的监听器
 vpnObserver.offAuthorizationResult();
 ```
 
