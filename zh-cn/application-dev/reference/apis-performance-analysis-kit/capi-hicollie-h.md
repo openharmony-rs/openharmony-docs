@@ -382,7 +382,7 @@ typedef size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void*
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_HiCollie_Freeze_Type](capi-hicollie-h.md#oh_hiCollie_freeze_type) type | 冻屏事件类型 |
+| [OH_HiCollie_Freeze_Type](capi-hicollie-h.md#oh_hicollie_freeze_type) type | 冻屏事件类型 |
 | void* buffer | 系统提供log buffer，其中的内容将被迁移到APP_FREEZE或APP_HICOLLIE hiappevent当中。 |
 | size_t size | 可以使用缓冲区大小。 |
 
@@ -408,7 +408,7 @@ void* OH_HiCollie_SetFreezeCallback(OH_HiCollie_FreezeCallback callback)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_HiCollie_FreezeCallback](capi-hicollie-h.md#oh_hiCollie_freezeCallback) callback | 回调函数 |
+| [OH_HiCollie_FreezeCallback](capi-hicollie-h.md#oh_hicollie_freezecallback) callback | 回调函数 |
 
 **返回：**
 
