@@ -20,8 +20,13 @@
 
 这种方式可以为调用方提供统一的安全、可信的目标方应用，同时降低调用方的接入成本。  
 
+存在可用的垂类应用时，流程图如下：
+
 ![](./figures/process-start-intent-panel.png)
 
+不存在可用的垂类应用时，调用方无需处理，由系统给用户弹出提示，以导航类弹框为例，提示弹框如下：
+
+![](./figures/process-start-navigation-panel-no-apps.png)
 
 ### 匹配规则
 
