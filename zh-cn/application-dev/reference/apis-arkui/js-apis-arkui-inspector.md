@@ -63,17 +63,17 @@ let listener:inspector.ComponentObserver = inspector.createComponentObserver('CO
 
 ### on('layout')
 
-on(type: 'layout', callback: () => void): void
+ArkTS-Dyn: on(type: 'layout', callback: () => void): void
 
 通过句柄向对应的查询条件注册回调，当组件布局完成时会触发该回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[onLayout<sup>23+</sup>](#onlayout23)。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -106,17 +106,17 @@ onLayout(callback: VoidCallback): void
 
 ### off('layout')
 
-off(type: 'layout', callback?: () => void): void
+ArkTS-Dyn: off(type: 'layout', callback?: () => void): void
 
 通过句柄向对应的查询条件取消注册回调，当组件布局完成时不再触发指定的回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[offLayout<sup>23+</sup>](#offlayout23)。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -145,21 +145,21 @@ offLayout(callback?: VoidCallback): void
 
 | 参数名   | 类型   | 必填 | 说明 |
 | -------- | ------ | ---- | -------------------------------------------- |
-| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onLayout](#onlayout22)方法中的callback为相同对象时才能取消回调成功。|
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)  | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onLayout](#onlayout23)方法中的callback为相同对象时才能取消回调成功。|
 
 ### on('draw')
 
-on(type: 'draw', callback: () => void): void
+ArkTS-Dyn: on(type: 'draw', callback: () => void): void
 
 通过句柄向对应的查询条件注册回调，当组件绘制送显完成时会触发该回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[onDraw<sup>23+</sup>](#ondraw23)。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -172,7 +172,7 @@ on(type: 'draw', callback: () => void): void
 
 ### onDraw<sup>23+</sup>
 
-onDraw(callback: Void): void
+onDraw(callback: VoidCallback): void
 
 通过句柄向对应的查询条件注册回调，当组件绘制送显完成时会触发该回调。
 
@@ -192,17 +192,17 @@ onDraw(callback: Void): void
 
 ### off('draw')
 
-off(type: 'draw', callback?: () => void): void
+ArkTS-Dyn: off(type: 'draw', callback?: () => void): void
 
 通过句柄向对应的查询条件取消注册回调，当组件绘制送显完成时不再触发指定的回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[offDraw<sup>23+</sup>](#offdraw23)。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -231,21 +231,21 @@ offDraw(callback?: VoidCallback): void
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDraw](#ondraw22)方法中的callback为相同对象时才能取消回调成功。 |
+| callback | [VoidCallback](arkui-ts/ts-types.md#voidcallback12)   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDraw](#ondraw23)方法中的callback为相同对象时才能取消回调成功。 |
 
 ### on('drawChildren')<sup>20+</sup>
 
-on(type: 'drawChildren',  callback: Callback\<void\>): void
+ArkTS-Dyn: on(type: 'drawChildren', callback: Callback\<void\>): void
 
 通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[onDrawChildren<sup>23+</sup>](#ondrawchildren23)。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -278,17 +278,17 @@ onDrawChildren(callback: VoidCallback): void
 
 ### off('drawChildren')<sup>20+</sup>
 
-off(type: 'drawChildren', callback?: Callback\<void\>): void
+ArkTS-Dyn: off(type: 'drawChildren', callback?: Callback\<void\>): void
 
 通过句柄向对应的查询条件取消注册回调，当组件绘制送显完成时不再触发指定的回调。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[offDrawChildren<sup>23+</sup>](#offdrawchildren23)。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -375,7 +375,7 @@ ArkTS-Sta: offLayoutChildren(callback?: VoidCallback): void
 
 ### onDrawChildren<sup>24+</sup>
 
-ArkTS-Dyn: onDrawChildren(callback: Callback\<number[]\>): void
+ArkTS-Dyn: onDrawChildren(callback: Callback\<int[]\>): void
 
 ArkTS-Sta: onDrawChildren(callback: Callback\<int[]\>): void
 
@@ -397,11 +397,11 @@ ArkTS-Sta: onDrawChildren(callback: Callback\<int[]\>): void
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | ArkTS-Dyn: Callback\<number[]\> <br/>ArkTS-Sta: Callback\<int[]\> | 是   | 监听drawChildren的回调。                              |
+| callback | ArkTS-Dyn: Callback\<int[]\> <br/>ArkTS-Sta: Callback\<int[]\> | 是   | 监听drawChildren的回调。                              |
 
 ### offDrawChildren<sup>24+</sup>
 
-ArkTS-Dyn: offDrawChildren(callback?: Callback\<number[]\>): void
+ArkTS-Dyn: offDrawChildren(callback?: Callback\<int[]\>): void
 
 ArkTS-Sta: offDrawChildren(callback?: Callback\<int[]\>): void
 
@@ -423,7 +423,7 @@ ArkTS-Sta: offDrawChildren(callback?: Callback\<int[]\>): void
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| callback | ArkTS-Dyn: Callback\<number[]\> <br/>ArkTS-Sta: Callback\<int[]\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDrawChildren24+](#ondrawchildren24)方法中的callback为相同对象时才能取消回调成功。 |
+| callback | ArkTS-Dyn: Callback\<int[]\> <br/>ArkTS-Sta: Callback\<int[]\>   | 否   | 需要取消注册的回调，如果参数缺省则取消注册该句柄下所有的回调。callback需要和[onDrawChildren24+](#ondrawchildren24)方法中的callback为相同对象时才能取消回调成功。 |
 
 **示例：**
 
@@ -434,7 +434,7 @@ ArkTS-Sta: offDrawChildren(callback?: Callback\<int[]\>): void
 ArkTS-Dyn示例：
 
 ```ts
-import { inspector } from '@kit.ArkUI';
+import { inspector } from '@kit.ArkUI'
 
 @Entry
 @Component
@@ -467,26 +467,32 @@ struct ImageExample {
     let onDrawChildrenComplete: () => void = (): void => {
       // 根据需要补充实现代码
     }
-    let onDrawChildrenComplete_uniqueId:(childIds: Array<number>)=>void = (childIds: Array<number>) : void => {
+    let onLayoutChildrenComplete: () => void = (): void => {
+      // 根据需要补充实现代码
+    }
+    let onDrawChildrenComplete_uniqueId: (childIds: Array<number>) => void = (childIds: Array<number>): void => {
       // 从API version 24开始，新增onDrawChildren接口。监听到DrawChildren事件后，用户可以自定义实现逻辑。
     }
-    // 绑定当前js实例
-    let FuncLayout = onLayoutComplete
+    let FuncLayout = onLayoutComplete // 绑定当前js实例
     let FuncDraw = onDrawComplete
     let FuncDrawChildren = onDrawChildrenComplete
+    let FuncLayoutChildren = onLayoutChildrenComplete
     let OffFuncLayout = onLayoutComplete
     let OffFuncDraw = onDrawComplete
     let OffFuncDrawChildren = onDrawChildrenComplete
+    let OffFuncLayoutChildren = onLayoutChildrenComplete
 
     this.listenerForImage.on('layout', FuncLayout)
     this.listenerForImage.on('draw', FuncDraw)
     this.listenerForRow.on('drawChildren', FuncDrawChildren)
+    this.listenerForRow.onLayoutChildren(FuncLayoutChildren)
     this.listenerForRow.onDrawChildren(onDrawChildrenComplete_uniqueId)
 
     // 通过句柄向对应的查询条件取消注册回调，由开发者自行决定在何时调用
     // this.listenerForImage.off('layout', OffFuncLayout)
     // this.listenerForImage.off('draw', OffFuncDraw)
     // this.listenerForRow.off('drawChildren', OffFuncDrawChildren)
+    // this.listenerForRow.offLayoutChildren(OffFuncLayoutChildren)
     // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
   }
 }

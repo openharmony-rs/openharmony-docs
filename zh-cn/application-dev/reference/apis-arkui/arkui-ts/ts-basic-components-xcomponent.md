@@ -10,6 +10,7 @@
 
 
 ## 子组件
+
 无
 
 ## 接口
@@ -20,9 +21,9 @@ XComponent(value: {id: string, type: string, libraryname?: string, controller?: 
 
 创建XComponent组件。
 
-**说明：**
-
-从API version 12开始废弃，建议使用[XComponent(options: XComponentOptions)](#xcomponent10)替代。
+> **说明：**
+>
+> 从API version 12开始废弃，建议使用[XComponent(options: XComponentOptions)](#xcomponent12)替代。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -122,11 +123,12 @@ XComponent(params: XComponentParameters | XComponentOptions | NativeXComponentPa
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：**
-
-| 参数名  | 类型                                | 必填 | 说明                           |
-| ------- | --------------------------------------- | ---- | ------------------------------ |
-| params | [XComponentParameters](#xcomponentparameters23) \| [XComponentOptions](#xcomponentoptions12) \| [NativeXComponentParameters](#nativexcomponentparameters19) | 是   | 定义XComponent的具体配置参数。 |
+**参数：** 
+ 
+ 
+ | 参数名  | 类型                | 必填 | 说明                           | 
+ | ------- | --------------------------------------- | ---- | ------------------------------ | 
+ | params | [XComponentParameters](#xcomponentparameters23) \| [XComponentOptions](#xcomponentoptions12) \| [NativeXComponentParameters](#nativexcomponentparameters19) | 是   | 定义XComponent的具体配置参数。 |
 
 ## XComponentOptions<sup>12+</sup>
 
@@ -199,7 +201,9 @@ NativeXComponent指针类型。
 |long |  表示NativeXComponent指针类型。|
 
 ## 属性
+
 除支持通用属性外，还支持以下属性：
+
   > 
   > **说明：**
   >
@@ -269,7 +273,9 @@ ArkTS-Sta: enableSecure(isSecure: boolean | undefined)
 
 ### hdrBrightness<sup>20+</sup>
 
-hdrBrightness(brightness: number)
+ArkTS-Dyn: hdrBrightness(brightness: number)
+
+ArkTS-Sta: hdrBrightness(brightness: double | undefined)
 
 用于调整组件播放HDR视频的亮度。
 
@@ -285,7 +291,7 @@ hdrBrightness(brightness: number)
 
 | 参数名   | 类型    | 必填 | 说明                   |
 | -------- | ------- | ---- | ---------------------- |
-| brightness | number | 是   | 用于调整组件播放HDR视频的亮度; brightness的取值范围为0.0~1.0; 小于0的值等价于0，大于1的值等价于1; 0 表示SDR视频的亮度，1 表示HDR视频的亮度。|
+| brightness | ArkTS-Dyn: number<br/>ArkTS-Sta: double \| undefined | 是   | 用于调整组件播放HDR视频的亮度; brightness的取值范围为0.0~1.0; 小于0的值等价于0，大于1的值等价于1; 0 表示SDR视频的亮度，1 表示HDR视频的亮度。|
 
   > **说明：**
   >
@@ -613,8 +619,8 @@ setXComponentSurfaceSize(value: {surfaceWidth: number, surfaceHeight: number}): 
 
 | 参数名           | 类型   | 必填   | 说明                      |
 | ------------- | ------ | ---- | ----------------------- |
-| surfaceWidth  | number | 是    | XComponent持有Surface的宽度。 |
-| surfaceHeight | number | 是    | XComponent持有Surface的高度。 |
+| surfaceWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | XComponent持有Surface的宽度。 |
+| surfaceHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是    | XComponent持有Surface的高度。 |
 
 
 ### getXComponentContext
@@ -960,10 +966,10 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 
 | 名称          | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------- | ------ | ------ | ---- | ------------------------------------------------------------ |
-| offsetX       | number | 否   | 是   | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位：px。 |
-| offsetY       | number | 否   | 是   | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位：px。 |
-| surfaceWidth  | number | 否   | 否   | Surface显示区域的宽度，单位：px。                            |
-| surfaceHeight | number | 否   | 否   | Surface显示区域的高度，单位：px。                            |
+| offsetX       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | Surface显示区域相对于XComponent组件左上角的x轴坐标，单位：px。 |
+| offsetY       | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 是   | Surface显示区域相对于XComponent组件左上角的y轴坐标，单位：px。 |
+| surfaceWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | Surface显示区域的宽度，单位：px。                            |
+| surfaceHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否   | 否   | Surface显示区域的高度，单位：px。                            |
 
 > **说明：**
 >
@@ -976,7 +982,6 @@ unlockCanvasAndPost(canvas: DrawingCanvas): void
 ## 示例
 
 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
-
 
 ### 示例1（图像AI分析功能）
 
