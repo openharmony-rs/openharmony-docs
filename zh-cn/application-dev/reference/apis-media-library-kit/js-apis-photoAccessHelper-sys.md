@@ -3866,9 +3866,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### setAssetCompatibleCapability<sup>24+</sup>
 
-setAssetCompatibleCapability(tokenId: long, capability: AssetCompatibleCapability): Promise&lt;void&gt;
+setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise&lt;void&gt;
 
-根据TokenId配置资产兼容能力。
+根据bundleName配置资产兼容能力。您可以获取兼容性能力，并决定是否根据兼容性能力进行兼容性转换。
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
 
@@ -3880,7 +3880,7 @@ setAssetCompatibleCapability(tokenId: long, capability: AssetCompatibleCapabilit
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| tokenId | long | 是   | 应用的TokenId。|
+| bundleName | string | 是   | 应用的bundleName。|
 | capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | 是   | 资产兼容能力|
 
 
@@ -3897,7 +3897,7 @@ setAssetCompatibleCapability(tokenId: long, capability: AssetCompatibleCapabilit
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 202 | Called by non-system application. |
-| 23800151 | 23800151 - The scenario parameter verification fails, Invalid tokenId.|
+| 23800151 | 23800151 - The bundleName or capability is invalid.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs.
 Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -3907,13 +3907,12 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-    try {
-    let bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfoForSelf(1);
+  try {
+    let bundleName = "com.test.example";
     let cfg : photoAccessHelper.AssetCompatibleAbility = {
         supportedHighResolution : true,
     };
-    let tokenId : number = bundleInfo.appInfo.accessTokenId;
-    await phAccessHelper.setAssetCompatibleAbility(tokenId, cfg);
+    await phAccessHelper.setAssetCompatibleAbility(bundleName, cfg);
   } catch (err) {
     console.info('failed to setAssetCompatibleAbility err');
   }
@@ -3922,9 +3921,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### getAssetCompatibleCapability<sup>24+</sup>
 
-getAssetCompatibleCapability(tokenId: long): Promise<AssetCompatibleCapability>
+getAssetCompatibleCapability(bundleName: string): Promise<AssetCompatibleCapability>
 
-根据TokenId获取asset兼容的能力。向应用程序提供文件时，可以获取兼容性能力，并根据兼容性能力决定是否进行兼容性转换。
+根据bundleName获取资产兼容能力。当您将文件提供给应用程序时，您可以获取兼容性能力，并决定是否根据兼容性能力进行兼容性转换。
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
 
@@ -3936,7 +3935,7 @@ getAssetCompatibleCapability(tokenId: long): Promise<AssetCompatibleCapability>
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| tokenId | long | 是   | 应用的TokenId。|
+| bundleName | string | 是   | 应用的bundleName。|
 
 **返回值：**
 
@@ -3951,7 +3950,7 @@ getAssetCompatibleCapability(tokenId: long): Promise<AssetCompatibleCapability>
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 202 | Called by non-system application. |
-| 23800151 | 23800151 - The scenario parameter verification fails, Invalid tokenId.|
+| 23800151 | The bundleName is invalid, such as null, undefined and empty.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs.
 Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
@@ -3961,10 +3960,9 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-    try {
-    let bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfoForSelf(1);
-    let tokenId : number = bundleInfo.appInfo.accessTokenId;
-    let config : photoAccessHelper.AssetCompatibleAbility = await phAccessHelper.getAssetCompatibleCapability(tokenId);
+  try {
+    let bundleName = "com.test.example";
+    let config : photoAccessHelper.AssetCompatibleAbility = await phAccessHelper.getAssetCompatibleCapability(bundleName);
   } catch (err) {
     console.info('failed to getAssetCompatibleCapability err');
   }
