@@ -7265,6 +7265,54 @@ async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType
 }
 ```
 
+### setAppLinkState<sup>24+</sup>
+
+setAppLinkState(appLinkState: AppLinkState): void
+
+设置文件记忆链接的状态信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| appLinkState | [AppLinkState](#applinkstate24) | 是    | 设置文件记忆链接的状态信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202   | Invoked by non-system applications.       |
+| 23800301 | Internal system error.It is recommended to retry and check the logs. |
+| 23800151 | The scenario parameter verification fails.Possible causes: The input parameter is not within the valid range. |
+
+**示例：**
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(asset: photoAccessHelper.PhotoAsset, context: Context) {
+    try {
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
+        photoAccessHelper.getPhotoAccessHelper(context);
+      let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+        new photoAccessHelper.MediaAssetChangeRequest(asset);
+      assetChangeRequest.setAppLinkState(photoAccessHelper.AppLinkState.HAS_NO_LINK);
+      await phAccessHelper.applyChanges(assetChangeRequest);
+    } catch (error) {
+      console.error('set appLink state error: ' + error);
+      return;
+    }
+}
+```
+
 ### setAppLinkInfo<sup>21+</sup>
 
 setAppLinkInfo(appLink: string): void
@@ -13025,3 +13073,19 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | DEFAULT |  0 |  默认，用户未确认弹窗，仅WIFI网络下载。|
 | CELL |  1 |  用户已确认弹窗，蜂窝网络和WIFI网络均可下载。  |
 | WIFI |  2 |  用户已确认弹窗，WIFI网络可下载。  |
+
+## AppLinkState<sup>24+</sup>
+
+枚举，用于标识文件记忆链接的状态信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  无法确定文件是否具有记忆链接标记。|
+| HAS_NO_LINK |  1 |  文件无记忆链接标记。  |
+| HAS_LINK |  2 |  文件具有记忆链接标记。  |
