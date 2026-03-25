@@ -27,6 +27,10 @@ getCurrentAudioRendererInfoArray(callback: AsyncCallback&lt;AudioRendererChangeI
 
 获取当前音频渲染器的信息。使用callback异步回调。
 
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
+
 **系统能力**: SystemCapability.Multimedia.Audio.Renderer
 
 **参数：**
@@ -55,6 +59,10 @@ getCurrentAudioRendererInfoArray(): Promise&lt;AudioRendererChangeInfoArray&gt;
 
 获取当前音频渲染器的信息。使用Promise异步回调。
 
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **返回值：**
@@ -79,6 +87,10 @@ audioStreamManager.getCurrentAudioRendererInfoArray().then((audioRendererChangeI
 getCurrentAudioRendererInfoArraySync(): AudioRendererChangeInfoArray
 
 获取当前音频渲染器的信息。同步返回结果。
+
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -108,6 +120,10 @@ getCurrentAudioCapturerInfoArray(callback: AsyncCallback&lt;AudioCapturerChangeI
 
 获取当前音频采集器的信息。使用callback异步回调。
 
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **参数：**
@@ -136,6 +152,10 @@ getCurrentAudioCapturerInfoArray(): Promise&lt;AudioCapturerChangeInfoArray&gt;
 
 获取当前音频采集器的信息。使用Promise异步回调。
 
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
 **返回值：**
@@ -161,6 +181,10 @@ audioStreamManager.getCurrentAudioCapturerInfoArray().then((audioCapturerChangeI
 getCurrentAudioCapturerInfoArraySync(): AudioCapturerChangeInfoArray
 
 获取当前音频采集器的信息。同步返回结果。
+
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -189,6 +213,10 @@ try {
 on(type: 'audioRendererChange', callback: Callback&lt;AudioRendererChangeInfoArray&gt;): void
 
 监听音频渲染器更改事件（当音频播放流状态变化或设备变化时触发）。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -221,6 +249,10 @@ audioStreamManager.on('audioRendererChange',  (audioRendererChangeInfoArray: aud
 off(type: 'audioRendererChange', callback?: Callback&lt;AudioRendererChangeInfoArray&gt;): void
 
 取消监听音频渲染器更改事件。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口返回的音频渲染器信息，可能包含系统内部音频播放流，如蜂窝通话、超声波等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -259,6 +291,10 @@ on(type: 'audioCapturerChange', callback: Callback&lt;AudioCapturerChangeInfoArr
 
 监听音频采集器更改事件（当音频录制流状态变化或设备变化时触发）。使用callback异步回调。
 
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
+
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **参数：**
@@ -290,6 +326,10 @@ audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audi
 off(type: 'audioCapturerChange', callback?: Callback&lt;AudioCapturerChangeInfoArray&gt;): void
 
 取消监听音频采集器更改事件。使用callback异步回调。
+
+> **说明：**
+>
+> 该接口返回的音频采集器信息，可能包含系统内部音频录制流，如语音唤醒、蜂窝通话等。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
