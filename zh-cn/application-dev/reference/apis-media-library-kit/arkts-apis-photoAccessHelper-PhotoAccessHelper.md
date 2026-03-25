@@ -2211,7 +2211,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise&lt;void&gt;
 
-配置资产兼容能力。系统对于特殊的资产进行兼容性处理，如果你希望获得原始资产需要像系统注册兼容性能力。
+配置资产兼容能力。系统对于特殊的资产进行兼容性处理，如果你希望获得原始资产需要向系统注册兼容能力。
 
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
@@ -2253,7 +2253,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     await phAccessHelper.setAssetCompatibleCapability(capability);
   } catch (err) {
-    console.info('failed to setAssetCompatibleAbility err');
+    console.info('failed to setAssetCompatibleCapability err');
   }
 }
 ```
