@@ -1084,10 +1084,10 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **支持设备**：Phone | PC/2in1 | Tablet | Car
 
-**起始版本**：24
+**起始版本**：26.0.0
 
 ## ohos.permission.CHECK_CALL_LOG
- 	 
+
 允许应用根据特定条件(手机号码、通话时长)，查询指定时间内系统是否存在匹配的通话记录。
 
 <!--RP71--><!--RP71End-->
@@ -1099,3 +1099,17 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：General
 
 **起始版本**：24
+
+## ohos.permission.ACCESS_DLP_SERVICE
+
+允许应用或服务使用DLP提供的注册、解注册连云插件功能。
+
+<!--RP74--><!--RP74End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.0

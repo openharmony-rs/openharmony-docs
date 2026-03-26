@@ -383,7 +383,7 @@ isPrelaunchSupported(camera: CameraDevice): boolean
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202 | Not System Application. |
+| 202 | Permission verification failed. A non-system application calls a system API. |
 | 7400101 | Parameter missing or parameter type incorrect. |
 
 **示例：**
@@ -646,11 +646,11 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-| 名称      | 类型                          | 只读 | 可选 | 说明            |
-| -------- | ----------------------------- |----- |---| -------------- |
-| DEPTH_DATA_QUALITY_BAD     | number            |  是  | 否 | 深度图的质量很差，无法用于虚化等。      |
-| DEPTH_DATA_QUALITY_FAIR      | number          |  是  | 否 | 深度图的质量一般，无法生成高质量的虚化等。      |
-| DEPTH_DATA_QUALITY_GOOD      | number          |  是  | 否 | 深度图的质量较高，可以生成高质量的虚化等。      |
+| 名称                         |  值  | 说明                                      |
+| ---------------------------- | --- | ----------------------------------------- |
+| DEPTH_DATA_QUALITY_BAD       |  0  | 深度图的质量很差，无法用于虚化等。           |
+| DEPTH_DATA_QUALITY_FAIR      |  1  | 深度图的质量一般，无法生成高质量的虚化等。    |
+| DEPTH_DATA_QUALITY_GOOD      |  2  | 深度图的质量较高，可以生成高质量的虚化等。    |
 
 ## DepthData<sup>13+</sup>
 
@@ -2312,7 +2312,7 @@ getSupportedBeautyTypes(): Array\<BeautyType\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 202                |  Not System Application.                                   |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.             |
 
 **示例：**
 
@@ -2359,7 +2359,7 @@ getSupportedBeautyRange(type: BeautyType): Array\<number\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 202                |  Not System Application.                                   |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.       |
 
 **示例：**
 
@@ -2593,7 +2593,7 @@ isSceneFeatureSupported(type: SceneFeatureType): boolean
 
 | 错误码ID   | 错误信息                                           |
 |---------|------------------------------------------------|
-| 202     | Not System Application.                        |
+| 202     | Not System Application, only throw in session usage.                     |
 | 7400101 | Parameter missing or parameter type incorrect. |
 
 **示例：**
@@ -2935,8 +2935,8 @@ getSupportedColorEffects(): Array\<ColorEffectType\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                      |
-| 202             |  Not System Application.                  |
+| 202             |  Not System Application.                 |
+| 7400103         |  Session not config, only throw in session usage.  |
 
 **示例：**
 
@@ -3061,8 +3061,8 @@ getSupportedPortraitEffects(): Array\<PortraitEffect\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                |
-| 202             |  Not System Application.            |
+| 202                 |  Not System Application.        |
+| 7400103             |  Session not config, only throw in session usage.   |
 
 **示例：**
 
@@ -3195,8 +3195,8 @@ getSupportedVirtualApertures(): Array\<number\>
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                             |
-| 202             |  Not System Application.                         |
+| 202         |  Not System Application.                           |
+| 7400103     |  Session not config, only throw in session usage.  |
 
 **示例：**
 
@@ -3292,12 +3292,12 @@ getSupportedPhysicalApertures(): Array\<PhysicalAperture\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
+| 7400102         |  Operation not allowed, the inputDevice or the session is abnormal.   |
 | 7400103         |  Session not config.                          |
-| 202             |  Not System Application.                      |
 
 **示例：**
 
@@ -3494,12 +3494,11 @@ setBeauty(type: BeautyType, value: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
-| 202                    |    Not System Application.             |
 
 **示例：**
 
@@ -3543,12 +3542,11 @@ getBeauty(type: BeautyType): number
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 7400103                |  Session not config.                                   |
-| 202                    |    Not System Application.             |
 
 **示例：**
 
@@ -5354,13 +5352,11 @@ isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400101                |  Parameter missing or parameter type incorrect.                                   |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.          |
 
 
 **示例：**
@@ -5405,12 +5401,12 @@ getExposureMeteringMode(): ExposureMeteringMode
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
-| 202     | Not System Application. |
+| 7400102                | Operation not allowed, the inputDevice or the session is abnormal. |
+| 7400103                |  Session not config, only throw in session usage.   |
 
 **示例：**
 
@@ -5448,13 +5444,12 @@ setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400103                |  Session not config.                                   |
+| 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.    |
+| 7400103                |  Session not config, only throw in session usage.             |
 
 **示例：**
 
@@ -5520,7 +5515,7 @@ isFocusAssistSupported(): boolean
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.      |
 | 202     | Not System Application. |
 
 **示例：**
@@ -5571,7 +5566,7 @@ isFocusRangeTypeSupported(type: FocusRangeType): boolean
 | -------- | ------------------------------------------------------------ |
 | 202      | Not System Application.                                      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 7400103  | Session not config.                                          |
+| 7400103  |  Session not config, only throw in session usage.     |
 
 **示例**：
 
@@ -5621,7 +5616,7 @@ isFocusDrivenTypeSupported(type: FocusDrivenType): boolean
 | -------- | ------------------------------------------------------------ |
 | 202      | Not System Application.                                      |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 7400103  | Session not config.                                          |
+| 7400103  | Session not config, only throw in session usage.       |
 
 **示例**：
 
@@ -6021,7 +6016,7 @@ isManualIsoSupported(): boolean
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.      |
 | 202     | Not System Application. |
 
 **示例：**
@@ -6065,7 +6060,7 @@ getIsoRange(): Array\<number\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.    |
 
 **示例：**
 
@@ -8314,7 +8309,7 @@ isTryAENeeded(): boolean
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
-| 7400103 |  Session not config.    |
+| 7400103 |  Session not config, only throw in session usage.  |
 
 **示例：**
 
@@ -8388,6 +8383,7 @@ stopTryAE(): void
 | --------------- | --------------- |
 | 202     | Not System Application. |
 | 7400103 | Session not config.     |
+| 7400201 | Camera service fatal error.   |
 
 **示例：**
 
@@ -8428,7 +8424,7 @@ getSupportedTimeLapseIntervalRange(): Array\<number\>
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
 | 202     | Not System Application. |
-| 7400103                |  Session not config.                                   |
+| 7400103                |  Session not config, only throw in session usage.    |
 
 **示例：**
 
@@ -9079,7 +9075,7 @@ getSupportedColorReservationTypes(): Array\<ColorReservationType\>
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 202      | Not System Application. |
-| 7400103  | Session not config.     |
+| 7400103  | Session not config, only throw in session usage.  |
 
 **示例**：
 
@@ -9172,7 +9168,7 @@ getColorReservation(): ColorReservationType
 | 错误码ID | 错误信息                |
 | -------- | ----------------------- |
 | 202      | Not System Application. |
-| 7400103  | Session not config.     |
+| 7400103  | Session not config, only throw in session usage.   |
 
 **示例**：
 

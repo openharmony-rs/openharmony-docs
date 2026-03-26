@@ -489,7 +489,6 @@ struct CustomLayoutBasic {
           .backgroundColor(0xF5DEB3)
         Text('Item 2')
           .fontSize(14)
-          .fontSize(14)
           .backgroundColor(0xD2B48C)
         Text('Item 3')
           .fontSize(14)

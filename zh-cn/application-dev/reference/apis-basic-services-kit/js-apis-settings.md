@@ -1184,13 +1184,11 @@ let inputMethodId: string = "target inputMethod id";
 settings.openInputMethodDetail(context, bundleName, inputMethodId);
 ```
 
-## settings.openBiometricsSettingsPage
+## settings.openBiometricsSettingsPage<sup>24+</sup>
 
 openBiometricsSettingsPage(context: Context): void
 
 打开生物识别和密码设置页面。
-
-**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -1228,13 +1226,11 @@ try {
 }
 ```
 
-## settings.openNfcSettingsPage
+## settings.openNfcSettingsPage<sup>24+</sup>
 
 openNfcSettingsPage(context: Context): void
 
 打开NFC设置页面。
-
-**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 

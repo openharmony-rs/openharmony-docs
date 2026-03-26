@@ -32,6 +32,7 @@
 | DVVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | RAWVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | MPEG1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| Cinepak<sup>24+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_CINEPAK](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP14--> <!--RP14End-->
 
 通过MIME类型创建解码器时，如果系统平台支持硬件解码，系统平台会优先创建硬件解码器实例；如果系统平台不支持或者硬件解码器资源不足时，系统平台会创建软件解码器实例；如果系统平台无对应解码能力，会创建解码器实例失败。

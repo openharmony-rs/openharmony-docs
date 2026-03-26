@@ -41,7 +41,7 @@ setDarkMode(mode: DarkMode, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
+错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[用户界面外观服务错误码](errorcode-uiappearance.md)。
 
 | 错误码ID | 错误信息 |
 | -- | -- |
@@ -94,7 +94,7 @@ setDarkMode(mode: DarkMode): Promise\<void>;
 
 **错误码：**
 
-错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
+错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[用户界面外观服务错误码](errorcode-uiappearance.md)。
 
 | 错误码ID | 错误信息 |
 | -- | -- |
@@ -147,7 +147,7 @@ setFontScale(fontScale: number): Promise\<void>
 
 **错误码：**
 
-错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
+错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[用户界面外观服务错误码](errorcode-uiappearance.md)。
 
 > **说明：**
 >
@@ -207,7 +207,7 @@ setFontWeightScale(fontWeightScale: number): Promise\<void>
 
 **错误码：**
 
-错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[errcode-uiappearance](errorcode-uiappearance.md)。
+错误码详细介绍请参考[通用错误码](../errorcode-universal.md)和[用户界面外观服务错误码](errorcode-uiappearance.md)。
 
 > **说明：**
 >

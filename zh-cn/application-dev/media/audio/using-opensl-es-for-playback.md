@@ -103,6 +103,9 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
 4. 配置播放器信息，创建AudioPlayer。
      
    ```cpp
+   SLObjectItf outputMixObject = nullptr;
+   (*engineEngine)->CreateOutputMix(engineEngine, &outputMixObject, 0, nullptr, nullptr);
+   (*outputMixObject)->Realize(outputMixObject, SL_BOOLEAN_FALSE);
    SLDataLocator_BufferQueue slBufferQueue = {
        SL_DATALOCATOR_BUFFERQUEUE,
        1
@@ -119,8 +122,16 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
        SL_BYTEORDER_LITTLEENDIAN
    };
    SLDataSource slSource = {
-      &slBufferQueue,
-      &pcmFormat
+       &slBufferQueue,
+       &pcmFormat
+   };
+   SLDataLocator_OutputMix slOutputMix = {
+       SL_DATALOCATOR_OUTPUTMIX,
+       outputMixObject
+   };
+   SLDataSink slSink = {
+       &slOutputMix,
+       nullptr
    };
    SLObjectItf pcmPlayerObject = nullptr;
    (*engineEngine)->CreateAudioPlayer(engineEngine,
