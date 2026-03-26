@@ -150,6 +150,9 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    ```
 
 6. 添加视频轨。
+   > **说明：**
+   >
+   > 示例中所涉及静态元数据信息的key均为选填，参数设置详情可参考[OH_ColorPrimary](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_colorprimary)，[OH_TransferCharacteristic](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_transfercharacteristic)，[OH_MatrixCoefficient](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#oh_matrixcoefficient)。
 
    **方法一：用OH_AVFormat_Create创建format**
 
@@ -161,7 +164,11 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVFormat_SetStringValue(formatVideo, OH_MD_KEY_CODEC_MIME, OH_AVCODEC_MIMETYPE_VIDEO_AVC); // 必填。
    OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_WIDTH, 1280); // 必填。
    OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_HEIGHT, 720); // 必填。
-   OH_AVFormat_SetBuffer(formatVideo, OH_MD_KEY_CODEC_CONFIG, buffer, size); // 非必须。
+   OH_AVFormat_SetBuffer(formatVideo, OH_MD_KEY_CODEC_CONFIG, buffer, size); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_TRANSFER_CHARACTERISTICS, OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient:: MATRIX_COEFFICIENT_BT709); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_RANGE_FLAG, 1); // 选填。值为0代表limited range，值为1代表full range。
    
    int ret = OH_AVMuxer_AddTrack(muxer, &videoTrackId, formatVideo);
    if (ret != AV_ERR_OK || videoTrackId < 0) {
@@ -177,7 +184,11 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    uint8_t *buffer = ...; // 编码config data，如果没有可以不传。
    size_t size = ...;  // 编码config data的长度，根据实际情况配置。
    OH_AVFormat *formatVideo = OH_AVFormat_CreateVideoFormat(OH_AVCODEC_MIMETYPE_VIDEO_AVC, 1280, 720);
-   OH_AVFormat_SetBuffer(formatVideo, OH_MD_KEY_CODEC_CONFIG, buffer, size); // 非必须。
+   OH_AVFormat_SetBuffer(formatVideo, OH_MD_KEY_CODEC_CONFIG, buffer, size); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_TRANSFER_CHARACTERISTICS, OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient:: MATRIX_COEFFICIENT_BT709); // 选填。
+   OH_AVFormat_SetIntValue(formatVideo, OH_MD_KEY_RANGE_FLAG, 1); // 选填。值为0代表limited range，值为1代表full range。
    
    int ret = OH_AVMuxer_AddTrack(muxer, &videoTrackId, formatVideo);
    if (ret != AV_ERR_OK || videoTrackId < 0) {
