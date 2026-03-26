@@ -165,11 +165,15 @@ Allows a system service to access the IMS SA.
 
 Allows a system application to manage the PCAP packet capture switch, including enabling, disabling, and checking the status of the switch.
 
+With this permission, an application can call APIs provided by the system layer to set the PCAP packet capture switch, obtain the switch status, and register the status change listener.
+
 **Permission level**: system_basic
 
 **Authorization mode**: system_grant
 
 **Enable via ACL**: false
+
+ **Supported devices**: phones | TVs | tablets
 
 **Valid since**: 26.0.0
 
