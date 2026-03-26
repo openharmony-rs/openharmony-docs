@@ -1176,9 +1176,6 @@ async function retainDeviceData(store : relationalStore.RdbStore){
       devices.push(item.networkId);
     }
   });
-  if (devices.length === 0) {
-    console.error('retainDeviceData no device to remove');
-  }
   console.info(`retainDeviceData, length is ${devices.length}`);
   if (store != undefined) {
     try {
@@ -1254,9 +1251,6 @@ async function updateDistributedInfoInsert(store : relationalStore.RdbStore){
       devices.push(item.networkId);
     }
   });
-  if (devices.length === 0) {
-    console.error('updateDistributedInfoInsert no device to remove');
-  }
   console.info(`updateDistributedInfoInsert, length is ${devices.length}`);
   if (store != undefined && devices.length > 0) {
     try {
