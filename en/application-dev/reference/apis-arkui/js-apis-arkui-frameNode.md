@@ -8806,7 +8806,7 @@ export struct TrackNode {
     // Build the virtual tree of the tracking point and obtain the root node (Row in this example) of the current page.
     let uid = this.getUniqueId()
     let node: FrameNode | null = this.getUIContext().getFrameNodeByUniqueId(uid);
-    console.info(`Track onDidBuild node:${node?.getNodeType()}`))
+    console.info(`Track onDidBuild node:${node?.getNodeType()}`);
     if (node === null) {
       return
     }
