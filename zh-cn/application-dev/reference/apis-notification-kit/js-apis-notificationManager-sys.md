@@ -8205,10 +8205,10 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.isPriorityEnabled().then((result : boolean) => {
-    console.info(`isPriorityEnabled result is ${result}`);
+notificationManager.isPriorityEnabled().then((result: boolean) => {
+  console.info(`isPriorityEnabled result is ${result}`);
 }).catch((err: BusinessError) => {
-    console.error(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8216,8 +8216,8 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.isPriorityEnabled().then((result : boolean) => {
-    console.info(`isPriorityEnabled result is ${result}`);
+notificationManager.isPriorityEnabled().then((result: boolean) => {
+  console.info(`isPriorityEnabled result is ${result}`);
 }).catch((e: Error) => {
   let err = e as BusinessError
   console.error(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
@@ -8271,9 +8271,9 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setPriorityEnabled(false).then(() => {
-    console.info(`setPriorityEnabled success`);
+  console.info(`setPriorityEnabled success`);
 }).catch((err: BusinessError) => {
-    console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8282,10 +8282,10 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setPriorityEnabled(false).then(() => {
-    console.info(`setPriorityEnabled success`);
+  console.info(`setPriorityEnabled success`);
 }).catch((e: Error) => {
   let err = e as BusinessError
-    console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8420,11 +8420,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
 try {
   notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
-      console.info(`setPriorityEnabledByBundle success`);
-    }).catch((e: Error) => {
-      let err = e as BusinessError
-      console.error(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
-    });
+    console.info(`setPriorityEnabledByBundle success`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError
+    console.error(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+  });
 } catch (err: Error) {
   console.error(`setPriorityEnabledByBundle failed, err is ${err}`);
 }
@@ -8561,11 +8561,11 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
 try {
   notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
-      console.info(`setBundlePriorityConfig success`);
-    }).catch((e: Error) => {
-      let err = e as BusinessError
-      console.error(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
-    });
+    console.info(`setBundlePriorityConfig success`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError
+    console.error(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+  });
 } catch (err: Error) {
   console.error(`setBundlePriorityConfig failed, err is ${err}`);
 }
@@ -8779,7 +8779,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let bundles: Array<notificationManager.BundleOption> = new Array(bundleOption);
+  let bundles: Array<notificationManager.BundleOption> = [bundleOption];
   notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<notificationManager.BundleOption, boolean>) => {
     switches.forEach((value, key) => {
       hilog.info(0x0000, 'testTag', `getPriorityEnabledByBundles switches: ${key.bundle} ${key.uid}, ${value}`);
@@ -8859,7 +8859,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let switches: Map<notificationManager.BundleOption, boolean> = new Map([[bundleOption, false]]);
+  let switches: Map<notificationManager.BundleOption, boolean> = new Map<notificationManager.BundleOption, boolean>([[bundleOption, false]]);
   notificationManager.setPriorityEnabledByBundles(switches).then(() => {
     hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundles success`);
   }).catch((e: Error) => {
@@ -8941,7 +8941,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let bundles: Array<notificationManager.BundleOption> = new Array(bundleOption);
+  let bundles: Array<notificationManager.BundleOption> = [bundleOption];
   notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<notificationManager.BundleOption, long>) => {
     strategies.forEach((value, key) => {
       hilog.info(0x0000, 'testTag', `getPriorityStrategyByBundles strategies: ${key.bundle} ${key.uid}, ${value}`);
@@ -9023,7 +9023,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let strategies: Map<notificationManager.BundleOption, long> = new Map([[bundleOption, notificationManager.PriorityStrategyStatus.STATUS_APPLICATION_DEFINED]]);
+  let strategies: Map<notificationManager.BundleOption, long> = new Map<notificationManager.BundleOption, long>([[bundleOption, notificationManager.PriorityStrategyStatus.STATUS_APPLICATION_DEFINED]]);
   notificationManager.setPriorityStrategyByBundles(strategies).then(() => {
     hilog.info(0x0000, 'testTag', `setPriorityStrategyByBundles success`);
   }).catch((e: Error) => {
