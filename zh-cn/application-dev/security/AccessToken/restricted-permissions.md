@@ -1113,17 +1113,3 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**：Phone | PC/2in1 | Tablet | Car
 
 **起始版本**：26.0.0
-
-## ohos.permission.ASSET_CACHE_MANAGER
-
-允许应用通过资产缓存服务管理接口下发、控制、查询任务。
-
-<!--RP75--><!--RP75End-->
-
-**权限级别**：system_basic
-
-**授权方式**：系统授权（system_grant）
-
-**支持设备**：Phone | PC/2in1 | Tablet
-
-**起始版本**：24
