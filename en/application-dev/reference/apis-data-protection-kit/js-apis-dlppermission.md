@@ -11,7 +11,7 @@ Data loss prevention (DLP) is a system solution provided to prevent data disclos
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The kit to which **@ohos.dlpPermission** belongs has been changed from **DataLossPreventionKit** to **DataProtectionKit**. You are advised to use the new module name **@kit.DataProtectionKit** to import the module. If **@kit.DataLossPreventionKit** is imported, only the APIs before the change can be called and the APIs after the change cannot be used.
+> - The kit to which **@ohos.dlpPermission** belongs has been changed from `DataLossPreventionKit` to `DataProtectionKit`. You are advised to use the new module name `@kit.DataProtectionKit` to import the module. If `@kit.DataLossPreventionKit` is imported, only the APIs before the change can be called and the APIs after the change cannot be used.
 
 ## Modules to Import
 
@@ -59,7 +59,7 @@ let uri = "file://docs/storage/Users/currentUser/Desktop/test.txt.dlp";
 let file: number | undefined = undefined;
 try {
   file = fileIo.openSync(uri).fd;
-  let res = dlpPermission.isDLPFile(file); // Check whether the file is a DLP file.
+  let res = dlpPermission.isDLPFile(file);
   console.info('res', res);
 } catch (err) {
   console.error('error', (err as BusinessError).code, (err as BusinessError).message); // Throw an error if the operation fails.
@@ -203,7 +203,7 @@ try {
     if (inSandbox) {
       dlpPermission.getDLPPermissionInfo((err, res) => {
         if (err != undefined) {
-          console.error('getDLPPermissionInfo error,', err.code, err.message);
+          console.error('getDLPPermissionInfo error', err.code, err.message);
         } else {
           console.info('res', JSON.stringify(res));
         }
@@ -211,7 +211,7 @@ try {
     }
   });
 } catch (err) {
-  console.error('getDLPPermissionInfo error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('getDLPPermissionInfo error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -445,13 +445,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   dlpPermission.isInSandbox((err, data) => {
     if (err) {
-      console.error('isInSandbox error,', err.code, err.message);
+      console.error('isInSandbox error', err.code, err.message);
     } else {
       console.info('isInSandbox, data', JSON.stringify(data));
     }
   }); // Whether the application is running in a sandbox.
 } catch (err) {
-  console.error('isInSandbox error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('isInSandbox error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -525,13 +525,13 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   dlpPermission.getDLPSupportedFileTypes((err, res) => {
     if (err != undefined) {
-      console.error('getDLPSupportedFileTypes error,', err.code, err.message);
+      console.error('getDLPSupportedFileTypes error', err.code, err.message);
     } else {
       console.info('res', JSON.stringify(res));
     }
   }); // Obtain the file types that support DLP.
 } catch (err) {
-  console.error('getDLPSupportedFileTypes error,', (err as BusinessError).code, (err as BusinessError).message);
+  console.error('getDLPSupportedFileTypes error', (err as BusinessError).code, (err as BusinessError).message);
 }
 ```
 
@@ -1335,7 +1335,7 @@ Obtains a **DLPFile** object. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API can be called only by enterprise accounts. Enterprises need to set up their own enterprise account servers. This API generates a DLP file, which is an encrypted file that can be accessed only by users with full control permissions.
+> This API can be called only by enterprise accounts. Enterprises need to set up their own enterprise account servers. This API generates a DLP file, which is an encrypted file that can be accessed only by accounts authorized by the enterprise server.
 
 **Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -1400,7 +1400,7 @@ async function ExampleFunction(plainFilePath: string, dlpFilePath: string) {
     await dlpPermission.generateDlpFileForEnterprise(plaintextFd, dlpFd, dlpProperty, customProperty);
     console.info('Successfully generate DLP file for enterprise.');
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);
@@ -1419,7 +1419,7 @@ decryptDlpFile(dlpFd: number, plaintextFd: number): Promise&lt;void&gt;
 Decrypts a DLP file to generate a plaintext file. This API uses a promise to return the result.
 >**NOTE**
 >
-> This API can decrypt DLP files only by users with full control permissions.
+> This API can be called only by enterprise accounts. Enterprises need to set up their own enterprise account servers. The enterprise server determines whether an account is authorized to decrypt DLP files.
 
 **Required permissions**: ohos.permission.ENTERPRISE_ACCESS_DLP_FILE
 
@@ -1471,7 +1471,7 @@ async function ExampleFunction(plainFilePath: string, dlpFilePath: string) {
     await dlpPermission.decryptDlpFile(dlpFd, plaintextFd);
     console.info('Successfully decrypt DLP file.');
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);
@@ -1536,7 +1536,7 @@ async function ExampleFunction(dlpFilePath: string) {
     let policy: string = await dlpPermission.queryDlpPolicy(dlpFd);
     console.info('DLP policy:' + policy);
   } catch(err) {
-    console.error('error,', (err as BusinessError).code, (err as BusinessError).message);
+    console.error('error', (err as BusinessError).code, (err as BusinessError).message);
   } finally {
     if (dlpFd) {
       fileIo.closeSync(dlpFd);
