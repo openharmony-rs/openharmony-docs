@@ -161,6 +161,18 @@ Allows a system service to access the IMS SA.
 
 **Valid since**: 10
 
+## ohos.permission.ACCESS_DEVELOPER_PCAP_SWITCH
+
+Allows a system application to manage the PCAP packet capture switch, including enabling, disabling, and checking the status of the switch.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: false
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ENFORCE_USER_IDM
 
 Allows an SA to delete the IAM user information without a token.

@@ -161,6 +161,18 @@
 
 **起始版本**：10
 
+## ohos.permission.ACCESS_DEVELOPER_PCAP_SWITCH
+
+允许系统应用管理pcap抓包开关，包括开启、关闭、查看状态等。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：false
+
+**起始版本**：26.0.0
+
 ## ohos.permission.ENFORCE_USER_IDM
 
 允许SA无token删除IAM用户信息。
