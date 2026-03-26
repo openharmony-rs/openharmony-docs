@@ -2,8 +2,8 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @lu-tao-->
-<!--Designer: @martin-duan-->
+<!--Owner: @lu_tao-->
+<!--Designer: @martin_duan-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
 
@@ -14,7 +14,7 @@ This module provides the capability of monitoring whether JS objects are leaked.
 > The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
-<!--code_no_check-->
+
 ```js
 import { jsLeakWatcher } from '@kit.PerformanceAnalysisKit';
 ```
@@ -32,7 +32,7 @@ Enables the detection for JS object leaks. This function is disabled by default.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| isEnable | boolean | Yes| Whether to enable **jsLeakWatcher**. The value **true** means to enable jsleakwatcher, and **false** means the opposite.|
+| isEnable | boolean | Yes| Whether to enable **jsLeakWatcher**. **true**: yes; **false**: no.|
 
 **Example**
 
@@ -53,7 +53,7 @@ Registers the object to be checked.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| obj | object | Yes| Name of the object to be checked.|
+| obj | object | Yes| Name of the object to be checked.<br>Note: You can pass objects of any type.|
 | msg | string | Yes| Custom object information.|
 
 **Example**
@@ -68,7 +68,7 @@ jsLeakWatcher.watch(obj, "Trace Object");
 
 check(): string
 
-Obtains the list of objects that are registered using **jsLeakWatcher.watch()** and may leak. Objects that are not reclaimed after GC is triggered are marked as leaked.
+Obtains the list of objects that are leaked and registered using **jsLeakWatcher.watch()**. Objects that are not reclaimed after GC is triggered are marked as leaked.
 
 **System capability**: SystemCapability.HiviewDFX.HiChecker
 
@@ -76,7 +76,7 @@ Obtains the list of objects that are registered using **jsLeakWatcher.watch()** 
 
 | Type   | Description                                                      |
 | ------- | ---------------------------------------------------------- |
-| string | List of objects that are suspected to leak, in JSON format.|
+| string | List of leaked objects that are not reclaimed after GC is triggered.<br>Note: If this API is successful, a list of leaked objects in JSON format is returned. Otherwise, an empty string is returned.|
 
 **Example**
 ```js
@@ -96,13 +96,13 @@ Exports the list of leaked objects and VM memory snapshot.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| filePath | string | Yes| The path for storing exported information files.|
+| filePath | string | Yes| Path for storing exported information files.|
 
 **Return value**
 
 | Type   | Description                                                      |
 | ------- | ---------------------------------------------------------- |
-| Array&lt;string&gt; | Array of exported results. Index **0** indicates the name of the leak list file, whose name extension is **.jsleaklist**. Index **1** indicates the name of the VM memory snapshot file, whose name extension is **.heapsnapshot**.|
+| Array&lt;string&gt; | Export result. The file name extension is **.jsleaklist** for the list of leaked objects and **.heapsnapshot** for the VM memory snapshot.<br>Note: If the dump is successful, the path of the leaked object list file and the VM memory snapshot path are returned. Otherwise, an empty array is returned.|
 
 **Error codes**
 
@@ -137,8 +137,8 @@ If a memory leak occurs, the leaked file is returned through the callback.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| isEnabled | boolean | Yes| Whether to enable the detection for JS object memory leaks. The value **true** means to enable the detection for JS object memory leaks, and **false** means the opposite.|
-| configs | Array&lt;string&gt; | Yes| Configuration item. Each element in the array indicates a specific object type to monitor.<br>Options: **XComponent**, **NodeContainer**, **Window**, **CustomComponent**, and **Ability**.<br>**Note**: An empty array indicates that all the preceding objects are monitored.|
+| isEnabled | boolean | Yes| Whether to enable the detection for JS object memory leaks. **true**: yes; **false**: no.|
+| configs | Array&lt;string&gt; | Yes| Configuration item. Each element in the array indicates a specific object type to monitor.<br>Options: **XComponent**, **NodeContainer**, **Window**, **CustomComponent**, and **Ability**.<br>Note: An empty array indicates that all the preceding objects are monitored.|
 | callback | Callback&lt;Array&lt;string&gt;&gt; | Yes| Callback used to receive the memory-leaked object returned by the **jsLeakWatcher.enableLeakWatcher** API.<br>You need to input an array object in the callback. Index **0** is the name of the leak list file, whose extension is **.jsleaklist**. Index **1** is the name of the VM memory snapshot file, whose extension is **.rawheap**.|
 
 

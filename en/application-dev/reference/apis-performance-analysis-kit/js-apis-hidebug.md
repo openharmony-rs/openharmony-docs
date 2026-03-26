@@ -2,7 +2,7 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Owner: @hello_harmony; @leiguangyu-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @jinqiuheng-->
@@ -920,7 +920,7 @@ Defines the memory limit of the application process.
 
 | Name     | Type  | Read Only| Optional| Description        |
 | --------- | ------ | --|----| ------------ |
-| rssLimit    | bigint |  No | No | Limit on the resident set size, in KB.    |
+| rssLimit    | bigint |  No | No | Limit on the physical memory size of the application process, in KB. Currently, the system does not limit the physical memory size of the process. However, the available physical memory of the process cannot exceed the maximum physical memory of the device. You can call [hidebug.getSystemMemInfo](#hidebuggetsystemmeminfo12) to obtain the physical memory usage of the device.    |
 | vssLimit  | bigint |  No | No | Limit on the virtual memory size, in KB.      |
 | vmHeapLimit | bigint |  No | No | Limit on the JS VM heap size of the calling thread, in KB.|
 | vmTotalHeapSize | bigint |  No | No | Limit on the JS heap memory size of the process, in KB. |
