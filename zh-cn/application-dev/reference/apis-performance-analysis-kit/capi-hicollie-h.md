@@ -36,6 +36,7 @@ HiCollie模块对外提供检测业务线程卡死、卡顿，以及上报卡死
 | -- | -- | -- |
 | [HiCollie_ErrorCode](#hicollie_errorcode) | HiCollie_ErrorCode | 错误码定义。 |
 | [HiCollie_Flag](#hicollie_flag) | HiCollie_Flag | 定义函数执行超时时发生的动作。 |
+| [OH_HiCollie_Freeze_Type](#oh_hicollie_freeze_type) | OH_HiCollie_Freeze_Type | 定义FreezeCallback返回的冻屏类型。 |
 
 ### 函数
 
@@ -52,6 +53,9 @@ HiCollie模块对外提供检测业务线程卡死、卡顿，以及上报卡死
 | [typedef void (\*OH_HiCollie_Callback)(void*)](#oh_hicollie_callback) | OH_HiCollie_Callback | 当用户调用[OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer)后，未在其自定义的任务超时时间阈值内调用[OH_HiCollie_CancelTimer](capi-hicollie-h.md#oh_hicollie_canceltimer)，回调函数将被执行。 |
 | [HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)](#oh_hicollie_settimer) | - | 注册定时器，用于检测函数或代码块执行是否超过自定义时间。<br> 结合OH_HiCollie_CancelTimer接口配套使用，应在调用耗时的函数之前使用。 |
 | [void OH_HiCollie_CancelTimer(int id)](#oh_hicollie_canceltimer) | - | 取消定时器。<br> 结合OH_HiCollie_SetTimer接口配套使用，执行函数或代码块后使用，OH_HiCollie_CancelTimer通过id将该任务取消；<br> 若未在自定义时间内取消，则执行回调函数，在特定自定义超时动作下，生成故障日志。 |
+| [typedef size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void* buffer, size_t size)](#oh_hicollie_freezecallback) | OH_HiCollie_FreezeCallback | 冻屏事件使用的回调。 |
+| [void* OH_HiCollie_SetFreezeCallback(OH_HiCollie_FreezeCallback callback)](#oh_hicollie_setfreezecallback) | - | 将冻屏回调设置进系统，系统将在冻屏事件发生时回调此函数。 |
+| [HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)](#oh_hicollie_associateprocessreport) | - | 报告一个进程的冻屏事件，此时会生成APP_HICOLLIE类型HiAppEvent事件。 |
 
 ## 枚举类型说明
 
@@ -374,7 +378,7 @@ typedef size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void*
 
 **描述**
 
-当系统或开发者检测到冻屏事件时设置回调。
+冻屏事件使用的回调。
 
 **起始版本：** 24
 
@@ -383,8 +387,8 @@ typedef size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void*
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_HiCollie_Freeze_Type](capi-hicollie-h.md#oh_hicollie_freeze_type) type | 冻屏事件类型。 |
-| void* buffer | 系统提供log buffer，其中的内容将被迁移到APP_FREEZE或APP_HICOLLIE hiappevent当中。 |
-| size_t size | 可以使用缓冲区大小，64 KB， 如果超过上限，可能导致应用crash。|
+| void* buffer | 系统提供log buffer，其中的内容将被迁移到APP_FREEZE或APP_HICOLLIE当中。 |
+| size_t size | 可以使用的缓冲区大小，最大值为64 KB， 如果超过上限，可能导致应用crash。|
 
 **返回：**
 
@@ -432,11 +436,12 @@ HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool isFreezeEvent | True，将报告BUSINESS_THREAD_BLOCK_6S，False，将报告BUSINESS_THREAD_BLOCK_3S。 |
+| bool isFreezeEvent | True，将报告BUSINESS_THREAD_BLOCK_6S<br>False，将报告BUSINESS_THREAD_BLOCK_3S。 |
+
 注：BUSINESS_THREAD_BLOCK_3S、BUSINESS_THREAD_BLOCK_6S等同于BUSSINESS_THREAD_BLOCK_3S、BUSSINESS_THREAD_BLOCK_6S，后续会统一事件检测类型
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> [OH_HICOLLIE_REACH_REPORT_LIMIT](capi-hicollie-h.md#hicollie_errorcode) 29800007 - 上报过于频繁，1分钟内只允许上报一次。 |
+| [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | [HICOLLIE_SUCCESS](capi-hicollie-h.md#hicollie_errorcode) 0 - 成功。<br> [OH_HICOLLIE_REACH_REPORT_LIMIT](capi-hicollie-h.md#hicollie_errorcode) 29800007 - 上报过于频繁，系统限定1分钟内只允许上报一次。 |
