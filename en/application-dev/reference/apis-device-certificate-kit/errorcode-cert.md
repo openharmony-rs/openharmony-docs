@@ -15,7 +15,7 @@
 
 **Error Message**
 
-Memory error.
+Memory malloc failed.
 
 **Description**
 
