@@ -95,6 +95,7 @@
     - [OH_VideoInfo](capi-avscreencapture-oh-videoinfo.md)
     - [OH_RecorderInfo](capi-avscreencapture-oh-recorderinfo.md)
     - [OH_AVScreenCaptureConfig](capi-avscreencapture-oh-avscreencaptureconfig.md)
+    - [OH_PrivacyProtectInfo](capi-avscreencapture-oh-privacyprotectinfo.md)
     - [OH_AVScreenCaptureCallback](capi-avscreencapture-oh-avscreencapturecallback.md)
     - [OH_Rect](capi-avscreencapture-oh-rect.md)
     - [OH_AudioBuffer](capi-avscreencapture-oh-audiobuffer.md)
