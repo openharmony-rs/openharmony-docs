@@ -293,8 +293,8 @@
 | [float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getrowgap) | - | 通过FlowItem分组配置信息获取对应索引下的分组的行间距。 |
 | [void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)](#oh_arkui_waterflowsectionoption_setmargin) | - | 设置分组的外边距。 |
 | [ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getmargin) | - | 通过FlowItem分组配置信息获取对应索引下的分组的外边距。 |
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | 通过FlowItem分组配置信息根据flowItemIndex获取指定Item的主轴大小。 |
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | 通过FlowItem分组配置信息根据flowItemIndex获取指定Item的主轴大小。 |
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | 通过FlowItem分组配置信息根据itemIndex获取指定FlowItem的主轴大小。如需在回调中使用自定义数据，可使用[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata)。 |
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | 通过FlowItem分组配置信息根据itemIndex获取指定Item的主轴大小。与[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex)的区别在于，该接口支持传入自定义数据userData，并在回调函数中接收该数据。 |
 | [ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)](#oh_arkui_guidelineoption_create) | - | 创建RelativeContainer容器内的辅助线信息。 |
 | [void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)](#oh_arkui_guidelineoption_dispose) | - | 销毁辅助线信息。 |
 | [void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char* value, int32_t index)](#oh_arkui_guidelineoption_setid) | - | 设置辅助线的Id。 |
@@ -4547,7 +4547,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 **描述：**
 
 
-通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息根据flowItemIndex获取指定FlowItem的主轴大小。
+通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息根据itemIndex获取指定FlowItem的主轴大小。如需在回调中使用自定义数据，可使用[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata)。
 
 **起始版本：** 12
 
@@ -4558,7 +4558,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 |------------------------------------------------| -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 | int32_t index                                  | 分组配置信息数组索引值。 |
-| callback                                       | 根据index获取指定Item的主轴大小。flowItemIndex：[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)索引值。 |
+| callback                                       | 根据index获取指定Item的主轴大小。itemIndex：[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)索引值。 |
 
 ### OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData()
 
@@ -4569,7 +4569,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithU
 **描述：**
 
 
-通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息根据flowItemIndex获取指定Item的主轴大小。
+通过[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息根据itemIndex获取指定Item的主轴大小。与[OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex)的区别在于，该接口支持传入自定义数据userData，并在回调函数中接收该数据。
 
 **起始版本：** 12
 
@@ -4580,8 +4580,8 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithU
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)分组配置信息。 |
 | int32_t index | 分组配置信息数组索引值。 |
-|  void* userData | FlowItem自定义数据。 |
-| callback | 根据index获取指定Item的主轴大小。itemIndex：[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)索引值。 |
+|  void* userData |用户自定义数据指针，将在回调函数中回传给用户。 |
+| callback | 根据index获取指定Item的主轴大小。itemIndex：[FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md)索引值；userData：用户自定义数据。 |
 
 ### OH_ArkUI_GuidelineOption_Create()
 
