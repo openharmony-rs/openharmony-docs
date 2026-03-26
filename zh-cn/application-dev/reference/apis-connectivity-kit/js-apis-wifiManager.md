@@ -679,9 +679,9 @@ WAPI认证方式的枚举。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | networkId | number | 否 | 否 | 候选网络配置的ID。 |
-| withUserAction | boolean | 否 | 是 | 连接时是否提示用户进行信任确认，默认false |
-| userActionTimeout | number | 否 | 是 | 提示用户进行信任确认弹框显示时间（单位秒），默认10秒 |
-| addNetworkToSystem | boolean | 否 | 是 | 是否添加网络到系统，默认false |
+| withUserAction | boolean | 否 | 是 | 连接时是否提示用户进行信任确认，是表示与connectToCandidateConfigWithUserAction接口功能一致，否则不要求不一致，默认false 。|
+| userActionTimeout | number | 否 | 是 | 提示用户进行信任确认弹框显示时间（单位秒），默认10秒 。|
+| addNetworkToSystem | boolean | 否 | 是 | 是否添加网络到系统，是表示将建议网络添加到到系统网络中，否则保持建议网络，默认false 。|
 
 
 ## wifiManager.addCandidateConfig
