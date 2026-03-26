@@ -88,8 +88,7 @@ Enumerates the fold statuses of a foldable device. For dual-fold axis devices, w
 
 >**NOTE**<br>
 > Devices with only one fold axis can be in the **FOLD_STATUS_EXPANDED**, **FOLD_STATUS_FOLDED**, or **FOLD_STATUS_HALF_FOLDED** state.<br>
-> Devices with two fold axes can be in any of the states provided in the table above, except for<br>
-> **FOLD_STATUS_UNKNOWN**, which indicates an unusable fold status.
+> Devices with two fold axes can be in any of the states provided in the table above, except for **FOLD_STATUS_UNKNOWN**, which indicates an unusable fold status.
 
 ## FoldDisplayMode<sup>10+</sup>
 

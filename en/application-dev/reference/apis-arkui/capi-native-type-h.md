@@ -1162,7 +1162,7 @@ Enumerates the modes for pinning the header to the top or the footer to the bott
 | Value| Description|
 | -- | -- |
 | ARKUI_STICKY_STYLE_NONE = 0 | [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) and [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) of [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) are not pinned to the top and bottom, respectively.|
-| ARKUI_STICKY_STYLE_HEADER = 1 | [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) of [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) are pinned to the top, and [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) is not pinned to the bottom.|
+| ARKUI_STICKY_STYLE_HEADER = 1 | [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) of [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) is pinned to the top, and [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) is not pinned to the bottom.|
 | ARKUI_STICKY_STYLE_FOOTER = 2 | [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) of [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) is not pinned to the top, and [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) is pinned to the bottom.|
 | ARKUI_STICKY_STYLE_BOTH = 3 | [header](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) of [ListItemGroup](./arkui-ts/ts-container-listitemgroup.md) is pinned to the top, and [footer](./arkui-ts/ts-container-listitemgroup.md#listitemgroupoptions) is pinned to the bottom.|
 
