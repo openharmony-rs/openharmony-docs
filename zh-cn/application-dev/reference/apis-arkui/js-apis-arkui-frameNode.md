@@ -3439,6 +3439,12 @@ createSwiperNode(context: UIContext, options?: FrameNodeOptions): Swiper
 | context | [UIContext](./js-apis-arkui-UIContext.md) | 是   | 创建对应节点时所需的UI上下文。 |
 | options |[FrameNodeOptions](#framenodeoptions24) | 否 | 创建Swiper类型的FrameNode节点。 |
 
+**返回值：**
+
+| 类型                  | 说明      |
+| ------------------ | ------------------ |
+| [Swiper](#swiper12) | Swiper类型的FrameNode节点。 |
+
 ### getAttribute('Swiper')<sup>20+</sup>
 
 getAttribute(node: FrameNode, nodeType: 'Swiper'): SwiperAttribute | undefined
@@ -3453,7 +3459,7 @@ getAttribute(node: FrameNode, nodeType: 'Swiper'): SwiperAttribute | undefined
 
 **相关接口：** 该接口对应的ArkTS-Sta的接口是[getSwiperAttribute](#getswiperattribute24)。
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 20
 
 **参数：**
 
@@ -3497,6 +3503,77 @@ getSwiperAttribute(node: FrameNode): SwiperAttribute | undefined
 | 类型                  | 说明      |
 | ------------------ | ------------------ |
 | SwiperAttribute&nbsp;\|&nbsp;undefined | Swiper节点类型的属性，若获取失败，则返回undefined。 |
+
+### bindController('Swiper')<sup>20+</sup>
+
+bindController(node: FrameNode, controller: SwiperController, nodeType: 'Swiper'): void
+
+将控制器[SwiperController](arkui-ts/ts-container-swiper.md#swipercontroller)绑定到[Swiper](#swiper12)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[bindSwiperController<sup>24+</sup>](#bindswipercontroller24)。
+
+**ArkTS-Dyn起始版本：** 20
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 绑定控制器的目标节点。 |
+| controller | [SwiperController](arkui-ts/ts-container-swiper.md#swipercontroller) | 是   | Swiper容器组件的控制器。 |
+| nodeType | 'Swiper' | 是 | 绑定控制器的目标节点的节点类型为Swiper。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
+| 100021   | The FrameNode is not modifiable. |
+
+**示例：**
+
+请参考[createNode('Swiper')<sup>12+</sup>示例](#createnodeswiper12)。
+
+### bindSwiperController<sup>24+</sup>
+
+bindSwiperController(node: FrameNode, controller: SwiperController): void
+
+将控制器[SwiperController](arkui-ts/ts-container-swiper.md#swipercontroller)绑定到[Swiper](#swiper12)节点。若该节点非ArkTS语言创建，则需要设置是否支持跨语言访问，如果不支持跨语言访问，则抛出异常。该接口不支持声明式方式创建的节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[bindController('Swiper')<sup>20+</sup>](#bindcontrollerswiper20)。
+
+**ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| ------------------ | ------------------ | ------------------- | ------------------- |
+| node | [FrameNode](./js-apis-arkui-frameNode.md) | 是   | 绑定控制器的目标节点。 |
+| controller | [SwiperController](arkui-ts/ts-container-swiper.md#swipercontroller) | 是   | Swiper容器组件的控制器。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
+| 100021   | The FrameNode is not modifiable. |
+
+**示例：**
+
+请参考[createNode('Swiper')<sup>12+</sup>示例](#createnodeswiper12)。
 
 ### Progress<sup>12+</sup>
 type Progress = TypedFrameNode&lt;ProgressInterface, ProgressAttribute&gt;

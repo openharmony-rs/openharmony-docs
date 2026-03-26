@@ -486,7 +486,9 @@ ArkTS-Sta: barBackgroundColor(value: ResourceColor | undefined)
 
 ### barBackgroundBlurStyle<sup>11+</sup>
 
-barBackgroundBlurStyle(value: BlurStyle)
+ArkTS-Dyn: barBackgroundBlurStyle(value: BlurStyle)
+
+ArkTS-Sta: barBackgroundBlurStyle(value: BlurStyle | undefined)
 
 设置TabBar的背景模糊材质。
 
@@ -494,17 +496,15 @@ barBackgroundBlurStyle(value: BlurStyle)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
-
-**相关接口：** 该接口对应的ArkTS-Sta的接口是[barBackgroundBlurStyle](#barbackgroundblurstyle18)。
-
 **ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
 | 参数名 | 类型                                         | 必填 | 说明                                     |
 | ------ | -------------------------------------------- | ---- | ---------------------------------------- |
-| value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | 是   | TabBar的背景模糊材质。<br />默认值：BlurStyle.NONE |
+| value  | ArkTS-Dyn: [BlurStyle](ts-universal-attributes-background.md#blurstyle9)<br/>ArkTS-Sta: BlurStyle \| undefined | 是   | TabBar的背景模糊材质。<br />默认值：BlurStyle.NONE |
 
 ### barBackgroundBlurStyle<sup>18+</sup>
 
@@ -777,9 +777,9 @@ type CommonModifier = CommonModifier
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 15
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Dyn起始版本：** 15
 
 | 类型         | 说明                                     |
 | ---------- | ---------------------------------------- |
