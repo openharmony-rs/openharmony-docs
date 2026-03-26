@@ -1565,7 +1565,7 @@ class A {
 用于指定在混淆过程中需要保留的代码元素，支持类、属性、方法及整个文件等。其完整的语法规范如下：
 
 ```txt
-[@annotationtype] [[!]final|abstract|declare ...] [!]interface|class|enum|namespace|package classname [extends|implements [@annotationtype] classname]
+[@annotationtype] [[!]final|abstract|declare ...] [!]interface|class|enum|namespace|package classname [extends|implements classname]
 [{
     [@annotationtype]
     [[!]public|private|protected|static|final ...]
