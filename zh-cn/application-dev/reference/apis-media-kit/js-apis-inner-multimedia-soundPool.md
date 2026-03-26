@@ -31,11 +31,11 @@ import { audio } from '@kit.AudioKit';
 
 | 名称            | 类型                                     | 只读 | 可选 | 说明                                                         |
 | --------------- | ---------------------------------------- | ---- | ---- |------------------------------------------------------------ |
-| loop | number   | 否 | 是  | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>默认值：0，表示仅播放一次。                   |
+| loop | number   | 否 | 是  | 设置循环次数。<br>当loop≥0时，实际播放次数为loop+1。<br> 当loop＜0时，表示一直循环。<br>默认值：0，表示仅播放一次。<br>当loop为浮点数时只截取整数部分。                   |
 | rate | number    | 否 | 是  | 设置音频播放的倍速，具体倍速范围参照[AudioRendererRate](../apis-audio-kit/arkts-apis-audio-e.md#audiorendererrate8)。默认值：0。 |
-| leftVolume  | number | 否 | 是  | 设置左声道音量，设置范围（0.0, 1.0）。默认值：1.0。                                    |
-| rightVolume | number  | 否 | 是  | 设置右声道音量，设置范围（0.0, 1.0）。（当前不支持左右分别设置，将以左声道音量为准）。默认值：1.0。 |
-| priority  | number  | 否 | 是  | 音频流播放的优先级，0为最低优先级，数值越大优先级越高，通过相互比较大小确定播放优先级，设置范围为大于等于0的整数。默认值：0。      |
+| leftVolume  | number | 否 | 是  | 设置左声道音量，设置范围（0.0, 1.0）。默认值：1.0。<br> 当音量超过边界值时自动设置为边界值。                       |
+| rightVolume | number  | 否 | 是  | 设置右声道音量，设置范围（0.0, 1.0）。（当前不支持左右分别设置，将以左声道音量为准）。默认值：1.0。<br> 当音量超过边界值时自动设置为边界值。 |
+| priority  | number  | 否 | 是  | 音频流播放的优先级，0为最低优先级，数值越大优先级越高，通过相互比较大小确定播放优先级，设置范围为大于等于0的整数。默认值：0。  <br> 当优先级为负数时自动设置为0，为浮点数时只截取整数部分。     |
 
 ## ErrorType<sup>20+</sup>
 
@@ -1930,7 +1930,7 @@ media.createSoundPool(5, audioRendererInfo, (error: BusinessError, soundPool_: m
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
 | type   | string | 是   | 事件回调类型，取消注册的事件为'errorOccurred'。 |
-| callback | Callback\<[ErrorInfo](#errorinfo20)> | 否   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)。 |
+| callback | Callback\<[ErrorInfo](#errorinfo20)> | 否   | 错误事件回调方法。在使用播放器的过程中发生错误时，提供错误信息[ErrorInfo](#errorinfo20)，不设置callback时不提供相关信息。 |
 
 **示例：**
 
