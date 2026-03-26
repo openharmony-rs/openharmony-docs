@@ -3866,9 +3866,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### setAssetCompatibleCapability<sup>24+</sup>
 
-setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise&lt;void&gt;
+setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise\<void>;
 
-根据bundleName配置资产兼容能力。您可以获取兼容性能力，并决定是否根据兼容性能力进行兼容性转换。
+根据bundleName配置资产兼容能力。开发者可以获取兼容性能力，并决定是否根据兼容性能力进行兼容性转换。
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
 
@@ -3881,14 +3881,14 @@ setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapa
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
 | bundleName | string | 是   | 应用的bundleName。|
-| capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | 是   | 资产兼容能力|
+| capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | 是   | 资产兼容能力。|
 
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;void&gt; | 返回void。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -3897,7 +3897,7 @@ setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapa
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
 | 202 | Called by non-system application. |
-| 23800151 | 23800151 - The bundleName or capability is invalid.|
+| 23800151 | The bundleName or capability is invalid.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
@@ -3912,15 +3912,15 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
         supportedHighResolution : true,
     };
     await phAccessHelper.setAssetCompatibleCapability(bundleName, capability);
-  } catch (err) {
-    console.info('failed to setAssetCompatibleCapability err');
+  } catch (error) {
+    console.error('failed to setAssetCompatibleCapability err', error);
   }
 }
 ```
 
 ### getAssetCompatibleCapability<sup>24+</sup>
 
-getAssetCompatibleCapability(bundleName: string): Promise&lt;AssetCompatibleCapability&gt;
+getAssetCompatibleCapability(bundleName: string): Promise\<AssetCompatibleCapability>
 
 根据bundleName获取资产兼容能力。应用程序获取文件时，可判断是否进行兼容性转换。
 
@@ -3940,7 +3940,7 @@ getAssetCompatibleCapability(bundleName: string): Promise&lt;AssetCompatibleCapa
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;[AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)&gt; | 返回指定的资产兼容功能。 |
+| Promise&lt;[AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)&gt; | Promise对象，返回指定的资产兼容功能。 |
 
 **错误码：**
 
@@ -3961,8 +3961,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   try {
     let bundleName = "com.test.example";
     let capability : photoAccessHelper.AssetCompatibleCapability = await phAccessHelper.getAssetCompatibleCapability(bundleName);
-  } catch (err) {
-    console.info('failed to getAssetCompatibleCapability err');
+  } catch (error) {
+    console.error('failed to getAssetCompatibleCapability err', error);
   }
 }
 ```
