@@ -22,7 +22,7 @@ Supported
 >  - Allowed child component types: built-in and custom components, excluding rendering control types ([if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), and [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)).
 >  - This component must contain two child components.
 >  - If there are three or more child components, only the first and second child components are displayed. If there is only one child component, the sidebar is displayed, and the content area is blank.
->  - When the focus is moved to the sidebar container, the focus is first moved to the content area and then to the sidebar.
+>  - The focus navigation is performed in the content area and then in the sidebar of the **SideBarContainer** component.
 
 ## APIs
 
@@ -42,7 +42,7 @@ Creates a sidebar container.
 
 ## SideBarContainerType
 
-Enumerates the types of sidebars in a container.
+Enumerates the types of sidebar containers.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -50,7 +50,7 @@ Enumerates the types of sidebars in a container.
 
 | Name| Value| Description|
 | -------- | -------- |-------- |
-| Embed | 0 |The sidebar is embedded in the component and displayed side by side with the content area.<br>If the size of the overall container remains unchanged, displaying the sidebar will reduce the content area, and hiding the sidebar will expand the content area.<br>If the component size is less than the value of [minContentWidth](#mincontentwidth10) plus [minSideBarWidth](#minsidebarwidth) and **showSideBar** is not set, the sidebar is automatically hidden.<br>If **minSideBarWidth** or **minContentWidth** is not set, the default value will be used for calculation.<br> The user can bring out the sidebar in Overlay mode by clicking the control button.|
+| Embed | 0 |The sidebar is embedded in the component and displayed side by side with the content area.<br>With the overall container size unchanged, displaying the sidebar reduces the content area, and hiding the sidebar expands the content area.<br>If the component size is less than the sum of [minContentWidth](#mincontentwidth10) and [minSideBarWidth](#minsidebarwidth), and **showSideBar** is not set, the sidebar is automatically hidden.<br>If **minSideBarWidth** or **minContentWidth** is not set, the default value will be used for calculation.<br> The user can bring out the sidebar in Overlay mode by clicking the control button.|
 | Overlay | 1 |The sidebar is overlaid on top of the content area, without affecting the size of the content area.|
 | AUTO<sup>10+</sup> | 2 |The sidebar is displayed in Embed mode when the component size is greater than or equal to the sum of **minSideBarWidth** and **minContentWidth**<br>and in Overlay mode otherwise.<br>If **minSideBarWidth** or **minContentWidth** is not set, the default value will be used for calculation. If the calculation result is less than 600 vp, 600 vp will be used as the breakpoint value for mode switching.|
 
@@ -200,13 +200,13 @@ Sets the maximum width of the sidebar. If a value less than 0 is set, the defaul
 
 | Name| Type                                                        | Mandatory| Description                                               |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | number | Yes  | Maximum width of the sidebar.<br>Default value: **280vp**<br>Unit: vp.<br>Value range: [0, +∞).|
+| value  | number | Yes  | Maximum width of the sidebar.<br>Default value: **280vp**<br>Unit: vp<br>Value range: [0, +∞).|
 
 ### maxSideBarWidth<sup>9+</sup>
 
 maxSideBarWidth(value: Length)
 
-Sets the maximum width of the sidebar. If a value less than 0 is set, the default value is used. The value cannot exceed the width of the sidebar container. If the specified value exceeds the sidebar container width, the container width is used instead. Compared with maxSideBarWidth](#maxsidebarwidth), this API supports percentage strings and other [pixel units](ts-pixel-units.md) for the **value** parameter.
+Sets the maximum width of the sidebar. If a value less than 0 is set, the default value is used. The value cannot exceed the width of the sidebar container. If the specified value exceeds the sidebar container width, the container width is used instead. Compared with [maxSideBarWidth](#maxsidebarwidth), this API supports percentage strings and other [pixel units](ts-pixel-units.md) for the **value** parameter.
 
 **maxSideBarWidth**, whether it is specified or kept at the default value, takes precedence over **maxWidth** of the sidebar child components.
 
@@ -218,7 +218,7 @@ Sets the maximum width of the sidebar. If a value less than 0 is set, the defaul
 
 | Name| Type                                                        | Mandatory| Description                                               |
 | ------ | ------------------------------------------------------------ | ---- | --------------------------------------------------- |
-| value  | [Length](ts-types.md#length) | Yes  | Maximum width of the sidebar.<br>Default value: **280vp**<br>Unit: vp.<br>Value range: [0, +∞).|
+| value  | [Length](ts-types.md#length) | Yes  | Maximum width of the sidebar.<br>Default value: **280vp**<br>Unit: vp<br>Value range: [0, +∞).|
 
 ### autoHide<sup>9+</sup>
 
@@ -284,10 +284,10 @@ when the component size is decreased, the content area is shrunk until its width
 
 until its width reaches the value defined by **minSideBarWidth**; if the component size is further decreased, then:
 
-- If [autoHide](#autohide9) is set to **false**, while respecting the [minSideBarWidth](#minsidebarwidth) and **minContentWidth** settings, the content area has its content clipped.
+- If [autoHide](#autohide9) is set to **false**, while retaining the [minSideBarWidth](#minsidebarwidth) and **minContentWidth** settings, the content area has its content clipped.
 - If **autoHide** is set to **true**, the sidebar is hidden first, and then the content area is shrunk. After its width reaches the value defined by **minContentWidth**, the content area has its content clipped.
 
-minContentWidth takes precedence over the [maxSideBarWidth](#maxsidebarwidth) and sideBarWidth attributes of the sidebar. If **minContentWidth** is not set, the default value takes precedence over the values of **minSideBarWidth** and **maxSideBarWidth**.
+**minContentWidth** takes precedence over the [maxSideBarWidth](#maxsidebarwidth) and **sideBarWidth** attributes of the sidebar. If **minContentWidth** is not set, **minSideBarWidth** and **maxSideBarWidth** take precedence over its default value.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -309,15 +309,15 @@ Describes the style of the sidebar control button.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| left | number | No| Yes| Spacing between the sidebar control button and the left of the container.<br>Default value: **16vp**<br>Unit: vp.<br>Value range: [0, +∞).|
-| top | number | No| Yes| Spacing between the sidebar control button and the top of the container.<br>Default value: **48vp**<br>Unit: vp.<br>Value range: [0, +∞).|
-| width | number | No| Yes| Width of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp.<br>Value range: [0, +∞).|
-| height | number | No| Yes| Height of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp.<br>Value range: [0, +∞).|
-| icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18) | No| Yes| Icons of the sidebar control button.|
+| left | number | No| Yes| Spacing between the sidebar control button and the left of the container.<br>Default value: **16vp**<br>Unit: vp<br>Value range: [0, +∞).|
+| top | number | No| Yes| Spacing between the sidebar control button and the top of the container.<br>Default value: **48vp**<br>Unit: vp<br>Value range: [0, +∞).|
+| width | number | No| Yes| Width of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp<br>Value range: [0, +∞).|
+| height | number | No| Yes| Height of the sidebar control button.<br>Default value:<br>API version 9 and earlier versions: **32vp**<br>API version 10 and later versions: **24vp**<br>Unit: vp<br>Value range: [0, +∞).|
+| icons | [ButtonIconOptions<sup>18+</sup>](#buttoniconoptions18) | No| Yes| Icons of the sidebar control button.<br>If the resource fails to be obtained or this attribute is not set, the default icon is used.|
 
 ## ButtonIconOptions<sup>18+</sup>
 
-Icons of the sidebar control button.
+Describes the icons of the sidebar control button.
 
 > **NOTE**
 >
@@ -332,10 +332,6 @@ Icons of the sidebar control button.
 | shown<sup>8+</sup>     | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| No  | Icon of the control button when the sidebar is displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
 | hidden<sup>8+</sup>    | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| No  | Icon of the control button when the sidebar is hidden.<br>**Atomic service API**: This API can be used in atomic services since API version 11.             |
 | switching<sup>8+</sup> | string&nbsp;\|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | No| Yes  | Icon of the control button when the sidebar is switching between the shown and hidden states.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-
-> **NOTE**
->
-> When an error occurs during resource obtaining, the default icon is used.
 
 ## SideBarPosition<sup>9+</sup>
 
@@ -398,7 +394,7 @@ This event is triggered when any of the following conditions is met:
 
 | Name| Type   | Mandatory| Description                         |
 | ------ | ------- | ---- | ----------------------------- |
-| value  | boolean | Yes  | The value **true** means that the sidebar is displayed, and **false** means the opposite.|
+| value  | boolean | Yes  | **true**: The sidebar is shown. **false**: The sidebar is hidden.|
 
 
 ## Example

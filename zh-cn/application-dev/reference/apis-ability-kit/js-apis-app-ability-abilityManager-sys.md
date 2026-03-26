@@ -24,6 +24,8 @@ import { abilityManager } from '@kit.AbilityKit';
 
 用户操作的断言调试结果，该类型为枚举。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -827,6 +829,8 @@ notifyDebugAssertResult(sessionId: string, status: UserStatus): Promise\<void>
 
 将断言调试结果通知应用程序。使用Promise异步回调。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.NOTIFY_DEBUG_ASSERT_RESULT
@@ -884,6 +888,8 @@ export default class UiExtAbility extends UIExtensionAbility {
 isEmbeddedOpenAllowed(context: Context, appId: string): Promise\<boolean>
 
 判断是否允许嵌入式拉起[EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md)。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -997,6 +1003,8 @@ preloadUIExtensionAbility(want: Want): Promise\<number>
 
 预加载指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)并返回预加载UIExtensionAbility实例的ID。使用Promise异步回调。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1064,6 +1072,8 @@ clearPreloadedUIExtensionAbility(preloadId: number): Promise\<void>
 
 清除指定的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例。使用Promise异步回调。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1122,6 +1132,8 @@ clearPreloadedUIExtensionAbilities(): Promise\<void>
 
 清除当前进程中所有已经预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例。使用Promise异步回调。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1171,6 +1183,8 @@ onPreloadedUIExtensionAbilityLoaded(callback: PreloadedUIExtensionAbilityLoadedF
 
 监听当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的加载事件。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1218,6 +1232,8 @@ try {
 offPreloadedUIExtensionAbilityLoaded(callback?: PreloadedUIExtensionAbilityLoadedFn): void
 
 注销当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的加载监听。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -1267,6 +1283,8 @@ onPreloadedUIExtensionAbilityDestroyed(callback: PreloadedUIExtensionAbilityDest
 
 监听当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的销毁事件。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1315,6 +1333,8 @@ offPreloadedUIExtensionAbilityDestroyed(callback?: PreloadedUIExtensionAbilityDe
 
 注销当前进程中预加载的[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)实例的销毁监听。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **需要权限**：ohos.permission.PRELOAD_UI_EXTENSION_ABILITY
@@ -1361,6 +1381,8 @@ try {
 
 嵌入式拉起原子化服务的规则。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：该接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -1375,6 +1397,8 @@ try {
 queryAtomicServiceStartupRule(context: Context, appId: string): Promise\<AtomicServiceStartupRule>
 
 查询嵌入式拉起[EmbeddableUIAbility](js-apis-app-ability-embeddableUIAbility.md)的规则。使用Promise异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 
@@ -1462,6 +1486,8 @@ type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
 
 预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)被销毁时的回调函数类型。
 
+**模型约束**：此接口仅可在Stage模型下使用。
+
 **系统接口**：此接口为系统接口。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
@@ -1475,6 +1501,8 @@ type PreloadedUIExtensionAbilityDestroyedFn = (preloadId: number) => void
 type PreloadedUIExtensionAbilityLoadedFn = (preloadId: number) => void
 
 预加载[UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md)被加载时的回调函数类型。
+
+**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统接口**：此接口为系统接口。
 

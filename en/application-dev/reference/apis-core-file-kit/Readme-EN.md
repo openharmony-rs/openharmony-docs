@@ -28,13 +28,9 @@
   - [@ohos.file.cloudSync (Device-Cloud Sync) (System API)](js-apis-file-cloudsync-sys.md)
   - [@ohos.file.cloudSyncManager (Device-Cloud Sync Management) (System API)](js-apis-file-cloudsyncmanager-sys.md)
   - [@ohos.file.environment (Directory Environment Capability) (System API)](js-apis-file-environment-sys.md)
-  - [@ohos.file.fileAccess (User File Access and Management) (System API)](js-apis-fileAccess-sys.md)
-  - [@ohos.file.fileExtensionInfo (User File Access and Management Attribute Information) (System API)](js-apis-fileExtensionInfo-sys.md)
   - [@ohos.file.keyManager (User Key Management) (System API)](js-apis-file-keymanager-sys.md)
-  - [@ohos.file.recent (Latest Access List) (System API)](js-apis-file-recent-sys.md)
   - [@ohos.file.picker (Picker) (System API)](js-apis-file-picker-sys.md)
   - [@ohos.file.storageStatistics (Application Storage Statistics) (System API)](js-apis-file-storage-statistics-sys.md)
-  - [@ohos.file.trash (Trash) (System API)](js-apis-file-trash-sys.md)
   - [@ohos.file.volumeManager (Volume Management) (System API)](js-apis-file-volumemanager-sys.md)
   - [@ohos.filemanagement.userFileManager (User Data Management) (System API)](js-apis-userFileManager-sys.md)
   - [@ohos.fileshare (File Sharing) (System API)](js-apis-fileShare-sys.md)
@@ -44,6 +40,12 @@
     - [@ohos.fileio (File Management)](js-apis-fileio.md)
     - [@ohos.statfs (statfs)](js-apis-statfs.md)
     - [@system.file (File Storage)](js-apis-system-file.md)
+    <!--Del-->
+    - [@ohos.file.fileAccess (User File Access and Management) (System API)](js-apis-fileAccess-sys.md)
+    - [@ohos.file.fileExtensionInfo (User File Access and Management Attribute Information) (System API)](js-apis-fileExtensionInfo-sys.md)
+    - [@ohos.file.recent (Latest Access List) (System API)](js-apis-file-recent-sys.md)
+    - [@ohos.file.trash (Trash) (System API)](js-apis-file-trash-sys.md)
+    <!--DelEnd-->
 - C APIs<!--core-file-c-->
   - Modules<!--core-file-module-->
     - [Environment](capi-environment.md)

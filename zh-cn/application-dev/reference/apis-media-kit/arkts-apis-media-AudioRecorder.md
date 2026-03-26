@@ -39,7 +39,7 @@ prepare(config: AudioRecorderConfig): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -57,7 +57,7 @@ let audioRecorderConfig: media.AudioRecorderConfig = {
   uri : 'fd://1',       // 文件需先由调用者创建，并给予适当的权限。
   location : { latitude : 30, longitude : 130},
 };
-audioRecorder.on('prepare', () => {    //设置'prepare'事件回调。
+audioRecorder.on('prepare', () => {    // 设置'prepare'事件回调。
   console.info('prepare called');
 });
 audioRecorder.prepare(audioRecorderConfig);
@@ -77,7 +77,7 @@ start(): void
 **示例：**
 
 ```ts
-audioRecorder.on('start', () => {    //设置'start'事件回调。
+audioRecorder.on('start', () => {    // 设置'start'事件回调。
   console.info('audio recorder start called');
 });
 audioRecorder.start();
@@ -97,7 +97,7 @@ pause():void
 **示例：**
 
 ```ts
-audioRecorder.on('pause', () => {    //设置'pause'事件回调。
+audioRecorder.on('pause', () => {    // 设置'pause'事件回调。
   console.info('audio recorder pause called');
 });
 audioRecorder.pause();
@@ -117,7 +117,7 @@ resume():void
 **示例：**
 
 ```ts
-audioRecorder.on('resume', () => {    //设置'resume'事件回调。
+audioRecorder.on('resume', () => {    // 设置'resume'事件回调。
   console.info('audio recorder resume called');
 });
 audioRecorder.resume();
@@ -137,7 +137,7 @@ stop(): void
 **示例：**
 
 ```ts
-audioRecorder.on('stop', () => {    //设置'stop'事件回调。
+audioRecorder.on('stop', () => {    // 设置'stop'事件回调。
   console.info('audio recorder stop called');
 });
 audioRecorder.stop();
@@ -157,7 +157,7 @@ release(): void
 **示例：**
 
 ```ts
-audioRecorder.on('release', () => {    //设置'release'事件回调。
+audioRecorder.on('release', () => {    // 设置'release'事件回调。
   console.info('audio recorder release called');
 });
 audioRecorder.release();
@@ -180,7 +180,7 @@ reset(): void
 **示例：**
 
 ```ts
-audioRecorder.on('reset', () => {    //设置'reset'事件回调。
+audioRecorder.on('reset', () => {    // 设置'reset'事件回调。
   console.info('audio recorder reset called');
 });
 audioRecorder.reset();

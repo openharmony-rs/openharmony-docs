@@ -24,6 +24,8 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 
 管理访问控制模块的实例。
 
+AtManager接口调用依赖于tokenID，系统应用可通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)或[bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取tokenID。
+
 ### grantUserGrantedPermission
 
 grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
@@ -72,7 +74,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('grantUserGrantedPermission success');
@@ -124,7 +126,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
   if (err) {
@@ -183,7 +185,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('revokeUserGrantedPermission success');
@@ -235,7 +237,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
   if (err) {
@@ -293,7 +295,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: number) => {
   console.info(`getPermissionFlags success, result: ${data}`);
 }).catch((err: BusinessError) => {
@@ -429,6 +431,10 @@ getVersion(): Promise&lt;number&gt;
 | :------------ | :---------------------------------- |
 | Promise&lt;number&gt; | Promise对象，返回查询到的版本号。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | Not System App. Interface caller is not a system app. |
@@ -490,7 +496,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.PermissionStatus>) => {
   console.info(`getPermissionsStatus success, result: ${data}`);
 }).catch((err: BusinessError) => {
@@ -647,7 +653,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
   console.info('requestPermissionOnApplicationSetting success');
 }).catch((err: BusinessError) => {
@@ -703,7 +709,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 2;
 atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('grantPermission success');
@@ -760,7 +766,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用通过bundleManager.getApplicationInfo或者bundleManager.getBundleInfoForSelf获取
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 2;
 atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('revokePermission success');
@@ -832,7 +838,7 @@ atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permi
 });
 ```
 
-### PermissionRequestToggleStatus<sup>12+</sup>
+## PermissionRequestToggleStatus<sup>12+</sup>
 
 表示指定权限对应的弹窗开关状态的枚举。
 
