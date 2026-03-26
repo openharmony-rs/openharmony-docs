@@ -106,7 +106,6 @@ Timestamp:2025-05-17 19:17:07.000
 | name | const char* | 是 | 应用崩溃事件名称，此处为宏 **EVENT_APP_CRASH**。 |
 | config | HiAppEvent_Config* | 是 | 应用崩溃事件配置参数，可使用[OH_HiAppEvent_SetConfigItem](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_setconfigitem)函数设置config参数的配置项。 |
 
-**参数name值为EVENT_APP_CRASH**
 
 | 配置项名称 | 类型 | 必须配置 | 说明 |
 | --- | --- | --- | --- |
@@ -118,9 +117,10 @@ Timestamp:2025-05-17 19:17:07.000
 ### 参数设置示例
 
 OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步骤](hiappevent-watcher-crash-events-ndk.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃拼接应用日志内容。
-**注意**
+
+> **注意:**
 >
-> 沙箱路径下有应用生成的拼接日志
+> 沙箱路径下必需有应用生成的拼接日志
 
 ## 页面切换日志规格自定义参数设置
 
