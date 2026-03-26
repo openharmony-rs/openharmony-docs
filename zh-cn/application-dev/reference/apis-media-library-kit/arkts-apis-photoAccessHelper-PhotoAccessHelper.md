@@ -941,9 +941,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowAssetsCreationDialogDemo.');
 
   try {
-    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频URI。
     let srcFileUris: Array<string> = [
-      'file://fileUriDemo1' // 实际场景请使用真实的uri。
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
     ];
     let photoCreationConfigs: Array<photoAccessHelper.PhotoCreationConfig> = [
       {
@@ -1011,9 +1011,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowAssetsCreationDialogExDemo.'); 
 
   try {
-    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频URI。
     let srcFileUris: Array<string> = [
-      'file://fileUriDemo1' // 实际场景请使用真实的uri。
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
     ];
     let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [
       {
@@ -1082,7 +1082,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
   try {
     // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。
-    let srcFileUri: string = 'file://fileUriDemo1'; // 实际场景请使用真实的uri。
+    let srcFileUri: string = 'file://fileUriDemo1'; // 实际场景请使用真实的URI。
     let photoCreationConfig: photoAccessHelper.CreationSetting = {
       title: 'test2', // 可选。
       fileNameExtension: 'jpg',
@@ -1151,7 +1151,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
         let resultUri: string = await phAccessHelper.createAssetWithShortTermPermission(photoCreationConfig);
         let resultFile: fileIo.File = fileIo.openSync(resultUri, fileIo.OpenMode.READ_WRITE);
-        // 实际场景请使用真实的uri和文件大小。
+        // 实际场景请使用真实的URI和文件大小。
         let srcFile:  fileIo.File = fileIo.openSync("file://test.jpg", fileIo.OpenMode.READ_ONLY);
         let bufSize: number = 2000000;
         let readSize: number = 0;
@@ -1253,9 +1253,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
   console.info('requestPhotoUrisReadPermissionDemo.');
 
   try {
-    // 获取需要进行授权的图片/视频uri。
+    // 获取需要进行授权的图片/视频URI。
     let srcFileUris: Array<string> = [
-      'file://fileUriDemo1' // 实际场景请使用真实的uri。
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
     ];
     let desFileUris: Array<string> = await phAccessHelper.requestPhotoUrisReadPermission(srcFileUris);
     console.info('requestPhotoUrisReadPermission success, data is ' + desFileUris);
@@ -1311,9 +1311,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 console.info('requestPhotoUrisReadPermissionExDemo.');
 
   try {
-    // 获取需要进行授权的图片/视频uri。
+    // 获取需要进行授权的图片/视频URI。
     let srcFileUris: Array<string> = [
-      'file://fileUriDemo1' // 实际场景请使用真实的uri。
+      'file://fileUriDemo1' // 实际场景请使用真实的URI。
     ];
     let requestReadPermissionResult: photoAccessHelper.RequestReadPermissionResult = await phAccessHelper.requestPhotoUrisReadPermissionEx(srcFileUris);
     console.info('requestPhotoUrisReadPermissionEx success, data is ' + requestReadPermissionResult);
@@ -2209,9 +2209,9 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 ### setAssetCompatibleCapability<sup>24+</sup>
 
-setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise&lt;void&gt;
+setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<void>
 
-配置资产兼容能力。系统对于特殊的资产进行兼容性处理，如果你希望获得原始资产需要向系统注册兼容能力。
+配置资产兼容能力。系统会对特殊的资产进行兼容性处理，如果开发者希望获得原始资产需要向系统注册兼容能力。
 
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
@@ -2222,18 +2222,18 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise&lt;
 
 | 参数名  | 类型    | 必填 | 说明                       |
 | ------- | ------- | ---- | -------------------------- |
-| capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | 是   | 资产兼容能力|
+| capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | 是   | 资产兼容能力。|
 
 
 **返回值：**
 
 | 类型                                    | 说明              |
 | --------------------------------------- | ----------------- |
-| Promise&lt;void&gt; | 返回void。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+以下错误码的详细介绍请参见[媒体库错误码](errorcode-medialibrary.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -2251,8 +2251,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
         supportedHighResolution : true,
     };
     await phAccessHelper.setAssetCompatibleCapability(capability);
-  } catch (err) {
-    console.info('failed to setAssetCompatibleCapability err');
+  } catch (error) {
+    console.error('failed to setAssetCompatibleCapability err'， error);
   }
 }
 ```
