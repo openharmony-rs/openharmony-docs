@@ -22,6 +22,7 @@
    #include "hilog/log.h"
    #include <memory>
    #include <new>
+   #include <map>
    #include <multimedia/image_framework/image/image_native.h>
    #include <multimedia/image_framework/image/image_receiver_native.h>
    #include "ohcamera/camera.h"
@@ -154,12 +155,14 @@
        // 关键：调整nativeWindow大小及format，需要与image的大小、format保持一致。
        res = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_BUFFER_GEOMETRY, g_imageWidth, g_imageHeight);
        res = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_FORMAT, NATIVEBUFFER_PIXEL_FMT_YCRCB_420_SP); // NV21
-       // 设置旋转角度，后置默认旋转90，则需要将nativeWindow旋转270度，前置默认270，则需要将nativeWindow旋转90度。
-       if (g_isFront) {
-           res = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, NATIVEBUFFER_FLIP_V_ROT90);
-       } else {
-           res = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, NATIVEBUFFER_ROTATE_270);
+       
+       int32_t displayRotation = g_ndkCamera->GetDefaultDisplayRotation();
+       int32_t previewRotation = static_cast<int32_t>(g_ndkCamera->GetPreviewRotation(displayRotation));
+       if (g_isFront && (displayRotation == ROTATION_90 || displayRotation == ROTATION_270)) {
+           previewRotation = (previewRotation + ROTATION_180) % ROTATION_360;
        }
+       OH_NativeBuffer_TransformType transformType = g_ndkCamera->GetNativeBufferTransformType(previewRotation, g_isFront);
+       res = OH_NativeWindow_NativeWindowHandleOpt(nativeWindow, SET_TRANSFORM, transformType);
    
        OH_NativeBuffer *imageBuffer = nullptr;
        Image_ErrorCode errCode = OH_ImageNative_GetByteBuffer(image, g_jpegComponent, &imageBuffer);
