@@ -125,11 +125,11 @@ Unregisters the drawing completion callback through this handle.
 | type     | string | Yes  | Event type. The value is fixed at **'draw'**.<br>**'draw'**: completion of component drawing.|
 | callback | () => void   | No  | Callback to unregister. If this parameter is not specified, all callbacks under this handle are unregistered. The callback must be the same object as the one registered with the [on('draw')](#ondraw) API to successfully unregister.|
 
-### on('drawChildren')<sup>20+<sup>
+### on('drawChildren')<sup>20+</sup>
 
 on(type: 'drawChildren',  callback: Callback\<void\>): void
 
-Registers a child component drawing completion callback through [ComponentObserver](#componentobserver). When multiple **drawChildren** callbacks exist in the component tree, only the topmost callback will be triggered.
+Registers a child component drawing completion callback through [ComponentObserver](#componentobserver). When multiple **drawChildren** callbacks exist in the component tree, only the topmost callback will be triggered. After the topmost callback is canceled, other **drawChildren** callbacks will not take effect.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 

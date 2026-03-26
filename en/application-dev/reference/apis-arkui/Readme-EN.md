@@ -750,7 +750,7 @@
     - [UI Context Error Codes](errorcode-uicontext.md)
     - [Render State Listening Error Codes](errorcode-node-render-monitor.md)
     - [Interaction Event Error Codes](errorcode-event.md)
-    - [Canvas Error Codes](errorcode-canvas.md)
+    - [Canvas Component Error Codes](errorcode-canvas.md)
     - [Custom Node Error Codes](errorcode-node.md)
     - [UIExtension Error Codes](errorcode-uiextension.md)
     - [UI Appearance Error Codes](errorcode-uiappearance.md)
