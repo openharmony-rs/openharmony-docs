@@ -5623,3 +5623,19 @@ Allows a system application to connect to the Agent.
 **Supported devices**: General
 
 **Since**: 24
+
+## ohos.permission.EXEMPT_MOTION_SENSORS_RESTRICTION
+
+Allows an application to bypass sensor controls.
+
+With the permission, the application can always use sensors.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Since**: 24
