@@ -14,10 +14,7 @@
 
 ``` JSON5
 "requestPermissions":[
-  {
-    "name" : "ohos.permission.INTERNET"
-  }
-],
+  // ...
 ```
 
 ## 通过不同的方式加载PDF文档
