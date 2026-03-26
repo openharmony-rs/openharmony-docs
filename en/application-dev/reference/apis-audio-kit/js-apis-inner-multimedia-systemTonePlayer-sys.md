@@ -36,7 +36,7 @@ Describes the options of system tones.
 
 ## SystemTonePlayer
 
-Implements APIs for playing and configuring SMS tones and notification tones and obtaining related information. Before calling any API in SystemTonePlayer, you must use [getSystemTonePlayer](js-apis-systemSoundManager-sys.md#getsystemtoneplayer11) to create a SystemTonePlayer instance.
+The module provides APIs for playing and configuring SMS tones and notification tones and obtaining related information. Before calling any API in SystemTonePlayer, you must use [getSystemTonePlayer](js-apis-systemSoundManager-sys.md#getsystemtoneplayer11) to create a SystemTonePlayer instance.
 
 ### getTitle
 
@@ -180,7 +180,7 @@ Stops playing a system tone. This API uses a promise to return the result.
 
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | ------------------------- |
-| id     | number | Yes  | Stream ID.|
+| id     | number | Yes  | Promise used to return the stream ID.|
 
 **Return value**
 
@@ -464,7 +464,7 @@ The object to listen for is an audio stream specified by **streamId**. If **stre
 | Name  | Type                    | Mandatory| Description                                                        |
 | -------- | ----------------------- | ---- | --------------------------------------------------------------- |
 | type     | string                  | Yes  | Event type. The event **'playFinished'** is triggered when the playback is finished.|
-| streamId | number                  | Yes  | ID of the audio stream. **streamId** is obtained through [start](#start). If **streamId** is set to **0**, the playback completion event of the player's all audio streams is subscribed to.|
+| streamId | number                  | Yes  | ID of the audio stream. **streamId** is obtained through [start](#start). If **streamId** is set to **0**, the playback complete event of all audio streams of the player is subscribed to.|
 | callback | Callback\<number>  | Yes  | Callback used to return the stream ID of the audio stream that finishes playing.|
 
 **Error codes**

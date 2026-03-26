@@ -25,5 +25,5 @@ Defines the pixel map resource of the custom mouse pointer object.
 
 | Name| Description|
 | -- | -- |
-| [OH_Input_CustomCursor_Create](capi-oh-input-manager-h.md#oh_input_customcursor_create) | Creates a custom mouse pointer object. You can call [OH_Input_CustomCursor_Destroy](capi-oh-input-manager-h.md#oh_input_customcursor_destroy) to destroy a custom mouse pointer resource object.|
+| [OH_Input_CustomCursor_Create](capi-oh-input-manager-h.md#oh_input_customcursor_create) | Creates a custom mouse pointer object. You can call [OH_Input_CustomCursor_Destroy](capi-oh-input-manager-h.md#oh_input_customcursor_destroy) to destroy a custom mouse pointer object.|
 | [OH_Input_CustomCursor_Destroy](capi-oh-input-manager-h.md#oh_input_customcursor_destroy) | Destroys a custom mouse pointer object.|

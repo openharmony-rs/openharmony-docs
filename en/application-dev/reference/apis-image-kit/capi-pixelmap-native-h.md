@@ -27,7 +27,7 @@ The file declares the APIs for accessing a PixelMap.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [OH_Pixelmap_HdrStaticMetadata](capi-image-nativemodule-oh-pixelmap-hdrstaticmetadata.md) | OH_Pixelmap_HdrStaticMetadata | Describes the static metadata values available for the key **HDR_STATIC_METADATA**.|
-| [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) | OH_Pixelmap_HdrDynamicMetadata | Describes the dynamic metadata values available for the key **DR_DYNAMIC_METADATA**.|
+| [OH_Pixelmap_HdrDynamicMetadata](capi-image-nativemodule-oh-pixelmap-hdrdynamicmetadata.md) | OH_Pixelmap_HdrDynamicMetadata | Describes the dynamic metadata values available for the key **HDR_DYNAMIC_METADATA**.|
 | [OH_Pixelmap_HdrGainmapMetadata](capi-image-nativemodule-oh-pixelmap-hdrgainmapmetadata.md) | OH_Pixelmap_HdrGainmapMetadata | Describes the gain map metadata values available for the key **HDR_GAINMAP_METADATA**. For details, see ISO 21496-1.|
 | [OH_Pixelmap_HdrMetadataValue](capi-image-nativemodule-oh-pixelmap-hdrmetadatavalue.md) | OH_Pixelmap_HdrMetadataValue | Describes the HDR metadata values used by the PixelMap and available for the key **OH_Pixelmap_HdrMetadataKey**. It is used in [OH_PixelmapNative_SetMetadata](#oh_pixelmapnative_setmetadata) and [OH_PixelmapNative_GetMetadata](#oh_pixelmapnative_getmetadata).|
 | [OH_PixelmapNative](capi-image-nativemodule-oh-pixelmapnative.md) | - | Describes an uncompressed PixelMap format, which is encapsulated at the native layer after images are decoded.<br> To create an OH_PixelmapNative object, call [OH_PixelmapNative_CreatePixelmap](#oh_pixelmapnative_createpixelmap). By default, BGRA_8888 is used for data processing.<br> To release an OH_PixelmapNative object, call [OH_PixelmapNative_Release](#oh_pixelmapnative_release).|
@@ -104,7 +104,7 @@ The file declares the APIs for accessing a PixelMap.
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmap(OH_Pixelmap_InitializationOptions *options, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmap) | Creates an empty PixelMap object based on **OH_Pixelmap_InitializationOptions**. The memory data is 0.|
 | [Image_ErrorCode OH_PixelmapNative_CreateEmptyPixelmapUsingAllocator(OH_Pixelmap_InitializationOptions *options, IMAGE_ALLOCATOR_MODE allocator, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createemptypixelmapusingallocator) | Creates an empty PixelMap object based on the options and memory type, where **allocator** specifies the memory type of the PixelMap. By default, the system selects an appropriate memory type based on the image type, image size, and platform capability. When processing the returned PixelMap object, consider the impact of stride.|
 | [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromSurface(const char *surfaceId, size_t length, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromsurface) | Creates a PixelMap from a surface with the specified surface ID.|
-| [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer *nativeBuffer, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromnativebuffer) | Creates a PixelMap based on a NativeBuffer. If the [CPU access permission](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage) is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.|
+| [Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer *nativeBuffer, OH_PixelmapNative **pixelmap)](#oh_pixelmapnative_createpixelmapfromnativebuffer) | Creates a PixelMap using a NativeBuffer. If the [CPU access permission](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage) is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.|
 | [Image_ErrorCode OH_PixelmapNative_GetNativeBuffer(OH_PixelmapNative *pixelmap, OH_NativeBuffer **nativeBuffer)](#oh_pixelmapnative_getnativebuffer) | Obtains the NativeBuffer object from a PixelMap in the DMA memory.|
 | [Image_ErrorCode OH_PixelmapNative_GetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue **value)](#oh_pixelmapnative_getmetadata) | Obtains the metadata.|
 | [Image_ErrorCode OH_PixelmapNative_SetMetadata(OH_PixelmapNative *pixelmap, OH_Pixelmap_HdrMetadataKey key, OH_Pixelmap_HdrMetadataValue *value)](#oh_pixelmapnative_setmetadata) | Sets the metadata.|
@@ -1603,7 +1603,7 @@ Image_ErrorCode OH_PixelmapNative_CreatePixelmapFromNativeBuffer(OH_NativeBuffer
 
 **Description**
 
-Creates a PixelMap from a NativeBuffer. If the [CPU access permission](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage) is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.
+Creates a PixelMap using a NativeBuffer. If the [CPU access permission](../apis-arkgraphics2d/capi-native-buffer-h.md#oh_nativebuffer_usage) is not configured for the NativeBuffer, the PixelMap cannot be created.<br> The supported pixel formats are RGBA_8888, NV21, NV12, YCBCR_P010, and YCRCB_P010.
 
 **Since**: 22
 
