@@ -667,9 +667,11 @@ WAPI认证方式的枚举。
 | WIFI7<sup>15+</sup> | 4 | Wifi7。 |
 | WIFI7_PLUS<sup>15+</sup> | 5 | Wifi7+。 |
 
-## ConnectSettings<sup>26+</sup>
+## ConnectSettings
 
 连接WLAN设置信息。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -1045,7 +1047,7 @@ connectToCandidateConfig(settings: ConnectSettings): void
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -1053,7 +1055,7 @@ connectToCandidateConfig(settings: ConnectSettings): void
 
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
-  | settings | [ConnectSettings](#connectsettings26) | 是 | 连接WLAN设置信息。 |
+  | settings | [ConnectSettings](#connectsettings) | 是 | 连接WLAN设置信息。 |
 
 **错误码：**
 
