@@ -221,7 +221,7 @@ Obtains information about the peer application in the specified session.
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| [PeerInfo](https://developer.huawei.com/consumer/en/doc/harmonyos-references/js-apis-distributed-abilityconnectionmanager#peerinfo) \| undefined | Information about the peer application if the corresponding **peerInfo** exists; **undefined** if the session ID is not found.|
+| [PeerInfo](#peerinfo) \| undefined | Information about the peer application if the corresponding **peerInfo** exists; **undefined** if the session ID is not found.|
 
 **Error codes**
 
