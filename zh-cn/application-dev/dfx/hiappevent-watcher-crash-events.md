@@ -91,41 +91,36 @@ Timestamp:2025-05-17 19:17:07.000
 
 崩溃日志详细说明见[应用通过HiAppEvent设置崩溃日志配置参数场景日志规格](cppcrash-guidelines.md#应用通过hiappevent设置崩溃日志配置参数场景日志规格)。
 
-从**API version 24**开始，新增支持 name 可以为 `EVENT_APP_CRASH`，接口支持设置 `EVENT_APP_CRASH` 类型的拼接应用日志规格。
+从**API version 24**开始，新增支持崩溃日志规格自定义设置，拼接应用日志功能。
 
 ### OH_HiAppEvent_SetEventConfig接口说明
 
 | 接口名 | 描述 |
 | --- | --- |
-| int [OH_HiAppEvent_SetEventConfig](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_seteventconfig)(const char* name, HiAppEvent_Config* config) | 设置应用事件配置参数接口。 |
+| int [OH_HiAppEvent_SetEventConfig](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_seteventconfig)(const char* name, HiAppEvent_Config* config) | 崩溃日志规格自定义设置，拼接应用日志功能接口。**仅支持NativeCrash类型崩溃。**|
 
 ### OH_HiAppEvent_SetEventConfig接口参数设置说明
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| name | const char* | 是 | 事件名称，此处为宏 **EVENT_APP_CRASH**。 |
+| name | const char* | 是 | 应用崩溃事件名称，此处为宏 **EVENT_APP_CRASH**。 |
 | config | HiAppEvent_Config* | 是 | 应用崩溃事件配置参数，可使用[OH_HiAppEvent_SetConfigItem](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md#oh_hiappevent_setconfigitem)函数设置config参数的配置项。 |
 
 **参数name值为EVENT_APP_CRASH**
 
-> **注意：**
-> 1. 配置项名称推荐使用预定义的宏。
-> 2. config 的所有配置项均为可选项，不配置时取系统默认行为。
-> 3. `OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES` 的值为可转换为整型的字符串字面量（单位为 Byte）。
-> 4. 其余配置项的值均为布尔类型的字符串字面量（true 或 false）。
-
 | 配置项名称 | 类型 | 必须配置 | 说明 |
 | --- | --- | --- | --- |
-| OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING | const char* | 否 | true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>缺省时默认为false。 |
-| OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES | const char* | 否 | 单位为byte，取值范围为(0-5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
-| OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING | const char* | 否 | true：只打印崩溃日志中出现的地址所属的VMA（Virtual Memory Area，进程地址空间中的区域）映射信息，即崩溃日志中Maps，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>缺省时默认为false。 |
-| OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG | const char* | 否 | true:在 Native Crash 场景拼接应用日志。<br/>false:不拼接应用生成日志。 <br/>框架读取的应用日志路径为：沙箱路径 + 应用包名 +  _CppCrash_AppMerge.log, 例如：/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log <br/>如果开发者选择在信号处理函数中生成拼接日志，最长生成时间不超过5s，超过5s无法拼接应用生成的日志。|
+| 宏: OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING<br/>字符串：extend_pc_lr_printing | const char* | 否 | true：64位系统打印pc和lr寄存器地址向前248字节、向后256字节范围的内存值。32位系统打印pc和lr寄存器地址向前124字节、向后128字节范围的内存值。<br/>false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节范围的内存值。32位系统打印pc和lr寄存器地址向前8字节、向后116字节范围的内存值。<br/>缺省时默认为false。 |
+| 宏：OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES<br/>字符串：log_file_cutoff_sz_bytes | const char* | 否 | 单位为Byte，取值范围为(0-5242880]。<br/>如果设置，按设置的参数值截断崩溃日志大小。<br/>如果不设置，默认值取0表示不截断崩溃日志。 |
+| 宏：OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING<br/>字符串：simplify_vma_printing | const char* | 否 | true：只打印崩溃日志中出现的地址所属的VMA（Virtual Memory Area，进程地址空间中的区域）映射信息，即崩溃日志中Maps，以减小日志大小。<br/>false：打印所有VMA映射信息。<br/>缺省时默认为false。 |
+| 宏：OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG<br/>字符串：merge_cppcrash_app_log | const char* | 否 | true:在 Native Crash 场景拼接应用日志。<br/>false:不拼接应用生成日志。 <br/>框架读取的应用日志路径为：沙箱路径 + 应用包名 +  _CppCrash_AppMerge.log, 例如：/data/storage/el2/log/com.samples.eventsub_CppCrash_AppMerge.log <br/>如果开发者选择在信号处理函数中生成拼接日志，最长生成时间不超过5s，超过5s无法拼接应用生成的日志。|
 
 ### 参数设置示例
 
-展示通过 `OH_HiAppEvent_SetEventConfig` 接口配置 `EVENT_APP_CRASH` 的日志规格 (**必要条件：沙箱路径下有应用生成的拼接日志**)：
-
 OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步骤](hiappevent-watcher-crash-events-ndk.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃拼接应用日志内容。
+**注意**
+>
+> 沙箱路径下有应用生成的拼接日志
 
 ## 页面切换日志规格自定义参数设置
 
