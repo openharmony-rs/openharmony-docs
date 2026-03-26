@@ -1043,7 +1043,7 @@ connectToCandidateConfig(networkId: number): void
 
 connectToCandidateConfig(settings: ConnectSettings): void
 
-应用使用该接口连接到自己添加的候选网络。
+应用使用该接口连接到自己添加的候选网络，支持设置自定义参数。
 
 **需要权限：** ohos.permission.SET_WIFI_INFO
 
