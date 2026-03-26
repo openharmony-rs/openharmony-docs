@@ -121,7 +121,7 @@ off(type: 'stateChange', callback?: OnAVPlayerStateChangeHandle): void
 | 参数名 | 类型   | 必填 | 说明                                                  |
 | ------ | ------ | ---- | ----------------------------------------------------- |
 | type   | string | 是   | 状态机切换事件回调类型，取消注册的事件：'stateChange' |
-| callback<sup>12+</sup>   | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | 否   | 状态机切换事件回调方法。如填写该参数，则仅取消注册此回调方法，否则取消注册stateChange事件的所有回调方法。 |
+| callback<sup>12+</sup>   | [OnAVPlayerStateChangeHandle](arkts-apis-media-t.md#onavplayerstatechangehandle12) | 否   | 状态机切换事件回调方法。如果填写该参数，仅取消注册此回调的方法，否则取消注册stateChange事件的所有回调方法。 |
 
 **示例：**
 
@@ -1460,7 +1460,7 @@ on(type: 'seekDone', callback: Callback\<number>): void
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，开始接收seek生效的事件回调
+  // 监听后，开始接收seek生效的事件回调。
   avPlayer.on('seekDone', (seekDoneTime:number) => {
     console.info('seekDone called,and seek time is:' + seekDoneTime);
   });
@@ -1482,14 +1482,14 @@ off(type: 'seekDone', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                 |
 | ------ | ------ | ---- | ---------------------------------------------------- |
 | type   | string | 是   | seek生效的事件回调类型，取消注册的事件：'seekDone'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置。<br/>**视频播放：**[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。如填写该参数，则仅取消注册此回调方法，否则取消注册seekDone事件的所有回调方法。 |
+| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。seek生效的事件回调方法，只会上报用户请求的time位置。<br/>**视频播放：**[SeekMode](arkts-apis-media-e.md#seekmode8)会造成实际跳转位置与用户设置产生偏差，精准位置需要通过currentTime获取，事件回调的time仅代表完成用户某一次请求。如果填写该参数，仅取消注册此回调的方法，否则取消注册seekDone事件的所有回调方法。 |
 
 **示例：**
 
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收seek生效的事件回调
+  // 取消后，不再接收seek生效的事件回调。
   avPlayer.off('seekDone');
 }
 ```
@@ -1546,7 +1546,7 @@ on(type: 'speedDone', callback: Callback\<number>): void
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，开始接收setSpeed生效事件回调
+  // 监听后，开始接收setSpeed生效事件回调。
   avPlayer.on('speedDone', (speed:number) => {
     console.info('speedDone called,and speed value is:' + speed);
   });
@@ -1575,7 +1575,7 @@ off(type: 'speedDone', callback?: Callback\<number>): void
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收setSpeed生效事件回调
+  // 取消后，不再接收setSpeed生效事件回调。
   avPlayer.off('speedDone');
 }
 ```
@@ -1749,7 +1749,7 @@ on(type: 'bitrateDone', callback: Callback\<number>): void
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，开始接收setBitrate生效事件回调
+  // 监听后，开始接收setBitrate生效事件回调。
   avPlayer.on('bitrateDone', (bitrate:number) => {
     console.info('bitrateDone called,and bitrate value is:' + bitrate);
   });
@@ -1778,7 +1778,7 @@ off(type: 'bitrateDone', callback?: Callback\<number>): void
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收setBitrate生效事件回调
+  // 取消后，不再接收setBitrate生效事件回调。
   avPlayer.off('bitrateDone');
 }
 ```
@@ -1805,7 +1805,7 @@ on(type: 'availableBitrates', callback: Callback\<Array\<number>>): void
 ```ts
 async function  test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，播放状态切换prepared状态时，接收到HLS/DASH协议网络流可用的比特率列表回调
+  // 监听后，播放状态切换prepared状态时，接收到HLS/DASH协议网络流可用的比特率列表回调。
   avPlayer.on('availableBitrates', (bitrates: Array<number>) => {
     console.info('availableBitrates called,and availableBitrates length is:' + bitrates.length);
   });
@@ -2782,7 +2782,7 @@ on(type: 'trackInfoUpdate', callback: Callback\<Array\<MediaDescription>>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 订阅获取轨道信息更新的事件，当播放的轨道有更新时，会触发事件回调
+  // 订阅获取轨道信息更新的事件，当播放的轨道有更新时，会触发事件回调。
   avPlayer.on('trackInfoUpdate', (info: Array<media.MediaDescription>) => {
     if (info) {
       for (let i = 0; i < info.length; i++) {
