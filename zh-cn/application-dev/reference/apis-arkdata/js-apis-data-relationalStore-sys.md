@@ -1115,7 +1115,7 @@ if (store != undefined) {
 
 retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void>
 
-删除对应[单版本表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表中对应设备同步过来的数据，使用Promise异步回调。
+保留对应[单版本表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表中对应设备同步过来的数据，删除其他设备同步过来的数据，使用Promise异步回调。
 
 不支持对[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表进行删除。
 
@@ -1125,11 +1125,11 @@ retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void
 >
 > 入参允许为空，数据库表名对应的设备id列表也允许为空，但是数据库表名和设备id不允许为空字符串。
 > 
-> 入参如果为空，则删除当前数据库中所有单版本分布式表中全量同步数据。
+> 入参如果为空，则删除当前数据库所有单版本分布式表中所有其他设备同步过来的数据。
 > 
-> 入参中如果数据库表名对应的设备id列表为空，则删除该表下全量同步数据。
+> 入参中如果数据库表名对应的设备id列表为空，则删除该表下所有其他设备同步过来的数据。
 >
-> 除去传入的设备id同步数据以及本设备写入数据以外的数据会被删除。 
+> 保留本地写入以及传入设备id同步过来的数据，其他设备id同步过来的数据会被删除。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
@@ -1139,7 +1139,7 @@ retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void
 
 | 参数名       | 类型                                                               | 必填 | 说明                                       |
 | ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
-| retainDevices  | Record<string, Array\<string>> |  否  | 指定要删除的分布式数据库表名和对应的设备id，无默认值，不传入则删除当前数据库中所有单版本分布式表中全量同步数据。|
+| retainDevices  | Record<string, Array\<string>> |  否  | 指定要保留的分布式数据库表名和对应的设备id，无默认值，不传入则删除当前数据库中所有单版本分布式表中全量同步数据。|
 
 **返回值：**
 
@@ -1180,15 +1180,10 @@ async function removeExceptDeviceData(store : relationalStore.RdbStore){
     console.error('removeExceptDeviceData no device to remove');
   }
   console.info(`removeExceptDeviceData, length is ${devices.length}`);
-  if (store != undefined && devices.length > 0) {
+  if (store != undefined) {
     try {
       const tableAndDevice: Record<string, string[]> = {};
-      const devices1: string[] = [];
-      if (devices.length != 0) {
-        devices1.push(devices[0]);
-      }
-      console.info(`removeExceptDeviceData, device is ${devices1[0]}`);
-      tableAndDevice['EMPLOYEE'] = devices1;
+      tableAndDevice['EMPLOYEE'] = devices;
       await store.retainDeviceData(tableAndDevice);
       console.info(`removeExceptDeviceData success`);
     } catch (e) {
@@ -1202,7 +1197,7 @@ async function removeExceptDeviceData(store : relationalStore.RdbStore){
 
 updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise&lt;number&gt;
 
-更新单版本表模式分布式表的日志信息，使用Promise异步回调。
+更新分布式信息，只支持单版本表模式，使用Promise异步回调。
 
 不支持对多设备协同表模式分布式数据表进行更新。
 
