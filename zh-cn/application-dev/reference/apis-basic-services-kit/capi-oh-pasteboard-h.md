@@ -626,7 +626,7 @@ char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count
 
 | 类型 | 说明 |
 | -- | -- |
-| char** | 执行成功时返回剪贴板所有内容的MIME类型，否则返回nullptr。 |
+| char ** | 执行成功时返回剪贴板所有内容的MIME类型，否则返回nullptr。 |
 
 ### OH_Pasteboard_GetDataParams_Create()
 
@@ -663,7 +663,7 @@ void OH_Pasteboard_GetDataParams_Destroy(Pasteboard_GetDataParams* params)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)* params | 表示指向剪贴板OH_Pasteboard_GetDataParams的指针。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) * params | 表示指向剪贴板OH_Pasteboard_GetDataParams的指针。 |
 
 ### OH_Pasteboard_GetDataParams_SetProgressIndicator()
 
