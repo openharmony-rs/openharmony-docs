@@ -212,7 +212,7 @@ handleFullscreenChanged(fullscreen: boolean): void
 
 handleSeeking(): void
 
-当播放器进入seek 状态时，调用该方法通知 ArkWeb 内核。
+当播放器进入 seek 状态时，调用该方法通知 ArkWeb 内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
