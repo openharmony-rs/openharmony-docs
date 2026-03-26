@@ -1217,3 +1217,17 @@ Allows an application to get call forwarding status.
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 26.0.0
+
+## ohos.permission.kernel.AS_LDK_DRIVER
+
+Allows an application to install the PCIe driver.
+
+<!--RP77--><!--RP77End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
