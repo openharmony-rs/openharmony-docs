@@ -106,7 +106,7 @@ Picker配置选项，继承自[photoAccessHelper.BaseSelectOptions](arkts-apis-p
 | isSlidingSupported<sup>23+</sup>         | boolean                         | 否   | 是 | 是否屏蔽PhotoPickerComponent的滚动。true表示不屏蔽滚动事件，响应用户滚动。false表示屏蔽滚动事件，不响应用户滚动。<br>默认为true。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
-| backgroundOpacity<sup>24+</sup>         | number                        | 否   | 是 | 支持配置picker背景透明度。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| backgroundOpacity<sup>24+</sup>         | number                        | 否   | 是 | 支持配置picker背景透明度，透明度范围为0到1的数值，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
 ## ItemsDeletedCallback<sup>13+</sup>
 
 type ItemsDeletedCallback = (baseItemInfos: Array&lt;BaseItemInfo&gt;) => void
@@ -256,14 +256,10 @@ private isOnClickedNotify: boolean = false;
     onClicked: (itemInfo: ItemInfo, clickType: ClickType) => boolean = (itemInfo: ItemInfo, clickType: ClickType) => {
         return true;
     };
-    // 这段代码定义了一个事件处理程序，用于通过将点击的项目标记为已选择状态来跟踪这些项目。
-    // 当一个项目被点击时，该函数首先验证该项目是否具有有效的唯一标识符（URI），
-    // 如果没有，则立即退出。然后，它会检查一个名为 clickedUris 的 Map，查看是否已存在该特定 URI 的记录；
-    // 如果没有找到记录，则会创建一个包含该 URI 的新对象，并将其 isSelected 属性设置为 true；
-    // 如果已存在记录，则只需将该现有记录的 isSelected 属性更新为 true。最后，它会将这个新创建或更新的记录保存回 Map 中，
-    // 确保应用程序能够维护一个最新的已点击项目字典。
-    // 之所以这样做，是因为我们需要在调用 addData(SET_ITEM_CLICK_RESULT) 之前保存点击结果。
-    // 因为只有在点击“设置点击结果”按钮后，数据才会被发送。
+    // 当一个宫格被点击时，代码会验证该宫格对应 URI是否有效，如无效，则忽略。
+    // 然后，会检查 clickedUris 中否已存在该URI的记录。如没有，则创建一条记录并将 isSelected 属性设置为 true。
+    // 如果记录存在，则将该记录的 isSelected 属性更新为 true。
+   // 数据保存完成后点击“setClickResult”按钮，会调用addData(SET_ITEM_CLICK_RESULT)将对应宫格设置为选中状态。
     onClickedNotify: ItemClickedNotifyCallback = (itemInfo: ItemInfo, clickType: ClickType) => {
         if (!itemInfo.uri) {
             return;
@@ -292,7 +288,7 @@ private isOnClickedNotify: boolean = false;
         this.pickerOptions.maxPhotoSelectNumber = 500;
     }
 
-    // 从this.clickedUris获取这些URI，因为必须在SET_ITEM_CLICK_RESULT中只发送这些URI。
+    // 从this.clickedUris获取这些URI，后续在调用pickerController.addData()设置宫格item选中时使用。
     getClickedUris(): ClickResult[] {
         let uris: ClickResultEx[] = [];
         this.clickedUris.forEach((uri, index) => {
@@ -342,7 +338,7 @@ private isOnClickedNotify: boolean = false;
                             Button('Delete').onClick(() => {
                                 this.clickedUris.delete(uri.uri);
                             })
-                            // 用异常的URI进行测试，这会破坏URI。
+                            // 此处代码为异常场景样例，当传入异常URI时，picker宫格选中不生效。
                             Button('Abnormal').onClick(() => {
                                 let clickResult = this.clickedUris.get(uri.uri);
                                 if (clickResult) {
@@ -832,7 +828,7 @@ setMovingPhotoState(movingPhotoState: photoAccessHelper.MovingPhotoBadgeStateTyp
 | edgeEffect<sup>23+</sup>         | [EdgeEffect](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)                         | 否   | 是 | Picker宫格页滑动到边缘处的滑动效果。<br>默认为[EdgeEffect.Spring](../apis-arkui/arkui-ts/ts-appendix-enums.md#edgeeffect)。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | appAlbumFilters<sup>23+</sup>         | Array&lt;string&gt;                         | 否   | 是 | 仅显示与指定bundle name对应的相册内容。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。|
 | autoPlayScenes<sup>23+</sup>      | Array\<[photoAccessHelper.AutoPlayScene](./arkts-apis-photoAccessHelper-class.md#autoplayscene23)\> | 否   | 是 | 设置动态照片播放模式。长度限制为2个，超出取前2个，多余的会自动忽略。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| backgroundOpacity<sup>24+</sup>         | number                         | 否   | 是 | 支持配置picker背景透明度。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
+| backgroundOpacity<sup>24+</sup>         | number                         | 否   | 是 | 支持配置picker背景透明度，透明度范围为0到1的数值，0表示完全透明，1表示完全不透明。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。|
 
 ## PickerError<sup>23+</sup>
 
