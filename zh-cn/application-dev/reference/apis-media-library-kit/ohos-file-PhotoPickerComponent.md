@@ -281,7 +281,7 @@ private isOnClickedNotify: boolean = false;
         this.pickerOptions.isSlidingSelectionSupported = true;
         this.pickerOptions.isSearchSupported = false;
         this.isOnClicked = params.isOnClicked;
-        //从index.ets页面获取参数。
+        // 从index.ets页面获取参数。
         this.isOnClickedNotify = params.isOnClickedNotify;
         this.pickerOptions.maxPhotoSelectNumber = 500;
     }
@@ -377,7 +377,7 @@ type ScrollStopAtEndCallback = () => void
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 ## PhotoBrowserChangeStartCallback<sup>23+</sup>
- 	 
+
 type PhotoBrowserChangeStartCallback = (targetPhotoInfo: BaseItemInfo) => void
 
 用户在Picker组件中打开/关闭动态效果时的回调事件。
@@ -429,7 +429,7 @@ PhotoPickerComponent产生错误时的回调。
 | 参数名 | 类型                            | 必填 | 说明 |
 | ----- |-------------------------------| ----- |----------------------------------------------|
 | pickerError  | [PickerError](#pickererror23) | 是 | 产生的错误的基本信息。 |
- 	 
+
 ## PickerController
 
 应用可通过PickerController向picker组件发送数据。
