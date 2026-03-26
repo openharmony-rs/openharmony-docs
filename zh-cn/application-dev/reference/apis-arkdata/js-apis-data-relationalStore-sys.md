@@ -1435,7 +1435,7 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 
 ## DistributedInfo<sup>24+</sup>
 
-记录分布式表的日志信息。
+记录分布式信息。
 
 **模型约束：** 此接口仅在Stage模型下可用。
 
