@@ -1045,6 +1045,30 @@ ArkTS-Sta: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: int) 
 | ----------------------------- | ------------------------------------ |
 | [CustomBuilder](ts-types.md#custombuilder8) |  返回CustomBuilder用于构建被拖拽元素的拖拽图。返回void表示不能拖拽。|
 
+## OnGetPreviewBadgeCallback<sup>23+</sup>
+
+ArkTS-Dyn: type OnGetPreviewBadgeCallback = () => boolean | number
+
+ArkTS-Sta: type OnGetPreviewBadgeCallback = () => boolean | int
+
+即将启动多选长按聚拢动画时，触发用于获取选中数量的回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                          | 说明                                  |
+| ----------------------------- | ------------------------------------  |
+| ArkTS-Dyn: boolean \| number <br>ArkTS-Sta: boolean \| int |  多选长按聚拢动画后菜单预览图是否显示选中数量角标，或需要显示的数量。<br>返回true表示显示选中数量角标，对应Grid或List显示范围内选中item数量；false表示不显示角标。<br>返回数字时默认显示角标，该数字表示角标中需要显示的数量。取值范围：[0, 2<sup>31</sup>-1]，超过取值范围时按返回true处理。<br>返回浮点数时，向下取整。|
+
 ## ScrollResult<sup>12+</sup>对象说明
 
 [OnWillScrollCallback](#onwillscrollcallback12)返回值对象。
