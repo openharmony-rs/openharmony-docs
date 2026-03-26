@@ -3380,7 +3380,7 @@ try {
 
 getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;string&gt;&gt;
 
-获取设备上指定卡片位置的卡片标识列表。This API uses a promise to return the result.
+Obtains the list of widget IDs at a specified location on the device. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -3400,7 +3400,7 @@ getFormIdsByFormLocation(location: formInfo.FormLocation): Promise&lt;Array&lt;s
 
 | Type                                                                                    | Description                               |
 |:---------------------------------------------------------------------------------------| :---------------------------------- |
-| Promise&lt;Array&lt;string&gt;&gt; | Promise used to返回查询到的卡片标识列表。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise used to return the obtained widget ID list.|
 
 **Error codes**
 
