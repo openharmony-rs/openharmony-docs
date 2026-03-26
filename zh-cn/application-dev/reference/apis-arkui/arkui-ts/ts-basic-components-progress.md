@@ -658,9 +658,9 @@ struct ProgressExample {
 ```
 ![progressSensitive](figures/progress-privacysensitive.gif)
 
-### 示例8（设置capsule进度条圆角半径）
+### 示例8（设置Capsule进度条圆角半径）
 
-该示例通过[CapsuleStyleOptions](#capsulestyleoptions10)的入参borderRadius，实现了capsule类型进度条圆角半径设置。
+该示例通过[CapsuleStyleOptions](#capsulestyleoptions10)的入参borderRadius，实现了Capsule类型进度条圆角半径设置。
 
 从API version 18开始，新增borderRadius属性。
 
