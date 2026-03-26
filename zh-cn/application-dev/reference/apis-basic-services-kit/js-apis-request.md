@@ -773,8 +773,8 @@ remove(callback: AsyncCallback&lt;boolean&gt;): void
 | header | Object | 否 | 否 | 添加要包含在上传请求中的HTTP或HTTPS标志头。 |
 | method | string | 否 | 否 |  HTTP请求方法：POST、PUT，缺省为POST。使用POST新增资源，使用PUT修改资源。 |
 | index<sup>11+</sup> | number | 否 | 是 | 任务的路径索引，默认值为0。 |
-| begins<sup>11+</sup> | number | 否 | 是 | 上传任务开始时读取的文件起点。默认值为0，取值范围为闭区间，表示从头开始传输。|
-| ends<sup>11+</sup> | number | 否 | 是 | 上传任务结束时读取的文件终点。默认值为-1，取值范围为闭区间，表示传输到整个文件末尾结束。 |
+| begins<sup>11+</sup> | number | 否 | 是 | 上传任务开始时读取的文件起点，单位为字节（B）。默认值为0，取值范围为闭区间，表示从头开始传输。|
+| ends<sup>11+</sup> | number | 否 | 是 | 上传任务结束时读取的文件终点，单位为字节（B）。默认值为-1，取值范围为闭区间，表示传输到整个文件末尾结束。 |
 | files | Array&lt;[File](#file)&gt; | 否 | 否 | 要上传的文件列表。文件以HTTP的multipart/form-data格式提交。 |
 | data | Array&lt;[RequestData](#requestdata)&gt; | 否 | 否 | 请求的表单数据。 |
 
@@ -2526,8 +2526,8 @@ resume(callback: AsyncCallback&lt;void&gt;): void
 | redirect | boolean | 否 | 是 | 是否允许重定向，默认为true。<br/>- true：是 <br/>- false：否<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | proxy<sup>12+</sup> | string | 否 | 是 | 设置代理地址，其最大长度为512个字符，默认为空。<br/>代理地址格式:"http://\<domain or address\>:\<port\>" |
 | index | number | 否 | 是 | 任务的路径索引，通常情况下用于任务断点续传，默认为0。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| begins | number | 否 | 是 | 文件起点，通常情况下用于断点续传。默认值为0，取值为闭区间，表示从头开始传输。<br/>- 下载时，请求读取服务器开始下载文件时的起点位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的起点位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| ends | number | 否 | 是 | 文件终点，通常情况下用于断点续传。默认值为-1，取值为闭区间，表示传输到整个文件末尾结束。<br/>- 下载时，请求读取服务器开始下载文件时的结束位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的结束位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| begins | number | 否 | 是 | 文件起点，单位为字节（B），通常情况下用于断点续传。默认值为0，取值为闭区间，表示从头开始传输。<br/>- 下载时，请求读取服务器开始下载文件时的起点位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的起点位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| ends | number | 否 | 是 | 文件终点，单位为字节（B），通常情况下用于断点续传。默认值为-1，取值为闭区间，表示传输到整个文件末尾结束。<br/>- 下载时，请求读取服务器开始下载文件时的结束位置（HTTP协议中设置"Range"选项）。<br/>- 上传时，读取需上传的文件的结束位置。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | gauge | boolean | 否 | 是 | 后台任务的过程进度通知策略，仅应用于后台任务，默认值为false。<br/>- false：代表仅完成或失败的通知。<br/>- true：发出每个进度已完成或失败的通知。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | precise | boolean | 否 | 是 | - 如果设置为true，在上传/下载无法获取文件大小时任务失败。<br/>- 如果设置为false，将文件大小设置为-1时任务继续。<br/>默认值为false。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | token | string | 否 | 是 | 任务令牌。查询带有token的任务需提供token并通过[request.agent.touch](#requestagenttouch10)查询，否则无法查询到指定任务。其最小为8个字节，最大为2048个字节。默认为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
