@@ -292,7 +292,7 @@ private isOnClickedNotify: boolean = false;
         this.pickerOptions.maxPhotoSelectNumber = 500;
     }
 
-    //从this.clickedUris获取这些URI，因为我们必须在SET_ITEM_CLICK_RESULT中只发送这些URI。
+    // 从this.clickedUris获取这些URI，因为必须在SET_ITEM_CLICK_RESULT中只发送这些URI。
     getClickedUris(): ClickResult[] {
         let uris: ClickResultEx[] = [];
         this.clickedUris.forEach((uri, index) => {
@@ -304,7 +304,7 @@ private isOnClickedNotify: boolean = false;
     build() {
         Column() {
             Row() {
-                // 照片选择器组件调用
+                // 照片选择器组件调用。
                 PhotoPickerComponent({
                     pickerOptions: this.pickerOptions,
                     pickerController: this.pickerController,
@@ -320,7 +320,7 @@ private isOnClickedNotify: boolean = false;
                     Text('Selected assets')
                     ForEach(this.getClickedUris(), (uri: ClickResult) => {
                         Row() {
-                            // 能够移除选择或添加选择
+                            // 能够移除选择或添加选择。
                             Checkbox({ name: "OnClick" })
                                 .select(uri.isSelected)
                                 .onChange((checked: boolean) => {
@@ -338,7 +338,7 @@ private isOnClickedNotify: boolean = false;
                                     }
                                 }).margin({ right: 5 })
                             Text(uri.uri.slice(-30)).margin({right: 5}).width(150)
-                            // 从 this.clickeduris 中移除选择项
+                            // 从 this.clickeduris 中移除选择项。
                             Button('Delete').onClick(() => {
                                 this.clickedUris.delete(uri.uri);
                             })
@@ -357,7 +357,7 @@ private isOnClickedNotify: boolean = false;
             }.height('20%')
 
             Row() {
-                // 发送URI(SET_ITEM_CLICK_RESULT)
+                // 发送URI(SET_ITEM_CLICK_RESULT)。
                 Button('Set ClickResult')
                     .onClick(() => {
                         this.pickerController.addData(DataType.SET_ITEM_CLICK_RESULT, this.getClickedUris())
