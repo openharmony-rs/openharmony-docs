@@ -31,7 +31,7 @@ import { media } from '@kit.MediaKit';
 
 | 名称                                                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/zh-cn_image_url.png)<br>2. http网络播放：`http\://xx`。<br/>3. https网络播放：`https\://xx`。<br/>4. HLS网络播放路径：`http\://xx`或者`https\://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API version 11开始不支持webm。<br> - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| url<sup>9+</sup>                                    | string                                                       | 否   | 是   | 媒体URL，只允许在**idle**状态下设置。<br/>支持的视频格式：mp4、mpeg-ts、mkv。<br>支持的音频格式：m4a、aac、mp3、ogg、wav、flac、amr、ape。<br/>**支持路径示例**：<br>1. fd类型播放：fd://xx。<br>![](figures/zh-cn_image_url.png)<br>2. http网络播放：`http\://xx`。<br/>3. https网络播放：`https\://xx`。<br/>4. HLS网络播放路径：`http\://xx`或者`https\://xx`。<br>**说明：**<br>- 设置网络播放路径，需[声明权限](../../security/AccessToken/declare-permissions.md)：[ohos.permission.INTERNET](../../security/AccessToken/permissions-for-all.md#ohospermissioninternet)，相关错误码: [201 权限校验失败](../errorcode-universal.md#201-权限校验失败)。<br>- 从API version 11开始不支持webm。<br> - 将资源句柄（fd）传递给AVPlayer实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致媒体播放器数据获取异常。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | fdSrc<sup>9+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 是   | 媒体文件描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用中的媒体资源被连续存储在同一个文件中。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设一个连续存储的媒体文件：<br/>视频1（地址偏移：0，字节长度:100）；<br/>视频2（地址偏移：101，字节长度：50）；<br/>视频3（地址偏移：151，字节长度：150）；<br/>1. 播放视频1：AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br/>2. 播放视频2：AVFileDescriptor { fd = 资源句柄; offset = 101; length = 50; }。<br/>3. 播放视频3：AVFileDescriptor { fd = 资源句柄; offset = 151; length = 150; }。<br/>假设是一个独立的媒体文件: 请使用src=fd://xx。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | dataSrc<sup>10+</sup>                               | [AVDataSrcDescriptor](arkts-apis-media-i.md#avdatasrcdescriptor10)                | 否   | 是   | 流式媒体资源描述，只允许在**idle**状态下设置。<br/>**使用场景**：应用播放从远端下载到本地的文件，在应用未下载完整音视频资源时，提前播放已获取的资源数据。若将已获取的资源数据写入到本地文件中，同时从本地文件中读取数据，即可实现边播边缓存的能力。<br/>支持的视频格式（mp4、mpeg-ts、mkv）。<br>支持的音频格式（m4a、aac、mp3、ogg、wav、flac、amr、ape）。<br/>**使用示例**：<br/>假设用户正在从远端服务器获取音视频媒体文件，希望下载到本地的同时播放已经下载好的部分：<br/>1.用户需要获取媒体文件的总大小size（单位为字节），获取不到时设置为-1。<br/>2.用户需要实现回调函数func用于填写数据，如果size = -1，则func形式为：func(buffer: ArrayBuffer, length: number)，此时播放器只会按照顺序获取数据；否则func形式为：func(buffer: ArrayBuffer, length: number, pos: number)，播放器会按需跳转并获取数据。<br/>3.用户设置AVDataSrcDescriptor {fileSize = size, callback = func}。<br/>**注意事项**：<br/>如果播放的是mp4/m4a格式用户需要保证moov字段（媒体信息字段）在mdat字段（媒体数据字段）之前，或者moov之前的字段小于10M，否则会导致解析失败无法播放。<br>**说明：**<br>从API version 11开始不支持webm。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | surfaceId<sup>9+</sup>                              | string                                                       | 否   | 是   | 视频窗口ID，默认无窗口。<br/>仅支持在**initialized**状态下初始化。<br/>初始化后可以在**prepared**/**playing**/**paused**/**completed**/**stopped**状态下重新设置，重新设置后视频播放将在新的窗口渲染。<br/>使用场景：视频播放时的窗口渲染（纯音频播放时不涉及）。<br/>**使用示例**：<br/>[通过XComponent创建surfaceId](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md#getxcomponentsurfaceid9)。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -50,7 +50,7 @@ import { media } from '@kit.MediaKit';
 
 on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void
 
-监听播放状态机AVPlayerState切换的事件。
+监听播放状态机AVPlayerState切换的事件
 
 **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -68,7 +68,7 @@ on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听播放状态机AVPlayerState切换的事件
+  // 监听播放状态机AVPlayerState切换的事件。
   avPlayer.on('stateChange', async (state: string, reason: media.StateChangeReason) => {
     switch (state) {
       case 'idle':
@@ -128,7 +128,7 @@ off(type: 'stateChange', callback?: OnAVPlayerStateChangeHandle): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收播放状态机AVPlayerState切换的事件
+  // 取消后，不再接收播放状态机AVPlayerState切换的事件。
   avPlayer.off('stateChange');
 }
 ```
@@ -186,7 +186,7 @@ on(type: 'error', callback: ErrorCallback): void
 import { BusinessError } from '@kit.BasicServicesKit';
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听AVPlayer的错误事件，该事件仅用于错误提示，不需要用户停止播控动作
+  // 监听AVPlayer的错误事件，该事件仅用于错误提示，不需要用户停止播控动作。
   avPlayer.on('error', (error: BusinessError) => {
     console.info('error happened,and error message is :' + error.message);
     console.info('error happened,and error code is :' + error.code);
@@ -218,7 +218,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再监听AVPlayer的错误事件
+  // 取消后，不再监听AVPlayer的错误事件。
   avPlayer.off('error');
 }
 ```
@@ -1666,7 +1666,7 @@ on(type: 'playbackRateDone', callback: OnPlaybackRateDone): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，开始接收setPlaybackRate生效的事件
+  // 监听后，开始接收setPlaybackRate生效的事件。
   avPlayer.on('playbackRateDone', (rate:number) => {
     console.info('playbackRateDone called,and rate value is:' + rate);
   });
@@ -1695,7 +1695,7 @@ off(type: 'playbackRateDone', callback?: OnPlaybackRateDone): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收setPlaybackRate生效的事件
+  // 取消后，不再接收setPlaybackRate生效的事件。
   avPlayer.off('playbackRateDone');
 }
 ```
@@ -1834,7 +1834,7 @@ off(type: 'availableBitrates', callback?: Callback\<Array\<number>>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收HLS/DASH协议网络流可用的比特率列表回调
+  // 取消后，不再接收HLS/DASH协议网络流可用的比特率列表回调。
   avPlayer.off('availableBitrates');
 }
 ```
@@ -1864,7 +1864,7 @@ import { drm } from '@kit.DrmKit';
 
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，开始接收mediaKeySystemInfoUpdate事件回调
+  // 监听后，开始接收mediaKeySystemInfoUpdate事件回调。
   avPlayer.on('mediaKeySystemInfoUpdate', (mediaKeySystemInfo: Array<drm.MediaKeySystemInfo>) => {
     for (let i = 0; i < mediaKeySystemInfo.length; i++) {
       console.info('mediaKeySystemInfoUpdate happened uuid: ' + mediaKeySystemInfo[i]["uuid"]);
@@ -1896,7 +1896,7 @@ off(type: 'mediaKeySystemInfoUpdate', callback?: Callback\<Array\<drm.MediaKeySy
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收mediaKeySystemInfoUpdate事件回调
+  // 取消后，不再接收mediaKeySystemInfoUpdate事件回调。
   avPlayer.off('mediaKeySystemInfoUpdate');
 }
 ```
@@ -2002,7 +2002,7 @@ on(type: 'volumeChange', callback: Callback\<number>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，开始接收setVolume生效的事件回调
+  // 监听后，开始接收setVolume生效的事件回调。
   avPlayer.on('volumeChange', (vol: number) => {
     console.info('volumeChange called,and new volume is :' + vol);
   });
@@ -2031,7 +2031,7 @@ off(type: 'volumeChange', callback?: Callback\<number>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收setVolume生效的事件
+  // 取消后，不再接收setVolume生效的事件。
   avPlayer.off('volumeChange');
 }
 ```
@@ -2058,7 +2058,7 @@ on(type: 'endOfStream', callback: Callback\<void>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，开始接收endOfStream事件回调
+  // 监听后，开始接收endOfStream事件回调。
   avPlayer.on('endOfStream', () => {
     console.info('endOfStream called');
   });
@@ -2087,7 +2087,7 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收endOfStream事件回调
+  // 取消后，不再接收endOfStream事件回调。
   avPlayer.off('endOfStream');
 }
 ```
@@ -2119,7 +2119,7 @@ on(type: 'timeUpdate', callback: Callback\<number>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，开始接收资源播放当前时间事件回调
+  // 监听后，开始接收资源播放当前时间事件回调。
   avPlayer.on('timeUpdate', (time:number) => {
     console.info('timeUpdate called,and new time is :' + time);
   });
@@ -2185,7 +2185,7 @@ off(type: 'timeUpdate', callback?: Callback\<number>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收资源播放当前时间事件回调
+  // 取消后，不再接收资源播放当前时间事件回调。
   avPlayer.off('timeUpdate');
 }
 ```
@@ -2217,7 +2217,7 @@ on(type: 'durationUpdate', callback: Callback\<number>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，开始接收资源播放资源的时长事件回调
+  // 监听后，开始接收资源播放资源的时长事件回调。
   avPlayer.on('durationUpdate', (duration: number) => {
     console.info('durationUpdate called,new duration is :' + duration);
   });
@@ -2246,7 +2246,7 @@ off(type: 'durationUpdate', callback?: Callback\<number>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收资源播放资源的时长事件回调
+  // 取消后，不再接收资源播放资源的时长事件回调。
   avPlayer.off('durationUpdate');
 }
 ```
@@ -2273,7 +2273,7 @@ on(type: 'bufferingUpdate', callback: OnBufferingUpdateHandler): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，开始接收音视频缓存更新事件回调
+  // 监听后，开始接收音视频缓存更新事件回调。
   avPlayer.on('bufferingUpdate', (infoType: media.BufferingInfoType, value: number) => {
     console.info('bufferingUpdate called,and infoType value is:' + infoType + ', value is :' + value);
   });
@@ -2302,7 +2302,7 @@ off(type: 'bufferingUpdate', callback?: OnBufferingUpdateHandler): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收资源播放资源的时长事件回调
+  // 取消后，不再接收资源播放资源的时长事件回调。
   avPlayer.off('bufferingUpdate');
 }
 ```
@@ -2329,7 +2329,7 @@ on(type: 'startRenderFrame', callback: Callback\<void>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听后，开始接收视频播放开始首帧渲染的更新事件回调
+  // 监听后，开始接收视频播放开始首帧渲染的更新事件回调。
   avPlayer.on('startRenderFrame', () => {
     console.info('startRenderFrame called');
   });
@@ -2358,7 +2358,7 @@ off(type: 'startRenderFrame', callback?: Callback\<void>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收视频播放开始首帧渲染的更新事件回调
+  // 取消后，不再接收视频播放开始首帧渲染的更新事件回调。
   avPlayer.off('startRenderFrame');
 }
 ```
@@ -2385,7 +2385,7 @@ on(type: 'videoSizeChange', callback: OnVideoSizeChangeHandler): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听视频播放宽高变化事件，仅视频播放支持该订阅事件，默认只在prepared状态上报一次
+  // 监听视频播放宽高变化事件，仅视频播放支持该订阅事件，默认只在prepared状态上报一次。
   avPlayer.on('videoSizeChange', (width: number, height: number) => {
     console.info('videoSizeChange called,and width is:' + width + ', height is :' + height);
   });
@@ -2414,7 +2414,7 @@ off(type: 'videoSizeChange', callback?: OnVideoSizeChangeHandler): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再监听视频播放宽高变化事件
+  // 取消后，不再监听视频播放宽高变化事件。
   avPlayer.off('videoSizeChange');
 }
 ```
@@ -2443,7 +2443,7 @@ import { audio } from '@kit.AudioKit';
 
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 监听音频焦点变化事件，多个音视频资源同时播放时，会根据音频焦点模型audio.InterruptMode触发此事件
+  // 监听音频焦点变化事件，多个音视频资源同时播放时，会根据音频焦点模型audio.InterruptMode触发此事件。
   avPlayer.on('audioInterrupt', (info: audio.InterruptEvent) => {
     console.info('audioInterrupt called,and InterruptEvent info is:' + info);
   });
@@ -2472,7 +2472,7 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收音频焦点变化事件回调
+  // 取消后，不再接收音频焦点变化事件回调。
   avPlayer.off('audioInterrupt');
 }
 ```
@@ -2511,7 +2511,7 @@ import { audio } from '@kit.AudioKit';
 
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 开始监听音频流输出设备变化及原因
+  // 开始监听音频流输出设备变化及原因。
   avPlayer.on('audioOutputDeviceChangeWithInfo', (data: audio.AudioStreamDeviceChangeInfo) => {
     console.info(`${JSON.stringify(data)}`);
   });
@@ -2548,7 +2548,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收音频流输出设备变化事件
+  // 取消后，不再接收音频流输出设备变化事件。
   avPlayer.off('audioOutputDeviceChangeWithInfo');
 }
 ```
@@ -2663,7 +2663,7 @@ on(type: 'subtitleUpdate', callback: Callback\<SubtitleInfo>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 订阅获取外挂字幕的事件，当有外挂字幕时，会触发事件
+  // 订阅获取外挂字幕的事件，当有外挂字幕时，会触发事件。
   avPlayer.on('subtitleUpdate', async (info: media.SubtitleInfo) => {
     if (info) {
       let text = (!info.text) ? '' : info.text
@@ -2699,7 +2699,7 @@ off(type: 'subtitleUpdate', callback?: Callback\<SubtitleInfo>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收获取外挂字幕的事件
+  // 取消后，不再接收获取外挂字幕的事件。
   avPlayer.off('subtitleUpdate');
 }
 ```
@@ -2726,7 +2726,7 @@ on(type: 'trackChange', callback: OnTrackChangeHandler): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 订阅获取轨道变更的事件，当播放的轨道变更时，会触发事件回调
+  // 订阅获取轨道变更的事件，当播放的轨道变更时，会触发事件回调。
   avPlayer.on('trackChange', (index: number, isSelect: boolean) => {
     console.info('trackChange info: index=' + index + ' isSelect=' + isSelect);
   });
@@ -2755,7 +2755,7 @@ off(type: 'trackChange', callback?: OnTrackChangeHandler): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收轨道变更的事件
+  // 取消后，不再接收轨道变更的事件。
   avPlayer.off('trackChange');
 }
 ```
@@ -2819,7 +2819,7 @@ off(type: 'trackInfoUpdate', callback?: Callback\<Array\<MediaDescription>>): vo
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收轨道信息更新的事件
+  // 取消后，不再接收轨道信息更新的事件。
   avPlayer.off('trackInfoUpdate');
 }
 ```
@@ -2844,7 +2844,7 @@ on(type: 'amplitudeUpdate', callback: Callback\<Array\<number>>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 订阅音频最大电平值，音频资源播放时定时上报
+  // 订阅音频最大电平值，音频资源播放时定时上报。
   avPlayer.on('amplitudeUpdate', (value: Array<number>) => {
     console.info(`amplitudeUpdate called,and amplitudeUpdate = ${value}`);
   });
@@ -2871,7 +2871,7 @@ off(type: 'amplitudeUpdate', callback?: Callback\<Array\<number>>): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收获取音频最大电平值事件上报
+  // 取消后，不再接收获取音频最大电平值事件上报。
   avPlayer.off('amplitudeUpdate');
 }
 ```
@@ -2902,7 +2902,7 @@ import { util } from '@kit.ArkTS';
 async function test(){
   let avPlayer = await media.createAVPlayer();
 
-  // 监听后，开始接收seiMessageReceived事件回调
+  // 监听后，开始接收seiMessageReceived事件回调。
   avPlayer.on('seiMessageReceived', [5], (messages: Array<media.SeiMessage>, playbackPosition?: number) =>
   {
     console.info('seiMessageReceived playbackPosition ' + playbackPosition);
@@ -2943,7 +2943,7 @@ off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiM
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收seiMessageReceived事件回调
+  // 取消后，不再接收seiMessageReceived事件回调。
   avPlayer.off('seiMessageReceived');
 }
 ```
@@ -3062,7 +3062,7 @@ on(type:'superResolutionChanged', callback: OnSuperResolutionChanged): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 订阅监听超分算法开启/关闭事件
+  // 订阅监听超分算法开启/关闭事件。
   avPlayer.on('superResolutionChanged', (enabled: boolean) => {
     console.info('superResolutionChanged called, and enabled is:' + enabled);
   });
@@ -3091,7 +3091,7 @@ off(type:'superResolutionChanged', callback?: OnSuperResolutionChanged): void
 ```ts
 async function test(){
   let avPlayer = await media.createAVPlayer();
-  // 取消后，不再接收超分算法开启/关闭事件
+  // 取消后，不再接收超分算法开启/关闭事件。
   avPlayer.off('superResolutionChanged');
 }
 ```
