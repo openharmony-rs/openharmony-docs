@@ -146,7 +146,7 @@ Button组件的type属性支持使用[ButtonType](../../application-dev/referenc
 
 <!-- @[button_type_faq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ButtonAttribute/entry/src/main/ets/pages/ButtonTypeFAQ.ets) -->
 
-```ts
+``` TypeScript
 // pages/ButtonTypeFAQ.ets
 @Entry
 @Component
