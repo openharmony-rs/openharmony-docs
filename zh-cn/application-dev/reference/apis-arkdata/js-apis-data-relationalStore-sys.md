@@ -1167,7 +1167,7 @@ retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void
 ```ts
 import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
-async function removeExceptDeviceData(store : relationalStore.RdbStore){
+async function retainDeviceData(store : relationalStore.RdbStore){
   const deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication4');
   const deviceList = deviceManager.getAvailableDeviceListSync();
   const devices: string[] = [];
@@ -1177,17 +1177,17 @@ async function removeExceptDeviceData(store : relationalStore.RdbStore){
     }
   });
   if (devices.length === 0) {
-    console.error('removeExceptDeviceData no device to remove');
+    console.error('retainDeviceData no device to remove');
   }
-  console.info(`removeExceptDeviceData, length is ${devices.length}`);
+  console.info(`retainDeviceData, length is ${devices.length}`);
   if (store != undefined) {
     try {
-      const tableAndDevice: Record<string, string[]> = {};
-      tableAndDevice['EMPLOYEE'] = devices;
-      await store.retainDeviceData(tableAndDevice);
-      console.info(`removeExceptDeviceData success`);
+      const retainDevices: Record<string, string[]> = {};
+      retainDevices['EMPLOYEE'] = devices;
+      await store.retainDeviceData(retainDevices);
+      console.info(`retainDeviceData success`);
     } catch (e) {
-      console.error(`removeExceptDeviceData failed, code is ${e.code},message is ${e.message}`);
+      console.error(`retainDeviceData failed, code is ${e.code},message is ${e.message}`);
     }
   }
 }
