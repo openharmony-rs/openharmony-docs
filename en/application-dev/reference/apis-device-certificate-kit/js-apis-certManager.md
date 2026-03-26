@@ -1072,7 +1072,7 @@ Finishes the signing or signature verification operation. This API uses a promis
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | handle | Uint8Array                   | Yes  | Handle of initialization. The value contains up to 8 bytes.|
-| signature | Uint8Array                   | No  | Data to sign or verify.|
+| signature | Uint8Array                   | No  | Signature data used for signature verification. This parameter needs to be specified only for signature verification.|
 
 **Return value**
 
