@@ -123,6 +123,18 @@
 
 **取值：** "usual.event.KIOSK_MODE_OFF"
 
+### COMMON_EVENT_APP_FIRST_LAUNCH<sup>24+</sup>
+
+在应用安装后首次启动时，事件通知服务将触发并发布系统公共事件。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Notification.CommonEvent
+
+**订阅者所需权限：** 无
+
+**取值：** "usual.event.APP_FIRST_LAUNCH"
+
 
 ## Background Tasks Kit 
 
