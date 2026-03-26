@@ -54,7 +54,7 @@ Obtains the current system dark mode configuration.
 
 **Error codes**
 
-For details about the error codes, see [UI Appearance Service Error Codes](errorcode-uiappearance.md).
+For details about the error codes, see [UI Appearance Error Codes](errorcode-uiappearance.md).
 
 | ID| Error Message|
 | -- | -- |
@@ -98,7 +98,7 @@ Obtains the current font size scale factor.
 
 **Error codes**
 
-For details about the error codes, see [UI Appearance Service Error Codes](errorcode-uiappearance.md).
+For details about the error codes, see [UI Appearance Error Codes](errorcode-uiappearance.md).
 
 | ID| Error Message|
 | -- | -- |
@@ -142,7 +142,7 @@ Obtains the current font weight scale factor.
 
 **Error codes**
 
-For details about the error codes, see [UI Appearance Service Error Codes](errorcode-uiappearance.md).
+For details about the error codes, see [UI Appearance Error Codes](errorcode-uiappearance.md).
 
 | ID| Error Message|
 | -- | -- |
