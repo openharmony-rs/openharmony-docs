@@ -25,5 +25,5 @@ Defines the mouse pointer information, including the pointer visible status, poi
 
 | Name| Description|
 | -- | -- |
-| [OH_Input_CursorInfo_Create](capi-oh-input-manager-h.md#oh_input_cursorinfo_create) | Creates a mouse pointer information object.|
+| [OH_Input_CursorInfo_Create](capi-oh-input-manager-h.md#oh_input_cursorinfo_create) | Creates a mouse pointer information object. You can call [OH_Input_CursorInfo_Destroy](capi-oh-input-manager-h.md#oh_input_cursorinfo_destroy) to destroy a mouse pointer information object.|
 | [OH_Input_CursorInfo_Destroy](capi-oh-input-manager-h.md#oh_input_cursorinfo_destroy) | Destroys the mouse pointer information object.|

@@ -25,5 +25,5 @@ Defines key information, which identifies a key pressing behavior. For example, 
 
 | Name| Description|
 | -- | -- |
-| [OH_Input_CreateKeyState](capi-oh-input-manager-h.md#oh_input_createkeystate) | Creates a key status enum object.|
+| [OH_Input_CreateKeyState](capi-oh-input-manager-h.md#oh_input_createkeystate) | Creates a key status enum object. You can call [OH_Input_DestroyKeyState](capi-oh-input-manager-h.md#oh_input_destroykeystate) to destroy a key status enum object.|
 | [OH_Input_DestroyKeyState](capi-oh-input-manager-h.md#oh_input_destroykeystate) | Destroys a key status enum object.|
