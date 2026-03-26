@@ -45743,7 +45743,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Camera/NDKPreviewImageSample/entry/src/main/cpp/camera_manager.h",
 				"functions":[
 					{
-						"end_line":40,
+						"end_line":41,
 						"name":"import_header",
 						"start_line":19
 					}
@@ -45758,9 +45758,9 @@
 						"start_line":177
 					},
 					{
-						"end_line":175,
+						"end_line":182,
 						"name":"image_receiver_callback_show",
-						"start_line":73
+						"start_line":78
 					}
 				]
 			}
