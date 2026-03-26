@@ -1383,6 +1383,37 @@ if(path.buildFromSvgString(svgStr)) {
 }
 ```
 
+## convertToSvgString
+
+convertToSvgString(): string
+
+将路径转换为SVG字符串。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+| string | 转换后的SVG字符串结果。 |
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.moveTo(0, 0);
+path.lineTo(0, 700);
+path.close();
+let svgString = path.convertToSvgString();
+console.info("svgString: ", svgString);
+```
+
 ## getPathIterator<sup>18+</sup>
 
 getPathIterator(): PathIterator
