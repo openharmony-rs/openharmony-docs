@@ -91,7 +91,7 @@ Timestamp:2025-05-17 19:17:07.000
 
 崩溃日志详细说明见[应用通过HiAppEvent设置崩溃日志配置参数场景日志规格](cppcrash-guidelines.md#应用通过hiappevent设置崩溃日志配置参数场景日志规格)。
 
-从**API version 24**开始，name 可以为 `EVENT_APP_CRASH`，接口支持设置 `CPP_CRASH` 类型的拼接应用日志规格。
+从**API version 24**开始，新增支持 name 可以为 `EVENT_APP_CRASH`，接口支持设置 `EVENT_APP_CRASH` 类型的拼接应用日志规格。
 
 ### OH_HiAppEvent_SetEventConfig接口说明
 
@@ -123,7 +123,7 @@ Timestamp:2025-05-17 19:17:07.000
 
 ### 参数设置示例
 
-展示通过 `OH_HiAppEvent_SetEventConfig` 接口配置 `EVENT_APP_CRASH` 的日志规格 (**前置条件：沙箱路径下有应用生成的拼接日志**)：
+展示通过 `OH_HiAppEvent_SetEventConfig` 接口配置 `EVENT_APP_CRASH` 的日志规格 (**必要条件：沙箱路径下有应用生成的拼接日志**)：
 
 OH_HiAppEvent_SetEventConfig配置参考[订阅崩溃事件（C/C++）开发步骤](hiappevent-watcher-crash-events-ndk.md#开发步骤)完成崩溃事件订阅和日志配置参数设置，然后通过[external_log](#params字段说明)字段获取NativeCrash类型崩溃拼接应用日志内容。
 
