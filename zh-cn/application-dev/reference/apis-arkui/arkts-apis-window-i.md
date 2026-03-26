@@ -438,7 +438,7 @@
 
 仅对全屏应用生效。
 
-**设备行为差异：** 该接口在Phone设备的非[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)、Tablet设备的非[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下可正常调用，在其他设备或[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下调用不生效也不报错。
+**设备行为差异：** 该接口在Phone设备的非[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)、Tablet设备的非[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)且非电脑模式下可正常调用，在其他设备、[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)或电脑模式下调用不生效也不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
