@@ -4325,3 +4325,44 @@ zoomControlAccess(zoomControlAccess: boolean)
   </body>
   </html>
   ```
+
+## scrollbarLayoutPolicy
+
+scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy)
+
+选择Web组件内垂直滚动条的布局方式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型| 必填 | 说明 |
+| ------ | -------------- | ---- | -------------- |
+| policy | [ScrollbarLayoutPolicy](./arkts-basic-components-web-e.md#scrollbarlayoutpolicy) | 是   | 设置Web组件内垂直滚动条布局模式，可选择跟随系统语言方向设置或网页css的direction属性设置。入参设置为：<br/>CONTENT，表示跟随网页css的direction属性设置。<br/>SYSTEM，滚动条会根据系统语种的左右书写方向进行布局。对于从右向左书写的语言，滚动条将布局在左侧。对于网页内嵌套的多层滚动条均适用。|
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%')
+        .height('100%')
+        // 设置为SYSTEM表示跟随系统语言方向布局。设置为CONTENT表示沿用Web样式布局
+        .scrollbarLayoutPolicy(ScrollbarLayoutPolicy.SYSTEM)
+    }
+  }
+}
+```
