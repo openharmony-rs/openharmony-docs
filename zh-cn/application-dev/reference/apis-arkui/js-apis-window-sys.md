@@ -229,6 +229,7 @@ import { window } from '@kit.ArkUI';
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | systemAnimationParams             | [StartAnimationSystemParams](#startanimationsystemparams20)                 | 否   | 是   | 启动动画参数配置。默认值为undefined，若不配置将保持系统默认动效。|
+| isWindowLimitsForcible<sup>26.0.0+</sup> | boolean | 否 | 是 | 是否支持系统应用设置主窗的[WindowLimits](arkts-apis-window-i.md#windowlimits11)超过系统的默认限制。 |
 
 ## window.minimizeAll<sup>9+</sup>
 minimizeAll(id: number, callback: AsyncCallback&lt;void&gt;): void
