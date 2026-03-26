@@ -255,7 +255,7 @@ enum Camera_Format
 | 枚举项 | 描述 |
 | -- | -- |
 | CAMERA_FORMAT_RGBA_8888 = 3 | RGBA 8888格式。 |
-| CAMERA_FORMAT_DNG = 4 |  |
+| CAMERA_FORMAT_DNG = 4 | DNG格式。 |
 | CAMERA_FORMAT_YUV_420_SP = 1003 | YUV 420格式。 |
 | CAMERA_FORMAT_JPEG = 2000 | JPEG格式。 |
 | CAMERA_FORMAT_YCBCR_P010 = 2001 | YCBCR P010 格式。<br>**起始版本：** 12 |
@@ -691,9 +691,9 @@ enum OH_Camera_OISMode
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_OIS_MODE_OFF = 0 |  |
-| OH_CAMERA_OIS_MODE_AUTO = 1 |  |
-| OH_CAMERA_OIS_MODE_CUSTOM = 2 |  |
+| OH_CAMERA_OIS_MODE_OFF = 0 | 关闭光学防抖模式。 |
+| OH_CAMERA_OIS_MODE_AUTO = 1 | 自动光学防抖模式。 |
+| OH_CAMERA_OIS_MODE_CUSTOM = 2 | 手动光学防抖模式。 |
 
 ### OH_Camera_OISAxes
 
@@ -709,8 +709,8 @@ enum OH_Camera_OISAxes
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_CAMERA_OIS_AXES_PITCH = 0 |  |
-| OH_CAMERA_OIS_AXES_YAW = 1 |  |
+| OH_CAMERA_OIS_AXES_PITCH = 0 | 俯仰轴：控制相机机身上下旋转，即机身围绕与镜头水平方向的轴旋转。 |
+| OH_CAMERA_OIS_AXES_YAW = 1 | 偏航轴：控制相机机身左右旋转，即机身围绕与镜头垂直方向的轴旋转。 |
 
 
 ## 函数说明
