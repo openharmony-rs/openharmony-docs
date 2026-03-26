@@ -29,7 +29,7 @@
 
 ### 设备限制
 
-WebNativeMessagingExtensionAbility组件当前仅支持2in1设备。
+对于API版本21-23，WebNativeMessagingExtensionAbility组件仅支持2in1设备；从API版本24开始，增加支持在平板上使用。
 
 ### 规格限制
 
