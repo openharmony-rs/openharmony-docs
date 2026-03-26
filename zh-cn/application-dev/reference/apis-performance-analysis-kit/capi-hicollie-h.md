@@ -436,7 +436,7 @@ HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)
 
 | 参数项 | 描述 |
 | -- | -- |
-| bool isFreezeEvent | True，将报告BUSINESS_THREAD_BLOCK_6S<br>False，将报告BUSINESS_THREAD_BLOCK_3S。 |
+| bool isFreezeEvent | True，将报告BUSINESS_THREAD_BLOCK_6S。<br>False，将报告BUSINESS_THREAD_BLOCK_3S。 |
 
 注：BUSINESS_THREAD_BLOCK_3S、BUSINESS_THREAD_BLOCK_6S等同于BUSSINESS_THREAD_BLOCK_3S、BUSSINESS_THREAD_BLOCK_6S，后续会统一事件检测类型
 
