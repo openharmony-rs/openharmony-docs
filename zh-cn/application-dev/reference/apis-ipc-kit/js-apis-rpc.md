@@ -9998,7 +9998,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 **示例：**
 
 ```ts
-// 同时写onRemoteMessageRequest和onRemoteRequest方法同步处理请求
+// 同时重写onRemoteMessageRequest和onRemoteRequest方法同步处理请求
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
