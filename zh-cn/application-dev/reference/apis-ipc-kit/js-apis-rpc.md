@@ -9966,7 +9966,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-  **示例：**
+**示例：**
 
 ```ts
 // 重写onRemoteMessageRequest方法异步处理请求
@@ -10084,7 +10084,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-  **示例：**
+**示例：**
 
 ```ts
 // 重写onRemoteMessageRequest方法异步处理请求
