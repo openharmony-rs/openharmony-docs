@@ -388,7 +388,7 @@ typedef size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void*
 | -- | -- |
 | OH_HiCollie_Freeze_Type type | 冻屏事件类型。 |
 | void\* buffer | 系统提供log buffer，其中的内容将被迁移到APP_FREEZE或APP_HICOLLIE事件当中。 |
-| size_t size | 可以使用的缓冲区大小，最大值为64 KB。 如果超过上限，可能导致应用crash。|
+| size_t size | 可以使用的缓冲区大小，最大值为64KB。 如果超过上限，可能导致应用crash。|
 
 **返回：**
 
