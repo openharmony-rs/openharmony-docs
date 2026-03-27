@@ -25,7 +25,7 @@ Currently, the following security components are available:
 
 - [PasteButton](pastebutton.md)
 
-  The **PasteButton** component comes with the pasteboard read privilege. After it is integrated into your application and is tapped, no authorization dialog box will be displayed when your application reads data from the pasteboard. The application permission is revoked 10 seconds after the application is switched to the background.
+  The **PasteButton** component comes with the pasteboard read privilege. After the component integrated into your application is tapped, no pop-up window will be displayed when your application reads data from the pasteboard. The permission will be revoked 10 seconds after your application enters the background.
 
   You can use this component for applications that need to read data from the pasteboard.
 
@@ -62,6 +62,7 @@ The following figure illustrates the working mechanism.
 6. After the authorization is successful, the security component calls **OnClick()** to notify the application layer of the authorization success.
 
 7. The application calls the corresponding privileged operation, for example, reading pasteboard information and creating a file in the media library.
+
    The permission usage and authorization validity vary with the security component type. For details, see [Security Components](#security-components).
 
 8. The corresponding service calls the permission manager service or security component manager service to obtain the authorization result and return the authentication result.
