@@ -7,7 +7,7 @@
 <!--Adviser: @w_Machine_cc-->
 
 ```c
-typedef struct {...} OH_Camera_PhysicalAperture
+typedef struct OH_Camera_PhysicalAperture {...} OH_Camera_PhysicalAperture
 ```
 
 ## 概述

@@ -141,9 +141,9 @@
 | [Camera_ErrorCode OH_CaptureSession_EnableControlCenter(Camera_CaptureSession* session, bool enabled)](#oh_capturesession_enablecontrolcenter) | - | 是否启用相机控制器。 |
 | [Camera_ErrorCode OH_CaptureSession_RegisterControlCenterEffectStatusChangeCallback(Camera_CaptureSession* session, OH_CaptureSession_OnControlCenterEffectStatusChange controlCenterEffectStatusChange)](#oh_capturesession_registercontrolcentereffectstatuschangecallback) | - | 注册相机控制器效果激活状态变化回调。 |
 | [Camera_ErrorCode OH_CaptureSession_UnregisterControlCenterEffectStatusChangeCallback(Camera_CaptureSession* session, OH_CaptureSession_OnControlCenterEffectStatusChange controlCenterEffectStatusChange)](#oh_capturesession_unregistercontrolcentereffectstatuschangecallback) | - | 注销相机控制器效果激活状态变化回调。 |
-| [ typedef void (\*OH_CaptureSession_OnMacroStatusChange)(Camera_CaptureSession* session, bool isMacroDetected)](#oh_capturesession_onmacrostatuschange) | OH_CaptureSession_OnMacroStatusChange | 相机会话微距状态改变回调。 |
-| [ Camera_ErrorCode OH_CaptureSession_RegisterMacroStatusChangeCallback(Camera_CaptureSession* session, OH_CaptureSession_OnMacroStatusChange macroStatusChange)](#oh_capturesession_registermacrostatuschangecallback) | - | 注册相机会话微距状态改变回调函数。 |
-| [ Camera_ErrorCode OH_CaptureSession_UnregisterMacroStatusChangeCallback(Camera_CaptureSession* session, OH_CaptureSession_OnMacroStatusChange macroStatusChange)](#oh_capturesession_unregistermacrostatuschangecallback) | - | 取消注册相机会话微距状态改变回调函数。 |
+| [typedef void (\*OH_CaptureSession_OnMacroStatusChange)(Camera_CaptureSession* session, bool isMacroDetected)](#oh_capturesession_onmacrostatuschange) | OH_CaptureSession_OnMacroStatusChange | 相机会话微距状态改变回调。 |
+| [Camera_ErrorCode OH_CaptureSession_RegisterMacroStatusChangeCallback(Camera_CaptureSession* session, OH_CaptureSession_OnMacroStatusChange macroStatusChange)](#oh_capturesession_registermacrostatuschangecallback) | - | 注册相机会话微距状态改变回调函数。 |
+| [Camera_ErrorCode OH_CaptureSession_UnregisterMacroStatusChangeCallback(Camera_CaptureSession* session, OH_CaptureSession_OnMacroStatusChange macroStatusChange)](#oh_capturesession_unregistermacrostatuschangecallback) | - | 取消注册相机会话微距状态改变回调函数。 |
 | [typedef void (\*OH_CaptureSession_OnIsoChange)(Camera_CaptureSession* session, int32_t isoValue)](#oh_capturesession_onisochange) | OH_CaptureSession_OnIsoChange | 用于在相机会话中监听感光度（ISO）变化的回调函数。 |
 | [Camera_ErrorCode OH_CaptureSession_RegisterIsoChangeCallback(Camera_CaptureSession* session, OH_CaptureSession_OnIsoChange isoChange)](#oh_capturesession_registerisochangecallback) | - | 注册监听感光度（ISO）改变的事件回调。 |
 | [Camera_ErrorCode OH_CaptureSession_UnregisterIsoChangeCallback(Camera_CaptureSession* session, OH_CaptureSession_OnIsoChange isoChange)](#oh_capturesession_unregisterisochangecallback) | - | 取消注册监听感光度（ISO）改变的事件回调。 |
@@ -913,7 +913,7 @@ typedef void (*OH_CaptureSession_OnFlashStateChange)(const Camera_CaptureSession
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const Camera_CaptureSession\* session | 传递回调的Camera_CaptureSession指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | 传递回调的Camera_CaptureSession指针。 |
 | [OH_Camera_FlashState](capi-camera-h.md#oh_camera_flashstate) flashState | 回调传递的闪光灯状态。 |
 
 ### OH_CaptureSession_RegisterFlashStateChangeCallback()
@@ -932,7 +932,7 @@ Camera_ErrorCode OH_CaptureSession_RegisterFlashStateChangeCallback(const Camera
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | [OH_CaptureSession_OnFlashStateChange](capi-capture-session-h.md#oh_capturesession_onflashstatechange) flashStateChange | 待注册的闪光灯状态变更回调。 |
 
 **返回：**
@@ -957,7 +957,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterFlashStateChangeCallback(const Came
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | [OH_CaptureSession_OnFlashStateChange](capi-capture-session-h.md#oh_capturesession_onflashstatechange) flashStateChange | 待注销的闪光灯状态变更回调。 |
 
 **返回：**
@@ -1108,7 +1108,7 @@ Camera_ErrorCode OH_CaptureSession_IsExposureMeteringModeSupported(const Camera_
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | [OH_Camera_ExposureMeteringMode](capi-camera-h.md#oh_camera_exposuremeteringmode) exposureMeteringMode | 待检查的曝光测光模式。 |
 | bool* isSupported | 输出参数，返回曝光模式是否支持的结果。 |
 
@@ -1134,7 +1134,7 @@ Camera_ErrorCode OH_CaptureSession_GetExposureMeteringMode(const Camera_CaptureS
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | [OH_Camera_ExposureMeteringMode](capi-camera-h.md#oh_camera_exposuremeteringmode)* exposureMeteringMode | 输出参数，返回当前曝光测光模式。 |
 
 **返回：**
@@ -1159,7 +1159,7 @@ Camera_ErrorCode OH_CaptureSession_SetExposureMeteringMode(const Camera_CaptureS
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | [OH_Camera_ExposureMeteringMode](capi-camera-h.md#oh_camera_exposuremeteringmode) exposureMeteringMode | 待设置的目标曝光测光模式。 |
 
 **返回：**
@@ -1184,7 +1184,7 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedISORange(const Camera_CaptureSess
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
 | int32_t *minIsoValue | 输出参数，返回ISO最小值。 |
 | int32_t *maxIsoValue | 输出参数，返回ISO最大值。 |
 
@@ -1210,7 +1210,7 @@ Camera_ErrorCode OH_CaptureSession_GetIso(const Camera_CaptureSession* session, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | int32_t* isoValue | 输出参数，返回当前ISO感光度值。 |
 
 **返回：**
@@ -1235,7 +1235,7 @@ Camera_ErrorCode OH_CaptureSession_SetIso(const Camera_CaptureSession* session, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | int32_t isoValue | 待设置的目标ISO值。 |
 
 **返回：**
@@ -1260,7 +1260,7 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedPhysicalApertures(const Camera_Ca
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
 | [OH_Camera_PhysicalAperture](capi-oh-camera-oh-camera-physicalaperture.md)* apertures | 用于存储物理光圈值的数组指针。 |
 | uint32_t size | 物理光圈数组大小。通过[OH_CaptureSession_GetPhysicalAperturesSize](capi-capture-session-h.md#oh_capturesession_getphysicalaperturessize)获取。 |
 
@@ -1286,7 +1286,7 @@ Camera_ErrorCode OH_CaptureSession_GetPhysicalAperturesSize(const Camera_Capture
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | uint32_t* size | 输出参数，返回物理光圈数组大小。 |
 
 **返回：**
@@ -1311,7 +1311,7 @@ Camera_ErrorCode OH_CaptureSession_GetPhysicalAperture(const Camera_CaptureSessi
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
 | double* aperture | 输出参数，返回当前光圈值。 |
 
 **返回：**
@@ -1336,7 +1336,7 @@ Camera_ErrorCode OH_CaptureSession_SetPhysicalAperture(const Camera_CaptureSessi
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
 | double aperture | 待设置的光圈值。 |
 
 **返回：**
@@ -1438,7 +1438,7 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedExposureDurationRange(const Camer
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | int32_t* minExposureDuration | 输出参数，返回曝光时间最小值。 |
 | int32_t* maxExposureDuration | 输出参数，返回曝光时间最大值。 |
 
@@ -1464,7 +1464,7 @@ Camera_ErrorCode OH_CaptureSession_SetExposureDuration(const Camera_CaptureSessi
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | int32_t exposureDuration | 待设置的目标曝光时间。 |
 
 **返回：**
@@ -1489,7 +1489,7 @@ Camera_ErrorCode OH_CaptureSession_GetExposureDuration(const Camera_CaptureSessi
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | int32_t* exposureDuration | 输出参数，返回当前曝光时间。 |
 
 **返回：**
@@ -1514,7 +1514,7 @@ typedef void (*OH_CaptureSession_OnExposureDurationChange)(const Camera_CaptureS
 
 | 参数项 | 描述 |
 | -- | -- |
-| (const Camera_CaptureSession\* session | 传递回调的Camera_CaptureSession指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)\* session | 传递回调的Camera_CaptureSession指针。 |
 | int32_t exposureDuration | 回调传递的曝光时间。 |
 
 ### OH_CaptureSession_RegisterExposureInfoChangeCallback()
@@ -1533,7 +1533,7 @@ Camera_ErrorCode OH_CaptureSession_RegisterExposureInfoChangeCallback(const Came
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | [OH_CaptureSession_OnExposureDurationChange](capi-capture-session-h.md#oh_capturesession_onexposuredurationchange) exposureDurationChange | 待注册的曝光时间变更回调。 |
 
 **返回：**
@@ -1558,7 +1558,7 @@ Camera_ErrorCode OH_CaptureSession_UnregisterExposureInfoChangeCallback(const Ca
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | [OH_CaptureSession_OnExposureDurationChange](capi-capture-session-h.md#oh_capturesession_onexposuredurationchange) exposureDurationChange | 待注销的曝光时间变更回调。 |
 
 **返回：**
@@ -2119,7 +2119,7 @@ Camera_ErrorCode OH_CaptureSession_GetFocusDistance(const Camera_CaptureSession*
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | float* focusDistance | 输出参数，返回当前对焦距离。 |
 
 **返回：**
@@ -2144,7 +2144,7 @@ Camera_ErrorCode OH_CaptureSession_SetFocusDistance(const Camera_CaptureSession*
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | float focusDistance | 待设置的对焦距离。 |
 
 **返回：**
@@ -2169,7 +2169,7 @@ Camera_ErrorCode OH_CaptureSession_IsFocusDistanceSupported(const Camera_Capture
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | bool* isSupported | 输出参数，返回是否支持对焦距离的结果。 |
 
 **返回：**
@@ -2988,7 +2988,7 @@ Camera_ErrorCode OH_CaptureSession_GetRAWCaptureZoomRatioRange(const Camera_Capt
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例。 |
 | float* minZoom | 输出参数，返回变焦最小值。 |
 | float* maxZoom | 输出参数，返回变焦最大值。 |
 
@@ -3014,7 +3014,7 @@ Camera_ErrorCode OH_CaptureSession_IsOISModeSupported(const Camera_CaptureSessio
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | [OH_Camera_OISMode](capi-camera-h.md#oh_camera_oismode) oisMode | 待检查的光学防抖模式。 |
 | bool* isSupported | 输出参数，返回当前设备是否支持该模式。 |
 
@@ -3040,7 +3040,7 @@ Camera_ErrorCode OH_CaptureSession_GetSupportedOISBiasRange(const Camera_Capture
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | [OH_Camera_OISAxes](capi-camera-h.md#oh_camera_oisaxes) oisAxis | 光学防抖轴。 |
 | float* minBias | 输出参数，返回最小偏移值。 |
 | float* maxBias | 输出参数，返回最大偏移值。 |
@@ -3068,7 +3068,7 @@ Camera_ErrorCode OH_CaptureSession_GetCurrentOISMode(const Camera_CaptureSession
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | [OH_Camera_OISMode](capi-camera-h.md#oh_camera_oismode)* oisMode | 输出参数，返回当前光学防抖模式。 |
 
 **返回：**
@@ -3093,7 +3093,7 @@ Camera_ErrorCode OH_CaptureSession_GetCurrentCustomOISBias(const Camera_CaptureS
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | float* pitchBias | 输出参数，返回俯仰轴偏移值。 |
 | float* yawBias | 输出参数，返回偏航轴偏移值。 |
 
@@ -3119,7 +3119,7 @@ Camera_ErrorCode OH_CaptureSession_SetOISMode(const Camera_CaptureSession* sessi
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | [OH_Camera_OISMode](capi-camera-h.md#oh_camera_oismode) oisMode | 待设置的光学防抖模式。 |
 
 **返回：**
@@ -3144,7 +3144,7 @@ Camera_ErrorCode OH_CaptureSession_SetOISModeCustom(const Camera_CaptureSession*
 
 | 参数项 | 描述 |
 | -- | -- |
-| const [ Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
+| const [Camera_CaptureSession](capi-oh-camera-camera-capturesession.md)* session | Camera_CaptureSession实例指针。 |
 | float pitchBias | 俯仰轴偏移值。 |
 | float yawBias | 偏航轴偏移值。 |
 
