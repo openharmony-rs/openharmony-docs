@@ -84,7 +84,7 @@ struct MyApp {
 
 class MutableBuilder\<Args extends Object[]\> extends WrappedBuilder\<Args\> { }
 
-用于实现包装[全局\@Builder](../../../ui/state-management/arkts-builder.md#全局自定义构建函数)的动态切换的类，MutableBuilder继承自[WrappedBuilder](./ts-universal-wrapBuilder.md)，其模板参数`Args extends Object[]`应传入@Builder函数的参数类型列表。[mutableBuilder](../../../ui/state-management/arkts-mutableBuilder.md)函数返回MutableBuilder对象。
+用于实现包装[全局\@Builder](../../../ui/state-management/arkts-builder.md#全局自定义构建函数)的动态切换的类，MutableBuilder继承自[WrappedBuilder](./ts-universal-wrapBuilder.md#wrappedbuilder)，其模板参数`Args extends Object[]`应传入@Builder函数的参数类型列表。[mutableBuilder](../../../ui/state-management/arkts-mutableBuilder.md)函数返回MutableBuilder对象。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

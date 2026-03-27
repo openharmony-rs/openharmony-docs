@@ -55,7 +55,7 @@ You candeliver ROI parameters in the form of strings, which must comply with the
 
 **Figure 1: ROI coordinates and maximum allowed area ratio**
 
-! [ROI coordinates and maximum allowed area ratio](figures/roi-size-and-coordinate.png)
+![ROI coordinates and maximum allowed area ratio](figures/roi-size-and-coordinate.png)
 
 ## Effectiveness Mechanism
 

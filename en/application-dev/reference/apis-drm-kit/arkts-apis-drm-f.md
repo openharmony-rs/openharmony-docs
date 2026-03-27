@@ -123,7 +123,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 | Name    | Type                                            | Mandatory| Description                                                                                                         |
 | -------- | ----------------------------------------------- | ---- |-------------------------------------------------------------------------------------------------------------|
 | name  | string     | Yes  | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported).|
-| mimeType  | string     | Yes  | MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hev.                                                              |
+| mimeType  | string     | Yes  | MIME type. The supported MIME types depend on the DRM solution. For example, video/avc and video/hevc.                                                              |
 
 **Return value**
 

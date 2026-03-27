@@ -10,19 +10,17 @@
 
 > **说明：**
 >
-> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件不支持[同层渲染](../../../application-dev/web/web-same-layer.md)。
 
 ## 导入模块
 
 ```ts
 import {
   RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback,
-  RecentPhotoClickCallback, PhotoSource
-} from '@kit.MediaLibraryKit';
-import {
-  RecentPhotoInfo,
+  RecentPhotoClickCallback, PhotoSource, RecentPhotoInfo,
   RecentPhotoCheckInfoCallback
-} from '@ohos.file.RecentPhotoComponent'
+} from '@ohos.file.RecentPhotoComponent';
 ```
 
 ## 属性
@@ -149,18 +147,18 @@ type RecentPhotoCheckInfoCallback = (recentPhotoExists: boolean, info: RecentPho
 ```ts
 // xxx.ets
 import {
-  photoAccessHelper,
-   RecentPhotoComponent, 
-   RecentPhotoOptions, 
-   PhotoSource, 
-   RecentPhotoCheckResultCallback, 
-   RecentPhotoClickCallback, 
-   BaseItemInfo
-} from '@kit.MediaLibraryKit';
-import {
+  RecentPhotoComponent, 
+  RecentPhotoOptions, 
+  PhotoSource, 
+  RecentPhotoCheckResultCallback, 
+  RecentPhotoClickCallback, 
   RecentPhotoInfo,
-  RecentPhotoCheckInfoCallback
-} from '@ohos.file.RecentPhotoComponent'
+  RecentPhotoCheckInfoCallback,
+} from '@ohos.file.RecentPhotoComponent';
+import {
+  photoAccessHelper,
+  BaseItemInfo
+} from '@kit.MediaLibraryKit'
 
 @Entry
 @Component

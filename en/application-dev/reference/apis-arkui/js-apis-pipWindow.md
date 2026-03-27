@@ -279,7 +279,7 @@ Defines the parameters for creating a PiP controller.
 | controlGroups<sup>12+</sup>       | Array<[PiPControlGroup](#pipcontrolgroup12)>                               | No| Yes | A list of optional component groups of the PiP controller. An application can configure whether to display these optional components. If this parameter is not set for the application, the panel displays basic components (such as the play/pause component of the video playback component group). If this parameter is set for the application, a maximum of three components can be selected. If more than three controls are selected, error code 401 is reported by the API.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                         |
 | customUIController<sup>12+</sup>      | [NodeController](js-apis-arkui-nodeController.md)           | No | Yes| Custom UI controller, which is used to implement the custom UI features on the PiP page. If this parameter is left empty, the custom UI features are not used by default.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                         |
 | localStorage<sup>17+</sup>      | [LocalStorage](../../ui/state-management/arkts-localstorage.md)           | No | Yes| A page-level UI state storage unit. In multi-instance scenarios, it can be used to track the UI state storage object of the main window instance. If no value is passed, you cannot retrieve the main window's UI storage object through the PiP window.<br>**Atomic service API**: This API can be used in atomic services since API version 17.                                                                         |
-| defaultWindowSizeType<sup>19+</sup>| number                                                                     | No  | Yes |  Size of the PiP window that the current app starts for the first time.<br>The value **0** means that no size is set, The PiP window is started based on the size before the PiP window of the previous application is closed.<br>**1**: small window.<br>**2**: large window.<br>If no value is passed, **0** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                |
+| defaultWindowSizeType<sup>19+</sup>| number                                                                     | No  | Yes |  Size of the PiP window that the current app starts for the first time.<br>**0**: no size is set. The PiP window is started based on the size before the PiP window of the previous application is closed.<br>**1**: small window.<br>**2**: large window.<br>If no value is passed, **0** is used.<br>**Atomic service API**: This API can be used in atomic services since API version 19.                                                                |
 | cornerAdsorptionEnabled<sup>22+</sup>| boolean                                                                     | No  | Yes |  Whether the PiP window automatically snaps to screen corners. When this feature is enabled, the screen is divided into four hot zones (top-left, top-right, bottom-left, and bottom-right). When users lift their finger while dragging the PiP window within a hot zone, the PiP window is automatically snapped to the nearest corner.<br>**true**: enables corner snapping.<br>**false**: disables corner snapping.<br>The default value is **true**.<br>**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.<br>**Atomic service API**: This API can be used in atomic services since API version 22.                                                                |
 
 ## PiPWindowSize<sup>15+</sup>
@@ -292,9 +292,9 @@ Describes the size of a PiP window.
 
 | Name  | Type| Read-Only| Optional| Description      |
 | ------ | -------- | ---- | ---- | ---------- |
-| width  | number   | Yes  | No  | Window width, in px. The value must be a positive integer and cannot be greater than the screen width.|
-| height | number   | Yes  | No  | Window height, in px. The value must be a positive integer and cannot be greater than the screen height.|
-| scale  | number   | Yes  | No  | Scale factor of the window, representing the display size relative to the width and height. The value is a floating-point number in the range (0.0, 1.0]. The value **1** means that the window matches the specified width and height.|
+| width  | number   | No  | No  | Window width, in px. The value must be a positive integer and cannot be greater than the screen width.|
+| height | number   | No  | No  | Window height, in px. The value must be a positive integer and cannot be greater than the screen height.|
+| scale  | number   | No  | No  | Scale factor of the window, representing the display size relative to the width and height. The value is a floating-point number in the range (0.0, 1.0]. The value **1** means that the window matches the specified width and height.|
 
 ## PiPWindowInfo<sup>15+</sup>
 
@@ -306,8 +306,8 @@ Describes the PiP window information.
 
 | Name  | Type| Read-Only| Optional| Description      |
 | ------ | -------- | ---- | ---- | ---------- |
-| windowId  | number   | Yes  | No  | ID of the PiP window.|
-| size  | [PiPWindowSize](#pipwindowsize15)  | Yes  | No  | Size of the PiP window.|
+| windowId  | number   | No  | No  | ID of the PiP window.|
+| size  | [PiPWindowSize](#pipwindowsize15)  | No  | No  | Size of the PiP window.|
 
 ## PiPTemplateType
 
@@ -713,7 +713,7 @@ this.pipController.updateContentSize(width, height);
 ### updatePiPControlStatus<sup>12+</sup>
 updatePiPControlStatus(controlType: PiPControlType, status: PiPControlStatus): void
 
-Updates the PiP component status.
+Updates the PiP controller status.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1073,7 +1073,7 @@ this.pipController.on('controlEvent', (control) => {
 
 off(type: 'controlPanelActionEvent'): void
 
-Unsubscribes from PiP action events. The [off('controlEvent')](#offcontrolevent12) API is preferred.
+Unsubscribes from PiP action events. The **[off('controlEvent')](#offcontrolevent12)** API is preferred.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

@@ -52,7 +52,7 @@ Declares the APIs of **NativeRender**. For details, see [Building a Rendering No
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_addrendernode) | - | Adds a child render node to the parent custom node.|
-| [int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_removerendernode) | - | Removes all child render nodes from the specified node.|
+| [int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_RenderNodeHandle child)](#oh_arkui_rendernodeutils_removerendernode) | - | Removes the specified child render node from the parent node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_ClearRenderNodeChildren(ArkUI_NodeHandle node)](#oh_arkui_rendernodeutils_clearrendernodechildren) | - | Clears child render nodes in the parent node.|
 | [int32_t OH_ArkUI_RenderNodeUtils_Invalidate(ArkUI_NodeHandle node)](#oh_arkui_rendernodeutils_invalidate) | - | Marks the target node, triggering its lifecycle and child nodes to re-render.|
 | [ArkUI_RenderNodeHandle OH_ArkUI_RenderNodeUtils_CreateNode()](#oh_arkui_rendernodeutils_createnode) | - | Creates a render node.|
@@ -200,9 +200,8 @@ int32_t OH_ArkUI_RenderNodeUtils_AddRenderNode(ArkUI_NodeHandle node, ArkUI_Rend
 
 **Description**
 Adds a child render node to the parent custom node.
- <br>Only parent nodes of the **customNode** type are supported.
- <br>Each custom node can be attached with only one **ArkUI_RenderNodeHandle** instance.
- <br>A **customNode** instance cannot be attached with other types of **ArkUI_NodeHandle**.
+
+The parent node supports only nodes of the **ARKUI_NODE_CUSTOM** type in [ArkUI_NodeType](capi-native-node-h.md#arkui_nodetype). Each custom node can be mounted to only one **ArkUI_RenderNodeHandle**. **customNode** cannot be mounted to another **ArkUI_NodeHandle**.
 
 **Since**: 20
 
@@ -210,8 +209,8 @@ Adds a child render node to the parent custom node.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child | Target render node.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target parent node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child | Child render node to be added.|
 
 **Return value**
 
@@ -226,7 +225,7 @@ int32_t OH_ArkUI_RenderNodeUtils_RemoveRenderNode(ArkUI_NodeHandle node, ArkUI_R
 ```
 
 **Description**
-Removes all child render nodes from the specified node.
+Removes the specified child render node from the parent node.
 
 **Since**: 20
 
@@ -234,8 +233,8 @@ Removes all child render nodes from the specified node.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child | Target render node.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target parent node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child | Child render node to be removed.|
 
 **Return value**
 
@@ -258,7 +257,7 @@ Clears child render nodes in the parent node.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target node.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Target parent node.|
 
 **Return value**
 
@@ -345,7 +344,7 @@ Adds a child node to the target parent render node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node| Target parent render node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child| Child render node to add.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child| Child render node to be added.|
 
 **Return value**
 
@@ -369,14 +368,13 @@ Adds a child node after the target child node of the parent node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node| Target parent render node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child| Child render node to add.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) sibling| Target child render node.|
-
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child| Child render node to be added.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) sibling | Target child node, which is used to determine the reference sibling render node of the insertion position. If the node is not in the current child node list of **node**, the node is appended to the end.|
 **Return value**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the target node originates from a FrameNode. This specification is supported since API version 22.<br>         Returns [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the child node originates from a FrameNode and the corresponding FrameNode is no longer in the adopted state. This specification is supported since API version 22.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the target node originates from a FrameNode. This specification is supported since API version 22.<br>         Returns [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the current render node originates from a FrameNode that has been either detached as a child node or destroyed. This specification is supported since API version 22.|
 
 ### OH_ArkUI_RenderNodeUtils_RemoveChild()
 
@@ -393,7 +391,7 @@ Removes a child node from the specified render node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target parent render node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child | Child render node to remove.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) child | Child render node to be removed.|
 
 **Return value**
 
@@ -481,8 +479,8 @@ Obtains the next sibling node of the specified node.
 **Parameters**
 | Name| Description|
 | -- | -- |
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Render node pointer used to receive the next sibling node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Reference node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node used to receive the next sibling node.|
 
 **Return value**
 | Type| Description|
@@ -504,7 +502,7 @@ Obtains the previous sibling node of the specified node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Reference node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Render node pointer used to receive the previous sibling node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node used to receive the previous sibling node.|
 
 **Return value**
 | Type| Description|
@@ -747,8 +745,8 @@ Sets the size for the render node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| int32_t width | Width value (in px).<br>Default value: **0**, in px.|
-| int32_t height | Height value (in px).<br>Default value: **0**, in px.|
+| int32_t width | Width value (in px).<br>Default value: **0**, in px. The value must be greater than or equal to 0. If a negative value is passed, [ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t height | Height value (in px).<br>Default value: **0**, in px. The value must be greater than or equal to 0. If a negative value is passed, [ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 | Type| Description|
@@ -1255,7 +1253,7 @@ Sets the shadow radius for the render node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
-| float radius | Radius value.<br>Default value: **0**.|
+| float radius | Radius value.<br>Default value: **0**. The value must be greater than or equal to 0. If a negative value is passed, [ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 | Type| Description|
@@ -1467,8 +1465,12 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_Rend
 ```
 
 **Description**
-Applies a mask to the render node using the mask configuration.<br>         The mask is created as follows:<br>         1. Add brightness and linear color filters to the mask layer.<br>         2. Draw the mask graphic under this filter.<br>         3.
-Use the original node image as the source color and the mask graphic as the target color, and blend them into a mask image using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API.
+Applies a mask to the render node using the mask configuration.
+
+The mask is created as follows:
+1. Add brightness and linear color filters to the mask layer.
+2. Draw the mask graphic under this filter.
+3. Use the original node image as the source color and the mask graphic as the target color, and blend them into a mask image using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API.
 
 **Since**: 20
 
@@ -1544,8 +1546,8 @@ Sets the bounds for the render node.
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Target render node.|
 | int32_t x | X-coordinate of the upper left corner of the bounds, in pixels.<br>Default value: **0**.|
 | int32_t y | Y-coordinate of the upper left corner of the bounds, in pixels.<br>Default value: **0**.|
-| int32_t width | Width of the bounds (in pixels).<br>Default value: **0**.|
-| int32_t height | Height of the bounds (in pixels).<br>Default value: **0**.|
+| int32_t width | Width of the bounds (in pixels).<br>Default value: **0**. The value must be greater than or equal to 0. If a negative value is passed, [ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode) is returned.|
+| int32_t height | Height of the bounds (in pixels).<br>Default value: **0**. The value must be greater than or equal to 0. If a negative value is passed, [ARKUI_ERROR_CODE_PARAM_OUT_OF_RANGE](capi-native-type-h.md#arkui_errorcode) is returned.|
 
 **Return value**
 | Type| Description|
@@ -3061,7 +3063,7 @@ Obtains the RenderNode of the target node. The target node has been adopted as a
 **Parameters**
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ArkUI_NodeHandle** pointer.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**.|
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* renderNode | ArkUI_RenderNodeHandle* pointer, which specifies the RenderNode of the target node.|
 
 **Return value**

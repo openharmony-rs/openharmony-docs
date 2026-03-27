@@ -50,7 +50,7 @@ If accessibility grouping is enabled for a component that does not contain a uni
 
 When a child component's [accessibilityLevel](#accessibilitylevel) is set to **"yes"**, it becomes focusable by screen readers when other accessibility criteria are met, bypassing **accessibilityGroup** constraints.
 
-After [accessibilityPreferred](ts-types.md#accessibilityoptions14) is used to enable the function of preferentially concatenating accessibility text for reading, the accessibility text attribute of its subcomponents is preferentially concatenated as the merged text of the component. If a child component has no accessibility text set, its universal text attribute will be used instead. Components without either attribute will be excluded from concatenation.
+When [accessibilityPreferred](ts-types.md#accessibilityoptions14) is set to **true**, the system prioritizes concatenating the accessibility text attributes of the child components to generate merged text for the component. If a child component has no accessibility text set, its universal text attribute will be used instead. Components without either attribute will be excluded from concatenation.
 
 > **NOTE**
 >
@@ -236,7 +236,7 @@ Sets an accessibility virtual child node. For custom drawing components, a **Cus
 
 accessibilityChecked(isCheck: boolean):T
 
-Sets the checked state for the accessibility node. only affects component status announcements in screen reading scenarios.
+Sets the checked state for the accessibility node. This API is used in multi-select scenarios and only affects component state announcements in screen reading scenarios.
 
 >**NOTE**
 >
@@ -252,7 +252,7 @@ Sets the checked state for the accessibility node. only affects component status
 
 | Name | Type   | Mandatory| Description                                                        |
 | ------- | ------- | ---- | ------------------------------------------------------------ |
-| isCheck | boolean | Yes  | Whether the current component is selected.<br>The options are as follows:<br>**true**: The component is selected.<br>**false**: The component is not selected.<br>**undefined**: The component determines its own selected state.<br>Default value: **undefined**.<br>**NOTE**<br>1. Setting this parameter to **true** or **false** will automatically set the component's **checkable** attribute to **true**.<br>2. The **accessibilityChecked** attribute indicates that a component operates in multi-selection mode, whereas **accessibilitySelected** indicates single-selection mode. These two modes are mutually exclusive: A component cannot simultaneously support both. Concurrent usage creates accessibility conflicts, causing screen readers and other assistive technologies to incorrectly interpret the selection state. When implementing multi-selection mode using **accessibilityChecked** (by setting it to **true** or **false**), ensure that the **accessibilitySelected** attribute is not simultaneously configured. If it is previously set, reset **accessibilitySelected** to **undefined** using its corresponding API.|
+| isCheck | boolean | Yes  | Whether the current component is selected.<br>The options are as follows:<br>**true**: The component is selected.<br>**false**: The component is not selected.<br>**undefined**: The component determines its own selected state.<br>Default value: **undefined**.<br>**NOTE**<br>1. Setting this parameter to **true** or **false** will automatically set the component's **checkable** attribute to **true**.<br>2. The **accessibilityChecked** attribute indicates that a component operates in multi-selection mode, whereas [accessibilitySelected](ts-universal-attributes-accessibility.md#accessibilityselected13) indicates single-selection mode. These two modes are mutually exclusive: A component cannot simultaneously support both. Concurrent usage creates accessibility conflicts, causing screen readers and other assistive technologies to incorrectly interpret the selection state. When implementing multi-selection mode using **accessibilityChecked** (by setting it to **true** or **false**), ensure that the **accessibilitySelected** attribute is not simultaneously configured. If it is previously set, reset **accessibilitySelected** to **undefined** using its corresponding API.|
 
 **Return value**
 
@@ -264,7 +264,7 @@ Sets the checked state for the accessibility node. only affects component status
 
 accessibilitySelected(isSelect: boolean):T
 
-Sets the checked state for the accessibility node. This API is used in single-select scenarios and only affects component status announcements in screen reading scenarios.
+Sets the checked state for the accessibility node. This API is used in single-select scenarios and only affects component state announcements in screen reading scenarios.
 
 >**NOTE**
 >
@@ -442,7 +442,7 @@ Enumerates the component role types used by screen readers.
 | TEXT_FIELD | 115 | Text box.|
 | TIME_PICKER | 116 | Time picker.|
 | TITLE_BAR | 117 | Title bar.|
-| TOGGLER | 118 | Status component.|
+| TOGGLER | 118 | State component.|
 | UI_EXTENSION_COMPONENT | 119 | UI extension component.|
 | VIDEO | 120 | Component for playing video files and controlling playback.|
 | WATER_FLOW | 121 | Waterfall layout container.|
@@ -478,7 +478,7 @@ Sets the next component to receive focus during screen reader navigation.
 
 accessibilityDefaultFocus(focus: boolean):T
 
-Sets the initial focus target for screen readers.
+Sets the initial screen reader focus on the page.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -685,7 +685,7 @@ struct Focus {
       Button().accessibilityLevel("yes").accessibilityText("Accessibility text is announced if no text is present")
       Button("Text content is announced if no accessibility text is present").accessibilityLevel("yes")
       Button()
-      Button('btn123').accessibilityText("Button with both accessibility text and text").accessibilityLevel("yes")
+      Button('btn123').accessibilityText("Button with both accessibility and text btn123").accessibilityLevel("yes")
       Button('btn123').accessibilityLevel("yes")
     }
     .accessibilityGroup(true, { accessibilityPreferred: true })
@@ -752,7 +752,7 @@ struct Index {
         .accessibilityTextHint(this.hintStr)
         .onClick(() => {
           this.isDownloading = !this.isDownloading;
-          this.hintStr = this.isDownloading ? 'Status changed to downloading' : 'Status changed to paused';
+          this.hintStr = this.isDownloading ? 'State changed to downloading' : 'State changed to paused';
         })
       TextInput({ placeholder: 'Enter phone number' })
         .accessibilityLevel('yes')

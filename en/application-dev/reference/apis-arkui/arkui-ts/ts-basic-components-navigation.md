@@ -106,7 +106,7 @@ Sets the page title.
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup> | Yes  | Page title. When the NavigationCustomTitle type is used to set the height, [titleMode](#titlemode) does not take effect.<br>When the title string is too long:<br>- If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped.<br> - If a subtitle is set, the subtitle is scaled down and then clipped.|
-| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | No  | Defines the title bar options. Title bar options include the background color, background blur style, blur options, background properties, layout style, and padding at the start and end of the title bar, as well as main title attribute modifier, subtitle attribute modifier, and whether to respond when the device is in semi-folded mode..                                                |
+| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | No  | Defines the title bar options. Title bar options include the background color, background blur style, blur options, background properties, layout style, and padding at the start and end of the title bar, as well as main title attribute modifier, subtitle attribute modifier, and whether to respond when the device is in semi-folded mode.                                                |
 
 ### menus
 
@@ -116,7 +116,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 
 > **NOTE**
 >
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
+> The following operations are not allowed: modifying the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, changing the animation effects through the **effectStrategy** attribute, or changing the animation effect type through the **symbolEffect** attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -138,7 +138,7 @@ Sets the menu items in the upper right corner of the page. If this attribute is 
 >
 > This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 >
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
+> The following operations are not allowed: modifying the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, changing the animation effects through the **effectStrategy** attribute, or changing the animation effect type through the **symbolEffect** attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -177,7 +177,7 @@ Sets the content of the toolbar. If this attribute is not set, no toolbar is dis
 >
 > This API can be called in [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier) since API version 20.
 >
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
+> The following operations are not allowed: modifying the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, changing the animation effects through the **effectStrategy** attribute, or changing the animation effect type through the **symbolEffect** attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -188,7 +188,7 @@ Sets the content of the toolbar. If this attribute is not set, no toolbar is dis
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the toolbar. When configured with Array&lt;[ToolbarItem](#toolbaritem10)&gt;, the toolbar follows the rules below:<br>Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area.<br>In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed into an automatically generated **More** icon. In landscape mode, toolbar behavior depends on the display mode: <br>- If the display mode is [Split](#navigationmode9), the toolbar maintains the portrait mode. <br>- If the display mode is [Stack](#navigationmode9), the toolbar must be used together with Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt; of the **menus** attribute; in this configuration, the bottom toolbar is automatically hidden, and all items on the toolbar are relocated to the menu in the upper right corner of the screen.<br>When configured with [CustomBuilder](ts-types.md#custombuilder8), the toolbar does not follow the above rules.|
-| options<sup>11+</sup> | [NavigationToolbarOptions](#navigationtoolbaroptions11) | No  | Toolbar options. Toolbar options include the background color, background blur style and blur option, background properties, and layout mode of the toolbar, as well as whether to hide the toolbar text, and options for the toolbar's more button menu..                                               |
+| options<sup>11+</sup> | [NavigationToolbarOptions](#navigationtoolbaroptions11) | No  | Toolbar options. Toolbar options include the background color, background blur style and blur option, background properties, and layout mode of the toolbar, as well as whether to hide the toolbar text, and options for the toolbar's more button menu.                                               |
 
 ### hideToolBar
 
@@ -330,7 +330,7 @@ Sets the icon of the back button in the title bar.
 
 > **NOTE**
 >
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
+> The following operations are not allowed: modifying the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, changing the animation effects through the **effectStrategy** attribute, or changing the animation effect type through the **symbolEffect** attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -352,7 +352,7 @@ Sets the icon and accessibility text for the back button on the title bar.
 >
 > This API cannot be called within [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier).
 >
-> The following are not allowed: modify the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, change the animation effects through the **effectStrategy** attribute, or change the type of animation effects through the **symbolEffect** attribute.
+> The following operations are not allowed: modifying the icon size through the **fontSize** attribute of the **SymbolGlyphModifier** object, changing the animation effects through the **effectStrategy** attribute, or changing the animation effect type through the **symbolEffect** attribute.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1462,7 +1462,7 @@ Obtains the parent navigation path stack.<br>When a **Navigation** component is 
 
 | Type    | Description    |
 | ------ | ------ |
-| [NavPathStack](#navpathstack10) \| null | Navigation path stack of the outer **Navigation** component in which the current **Navigation** component is nested. If there is no outer **Navigation** component., **null** is returned.|
+| [NavPathStack](#navpathstack10) \| null | Navigation path stack of the outer **Navigation** component in which the current **Navigation** component is nested. If **NavPathStack** cannot be obtained, **null** is returned.|
 
 ### setInterception<sup>12+</sup>
 
@@ -1850,12 +1850,12 @@ Display mode of the navigation page. When **Navigation** is displayed in split-c
 | Name | Value|Description                                                        |
 | ----- | ----- |------------------------------------------------------------ |
 | Stack | 0 |The navigation page and content area are displayed independently of each other, which are equivalent to two pages.                    |
-| Split | 1 |The navigation page and content area are displayed in different columns.<br>**1.** Table 1 describes the relationship between the actual resulting **navBarWidth** and the value set by you.<br>**2.** When the component size is decreased, the content area is shrunk until its width reaches the value defined by **minContentWidth**, and then the navigation page is shrunk until its width reaches the value defined by **minNavBarWidth**. if the component size is further decreased, the content area is further shrunk until it disappears, and then navigation page is shrunk.<br>**3.** When the navigation page is set to a fixed size and the component size is continuously decreased, the navigation page is shrunk.<br>**4.** If only **navBarWidth** is set, the width of the navigation page is fixed at the value of **navBarWidth**, and the divider cannot be dragged.<br>**5.** The touch target of the divider is 2 vp on each side (left and right). Therefore, it is recommended that you keep a minimum distance of 4 vp from this area to avoid unintended interactions.<br>**6.** In Split mode, if there is only one page in the content area, the back button will not be displayed in the upper left corner of the page.|
+| Split | 1 |The navigation page and content area are displayed in different columns.<br>**1.** Table 1 describes the relationship between the actual resulting **navBarWidth** and the value set by you.<br>**2.** When the component size is decreased, the content area is shrunk until its width reaches the value defined by **minContentWidth**, and then the navigation page is shrunk until its width reaches the value defined by **minNavBarWidth**. If the component size is further decreased, the content area is further shrunk until it disappears, and then the navigation page is shrunk.<br>**3.** When the navigation page is set to a fixed size and the component size is continuously decreased, the navigation page is shrunk.<br>**4.** If only **navBarWidth** is set, the width of the navigation page is fixed at the value of **navBarWidth**, and the divider cannot be dragged.<br>**5.** The touch target of the divider is 2 vp on each side (left and right). Therefore, it is recommended that you keep a minimum distance of 4 vp from this area to avoid unintended interactions.<br>**6.** In Split mode, if there is only one page in the content area, the back button will not be displayed in the upper left corner of the page.|
 | Auto  | 2 |In API version 9 and earlier versions: If the window width is greater than or equal to 520 vp, the Split mode is used; otherwise, the Stack mode is used.<br>In API version 10 and later versions: If the window width is greater than or equal to 600 vp, the Split mode is used; otherwise, the Stack mode is used. 600 vp = minNavBarWidth (240 vp) + minContentWidth (360 vp).|
 
 **Table 1** Relationship between actual navBarWidth and the developer-defined value
 
-| Developer-defined  navBarWidth| calcNavBarWidth Value| Actual navBarWidth|
+| Developer-defined navBarWidth| calcNavBarWidth Value| Actual navBarWidth|
 | --- | --- | --- |
 | navBarWidth < minNavBarWidth | NA | minNavBarWidth |
 | navBarWidth > maxNavBarWidth | calcNavBarWidth > maxNavBarWidth | maxNavBarWidth |
@@ -1867,7 +1867,7 @@ Display mode of the navigation page. When **Navigation** is displayed in split-c
 
 > **NOTE**
 >
-> For simplicity, **calcNavBarWidth** is defined as follows: Component width - minContentWidth - Divider width (1 px)
+> For simplicity, **calcNavBarWidth** is defined as follows: Component width – minContentWidth – Divider width (1 px)
 
 ## NavigationOperation<sup>11+</sup>
 
@@ -2056,8 +2056,8 @@ struct NavigationExample {
         .width(24)
         .height(24)
         .margin({ left: 24 })
-      // Replace 'common/ic_public_more.svg' with the image resource file you use.
-      Image('common/ic_public_more.svg')
+      // Replace 'resources/base/media/ic_public_more.svg' with the image resource file you use.
+      Image('resources/base/media/ic_public_more.svg')
         .width(24)
         .height(24)
         .margin({ left: 24 })
@@ -2191,7 +2191,7 @@ struct NavigationExample {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pageInfos.pushPath({ name: 'pageOne' }); // Push the navigation destination page specified by name to the routing stack.
+            this.pageInfos.pushPath({ name: 'pageOne' }); // Push the navigation destination page specified by name to the stack.
           })
         Button('use interception', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2234,7 +2234,7 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             let tmp = new TmpClass();
-            this.pageInfos.pushPathByName('pageTwo', tmp); // Push the navigation destination page specified by name, with the data specified by param, to the routing stack.
+            this.pageInfos.pushPathByName('pageTwo', tmp); // Push the navigation destination page specified by name, with the data specified by param, to the stack.
           })
         Button('singletonLaunchMode', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -3469,7 +3469,7 @@ struct NavigationExample1 {
             .height(40)
             .margin(20)
             .onClick(() => {
-              // The parent the parent navigation path stack can be obtained.
+              // The parent navigation path stack can be obtained.
               let parentStack = this.childNavStack.getParent();
               parentStack?.pushPath({ name: "pageOne" });
             })
@@ -4892,7 +4892,9 @@ Configure **"routerMap": "$profile:router_map"** in the **module** field of the 
 
 ### Example 17: Using New Navigation Controller APIs
 
-This example demonstrates how to implement route interception and obtain the display mode using the [NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11) object.
+This example demonstrates how to implement route interception by setting the [setInterception](#setinterception12) method and obtain **mode** using the [NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11) object.
+
+The **interception** API is added to the [NavigationInterception](#navigationinterception12) parameter type of **setInterception** since API version 22.
 
 ```ts
 // Index.ets
@@ -5133,7 +5135,7 @@ export struct PageTwo {
 
 Configure **"routerMap": "$profile:router_map"** in the **module** field of the project configuration file [module.json5](../../../quick-start/module-configuration-file.md) located in the **src/main** directory.
 
-```json
+```json5
 // src/main/resources/base/profile/router_map.json
 {
   "routerMap": [

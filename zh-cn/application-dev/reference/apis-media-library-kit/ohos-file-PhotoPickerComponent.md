@@ -14,7 +14,8 @@
 
 > **说明：**
 >
-> 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 12开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件不支持[同层渲染](../../../application-dev/web/web-same-layer.md)。
 
 ## 导入模块
 
@@ -24,9 +25,8 @@ import {
   DataType, BaseItemInfo, ItemInfo, PhotoBrowserInfo, ItemType, ClickType,
   MaxCountType, PhotoBrowserRange, PhotoBrowserUIElement,
   ItemsDeletedCallback, ExceedMaxSelectedCallback, CurrentAlbumDeletedCallback, SingleLineConfig,
-  BadgeConfig, PreselectedInfo, SaveMode, BadgeType, ItemDisplayRatio
-} from '@kit.MediaLibraryKit';
-import { VideoPlayerState } from '@ohos.file.PhotoPickerComponent';
+  BadgeConfig, PreselectedInfo, SaveMode, BadgeType, ItemDisplayRatio,VideoPlayerState
+} from '@ohos.file.PhotoPickerComponent';
 ```
 
 ## 属性
@@ -698,9 +698,9 @@ import {
   ExceedMaxSelectedCallback,
   CurrentAlbumDeletedCallback,
   videoPlayStateChangedCallback,
-  photoAccessHelper
-} from '@kit.MediaLibraryKit';
-import { VideoPlayerState } from '@ohos.file.PhotoPickerComponent';
+  VideoPlayerState
+} from '@ohos.file.PhotoPickerComponent';
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
 import { dataSharePredicates } from '@kit.ArkData';
 import { common } from '@kit.AbilityKit';
 

@@ -259,7 +259,7 @@ Applies a radial linear gradient blur effect to the component.
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
 | value  | number         | Yes  | Blur radius. A larger value indicates a higher blur degree. The value range is [0, 128]. A zero blur radius disables the blur effect. Negative values default to **0**, while values above **128** cap at **128**.|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientblur12)        | Yes  | Linear gradient parameters, which include **fractionStops** and **direction**.|
+| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)        | Yes  | Linear gradient parameters, which include **fractionStops** and **direction**.|
 
 **Return value**
 

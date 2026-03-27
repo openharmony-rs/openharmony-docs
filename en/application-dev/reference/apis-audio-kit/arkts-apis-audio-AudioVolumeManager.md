@@ -135,7 +135,7 @@ try {
 
 getAppVolumePercentage(): Promise<number\>
 
-Obtains the volume of the application. (The volume ranges from 0 to 100.) This API uses a promise to return the result.
+Obtains the volume of the application. (The volume range is 0 to 100.) This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 
@@ -159,7 +159,7 @@ audioVolumeManager.getAppVolumePercentage().then((value: number) => {
 
 setAppVolumePercentage(volume: number\): Promise<void\>
 
-Sets the application volume (within a range of 0 to 100). This API uses a promise to return the result.
+Sets the volume (within a range of 0 to 100) for the application. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Audio.Volume
 

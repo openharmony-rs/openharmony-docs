@@ -21,7 +21,7 @@ import { media } from '@kit.MediaKit';
 
 ## AVErrorCode<sup>9+</sup>
 
-Enumerates the [media error codes](errorcode-media.md).
+Enumerates the types of [media error codes](errorcode-media.md).
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 
@@ -35,7 +35,7 @@ Enumerates the [media error codes](errorcode-media.md).
 
 createVideoRecorder(callback: AsyncCallback\<VideoRecorder>): void
 
-Creates a VideoRecorder instance. Each device supports only one VideoRecorder instance. This API uses an asynchronous callback to return the result.
+Creates a **VideoRecorder** instance. Each device supports only one **VideoRecorder** instance. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -76,7 +76,7 @@ media.createVideoRecorder((error: BusinessError, video: media.VideoRecorder) => 
 
 createVideoRecorder(): Promise\<VideoRecorder>
 
-Creates a VideoRecorder instance. Each device supports only one VideoRecorder instance. This API uses a promise to return the result.
+Creates a **VideoRecorder** instance. Each device supports only one **VideoRecorder** instance. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Multimedia.Media.VideoRecorder
 
@@ -490,7 +490,7 @@ This API can be called only after the [prepare()](arkts-apis-media-AVRecorder.md
 
 | Name  | Type                 | Mandatory| Description                        |
 | -------- | -------------------- | ---- | --------------------------- |
-| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)      | Yes  | PixelMap data.<br>Currently, the following specifications are supported:<br>- Only RGBA8888 is supported.<br>- If the original image is 8K, the watermark resolution should be limited to a size of 3072 x 288; if the original image is 4K, the watermark resolution should be limited to a size of 1536 x 144.|
+| watermark | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)      | Yes  | PixelMap data.<br>Currently, the following specifications are supported:<br>- Only RGBA8888 is supported.<br>- If the original image is 8K, the watermark resolution should be limited to a size of 3072 × 288; if the original image is 4K, the watermark resolution should be limited to a size of 1536 × 144.|
 | config    | [WatermarkConfig](#watermarkconfig13)   | Yes  | Watermark configuration.|
 
 **Return value**

@@ -38,7 +38,9 @@ AVSessionManager provides the capability of managing sessions. It can create an 
 
 Unlike the AVSession and AVSessionController objects, AVSessionManager is not a specific object, but the root namespace of AVSessions. You can import AVSessionManager as follows:
 
-```ts
+<!-- @[avSession_manager_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 ```
 
@@ -50,9 +52,10 @@ The code snippet below shows how the provider creates an AVSession object by usi
 >
 > The sample code below demonstrates only the API call for creating an AVSession object. When actually using it, the application must ensure that the AVSession object remains throughout the application's background playback activities. This prevents the system from reclaiming or releasing it, which could lead to playback being controlled by the system.
  
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+<!-- @[avSession_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 @Entry
 @Component
 struct Index {

@@ -441,13 +441,13 @@ struct ClipAndMaskExample {
         .width('500px').height('280px')
 
       Text('mask').fontSize(12).width('75%').fontColor('#DCDCDC')
-      // Add a 500x280 px square mask to the image.
+      // Add a 500 × 280 px square mask to the image.
       // Replace $r("app.media.testImg") with the image resource file you use.
       Image($r('app.media.testImg'))
         .maskShape(new RectShape({ width: '500px', height: '280px' }).fill(Color.Gray))
         .width('500px').height('280px')
 
-      // Add a 280 x 280 px circular mask to the image.
+      // Add a 280 × 280 px circular mask to the image.
       // Replace $r("app.media.testImg") with the image resource file you use.
       Image($r('app.media.testImg'))
         .maskShape(new CircleShape({ width: '280px', height: '280px' }).fill(Color.Gray))
@@ -478,7 +478,7 @@ struct ProgressMaskExample {
   build() {
     Column({ space: 15 }) {
       Text('progress mask').fontSize(12).width('75%').fontColor('#DCDCDC')
-      // Add a 280x280 px progress mask to the image.
+      // Add a 280 × 280 px progress mask to the image.
       // Replace $r("app.media.testImg") with the image resource file you use.
       Image($r('app.media.testImg'))
         .width('500px').height('280px')

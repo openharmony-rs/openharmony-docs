@@ -9,7 +9,7 @@
 
 以RSA、ECC、SM2为例，根据指定的密钥参数，生成非对称密钥对（KeyPair），并获取密钥参数属性。
 
-该对象可用于后续的加解密等操作。获取的密钥参数属性可用于存储或运输。
+该对象可用于后续的加解密等操作。获取的密钥参数属性可用于存储或传输。
 
 ## 指定密钥参数生成RSA公钥
 
@@ -175,6 +175,7 @@
 对应的算法规格请查看[非对称密钥生成和转换规格：ECC](crypto-asym-key-generation-conversion-spec.md#ecc)。
 
 1. 构造[ECCCommonParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ecccommonparamsspec10)对象，用于指定ECC算法中公私钥包含的公共参数。
+
    ECCCommonParamsSpec是AsyKeySpec的子类。需要通过参数algName指定算法'ECC'；指定密钥参数类型AsyKeySpecType.COMMON_PARAMS_SPEC，表示是公私钥中包含的公共参数。
 
    使用密钥参数生成密钥时，用到的bigint类型需要以大端模式输入，且必须为正数。
@@ -206,7 +207,7 @@
     console.info('. Length (bits): ' + bnValue.toString(2).length);
   }
 
-  // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
+  // 根据密钥规格构造ECCCommonParamsSpec结构体。ECCCommonParamsSpec结构体定义了ECC私钥和公钥的公共参数
   function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
     let fieldFp: cryptoFramework.ECFieldFp = {
       fieldType: 'Fp',
@@ -311,7 +312,7 @@
     console.info('. Length (bits): ' + bnValue.toString(2).length);
   }
 
-  // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数。
+  // 根据密钥规格构造ECCCommonParamsSpec结构体。ECCCommonParamsSpec结构体定义了ECC私钥和公钥的公共参数
   function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
     let fieldFp: cryptoFramework.ECFieldFp = {
       fieldType: 'Fp',
