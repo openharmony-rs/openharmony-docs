@@ -23,7 +23,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { TreeView } from "@kit.ArkUI";
 ```
 

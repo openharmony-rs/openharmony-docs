@@ -21,7 +21,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { Filter } from '@kit.ArkUI';
 ```
 
