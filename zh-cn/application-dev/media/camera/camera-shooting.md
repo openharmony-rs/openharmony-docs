@@ -18,7 +18,7 @@
 
 ## 开发步骤
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 1. 导入[Image](../../reference/apis-image-kit/arkts-apis-image-Image.md)接口。获取拍照输出的数据需要用到系统提供的Image接口能力，导入Image接口的方法如下。
 
@@ -429,7 +429,7 @@
   }
   ```
 
-- 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[Camera错误码](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
+- 通过注册固定的error回调函数获取监听拍照输出流的错误结果。回调返回拍照输出接口使用错误时的对应错误码，错误码类型参见[CameraErrorCode](../../reference/apis-camera-kit/arkts-apis-camera-e.md#cameraerrorcode)。
 
   ```ts
   function onPhotoOutputError(photoOutput: camera.PhotoOutput): void {

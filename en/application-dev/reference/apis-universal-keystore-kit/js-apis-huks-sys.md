@@ -471,14 +471,14 @@ async function LetKeyAttest(keyAlias: string, keyOptions: Array<huks.HuksParam>)
   let attestOptions: huks.HuksOptions = {
     properties: keyOptions,
   }
-  console.info ('Start attestation')
+  console.info('Start attestation')
   await huks.attestKeyItemAsUser(userId, keyAlias, attestOptions).then((data) => {
     console.info('attestation ok!')
     console.debug(`The obtained certificate chain is ${JSON.stringify(data)}`) // Debugging information. The certificate chain does not need to be printed during the service function development.
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.debug(`Certificate ${i} is ${data.certChains[i]}`) // Debugging information. The certificate chain does not need to be printed during the service function development.
     }
-    console.info ("Attestation successful")
+    console.info("Attestation successful")
   }).catch((err: BusinessError) => {
     console.error("Attestation failed. Error code: " + err.code +" Error message: "+ err.message)
   })
@@ -634,7 +634,7 @@ async function LetKeyAnonAttest(keyAlias: string, keyOptions: Array<huks.HuksPar
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.info(`Certificate ${i} is ${data.certChains[i]}`)
     }
-    console.info ("Anonymous attestation successful")
+    console.info("Anonymous attestation successful")
   }).catch((err: BusinessError) => {
     console.error("Anonymous attestation failed. Error code: " + err.code +" Error message: " + err.message)
   })
@@ -656,7 +656,7 @@ export default function HuksAsUserTest() {
 
 importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-Imports a wrapped (encrypted) key for the specified user. This API uses a promise to return the result.
+Imports a key securely for the specified user. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 

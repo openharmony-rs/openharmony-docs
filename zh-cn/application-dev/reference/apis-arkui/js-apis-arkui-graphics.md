@@ -1,9 +1,9 @@
 # Graphics
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 自定义节点相关属性定义的详细信息。
@@ -888,7 +888,7 @@ type CornerRadius = Corners\<Vector2>
 
 | 类型                                         | 说明               |
 | -------------------------------------------- | ------------------ |
-| [Corners](#cornerst12)[\<Vector2>](#vector2) | 四个角的圆角x轴与y轴的半轴长。 |
+| [Corners](#cornerst12)\<[Vector2](#vector2)> | 四个角的圆角x轴与y轴的半轴长。 |
 
 ## BorderRadiuses<sup>12+</sup>
 
@@ -902,7 +902,7 @@ type BorderRadiuses = Corners\<number>
 
 | 类型                            | 说明               |
 | ------------------------------- | ------------------ |
-| [Corners\<number>](#cornerst12) | 四个角的圆角半径。 |
+| [Corners](#cornerst12)\<number> | 四个角的圆角半径。 |
 
 ## Rect<sup>12+</sup>
 

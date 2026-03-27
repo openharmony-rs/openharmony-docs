@@ -22,3 +22,9 @@
   - [使用分布式媒体会话(仅对系统应用开放)](using-distributed-avsession-sys.md)
   <!--DelEnd-->
   - [使用通话设备切换组件](using-switch-call-devices.md)<!--RP1--><!--RP1End-->
+
+- 音频模板<!--music-template-->
+  - [使用音频模板](using-avsession-AVMusicTemplate.md)
+  <!--Del-->
+  - [音频模板概述(仅对系统应用开放)](using-avsession-AVMusicTemplateController-sys.md)
+  <!--DelEnd-->

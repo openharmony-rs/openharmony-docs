@@ -14,7 +14,7 @@
 使用更安全的熵源，对随机数而言，就意味着 “结果难以被猜测或复现”，是 “真随机性” 的量化体现。
 <!--Del-->当前硬件熵源随机数的实现依赖HUKS。对于具备安全环境（如TEE、安全芯片）的系统或设备，开启硬件熵源后，将通过HUKS从TEE中获取安全随机数（其熵源为硬件熵源）作为算法库生成随机数的熵源。由于安全环境依赖硬件支持，在开源仓中仅为模拟实现，需OEM厂商适配。<!--DelEnd-->
 
-当前硬件熵源的实现是通过调用[HUKS](../../../application-dev/security/UniversalKeystoreKit/huks-overview.md)的相关接口完成的。
+当前硬件熵源通过调用[HUKS](../../../application-dev/security/UniversalKeystoreKit/huks-overview.md)接口实现。
 
 开发者可以调用接口，完成以下具体功能：
 

@@ -1,9 +1,9 @@
 # RenderNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 提供自绘制渲染节点RenderNode，支持开发者通过C API进行开发，完成自定义绘制需求。
