@@ -3866,7 +3866,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### setAssetCompatibleCapability<sup>24+</sup>
 
-setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise\<void>;
+setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise\<void>
 
 根据bundleName配置资产兼容能力。开发者可以获取兼容性能力，并决定是否根据兼容性能力进行兼容性转换。
 
