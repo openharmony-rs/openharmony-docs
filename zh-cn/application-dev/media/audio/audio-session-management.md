@@ -33,6 +33,15 @@
 
 <!-- @[get_session_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { audio } from '@kit.AudioKit';
+// ...
+
+let audioManager = audio.getAudioManager();
+// 创建音频会话管理器。
+let audioSessionManager: audio.AudioSessionManager = audioManager.getSessionManager();
+```
+
 ## 音频会话策略
 
 应用在激活AudioSession时，需先指定[音频会话策略（AudioSessionStrategy）](../../reference/apis-audio-kit/arkts-apis-audio-i.md#audiosessionstrategy12)。可通过设置[音频并发模式（AudioConcurrencyMode）](../../reference/apis-audio-kit/arkts-apis-audio-e.md#audioconcurrencymode12)来指定不同的音频会话策略。
