@@ -55,9 +55,11 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
    class Son {
      @Trace age: number = 100;
    }
+   
    class Father {
      son: Son = new Son();
    }
+   
    @Entry
    @ComponentV2
    struct Index {
@@ -87,8 +89,10 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
    class Father {
      @Trace name: string = 'Tom';
    }
+   
    class Son extends Father {
    }
+   
    @Entry
    @ComponentV2
    struct Index {
@@ -118,6 +122,7 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
    class Manager {
      @Trace static count: number = 1;
    }
+   
    @Entry
    @ComponentV2
    struct Index {
@@ -129,7 +134,7 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
              Manager.count++;
            })
        }
-     }
+    }
   }
   ```
   
@@ -159,6 +164,7 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
      id: number = 0;
      @Trace age: number = 8;
    }
+   
    @Entry
    @ComponentV2
    struct Index {
@@ -247,11 +253,13 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 class Pencil {
   @Trace length: number = 21; // 当length变化时，会刷新关联的组件
 }
+
 class Bag {
   width: number = 50;
   height: number = 60;
   pencil: Pencil = new Pencil();
 }
+
 class Son {
   age: number = 5;
   school: string = 'some';
@@ -263,6 +271,7 @@ class Son {
 struct Page {
   son: Son = new Son();
   renderTimes: number = 0;
+
   isRender(id: number): number {
     console.info(`id: ${id} renderTimes: ${this.renderTimes}`);
     this.renderTimes++;
@@ -271,7 +280,7 @@ struct Page {
 
   build() {
     Column() {
-      Text('pencil length'+ this.son.bag.pencil.length) // UINode (1)
+      Text('pencil length' + this.son.bag.pencil.length) // UINode (1)
         .fontSize(this.isRender(1))
       Button('change length')
         .onClick((e) => {
@@ -303,26 +312,31 @@ class GrandFather {
     this.age = age;
   }
 }
-class Father extends GrandFather{
+
+class Father extends GrandFather {
   constructor(father: number) {
     super(father);
   }
 }
+
 class Uncle extends GrandFather {
   constructor(uncle: number) {
     super(uncle);
   }
 }
+
 class Son extends Father {
   constructor(son: number) {
     super(son);
   }
 }
+
 class Cousin extends Uncle {
   constructor(cousin: number) {
     super(cousin);
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
@@ -576,7 +590,7 @@ struct Index {
            })
            Button('init map')
              .onClick((e) => {
-               this.info.memberMap = new Map<number, string>([[0,'a'], [1, 'b'], [3, 'c']]);
+               this.info.memberMap = new Map<number, string>([[0, 'a'], [1, 'b'], [3, 'c']]);
              })
            Button('set new one')
              .onClick((e) => {
