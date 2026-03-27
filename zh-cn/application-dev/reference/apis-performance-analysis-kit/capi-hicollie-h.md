@@ -53,7 +53,7 @@ HiCollie模块对外提供检测业务线程卡死、卡顿，以及上报卡死
 | [typedef void (\*OH_HiCollie_Callback)(void*)](#oh_hicollie_callback) | OH_HiCollie_Callback | 当用户调用[OH_HiCollie_SetTimer](capi-hicollie-h.md#oh_hicollie_settimer)后，未在其自定义的任务超时时间阈值内调用[OH_HiCollie_CancelTimer](capi-hicollie-h.md#oh_hicollie_canceltimer)，回调函数将被执行。 |
 | [HiCollie_ErrorCode OH_HiCollie_SetTimer(HiCollie_SetTimerParam param, int *id)](#oh_hicollie_settimer) | - | 注册定时器，用于检测函数或代码块执行是否超过自定义时间。<br> 结合OH_HiCollie_CancelTimer接口配套使用，应在调用耗时的函数之前使用。 |
 | [void OH_HiCollie_CancelTimer(int id)](#oh_hicollie_canceltimer) | - | 取消定时器。<br> 结合OH_HiCollie_SetTimer接口配套使用，执行函数或代码块后使用，OH_HiCollie_CancelTimer通过id将该任务取消；<br> 若未在自定义时间内取消，则执行回调函数，在特定自定义超时动作下，生成故障日志。 |
-| [typedef size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void* buffer, size_t size)](#oh_hicollie_freezecallback) | OH_HiCollie_FreezeCallback | 冻屏事件使用的回调。 |
+| [typedef size_t (\*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void* buffer, size_t size)](#oh_hicollie_freezecallback) | OH_HiCollie_FreezeCallback | 冻屏事件使用的回调。 |
 | [void* OH_HiCollie_SetFreezeCallback(OH_HiCollie_FreezeCallback callback)](#oh_hicollie_setfreezecallback) | - | 将冻屏回调设置进系统，系统将在冻屏事件发生时回调此函数。 |
 | [HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)](#oh_hicollie_associateprocessreport) | - | 报告一个进程的冻屏事件，此时会生成APP_HICOLLIE类型HiAppEvent事件。 |
 
@@ -118,12 +118,12 @@ enum OH_HiCollie_Freeze_Type
 | -- | -- |
 | OH_THREAD_BLOCK_3S | 主线程超时一个周期。<br>**起始版本：** 24 |
 | OH_THREAD_BLOCK_6S | 主线程超时两个周期。<br>**起始版本：** 24 |
-| OH_LIFECYCLE_HALF_TIMEOUT | UI Ability生命周期超时一个周期。<br>**起始版本：** 24 |
-| OH_LIFECYCLE_TIMEOUT | UI Ability生命周期超时两个周期。<br>**起始版本：** 24 |
+| OH_LIFECYCLE_HALF_TIMEOUT | Ability生命周期超时一个周期。<br>**起始版本：** 24 |
+| OH_LIFECYCLE_TIMEOUT | Ability生命周期超时两个周期。<br>**起始版本：** 24 |
 | OH_APP_INPUT_BLOCK | 输入事件超时。<br>**起始版本：** 24 |
 | OH_BUSINESS_THREAD_BLOCK_3S | 通过[OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report)上报3S冻屏事件。<br>**起始版本：** 24 |
 | OH_BUSINESS_THREAD_BLOCK_6S | 通过[OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_report)上报6S冻屏事件。<br>**起始版本：** 24 |
-| OH_BUSINESS_INPUT_BLOCK | 通过[OH_HiCollie_Report](capi-hicollie-h.md#oh_hicollie_reportinputblock)k上报冻屏事件。<br>**起始版本：** 24 |
+| OH_BUSINESS_INPUT_BLOCK | 通过[OH_HiCollie_ReportInputBlock](capi-hicollie-h.md#oh_hicollie_reportinputblock)上报冻屏事件。<br>**起始版本：** 24 |
 
 
 ## 函数说明
