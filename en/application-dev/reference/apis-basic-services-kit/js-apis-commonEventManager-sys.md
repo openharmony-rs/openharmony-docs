@@ -7,7 +7,7 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 
-This module provides common event capabilities, including publishing, subscribing to, and unsubscribing from common events.
+This module provides common event capabilities to publish, subscribe to, and unsubscribe from common events.
 
 > **NOTE**
 >
@@ -25,7 +25,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 
 A system common event is an event that is published by a system service or system application and requires specific permissions to subscribe to. To publish or subscribe to this type of event, you must follow the event-specific definitions.
 
-For details about the enumerations of all system common events, see [System Common Events](./common_event/commonEventManager-definitions.md).
+For details about the enum definitions of all system common events, see [System Common Events](./common_event/commonEventManager-definitions.md).
 
 ## commonEventManager.publishAsUser<sup>
 
