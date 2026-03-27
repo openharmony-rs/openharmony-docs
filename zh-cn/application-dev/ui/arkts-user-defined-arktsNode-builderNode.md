@@ -1590,7 +1590,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   
     build() {
       Column() {
-        Button('update builderNode') // 点击更新BuildrNode
+        Button('update builderNode') // 点击更新BuilderNode
           .onClick(() => {
             textNodeController.update();
           })
@@ -1874,7 +1874,7 @@ class TextNodeController extends NodeController {
     this.rootNode = new FrameNode(context);
     this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
     this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.message));
-    this.textNode.inheritFreezeOptions(true); // 设置BuilderNode的冻结继承状态为True。
+    this.textNode.inheritFreezeOptions(true); // 设置BuilderNode的冻结继承状态为true。
     if (this.rootNode !== null) {
       this.rootNode.appendChild(this.textNode.getFrameNode()); // 将BuilderNode上树。
     }
@@ -2002,7 +2002,7 @@ class TextNodeController extends NodeController {
     this.rootNode = new FrameNode(context);
     this.textNode = new BuilderNode(context, { selfIdealSize: { width: 150, height: 150 } });
     this.textNode.build(wrapBuilder<[Params]>(buildText), new Params(this.count));
-    this.textNode.inheritFreezeOptions(true); // 设置BuilderNode的冻结继承状态为True。
+    this.textNode.inheritFreezeOptions(true); // 设置BuilderNode的冻结继承状态为true。
     if (this.rootNode !== null) {
       this.rootNode.appendChild(this.textNode.getFrameNode()); // 将BuilderNode上树。
     }
@@ -2037,7 +2037,7 @@ struct MyNavigationTestStack {
 
   build() {
     Column() {
-      Button('update builderNode') // 点击更新BuildrNode。
+      Button('update builderNode') // 点击更新BuilderNode。
         .onClick(() => {
           textNodeController.update();
         })

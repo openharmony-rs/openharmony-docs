@@ -1596,13 +1596,13 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&
 | ------- | ----------- | ---- | ------------------------------------------------------------ |
 | fd      | number      | 是   | 已打开的文件描述符。                                     |
 | buffer  | ArrayBuffer | 是   | 用于保存读取到的文件数据的缓冲区。                           |
-| options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。|
+| options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。|
 
 **返回值：**
 
   | 类型                                 | 说明     |
   | ---------------------------------- | ------ |
-  | Promise&lt;number&gt; | Promise对象。返回实际读取的数据长度（单位：字节）。|
+  | Promise&lt;number&gt; | Promise对象。返回实际读取的数据长度，单位为Byte。|
 
 **错误码：**
 
@@ -1643,8 +1643,8 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCall
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | fd       | number                                   | 是    | 已打开的文件描述符。                             |
   | buffer   | ArrayBuffer                              | 是    | 用于保存读取到的文件数据的缓冲区。                        |
-  | options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。|
-  | callback | AsyncCallback&lt;number&gt; | 是    | 异步读取数据之后的回调。返回实际读取的数据长度，单位字节。                             |
+  | options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。|
+  | callback | AsyncCallback&lt;number&gt; | 是    | 异步读取数据之后的回调。返回实际读取的数据长度，单位为Byte。                             |
 
 **错误码：**
 
@@ -1686,13 +1686,13 @@ readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
   | ------- | ----------- | ---- | ---------------------------------------- |
   | fd      | number      | 是    | 已打开的文件描述符。                             |
   | buffer  | ArrayBuffer | 是    | 用于保存读取到的文件数据的缓冲区。                        |
-  | options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。|
+  | options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。|
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 返回实际读取的数据长度（单位：字节）。 |
+  | number | 返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -1937,13 +1937,13 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): Promise
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd      | number                          | 是    | 已打开的文件描述符。                             |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写入。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写入。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型                    | 说明       |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回实际写入的数据长度（单位：字节）。 |
+  | Promise&lt;number&gt; | Promise对象。返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -1981,7 +1981,7 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions, callback
   | -------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd       | number                          | 是    | 已打开的文件描述符。                             |
   | buffer   | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
   | callback | AsyncCallback&lt;number&gt;     | 是    | 异步将数据写入完成后执行的回调函数。                       |
 
 **错误码：**
@@ -2021,13 +2021,13 @@ writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): num
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd      | number                          | 是    | 已打开的文件描述符。                             |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 返回实际写入的数据长度（单位：字节）。 |
+  | number | 返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -2059,7 +2059,7 @@ truncate(file: string | number, len?: number): Promise&lt;void&gt;
 | 参数名 | 类型   | 必填 | 说明                             |
 | ------ | ------ | ---- | -------------------------------- |
 | file   | string \| number | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。       |
-| len    | number | 否   | 文件截断后的长度（单位：字节）。默认为0。 |
+| len    | number | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **返回值：**
 
@@ -2099,7 +2099,7 @@ truncate(file: string | number, len?: number, callback: AsyncCallback&lt;void&gt
 | 参数名   | 类型                      | 必填 | 说明                             |
 | -------- | ------------------------- | ---- | -------------------------------- |
 | file     | string \| number                    | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。       |
-| len      | number                    | 否   | 文件截断后的长度，以字节为单位。默认为0。 |
+| len      | number                    | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，本调用无返回值。   |
 
 **错误码：**
@@ -2136,7 +2136,7 @@ truncateSync(file: string | number, len?: number): void
 | 参数名 | 类型   | 必填 | 说明                             |
 | ------ | ------ | ---- | -------------------------------- |
 | file   | string \| number | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。       |
-| len    | number | 否   | 文件截断后的长度（单位：字节）。默认为0。 |
+| len    | number | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **错误码：**
 
@@ -2342,7 +2342,7 @@ readText(filePath: string, options?: ReadTextOptions): Promise&lt;string&gt;
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | filePath | string | 是   | 文件的应用沙箱路径。                                   |
-| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
@@ -2381,7 +2381,7 @@ readText(filePath: string, options?: ReadTextOptions, callback: AsyncCallback&lt
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | filePath | string                      | 是   | 文件的应用沙箱路径。                                   |
-| options  | [ReadTextOptions](#readtextoptions11)                      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | [ReadTextOptions](#readtextoptions11)                      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回读取文件的内容。                         |
 
 **错误码：**
@@ -2424,7 +2424,7 @@ readTextSync(filePath: string, options?: ReadTextOptions): string
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | filePath | string | 是   | 文件的应用沙箱路径。                                   |
-| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
@@ -3152,14 +3152,14 @@ lseek(fd: number, offset: number, whence?: WhenceType): number
   | 参数名    | 类型     | 必填   | 说明                          |
   | ------ | ------ | ---- | --------------------------- |
   | fd | number | 是    | 文件描述符。 |
-  | offset | number | 是    | 相对偏移位置，单位为字节。 |
+  | offset | number | 是    | 相对偏移位置，单位为Byte。 |
   | whence | [WhenceType](#whencetype11) | 否    | 偏移指针相对位置类型。不指定则默认为文件起始位置处。|
 
 **返回值：**
 
   | 类型                   | 说明         |
   | --------------------- | ---------- |
-  | number | 当前文件偏移指针位置（相对于文件头的偏移量，单位为字节）。 |
+  | number | 当前文件偏移指针位置（相对于文件头的偏移量，单位为Byte）。 |
 
 **错误码：**
 
@@ -4592,8 +4592,8 @@ createWatcher(path: string, events: number, listener: WatchEventListener): Watch
 
 | 名称   | 类型   | 只读   | 可选   | 说明      |
 | ---- | ------ | ---- | ---- | ------- |
-| processedSize | number | 是    | 否    | 已拷贝的数据大小。 |
-| totalSize | number | 是    | 否    | 待拷贝的数据总大小。 |
+| processedSize | number | 是    | 否    | 已拷贝的数据大小，单位为Byte。 |
+| totalSize | number | 是    | 否    | 待拷贝的数据总大小，单位为Byte。 |
 
 ## TaskSignal<sup>12+</sup>
 
@@ -4737,7 +4737,7 @@ copySignal.onCancel();
 | mode   | number | 是    | 否    | 表示文件权限，各特征位的含义如下：<br/>**说明**：以下值为八进制，取得的返回值为十进制，请换算后查看。<br/>-&nbsp;0o400：用户读。对于普通文件，所有者可读取文件；对于目录，所有者可读取目录项。<br/>-&nbsp;0o200：用户写。对于普通文件，所有者可写入文件；对于目录，所有者可创建/删除目录项。<br/>-&nbsp;0o100：用户执行。对于普通文件，所有者可执行文件；对于目录，所有者可在目录中搜索给定路径名。<br/>-&nbsp;0o040：用户组读。对于普通文件，所有用户组可读取文件；对于目录，所有用户组可读取目录项。<br/>-&nbsp;0o020：用户组写。对于普通文件，所有用户组可写入文件；对于目录，所有用户组可创建/删除目录项。<br/>-&nbsp;0o010：用户组执行。对于普通文件，所有用户组可执行文件；对于目录，所有用户组是否可在目录中搜索给定路径名。<br/>-&nbsp;0o004：其他读。对于普通文件，其余用户可读取文件；对于目录，其他用户组可读取目录项。<br/>-&nbsp;0o002：其他写。对于普通文件，其余用户可写入文件；对于目录，其他用户组可创建/删除目录项。<br/>-&nbsp;0o001：其他执行。对于普通文件，其余用户可执行文件；对于目录，其他用户组可在目录中搜索给定路径名。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | uid    | number | 是    | 否    | 文件所有者的ID。|
 | gid    | number | 是    | 否    | 文件所有组的ID。|
-| size   | number | 是    | 否    | 文件的大小，以字节为单位。仅对普通文件有效。 <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| size   | number | 是    | 否    | 文件的大小，单位为Byte。仅对普通文件有效。 <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | atime  | number | 是    | 否    | 上次访问该文件的时间，表示距1970年1月1日0时0分0秒的秒数。<br>**注意**：目前用户数据分区默认以“noatime”方式挂载，atime更新被禁用。  <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。      |
 | mtime  | number | 是    | 否    | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。  <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。      |
 | ctime  | number | 是    | 否    | 最近改变文件状态的时间，表示距1970年1月1日0时0分0秒的秒数。      |
@@ -5131,13 +5131,13 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&g
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型                    | 说明       |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度。 |
+  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -5178,7 +5178,7 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallb
   | 参数名   | 类型                            | 必填 | 说明                                                         |
   | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
   | buffer   | ArrayBuffer \| string | 是   | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options  | [WriteOptions](#writeoptions11)                          | 否   | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options  | [WriteOptions](#writeoptions11)                          | 否   | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
   | callback | AsyncCallback&lt;number&gt;     | 是   | 异步写入完成后执行的回调函数。                               |
 
 **错误码：**
@@ -5224,13 +5224,13 @@ writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): number
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际写入的长度。 |
+  | number | 实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -5266,13 +5266,13 @@ read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。 |
+  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。 |
 
 **返回值：**
 
   | 类型                                 | 说明     |
   | ---------------------------------- | ------ |
-  | Promise&lt;number&gt; | Promise对象。返回读取的结果。 |
+  | Promise&lt;number&gt; | Promise对象。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -5316,8 +5316,8 @@ read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;numb
   | 参数名      | 类型                                       | 必填   | 说明                                       |
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | buffer   | ArrayBuffer                              | 是    | 用于读取文件的缓冲区。                              |
-  | options  | [ReadOptions](#readoptions11)                                   | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。|
-  | callback | AsyncCallback&lt;number&gt; | 是    | 异步读取完成后的回调。                         |
+  | options  | [ReadOptions](#readoptions11)                                   | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。|
+  | callback | AsyncCallback&lt;number&gt; | 是    | 异步读取完成后的回调。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -5363,13 +5363,13 @@ readSync(buffer: ArrayBuffer, options?: ReadOptions): number
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>  |
+  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际读取的长度。 |
+  | number | 实际读取的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -5589,7 +5589,7 @@ onStatus(networkId: string, status: number): void;
 | 名称         | 类型   | 只读  | 可选  | 说明              |
 | ----------- | ------ | ----  | ----- | ---------------- |
 | fd          | number | 是    | 否    | 打开的文件描述符。 |
-| filePointer | number | 是    | 否    | RandomAccessFile对象的偏移指针。 |
+| filePointer | number | 是    | 否    | RandomAccessFile对象的偏移指针，单位为Byte。 |
 
 ### setFilePointer<sup>10+</sup>
 
@@ -5603,7 +5603,7 @@ setFilePointer(filePointer:number): void
 
   | 参数名     | 类型      | 必填   | 说明         |
   | ------- | ----------- | ---- | ----------------------------- |
-  | filePointer  | number | 是   | RandomAccessFile对象的偏移指针。  |
+  | filePointer  | number | 是   | RandomAccessFile对象的偏移指针，单位为Byte。  |
 
 **错误码：**
 
@@ -5652,13 +5652,13 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&g
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型                    | 说明       |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度。 |
+  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -5703,7 +5703,7 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallb
   | 参数名   | 类型                            | 必填 | 说明                                                         |
   | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
   | buffer   | ArrayBuffer \| string | 是   | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options  | [WriteOptions](#writeoptions11)                          | 否   | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options  | [WriteOptions](#writeoptions11)                          | 否   | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
   | callback | AsyncCallback&lt;number&gt;     | 是   | 异步写入完成后执行的回调函数。                               |
 
 **错误码：**
@@ -5751,13 +5751,13 @@ writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): number
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际写入的长度。 |
+  | number | 实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -5791,13 +5791,13 @@ read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
+  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
 
 **返回值：**
 
   | 类型                                 | 说明     |
   | ---------------------------------- | ------ |
-  | Promise&lt;number&gt; | Promise对象。返回读取的结果。 |
+  | Promise&lt;number&gt; | Promise对象。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -5840,7 +5840,7 @@ read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;numb
   | 参数名      | 类型                                       | 必填   | 说明                                       |
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | buffer   | ArrayBuffer                              | 是    | 用于读取文件的缓冲区。                              |
-  | options  | [ReadOptions](#readoptions11)                                   | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示读取数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。 |
+  | options  | [ReadOptions](#readoptions11)                                   | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。 |
   | callback | AsyncCallback&lt;number&gt; | 是    | 异步读取完成后的回调。                         |
 
 **错误码：**
@@ -5887,13 +5887,13 @@ readSync(buffer: ArrayBuffer, options?: ReadOptions): number
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br/>  |
+  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br/>  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际读取的长度。 |
+  | number | 实际读取的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -6047,7 +6047,7 @@ open接口flags参数常量。文件打开标签。
 | suffix    | Array&lt;string&gt; | 否 | 是 | 文件后缀名完全匹配，各个关键词OR关系。 |
 | displayName | Array&lt;string&gt; | 否 | 是 | 文件名模糊匹配，各个关键词OR关系。当前仅支持通配符*。 |
 | mimeType | Array&lt;string&gt; | 否 | 是 | mime类型完全匹配，各个关键词OR关系。预留字段，暂不支持使用。 |
-| fileSizeOver | number | 否 | 是 | 文件大小匹配，大于指定大小的文件。 |
+| fileSizeOver | number | 否 | 是 | 文件大小匹配，大于指定大小的文件，单位为Byte。 |
 | lastModifiedAfter | number | 否 | 是 | 文件最近修改时间匹配，在指定时间点及之后的文件。 |
 | excludeMedia | boolean | 否 | 是 | 是否排除Media中已有的文件。true：排除Media中已有的文件；false：不排除Media中已有的文件。 |
 
@@ -6130,8 +6130,8 @@ open接口flags参数常量。文件打开标签。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ----- |
-| offset | number | 否 | 是 | 期望读取文件位置，单位为字节（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
-| length    | number | 否 | 是    | 期望读取数据的长度，单位为字节。可选，默认缓冲区长度。 |
+| offset | number | 否 | 是 | 期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
+| length    | number | 否 | 是    | 期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 ## ReadTextOptions<sup>11+</sup>
 
@@ -6141,8 +6141,8 @@ open接口flags参数常量。文件打开标签。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ----- |
-| offset | number | 否 | 是 | 期望读取文件的位置，单位为字节。可选，默认从当前位置开始读取。 |
-| length    | number | 否 | 是    | 期望读取数据的长度，单位为字节。可选，默认文件长度。 |
+| offset | number | 否 | 是 | 期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。 |
+| length    | number | 否 | 是    | 期望读取数据的长度，单位为Byte。可选，默认文件长度。 |
 | encoding | string | 否 | 是 | 当数据是 string 类型时有效，表示数据的编码方式，默认 'utf-8'，仅支持 'utf-8'。   <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## WriteOptions<sup>11+</sup>
@@ -6153,8 +6153,8 @@ open接口flags参数常量。文件打开标签。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ----- |
-| offset | number | 否 | 是 | 期望写入文件位置，单位为字节（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| length    | number | 否 | 是    | 期望写入数据的长度，单位为字节。可选，默认缓冲区长度。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| offset | number | 否 | 是 | 期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| length    | number | 否 | 是    | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | encoding | string | 否 | 是 | 当数据是string类型时有效，表示数据的编码方式。默认 'utf-8'。仅支持 'utf-8'。 |
 
 ## ListFileOptions<sup>11+</sup>
@@ -6195,14 +6195,14 @@ seek(offset: number, whence?: WhenceType): number
 
   | 参数名    | 类型     | 必填   | 说明                          |
   | ------ | ------ | ---- | --------------------------- |
-  | offset | number | 是    | 相对偏移位置，单位为字节。 |
+  | offset | number | 是    | 相对偏移位置，单位为Byte。 |
   | whence | [WhenceType](#whencetype11) | 否    | 偏移指针相对位置类型。默认值：SEEK_SET，文件起始位置处。 |
 
 **返回值：**
 
   | 类型                   | 说明         |
   | --------------------- | ---------- |
-  | number | 当前可读流偏移指针位置（相对于文件头的偏移量，单位为字节）。 |
+  | number | 当前可读流偏移指针位置（相对于文件头的偏移量，单位为Byte）。 |
 
 **错误码：**
 
@@ -6263,14 +6263,14 @@ seek(offset: number, whence?: WhenceType): number;
 
   | 参数名    | 类型     | 必填   | 说明                          |
   | ------ | ------ | ---- | --------------------------- |
-  | offset | number | 是    | 相对偏移位置，单位为字节。 |
+  | offset | number | 是    | 相对偏移位置，单位为Byte。 |
   | whence | [WhenceType](#whencetype11) | 否    | 偏移指针相对位置类型。默认值：SEEK_SET，文件起始位置处。 |
 
 **返回值：**
 
   | 类型                   | 说明         |
   | --------------------- | ---------- |
-  | number | 当前可写流偏移指针位置（相对于文件头的偏移量，单位为字节）。 |
+  | number | 当前可写流偏移指针位置（相对于文件头的偏移量，单位为Byte）。 |
 
 **错误码：**
 
@@ -6314,8 +6314,8 @@ close(): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----------- | ----------- | -------- | -------- | ---------- |
-| start | number | 否 | 是 | 表示期望读取文件的位置，单位为字节。可选，默认从当前位置开始读。 |
-| end | number | 否 | 是 | 表示期望读取结束的位置，单位为字节。可选，默认文件末尾。 |
+| start | number | 否 | 是 | 表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。 |
+| end | number | 否 | 是 | 表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。 |
 
 ## ReadStreamOptions<sup>12+</sup>
 
@@ -6325,8 +6325,8 @@ close(): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----------- | ----------- | -------- | -------- | ---------- |
-| start | number | 否 | 是 | 表示期望读取文件的位置，单位为字节。可选，默认从当前位置开始读。 |
-| end | number | 否 | 是 | 表示期望读取结束的位置，单位为字节。可选，默认文件末尾。 |
+| start | number | 否 | 是 | 表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。 |
+| end | number | 否 | 是 | 表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。 |
 
 ## WriteStreamOptions<sup>12+</sup>
 
@@ -6336,5 +6336,5 @@ close(): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----------- | ----------- | -------- | -------- | ---------- |
-| start | number | 否 | 是 | 表示期望写入文件的位置，单位为字节。可选，默认从当前位置开始写。 |
+| start | number | 否 | 是 | 表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。 |
 | mode | number | 否 | 是 | 创建文件可写流的[选项](#openmode)，必须指定如下选项中的一个，默认只写方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。 |

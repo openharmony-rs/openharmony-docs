@@ -87,7 +87,7 @@ struct IndexCl {
     backgroundSystemMaterial: new uiMaterial.Material({ type: uiMaterial.MaterialType.SEMI_TRANSPARENT } as uiMaterial.MaterialOptions)
   });
 
-  @State tabSelectedIndexes: number[] = [1];
+  @State tabSelectedIndexes: number[] = [2];
 
   build() {
     Stack() {

@@ -405,8 +405,8 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 12、globalConnect仅支持设置EL1-EL5加密级别，否则会抛出运行时异常，从API version 23开始，将返回错误码[140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-使用persistencev2存储数据到不支持的加密级别)，示例见[使用globalConnect存储数据](#使用globalconnect存储数据)。
 
-13、当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API 版本 26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
-- 从API 版本 26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyonerror获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
+13、当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
+- 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyonerror获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
 ## globalConnect支持的类型
 
@@ -1074,7 +1074,7 @@ struct Page1 {
 
 ### 通过notifyOnError获取旧的序列化数据
 
-当存储数据的结构与当前数据的结构不同时，可能会导致反序列化失败。从API 版本 26.0.0开始，开发者可通过向notifyOnError的入参回调中加入oldValue参数来获取存于磁盘的旧的序列化数据，从而直观感知到数据结构的差异。
+当存储数据的结构与当前数据的结构不同时，可能会导致反序列化失败。从API版本26.0.0开始，开发者可通过向notifyOnError的入参回调中加入oldValue参数来获取存于磁盘的旧的序列化数据，从而直观感知到数据结构的差异。
 
 <!-- @[persistence_v2_notifyOnError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2NotifyOnError.ets) -->
 

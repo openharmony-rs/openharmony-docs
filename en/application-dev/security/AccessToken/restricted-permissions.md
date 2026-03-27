@@ -992,9 +992,11 @@ Allows an application to register and deregister the crypto extension.
 
 **Authorization mode**: system_grant
 
-**Supported devices**: PCs/2-in-1 devices
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Since**: 22
+
+**Changelog**: Since API version 24, this permission is also available on tablets.
 
 ## ohos.permission.MANAGE_MEDIA_RESOURCES_FOR_PUBLIC
 
@@ -1082,7 +1084,7 @@ Allow an application to use the accessory connection service for pairing and aut
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 24
+**Since**: 26.0.0
  	 
 ## ohos.permission.CHECK_CALL_LOG
  	 
@@ -1097,3 +1099,17 @@ Allow the application to query whether there are matching call records in the sy
 **Supported devices**: General
 
 **Since**: 24
+
+## ohos.permission.ACCESS_DLP_SERVICE
+
+Allows an application or a service to use the DLP to register or unregister the plugin for connecting the server.
+
+<!--RP74--><!--RP74End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 26.0.0

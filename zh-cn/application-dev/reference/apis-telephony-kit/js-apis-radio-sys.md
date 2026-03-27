@@ -2524,6 +2524,147 @@ let data: string = radio.getIMEISV(slotId);
 console.info(`IMEISV is:` + data);
 ```
 
+## radio.isManualNetworkScanning<sup>23+</sup>
+
+isManualNetworkScanning\(slotId: number\): Promise\<boolean\>
+
+获取手动搜网状态。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+
+**返回值：**
+
+| 类型               | 说明                                      |
+| ------------------ | ---------------------------------------- |
+| Promise\<boolean\> | Promise对象。返回true表示正在手动搜网中，返回false表示已结束手动搜网。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+radio.isManualNetworkScanning(0).then((state: boolean) => {
+    console.info(`isManualNetworkScanning success, state->${JSON.stringify(state)}`);
+}).catch((err: BusinessError) => {
+    console.error(`isManualNetworkScanning failed, promise: err->${JSON.stringify(err)}`);
+});
+```
+
+## radio.startManualNetworkScan<sup>23+</sup>
+
+startManualNetworkScan\(slotId: number, callback: AsyncCallback\<NetworkSearchRealTimeResult\>\): void
+
+开始手动搜网。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.GET_TELEPHONY_STATE
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+| callback | AsyncCallback\<[NetworkSearchRealTimeResult](#networksearchrealtimeresult23)\> | 是   | 回调函数。返回搜网结果。     |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRealTimeResult) => {
+    if (err) {
+        console.error(`startManualNetworkScan failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`startManualNetworkScan success, callback: data->${JSON.stringify(data)}`);
+});
+```
+
+## radio.stopManualNetworkScan<sup>23+</sup>
+
+stopManualNetworkScan\(slotId: number\): Promise\<void\>
+
+结束手动搜网。使用Promise异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限**：ohos.permission.SET_TELEPHONY_STATE
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                   |
+| ------ | ------ | ---- | -------------------------------------- |
+| slotId | number | 是   | 卡槽ID。<br/>- 0：卡槽1<br/>- 1：卡槽2 |
+
+**返回值：**
+
+| 类型            | 说明                    |
+| --------------- | ----------------------- |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)。
+
+| 错误码ID |                  错误信息                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8300001  | Invalid parameter value.                     |
+| 8300002  | Service connection failed.                   |
+| 8300003  | System internal error.                       |
+| 8300999  | Unknown error.                               |
+
+**示例：**
+
+```ts
+radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRealTimeResult) => {
+    if (err) {
+        console.error(`startManualNetworkScan failed, callback: err->${JSON.stringify(err)}`);
+        return;
+    }
+    console.info(`startManualNetworkScan success, callback: data->${JSON.stringify(data)}`);
+    radio.stopManualNetworkScan(0);
+});
+```
+
 ## PreferredNetworkMode<sup>8+</sup>
 
 首选网络模式。
@@ -2626,7 +2767,7 @@ LTE小区信息。
 | ------------- | ------- | ---- | ---- | ----------------------- |
 | cgi           | number  |  否  | 否|小区全球标识。          |
 | pci           | number  |  否  | 否|物理小区识别。          |
-| tac           | numbe否r  |  否  | 否|跟踪区域代码。          |
+| tac           | number  |  否  | 否|跟踪区域代码。          |
 | earfcn        | number  |  否  | 否| 绝对无线频率信道号。    |
 | bandwidth     | number   |  否  | 否| 带宽。                  |
 | mcc           | string   |  否  | 否| 移动国家码。            |
@@ -2857,3 +2998,16 @@ IMS服务类型。
 | -----------------------| ---- | ---------- |
 | SERVICE_CAPABILITY_OFF | 0    | 网络能力关闭。 |
 | SERVICE_CAPABILITY_ON  | 1    | 网络能力打开。 |
+
+## NetworkSearchRealTimeResult<sup>23+</sup>
+
+返回手动网络扫描的结果。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力**：SystemCapability.Telephony.CoreService
+
+| 名称               |                    类型                       | 必填 |                 说明                   |
+| ------------------ | --------------------------------------------- | ---- | -------------------------------------- |
+| networkInfos    | Array<[NetworkInformation](#networkinformation)\> |  是  | 包含可用网络信息的搜索结果列表。 |
+| isFinish        | boolean     |  是  | 网络搜索是否已停止。<br/>true表示已完成，false表示未完成。                 |

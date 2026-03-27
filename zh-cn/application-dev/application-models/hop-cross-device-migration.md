@@ -827,7 +827,7 @@ import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 import { distributedDataObject, commonType } from '@kit.ArkData';
 import { fileIo, fileUri } from '@kit.CoreFileKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const TAG: string = '[MigrationAbility]';
 const DOMAIN_NUMBER: number = 0xFF00;
@@ -1090,17 +1090,17 @@ export default class MigrationAbility extends UIAbility {
 
         2. 自动签名，编译安装。
 
-        ​DevEco的自动签名模板默认签名权限为`normal`级。而本应用所需`ohos.permission.MANAGE_MISSIONS`权限为`system_core`级别。自动生成的签名无法获得足够的权限，所以需要将权限升级为`system_core`级别，然后签名。
+           ​DevEco的自动签名模板默认签名权限为`normal`级。而本应用所需`ohos.permission.MANAGE_MISSIONS`权限为`system_core`级别。自动生成的签名无法获得足够的权限，所以需要将权限升级为`system_core`级别，然后签名。
         
-            1. 将Sdk目录下的`openharmony\api版本 (如：10)\toolchains\lib\UnsignedReleasedProfileTemplate.json`文件中的`"apl":"normal"`改为`"apl":"system_core"`。
+           a. 将Sdk目录下的`openharmony\api版本 (如：10)\toolchains\lib\UnsignedReleasedProfileTemplate.json`文件中的`"apl":"normal"`改为`"apl":"system_core"`。
 
-            2. 点击 **file->Project Structure**。
+           b. 点击 **file->Project Structure**。
 
-                ![hop-cross-device-migration](figures/hop-cross-device-migration2.png)
+              ![hop-cross-device-migration](figures/hop-cross-device-migration2.png)
 
-            3. 点击 **Signing Configs**  点击 **OK**。
+           c. 点击 **Signing Configs**  点击 **OK**。
 
-                ![hop-cross-device-migration](figures/hop-cross-device-migration3.png)
+              ![hop-cross-device-migration](figures/hop-cross-device-migration3.png)
 
         3. 连接开发板运行生成demo。
 

@@ -15,6 +15,8 @@
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 示例效果请以真机运行为准。
+>
+> - 在移动设备上，当应用的Web实例数量超过10个时，系统会主动回收后台页面数据。
 
 该模块提供以下Web组件网页显示相关的常用功能：
 
@@ -218,22 +220,22 @@ Web组件指定共享渲染进程。
 <div id="content"></div>
 
 <script>
-	function loadContent() {
-	  var hash = window.location.hash;
-	  var contentDiv = document.getElementById('content');
+  function loadContent() {
+    var hash = window.location.hash;
+    var contentDiv = document.getElementById('content');
 
-	  if (hash === '#home') {
-		contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
-	  } else {
-		contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
-	  }
-	}
+    if (hash === '#home') {
+      contentDiv.innerHTML = '<h1>Home Page</h1><p>Welcome to the Home Page!</p>';
+    } else {
+      contentDiv.innerHTML = '<h1>Default Page</h1><p>This is the default content.</p>';
+    }
+  }
 
-	// 加载界面
-	window.addEventListener('load', loadContent);
+  // 加载界面
+  window.addEventListener('load', loadContent);
 
-	// 当hash变化时，更新界面
-	window.addEventListener('hashchange', loadContent);
+  // 当hash变化时，更新界面
+  window.addEventListener('hashchange', loadContent);
 </script>
 </body>
 </html>

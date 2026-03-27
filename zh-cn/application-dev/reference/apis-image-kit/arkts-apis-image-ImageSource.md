@@ -538,6 +538,7 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetada
 > - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
 > - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
 > - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
+> - 从API版本24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -698,6 +699,53 @@ async function ReadImageMetadataByType(imageSource : image.ImageSource, type: im
   }).catch((error: BusinessError) => {
     console.error(`ReadImageMetadataByType failed error.code is ${error.code}, error.message is ${error.message}`);
   })
+}
+```
+
+## createImageRawData<sup>24+</sup>
+
+createImageRawData(): Promise\<ImageRawData>
+
+获取图片原始数据。使用Promise异步回调。目前仅支持获取DNG图片类型的原始数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<[ImageRawData](arkts-apis-image-i.md#imagerawdata24)> | Promise对象，返回ImageRawData对象，其中含有数据缓冲区和像素位数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7700101  | Bad source.  |
+| 7700102  | Unsupported MIME type. |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function createImageRawData(imageSourceObj: image.ImageSource) {
+  await imageSourceObj.createImageRawData().then((data: image.ImageRawData) => {
+    console.info(`createImageRawData success. length: ${data.buffer.byteLength}, bitPerPixel:${data.bitsPerPixel}`);
+    if (data.bitsPerPixel == 16) {
+      let array: Uint16Array = new Uint16Array();
+      let value: string = "";
+      array = new Uint16Array(data.buffer);
+      for (let i = 0; i < array.length && i < 10; i++) {
+        value += array[i] + ', ';
+      }
+      console.info(`get dng rawdata is:${value}.`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`createImageRawData failed error.code is ${error.code}, error.message is ${error.message}`);
+  });
 }
 ```
 
