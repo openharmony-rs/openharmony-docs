@@ -24,7 +24,7 @@ Counter()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 7
 
 **ArkTS-Sta起始版本：** 23
 
@@ -44,7 +44,7 @@ ArkTS-Sta: enableInc(value: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -66,7 +66,7 @@ ArkTS-Sta: enableDec(value: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -80,7 +80,7 @@ ArkTS-Sta: enableDec(value: boolean | undefined)
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
 
-### onInc
+### onInc<sup>10+</sup>
 
 ArkTS-Dyn: onInc(event:&nbsp;VoidCallback)
 
@@ -94,7 +94,7 @@ ArkTS-Sta: onInc(event:&nbsp;VoidCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 

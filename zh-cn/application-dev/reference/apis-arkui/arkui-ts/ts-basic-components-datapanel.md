@@ -44,15 +44,11 @@ DataPanel(options: DataPanelOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称            | 类型   | 必填  | 说明 |
 | ----------------- | -------- | ----- | -------- |
-| values            | ArkTS-Dyn: number[] <br> ArkTS-Sta: double[]   | 是    | 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。 |
-| max               | ArkTS-Dyn: number <br> ArkTS-Sta: double     | 否    |   -&nbsp;max大于0时，表示数据的最大值。<br/>-&nbsp;max小于等于0时，max等于value数组各项的和，按比例显示。<br/>默认值：100 |
-| type<sup>8+</sup> | [DataPanelType](#datapaneltype8枚举说明) | 否 | 数据面板的类型（不支持动态修改）。<br/>默认值：DataPanelType.Circle |
+| values            | ArkTS-Dyn: number[] <br> ArkTS-Sta: double[]   | 是    | 数据值列表，最多包含9个数据，大于9个数据则取前9个数据。若数据值小于0则置为0。<br/>**ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| max               | ArkTS-Dyn: number <br> ArkTS-Sta: double     | 否    |   -&nbsp;max大于0时，表示数据的最大值。<br/>-&nbsp;max小于等于0时，max等于value数组各项的和，按比例显示。<br/>默认值：100<br/>**ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23 |
+| type<sup>8+</sup> | [DataPanelType](#datapaneltype8枚举说明) | 否 | 数据面板的类型（不支持动态修改）。<br/>默认值：DataPanelType.Circle。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23|
 
 
 ## DataPanelType<sup>8+</sup>枚举说明
@@ -173,7 +169,7 @@ ArkTS-Sta: strokeWidth(value: Length | undefined)
 
 ArkTS-Dyn: trackShadow(value: DataPanelShadowOptions)
 
-ArkTS-Sta: trackShadow(value: DataPanelShadowOptions | undefined)
+ArkTS-Sta: trackShadow(value: DataPanelShadowOptions | undefined | null)
 
 设置投影样式。
 
@@ -189,7 +185,7 @@ ArkTS-Sta: trackShadow(value: DataPanelShadowOptions | undefined)
 
 | 参数名 | 类型                                                        | 必填 | 说明                                                  |
 | ------ | ----------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| value  | ArkTS-Dyn: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) <br/>ArkTS-Sta: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) \|&nbsp;undefined | 是   | 投影样式。<br/>**说明：** <br/>设置为null时，不开启投影。 |
+| value  | ArkTS-Dyn: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) <br/>ArkTS-Sta: [DataPanelShadowOptions](#datapanelshadowoptions10对象说明) \|&nbsp;undefined \|&nbsp;null | 是   | 投影样式。<br/>**说明：** <br/>设置为null时，不开启投影。 |
 
 ### contentModifier<sup>12+</sup>
 

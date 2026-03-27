@@ -238,6 +238,23 @@ Navigation组件页面切换事件的监听选项。
 | ------------ | -------------------------------------------------- | ---- | -------------------------------------------- |
 | navigationId | [ResourceStr](arkui-ts/ts-types.md#resourcestr) | 是   | 指定需要监听的Navigation的ID。 |
 
+## TextChangeEventInfo<sup>22+</sup>
+输入框文本变化的信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称         | 类型                                         | 只读  | 可选 | 说明                                          |
+| ------------ | -------------------------------------------- | ---- | ---- | -------------------------------------------- |
+| id           | string                                       | 否   | 否   | 文本输入组件的ID。|
+| uniqueId     | ArkTS-Dyn: number<br/>ArkTS-Sta: int                          | 否   | 否   | 文本输入组件的唯一标识符。|
+| content        | string                                       | 否   | 否   | 变化后的文本内容。|
+
 ## TabContentInfo<sup>12+</sup>
 
 TabContent页面的切换信息。

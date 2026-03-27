@@ -121,7 +121,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<LoadingProgressConfigurati
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
@@ -139,7 +139,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<LoadingProgressConfigurati
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 

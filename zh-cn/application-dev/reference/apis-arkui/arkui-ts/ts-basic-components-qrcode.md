@@ -92,7 +92,7 @@ ArkTS-Sta: backgroundColor(value: ResourceColor | undefined)
 
 ArkTS-Dyn: contentOpacity(value: number | Resource)
 
-ArkTS-Sta: contentOpacity(value: number | Resource | undefined)
+ArkTS-Sta: contentOpacity(value: double | Resource | undefined)
 
 设置二维码内容颜色的不透明度。不透明度最小值为0，最大值为1。
 
@@ -105,9 +105,10 @@ ArkTS-Sta: contentOpacity(value: number | Resource | undefined)
 **ArkTS-Sta起始版本：** 23
 
 **参数：** 
+
 | 参数名 | 类型                                                 | 必填 | 说明                                     |
 | ------ | ---------------------------------------------------- | ---- | ---------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: number&nbsp;\|&nbsp;[ResourceColor](ts-types.md#resourcecolor)  \| undefined | 是   | 二维码内容颜色的不透明度。<br/>默认值：1<br/>取值范围：[0, 1]，超出取值范围按默认值处理。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)  \| undefined | 是   | 二维码内容颜色的不透明度。<br/>默认值：1<br/>取值范围：[0, 1]，超出取值范围按默认值处理。 |
 
 
 ## 事件
