@@ -800,7 +800,7 @@ class ClassTest{
 
 **解决方案：**
 
-不支持class中static和instance变量重名的混淆，需要手动keep，或重命名变量
+不支持class中static和instance变量重名的混淆，需要手动keep，或重命名变量。
 
  <!-- @[staticArkGuardExample_classTest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) --> 
 ```typescript
@@ -834,16 +834,20 @@ class ExampleClass extends AbstractClass {
 ```
 
 为保证父子类继承的属性或者方法多态一致性，在keep的时候，会一起被保留。例如：
+
 添加
+
 ```json
 -keep class entry.src.main.ets.entryability.StaticDemo.AbstractClass {PROTECTED_ABSTRACT_METHOD():void;}
 ```
+
 或
 
 ```json
 -keep class entry.src.main.ets.entryability.StaticDemo.ExampleClass{PROTECTED_ABSTRACT_METHOD():void;}
 ```
-时，`AbstractClass`和`ExampleClass`中的`PROTECTED_ABSTRACT_METHOD()`会被同时保留。
+
+`AbstractClass`和`ExampleClass`中的`PROTECTED_ABSTRACT_METHOD()`会被同时保留。
 
 ### 混合工程/interop相关的问题和解决方案
 
@@ -851,6 +855,6 @@ class ExampleClass extends AbstractClass {
 
 **解决方案：**
 
-1. 若工程中存在通过interop机制进行Arkts-Dyn和ArkTS-Sta交互，开发者需手动将交互所涉及的关键类、方法或字段等添加到混淆白名单中，同时将涉及的文件路径添加到白名单中，以确保混淆后名称一致，避免因混淆导致交互失败。
+1. 若工程中存在通过interop机制进行ArkTS-Dyn和ArkTS-Sta交互，开发者需手动将交互所涉及的关键类、方法或字段等添加到混淆白名单中，同时将涉及的文件路径添加到白名单中，以确保混淆后名称一致，避免因混淆导致交互失败。
 
-2. 若工程中存在Arkts-Dyn组件引用ArkTS-Sta组件，开发者需要手动将ArkTS-Sta组件相关的文件路径和文件的所有内容进行keep处理。
+2. 若工程中存在ArkTS-Dyn组件引用ArkTS-Sta组件，开发者需要手动将ArkTS-Sta组件相关的文件路径和文件的所有内容进行keep处理。
