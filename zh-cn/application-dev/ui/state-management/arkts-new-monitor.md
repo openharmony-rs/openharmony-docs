@@ -1255,6 +1255,7 @@ class Info {
   @Trace public age: number = 24;
 
   // 同时监听状态变量age和非状态变量name
+  // 此时会编辑、编译告警，提示`The '@Monitor' decorator needs to monitor the state variables that exist.`
   @Monitor('age', 'name')
   onPropertyChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
