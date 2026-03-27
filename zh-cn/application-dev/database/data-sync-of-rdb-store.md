@@ -381,91 +381,91 @@ schema文件为json格式，文件主要为在dbSchema字段下进行多项配�
 
 ```json
 {
-    "dbSchema": [
-      {
-        "version": 0,
-        "bundleName": "com.example.rdbDataSync",
-        "dbName": "RdbTest",
-        "tables": [
-          {
-            "tableName": "EMPLOYEE",
-            "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
-            "fields": [
-              {
-                "columnName": "ID",
-                "type": "Integer",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": true
-              },
-              {
-                "columnName": "NAME",
-                "type": "Text",
-                "primaryKey": true,
-                "notNull": true,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "AGE",
-                "type": "Integer",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "SALARY",
-                "type": "Float",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "CODES",
-                "type": "Blob",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              }
-            ]
-          },
-          {
-            "tableName": "EMPLOYEE2",
-            "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
-            "fields": [
-              {
-                "columnName": "NAME",
-                "type": "Text",
-                "primaryKey": true,
-                "notNull": true,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "AGE",
-                "type": "Integer",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "SALARY",
-                "type": "Float",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              },
-              {
-                "columnName": "CODES",
-                "type": "Blob",
-                "primaryKey": false,
-                "notNull": false,
-                "autoIncrement": false
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+  "dbSchema": [
+    {
+      "version": 0,
+      "bundleName": "com.example.rdbDataSync",
+      "dbName": "RdbTest",
+      "tables": [
+        {
+          "tableName": "EMPLOYEE",
+          "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
+          "fields": [
+            {
+              "columnName": "ID",
+              "type": "Integer",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": true
+            },
+            {
+              "columnName": "NAME",
+              "type": "Text",
+              "primaryKey": true,
+              "notNull": true,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "AGE",
+              "type": "Integer",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "SALARY",
+              "type": "Float",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "CODES",
+              "type": "Blob",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            }
+          ]
+        },
+        {
+          "tableName": "EMPLOYEE2",
+          "deviceSyncFields": ["NAME", "AGE", "SALARY", "CODES"],
+          "fields": [
+            {
+              "columnName": "NAME",
+              "type": "Text",
+              "primaryKey": true,
+              "notNull": true,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "AGE",
+              "type": "Integer",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "SALARY",
+              "type": "Float",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            },
+            {
+              "columnName": "CODES",
+              "type": "Blob",
+              "primaryKey": false,
+              "notNull": false,
+              "autoIncrement": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
 ```
 
 ### schema约束与示意
