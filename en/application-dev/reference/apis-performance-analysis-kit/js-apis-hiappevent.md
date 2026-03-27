@@ -11,7 +11,7 @@ The **hiAppEvent** module provides the application event logging functions, such
 
 > **NOTE**
 >
-> - The APIs provided by this module are deprecated since API version 9. You are advised to use [`@ohos.hiviewdfx.hiAppEvent`](js-apis-hiviewdfx-hiappevent.md).
+> - The APIs provided by this module are deprecated since API version 9. You are advised to use [@ohos.hiviewdfx.hiAppEvent](js-apis-hiviewdfx-hiappevent.md).
 > - The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 

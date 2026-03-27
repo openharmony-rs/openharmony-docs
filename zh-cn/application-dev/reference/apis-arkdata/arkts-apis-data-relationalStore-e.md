@@ -261,7 +261,7 @@ export default class EntryAbility extends UIAbility {
 | ------- | ---- |----------------------------------------------------------------------------------------------------------------|
 | NONE    | 0    | 表示数据库未进行重建。                                                                                                    |
 | REBUILT | 1    | 表示数据库进行了重建并且生成了空数据库，需要应用重新建表和恢复数据。                                                                             |
-| REPAIRED | 2    | 表示数据库进行了修复，恢复了未损坏的数据，当前只有[向量数据库](arkts-apis-data-relationalStore-i.md#storeconfig)具备该能力。 |
+| REPAIRED | 2    | 表示数据库进行了修复，恢复了未损坏的数据，当前只有向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）具备该能力。 |
 
 ## ChangeType<sup>10+</sup>
 
