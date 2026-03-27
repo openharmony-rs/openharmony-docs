@@ -11594,6 +11594,16 @@
 						"end_line":92,
 						"name":"JsError_CrashEvent_Button",
 						"start_line":79
+					},
+					{
+						"end_line":18,
+						"name":"Native_CrashEvent_Log_Header",
+						"start_line":16
+					},
+					{
+						"end_line":134,
+						"name":"Native_CrashEvent_Log",
+						"start_line":112
 					}
 				]
 			}
