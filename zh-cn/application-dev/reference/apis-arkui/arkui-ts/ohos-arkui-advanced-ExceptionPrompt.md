@@ -48,7 +48,7 @@ ExceptionPrompt({ options: PromptOptions, onTipClick?: ()=>void, onActionTextCli
 | -------- | -------- | -------- | -------- | -------- |
 | options | [PromptOptions](#promptoptions) | 是 | \@Prop | 指定当前异常提示的配置信息。 |
 | onTipClick | ()=>void | 否 | - | 点击左侧提示文本的回调函数，缺省时不执行任何操作。 |
-| onActionTextClick | ()=>void | 否 | - | 点击右侧图标按钮的回调函数。未传入时不执行任何操作。 |
+| onActionTextClick | ()=>void | 否 | - | 点击右侧图标按钮的回调函数。缺省时不执行任何操作。 |
 
 ## PromptOptions
 
