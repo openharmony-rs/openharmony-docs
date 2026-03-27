@@ -227,6 +227,11 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
    应用可以通过[isAudioSessionActivated](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#isaudiosessionactivated12)接口检查当前应用的音频会话是否已激活。
 
    <!-- @[is_audio_session_activated](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   // 查询音频会话是否已激活。
+   let isActivated = audioSessionManager.isAudioSessionActivated();
+   ```
 
 3. 监听AudioSession焦点状态变化事件。
 
