@@ -19,18 +19,14 @@ import { pasteboard } from '@kit.BasicServicesKit';
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-**ArkTS-Dyn起始版本：** 6
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 类型 | 值  | 说明  |
 | -------- | -------- |--------------|--------------------------------|
 | MAX_RECORD_NUM<sup>7+</sup> | ArkTS-Dyn: number </br> ArkTS-Sta: int | -   | API version 10之前，此常量值为512，表示单个PasteData中所能包含的最大条目数为512。当剪贴板内容中添加的条目达到数量上限512后，后续的添加操作无效。<br>从API version 10开始，不再限制单个PasteData中所能包含的最大条目数。 </br> **ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | MIMETYPE_TEXT_HTML<sup>7+</sup> | string | 'text/html'  | HTML内容的MIME类型定义。 </br> **ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | MIMETYPE_TEXT_WANT<sup>7+</sup> | string | 'text/want'  | Want内容的MIME类型定义。 </br> **ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
 | MIMETYPE_TEXT_PLAIN<sup>7+</sup> | string | 'text/plain' | 纯文本内容的MIME类型定义。 </br> **ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
-| MIMETYPE_TEXT_URI<sup>7+</sup> | string | 'text/uri'   | URI内容的MIME类型定义。 **ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
-| MIMETYPE_PIXELMAP<sup>9+</sup> | string | 'pixelMap'   | PixelMap内容的MIME类型定义。 **ArkTS-Dyn起始版本**：9</br>**ArkTS-Sta起始版本**：23 |
+| MIMETYPE_TEXT_URI<sup>7+</sup> | string | 'text/uri'   | URI内容的MIME类型定义。 </br>**ArkTS-Dyn起始版本**：7</br>**ArkTS-Sta起始版本**：23 |
+| MIMETYPE_PIXELMAP<sup>9+</sup> | string | 'pixelMap'   | PixelMap内容的MIME类型定义。 </br>**ArkTS-Dyn起始版本**：9</br>**ArkTS-Sta起始版本**：23 |
 
 ## ValueType<sup>9+</sup>
 
@@ -384,6 +380,7 @@ createUriData(uri: string): PasteData
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createUriData('dataability:///com.example.myapplication1/user.txt');
 ```
+
 ## pasteboard.createHtmlTextRecord<sup>(deprecated)</sup>
 
 createHtmlTextRecord(htmlText: string): PasteDataRecord
@@ -1498,7 +1495,7 @@ ArkTS-Sta: getRecord(index: int): PasteDataRecord
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1647,7 +1644,7 @@ ArkTS-Sta: removeRecord(index: int): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1693,7 +1690,7 @@ ArkTS-Sta: replaceRecord(index: int, record: PasteDataRecord): void
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401      | Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1929,6 +1926,7 @@ addUriRecord(uri: string): void
 let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
 pasteData.addUriRecord('dataability:///com.example.myapplication1/user.txt');
 ```
+
 ### getRecordAt<sup>(deprecated)</sup>
 
 getRecordAt(index: number): PasteDataRecord
@@ -3590,15 +3588,13 @@ try {
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-**ArkTS-Dyn起始版本：** 13
-
-**ArkTS-Sta起始版本：** 23
-
 | 名称 | 值  | 说明    |
 | ---- | --- | ------ |
-| URL   | 0   | URL类型。       |
-| NUMBER    | 1   | 数字类型。   |
-| EMAIL_ADDRESS | 2   | 邮箱地址类型。 |
+| URL   | 0   | URL类型。 </br> **ArkTS-Dyn起始版本**：13</br>**ArkTS-Sta起始版本**：23       |
+| NUMBER    | 1   | 数字类型。 </br> **ArkTS-Dyn起始版本**：13</br>**ArkTS-Sta起始版本**：23   |
+| EMAIL_ADDRESS | 2   | 邮箱地址类型。 </br> **ArkTS-Dyn起始版本**：13</br>**ArkTS-Sta起始版本**：23 |
+| HTTP_URL | 3   | HTTP web链接类型。 </br> **ArkTS-Dyn起始版本**：24</br>**ArkTS-Sta起始版本**：24 |
+| FLIGHT_NUMBER | 4   | 航班号类型。 </br> **ArkTS-Dyn起始版本**：24</br>**ArkTS-Sta起始版本**：24 |
 
 ### detectPatterns<sup>13+</sup>
 
@@ -3707,7 +3703,7 @@ getMimeTypes(): Promise&lt;Array&lt;string&gt;&gt;
 import { pasteboard, BusinessError } from '@kit.BasicServicesKit'
 
 let systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-systemPasteboard.getMimeTypes().then((data: Array<String>) => {
+systemPasteboard.getMimeTypes().then((data: Array<string>) => {
     console.info('Succeeded in getting mimeTypes. mimeTypes: ' + data.sort().join(','));
 }).catch((err: BusinessError) => {
     console.error('Failed to get mimeTypes. Cause:' + err.message);

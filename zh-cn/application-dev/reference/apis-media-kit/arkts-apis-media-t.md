@@ -13,6 +13,10 @@ type SoundPool = _SoundPool
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型     | 说明                       |
 | -------- | ------------------------------ |
 | [_SoundPool](js-apis-inner-multimedia-soundPool.md#soundpool)  | 音频池，提供了系统声音的加载、播放、音量设置、循环设置、停止播放、资源卸载等功能。 |
@@ -24,6 +28,10 @@ type PlayParameters = _PlayParameters
 表示音频池播放参数设置。
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明                       |
 | -------- | ------------------------------ |
@@ -71,6 +79,8 @@ track变更事件回调方法。
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
 | index  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 当前变更的track索引。     |
@@ -89,6 +99,8 @@ type OnAVPlayerStateChangeHandle = (state: AVPlayerState, reason: StateChangeRea
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ---------------------------------------------------------- |
@@ -111,6 +123,8 @@ ArkTS-Sta: type OnBufferingUpdateHandler = (infoType: BufferingInfoType, value: 
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | infoType  | [BufferingInfoType](arkts-apis-media-e.md#bufferinginfotype8) | 是 | 缓存时间类型。     |
@@ -131,6 +145,8 @@ ArkTS-Sta: type OnVideoSizeChangeHandler = (width: int, height: int) => void
 **ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
+
+**参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
@@ -155,13 +171,17 @@ type OnSuperResolutionChanged = (enabled: boolean) => void
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | enabled  | boolean | 是 | 表示当前超分是否开启。true表示超分开启，false表示超分关闭。     |
 
 ## OnSeiMessageHandle<sup>18+</sup>
 
-type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: number) => void
+ArkTS-Dyn: type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: number) => void
+
+ArkTS-Sta: type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: int) => void
 
 获取SEI信息，使用场景：订阅SEI信息事件，回调返回SEI详细信息。
 
@@ -169,12 +189,16 @@ type OnSeiMessageHandle = (messages: Array\<SeiMessage>, playbackPosition?: numb
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   |   类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | messages | Array\<[SeiMessage](arkts-apis-media-i.md#seimessage18)> | 是  | SEI信息。 |
-| playbackPosition | number | 否  | 获取当前播放位置（单位：毫秒）。 |
+| playbackPosition | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否  | 获取当前播放位置（单位：毫秒）。 |
 
 ## OnPlaybackRateDone<sup>20+</sup>
 
@@ -192,9 +216,33 @@ ArkTS-Sta: type OnPlaybackRateDone = (rate: double) => void
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | rate | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 播放速率。 |
+
+## OnFrameFetched<sup>23+</sup>
+
+type OnFrameFetched = (frameInfo: FrameInfo, err?: BusinessError\<void>) => void
+
+批量获取缩略图回调函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型   | 必填 | 说明                                                         |
+| ------ | ------ | ------ | ---------------------------------------------------------- |
+| frameInfo  | [FrameInfo](arkts-apis-media-i.md#frameinfo23) | 是 | 返回的缩略图信息。     |
+| err | BusinessError\<void> | 否 | 获取缩略图时发生错误，默认值为null。 |
+
 
 ## AVRecorderState<sup>9+</sup>
 
@@ -205,6 +253,10 @@ type AVRecorderState = 'idle' | 'prepared' | 'started' | 'paused' | 'stopped' | 
 **原子化服务API：** 从API version 12 开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型     | 说明                                                         |
 | -------- | ------------------------------------------------------------ |
@@ -226,6 +278,12 @@ type OnAVRecorderStateChangeHandler = (state: AVRecorderState, reason: StateChan
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ------ | ------------------------------------------------------------ |
 | state  | [AVRecorderState](#avrecorderstate9) | 是 | 当前录制状态。     |
@@ -245,6 +303,10 @@ ArkTS-Sta: type SourceOpenCallback = (request: MediaSourceLoadingRequest) => lon
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -290,6 +352,10 @@ ArkTS-Sta: type SourceReadCallback = (uuid: long, requestedOffset: long, request
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                 |
@@ -322,6 +388,10 @@ ArkTS-Sta: type SourceCloseCallback = (uuid: long) => void
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型     | 必填 | 说明                 |
@@ -342,6 +412,54 @@ let sourceCloseCallback: media.SourceCloseCallback = (uuid: number) => {
 };
 ```
 
+## PlaybackMetrics<sup>23+</sup>
+
+type PlaybackMetrics = Record\<PlaybackMetricsKey, Object>
+
+提供播放器指标信息键值对的容器定义。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型   | 说明                                                         |
+|------ | ------------------------------------------------------------ |
+| Record\<[PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23), Object> |  表示值类型为键值对，其中key和value的类型与范围请参考[PlaybackMetricsKey](arkts-apis-media-e.md#playbackmetricskey23)。 |
+
+## PlaybackInfo<sup>23+</sup>
+
+type PlaybackInfo = Record<string, Object>
+
+通过key-value方式获取播放信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型   | 说明                                                         |
+|------ | ------------------------------------------------------------ |
+| Record\<string, Object> |  表示值类型为键值对，其中key和value的类型与范围请参考该键值对支持的key取值范围，请参考[PlaybackInfoKey](arkts-apis-media-e.md#playbackinfokey12)。 |
+
+## MediaDescription<sup>23+</sup>
+
+type MediaDescription = Record<string, Object>
+
+通过key-value方式获取播放信息。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型   | 说明                                                         |
+|------ | ------------------------------------------------------------ |
+| Record\<string, Object> |  表示值类型为键值对，其中key和value的类型与范围请参考[MediaDescriptionKey](arkts-apis-media-e.md#mediadescriptionkey8)。 |
+
 ## AudioState<sup>(deprecated)</sup>
 
 type AudioState = 'idle' | 'playing' | 'paused' | 'stopped' | 'error'
@@ -351,7 +469,11 @@ type AudioState = 'idle' | 'playing' | 'paused' | 'stopped' | 'error'
 > **说明：**
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[AVPlayerState](#avplayerstate9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.AudioPlayer
+
+**ArkTS-Dyn起始版本：** 6
 
 | 类型    | 说明                                           |
 | ------- | ---------------------------------------------- |
@@ -370,7 +492,11 @@ type VideoPlayState = 'idle' | 'prepared' | 'playing' | 'paused' | 'stopped' | '
 > **说明：**
 > 从API version 8开始支持，从API version 9开始废弃，建议使用[AVPlayerState](#avplayerstate9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Multimedia.Media.VideoPlayer
+
+**ArkTS-Dyn起始版本：** 8
 
 | 类型     | 说明           |
 | -------- | -------------- |

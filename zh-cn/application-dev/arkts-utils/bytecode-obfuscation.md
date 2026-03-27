@@ -186,7 +186,7 @@ if (flag) {
 若配置该选项，以下场景中的`console.*`或`hilog`特定语句会被删除：
 
 1. 文件顶层的调用
-   <!-- @[optionExample_removeLog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
+   <!-- @[optionExample_removeLog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) --> 
     
    ``` TypeScript
    console.info("in tolevel");
@@ -194,7 +194,7 @@ if (flag) {
    ```
 
 2. 代码块中的调用
-   <!-- @[optionExample_removeLog3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+   <!-- @[optionExample_removeLog3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) --> 
     
    ``` TypeScript
    function foo1() {
@@ -215,7 +215,7 @@ if (flag) {
    ```
   
 4. switch语句中的调用
-   <!-- @[optionExample_removeLog5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
+   <!-- @[optionExample_removeLog5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->  
     
    ``` TypeScript
    switch (value) {
@@ -510,7 +510,7 @@ class TestA { static prop1: number = 0; } TestA.prop1;
 -print-seeds ./seedFile.log
 ```
 
-如果不指定目录，开启后，默认在`obfuscation`目录下生成一个`seedFile.log`文件，用来显示匹配到的类及其成员，如下图。也可以自己配置目录，将结果输出到指定目录。
+用来显示匹配到的类及其成员。可以配置指定目录，将结果输出到指定目录, 如下图。 如果不指定目录，开启后，默认在`obfuscation`目录下生成一个`seedsFile.log`文件。
 
 ![bytecode-static-printseed](figures/bytecode-static-printseed.png)
 
@@ -632,6 +632,12 @@ let value: int|number|float = 3
 // 元组
 type UserTuple1 = [string, number, boolean];
 let uType1: UserTuple1 = ["Tom", 18, true];
+
+//std.core.Function
+let math1 = (a: number, b: number): number => {
+    return a + b;
+};
+math1(1,2)
 ```
 
 使用下面keep语句后，number1，str，value，uType1 将不会被混淆。
@@ -640,6 +646,7 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 -keep package entry.src.main.ets.entryability.StaticDemo { number1: f64;}
 -keep package entry.src.main.ets.entryability.StaticDemo { str: std.core.String;}
 -keep package entry.src.main.ets.entryability.StaticDemo { value: {Ustd.core.Double,std.core.Float,std.core.Int};}
+-keep package entry.src.main.ets.entryability.StaticDemo { math1: std.core.Function;}
 -keep package entry.src.main.ets.entryability.StaticDemo { uType1: std.core.Tuple3;} // Tuple3,3表示有3个参数
 ```
 
@@ -649,6 +656,7 @@ let uType1: UserTuple1 = ["Tom", 18, true];
 -keep package entry.src.main.ets.entryability.StaticDemo { number1;}
 -keep package entry.src.main.ets.entryability.StaticDemo { str;}
 -keep package entry.src.main.ets.entryability.StaticDemo { value;}
+-keep package entry.src.main.ets.entryability.StaticDemo { math1;}
 -keep package entry.src.main.ets.entryability.StaticDemo { uType1;}
 ```
 
@@ -700,6 +708,8 @@ let uType1: UserTuple1 = ["Tom", 18, true];
    ```
 
 **2.** 保留指定包下的内容不混淆。
+
+用于指定在混淆过程中需要保留的代码元素，支持类、属性、方法及整个文件等。其完整的语法规范详见[class_specification](#class_specification)。
 
 ```txt
 -keep package a.b.c.d { *; }
@@ -1132,7 +1142,7 @@ lastName
   
   obj.s1 = 'a';
   let key = 's1';
-  console.info(obj[key]); // key对应的变量值s应该被保留。
+  console.info(obj[key]); // key对应的变量值s1应该被保留。
   
   obj.t1 = 'b';
   console.info(obj['t' + '1']); // t1应该被保留。
@@ -1320,10 +1330,7 @@ export namespace Ns {
 
 
 ```txt
--keep-class-with-members class com.example.MyClass {
-    private static alias: string = 'test';
-    public async doAction(string):void;
-}
+-keep-class-with-members class com.example.MyClass {*}
 ```
 
 使用前后，效果如下：
@@ -1375,10 +1382,7 @@ export namespace Ns {
 保留指定类中指定成员（成员保留，类名不保留），支持使用[名称类通配符](#方法和属性名称支持通配符)。例如：
 
 ```txt
--keep-class-members  class com.example.MyClass {
-    private static alias: string = 'test';
-    public async doAction(string):void;
-}
+-keep-class-members  class com.example.MyClass {*}
 ```
 
 使用前后，效果如下：
@@ -1537,7 +1541,7 @@ class A {
 用于指定在混淆过程中需要保留的代码元素，支持类、属性、方法及整个文件等。其完整的语法规范如下：
 
 ```txt
-[@annotationtype] [[!]final|abstract|declare ...] [!]interface|class|enum|namespace|package classname [extends|implements [@annotationtype] classname]
+[@annotationtype] [[!]final|abstract|declare ...] [!]interface|class|enum|namespace|package classname [extends|implements classname]
 [{
     [@annotationtype]
     [[!]public|private|protected|static|final ...]
@@ -1565,8 +1569,16 @@ class A {
 > 2. 泛型type类型keep时不能添加<>部分; 例如 Promise<void>类型在keep时, 需写成Promise。
 
 
-**1.** -keep class entry.src.main.ets.entryability.StaticDemo.ClassName {*;}，`ClassName`和`ClassMember`都不混淆。
+**1.** 保留类名或接口名不混淆，同时保留类中所有方法属性不混淆。
 
+```txt
+-keep class *.className {*;}
+./**
+```
+例如：
+  
+-keep class entry.src.main.ets.entryability.StaticDemo.ClassName {*;}，`ClassName`和`ClassMember`都不混淆。
+  
 ```typescript
 //StaticDemo.ets
 
@@ -1595,8 +1607,16 @@ class ClassName implements interfaceTest {
 }
 ```
 
-**2.** -keep enum entry.src.main.ets.entryability.StaticDemo.Color {*;}，`Color`和`enum`值都不混淆
-
+**2.** 保留enum名称，同时保留enum中所有成员不混淆。
+  
+```txt
+-keep enum *.enumName {*;}
+./**
+```
+例如：
+  
+-keep enum entry.src.main.ets.entryability.StaticDemo.Color {*;}，`Color`和`enum`值都不混淆
+  
 ```typescript
 //StaticDemo.ets
 
@@ -1642,8 +1662,16 @@ export enum Color {
 }
 ```
 
-**3.** -keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassMethod {public final method1(...):i32;}, 只保留`method1`不混淆
-
+**3.** 混淆类名，只保留类中的成员或方法。
+  
+```txt
+-keep-class-members class *.ClassName {*;}
+./**
+```
+例如：
+  
+-keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassMethod {public final method1(...):i32;}, 只保留`method1`不混淆
+  
 ```typescript
 //StaticDemo.ets
 
@@ -1669,12 +1697,16 @@ class ClassMethod {
 }
 ```
 
-**4.** -keep @Anno2 class entry.src.main.ets.entryability.StaticDemo.ClassTest2 extends @Anno1 entry.src.main.ets.entryability.StaticDemo.ClassTest1 { *; }, `ClassTest2`和`Class2_Field`都不混淆
-
+**4.** 类如果使用注解，继承等，在keep时，要写全注解和类的路径。
+  
+例如：
+  
+-keep @Anno2 class entry.src.main.ets.entryability.StaticDemo.ClassTest2 extends @Anno1 entry.src.main.ets.entryability.StaticDemo.ClassTest1 { *; }, `ClassTest2`和`Class2_Field`都不混淆
+  
 ```typescript
 //StaticDemo.ets
 
-interface Anno1 {
+@interface Anno1 {
     f1: number = 123;
 }
 
@@ -1683,7 +1715,7 @@ class ClassTest1 {
     public Class1_Field: number = 123;
 }
 
-interface Anno2 {
+@interface Anno2 {
     f2: number = 123;
 }
 
@@ -1831,14 +1863,7 @@ class A {
 
 此时*表示匹配任意数量的任意字符，配置效果为所有属性名称都不混淆，而不是只有*属性不被混淆。
 
-
-
-## 混淆规则合并策略
-
-> **注意：**
->   
-> ArkTS-Sta的字节码混淆暂不支持
-  
+## 混淆规则合并策略  
 
 在编译一个模块时，默认情况下，生效的混淆规则为**当前编译模块的混淆规则**与**依赖模块混淆规则**的合并结果，具体规则如下：
 

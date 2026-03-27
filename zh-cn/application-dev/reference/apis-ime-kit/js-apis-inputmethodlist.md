@@ -41,6 +41,20 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 | controller | [CustomDialogController](../apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller) | 是 | - | 输入法切换列表弹窗控制器。 |
 | patternOptions | [PatternOptions](#patternoptions) | 否 | - | 输入法模式选项（仅默认输入法支持）。 |
 
+### build
+
+build(): void
+
+输入法切换列表弹窗控件的build函数，开发者无需实现。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**装饰器类型：**@Builder
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+**ArkTS-Sta起始版本：** 23
+
 ## PatternOptions
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
@@ -53,7 +67,7 @@ InputMethodListDialog({controller: CustomDialogController, patternOptions?: Patt
 | -------- | -------- | -------- | -------- | -------- |
 | defaultSelected | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 非必填。默认选择的模式。 |
 | patterns   | Array<[Pattern](#pattern)> | 否 | 否 | 必填。模式选项的资源。 |
-| action | (index: number) => void | 否 | 否 | 必填。模式选项改变时的回调。 |
+| action | ArkTS-Dyn: (index: number) => void<br/>ArkTS-Sta: (index: int) => void | 否 | 否 | 必填。模式选项改变时的回调。 |
 
 ## Pattern
 

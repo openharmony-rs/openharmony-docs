@@ -38,6 +38,10 @@ WaterFlow(options?:  WaterFlowOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -53,11 +57,11 @@ WaterFlow(options?:  WaterFlowOptions)
 
 | 名称     | 类型                                        | 必填 | 说明                                     |
 | ---------- | ----------------------------------------------- | ------ | -------------------------------------------- |
-| footer |  [CustomBuilder](ts-types.md#custombuilder8) | 否   | 设置WaterFlow尾部组件。<br/>**说明：** <br/>使用方法参见[示例1](#示例1使用基本瀑布流)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| footerContent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 设置WaterFlow尾部组件。<br/>该参数的优先级高于参数footer，即同时设置footer和footerContent时，以footerContent设置的组件为准。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 可滚动组件的控制器，与可滚动组件绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | 否   | 设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。<br/>**说明：** <br/>1. 使用分组混合布局时会忽略columnsTemplate和rowsTemplate属性。<br/>2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。  |
-| layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+| footer |  [CustomBuilder](ts-types.md#custombuilder8) | 否   | 设置WaterFlow尾部组件。<br/>**说明：** <br/>使用方法参见[示例1](#示例1使用基本瀑布流)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| footerContent<sup>18+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 否 | 设置WaterFlow尾部组件。<br/>该参数的优先级高于参数footer，即同时设置footer和footerContent时，以footerContent设置的组件为准。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+| scroller | [Scroller](ts-container-scroll.md#scroller) | 否   | 可滚动组件的控制器，与可滚动组件绑定。<br/>**说明：** <br/>不允许和其他滚动类组件，如：[ArcList](ts-container-arclist.md)、[List](ts-container-list.md)、[Grid](ts-container-grid.md)、[Scroll](ts-container-scroll.md)和[WaterFlow](ts-container-waterflow.md)绑定同一个滚动控制对象。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23 |
+| sections<sup>12+</sup> |  [WaterFlowSections](#waterflowsections12) | 否   | 设置FlowItem分组，实现同一个瀑布流组件内部各分组使用不同列数混合布局。<br/>**说明：** <br/>1. 使用分组混合布局时会忽略columnsTemplate和rowsTemplate属性。<br/>2. 使用分组混合布局时不支持单独设置footer，可以使用最后一个分组作为尾部组件。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23  |
+| layoutMode<sup>12+</sup> |[WaterFlowLayoutMode](#waterflowlayoutmode12枚举说明) | 否 | 设置WaterFlow的布局模式，根据使用场景选择更切合的模式。<br/>**说明：** <br/>默认值：[ALWAYS_TOP_DOWN](#waterflowlayoutmode12枚举说明)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 
 
 ## WaterFlowSections<sup>12+</sup>
@@ -78,6 +82,10 @@ constructor()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ### splice<sup>12+</sup>
 
 ArkTS-Dyn: splice(start: number, deleteCount?: number, sections?: Array\<SectionOptions\>): boolean
@@ -92,7 +100,7 @@ ArkTS-Sta: splice(start: int, deleteCount?: int, sections?: Array\<SectionOption
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -118,6 +126,10 @@ push(section: SectionOptions): boolean
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -145,7 +157,7 @@ ArkTS-Sta: update(sectionIndex: int, section: SectionOptions): boolean
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -170,6 +182,10 @@ values(): Array\<SectionOptions\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：** 
 
 | 类型                                                         | 说明                                                         |
@@ -190,7 +206,7 @@ ArkTS-Sta: length(): int
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：** 
 
@@ -208,7 +224,7 @@ FlowItem分组配置信息。
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 说明 |
 |------|-----|-----|-----|
@@ -234,7 +250,7 @@ ArkTS-Sta: type GetItemMainSizeByIndex = (index: int) => double
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -255,6 +271,10 @@ ArkTS-Sta: type GetItemMainSizeByIndex = (index: int) => double
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | ------ | ------ | -------------------- |
@@ -317,8 +337,8 @@ ArkTS-Sta: columnsTemplate(value: string | ItemFillPolicy | undefined)
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
 
+**ArkTS-Sta起始版本：** 23
 **参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                      |
@@ -344,7 +364,7 @@ ArkTS-Sta: rowsTemplate(value: string | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -366,7 +386,7 @@ ArkTS-Sta: itemConstraintSize(value: ConstraintSizeOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -388,7 +408,7 @@ ArkTS-Sta: columnsGap(value: Length | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -410,7 +430,7 @@ ArkTS-Sta: rowsGap(value: Length | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -432,7 +452,7 @@ ArkTS-Sta: layoutDirection(value: FlexDirection | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -456,11 +476,13 @@ layoutDirection优先级高于rowsTemplate和columnsTemplate。根据layoutDirec
 
 ### enableScrollInteraction<sup>10+</sup>
 
-ArkTS-Dyn: enableScrollInteraction(value: boolean)
-
-ArkTS-Sta: enableScrollInteraction(value: boolean | undefined)
+enableScrollInteraction(value: boolean)
 
 设置是否支持滚动手势。
+
+**ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口:** 该接口对应的ArkTS-Sta接口是[enableScrollInteraction](./ts-container-scrollable-common.md#enablescrollinteraction11)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -468,13 +490,11 @@ ArkTS-Sta: enableScrollInteraction(value: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：** 
 
 | 参数名 | 类型    | 必填 | 说明                                |
 | ------ | ------- | ---- | ----------------------------------- |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true |
+| value  |  boolean | 是   | 是否支持滚动手势。设置为true时可以通过手指或者鼠标滚动，设置为false时无法通过手指或者鼠标滚动，但不影响控制器[Scroller](ts-container-scroll.md#scroller)的滚动接口。<br/>默认值：true |
 
 > **说明：** 
 >
@@ -482,33 +502,35 @@ ArkTS-Sta: enableScrollInteraction(value: boolean | undefined)
 
 ### nestedScroll<sup>10+</sup>
 
-ArkTS-Dyn: nestedScroll(value: NestedScrollOptions)
-
-ArkTS-Sta: nestedScroll(value: NestedScrollOptions | undefined)
+nestedScroll(value: NestedScrollOptions)
 
 设置前后两个方向的嵌套滚动模式，实现与父组件的滚动联动。
+
+**ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口:** 该接口对应的ArkTS-Sta接口是[nestedScroll](./ts-container-scrollable-common.md#nestedscroll11)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 22
 
 **参数：** 
 
 | 参数名 | 类型                                                         | 必填 | 说明           |
 | ------ | ------------------------------------------------------------ | ---- | -------------- |
-| value  | ArkTS-Dyn: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明)<br/>ArkTS-Sta: [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明) \| undefined | 是   | 嵌套滚动选项。  |
+| value  | [NestedScrollOptions](ts-container-scrollable-common.md#nestedscrolloptions10对象说明) | 是   | 嵌套滚动选项。  |
 
 ### friction<sup>10+</sup>
 
-ArkTS-Dyn: friction(value: number | Resource)
-
-ArkTS-Sta: friction(value: double | Resource | undefined)
+friction(value: number | Resource)
 
 设置摩擦系数，手动划动滚动区域时生效，仅影响惯性滚动过程，对惯性滚动过程中的链式效果有间接影响。
+
+**ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口:** 该接口对应的ArkTS-Sta接口是[friction](./ts-container-scrollable-common.md#friction11)。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -516,13 +538,11 @@ ArkTS-Sta: friction(value: double | Resource | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
-
 **参数：** 
 
 | 参数名 | 类型                                                 | 必填 | 说明                                                      |
 | ------ | ---------------------------------------------------- | ---- | --------------------------------------------------------- |
-| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) <br/>ArkTS-Sta: double&nbsp;\|&nbsp;[Resource](ts-types.md#resource)&nbsp;\|&nbsp;undefined | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。 |
+| value  | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource)  | 是   | 摩擦系数。<br/>默认值：非可穿戴设备为0.6，可穿戴设备为0.9。<br/>从API version 11开始，非可穿戴设备默认值为0.7。<br/>从API version 12开始，非可穿戴设备默认值为0.75。<br/>取值范围：(0, +∞)，设置为小于等于0的值时，按默认值处理。 |
 
 ### cachedCount<sup>11+</sup>
 
@@ -540,7 +560,7 @@ ArkTS-Sta: cachedCount(value: int | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -566,7 +586,7 @@ ArkTS-Sta: cachedCount(count: int | undefined, show: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 14
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -607,9 +627,15 @@ onReachStart(event: () => void)
 
 瀑布流内容到达起始位置时触发。
 
+**ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口:** 该接口对应的ArkTS-Sta接口是[onReachStart](./ts-container-scrollable-common.md#onreachstart11)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
 
 ### onReachEnd
 
@@ -617,13 +643,21 @@ onReachEnd(event: () => void)
 
 瀑布流内容到达末尾位置时触发。
 
+**ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口:** 该接口对应的ArkTS-Sta接口是[onReachEnd](./ts-container-scrollable-common.md#onreachend11)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
 ### onScrollFrameBegin<sup>10+</sup>
 
-onScrollFrameBegin(event: (offset: number, state: ScrollState) => { offsetRemain: number; })
+ArkTS-Dyn: onScrollFrameBegin(event: OnScrollFrameBeginCallback)
+
+ArkTS-Sta: onScrollFrameBegin(event: OnScrollFrameBeginCallback | undefined)
 
 该接口回调时，事件参数传入即将发生的滑动量，事件处理函数中可根据应用场景计算实际需要的滑动量并作为事件处理函数的返回值返回，瀑布流将按照返回值的实际滑动量进行滑动。
 
@@ -643,18 +677,16 @@ onScrollFrameBegin(event: (offset: number, state: ScrollState) => { offsetRemain
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名 | 类型                                                    | 必填 | 说明                       |
 | ------ | ------------------------------------------------------- | ---- | -------------------------- |
 | offset | number                                                  | 是   | 即将发生的滑动量，单位vp。 |
-| state  | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是   | 当前滑动状态。             |
-
-**返回值：** 
-
-| 类型                     | 说明                 |
-| ------------------------ | -------------------- |
-| { offsetRemain: number } | 实际滑动量，单位vp。 |
+| state  | ArkTS-Dyn: [ScrollState](ts-container-list.md#scrollstate枚举说明) <br/>ArkTS-Sta: [ScrollState](ts-container-list.md#scrollstate枚举说明) \| undefined | 是   | 当前滑动状态。             |
 
 ### onScrollIndex<sup>11+</sup>
 
@@ -672,8 +704,7 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
-
+**ArkTS-Sta起始版本：** 23
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                                  |
@@ -691,6 +722,47 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 | ALWAYS_TOP_DOWN | 有 | 0 | -1 |
 | SLIDING_WINDOW | 可选 | 1000000 | -1 |
 
+### onWillScroll<sup>23+</sup> 
+
+onWillScroll(handler: OnWillScrollCallback | undefiend)
+
+滚动事件回调，WaterFlow滚动前触发。
+
+回调当前帧将要滚动的偏移量和当前滚动状态和滚动操作来源，其中回调的偏移量为计算得到的将要滚动的偏移量值，并非最终实际滚动偏移。可以通过该回调返回值指定滚动组件将要滚动的偏移。
+
+**ArkTS模式:** 该接口仅适用于ArkTS-Sta。
+
+**相关接口:** 该接口对应的ArkTS-Dyn的接口是[onWillScroll](./ts-container-scrollable-common.md#onwillscroll12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ------ | ------|
+| handler | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12) \| undefined | 是 | WaterFlow滑动前触发的回调。 |
+
+### onDidScroll<sup>23+</sup> 
+
+onDidScroll(handler: OnScrollCallback | undefined)
+
+WaterFlow滑动时触发，返回当前帧滑动的偏移量和当前滑动状态。
+
+**ArkTS模式:** 该接口仅适用于ArkTS-Sta。
+
+**相关接口:** 该接口对应的ArkTS-Dyn的接口是[onDidScroll](./ts-container-scrollable-common.md#ondidscroll12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ------ | ------|
+| handler | [OnScrollCallback](./ts-container-scrollable-common.md#onscrollcallback12) \| undefined | 是 | WaterFlow滑动时触发的回调。 |
 
 ## UIWaterFlowEvent<sup>19+</sup>
 frameNode中[getEvent('WaterFlow')](../js-apis-arkui-frameNode.md#geteventwaterflow19)与[getWaterFlowEvent](../js-apis-arkui-frameNode.md#getwaterflowevent24)方法的返回值，可用于给WaterFlow节点设置滚动事件。
@@ -778,6 +850,8 @@ WaterFlow组件可见区域item变化事件的回调类型。
 **ArkTS-Dyn起始版本：** 19
 
 **ArkTS-Sta起始版本：** 24
+
+**参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                  |
 | ------ | ------ | ---- | ------------------------------------- |

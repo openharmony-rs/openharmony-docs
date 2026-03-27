@@ -9,6 +9,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件仅可在Stage模型下使用。
 > 
 > - 该组件不支持在Wearable设备上使用。
 
@@ -34,7 +36,7 @@ TipsDialogV2({imageRes: ResourceStr | PixelMap, imageSize?: SizeOptions, imageBo
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型                                                                                                    | 必填 | 装饰器类型                | 说明                                                         |
 |------------------|-------------------------------------------------------------------------------------------------------|----|----------------------|------------------------------------------------------------|
@@ -62,7 +64,7 @@ type AdvancedDialogV2OnCheckedChange = (checked: boolean) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 参数名     | 类型      | 必填 | 说明                                                  |
 | :------ |:--------| :- | :-------------------------------------------------- |
@@ -70,7 +72,9 @@ type AdvancedDialogV2OnCheckedChange = (checked: boolean) => void
 
 ## SelectDialogV2
 
-SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: number, confirm?: AdvancedDialogV2Button, radioContent: SheetInfo\[]})
+ArkTS-Dyn: SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: number, confirm?: AdvancedDialogV2Button, radioContent: SheetInfo\[]})
+
+ArkTS-Sta: SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: int, confirm?: AdvancedDialogV2Button, radioContent: SheetInfo\[]})
 
 选择类弹出框，弹框中以列表或网格的形式提供可选的内容。
 
@@ -82,13 +86,13 @@ SelectDialogV2({title: ResourceStr, content?: ResourceStr, selectedIndex?: numbe
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                                                       | 必填 | 装饰器类型               | 说明                                                                              |
 | ------------- | -------------------------------------------------------- | -- |---------------------|---------------------------------------------------------------------------------|
 | title         | [ResourceStr](ts-types.md#resourcestr)                   | 是  | @Param<br/>@Require | 选择弹出框标题。<br/> **说明：** 标题超过两行会显示“...”。                                                 |
 | content       | [ResourceStr](ts-types.md#resourcestr)                   | 否  | @Param              | 选择弹出框内容。默认不显示。                                                                  |
-| selectedIndex | number                                                   | 否  | @Param              | 选择弹出框的选中项。<br />默认值：-1，没有选中项。若设置数值不在取值范围，按没有选中项处理。  <br/>取值范围：小于选择弹出框的子项内容列表长度。 |
+| selectedIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int                               | 否  | @Param              | 选择弹出框的选中项。<br />默认值：-1，没有选中项。若设置数值不在取值范围，按没有选中项处理。  <br/>取值范围：小于选择弹出框的子项内容列表长度。 |
 | confirm       | [AdvancedDialogV2Button](#advanceddialogv2button)        | 否  | @Param              | 选择弹出框底部按钮。<br />默认不显示。                                                          |
 | radioContent  | [SheetInfo](ts-methods-action-sheet.md#sheetinfo对象说明)\[] | 是  | @Param<br/>@Require | 选择弹出框的子项内容列表，每个选择项支持设置文本和选中的回调事件。                                               |
 
@@ -106,7 +110,7 @@ ConfirmDialogV2({title: ResourceStr, content?: ResourceStr, checkTips?: Resource
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                                                  | 必填 | 装饰器类型  | 说明                                                         |
 |-----------------| ------------------------------------------------------------------- | -- | ------ |------------------------------------------------------------|
@@ -132,7 +136,7 @@ AlertDialogV2({primaryTitle?: ResourceStr, secondaryTitle?: ResourceStr, content
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型                                                | 必填 | 装饰器类型                | 说明                   |
 | --------------- | ------------------------------------------------- | -- | :------------------- | -------------------- |
@@ -156,7 +160,7 @@ LoadingDialogV2({content?: ResourceStr})
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                     | 必填 | 装饰器类型  | 说明                                               |
 | ------- | -------------------------------------- | -- | :----- |--------------------------------------------------|
@@ -176,7 +180,7 @@ CustomContentDialogV2({contentBuilder: () => void, primaryTitle?: ResourceStr, s
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                 | 类型                                                   | 必填 | 装饰器类型         | 说明                       |
 | ------------------ | ---------------------------------------------------- | -- | ------------- | ------------------------ |
@@ -198,7 +202,7 @@ type PopoverDialogV2OnVisibleChange = (visible: boolean) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 参数名     | 类型      | 必填 | 说明                                                                    |
 | :------ | :------ | :- |:----------------------------------------------------------------------|
@@ -218,7 +222,7 @@ PopoverDialogV2({visible: boolean, \$visible: PopoverDialogV2OnVisibleChange, po
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称            | 类型                                                                | 必填 | 装饰器类型               | 说明                                                 |
 | ------------- |-------------------------------------------------------------------| -- |---------------------| -------------------------------------------------- |
@@ -243,7 +247,7 @@ PopoverDialogV2({visible: boolean, \$visible: PopoverDialogV2OnVisibleChange, po
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## AdvancedDialogV2ButtonAction
 
@@ -257,7 +261,7 @@ type AdvancedDialogV2ButtonAction = () => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## AdvancedDialogV2Button
 
@@ -265,24 +269,19 @@ type AdvancedDialogV2ButtonAction = () => void
 
 **装饰器类型：**@ObservedV2
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 22
 
 | 名称           | 类型                                                                     | 必填 | 装饰器类型  | 说明                                                                          |
 |:-------------|:-----------------------------------------------------------------------|:---|:-------|:----------------------------------------------------------------------------|
-| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 是  | @Trace | 按钮的内容。                                                                      |
-| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | @Trace | 按钮的点击事件。<br />默认无事件。                                                        |
-| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | @Trace | 按钮的背景。<br />默认值跟随buttonStyle。                                               |
-| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | @Trace | 按钮的字体颜色。<br />默认值跟随buttonStyle。                                             |
-| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | @Trace | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。 |
-| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | @Trace | 按钮的角色。<br />默认值：ButtonRole.NORMAL。                                          |
-| defaultFocus | boolean                                                                | 否  | @Trace | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false                         |
-| enabled       | boolean                                                                | 否  | @Trace | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true                                                         |
+| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 是  | @Trace | 按钮的内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23   |
+| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | @Trace | 按钮的点击事件。<br />默认无事件。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23    |
+| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | @Trace | 按钮的背景。<br />默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23    |
+| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | @Trace | 按钮的字体颜色。<br />默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23        |
+| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | @Trace | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | @Trace | 按钮的角色。<br />默认值：ButtonRole.NORMAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23       |
+| defaultFocus | boolean                                                                | 否  | @Trace | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23      |
+| enabled       | boolean                                                                | 否  | @Trace | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 按钮文本的对齐方式。<br/>默认值：TextAlign.Start<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 24 <br/>**ArkTS-Sta起始版本：** 24          |
 
 > **说明：**
 >
@@ -302,7 +301,7 @@ AdvancedDialogV2Button的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                                                              | 必填 | 说明      |
 | :------ | :-------------------------------------------------------------- | :- | :------ |
@@ -318,7 +317,7 @@ AdvancedDialogV2Button的构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称           | 类型                                                                     | 必填 | 说明                                                                          |
 |:-------------|:-----------------------------------------------------------------------|:---|:----------------------------------------------------------------------------|

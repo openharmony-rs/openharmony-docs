@@ -471,6 +471,83 @@ hiAppEvent.setEventConfig(hiAppEvent.event.MAIN_THREAD_JANK, params).then(() => 
 ```
 
 
+## hiAppEvent.configEventPolicy<sup>22+</sup>
+
+configEventPolicy(policy: EventPolicy): Promise&lt;void&gt;
+
+系统事件相关的配置策略设置方法。使用Promise异步回调。
+
+在同一生命周期中，可以通过配置策略设置系统事件相关的策略参数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：23
+
+**参数：**
+
+| 参数名 | 类型                          | 必填 | 说明           |
+| ------ | ---------------------------- | ---- | -------------- |
+| policy | [EventPolicy](#eventpolicy22)  | 是   | 系统事件配置策略。<br>各个事件的事件配置策略，详细规格见[EventPolicy](#eventpolicy22)类型说明。 |
+
+**返回值：**
+
+| 类型                | 说明          |
+| ------------------- | ------------ |
+| Promise&lt;void&gt; | Promise对象，无返回结果。若配置策略设置有误，会导致接口返回失败。<br>- 参数类型设置有误，则返回401通用错误信息；<br>- 参数规格设置有误，则在hilog日志输出相关错误信息。 |
+
+**示例：**
+
+以下示例用于模拟设置MAIN_THREAD_JANK事件的配置策略：
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+let policy: hiAppEvent.EventPolicy = {
+  "mainThreadJankPolicy":{
+    "logType": 1,
+    "sampleInterval": 100,
+    "ignoreStartupTime": 11,
+    "sampleCount": 21,
+    "reportTimesPerApp": 3,
+    "autoStopSampling": true
+  }
+};
+hiAppEvent.configEventPolicy(policy).then(() => {
+  hilog.info(0x0000, 'hiAppEvent', `Successfully set main thread jank event policy.`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set main thread jank event policy. Code: ${err?.code}, message: ${err?.message}`);
+});
+```
+
+ArkTS-Sta示例：
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@ohos.base';
+
+let policy: hiAppEvent.EventPolicy = {
+  "mainThreadJankPolicy":{
+    "logType": 1,
+    "sampleInterval": 100,
+    "ignoreStartupTime": 11,
+    "sampleCount": 21,
+    "reportTimesPerApp": 3,
+    "autoStopSampling": true
+  }
+};
+hiAppEvent.configEventPolicy(policy).then(() => {
+  hilog.info(0x0000, 'hiAppEvent', `Successfully set main thread jank event policy.`);
+}).catch((err: Error) => {
+  const bErr = err as BusinessError;
+  hilog.error(0x0000, 'hiAppEvent', `Failed to set main thread jank event policy. Code: ${bErr.code}, message: ${bErr.message}`);
+});
+```
+
 ## Watcher
 
 提供事件观察者的参数选项。用于配置和管理事件的观察者，实现对特定事件的监听和处理。
@@ -1445,6 +1522,133 @@ hiAppEvent.configure(config2);
 | maxStorage | string  | 否 | 是   | 打点数据存放目录的配额大小，默认值为“10M”。建议配额大小不超过10M，配额过大可能会影响接口效率。<br>在目录大小超出配额后，下次打点会触发对目录的清理操作：按从旧到新的顺序逐个删除打点数据文件，直到目录大小不超出配额时结束。<br>配额值字符串规格如下：<br>- 配额值字符串只由数字字符和大小单位字符（单位字符支持[b\|k\|kb\|m\|mb\|g\|gb\|t\|tb]，不区分大小写）构成。<br>- 配额值字符串必须以数字开头，后面可以选择不传单位字符（默认使用byte作为单位），或者以单位字符结尾。 |
 
 
+## EventPolicy<sup>22+</sup>
+
+提供系统事件配置策略的定义，用于使用[configEventPolicy](#hiappeventconfigeventpolicy22)设置事件配置策略。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明                                         |
+| ---------- | ------- | ---- | ---- | ------------------------------------------ |
+| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。<br>**原子化服务API：** 从API version 22开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：22<br>**ArkTS-Sta起始版本**：23 |
+| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | 否 | 是   | CPU高负载事件配置策略。<br>**原子化服务API：** 从API version 22开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：22<br>**ArkTS-Sta起始版本**：23 |
+| appCrashPolicy<sup>24+</sup> | [AppCrashPolicy](#appcrashpolicy24) | 否 | 是   | 崩溃事件配置策略。<br>**原子化服务API：** 从API version 24开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：24<br>**ArkTS-Sta起始版本**：24 |
+| appFreezePolicy<sup>24+</sup> | [AppFreezePolicy](#appfreezepolicy24) | 否 | 是   | 应用冻屏事件配置策略。<br>**原子化服务API：** 从API version 24开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：24<br>**ArkTS-Sta起始版本**：24 |
+| resourceOverlimitPolicy<sup>24+</sup> | [ResourceOverlimitPolicy](#resourceoverlimitpolicy24) | 否 | 是   | 资源泄漏事件配置策略。<br>**原子化服务API：** 从API version 24开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：24<br>**ArkTS-Sta起始版本**：24 |
+| addressSanitizerPolicy<sup>24+</sup> | [AddressSanitizerPolicy](#addresssanitizerpolicy24) | 否 | 是   | 地址越界事件配置策略。<br>**原子化服务API：** 从API version 24开始，该参数支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本**：24<br>**ArkTS-Sta起始版本**：24 |
+
+
+## MainThreadJankPolicy<sup>22+</sup>
+
+提供主线程超时事件配置策略的定义。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：23
+
+<!--Table: auto; auto; 10%; 10%; auto-->
+| 名称       | 类型    | 只读 | 可选 | 说明                                         |
+| ---------- | ------- | ---- | ---- | ------------------------------------------ |
+| logType | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 采集日志的类型。默认值：0。<br/>logType=0：其他选项均取默认值，主线程连续两次超时150ms~450ms，采集调用栈；主线程超时450ms，采集trace。<br/>logType=1：仅采集调用栈，触发检测的阈值由用户自定义。<br/>logType=2：仅采集trace。<br>**说明**：<br> - logType=0时，仅需配置autoStopSampling参数，其他参数均取默认值，无需设置。<br> - logType=2时，其他参数均不生效，无需设置。 |
+| ignoreStartupTime | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 应用启动期间忽略主线程超时检测的时间。单位：秒，默认值：10，最小值：3。 |
+| sampleInterval | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 主线程超时检测间隔和采样间隔。单位：毫秒，默认值：150，取值范围：[50, 500]。 |
+| sampleCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 主线程超时采样次数。单位：次，默认值：10，最小值：1。<br/>最大值需要结合自定义的sampleInterval进行动态计算，计算公式：sampleCount &lt;= (2500 / sampleInterval - 4)。<br>**说明**：<br/> - 2500的含义：根据系统规定，主线程超时事件从检测到上报的时间不可以超过2.5s（即：2500ms）。因此sampleCount的设置值不能超过系统按计算公式得出的最大值。<br/> - 4的含义：第一次超时间隔检测时间 + 第二次超时间隔（系统提供两次再次发生超时事件的检测机会）时间 + 收集并上报堆栈信息的时间。<br/> - 开发者要结合需求场景，进行合理的设置。 |
+| reportTimesPerApp | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 | 同一个应用的PID一个生命周期内，主线程超时采样上报次数。一个生命周期内只能设置一次。<br/>默认值：1，单位：次。<br/>每分钟上报次数范围：[1, 3]。 |
+| autoStopSampling | boolean | 否 | 是 | 主线程超时结束时，是否自动停止采样主线程堆栈。<br/>true：超时结束或达到设置的采样次数，停止采样。<br/>false：达到设置的采样次数时停止采样。<br/>默认值：false。 |
+
+
+## CpuUsageHighPolicy<sup>22+</sup>
+
+提供CPU高负载事件配置策略的定义。
+
+> **注意：**
+> 
+> 该接口被调用后，会将设置值持久化。后续重复调用该接口时，若不设置对应参数，则取上一次系统取用的值。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：22
+
+**ArkTS-Sta起始版本**：23
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| foregroundLoadThreshold    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是   | 应用前台CPU高负载异常阈值，阈值范围：[1, 100]，单位：%，默认值：30。若设置值在阈值范围外，系统将取用默认值30。<br>**说明**：建议取值小于30。 |
+| backgroundLoadThreshold | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是   | 应用后台CPU高负载异常阈值，阈值范围：[1, 100]，单位：%，默认值：10。若设置值在阈值范围外，系统将取用默认值10。<br>**说明**：建议取值小于10。 |
+| threadLoadThreshold | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是   | 应用线程CPU高负载异常阈值，阈值范围：[15, 100]，单位：%，默认值：70。若设置值在阈值范围外，系统将取用默认值70。 |
+| perfLogCaptureCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是   | 采样栈每日采集次数。一旦系统检测到当前异常日志的采集次数超过设置值，系统仍会正常上报事件，但异常事件中的external_log字段，将不再附加日志文件路径信息。<br> Debug版本应用，阈值范围：[-1, 100]；<br> Release版本应用，阈值范围：[0, 20]。<br> 单位：次，默认值：1。<br> 若设置值在阈值范围外，系统将取用默认值1。<br>**说明**：<br> 1. 值为-1，表示不限制采集日志次数。<br> 2. 值为0，表示不采集日志。<br> 3. 值大于0，表示每日采集次数上限。 |
+| threadLoadInterval | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是   | 应用线程CPU高负载异常检测周期，阈值范围：[5, 3600]，单位：秒，默认值：60。<br>若设置值在阈值范围外，系统将取用默认值60。 |
+
+## AppCrashPolicy<sup>24+</sup>
+ 	 
+提供崩溃事件配置策略的定义。
+ 	 
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能崩溃事件的页面切换日志。<br/>true：使能崩溃事件的页面切换日志。<br/>false：不使能崩溃事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+
+## AppFreezePolicy<sup>24+</sup>
+
+提供应用冻屏事件配置策略的定义。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能应用冻屏事件的页面切换日志。<br/>true：使能应用冻屏事件的页面切换日志。<br/>false：不使能应用冻屏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+
+## ResourceOverlimitPolicy<sup>24+</sup>
+
+提供资源泄漏事件配置策略的定义。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的页面切换日志。<br/>true：使能资源泄漏事件的页面切换日志。<br/>false：不使能资源泄漏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+
+## AddressSanitizerPolicy<sup>24+</sup>
+
+提供地址越界事件配置策略的定义。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能地址越界事件的页面切换日志。<br/>true：使能地址越界事件的页面切换日志。<br/>false：不使能地址越界事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+
 ## Processor<sup>11+</sup>
 
 可以上报事件的数据处理者对象。用于事件的上报和管理，开发者可自定义数据处理配置，满足不同的数据处理需求。
@@ -1570,8 +1774,9 @@ ArkTS-Sta: type ParamType = int | long | double | string | boolean | Array&lt;st
 | ADDRESS_SANITIZER<sup>12+</sup> | string | 是 | 应用地址越界事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
 | MAIN_THREAD_JANK<sup>12+</sup> | string | 是 | 应用主线程超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：12<br/>**ArkTS-Sta起始版本**：23 |
 | APP_KILLED<sup>20+</sup> | string | 是 | 应用查杀事件。系统事件名称常量。<br>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：20<br/>**ArkTS-Sta起始版本**：23 |
-| APP_HICOLLIE<sup>21+</sup> | string | 是 | 任务执行超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：22 |
-| AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 音频卡顿事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：22 |
+| APP_HICOLLIE<sup>21+</sup> | string | 是 | 任务执行超时事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：23 |
+| AUDIO_JANK_FRAME<sup>21+</sup> | string | 是 | 音频卡顿事件。系统事件名称常量。<br>**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：21<br/>**ArkTS-Sta起始版本**：23 |
+| SCROLL_ARKWEB_FLING_JANK<sup>23+</sup> | string | 是 | ArkWeb抛滑丢帧事件。系统事件名称常量。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本**：23<br/>**ArkTS-Sta起始版本**：23 |
 
 
 ## hiappevent.param

@@ -42,9 +42,9 @@ type Transformer = (this: ISendable, key: string, value: ISendable | undefined |
 
 | 参数名 | 类型   | 必填 | 说明            |
 | ------ | ------ | ---- | --------------- |
-| this   | [ISendable](#isendable) | 是 | 在解析的键值对所属的对象。|
+| this   | [ISendable](#isendable) | 是 | 所解析的键值对所属的对象。|
 | key  | string | 是 | 属性名。|
-| value  | [ISendable](#isendable) \| undefined \| null| 是 | 在解析的键值对的值。|
+| value  | [ISendable](#isendable) \| undefined \| null| 是 | 所解析的键值对的值。|
 
 **返回值：**
 

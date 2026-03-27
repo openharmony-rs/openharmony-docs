@@ -26,6 +26,10 @@ Rating(options?: RatingOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                      | 必填 | 说明           |
@@ -36,9 +40,7 @@ Rating(options?: RatingOptions)
 
 ### stars
 
-ArkTS-Dyn: stars(value: number)
-
-ArkTS-Sta: stars(value: int | undefined)
+stars(value: number)
 
 设置评分总数。设置为小于等于0的值时，按默认值显示。
 
@@ -48,15 +50,17 @@ ArkTS-Sta: stars(value: int | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[stars<sup>23+</sup>](#stars23)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：** 
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| value  | ArkTS-Dyn: number <br/>ArkTS-Sta: int \| undefined | 是   | 设置评分总数。<br/>默认值：5 |
+| value  | number | 是   | 设置评分总数。<br/>默认值：5 |
 
 ### stars<sup>18+</sup>
 
@@ -72,6 +76,8 @@ stars(starCount: Optional\<number>)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[stars<sup>23+</sup>](#stars23)。
+
 **ArkTS-Dyn起始版本：** 18
 
 **参数：** 
@@ -80,7 +86,7 @@ stars(starCount: Optional\<number>)
 | --------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
 | starCount | [Optional](ts-universal-attributes-custom-property.md#optional12)\<number> | 是   | 设置评分总数。<br/>当starCount的值为undefined时，默认值：5 |
 
-### stars<sup>22+</sup>
+### stars<sup>23+</sup>
 
 stars(value: int | undefined)
 
@@ -90,7 +96,9 @@ stars(value: int | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[stars](#stars)和[stars<sup>18+</sup>](#stars18)。
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -114,7 +122,7 @@ ArkTS-Sta: stepSize(value: double | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -154,7 +162,7 @@ stepSize(value: double | undefined)
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -182,7 +190,7 @@ ArkTS-Sta: starStyle(options: StarStyleOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -212,7 +220,7 @@ ArkTS-Sta: starStyle(options: StarStyleOptions | undefined)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -240,7 +248,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<RatingConfiguration> | und
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -262,7 +270,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<RatingConfiguration> | und
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -322,7 +330,7 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -349,7 +357,7 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称  | 类型    |    只读    |    可选      |  说明              |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
@@ -375,12 +383,12 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                   | 类型    | 必填 | 说明                                                         |
 | ---------------------- | ------- | ---- | ------------------------------------------------------------ |
-| rating<sup>7+</sup>    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是   | 设置并接收评分值。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 22|
-| indicator<sup>7+</sup> | boolean | 否   | 设置评分组件作为指示器使用，值为true时，不可改变评分。<br/>默认值：false，可进行评分<br/>**说明：** <br/>indicator=true时，默认组件高度height=12.0vp，组件width=height * stars。 <br/>indicator=false时，默认组件高度height=28.0vp，组件width=height * stars。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 22|
+| rating<sup>7+</sup>    | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是   | 设置并接收评分值。<br/>默认值：0<br/>取值范围： [0, stars]<br/>小于0取0，大于[stars](#stars)取最大值stars。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
+| indicator<sup>7+</sup> | boolean | 否   | 设置评分组件作为指示器使用，值为true时，不可改变评分。<br/>默认值：false，可进行评分<br/>**说明：** <br/>indicator=true时，默认组件高度height=12.0vp，组件width=height * stars。 <br/>indicator=false时，默认组件高度height=28.0vp，组件width=height * stars。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 <br/> **ArkTS-Dyn起始版本：** 7 <br/> **ArkTS-Sta起始版本：** 23|
 
 ## StarStyleOptions<sup>18+</sup>对象说明
 
@@ -398,13 +406,13 @@ ArkTS-Sta: type OnRatingChangeCallback = (rating: double) => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 类型   | 必填 | 说明                                                         |
 | -------------------------- | ------ | ---- | ------------------------------------------------------------ |
-| backgroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 22|
-| foregroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 22|
-| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否   | 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 22|
+| backgroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 未选中的星级的图片链接，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
+| foregroundUri<sup>7+</sup> | ArkTS-Dyn: [ResourceStr](ts-types.md#resourcestr)<br/>ArkTS-Sta: [ResourceStr](ts-types.md#resourcestr) \| undefined | 是   | 选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
+| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | 否   | 部分选中的星级的图片路径，可由用户自定义或使用系统默认图片。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>从API version 20开始，该接口支持设置Resource资源。参考[示例4（通过Resource资源设置评分的样式）](#示例4通过resource资源设置评分的样式)代码。<br/>**ArkTS-Dyn起始版本：** 7<br />**ArkTS-Sta起始版本：** 23|
 
 > **说明：** 
 >

@@ -2412,3 +2412,124 @@ struct Index {
   }
 }
 ```
+
+## @Component装饰自定义组件中的@ComponentReuse装饰方法入参类型变更为ReuseObject
+
+**规则解释：**
+
+在ArkTS-Sta中，[@ComponentReuse](../reference/apis-arkui/arkui-ts/ts-custom-component-new-lifecycle.md#componentreuse)装饰的方法，接受的入参类型由`Record`变更为[ReuseObject](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#reuseobject23)。
+
+**变更原因：**
+
+在ArkTS-Dyn中，`Record`可以访问参数值内部任意key值的value。但是ArkTS-Sta不支持直接取值，导致下面写法会编译报错：
+```ts
+@ComponentReuse
+myReuse(params: Record<string, string>) {
+  params.a;
+}
+```
+因此在ArkTS-Sta中新增`ReuseObject`类，`ReuseObject`中通过get取值方法，让开发者可以通过params[key]取得value。
+
+**适配建议：**
+
+自定义组件复用时接收的构造参数类型由`Record`变更为`ReuseObject`。
+
+**示例：**
+
+ArkTS-Dyn
+
+```ts
+import { ComponentReuse } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State switchReuse: boolean = true;
+  build() {
+    Column() {
+      Button('Hello')
+        .onClick(() => {
+          this.switchReuse = !this.switchReuse;
+        })
+      if (this.switchReuse) {
+        // 如果只有一个复用的组件，可以不用设置reuseId。
+        // switchReuse为true时，创建或复用Child
+        Child({ name: 'Tom' })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @State name: string = 'Bob';
+  // 在Child触发复用时回调myReuse
+  @ComponentReuse
+  myReuse(params: Record<string, string>) {
+    this.name = params.name;
+    hilog.info(0x0000, 'testTag', 'Child myReuse');
+  }
+  build() {
+    Column() {
+      Text(this.name)
+        .fontSize(30)
+    }
+    .borderWidth(1)
+    .height(100)
+  }
+}
+```
+
+ArkTS-Sta
+
+```ts
+'use static'
+
+import { ComponentReuse, Entry, Component, State, Column, Button, FontWeight, Reusable, Text, ReuseObject } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  @State switchReuse: boolean = true;
+  build() {
+    Column() {
+      Button('Hello')
+        .onClick(() => {
+          this.switchReuse = !this.switchReuse;
+        })
+      if (this.switchReuse) {
+        // 如果只有一个复用的组件，可以不用设置reuseId。
+        // switchReuse为true时，创建或复用Child
+        Child({ name: 'Tom' })
+      }
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+
+@Reusable
+@Component
+struct Child {
+  @State name: string = 'Bob';
+  // 在Child触发复用时回调myReuse
+  @ComponentReuse
+  myReuse(params: ReuseObject) {
+    this.name = params['name'] as string;
+    hilog.info(0x0000, 'testTag', 'Child myReuse');
+  }
+  build() {
+    Column() {
+      Text(this.name)
+        .fontSize(30)
+    }
+    .borderWidth(1)
+    .height(100)
+  }
+}
+```

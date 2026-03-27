@@ -27,6 +27,11 @@ Stack(options?: StackOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
+
 **参数：**
 
 | 参数名       | 类型                                    | 必填 | 说明                                                    |
@@ -45,9 +50,13 @@ Stack(options?: StackOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型            | 必填 | 说明                        |
 | ------------ | --------------- | ---- | --------------------------- |
-| alignContent<sup>7+</sup> | [Alignment](ts-appendix-enums.md#alignment) | 否   | 设置子组件在容器内的对齐方式。<br/>默认值：Alignment.Center<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| alignContent<sup>7+</sup> | [Alignment](ts-appendix-enums.md#alignment) | 否   | 设置子组件在容器内的对齐方式。<br/>默认值：Alignment.Center<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 属性
 
@@ -61,15 +70,15 @@ ArkTS-Sta: alignContent(value: Alignment | undefined)
 
 设置子组件在容器内的对齐方式。该属性与[通用属性align](ts-universal-attributes-location.md#align)同时设置时，后设置的属性生效。该属性与接口的构造入参同时设置时，生效属性上的设置效果。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+**卡片能力：** 从API version 9开始，该接口属性支持在ArkTS卡片中使用。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
+**原子化服务API：** 从API version 11开始，该接口属性支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 

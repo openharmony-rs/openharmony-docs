@@ -8,7 +8,11 @@ appRecovery模块提供了应用在故障状态下的恢复能力。
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> API9仅支持单进程中单Ability的应用恢复。API10支持进程中包含多个Ability的场景。
+> API9仅支持单进程中单Ability的应用恢复。
+>
+> API10支持进程中包含多个Ability的场景。
+>
+> API24支持发生CPP_CRASH时应用恢复。
 
 ## 导入模块
 ```ts
@@ -19,20 +23,17 @@ import { appRecovery } from '@kit.AbilityKit';
 
 应用重启标志，[enableAppRecovery](#apprecoveryenableapprecovery)接口重启选项参数，该类型为枚举。
 
-**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
-
-**ArkTs-Sta起始版本**：20
 
 | 名称       | 值   | 说明       |
 | ---------- | ---- | ---------- |
-| ALWAYS_RESTART   | 0    | 总是重启应用。 |
-| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。 |
-| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。 |
-| NO_RESTART           | 0xFFFF    | 总是不重启应用。 |
+| ALWAYS_RESTART   | 0    | 总是重启应用。 <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23|
+| RESTART_WHEN_JS_CRASH   | 0x0001    | 发生JS_CRASH时重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| RESTART_WHEN_APP_FREEZE   | 0x0002    | 发生APP_FREEZE时重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
+| RESTART_WHEN_CPP_CRASH<sup>24+</sup>    | 0x0004    | 发生CPP_CRASH时重启应用。<br>**模型约束**：此接口仅可在Stage模型下使用。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24|
+| NO_RESTART           | 0xFFFF    | 总是不重启应用。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 
 ## SaveOccasionFlag
 
@@ -42,9 +43,9 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
@@ -59,9 +60,9 @@ import { appRecovery } from '@kit.AbilityKit';
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 | 名称                          | 值   | 说明                                                         |
 | ----------------------------- | ---- | ------------------------------------------------------------ |
@@ -80,9 +81,9 @@ enableAppRecovery(restart?: [RestartFlag](#restartflag), saveOccasion?: [SaveOcc
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -127,19 +128,19 @@ API10时将启动由[setRestartWant](#apprecoverysetrestartwant10)指定的Abili
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS-Dyn起始版本：** 9
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
-    
+
 ```ts
 import { appRecovery, errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.info('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.restartApp();
   }
 };
@@ -159,13 +160,13 @@ saveAppState(): boolean
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**ArkTS模式**： 该接口仅适用于ArkTS-Dyn。
-
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：9
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 9
 
 **返回值：**
 
@@ -181,7 +182,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.info('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.saveAppState();
   }
 };
@@ -205,9 +206,9 @@ saveAppState(context?: UIAbilityContext): boolean
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -229,7 +230,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let observer: errorManager.ErrorObserver = {
   onUnhandledException(errorMsg) {
-    console.log('onUnhandledException, errorMsg: ', errorMsg);
+    console.info('onUnhandledException, errorMsg: ', errorMsg);
     appRecovery.saveAppState(this.context);
   }
 };
@@ -253,9 +254,9 @@ setRestartWant(want: Want): void
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
-**ArkTs-Dyn起始版本**：10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTs-Sta起始版本**：20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -264,6 +265,8 @@ setRestartWant(want: Want): void
 | want | [Want](js-apis-app-ability-want.md)| 是 | 通过设置Want中"bundleName"和"abilityName"字段来指定恢复重启的Ability。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { appRecovery, Want } from '@kit.AbilityKit';
@@ -287,3 +290,30 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import { appRecovery, Want } from '@kit.AbilityKit';
+import { Entry, Component, Button, FontWeight } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Button("启动到恢复Ability")
+      .fontSize(40)
+      .fontWeight(FontWeight.Bold)
+      .onClick(() => {
+        // set restart want
+        let want: Want = {
+          bundleName: "ohos.samples.recovery",
+          abilityName: "RecoveryAbility"
+        };
+
+        appRecovery.setRestartWant(want);
+      })
+  }
+}
+```
+

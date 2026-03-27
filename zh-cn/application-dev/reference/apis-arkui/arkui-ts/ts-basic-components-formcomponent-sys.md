@@ -32,6 +32,10 @@ FormComponent (value: FormInfo)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
@@ -64,11 +68,11 @@ FormComponent (value: FormInfo)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
-| --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
-| id        | ArkTS-Dyn: number <br> ArkTS-Sta: long                | 是   | 卡片标识。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
-| idString      | string            | 是           | 卡片标识（string类型）。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                             |
-| isLocked<sup>18+</sup>  |boolean  | 是           | 标识卡片是否为[管控状态](../../apis-form-kit/js-apis-app-form-formHost-sys.md#updateformlockedstate18)，true表示管控状态，false表示非管控状态。<br/>**ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23     |
+| 参数名    | 参数类型                        | 只读 | 可选 | 参数描述                                                                |
+| --------- | ------------------------------- | ---- | ---- | ----------------------------------------------------------------------- |
+| id        | ArkTS-Dyn: number <br> ArkTS-Sta: long                |   否   |  否   | 卡片标识。<br/>**说明：**<br>如果获取到的id为-1，说明id大于等于2^53，需要使用idString获取。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23 |
+| idString      | string            |   否   |  否   | 卡片标识（string类型）。<br/>**ArkTS-Dyn起始版本：** 12 <br/>**ArkTS-Sta起始版本：** 23                             |
+| isLocked<sup>22+</sup>  |boolean  |   否   |  否   | 标识卡片是否为[管控状态](../../apis-form-kit/js-apis-app-form-formHost-sys.md#updateformlockedstate18)，true表示管控状态，false表示非管控状态。<br/>**ArkTS-Dyn起始版本：** 22 <br/>**ArkTS-Sta起始版本：** 23     |
 
 ## FormSize<sup>18+</sup>对象说明
 
@@ -80,10 +84,10 @@ FormComponent (value: FormInfo)
 
 **ArkTS-Dyn起始版本：** 18
 
-| 参数名    | 参数类型                        | 必填 | 参数描述    |
-| --------- | ------------------------------- | ---- |---------|
-| width        | number                 | 是   | 卡片宽的尺寸，单位：vp。 |
-| height      | number            | 是           | 卡片高的尺寸，单位：vp。 |
+| 参数名    | 参数类型                        | 只读 | 可选 | 参数描述    |
+| --------- | ------------------------------- | ---- | ---- |---------|
+| width        | number                 | 否   | 否   | 卡片宽的尺寸，单位：vp。 |
+| height      | number            | 否   | 否   | 卡片高的尺寸，单位：vp。 |
 
 ## ErrorInformation<sup>18+</sup>对象说明
 
@@ -95,10 +99,10 @@ FormComponent (value: FormInfo)
 
 **ArkTS-Sta起始版本：** 23
 
-| 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
-| --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
-| errcode        | ArkTS-Dyn: number <br> ArkTS-Sta: int                 | 是   | [错误码](../../apis-form-kit/errorcode-form.md)。                                        |
-| msg      | string            | 是           | 错误信息。                             |
+| 参数名    | 参数类型                        | 只读 | 可选 | 参数描述                     |
+| --------- | ------------------------------- | ---- | ---- | ------------------------------ |
+|  errcode        | ArkTS-Dyn: number <br> ArkTS-Sta: int                 | 否  | 否   | [错误码](../../apis-form-kit/errorcode-form.md)。                                        |
+| msg      | string            | 否       | 否   | 错误信息。                             |
 
 ## RouterCallbackInfo<sup>23+</sup>对象说明
 
@@ -110,13 +114,13 @@ FormComponent (value: FormInfo)
 
 **ArkTS-Sta起始版本：** 23
 
-| 参数名    | 参数类型                        | 必填 | 参数描述                                                                |
-| --------- | ------------------------------- | ---- | ----------------------------------------------------------------------- |
-| action      | string            | 是           | 事件类型。                             |
-| bundleName      | string            | 否           | 卡片所属包的Bundle名称。                             |
-| moduleName      | string            | 否           | 卡片所属模块的模块名称。                             |
-| abilityName      | string            | 否           | 卡片所属的Ability名称。                             |
-| params      | string            | 否           | 卡片事件携带参数内容。                             |
+| 参数名    | 参数类型                        | 只读 | 可选 | 参数描述                                                                |
+| --------- | ------------------------------- | ---- | ---- | ----------------------------------------------------------------------- |
+| action      | string            | 否 | 否           | 事件类型。                             |
+| bundleName      | string            | 否 | 否          | 卡片所属包的Bundle名称。                             |
+| moduleName      | string            | 否 | 否          | 卡片所属模块的模块名称。                             |
+| abilityName      | string            | 否 | 否          | 卡片所属的Ability名称。                             |
+| params      | string            | 否 | 否          | 卡片事件携带参数内容。                             |
 
 ## FormDimension
 

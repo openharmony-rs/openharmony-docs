@@ -4,13 +4,17 @@ reuse属性用于给\@ReusableV2装饰的自定义组件指定复用选项。
 
 本文档仅为API参考说明。实际功能使用与限制见[@ReusableV2装饰器：组件复用](../../../ui/state-management/arkts-new-reusableV2.md)。
 
->  **说明：**
+>  **说明：** 
 >
-> 从API Version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
+> - 从API Version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 
 ## reuse
 
-reuse(options: ReuseOptions)
+ArkTS-Dyn: reuse(options: ReuseOptions)
+
+ArkTS-Sta: reuse(options: ReuseOptions | undefined)
 
 复用选项，用于设置V2自定义组件的复用选项。
 
@@ -26,7 +30,7 @@ reuse(options: ReuseOptions)
 
 | 参数名  | 类型                          | 必填 | 说明                                           |
 | ------- | ----------------------------- | ---- | ---------------------------------------------- |
-| options | [ReuseOptions](#reuseoptions) | 是   | 复用选项，用于配置复用相关信息，由开发者指定。 |
+| options | ArkTS-Dyn: [ReuseOptions](#reuseoptions)<br/>ArkTS-Sta: [ReuseOptions](#reuseoptions) \| undefined | 是   | 复用选项，用于配置复用相关信息，由开发者指定。 |
 
 ## ReuseOptions
 
@@ -41,6 +45,14 @@ reuse(options: ReuseOptions)
 **ArkTS-Sta起始版本：** 23
 
 ### 属性
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                | 必填 | 说明                                                         |
 | ------- | ----------------------------------- | ---- | ------------------------------------------------------------ |

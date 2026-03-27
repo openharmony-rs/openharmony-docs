@@ -22,11 +22,11 @@ enableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 
 使能佩戴检测。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH和ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH和ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -35,7 +35,7 @@ enableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): void
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当使能佩戴检测成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -69,11 +69,11 @@ enableWearDetection(deviceId: string): Promise&lt;void&gt;
 
 使能佩戴检测。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH和ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH和ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -87,7 +87,7 @@ enableWearDetection(deviceId: string): Promise&lt;void&gt;
 | ----------------------------- | ---------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -119,11 +119,11 @@ disableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): voi
 
 禁用佩戴检测。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH和ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH和ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -132,7 +132,7 @@ disableWearDetection(deviceId: string, callback: AsyncCallback&lt;void&gt;): voi
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数。当禁用佩戴检测成功，err为undefined，否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -166,11 +166,11 @@ disableWearDetection(deviceId: string): Promise&lt;void&gt;
 
 禁用佩戴检测。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH和ohos.permission.MANAGE_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH和ohos.permission.MANAGE_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -184,7 +184,7 @@ disableWearDetection(deviceId: string): Promise&lt;void&gt;
 | ----------------------------- | ---------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -216,11 +216,11 @@ isWearDetectionSupported(deviceId: string, callback: AsyncCallback&lt;boolean&gt
 
 判断设备是否支持佩戴检测能力。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -229,7 +229,7 @@ isWearDetectionSupported(deviceId: string, callback: AsyncCallback&lt;boolean&gt
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当接口调用成功，err为undefined，data为佩戴检测能力支持结果；否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -261,11 +261,11 @@ isWearDetectionSupported(deviceId: string): Promise&lt;boolean&gt;
 
 判断设备是否支持佩戴检测能力。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -279,7 +279,7 @@ isWearDetectionSupported(deviceId: string): Promise&lt;boolean&gt;
 | ----------------------------- | ---------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示支持佩戴检测能力；返回false表示不支持佩戴检测能力。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -311,11 +311,11 @@ isWearDetectionEnabled(deviceId: string, callback: AsyncCallback&lt;boolean&gt;)
 
 判断设备佩戴检测能力是否开启。使用Callback异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -324,7 +324,7 @@ isWearDetectionEnabled(deviceId: string, callback: AsyncCallback&lt;boolean&gt;)
 | deviceId | string | 是    | 远端设备地址，例如："XX:XX:XX:XX:XX:XX"。 |
 | callback | AsyncCallback&lt;boolean&gt; | 是    | 回调函数。当接口调用成功，err为undefined，data为佩戴检测能力开启结果；否则为错误对象。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -356,11 +356,11 @@ isWearDetectionEnabled(deviceId: string): Promise&lt;boolean&gt;
 
 判断设备佩戴检测能力是否开启。使用Promise异步回调。
 
-**系统接口**：此接口为系统接口。
+**系统接口：** 此接口为系统接口。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
 
 **参数：**
 
@@ -374,7 +374,7 @@ isWearDetectionEnabled(deviceId: string): Promise&lt;boolean&gt;
 | ----------------------------- | ---------- |
 | Promise&lt;boolean&gt; | Promise对象。返回true表示佩戴检测能力开启；返回false表示佩戴检测能力未开启。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 

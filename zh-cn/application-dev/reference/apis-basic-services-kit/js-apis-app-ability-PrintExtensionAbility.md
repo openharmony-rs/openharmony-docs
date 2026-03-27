@@ -23,7 +23,7 @@ onCreate(want: Want): void
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -54,7 +54,7 @@ onStartDiscoverPrinter(): void
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **示例：**
 
@@ -79,7 +79,7 @@ onStopDiscoverPrinter(): void
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **示例：**
 
@@ -106,7 +106,7 @@ ArkTS-Sta: onConnectPrinter(printerId: int): void
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -151,7 +151,7 @@ ArkTS-Sta: onDisconnectPrinter(printerId: int): void
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **参数：**
 | 参数名 | 类型 | 必填 | 说明 |
@@ -194,7 +194,7 @@ onDestroy(): void
 
 **ArkTS-Dyn起始版本**：14
 
-**ArkTS-Sta起始版本**：20
+**ArkTS-Sta起始版本**：23
 
 **示例：**
 

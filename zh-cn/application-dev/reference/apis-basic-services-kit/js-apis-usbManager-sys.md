@@ -388,7 +388,7 @@ usbManager.requestRight (#usbrequestright)会触发弹框请求用户授权；ad
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202      | Permission denied. Normal application do not have permission to use system api.  |
 | 801      | Capability not supported. |
@@ -454,7 +454,7 @@ ArkTS-Sta: getFunctionsFromString(funcs: string): int
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported. |
@@ -503,7 +503,7 @@ ArkTS-Sta: getStringFromFunctions(funcs: int): string
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. <br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.  |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported. |
@@ -551,7 +551,7 @@ setDeviceFunctions(funcs: int): Promise\<void\>
 
 | 错误码ID | 错误信息                                                                                                |
 | -------- | ------------------------------------------------------------------------------------------------------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.  |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  |
@@ -601,8 +601,8 @@ ArkTS-Sta: getDeviceFunctions(): int
 
 | 错误码ID | 错误信息                                                                        |
 | -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. No parameters are required.  |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.  |
+| 401      | Parameter error. No parameters are required.<br>**ArkTS模式**：该错误码仅适用于ArkTS-Dyn。|
+| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.  |
 | 14400004 | Service exception. Possible causes: 1. No accessory is plugged in. <br>**ArkTs模式**：该返回值仅适用于ArkTs-Sta|
@@ -695,7 +695,6 @@ ArkTS-Sta: getPortSupportModes(portId: int): PortModeType
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.   |
 | 801      | Capability not supported.  |
-| 14400003 | Unsupported operation. The current device does not support port role switching. |
 
 **示例：**
 

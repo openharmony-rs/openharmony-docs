@@ -496,9 +496,9 @@ ArkTS-Sta: moveWindowTo(x: int, y: int, callback: AsyncCallback&lt;void&gt;): vo
 >
 > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）外的其他窗口模式下使用。
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
 >
-> - 若需在非自由窗口状态下实现相对于屏幕的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
+> - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
 >
 > - 该方法对非自由窗口状态下的主窗口无效。
 
@@ -514,8 +514,8 @@ ArkTS-Sta: moveWindowTo(x: int, y: int, callback: AsyncCallback&lt;void&gt;): vo
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------------------------------------------- |
-| x        | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示位置在x轴右侧；值为负表示位置在x轴左侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y        | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在y轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| x        | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| y        | ArkTS-Dyn: number<br>ArkTS-Sta: int                    | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                     |
 
 **错误码：**
@@ -578,9 +578,9 @@ ArkTS-Sta: moveWindowTo(x: int, y: int): Promise&lt;void&gt;
 >
 > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）外的其他窗口模式下使用。
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
 >
-> - 若需在非自由窗口状态下实现相对于屏幕的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
+> - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
 >
 > - 该方法对非自由窗口状态下的主窗口无效。
 
@@ -596,8 +596,8 @@ ArkTS-Sta: moveWindowTo(x: int, y: int): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示位置在x轴右侧；值为负表示位置在x轴左侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在y轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。 |
 
 **返回值：**
 
@@ -658,13 +658,15 @@ ArkTS-Sta: moveWindowToAsync(x: int, y: int): Promise&lt;void&gt;
 
 移动窗口位置，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
 
-> **说明：**
->
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于主窗口移动。
->
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+在自由悬浮窗口模式下，不同类型窗口的移动行为如下：
+
+| 窗口类型 | [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态 | 非自由窗口状态 |
+|---------|---------------|-----------------|
+| 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |
+| 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
+| 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -745,13 +747,16 @@ ArkTS-Sta: moveWindowToAsync(x: int, y: int, moveConfiguration?: MoveConfigurati
 
 移动窗口位置，支持配置moveConfiguration参数指定窗口移动的目标屏幕ID，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
 
-> **说明：**
->
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于主窗口移动。
->
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+在自由悬浮窗口模式下，不同类型窗口的移动行为如下：
+
+| 窗口类型 | [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态 | 非自由窗口状态 |
+|---------|---------------|-----------------|
+| 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |
+| 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
+| 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
+
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -841,12 +846,11 @@ ArkTS-Sta: moveWindowToGlobal(x: int, y: int): Promise&lt;void&gt;
 
 基于屏幕坐标移动窗口位置，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
 
 > **说明：**
 >
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
-
+> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -927,11 +931,11 @@ ArkTS-Sta: moveWindowToGlobal(x: int, y: int, moveConfiguration?: MoveConfigurat
 
 基于屏幕坐标移动窗口位置，支持配置moveConfiguration参数指定窗口移动的目标屏幕ID，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
 
 > **说明：**
 >
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1021,11 +1025,11 @@ ArkTS-Sta: moveWindowToGlobalDisplay(x: int, y: int): Promise&lt;void&gt;
 
 基于[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)移动窗口位置，使用Promise异步回调。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
 
 > **说明：**
 >
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1237,11 +1241,11 @@ ArkTS-Sta: resize(width: int, height: int, callback: AsyncCallback&lt;void&gt;):
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用不报错不生效。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回1300002错误码。
 
 > **说明：**
 >
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 主窗口处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不报错不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1325,11 +1329,11 @@ ArkTS-Sta: resize(width: int, height: int): Promise&lt;void&gt;
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
-该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用不报错不生效。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回1300002错误码。
 
 > **说明：**
 >
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 主窗口处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不报错不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1629,7 +1633,7 @@ setWindowContainerColor(activeColor: string, inactiveColor: string): void
 | ------- | ------------------------------ |
 | 201     | Permission verification failed. The application does not have the permission required to call the API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. Possible cause: The main window is not created or destroyed.|
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.|
 | 1300004 | Unauthorized operation.                      |
 
 **示例：**
@@ -2571,7 +2575,7 @@ setDragKeyFramePolicy(keyFramePolicy: KeyFramePolicy): Promise&lt;KeyFramePolicy
 
 **设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备可正常调用，在其他设备中返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1设备、其他设备的电脑模式中可正常调用；在其他设备和其他模式中不生效不报错。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -2699,7 +2703,7 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>): Promise&lt;void
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -3883,7 +3887,11 @@ try {
 
 loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void&gt;): void
 
-根据当前工程中指定的页面路径为窗口加载具体页面内容，通过LocalStorage传递状态属性给加载的页面，使用callback异步回调。建议在UIAbility启动过程中使用该接口，重复调用将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+根据当前工程中指定的页面路径为窗口加载具体页面内容，通过LocalStorage传递状态属性给加载的页面，使用callback异步回调。
+
+建议在UIAbility启动过程中使用该接口，重复调用将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3951,7 +3959,11 @@ windowClass.loadContent('pages/page2', storage, (err: BusinessError<void> | null
 
 loadContent(path: string, storage: LocalStorage): Promise&lt;void&gt;
 
-根据当前工程中指定的页面路径为窗口加载具体页面内容，通过LocalStorage传递状态属性给加载的页面，使用Promise异步回调。建议在UIAbility启动过程中使用该接口，重复调用将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+根据当前工程中指定的页面路径为窗口加载具体页面内容，通过LocalStorage传递状态属性给加载的页面，使用Promise异步回调。
+
+建议在UIAbility启动过程中使用该接口，重复调用将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4021,7 +4033,11 @@ promise.then(() => {
 
 loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&lt;void&gt;): void
 
-根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用callback异步回调。建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用callback异步回调。
+
+建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4111,7 +4127,11 @@ export struct Index {
 
 loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
-根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，使用callback异步回调。建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，使用callback异步回调。
+
+建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4185,7 +4205,11 @@ export struct Index {
 
 loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。
+
+建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -5935,6 +5959,8 @@ on(type: 'screenshotAppEvent', callback: Callback&lt;ScreenshotEventType&gt;): v
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onScreenshotAppEvent](#onscreenshotappevent23)。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **ArkTS-Dyn起始版本：** 20
@@ -5968,6 +5994,49 @@ try {
 }
 ```
 
+## onScreenshotAppEvent<sup>23+</sup>
+
+onScreenshotAppEvent(callback: Callback&lt;ScreenshotEventType&gt;): void
+
+开启屏幕截屏事件类型的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('screenshotAppEvent')](#onscreenshotappevent20)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 是   | 回调函数。返回触发的截屏事件类型。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (eventType: window.ScreenshotEventType) => {
+  console.info(`screenshotAppEvent happened. Event: ${eventType}`);
+}
+try {
+  windowClass.onScreenshotAppEvent(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('screenshotAppEvent')<sup>20+</sup>
 
 off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;): void
@@ -5975,6 +6044,8 @@ off(type: 'screenshotAppEvent', callback?: Callback&lt;ScreenshotEventType&gt;):
 关闭屏幕截屏事件类型的监听。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offScreenshotAppEvent](#offscreenshotappevent23)。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6011,6 +6082,54 @@ try {
   windowClass.off('screenshotAppEvent');
 } catch (exception) {
   console.error(`Failed to unregister callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offScreenshotAppEvent<sup>23+</sup>
+
+offScreenshotAppEvent(callback?: Callback&lt;ScreenshotEventType&gt;): void
+
+关闭屏幕截屏事件类型的监听。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('screenshotAppEvent')](#offscreenshotappevent20)。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                | 必填 | 说明                                                         |
+| -------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;[ScreenshotEventType](arkts-apis-window-e.md#screenshoteventtype20)&gt; | 否   | 回调函数。返回触发的截屏事件类型。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口截图事件的监听。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ------------------------------ |
+| 1300002 | This window state is abnormal.                |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+const callback = (eventType: window.ScreenshotEventType) => {
+  // ...
+}
+try {
+  // 通过on接口开启监听
+  windowClass.onScreenshotAppEvent(callback);
+  // 关闭指定callback的监听
+  windowClass.offScreenshotAppEvent(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offScreenshotAppEvent();
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to unregister callback. Cause code: ${error.code}, message: ${error.message}`);
 }
 ```
 
@@ -6733,6 +6852,8 @@ on(type: 'occlusionStateChanged', callback: Callback&lt;OcclusionState&gt;): voi
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onOcclusionStateChanged](#onocclusionstatechanged23)。
+
 **系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Dyn起始版本：** 22
@@ -6767,6 +6888,53 @@ try {
 }
 ```
 
+## onOcclusionStateChanged()<sup>23+</sup>
+
+onOcclusionStateChanged(callback: Callback&lt;OcclusionState&gt;): void
+
+开启窗口可见性状态变化事件的监听。本接口返回的可见性与肉眼所见的可见性可能存在区别，如以下场景：
+- 非主窗口的阴影区域（可分别通过[setWindowShadowEnabled](arkts-apis-window-Window.md#setwindowshadowenabled20)和[setWindowShadowRadius](arkts-apis-window-Window.md#setwindowshadowradius17)设置是否显示阴影以及对应的阴影半径）被挡住也算遮挡，此时肉眼所见虽是完全可见，但实际返回的是部分可见。
+- 上层窗口带有透明效果时（包括完全不透明之外的所有透明程度）不会遮挡下层窗口，此时下层窗口是可见的。
+- 大多数处于动画效果下的窗口也不会遮挡住下层窗口，比如在手机设备上拖动悬浮窗时返回的下层窗口依然是可见的。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[onOcclusionStateChanged](#onocclusionstatechanged22)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 是   | 窗口可见性变化时的回调函数。详情见[可见性状态](arkts-apis-window-e.md#occlusionstate22)。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
+    console.info(`Window occlusion state changed: ${data}`);
+  };
+  windowClass.on('occlusionStateChanged', callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## off('occlusionStateChanged')<sup>22+</sup>
 
 off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): void
@@ -6774,6 +6942,8 @@ off(type: 'occlusionStateChanged', callback?: Callback&lt;OcclusionState&gt;): v
 关闭窗口可见性状态变化事件的监听。
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offOcclusionStateChanged](#offocclusionstatechanged23)。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -6814,6 +6984,241 @@ try {
 }
 ```
 
+## offOcclusionStateChanged<sup>23+</sup>
+
+offOcclusionStateChanged(callback?: Callback&lt;OcclusionState&gt;): void
+
+关闭窗口可见性状态变化事件的监听。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off("occlusionStateChanged")](#offocclusionstatechanged22)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[OcclusionState](arkts-apis-window-e.md#occlusionstate22)&gt; | 否   | 若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口可见性变化的监听。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+| 1300003 | This window manager service works abnormally. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.OcclusionState> = (data: window.OcclusionState) => {
+    console.info(`Window occlusion state changed: ${data}`);
+  };
+  // 通过on接口开启监听
+  windowClass.onOcclusionStateChanged(callback);
+  // 关闭指定callback的监听
+  windowClass.offOcclusionStateChanged(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offOcclusionStateChanged();
+} catch (exception) {
+  let error = exception as window.Error;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## on('frameMetricsMeasured')<sup>22+</sup>
+
+on(type: 'frameMetricsMeasured', callback: Callback&lt;FrameMetrics&gt;): void
+
+开启窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onFrameMetricsMeasured](#onframemetricsmeasured23)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| type     | string                         | 是   | 监听事件类型，固定为'frameMetricsMeasured'，即窗口帧率指标变化事件。 |
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 是  | 窗口帧率指标变化时的回调函数。详情见[帧率指标](arkts-apis-window-i.md#framemetrics22)。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
+    console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
+  };
+  windowClass.on('frameMetricsMeasured', callback);
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## onFrameMetricsMeasured<sup>23+</sup>
+
+onFrameMetricsMeasured(callback: Callback&lt;FrameMetrics&gt;): void
+
+开启窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[on('frameMetricsMeasured')](#onframemetricsmeasured22)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 是  | 窗口帧率指标变化时的回调函数。详情见[帧率指标](arkts-apis-window-i.md#framemetrics22)。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
+    console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
+  };
+  windowClass.onFrameMetricsMeasured(callback);
+} catch (exception) {
+  let error = exception as BusinessError;
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## off('frameMetricsMeasured')<sup>22+</sup>
+
+off(type: 'frameMetricsMeasured', callback?: Callback&lt;FrameMetrics&gt;): void
+
+关闭窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offFrameMetricsMeasured](#offFrameMetricsMeasured23)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| type     | string                         | 是   | 监听事件类型，固定为'frameMetricsMeasured'，即窗口帧率指标变化事件。 |
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 否  | 若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口帧率指标变化的监听。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
+    console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
+  };
+  // 通过on接口开启监听
+  windowClass.on('frameMetricsMeasured', callback);
+  // 关闭指定callback的监听
+  windowClass.off('frameMetricsMeasured', callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.off('frameMetricsMeasured');
+} catch (exception) {
+  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## offFrameMetricsMeasured<sup>23+</sup>
+
+offFrameMetricsMeasured(callback?: Callback&lt;FrameMetrics&gt;): void
+
+关闭窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('frameMetricsMeasured')](#offframemetricsmeasured22)。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                           | 必填 | 说明                                                     |
+| -------- | ------------------------------ | ---- | -------------------------------------------------------- |
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 否  | 若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口帧率指标变化的监听。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300002 | This window state is abnormal. |
+
+**示例：**
+
+```ts
+try {
+  let callback: Callback<window.FrameMetrics> = (data: window.FrameMetrics) => {
+    console.info(`Window frame metrics changed: ${JSON.stringify(data)}`);
+  };
+  // 通过on接口开启监听
+  windowClass.onFrameMetricsMeasured(callback);
+  // 关闭指定callback的监听
+  windowClass.offFrameMetricsMeasured(callback);
+  // 如果通过on开启多个callback进行监听，同时关闭所有监听：
+  windowClass.offFrameMetricsMeasured();
+} catch (exception) {
+  let error = exception as BusinessError
+  console.error(`Failed to register callback. Cause code: ${error.code}, message: ${error.message}`);
+}
+```
+
 ## on('systemDensityChange')<sup>15+</sup>
 
 on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
@@ -6824,7 +7229,7 @@ on(type: 'systemDensityChange', callback: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onSystemDensityChange](#onsystemdensitychange23)。
 
@@ -6872,7 +7277,7 @@ onSystemDensityChange(callback: Callback&lt;double&gt;): void
 
 开启本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。比如，当调整窗口所处屏幕的显示大小缩放系数时，可以从此接口监听到这个行为。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('systemDensityChange')](#onsystemdensitychange15)。
 
@@ -6920,7 +7325,7 @@ off(type: 'systemDensityChange', callback?: Callback&lt;number&gt;): void
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offSystemDensityChange](#offsystemdensitychange23)。
 
@@ -6969,7 +7374,7 @@ offSystemDensityChange(callback?: Callback&lt;double&gt;): void
 
 关闭本窗口所处屏幕的系统显示大小缩放系数变化事件的监听。
 
-**ArtTS模式：** 此接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 此接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('systemDensityChange')](#offsystemdensitychange15)。
 
@@ -7448,7 +7853,6 @@ onWindowStatusDidChange(callback: Callback&lt;WindowStatusType&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                         | 是   | 监听事件，固定为'windowStatusDidChange'，即窗口模式变化完成事件。 |
 | callback | Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt; | 是   | 回调函数。返回当前的窗口模式。                           |
 
 **错误码：**
@@ -7537,7 +7941,6 @@ offWindowStatusDidChange(callback?: Callback&lt;WindowStatusType&gt;): void
 
 | 参数名   | 类型                          | 必填 | 说明                                                     |
 | -------- | ----------------------------- | ---- | -------------------------------------------------------- |
-| type     | string                        | 是   | 监听事件，固定为'windowStatusDidChange'，即窗口模式变化完成事件。 |
 | callback | Callback&lt;[WindowStatusType](arkts-apis-window-e.md#windowstatustype11)&gt; | 否   | 回调函数。返回当前的窗口模式。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有窗口模式变化的监听。                           |
 
 **错误码：**
@@ -7586,7 +7989,7 @@ ArkTS-Sta: setWindowGrayScale(grayScale: double): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明                                     |
 | --------- | ------ | -- | ---------------------------------------- |
-| grayScale | ArkTS: number<br>ArkTS-Sta: double | 是 | 窗口灰阶。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示窗口图像无变化，1.0表示窗口图像完全转为灰度图像，0.0至1.0之间时效果呈线性变化。 |
+| grayScale | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 窗口灰阶。该参数为浮点数，取值范围为[0.0, 1.0]。0.0表示窗口图像无变化，1.0表示窗口图像完全转为灰度图像，0.0至1.0之间时效果呈线性变化。 |
 
 **返回值：**
 
@@ -8105,7 +8508,6 @@ onRectChangeInGlobalDisplay(callback: Callback&lt;RectChangeOptions&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
-| type     | string                         | 是   | 监听事件，固定为'rectChangeInGlobalDisplay'，即全局坐标系下窗口矩形变化事件。 |
 | callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 是   | 回调函数。返回当前窗口矩形变化值及变化原因。 |
 
 **错误码：**
@@ -8200,7 +8602,6 @@ offRectChangeInGlobalDisplay(callback?: Callback&lt;RectChangeOptions&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| type     | string                         | 是   | 监听事件，固定为'rectChangeInGlobalDisplay'，即全局坐标系下窗口矩形变化事件。     |
 | callback | Callback&lt;[RectChangeOptions](arkts-apis-window-i.md#rectchangeoptions12)&gt; | 否   | 回调函数。返回当前的窗口矩形及变化原因。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有全局坐标系下窗口矩形变化的监听。 |
 
 **错误码：**
@@ -8301,7 +8702,7 @@ onSubWindowClose(callback: Callback&lt;void&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('subWindowClose')](#onsubwindowclose12)。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -8396,7 +8797,7 @@ offSubWindowClose(callback?: Callback&lt;void&gt;): void
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('subWindowClose')](#offsubwindowclose12)。
 
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+**系统能力：** SystemCapability.Window.SessionManager
 
 **ArkTS-Sta起始版本：** 23
 
@@ -8918,7 +9319,15 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **ArkTS-Dyn起始版本：** 19
 
-**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在非2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：**
+
+针对PC/2in1设备：在API version 23之前，调用该接口会返回801错误码；从API version 23开始，可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
 
 **参数：**
 
@@ -8940,18 +9349,23 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 **示例：**
 
 ```ts
-let calculateRect(info: window.RotationChangeInfo): window.Rect {
-    // calculate result with info
-    let rect : window.Rect = {
-      left: 0,
-      top: 0,
-      width: 500,
-      height: 600,
-    }
-    return rect;
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function calculateRect(info: window.RotationChangeInfo): window.Rect {
+  // calculate result with info
+  let rect: window.Rect = {
+    left: 0,
+    top: 0,
+    width: 500,
+    height: 600,
+  };
+  return rect;
 }
 
-const callback = (info: window.RotationChangeInfo): window.RotationChangeResult | void => {
+function callback(info: window.RotationChangeInfo): window.RotationChangeResult | void {
   let result: window.RotationChangeResult = {
     rectType: window.RectType.RELATIVE_TO_SCREEN,
     windowRect: {
@@ -8961,20 +9375,46 @@ const callback = (info: window.RotationChangeInfo): window.RotationChangeResult 
       height: 0,
     }
   };
+
   if (info.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
-      result.rectType = window.RectType.RELATIVE_TO_SCREEN;
-      result.windowRect = calculateRect(info);
-      return result;
+    result.rectType = window.RectType.RELATIVE_TO_SCREEN;
+    result.windowRect = calculateRect(info);
+    return result;
   } else {
-      // do something after rotate
-      return;
+    // do something after rotate
+    return;
   }
 }
 
-try {
-  windowClass.on('rotationChange', callback);
-} catch (exception) {
-  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    let config: window.Configuration = {
+      name: 'test',
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+
+    try {
+      window.createWindow(config, (err: BusinessError, data: window.Window) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        windowClass = data;
+        try {
+          windowClass.on('rotationChange', callback);
+        } catch (exception) {
+          console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+        }
+        windowClass.resize(500, 1000);
+      });
+    } catch (exception) {
+      console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
 }
 ```
 
@@ -8994,7 +9434,15 @@ onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, Rotatio
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：**
+
+针对PC/2in1设备：可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
 
 **参数：**
 
@@ -9017,7 +9465,7 @@ onRotationChange(callback: RotationChangeCallback&lt;RotationChangeInfo, Rotatio
 ```ts
 import { BusinessError } from '@Kit.BasicServicesKit';
 
-function calculateRect(info: window.RotationChangeInfo): window.Rect {
+const calculateRect = (info: window.RotationChangeInfo): window.Rect => {
     // calculate result with info
     let rect : window.Rect = {
       left: 0,
@@ -9072,7 +9520,15 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **ArkTS-Dyn起始版本：** 19
 
-**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在非2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：**
+
+针对PC/2in1设备：在API version 23之前，调用该接口会返回801错误码；从API version 23开始，可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
 
 **参数：**
 
@@ -9121,7 +9577,15 @@ offRotationChange(callback?: RotationChangeCallback&lt;RotationChangeInfo, Rotat
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异：** 该接口在支持sensor旋转且不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：**
+
+针对PC/2in1设备：可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
 
 **参数：**
 
@@ -9166,7 +9630,7 @@ on(eventType: 'uiExtensionSecureLimitChange', callback: Callback&lt;boolean&gt;)
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onUiExtensionSecureLimitChange](#onuiextensionsecurelimitchange23)。
 
@@ -9209,7 +9673,7 @@ onUiExtensionSecureLimitChange(callback: Callback&lt;boolean&gt;): void
 
 开启窗口内uiExtension安全限制变化事件的监听, 建议在窗口创建后立即监听。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('uiExtensionSecureLimitChange')](#onuiextensionsecurelimitchange20)。
 
@@ -9254,7 +9718,7 @@ off(eventType: 'uiExtensionSecureLimitChange', callback?: Callback&lt;boolean&gt
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offUiExtensionSecureLimitChange](#offuiextensionsecurelimitchange23)。
 
@@ -9303,7 +9767,7 @@ offUiExtensionSecureLimitChange(callback?: Callback&lt;boolean&gt;): void
 
 关闭窗口内uiextension安全限制变化事件的监听。
 
-**ArkTS模式：** 该接口仅适用ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('uiExtensionSecureLimitChange')](#offuiextensionsecurelimitchange20)。
 
@@ -9632,7 +10096,7 @@ getWindowColorSpace(): ColorSpace
 
 | 错误码ID | 错误信息 |
 | ------- | ------------------------------ |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed.|
 
 **示例：**
 
@@ -10538,7 +11002,9 @@ try {
 
 setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置窗口是否为可触状态，使用callback异步回调。
+设置窗口是否为可点击状态，使用callback异步回调。
+
+当窗口处于可点击状态时，若用户点击命中该窗口，事件将发送给该窗口处理。当窗口处于不可点击状态时，透传点击事件，传递给下层窗口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10552,7 +11018,7 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----------- | ------------------------- | -- | ----------------------------------------------- |
-| isTouchable | boolean                   | 是 | 窗口是否为可触状态。true表示可触；false表示不可触。 |
+| isTouchable | boolean                   | 是 | 窗口是否为可点击状态。true表示可点击；false表示不可点击。 |
 | callback    | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                        |
 
 **错误码：**
@@ -10611,7 +11077,9 @@ try {
 
 setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 
-设置窗口是否为可触状态，使用Promise异步回调。
+设置窗口是否为可点击状态，使用Promise异步回调。
+
+当窗口处于可点击状态时，若用户点击命中该窗口，事件将发送给该窗口处理。当窗口处于不可点击状态时，透传点击事件，传递给下层窗口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -10625,7 +11093,7 @@ setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----------- | ------- | -- | ----------------------------------------------- |
-| isTouchable | boolean | 是 | 窗口是否为可触状态。true表示可触；false表示不可触。 |
+| isTouchable | boolean | 是 | 窗口是否为可点击状态。true表示可点击；false表示不可点击。 |
 
 **返回值：**
 
@@ -12513,9 +12981,9 @@ try {
 
 ## setWindowMask<sup>12+</sup>
 
-ArkTs-Dyn: setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
+ArkTS-Dyn: setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
-ArkTs-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt;void&gt;
+ArkTS-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt;void&gt;
 
 设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 
@@ -12529,7 +12997,7 @@ ArkTs-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12551,9 +13019,9 @@ ArkTs-Sta: setWindowMask(windowMask: Array&lt;Array&lt;long&gt;&gt;): Promise&lt
 | :------- | :-------------------------------------------- |
 | 401      | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.    |
 | 1300003  | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation.                       |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only subwindows and float windows are supported.    |
 
 **示例：**
 
@@ -13305,6 +13773,8 @@ ArkTS-Sta: setWindowDecorHeight(height: int): void
 
 当主窗口进入全屏沉浸状态时，此时鼠标Hover到窗口标题栏热区时，会显示悬浮标题栏，悬浮标题栏高度固定为37vp。
 
+由于系统像素转换可能存在精度误差，设置后调用[getWindowDecorHeight()](#getwindowdecorheight11)获取的值可能与设置的值存在1vp的差异。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
@@ -13535,6 +14005,8 @@ ArkTS-Dyn: getWindowDecorHeight(): number
 ArkTS-Sta: getWindowDecorHeight(): int
 
 对存在标题栏和三键区的窗口形态生效，用于获取窗口的标题栏高度。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+由于系统像素转换可能存在精度误差，调用[setWindowDecorHeight()](#setwindowdecorheight11)设置的值与获取的值可能存在1vp的差异。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -13889,7 +14361,7 @@ ArkTS-Sta: setParentWindow(windowId: int): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
-| windowId  | ArkTS-Dyn: number<br/>ArKTS-Sta: int | 是   | 父窗口id，该参数应为整数。推荐使用[getWindowProperties()](#getwindowproperties9)方法获取父窗口id属性。|
+| windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 父窗口id，该参数应为整数。推荐使用[getWindowProperties()](#getwindowproperties9)方法获取父窗口id属性。|
 
 **返回值：**
 
@@ -14447,9 +14919,13 @@ enableLandscapeMultiWindow(): Promise&lt;void&gt;
 
 此接口只对应用主窗口生效，且需要在module.json5配置文件中[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中配置preferMultiWindowOrientation属性为"landscape_auto"。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -14505,9 +14981,13 @@ disableLandscapeMultiWindow(): Promise&lt;void&gt;
 
 此接口只对应用主窗口生效，且需要在module.json5配置文件中[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中配置preferMultiWindowOrientation属性为"landscape_auto"。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
 
 **返回值：**
 
@@ -15386,6 +15866,259 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+## setSeparationTouchEnabled<sup>23+</sup>
+
+setSeparationTouchEnabled(enabled: boolean): Promise&lt;void&gt;
+
+设置当前窗口是否支持事件分离状态，使用Promise异步回调。默认场景下为true，支持事件分离状态。
+
+当enable为true，支持事件分离状态下：
+
+- 所有手指点击产生的事件均会发送给其手指命中的窗口。
+
+当enable为false，不支持事件分离状态下：
+
+- 当第一根手指点击持续命中该窗口未抬起时，后续其他手指无论是否点击命中该窗口，其产生的事件均会分发给该窗口。
+
+- 当第一根手指点击未保持持续命中该窗口时，后续其他手指即使点击命中该窗口，其产生的事件也不会分发给该窗口，该事件会被系统丢弃。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型    | 必填 | 说明                 |
+| ----------- | ------- | ---- | -------------------- |
+| enabled | boolean | 是   | 窗口是否支持事件分离状态。true表示支持；false表示不支持。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally. Possible cause: Internal IPC error. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enabled = false;
+try {
+  let promise = windowClass.setSeparationTouchEnabled(enabled);
+  promise.then(() => {
+    console.info('Succeeded in setting the window to be separationTouchEnabled.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window to be separationTouchEnabled. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set the separationTouchEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enabled = false;
+try {
+  let promise = windowClass.setSeparationTouchEnabled(enabled);
+  promise?.then(() => {
+    console.info('Succeeded in setting the window to be separationTouchEnabled.');
+  }).catch((e) => {
+    let err = e as BusinessError;
+    console.error(`Failed to set the window to be separationTouchEnabled. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set the separationTouchEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+
+```
+
+## isSeparationTouchEnabled<sup>23+</sup>
+
+isSeparationTouchEnabled():boolean
+
+获取当前窗口是否支持事件分离的状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| boolean          |  当前窗口是否支持事件分离。</br>true表示支持窗口事件分离，false表示不支持窗口事件分离。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isSeparationTouchEnabled = windowClass.isSeparationTouchEnabled();
+  console.info(`Succeeded in getting the window separationTouchEnabled status: ${isSeparationTouchEnabled}`);
+} catch (exception) {
+  console.error(`Failed to get the window separationTouchEnabled status.. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## setReceiveDragEventEnabled<sup>23+</sup>
+
+setReceiveDragEventEnabled(enabled: boolean): Promise&lt;void&gt;
+
+设置当前窗口是否能接收[拖拽事件](./arkui-ts/ts-universal-events-drag-drop.md#dragevent7)，使用Promise异步回调。
+
+默认场景下为true，能够接收拖拽事件。
+
+当enable为false，当前窗口不能接收拖拽事件。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名      | 类型    | 必填 | 说明                 |
+| ----------- | ------- | ---- | -------------------- |
+| enabled | boolean | 是   | 窗口是否能接收拖拽事件。true表示能够接收拖拽事件；false表示不能接收拖拽事件。 |
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally. Possible cause: Internal IPC error. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enabled = false;
+try {
+  let promise = windowClass.setReceiveDragEventEnabled(enabled);
+  promise.then(() => {
+    console.info('Succeeded in setting the window to be WindowReceiveDragEventEnabled.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window to be the window ReceiveDragEventEnabled. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set the window ReceiveDragEventEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let enabled = false;
+try {
+  let promise = windowClass.setReceiveDragEventEnabled(enabled);
+  promise?.then(() => {
+    console.info('Succeeded in setting the window to be WindowReceiveDragEventEnabled.');
+  }).catch((e) => {
+    let err = e as BusinessError;
+    console.error(`Failed to set the window to be WindowReceiveDragEventEnabled. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set the WindowReceiveDragEventEnabled. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## isReceiveDragEventEnabled<sup>23+</sup>
+
+isReceiveDragEventEnabled():boolean
+
+获取当前窗口是否能接收[拖拽事件](./arkui-ts/ts-universal-events-drag-drop.md#dragevent7)的状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+
+**返回值：**
+
+| 类型                | 说明                      |
+| ------------------- | ------------------------- |
+| boolean          |  当前窗口是否能接收拖拽事件的状态。</br>true表示能接收拖拽事件的状态，false表示不能接收拖拽事件的状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------------------- |
+| 801      | Capability not supported. Function can not work because the current device does not support this ability. |
+| 1300002  | This window state is abnormal. Possible cause: The window is not created or destroyed. |
+| 1300003  | This window manager service works abnormally.        |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isReceiveDragEventEnabled = windowClass.isReceiveDragEventEnabled();
+  console.info(`Succeeded in getting the window receiveDragEvent status: ${isReceiveDragEventEnabled}`);
+} catch (exception) {
+  console.error(`Failed to get the window receiveDragEvent status. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## setWindowShadowRadius<sup>17+</sup>
 
 ArkTS-Dyn: setWindowShadowRadius(radius: number): void
@@ -15906,7 +16639,9 @@ export default class EntryAbility extends UIAbility {
 
 ## setRelativePositionToParentWindowEnabled<sup>20+<sup>
 
-setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor, offsetX?: number, offsetY?: number): Promise&lt;void&gt;
+ArkTS-Dyn: setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor, offsetX?: number, offsetY?: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor, offsetX?: int, offsetY?: int): Promise&lt;void&gt;
 
 用于设置一级子窗是否支持与主窗保持相对位置不变。使用Promise异步回调。
 
@@ -15926,7 +16661,7 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 
 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备（Phone设备除外，在Phone设备上调用该接口会返回801错误码）上可正常调用；在支持并不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错不生效；在不支持自由窗口的设备中返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持并不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错不生效；在不支持自由窗口的设备中返回801错误码。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、2in1设备上可调用且不报错（当设备处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用此接口并生效；当设备不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时调用此接口不生效不报错，设备切换到自由窗口状态时生效）；在其他设备中调用返回801错误码。
 
 **ArkTS-Dyn起始版本：** 20
 
@@ -15938,8 +16673,8 @@ setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor
 | ----------- | ------- | -- | -------------------------------------------------------- |
 | enabled | boolean | 是 | 一级子窗是否支持与主窗保持相对位置不变。true表示支持；false表示不支持。  |
 | anchor | [WindowAnchor](arkts-apis-window-e.md#windowanchor20) | 否 | 一级子窗与主窗保持相对位置不变时的窗口锚点枚举。该参数仅在enabled为true时生效，默认值为window.WindowAnchor.TopStart，即默认锚点为窗口左上角。  |
-| offsetX | number | 否 | 一级子窗锚点与主窗锚点位置的x轴偏移量，单位为px。该参数仅在enabled为true时生效，仅支持整数输入，浮点数向下取整，默认值为0。  |
-| offsetY | number | 否 | 一级子窗锚点与主窗锚点位置的y轴偏移量，单位为px。该参数仅在enabled为true时生效，仅支持整数输入，浮点数向下取整，默认值为0。  |
+| offsetX | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 一级子窗锚点与主窗锚点位置的x轴偏移量，单位为px。该参数仅在enabled为true时生效，仅支持整数输入，浮点数向下取整，默认值为0。  |
+| offsetY | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 一级子窗锚点与主窗锚点位置的y轴偏移量，单位为px。该参数仅在enabled为true时生效，仅支持整数输入，浮点数向下取整，默认值为0。  |
 
 **返回值：**
 
@@ -16778,9 +17513,13 @@ setWindowSystemBarEnable(names: Array<'status' | 'navigation'>, callback: AsyncC
 >
 > 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowSystemBarEnable()](#setwindowsystembarenable9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **参数：**
 
@@ -16848,7 +17587,6 @@ setWindowLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&l
 > **说明：**
 >
 > 从API version 9开始支持，从API version 12开始废弃，建议使用Promise方式的[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
-
 
 **ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
 
@@ -16928,7 +17666,11 @@ show(callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[showWindow()](#showwindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -16961,7 +17703,11 @@ show(): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[showWindow()](#showwindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -16992,7 +17738,11 @@ destroy(callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[destroyWindow()](#destroywindow9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17025,7 +17775,11 @@ destroy(): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[destroyWindow()](#destroywindow9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -17058,7 +17812,11 @@ moveTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[moveWindowTo()](#movewindowto9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17095,7 +17853,11 @@ moveTo(x: number, y: number): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[moveWindowTo()](#movewindowto9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17146,7 +17908,11 @@ resetSize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): v
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[resize()](#resize9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17194,7 +17960,11 @@ resetSize(width: number, height: number): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[resize()](#resize9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17232,7 +18002,11 @@ getProperties(callback: AsyncCallback&lt;WindowProperties&gt;): void
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getWindowProperties()](#getwindowproperties9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -17265,7 +18039,11 @@ getProperties(): Promise&lt;WindowProperties&gt;
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议使用[getWindowProperties()](#getwindowproperties9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **返回值：**
 
@@ -17397,7 +18175,11 @@ setFullScreen(isFullScreen: boolean, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -17451,7 +18233,11 @@ setFullScreen(isFullScreen: boolean): Promise&lt;void&gt;
 >
 > 从API version 6开始支持，从API version 9开始废弃，建议联合使用[setWindowSystemBarEnable()](#setwindowsystembarenable9)和[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代实现全屏。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 6
 
 **参数：**
 
@@ -17508,7 +18294,11 @@ setLayoutFullScreen(isLayoutFullScreen: boolean, callback: AsyncCallback&lt;void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17562,7 +18352,11 @@ setLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowLayoutFullScreen()](#setwindowlayoutfullscreen9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17865,13 +18659,21 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-为当前窗口加载具体页面内容，使用callback异步回调。建议在UIAbility启动过程中使用该接口，多次调用该接口会先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+为当前窗口加载具体页面内容，使用callback异步回调。
+
+建议在UIAbility启动过程中使用该接口，多次调用该接口会先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setUIContent()](#setuicontent9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17899,13 +18701,21 @@ windowClass.loadContent('pages/page2/page3', (err: BusinessError) => {
 
 loadContent(path: string): Promise&lt;void&gt;
 
-为当前窗口加载具体页面内容，使用Promise异步回调。建议在UIAbility启动过程中使用该接口，多次调用该接口会先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+为当前窗口加载具体页面内容，使用Promise异步回调。
+
+建议在UIAbility启动过程中使用该接口，多次调用该接口会先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 > **说明：**
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setUIContent()](#setuicontent9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17942,7 +18752,11 @@ isShowing(callback: AsyncCallback&lt;boolean&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isWindowShowing()](#iswindowshowing9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -17975,7 +18789,11 @@ isShowing(): Promise&lt;boolean&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[isWindowShowing()](#iswindowshowing9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -18547,7 +19365,11 @@ setFocusable(isFocusable: boolean, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowFocusable()](#setwindowfocusable9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18583,7 +19405,11 @@ setFocusable(isFocusable: boolean): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowFocusable()](#setwindowfocusable9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18868,7 +19694,11 @@ setTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): void
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowTouchable()](#setwindowtouchable9)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -18904,7 +19734,11 @@ setTouchable(isTouchable: boolean): Promise&lt;void&gt;
 >
 > 从API version 7开始支持，从API version 9开始废弃，建议使用[setWindowTouchable()](#setwindowtouchable9-1)替代。
 
+**ArkTS模式：** 此接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 

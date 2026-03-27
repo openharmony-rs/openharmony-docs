@@ -502,9 +502,7 @@ matrix1.postConcat(matrix2);
 
 ## isEqual<sup>12+</sup>
 
-ArkTS-Dyn: isEqual(matrix: Matrix): Boolean
-
-ArkTS-Sta: isEqual(matrix: Matrix): boolean
+isEqual(matrix: Matrix): boolean
 
 判断两个矩阵是否相等。
 
@@ -524,7 +522,7 @@ ArkTS-Sta: isEqual(matrix: Matrix): boolean
 
 | 类型                        | 说明                  |
 | --------------------------- | -------------------- |
-| ArkTS-Dyn: Boolean<br/>ArkTS-Sta: boolean | 返回两个矩阵的比较结果。true表示两个矩阵相等，false表示两个矩阵不相等。 |
+| boolean | 返回两个矩阵的比较结果。true表示两个矩阵相等，false表示两个矩阵不相等。 |
 
 **错误码：**
 
@@ -552,9 +550,7 @@ if (matrix1.isEqual(matrix2)) {
 
 ## invert<sup>12+</sup>
 
-ArkTS-Dyn: invert(matrix: Matrix): Boolean
-
-ArkTS-Sta: invert(matrix: Matrix): boolean
+invert(matrix: Matrix): boolean
 
 将矩阵matrix设置为当前矩阵的逆矩阵，并返回是否设置成功的结果。
 
@@ -574,7 +570,7 @@ ArkTS-Sta: invert(matrix: Matrix): boolean
 
 | 类型                        | 说明                  |
 | --------------------------- | -------------------- |
-| ArkTS-Dyn: Boolean<br/>ArkTS-Sta: boolean | 返回matrix是否被设置为逆矩阵的结果。true表示当前矩阵可逆，matrix被设置为逆矩阵，false表示当前矩阵不可逆，matrix不被设置。 |
+| boolean | 返回matrix是否被设置为逆矩阵的结果。true表示当前矩阵可逆，matrix被设置为逆矩阵，false表示当前矩阵不可逆，matrix不被设置。 |
 
 **错误码：**
 
@@ -602,7 +598,7 @@ if (matrix1.invert(matrix2)) {
 
 ## isIdentity<sup>12+</sup>
 
-isIdentity(): Boolean
+isIdentity(): boolean
 
 判断矩阵是否是单位矩阵。
 
@@ -616,7 +612,7 @@ isIdentity(): Boolean
 
 | 类型                        | 说明                  |
 | --------------------------- | -------------------- |
-| Boolean | 返回矩阵是否是单位矩阵。true表示矩阵是单位矩阵，false表示矩阵不是单位矩阵。 |
+| boolean | 返回矩阵是否是单位矩阵。true表示矩阵是单位矩阵，false表示矩阵不是单位矩阵。 |
 
 **示例：**
 
@@ -982,7 +978,7 @@ ArkTS-Sta: mapRadius(radius: double): double
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 

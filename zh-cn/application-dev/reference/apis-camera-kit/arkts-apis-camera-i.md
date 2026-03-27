@@ -15,13 +15,13 @@
 
 | 名称                            | 类型                                                      | 只读 | 可选 | 说明                                                         |
 | ------------------------------- | --------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| cameraId                        | string                                                    | 是   | 否   | 相机ID。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | 是   | 否   | 相机位置。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | 是   | 否   | 相机类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | 是   | 否   | 相机连接类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| cameraOrientation<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 是   | 否   | 相机安装角度，不受屏幕旋转影响，取值范围为[0, 360]，单位：度。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 22 |
-| hostDeviceName<sup>15+</sup>    | string                                                    | 是   | 否   | 远端设备名称。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
-| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否   | 远端设备类型。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
+| cameraId                        | string                                                    | 是   | 否   | 相机ID。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| cameraPosition                  | [CameraPosition](arkts-apis-camera-e.md#cameraposition)   | 是   | 否   | 相机位置。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| cameraType                      | [CameraType](arkts-apis-camera-e.md#cameratype)           | 是   | 否   | 相机类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| connectionType                  | [ConnectionType](arkts-apis-camera-e.md#connectiontype)   | 是   | 否   | 相机连接类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| cameraOrientation<sup>12+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: int                       | 是   | 否   | 相机安装角度，不受屏幕旋转影响，取值范围为[0, 360]，单位：度。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| hostDeviceName<sup>15+</sup>    | string                                                    | 是   | 否   | 远端设备名称。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否   | 远端设备类型。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## CameraStatusInfo
 
@@ -33,7 +33,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型                           |    只读   |     可选     | 说明       |
 | ------ | ----------------------------- | --------- |------------ | ---------- |
@@ -50,12 +50,12 @@
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型                           |    只读   |     可选     | 说明       |
 | ------ | ----------------------------- | --------- |------------ | ---------- |
-| supportedCameras | [Array<CameraDevice\>](arkts-apis-camera-i.md#cameradevice) |     否    |       否     | 当前折叠状态所支持的相机信息列表。 |
-| foldStatus | [FoldStatus](arkts-apis-camera-e.md#foldstatus12) |     否    |       否     | 折叠屏折叠状态。 |
+| supportedCameras | [Array<CameraDevice\>](arkts-apis-camera-i.md#cameradevice) |     是    |       否     | 当前折叠状态所支持的相机信息列表。 |
+| foldStatus | [FoldStatus](arkts-apis-camera-e.md#foldstatus12) |     是    |       否     | 折叠屏折叠状态。 |
 
 ## Profile
 
@@ -67,7 +67,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                          | 只读 | 可选 | 说明         |
 | -------- | ----------------------------- |---- | ---- | ------------- |
@@ -84,7 +84,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                          | 只读 | 可选 | 说明            |
 | -------- | ----------------------------- |----- |---| -------------- |
@@ -101,7 +101,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 类型                                      | 只读 | 可选 | 说明        |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
@@ -117,7 +117,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                           | 类型                                                | 只读 | 可选 | 说明                |
 | ----------------------------- | --------------------------------------------------- | ---- | ---- |-------------------|
@@ -136,7 +136,7 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称              | 类型       | 只读 | 可选 | 说明        |
 | ---------------- | ---------- | ---- | ---- | ----------- |
@@ -154,7 +154,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型    | 只读 | 可选  | 说明         |
 | ------ | ------ | ---- |-----| ------------ |
@@ -171,7 +171,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读   | 可选   | 说明         |
 | ------ | ------ | ------ | ------ | ------------ |
@@ -188,14 +188,14 @@
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型    | 只读 | 可选  | 说明         |
 | ------ | ------ | ---- |-----| ------------ |
-| device              | [CameraDevice](arkts-apis-camera-i.md#cameradevice)   | 否   | 否   | 相机并发设备。 |
-| type                | [CameraConcurrentType](arkts-apis-camera-e.md#cameraconcurrenttype18)  | 否   | 否   | 镜头并发类型。 |
-| modes               | Array\<[SceneMode](arkts-apis-camera-e.md#scenemode11) \>              | 否   | 否   | 相机支持的模式。 |
-| outputCapabilities  | Array\<[CameraOutputCapability](#cameraoutputcapability) \> | 否   | 否   | 相机对应模式的输出能力集。 |
+| device              | [CameraDevice](arkts-apis-camera-i.md#cameradevice)   | 是   | 否   | 相机并发设备。 |
+| type                | [CameraConcurrentType](arkts-apis-camera-e.md#cameraconcurrenttype18)  | 是   | 否   | 镜头并发类型。 |
+| modes               | Array\<[SceneMode](arkts-apis-camera-e.md#scenemode11) \>              | 是   | 否   | 相机支持的模式。 |
+| outputCapabilities  | Array\<[CameraOutputCapability](#cameraoutputcapability) \> | 是   | 否   | 相机对应模式的输出能力集。 |
 
 ## Location
 
@@ -207,7 +207,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型   | 只读 | 可选  |说明         |
 | ------------ | ------ | ---- |-----|------------ |
@@ -225,7 +225,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型                            | 只读 | 可选 | 说明                                                                   |
 | -------- | ------------------------------- | ---- | ---- |----------------------------------------------------------------------|
@@ -244,7 +244,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型   | 只读 | 可选 | 说明        |
 | --------- | ------ | ---- | ---- | ---------- |
@@ -261,7 +261,7 @@
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   | 只读 | 可选 | 说明       |
 | --------- | ------ | ---- | ---- | ---------- |
@@ -277,7 +277,7 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型    | 只读 | 可选 | 说明       |
 | ---------- | ------ | ---- | ---- | --------- |
@@ -294,7 +294,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型    | 只读 | 可选 | 说明       |
 | ---------- | ------ | ---- | ---- | ---------|
@@ -311,12 +311,12 @@
 
 **ArkTS-Dyn起始版本：** 13
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型      | 只读 | 可选 | 说明                      |
 | ---------- |---------| ---- | ---- |-------------------------|
-| isDeviceSwitched  | boolean | 否   | 否   | 自动切换镜头是否成功。true表示成功，false表示失败。       |
-| isDeviceCapabilityChanged | boolean  | 否   | 否   | 自动切换镜头成功后，其镜头能力值是否发生改变。true表示发生变化，false表示未发生变化。 |
+| isDeviceSwitched  | boolean | 是   | 否   | 自动切换镜头是否成功。true表示成功，false表示失败。       |
+| isDeviceCapabilityChanged | boolean  | 是   | 否   | 自动切换镜头成功后，其镜头能力值是否发生改变。true表示发生变化，false表示未发生变化。 |
 
 ## Rect
 
@@ -328,7 +328,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称      | 类型   |  只读  | 可选  |           说明         |
 | -------- | ------ | ------ |-----| --------------------- |
@@ -347,7 +347,7 @@
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称         | 类型                                        | 只读 | 可选 |说明                |
 | ----------- | ------------------------------------------- | ---- | ---- | ----------------- |
@@ -365,8 +365,58 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称     | 类型        |   只读   |   可选   | 说明       |
 | -------- | ---------- | -------- | -------- | ---------- |
 | duration |   ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/>   |   否     |    否    | 平滑变焦总时长，单位ms。 |
+
+## ControlCenterStatusInfo<sup>20+</sup>
+
+相机控制器效果激活状态信息。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称     | 类型        |   只读   |   可选   | 说明       |
+| -------- | ---------- | -------- | -------- | ---------- |
+| effectType | [ControlCenterEffectType](arkts-apis-camera-e.md#controlcentereffecttype20) |   是    |    否    | 相机控制器效果类型。 |
+| isActive | boolean | 是| 否| 相机控制器效果激活状态。true表示已激活，false表示未激活。 |
+
+## IsoInfo<sup>22+</sup>
+
+感光度（ISO）参数信息。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型    | 只读 | 可选 | 说明           |
+| ---- | ------- | ---- |--| -------------- |
+| iso  | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 是   | 是 | ISO值。        |
+
+## CameraOcclusionDetectionResult<sup>23+</sup>
+
+镜头遮挡或脏污检测回调返回的接口实例，表示镜头遮挡或脏污状态信息。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                 | 类型       | 只读 | 可选 | 说明                                |
+|--------------------| ---------- | ---- | ---- |-----------------------------------|
+| isCameraOccluded   | boolean    | 是   | 否   | 镜头是否被遮挡。true表示镜头被遮挡，false表示镜头无遮挡。 |
+| isCameraLensDirty  | boolean    | 是   | 否   | 镜头是否有脏污。true表示镜头有脏污，false表示镜头无脏污。 |

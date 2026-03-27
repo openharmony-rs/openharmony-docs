@@ -12,6 +12,8 @@
 > - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+> - 该组件仅可在Stage模型下使用。
 > 
 > - 该组件不支持在Wearable设备上使用。
 
@@ -52,7 +54,7 @@ titleBuild?: SubHeaderV2TitleBuilder;
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                                                      | 必填 | 装饰器类型 | 说明                                     |
 | -------- |---------------------------------------------------------| -------- | -------- |----------------------------------------|
@@ -75,7 +77,7 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                        | 说明                     |
 | ----------------------------- |------------------------|
@@ -89,20 +91,15 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 
 ### 属性
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 22
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明                           |
 | -------- | -------- | -------- | -------- |------------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | @Trace | 标题内容。<br />默认值：undefined                        |
-| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | @Trace | 副标题内容。<br />默认值：undefined                       |
-| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md)  | 否 | @Trace | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined   |
-| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md)  | 否 | @Trace | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined |
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | @Trace | 标题内容。<br />默认值：undefined<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | @Trace | 副标题内容。<br />默认值：undefined<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md)  | 否 | @Trace | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md)  | 否 | @Trace | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined<br />**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | @Trace  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ### constructor
 
@@ -116,7 +113,7 @@ constructor(options: SubHeaderV2TitleOptions)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -132,16 +129,13 @@ constructor(options: SubHeaderV2TitleOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 22
-
 | 名称 | 类型 | 必填  | 说明                          |
 | -------- | -------- | -------- |-----------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 标题内容。<br />默认值：undefined                       |
-| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 副标题内容。<br />默认值：undefined                      |
-| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md)  | 否 | 设置标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined |
-| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md)  | 否 | 设置副标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined |
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 标题内容。<br />默认值：undefined<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23  |
+| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  | 否 | 副标题内容。<br />默认值：undefined<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23   |
+| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md)  | 否 | 设置标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md)  | 否 | 设置副标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 18 <br/>**ArkTS-Sta起始版本：** 23 |
+| titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/> **ArkTS-Dyn起始版本：** 23 <br/>**ArkTS-Sta起始版本：** 23 |
 
 ## SubHeaderV2Select
 
@@ -157,12 +151,12 @@ select内容以及事件。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                                                               | 必填 | 装饰器类型| 说明                                                                        |
 | -------- |------------------------------------------------------------------| -------- | -------- |---------------------------------------------------------------------------|
 | options | [SelectOption](ts-basic-components-select.md#selectoption对象说明)[] | 是 | @Trace | 下拉选项内容。                                                                   |
-| selectedIndex | number                                                           | 否 |@Trace | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。 |
+| selectedIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                                       | 否 |@Trace | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。 |
 | selectedContent | [ResourceStr](ts-types.md#resourcestr)                         | 否 | @Trace | 设置下拉按钮本身的文本内容。默认值：'' 。从API version 20开始，支持Resource类型。                             |
 | onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)                                   | 否 | @Trace | 下拉菜单选中某一项的回调。 <br />默认值：undefined                                               |
 | defaultFocus | boolean | 否 | @Trace |下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false                                  |
@@ -179,7 +173,7 @@ select内容以及事件构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -197,19 +191,21 @@ select内容以及事件构造函数。
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                                                               | 必填  | 说明                                                                        |
 | -------- |------------------------------------------------------------------| -------- |---------------------------------------------------------------------------| 
 | options | [SelectOption](ts-basic-components-select.md#selectoption对象说明)[] | 是 | 下拉选项内容。                                                                   |
-| selectedIndex | number                                                           | 否 | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。 |
+| selectedIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int                                       | 否 | 设置下拉菜单初始选项的索引。<br />第一项的索引为0。<br />当不设置selected属性时，<br />默认选择值为-1，菜单项不选中。 |
 | selectedContent | [ResourceStr](ts-types.md#resourcestr)                                                           | 否 | 设置下拉按钮本身的文本内容。默认值：''。从API version 20开始，支持Resource类型。                                                      |
 | onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)          | 否 | 下拉菜单选中某一项的回调。<br />默认值：undefined                                                |
 | defaultFocus | boolean | 否 | 下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false                                  |
 
 ## SubHeaderV2SelectOnSelect
 
-type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: string) => void
+ArkTS-Dyn: type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: string) => void
+
+ArkTS-Sta: type SubHeaderV2SelectOnSelect = (selectedIndex: int, selectedContent?: string) => void
 
 下拉菜单选中某一项的回调类型。
 
@@ -219,13 +215,13 @@ type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: strin
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名            | 类型     | 必填 | 说明                       |
 |:--------------|:-------|:---|:-------------------------|
-| selectedIndex   | number | 是  | 下拉菜单选中某一项的回调类型。表示选中项的索引。 |
+| selectedIndex   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  | 下拉菜单选中某一项的回调类型。表示选中项的索引。 |
 | selectedContent | string | 否  | 下拉菜单选中某一项的回调类型。表示选中项的值。  |
 
 ## SubHeaderV2OperationType
@@ -238,7 +234,7 @@ type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: strin
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -259,7 +255,7 @@ type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 类型                        | 说明                                |
 | ----------------------------- |-----------------------------------|
@@ -280,7 +276,7 @@ type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明                                                  |
 | -------- | -------- | -------- | -------- |-----------------------------------------------------|
@@ -303,7 +299,7 @@ constructor(options: SubHeaderV2OperationItemOptions)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -323,7 +319,7 @@ type SubHeaderV2OperationItemAction = () => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## SubHeaderV2OperationItemOptions
 
@@ -335,7 +331,7 @@ type SubHeaderV2OperationItemAction = () => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称                       | 类型                                          | 必填  | 说明                                                  |
 |--------------------------|---------------------------------------------| -------- |-----------------------------------------------------|
@@ -358,7 +354,7 @@ type SubHeaderV2TitleBuilder= () => void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 ## 事件
 不支持[通用事件](ts-component-general-events.md)。

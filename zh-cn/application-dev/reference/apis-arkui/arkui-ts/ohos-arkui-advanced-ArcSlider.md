@@ -202,7 +202,7 @@ ArcSliderLayoutOptions的构造函数。
 | activeTrackThickness | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | @Trace     | 放大状态下弧形Slider的描边粗细，单位：vp。<br />默认值：24<br />取值范围：最小可取24，最大可取36，异常值按默认值处理。 |
 | trackColor           | string | 否   | @Trace     | 设置描边背景色。<br />默认值：#33FFFFFF                      |
 | selectedColor        | string | 否   | @Trace     | 设置描边高亮色。<br />默认值：#FF5EA1FF                      |
-| trackBlur            | number | 否   | @Trace     | 设置描边背景模糊值，单位：vp。<br />默认值：20<br/>设置小于0的值时，按照默认值处理。 |
+| trackBlur            | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | @Trace     | 设置描边背景模糊值，单位：vp。<br />默认值：20<br/>设置小于0的值时，按照默认值处理。 |
 
 ### constructor
 
@@ -345,7 +345,7 @@ ArcSliderValueOptions的构造信息。
 
 ## ArcSliderLayoutOptionsConstructorOptions
 
-ArcSliderLayoutValueOptions的构造信息。
+ArcSliderLayoutOptions的构造信息。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -379,7 +379,7 @@ ArcSliderStyleOptions的构造信息。
 | activeTrackThickness | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | 放大状态下弧形Slider的描边粗细，单位：vp。<br />默认值：24<br />取值范围：最小可取24，最大可取36，异常值按默认值处理。 |
 | trackColor           | string | 否   | 设置描边背景色。<br />默认值：#33FFFFFF                      |
 | selectedColor        | string | 否   | 设置描边高亮色。<br />默认值：#FF5EA1FF                      |
-| trackBlur            | number | 否   | 设置描边背景模糊值，单位：vp。<br />默认值：20<br/>设置小于0的值时，按照默认值处理。 |
+| trackBlur            | ArkTS-Dyn: number <br/> ArkTS-Sta: double  | 否   | 设置描边背景模糊值，单位：vp。<br />默认值：20<br/>设置小于0的值时，按照默认值处理。 |
 
 ## 示例
 

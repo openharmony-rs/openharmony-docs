@@ -86,7 +86,7 @@ ArkTS-Sta: static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.R
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -103,6 +103,8 @@ ArkTS-Sta: static createFromImage(pixelmap: image.PixelMap, srcRect?: common2D.R
 | ArkTS-Dyn: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md)<br/>ArkTS-Sta: [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| undefined | 返回创建的图像滤波器。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { RenderNode } from '@kit.ArkUI';
@@ -139,6 +141,45 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import { RenderNode, DrawContext } from '@ohos.arkui.node';
+import drawing from "@ohos.graphics.drawing";
+import common2D from "@ohos.graphics.common2D";
+import image from "@ohos.multimedia.image";
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const width = 1000;
+    const height = 1000;
+    const bufferSize = width * height * 4;
+    const color: ArrayBuffer = new ArrayBuffer(bufferSize);
+
+    const colorData = new Uint8Array(color);
+    for (let i = 0; i < colorData.length; i += 4) {
+      colorData[i] = 255;
+      colorData[i+1] = 156;
+      colorData[i+2] = 0;
+      colorData[i+3] = 255;
+    }
+
+    let opts : image.InitializationOptions = {
+      editable: true,
+      pixelFormat: image.PixelMapFormat.ARGB_8888,
+      size: { height, width }
+    }
+
+    let pixelMap: image.PixelMap = image.createPixelMapSync(color, opts);
+    let srcRect: common2D.Rect = { left: 10.0, top: 10.0, right: 80.0, bottom: 80.0 };
+    let dstRect: common2D.Rect = { left: 200.0, top: 200.0, right: 400.0, bottom: 400.0 };
+    if (pixelMap != null) {
+      let filter = drawing.ImageFilter.createFromImage(pixelMap, srcRect, dstRect);
+    }
+  }
+}
+```
+
 ## createBlendImageFilter<sup>20+</sup>
 
 ArkTS-Dyn: static createBlendImageFilter(mode: BlendMode, background: ImageFilter, foreground: ImageFilter): ImageFilter
@@ -151,7 +192,7 @@ ArkTS-Sta: static createBlendImageFilter(mode: BlendMode, background: ImageFilte
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -262,26 +303,27 @@ let composedImageFilter = drawing.ImageFilter.createComposeImageFilter(colorFilt
 ArkTS-Sta示例：
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D';
+import drawing from "@ohos.graphics.drawing";
+import common2D from "@ohos.graphics.common2D";
 
 let blurSigmaX = 10.0;
 let blurSigmaY = 10.0;
 let blurFilter = drawing.ImageFilter.createBlurImageFilter(blurSigmaX, blurSigmaY, drawing.TileMode.CLAMP, null);
 let colorMatrix:Array<double> = [
-  0.0, 0.0, 0.0, 0.0, 0.0,
-  0.0, 1.0, 0.0, 0.0, 0.0,
-  0.0, 0.0, 1.0, 0.0, 0.0,
-  0.0, 0.0, 0.0, 1.0, 0.0
+  0, 0, 0, 0, 0,
+  0, 1, 0, 0, 0,
+  0, 0, 1, 0, 0,
+  0, 0, 0, 1, 0
 ];
 let redRemovalFilter = drawing.ColorFilter.createMatrixColorFilter(colorMatrix);
+if (redRemovalFilter == null) {
+  return;
+}
 let colorFilter = drawing.ImageFilter.createFromColorFilter(redRemovalFilter, null);
-if (colorFilter == undefined || blurFilter == undefined) {
+if (blurFilter == undefined ||  colorFilter == undefined) {
   return;
 }
 let composedImageFilter = drawing.ImageFilter.createComposeImageFilter(colorFilter, blurFilter);
-if (composedImageFilter == undefined) {
-  return
-}
 ```
 
 ## createFromColorFilter<sup>12+</sup>
@@ -417,9 +459,10 @@ let renderEffect = drawing.ImageFilter.createFromShaderEffect(shaderEffect);
 ArkTS-Sta示例：
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D';
+import drawing from "@ohos.graphics.drawing";
+import common2D from "@ohos.graphics.common2D";
 
-let shaderEffect = drawing.ShaderEffect.createColorShader(0xFF00FF00);
+let shaderEffect = drawing.ShaderEffect.createColorShader(0xFF00FF00.toInt());
 if (shaderEffect == undefined) {
   return;
 }

@@ -25,7 +25,7 @@ ArkTS-Sta: onAccessibilityFocus(callback: AccessibilityFocusCallback | undefined
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -49,6 +49,10 @@ type AccessibilityFocusCallback = (isFocus: boolean) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型    | 必填 | 说明              |
@@ -59,7 +63,7 @@ type AccessibilityFocusCallback = (isFocus: boolean) => void
 
 ArkTS-Dyn: onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback): T
 
-ArkTS-Sta: onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback | undefined)
+ArkTS-Sta: onAccessibilityActionIntercept(callback: AccessibilityActionInterceptCallback | undefined): this
 
 该接口在无障碍模式下，可在无障碍控制操作触发前通知注册的回调函数，由注册方决定是否拦截该次无障碍动作，对不支持Click的组件注册也无法触发回调。
 
@@ -71,7 +75,7 @@ ArkTS-Sta: onAccessibilityActionIntercept(callback: AccessibilityActionIntercept
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -83,7 +87,7 @@ ArkTS-Sta: onAccessibilityActionIntercept(callback: AccessibilityActionIntercept
 
 | 类型    | 说明              |
 | ------ | ---------------- |
-| T | 返回当前组件。 |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## AccessibilityActionInterceptCallback<sup>20+</sup>
 
@@ -96,6 +100,10 @@ type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => Acc
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -119,6 +127,10 @@ type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => Acc
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值  | 说明             |
 | ---- | ---- | ------------------ |
 | UNDEFINED_ACTION | 0 | 未定义的无障碍操作。 |
@@ -133,6 +145,10 @@ type AccessibilityActionInterceptCallback = (action: AccessibilityAction) => Acc
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值  | 说明             |
 | ---- | ---- | ------------------ |
@@ -152,9 +168,6 @@ ArkTS-Dyn：
 @Component
 struct SwitchBootcamp {
   @State private isOn: boolean = false;
-  isPolygon(event: TouchEvent) {
-    return true;
-  }
 
   build() {
     NavDestination() {
@@ -163,7 +176,7 @@ struct SwitchBootcamp {
         Row() {
           Text('Label message')
           Blank()
-          Toggle({ type: ToggleType.Switch, isOn: $$this.isOn })
+          Toggle({ type: ToggleType.Switch, isOn: $isOn })
             .onAccessibilityActionIntercept((action : AccessibilityAction) => {
               if (action === AccessibilityAction.ACCESSIBILITY_CLICK) {
                 this.getUIContext().showAlertDialog({
@@ -229,25 +242,27 @@ struct SwitchBootcamp {
   }
 
   build() {
-    Column() {
-      Text('onTouchIntercept')
-      Row() {
-        Text('Label message')
-        Blank()
-        Toggle({ type: ToggleType.Switch, isOn: this.isOn })
-        .onAccessibilityActionIntercept((action : AccessibilityAction) => {
-          if (action === AccessibilityAction.ACCESSIBILITY_CLICK) {
-            this.getUIContext().showAlertDialog(this.alterParam)
-            return AccessibilityActionInterceptResult.ACTION_INTERCEPT;
-          }
-          else {
-            return AccessibilityActionInterceptResult.ACTION_CONTINUE;
-          }
-        })
-      }.width('100%')
+    NavDestination() {
+      Column() {
+        Text('onTouchIntercept')
+        Row() {
+          Text('Label message')
+          Blank()
+          Toggle({ type: ToggleType.Switch, isOn: this.isOn })
+          .onAccessibilityActionIntercept((action : AccessibilityAction) => {
+            if (action === AccessibilityAction.ACCESSIBILITY_CLICK) {
+              this.getUIContext().showAlertDialog(this.alterParam)
+              return AccessibilityActionInterceptResult.ACTION_INTERCEPT;
+            }
+            else {
+              return AccessibilityActionInterceptResult.ACTION_CONTINUE;
+            }
+          })
+        }.width('100%')
+      }
+      .padding(24)
+      .width('100%')
     }
-    .padding(24)
-    .width('100%')
   }
 }
 ```

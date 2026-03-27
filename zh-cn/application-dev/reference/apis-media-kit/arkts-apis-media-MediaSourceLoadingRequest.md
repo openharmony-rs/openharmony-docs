@@ -55,7 +55,7 @@ ArkTS-Sta: respondData(uuid: long, offset: long, buffer: ArrayBuffer): int | und
 
 | 类型           | 说明                                |
 | -------------- | ----------------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int|undefined | 当前服务端接受的字节数。<br>- 返回值小于0表示操作失败。<br>- 返回值为-2时，表示播放器不再需要当前数据，客户端应停止当前读取过程。<br>- 返回值为-3时，表示播放器的缓冲区已满，客户端应等待下一次读取。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int\|undefined | 当前服务端接受的字节数。<br>- 返回值小于0表示操作失败。<br>- 返回值为-2时，表示播放器不再需要当前数据，客户端应停止当前读取过程。<br>- 返回值为-3时，表示播放器的缓冲区已满，客户端应等待下一次读取。 |
 
 **示例：**
 

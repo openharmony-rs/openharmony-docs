@@ -338,7 +338,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 // 设备上已有设备证书的情况下不需要调用。
 mediaKeySystem.generateKeySystemRequest().then((ProvisionRequest: drm.ProvisionRequest) => {
-  console.log("generateKeySystemRequest");
+  console.info("generateKeySystemRequest");
 }).catch((err: BusinessError) => {
   console.error(`generateKeySystemRequest: ERROR: ${err}`);
 });
@@ -407,7 +407,7 @@ let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay
 // keySystemResponse是从DRM服务获取的设备证书响应，请按实际值传入。
 let keySystemResponse = new Uint8Array([0x00, 0x00, 0x00, 0x00]);
 mediaKeySystem.processKeySystemResponse(keySystemResponse).then(() => {
-  console.log("processKeySystemResponse");
+  console.info("processKeySystemResponse");
 }).catch((err: BusinessError) => {
   console.error(`processKeySystemResponse: ERROR: ${err}`);
 });
@@ -481,7 +481,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[onKeySystemRequired](#onkeysystemrequired23)。
 
@@ -523,7 +523,7 @@ onKeySystemRequired(callback: (eventInfo: EventInfo) => void): void
 
 监听设备证书请求事件，获取事件信息。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('keySystemRequired')](#onkeysystemrequired)。
 
@@ -563,7 +563,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **相关接口：** 该接口对应的ArkTS-Sta接口是[offKeySystemRequired](#offkeysystemrequired23)。
 
@@ -590,6 +590,8 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 **示例：**
 
 ```ts
+import { drm } from '@kit.DrmKit';
+
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 mediaKeySystem.off('keySystemRequired');
 ```
@@ -600,7 +602,7 @@ offKeySystemRequired(callback?: (eventInfo: EventInfo) => void): void
 
 注销设备证书请求事件的监听。使用callback异步回调。
 
-**ArkTs模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('keySystemRequired')](#offkeysystemrequired)。
 
@@ -625,6 +627,8 @@ offKeySystemRequired(callback?: (eventInfo: EventInfo) => void): void
 **示例：**
 
 ```ts
+import { drm } from '@kit.DrmKit';
+
 let mediaKeySystem: drm.MediaKeySystem = drm.createMediaKeySystem("com.clearplay.drm");
 mediaKeySystem.offKeySystemRequired();
 ```

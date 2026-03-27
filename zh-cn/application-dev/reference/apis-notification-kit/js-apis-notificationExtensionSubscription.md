@@ -93,7 +93,9 @@ ArkTS-Sta示例：
 import { common } from '@kit.AbilityKit';
 
 try {
-  notificationExtensionSubscription.openSubscriptionSettings(this.context as common.UIAbilityContext).then(() => {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
     console.info(`openSubscriberSettings success`);
   }).catch((e:Error) => {
     let error = e as BusinessError
@@ -101,6 +103,83 @@ try {
   });
 } catch (error) {
   console.error(`failed to call openSubscriptionSettings ${error}`)
+}
+```
+
+## notificationExtensionSubscription.openSubscriptionSettingsWithResult
+
+openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
+
+打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权"允许获取本机通知"开关与"已获取的本机通知"应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                 |
+| -------- | ------------------------ | ---- |--------------------|
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
+
+**返回值：**
+
+| 类型     | 说明 | 
+| ------- |--|
+| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise对象，返回用户设置的授权的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied or current device not supported.     |  
+| 1600001  | Internal error.                     |
+| 1600018  | The notification settings window is already displayed.           |
+| 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { common } from '@kit.AbilityKit';
+
+try {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
+    console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
+  }).catch((e:Error) => {
+    let error = e as BusinessError
+    console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+  });
+} catch (error) {
+  console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import { common } from '@kit.AbilityKit';
+
+try {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
+    console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
+  }).catch((e:Error) => {
+    let error = e as BusinessError
+    console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+  });
+} catch (error) {
+  console.error(`failed to call openSubscriptionSettingsWithResult ${error}`)
 }
 ```
 
@@ -262,7 +341,7 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 ArkTS-Dyn示例：
 ```ts
 notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[])}`);
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
@@ -271,7 +350,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data) => {
 ArkTS-Sta示例：
 ```ts
 notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
-  console.info(`getSubscribeInfo successfully. Data: ${(data)}`);
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((error: Error) => {
   let err = error as BusinessError
   console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
@@ -381,7 +460,7 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: not
 ArkTS-Sta示例：
 ```ts
 notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
-  console.info(`getUserGrantedEnabledBundles successfully. Data: ${(data)}`);
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((error: Error) => {
   let err = error as BusinessError
   console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
@@ -465,3 +544,21 @@ type GrantedBundleInfo = _GrantedBundleInfo
 | 类型 | 说明 |
 | --- | --- |
 | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 授权应用的包信息。 |
+
+## UserGrantSetting
+ 	 
+type UserGrantSetting = _UserGrantSetting
+
+用户授权的设置信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**： SystemCapability.Notification.Notification
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 类型 | 说明 |
+| --- | --- |
+| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting) | 用户授权的设置信息。 |

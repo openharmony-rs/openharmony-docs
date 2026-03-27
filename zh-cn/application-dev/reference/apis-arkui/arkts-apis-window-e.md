@@ -259,6 +259,22 @@
 | WINDOW_WILL_ROTATE| 0 | 窗口即将旋转。 |
 | WINDOW_DID_ROTATE | 1 | 窗口旋转结束。 |
 
+## RotationInfoType<sup>23+</sup>
+
+旋转信息类型枚举。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称       | 值     | 说明       |
+| ---------- | ------ | ---------- |
+| WINDOW_ORIENTATION  | 0      | 窗口所在屏幕的显示方向，以窗口模块对横竖屏的定义方式表示。<br>开发者在使用时，需要注意该方向表示[RotationChangeInfo](arkts-apis-window-i.md#rotationchangeinfo19)中的orientation参数。 |
+| DISPLAY_ORIENTATION | 1      | 屏幕显示方向，以屏幕模块对横竖屏的定义方式表示。<br>开发者在使用时，需要注意该方向表示[display](js-apis-display.md#display)对象的orientation属性。 |
+| DISPLAY_ROTATION    | 2      | 设备的屏幕顺时针旋转角度。<br>开发者在使用时，需要注意该方向表示[display](js-apis-display.md#display)对象的rotation属性。 |
+
 ## RectType<sup>19+</sup>
 
 窗口矩形区域坐标系类型。
@@ -363,8 +379,8 @@ WindowStage生命周期的状态类型枚举。
 
 | 名称                 | 值      | 说明       |
 | -------------------- | ------ | ---------- |
-| WINDOW_MODALITY      | 0      | 模态子窗类型为模窗口子窗，当仅需要其父级窗口不响应用户操作时，可选此参数。 |
-| APPLICATION_MODALITY | 1      | 模态子窗类型为模应用子窗。<br> 除其父级窗口外还需要该应用其他实例的窗口不响应用户操作时，可选此参数。<br> **设备行为差异：** 该枚举在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。 |
+| WINDOW_MODALITY      | 0      | 当仅需要其父级窗口不响应用户操作时，可选此参数。 |
+| APPLICATION_MODALITY | 1      |  除其父级窗口外还需要该应用其他实例的窗口不响应用户操作时，可选此参数。<br> **设备行为差异：** 该枚举在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。 |
 
 ## ScreenshotEventType<sup>20+</sup>
 

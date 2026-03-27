@@ -410,7 +410,7 @@ generateRandomUUID(entropyCache?: boolean): string
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. <br> **ArkTS模式：** 该错误码仅适用于ArkTS-Dyn。 |
+| 401 | Parameter error. Possible causes: 1. Incorrect parameter types. |
 
 **示例：**
 
@@ -512,7 +512,7 @@ console.info("uuid = " + uuid);
 
 ArkTS-Dyn: getHash(object: object): number
 
-ArkTS-Sta: getHash(object: RecordData): long
+ArkTS-Sta: getHash(obj: RecordData): long
 
 获取对象的Hash值。首次获取时，则计算Hash值并保存到对象的Hash域（返回随机的Hash值）；后续获取时，直接从Hash域中返回Hash值（同一对象多次返回值保持不变）。
 
@@ -528,7 +528,7 @@ ArkTS-Sta: getHash(object: RecordData): long
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| object | ArkTS-Dyn: object <br> ArkTS-Sta: RecordData | 是 | 需要获取Hash值的对象。 |
+| ArkTS-Dyn: object <br> ArkTS-Sta: obj | ArkTS-Dyn: object <br> ArkTS-Sta: RecordData | 是 | 需要获取Hash值的对象。 |
 
 **返回值：**
 
@@ -586,6 +586,210 @@ let stack = util.getMainThreadStackTrace();
 console.info(stack);
 // 输出当前主线程的栈追踪信息。
 ```
+
+## ArkTSVM<sup>23+</sup>
+
+ArkTSVM是一个类，用于给开发者提供虚拟机的维测能力。
+
+### setMultithreadingDetectionEnabled<sup>23+</sup>
+
+static setMultithreadingDetectionEnabled(enabled: boolean): void
+
+若enabled为true则开启，为false则关闭。开启多线程检测，多线程问题的cppcrash文件里会包含多线程信息。关闭多线程检测，则多线程问题的cppcrash文件里不会包含多线程信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| enabled  | boolean  | 是       | 控制多线程检测开关的开启或关闭 。true表示开启，false表示关闭。|
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+// 打开多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(true);
+// 关闭多线程检测开关
+util.ArkTSVM.setMultithreadingDetectionEnabled(false);
+```
+
+### enableLocalHandleDetection<sup>24+</sup>
+
+static enableLocalHandleDetection(): void
+
+EventHandler和libuv的异步事件循环机制在执行异步任务时，任务会跳出当前handle scope范围。若开发者在任务回调中未添加scope，将导致内存泄漏。调用该接口后，可确保这两个机制的任务在scope范围内执行，从而避免内存泄漏。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**示例：**
+
+``` C++
+// napi_init.cpp C++侧示例代码
+static napi_value CreateObject(napi_env env, napi_callback_info info)
+{
+    uv_loop_s* loop = nullptr;
+    napi_status status = napi_get_uv_event_loop(env, &loop);
+    if (status != napi_ok) {
+        napi_throw_error(env, nullptr, "napi_get_uv_event_loop fail");
+        return nullptr;
+    }
+    uv_work_t* work = new uv_work_t;
+    work->data = env;
+    int ret = uv_queue_work(loop, work,
+        [](uv_work_t* work){},
+        [](uv_work_t* work, int status){
+            napi_env env = static_cast<napi_env>(work->data);
+            for (int i = 0; i < 1000; i++) {
+                napi_value obj = nullptr;
+                // 在libuv提供的异步机制中没有加scope会导致内存泄漏
+                napi_create_object(env, &obj);
+            }
+            delete work;
+        }
+    );
+    if (ret != 0) {
+        delete work;
+    }
+    return nullptr;
+}
+```
+
+``` TypeScript
+// index.d.ts 接口声明
+export const createObject: () => void;
+```
+
+``` TypeScript
+// Index.ets ArkTS侧示例代码
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import testNapi from 'libentry.so';
+import { util } from '@kit.ArkTS';
+
+try {
+  // 若不开启LocalHandle内存泄漏兜底机制，可能导致内存溢出。启用该机制后，系统将自动回收EventHandler和libuv异步任务中创建的napi_value
+  util.ArkTSVM.enableLocalHandleDetection();
+  testNapi.createObject();
+  hilog.info(0x0000, 'testTag', 'Test Node-API createObject success');
+} catch (error) {
+  hilog.error(0x0000, 'testTag', 'Test Node-API createObject failed error: %{public}s', error.message);
+}
+```
+
+### onVMHeapMemoryPressure<sup>24+</sup>
+
+static onVMHeapMemoryPressure(callback: Callback\<string\>, heapMemoryThreshold: HeapMemoryThreshold): boolean
+
+注册一个回调函数，在虚拟机主线程完成垃圾回收后，如果堆内存超过预警阈值则触发回调执行。
+
+虚拟机是通过统计存活对象大小来判断是否达到内存预警阈值，由于虚拟机堆存在一定内存碎片以及浮动垃圾，无法保证在OOM前肯定会触发到回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | Callback\<string\> | 是 | 垃圾回收后内存达到预警阈值时触发的回调函数，字符串参数表示内存压力事件的类型。目前事件的类型有三种取值，"LocalHeapMemPressure"，"SharedHeapMemPressure"，"ProcessHeapMemPressure"。 |
+| heapMemoryThreshold | [HeapMemoryThreshold](#heapmemorythreshold24) | 是 | 堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| boolean | 注册成功返回true，当不在主线程调用或回调已注册时返回false。 |
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+let callback = (event: string) => {
+  console.info('Memory pressure event: ' + event);
+};
+
+let threshold: util.HeapMemoryThreshold = {
+  localHeapThreshold: 75,
+  sharedHeapThreshold: 80,
+  processHeapThreshold: 85
+};
+
+let result : boolean = util.ArkTSVM.onVMHeapMemoryPressure(callback, threshold);
+console.info('Registration result: ' + result);
+```
+
+### offVMHeapMemoryPressure<sup>24+</sup>
+
+static offVMHeapMemoryPressure(): void
+
+取消已注册的内存预警回调函数。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+**示例：**
+
+```ts
+import { util } from '@kit.ArkTS';
+
+util.ArkTSVM.offVMHeapMemoryPressure();
+```
+
+## HeapMemoryThreshold<sup>24+</sup>
+
+堆内存预警阈值配置，用于指定触发回调的堆内存预警阈值。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | ---- | ---- | ---- |
+| localHeapThreshold | number | 否 | 是 | local堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。超出范围时自动限制到有效区间。若未设置，则不监听local堆。|
+| sharedHeapThreshold | number | 否 | 是 | shared堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。超出范围时自动限制到有效区间。若未设置，则不监听shared堆。|
+| processHeapThreshold | number | 否 | 是 | 进程总虚拟机堆内存预警阈值配置，以百分比设置，取值范围为[70, 95]。超出范围时自动限制到有效区间。若未设置，则不监听进程总虚拟机堆大小。|
+
+## HeapMemoryInfo<sup>24+</sup>
+
+描述local堆或shared堆的内存信息，包含线程标识和堆内存大小等详细数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**系统能力：** SystemCapability.Utils.Lang
+
+**ArkTS-Dyn起始版本：** 24
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| threadId | number | 否 | 是 | 线程ID。如果此内存信息描述的是local堆，该值为表示运行线程ID的整数；如果此内存信息描述的是shared堆，该值为**undefined**。|
+| threadName | string | 否 | 是 | 线程名称。如果此内存信息描述的是local堆，该值为表示运行线程名称的字符串；如果此内存信息描述的是shared堆，该值为**undefined**。|
+| heapType | string | 否 | 否 | 堆类型。目前有两种取值，"local"表示堆类型为local堆，"shared"表示堆类型为shared堆。|
+| heapObjectSize | number | 否 | 否 | 堆对象大小，单位为KB（向上取整的整数）。|
 
 ## util.printf<sup>(deprecated)</sup>
 
@@ -670,7 +874,7 @@ promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
 > **说明：**
 >
-> 此接口不可用，建议使用[util.promisify<sup>9+</sup>](#utilpromisify9)替代。
+> 从API version 7开始支持，从API version 9开始废弃，此接口不可用，建议使用[util.promisify<sup>9+</sup>](#utilpromisify9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
@@ -682,13 +886,13 @@ promiseWrapper(original: (err: Object, value: Object) =&gt; void): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| original | Function | 是 | 异步函数。 |
+| original | (err: Object, value: Object) =&gt; void | 是 | 异步函数。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Function | 采用遵循常见的错误优先的回调风格的函数（也就是将(err, value) => ...回调作为最后一个参数），并返回一个promise的函数。 |
+| Object | 采用遵循常见的错误优先的回调风格的函数（也就是将(err, value) => ...回调作为最后一个参数），并返回一个promise的函数。 |
 
 ## PromisifiedFunc<sup>20+</sup>
 
@@ -1114,6 +1318,10 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 
 将输入参数解码后输出对应文本。
 
+> **说明：**
+>
+> 该接口会正常解析值为\0的字节，将其转换为Unicode字符\u0000（空字符），不会导致解码中断或错误。
+
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Utils.Lang
@@ -1146,6 +1354,7 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 **示例：**
 
 ```ts
+// 当解析不含有\0的字节的示例代码
 let textDecoderOptions: util.TextDecoderOptions = {
   fatal: false,
   ignoreBOM : true
@@ -1158,6 +1367,25 @@ let uint8 = new Uint8Array([0xEF, 0xBB, 0xBF, 0x61, 0x62, 0x63]);
 let retStr = textDecoder.decodeToString(uint8, decodeToStringOptions);
 console.info("retStr = " + retStr);
 // 输出结果：retStr = abc
+```
+
+```ts
+// 当解析含有\0的字节的示例代码
+let textDecoderOptions: util.TextDecoderOptions = {
+  fatal: false,
+  ignoreBOM : true
+}
+let decodeToStringOptions: util.DecodeToStringOptions = {
+  stream: false
+}
+let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+let uint8 = new Uint8Array([97, 98, 0, 99]);
+let retStr = textDecoder.decodeToString(uint8, decodeToStringOptions);
+console.info("retStr = " + retStr);
+// 输出结果：retStr = abc
+let retJson = JSON.stringify(retStr)
+console.info("retJson = " + retJson);
+// 输出结果：retJson = ab/u0000c
 ```
 
 ### decodeWithStream<sup>(deprecated)</sup>
@@ -1244,7 +1472,7 @@ TextDecoder的构造函数。
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | encoding | string | 否 | 编码格式，默认值是'utf-8'。 |
-| options | object | 否 | 解码相关选项参数，存在两个属性fatal和ignoreBOM。 |
+| options | { fatal?: boolean; ignoreBOM?: boolean } | 否 | 解码相关选项参数，存在两个属性fatal和ignoreBOM。 |
 
   **表1** options
 
@@ -1280,7 +1508,7 @@ decode(input: Uint8Array, options?: { stream?: false }): string
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | input | Uint8Array | 是 | 符合格式需要解码的数组。 |
-| options | object | 否 | 解码相关选项参数。 |
+| options | { stream?: false } | 否 | 解码相关选项参数。 |
 
 **表2** options
 
@@ -1564,7 +1792,7 @@ encodeInto(input: string, dest: Uint8Array): { read: number; written: number }
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Uint8Array | 返回编码后的Uint8Array对象。 |
+| { read: number; written: number } | 返回一个对象，read表示已编码的字符数，written表示编码字符所占用的字节数。 |
 
 **示例：**
 
@@ -7749,7 +7977,7 @@ entries(): IterableIterator&lt;[K, V]&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.Symbol.iterator<sup>9+</sup>](#symboliterator9)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[LRUCache.Symbol.[Symbol.iterator]<sup>9+</sup>](#symboliterator9)替代。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 

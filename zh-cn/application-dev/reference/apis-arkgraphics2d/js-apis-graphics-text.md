@@ -1277,6 +1277,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | lineHeightMaximum<sup>21+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 是   | 行高上限。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
 | lineHeightMinimum<sup>21+</sup> | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 行高下限。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
 | lineHeightStyle<sup>21+</sup> | [LineHeightStyle](#lineheightstyle21) | 否 | 是 | 行高缩放基数样式。默认为FONT_SIZE。<br>**ArkTS-Dyn起始版本：** 21<br>**ArkTS-Sta起始版本：** 23 |
+| fontEdging<sup>24+</sup> | [drawing.FontEdging](arkts-apis-graphics-drawing-e.md#fontedging12) | 否 | 是 | 绘制文本的边缘处理方式，默认值为ANTI_ALIAS。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 24<br>**ArkTS-Sta起始版本：** 24|
 
 ## StrutStyle
 
@@ -2163,6 +2164,7 @@ struct Index {
 | compressHeadPunctuation<sup>23+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。<br/>**说明：**<br/>1. 需要字体文件支持[FontFeature](#fontfeature)中的"ss08"特性，否则无法压缩。<br/>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | includeFontPadding<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能首尾行padding。true表示使能首尾行padding，false表示不使能首尾行padding，默认值为false。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
 | fallbackLineSpacing<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能行高回退，当设置的行高小于实际行高时，将行高回退为实际行高。true表示使能行高回退，false表示不使能行高回退，默认值为false。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 23<br>**ArkTS-Sta起始版本：** 23 |
+| orphanCharOptimization | boolean | 否 | 是 | 设置文本排版时是否使能孤字优化。孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak)为非BREAK_ALL并且待排版文本首个[TextStyle](#textstyle)的[locale](#textstyle)为“zh-Hans”或“zh-Hant”时生效。true表示使能孤字优化，false表示不使能孤字优化，默认值为false。<br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**ArkTS-Dyn起始版本：** 26.0.0<br>**ArkTS-Sta起始版本：** 26.0.0 |
 
 行首压缩的标点范围:
 | 标点 | Unicode码位 | Unicode名称 |

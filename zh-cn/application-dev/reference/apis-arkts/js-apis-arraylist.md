@@ -173,19 +173,9 @@ ArkTS-Sta: insert(element: T, index: int): void
 | element | T | 是 | 被插入的元素。 |
 | index | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 被插入的位置索引。需要小于等于int32_max即2147483647。 |
 
-**ArkTS-Dyn错误码：**
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200001 | The value of index is out of range. |
-| 10200011 | The insert method cannot be bound. |
-
-**ArkTS-Sta错误码：**
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -419,24 +409,15 @@ ArkTS-Sta: removeByIndex(index: int): T
 | -------- | -------- |
 | T | 返回删除的元素。 |
 
-**ArkTS-Dyn错误码：**
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of index is out of range. |
 | 10200011 | The removeByIndex method cannot be bound. |
 
-**ArkTS-Sta错误码：**
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 10200001 | The value of index is out of range. |
-| 10200011 | The removeByIndex method cannot be bound. |
 
 **示例：**
 
@@ -549,24 +530,15 @@ ArkTS-Sta: removeByRange(fromIndex: int, toIndex: int): void
 | fromIndex | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 起始下标。 |
 | toIndex | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 终止下标。 |
 
-**ArkTS-Dyn错误码：**
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 10200001 | The value of fromIndex or toIndex is out of range. |
 | 10200011 | The removeByRange method cannot be bound. |
 
-**ArkTS-Sta错误码：**
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 10200001 | The value of fromIndex or toIndex is out of range. |
-| 10200011 | The removeByRange method cannot be bound. |
 
 **示例：**
 
@@ -628,7 +600,6 @@ callbackFn的参数说明：
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The replaceAllElements method cannot be bound. |
 
 **示例：**
@@ -647,7 +618,7 @@ arrayList.replaceAllElements((value: number): number => {
 
 ### replaceAllElements<sup>23+</sup>
 
-replaceAllElements(callbackfn: ArrayListReplaceCb\<T\>): void
+replaceAllElements(callbackFn: ArrayListReplaceCb\<T\>): void
 
 用户操作ArrayList中的元素，用操作后的元素替换原元素并返回操作后的元素。
 
@@ -718,7 +689,6 @@ callbackFn的参数说明：
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 10200011 | The forEach method cannot be bound. |
 
 **示例：**
@@ -742,7 +712,7 @@ arrayList.forEach((value: number, index?: number) => {
 
 ### forEach<sup>23+</sup>
 
-forEach(callbackfn: ArrayListForEachCb\<T\>): void
+forEach(callbackFn: ArrayListForEachCb\<T\>): void
 
 通过回调函数来遍历ArrayList实例对象上的元素以及元素对应的下标。
 
@@ -794,7 +764,7 @@ sort(comparator?: ArrayListComparatorFn\<T\>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt23) | 否 | 回调函数，默认为升序排序的回调函数。<br> API version22开始发生兼容性变更，在API version21及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
+| comparator | [ArrayListComparatorFn\<T\>](#arraylistcomparatorfnt23) | 否 | 回调函数，默认为升序排序的回调函数。<br> API version23开始发生兼容性变更，在API version22及之前的版本其类型为：`(firstValue: T, secondValue: T) => number`。 |
 
 **ArkTS-Dyn错误码：**
 
@@ -802,7 +772,6 @@ sort(comparator?: ArrayListComparatorFn\<T\>): void
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
 | 10200011 | The sort method cannot be bound. |
 
 **ArkTS-Sta错误码：**
@@ -878,19 +847,9 @@ ArkTS-Sta: subArrayList(fromIndex: int, toIndex: int): ArrayList&lt;T&gt;
 | -------- | -------- |
 | ArrayList&lt;T&gt; | 返回ArrayList对象实例。 |
 
-**ArkTS-Dyn错误码：**
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| 10200001 | The value of fromIndex or toIndex is out of range. |
-| 10200011 | The subArrayList method cannot be bound. |
-
-**ArkTS-Sta错误码：**
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1200,7 +1159,7 @@ ArkTS-Sta: \[index: int\]: T
 
 **系统能力：** SystemCapability.Utils.Lang
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1216,18 +1175,9 @@ ArkTS-Sta: \[index: int\]: T
 | -------- | -------- |
 | T | 容器中对应索引值为index的元素。 |
 
-**ArkTS-Dyn错误码：**
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401 | Parameter error. |
-| 10200001 | The value of index is out of range. |
-
-**ArkTS-Sta错误码：**
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -1281,18 +1231,9 @@ ArkTS-Sta: increaseCapacityTo(newCapacity: int): void
 | -------- | -------- | -------- | -------- |
 | newCapacity | ArkTS-Dyn: number <br> ArkTS-Sta: int | 是 | 新容量。 |
 
-**ArkTS-Dyn错误码：**
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[语言基础类库错误码](errorcode-utils.md)。
-
-| 错误码ID | 错误信息 |
-| -------- | -------- |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 10200011 | The increaseCapacityTo method cannot be bound. |
-
-**ArkTS-Sta错误码：**
-
-以下错误码的详细介绍请参见[语言基础类库错误码](errorcode-utils.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |

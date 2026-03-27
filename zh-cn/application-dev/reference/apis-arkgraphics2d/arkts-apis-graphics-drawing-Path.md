@@ -1689,12 +1689,16 @@ for (let i = 0; i < points.length; i += 3) {
 ArkTS-Sta示例：
 
 ```ts
-import { drawing } from '@kit.ArkGraphics2D';
+import drawing from "@ohos.graphics.drawing";
+import common2D from "@ohos.graphics.common2D";
 
 let path: drawing.Path = new drawing.Path();
 path.moveTo(100.0, 100.0);
 path.lineTo(500.0, 500.0);
-let points: double[] = path.approximate(0.5);
+let points: double[] | undefined = path.approximate(0.5);
+if (points == undefined) {
+  return;
+}
 for (let i = 0; i < points.length; i += 3) {
   console.info("PathApproximate Fraction =" + points[i] + ", X =" + points[i + 1] + ", Y =" + points[i + 2] + "\n");
 }

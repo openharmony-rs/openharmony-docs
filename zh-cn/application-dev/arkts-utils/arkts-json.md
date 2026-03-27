@@ -1,4 +1,14 @@
 # JSON扩展库
+<!--Kit: ArkTS-->
+<!--Subsystem: CommonLibrary-->
+<!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
+<!--Designer: @yuanyao14-->
+<!--Tester: @kirl75; @zsw_zhushiwei-->
+<!--Adviser: @ge-yafang-->
+
+> **说明：**
+>
+> - 本模块仅适用于ArkTS-Dyn。
 
 ## 场景介绍
 
@@ -26,12 +36,12 @@ parse(text: string, reviver?: Transformer, options?: ParseOptions): Object | nul
 
 **与原生的区别：**
 
-| 特性	| 原生parse	 | 本库parse |
+| 特性 | 原生parse | 本库parse |
 | -------- | -------- | -------- |
-| BigInt支持	| 不支持（抛出TypeError） |支持（通过parseBigInt扩展）|
-| 参数校验	| 弱校验 |强校验（抛出BusinessError） |
-| 错误信息	| 原生错误（如SyntaxError） |	自定义BusinessError |
-| reviver参数	| 支持 | 支持，但强制类型检查 |
+| BigInt支持 | 不支持（抛出TypeError） |支持（通过parseBigInt扩展）|
+| 参数校验 | 弱校验 |强校验（抛出BusinessError） |
+| 错误信息 | 原生错误（如SyntaxError） | 自定义BusinessError |
+| reviver参数 | 支持 | 支持，但强制类型检查 |
 
 ### stringify
 
@@ -41,12 +51,12 @@ stringify(value: Object, replacer?: (number | string)[] | null, space?: string |
 
 **与原生的区别：**
 
-| 特性	| 原生stringify | 本库stringify |
+| 特性 | 原生stringify | 本库stringify |
 | -------- | -------- | -------- |
 | BigInt支持 | 不支持（抛出TypeError）| 支持（通过stringifyBigInt扩展） |
 | 循环引用检测 | 抛出TypeError | 检测并抛出BusinessError |
-| 参数校验 | 弱校验	| 强校验（replacer 必须是函数或数组） |
-| 错误信息 | 原生错误	| 自定义BusinessError |
+| 参数校验 | 弱校验 | 强校验（replacer必须是函数或数组） |
+| 错误信息 | 原生错误 | 自定义BusinessError |
 
 ### has
 
@@ -76,9 +86,9 @@ remove(obj: object, property: string): void
 
 | 功能 | 原生JSON | 本库 |
 | ----- | ----- | -----| 
-| 严格参数校验 | 不支持 |	支持 |
-| 循环引用检测 | 不支持 |	支持 |
-| BigInt处理 | 不支持 |	支持 |
+| 严格参数校验 | 不支持 | 支持 |
+| 循环引用检测 | 不支持 | 支持 |
+| BigInt处理 | 不支持 | 支持 |
 | 增强的错误处理（BusinessError） | 不支持 | 支持 |
 | 额外方法（has/remove） | 不支持 | 支持 |
 
@@ -97,7 +107,9 @@ JSON字符串中的嵌套引号会破坏其结构，将导致解析失败。
 
 方式1：避免出现嵌套引号的操作。
 
-```ts
+<!-- @[json_nesting_method1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) -->
+
+``` TypeScript
 import { JSON } from '@kit.ArkTS';
 
 interface Info {
@@ -112,21 +124,23 @@ interface TestObj {
 interface TestStr {
   info: string;
 }
-
-/*
- * 将原始JSON字符串`{"info": "{"name": "zhangsan", "age": 18}"}`
- * 修改为`{"info": {"name": "zhangsan", "age": 18}}`。
- * */
-let jsonStr = `{"info": {"name": "zhangsan", "age": 18}}`;
-let obj1  = JSON.parse(jsonStr) as TestObj;
-console.info(JSON.stringify(obj1));    //{"info":{"name":"zhangsan","age":18}}
-// 获取JSON字符串中的name信息
-console.info(obj1.info.name); // zhangsan
+// ...
+  /*
+   * 将原始JSON字符串`{"info": "{"name": "zhangsan", "age": 18}"}`
+   * 修改为`{"info": {"name": "zhangsan", "age": 18}}`。
+   * */
+  let jsonStr = `{"info": {"name": "zhangsan", "age": 18}}`;
+  let obj1  = JSON.parse(jsonStr) as TestObj;
+  console.info(JSON.stringify(obj1));    //{"info":{"name":"zhangsan","age":18}}
+  // 获取JSON字符串中的name信息
+  console.info(obj1.info.name); // zhangsan
 ```
 
 方式2：将JSON字符串中嵌套的引号进行双重转义，恢复JSON的正常结构。
 
-```ts
+<!-- @[json_nesting_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingNestedQuotationMarks.ets) -->
+
+``` TypeScript
 import { JSON } from '@kit.ArkTS';
 
 interface Info {
@@ -141,43 +155,45 @@ interface TestObj {
 interface TestStr {
   info: string;
 }
-
-/*
- * 将原始JSON字符串`{"info": "{"name": "zhangsan", "age": 18}"}`进行双重转义，
- * 修改为`{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`。
- * */
-let jsonStr = `{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`;
-let obj2 = JSON.parse(jsonStr) as TestStr;;
-console.info(JSON.stringify(obj2));    // {"info":"{\"name\": \"zhangsan\", \"age\": 18}"}
-// 获取JSON字符串中的name信息
-let obj3 = JSON.parse(obj2.info) as Info;
-console.info(obj3.name); // zhangsan
+// ...
+  /*
+   * 将原始JSON字符串`{"info": "{"name": "zhangsan", "age": 18}"}`进行双重转义，
+   * 修改为`{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`。
+   * */
+  let jsonStr = `{"info": "{\\"name\\": \\"zhangsan\\", \\"age\\": 18}"}`;
+  let obj2 = JSON.parse(jsonStr) as TestStr;
+  console.info(JSON.stringify(obj2));    // {"info":"{\"name\": \"zhangsan\", \"age\": 18}"}
+  // 获取JSON字符串中的name信息
+  let obj3 = JSON.parse(obj2.info) as Info;
+  console.info(obj3.name); // zhangsan
 ```
 
 ### 解析包含大整数的JSON字符串场景
 
 当JSON字符串中存在小于-(2^53-1)或大于(2^53-1)的整数时，解析后数据会出现精度丢失或不正确的情况。该解析场景需要指定BigIntMode，将大整数解析为BigInt。
 
-```ts
+<!-- @[containing_bigInt](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/ParsingContainingBigInts.ets) -->
+
+``` TypeScript
 import { JSON } from '@kit.ArkTS';
+// ...
+  let numberText = '{"number": 10, "largeNumber": 112233445566778899}';
 
-let numberText = '{"number": 10, "largeNumber": 112233445566778899}';
+  let numberObj1 = JSON.parse(numberText) as Object;
+  console.info((numberObj1 as object)?.['largeNumber']);    // 112233445566778900
 
-let numberObj1 = JSON.parse(numberText) as Object;
-console.info((numberObj1 as object)?.["largeNumber"]);    // 112233445566778900
+  // 使用PARSE_AS_BIGINT的BigInt模式进行解析，避免出现大整数解析错误。
+  let options: JSON.ParseOptions = {
+    bigIntMode: JSON.BigIntMode.PARSE_AS_BIGINT,
+  }
 
-// 使用PARSE_AS_BIGINT的BigInt模式进行解析，避免出现大整数解析错误。
-let options: JSON.ParseOptions = {
-  bigIntMode: JSON.BigIntMode.PARSE_AS_BIGINT,
-}
+  let numberObj2 = JSON.parse(numberText, null, options) as Object;
 
-let numberObj2 = JSON.parse(numberText, null, options) as Object;
+  console.info(typeof (numberObj2 as object)?.['number']);   // number
+  console.info((numberObj2 as object)?.['number']);    // 10
 
-console.info(typeof (numberObj2 as object)?.["number"]);   // number
-console.info((numberObj2 as object)?.["number"]);    // 10
-
-console.info(typeof (numberObj2 as object)?.["largeNumber"]);    // bigint
-console.info((numberObj2 as object)?.["largeNumber"]);    // 112233445566778899
+  console.info(typeof (numberObj2 as object)?.['largeNumber']);    // bigint
+  console.info((numberObj2 as object)?.['largeNumber']);    // 112233445566778899
 ```
 
 ### 序列化BigInt对象场景
@@ -186,56 +202,62 @@ console.info((numberObj2 as object)?.["largeNumber"]);    // 112233445566778899
 
 方式1：不使用自定义转换函数，直接序列化BigInt对象。
 
-```ts
+<!-- @[bigInt_object_method1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingBigIntObjects.ets) -->
+
+``` TypeScript
 import { JSON } from '@kit.ArkTS';
+// ...
+  let bigIntObject = BigInt(112233445566778899n)
 
-let bigIntObject = BigInt(112233445566778899n)
-
-console.info(JSON.stringify(bigIntObject)); // 112233445566778899
+  console.info(JSON.stringify(bigIntObject)); // 112233445566778899
 ```
 
 方式2：使用自定义转换函数，需预处理BigInt对象进行序列化操作。
 
-```ts
+<!-- @[bigInt_object_method2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingBigIntObjects.ets) -->
+
+``` TypeScript
 import { JSON } from '@kit.ArkTS';
+// ...
+  let bigIntObject = BigInt(112233445566778899n)
 
-let bigIntObject = BigInt(112233445566778899n)
+  // 错误序列化用法：自定义函数中直接返回BigInt对象
+  // 错误案例：JSON.stringify(bigIntObject, (key: string, value: Object): Object =>{ return value; });
 
-// 错误序列化用法：自定义函数中直接返回BigInt对象
-// JSON.stringify(bigIntObject, (key: string, value: Object): Object =>{ return value; });
-
-// 正确序列化用法：自定义函数中将BigInt对象预处理为string对象
-let result: string = JSON.stringify(bigIntObject, (key: string, value: Object): Object => {
-  if (typeof value === 'bigint') {
-    return value.toString();
-  }
-  return value;
-});
-console.info("result:", result); // result: "112233445566778899"
+  // 正确序列化用法：自定义函数中将BigInt对象预处理为string对象
+  let result: string = JSON.stringify(bigIntObject, (key: string, value: Object): Object => {
+    if (typeof value === 'bigint') {
+      return value.toString();
+    }
+    return value;
+  });
+  console.info('result:', result); // result: "112233445566778899"
 ```
 
 ### 序列化浮点数number场景
 
 在JSON序列化中，浮点数处理存在一个特殊行为：当小数部分为零时，为保持数值的简洁表示，序列化结果会自动省略小数部分。这可能导致精度信息丢失，影响需要精确表示浮点数的场景（如金融金额、科学计量）。以下示例提供解决该场景的方法：
 
-```ts
+<!-- @[float_number](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsCommonLibrary/JsonExtensionLibrary/entry/src/main/ets/pages/SerializingFloatingPointNumbers.ets) -->
+
+``` TypeScript
 import { JSON } from '@kit.ArkTS';
+// ...
+  // 序列化小数部分不为零的浮点数，可以正常序列化。
+  let floatNumber1 = 10.12345;
+  console.info(JSON.stringify(floatNumber1)); // 10.12345
 
-// 序列化小数部分不为零的浮点数，可以正常序列化。
-let floatNumber1 = 10.12345;
-console.info(JSON.stringify(floatNumber1)); // 10.12345
+  // 序列化小数部分为零的浮点数，为保持数值的简洁表示，会丢失小数部分的精度。
+  let floatNumber2 = 10.00;
+  console.info(JSON.stringify(floatNumber2)); // 10
 
-// 序列化小数部分为零的浮点数，为保持数值的简洁表示，会丢失小数部分的精度。
-let floatNumber2 = 10.00;
-console.info(JSON.stringify(floatNumber2)); // 10
-
-// 以下是防止浮点数精度丢失的方法：
-let result = JSON.stringify(floatNumber2, (key: string, value: Object): Object => {
-  if (typeof value === 'number') {
-    // 按照业务场景需要，定制所需的固定精度。
-    return value.toFixed(2);
-  }
-  return value;
-});
-console.info(result); // "10.00"
+  // 以下是防止浮点数精度丢失的方法：
+  let result = JSON.stringify(floatNumber2, (key: string, value: Object): Object => {
+    if (typeof value === 'number') {
+      // 按照业务场景需要，定制所需的固定精度。
+      return value.toFixed(2);
+    }
+    return value;
+  });
+  console.info(result); // "10.00"
 ```

@@ -15,18 +15,16 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-**ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 20
-
-| 名称           | 类型    | 可读   | 可写  | 说明   |
+| 名称           | 类型    | 只读   | 可选  | 说明   |
 | ------------ | ------ | ---- | ---- | ------- |
-| albumType | [AlbumType](arkts-apis-photoAccessHelper-e.md#albumtype) | 是    | 否    | 相册类型。    |
-| albumSubtype | [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | 是    | 否   | 相册子类型。    |
-| albumName | string | 是    | 预置相册不可写，用户相册可写   | 相册名称。    |
-| albumUri | string | 是    | 否    | 相册uri。   |
-| count | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 否    |  相册中文件数量。 |
-| coverUri | string | 是    | 否    | 封面文件uri。 |
+| albumType | [AlbumType](arkts-apis-photoAccessHelper-e.md#albumtype) | 是    | 否    | 相册类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23    |
+| albumSubtype | [AlbumSubtype](arkts-apis-photoAccessHelper-e.md#albumsubtype) | 是    | 否   | 相册子类型。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23    |
+| albumName | string | 否    | 否   | 相册名称。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23    |
+| albumUri | string | 是    | 否    | 相册uri。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23   |
+| count | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是    | 否    |  相册中文件数量。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| coverUri | string | 是    | 否    | 封面文件uri。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| lpath<sup>23+</sup> | string | 是    | 是    | 相册虚拟路径。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
+| changeTime<sup>23+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 是    | 是    | 相册的更改时间。<br/>**ArkTS-Dyn起始版本：** 23<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## getAssets
 
@@ -40,7 +38,7 @@ getAssets(options: FetchOptions, callback: AsyncCallback&lt;FetchResult&lt;Photo
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -106,7 +104,7 @@ getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

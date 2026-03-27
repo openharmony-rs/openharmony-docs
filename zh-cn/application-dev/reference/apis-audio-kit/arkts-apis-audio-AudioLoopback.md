@@ -2,7 +2,7 @@
 
 > **说明：**
 >
-> - 本模块仅适用于ArkTS-Dyn。
+> - 本模块仅适用于ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 20开始支持。
 
@@ -20,7 +20,7 @@
 import { audio } from '@kit.AudioKit';
 ```
 
-## getStatus<sup>23+</sup>
+## getStatus<sup>20+</sup>
 
 getStatus(): Promise<AudioLoopbackStatus\>
 
@@ -28,7 +28,9 @@ getStatus(): Promise<AudioLoopbackStatus\>
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
-**ArkTS-Dyn起始版本：** 23
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -50,21 +52,23 @@ audioLoopback.getStatus().then((status: audio.AudioLoopbackStatus) => {
 
 ## setVolume<sup>20+</sup>
 
-setVolume(volume: number): Promise&lt;void&gt;
+ArkTS-Dyn: setVolume(volume: number): Promise&lt;void&gt;
+
+ArkTS-Sta: setVolume(volume: double): Promise&lt;void&gt;
 
 设置音频返听的音量。使用Promise异步回调。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
 **ArkTS-Dyn起始版本：** 20
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型    | 必填   | 说明                 |
 | ---------- | ------- | ------ | ------------------- |
-| volume     | number  | 是     | 音量值范围为[0.0, 1.0]。 |
+| volume     | ArkTS-Dyn: number<br>ArkTS-Sta: double  | 是     | 音量值范围为[0.0, 1.0]。 |
 
 **返回值：**
 
@@ -99,6 +103,8 @@ on(type: 'statusChange', callback: Callback<AudioLoopbackStatus\>): void
 监听返听状态变化事件（当AudioLoopback的状态发生变化时触发）。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onStatusChange](#onStatusChange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -135,6 +141,50 @@ audioLoopback.on('statusChange', (status: audio.AudioLoopbackStatus) => {
 });
 ```
 
+## onStatusChange<sup>23+</sup>
+
+onStatusChange(callback: Callback<AudioLoopbackStatus\>): void
+
+监听返听状态变化事件（当AudioLoopback的状态发生变化时触发）。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('statusChange')](#statusChange20)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                       | 必填 | 说明                                        |
+| :------- | :------------------------- | :--- | :------------------------------------------ |
+| callback | Callback\<[AudioLoopbackStatus](arkts-apis-audio-e.md#audioloopbackstatus20)> | 是   | 回调函数，返回当前音频返听的状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+audioLoopback.onStatusChange((status: audio.AudioLoopbackStatus) => {
+  if (status == audio.AudioLoopbackStatus.UNAVAILABLE_DEVICE) {
+    console.info('audio loopback status is: UNAVAILABLE_DEVICE');
+  } else if (status == audio.AudioLoopbackStatus.UNAVAILABLE_SCENE) {
+    console.info('audio loopback status is: UNAVAILABLE_SCENE');
+  } else if (status == audio.AudioLoopbackStatus.AVAILABLE_IDLE) {
+    console.info('audio loopback status is: AVAILABLE_IDLE');
+  } else if (status == audio.AudioLoopbackStatus.AVAILABLE_RUNNING) {
+    console.info('audio loopback status is: AVAILABLE_RUNNING');
+  }
+});
+```
+
 ## off('statusChange')<sup>20+</sup>
 
 off(type: 'statusChange', callback?: Callback&lt;AudioLoopbackStatus&gt;): void
@@ -142,6 +192,8 @@ off(type: 'statusChange', callback?: Callback&lt;AudioLoopbackStatus&gt;): void
 取消监听音频状态事件。使用callback异步回调。
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offStatusChange](#offStatusChange23)。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -184,6 +236,58 @@ let statusChangeCallback = (status: audio.AudioLoopbackStatus) => {
 audioLoopback.on('statusChange', statusChangeCallback);
 
 audioLoopback.off('statusChange', statusChangeCallback);
+```
+
+## offStatusChange<sup>23+</sup>
+
+offStatusChange(callback?: Callback&lt;AudioLoopbackStatus&gt;): void
+
+取消监听音频状态事件。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn接口是[off('statusChange')](#statusChange20)。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                |
+| :----- | :----- | :--- | :-------------------------------------------------- |
+| callback | Callback\<[AudioLoopbackStatus](arkts-apis-audio-e.md#audioloopbackstatus20)> | 否 | 回调函数，返回当前音频返听的状态。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+// 取消该事件的所有监听。
+audioLoopback.offStatusChange();
+
+// 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
+let statusChangeCallback = (status: audio.AudioLoopbackStatus) => {
+  if (status == audio.AudioLoopbackStatus.UNAVAILABLE_DEVICE) {
+    console.info('audio loopback status is: UNAVAILABLE_DEVICE');
+  } else if (status == audio.AudioLoopbackStatus.UNAVAILABLE_SCENE) {
+    console.info('audio loopback status is: UNAVAILABLE_SCENE');
+  } else if (status == audio.AudioLoopbackStatus.AVAILABLE_IDLE) {
+    console.info('audio loopback status is: AVAILABLE_IDLE');
+  } else if (status == audio.AudioLoopbackStatus.AVAILABLE_RUNNING) {
+    console.info('audio loopback status is: AVAILABLE_RUNNING');
+  }
+};
+
+audioLoopback.onStatusChange(statusChangeCallback);
+
+audioLoopback.offStatusChange(statusChangeCallback);
 ```
 
 ## enable<sup>20+</sup>
@@ -234,5 +338,193 @@ audioLoopback.enable(true).then((isSuccess) => {
   }
 }).catch((err: BusinessError) => {
   console.error(`ERROR: ${err}`);
+});
+```
+
+## setReverbPreset<sup>21+</sup>
+
+setReverbPreset(preset: AudioLoopbackReverbPreset): boolean
+
+设置音频返听器的混响模式。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                |
+| :----- | :----- | :--- | :-------------------------------------------------- |
+| preset   | [AudioLoopbackReverbPreset](arkts-apis-audio-e.md#audioloopbackreverbpreset21) | 是   | 混响模式。 |
+
+**返回值：**
+
+| 类型                                              | 说明                                |
+| :------------------------------------------------ | :---------------------------------- |
+| boolean | 返回混响模式是否设置成功。true表示成功，false表示不成功。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  audioLoopback.setReverbPreset(audio.AudioLoopbackReverbPreset.THEATER);
+} catch (err) {
+  console.error(`setReverbPreset :ERROR: ${err}`);
+}
+```
+
+## getReverbPreset<sup>21+</sup>
+
+getReverbPreset(): AudioLoopbackReverbPreset
+
+获取当前音频返听器的混响模式。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
+
+| 类型                                              | 说明                                |
+| :------------------------------------------------ | :---------------------------------- |
+| [AudioLoopbackReverbPreset](arkts-apis-audio-e.md#audioloopbackreverbpreset21) | 返回当前音频返听器的混响模式。<br>在没有被修改的情况下，默认的混响模式是THEATER。|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let reverbPreset = audioLoopback.getReverbPreset();
+} catch (err) {
+  console.error(`getReverbPreset:ERROR: ${err}`);
+}
+```
+
+## setEqualizerPreset<sup>21+</sup>
+
+setEqualizerPreset(preset: AudioLoopbackEqualizerPreset): boolean
+
+设置音频返听器的均衡器类型。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                                |
+| :----- | :----- | :--- | :-------------------------------------------------- |
+| preset   | [AudioLoopbackEqualizerPreset](arkts-apis-audio-e.md#audioloopbackequalizerpreset21) | 是   | 均衡器类型。 |
+
+**返回值：**
+
+| 类型                                              | 说明                                |
+| :------------------------------------------------ | :---------------------------------- |
+| boolean | 返回均衡器类型是否设置成功。true表示成功，false表示不成功。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------------------------------|
+| 6800101 | Parameter verification failed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  audioLoopback.setEqualizerPreset(audio.AudioLoopbackEqualizerPreset.FULL);
+} catch (err) {
+  console.error(`setEqualizerPreset :ERROR: ${err}`);
+}
+```
+
+## getEqualizerPreset<sup>21+</sup>
+
+getEqualizerPreset(): AudioLoopbackEqualizerPreset
+
+获取当前音频返听器的均衡器类型。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 24
+
+**返回值：**
+
+| 类型                                              | 说明                                |
+| :------------------------------------------------ | :---------------------------------- |
+| [AudioLoopbackEqualizerPreset](arkts-apis-audio-e.md#audioloopbackequalizerpreset21) | 返回当前音频返听器的均衡器类型。<br>在没有被修改的情况下，默认的均衡器类型是FULL。|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let reverbPreset = audioLoopback.getEqualizerPreset();
+} catch (err) {
+  console.error(`getEqualizerPreset:ERROR: ${err}`);
+}
+```
+
+## setVolume<sup>20+</sup>
+
+setVolume(volume: number): Promise&lt;void&gt;
+
+设置音频返听的音量。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名     | 类型    | 必填   | 说明                 |
+| ---------- | ------- | ------ | ------------------- |
+| volume     | number  | 是     | 音量值范围为[0.0, 1.0]。 |
+
+**返回值：**
+
+| 类型                | 说明                          |
+| ------------------- | ----------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 6800101 | Parameter verification failed, form 0.0 to 1.0. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+audioLoopback.setVolume(0.5).then(() => {
+  console.info('setVolume Success!');
+}).catch((err: BusinessError) => {
+  console.error(`setVolume Fail: ${err}`);
 });
 ```

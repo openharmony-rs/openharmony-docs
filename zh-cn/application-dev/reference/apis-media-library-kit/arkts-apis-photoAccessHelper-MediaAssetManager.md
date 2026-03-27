@@ -12,7 +12,7 @@
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 ## 导入模块
 
@@ -30,7 +30,7 @@ static requestImage(context: Context, asset: PhotoAsset, requestOptions: Request
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -111,7 +111,7 @@ static requestImageData(context: Context, asset: PhotoAsset, requestOptions: Req
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -191,7 +191,7 @@ static requestMovingPhoto(context: Context, asset: PhotoAsset, requestOptions: R
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -275,7 +275,7 @@ static requestVideoFile(context: Context, asset: PhotoAsset, requestOptions: Req
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -353,7 +353,7 @@ static cancelRequest(context: Context, requestId: string): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 
@@ -409,7 +409,7 @@ static loadMovingPhoto(context: Context, imageFileUri: string, videoFileUri: str
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -455,7 +455,11 @@ static quickRequestImage(context: Context, asset: PhotoAsset, requestOptions: Re
 
 根据不同的策略模式，快速请求图片资源。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**ArkTS-Dyn起始版本：** 13
 
 **需要权限**：ohos.permission.READ_IMAGEVIDEO
 

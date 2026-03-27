@@ -40,7 +40,7 @@ ArkTS-Sta: getSak(): int
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -84,7 +84,7 @@ ArkTS-Sta: getAtqa(): int[]
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -134,7 +134,7 @@ ArkTS-Sta: getRespAppData(): int[]
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -176,7 +176,7 @@ ArkTS-Sta: getRespProtocol(): int[]
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -228,7 +228,7 @@ ArkTS-Sta: getSystemCode(): int[]
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -270,7 +270,7 @@ ArkTS-Sta: getPmm(): int[]
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -322,7 +322,7 @@ ArkTS-Sta: getResponseFlags(): int
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -364,7 +364,7 @@ ArkTS-Sta: getDsfId(): int
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -416,7 +416,7 @@ ArkTS-Sta: getHistoricalBytes(): int[]
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -458,7 +458,7 @@ ArkTS-Sta: getHiLayerResponse(): int[]
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -497,6 +497,10 @@ isExtendedApduSupported(): Promise&lt;boolean&gt;
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -556,6 +560,10 @@ isExtendedApduSupported(callback: AsyncCallback\<boolean>): void
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -617,6 +625,10 @@ getNdefRecords(): [tag.NdefRecord](js-apis-nfcTag.md#ndefrecord9)[]
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -656,6 +668,10 @@ getNdefTagType(): [tag.NfcForumType](js-apis-nfcTag.md#nfcforumtype9)
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -682,6 +698,10 @@ getNdefMessage(): [NdefMessage](#ndefmessage9)
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -706,6 +726,10 @@ isNdefWritable(): boolean
 检查NDEF标签是否可写。在调用写数据接口前，需要先判断是否支持写操作。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -734,6 +758,10 @@ readNdef(): Promise\<[NdefMessage](#ndefmessage9)>
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -793,6 +821,10 @@ readNdef(callback: AsyncCallback\<[NdefMessage](#ndefmessage9)>): void
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -854,6 +886,10 @@ writeNdef(msg: [NdefMessage](#ndefmessage9)): Promise\<void>
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -924,6 +960,10 @@ writeNdef(msg: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): vo
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -990,6 +1030,10 @@ canSetReadOnly(): boolean
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -1026,6 +1070,10 @@ setReadOnly(): Promise\<void>
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1086,6 +1134,10 @@ setReadOnly(callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -1144,6 +1196,10 @@ getNdefTagTypeString(type: [tag.NfcForumType](js-apis-nfcTag.md#nfcforumtype9)):
 将NFC论坛类型，转换为NFC论坛中定义的字符串描述。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1208,7 +1264,7 @@ ArkTS-Sta: authenticateSector(sectorIndex: int, key: int[], isKeyA: boolean): Pr
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1315,7 +1371,7 @@ ArkTS-Sta: authenticateSector(sectorIndex: int, key: int[], isKeyA: boolean, cal
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1421,7 +1477,7 @@ ArkTS-Sta: readSingleBlock(blockIndex: int): Promise\<int[]>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1524,7 +1580,7 @@ ArkTS-Sta: readSingleBlock(blockIndex: int, callback: AsyncCallback\<int[]>): vo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1626,7 +1682,7 @@ ArkTS-Sta: writeSingleBlock(blockIndex: int, data: int[]): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1734,7 +1790,7 @@ ArkTS-Sta: writeSingleBlock(blockIndex: int, data: int[], callback: AsyncCallbac
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1843,7 +1899,7 @@ ArkTS-Sta: incrementBlock(blockIndex: int, value: int): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1949,7 +2005,7 @@ ArkTS-Sta: incrementBlock(blockIndex: int, value: int, callback: AsyncCallback\<
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2054,7 +2110,7 @@ ArkTS-Sta: decrementBlock(blockIndex: int, value: int): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2160,7 +2216,7 @@ ArkTS-Sta: decrementBlock(blockIndex: int, value: int, callback: AsyncCallback\<
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2267,7 +2323,7 @@ ArkTS-Sta: transferToBlock(blockIndex: int): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2370,7 +2426,7 @@ ArkTS-Sta: transferToBlock(blockIndex: int, callback: AsyncCallback\<void>): voi
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2474,7 +2530,7 @@ ArkTS-Sta: restoreFromBlock(blockIndex: int): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2577,7 +2633,7 @@ ArkTS-Sta: restoreFromBlock(blockIndex: int, callback: AsyncCallback\<void>): vo
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2679,7 +2735,7 @@ ArkTS-Sta: getSectorCount(): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2687,7 +2743,7 @@ ArkTS-Sta: getSectorCount(): int
 
 | 类型 | 说明                             |
 | ------------------ | --------------------------|
-| int | 标签中的扇区数量。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 标签中的扇区数量。|
 
 **示例：**
 
@@ -2723,7 +2779,7 @@ ArkTS-Sta: getBlockCountInSector(sectorIndex: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2737,7 +2793,7 @@ ArkTS-Sta: getBlockCountInSector(sectorIndex: int): int
 
 | 类型 | 说明                             |
 | ------------------ | --------------------------|
-| int | 该扇区内的块数量。|
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 该扇区内的块数量。|
 
 **错误码：**
 
@@ -2791,6 +2847,10 @@ getType(): [tag.MifareClassicType](js-apis-nfcTag.md#mifareclassictype9)
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -2821,7 +2881,7 @@ ArkTS-Sta: getTagSize(): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2862,6 +2922,10 @@ isEmulatedTag(): boolean
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -2893,7 +2957,7 @@ ArkTS-Sta: getBlockIndex(sectorIndex: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -2965,7 +3029,7 @@ ArkTS-Sta: getSectorIndex(blockIndex: int): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3049,7 +3113,7 @@ ArkTS-Sta: readMultiplePages(pageIndex: int): Promise\<int[]>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3152,7 +3216,7 @@ ArkTS-Sta: readMultiplePages(pageIndex: int, callback: AsyncCallback\<int[]>): v
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3254,7 +3318,7 @@ ArkTS-Sta: writeSinglePage(pageIndex: int, data: int[]): Promise\<void>
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3360,7 +3424,7 @@ ArkTS-Sta: writeSinglePage(pageIndex: int, data: int[], callback: AsyncCallback\
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3461,6 +3525,10 @@ getType(): tag.MifareUltralightType
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **返回值：**
@@ -3498,6 +3566,10 @@ format(message: [NdefMessage](#ndefmessage9)): Promise\<void>
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3569,6 +3641,10 @@ format(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): v
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -3576,12 +3652,7 @@ format(message: [NdefMessage](#ndefmessage9), callback: AsyncCallback\<void>): v
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
 | message | [NdefMessage](#ndefmessage9) | 是   | 格式化成功时要写入的Ndef消息。可以为null，为null时仅格式化标签，不写入内容。 |
-
-**返回值：**
-
-| 类型 | 说明                             |
-| ------------------ | --------------------------|
-| callback: AsyncCallback\<void> | 回调函数。当NDEF消息写入标签成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> |  是  |回调函数。当NDEF消息写入标签成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -3639,6 +3710,10 @@ formatReadOnly(message: NdefMessage): Promise\<void>
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -3710,6 +3785,10 @@ formatReadOnly(message: NdefMessage, callback: AsyncCallback\<void>): void
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **参数：**
@@ -3717,12 +3796,7 @@ formatReadOnly(message: NdefMessage, callback: AsyncCallback\<void>): void
 | 参数名   | 类型                    | 必填 | 说明                                   |
 | -------- | ----------------------- | ---- | -------------------------------------- |
 | message | [NdefMessage](#ndefmessage9) | 是   | 格式化成功时要写入的NDEF消息。可以为null，为null时仅格式化标签，不写入内容。|
-
-**返回值：**
-
-| 类型 | 说明                             |
-| ------------------ | --------------------------|
-| callback: AsyncCallback\<void> | 回调函数。当NDEF消息写入NDEF标签成功时，err为undefined，否则为错误对象。 |
+| callback | AsyncCallback\<void> |  是  |回调函数。当NDEF消息写入NDEF标签成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -3791,6 +3865,10 @@ getBarcode(): Promise\<ArrayBuffer>
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 

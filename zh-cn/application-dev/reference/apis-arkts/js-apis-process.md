@@ -15,18 +15,17 @@
 import { process } from '@kit.ArkTS';
 ```
 
-
-## 属性
+## 常量
 
 **系统能力：** SystemCapability.Utils.Lang
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
-| 名称             | 类型   | 只读 | 可选 | 说明             |
-| ---------------- | ------ | ---- | ---- | ---------------- |
-| uid              | number | 是   | 否   | 进程的用户标识。|
-| pid              | number | 是   | 否   | 当前进程的pid。 |
-| tid<sup>8+</sup> | number | 是   | 否   | 当前线程的tid。 |
+| 名称             | 类型   | 只读 |  说明             |
+| ---------------- | ------ | ---- | ---------------- |
+| uid              | number | 是   |  进程的用户标识。|
+| pid              | number | 是   |  当前进程的pid。 |
+| tid<sup>8+</sup> | number | 是   |  当前线程的tid。 |
 
 
 ## EventListener

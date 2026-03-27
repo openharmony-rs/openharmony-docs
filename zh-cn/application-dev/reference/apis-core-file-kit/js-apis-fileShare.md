@@ -77,7 +77,7 @@ import fileShare from '@ohos.fileshare';
 | 名称  | 类型  | 只读 | 可选 | 说明                                                   |
 |------|-------|------|-----|------------------------------------------------------|
 | uri| string | 否   | 否 | 需要授予或使能权限的URI。                                       |
-| operationMode | number | 否   | 否 | 授予或使能权限的URI访问模式，参考[OperationMode](#operationmode11)。 |
+| operationMode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否   | 否 | 授予或使能权限的URI访问模式，参考[OperationMode](#operationmode11)。 |
 
 ## PathPolicyInfo<sup>15+</sup>
 

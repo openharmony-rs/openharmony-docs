@@ -27,7 +27,7 @@ Progress(options: ProgressOptions)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -43,16 +43,12 @@ Progress(options: ProgressOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 7
-
-**ArkTs-Sta起始版本：** 22
-
 | 名称                        | 类型                                | 必填   | 说明                                     |
 | -------------------------- | ----------------------------------- | ---- | ---------------------------------------- |
-| value                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是    | 指定当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total。<br/>默认值：0<br/>取值范围：[0, total]<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
+| value                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 是    | 指定当前进度值。设置小于0的数值时置为0，设置大于total的数值时置为total。<br/>默认值：0<br/>取值范围：[0, total]<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | total                      | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否    | 指定进度总长。设置小于等于0的数值时置为100。<br/>默认值：100<br/>取值范围：[0, 2147483647]<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| type<sup>8+</sup>          | [ProgressType](#progresstype8枚举说明)   | 否    | 指定进度条类型。<br/>默认值：ProgressType.Linear<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。 |
-| style<sup>(deprecated)</sup> | [ProgressStyle](#progressstyle枚举说明) | 否    | 指定进度条样式。<br/>该参数从API version8开始废弃，建议使用type替代。<br/>默认值：ProgressStyle.Linear |
+| type<sup>8+</sup>          | [ProgressType](#progresstype8枚举说明)   | 否    | 指定进度条类型。<br/>默认值：ProgressType.Linear<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| style<sup>(deprecated)</sup> | [ProgressStyle](#progressstyle枚举说明) | 否    | 指定进度条样式。<br/>该参数从API version8开始废弃，建议使用type替代。<br/>默认值：ProgressStyle.Linear <br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn模式。<br/>**ArkTS-Dyn起始版本：** 7|
 
 ## ProgressType<sup>8+</sup>枚举说明
 
@@ -63,6 +59,10 @@ Progress(options: ProgressOptions)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                     | 值 | 说明                                     |
 | ---------------------- | - | ---------------------------------------- |
@@ -84,13 +84,13 @@ Progress(options: ProgressOptions)
 
 | 名称        | 值 | 说明                                     |
 | --------- | - | ---------------------------------------- |
-| Linear    | 0 | 线性样式。                                    |
-| Ring<sup>8+</sup>      | 1 | 环形圆环逐渐显示直至完全填充。                 |
-| Eclipse   | 2 | 圆形样式，显示类似月圆月缺的进度展示效果，从月牙逐渐变化至满月。         |
-| ScaleRing<sup>8+</sup> | 3 | 环形有刻度样式，显示类似时钟刻度形式的进度展示效果。               |
-| Capsule<sup>8+</sup>   | 4 | 胶囊样式，头尾两端圆弧处的进度展示效果与Eclipse相同，中段的进度展示效果与Linear相同。当高度大于宽度时，自适应垂直显示。 |
+| Linear    | 0 | 线性样式。                                    |<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23
+| Ring<sup>8+</sup>      | 1 | 环形圆环逐渐显示直至完全填充。                 |<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23
+| Eclipse   | 2 | 圆形样式，显示类似月圆月缺的进度展示效果，从月牙逐渐变化至满月。         |<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23
+| ScaleRing<sup>8+</sup> | 3 | 环形有刻度样式，显示类似时钟刻度形式的进度展示效果。               |<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23
+| Capsule<sup>8+</sup>   | 4 | 胶囊样式，头尾两端圆弧处的进度展示效果与Eclipse相同，中段的进度展示效果与Linear相同。当高度大于宽度时，自适应垂直显示。 |<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23
 
-##  ProgressStyleMap对象说明 
+##  ProgressStyleMap对象说明
 
 进度条类型和样式的映射表。
 
@@ -100,11 +100,11 @@ Progress(options: ProgressOptions)
 
 | 名称        | 类型                                      |
 | --------- | ---------------------------------------- |
-| ProgressType.Linear | [LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp; |
-| ProgressType.Ring | [RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp; |
-| ProgressType.Eclipse | [EclipseStyleOptions<sup>10+</sup>](#eclipsestyleoptions10)&nbsp;  \| &nbsp;[ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp; |
-| ProgressType.ScaleRing| [ScaleRingStyleOptions<sup>10+</sup>](#scaleringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp; |
-| ProgressType.Capsule | [CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp; |
+| ProgressType.Linear | [LinearStyleOptions<sup>10+</sup>](#linearstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp; |<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23
+| ProgressType.Ring | [RingStyleOptions<sup>10+</sup>](#ringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp; |<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23
+| ProgressType.Eclipse | [EclipseStyleOptions<sup>10+</sup>](#eclipsestyleoptions10)&nbsp;  \| &nbsp;[ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp; |<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23
+| ProgressType.ScaleRing| [ScaleRingStyleOptions<sup>10+</sup>](#scaleringstyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp; |<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23
+| ProgressType.Capsule | [CapsuleStyleOptions<sup>10+</sup>](#capsulestyleoptions10)&nbsp; \| &nbsp;[ProgressStyleOptions<sup>8+</sup>](#progressstyleoptions8)&nbsp; |<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23
 
 ## 属性
 
@@ -130,13 +130,9 @@ ArkTS-Sta: value(value: double | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
-
-**ArkTs-Dyn起始版本：** 7
-
-**ArkTs-Sta起始版本：** 22
 
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | ------------ |
@@ -160,7 +156,7 @@ ArkTS-Sta: color(value: ResourceColor | LinearGradient | undefined)
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -180,7 +176,7 @@ ArkTS-Sta: style(value: LinearStyleOptions \| RingStyleOptions \| CapsuleStyleOp
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -201,7 +197,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ProgressConfiguration\> | 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名 | 类型   | 必填 | 说明         |
@@ -224,7 +220,7 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -240,9 +236,9 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 12
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型  | 必填 |说明         |
 | ------ | ------ | ------- |------------|
@@ -285,9 +281,9 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 8
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型                      | 必填 | 说明                                                                                        |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ |
@@ -356,9 +352,9 @@ ArkTS-Sta: privacySensitive(isPrivacySensitiveMode: boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTs-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 10
 
-**ArkTs-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型                      | 必填 | 说明                                                                                        |
 | ------------ | ---------------------------- | ---- | ------------------------------------------------------------------------------------------ |

@@ -26,7 +26,7 @@ ArkTS-Sta: onProgress(progress: int): void
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

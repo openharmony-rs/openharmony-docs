@@ -1561,17 +1561,15 @@ refresh(ignoreCache: boolean): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 24
-
-**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明               |
 | ------- | -------- | ---- | ---------------------- |
-| ignoreCache | boolean  | 是   | Web组件刷新网页，选择是否忽略缓存刷新。<br>true表示忽略缓存刷新，false表示不忽略缓存刷新。<br/>**说明：**<br/>ArkTS-Dyn: 传入undefined或null时为false。<br/>ArkTS-Sta: 不支持传入undefined或null。|
+| ignoreCache | boolean  | 是   | Web组件刷新网页，选择是否忽略缓存刷新。<br>true表示忽略缓存刷新，false表示不忽略缓存刷新。<br/>**说明：**<br/>ArkTS-Dyn: 传入undefined或null时为false。|
 
 **错误码：**
 
@@ -1583,7 +1581,6 @@ refresh(ignoreCache: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -1610,7 +1607,36 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
+## refresh<sup>24+</sup>
+
+refresh(ignoreCache: boolean): void
+
+通知Web组件刷新网页，可以选择是否忽略缓存刷新。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名  | 类型 | 必填 | 说明               |
+| ------- | -------- | ---- | ---------------------- |
+| ignoreCache | boolean  | 是   | Web组件刷新网页，选择是否忽略缓存刷新。<br>true表示忽略缓存刷新，false表示不忽略缓存刷新。<br/>**说明：**ArkTS-Sta: 不支持传入undefined或null。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 17100001 | Init error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
 ```ts
 'use static'
 
@@ -2138,6 +2164,7 @@ runJavaScript(script: string, callback : AsyncCallback\<string>): void
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100003 | Calling a JS method that returns an empty ArrayBuffer via runJavaScript.                        |
 
 **示例：**
 
@@ -2288,6 +2315,7 @@ runJavaScript(script: string): Promise\<string>
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100003 | Calling a JS method that returns an empty ArrayBuffer via runJavaScript.                        |
 
 **示例：**
 
@@ -8904,14 +8932,6 @@ static setUserAgentForHosts(userAgent: string, hosts: Array\<string>): void
 | userAgent      | string  | 是   | 用户自定义代理信息。建议先使用[getDefaultUserAgent](#getdefaultuseragent14)获取当前默认用户代理，在此基础上追加自定义用户代理信息。 |
 | hosts      | Array\<string>  | 是   | 用户自定义代理的相关域名列表，每次调用时仅保留最新传入的列表，并限制最大条目数为两万，超出部分自动截断。 |
 
-**错误码：**
-
-以下错误码的详细介绍请参见[webview错误码](errorcode-webview.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-
 **示例：**
 
 ArkTS-Dyn示例：
@@ -10318,7 +10338,7 @@ postUrl(url: string, postData: ArrayBuffer): void
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
@@ -16139,6 +16159,14 @@ ArkTS-Sta: getProgress(): int
 | :------------------------------ | ---------------------- |
 | ArkTS-Dyn: number<br>ArkTS-Sta: int | 当前页面加载进度，取值范围[0, 100] |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID  |       错误信息             |
+| -------- | ------------------------- |
+|  801     | Capability not supported. |
+
 **示例：**
 
 ArkTS-Dyn示例：
@@ -16195,7 +16223,11 @@ getHitTest(): WebHitTestType
 >
 > 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **返回值：**
 
@@ -16250,7 +16282,11 @@ getHitTestValue(): HitTestValue
 >
 > 从API version11开始支持，从API version 18开始废弃。建议使用[getLastHitTest](#getlasthittest18)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 11
 
 **返回值：**
 
@@ -16586,6 +16622,7 @@ ArkTS-Sta: avoidVisibleViewportBottom(avoidHeight: int): void
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component. |
+|  801     | Capability not supported. |
 
 **示例：**
 
@@ -16884,6 +16921,134 @@ struct WebComponent {
               }
             } catch (error) {
               console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+            }
+            return false;
+        })
+    }
+  }
+}
+```
+
+## setBlanklessLoadingWithParams<sup>23+</sup>
+
+setBlanklessLoadingWithParams(key: string, param: BlanklessLoadingParam): WebBlanklessErrorCode
+
+设置白屏插帧的配置参数，本接口必须与[getBlanklessInfoWithKey](#getblanklessinfowithkey20)接口配套使用。相比于[setBlanklessLoadingWithKey](#setblanklessloadingwithkey20)，本接口支持白屏插帧更多的参数设置，包括插帧持续时间，缓存数据有效时间，插帧完成后的自定义回调。
+
+> **说明：**
+>
+> - 需在触发页面加载的接口之后调用，其他约束同[getBlanklessInfoWithKey](#getblanklessinfowithkey20)。
+> - 页面加载必须在调用本接口的组件中进行。
+> - 当相似度较低时，系统将判定为跳变过大，启用插帧会失败。
+> - 请在module.json5中添加权限: ohos.permission.INTERNET和ohos.permission.GET_NETWORK_INFO，具体权限的添加方法请参考[在配置文件中声明权限](../../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                      |
+| -------- | ------- | ---- | -------------------------------------- |
+| key | string | 是 | 唯一标识本页面的key值。必须与getBlanklessInfoWithKey接口的key值相同。<br>合法取值范围：非空，长度不超过2048个字符。<br>非法值设置行为：返回错误码WebBlanklessErrorCode，方案不生效。 |
+| param | [BlanklessLoadingParam](./arkts-apis-webview-i.md#blanklessloadingparam23) | 是 | 白屏插帧加载的各项参数设置。 |
+
+**返回值：**
+
+| 类型                 | 说明                      |
+| -------------------- | ------------------------- |
+| [WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20) | 返回接口调用结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+|  801     | Capability not supported. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+       .javaScriptAccess(true)
+       .onLoadIntercept((event) => {
+            try {
+              let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
+              if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
+                let data = new Date(2026, 5, 10, 0, 0, 0, 0);
+                let param: webview.BlanklessLoadingParam = {
+                  enable: info.similarity > 0.4 && info.similarity < 2000,
+                  duration: info.loadingTime,
+                  expirationTime: data.getTime(),
+                  callback: (info: webview.BlanklessFrameInterpolationInfo)=>{
+                    // 数据监控
+                  },
+                };
+                this.controller.setBlanklessLoadingWithParams('http://www.example.com/page1', param);
+              } else {
+                console.info('getBlankless info err');
+              }
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},
+                Message: ${(error as BusinessError).message}`);
+            }
+            return false;
+        })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import { Entry, Column, Component, Web } from '@ohos.arkui.component'
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  build() {
+    Column() {
+      Web({ src: 'https://www.example.com', controller: this.controller })
+       .javaScriptAccess(true)
+       .onLoadIntercept((event) => {
+            try {
+              let info = this.controller.getBlanklessInfoWithKey('https://www.example.com/page1');
+              if (info.errCode == webview.WebBlanklessErrorCode.SUCCESS) {
+                let data = new Date(2026, 5, 10, 0, 0, 0, 0);
+                let param: webview.BlanklessLoadingParam = {
+                  enable: info.similarity > 0.4 && info.similarity < 2000,
+                  duration: info.loadingTime,
+                  expirationTime: data.getTime() as Int,
+                  callback: (info: webview.BlanklessFrameInterpolationInfo)=>{
+                    // 数据监控
+                  },
+                };
+                this.controller.setBlanklessLoadingWithParams('http://www.example.com/page1', param);
+              } else {
+                console.info('getBlankless info err');
+              }
+            } catch (error) {
+              console.error(`ErrorCode: ${(error as BusinessError).code},
+                Message: ${(error as BusinessError).message}`);
             }
             return false;
         })
@@ -17778,7 +17943,66 @@ struct WebComponent {
   }
 }
 ```
-  
+
+## setSocketIdleTimeout<sup>21+</sup>
+
+ArkTS-Dyn: static setSocketIdleTimeout(timeout: number): void
+
+ArkTS-Sta: static setSocketIdleTimeout(timeout: int): void
+
+设置ArkWeb中已使用过的空闲socket的超时时间，即已使用过的socket可以处于空闲状态的最大时长。如果设置的值与已存在的空闲socket超时时间不同，则根据新的值对已存在的空闲socket进行清理。
+
+未使用该接口设置空闲socket的超时时间时，ArkWeb的默认值为300s。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：**  21
+
+**ArkTS-Sta起始版本：**  23
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                                                     |
+| -------- | ------- | ---- | -------------------------------------------------------- |
+| timeout | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | ArkWeb中已经使用过的空闲socket的超时时间。<br>取值范围：[30,300]，单位：s。<br>小于30时生效值为30，大于300时生效值为300。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// EntryAbility.ets
+import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { webview } from '@kit.ArkWeb';
+
+export default class EntryAbility extends UIAbility {
+    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+        webview.WebviewController.setSocketIdleTimeout(200);
+        AppStorage.setOrCreate("abilityWant", want);
+    }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+// EntryAbility.ets
+'use static'
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import UIAbility from '@ohos.app.ability.UIAbility';
+import Want from '@ohos.app.ability.Want';
+import window from '@ohos.window';
+import { BusinessError } from '@ohos.base';
+import hilog from '@ohos.hilog';
+import { webview } from '@kit.ArkWeb';
+import { AppStorage } from 'arkui.stateManagement.storage.appStorage';
+
+class EntryAbility extends UIAbility {
+  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+    webview.WebviewController.setSocketIdleTimeout(200);
+    AppStorage.setOrCreate("abilityWant", want);
+  }
+}
+```
+
 ## setErrorPageEnabled<sup>20+</sup>
 
 setErrorPageEnabled(enable: boolean): void
@@ -18095,9 +18319,7 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 **ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本：** 24
-
-**模型约束：** ArkTS-Sta支持在Stage模型下使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -18107,7 +18329,6 @@ static setUserAgentClientHintsEnabled(enabled: boolean): void
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -18191,7 +18412,34 @@ struct WebComponent {
 }
 ```
 
-ArkTS-Sta示例：
+## setUserAgentClientHintsEnabled<sup>24+</sup>
+
+static setUserAgentClientHintsEnabled(enabled: boolean): void
+
+设置是否开启UserAgent Client Hints功能。
+
+> **说明：**
+>
+> User-Agent Client Hints（UA-CH）是一种替代传统User-Agent字符串的隐私保护机制，通过按需请求和结构化数据传递客户端信息，减少过度追踪风险。
+>
+> 不使用该方法时，默认不开启UserAgent Client Hints功能。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名              | 类型    | 必填   |  说明 |
+| ------------------ | ------- | ---- | ------------- |
+| enabled | boolean | 是   | 是否开启UserAgent Client Hints功能。<br/>true表示开启，false表示不开启。 |
+
+**示例：**
+
 ```ts
 // xxx.ets
 'use static'
@@ -18286,7 +18534,31 @@ static getUserAgentClientHintsEnabled(): boolean
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **ArkTS-Dyn起始版本：** 24
+
+**返回值：**
+
+| 类型    | 说明                                     |
+| ------- | --------------------------------------- |
+| boolean | 返回UserAgent Client Hints功能开启状态。true表示已开启；false表示已关闭。 |
+
+**示例：**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
+
+## getUserAgentClientHintsEnabled<sup>24+</sup>
+
+static getUserAgentClientHintsEnabled(): boolean
+
+查询UserAgent Client Hints功能当前是否开启。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 24
 
@@ -18318,9 +18590,42 @@ setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名              | 类型    | 必填   |  说明 |
+| ------------------ | ------- | ---- | ------------- |
+| userAgent | string | 是   | 用户自定义代理信息。可以使用[getUserAgent](#getuseragent)获取当前默认用户代理。 |
+| metaData | [UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md) | 是   | userAgent对应的UserAgentMetadata。可以先使用[getUserAgentMetadata](#getuseragentmetadata24)获取当前默认值，然后用相应方法进行修改。 |
+
+**示例：**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
+
+## setUserAgentMetadata<sup>24+</sup>
+
+setUserAgentMetadata(userAgent: string, metaData: UserAgentMetadata): void
+
+设置与User-Agent相对应的UserAgent Metadata数据。
+
+> **说明：**
+>
+> User-Agent Metadata将用于填充用户代理客户端提示，它们可以提供客户端的品牌和版本信息、底层操作系统的品牌和主要版本，以及底层设备的详细信息。
+>
+> 用户代理可以通过setCustomUserAgent、setAppCustomUserAgent或setUserAgentForHosts来设置。
+>
+> 如果根据覆盖后的User-Agent未找到UserAgentMetadata，且覆盖后的User-Agent包含系统默认的User-Agent，则将使用系统默认值。
+>
+> 如果根据覆盖后的User-Agent未找到UserAgentMetadata，但覆盖后的 User-Agent 不包含系统默认用户代理，则只会生成低级用户代理客户端提示。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 24
 
@@ -18343,9 +18648,37 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **ArkTS-Dyn起始版本：** 24
+
+**参数：**
+
+| 参数名              | 类型    | 必填   |  说明 |
+| ------------------ | ------- | ---- | ------------- |
+| userAgent | string | 是   | 用户自定义代理信息。可以使用[getUserAgent](#getuseragent)获取当前默认用户代理。 |
+
+**返回值：**
+
+| 类型    | 说明                                     |
+| ------- | --------------------------------------- |
+| UserAgentMetadata | userAgent对应的[UserAgentMetadata](./arkts-apis-webview-UserAgentMetadata.md)。 |
+
+**示例：**
+
+完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
+
+## getUserAgentMetadata<sup>24+</sup>
+
+getUserAgentMetadata(userAgent: string): UserAgentMetadata
+
+查询userAgent对应的UserAgent Metadata信息。
+
+**系统能力：**  SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 24
 
@@ -18364,3 +18697,190 @@ getUserAgentMetadata(userAgent: string): UserAgentMetadata
 **示例：**
 
 完整示例代码参考[setUserAgentClientHintsEnabled](#setuseragentclienthintsenabled24)。
+
+## setUrlTrustList<sup>24+</sup>
+
+setUrlTrustList(urlTrustList: string, allowOpaqueOrigin: boolean, supportWildcard: boolean): void
+
+设置当前web的url白名单，只有白名单内的url才能允许加载/跳转，否则将拦截并弹出告警页。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                  |
+| ------- | ------ | ---- | :-------------------- |
+| urlTrustList | string | 是   | url白名单列表，使用json格式配置，最大支持10MB。<br/>白名单设置接口为覆盖方式，多次调用接口时，以最后一次设置为准。<br/>当本参数为空字符串时，表示取消白名单，放行所有url的访问。<br/>json格式示例：<br/>{<br>&nbsp;&nbsp;"UrlPermissionList":&nbsp;[<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"https",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example1.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;443,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"pathA/pathB"<br/>&nbsp;&nbsp;&nbsp;&nbsp;},<br/>&nbsp;&nbsp;&nbsp;&nbsp;{<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"scheme":&nbsp;"http",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"host":&nbsp;"www\.example2.com",<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"port":&nbsp;80,<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"path":&nbsp;"test1/test2/test3"<br/>&nbsp;&nbsp;&nbsp;&nbsp;}<br/>&nbsp;&nbsp;]<br/>} |
+| allowOpaqueOrigin | boolean | 是 | true表示允许loadUrl直接加载javascript/data等[不透明源url](https://mdn.org.cn/en-US/docs/Web/URI/Reference/Schemes)，false表示不允许加载不透明源url。 |
+| supportWildcard | boolean | 是 | true表示支持对host、path的通配符匹配能力，例如白名单配置了`*.example.com`，则访问`a.example.com`和`b.example.com`都是允许的。false表示不支持。 |
+
+**白名单json格式参数**
+
+| 字段   | 参数类型 | 必填 | 参数描述                  |
+| -------- | -------- | ---- | ------------------------- |
+| scheme | string | 否 | 可选参数，不设置即不匹配该项，支持协议：http、https。 |
+| host | string | 是 | 必选参数。<br/>当supportWildcard为false时，精准匹配，即url的host字段和规则字段完全一致才会放行，可允许同一host多条规则同时生效。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. host以“.”进行分段。<br/>2. 一个通配符\*只能匹配一个段。例如`www.*.com`只能匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>3. 可以使用多个通配符匹配多个段。例如`www.*.*`，可以匹配`www.example.com`，不能匹配`www.example1.example2.com`。<br/>4. 通配符只能单独使用，不支持连续多个\*或者与其他的字符串一起使用，例如`**.example.com`，或者`*ww.example.com`是不支持的。<br/>5. 通配符不能用在IP地址的匹配上。例如`127.0.0.*`无法匹配`127.0.0.1`。<br/>6. 如果是非ASCII的host（例如中文域名等），需要提前进行IDN转换。 |
+| port | number | 否 | 可选字段，不设置即不匹配该项。 |
+| path | string | 否 | 可选字段，不设置即不匹配该项。<br/>当supportWildcard为false时，匹配方式为前缀匹配，以`pathA/pathB/pathC`为例：`pathA/pathB/pathC`三级目录下全部允许访问，其中pathC必须是完整的目录名或者文件名，不支持部分匹配。<br/>当supportWildcard为true时，允许使用通配符\*进行任意字符串匹配，匹配规则如下：<br/>1. path以“/”进行分段。<br/>2. 如果通配符\*不是最后一段，那只能匹配一个段。例如`pathA/*/pathD`，只能匹配`pathA/pathB/pathD`，不能匹配`pathA/pathB/pathC/pathD`。<br/>3. 如果通配符\*是最后一段，则可以匹配后续的多个段。例如`pathA/*`，可以匹配`pathA/pathB`，也可以匹配`pathA/pathB/pathC`；也可以匹配文件类例如`pathA/xxx.txt`。<br/>4. 通配符只能单独使用，不支持多个\*或者与其他的字符串一起使用，例如`**/pathA/pathB`，或者`path*/pathB/pathC`是不支持的。<br/>5. 规则中url部分需要做url encoded转换。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Webview错误码](errorcode-webview.md)、[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error, possible causes:<br/>1. Mandatory parameters are left unspecified<br/>2. JSON string exceeds 10MB limit<br/>3. JSON parsing failed (syntax errors, etc.)<br/>4. UrlPermissionList field is missing<br/>5. URL rule validation failed:<br/>- scheme must be http or https<br/>- host cannot be empty<br/>- port must be between 0-65535<br/>- path length cannot exceed 65536 characters |
+| 17100001 | Initialization error. The WebviewController must be associated with a Web component. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+  urltrustList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"trust.example.com\", \"path\":\"test\"}]}"
+  urlWildcardList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"*.example.com\", \"path\":\"*\"}]}"
+
+  build() {
+    Column() {
+      Button('Setting the trustlist')
+        .onClick(() => {
+          try {
+            // 设置白名单，只允许访问trust网页
+            this.controller.setUrlTrustList(this.urltrustList);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Setting the wildcardlist')
+        .onClick(() => {
+          try {
+            // 设置通配符白名单，所有url都可以允许访问
+            this.controller.setUrlTrustList(this.urlWildcardList, true, true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Cancel the trustlist.')
+        .onClick(() => {
+          try {
+            // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问
+            this.controller.setUrlTrustList("");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Access the trust web')
+        .onClick(() => {
+          try {
+            // 白名单生效，可以访问trust网页
+            this.controller.loadUrl('http://trust.example.com/test');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Access the untrust web')
+        .onClick(() => {
+          try {
+            // 白名单生效，此时不可以访问untrust网页，并弹出错误页
+            this.controller.loadUrl('http://untrust.example.com/test');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
+        try {
+          // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页
+          this.controller.setUrlTrustList(this.urltrustList);
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import { Button, Web, Column, Component, Entry } from '@kit.ArkUI';
+import { webview } from '@kit.ArkWeb';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController(undefined);
+  urltrustList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"trust.example.com\", \"path\":\"test\"}]}"
+  urlWildcardList: string = "{\"UrlPermissionList\":[{\"scheme\":\"http\", \"host\":\"*.example.com\", \"path\":\"*\"}]}"
+
+  build() {
+    Column() {
+      Button('Setting the trustlist')
+        .onClick(() => {
+          try {
+            // 设置白名单，只允许访问trust网页
+            this.controller.setUrlTrustList(this.urltrustList);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Setting the wildcardlist')
+        .onClick(() => {
+          try {
+            // 设置通配符白名单，所有url都可以允许访问
+            this.controller.setUrlTrustList(this.urlWildcardList, true, true);
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Cancel the trustlist.')
+        .onClick(() => {
+          try {
+            // 白名单传入空字符串表示关闭白名单机制，所有url都可以允许访问
+            this.controller.setUrlTrustList("");
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Access the trust web')
+        .onClick(() => {
+          try {
+            // 白名单生效，可以访问trust网页
+            this.controller.loadUrl('http://trust.example.com/test');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Button('Access the untrust web')
+        .onClick(() => {
+          try {
+            // 白名单生效，此时不可以访问untrust网页，并弹出错误页
+            this.controller.loadUrl('http://untrust.example.com/test');
+          } catch (error) {
+            console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+          }
+        })
+      Web({ src: 'http://untrust.example.com/test', controller: this.controller }).onControllerAttached(() => {
+        try {
+          // onControllerAttached回调中设置白名单，可以保证在加载url之前生效，此时不可以访问untrust网页，并弹出错误页
+          this.controller.setUrlTrustList(this.urltrustList);
+        } catch (error) {
+          console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+        }
+      })
+    }
+  }
+}
+```

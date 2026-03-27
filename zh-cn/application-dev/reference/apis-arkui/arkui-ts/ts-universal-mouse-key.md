@@ -24,7 +24,7 @@ ArkTS-Sta: onMouse(event: ((event: MouseEvent) => void) | undefined)
 
 **ArkTS-Dyn起始版本：** 8
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -41,20 +41,21 @@ ArkTS-Sta: onMouse(event: ((event: MouseEvent) => void) | undefined)
 
 | 名称                     | 属性类型                                     | 描述                           |
 | ---------------------- | ---------------------------------------- | ---------------------------- |
-| x                      | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 鼠标位置相对于当前组件左上角的x轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22         |
-| y                      | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 鼠标位置相对于当前组件左上角的y轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22         |
-| button                 | [MouseButton](ts-appendix-enums.md#mousebutton8) | 鼠标按键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22                        |
-| action                 | [MouseAction](ts-appendix-enums.md#mouseaction8) | 鼠标动作。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22                        |
-| stopPropagation        | () => void                               | 阻塞事件冒泡。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 22                      |
-| windowX<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 鼠标位置相对于应用窗口左上角的x轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| windowY<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 鼠标位置相对于应用窗口左上角的y轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| displayX<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 鼠标位置相对于应用屏幕左上角的x轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
-| displayY<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 鼠标位置相对于应用屏幕左上角的y轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 22 |
+| x                      | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 鼠标位置相对于当前组件左上角的x轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
+| y                      | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 鼠标位置相对于当前组件左上角的y轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23         |
+| button                 | [MouseButton](ts-appendix-enums.md#mousebutton8) | 鼠标按键。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                        |
+| action                 | [MouseAction](ts-appendix-enums.md#mouseaction8) | 鼠标动作。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                        |
+| stopPropagation        | () => void                               | 阻塞事件冒泡。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23                      |
+| windowX<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 鼠标位置相对于应用窗口左上角的x轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| windowY<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double   | 鼠标位置相对于应用窗口左上角的y轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| displayX<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 鼠标位置相对于应用屏幕左上角的x轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
+| displayY<sup>10+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double  | 鼠标位置相对于应用屏幕左上角的y轴坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 | screenX<sup>(deprecated)</sup> | number                 | 鼠标位置相对于应用窗口左上角的x轴坐标。<br>单位：vp<br/>从API version 10开始不再维护，建议使用windowX代替。<br/>**ArkTS模式：** 该字段仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8 |
 | screenY<sup>(deprecated)</sup> | number                 | 鼠标位置相对于应用窗口左上角的y轴坐标。<br>单位：vp<br/>从API version 10开始不再维护，建议使用windowY代替。<br/>**ArkTS模式：** 该字段仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 8 |
-| rawDeltaX<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 相对于先前上报的鼠标指针位置的X轴偏移量。当鼠标指针处于屏幕边缘时，该值可能小于两次上报的X坐标之差。<br/>单位：vp<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
-| rawDeltaY<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 相对于先前上报的鼠标指针位置的Y轴偏移量。<br/>单位：vp<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
-| pressedButtons<sup>15+</sup> | MouseButton[] | 所有鼠标上按着的按钮集合。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 22 |
+| rawDeltaX<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 相对于先前上报的鼠标指针位置的X轴偏移量。当鼠标指针处于屏幕边缘时，该值可能小于两次上报的X坐标之差。<br/>单位：vp<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| rawDeltaY<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 相对于先前上报的鼠标指针位置的Y轴偏移量。<br/>单位：vp<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| pressedButtons<sup>15+</sup> | MouseButton[] | 所有鼠标上按着的按钮集合。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| targetDisplayId<sup>15+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 事件发生的屏幕ID。<br/>默认值：0<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 | globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 鼠标位置相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 鼠标位置相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 

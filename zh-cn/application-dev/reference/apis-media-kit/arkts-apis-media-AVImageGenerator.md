@@ -2,6 +2,7 @@
 
 > **说明：**
 >
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 > - 本模块首批接口从API version 6开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 12开始支持。
 
@@ -21,28 +22,30 @@ import { media } from '@kit.MediaKit';
 
 | 名称                                                | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | --------------------------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 否   | 媒体文件描述，通过该属性设置数据源。<br/> **使用示例**：<br/>假设一个连续存储的媒体文件，地址偏移:0，字节长度:100。其文件描述为 AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br>**说明：** <br> - 将资源句柄（fd）传递给 AVImageGenerator 实例之后，请不要通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个 AVPlayer / AVMetadataExtractor / AVImageGenerator / AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频缩略图数据获取异常。 <br> **ArkTS-Dyn：** 12 <br> **ArkTS-Sta：** 23 |
+| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       | 否   | 是   | 媒体文件描述，通过该属性设置数据源。<br/> **使用示例**：<br/>假设一个连续存储的媒体文件，地址偏移：0，字节长度：100。其文件描述为AVFileDescriptor { fd = 资源句柄; offset = 0; length = 100; }。<br>**说明：** <br> 将资源句柄（fd）传递给AVImageGenerator实例之后，不允许通过该资源句柄做其他读写操作，包括但不限于将同一个资源句柄传递给多个AVPlayer/AVMetadataExtractor/AVImageGenerator/AVTranscoder。同一时间通过同一个资源句柄读写文件时存在竞争关系，将导致视频缩略图数据获取异常。 <br> **ArkTS-Dyn起始版本：** 12 <br> **ArkTS-Sta起始版本：** 23 |
 
 ## fetchFrameByTime<sup>12+</sup>
 
-fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams, callback: AsyncCallback\<image.PixelMap>): void
+ArkTS-Dyn: fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams, callback: AsyncCallback\<image.PixelMap>): void
+
+ArkTS-Sta: fetchFrameByTime(timeUs: long, options: AVImageQueryOptions, param: PixelMapParams, callback: AsyncCallback\<image.PixelMap | undefined>): void
 
 异步方式获取视频缩略图。通过注册回调函数获取返回值。
-
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
 **ArkTS-Dyn起始版本：** 12
 
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeUs | number                   | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
+| timeUs | ArkTS-Dyn: number<br>ArkTS-Sta: long| 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
 | options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)     | 是   | 需要获取的缩略图的格式参数。 |
-| callback | AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)>   | 是   | 回调函数。获取缩略图成功时，err为undefined，data为PixelMap实例，否则为错误对象。 |
+| callback | ArkTS-Dyn: AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)><br>ArkTS-Sta: AsyncCallback\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined> | 是   | 回调函数。获取缩略图成功时，err为undefined，data为PixelMap实例，否则为错误对象。 |
 
 **错误码：**
 
@@ -92,9 +95,11 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
 
 ## fetchFrameByTime<sup>12+</sup>
 
-fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams): Promise<image.PixelMap>
+ArkTS-Dyn: fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams): Promise<image.PixelMap>
 
-异步方式获取视频缩略图。通过Promise获取返回值。
+ArkTS-Sta: fetchFrameByTime(timeUs: long, options: AVImageQueryOptions, param: PixelMapParams): Promise<image.PixelMap | undefined>
+
+异步方式获取视频缩略图。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVImageGenerator
 
@@ -106,7 +111,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeUs | number                   | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
+| timeUs | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
 | options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
 
@@ -114,7 +119,7 @@ fetchFrameByTime(timeUs: number, options: AVImageQueryOptions, param: PixelMapPa
 
 | 类型           | 说明                                     |
 | -------------- | ---------------------------------------- |
-| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Promise对象，返回视频缩略图对象。 |
+| ArkTS-Dyn: Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)><br>ArkTS-Sta: Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined> | Promise对象，返回视频缩略图对象。 |
 
 **错误码：**
 
@@ -162,7 +167,9 @@ media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenera
 
 ## fetchScaledFrameByTime<sup>20+</sup>
 
-fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSize?: OutputSize):Promise\<image.PixelMap\>
+ArkTS-Dyn: fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSize?: OutputSize):Promise\<image.PixelMap\>
+
+ArkTS-Sta: fetchScaledFrameByTime(timeUs: long, queryMode: AVImageQueryOptions, outputSize?: OutputSize):Promise\<image.PixelMap | undefined\>
 
 支持按比例缩放提取视频缩略图。使用Promise异步回调。
 
@@ -176,7 +183,7 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 
 | 参数名     | 类型                                          | 必填 | 说明                                                 |
 | ---------- | --------------------------------------------- | ---- | ---------------------------------------------------- |
-| timeUs     | number                                        | 是   | 在视频中需要获取的缩略图的时间点，单位为微秒（μs）。 |
+| timeUs     | ArkTS-Dyn: number<br>ArkTS-Sta: long             | 是   | 在视频中需要获取的缩略图的时间点，单位为微秒（μs）。 |
 | queryMode  | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12) | 是   | 需要获取的缩略图时间点与视频帧的对应关系。           |
 | outputSize | [OutputSize ](arkts-apis-media-i.md#outputsize20)                  | 否   | 定义帧的输出大小。默认按原图大小显示。               |
 
@@ -184,7 +191,7 @@ fetchScaledFrameByTime(timeUs: number, queryMode: AVImageQueryOptions, outputSiz
 
 | 类型                                                         | 说明                              |
 | ------------------------------------------------------------ | --------------------------------- |
-| Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)> | Promise对象。返回视频缩略图对象。 |
+| ArkTS-Dyn: Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)><br>ArkTS-Sta: Promise\<[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| undefined> | Promise对象。返回视频缩略图对象。 |
 
 **错误码：**
 

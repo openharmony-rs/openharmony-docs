@@ -35,6 +35,10 @@ abstract makeNode(uiContext : UIContext): FrameNode | null
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                                      | 必填 | 说明                                                                                                          |
@@ -61,6 +65,10 @@ aboutToAppear?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 ### aboutToDisappear
 
 aboutToDisappear?(): void
@@ -74,6 +82,10 @@ aboutToDisappear?(): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 ### onAttach<sup>18+</sup>
 
@@ -89,6 +101,10 @@ onAttach?(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 ### onDetach<sup>18+</sup>
 
 onDetach?(): void
@@ -102,6 +118,10 @@ onDetach?(): void
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 ### onWillBind<sup>18+</sup>
 
@@ -117,7 +137,7 @@ ArkTS-Sta: onWillBind(containerId: long): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -139,7 +159,7 @@ ArkTS-Sta: onWillUnbind(containerId: long): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -161,7 +181,7 @@ ArkTS-Sta: onBind(containerId: long): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -183,7 +203,7 @@ ArkTS-Sta: onUnbind(containerId: long): void
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -201,6 +221,10 @@ aboutToResize?(size: Size): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                     | 必填 | 说明                                     |
@@ -217,6 +241,10 @@ onTouchEvent?(event: TouchEvent): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                                                      | 必填 | 说明       |
@@ -229,14 +257,18 @@ rebuild(): void
 
 调用此接口通知[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)组件重新回调[makeNode](#makenode)方法，更改子节点。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 > **说明：**
 > 由于rebuild方法为应用主动调用的方法，且该操作与UI相关。需要开发者自行保证调用该接口时UI上下文有效，即与绑定的NodeContainer保持UI上下文一致。
 >
 > 监听回调等[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)时，可以通过[UIContext](./js-apis-arkui-UIContext.md)的[runScopedTask](./js-apis-arkui-UIContext.md#runscopedtask)方法明确调用时的UI上下文。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 ## 示例
 
