@@ -448,4 +448,6 @@ HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)
 | -- | -- |
 | [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | HICOLLIE_SUCCESS：0 - 成功。<br> OH_HICOLLIE_REACH_REPORT_LIMIT：29800007 - 上报频率过高。 |
 
-注：1分钟内限定最多上报1次
+>**注意**
+>
+>1分钟内限定最多上报1次
