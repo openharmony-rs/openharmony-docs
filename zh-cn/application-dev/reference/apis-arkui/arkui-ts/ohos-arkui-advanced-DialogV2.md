@@ -195,8 +195,8 @@ PopoverDialogV2({visible: boolean, \$visible: PopoverDialogV2OnVisibleChange, po
 
 | 名称            | 类型                                                                | 必填 | 装饰器类型               | 说明                                                 |
 | ------------- |-------------------------------------------------------------------| -- |---------------------| -------------------------------------------------- |
-| visible       | boolean                                                           | 是  | @Param<br/>@Require | 跟手弹出框显示状态。<br />值为true时跟手弹出框显示，为false时隐藏。                                         |
-| \$visible     | [PopoverDialogV2OnVisibleChange](#popoverdialogv2onvisiblechange) | 否  | @Event              | 修改跟手弹出框显示状态时触发的回调函数，建议在visible后使用!!语法设置双向同步。<br />默认无事件。 |
+| visible       | boolean                                                           | 是  | @Param<br/>@Require | 跟手弹出框的显示状态。<br />值为true时跟手弹出框显示，为false时隐藏。                                         |
+| \$visible     | [PopoverDialogV2OnVisibleChange](#popoverdialogv2onvisiblechange) | 否  | @Event              | 修改跟手弹出框的显示状态时触发的回调函数，建议在visible后使用!!语法设置双向同步。<br />默认无事件。 |
 | popover       | [PopoverDialogV2Options](#popoverdialogv2options)                 | 是  | @Param<br/>@Require | 配置跟手弹出框的参数。                                         |
 | targetBuilder | [CustomBuilder](ts-types.md#custombuilder8)                       | 是  | @BuilderParam       | 跟手弹出框基于的目标组件。                                      |
 

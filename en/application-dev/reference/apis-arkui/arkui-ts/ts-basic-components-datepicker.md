@@ -45,9 +45,9 @@ Describes the parameters of the date picker.
 
 | Name    | Type| Read Only| Optional| Description                                                        |
 | -------- | ---- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| start    | Date | No | Yes | Start date of the picker.<br>Default value: **Date('1970-1-1')**<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
-| end      | Date | No | Yes | End date of the picker.<br>Default value: **Date('2100-12-31')**<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')].<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
-| selected | Date | No | Yes | Date of the selected item.<br>Default value: current system date.<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')].<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| start    | Date | No | Yes | Start date of the picker.<br>Default value: **Date('1970-1-1')**<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')]<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
+| end      | Date | No | Yes | End date of the picker.<br>Default value: **Date('2100-12-31')**<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')]<br>**Atomic service API**: This API can be used in atomic services since API version 11.       |
+| selected | Date | No | Yes | Date of the selected item.<br>Default value: current system date<br>Value range: \[Date('1900-01-31'), Date('2100-12-31')]<br>Since API version 10, this parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | mode<sup>18+</sup> | [DatePickerMode](#datepickermode18) | No | Yes | Date display mode.<br>Default value: **DatePickerMode.DATE**, which means to display three columns: year, month, and day.<br>In [DatePickerDialog](ts-methods-datepicker-dialog.md), when **showTime** in [DatePickerDialogOptions](ts-methods-datepicker-dialog.md#datepickerdialogoptions) is **true**, this parameter is ignored and the year, month, day columns are always shown.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
 >  **NOTE**
@@ -56,7 +56,7 @@ Describes the parameters of the date picker.
 >
 > - Property modifications made to **DatePickerOptions** during the **DatePicker** scrolling process may not take effect.
 
-**Handling in the case of date configuration exceptions**
+**Exception description of date configuration**
 
 | Exception  | Result |
 | -------- |  ------------------------------------------------------------ |
@@ -102,6 +102,10 @@ lunar(value: boolean)
 
 Sets whether to display dates in lunar calendar format.
 
+> **NOTE**
+>
+> This attribute takes effect only in Simplified Chinese and Traditional Chinese locales; it has no effect in other locales.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -117,6 +121,10 @@ Sets whether to display dates in lunar calendar format.
 lunar(isLunar: Optional\<boolean>)
 
 Sets whether to display dates in lunar calendar format. Compared to [lunar](#lunar), the **isLunar** parameter supports the **undefined** type.
+
+> **NOTE**
+>
+> This attribute takes effect only in Simplified Chinese and Traditional Chinese locales; it has no effect in other locales.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -254,7 +262,7 @@ Sets whether to enable haptic feedback.
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>Whether this parameter takes effect after being set to **true** depends on hardware support.<br>If the value of **enable** is **undefined**, the default value is used.|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>Whether this parameter takes effect after being set to **true** depends on hardware support.<br>If the value of **enable** is **undefined**, the default value is used.|
 
 To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.
 
@@ -299,7 +307,7 @@ Sets whether to enable cyclic scrolling.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable cyclic scrolling.<br>- **true**: Cyclic scrolling is enabled, where the year values increment or decrement with month cycling, and month values increment or decrement with day cycling.<br>- **false**: Cyclic scrolling is disabled, preventing out-of-bounds scrolling in year, month, and day columns and cross-column value synchronization.<br>Default value: **true**.<br>If the value of **isLoop** is **undefined**, the default value is used.|
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether to enable cyclic scrolling.<br>- **true**: Cyclic scrolling is enabled, where the year values increment or decrement with month cycling, and month values increment or decrement with day cycling.<br>- **false**: Cyclic scrolling is disabled, preventing out-of-bounds scrolling in year, month, and day columns and cross-column value synchronization.<br>Default value: **true**<br>If the value of **isLoop** is **undefined**, the default value is used.|
 
 ## Events
 
@@ -531,5 +539,3 @@ struct DatePickerExample {
   }
 }
 ```
-
-d

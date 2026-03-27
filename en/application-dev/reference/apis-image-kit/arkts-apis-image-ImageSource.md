@@ -471,7 +471,7 @@ Modifies image properties in batches. This API uses a promise to return the resu
 >
 > - Calling this API to modify properties alters the property byte length. You are advised to create an [ImageSource](arkts-apis-image-f.md#imagecreateimagesource7) instance by passing a file descriptor or an [ImageSource](arkts-apis-image-f.md#imagecreateimagesource) instance by passing a URI.
 > - This API modifies batch data in memory and writes the data to the file in a single operation. It is more efficient than [modifyImageProperties](#modifyimageproperties12).
-> - This API applies only to images that are in JPEG, PNG, or HEIF format and contain the Exif information. Before modifying properties, use the **supportedFormats** property to check whether the device supports EXIF information read/write in HEIF format.
+> - This API applies only to images that are in JPEG, PNG, or HEIF format and contain the Exif information. Before modifying properties, use the **supportedFormats** property to check whether the device supports Exif information read/write in HEIF format.
 
 **System capability**: SystemCapability.Multimedia.Image.ImageSource
 

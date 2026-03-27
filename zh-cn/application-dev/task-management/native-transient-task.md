@@ -13,7 +13,7 @@
 
 ## 接口说明
 
-常用接口如下表所示，具体API说明详见[API参考](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md#函数)。
+常用接口如下表所示，具体API说明详见[transient_task_api.h](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md)。
 
 
 | 接口名 | 描述 |

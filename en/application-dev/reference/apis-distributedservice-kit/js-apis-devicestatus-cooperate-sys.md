@@ -38,7 +38,7 @@ Prepares for screen hopping. This API uses an asynchronous callback to return th
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
@@ -221,7 +221,7 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes ](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
@@ -275,7 +275,7 @@ Starts screen hopping. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes ](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
@@ -744,7 +744,7 @@ Starts screen hopping based on the specified options. This API uses a promise to
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes ](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
 | ID| Error Message         |
 | -------- | ----------------- |
@@ -1025,7 +1025,7 @@ Starts screen hopping. This API uses an asynchronous callback to return the resu
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes ](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1082,7 +1082,7 @@ Starts screen hopping. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes ](errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-devicestatus.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |

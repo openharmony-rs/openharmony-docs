@@ -580,7 +580,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 | -------- | ---------------------------------------------- | ---- | ----------------------------------------------- |
 | url      | string                                         | Yes  | URL for initiating an HTTP request.                        |
 | options  | HttpRequestOptions                             | Yes  | Request options. For details, see [HttpRequestOptions](#httprequestoptions).|
-| callback | AsyncCallback\<[number](#responsecode)\>       | Yes  | Callback used to return the result. If the request is successful, **err** is **undefined**, and the HTTP result code is returned. Otherwise, **err** is an error object.                                   |
+| callback | AsyncCallback\<number\>       | Yes  | Callback used to return the result. If the request is successful, **err** is **undefined**, and the [HTTP result code](#responsecode) is returned. Otherwise, **err** is an error object.                                   |
 
 **Error codes**
 
@@ -684,7 +684,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 | Type                                  | Description                             |
 | :------------------------------------- | :-------------------------------- |
-| Promise\<[number](#responsecode)\> | Promise used to return the result.|
+| Promise\<number\> | Promise used to return the [result](#responsecode).|
 
 **Error codes**
 
@@ -1153,7 +1153,7 @@ Defines the options for initiating an HTTP request.
 | resumeFrom<sup>11+</sup> | number | No| Yes| Download start position. This field can be used only for the GET method. As stipulated in section 3.1 of RFC 7233, servers are allowed to ignore range requests.<br>- If the HTTP PUT method is used, do not use this option because it may conflict with other options.<br>- The value ranges from **1** to **4294967296** (4 GB). If the value is out of this range, this field does not take effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | resumeTo<sup>11+</sup> | number | No| Yes| Download end position. This field can be used only for the GET method. As stipulated in section 3.1 of RFC 7233, servers are allowed to ignore range requests.<br>- If the HTTP PUT method is used, do not use this option because it may conflict with other options.<br>- The value ranges from **1** to **4294967296** (4 GB). If the value is out of this range, this field does not take effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) | No| Yes| Client certificate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| dnsOverHttps<sup>11+</sup> | string | No| Yes| Specifies whether to use an HTTPS server for DNS resolution.<br>The value must be URL-encoded in the following format: "https:// host:port/path".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| dnsOverHttps<sup>11+</sup> | string | No| Yes| Whether to use an HTTPS server for DNS resolution.<br>- The value must be URL-encoded in the following format: "https:// host:port/path".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | dnsServers<sup>11+</sup> | Array\<string\> | No| Yes| Array of DNS servers used for DNS resolution.<br>- A maximum of three DNS servers can be set. If there are more than three DNS servers, only the first three DNS servers are used.<br>- The DNS servers must be expressed as IPv4 or IPv6 addresses.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | maxLimit<sup>11+</sup>   | number   | No| Yes| Maximum number of bytes in a response.<br>The default value is 5\*1024\*1024, in bytes. The maximum value is **100\*1024\*1024**.<br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | multiFormDataList<sup>11+</sup> | Array<[MultiFormData](#multiformdata11)> | No| Yes| Form data list. This field is valid when **content-Type** is set to **multipart/form-data**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -1161,7 +1161,7 @@ Defines the options for initiating an HTTP request.
 | addressFamily<sup>15+</sup> | [AddressFamily](#addressfamily15) | No| Yes| IP address family. You can specify an address type for domain name resolution.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
 | remoteValidation<sup>18+</sup> | [RemoteValidation](#remotevalidation18)                             | No| Yes| Certificate authority (CA), which is used to verify the identity of a remote server. If the parameter is not set, the default value is used. The options are as follows:<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | tlsOptions<sup>18+</sup> | [TlsOptions](#tlsoptions18)                                         | No| Yes| TLS configuration.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| serverAuthentication<sup>18+</sup> | [ServerAuthentication](#serverauthentication18)                     | No| Yes| Indicates whether to verify the server identity during a secure connection. The identity is not verified by default.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| serverAuthentication<sup>18+</sup> | [ServerAuthentication](#serverauthentication18)                     | No| Yes| Whether to verify the server identity during a secure connection. The identity is not verified by default.<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | sslType<sup>20+</sup> | [SslType](#ssltype20) | No| Yes| Security communication protocol. You can use TLS (default) or TLCP. If TLCP is used, the related options (such as **caPath**, **clientCert**, and **clientEncCert**) must be set to valid values.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | clientEncCert<sup>20+</sup> | [ClientCert](#clientcert11) | No| Yes| Client certificate, which is used by the server to verify the client identity.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
@@ -1546,7 +1546,7 @@ httpRequest.request("EXAMPLE_URL").then(data => {
 
 ## HttpDataType<sup>9+</sup>
 
-HTTP data type.
+Enumerates HTTP data types.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1648,7 +1648,7 @@ Defines HTTP server identity verification information.
 
 ## TlsConfig<sup>18+</sup>
 
-Defines the the TLS configuration, including the version and cipher suite.
+Defines the TLS configuration, including the version and cipher suite.
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
 
@@ -1888,7 +1888,7 @@ Enumerates the types of HTTP interceptors.
 
 ## HttpRequestContext<sup>22+</sup>
 
-HTTP request context data. The object instance is passed as a parameter in the [interceptorHandle](#interceptorhandle22) method of the interceptor. You can use this object to obtain and modify the information about the HTTP request.
+Defines HTTP request context data. The object instance is passed as a parameter in the [interceptorHandle](#interceptorhandle22) method of the interceptor. You can use this object to obtain and modify the information about the HTTP request.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1906,7 +1906,7 @@ HTTP request context data. The object instance is passed as a parameter in the [
 
 type ChainContinue = boolean
 
-Whether to continue to process the interceptor chain.
+Specifies whether to continue to process the interceptor chain.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1918,7 +1918,7 @@ Whether to continue to process the interceptor chain.
 
 ## HttpInterceptor<sup>22+</sup>
 
-HTTP interceptor API, used to define the interception processing function.
+Defines the HTTP interceptor API, which is used to define the interception processing function.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -1976,7 +1976,7 @@ let customInterceptor = new CustomInterceptor();
 
 ## HttpInterceptorChain<sup>22+</sup>
 
-HTTP interceptor chain.
+Defines HTTP interceptor chain.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

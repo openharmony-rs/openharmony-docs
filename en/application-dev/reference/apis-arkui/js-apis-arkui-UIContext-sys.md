@@ -14,13 +14,13 @@ In the stage model, a window stage or window can use the **loadContent** API to 
 >
 > You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.arkui.UIContext (UIContext)](arkts-apis-uicontext-uicontext.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [Class (UIContext)](arkts-apis-uicontext-uicontext.md).
 
 ## UIContext
 
 In the following API examples, you must first use [getUIContext()](arkts-apis-window-Window.md#getuicontext10) in **@ohos.window** to obtain a **UIContext** instance, and then call the APIs using the obtained instance. Alternatively, you can obtain a **UIContext** instance through the built-in method [getUIContext()](arkui-ts/ts-custom-component-api.md#getuicontext) of the custom component. In this document, the **UIContext** instance is represented by **uiContext**.
 
-### setDynamicDimming<sup>12+<sup>
+### setDynamicDimming<sup>12+</sup>
 
 setDynamicDimming(id: string, value: number): void
 
@@ -67,7 +67,7 @@ struct Index {
 
 animateToImmediately(param: AnimateParam, processor: Callback&lt;void&gt;): void
 
-Implements immediate delivery of an explicit animation through a **UIContext** object. When multiple property animations are loaded at once, you can call this API to immediately execute the transition animation for state changes caused by the specified closure function.
+The **animateToImmediately** API allows you to obtain the explicit immediate animation capability through the UIContext object. When multiple property animations are loaded at once, you can call this API to immediately execute the transition animation for state changes caused by the specified closure function.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -77,12 +77,12 @@ Implements immediate delivery of an explicit animation through a **UIContext** o
 
 | Name  | Type                                      | Mandatory  | Description                                   |
 | ----- | ---------------------------------------- | ---- | ------------------------------------- |
-| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam) | Yes   | Animation settings.                          |
+| param | [AnimateParam](arkui-ts/ts-explicit-animation.md#animateparam)| Yes   | Animation settings.                          |
 | processor | Callback&lt;void&gt;                              | Yes   | Closure function that displays the animation. The system automatically inserts the transition animation if the state changes in the closure function.|
 
 **Example**
 
-This example shows how to use **animateToImmediately** to implement immediate delivery of an explicit animation through a **UIContext** object.
+This example shows how to obtain the explicit immediate animation capability through the **UIContext** object and call the **animateToImmediately** API to implement the animation effect defined by the parameters.
 
 ```ts
 // xxx.ets

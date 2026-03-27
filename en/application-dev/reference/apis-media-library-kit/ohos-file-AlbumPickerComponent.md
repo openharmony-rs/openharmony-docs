@@ -20,15 +20,15 @@ This component must be used together with [PhotoPickerComponent](ohos-file-Photo
 import { AlbumPickerComponent, AlbumPickerOptions, AlbumInfo, photoAccessHelper, EmptyAreaClickCallback } from '@kit.MediaLibraryKit';
 ```
 
-## Properties
+## Attributes
 
-The [universal properties](../apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported.
+The [universal attributes](../apis-arkui/arkui-ts/ts-component-general-attributes.md) are supported.
 
 ## AlbumPickerComponent
 
 AlbumPickerComponent( {albumPickerOptions?: AlbumPickerOptions, onAlbumClick?: (albumInfo: AlbumInfo) => boolean, onEmptyAreaClick?: EmptyAreaClickCallback, albumPickerController?: AlbumPickerController })
 
-The AlbumPickerComponent embedded in the UI of an application allows the application to access the albums in the user directory without any permission.
+Allows the application to access the albums in the user directory without any permission.
 
 **Decorator**: @Component
 
@@ -143,3 +143,4 @@ struct PickerDemo {
     }
   }
 }
+```
