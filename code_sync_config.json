@@ -23820,7 +23820,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/monitor/MonitorProblemParamCounterExample1.ets",
 				"functions":[
 					{
-						"end_line":48,
+						"end_line":49,
 						"name":"monitor_problem_param_counter_example_1",
 						"start_line":15
 					}
