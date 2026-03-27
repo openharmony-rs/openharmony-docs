@@ -2005,12 +2005,14 @@ setWifiCapability(capability: WifiCapability, enable: boolean): void
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | capability | [WifiCapability](#wifiCapability) | 是 | wifi能力枚举。 |
-| enable | boolean | 是 | 是否使能wifi能力，是表示使能，否则不使能。 |
+| enable | boolean | 是 | 是否使能wifi能力，true表示使能，false表示不使能。 |
 
 **错误码：**
 
@@ -2045,6 +2047,8 @@ getWifiCapability(capability: WifiCapability): boolean
 **需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
