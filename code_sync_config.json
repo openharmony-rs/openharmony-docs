@@ -196,39 +196,39 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":44,
+						"end_line":57,
 						"name":"create_and_read_File",
-						"start_line":21
+						"start_line":23
 					},
 					{
-						"end_line":74,
+						"end_line":107,
 						"name":"read_write_file",
-						"start_line":46
+						"start_line":59
 					},
 					{
-						"end_line":105,
+						"end_line":154,
 						"name":"read_write_file_with_stream",
-						"start_line":76
+						"start_line":109
 					},
 					{
-						"end_line":126,
+						"end_line":180,
 						"name":"get_list_file",
-						"start_line":108
+						"start_line":157
 					},
 					{
-						"end_line":144,
+						"end_line":213,
 						"name":"copy_file_with_readable",
-						"start_line":128
+						"start_line":182
 					},
 					{
-						"end_line":162,
+						"end_line":249,
 						"name":"copy_file_with_data",
-						"start_line":146
+						"start_line":215
 					},
 					{
-						"end_line":182,
+						"end_line":273,
 						"name":"hash_file_with_stream",
-						"start_line":164
+						"start_line":251
 					}
 				]
 			}
@@ -241,9 +241,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":279,
+						"end_line":371,
 						"name":"set_security_label",
-						"start_line":264
+						"start_line":356
 					}
 				]
 			}
