@@ -221,6 +221,30 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
    > - 如果激活AudioSession时应用已存在启动的音频播放流，系统会释放该音频播放流持有的焦点，并由AudioSession统一管理。
 
    <!-- @[activate_audio_session_v2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+   
+     // 应用根据业务场景设置适合自己的音频会话场景，激活AudioSession时，系统会根据应用选择的音频会话场景申请对应的音频焦点。
+     audioSessionManager.setAudioSessionScene(audio.AudioSessionScene.AUDIO_SESSION_SCENE_MEDIA);
+     // ...
+   
+     // 设置音频会话策略。
+     let strategy: audio.AudioSessionStrategy = {
+       concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+     };
+   
+     // 激活AudioSession。
+     audioSessionManager.activateAudioSession(strategy).then(() => {
+       console.info('Succeeded in activating audio session.');
+       // ...
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
+       // ...
+     });
+   ```
 
 2. 查询音频会话是否已激活（可选）。
 
