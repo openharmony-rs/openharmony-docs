@@ -690,7 +690,7 @@ setAppResourceLimit(type: string, value: number, enableDebugLog: boolean): void
 
 > **注意**：
 >
-> 当设置的开发者选项开关打开并重启设备后，此功能有效。
+> 当设置的开发者选项开关打开后，在开发者选项列表里找到系统资源泄漏日志选项并打开，然后重启设备，此功能有效。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
