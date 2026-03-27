@@ -620,7 +620,7 @@ API version 24开始，可在应用工程的module.json5配置文件中配置met
     "name": "enableCustomComponentCrossAbility",
     "value": "true"
   }
-]
+],
 ```
 
 需要注意，不建议在原Ability的onBackground阶段异步修改迁移组件中的状态变量，此时状态变量可以被赋值，但无法触发关联组件的刷新。
