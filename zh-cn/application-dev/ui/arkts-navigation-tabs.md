@@ -438,16 +438,16 @@ export struct ContentPageNoAndTabLinkage {
 <!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
 ``` TypeScript
-  Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo }) {
-    // ···
+Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo }) {
+  // ...
+}
+// ...
+.onContentWillChange((currentIndex, comingIndex) => {
+  if (comingIndex === 2) {
+    return false;
   }
-// ···
-  .onContentWillChange((currentIndex, comingIndex) => {
-    if (comingIndex == 2) {
-      return false;
-    }
-    return true;
-  })
+  return true;
+})
 ```
   **图13** 支持开发者自定义页面切换拦截事件 
 

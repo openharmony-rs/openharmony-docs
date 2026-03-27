@@ -97,12 +97,12 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
           hilog.error(DOMAIN, TAG,`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
-      })
+        hilog.info(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
+      });
     }
   
     build() {
-      // ···
+      // ...
     }
   }
   ```
@@ -133,7 +133,7 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
           hilog.error(DOMAIN, TAG, `Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
+        hilog.info(DOMAIN, TAG, 'Invoke pushUrl succeeded.');
       });
     }
   
@@ -216,7 +216,7 @@ onJumpClick(): void {
       hilog.error(DOMAIN, TAG,`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
-    hilog.error(DOMAIN, TAG,'Invoke pushUrl succeeded.');
+    hilog.info(DOMAIN, TAG,'Invoke pushUrl succeeded.');
   });
 }
 ```
