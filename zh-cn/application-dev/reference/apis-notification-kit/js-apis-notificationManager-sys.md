@@ -6586,6 +6586,63 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 });
 ```
 
+## notificationManager.getNotificationStatisticsByBundle
+
+getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics)[]\>
+
+批量获取指定应用列表的通知统计信息，使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**设备行为差异**：该接口仅在Phone/PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                         |
+| --------- | --------------------- | ---- | ---------------------------- |
+| bundles   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)[] | 是  | 应用的包信息列表。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics)[]\> | Promise对象。返回指定应用列表的通知统计信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 801 | Capability not supported. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: notificationManager.BundleOption[] = [
+  { bundle:"com.example.test01", } as notificationManager.BundleOption,
+  { bundle:"com.example.test02", } as notificationManager.BundleOption
+];
+notificationManager.getNotificationStatisticsByBundle(bundles).then(
+  (data: notificationManager.BundleNotificationStatistics[]) => {
+  console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
+}).catch((err: BusinessError):void => {
+  console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+});
+```
+
 ## DoNotDisturbDate
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -6822,6 +6879,22 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | reminderFlags | number | 否 | 否 | 表示通知提醒方式的标志位。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
 
+## BundleNotificationStatistics
+
+描述指定应用通知统计信息。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称      | 类型    | 只读 | 可选 | 说明           |
+| --------- | ------ | ---- | ---- | ------------- |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
+| lastTime | number | 否 | 否 | 应用最后一次发布通知的时间。数据格式：时间戳。单位：ms。 |
+| recentCount | number | 否 | 否 | 应用最近7天发布的通知总量。 |
+
 ## PriorityNotificationType<sup>23+</sup>
 
 描述通知的优先级类型。
@@ -6972,11 +7045,13 @@ type MonitorEvent = _MonitorEvent
 | STATUS_APPLICATION_DEFINED | 1<<4 | 仅应用自定义。 |
 | STATUS_ALL_PRIORITY | 1<<5 | 全部通知优先。 |
 
-## GroupInfo <sup>26+</sup>
+## GroupInfo
 
 type GroupInfo = _GroupInfo
 
 组通知定制信息。
+
+**起始版本**：26.0.0
 
 **系统能力：** SystemCapability.Notification.Notification
 
@@ -6986,4 +7061,4 @@ type GroupInfo = _GroupInfo
 
 | 类型 | 说明 |
 | --- | --- |
-| [_GroupInfo](js-apis-inner-notification-notificationRequest-sys.md#groupinfo26) | 组通知定制信息的类型。 |
+| [_GroupInfo](js-apis-inner-notification-notificationRequest-sys.md#groupinfo) | 组通知定制信息的类型。 |

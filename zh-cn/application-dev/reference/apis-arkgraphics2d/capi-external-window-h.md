@@ -1214,7 +1214,7 @@ int32_t OH_NativeWindow_LockBuffer(OHNativeWindow* window, Region region, OHNati
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>window或buffer是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>window的surface成员是空指针时返回NATIVE_ERROR_UNKNOWN。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>window或buffer是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>window的surface成员是空指针时返回NATIVE_ERROR_UNKNOWN。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeWindow_UnlockAndFlushBuffer()
 
@@ -1246,4 +1246,4 @@ int32_t OH_NativeWindow_UnlockAndFlushBuffer(OHNativeWindow* window)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>window是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>window的surface成员是空指针时返回NATIVE_ERROR_UNKNOWN。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>window是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>window的surface成员是空指针时返回NATIVE_ERROR_UNKNOWN。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |

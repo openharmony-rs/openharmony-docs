@@ -70,11 +70,13 @@ try {
 }
 ```
 
-## notificationExtensionSubscription.openSubscriptionSettingsWithResult<sup>26+</sup>
+## notificationExtensionSubscription.openSubscriptionSettingsWithResult
 
 openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
 
 打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权"允许获取本机通知"开关与"已获取的本机通知"应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。
+
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -92,7 +94,7 @@ openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGran
 
 | 类型     | 说明 | 
 | ------- |--|
-| Promise\<[UserGrantSetting](#usergrantsetting26)\> | Promise对象，返回用户设置的授权的结果。 | 
+| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise对象，返回用户设置的授权的结果。 |
 
 **错误码：**
 
@@ -385,11 +387,13 @@ type GrantedBundleInfo = _GrantedBundleInfo
 | --- | --- |
 | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 授权应用的包信息。 |
 
-## UserGrantSetting<sup>26+</sup>
+## UserGrantSetting
 
 type UserGrantSetting = _UserGrantSetting
 
 用户授权的设置信息。
+
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -397,4 +401,4 @@ type UserGrantSetting = _UserGrantSetting
 
 | 类型 | 说明 |
 | --- | --- |
-| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting26) | 用户授权的设置信息。 |
+| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting) | 用户授权的设置信息。 |

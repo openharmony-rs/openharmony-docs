@@ -2075,6 +2075,48 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
   </html>
   ```
 
+## enableScrollDirectionalLock
+
+enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType) 
+
+设置Web组件滑动方向锁定。不调用该方法进行设置时，默认在嵌套滚动场景下是支持滑动方向锁定的。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                      | 必填 | 说明                                                                                                                                                |
+| ------ | ------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| value  | boolean                   | 是   | 是否支持滑动方向锁定。`true` 表示滑动方向锁定，滚动视图会根据用户初始滑动的方向来锁定滚动轴，`false` 表示不锁定。        |
+| type   | [ScrollDirectionalLockType](./arkts-basic-components-web-e.md#scrolldirectionallocktype) | 是   | 设置Web组件在哪些场景下希望滑动方向锁定。ALL表示所有场景都支持滑动锁定，NESTED_SCROLL表示在嵌套滚动场景下支持滑动锁定。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%')
+        .height('100%')
+        // 在所有场景下支持滑动方向的锁定
+        .enableScrollDirectionalLock(true, ScrollDirectionalLockType.ALL)
+    }
+  }
+}
+```
+
 ## bypassVsyncCondition<sup>20+</sup>
 
 bypassVsyncCondition(condition: WebBypassVsyncCondition)

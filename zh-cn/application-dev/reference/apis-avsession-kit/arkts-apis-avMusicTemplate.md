@@ -10,11 +10,12 @@
 
 该模块提供如下功能：
 
-[AVMusicTemplate](arkts-apis-avsession-AVMusicTemplate.md)：音频模板，可用于与音频模板控制方进行数据交互。
+[AVMusicTemplate](arkts-apis-avMusicTemplate-AVMusicTemplate.md)：音频模板，可用于与音频模板控制方进行数据交互。
 
 > **说明：**
 >
-> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于API version 23及以上版本的Car设备。
 
 ## 导入模块
 

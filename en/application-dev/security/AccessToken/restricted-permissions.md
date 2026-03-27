@@ -1099,3 +1099,17 @@ Allow the application to query whether there are matching call records in the sy
 **Supported devices**: General
 
 **Since**: 24
+
+## ohos.permission.ACCESS_DLP_SERVICE
+
+Allows an application or a service to use the DLP to register or unregister the plugin for connecting the server.
+
+<!--RP74--><!--RP74End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
+
+**Since**: 26.0.0

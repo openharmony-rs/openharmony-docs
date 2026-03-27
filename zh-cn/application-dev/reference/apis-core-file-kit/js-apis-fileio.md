@@ -750,7 +750,7 @@ read(fd: number, buffer: ArrayBuffer, options?: { offset?: number; length?: numb
 | ------- | ----------- | ---- | ------------------------------------------------------------ |
 | fd      | number      | 是   | 待读取文件的文件描述符。                                     |
 | buffer  | ArrayBuffer | 是   | 用于保存读取到的文件数据的缓冲区。                           |
-| options | Object      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。 |
+| options | Object      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读，单位为Byte。<br/>约束：offset+length<=buffer.size。 |
 
 **返回值：**
 
@@ -799,13 +799,13 @@ readSync(fd: number, buffer: ArrayBuffer, options?: { offset?: number; length?: 
   | ------- | ----------- | ---- | ---------------------------------------- |
   | fd      | number      | 是    | 待读取文件的文件描述符。                             |
   | buffer  | ArrayBuffer | 是    | 用于保存读取到的文件数据的缓冲区。                        |
-  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读，单位为Byte。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际读取的长度。 |
+  | number | 实际读取的长度，单位为Byte。 |
 
 **示例：**
 
@@ -1103,7 +1103,7 @@ writeSync(fd: number, buffer: ArrayBuffer|string, options?: { offset?: number; l
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际写入的长度。 |
+  | number | 实际写入的长度，单位为Byte。 |
 
 **示例：**
 
@@ -1400,7 +1400,7 @@ ftruncate(fd: number, len?: number): Promise&lt;void&gt;
   | 参数名  | 类型     | 必填   | 说明               |
   | ---- | ------ | ---- | ---------------- |
   | fd   | number | 是    | 待截断文件的文件描述符。     |
-  | len  | number | 否    | 文件截断后的长度，以字节为单位。 |
+  | len  | number | 否    | 文件截断后的长度，单位为Byte。 |
 
 **返回值：**
 
@@ -1439,7 +1439,7 @@ ftruncate(fd: number, len?: number, callback: AsyncCallback&lt;void&gt;): void
   | 参数名      | 类型                        | 必填   | 说明               |
   | -------- | ------------------------- | ---- | ---------------- |
   | fd       | number                    | 是    | 待截断文件的文件描述符。     |
-  | len      | number                    | 否    | 文件截断后的长度，以字节为单位。 |
+  | len      | number                    | 否    | 文件截断后的长度，单位为Byte。 |
   | callback | AsyncCallback&lt;void&gt; | 是    | 回调函数，本调用无返回值。  |
 
 **示例：**
@@ -1472,7 +1472,7 @@ ftruncateSync(fd: number, len?: number): void
   | 参数名  | 类型     | 必填   | 说明               |
   | ---- | ------ | ---- | ---------------- |
   | fd   | number | 是    | 待截断文件的文件描述符。     |
-  | len  | number | 否    | 文件截断后的长度，以字节为单位。 |
+  | len  | number | 否    | 文件截断后的长度，单位为Byte。 |
 
 **示例：**
 
@@ -1501,7 +1501,7 @@ truncate(path: string, len?: number): Promise&lt;void&gt;
 | 参数名 | 类型   | 必填 | 说明                             |
 | ------ | ------ | ---- | -------------------------------- |
 | path   | string | 是   | 待截断文件的应用沙箱路径。       |
-| len    | number | 否   | 文件截断后的长度，以字节为单位。 |
+| len    | number | 否   | 文件截断后的长度，单位为Byte。 |
 
 **返回值：**
 
@@ -1540,7 +1540,7 @@ truncate(path: string, len?: number, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                             |
 | -------- | ------------------------- | ---- | -------------------------------- |
 | path     | string                    | 是   | 待截断文件的应用沙箱路径。       |
-| len      | number                    | 否   | 文件截断后的长度，以字节为单位。 |
+| len      | number                    | 否   | 文件截断后的长度，单位为Byte。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，本调用无返回值。   |
 
 **示例：**
@@ -1572,7 +1572,7 @@ truncateSync(path: string, len?: number): void
 | 参数名 | 类型   | 必填 | 说明                             |
 | ------ | ------ | ---- | -------------------------------- |
 | path   | string | 是   | 待截断文件的应用沙箱路径。       |
-| len    | number | 否   | 文件截断后的长度，以字节为单位。 |
+| len    | number | 否   | 文件截断后的长度，单位为Byte。 |
 
 **示例：**
 
@@ -2949,8 +2949,8 @@ createWatcher(filename: string, events: number, callback: AsyncCallback&lt;numbe
 
 | 名称        | 类型       | 只读   | 可写   | 说明                |
 | --------- | ---------- | ---- | ---- | ----------------- |
-| bytesRead | number     | 是    | 是    | 实际读取长度。           |
-| offset    | number     | 是    | 是    | 读取数据相对于缓冲区首地址的偏移。 |
+| bytesRead | number     | 是    | 是    | 实际读取长度，单位为Byte。           |
+| offset    | number     | 是    | 是    | 读取数据相对于缓冲区首地址的偏移，单位为Byte。 |
 | buffer    | ArrayBuffer | 是    | 是    | 保存读取数据的缓冲区。       |
 
 
@@ -2975,7 +2975,7 @@ createWatcher(filename: string, events: number, callback: AsyncCallback&lt;numbe
 | uid    | number | 是    | 否    | 文件所有者的ID。                                |
 | gid    | number | 是    | 否    | 文件所有组的ID。                                |
 | rdev   | number | 是    | 否    | 标识包含该文件的从设备号。                            |
-| size   | number | 是    | 否    | 文件的大小，以字节为单位。仅对普通文件有效。                   |
+| size   | number | 是    | 否    | 文件的大小，单位为Byte。仅对普通文件有效。                   |
 | blocks | number | 是    | 否    | 文件占用的块数，计算时块大小按512B计算。                   |
 | atime  | number | 是    | 否    | 上次访问该文件的时间，表示距1970年1月1日0时0分0秒的秒数。        |
 | mtime  | number | 是    | 否    | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。        |
@@ -3519,7 +3519,7 @@ writeSync(buffer: ArrayBuffer|string, options?: { offset?: number; length?: numb
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际写入的长度。 |
+  | number | 实际写入的长度，单位为Byte。 |
 
 **示例：**
 
@@ -3557,7 +3557,7 @@ read(buffer: ArrayBuffer, options?: { position?: number; offset?: number; length
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读，单位为Byte。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
@@ -3656,13 +3656,13 @@ readSync(buffer: ArrayBuffer, options?: { position?: number; offset?: number; le
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度。<br/>-&nbsp;position，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
+  | options | Object      | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示将数据读取到缓冲区的位置，即相对于缓冲区首地址的偏移，单位为Byte。可选，默认为0。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度减去偏移长度，单位为Byte。<br/>-&nbsp;position，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>约束：offset+length<=buffer.size。  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际读取的长度。 |
+  | number | 实际读取的长度，单位为Byte。 |
 
 **示例：**
 
