@@ -386,7 +386,7 @@ AudioSession申请的焦点和AudioRenderer申请的焦点是同等地位。
      audioSessionManager.on('audioSessionStateChanged', audioSessionStateChangedCallback);
    ```
 
-3. 停用音频会话。
+4. 停用音频会话。
 
    应用可以通过[deactivateAudioSession](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#deactivateaudiosession12)接口停用当前应用的音频会话。
 
