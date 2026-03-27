@@ -80,7 +80,7 @@ Input service exception. Possible causes: 1. Memory allocation failure. 2. Threa
 
 **可能原因**
 
-内存分配失败，线程繁忙，服务异常退出等非预期错误。
+内存分配失败，线程繁忙，服务运行异常等非预期错误。
 
 **处理步骤**
 

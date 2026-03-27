@@ -295,7 +295,7 @@ enum OH_NativeXComponent_KeyCode
 | KEY_SPREADSHEET = 2703 | 电子表格键。 |
 | KEY_GRAPHICSEDITOR = 2704 | 图形编辑器键。 |
 | KEY_PRESENTATION = 2705 | 演示文稿键。 |
-| KEY_DATABASE = 2706 | 数据库键标。 |
+| KEY_DATABASE = 2706 | 数据库键。 |
 | KEY_NEWS = 2707 | 新闻键。 |
 | KEY_VOICEMAIL = 2708 | 语音信箱。 |
 | KEY_ADDRESSBOOK = 2709 | 通讯簿。 |

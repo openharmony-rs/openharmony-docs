@@ -19,7 +19,7 @@ import { inputDevice } from '@kit.InputKit';
 
 ## 接口说明
 
-输入设备管理常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputDevice](../../reference/apis-input-kit/js-apis-inputdevice.md)。
+输入设备管理常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputDevice (输入设备)](../../reference/apis-input-kit/js-apis-inputdevice.md)。
 
 | 接口名称  | 描述 |
 | ----------- | ------------------------------------------------------------ | 
@@ -50,7 +50,7 @@ const DOMAIN = 0x0000;
 struct Index {
   @State isPhysicalKeyboardExist: boolean = false;
   @State message: string = "Click to obtain the device list and monitor device hot-plug events";
-  keyBoards: Map<number, inputDevice.KeyboardType> = new Map();
+  keyboards: Map<number, inputDevice.KeyboardType> = new Map();
 
   // ...
 
@@ -69,7 +69,7 @@ struct Index {
                     if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
                       // 物理键盘已连接
                       this.isPhysicalKeyboardExist = true;
-                      this.keyBoards.set(data[i], type);
+                      this.keyboards.set(data[i], type);
                     }
                   });
                 }
@@ -82,14 +82,14 @@ struct Index {
                   if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type === 'add') {
                     // 物理键盘已插入
                     this.isPhysicalKeyboardExist = true;
-                    this.keyBoards.set(data.deviceId, type);
+                    this.keyboards.set(data.deviceId, type);
                   }
                 });
-                if (this.keyBoards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
+                if (this.keyboards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
                   data.type === 'remove') {
                   // 物理键盘已拔掉
                   this.isPhysicalKeyboardExist = false;
-                  this.keyBoards.delete(data.deviceId);
+                  this.keyboards.delete(data.deviceId);
                 }
               });
               this.message = "Device monitoring enabled successfully"

@@ -19,7 +19,7 @@ import { inputEventClient } from '@kit.InputKit';
 
 ## 接口说明
 
-事件注入常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputEventClient](../../reference/apis-input-kit/js-apis-inputeventclient-sys.md)。
+事件注入常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputEventClient (输入事件注入)(系统接口)](../../reference/apis-input-kit/js-apis-inputeventclient-sys.md)。
 
 | 接口名称  | 描述 |
 | -------------------------------------------- | -------------------------- |
