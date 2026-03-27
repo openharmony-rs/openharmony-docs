@@ -198,7 +198,7 @@ Enables listening for the input method binding event. This API uses an asynchron
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [on('inputStart')](#oninputstart9) instead.
+> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [InputMethodAbility#on](#oninputstart9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -228,7 +228,7 @@ Disables listening for the input method binding event.
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [off('inputStart')](#offinputstart9) instead.
+> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [InputMethodAbility#off](#offinputstart9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -257,7 +257,7 @@ Enables listening for a keyboard visibility event. This API uses an asynchronous
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [on('keyboardShow'|'keyboardHide')](#onkeyboardshowkeyboardhide9) instead.
+> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [InputMethodAbility#on](#onkeyboardshowkeyboardhide9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -287,7 +287,7 @@ Disables listening for a keyboard visibility event. This API uses an asynchronou
 
 > **NOTE**
 >
-> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [off('keyboardShow'|'keyboardHide')](#offkeyboardshowkeyboardhide9) instead.
+> This API is supported since API version 8 and deprecated since API version 23. You are advised to use [InputMethodAbility#off](#offkeyboardshowkeyboardhide9) instead.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -806,8 +806,8 @@ Creates an input method panel. This API can be called only by the input method a
 
 > **NOTE**
 >
-> - Only one [SOFT_KEYBOARD](#paneltype10) panel and one [STATUS_BAR](#paneltype10) panel can be created for a single input method.<br>
-> - The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8), and [CustomDialog](../../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md) or [bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu), or set **showInSubwindow** to **false**.
+> Only one [SOFT_KEYBOARD](#paneltype10) panel and one [STATUS_BAR](#paneltype10) panel can be created for a single input method.<br>
+> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8), and [CustomDialog](../../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md) or [bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu), or set **showInSubwindow** to **false**.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -856,8 +856,8 @@ Creates an input method panel. This API can be called only by the input method a
 
 > **NOTE**
 >
-> - Only one [SOFT_KEYBOARD](#paneltype10) panel and one [STATUS_BAR](#paneltype10) panel can be created for a single input method.<br>
-> - The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8), and [CustomDialog](../../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md) or [bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu), or set **showInSubwindow** to **false**.
+> Only one [SOFT_KEYBOARD](#paneltype10) panel and one [STATUS_BAR](#paneltype10) panel can be created for a single input method.<br>
+> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindcontextmenu8), and [CustomDialog](../../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md) or [bindMenu](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-menu.md#bindmenu), or set **showInSubwindow** to **false**.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1120,7 +1120,7 @@ Disables listening for a keyboard event. This API uses an asynchronous callback 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'keyEvent'**.|
-| callback | function | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
+| callback | (event: [InputKeyEvent](../apis-input-kit/js-apis-keyevent.md#keyevent)) => boolean | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the specified type.|
 
 **Example**
 
@@ -1497,9 +1497,9 @@ Resizes this input method panel. This API uses an asynchronous callback to retur
 
 > **NOTE**
 >
-> - The panel width cannot exceed the screen width, and the panel height cannot be 0.7 times higher than the screen height.
+> The panel width cannot exceed the screen width, and the panel height cannot be 0.7 times higher than the screen height.
 >
-> - When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
+> When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1541,9 +1541,9 @@ Resizes this input method panel. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> - The panel width cannot exceed the screen width, and the panel height cannot be 0.7 times higher than the screen height.
+> The panel width cannot exceed the screen width, and the panel height cannot be 0.7 times higher than the screen height.
 >
-> - When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
+> When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1696,7 +1696,7 @@ Obtains the window ID. This API uses a promise to return the result.
 
 | Type  | Description                            |
 | ------- | ------------------------------ |
-|Promise\<number>| Promise used to return the result. Returns the **displayId** of the window. |
+|Promise\<number>| Promise used to return **displayId** of the window. |
 
 **Error codes**
 
@@ -1835,11 +1835,11 @@ Adjusts the panel rectangle. After the API is called, the adjust request is subm
 
 > **NOTE**
 >
-> - This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state.
+> This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state.
 >
-> - This API returns the result synchronously. The return only indicates that the system receives the setting request, not that the setting is complete.
+> This API returns the result synchronously. The return only indicates that the system receives the setting request, not that the setting is complete.
 >
-> - When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
+> When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1894,11 +1894,11 @@ Adjusts the panel rectangle, and customizes the avoid area and touch area.
 
 > **NOTE**
 >
-> - This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state. This API is compatible with [adjustPanelRect](#adjustpanelrect12). If the input parameter **rect** contains only the **landscapeRect** and **portraitRect** attributes, [adjustPanelRect](#adjustpanelrect12) is called by default.
+> This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state. This API is compatible with [adjustPanelRect](#adjustpanelrect12). If the input parameter **rect** contains only the **landscapeRect** and **portraitRect** attributes, [adjustPanelRect](#adjustpanelrect12) is called by default.
 >
-> - This API returns the result synchronously. The return only indicates that the system receives the setting request, not that the setting is complete.
+> This API returns the result synchronously. The return only indicates that the system receives the setting request, not that the setting is complete.
 >
-> - When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
+> When the **PanelFlag** of a smartphone is **FLG_FLOATING** and the panel width is between 0 and 288 vp, the function buttons at the bottom of the panel will dynamically adjust their size according to the panel width. To ensure the optimal user experience, it is recommended that the panel width be no less than 90 vp.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -1959,9 +1959,9 @@ Updates the hot zone on the input method panel in the current state.
 
 > **NOTE**
 >
-> - This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state.
+> This API applies only to the panels of the **SOFT_KEYBOARD** type in the **FLG_FIXED** or **FLG_FLOATING** state.
 >
-> - This API returns the result synchronously. The return only indicates that the system has received the request for updating the hot zone, not that the hot zone has been updated.
+> This API returns the result synchronously. The return only indicates that the system has received the request for updating the hot zone, not that the hot zone has been updated.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2386,7 +2386,7 @@ Obtains the offset area of the soft keyboard relative to the system panel under 
 
 | Type  | Description                            |
 | ------- | ------------------------------ |
-| Promise\<[SystemPanelInsets](#systempanelinsets21)> | Promise used to return the result. Offset area between the input method keyboard and the system panel.|
+| Promise\<[SystemPanelInsets](#systempanelinsets21)> | Promise used to return the offset area between the input method keyboard and the system panel.|
 
 **Error codes**
 
@@ -2463,7 +2463,7 @@ try {
 
 ## KeyboardController
 
-In the following API examples, you must first use [on('inputStart')](#oninputstart9) to obtain a **KeyboardController** instance, and then call the APIs using the obtained instance.
+You must first use [on('inputStart')](#oninputstart9) to obtain a **KeyboardController** instance, and then use this instance to call the following APIs.
 
 ### hide<sup>9+</sup>
 
@@ -2733,11 +2733,11 @@ Represents a custom communication object.
 
 > **NOTE**
 >
-> - You can register this object to receive custom communication data sent by the edit box application attached to the input method application. When the custom communication data is received, the [onMessage](#onmessage15) callback in this object is triggered.
+> You can register this object to receive custom communication data sent by the edit box application attached to the input method application. When the custom communication data is received, the [onMessage](#onmessage15) callback in this object is triggered.
 >
-> - This object is globally unique. After multiple registrations, only the last registered object is valid and retained, and the [onTerminated](#onterminated15) callback of the penultimate registered object is triggered.
+> This object is globally unique. After multiple registrations, only the last registered object is valid and retained, and the [onTerminated](#onterminated15) callback of the penultimate registered object is triggered.
 >
-> - If this object is unregistered, its [onTerminated](#onterminated15) callback will be triggered.
+> If this object is unregistered, its [onTerminated](#onterminated15) callback will be triggered.
 
 ### onMessage<sup>15+</sup>
 
@@ -2747,9 +2747,9 @@ Receives the custom data callback sent by the edit box application attached to t
 
 > **NOTE**
 >
-> - This callback is triggered when the registered [MessageHandler](#messagehandler15) receives custom communication data sent by the edit box application attached to the input method application.
+> This callback is triggered when the registered [MessageHandler](#messagehandler15) receives custom communication data sent by the edit box application attached to the input method application.
 >
-> - The **msgId** parameter is mandatory, and the **msgParam** parameter is optional. If only the custom **msgId** data is received, confirm it with the data sender.
+> The **msgId** parameter is mandatory, and the **msgParam** parameter is optional. If only the custom **msgId** data is received, confirm it with the data sender.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2788,9 +2788,9 @@ Listens for MessageHandler termination.
 
 > **NOTE**
 >
-> - When an application registers a new [MessageHandler](#messagehandler15) object, the [onTerminated](#onterminated15) callback of the penultimate registered [MessageHandler](#messagehandler15) object is triggered.
+> When an application registers a new [MessageHandler](#messagehandler15) object, the [onTerminated](#onterminated15) callback of the penultimate registered [MessageHandler](#messagehandler15) object is triggered.
 >
-> - When an application unregisters a new [MessageHandler](#messagehandler15) object, the [onTerminated](#onterminated15) callback of the registered [MessageHandler](#messagehandler15) object is triggered.
+> When an application unregisters a new [MessageHandler](#messagehandler15) object, the [onTerminated](#onterminated15) callback of the registered [MessageHandler](#messagehandler15) object is triggered.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -2816,7 +2816,7 @@ inputMethodEngine.getInputMethodAbility()
 
 ## InputClient<sup>9+</sup>
 
-In the following API examples, you must first use [on('inputStart')](#oninputstart9) to obtain an **InputClient** instance, and then call the APIs using the obtained instance.
+You must first use [on('inputStart')](#oninputstart9) to obtain a **InputClient** instance, and then use this instance to call the following APIs.
 
 ### sendKeyFunction<sup>9+</sup>
 
@@ -4056,9 +4056,9 @@ Sends an extended edit action. This API uses an asynchronous callback to return 
 
 > **NOTE**
 >
-> - The input method calls this API to send an extended edit action to an edit box, which in turn listens for the corresponding event [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
+> The input method applications call this API to send extended edit actions to the edit box. The edit box listens for the corresponding event using [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
 >
-> - When the edit box responds to the **PASTE** command of [ExtendAction](#extendaction10), the edit box application needs to apply for the [ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) permission.
+> When the edit box responds to the **PASTE** command of [ExtendAction](#extendaction10), the edit box application needs to apply for the [ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) permission.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -4101,9 +4101,9 @@ Sends an extended edit action. This API uses a promise to return the result.
 
 >**NOTE**
 >
-> - The input method calls this API to send an extended edit action to an edit box, which in turn listens for the corresponding event [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
+> The input method applications call this API to send extended edit actions to the edit box. The edit box listens for the corresponding event using [on('handleExtendAction')](./js-apis-inputmethod.md#onhandleextendaction10) for further processing.
 >
-> - When the edit box responds to the **PASTE** command of [ExtendAction](#extendaction10), the edit box application needs to apply for the [ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) permission.
+> When the edit box responds to the **PASTE** command of [ExtendAction](#extendaction10), the edit box application needs to apply for the [ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard) permission.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -4387,9 +4387,9 @@ Sends the custom communication to the edit box application attached to the input
 
 > **NOTE**
 >
-> - This API can be called only when the edit box is attached to the input method and enter the edit mode, and the input method application is in full experience mode.
+> This API can be called only when the edit box is attached to the input method and enter the edit mode, and the input method application is in full experience mode.
 >
-> - The maximum length of **msgId** is 256 B, and the maximum length of **msgParam** is 128 KB.
+> The maximum length of **msgId** is 256 B, and the maximum length of **msgParam** is 128 KB.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -4441,9 +4441,9 @@ Registers or unregisters MessageHandler.
 
 > **NOTE**
 >
-> - The [MessageHandler](#messagehandler15) object is globally unique. After multiple registrations, only the last registered object is valid and retained, and the [onTerminated](#onterminated15) callback of the penultimate registered object is triggered.
+> The [MessageHandler](#messagehandler15) object is globally unique. After multiple registrations, only the last registered object is valid and retained, and the [onTerminated](#onterminated15) callback of the penultimate registered object is triggered.
 >
-> - If no parameter is set, unregister [MessageHandler](#messagehandler15). Its [onTerminated](#onterminated15) callback will be triggered.
+> If no parameter is set, unregister [MessageHandler](#messagehandler15). Its [onTerminated](#onterminated15) callback will be triggered.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
@@ -4592,7 +4592,7 @@ Represents the attributes of the edit box.
 | enterKeyType | number   | Yes  | No  | Function attributes of the edit box. For details, see [function key definitions in constants](#constants).|
 | inputPattern | number   | Yes  | No  | Text attribute of the edit box. For details, see [edit box definitions in constants](#constants).|
 | isTextPreviewSupported<sup>12+</sup> | boolean | No| No| Whether text preview is supported.<br>- **true**: Supported.<br>- **false**: Unsupported.|
-| bundleName<sup>14+</sup> | string | Yes| Yes| Name of the application package to which the edit box belongs. The value may be **""** When this attribute is used, the scenario where the value is **""** must be considered.|
+| bundleName<sup>14+</sup> | string | Yes| Yes| Name of the application package to which the edit box belongs. The value may be **""**. Handle this scenario when using the attribute.|
 | immersiveMode<sup>15+</sup> | [ImmersiveMode](#immersivemode15) | Yes  | Yes  | Immersive mode of the input method.|
 | windowId<sup>18+</sup> | number | Yes| Yes| ID of the window where the edit box is located.|
 | displayId<sup>18+</sup> | number | Yes  | Yes  | Screen ID of the window corresponding to the edit box. If window ID is not set, the screen ID of the focused window is used.|

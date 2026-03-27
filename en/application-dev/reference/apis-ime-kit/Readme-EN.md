@@ -13,6 +13,7 @@
   - [@ohos.InputMethodSubtype (Input Method Subtype)](js-apis-inputmethod-subtype.md)
   <!--Del-->
   - [@ohos.inputMethod (Input Method Framework) (System API)](js-apis-inputmethod-sys.md)
+  - [@ohos.inputMethodEngine (Input Method Service) (System API)](js-apis-inputmethodengine-sys.md)
   <!--DelEnd-->
   - [@ohos.inputMethod (Input Method Framework)](js-apis-inputmethod.md)
   - [@ohos.inputMethodEngine (Input Method Service)](js-apis-inputmethodengine.md)

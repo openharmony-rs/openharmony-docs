@@ -39,7 +39,7 @@ Creates a MediaKeySystem instance.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -85,7 +85,7 @@ Checks whether the device supports the specified DRM solution.
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -123,7 +123,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 | Name    | Type                                            | Mandatory| Description                                                                                                         |
 | -------- | ----------------------------------------------- | ---- |-------------------------------------------------------------------------------------------------------------|
 | name  | string     | Yes  | DRM solution name. Before calling this API, ensure that the DRM solution name is supported by calling [isMediaKeySystemSupported](arkts-apis-drm-f.md#drmismediakeysystemsupported).|
-| mimeType  | string     | Yes  | MIME type. The supported MIME types depend on the DRM solution. Example types are video/avc and video/hev.                                                              |
+| mimeType  | string     | Yes  | MIME type. The supported MIME types depend on the DRM solution. For example, video/avc and video/hevc.                                                              |
 
 **Return value**
 
@@ -133,7 +133,7 @@ Checks whether the device supports the combination of the DRM solution and MIME 
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -182,7 +182,7 @@ Checks whether the device supports the combination of the DRM solution, MIME typ
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
@@ -229,7 +229,7 @@ Obtains the UUID of the DRM content protection system supported by the specified
 
 **Error codes**
 
-For details about the error codes, see [DRM Error Codes](errorcode-drm.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [DRM Error Codes](errorcode-drm.md).
 
 | ID        | Error Message       |
 | --------------- | --------------- |
