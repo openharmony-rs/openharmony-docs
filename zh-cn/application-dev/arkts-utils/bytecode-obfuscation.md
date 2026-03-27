@@ -870,7 +870,6 @@ math1(1,2)
 使用前后，效果如下：
 
 * -keep @testAnnoClass class entry.src.main.ets.entryability.StaticDemo.* {*;}
-<!-- @[staticArkGuardExample_classWithInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/Annotations.ets) -->
 
    ```typescript
    //Annotations.ets
@@ -925,7 +924,6 @@ math1(1,2)
 使用前后，效果如下：
 
 * -keep class entry.src.main.ets.entryability.StaticDemo.* extends entry.src.main.ets.BaseClass.BaseClass {*;}
-<!-- @[staticArkGuardExample_classExtendsBaseClass_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/BaseClass.ets) -->
 
    ```typescript
    //BaseClass.ets
