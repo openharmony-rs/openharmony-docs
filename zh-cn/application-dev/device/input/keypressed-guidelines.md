@@ -6,15 +6,14 @@
 
 使用场景例如：开发者可在阅读类应用中监听音量键实现翻页，或在相机类应用中监听音量键实现拍照功能，从而提升用户体验。当前仅支持手机和平板设备。
 
-## 导入模块
+## 约束与限制
 
-```js
-import { inputConsumer, KeyEvent } from '@kit.InputKit';
-```
+- 应用窗口为前台焦点窗口时，优先响应才生效。
+- 应用选择高于系统优先响应指定的系统功能键后，功能键的默认行为将失效，所以应用需要确保只有在确定响应时才激活该功能。
 
 ## 接口说明
 
-按键按下事件常用接口如下表所示，接口详细介绍请参考[ohos.multimodalInput.inputConsumer文档](../../reference/apis-input-kit/js-apis-inputconsumer.md)。
+按键按下事件常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputConsumer (全局快捷键)](../../reference/apis-input-kit/js-apis-inputconsumer.md)。
 
 | 接口名称  | 描述 |
 | ------------------------------------------------------------ | -------------------------- |

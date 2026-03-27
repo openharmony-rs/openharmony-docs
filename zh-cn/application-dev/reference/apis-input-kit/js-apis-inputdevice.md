@@ -919,7 +919,7 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;, callback: Asyn
 | 参数名     | 类型                                      | 必填 | 说明                                                   |
 | -------- | ----------------------------------------- | ---- | ------------------------------------------------------ |
 | deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode)  | 是   | 需要查询的键值，最多支持5个按键查询。                |
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt;  | 是   | 需要查询的键值，最多支持5个按键查询。                |
 | callback | AsyncCallback&lt;Array&lt;boolean&gt;&gt; | 是   | 回调函数，返回查询结果。                           |
 
 **错误码**：
@@ -1006,7 +1006,7 @@ ArkTS-Sta: supportKeys(deviceId: int, keys: Array&lt;KeyCode&gt;): Promise&lt;Ar
 | 参数名     | 类型                 | 必填 | 说明                                                   |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
 | deviceId | ArkTS-Dyn: number <br> ArkTS-Sta: int              | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | 是   | 需要查询的键值，最多支持查询5个按键。                |
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt; | 是   | 需要查询的键值，最多支持查询5个按键。                |
 
 **返回值**：
 
@@ -1098,7 +1098,7 @@ ArkTS-Sta: supportKeysSync(deviceId: int, keys: Array&lt;KeyCode&gt;): Array&lt;
 | 参数名     | 类型                 | 必填 | 说明                                                   |
 | -------- | -------------------- | ---- | ------------------------------------------------------ |
 | deviceId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 输入设备的唯一标识，同一个物理设备反复插拔或重启，设备ID可能会发生变化。 |
-| keys     | Array[&lt;KeyCode&gt;](js-apis-keycode.md#keycode) | 是   | 需要查询的键值，最多支持查询5个按键。                |
+| keys     | Array&lt;[KeyCode](js-apis-keycode.md#keycode)&gt; | 是   | 需要查询的键值，最多支持查询5个按键。                |
 
 **返回值**：
 
@@ -1217,7 +1217,7 @@ struct Index {
         .onClick(() => {
           // 查询ID为1的输入设备的键盘类型。
           try {
-            inputDevice.getKeyboardType(1, (error: BusinessError, type: number) => {
+            inputDevice.getKeyboardType(1, (error: BusinessError, type: inputDevice.KeyboardType) => {
               if (error) {
                 console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`);
                 return;
@@ -1319,7 +1319,7 @@ struct Index {
         .onClick(() => {
           // 示例查询设备ID为1的设备键盘类型。
           try {
-            inputDevice.getKeyboardType(1).then((type: number) => {
+            inputDevice.getKeyboardType(1).then((type: inputDevice.KeyboardType) => {
               console.info(`Keyboard type: ${JSON.stringify(type)}`);
             });
           } catch (error) {
@@ -1411,7 +1411,7 @@ struct Index {
         .onClick(() => {
           // 示例查询设备ID为1的设备键盘类型。
           try {
-            let type: number = inputDevice.getKeyboardTypeSync(1)
+            let type: inputDevice.KeyboardType = inputDevice.getKeyboardTypeSync(1)
             console.info(`Keyboard type: ${JSON.stringify(type)}`)
           } catch (error) {
             console.error(`Failed to get keyboard type, error: ${JSON.stringify(error, [`code`, `message`])}`)
@@ -1764,7 +1764,7 @@ type AxisType = 'touchmajor' | 'touchminor' | 'orientation' | 'x' | 'y' | 'press
 |'pressure'    | 压力轴。  |
 | 'x'          | 横坐标轴。         |
 | 'y'           | 纵坐标轴。         |
-|'null'        |  无。             |
+|'null'        |  无类型。             |
 
 ## AxisRange
 

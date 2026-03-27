@@ -109,7 +109,7 @@ import { Rotate, Pinch, ThreeFingersSwipe, FourFingersSwipe, ActionType } from '
 
 | 名称        | 值  | 说明             |
 | ----------- | --- | --------------- |
-| CANCEL      | 0   | 取消。             |
+| CANCEL      | 0   | 手势取消。             |
 | BEGIN       | 1   | 手势开始。         |
 | UPDATE      | 2   | 手势更新。         |
 | END         | 3   | 手势结束。         |

@@ -1159,9 +1159,9 @@ struct Index {
 | NORTH_EAST_SOUTH_WEST            | 11   | 东北西南调整 |![North_East_South_West.png](./figures/North_East_South_West.png)|
 | NORTH_WEST_SOUTH_EAST            | 12   | 西北东南调整 |![North_West_South_East.png](./figures/North_West_South_East.png)|
 | CROSS                            | 13   | 准确选择   |![Cross.png](./figures/Cross.png)|
-| CURSOR_COPY                      | 14   | 拷贝     |![Copy.png](./figures/Copy.png)|
+| CURSOR_COPY                      | 14   | 复制     |![Copy.png](./figures/Copy.png)|
 | CURSOR_FORBID                    | 15   | 不可用    |![Forbid.png](./figures/Forbid.png)|
-| COLOR_SUCKER                     | 16   | 滴管     |![Colorsucker.png](./figures/Colorsucker.png)|
+| COLOR_SUCKER                     | 16   | 取色器     |![Colorsucker.png](./figures/Colorsucker.png)|
 | HAND_GRABBING                    | 17   | 并拢的手   |![Hand_Grabbing.png](./figures/Hand_Grabbing.png)|
 | HAND_OPEN                        | 18   | 张开的手   |![Hand_Open.png](./figures/Hand_Open.png)|
 | HAND_POINTING                    | 19   | 手形指针   |![Hand_Poniting.png](./figures/Hand_Pointing.png)|
@@ -1377,8 +1377,8 @@ ArkTS-Sta: setCustomCursor(windowId: int, cursor: CustomCursor, config: CursorCo
 | 参数名    | 类型    | 必填    | 说明    |
 | -------- | -------- | -------- | -------- |
 | windowId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 是    | 窗口ID。                          |
-| cursor  | [CustomCursor](js-apis-pointer.md#customcursor15) | 是    | 自定义光标资源。 |
-| config  | [CursorConfig](js-apis-pointer.md#cursorconfig15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小，256×256]。 |
+| cursor  | [CustomCursor](#customcursor15) | 是    | 自定义光标资源。 |
+| config  | [CustomCursor](#customcursor15) | 是    | 自定义光标配置，用于配置是否根据系统设置调整光标大小。如果CursorConfig中followSystem设置为true，则光标大小的可调整范围为：[光标资源图大小，256×256]。 |
 
 **返回值**：
 

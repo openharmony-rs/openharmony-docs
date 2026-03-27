@@ -27,7 +27,7 @@ uinput <option> <command> <arg> ...
 
 > **说明：**
 >
-> 命令中与坐标相关的参数，单位均为[px(屏幕物理像素单位)](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)。
+> 命令中与坐标相关的参数，单位均为px[像素单位](../reference/apis-arkui/arkui-ts/ts-pixel-units.md)。
 
 ## 帮助命令
 
@@ -212,12 +212,34 @@ uinput -M -c 0 -i 500 -c 0
 | 6  | 鼠标后退键 |
 | 7  | 鼠标任务键 |
 
+### 查询鼠标光标信息
+查询当前鼠标光标信息。
+
+如果鼠标光标处于显示状态，将输出鼠标光标显示状态及[PointerStyle](../reference/apis-input-kit/js-apis-pointer.md#pointerstyle)。若传入`filePath`参数且鼠标光标为应用自定义光标（样式枚举值为-100），会将鼠标光标样式图以二进制形式保存到指定文件中。需要自行创建`filePath`文件。若未传入`filePath`参数，将不会保存样式图。当鼠标光标处于隐藏状态时，不会输出样式信息，也不会保存样式图。
+
+**命令**
+```bash
+uinput -M -q [filePath]
+
+# [filePath] 鼠标光标的样式图文件保存路径，可选参数，当前版本仅支持“/data/local/tmp/”目录下的文件保存路径，例如：/data/local/tmp/testfile。
+```
+
+**使用示例**
+```bash
+# 查询当前鼠标光标的显示/隐藏状态和样式ID。
+uinput -M -q
+
+# 查询当前鼠标光标的显示/隐藏状态和样式ID，并将鼠标光标样式图以二进制形式写入“/data/local/tmp/testfile”文件中。
+touch /data/local/tmp/testfile
+uinput -M -q /data/local/tmp/testfile
+```
+
 ## 键盘事件
 
 模拟编辑框键盘按键输入事件。
 
 ### 键盘按键按下事件
-模拟键盘按下按键，与抬起事件使用。key：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+模拟键盘按下按键，建议与键盘按键抬起事件搭配使用，确保事件闭环。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -226,7 +248,7 @@ uinput --keyboard --down <key>
 ```
 
 ### 键盘按键抬起事件
-模拟键盘抬起按键，与按下事件使用。key：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+模拟键盘抬起按键，必须与键盘按键按下事件搭配使用，确保事件闭环。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -241,7 +263,7 @@ uinput -K -d 2017 -u 2017
 ```
 
 ### 键盘按键长按事件
-模拟键盘按下一个按键并保持设定的时长。key：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+模拟键盘按下一个按键并保持设定的时长后抬起，无需再次注入键盘按键抬起事件。长按期间不会重复注入按键按下事件。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -256,7 +278,7 @@ uinput -K -l 2017 100
 ```
 
 ### 键盘按键持续输入事件
-模拟键盘按下一个按键并在设定的时长内持续输入。key：[键值定义说明](../reference/apis-input-kit/js-apis-keycode.md)。
+模拟键盘按下一个按键并在设定的时长内持续输入按下事件后抬起，无需再次注入键盘按键抬起事件。长按期间会重复注入按键按下事件。keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
 
 **命令**
 ```bash
@@ -296,8 +318,51 @@ uinput --keyboard --text <text>
 
 **使用示例**
 ```bash
-# 在编辑框输入一段文本"123"
-uinput -K -t 123
+# 模拟输入一段文本"Hello,World!"
+uinput -K -t Hello,World!
+```
+
+## 控制注入的修饰键状态
+
+从API version 22开始，支持启用或禁用控制注入的修饰键状态能力，支持的修饰键包括：KEYCODE_ALT_LEFT、KEYCODE_ALT_RIGHT、KEYCODE_SHIFT_LEFT、KEYCODE_SHIFT_RIGHT、KEYCODE_CTRL_LEFT、KEYCODE_CTRL_RIGHT、KEYCODE_META_LEFT、KEYCODE_META_RIGHT，具体请参考keyCode：[@ohos.multimodalInput.keyCode (键值)](../reference/apis-input-kit/js-apis-keycode.md)。
+
+### 启用控制注入的修饰键状态能力
+
+启用控制注入的修饰键状态能力并设置维持时间。需要与uinput键盘按键按下事件配合使用，启用后再注入指定修饰键的按下事件，可维持指定时间的按下状态，维持时间结束后自动触发该修饰键抬起事件。
+
+**命令**
+```bash
+uinput enable_key_status <enable> [duration]
+
+# <enable> 控制注入的修饰键状态能力，取值为1或0，取值为1表示启用控制注入的修饰键状态能力，0表示禁用控制注入的修饰键状态能力。
+# [duration] 控制注入的修饰键状态持续时间，可选参数，单位：s，默认值为10，取值范围：[1,10]，仅支持整数。
+```
+
+**使用示例**
+```bash
+# 启用控制注入的修饰键状态能力，未设置修饰键状态维持时间。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持10s按下状态。
+uinput enable_key_status 1
+uinput -K -d 2047
+
+# 启用控制注入的修饰键状态能力并设置修饰键状态维持时间为5s。注入KEYCODE_SHIFT_LEFT按键（取值为2047）按下事件，可维持5s按下状态。
+uinput enable_key_status 1 5
+uinput -K -d 2047
+```
+
+### 禁用控制注入的修饰键状态能力
+
+禁用控制注入的修饰键状态能力，直到下次启用恢复该能力。
+
+**命令**
+```bash
+# <enable> 控制注入的修饰键状态能力，取值为1或0，取值为1表示启用控制注入的修饰键状态能力，0表示禁用控制注入的修饰键状态能力。
+uinput enable_key_status <enable>
+```
+
+**使用示例**
+```bash
+# 禁用控制注入的修饰键状态能力。
+uinput enable_key_status 0
 ```
 
 ## 触控笔事件
