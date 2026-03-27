@@ -286,7 +286,7 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 
 > **说明：**
 >
-> 如果要覆盖HttpOnly的cookies需要在value中指定HttpOnly属性。
+> 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
 >
 > configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
