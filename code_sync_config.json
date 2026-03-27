@@ -16959,6 +16959,66 @@
 						"start_line":20
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/module.json5",
+				"functions":[
+					{
+						"end_line":65,
+						"name":"EnableCustomComponentCrossAbility_config",
+						"start_line":58
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/entryability/EntryAbility.ets",
+				"functions":[
+					{
+						"end_line":38,
+						"name":"EnableCustomComponentCrossAbility_EntryAbility",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":70,
+						"name":"EnableCustomComponentCrossAbility_Index",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/MyNodeController.ets",
+				"functions":[
+					{
+						"end_line":82,
+						"name":"EnableCustomComponentCrossAbility_MyNodeController",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/extraability/ExtraAbility.ets",
+				"functions":[
+					{
+						"end_line":34,
+						"name":"EnableCustomComponentCrossAbility_ExtraAbility",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/pages/ExtraIndex.ets",
+				"functions":[
+					{
+						"end_line":44,
+						"name":"EnableCustomComponentCrossAbility_ExtraIndex",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
