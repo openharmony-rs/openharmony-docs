@@ -992,7 +992,7 @@ Allows an application to register and deregister the crypto extension.
 
 **Authorization mode**: system_grant
 
-**Supported device**: PCs/2-in-1 devices | tablets
+**Supported devices**: PCs/2-in-1 devices | tablets
 
 **Since**: 22
 
@@ -1085,7 +1085,7 @@ Allow an application to use the accessory connection service for pairing and aut
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.0
-
+ 	 
 ## ohos.permission.CHECK_CALL_LOG
 
 Allows an application to query the system for matching call records within a specified period based on specific criteria (such as the mobile number and call duration).
@@ -1111,4 +1111,5 @@ Allows an application or a service to use the DLP to register or unregister the 
 **Authorization mode**: system_grant
 
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
-**Starting ince**: 26.0.0
+
+**Since**: 26.0.0

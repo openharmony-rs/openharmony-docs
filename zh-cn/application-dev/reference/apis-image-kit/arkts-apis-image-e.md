@@ -80,6 +80,8 @@
 | FRAGMENT_METADATA | 2    | 水印裁剪图元数据。 |
 | GIF_METADATA<sup>20+</sup> | 5    | GIF图片元数据。 |
 | HEIFS_METADATA<sup>23+</sup> | 15    | HEIF序列图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| DNG_METADATA<sup>24+</sup> | 16    | DNG图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WEBP_METADATA<sup>24+</sup> | 17    | WebP图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ScaleMode<sup>9+</sup>
 
@@ -325,6 +327,126 @@
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
 | HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | HEIF序列图片的每帧延迟时长。<br>单位为毫秒。 |
+
+## WebPPropertyKey<sup>24+</sup>
+
+枚举，WebP图片信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称              | 值                | 说明                   |
+| ----------------- | ----------------- | --------------------- |
+| CANVAS_WIDTH    | 'WebPCanvasWidth'    | WebP图片的画布像素宽度。<br>单位为像素（px）。 |
+| CANVAS_HEIGHT    | 'WebPCanvasHeight'    | WebP图片的画布像素高度。<br>单位为像素（px）。 |
+| DELAY_TIME    | 'WebPDelayTime'    | WebP图片钳制后的帧延迟时长。钳制范围为[100, 65535]。<br>单位为毫秒（ms）。 |
+| UNCLAMPED_DELAY_TIME    | 'WebPUnclampedDelayTime'    | WebP图片未钳制的帧延迟时长。<br>单位为毫秒（ms）。 |
+| LOOP_COUNT    | 'WebPLoopCount'    | WebP图片动画循环的次数。如果取值为0，则表示不限次数。 |
+
+## DngPropertyKey<sup>24+</sup>
+
+枚举，DNG图片信息。
+- 关于字段的更详细描述请参考DNG协议文档DNG Specification 1.4.0.0。
+- 格式示例中的key为：image.DngPropertyKey.XXX（XXX为枚举的名称，如：image.DngPropertyKey.DNG_BACKWARD_VERSION）。
+- 格式示例仅用于读取结果的格式。具体接口使用方法请参考：[readImageMetadata](arkts-apis-image-ImageSource.md#readimagemetadata23)。
+- 返回字段类型具体参考[DngMetadata](arkts-apis-image-i.md#dngmetadata24)。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称              | 值                | 说明                   |
+| ----------------- | ----------------- | --------------------- |
+| DNG_VERSION    | 'DNGVersion' | DNG图片的版本号。 |
+| DNG_BACKWARD_VERSION | 'DNGBackwardVersion' | DNG文件向后兼容的最低版本号。 |
+| UNIQUE_CAMERA_MODEL | 'UniqueCameraModel' | 相机的唯一型号标识，用于区分不同设备。 |
+| LOCALIZED_CAMERA_MODEL | 'LocalizedCameraModel' | 本地化后的相机型号名称。 |
+| CFA_PLANE_COLOR | 'CFAPlaneColor' | CFA各平面的颜色通道定义。 |
+| CFA_LAYOUT | 'CFALayout' | CFA布局类型，如RGGB、BGGR等。 |
+| LINEARIZATION_TABLE | 'LinearizationTable' | 线性化查找表，用于将原始传感器值映射为线性光强度。 |
+| BLACK_LEVEL_REPEAT_DIM | 'BlackLevelRepeatDim' | 黑电平重复维度。 |
+| BLACK_LEVEL | 'BlackLevel' | 零光照下的编码电平，按CFA平面顺序排列。 |
+| BLACK_LEVEL_DELTA_H | 'BlackLevelDeltaH' | 水平方向黑电平校正增量。 |
+| BLACK_LEVEL_DELTA_V | 'BlackLevelDeltaV' | 垂直方向黑电平校正增量。 |
+| WHITE_LEVEL | 'WhiteLevel' | 白电平，表示传感器最大有效输出。 |
+| DEFAULT_SCALE | 'DefaultScale' | 默认缩放比例。 |
+| DEFAULT_CROP_ORIGIN | 'DefaultCropOrigin' | 默认裁剪区域的左上角坐标（x, y）。 |
+| DEFAULT_CROP_SIZE | 'DefaultCropSize' | 默认裁剪区域的宽度和高度。 |
+| COLOR_MATRIX1 | 'ColorMatrix1' | 第一校准光源下的色彩变换矩阵。 |
+| COLOR_MATRIX2 | 'ColorMatrix2' | 第二校准光源下的色彩变换矩阵。 |
+| CAMERA_CALIBRATION1 | 'CameraCalibration1' | 第一校准光源下的相机校准矩阵。 |
+| CAMERA_CALIBRATION2 | 'CameraCalibration2' | 第二校准光源下的相机校准矩阵。 |
+| REDUCTION_MATRIX1 | 'ReductionMatrix1' | 第一校准光源下的降维矩阵。 |
+| REDUCTION_MATRIX2 | 'ReductionMatrix2' | 第二校准光源下的降维矩阵。 |
+| ANALOG_BALANCE | 'AnalogBalance' | 模拟增益平衡系数。 |
+| AS_SHOT_NEUTRAL | 'AsShotNeutral' | 拍摄时的中性白点。 |
+| AS_SHOT_WHITE_XY | 'AsShotWhiteXY' | 拍摄时白点的CIE x-y色度坐标。 |
+| BASELINE_EXPOSURE | 'BaselineExposure' | 基准曝光补偿值，单位：EV。 |
+| BASELINE_NOISE | 'BaselineNoise' | 基准噪声水平。 |
+| BASELINE_SHARPNESS | 'BaselineSharpness' | 基准锐度增益。 |
+| BAYER_GREEN_SPLIT | 'BayerGreenSplit' | Bayer图像中两个绿色通道的分离程度。 |
+| LINEAR_RESPONSE_LIMIT | 'LinearResponseLimit' | 线性响应上限，有效值范围为[0.0, 1.0]。 |
+| CAMERA_SERIAL_NUMBER | 'CameraSerialNumber' | 相机序列号。 |
+| LENS_INFO | 'LensInfo' | 镜头信息。 |
+| CHROMA_BLUR_RADIUS | 'ChromaBlurRadius' | 色度模糊半径，单位：像素。 |
+| ANTI_ALIAS_STRENGTH | 'AntiAliasStrength' | 抗锯齿滤波器强度。 |
+| SHADOW_SCALE | 'ShadowScale' | 阴影区域缩放因子。 |
+| DNG_PRIVATE_DATA | 'DNGPrivateData' | 厂商私有数据块。 |
+| MAKER_NOTE_SAFETY | 'MakerNoteSafety' | EXIF MakerNote 是否安全可保留。0：不安全，1：安全 |
+| CALIBRATION_ILLUMINANT1 | 'CalibrationIlluminant1' | 第一校准光源类型。 |
+| CALIBRATION_ILLUMINANT2 | 'CalibrationIlluminant2' | 第二校准光源类型。 |
+| BEST_QUALITY_SCALE | 'BestQualityScale' | 最佳画质缩放比例。 |
+| RAW_DATA_UNIQUE_ID | 'RawDataUniqueID' | 原始图像数据的唯一标识符。 |
+| ORIGINAL_RAW_FILE_NAME | 'OriginalRawFileName' | 原始RAW文件名。 |
+| ORIGINAL_RAW_FILE_DATA | 'OriginalRawFileData' | 原始RAW文件的完整数据。 |
+| ACTIVE_AREA | 'ActiveArea' | 有效图像区域。 |
+| MASKED_AREAS | 'MaskedAreas' | 被遮蔽区域列表。 |
+| AS_SHOT_ICC_PROFILE | 'AsShotICCProfile' | 拍摄时使用的ICC色彩配置文件。 |
+| AS_SHOT_PRE_PROFILE_MATRIX | 'AsShotPreProfileMatrix' | 应用ICC配置文件前的预变换矩阵。 |
+| CURRENT_ICC_PROFILE | 'CurrentICCProfile' | 当前使用的ICC色彩配置文件。 |
+| CURRENT_PRE_PROFILE_MATRIX | 'CurrentPreProfileMatrix' | 当前ICC配置文件前的预变换矩阵。 |
+| COLORIMETRIC_REFERENCE | 'ColorimetricReference' | 色度参考标准。 |
+| CAMERA_CALIBRATION_SIGNATURE | 'CameraCalibrationSignature' | 相机校准签名。 |
+| PROFILE_CALIBRATION_SIGNATURE | 'ProfileCalibrationSignature' | 配置文件校准签名。 |
+| EXTRA_CAMERA_PROFILES | 'ExtraCameraProfiles' | 额外相机配置文件索引列表。 |
+| AS_SHOT_PROFILE_NAME | 'AsShotProfileName' | 拍摄时使用的配置文件名称。 |
+| NOISE_REDUCTION_APPLIED | 'NoiseReductionApplied' | 已应用的降噪强度级别。 |
+| PROFILE_NAME | 'ProfileName' | 色彩配置文件名称。 |
+| PROFILE_HUE_SAT_MAP_DIMS | 'ProfileHueSatMapDims' | 色调/饱和度映射表维度。 |
+| PROFILE_HUE_SAT_MAP_DATA1 | 'ProfileHueSatMapData1' | 第一组色调/饱和度映射表数据。 |
+| PROFILE_HUE_SAT_MAP_DATA2 | 'ProfileHueSatMapData2' | 第二组色调/饱和度映射表数据。 |
+| PROFILE_TONE_CURVE | 'ProfileToneCurve' | 配置文件色调曲线。 |
+| PROFILE_EMBED_POLICY | 'ProfileEmbedPolicy' | 配置文件嵌入策略。 |
+| PROFILE_COPYRIGHT | 'ProfileCopyright' | 配置文件版权信息。 |
+| FORWARD_MATRIX1 | 'ForwardMatrix1' | 第一前向变换矩阵。 |
+| FORWARD_MATRIX2 | 'ForwardMatrix2' | 第二前向变换矩阵。 |
+| PREVIEW_APPLICATION_NAME | 'PreviewApplicationName' | 预览图生成应用程序名称。 |
+| PREVIEW_APPLICATION_VERSION | 'PreviewApplicationVersion' | 预览图生成应用程序版本。 |
+| PREVIEW_SETTINGS_NAME | 'PreviewSettingsName' | 预览图处理设置名称。 |
+| PREVIEW_SETTINGS_DIGEST | 'PreviewSettingsDigest' | 预览图设置的MD5摘要。 |
+| PREVIEW_COLOR_SPACE | 'PreviewColorSpace' | 预览图色彩空间。 |
+| PREVIEW_DATE_TIME | 'PreviewDateTime' | 预览图生成时间。 |
+| RAW_IMAGE_DIGEST | 'RawImageDigest' | 原始图像数据的MD5摘要。 |
+| ORIGINAL_RAW_FILE_DIGEST | 'OriginalRawFileDigest' | 原始RAW文件数据的MD5摘要。 |
+| SUB_TILE_BLOCK_SIZE | 'SubTileBlockSize' | 图像分块存储，定义块的长和宽。 |
+| ROW_INTERLEAVE_FACTOR | 'RowInterleaveFactor' | 行交织因子。 |
+| PROFILE_LOOK_TABLE_DIMS | 'ProfileLookTableDims' | ProfileLookTableData的维度。 |
+| PROFILE_LOOK_TABLE_DATA | 'ProfileLookTableData' | 色彩表数据。 |
+| OPCODE_LIST1 | 'OpcodeList1' | 第一操作码列表。 |
+| OPCODE_LIST2 | 'OpcodeList2' | 第二操作码列表。 |
+| OPCODE_LIST3 | 'OpcodeList3' | 第三操作码列表。 |
+| NOISE_PROFILE | 'NoiseProfile' | 噪声剖面参数。 |
+| ORIGINAL_DEFAULT_FINAL_SIZE | 'OriginalDefaultFinalSize' | 原始默认最终输出尺寸（宽, 高）。 |
+| ORIGINAL_BEST_QUALITY_FINAL_SIZE | 'OriginalBestQualityFinalSize' | 原始最佳画质输出尺寸（宽, 高）。 |
+| ORIGINAL_DEFAULT_CROP_SIZE | 'OriginalDefaultCropSize' | 原始默认裁剪尺寸（宽, 高）。 |
+| PROFILE_HUE_SAT_MAP_ENCODING | 'ProfileHueSatMapEncoding' | 色调/饱和度映射表编码方式。 |
+| PROFILE_LOOK_TABLE_ENCODING | 'ProfileLookTableEncoding' | 色彩表编码方式。 |
+| BASELINE_EXPOSURE_OFFSET | 'BaselineExposureOffset' | 基准曝光偏移量，单位：EV。 |
+| DEFAULT_BLACK_RENDER | 'DefaultBlackRender' | 默认黑场渲染方式。 |
+| NEW_RAW_IMAGE_DIGEST | 'NewRawImageDigest' | 修改后原始图像数据的新MD5摘要。 |
+| RAW_TO_PREVIEW_GAIN | 'RawToPreviewGain' | 主RAW图与预览图之间的增益比。 |
+| DEFAULT_USER_CROP | 'DefaultUserCrop' | 默认用户裁剪区域。 |
 
 ## ImageFormat<sup>9+</sup>
 

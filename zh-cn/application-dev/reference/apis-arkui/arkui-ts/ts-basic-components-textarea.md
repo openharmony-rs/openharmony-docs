@@ -149,6 +149,10 @@ horizontalScrolling(enabled: Optional\<boolean>)
 
 设置当文本宽度超过内容区宽度时是否启用水平滚动。未通过该接口设置时，禁用水平滚动。
 
+> **说明：**
+>
+> 以下场景不支持水平滚动：设置[内联模式](#style10)<!--Del-->；启用[语音按钮](./ts-basic-components-textarea-sys.md#voicebutton23)<!--DelEnd-->。
+
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -618,7 +622,7 @@ decoration(value: TextDecorationOptions)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12对象说明) | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>} |
+| value  | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12对象说明) | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID,<br/>&nbsp;thicknessScale:&nbsp;1.0<br/>} |
 
 >  **说明：**
 >
@@ -3145,3 +3149,39 @@ struct TextAreaExample {
 ```
 
 ![textareascrolltovisible](figures/textarea_scroll_to_visible.gif)
+
+### 示例33（设置水平滚动）
+
+本示例通过[horizontalScrolling](#horizontalscrolling24)设置水平滚动。
+
+从API version 24开始，新增horizontalScrolling接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State message: string = `Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+Hello World Hello World Hello World Hello World Hello World\n
+`
+
+  build() {
+    Column() {
+      TextArea({ text: this.message })
+        .horizontalScrolling(true)
+        .width('200vp')
+        .height('150vp')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+![horizontal_scrolling](figures/textarea_horizontal_scrolling.png)

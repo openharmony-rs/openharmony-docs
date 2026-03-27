@@ -21,7 +21,7 @@ import { media } from '@kit.MediaKit';
 
 ## AVErrorCode<sup>9+</sup>
 
-Enumerates the [media error codes](errorcode-media.md).
+Enumerates the types of [media error codes](errorcode-media.md).
 
 **System capability**: SystemCapability.Multimedia.Media.Core
 

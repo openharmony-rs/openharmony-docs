@@ -92,15 +92,15 @@ Invalid size of eap data.
 
 **Description**
 
-This error code is reported if the eap data length is invalid.
+This error code is reported if the EAP data length is invalid.
 
 **Possible causes**
 
-The input eap data length is different from the value of **bufferLen** in **EapData**.
+The input EAP data length is different from the value of **bufferLen** in **EapData**.
 
 **Solution**
 
-Set the input eap data length to the value of **bufferLen**.
+Ensure that the value of **bufferLen** is the same as the EAP data length.
 
 ## 33200006 Invalid Network Type
 
@@ -151,7 +151,7 @@ This error code is reported if **eapType** is invalid.
 
 **Possible causes**
 
-The input **eapType** is not within the valid value range.
+The input **eapCode** is not within the valid value range.
 
 **Solution**
 

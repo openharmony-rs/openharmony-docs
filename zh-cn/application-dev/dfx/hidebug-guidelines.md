@@ -178,9 +178,9 @@ HiDebug可用于获取VM内存数据、GC统计数据及VM堆转储。
 | hidebug.getAppVMMemoryInfo | 获取VM内存相关信息。 |
 | hidebug.getVMRuntimeStats | 获取系统[GC](../arkts-utils/gc-introduction.md)统计信息。 |
 | hidebug.getVMRuntimeStat | 根据参数获取指定的系统[GC](../arkts-utils/gc-introduction.md)统计信息。 |
-| hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：从API version 18开始，支持该接口。 |
+| hidebug.dumpJsRawHeapData | 使用异步方式为当前线程转储虚拟机的原始堆快照，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：<br/>从API version 18开始，支持该接口。<br/>从API version 24开始，该接口支持清除nodeId缓存。 |
 | hidebug.setJsRawHeapTrimLevel | 设置当前进程转储虚拟机原始堆快照的裁剪级别。<br/>**说明**：从API version 20开始，支持该接口。 |
-| hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。 |
+| hidebug.dumpJsHeapData | 使用同步方式导出虚拟机堆，辅助[JS内存泄漏分析](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-stability-js-memleak-detection)。<br/>**说明**：从API version 24开始，该接口支持清除nodeId缓存。 |
 | hidebug.getAppMemoryLimit | 获取应用程序进程内存限制，其中vmHeapLimit为当前线程对应的虚拟机堆大小限制，vmTotalHeapSize为当前进程所有虚拟机堆总和大小的限制。 |
 | hidebug.getAppVMObjectUsedSize | 获取当前虚拟机中ArkTS对象所占用的内存大小。<br/>**说明**：从API version 21开始，支持该接口。 |
 
@@ -357,6 +357,17 @@ HiDebug提供修改转储堆快照级别的接口。
 | 接口名 | 描述 |
 | -------- | -------- |
 | hidebug.setProcDumpInSharedOOM | 当发生JS OOM的内存类型为SharedHeap，如果应用已经调用过该接口，且传参为true，那么转储的堆快照将会由线程级别变成进程级别。通过[订阅资源泄漏事件（ArkTS）](hiappevent-watcher-resourceleak-events-arkts.md)获取对应日志。<br/>该接口仅影响SharedHeap发生OOM时转储的堆快照，不影响其他情况下转储的堆快照。<br/>当应用需要定位JS泄漏问题时，建议总是调用该接口并传参为true。<br/>**说明**：从API version 24开始，支持该接口。 |
+
+## 采集进程资源调用栈
+
+从API version 24开始，HiDebug新增资源采集功能，支持按需采集应用进程资源分配栈至沙箱，覆盖文件描述符、线程、Native/GPU内存及全局句柄等类别，辅助定位资源泄漏。
+
+### 接口说明（C/C++）
+
+| 接口名 | 描述 |
+|--------|------|
+| OH_HiDebug_StartProfiler | 按指定类型启动资源分配栈信息采集，须与OH_HiDebug_StopProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
+| OH_HiDebug_StopProfiler | 停止资源分配栈信息采集，须与OH_HiDebug_StartProfiler配对使用。<br/>**说明**：从API version 24开始，支持该接口。 |
 
 ## 其他
 

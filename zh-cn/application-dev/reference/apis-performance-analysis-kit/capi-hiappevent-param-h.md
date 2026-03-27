@@ -36,6 +36,10 @@
 | [MAIN_THREAD_JANK_PARAM_SAMPLE_COUNT](#main_thread_jank_param_sample_count) "sample_count" | 用于MAIN_THREAD_JANK_V2事件，主线程超时检测的采样栈的次数。<br>**起始版本：** 22 |
 | [MAIN_THREAD_JANK_PARAM_REPORT_TIMES_PER_APP](#main_thread_jank_param_report_times_per_app) "report_times_per_app" | 用于MAIN_THREAD_JANK_V2事件，每个应用PID一个生命周期内，主线程超时采样上报的次数，一个生命周期内只能设置一次。<br>**起始版本：** 22 |
 | [MAIN_THREAD_JANK_PARAM_AUTO_STOP_SAMPLING](#main_thread_jank_param_auto_stop_sampling) "auto_stop_sampling" | 用于MAIN_THREAD_JANK_V2事件，主线程超时结束时，是否停止采样主线程堆栈。<br>**起始版本：** 22 |
+| [OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING](#oh_app_crash_param_extend_pc_lr_printing) "extend_pc_lr_printing"                                                        | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否打印PC、LR寄存器扩展字节范围的内存内容。<br>**起始版本：** 24  |
+| [OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES](#oh_app_crash_param_log_file_cutoff_sz_bytes) "log_file_cutoff_sz_bytes"                                                        | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，按设置的参数值大小截断CPP_CRASH日志。<br>**起始版本：** 24  |
+| [OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING](#oh_app_crash_param_simplify_vma_printing) "simplify_vma_printing"                                                        | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否只打印崩溃日志中出现的地址所属的VMA映射信息，以减小CPP_CRASH日志文件大小。<br>**起始版本：** 24  |
+| [OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG](#oh_app_crash_param_merge_cppcrash_app_log) "merge_cppcrash_app_log"                                                        | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否在CPP_CRASH场景拼接应用沙箱中指定文件的日志。<br>**起始版本：** 24  |
 
 
 ## 宏定义说明
@@ -148,4 +152,50 @@
 
 **起始版本：** 22
 
+### OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING
 
+```c
+#define OH_APP_CRASH_PARAM_EXTEND_PC_LR_PRINTING "extend_pc_lr_printing"
+```
+
+**描述**
+
+用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否打印PC、LR寄存器扩展字节范围的内存内容。
+
+**起始版本：** 24
+
+### OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES
+
+```c
+#define OH_APP_CRASH_PARAM_LOG_FILE_CUTOFF_SZ_BYTES "log_file_cutoff_sz_bytes"
+```
+
+**描述**
+
+用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，按设置的参数值大小截断CPP_CRASH日志。
+
+**起始版本：** 24
+
+### OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING
+
+```c
+#define OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING "simplify_vma_printing"
+```
+
+**描述**
+
+用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否只打印崩溃日志中出现的地址所属的VMA映射信息，以减小CPP_CRASH日志文件大小。
+
+**起始版本：** 24
+
+### OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG
+
+```c
+#define OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG "merge_cppcrash_app_log"
+```
+
+**描述**
+
+用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否在CPP_CRASH场景拼接应用沙箱中指定文件的日志。
+
+**起始版本：** 24
