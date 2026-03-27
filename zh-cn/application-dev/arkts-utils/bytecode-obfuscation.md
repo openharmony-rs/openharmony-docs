@@ -1575,9 +1575,9 @@ class A {
 -keep class *.className {*;}
 ./**
 ```
-  例如：
+例如：
   
-  -keep class entry.src.main.ets.entryability.StaticDemo.ClassName {*;}，`ClassName`和`ClassMember`都不混淆。
+-keep class entry.src.main.ets.entryability.StaticDemo.ClassName {*;}，`ClassName`和`ClassMember`都不混淆。
   
 ```typescript
 //StaticDemo.ets
@@ -1613,9 +1613,9 @@ class ClassName implements interfaceTest {
 -keep enum *.enumName {*;}
 ./**
 ```
-  例如：
+例如：
   
-  -keep enum entry.src.main.ets.entryability.StaticDemo.Color {*;}，`Color`和`enum`值都不混淆
+-keep enum entry.src.main.ets.entryability.StaticDemo.Color {*;}，`Color`和`enum`值都不混淆
   
 ```typescript
 //StaticDemo.ets
@@ -1662,15 +1662,15 @@ export enum Color {
 }
 ```
 
-**3.**  混淆类名，只保留类中的成员或方法。
+**3.** 混淆类名，只保留类中的成员或方法。
   
 ```txt
 -keep-class-members class *.ClassName {*;}
 ./**
 ```
-  例如：
+例如：
   
-  -keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassMethod {public final method1(...):i32;}, 只保留`method1`不混淆
+-keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassMethod {public final method1(...):i32;}, 只保留`method1`不混淆
   
 ```typescript
 //StaticDemo.ets
@@ -1699,9 +1699,9 @@ class ClassMethod {
 
 **4.** 类如果使用注解，继承等，在keep时，要写全注解和类的路径。
   
-  例如：
+例如：
   
-  -keep @Anno2 class entry.src.main.ets.entryability.StaticDemo.ClassTest2 extends @Anno1 entry.src.main.ets.entryability.StaticDemo.ClassTest1 { *; }, `ClassTest2`和`Class2_Field`都不混淆
+-keep @Anno2 class entry.src.main.ets.entryability.StaticDemo.ClassTest2 extends @Anno1 entry.src.main.ets.entryability.StaticDemo.ClassTest1 { *; }, `ClassTest2`和`Class2_Field`都不混淆
   
 ```typescript
 //StaticDemo.ets
