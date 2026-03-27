@@ -32,7 +32,7 @@ Enables the detection for JS object leaks. This function is disabled by default.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| isEnable | boolean | Yes| Whether to enable **jsLeakWatcher**. The value **true** means to enable jsleakwatcher, and **false** means the opposite.|
+| isEnable | boolean | Yes| Whether to enable **jsLeakWatcher**. **true**: yes; **false**: no.|
 
 **Example**
 
@@ -96,13 +96,13 @@ Exports the list of leaked objects and VM memory snapshot.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| filePath | string | Yes| The path for storing exported information files.|
+| filePath | string | Yes| Path for storing exported information files.|
 
 **Return value**
 
 | Type   | Description                                                      |
 | ------- | ---------------------------------------------------------- |
-| Array&lt;string&gt; | Export result. The file name extension is **.jsleaklist** for the list of leaked objects and **.heapsnapshot** for the VM memory snapshot.<br>Note: If this API is successful, the path of the leaked object list file and the VM memory snapshot path are returned. Otherwise, an empty array is returned.|
+| Array&lt;string&gt; | Export result. The file name extension is **.jsleaklist** for the list of leaked objects and **.heapsnapshot** for the VM memory snapshot.<br>Note: If the dump is successful, the path of the leaked object list file and the VM memory snapshot path are returned. Otherwise, an empty array is returned.|
 
 **Error codes**
 
@@ -138,7 +138,7 @@ If a memory leak occurs, the leaked file is returned through the callback.
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | isEnabled | boolean | Yes| Whether to enable the detection for JS object memory leaks. **true**: yes; **false**: no.|
-| configs | Array&lt;string&gt; | Yes| Configuration item. Each element in the array indicates a specific object type to monitor.<br>Options: **XComponent**, **NodeContainer**, **Window**, **CustomComponent**, and **Ability**.<br>**Note**: An empty array indicates that all the preceding objects are monitored.|
+| configs | Array&lt;string&gt; | Yes| Configuration item. Each element in the array indicates a specific object type to monitor.<br>Options: **XComponent**, **NodeContainer**, **Window**, **CustomComponent**, and **Ability**.<br>Note: An empty array indicates that all the preceding objects are monitored.|
 | callback | Callback&lt;Array&lt;string&gt;&gt; | Yes| Callback used to receive the memory-leaked object returned by the **jsLeakWatcher.enableLeakWatcher** API.<br>You need to input an array object in the callback. Index **0** is the name of the leak list file, whose extension is **.jsleaklist**. Index **1** is the name of the VM memory snapshot file, whose extension is **.rawheap**.|
 
 
