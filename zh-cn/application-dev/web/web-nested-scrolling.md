@@ -221,8 +221,12 @@ struct Index {
 
   checkScrollBottom() {
     this.isWebAtEnd = false;
-    if (this.webController.getPageOffset().y + this.webHeight >= this.webController.getPageHeight()) {
-      this.isWebAtEnd = true;
+    try {
+      if (this.webController.getPageOffset().y + this.webHeight >= this.webController.getPageHeight()) {
+        this.isWebAtEnd = true;
+      }
+    } catch (err) {
+      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
     }
   }
 
@@ -253,7 +257,7 @@ struct Index {
                 Text('Scroll Area')
                   .width('100%')
                   .height('40%')
-                  .backgroundColor(0X330000FF)
+                  .backgroundColor(0x330000FF)
                   .fontSize(16)
                   .textAlign(TextAlign.Center)
               }
