@@ -596,14 +596,14 @@ export struct PageOne {
           .height(40)
           .margin({ top: 50 })
           .onClick(() => {
-            //弹出路由栈栈顶元素，返回上个页面
+            // 弹出路由栈栈顶元素，返回上个页面
             this.navPathStack.pop();
           })
       }
       .size({ width: '100%', height: '100%' })
     }.title(`${this.name}`)
     .onReady((ctx: NavDestinationContext) => {
-      // NavDestinationContext获取当前所在的导航控制器
+      // 通过NavDestinationContext获取当前所在页面的导航控制器
       this.navPathStack = ctx.pathStack;
     })
   }
