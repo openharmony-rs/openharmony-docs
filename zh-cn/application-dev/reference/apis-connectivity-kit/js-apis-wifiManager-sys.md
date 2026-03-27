@@ -2013,7 +2013,7 @@ setWifiCapability(capability: WifiCapability, enable: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| capability | [WifiCapability](#wifiCapability) | 是 | wifi能力枚举。 |
+| capability | [WifiCapability](#wificapability) | 是 | wifi能力枚举。 |
 | enable | boolean | 是 | 是否使能wifi能力，true表示使能，false表示不使能。 |
 
 **错误码：**
@@ -2056,7 +2056,7 @@ getWifiCapability(capability: WifiCapability): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| capability | [WifiCapability](#wifiCapability) | 是 | wifi能力枚举。 |
+| capability | [WifiCapability](#wificapability)| 是 | wifi能力枚举。 |
 
 **返回值：**
 
