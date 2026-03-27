@@ -717,6 +717,14 @@ Repeat子组件过渡动画的判定规则如下：
 > - 仅支持显示区域内子组件的动画效果，显示区域外子组件的动画效果为未定义行为。
 > - 过渡动画具体设置方式和动画效果请参考[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口。
 
+**示例代码**
+
+<!-- @[repeat_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatAnimation.ets) -->
+
+运行效果：
+
+![Repeat-animation](figures/repeat-animation.gif)
+
 ## 常见使用场景
 
 ### 数据展示&操作
