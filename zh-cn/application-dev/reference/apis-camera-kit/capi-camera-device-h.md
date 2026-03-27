@@ -134,7 +134,7 @@ Camera_ErrorCode OH_CameraDevice_GetLensEquivalentFocalLengths(const Camera_Devi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
+| const [ Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | uint32_t** equivalentFocalLengths | 输出参数，返回等效焦距数组。 |
 | uint32_t* size | 输出参数，返回数组大小。 |
 
@@ -160,7 +160,7 @@ Camera_ErrorCode OH_CameraDevice_IsLogicalCamera(const Camera_Device* camera, bo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
+| const [ Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | bool* isLogicalCamera | 输出参数，返回表示是否为逻辑摄像头的布尔值。 |
 
 **返回：**
@@ -185,7 +185,7 @@ Camera_ErrorCode OH_CameraDevice_GetLogicalCameraConstituentCameraDevices(const 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* logicalCamera | 逻辑摄像头的Camera_Device指针。 |
+| const [ Camera_Device](capi-oh-camera-camera-device.md)* logicalCamera | 逻辑摄像头的Camera_Device指针。 |
 | [Camera_Device](capi-oh-camera-camera-device.md)* constituentCameras | 输出参数，返回组成逻辑摄像头的物理摄像头集合。 |
 | uint32_t size | 物理摄像头数量数组的大小。 |
 
@@ -211,7 +211,7 @@ Camera_ErrorCode OH_CameraDevice_GetConstituentCamerasSize(const Camera_Device* 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* logicalCamera | 逻辑摄像头的Camera_Device指针。 |
+| const [ Camera_Device](capi-oh-camera-camera-device.md)* logicalCamera | 逻辑摄像头的Camera_Device指针。 |
 | uint32_t* size | 输出参数，返回数组大小。 |
 
 **返回：**
@@ -236,7 +236,7 @@ Camera_ErrorCode OH_CameraDevice_GetLensFocalLength(const Camera_Device* camera,
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
+| const [ Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | float* lensFocalLength | 输出参数，返回镜头焦距值。 |
 
 **返回：**
@@ -261,7 +261,7 @@ Camera_ErrorCode OH_CameraDevice_GetMinimumFocusDistance(const Camera_Device* ca
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
+| const [ Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | float* minimumFocusDistance | 输出参数，返回最小对焦距离。 |
 
 **返回：**
@@ -286,7 +286,7 @@ Camera_ErrorCode OH_CameraDevice_GetLensDistortion(const Camera_Device* camera, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
+| const [ Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | float** lens | 输出参数，返回镜头畸变参数数组。 |
 | uint32_t* size | 输出参数，返回数组大小。 |
 
@@ -312,7 +312,7 @@ Camera_ErrorCode OH_CameraDevice_GetIntrinsicCalibration(const Camera_Device* ca
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
+| const [ Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | float** intrinsicCalibration | 输出参数，返回内参标定参数数组。 |
 | uint32_t* size | 输出参数，返回数组大小。 |
 
@@ -338,7 +338,7 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPhysicalSize(const Camera_Device* came
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
+| const [ Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | float* width | 输出参数，返回传感器宽度（单位：毫米）。 |
 | float* height | 输出参数，返回传感器高度（单位：毫米）。 |
 
@@ -364,7 +364,7 @@ Camera_ErrorCode OH_CameraDevice_GetSensorPixelArraySize(const Camera_Device* ca
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
+| const [ Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | uint32_t* width | 输出参数，返回像素阵列宽度（单位：像素）。 |
 | uint32_t* height | 输出参数，返回像素阵列高度（单位：像素）。 |
 
@@ -390,7 +390,7 @@ Camera_ErrorCode OH_CameraDevice_GetSensorColorFilterArrangement(const Camera_De
 
 | 参数项 | 描述 |
 | -- | -- |
-| [const Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
+| const [ Camera_Device](capi-oh-camera-camera-device.md)* camera | 用于获取属性的Camera_Device指针。 |
 | [OH_Camera_SensorColorFilterArrangement](capi-camera-h.md#oh_camera_sensorcolorfilterarrangement)* sensorCFA | 输出参数，返回传感器滤色阵列排列枚举值。 |
 
 **返回：**
