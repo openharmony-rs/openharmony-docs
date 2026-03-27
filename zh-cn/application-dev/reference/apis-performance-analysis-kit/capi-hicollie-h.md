@@ -396,7 +396,10 @@ typedef size_t (*OH_HiCollie_FreezeCallback)(OH_HiCollie_Freeze_Type type, void*
 | -- | -- |
 | size_t | 已使用的缓冲区大小，单位字节。|
 
-注：返回超过64 KB，日志内容可能为空。
+
+>**注意**
+>
+>返回超过64 KB，日志内容可能为空。
 
 ### OH_HiCollie_SetFreezeCallback()
 
@@ -440,7 +443,10 @@ HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)
 | -- | -- |
 | bool isFreezeEvent | 上报事件类型。true：上报6S冻屏事件。false：上报3S冻屏事件。 |
 
-注：BUSINESS_THREAD_BLOCK_3S、BUSINESS_THREAD_BLOCK_6S等同于BUSSINESS_THREAD_BLOCK_3S、BUSSINESS_THREAD_BLOCK_6S，后续会统一事件检测类型。
+
+>**注意**
+>
+>BUSINESS_THREAD_BLOCK_3S、BUSINESS_THREAD_BLOCK_6S等同于BUSSINESS_THREAD_BLOCK_3S、BUSSINESS_THREAD_BLOCK_6S，后续会统一事件检测类型。
 
 **返回：**
 
