@@ -5707,6 +5707,8 @@
 
 **授权方式**：系统授权（system_grant）
 
+**ACL使能**：true
+
 **支持设备**：Phone | PC/2in1 | Tablet
 
 **起始版本**：24
