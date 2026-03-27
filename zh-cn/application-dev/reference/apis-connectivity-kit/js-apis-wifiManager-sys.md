@@ -1985,6 +1985,8 @@ wifi支持的能力。
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
