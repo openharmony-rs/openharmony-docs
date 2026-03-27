@@ -930,7 +930,7 @@ function unregisterCameraOcclusionDetection(cameraInput: camera.CameraInput): vo
 
 | 名称                       | 类型                                      | 只读 | 可选 | 说明        |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
-| depthDataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | 是  |  否  | 深度数据的精度，分为相对精度和绝对精度。 |
+| dataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | 是  |  否  | 深度数据的精度，分为相对精度和绝对精度。 |
 
 ## DepthDataQualityLevel<sup>13+</sup>
 
@@ -3703,7 +3703,7 @@ ArkTS-Sta: setExposure(exposure: int): void
 
 | 参数名 | 类型                                | 必填 | 说明                                                         |
 | ------ | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 手动曝光时长，通过[getSupportedExposureRange](#getsupportedexposurerange11)接口获取。 |
+| exposure  | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 手动曝光时长，通过[getSupportedExposureRange](#getsupportedexposurerange11)接口获取。 |
 
 **错误码：**
  
@@ -3802,9 +3802,9 @@ TripodDetectionResult extends [SceneFeatureDetectionResult](#scenefeaturedetecti
 | -------- |---------------------------------| -------- | -------- |---------|
 | tripodStatus | [TripodStatus](#tripodstatus13) |   是     |    是    | 脚架状态信息。 |
 
-## SceneDetection<sup>12+</sup>
+## SceneDetectionQuery<sup>12+</sup>
 
-场景检测能力。
+场景检测查询能力。
 
 ### isSceneFeatureSupported<sup>12+</sup>
 
@@ -3849,6 +3849,9 @@ function isSceneFeatureSupported(photoSessionForSys: camera.PhotoSessionForSys, 
   return isSupported;
 }
 ```
+## SceneDetection<sup>12+</sup>
+
+场景检测能力。继承[SceneDetectionQuery](#scenedetectionquery12)。
 
 ### enableSceneFeature<sup>12+</sup>
 
@@ -4547,9 +4550,9 @@ function getPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession): c
 | zoomRange  | [ZoomRange](#zoomrange11) | 否    | 否   | 特定物理光圈的变焦范围。  |
 | apertures  | Array\<number\>           | 否    | 否   | 支持的物理光圈列表。      |
 
-## Aperture<sup>11+</sup>
+## ApertureQuery<sup>12+</sup>
 
-光圈类，用于设置光圈参数。
+光圈查询能力。
 
 ### getSupportedVirtualApertures<sup>11+</sup>
 
@@ -4601,6 +4604,44 @@ function getSupportedVirtualApertures(session: camera.PortraitPhotoSession): Arr
   return virtualApertures;
 }
 ```
+
+### getSupportedPhysicalApertures<sup>11+</sup>
+
+getSupportedPhysicalApertures(): Array\<PhysicalAperture\> 
+
+获取支持的物理光圈列表。
+
+**系统接口：** 此接口为系统接口 
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型                                             | 说明                           |
+| ----------------------------------------------- | ---------------------------- |
+| Array<[PhysicalAperture](#physicalaperture11)>    | 支持的物理光圈列表。               |
+
+**错误码：**
+ 	   
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+ 	   
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400103         |  Session not config.                          |
+| 202             |  Not System Application.                      |
+
+**示例：**
+
+```ts
+function getSupportedPhysicalApertures(session: camera.PortraitPhotoSession): Array<camera.PhysicalAperture> {
+  let physicalApertures: Array<camera.PhysicalAperture> = session.getSupportedPhysicalApertures();
+  return physicalApertures;
+}
+```
+
+## Aperture<sup>11+</sup>
+
+光圈类，用于设置光圈参数。继承[ApertureQuery](#aperturequery12)。
 
 ### getVirtualAperture<sup>11+</sup>
 
@@ -4691,52 +4732,6 @@ ArkTS-Dyn示例：
 ```ts
 function setVirtualAperture(session: camera.PortraitPhotoSession, virtualAperture: number): void {
   session.setVirtualAperture(virtualAperture);
-}
-```
-
-ArkTS-Sta示例：
-
-```ts
-function setVirtualAperture(session: camera.PortraitPhotoSession, virtualAperture: double): void {
-  session.setVirtualAperture(virtualAperture);
-}
-```
-
-### getSupportedPhysicalApertures<sup>11+</sup>
-
-getSupportedPhysicalApertures(): Array\<PhysicalAperture\>
-
-获取支持的物理光圈列表。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 22
-
-**返回值：**
-
-| 类型                                             | 说明                           |
-| ----------------------------------------------- | ---------------------------- |
-| Array<[PhysicalAperture](#physicalaperture11)>    | 支持的物理光圈列表。               |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202             |  Not System Application.                      |
-| 7400103         |  Session not config.                          |
-
-**示例：**
-
-```ts
-function getSupportedPhysicalApertures(session: camera.PortraitPhotoSession): Array<camera.PhysicalAperture> {
-  let physicalApertures: Array<camera.PhysicalAperture> = session.getSupportedPhysicalApertures();
-  return physicalApertures;
 }
 ```
 
