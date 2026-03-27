@@ -138,7 +138,7 @@ OH_AVScreenCapture_SetMaxVideoFrameRate(capture, 20);
 
 ## 设置屏幕分辨率
 
-使用[OH_AVScreenCapture_ResizeCanvas](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_resizecanvas)调整录屏分辨率，需在启动后调用，分辨率有范围限制，可参考[avcodec编解码能力](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getvideowidthrange)。
+使用[OH_AVScreenCapture_ResizeCanvas](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_resizecanvas)调整录屏分辨率，需在启动后调用，分辨率有范围限制[144, 4096]，可参考[avcodec编解码能力](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapability_getvideowidthrange)。
 
 ```c++
 OH_AVScreenCapture_ResizeCanvas(capture, 768, 1280);
