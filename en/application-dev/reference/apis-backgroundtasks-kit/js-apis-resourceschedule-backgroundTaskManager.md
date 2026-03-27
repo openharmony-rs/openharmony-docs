@@ -660,7 +660,7 @@ export default class EntryAbility extends UIAbility {
   updateProcess(process: number) {
     // Define the notification type. The notification type of the progress update must be live view.
     let downLoadTemplate: notificationManager.NotificationTemplate = {
-      name: 'downloadTemplate', // Currently, only downloadTemplate is supported. Remain the value unchanged.
+      name: 'downloadTemplate', // Currently, only downloadTemplate is supported. Retain the value.
       data: {
         title: 'File download: music.mp4', // Mandatory.
         fileName: 'senTemplate', // Mandatory.
@@ -1423,7 +1423,7 @@ Defines the information about the transient task.
 | Name            | Type    | Read-Only  | Optional  | Description                                      |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
 | requestId       | number | No   | No   | Request ID of the transient task.                              |
-| actualDelayTime | number | No   | No   | Actual duration of the transient task requested by the application, in milliseconds.<br>Note: The maximum duration is 3 minutes in normal cases. In the case of a [low battery](../apis-basic-services-kit/js-apis-battery-info.md), the maximum duration is decreased to 1 minute.|
+| actualDelayTime | number | No   | No   | Actual duration of the transient task requested by the application, in milliseconds.<br>Note: The maximum duration of a transient task is 3 minutes in normal cases. In the case of a low battery ([BatteryCapacityLevel](../apis-basic-services-kit/js-apis-battery-info.md#batterycapacitylevel9) set to **LEVEL_LOW**), the maximum duration is decreased to 1 minute.|
 
 ## TransientTaskInfo<sup>20+</sup>
 
@@ -1587,7 +1587,7 @@ Specifies details of the continuous task being requested or updated. It is typic
 4. Notifications that have been combined cannot be canceled. If notifications have been combined, they cannot be updated to uncombined.
 5. After notifications are combined, tapping the notification will redirect to the UIAbility corresponding to the first requested continuous task. If the update API is called, the redirection will target the UIAbility corresponding to the last updated continuous task.
 6. When the [updateBackgroundRunning()](#backgroundtaskmanagerupdatebackgroundrunning21) API is called to update a continuous task, the input **continuousTaskId** must exist. Otherwise, the update fails.
-7. [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) is supported since API version 22. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.
+7. Continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) type are supported since API version 22. This task type must be used independently and notifications cannot be combined. Specifically, when you request or update a continuous task, it must be of the **MODE_SPECIAL_SCENARIO_PROCESSING** type. Otherwise, an error is returned.
 
 ### Properties
 
@@ -1652,7 +1652,7 @@ export default class EntryAbility extends UIAbility {
 
 requestAuthFromUser(context: Context, callback: Callback&lt;UserAuthResult&gt;): void
 
-Requests user authorization to run tasks continuously in the background. This API uses an asynchronous callback to return the result. If the API call is successful, a banner notification with a sound is sent. This API applies only to continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) type.
+Requests user authorization to run tasks continuously in the background. This API uses an asynchronous callback to return the result. If the API call is successful, a banner notification with a sound is sent. This API is applicable only to continuous tasks of the [MODE_SPECIAL_SCENARIO_PROCESSING](#backgroundtaskmode21) type.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1766,7 +1766,7 @@ export default class EntryAbility extends UIAbility {
 
 ## BackgroundTaskMode<sup>21+</sup>
 
-Main type of a continuous task. It is usually used together with the subtype [BackgroundTaskSubmode](#backgroundtasksubmode21). For details, see the mapping table. The two types are newly added in API version 21 for [requesting](#backgroundtaskmanagerstartbackgroundrunning21) and [updating](#backgroundtaskmanagerupdatebackgroundrunning21) continuous tasks.
+Main type of a continuous task. It is usually used together with the subtype [BackgroundTaskSubmode](#backgroundtasksubmode21). For details, see the mapping table. The two types are newly added in API version 21 for [requesting](#backgroundtaskmanagerstartbackgroundrunning21) and [updating](#backgroundtaskmanagerupdatebackgroundrunning21) continuous tasks.<br>When the main type of the continuous task is **MODE_SPECIAL_SCENARIO_PROCESSING**, or that of a non-PC/2-in-1 device is **MODE_TASK_KEEPING**, you need to request the ACL permission [ohos.permission.KEEP_BACKGROUND_RUNNING_SYSTEM](../../../application-dev/security/AccessToken/restricted-permissions.md#ohospermissionkeep_background_running_system) before calling APIs related to continuous tasks. In other scenarios, this permission is not required.
 
 **System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
