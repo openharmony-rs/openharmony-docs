@@ -265,4 +265,4 @@ picker内宫格的捏合模式。
     
 | 名称                   | 类型                | 只读 | 可选 | 说明           |
 | ---- | ---- | ---- | ---- | ---- |
-| supportedHighResolution       | boolean  | 否 | 否 | 启用对高分辨率资产的支持。true表示支持高分辨率资产，false表示不支持高分辨资产 |
+| supportedHighResolution       | boolean  | 否 | 否 | 是否支持启用高分辨率资产。true表示支持，false表示不支持。 |

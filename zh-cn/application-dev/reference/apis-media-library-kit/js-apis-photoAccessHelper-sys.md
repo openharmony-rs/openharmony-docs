@@ -3866,7 +3866,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 ### setAssetCompatibleCapability<sup>24+</sup>
 
-setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise\<void>;
+setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise\<void>
 
 根据bundleName配置资产兼容能力。开发者可以获取兼容性能力，并决定是否根据兼容性能力进行兼容性转换。
 
@@ -3922,7 +3922,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 
 getAssetCompatibleCapability(bundleName: string): Promise\<AssetCompatibleCapability>
 
-根据bundleName获取资产兼容能力。应用程序获取文件时，可判断是否进行兼容性转换。
+根据bundleName获取资产兼容能力。当应用程序获取文件时，可判断该应用程序是否需要进行兼容性转换。
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
 

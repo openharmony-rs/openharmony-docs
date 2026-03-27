@@ -1081,7 +1081,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   console.info('ShowSingleAssetCreationDialogExDemo.');
 
   try {
-    // 获取需要保存到媒体库的位于应用沙箱的图片/视频uri。
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频URI。
     let srcFileUri: string = 'file://fileUriDemo1'; // 实际场景请使用真实的URI。
     let photoCreationConfig: photoAccessHelper.CreationSetting = {
       title: 'test2', // 可选。
@@ -2211,7 +2211,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<void>
 
-配置资产兼容能力。系统会对特殊的资产进行兼容性处理，如果开发者希望获得原始资产需要向系统注册兼容能力。
+配置资产兼容能力。系统会对特殊的资产（如高分辨率资产）进行兼容性处理，如果开发者希望获得原始资产需要向系统注册兼容能力。
 
 
 ​**模型约束**：此接口仅可在Stage模型下使用。
@@ -2237,7 +2237,7 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<vo
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
-| 23800151 | 23800151 - The scenario parameter verification fails, Invalid tokenId.|
+| 23800151 | The scenario parameter verification fails, Invalid tokenId.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
