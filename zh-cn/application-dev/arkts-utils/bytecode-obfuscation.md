@@ -169,8 +169,6 @@ ArkTS-Sta的字节码混淆删除对`console.*（console.toString()除外）`和
 
 <!-- @[optionExample_removeLog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->      
 
-<!-- @[staticArkGuardExample_removelog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->  
-
 ``` TypeScript
 // 混淆前：
 if (flag) {
@@ -188,9 +186,7 @@ if (flag) {
 若配置该选项，以下场景中的`console.*`或`hilog`特定语句会被删除：
 
 1. 文件顶层的调用
-   <!-- @[optionExample_removeLog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->    
-   
-    <!-- @[staticArkGuardExample_removelog1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->  
+   <!-- @[optionExample_removeLog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) --> 
     
    ``` TypeScript
    console.info("in tolevel");
@@ -198,9 +194,7 @@ if (flag) {
    ```
 
 2. 代码块中的调用
-   <!-- @[optionExample_removeLog3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
-    
-    <!-- @[staticArkGuardExample_removelog2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->  
+   <!-- @[optionExample_removeLog3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) --> 
     
    ``` TypeScript
    function foo1() {
@@ -212,8 +206,6 @@ if (flag) {
 3. module或namespace中的调用
    <!-- @[optionExample_removeLog4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
     
-   <!-- @[staticArkGuardExample_removelog3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->  
-   
    ``` TypeScript
    // example.ts
    namespace ns {
@@ -223,9 +215,7 @@ if (flag) {
    ```
   
 4. switch语句中的调用
-   <!-- @[optionExample_removeLog5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->     
-    
-    <!-- @[staticArkGuardExample_removelog4](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->  
+   <!-- @[optionExample_removeLog5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForBytecodeObfuscation/ArkGuardBytecodeObfuscation/entry/src/main/ets/bytecodeobfuscation/BytecodeObfuscation.ts) -->  
     
    ``` TypeScript
    switch (value) {
@@ -629,7 +619,6 @@ keep中属性等匹配的类型是字节码中的类型, 而非代码中使用�
 |-|std.core.Tuple(TUPLE)	 |-|
 
 代码示例：
-<!-- @[staticArkGuardExample_keepType](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->  
 
 ```typescript
 // StaticDemo.ets
@@ -731,8 +720,6 @@ math1(1,2)
 
 * -keep package entry.src.main.ets.entryability.StaticDemo { message01: [f64](#字节码keep中使用的类型说明（ArkTS-Sta）);}
 
-<!-- @[staticArkGuardExample_keep](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->  
-
    ```typescript
    //StaticDemo.ets
 
@@ -796,7 +783,6 @@ math1(1,2)
   -keep package entry.src.main.ets.entryability.StaticDemo { fooTest3(std.core.FunctionR1): [std.core.FunctionR1](#字节码keep中使用的类型说明（ArkTS-Sta）);} 保留lambda函数名。
   
   Function1的1表示函数有一个参数，FunctionR2的R表示使用可变参数，2表示有两个参数。
-<!-- @[staticArkGuardExample_lambda](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
 
    ```typescript
    //StaticDemo.ets
@@ -847,7 +833,6 @@ math1(1,2)
 使用前后，效果如下：
 
 * -keep package entry.src.main.ets.entryability.StaticDemo { getDemoName():void;}
-<!-- @[staticArkGuardExample_function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
 
    ```typescript
    //StaticDemo.ets
@@ -886,8 +871,6 @@ math1(1,2)
 
 * -keep @testAnnoClass class entry.src.main.ets.entryability.StaticDemo.* {*;}
 <!-- @[staticArkGuardExample_classWithInterface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/Annotations.ets) -->
-
-<!-- @[staticArkGuardExample_classWithAnnotation_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
 
    ```typescript
    //Annotations.ets
@@ -944,8 +927,6 @@ math1(1,2)
 * -keep class entry.src.main.ets.entryability.StaticDemo.* extends entry.src.main.ets.BaseClass.BaseClass {*;}
 <!-- @[staticArkGuardExample_classExtendsBaseClass_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/BaseClass.ets) -->
 
-<!-- @[staticArkGuardExample_classExtendsBaseClass_2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
-
    ```typescript
    //BaseClass.ets
 
@@ -998,7 +979,6 @@ math1(1,2)
 使用前后，效果如下：
 
 * -keep interface entry.src.main.ets.Annotations.testAnnoClass
-<!-- @[staticArkGuardExample_classWithAnnotation_1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/Annotations.ets) -->
 
    ```typescript
    //Annotations.ets
@@ -1358,7 +1338,6 @@ export namespace Ns {
 使用前后，效果如下：
 
 * -keep-class-with-members class entry.src.main.ets.entryability.StaticDemo.ClassTest {name: [std.core.String](#字节码keep中使用的类型说明（ArkTS-Sta）);}
-<!-- @[staticArkGuardExample_classTest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
 
    ```typescript
    //StaticDemo.ets
@@ -1411,7 +1390,6 @@ export namespace Ns {
 使用前后，效果如下：
 
 * -keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassTest {name: [std.core.String](#字节码keep中使用的类型说明（ArkTS-Sta）);}
-<!-- @[staticArkGuardExample_classTest](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
 
    ```typescript
    //StaticDemo.ets
@@ -1602,7 +1580,6 @@ class A {
   例如：
   
   -keep class entry.src.main.ets.entryability.StaticDemo.ClassName {*;}，`ClassName`和`ClassMember`都不混淆。
-<!-- @[staticArkGuardExample_className](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
   
 ```typescript
 //StaticDemo.ets
@@ -1641,7 +1618,6 @@ class ClassName implements interfaceTest {
   例如：
   
   -keep enum entry.src.main.ets.entryability.StaticDemo.Color {*;}，`Color`和`enum`值都不混淆
-<!-- @[staticArkGuardExample_color](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
   
 ```typescript
 //StaticDemo.ets
@@ -1697,7 +1673,6 @@ export enum Color {
   例如：
   
   -keep-class-members class entry.src.main.ets.entryability.StaticDemo.ClassMethod {public final method1(...):i32;}, 只保留`method1`不混淆
-<!-- @[staticArkGuardExample_classMethod](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
   
 ```typescript
 //StaticDemo.ets
@@ -1729,7 +1704,6 @@ class ClassMethod {
   例如：
   
   -keep @Anno2 class entry.src.main.ets.entryability.StaticDemo.ClassTest2 extends @Anno1 entry.src.main.ets.entryability.StaticDemo.ClassTest1 { *; }, `ClassTest2`和`Class2_Field`都不混淆
-<!-- @[staticArkGuardExample_anno](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkGuardForStaticBytecodeObfuscation/StaticBytecodeObfuscationIssues/entry/src/main/ets/pages/StaticDemo.ets) -->
   
 ```typescript
 //StaticDemo.ets
