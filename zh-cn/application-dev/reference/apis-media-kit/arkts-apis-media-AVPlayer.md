@@ -209,7 +209,7 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名 | 类型   | 必填 | 说明                                      |
 | ------ | ------ | ---- | ----------------------------------------- |
 | type   | string | 是   | 错误事件回调类型，取消注册的事件：'error' |
-| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 错误事件回调方法，使用播放器的过程中发生错误，会提供错误码ID和错误信息。如填写该参数，则仅取消注册此回调方法，否则取消注册error事件的所有回调方法。 |
+| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 错误事件回调方法，使用播放器的过程中发生错误，会提供错误码ID和错误信息。如果填写该参数，仅取消注册此回调方法，否则取消注册error事件的所有回调方法。 |
 
 **示例：**
 
@@ -1568,7 +1568,7 @@ off(type: 'speedDone', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                      |
 | ------ | ------ | ---- | --------------------------------------------------------- |
 | type   | string | 是   | setSpeed生效的事件回调类型，取消注册的事件：'speedDone'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。当setSpeed成功，上报生效的倍速模式，具体见[PlaybackSpeed](arkts-apis-media-e.md#playbackspeed8)。如填写该参数，则仅取消注册此回调方法，否则取消注册speedDone事件的所有回调方法。 |
+| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。当setSpeed成功，上报生效的倍速模式，具体见[PlaybackSpeed](arkts-apis-media-e.md#playbackspeed8)。如果填写该参数，仅取消注册此回调方法，否则取消注册speedDone事件的所有回调方法。 |
 
 **示例：**
 
@@ -1688,7 +1688,7 @@ off(type: 'playbackRateDone', callback?: OnPlaybackRateDone): void
 | 参数名 | 类型   | 必填 | 说明                                                      |
 | ------ | ------ | ---- | --------------------------------------------------------- |
 | type   | string | 是   | setPlaybackRate生效的事件回调类型，取消注册的事件：'playbackRateDone'。 |
-| callback | [OnPlaybackRateDone](arkts-apis-media-t.md#onplaybackratedone20) | 否   |  setPlaybackRate生效的事件回调方法，上报设置后的播放速率。如填写该参数，则仅取消注册此回调方法，否则取消注册playbackRateDone事件的所有回调方法。 |
+| callback | [OnPlaybackRateDone](arkts-apis-media-t.md#onplaybackratedone20) | 否   |  setPlaybackRate生效的事件回调方法，上报设置后的播放速率。如果填写该参数，仅取消注册此回调方法，否则取消注册playbackRateDone事件的所有回调方法。 |
 
 **示例：**
 
@@ -1771,7 +1771,7 @@ off(type: 'bitrateDone', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | setBitrate生效的事件回调类型，取消注册的事件：'bitrateDone'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | setBitrate生效的事件回调方法，上报生效的比特率。如填写该参数，则仅取消注册此回调方法，否则取消注册bitrateDone事件的所有回调方法。           |
+| callback<sup>12+</sup> | Callback\<number> | 否   | setBitrate生效的事件回调方法，上报生效的比特率。如果填写该参数，仅取消注册此回调方法，否则取消注册bitrateDone事件的所有回调方法。           |
 
 **示例：**
 
@@ -1827,7 +1827,7 @@ off(type: 'availableBitrates', callback?: Callback\<Array\<number>>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | HLS/DASH协议网络流可用比特率上报事件回调类型，取消注册的事件：'availableBitrates'。 |
-| callback<sup>12+</sup> | Callback\<Array\<number>> | 否   | HLS/DASH协议网络流可用比特率上报事件回调方法，使用数组存放支持的比特率。如果数组长度为0，则不支持指定比特率。如填写该参数，则仅取消注册此回调方法，否则取消注册availableBitrates事件的所有回调方法。 |
+| callback<sup>12+</sup> | Callback\<Array\<number>> | 否   | HLS/DASH协议网络流可用比特率上报事件回调方法，使用数组存放支持的比特率。如果数组长度为0，则不支持指定比特率。如果填写该参数，仅取消注册此回调方法，否则取消注册availableBitrates事件的所有回调方法。 |
 
 **示例：**
 
@@ -1889,7 +1889,7 @@ off(type: 'mediaKeySystemInfoUpdate', callback?: Callback\<Array\<drm.MediaKeySy
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 版权保护信息更新上报事件回调类型，取消注册的事件：'mediaKeySystemInfoUpdate'。 |
-| callback | Callback\<Array\<drm.[MediaKeySystemInfo](../apis-drm-kit/arkts-apis-drm-i.md#mediakeysysteminfo)>> | 否   | 版权保护信息更新上报事件回调方法，上报版权保护信息数组。如填写该参数，则仅取消注册此回调方法，否则取消注册mediaKeySystemInfoUpdate事件的所有回调方法。 |
+| callback | Callback\<Array\<drm.[MediaKeySystemInfo](../apis-drm-kit/arkts-apis-drm-i.md#mediakeysysteminfo)>> | 否   | 版权保护信息更新上报事件回调方法，上报版权保护信息数组。如果填写该参数，仅取消注册此回调方法，否则取消注册mediaKeySystemInfoUpdate事件的所有回调方法。 |
 
 **示例：**
 
@@ -2024,7 +2024,7 @@ off(type: 'volumeChange', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | setVolume生效的事件回调类型，取消注册的事件：'volumeChange'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | setVolume生效的事件回调方法，上报生效的媒体音量。如填写该参数，则仅取消注册此回调方法，否则取消注册volumeChange事件的所有回调方法。            |
+| callback<sup>12+</sup> | Callback\<number> | 否   | setVolume生效的事件回调方法，上报生效的媒体音量。如果填写该参数，仅取消注册此回调方法，否则取消注册volumeChange事件的所有回调方法。            |
 
 **示例：**
 
@@ -2080,7 +2080,7 @@ off(type: 'endOfStream', callback?: Callback\<void>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 资源播放至结尾的事件回调类型，取消注册的事件：'endOfStream'。 |
-| callback<sup>12+</sup> | Callback\<void> | 否   | 资源播放至结尾的事件回调方法。如填写该参数，则仅取消注册此回调方法，否则取消注册endOfStream事件的所有回调方法。                               |
+| callback<sup>12+</sup> | Callback\<void> | 否   | 资源播放至结尾的事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册endOfStream事件的所有回调方法。                               |
 
 **示例：**
 
@@ -2178,7 +2178,7 @@ off(type: 'timeUpdate', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
 | type   | string | 是   | 时间更新的回调类型，取消注册的事件：'timeUpdate'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。返回当前时间。如填写该参数，则仅取消注册此回调方法，否则取消注册timeUpdate事件的所有回调方法。             |
+| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。返回当前时间。如果填写该参数，仅取消注册此回调方法，否则取消注册timeUpdate事件的所有回调方法。             |
 
 **示例：**
 
@@ -2239,7 +2239,7 @@ off(type: 'durationUpdate', callback?: Callback\<number>): void
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
 | type   | string | 是   | 时长更新的回调类型，取消注册的事件：'durationUpdate'。 |
-| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。返回资源时长。如填写该参数，则仅取消注册此回调方法，否则取消注册durationUpdate事件的所有回调方法。        |
+| callback<sup>12+</sup> | Callback\<number> | 否   | 回调函数。返回资源时长。如果填写该参数，仅取消注册此回调方法，否则取消注册durationUpdate事件的所有回调方法。        |
 
 **示例：**
 
@@ -2295,7 +2295,7 @@ off(type: 'bufferingUpdate', callback?: OnBufferingUpdateHandler): void
 | 参数名 | 类型   | 必填 | 说明                                                      |
 | ------ | ------ | ---- | --------------------------------------------------------- |
 | type   | string | 是   | 播放缓存事件回调类型，取消注册的事件：'bufferingUpdate'。 |
-| callback | [OnBufferingUpdateHandler](arkts-apis-media-t.md#onbufferingupdatehandler12) | 否   | 播放缓存事件回调方法。如填写该参数，则仅取消注册此回调方法，否则取消注册bufferingUpdate事件的所有回调方法。 |
+| callback | [OnBufferingUpdateHandler](arkts-apis-media-t.md#onbufferingupdatehandler12) | 否   | 播放缓存事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册bufferingUpdate事件的所有回调方法。 |
 
 **示例：**
 
@@ -2351,7 +2351,7 @@ off(type: 'startRenderFrame', callback?: Callback\<void>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 视频播放开始首帧渲染事件回调类型，取消注册的事件：'startRenderFrame'。 |
-| callback<sup>12+</sup> | Callback\<void> | 否   | 视频播放开始首帧渲染事件回调方法。如填写该参数，则仅取消注册此回调方法，否则取消注册startRenderFrame事件的所有回调方法。                   |
+| callback<sup>12+</sup> | Callback\<void> | 否   | 视频播放开始首帧渲染事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册startRenderFrame事件的所有回调方法。                   |
 
 **示例：**
 
@@ -2407,7 +2407,7 @@ off(type: 'videoSizeChange', callback?: OnVideoSizeChangeHandler): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 视频播放宽高变化事件回调类型，取消注册的事件：'videoSizeChange'。 |
-| callback<sup>12+</sup> | [OnVideoSizeChangeHandler](arkts-apis-media-t.md#onvideosizechangehandler12) | 否   | 视频播放宽高变化事件回调方法。如填写该参数，则仅取消注册此回调方法，否则取消注册videoSizeChange事件的所有回调方法。    |
+| callback<sup>12+</sup> | [OnVideoSizeChangeHandler](arkts-apis-media-t.md#onvideosizechangehandler12) | 否   | 视频播放宽高变化事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册videoSizeChange事件的所有回调方法。    |
 
 **示例：**
 
@@ -2465,7 +2465,7 @@ off(type: 'audioInterrupt', callback?: Callback<audio.InterruptEvent>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 音频焦点变化事件回调类型，取消注册的事件：'audioInterrupt'。 |
-| callback<sup>12+</sup> | Callback\<[audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)> | 否   | 音频焦点变化事件回调方法。如填写该参数，则仅取消注册此回调方法，否则取消注册audioInterrupt事件的所有回调方法。             |
+| callback<sup>12+</sup> | Callback\<[audio.InterruptEvent](../apis-audio-kit/arkts-apis-audio-i.md#interruptevent9)> | 否   | 音频焦点变化事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册audioInterrupt事件的所有回调方法。             |
 
 **示例：**
 
@@ -2533,7 +2533,7 @@ off(type: 'audioOutputDeviceChangeWithInfo', callback?: Callback\<audio.AudioStr
 | 参数名   | 类型                       | 必填 | 说明                                        |
 | :------- | :------------------------- | :--- | :------------------------------------------ |
 | type     | string                     | 是   | 事件回调类型，支持的事件为：'audioOutputDeviceChangeWithInfo'。 |
-| callback | Callback\<[audio.AudioStreamDeviceChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiostreamdevicechangeinfo11)> | 否   | 回调函数，返回当前音频流的输出设备描述信息及变化原因。如填写该参数，则仅取消注册此回调方法，否则取消注册audioOutputDeviceChangeWithInfo事件的所有回调方法。 |
+| callback | Callback\<[audio.AudioStreamDeviceChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiostreamdevicechangeinfo11)> | 否   | 回调函数，返回当前音频流的输出设备描述信息及变化原因。如果填写该参数，仅取消注册此回调方法，否则取消注册audioOutputDeviceChangeWithInfo事件的所有回调方法。 |
 
 **错误码：**
 
@@ -2692,7 +2692,7 @@ off(type: 'subtitleUpdate', callback?: Callback\<SubtitleInfo>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type | string | 是   | 事件回调类型，支持的事件为：'subtitleUpdate'。 |
-| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#subtitleinfo12)> | 否   | 取消外挂字幕事件的回调方法。如填写该参数，则仅取消注册此回调方法，否则取消注册subtitleUpdate事件的所有回调方法。 |
+| callback | Callback\<[SubtitleInfo](arkts-apis-media-i.md#subtitleinfo12)> | 否   | 取消外挂字幕事件的回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册subtitleUpdate事件的所有回调方法。 |
 
 **示例：**
 
@@ -2748,7 +2748,7 @@ off(type: 'trackChange', callback?: OnTrackChangeHandler): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type | string | 是   | 事件回调类型，支持的事件为：'trackChange'。 |
-| callback | [OnTrackChangeHandler](arkts-apis-media-t.md#ontrackchangehandler12) | 否   | 取消轨道变更事件的回调方法。如填写该参数，则仅取消注册此回调方法，否则取消注册trackChange事件的所有回调方法。 |
+| callback | [OnTrackChangeHandler](arkts-apis-media-t.md#ontrackchangehandler12) | 否   | 取消轨道变更事件的回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册trackChange事件的所有回调方法。 |
 
 **示例：**
 
@@ -2812,7 +2812,7 @@ off(type: 'trackInfoUpdate', callback?: Callback\<Array\<MediaDescription>>): vo
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type | string | 是   | 事件回调类型，支持的事件为：'trackInfoUpdate'。 |
-| callback | Callback\<Array\<[MediaDescription](arkts-apis-media-i.md#mediadescription8)>> | 否   | 取消轨道信息更新事件的回调方法。如填写该参数，则仅取消注册此回调方法，否则取消注册trackInfoUpdate事件的所有回调方法。 |
+| callback | Callback\<Array\<[MediaDescription](arkts-apis-media-i.md#mediadescription8)>> | 否   | 取消轨道信息更新事件的回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册trackInfoUpdate事件的所有回调方法。 |
 
 **示例：**
 
@@ -2864,7 +2864,7 @@ off(type: 'amplitudeUpdate', callback?: Callback\<Array\<number>>): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 事件回调类型，支持的事件为：'amplitudeUpdate'。 |
-| callback | Callback\<Array\<number>> | 否   | 取消音频最大电平值更新事件回调方法。如填写该参数，则仅取消注册此回调方法，否则取消注册amplitudeUpdate事件的所有回调方法。 |
+| callback | Callback\<Array\<number>> | 否   | 取消音频最大电平值更新事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册amplitudeUpdate事件的所有回调方法。 |
 
 **示例：**
 
@@ -2936,7 +2936,7 @@ off(type: 'seiMessageReceived', payloadTypes?: Array\<number>, callback?: OnSeiM
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 事件回调类型，支持的事件为：'seiMessageReceived'。 |
 | payloadTypes | Array\<number> | 否   | SEI信息的订阅负载类型。 |
-| callback | [OnSeiMessageHandle](arkts-apis-media-t.md#onseimessagehandle18) | 否   | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。如填写该参数，则仅取消注册此回调方法，否则取消注册seiMessageReceived事件的所有回调方法。 |
+| callback | [OnSeiMessageHandle](arkts-apis-media-t.md#onseimessagehandle18) | 否   | 用于监听SEI信息事件的回调函数，接收订阅的负载类型。如果填写该参数，仅取消注册此回调方法，否则取消注册seiMessageReceived事件的所有回调方法。 |
 
 **示例：**
 
@@ -3084,7 +3084,7 @@ off(type:'superResolutionChanged', callback?: OnSuperResolutionChanged): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string | 是 | 事件回调类型，支持的事件为：'superResolutionChanged'，当超分算法开启/关闭状态变化时，触发该事件。 |
-| callback | [OnSuperResolutionChanged](arkts-apis-media-t.md#onsuperresolutionchanged-18) | 否 | 超分开关事件回调方法。如填写该参数，则仅取消注册此回调方法，否则取消注册superResolutionChanged事件的所有回调方法。 |
+| callback | [OnSuperResolutionChanged](arkts-apis-media-t.md#onsuperresolutionchanged-18) | 否 | 超分开关事件回调方法。如果填写该参数，仅取消注册此回调方法，否则取消注册superResolutionChanged事件的所有回调方法。 |
 
 **示例：**
 
