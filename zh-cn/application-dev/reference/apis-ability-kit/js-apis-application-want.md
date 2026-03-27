@@ -133,34 +133,33 @@ import Want from '@ohos.application.Want';
         ```
     * 文件描述符（FD）
         ```ts
-        import fs from '@ohos.file.fs';
+        import fileIo from '@ohos.file.fs';
         import Want from '@ohos.application.Want';
         import { BusinessError } from '@ohos.base';
         import AbilityConstant from '@ohos.app.ability.AbilityConstant';
         import UIAbility from '@ohos.app.ability.UIAbility';
 
-
         let fd: number = 0;
         try {
-        fd = fs.openSync('/data/storage/el2/base/haps/pic.png').fd;
-        } catch(e) {
-        console.error(`openSync fail: ${JSON.stringify(e)}`);
+            fd = fileIo.openSync('/data/storage/el2/base/haps/pic.png').fd;
+        } catch (e) {
+            console.error(`OpenSync failed, error code: ${e.code}, error msg: ${e.message}.`);
         }
         let want: Want = {
-        deviceId: '', // deviceId为空表示本设备
-        bundleName: 'com.example.myapplication',
-        abilityName: 'EntryAbility',
-        parameters: {
-            'keyFd':{'type':'FD', 'value':fd}
-        }
+            deviceId: '', // deviceId为空表示本设备
+            bundleName: 'com.example.myapplication',
+            abilityName: 'EntryAbility',
+            parameters: {
+                'keyFd': { 'type': 'FD', 'value': fd }
+            }
         };
 
-        class MyAbility extends UIAbility{
-        onCreate(want: Want, launchParam: AbilityConstant.LaunchParam){
-            this.context.startAbility(want, (error: BusinessError) => {
-            // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
-            console.error(`error.code = ${error.code}`);
-            });
-        }
+        class MyAbility extends UIAbility {
+            onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+                this.context.startAbility(want, (error: BusinessError) => {
+                    // 显式拉起Ability，通过bundleName、abilityName和moduleName可以唯一确定一个Ability
+                    console.error(`StartAbility failed, error.code: ${error.code}, err msg: ${error.message}.`);
+                });
+            }
         }
         ```
