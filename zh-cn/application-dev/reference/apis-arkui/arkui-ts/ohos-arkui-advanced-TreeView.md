@@ -78,7 +78,7 @@ addNode(nodeParam?: NodeParam): TreeController
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| nodeParam | [NodeParam](#nodeparam) | 否 | 节点信息，用于制定新增节点的属性。如果不传该参数，在当前选中的节点下添加一个标题为“新建文件夹”节点。 |
+| nodeParam | [NodeParam](#nodeparam) | 否 | 节点信息，用于指定新增节点的属性。如果不传该参数，在当前选中的节点下添加一个标题为“新建文件夹”节点。 |
 
 **返回值：** 
 
