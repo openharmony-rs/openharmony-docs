@@ -34,6 +34,29 @@
    > - 本接口优先级低于AudioSessionManager的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)。如果使用AudioSessionManager的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)设置了默认音频输出设备，本接口的设置将不会生效。
 
    <!-- @[set_DefaultOutputDevice](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/OutputDeviceChangePause.ets) -->  
+   
+   ``` TypeScript
+   import { audio } from '@kit.AudioKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+   // ...
+       // 设置默认输出设备为本机扬声器。
+       audioRenderer.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+         console.info('Succeeded in setting default output device.');
+         // ...
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+         // ...
+       });
+       // ...
+       // 设置默认输出设备为系统默认输出设备,即取消应用设置的默认设备,交由系统选择设备。
+       audioRenderer.setDefaultOutputDevice(audio.DeviceType.DEFAULT).then(() => {
+         console.info('Succeeded in setting default output device.');
+         // ...
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
+         // ...
+       });
+   ```
 
 2. 从API version 20开始，应用可使用AudioSessionManager的[setDefaultOutputDevice](../../reference/apis-audio-kit/arkts-apis-audio-AudioSessionManager.md#setdefaultoutputdevice20)设置听筒和扬声器路由切换。
 
