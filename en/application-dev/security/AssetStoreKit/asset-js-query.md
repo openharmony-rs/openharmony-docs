@@ -52,7 +52,7 @@ Assets queried in batches need to be transmitted to services through the IPC cha
 
 > **NOTE**
 >
-> The **asset** module provides an asynchronous API and a synchronous API for querying assets. The following uses the asynchronous API as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
+> The **asset** module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
 >
 > For details about how to query the plaintext of an asset in a group, see [Querying the Plaintext of an Asset in a Group](asset-js-group-access-control.md#querying-the-plaintext-of-an-asset-in-a-group). For details about how to query the attributes of an asset in a group, see [Querying the Attributes of an Asset in a Group](asset-js-group-access-control.md#querying-the-attributes-of-an-asset-in-a-group).
 > 
