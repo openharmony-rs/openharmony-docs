@@ -35,7 +35,7 @@ Provides the constants that define the supported timer types.
 
  ## TimerOptions
 
-Defines the initialization options for **createTimer**.
+Defines the initialization options for the system timer.
 
 **System capability**: SystemCapability.MiscServices.Time
 
@@ -46,7 +46,7 @@ Defines the initialization options for **createTimer**.
 | autoRestore<sup>15+</sup> | boolean | No| Yes| Whether the timer is restored after the device is restarted.<br>The value **true** means that the timer is restored after the restart, and the value **false** means the opposite.<br>This parameter can be set to **true** only for timers that are not of the **TIMER_TYPE_REALTIME** type and have **wantAgent** configured.<br>The default value is **false**.|
 | name<sup>15+</sup> | string | No| Yes| Timer name, with a maximum length of 64 bytes.<br>A UID cannot contain two timers with the same name. If a timer with the same name as an existing timer is created, the existing timer is destroyed.<br>The default value is an empty string.|
 | interval | number | No| Yes| Interval between two consecutive timers, in milliseconds.<br>For a repeating timer, the minimum value of **interval** is 1s and the maximum value is 365 days. It is recommended that the value be greater than or equal to 5000 ms.<br>For a one-shot timer, the value is **0**.<br>Default value: **0**.|
-| wantAgent | WantAgent | No| Yes| **WantAgent** object of the notification to be sent when the timer expires. (An application MainAbility can be started, but not a Service ability.)<br>The default value is empty.|
+| wantAgent | WantAgent | No| Yes| **WantAgent** object of the notification to be sent when the timer expires. (An application **MainAbility** can be started, but not a **ServiceAbility**.)<br>The default value is empty.|
 | callback | void | No| Yes | Callback to be executed by the user.<br>The default value is empty.|
 
 
@@ -109,7 +109,7 @@ Creates a timer. This API uses a promise to return the timer ID.
 
 > **NOTE**
 > 
-> This function must be used together with [systemTimer.destroyTimer](#systemtimerdestroytimer). Otherwise, memory leakage occurs.
+> This API must be used together with [systemTimer.destroyTimer](#systemtimerdestroytimer). Otherwise, memory leakage occurs.
 
 **System capability**: SystemCapability.MiscServices.Time
 
