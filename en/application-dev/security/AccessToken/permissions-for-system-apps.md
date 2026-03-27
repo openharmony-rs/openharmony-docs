@@ -5707,6 +5707,8 @@ Allows an application to deliver, control, and query tasks through the asset cac
 
 **Authorization mode**: system_grant
 
+**Enable via ACL**: true
+
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 24
