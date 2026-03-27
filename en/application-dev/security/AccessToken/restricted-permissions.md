@@ -1115,7 +1115,7 @@ Allows an application or a service to use the DLP to register or unregister the 
 **Since**: 26.0.0
 
 ## ohos.permission.ASSET_CACHE_MANAGER
- 	 
+
 Allow the application to deliver, control, and query tasks through the management interface of the Asset Cache Manager.
 
 <!--RP75--><!--RP75End-->
