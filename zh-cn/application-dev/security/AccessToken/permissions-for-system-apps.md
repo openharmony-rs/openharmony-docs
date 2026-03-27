@@ -5612,3 +5612,19 @@
 **支持设备**：General
 
 **起始版本**：24
+
+## ohos.permission.EXEMPT_MOTION_SENSORS_RESTRICTION
+
+允许应用豁免传感器管控。
+
+获取该权限后，应用始终可以使用传感器。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24
