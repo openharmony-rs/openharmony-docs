@@ -12,7 +12,7 @@ typedef struct Usb_NonRootHubArray {...} Usb_NonRootHubArray
 
 ## 概述
 
-非根hub列表，用于存放OH_Usb_GetNonRootHubs接口获取到的非根hub设备ID列表和数量。
+非根集线器列表，用于存放OH_Usb_GetNonRootHubs接口获取到的非根集线器设备ID列表和数量。
 
 **起始版本：** 26
 
@@ -26,6 +26,6 @@ typedef struct Usb_NonRootHubArray {...} Usb_NonRootHubArray
 
 | 名称 | 描述 |
 | -- | -- |
-| uint64_t* nonRootHubIds | 开发者申请好的非根hub设备ID数组首地址，申请的数组大小建议一般不超过128，以避免过度占用内存。非根USB hub设备ID由总线号左移32位加上设备地址构造而成。 |
-| uint32_t num | 实际返回的非根hub数量，根据数量遍历nonRootHubIds获得非根hub设备ID。当该值为0时，表示不存在非根hub设备。 |
+| uint64_t* nonRootHubIds | 开发者申请好的非根集线器设备ID数组首地址，申请的数组大小建议一般不超过128，以避免过度占用内存。非根USB集线器设备ID由总线号左移32位加上设备地址构造而成。 |
+| uint32_t num | 实际返回的非根集线器数量，根据数量遍历nonRootHubIds获得非根集线器设备ID。当该值为0时，表示不存在非根集线器设备。 |
 

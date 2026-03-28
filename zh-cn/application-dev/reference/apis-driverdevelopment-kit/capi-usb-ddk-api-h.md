@@ -43,8 +43,8 @@
 | [int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMap **devMmap)](#oh_usb_createdevicememmap) | 创建缓冲区。请在缓冲区使用完后，调用[OH_Usb_DestroyDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_destroydevicememmap)销毁缓冲区，否则会造成资源泄漏。 |
 | [void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)](#oh_usb_destroydevicememmap) | 销毁缓冲区。请在缓冲区使用完后及时销毁缓冲区，否则会造成资源泄漏。 |
 | [int32_t OH_Usb_GetDevices(struct Usb_DeviceArray *devices)](#oh_usb_getdevices) | 获取USB设备ID列表。请保证传入的指针参数是有效的，申请的设备ID数组的大小建议不超过128，以避免过度占用内存。在使用完结构体之后，需释放成员内存，否则会造成资源泄漏。获取到的USB设备ID，已通过驱动配置信息中的vid进行筛选过滤。 |
-| [int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequestSetup *setupPacket, uint8_t *data, uint32_t timeout)](#oh_usb_controltransfer) | 执行USB控制传输，传输方向由setup包中的bmRequestType字段决定。 |
-| [int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub)](#oh_usb_getnonroothubs) | 查询并返回非根hub列表。 |
+| [int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequestSetup *setupPacket, uint8_t *data, uint32_t timeout)](#oh_usb_controltransfer) | 执行USB控制传输，该接口为同步接口。 |
+| [int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub)](#oh_usb_getnonroothubs) | 查询并返回非根集线器列表。请保证传入的指针参数是有效的，申请的非根集线器ID数组的大小建议不超过128，以避免过度占用内存。在使用完结构体之后，需释放成员内存，否则会造成资源泄漏。 |
 
 ## 函数说明
 
@@ -495,7 +495,7 @@ int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequest
 
 **描述**
 
-执行USB控制传输，传输方向由setup包中的bmRequestType字段决定。该接口为同步接口。
+执行USB控制传输，该接口为同步接口。
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
@@ -507,8 +507,8 @@ int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequest
 | 参数项 | 描述 |
 | -- | -- |
 | uint64_t deviceID | 设备ID，代表要进行通信的设备。 |
-| [const struct UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) *setupPacket | 控制传输请求的setup包配置参数。 |
-| uint8_t *data | 根据bmRequestType的方向位，用于输入或输出的数据缓冲区。缓冲区大小应与setup包中的wLength字段一致。 |
+| [const struct UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) *setupPacket | 控制传输请求的setup包配置参数，包含了传输方向、传输数据长度等信息。 |
+| uint8_t *data | 已申请好的缓冲区，用于存放输入或输出数据。缓冲区大小应与setup包中的wLength字段一致，且最大不超过1024，否则会被截断。 |
 | uint32_t timeout | 超时时间（单位为毫秒），在未收到响应时等待的最大时间。设置为0表示无限制等待。 |
 
 **返回：**
@@ -525,7 +525,7 @@ int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub)
 
 **描述**
 
-查询并返回非根hub列表。请保证传入的指针参数是有效的，申请的非根hub ID数组的大小建议不超过128，以避免过度占用内存。在使用完结构体之后，需释放成员内存，否则会造成资源泄漏。
+查询并返回非根集线器列表。请保证传入的指针参数是有效的，申请的非根集线器ID数组的大小建议不超过128，以避免过度占用内存。在使用完结构体之后，需释放成员内存，否则会造成资源泄漏。
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
@@ -536,7 +536,7 @@ int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [struct Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) *nonRootHub | 已申请好的非根hub内存地址，用于存放查询到的非根hub ID列表及数量。 |
+| [struct Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md) *nonRootHub | 已申请好的非根集线器内存地址，用于存放查询到的非根集线器ID列表及数量。 |
 
 **返回：**
 
