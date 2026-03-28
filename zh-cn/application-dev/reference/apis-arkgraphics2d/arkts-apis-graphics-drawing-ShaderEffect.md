@@ -78,13 +78,20 @@ let shader = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, draw
 ArkTS-Sta示例：
 
 ```ts
-let dstShader = drawing.ShaderEffect.createColorShader(0xFF0000FF.toInt());
-let srcShader = drawing.ShaderEffect.createColorShader(0xFFFF0000.toInt());
-if (dstShader == undefined || srcShader == undefined)
-{
-  return;
+import { drawing } from '@kit.ArkGraphics2D';
+import {RenderNode, DrawContext} from "@ohos.arkui.node"
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    let dstShader = drawing.ShaderEffect.createColorShader(0xFF0000FF.toInt());
+    let srcShader = drawing.ShaderEffect.createColorShader(0xFFFF0000.toInt());
+    if (dstShader == undefined || srcShader == undefined)
+    {
+      return;
+    }
+    let shader = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC);
+  }
 }
-let shader = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC);
 ```
 
 ## createImageShader<sup>20+</sup>
@@ -128,7 +135,7 @@ ArkTS-Sta: static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, t
 **示例：**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import {RenderNode, DrawContext} from "@ohos.arkui.node"
 import { image } from '@kit.ImageKit';
 import { drawing } from '@kit.ArkGraphics2D';
 
