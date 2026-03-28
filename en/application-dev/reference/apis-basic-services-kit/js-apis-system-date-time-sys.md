@@ -56,6 +56,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -111,6 +112,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -268,6 +270,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -321,6 +324,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 401       | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
 **Example**
@@ -457,6 +461,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
+| 204       | Access denied due to user access control policy. Possible causes: 1.The operation is restricted by the OS-account constraint; 2.The required privilege for the operation has not been granted. |
 | 13000001  | Network connection error or OS error. Possible causes: System memory is insufficient or Calls the underlying system interface failed|
 
 

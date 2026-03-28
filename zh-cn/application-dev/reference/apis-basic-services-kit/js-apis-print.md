@@ -1884,10 +1884,10 @@ print.startPrint(printJobData).then(() => {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| top | number | 否 | 是 | 表示页面上边距。默认值为0。 |
-| bottom | number | 否 | 是 | 表示页面下边距。默认值为0。 |
-| left | number | 否 | 是 | 表示页面左边距。默认值为0。 |
-| right | number | 否 | 是 | 表示页面右边距。默认值为0。 |
+| top | number | 否 | 是 | 表示页面上边距。默认值为0。单位：毫米。|
+| bottom | number | 否 | 是 | 表示页面下边距。默认值为0。单位：毫米。 |
+| left | number | 否 | 是 | 表示页面左边距。默认值为0。单位：毫米。 |
+| right | number | 否 | 是 | 表示页面右边距。默认值为0。单位：毫米。 |
 
 ## PrinterRange<sup>24+</sup>
 
@@ -1927,8 +1927,8 @@ print.startPrint(printJobData).then(() => {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | id | string | 否 | 否 | 表示分辨率ID。 |
-| horizontalDpi | number | 否 | 否 | 表示水平DPI。 |
-| verticalDpi | number | 否 | 否 | 表示垂直DPI。 |
+| horizontalDpi | number | 否 | 否 | 表示水平DPI。单位：DPI。 |
+| verticalDpi | number | 否 | 否 | 表示垂直DPI。单位：DPI。 |
 
 ## PrinterCapability<sup>24+</sup>
 

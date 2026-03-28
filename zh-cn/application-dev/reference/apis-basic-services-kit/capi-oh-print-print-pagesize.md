@@ -28,6 +28,6 @@ typedef struct {...} Print_PageSize
 | --------------- | ---------- |
 | char *id        | 纸张 ID。  |
 | char *name      | 纸张名称。 |
-| uint32_t width  | 纸张宽度。 |
-| uint32_t height | 纸张高度。 |
+| uint32_t width  | 纸张宽度，单位：毫米。 |
+| uint32_t height | 纸张高度，单位：毫米。 |
 

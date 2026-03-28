@@ -40,7 +40,7 @@
 
    ```ts
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { deviceInfo, BusinessError } from '@kit.BasicServicesKit';
    ```
 
 2. 编辑工程中的“entry > src > main > ets > entryability > EntryAbility.ets”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
@@ -62,6 +62,21 @@
    }
    // 设置资源泄漏事件的自定义配置
    hiAppEvent.setEventConfig(hiAppEvent.event.RESOURCE_OVERLIMIT, configParams);
+   if (deviceInfo.sdkApiVersion >= 24) {  // API Version 24及以后版本，支持设置页面切换日志
+     // 配置页面切换日志
+     let switchLogPolicy : hiAppEvent.EventPolicy = {
+       "resourceOverlimitPolicy": {
+         "pageSwitchLogEnable": true
+       }
+     };
+     // 开发者可以设置资源泄漏日志配置参数
+     hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
+       hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
+     }).catch((err: BusinessError) => {
+       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+     });
+   }
+
    hiAppEvent.addWatcher({
      // 自定义观察者名称，系统会使用名称来标识不同的观察者
      name: "watcher",
@@ -81,6 +96,8 @@
          for (const eventInfo of eventGroup.appEventInfos) {
            // 获取到资源泄漏事件发生时内存信息
            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo=${JSON.stringify(eventInfo)}`);
+           // 开发者可以获取到资源泄漏事件的页面切换日志
+           hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.page_switch_log=${JSON.stringify(eventInfo.params['page_switch_log'])}`);
          }
        }
      }
@@ -288,7 +305,7 @@
        return exports;
    }
    ```
-	
+
    编辑“Index.d.ts”文件：
 
    - 添加类型声明：

@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-Web组件支持前端页面选择文件上传功能，应用开发者可以使用[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求，如果应用开发者不做任何处理，Web会提供默认行为来处理前端页面文件上传的请求。应用开发者也可以通过获取到的前端数据，自定义拉起picker。
+Web组件支持前端页面选择文件上传功能，应用开发者可以使用[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求，如果应用开发者不做任何处理，Web会提供默认行为来处理前端页面文件上传的请求。应用开发者也可以通过获取到的前端数据，自定义拉起Picker。
 
 ## 使用onShowFileSelector拉起文件管理器
 
@@ -137,7 +137,7 @@ struct WebComponent {
 
 Web组件支持前端页面上传图片文件时调用相机即时拍照，应用开发者可以使用[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口来处理前端页面文件上传的请求并自行拉起相机，如果应用开发者不做任何处理，Web会提供默认行为来处理前端页面调用相机的请求。
 
-此示例中，应用侧通过监听[onShowFileSelector](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)事件并返回`true`拦截ArkWeb默认弹窗,并调用系统CameraPicker拉起相机。应用可以通过获取AcceptType对不同类型的目标文件做更精细的筛选。
+此示例中，应用侧通过监听[onShowFileSelector](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)事件并返回`true`拦截ArkWeb默认弹窗，并调用系统CameraPicker拉起相机。应用可以通过获取AcceptType对不同类型的目标文件做更精细的筛选。
 
 ```ts
 // xxx.ets
@@ -231,11 +231,11 @@ html页面代码
 
 ## 使用ArkWeb默认的方式处理文件上传请求
 
-`accept` 属性是一个字符串，它定义了文件 input 应该接受的文件类型。这个字符串是一个以逗号为分隔的唯一文件类型说明符列表。由于给定的文件类型可以用多种方式指定，因此当你需要给定格式的文件时，提供一组完整的类型指定符是非常有用的。
+`accept`属性是一个字符串，它定义了文件input应该接受的文件类型。这个字符串是一个以逗号为分隔的唯一文件类型说明符列表。由于给定的文件类型可以用多种方式指定，因此当你需要给定格式的文件时，提供一组完整的类型指定符是非常有用的。
 
-`capture` 属性是一个字符串，如果 `accept` 属性指出了 input 是图片或者视频类型，则它指定了使用哪个摄像头去获取这些数据。值 `user` 表示应该使用前置摄像头和（或）麦克风。值 `environment` 表示应该使用后置摄像头和（或）麦克风。如果缺少此属性，则用户代理可以自由决定做什么。如果请求的前置模式不可用，则用户代理可能退回到其首选的默认模式。
+`capture`属性是一个字符串，如果`accept`属性指出了input是图片或者视频类型，则它指定了使用哪个摄像头去获取这些数据。值`user`表示应该使用前置摄像头和（或）麦克风。值`environment`表示应该使用后置摄像头和（或）麦克风。如果缺少此属性，则用户代理可以自由决定做什么。如果请求的前置模式不可用，则用户代理可能退回到其首选的默认模式。
 
-当指定布尔类型属性 `multiple` 时，文件 input 允许用户选择多个文件。
+当指定布尔类型属性`multiple`时，文件input允许用户选择多个文件。
 
 示例页面内有数个文件选择器，分别设置了不同的accept及capture属性，这两个属性对相机的影响如下：
 
@@ -258,7 +258,7 @@ html页面代码
 
 >  **说明：** 
 >
-> ArkWeb默认仅拉起相机后置摄像头，值 `'user'`不会被处理成拉起前置摄像头。如有需要，请在应用侧通过[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口另行处理
+> ArkWeb默认仅拉起相机后置摄像头，值`'user'`不会被处理成拉起前置摄像头。如有需要，请在应用侧通过[onShowFileSelector()](../reference/apis-arkweb/arkts-basic-components-web-events.md#onshowfileselector9)接口另行处理
 
 html页面代码
 ```html
@@ -328,7 +328,7 @@ struct Index {
 
 API version 23 新增支持如下option中的成员：
 
-`suggestedName` 对应接口[getSuggestedName](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getsuggestedname23)。
+`suggestedName`对应接口[getSuggestedName](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getsuggestedname23)。
 
 `description`对应接口[getDescriptions](../reference/apis-arkweb/arkts-basic-components-web-FileSelectorParam.md#getdescriptions23)。
 
@@ -473,28 +473,27 @@ struct WebComponent {
 
 需注意：
 
-1.HTML中的`showOpenFilePicker`、`showDirectoryPicker`方法的入参option与`showSaveFilePicker`的入参option的成员存在差异。
-
-2.ETS中如调用`documentViewPicker.select()`方法需配合`picker.DocumentSelectOptions`对象为picker传参，而非`picker.DocumentSaveOptions`对象。
+1. HTML中的`showOpenFilePicker`、`showDirectoryPicker`方法的入参option与`showSaveFilePicker`的入参option的成员存在差异。
+2. ETS中如调用[`documentViewPicker.select()`](../reference/apis-core-file-kit/js-apis-file-picker.md#select)方法需配合[`picker.DocumentSelectOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#DocumentSelectOptions)对象为picker传参，而非[`picker.DocumentSaveOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#DocumentSaveOptions)对象，请参见[@ohos.file.picker (选择器)](../reference/apis-core-file-kit/js-apis-file-picker.md)。
 
 ## 常见问题
 
 ### onShowFileSelector配合ArkWeb默认弹窗使用
 
-用户点击文件上传按钮后，程序优先执行onShowFileSelector中的回调进行逻辑处理，应用开发者可以根据处理结果选择 `return false;` ，进而拉起ArkWeb默认弹窗，此时不推荐同时拉起应用侧各Picker。
+用户点击文件上传按钮后，程序优先执行onShowFileSelector中的回调进行逻辑处理，应用开发者可以根据处理结果选择返回`false`进而拉起ArkWeb默认弹窗，此时不推荐同时拉起应用侧各Picker；如果开发者选择返回`true`，则拦截ArkWeb默认弹窗，只执行自定义行为。
 
 ### 回调中getAcceptType和getMimeTypes的区别
 
-getAcceptType返回的是 `accept` 属性值全量转换为文件扩展名所组成的字符串数组，getMimeTypes返回的是 `accept` 属性值用逗号拆分后所组成的字符串数组。
+getAcceptType返回的是`accept`属性值全量转换为文件扩展名所组成的字符串数组，getMimeTypes返回的是`accept`属性值用逗号拆分后所组成的字符串数组。
 
-如若 `accept` 属性值为 `video/mp4, .png` ，则getAcceptType返回  `.mp4, .m4v; .png` ，getMimeTypes返回 `video/mp4; .png` 。
+如若`accept`属性值为`video/mp4, .png`，则getAcceptType返回`.mp4, .m4v; .png`，getMimeTypes返回`video/mp4; .png`。
 
 ### ArkWeb默认弹窗的说明
 
-选项“图片”会拉起图库，根据 `accept` 属性值不同，用户可以选择上传图片或视频；选项“拍照”会拉起相机，根据 `accept` 属性值不同，用户可以选择拍照或录像；选项“文件”会拉起文件管理器，用户可以上传任意内容。
+选项“图片”会拉起图库，根据`accept`属性值不同，用户可以选择上传图片或视频；选项“拍照”会拉起相机，根据`accept`属性值不同，用户可以选择拍照或录像；选项“文件”会拉起文件管理器，用户可以上传任意内容。
 
 ### handleFileList的使用说明
 
 该函数将选择的文件路径提交给ArkWeb，入参主要有两种类型：
-1. file协议路径，目前只支持前缀为 `file://media/` 、`file://docs/` 的公共路径和 `file://<packageName>/` 的应用包名路径，其他file协议路径无权限。
+1. file协议路径，目前只支持前缀为`file://media/`、`file://docs/`的公共路径和`file://<packageName>/`的应用包名路径，其他file协议路径无权限。
 2. 沙箱目录，具体参考[应用沙箱目录](../file-management/app-sandbox-directory.md)。

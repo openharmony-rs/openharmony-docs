@@ -64,10 +64,10 @@ Provides the callback result after the distance measurement API is executed.
 
 | Name              | Type           | Read-Only  | Optional  | Description    |
 | -------------------| ---------------| -------|------  |-------------|
-| rank               | DistanceRank   | Yes    | No    | Indicates the distance rank.|
-| distance           | float          | Yes    | No    | Indicates the distance.|
-| confidence         | float          | Yes    | No    | Indicates the confidence.|
-| deviceId           | string         | Yes    | No    | Indicates the device ID.|
+| rank               | DistanceRank   | Yes    | No    | Distance rank.|
+| distance           | float          | Yes    | No    | Distance.|
+| confidence         | float          | Yes    | No    | Confidence.|
+| deviceId           | string         | Yes    | No    | Device ID.|
 
 ## spatialAwareness.PositionRelativeToDoor
 
@@ -88,9 +88,9 @@ Provides the callback result after the door inside-outside recognition API is ex
 
 | Name              | Type                  | Read-Only     | Optional      | Description    |
 | -------------------| ----------------------| ----------|----------|--------|
-| doorLockCode       | int                   | Yes       | No        | Indicates the door lock verification code.|
-| position           | PositionRelativeToDoor| Yes       | No         | Indicates the inside and outside door location information.|
-| deviceId           | string                | Yes       | No        | Indicates the device ID. |
+| doorLockCode       | int                   | Yes       | No        | Door lock verification code.|
+| position           | PositionRelativeToDoor| Yes       | No         | Inside and outside door location information.|
+| deviceId           | string                | Yes       | No        | Device ID. |
 
 ## spatialAwareness.DistanceMeasurementConfigParams
 
@@ -100,10 +100,10 @@ Provides the input parameter configuration of the distance measurement API. This
 
 | Name              |  Type                  | Read-Only     | Optional      | Description    |
 | -------------------| ----------------------| -----------|------------|----------|
-| deviceList         | string[]              | Yes        | No| Indicates the device list.|
-| techType           | TechnologyType        | Yes        | No| Indicates the signal type.|
-| reportMode         | ReportingMode         | Yes        | No | Indicates the result reporting mode.|
-| reportFrequency    | int                   | Yes        | No | Indicates the result reporting frequency.|
+| deviceList         | string[]              | Yes        | No| Device list.|
+| techType           | TechnologyType        | Yes        | No| Signal type.|
+| reportMode         | ReportingMode         | Yes        | No | Result reporting mode.|
+| reportFrequency    | int                   | Yes        | No | Result reporting frequency.|
 
 ## spatialAwareness.onDistanceMeasure<sup>23+</sup>
 
@@ -119,7 +119,7 @@ Enables distance measurement. This API triggers the execution of a distance meas
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.|
+| configParams | DistanceMeasurementConfigParams | Yes| Configuration parameters of the distance measurement API.|
 | callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | Yes  | Callback function used to return the distance measurement result.                                  |
 
 **Error codes**
@@ -169,8 +169,8 @@ Disables distance measurement. This API stops the execution of the distance meas
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.|
-| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | No  | Callback function used to return the distance measurement result.                                |
+| configParams | DistanceMeasurementConfigParams | Yes| Configuration parameters of the distance measurement API.|
+| callback | Callback&lt;[DistanceMeasurementResponse](#spatialawarenessdistancemeasurementresponse)&gt; | No  | Callback to be canceled. If the value is empty, **undefined**, or **null**, all distance measurement notification events subscribed to by **configParams** are canceled.                                |
 
 **Error codes**
 
@@ -219,7 +219,7 @@ Enables door inside-outside recognition. This API triggers the execution of a do
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.|
+| configParams | DistanceMeasurementConfigParams | Yes| Configuration parameters of the distance measurement API.|
 | callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | Yes  | Callback used to return the information on whether the device is inside or outside the door.                                  |
 
 **Error codes**
@@ -269,8 +269,8 @@ Disables door inside-outside recognition. This API stops the execution of the do
 
 | Name  | Type                            | Mandatory| Description                                                        |
 | -------- | -------------------------------- | ---- | ------------------------------------------------------------ |
-| configParams | DistanceMeasurementConfigParams | Yes| Indicates the configuration parameters of the distance measurement API.|
-| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | No  | Callback used to return the information on whether the device is inside or outside the door.                                  |
+| configParams | DistanceMeasurementConfigParams | Yes| Configuration parameters of the distance measurement API.|
+| callback | Callback&lt;[DoorPositionResponse](#spatialawarenessdoorpositionresponse)&gt; | No  | Callback to be canceled. If the value is empty, **undefined**, or **null**, all door inside-outside recognition notification events subscribed to by **configParams** are canceled.                                  |
 
 **Error codes**
 

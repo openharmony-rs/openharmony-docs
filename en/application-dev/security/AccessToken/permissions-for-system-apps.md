@@ -5669,11 +5669,11 @@ With this permission, the application can always use sensors.
 
 **Supported devices**: general devices
 
-**Valid since**: 24
+**Since**: 24
 
 ## ohos.permission.ENCRYPT_VOLUME_MANAGER
-
-Allows an application to call the storage_manager API for managing volume encryption.
+ 	 
+Allows an application to call the API of storage manager for managing volume encryption.
 
 **Permission level**: system_basic
 
@@ -5681,13 +5681,13 @@ Allows an application to call the storage_manager API for managing volume encryp
 
 **Enable via ACL**: true
 
-**Supported devices**: general devices
+**Supported devices**: General
 
-**Valid since**: 24
+**Since**: 24
 
 ## ohos.permission.ODD_MANAGER
 
-Allows an application to call the storage_manager API for managing optical disc burning.
+Allows an application to call the API of storage manager for managing optical disc burning.
 
 **Permission level**: system_basic
 
@@ -5695,6 +5695,6 @@ Allows an application to call the storage_manager API for managing optical disc 
 
 **Enable via ACL**: true
 
-**Supported devices**: general devices
+**Supported devices**: General
 
-**Valid since**: 24
+**Since**: 24

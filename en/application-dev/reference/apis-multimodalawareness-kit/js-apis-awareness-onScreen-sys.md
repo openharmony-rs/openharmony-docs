@@ -450,7 +450,7 @@ try {
 
 ## onScreen.trigger<sup>23+</sup>
 
-unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
+trigger(capability: OnscreenAwarenessCap,  options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo&gt;
 
 Proactively triggers screen content awareness and obtains the current screen awareness result.
 

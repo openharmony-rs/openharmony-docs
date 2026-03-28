@@ -29,7 +29,7 @@ import  { BackupExtensionContext } from '@kit.CoreFileKit';
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- |-------| -------- | -------- |
-| backupDir | string | Yes| No| Temporary directory used for backup or restore. This directory cannot be used for other purposes. Currently, only **el1/** and **el2/** are supported.|
+| backupDir | string | Yes| No| Temporary directory used for backup or restore. This directory cannot be used for other purposes. Currently, only the **el1** and **el2** directories are supported. If other directories are used, null is returned.|
 
 ### When to Use
 **BackupExtensionContext** is used to obtain a temporary directory for backup or restore.

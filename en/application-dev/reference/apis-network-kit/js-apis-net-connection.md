@@ -3448,7 +3448,7 @@ Enumerates the parameters of the ASCII/Unicode transcoding process.
 | ALLOW_UNASSIGNED | 1 | Allows the translation of domain names that contain unassigned Unicode code points (in a Unicode character set, not all code points are assigned characters, i.e., unassigned Unicode code points).|
 | USE_STD3_ASCII_RULES | 2 | During the conversion, the STD-3 ASCII rule (RFC 1123 standard) is forcibly used to check the generated ASCII domain name.|
 
-## TcpState
+## TcpState<sup>24+</sup>
 
 Enumerates TCP states.
 
@@ -3463,7 +3463,7 @@ Enumerates TCP states.
 | SYN_RECV    | 3  | The server receives SYN and sends ACK+SYN, and waits for ACK from the client (the second step of the three-way handshake).|
 | FIN_WAIT1   | 4  | The active end sends FIN and waits for ACK from the peer end.|
 | FIN_WAIT2   | 5  | The active end receives ACK of FIN and waits for ACK from the peer end.|
-| TIME_WAIT   | 6  | The active end receives FIN from the peer end and replies with ACK. After 2MSL (maximum segment lifetime), the connection is completely released.|
+| TIME_WAIT   | 6  | The active end receives FIN from the peer end and replies with ACK. After two times of the maximum segment lifetime, the connection is completely released.|
 | CLOSE       | 7  | Initial/closed state, with no connection.|
 | CLOSE_WAIT  | 8  | The passive end receives FIN and sends ACK, and waits for FIN from the peer end.|
 | LAST_ACK    | 9  | The passive end sends FIN and waits for ACK from the peer end.|
@@ -3584,14 +3584,16 @@ Defines the network connection properties.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
-| Name   | Type  | Read Only|Optional|Description                     |
-| ------ | ------ | --- |---|------------------------- |
-| interfaceName | string                              | No| No|Network interface card (NIC) name.                               |
-| domains       | string                              | No| No|Domain name.                                   |
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | No| No|Network link information.                               |
-| routes        | Array\<[RouteInfo](#routeinfo)>     | No| No|Network route information.                               |
-| dnses         | Array\<[NetAddress](#netaddress)>   | No| No|Network address. For details, see [NetAddress](#netaddress).|
-| mtu           | number                              | No| No|Maximum transmission unit (MTU).                           |
+| Name   | Type  | Read Only|Optional| Description                                                                                            |
+| ------ | ------ | --- |---|------------------------------------------------------------------------------------------------|
+| interfaceName | string                              | No| No| Network interface card (NIC) name.                                                                                         |
+| domains       | string                              | No| No| Domain name.                                                                                           |
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> | No| No| Network link information.                                                                                         |
+| routes        | Array\<[RouteInfo](#routeinfo)>     | No| No| Network route information.                                                                                         |
+| dnses         | Array\<[NetAddress](#netaddress)>   | No| No| Network address. For details, see [NetAddress](#netaddress).                                                             |
+| mtu           | number                              | No| No| Maximum transmission unit (MTU).                                                                                       |
+| isIPv4LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv4 is available on the current network. **true**: IPv4 is available when the IPv4 address is valid and the default IPv4 route exists. **false**: IPv4 is unavailable when the IPv4 address is invalid or the default IPv4 route does not exist.|
+| isIPv6LinkValid<sup>24+</sup> | boolean                             | No| Yes| Whether IPv6 is available on the current network. **true**: IPv6 is available when the IPv6 address is valid and the default IPv4 route exists. **false**: IPv6 is unavailable when the IPv6 address is invalid or the default IPv6 route does not exist.|
 
 ## RouteInfo
 
@@ -3711,7 +3713,7 @@ Describes the TCP port state information.
 | tcpRemotePort | number | No| Yes|Remote port of the TCP network. The value range is [0, 65535]. The default value is **0**.|
 | tcpUid        | number | No| Yes|UID of the process that listens for the TCP port. The default value is **0**.|
 | tcpPid        | number | No| Yes|UID of the user who listens for the TCP port. The default value is **0**.|
-| tcpState      | [TcpState](#tcpstate) | No| Yes|TCP network state. The default value is **0**. |
+| tcpState      | [TcpState](#tcpstate24) | No| Yes|TCP network state. The default value is **0**. |
 
 
 ## UdpNetPortStatesInfo<sup>24+</sup>

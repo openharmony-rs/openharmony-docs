@@ -32,6 +32,7 @@ import { cryptoFramework } from '@kit.CryptoArchitectureKit';
 | ERR_OUT_OF_MEMORY                     | 17620001 | The memory operation failed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                  |
 | ERR_RUNTIME_ERROR                     | 17620002 | The parameter conversion between ArkTS and C failed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.          |
 | ERR_PARAMETER_CHECK_FAILED<sup>20+</sup>            | 17620003 | The parameter check failed.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
+| ERR_INVALID_CALL<sup>26.0.0+</sup>            | 17620004 | Invalid function call.<br>**Atomic service API**: This API can be used in atomic services since API version 26.0.0.          |
 | ERR_CRYPTO_OPERATION                  | 17630001 | Cryptographic operation error.<br>**Atomic service API**: This API can be used in atomic services since API version 11.    |
 
 ## DataBlob
@@ -3051,7 +3052,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type                   | Mandatory| Description                          |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<[PriKey](#prikey)> | Yes  | Callback used to return the private key generated.|
+| callback | AsyncCallback\<[PriKey](#prikey)> | Yes  | Callback used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -3271,7 +3272,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name    | Type                   | Mandatory| Description                          |
 | -------- | ----------------------- | ---- | ------------------------------ |
-| callback | AsyncCallback\<[PubKey](#pubkey)> | Yes  | Callback used to return the public key generated.|
+| callback | AsyncCallback\<[PubKey](#pubkey)> | Yes  | Callback used to return the asymmetric key pair generated.|
 
 **Error codes**
 
@@ -3655,7 +3656,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 | Name| Type  | Mandatory| Description                                            |
 | ------ | ------ | ---- | ------------------------------------------------ |
 | pLen   | number | Yes  | Length of the prime **p**, in bits.|
-| skLen  | number | No  | Length of the private key, in bits. |
+| skLen  | number | No  | Maximum length of the generated DH private key, in bits. The default value is **0**.<br>When this parameter is set to **0**, the maximum length of the generated DH private key is as follows:<br>ffdhe2048: 255 bits.<br>ffdhe3072: 275 bits.<br>ffdhe4096: 325 bits.<br>ffdhe6144: 375 bits.<br>ffdhe8192: 400 bits.|
 
 **Return value**
 
@@ -4719,6 +4720,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.          |
+| 17620004 | invalid function call. |
 | 17630001 | crypto operation error. |
 
 ### update
@@ -4764,6 +4766,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620004 | invalid function call. |
 | 17630001 | crypto operation error. |
 
 ### updateSync<sup>12+</sup>
@@ -4807,6 +4810,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620004 | invalid function call. |
 | 17630001 | crypto operation error. |
 
 ### sign
@@ -5381,6 +5385,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 > You can call **update** multiple times or do not use **update** (call [verify](#verify-1) after [init](#init-4)), depending on the data volume.<br>
 > The amount of the data to be passed in by **update()** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **update()** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.<br>
 > For details about the sample code for calling **update()** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
+> **OnlyVerify** cannot be used with **update()**. If **OnlyVerify** is specified, use **verify()** to pass in data.<br>
 > If the DSA algorithm is used for signature verification and the digest algorithm is **NoHash**, **update()** is not supported. If **update()** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -5405,6 +5410,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620004 | invalid function call. |
 | 17630001 | crypto operation error. |
 
 ### update
@@ -5420,6 +5426,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 > You can call **update** multiple times or do not use **update** (call [verify](#verify-2) after [init](#init-5)), depending on the data volume.<br>
 > The amount of the data to be passed in by **update()** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **update()** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.<br>
 > For details about the sample code for calling **update()** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
+> **OnlyVerify** cannot be used with **update()**. If **OnlyVerify** is specified, use **verify()** to pass in data.<br>
 > If the DSA algorithm is used for signature verification and the digest algorithm is **NoHash**, **update()** is not supported. If **update()** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -5449,6 +5456,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620004 | invalid function call. |
 | 17630001 | crypto operation error. |
 
 ### updateSync<sup>12+</sup>
@@ -5464,6 +5472,7 @@ This API can be called only after the [Verify](#verify) instance is initialized 
 > You can call **updateSync** multiple times or do not use **updateSync** (call [verifySync](#verifysync12) after [initSync](#initsync12-2)), depending on the data volume.<br>
 > The amount of the data to be passed in by **updateSync** (one-time or accumulative) is not limited. If there is a large amount of data, you are advised to call **updateSync** multiple times to pass in the data by segment. This prevents too much memory from being requested at a time.<br>
 > For details about the sample code for calling **updateSync** multiple times in signature verification, see [Signing and Signature Verification by Segment with an RSA Key Pair (PKCS1 Mode)](../../security/CryptoArchitectureKit/crypto-rsa-sign-sig-verify-pkcs1-by-segment.md). The operations of other algorithms are similar.<br>
+> **OnlyVerify** cannot be used with **update()**. If **OnlyVerify** is specified, use **verifySync()** to pass in data.<br>
 > If the DSA algorithm is used for signature verification and the digest algorithm is **NoHash**, **updateSync** is not supported. If **updateSync** is called in this case, **ERR_CRYPTO_OPERATION** will be returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -5491,6 +5500,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620004 | invalid function call. |
 | 17630001 | crypto operation error. |
 
 ### verify
@@ -5855,6 +5865,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620004 | invalid function call. |
 | 17630001 | crypto operation error. |
 
 **Example**
@@ -5970,6 +5981,7 @@ For details about the error codes, see [Crypto Framework Error Codes](errorcode-
 | 401 | invalid parameters. Possible causes: <br>1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types;<br>3. Parameter verification failed.|
 | 17620001 | memory operation failed.          |
 | 17620002 | failed to convert parameters between arkts and c.         |
+| 17620004 | invalid function call. |
 | 17630001 | crypto operation error. |
 
 ### setVerifySpec<sup>10+</sup>
@@ -7461,7 +7473,7 @@ The system capability is **SystemCapability.Security.CryptoFramework** in API ve
 
 | Name | Type  | Mandatory| Description                             |
 | ------- | ------ | ---- | --------------------------------- |
-| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, and scrypt are supported. For example, **PBKDF2\|SHA256**, **HKDF\|SHA256**, or **SCRYPT**.|<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).|
+| algName | string | Yes  | Key derivation algorithm (including the hash function for the HMAC). Currently, only PBKDF2, HKDF, and scrypt are supported. For example, **PBKDF2\|SHA256**, **HKDF\|SHA256**, or **SCRYPT**.<br>For details about the supported specifications, see [Key Derivation Overview and Algorithm Specifications](../../security/CryptoArchitectureKit/crypto-key-derivation-overview.md).|
 
 **Return value**
 
