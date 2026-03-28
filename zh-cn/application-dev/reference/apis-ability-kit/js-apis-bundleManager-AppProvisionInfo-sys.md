@@ -50,5 +50,5 @@ import { bundleManager } from '@kit.AbilityKit';
 
 | 名称                      | 类型   | 只读 | 可选 | 说明                 |
 | ------------------------- | ------ | ---- | ---- | -------------------- |
-| notBefore                 | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 配置文件的最早有效日期的时间戳。 |
-| notAfter                  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 配置文件的最晚有效日期的时间戳。 |
+| notBefore                 | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 配置文件的最早有效日期的时间戳，单位：秒。 |
+| notAfter                  | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 配置文件的最晚有效日期的时间戳，单位：秒。 |
