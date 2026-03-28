@@ -64,8 +64,20 @@
 
    let audioSessionManager = audioManager.getSessionManager();  // 再调用AudioManager的方法创建AudioSessionManager实例。
 
-   // 设置默认输出设备为本机扬声器。
-   audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+   // 设置音频并发模式。
+   let strategy: audio.AudioSessionStrategy = {
+     concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+   };
+   
+   // 激活音频会话。
+   audioSessionManager.activateAudioSession(strategy).then(() => {
+     console.info('Succeeded in activating audio session.');
+   }).catch((err: BusinessError) => {
+     console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
+   });
+
+   // 设置默认输出设备为听筒。
+   audioSessionManager.setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
      console.info('Succeeded in setting default output device.');
    }).catch((err: BusinessError) => {
      console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
