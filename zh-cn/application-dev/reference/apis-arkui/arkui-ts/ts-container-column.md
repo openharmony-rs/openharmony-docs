@@ -106,7 +106,9 @@ Column(options?: ColumnOptions | ColumnOptionsV2)
 
 ## SpaceType<sup>18+</sup>
 
-type SpaceType = string | number | Resource
+ArkTS-Dyn: type SpaceType = string | number | Resource
+
+ArkTS-Sta: type SpaceType = string | double | Resource
 
 Column组件构造函数中space支持的数据类型，取值类型为下表类型中的并集。
 
@@ -123,7 +125,7 @@ Column组件构造函数中space支持的数据类型，取值类型为下表类
 
 |类型	|说明|
 |---|---|
-|number|表示类型为数字，可取任意值。|
+|ArkTS-Dyn: number<br/>ArkTS-Sta: double|表示类型为数字，可取任意值。|
 |string|表示值类型为字符串，可取任意值。|
 |[Resource](ts-types.md#resource)|表示值为资源引用类型，取值为从系统资源或者应用资源中引入的数据值。|
 
@@ -211,6 +213,28 @@ ArkTS-Sta: reverse(isReversed: boolean | undefined)
 >  **说明：**
 >
 >  若未设置reverse属性，主轴方向不反转；若设置了reverse属性，且参数值为undefined，则视为默认值true，主轴方向反转。<br/>通用属性direction只能改变Column交叉轴方向，不改变Column主轴方向，因此与reverse属性互不影响。
+
+### attributeModifier<sup>12+</sup>
+
+ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<ColumnAttribute>)
+
+ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<ColumnAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<ColumnAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置Column组件的属性。 |
 
 ## 事件
 
