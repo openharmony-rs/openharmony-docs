@@ -46,11 +46,11 @@ SelectTitleBar({selected: number, options: Array&lt;SelectOption&gt;, menuItems?
 | -------- | -------- | -------- | -------- | -------- |
 | selected | number | 是 | \@Prop | 当前选中项目的索引。<br>第一项的索引为0。如果不设置该属性，则默认值为0。 |
 | options | Array&lt;[SelectOption](ts-basic-components-select.md#selectoption对象说明)&gt; | 是 | - | 下拉菜单中的项目。 |
-| menuItems | Array&lt;[SelectTitleBarMenuItem](#selecttitlebarmenuitem)&gt;              | 否 | - | 右侧菜单项目列表，定义标题栏右侧的菜单项目。当需要在标题栏右侧添加操作按钮时传入此参数，不传入时不显示右侧菜单区域。 |
-| subtitle | [ResourceStr](ts-types.md#resourcestr)                                      | 否 | - | 子标题。用于显示补充信息，当需要显示子标题时传入，不传入时不显示子标题区域。 |
+| menuItems | Array&lt;[SelectTitleBarMenuItem](#selecttitlebarmenuitem)&gt;              | 否 | - | 右侧菜单项目列表，定义标题栏右侧的菜单项目。需要在标题栏右侧添加菜单项目列表时传入此参数，缺省时不显示右侧菜单区域。 |
+| subtitle | [ResourceStr](ts-types.md#resourcestr)                                      | 否 | - | 子标题。用于显示补充信息，需要显示子标题时传入，缺省时不显示子标题区域。 |
 | badgeValue | number                                                                      | 否 | - | 新事件标记。<br>取值范围：[-2147483648,2147483647]，超出范围时会加上或减去4294967296，使得值仍在范围内，非整数时会舍去小数部分取整数部分，如5.5取5。<br>**说明：** 小于等于0时不显示信息标记。<br>最大消息数99，超过最大消息时仅显示99+。超大数值属于异常值，不显示信息标记。 |
 | hidesBackButton | boolean                                                                     | 否 | - | 是否隐藏左侧的返回箭头。<br>默认值：false。true：隐藏，false：显示。|
-| onSelected | ((index:&nbsp;number)&nbsp;=&gt;&nbsp;void)                                   | 否 | - | 下拉菜单项目选中触发的回调函数，传入选中项的索引。当需要处理下拉菜单选中事件时传入，不传入时忽略选中操作。 |
+| onSelected | ((index:&nbsp;number)&nbsp;=&gt;&nbsp;void)                                   | 否 | - | 下拉菜单项目选中触发的回调函数，传入选中项的索引。下拉菜单选中后需要处理特定业务逻辑时时传入此参数，无特定业务逻辑时可缺省此参数。 |
 
 > **说明：**
 > 
