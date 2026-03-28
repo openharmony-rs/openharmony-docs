@@ -348,7 +348,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在支持自由多窗并处于自由多窗模式的设备中可正常调用，在不支持或不处于自由多窗模式的设备中返回801错误码。
 
 **参数：**
 
@@ -430,7 +430,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：** 该接口在支持自由多窗并处于自由多窗模式的设备中可正常调用，在不支持或不处于自由多窗模式的设备中返回801错误码。
 
 **参数：**
 
