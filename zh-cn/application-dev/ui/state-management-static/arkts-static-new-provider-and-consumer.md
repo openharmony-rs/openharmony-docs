@@ -23,7 +23,7 @@ import { Provider, Consumer } from '@kit.ArkUI';
 | 能力 | V2装饰器\@Provider和\@Consumer                                             |V1装饰器\@Provide和\@Consume|
 | ------------------ | ----------------------------------------------------- |----------------------------------------------------- |
 | \@Consume(r)         |需要本地初始化，当找不到\@Provider的时候使用本地默认值。| 禁止本地初始化，当找不到对应的\@Provide时候，会抛出异常。 |
-| 支持类型           | 支持function。 | 不支持function。 |
+| 支持类型           | 支持Function类型。 | 不支持Function类型。 |
 | 观察能力           | 仅能观察自身赋值变化，如果要观察嵌套场景，配合[\@Trace](./arkts-static-new-observedV2-and-trace.md)一起使用。 | 观察第一层变化，如果要观察嵌套场景，配合\@Observed和\@ObjectLink一起使用。 |
 | alias和属性名         | alias是唯一匹配的key，缺省时默认属性名为alias。 | alias和属性名都为key，优先匹配alias，匹配不到可以匹配属性名。|
 | \@Provide(r) 从父组件初始化      | 不允许。 | 允许。|
@@ -43,7 +43,7 @@ import { Provider, Consumer } from '@kit.ArkUI';
 | \@Provider属性装饰器 | 说明                                                  |
 | ------------------ | ----------------------------------------------------- |
 | 装饰器参数         | `alias?: string`，别名，常量字符串，可选。<br/>如果指定了别名，则通过别名来绑定变量；如果未指定别名，则通过变量名绑定变量。<br/>默认允许重写，即可以存在同名的\@Provider变量。 |
-| 允许装饰的变量类型 | - 支持Object、class、number、string、boolean、enum、interface等基本类型。<br/>- 支持[Array](#装饰数组类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。<br/>- 支持null、undefined以及联合类型。 |
+| 允许装饰的变量类型 | - 支持Object、class、number、string、boolean、enum、interface等基本类型。<br/>- 支持[Array](#装饰数组类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。<br/>- 支持null、undefined以及联合类型。<br/>- 支持装饰Function类型，例如[箭头函数](#provider和consumer装饰箭头函数)。 |
 | 初始化规则 | 必须本地初始化，不支持从父组件传入初始化。 |
 | 同步规则      | **在子组件使用时：**<br/>\@Provider装饰的变量仅允许本地初始化，不允许从外部传入初始化。<br/>**在父组件使用时：**<br/>- 可以初始化子组件中[\@Param](./arkts-static-new-param.md)装饰的变量。<br/>- 与后代子组件中别名匹配的@Consumer变量双向同步。 |
 
@@ -58,7 +58,7 @@ import { Provider, Consumer } from '@kit.ArkUI';
 | \@Consumer属性装饰器 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | 装饰器参数            | `alias?: string`，别名，常量字符串，可选。<br/>如果指定了别名，则通过别名向上查找最近的\@Provider；如果未指定别名，则通过变量名绑定\@Provider。 |
-| 允许装饰的变量类型 | - 支持Object、class、number、string、boolean、enum、interface等基本类型。<br/>- 支持Array、Date、Map、Set等内嵌类型。<br/>- 支持null、undefined以及联合类型。 |
+| 允许装饰的变量类型 | - 支持Object、class、number、string、boolean、enum、interface等基本类型。<br/>- 支持Array、Date、Map、Set等内嵌类型。<br/>- 支持null、undefined以及联合类型。<br/>- 支持装饰Function类型，例如[箭头函数](#provider和consumer装饰箭头函数)。 |
 | 初始化规则   | 必须本地初始化，不支持从父组件传入初始化。 |
 | 同步规则    | **在子组件使用时：**<br/>与祖先组件匹配的\@Provider变量双向同步。<br/>**在父组件使用时：**<br/>可以初始化子组件中\@Param装饰的变量。 |
 
