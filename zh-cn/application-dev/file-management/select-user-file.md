@@ -54,6 +54,8 @@
    documentSelectOptions.mergeMode = picker.MergeTypeMode.DEFAULT;
    // 是否支持加密（仅支持文件，文件夹不生效），默认为false。该参数为true时，在Picker界面可以选择对文件进行加密。（说明：从API version 19开始支持该参数）。
    documentSelectOptions.isEncryptionSupported = false;
+   // 是否支持多选文件夹。默认为false，表示不支持多选文件夹，需要与selectMode参数配合使用。（说明：从API version 24开始支持该参数）。
+   documentSelectOptions.allowsMulFolderSelection = false;
    ```
 
 3. 创建文件选择器[DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#documentviewpicker)实例。调用[select()](../reference/apis-core-file-kit/js-apis-file-picker.md#select-3)接口拉起FilePicker应用界面进行文件选择。
