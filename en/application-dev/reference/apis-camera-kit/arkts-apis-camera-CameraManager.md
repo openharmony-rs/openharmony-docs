@@ -131,7 +131,7 @@ Obtains the complete output capabilities supported by a specified camera in a sp
 > **NOTE**
 >
 > Before using YUV, HEIF, or HDR, you need to explicitly call this method to ensure that the complete output capabilities are obtained.
-
+ 
 **Model restriction**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
@@ -632,7 +632,7 @@ For details about the error codes, see [Camera Error Codes](errorcode-camera.md)
 
 | ID  | Error Message                                                                                                                                          |
 |---------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |
+| 7400101 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3.Parameter verification failed. |  
 | 7400201 | Camera service fatal error.                                                                                                                    |
 
 **Example**
@@ -967,6 +967,73 @@ Unsubscribes from flashlight status change events. This API uses an asynchronous
 ```ts
 function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void {
   cameraManager.off('torchStatusChange');
+}
+```
+
+## isTorchLevelControlSupported
+
+isTorchLevelControlSupported(): boolean
+
+Checks whether the device supports flashlight brightness control.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Return value**
+
+| Type       | Description                         |
+| ---------- | ----------------------------- |
+| boolean    | Whether the device supports flashlight brightness control. Returns **true** if supported, **false** if not. If the API call fails, undefined is returned.|
+
+**Example**
+
+```ts
+function isTorchLevelControlSupported(cameraManager: camera.CameraManager): boolean {
+  let isSupported = cameraManager.isTorchLevelControlSupported();
+  return isSupported;
+}
+```
+
+## SetTorchModeOnWithLevel
+
+SetTorchModeOnWithLevel(torchLevel: number): void
+
+Sets the specified brightness level for the flashlight.
+
+**Since**: 26.0.0
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Atomic service API**: This API can be used in atomic services since API version 26.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
+**Parameters**
+
+| Name    | Type            | Mandatory| Description      |
+| -------- | --------------- | ---- | --------- |
+| torchLevel | number| Yes| Flashlight brightness level. The value range is [0.0, 1.0] (**0.0** indicates the darkest, and **1.0** indicates the brightest).|
+
+**Error codes**
+
+For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
+
+| ID        | Error Message       |
+| --------------- | --------------- |
+| 7400201 | Camera service fatal error. |
+| 7400102 | Operation not allowed. |
+
+**Example**
+
+```ts
+function SetTorchModeOnWithLevel(cameraManager: camera.CameraManager, torchLevel: number): void {
+  cameraManager.setTorchModeOnWithLevel(torchLevel);
+  return ;
 }
 ```
 

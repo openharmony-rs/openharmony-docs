@@ -214,7 +214,7 @@ grid->SetLayoutOptions(layoutOptions->GetLayoutOptions());
 
 ### 监听滚动事件监听
 
-参考[监听组件事件](ndk-listen-to-component-events.md)中列表组件[ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)中的`NODE_LIST_ON_SCROLL_INDEX`事件监听示例代码，可以实现网格滚动事件监听。
+参考[添加事件监听](ndk-add-component-events.md)中列表组件[ArkUI_NodeEventType](../reference/apis-arkui/capi-native-node-h.md#arkui_nodeeventtype)中的`NODE_LIST_ON_SCROLL_INDEX`事件监听示例代码，可以实现网格滚动事件监听。
 
 网格组件支持以下滚动事件：
 
