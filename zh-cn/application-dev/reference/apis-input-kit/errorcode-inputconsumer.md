@@ -45,7 +45,7 @@ The hotkey has been subscribed to by another.
 
 **处理步骤**
 
-1. 在cmd命令窗口执行(hidumper -s 3101 -a -s)查询已经被注册的快捷键，注册未被其他占用的快捷键。
+1. 在cmd命令窗口执行(hidumper -s 3101 -a -s)查询已经被注册的快捷键，注册未被其他应用占用的快捷键。
 
 ## 3800001 多模输入服务内部错误
 
