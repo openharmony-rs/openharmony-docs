@@ -24,9 +24,9 @@ ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../c
    <!-- @[receiver_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/ReceiverUtility.ets) -->  
    
    ``` TypeScript
-   import image from '@ohos.multimedia.image'
+   import { image } from '@kit.ImageKit'
    import { camera } from '@kit.CameraKit';
-   import { BusinessError } from '@ohos.base'
+   import { BusinessError } from '@kit.BasicServicesKit'
    import { hilog } from '@kit.PerformanceAnalysisKit';
    ```
    
