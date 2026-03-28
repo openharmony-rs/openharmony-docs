@@ -12,7 +12,7 @@
 
 ## WebHitTestType
 
-[getLastHitTest](./arkts-apis-webview-WebviewController.md#getlasthittest18)接口用于指示游标节点。
+[getLastHitTest](./arkts-apis-webview-WebviewController.md#getlasthittest18)接口用于指示光标节点。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -128,8 +128,8 @@ ArkWeb渲染子进程模式类型。
 | ------------ | -- |--------------------------------- |
 | IMAGE  | 0 | 图片类型的资源。 |
 | CSS       | 1 | CSS类型的资源。|
-| CLASSIC_JS       | 2 | 通过<script src="" /\>标签加载的Javascript资源。|
-| MODULE_JS      | 3 |通过<script src="" type="module" /\>标签加载的Javascript资源。|
+| CLASSIC_JS       | 2 | 通过<script src="" /\>标签加载的JavaScript资源。|
+| MODULE_JS      | 3 |通过<script src="" type="module" /\>标签加载的JavaScript资源。|
 
 ## ScrollType<sup>12+</sup>
 
