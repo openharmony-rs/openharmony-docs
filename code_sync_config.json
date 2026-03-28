@@ -35738,16 +35738,25 @@
 		"sample_files":[
 			{
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/ListenDeviceByAudioSession.ets",
+				"functions":[]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/OutputDeviceChangePause.ets",
 				"functions":[
 					{
-						"end_line":165,
+						"end_line":133,
 						"name":"set_DefaultOutputDevice",
-						"start_line":16
-					},
-					{
-						"end_line":166,
-						"name":"setting_DefaultOutputDevice",
 						"start_line":17
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":510,
+						"name":"set_default_output_device",
+						"start_line":25
 					}
 				]
 			}
@@ -35845,54 +35854,59 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":68,
-						"name":"get_sessionmanager",
-						"start_line":64
+						"end_line":251,
+						"name":"get_session_manager",
+						"start_line":17
 					},
 					{
-						"end_line":134,
-						"name":"active_audiosession",
-						"start_line":105
+						"end_line":289,
+						"name":"activate_audio_session_v1",
+						"start_line":18
 					},
 					{
-						"end_line":165,
-						"name":"audiosession_checkisactivated",
-						"start_line":163
+						"end_line":295,
+						"name":"is_audio_session_activated",
+						"start_line":292
 					},
 					{
-						"end_line":185,
-						"name":"deactive_audiosession",
-						"start_line":160
+						"end_line":309,
+						"name":"on_audio_session_deactivated",
+						"start_line":19
 					},
 					{
-						"end_line":132,
-						"name":"listen_audiosessiondeactiveevent",
-						"start_line":120
+						"end_line":474,
+						"name":"deactivate_audio_session_v1",
+						"start_line":29
 					},
 					{
-						"end_line":177,
-						"name":"cancellisten_audiosessiondeactiveevent",
-						"start_line":173
+						"end_line":475,
+						"name":"audio_session_v1",
+						"start_line":20
 					},
 					{
-						"end_line":201,
-						"name":"all_sessionprocess",
-						"start_line":69
+						"end_line":361,
+						"name":"activate_audio_session_v2",
+						"start_line":21
 					},
 					{
-						"end_line":133,
-						"name":"set_audioscene",
-						"start_line":79
+						"end_line":409,
+						"name":"on_audio_session_state_changed",
+						"start_line":22
 					},
 					{
-						"end_line":196,
-						"name":"all_focusprocess",
-						"start_line":16
+						"end_line":476,
+						"name":"deactivate_audio_session_v2",
+						"start_line":30
 					},
 					{
-						"end_line":135,
-						"name":"enable_muteSuggestion",
-						"start_line":80
+						"end_line":477,
+						"name":"audio_session_v2",
+						"start_line":23
+					},
+					{
+						"end_line":363,
+						"name":"enable_mute_suggestion",
+						"start_line":24
 					}
 				]
 			}
@@ -48658,6 +48672,21 @@
 						"end_line":224,
 						"name":"createImageSource_rawFd",
 						"start_line":222
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/media/audio/audio-playback-concurrency.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Audio/AudioSessionSampleJS/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":142,
+						"name":"renderer_interrupt",
+						"start_line":16
 					}
 				]
 			}
