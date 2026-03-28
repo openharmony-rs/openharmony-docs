@@ -237,7 +237,7 @@ offDraw(callback?: VoidCallback): void
 
 on(type: 'drawChildren',  callback: Callback\<void\>): void
 
-通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
+通过[ComponentObserver](#componentobserver)注册drawChildren事件回调方法，当组件的子组件绘制送显完成时会触发该回调方法。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。
 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
@@ -331,7 +331,7 @@ ArkTS-Dyn: onLayoutChildren(callback: Callback\<void\>): void
 
 ArkTS-Sta: onLayoutChildren(callback: VoidCallback): void
 
-通过[ComponentObserver](#componentobserver)注册layoutChildren事件回调方法，当组件的子组件布局完成时会触发该回调方法。如果组件树中存在多个layoutChildren事件回调，只会触发在最顶层的layoutChildren事件回调。使用callback异步回调。
+通过[ComponentObserver](#componentobserver)注册layoutChildren事件回调方法，当组件的子组件布局完成时会触发该回调方法。如果组件树中存在多个layoutChildren事件回调，只会触发在最顶层的layoutChildren事件回调。使用callback异步回调。取消最顶层的回调后，其余layoutChildren事件回调也无法生效。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -381,7 +381,7 @@ ArkTS-Sta: onDrawChildren(callback: Callback\<int[]\>): void
 
 通过[ComponentObserver](#componentobserver)注册drawChildren事件回调。使用callback异步回调。
 
-把当前注册监听的节点作为根节点，组件的子组件绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。
+把当前注册监听的节点作为根节点，组件的子组件绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发在最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。
 
 **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
 
