@@ -79,7 +79,7 @@ ArkTS-Sta示例：
 
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
-import {RenderNode, DrawContext} from "@ohos.arkui.node"
+import { RenderNode,DrawContext } from "@ohos.arkui.node"
 
 class DrawingRenderNode extends RenderNode {
   draw(context: DrawContext) {
@@ -135,7 +135,7 @@ ArkTS-Sta: static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, t
 **示例：**
 
 ```ts
-import {RenderNode, DrawContext} from "@ohos.arkui.node"
+import { RenderNode,DrawContext } from "@ohos.arkui.node"
 import { image } from '@kit.ImageKit';
 import { drawing } from '@kit.ArkGraphics2D';
 
