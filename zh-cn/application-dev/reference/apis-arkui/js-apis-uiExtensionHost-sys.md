@@ -316,7 +316,7 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 该接口在支持自由多窗并处于自由多窗模式的设备中可正常调用，在不支持或不处于自由多窗模式的设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -400,7 +400,7 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**设备行为差异：** 该接口在支持自由多窗并处于自由多窗模式的设备中可正常调用，在不支持或不处于自由多窗模式的设备中返回801错误码。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
