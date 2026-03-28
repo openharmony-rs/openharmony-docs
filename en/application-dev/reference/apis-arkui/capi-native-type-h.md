@@ -49,7 +49,7 @@ Defines the common types for the native module.
 | [ArkUI_GridItemSize](capi-arkui-nativemodule-arkui-griditemsize.md) | ArkUI_GridItemSize | Defines the return value structure for the **onGetIrregularSizeByIndex** callback in **Grid** layout options.|
 | [ArkUI_GridItemRect](capi-arkui-nativemodule-arkui-griditemrect.md) | ArkUI_GridItemRect | Defines the return value structure for the **onGetRectByIndex** callback in **Grid** layout options.|
 | [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md) | ArkUI_GridLayoutOptions | Defines the **Grid** layout options.|
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md) | ArkUI_WaterFlowSectionOption | Defines the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.|
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md) | ArkUI_WaterFlowSectionOption | Defines the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 | [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md) | ArkUI_ListItemSwipeActionItem | Defines the item configuration for **ListItemSwipeActionOption**.|
 | [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md) | ArkUI_ListItemSwipeActionOption | Defines the configuration for **ListItemSwipeActionOption**.|
 | [ArkUI_Context](capi-arkui-nativemodule-arkui-context.md) | ArkUI_Context | Defines a context object of the ArkUI native UI.|
@@ -80,7 +80,7 @@ Defines the common types for the native module.
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines a struct for snapshot options.|
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | Defines the data selection list for the text picker.|
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | Defines the content array for a multi-column cascading data picker.|
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Returns the created instance of visible area change event parameters.|
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Defines the created instance of visible area change event parameters.|
 |[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)|ArkUI_PositionEdges|Provides position parameters relative to the boundaries of the container's content area.|
 |[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|Defines a struct for the component pixel rounding policy.|
 |[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|Defines the content transition effect.|
@@ -246,14 +246,14 @@ Defines the common types for the native module.
 | [void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t itemCount)](#oh_arkui_waterflowsectionoption_setitemcount) | - | Sets the number of items in a water flow section.|
 | [int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getitemcount) | - | Obtains the number of items in the water flow section that matches the specified index.|
 | [void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index, int32_t crossCount)](#oh_arkui_waterflowsectionoption_setcrosscount) | - | Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow.|
-| [int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcrosscount) | - | Obtains the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow.|
+| [int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcrosscount) | - | Obtains the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.|
 | [void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float columnGap)](#oh_arkui_waterflowsectionoption_setcolumngap) | - | Sets the gap between columns in the specified water flow section.|
 | [float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getcolumngap) | - | Obtains the gap between columns in the water flow section that matches the specified index.|
 | [void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index, float rowGap)](#oh_arkui_waterflowsectionoption_setrowgap) | - | Sets the gap between rows in the specified water flow section.|
 | [float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getrowgap) | - | Obtains the gap between rows in the water flow section that matches the specified index.|
 | [void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)](#oh_arkui_waterflowsectionoption_setmargin) | - | Sets the margins for the specified water flow section.|
 | [ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getmargin) | - | Obtains the margins of the water flow section that matches the specified index.|
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | Obtains the main axis size of a specified item based on **flowItemIndex** through a water flow section configuration.|
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | Obtains the main axis size of a specified item based on **itemIndex** through a water flow section configuration.|
 | [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | Obtains the main axis size of a specified item based on **flowItemIndex** through a water flow section configuration.|
 | [ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)](#oh_arkui_guidelineoption_create) | - | Creates a guideline configuration for this **RelativeContainer** component.|
 | [void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)](#oh_arkui_guidelineoption_dispose) | - | Disposes of a guideline configuration.|
@@ -498,7 +498,7 @@ Defines the common types for the native module.
 | [int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_gettop) | - | Obtains the value of the **PositionEdges** object in the top direction.|
 | [void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setleft) | - | Sets the value of the **PositionEdges** object in the left direction.|
 | [int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getleft) | - | Obtains the value of the **PositionEdges** object in the left direction.|
-| [void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setbottom) | - | Obtains the value of the **PositionEdges** object in the bottom direction.|
+| [void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setbottom) | - | Sets the value of the **PositionEdges** object in the bottom direction.|
 | [int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getbottom) | - | Obtains the value of the **PositionEdges** object in the bottom direction.|
 | [void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setright) | - | Sets the value of the **PositionEdges** object in the right direction.|
 | [int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getright) | - | Obtains the value of the **PositionEdges** object in the right direction.|
@@ -3619,7 +3619,7 @@ ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 **Description**
 
 
-Creates the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.
+Creates the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
 **Since**: 12
 
@@ -3627,7 +3627,7 @@ Creates the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group co
 
 | Type                               | Description|
 |-----------------------------------| -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.|
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 
 ### OH_ArkUI_WaterFlowSectionOption_Dispose()
 
@@ -3638,7 +3638,7 @@ void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* optio
 **Description**
 
 
-Disposes of the pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.
+Disposes of the pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
 **Since**: 12
 
@@ -3647,7 +3647,7 @@ Disposes of the pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-fl
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.|
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 
 ### OH_ArkUI_WaterFlowSectionOption_SetSize()
 
@@ -3679,7 +3679,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* op
 **Description**
 
 
-Obtains the length of the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration array.
+Obtains the length of the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration array.
 
 **Since**: 12
 
@@ -3705,7 +3705,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* 
 **Description**
 
 
-Sets the number of [water flow items](../apis-arkui/arkui-ts/ts-container-flowitem.md) in the group.
+Sets the number of [water flow items](../apis-arkui/arkui-ts/ts-container-flowitem.md) in the section.
 
 **Since**: 12
 
@@ -3714,9 +3714,9 @@ Sets the number of [water flow items](../apis-arkui/arkui-ts/ts-container-flowit
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.|
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 | int32_t index | Index of the target water flow section.|
-| int32_t itemCount | Number of [water flow items](../apis-arkui/arkui-ts/ts-container-flowitem.md)s in the group.|
+| int32_t itemCount | Number of [water flow items](../apis-arkui/arkui-ts/ts-container-flowitem.md) in the section.|
 
 ### OH_ArkUI_WaterFlowSectionOption_GetItemCount()
 
@@ -3727,7 +3727,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOptio
 **Description**
 
 
-Obtains the number of [water flow items](../apis-arkui/arkui-ts/ts-container-flowitem.md) at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.
+Obtains the number of [water flow items](../apis-arkui/arkui-ts/ts-container-flowitem.md) at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
 **Since**: 12
 
@@ -3776,7 +3776,7 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOpti
 **Description**
 
 
-Obtains the number of layout grids at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.
+Obtains the number of layout grids at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
 **Since**: 12
 
@@ -3852,7 +3852,7 @@ void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* opt
 **Description**
 
 
-Sets the gap between rows in the **FlowItem** group.
+Sets the gap between rows in the **FlowItem** section.
 
 **Since**: 12
 
@@ -3862,7 +3862,7 @@ Sets the gap between rows in the **FlowItem** group.
 | Name| Description|
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to a water flow section configuration.|
-| int32_t index | Index of the **FlowItem** group configuration array.|
+| int32_t index | Index of the **FlowItem** section configuration array.|
 | float rowGap | Gap between rows. Unit: vp.|
 
 ### OH_ArkUI_WaterFlowSectionOption_GetRowGap()
@@ -3874,7 +3874,7 @@ float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* op
 **Description**
 
 
-Obtains the gap between rows in the group at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.
+Obtains the gap between rows in the section at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
 **Since**: 12
 
@@ -3883,7 +3883,7 @@ Obtains the gap between rows in the group at the corresponding index based on th
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.|
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 | int32_t index | Index of the target water flow section.|
 
 **Returns**
@@ -3910,7 +3910,7 @@ Sets the margins for the specified water flow section.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.|
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 | int32_t index | Index of the target water flow section.|
 | float marginTop | Top margin of [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md).|
 | float marginRight | Right margin of [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md).|
@@ -3926,7 +3926,7 @@ ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOpt
 **Description**
 
 
-Obtains the top margin of the group at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.
+Obtains the top margin of the section at the corresponding index based on the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
 **Since**: 12
 
@@ -3935,7 +3935,7 @@ Obtains the top margin of the group at the corresponding index based on the [Flo
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.|
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 | int32_t index | Index of the target water flow section.|
 
 **Returns**
@@ -3953,7 +3953,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 **Description**
 
 
-Obtains the main axis size of a specified item based on **itemIndex** in the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.
+Obtains the main axis size of a specified item based on **itemIndex** in the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
 **Since**: 12
 
@@ -3962,7 +3962,7 @@ Obtains the main axis size of a specified item based on **itemIndex** in the [Fl
 
 | Name                                           | Description|
 |------------------------------------------------| -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.|
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 | int32_t index                                  | Index of the target water flow section.|
 | callback                                       | Callback used to return the result. **itemIndex** indicates the index of [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md).|
 
@@ -3975,7 +3975,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithU
 **Description**
 
 
-Obtains the main axis size of a specified water flow item based on **itemIndex** in the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.
+Obtains the main axis size of a specified water flow item based on **itemIndex** in the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
 
 **Since**: 12
 
@@ -3984,9 +3984,9 @@ Obtains the main axis size of a specified water flow item based on **itemIndex**
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) group configuration.|
+| [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 | int32_t index | Index of the target water flow section.|
-|  void* userData | Custom data of the water flow item.|
+|  void* userData | Pointer to the custom data of the water flow item.|
 | callback | Callback used to return the result. **itemIndex** indicates the index of [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md).|
 
 ### OH_ArkUI_GuidelineOption_Create()
@@ -4054,7 +4054,7 @@ Sets the ID of a guideline.
 | Name| Description|
 | -- | -- |
 | [ArkUI_GuidelineOption](capi-arkui-nativemodule-arkui-guidelineoption.md)* guideline | Pointer to a guideline configuration.|
-| const char* value | ID, which must be unique and cannot be the same as the name of any component in the container.|
+| const char* value | Pointer to the ID, which must be unique and cannot be the same as the name of any component in the container.|
 | int32_t index | Index of the guideline.|
 
 ### OH_ArkUI_GuidelineOption_SetDirection()
@@ -4148,7 +4148,7 @@ Obtains the ID of a guideline.
 
 | Type| Description|
 | -- | -- |
-| const char* | ID of the guideline.|
+| const char* | Pointer to the ID of the guideline.|
 
 ### OH_ArkUI_GuidelineOption_GetDirection()
 
@@ -4255,7 +4255,7 @@ Creates a barrier configuration for this **RelativeContainer** component.
 
 | Type                      | Description|
 |--------------------------| -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* | Returns the barrier configuration.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* | Pointer to the barrier configuration.|
 
 ### OH_ArkUI_BarrierOption_Dispose()
 
@@ -4275,7 +4275,7 @@ Disposes of a barrier configuration.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to the barrier configuration.|
 
 ### OH_ArkUI_BarrierOption_SetId()
 
@@ -4295,8 +4295,8 @@ Sets the ID of a barrier.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
-| const char* value | ID, which must be unique and cannot be the same as the name of any component in the container.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to the barrier configuration.|
+| const char* value | Pointer to the ID, which must be unique and cannot be the same as the name of any component in the container.|
 | int32_t index | Index of the barrier.|
 
 ### OH_ArkUI_BarrierOption_SetDirection()
@@ -4317,7 +4317,7 @@ Sets the direction of a barrier.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to the barrier configuration.|
 | [ArkUI_BarrierDirection](capi-native-type-h.md#arkui_barrierdirection) value | Direction. |
 | int32_t index | Index of the barrier.|
 
@@ -4339,8 +4339,8 @@ Sets the referenced components of a barrier.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
-| const char* value | Referenced component IDs.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to the barrier configuration.|
+| const char* value | Pointer to the referenced component IDs.|
 | int32_t index | Index of the barrier.|
 
 ### OH_ArkUI_BarrierOption_GetId()
@@ -4361,14 +4361,14 @@ Obtains the ID of a barrier.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to the barrier configuration.|
 | int32_t index | Index of the barrier.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| const char* | Returns the ID of the barrier.|
+| const char* | Pointer to the ID of the barrier.|
 
 ### OH_ArkUI_BarrierOption_GetDirection()
 
@@ -4388,14 +4388,14 @@ Obtains the direction of a barrier.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to the barrier configuration.|
 | int32_t index | Index of the barrier.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_BarrierDirection](capi-native-type-h.md#arkui_barrierdirection) | Returns the direction of the barrier.|
+| [ArkUI_BarrierDirection](capi-native-type-h.md#arkui_barrierdirection) | Direction of the barrier.|
 
 ### OH_ArkUI_BarrierOption_GetReferencedId()
 
@@ -4415,7 +4415,7 @@ Obtains the referenced components of a barrier.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to the barrier configuration.|
 | int32_t index | Index of the barrier.|
 | int32_t referencedIndex | Index of the referenced component ID.|
 
@@ -4423,7 +4423,7 @@ Obtains the referenced components of a barrier.
 
 | Type| Description|
 | -- | -- |
-| const char* | Referenced components of the barrier.|
+| const char* | Pointer to the referenced components of the barrier.|
 
 ### OH_ArkUI_BarrierOption_GetReferencedIdSize()
 
@@ -4443,7 +4443,7 @@ Obtains the number of referenced components of a barrier.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Returns the barrier configuration.|
+| [ArkUI_BarrierOption](capi-arkui-nativemodule-arkui-barrieroption.md)* barrierStyle | Pointer to the barrier configuration.|
 | int32_t index | Index of the barrier.|
 
 **Returns**
@@ -4469,7 +4469,7 @@ Creates an alignment rule configuration for this **RelativeContainer** component
 
 | Type                            | Description|
 |--------------------------------| -- |
-| [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* | Alignment rule information.|
+| [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* | Pointer to an alignment rule information.|
 
 ### OH_ArkUI_AlignmentRuleOption_Dispose()
 
@@ -4510,7 +4510,7 @@ Sets the left alignment mode of a relative layout.
 | Name                                                                                      | Description|
 |-------------------------------------------------------------------------------------------| -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
-| const char* id                                                                            | ID of the component that functions as the anchor point.|
+| const char* id                                                                            | Pointer to the ID of the component that functions as the anchor point.|
 | [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) alignment                         | Alignment mode relative to the anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_SetEnd()
@@ -4532,7 +4532,7 @@ Sets the right alignment mode of a relative layout.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
-| const char* id | ID of the component that functions as the anchor point.|
+| const char* id | Pointer to the ID of the component that functions as the anchor point.|
 | [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) alignment | Alignment mode relative to the anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_SetCenterHorizontal()
@@ -4554,7 +4554,7 @@ Sets the horizontal center alignment mode of a relative layout.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
-| const char* id | ID of the component that functions as the anchor point.|
+| const char* id | Pointer to the ID of the component that functions as the anchor point.|
 | [ArkUI_HorizontalAlignment](#arkui_horizontalalignment) alignment | Alignment mode relative to the anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_SetTop()
@@ -4576,7 +4576,7 @@ Sets the top alignment mode of a relative layout.
 | Name                                                                                      | Description|
 |-------------------------------------------------------------------------------------------| -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
-| const char* id                                                                            | ID of the component that functions as the anchor point.|
+| const char* id                                                                            | Pointer to the ID of the component that functions as the anchor point.|
 | [ArkUI_VerticalAlignment](#arkui_verticalalignment) alignment                             | Alignment mode relative to the anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_SetBottom()
@@ -4598,7 +4598,7 @@ Sets the bottom alignment mode of a relative layout.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
-| const char* id | ID of the component that functions as the anchor point.|
+| const char* id | Pointer to the ID of the component that functions as the anchor point.|
 | [ArkUI_VerticalAlignment](#arkui_verticalalignment) alignment | Alignment mode relative to the anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_SetCenterVertical()
@@ -4620,7 +4620,7 @@ Sets the vertical center alignment mode of a relative layout.
 | Name| Description|
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
-| const char* id | ID of the component that functions as the anchor point.|
+| const char* id | Pointer to the ID of the component that functions as the anchor point.|
 | [ArkUI_VerticalAlignment](#arkui_verticalalignment) alignment | Alignment mode relative to the anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_SetBiasHorizontal()
@@ -4663,7 +4663,7 @@ Sets the bias value of the component in the vertical direction under the anchor 
 | Name| Description|
 | -- | -- |
 | [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* option | Pointer to an alignment rule configuration.|
-| float vertical | Returns the bias value in the vertical direction.|
+| float vertical | Bias value in the vertical direction.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetStartId()
 
@@ -4689,7 +4689,7 @@ Obtains the ID of the left alignment anchor component.
 
 | Type| Description|
 | -- | -- |
-| const char* | ID of the left alignment anchor component.|
+| const char* | Pointer to the ID of the left alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetStartAlignment()
 
@@ -4715,7 +4715,7 @@ Obtains the left alignment mode.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment) | Returns the alignment mode in left alignment parameters.|
+| [ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment) | Alignment mode in left alignment parameters.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetEndId()
 
@@ -4741,7 +4741,7 @@ Obtains the right alignment mode.
 
 | Type| Description|
 | -- | -- |
-| const char* | ID of the right alignment anchor component.|
+| const char* | Pointer to the ID of the right alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetEndAlignment()
 
@@ -4793,7 +4793,7 @@ Obtains the horizontal center alignment mode.
 
 | Type| Description|
 | -- | -- |
-| const char* | ID of the horizontal center alignment anchor component.|
+| const char* | Pointer to the ID of the horizontal center alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentHorizontal()
 
@@ -4845,7 +4845,7 @@ Obtains the top alignment mode.
 
 | Type| Description|
 | -- | -- |
-| const char* | ID of the top alignment anchor component.|
+| const char* | Pointer to the ID of the top alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetTopAlignment()
 
@@ -4897,7 +4897,7 @@ Obtains the bottom alignment mode.
 
 | Type| Description|
 | -- | -- |
-| const char* | ID of the bottom alignment anchor component.|
+| const char* | Pointer to the ID of the bottom alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetBottomAlignment()
 
@@ -4949,7 +4949,7 @@ Obtains the vertical center alignment mode.
 
 | Type| Description|
 | -- | -- |
-| const char* | ID of the vertical center alignment anchor component.|
+| const char* | Pointer to the ID of the vertical center alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetCenterAlignmentVertical()
 
@@ -5027,7 +5027,7 @@ Obtains the bias value in the vertical direction.
 
 | Type| Description|
 | -- | -- |
-| float | Returns the bias value in the vertical direction.|
+| float | Bias value in the vertical direction.|
 
 ### OH_ArkUI_SwiperIndicator_Create()
 
@@ -6285,7 +6285,7 @@ Checks whether the background of the navigation arrow is displayed for the **Swi
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns whether the arrow background is displayed. The value **1** means that the background is displayed, and **0** means the opposite.|
+| int32_t | Whether the arrow background is displayed. The value **1** means that the background is displayed, and **0** means the opposite.|
 
 ### OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle()
 
@@ -6332,7 +6332,7 @@ Obtains the position of the navigation arrow for the **Swiper** component.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns the position of the arrow. **0**: The arrow is displayed on both sides of the navigation indicator. **1**: The arrow is displayed on both sides of the **Swiper** component.|
+| int32_t | Position of the arrow. **0**: The arrow is displayed on both sides of the navigation indicator. **1**: The arrow is displayed on both sides of the **Swiper** component.|
 
 ### OH_ArkUI_SwiperArrowStyle_SetBackgroundSize()
 
@@ -6633,7 +6633,7 @@ Creates a **ListItemSwipeActionItem** instance.
 
 | Type                                | Description|
 |------------------------------------| -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* | Returns the created **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* | Pointer to the **ListItemSwipeActionItem** instance.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_Dispose()
 
@@ -6653,7 +6653,7 @@ Disposes of a **ListItemSwipeActionItem** instance.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | **ListItemSwipeActionItem** instance to dispose of.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance to dispose of.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetContent()
 
@@ -6673,7 +6673,7 @@ Sets the layout content for a **ListItemSwipeActionItem** instance.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Layout information.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetActionAreaDistance()
@@ -6694,7 +6694,7 @@ Sets the swipe distance threshold for deleting the list item.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
 | float distance | Swipe distance threshold for deleting the list item, in vp.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_GetActionAreaDistance()
@@ -6715,7 +6715,7 @@ Obtains the swipe distance threshold for deleting the list item.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
 
 **Returns**
 
@@ -6741,7 +6741,7 @@ Sets the callback invoked each time the list item enters the delete area.
 
 | Name                                    | Description|
 |-----------------------------------------| -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
 | callback                                | Callback event.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnEnterActionAreaWithUserData()
@@ -6762,8 +6762,8 @@ Sets the callback invoked each time the list item enters the delete area. User-d
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
-| void* userData | User-defined data.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
+| void* userData | Pointer to the user-defined data.|
 | callback | Callback event.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnAction()
@@ -6784,7 +6784,7 @@ Sets the callback invoked when the [list item](./arkui-ts/ts-container-listitem.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
 | callback | Callback event.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnActionWithUserData()
@@ -6805,8 +6805,8 @@ Sets the callback invoked when the list item is deleted while in the delete area
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
-| void* userData | User-defined data.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
+| void* userData | Pointer to the user-defined data.|
 | callback | Callback event.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionArea()
@@ -6827,7 +6827,7 @@ Sets the callback invoked each time the list item exits the delete area.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
 | callback | Callback event.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnExitActionAreaWithUserData()
@@ -6848,8 +6848,8 @@ Sets the callback invoked each time the list item exits the delete area. User-de
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
-| void* userData | User-defined data.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
+| void* userData | Pointer to the user-defined data.|
 | callback | Callback event.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChange()
@@ -6870,7 +6870,7 @@ Sets the callback invoked when the swipe state of the list item changes.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
 | callback | Callback event. The input parameter is **swipeActionState**, indicating the swipe state of the list item.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetOnStateChangeWithUserData()
@@ -6891,8 +6891,8 @@ Sets the callback invoked when the swipe state of the list item changes. User-de
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Target **ListItemSwipeActionItem** instance.|
-|  void* userData | User-defined data.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance.|
+|  void* userData | Pointer to the user-defined data.|
 | callback | Callback event. The input parameter is **swipeActionState**, indicating the swipe state of the list item.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_Create()
@@ -6912,7 +6912,7 @@ Creates a **ListItemSwipeActionOption** instance.
 
 | Type                                  | Description|
 |--------------------------------------| -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* | Created **ListItemSwipeActionOption** instance.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* | Pointer to the **ListItemSwipeActionOption** instance.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_Dispose()
 
@@ -6932,7 +6932,7 @@ Disposes of a **ListItemSwipeActionOption** instance.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | **ListItemSwipeActionOption** instance to dispose of.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionOption** instance to dispose of.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetStart()
 
@@ -6952,8 +6952,8 @@ Sets the layout content for the left edge (for a vertical layout) or top edge (f
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Target **ListItemSwipeActionItem** instance.|
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Layout information.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the layout information.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetEnd()
 
@@ -6973,8 +6973,8 @@ Sets the layout content for the right edge (for a vertical layout) or bottom edg
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Target **ListItemSwipeActionItem** instance.|
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Layout information.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the layout information.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetEdgeEffect()
 
@@ -6994,7 +6994,7 @@ Sets the effect used when the scroll boundary is reached.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Target **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
 | [ArkUI_ListItemSwipeEdgeEffect](capi-native-type-h.md#arkui_listitemswipeedgeeffect) edgeEffect | Effect used when the boundary of the scrolling area is reached.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_GetEdgeEffect()
@@ -7015,7 +7015,7 @@ Obtains the effect used when the scroll boundary is reached.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Target **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
 
 **Returns**
 
@@ -7041,7 +7041,7 @@ Sets the callback invoked when the scroll offset changes.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Target **ListItemSwipeActionItem** instance.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
 | callback | Callback event. **offset**: scroll offset, in vp.|
 
 ### OH_ArkUI_ListItemSwipeActionOption_SetOnOffsetChangeWithUserData()
@@ -7062,8 +7062,8 @@ Sets the callback invoked when the scroll offset changes. User-defined data will
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Target **ListItemSwipeActionItem** instance.|
-|  void* userData | User-defined data.|
+| [ArkUI_ListItemSwipeActionOption](capi-arkui-nativemodule-arkui-listitemswipeactionoption.md)* option | Pointer to the **ListItemSwipeActionItem** instance.|
+|  void* userData | Pointer to the user-defined data.|
 | callback | Callback event. **offset**: scroll offset, in vp.|
 
 ### OH_ArkUI_ListItemSwipeAction_Expand()
@@ -7083,7 +7083,7 @@ Expands the swipe action menu for the specified list item.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ListItem** node object.|
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Enumerates the swipe action menu display directions for **ListItem** components.|
+| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Swipe action menu display direction for the **ListItem** component.|
 
 **Returns**
 
@@ -7136,7 +7136,7 @@ Creates an accessibility state.
 
 | Type                           | Description|
 |-------------------------------| -- |
-| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* | Returns the pointer to the created accessibility state object. If a null pointer is returned, the creation fails. A possible cause is that the application address space is full.|
+| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* | Pointer to the created accessibility state object. If a null pointer is returned, the creation fails. A possible cause is that the application address space is full.|
 
 ### OH_ArkUI_AccessibilityState_Dispose()
 
@@ -7316,7 +7316,7 @@ Creates an **AccessibilityValue** instance.
 
 | Type                           | Description|
 |-------------------------------| -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* | Returns the pointer to the created **AccessibilityValue** instance.|
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* | Pointer to the created **AccessibilityValue** instance.|
 
 ### OH_ArkUI_AccessibilityValue_Dispose()
 
@@ -7336,7 +7336,7 @@ Disposes of the pointer to an **AccessibilityValue** instance.
 
 | Name                                                                                   | Description|
 |----------------------------------------------------------------------------------------| -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Returns the pointer to the created **AccessibilityValue** instance.|
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance.|
 
 ### OH_ArkUI_AccessibilityValue_SetMin()
 
@@ -7356,7 +7356,7 @@ Sets the minimum accessibility value.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Returns the pointer to the created **AccessibilityValue** instance.|
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance.|
 | int32_t min | Minimum value for the range-based component. The default value is **-1**.|
 
 ### OH_ArkUI_AccessibilityValue_GetMin()
@@ -7377,7 +7377,7 @@ Obtains the minimum accessibility value.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Returns the pointer to the created **AccessibilityValue** instance.|
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance.|
 
 **Returns**
 
@@ -7403,7 +7403,7 @@ Sets the maximum accessibility value.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Returns the pointer to the created **AccessibilityValue** instance.|
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance.|
 | int32_t max | Maximum value for the range-based component. The default value is **-1**.|
 
 ### OH_ArkUI_AccessibilityValue_GetMax()
@@ -7424,7 +7424,7 @@ Obtains the maximum accessibility value.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Returns the pointer to the created **AccessibilityValue** instance.|
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance.|
 
 **Returns**
 
@@ -7450,7 +7450,7 @@ Sets the current accessibility value.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Returns the pointer to the created **AccessibilityValue** instance.|
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance.|
 | int32_t current | Current value for the range-based component. The default value is **-1**.|
 
 ### OH_ArkUI_AccessibilityValue_GetCurrent()
@@ -7471,7 +7471,7 @@ Obtains the current accessibility value.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Returns the pointer to the created **AccessibilityValue** instance.|
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance.|
 
 **Returns**
 
@@ -7638,8 +7638,8 @@ Sets the text description of an **AccessibilityValue** instance.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Returns the pointer to the created **AccessibilityValue** instance.|
-| const char* text | Text description. The default value is an empty string.|
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance.|
+| const char* text | Pointer to the text description. The default value is an empty string.|
 
 ### OH_ArkUI_AccessibilityValue_GetText()
 
@@ -7659,13 +7659,13 @@ Obtains the text description of an **AccessibilityValue** instance.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Returns the pointer to the created **AccessibilityValue** instance.|
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| const char* | Text description. The default value is an empty string.<br>         If a parameter error occurs, a null pointer is returned.|
+| const char* | Pointer to the text description. The default value is an empty string.<br>         If a parameter error occurs, a null pointer is returned.|
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_CreateFromString()
 
@@ -7685,7 +7685,7 @@ Creates an image frame information object based on an image path, with the image
 
 | Name| Description|
 | -- | -- |
-| char* src | Image path, which can be a relative or absolute path in the application sandbox.|
+| char* src | Pointer to the image path, which can be a relative or absolute path in the application sandbox.|
 
 **Returns**
 
@@ -7784,7 +7784,7 @@ Obtains the image width.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns the image width, in PX. If **imageInfo** is a null pointer, **0** is returned.|
+| int32_t | Image width, in PX. If **imageInfo** is a null pointer, **0** is returned.|
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetHeight()
 
@@ -7831,7 +7831,7 @@ Obtains the image height.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns the image height, in PX. If **imageInfo** is a null pointer, **0** is returned.|
+| int32_t | Image height, in PX. If **imageInfo** is a null pointer, **0** is returned.|
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetTop()
 
@@ -7878,7 +7878,7 @@ Obtains the vertical coordinate of an image relative to the upper left corner of
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns the vertical coordinate of the image relative to the upper left corner of the component, in px. If **imageInfo** is a null pointer, **0** is returned.|
+| int32_t | Vertical coordinate of the image relative to the upper left corner of the component, in px. If **imageInfo** is a null pointer, **0** is returned.|
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetLeft()
 
@@ -7925,7 +7925,7 @@ Obtains the horizontal coordinate of an image relative to the upper left corner 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns the horizontal coordinate of the image relative to the upper left corner of the component, in px. If **imageInfo** is a null pointer, **0** is returned.|
+| int32_t | Horizontal coordinate of the image relative to the upper left corner of the component, in px. If **imageInfo** is a null pointer, **0** is returned.|
 
 ### OH_ArkUI_ImageAnimatorFrameInfo_SetDuration()
 
@@ -7972,7 +7972,7 @@ Obtains the playback duration of an image.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Returns the playback duration of the image, in milliseconds. If **imageInfo** is a null pointer, **0** is returned.|
+| int32_t | Playback duration of the image, in milliseconds. If **imageInfo** is a null pointer, **0** is returned.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Create()
 
@@ -7991,7 +7991,7 @@ Creates a **ListChildrenMainSize** instance.
 
 | Type                             | Description|
 |---------------------------------| -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* | Created **ListChildrenMainSize** instance.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* | Pointer to the created **ListChildrenMainSize** instance.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Dispose()
 
@@ -8011,7 +8011,7 @@ Disposes of a **ListChildrenMainSize** instance.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance to dispose of.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance to dispose of.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize()
 
@@ -8031,7 +8031,7 @@ Sets the default size of the list item in the [List](./arkui-ts/ts-container-lis
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
 | float defaultMainSize | Default size of the list item along the main axis, in vp.|
 
 **Returns**
@@ -8058,7 +8058,7 @@ Obtains the default size of the list item in the [List](./arkui-ts/ts-container-
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
 
 **Returns**
 
@@ -8084,7 +8084,7 @@ Adjusts the capacity of the children item size array in the [List](./arkui-ts/ts
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
 | int32_t totalSize | Capacity of the target array.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Splice()
@@ -8105,7 +8105,7 @@ Adjusts the children item size array in the [List](./arkui-ts/ts-container-list.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
 | int32_t index | Start index.|
 | int32_t deleteCount | Number of elements to be deleted from the start position.|
 | int32_t addCount | Number of elements to be added from the start position.|
@@ -8134,7 +8134,7 @@ Updates the size at the specified index in the children item size array of the [
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
 | int32_t index | Array index of the target element.|
 | float mainSize | Size of the main axis, in vp.|
 
@@ -8162,7 +8162,7 @@ Obtains the size at the specified index in the children item size array of the [
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | **ListChildrenMainSize** instance.|
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md)* option | Pointer to the **ListChildrenMainSize** instance.|
 | int32_t index | Array index of the target element.|
 
 **Returns**
@@ -8188,7 +8188,7 @@ Creates measurement information for this custom span.
 
 | Type                              | Description|
 |----------------------------------| -- |
-| [ArkUI_CustomSpanMeasureInfo](capi-arkui-nativemodule-arkui-customspanmeasureinfo.md)* | Returns a **CustomSpanMeasureInfo** instance.<br> If a null pointer is returned, the memory may be insufficient.|
+| [ArkUI_CustomSpanMeasureInfo](capi-arkui-nativemodule-arkui-customspanmeasureinfo.md)* | Pointer to the **CustomSpanMeasureInfo** instance.<br> If a null pointer is returned, the memory may be insufficient.|
 
 ### OH_ArkUI_CustomSpanMeasureInfo_Dispose()
 
@@ -8253,7 +8253,7 @@ Creates measurement metrics for this custom span.
 
 | Type                          | Description|
 |------------------------------| -- |
-| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* | **CustomSpanMetrics** instance.<br> If a null pointer is returned, the memory may be insufficient.|
+| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* | Pointer to the **CustomSpanMetrics** instance.<br> If a null pointer is returned, the memory may be insufficient.|
 
 ### OH_ArkUI_CustomSpanMetrics_Dispose()
 
@@ -8273,7 +8273,7 @@ Disposes of measurement metrics of this custom span.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | **CustomSpanMetrics** instance.|
+| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | Pointer to the **CustomSpanMetrics** instance.|
 
 ### OH_ArkUI_CustomSpanMetrics_SetWidth()
 
@@ -8293,7 +8293,7 @@ Sets the width for a custom span.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | **CustomSpanMetrics** instance.|
+| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | Pointer to the **CustomSpanMetrics** instance.|
 | float width | Width, in vp. The default value is **0.0f**. The negative value has the same effect as the default value.|
 
 **Returns**
@@ -8320,7 +8320,7 @@ Sets the height for a custom span.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | **CustomSpanMetrics** instance.|
+| [ArkUI_CustomSpanMetrics](capi-arkui-nativemodule-arkui-customspanmetrics.md)* metrics | Pointer to the **CustomSpanMetrics** instance.|
 | float height | Height, in vp. The default value is **0.0f**. The negative value has the same effect as the default value.|
 
 **Returns**
@@ -8346,7 +8346,7 @@ Creates drawing information for this custom span.
 
 | Type                           | Description|
 |-------------------------------| -- |
-| [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* | Returns a **CustomSpanDrawInfo** instance.<br> If a null pointer is returned, the memory may be insufficient.|
+| [ArkUI_CustomSpanDrawInfo](capi-arkui-nativemodule-arkui-customspandrawinfo.md)* | Pointer to the **CustomSpanDrawInfo** instance.<br> If a null pointer is returned, the memory may be insufficient.|
 
 ### OH_ArkUI_CustomSpanDrawInfo_Dispose()
 
@@ -8516,7 +8516,7 @@ Obtains the value of a custom property object.
 
 | Type| Description|
 | -- | -- |
-| const char* | Value of a custom property object.|
+| const char* | Pointer to the value of a custom property object.|
 
 ### OH_ArkUI_HostWindowInfo_GetName()
 
@@ -8536,13 +8536,13 @@ Obtains the window name in an [ArkUI_HostWindowInfo](capi-arkui-nativemodule-ark
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)* info | **HostWindowInfo** object.|
+| [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md)* info | Pointer to the **HostWindowInfo** object.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| const char* | Window name in the [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) object.|
+| const char* | Pointer to the window name in the [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) object.|
 
 ### OH_ArkUI_HostWindowInfo_Destroy()
 
@@ -8654,7 +8654,7 @@ Creates a **ProgressLinearStyleOption** instance.
 
 | Type                                  | Description|
 |--------------------------------------| -- |
-| [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md)* | Returns the **ProgressLinearStyleOption** instance created.<br> If a null pointer is returned, the memory may be insufficient.|
+| [ArkUI_ProgressLinearStyleOption](capi-arkui-nativemodule-arkui-progresslinearstyleoption.md)* | Pointer to the **ProgressLinearStyleOption** instance created.<br> If a null pointer is returned, the memory may be insufficient.|
 
 ### OH_ArkUI_ProgressLinearStyleOption_Destroy()
 
@@ -8784,7 +8784,7 @@ Obtains the enabled status of the smooth progress effect.
 
 | Type| Description|
 | -- | -- |
-| bool | Returns the enabled status of the smooth progress effect.<br>**true**: The smooth effect is enabled.<br>**false**: The smooth effect is disabled.<br>The default value is **true**.|
+| bool | Whether the smooth effect is enabled.<br>**true**: The smooth effect is enabled.<br>**false**: The smooth effect is disabled.<br>The default value is **true**.|
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled()
 
@@ -8810,7 +8810,7 @@ Obtains the enabled status of the scan effect.
 
 | Type| Description|
 | -- | -- |
-| bool | Returns the enabled status of the scan effect.<br>**true**: The scan effect is enabled.<br>**false**: The scan effect is disabled.<br>The default value is **false**.|
+| bool | Whether the scan effect is enabled.<br>**true**: The scan effect is enabled.<br>**false**: The scan effect is disabled.<br>The default value is **false**.|
 
 ### OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth()
 
@@ -8921,7 +8921,7 @@ Sets the scale property in the snapshot options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Screenshot options.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot options.|
 | float scale | Scale factor.|
 
 **Returns**
@@ -8947,7 +8947,7 @@ Creates an instance of the cross-language configuration option.
 
 | Type                            | Description|
 |--------------------------------| -- |
-| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* | Returns the pointer to the **ArkUI_CrossLanguageOption** instance created. If a null pointer is returned, creation failed, possibly due to insufficient memory.|
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* | Pointer to the **ArkUI_CrossLanguageOption** instance created. If a null pointer is returned, creation failed, possibly due to insufficient memory.|
 
 ### OH_ArkUI_CrossLanguageOption_Destroy()
 
@@ -8967,7 +8967,7 @@ Destroys an instance of the cross-language configuration option.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | Cross-language configuration option instance to be destroyed.|
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | Pointer to the cross-language configuration option instance to be destroyed.|
 
 ### OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus()
 
@@ -9033,7 +9033,7 @@ Creates an instance of visible area change event parameters.
 
 | Type                                | Description|
 |------------------------------------| -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* | Returns the created instance of visible area change event parameters.|
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* | Pointer to the created instance of visible area change event parameters.|
 
 ### OH_ArkUI_VisibleAreaEventOptions_Dispose()
 
@@ -9053,7 +9053,7 @@ Disposes of an instance of visible area change event parameters.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Instance of visible area change event parameters to be destroyed.|
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters to be destroyed.|
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetRatios()
 
@@ -9074,7 +9074,7 @@ Sets the threshold ratios for visible area changes.
 | Name| Description|
 | -- | -- |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters.|
-| float* value | Array of threshold ratios. Each element represents a ratio of the component's visible area (that is, the area of the component that is visible on screen; only the area within the parent component is counted) to the component's total area. The value range of the threshold is [0.0, 1.0]. If the threshold set exceeds this range, the value **0.0** or **1.0** will be used.|
+| float* value | Pointer to the array of threshold ratios. Each element represents a ratio of the component's visible area (that is, the area of the component that is visible on screen; only the area within the parent component is counted) to the component's total area. The value range of the threshold is [0.0, 1.0]. If the threshold set exceeds this range, the value **0.0** or **1.0** will be used.|
 | int32_t size | Size of the array of threshold ratios.|
 
 **Returns**
@@ -9155,8 +9155,8 @@ Obtains the threshold ratios for visible area changes.
 | Name| Description|
 | -- | -- |
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters.|
-| float* value | Array of threshold ratios.|
-| int32_t* size | Size of the array of threshold ratios.|
+| float* value | Pointer to the array of threshold ratios.|
+| int32_t* size | Pointer to the size of the array of threshold ratios.|
 
 **Returns**
 
@@ -9240,7 +9240,7 @@ Creates an object of the [TextPickerRangeContent](capi-arkui-nativemodule-arkui-
 
 | Type                                    | Description|
 |----------------------------------------| -- |
-| [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)* | Returns a pointer to an empty **TextPickerRangeContent** array.|
+| [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)* | Pointer to an empty **TextPickerRangeContent** array.|
 
 ### OH_ArkUI_TextPickerRangeContentArray_SetIconAtIndex()
 
@@ -9261,7 +9261,7 @@ Configures the icon data at a specified position in the **TextPickerRangeContent
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md)* handle | Pointer to the **TextPickerRangeContent** array.|
-| char* icon | Icon path.|
+| char* icon | Pointer to the icon path.|
 | int32_t index | Array index, starting from 0.|
 
 ### OH_ArkUI_TextPickerRangeContentArray_SetTextAtIndex()
@@ -9329,7 +9329,7 @@ Creates an object of the [TextCascadePickerRangeContent](capi-arkui-nativemodule
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* | Returns a pointer to an empty **TextCascadePickerRangeContent** array.|
+| [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md)* | Pointer to an empty **TextCascadePickerRangeContent** array.|
 
 ### OH_ArkUI_TextCascadePickerRangeContentArray_SetTextAtIndex()
 
@@ -9475,7 +9475,7 @@ Sets the [onTerminated](../apis-arkui/arkui-ts/ts-container-embedded-component.m
 | Name| Description                          |
 | -- |------------------------------|
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)* option | Pointer to the **EmbeddedComponent** option object.|
-| void (\*callback)(int32_t code, [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | User-defined callback function.<br>- **code**: result code returned when the started [EmbeddedUIExtensionAbility](../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) exits. If the EmbeddedUIExtensionAbility exits by calling [terminateSelfWithResult](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult), the result code is the value set by the EmbeddedUIExtensionAbility. If the EmbeddedUIExtensionAbility exits by calling [terminateSelf](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself), the result code is the default value **0**.<br>- **want**: data returned when the EmbeddedUIExtensionAbility exits.  |
+| void (\*callback)(int32_t code, [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | Pointer to the user-defined callback function.<br>- **code**: result code returned when the started [EmbeddedUIExtensionAbility](../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) exits. If the EmbeddedUIExtensionAbility exits by calling [terminateSelfWithResult](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult), the result code is the value set by the EmbeddedUIExtensionAbility. If the EmbeddedUIExtensionAbility exits by calling [terminateSelf](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself), the result code is the default value **0**.<br>- **want**: data returned when the EmbeddedUIExtensionAbility exits.  |
 
 ### OH_ArkUI_PositionEdges_Create()
 
@@ -9574,7 +9574,7 @@ Obtains the value of the **PositionEdges** object in the top direction.
 | Name| Description                          |
 | -- |------------------------------|
 | [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
-|float* value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
+|float* value|Pointer to the value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 **Returns**
 
@@ -9618,7 +9618,7 @@ Obtains the value of the **PositionEdges** object in the left direction.
 | Name| Description                          |
 | -- |------------------------------|
 | [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
-|float* value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
+|float* value|Pointer to the value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 **Returns**
 
@@ -9663,7 +9663,7 @@ Obtains the value of the **PositionEdges** object in the bottom direction.
 | Name| Description                          |
 | -- |------------------------------|
 | [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
-|float* value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
+|float* value|Pointer to the value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 **Returns**
 
@@ -9707,7 +9707,7 @@ Obtains the value of the **PositionEdges** object in the right direction.
 | Name| Description                          |
 | -- |------------------------------|
 | [ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)* edges | Pointer to the **PositionEdges** object.|
-|float* value|Value of the **PositionEdges** object in the corresponding direction, in vp.|
+|float* value|Pointer to the value of the **PositionEdges** object in the corresponding direction, in vp.|
 
 **Returns**
 
@@ -9787,7 +9787,7 @@ Obtains the top edge pixel rounding policy from the **PixelRoundPolicy** object.
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
 | [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Pointer to the specific pixel rounding policy.|
 
 **Returns**
 
@@ -9831,7 +9831,7 @@ Obtains the start edge pixel rounding policy from the **PixelRoundPolicy** objec
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
 | [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Pointer to the specific pixel rounding policy.|
 
 **Returns**
 
@@ -9875,7 +9875,7 @@ Obtains the bottom edge pixel rounding policy from the **PixelRoundPolicy** obje
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
 | [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Pointer to the specific pixel rounding policy.|
 
 **Returns**
 
@@ -9919,7 +9919,7 @@ Obtains the end edge pixel rounding policy from the **PixelRoundPolicy** object.
 | Name                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------ |
 | [ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)* policy | Pointer to the **PixelRoundPolicy** object.    |
-| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Specific pixel rounding policy.|
+| [ArkUI_PixelRoundCalcPolicy](#arkui_pixelroundcalcpolicy)* value | Pointer to the specific pixel rounding policy.|
 
 **Returns**
 
@@ -9967,7 +9967,7 @@ Creates **Grid** layout options.
 
 | Type                               | Description|
 |-----------------------------------| -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | Pointer to the **Grid** layout options.|
 
 ### OH_ArkUI_GridLayoutOptions_Dispose()
 
@@ -9986,7 +9986,7 @@ Disposes of **Grid** layout options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
 
 
 ### OH_ArkUI_GridLayoutOptions_SetIrregularIndexes()
@@ -10006,8 +10006,8 @@ Sets the irregular grid item index array for the grid layout.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | **Grid** layout options.|
-| uint32_t* irregularIndexes |  **GridItem** index array.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| uint32_t* irregularIndexes |  Pointer to the **GridItem** index array.|
 | int32_t size | Size of the **GridItem** index array.|
 
 **Returns**
@@ -10033,8 +10033,8 @@ Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | **Grid** layout options.|
-| uint32_t* irregularIndexes |  **GridItem** index array.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| uint32_t* irregularIndexes |  Pointer to the **GridItem** index array.|
 | int32_t size | Size of the **GridItem** index array.|
 
 **Returns**
@@ -10060,8 +10060,8 @@ Registers a callback to obtain the row and column span for the grid item at the 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | **Grid** layout options.|
-| void* userData | User-defined data.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| void* userData | Pointer to the user-defined data.|
 | ArkUI_GridItemSize (\*callback)(int32_t itemIndex, void* userData) | Callback that returns the row and column span for the grid item at the specified index.<br> **itemIndex**: grid item index, which must be within the range set by [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes).|
 
 ### OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback()
@@ -10081,8 +10081,8 @@ Registers a callback to obtain the starting row, starting column, row span, and 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | **Grid** layout options.|
-| void* userData | User-defined data.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| void* userData | Pointer to the user-defined data.|
 | ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData) | Callback that returns the starting row, starting column, row span, and column span for the grid item at the specified index.<br>   **itemIndex**: grid item index.|
 ### OH_ArkUI_ShowCounterConfig_Create()
 
@@ -10349,7 +10349,7 @@ Obtains the icon path of a text menu item.
 | Name| Description|
 | -- | -- |
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
-| char* buffer | Buffer. You can create it and allocate memory to store the icon path of the text menu item.|
+| char* buffer | Pointer to the buffer. You can create it and allocate memory to store the icon path of the text menu item.|
 | int32_t bufferSize | Buffer size.|
 | int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
 
@@ -10376,7 +10376,7 @@ Sets the shortcut hint for a text menu item, for example, the shortcut hint for 
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
-| const char* labelInfo | Shortcut hint of a text menu item. The default value is an empty string.|
+| const char* labelInfo | Pointer to the shortcut hint of a text menu item. The default value is an empty string.|
 
 **Returns**
 
@@ -10401,7 +10401,7 @@ Obtains the shortcut hint for a text menu item, for example, the shortcut hint f
 | Name| Description|
 | ------ | --- |
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
-| char* buffer | Buffer. You can create it and allocate memory to store the shortcut hint of the text menu item.|
+| char* buffer | Pointer to the buffer. You can create it and allocate memory to store the shortcut hint of the text menu item.|
 | int32_t bufferSize | Buffer size.|
 | int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
 
@@ -10453,7 +10453,7 @@ Obtains the ID of a text menu item.
 | Name| Description|
 | -- | -- |
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
-| int32_t* id | ID of a text menu item.|
+| int32_t* id | Pointer to the ID of a text menu item.|
 
 **Returns**
 
@@ -10478,7 +10478,7 @@ Obtains the size of the text menu item array.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object.|
-| int32_t* size | Size of the text menu item array.|
+| int32_t* size | Pointer to the size of the text menu item array.|
 
 **Returns**
 
@@ -10504,7 +10504,7 @@ Obtains the text menu item at a specified index from the text menu item array.
 | -- | -- |
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object.|
 | int32_t index | Index position.|
-| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)** item | Level-2 pointer to the **ArkUI_TextMenuItem** object.|
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)** item | Double pointer to the **ArkUI_TextMenuItem** object.|
 
 **Returns**
 
@@ -10641,7 +10641,7 @@ Callback for the text menu creation event. This callback is triggered when a tex
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object, which is created and released by the system. You can call [OH_ArkUI_TextMenuItemArray_Insert](capi-native-type-h.md#oh_arkui_textmenuitemarray_insert) and [OH_ArkUI_TextMenuItemArray_Erase](capi-native-type-h.md#oh_arkui_textmenuitemarray_erase) to modify the array in the callback.|
-| void\* userData | User-defined data.|
+| void\* userData | Pointer to the user-defined data.|
 
 ### ArkUI_TextPrepareMenuCallback()
 
@@ -10660,7 +10660,7 @@ Callback for the text menu preparation event. This callback is called when the t
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object, which is created and released by the system. You can call [OH_ArkUI_TextMenuItemArray_Insert](capi-native-type-h.md#oh_arkui_textmenuitemarray_insert) and [OH_ArkUI_TextMenuItemArray_Erase](capi-native-type-h.md#oh_arkui_textmenuitemarray_erase) to modify the array in the callback.|
-| void\* userData | User-defined data.|
+| void\* userData | Pointer to the user-defined data.|
 
 ### ArkUI_TextMenuItemClickCallback()
 
@@ -10681,7 +10681,7 @@ Callback for the text menu item click event. This callback is called when a menu
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object, indicating the clicked text menu item.|
 | int32_t start | Start index of the selected text.|
 | int32_t end | End index of the selected text.|
-| void\* userData | User-defined data.|
+| void\* userData | Pointer to the user-defined data.|
 
 **Returns**
 
@@ -10706,7 +10706,7 @@ Registers the callback for creating text menus.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object.|
-| void* userData | User-defined data.|
+| void* userData | Pointer to the user-defined data.|
 | [ArkUI_TextCreateMenuCallback](capi-native-type-h.md#arkui_textcreatemenucallback) cb | Callback for creating text menus.|
 
 **Returns**
@@ -10732,7 +10732,7 @@ Registers the callback for preparing text menus.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object.|
-| void* userData | User-defined data.|
+| void* userData | Pointer to the user-defined data.|
 | [ArkUI_TextPrepareMenuCallback](capi-native-type-h.md#arkui_textpreparemenucallback) cb | Callback for preparing text menus.|
 
 **Returns**
@@ -10758,7 +10758,7 @@ Registers the callback for text menu item clicks.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object.|
-| void* userData | User-defined data.|
+| void* userData | Pointer to the user-defined data.|
 | [ArkUI_TextMenuItemClickCallback](capi-native-type-h.md#arkui_textmenuitemclickcallback) cb | Callback for text menu item clicks.|
 
 **Returns**
@@ -10846,7 +10846,7 @@ Obtains the recognition type of a custom text selection menu.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
-| [ArkUI_TextSpanType](capi-native-type-h.md#arkui_textspantype)* spanType | Recognition type of a custom text selection menu.|
+| [ArkUI_TextSpanType](capi-native-type-h.md#arkui_textspantype)* spanType | Pointer to the recognition type of a custom text selection menu.|
 
 **Returns**
 
@@ -10946,7 +10946,7 @@ Obtains the response type of a custom text selection menu.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
-| [ArkUI_TextResponseType](capi-native-type-h.md#arkui_textresponsetype)* responseType | Response type of the custom text selection menu.|
+| [ArkUI_TextResponseType](capi-native-type-h.md#arkui_textresponsetype)* responseType | Pointer to the response type of the custom text selection menu.|
 
 **Returns**
 
@@ -10971,7 +10971,7 @@ Registers the callback for the event of showing a custom text selection menu.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
-| void* userData | User-defined data, which can be any value. After the setting, the value is returned through the callback.|
+| void* userData | Pointer to the user-defined data, which can be any value. After the setting, the value is returned through the callback.|
 | void (\*callback)(int32_t start, int32_t end, void* userData) | Callback for the event of showing a custom text selection menu.<br> **start**: start position of the selected text.<br> **end**: end position of the selected text.<br> **userData**: user-defined data, which corresponds to the input parameter **userData** of the **OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback** API.|
 
 **Returns**
@@ -10997,7 +10997,7 @@ Registers the callback for the event of hiding a custom text selection menu.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
-| void* userData | User-defined data, which can be any value. After the setting, the value is returned through the callback.|
+| void* userData | Pointer to the user-defined data, which can be any value. After the setting, the value is returned through the callback.|
 | void (\*callback)(int32_t start, int32_t end, void* userData) | Callback for the event of hiding a custom text selection menu.<br> **start**: start position of the selected text.<br> **end**: end position of the selected text.<br> **userData**: user-defined data, which corresponds to the input parameter **userData** of the **OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback** API.|
 
 **Returns**
