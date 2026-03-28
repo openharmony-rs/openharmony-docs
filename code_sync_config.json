@@ -48762,5 +48762,30 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/CryptoArchitectureKit/crypto-encrypt-decrypt-using-ecies.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceECIES/entry/src/main/ets/pages/Await.ets",
+				"functions":[
+					{
+						"end_line":99,
+						"name":"use_sample_await_test",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceECIES/entry/src/main/ets/pages/Sync.ets",
+				"functions":[
+					{
+						"end_line":99,
+						"name":"use_sample_sync_test",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
