@@ -579,7 +579,7 @@ Input_Result OH_Input_GetKeyState(struct Input_KeyState* keyState)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Input_Result](#input_result) | 如果操作成功，@return返回[INPUT_SUCCESS](#input_result)； <br> 否则返回[Input_Result](#input_result)中定义的其他错误代码。 |
+| [Input_Result](#input_result) | 操作成功返回[INPUT_SUCCESS](#input_result)；否则返回[Input_Result](#input_result)中定义的其他错误代码。 |
 
 ### OH_Input_CreateKeyState()
 
@@ -599,7 +599,7 @@ struct Input_KeyState* OH_Input_CreateKeyState()
 
 | 类型 | 说明 |
 | -- | -- |
-| struct [Input_KeyState](capi-input-input-keystate.md)* | 如果操作成功，@return返回一个[Input_KeyState](capi-input-input-keystate.md)指针对象；否则返回空指针。 |
+| struct [Input_KeyState](capi-input-input-keystate.md)* | 操作成功返回一个[Input_KeyState](capi-input-input-keystate.md)指针对象；否则返回空指针。 |
 
 ### OH_Input_DestroyKeyState()
 
