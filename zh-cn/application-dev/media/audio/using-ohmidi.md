@@ -1254,6 +1254,23 @@ async sendSysExMessage(): Promise<void> {
   - 销毁客户端
 
     <!-- @[cleanup_destroy_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value DestroyMIDIClient(napi_env env, napi_callback_info info)
+    {
+        // ...
+        std::lock_guard<std::mutex> lock(g_midiMutex);
+    
+        if (g_midiClient != nullptr) {
+            CloseAllOpenedDevices();
+            OH_MIDIClient_Destroy(g_midiClient);
+            g_midiClient = nullptr;
+        }
+        CleanupAllPortContexts();
+    
+        // ...
+    }
+    ```
 
 
 ### 10. 使用userData传递上下文数据
