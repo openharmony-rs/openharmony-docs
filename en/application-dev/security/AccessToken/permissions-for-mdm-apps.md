@@ -1,8 +1,8 @@
 # Permissions for MDM Applications
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -159,9 +159,9 @@ With this permission, the application can query whether Wi-Fi is disabled and se
 
 ## ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
-Allows a device administrator application to subscribe to management events.
+Allows a device administrator application to subscribe to management events,
 
-With this permission, the MDM application can receive the screen lock event or software version update event if the subscription is successful.
+such as application installation, application uninstallation, and system update events. After the subscription is successful, the MDM app will be notified when the event is triggered.
 
 **Permission level**: system_basic
 
