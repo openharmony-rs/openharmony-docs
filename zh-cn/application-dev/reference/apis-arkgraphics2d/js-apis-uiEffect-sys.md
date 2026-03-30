@@ -100,7 +100,46 @@ struct example {
   }
 }
 ```
+## uiEffect.createHdrDarkenBlender<sup>20+</sup>
+createHdrDarkenBlender(param: HdrDarkenBlenderParam): HdrDarkenBlender
 
+创建[HdrDarkenBlender](#hdrdarkenblender20)实例用于HDR图层的压暗混合效果。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+| 参数名  | 类型                                              | 必填 | 说明                        |
+| ------ | ------------------------------------------------- | ---- | --------------------------- |
+| param  | [HdrDarkenBlenderParam](#hdrdarkenblenderparam) | 是   | 实现HDR压暗混合器的参数。 |
+
+**返回值：**
+
+| 类型                                   | 说明                       |
+| ---------------------------------------- | ------------------------- |
+| [HdrDarkenBlender](#hdrdarkenblender20) | 返回HDR压暗混合器，用于将压暗效果添加到指定的组件上。 |
+
+**示例：**
+```ts
+let blender : uiEffect.HdrDarkenBlender = 
+  uiEffect.createHdrDarkenBlender({hdrBrightnessRatio:1.3, grayscaleFactor:[0.299, 0.587, 0.114]}) 
+@Entry 
+@Component 
+struct example { 
+  build() { 
+    RelativeContainer() { 
+    Stack(){ 
+        Text("TextWord") 
+          Image($r("app.media.screenshot")) 
+            .width("100%") 
+            .height("100%") 
+            .advancedBlendMode(blender) 
+    } 
+    } 
+  } 
+}
+```
 ## Filter
 Filter效果类，用于将相应的效果添加到指定的组件上。在调用Filter的方法前，需要先通过[createFilter](js-apis-uiEffect.md#uieffectcreatefilter)创建一个Filter实例。
 
@@ -1330,6 +1369,15 @@ type Blender = BrightnessBlender | HdrBrightnessBlender
 支持HDR的提亮混合器（继承自[BrightnessBlender](#brightnessblender)），用于将提亮效果添加到指定的组件上。在调用HdrBrightnessBlender前，需要先通过[createHdrBrightnessBlender](#uieffectcreatehdrbrightnessblender20)创建一个HdrBrightnessBlender实例。
 
 该混合器参数可参考[BrightnessBlender](#brightnessblender)。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**系统接口：** 此接口为系统接口。
+
+## HdrDarkenBlender<sup>20+</sup>
+HDR压暗混合器，用于将压暗效果添加到指定的组件上。用于将提亮效果添加到指定的组件上。在调用HdrDarkenBlender前，需要先通过[createHdrDarkenBlender](#uiEffectcreateHdrdarkenBlender20)创建一个HdrDarkenBlender实例。
+
+该混合器参数可见[HdrDarkenBlenderParam](#HdrDarkenBlenderParam)。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
