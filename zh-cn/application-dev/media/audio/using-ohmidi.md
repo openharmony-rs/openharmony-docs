@@ -44,42 +44,11 @@ OH_MIDI的主要接口包括:
 
 - 在CMake脚本中链接动态库
 
-  <!--@[ohmidi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/CMakeLists.txt)-->
-
-```cmake
-target_link_libraries(entry PUBLIC
-    libace_napi.z.so
-    libohmidi.so
-    libhilog_ndk.z.so
-)
-```
+  <!-- @[ohmidi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/CMakeLists.txt) -->
 
 - 添加头文件
 
-  <!--@[arkts_open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-openOutputPort(portIndex: number): void {
-
-  try {
-    const status = midi.openOutputPort(this.selectedDeviceId, portIndex, 1);
-
-    if (status === MidiStatusCode.OK) {
-      this.openOutputPorts.add(portIndex);
-      this.log(`Output port ${portIndex} opened`);
-      hilog.info(DOMAIN, TAG, '[openOutputPort] port opened, openOutputPorts.size=%{public}d',
-        this.openOutputPorts.size);
-    } else {
-      this.log(`Failed to open output port: ${status}`);
-      hilog.error(DOMAIN, TAG, '[openOutputPort] failed with status=%{public}d', status);
-    }
-    hilog.info(DOMAIN, TAG, '[openOutputPort] --exit, status=%{public}d', status);
-  } catch (e) {
-    hilog.error(DOMAIN, TAG, '[openOutputPort] exception: %{public}s', JSON.stringify(e));
-    this.log(`Error opening output port: ${JSON.stringify(e)}`);
-  }
-}
-```
+  <!-- @[arkts_open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 ### 声明权限
 
@@ -108,28 +77,7 @@ MIDI功能的权限需求根据使用场景不同而有所区别：
 
 - 创建MIDI客户端示例
 
-  <!--@[arkts_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-closeOutputPort(portIndex: number): void {
-  try {
-    const status = midi.closeOutputPort(this.selectedDeviceId, portIndex);
-    if (status === MidiStatusCode.OK) {
-      this.openOutputPorts.delete(portIndex);
-      this.log(`Output port ${portIndex} closed`);
-      hilog.info(DOMAIN, TAG, '[closeOutputPort] port closed, openOutputPorts.size=%{public}d',
-        this.openOutputPorts.size);
-    } else {
-      this.log(`Failed to close output port: ${status}`);
-      hilog.error(DOMAIN, TAG, '[closeOutputPort] failed with status=%{public}d', status);
-    }
-    hilog.info(DOMAIN, TAG, '[closeOutputPort] --exit, status=%{public}d', status);
-  } catch (e) {
-    hilog.error(DOMAIN, TAG, '[closeOutputPort] exception: %{public}s', JSON.stringify(e));
-    this.log(`Error closing output port: ${JSON.stringify(e)}`);
-  }
-}
-```
+  <!-- @[arkts_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 > **说明**：以上是最小化示例，完整功能开发（枚举设备、打开端口、收发消息）请参见下方"开发步骤"。
 
@@ -185,16 +133,7 @@ interface BleOpenedEventData {
 
 - 创建客户端示例
 
-  <!--@[send_note_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-``` C++
-// Send Note On message (helper function for testing)
-static napi_value SendNoteOn(napi_env env, napi_callback_info info)
-{
-    NoteMessageArgs args = ParseNoteMessageArgs(env, info);
-    return SendNoteMessage(env, args, true);
-}
-```
+  <!-- @[send_note_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 **ArkTS调用示例**
 
@@ -202,16 +141,7 @@ static napi_value SendNoteOn(napi_env env, napi_callback_info info)
 
 - ArkTS调用示例
 
-  <!--@[send_note_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-``` C++
-// Send Note Off message (helper function for testing)
-static napi_value SendNoteOff(napi_env env, napi_callback_info info)
-{
-    NoteMessageArgs args = ParseNoteMessageArgs(env, info);
-    return SendNoteMessage(env, args, false);
-}
-```
+  <!-- @[send_note_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 ### 2. 销毁MIDI客户端
 
@@ -219,79 +149,13 @@ static napi_value SendNoteOff(napi_env env, napi_callback_info info)
 
 - 销毁客户端示例
 
-  <!--@[ump_helper_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-``` C++
-// Build MIDI 1.0 Note On UMP (32-bit, 1 word)
-static void BuildMIDI1NoteOn(uint32_t channel, uint32_t note, uint32_t velocity, uint32_t* umpData)
-{
-    // UMP format: MT[31-28]=0x2, Group[27-24]=0x0, Status[23-20]=0x9
-    // Channel[19-16], Data1[15-8]=note, Data2[7-0]=velocity
-    umpData[0] = (MIDI_UMP_MT_1_0 << MIDI_UMP_WORDS_28) | (0x0 << MIDI_UMP_SHIFT_24) |
-                 (MIDI_UMP_STATUS_NOTE_ON << MIDI_UMP_SHIFT_20) |
-                 ((channel & MIDI_CHANNEL_MASK) << MIDI_UMP_WORDS_16) |
-                 ((note & MIDI_NOTE_MASK) << MIDI_UMP_SHIFT_8) | (velocity & MIDI_NOTE_MASK);
-}
-
-// Build MIDI 1.0 Note Off UMP (32-bit, 1 word)
-static void BuildMIDI1NoteOff(uint32_t channel, uint32_t note, uint32_t velocity, uint32_t* umpData)
-{
-    // UMP format: MT[31-28]=0x2, Group[27-24]=0x0, Status[23-20]=0x8
-    // Channel[19-16], Data1[15-8]=note, Data2[7-0]=velocity
-    umpData[0] = (MIDI_UMP_MT_1_0 << MIDI_UMP_WORDS_28) | (0x0 << MIDI_UMP_SHIFT_24) |
-                 (MIDI_UMP_STATUS_NOTE_OFF << MIDI_UMP_SHIFT_20) |
-                 ((channel & MIDI_CHANNEL_MASK) << MIDI_UMP_WORDS_16) |
-                 ((note & MIDI_NOTE_MASK) << MIDI_UMP_SHIFT_8) | (velocity & MIDI_NOTE_MASK);
-}
-```
+  <!-- @[ump_helper_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 **ArkTS调用示例：**
 
 - ArkTS代码示例
 
-  <!--@[cleanup_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-``` C++
-// Close input port
-static napi_value CloseInputPort(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int64_t deviceId = 0;
-    napi_get_value_int64(env, args[0], &deviceId);
-
-    uint32_t portIndex = 0;
-    napi_get_value_uint32(env, args[1], &portIndex);
-
-    OH_LOG_INFO(LOG_APP, "[CloseInputPort] ++enter, deviceId=%{public}lld, portIndex=%{public}u",
-                (long long)deviceId, portIndex);
-
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-
-    napi_value result;
-    auto it = g_openedDevices.find(deviceId);
-    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
-        OH_LOG_ERROR(LOG_APP, "[CloseInputPort] client is null or device not opened");
-        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
-        return result;
-    }
-
-    OH_MIDIStatusCode status = OH_MIDIDevice_CloseInputPort(it->second, portIndex);
-
-    // Clean up input port context
-    auto key = std::make_pair(deviceId, portIndex);
-    auto contextIt = g_inputPortContexts.find(key);
-    if (contextIt != g_inputPortContexts.end()) {
-        if (contextIt->second != nullptr) {
-            contextIt->second->Stop();
-        }
-        g_inputPortContexts.erase(contextIt);
-    }
-    // ...
-}
-```
+  <!-- @[cleanup_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 ### 3. 枚举MIDI设备
 
@@ -303,47 +167,13 @@ static napi_value CloseInputPort(napi_env env, napi_callback_info info)
 
 - 获取设备列表示例
 
-  <!--@[get_device_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-``` C++
-static napi_value GetDeviceInfos(napi_env env, napi_callback_info info)
-{
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-    // ...
-
-    size_t count = 0;
-    OH_MIDIStatusCode status = OH_MIDIClient_GetDeviceCount(g_midiClient, &count);
-    // ...
-    std::vector<OH_MIDIDeviceInformation> devices(count);
-    size_t actualCount = 0;
-    status = OH_MIDIClient_GetDeviceInfos(g_midiClient, devices.data(), count, &actualCount);
-    // ...
-}
-```
+  <!-- @[get_device_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 **ArkTS调用示例：**
 
 - ArkTS代码示例
 
-  <!--@[arkts_enum_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-refreshDevices(): void {
-  try {
-    const count = midi.getDeviceCount();
-    if (count > 0) {
-      this.deviceList = midi.getDeviceInfos();
-      // ...
-    } else {
-      this.deviceList = [];
-      hilog.info(DOMAIN, TAG, '[refreshDevices] no devices found');
-    }
-    // ...
-  } catch (e) {
-    // ...
-  }
-}
-```
+  <!-- @[arkts_enum_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 ### 4. 打开MIDI设备
 
@@ -355,132 +185,24 @@ refreshDevices(): void {
 
 - 打开USB MIDI设备示例
 
-  <!--@[open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-``` C++
-static napi_value OpenDevice(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int64_t deviceId = 0;
-    napi_get_value_int64(env, args[0], &deviceId);
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-    // ...
-    OH_MIDIDevice *device = nullptr;
-    OH_MIDIStatusCode status = OH_MIDIClient_OpenDevice(g_midiClient, deviceId, &device);
-    if (status == OH_MIDI_STATUS_OK && device != nullptr) {
-        g_openedDevices[deviceId] = device;
-        OH_LOG_INFO(LOG_APP, "[OpenDevice] device stored, total opened devices=%{public}zu", g_openedDevices.size());
-    }
-    // ...
-}
-```
+  <!-- @[open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 **ArkTS调用示例：**
 
 - ArkTS代码示例
 
-  <!--@[arkts_open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-openDevice(): void {
-  // ...
-  if (this.selectedDeviceId < 0) {
-    hilog.warn(DOMAIN, TAG, '[openDevice] no device selected');
-    this.log('Please select a device first');
-    return;
-  }
-
-  try {
-    const status = midi.openDevice(this.selectedDeviceId);
-    if (status === MidiStatusCode.OK) {
-      this.isDeviceOpen = true;
-      this.log(`Device ${this.selectedDeviceId} opened`);
-      hilog.info(DOMAIN, TAG, '[openDevice] device opened successfully, isDeviceOpen=true');
-    } else {
-      this.log(`Failed to open device: ${status}`);
-      hilog.error(DOMAIN, TAG, '[openDevice] failed with status=%{public}d', status);
-    }
-    hilog.info(DOMAIN, TAG, '[openDevice] --exit, status=%{public}d', status);
-  } catch (e) {
-    hilog.error(DOMAIN, TAG, '[openDevice] exception: %{public}s', JSON.stringify(e));
-    this.log(`Error opening device: ${JSON.stringify(e)}`);
-  }
-}
-```
+  <!-- @[arkts_open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 #### 4.2 关闭MIDI设备
 
 
-<!--@[close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-``` C++
-static napi_value CloseDevice(napi_env env, napi_callback_info info)
-{
-    // ...
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-    // ...
-    auto it = g_openedDevices.find(deviceId);
-    if (it != g_openedDevices.end()) {
-        // 清理该设备的所有InputPortContext
-        CleanupInputPortContextsForDevice(deviceId);
-        OH_MIDIStatusCode status = OH_MIDIClient_CloseDevice(g_midiClient, it->second);
-        g_openedDevices.erase(it);
-        // ...
-    } else {
-        // ...
-    }
-
-    // ...
-    return result;
-}
-```
+<!-- @[close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 **ArkTS调用示例：**
 
 - ArkTS代码示例
 
-  <!--@[arkts_close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-closeDevice(): void {
-  hilog.info(DOMAIN, TAG, '[closeDevice] ++enter, selectedDeviceId=%{public}d', this.selectedDeviceId);
-
-  if (this.selectedDeviceId < 0) {
-    hilog.warn(DOMAIN, TAG, '[closeDevice] no device selected');
-    return;
-  }
-
-  try {
-    this.openInputPorts.forEach((portIndex: number) => {
-      midi.closeInputPort(this.selectedDeviceId, portIndex);
-    });
-    this.openOutputPorts.forEach((portIndex: number) => {
-      midi.closeOutputPort(this.selectedDeviceId, portIndex);
-    });
-    this.openInputPorts.clear();
-    this.openOutputPorts.clear();
-    this.activeKeys.clear();
-
-    const status = midi.closeDevice(this.selectedDeviceId);
-
-    if (status === MidiStatusCode.OK) {
-      this.isDeviceOpen = false;
-      this.log('Device closed');
-      hilog.info(DOMAIN, TAG, '[closeDevice] device closed successfully, isDeviceOpen=false');
-    } else {
-      this.log(`Failed to close device: ${status}`);
-      hilog.error(DOMAIN, TAG, '[closeDevice] failed with status=%{public}d', status);
-    }
-    hilog.info(DOMAIN, TAG, '[closeDevice] --exit, status=%{public}d', status);
-  } catch (e) {
-    hilog.error(DOMAIN, TAG, '[closeDevice] exception: %{public}s', JSON.stringify(e));
-    this.log(`Error closing device: ${JSON.stringify(e)}`);
-  }
-}
-```
+  <!-- @[arkts_close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 #### 4.3 打开BLE MIDI设备（异步）
 
@@ -496,96 +218,17 @@ MIDI BLE设备可通过服务UUID `03B80E5A-EDE8-4B33-A751-6CE34EC4C700` 进行�
 
 - 打开BLE MIDI设备示例
 
-  <!--@[open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-// Open BLE device asynchronously
-static napi_value OpenBLEDevice(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    // Get device address
-    size_t addrLen = 0;
-    napi_get_value_string_utf8(env, args[0], nullptr, 0, &addrLen);
-    std::string deviceAddr(addrLen, '\0');
-    napi_get_value_string_utf8(env, args[0], &deviceAddr[0], addrLen + 1, &addrLen);
-
-    // ...
-
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-
-    // ...
-    OH_MIDIStatusCode status = OH_MIDIClient_OpenBLEDevice(g_midiClient, deviceAddr.c_str(),
-                                                           OnBLEDeviceOpened, nullptr);
-    // ...
-}
-```
+  <!-- @[open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 **BLE设备打开回调：**
 
-<!--@[ble_device_opened_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-static void OnBLEDeviceOpened(void *userData, bool opened, OH_MIDIDevice *device, OH_MIDIDeviceInformation info)
-{
-    std::string deviceAddr = info.deviceAddress;
-    // ...
-}
-```
+<!-- @[ble_device_opened_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 **ArkTS调用示例：**
 
 - ArkTS代码示例
 
-  <!--@[arkts_open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-openBLEDevice(deviceAddress: string): void {
-  hilog.info(DOMAIN, TAG, '[openBLEDevice] ++enter, address=%{public}s', deviceAddress);
-  if (!deviceAddress || deviceAddress.length === 0) {
-    hilog.warn(DOMAIN, TAG, '[openBLEDevice] empty device address');
-    this.log('Please enter a BLE device address');
-    return;
-  }
-  this.bleConnecting = true;
-  this.log(`Connecting to BLE device: ${deviceAddress}`);
-
-  try {
-    const status = midi.openBLEDevice(deviceAddress, (opened: boolean, deviceInfo: MidiDeviceInfo) => {
-      // In callback: only copy data and emit event, do not hold locks or execute heavy operations
-      hilog.info(DOMAIN, TAG, '[openBLEDevice/cb] opened=%{public}s, devId=%{public}d, name=%{public}s',
-        opened.toString(), deviceInfo.deviceId, deviceInfo.deviceName);
-      const eventData: BleOpenedEventData = {
-        opened: opened,
-        deviceId: deviceInfo.deviceId,
-        deviceName: deviceInfo.deviceName,
-        deviceType: deviceInfo.deviceType,
-        deviceAddress: deviceInfo.deviceAddress
-      };
-      emitter.emit({ eventId: EVENT_BLE_OPENED }, { data: eventData });
-      hilog.info(DOMAIN, TAG, '[openBLEDevice/callback] emitted EVENT_BLE_OPENED');
-    });
-    hilog.info(DOMAIN, TAG, '[openBLEDevice] openBLEDevice returned status=%{public}d', status);
-    if (status !== MidiStatusCode.OK) {
-      this.bleConnecting = false;
-      if (status === MidiStatusCode.PERMISSION_DENIED) {
-        this.log('Bluetooth permission denied. Please grant ACCESS_BLUETOOTH permission.');
-        hilog.error(DOMAIN, TAG, '[openBLEDevice] permission denied');
-      } else {
-        this.log(`Failed to start BLE connection: ${status}`);
-        hilog.error(DOMAIN, TAG, '[openBLEDevice] failed with status=%{public}d', status);
-      }
-    }
-    hilog.info(DOMAIN, TAG, '[openBLEDevice] --exit, status=%{public}d', status);
-  } catch (e) {
-    this.bleConnecting = false;
-    hilog.error(DOMAIN, TAG, '[openBLEDevice] exception: %{public}s', JSON.stringify(e));
-    this.log(`Error opening BLE device: ${JSON.stringify(e)}`);
-  }
-}
-```
+  <!-- @[arkts_open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 **关键要点：**
 - BLE设备连接是异步的，结果通过回调返回
@@ -601,70 +244,13 @@ openBLEDevice(deviceAddress: string): void {
 
 - 获取端口信息示例
 
-  <!--@[get_port_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-static napi_value GetPortInfos(napi_env env, napi_callback_info info)
-{
-    size_t argc = 1;
-    napi_value args[1] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int64_t deviceId = 0;
-    napi_get_value_int64(env, args[0], &deviceId);
-    // ...
-
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-
-    // ...
-
-    size_t count = 0;
-    OH_MIDIStatusCode status = OH_MIDIClient_GetPortCount(g_midiClient, deviceId, &count);
-    // ...
-
-    std::vector<OH_MIDIPortInformation> ports(count);
-    size_t actualCount = 0;
-    status = OH_MIDIClient_GetPortInfos(g_midiClient, deviceId, ports.data(), count, &actualCount);
-    // ...
-}
-```
+  <!-- @[get_port_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 **ArkTS调用示例：**
 
 - ArkTS代码示例
 
-  <!--@[arkts_load_ports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-loadPorts(deviceId: number): void {
-  hilog.info(DOMAIN, TAG, '[loadPorts] ++enter, deviceId=%{public}d', deviceId);
-  try {
-    // ...
-    if (count > 0) {
-      this.portList = midi.getPortInfos(deviceId);
-      this.inputPorts = this.portList.filter(p => p.direction === MidiPortDirection.INPUT);
-      this.outputPorts = this.portList.filter(p => p.direction === MidiPortDirection.OUTPUT);
-      hilog.info(DOMAIN, TAG, '[loadPorts] totalPorts=%{public}d, inputPorts=%{public}d, outputPorts=%{public}d',
-        this.portList.length, this.inputPorts.length, this.outputPorts.length);
-      // Log each port info
-      this.portList.forEach((port, index) => {
-        hilog.info(DOMAIN, TAG,
-          '[loadPorts] port[%{public}d]: index=%{public}d, name=%{public}s, direction=%{public}d',
-          index, port.portIndex, port.name, port.direction);
-      });
-    } else {
-      this.portList = [];
-      this.inputPorts = [];
-      this.outputPorts = [];
-      hilog.info(DOMAIN, TAG, '[loadPorts] no ports found');
-    }
-    hilog.info(DOMAIN, TAG, '[loadPorts] --exit');
-  } catch (e) {
-    hilog.error(DOMAIN, TAG, '[loadPorts] exception: %{public}s', JSON.stringify(e));
-    this.log(`Error loading ports: ${JSON.stringify(e)}`);
-  }
-}
-```
+  <!-- @[arkts_load_ports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 ### 6. MIDI端口管理
 
@@ -676,101 +262,15 @@ loadPorts(deviceId: number): void {
 
 - MIDI接收回调示例
 
-  <!--@[midi_received_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+  <!-- @[midi_received_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
-```cpp
-static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t eventCount)
-{
-    // userData指向InputPortContext
-    InputPortContext* context = static_cast<InputPortContext*>(userData);
-    // ...
-}
-```
-
-<!--@[open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-static napi_value OpenInputPort(napi_env env, napi_callback_info info)
-{
-    InputPortArgs args = ParseInputPortArgs(env, info);
-
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-
-    napi_value result;
-    auto it = g_openedDevices.find(args.deviceId);
-    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
-        OH_LOG_ERROR(LOG_APP, "[OpenInputPort] client is null or device not opened");
-        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
-        return result;
-    }
-
-    // Construct port descriptor
-    OH_MIDIPortDescriptor descriptor;
-    descriptor.portIndex = args.portIndex;
-    descriptor.protocol = static_cast<OH_MIDIProtocol>(args.protocol);
-
-    // Create input port context for thread-safe callback handling
-    auto context = std::make_shared<InputPortContext>(args.deviceId, args.portIndex);
-
-    OH_MIDIStatusCode status = OH_MIDIDevice_OpenInputPort(it->second, descriptor, OnMIDIReceived, context.get());
-    // ...
-}
-```
+<!-- @[open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 **ArkTS调用示例：**
 
 - ArkTS代码示例
 
-  <!--@[arkts_open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-openInputPort(portIndex: number): void {
-  hilog.info(DOMAIN, TAG, '[openInputPort] ++enter, deviceId=%{public}d, portIndex=%{public}d',
-    this.selectedDeviceId, portIndex);
-
-  try {
-    const status = midi.openInputPort(
-      this.selectedDeviceId,
-      portIndex,
-      1, // MIDI 1.0 protocol
-      (events: MidiEvent[]) => {
-        // In callback: only copy data and emit event, do not hold locks or execute heavy operations
-        hilog.debug(DOMAIN, TAG, '[openInputPort/callback] received %{public}d events', events.length);
-        const umpData: number[] = [];
-        for (const event of events) {
-          if (event.data && event.data.length > 0) {
-            // Traverse all elements in event.data array
-            for (let i = 0; i < event.data.length; i++) {
-              umpData.push(event.data[i]);
-            }
-          }
-        }
-        if (umpData.length > 0) {
-          const eventData: MidiReceivedEventData = { umpData: umpData };
-          emitter.emit({ eventId: EVENT_MIDI_RECEIVED }, { data: eventData });
-          hilog.debug(DOMAIN, TAG,
-            '[openInputPort/callback] emitted EVENT_MIDI_RECEIVED with %{public}d UMPs', umpData.length);
-        }
-      }
-    );
-
-    hilog.info(DOMAIN, TAG, '[openInputPort] openInputPort returned status=%{public}d', status);
-    if (status === MidiStatusCode.OK) {
-      this.openInputPorts.add(portIndex);
-      this.log(`Input port ${portIndex} opened with callback`);
-      hilog.info(DOMAIN, TAG, '[openInputPort] port opened, openInputPorts.size=%{public}d',
-        this.openInputPorts.size);
-    } else {
-      this.log(`Failed to open input port: ${status}`);
-      hilog.error(DOMAIN, TAG, '[openInputPort] failed with status=%{public}d', status);
-    }
-    hilog.info(DOMAIN, TAG, '[openInputPort] --exit, status=%{public}d', status);
-  } catch (e) {
-    hilog.error(DOMAIN, TAG, '[openInputPort] exception: %{public}s', JSON.stringify(e));
-    this.log(`Error opening input port: ${JSON.stringify(e)}`);
-  }
-}
-```
+  <!-- @[arkts_open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 #### 6.2 关闭输入端口
 
@@ -778,146 +278,21 @@ openInputPort(portIndex: number): void {
 
 - 关闭输入端口示例
 
-  <!--@[close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-// Close input port
-static napi_value CloseInputPort(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int64_t deviceId = 0;
-    napi_get_value_int64(env, args[0], &deviceId);
-
-    uint32_t portIndex = 0;
-    napi_get_value_uint32(env, args[1], &portIndex);
-
-    OH_LOG_INFO(LOG_APP, "[CloseInputPort] ++enter, deviceId=%{public}lld, portIndex=%{public}u",
-                (long long)deviceId, portIndex);
-
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-
-    napi_value result;
-    auto it = g_openedDevices.find(deviceId);
-    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
-        OH_LOG_ERROR(LOG_APP, "[CloseInputPort] client is null or device not opened");
-        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
-        return result;
-    }
-
-    OH_MIDIStatusCode status = OH_MIDIDevice_CloseInputPort(it->second, portIndex);
-
-    // Clean up input port context
-    auto key = std::make_pair(deviceId, portIndex);
-    auto contextIt = g_inputPortContexts.find(key);
-    if (contextIt != g_inputPortContexts.end()) {
-        if (contextIt->second != nullptr) {
-            contextIt->second->Stop();
-        }
-        g_inputPortContexts.erase(contextIt);
-    }
-    // ...
-}
-```
+  <!-- @[close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 - ArkTS代码示例
 
-  <!--@[arkts_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-closeInputPort(portIndex: number): void {
-  try {
-    const status = midi.closeInputPort(this.selectedDeviceId, portIndex);
-
-    if (status === MidiStatusCode.OK) {
-      this.openInputPorts.delete(portIndex);
-      this.log(`Input port ${portIndex} closed`);
-      hilog.info(DOMAIN, TAG, '[closeInputPort] port closed, openInputPorts.size=%{public}d',
-        this.openInputPorts.size);
-    } else {
-      this.log(`Failed to close input port: ${status}`);
-      hilog.error(DOMAIN, TAG, '[closeInputPort] failed with status=%{public}d', status);
-    }
-    hilog.info(DOMAIN, TAG, '[closeInputPort] --exit, status=%{public}d', status);
-  } catch (e) {
-    hilog.error(DOMAIN, TAG, '[closeInputPort] exception: %{public}s', JSON.stringify(e));
-    this.log(`Error closing input port: ${JSON.stringify(e)}`);
-  }
-}
-```
+  <!-- @[arkts_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 #### 6.3 打开输出端口
 
-<!--@[open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
-{
-    size_t argc = 3;
-    napi_value args[3] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int64_t deviceId = 0;
-    napi_get_value_int64(env, args[0], &deviceId);
-
-    uint32_t portIndex = 0;
-    napi_get_value_uint32(env, args[1], &portIndex);
-
-    int32_t protocol = static_cast<int32_t>(MIDI_PROTOCOL_1_0); // Default to MIDI 1.0
-    napi_get_value_int32(env, args[MIDI_ARG_INDEX_2], &protocol);
-
-    OH_LOG_INFO(LOG_APP, "[OpenOutputPort] ++enter, deviceId=%{public}lld, portIndex=%{public}u, protocol=%{public}d",
-                (long long)deviceId, portIndex, protocol);
-
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-
-    napi_value result;
-    auto it = g_openedDevices.find(deviceId);
-    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
-        OH_LOG_ERROR(LOG_APP, "[OpenOutputPort] client is null or device not opened");
-        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
-        return result;
-    }
-
-    OH_MIDIPortDescriptor descriptor;
-    descriptor.portIndex = portIndex;
-    descriptor.protocol = static_cast<OH_MIDIProtocol>(protocol);
-
-    OH_MIDIStatusCode status = OH_MIDIDevice_OpenOutputPort(it->second, descriptor);
-    // ...
-}
-```
+<!-- @[open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 **ArkTS调用示例：**
 
 - ArkTS代码示例
 
-  <!--@[arkts_open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-```typescript
- openOutputPort(portIndex: number): void {
-
-    try {
-      const status = midi.openOutputPort(this.selectedDeviceId, portIndex, 1);
-
-      if (status === MidiStatusCode.OK) {
-        this.openOutputPorts.add(portIndex);
-        this.log(`Output port ${portIndex} opened`);
-        hilog.info(DOMAIN, TAG, '[openOutputPort] port opened, openOutputPorts.size=%{public}d',
-          this.openOutputPorts.size);
-      } else {
-        this.log(`Failed to open output port: ${status}`);
-        hilog.error(DOMAIN, TAG, '[openOutputPort] failed with status=%{public}d', status);
-      }
-      hilog.info(DOMAIN, TAG, '[openOutputPort] --exit, status=%{public}d', status);
-    } catch (e) {
-      hilog.error(DOMAIN, TAG, '[openOutputPort] exception: %{public}s', JSON.stringify(e));
-      this.log(`Error opening output port: ${JSON.stringify(e)}`);
-    }
-  }
-```
+  <!-- @[arkts_open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 #### 6.4 关闭输出端口
 
@@ -925,68 +300,11 @@ static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
 
 - 关闭输出端口示例
 
-  <!--@[close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-// Close output port
-static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int64_t deviceId = 0;
-    napi_get_value_int64(env, args[0], &deviceId);
-
-    uint32_t portIndex = 0;
-    napi_get_value_uint32(env, args[1], &portIndex);
-
-    OH_LOG_INFO(LOG_APP, "[CloseOutputPort] ++enter, deviceId=%{public}lld, portIndex=%{public}u",
-                (long long)deviceId, portIndex);
-
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-
-    napi_value result;
-    auto it = g_openedDevices.find(deviceId);
-    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
-        OH_LOG_ERROR(LOG_APP, "[CloseOutputPort] client is null or device not opened");
-        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
-        return result;
-    }
-    OH_MIDIStatusCode status = OH_MIDIDevice_CloseOutputPort(it->second, portIndex);
-    // Remove protocol info for this output port
-    if (status == OH_MIDI_STATUS_OK) {
-        auto key = std::make_pair(deviceId, portIndex);
-        g_outputPortProtocols.erase(key);
-    }
-    // ...
-}
-```
+  <!-- @[close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 - ArkTS代码示例
 
-  <!--@[arkts_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-```typescript
-  closeOutputPort(portIndex: number): void {
-    try {
-      const status = midi.closeOutputPort(this.selectedDeviceId, portIndex);
-      if (status === MidiStatusCode.OK) {
-        this.openOutputPorts.delete(portIndex);
-        this.log(`Output port ${portIndex} closed`);
-        hilog.info(DOMAIN, TAG, '[closeOutputPort] port closed, openOutputPorts.size=%{public}d',
-          this.openOutputPorts.size);
-      } else {
-        this.log(`Failed to close output port: ${status}`);
-        hilog.error(DOMAIN, TAG, '[closeOutputPort] failed with status=%{public}d', status);
-      }
-      hilog.info(DOMAIN, TAG, '[closeOutputPort] --exit, status=%{public}d', status);
-    } catch (e) {
-      hilog.error(DOMAIN, TAG, '[closeOutputPort] exception: %{public}s', JSON.stringify(e));
-      this.log(`Error closing output port: ${JSON.stringify(e)}`);
-    }
-  }
-```
+  <!-- @[arkts_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 ### 7. 发送MIDI消息
 
@@ -994,48 +312,7 @@ static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
 
 #### 7.1 发送自定义MIDI消息
 
-<!--@[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-static napi_value SendMIDI(napi_env env, napi_callback_info info)
-{
-    size_t argc = 3;
-    napi_value args[3] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int64_t deviceId = 0;
-    napi_get_value_int64(env, args[0], &deviceId);
-    uint32_t portIndex = 0;
-    napi_get_value_uint32(env, args[1], &portIndex);
-
-    OH_LOG_DEBUG(LOG_APP, "[SendMIDI] deviceId=%{public}lld, portIndex=%{public}u", (long long)deviceId, portIndex);
-
-    bool isArray = false;
-    napi_is_array(env, args[MIDI_ARG_INDEX_2], &isArray);
-    if (!isArray) {
-        napi_value result;
-        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT), &result);
-        return result;
-    }
-
-    std::vector<OH_MIDIEvent> events;
-    std::vector<std::vector<uint32_t>> eventDataBuffers;
-    ParseMIDIEventsFromArray(env, args[MIDI_ARG_INDEX_2], events, eventDataBuffers);
-    uint32_t eventCount = static_cast<uint32_t>(events.size());
-
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-    napi_value result;
-    auto it = g_openedDevices.find(deviceId);
-    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
-        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
-        return result;
-    }
-
-    uint32_t eventsWritten = 0;
-    OH_MIDIStatusCode status = OH_MIDIDevice_Send(it->second, portIndex, events.data(), eventCount, &eventsWritten);
-    // ...
-}
-```
+<!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 **ArkTS调用示例：**
 
@@ -1063,93 +340,19 @@ sendMIDIEvents(0, [midiEvent]);
 
 > **说明**：以下示例使用MIDI 1.0协议格式，将传统的MIDI 1.0通道消息包装在UMP Type 2数据包中发送。MT=0x2表示MIDI 1.0通道语音消息。
 
-<!--@[send_note_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-// 发送Note On消息（辅助函数，用于测试）
-static napi_value SendNoteOn(napi_env env, napi_callback_info info)
-{
-    NoteMessageArgs args = ParseNoteMessageArgs(env, info);
-    return SendNoteMessage(env, args, true);
-}
-```
+<!-- @[send_note_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 - ArkTS代码示例
 
-  <!--@[arkts_on_key_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-onKeyPress(note: number): void {
-  if (this.openOutputPorts.size === 0) {
-    hilog.warn(DOMAIN, TAG, '[onKeyPress] no output port open');
-    this.log('Please open an output port first');
-    return;
-  }
-
-  const portIndex = Array.from(this.openOutputPorts)[0];
-  this.activeKeys.add(note);
-
-  try {
-    const status = midi.sendNoteOn(this.selectedDeviceId, portIndex, this.channelValue, note, 100);
-    if (status !== MidiStatusCode.OK) {
-      this.log(`Failed to send Note On: ${status}`);
-      hilog.error(DOMAIN, TAG, '[onKeyPress] sendNoteOn failed with status=%{public}d', status);
-    } else {
-      hilog.debug(DOMAIN, TAG, '[onKeyPress] NoteOn sent successfully');
-    }
-  } catch (e) {
-    hilog.error(DOMAIN, TAG, '[onKeyPress] exception: %{public}s', JSON.stringify(e));
-    this.log(`Error sending Note On: ${JSON.stringify(e)}`);
-  }
-}
-```
+  <!-- @[arkts_on_key_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 #### 7.3 发送Note Off消息
 
-<!--@[send_note_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-// 发送Note Off消息（辅助函数，用于测试）
-static napi_value SendNoteOff(napi_env env, napi_callback_info info)
-{
-    NoteMessageArgs args = ParseNoteMessageArgs(env, info);
-    return SendNoteMessage(env, args, false);
-}
-```
+<!-- @[send_note_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 - ArkTS代码示例
 
-  <!--@[arkts_on_key_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
-
-``` TypeScript
-onKeyRelease(note: number): void {
-  if (this.openOutputPorts.size === 0) {
-    this.activeKeys.delete(note);
-    hilog.debug(DOMAIN, TAG, '[onKeyRelease] no output port, just removing from activeKeys');
-    return;
-  }
-
-  const portIndex = Array.from(this.openOutputPorts)[0];
-  this.activeKeys.delete(note);
-
-  try {
-    hilog.debug(DOMAIN, TAG,
-      '[onKeyRelease] NoteOff: dev=%{public}d, port=%{public}d, ch=%{public}d, note=%{public}d',
-      this.selectedDeviceId, portIndex, this.channelValue, note);
-    const status = midi.sendNoteOff(this.selectedDeviceId, portIndex, this.channelValue, note, 64);
-    if (status !== MidiStatusCode.OK) {
-      this.log(`Failed to send Note Off: ${status}`);
-      hilog.error(DOMAIN, TAG, '[onKeyRelease] sendNoteOff failed with status=%{public}d', status);
-    } else {
-      hilog.debug(DOMAIN, TAG, '[onKeyRelease] NoteOff sent successfully');
-    }
-  } catch (e) {
-    hilog.error(DOMAIN, TAG, '[onKeyRelease] exception: %{public}s', JSON.stringify(e));
-    this.log(`Error sending Note Off: ${JSON.stringify(e)}`);
-  }
-  hilog.debug(DOMAIN, TAG, '[onKeyRelease] --exit');
-}
-```
+  <!-- @[arkts_on_key_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
 
 #### 7.4 UMP格式说明
 
@@ -1168,31 +371,7 @@ OH_MIDI强制使用UMP（Universal MIDI Packet）格式。常用的MIDI 1.0通�
 
 #### 7.5 常用MIDI消息UMP构造示例
 
-<!--@[ump_helper_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-// Build MIDI 1.0 Note On UMP (32-bit, 1 word)
-static void BuildMIDI1NoteOn(uint32_t channel, uint32_t note, uint32_t velocity, uint32_t* umpData)
-{
-    // UMP format: MT[31-28]=0x2, Group[27-24]=0x0, Status[23-20]=0x9
-    // Channel[19-16], Data1[15-8]=note, Data2[7-0]=velocity
-    umpData[0] = (MIDI_UMP_MT_1_0 << MIDI_UMP_WORDS_28) | (0x0 << MIDI_UMP_SHIFT_24) |
-                 (MIDI_UMP_STATUS_NOTE_ON << MIDI_UMP_SHIFT_20) |
-                 ((channel & MIDI_CHANNEL_MASK) << MIDI_UMP_WORDS_16) |
-                 ((note & MIDI_NOTE_MASK) << MIDI_UMP_SHIFT_8) | (velocity & MIDI_NOTE_MASK);
-}
-
-// Build MIDI 1.0 Note Off UMP (32-bit, 1 word)
-static void BuildMIDI1NoteOff(uint32_t channel, uint32_t note, uint32_t velocity, uint32_t* umpData)
-{
-    // UMP format: MT[31-28]=0x2, Group[27-24]=0x0, Status[23-20]=0x8
-    // Channel[19-16], Data1[15-8]=note, Data2[7-0]=velocity
-    umpData[0] = (MIDI_UMP_MT_1_0 << MIDI_UMP_WORDS_28) | (0x0 << MIDI_UMP_SHIFT_24) |
-                 (MIDI_UMP_STATUS_NOTE_OFF << MIDI_UMP_SHIFT_20) |
-                 ((channel & MIDI_CHANNEL_MASK) << MIDI_UMP_WORDS_16) |
-                 ((note & MIDI_NOTE_MASK) << MIDI_UMP_SHIFT_8) | (velocity & MIDI_NOTE_MASK);
-}
-```
+<!-- @[ump_helper_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 #### 7.6 常用CC控制器编号参考
 
@@ -1274,35 +453,7 @@ async sendSysExMessage(): Promise<void> {
 
 - 清空输出缓冲区示例
 
-  <!--@[flush_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-static napi_value FlushOutputPort(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int64_t deviceId = 0;
-    napi_get_value_int64(env, args[0], &deviceId);
-
-    uint32_t portIndex = 0;
-    napi_get_value_uint32(env, args[1], &portIndex);
-
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-
-    napi_value result;
-    auto it = g_openedDevices.find(deviceId);
-    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
-        OH_LOG_ERROR(LOG_APP, "[FlushOutputPort] client is null or device not opened");
-        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
-        return result;
-    }
-
-    OH_MIDIStatusCode status = OH_MIDIDevice_FlushOutputPort(it->second, portIndex);
-    // ...
-}
-```
+  <!-- @[flush_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 ### 9. 资源清理顺序
 
@@ -1315,127 +466,22 @@ static napi_value FlushOutputPort(napi_env env, napi_callback_info info)
 
 - 资源清理示例
 
-  <!--@[cleanup_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+  - 关闭输入端口
 
-```cpp
-// Close input port
-static napi_value CloseInputPort(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    <!-- @[cleanup_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
-    int64_t deviceId = 0;
-    napi_get_value_int64(env, args[0], &deviceId);
+  - 关闭输出端口
 
-    uint32_t portIndex = 0;
-    napi_get_value_uint32(env, args[1], &portIndex);
+    <!-- @[cleanup_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
-    OH_LOG_INFO(LOG_APP, "[CloseInputPort] ++enter, deviceId=%{public}lld, portIndex=%{public}u",
-                (long long)deviceId, portIndex);
+  - 关闭设备
 
-    std::lock_guard<std::mutex> lock(g_midiMutex);
+    <!-- @[cleanup_close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
-    napi_value result;
-    auto it = g_openedDevices.find(deviceId);
-    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
-        OH_LOG_ERROR(LOG_APP, "[CloseInputPort] client is null or device not opened");
-        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
-        return result;
-    }
+  - 销毁客户端
 
-    OH_MIDIStatusCode status = OH_MIDIDevice_CloseInputPort(it->second, portIndex);
+    <!-- @[cleanup_destroy_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
-    // Clean up input port context
-    auto key = std::make_pair(deviceId, portIndex);
-    auto contextIt = g_inputPortContexts.find(key);
-    if (contextIt != g_inputPortContexts.end()) {
-        if (contextIt->second != nullptr) {
-            contextIt->second->Stop();
-        }
-        g_inputPortContexts.erase(contextIt);
-    }
-    //  ...
-}
-```
-
-<!--@[cleanup_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-// Close output port
-static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
-{
-    size_t argc = 2;
-    napi_value args[2] = {nullptr};
-    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
-
-    int64_t deviceId = 0;
-    napi_get_value_int64(env, args[0], &deviceId);
-
-    uint32_t portIndex = 0;
-    napi_get_value_uint32(env, args[1], &portIndex);
-
-    OH_LOG_INFO(LOG_APP, "[CloseOutputPort] ++enter, deviceId=%{public}lld, portIndex=%{public}u",
-                (long long)deviceId, portIndex);
-
-    std::lock_guard<std::mutex> lock(g_midiMutex);
-
-    napi_value result;
-    auto it = g_openedDevices.find(deviceId);
-    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
-        OH_LOG_ERROR(LOG_APP, "[CloseOutputPort] client is null or device not opened");
-        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
-        return result;
-    }
-
-    OH_MIDIStatusCode status = OH_MIDIDevice_CloseOutputPort(it->second, portIndex);
-
-    // Remove protocol info for this output port
-    if (status == OH_MIDI_STATUS_OK) {
-        auto key = std::make_pair(deviceId, portIndex);
-        g_outputPortProtocols.erase(key);
-    }
-    // ...
-}
-```
-
-<!--@[cleanup_close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-static napi_value CloseDevice(napi_env env, napi_callback_info info)
-{
-    // ...
-    auto it = g_openedDevices.find(deviceId);
-    if (it != g_openedDevices.end()) {
-        // 清理该设备的所有InputPortContext
-        CleanupInputPortContextsForDevice(deviceId);
-        OH_MIDIStatusCode status = OH_MIDIClient_CloseDevice(g_midiClient, it->second);
-        g_openedDevices.erase(it);
-        // ...
-    } else {
-        // ...
-    }
-    // ...
-}
-```
-
-<!--@[cleanup_destroy_client](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
-
-```cpp
-// Destroy MIDI client
-static napi_value DestroyMIDIClient(napi_env env, napi_callback_info info)
-{
-    // ...
-    if (g_midiClient != nullptr) {
-        CloseAllOpenedDevices();
-        OH_MIDIClient_Destroy(g_midiClient);
-        g_midiClient = nullptr;
-    }
-    CleanupAllPortContexts();
-
-    // ...
-}
-```
 
 ### 10. 使用userData传递上下文数据
 
