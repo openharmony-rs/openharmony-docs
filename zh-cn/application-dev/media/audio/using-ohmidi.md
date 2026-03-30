@@ -57,6 +57,29 @@ OH_MIDI的主要接口包括:
 - 添加头文件
 
   <!-- @[arkts_open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  openOutputPort(portIndex: number): void {
+  
+    try {
+      const status = midi.openOutputPort(this.selectedDeviceId, portIndex, 1);
+  
+      if (status === MidiStatusCode.OK) {
+        this.openOutputPorts.add(portIndex);
+        this.log(`Output port ${portIndex} opened`);
+        hilog.info(DOMAIN, TAG, '[openOutputPort] port opened, openOutputPorts.size=%{public}d',
+          this.openOutputPorts.size);
+      } else {
+        this.log(`Failed to open output port: ${status}`);
+        hilog.error(DOMAIN, TAG, '[openOutputPort] failed with status=%{public}d', status);
+      }
+      hilog.info(DOMAIN, TAG, '[openOutputPort] --exit, status=%{public}d', status);
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, '[openOutputPort] exception: %{public}s', JSON.stringify(e));
+      this.log(`Error opening output port: ${JSON.stringify(e)}`);
+    }
+  }
+  ```
 
 ### 声明权限
 
