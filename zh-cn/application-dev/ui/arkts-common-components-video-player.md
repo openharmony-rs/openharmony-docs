@@ -61,11 +61,13 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
   
   ``` TypeScript
   // xxx.ets
-  // ···
+  // ...
   @Component
   export struct LocalVideoTwo {
     private controller: VideoController = new VideoController();
+    // $r('app.media.preview')需要替换为开发者所需的图像资源文件
     private previewUris: Resource = $r('app.media.preview');
+    // $rawfile('videoTest.mp4')需要替换为开发者所需的影像资源文件
     private videoSrc: string = 'dataability://device_id/com.domainname.dataability.videodata/video/10';
   
     build() {
