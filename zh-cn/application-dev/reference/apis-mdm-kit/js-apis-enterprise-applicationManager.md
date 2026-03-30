@@ -1889,9 +1889,9 @@ addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number)
 >
 > 4.快捷栏最多支持100个应用图标。
 >
-> 5.添加应用图标时，如果当前位置上已有应用图标，则插入到当前位置，后面的应用图标往后顺移一个位置。
+> 5.在已有应用图标的位置插入新应用图标时，新应用图标直接占用该位置，原应用图标及后续应用图标统一向后顺移一位。
 >
->6.不传index参数或者传递的index大于快捷栏中当前应用图标数量时，系统会将应用图标默认追加到快捷栏的末尾位置。
+> 6.不传index参数或者传递的index大于快捷栏中当前应用图标数量时，系统会将应用图标默认追加到快捷栏的末尾位置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -2090,7 +2090,7 @@ Kiosk模式的特征。
 
 ## DockInfo<sup>24+</sup>
 
-快捷栏中的应用信息。
+快捷栏中的应用图标信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
