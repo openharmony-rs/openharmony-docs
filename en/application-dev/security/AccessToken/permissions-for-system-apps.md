@@ -19,7 +19,7 @@ For details about the process for requesting permissions, see [Workflow for Requ
 
 ## ohos.permission.RUNNING_LOCK
 
-Allows an application to obtain a running lock.
+Allows an application to obtain a running lock to keep running in the background.
 
 **Permission level**: normal
 
@@ -4098,18 +4098,6 @@ Allows an application to read weather data.
 
 **Valid since**: 14
 
-## ohos.permission.ACCESS_MCU_LOG_DIR
-
-Allows a system application to access the microcontroller unit (MCU) log directory.
-
-**Permission level**: system_basic
-
-**Authorization mode**: system_grant
-
-**Enable via ACL**: true
-
-**Valid since**: 12
-
 ## ohos.permission.GRANT_SHORT_TERM_WRITE_MEDIAVIDEO
 
 Allows a system application or system service to grant third-party applications the temporary permission to save images and videos for the specified period of time.
@@ -4459,6 +4447,7 @@ Allows a system application to obtain the page information of a specified applic
 Allows a peripheral extension driver to access the USB Serial DDK APIs.
 
 The APIs can be used to develop the following types of peripheral extension drivers:
+
 Peripherals connected to the host via a USB bus and:
 
 1. InterfaceClass of the peripheral is Communication Device Control Class (0x02) and InterfaceSubClass follows ACMSubClass model(0x02).
@@ -4770,7 +4759,7 @@ Allows an application to install and uninstall fonts.
 
 **Valid since**: 19
 
-**Changelog**: Since API version 23, this permission is also available on phones.
+**Changelog**: Since API version 23, this permission is also available on smartphones.
 
 ## ohos.permission.READ_PARENT_CONTROL_DATA
 
@@ -5396,7 +5385,6 @@ Allows an application to dynamically register or remove custom UTD data types.
 
 **Since**: 22
 
-
 ## ohos.permission.MANAGE_MEDIA_SHARED_RESOURCE
 
 Allows a system application to access media sharing resources within the camera framework directory.
@@ -5407,9 +5395,10 @@ Allows a system application to access media sharing resources within the camera 
 
 **Enable via ACL**: true
 
-**Supported devices**: General
+**Supported devices**: general devices
 
 **Since**: 23
+
 ## ohos.permission.MANAGE_CLOUD_DATA_SERVICE
 
 Allows an application that has accessed Cloud to manage cloud data.
@@ -5454,7 +5443,7 @@ Allows an application to read image or video files from the user's cloud storage
 
 ## ohos.permission.ACCESS_SECURE_FENCE
 
-Allows a system application to access secure access fence capability..
+Allows a system application to access the security fence capability.
 
 **Permission level**: system_basic
 
@@ -5462,13 +5451,13 @@ Allows a system application to access secure access fence capability..
 
 **Enable via ACL**: true
 
-**Supported devices**: phones | PCs/2-in-1 devices | tablet | tv | car
+**Supported devices**: phones | PCs/2-in-1 devices | tablets | TVs | cars
 
 **Since**: 23
 
 ## ohos.permission.ACCESS_MINI_SYSTEM
  	 
-Allows a system application to access the runtime capability framework.
+Allows a system application to use the running capability framework.
 
 **Permission level**: system_basic
 
@@ -5481,7 +5470,7 @@ Allows a system application to access the runtime capability framework.
 **Since**: 23
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
-
+ 	
 Allows a system application to start the preview panel for adding application widgets to the home screen.
 
 With this permission, the system application can help users add the widgets to distribute to the home screen.
@@ -5494,11 +5483,11 @@ With this permission, the system application can help users add the widgets to d
 
 **Supported devices**: phones | TVs | wearables | PCs/2-in-1 devices | tablets | cars
 
-**Since**: 20
+**Valid since**: 20
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE_CONTROL
 
-Allows an application to add the WiseCard of other applications.
+Allows users to add WiseCard widgets of other apps.
 
 **Permission level**: system_basic
 
@@ -5520,7 +5509,7 @@ Allows an application to manage the standby state of the page, such as controlli
 
 **Enable via ACL**: true
 
-**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+**Supported devices**: phones | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 23
 
@@ -5534,13 +5523,13 @@ Allows an application to query whether the page is in the standby state and acce
 
 **Enable via ACL**: true
 
-**Supported devices**: Phone | TV | PC/2in1 | Tablet | Car
+**Supported devices**: phones | TVs | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 23
 
-## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
+ ## ohos.permission.MANAGE_LOCAL_EDUCATION_SPACES
  	 
-Allows a system application to manage the education space.
+Allows an application to manage local education space accounts.
  	 
 **Permission level**: system_basic
  	 
@@ -5554,7 +5543,7 @@ Allows a system application to manage the education space.
  	 
 ## ohos.permission.QUERY_LOCAL_EDUCATION_SPACES
  	 
-Allows a system application to query the education space properties.
+Allows an application to query the properties of local education space accounts.
  	 
 **Permission level**: system_basic
  	 
