@@ -499,7 +499,7 @@ int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequest
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
-**起始版本：** 26
+**起始版本：** 26.0.0
 
 
 **参数：**
@@ -529,7 +529,7 @@ int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub)
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
-**起始版本：** 26
+**起始版本：** 26.0.0
 
 
 **参数：**
