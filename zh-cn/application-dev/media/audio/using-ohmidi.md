@@ -996,6 +996,53 @@ static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
 
 <!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+static napi_value SendMIDI(napi_env env, napi_callback_info info)
+{
+    size_t argc = 3;
+    napi_value args[3] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int64_t deviceId = 0;
+    napi_get_value_int64(env, args[0], &deviceId);
+    uint32_t portIndex = 0;
+    napi_get_value_uint32(env, args[1], &portIndex);
+
+    OH_LOG_DEBUG(LOG_APP, "[SendMIDI] deviceId=%{public}lld, portIndex=%{public}u", (long long)deviceId, portIndex);
+
+    bool isArray = false;
+    napi_is_array(env, args[MIDI_ARG_INDEX_2], &isArray);
+    if (!isArray) {
+        napi_value result;
+        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_GENERIC_INVALID_ARGUMENT), &result);
+        return result;
+    }
+
+    std::vector<OH_MIDIEvent> events;
+    std::vector<std::vector<uint32_t>> eventDataBuffers;
+    ParseMIDIEventsFromArray(env, args[MIDI_ARG_INDEX_2], events, eventDataBuffers);
+    uint32_t eventCount = static_cast<uint32_t>(events.size());
+
+    std::lock_guard<std::mutex> lock(g_midiMutex);
+    napi_value result;
+    auto it = g_openedDevices.find(deviceId);
+    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
+        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
+        return result;
+    }
+
+    uint32_t eventsWritten = 0;
+    OH_MIDIStatusCode status = OH_MIDIDevice_Send(it->second, portIndex, events.data(), eventCount, &eventsWritten);
+    napi_create_object(env, &result);
+    napi_value statusValue;
+    napi_create_int32(env, static_cast<int32_t>(status), &statusValue);
+    napi_set_named_property(env, result, "status", statusValue);
+    napi_value writtenValue;
+    napi_create_uint32(env, eventsWritten, &writtenValue);
+    napi_set_named_property(env, result, "eventsWritten", writtenValue);
+    return result;
+```
+
 **ArkTS调用示例：**
 
 ```typescript
