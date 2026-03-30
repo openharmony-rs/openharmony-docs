@@ -119,7 +119,7 @@ struct AxisEvent {
 void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
 {
     MouseEvent event;
-    //Input_MouseEvent的生命周期仅在回调函数内，回调函数结束时被销毁
+    //Input_MouseEvent的生命周期仅在回调函数内，出了回调函数会被销毁
     event.action = OH_Input_GetMouseEventAction(mouseEvent);
     event.displayX = OH_Input_GetMouseEventDisplayX(mouseEvent);
     event.displayY = OH_Input_GetMouseEventDisplayY(mouseEvent);
@@ -134,7 +134,7 @@ void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
 void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
 {
     TouchEvent event;
-    //Input_TouchEvent的生命周期仅在回调函数内，回调函数结束时被销毁
+    //Input_TouchEvent的生命周期仅在回调函数内，出了回调函数会被销毁
     event.action = OH_Input_GetTouchEventAction(touchEvent);
     event.id = OH_Input_GetTouchEventFingerId(touchEvent);
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
@@ -148,7 +148,7 @@ void OnAxisEventCallback(const Input_AxisEvent* axisEvent)
 {
     AxisEvent event;
     
-    //Input_AxisEvent的生命周期仅在回调函数内，回调函数结束时被销毁
+    //Input_AxisEvent的生命周期仅在回调函数内，出了回调函数会被销毁
     InputEvent_AxisAction action;
     Input_Result ret = OH_Input_GetAxisEventAction(axisEvent, &action);
     event.axisAction = action;
