@@ -27,7 +27,7 @@
 
 > **说明：**
 >
-> 由于[Actor模型](multi-thread-concurrency-overview.md#actor模型)不同线程间内存隔离的特性，普通单例无法在不同线程间使用。可通过共享模块导出单例解决此问题。
+> 由于[Actor模型](multi-thread-concurrency-overview.md#actor模型)不同线程间内存隔离的特性，非线程安全的单例无法在不同线程间使用。可通过共享模块导出单例解决此问题。
 
 1. 定义并发函数，实现业务逻辑。
 
