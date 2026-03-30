@@ -37,8 +37,8 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
-| preKeys   | ArkTS-Dyn: Array&lt;number&gt; <br>ArkTS-Sta: Array\<int> | 否      | 否      | 修饰键（包括 Ctrl、Shift 和 Alt）集合，数量范围[1, 2]，无顺序要求。<br>例如，Ctrl+Shift+Esc中，Ctrl+Shift称为修饰键。 |
-| finalKey  |  ArkTS-Dyn: number <br>ArkTS-Sta: int  | 否      | 否      | 被修饰键，除修饰键和Meta键以外的按键，详细按键介绍请参见[键值](js-apis-keycode.md)。<br>例如，Ctrl+Shift+Esc中，Esc称为被修饰键。 |
+| preKeys   | ArkTS-Dyn: Array&lt;number&gt; <br>ArkTS-Sta: Array\<int> | 否      | 否      | 修饰键（包括 Ctrl、Shift 和 Alt）集合，数量范围[1, 4]，无顺序要求。<br>例如，Ctrl+Shift+Esc中，Ctrl+Shift称为修饰键。 |
+| finalKey  |  ArkTS-Dyn: number <br>ArkTS-Sta: int  | 否      | 否      | 被修饰键，除修饰键和Meta键以外的按键，详细按键介绍请参见[@ohos.multimodalInput.keyCode (键值)](js-apis-keycode.md)。<br>例如，Ctrl+Shift+Esc中，Esc称为被修饰键。 |
 | isRepeat  | boolean  | 否      | 是      | 是否上报重复的按键事件。true表示上报，false表示不上报，默认值为true。 |
 
 ## KeyPressedConfig<sup>16+</sup>
@@ -75,7 +75,7 @@ getAllSystemHotkeys(): Promise&lt;Array&lt;HotkeyOptions&gt;&gt;
 
 | 类型         |  说明                                       |
 | ---------- |  ---------------------------------------- |
-| Promise&lt;Array&lt;HotkeyOptions&gt;&gt;                    | Promise对象，返回所有系统快捷键的列表。 |
+| Promise&lt;Array&lt;[HotkeyOptions](#hotkeyoptions)&gt;&gt;                    | Promise对象，返回所有系统快捷键的列表。 |
 
 **错误码**：
 
@@ -155,7 +155,7 @@ on(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback: Callback&lt;Hot
 | ---------- | -------------------------- | ---- | ---------- |
 | type       | string                     | 是    | 事件类型，固定取值为'hotkeyChange'。                   |
 | hotkeyOptions | [HotkeyOptions](#hotkeyoptions) | 是    | 快捷键选项。                 |
-| callback   | Callback&lt;HotkeyOptions&gt; | 是    | 回调函数，获取满足条件的组合按键输入事件。 |
+| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | 是    | 回调函数，获取满足条件的组合按键输入事件。 |
 
 **错误码**：
 
@@ -290,7 +290,7 @@ off(type: 'hotkeyChange', hotkeyOptions: HotkeyOptions, callback?: Callback&lt;H
 | ---------- | -------------------------- | ---- | ---------- |
 | type       | string                     | 是    | 事件类型，固定取值为'hotkeyChange'。        |
 | hotkeyOptions | [HotkeyOptions](#hotkeyoptions) | 是    | 快捷键选项。             |
-| callback   | Callback&lt;HotkeyOptions&gt; | 否    | 需要取消订阅的回调函数。若缺省，则取消当前应用快捷键选项已订阅的所有回调函数。 |
+| callback   | Callback&lt;[HotkeyOptions](#hotkeyoptions)&gt; | 否    | 需要取消订阅的回调函数。若缺省，则取消当前应用快捷键选项已订阅的所有回调函数。 |
 
 **错误码**：
 

@@ -43,7 +43,7 @@ ArkTS-Sta: transmitInfrared(infraredFrequency: long, pattern: Array&lt;long&gt;)
 | 参数名       | 类型                        | 必填   | 说明                                       |
 | -------- | ------------------------- | ---- | ---------------------------------------- |
 | infraredFrequency | ArkTS-Dyn: number<br/>ArkTS-Sta: long             | 是    | 红外频率，单位：Hz。 |
-| pattern | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;long&gt;| 是    | 红外电平信号，单位：μs。电平信号的数量取值范围为[0,1024]。电平信号的取值需大于0。<br/>比如[100,200,300,400]该电平信号数组，其中100us为高电平信号、200us为低电平信号、300us为高电平信号、400us为低电平信号。 |
+| pattern | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;long&gt;| 是    | 红外电平信号，单位：μs。电平信号的数量取值范围为[0,1024]，取值为0时，接口调用不生效。电平信号的取值需大于0。<br/>比如[100,200,300,400]该电平信号数组，其中100us为高电平信号、200us为低电平信号、300us为高电平信号、400us为低电平信号。 |
 
 **错误码：**
 
@@ -221,7 +221,7 @@ hasIrEmitter(): Promise&lt;boolean&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[全局快捷键管理错误码](errorcode-inputconsumer.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[红外管理错误码](errorcode-infraredemitter.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | ----------------- |
