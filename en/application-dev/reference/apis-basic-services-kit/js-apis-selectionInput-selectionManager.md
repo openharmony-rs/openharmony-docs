@@ -457,7 +457,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 RelativeContainer() {
   /* 
-   * Page layout content, which be defined based on your actual needs.
+   * Page layout content, which should be defined based on your actual needs.
    */
 }
 .onTouch((event: TouchEvent) => {
