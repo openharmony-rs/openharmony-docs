@@ -484,7 +484,7 @@ Closes the widget editing page.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md#801-api-not-supported) and [Widget Error Codes](errorcode-form.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Form Error Codes](errorcode-form.md).
 
 | Error Code ID   | Error Message|
 |----------| -------- |
@@ -694,8 +694,8 @@ requestOverflow(formId: string, overflowInfo: formInfo.OverflowInfo): Promise&lt
 Requests an animation. This API takes effect only for [scene-based widgets](../../form/arkts-ui-widget-configuration.md#sceneanimationparams-field). This API uses a promise to return the result.
 > **NOTE**
 >
-> - This API is unavailable in the power-saving mode and will return the error code 16501000.
-> - If the device's thermal level reaches HOT and no tap event occurs, the API returns error code 16501000. If the thermal level reaches OVERHEATED, the API returns error code 16501000 in any case. For details about thermal level information, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
+> 1. This API is unavailable in the power-saving mode and will return the error code 16501000.
+> 2. If the device's thermal level reaches HOT and no tap event occurs, the API returns error code 16501000. If the thermal level reaches OVERHEATED, the API returns error code 16501000 in any case. For details about thermal level information, see [ThermalLevel](../../reference/apis-basic-services-kit/js-apis-thermal.md#thermallevel).
 
 
 **Atomic service API**: This API can be used in atomic services since API version 20.

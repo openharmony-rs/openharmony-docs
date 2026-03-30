@@ -1072,7 +1072,7 @@ For details about the error codes, see [Enterprise Device Management Error Codes
 ```ts
 import { securityManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
-import fs from '@ohos.file.fs';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 let wantTemp: Want = {
   // Replace with actual values.
