@@ -98,6 +98,7 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 | 名称           | 值   | 说明            |
 | -------------- | ---- | --------------- |
 | INTENT_PROFILE  | 1    | 意图框架配置文件。    |
+| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。**起始版本**：26.0.0    |
 
 ## AppDistributionType<sup>12+</sup>
 
