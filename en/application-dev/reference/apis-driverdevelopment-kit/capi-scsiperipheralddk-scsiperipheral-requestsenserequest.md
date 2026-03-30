@@ -6,9 +6,13 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct ScsiPeripheral_RequestSenseRequest {...} ScsiPeripheral_RequestSenseRequest
+```
+
 ## Overview
 
-Defines the request structure of the **request sense** command.
+Defines the request structure of the **Request Sense** command.
 
 **Since**: 18
 
