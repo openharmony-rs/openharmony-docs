@@ -13,16 +13,16 @@ Web组件根据[GeolocationPermissions](../reference/apis-arkweb/arkts-apis-webv
 ## 需要权限
 使用获取位置功能，需在module.json5中配置位置权限。具体添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
-   ```json
+   ``` JSON5
    "requestPermissions":[
       {
-        "name" : "ohos.permission.LOCATION"
+        "name" : "ohos.permission.LOCATION" // 精准定位
       },
       {
-        "name" : "ohos.permission.APPROXIMATELY_LOCATION"
+        "name" : "ohos.permission.APPROXIMATELY_LOCATION" // 模糊定位
       },
       {
-        "name" : "ohos.permission.LOCATION_IN_BACKGROUND"
+        "name" : "ohos.permission.LOCATION_IN_BACKGROUND" // 后台定位
       }
     ]
    ```
