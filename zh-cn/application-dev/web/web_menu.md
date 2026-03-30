@@ -265,6 +265,87 @@ struct WebComponent {
 
 <!-- @[web_BindSelectionMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenu.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+interface PreviewBuilderParam {
+  previewImage: Resource | string | undefined;
+  width: number;
+  height: number;
+}
+
+@Builder function previewBuilderGlobal($$: PreviewBuilderParam) {
+  Column() {
+    Image($$.previewImage)
+      .objectFit(ImageFit.Fill)
+      .autoResize(true)
+  }.width($$.width).height($$.height)
+}
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  private result: WebContextMenuResult | undefined = undefined;
+  @State previewImage: Resource | string | undefined = undefined;
+  @State previewWidth: number = 0;
+  @State previewHeight: number = 0;
+  uiContext: UIContext = this.getUIContext();
+
+  @Builder
+  MenuBuilder() {
+    Menu() {
+      MenuItem({ content: 'Copy', })
+        .onClick(() => {
+          this.result?.copy();
+          this.result?.closeContextMenu();
+        })
+      MenuItem({ content: 'Select All', })
+        .onClick(() => {
+          this.result?.selectAll();
+          this.result?.closeContextMenu();
+        })
+    }
+  }
+  build() {
+    Column() {
+      Web({ src: $rawfile('index2.html'), controller: this.controller })
+        .bindSelectionMenu(WebElementType.IMAGE, this.MenuBuilder, WebResponseType.LONG_PRESS,
+          {
+            onAppear: () => {},
+            onDisappear: () => {
+              this.result?.closeContextMenu();
+            },
+            preview: previewBuilderGlobal({
+              previewImage: this.previewImage,
+              width: this.previewWidth,
+              height: this.previewHeight
+            }),
+            menuType: MenuType.PREVIEW_MENU
+          })
+        .onContextMenuShow((event) => {
+          if (event) {
+            this.result = event.result;
+            if (event.param.getLinkUrl()) {
+              return false;
+            }
+            this.previewWidth = this.uiContext!.px2vp(event.param.getPreviewWidth());
+            this.previewHeight = this.uiContext!.px2vp(event.param.getPreviewHeight());
+            if (event.param.getSourceUrl().indexOf('resource://rawfile/') == 0) {
+              this.previewImage = $rawfile(event.param.getSourceUrl().substr(19));
+            } else {
+              this.previewImage = event.param.getSourceUrl();
+            }
+            return true;
+          }
+          return false;
+        })
+    }
+  }
+}
+```
+
 <!---->
 
 ```html
