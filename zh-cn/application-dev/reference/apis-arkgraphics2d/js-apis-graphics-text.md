@@ -869,15 +869,19 @@ struct isFontSupportedTest {
 | USE_DEFAULT    | 0    | 使用字体的内部.notdef字形。遵循字体的内部.notdef字形设计，可以是空框、空格或自定义符号。|
 | USE_TOFU       | 1    | 总是用显式的豆腐块替换未定义的字形，覆盖字体的默认行为。用于调试缺失字符或强制一致的缺失符号显示。|
 
-## TextProcessState<sup>26+</sup>
+## TextProcessState<sup>26.0.0+</sup>
 
 文本处理状态枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称               | 值   | 说明                                 |
 | ------------------ | ---- | ------------------------------------ |
@@ -889,15 +893,19 @@ struct isFontSupportedTest {
 | PAINT              | 5    | 已绘制状态，文本已完成绘制。           |
 | UPDATE_ATTRIBUTE   | 6    | 已更新属性状态，文本属性已更新。       |
 
-## TextDisplayState<sup>26+</sup>
+## TextDisplayState<sup>26.0.0+</sup>
 
 文本显示状态枚举。表示文本排版后的原生结果，与外部画布裁切、屏幕截断等外部显示因素无关。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 | 名称      | 值 | 说明                                |
 |---------|---|-----------------------------------|
@@ -3254,7 +3262,7 @@ getProcessState(): TextProcessState
 
 | 类型 | 说明 |
 | - | - |
-| [TextProcessState](#textprocessstate26) | 段落的文本处理状态。 |
+| [TextProcessState](#textprocessstate) | 段落的文本处理状态。 |
 
 **示例：**
 
@@ -3329,7 +3337,7 @@ struct Index {
 }
 ```
 
-### getTextDisplayState<sup>26+</sup>
+### getTextDisplayState<sup>26.0.0+</sup>
 
 getTextDisplayState(): TextDisplayState
 
@@ -3337,15 +3345,19 @@ getTextDisplayState(): TextDisplayState
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
 | 类型 | 说明 |
 | - | - |
-| [TextDisplayState](#textdisplaystate26) | 段落的文本显示状态。 |
+| [TextDisplayState](#textdisplaystate) | 段落的文本显示状态。 |
 
 **示例：**
 
@@ -3420,7 +3432,7 @@ struct Index {
 }
 ```
 
-### getParagraphStyle<sup>26+</sup>
+### getParagraphStyle<sup>26.0.0+</sup>
 
 getParagraphStyle(): ParagraphStyle
 
@@ -3428,9 +3440,13 @@ getParagraphStyle(): ParagraphStyle
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
