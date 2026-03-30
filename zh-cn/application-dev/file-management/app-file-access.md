@@ -62,7 +62,7 @@ import { buffer } from '@kit.ArkTS';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[create_and_read_File](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@[create_and_read_File](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
 
 ``` TypeScript
 function createFile(context: common.UIAbilityContext): void {
@@ -103,7 +103,7 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[read_write_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@[read_write_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->     
 
 ``` TypeScript
 function readWriteFile(context: common.UIAbilityContext): void {
@@ -153,7 +153,7 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[read_write_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@[read_write_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
 
 ``` TypeScript
 async function readWriteFileWithStream(context: common.UIAbilityContext): Promise<void> {
@@ -204,7 +204,7 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[get_list_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@[get_list_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
 
 ``` TypeScript
 function getListFile(context: common.UIAbilityContext): void {
@@ -240,7 +240,7 @@ import { common } from '@kit.AbilityKit';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[copy_file_with_readable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@[copy_file_with_readable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
 
 ``` TypeScript
 function copyFileWithReadable(context: common.UIAbilityContext): void {
@@ -261,7 +261,7 @@ function copyFileWithReadable(context: common.UIAbilityContext): void {
 ```
 
 
-<!--@[copy_file_with_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@[copy_file_with_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
 
 ``` TypeScript
 function copyFileWithData(context: common.UIAbilityContext): void {
@@ -297,7 +297,7 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 
 ```
-<!--@[hash_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->
+<!--@[hash_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
 
 ``` TypeScript
 function hashFileWithStream(context: common.UIAbilityContext) {

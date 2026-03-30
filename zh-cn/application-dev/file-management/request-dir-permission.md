@@ -68,7 +68,7 @@
    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    
    ```
-   <!--@[read_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[read_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->    
    
    ``` TypeScript
    function readUserDownloadDirExample(context: common.UIAbilityContext) {
@@ -107,7 +107,7 @@
    import { fileIo as fs } from '@kit.CoreFileKit';
    
    ```
-   <!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->
+   <!--@[write_user_download_dir_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/EnvironmentSample/entry/src/main/ets/pages/Index.ets)-->    
    
    ``` TypeScript
    function writeUserDownloadDirExample() {
