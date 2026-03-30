@@ -386,7 +386,7 @@ struct LineJoinExample {
 
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| number | 否 | 否 | 默认值：10px<br/>单位：px。 <br/>miterLimit取值不支持0和负数，0、负数和NaN按默认值处理，Infinity会导致和miterLimit属性相关的接口无法绘制。 |
+| number | 否 | 否 | 默认值：10px<br/>单位：px <br/>miterLimit取值不支持0和负数，0、负数和NaN按默认值处理，Infinity会导致和miterLimit属性相关的接口无法绘制。 |
 
 ```ts
 // xxx.ets
