@@ -10297,7 +10297,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets",
 				"functions":[
 					{
-						"end_line":54,
+						"end_line":55,
 						"name":"nested_scrolling",
 						"start_line":16
 					}
