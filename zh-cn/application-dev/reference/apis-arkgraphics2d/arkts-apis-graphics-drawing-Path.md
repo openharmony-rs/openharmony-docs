@@ -1634,6 +1634,138 @@ let svgString = path.convertToSvgString();
 console.info("svgString: ", svgString);
 ```
 
+## getPointData
+
+getPointData(): Array<common2D.Point>
+
+获取路径点数据。
+
+在路径（path）图元中，点数据以数值序列的形式存在，与动词verb指令一一对应，用来精确指定绘图操作的几何坐标位置。
+
+点数据的主要类型包括：
+
+终点坐标：与[moveTo](#moveto)、[lineTo](#lineto)等指令配合，定义线段或移动的目标位置。
+
+控制点坐标：与曲线指令配合，用于定义贝塞尔曲线的形状（如三次曲线需要两个控制点和一个终点）。
+
+闭合点：通常不单独提供坐标，由[close](#close)指令隐式使用路径起点。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+|  Array\<[common2D.Point]( js-apis-graphics-common2D.md#point12)> | 类型为浮点数。理论取值范围为全体实数，但实际受限于渲染坐标系的有效范围（如-2^31到2^31-1或屏幕可见区域）；超出范围可能导致图形不可见或裁剪。|
+
+**示例：**
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+import { common2D } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.moveTo(0, 0);
+path.lineTo(100, 100);
+path.quadTo(150, 150, 200, 100);
+let pointData: Array<common2D.Point> = path.getPointData();
+console.info("pointData size: ", pointData.length);
+console.info("pointData[0].x: ", pointData[0].x);
+console.info("pointData[0].y: ", pointData[0].y);
+```
+
+## getVerbData
+
+getVerbData(): Array<PathIteratorVerb>
+
+获取路径的指令数据。
+
+在路径（path）图元中，指令数据verb用于描述路径构造过程中的基本绘图动作。
+
+指令数据以枚举的形式存在，每个取值对应一种几何操作类型，例如：
+
+[moveTo](#moveto)：将当前绘图点移至指定坐标，不产生线段。
+
+[lineTo](#lineto)：从当前点向指定点绘制直线段。
+
+[close](#close)：将当前点与路径起点相连，形成封闭区域。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+|Array\<[PathIteratorVerb](arkts-apis-graphics-drawing-e.md#pathiteratorverb18)>| 类型为浮点数。理论上取值范围为全体实数，但实际受限于渲染坐标系的有效范围（如-2^31到2^31-1或屏幕可见区域）；超出范围可能导致图形不可见或裁剪。|
+
+**示例：**
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+
+let path: drawing.Path = new drawing.Path();
+path.moveTo(0, 0);
+path.lineTo(100, 100);
+path.close();
+let verbData: Array<drawing.PathIteratorVerb> = path.getVerbData();
+console.info("verbData size: ", verbData.length);
+console.info("verbData[0]: ", verbData[0]);
+console.info("verbData[1]: ", verbData[1]);
+```
+
+## getConicWeightData
+
+getConicWeightData(): Array\<number>
+
+获取路径的圆锥曲线权重数据。
+
+在路径（path）图元中，圆锥曲线数据采用有理贝塞尔曲线（Rational Bézier Curve）形式表示，其中每个控制点附带一个权重值（weight）。权重属于曲线定义的几何参数。
+
+主要作用如下：
+
+形状调控：权重值越大，曲线越靠近对应控制点；权重为1时退化为标准贝塞尔曲线；权重为0时该控制点不起作用。
+
+精确表示圆锥曲线：通过组合权重与二次贝塞尔曲线，可以精确表示圆弧、椭圆弧、抛物线等圆锥曲线段，无需使用分段逼近或专用椭圆弧指令。
+
+数据组织：权重通常以数组形式与点数据并列，按顺序对应每个控制点，与相应的指令verb（如[conicTo](#conicto12)）配合使用。
+
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**返回值：**
+
+| 类型                  | 说明           |
+| --------------------- | -------------- |
+| Array\<number> | 类型为浮点数（取值范围为非负数）。取值为0.0时，该控制点完全无效，曲线不经过此点，曲线实际由其余控制点定义。取值为1.0时，该控制点对应的曲线变为标准贝塞尔曲线，此时权重不产生额外形变效果。取值大于1时，权重值越大，曲线越靠近该控制点；小于1.0但大于0.0时，曲线则相对远离该控制点。|
+
+**示例：**
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+let path: drawing.Path = new drawing.Path();
+path.moveTo(0, 0);
+path.conicTo(100, 100, 200, 0, 0.5);
+let conicWeightData: Array<double> = path.getConicWeightData();
+console.info("conicWeightData size: ", conicWeightData.length);
+console.info("conicWeightData[0]: ", conicWeightData[0]);
+```
+
 ## getPathIterator<sup>18+</sup>
 
 ArkTS-Dyn: getPathIterator(): PathIterator
