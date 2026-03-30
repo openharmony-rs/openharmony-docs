@@ -36,7 +36,7 @@ closeContextMenu(): void
 
 copyImage(): void
 
-当WebContextMenuParam有图片内容时则复制图片，从API version 24开始支持对canvas图片进行复制。
+当WebContextMenuParam包含图片内容时，用于复制该图片，从API version 24开始支持对canvas图片进行复制。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -52,11 +52,11 @@ copy(): void
 
 paste(): void
 
-执行与此上下文菜单相关的粘贴操作。
+执行粘贴操作。
 
 > **说明：**
 >
-> 需要配置权限：ohos.permission.READ_PASTEBOARD。
+> 需要配置权限：[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -100,7 +100,7 @@ pasteAndMatchStyle(): void
 
 > **说明：**
 >
-> 需要配置权限：ohos.permission.READ_PASTEBOARD。
+> 需要配置权限：[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
