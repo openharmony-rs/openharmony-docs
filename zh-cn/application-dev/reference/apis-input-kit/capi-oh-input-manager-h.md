@@ -171,7 +171,7 @@
 | [Input_Result OH_Input_GetPreKeys(const Input_Hotkey *hotkey, int32_t **preKeys, int32_t *preKeyCount)](#oh_input_getprekeys) | - | 获取修饰键。 |
 | [void OH_Input_SetFinalKey(Input_Hotkey* hotkey, int32_t finalKey)](#oh_input_setfinalkey) | - | 设置被修饰键。 |
 | [Input_Result OH_Input_GetFinalKey(const Input_Hotkey* hotkey, int32_t *finalKeyCode)](#oh_input_getfinalkey) | - | 获取被修饰键。 |
-| [Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)](#oh_input_createallsystemhotkeys) | - | 创建[Input_Hotkey](capi-input-input-hotkey.md)类型实例的数组。通过调用[OH_Input_DestroyAllSystemHotkeys](#oh_input_destroyallsystemhotkeys)销毁[Input_Hotkey](capi-input-input-hotkey.md)实例数组并回收内存。 |
+| [Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)](#oh_input_createallsystemhotkeys) | - | 创建[Input_Hotkey](capi-input-input-hotkey.md)类型实例的数组。通过调用[OH_Input_GetAllSystemHotkeys](#oh_input_getallsystemhotkeys)获取有效的count参数。通过调用[OH_Input_DestroyAllSystemHotkeys](#oh_input_destroyallsystemhotkeys)销毁[Input_Hotkey](capi-input-input-hotkey.md)实例数组并回收内存。 |
 | [void OH_Input_DestroyAllSystemHotkeys(Input_Hotkey **hotkeys, int32_t count)](#oh_input_destroyallsystemhotkeys) | - | 销毁[Input_Hotkey](capi-input-input-hotkey.md)实例数组并回收内存。 |
 | [Input_Result OH_Input_GetAllSystemHotkeys(Input_Hotkey **hotkey, int32_t *count)](#oh_input_getallsystemhotkeys) | - | 获取设置的所有快捷键。 |
 | [void OH_Input_SetRepeat(Input_Hotkey* hotkey, bool isRepeat)](#oh_input_setrepeat) | - | 设置是否上报重复key事件。 |
@@ -3228,7 +3228,7 @@ Input_Hotkey **OH_Input_CreateAllSystemHotkeys(int32_t count)
 
 **描述**
 
-创建[Input_Hotkey](capi-input-input-hotkey.md)类型实例的数组。通过调用[OH_Input_DestroyAllSystemHotkeys](#oh_input_destroyallsystemhotkeys)销毁[Input_Hotkey](capi-input-input-hotkey.md)实例数组并回收内存。
+创建[Input_Hotkey](capi-input-input-hotkey.md)类型实例的数组。通过调用[OH_Input_GetAllSystemHotkeys](#oh_input_getallsystemhotkeys)获取有效的count参数。通过调用[OH_Input_DestroyAllSystemHotkeys](#oh_input_destroyallsystemhotkeys)销毁[Input_Hotkey](capi-input-input-hotkey.md)实例数组并回收内存。
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
