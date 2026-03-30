@@ -2079,7 +2079,7 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType) 
 
-设置Web组件滑动方向锁定。不调用该方法进行设置时，默认在嵌套滚动场景下是支持滑动方向锁定的。
+设置Web组件滑动方向锁定。不调用该方法设置时，默认在嵌套滚动场景下支持滑动方向锁定。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2089,8 +2089,8 @@ enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType)
 
 **参数：**
 
-| 参数名 | 类型                      | 必填 | 说明                                                                                                                                                |
-| ------ | ------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 参数名 | 类型     | 必填 | 说明|
+| ------ | ---------------- | ---- | -------- |
 | value  | boolean                   | 是   | 是否支持滑动方向锁定。`true` 表示滑动方向锁定，滚动视图会根据用户初始滑动的方向来锁定滚动轴，`false` 表示不锁定。        |
 | type   | [ScrollDirectionalLockType](./arkts-basic-components-web-e.md#scrolldirectionallocktype) | 是   | 设置Web组件在哪些场景下希望滑动方向锁定。ALL表示所有场景都支持滑动锁定，NESTED_SCROLL表示在嵌套滚动场景下支持滑动锁定。 |
 
