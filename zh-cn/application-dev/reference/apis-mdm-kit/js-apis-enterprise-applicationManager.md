@@ -1887,9 +1887,11 @@ addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number)
 >
 > 3.该接口仅支持添加应用程序入口图标到快捷栏，无图标的应用不支持添加。
 >
-> 4.快捷栏最多支持100个应用。
+> 4.快捷栏最多支持100个应用图标。
 >
-> 5.不传index参数或者传递的index大于快捷栏中当前应用图标数量时，系统会将应用图标默认追加到快捷栏的末尾位置。
+> 5.添加应用图标时，如果当前位置上已有应用图标，则插入到当前位置，后面的应用图标往后顺移一个位置。
+>
+>6.不传index参数或者传递的index大于快捷栏中当前应用图标数量时，系统会将应用图标默认追加到快捷栏的末尾位置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1955,7 +1957,7 @@ try {
 
 removeDockApp(admin: Want, bundleName: string, abilityName: string): void
 
-从快捷栏移除应用图标。
+从快捷栏中移除应用图标。
 
 > **说明：**
 >
@@ -2015,7 +2017,7 @@ try {
 
 ## applicationManager.getDockApps<sup>24+</sup>
 
-getDockApps(admin: Want): Array\<DockInfo>;
+getDockApps(admin: Want): Array\<DockInfo>
 
 获取快捷栏中的应用信息。
 
@@ -2037,7 +2039,7 @@ getDockApps(admin: Want): Array\<DockInfo>;
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| Array&lt;[DockInfo](#dockinfo24)&gt; | Dock中的应用信息数组。|
+| Array&lt;[DockInfo](#dockinfo24)&gt; | 快捷栏中的应用信息数组。|
 
 **错误码**：
 
@@ -2088,7 +2090,7 @@ Kiosk模式的特征。
 
 ## DockInfo<sup>24+</sup>
 
-Dock中的应用信息。
+快捷栏中的应用信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -2098,4 +2100,4 @@ Dock中的应用信息。
 | ----------- | ------ |------ |------| ---------------|
 | bundleName  | string | 否    | 否   | 应用的包名。 |
 | abilityName | string | 否    | 否   | 应用的Ability名称。 |
-| index       | number | 否    | 否   | 应用在Dock中的位置索引。 |
+| index       | number | 否    | 否   | 应用在快捷栏中的位置索引。 |
