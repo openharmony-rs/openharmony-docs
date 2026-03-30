@@ -45,6 +45,14 @@ OH_MIDI的主要接口包括:
 - 在CMake脚本中链接动态库
 
   <!-- @[ohmidi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/CMakeLists.txt) -->
+  
+  ``` Text
+  target_link_libraries(entry PUBLIC
+      libace_napi.z.so
+      libohmidi.so
+      libhilog_ndk.z.so
+  )
+  ```
 
 - 添加头文件
 
