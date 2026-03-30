@@ -689,6 +689,34 @@ static void OnBLEDeviceOpened(void *userData, bool opened, OH_MIDIDevice *device
 
 <!-- @[open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+static napi_value OpenInputPort(napi_env env, napi_callback_info info)
+{
+    InputPortArgs args = ParseInputPortArgs(env, info);
+
+    std::lock_guard<std::mutex> lock(g_midiMutex);
+
+    napi_value result;
+    auto it = g_openedDevices.find(args.deviceId);
+    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
+        OH_LOG_ERROR(LOG_APP, "[OpenInputPort] client is null or device not opened");
+        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
+        return result;
+    }
+
+    // Construct port descriptor
+    OH_MIDIPortDescriptor descriptor;
+    descriptor.portIndex = args.portIndex;
+    descriptor.protocol = static_cast<OH_MIDIProtocol>(args.protocol);
+
+    // Create input port context for thread-safe callback handling
+    auto context = std::make_shared<InputPortContext>(args.deviceId, args.portIndex);
+
+    OH_MIDIStatusCode status = OH_MIDIDevice_OpenInputPort(it->second, descriptor, OnMIDIReceived, context.get());
+    // ...
+}
+```
+
 **ArkTS调用示例：**
 
 - ArkTS代码示例
