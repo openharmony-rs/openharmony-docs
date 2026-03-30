@@ -1227,6 +1227,34 @@ async sendSysExMessage(): Promise<void> {
 - 清空输出缓冲区示例
 
   <!-- @[flush_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+  
+  ``` C++
+  static napi_value FlushOutputPort(napi_env env, napi_callback_info info)
+  {
+      size_t argc = 2;
+      napi_value args[2] = {nullptr};
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+  
+      int64_t deviceId = 0;
+      napi_get_value_int64(env, args[0], &deviceId);
+  
+      uint32_t portIndex = 0;
+      napi_get_value_uint32(env, args[1], &portIndex);
+  
+      std::lock_guard<std::mutex> lock(g_midiMutex);
+  
+      napi_value result;
+      auto it = g_openedDevices.find(deviceId);
+      if (g_midiClient == nullptr || it == g_openedDevices.end()) {
+          OH_LOG_ERROR(LOG_APP, "[FlushOutputPort] client is null or device not opened");
+          napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
+          return result;
+      }
+  
+      OH_MIDIStatusCode status = OH_MIDIDevice_FlushOutputPort(it->second, portIndex);
+      // ...
+  }
+  ```
 
 ### 9. 资源清理顺序
 
