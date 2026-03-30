@@ -53,6 +53,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | featureVersion | number | 是 | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 |
 | buildVersion | number | 是 | Build版本号，标识编译构建的版本号，值为osFullName中的第四位数值，建议直接使用deviceInfo.buildVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：1 |
 | sdkApiVersion | number | 是 | 系统软件API版本。<br/>**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。<br/>示例：12 |
+| sdkMinorApiVersion<sup>26+</sup> | number | 是 | 系统软件Minor API版本。<br/>**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。<br/>示例：0 |
+| sdkPatchApiVersion<sup>26+</sup> | number | 是 | 系统软件Patch API版本。<br/>**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。<br/>示例：0 |
 | firstApiVersion | number | 是 | 首个版本系统软件API版本。<br/>示例：3 |
 | versionId | string | 是 | 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。<br/>示例：wearable/HUAWEI/HUAWEI/TAS/OpenHarmony-5.0.0.1/TAS-AL00/TAS-AL00/12/default/release:nolog |
 | buildType | string | 是 | 构建类型。<br/>示例：default |
@@ -163,6 +165,14 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     let sdkApiVersionInfo: number = deviceInfo.sdkApiVersion;
     // 输出结果：the value of the sdkApiVersion is :12
     console.info('the value of the deviceInfo sdkApiVersion is :' + sdkApiVersionInfo);
+
+   let sdkMinorApiVersionInfo: number = deviceInfo.sdkMinorApiVersion;
+    // 输出结果：the value of the sdk Minor ApiVersion is :0
+    console.info('the value of the deviceInfo sdkMinorApiVersion is :' + sdkMinorApiVersionInfo);
+
+   let sdkPatchApiVersionInfo: number = deviceInfo.sdkPatchApiVersion;
+    // 输出结果：the value of the sdk Patch ApiVersion is :0
+    console.info('the value of the deviceInfo sdkPatchApiVersion is :' + sdkPatchApiVersionInfo);
 
     let firstApiVersionInfo: number = deviceInfo.firstApiVersion;
     // 输出结果：the value of the firstApiVersion is :3
@@ -298,3 +308,49 @@ import { deviceInfo } from '@kit.BasicServicesKit';
     // 输出结果：the value of the DeviceTypes is :car
     console.info('the value of the DeviceTypes is :' + deviceTypesInfoCar);
 ```
+
+
+## apiAvailable<sup>26+</sup>
+apiAvailable(version: string | number): boolean;
+<!--RP13-->
+检查指定的API版本在当前设备上是否可用。</br>
+此方法跨提供不同OpenHarmony/分布式操作系统版本的兼容性检查。它会根据输入格式和API版本范围自动选择合适的版本检查方法。
+
+**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口Stage模型和FA模型下皆可使用。
+
+**系统能力**：SystemCapability.Startup.SystemInfo
+
+**参数：**
+
+| 参数名    | 类型                                      | 必填 | 说明                               |
+| --------- | ----------------------------------------- | ---- | ---------------------------------- |
+| version | string \| number | 是   | 需要校验的API版本号，支持整数版本号和点分版本号。|
+
+**示例：**
+
+```ts
+import { deviceInfo } from '@kit.BasicServicesKit';
+
+// Check API 26.0.0 (String format for API 26+ represents both OpenHarmony and Distribution OS)
+if (deviceInfo.apiAvailable("26.0.0")) {
+   ...
+}
+
+
+// Check API 5.0.1 (Distribution OS version, API 26-)
+if (deviceInfo.apiAvailable("5.0.1")) {
+   ...
+}
+
+
+import { deviceInfo } from '@kit.BasicServicesKit';
+
+// Check API 13 (OpenHarmony SDK version, API 26-)
+if (deviceInfo.apiAvailable(13)) {
+   ...
+}
+
+```
+<!--RP13End-->
