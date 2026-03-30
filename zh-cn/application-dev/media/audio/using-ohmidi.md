@@ -304,6 +304,22 @@ interface BleOpenedEventData {
 - 获取设备列表示例
 
   <!-- @[get_device_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+  
+  ``` C++
+  static napi_value GetDeviceInfos(napi_env env, napi_callback_info info)
+  {
+      std::lock_guard<std::mutex> lock(g_midiMutex);
+      // ...
+  
+      size_t count = 0;
+      OH_MIDIStatusCode status = OH_MIDIClient_GetDeviceCount(g_midiClient, &count);
+      // ...
+      std::vector<OH_MIDIDeviceInformation> devices(count);
+      size_t actualCount = 0;
+      status = OH_MIDIClient_GetDeviceInfos(g_midiClient, devices.data(), count, &actualCount);
+      // ...
+  }
+  ```
 
 **ArkTS调用示例：**
 
