@@ -1114,6 +1114,15 @@ static napi_value SendNoteOn(napi_env env, napi_callback_info info)
 
 <!-- @[send_note_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Send Note Off message (helper function for testing)
+static napi_value SendNoteOff(napi_env env, napi_callback_info info)
+{
+    NoteMessageArgs args = ParseNoteMessageArgs(env, info);
+    return SendNoteMessage(env, args, false);
+}
+```
+
 - ArkTS代码示例
 
   <!-- @[arkts_on_key_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
