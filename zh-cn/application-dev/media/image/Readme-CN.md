@@ -12,6 +12,7 @@
     - [使用ImageSource完成图片解码](image-decoding.md)
     - [使用ImageSource完成多图对象解码](image-picture-decoding.md)
     - [图片解码内存优化(ArkTS)](image-allocator-type.md)
+    - [使用ImageSource获取RAW数据](image-raw-data.md)
   - 图片编码<!--image-encoding-arts-->
     - [使用ImagePacker完成图片编码](image-encoding.md)
     - [使用ImagePacker完成多图对象编码](image-picture-encoding.md)

@@ -1087,7 +1087,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **起始版本**：26.0.0
 
 ## ohos.permission.CHECK_CALL_LOG
- 	 
+
 允许应用根据特定条件(手机号码、通话时长)，查询指定时间内系统是否存在匹配的通话记录。
 
 <!--RP71--><!--RP71End-->

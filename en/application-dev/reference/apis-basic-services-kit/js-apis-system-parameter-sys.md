@@ -11,7 +11,7 @@ The **SystemParameter** module provides system services with easy access to key-
 For details about the system parameter design principles and definitions, see [Parameter Management](../../../device-dev/subsystems/subsys-boot-init-sysparam.md).
 
 > **NOTE**
-> - The APIs of this module are no longer maintained since API version 9. It is recommended that you use [@ohos.systemParameterEnhance](js-apis-system-parameterEnhance-sys.md) instead.
+> - The APIs of this module are no longer maintained since API version 9. You are advised to use [@ohos.systemParameterEnhance](js-apis-system-parameterEnhance-sys.md) instead.
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The APIs provided by this module are system APIs.
 > - Third-party applications cannot use the APIs provided by this module because system parameters each require specific discretionary access control (DAC) and mandatory access control (MAC) permissions.
@@ -193,7 +193,7 @@ try {
 
 set(key: string, value: string, callback: AsyncCallback&lt;void&gt;): void
 
-Sets a value of the specified key. This API uses an asynchronous callback to return the result.
+Sets a value for the specified key. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Startup.SystemInfo
 
@@ -230,7 +230,7 @@ try {
 
 set(key: string, value: string): Promise&lt;void&gt;
 
-Sets a value of the specified key. This API uses a promise to return the result.
+Sets a value for the specified key. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Startup.SystemInfo
 

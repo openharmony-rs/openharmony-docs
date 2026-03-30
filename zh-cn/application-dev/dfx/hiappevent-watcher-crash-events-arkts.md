@@ -41,7 +41,7 @@
 2. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中设置事件的[崩溃事件自定义参数](hiappevent-watcher-crash-events.md#崩溃事件自定义参数设置)和[崩溃日志规格自定义参数](hiappevent-watcher-crash-events.md#崩溃日志规格自定义参数设置)，示例代码如下：
 
 
-    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->    
+    <!-- @[Crash_ArkTS_Add_Event](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
     
     ``` TypeScript
     // 构建崩溃事件的自定义参数
@@ -78,7 +78,7 @@
         }
       };
       // 开发者可以设置崩溃日志配置参数
-      hiAppEvent.setEventPolicy(switchLogPolicy).then(() => {
+      hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
         hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
       }).catch((err: BusinessError) => {
         hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);

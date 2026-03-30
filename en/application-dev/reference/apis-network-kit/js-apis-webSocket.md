@@ -159,6 +159,7 @@ For details about the error codes, see [webSocket Error Codes](errorcode-net-web
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Example 1:
 let ws = webSocket.createWebSocket();
 let options: webSocket.WebSocketRequestOptions | undefined;
 if (options !=undefined) {
@@ -177,6 +178,21 @@ ws.connect(url, options, (err: BusinessError, value: Object) => {
     console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
   }
 });
+
+// Example 2:
+let url = "ws://"
+let ws = webSocket.createWebSocket();
+let options: webSocket.WebSocketRequestOptions = {
+  minSupportTlsProtocol: webSocket.TlsProtocol.TLS_V_1_1
+};
+ws.connect(url, options, (err: BusinessError, value: Object) => {
+  if (!err) {
+    console.info("connect success")
+  } else {
+    console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
+  }
+});
+
 ```
 
 ### connect
@@ -1480,6 +1496,7 @@ Defines the optional parameters carried in the request for establishing a WebSoc
 | skipServerCertVerification<sup>20+</sup> | boolean | No| Yes| Whether to skip server certificate verification. The value **true** means to skip server certificate verification, and the value **false** means the opposite. Default value: **false**.|
 | pingInterval<sup>21+</sup> | number | No| Yes| Custom [heartbeat detection interval](../../network/websocket-connection.md). The default value is 30s. Heartbeat detection is initiated at the specified interval. If the value is set to **0**, heartbeat detection is disabled. The maximum value is 30000s, and the minimum value is 0s.|
 | pongTimeout<sup>21+</sup> | number | No| Yes| Timeout interval for disconnecting a connection after heartbeat detection is initiated. The default value is 30s. If no response is received during the specified interval, the connection is disconnected. The maximum value is 30000s, and the minimum value is 0s. **pongTimeout** must be less than or equal to **pingInterval**.|
+| minSupportTlsProtocol<sup>26+</sup> | [TlsProtocol](#tlsprotocol26) | No| Yes| Custom minimum TLS version supported. For example, if this parameter is set to **TLS_V_1_1**, the client supports TLS 1.1, TLS 1.2, and TLS 1.3.|
 
 ## ClientCert<sup>11+</sup>
 
@@ -1631,3 +1648,16 @@ Callback invoked when the WebSocketServer connection is closed.
 | ---------------- | -------------------  | ------ | --------------------------------------------- |
 | clientConnection | [WebSocketConnection](#websocketconnection19) | Yes| Client information, including the IP address and port number.            |
 | closeReason | [CloseResult](#closeresult10)  | Yes| Represents the result obtained from the **close** event reported when the WebSocket connection is closed.|
+
+## TlsProtocol<sup>26+</sup>
+
+Enumerates the TLS protocol types.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+|            Name        | Value  | Description       |
+| :----------------------- | :---- | :---------- |
+| TLS_V_1_0 | 0    | TLS version 1.0. |
+| TLS_V_1_1  | 1    | TLS version 1.1.|
+| TLS_V_1_2 | 2    | TLS version 1.2.|
+| TLS_V_1_3 | 3    | TLS version 1.3.|

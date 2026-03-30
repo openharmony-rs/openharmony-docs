@@ -334,6 +334,7 @@ enum Input_KeyCode
 | KEYCODE_KBDINPUTASSIST_CANCEL = 2731 | 键盘输入Assist_Cancel<br/>**起始版本：** 22 |
 | KEYCODE_MOUSE_ASSISTANT = 2732 | 鼠标AI助手键<br/>**起始版本：** 24 |
 | KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | 鼠标智慧框选键<br/>**起始版本：** 24 |
+| KEYCODE_AOD_SINGLE_CLICK = 2740 | 手机触摸屏单击事件，在熄屏显示状态下使用<br/>**起始版本：** 24 |
 | KEYCODE_FRONT = 2800 | 挡风玻璃除雾器开关<br/>**起始版本：** 22 |
 | KEYCODE_SETUP = 2801 | 设置键<br/>**起始版本：** 22 |
 | KEYCODE_WAKEUP = 2802 | 唤醒键<br/>**起始版本：** 22 |

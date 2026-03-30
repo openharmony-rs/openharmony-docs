@@ -576,7 +576,7 @@ Indicates the action of a common event that the user unlocks the device.
 
 Indicates that the charging state, level, and other information about the battery have changed.
 
-When any of the following information changes, the event notification service is triggered to publish this event: battery level, battery voltage, battery temperature, battery health status, type of the charger connected to the device, maximum current of the charger, maximum voltage of the charger, battery charging status, number of charging times, total battery capacity, remaining battery capacity, battery model, current of the battery, and battery charging type.
+When any of the following information changes, the event notification service is triggered to publish this event: battery level, battery temperature, battery health status, type of the charger connected to the device, maximum current of the charger, maximum voltage of the charger, battery charging status, number of charging times, total battery capacity, remaining battery capacity, battery model, and battery charging type.
 
 **System capability**: SystemCapability.Notification.CommonEvent
 
@@ -850,6 +850,32 @@ When the Bluetooth media codec changes, the event notification service is trigge
 **Required permissions**: ohos.permission.ACCESS_BLUETOOTH
 
 **Value**: "usual.event.bluetooth.a2dpsource.CODEC_VALUE_CHANGE"
+
+
+### COMMON_EVENT_BLUETOOTH_A2DPSOURCE_PLAY_STATE_CHANGE<sup>24+</sup>
+
+Indicates that the Bluetooth A2DP playback state changes.
+
+When the Bluetooth A2DP playback state changes, the event notification service is triggered to publish this event.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Value**: "usual.event.bluetooth.a2dpsource.PLAY_STATE_CHANGE"
+
+
+### COMMON_EVENT_BLUETOOTH_SCO_CONNECT_STATE_CHANGE<sup>24+</sup>
+
+Indicates that the Bluetooth SCO state changes.
+
+When the Bluetooth SCO state changes, the event notification service is triggered to publish this event.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: ohos.permission.ACCESS_BLUETOOTH
+
+**Value**: "usual.event.bluetooth.SCO_CONNECT_STATE_CHANGE"
 
 
 ### COMMON_EVENT_BLUETOOTH_REMOTEDEVICE_ACL_STATE_CHANGE<sup>20+</sup>
@@ -1314,6 +1340,16 @@ When the lid state of a device has been changed, the event notification service 
 ## Reserved Common Event
 
 Below are reserved common events that are not supported yet.
+
+### COMMON_EVENT_LOCKED_BOOT_COMPLETED
+
+(Reserved, not supported yet) Indicates that the guidance is complete and the system is loaded, but the screen is still locked.
+
+**System capability**: SystemCapability.Notification.CommonEvent
+
+**Required permissions**: none
+
+**Value**: "usual.event.LOCKED_BOOT_COMPLETED"
 
 
 ### COMMON_EVENT_PACKAGE_FIRST_LAUNCH

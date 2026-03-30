@@ -290,3 +290,49 @@ struct Index {
   }
 }
 ```
+
+## onBarRectChange
+
+onBarRectChange(callback: Callback\<Frame\>): void
+
+当原子化服务AtomicServiceMenuBar（右上角菜单功能胶囊）的大小或位置发生变化时，触发注册的回调，返回AtomicServiceMenuBar最新的布局信息。该布局信息包含了AtomicServiceMenuBar的大小和位置。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------- | ------- | ------- | ------- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)\<[Frame](./js-apis-arkui-graphics.md#frame)> | 是 | AtomicServiceBar布局变化时的回调，返回变化后的布局信息。 |
+
+**示例：**
+
+```ts
+import { AtomicServiceBar, UIContext, Frame } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Button('onBarRectChange')
+      .onClick(() => {
+        let uiContext: UIContext = this.getUIContext();
+        let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
+        if (currentBar != undefined) {
+          currentBar.onBarRectChange((rect: Frame) => {
+            hilog.info(0x0000, 'testTag', 'trigger onBarRectChange callback success. X: %{public}d, Y: %{public}d, Width: %{public}d, height: %{public}d.', rect.x, rect.y, rect.width, rect.height);
+          });
+        } else {
+          hilog.info(0x0000, 'testTag', 'set onBarRectChange callback failed.');
+        }
+      })
+  }
+}
+```

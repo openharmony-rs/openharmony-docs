@@ -49,7 +49,7 @@ let certData = '-----BEGIN CERTIFICATE-----\n' +
 function certSample(): void {
   let textEncoder = new util.TextEncoder();
   let encodingBlob: cert.EncodingBlob = {
-    // 将证书数据从string类型转换成Unit8Array。
+    // 将证书数据从string类型转换成Uint8Array。
     data: textEncoder.encodeInto(certData),
     // 证书格式，仅支持PEM和DER。在此示例中，证书为PEM格式。
     encodingFormat: cert.EncodingFormat.FORMAT_PEM

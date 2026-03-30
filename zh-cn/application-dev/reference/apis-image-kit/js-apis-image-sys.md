@@ -167,3 +167,60 @@ async function IsJpegProgressive(imageSource : image.ImageSource) {
     })
 }
 ```
+
+### modifyImageAllProperties<sup>24+</sup>
+
+modifyImageAllProperties(records: Record\<string, string\|null>): Promise\<void>
+
+批量修改图片属性。使用Promise异步回调。
+
+Exif属性中除"JPEGInterchangeFormat"/"JPEGInterchangeFormatLength"/"GIFLoopCount"字段外，其他均支持修改。
+
+> **说明：**
+>
+> - 调用该接口修改属性会改变属性字节长度，建议通过传入文件描述符来创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource7)实例或通过传入的uri创建[image.createImageSource](arkts-apis-image-f.md#imagecreateimagesource)实例。
+> - 支持修改JPEG、PNG、HEIF和WEBP文件类型的图片属性，图片需要包含Exif信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**参数：**
+
+| 参数名  | 类型   | 必填 | 说明         |
+| ------- | ------ | ---- | ------------ |
+| records | Record\<string, string \| null>|是| 包含图片属性名和属性值的键值对集合。|
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 202      | Non-system applications are not allowed to use system APIs.  |
+| 7700102  | Unsupported MIME type.                                       |
+| 7700202  | Unsupported metadata. For example, the property key is not supported, or the property value is invalid. |
+| 7700304  | Failed to write image properties to the file.                |
+
+**示例：**
+
+```ts
+async function ModifyImageAllProperties(imageSource: image.ImageSource) {
+  try {
+    let record: Record<string, string | null> = {
+      "HwMnotePhysicalAperture": "13",
+    }
+    await imageSource.modifyImageAllProperties(record);
+  } catch (err) {
+    console.error('[modifyImageAllProperties]', `modify image property failed.err: ${err.code}, errorMessage: ${err.message}`);
+  }
+}
+```

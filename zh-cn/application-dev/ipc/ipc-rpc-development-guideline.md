@@ -63,12 +63,12 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       // 服务端Stub根据不同的请求code分别执行对应的处理流程
       if (code == 1) {
         let str = data.readString();
-        hilog.info(0x0000, 'testTag', 'IPCStub: stub receive str : ' + str);
+        hilog.info(0x0000, 'testTag', 'stub receive str is ' + str);
         // 服务端使用reply回传请求处理的结果给客户端
         reply.writeString('hello rpc');
         return true;
       } else {
-        hilog.info(0x0000, 'testTag', 'IPCStub: stub unknown code: ' + code);
+        hilog.info(0x0000, 'testTag', 'stub unknown code is ' + code);
         return false;
       }
     }
@@ -77,25 +77,25 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   // 定义后台服务
   export default class ServiceAbility extends ServiceExtensionAbility {
     onCreate(want: Want): void {
-      hilog.info(0x0000, 'testTag', 'IPCStub: onCreate');
+      hilog.info(0x0000, 'testTag', 'onCreate');
     }
   
     onRequest(want: Want, startId: number): void {
-      hilog.info(0x0000, 'testTag', 'IPCStub: onRequest');
+      hilog.info(0x0000, 'testTag', 'onRequest');
     }
   
     onConnect(want: Want): rpc.RemoteObject {
-      hilog.info(0x0000, 'testTag', 'IPCStub: onConnect');
+      hilog.info(0x0000, 'testTag', 'onConnect');
       // 返回Stub对象，客户端获取后便可以与ServiceExtensionAbility进行通信
       return new Stub('IPCStubTest');
     }
   
     onDisconnect(want: Want): void {
-      hilog.info(0x0000, 'testTag', 'IPCStub: onDisconnect');
+      hilog.info(0x0000, 'testTag', 'onDisconnect');
     }
   
     onDestroy(): void {
-      hilog.info(0x0000, 'testTag', 'IPCStub: onDestroy');
+      hilog.info(0x0000, 'testTag', 'onDestroy');
     }
   }
   ```
@@ -132,15 +132,12 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   import { JSON } from '@kit.ArkTS';
   
   let proxy: rpc.IRemoteObject | undefined;
-  let connectId : number | undefined;
-  
-  // 定义返回值，决定弹窗的呈现
-  let isDisconnect = false;
+  let connectId: number | undefined;
   
   // 死亡通知
   class MyDeathRecipient implements rpc.DeathRecipient {
     onRemoteDied() {
-      hilog.info(0x0000, 'testTag', 'IPCClient: server is died');
+      hilog.info(0x0000, 'testTag', 'server is died');
     }
   }
   let deathRecipient = new MyDeathRecipient();
@@ -153,76 +150,75 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   ``` TypeScript
   // 连接服务
   function connectAbility(context:common.UIAbilityContext, promptAction: PromptAction) {
-    hilog.info(0x00000, 'testTag', 'IPCClient: begin to connect Ability');
+    hilog.info(0x00000, 'testTag', 'begin to connect Ability');
     let want: Want = {
       bundleName: 'com.example.ipc_stub',
       abilityName: 'ServiceAbility',
     };
     let connect: common.ConnectOptions = {
       onConnect: (elementName, remoteProxy) => {
-        hilog.info(0x00000, 'testTag', 'IPCClient: onConnect. elementName is :' + JSON.stringify(elementName));
+        hilog.info(0x00000, 'testTag', 'onConnect. elementName is :' + JSON.stringify(elementName));
         proxy = remoteProxy;
         // 客户端注册死亡监听
         try {
           proxy.registerDeathRecipient(deathRecipient, 0);
-          hilog.info(0x00000, 'testTag', 'IPCClient: registerDeathRecipient success');
+          hilog.info(0x00000, 'testTag', 'registerDeathRecipient success');
         } catch (err) {
           let code = (err as BusinessError).code;
           let message = (err as BusinessError).message;
-          hilog.error(0x0000, 'testTag', 'IPCClient: register failed, code is ' + code + ', message is ' + message);
+          hilog.error(0x0000, 'testTag', 'register failed, code is ' + code + ', message is ' + message);
         }
         // ...
       },
   
       onDisconnect: (elementName) => {
-        hilog.info(0x0000, 'testTag', 'IPCClient: onDisconnect. elementName is ' + JSON.stringify(elementName));
+        hilog.info(0x0000, 'testTag', 'onDisconnect. elementName is ' + JSON.stringify(elementName));
         // 客户端移除死亡监听
         try {
           proxy?.unregisterDeathRecipient(deathRecipient, 0);
-          hilog.info(0x00000, 'testTag', 'IPCClient: unregisterDeathRecipient success');
+          hilog.info(0x00000, 'testTag', 'unregisterDeathRecipient success');
         } catch (err) {
           let code = (err as BusinessError).code;
           let message = (err as BusinessError).message;
-          hilog.error(0x0000, 'testTag', 'IPCClient: unregister failed, code is ' + code + ', message is ' + message);
+          hilog.error(0x0000, 'testTag', 'unregister failed, code is ' + code + ', message is ' + message);
         }
         proxy = undefined;
         // ...
       },
   
       onFailed: (code: number) => {
-        hilog.info(0x0000, 'testTag', 'IPCClient: onFailed. code is ' + code);
+        hilog.info(0x0000, 'testTag', 'onFailed. code is ' + code);
         // ...
       },
     }
   
     try {
       connectId = context.connectServiceExtensionAbility(want, connect);
-      hilog.info(0x00000, 'testTag', 'IPCClient: begin to connect Ability end');
+      hilog.info(0x00000, 'testTag', 'begin to connect Ability end');
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      hilog.error(0x0000, 'testTag', 'IPCClient: connectAbility failed, code is ' + code + ', message is ' + message);
+      hilog.error(0x0000, 'testTag', 'connectAbility failed, code is ' + code + ', message is ' + message);
     }
   }
   
   // 断开连接
   function disconnectAbility(context: common.UIAbilityContext) {
-    hilog.info(0x00000, 'testTag', 'IPCClient: begin to disconnect Ability. connectId is ' + connectId);
+    hilog.info(0x00000, 'testTag', 'begin to disconnect Ability. connectId is ' + connectId);
     if (connectId != undefined) {
       try {
         context.disconnectServiceExtensionAbility(connectId);
-        hilog.info(0x00000, 'testTag', 'IPCClient: begin to disconnect Ability end');
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        hilog.error(0x0000, 'testTag', 'IPCClient: disconnect failed, code is ' + code + ', message is ' + message);
+        hilog.error(0x0000, 'testTag', 'disconnect failed, code is ' + code + ', message is ' + message);
       }
     }
   }
   
   // 发送消息
   async function sendString(promptAction: PromptAction) : Promise <void> {
-    hilog.info(0x00000, 'testTag', 'IPCClient: begin to send String');
+    hilog.info(0x00000, 'testTag', 'begin to send String');
     let option = new rpc.MessageOption();
     let data = rpc.MessageSequence.create();
     let reply = rpc.MessageSequence.create();
@@ -232,15 +228,15 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       await proxy.sendMessageRequest(1, data, reply, option)
         .then((result: rpc.RequestResult) => {
           if (result.errCode != 0) {
-            hilog.error(0x0000, 'testTag', 'IPCClient: sendMessageRequest failed, errCode: ' + result.errCode);
+            hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode is ' + result.errCode);
           }
           // 从result.reply里读取结果
           let str = result.reply.readString();
-          hilog.info(0x0000, 'testTag', 'IPCClient: sendMessageRequest receive str is  ' + str);
+          hilog.info(0x0000, 'testTag', 'sendMessageRequest receive str is ' + str);
           // ...
         })
         .catch((e: Error) => {
-          hilog.error(0x0000, 'testTag', 'IPCClient: sendMessageRequest failed, error is ' + JSON.stringify(e));
+          hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error is ' + JSON.stringify(e));
           // ...
         })
         .finally(() => {
@@ -248,10 +244,10 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
           reply.reclaim();
         })
     } else {
-      hilog.error(0x0000, 'testTag', 'IPCClient: proxy is invalid');
+      hilog.error(0x0000, 'testTag', 'proxy is invalid');
       // ...
     }
-    hilog.info(0x0000, 'testTag', 'IPCClient: sendString end');
+    hilog.info(0x0000, 'testTag', 'sendString end');
   }
   ```
 
@@ -270,17 +266,14 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   import { JSON } from '@kit.ArkTS';
   import { PromptAction  } from '@kit.ArkUI';
   
-  let proxy: rpc.IRemoteObject | undefined
-  let connectId: number | undefined
-  let dmInstance: distributedDeviceManager.DeviceManager
+  let proxy: rpc.IRemoteObject | undefined;
+  let connectId: number | undefined;
+  let dmInstance: distributedDeviceManager.DeviceManager;
   let deviceList: Array<distributedDeviceManager.DeviceBasicInfo> | undefined;
   let deviceId: string| undefined;
   
-  // 定义返回值，决定弹窗的呈现
-  let isDisconnect = false;
-  
   // 死亡通知
-  class MyDeathRecipient implements rpc.DeathRecipient{
+  class MyDeathRecipient implements rpc.DeathRecipient {
     onRemoteDied() {
       hilog.info(0x0000, 'testTag', 'server is died');
     }
@@ -295,52 +288,52 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   ``` TypeScript
   // 获取权限
   function getPermission(context:common.UIAbilityContext) {
-    hilog.info(0x00000, 'testTag', 'RpcClient: begin to requestPermissions');
+    hilog.info(0x00000, 'testTag', 'begin to requestPermissions');
     try {
       let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
       atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC'],
         (err: BusinessError, data: PermissionRequestResult) => {
         if (err) {
-          hilog.error(0x0000, 'testTag', 'RpcClient: requestPermissions failed, code is ' +
-            err.code + ', message is ' + err.message);
+          hilog.error(0x0000, 'testTag', 'requestPermissions failed, code is ' + err.code);
+          hilog.error(0x0000, 'testTag', 'requestPermissions failed, message is ' + err.message);
         } else {
-          hilog.info(0x0000, 'testTag','RpcClient: requestPermissions success, result is ' + JSON.stringify(data));
-          hilog.info(0x0000, 'testTag','RpcClient: data permissions is ' + data.permissions);
-          hilog.info(0x0000, 'testTag','RpcClient: data authResults is ' + data.authResults);
-          hilog.info(0x0000, 'testTag','RpcClient: data dialogShownResults is ' + data.dialogShownResults);
+          hilog.info(0x0000, 'testTag', 'requestPermissions success, result is ' + JSON.stringify(data));
+          hilog.info(0x0000, 'testTag', 'data permissions is ' + data.permissions);
+          hilog.info(0x0000, 'testTag', 'data authResults is ' + data.authResults);
+          hilog.info(0x0000, 'testTag', 'data dialogShownResults is ' + data.dialogShownResults);
         }
       });
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      hilog.error(0x0000, 'testTag', 'RpcClient: getPermission failed, code is  ' + code + ', message is ' + message);
+      hilog.error(0x0000, 'testTag', 'getPermission failed, code is ' + code + ', message is ' + message);
     }
   }
   
   // 获取对端设备信息
   function getDeviceId(promptAction: PromptAction) {
-    hilog.info(0x00000, 'testTag', 'RpcClient: begin to getDeviceId');
+    hilog.info(0x00000, 'testTag', 'begin to getDeviceId');
     try {
       dmInstance = distributedDeviceManager.createDeviceManager('com.example.rpc_client');
-      hilog.info(0x0000, 'testTag', 'RpcClient: createDeviceManager success');
+      hilog.info(0x0000, 'testTag', 'createDeviceManager success');
       deviceList = dmInstance.getAvailableDeviceListSync();
-      hilog.info(0x0000, 'testTag', 'RpcClient: deviceList is' + JSON.stringify(deviceList));
+      hilog.info(0x0000, 'testTag', 'deviceList is ' + JSON.stringify(deviceList));
       if (deviceList.length !== 0) {
         deviceId = deviceList[0].networkId;
-        hilog.info(0x0000, 'testTag', 'RpcClient: networkId is ' + deviceId);
+        hilog.info(0x0000, 'testTag', 'networkId is ' + deviceId);
         // ...
       }
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      hilog.error(0x0000, 'testTag', 'RpcClient: getDeviceId failed, code is  ' + code + ', message is ' + message);
+      hilog.error(0x0000, 'testTag', 'getDeviceId failed, code is ' + code + ', message is ' + message);
       // ...
     }
   }
   
   // 连接服务
   function connectAbility(context:common.UIAbilityContext, promptAction: PromptAction) {
-    hilog.info(0x00000, 'testTag', 'RpcClient: begin to connect Ability');
+    hilog.info(0x00000, 'testTag', 'begin to connect Ability');
     let want: Want = {
       bundleName: 'com.example.rpc_stub',
       abilityName: 'ServiceAbility',
@@ -349,35 +342,35 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
   
     let connect: common.ConnectOptions = {
       onConnect: (elementName, remoteProxy) => {
-        hilog.info(0x00000, 'testTag', 'RpcClient: onConnect. elementName is :' +  JSON.stringify(elementName));
+        hilog.info(0x00000, 'testTag', 'onConnect. elementName is ' + JSON.stringify(elementName));
         proxy = remoteProxy;
         // 客户端注册死亡监听
         try {
           proxy.registerDeathRecipient(deathRecipient, 0);
-          hilog.info(0x00000, 'testTag', 'RpcClient: registerDeathRecipient success');
+          hilog.info(0x00000, 'testTag', 'registerDeathRecipient success');
         } catch (err) {
           let code = (err as BusinessError).code;
           let message = (err as BusinessError).message;
-          hilog.error(0x0000, 'testTag', 'RpcClient: register failed, code is ' + code + ', message is ' + message);
+          hilog.error(0x0000, 'testTag', 'register failed, code is ' + code + ', message is ' + message);
         };
         // ...
       },
       onDisconnect: (elementName) => {
-        hilog.info(0x0000, 'testTag', 'RpcClient: onDisconnect. elementName is ' + JSON.stringify(elementName));
+        hilog.info(0x0000, 'testTag', 'onDisconnect. elementName is ' + JSON.stringify(elementName));
         // 客户端移除死亡监听
         try {
           proxy?.unregisterDeathRecipient(deathRecipient, 0);
-          hilog.info(0x00000, 'testTag', 'RpcClient: unregisterDeathRecipient success');
+          hilog.info(0x00000, 'testTag', 'unregisterDeathRecipient success');
         } catch (err) {
           let code = (err as BusinessError).code;
           let message = (err as BusinessError).message;
-          hilog.error(0x0000, 'testTag', 'RpcClient: unregister failed, code is ' + code + ', message is ' + message);
+          hilog.error(0x0000, 'testTag', 'unregister failed, code is ' + code + ', message is ' + message);
         }
         proxy = undefined;
         // ...
       },
       onFailed: (code: number) => {
-        hilog.info(0x0000, 'testTag', 'RpcClient: onFailed. code is :' + code);
+        hilog.info(0x0000, 'testTag', 'onFailed. code is ' + code);
         // ...
       },
     }
@@ -387,27 +380,27 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
     } catch (err) {
       let code = (err as BusinessError).code;
       let message = (err as BusinessError).message;
-      hilog.error(0x0000, 'testTag', 'RpcClient: connectService failed, code is ' + code + ', message is ' + message);
+      hilog.error(0x0000, 'testTag', 'connectService failed, code is ' + code + ', message is ' + message);
     }
   }
   
   // 断开连接
   function disconnectAbility(context: common.UIAbilityContext) {
-    hilog.info(0x00000, 'testTag', 'RpcClient: begin to disconnect Ability');
+    hilog.info(0x00000, 'testTag', 'begin to disconnect Ability');
     if (connectId != undefined) {
       try {
         context.disconnectServiceExtensionAbility(connectId);
       } catch (err) {
         let code = (err as BusinessError).code;
         let message = (err as BusinessError).message;
-        hilog.error(0x0000, 'testTag', 'pcClient: disconnectService failed, code is ' + code + ', message is ' + message);
+        hilog.error(0x0000, 'testTag', 'disconnectService failed, code is ' + code + ', message is ' + message);
       }
     }
   }
   
   // 发送消息
   async function sendString(promptAction: PromptAction) : Promise <void> {
-    hilog.info(0x00000, 'testTag', 'RpcClient: begin to send string');
+    hilog.info(0x00000, 'testTag', 'begin to send string');
     let option = new rpc.MessageOption();
     let data = rpc.MessageSequence.create();
     let reply = rpc.MessageSequence.create();
@@ -418,16 +411,16 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
       await proxy.sendMessageRequest(1, data, reply, option)
         .then((result: rpc.RequestResult) => {
           if (result.errCode != 0) {
-            hilog.error(0x0000, 'testTag', 'RpcClient: sendMessageRequest failed, errCode: ' + result.errCode);
+            hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, errCode is ' + result.errCode);
           }
           // 从result.reply里读取结果
           let str = result.reply.readString();
-          hilog.info(0x0000, 'testTag', 'RpcClient: sendMessageRequest receive str is  ' + str);
+          hilog.info(0x0000, 'testTag', 'sendMessageRequest receive str is ' + str);
           // 弹窗显示发送消息成功
           // ...
         })
         .catch((e: Error) => {
-          hilog.error(0x0000, 'testTag', 'RpcClient: sendMessageRequest failed, error is ' + JSON.stringify(e));
+          hilog.error(0x0000, 'testTag', 'sendMessageRequest failed, error is ' + JSON.stringify(e));
           // 弹窗显示发送消息失败
           // ...
         })
@@ -436,7 +429,7 @@ IPC/RPC的主要工作是跨进程建立对象通信的连接（客户端进程�
           reply.reclaim();
         })
     } else {
-      hilog.error(0x0000, 'testTag', 'RpcClient: proxy is invalid');
+      hilog.error(0x0000, 'testTag', 'proxy is invalid');
       // 弹窗显示发送消息失败
       // ...
     }

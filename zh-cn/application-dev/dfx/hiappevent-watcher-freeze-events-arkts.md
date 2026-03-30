@@ -27,7 +27,7 @@
 1. 新建一个ArkTS应用工程，编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，导入依赖模块，示例代码如下：
 
    ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
+   import { BusinessError, deviceInfo } from '@kit.BasicServicesKit';
    import { hiAppEvent, hilog } from '@kit.PerformanceAnalysisKit';
    ```
 
@@ -44,6 +44,21 @@
     }).catch((err: BusinessError) => {
       hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
     });
+
+    if (deviceInfo.sdkApiVersion >= 24) {  // API Version 24及以后版本，支持设置页面切换日志
+      // 配置页面切换日志
+      let switchLogPolicy : hiAppEvent.EventPolicy = {
+        "appFreezePolicy": {
+          "pageSwitchLogEnable": true
+        }
+      };
+      // 开发者可以设置应用冻屏日志配置参数
+      hiAppEvent.configEventPolicy(switchLogPolicy).then(() => {
+        hilog.info(0x0000, 'testTag', `HiAppEvent success to config event policy.`);
+      }).catch((err: BusinessError) => {
+        hilog.error(0x0000, 'testTag', `HiAppEvent code: ${err.code}, message: ${err.message}`);
+      });
+    }
    ```
 
 3. 编辑工程中的“entry > src > main > ets  > entryability > EntryAbility.ets”文件，在onCreate函数中添加系统事件的订阅，示例代码如下：
@@ -105,6 +120,8 @@
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.test_data=${eventInfo.params['test_data']}`);
             // 开发者可以获取到应用冻屏事件的故障进程存活时间
             hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.process_life_time=${eventInfo.params['process_life_time']}`);
+            // 开发者可以获取到应用冻屏事件的页面切换日志
+            hilog.info(0x0000, 'testTag', `HiAppEvent eventInfo.params.page_switch_log=${JSON.stringify(eventInfo.params['page_switch_log'])}`);
           }
         }
       }

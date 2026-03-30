@@ -164,7 +164,7 @@ JS sample code:
 
 ```xml
 <stack class="container">
-    <input class="generateBtn" @click="generateKey">Generate key</input>
+    <input type="button" class="generateBtn" @click="generateKey">Generate Key</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
@@ -385,7 +385,7 @@ JS sample code:
 
 ```xml
 <stack class="container">
-    <input class="deleteBtn" @click="deleteKey">Delete key</input>
+    <input type="button" class="deleteBtn" @click="deleteKey">Delete Key</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
@@ -1876,7 +1876,7 @@ JS sample code:
 
 ```xml
 <stack class="container">
-    <input class="existBtn" @click="existKey">Query Key</input>
+    <input type="button" class="existBtn" @click="existKey">Query Key</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
@@ -2612,8 +2612,8 @@ JS sample code:
 
 ```xml
 <stack class="container">
-    <input class="threeStageBtn1" @click="threeStageEncrypt">Encrypt data</input>
-    <input class="threeStageBtn2" @click="threeStageDecrypt">Decrypt data</input>
+    <input type="button" class="threeStageBtn1" @click="threeStageEncrypt">Encrypt Data</input>
+    <input type="button" class="threeStageBtn2" @click="threeStageDecrypt">Decrypt Data</input>
     <text class="result">{{result}}</text>
 </stack>
 ```
@@ -3256,7 +3256,7 @@ Enumerates the key algorithms.
 | ------------------------- | ---- | --------------------- |
 | HUKS_ALG_RSA              | 1    | RSA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_ECC              | 2    | ECC.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_ALG_DSA              | 3    | DSA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
+| HUKS_ALG_DSA              | 3    | DSA<!--RP5--><!--RP5End-->.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_AES              | 20   | AES.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_ALG_HMAC             | 50   | HMAC.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_HKDF             | 51   | HKDF.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
@@ -4113,7 +4113,7 @@ Obtains key properties. This API uses a promise to return the result.
 
 | Type              | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<[HuksResult](#huksoptions)> | Promise that returns the **HuksResult**. **properties** of **HuksResult** returns the key parameters.|
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns the **HuksResult**. **properties** of **HuksResult** returns the key parameters.|
 
 **Example**
 
