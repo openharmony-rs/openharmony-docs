@@ -634,6 +634,37 @@ static void OnBLEDeviceOpened(void *userData, bool opened, OH_MIDIDevice *device
 - ArkTS代码示例
 
   <!-- @[arkts_load_ports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  loadPorts(deviceId: number): void {
+    hilog.info(DOMAIN, TAG, '[loadPorts] ++enter, deviceId=%{public}d', deviceId);
+    try {
+      // ...
+      if (count > 0) {
+        this.portList = midi.getPortInfos(deviceId);
+        this.inputPorts = this.portList.filter(p => p.direction === MidiPortDirection.INPUT);
+        this.outputPorts = this.portList.filter(p => p.direction === MidiPortDirection.OUTPUT);
+        hilog.info(DOMAIN, TAG, '[loadPorts] totalPorts=%{public}d, inputPorts=%{public}d, outputPorts=%{public}d',
+          this.portList.length, this.inputPorts.length, this.outputPorts.length);
+        // Log each port info
+        this.portList.forEach((port, index) => {
+          hilog.info(DOMAIN, TAG,
+            '[loadPorts] port[%{public}d]: index=%{public}d, name=%{public}s, direction=%{public}d',
+            index, port.portIndex, port.name, port.direction);
+        });
+      } else {
+        this.portList = [];
+        this.inputPorts = [];
+        this.outputPorts = [];
+        hilog.info(DOMAIN, TAG, '[loadPorts] no ports found');
+      }
+      hilog.info(DOMAIN, TAG, '[loadPorts] --exit');
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, '[loadPorts] exception: %{public}s', JSON.stringify(e));
+      this.log(`Error loading ports: ${JSON.stringify(e)}`);
+    }
+  }
+  ```
 
 ### 6. MIDI端口管理
 
