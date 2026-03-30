@@ -997,7 +997,7 @@ Allows an application to obtain and manage the media resources playing on a devi
 
 Allows an application to set the preview thumbnail when a mouse hovers over the icon in the Dock.
 
-<!--RP64--><!--RP64End-->
+<!--RP72--><!--RP72End-->
 
 **Permission level**: system_basic
 
@@ -1011,7 +1011,7 @@ Allows an application to set the preview thumbnail when a mouse hovers over the 
 
 Allows an application to set the window background transparency.
 
-<!--RP64--><!--RP64End-->
+<!--RP73--><!--RP73End-->
 
 **Permission level**: system_basic
 
