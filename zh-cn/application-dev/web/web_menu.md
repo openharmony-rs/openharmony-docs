@@ -727,6 +727,50 @@ Web组件的[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-we
 
 <!-- @[web_EditMenuOptions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+let selectText = '';
+
+class SelectClass {
+  constructor() {
+  }
+
+  setSelectText(param: string) {
+    selectText = param.toString();
+  }
+}
+
+@Entry
+@Component
+struct WebComponent {
+  webController: webview.WebviewController = new webview.WebviewController();
+  @State selectObj: SelectClass = new SelectClass();
+  @State textStr: string = '';
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index5.html'), controller: this.webController})
+        .javaScriptProxy({
+          object: this.selectObj,
+          name: 'selectObjName',
+          methodList: ['setSelectText'],
+          controller: this.webController
+        })
+        .height('40%')
+      Text('Click here to get the selected text.')
+        .fontSize(20)
+        .onClick(() => {
+          this.textStr = selectText;
+        })
+        .height('10%')
+      Text('Selected text is ' + this.textStr)
+        .fontSize(20)
+        .height('10%')
+    }
+  }
+}
+```
+
 <!---->
 
   ```html
