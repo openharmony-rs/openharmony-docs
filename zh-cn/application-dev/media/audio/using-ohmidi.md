@@ -1246,6 +1246,42 @@ async sendSysExMessage(): Promise<void> {
   - 关闭输出端口
 
     <!-- @[cleanup_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    // Close output port
+    static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
+    {
+        size_t argc = 2;
+        napi_value args[2] = {nullptr};
+        napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+    
+        int64_t deviceId = 0;
+        napi_get_value_int64(env, args[0], &deviceId);
+    
+        uint32_t portIndex = 0;
+        napi_get_value_uint32(env, args[1], &portIndex);
+    
+        OH_LOG_INFO(LOG_APP, "[CloseOutputPort] ++enter, deviceId=%{public}lld, portIndex=%{public}u",
+                    (long long)deviceId, portIndex);
+    
+        std::lock_guard<std::mutex> lock(g_midiMutex);
+    
+        napi_value result;
+        auto it = g_openedDevices.find(deviceId);
+        if (g_midiClient == nullptr || it == g_openedDevices.end()) {
+            OH_LOG_ERROR(LOG_APP, "[CloseOutputPort] client is null or device not opened");
+            napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
+            return result;
+        }
+        OH_MIDIStatusCode status = OH_MIDIDevice_CloseOutputPort(it->second, portIndex);
+        // Remove protocol info for this output port
+        if (status == OH_MIDI_STATUS_OK) {
+            auto key = std::make_pair(deviceId, portIndex);
+            g_outputPortProtocols.erase(key);
+        }
+        // ...
+    }
+    ```
 
   - 关闭设备
 
