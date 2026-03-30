@@ -365,6 +365,33 @@ interface BleOpenedEventData {
 - ArkTS代码示例
 
   <!-- @[arkts_open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  openDevice(): void {
+    // ...
+    if (this.selectedDeviceId < 0) {
+      hilog.warn(DOMAIN, TAG, '[openDevice] no device selected');
+      this.log('Please select a device first');
+      return;
+    }
+  
+    try {
+      const status = midi.openDevice(this.selectedDeviceId);
+      if (status === MidiStatusCode.OK) {
+        this.isDeviceOpen = true;
+        this.log(`Device ${this.selectedDeviceId} opened`);
+        hilog.info(DOMAIN, TAG, '[openDevice] device opened successfully, isDeviceOpen=true');
+      } else {
+        this.log(`Failed to open device: ${status}`);
+        hilog.error(DOMAIN, TAG, '[openDevice] failed with status=%{public}d', status);
+      }
+      hilog.info(DOMAIN, TAG, '[openDevice] --exit, status=%{public}d', status);
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, '[openDevice] exception: %{public}s', JSON.stringify(e));
+      this.log(`Error opening device: ${JSON.stringify(e)}`);
+    }
+  }
+  ```
 
 #### 4.2 关闭MIDI设备
 
