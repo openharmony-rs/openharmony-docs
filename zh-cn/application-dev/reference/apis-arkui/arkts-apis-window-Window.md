@@ -4316,7 +4316,7 @@ on(type: 'frameMetricsMeasured', callback: Callback&lt;FrameMetrics&gt;): void
 
 开启窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。
+应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。但当同时使用该接口和[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)、[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)、[displaySync.on('frame')](../apis-arkgraphics2d/js-apis-graphics-displaySync.md#onframe)中的任意一个时，即使无UI内容重绘，也可能触发回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 

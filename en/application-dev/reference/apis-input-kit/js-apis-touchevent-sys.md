@@ -44,8 +44,9 @@ Defines the touch point information.
 
 | Name         | Type  | Read-Only  | Optional  | Description                                 |
 | ----------- | ------ | ---- | ---- | ----------------------------------- |
-| fixedDisplayX | number| No   | Yes   | **screenX** correction value in one-handed mode.|
-| fixedDisplayY | number| No   | Yes   | **screenY** correction value in one-handed mode.   |
+| fixedDisplayX | number | No   | Yes   | **screenX** correction value in one-handed mode.|
+| fixedDisplayY | number | No   | Yes   | **screenY** correction value in one-handed mode.|
+| blobId<sup>24+</sup> | number | No   | Yes   | Touch point attribute ID. Currently, only single-finger touch is supported. The value **1** indicates left-hand touch, and the value **2** indicates right-hand touch.|
 
 ## TouchEvent
 

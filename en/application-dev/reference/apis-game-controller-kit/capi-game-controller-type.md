@@ -10,6 +10,8 @@
 
 Defines common enumeration types for the **GameController** module.
 
+**File to include**: <GameControllerKit/game_controller_type.h>
+
 **Library:** libohgame_controller.z.so
 
 **System capability**: SystemCapability.Game.GameController
@@ -29,7 +31,7 @@ Defines common enumeration types for the **GameController** module.
 | typedef enum [GameController_ErrorCode](capi-game-controller.md#gamecontroller_errorcode) [GameController_ErrorCode](capi-game-controller.md#gamecontroller_errorcode) | Defines error codes of the game controller.| 
 
 
-### Enums
+### Enumeration
 
 | Name| Description| 
 | -------- | -------- |
