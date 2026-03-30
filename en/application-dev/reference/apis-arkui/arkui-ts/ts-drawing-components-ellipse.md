@@ -14,7 +14,7 @@ The **Ellipse** component is used to draw an ellipse.
 
 ## Child Components
 
-Not supported
+None
 
 
 ## APIs

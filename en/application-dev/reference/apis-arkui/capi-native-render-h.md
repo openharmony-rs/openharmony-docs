@@ -188,6 +188,8 @@ Declares the APIs of **NativeRender**. For details, see [Building a Rendering No
 | [ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromOvalShape(ArkUI_RectShapeOption* shape)](#oh_arkui_rendernodeutils_createrendernodeclipoptionfromovalshape) | - | Creates a render node clip option from an oval shape.|
 | [ArkUI_RenderNodeClipOption* OH_ArkUI_RenderNodeUtils_CreateRenderNodeClipOptionFromCommandPath(ArkUI_CommandPathOption* path)](#oh_arkui_rendernodeutils_createrendernodeclipoptionfromcommandpath) | - | Creates a render node clip option from a custom drawing path.|
 | [void OH_ArkUI_RenderNodeUtils_DisposeRenderNodeClipOption(ArkUI_RenderNodeClipOption* option)](#oh_arkui_rendernodeutils_disposerendernodeclipoption) | - | Disposes of the render node clip option.|
+| [void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setrectshapeoptionvalue) | - | Sets the border range for a rectangle shape option. This function defines the geometric frame of a rectangle by specifying its position and size.|
+| [void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeOption* option, float x, float y, float width, float height)](#oh_arkui_rendernodeutils_setroundrectshapeoptionvalue) | - | Sets the border range for a rounded rectangle shape option. This function defines the geometric frame of a rounded rectangle by specifying its position and size.|
 
 
 ## Function Description
@@ -480,7 +482,7 @@ Obtains the next sibling node of the specified node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Reference node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node used to receive the next sibling node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node, which used to receive the next sibling node.|
 
 **Return value**
 | Type| Description|
@@ -502,7 +504,7 @@ Obtains the previous sibling node of the specified node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Reference node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node used to receive the previous sibling node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node, which is used to receive the previous sibling node.|
 
 **Return value**
 | Type| Description|
@@ -1468,7 +1470,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_Rend
 Applies a mask to the render node using the mask configuration.
 
 The mask is created as follows:
-1. Add brightness and linear color filters to the mask layer.
+1. Add brightness and a linear color filter to the mask layer.
 2. Draw the mask graphic under this filter.
 3. Use the original node image as the source color and the mask graphic as the target color, and blend them into a mask image using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API.
 
@@ -3070,3 +3072,43 @@ Obtains the RenderNode of the target node that has been accepted as a child node
 | Type| Description|
 | -- | -- |
 | int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_RENDER_NOT_ADOPTED_NODE](capi-native-type-h.md#arkui_errorcode) if this node is not accepted as a child node.|
+
+### OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue()
+
+```c
+void OH_ArkUI_RenderNodeUtils_SetRectShapeOptionValue(ArkUI_RectShapeOption* option, float x, float y, float width, float height)
+```
+
+**Description**
+Sets the border range for a rectangle shape option. This function defines the geometric frame of a rectangle by specifying its position and size.
+
+**Since**: 26.0.0
+
+**Parameters**
+| Name| Description|
+| -- | -- |
+| [ArkUI_RectShapeOption](./capi-arkui-nativemodule-arkui-rectshapeoption.md)* option | Pointer to the rectangle shape option to be configured.|
+| float x | X coordinate of the upper left corner of the rectangle, which is used to determine the position of the left boundary.|
+| float y | Y coordinate of the upper left corner of the rectangle, which is used to determine the position of the upper boundary.|
+| float width | Width of the rectangle, which indicates the horizontal span starting from the X coordinate and is used to determine the position of the right boundary. That is, the X coordinate of the lower right corner of the rectangle is equal to **x** + **width**.|
+| float height | Height of the rectangle, which indicates the vertical span starting from the Y coordinate and is used to determine the position of the bottom boundary. That is, the Y coordinate of the lower right corner of the rectangle is equal to **y** + **height**.|
+
+### OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue()
+
+```c
+void OH_ArkUI_RenderNodeUtils_SetRoundRectShapeOptionValue(ArkUI_RoundRectShapeOption* option, float x, float y, float width, float height)
+```
+
+**Description**
+Sets the border range for a rounded rectangle shape option. This function defines the geometric frame of a rounded rectangle by specifying its position and size.
+
+**Since**: 26.0.0
+
+**Parameters**
+| Name| Description|
+| -- | -- |
+| [ArkUI_RoundRectShapeOption](./capi-arkui-nativemodule-arkui-roundrectshapeoption.md)* option | Pointer to the rounded rectangle shape option to be configured.|
+| float x | X coordinate of the upper left corner of the rectangle, which is used to determine the position of the left boundary.|
+| float y | Y coordinate of the upper left corner of the rectangle, which is used to determine the position of the upper boundary.|
+| float width | Width of the rectangle, which indicates the horizontal span starting from the X coordinate and is used to determine the position of the right boundary. That is, the X coordinate of the lower right corner of the rectangle is equal to **x** + **width**.|
+| float height | Height of the rectangle, which indicates the vertical span starting from the Y coordinate and is used to determine the position of the bottom boundary. That is, the Y coordinate of the lower right corner of the rectangle is equal to **y** + **height**.|
