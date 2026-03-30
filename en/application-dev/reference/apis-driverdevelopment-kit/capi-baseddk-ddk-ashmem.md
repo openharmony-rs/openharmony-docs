@@ -31,4 +31,4 @@ Device memory map created by calling **OH_DDK_CreateAshmem**. A buffer using the
 | const uint32_t size | Buffer size.|
 | uint32_t offset | Offset of the used buffer. The default value is **0**, indicating that there is no offset and the buffer starts from the specified address.|
 | uint32_t bufferLength | Length of the buffer. By default, the value is equal to that of **size**, indicating that the entire buffer is used.|
-| uint32_t transferredLength | Length of the data to be transferred.|
+| uint32_t transferredLength | Length of the transferred data.|
