@@ -677,6 +677,15 @@ static void OnBLEDeviceOpened(void *userData, bool opened, OH_MIDIDevice *device
 - MIDI接收回调示例
 
   <!-- @[midi_received_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+  
+  ``` C++
+  static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t eventCount)
+  {
+      // userData指向InputPortContext
+      InputPortContext* context = static_cast<InputPortContext*>(userData);
+      // ...
+  }
+  ```
 
 <!-- @[open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
