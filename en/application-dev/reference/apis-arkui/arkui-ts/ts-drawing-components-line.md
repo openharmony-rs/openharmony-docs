@@ -16,7 +16,7 @@ The **Line** component is used to draw a straight line.
 
 ## Child Components
 
-Not supported
+None
 
 
 ## APIs
@@ -260,7 +260,7 @@ Sets the stroke opacity. This attribute can be dynamically set using [attributeM
 
 strokeWidth(value: Length)
 
-Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If of the string type, this parameter cannot be set in percentage. A percentage is processed as 1px.
+Sets the stroke width. This attribute can be dynamically set using [attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier). If this attribute is of the string type, percentage values are not supported and will be treated as 1 px.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 

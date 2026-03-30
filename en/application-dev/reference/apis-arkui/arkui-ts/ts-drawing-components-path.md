@@ -17,7 +17,7 @@ The **Path** component is used to draw a custom closed shape based on a specifie
 
 ## Child Components
 
-Not supported
+None
 
 ## APIs
 
