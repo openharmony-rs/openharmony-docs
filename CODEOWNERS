@@ -537,9 +537,9 @@ zh-cn/application-dev/web/web-sensor.md @handyohos @glzt2l @HelloShuo @zhang-yin
 zh-cn/application-dev/web/web-set-dark-mode.md @LongLie @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/web/web-white-screen.md @LongLie @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/web/web_component_process.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
-zh-cn/application-dev/web/web_drag.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
+zh-cn/application-dev/web/web-drag.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/web/web_full_screen.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
-zh-cn/application-dev/web/web_menu.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
+zh-cn/application-dev/web/web-menu.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 
 [开发-Background Tasks Kit]
 zh-cn/application-dev/task-management/ @Brilliantry_Rui @zhouben25  @leetestnady
