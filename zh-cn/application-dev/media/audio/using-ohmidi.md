@@ -825,6 +825,28 @@ static napi_value OpenInputPort(napi_env env, napi_callback_info info)
 - ArkTS代码示例
 
   <!-- @[arkts_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  closeInputPort(portIndex: number): void {
+    try {
+      const status = midi.closeInputPort(this.selectedDeviceId, portIndex);
+  
+      if (status === MidiStatusCode.OK) {
+        this.openInputPorts.delete(portIndex);
+        this.log(`Input port ${portIndex} closed`);
+        hilog.info(DOMAIN, TAG, '[closeInputPort] port closed, openInputPorts.size=%{public}d',
+          this.openInputPorts.size);
+      } else {
+        this.log(`Failed to close input port: ${status}`);
+        hilog.error(DOMAIN, TAG, '[closeInputPort] failed with status=%{public}d', status);
+      }
+      hilog.info(DOMAIN, TAG, '[closeInputPort] --exit, status=%{public}d', status);
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, '[closeInputPort] exception: %{public}s', JSON.stringify(e));
+      this.log(`Error closing input port: ${JSON.stringify(e)}`);
+    }
+  }
+  ```
 
 #### 6.3 打开输出端口
 
