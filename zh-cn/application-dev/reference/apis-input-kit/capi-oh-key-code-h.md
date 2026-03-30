@@ -306,7 +306,7 @@ enum Input_KeyCode
 | KEYCODE_SPREADSHEET = 2703 | 电子表格键<br/>**起始版本：** 22 |
 | KEYCODE_GRAPHICSEDITOR = 2704 | 图形编辑器键<br/>**起始版本：** 22 |
 | KEYCODE_PRESENTATION = 2705 | 演示文稿键<br/>**起始版本：** 22 |
-| KEYCODE_DATABASE = 2706 | 数据库键标<br/>**起始版本：** 22 |
+| KEYCODE_DATABASE = 2706 | 数据库键<br/>**起始版本：** 22 |
 | KEYCODE_NEWS = 2707 | 新闻键<br/>**起始版本：** 22 |
 | KEYCODE_VOICEMAIL = 2708 | 语音信箱<br/>**起始版本：** 22 |
 | KEYCODE_ADDRESSBOOK = 2709 | 通讯簿<br/>**起始版本：** 22 |
