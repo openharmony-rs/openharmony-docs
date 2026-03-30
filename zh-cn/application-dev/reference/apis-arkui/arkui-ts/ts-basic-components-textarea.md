@@ -1264,6 +1264,26 @@ onCopy(callback:&nbsp;(value:&nbsp;string)&nbsp;=&gt;&nbsp;void)
 | ------ | ------ | ---- | ---------------- |
 | value  | string | 是   | 复制的文本内容。 |
 
+### onWillCopy
+
+onWillCopy(callback: Callback\<string, boolean>)
+
+在进行复制操作前，触发该回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> | 是   | 复制操作前的回调。回调参数类型为string时，表示将要被复制的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被复制，true：允许文本被复制；false：不允许文本被复制。 |
+
 ### onCut<sup>8+</sup>
 
 onCut(callback:&nbsp;(value:&nbsp;string)&nbsp;=&gt;&nbsp;void)
@@ -1279,6 +1299,26 @@ onCut(callback:&nbsp;(value:&nbsp;string)&nbsp;=&gt;&nbsp;void)
 | 参数名 | 类型   | 必填 | 说明             |
 | ------ | ------ | ---- | ---------------- |
 | value  | string | 是   | 剪切的文本内容。 |
+
+### onWillCut
+
+onWillCut(callback: Callback\<string, boolean>)
+
+在进行剪切操作前，触发该回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> | 是   | 剪切操作前的回调。回调参数类型为string时，表示将要被剪切的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被剪切，true：允许文本被剪切；false：不允许文本被剪切。 |
 
 ### onPaste
 
@@ -2374,7 +2414,9 @@ struct EllipsisModeExample {
 
 ### 示例16（自定义复制、剪切、粘贴）
 
-该示例通过[onCopy](#oncopy8)、[onCut](#oncut8)、[onPaste](#onpaste)展示如何监听文本选择菜单的复制、剪切、粘贴按钮，以及如何屏蔽系统粘贴功能并实现自定义的粘贴能力，同时，可以通过[maxFontScale](#maxfontscale18)、[minFontScale](#minfontscale18)属性设置文本最大和最小的字体缩放倍数。
+该示例通过[onCopy](#oncopy8)、[onCut](#oncut8)、[onPaste](#onpaste)、[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)展示如何监听文本选择菜单的复制、剪切、粘贴按钮、如何屏蔽系统粘贴功能并实现自定义的粘贴能力、如何屏蔽系统复制功能，以及如何屏蔽系统剪切功能，同时，可以通过[maxFontScale](#maxfontscale18)、[minFontScale](#minfontscale18)属性设置文本最大和最小的字体缩放倍数。
+
+从API版本26.0.0开始，新增[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)接口。
 
 ```ts
 // xxx.ets
@@ -2424,8 +2466,18 @@ struct TextAreaExample {
         .onCopy((value) => {
           console.info(`copy ${value}`);
         })
+        // 从API版本26.0.0开始支持onWillCopy
+        .onWillCopy((value: string) => {
+          console.info(`on will copy ${value}`);
+          return false;
+        })
         .onCut((value) => {
           console.info(`cut ${value}`);
+        })
+        // 从API版本26.0.0开始支持onWillCut
+        .onWillCut((value: string) => {
+          console.info(`on will cut ${value}`);
+          return false;
         })
         .onPaste((value, event) => {
           // 阻止系统粘贴功能，开发者可自行实现
