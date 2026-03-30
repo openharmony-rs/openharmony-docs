@@ -47,7 +47,7 @@
 | [OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallback callback, void *userData)](#oh_videoencoder_setcallback) | - | 设置OH_AVCodecCallback回调函数，让应用可以响应视频编码器生成的事件。在调用OH_VideoEncoder_Prepare接口之前，必须调用此接口。(API11废弃) |
 | [OH_AVErrCode OH_VideoEncoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallback callback, void *userData)](#oh_videoencoder_registercallback) | - | 注册OH_AVCodecCallback回调函数，让应用可以响应视频编码器生成的事件。在调用OH_VideoEncoder_Prepare接口之前，必须调用此接口。 |
 | [OH_AVErrCode OH_VideoEncoder_RegisterParameterCallback(OH_AVCodec *codec, OH_VideoEncoder_OnNeedInputParameter onInputParameter, void *userData)](#oh_videoencoder_registerparametercallback) | - | 注册OH_AVCodecCallback输入参数回调函数，让应用可以响应视频编码器生成的事件。编码Surface模式，需要设置随帧参数时，须使用该接口。<br> 如果使用该接口，必须在[OH_VideoEncoder_Configure](#oh_videoencoder_configure)之前调用该接口。 |
-| [OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videoencoder_configure) | - | 配置视频编码器的编码参数，通常需要配置要编码的视频轨的描述信息，如宽、高、像素格式等。必须在调用OH_VideoEncoder_Prepare接口之前，调用此接口。 |
+| [OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)](#oh_videoencoder_configure) | - | 配置视频编码器的编码参数，通常需要配置输入视频帧的描述信息，如帧的宽、高、像素格式等。必须在调用OH_VideoEncoder_Prepare接口之前，调用此接口。 |
 | [OH_AVErrCode OH_VideoEncoder_Prepare(OH_AVCodec *codec)](#oh_videoencoder_prepare) | - | 准备编码器的内部资源，在OH_VideoEncoder_Configure接口后调用。 |
 | [OH_AVErrCode OH_VideoEncoder_Start(OH_AVCodec *codec)](#oh_videoencoder_start) | - | 调用[OH_VideoEncoder_Prepare](#oh_videoencoder_prepare)接口成功后调用此接口启动编码器。成功启动后，编码器将开始报告注册的回调事件。 |
 | [OH_AVErrCode OH_VideoEncoder_Stop(OH_AVCodec *codec)](#oh_videoencoder_stop) | - | 停止编码器，释放输入输出buffer。停止之后，可以通过调用OH_VideoEncoder_Start接口重新进入Running状态。 |
@@ -295,7 +295,7 @@ OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 
 **描述**
 
-配置视频编码器的编码参数，通常需要配置要编码的视频轨的描述信息，如宽、高、像素格式等。必须在调用OH_VideoEncoder_Prepare接口之前，调用此接口。<br> 该接口对配置参数进行合法性校验，部分非法参数不会强校验，使用默认值或直接丢弃。部分非法参数会强校验，具体规则如下：<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_I_FRAME_INTERVAL暂不支持。<br> 设置OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY、OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT接口时如果当前平台不支持，不报错，走正常编码流程。
+配置视频编码器的编码参数，通常需要配置输入视频帧的描述信息，如帧的宽、高、像素格式等。必须在调用OH_VideoEncoder_Prepare接口之前，调用此接口。<br> 该接口对配置参数进行合法性校验，部分非法参数不会强校验，使用默认值或直接丢弃。部分非法参数会强校验，具体规则如下：<br> 以下参数的配置范围可通过[能力查询](../../media/avcodec/obtain-supported-codecs.md)获取，OH_MD_KEY_I_FRAME_INTERVAL暂不支持能力查询。<br> 设置OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY、OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT参数时，如果当前平台不支持，该接口不报错，走正常编码流程。
 
 参数校验：
 
