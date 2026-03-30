@@ -577,7 +577,7 @@ html示例
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
-import { fileIo as fs} from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { systemDateTime } from '@kit.BasicServicesKit';
 import { http } from '@kit.NetworkKit';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -596,35 +596,46 @@ struct WebComponent {
   context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
   copyLocalPicToDir(rawfilePath: string, newFileName: string): string {
-    let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
-    let dstPath = this.context.filesDir + '/' +newFileName;
-    let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-    let bufsize = 4096;
-    let buf = new ArrayBuffer(bufsize);
-    let off = 0;
-    let len = 0;
-    let readLen = 0;
-    while ((len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) != 0) {
-      readLen += len;
-      fs.writeSync(dest.fd, buf, { offset: off, length: len });
-      off = off + len;
-      if ((srcFileDes.length - readLen) < bufsize) {
-        bufsize = srcFileDes.length - readLen;
+    try {
+      let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
+      let dstPath = this.context.filesDir + '/' + newFileName;
+      let dest: fileIo.File = fileIo.openSync(dstPath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+      let bufsize = 4096;
+      let buf = new ArrayBuffer(bufsize);
+      let off = 0;
+      let len = 0;
+      let readedLen = 0;
+      while ((len = fileIo.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) != 0) {
+        readedLen += len;
+        fileIo.writeSync(dest.fd, buf, { offset: off, length: len });
+        off = off + len;
+        if ((srcFileDes.length - readedLen) < bufsize) {
+          bufsize = srcFileDes.length - readedLen;
+        }
       }
+      fileIo.close(dest.fd);
+      return dest.path;
+    } catch (err) {
+      console.error(`copyLocalPicToDir failed with error: ${err.code}, ${err.message}`);
+      return '';
     }
-    fs.close(dest.fd);
-    return dest.path;
   }
 
   async copyUrlPicToDir(picUrl: string, newFileName: string): Promise<string> {
     let uri = '';
     let httpRequest = http.createHttp();
-    let data: http.HttpResponse = await(httpRequest.request(picUrl) as Promise<http.HttpResponse>);
-    if (data?.responseCode == http.ResponseCode.OK) {
-      let dstPath = this.context.filesDir + '/' + newFileName;
-      let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-      let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
-      uri = dest.path;
+    try {
+      let data: http.HttpResponse = await (httpRequest.request(picUrl) as Promise<http.HttpResponse>);
+      if (data?.responseCode == http.ResponseCode.OK) {
+        let dstPath = this.context.filesDir + '/' + newFileName;
+        let dest: fileIo.File = fileIo.openSync(dstPath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+        let writeLen: number = fileIo.writeSync(dest.fd, data.result as ArrayBuffer);
+        uri = dest.path;
+      }
+    } catch (err) {
+      console.error(`copyUrlPicToDir failed with error: ${err.code}, ${err.message}`);
+    } finally {
+      httpRequest.destroy();
     }
     return uri;
   }
