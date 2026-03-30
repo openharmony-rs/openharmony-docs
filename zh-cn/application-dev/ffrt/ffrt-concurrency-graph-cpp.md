@@ -83,24 +83,9 @@ task5(OUT A);
 
 借助FFRT提供了图依赖并发范式，可以描述任务依赖关系，同时并行化上述视频处理流程，代码如下所示：
 
-```cpp
-#include <iostream>
-#include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
+<!-- @[parallel_dep_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.h) -->
 
-int main()
-{
-    // 提交任务
-    auto handle_A = ffrt::submit_h([] () { std::cout << "视频解析" << std::endl; });
-    auto handle_B = ffrt::submit_h([] () { std::cout << "视频转码" << std::endl; }, {handle_A});
-    auto handle_C = ffrt::submit_h([] () { std::cout << "视频生成缩略图" << std::endl; }, {handle_A});
-    auto handle_D = ffrt::submit_h([] () { std::cout << "视频添加水印" << std::endl; }, {handle_B, handle_C});
-    ffrt::submit([] () { std::cout << "视频发布" << std::endl; }, {handle_D});
-
-    // 等待所有任务完成
-    ffrt::wait();
-    return 0;
-}
-```
+<!-- @[parallel_dep_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.cpp) -->
 
 预期的输出可能为：
 
@@ -116,34 +101,9 @@ int main()
 
 斐波那契数列中每个数字是前两个数字之和，计算斐波那契数的过程可以很好地通过数据对象来表达任务依赖关系。使用FFRT并发编程框架计算斐波那契数的代码如下所示：
 
-```cpp
-#include <iostream>
-#include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
+<!-- @[parallel_dep_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.h) -->
 
-void Fib(int x, int& y)
-{
-    if (x <= 1) {
-        y = x;
-    } else {
-        int y1, y2;
-
-        // 提交任务并构建数据依赖
-        ffrt::submit([&]() { Fib(x - 1, y1); }, {&x}, {&y1});
-        ffrt::submit([&]() { Fib(x - 2, y2); }, {&x}, {&y2});
-
-        // 等待任务完成
-        ffrt::wait({&y1, &y2});
-        y = y1 + y2;
-    }
-}
-
-int main()
-{
-    int y;
-    Fib(5, y);
-    std::cout << "Fibonacci(5) is " << y << std::endl;
-}
-```
+<!-- @[parallel_fib_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.cpp) -->
 
 预期输出为：
 

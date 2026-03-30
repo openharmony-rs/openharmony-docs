@@ -26,79 +26,9 @@ FFRT并发队列提供了设置任务优先级（Priority）和队列并发度�
 
 实现代码如下所示：
 
-```cpp
-#include <iostream>
-#include <unistd.h>
-#include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
+<!-- @[concurrent_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue_cpp.h) -->
 
-class BankQueueSystem {
-private:
-    std::unique_ptr<ffrt::queue> queue_;
-
-public:
-    BankQueueSystem(const char *name, int concurrency)
-    {
-        queue_ = std::make_unique<ffrt::queue>(
-            ffrt::queue_concurrent, name, ffrt::queue_attr().max_concurrency(concurrency));
-        std::cout << "bank system has been initialized" << std::endl;
-    }
-
-    ~BankQueueSystem()
-    {
-        queue_ = nullptr;
-        std::cout << "bank system has been destroyed" << std::endl;
-    }
-
-    // 开始排队，即提交队列任务
-    ffrt::task_handle Enter(const std::function<void()>& func, const char *name, ffrt_queue_priority_t level, int delay)
-    {
-        return queue_->submit_h(func, ffrt::task_attr().name(name).priority(level).delay(delay));
-    }
-
-    // 退出排队，即取消队列任务
-    int Exit(const ffrt::task_handle &t)
-    {
-        return queue_->cancel(t);
-    }
-
-    // 等待排队，即等待队列任务
-    void Wait(const ffrt::task_handle& handle)
-    {
-        queue_->wait(handle);
-    }
-};
-
-void BankBusiness()
-{
-    usleep(100 * 1000);
-    std::cout << "saving or withdraw ordinary customer" << std::endl;
-}
-
-void BankBusinessVIP()
-{
-    usleep(100 * 1000);
-    std::cout << "saving or withdraw VIP" << std::endl;
-}
-
-int main()
-{
-    BankQueueSystem bankQueue("Bank", 2);
-
-    auto task1 = bankQueue.Enter(BankBusiness, "customer1", ffrt_queue_priority_low, 0);
-    auto task2 = bankQueue.Enter(BankBusiness, "customer2", ffrt_queue_priority_low, 0);
-    // VIP享受更优先的服务
-    auto task3 = bankQueue.Enter(BankBusinessVIP, "customer3 vip", ffrt_queue_priority_high, 0);
-    auto task4 = bankQueue.Enter(BankBusiness, "customer4", ffrt_queue_priority_low, 0);
-    auto task5 = bankQueue.Enter(BankBusiness, "customer5", ffrt_queue_priority_low, 0);
-
-    // 取消客户4的服务
-    bankQueue.Exit(task4);
-
-    // 等待所有的客户服务完成
-    bankQueue.Wait(task5);
-    return 0;
-}
-```
+<!-- @[concurrent_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/ConcurrentQueue/entry/src/main/cpp/concurrent_queue_cpp.cpp) -->
 
 ## 接口说明
 
