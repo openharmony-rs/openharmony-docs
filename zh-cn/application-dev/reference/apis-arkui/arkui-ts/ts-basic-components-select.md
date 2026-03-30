@@ -750,6 +750,24 @@ menuBackgroundBlurStyle(style: Optional\<BlurStyle>)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9)> | 是   | 下拉菜单的背景模糊材质。<br/>当style的值为undefined时，默认值：BlurStyle.COMPONENT_ULTRA_THICK |
 
+### menuBackgroundBlurStyle
+
+menuBackgroundBlurStyle(style: Optional\<BlurStyle | BackgroundBlurStyleOptions>)
+
+设置下拉菜单的背景模糊材质。与[menuBackgroundBlurStyle](#menubackgroundblurstyle18)<sup>18+</sup>相比，style参数新增了对BackgroundBlurStyleOptions类型的支持。
+
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BlurStyle](ts-universal-attributes-background.md#blurstyle9) \| [BackgroundBlurStyleOptions](ts-universal-attributes-background.md#backgroundblurstyleoptions10对象说明)> | 是   | 下拉菜单的背景模糊材质。<br/>当style的值为undefined时，默认值：BlurStyle.COMPONENT_ULTRA_THICK |
+
 ### avoidance<sup>19+</sup>
 
 avoidance(mode: AvoidanceMode)
@@ -935,6 +953,24 @@ minKeyboardAvoidDistance(distance:Optional\<LengthMetrics>)
 | 参数名 | 类型   | 必填 | 说明           |
 | ------ | ------ | ---- | -------------- |
 | distance | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是 | 设置下拉菜单避让软键盘的最小距离。设置为负数、undefined时，按照8vp处理。 |
+
+### menuBackgroundEffect
+
+menuBackgroundEffect(effect: Optional\<BackgroundEffectOptions>)
+
+设置Select背景属性，包含背景模糊半径，亮度，饱和度，颜色等参数。
+
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：** 
+
+| 参数名  | 类型                                                         | 必填 | 说明                                       |
+| ------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
+| effect | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[BackgroundEffectOptions](ts-universal-attributes-background.md#backgroundeffectoptions11)> | 是   | 设置Select背景属性包括：模糊半径，亮度，饱和度，颜色等。 |
 
 ## ArrowPosition<sup>10+</sup>枚举说明
 
