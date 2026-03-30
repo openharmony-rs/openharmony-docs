@@ -3083,7 +3083,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
@@ -3162,7 +3162,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
