@@ -1071,6 +1071,15 @@ sendMIDIEvents(0, [midiEvent]);
 
 <!-- @[send_note_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+// Send Note On message (helper function for testing)
+static napi_value SendNoteOn(napi_env env, napi_callback_info info)
+{
+    NoteMessageArgs args = ParseNoteMessageArgs(env, info);
+    return SendNoteMessage(env, args, true);
+}
+```
+
 - ArkTS代码示例
 
   <!-- @[arkts_on_key_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
