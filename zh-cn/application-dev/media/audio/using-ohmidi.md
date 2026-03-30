@@ -425,6 +425,44 @@ static napi_value CloseDevice(napi_env env, napi_callback_info info)
 - ArkTS代码示例
 
   <!-- @[arkts_close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  closeDevice(): void {
+    hilog.info(DOMAIN, TAG, '[closeDevice] ++enter, selectedDeviceId=%{public}d', this.selectedDeviceId);
+  
+    if (this.selectedDeviceId < 0) {
+      hilog.warn(DOMAIN, TAG, '[closeDevice] no device selected');
+      return;
+    }
+  
+    try {
+      this.openInputPorts.forEach((portIndex: number) => {
+        midi.closeInputPort(this.selectedDeviceId, portIndex);
+      });
+      this.openOutputPorts.forEach((portIndex: number) => {
+        midi.closeOutputPort(this.selectedDeviceId, portIndex);
+      });
+      this.openInputPorts.clear();
+      this.openOutputPorts.clear();
+      this.activeKeys.clear();
+  
+      const status = midi.closeDevice(this.selectedDeviceId);
+  
+      if (status === MidiStatusCode.OK) {
+        this.isDeviceOpen = false;
+        this.log('Device closed');
+        hilog.info(DOMAIN, TAG, '[closeDevice] device closed successfully, isDeviceOpen=false');
+      } else {
+        this.log(`Failed to close device: ${status}`);
+        hilog.error(DOMAIN, TAG, '[closeDevice] failed with status=%{public}d', status);
+      }
+      hilog.info(DOMAIN, TAG, '[closeDevice] --exit, status=%{public}d', status);
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, '[closeDevice] exception: %{public}s', JSON.stringify(e));
+      this.log(`Error closing device: ${JSON.stringify(e)}`);
+    }
+  }
+  ```
 
 #### 4.3 打开BLE MIDI设备（异步）
 
