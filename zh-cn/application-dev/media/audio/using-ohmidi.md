@@ -164,7 +164,16 @@ interface MidiReceivedEventData {
 // BLE设备打开回调事件数据接口
 interface BleOpenedEventData {
   opened: boolean;       // 是否成功打开
-  deviceId: number;      // 设备ID
+  <!-- @[send_note_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+  
+  ``` C++
+  // Send Note On message (helper function for testing)
+  static napi_value SendNoteOn(napi_env env, napi_callback_info info)
+  {
+      NoteMessageArgs args = ParseNoteMessageArgs(env, info);
+      return SendNoteMessage(env, args, true);
+  }
+  ```
   deviceName: string;    // 设备名称
   deviceType: number;    // 设备类型
   deviceAddress: string; // 设备地址
