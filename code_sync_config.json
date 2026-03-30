@@ -7811,7 +7811,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/internationalization/entry/src/main/ets/homePage/CustomizeCanvasComponentDrawing.ets",
 				"functions":[
 					{
-						"end_line":76,
+						"end_line":75,
 						"name":"Customize_Canvas_Component_Drawing",
 						"start_line":15
 					}
