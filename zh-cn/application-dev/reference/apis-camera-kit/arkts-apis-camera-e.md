@@ -135,6 +135,7 @@
 | DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。     |
 | UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。     |
 | SERVICE_FATAL_ERROR        | 7400201    | 相机服务异常返回。     |
+| UNSUPPORTED_MULTI_CAMERA_COMBINATION<sup>24+</sup> | 7400113 | 不支持的多摄像头组合。 |
 
 ## TorchMode<sup>11+</sup>
 
@@ -161,6 +162,7 @@
 | 名称                     | 值        | 说明         |
 | ----------------------- | --------- | ------------ |
 | CAMERA_FORMAT_RGBA_8888 | 3         | RGBA_8888格式的图片。        |
+| CAMERA_FORMAT_DNG<sup>24+</sup>     | 4         | DNG格式的图片。|
 | CAMERA_FORMAT_YUV_420_SP| 1003      | YUV_420_SP格式的图片，对应为NV21格式的图片。      |
 | CAMERA_FORMAT_JPEG      | 2000      | JPEG格式的图片。            |
 | CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。      |
@@ -405,6 +407,7 @@
 |-----------|---|---------|
 | BEAUTY    | 0 | 美颜。   |
 | PORTRAIT  | 1 | 人像虚化。|
+| AUTO_FRAMING<sup>24+</sup> | 2 | 自动构图。 |
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 
@@ -418,3 +421,59 @@
 |--------------|-------|---------|
 | HIGH_QUALITY | 0     | 画质优先，拍照需要较长的时间，以输出高画质的图片。 |
 | SPEED        | 1     | 性能优先，会降低画质来提升拍照的速度。 |
+
+## SensorColorFilterArrangement<sup>24+</sup>
+
+枚举，传感器色彩滤镜排列。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称         | 值     | 说明    |
+|--------------|-------|---------|
+| BGGR         | 0     | 蓝-绿-绿-红（BGGR）滤镜排列。 |
+| GBRG         | 1     | 绿-蓝-红-绿（GBRG）滤镜排列。 |
+| GRBG         | 2     | 绿-红-绿-蓝（GRBG）滤镜排列。 |
+| RGGB         | 3     | 红-绿-绿-蓝（RGGB）滤镜排列。 |
+
+## FlashState<sup>24+</sup>
+
+枚举，闪光灯状态。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称         | 值     | 说明    |
+|--------------|-------|---------|
+| FLASH_STATE_UNAVAILABLE   | 0     | 闪光灯不可用，默认值。 |
+| FLASH_STATE_READY         | 1     | 此状态表示闪光灯可用。 |
+| FLASH_STATE_FLASHING      | 2     | 此状态表示可进行闪光。 |
+
+## OISMode<sup>24+</sup>
+
+枚举，光学防抖（OIS）模式
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称         | 值     | 说明    |
+|--------------|-------|---------|
+| OFF          | 0     | 光学防抖已禁用。 |
+| AUTO         | 1     | 光学防抖自动。 |
+| CUSTOM       | 2     | 光学防抖自定义。 |
+
+## OISAxes<sup>24+</sup>
+
+枚举，光学防抖（OIS）轴
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称         | 值     | 说明    |
+|--------------|-------|---------|
+| PITCH          | 0     | 相机机身上下俯仰运动（使镜头朝上或朝下）。<br/> 这是绕穿过镜头的水平轴进行的旋转运动。 |
+| YAW         | 1     | 相机机身左右摇摆运动（使镜头朝左或朝右）。<br/> 这是绕垂直轴进行的旋转运动。 |
