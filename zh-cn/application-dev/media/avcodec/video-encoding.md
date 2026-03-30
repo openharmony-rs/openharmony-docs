@@ -234,7 +234,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```
 
     ```c++
-    // 通过MIME TYPE创建编码器，只能创建系统推荐的特定编解码器。
+    // 通过MIME TYPE创建编码器。
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
@@ -667,7 +667,7 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
     ```
 
     ```c++
-    // 通过MIME TYPE创建编码器，只能创建系统推荐的特定编解码器。
+    // 通过MIME TYPE创建编码器。
     OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
     ```
 
