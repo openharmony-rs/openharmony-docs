@@ -28675,6 +28675,66 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebTextMenuItem.ets",
+				"functions":[
+					{
+						"end_line":85,
+						"name":"web_textMenuItem",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebContextMenu.ets",
+				"functions":[
+					{
+						"end_line":137,
+						"name":"web_ContextMenu",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebBindSelectionMenu.ets",
+				"functions":[
+					{
+						"end_line":94,
+						"name":"web_BindSelectionMenu",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebPreviewBuilder.ets",
+				"functions":[
+					{
+						"end_line":184,
+						"name":"web_PreviewBuilder",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebEditMenuOptions.ets",
+				"functions":[
+					{
+						"end_line":57,
+						"name":"web_EditMenuOptions",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets",
+				"functions":[
+					{
+						"end_line":44,
+						"name":"web_Disable_long_press",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
