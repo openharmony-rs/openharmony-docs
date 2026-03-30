@@ -8597,7 +8597,7 @@ try {
 
 isFocused(): boolean
 
-判断当前窗口是否已获焦。
+判断当前窗口是否已获焦。为获取准确的获焦状态，可使用[on('windowEvent')](##onwindowevent10)监听对应状态变更，再执行对应具体业务。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
