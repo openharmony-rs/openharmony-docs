@@ -196,9 +196,10 @@ hdc支持和其他调试工具配套使用，工具列表如下：
 | [mediatool](../tools/mediatool.md) | 媒体资源库工具 |
 | [devicedebug](../tools/devicedebug-tool.md) | 调试应用发送信号工具 |
 | [rawheap-translator](../tools/rawheap-translator.md) | rawheap文件解析工具 |
-| [uitest](../application-test/uitest-guidelines.md) | UI测试框架 |
+| <!--DelRow-->[UItest](../application-test/uitest-guidelines.md) | UI测试框架 |
+| <!--DelRow-->[SmartPerf Device daemon](../application-test/smartperf-guidelines.md#smartperf-device-daemon端) | SmartPerf Device-daemon端工具命令 |
+| <!--DelRow-->[wukong](../application-test/wukong-guidelines.md) | wukong稳定性工具 |
 <!--RP1--><!--RP1End-->
-| [wukong](../application-test/wukong-guidelines.md) | wukong稳定性工具 |
 
 ### 获取帮助
 
