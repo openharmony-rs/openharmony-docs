@@ -1,8 +1,8 @@
 # Open user_grant Permissions
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -94,12 +94,11 @@ Allows an application running in the background to obtain the device location.
 
 1. [Declare permissions](declare-permissions.md) in the **module.json5** file.
 
-   You must request the foreground location permission before requesting the background permission. Therefore, you must declare both the ohos.permission.LOCATION_IN_BACKGROUND permission and the foreground location permission. The foreground location permissions include the following:
-   - Request [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location).
-   - Request [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location) and [ohos.permission.LOCATION](#ohospermissionlocation).
+   You must request the foreground location permission before requesting the background location permission. Therefore, you must declare both of them. The foreground location permissions include the following:
+   - Apply for the foreground approximate location permission: Declare [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location).
+   - Apply for the foreground precise location permission: Declare both the [ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location) and [ohos.permission.LOCATION](#ohospermissionlocation) permissions.
 2. The application calls [requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9) to display a dialog box to request the foreground location permission from the user.
-3. The application calls [requestPermissionOnSetting()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12) to display the permission settings dialog box and instruct the user to grant the permission.
-4. The user taps the button in the dialog box to grant the background location permission.
+3. If the user clicks to allow the application to use the foreground location permission in the pop-up window, the application can guide the user to grant the background location permission in the system settings. If the user denies the application's use of the foreground location permission, the application can guide the user to grant the permission in the system settings, or call [requestPermissionOnSetting()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12) to open the permission settings pop-up window again to guide the user to grant the permission.
 
 The system provides the continuous task mechanism. For applications that need to use the location in the background, you can request the continuous task of the **LOCATION** type and the foreground location permission to obtain the location in the background without requesting the background location permission. For details, see [Continuous Task](../../task-management/continuous-task.md).
 

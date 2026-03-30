@@ -186,9 +186,9 @@ Destroys a collaboration session between applications.
 
 **Parameters**
 
-| Name      | Type                                      | Mandatory  | Description      |
-| --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | number  | Yes   | Collaboration session ID.  |
+| Name      | Type                                      | Mandatory  | Description                             |
+| --------- | ---------------------------------------- | ---- |---------------------------------|
+| sessionId | number  | Yes   | Collaboration session ID.<br>The value is an integer greater than 100.|
 
 **Example**
 
@@ -221,7 +221,7 @@ Obtains information about the peer application in the specified session.
 
 | Type                 | Description              |
 | ------------------- | ---------------- |
-| [PeerInfo](https://developer.huawei.com/consumer/en/doc/harmonyos-references/js-apis-distributed-abilityconnectionmanager#peerinfo) \| undefined | Information about the peer application if the corresponding **peerInfo** exists; **undefined** if the session ID is not found.|
+| [PeerInfo](#peerinfo) \| undefined | Information about the peer application if the corresponding **PeerInfo** exists; **undefined** if the session ID is not found.|
 
 **Error codes**
 
@@ -295,7 +295,7 @@ After an application sets up a collaboration session and obtains the session ID 
 
 acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
-Accepts the UIAbility connection after a collaboration session is set up and the session ID is obtained.
+Accepts the UIAbility connection after a collaboration session is set up and the session ID is obtained. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -843,7 +843,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
     hilog.info(0x0000, 'testTag', "sendMessage success");
   }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage failed");
+    hilog.error(0x0000, 'testTag', "sendMessage failed");
   })
   ```
 

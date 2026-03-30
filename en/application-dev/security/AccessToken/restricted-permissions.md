@@ -1,8 +1,8 @@
 # Restricted Permissions
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -682,7 +682,7 @@ Allows an application to use the Native Development Kit (NDK) of the passkey ser
 
 ## ohos.permission.USE_FLOAT_BALL
 
-Allows an application to use the global floating ball.
+Allows an application to use the global float ball.
 
 <!--RP46--><!--RP46End-->
 
@@ -696,7 +696,7 @@ Allows an application to use the global floating ball.
 
 ## ohos.permission.AUTO_RESTORE_MAIN_WINDOW
 
-Allow the application to automatically restore its main window through the global floating ball.
+Allows an application to automatically restore its main window through the global floating ball.
 
 **Prerequisites**: This permission can only be requested together with the [ohos.permission.USE_FLOAT_BALL](#ohospermissionuse_float_ball) permission.
 
@@ -706,7 +706,7 @@ Allow the application to automatically restore its main window through the globa
 
 **Authorization mode**: system_grant
 
-**Device**: phones | tablets
+**Supported devices**: phones | tablets
 
 **Since**: 24
 
@@ -1058,7 +1058,7 @@ With this permission, the driver application can bind external input devices con
 
 ## ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION
 
-Allows an application to register ObjectEditorExtensionAbility components.
+Allows an application to register **ObjectEditorExtensionAbility** components.
 
 With this permission, the application can provide embedded content editing services for use by other applications.
 
@@ -1087,8 +1087,8 @@ Allow an application to use the accessory connection service for pairing and aut
 **Since**: 26.0.0
  	 
 ## ohos.permission.CHECK_CALL_LOG
- 	 
-Allow the application to query whether there are matching call records in the system within a specified time based on specific conditions (phone number, call duration).
+
+Allows an application to query the system for matching call records within a specified period based on specific criteria (such as the mobile number and call duration).
 
 <!--RP71--><!--RP71End-->
 
@@ -1096,7 +1096,7 @@ Allow the application to query whether there are matching call records in the sy
 
 **Authorization mode**: system_grant
 
-**Supported devices**: General
+**Supported devices**: general devices
 
 **Since**: 24
 

@@ -101,13 +101,13 @@ The following example steps you through on how to request the location permissio
      // The ohos.permission.LOCATION permission must be requested with the ohos.permission.APPROXIMATELY_LOCATION permission together or after the ohos.permission.APPROXIMATELY_LOCATION permission is available.
      if (grantStatus2 && !grantStatus1) {
        // Request the ohos.permission.LOCATION permission.
-       // ···
+       // ...
      } else if (!grantStatus1 && !grantStatus2) {
        // Request the ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION permissions, or request the ohos.permission.APPROXIMATELY_LOCATION permission.
-       // ···
+       // ...
      } else {
        // If the user grants the permission, the application can access the target.
-       // ···
+       // ...
      }
    }
    ```
