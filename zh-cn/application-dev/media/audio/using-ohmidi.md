@@ -852,6 +852,44 @@ static napi_value OpenInputPort(napi_env env, napi_callback_info info)
 
 <!-- @[open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
+``` C++
+static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
+{
+    size_t argc = 3;
+    napi_value args[3] = {nullptr};
+    napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+
+    int64_t deviceId = 0;
+    napi_get_value_int64(env, args[0], &deviceId);
+
+    uint32_t portIndex = 0;
+    napi_get_value_uint32(env, args[1], &portIndex);
+
+    int32_t protocol = static_cast<int32_t>(MIDI_PROTOCOL_1_0); // Default to MIDI 1.0
+    napi_get_value_int32(env, args[MIDI_ARG_INDEX_2], &protocol);
+
+    OH_LOG_INFO(LOG_APP, "[OpenOutputPort] ++enter, deviceId=%{public}lld, portIndex=%{public}u, protocol=%{public}d",
+                (long long)deviceId, portIndex, protocol);
+
+    std::lock_guard<std::mutex> lock(g_midiMutex);
+
+    napi_value result;
+    auto it = g_openedDevices.find(deviceId);
+    if (g_midiClient == nullptr || it == g_openedDevices.end()) {
+        OH_LOG_ERROR(LOG_APP, "[OpenOutputPort] client is null or device not opened");
+        napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
+        return result;
+    }
+
+    OH_MIDIPortDescriptor descriptor;
+    descriptor.portIndex = portIndex;
+    descriptor.protocol = static_cast<OH_MIDIProtocol>(protocol);
+    
+    OH_MIDIStatusCode status = OH_MIDIDevice_OpenOutputPort(it->second, descriptor);
+    // ...
+}
+```
+
 **ArkTS调用示例：**
 
 - ArkTS代码示例
