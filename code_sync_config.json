@@ -6618,9 +6618,9 @@
 						"start_line":332
 					},
 					{
-						"end_line":368,
+						"end_line":319,
 						"name":"dlp_isCurrentDlpFile",
-						"start_line":345
+						"start_line":296
 					},
 					{
 						"end_line":400,
