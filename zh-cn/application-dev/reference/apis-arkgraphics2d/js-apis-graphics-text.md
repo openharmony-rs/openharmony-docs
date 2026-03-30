@@ -869,13 +869,13 @@ struct isFontSupportedTest {
 | USE_DEFAULT    | 0    | 使用字体的内部.notdef字形。遵循字体的内部.notdef字形设计，可以是空框、空格或自定义符号。|
 | USE_TOFU       | 1    | 总是用显式的豆腐块替换未定义的字形，覆盖字体的默认行为。用于调试缺失字符或强制一致的缺失符号显示。|
 
-## TextProcessState<sup>26.0.0+</sup>
+## TextProcessState
 
-文本处理状态枚举。
+文本处理状态的枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -893,13 +893,13 @@ struct isFontSupportedTest {
 | PAINT              | 5    | 已绘制状态，文本已完成绘制。           |
 | UPDATE_ATTRIBUTE   | 6    | 已更新属性状态，文本属性已更新。       |
 
-## TextDisplayState<sup>26.0.0+</sup>
+## TextDisplayState
 
-文本显示状态枚举。表示文本排版后的原生结果，与外部画布裁切、屏幕截断等外部显示因素无关。
+文本显示状态的枚举。表示文本排版后的原生结果，与外部画布裁切、屏幕截断等外部显示因素无关。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3242,7 +3242,7 @@ paragraph.updateDecoration({
 });
 ```
 
-### getProcessState<sup>26.0.0+</sup>
+### getProcessState
 
 getProcessState(): TextProcessState
 
@@ -3250,7 +3250,7 @@ getProcessState(): TextProcessState
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3291,10 +3291,10 @@ struct Index {
           paragraphBuilder.addText(textData);
           let paragraph = paragraphBuilder.build();
           let processState = paragraph.getProcessState(); // Now it is INIT
-          console.log("Print state: " + processState);
+          console.info("Print state: " + processState);
           paragraph.layoutSync(200);
           processState = paragraph.getProcessState(); // Now it is FORMATTED
-          console.log("Print state: " + processState);
+          console.info("Print state: " + processState);
         })
     }
   }
@@ -3327,17 +3327,17 @@ struct Index {
           paragraphBuilder.addText(textData);
           let paragraph = paragraphBuilder.build();
           let processState = paragraph.getProcessState(); // Now it is INIT
-          console.log("Print state: " + processState);
+          console.info("Print state: " + processState);
           paragraph.layoutSync(200);
           processState = paragraph.getProcessState(); // Now it is FORMATTED
-          console.log("Print state: " + processState);
+          console.info("Print state: " + processState);
         })
     }
   }
 }
 ```
 
-### getTextDisplayState<sup>26.0.0+</sup>
+### getTextDisplayState
 
 getTextDisplayState(): TextDisplayState
 
@@ -3345,7 +3345,7 @@ getTextDisplayState(): TextDisplayState
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3386,10 +3386,10 @@ struct Index {
           paragraphBuilder.addText(textData);
           let paragraph = paragraphBuilder.build();
           let displayState = paragraph.getTextDisplayState(); // Now it is UNKNOWN
-          console.log("Print state: " + displayState);
+          console.info("Print state: " + displayState);
           paragraph.layoutSync(200);
           displayState = paragraph.getTextDisplayState(); // Now it is CLIP
-          console.log("Print state: " + displayState);
+          console.info("Print state: " + displayState);
         })
     }
   }
@@ -3422,17 +3422,17 @@ struct Index {
           paragraphBuilder.addText(textData);
           let paragraph = paragraphBuilder.build();
           let displayState = paragraph.getTextDisplayState(); // Now it is UNKNOWN
-          console.log("Print state: " + displayState);
+          console.info("Print state: " + displayState);
           paragraph.layoutSync(200);
           displayState = paragraph.getTextDisplayState(); // Now it is CLIP
-          console.log("Print state: " + displayState);
+          console.info("Print state: " + displayState);
         })
     }
   }
 }
 ```
 
-### getParagraphStyle<sup>26.0.0+</sup>
+### getParagraphStyle
 
 getParagraphStyle(): ParagraphStyle
 
@@ -3440,7 +3440,7 @@ getParagraphStyle(): ParagraphStyle
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3483,7 +3483,7 @@ struct Index {
           paragraph.layoutSync(200);
           let paragraphStyle = paragraph.getParagraphStyle();
           if (paragraphStyle.textStyle != undefined) {
-            console.log("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+            console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
           }
         })
     }
@@ -3518,7 +3518,7 @@ struct Index {
           let paragraph = paragraphBuilder.build();
           paragraph.layoutSync(200);
           let paragraphStyle = paragraph.getParagraphStyle();
-          console.log("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+          console.info("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
         })
     }
   }
