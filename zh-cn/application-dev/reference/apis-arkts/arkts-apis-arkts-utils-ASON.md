@@ -212,14 +212,14 @@ hashMap.set("sh","b");
 hashMap.set("map","c");
 let str1 = ArkTSUtils.ASON.stringify(hashMap);
 console.info(str1);
-// 期望输出：'{"sh":"b","ha":"a","map":"c"}'
+// 因HashMap的存储顺序由hashCode决定，因此存储位置不确定，输出可能是：'{"sh":"b","ha":"a","map":"c"}'
 let hashSet = new HashSet<string>();
 hashSet.add("ha");
 hashSet.add("sh");
 hashSet.add("set");
 let str2 = ArkTSUtils.ASON.stringify(hashSet);
 console.info(str2);
-// 期望输出：'["set","sh","ha"]'
+// 因HashSet的存储顺序由hashCode决定，因此存储位置不确定，输出可能是：'["set","sh","ha"]'
 let map = new Map<string,string>();
 map.set("m","a");
 map.set("a","b");
