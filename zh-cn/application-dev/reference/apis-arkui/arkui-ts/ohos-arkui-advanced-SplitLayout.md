@@ -18,7 +18,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { SplitLayout } from '@kit.ArkUI';
 ```
 
@@ -47,8 +47,8 @@ SplitLayout({mainImage: Resource, primaryText: string, secondaryText?: string, t
 | -------- | -------- | -------- |---------------|--------|
 | mainImage | [ResourceStr](ts-types.md#resourcestr) | 是 | @State | 传入图片。  |
 | primaryText | [ResourceStr](ts-types.md#resourcestr) | 是 | @Prop         | 标题内容。  |
-| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop         | 副标题内容。 |
-| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop         | 辅助文本。  |
+| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop         | 副标题内容。当需要在标题下方显示副标题时传入，不传入时取默认值，不显示副标题。 |
+| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop         | 辅助文本。当需要显示辅助文本时传入，不传入时取默认值，不显示辅助文本。  |
 | container | ()&nbsp;=&gt;&nbsp;void | 是 | @BuilderParam | 容器内组件。 |
 
 ## 事件

@@ -21,7 +21,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { TreeView } from "@kit.ArkUI";
 ```
 
@@ -79,7 +79,7 @@ addNode(nodeParam?: NodeParam): TreeController
 
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| nodeParam | [NodeParam](#nodeparam) | 否 | 节点信息。 |
+| nodeParam | [NodeParam](#nodeparam) | 否 | 节点信息。，用于指定新增节点的属性。如果不传该参数，在当前选中的节点下添加一个标题为“新建文件夹”节点。 |
 
 **返回值：** 
 
@@ -277,7 +277,7 @@ off(type: TreeListenType, callback?: (callbackParam: CallbackParam) =&gt; void):
 | 参数名  | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | [TreeListenType](#treelistentype) | 是 | 监听类型。 |
-| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 否 | 节点信息。 |
+| callback | (callbackParam: [CallbackParam](#callbackparam)) =&gt; void | 否 | 节点信息。传入时取消对应的节点信息的监听，否则取消该类型的所有节点信息的监听。 |
 
 ## TreeListenType
 
