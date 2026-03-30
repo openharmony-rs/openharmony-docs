@@ -27,7 +27,7 @@ typedef struct OH_RecorderInfo {...} OH_RecorderInfo
 | 名称 | 描述 |
 | -- | -- |
 | char* url | 录制文件的URL。 |
-| uint32_t urlLen | 录制文件的URL长度。 |
+| uint32_t urlLen | 录制文件的URL的长度值。 |
 | [OH_ContainerFormatType](capi-native-avscreen-capture-base-h.md#oh_containerformattype) fileFormat | 录制文件的格式。 |
 
 
