@@ -651,7 +651,7 @@ int32_t OH_NativeWindow_NativeWindowSetScalingMode(OHNativeWindow *window, uint3
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值为0表示执行成功。 |
+| int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeWindow_NativeWindowSetMetaData()
 
@@ -683,7 +683,7 @@ int32_t OH_NativeWindow_NativeWindowSetMetaData(OHNativeWindow *window, uint32_t
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值为0表示执行成功。 |
+| int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。f |
 
 ### OH_NativeWindow_NativeWindowSetMetaDataSet()
 
@@ -716,7 +716,7 @@ int32_t OH_NativeWindow_NativeWindowSetMetaDataSet(OHNativeWindow *window, uint3
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值为0表示执行成功。 |
+| int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeWindow_NativeWindowSetTunnelHandle()
 
@@ -746,7 +746,7 @@ int32_t OH_NativeWindow_NativeWindowSetTunnelHandle(OHNativeWindow *window, cons
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 返回值为0表示执行成功。 |
+| int32_t | 返回值为0表示执行成功，其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeWindow_NativeWindowAttachBuffer()
 
