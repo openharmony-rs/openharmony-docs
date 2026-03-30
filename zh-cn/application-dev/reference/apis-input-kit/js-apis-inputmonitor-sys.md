@@ -287,7 +287,7 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 | 参数名       | 类型                         | 必填   | 说明                  |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | 是    | 输入设备事件类型，取值'mouse'。 |
-| rect     | [display.Rect](../apis-arkui/js-apis-display.md#rect)[]             | 是    | 可以触发回调任务的矩形区域，可传入1至2个。 |
+| rect     | [display.Rect](../apis-arkui/js-apis-display.md#rect9)[]             | 是    | 可以触发回调任务的矩形区域，可传入1至2个。 |
 | receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | 是    | 回调函数，异步上报鼠标输入事件。  |
 
 **错误码**：
