@@ -5673,7 +5673,7 @@ With this permission, the application can always use sensors.
 
 ## ohos.permission.MODIFY_AGENT_CARD
 
-Allows system applications to update and delete AgentCards.
+Allows a system application to update and delete AgentCard.
 
 **Permission level**: system_basic
 
