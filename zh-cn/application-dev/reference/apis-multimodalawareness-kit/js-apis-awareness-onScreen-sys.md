@@ -110,7 +110,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 ## OnscreenAwarenessCap<sup>23+</sup>
 
-屏上感知能力（包括阅读场景感知、OCR识别等功能）。
+屏上感知能力（包括但不限于阅读场景感知、OCR识别等功能）。
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -122,10 +122,10 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | groupId | string | 否 | 是 | 业务分组ID。按业务场景预设的一组能力集合。可统一订阅业务场景。具体分组ID见下表。|
 
 **参数约束说明**：<br>
-用户可以按照具体能力项（capList）或分组 ID（groupId）使用屏上感知能，具体定义规格如下：
+用户可通过能力项（capList）或分组 ID（groupId）使用屏上感知功能。
 * 逻辑关系：capList 与 groupId 互为补充必填项, 至少需提供其一，且不为空。<br>
 * 校验规则：调用接口时，系统会单独检测capList和groupId。<br>
-* 能力列表：可以按照具体能力项或分组ID使用屏上感知能力，具体定义如下。
+* 能力列表：按能力项或分组ID使用屏上感知功能，具体定义如下。
   * capList支持能力列表<br>
 
     |capList支持能力列表|功能说明|
@@ -223,7 +223,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | timestamp   | number | 否   | 否   | 表示进入特定页面的时间戳。 |
 | uid   | string | 否   | 是   | 表示应用UID。 |
 | bundleName  | string | 否   | 是   | 应用包名。 |
-| appName  | string | 否   | 是   | 应用包名称。 |
+| appName  | string | 否   | 是   | 应用名称。 |
 | miniProgramId | string | 否   | 是   | 小程序ID，如微信、支付宝等三方应用小程序ID。|
 | miniProgramName | string | 否   | 是  | 小程序名称，三方应用小程序名称。 |
 | appIndex   | number | 否   | 是   | 应用索引。 |
@@ -257,7 +257,7 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
 
 在需要抓取内容的窗口在桌面上时，调用该接口以获取屏上内容。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -380,7 +380,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 
 开启屏幕内容主动感知，并订阅屏幕感知结果。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -394,7 +394,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
-| callback | Callback&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 元素个数最大为 2。|
+| callback | Callback&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
 
 
 **错误码**：
@@ -438,7 +438,7 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 
 关闭屏幕内容主动感知，并取消订阅屏幕感知结果。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -449,11 +449,11 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 | 参数名   | 类型                             | 必填 | 说明               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
-| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 是   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 元素个数最大为 2。|
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 是   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
 
 **错误码**：
 
-以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -485,7 +485,7 @@ trigger(capability: OnscreenAwarenessCap,  options?: OnscreenAwarenessOptions): 
 
 主动触发屏幕内容感知，获取当前屏幕感知结果。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -507,7 +507,7 @@ trigger(capability: OnscreenAwarenessCap,  options?: OnscreenAwarenessOptions): 
   
 **错误码**：
 
-以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -547,7 +547,7 @@ capture(capability: OnscreenAwarenessCap,
 
 主动触发屏幕内容感知，获取页面信息。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -560,7 +560,7 @@ capture(capability: OnscreenAwarenessCap,
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-|capture接口支持的capList能力列表|功能说明|
+|capture接口的capList支持的能力列表|功能说明|
 | ---- | ------ |
 |UiImage|获取页面内子图信息|
 |QuickSnap|获取截屏信息|
@@ -570,10 +570,10 @@ capture(capability: OnscreenAwarenessCap,
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 元素个数最大为 2。|
+  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
 **错误码**：
 
-以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -607,7 +607,7 @@ interact(capability: OnscreenAwarenessCap,
 
 主动触发屏幕行为交互。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -629,10 +629,10 @@ interact(capability: OnscreenAwarenessCap,
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 元素个数最大为 2。|
+  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
 **错误码**：
 
-以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -677,7 +677,7 @@ apperceive(capability: OnscreenAwarenessCap,
 
 主动触发屏幕内容感知，获取屏幕内容进行快照分析。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -687,7 +687,7 @@ apperceive(capability: OnscreenAwarenessCap,
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表其中部分能力，具体见下面支持的能力表。|
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
 |apperceive接口支持的groupId能力列表|对应能力子项|功能说明|
@@ -701,10 +701,10 @@ apperceive(capability: OnscreenAwarenessCap,
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 元素个数最大为 2。|
+  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
 **错误码**：
 
-以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -735,7 +735,7 @@ onReadingScreenPermissionListener(callback: Callback&lt;ReadingScreenPermissionS
 
 开启屏幕内容访问权限监测，实时返回授权状态。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -780,7 +780,7 @@ offReadingScreenPermissionListener(callback?: Callback&lt;ReadingScreenPermissio
 
 关闭屏幕内容访问权限监测。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
