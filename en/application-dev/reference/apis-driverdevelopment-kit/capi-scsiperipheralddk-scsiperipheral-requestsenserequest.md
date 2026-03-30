@@ -12,7 +12,7 @@ typedef struct ScsiPeripheral_RequestSenseRequest {...} ScsiPeripheral_RequestSe
 
 ## Overview
 
-Defines the request structure of the **request sense** command.
+Defines the request structure of the **Request Sense** command.
 
 **Since**: 18
 
