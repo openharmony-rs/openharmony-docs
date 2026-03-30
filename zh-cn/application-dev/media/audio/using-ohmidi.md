@@ -220,6 +220,30 @@ interface BleOpenedEventData {
 - 销毁客户端示例
 
   <!-- @[ump_helper_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+  
+  ``` C++
+  // Build MIDI 1.0 Note On UMP (32-bit, 1 word)
+  static void BuildMIDI1NoteOn(uint32_t channel, uint32_t note, uint32_t velocity, uint32_t* umpData)
+  {
+      // UMP format: MT[31-28]=0x2, Group[27-24]=0x0, Status[23-20]=0x9
+      // Channel[19-16], Data1[15-8]=note, Data2[7-0]=velocity
+      umpData[0] = (MIDI_UMP_MT_1_0 << MIDI_UMP_WORDS_28) | (0x0 << MIDI_UMP_SHIFT_24) |
+                   (MIDI_UMP_STATUS_NOTE_ON << MIDI_UMP_SHIFT_20) |
+                   ((channel & MIDI_CHANNEL_MASK) << MIDI_UMP_WORDS_16) |
+                   ((note & MIDI_NOTE_MASK) << MIDI_UMP_SHIFT_8) | (velocity & MIDI_NOTE_MASK);
+  }
+  
+  // Build MIDI 1.0 Note Off UMP (32-bit, 1 word)
+  static void BuildMIDI1NoteOff(uint32_t channel, uint32_t note, uint32_t velocity, uint32_t* umpData)
+  {
+      // UMP format: MT[31-28]=0x2, Group[27-24]=0x0, Status[23-20]=0x8
+      // Channel[19-16], Data1[15-8]=note, Data2[7-0]=velocity
+      umpData[0] = (MIDI_UMP_MT_1_0 << MIDI_UMP_WORDS_28) | (0x0 << MIDI_UMP_SHIFT_24) |
+                   (MIDI_UMP_STATUS_NOTE_OFF << MIDI_UMP_SHIFT_20) |
+                   ((channel & MIDI_CHANNEL_MASK) << MIDI_UMP_WORDS_16) |
+                   ((note & MIDI_NOTE_MASK) << MIDI_UMP_SHIFT_8) | (velocity & MIDI_NOTE_MASK);
+  }
+  ```
 
 **ArkTS调用示例：**
 
