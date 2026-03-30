@@ -49,7 +49,7 @@ Sets a MediaSourceLoader object, which is used to help the player request media 
 
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
-| resourceLoader | [MediaSourceLoader](arkts-apis-media-i.md#mediasourceloader18) | Yes  | MediaSourceLoader object used to obtain media data for the player.|
+| resourceLoader | [MediaSourceLoader](arkts-apis-media-i.md#mediasourceloader18) | Yes  | **MediaSourceLoader** object used to obtain media data for the player.|
 
 **Example**
 

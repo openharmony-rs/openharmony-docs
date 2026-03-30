@@ -1590,7 +1590,7 @@ BuilderNode节点只有通过以下方式上下树时，才会根据该节点是
   
     build() {
       Column() {
-        Button('update builderNode') // 点击更新BuildrNode
+        Button('update builderNode') // 点击更新BuilderNode
           .onClick(() => {
             textNodeController.update();
           })

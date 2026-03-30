@@ -255,7 +255,7 @@ Describes information about the touchpad swipe gesture option.
 | Name      | Type  | Read-Only| Optional| Description                                                    |
 | ---------- | ------ |----|----|--------------------------------------------------------|
 | stay | boolean | No | Yes | Whether the swipe gesture stays on the touchpad for 1s before it is lifted. The value **true** indicates that the swipe gesture stays on the touchpad for 1s, and **false** indicates the opposite. The default value is **false**.|
-| speed       | number | No | Yes | Swipe speed, in px/s. The value is an integer ranges from 200 to 40000. If the set value is not in the range, the default value **2000** is used. |
+| speed       | number | No | Yes | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **2000**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value 2000 is used. If the value is a negative number, an error code indicating a parameter error is returned. |
 
 
 ## InputTextMode<sup>20+</sup>
@@ -292,7 +292,7 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 
 > **NOTE**
 >
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) of a component is set to **no** or **no-hide-descendants**, this API cannot be used to specify the text attribute of the target component for searching for the component. In this case, you can use the [On.originalText ()](#originaltext20) API.
+> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) of a component is set to **no** or **no-hide-descendants**, this API cannot be used to specify the text attribute of the target component for searching for the component. In this case, you can use the [On.originalText()](#originaltext20) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1795,7 +1795,7 @@ Clears the original text in a component and inputs the specified text. This API 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -1841,7 +1841,7 @@ Inputs text to a component in a specified text input mode. This API takes effect
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -1924,7 +1924,7 @@ Scrolls on this component to search for the target component. This API is applic
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -1971,7 +1971,7 @@ Scrolls on this component to search for the target component. This API is applic
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2006,7 +2006,7 @@ Scrolls to the top of this component. This API is applicable to components that 
 
 | Name| Type  | Mandatory| Description                                                    |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -2016,7 +2016,7 @@ Scrolls to the top of this component. This API is applicable to components that 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2051,7 +2051,7 @@ Scrolls to the bottom of this component. This API is applicable to components th
 
 | Name| Type  | Mandatory| Description                                                    |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -2061,7 +2061,7 @@ Scrolls to the bottom of this component. This API is applicable to components th
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2108,7 +2108,7 @@ Drags a component to the target component. This API uses a promise to return the
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2154,7 +2154,7 @@ Pinches out a component at the specified scale. This API uses a promise to retur
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2199,7 +2199,7 @@ Pinches in a component at the specified scale. This API uses a promise to return
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2435,7 +2435,7 @@ Delays execution for the specified duration. This API uses a promise to return t
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2478,7 +2478,7 @@ Searches for the target component based on the specified attributes. This API us
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2521,7 +2521,7 @@ Searches for all matched components based on the specified attributes and saves 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2564,7 +2564,7 @@ Searches for a window based on the specified attributes. This API uses a promise
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2608,7 +2608,7 @@ Searches for the target component based on the attributes within a specified tim
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2651,7 +2651,7 @@ Asserts whether a component matches the specified attributes exists on the curre
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2774,7 +2774,7 @@ Triggers a key event by passing the key value. This API uses a promise to return
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2819,7 +2819,7 @@ Triggers a key event by passing the key value on the specified screen. This API 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2865,7 +2865,7 @@ Triggers a combination key event based on the specified key values. This API use
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2911,7 +2911,7 @@ Triggers a combination key event based on the specified key values on the specif
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2955,7 +2955,7 @@ Clicks the target coordinate point. This API uses a promise to return the result
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3042,7 +3042,7 @@ Double-clicks the target coordinate point. This API uses a promise to return the
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3129,7 +3129,7 @@ Long-clicks the target coordinate point. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3210,7 +3210,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.                      |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.                      |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.                      |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3220,7 +3220,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3255,7 +3255,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
 
@@ -3304,7 +3304,7 @@ Drags from the start coordinate point to the target coordinate point. This API u
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.             |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.             |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.             |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3314,7 +3314,7 @@ Drags from the start coordinate point to the target coordinate point. This API u
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3351,7 +3351,7 @@ Drags from the start point to the target point. You can specify the drag speed a
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -3405,7 +3405,7 @@ Captures the current screen and saves it as a PNG image to the given save path. 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3449,7 +3449,7 @@ Captures the specified screen and saves it as a PNG image to the given save path
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3494,7 +3494,7 @@ Sets the display rotation of the current scene. This API uses a promise to retur
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3618,7 +3618,7 @@ Enables or disables display rotation. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3939,7 +3939,7 @@ Checks whether all components on the current UI are idle. This API uses a promis
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3975,7 +3975,7 @@ Simulates a fling operation. This API uses a promise to return the result.
 | from    | [Point](#point9) | Yes  | Coordinates of the point where the finger touches the screen.                                       |
 | to      | [Point](#point9) | Yes  | Coordinates of the point where the finger leaves the screen.                                        |
 | stepLen | number           | Yes  | Step length, in pixels. The value is an integer greater than or equal to 0.                                        |
-| speed   | number           | Yes  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed   | number           | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3985,7 +3985,7 @@ Simulates a fling operation. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -4019,7 +4019,7 @@ Injects a multi-finger operation into a device. This API uses a promise to retur
 | Name  | Type                            | Mandatory| Description                                                    |
 | -------- | -------------------------------- | ---- |--------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | Yes  | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.                                 |
-| speed    | number                           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4029,7 +4029,7 @@ Injects a multi-finger operation into a device. This API uses a promise to retur
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -4074,7 +4074,7 @@ Simulates a fling operation with the specified direction and speed. This API use
 | Name   | Type                         | Mandatory| Description                                                    |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | Yes  | Direction of the fling operation.                                              |
-| speed     | number                        | Yes  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed     | number                        | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4084,7 +4084,7 @@ Simulates a fling operation with the specified direction and speed. This API use
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4118,7 +4118,7 @@ Simulates a fling operation on a specified display with the specified direction 
 | Name   | Type                         | Mandatory| Description                                                    |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | Yes  | Direction of the fling operation.                                              |
-| speed     | number                        | Yes  | Fling speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed     | number                        | Yes  | Fling speed, in px/s. The value ranges from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 | displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
 
 **Return value**
@@ -4129,7 +4129,7 @@ Simulates a fling operation on a specified display with the specified direction 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4173,7 +4173,7 @@ Captures the specified area of the current screen and saves the captured screens
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4224,7 +4224,7 @@ Injects a mouse click action at the specified coordinates, with the optional key
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4271,7 +4271,7 @@ Injects a mouse scroll action at the specified coordinates, with the optional ke
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4314,7 +4314,7 @@ Moves the mouse cursor to the target point. This API uses a promise to return th
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4365,7 +4365,7 @@ import { Driver, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let observer: UIEventObserver = driver.createUIEventObserver();
 }
 ```
 
@@ -4388,7 +4388,7 @@ Injects a mouse scroll action at the specified coordinates, with the optional ke
 | d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.         |
 | key1   | number           | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
 | key2   | number           | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
-| speed  | number           | No  | Scroll speed of the mouse wheel, in ticks/second. The value is an integer ranging from 1 to 500. If the value is not within the range, the default value **20** will be used.|
+| speed  | number           | No  | Scrolling speed of the mouse wheel, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4398,7 +4398,7 @@ Injects a mouse scroll action at the specified coordinates, with the optional ke
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4444,7 +4444,7 @@ Injects a double-click action at the specified coordinates, with the optional ke
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4490,7 +4490,7 @@ Injects a mouse long-click action at the specified coordinates, with the optiona
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4537,7 +4537,7 @@ Injects a mouse long-click action at the specified coordinates, with the optiona
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4572,7 +4572,7 @@ Moves the mouse pointer from the start point to the end point. This API uses a p
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
 | to     | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
-| speed  | number           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4582,7 +4582,7 @@ Moves the mouse pointer from the start point to the end point. This API uses a p
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4619,7 +4619,7 @@ Drags the mouse pointer from the start point to the end point. This API uses a p
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
 | to     | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
-| speed  | number           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4629,7 +4629,7 @@ Drags the mouse pointer from the start point to the end point. This API uses a p
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4666,7 +4666,7 @@ Drags the mouse from the start point to the end point. You can specify the dragg
 | --------- | ---------------- | ---- |--------------------------------------------------------|
 | from      | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
 | to        | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
-| speed     | number           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -4677,7 +4677,7 @@ Drags the mouse from the start point to the end point. You can specify the dragg
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4721,7 +4721,7 @@ Inputs text at a specified coordinate without clearing the original text in the 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4768,7 +4768,7 @@ Inputs text at a specified coordinate point in a specified input mode. This API 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4826,7 +4826,7 @@ Simulates a multi-finger swipe gesture on the touchpad. This API uses a promise 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4865,7 +4865,7 @@ Simulates a two-finger scroll gesture on the touchpad. This API uses a promise t
 | point       | [Point](#point9) | Yes  | Point of the mouse cursor when the two-finger scrolling is performed on the touchpad.                                           |
 | direction   | [UiDirection](#uidirection10)                 | Yes | Direction of two-finger scrolling on the touchpad.          |
 | d           | number           | Yes  | Number of grids scrolled by two fingers on the touchpad. A grid indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.        |
-| speed       | number           | No  | Speed of two-finger scrolling on the touchpad, in cell/second. The value is an integer ranging from 1 to 500. If the value is not within the range, the default value **20** is used.|
+| speed       | number           | No  | Scrolling speed of two fingers on the touchpad, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
 
@@ -4919,7 +4919,7 @@ Simulates a pen click operation. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4963,7 +4963,7 @@ Simulates a pen long-click operation. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5007,7 +5007,7 @@ Simulates a pen double-click operation. This API uses a promise to return the re
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5042,7 +5042,7 @@ Simulates a pen swipe operation. This API uses a promise to return the result.
 | ------ |-----------------------------------------------|----|--------------------------------------------------------|
 | startPoint      | [Point](#point9) | Yes | Coordinates of the start point.                                             |
 | endPoint      | [Point](#point9) | Yes | Coordinates of the end point.                                             |
-| speed      | number | No | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 | pressure      | number | No | Swipe pressure of the pen. The value ranges from 0.0 to 1.0. The default value is **1.0**.                       |
 
 **Return value**
@@ -5053,7 +5053,7 @@ Simulates a pen swipe operation. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5087,7 +5087,7 @@ Simulates a continuous multi-point pen injection operation. This API uses a prom
 | Name| Type                                           | Mandatory| Description                                                               |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | Yes |Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note**: Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**.|
-| speed      | number| No | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.           |
+| speed      | number| No | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.           |
 | pressure      | number | No | Injection pressure. The value ranges from 0.0 to 1.0. The default value is **1.0**.                                |
 
 
@@ -5099,7 +5099,7 @@ Simulates a continuous multi-point pen injection operation. This API uses a prom
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5139,7 +5139,7 @@ Injects a crown rotation event. You can specify the rotation speed. This API use
 | Name| Type                                        | Mandatory| Description                                                            |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | d      | number   | Yes  | Number of rotation ticks. A positive value indicates rotation, and a negative value indicates counterclockwise rotation. The value must be an integer.        |
-| speed  | number   | No  | Rotation speed, in ticks/s. The value is an integer ranging from 1 to 500. The default value is 20.<br> **Note**: If the set value is not in the range, the default value 20 is used.|
+| speed  | number   | No  | Rotation speed, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, the 17000007 error code is returned.<br> **Note**: If the set value is not in the range, the default value 20 is used.|
 
 **Return value**
 
@@ -5149,7 +5149,7 @@ Injects a crown rotation event. You can specify the rotation speed. This API use
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5246,7 +5246,7 @@ Simulates a multi-point knuckle scrolling operation. This API uses a promise to 
 | Name| Type                                        | Mandatory| Description                                                            |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers  | [PointerMatrix](#pointermatrix9) | Yes  | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note**: Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**.|
-| speed    | number                           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed    | number                           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
 
@@ -5346,7 +5346,7 @@ Drags from the start point to the end point and checks whether the target compon
 | on     | [On](#on9) | Yes  | Attributes of the target component.|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -5393,7 +5393,7 @@ Swipes from the start point to the end point and checks whether the target compo
 | on     | [On](#on9) | Yes  | Attributes of the target component.|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
 
@@ -5816,7 +5816,7 @@ Moves a window to the target point. This API uses a promise to return the result
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -5866,7 +5866,7 @@ Resizes a window based on the specified width, height, and direction. This API u
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -6206,7 +6206,7 @@ import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let observer: UIEventObserver = driver.createUIEventObserver();
   let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
@@ -6249,7 +6249,7 @@ import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let observer: UIEventObserver = driver.createUIEventObserver();
   let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);

@@ -5698,3 +5698,17 @@ Allows an application to call the API of storage manager for managing optical di
 **Supported devices**: General
 
 **Since**: 24
+
+## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
+
+Allows an application to subscribe to the notification service.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
+**Valid since**: 26.0.0

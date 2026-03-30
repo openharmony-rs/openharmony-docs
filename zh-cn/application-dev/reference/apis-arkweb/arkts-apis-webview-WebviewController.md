@@ -36,7 +36,7 @@ constructor(webTag?: string)
 > 
 > 传入参数为空：new webview.WebviewController("")或new webview.WebviewController(undefined)，该场景下参数无意义，无法区分多个实例，直接返回undefined，需要开发者判断返回值是否正常。
 >
-> Web组件销毁后会解绑WebViewController，之后调用WebviewController的非静态方法会抛出[17100001](../apis-arkweb/errorcode-webview.md#17100001-webviewcontroller没有和具体的web组件关联)异常，应注意调用时机和捕获异常，防止进程异常退出。
+> Web组件销毁后会解绑WebViewController，之后调用WebviewController的非静态方法会抛出[17100001](../apis-arkweb/errorcode-webview.md#17100001-webviewcontroller没有和具体的Web组件关联)异常，应注意调用时机和捕获异常，防止进程异常退出。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2562,7 +2562,7 @@ function PostMsgToEts(data) {
 
 requestFocus(): void
 
-使当前web页面获取焦点。
+使当前Web页面获取焦点。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

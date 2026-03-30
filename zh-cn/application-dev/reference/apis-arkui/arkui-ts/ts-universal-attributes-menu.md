@@ -249,6 +249,7 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | undefined, 
 | keyboardAvoidMode<sup>23+</sup> | [MenuKeyboardAvoidMode](#menukeyboardavoidmode23枚举说明) | 否 | 是 | 设置菜单是否避让软键盘。<br /> **说明：** <br />未设置或设置为undefined时，按照MenuKeyboardAvoidMode.NONE处理。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | minKeyboardAvoidDistance<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单避让软键盘的最小距离。<br /> **说明：** <br />未设置、设置为负数或undefined时，按照8vp处理。仅在keyboardAvoidMode设置为避让软键盘时生效。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | scrollBar | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 设置菜单滚动条状态。 <br />默认值：BarState.Auto <br />未设置或undefined时，按照BarState.Auto处理。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| maxHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单显示的最大高度。<br /> **说明：** 默认最大高度是可用高度的80%。<br />设置为0或负数以及设置为undefined时，按照默认最大高度处理。设置的菜单最大高度不能超过可用高度的100%。<br />预览图场景下不支持此能力，菜单按默认最大高度显示。<br />如果菜单所有选项的实际高度之和小于设定的高度，菜单的高度按实际高度显示。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **表1：同时设置offset与placement时菜单的偏移位置** 
 
@@ -1510,3 +1511,59 @@ struct Index {
 ```
 
 ![anchorPositionMenu](figures/anchorPositionMenu.gif)
+
+### 示例22（设置菜单的最大高度）
+
+该示例为bindContextMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的maxHeight属性，设置菜单的最大高度。
+
+未设置maxHeight属性时，默认按照菜单的最大高度，可展示全部列表项，通过设置默认最大高度为窗口可用高度的50%时，仅能显示8个列表项。
+
+从API版本26.0.0开始，在ContextMenuOptions中新增了maxHeight属性。
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r('app.media.startIcon');
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem1' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem2' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem3' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem4' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem5' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem6' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem7' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem8' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem9' })
+    }
+  }
+
+  build() {
+    Column({ space: 50 }) {
+      Column() {
+        Column() {
+          Text('LongPress-image')
+            .width(200)
+            .height(100)
+            .textAlign(TextAlign.Center)
+            .margin(100)
+            .fontSize(30)
+            .bindContextMenu(this.MyMenu, ResponseType.LongPress,
+              {
+                maxHeight: LengthMetrics.percent(0.5)
+              })
+            .backgroundColor('#ff7fcdff')
+        }
+      }.width('100%')
+    }
+  }
+}
+```
+
+![maxHeight-menu](figures/menuMaxHeight.png)

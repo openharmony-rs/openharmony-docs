@@ -46,6 +46,10 @@
 
 **概述**：该故障是指点击事件超过5s未得到响应。
 
+> **说明：**
+>
+> 从**API version 24**开始，5s检测阈值扩大到8s。
+
 **检测原理**：用户点击应用时，输入系统会向应用侧发送点击事件；应用侧的响应反馈回执超时，则上报该故障。
 
 检测原理如下图：
@@ -424,7 +428,7 @@ DisplayPowerInfo:powerState:AWAKE
 
 从API version 22开始，发生APP_INPUT_BLOCK故障时，日志中会同步输出多模点击输入（包含鼠标、键盘、触控板及触屏等输入方式）超时事件（Wait Event）。该事件信息中包含事件id，事件检测超时阈值，及前置事件id。
 
-事件检测超时阈值：log版本为8000毫秒，nolog版本为5000毫秒。
+事件检测超时阈值：log版本为8000毫秒，nolog版本为5000毫秒。从**API version 24**开始，APP_INPUT_BLOCK检测阈值不区分版本，均为8000毫秒。
 
 前置事件中包含：lastDispatchEvent为上次分发的事件；lastProcessEvent为上次处理的事件；lastMarkedEvent为上次标记的事件。
 
