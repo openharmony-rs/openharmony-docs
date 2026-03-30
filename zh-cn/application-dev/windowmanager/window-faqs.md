@@ -661,3 +661,7 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 针对Phone、Tablet设备，应用可以调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，即可恢复为系统默认亮度。
 
 针对PC/2in1设备，由于窗口亮度和系统亮度已实现归一化，故调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)接口后将直接改变系统亮度，目前没有可以恢复设置窗口亮度前的方法。
+
+## 如何正常获取顶层窗口
+
+当使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)销毁子窗和[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)获取应用最顶层窗口时，建议在销毁完成之后再调用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)准确获取子窗销毁之后应用最顶层窗口。
