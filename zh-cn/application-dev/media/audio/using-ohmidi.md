@@ -1286,6 +1286,26 @@ async sendSysExMessage(): Promise<void> {
   - 关闭设备
 
     <!-- @[cleanup_close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+    
+    ``` C++
+    static napi_value CloseDevice(napi_env env, napi_callback_info info)
+    {
+        // ...
+        auto it = g_openedDevices.find(deviceId);
+        if (it != g_openedDevices.end()) {
+            // 清理该设备的所有InputPortContext
+            CleanupInputPortContextsForDevice(deviceId);
+            OH_MIDIStatusCode status = OH_MIDIClient_CloseDevice(g_midiClient, it->second);
+            g_openedDevices.erase(it);
+            // ...
+        } else {
+            // ...
+        }
+    
+        // ...
+        return result;
+    }
+    ```
 
   - 销毁客户端
 
