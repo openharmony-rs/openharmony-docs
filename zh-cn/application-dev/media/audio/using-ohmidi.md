@@ -602,6 +602,32 @@ static void OnBLEDeviceOpened(void *userData, bool opened, OH_MIDIDevice *device
 - 获取端口信息示例
 
   <!-- @[get_port_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+  
+  ``` C++
+  static napi_value GetPortInfos(napi_env env, napi_callback_info info)
+  {
+      size_t argc = 1;
+      napi_value args[1] = {nullptr};
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+  
+      int64_t deviceId = 0;
+      napi_get_value_int64(env, args[0], &deviceId);
+      // ...
+  
+      std::lock_guard<std::mutex> lock(g_midiMutex);
+  
+      // ...
+  
+      size_t count = 0;
+      OH_MIDIStatusCode status = OH_MIDIClient_GetPortCount(g_midiClient, deviceId, &count);
+      // ...
+  
+      std::vector<OH_MIDIPortInformation> ports(count);
+      size_t actualCount = 0;
+      status = OH_MIDIClient_GetPortInfos(g_midiClient, deviceId, ports.data(), count, &actualCount);
+      // ...
+  }
+  ```
 
 **ArkTS调用示例：**
 
