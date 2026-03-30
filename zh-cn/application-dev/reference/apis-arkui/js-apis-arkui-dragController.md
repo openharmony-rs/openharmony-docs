@@ -556,7 +556,7 @@ struct DragControllerPage {
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor, uniformDataStruct } from '@kit.ArkData';
-import { fileUri, fileIo as fs } from '@kit.CoreFileKit';
+import { fileUri, fileIo as fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { dragController } from '@kit.ArkUI';
 
@@ -595,12 +595,12 @@ struct ImageExample {
                     let data =
                       context.resourceManager.getRawFdSync('test1.mp4');
                     let filePath = context.filesDir + '/test1.mp4';
-                    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+                    let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
                     let bufferSize = data.length as number;
                     let buf = new ArrayBuffer(bufferSize);
-                    fs.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
-                    fs.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
-                    fs.closeSync(file.fd);
+                    fileIo.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
+                    fileIo.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
+                    fileIo.closeSync(file.fd);
                     context.resourceManager.closeRawFdSync('test1.mp4')
                     this.uri = fileUri.getUriFromPath(filePath);
                     let videoMp: uniformDataStruct.FileUri = {
