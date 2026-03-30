@@ -27,16 +27,6 @@
 | cameraOrientation<sup>12+</sup> | number                              | 是   | 否  | 相机安装角度，不会随着屏幕旋转而改变。取值范围为[0, 360]，单位：度。 |
 | hostDeviceName<sup>15+</sup>    | string                              | 是   | 否  | 远端设备名称。若当前无远端设备，返回为空。 |
 | hostDeviceType<sup>15+</sup>    | [HostDeviceType](arkts-apis-camera-e.md#hostdevicetype15) | 是   | 否  | 远端设备类型。 |
-| lensEquivalentFocalLength<sup>24+</sup>    | Array<int>                           | 是   | 是  | 相机镜头等效焦距。 |
-| isLogicalCamera<sup>24+</sup>              | boolean                              | 是   | 是  | 指示这是否为一个逻辑相机（由多个物理相机组成）。 |
-| constituentCameraDevices<sup>24+</sup>     | Array<CameraDevice>                  | 是   | 是  | 组成此逻辑相机的物理相机列表。 |
-| lensFocalLength<sup>24+</sup>              | double                               | 是   | 是  | 镜头实际焦距。 |
-| minimumFocusDistance<sup>24+</sup>         | double                               | 是   | 是  | 相机最近对焦距离。 |
-| lensDistortion<sup>24+</sup>               | Array<double>                        | 是   | 是  | 镜头畸变参数数组。 |
-| lensIntrinsicCalibration<sup>24+</sup>     | Array<double>                        | 是   | 是  | 镜头内参标定参数数组。 |
-| sensorPhysicalSize<sup>24+</sup>           | Array<double>                        | 是   | 是  | 传感器的物理尺寸（宽度和高度）。 |
-| sensorPixelArraySize<sup>24+</sup>         | Array<int>                           | 是   | 是  | 传感器的像素阵列尺寸（宽度和高度，单位为像素）。 |
-| sensorColorFilterArrangement<sup>24+</sup> | [SensorColorFilterArrangement](arkts-apis-camera-e.md#sensorcolorfilterarrangement24) | 是   | 是  | 传感器的色彩滤镜排列。 |
 
 ## CameraStatusInfo
 
