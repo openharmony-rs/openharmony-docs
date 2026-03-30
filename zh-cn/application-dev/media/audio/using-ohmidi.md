@@ -722,6 +722,55 @@ static napi_value OpenInputPort(napi_env env, napi_callback_info info)
 - ArkTS代码示例
 
   <!-- @[arkts_open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  openInputPort(portIndex: number): void {
+    hilog.info(DOMAIN, TAG, '[openInputPort] ++enter, deviceId=%{public}d, portIndex=%{public}d',
+      this.selectedDeviceId, portIndex);
+  
+    try {
+      const status = midi.openInputPort(
+        this.selectedDeviceId,
+        portIndex,
+        1, // MIDI 1.0 protocol
+        (events: MidiEvent[]) => {
+          // In callback: only copy data and emit event, do not hold locks or execute heavy operations
+          hilog.debug(DOMAIN, TAG, '[openInputPort/callback] received %{public}d events', events.length);
+          const umpData: number[] = [];
+          for (const event of events) {
+            if (event.data && event.data.length > 0) {
+              // Traverse all elements in event.data array
+              for (let i = 0; i < event.data.length; i++) {
+                umpData.push(event.data[i]);
+              }
+            }
+          }
+          if (umpData.length > 0) {
+            const eventData: MidiReceivedEventData = { umpData: umpData };
+            emitter.emit({ eventId: EVENT_MIDI_RECEIVED }, { data: eventData });
+            hilog.debug(DOMAIN, TAG,
+              '[openInputPort/callback] emitted EVENT_MIDI_RECEIVED with %{public}d UMPs', umpData.length);
+          }
+        }
+      );
+  
+      hilog.info(DOMAIN, TAG, '[openInputPort] openInputPort returned status=%{public}d', status);
+      if (status === MidiStatusCode.OK) {
+        this.openInputPorts.add(portIndex);
+        this.log(`Input port ${portIndex} opened with callback`);
+        hilog.info(DOMAIN, TAG, '[openInputPort] port opened, openInputPorts.size=%{public}d',
+          this.openInputPorts.size);
+      } else {
+        this.log(`Failed to open input port: ${status}`);
+        hilog.error(DOMAIN, TAG, '[openInputPort] failed with status=%{public}d', status);
+      }
+      hilog.info(DOMAIN, TAG, '[openInputPort] --exit, status=%{public}d', status);
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, '[openInputPort] exception: %{public}s', JSON.stringify(e));
+      this.log(`Error opening input port: ${JSON.stringify(e)}`);
+    }
+  }
+  ```
 
 #### 6.2 关闭输入端口
 
