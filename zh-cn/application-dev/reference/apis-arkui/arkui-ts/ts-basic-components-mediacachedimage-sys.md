@@ -50,7 +50,7 @@ MediaCachedImage(src: PixelMap | ResourceStr | DrawableDescriptor | ASTCResource
 | 参数名    | 类型 | 必填 | 说明                                      |
 | ------- | --- | --- | ------------------------------------------ |
 | sources | Array&lt;string&gt; | 是 | uri资源数组，表示进行拼接的纹理资源信息。 |
-| column  | number | 是 | 列大小，表示每行要拼接的纹理资源个数。    |
+| column  | number | 是 | 列大小，表示每行要拼接的纹理资源个数。<br/>取值为正整数，非正整数会导致图片无法加载。 |
 
 ## 示例
 
