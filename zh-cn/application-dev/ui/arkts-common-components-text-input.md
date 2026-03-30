@@ -57,7 +57,8 @@ Search(options?:{placeholder?: ResourceStr, value?: ResourceStr, controller?: Se
   
   ``` TypeScript
   /* 请将$r('app.string.CreatTextInput_textContent')替换为实际资源文件，在本示例中该资源文件的value值为
-   "我是TextArea我是TextArea我是TextArea我是TextArea" */
+   * "我是TextArea我是TextArea我是TextArea我是TextArea"
+   */
   TextArea({ text: $r('app.string.CreatTextInput_textContent') })
     .width(300)
   ```
