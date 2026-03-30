@@ -43,7 +43,7 @@ import { createNWeb, defaultUrl } from '../pages/common';
 // ...
 ```
 
-<!-- @[web_module_dynamic_attach_detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/common.ets) -->
+<!-- @[dynamic_web_module_manage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/common.ets) -->
 
 <!-- @[web_module_dynamic_attach_detach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/NetReqInterceptCacheWinOps/entry3/src/main/ets/pages/Index.ets) -->
 
