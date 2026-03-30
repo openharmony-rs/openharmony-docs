@@ -1241,6 +1241,78 @@ try {
 }
 ```
 
+## window.createSubWindowAndBindParent<sup>24+</sup>
+
+createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
+
+Creates a subwindow and binds it to the parent window. This API uses a promise to return the result.
+
+The subwindow is displayed or hidden along with the parent window, but is not destroyed when the parent window is destroyed. The subwindow listens to the lifecycle changes of the parent window through a callback function.
+
+It is recommended that you destroy the created subwindow after the parent window is destroyed.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                                               |
+| -------- | ----------------------- | -- |---------------------------------------------------|
+| name | string | Yes| Window name.|
+| parentId | number | Yes| Parent window ID. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| ctx | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Current application context.|
+| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener24) | Yes| Callback used to return the lifecycle changes of the bound parent window.|
+
+**Return value**
+
+| Type| Description|
+| -------------------------------- | ------------------------------------ |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise used to return the child window created.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. This can not work correctly due to limited device capabilities. |
+| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
+| 1300003 | This window manager service works abnormally. |
+| 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    const parentWindowEventListener = (windowId: number, event: window.WindowEventType) => {
+      // ...
+    }
+    try {
+      let promise = window.createSubWindowAndBindParent('test', 100, this.context, parentWindowEventListener);
+      promise.then((data) => {
+        console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
+        windowClass = data;
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
 ## Window
 
 Represents a window instance, which is the basic unit managed by the window manager.
@@ -3260,7 +3332,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
@@ -3339,7 +3411,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
