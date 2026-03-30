@@ -474,7 +474,7 @@ struct WebComponent {
 需注意：
 
 1. HTML中的`showOpenFilePicker`、`showDirectoryPicker`方法的入参option与`showSaveFilePicker`的入参option的成员存在差异。
-2. ETS中如调用[`documentViewPicker.select()`](../reference/apis-core-file-kit/js-apis-file-picker.md#select)方法需配合[`picker.DocumentSelectOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#DocumentSelectOptions)对象为picker传参，而非[`picker.DocumentSaveOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#DocumentSaveOptions)对象，请参见[@ohos.file.picker (选择器)](../reference/apis-core-file-kit/js-apis-file-picker.md)。
+2. ETS中如调用[`documentViewPicker.select()`](../reference/apis-core-file-kit/js-apis-file-picker.md#select)方法需配合[`picker.DocumentSelectOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#documentselectoptions)对象为picker传参，而非[`picker.DocumentSaveOptions`](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)对象，请参见[@ohos.file.picker (选择器)](../reference/apis-core-file-kit/js-apis-file-picker.md)。
 
 ## 常见问题
 
