@@ -143,9 +143,9 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |groupId支持能力列表|对应子项能力|功能说明|
     | ---- | ------ | ----|
     |SmartEdge|Acticle|获取阅读场景感知信息|
-    | |ShortVideo|获取短视频场景的感知信息|
-    | |Todo|获取待办场景的感知信息|
-    | |Activity|获取基础服务的感知信息|
+    |-|ShortVideo|获取短视频场景的感知信息|
+    |-|Todo|获取待办场景的感知信息|
+    |-|Activity|获取基础服务的感知信息|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
@@ -472,7 +472,7 @@ let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
 
 try {
   onScreen.unsubscribe(onscreenAwarenessCap, (info: onScreen.OnscreenAwarenessInfo[]) => {
-	console.info(`unsubscribe resultCode: ${info[0].resultCode}`);
+    console.info(`unsubscribe resultCode: ${info[0].resultCode}`);
   });
 } catch (err) {
   console.error('unsubscribe failed, errCode = ' + err.code);
@@ -481,7 +481,7 @@ try {
 
 ## onScreen.trigger<sup>23+</sup>
 
-trigger(capability: OnscreenAwarenessCap,  options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo&gt;
+trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo&gt;
 
 主动触发屏幕内容感知，获取当前屏幕感知结果。
 
@@ -540,10 +540,10 @@ try {
   console.error('trigger failed, errCode = ' + err.code);
 }
 ```
+
 ## onScreen.capture<sup>23+</sup>
 
-capture(capability: OnscreenAwarenessCap, 
-        options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
+capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
 
 主动触发屏幕内容感知，获取页面信息。
 
@@ -602,8 +602,7 @@ try {
 
 ## onScreen.interact<sup>23+</sup>
 
-interact(capability: OnscreenAwarenessCap, 
-        options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
+interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
 
 主动触发屏幕行为交互。
 
@@ -672,8 +671,7 @@ try {
 
 ## onScreen.apperceive<sup>23+</sup>
 
-apperceive(capability: OnscreenAwarenessCap, 
-        options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
+apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
 
 主动触发屏幕内容感知，获取屏幕内容进行快照分析。
 
@@ -693,9 +691,9 @@ apperceive(capability: OnscreenAwarenessCap,
 |apperceive接口支持的groupId能力列表|对应能力子项|功能说明|
 | ---- | ------ | ----|
 |SmartEdge|Acticle|获取阅读场景感知信息|
-| |ShortVideo|获取短视频场景的感知信息|
-| |Todo|获取待办场景的感知信息|
-| |Activity|获取基础服务的感知信息| 
+|-|ShortVideo|获取短视频场景的感知信息|
+|- |Todo|获取待办场景的感知信息|
+|-|Activity|获取基础服务的感知信息| 
 
 **返回值：**
 
