@@ -750,7 +750,7 @@ Reads data from a file. This API uses a promise to return the result.
 | ------- | ----------- | ---- | ------------------------------------------------------------ |
 | fd      | number      | Yes  | File descriptor of the file to read.                                    |
 | buffer  | ArrayBuffer | Yes  | Buffer used to store the file data read.                          |
-| options | Object      | No  | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size|
+| options | Object      | No  | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset, in bytes.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position, in bytes.<br>Constraints: offset + length <= Buffer size|
 
 **Return value**
 
@@ -799,13 +799,13 @@ Reads data from a file. This API returns the result synchronously.
   | ------- | ----------- | ---- | ---------------------------------------- |
   | fd      | number      | Yes   | File descriptor of the file to read.                            |
   | buffer  | ArrayBuffer | Yes   | Buffer used to store the file data read.                       |
-  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
+  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset, in bytes.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position, in bytes.<br>Constraints: offset + length <= Buffer size |
 
 **Return value**
 
   | Type    | Description      |
   | ------ | -------- |
-  | number | Length of the data read.|
+  | number | Length of the data read, in bytes.|
 
 **Example**
 
@@ -1103,7 +1103,7 @@ Writes data to a file. This API returns the result synchronously.
 
   | Type    | Description      |
   | ------ | -------- |
-  | number | Length of the data written in the file.|
+  | number | Length of the data written in the file, in bytes.|
 
 **Example**
 
@@ -1400,7 +1400,7 @@ Truncates a file based on the file descriptor. This API uses a promise to return
   | Name | Type    | Mandatory  | Description              |
   | ---- | ------ | ---- | ---------------- |
   | fd   | number | Yes   | File descriptor of the file to truncate.    |
-  | len  | number | No   | File length, in bytes, after truncation.|
+  | len  | number | No   | File length after truncation, in bytes.|
 
 **Return value**
 
@@ -1439,7 +1439,7 @@ Truncates a file based on the file descriptor. This API uses an asynchronous cal
   | Name     | Type                       | Mandatory  | Description              |
   | -------- | ------------------------- | ---- | ---------------- |
   | fd       | number                    | Yes   | File descriptor of the file to truncate.    |
-  | len      | number                    | No   | File length, in bytes, after truncation.|
+  | len      | number                    | No   | File length after truncation, in bytes.|
   | callback | AsyncCallback&lt;void&gt; | Yes   | Callback that returns no value. |
 
 **Example**
@@ -1472,7 +1472,7 @@ Truncates a file based on the file descriptor. This API returns the result synch
   | Name | Type    | Mandatory  | Description              |
   | ---- | ------ | ---- | ---------------- |
   | fd   | number | Yes   | File descriptor of the file to truncate.    |
-  | len  | number | No   | File length, in bytes, after truncation.|
+  | len  | number | No   | File length after truncation, in bytes.|
 
 **Example**
 
@@ -1501,7 +1501,7 @@ Truncates a file based on the file path. This API uses a promise to return the r
 | Name| Type  | Mandatory| Description                            |
 | ------ | ------ | ---- | -------------------------------- |
 | path   | string | Yes  | Application sandbox path of the file to truncate.      |
-| len    | number | No  | File length, in bytes, after truncation.|
+| len    | number | No  | File length after truncation, in bytes.|
 
 **Return value**
 
@@ -1540,7 +1540,7 @@ Truncates a file based on the file path. This API uses an asynchronous callback 
 | Name  | Type                     | Mandatory| Description                            |
 | -------- | ------------------------- | ---- | -------------------------------- |
 | path     | string                    | Yes  | Application sandbox path of the file to truncate.      |
-| len      | number                    | No  | File length, in bytes, after truncation.|
+| len      | number                    | No  | File length after truncation, in bytes.|
 | callback | AsyncCallback&lt;void&gt; | Yes  | Callback that returns no value.  |
 
 **Example**
@@ -1572,7 +1572,7 @@ Truncates a file based on the file path. This API returns the result synchronous
 | Name| Type  | Mandatory| Description                            |
 | ------ | ------ | ---- | -------------------------------- |
 | path   | string | Yes  | Application sandbox path of the file to truncate.      |
-| len    | number | No  | File length, in bytes, after truncation.|
+| len    | number | No  | File length after truncation, in bytes.|
 
 **Example**
 
@@ -2949,8 +2949,8 @@ Obtains the file read result. This class applies only to the **read()** method.
 
 | Name       | Type      | Read-Only  | Writable  | Description               |
 | --------- | ---------- | ---- | ---- | ----------------- |
-| bytesRead | number     | Yes   | Yes   | Length of the data read.          |
-| offset    | number     | Yes   | Yes   | Position of the buffer to which the data to be read in reference to the start address of the buffer.|
+| bytesRead | number     | Yes   | Yes   | Length of the data read, in bytes.          |
+| offset    | number     | Yes   | Yes   | Position of the buffer to which the data will be read in reference to the start address of the buffer, in bytes.|
 | buffer    | ArrayBuffer | Yes   | Yes   | Buffer for storing the data read.      |
 
 
@@ -3519,7 +3519,7 @@ Writes data to a stream file. This API returns the result synchronously.
 
   | Type    | Description      |
   | ------ | -------- |
-  | number | Length of the data written in the file.|
+  | number | Length of the data written in the file, in bytes.|
 
 **Example**
 
@@ -3557,7 +3557,7 @@ Reads data from a stream file. This API uses a promise to return the result.
   | Name    | Type         | Mandatory  | Description                                      |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | Yes   | Buffer used to store the file read.                             |
-  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
+  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset, in bytes.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position, in bytes.<br>Constraints: offset + length <= Buffer size |
 
 **Return value**
 
@@ -3656,13 +3656,13 @@ Reads data from a stream file. This API returns the result synchronously.
   | Name    | Type         | Mandatory  | Description                                      |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | Yes   | Buffer used to store the file read.                             |
-  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset.<br>- **position** (number): position of the data to read in the file. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
+  | options | Object      | No   | The options are as follows:<br>- **offset** (number): position to store the data read in the buffer in reference to the start address of the buffer, in bytes. This parameter is optional. The default value is **0**.<br>- **length** (number): length of the data to read. This parameter is optional. The default value is the buffer length minus the offset, in bytes.<br>- **position** (number): position of the data to read in the file, in bytes. This parameter is optional. By default, data is read from the current position.<br>Constraints: offset + length <= Buffer size |
 
 **Return value**
 
   | Type    | Description      |
   | ------ | -------- |
-  | number | Length of the data read.|
+  | number | Length of the data read, in bytes.|
 
 **Example**
 

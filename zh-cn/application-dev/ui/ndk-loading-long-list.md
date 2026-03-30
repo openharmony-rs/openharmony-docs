@@ -15,7 +15,7 @@ ArkUI开发框架在NDK接口提供了列表组件，使用列表可以轻松高
 
 ## 监听滚动事件 
 
-参考[监听组件事件](ndk-listen-to-component-events.md)章节实现列表滚动事件监听。 
+参考[添加事件监听](ndk-add-component-events.md)章节实现列表滚动事件监听。 
 
 ## 使用懒加载 
 

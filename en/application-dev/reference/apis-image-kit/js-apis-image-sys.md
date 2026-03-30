@@ -20,7 +20,7 @@ The module provides APIs for image processing. You can use the APIs to create a 
 import { image } from '@kit.ImageKit';
 ```
 
-## DecodingOptions<sup>12+</sup>
+## DecodingOptions<sup>7+</sup>
 
 Describes the image decoding options.
 
@@ -34,7 +34,7 @@ Describes the image decoding options.
 
 | Name              | Type             | Read-Only| Optional| Description            |
 | ----------------- | ----------------- | ---- | ---- | ---------------- |
-| resolutionQuality | [ResolutionQuality](#resolutionquality12) | No  | Yes  | Image quality.|
+| resolutionQuality<sup>12+</sup> | [ResolutionQuality](#resolutionquality12) | No  | Yes  | Image quality.|
 
 ## ResolutionQuality<sup>12+</sup>
 

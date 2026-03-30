@@ -401,12 +401,12 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 10、如果开发者对数据持久化能力有较强的诉求，例如持久化时机，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。注意：不允许混用PersistenceV2和Preferences，因为Preferences存储的数据不会有状态变量信息，反序列化的数据不能触发PersistenceV2的自动化存储。
 
-11、当开发者使用globalConnect持久化数据，从磁盘读取数据时，需要保证key数据在持久化前后类型一致，否则会抛出运行时异常，从API version 23开始，将返回错误码[140107](../../reference/apis-arkui/errorcode-stateManagement.md#140107-appstoragev2和persistencev2数据类型不匹配)。
+11、当开发者使用globalConnect持久化数据，从磁盘读取数据时，需要保证key数据在持久化前后类型一致。从API version 23开始，将返回错误码[140107](../../reference/apis-arkui/errorcode-stateManagement.md#140107-appstoragev2和persistencev2数据类型不匹配)。
 
 12、globalConnect仅支持设置EL1-EL5加密级别，否则会抛出运行时异常，从API version 23开始，将返回错误码[140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-使用persistencev2存储数据到不支持的加密级别)，示例见[使用globalConnect存储数据](#使用globalconnect存储数据)。
 
-13、当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API 版本 26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
-- 从API 版本 26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyonerror获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
+13、当存储数据的结构与当前数据的结构不一致时，可能会导致反序列化失败。在API版本26.0.0以前，开发者无法获取旧的序列化数据，进而无法判断自己的数据结构有哪些改变。
+- 从API版本26.0.0开始，[PersistenceErrorCallback](../../reference/apis-arkui/js-apis-stateManagement.md#persistenceerrorcallback)支持传入oldValue参数，开发者可通过该参数获取存于磁盘的旧的序列化数据，具体用例可见[通过notifyonerror获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)。
 
 ## globalConnect支持的类型
 
@@ -1074,7 +1074,7 @@ struct Page1 {
 
 ### 通过notifyOnError获取旧的序列化数据
 
-当存储数据的结构与当前数据的结构不同时，可能会导致反序列化失败。从API 版本 26.0.0开始，开发者可通过向notifyOnError的入参回调中加入oldValue参数来获取存于磁盘的旧的序列化数据，从而直观感知到数据结构的差异。
+当存储数据的结构与当前数据的结构不同时，可能会导致反序列化失败。从API版本26.0.0开始，开发者可通过向notifyOnError的入参回调中加入oldValue参数来获取存于磁盘的旧的序列化数据，从而直观感知到数据结构的差异。
 
 <!-- @[persistence_v2_notifyOnError](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2NotifyOnError.ets) -->
 
@@ -1300,3 +1300,93 @@ struct Page1 {
 ```
 
 connect向globalConnect迁移，需要将key绑定的value赋值给globalConnect进行存储，之后当自定义组件使用globalConnect连接时，globalConnect绑定的数据即为之前使用connect保存的数据，开发者可以自定义move函数，并将其放在合适位置迁移即可。
+
+### 使用connect/globalConnect存储数据后，不建议变更数据结构
+
+在使用connect/globalConnect存储数据后，不建议变更数据结构，因为变更数据结构可能导致存储的数据反序列化失败，从而无法获取之前的数据。上文[通过notifyOnError获取旧的序列化数据](#通过notifyonerror获取旧的序列化数据)介绍了在变更数据结构后，如何通过旧的序列化数据定位数据结构的具体变更。但是，某些场景下由于代码实现中存在数据结构隐式转换等原因，不会触发notifyOnError，导致无法获取旧的序列化数据，例如下面代码所示场景。
+
+<!-- @[persistence_v2_change_data_structure](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ChangeDataStructure.ets) --> 
+
+``` TypeScript
+import { PersistenceV2, Type } from '@kit.ArkUI';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0000;
+
+// 接受序列化失败的回调
+PersistenceV2.notifyOnError((key: string, reason: string, msg: string, oldValue?: string) => {
+  hilog.error(DOMAIN, 'testTag', '%{public}s',
+    `error key: ${key}, reason: ${reason}, message: ${msg}, oldValue: ${oldValue}`);
+});
+
+@ObservedV2
+class SampleChild {
+  @Trace public info: string = 'Hello';
+}
+
+@ObservedV2
+class Sample {
+  // 起始时childInfo类型为SampleChild，使用connect/globalConnect将其存储到磁盘
+  @Type(SampleChild)
+  @Trace public childInfo: SampleChild = new SampleChild();
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  // 调用connect或globalConnect存储
+  @Local sample: Sample =
+    PersistenceV2.globalConnect({ type: Sample, key: 'connectSample', defaultCreator: () => new Sample() })!;
+
+  build() {
+    Column({ space: 5 }) {
+      Text(JSON.stringify(this.sample)) // 序列化sample变量并显示
+      Button('Change Info')
+        .onClick(() => {
+          // 通过将类型转换为ESObject，再转为SampleChild，绕过了类型校验，故点击后不会触发notifyOnError。
+          // 点击并重新运行后，由于此处存储的info为Array类型，但SampleChild中的info仍是string类型，故会触发notifyOnError。
+          this.sample.childInfo = { info: [1, 2] } as ESObject as SampleChild;
+        })
+    }
+    .width('100%')
+  }
+}
+```
+
+下表将结合样例，说明在变更数据结构时会触发notifyOnError的情形。
+
+> **说明：** 
+>
+>1、oldValue为notifyOnError的入参回调的参数，用于在反序列化失败时，获取旧的序列化数据。
+>
+>2、下表中会触发notifyOnError的类型，指的是将原始类型改变后，会触发notifyOnError回调的类型。
+>
+>3、下表中的类型，均是指class中属性的类型。
+>
+>4、在反序列化时，如果属性类型为Object，则会递归遍历并反序列化其内部属性。
+
+**使用PersistenceV2.connect在数据结构变更后触发notifyOnError情况表**
+
+| 原始类型 | 样例 | 样例的序列化存储结果 | 会触发notifyOnError的类型 | oldValue |
+|---|---|---|---|---|
+| number | `50` | `50` | boolean, Array, Set, Map, Object | `50` |
+| boolean | `true` | `true` | number, Array, Set, Map, Object | `true` |
+| string | `'hello'` | `"hello"` | number, boolean, Array, Set, Map, Object | `"hello"` |
+| Array | `new Array<number>([1,2,3])` | `[1,2,3]` | number, boolean, string | `[1,2,3]` |
+| Set | `new Set<number>([1,2,3])` | `[1,2,3]` | number, boolean, string | `[1,2,3]` |
+| Map | `new Map<string, number>([['a',1],['b',2]])` | `[["a",1],["b",2]]` | number, boolean, string, Array, Date | `[["a",1],["b",2]]` |
+| Date | `new Date()` | `"2026-03-26T00:00:00.000Z"` | number, boolean, Array, Set, Map, Object | `"2026-03-26T00:00:00.000Z"` |
+| Object | `new Class A { public info: number = 100; }` | `{"info":100}` | number, boolean, string | `{"info":100}` |
+
+**使用PersistenceV2.globalConnect在数据结构变更后触发notifyOnError情况表**
+
+| 原始类型 | 样例 | 样例的序列化存储结果 | 会触发notifyOnError的类型 | oldValue |
+|---|---|---|---|---|
+| number | `50` | `50` | 无 | 无 |
+| boolean | `true` | `true` | 无 | 无 |
+| string | `'hello'` | `"hello"` | 无 | 无 |
+| Array | `new Array<number>([1,2,3])` | `\"Ar0003[1,2,3]\"` | number, boolean, string, Set, Map, Date, Object | `[1,2,3]` |
+| Set | `new Set<number>([1,2,3])` | `\"Se0003\\\"Ar0004[1,2,3]\\\"\"` | number, boolean, string, Array, Map, Date, Object | `[1,2,3]` |
+| Map | `new Map<string, number>([['a',1],['b',2]])` | `\"Ma0003[[\\\"a\\\",\\\"1\\\"],[\\\"b\\\",\\\"2\\\"]]\"` | number, boolean, string, Array, Set, Date, Object | `[["a",1],["b",2]]` |
+| Date | `new Date()` | `\"Da00032026-03-26T00:00:00.000Z\"` | 无 | 无 |
+| Object | `new Class A { public info: number = 100; }` | `\"0b0003{\\\"info\\\":100}\"` | number, boolean, string |  `{"info":100}` |

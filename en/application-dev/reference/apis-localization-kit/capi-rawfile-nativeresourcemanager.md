@@ -7,6 +7,10 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct NativeResourceManager NativeResourceManager
+```
+
 ## Overview
 
 Represents the native **ResourceManager**. This class encapsulates the native implementation of the JavaScript **ResourceManager**. The pointer to **ResourceManager** can be obtained by using [OH_ResourceManager_InitNativeResourceManager](capi-raw-file-manager-h.md#oh_resourcemanager_initnativeresourcemanager).

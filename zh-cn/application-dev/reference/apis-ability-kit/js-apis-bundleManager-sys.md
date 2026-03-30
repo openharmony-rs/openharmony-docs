@@ -94,6 +94,7 @@ Ability组件信息标志，指示需要获取的Ability组件信息的内容。
 | 名称           | 值   | 说明            |
 | -------------- | ---- | --------------- |
 | INTENT_PROFILE  | 1    | 意图框架配置文件。    |
+| CLOUD_PROFILE  | 8    | [端云同步](../apis-core-file-kit/js-apis-file-cloudsync.md)配置文件。**起始版本**：26.0.0    |
 
 ## AppDistributionType<sup>12+</sup>
 
@@ -1908,7 +1909,7 @@ try {
 
 getAllBundleCacheSize(): Promise\<number>
 
-获取全局缓存大小。使用Promise异步回调。
+获取全局缓存大小，单位：字节。使用Promise异步回调。
 
 有程序运行时的应用的缓存、或者在[应用配置指南](../../../device-dev/subsystems/subsys-app-privilege-config-guide.md)中已配置“AllowAppDataNotCleared”特权的应用的缓存，无法被获取。
 
