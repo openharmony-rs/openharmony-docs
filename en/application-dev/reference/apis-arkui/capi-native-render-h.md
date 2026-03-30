@@ -374,7 +374,7 @@ Adds a child node after the target child node of the parent node.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the target node originates from a FrameNode. This specification is supported since API version 22.<br>         Returns [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the current render node originates from a FrameNode that has been either detached as a child node or destroyed. This specification is supported since API version 22.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>         Returns [ARKUI_ERROR_CODE_CAPI_INIT_ERROR](capi-native-type-h.md#arkui_errorcode) if C API initialization failed.<br>         Returns [ARKUI_ERROR_CODE_RENDER_IS_FROM_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the target node originates from a FrameNode. This specification is supported since API version 22.<br>         Returns [ARKUI_ERROR_CODE_RENDER_HAS_INVALID_FRAME_NODE](capi-native-type-h.md#arkui_errorcode) if the child node originates from a FrameNode and the corresponding FrameNode is no longer in the adopted state. This specification is supported since API version 22.|
 
 ### OH_ArkUI_RenderNodeUtils_RemoveChild()
 
@@ -480,7 +480,7 @@ Obtains the next sibling node of the specified node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Reference node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node used to receive the next sibling node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node, which is used to receive the next sibling node.|
 
 **Return value**
 | Type| Description|
@@ -502,7 +502,7 @@ Obtains the previous sibling node of the specified node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Reference node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node used to receive the previous sibling node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node, which is used to receive the previous sibling node.|
 
 **Return value**
 | Type| Description|
@@ -1468,7 +1468,7 @@ int32_t OH_ArkUI_RenderNodeUtils_SetMask(ArkUI_RenderNodeHandle node, ArkUI_Rend
 Applies a mask to the render node using the mask configuration.
 
 The mask is created as follows:
-1. Add brightness and linear color filters to the mask layer.
+1. Add brightness and a linear color filter to the mask layer.
 2. Draw the mask graphic under this filter.
 3. Use the original node image as the source color and the mask graphic as the target color, and blend them into a mask image using the [BlendMode.SRC_IN](../apis-arkgraphics2d/arkts-apis-graphics-drawing-e.md#blendmode) API.
 
