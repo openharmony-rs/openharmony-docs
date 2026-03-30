@@ -338,6 +338,27 @@ interface BleOpenedEventData {
 - 打开USB MIDI设备示例
 
   <!-- @[open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+  
+  ``` C++
+  static napi_value OpenDevice(napi_env env, napi_callback_info info)
+  {
+      size_t argc = 1;
+      napi_value args[1] = {nullptr};
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+  
+      int64_t deviceId = 0;
+      napi_get_value_int64(env, args[0], &deviceId);
+      std::lock_guard<std::mutex> lock(g_midiMutex);
+      // ...
+      OH_MIDIDevice *device = nullptr;
+      OH_MIDIStatusCode status = OH_MIDIClient_OpenDevice(g_midiClient, deviceId, &device);
+      if (status == OH_MIDI_STATUS_OK && device != nullptr) {
+          g_openedDevices[deviceId] = device;
+          OH_LOG_INFO(LOG_APP, "[OpenDevice] device stored, total opened devices=%{public}zu", g_openedDevices.size());
+      }
+      // ...
+  }
+  ```
 
 **ArkTS调用示例：**
 
