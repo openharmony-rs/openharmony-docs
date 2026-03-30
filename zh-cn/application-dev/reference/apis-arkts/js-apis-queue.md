@@ -8,7 +8,7 @@
 
 Queue的特点是先进先出，在尾部增加元素，在头部删除元素。根据循环队列的数据结构实现。
 
-Queue和[Deque](js-apis-deque.md)相比，Queue只能在一端删除一端增加，而Deque支持在两端进行增删操作。
+Queue和[Deque](js-apis-deque.md)相比，Queue在尾部增加元素，在头部删除元素；而Deque支持在两端进行增删操作。
 
 **推荐使用场景：** 一般符合先进先出的场景可以使用Queue。
 
