@@ -779,6 +779,48 @@ static napi_value OpenInputPort(napi_env env, napi_callback_info info)
 - 关闭输入端口示例
 
   <!-- @[close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
+  
+  ``` C++
+  // Close input port
+  static napi_value CloseInputPort(napi_env env, napi_callback_info info)
+  {
+      size_t argc = 2;
+      napi_value args[2] = {nullptr};
+      napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+  
+      int64_t deviceId = 0;
+      napi_get_value_int64(env, args[0], &deviceId);
+  
+      uint32_t portIndex = 0;
+      napi_get_value_uint32(env, args[1], &portIndex);
+  
+      OH_LOG_INFO(LOG_APP, "[CloseInputPort] ++enter, deviceId=%{public}lld, portIndex=%{public}u",
+                  (long long)deviceId, portIndex);
+  
+      std::lock_guard<std::mutex> lock(g_midiMutex);
+  
+      napi_value result;
+      auto it = g_openedDevices.find(deviceId);
+      if (g_midiClient == nullptr || it == g_openedDevices.end()) {
+          OH_LOG_ERROR(LOG_APP, "[CloseInputPort] client is null or device not opened");
+          napi_create_int32(env, static_cast<int32_t>(OH_MIDI_STATUS_INVALID_DEVICE_HANDLE), &result);
+          return result;
+      }
+  
+      OH_MIDIStatusCode status = OH_MIDIDevice_CloseInputPort(it->second, portIndex);
+  
+      // Clean up input port context
+      auto key = std::make_pair(deviceId, portIndex);
+      auto contextIt = g_inputPortContexts.find(key);
+      if (contextIt != g_inputPortContexts.end()) {
+          if (contextIt->second != nullptr) {
+              contextIt->second->Stop();
+          }
+          g_inputPortContexts.erase(contextIt);
+      }
+      // ...
+  }
+  ```
 
 - ArkTS代码示例
 
