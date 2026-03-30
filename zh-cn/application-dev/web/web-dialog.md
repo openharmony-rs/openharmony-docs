@@ -204,7 +204,7 @@
                 console.info('event.url:' + event.url);
                 console.info('event.message:' + event.message);
                 this.uiContext.showAlertDialog({
-                  title: 'from' + event.url + 'news',
+                  title: 'Confirm',
                   message: event.message,
                   primaryButton: {
                     value: 'cancel',
