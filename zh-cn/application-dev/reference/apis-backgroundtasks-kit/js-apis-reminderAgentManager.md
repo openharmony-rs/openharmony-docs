@@ -1045,9 +1045,9 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 | actionButton | [[ActionButton?, ActionButton?, ActionButton?]](#actionbutton) | 否 | 是 | 弹出的提醒通知中显示的按钮。<br>针对三方应用：最多支持两个按钮。<br>针对系统应用：从API version 10开始最多支持三个按钮，API version 10之前的版本最多支持两个按钮。 |
 | wantAgent | [WantAgent](#wantagent) | 否 | 是 | 点击通知后需要跳转的目标ability信息。 |
 | maxScreenWantAgent | [MaxScreenWantAgent](#maxscreenwantagent) | 否 | 是 | 提醒到达时，全屏显示自动拉起目标的ability信息。如果设备正在使用中，则弹出一个通知横幅框。 <br> 说明：该接口为预留接口，暂不支持使用。|
-| ringDuration | number | 否 | 是 | 指明响铃时长（单位：秒），默认1秒，范围：[0, 1800]。<br>值为0时：跟随系统设置中的通知铃声。 <br>值大于0时：如果设置了[ReminderRequest.customRingUri](#reminderrequest)，则在指定的通道[ReminderRequest.ringChannel](#reminderrequest)上响铃。否则使用代理提醒默认的自定义提示音。 |
+| ringDuration | number | 否 | 是 | 指明响铃时长。<br>单位：s，默认1s，范围：[0, 1800]。<br>值为0时：跟随系统设置中的通知铃声。 <br>值大于0时：如果设置了[ReminderRequest.customRingUri](#reminderrequest)，则在指定的通道[ReminderRequest.ringChannel](#reminderrequest)上响铃。否则使用代理提醒默认的自定义提示音。 |
 | snoozeTimes | number | 否 | 是 | 指明延时提醒次数，默认0次（不适用于倒计时提醒类型）。 |
-| timeInterval | number | 否 | 是 | 执行延时提醒间隔（单位：秒），最少30秒（不适用于倒计时提醒类型）。 |
+| timeInterval | number | 否 | 是 | 执行延时提醒间隔。<br> 单位：s，最少30s（不适用于倒计时提醒类型）。 |
 | title | string | 否 | 是 | 指明提醒标题。 |
 | titleResourceId<sup>18+</sup> | number | 否 | 是 | 指明提醒标题的资源ID，通过`$r(资源名称).id`方法获取。 |
 | content | string | 否 | 是 | 指明提醒内容。 |
@@ -1060,7 +1060,7 @@ reminderAgentManager.unsubscribeReminderState(reminderStateCallback).then(() => 
 | groupId<sup>11+</sup> | string | 否 | 是 | 指明提醒使用相同的组id。相同组id中，一个提醒被点击不在提醒后，组内其他提醒也会被取消。 |
 | slotType | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明提醒的通道渠道类型。 |
 | tapDismissed<sup>10+</sup> | boolean | 否 | 是 | 通知是否自动清除，默认值为true，具体请参考[NotificationRequest.tapDismissed](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。<br> - true：点击通知消息或通知按钮后，自动删除当前通知。<br> - false：点击通知消息或通知按钮后，保留当前通知。 |
-| autoDeletedTime<sup>10+</sup> | number | 否 | 是 | 自动清除的时间，具体请参考[NotificationRequest.autoDeletedTime](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。 |
+| autoDeletedTime<sup>10+</sup> | number | 否 | 是 | 自动清除的时间。<br> 数据格式：时间戳，单位：ms，具体请参考[NotificationRequest.autoDeletedTime](../apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1)。 |
 | snoozeSlotType<sup>11+</sup> | [notification.SlotType](../apis-notification-kit/js-apis-notificationManager.md#slottype) | 否 | 是 | 指明延时提醒的通道渠道类型（不适用于倒计时提醒类型）。 |
 | customRingUri<sup>11+</sup> | string | 否 | 是 | 指明自定义提示音的uri，提示音文件必须放在resources/rawfile目录下，支持m4a、aac、mp3、ogg、wav、flac、amr等格式。 |
 | ringChannel<sup>20+</sup> | [RingChannel](#ringchannel20) | 否 | 是 | 指明自定义提示音的音频播放通道，默认为闹钟通道。|
@@ -1107,7 +1107,7 @@ ReminderRequestTimer extends ReminderRequest
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| triggerTimeInSeconds | number | 否 | 否 | 指明倒计时的秒数。 |
+| triggerTimeInSeconds | number | 否 | 否 | 指明倒计时的秒数。<br> 单位：s |
 
 
 ## LocalDateTime
