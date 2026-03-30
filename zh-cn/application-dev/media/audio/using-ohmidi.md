@@ -1126,6 +1126,36 @@ static napi_value SendNoteOff(napi_env env, napi_callback_info info)
 - ArkTS代码示例
 
   <!-- @[arkts_on_key_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  onKeyRelease(note: number): void {
+    if (this.openOutputPorts.size === 0) {
+      this.activeKeys.delete(note);
+      hilog.debug(DOMAIN, TAG, '[onKeyRelease] no output port, just removing from activeKeys');
+      return;
+    }
+  
+    const portIndex = Array.from(this.openOutputPorts)[0];
+    this.activeKeys.delete(note);
+  
+    try {
+      hilog.debug(DOMAIN, TAG,
+        '[onKeyRelease] NoteOff: dev=%{public}d, port=%{public}d, ch=%{public}d, note=%{public}d',
+        this.selectedDeviceId, portIndex, this.channelValue, note);
+      const status = midi.sendNoteOff(this.selectedDeviceId, portIndex, this.channelValue, note, 64);
+      if (status !== MidiStatusCode.OK) {
+        this.log(`Failed to send Note Off: ${status}`);
+        hilog.error(DOMAIN, TAG, '[onKeyRelease] sendNoteOff failed with status=%{public}d', status);
+      } else {
+        hilog.debug(DOMAIN, TAG, '[onKeyRelease] NoteOff sent successfully');
+      }
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, '[onKeyRelease] exception: %{public}s', JSON.stringify(e));
+      this.log(`Error sending Note Off: ${JSON.stringify(e)}`);
+    }
+    hilog.debug(DOMAIN, TAG, '[onKeyRelease] --exit');
+  }
+  ```
 
 #### 7.4 UMP格式说明
 
