@@ -88,7 +88,13 @@
     - [OH_AudioSuite_PureVoiceChangeOption](capi-ohaudiosuite-oh-audiosuite-purevoicechangeoption.md)
     - [OH_AudioSuite_SpaceRenderExtensionParams](capi-ohaudiosuite-oh-audiosuite-spacerenderextensionparams.md)
     - [OH_AudioSuite_SpaceRenderRotationParams](capi-ohaudiosuite-oh-audiosuite-spacerenderrotationparams.md)
-- 错误码<!--audio-arkts-errcode-->
+- MIDI<!--midi-->
+  - 模块<!--midi-module-->
+    - [OH_MIDI](capi-ohmidi.md)
+  - 头文件<!--midi-headerfile-->
+    - [native_midi.h](capi-native-midi-h.md)
+    - [native_midi_base.h](capi-native-midi-base-h.md)
+- 错误码<!--errorcode-->
   - [Audio错误码](errorcode-audio.md)
   <!--Del-->
   - [Ringtone错误码](errorcode-ringtone.md)
