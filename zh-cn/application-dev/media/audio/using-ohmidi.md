@@ -540,6 +540,52 @@ static void OnBLEDeviceOpened(void *userData, bool opened, OH_MIDIDevice *device
 - ArkTS代码示例
 
   <!-- @[arkts_open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  openBLEDevice(deviceAddress: string): void {
+    hilog.info(DOMAIN, TAG, '[openBLEDevice] ++enter, address=%{public}s', deviceAddress);
+    if (!deviceAddress || deviceAddress.length === 0) {
+      hilog.warn(DOMAIN, TAG, '[openBLEDevice] empty device address');
+      this.log('Please enter a BLE device address');
+      return;
+    }
+    this.bleConnecting = true;
+    this.log(`Connecting to BLE device: ${deviceAddress}`);
+  
+    try {
+      const status = midi.openBLEDevice(deviceAddress, (opened: boolean, deviceInfo: MidiDeviceInfo) => {
+        // In callback: only copy data and emit event, do not hold locks or execute heavy operations
+        hilog.info(DOMAIN, TAG, '[openBLEDevice/cb] opened=%{public}s, devId=%{public}d, name=%{public}s',
+          opened.toString(), deviceInfo.deviceId, deviceInfo.deviceName);
+        const eventData: BleOpenedEventData = {
+          opened: opened,
+          deviceId: deviceInfo.deviceId,
+          deviceName: deviceInfo.deviceName,
+          deviceType: deviceInfo.deviceType,
+          deviceAddress: deviceInfo.deviceAddress
+        };
+        emitter.emit({ eventId: EVENT_BLE_OPENED }, { data: eventData });
+        hilog.info(DOMAIN, TAG, '[openBLEDevice/callback] emitted EVENT_BLE_OPENED');
+      });
+      hilog.info(DOMAIN, TAG, '[openBLEDevice] openBLEDevice returned status=%{public}d', status);
+      if (status !== MidiStatusCode.OK) {
+        this.bleConnecting = false;
+        if (status === MidiStatusCode.PERMISSION_DENIED) {
+          this.log('Bluetooth permission denied. Please grant ACCESS_BLUETOOTH permission.');
+          hilog.error(DOMAIN, TAG, '[openBLEDevice] permission denied');
+        } else {
+          this.log(`Failed to start BLE connection: ${status}`);
+          hilog.error(DOMAIN, TAG, '[openBLEDevice] failed with status=%{public}d', status);
+        }
+      }
+      hilog.info(DOMAIN, TAG, '[openBLEDevice] --exit, status=%{public}d', status);
+    } catch (e) {
+      this.bleConnecting = false;
+      hilog.error(DOMAIN, TAG, '[openBLEDevice] exception: %{public}s', JSON.stringify(e));
+      this.log(`Error opening BLE device: ${JSON.stringify(e)}`);
+    }
+  }
+  ```
 
 **关键要点：**
 - BLE设备连接是异步的，结果通过回调返回
