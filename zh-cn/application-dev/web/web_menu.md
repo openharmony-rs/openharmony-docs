@@ -827,6 +827,37 @@ struct WebComponent {
 
 <!-- @[web_Disable_long_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebMenu/entry/src/main/ets/pages/WebDisableLongPress.ets) -->
 
+``` TypeScript
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  onCreateMenu(menuItems: Array<TextMenuItem>): Array<TextMenuItem> {
+    let items = menuItems.filter((menuItem) => {
+      // 过滤用户需要的系统按键
+      return false;
+    });
+    return items;
+  }
+
+  onMenuItemClick(menuItem: TextMenuItem, textRange: TextRange): boolean {
+    return false; // 返回默认值false
+  }
+
+  @State editMenuOptions: EditMenuOptions = { onCreateMenu: this.onCreateMenu, onMenuItemClick: this.onMenuItemClick }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index7.html'), controller: this.controller })
+        .editMenuOptions(this.editMenuOptions)
+    }
+  }
+}
+```
+
 <!---->
 
   ```html
