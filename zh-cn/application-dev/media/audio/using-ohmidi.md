@@ -966,6 +966,27 @@ static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
 - ArkTS代码示例
 
   <!-- @[arkts_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  closeOutputPort(portIndex: number): void {
+    try {
+      const status = midi.closeOutputPort(this.selectedDeviceId, portIndex);
+      if (status === MidiStatusCode.OK) {
+        this.openOutputPorts.delete(portIndex);
+        this.log(`Output port ${portIndex} closed`);
+        hilog.info(DOMAIN, TAG, '[closeOutputPort] port closed, openOutputPorts.size=%{public}d',
+          this.openOutputPorts.size);
+      } else {
+        this.log(`Failed to close output port: ${status}`);
+        hilog.error(DOMAIN, TAG, '[closeOutputPort] failed with status=%{public}d', status);
+      }
+      hilog.info(DOMAIN, TAG, '[closeOutputPort] --exit, status=%{public}d', status);
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, '[closeOutputPort] exception: %{public}s', JSON.stringify(e));
+      this.log(`Error closing output port: ${JSON.stringify(e)}`);
+    }
+  }
+  ```
 
 ### 7. 发送MIDI消息
 
