@@ -1266,6 +1266,30 @@ ArkTS-Sta: onCopy(callback:Callback\<string> \| undefined)
 | --------- | ------- | ---- | ---------------- |
 | callback | ArkTS-Dyn: Callback\<string><br/>ArkTS-Sta: Callback\<string> \| undefined | 是   | 复制回调，其返回值为复制的文本内容。 |
 
+### onWillCopy
+
+ArkTS-Dyn: onWillCopy(callback: Callback\<string, boolean>)
+
+ArkTS-Sta: onWillCopy(callback:Callback\<string, boolean> \| undefined)
+
+在进行复制操作前，触发该回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> \| undefined| 是   | 复制操作前的回调。回调参数类型为string时，表示将要被复制的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被复制，true：允许文本被复制；false：不允许文本被复制。undefined时，恢复组件默认复制行为。 |
+
 ### onCut
 
 ArkTS-Dyn: onCut(callback:Callback\<string>)
@@ -1287,6 +1311,30 @@ ArkTS-Sta: onCut(callback:Callback\<string> \| undefined)
 | 参数名    | 类型    | 必填 | 说明             |
 | --------- | ------- | ---- | ---------------- |
 | callback | ArkTS-Dyn: Callback\<string><br/>ArkTS-Sta: Callback\<string> \| undefined | 是   | 剪切回调，其返回值为剪切的文本内容。 |
+
+### onWillCut
+
+ArkTS-Dyn: onWillCut(callback: Callback\<string, boolean>)
+
+ArkTS-Sta: onWillCut(callback:Callback\<string, boolean> \| undefined)
+
+在进行剪切操作前，触发该回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> \| undefined | 是   | 剪切操作前的回调。回调参数类型为string时，表示将要被剪切的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被剪切，true：允许文本被剪切；false：不允许文本被剪切。undefined时，恢复组件默认剪切行为。 |
 
 ### onPaste
 
@@ -2278,7 +2326,9 @@ struct SearchExample {
 
 ### 示例12（设置文本是否可复制）
 
-该示例通过copyOption属性展示如何设置文本是否可复制。
+该示例通过[copyOption](#copyoption9)、[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)接口展示如何设置文本复制、如何拦截系统复制、如何拦截系统剪切。
+
+从API版本26.0.0开始，新增[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)接口。
 
 ```ts
 // xxx.ets
@@ -2301,6 +2351,11 @@ struct SearchExample {
         .onCopy((value: string) => {
           this.copyValue = value;
         })
+        // 从API版本26.0.0开始支持onWillCopy
+        .onWillCopy((value: string) => {
+          this.copyValue = value;
+          return false;
+        })
         .onCut((value: string) => {
           this.cutValue = value;
         })
@@ -2313,6 +2368,11 @@ struct SearchExample {
         })
         .onCut((value: string) => {
           this.cutValue = value;
+        })
+         // 从API版本26.0.0开始支持onWillCut
+        .onWillCut((value: string) => {
+          this.cutValue = value;
+          return false;
         })
       Search({ value: 'Search CopyOption:LocalDevice', controller: this.controller })
         .width('95%')

@@ -1780,6 +1780,30 @@ ArkTS-Sta: onCopy(callback:((value:&nbsp;string)&nbsp;=&gt;&nbsp;void) | undefin
 | ------ | ------ | ---- | ---------------- |
 | value  | ArkTS-Dyn: string <br/> ArkTS-Sta: string \| undefined | 是   | 复制的文本内容。 |
 
+### onWillCopy
+
+ArkTS-Dyn: onWillCopy(callback: Callback\<string, boolean>)
+
+ArkTS-Sta: onWillCopy(callback:Callback\<string, boolean> \| undefined)
+
+在进行复制操作前，触发该回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> \| undefined | 是   | 复制操作前的回调。回调参数类型为string时，表示将要被复制的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被复制，true：允许文本被复制；false：不允许文本被复制。undefined时，恢复组件默认复制行为。 |
+
 ### onTextSelectionChange<sup>11+</sup>
 
 ArkTS-Dyn: onTextSelectionChange(callback: (selectionStart: number, selectionEnd: number) => void)
@@ -2508,7 +2532,9 @@ struct TextExample4 {
 
 ### 示例5（设置文本选中和复制）
 
-该示例通过selection、onCopy、draggable、caretColor、selectedBackgroundColor接口展示了文本选中、触发复制回调、设置文本选中可拖拽以及修改手柄和选中颜色的效果。
+该示例通过[selection](#selection11)（从API version 11开始）、[onCopy](#oncopy11)（从API version 11开始）、[draggable](#draggable9)（从API version 9开始）、[caretColor](#caretcolor14)（从API version 14开始）、[selectedBackgroundColor](#selectedbackgroundcolor14)（从API version 14开始）、[onWillCopy](#onwillcopy)接口展示了文本选中、触发复制回调、设置文本选中可拖拽、修改手柄和选中颜色的效果以及如何拦截系统复制。
+
+从API版本26.0.0开始，新增[onWillCopy](#onwillcopy)接口。
 
 ```ts
 // xxx.ets
@@ -2532,6 +2558,11 @@ struct TextExample5 {
         .selection(this.start, this.end)
         .onCopy((value: string) => {
           this.onCopy = value;
+        })
+        // 从API版本26.0.0开始支持onWillCopy
+        .onWillCopy((value: string) => {
+          this.onCopy = value;
+          return false;
         })
         .draggable(true)
         .caretColor(Color.Red)
