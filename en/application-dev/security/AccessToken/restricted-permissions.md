@@ -997,6 +997,8 @@ Allows an application to obtain and manage the media resources playing on a devi
 
 Allows an application to set the preview thumbnail when a mouse hovers over the icon in the Dock.
 
+When the mouse hovers over an application icon in the Dock, a real-time preview thumbnail of the application will be displayed.
+
 <!--RP72--><!--RP72End-->
 
 **Permission level**: system_basic

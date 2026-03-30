@@ -996,7 +996,9 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.MANAGE_RECENT_SNAPSHOT
 
-允许应用设置在Dock栏悬停显示的预览缩略图。
+允许应用设置在多任务和Dock栏悬停显示的预览缩略图。
+
+多任务场景和鼠标悬停在Dock栏应用图标，将展示应用实时预览缩略图，获取该权限后，应用可自定义此缩略图。
 
 <!--RP72--><!--RP72End-->
 
@@ -1010,7 +1012,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.SET_WINDOW_ALPHA
 
-允许应用设置窗口透明度。
+允许应用设置窗口标题栏和内容区域的背景色和透明度。
 
 <!--RP73--><!--RP73End-->
 
