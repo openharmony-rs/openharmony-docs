@@ -1957,7 +1957,7 @@ try {
 
 removeDockApp(admin: Want, bundleName: string, abilityName: string): void
 
-从快捷栏中移除应用图标。
+从快捷栏中移除应用。
 
 > **说明：**
 >
