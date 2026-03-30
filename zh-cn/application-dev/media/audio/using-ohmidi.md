@@ -42,9 +42,9 @@ OH_MIDI的主要接口包括:
 
 本节提供最简化的MIDI开发示例，帮助您在5分钟内跑通第一个MIDI程序。
 
-### 在CMake脚本中链接动态库
+- 在CMake脚本中链接动态库
 
-<!--@[ohmidi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/CMakeLists.txt)-->
+  <!--@[ohmidi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/CMakeLists.txt)-->
 
 ```cmake
 target_link_libraries(entry PUBLIC
@@ -54,9 +54,9 @@ target_link_libraries(entry PUBLIC
 )
 ```
 
-### 添加头文件
+- 添加头文件
 
-<!--@[arkts_open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[arkts_open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
 openOutputPort(portIndex: number): void {
@@ -106,7 +106,9 @@ MIDI功能的权限需求根据使用场景不同而有所区别：
 
 以下示例展示创建MIDI客户端的核心步骤：
 
-<!--@[arkts_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+- 创建MIDI客户端示例
+
+  <!--@[arkts_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
 closeOutputPort(portIndex: number): void {
@@ -181,7 +183,9 @@ interface BleOpenedEventData {
 
 使用OH_MIDIClient_Create创建客户端实例。
 
-<!--@[send_note_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+- 创建客户端示例
+
+  <!--@[send_note_on](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ``` C++
 // Send Note On message (helper function for testing)
@@ -196,7 +200,9 @@ static napi_value SendNoteOn(napi_env env, napi_callback_info info)
 
 在ArkTS中，需要导入Native模块并调用createMIDIClient方法：
 
-<!--@[send_note_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+- ArkTS调用示例
+
+  <!--@[send_note_off](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ``` C++
 // Send Note Off message (helper function for testing)
@@ -211,7 +217,9 @@ static napi_value SendNoteOff(napi_env env, napi_callback_info info)
 
 当不再需要MIDI功能时，应销毁客户端以释放资源。销毁前需要先关闭所有已打开的设备。
 
-<!--@[ump_helper_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+- 销毁客户端示例
+
+  <!--@[ump_helper_functions](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ``` C++
 // Build MIDI 1.0 Note On UMP (32-bit, 1 word)
@@ -239,7 +247,9 @@ static void BuildMIDI1NoteOff(uint32_t channel, uint32_t note, uint32_t velocity
 
 **ArkTS调用示例：**
 
-<!--@[cleanup_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+- ArkTS代码示例
+
+  <!--@[cleanup_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ``` C++
 // Close input port
@@ -291,8 +301,9 @@ static napi_value CloseInputPort(napi_env env, napi_callback_info info)
 
 注意：如果应用未获得蓝牙权限（ohos.permission.ACCESS_BLUETOOTH），蓝牙MIDI设备将不会包含在枚举结果中。
 
+- 获取设备列表示例
 
-<!--@[get_device_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+  <!--@[get_device_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ``` C++
 static napi_value GetDeviceInfos(napi_env env, napi_callback_info info)
@@ -312,7 +323,9 @@ static napi_value GetDeviceInfos(napi_env env, napi_callback_info info)
 
 **ArkTS调用示例：**
 
-<!--@[arkts_enum_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+- ArkTS代码示例
+
+  <!--@[arkts_enum_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
 refreshDevices(): void {
@@ -340,8 +353,9 @@ refreshDevices(): void {
 
 使用OH_MIDIClient_OpenDevice同步打开USB MIDI设备。
 
+- 打开USB MIDI设备示例
 
-<!--@[open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+  <!--@[open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ``` C++
 static napi_value OpenDevice(napi_env env, napi_callback_info info)
@@ -366,7 +380,9 @@ static napi_value OpenDevice(napi_env env, napi_callback_info info)
 
 **ArkTS调用示例：**
 
-<!--@[arkts_open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+- ArkTS代码示例
+
+  <!--@[arkts_open_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
 openDevice(): void {
@@ -424,7 +440,9 @@ static napi_value CloseDevice(napi_env env, napi_callback_info info)
 
 **ArkTS调用示例：**
 
-<!--@[arkts_close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+- ArkTS代码示例
+
+  <!--@[arkts_close_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
 closeDevice(): void {
@@ -476,8 +494,9 @@ BLE设备地址可通过以下方式获取：
 
 MIDI BLE设备可通过服务UUID `03B80E5A-EDE8-4B33-A751-6CE34EC4C700` 进行过滤识别。
 
+- 打开BLE MIDI设备示例
 
-<!--@[open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+  <!--@[open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ```cpp
 // Open BLE device asynchronously
@@ -518,7 +537,9 @@ static void OnBLEDeviceOpened(void *userData, bool opened, OH_MIDIDevice *device
 
 **ArkTS调用示例：**
 
-<!--@[arkts_open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+- ArkTS代码示例
+
+  <!--@[arkts_open_ble_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
 openBLEDevice(deviceAddress: string): void {
@@ -578,7 +599,9 @@ openBLEDevice(deviceAddress: string): void {
 
 每个MIDI设备可能提供多个端口，每个端口都有明确的方向（输入或输出）。需要先枚举所有端口，根据应用需求找到对应的输入端口和输出端口，然后分别打开。
 
-<!--@[get_port_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+- 获取端口信息示例
+
+  <!--@[get_port_infos](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ```cpp
 static napi_value GetPortInfos(napi_env env, napi_callback_info info)
@@ -608,7 +631,9 @@ static napi_value GetPortInfos(napi_env env, napi_callback_info info)
 
 **ArkTS调用示例：**
 
-<!--@[arkts_load_ports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+- ArkTS代码示例
+
+  <!--@[arkts_load_ports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
 loadPorts(deviceId: number): void {
@@ -649,8 +674,9 @@ loadPorts(deviceId: number): void {
 
 回调函数在独立线程中执行，需要使用互斥锁或其他同步机制来保证线程安全。回调中的events数据仅在此回调期间有效，如需保留必须复制。
 
+- MIDI接收回调示例
 
-<!--@[midi_received_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+  <!--@[midi_received_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ```cpp
 static void OnMIDIReceived(void *userData, const OH_MIDIEvent *events, size_t eventCount)
@@ -693,7 +719,9 @@ static napi_value OpenInputPort(napi_env env, napi_callback_info info)
 
 **ArkTS调用示例：**
 
-<!--@[arkts_open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+- ArkTS代码示例
+
+  <!--@[arkts_open_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
 openInputPort(portIndex: number): void {
@@ -748,7 +776,9 @@ openInputPort(portIndex: number): void {
 
 使用 `OH_MIDIDevice_CloseInputPort` 关闭已打开的输入端口。关闭端口后，该端口将不再接收MIDI消息，注册的回调函数也将不再被调用。
 
-<!--@[close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+- 关闭输入端口示例
+
+  <!--@[close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ```cpp
 // Close input port
@@ -792,9 +822,9 @@ static napi_value CloseInputPort(napi_env env, napi_callback_info info)
 }
 ```
 
-**ArkTS调用示例：**
+- ArkTS代码示例
 
-<!--@[arkts_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[arkts_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
 closeInputPort(portIndex: number): void {
@@ -862,7 +892,9 @@ static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
 
 **ArkTS调用示例：**
 
-<!--@[arkts_open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+- ArkTS代码示例
+
+  <!--@[arkts_open_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ```typescript
  openOutputPort(portIndex: number): void {
@@ -891,7 +923,9 @@ static napi_value OpenOutputPort(napi_env env, napi_callback_info info)
 
 使用 `OH_MIDIDevice_CloseOutputPort` 关闭已打开的输出端口。关闭端口后，将无法再通过该端口发送MIDI消息。
 
-<!--@[close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+- 关闭输出端口示例
+
+  <!--@[close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ```cpp
 // Close output port
@@ -929,9 +963,9 @@ static napi_value CloseOutputPort(napi_env env, napi_callback_info info)
 }
 ```
 
-**ArkTS调用示例：**
+- ArkTS代码示例
 
-<!--@[arkts_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[arkts_close_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ```typescript
   closeOutputPort(portIndex: number): void {
@@ -1040,9 +1074,9 @@ static napi_value SendNoteOn(napi_env env, napi_callback_info info)
 }
 ```
 
-**ArkTS调用示例：**
+- ArkTS代码示例
 
-<!--@[arkts_on_key_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[arkts_on_key_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
 onKeyPress(note: number): void {
@@ -1083,9 +1117,9 @@ static napi_value SendNoteOff(napi_env env, napi_callback_info info)
 }
 ```
 
-**ArkTS调用示例：**
+- ArkTS代码示例
 
-<!--@[arkts_on_key_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
+  <!--@[arkts_on_key_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets)-->
 
 ``` TypeScript
 onKeyRelease(note: number): void {
@@ -1238,7 +1272,9 @@ async sendSysExMessage(): Promise<void> {
 
 如果需要取消所有待发送的消息，可以清空输出端口的缓冲区。
 
-<!--@[flush_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+- 清空输出缓冲区示例
+
+  <!--@[flush_output_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ```cpp
 static napi_value FlushOutputPort(napi_env env, napi_callback_info info)
@@ -1277,7 +1313,9 @@ static napi_value FlushOutputPort(napi_env env, napi_callback_info info)
 3. 关闭设备
 4. 销毁客户端
 
-<!--@[cleanup_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
+- 资源清理示例
+
+  <!--@[cleanup_close_input_port](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp)-->
 
 ```cpp
 // Close input port

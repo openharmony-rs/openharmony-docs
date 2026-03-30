@@ -63,7 +63,7 @@ MIDI设备句柄。表示一个已打开的MIDI设备，用于端口操作和数
 | [OH_MIDIClient_GetDeviceCount](#oh_midiclient_getdevicecount) | 获取连接的MIDI设备数量。 |
 | [OH_MIDIClient_GetDeviceInfos](#oh_midiclient_getdeviceinfos) | 获取连接的MIDI设备信息。 |
 | [OH_MIDIClient_OpenDevice](#oh_midiclient_opendevice) | 打开MIDI设备。 |
-| [OH_MIDIClient_OpenBLEDevice](#oh_midiclient_openbledevice) | 异步打开蓝牙MIDI设备。 |
+| [OH_MIDIClient_OpenBLEDevice](#oh_midiclient_openbledevice) | 异步打开蓝牙低功耗（BLE）MIDI设备。 |
 | [OH_MIDIClient_CloseDevice](#oh_midiclient_closedevice) | 关闭MIDI设备。 |
 | [OH_MIDIClient_GetPortCount](#oh_midiclient_getportcount) | 获取指定MIDI设备的端口数量。 |
 | [OH_MIDIClient_GetPortInfos](#oh_midiclient_getportinfos) | 获取指定MIDI设备的端口信息。 |
@@ -181,8 +181,8 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceCount (const OH_MIDIClient *client, siz
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIClient](#oh_midiclient) *client | MIDI客户端句柄。 |
-| size_t *count | 指向用于接收设备数量的指针。 |
+| const [OH_MIDIClient](#oh_midiclient) *client | MIDI客户端句柄。 |
+| size_t *count | 输出参数，用于接收设备数量。 |
 
 **返回值**
 
@@ -222,10 +222,10 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceInfos (const OH_MIDIClient *client, OH_
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MIDIClient *client | MIDI客户端句柄。 |
+| const OH_MIDIClient *client | MIDI客户端句柄。 |
 | [OH_MIDIDeviceInformation](capi-native-midi-base-h.md#oh_midideviceinformation) *infos | 用户分配的缓冲区，用于存储设备信息。 |
-| size_t capacity | 'infos'缓冲区可容纳的最大元素数量。 |
-| size_t *actualNumDevices | 指向用于接收实际写入'infos'缓冲区的设备数量的指针。 |
+| size_t capacity | infos缓冲区可容纳的最大元素数量。 |
+| size_t *actualNumDevices | 输出参数，用于接收实际写入的设备数量。 |
 
 **返回值**
 
@@ -281,7 +281,7 @@ OH_MIDIStatusCode OH_MIDIClient_OpenBLEDevice (OH_MIDIClient *client, const char
 
 **描述**
 
-异步打开蓝牙LE MIDI设备。
+异步打开蓝牙低功耗（BLE）MIDI设备。
 
 此函数立即返回，而连接结果（成功或失败）将在BLE连接过程完成后通过提供的回调异步传递。
 
@@ -367,9 +367,9 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortCount (const OH_MIDIClient *client, int64
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_MIDIClient](#oh_midiclient) *client | MIDI客户端句柄。 |
+| const [OH_MIDIClient](#oh_midiclient) *client | MIDI客户端句柄。 |
 | int64_t deviceId | 目标设备ID。 |
-| size_t *count | 指向用于接收端口数量的指针。 |
+| size_t *count | 输出参数，用于接收端口数量。 |
 
 **返回值**
 
@@ -400,19 +400,19 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortInfos (const OH_MIDIClient *client, int64
 > **说明**
 >
 > 竞态条件处理：
-- 如果在调用[OH_MIDIClient_GetPortCount](#oh_midiclient_getportcount)和此函数之间端口数量增加，此函数最多填充'capacity'个端口，'actualNumPorts'设置为'capacity'。
+- 如果在调用[OH_MIDIClient_GetPortCount](#oh_midiclient_getportcount)和此函数之间端口数量增加，此函数最多填充capacity个端口，actualNumPorts设置为capacity。
 - 如果端口数量减少，则填充实际可用的端口信息。
-- 始终检查'actualNumPorts'以获取实际可用的端口数量。
+- 始终检查actualNumPorts以获取实际可用的端口数量。
 
 **参数**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_MIDIClient *client | MIDI客户端句柄。 |
+| const OH_MIDIClient *client | MIDI客户端句柄。 |
 | int64_t deviceId | 目标设备ID。 |
 | [OH_MIDIPortInformation](capi-native-midi-base-h.md#oh_midiportinformation) *infos | 用户分配的缓冲区，用于存储端口信息。 |
-| size_t capacity | 'infos'缓冲区可容纳的最大元素数量。 |
-| size_t *actualNumPorts | 指向用于接收实际写入缓冲区的端口数量的指针。 |
+| size_t capacity | infos缓冲区可容纳的最大元素数量。 |
+| size_t *actualNumPorts | 输出参数，用于接收实际写入的端口数量。 |
 
 **返回值**
 
@@ -588,7 +588,7 @@ OH_MIDIStatusCode OH_MIDIDevice_Send (OH_MIDIDevice *device, uint32_t portIndex,
 | uint32_t portIndex | 目标端口索引。 |
 | [OH_MIDIEvent](capi-native-midi-base-h.md#oh_midievent) *events | 指向要发送的事件数组的指针。 |
 | uint32_t eventCount | 数组中的事件数量。 |
-| uint32_t *eventsWritten | 返回成功消耗的事件数量。 |
+| uint32_t *eventsWritten | 输出参数，返回成功发送的事件数量。 |
 
 **返回值**
 
