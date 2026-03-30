@@ -1083,6 +1083,32 @@ static napi_value SendNoteOn(napi_env env, napi_callback_info info)
 - ArkTS代码示例
 
   <!-- @[arkts_on_key_press](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  onKeyPress(note: number): void {
+    if (this.openOutputPorts.size === 0) {
+      hilog.warn(DOMAIN, TAG, '[onKeyPress] no output port open');
+      this.log('Please open an output port first');
+      return;
+    }
+  
+    const portIndex = Array.from(this.openOutputPorts)[0];
+    this.activeKeys.add(note);
+  
+    try {
+      const status = midi.sendNoteOn(this.selectedDeviceId, portIndex, this.channelValue, note, 100);
+      if (status !== MidiStatusCode.OK) {
+        this.log(`Failed to send Note On: ${status}`);
+        hilog.error(DOMAIN, TAG, '[onKeyPress] sendNoteOn failed with status=%{public}d', status);
+      } else {
+        hilog.debug(DOMAIN, TAG, '[onKeyPress] NoteOn sent successfully');
+      }
+    } catch (e) {
+      hilog.error(DOMAIN, TAG, '[onKeyPress] exception: %{public}s', JSON.stringify(e));
+      this.log(`Error sending Note On: ${JSON.stringify(e)}`);
+    }
+  }
+  ```
 
 #### 7.3 发送Note Off消息
 
