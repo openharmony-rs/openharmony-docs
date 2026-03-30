@@ -1,4 +1,4 @@
-#  NotificationSubscriberExtensionAbility (开发概述)
+#  通知订阅扩展能力概述
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @cheerful_ricky-->
