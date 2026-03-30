@@ -1012,7 +1012,7 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 ## ohos.permission.SET_WINDOW_ALPHA
 
-允许应用设置窗口透明度。
+允许应用设置窗口背景透明度。
 
 <!--RP73--><!--RP73End-->
 
