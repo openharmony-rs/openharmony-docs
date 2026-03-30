@@ -71,7 +71,7 @@ Third-party applications can use the metadata binding function to map the App Li
 
    ```ts
    // The application first enables the App Linking service, obtains the App Linking service, and then provides the service API for the link memory service,The applink parameter in the submitMetadata interface is not empty and contains less than 128 characters.
- 	let applink: string = "https://example.com/product/12345";
+   let applink: string = "https://example.com/product/12345";
    try {
       metadataBinding.submitMetadata(applink);
    } catch (err) {
