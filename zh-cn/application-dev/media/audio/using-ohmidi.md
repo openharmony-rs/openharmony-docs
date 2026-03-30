@@ -326,6 +326,24 @@ interface BleOpenedEventData {
 - ArkTS代码示例
 
   <!-- @[arkts_enum_devices](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  refreshDevices(): void {
+    try {
+      const count = midi.getDeviceCount();
+      if (count > 0) {
+        this.deviceList = midi.getDeviceInfos();
+        // ...
+      } else {
+        this.deviceList = [];
+        hilog.info(DOMAIN, TAG, '[refreshDevices] no devices found');
+      }
+      // ...
+    } catch (e) {
+      // ...
+    }
+  }
+  ```
 
 ### 4. 打开MIDI设备
 
