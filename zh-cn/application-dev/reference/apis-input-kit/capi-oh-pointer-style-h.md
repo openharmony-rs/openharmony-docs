@@ -61,7 +61,7 @@ enum Input_PointerStyle
 | CROSS = 13   | 准确选择   |![Cross.png](./figures/Cross.png)|
 | CURSOR_COPY = 14   | 拷贝     |![Copy.png](./figures/Copy.png)|
 | CURSOR_FORBID = 15   | 不可用    |![Forbid.png](./figures/Forbid.png)|
-| COLOR_SUCKER = 16   | 滴管     |![Colorsucker.png](./figures/Colorsucker.png)|
+| COLOR_SUCKER = 16   | 取色器     |![Colorsucker.png](./figures/Colorsucker.png)|
 | HAND_GRABBING = 17   | 并拢的手   |![Hand_Grabbing.png](./figures/Hand_Grabbing.png)|
 | HAND_OPEN = 18   | 张开的手   |![Hand_Open.png](./figures/Hand_Open.png)|
 | HAND_POINTING = 19   | 手形指针   |![Hand_Pointing.png](./figures/Hand_Pointing.png)|
