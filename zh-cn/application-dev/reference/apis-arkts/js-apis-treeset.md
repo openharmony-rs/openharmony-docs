@@ -77,12 +77,12 @@ comparator的参数说明：
 **示例：**
 
 ```ts
-//默认构造
+// 默认构造
 let treeSet = new TreeSet<string | number | boolean | Object>();
 ```
 
 ```ts
-//使用comparator firstValue < secondValue，表示期望结果为升序排序。反之firstValue > secondValue，表示为降序排序。
+// 使用comparator firstValue < secondValue，表示期望结果为升序排序。反之firstValue > secondValue，表示为降序排序。
 let treeSet: TreeSet<string> = new TreeSet<string>((firstValue: string, secondValue: string): boolean => {
   return firstValue < secondValue;
 });
@@ -100,7 +100,7 @@ for (let value of treeSet) {
 ```
 
 ```ts
-//当插入自定义类型时，则必须要提供比较函数。
+// 当插入自定义类型时，则必须要提供比较函数。
 class TestEntry{
   public id: number = 0;
 }
