@@ -1,4 +1,4 @@
-# @ohos.multimodalAwareness.onScreen (屏上感知)(系统接口)
+ # @ohos.multimodalAwareness.onScreen (屏上感知)(系统接口)
 <!--Kit: Multimodal Awareness Kit-->
 <!--Subsystem: MultimodalAwareness-->
 <!--Owner: @dilligencer-->
