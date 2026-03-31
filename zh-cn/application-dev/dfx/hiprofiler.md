@@ -952,4 +952,4 @@ hiprofiler_cmd命令中config参数的调整方法如下：
 
  **可能原因&amp;解决方法**
 
- 首先检查对应的共享库编译时是否开启了-fomit-frame-pointer编译选项，若开启此编译选项则无法进行基于fp的栈回溯。
+检查对应的共享库编译时是否开启了-fomit-frame-pointer编译选项，需保证该选项保持关闭状态。
