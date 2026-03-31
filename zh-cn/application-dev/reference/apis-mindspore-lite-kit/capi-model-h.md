@@ -349,7 +349,7 @@ OH_AI_API OH_AI_TensorHandle OH_AI_ModelGetOutputByTensorName(const OH_AI_ModelH
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AI_API [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) | tensor_name所对应的输入张量的张量指针，如果输出中没有该张量则返回空。 |
+| OH_AI_API [OH_AI_TensorHandle](capi-mindspore-oh-ai-tensorHandle.md) | tensor_name所对应的输出张量的张量指针，如果输出中没有该张量则返回空。 |
 
 ### OH_AI_TrainCfgCreate()
 

@@ -811,7 +811,7 @@ type DrawingColorFilter = ColorFilter
 | ------ | ---------- |
 | [ColorFilter](../../apis-arkgraphics2d/arkts-apis-graphics-drawing-ColorFilter.md)  | 返回一个颜色滤波器。 |
 
-## DrawingLattice<sup>12+<sup>
+## DrawingLattice<sup>12+</sup>
 
 type DrawingLattice = Lattice
 

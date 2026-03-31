@@ -43,7 +43,7 @@ ProgressButton({progress: number, content: ResourceStr, progressButtonWidth?: Le
 | progressButtonWidth               | [Length](ts-types.md#length)                                  | 否 | -      | 下载按钮的宽度，单位vp。<br/>取值范围：大于等于44vp。<br/>默认值：44vp。当取值为非Resource类型且小于默认值或取值为非法值时，识别值为默认值。当取值为Resource类型且小于默认值时识别为默认值，为非法值时下载按钮的宽度显示为容器宽度的100%。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
 | clickCallback                     | () => void                                                 | 是 | -      | 下载按钮的点击回调。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                          |
 | enable                            | boolean                                                       | 是 | \@Prop | 下载按钮是否可以点击。<br> enable为true时，表示可以点击。<br> enable为false时，表示不可点击。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
-| colorOptions<sup>18+<sup>         | [ProgressButtonColorOptions](#progressbuttoncoloroptions18)   | 否 | \@Prop | 下载按钮颜色。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                             |
+| colorOptions<sup>18+<sup>         | [ProgressButtonColorOptions](#progressbuttoncoloroptions18)   | 否 | \@Prop | 下载按钮颜色。用于自定义按钮各部分的颜色（进度条、描边、文本、背景）。需要自定义颜色时传入此参数，不传入时使用系统默认配色方案。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                             |
 | progressButtonRadius<sup>18+<sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | \@Prop | 下载按钮的圆角（不支持百分比设置）。<br/>取值范围：[0, height/2]<br/>默认值：height/2<br/>设置值小于0时按照0处理，设置其他非法数值时，按照默认值处理。当直接入参为undefined时，按照默认值处理，入参为LengthMetrics.vp时，建议传入具体数值，传入null/undefined会导致显示异常。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。    |
 
 ## ProgressButtonColorOptions<sup>18+<sup>
@@ -142,7 +142,7 @@ struct Index {
       Scroll() {
         Column({ space: 20 }) {
           ProgressButton({
-            //设置下载按钮颜色
+            // 设置下载按钮颜色
             colorOptions: {
               progressColor: Color.Orange,
               borderColor: Color.Black,
@@ -202,7 +202,7 @@ struct Index {
       Scroll() {
         Column({ space: 20 }) {
           ProgressButton({
-            progressButtonRadius: LengthMetrics.vp(8), //自定义圆角值为8vp
+            progressButtonRadius: LengthMetrics.vp(8), // 自定义圆角值为8vp
             progress: this.progressIndex,
             progressButtonWidth: this.buttonWidth,
             content: this.textState,

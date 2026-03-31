@@ -6,6 +6,10 @@
 <!--Tester: @dong-dongzhen-->
 <!--Adviser: @w_Machine_cc-->
 
+```c
+typedef struct Hid_MscEventArray {...} Hid_MscEventArray
+```
+
 ## Overview
 
 Defines an array of miscellaneous events.
@@ -23,4 +27,4 @@ Defines an array of miscellaneous events.
 | Name| Description|
 | -- | -- |
 | Hid_MscEvent* hidMscEvent | Miscellaneous event.|
-| uint16_t length | Length of the array.|
+| uint16_t length | Valid length of an array.|

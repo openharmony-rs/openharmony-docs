@@ -20,7 +20,7 @@
 
 | 名称   | 类型   | 只读 | 可选 | 说明   |
 | ------ | ------ | ----| -- |  ------ |
-| bundle | string | 否  | 否 | 应用程序的名称。 |
+| bundle | string | 否  | 否 | 应用程序的包名。 |
 | uid    | number | 否  | 是 | 应用程序的UID。从[ApplicationInfo](../apis-ability-kit/js-apis-bundleManager-applicationInfo.md#applicationinfo-1)获取，默认为0。 |
 
 ## GrantedBundleInfo<sup>22+</sup>

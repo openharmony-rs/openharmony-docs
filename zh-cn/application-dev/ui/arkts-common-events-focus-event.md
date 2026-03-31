@@ -75,7 +75,7 @@ export struct FocusActiveExample {
 
 示例操作步骤：
 1. 点击Set Active按钮，调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口进入焦点激活态。
-2. Tab走焦至Set Not Active按钮，Enter键触发按键事件，调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口退出焦点激活态。
+2. Tab键走焦至Set Not Active按钮，Enter键触发按键事件，调用[activate](../reference/apis-arkui/arkts-apis-uicontext-focuscontroller.md#activate14)接口退出焦点激活态。
 
 **层级页面**
 
@@ -382,7 +382,7 @@ export struct ProjectAreaFocusFlexExample {
 }
 ```
 
-Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab走焦至下方4、5按钮组件。
+Flex多行组件布局，组件大小不一且有纵向的交叠关系，无法Tab键走焦至下方4、5按钮组件。
 
 ![Project_Area_Focus_2](figures/Project_Area_Focus_2.gif)
 
@@ -1284,9 +1284,9 @@ Tab键走焦：tabIndex配置在容器上。
 
 上述示例包含以下3步：
 
-- 使用Tab走焦，焦点在Button1和Button2之间循环走焦（tabIndex配置在Button2和Button3的父组件上）。
+- 使用Tab键走焦，焦点在Button1和Button2之间循环走焦（tabIndex配置在Button2和Button3的父组件上）。
 - 在走焦至Button2时，使用方向下键，将焦点转移至Button3上。
-- 使用Tab走焦，焦点在Button1和Button3之间循环走焦。
+- 使用Tab键走焦，焦点在Button1和Button3之间循环走焦。
 
 ## 焦点组与获焦优先级
 
