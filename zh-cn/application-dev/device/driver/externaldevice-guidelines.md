@@ -117,7 +117,7 @@ const DOMAIN = 0x0000;
 ```
 
 
-5. 定义获取对应驱动远程对象的接口，通过bindDriverWithDeviceId获取远程对象。
+5. 定义获取对应驱动远程对象的接口，通过bindDeviceDriver获取远程对象。
 
     <!-- @[driver_ui_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
 
