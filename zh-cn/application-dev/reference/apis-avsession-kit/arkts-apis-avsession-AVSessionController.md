@@ -51,7 +51,7 @@ struct Index {
       this.currentAVSession = data;
       this.sessionId = this.currentAVSession.sessionId;
       this.AVSessionController = await this.currentAVSession.getController();
-      console.info('CreateAVSession :  SUCCESS :sessionId = ${this.sessionId}');
+      console.info(`Succeeded in creating AV session, sessionId: ${this.sessionId}`);
     }).catch((err: BusinessError) => {
       console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
     });
@@ -103,7 +103,7 @@ avsessionController.getAVPlaybackState((err: BusinessError, state: avSession.AVP
   if (err) {
     console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('getAVPlaybackState : SUCCESS');
+    console.info('Succeeded in getting AV playback state.');
   }
 });
 ```
@@ -140,7 +140,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avsessionController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
-  console.info('getAVPlaybackState : SUCCESS');
+  console.info('Succeeded in getting AV playback state.');
 }).catch((err: BusinessError) => {
   console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -178,7 +178,7 @@ getAVMetadata(): Promise\<AVMetadata>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avsessionController.getAVMetadata().then((metadata: avSession.AVMetadata) => {
-  console.info(`GetAVMetadata : SUCCESS : assetId : ${metadata.assetId}`);
+  console.info(`Succeeded in getting AV metadata, assetId: ${metadata.assetId}`);
 }).catch((err: BusinessError) => {
   console.error(`GetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -217,7 +217,7 @@ avsessionController.getAVMetadata((err: BusinessError, metadata: avSession.AVMet
   if (err) {
     console.error(`GetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`GetAVMetadata : SUCCESS : assetId : ${metadata.assetId}`);
+    console.info(`Succeeded in getting AV metadata, assetId: ${metadata.assetId}`);
   }
 });
 ```
@@ -254,7 +254,7 @@ getAVQueueTitle(): Promise\<string>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avsessionController.getAVQueueTitle().then((title: string) => {
-  console.info(`GetAVQueueTitle : SUCCESS : title : ${title}`);
+  console.info(`Succeeded in getting AV queue title: ${title}`);
 }).catch((err: BusinessError) => {
   console.error(`GetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -293,7 +293,7 @@ avsessionController.getAVQueueTitle((err: BusinessError, title: string) => {
   if (err) {
     console.error(`GetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`GetAVQueueTitle : SUCCESS : title : ${title}`);
+    console.info(`Succeeded in getting AV queue title: ${title}`);
   }
 });
 ```
@@ -330,7 +330,7 @@ getAVQueueItems(): Promise\<Array\<AVQueueItem>>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avsessionController.getAVQueueItems().then((items: avSession.AVQueueItem[]) => {
-  console.info(`GetAVQueueItems : SUCCESS : length : ${items.length}`);
+  console.info(`Succeeded in getting AV queue items, length: ${items.length}`);
 }).catch((err: BusinessError) => {
   console.error(`GetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -369,7 +369,7 @@ avsessionController.getAVQueueItems((err: BusinessError, items: avSession.AVQueu
   if (err) {
     console.error(`GetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`GetAVQueueItems : SUCCESS : length : ${items.length}`);
+    console.info(`Succeeded in getting AV queue items, length: ${items.length}`);
   }
 });
 ```
@@ -414,7 +414,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let queueItemId = 0;
 avsessionController.skipToQueueItem(queueItemId).then(() => {
-  console.info('SkipToQueueItem successfully');
+  console.info('Succeeded in skipping to queue item.');
 }).catch((err: BusinessError) => {
   console.error(`SkipToQueueItem BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -456,7 +456,7 @@ avsessionController.skipToQueueItem(queueItemId, (err: BusinessError) => {
   if (err) {
     console.error(`SkipToQueueItem BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('SkipToQueueItem successfully');
+    console.info('Succeeded in skipping to queue item.');
   }
 });
 ```
@@ -492,7 +492,7 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avsessionController.getOutputDevice().then((deviceInfo: avSession.OutputDeviceInfo) => {
-  console.info('GetOutputDevice : SUCCESS');
+  console.info('Succeeded in getting output device.');
 }).catch((err: BusinessError) => {
   console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -530,7 +530,7 @@ avsessionController.getOutputDevice((err: BusinessError, deviceInfo: avSession.O
   if (err) {
     console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('GetOutputDevice : SUCCESS');
+    console.info('Succeeded in getting output device.');
   }
 });
 ```
@@ -581,7 +581,7 @@ let event:KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, ac
 
 
 avsessionController.sendAVKeyEvent(event).then(() => {
-  console.info('SendAVKeyEvent Successfully');
+  console.info('Succeeded in sending AV key event.');
 }).catch((err: BusinessError) => {
   console.error(`SendAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -627,7 +627,7 @@ avsessionController.sendAVKeyEvent(event, (err: BusinessError) => {
   if (err) {
     console.error(`SendAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('SendAVKeyEvent Successfully');
+    console.info('Succeeded in sending AV key event.');
   }
 });
 ```
@@ -664,7 +664,7 @@ getLaunchAbility(): Promise\<WantAgent>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avsessionController.getLaunchAbility().then((agent: object) => {
-  console.info(`GetLaunchAbility : SUCCESS : wantAgent : ${agent}`);
+  console.info(`Succeeded in getting launch ability: ${agent}`);
 }).catch((err: BusinessError) => {
   console.error(`GetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -703,7 +703,7 @@ avsessionController.getLaunchAbility((err: BusinessError, agent: object) => {
   if (err) {
     console.error(`GetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`GetLaunchAbility : SUCCESS : wantAgent : ${agent}`);
+    console.info(`Succeeded in getting launch ability: ${agent}`);
   }
 });
 ```
@@ -771,7 +771,7 @@ isActive(): Promise\<boolean>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avsessionController.isActive().then((isActive: boolean) => {
-  console.info(`IsActive : SUCCESS : isactive : ${isActive}`);
+  console.info(`Succeeded in checking active state: ${isActive}`);
 }).catch((err: BusinessError) => {
   console.error(`IsActive BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -810,7 +810,7 @@ avsessionController.isActive((err: BusinessError, isActive: boolean) => {
   if (err) {
     console.error(`IsActive BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`IsActive : SUCCESS : isactive : ${isActive}`);
+    console.info(`Succeeded in checking active state: ${isActive}`);
   }
 });
 ```
@@ -846,7 +846,7 @@ destroy(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avsessionController.destroy().then(() => {
-  console.info('Destroy : SUCCESS ');
+  console.info('Succeeded in destroying.');
 }).catch((err: BusinessError) => {
   console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -884,7 +884,7 @@ avsessionController.destroy((err: BusinessError) => {
   if (err) {
     console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('Destroy : SUCCESS ');
+    console.info('Succeeded in destroying.');
   }
 });
 ```
@@ -921,7 +921,7 @@ getValidCommands(): Promise\<Array\<AVControlCommandType>>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avsessionController.getValidCommands().then((validCommands: avSession.AVControlCommandType[]) => {
-  console.info(`GetValidCommands : SUCCESS : size : ${validCommands.length}`);
+  console.info(`Succeeded in getting valid commands, size: ${validCommands.length}`);
 }).catch((err: BusinessError) => {
   console.error(`GetValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -960,7 +960,7 @@ avsessionController.getValidCommands((err: BusinessError, validCommands: avSessi
   if (err) {
     console.error(`GetValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`GetValidCommands : SUCCESS : size : ${validCommands.length}`);
+    console.info(`Succeeded in getting valid commands, size: ${validCommands.length}`);
   }
 });
 ```
@@ -1012,7 +1012,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avCommand: avSession.AVControlCommand = {command:'play'};
 avsessionController.sendControlCommand(avCommand).then(() => {
-  console.info('SendControlCommand successfully');
+  console.info('Succeeded in sending control command.');
 }).catch((err: BusinessError) => {
   console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -1061,7 +1061,7 @@ avsessionController.sendControlCommand(avCommand, (err: BusinessError) => {
   if (err) {
     console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('SendControlCommand successfully');
+    console.info('Succeeded in sending control command.');
   }
 });
 ```
@@ -1120,14 +1120,14 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   currentAVSession = data;
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
+  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
 }).catch((err: BusinessError) => {
   console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
 });
 let commandName = "my_command";
 if (controller !== undefined) {
   (controller as avSession.AVSessionController).sendCommonCommand(commandName, {command : "This is my command"}).then(() => {
-    console.info('SendCommonCommand successfully');
+    console.info('Succeeded in sending common command.');
   }).catch((err: BusinessError) => {
     console.error(`SendCommonCommand BusinessError: code: ${err.code}, message: ${err.message}`);
   })
@@ -1181,7 +1181,7 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   currentAVSession = data;
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
+  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
 }).catch((err: BusinessError) => {
   console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
 });
@@ -1248,7 +1248,7 @@ struct Index {
         this.currentAVSession = data;
         this.sessionId = this.currentAVSession.sessionId;
         this.controller = await this.currentAVSession.getController();
-        console.info(`CreateAVSession : SUCCESS :sessionId = ${this.sessionId}`);
+        console.info(`Succeeded in creating AV session, sessionId: ${this.sessionId}`);
       })
       .catch((err: BusinessError) => {
         console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
@@ -1323,13 +1323,13 @@ struct Index {
         this.currentAVSession = data;
         this.sessionId = this.currentAVSession.sessionId;
         this.controller = await this.currentAVSession.getController();
-        console.info(`CreateAVSession : SUCCESS :sessionId = ${this.sessionId}`);
+        console.info(`Succeeded in creating AV session, sessionId: ${this.sessionId}`);
       }).catch((err: BusinessError) => {
       console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
     });
     if (this.controller !== undefined) {
       (this.controller as avSession.AVSessionController).getExtras().then((extras) => {
-        console.info(`getExtras : SUCCESS : ${extras}`);
+        console.info(`Succeeded in getting extras: ${extras}`);
       }).catch((err: BusinessError) => {
         console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
       });
@@ -1389,7 +1389,7 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   currentAVSession = data;
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
+  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
 }).catch((err: BusinessError) => {
   console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
 });
@@ -1398,7 +1398,7 @@ if (controller !== undefined) {
     if (err) {
       console.error(`getExtras BusinessError: code: ${err.code}, message: ${err.message}`);
     } else {
-      console.info(`getExtras : SUCCESS : ${extras}`);
+      console.info(`Succeeded in getting extras: ${extras}`);
     }
   });
 }
@@ -1508,7 +1508,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           try {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
             let controller: avSession.AVSessionController = await currentAVSession.getController();
             let enabled: boolean = await controller.isDesktopLyricEnabled()
             console.info(`desktop lyric enabled:${enabled}`)
@@ -1565,12 +1565,12 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           try {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
             let controller: avSession.AVSessionController = await currentAVSession.getController();
             controller.onDesktopLyricEnabled((enabled: boolean) => {
               console.info(`desktop lyric enabled state : ${enabled}`);
             })
-            console.info('onDesktopLyricEnabled successfully');
+            console.info('Succeeded in setting onDesktopLyricEnabled.');
           } catch (error) {
             console.error(`error:code: ${error.code}, message: ${error.message}`)
           }
@@ -1624,10 +1624,10 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           try {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
             let controller: avSession.AVSessionController = await currentAVSession.getController();
             controller.offDesktopLyricEnabled();
-            console.info('offDesktopLyricEnabled successfully');
+            console.info('Succeeded in setting offDesktopLyricEnabled.');
           } catch (error) {
             console.error(`error:code: ${error.code}, message: ${error.message}`)
           }
@@ -1691,10 +1691,10 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           try {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
             let controller: avSession.AVSessionController = await currentAVSession.getController();
             await controller.setDesktopLyricVisible(true);
-            console.info('setDesktopLyricVisible successfully');
+            console.info('Succeeded in setting desktop lyric visible.');
           } catch (error) {
             console.error(`error:code: ${error.code}, message: ${error.message}`)
           }
@@ -1751,7 +1751,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           try {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
             let controller: avSession.AVSessionController = await currentAVSession.getController();
             let visible: boolean = await controller.isDesktopLyricVisible();
             console.info(`isDesktopLyricVisible: ${visible}`);
@@ -1808,7 +1808,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           try {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
             let controller: avSession.AVSessionController = await currentAVSession.getController();
             controller.onDesktopLyricVisibilityChanged((visible: boolean) => {
               console.info(`desktop lyric visible state: ${visible}`);
@@ -1866,7 +1866,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           try {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
             let controller: avSession.AVSessionController = await currentAVSession.getController();
             controller.offDesktopLyricVisibilityChanged();
           } catch (error) {
@@ -1932,13 +1932,13 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           try {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
             let controller: avSession.AVSessionController = await currentAVSession.getController();
             let state: avSession.DesktopLyricState = {
               isLocked: true,
             };
             await controller.setDesktopLyricState(state);
-            console.info('setDesktopLyricState successfully');
+            console.info('Succeeded in setting desktop lyric state.');
           } catch (error) {
             console.error(`error:code: ${error.code}, message: ${error.message}`)
           }
@@ -1996,7 +1996,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           try {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
             let controller: avSession.AVSessionController = await currentAVSession.getController();
             let state: avSession.DesktopLyricState = await controller.getDesktopLyricState();
             console.info(`getDesktopLyricState: ${state.isLocked}`);
@@ -2053,7 +2053,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           try {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
             let controller: avSession.AVSessionController = await currentAVSession.getController();
             controller.onDesktopLyricStateChanged((state: avSession.DesktopLyricState) => {
               console.info(`desktop lyric isLocked : ${state.isLocked}`);
@@ -2111,7 +2111,7 @@ struct Index {
           let context: Context = this.getUIContext().getHostContext() as Context;
           try {
             let currentAVSession: avSession.AVSession = await avSession.createAVSession(context, tag, "audio");
-            console.info(`CreateAVSession : SUCCESS :sessionId = ${currentAVSession.sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${currentAVSession.sessionId}`);
             let controller: avSession.AVSessionController = await currentAVSession.getController();
             controller.offDesktopLyricStateChanged();
           } catch (error) {
@@ -2459,7 +2459,7 @@ on(type: 'sessionDestroy', callback: () => void)
 
 ```ts
 avsessionController.on('sessionDestroy', () => {
-  console.info('on sessionDestroy : SUCCESS ');
+  console.info('Succeeded in session destroy.');
 });
 ```
 
@@ -2529,7 +2529,7 @@ on(type: 'activeStateChange', callback: (isActive: boolean) => void)
 
 ```ts
 avsessionController.on('activeStateChange', (isActive: boolean) => {
-  console.info(`on activeStateChange : SUCCESS : isActive ${isActive}`);
+  console.info(`Succeeded in active state change: ${isActive}`);
 });
 ```
 
@@ -2599,8 +2599,8 @@ on(type: 'validCommandChange', callback: (commands: Array\<AVControlCommandType>
 
 ```ts
 avsessionController.on('validCommandChange', (validCommands: avSession.AVControlCommandType[]) => {
-  console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
-  console.info(`validCommandChange : SUCCESS : validCommands : ${validCommands.values()}`);
+  console.info(`Succeeded in valid command change, size: ${validCommands.length}`);
+  console.info(`Succeeded in valid command change, validCommands: ${validCommands.values()}`);
 });
 ```
 
@@ -2749,7 +2749,7 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   currentAVSession = data;
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
+  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
 }).catch((err: BusinessError) => {
   console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
 });
@@ -2971,7 +2971,7 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   currentAVSession = data;
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
+  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
 }).catch((err: BusinessError) => {
   console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
 });
@@ -3054,7 +3054,7 @@ avSession.createAVSession(context, tag, "audio").then(async (data:avSession.AVSe
   currentAVSession = data;
   sessionId = currentAVSession.sessionId;
   controller = await currentAVSession.getController();
-  console.info(`CreateAVSession : SUCCESS :sessionId = ${sessionId}`);
+  console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
 }).catch((err: BusinessError) => {
   console.error(`CreateAVSession BusinessError:code: ${err.code}, message: ${err.message}`)
 });
@@ -3204,7 +3204,7 @@ getAVCallState(): Promise\<AVCallState>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avsessionController.getAVCallState().then((callstate: avSession.AVCallState) => {
-  console.info(`getAVCallState : SUCCESS : state : ${callstate.state}`);
+  console.info(`Succeeded in getting AV call state: ${callstate.state}`);
 }).catch((err: BusinessError) => {
   console.error(`getAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -3243,7 +3243,7 @@ avsessionController.getAVCallState((err: BusinessError, callstate: avSession.AVC
   if (err) {
     console.error(`getAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`getAVCallState : SUCCESS : state : ${callstate.state}`);
+    console.info(`Succeeded in getting AV call state: ${callstate.state}`);
   }
 });
 ```
@@ -3278,7 +3278,7 @@ getCallMetadata(): Promise\<CallMetadata>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avsessionController.getCallMetadata().then((calldata: avSession.CallMetadata) => {
-  console.info(`getCallMetadata : SUCCESS : name : ${calldata.name}`);
+  console.info(`Succeeded in getting call metadata, name: ${calldata.name}`);
 }).catch((err: BusinessError) => {
   console.error(`getCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -3317,7 +3317,7 @@ avsessionController.getCallMetadata((err: BusinessError, calldata: avSession.Cal
   if (err) {
     console.error(`getCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`getCallMetadata : SUCCESS : name : ${calldata.name}`);
+    console.info(`Succeeded in getting call metadata, name: ${calldata.name}`);
   }
 });
 ```
