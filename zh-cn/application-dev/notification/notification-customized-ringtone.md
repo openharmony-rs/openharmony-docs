@@ -98,7 +98,7 @@
    (3) 创建发布通知的sound信息。
 
     <!-- @[specified_sandbox_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
-
+    
     ``` TypeScript
     // 获取沙箱文件uri
     let sandboxFileUri: string = fileUri.getUriFromPath(sandboxFilePath)
