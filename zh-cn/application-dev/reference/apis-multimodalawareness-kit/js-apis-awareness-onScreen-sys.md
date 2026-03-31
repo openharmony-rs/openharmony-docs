@@ -138,14 +138,32 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |JumpContext|高亮跳转到指定上下文|
     |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在trigger接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码|
 
-  * groupId支持能力列表<br>
-
-    |groupId支持能力列表|对应子项能力|功能说明|
-    | ---- | ------ | ----|
-    |SmartEdge|Acticle|获取阅读场景感知信息|
-    |-|ShortVideo|获取短视频场景的感知信息|
-    |-|Todo|获取待办场景的感知信息|
-    |-|Activity|获取基础服务的感知信息|
+  * groupId支持能力列表<br><a id="groupId支持能力列表"></a>
+ 
+    <table border="1">
+        <tr>
+            <th>groupId支持能力列表</th>
+            <th>对应子项能力</th>
+            <th>功能说明</th>
+        </tr>
+        <tr>
+            <td rowspan="4">SmartEdge</td>
+            <td>Acticle</td>
+            <td>获取阅读场景感知信息</td>
+        </tr>
+        <tr>
+            <td>ShortVideo</td>
+            <td>获取短视频场景的感知信息</td>
+        </tr>
+          <tr>
+            <td>Todo</td>
+            <td>获取待办场景的感知信息</td>
+        </tr>
+            <tr>
+            <td>Activity</td>
+            <td>获取基础服务的感知信息</td>
+        </tr>
+    </table>
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
@@ -684,15 +702,8 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力表。|
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，支持的groupId能力列表见[groupId支持能力列表](#groupId支持能力列表)|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
-
-|apperceive接口支持的groupId能力列表|对应能力子项|功能说明|
-| ---- | ------ | ----|
-|SmartEdge|Acticle|获取阅读场景感知信息|
-|-|ShortVideo|获取短视频场景的感知信息|
-|- |Todo|获取待办场景的感知信息|
-|-|Activity|获取基础服务的感知信息| 
 
 **返回值：**
 
