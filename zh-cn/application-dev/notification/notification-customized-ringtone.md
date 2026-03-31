@@ -50,8 +50,8 @@
    (1) 将音频资源放入项目的resources/rawfile目录下。<br/>
    (2) 创建发布通知的sound信息。
     <!-- @[specified_resources_rawfile](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
-
-    ```TypeScript
+    
+    ``` TypeScript
     let soundFile: string = SOUND_FILE_NAME; // 需要替换为resources/rawfile目录下对应的音频文件
     ```
 
