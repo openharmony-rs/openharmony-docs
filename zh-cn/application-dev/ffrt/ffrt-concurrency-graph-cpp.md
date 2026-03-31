@@ -130,6 +130,15 @@ int DependenceCppExec()
 
 <!-- @[parallel_dep_cpp_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.h) -->
 
+``` C
+#include <iostream>
+#include "hilog/log.h"
+#include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
+
+#undef LOG_TAG
+#define LOG_TAG "ParallelCppTag"
+```
+
 <!-- @[parallel_fib_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.cpp) -->
 
 预期输出为：
