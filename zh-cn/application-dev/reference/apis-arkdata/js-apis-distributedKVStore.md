@@ -229,7 +229,7 @@ import { distributedKVStore } from '@kit.ArkData';
 | kvStoreType     | [KVStoreType](#kvstoretype)     | 否    | 是   | 设置要创建的数据库类型，默认为DEVICE_COLLABORATION，即多设备协同数据库。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
 | securityLevel   | [SecurityLevel](#securitylevel) | 否    | 否   | 设置数据库安全级别。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.Core |
 | schema          | [Schema](#schema)               | 否    | 是   | 设置定义存储在数据库中的值，默认为undefined，即不使用Schema。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
-| rootDir<sup>24+</sup> | string                         | 否    | 是  | 设置数据库文件存储路径，不设置即为默认路径（context.databaseDir）。不能设置空字符串，创建数据库和删除数据库时目录必须有访问权限且存在，关闭数据库不校验此参数。<br> **ArkTS-Dyn起始版本：** 24 <br> **ArkTS-Sta起始版本：** 24 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
+| rootDir<sup>24+</sup> | string                         | 否    | 是  | 设置数据库文件存储路径，不设置即为默认路径（context.databaseDir）。不能设置空字符串，创建数据库和删除数据库时目录必须有访问权限且存在，关闭数据库不校验此参数。<br> ArkTS-Dyn：设置undefined时，为异常路径。<br> ArkTS-Sta：设置undefined时，等同于没有设置rooDir。<br> **ArkTS-Dyn起始版本：** 24 <br> **ArkTS-Sta起始版本：** 24 <br>**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore |
 
 ## BackupConfig<sup>24+</sup>
 
