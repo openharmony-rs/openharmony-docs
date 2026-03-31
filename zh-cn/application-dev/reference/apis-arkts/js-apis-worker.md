@@ -34,7 +34,7 @@ import { worker } from '@kit.ArkTS';
 | 名称                              | 类型                                                         | 只读 | 说明                                                         |
 | --------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | workerPort<sup>9+</sup>           | [ThreadWorkerGlobalScope](#threadworkerglobalscope9)         | 是   | Worker线程用于与宿主线程通信的对象。<br/>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。                         |
-| parentPort<sup>(deprecated)</sup> | [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated) | 是   | Worker线程用于与宿主线程通信的对象。<br/>此属性从API version 7开始支持，从API version 9开始被废弃。<br/>建议使用workerPort<sup>9+</sup>替代。 |
+| parentPort<sup>(deprecated)</sup> | [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated) | 是   | Worker线程用于与宿主线程通信的对象。<br/>**说明**：从API version 7开始支持，从API version 9开始废弃，建议使用[workerPort](#常量)替代。|
 
 
 ## WorkerOptions
