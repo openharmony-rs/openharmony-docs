@@ -182,7 +182,7 @@
 import { relationalStore } from '@kit.ArkData'
 import { UIAbility } from '@kit.AbilityKit';
 import { window } from '@kit.ArkUI';
-import { fileIo as fs } from '@kit.CoreFileKit'
+import { fileIo } from '@kit.CoreFileKit'
 
 export default class EntryAbility extends UIAbility {
   async onWindowStageCreate(windowStage: window.WindowStage) {
@@ -194,7 +194,7 @@ export default class EntryAbility extends UIAbility {
     let bundleCodeDir = this.context.bundleCodeDir;
     // libdistributeddb_extension.so为实现的fts5可加载分词器扩展编译成的so名称
     let soPath = bundleCodeDir + "/libs/arm64/libdistributeddb_extension.so";
-    let res = await fs.access(soPath);
+    let res = await fileIo.access(soPath);
     if (!res) {
       console.error("Dynamic library not accessible");
       return;
