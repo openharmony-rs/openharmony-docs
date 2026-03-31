@@ -57,6 +57,7 @@ addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
+  import { contact } from '@kit.ContactsKit';
 
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -102,6 +103,7 @@ addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
+  import { contact } from '@kit.ContactsKit';
   
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -162,7 +164,7 @@ addContact(context: Context, contact: Contact): Promise<number&gt;
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -177,8 +179,6 @@ addContact(context: Context, contact: Contact): Promise<number&gt;
   });
   promise.then((data) => {
     console.info(`Succeeded in adding Contact. data: ${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to add Contact. Code: ${err.code}, message: ${err.message}`);
   });
 ```
 
@@ -211,8 +211,9 @@ addContact(contact: Contact): Promise&lt;number&gt;
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // Promise 成功时返回添加成功后的数据
   let promise = contact.addContact({
     name: {
       fullName: 'xxx'
@@ -221,10 +222,9 @@ addContact(contact: Contact): Promise&lt;number&gt;
       phoneNumber: '138xxxxxxxx'
     }]
   });
+  // 成功回调： Promise resolve 时执行
   promise.then((data) => {
     console.info(`Succeeded in adding Contact. data: ${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to add Contact. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -261,6 +261,7 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
  // 通过selectContacts接口选择联系人。
@@ -275,8 +276,6 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
       }
       console.info('Succeeded in deleting Contact.');
     });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
 ```
 
@@ -305,6 +304,7 @@ deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
@@ -318,8 +318,6 @@ deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
       }
       console.info('Succeeded in deleting Contact.');
     });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -360,8 +358,8 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
+  import { contact } from '@kit.ContactsKit';
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
@@ -371,11 +369,7 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
     let promise = contact.deleteContact(context, data[0].key);
     promise.then(() => {
       console.info(`Succeeded in deleting Contact.`);
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
     });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -408,7 +402,7 @@ deleteContact(key: string): Promise&lt;void&gt;
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
@@ -416,11 +410,7 @@ deleteContact(key: string): Promise&lt;void&gt;
     let promise = contact.deleteContact(data[0].key);
     promise.then(() => {
       console.info(`Succeeded in deleting Contact.`);
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
     });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -457,12 +447,14 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
     // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
     contact.updateContact(context, {
       id: data[0].id,  // 选择联系人的id。
       name: {
@@ -478,8 +470,6 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
       }
       console.info('Succeeded in updating Contact.');
     });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -508,6 +498,7 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
@@ -528,8 +519,6 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
       }
       console.info('Succeeded in updating Contact.');
     });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -549,7 +538,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 | -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                         |
-| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表。                                           |
+| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                         |
 | callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回失败的错误码。     |
 
 **错误码：**
@@ -567,6 +556,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 通过selectContacts接口选择联系人。
@@ -590,8 +580,6 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
       }
       console.info('Succeeded in updating Contact.');
     });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -614,13 +602,15 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
 | 参数名   | 类型                                    | 必填 | 说明                                 |
 | -------- | --------------------------------------- | ---- | ------------------------------------ |
 | contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                         |
-| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表。                   |
+| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                   |
 | callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回失败的错误码。 |
 
 **示例：**
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
+
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
@@ -641,8 +631,6 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
       }
       console.info('Succeeded in updating Contact.');
     });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -662,7 +650,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                                 |
-| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表。                                           |
+| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                       |
 
 **返回值：**
 
@@ -684,7 +672,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 通过selectContacts接口选择联系人。
@@ -704,11 +692,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
     });
     promise.then(() => {
       console.info('Succeeded in updating Contact.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
     });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
 ```
 
@@ -731,7 +715,7 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 | 参数名  | 类型                                    | 必填 | 说明               |
 | ------- | --------------------------------------- | ---- | ------------------ |
 | contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。       |
-| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表。 |
+| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。 |
 
 **返回值：**
 
@@ -742,7 +726,7 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
@@ -759,11 +743,7 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
     });
     promise.then(() => {
       console.info('Succeeded in updating Contact.');
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to update Contact. Code: ${err.code}, message: ${err.message}`);
     });
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -802,6 +782,7 @@ isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -840,7 +821,9 @@ isLocalContact(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 判断id为1的联系人是否在本地电话簿中
   contact.isLocalContact(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isLocalContact. Code: ${err.code}, message: ${err.message}`);
@@ -889,7 +872,7 @@ isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -897,8 +880,6 @@ isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
   let promise = contact.isLocalContact(context, 1);
   promise.then((data) => {
     console.info(`Succeeded in isLocalContact. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to isLocalContact. Code: ${err.code}, message: ${err.message}`);
   });
 ```
 
@@ -931,13 +912,12 @@ isLocalContact(id: number): Promise&lt;boolean&gt;
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 判断id为1的联系人是否在本地电话簿中
   let promise = contact.isLocalContact(1);
   promise.then((data) => {
     console.info(`Succeeded in isLocalContact. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to isLocalContact. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -976,6 +956,7 @@ isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;):
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -1014,7 +995,9 @@ isMyCard(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 判断id为1的联系人是否为“我的名片”
   contact.isMyCard(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isMyCard. Code: ${err.code}, message: ${err.message}`);
@@ -1063,7 +1046,7 @@ isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -1071,8 +1054,6 @@ isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
   let promise = contact.isMyCard(context, 1);
   promise.then((data) => {
     console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to isMyCard. Code: ${err.code}, message: ${err.message}`);
   });
 ```
 
@@ -1105,13 +1086,12 @@ isMyCard(id: number): Promise&lt;boolean&gt;
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 判断id为1的联系人是否为“我的名片”
   let promise = contact.isMyCard(1);
   promise.then((data) => {
     console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to isMyCard. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -1149,6 +1129,7 @@ queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -1186,7 +1167,9 @@ queryMyCard(callback: AsyncCallback&lt;Contact&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 回调函数，查询“我的名片”
   contact.queryMyCard((err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query My Card. Code: ${err.code}, message: ${err.message}`);
@@ -1211,7 +1194,7 @@ queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表。                                           |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                    |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回失败的错误码。     |
 
 **错误码：**
@@ -1231,6 +1214,7 @@ queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -1264,14 +1248,16 @@ queryMyCard(attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): v
 
 | 参数名   | 类型                                     | 必填 | 说明                                                     |
 | -------- | ---------------------------------------- | ---- | -------------------------------------------------------- |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表。                                       |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                       |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回失败的错误码。 |
 
 **示例：**
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 传入联系人的属性列表，查询“我的名片”
   contact.queryMyCard({
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   }, (err: BusinessError, data) => {
@@ -1298,7 +1284,7 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表。                                           |
+| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                     |
 
 **返回值：**
 
@@ -1322,7 +1308,7 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -1332,8 +1318,6 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
   });
   promise.then((data) => {
     console.info(`Succeeded in querying My Card. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query My Card. Code: ${err.code}, message: ${err.message}`);
   });
 ```
 
@@ -1355,7 +1339,7 @@ queryMyCard(attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
 | 参数名 | 类型                                    | 必填 | 说明               |
 | ------ | --------------------------------------- | ---- | ------------------ |
-| attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表。 |
+| attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。 |
 
 **返回值：**
 
@@ -1366,15 +1350,14 @@ queryMyCard(attrs?: ContactAttributes): Promise&lt;Contact&gt;
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 回调函数，传入联系人的属性列表，查询“我的名片”
   let promise = contact.queryMyCard({
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   });
   promise.then((data) => {
     console.info(`Succeeded in querying My Card. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query My Card. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -1396,11 +1379,21 @@ selectContact(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回失败的错误码。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ------------------ |
+| 401      | Parameter error. Possible causes: Mandatory parameters are left unspecified.  |
+
 **示例：**
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 打开选择联系人UI界面
   contact.selectContact((err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to select Contact. Code: ${err.code}, message: ${err.message}`);
@@ -1420,6 +1413,8 @@ selectContact(): Promise&lt;Array&lt;Contact&gt;&gt;
 >
 > 从API version 7 开始支持，从API version 10 开始废弃，建议使用[selectContacts](#contactselectcontacts10-1)替代。
 
+**需要权限**：ohos.permission.READ_CONTACTS
+
 **系统能力**：SystemCapability.Applications.Contacts
 
 **返回值：**
@@ -1431,13 +1426,12 @@ selectContact(): Promise&lt;Array&lt;Contact&gt;&gt;
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 打开选择联系人UI界面
   let promise = contact.selectContact();
   promise.then((data) => {
     console.info(`Succeeded in selecting Contact. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contact. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -1448,6 +1442,8 @@ selectContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 调用选择联系人接口，打开选择联系人UI界面。使用callback异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
+
+**需要权限**：ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Applications.Contacts
 
@@ -1469,7 +1465,9 @@ selectContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 打开选择联系人UI界面
   contact.selectContacts((err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
@@ -1487,6 +1485,8 @@ selectContacts(): Promise&lt;Array&lt;Contact&gt;&gt;
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
+**需要权限**：ohos.permission.READ_CONTACTS
+
 **系统能力**：SystemCapability.Applications.Contacts
 
 **返回值：**
@@ -1499,13 +1499,12 @@ selectContacts(): Promise&lt;Array&lt;Contact&gt;&gt;
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 打开选择联系人UI界面
   let promise = contact.selectContacts();
   promise.then((data) => {
     console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -1523,7 +1522,7 @@ selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Arra
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| options | [ContactSelectionOptions](#contactselectionoptions10) | 是   | 选择联系人时的筛选条件。 |
+| options | [ContactSelectionOptions](#contactselectionoptions10) | 是   | 选择联系人时的筛选条件，表示单选或多选。 |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -1538,7 +1537,9 @@ selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Arra
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 打开选择联系人UI界面，支持选择一个联系人
   contact.selectContacts({
     isMultiSelect:false
   }, (err: BusinessError, data) => {
@@ -1564,7 +1565,7 @@ selectContacts(options: ContactSelectionOptions): Promise&lt;Array&lt;Contact&gt
 
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
-| options | [ContactSelectionOptions](#contactselectionoptions10) | 是   | 选择联系人时的筛选条件。 |
+| options | [ContactSelectionOptions](#contactselectionoptions10) | 是   | 选择联系人时的筛选条件，表示单选或多选。 |
 
 **返回值：**
 
@@ -1583,13 +1584,12 @@ selectContacts(options: ContactSelectionOptions): Promise&lt;Array&lt;Contact&gt
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 打开选择联系人UI界面，支持选择一个联系人
   let promise = contact.selectContacts({isMultiSelect:false});
   promise.then((data) => {
     console.info(`Succeeded in selecting Contacts. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to select Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -1608,7 +1608,7 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的key值，一个联系人对应一个key。                       |
+| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回失败的错误码。   |
 
 **错误码：**
@@ -1628,6 +1628,7 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -1659,14 +1660,16 @@ queryContact(key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的key值，一个联系人对应一个key。                     |
+| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                     |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回失败的错误码。 |
 
 **示例：**
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 查询key='xxx'的联系人
   contact.queryContact('xxx', (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Contact. Code: ${err.code}, message: ${err.message}`);
@@ -1691,8 +1694,8 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的key值，一个联系人对应一个key。                       |
-| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息。                                       |
+| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                      |
+| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                       |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回失败的错误码。   |
 
 **错误码：**
@@ -1712,6 +1715,7 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -1747,15 +1751,17 @@ queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的key值，一个联系人对应一个key。                     |
-| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息。                                     |
+| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                    |
+| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                     |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回失败的错误码。 |
 
 **示例：**
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 查询key='xxx'，holderId为1的联系人
   contact.queryContact('xxx', {
     holderId: 1,
     bundleName: "",
@@ -1784,8 +1790,8 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的key值，一个联系人对应一个key。                       |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表。                                           |
+| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                        |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回失败的错误码。   |
 
 **错误码：**
@@ -1805,6 +1811,7 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -1838,15 +1845,17 @@ queryContact(key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的key值，一个联系人对应一个key。                     |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表。                                         |
+| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                     |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                        |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回失败的错误码。 |
 
 **示例：**
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 传入key='xxx'以及联系人的属性列表查询
   contact.queryContact('xxx', {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   }, (err: BusinessError, data) => {
@@ -1873,9 +1882,9 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的key值，一个联系人对应一个key。                       |
-| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息。                                       |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表。                                           |
+| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
+| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                       |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回失败的错误码。   |
 
 **错误码：**
@@ -1895,6 +1904,7 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -1932,16 +1942,18 @@ queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: As
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的key值，一个联系人对应一个key。                     |
-| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息。                                     |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表。                                         |
+| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                     |
+| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                     |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                         |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回失败的错误码。 |
 
 **示例：**
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 查询key,holder,attrs满足条件的联系人
   contact.queryContact('xxx', {
     holderId: 1,
     bundleName: "",
@@ -1972,7 +1984,7 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key     | string                                  | 是   | 联系人的key值，一个联系人对应一个key。                       |
+| key     | string                                  | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
 | holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人。       |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。           |
 
@@ -1998,7 +2010,7 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -2012,8 +2024,6 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Contact. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Contact. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -2035,7 +2045,7 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
 
 | 参数名 | 类型                                    | 必填 | 说明                                   |
 | ------ | --------------------------------------- | ---- | -------------------------------------- |
-| key    | string                                  | 是   | 联系人的key值，一个联系人对应一个key。 |
+| key    | string                                  | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。 |
 | holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人。                |
 | attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。                    |
 
@@ -2048,8 +2058,9 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 异步查询，查询联系人
   let promise = contact.queryContact('xxx', {
     holderId: 1,
     bundleName: "",
@@ -2059,8 +2070,6 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Contact. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Contact. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -2098,6 +2107,7 @@ queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -2160,7 +2170,7 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                       |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -2215,7 +2225,7 @@ queryContacts(holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                       |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **示例：**
@@ -2251,7 +2261,7 @@ queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallba
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -2304,7 +2314,7 @@ queryContacts(attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Cont
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **示例：**
@@ -2338,8 +2348,8 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                       |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -2396,8 +2406,8 @@ queryContacts(holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **示例：**
@@ -2624,7 +2634,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -2680,7 +2690,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncC
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **示例：**
@@ -2717,7 +2727,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                          |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -2771,7 +2781,7 @@ queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callba
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **示例：**
@@ -2806,8 +2816,8 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -2865,8 +2875,8 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **示例：**
@@ -3095,7 +3105,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -3151,7 +3161,7 @@ queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;A
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **示例：**
@@ -3188,7 +3198,7 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -3242,7 +3252,7 @@ queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCal
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **示例：**
@@ -3277,8 +3287,8 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -3336,8 +3346,8 @@ queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, ca
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息。                                       |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表。                                           |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                       |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **示例：**
@@ -3561,7 +3571,7 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                           | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder   | [Holder](#holder)                                 | 是   | 创建联系人的应用信息。                                       |
+| holder   | [Holder](#holder)                                 | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                       |
 | callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -3616,7 +3626,7 @@ queryGroups(holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): 
 
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| holder   | [Holder](#holder)                                 | 是   | 创建联系人的应用信息。                                       |
+| holder   | [Holder](#holder)                                 | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
 | callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回失败的错误码。 |
 
 **示例：**
@@ -4000,7 +4010,7 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                     | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | id       | number                      | 是   | 联系人对象的id属性。                                         |
-| holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息。                                       |
+| holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回失败的错误码。 |
 
 **错误码：**
@@ -4056,7 +4066,7 @@ queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): voi
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | id       | number                      | 是   | 联系人对象的id属性。                                         |
-| holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息。                                       |
+| holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回失败的错误码。 |
 
 **示例：**
