@@ -77,7 +77,7 @@
    (2) 将网络下载或者用户生成的音频资源放在[沙箱文件目录](../file-management/app-sandbox-directory.md#应用文件目录与应用文件路径)EL1区域的files目录下或者其子目录下，下面示例展示了如何将resources/rawfile目录下的音频资源拷贝到指定沙箱目录。
 
     <!-- @[specified_customized_ringtone_copyToSandbox](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
-
+    
     ``` TypeScript
     // 拷贝resources/rawfile/目录下的音频文件到应用沙箱EL1的files目录下
     try {
