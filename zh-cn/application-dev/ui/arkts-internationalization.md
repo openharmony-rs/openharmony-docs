@@ -80,8 +80,8 @@ ArkUI 如下能力已默认适配镜像：
             .position({
               start: LengthMetrics.px(200),
               top: LengthMetrics.px(200)
-            }) //需要同时支持LTR和RTL时使用API12新增的LocalizedEdges入参类型,
-          //仅支持LTR时等同于.position({ x: '200px', y: '200px' })
+            }) // 需要同时支持LTR和RTL时使用API12新增的LocalizedEdges入参类型,
+          // 仅支持LTR时等同于.position({ x: '200px', y: '200px' })
   
         }.backgroundColor(Color.Blue)
       }.width('100%').height('100%').border({ color: '#880606' })
@@ -157,7 +157,6 @@ Canvas组件的绘制内容和坐标均不支持镜像能力。已绘制到Canva
           .onReady(() =>{
             this.drawText()
           })
-          .backgroundColor(Color.Pink)
       }
       .height('100%')
     }
