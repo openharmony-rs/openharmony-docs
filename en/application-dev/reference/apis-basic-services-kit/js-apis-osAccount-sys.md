@@ -7,7 +7,7 @@
 <!--Tester: @zhaimengchao-->
 <!--Adviser: @zengyawen-->
 
-The osAccount module provides basic capabilities for managing system (OS) accounts, including adding, deleting, querying, setting, subscribing to, and enabling a system account.
+The **osAccount** module provides basic capabilities for managing system (OS) accounts, including adding, deleting, querying, setting, subscribing to, and enabling a system account.
 
 > **NOTE**
 >
@@ -2839,7 +2839,7 @@ Obtains the specified property information of the associated executor based on t
 
 | Type                                                             | Description                                                |
 | :---------------------------------------------------------------- | :-------------------------------------------------- |
-| Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise used to return the executor attributes.|
+| Promise&lt;[ExecutorProperty](#executorproperty8)&gt; | Promise used to return the executor property.|
 
 **Error codes**
 
@@ -3114,6 +3114,7 @@ Performs authentication of the current user.
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **Example**
@@ -3191,6 +3192,7 @@ Starts user authentication based on the specified challenge value, authenticatio
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **Example**
@@ -3271,6 +3273,7 @@ Performs authentication of the specified user. This API uses an asynchronous cal
 | 12300114 | The authentication service works abnormally. |
 | 12300117 | PIN is expired. |
 | 12300119 | Multi-factor authentication failed. |
+| 12300120 | The credentials are no longer valid. |
 | 12300211 | Server unreachable. |
 
 **Example**
@@ -4213,7 +4216,7 @@ Authenticates a domain account.
 
 authWithPopup(callback: IUserAuthCallback): void
 
-Authenticates this domain account with a dialog box.
+Authenticates a domain account in a pop-up window.
 
 **System API**: This is a system API.
 
@@ -4270,7 +4273,7 @@ No permission is required since API version 11. Use the SDK of the latest versio
 
 authWithPopup(localId: number, callback: IUserAuthCallback): void
 
-Authenticates this domain account with a dialog box.
+Authenticates a domain account in a pop-up window.
 
 **System API**: This is a system API.
 
@@ -6079,6 +6082,7 @@ Enumerates the authentication credential types.
 | FINGERPRINT<sup>10+</sup>   | 4     | Fingerprint authentication.|
 | RECOVERY_KEY<sup>12+</sup> | 8 | Key recovery type.|
 | PRIVATE_PIN<sup>14+</sup> | 16 | Private PIN type.|
+| COMPANION_DEVICE<sup>23+</sup> | 64 | Companion device authentication.|
 | DOMAIN<sup>9+</sup>  | 1024     | Domain authentication.|
 
 ## AuthSubType<sup>8+</sup>
