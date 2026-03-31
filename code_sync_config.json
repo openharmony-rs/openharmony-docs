@@ -11921,6 +11921,16 @@
 						"start_line":16
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatAnimation.ets",
+				"functions":[
+					{
+						"end_line":99,
+						"name":"repeat_animation",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
