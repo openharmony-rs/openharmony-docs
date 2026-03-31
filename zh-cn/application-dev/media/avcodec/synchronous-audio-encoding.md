@@ -11,6 +11,8 @@
 
 开发者可以调用本模块的Native API接口，完成音频编码，即将音频PCM编码压缩成不同的格式。
 
+具体实现可参考[示例工程](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec)。
+
 接口不限制PCM数据的来源。开发者可以调用麦克风录制获取，也可以导入编辑后的PCM数据。通过音频编码，输出对应格式的码流，最后封装为目标格式文件。
 
 支持的编码能力请参考[AVCodec支持的格式](avcodec-support-formats.md#音频编码)。
@@ -145,7 +147,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    // 配置音频声道布局（必须）。
    // 值为CH_LAYOUT_MONO、CH_LAYOUT_STEREO、CH_LAYOUT_SURROUND、CH_LAYOUT_QUAD、CH_LAYOUT_5POINT0、CH_LAYOUT_5POINT1、CH_LAYOUT_6POINT1或CH_LAYOUT_7POINT1其中一项。
    constexpr OH_AudioChannelLayout CHANNEL_LAYOUT = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
-   // 配置音频位深（必须） flac只有SAMPLE_S16LE和SAMPLE_S32LE。
+   // 配置音频位深（必须） FLAC只有SAMPLE_S16LE和SAMPLE_S32LE。
    constexpr OH_BitsPerSample SAMPLE_FORMAT = OH_BitsPerSample::SAMPLE_S32LE;
    // 配置音频compliance level（默认值0，取值范围[-2,2]）。
    constexpr int32_t COMPLIANCE_LEVEL = 0;

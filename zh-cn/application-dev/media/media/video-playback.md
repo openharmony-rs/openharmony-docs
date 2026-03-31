@@ -33,7 +33,7 @@
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVPlayer API参考](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)。
+详细的API说明请参考[AVPlayer](../../reference/apis-media-kit/arkts-apis-media-AVPlayer.md)。
 
 1. 调用createAVPlayer()创建AVPlayer实例，初始化进入idle状态。
 

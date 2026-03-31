@@ -395,14 +395,13 @@
         - [UI开发（ArkTS声明式开发范式）概述](ui/arkts-ui-development-overview.md)
         - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
           - [基本语法概述](ui/state-management/arkts-basic-syntax-overview.md)
+          - [UI装饰器总览](ui/state-management/arkts-decorator-overview.md)
           - [声明式UI描述](ui/state-management/arkts-declarative-ui-description.md)
           - 自定义组件<!--arkts-custom-components-->
             - [创建自定义组件](ui/state-management/arkts-create-custom-components.md)
             - [自定义组件生命周期](ui/state-management/arkts-page-custom-components-lifecycle.md)
             - [自定义组件的自定义布局](ui/state-management/arkts-page-custom-components-layout.md)
             - [自定义组件成员属性访问限定符使用限制](ui/state-management/arkts-custom-components-access-restrictions.md)
-          - UI装饰器<!--arkts-ui-decorator-->
-            - [UI装饰器总览](ui/state-management/arkts-decorator-overview.md)
           - 组件扩展<!--arkts-extend-components-->
             - [组件扩展概述](ui/state-management/arkts-extend-components-overview.md)
             - [\@Builder装饰器：自定义构建函数](ui/state-management/arkts-builder.md)
@@ -443,7 +442,7 @@
               - [\@Local装饰器：组件内部状态](ui/state-management/arkts-new-local.md)
               - [\@Param装饰器：组件外部输入](ui/state-management/arkts-new-param.md)
               - [\@Once装饰器：初始化同步一次](ui/state-management/arkts-new-once.md)
-              - [\@Event装饰器：组件输出](ui/state-management/arkts-new-event.md)
+              - [\@Event装饰器：规范组件输出](ui/state-management/arkts-new-event.md)
               - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](ui/state-management/arkts-new-provider-and-consumer.md)
             - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
               - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](ui/state-management/arkts-new-observedV2-and-trace.md)
@@ -939,7 +938,6 @@
             - [通过router或call事件刷新卡片内容](form/arkts-ui-widget-event-uiability.md)
           - ArkTS卡片编辑<!--arkts-ui-widget-edit-->
             - [ArkTS卡片编辑概述](form/arkts-ui-widget-event-formeditextensionability-overview.md)
-            - [卡片编辑开发指导](form/arkts-ui-widget-event-formeditextensionability.md)
           - 应用内请求卡片加桌<!--arkts-ui-widget-add-->
             - [应用内拉起卡片管理加桌](form/arkts-ui-widget-open-formmanager.md)
         <!--Del-->
@@ -1338,7 +1336,7 @@
           <!--Del-->
           - [DistributedExtensionAbility开发指南（仅对系统应用开放）](distributedservice/distributedextension-guidelines-sys.md)
           <!--DelEnd-->
-          - [增强连接开发指南](distributedservice/linkEnhance_development-guide.md)
+          - [增强连接开发指导](distributedservice/linkEnhance_development-guide.md)
       - Network Kit（网络服务）<!--network-kit-->
         - [Network Kit简介](network/net-mgmt-overview.md)
         - 访问网络<!--network-kit-data-transmission-->
@@ -2387,10 +2385,8 @@
             - [AbilityStartCallback](reference/apis-ability-kit/js-apis-inner-application-abilityStartCallback.md)
             - [AbilityStateData](reference/apis-ability-kit/js-apis-inner-application-abilityStateData.md)
             - [AgentCard](reference/apis-ability-kit/js-apis-inner-application-AgentCard.md)
-            - [AgentExtensionConnectCallback](reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback.md)
             - [AgentExtensionContext (智能体扩展组件上下文)](reference/apis-ability-kit/js-apis-inner-application-agentExtensionContext.md)
             - [AgentHostProxy](reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)
-            - [AgentProxy](reference/apis-ability-kit/js-apis-inner-application-agentProxy.md)
             - [ApplicationContext (应用上下文)](reference/apis-ability-kit/js-apis-inner-application-applicationContext.md)
             - [ApplicationStateObserver](reference/apis-ability-kit/js-apis-inner-application-applicationStateObserver.md)
             - [AppServiceExtensionContext (应用后台服务扩展组件上下文)](reference/apis-ability-kit/js-apis-inner-application-appServiceExtensionContext.md)
@@ -2450,6 +2446,8 @@
             - [UIExtensionContext(系统接口)](reference/apis-ability-kit/js-apis-inner-application-uiExtensionContext-sys.md)
             - [ViewData(系统接口)](reference/apis-ability-kit/js-apis-inner-application-viewData-sys.md)
             - [AutoFillRect(系统接口)](reference/apis-ability-kit/js-apis-inner-application-autoFillRect-sys.md)
+            - [AgentExtensionConnectCallback（系统接口）](reference/apis-ability-kit/js-apis-inner-application-agentExtensionConnectCallback-sys.md)
+            - [AgentProxy（系统接口）](reference/apis-ability-kit/js-apis-inner-application-agentProxy-sys.md)
             <!--DelEnd-->
           - bundleManager<!--bundlemanager-->
             - [abilityInfo](reference/apis-ability-kit/js-apis-bundleManager-abilityInfo.md)

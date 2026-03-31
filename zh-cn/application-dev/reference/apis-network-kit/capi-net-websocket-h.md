@@ -32,7 +32,7 @@
 | [int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct WebSocket_RequestOptions options)](#oh_websocketclient_connect) | 客户端连接服务端。 |
 | [int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)](#oh_websocketclient_send) | 客户端向服务端发送数据。 |
 | [int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)](#oh_websocketclient_close) | 客户端主动关闭WebSocket连接。 |
-| [int OH_WebSocketClient_Destroy(struct WebSocket *client)](#oh_websocketclient_destroy) | 释放websocket连接上下文和资源。 |
+| [int OH_WebSocketClient_Destroy(struct WebSocket *client)](#oh_websocketclient_destroy) | 释放WebSocket连接上下文和资源。 |
 
 ## 函数说明
 
@@ -194,7 +194,7 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 
 **描述**
 
-释放websocket连接上下文和资源。使用方式如下：
+释放WebSocket连接上下文和资源。使用方式如下：
 1. 调用[WebSocket_OnCloseCallback](capi-net-websocket-type-h.md#websocket_onclosecallback)订阅WebSocket连接关闭事件，并在该回调函数中调用[OH_WebSocketClient_Destroy](capi-net-websocket-h.md#oh_websocketclient_destroy)方法。
 
 2. 调用[OH_WebSocketClient_Close](capi-net-websocket-h.md#oh_websocketclient_close)关闭WebSocket连接。

@@ -33,14 +33,15 @@ on(type: 'block', callback: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：block，<br/>表示打印任务阻塞。 |
 | callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务阻塞。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -76,14 +77,15 @@ on(type: 'succeed', callback: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：succeed，<br/>表示打印任务成功。 |
 | callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务成功。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -119,14 +121,15 @@ on(type: 'fail', callback: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：fail，<br/>表示打印任务失败。 |
 | callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务失败。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -162,14 +165,15 @@ on(type: 'cancel', callback: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：cancel，<br/>表示打印任务被取消。 |
 | callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务被取消。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -205,14 +209,15 @@ off(type: 'block', callback?: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：block，<br/>表示打印任务阻塞。 |
 | callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务阻塞事件订阅。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -248,14 +253,15 @@ off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：succeed，<br/>表示打印任务成功。 |
 | callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务成功事件订阅。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -291,14 +297,15 @@ off(type: 'fail', callback?: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：fail，<br/>表示打印任务失败。 |
 | callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务失败事件订阅。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -334,14 +341,15 @@ off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：cancel，<br/>表示打印任务被取消。 |
 | callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务被取消事件订阅。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -381,7 +389,8 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示打印任务ID。 |
 | oldAttrs | [PrintAttributes](#printattributes11) | 是 | 表示旧打印参数。 |
@@ -391,7 +400,7 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -435,14 +444,15 @@ onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示打印任务ID。 |
 | state | [PrintDocumentAdapterState](#printdocumentadapterstate11) | 是 | 表示打印任务更改为该状态。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -476,7 +486,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
@@ -487,14 +497,15 @@ print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): voi
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 | callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | 是 | 异步获取打印完成之后的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -522,7 +533,7 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
@@ -533,18 +544,20 @@ print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PrintTask](#printtask)&gt; | 打印完成结果。 |
+| Promise&lt;[PrintTask](#printtask)&gt; | Promise对象，返回[PrintTask](#printtask)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -581,7 +594,8 @@ print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;P
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，当前支持的文件类型：".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", ".xml"。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
@@ -589,7 +603,7 @@ print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -644,19 +658,21 @@ print(files: Array&lt;string&gt;, context: Context): Promise&lt;PrintTask&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，当前支持的文件类型：".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", ".xml"。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PrintTask](#printtask)&gt; | 打印完成结果。 |
+| Promise&lt;[PrintTask](#printtask)&gt; | Promise对象，返回[PrintTask](#printtask)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -702,14 +718,15 @@ struct Index {
 
 print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: PrintAttributes, context: Context): Promise&lt;PrintTask&gt;
 
-打印接口，传入文件进行打印，三方应用需要更新打印文件，使用Promise异步回调。
+打印接口，传入文件进行打印，三方应用需要更新打印文件，使用Promise异步回调。当前支持的文件类型：".pdf"。
 
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobName | string | 是 | 表示待打印文件名称，例如：test.pdf。打印侧会通过[onStartLayoutWrite](#onstartlayoutwrite11)接口将空的pdf文件的fd传给接口调用方，由调用方使用新的打印参数更新待打印文件。 |
 | printAdapter | [PrintDocumentAdapter](#printdocumentadapter11) | 是 | 表示三方应用实现的[PrintDocumentAdapter](#printdocumentadapter11)接口实例。 |
@@ -717,13 +734,14 @@ print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: Prin
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PrintTask](#printtask)&gt; | 打印完成结果。 |
+| Promise&lt;[PrintTask](#printtask)&gt; | Promise对象，返回[PrintTask](#printtask)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -785,7 +803,8 @@ struct Index {
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | copyNumber | number | 否 | 是 | 表示文件打印份数。默认值为1。 |
 | pageRange | [PrintPageRange](#printpagerange11) | 否 | 是 | 表示待打印文件的页面范围。 |
@@ -801,7 +820,8 @@ struct Index {
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | startPage | number | 否 | 是 | 表示起始页。默认值为1。 |
 | endPage | number | 否 | 是 | 表示结束页。默认值为待打印文件的最大页数。 |
@@ -815,7 +835,8 @@ struct Index {
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | id | string | 否 | 否 | 表示纸张类型ID。 |
 | name | string | 否 | 否 | 表示纸张类型名称。 |
@@ -830,7 +851,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DIRECTION_MODE_AUTO | 0 | 表示自动选择纸张方向。 |
 | DIRECTION_MODE_PORTRAIT | 1 | 表示纵向打印。 |
@@ -842,7 +863,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | COLOR_MODE_MONOCHROME | 0 | 表示黑白打印。 |
 | COLOR_MODE_COLOR | 1 | 表示彩色打印。 |
@@ -853,7 +874,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DUPLEX_MODE_NONE | 0 | 表示单面打印。 |
 | DUPLEX_MODE_LONG_EDGE | 1 | 表示双面打印沿长边翻转。 |
@@ -865,7 +886,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PAGE_ISO_A3 | 0 | 表示A3。 |
 | PAGE_ISO_A4 | 1 | 表示A4。 |
@@ -886,7 +907,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PREVIEW_DESTROY | 0 | 表示预览失败。 |
 | PRINT_TASK_SUCCEED | 1 | 表示打印任务成功。 |
@@ -900,7 +921,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINT_FILE_CREATED | 0 | 表示打印文件创建成功。 |
 | PRINT_FILE_CREATION_FAILED | 1 | 表示打印文件创建失败。|
@@ -912,7 +933,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINTER_ADDED | 0 | 表示新打印机到达。 |
 | PRINTER_REMOVED | 1 | 表示打印机丢失。 |
@@ -927,7 +948,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINT_JOB_PREPARE | 0 | 表示打印任务的初始状态。 |
 | PRINT_JOB_QUEUED | 1 | 表示打印任务传送到打印机。 |
@@ -941,7 +962,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINT_JOB_COMPLETED_SUCCESS | 0 | 表示打印任务成功。 |
 | PRINT_JOB_COMPLETED_FAILED | 1 | 表示打印任务失败。 |
@@ -983,7 +1004,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | E_PRINT_NONE | 0 | 表示没有错误。 |
 | E_PRINT_NO_PERMISSION | 201 | 表示没有许可。 |
@@ -1006,7 +1027,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | APPLICATION_CREATED | 0 | 表示打印应用被拉起的事件。 |
 | APPLICATION_CLOSED_FOR_STARTED | 1 | 表示由于点击打印而关闭打印应用的事件。 |
@@ -1023,18 +1044,20 @@ addPrinterToDiscovery(printerInformation: PrinterInformation): Promise&lt;void&g
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerInformation | [PrinterInformation](#printerinformation14) | 是 | 表示新发现的打印机。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 添加打印机到系统打印机发现列表完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1074,18 +1097,20 @@ updatePrinterInDiscovery(printerInformation: PrinterInformation): Promise&lt;voi
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerInformation | [PrinterInformation](#printerinformation14) | 是 | 表示待更新能力的打印机。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 更新打印机能力到系统打印机发现列表完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1143,18 +1168,20 @@ removePrinterFromDiscovery(printerId: string): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 表示待移除的打印机。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 从系统打印机发现列表里移除打印机完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1186,18 +1213,20 @@ getPrinterInformationById(printerId: string): Promise&lt;PrinterInformation&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 表示待获取信息的打印机id。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PrinterInformation](#printerinformation14)&gt; | 根据打印机id获取的对应打印机信息。 |
+| Promise&lt;[PrinterInformation](#printerinformation14)&gt; | Promise对象，返回打印机信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1225,7 +1254,8 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | printerId | string | 否 | 否 | 表示打印机ID。 |
 | printerName | string | 否 | 否 | 表示打印机名称。 |
@@ -1247,7 +1277,8 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | supportedPageSizes | Array&lt;[PrintPageSize](#printpagesize11)&gt; | 否 | 否 | 表示打印机支持的纸张尺寸列表。 |
 | supportedColorModes | Array&lt;[PrintColorMode](#printcolormode11)&gt; | 否 | 否 | 表示打印机支持的色彩模式列表。 |
@@ -1263,7 +1294,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | QUALITY_DRAFT | 3 | 表示经济的打印质量。 |
 | QUALITY_NORMAL | 4 | 表示标准的打印质量。 |
@@ -1275,7 +1306,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | ORIENTATION_MODE_PORTRAIT | 0 | 表示纵向打印。 |
 | ORIENTATION_MODE_LANDSCAPE | 1 | 表示横向打印。 |
@@ -1289,7 +1320,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINTER_IDLE | 0 | 表示打印机空闲状态。 |
 | PRINTER_BUSY | 1 | 表示打印机忙碌状态。 |
@@ -1302,7 +1333,8 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 是 | 表示默认单双面模式。 |
 | defaultPrintQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示默认打印质量。 |
@@ -1321,7 +1353,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINTER_EVENT_ADDED | 0 | 表示打印机添加事件。 |
 | PRINTER_EVENT_DELETED | 1 | 表示打印机删除事件。 |
@@ -1336,7 +1368,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DEFAULT_PRINTER_TYPE_SET_BY_USER | 0 | 表示将用户手动设置的默认打印机作为当前默认打印机。 |
 | DEFAULT_PRINTER_TYPE_LAST_USED_PRINTER | 1 | 表示自动将上次使用的打印机作为当前默认打印机。 |
@@ -1352,13 +1384,14 @@ getAddedPrinters(): Promise&lt;Array&lt;string&gt;&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;string&gt;&gt; | 获取系统中已添加的打印机列表的完成结果回调。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回包含所有已添加打印机的打印机ID的列表。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1387,7 +1420,8 @@ type PrinterChangeCallback = (event: PrinterEvent, printerInformation: PrinterIn
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | event | [PrinterEvent](#printerevent18) | 是 | 表示打印机事件。 |
 | printerInformation | [PrinterInformation](#printerinformation14) | 是 | 表示打印机信息。 |
@@ -1403,14 +1437,15 @@ on(type: 'printerChange', callback: PrinterChangeCallback): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'printerChange' | 是 | 表示打印机变动事件。 |
 | callback | [PrinterChangeCallback](#printerchangecallback18) | 是 | 打印机变动之后的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1441,14 +1476,15 @@ off(type: 'printerChange', callback?: PrinterChangeCallback): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'printerChange' | 是 | 表示打印机变动事件。 |
 | callback | [PrinterChangeCallback](#printerchangecallback18) | 否 | 表示取消注册打印机变动事件后的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1480,14 +1516,15 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| extensionList | Array&lt;string&gt; | 是 | 要加载的[打印扩展能力](./js-apis-app-ability-PrintExtensionAbility.md)列表，列表成员为打印扩展能力的包名，空列表表示加载所有扩展能力。 |
+| extensionList | Array&lt;string&gt; | 是 | 要加载的[打印扩展能力](js-apis-app-ability-PrintExtensionAbility.md)列表，列表成员为打印扩展能力的包名，空列表表示加载所有扩展能力。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 异步开始发现打印机之后的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1523,18 +1560,20 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| extensionList | Array&lt;string&gt; | 是 | 要加载的[打印扩展能力](./js-apis-app-ability-PrintExtensionAbility.md)列表，列表成员为打印扩展能力的包名，空列表表示加载所有扩展能力。 |
+| extensionList | Array&lt;string&gt; | 是 | 要加载的[打印扩展能力](js-apis-app-ability-PrintExtensionAbility.md)列表，列表成员为打印扩展能力的包名，空列表表示加载所有扩展能力。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 开始发现打印机的完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1568,13 +1607,14 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | AsyncCallback&lt;void&gt; | 是 | 停止发现打印机的异步回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1606,13 +1646,14 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 停止发现打印机的完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1642,14 +1683,15 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 打印机ID。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 通过打印机ID异步连接打印机的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1682,18 +1724,20 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 打印机ID |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; |通过打印机ID连接打印机完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1822,7 +1866,7 @@ print.startPrint(printJobData).then(() => {
 | isLandscape | boolean | 否 | 否 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。 |
 | colorMode | [PrintColorMode](#printcolormode11) | 否 | 否 | 表示色彩模式。 |
 | duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 否 | 表示单双面打印模式。 |
-| pageSize | [PrintPageSize](./js-apis-print.md#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
+| pageSize | [PrintPageSize](#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
 | jobId | string | 否 | 是 | 表示打印任务的唯一标识符。 |
 | fdList | number[]; | 否 | 是 | 表示待打印文件fd列表。 |
 | binaryData | Uint8Array | 否 | 是 | 表示待打印二进制数据。 |
@@ -2248,7 +2292,7 @@ registerWatermarkCallback(callback: WatermarkCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [WatermarkCallback](#watermarkcallback24) | 是 | 表示注册强制水印处理的监听事件时使用的回调类型。 |
+| callback | [WatermarkCallback](#printwatermarkcallback24) | 是 | 表示注册强制水印处理的监听事件时使用的回调类型。 |
 
 **错误码：**
 
@@ -2271,7 +2315,7 @@ let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => 
 try {
     print.registerWatermarkCallback(watermarkCallback);
     console.info('registerWatermarkCallback success');
-} catch (error: BusinessError) {
+} catch (error) {
     console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
 }
 ```
@@ -2292,7 +2336,7 @@ unregisterWatermarkCallback(callback?: WatermarkCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | [WatermarkCallback](#watermarkcallback24) | 否 | 表示注册监听强制水印处理时使用的回调类型。 |
+| callback | [WatermarkCallback](#printwatermarkcallback24) | 否 | 表示注册监听强制水印处理时使用的回调类型。 |
 
 **错误码：**
 
@@ -2318,7 +2362,7 @@ try {
     // 取消注册指定的水印处理回调
     print.unregisterWatermarkCallback(watermarkCallback);
     console.info('unregisterWatermarkCallback success');
-} catch (error: BusinessError) {
+} catch (error) {
     console.error('unregisterWatermarkCallback error: ' + JSON.stringify(error));
 }
 ```
@@ -2363,7 +2407,7 @@ let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => 
         // 处理水印后通知系统处理成功
         print.notifyWatermarkComplete(jobId, print.WatermarkHandleResult.WATERMARK_HANDLE_SUCCESS);
         console.info('notifyWatermarkComplete success');
-    } catch (error: BusinessError) {
+    } catch (error) {
         console.error('notifyWatermarkComplete error: ' + JSON.stringify(error));
     }
 }
@@ -2371,7 +2415,7 @@ let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => 
 try {
     print.registerWatermarkCallback(watermarkCallback);
     console.info('registerWatermarkCallback success');
-} catch (error: BusinessError) {
+} catch (error) {
     console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
 }
 ```

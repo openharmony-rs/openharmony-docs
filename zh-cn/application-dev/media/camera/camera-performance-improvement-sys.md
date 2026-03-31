@@ -26,7 +26,7 @@
 
 ### 接口说明
 
-详细的API参考说明，请参考[Camera API文档](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 | 接口 | 说明 |
 | ---- | ---- |
@@ -99,7 +99,7 @@ async function preview(baseContext: common.BaseContext, cameraInfo: camera.Camer
 
 ### 接口说明
 
-详细的API参考说明，请参考[Camera API文档](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 | 接口 | 说明 |
 | ---- | ---- |
@@ -200,7 +200,7 @@ function showOrSavePicture(pixelMap: image.PixelMap): void {
 
 ### 接口说明
 
-详细的API参考说明，请参考[Camera API文档](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API参考说明，请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 | 接口 | 说明 |
 | ---- | ---- |

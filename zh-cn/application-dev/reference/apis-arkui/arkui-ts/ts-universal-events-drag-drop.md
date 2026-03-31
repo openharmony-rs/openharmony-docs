@@ -728,17 +728,16 @@ getGlobalDisplayY(): number
 
 定义拖拽操作的结果及组件的落入选定状态。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 值 | 说明 |
 | ----- | -- | --------------- |
-| DRAG_SUCCESSFUL | 0 |拖拽成功，在[onDrop](#ondrop)中使用。 |
-| DRAG_FAILED | 1 |拖拽失败，在[onDrop](#ondrop)中使用。 |
-| DRAG_CANCELED | 2 |拖拽取消，在[onDrop](#ondrop)中使用。 |
-| DROP_ENABLED | 3 |组件允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。 |
-| DROP_DISABLED | 4 |组件不允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。 |
+| UNKNOWN<sup>24+</sup> | -1 |拖拽结果尚未设置，在[onDragStart](#ondragstart)，[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)，[onDrop](#ondrop)中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| DRAG_SUCCESSFUL | 0 |拖拽成功，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DRAG_FAILED | 1 |拖拽失败，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DRAG_CANCELED | 2 |拖拽取消，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DROP_ENABLED | 3 |组件允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DROP_DISABLED | 4 |组件不允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## DragBehavior<sup>10+</sup>
 

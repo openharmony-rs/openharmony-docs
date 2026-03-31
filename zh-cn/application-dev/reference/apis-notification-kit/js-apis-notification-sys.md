@@ -1,4 +1,4 @@
-# @ohos.notification (Notification模块)(系统应用)
+# @ohos.notification (Notification模块)(系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @peixu-->

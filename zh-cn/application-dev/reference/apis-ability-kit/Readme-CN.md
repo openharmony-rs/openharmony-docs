@@ -75,11 +75,11 @@
        - [continuationResult](js-apis-continuation-continuationResult.md)
        <!--Del-->
        - [ContinuableInfo(系统接口)](js-apis-inner-application-continuableInfo-sys.md)
- 	   - [ContinueCallback(系统接口)](js-apis-inner-application-continueCallback-sys.md)
- 	   - [ContinueMissionInfo(系统接口)](js-apis-inner-application-continueMissionInfo-sys.md)
- 	   - [MissionCallbacks(系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
- 	   - [MissionDeviceInfo(系统接口)](js-apis-inner-application-missionDeviceInfo-sys.md)
- 	   - [MissionParameter(系统接口)](js-apis-inner-application-missionParameter-sys.md)
+       - [ContinueCallback(系统接口)](js-apis-inner-application-continueCallback-sys.md)
+       - [ContinueMissionInfo(系统接口)](js-apis-inner-application-continueMissionInfo-sys.md)
+       - [MissionCallbacks(系统接口)](js-apis-inner-application-missionCallbacks-sys.md)
+       - [MissionDeviceInfo(系统接口)](js-apis-inner-application-missionDeviceInfo-sys.md)
+       - [MissionParameter(系统接口)](js-apis-inner-application-missionParameter-sys.md)
        <!--DelEnd-->
   - FA模型能力的接口<!--fa-model-->
     - [@ohos.ability.ability (Ability模块)](js-apis-ability-ability.md)
@@ -157,10 +157,8 @@
       - [AbilityStartCallback](js-apis-inner-application-abilityStartCallback.md)
       - [AbilityStateData](js-apis-inner-application-abilityStateData.md)
       - [AgentCard](js-apis-inner-application-AgentCard.md)
-      - [AgentExtensionConnectCallback](js-apis-inner-application-agentExtensionConnectCallback.md)
       - [AgentExtensionContext (智能体扩展组件上下文)](js-apis-inner-application-agentExtensionContext.md)
       - [AgentHostProxy](js-apis-inner-application-agentHostProxy.md)
-      - [AgentProxy](js-apis-inner-application-agentProxy.md)
       - [ApplicationContext (应用上下文)](js-apis-inner-application-applicationContext.md)
       - [ApplicationStateObserver](js-apis-inner-application-applicationStateObserver.md)
       - [AppServiceExtensionContext (应用后台服务扩展组件上下文)](js-apis-inner-application-appServiceExtensionContext.md)
@@ -214,6 +212,8 @@
       - [UIExtensionContext(系统接口)](js-apis-inner-application-uiExtensionContext-sys.md)
       - [ViewData(系统接口)](js-apis-inner-application-viewData-sys.md)
       - [AutoFillRect(系统接口)](js-apis-inner-application-autoFillRect-sys.md)
+      - [AgentExtensionConnectCallback(系统接口)](js-apis-inner-application-agentExtensionConnectCallback-sys.md)
+      - [AgentProxy(系统接口)](js-apis-inner-application-agentProxy-sys.md)
       <!--DelEnd-->
     - bundleManager<!--bundlemanager-->
       - [abilityInfo](js-apis-bundleManager-abilityInfo.md)
@@ -313,6 +313,8 @@
     - [want.h](capi-want-h.md)
     - [ability_resource_info.h](capi-ability-resource-info-h.md)
     - [bundle_manager_common.h](capi-bundle-manager-common-h.md)
+    - [context.h](capi-context-h.md)
+    - [extension_ability.h](capi-extension-ability-h.md)
   - 结构体<!--ability-struct-->
     - [AbilityBase_Element](capi-abilitybase-element.md)
     - [AbilityBase_Want](capi-abilitybase-want.md)
@@ -327,6 +329,10 @@
     - [OH_NativeBundle_Metadata](capi-native-bundle-oh-nativebundle-metadata.md)
     - [OH_NativeBundle_ModuleMetadata](capi-native-bundle-oh-nativebundle-modulemetadata.md)
     - [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md)
+    - [AbilityRuntime_Context](capi-abilityruntime-abilityruntime-context.md)
+    - [AbilityRuntime_Context*](capi-abilityruntime-abilityruntime-context8h.md)
+    - [AbilityRuntime_ExtensionInstance](capi-abilityruntime-extensioninstance.md)
+    - [AbilityRuntime_ExtensionInstance*](capi-abilityruntime-extensioninstance8h.md)
 - 错误码<!--ability-arkts-errcode-->
   - [元能力子系统错误码](errorcode-ability.md)
   - [DistributedSchedule错误码](errorcode-DistributedSchedule.md)

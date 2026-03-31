@@ -64,11 +64,11 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -120,16 +120,20 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
 } catch (err) {
-  hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
 ## Server
 
 服务对象，提供启动服务、停止服务、关闭服务、注册/取消注册服务端回调等方法。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 以下方法，在服务端设备上执行。
 
@@ -166,11 +170,11 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -205,12 +209,12 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
   server.stop();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -246,12 +250,12 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.start();
   server.close();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -293,7 +297,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 
@@ -304,7 +308,7 @@ try {
   // 启动服务
   server.start();
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -347,7 +351,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('connectionAccepted', (connection: linkEnhance.Connection): void => {
@@ -358,7 +362,7 @@ try {
     hilog.info(0x0000, TAG, 'accept new connection');
   });
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -402,7 +406,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
 
@@ -413,7 +417,7 @@ try {
   // 启动服务
   server.start();
 } catch (err) {
-  hilog.error(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -457,7 +461,7 @@ const TAG = "testDemo";
 
 try {
   let name: string = "demo";
-  hilog.info(0x0000, TAG, 'start sever name = ' + name);
+  hilog.info(0x0000, TAG, 'start server name = ' + name);
   // 使用服务名构造Server
   let server: linkEnhance.Server = linkEnhance.createServer(name);
   server.on('serverStopped', (reason: number): void => {
@@ -468,7 +472,7 @@ try {
     hilog.info(0x0000, TAG, 'serverStopped， reason= ' + reason);
   });
 } catch (err) {
-  hilog.info(0x0000, TAG, 'start sever errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'start server errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -489,6 +493,10 @@ try {
 ## Connection
 
 连接对象，提供连接、断连、获取对端设备ID、发送数据、注册/取消注册回调等方法。
+
+**系统能力**：SystemCapability.DistributedSched.AppCollaboration
+
+**模型约束**：此接口仅可在Stage模型下使用
 
 ### connect()
 
@@ -525,7 +533,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // 订阅连接结果
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
@@ -570,7 +578,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -617,7 +625,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -669,7 +677,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.getPeerDeviceId();
   hilog.info(0x0000, TAG, "peerDeviceId=%{public}s" + connection.getPeerDeviceId());
@@ -719,7 +727,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -777,7 +785,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // 订阅连接结果
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
@@ -831,7 +839,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('connectResult', (result: linkEnhance.ConnectResult): void => {
     hilog.info(0x0000, TAG, 'clientConnectResultCallback result = ' + result.success);
@@ -885,14 +893,14 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   // 订阅断连通知
   connection.on('disconnected', (number: number) => {
     hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
   });
 } catch (err) {
-  hilog.info(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
+  hilog.error(0x0000, TAG, 'errCode: ' + (err as BusinessError).code + ', errMessage: ' +
   (err as BusinessError).message);
 }
 ```
@@ -936,7 +944,7 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
   connection.on('disconnected', (number: number) => {
     hilog.info(0x0000, TAG, 'connection disconnected reason = ' + number);
@@ -990,9 +998,11 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  // 发起连接
   connection.connect();
+  // 订阅数据接收通知
   connection.on('dataReceived', (data: ArrayBuffer) => {
     hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
@@ -1040,11 +1050,13 @@ const TAG = "testDemo";
 
 try {
   let peerDeviceId: string = "00:11:22:33:44:55";
-  hilog.info(0x0000, TAG, 'connection sever deviceId = ' + peerDeviceId);
+  hilog.info(0x0000, TAG, 'connection server deviceId = ' + peerDeviceId);
   let connection: linkEnhance.Connection = linkEnhance.createConnection(peerDeviceId, "demo");
+  // 订阅数据接收通知
   connection.on('dataReceived', (data: ArrayBuffer) => {
     hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });
+  // 取消数据接收通知
   connection.off('dataReceived', (data: ArrayBuffer) => {
     hilog.info(0x0000, TAG, 'recv dataLen = ' + data.byteLength);
   });

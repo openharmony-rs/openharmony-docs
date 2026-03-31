@@ -41,3 +41,7 @@ IPC和RPC采用客户端-服务端（Client-Server）模型。在使用时，Cli
 - 不支持把跨设备的Proxy对象回传到该Proxy对象指向的Stub对象所在的设备。
 
 - 指向远端设备Stub的Proxy对象不能在本设备内二次跨进程传递。
+
+<!--RP1-->
+
+<!--RP1End-->

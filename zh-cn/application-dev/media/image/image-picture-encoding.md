@@ -10,7 +10,7 @@
 
 ## 开发步骤
 
-图片编码相关API的详细介绍请参见：[图片编码接口说明](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md)。
+图片编码相关API的详细介绍请参见[ImagePacker](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md)。
 
 1. 导入相关模块包。
    

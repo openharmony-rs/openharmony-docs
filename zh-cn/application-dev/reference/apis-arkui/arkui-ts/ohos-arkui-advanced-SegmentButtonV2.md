@@ -110,7 +110,7 @@ TabSegmentButtonV2({
 | itemSymbolFontColor              | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮非选中选项HM Symbol类型图标的颜色。<br>默认值：`$r('sys.color.font_secondary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br>items设置symbolModifier的fontColor属性值时，itemSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | itemSelectedSymbolFontColor      | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)  | 否   | @Param             | 配置分段按钮选中选项的HM Symbol类型图标颜色。<br>默认值：`$r('sys.color.font_primary')`<br>值为undefined时，按默认值处理。<br>**说明：**<br/>items设置symbolModifier的fontColor属性值时，itemSelectedSymbolFontColor不生效。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
 | languageDirection                | [Direction](ts-appendix-enums.md#direction)                  | 否   | @Param             | 配置分段按钮的布局方向。<br>默认值：Direction.Auto<br>超出取值范围按默认值处理。<br>该成员只读，不支持更改。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
-| enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 | 
+| enableStateAnimation<sup>24+</sup>             | boolean                                                      | 否   | @Param             | 设置当通过变量修改selectedIndex值时，是否开启分段按钮的属性动画。<br/>true表示开启分段按钮的属性动画；未配置该属性或值为false时表示不开启分段按钮的属性动画，使用原有动画。<br>默认值：false<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 
 ## CapsuleSegmentButtonV2
@@ -331,12 +331,12 @@ get hasHybrid():boolean
 | icon                     | [ResourceStr](ts-types.md#resourcestr)                               | 否 | 是 | 分段按钮选项图片类型图标。<br>默认值：undefined<br>装饰器类型：@Trace      |
 | symbol                   | [Resource](ts-types.md#resource)                                     | 否 | 是 | 分段按钮选项的HM Symbol类型图标。<br>默认值：undefined<br>装饰器类型：@Trace |
 | enabled                  | boolean                                                              | 否 | 否 | 分段按钮选项是否可用。<br>默认值：true<br>true：可用；false：不可用。<br>值为undefined时，按默认值处理。<br>装饰器类型：@Trace |
-| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md)        | 否 | 是 | 分段按钮选项文本属性样式修改器。<br>默认值：undefined<br>装饰器类型：@Trace |
-| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md)       | 否 | 是 | 分段按钮选项图片类型图标属性的样式修改器。<br>默认值：undefined<br>装饰器类型：@Trace |
+| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)        | 否 | 是 | 分段按钮选项文本属性样式修改器。<br>默认值：undefined<br>装饰器类型：@Trace |
+| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)       | 否 | 是 | 分段按钮选项图片类型图标属性的样式修改器。<br>默认值：undefined<br>装饰器类型：@Trace |
 | symbolModifier           | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 是 | 分段按钮选项HM Symbol类型图标属性样式修改器。<br>默认值：undefined<br>装饰器类型：@Trace |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)                               | 否 | 是 | 分段按钮选项的[无障碍文本](ts-universal-attributes-accessibility.md#accessibilitytext)。<br>默认值：""<br>值为undefined时，按默认值处理。<br>装饰器类型：@Trace |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                               | 否 | 是 | 分段按钮选项的[无障碍说明](ts-universal-attributes-accessibility.md#accessibilitydescription)。<br>默认值：""<br>值为undefined时，按默认值处理。<br>装饰器类型：@Trace |
-| accessibilityLevel       | string                                                               | 否 | 是 | 分段按钮选项的[无障碍重要性](ts-universal-attributes-accessibility.md#accessibilitylevel)。<br/>默认值："auto"<br>值为undefined时，按默认值处理。<br>装饰器类型：@Trace |
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)                               | 否 | 是 | 分段按钮选项的无障碍文本[accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext)。<br>默认值：""<br>值为undefined时，按默认值处理。<br>装饰器类型：@Trace |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                               | 否 | 是 | 分段按钮选项的无障碍说明[accessibilityDescription](ts-universal-attributes-accessibility.md#accessibilitydescription)。<br>默认值：""<br>值为undefined时，按默认值处理。<br>装饰器类型：@Trace |
+| accessibilityLevel       | string                                                               | 否 | 是 | 分段按钮选项的无障碍重要性[accessibilityLevel](ts-universal-attributes-accessibility.md#accessibilitylevel)。<br/>默认值："auto"<br>值为undefined时，按默认值处理。<br>装饰器类型：@Trace |
 
 > **说明** 
 >
@@ -395,12 +395,12 @@ get isHybrid():boolean
 | icon                     | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 分段按钮选项图标。<br>默认值：undefined                      |
 | symbol                   | [Resource](ts-types.md#resource)                             | 否   | 是   | 分段按钮选项图标，HM Symbol类型 。<br>默认值：undefined      |
 | enabled                  | boolean                                                      | 否   | 是   | 分段按钮选项是否可用。<br>默认值：true<br>true：分段按钮选项可用；false：分段按钮选项不可用。<br>值为undefined时，按默认值处理。 |
-| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 是   | 分段按钮选项文本属性样式修改器。<br>默认值：undefined        |
-| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 是   | 修改分段按钮选项图片类型的图标属性样式。<br>默认值：undefined |
-| symbolModifier           | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否   | 是   | 分段按钮选项HM Symbol类型图标属性样式修改器。<br>默认值：undefined |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 分段按钮选项[无障碍文本](ts-universal-attributes-accessibility.md#accessibilitytext)。<br>默认值：""<br>值为undefined时，按默认值处理。 |
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 分段按钮选项[无障碍说明](ts-universal-attributes-accessibility.md#accessibilitydescription)。<br>默认值：""<br>值为undefined时，按默认值处理。 |
-| accessibilityLevel       | string                                                       | 否   | 是   | 分段按钮选项[无障碍重要性](ts-universal-attributes-accessibility.md#accessibilitylevel)。<br/>默认值："auto"<br>值为undefined时，按默认值处理。 |
+| textModifier             | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否   | 是   | 分段按钮选项文本属性样式修改器。<br>默认值：undefined        |
+| iconModifier             | [ImageModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否   | 是   | 修改分段按钮选项图片类型的图标属性样式。<br>默认值：undefined |
+| symbolModifier           | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否   | 是   | 分段按钮选项HM Symbol类型图标属性样式修改器。<br>默认值：undefined |
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 分段按钮选项无障碍文本[accessibilityText](ts-universal-attributes-accessibility.md#accessibilitytext)。<br>默认值：""<br>值为undefined时，按默认值处理。 |
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)                       | 否   | 是   | 分段按钮选项无障碍说明[accessibilityDescription](ts-universal-attributes-accessibility.md#accessibilitydescription)。<br>默认值：""<br>值为undefined时，按默认值处理。 |
+| accessibilityLevel       | string                                                       | 否   | 是   | 分段按钮选项无障碍重要性[accessibilityLevel](ts-universal-attributes-accessibility.md#accessibilitylevel)。<br/>默认值："auto"<br>值为undefined时，按默认值处理。 |
 
 > **说明** 
 >
@@ -594,6 +594,7 @@ import { CapsuleSegmentButtonV2, SegmentButtonV2Items } from '@kit.ArkUI';
 @ComponentV2
 struct CapsuleSegmentButtonV2Example {
   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    // 设置分段按钮选项文本。
     { text: '手机' },
     { text: '平板' },
     { text: '2in1' },
@@ -601,6 +602,7 @@ struct CapsuleSegmentButtonV2Example {
   ]);
   @Local textSelectedIndex: number = 0;
   @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    // 设置分段按钮选项图标。
     { icon: $r('sys.media.ohos_ic_public_device_phone') },
     { icon: $r('sys.media.ohos_ic_public_device_pad') },
     { icon: $r('sys.media.ohos_ic_public_device_matebook') },
@@ -608,6 +610,7 @@ struct CapsuleSegmentButtonV2Example {
   ]);
   @Local imageSelectedIndex: number = 0;
   @Local symbolItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    // 分段按钮选项图标，Symbol类型。
     { symbol: $r('sys.symbol.phone') },
     { symbol: $r('sys.symbol.pad') },
     { symbol: $r('sys.symbol.matebook') },
@@ -691,6 +694,7 @@ export struct VCard {
 
   build() {
     Column({ space: 8 }) {
+      // 判断title是否存在，不存在不显示。
       if (this.title) {
         Text(this.title)
           .maxLines(1)
@@ -720,6 +724,7 @@ import { MultiCapsuleSegmentButtonV2, SegmentButtonV2Items } from '@kit.ArkUI';
 @ComponentV2
 struct MultiCapsuleSegmentButtonV2Example {
   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    // 设置分段按钮选项文本。
     { text: '手机' },
     { text: '平板' },
     { text: '2in1' },
@@ -727,6 +732,7 @@ struct MultiCapsuleSegmentButtonV2Example {
   ]);
   @Local textSelectedIndexes: number[] = [0];
   @Local imageItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    // 设置分段按钮选项图标。
     { icon: $r('sys.media.ohos_ic_public_device_phone') },
     { icon: $r('sys.media.ohos_ic_public_device_pad') },
     { icon: $r('sys.media.ohos_ic_public_device_matebook') },
@@ -734,6 +740,7 @@ struct MultiCapsuleSegmentButtonV2Example {
   ]);
   @Local imageSelectedIndexes: number[] = [0];
   @Local symbolItems: SegmentButtonV2Items = new SegmentButtonV2Items([
+    // 分段按钮选项图标，Symbol类型。
     { symbol: $r('sys.symbol.phone') },
     { symbol: $r('sys.symbol.pad') },
     { symbol: $r('sys.symbol.matebook') },
@@ -817,6 +824,7 @@ export struct VCard {
 
   build() {
     Column({ space: 8 }) {
+      // 判断title是否存在，不存在不显示。
       if (this.title) {
         Text(this.title)
           .maxLines(1)
@@ -854,10 +862,12 @@ import {
 @ComponentV2
 struct SegmentButtonV2Example {
   @Local textItems: SegmentButtonV2Items = new SegmentButtonV2Items([
-    { text: '手机', textModifier: new TextModifier().fontSize(20) },
+    { text: '手机', textModifier: new TextModifier().fontSize(20) }, // textModifier: 分段按钮选项文本属性样式修改器。
     { text: '平板' },
+    // iconModifier: 修改分段按钮选项图片类型的图标属性样式。
     { icon: $r('sys.media.ohos_ic_public_device_phone'), iconModifier: new ImageModifier().height(17).width(17) },
     { icon: $r('sys.media.ohos_ic_public_device_pad') },
+    // symbolModifier: 分段按钮选项Symbol类型图标属性样式修改器。
     { symbol: $r('sys.symbol.phone'), symbolModifier: new SymbolGlyphModifier().fontColor([Color.Pink]) },
     { symbolModifier: new SymbolGlyphModifier($r('sys.symbol.pad')).fontColor([Color.Orange]) },
     { symbol: $r('sys.symbol.matebook') },
@@ -909,6 +919,7 @@ export struct VCard {
 
   build() {
     Column({ space: 8 }) {
+      // 判断title是否存在，不存在不显示。
       if (this.title) {
         Text(this.title)
           .maxLines(1)

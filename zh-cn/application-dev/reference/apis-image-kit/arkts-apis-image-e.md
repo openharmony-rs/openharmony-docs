@@ -80,6 +80,7 @@
 | FRAGMENT_METADATA | 2    | 水印裁剪图元数据。 |
 | GIF_METADATA<sup>20+</sup> | 5    | GIF图片元数据。 |
 | HEIFS_METADATA<sup>23+</sup> | 15    | HEIF序列图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| WEBP_METADATA<sup>24+</sup> | 17    | WebP图片元数据。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## ScaleMode<sup>9+</sup>
 
@@ -325,6 +326,22 @@
 | 名称              | 值                | 说明                   |
 | ----------------- | ----------------- | --------------------- |
 | HEIFS_DELAY_TIME    | 'HeifsDelayTime'    | HEIF序列图片的每帧延迟时长。<br>单位为毫秒。 |
+
+## WebPPropertyKey<sup>24+</sup>
+
+枚举，WebP图片信息。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+| 名称              | 值                | 说明                   |
+| ----------------- | ----------------- | --------------------- |
+| CANVAS_WIDTH    | 'WebPCanvasWidth'    | WebP图片的画布像素宽度。<br>单位为像素（px）。 |
+| CANVAS_HEIGHT    | 'WebPCanvasHeight'    | WebP图片的画布像素高度。<br>单位为像素（px）。 |
+| DELAY_TIME    | 'WebPDelayTime'    | WebP图片钳制后的帧延迟时长。钳制范围为[100, 65535]。<br>单位为毫秒（ms）。 |
+| UNCLAMPED_DELAY_TIME    | 'WebPUnclampedDelayTime'    | WebP图片未钳制的帧延迟时长。<br>单位为毫秒（ms）。 |
+| LOOP_COUNT    | 'WebPLoopCount'    | WebP图片动画循环的次数。如果取值为0，则表示不限次数。 |
 
 ## ImageFormat<sup>9+</sup>
 

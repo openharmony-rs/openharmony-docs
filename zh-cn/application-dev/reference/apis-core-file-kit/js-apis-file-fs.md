@@ -36,7 +36,7 @@ import { fileIo as fs } from '@kit.CoreFileKit';
 
 获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义解及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
-## fs.stat
+## fileIo.stat
 
 stat(file: string | number): Promise&lt;Stat&gt;
 
@@ -74,7 +74,7 @@ stat(file: string | number): Promise&lt;Stat&gt;
   });
   ```
 
-## fs.stat
+## fileIo.stat
 
 stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): void
 
@@ -108,7 +108,7 @@ stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): void
   });
   ```
 
-## fs.statSync
+## fileIo.statSync
 
 statSync(file: string | number): Stat
 
@@ -141,7 +141,7 @@ statSync(file: string | number): Stat
   console.info("get file info succeed, the size of file is " + stat.size);
   ```
 
-## fs.access
+## fileIo.access
 
 access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
 
@@ -185,7 +185,7 @@ access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
   });
   ```
 
-## fs.access<sup>12+</sup>
+## fileIo.access<sup>12+</sup>
 
 access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boolean&gt;
 
@@ -227,7 +227,7 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
   });
   ```
 
-## fs.access
+## fileIo.access
 
 access(path: string, callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -267,7 +267,7 @@ access(path: string, callback: AsyncCallback&lt;boolean&gt;): void
   });
   ```
 
-## fs.accessSync
+## fileIo.accessSync
 
 accessSync(path: string, mode?: AccessModeType): boolean
 
@@ -312,7 +312,7 @@ accessSync(path: string, mode?: AccessModeType): boolean
   }
   ```
 
-## fs.accessSync<sup>12+</sup>
+## fileIo.accessSync<sup>12+</sup>
 
 accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
@@ -356,7 +356,7 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
   }
   ```
 
-## fs.close
+## fileIo.close
 
 close(file: number | File): Promise&lt;void&gt;
 
@@ -395,7 +395,7 @@ close(file: number | File): Promise&lt;void&gt;
   });
   ```
 
-## fs.close
+## fileIo.close
 
 close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
 
@@ -431,7 +431,7 @@ close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
   });
   ```
 
-## fs.closeSync
+## fileIo.closeSync
 
 closeSync(file: number | File): void
 
@@ -459,7 +459,7 @@ closeSync(file: number | File): void
   fs.closeSync(file);
   ```
 
-## fs.copy<sup>11+</sup>
+## fileIo.copy<sup>11+</sup>
 
 copy(srcUri: string, destUri: string, options?: CopyOptions): Promise\<void>
 
@@ -518,7 +518,7 @@ try {
 }
 ```
 
-## fs.copy<sup>11+</sup>
+## fileIo.copy<sup>11+</sup>
 
 copy(srcUri: string, destUri: string, callback: AsyncCallback\<void>): void
 
@@ -566,7 +566,7 @@ try {
 }
 ```
 
-## fs.copy<sup>11+</sup>
+## fileIo.copy<sup>11+</sup>
 
 copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallback\<void>): void
 
@@ -622,7 +622,7 @@ try {
 }
 ```
 
-## fs.copyFile
+## fileIo.copyFile
 
 copyFile(src: string | number, dest: string | number, mode?: number): Promise&lt;void&gt;
 
@@ -663,7 +663,7 @@ copyFile(src: string | number, dest: string | number, mode?: number): Promise&lt
   });
   ```
 
-## fs.copyFile
+## fileIo.copyFile
 
 copyFile(src: string | number, dest: string | number, mode: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -701,7 +701,7 @@ copyFile(src: string | number, dest: string | number, mode: number, callback: As
   });
   ```
 
-## fs.copyFile
+## fileIo.copyFile
 
 copyFile(src: string | number, dest: string | number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -739,7 +739,7 @@ copyFile(src: string | number, dest: string | number, callback: AsyncCallback&lt
   ```
 
 
-## fs.copyFileSync
+## fileIo.copyFileSync
 
 copyFileSync(src: string | number, dest: string | number, mode?: number): void
 
@@ -769,7 +769,7 @@ copyFileSync(src: string | number, dest: string | number, mode?: number): void
   fs.copyFileSync(srcPath, dstPath);
   ```
 
-## fs.copyDir<sup>10+</sup>
+## fileIo.copyDir<sup>10+</sup>
 
 copyDir(src: string, dest: string, mode?: number): Promise\<void>
 
@@ -809,7 +809,7 @@ copyDir(src: string, dest: string, mode?: number): Promise\<void>
   });
   ```
 
-## fs.copyDir<sup>10+</sup>
+## fileIo.copyDir<sup>10+</sup>
 
 copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -851,7 +851,7 @@ copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
   });
   ```
 
-## fs.copyDir<sup>10+</sup>
+## fileIo.copyDir<sup>10+</sup>
 
 copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -894,7 +894,7 @@ copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
   });
   ```
 
-## fs.copyDirSync<sup>10+</sup>
+## fileIo.copyDirSync<sup>10+</sup>
 
 copyDirSync(src: string, dest: string, mode?: number): void
 
@@ -930,7 +930,7 @@ copyDirSync(src: string, dest: string, mode?: number): void
   }
   ```
 
-## fs.dup<sup>10+</sup>
+## fileIo.dup<sup>10+</sup>
 
 dup(fd: number): File
 
@@ -966,7 +966,7 @@ dup(fd: number): File
   fs.closeSync(file2);
   ```
 
-## fs.connectDfs<sup>12+</sup>
+## fileIo.connectDfs<sup>12+</sup>
 
 connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
@@ -981,7 +981,7 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
   | 参数名  | 类型     | 必填   | 说明                                       |
   | ---- | ------ | ---- | ---------------------------------------- |
   | networkId   | string | 是    | 设备的网络Id。通过[distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)接口调用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)获得。                             |
-  | listeners | [DfsListeners](#fsdfslisteners12) | 是    | 分布式文件系统状态监听器。                |
+  | listeners | [DfsListeners](#fileiodfslisteners12) | 是    | 分布式文件系统状态监听器。                |
 
 **返回值：**
 
@@ -1017,7 +1017,7 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
   }
   ```
 
-## fs.disconnectDfs<sup>12+</sup>
+## fileIo.disconnectDfs<sup>12+</sup>
 
 disconnectDfs(networkId: string): Promise&lt;void&gt;
 
@@ -1062,7 +1062,7 @@ disconnectDfs(networkId: string): Promise&lt;void&gt;
   }
   ```
 
-## fs.setxattr<sup>12+</sup>
+## fileIo.setxattr<sup>12+</sup>
 
 setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
@@ -1104,7 +1104,7 @@ setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
   });
 
   ```
-## fs.setxattrSync<sup>12+</sup>
+## fileIo.setxattrSync<sup>12+</sup>
 
 setxattrSync(path: string, key: string, value: string): void
 
@@ -1142,7 +1142,7 @@ setxattrSync(path: string, key: string, value: string): void
 
   ```
 
-## fs.getxattr<sup>12+</sup>
+## fileIo.getxattr<sup>12+</sup>
 
 getxattr(path: string, key: string): Promise&lt;string&gt;
 
@@ -1183,7 +1183,7 @@ getxattr(path: string, key: string): Promise&lt;string&gt;
 
   ```
 
-## fs.getxattrSync<sup>12+</sup>
+## fileIo.getxattrSync<sup>12+</sup>
 
 getxattrSync(path: string, key: string): string
 
@@ -1225,7 +1225,7 @@ getxattrSync(path: string, key: string): string
 
   ```
 
-## fs.mkdir
+## fileIo.mkdir
 
 mkdir(path: string): Promise&lt;void&gt;
 
@@ -1263,7 +1263,7 @@ mkdir(path: string): Promise&lt;void&gt;
   });
   ```
 
-## fs.mkdir<sup>11+</sup>
+## fileIo.mkdir<sup>11+</sup>
 
 mkdir(path: string, recursion: boolean): Promise\<void>
 
@@ -1302,7 +1302,7 @@ mkdir(path: string, recursion: boolean): Promise\<void>
   });
   ```
 
-## fs.mkdir
+## fileIo.mkdir
 
 mkdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1337,7 +1337,7 @@ mkdir(path: string, callback: AsyncCallback&lt;void&gt;): void
   });
   ```
 
-## fs.mkdir<sup>11+</sup>
+## fileIo.mkdir<sup>11+</sup>
 
 mkdir(path: string, recursion: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1373,7 +1373,7 @@ mkdir(path: string, recursion: boolean, callback: AsyncCallback&lt;void&gt;): vo
   });
   ```
 
-## fs.mkdirSync
+## fileIo.mkdirSync
 
 mkdirSync(path: string): void
 
@@ -1400,7 +1400,7 @@ mkdirSync(path: string): void
   fs.mkdirSync(dirPath);
   ```
 
-## fs.mkdirSync<sup>11+</sup>
+## fileIo.mkdirSync<sup>11+</sup>
 
 mkdirSync(path: string, recursion: boolean): void
 
@@ -1428,7 +1428,7 @@ mkdirSync(path: string, recursion: boolean): void
   fs.mkdirSync(dirPath, true);
   ```
 
-## fs.open
+## fileIo.open
 
 open(path: string, mode?: number): Promise&lt;File&gt;
 
@@ -1469,7 +1469,7 @@ open(path: string, mode?: number): Promise&lt;File&gt;
   ```
 
 
-## fs.open
+## fileIo.open
 
 open(path: string, mode: number, callback: AsyncCallback&lt;File&gt;): void
 
@@ -1508,7 +1508,7 @@ open(path: string, mode: number, callback: AsyncCallback&lt;File&gt;): void
   });
   ```
 
-## fs.open
+## fileIo.open
 
 open(path: string, callback: AsyncCallback&lt;File&gt;): void
 
@@ -1544,7 +1544,7 @@ open(path: string, callback: AsyncCallback&lt;File&gt;): void
   });
   ```
 
-## fs.openSync
+## fileIo.openSync
 
 openSync(path: string, mode?: number): File
 
@@ -1580,7 +1580,7 @@ openSync(path: string, mode?: number): File
   fs.closeSync(file);
   ```
 
-## fs.read
+## fileIo.read
 
 read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
 
@@ -1596,13 +1596,13 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&
 | ------- | ----------- | ---- | ------------------------------------------------------------ |
 | fd      | number      | 是   | 已打开的文件描述符。                                     |
 | buffer  | ArrayBuffer | 是   | 用于保存读取到的文件数据的缓冲区。                           |
-| options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。|
+| options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。|
 
 **返回值：**
 
   | 类型                                 | 说明     |
   | ---------------------------------- | ------ |
-  | Promise&lt;number&gt; | Promise对象。返回实际读取的数据长度（单位：字节）。|
+  | Promise&lt;number&gt; | Promise对象。返回实际读取的数据长度，单位为Byte。|
 
 **错误码：**
 
@@ -1627,7 +1627,7 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&
   });
   ```
 
-## fs.read
+## fileIo.read
 
 read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;number&gt;): void
 
@@ -1643,8 +1643,8 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCall
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | fd       | number                                   | 是    | 已打开的文件描述符。                             |
   | buffer   | ArrayBuffer                              | 是    | 用于保存读取到的文件数据的缓冲区。                        |
-  | options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。|
-  | callback | AsyncCallback&lt;number&gt; | 是    | 异步读取数据之后的回调。返回实际读取的数据长度，单位字节。                             |
+  | options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。|
+  | callback | AsyncCallback&lt;number&gt; | 是    | 异步读取数据之后的回调。返回实际读取的数据长度，单位为Byte。                             |
 
 **错误码：**
 
@@ -1670,7 +1670,7 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCall
   });
   ```
 
-## fs.readSync
+## fileIo.readSync
 
 readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
 
@@ -1686,13 +1686,13 @@ readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
   | ------- | ----------- | ---- | ---------------------------------------- |
   | fd      | number      | 是    | 已打开的文件描述符。                             |
   | buffer  | ArrayBuffer | 是    | 用于保存读取到的文件数据的缓冲区。                        |
-  | options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。|
+  | options | [ReadOptions](#readoptions11)      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。|
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 返回实际读取的数据长度（单位：字节）。 |
+  | number | 返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -1708,7 +1708,7 @@ readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
   fs.closeSync(file);
   ```
 
-## fs.rmdir
+## fileIo.rmdir
 
 rmdir(path: string): Promise&lt;void&gt;
 
@@ -1750,7 +1750,7 @@ rmdir(path: string): Promise&lt;void&gt;
   });
   ```
 
-## fs.rmdir
+## fileIo.rmdir
 
 rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1789,7 +1789,7 @@ rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
   });
   ```
 
-## fs.rmdirSync
+## fileIo.rmdirSync
 
 rmdirSync(path: string): void
 
@@ -1820,7 +1820,7 @@ rmdirSync(path: string): void
   fs.rmdirSync(dirPath);
   ```
 
-## fs.unlink
+## fileIo.unlink
 
 unlink(path: string): Promise&lt;void&gt;
 
@@ -1858,7 +1858,7 @@ unlink(path: string): Promise&lt;void&gt;
   });
   ```
 
-## fs.unlink
+## fileIo.unlink
 
 unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1893,7 +1893,7 @@ unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
   });
   ```
 
-## fs.unlinkSync
+## fileIo.unlinkSync
 
 unlinkSync(path: string): void
 
@@ -1921,7 +1921,7 @@ unlinkSync(path: string): void
   ```
 
 
-## fs.write
+## fileIo.write
 
 write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&gt;
 
@@ -1937,13 +1937,13 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): Promise
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd      | number                          | 是    | 已打开的文件描述符。                             |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写入。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写入。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型                    | 说明       |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回实际写入的数据长度（单位：字节）。 |
+  | Promise&lt;number&gt; | Promise对象。返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -1965,7 +1965,7 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): Promise
   });
   ```
 
-## fs.write
+## fileIo.write
 
 write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallback&lt;number&gt;): void
 
@@ -1981,7 +1981,7 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions, callback
   | -------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd       | number                          | 是    | 已打开的文件描述符。                             |
   | buffer   | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
   | callback | AsyncCallback&lt;number&gt;     | 是    | 异步将数据写入完成后执行的回调函数。                       |
 
 **错误码：**
@@ -2005,7 +2005,7 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions, callback
   });
   ```
 
-## fs.writeSync
+## fileIo.writeSync
 
 writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): number
 
@@ -2021,13 +2021,13 @@ writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): num
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | fd      | number                          | 是    | 已打开的文件描述符。                             |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 返回实际写入的数据长度（单位：字节）。 |
+  | number | 返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -2044,7 +2044,7 @@ writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): num
   fs.closeSync(file);
   ```
 
-## fs.truncate
+## fileIo.truncate
 
 truncate(file: string | number, len?: number): Promise&lt;void&gt;
 
@@ -2059,7 +2059,7 @@ truncate(file: string | number, len?: number): Promise&lt;void&gt;
 | 参数名 | 类型   | 必填 | 说明                             |
 | ------ | ------ | ---- | -------------------------------- |
 | file   | string \| number | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。       |
-| len    | number | 否   | 文件截断后的长度（单位：字节）。默认为0。 |
+| len    | number | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **返回值：**
 
@@ -2084,7 +2084,7 @@ truncate(file: string | number, len?: number): Promise&lt;void&gt;
   });
   ```
 
-## fs.truncate
+## fileIo.truncate
 
 truncate(file: string | number, len?: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2099,7 +2099,7 @@ truncate(file: string | number, len?: number, callback: AsyncCallback&lt;void&gt
 | 参数名   | 类型                      | 必填 | 说明                             |
 | -------- | ------------------------- | ---- | -------------------------------- |
 | file     | string \| number                    | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。       |
-| len      | number                    | 否   | 文件截断后的长度，以字节为单位。默认为0。 |
+| len      | number                    | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数，本调用无返回值。   |
 
 **错误码：**
@@ -2121,7 +2121,7 @@ truncate(file: string | number, len?: number, callback: AsyncCallback&lt;void&gt
   });
   ```
 
-## fs.truncateSync
+## fileIo.truncateSync
 
 truncateSync(file: string | number, len?: number): void
 
@@ -2136,7 +2136,7 @@ truncateSync(file: string | number, len?: number): void
 | 参数名 | 类型   | 必填 | 说明                             |
 | ------ | ------ | ---- | -------------------------------- |
 | file   | string \| number | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。       |
-| len    | number | 否   | 文件截断后的长度（单位：字节）。默认为0。 |
+| len    | number | 否   | 文件截断后的长度，单位为Byte。默认为0。 |
 
 **错误码：**
 
@@ -2150,7 +2150,7 @@ truncateSync(file: string | number, len?: number): void
   fs.truncateSync(filePath, len);
   ```
 
-## fs.readLines<sup>11+</sup>
+## fileIo.readLines<sup>11+</sup>
 
 readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
 
@@ -2193,7 +2193,7 @@ readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
   });
   ```
 
-## fs.readLines<sup>11+</sup>
+## fileIo.readLines<sup>11+</sup>
 
 readLines(filePath: string, options?: Options, callback: AsyncCallback&lt;ReaderIterator&gt;): void
 
@@ -2233,7 +2233,7 @@ readLines(filePath: string, options?: Options, callback: AsyncCallback&lt;Reader
   });
   ```
 
-## fs.readLinesSync<sup>11+</sup>
+## fileIo.readLinesSync<sup>11+</sup>
 
 readLinesSync(filePath: string, options?: Options): ReaderIterator
 
@@ -2327,7 +2327,7 @@ next(): ReaderIteratorResult
 | done | boolean     |  迭代器是否已完成迭代。true：已完成迭代；false：未完成迭代。          |
 | value    | string     | 逐行读取的文件文本内容。 |
 
-## fs.readText
+## fileIo.readText
 
 readText(filePath: string, options?: ReadTextOptions): Promise&lt;string&gt;
 
@@ -2342,7 +2342,7 @@ readText(filePath: string, options?: ReadTextOptions): Promise&lt;string&gt;
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | filePath | string | 是   | 文件的应用沙箱路径。                                   |
-| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
@@ -2366,7 +2366,7 @@ readText(filePath: string, options?: ReadTextOptions): Promise&lt;string&gt;
   });
   ```
 
-## fs.readText
+## fileIo.readText
 
 readText(filePath: string, options?: ReadTextOptions, callback: AsyncCallback&lt;string&gt;): void
 
@@ -2381,7 +2381,7 @@ readText(filePath: string, options?: ReadTextOptions, callback: AsyncCallback&lt
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | filePath | string                      | 是   | 文件的应用沙箱路径。                                   |
-| options  | [ReadTextOptions](#readtextoptions11)                      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | [ReadTextOptions](#readtextoptions11)                      | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数，返回读取文件的内容。                         |
 
 **错误码：**
@@ -2409,7 +2409,7 @@ readText(filePath: string, options?: ReadTextOptions, callback: AsyncCallback&lt
   });
   ```
 
-## fs.readTextSync
+## fileIo.readTextSync
 
 readTextSync(filePath: string, options?: ReadTextOptions): string
 
@@ -2424,7 +2424,7 @@ readTextSync(filePath: string, options?: ReadTextOptions): string
 | 参数名   | 类型   | 必填 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
 | filePath | string | 是   | 文件的应用沙箱路径。                                   |
-| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
@@ -2452,7 +2452,7 @@ readTextSync(filePath: string, options?: ReadTextOptions): string
   console.info("readText succeed:" + str);
   ```
 
-## fs.lstat
+## fileIo.lstat
 
 lstat(path: string): Promise&lt;Stat&gt;
 
@@ -2488,7 +2488,7 @@ lstat(path: string): Promise&lt;Stat&gt;
   });
   ```
 
-## fs.lstat
+## fileIo.lstat
 
 lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
@@ -2521,7 +2521,7 @@ lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
   });
   ```
 
-## fs.lstatSync
+## fileIo.lstatSync
 
 lstatSync(path: string): Stat
 
@@ -2553,7 +2553,7 @@ lstatSync(path: string): Stat
   console.info("lstat succeed, the size of file is " + fileStat.size);
   ```
 
-## fs.rename
+## fileIo.rename
 
 rename(oldPath: string, newPath: string): Promise&lt;void&gt;
 
@@ -2597,7 +2597,7 @@ rename(oldPath: string, newPath: string): Promise&lt;void&gt;
   });
   ```
 
-## fs.rename
+## fileIo.rename
 
 rename(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2638,7 +2638,7 @@ rename(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;): v
   });
   ```
 
-## fs.renameSync
+## fileIo.renameSync
 
 renameSync(oldPath: string, newPath: string): void
 
@@ -2671,7 +2671,7 @@ renameSync(oldPath: string, newPath: string): void
   fs.renameSync(srcFile, dstFile);
   ```
 
-## fs.fsync
+## fileIo.fsync
 
 fsync(fd: number): Promise&lt;void&gt;
 
@@ -2710,7 +2710,7 @@ fsync(fd: number): Promise&lt;void&gt;
   });
   ```
 
-## fs.fsync
+## fileIo.fsync
 
 fsync(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2746,7 +2746,7 @@ fsync(fd: number, callback: AsyncCallback&lt;void&gt;): void
   ```
 
 
-## fs.fsyncSync
+## fileIo.fsyncSync
 
 fsyncSync(fd: number): void
 
@@ -2773,7 +2773,7 @@ fsyncSync(fd: number): void
   fs.closeSync(file);
   ```
 
-## fs.fdatasync
+## fileIo.fdatasync
 
 fdatasync(fd: number): Promise&lt;void&gt;
 
@@ -2812,7 +2812,7 @@ fdatasync(fd: number): Promise&lt;void&gt;
   });
   ```
 
-## fs.fdatasync
+## fileIo.fdatasync
 
 fdatasync(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2847,7 +2847,7 @@ fdatasync(fd: number, callback: AsyncCallback&lt;void&gt;): void
   });
   ```
 
-## fs.fdatasyncSync
+## fileIo.fdatasyncSync
 
 fdatasyncSync(fd: number): void
 
@@ -2874,7 +2874,7 @@ fdatasyncSync(fd: number): void
   fs.closeSync(file);
   ```
 
-## fs.symlink
+## fileIo.symlink
 
 symlink(target: string, srcPath: string): Promise&lt;void&gt;
 
@@ -2917,7 +2917,7 @@ symlink(target: string, srcPath: string): Promise&lt;void&gt;
   ```
 
 
-## fs.symlink
+## fileIo.symlink
 symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): void
 
 基于文件路径创建符号链接，使用callback异步回调。
@@ -2955,7 +2955,7 @@ symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): v
   });
   ```
 
-## fs.symlinkSync
+## fileIo.symlinkSync
 
 symlinkSync(target: string, srcPath: string): void
 
@@ -2986,7 +2986,7 @@ symlinkSync(target: string, srcPath: string): void
   fs.symlinkSync(srcFile, dstFile);
   ```
 
-## fs.listFile
+## fileIo.listFile
 listFile(path: string, options?: ListFileOptions): Promise<string[]>
 
 默认列出当前目录下所有文件名和目录名。支持过滤。使用promise异步回调。
@@ -3039,7 +3039,7 @@ listFile(path: string, options?: ListFileOptions): Promise<string[]>
   });
   ```
 
-## fs.listFile
+## fileIo.listFile
 listFile(path: string, options?: ListFileOptions, callback: AsyncCallback<string[]>): void
 
 默认列出当前目录下所有文件名和目录名。支持过滤。使用callback异步回调。
@@ -3089,7 +3089,7 @@ listFile(path: string, options?: ListFileOptions, callback: AsyncCallback<string
   });
   ```
 
-## fs.listFileSync
+## fileIo.listFileSync
 
 listFileSync(path: string, options?: ListFileOptions): string[]
 
@@ -3139,7 +3139,7 @@ listFileSync(path: string, options?: ListFileOptions): string[]
   }
   ```
 
-## fs.lseek<sup>11+</sup>
+## fileIo.lseek<sup>11+</sup>
 
 lseek(fd: number, offset: number, whence?: WhenceType): number
 
@@ -3152,14 +3152,14 @@ lseek(fd: number, offset: number, whence?: WhenceType): number
   | 参数名    | 类型     | 必填   | 说明                          |
   | ------ | ------ | ---- | --------------------------- |
   | fd | number | 是    | 文件描述符。 |
-  | offset | number | 是    | 相对偏移位置，单位为字节。 |
+  | offset | number | 是    | 相对偏移位置，单位为Byte。 |
   | whence | [WhenceType](#whencetype11) | 否    | 偏移指针相对位置类型。不指定则默认为文件起始位置处。|
 
 **返回值：**
 
   | 类型                   | 说明         |
   | --------------------- | ---------- |
-  | number | 当前文件偏移指针位置（相对于文件头的偏移量，单位为字节）。 |
+  | number | 当前文件偏移指针位置（相对于文件头的偏移量，单位为Byte）。 |
 
 **错误码：**
 
@@ -3174,7 +3174,7 @@ lseek(fd: number, offset: number, whence?: WhenceType): number
   fs.closeSync(file);
   ```
 
-## fs.moveDir<sup>10+</sup>
+## fileIo.moveDir<sup>10+</sup>
 
 moveDir(src: string, dest: string, mode?: number): Promise\<void>
 
@@ -3217,7 +3217,7 @@ moveDir(src: string, dest: string, mode?: number): Promise\<void>
   });
   ```
 
-## fs.moveDir<sup>10+</sup>
+## fileIo.moveDir<sup>10+</sup>
 
 moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -3262,7 +3262,7 @@ moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
   });
   ```
 
-  ## fs.moveDir<sup>10+</sup>
+## fileIo.moveDir<sup>10+</sup>
 
 moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -3308,7 +3308,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
   });
   ```
 
-## fs.moveDirSync<sup>10+</sup>
+## fileIo.moveDirSync<sup>10+</sup>
 
 moveDirSync(src: string, dest: string, mode?: number): void
 
@@ -3354,7 +3354,7 @@ try {
 }
 ```
 
-## fs.moveFile
+## fileIo.moveFile
 
 moveFile(src: string, dest: string, mode?: number): Promise\<void>
 
@@ -3397,7 +3397,7 @@ moveFile(src: string, dest: string, mode?: number): Promise\<void>
   });
   ```
 
-## fs.moveFile
+## fileIo.moveFile
 
 moveFile(src: string, dest: string, mode: number, callback: AsyncCallback\<void>): void
 
@@ -3437,7 +3437,7 @@ moveFile(src: string, dest: string, mode: number, callback: AsyncCallback\<void>
   });
   ```
 
-## fs.moveFile
+## fileIo.moveFile
 
 moveFile(src: string, dest: string, callback: AsyncCallback\<void>): void
 
@@ -3476,7 +3476,7 @@ moveFile(src: string, dest: string, callback: AsyncCallback\<void>): void
   });
   ```
 
-## fs.moveFileSync
+## fileIo.moveFileSync
 
 moveFileSync(src: string, dest: string, mode?: number): void
 
@@ -3509,7 +3509,7 @@ moveFileSync(src: string, dest: string, mode?: number): void
   console.info("move file succeed");
   ```
 
-## fs.mkdtemp
+## fileIo.mkdtemp
 
 mkdtemp(prefix: string): Promise&lt;string&gt;
 
@@ -3544,7 +3544,7 @@ mkdtemp(prefix: string): Promise&lt;string&gt;
   });
   ```
 
-## fs.mkdtemp
+## fileIo.mkdtemp
 
 mkdtemp(prefix: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -3576,7 +3576,7 @@ mkdtemp(prefix: string, callback: AsyncCallback&lt;string&gt;): void
   });
   ```
 
-## fs.mkdtempSync
+## fileIo.mkdtempSync
 
 mkdtempSync(prefix: string): string
 
@@ -3606,7 +3606,7 @@ mkdtempSync(prefix: string): string
   let res = fs.mkdtempSync(pathDir + "/XXXXXX");
   ```
 
-## fs.utimes<sup>11+</sup>
+## fileIo.utimes<sup>11+</sup>
 
 utimes(path: string, mtime: number): void
 
@@ -3634,7 +3634,7 @@ utimes(path: string, mtime: number): void
   fs.utimes(filePath, new Date().getTime());
   ```
 
-## fs.createRandomAccessFile<sup>10+</sup>
+## fileIo.createRandomAccessFile<sup>10+</sup>
 
 createRandomAccessFile(file: string | File, mode?: number): Promise&lt;RandomAccessFile&gt;
 
@@ -3674,7 +3674,7 @@ createRandomAccessFile(file: string | File, mode?: number): Promise&lt;RandomAcc
   });
   ```
 
-## fs.createRandomAccessFile<sup>10+</sup>
+## fileIo.createRandomAccessFile<sup>10+</sup>
 
 createRandomAccessFile(file: string | File, callback: AsyncCallback&lt;RandomAccessFile&gt;): void
 
@@ -3709,7 +3709,7 @@ createRandomAccessFile(file: string | File, callback: AsyncCallback&lt;RandomAcc
   });
   ```
 
-  ## fs.createRandomAccessFile<sup>10+</sup>
+## fileIo.createRandomAccessFile<sup>10+</sup>
 
 createRandomAccessFile(file: string | File, mode: number, callback: AsyncCallback&lt;RandomAccessFile&gt;): void
 
@@ -3745,7 +3745,7 @@ createRandomAccessFile(file: string | File, mode: number, callback: AsyncCallbac
   });
   ```
 
-## fs.createRandomAccessFile<sup>12+</sup>
+## fileIo.createRandomAccessFile<sup>12+</sup>
 
 createRandomAccessFile(file: string | File, mode?: number, options?: RandomAccessFileOptions): Promise&lt;RandomAccessFile&gt;
 
@@ -3785,7 +3785,7 @@ fs.createRandomAccessFile(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE,
 ```
 
 
-## fs.createRandomAccessFileSync<sup>10+</sup>
+## fileIo.createRandomAccessFileSync<sup>10+</sup>
 
 createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
 
@@ -3819,7 +3819,7 @@ createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
   randomAccessFile.close();
   ```
 
-## fs.createRandomAccessFileSync<sup>12+</sup>
+## fileIo.createRandomAccessFileSync<sup>12+</sup>
 
 createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomAccessFileOptions): RandomAccessFile
 
@@ -3854,7 +3854,7 @@ createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomA
   randomAccessFile.close();
   ```
 
-## fs.createStream
+## fileIo.createStream
 
 createStream(path: string, mode: string): Promise&lt;Stream&gt;
 
@@ -3895,7 +3895,7 @@ createStream(path: string, mode: string): Promise&lt;Stream&gt;
   ```
 
 
-## fs.createStream
+## fileIo.createStream
 
 createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;): void
 
@@ -3932,7 +3932,7 @@ createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;):
   })
   ```
 
-## fs.createStreamSync
+## fileIo.createStreamSync
 
 createStreamSync(path: string, mode: string): Stream
 
@@ -3969,7 +3969,7 @@ createStreamSync(path: string, mode: string): Stream
   ```
 
 
-## fs.fdopenStream
+## fileIo.fdopenStream
 
 fdopenStream(fd: number, mode: string): Promise&lt;Stream&gt;
 
@@ -4016,7 +4016,7 @@ fdopenStream(fd: number, mode: string): Promise&lt;Stream&gt;
 >
 > 使用文件描述符创建的文件流时，文件描述符的生命周期将由文件流对象管理。调用文件流的close()函数后，初始的文件描述符也会被关闭。
 
-## fs.fdopenStream
+## fileIo.fdopenStream
 
 fdopenStream(fd: number, mode: string, callback: AsyncCallback&lt;Stream&gt;): void
 
@@ -4060,7 +4060,7 @@ fdopenStream(fd: number, mode: string, callback: AsyncCallback&lt;Stream&gt;): v
 >
 > 使用文件描述符创建的文件流，文件描述符的生命周期也交由文件流对象，在调用文件流的close()函数后，初始的文件描述符也会被关闭。
 
-## fs.fdopenStreamSync
+## fileIo.fdopenStreamSync
 
 fdopenStreamSync(fd: number, mode: string): Stream
 
@@ -4100,7 +4100,7 @@ fdopenStreamSync(fd: number, mode: string): Stream
 >
 > 使用文件描述符创建的文件流，文件描述符的生命周期也交由文件流对象，在调用文件流的close()函数后，初始的文件描述符也会被关闭。
 
-## fs.createReadStream<sup>12+</sup>
+## fileIo.createReadStream<sup>12+</sup>
 
 createReadStream(path: string, options?: ReadStreamOptions ): ReadStream
 
@@ -4142,7 +4142,7 @@ createReadStream(path: string, options?: ReadStreamOptions ): ReadStream
   });
   ```
 
-## fs.createWriteStream<sup>12+</sup>
+## fileIo.createWriteStream<sup>12+</sup>
 
 createWriteStream(path: string, options?: WriteStreamOptions): WriteStream
 
@@ -4225,7 +4225,7 @@ getBaseFile(): File
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4267,7 +4267,7 @@ openRead(): ReadStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4318,7 +4318,7 @@ readFully(): ArrayBuffer
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4369,7 +4369,7 @@ startWrite(): WriteStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4404,7 +4404,7 @@ finishWrite(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4438,7 +4438,7 @@ failWrite(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4473,7 +4473,7 @@ delete(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -4505,7 +4505,7 @@ try {
 }
 ```
 
-## fs.createWatcher<sup>10+</sup>
+## fileIo.createWatcher<sup>10+</sup>
 
 createWatcher(path: string, events: number, listener: WatchEventListener): Watcher
 
@@ -4592,8 +4592,8 @@ createWatcher(path: string, events: number, listener: WatchEventListener): Watch
 
 | 名称   | 类型   | 只读   | 可选   | 说明      |
 | ---- | ------ | ---- | ---- | ------- |
-| processedSize | number | 是    | 否    | 已拷贝的数据大小。 |
-| totalSize | number | 是    | 否    | 待拷贝的数据总大小。 |
+| processedSize | number | 是    | 否    | 已拷贝的数据大小，单位为Byte。 |
+| totalSize | number | 是    | 否    | 待拷贝的数据总大小，单位为Byte。 |
 
 ## TaskSignal<sup>12+</sup>
 
@@ -4725,7 +4725,7 @@ copySignal.onCancel();
 
 ## Stat
 
-文件具体信息，在调用Stat的方法前，需要先通过[stat()](#fsstat)方法（同步或异步）构建一个Stat实例。
+文件具体信息，在调用Stat的方法前，需要先通过[stat()](#fileiostat)方法（同步或异步）构建一个Stat实例。
 
 ### 属性
 
@@ -4737,7 +4737,7 @@ copySignal.onCancel();
 | mode   | number | 是    | 否    | 表示文件权限，各特征位的含义如下：<br/>**说明**：以下值为八进制，取得的返回值为十进制，请换算后查看。<br/>-&nbsp;0o400：用户读。对于普通文件，所有者可读取文件；对于目录，所有者可读取目录项。<br/>-&nbsp;0o200：用户写。对于普通文件，所有者可写入文件；对于目录，所有者可创建/删除目录项。<br/>-&nbsp;0o100：用户执行。对于普通文件，所有者可执行文件；对于目录，所有者可在目录中搜索给定路径名。<br/>-&nbsp;0o040：用户组读。对于普通文件，所有用户组可读取文件；对于目录，所有用户组可读取目录项。<br/>-&nbsp;0o020：用户组写。对于普通文件，所有用户组可写入文件；对于目录，所有用户组可创建/删除目录项。<br/>-&nbsp;0o010：用户组执行。对于普通文件，所有用户组可执行文件；对于目录，所有用户组是否可在目录中搜索给定路径名。<br/>-&nbsp;0o004：其他读。对于普通文件，其余用户可读取文件；对于目录，其他用户组可读取目录项。<br/>-&nbsp;0o002：其他写。对于普通文件，其余用户可写入文件；对于目录，其他用户组可创建/删除目录项。<br/>-&nbsp;0o001：其他执行。对于普通文件，其余用户可执行文件；对于目录，其他用户组可在目录中搜索给定路径名。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | uid    | number | 是    | 否    | 文件所有者的ID。|
 | gid    | number | 是    | 否    | 文件所有组的ID。|
-| size   | number | 是    | 否    | 文件的大小，以字节为单位。仅对普通文件有效。 <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| size   | number | 是    | 否    | 文件的大小，单位为Byte。仅对普通文件有效。 <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | atime  | number | 是    | 否    | 上次访问该文件的时间，表示距1970年1月1日0时0分0秒的秒数。<br>**注意**：目前用户数据分区默认以“noatime”方式挂载，atime更新被禁用。  <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。      |
 | mtime  | number | 是    | 否    | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。  <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。      |
 | ctime  | number | 是    | 否    | 最近改变文件状态的时间，表示距1970年1月1日0时0分0秒的秒数。      |
@@ -4931,7 +4931,7 @@ isSymbolicLink(): boolean
 
 ## Stream
 
-文件流，在调用Stream的方法前，需要先通过[fs.createStream](#fscreatestream)方法或者[fs.fdopenStream](#fsfdopenstream)（同步或异步）来构建一个Stream实例。
+文件流，在调用Stream的方法前，需要先通过[fileIo.createStream](#fileiocreatestream)方法或者[fileIo.fdopenStream](#fileiofdopenstream)（同步或异步）来构建一个Stream实例。
 
 ### close
 
@@ -5131,13 +5131,13 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&g
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型                    | 说明       |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度。 |
+  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -5178,7 +5178,7 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallb
   | 参数名   | 类型                            | 必填 | 说明                                                         |
   | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
   | buffer   | ArrayBuffer \| string | 是   | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options  | [WriteOptions](#writeoptions11)                          | 否   | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options  | [WriteOptions](#writeoptions11)                          | 否   | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
   | callback | AsyncCallback&lt;number&gt;     | 是   | 异步写入完成后执行的回调函数。                               |
 
 **错误码：**
@@ -5224,13 +5224,13 @@ writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): number
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际写入的长度。 |
+  | number | 实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -5266,13 +5266,13 @@ read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。 |
+  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。 |
 
 **返回值：**
 
   | 类型                                 | 说明     |
   | ---------------------------------- | ------ |
-  | Promise&lt;number&gt; | Promise对象。返回读取的结果。 |
+  | Promise&lt;number&gt; | Promise对象。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -5316,8 +5316,8 @@ read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;numb
   | 参数名      | 类型                                       | 必填   | 说明                                       |
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | buffer   | ArrayBuffer                              | 是    | 用于读取文件的缓冲区。                              |
-  | options  | [ReadOptions](#readoptions11)                                   | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。|
-  | callback | AsyncCallback&lt;number&gt; | 是    | 异步读取完成后的回调。                         |
+  | options  | [ReadOptions](#readoptions11)                                   | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。|
+  | callback | AsyncCallback&lt;number&gt; | 是    | 异步读取完成后的回调。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -5363,13 +5363,13 @@ readSync(buffer: ArrayBuffer, options?: ReadOptions): number
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>  |
+  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际读取的长度。 |
+  | number | 实际读取的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -5557,7 +5557,7 @@ unlock(): void
   fs.closeSync(file);
   ```
 
-## fs.DfsListeners<sup>12+</sup>
+## fileIo.DfsListeners<sup>12+</sup>
 
 事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。
 
@@ -5567,7 +5567,7 @@ unlock(): void
 
 onStatus(networkId: string, status: number): void;
 
-事件回调类。参数由[connectDfs](#fsconnectdfs12)传入。
+事件回调类。参数由[connectDfs](#fileioconnectdfs12)传入。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -5589,7 +5589,7 @@ onStatus(networkId: string, status: number): void;
 | 名称         | 类型   | 只读  | 可选  | 说明              |
 | ----------- | ------ | ----  | ----- | ---------------- |
 | fd          | number | 是    | 否    | 打开的文件描述符。 |
-| filePointer | number | 是    | 否    | RandomAccessFile对象的偏移指针。 |
+| filePointer | number | 是    | 否    | RandomAccessFile对象的偏移指针，单位为Byte。 |
 
 ### setFilePointer<sup>10+</sup>
 
@@ -5603,7 +5603,7 @@ setFilePointer(filePointer:number): void
 
   | 参数名     | 类型      | 必填   | 说明         |
   | ------- | ----------- | ---- | ----------------------------- |
-  | filePointer  | number | 是   | RandomAccessFile对象的偏移指针。  |
+  | filePointer  | number | 是   | RandomAccessFile对象的偏移指针，单位为Byte。  |
 
 **错误码：**
 
@@ -5652,13 +5652,13 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&g
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型                    | 说明       |
   | --------------------- | -------- |
-  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度。 |
+  | Promise&lt;number&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -5703,7 +5703,7 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallb
   | 参数名   | 类型                            | 必填 | 说明                                                         |
   | -------- | ------------------------------- | ---- | ------------------------------------------------------------ |
   | buffer   | ArrayBuffer \| string | 是   | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options  | [WriteOptions](#writeoptions11)                          | 否   | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options  | [WriteOptions](#writeoptions11)                          | 否   | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
   | callback | AsyncCallback&lt;number&gt;     | 是   | 异步写入完成后执行的回调函数。                               |
 
 **错误码：**
@@ -5751,13 +5751,13 @@ writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): number
   | 参数名     | 类型                              | 必填   | 说明                                       |
   | ------- | ------------------------------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer \| string | 是    | 待写入文件的数据，可来自缓冲区或字符串。                     |
-  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
+  | options | [WriteOptions](#writeoptions11)                          | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。|
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际写入的长度。 |
+  | number | 实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -5791,13 +5791,13 @@ read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
+  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
 
 **返回值：**
 
   | 类型                                 | 说明     |
   | ---------------------------------- | ------ |
-  | Promise&lt;number&gt; | Promise对象。返回读取的结果。 |
+  | Promise&lt;number&gt; | Promise对象。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -5840,7 +5840,7 @@ read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;numb
   | 参数名      | 类型                                       | 必填   | 说明                                       |
   | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
   | buffer   | ArrayBuffer                              | 是    | 用于读取文件的缓冲区。                              |
-  | options  | [ReadOptions](#readoptions11)                                   | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示读取数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。 |
+  | options  | [ReadOptions](#readoptions11)                                   | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。 |
   | callback | AsyncCallback&lt;number&gt; | 是    | 异步读取完成后的回调。                         |
 
 **错误码：**
@@ -5887,13 +5887,13 @@ readSync(buffer: ArrayBuffer, options?: ReadOptions): number
   | 参数名     | 类型          | 必填   | 说明                                       |
   | ------- | ----------- | ---- | ---------------------------------------- |
   | buffer  | ArrayBuffer | 是    | 用于读取文件的缓冲区。                              |
-  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br/>  |
+  | options | [ReadOptions](#readoptions11)      | 否    | 支持如下选项：<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br/>  |
 
 **返回值：**
 
   | 类型     | 说明       |
   | ------ | -------- |
-  | number | 实际读取的长度。 |
+  | number | 实际读取的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -6047,7 +6047,7 @@ open接口flags参数常量。文件打开标签。
 | suffix    | Array&lt;string&gt; | 否 | 是 | 文件后缀名完全匹配，各个关键词OR关系。 |
 | displayName | Array&lt;string&gt; | 否 | 是 | 文件名模糊匹配，各个关键词OR关系。当前仅支持通配符*。 |
 | mimeType | Array&lt;string&gt; | 否 | 是 | mime类型完全匹配，各个关键词OR关系。预留字段，暂不支持使用。 |
-| fileSizeOver | number | 否 | 是 | 文件大小匹配，大于指定大小的文件。 |
+| fileSizeOver | number | 否 | 是 | 文件大小匹配，大于指定大小的文件，单位为Byte。 |
 | lastModifiedAfter | number | 否 | 是 | 文件最近修改时间匹配，在指定时间点及之后的文件。 |
 | excludeMedia | boolean | 否 | 是 | 是否排除Media中已有的文件。true：排除Media中已有的文件；false：不排除Media中已有的文件。 |
 
@@ -6130,8 +6130,8 @@ open接口flags参数常量。文件打开标签。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ----- |
-| offset | number | 否 | 是 | 期望读取文件位置，单位为字节（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
-| length    | number | 否 | 是    | 期望读取数据的长度，单位为字节。可选，默认缓冲区长度。 |
+| offset | number | 否 | 是 | 期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
+| length    | number | 否 | 是    | 期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 ## ReadTextOptions<sup>11+</sup>
 
@@ -6141,8 +6141,8 @@ open接口flags参数常量。文件打开标签。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ----- |
-| offset | number | 否 | 是 | 期望读取文件的位置，单位为字节。可选，默认从当前位置开始读取。 |
-| length    | number | 否 | 是    | 期望读取数据的长度，单位为字节。可选，默认文件长度。 |
+| offset | number | 否 | 是 | 期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。 |
+| length    | number | 否 | 是    | 期望读取数据的长度，单位为Byte。可选，默认文件长度。 |
 | encoding | string | 否 | 是 | 当数据是 string 类型时有效，表示数据的编码方式，默认 'utf-8'，仅支持 'utf-8'。   <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## WriteOptions<sup>11+</sup>
@@ -6153,8 +6153,8 @@ open接口flags参数常量。文件打开标签。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ----- |
-| offset | number | 否 | 是 | 期望写入文件位置，单位为字节（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
-| length    | number | 否 | 是    | 期望写入数据的长度，单位为字节。可选，默认缓冲区长度。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| offset | number | 否 | 是 | 期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| length    | number | 否 | 是    | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | encoding | string | 否 | 是 | 当数据是string类型时有效，表示数据的编码方式。默认 'utf-8'。仅支持 'utf-8'。 |
 
 ## ListFileOptions<sup>11+</sup>
@@ -6173,7 +6173,7 @@ open接口flags参数常量。文件打开标签。
 
 ## ReadStream<sup>12+</sup>
 
-文件可读流，需要先通过[fs.createReadStream](#fscreatereadstream12)方法来构建一个ReadStream实例。ReadStream继承自数据流基类[stream.Readable](../apis-arkts/js-apis-stream.md#readable)。
+文件可读流，需要先通过[fileIo.createReadStream](#fileiocreatereadstream12)方法来构建一个ReadStream实例。ReadStream继承自数据流基类[stream.Readable](../apis-arkts/js-apis-stream.md#readable)。
 
 **规格**：ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。
 
@@ -6195,14 +6195,14 @@ seek(offset: number, whence?: WhenceType): number
 
   | 参数名    | 类型     | 必填   | 说明                          |
   | ------ | ------ | ---- | --------------------------- |
-  | offset | number | 是    | 相对偏移位置，单位为字节。 |
+  | offset | number | 是    | 相对偏移位置，单位为Byte。 |
   | whence | [WhenceType](#whencetype11) | 否    | 偏移指针相对位置类型。默认值：SEEK_SET，文件起始位置处。 |
 
 **返回值：**
 
   | 类型                   | 说明         |
   | --------------------- | ---------- |
-  | number | 当前可读流偏移指针位置（相对于文件头的偏移量，单位为字节）。 |
+  | number | 当前可读流偏移指针位置（相对于文件头的偏移量，单位为Byte）。 |
 
 **错误码：**
 
@@ -6240,7 +6240,7 @@ close(): void
 
 ## WriteStream<sup>12+</sup>
 
-文件可写流，需要先通过[fs.createWriteStream](#fscreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../apis-arkts/js-apis-stream.md#writable)。
+文件可写流，需要先通过[fileIo.createWriteStream](#fileiocreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../apis-arkts/js-apis-stream.md#writable)。
 
 ### 属性
 
@@ -6263,18 +6263,18 @@ seek(offset: number, whence?: WhenceType): number;
 
   | 参数名    | 类型     | 必填   | 说明                          |
   | ------ | ------ | ---- | --------------------------- |
-  | offset | number | 是    | 相对偏移位置，单位为字节。 |
+  | offset | number | 是    | 相对偏移位置，单位为Byte。 |
   | whence | [WhenceType](#whencetype11) | 否    | 偏移指针相对位置类型。默认值：SEEK_SET，文件起始位置处。 |
 
 **返回值：**
 
   | 类型                   | 说明         |
   | --------------------- | ---------- |
-  | number | 当前可写流偏移指针位置（相对于文件头的偏移量，单位为字节）。 |
+  | number | 当前可写流偏移指针位置（相对于文件头的偏移量，单位为Byte）。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -6314,8 +6314,8 @@ close(): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----------- | ----------- | -------- | -------- | ---------- |
-| start | number | 否 | 是 | 表示期望读取文件的位置，单位为字节。可选，默认从当前位置开始读。 |
-| end | number | 否 | 是 | 表示期望读取结束的位置，单位为字节。可选，默认文件末尾。 |
+| start | number | 否 | 是 | 表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。 |
+| end | number | 否 | 是 | 表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。 |
 
 ## ReadStreamOptions<sup>12+</sup>
 
@@ -6325,8 +6325,8 @@ close(): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----------- | ----------- | -------- | -------- | ---------- |
-| start | number | 否 | 是 | 表示期望读取文件的位置，单位为字节。可选，默认从当前位置开始读。 |
-| end | number | 否 | 是 | 表示期望读取结束的位置，单位为字节。可选，默认文件末尾。 |
+| start | number | 否 | 是 | 表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。 |
+| end | number | 否 | 是 | 表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。 |
 
 ## WriteStreamOptions<sup>12+</sup>
 
@@ -6336,5 +6336,5 @@ close(): void
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ----------- | ----------- | -------- | -------- | ---------- |
-| start | number | 否 | 是 | 表示期望写入文件的位置，单位为字节。可选，默认从当前位置开始写。 |
+| start | number | 否 | 是 | 表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。 |
 | mode | number | 否 | 是 | 创建文件可写流的[选项](#openmode)，必须指定如下选项中的一个，默认只写方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。 |

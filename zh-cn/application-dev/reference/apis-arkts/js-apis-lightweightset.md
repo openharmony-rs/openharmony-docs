@@ -414,7 +414,7 @@ removeAt(index: number): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定下标。需要小于等于INT32_MAX即2147483647。 |
 
 **返回值：**
 
@@ -456,7 +456,7 @@ getValueAt(index: number): T
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| index | number | 是 | 指定下标。需要小于等于int32_max即2147483647。 |
+| index | number | 是 | 指定下标。需要小于等于INT32_MAX即2147483647。 |
 
 **返回值：**
 
@@ -803,7 +803,7 @@ equal(obj: Object): boolean
 
 | 类型 | 说明 |
 | -------- | -------- |
-| boolean | 当obj为仅含string或number的LightWeightSet或数组，且对象内部元素构成相同时，返回true；其它情况返回false。 |
+| boolean | 当obj为仅含string或number的LightWeightSet或数组，且对象内部元素构成相同时，返回true；其他情况返回false。 |
 
 **错误码：**
 

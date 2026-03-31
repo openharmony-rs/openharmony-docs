@@ -1128,14 +1128,16 @@ hiAppEvent.configure(config2);
 
 提供系统事件配置策略的定义，用于使用[configEventPolicy](#hiappeventconfigeventpolicy22)设置事件配置策略。
 
-**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 | 名称       | 类型    | 只读 | 可选 | 说明                                         |
 | ---------- | ------- | ---- | ---- | ------------------------------------------ |
-| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。 |
-| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | 否 | 是   | CPU高负载事件配置策略。 |
+| mainThreadJankPolicy | [MainThreadJankPolicy](#mainthreadjankpolicy22) | 否 | 是   | 主线程超时事件配置策略。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| cpuUsageHighPolicy | [CpuUsageHighPolicy](#cpuusagehighpolicy22) | 否 | 是   | CPU高负载事件配置策略。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| appCrashPolicy<sup>24+</sup> | [AppCrashPolicy](#appcrashpolicy24) | 否 | 是   | 崩溃事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| appFreezePolicy<sup>24+</sup> | [AppFreezePolicy](#appfreezepolicy24) | 否 | 是   | 应用冻屏事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| resourceOverlimitPolicy<sup>24+</sup> | [ResourceOverlimitPolicy](#resourceoverlimitpolicy24) | 否 | 是   | 资源泄漏事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| addressSanitizerPolicy<sup>24+</sup> | [AddressSanitizerPolicy](#addresssanitizerpolicy24) | 否 | 是   | 地址越界事件配置策略。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 
 ## MainThreadJankPolicy<sup>22+</sup>
@@ -1164,7 +1166,7 @@ hiAppEvent.configure(config2);
 > 
 > 该接口被调用后，会将设置值持久化。后续重复调用该接口时，若不设置对应参数，则取上一次系统取用的值。
  
-**原子化服务API：** 从API version 22开始，该接口支持在应用中使用。
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
  
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
  
@@ -1176,6 +1178,53 @@ hiAppEvent.configure(config2);
 | perfLogCaptureCount | number  | 否 | 是   | 采样栈每日采集次数。一旦系统检测到当前异常日志的采集次数超过设置值，系统仍会正常上报事件，但异常事件中的external_log字段，将不再附加日志文件路径信息。<br> Debug版本应用，阈值范围：[-1, 100]；<br> Release版本应用，阈值范围：[0, 20]。<br> 单位：次，默认值：1。<br> 若设置值在阈值范围外，系统将取用默认值1。<br>**说明**：<br> 1. 值为-1，表示不限制采集日志次数。<br> 2. 值为0，表示不采集日志。<br> 3. 值大于0，表示每日采集次数上限。 |
 | threadLoadInterval | number  | 否 | 是   | 应用线程CPU高负载异常检测周期，阈值范围：[5, 3600]，单位：秒，默认值：60。<br>若设置值在阈值范围外，系统将取用默认值60。 |
 
+## AppCrashPolicy<sup>24+</sup>
+
+提供崩溃事件配置策略的定义。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能崩溃事件的页面切换日志。<br/>true：使能崩溃事件的页面切换日志。<br/>false：不使能崩溃事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+
+## AppFreezePolicy<sup>24+</sup>
+
+提供应用冻屏事件配置策略的定义。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能应用冻屏事件的页面切换日志。<br/>true：使能应用冻屏事件的页面切换日志。<br/>false：不使能应用冻屏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+
+## ResourceOverlimitPolicy<sup>24+</sup>
+
+提供资源泄漏事件配置策略的定义。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能资源泄漏事件的页面切换日志。<br/>true：使能资源泄漏事件的页面切换日志。<br/>false：不使能资源泄漏事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
+
+## AddressSanitizerPolicy<sup>24+</sup>
+
+提供地址越界事件配置策略的定义。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+| 名称       | 类型    | 只读 | 可选 | 说明     |
+| ---------- | ------- | ---- | ---- | ------------- |
+| pageSwitchLogEnable    | boolean | 否 | 是   | 是否使能地址越界事件的页面切换日志。<br/>true：使能地址越界事件的页面切换日志。<br/>false：不使能地址越界事件的页面切换日志。<br/>默认值：false。<br>**说明**：应用每次使能行为只在应用当前生命周期生效，在同一生命周期内，以最后一次成功调用的使能状态为准。应用重启后，需要重新设置使能状态。 |
 
 ## Processor<sup>11+</sup>
 

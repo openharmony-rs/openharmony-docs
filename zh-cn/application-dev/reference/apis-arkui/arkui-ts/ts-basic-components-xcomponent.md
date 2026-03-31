@@ -198,6 +198,45 @@ hdrBrightness(brightness: number)
   >
   > 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
 
+### hdrBrightness<sup>24+</sup>
+
+hdrBrightness(brightness: number, type?: HdrType)
+
+调整组件播放HDR视频时的亮度，该接口仅对HDR视频生效。
+> **说明：**
+> 
+> - 仅XComponent构造参数中的type为[XComponentType](ts-appendix-enums.md#xcomponenttype10).SURFACE时该接口生效，否则该接口不生效。
+> - 如果将参数type设置为[HdrType](#hdrtype24枚举说明).AIHDR，调用该接口前需先检查[Display](../js-apis-display.md#display)的hdrFormats性是否包含[HDRFormat](../../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat).VIDEO_AIHDR。仅当包含HDRFormat.VIDEO_AIHDR时，当前设备才支持AI HDR类型，参数设置才会生效；否则按默认值HdrType.DEFAULT处理。
+> - 不支持[ArkUI NDK接口](../../../ui/ndk-build-ui-overview.md)创建的XComponent组件。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型    | 必填 | 说明                   |
+| -------- | ------- | ---- | ---------------------- |
+| brightness | number | 是   | HDR视频的亮度。取值范围为0.0到1.0。小于0.0的值按0.0处理，大于1.0的值按1.0处理，其他异常值按1.0处理。0.0表示视频按照SDR亮度显示，1.0表示视频按照当前允许的最高HDR亮度显示。|
+| type | [HdrType](#hdrtype24枚举说明) | 否   | 播放HDR视频时的HDR类型。<br/>默认值: HdrType.DEFAULT|
+
+## HdrType<sup>24+</sup>枚举说明
+
+HDR视频的高动态范围渲染类型。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| ---- | -- | ---- |
+| DEFAULT | 0 | 默认HDR类型，使用标准高动态范围渲染模式。 |
+| AIHDR | 1 | AI HDR类型，使用AI算法对非HDR内容进行智能动态范围扩展，实现HDR的显示效果。|
+
 ## 事件
 
 从API version 12开始，type为SURFACE或TEXTURE时，支持[通用事件](ts-component-general-events.md)。
@@ -490,7 +529,7 @@ startImageAnalyzer(config: ImageAnalyzerConfig): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[AI分析类库错误码](errorcode-image-analyzer.md)。
+以下错误码的详细介绍请参见[图像AI分析错误码](errorcode-image-analyzer.md)。
 
 | 错误码ID | 错误信息                                      |
 | -------- | -------------------------------------------- |

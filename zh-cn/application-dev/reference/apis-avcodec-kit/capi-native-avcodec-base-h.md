@@ -110,6 +110,7 @@
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO | DVVIDEO（Digital Video）视频编解码器的MIME类型。支持DV NTSC、DV PAL与DVCPRO HD。<br>**起始版本：** 23 |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO | RAWVIDEO视频编解码器的MIME类型。<br>**起始版本：** 23 |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MPEG1 | MPEG1视频编解码器的MIME类型。<br>**起始版本：** 23 |
+| const char * OH_AVCODEC_MIMETYPE_VIDEO_CINEPAK | Cinepak视频编解码器的MIME类型。<br>**起始版本：** 24 |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MSVIDEO1 | MSVIDEO1（Microsoft Video 1）视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_WMV3 | WMV3视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char * OH_AVCODEC_MIMETYPE_VIDEO_MJPEG | MJPEG（Motion JPEG）视频编解码器的MIME类型。<br>**起始版本：** 22<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |

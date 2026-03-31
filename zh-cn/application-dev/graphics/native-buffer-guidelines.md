@@ -42,8 +42,8 @@ libnative_buffer.so
 ```
 
 1. **创建OH_NativeBuffer实例**。
-    <!-- @[nativebuffer_alloc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
-
+    <!-- @[nativebuffer_alloc](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    
     ``` C++
     OH_NativeBuffer_Config config {
         .width = 0x100,
@@ -51,34 +51,36 @@ libnative_buffer.so
         .format = NATIVEBUFFER_PIXEL_FMT_RGBA_8888,
         .usage = NATIVEBUFFER_USAGE_CPU_READ | NATIVEBUFFER_USAGE_CPU_WRITE | NATIVEBUFFER_USAGE_MEM_DMA,
     };
-
+    
     OH_NativeBuffer *nativeBuffer = OH_NativeBuffer_Alloc(&config);
     if (nativeBuffer == nullptr) {
         LOGE("OH_NativeBuffer_Alloc fail, nativeBuffer is null");
     }
     ```
 
+
 2. **将OH_NativeBuffer对应的ION内存映射到进程空间**。
 
     应用如需访问buffer内存空间，可通过OH_NativeBuffer_Map接口将ION内存映射到进程空间。
-    <!-- @[nativebuffer_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
-
+    <!-- @[nativebuffer_map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    
     ``` C++
     void* virAddr = nullptr;
     int32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr);
     if (ret != 0) {
         LOGE("OH_NativeBuffer_Map Failed");
     }
-    // ···
+    // ...
     ret = OH_NativeBuffer_Unmap(nativeBuffer);
     if (ret != 0) {
         LOGE("OH_NativeBuffer_Unmap Failed");
     }
     ```
 
-3. **获取内存的属性信息**。
-    <!-- @[nativebuffer_getconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
 
+3. **获取内存的属性信息**。
+    <!-- @[nativebuffer_getconfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    
     ``` C++
     OH_NativeBuffer_Config config2 = {};
     OH_NativeBuffer_GetConfig(nativeBuffer, &config2);
@@ -86,9 +88,15 @@ libnative_buffer.so
     ```
 
 4. **销毁OH_NativeBuffer**。
-    <!-- @[nativebuffer_unreference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
-
+    <!-- @[nativebuffer_unreference](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow/entry/src/main/cpp/NativeRender.cpp) -->
+    
     ``` C++
     OH_NativeBuffer_Unreference(nativeBuffer);
     nativeBuffer = nullptr;
     ```
+
+## 相关实例
+
+针对NativeBuffer的开发，有以下相关实例可供参考：
+
+- [Native Window（API12）](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics2D/NdkNativeWindow)
