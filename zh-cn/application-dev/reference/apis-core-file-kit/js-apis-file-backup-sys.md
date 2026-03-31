@@ -3353,12 +3353,12 @@ interface test { // 用于解析能力文件
 
 interface BundleInfo { // 用于获取单个应用的本地能力信息
   name: string;
-  appIndex: number;
-  versionCode: number;
+  appIndex: int;
+  versionCode: int;
   versionName: string;
-  spaceOccupied: number;
+  spaceOccupied: long;
   allToBackup: boolean;
-  increSpaceOccupied?: number;
+  increSpaceOccupied?: long;
   fullBackupOnly: boolean;
   extensionName: string;
   restoreDeps: string;
@@ -3443,7 +3443,8 @@ async function getLocalCapabilitiesTest() {
       const deviceType: string = jsonsObj.deviceType;
       console.info('deviceType: ' + deviceType);
     }
-  } catch (error) {
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
     console.error(`parse failed with code: ${error.code}, message: ${error.message}`);
   }
 }
@@ -4370,11 +4371,11 @@ import { fileIo as fs, backup} from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let g_session: backup.SessionRestore;
-let initMap = new Map<string, number>();
+let initMap = new Map<string, int>();
 let testFileNum = 123; // 123: 恢复所需文件个数示例
 let testBundleName = 'com.example.myapplication'; // 测试包名
 initMap.set(testBundleName, testFileNum);
-let countMap = new Map<string, number>();
+let countMap = new Map<string, int>();
 countMap.set(testBundleName, 0); // 实际写入文件个数初始化
 function createSessionRestore() {
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -4569,11 +4570,11 @@ import { fileIo as fs, backup} from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let g_session: backup.SessionRestore;
-let initMap = new Map<string, number>();
+let initMap = new Map<string, int>();
 let testFileNum = 123; // 123: 恢复所需文件个数示例
 let testBundleName = 'com.example.myapplication'; // 测试包名
 initMap.set(testBundleName, testFileNum);
-let countMap = new Map<string, number>();
+let countMap = new Map<string, int>();
 countMap.set(testBundleName, 0); // 实际写入文件个数初始化
 async function publishFile(file: backup.FileMeta) {
   let fileMeta: backup.FileMeta = {
@@ -4761,11 +4762,11 @@ import { fileIo as fs, backup} from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let g_session: backup.SessionRestore;
-let initMap = new Map<string, number>();
+let initMap = new Map<string, int>();
 let testFileNum = 123; // 123: 恢复所需文件个数示例
 let testBundleName = 'com.example.myapplication'; // 测试包名
 initMap.set(testBundleName, testFileNum);
-let countMap = new Map<string, number>();
+let countMap = new Map<string, int>();
 countMap.set(testBundleName, 0); // 实际写入文件个数初始化
 function createSessionRestore() {
   let generalCallbacks: backup.GeneralCallbacks = {
@@ -5638,12 +5639,12 @@ interface test { // 用于解析能力文件
 
 interface BundleInfo { // 用于获取单个应用的本地能力信息
   name: string;
-  appIndex: number;
-  versionCode: number;
+  appIndex: int;
+  versionCode: int;
   versionName: string;
-  spaceOccupied: number;
+  spaceOccupied: long;
   allToBackup: boolean;
-  increSpaceOccupied?: number;
+  increSpaceOccupied?: long;
   fullBackupOnly: boolean;
   extensionName: string;
   restoreDeps: string;
@@ -5728,7 +5729,8 @@ async function getLocalCapabilitiesTest() {
       const deviceType: string = jsonsObj.deviceType;
       console.info('deviceType: ' + deviceType);
     }
-  } catch (error: BusinessError) {
+  } catch (err) {
+    let error: BusinessError = err as BusinessError;
     console.error(`parse failed. Code: ${error.code}, message: ${error.message}`);
   }
 }
@@ -5897,8 +5899,8 @@ interface scannedInfos { // 用于解析扫描结果
 
 interface ScannedInfo { // 用于解析单个应用的扫描结果
   bundleName: string;
-  dataSize: number;
-  incDataSize: number;
+  dataSize: long;
+  incDataSize: long;
 }
 
 let generalCallbacks: backup.GeneralCallbacks = {

@@ -44,12 +44,26 @@ getCurrentBundleStats(): Promise&lt;BundleStats&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.BundleStats) => {
   console.info("getCurrentBundleStats successfully:" + JSON.stringify(BundleStats));
 }).catch((err: BusinessError) => {
+  console.error("getCurrentBundleStats failed with error:"+ JSON.stringify(err));
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getCurrentBundleStats().then((BundleStats: storageStatistics.BundleStats) => {
+  console.info("getCurrentBundleStats successfully:" + JSON.stringify(BundleStats));
+}).catch((err: BusinessError): void => {
   console.error("getCurrentBundleStats failed with error:"+ JSON.stringify(err));
 });
 ```
@@ -84,12 +98,29 @@ getCurrentBundleStats(callback: AsyncCallback&lt;BundleStats&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: storageStatistics.BundleStats) => {
   if (error) {
     console.error("getCurrentBundleStats failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getCurrentBundleStats successfully:" + JSON.stringify(bundleStats));
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getCurrentBundleStats((error: BusinessError, bundleStats: storageStatistics.BundleStats): void => {
+  if (error) {
+    console.error(`getCurrentBundleStats failed: Code: ${error.code}, Message: ${error.message}`);
   } else {
     // do something
     console.info("getCurrentBundleStats successfully:" + JSON.stringify(bundleStats));
@@ -270,8 +301,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let totalSize = storageStatistics.getTotalSizeSync();
   console.info("getTotalSizeSync successfully:" + JSON.stringify(totalSize));
-} catch (err: BusinessError) {
-  console.error("getTotalSizeSync failed with error:" + JSON.stringify(err));
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`getTotalSizeSync failed: Code: ${err.code}, Message: ${err.message}`);
 }
 ```
 
@@ -385,9 +417,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let error: BusinessError = {};
 let totalSize: long = 0;
-storageStatistics.getFreeSize((error: BusinessError, totalSize: number): void => {
+storageStatistics.getFreeSize((error, totalSize): void => {
   if (error) {
-    console.error("getFreeSize failed with error:" + JSON.stringify(error));
+    console.error(`getFreeSize failed: Code: ${err.code}, Message: ${err.message}`);
   } else {
     // do something
     console.info("getFreeSize successfully:" + totalSize);
@@ -520,7 +552,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getTotalInodes().then((totalInodes: long) => {
   console.info("getTotalInodes successfully: " + totalInodes);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getTotalInodes failed. Code: ${err.code}, Message: ${err.message}`);
 });
 ```
@@ -577,7 +609,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getFreeInodes().then((freeInodes: long) => {
   console.info("getFreeInodes successfully: " + freeInodes);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getFreeInodes failed. Code: ${err.code}, Message: ${err.message}`);
 });
 ```
@@ -636,7 +668,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getCurrentBundleInodes().then((curInodes: long) => {
   console.info("getCurrentBundleInodes successfully: " + curInodes);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getCurrentBundleInodes failed. Code: ${err.code}, Message: ${err.message}`);
 });
 ```
