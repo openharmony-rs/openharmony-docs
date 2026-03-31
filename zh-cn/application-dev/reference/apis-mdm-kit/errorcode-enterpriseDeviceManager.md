@@ -611,7 +611,7 @@ The number of applications in the Dock has reached the maximum.
 
 **处理步骤**
 
-删除快捷栏中多余的应用图标。
+删除快捷栏中多余的应用。
 
 ## 9201014 指定应用已经在快捷栏中
 
