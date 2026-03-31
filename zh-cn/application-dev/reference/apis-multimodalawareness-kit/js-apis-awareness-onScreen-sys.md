@@ -498,7 +498,6 @@ trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-
 **返回值：**
 
   | 类型                           | 说明         |
@@ -565,7 +564,6 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 |UiImage|获取页面内子图信息|
 |QuickSnap|获取截屏信息|
 
-
 **返回值：**
 
   | 类型                           | 说明         |
@@ -623,7 +621,6 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 |interact接口支持的capList能力列表|功能说明|
 | ---- | ------ |
 |JumpContext|高亮跳转到指定上下文|
-
 
 **返回值：**
 
