@@ -440,7 +440,6 @@ let res = arr3.map(x => x).flat();
       }
       console.info('get', key, typeof key);
       return Reflect.get(target, key);
-
     },
     set(target, key, value) {
       if (typeof key === 'number') {
