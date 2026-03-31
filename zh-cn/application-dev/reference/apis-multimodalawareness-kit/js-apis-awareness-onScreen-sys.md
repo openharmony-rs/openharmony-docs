@@ -430,6 +430,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
       console.error('subscribe failed, errCode = ' + err.code);
    }
    ```
+
 ## onScreen.unsubscribe<sup>23+</sup>
 
 unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwarenessInfo[]&gt;): void
