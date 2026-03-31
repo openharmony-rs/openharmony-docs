@@ -9,7 +9,7 @@
 
 This topic uses RSA and SM2 as an example to describe how to generate an asymmetric key pair (**KeyPair**) and obtain the binary data.
 
-The **KeyPair** object created can be used for subsequent encryption and decryption operations, and the binary data can be used for key storage and transfer.
+The asymmetric key pair may be used for subsequent operations such as encryption and decryption, and binary data may be used for storage or transmission.
 
 ## Randomly Generating an RSA Key Pair
 
