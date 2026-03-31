@@ -727,7 +727,6 @@ const userId = 100;
 const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
 const keyAliasString = "key anon local attest as user";
 
-const securityLevel = StringToUint8Array('sec_level');
 const challenge = StringToUint8Array('challenge_data');
 
 async function generateKey(alias: string) {
@@ -783,16 +782,14 @@ async function anonAttestKeyItemOfflineAsUser() {
   ];
 
   await generateKey(aliasString);
-  await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, {
-    properties: properties
-  }).then((data) => {
+  await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, properties).then((data) => {
     console.info('anonAttestationOffline ok!')
     console.debug(`'CERT:${JSON.stringify(data)}`)
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.info(`CERT${i}是${data.certChains[i]}`)
     }
     console.info("anonAttestationOffline Success")
-  }).catch((err: Business) => {
+  }).catch((err: BusinessError) => {
     console.error("anonAttestationOffline fail，erroCode： " + err.code + " erroInfo： " + err.message)
   })
 }
