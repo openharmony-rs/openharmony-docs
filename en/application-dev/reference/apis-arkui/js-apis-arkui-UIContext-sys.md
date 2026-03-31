@@ -14,7 +14,7 @@ In the stage model, a window stage or window can use the **loadContent** API to 
 >
 > You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 >
-> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.arkui.UIContext (UIContext)](arkts-apis-uicontext-uicontext.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [Class (UIContext)](arkts-apis-uicontext-uicontext.md).
 
 ## UIContext
 
@@ -574,4 +574,3 @@ struct ImageRecycleSample {
   }
 }
 ```
-<!--no_check-->

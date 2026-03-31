@@ -2297,6 +2297,34 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+## resetClip
+
+resetClip(): void
+
+将当前画布的裁剪状态重置为初始状态。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = { left: 10, top: 100, right: 200, bottom: 300 };
+    canvas.clipRect(rect);
+    canvas.resetClip();
+  }
+}
+```
+
 ## resetMatrix<sup>12+</sup>
 
 resetMatrix(): void

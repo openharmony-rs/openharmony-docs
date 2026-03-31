@@ -107,9 +107,9 @@ httpRequest.request(// Customize EXAMPLE_URL in extraData on your own. It is up 
       }
     ],
     addressFamily: http.AddressFamily.DEFAULT // Optional. By default, the IPv4 or IPv6 address of the target domain name is selected. Supported since API 15.
-    customMethod: 'GET', // Optional. Supported since API 23.
+    customMethod: 'GET', // Optional. This field is supported since API version 23.
     maxRedirects: 30, // Optional. The default value is 30. Supported since API 23.
-    sniHostName: "www.example.com" // Optional. Supported since API 23.
+    sniHostName: "www.example.com" // Optional. This field is supported since API version 23.
   },
   (err: BusinessError, data: http.HttpResponse) => {
     if (!err) {
@@ -120,6 +120,8 @@ httpRequest.request(// Customize EXAMPLE_URL in extraData on your own. It is up 
       // data.header carries the HTTP response header. Parse the content based on service requirements.
       console.info('header:' + JSON.stringify(data.header));
       console.info('cookies:' + JSON.stringify(data.cookies)); // Cookies are supported since API version 8.
+      // HTTP interaction information can be obtained since API version 24.
+      console.info('connectionExtraInfo:' + JSON.stringify(data.connectionExtraInfo));
       // Unsubscribe from HTTP Response Header events.
       httpRequest.off('headersReceive');
       // Call destroy() to release resources when the request is no longer needed, preventing memory leaks.
@@ -146,7 +148,7 @@ createHttp(): HttpRequest
 Creates an HTTP request. You can use this API to initiate or destroy an HTTP request, or enable or disable listening for HTTP Response Header events. To initiate multiple HTTP requests, you must create an **HttpRequest** object for each HTTP request. An **HttpRequest** object corresponds to an HTTP request.
 
 > **NOTE**
-> When the request is no longer needed, call destroy() to release resources. Otherwise, memory leakage may occur.
+> When the request is no longer needed, call destroy() to release resources. Otherwise, memory leaks may occur.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -583,7 +585,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 | -------- | ---------------------------------------------- | ---- | ----------------------------------------------- |
 | url      | string                                         | Yes  | URL for initiating an HTTP request.                        |
 | options  | HttpRequestOptions                             | Yes  | Request options. For details, see [HttpRequestOptions](#httprequestoptions).|
-| callback | AsyncCallback\<[number](#responsecode)\>       | Yes  | Callback used to return the result. If the request is successful, **err** is **undefined**, and the HTTP result code is returned. Otherwise, **err** is an error object.                                   |
+| callback | AsyncCallback\<number\>       | Yes  | Callback used to return the result. If the request is successful, **err** is **undefined**, and the [HTTP result code](#responsecode) is returned. Otherwise, **err** is an error object.                                   |
 
 **Error codes**
 
@@ -687,7 +689,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 | Type                                  | Description                             |
 | :------------------------------------- | :-------------------------------- |
-| Promise\<[number](#responsecode)\> | Promise used to return the result.|
+| Promise\<number\> | Promise used to return the [result](#responsecode).|
 
 **Error codes**
 
@@ -1156,7 +1158,7 @@ Defines the options for initiating an HTTP request.
 | resumeFrom<sup>11+</sup> | number | No| Yes| Download start position. This field can be used only for the GET method. As stipulated in section 3.1 of RFC 7233, servers are allowed to ignore range requests.<br>- If the HTTP PUT method is used, do not use this option because it may conflict with other options.<br>- The value ranges from **1** to **4294967296** (4 GB). If the value is out of this range, this field does not take effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | resumeTo<sup>11+</sup> | number | No| Yes| Download end position. This field can be used only for the GET method. As stipulated in section 3.1 of RFC 7233, servers are allowed to ignore range requests.<br>- If the HTTP PUT method is used, do not use this option because it may conflict with other options.<br>- The value ranges from **1** to **4294967296** (4 GB). If the value is out of this range, this field does not take effect.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | clientCert<sup>11+</sup> | [ClientCert](#clientcert11) | No| Yes| Client certificate.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| dnsOverHttps<sup>11+</sup> | string | No| Yes| Whether to use an HTTPS server for DNS resolution.<br>The value must be URL-encoded in the following format: "https:// host:port/path".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| dnsOverHttps<sup>11+</sup> | string | No| Yes| Whether to use an HTTPS server for DNS resolution.<br>- The value must be URL-encoded in the following format: "https:// host:port/path".                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | dnsServers<sup>11+</sup> | Array\<string\> | No| Yes| Array of DNS servers used for DNS resolution.<br>- A maximum of three DNS servers can be set. If there are more than three DNS servers, only the first three DNS servers are used.<br>- The DNS servers must be expressed as IPv4 or IPv6 addresses.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | maxLimit<sup>11+</sup>   | number   | No| Yes| Maximum number of bytes in a response.<br>The default value is 5\*1024\*1024, in bytes. The maximum value is **100\*1024\*1024**.<br>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | multiFormDataList<sup>11+</sup> | Array<[MultiFormData](#multiformdata11)> | No| Yes| Form data list. This field is valid when **content-Type** is set to **multipart/form-data**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
@@ -1250,6 +1252,7 @@ Defines the response to an HTTP request.
 | header               | Object                                       | No  | No | Response header. The return value is a string in JSON format. If you want to use specific content in the response, you need to implement parsing of that content. Common fields and parsing methods are as follows:<br>- content-type: header['content-type']<br>- status-line: header['status-line']<br>- date: header.date/header['date']<br>- server: header.server/header['server']<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | cookies<sup>8+</sup> | string                                       | No  | No  | Original cookies returned by the server. How to process the cookies is up to your decision.<br>**Atomic service API**: This API can be used in atomic services since API version 11.              |
 | performanceTiming<sup>11+</sup> | [PerformanceTiming](#performancetiming11) | No  | No| Time consumed in each phase of an HTTP request.|
+| connectionExtraInfo<sup>24+</sup> | [ConnectionExtraInfo](#connectionextrainfo24) | No| Yes| Detailed information about the HTTP request interaction.|
 
 ## ClientCert<sup>11+</sup>
 
@@ -1282,6 +1285,26 @@ Configures the timing for performance tracing, in ms.
 | responseHeaderTiming  | number | No  | No  | Duration from the time when the [request](#request) is sent to the time when the header resolution is complete.|
 | responseBodyTiming  | number | No  | No  | Duration from the time when the [request](#request) is sent to the time when the body resolution is complete.|
 | totalTiming  | number | No  | No  | Duration from the time when the [request](#request) is sent to the time when a callback is returned to the application.|
+
+## ConnectionExtraInfo<sup>24+</sup>
+
+Defines the detailed information about the HTTP request interaction.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+| Name               | Type                         | Read Only| Optional| Description                                                        |
+| ------------------- | ----------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| networkProtocolName | string                        | No  | No  | HTTP version used in the [request](#request), for example, 'HTTP/1.0', 'HTTP/1.1', 'HTTP/2', 'HTTP/2 over TLS', 'HTTP/3', or 'Unknown/Non-HTTP'.|
+| tlsVersion          | [TlsVersion](#tlsversion18)   | No  | Yes  | TLS version used in the request. It is returned only when the TLS protocol is used.|
+| cipherSuite         | [CipherSuite](#ciphersuite18) | No  | Yes  | Cipher suite used in the request. It is returned only when the TLS protocol is used.|
+| localAddress        | string                        | No  | No  | IP address of the client in the request process.                           |
+| remoteAddress       | string                        | No  | No  | IP address of the server in the request process.                           |
+| localPort           | number                        | No  | No  | Port number of the client in the request process. The value ranges from 1 to 65535.          |
+| remotePort          | number                        | No  | No  | Port number of the server in the request process. The value ranges from 1 to 65535.          |
+| isReusedConnection  | boolean                       | No  | No  | Whether to reuse the connection in the request process. **true**: yes; **false**: no.|
+| isProxyConnection   | boolean                       | No  | No  | Whether to use a proxy in the request process. **true**: yes; **false**: no.|
+| isCacheHit          | boolean                       | No  | No  | Whether the local cache is hit in the request process. **true**: yes; **false**: no.|
+| redirectCount       | number                        | No  | No  | Number of redirections in the request process.                             |
 
 ## DataReceiveProgressInfo<sup>11+</sup>
 
@@ -1323,7 +1346,7 @@ Defines the type of multi-form data.
 | contentType | string | No| No| Data type, for example, **text/plain**, **image/png**, **image/jpeg**, **audio/mpeg**, or **video/mp4**.|
 | remoteFileName | string | No| Yes| Name of the file uploaded to the server.<br>**Note**: If this field is specified, the **filename** field is added to the request header, indicating the name of the file uploaded to the server.<br>(1) If the data to be uploaded is a file and the file content is specified via the **data** field, the **remoteFileName** field usually needs to be set to specify the name of the file to be uploaded to the server (the actual result depends on the server). If the file path is specified via the **filePath** field, the **filename** field will be automatically added to the request header. Its default value is the file name in the **filePath** field. If a different name is required, it can also be changed via this field.<br>(2) When the data to be uploaded is in binary format, the **remoteFileName** field must be set.                                                |
 | data | string \| Object \| ArrayBuffer | No| Yes| Form data content.                                              |
-| filePath | string | No| Yes| File path of the form data. If **data** is not specified, **filePath** must be set.<br>**Note**: The file format supported by the file management module must be passed. You can call [access](../apis-core-file-kit/js-apis-file-fs.md#fsaccess) to check whether the file exists and is accessible.|
+| filePath | string | No| Yes| File path of the form data. If **data** is not specified, **filePath** must be set.<br>**Note**: The file format supported by the file management module must be passed. You can call [access](../apis-core-file-kit/js-apis-file-fs.md#fileioaccess) to check whether the file exists and is accessible.|
 
 ## http.createHttpResponseCache<sup>9+</sup>
 

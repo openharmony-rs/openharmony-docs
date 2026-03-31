@@ -216,6 +216,7 @@ HiAppEvent给开发者提供了故障订阅接口，详见[HiAppEvent介绍](hia
 | OpenFiles | 故障时进程持有的文件句柄信息 | 12 | 是 | - |
 | HiLog | 故障之前打印的流水日志，最多1000行 | 8 | 是 | - |
 | [truncated] | 故障日志截断标志 | 20 | 否 | 配置故障日志截断大小并发生截断时。 |
+| MergeLog | 三方应用拼接日志标识 | 24 | 否 | 配置三方应用日志标识，用于拼接应用日志。 |
 
 > **说明：**
 >
@@ -380,6 +381,10 @@ OpenFiles: <- 故障时进程持有文件句柄信息
 HiLog: <- 故障之前进程打印的流水日志
 09-22 22:02:24.298   541   541 I C02d11/DfxSignalHandler: DFX_SigchainHandler :: signo(11), si_code(0), pid(541), tid(541).
 09-22 22:02:24.298   541   541 I C02d11/DfxSignalHandler: DFX_SigchainHandler :: signo(11), pid(541), processName(foundation), threadName(foundation).
+
+MergeLog: <- 应用提供的拼接日志
+Last Modified: 2026-03-18 10:10:10 <- 应用提供的拼接日志的最后修改时间戳
+app crash log. <- 应用生成用于拼接的日志
 ```
 <!--RP1End-->
 

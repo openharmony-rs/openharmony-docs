@@ -111,7 +111,7 @@ This error code is reported if a connection is unavailable.
 
 **Possible Causes**
 
-The client or server application is using a connection that has been disconnected.
+The client or server application is using a connection that has been disconnected. For example, the connection status changes due to an exception after the connection is established.
 
 **Solution**
 
@@ -143,7 +143,7 @@ Check whether mandatory parameters are passed and whether their types are correc
 
 ## 32390300 Internal Error
 
-**Message**
+**Error Message**
 
 Internal error.
 

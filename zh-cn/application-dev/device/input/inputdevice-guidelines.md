@@ -19,7 +19,7 @@ import { inputDevice } from '@kit.InputKit';
 
 ## 接口说明
 
-输入设备管理常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputDevice](../../reference/apis-input-kit/js-apis-inputdevice.md)。
+输入设备管理常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputDevice (输入设备)](../../reference/apis-input-kit/js-apis-inputdevice.md)。
 
 | 接口名称  | 描述 |
 | ----------- | ------------------------------------------------------------ | 

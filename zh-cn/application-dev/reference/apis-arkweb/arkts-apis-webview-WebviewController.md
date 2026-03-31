@@ -2562,7 +2562,7 @@ function PostMsgToEts(data) {
 
 requestFocus(): void
 
-使当前web页面获取焦点。
+使当前Web页面获取焦点。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

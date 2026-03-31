@@ -35,7 +35,7 @@ import { IntentionCode } from '@kit.InputKit';
 | INTENTION_LEFT                   |  3 | 左                     |
 | INTENTION_RIGHT                  |  4 | 右                     |
 | INTENTION_SELECT                 |  5 | 选中                            |
-| INTENTION_ESCAPE                 |  6 | 逃逸                            |
+| INTENTION_ESCAPE                 |  6 | 退出                            |
 | INTENTION_BACK                   |  7 | 返回                            |
 | INTENTION_FORWARD                |  8 | 前进                            |
 | INTENTION_MENU                   |  9 | 菜单                            |
