@@ -40,50 +40,59 @@ HiAppEvent提供接口用于订阅应用终止事件。
 
 ### reason字段说明
 
-| 类型   | 说明                       |
-| ------- | ------------------------- |
-| IllegalAudioRendererBySuspend | 应用未申请合理的后台任务，但是后台有大量音频播放。 |
-| IllegalAudioCapturerBySuspend | 应用未申请合理的后台任务，但是后台有录音。 |
-| LowMemoryKill | 整机低内存。 |
-| OomKiller | 整机内存耗尽，无法继续分配。 |
-| PowerSaveClean | 整机切换到省电模式或应急模式。 |
-| ResourceLeak(AshmemLeak) | 应用Ashmem内存占用超标。 |
-| ResourceLeak(GpuLeak) | 应用GPU内存占用超标。 |
-| ResourceLeak(GpuRsLeak) | 应用在Render Service进程内的GPU内存占用超标。 |
-| ResourceLeak(IonLeak) | 应用的Ion内存占用超标。 |
-| RssThresholdKiller | 应用的RSS（Resident Size Set）占用超标。 |
-| SwapFull | 整机Swap空间耗尽。 |
-| Normal | 应用正常退出（如用户主动退出）。 |
-| CppCrash | native层程序崩溃。 |
-| JsError | js层程序崩溃。 |
-| AppFreeze | 应用冻屏无响应。 |
-| ResourceLeak(CES) | CES注册超限。 |
-| ResourceLeak(PSSSoftLeak) | 后台应用内存占用超过检测阈值两倍，其中pss内存占比最高。 |
-| ResourceLeak(PSSLeak) | 后台应用内存占用超过特定阈值，其中pss内存占比最高。 |
-| ResourceLeak(IONLeak) | ION泄漏。 |
-| ResourceLeak(AshmemLeak) | ASHMEM泄漏。 |
-| ResourceLeak(GPURSLeak) | GPU RS内存泄漏。 |
-| ResourceLeak(GPULeak) | GPU泄漏。 |
-| ResourceLeak(VMALeak) | VMA泄漏。 |
-| ResourceLeak(FDLeak) | FD泄漏。 |
-| ResourceLeak(ThreadLeak) | 线程泄漏。 |
-| ResourceLeak(KernelZoneLeak) | kernel zone泄漏。 |
-| AshmemKiller | ASHMEM超限。 |
-| GPUKiller | GPU占用达到阈值。 |
-| DmaKiller | Dma占用达到阈值。 |
-| ThreadKiller | 线程超限。 |
-| IOHighload | IO高负载。 |
-| CPUHighload | 应用后台CPU高负载，系统自动杀死。 |
-| CPUHighloadNotify | 应用后台CPU高负载，出现弹框，用户选择停止该应用。 |
-| CPUHighloadUserRequest | 应用后台CPU高负载，设置界面用户选择停止该应用。 |
-| KillApplication | 应用主动退出。 |
-| UnKnown | 未知原因。 |
-| Restart | 应用重启。 |
-| UserRequest | 最近任务上划或清理。 |
-| Uninstall | 应用卸载退出。 |
-| Upgrade | 应用更新退出。 |
-| Logout | 用户注销时，卸载应用沙箱。 |
-| UninstallStorage | 卸载存储卡。 |
-| HighTemperature | 温度超限。 |
-| TransientTaskTimeout | 短时任务超时6s并且处于后台。 |
-| FdRs | fd个数超限。 |
+| 类型                            | 说明                              |
+| ----------------------------- | ------------------------------- |
+| LowMemoryKill                 | 整机低内存触发，优先级由低到高终止应用。        |
+| SwapFull                      | Swap交换空间接近占满。                    |
+| ResourceLeak(IonLeak)         | 应用占用的Ion内存超标。                   |
+| ResourceLeak(GpuRsLeak)       | 应用的ArkUI组件在Render Service进程占用的GPU内存超标。 |
+| ResourceLeak(GpuLeak)         | 应用在本进程占用的GPU内存超标。                    |
+| ResourceLeak(AshmemLeak)      | 应用占用的Ashmem内存超标。                 |
+| ResourceLeak(CES)             | CES注册超限。                        |
+| ResourceLeak(PSSSoftLeak)     | 后台应用内存占用超过检测阈值两倍，其中pss内存占比最高。   |
+| ResourceLeak(PSSLeak)         | 后台应用内存占用超过特定阈值，其中pss内存占比最高。     |
+| ResourceLeak(VMALeak)         | VMA泄漏。                          |
+| ResourceLeak(FDLeak)          | FD泄漏。                           |
+| ResourceLeak(ThreadLeak)      | 线程泄漏。                          |
+| ResourceLeak(KernelZoneLeak)  | 页表内存泄漏。                  |
+| IllegalAudioRendererBySuspend | 应用的音频播放未申请合理的后台任务，其退至后台后仍有大量音频播放。       |
+| PowerSaveClean                | 整机切换到省电模式或应急模式。                 |
+| RssThresholdKiller            | 应用的RSS（Resident Size Set）占用超标。  |
+| OomKiller                     | 整机低内存，触发内核管控，按一定策略终止应用。                  |
+| CpaKiller                     | DRM（Digital Right Management）业务申请内存但是内存不足时，按一定策略终止进程以回收内存。        |
+| KillApplication               | 应用主动退出。                         |
+| OnRemoteDied                  | 远程服务死亡。                          |
+| Restart                       | 应用重启。                           |
+| UserRequest                   | 最近任务上划或清理。                      |
+| Uninstall                     | 应用卸载退出。                         |
+| Upgrade                       | 应用更新退出。                         |
+| Logout                        | 用户注销时，卸载应用沙箱。                   |
+| PermissionUpdate              | 应用权限更新。                          |
+| aaForceStop                   | 通过aa命令强制停止应用。                    |
+| ThreadBlock6S                 | 应用主线程卡死超时。                       |
+| AppInputBlock                 | 用户输入响应超时。                        |
+| LifecycleTimeout              | 应用生命周期超时。                        |
+| JsError                       | js层程序崩溃。                        |
+| CppCrash                      | native层程序崩溃。                    |
+| RSPixelMapFdOverLimit         | 应用使用图片PixelMap资源超限导致渲染服务fd泄漏。        |
+| CPUHighloadNotify             | 应用后台CPU高负载，出现弹框，用户选择停止该应用。        |
+| CPUHighloadUserRequest        | 应用后台CPU高负载，设置界面用户选择停止该应用。        |
+| IllegalAudioCapturerBySuspend | 应用录音未申请合理的后台任务，其退至到后台后仍进行录音。        |
+| IOHighload                    | IO高负载。                          |
+| AppFreeze                     | 应用冻屏无响应。                        |
+| MALICIOUS_CONTINUOUSTASK_ACTIVE | 恶意连续任务活跃。                        |
+| RsDataOverflow                | RS数据溢出。                          |
+| HighTemperature               | 温度超限。                           |
+| TransientTaskTimeout          | 短时任务超时6s并且处于后台。                 |
+| TooManyReadyThreads           | 就绪线程过多。                          |
+| REASON_RESOURCE_CONTROL       | 资源控制原因。                          |
+| HardwareDecodingResourcesLimit | 硬件解码资源限制。                        |
+| AppRecoveryNotifyAppOverLimit | 应用恢复通知应用超限。                      |
+| GpuError                      | GPU错误。                           |
+| NotAttachedToStatusBar        | 未附加到状态栏。                         |
+| CPUHighload                   | 应用后台CPU高负载，系统自动杀死。              |
+| AshmemKiller                  | 整机低内存，单进程ASHMEM内存超限。                       |
+| GpuKiller                     | 整机低内存，单进程GPU占用达到阈值。                      |
+| DmaKiller                     | 整机低内存，单进程Dma占用达到阈值。                      |
+| ThreadKiller                  | 单进程线程超限。                           |
+| UninstallStorage              | 卸载存储卡。                          |
