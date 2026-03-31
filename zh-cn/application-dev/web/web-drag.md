@@ -37,7 +37,7 @@ ArkWeb拖拽不同于ArkUI的组件级拖拽，主要针对网页内容的拖拽
 在多数情况下，应用在H5端实现的拖拽功能能够满足需求。如有需要，请参考以下案例，实现在ArkTS端进行拖拽数据读取等操作。
 1. [建立应用侧与前端页面数据通道](web-app-page-data-channel.md)。
 2. 在onDrop方法中，做简单逻辑，例如暂存一些关键数据。
-3. 在ArkTS侧接受消息的方法中，添加应用处理逻辑，可以进行耗时任务。
+3. 在ArkTS侧接收消息的方法中，添加应用处理逻辑，可以进行耗时任务。
 
 由于ArkTS侧的onDrop方法会早于H5中放置事件的处理方法（html示例中的droppable.addEventListener('drop')）执行，若在onDrop方法中进行页面跳转等操作，将导致H5中的drop方法无法正确执行，产生不符合预期的结果。因此，应建立双向通信机制，在H5中的drop方法执行完毕后，通知ArkTS侧执行相应的业务逻辑，以确保业务逻辑的预期执行。
 
@@ -60,15 +60,15 @@ struct DragDrop {
         src: $rawfile('drag.html'),
         controller: this.controller,
       }).onPageEnd((event) => {
-        //注册通信端口
+        // 注册通信端口
         this.ports = this.controller.createWebMessagePorts();
         this.ports[1].onMessageEvent((result: webview.WebMessage) => {
           //ArkTS收到html传来的数据后的处理，可以先打日志确认下消息，双端的消息格式可以自己约定，能唯一识别就行
           console.info('ETS receive Message: typeof (result) = ' + typeof (result) + ';' + result);
-          //这里添加result中消息接收到后的处理,可进行耗时任务
+          // 这里添加result中消息接收到后的处理,可进行耗时任务
         });
         console.info('ETS postMessage set h5port ');
-        //完成通信端口注册后，向前端发送注册完成消息，完成双向的端口绑定
+        // 完成通信端口注册后，向前端发送注册完成消息，完成双向的端口绑定
         this.controller.postMessage('__init_port__', [this.ports[0]], '*');
       })// onDrop 可做简单逻辑，例如暂存一些关键数据
         .onDrop((dragEvent: DragEvent) => {
@@ -179,7 +179,7 @@ html示例:
       this.textContent = "放置成功！";
     });
 
-    // 	scriptproxy端口在js侧设置
+    // scriptproxy端口在js侧设置
     var h5Port;
     window.addEventListener('message', function (event) {
     console.info("H5 receive settingPort message");

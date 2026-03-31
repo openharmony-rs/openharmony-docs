@@ -89,7 +89,7 @@ Web(value: WebOptions)
   }
   ```
 
-隐私模式Webview加载在线网页。
+隐私模式WebView加载在线网页。
 
   ```ts
   // xxx.ets
