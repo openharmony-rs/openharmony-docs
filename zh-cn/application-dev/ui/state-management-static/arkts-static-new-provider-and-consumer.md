@@ -132,7 +132,8 @@ struct Child {
    import { Entry, ComponentV2 } from '@kit.ArkUI';
    import { Provider, Consumer } from '@kit.ArkUI';
    
-   @Provider // 错误用法
+   // 错误用法
+   @Provider
    class Info {
      name: string;
    
@@ -145,6 +146,7 @@ struct Child {
    @ComponentV2
    struct Parent {
      @Provider() message: string = 'Hello World'; // 正确用法
+   
      build() {
      }
    }
@@ -152,6 +154,7 @@ struct Child {
    @ComponentV2
    struct Child {
      @Consumer() message: string = 'Hello World'; // 正确用法
+   
      build() {
      }
    }
@@ -169,6 +172,7 @@ struct Child {
    @ComponentV2
    struct Parent {
      @Provider() message: string = 'Hello World'; // 正确用法
+   
      build() {
      }
    }
@@ -176,6 +180,7 @@ struct Child {
    @ComponentV2
    struct Child {
      @Consumer() message: string = 'Hello World'; // 正确用法
+   
      build() {
      }
    }
@@ -183,6 +188,7 @@ struct Child {
    @Component
    struct Test {
      @Provider() message: string = 'Hello World'; // 错误用法，编译时报错
+   
      build() {
      }
    }
@@ -199,6 +205,7 @@ struct Child {
    @ComponentV2
    struct ProviderComponent {
      @Provider() message: string = 'Hello World';
+   
      build() {
      }
    }
@@ -206,6 +213,7 @@ struct Child {
    @ComponentV2
    struct ConsumerComponent {
      @Consumer() message: string = 'Hello World';
+   
      build() {
      }
    }
@@ -338,6 +346,7 @@ interface Info {
 struct Parent {
   // 装饰字面量
   @Provider() info: Info = { name: 'Bob' } as Info;
+
   build() {
     Column() {
       Text(`parent name: ${this.info.name}`)
@@ -358,6 +367,7 @@ struct Parent {
 struct Child {
   // 装饰字面量
   @Consumer() info: Info = { name: 'Mary' } as Info;
+
   build() {
     Column() {
       Text(`child name: ${this.info.name}`)
@@ -458,6 +468,7 @@ struct Parent {
     }
   }
 }
+
 @ComponentV2
 struct Child {
   @Consumer() SelectedDate: Date = new Date('2022-07-07');
@@ -517,6 +528,7 @@ struct Parent {
     }
   }
 }
+
 @ComponentV2
 struct Child {
   @Consumer() message: Map<number, string> = new Map<number, string>([[0, 'd'], [1, 'e'], [2, 'f']]);
@@ -568,6 +580,7 @@ struct Parent {
     }
   }
 }
+
 @ComponentV2
 struct Child {
   @Consumer() message: Set<number> = new Set<number>([1, 2, 3, 4, 5, 6]);
@@ -603,9 +616,9 @@ import { Provider, Consumer, Local } from '@kit.ArkUI';
 struct Parent {
   @Local childSub: number = 0;
   @Local childSum: number = 1;
-  @Provider() onChange: (x: number, y: number) => void = (x: number, y: number): void => {
-    this.childSub = x - y;
-    this.childSum = x + y;
+  @Provider() onChange: (axisX: number, axisY: number) => void = (axisX: number, axisY: number): void => {
+    this.childSub = axisX - axisY;
+    this.childSum = axisX + axisY;
   }
 
   build() {
@@ -618,14 +631,15 @@ struct Parent {
 
 @ComponentV2
 struct Child {
-  @Local x: number = 0;
-  @Local y: number = 1;
-  @Consumer() onChange: (x: number, y: number) => void = (x: number, y: number): void => {};
+  @Local axisX: number = 0;
+  @Local axisY: number = 1;
+  @Consumer() onChange: (axisX: number, axisY: number) => void = (axisX: number, axisY: number): void => {
+  };
 
   build() {
     Button('changed')
       .onClick((e: ClickEvent) => {
-        this.onChange(this.x, this.y);
+        this.onChange(this.axisX, this.axisY);
       })
   }
 }
@@ -652,7 +666,9 @@ class User {
     this.age = age;
   }
 }
+
 const data: User[] = [new User('Json', 10), new User('Eric', 15)];
+
 @Entry
 @ComponentV2
 struct Parent {
