@@ -103,7 +103,7 @@ Extension生命周期回调，如果是connectAbility拉起的服务，会在onC
 
 | 类型 | 说明 |
 | -------- | -------- |
-| rpc.RemoteObject \| Promise<rpc.RemoteObject> | 一个RemoteObject对象，用于客户端和服务端进行通信；或一个Promise对象，返回用于客户端和服务端进行通信的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象。|
+| rpc.[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) \| Promise<rpc.[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)> | 一个RemoteObject对象，用于客户端和服务端进行通信；或一个Promise对象，返回用于通信的RemoteObject对象。|
 
 **示例：**
 
