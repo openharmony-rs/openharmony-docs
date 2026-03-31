@@ -1,4 +1,4 @@
-# 按键前置监听错误码
+# 红外管理错误码
 
 <!--Kit: Input Kit-->
 <!--Subsystem: MultimodalInput-->
@@ -11,20 +11,20 @@
 >
 > - 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码](../errorcode-universal.md)。
 
-## 4100001 按键不支持前置监听
+## 3800001 多模输入服务内部错误
 
 **错误信息**
 
-Event listening not supported for the key.
+Input service exception. Possible causes: 1. Memory allocation failure. 2. Thread busy. 3. Service terminated abnormally. 4. Other unexpected errors. Try again later.
 
 **错误描述**
 
-事件监听不支持该按键。
+多模输入服务内部错误。
 
 **可能原因**
 
-需要监听的按键当前接口不支持。
+内存分配失败，线程繁忙，服务运行异常等非预期错误。
 
 **处理步骤**
 
-检查传入的按键值是否支持监听，当前仅支持监听META_LEFT键、META_RIGHT键、电源键、音量键。
+建议稍后重试。

@@ -287,7 +287,7 @@ on(type: 'mouse', rect: display.Rect[], receiver: Callback&lt;MouseEvent&gt;): v
 | 参数名       | 类型                         | 必填   | 说明                  |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | 是    | 输入设备事件类型，取值'mouse'。 |
-| rect     | display.Rect[]             | 是    | 可以触发回调任务的矩形区域，可传入1至2个。 |
+| rect     | [display.Rect](../apis-arkui/js-apis-display.md#rect9)[]             | 是    | 可以触发回调任务的矩形区域，可传入1至2个。 |
 | receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | 是    | 回调函数，异步上报鼠标输入事件。  |
 
 **错误码**：
@@ -602,7 +602,7 @@ off(type: 'mouse', receiver?: Callback&lt;MouseEvent&gt;): void
 | 参数名       | 类型                         | 必填   | 说明                  |
 | -------- | -------------------------- | ---- | ------------------- |
 | type     | string                     | 是    | 输入设备事件类型，取值'mouse'。 |
-| receiver | Callback&lt;MouseEvent&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
+| receiver | Callback&lt;[MouseEvent](js-apis-mouseevent.md#mouseevent)&gt; | 否    | 需要取消监听的回调函数。若不填，则取消当前应用监听的所有回调函数。 |
 
 **错误码**：
 
@@ -829,7 +829,7 @@ struct Index {
 
 ## inputMonitor.on('pinch')<sup>10+</sup>
 
-on(type: 'pinch', receiver: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+on(type: 'pinch', receiver: Callback&lt;Pinch&gt;): void
 
 监听全局触控板的捏合事件。使用callback异步回调。
 
@@ -947,7 +947,7 @@ struct Index {
 
 ## inputMonitor.off('pinch')<sup>10+</sup>
 
-off(type: 'pinch', receiver?: Callback&lt;[Pinch](js-apis-multimodalinput-gestureevent.md#pinch)&gt;): void
+off(type: 'pinch', receiver?: Callback&lt;Pinch&gt;): void
 
 取消监听全局触控板的捏合事件。使用callback异步回调。
 
@@ -1107,7 +1107,7 @@ struct Index {
 
 ## inputMonitor.on('threeFingersSwipe')<sup>10+</sup>
 
-on(type: 'threeFingersSwipe', receiver: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+on(type: 'threeFingersSwipe', receiver: Callback&lt;ThreeFingersSwipe&gt;): void
 
 监听全局触控板的三指滑动事件。使用callback异步回调。
 
@@ -1226,7 +1226,7 @@ struct Index {
 
 ## inputMonitor.off('threeFingersSwipe')<sup>10+</sup>
 
-off(type: 'threeFingersSwipe', receiver?: Callback&lt;[ThreeFingersSwipe](js-apis-multimodalinput-gestureevent.md#threefingersswipe)&gt;): void
+off(type: 'threeFingersSwipe', receiver?: Callback&lt;ThreeFingersSwipe&gt;): void
 
 取消监听全局触控板的三指滑动事件。使用callback异步回调。
 
@@ -1386,7 +1386,7 @@ struct Index {
 
 ## inputMonitor.on('fourFingersSwipe')<sup>10+</sup>
 
-on(type: 'fourFingersSwipe', receiver: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+on(type: 'fourFingersSwipe', receiver: Callback&lt;FourFingersSwipe&gt;): void
 
 监听全局触控板的四指滑动事件。使用callback异步回调。
 
@@ -1505,7 +1505,7 @@ struct Index {
 
 ## inputMonitor.off('fourFingersSwipe')<sup>10+</sup>
 
-off(type: 'fourFingersSwipe', receiver?: Callback&lt;[FourFingersSwipe](js-apis-multimodalinput-gestureevent.md#fourfingersswipe)&gt;): void
+off(type: 'fourFingersSwipe', receiver?: Callback&lt;FourFingersSwipe&gt;): void
 
 取消监听全局触控板的四指滑动事件。使用callback异步回调。
 
@@ -2281,7 +2281,7 @@ struct Index {
 
 ## inputMonitor.on('threeFingersTap')<sup>11+</sup>
 
-on(type: 'threeFingersTap', receiver: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+on(type: 'threeFingersTap', receiver: Callback&lt;ThreeFingersTap&gt;): void
 
 监听全局触控板的三指轻点事件。使用callback异步回调。
 
@@ -2400,7 +2400,7 @@ struct Index {
 
 ## inputMonitor.off('threeFingersTap')<sup>11+</sup>
 
-off(type: 'threeFingersTap', receiver?: Callback&lt;[ThreeFingersTap](js-apis-multimodalinput-gestureevent.md#threefingerstap11)&gt;): void
+off(type: 'threeFingersTap', receiver?: Callback&lt;ThreeFingersTap&gt;): void
 
 取消监听全局触控板的三指轻点事件。使用callback异步回调。
 
