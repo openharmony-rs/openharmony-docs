@@ -5,12 +5,12 @@
 <!--Designer: @zhufenghao-->
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
-菜单作为用户交互的关键组件，其作用是构建清晰的导航体系，通过结构化布局展示功能入口，使用户能够迅速找到目标内容或执行操作。作为人机交互的重要枢纽，它显著提升了Web组件的可访问性和用户体验，是应用设计中必不可少的部分。Web组件菜单类型包括[文本选中菜单](./web-menu#文本选中菜单)、[上下文菜单](./web-menu#上下文菜单)和[自定义菜单](./web-menu#自定义菜单)，应用可根据具体需求灵活选择。
+菜单作为用户交互的关键组件，其作用是构建清晰的导航体系，通过结构化布局展示功能入口，使用户能够迅速找到目标内容或执行操作。作为人机交互的重要枢纽，它显著提升了Web组件的可访问性和用户体验，是应用设计中必不可少的部分。Web组件菜单类型包括[文本选中菜单](./web-menu.md#文本选中菜单)、[上下文菜单](./web-menu.md#上下文菜单)和[自定义菜单](./web-menu.md#自定义菜单)，应用可根据具体需求灵活选择。
 |菜单类型|目标元素|响应类型|是否支持自定义|
 |----|----|----|----|
-|[文本选中菜单](./web-menu#文本选中菜单)|文本|手势长按|可增减菜单项，菜单样式不可自定义|
-|[上下文菜单](./web-menu#上下文菜单)|超链接、图片、文字|手势长按、鼠标右键|支持通过菜单组件自定义|
-|[自定义菜单](./web-menu#自定义菜单)|图片|手势长按|支持通过菜单组件自定义|
+|[文本选中菜单](./web-menu.md#文本选中菜单)|文本|手势长按|可增减菜单项，菜单样式不可自定义|
+|[上下文菜单](./web-menu.md#上下文菜单)|超链接、图片、文字|手势长按、鼠标右键|支持通过菜单组件自定义|
+|[自定义菜单](./web-menu.md#自定义菜单)|图片|手势长按|支持通过菜单组件自定义|
 ## 文本选中菜单
 Web组件的文本选中菜单是一种通过自定义元素实现的上下文交互组件，当用户选中文本时会动态显示，提供复制、分享、标注等语义化操作，具备标准化功能与可扩展性，是移动端文本操作的核心功能。文本选中菜单在用户长按选中文本或编辑状态下长按出现单手柄时弹出，菜单项横向排列。系统提供默认的菜单实现。应用可通过[editMenuOptions](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#editmenuoptions12)接口对文本选中菜单进行自定义操作。
 1. 通过onCreateMenu方法自定义菜单项，通过操作Array<[TextMenuItem](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitem12对象说明)>数组可对显示菜单项进行增减操作，在[TextMenuItem](../reference/apis-arkui/arkui-ts/ts-text-common.md#textmenuitem12对象说明)中定义菜单项名称、图标、ID等内容。
@@ -577,7 +577,7 @@ html示例
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
-import { fileIo } from '@kit.CoreFileKit';
+import { fileIo as fs} from '@kit.CoreFileKit';
 import { systemDateTime } from '@kit.BasicServicesKit';
 import { http } from '@kit.NetworkKit';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
@@ -599,21 +599,21 @@ struct WebComponent {
     try {
       let srcFileDes = this.context.resourceManager.getRawFdSync(rawfilePath);
       let dstPath = this.context.filesDir + '/' + newFileName;
-      let dest: fileIo.File = fileIo.openSync(dstPath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+      let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
       let bufsize = 4096;
       let buf = new ArrayBuffer(bufsize);
       let off = 0;
       let len = 0;
       let readedLen = 0;
-      while ((len = fileIo.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) != 0) {
+      while ((len = fs.readSync(srcFileDes.fd, buf, { offset: srcFileDes.offset + off, length: bufsize })) != 0) {
         readedLen += len;
-        fileIo.writeSync(dest.fd, buf, { offset: off, length: len });
+        fs.writeSync(dest.fd, buf, { offset: off, length: len });
         off = off + len;
         if ((srcFileDes.length - readedLen) < bufsize) {
           bufsize = srcFileDes.length - readedLen;
         }
       }
-      fileIo.close(dest.fd);
+      fs.close(dest.fd);
       return dest.path;
     } catch (err) {
       console.error(`copyLocalPicToDir failed with error: ${err.code}, ${err.message}`);
@@ -628,8 +628,8 @@ struct WebComponent {
       let data: http.HttpResponse = await (httpRequest.request(picUrl) as Promise<http.HttpResponse>);
       if (data?.responseCode == http.ResponseCode.OK) {
         let dstPath = this.context.filesDir + '/' + newFileName;
-        let dest: fileIo.File = fileIo.openSync(dstPath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-        let writeLen: number = fileIo.writeSync(dest.fd, data.result as ArrayBuffer);
+        let dest: fs.File = fs.openSync(dstPath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+        let writeLen: number = fs.writeSync(dest.fd, data.result as ArrayBuffer);
         uri = dest.path;
       }
     } catch (err) {

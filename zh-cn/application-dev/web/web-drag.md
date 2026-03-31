@@ -63,7 +63,7 @@ struct DragDrop {
         // 注册通信端口
         this.ports = this.controller.createWebMessagePorts();
         this.ports[1].onMessageEvent((result: webview.WebMessage) => {
-          //ArkTS收到html传来的数据后的处理，可以先打日志确认下消息，双端的消息格式可以自己约定，能唯一识别就行
+          // ArkTS收到html传来的数据后的处理，可以先打日志确认下消息，双端的消息格式可以自己约定，能唯一识别就行
           console.info('ETS receive Message: typeof (result) = ' + typeof (result) + ';' + result);
           // 这里添加result中消息接收到后的处理,可进行耗时任务
         });
