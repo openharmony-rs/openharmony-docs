@@ -717,6 +717,98 @@ Repeat子组件过渡动画的判定规则如下：
 > - 仅支持显示区域内子组件的动画效果，显示区域外子组件的动画效果为未定义行为。
 > - 过渡动画具体设置方式和动画效果请参考[animateTo](../../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#animateto)接口。
 
+**示例代码**
+
+<!-- @[repeat_animation](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingRepeat/RepeatAnimation.ets) -->
+
+``` TypeScript
+
+@Entry
+@ComponentV2
+struct RepeatAnimationDemo {
+  @Local dataArray: ItemInfo[] = [];
+  private count: number = 0;
+
+  aboutToAppear(): void {
+    for (let i = 0; i < 5; i++) {
+      this.dataArray.push(new ItemInfo(`Item ${i}`, `#FFFFFF`));
+    }
+  }
+
+  build() {
+    Column({ space: 5 }) {
+      Row({ space: 5 }) {
+        Button('Add')
+          .onClick(() => {
+            // 为插入子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 0, new ItemInfo(`New item ${this.count++}`, `#FFFFFF`))
+            })
+          })
+        Button('Delete')
+          .onClick(() => {
+            // 为删除子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray.splice(0, 1)
+            })
+          })
+        Button('Exchange')
+          .onClick(() => {
+            // 为交换子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              let temp = this.dataArray[1];
+              this.dataArray[1] = this.dataArray[0]
+              this.dataArray[0] = temp;
+            })
+          })
+        Button('Update')
+          .onClick(() => {
+            // 为更新子组件设置动画
+            this.getUIContext()?.animateTo({ duration: 1000 }, () => {
+              this.dataArray[0].info = 'Item updated';
+              this.dataArray[0].color = '#86C5E3';
+            })
+          })
+      }
+      List({ space: 5 }) {
+        Repeat(this.dataArray)
+          .each((repeatItem) => {
+            ListItem() {
+              Text(repeatItem.item.info)
+            }
+            .backgroundColor(repeatItem.item.color)
+            .width(150)
+            .height(50)
+            .border({ width: 1 })
+            // 设置子组件插入和删除时的过渡效果
+            .transition(TransitionEffect.translate({ x: 300 }))
+          })
+          .key((item: ItemInfo, index: number) => item.key)
+          .virtualScroll()
+      }
+      .alignListItem(ListItemAlign.Center)
+    }
+    .width('100%')
+  }
+}
+
+@ObservedV2
+class ItemInfo {
+  @Trace public info: string;
+  @Trace public color: string;
+  public key: string;
+  constructor(info: string, color: string) {
+    this.info = info;
+    this.color = color;
+    this.key = info;
+  }
+}
+```
+
+运行效果：
+
+![Repeat-animation](figures/repeat-animation.gif)
+
 ## 常见使用场景
 
 ### 数据展示&操作
