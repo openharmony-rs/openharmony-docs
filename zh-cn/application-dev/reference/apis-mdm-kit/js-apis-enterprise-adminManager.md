@@ -594,6 +594,7 @@ adminManager.disableDeviceAdmin(wantTemp).catch((err: BusinessError) => {
 | MANAGED_EVENT_ACCOUNT_REMOVED<sup>18+</sup>  | 7    | 账号删除事件。 |
 | MANAGED_EVENT_STARTUP_GUIDE_COMPLETED<sup>24+</sup> | 8    | 开机向导完成事件。**模型约束**：此接口仅可在Stage模型下使用。 |
 | MANAGED_EVENT_BOOT_COMPLETED<sup>24+</sup>  | 9    | 设备启动完成事件。**模型约束**：此接口仅可在Stage模型下使用。 |
+| MANAGED_EVENT_BUNDLE_UPDATED                | 10    | 应用更新事件。**模型约束**：此接口仅可在Stage模型下使用。**起始版本**：26.0.0。 |
 
 ## AdminType<sup>15+</sup>
 

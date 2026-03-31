@@ -23,12 +23,17 @@ The struct describes the filter name information.
 ## Summary
 
 ### Member Variables
-
+**The following table lists the declarations supporting C++ syntax.**
 | Name| Description|
 | -- | -- |
 | uint32_t size = 0 | Number of filter names.|
-| const char** nameList = nullptr | List of filter names.|
+| const char \*\*nameList = nullptr | List of filter names.|
 
+**The following table lists the declarations supporting C syntax.**
+| Name| Description|
+| -- | -- |
+| uint32_t size| Number of filter names.|
+| const char \*\*nameList | List of filter names.|
 
 ### Member functions
 
@@ -138,8 +143,8 @@ Sets the buffer types supported by a filter.
 | Name| Description|
 | -- | -- |
 | [OH_EffectFilterInfo](capi-imageeffect-oh-effectfilterinfo.md) *info | Pointer to the filter information.|
-| uint32_t size | Number of buffer types supported, each of which is [ImageEffect_BufferType](capi-image-effect-filter-h.md#imageeffect_buffertype).|
-| ImageEffect_BufferType *bufferTypeArray | Pointer to the array holding the buffer types supported, each of which is [ImageEffect_BufferType](capi-image-effect-filter-h.md#imageeffect_buffertype).|
+| uint32_t size | Number of buffer types supported, where each type corresponds to a value in the [ImageEffect_BufferType](capi-image-effect-filter-h.md#imageeffect_buffertype) enumeration.|
+| ImageEffect_BufferType *bufferTypeArray | Pointer to the array of the buffer types supported, where each type corresponds to a value in the [ImageEffect_BufferType](capi-image-effect-filter-h.md#imageeffect_buffertype) enumeration.|
 
 **Returns**
 
@@ -166,8 +171,8 @@ Obtains the buffer types supported by a filter.
 | Name| Description|
 | -- | -- |
 | [OH_EffectFilterInfo](capi-imageeffect-oh-effectfilterinfo.md) *info | Pointer to the filter information.|
-| uint32_t *size | Pointer to the number of buffer types supported, each of which is [ImageEffect_BufferType](capi-image-effect-filter-h.md#imageeffect_buffertype).|
-| ImageEffect_BufferType **bufferTypeArray | Double pointer to the array holding the buffer types supported, each of which is [ImageEffect_BufferType](capi-image-effect-filter-h.md#imageeffect_buffertype).|
+| uint32_t *size | Number of buffer types supported, where each type corresponds to a value in the [ImageEffect_BufferType](capi-image-effect-filter-h.md#imageeffect_buffertype) enumeration.|
+| ImageEffect_BufferType **bufferTypeArray | Pointer to the array of the buffer types supported, where each type corresponds to a value in the [ImageEffect_BufferType](capi-image-effect-filter-h.md#imageeffect_buffertype) enumeration.|
 
 **Returns**
 
@@ -194,8 +199,8 @@ Sets the pixel formats supported by a filter.
 | Name| Description|
 | -- | -- |
 | [OH_EffectFilterInfo](capi-imageeffect-oh-effectfilterinfo.md) *info | Pointer to the filter information.|
-| uint32_t size | Number of pixel formats supported, each of which is [ImageEffect_Format](capi-image-effect-filter-h.md#imageeffect_format).|
-| ImageEffect_Format *formatArray | Pointer to the array holding the pixel formats supported, each of which is [ImageEffect_Format](capi-image-effect-filter-h.md#imageeffect_format).|
+| uint32_t size | Number of pixel formats supported, where each format corresponds to a value in the [ImageEffect_Format](capi-image-effect-filter-h.md#imageeffect_format) enumeration.|
+| ImageEffect_Format *formatArray | Pointer to the array of the pixel formats supported, where each format corresponds to a value in the [ImageEffect_Format](capi-image-effect-filter-h.md#imageeffect_format) enumeration.|
 
 **Returns**
 
@@ -222,8 +227,8 @@ Obtains the pixel formats supported by a filter.
 | Name| Description|
 | -- | -- |
 | [OH_EffectFilterInfo](capi-imageeffect-oh-effectfilterinfo.md) *info | Pointer to the filter information.|
-| uint32_t *size | Pointer to the number of pixel formats supported, each of which is [ImageEffect_Format](capi-image-effect-filter-h.md#imageeffect_format).|
-| ImageEffect_Format **formatArray | Double pointer to the array holding the pixel formats supported, each of which is [ImageEffect_Format](capi-image-effect-filter-h.md#imageeffect_format).|
+| uint32_t *size | Number of pixel formats supported, where each format corresponds to a value in the [ImageEffect_Format](capi-image-effect-filter-h.md#imageeffect_format) enumeration.|
+| ImageEffect_Format **formatArray | Pointer to the array of the pixel formats supported, where each format corresponds to a value in the [ImageEffect_Format](capi-image-effect-filter-h.md#imageeffect_format) enumeration.|
 
 **Returns**
 

@@ -537,9 +537,9 @@ zh-cn/application-dev/web/web-sensor.md @handyohos @glzt2l @HelloShuo @zhang-yin
 zh-cn/application-dev/web/web-set-dark-mode.md @LongLie @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/web/web-white-screen.md @LongLie @glzt2l @HelloShuo @yp99ustc
 zh-cn/application-dev/web/web_component_process.md @libing23232323 @glzt2l @HelloShuo @zhu-sheng-le
-zh-cn/application-dev/web/web_drag.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
+zh-cn/application-dev/web/web-drag.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 zh-cn/application-dev/web/web_full_screen.md @qiu-gongkai @glzt2l @HelloShuo @d0ub1eh
-zh-cn/application-dev/web/web_menu.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
+zh-cn/application-dev/web/web-menu.md @zhufenghao @glzt2l @HelloShuo @jerrywangxmu
 
 [开发-Background Tasks Kit]
 zh-cn/application-dev/task-management/ @Brilliantry_Rui @zhouben25  @leetestnady
@@ -1210,6 +1210,21 @@ zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-text
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditorparagraphstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-shadowoptions.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-spanstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-imageattachment.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-customspan.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-textstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-paragraphstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-gesturestyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-textshadowstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-decorationstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-lineheightstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-urlstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-userdataspan.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-arkui-leadingmarginspandrawinfo.md	@carnivore233	@mateng_Holtens	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule-oh-pixelmapnative8h.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-arkui-nativemodule.md	@xiang-shouxing	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/capi-drag-and-drop-h.md	@piggyguy	@songyanhong	 @Brilliantry_Rui

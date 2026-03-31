@@ -1688,6 +1688,62 @@ try {
 }
 ```
 
+## bundleManager.getApplicationLabel
+
+getApplicationLabel(bundleName: string, appIndex: number): Promise\<string>
+
+获取指定包名和分身索引的应用名称。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**参数：**
+
+| 参数名        | 类型                                                | 必填 | 说明                    |
+| ------------ | --------------------------------------------------- | ---- | ----------------------- |
+| bundleName  | string |是 | 应用的包名。 |
+| appIndex   | number  | 是   | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。  |
+
+**返回值：**
+
+| 类型                                                         | 说明                              |
+| ------------------------------------------------------------ | --------------------------------- |
+| Promise\<string> | Promise对象，调用成功返回应用名称；调用失败返回错误对象。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
+
+| 错误码ID |    错误信息                   |
+|----------|-------------------------|
+| 201 | Permission denied. |
+| 17700001 | The specified bundleName is not found. |
+| 17700061 | The specified app index is invalid. |
+
+**示例：**
+
+```ts
+import { bundleManager } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  bundleManager.getApplicationLabel('com.hap.myapplication', 1).then((data: string) => {
+    console.info('getApplicationLabel succeed:' + data);
+  }).catch((err: BusinessError) => {
+    console.error('getApplicationLabel failed: error code is ' + err.code + ' and error msg is ' + err.message);
+  });
+} catch (err) {
+  let code = (err as BusinessError).code;
+  let message = (err as BusinessError).message;
+  console.error('getApplicationLabel failed: error code is ' + code + ' and error msg is ' + message);
+}
+```
+
 ## ApplicationInfo
 
 type ApplicationInfo = _ApplicationInfo

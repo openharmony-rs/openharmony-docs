@@ -14,7 +14,7 @@ In the stage model, a window stage or window can use the [loadContent](arkts-api
 >
 > - You can preview how this component looks on a real device, but not in DevEco Studio Previewer.
 >
-> - This document describes only system APIs provided by the module. For details about other public APIs, see [Module Description](arkts-apis-uicontext.md).
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.arkui.UIContext (UIContext)](arkts-apis-uicontext.md).
 
 ## Modules to Import
 

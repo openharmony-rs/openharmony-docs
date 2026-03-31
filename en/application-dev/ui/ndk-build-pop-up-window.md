@@ -320,7 +320,7 @@ Starting from API version 19, four lifecycle APIs are available for callbacks be
 
 These lifecycle APIs must be called before the **show** API is invoked. The sequence of lifecycle events is as follows:
 
-registerOnWillAppear -> Dialog box display animation starts -> Dialog box display animation ends -> registerOnDidAppear -> Dialog box display completes-> registerOnWillDisappear -> Dialog box close animation starts -> Dialog box close animation ends -> registerOnDidDisappear -> Dialog box close animation completes.
+registerOnWillAppear -> Dialog box display animation starts -> Dialog box display animation ends -> registerOnDidAppear -> Dialog box display completes -> registerOnWillDisappear -> Dialog box close animation starts -> Dialog box close animation ends -> registerOnDidDisappear -> Dialog box close animation completes.
 
 The following is an example of creating a dialog box that triggers lifecycle callback functions when the dialog box is displayed and closed. For details about how to obtain and use nodes of the ArkUI_NodeContentHandle type, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
 <!-- @[dialog_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->

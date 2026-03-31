@@ -94,7 +94,7 @@ shortcutManager.getAllShortcutInfoForSelf()
 
 isShortcutSupported(): boolean
 
-当前设备是否支持快捷方式。
+查询当前设备是否支持快捷方式。
 
 **起始版本：** 26.0.0
 
