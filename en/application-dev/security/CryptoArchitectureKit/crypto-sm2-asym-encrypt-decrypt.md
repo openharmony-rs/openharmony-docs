@@ -81,7 +81,7 @@ For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-de
     let pubKey = keyPair.pubKey;
     let priKey = keyPair.priKey;
     let message = 'This is a test';
-    // Convert the string into a Uint8Array using UTF-8.
+    // Decode the string into a Uint8Array in UTF-8 format.
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = await encryptMessagePromise(pubKey, plainText);
     let decryptText = await decryptMessagePromise(priKey, encryptText);
@@ -145,7 +145,7 @@ For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-de
     let pubKey = keyPair.pubKey;
     let priKey = keyPair.priKey;
     let message = 'This is a test';
-    // Convert the string into a Uint8Array using UTF-8.
+    // Decode the string into a Uint8Array in UTF-8 format.
     let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
     let encryptText = encryptMessage(pubKey, plainText);
     let decryptText = decryptMessage(priKey, encryptText);
