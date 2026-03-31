@@ -453,7 +453,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
 
-// This example demonstrates how to click a button to remove an array of domain names from the disallowed list.
+// This example demonstrates how to click a button to remove an array of domain names from the allowed list.
 @Entry
 @Component
 struct WebComponent {

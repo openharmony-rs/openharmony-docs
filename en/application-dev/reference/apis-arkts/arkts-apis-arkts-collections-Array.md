@@ -11,9 +11,9 @@ Pass-by-reference is recommended for better transfer performance.
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This module can be imported only to ArkTS files (with the file name extension .ets).
+> This module can be imported only to ArkTS files (with the file name extension .ets).
 
 This section uses the following to identify the use of generics:
 
@@ -77,7 +77,7 @@ A constructor used to create an ArkTS array with the given elements.
 | Name| Type| Mandatory| Description                           |
 | ------ | ---- | ---- | ------------------------------- |
 | first  | T    | Yes  | First element to be included in the ArkTS array.|
-| left   | T[]  | No  | Remaining elements to be included in the ArkTS array.  |
+| left   | T[]  | No  | Remaining elements to be included in the ArkTS array. The default value is an empty array.|
 
 **Error codes**
 
@@ -196,14 +196,14 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 // Positive example:
-let array: Array<string> = ['str1', 'str2', 'str3']; // Native Array<T>, where T is the sendable data type.
+let array : Array<string> = ['str1', 'str2', 'str3']; // Native Array<T>, where T is the sendable data type.
 let sendableArray = collections.Array.from<string>(array); // Returns Sendable Array<T>.
 ```
 
 <!--code_no_check-->
 ```ts
 // Negative example:
-let array: Array<Array<string>> = [['str1', 'str2', 'str3'], ['str4', 'str5', 'str6'], ['str7', 'str8', 'str9']]; // Native Array<T>, where T is a non-sendable data type.
+let array : Array<Array<string>> = [['str1', 'str2', 'str3'], ['str4', 'str5', 'str6'], ['str7', 'str8', 'str9']]; // Native Array<T>, where T is a non-sendable data type.
 let sendableArray = collections.Array.from<Array<string>>(array); // Prints the following exception information: Parameter error.Only accept sendable value
 ```
 
@@ -379,7 +379,7 @@ Creates an ArkTS array with a variable number of parameters.
 
 | Name   | Type         | Mandatory| Description                           |
 | --------- | ------------- | ---- | ------------------------------- |
-| items | T[] | No  | Array of elements used to create the array. The number of elements can be zero, one, or more.|
+| items | T[] | No  | Array of elements used to create the array. The number of elements can be zero, one, or more. The default value is an empty array.|
 
 **Return value**
 

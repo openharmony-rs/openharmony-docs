@@ -529,9 +529,9 @@ Closes a distributed KV store. This API uses an asynchronous callback to return 
 
 | Name  | Type                 | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | Yes  | Bundle name of the application. The value cannot be empty or exceed 256 bytes.                                     |
+| appId    | string                    | Yes  | Bundle name of the application. It cannot be empty and its length cannot exceed 256 characters.                                     |
 | storeId  | string                    | Yes  | Unique identifier of the KV store to close. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](#constants) in length.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.    |
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.    |
 
 **Error codes**
 
@@ -595,7 +595,7 @@ Closes a distributed KV store. This API uses a promise to return the result.
 
 | Name | Type| Mandatory| Description                                                        |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | Yes  | Bundle name of the application. The value cannot be empty or exceed 256 bytes.                          |
+| appId   | string   | Yes  | Bundle name of the application. It cannot be empty and its length cannot exceed 256 characters.                          |
 | storeId | string   | Yes  | Unique identifier of the KV store to close. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](#constants) in length.|
 
 **Return value**
@@ -663,9 +663,9 @@ Deletes a distributed KV store. This API uses an asynchronous callback to return
 
 | Name  | Type                 | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| appId    | string                    | Yes  | Bundle name of the application. The value cannot be empty or exceed 256 bytes.                                     |
+| appId    | string                    | Yes  | Bundle name of the application. It cannot be empty and its length cannot exceed 256 characters.                                     |
 | storeId  | string                    | Yes  | Unique identifier of the KV store to delete. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](#constants) in length.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.    |
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.    |
 
 **Error codes**
 
@@ -731,7 +731,7 @@ Deletes a distributed KV store. This API uses a promise to return the result.
 
 | Name | Type| Mandatory| Description                                                        |
 | ------- | -------- | ---- | ------------------------------------------------------------ |
-| appId   | string   | Yes  | Bundle name of the application. The value cannot be empty or exceed 256 bytes.                          |
+| appId   | string   | Yes  | Bundle name of the application. It cannot be empty and its length cannot exceed 256 characters.                          |
 | storeId | string   | Yes  | Unique identifier of the KV store to delete. The KV store ID allows only letters, digits, and underscores (_), and cannot exceed [MAX_STORE_ID_LENGTH](#constants) in length.|
 
 **Return value**
@@ -800,7 +800,7 @@ Obtains the IDs of all distributed KV stores that are created by [getKVStore](#g
 
 | Name  | Type                     | Mandatory| Description                                               |
 | -------- | ----------------------------- | ---- | --------------------------------------------------- |
-| appId    | string                        | Yes  | Bundle name of the application. The value cannot be empty or exceed 256 bytes.                             |
+| appId    | string                        | Yes  | Bundle name of the application. It cannot be empty and its length cannot exceed 256 characters.                             |
 | callback | AsyncCallback&lt;string[]&gt; | Yes  | Callback used to return the IDs of all the distributed KV stores created.|
 
 **Error codes**
@@ -844,7 +844,7 @@ Obtains the IDs of all distributed KV stores that are created by [getKVStore](#g
 
 | Name| Type| Mandatory| Description                  |
 | ------ | -------- | ---- | ---------------------- |
-| appId  | string   | Yes  | Bundle name of the application. The value cannot be empty or exceed 256 bytes.|
+| appId  | string   | Yes  | Bundle name of the application. It cannot be empty and its length cannot exceed 256 characters.|
 
 **Return value**
 
@@ -893,7 +893,7 @@ Subscribes to the termination (death) of the distributed data service. If the se
 | Name       | Type            | Mandatory| Description                                                        |
 | ------------- | -------------------- | ---- | ------------------------------------------------------------ |
 | event         | string               | Yes  | Event type. The value is **distributedDataServiceDie**, which indicates the termination of the distributed data service.|
-| deathCallback | Callback&lt;void&gt; | Yes  | Callback used to return the result. If the subscription is successful, **err** is **undefined**. Otherwise, **err** is an error object.    |
+| deathCallback | Callback&lt;void&gt; | Yes  | Callback function. If the subscription is successful, **err** is **undefined**. Otherwise, **err** is an error object.    |
 
 **Error codes**
 
@@ -933,7 +933,7 @@ Unsubscribes from the termination (death) of the distributed data service. The *
 | Name       | Type            | Mandatory| Description                                                        |
 | ------------- | -------------------- | ---- | ------------------------------------------------------------ |
 | event         | string               | Yes  | Event type. The value is **distributedDataServiceDie**, which indicates the termination of the distributed data service.|
-| deathCallback | Callback&lt;void&gt; | No  | Callback to unregister. If this parameter is not specified, this API unregisters all callbacks for the **distributedDataServiceDie** event.                                         |
+| deathCallback | Callback&lt;void&gt; | No  | Callback function. If this parameter is not specified, this API unregisters all callbacks for the **distributedDataServiceDie** event.                                         |
 
 **Error codes**
 
@@ -2727,7 +2727,7 @@ Adds a KV pair of the specified type to this KV store. This API uses an asynchro
 | -----  | ------  | ----  | ----------------------- |
 | key    | string  | Yes   |Key of the KV pair to add. It cannot be empty, and the length cannot exceed [MAX_KEY_LENGTH](#constants).  |
 | value  | Uint8Array \| string \| number \| boolean | Yes   |Value of the KV pair to add. The value type can be Uint8Array, number, string, or boolean. A value of the Uint8Array or string type cannot exceed [MAX_VALUE_LENGTH](#constants).  |
-| callback | AsyncCallback&lt;void&gt; | Yes   |Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
+| callback | AsyncCallback&lt;void&gt; | Yes   |Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
 
@@ -2835,7 +2835,7 @@ Batch inserts KV pairs to this single KV store. This API uses an asynchronous ca
 | Name  | Type                | Mandatory| Description                    |
 | -------- | ------------------------ | ---- | ------------------------ |
 | entries  | [Entry](#entry)[]        | Yes  | KV pairs to insert, which cannot exceed 512 MB.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.  |
 
 **Error codes**
 
@@ -2984,7 +2984,7 @@ Deletes a KV pair from this KV store. This API uses an asynchronous callback to 
 | Name  | Type                 | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | key      | string                    | Yes  | Key of the KV pair to delete. It cannot be empty, and the length cannot exceed [MAX_KEY_LENGTH](#constants).|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.        |
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.        |
 
 **Error codes**
 
@@ -3107,7 +3107,7 @@ Batch deletes KV pairs from this single KV store. This API uses an asynchronous 
 | Name  | Type                 | Mandatory| Description                    |
 | -------- | ------------------------- | ---- | ------------------------ |
 | keys     | string[]                  | Yes  | KV pairs to delete. This parameter cannot be empty.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -3260,7 +3260,7 @@ Deletes data of a device. This API uses an asynchronous callback to return the r
 | Name  | Type                 | Mandatory| Description                  |
 | -------- | ------------------------- | ---- | ---------------------- |
 | deviceId | string                    | Yes  | Network ID of the target device.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.   |
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.   |
 
 **Error codes**
 
@@ -4059,7 +4059,7 @@ Closes the **KVStoreResultSet** object returned by [SingleKvStore.getResultSet](
 | Name   | Type                             | Mandatory| Description                              |
 | --------- | ------------------------------------- | ---- | ---------------------------------- |
 | resultSet | [KVStoreResultSet](#kvstoreresultset) | Yes  | **KVStoreResultSet** object to close.|
-| callback  | AsyncCallback&lt;void&gt;             | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
+| callback  | AsyncCallback&lt;void&gt;             | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes**
 
@@ -4297,7 +4297,7 @@ Backs up a distributed KV store. This API uses an asynchronous callback to retur
 | Name  | Type                 | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | file     | string                    | Yes  | Name of the KV store. The value cannot be empty or exceed [MAX_KEY_LENGTH](#constants).|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4388,7 +4388,7 @@ Restores a distributed KV store from a database file. This API uses an asynchron
 | Name  | Type                 | Mandatory| Description                                                        |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | file     | string                    | Yes  | Name of the database file. The value cannot be empty or exceed [MAX_KEY_LENGTH](#constants).|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4567,7 +4567,7 @@ Starts the transaction in this single KV store. This API uses an asynchronous ca
 
 | Name  | Type                 | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4695,7 +4695,7 @@ Commits the transaction in this single KV store. This API uses an asynchronous c
 
 | Name  | Type                 | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4775,7 +4775,7 @@ Rolls back the transaction in this single KV store. This API uses an asynchronou
 
 | Name  | Type                 | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -4856,7 +4856,7 @@ Sets cross-device data sync, which can be enabled or disabled. This API uses an 
 | Name  | Type                 | Mandatory| Description                                                     |
 | -------- | ------------------------- | ---- | --------------------------------------------------------- |
 | enabled  | boolean                   | Yes  | Whether to enable data sync across devices. The value **true** means to enable data sync across devices, and the value **false** means the opposite.|
-| callback | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.     |
+| callback | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.     |
 
 **Error codes**
 
@@ -4944,7 +4944,7 @@ Sets the data sync range. This API uses an asynchronous callback to return the r
 | ------------------- | ------------------------- | ---- | -------------------------------- |
 | localLabels         | string[]                  | Yes  | Sync labels set for the local device.        |
 | remoteSupportLabels | string[]                  | Yes  | Sync labels set for remote devices.|
-| callback            | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback            | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
@@ -5040,7 +5040,7 @@ Sets the default delay for cross-device data sync. This API uses an asynchronous
 | Name               | Type                 | Mandatory| Description                                        |
 | --------------------- | ------------------------- | ---- | -------------------------------------------- |
 | defaultAllowedDelayMs | number                    | Yes  | Delay time to set, in ms. The value can be **0** or ranges from 100 to 86400000.|
-| callback              | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
+| callback              | AsyncCallback&lt;void&gt; | Yes  | Callback function. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object.|
 
 **Error codes**
 
