@@ -6588,7 +6588,7 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 
 ## notificationManager.getNotificationStatisticsByBundle
 
-getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics)[]\>
+getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<BundleNotificationStatistics[]\>
 
 批量获取指定应用列表的通知统计信息，使用Promise异步回调。
 
@@ -6632,8 +6632,8 @@ getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<[BundleNoti
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let bundles: notificationManager.BundleOption[] = [
-  { bundle:"com.example.test01", } as notificationManager.BundleOption,
-  { bundle:"com.example.test02", } as notificationManager.BundleOption
+  { bundle:"com.example.test01" },
+  { bundle:"com.example.test02" }
 ];
 notificationManager.getNotificationStatisticsByBundle(bundles).then(
   (data: notificationManager.BundleNotificationStatistics[]) => {
