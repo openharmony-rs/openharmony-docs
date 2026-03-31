@@ -1877,7 +1877,7 @@ try {
 
 addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number): void
 
-根位置索引添加应用到快捷栏。
+根据位置索引添加应用到PC/2in1设备的底部快捷栏，添加后用户可以通过点击快捷栏的应用图标直接启动应用，应用图标为应用在桌面上显示的默认图标。
 
 > **说明：**
 >
@@ -1887,11 +1887,13 @@ addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number)
 >
 > 3.仅支持添加具有应用程序入口（即有图标）的应用，无图标的应用不支持添加。
 >
-> 4.快捷栏最多可容纳100个应用。
+> 4.仅支持配置当前用户下的快捷栏，每个用户的快捷栏最多可容纳100个应用。
 >
 > 5.在已有应用的位置插入新应用时，新应用将直接占用该位置，原应用及其后的应用依次向后顺移一位。
 >
 > 6.若不传index参数，或传入的index值大于快捷栏当前应用数量，则新应用默认追加到快捷栏末尾。
+>
+> 7.通过本接口添加应用到快捷栏后，用户可以手动移除或调整应用的位置。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1961,7 +1963,7 @@ removeDockApp(admin: Want, bundleName: string, abilityName: string): void
 
 > **说明：**
 >
-> 以下应用不可通过本接口从快捷栏中移除：“应用中心”、“任务中心”、“文件管理”、“回收站”。
+> 以下应用不可通过本接口从快捷栏中移除：“应用中心”、“任务中心”、“文件管理”、“回收站”，否则报错9201018错误码。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -2019,7 +2021,7 @@ try {
 
 getDockApps(admin: Want): Array\<DockInfo>
 
-获取快捷栏中应用信息的列表。
+获取当前快捷栏中应用信息的列表。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
