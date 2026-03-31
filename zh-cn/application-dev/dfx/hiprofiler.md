@@ -948,7 +948,7 @@ hiprofiler_cmd命令中config参数的调整方法如下：
 
  **现象描述**
 
- 使用hiprofiler_cmd命令抓取应用进程的内存trace，采用FP方式回栈时，对应的共享库(SO)无法回出对应的栈帧。
+ 使用hiprofiler_cmd命令抓取应用进程的内存trace，对应的共享库（SO）无法进行基于fp的栈回溯。
 
  **可能原因&amp;解决方法**
 
