@@ -816,7 +816,10 @@ function bulkTransfer() {
 
   let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
-
+  if (!usbManager.hasRight(device.name)) {
+    console.error(`request right fail`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
