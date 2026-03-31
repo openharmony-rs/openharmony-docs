@@ -428,7 +428,7 @@ This error code is reported if the SSL is null.
 
 **Cause**
 
-The returned error information is null when an internal function fails to be executed.
+The [Tlssocket.connect](./js-apis-socket.md#connect9) function is not called or fails to be executed.
 
 **Procedure**
 
