@@ -132,7 +132,7 @@
 | DEVICE_DISABLED            | 7400108    | 安全原因相机被禁用。<br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
 | DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  |
 | UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| SERVICE_FATAL_ERROR        | 7400201    | 相机服务异常返回。     |
+| SERVICE_FATAL_ERROR        | 7400201    | 相机服务异常返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。    |
 | UNSUPPORTED_MULTI_CAMERA_COMBINATION<sup>24+</sup> | 7400113 | 不支持多摄像头组合。<br> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## TorchMode<sup>11+</sup>
