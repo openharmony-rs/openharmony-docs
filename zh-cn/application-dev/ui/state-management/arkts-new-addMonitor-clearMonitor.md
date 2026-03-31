@@ -120,7 +120,7 @@ struct Page {
 
   aboutToAppear(): void {
     // 错误用法，已经给age注册过方法名为onChange1的函数，无法重复注册相同函数名的监听函数
-    // 打印错误日志提示添加失败：FIX THIS APPLICATION ERROR: AddMonitor onChange1 failed when adding path age because duplicate key
+    // 打印错误日志提示添加失败：FIX THIS APPLICATION ERROR: AddMonitor 'onChange1' owned by 'User' path: 'age' - failed when adding duplicate path
     UIUtils.addMonitor(this.user, 'age', this.onChange1);
   }
 
