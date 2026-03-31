@@ -171,7 +171,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | ------------------- | ---- | ---------------------- |
 | ALLOW | 1 << 0    | 应用支持采集 |
 | SPLIT_SCREEN | 1 << 1    | 应用分屏窗口采集策略。 |
-| UNSUPPORTED_APP | 1 << 2  | 应用不支持。 |
+| UNSUPPORTED_APP | 1 << 2  | 应用不支持自动采集。 |
 | PRIVATE_WINDOW | 1 << 3  | 应用隐私窗口。 |
 | ANCO_APP | 1 << 4 | 虚拟机应用，非鸿蒙应用。 |
 | ALLOW_USER_CHANGE | 1 << 5  | 应用的采集策略可配置。|
@@ -207,7 +207,6 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | entityName   | string | 否   | 否   | 感知结果实体名称，固定内容。 |
 | entityInfo   | Record<string, Object> | 否   | 否   | 感知结果实体信息，包括内容、链接、图像和其它实体。|
-
 
 ## OnscreenAwarenessInfo<sup>23+</sup>
 
@@ -395,7 +394,6 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 | callback | Callback&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
-
 
 **错误码**：
 
