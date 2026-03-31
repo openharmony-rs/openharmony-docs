@@ -298,7 +298,7 @@ import { SelectDialog } from '@kit.ArkUI';
 @Component
 struct Index {
   // 设置默认选中radio的index
-  radioIndex = 0;
+  radioIndex: number = 0;
   dialogControllerList: CustomDialogController = new CustomDialogController({
     builder: SelectDialog({
       title: '文本标题',
@@ -363,7 +363,7 @@ import { ConfirmDialog } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  isChecked = false;
+  isChecked: boolean = false;
   dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
     builder: ConfirmDialog({
       title: '文本标题',
