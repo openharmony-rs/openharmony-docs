@@ -155,19 +155,19 @@ function sendMessageToNative() {
          if (port == null) {
            connectToNativeHost();
          }
-         port.postMessage(request.message); //向应用程序发送信息
+         port.postMessage(request.message); // 向应用程序发送信息
        }
-       return true; //保持消息通道开放
+       return true; // 保持消息通道开放
    });
    function connectToNativeHost() {
-     var bundleName = "com.example.app"; //插件对应应用的bundleName
-     port = chrome.runtime.connectNative(bundleName); //根据bundleName名得到通信端口port
-     port.onMessage.addListener(onNativeMessage); //监听native应用程序是否发来消息
-     port.onDisconnect.addListener(onDisconnected); //监听是否断开连接
+     var bundleName = "com.example.app"; // 插件对应应用的bundleName
+     port = chrome.runtime.connectNative(bundleName); // 根据bundleName名得到通信端口port
+     port.onMessage.addListener(onNativeMessage); // 监听native应用程序是否发来消息
+     port.onDisconnect.addListener(onDisconnected); // 监听是否断开连接
    }
     // 接收到来自native程序的消息时触发
    async function onNativeMessage(message) {
-     console.info('接收到从本地应用程序发送来的消息：' + JSON.stringify(message)); //示例中的pong
+     console.info('接收到从本地应用程序发送来的消息：' + JSON.stringify(message)); // 示例中的pong
    }
    // 断开连接时触发
    function onDisconnected() {
