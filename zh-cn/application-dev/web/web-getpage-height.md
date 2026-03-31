@@ -10,7 +10,7 @@
 
 ## 使用场景
 
-在网页加载过程中，获取的高度可能不够精确，特别是在网页还未渲染完成时。因为动态内容加载后会更新这个值。网页内容可能需要长时间加载。现在网站为了优化首次加载速度，会使用动态网页加载技术，用户在看到网页首帧时，网页后台还在动态加载页面，特别是包含图片、动态内容的页面。
+在网页加载过程中，获取的高度可能不够精确，特别是在网页还未渲染完成时。因为动态内容加载后会更新这个值。网页内容可能需要长时间加载。目前网站为优化首次加载速度，会使用动态网页加载技术，用户在看到网页首帧时，页面资源还在动态加载页面，特别是包含图片、动态内容的页面。
 
 非静态网页不建议在[onPageEnd](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpageend)、[onPageVisible](../reference/apis-arkweb/arkts-basic-components-web-events.md#onpagevisible9)、[onFirstContentfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstcontentfulpaint10)、[onFirstMeaningfulPaint](../reference/apis-arkweb/arkts-basic-components-web-events.md#onfirstmeaningfulpaint12)事件等Web组件生命周期回调和Web性能指标回调中获取。需要根据当前网页的特点，通过JSBridge或延迟等方案，在前端特定的回调通知里获取当前网页内容的实际高度。
 
@@ -110,7 +110,7 @@ struct Index {
         if (typeof jsbObj !== 'undefined') {
             jsbObj.notifyToGet();
         } else {
-            console.info("jsbObj is error");
+            console.info("jsbObj is undefined");
         }
     })
 </script>
@@ -122,7 +122,7 @@ struct Index {
 
 当网页含有大图片时，可使用图片加载完成回调触发。
 
-在前端代码中，请替换图片为真实图片。
+在前端代码中，请将示例图片路径替换为实际使用的图片资源。
 ```html
 <!--index.html-->
 <!DOCTYPE html>
