@@ -2078,7 +2078,7 @@ try {
   {
     "bundleName": "com.example.edmtest",
     "abilityName": "EntryAbility",
-    "index": "5"
+    "index": 5
   },
   // ...
 ]
