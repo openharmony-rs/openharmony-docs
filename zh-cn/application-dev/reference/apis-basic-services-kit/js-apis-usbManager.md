@@ -264,6 +264,8 @@ function requestRight() {
   let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name).then(ret => {
     console.info(`requestRight = ${ret}`);
+  }).catch((error: BusinessError) => {
+    console.error(`requestRight failed : ${error}`);
   });
 }
 ```
@@ -828,6 +830,8 @@ function bulkTransfer() {
       let buffer =  new Uint8Array(128);
       usbManager.bulkTransfer(devicepipe, endpoint, buffer).then((ret: number) => {
         console.info(`bulkTransfer = ${ret}`);
+      }).catch((error: BusinessError) => {
+        console.error(`bulkTransfer failed : ${error}`);
       });
     }
   }
@@ -886,6 +890,10 @@ function usbSubmitTransfer() {
   }
   let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
+  if (!usbManager.hasRight(device.name)) {
+    console.info(`request right fail`);
+    return;
+  }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   // 获取endpoint端点地址。
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
