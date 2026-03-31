@@ -73,6 +73,8 @@ import { audio } from '@kit.AudioKit';
 > - [on('playFinished')](#onplayfinished)：监听播放完成。
 > - [on('error')](#onerror)：监听错误事件。
 > - [on('errorOccurred')](#onerroroccurred20)：监听错误事件，同时返回[errorInfo](#errorinfo20)。
+>
+>SoundPool目前不支持后台播放，也不支持设置音频打断等音频焦点策略，可参考[音频焦点策略](../../../media/audio/audio-playback-concurrency.md)。
 
 ### load
 
