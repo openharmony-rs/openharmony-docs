@@ -392,7 +392,7 @@ let res = arr3.map(x => x).flat();
 
 <!-- @[testThree_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSRuntime/ArktsRuntimeFag/entry/src/main/ets/pages/TestArray.js) -->
 
-```ts
+``` JavaScript
 // TestArray.js
 {
   let handler = {
@@ -424,7 +424,6 @@ let res = arr3.map(x => x).flat();
   delete px[2];
   // 实际输出：delete 2 number
 }
-
 ```
 规避方案：若业务逻辑依赖于key必须为string类型，可在handler函数内部对数字类型的key进行显式转换。示例如下：
 
