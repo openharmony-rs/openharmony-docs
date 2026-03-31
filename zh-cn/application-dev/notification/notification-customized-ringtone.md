@@ -29,7 +29,7 @@
 1. 导入模块。
 
     <!-- @[specified_customized_ringtone_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
-
+    
     ``` TypeScript
     import { notificationManager } from '@kit.NotificationKit';
     import { BusinessError } from '@kit.BasicServicesKit';
@@ -37,10 +37,10 @@
     import { contextConstant, common } from '@kit.AbilityKit';
     import fs from '@ohos.file.fs';
     import fileUri from '@ohos.file.fileuri';
-
+    
     const TAG: string = '[SpecifiedCustomizedRingtone]';
     const DOMAIN_NUMBER: number = 0xFF00;
-    const SOUND_FILE_NAME: string = "ringtone_demo.mp3"; // resources/rawfile目录下的demo音频文件名，实际使用中请替换为自己的音频文件名
+    const SOUND_FILE_NAME: string = 'ringtone_demo.mp3'; // 实际项目中请替换为自己的音频文件
     ```
 
 2. 准备音频资源。
