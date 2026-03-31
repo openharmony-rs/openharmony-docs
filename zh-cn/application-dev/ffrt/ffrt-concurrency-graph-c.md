@@ -87,6 +87,69 @@ task5(OUT A);
 
 <!-- @[parallel_dep_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.cpp) -->
 
+``` C++
+void FuncTaskA(void* arg)
+{
+    OH_LOG_INFO(LOG_APP, "视频解析");
+    printf("视频解析\n");
+}
+
+void FuncTaskB(void* arg)
+{
+    OH_LOG_INFO(LOG_APP, "视频转码");
+    printf("视频转码\n");
+}
+
+void FuncTaskC(void* arg)
+{
+    OH_LOG_INFO(LOG_APP, "视频生成缩略图");
+    printf("视频生成缩略图\n");
+}
+
+void FuncTaskD(void* arg)
+{
+    OH_LOG_INFO(LOG_APP, "视频添加水印");
+    printf("视频添加水印\n");
+}
+
+void FuncTaskE(void* arg)
+{
+    OH_LOG_INFO(LOG_APP, "视频发布");
+    printf("视频发布\n");
+}
+
+int DependenceCExec()
+{
+    // 提交任务A
+    ffrt_task_handle_t hTaskA = ffrt_submit_h_f(FuncTaskA, NULL, NULL, NULL, NULL);
+
+    // 提交任务B和C
+    ffrt_dependence_t taskA_deps[] = {{ffrt_dependence_task, hTaskA}};
+    ffrt_deps_t dTaskA = {1, taskA_deps};
+    ffrt_task_handle_t hTaskB = ffrt_submit_h_f(FuncTaskB, NULL, &dTaskA, NULL, NULL);
+    ffrt_task_handle_t hTaskC = ffrt_submit_h_f(FuncTaskC, NULL, &dTaskA, NULL, NULL);
+
+    // 提交任务D
+    ffrt_dependence_t taskBC_deps[] = {{ffrt_dependence_task, hTaskB}, {ffrt_dependence_task, hTaskC}};
+    ffrt_deps_t dTaskBC = {2, taskBC_deps};
+    ffrt_task_handle_t hTaskD = ffrt_submit_h_f(FuncTaskD, NULL, &dTaskBC, NULL, NULL);
+
+    // 提交任务E
+    ffrt_dependence_t taskD_deps[] = {{ffrt_dependence_task, hTaskD}};
+    ffrt_deps_t dTaskD = {1, taskD_deps};
+    ffrt_submit_f(FuncTaskE, NULL, &dTaskD, NULL, NULL);
+
+    // 等待所有任务完成
+    ffrt_wait();
+
+    ffrt_task_handle_destroy(hTaskA);
+    ffrt_task_handle_destroy(hTaskB);
+    ffrt_task_handle_destroy(hTaskC);
+    ffrt_task_handle_destroy(hTaskD);
+    return 0;
+}
+```
+
 预期的输出可能为：
 
 ```plain
