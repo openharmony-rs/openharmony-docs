@@ -1601,6 +1601,7 @@ async function ExampleFunction(dlpFilePath: string) {
 | allowedOpenCount | number | 否 | 是 | 表示允许打开的次数。 |
 | waterMarkConfig<sup>23+</sup> | boolean | 否 | 是 | 表示是否要求添加水印。true表示要求添加水印，false表示不要求添加水印。 |
 | countdown<sup>23+</sup> | number | 否 | 是 | 表示文件可被查看的有效时间，超时后打开的文件将自动关闭，单位：s。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
+| extensionFields<sup>24+</sup> | Record<string, Object> | 否 | 是 | 表示DLP文件的扩展属性。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## AuthUser<sup>21+</sup>
 
