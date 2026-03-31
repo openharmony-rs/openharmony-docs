@@ -141,6 +141,36 @@ int DependenceCppExec()
 
 <!-- @[parallel_fib_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.cpp) -->
 
+``` C++
+void Fib(int x, int& y)
+{
+    if (x <= 1) {
+        y = x;
+    } else {
+        int y1;
+        int y2;
+
+        // 提交任务并构建数据依赖
+        ffrt::submit([&]() { Fib(x - 1, y1); }, {&x}, {&y1});
+        // 斐波那契数列所需递归-2
+        ffrt::submit([&]() { Fib(x - 2, y2); }, {&x}, {&y2});
+
+        // 等待任务完成
+        ffrt::wait({&y1, &y2});
+        y = y1 + y2;
+    }
+}
+
+int FibCppExec()
+{
+    int y;
+    Fib(FIB_NUM, y);
+    std::cout << "Fibonacci(5) is " << y << std::endl;
+    OH_LOG_INFO(LOG_APP, "Fibonacci(5) is %{pubilc}d", y);
+    return y;
+}
+```
+
 预期输出为：
 
 ```plain
