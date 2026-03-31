@@ -254,7 +254,7 @@
 
 5. 拖拽数据的接收。
 
-   需要设置onDrop回调函数，并在回调函数中处理拖拽数据，显示设置拖拽结果。
+   需要设置onDrop回调函数，并在回调函数中处理拖拽数据，显式设置拖拽结果。
 
    <!-- @[set_on_drop_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/drag/DefaultDrag.ets) -->
    

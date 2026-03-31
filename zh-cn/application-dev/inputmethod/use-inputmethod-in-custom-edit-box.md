@@ -27,7 +27,11 @@
    <!-- @[input_case_input_CustomInputText](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
    
    ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { inputMethod } from '@kit.IMEKit';
+   import Log from '../model/Log';
+   
+   const TAG = '[Submenu]';
    
    @Component
    export struct CustomInput {
@@ -59,7 +63,11 @@
    <!-- @[input_case_input_CustomInput](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/components/CustomInput.ets) -->
    
    ``` TypeScript
+   import { BusinessError } from '@kit.BasicServicesKit';
    import { inputMethod } from '@kit.IMEKit';
+   import Log from '../model/Log';
+   
+   const TAG = '[Submenu]';
    
    @Component
    export struct CustomInput {
@@ -85,20 +93,25 @@
      }
      async attachAndListener() { // 绑定和设置监听
        focusControl.requestFocus('customInput');
-       await this.inputController.attach(true, {
-         inputAttribute: {
-           textInputType: inputMethod.TextInputType.TEXT,
-           enterKeyType: inputMethod.EnterKeyType.SEARCH
+       try {
+         await this.inputController.attach(true, {
+           inputAttribute: {
+             textInputType: inputMethod.TextInputType.TEXT,
+             enterKeyType: inputMethod.EnterKeyType.SEARCH
+           }
+         });
+         if (!this.isAttach) {
+           this.inputController.on('insertText', (text) => {
+             this.inputText += text;
+           })
+           this.inputController.on('deleteLeft', (length) => {
+             this.inputText = this.inputText.substring(0, this.inputText.length - length);
+           })
+           this.isAttach = true;
          }
-       });
-       if (!this.isAttach) {
-         this.inputController.on('insertText', (text) => {
-           this.inputText += text;
-         })
-         this.inputController.on('deleteLeft', (length) => {
-           this.inputText = this.inputText.substring(0, this.inputText.length - length);
-         })
-         this.isAttach = true;
+       } catch (err) {
+         let error = err as BusinessError;
+         Log.showError(TAG, `attach catch error: ${error.code} ${error.message}`);
        }
      }
    

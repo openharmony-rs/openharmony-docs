@@ -176,7 +176,7 @@ class EntryAbility extends UIAbility {
 
 ## vcard.exportVCard
 
-exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuliderOptions, callback: AsyncCallback\<string\>\): void
+exportVCard\(context: Context, predicates: dataSharePredicates.DataSharePredicates, options: VCardBuilderOptions, callback: AsyncCallback\<string\>\): void
 
 Exports contacts as a vcard file (VCF). This API uses an asynchronous callback to return the result.
 
@@ -349,10 +349,10 @@ Defines the VCard information.
 
 **System capability**: SystemCapability.Telephony.CoreService
 
-| Name        | Type  | **Mandatory**|    Description   |
-| ------------ | ------ | ---- | ---------- |
-| cardType     | [VCardType](../apis-telephony-kit/js-apis-vcard.md) |  No | VCard version. The default value is **VERSION_21**.    |
-| charset       | string |  No | VCard encoding type. The default value is **UTF-8**.    |
+| Name        | Type  | Read-Only| Optional|    Description   |
+| ------------ | ------ | ----|----| ---------- |
+| cardType     | [VCardType](../apis-telephony-kit/js-apis-vcard.md) |  No| Yes| VCard version. The default value is **VERSION_21**.    |
+| charset       | string |  No|Yes | VCard encoding type. The default value is **UTF-8**.    |
 
 ## VCardType
 

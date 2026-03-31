@@ -1,4 +1,4 @@
-# SOCKET 错误码
+# Socket错误码
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -428,7 +428,7 @@ SSL is null.
 
 **可能原因**
 
-当内部发生函数执行失败时，会获取错误信息，当获取信息为null时，发生该错误。
+当[Tlssocket.connect](./js-apis-socket.md#connect9)未调用或者[Tlssocket.connect](./js-apis-socket.md#connect9)执行未成功时发生该错误。
 
 **处理步骤**
 

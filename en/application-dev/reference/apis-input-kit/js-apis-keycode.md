@@ -185,7 +185,7 @@ Enumerates the key codes.
 | KEYCODE_BUTTON_THUMBR<sup>15+</sup>  |  2315 | Joystick key THUMBR      |
 | KEYCODE_SLEEP                    |  2600 | Sleep key                        |
 | KEYCODE_ZENKAKU_HANKAKU          |  2601 | Zenkaku/Hankaku key                   |
-| KEYCODE_102ND                    |  2602 | 102nd key                    |
+| KEYCODE_102ND                    |  2602 | International Keyboard Extension key                    |
 | KEYCODE_RO                       |  2603 | Ro key                      |
 | KEYCODE_KATAKANA                 |  2604 | Katakana key                     |
 | KEYCODE_HIRAGANA                 |  2605 | Hiragana key                     |
@@ -322,10 +322,10 @@ Enumerates the key codes.
 | KEYCODE_XFER                     |  2805 | XFER key, which is used to start file transfer               |
 | KEYCODE_PROG1                    |  2806 | Program key 1                       |
 | KEYCODE_PROG2                    |  2807 | Program key 2                      |
-| KEYCODE_MSDOS                    |  2808 | MS-DOS key           |
+| KEYCODE_MSDOS                    |  2808 | DOS key           |
 | KEYCODE_SCREENLOCK               |  2809 | Screen Lock key                      |
 | KEYCODE_DIRECTION_ROTATE_DISPLAY |  2810 | Directional Rotation Display key                    |
-| KEYCODE_CYCLEWINDOWS             |  2811 | Windows Cycle key                 |
+| KEYCODE_CYCLEWINDOWS             |  2811 | Window Cycle key                 |
 | KEYCODE_COMPUTER                 |  2812 | Key                         |
 | KEYCODE_EJECTCLOSECD             |  2813 | Eject CD key                     |
 | KEYCODE_ISO                      |  2814 | ISO key                       |
@@ -358,7 +358,7 @@ Enumerates the key codes.
 | KEYCODE_BLUETOOTH                |  2843 | Bluetooth key                       |
 | KEYCODE_WLAN                     |  2844 | WLAN key                      |
 | KEYCODE_UWB                      |  2845 | Ultra-wideband key                   |
-| KEYCODE_WWAN_WIMAX               |  2846 | WWAN WiMAX key               |
+| KEYCODE_WWAN_WIMAX               |  2846 | Mobile Network Control key               |
 | KEYCODE_RFKILL                   |  2847 | RF Kill key                  |
 | KEYCODE_CHANNEL                  |  3001 | Channel key                      |
 | KEYCODE_BTN_0                    |  3100 | Button 0                        |

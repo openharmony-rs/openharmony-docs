@@ -128,7 +128,7 @@ Extracts an image at a specified time point from the video source. This function
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 | int64_t timeUs | Time (in microseconds) at which an image is extracted from the video resource.|
 | [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode) seekMode | Seek mode that defines the relationship between the specified time and the key frame. For details, see [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode).|
 | [const OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md)* outputParam | Output parameter of the image, for example, the height or width of the image. For details, see [OH_AVMetadataExtractor_OutputParam](capi-avmetadataextractor-oh-avmetadataextractor-outputparam.md). If this parameter is a null pointer, the original size of the video is used. Note: You need to use [OH_PixelmapNative_Destroy](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy) to release the pixel map after using it.|
@@ -168,7 +168,7 @@ Extracts images at multiple specified time points from the video source asynchro
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 | int64_t timeUs[] | Time point array (in microseconds) when images are extracted from the video source.|
 | uint16_t timesUsSize | Length of the time point array.|
 | [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode) seekMode | Seek mode that defines the relationship between the specified time and the key frame. For details, see [OH_AVMedia_SeekMode](capi-avmedia-base-h.md#oh_avmedia_seekmode).|
@@ -198,7 +198,7 @@ Cancels all batch image obtaining operations initiated by [OH_AVMetadataExtracto
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 
 ### OH_AVMetadataExtractor_GetTrackDescription()
 
@@ -216,7 +216,7 @@ Obtains the track description of a specified index from the media source. This f
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 | uint32_t index | Index of the track description to be obtained.|
 
 **Return value**
@@ -241,7 +241,7 @@ Obtains custom metadata from the media source. This function must be used after 
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 
 **Return value**
 
@@ -265,7 +265,7 @@ Sets the media source for the extractor.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the OH_AVMetadataExtractor instance.|
+| [OH_AVMetadataExtractor](capi-avmetadataextractor-oh-avmetadataextractor.md) *extractor | Pointer to the **OH_AVMetadataExtractor** instance.|
 | [OH_AVMediaSource](capi-avmedia-source-oh-avmediasource.md) *source | Media source to be set.|
 
 **Return value**

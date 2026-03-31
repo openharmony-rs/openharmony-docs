@@ -216,7 +216,7 @@ AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const cha
 
 **描述**
 
-添加Want文件描述符，文件描述符可通过[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)获取。
+添加Want文件描述符，文件描述符可通过[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)获取。
 
 **起始版本：** 15
 
@@ -226,7 +226,7 @@ AbilityBase_ErrorCode OH_AbilityBase_AddWantFd(AbilityBase_Want* want, const cha
 | -- | -- |
 | [AbilityBase_Want](capi-abilitybase-want.md)* want |  Want指针。 |
 | const char* key | Want中字符串参数索引。 |
-| int32_t fd | 文件描述符，可通过[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)获取。 |
+| int32_t fd | 文件描述符，可通过[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)获取。 |
 
 **返回：**
 
