@@ -144,7 +144,7 @@ fit_content.html页面代码如下：
 **可能原因：**
 
 - 内部H5页面高度超过了7680px（物理像素），但没有设置渲染模式为[同步渲染模式](web-render-mode.md#同步渲染模式)。
-- 未配置metaviewport属性。
+- 未配置[metaviewport](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#metaviewport12)属性。
 
 **解决方案：**
 
