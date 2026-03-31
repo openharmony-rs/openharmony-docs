@@ -6,7 +6,7 @@ LightWeightSet依据泛型定义，采用轻量级结构，初始默认容量大
 
 集合中value值的查找依赖于hash算法，通过一个数组存储hash值，然后映射到其他数组中的value值。
 
-LightWeightSet和[HashSet](js-apis-hashset.md)都是用来存储键值的集合，但LightWeightSet的占用内存更小。
+LightWeightSet和[HashSet](js-apis-hashset.md)都是用来存储元素的集合，但LightWeightSet的占用内存更小。
 
 **推荐使用场景：** 当需要存取某个集合或是对某个集合去重时，推荐使用占用内存更小的LightWeightSet。
 
