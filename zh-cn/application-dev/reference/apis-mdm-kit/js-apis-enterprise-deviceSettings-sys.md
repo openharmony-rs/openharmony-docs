@@ -329,17 +329,6 @@ context.resourceManager.getRawFileContent("test.cer").then((value) => {
 });
 ```
 
-## CertBlob
-
-证书信息。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-| 名称         | 类型     | 只读 | 可选 | 说明                            |
-| ----------- | --------| ----- | ---- | ------------------------------- |
-| inData | Uint8Array | 否 | 否 |证书的二进制内容。 |
-| alias | string | 否 | 否 |证书别名，别名长度小于40个字符。 |
-
 ## deviceSettings.uninstallUserCertificate
 
 uninstallUserCertificate(admin: Want, certUri: string, callback: AsyncCallback&lt;void&gt;): void
@@ -573,6 +562,17 @@ try {
   console.error(`Failed to get power policy. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## CertBlob
+
+证书信息。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称         | 类型     | 只读 | 可选 | 说明                            |
+| ----------- | --------| ----- | ---- | ------------------------------- |
+| inData | Uint8Array | 否 | 否 |证书的二进制内容。 |
+| alias | string | 否 | 否 |证书别名，别名长度小于40个字符。 |
 
 ## PowerPolicy<sup>11+</sup>
 
