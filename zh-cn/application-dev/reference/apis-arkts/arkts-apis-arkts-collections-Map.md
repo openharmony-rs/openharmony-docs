@@ -5,7 +5,7 @@
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
-是一种基于键值对存储的非线性数据结构。能够高效的通过唯一键来存取对应的值。
+一种基于键值对存储的非线性数据结构。能够高效地通过唯一键来存取对应的值。
 
 > **说明：**
 >
