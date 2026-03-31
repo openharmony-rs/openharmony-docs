@@ -68,7 +68,7 @@ Represents a permission policy, that is, a policy for granting or activating the
 | Name | Type | Read-Only| Optional| Description                                                  |
 |------|-------|------|-----|------------------------------------------------------|
 | uri| string | No  | No| URI of the file, on which the permission is to be granted or activated.                                      |
-| operationMode | number | No  | No| URI operation mode. For details, see [OperationMode](#operationmode11).|
+| operationMode | number | No  | No| URI operation mode. For details, see [OperationMode](#operationmode11). To grant multiple permissions, you can combine them, for example, use READ_MODE \| WRITE_MODE to grant the read and write permissions.|
 
 ## PathPolicyInfo<sup>15+</sup>
 
@@ -141,7 +141,7 @@ If the permission persistence of some URIs fails, error code 13900001 will be re
       let uris = await documentPicker.select(DocumentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
-        //Use fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE for read and write authorization.
+        // Multiple permissions can be granted in combination. For example, the read and write permissions can be granted using fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
         operationMode: fileShare.OperationMode.READ_MODE
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -213,6 +213,7 @@ If the permission revocation of some URIs fails, error code 13900001 will be ret
       let uris = await documentPicker.select(DocumentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
+        // Multiple permissions can be revoked in combination. For example, the read and write permissions can be revoked using fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -281,6 +282,7 @@ If the permission activation of some URIs fails, error code 13900001 will be ret
       let uri = "file://docs/storage/Users/username/tmp.txt";
       let policyInfo: fileShare.PolicyInfo = {
         uri: uri,
+        // Multiple permissions can be activated in combination. For example, the read and write permissions can be activated using fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -352,6 +354,7 @@ If the permission deactivation of some URIs fails, error code 13900001 will be r
       let uri = "file://docs/storage/Users/username/tmp.txt";
       let policyInfo: fileShare.PolicyInfo = {
         uri: uri,
+        // Multiple permissions can be deactivated in combination. For example, the read and write permissions can be deactivated using fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];
@@ -417,6 +420,7 @@ For details about the error codes, see [File Management Error Codes](errorcode-f
       let uris = await documentPicker.select(documentSelectOptions);
       let policyInfo: fileShare.PolicyInfo = {
         uri: uris[0], 
+        // Multiple permissions can be checked in combination. For example, the read and write permissions can be checked using fileShare.OperationMode.READ_MODE | fileShare.OperationMode.WRITE_MODE.
         operationMode: fileShare.OperationMode.READ_MODE,
       };
       let policies: Array<fileShare.PolicyInfo> = [policyInfo];

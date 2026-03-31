@@ -159,9 +159,9 @@ With this permission, the application can query whether Wi-Fi is disabled and se
 
 ## ohos.permission.ENTERPRISE_SUBSCRIBE_MANAGED_EVENT
 
-Allows a device administrator application to subscribe to management events.
+Allows a device administrator application to subscribe to management events,
 
-With this permission, the MDM application can receive the screen lock event or software version update event if the subscription is successful.
+such as application installation, application uninstallation, and system update events. After the subscription is successful, the MDM app will be notified when the event is triggered.
 
 **Permission level**: system_basic
 
@@ -252,32 +252,6 @@ Allows a device administrator application to obtain the **Settings** application
 
 **Valid since**: 10
 
-## ohos.permission.INSTALL_ENTERPRISE_MDM_BUNDLE
-
-Allows installation of enterprise MDM applications on enterprise devices.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-<!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
-
-**Valid since**: 10
-
-## ohos.permission.INSTALL_SELF_BUNDLE
-
-Allows automatic updates of enterprise MDM applications on enterprise devices.
-
-**Permission level**: system_core
-
-**Authorization mode**: system_grant
-
-<!--Del-->
-**Enable via ACL**: true<!--DelEnd-->
-
-**Valid since**: 10
-
 ## ohos.permission.ENTERPRISE_SET_BROWSER_POLICY
 
 Allows the device to set or cancel browser policies.
@@ -321,7 +295,7 @@ Allows a device administrator application to set security management policies fo
 
 ## ohos.permission.ENTERPRISE_MANAGE_BLUETOOTH
 
-Allows a device administrator application to set and obtain Bluetooth information.
+Allows a device administrator application to set and query Bluetooth information.
 
 **Permission level**: system_basic
 
@@ -347,7 +321,7 @@ Allows a device administrator application to manage system parameters.
 
 ## ohos.permission.ENTERPRISE_MANAGE_WIFI
 
-Allows a device administrator application to set and obtain Wi-Fi information.
+Allows a device administrator application to set and query Wi-Fi information.
 
 **Permission level**: system_basic
 
@@ -386,7 +360,7 @@ Allows a device administrator application to manage application policies.
 
 ## ohos.permission.ENTERPRISE_MANAGE_LOCATION
 
-Allows a device administrator application to set and obtain location information.
+Allows a device administrator application to set and query location information.
 
 **Permission level**: system_basic
 

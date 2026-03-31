@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-The module provides APIs for image processing based on sendable objects based on the [Sendable](../../arkts-utils/arkts-sendable.md) object. You can use the APIs to create a PixelMap object with specified properties or read pixels of an image (or even in a region of an image).
+The module provides APIs for image processing based on the [Sendable](../../arkts-utils/arkts-sendable.md) object. You can use the APIs to create a PixelMap object with specified properties or read pixels of an image (or even in a region of an image).
 
 > **NOTE**
 >
@@ -804,7 +804,7 @@ async function Demo(pixelMap : sendableImage.PixelMap) {
 
 getBytesNumberPerRow(): number
 
-Obtains the number of bytes per row of this image.
+Obtains the number of bytes per row of this image. Unit: bytes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -830,7 +830,7 @@ async function Demo(pixelMap : sendableImage.PixelMap) {
 
 getPixelBytesNumber(): number
 
-Obtains the total number of bytes of this image.
+Obtains the total number of bytes of this image. Unit: bytes.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1172,8 +1172,8 @@ The size of the translated image is changed to width+X and height+Y. It is recom
 
 | Name  | Type                | Mandatory| Description                           |
 | -------- | -------------------- | ---- | ------------------------------- |
-| x        | number               | Yes  | Scale factor of the width.|
-| y        | number               | Yes  | Scale factor of the height.|
+| x      | number | Yes  | X coordinate, in px.|
+| y      | number | Yes  | Y coordinate, in px.|
 
 **Error codes**
 
@@ -1217,7 +1217,7 @@ Rotates this PixelMap based on a given angle. This API uses a promise to return 
 
 | Name| Type  | Mandatory| Description                         |
 | ------ | ------ | ---- | ----------------------------- |
-| angle  | number | Yes  | Angle to rotate.             |
+| angle  | number | Yes  | Angle to rotate. Unit: degrees.             |
 
 **Return value**
 
@@ -1262,7 +1262,7 @@ Rotates this image based on a given angle. This API returns the result synchrono
 
 | Name  | Type                | Mandatory| Description                         |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | number               | Yes  | Angle to rotate.             |
+| angle    | number               | Yes  | Angle to rotate. Unit: degrees.             |
 
 **Error codes**
 

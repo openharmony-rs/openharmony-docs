@@ -14,8 +14,6 @@ This component is implemented based on [state management V2](../../../ui/state-m
 > **NOTE**
 >
 > This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
-> 
-> This component is not supported on wearables.
 
 ## Modules to Import
 
@@ -67,7 +65,7 @@ Defines the event triggered when the selected status of the check box changes.
 
 | Name    | Type     | Mandatory| Description                                           |
 | :------ |:--------| :- | :-------------------------------------------------- |
-| checked | boolean | Yes | Whether to select the check box.<br>Whether to select the check box.<br>**true**: The check box is selected. **false**: The check box is not selected.|
+| checked | boolean | Yes | Whether to select the check box.<br>**true**: The check box is selected. **false**: The check box is not selected.|
 
 ## SelectDialogV2
 
@@ -181,7 +179,7 @@ Defines the event triggered when the visibility of the popover dialog box change
 
 | Name    | Type     | Mandatory| Description                                                                   |
 | :------ | :------ | :- |:----------------------------------------------------------------------|
-| visible | boolean | Yes | Whether the popover dialog box is visible.<br>**true**: The popover dialog box is displayed.<br>**false**: The popover dialog box is hidden.                          |
+| visible | boolean | Yes | Whether the popover dialog box is visible.<br>**true**: The popover dialog box is displayed. **false**: The popover dialog box is hidden.                          |
 
 ## PopoverDialogV2
 
@@ -197,7 +195,7 @@ Displays a popover dialog box that is positioned relative to the target componen
 
 | Name           | Type                                                               | Mandatory| Decorator              | Description                                                |
 | ------------- |-------------------------------------------------------------------| -- |---------------------| -------------------------------------------------- |
-| visible       | boolean                                                           | Yes | @Param<br>@Require | Whether the popover dialog box is visible.<br>**false**: The popover dialog box is hidden.<br>**false**: The popover dialog box is hidden.                                        |
+| visible       | boolean                                                           | Yes | @Param<br>@Require | Whether the popover dialog box is visible.<br>**true**: The popover dialog box is displayed. **false**: The popover dialog box is hidden.                                        |
 | \$visible     | [PopoverDialogV2OnVisibleChange](#popoverdialogv2onvisiblechange) | No | @Event              | Callback invoked when the visibility of the dialog box changes. Use the **!!** syntax for two-way binding with **visible**.<br>By default, there is no event.|
 | popover       | [PopoverDialogV2Options](#popoverdialogv2options)                 | Yes | @Param<br>@Require | Options of the popover dialog box.                                        |
 | targetBuilder | [CustomBuilder](ts-types.md#custombuilder8)                       | Yes | @BuilderParam       | Target component relative to which the popover dialog box is positioned.                                     |
@@ -334,7 +332,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button("TipsDialogV2")
+          Button("Open TipsDialogV2")
             .width(96)
             .height(40)
             .onClick(() => {
@@ -623,7 +621,7 @@ struct Index {
   dialogBuilder(): void {
     WithTheme({ theme: new CustomThemeImpl(new CustomThemeColors()) }) {
       LoadingDialogV2({
-        content: 'Text text text text text text',
+        content: 'Text text text text text text...',
       })
     }
   }

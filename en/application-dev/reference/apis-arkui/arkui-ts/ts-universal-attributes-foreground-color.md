@@ -82,7 +82,7 @@ struct ForegroundColorExample {
 
 ### Example 2: Setting the Foreground Color to Background Inverse
 
-This example demonstrates how to set the foreground color to the inverse of the background color using [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10).INVERT.
+This example demonstrates how to set the foreground color to the inverse of the background color using [ColoringStrategy](ts-appendix-enums.md#coloringstrategy10)**.INVERT**.
 
 ```ts
 // xxx.ets

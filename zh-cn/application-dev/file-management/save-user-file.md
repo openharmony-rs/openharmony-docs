@@ -36,20 +36,20 @@
    import { common } from '@kit.AbilityKit';
    ```
 
-2. 配置保存选项。
+2. 根据实际业务需求配置[文件保存选项](../reference/apis-core-file-kit/js-apis-file-picker.md#documentsaveoptions)。以下代码仅例举各选项的配置参考。
 
    ```ts
    // 创建文件管理器选项实例。
    const documentSaveOptions = new picker.DocumentSaveOptions();
    // 保存文件名（可选）。 默认为空。
    documentSaveOptions.newFileNames = ["DocumentViewPicker01.txt"];
-   //指定保存的文件或者目录的URI（可选）。
+   // 指定保存的文件或者目录的URI（可选）。
    documentSaveOptions.defaultFilePathUri = "file://docs/storage/Users/currentUser/test";
    // 保存文件类型['后缀类型描述|后缀类型'],选择所有文件：'所有文件(*.*)|.*'（可选） ，如果选择项存在多个后缀（最多限制100个过滤后缀），默认选择第一个。如果不传该参数，默认无过滤后缀。
    documentSaveOptions.fileSuffixChoices = ['文档|.txt', '.pdf']; 
    ```
 
-3. 创建[文件选择器DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#constructor12)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口拉起FilePicker界面进行文件保存。
+3. 创建文件选择器[DocumentViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#constructor12)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save)接口拉起FilePicker界面进行文件保存。
 
    <!--@[save_file_picker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
@@ -66,7 +66,6 @@
    });
    ```
 
-
    > **注意**：
    >
    > 1. URI存储建议：
@@ -76,18 +75,18 @@
    > 2. 快捷保存：
    > 	- 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
 
-4. 待界面从FilePicker返回后，使用[基础文件API的fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
+4. 待界面从FilePicker返回后，使用[fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
    if (uris.length > 0) {
    	let uri: string = uris[0];
-   	//这里需要注意接口权限参数是fs.OpenMode.READ_WRITE。
+   	// 这里需要注意接口权限参数是fs.OpenMode.READ_WRITE。
    	let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
    	console.info('file fd: ' + file.fd);
     }
    ```
 
-5. 通过（fd）使用[基础文件API的fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
+5. 通过（fd）使用[fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ```ts
    let writeLen: number = fs.writeSync(file.fd, 'hello, world');
@@ -114,7 +113,7 @@
    audioSaveOptions.newFileNames = ['AudioViewPicker01.mp3']; 
    ```
 
-3. 创建[音频选择器AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save-5)接口拉起FilePicker界面进行文件保存。
+3. 创建音频选择器[AudioViewPicker](../reference/apis-core-file-kit/js-apis-file-picker.md#audioviewpicker)实例。调用[save()](../reference/apis-core-file-kit/js-apis-file-picker.md#save-5)接口拉起FilePicker界面进行文件保存。
 
    <!--@[audio_save_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/UserFile/SavingUserFiles/entry/src/main/ets/pages/Index.ets)-->
 
@@ -141,18 +140,18 @@
    > 2. 快捷保存：
    > 	- 可以通过[DOWNLOAD模式](#download模式保存文件)直达下载目录。
 
-4. 待界面从FilePicker返回后，可以使用[基础文件API的fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
+4. 待界面从FilePicker返回后，可以使用[fs.openSync](../reference/apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口，通过URI打开这个文件得到文件描述符（fd）。
 
    ```ts
    if (uris.length > 0) {
       let uri: string = uris[0];
-      //这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
+      // 这里需要注意接口权限参数是fileIo.OpenMode.READ_WRITE。
       let file = fs.openSync(uri, fs.OpenMode.READ_WRITE);
       console.info('file fd: ' + file.fd);
    }
    ```
 
-5. 通过（fd）使用[基础文件API的fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
+5. 通过（fd）使用[fs.writeSync](../reference/apis-core-file-kit/js-apis-file-fs.md#writesync)接口对这个文件进行编辑修改，编辑修改完成后关闭（fd）。
 
    ```ts
    let writeLen = fs.writeSync(file.fd, 'hello, world');

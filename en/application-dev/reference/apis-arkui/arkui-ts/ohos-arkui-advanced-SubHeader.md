@@ -61,6 +61,7 @@ SubHeader({icon?: ResourceStr, iconSymbolOptions?: SymbolOptions, primaryTitle?:
 | contentMargin<sup>12+</sup> | [LocalizedMargin](ts-types.md#localizedmargin12) | No| @Prop         | Margin of the content. Negative numbers are not supported.<br>Default value:<br> `{start: LengthMetrics.resource(` <br> `$r('sys.float.margin_left'))`, <br> `end: LengthMetrics.resource(` <br> `$r('sys.float.margin_right'))}`<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | contentPadding<sup>12+</sup> | [LocalizedPadding](ts-types.md#localizedpadding12) | No| @Prop         | Padding of the content.<br>Default value:<br>If a secondary title, with or without an icon, is displayed on the left:<br> {start: LengthMetrics.vp(12), end: LengthMetrics.vp(12)}<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
+
 ## OperationType
 
 Defines the style of elements in the subheader operation area.
@@ -102,7 +103,7 @@ Defines the style of elements in the subheader operation area.
 | -------- | -------- |---|---|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | value | [ResourceStr](ts-types.md#resourcestr) | No| No| Text content.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                 |
 | action | ()=&gt;void | No| Yes| Right-side button click event.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                   |
-| accessibilityLevel<sup>18+<sup>       | string  | No| Yes| Accessibility level. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: This option is treated as "yes" by the system for this component.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| accessibilityLevel<sup>18+<sup>       | string  | No| Yes| Accessibility level. It determines whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: This option is treated as "yes" by the system for this component.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | accessibilityText<sup>18+<sup>        | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.<br>Default value: value of the **value** property if the operation type is **TEXT_ARROW** or **BUTTON** and an empty string otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | accessibilityDescription<sup>18+<sup> | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Accessible description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.<br>Default value: "Loading" when the operation type is **LOADING** and **"Double-tap to activate"** otherwise.<br>**Atomic service API**: This API can be used in atomic services since API version 18.       |
 | defaultFocus<sup>18+</sup> | boolean | No| Yes| Whether to receive default focus.<br>**true**: Receive default focus.<br>**false**: Do not receive default focus.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                                                           |
@@ -126,7 +127,7 @@ Defines the style of elements in the subheader operation area.
 The [universal events](ts-component-general-events.md) are not supported.
 
 ## Example
-### Example 1: Implementing an Efficiency-Oriented Subheader
+### Example 1: Implementing an Efficiency-oriented Subheader
 This example demonstrates how to implement a subheader where the left side contains an icon and a secondary title, and the right side has a text button.
 
 ```ts
@@ -167,7 +168,7 @@ struct SubHeaderExample {
   build() {
     Column() {
       SubHeader({
-        primaryTitle: 'Primary title',
+        primaryTitle: 'Title',
         secondaryTitle: 'Secondary title',
         operationType: OperationType.TEXT_ARROW,
         operationItem: [{
@@ -472,8 +473,10 @@ struct SubHeaderExample {
 ```
 ![figures/en-us_image_subheader_example08](figures/en-us_image_subheader_example08.png)
 
-### Example 9: Enabling the Button on the Right Side to Receive Default Focus
-This example demonstrates how to use **defaultFocus** to enable the button on the right side of the **SubHeader** component to receive default focus. This functionality is supported since API version 18.
+### Example 9: Setting the Right-Side Button to Obtain Focus by Default
+This example demonstrates how to set the **defaultFocus** attribute in **SubHeader** to ensure the right-side button obtains focus by default in the focused state.
+
+The **defaultFocus** API is added to [OperationOption](#operationoption) since API version 18.
 ```ts
 import { Prompt, OperationType, SubHeader } from '@kit.ArkUI';
 

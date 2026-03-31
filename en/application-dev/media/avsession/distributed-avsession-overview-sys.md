@@ -51,7 +51,7 @@ Projection preemption is supported. If application A initiates a projection to a
 
 ## Relationship Between Distributed AVSession and Distributed Audio Playback
 
-The internal logic for the distributed AVSession to implement projection is as follows:
+When the media session service implements distributed AVSession for cross-device casting and playback, its internal implementation logic is as follows:
 
 - APIs related to [distributed audio playback (available only for system applications)](../audio/distributed-audio-playback-sys.md) are called to project audio streams to the distributed device.
 

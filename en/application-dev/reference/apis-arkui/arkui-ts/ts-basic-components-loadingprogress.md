@@ -24,7 +24,7 @@ Not supported
 
 LoadingProgress()
 
-Creates a **LoadingProgress** component.
+Creates a loading progress component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -62,7 +62,7 @@ Sets the foreground color for the **LoadingProgress** component.
 
 enableLoading(value: boolean)
 
-Sets whether to display the LoadingProgress animation. The component still takes up space in the layout when the loading animation is not shown. The universal attribute [Visibility.Hidden](ts-universal-attributes-visibility.md#visibility) hides the entire component area, including the borders and paddings. In contrast, **enableLoading=false** only hides the loading animation itself and does not affect the borders or other elements.
+Sets whether to display the LoadingProgress animation. The component still takes up space in the layout when the loading animation is not shown. The universal attribute [Visibility](ts-appendix-enums.md#visibility).Hidden hides the entire component area, including the regions specified by [border](ts-universal-attributes-border.md#border) and [padding](ts-universal-attributes-size.md#padding). In contrast, when the value of **enableLoading** is set to **false**, only the loading animation itself is hidden without affecting the borders or other elements.
 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -103,7 +103,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type   |    Read-Only   |    Optional   |  Description             |
+| Name | Type   |    Read Only   |    Optional   |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | enableLoading | boolean | No| No|Whether to show the loading animation.<br>Default value: **true**. **true**: Show the loading animation. **false**: Do not show the loading animation.|
 
@@ -119,9 +119,9 @@ Enumerates style types of **LoadingProgress**. This API is not recommended for u
 
 | Name                    | Value| Description                                    |
 | ---------------------- | - | ---------------------------------------- |
-| Default       | - | Default loading style. Setting this value is not supported since API version 8.           |
-| Circular      | - | Circular loading style. Setting this value is not supported since API version 8.           |
-| Orbital       | - | Comet-shaped loading style. This is the default style since API version 8.        |
+| Default       | 1 | Default loading style. Setting this value is not supported since API version 8.           |
+| Circular      | 2 | Circular loading style. Setting this value is not supported since API version 8.           |
+| Orbital       | 3 | Comet-shaped loading style. This is the default style since API version 8.        |
 
 ## Example
 

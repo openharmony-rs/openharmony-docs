@@ -1,7 +1,7 @@
 # Gesture Modifier
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -14,7 +14,7 @@ With the gesture modifier, you can dynamically set gestures bound to components,
 
 ## gestureModifier
 
-gestureModifier(modifier: GestureModifier): T
+gestureModifier(modifier:&nbsp;GestureModifier): T
 
 Creates a gesture modifier.
 

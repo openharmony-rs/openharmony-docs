@@ -36,7 +36,7 @@ Refer to the code snippet below to complete the entire audio encoding process, i
 
 During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.  
 
-The figure below shows the call relationship of audio encoding in synchronous mode.
+The figure below shows the call relationship of audio codec in synchronous mode.
 
 - The dotted line indicates an optional operation. Audio encoding does not involve decryption. Therefore, you do not need to call **OH_AudioCodec_SetDecryptionConfig**.
 
@@ -59,34 +59,34 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
 1. Add the header files and namespace.
 
-    ```cpp
-    #include <multimedia/player_framework/native_avcodec_audiocodec.h>
-    #include <multimedia/native_audio_channel_layout.h>
-    #include <multimedia/player_framework/native_avcapability.h>
-    #include <multimedia/player_framework/native_avcodec_base.h>
-    #include <multimedia/player_framework/native_avformat.h>
-    #include <multimedia/player_framework/native_avbuffer.h>
+   ```cpp
+   #include <multimedia/player_framework/native_avcodec_audiocodec.h>
+   #include <multimedia/native_audio_channel_layout.h>
+   #include <multimedia/player_framework/native_avcapability.h>
+   #include <multimedia/player_framework/native_avcodec_base.h>
+   #include <multimedia/player_framework/native_avformat.h>
+   #include <multimedia/player_framework/native_avbuffer.h>
 
-    // Namespace of the C++ standard library.
-    using namespace std;
-    ```
+   // Namespace of the C++ standard library.
+   using namespace std;
+   ```
 
 2. Create an encoder instance. In the code snippet below, **OH_AVCodec *** is the pointer to the encoder instance created.
 
    You can create an encoder by MIME type or codec name.
 
    Method 1: Create an encoder by MIME type.
-    ```cpp
-    // Create an encoder by MIME type. The following example creates an AAC encoder. The second parameter is set to true to indicate encoding.
-    OH_AVCodec *audioEnc_ = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
-    ```
+   ```cpp
+   // Create an encoder by MIME type. The following example creates an AAC encoder. The second parameter is set to true to indicate encoding.
+   OH_AVCodec *audioEnc_ = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
+   ```
    Method 2: Create an encoder by codec name.
-    ```cpp
-    // Create an encoder by name.
-    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
-    const char *name = OH_AVCapability_GetName(capability);
-    OH_AVCodec *audioEnc_ = OH_AudioCodec_CreateByName(name);
-    ```
+   ```cpp
+   // Create an encoder by name.
+   OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
+   const char *name = OH_AVCapability_GetName(capability);
+   OH_AVCodec *audioEnc_ = OH_AudioCodec_CreateByName(name);
+   ```
 
 3. Call **OH_AudioCodec_Configure** to configure the encoder.
 
@@ -103,103 +103,103 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    <!--RP2End-->
 
    The code snippet below shows the API call process, where AAC encoding at the bit rate of 32000 bit/s is carried out on the PCM audio with the 44100 Hz sample rate, 2-channel stereo, and SAMPLE_S16LE sample format.
-    <!--RP3-->
-    ```cpp
-    OH_AVErrCode ret;
-    // (Mandatory) Configure the audio sample rate.
-    constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
-    // (Mandatory) Configure the audio bit rate.
-    constexpr uint64_t DEFAULT_BITRATE = 32000;
-    // (Mandatory) Configure the audio channel count.
-    constexpr uint32_t DEFAULT_CHANNEL_COUNT = 2;
-    // (Mandatory) Configure the audio bit depth.
-    constexpr OH_BitsPerSample SAMPLE_FORMAT = OH_BitsPerSample::SAMPLE_S16LE;
-    // (Optional) Configure the layout of audio channels.
-    constexpr OH_AudioChannelLayout CHANNEL_LAYOUT = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
+   <!--RP3-->
+   ```cpp
+   OH_AVErrCode ret;
+   // (Mandatory) Configure the audio sample rate.
+   constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
+   // (Mandatory) Configure the audio bit rate.
+   constexpr uint64_t DEFAULT_BITRATE = 32000;
+   // (Mandatory) Configure the audio channel count.
+   constexpr uint32_t DEFAULT_CHANNEL_COUNT = 2;
+   // (Mandatory) Configure the audio bit depth.
+   constexpr OH_BitsPerSample SAMPLE_FORMAT = OH_BitsPerSample::SAMPLE_S16LE;
+   // (Optional) Configure the layout of audio channels.
+   constexpr OH_AudioChannelLayout CHANNEL_LAYOUT = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
 
-    OH_AVFormat *format = OH_AVFormat_Create();
-    // Set the format.
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
-    OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT);
-    OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, CHANNEL_LAYOUT);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // Set synchronous mode.
-    // Configure the encoder.
-    ret = OH_AudioCodec_Configure(audioEnc_, format);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
-    <!--RP3End-->
-    FLAC encoding example:
+   OH_AVFormat *format = OH_AVFormat_Create();
+   // Set the format.
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
+   OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT);
+   OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, CHANNEL_LAYOUT);
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // Set synchronous mode.
+   // Configure the encoder.
+   ret = OH_AudioCodec_Configure(audioEnc_, format);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
+   <!--RP3End-->
+   FLAC encoding example:
 
-    ```cpp
-    OH_AVErrCode ret;
-    // (Mandatory) Configure the audio sample rate.
-    constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
-    // (Mandatory) Configure the audio bit rate.
-    constexpr uint64_t DEFAULT_BITRATE = 261000;
-    // (Mandatory) Configure the audio channel count.
-    constexpr uint32_t DEFAULT_CHANNEL_COUNT = 2;
-    // (Mandatory) Configure the layout of audio channels.
-    // The value can be CH_LAYOUT_MONO, CH_LAYOUT_STEREO, CH_LAYOUT_SURROUND, CH_LAYOUT_QUAD, CH_LAYOUT_5POINT0, CH_LAYOUT_5POINT1, CH_LAYOUT_6POINT1, or CH_LAYOUT_7POINT1.
-    constexpr OH_AudioChannelLayout CHANNEL_LAYOUT = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
-    // (Mandatory) Configure the audio bit depth. Only SAMPLE_S16LE and SAMPLE_S32LE are available for FLAC encoding.
-    constexpr OH_BitsPerSample SAMPLE_FORMAT = OH_BitsPerSample::SAMPLE_S32LE;
-    // Configure the audio compliance level. The default value is 0, and the value range is [-2,2].
-    constexpr int32_t COMPLIANCE_LEVEL = 0;
+   ```cpp
+   OH_AVErrCode ret;
+   // (Mandatory) Configure the audio sample rate.
+   constexpr uint32_t DEFAULT_SAMPLERATE = 44100;
+   // (Mandatory) Configure the audio bit rate.
+   constexpr uint64_t DEFAULT_BITRATE = 261000;
+   // (Mandatory) Configure the audio channel count.
+   constexpr uint32_t DEFAULT_CHANNEL_COUNT = 2;
+   // (Mandatory) Configure the layout of audio channels.
+   // The value can be CH_LAYOUT_MONO, CH_LAYOUT_STEREO, CH_LAYOUT_SURROUND, CH_LAYOUT_QUAD, CH_LAYOUT_5POINT0, CH_LAYOUT_5POINT1, CH_LAYOUT_6POINT1, or CH_LAYOUT_7POINT1.
+   constexpr OH_AudioChannelLayout CHANNEL_LAYOUT = OH_AudioChannelLayout::CH_LAYOUT_STEREO;
+   // (Mandatory) Configure the audio bit depth. Only SAMPLE_S16LE and SAMPLE_S32LE are available for FLAC encoding.
+   constexpr OH_BitsPerSample SAMPLE_FORMAT = OH_BitsPerSample::SAMPLE_S32LE;
+   // Configure the audio compliance level. The default value is 0, and the value range is [-2,2].
+   constexpr int32_t COMPLIANCE_LEVEL = 0;
 
-    OH_AVFormat *format = OH_AVFormat_Create();
-    // Set the format.
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
-    OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT); 
-    OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, CHANNEL_LAYOUT);
-    OH_AVFormat_SetLongValue(format, OH_MD_KEY_COMPLIANCE_LEVEL, COMPLIANCE_LEVEL); 
-    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // Set synchronous mode.
-    // Configure the encoder.
-    ret = OH_AudioCodec_Configure(audioEnc_, format);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   OH_AVFormat *format = OH_AVFormat_Create();
+   // Set the format.
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_CHANNEL_COUNT, DEFAULT_CHANNEL_COUNT);
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUD_SAMPLE_RATE, DEFAULT_SAMPLERATE);
+   OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, DEFAULT_BITRATE);
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_AUDIO_SAMPLE_FORMAT, SAMPLE_FORMAT); 
+   OH_AVFormat_SetLongValue(format, OH_MD_KEY_CHANNEL_LAYOUT, CHANNEL_LAYOUT);
+   OH_AVFormat_SetLongValue(format, OH_MD_KEY_COMPLIANCE_LEVEL, COMPLIANCE_LEVEL); 
+   OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_SYNC_MODE, 1); // Set synchronous mode.
+   // Configure the encoder.
+   ret = OH_AudioCodec_Configure(audioEnc_, format);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 4. Call **OH_AudioCodec_Prepare()** to prepare internal resources for the encoder.
 
-    ```cpp
-    OH_AVErrCode ret = OH_AudioCodec_Prepare(audioEnc_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```cpp
+   OH_AVErrCode ret = OH_AudioCodec_Prepare(audioEnc_);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 5. Call **OH_AudioCodec_Start()** to start the encoder.
 
    Add the header file.
-    ```c++
-    #include <fstream>
-    ```
+   ```c++
+   #include <fstream>
+   ```
    The sample code is as follows:
-    ```c++
-    ifstream inputFile_;
-    ofstream outFile_;
+   ```c++
+   ifstream inputFile_;
+   ofstream outFile_;
 
-    // Set the input file path based on the actual situation.
-    const char* inputFilePath = "/";
-    // Set the output file path based on the actual situation.
-    const char* outputFilePath = "/";
-    // Open the path of the binary file to be encoded. (A PCM file is used as an example.)
-    inputFile_.open(inputFilePath, ios::in | ios::binary); 
-    // Set the path of the output file. (In this example, the output file is an encoded stream file, instead of a playable audio file. To create a playable audio file, you must encapsulate the audio bit stream into a container).
-    outFile_.open(outputFilePath, ios::out | ios::binary);
-    // Start encoding.
-    OH_AVErrCode ret = OH_AudioCodec_Start(audioEnc_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   // Set the input file path based on the actual situation.
+   const char* inputFilePath = "/";
+   // Set the output file path based on the actual situation.
+   const char* outputFilePath = "/";
+   // Open the path of the binary file to be encoded. (A PCM file is used as an example.)
+   inputFile_.open(inputFilePath, ios::in | ios::binary); 
+   // Set the path of the output file. (In this example, the output file is an encoded stream file, instead of a playable audio file. To create a playable audio file, you must encapsulate the audio bit stream into a container).
+   outFile_.open(outputFilePath, ios::out | ios::binary);
+   // Start encoding.
+   OH_AVErrCode ret = OH_AudioCodec_Start(audioEnc_);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 6. Invoke synchronous mode to write PCM samples to encode and obtain the encoded audio frames.
 
@@ -311,30 +311,30 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
    After **OH_AudioCodec_Reset()** is called, the encoder returns to the initialized state. The input and output buffers obtained before the reset cannot be used. You must call **OH_AudioCodec_Configure()** to reconfigure the encoder and then call **OH_AudioCodec_Start()** to start encoding again. Obtain the input and output buffers again after the decoder is started.
 
-    ```c++
-    // Reset the encoder.
-    OH_AVErrCode ret = OH_AudioCodec_Reset(audioEnc_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    // Reconfigure the encoder.
-    ret = OH_AudioCodec_Configure(audioEnc_, format);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   // Reset the encoder.
+   OH_AVErrCode ret = OH_AudioCodec_Reset(audioEnc_);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   // Reconfigure the encoder.
+   ret = OH_AudioCodec_Configure(audioEnc_, format);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 8. (Optional) Call **OH_AudioCodec_Stop()** to stop the encoder.
 
    After the encoder is stopped, you can call **OH_AudioCodec_Start()** to start it again. The input and output buffers obtained before the decoder is stopped cannot be reused. You must obtain them again after the decoder is started.
 
-    ```c++
-    // Stop the encoder.
-    OH_AVErrCode ret = OH_AudioCodec_Stop(audioEnc_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    }
-    ```
+   ```c++
+   // Stop the encoder.
+   OH_AVErrCode ret = OH_AudioCodec_Stop(audioEnc_);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   }
+   ```
 
 9. Call **OH_AudioCodec_Destroy()** to destroy the encoder instance and release resources.
 
@@ -342,12 +342,12 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    >
    > You only need to call this API once.
 
-    ```c++
-    // Call OH_AudioCodec_Destroy to destroy the encoder.
-    OH_AVErrCode ret = OH_AudioCodec_Destroy(audioEnc_);
-    if (ret != AV_ERR_OK) {
-        // Handle exceptions.
-    } else {
-        audioEnc_ = NULL; // The encoder cannot be destroyed repeatedly.
-    }
-    ```
+   ```c++
+   // Call OH_AudioCodec_Destroy to destroy the encoder.
+   OH_AVErrCode ret = OH_AudioCodec_Destroy(audioEnc_);
+   if (ret != AV_ERR_OK) {
+       // Handle exceptions.
+   } else {
+       audioEnc_ = NULL; // The encoder cannot be destroyed repeatedly.
+   }
+   ```

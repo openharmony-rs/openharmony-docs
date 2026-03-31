@@ -8,14 +8,16 @@
 
 The **Stack** component provides a stack container where child components are successively stacked and the latter one overwrites the previous one.
 
->  **NOTE**
+> **NOTE**
 >
->  This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 7. Updates will be marked with a superscript to indicate their earliest API version.
+> 
+> - The general attribute [align](./ts-universal-attributes-location.md#align) supports the mirroring capability on this component.
 
 
 ## Child Components
 
-This component can contain child components.
+Supported.
 
 ## APIs
 
@@ -35,13 +37,13 @@ Stack(options?: StackOptions)
 
 | Name      | Type                                   | Mandatory| Description                                                   |
 | ------------ | ------------------------------------------- | ---- | ----------------------------------------------------------- |
-| options | [StackOptions](#stackoptions18) | No  | Alignment of child components in the container.|
+| options | [StackOptions](#stackoptions18)| No  | Alignment of child components in the container.|
 
 ## StackOptions<sup>18+</sup>
 
 > **NOTE**
 >
-> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
+> To standardize anonymous object definitions, the element definitions here have been revised in API version 18. The initial version information of the historical anonymous objects has been retained, which may result in the outer element's @since version number being later than the inner element's version number. However, this does not affect the use of the API.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 18.
 
@@ -61,7 +63,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 alignContent(value: Alignment)
 
-Alignment of child components in the container. When both this attribute and the [align](ts-universal-attributes-location.md#align) attribute are set, whichever is set last takes effect. When this attribute and the constructor input parameters are set simultaneously, the attribute setting prevails.
+Sets the alignment of child components in the container. When both this attribute and the [align](ts-universal-attributes-location.md#align) attribute are set, whichever is set last takes effect. When this attribute and the constructor input parameters are set simultaneously, the attribute setting prevails.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

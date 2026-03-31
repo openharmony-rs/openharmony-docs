@@ -6,7 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Photo capture is an important function of the camera application. Based on the complex logic of the camera device, the camera module provides APIs for you to set information such as resolution, flash, focal length, photo quality, and rotation angle.
+## Overview
+
+Photo capture is one of the important functions of the camera. The photo capture module is built on complex camera logic. To ensure the quality of photos taken by users, settings such as resolution, flash, focal length, photo quality, and rotation angle can be configured during intermediate steps.
+
+There are currently two photo capture solutions for camera development: [deferred photo capture](./native-camera-deferred-capture.md) and one-shot photo capture. **This section uses one-shot photo capture as an example.**
+
+- Deferred photo capture delivers low-quality images for thumbnail display, improving the perceived capture speed, while preserving high-quality images to ensure final output matches the system camera standard. This approach satisfies image processing algorithm requirements without blocking foreground capture speed, helping deliver competitive camera performance and a better user experience.
+- One-shot photo capture produces a single high-quality image after multi-frame fusion and multiple low-level algorithmic processing. As a result, Shot2See latency—the time from when the user taps the capture control to when a thumbnail appears in the thumbnail display area—is relatively long. One-shot photo capture also supports [quality-first strategy](#quality-first-strategy) via [high-performance photo capture](#high-performance-photo-capture), allowing you to optimize for either faster image output or higher image quality.
 
 ## How to Develop
 
@@ -14,13 +21,23 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
 
 1. Import the NDK, which provides camera-related properties and methods.
 
-   ```c++
-   // Include the NDK header files.
+   <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.h) -->
+   
+   ``` C
    #include <cstdint>
-   #include <cstdlib>
-   #include <cstring>
-   #include <string.h>
-   #include <new>
+   #include <native_buffer/buffer_common.h>
+   #include <unistd.h>
+   #include <string>
+   #include <thread>
+   #include <cstdio>
+   #include <fcntl.h>
+   #include <map>
+   #include <string>
+   #include <vector>
+   #include <native_buffer/native_buffer.h>
+   #include "iostream"
+   #include "mutex"
+   
    #include "hilog/log.h"
    #include "ohcamera/camera.h"
    #include "ohcamera/camera_input.h"
@@ -28,8 +45,27 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
    #include "ohcamera/photo_output.h"
    #include "ohcamera/preview_output.h"
    #include "ohcamera/video_output.h"
+   #include "napi/native_api.h"
    #include "ohcamera/camera_manager.h"
-   #include <multimedia/image_framework/image/image_native.h>
+   #include <window_manager/oh_display_info.h>
+   #include <window_manager/oh_display_manager.h>
+   
+   namespace OHOS_CAMERA_SAMPLE {
+   class NDKCamera {
+     public:
+       struct CameraBuildingConfig {
+           char *str;
+           uint32_t focusMode;
+           uint32_t cameraDeviceIndex;
+           bool isVideo;
+           bool isHdr;
+           char *videoId;
+       };
+       ~NDKCamera();
+       explicit NDKCamera(CameraBuildingConfig config);
+       // ...
+   };
+   } // namespace OHOS_CAMERA_SAMPLE
    ```
 
 2. Link the dynamic library in the CMake script.
@@ -51,15 +87,28 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
 
    Call [OH_CameraManager_CreatePhotoOutputWithoutSurface()](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_createphotooutputwithoutsurface) to create a photo output stream.
 
-   ```c++
-   Camera_PhotoOutput* CreatePhotoOutput(Camera_Manager* cameraManager, const Camera_Profile* photoProfile) {
-       Camera_PhotoOutput* photoOutput = nullptr;
-       // Create a photo output stream without passing a surface ID.
-       Camera_ErrorCode ret = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager, photoProfile, &photoOutput);
-       if (photoOutput == nullptr || ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CameraManager_CreatePhotoOutputWithoutSurface failed.");
+   <!-- @[create_photo_output](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::CreatePhotoOutputWithoutSurfaceId()
+   {
+       OH_LOG_ERROR(LOG_APP, "CreatePhotoOutputWithoutSurfaceId enter.");
+       profile_ = cameraOutputCapability_->photoProfiles[0];
+       Camera_Profile* profile = cameraOutputCapability_->photoProfiles[0];
+       profile->size.width = NUM_1920;
+       profile->size.height = NUM_1080;
+       profile_ = profile;
+       if (profile_ == nullptr) {
+           OH_LOG_ERROR(LOG_APP, "Get photoProfiles failed.");
+           return CAMERA_INVALID_ARGUMENT;
        }
-       return photoOutput;
+       ret_ = OH_CameraManager_CreatePhotoOutputWithoutSurface(cameraManager_, profile_, &photoOutput_);
+       if (photoOutput_ == nullptr || ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "CreatePhotoOutputWithoutSurfaceId failed.");
+           return CAMERA_INVALID_ARGUMENT;
+       }
+   // ...
+       return ret_;
    }
    ```
 
@@ -78,150 +127,163 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
    - Pass the processed buffer to the ArkTS side through the callback for image display or storage (using a security component).
    - Unregister the callback when it is no longer required.
 
-     ```c++
+     <!-- @[photo_available](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+     
+     ``` C++
      // Save the buffer processing callback registered on the NAPI side.
-     static void* bufferCb = nullptr;
-     Camera_ErrorCode RegisterBufferCb(void* cb) {
+     Camera_ErrorCode NDKCamera::RegisterBufferCb(void *cb)
+     {
          OH_LOG_INFO(LOG_APP, " RegisterBufferCb start");
          if (cb == nullptr) {
              OH_LOG_INFO(LOG_APP, " RegisterBufferCb invalid error");
              return CAMERA_INVALID_ARGUMENT;
          }
-         bufferCb = cb;
+         g_bufferCb = cb;
          return CAMERA_OK;
      }
-
-     // One-time photo capture callback.
-     void OnPhotoAvailable(Camera_PhotoOutput* photoOutput, OH_PhotoNative* photo) {
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
-         OH_ImageNative* imageNative;
-         Camera_ErrorCode errCode = OH_PhotoNative_GetMainImage(photo, &imageNative);
-         if (errCode != CAMERA_OK || imageNative == nullptr) {
-             OH_LOG_ERROR(LOG_APP, "OH_PhotoNative_GetMainImage call failed, errorCode: %{public}d", errCode);
-             return;
+     
+     static bool ProcessImageNative(OH_ImageNative* imageNative, uint32_t** components,
+                                    OH_NativeBuffer** nativeBuffer, size_t* nativeBufferSize)
+     {
+         if (imageNative == nullptr || components == nullptr || nativeBuffer == nullptr || nativeBufferSize == nullptr) {
+             return false;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable errCode:%{public}d imageNative:%{public}p", errCode, imageNative);
-         // Read the size attribute of OH_ImageNative.
+     
          Image_Size size;
          Image_ErrorCode imageErr = OH_ImageNative_GetImageSize(imageNative, &size);
          if (imageErr != IMAGE_SUCCESS) {
-              OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetImageSize call failed, errorCode: %{public}d", imageErr);
-              OH_PhotoNative_Release(photo);
-              return;
-          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d width:%{public}d height:%{public}d", imageErr,
-            size.width, size.height);
-         // Read the number of elements in the component list of OH_ImageNative.
+             return false;
+         }
+     
          size_t componentTypeSize = 0;
          imageErr = OH_ImageNative_GetComponentTypes(imageNative, nullptr, &componentTypeSize);
          if (imageErr != IMAGE_SUCCESS || componentTypeSize == 0) {
-             OH_LOG_ERROR(LOG_APP, "cOH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
-             return;
+             OH_LOG_ERROR(LOG_APP, "GetComponentTypes failed: %{public}d, size: %{public}zu",
+                 imageErr, componentTypeSize);
+             return false;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d componentTypeSize:%{public}zu", imageErr,
-            componentTypeSize);
-         // Read the component list of OH_ImageNative.
-         uint32_t* components = new (std::nothrow) uint32_t[componentTypeSize];
-         if (!components) {
-             OH_LOG_ERROR(LOG_APP, "Failed to allocate memory");
-             OH_PhotoNative_Release(photo);
-             return;
+     
+         if (componentTypeSize > (SIZE_MAX / sizeof(uint32_t))) {
+             OH_LOG_ERROR(LOG_APP, "componentTypeSize too large: %{public}zu", componentTypeSize);
+             return false;
          }
-         imageErr = OH_ImageNative_GetComponentTypes(imageNative, &components, &componentTypeSize);
+     
+         uint32_t* compArray = new (std::nothrow) uint32_t[componentTypeSize];
+         if (!compArray) {
+             return false;
+         }
+     
+         size_t tempSize = componentTypeSize;
+         imageErr = OH_ImageNative_GetComponentTypes(imageNative, &compArray, &tempSize);
          if (imageErr != IMAGE_SUCCESS) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetComponentTypes call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
-             delete[] components;
-             return;
+             delete[] compArray;
+             return false;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_ImageNative_GetComponentTypes imageErr:%{public}d", imageErr);
-         // Read the buffer object corresponding to the first component of OH_ImageNative.
-         OH_NativeBuffer* nativeBuffer = nullptr;
-         imageErr = OH_ImageNative_GetByteBuffer(imageNative, components[0], &nativeBuffer);
+         *components = compArray;
+     
+         imageErr = OH_ImageNative_GetByteBuffer(imageNative, compArray[0], nativeBuffer);
          if (imageErr != IMAGE_SUCCESS) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetByteBuffer call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
-             delete[] components;
-             return;
+             delete[] compArray;
+             return false;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_ImageNative_GetByteBuffer imageErr:%{public}d", imageErr);
-         // Read the size of the buffer corresponding to the first component of OH_ImageNative.
-         size_t nativeBufferSize = 0;
-         imageErr = OH_ImageNative_GetBufferSize(imageNative, components[0], &nativeBufferSize);
+     
+         imageErr = OH_ImageNative_GetBufferSize(imageNative, compArray[0], nativeBufferSize);
          if (imageErr != IMAGE_SUCCESS) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetBufferSize call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
-             delete[] components;
-             return;
+             delete[] compArray;
+             return false;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d nativeBufferSize:%{public}zu", imageErr,
-            nativeBufferSize);
-         // Read the row stride corresponding to the first component of OH_ImageNative.
+     
          int32_t rowStride = 0;
-         imageErr = OH_ImageNative_GetRowStride(imageNative, components[0], &rowStride);
-         if (imageErr != IMAGE_SUCCESS) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetRowStride call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
-             delete[] components;
-             return;
-         }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d rowStride:%{public}d", imageErr, rowStride);
-         // Read the pixel stride corresponding to the first component of OH_ImageNative.
          int32_t pixelStride = 0;
-         imageErr = OH_ImageNative_GetPixelStride(imageNative, components[0], &pixelStride);
-         if (imageErr != IMAGE_SUCCESS) {
-             OH_LOG_ERROR(LOG_APP, "OH_ImageNative_GetPixelStride call failed, errorCode: %{public}d", imageErr);
-             OH_PhotoNative_Release(photo);
+         OH_ImageNative_GetRowStride(imageNative, compArray[0], &rowStride);
+         OH_ImageNative_GetPixelStride(imageNative, compArray[0], &pixelStride);
+         OH_LOG_INFO(LOG_APP, "Buffer size: %{public}zu, strides: %{public}d/%{public}d",
+             *nativeBufferSize, rowStride, pixelStride);
+     
+         return true;
+     }
+     
+     
+     static void CleanupResources(OH_ImageNative* imageNative, uint32_t* components,
+                                  OH_NativeBuffer* nativeBuffer, void* virAddr)
+     {
+         if (components) {
              delete[] components;
+         }
+     
+         if (imageNative) {
+             int32_t ret = OH_ImageNative_Release(imageNative);
+             if (ret != 0) {
+                 OH_LOG_ERROR(LOG_APP, "Release image failed: %{public}d", ret);
+             }
+         }
+     
+         if (nativeBuffer && virAddr) {
+             int32_t ret = OH_NativeBuffer_Unmap(nativeBuffer);
+             if (ret != 0) {
+                 OH_LOG_ERROR(LOG_APP, "Unmap buffer failed: %{public}d", ret);
+             }
+         }
+     }
+     
+     void OnPhotoAvailable(Camera_PhotoOutput *photoOutput, OH_PhotoNative *photo)
+     {
+         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable start!");
+     
+         OH_ImageNative *imageNative = nullptr;
+         Camera_ErrorCode errCode = OH_PhotoNative_GetMainImage(photo, &imageNative);
+         if (errCode != CAMERA_OK || !imageNative) {
+             OH_LOG_ERROR(LOG_APP, "GetMainImage failed: %{public}d", errCode);
              return;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable imageErr:%{public}d pixelStride:%{public}d", imageErr, pixelStride);
-         // Map the ION memory to the process address space.
-         void* virAddr = nullptr; // Point to the virtual address of the mapped memory. After unmapping, the pointer is invalid.
-         int32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr); // After mapping, the start address of the memory is returned through the parameter virAddr.
-         if (ret != 0) {
-             OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Map call failed, errorCode: %{public}d", ret);
-             OH_PhotoNative_Release(photo);
-             delete[] components;
+     
+         uint32_t* components = nullptr;
+         OH_NativeBuffer* nativeBuffer = nullptr;
+         size_t nativeBufferSize = 0;
+     
+         if (!ProcessImageNative(imageNative, &components, &nativeBuffer, &nativeBufferSize)) {
+             CleanupResources(imageNative, components, nullptr, nullptr);
              return;
          }
-         OH_LOG_INFO(LOG_APP, "OnPhotoAvailable OH_NativeBuffer_Map err:%{public}d", ret);
-         // Call the buffer callback at the NAPI layer.
-         auto cb = (void (*)(void *, size_t))(bufferCb);
-         if (!virAddr || nativeBufferSize <= 0) {
-           OH_LOG_INFO(LOG_APP, "On buffer callback failed");
-           return;
+     
+         void* virAddr = nullptr;
+         int32_t ret = OH_NativeBuffer_Map(nativeBuffer, &virAddr);
+         if (ret != 0 || !virAddr) {
+             OH_LOG_ERROR(LOG_APP, "Map buffer failed: %{public}d", ret);
+             CleanupResources(imageNative, components, nativeBuffer, nullptr);
+             return;
          }
-         cb(virAddr, nativeBufferSize);
-         // Release resources.
-         delete[] components;
-         ret = OH_PhotoNative_Release(photo);
-         if (ret != 0) {
-             OH_LOG_ERROR(LOG_APP, "OH_PhotoNative_Release call failed., errorCode: %{public}d", ret);
+     
+         auto cb = (void (*)(void *, size_t))(g_bufferCb);
+         if (cb && virAddr && nativeBufferSize > 0) {
+             cb(virAddr, nativeBufferSize);
+             OH_LOG_INFO(LOG_APP, "Buffer callback called");
+         } else {
+             OH_LOG_ERROR(LOG_APP, "Invalid callback parameters");
          }
-         ret = OH_NativeBuffer_Unmap(nativeBuffer); // After the processing is complete, unmap and release the buffer.
-         if (ret != 0) {
-             OH_LOG_ERROR(LOG_APP, "OH_NativeBuffer_Unmap call failed, errorCode: %{public}d", ret);
-         }
+     
+         CleanupResources(imageNative, components, nativeBuffer, virAddr);
+     
          OH_LOG_INFO(LOG_APP, "OnPhotoAvailable end");
      }
-
-     // Register the PhotoAvailableCallback callback.
-     Camera_ErrorCode PhotoOutputRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput) {
-         OH_LOG_INFO(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback start!");
-         Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
+     
+     Camera_ErrorCode NDKCamera::PhotoOutputRegisterPhotoAvailableCallback(void)
+     {
+         OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback start!");
+         Camera_ErrorCode ret = OH_PhotoOutput_RegisterPhotoAvailableCallback(photoOutput_, OnPhotoAvailable);
          if (ret != CAMERA_OK) {
-             OH_LOG_ERROR(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback failed.");
+             OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback failed.");
          }
-         OH_LOG_INFO(LOG_APP, "PhotoOutputRegisterPhotoAvailableCallback return with ret code: %{public}d!", ret);
+         OH_LOG_INFO(LOG_APP, "NDKCamera::PhotoOutputRegisterPhotoAvailableCallback return with ret code: %{public}d!",
+             ret_);
          return ret;
      }
-
+     
      // Unregister the PhotoAvailableCallback callback.
-     Camera_ErrorCode PhotoOutputUnRegisterPhotoAvailableCallback(Camera_PhotoOutput* photoOutput) {
+     Camera_ErrorCode NDKCamera::PhotoOutputUnRegisterPhotoAvailableCallback()
+     {
          OH_LOG_INFO(LOG_APP, "PhotoOutputUnRegisterPhotoAvailableCallback start!");
-         Camera_ErrorCode ret = OH_PhotoOutput_UnregisterPhotoAvailableCallback(photoOutput, OnPhotoAvailable);
+         Camera_ErrorCode ret = OH_PhotoOutput_UnregisterPhotoAvailableCallback(photoOutput_, OnPhotoAvailable);
          if (ret != CAMERA_OK) {
              OH_LOG_ERROR(LOG_APP, "PhotoOutputUnRegisterPhotoAvailableCallback failed.");
          }
@@ -232,19 +294,22 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
 
      Sample code for buffer processing at the NAPI layer:
 
-     ```c++
-     static napi_ref bufferCbRef_ = nullptr;
-     static napi_env env_;
-     size_t g_size = 0;
-
+     <!-- @[napi_buffer_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/main.cpp) -->
+     
+     ``` C++
      // Buffer callback at the NAPI layer.
-     static void BufferCb(void* buffer, size_t size) {
+     static void BufferCb(void* buffer, size_t size)
+     {
          OH_LOG_INFO(LOG_APP, "BufferCb size:%{public}zu", size);
          g_size = size;
          napi_value asyncResource = nullptr;
          napi_value asyncResourceName = nullptr;
          napi_async_work work;
-
+     
+         if (size == 0 || size > SIZE_MAX) {
+             OH_LOG_ERROR(LOG_APP, "BufferCb size is invalid");
+             return;
+         }
          void* copyBuffer = malloc(size);
          if (copyBuffer == nullptr) {
              return;
@@ -272,12 +337,8 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
                  }
                  // Call the buffer processing callback function at the ArkTS side to pass the image arrayBuffer for display or storage.
                  napi_call_function(env, nullptr, callback, 1, &arrayBuffer, &retVal);
-                 // Clear the memory.
-                 free(data); // Release the memory allocated during asynchronous work.
-                 free(copyBuffer);
              },
              copyBuffer, &work);
-
          // Error check: The memory is released when the asynchronous work fails to be created.
          if (status != napi_ok) {
              OH_LOG_ERROR(LOG_APP, "Failed to create async work");
@@ -285,28 +346,6 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
              return;
          }
          napi_queue_async_work_with_qos(env_, work, napi_qos_user_initiated);
-     }
-
-     // Save the buffer processing callback function passed from ArkTS.
-     static napi_value SetBufferCb(napi_env env, napi_callback_info info) {
-         OH_LOG_INFO(LOG_APP, "SetBufferCb start");
-         napi_value result;
-         napi_get_undefined(env, &result);
-
-         napi_value argValue[1] = {nullptr};
-         size_t argCount = 1;
-         napi_get_cb_info(env, info, &argCount, argValue, nullptr, nullptr);
-
-         env_ = env;
-         napi_create_reference(env, argValue[0], 1, &bufferCbRef_);
-         if (bufferCbRef_) {
-             OH_LOG_INFO(LOG_APP, "SetBufferCb callbackRef is full");
-         } else {
-             OH_LOG_ERROR(LOG_APP, "SetBufferCb callbackRef is null");
-         }
-         // Register the buffer callback to be passed to the NAPI layer on the ArkTS side.
-         RegisterBufferCb((void *)BufferCb);
-         return result;
      }
      ```
 
@@ -316,86 +355,117 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
 
    You can set camera parameters to adjust photo capture functions, including the flash, zoom ratio, and focal length.
 
-   ```c++
-   // Check whether the camera has flash.
-   bool HasFlash(Camera_CaptureSession* captureSession)
+   <!-- @[settings_configuration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::HasFlashFn(uint32_t mode)
    {
+       Camera_FlashMode flashMode = static_cast<Camera_FlashMode>(mode);
+       //Check the flash.
        bool hasFlash = false;
-       Camera_ErrorCode ret = OH_CaptureSession_HasFlash(captureSession, &hasFlash);
-       if (ret != CAMERA_OK) {
+       Camera_ErrorCode ret = OH_CaptureSession_HasFlash(captureSession_, &hasFlash);
+       if (captureSession_ == nullptr || ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_HasFlash failed.");
        }
        if (hasFlash) {
-           OH_LOG_INFO(LOG_APP, "hasFlash success");
+           OH_LOG_INFO(LOG_APP, "hasFlash success-----");
        } else {
-           OH_LOG_ERROR(LOG_APP, "hasFlash fail");
+           OH_LOG_ERROR(LOG_APP, "hasFlash fail-----");
        }
-       return hasFlash;
-   }
-
-   // Check whether a flash mode is supported.
-   bool IsFlashModeSupported(Camera_CaptureSession* captureSession, Camera_FlashMode flashMode)
-   {
+   
+       //Check whether the flash mode is supported.
        bool isSupported = false;
-       Camera_ErrorCode ret = OH_CaptureSession_IsFlashModeSupported(captureSession, flashMode, &isSupported);
+       ret = OH_CaptureSession_IsFlashModeSupported(captureSession_, flashMode, &isSupported);
        if (ret != CAMERA_OK) {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_IsFlashModeSupported failed.");
        }
-       return isSupported;
-   }
-   // Call OH_CaptureSession_SetFlashMode when the specified mode is supported.
-   Camera_ErrorCode SetFlashMode(Camera_CaptureSession* captureSession, Camera_FlashMode flashMode)
-   {
-       Camera_ErrorCode ret = OH_CaptureSession_SetFlashMode(captureSession, flashMode);
+       if (isSupported) {
+           OH_LOG_INFO(LOG_APP, "isFlashModeSupported success-----");
+       } else {
+           OH_LOG_ERROR(LOG_APP, "isFlashModeSupported fail-----");
+       }
+   
+       // Set the flash mode.
+       ret = OH_CaptureSession_SetFlashMode(captureSession_, flashMode);
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_SetFlashMode success.");
        } else {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFlashMode failed. %{public}d ", ret);
        }
-       return ret;
-   }
-
-   // Check whether the continuous auto focus is supported.
-   bool IsFocusModeSupported(Camera_CaptureSession* captureSession, Camera_FocusMode focusMode)
-   {
-       bool isFocusModeSupported = false;
-       Camera_ErrorCode ret = OH_CaptureSession_IsFocusModeSupported(captureSession, focusMode, &isFocusModeSupported);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_IsFocusModeSupported failed.");
-       }
-       return isFocusModeSupported;
-   }
-   // Call OH_CaptureSession_SetFocusMode when the specified mode is supported.
-   Camera_ErrorCode SetFocusMode(Camera_CaptureSession* captureSession, Camera_FocusMode focusMode)
-   {
-       Camera_ErrorCode ret = OH_CaptureSession_SetFocusMode(captureSession, focusMode);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetFocusMode failed. %{public}d ", ret);
-       }
-       return ret;
-   }
-
-   // Obtain the zoom ratio range supported by the camera.
-   Camera_ErrorCode GetZoomRatioRange(Camera_CaptureSession* captureSession, float* minZoom, float* maxZoom)
-   {
-       Camera_ErrorCode ret = OH_CaptureSession_GetZoomRatioRange(captureSession, minZoom, maxZoom);
-       if (ret != CAMERA_OK) {
-           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatioRange failed.");
+   
+       // Obtain the flash mode in use.
+       ret = OH_CaptureSession_GetFlashMode(captureSession_, &flashMode);
+       if (ret == CAMERA_OK) {
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetFlashMode success. flashMode: %{public}d ", flashMode);
        } else {
-           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatioRange success. minZoom: %{public}f, maxZoom:%{public}f",
-               *minZoom, *maxZoom);
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetFlashMode failed. %d ", ret);
        }
        return ret;
    }
    
-   // Set the zoom ratio, which must be within the allowed range.
-   Camera_ErrorCode SetZoomRatio(Camera_CaptureSession* captureSession, float zoom)
+   // Focus mode.
+   Camera_ErrorCode NDKCamera::IsFocusModeSupported(uint32_t mode)
    {
-       Camera_ErrorCode ret = OH_CaptureSession_SetZoomRatio(captureSession, zoom);
+       Camera_FocusMode focusMode = static_cast<Camera_FocusMode>(mode);
+       ret_ = OH_CaptureSession_IsFocusModeSupported(captureSession_, focusMode, &isFocusModeSupported_);
+       if (&isFocusModeSupported_ == nullptr || ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "IsFocusModeSupported failed.");
+           return CAMERA_INVALID_ARGUMENT;
+       }
+       return ret_;
+   }
+   
+   Camera_ErrorCode NDKCamera::IsFocusMode(uint32_t mode)
+   {
+       OH_LOG_INFO(LOG_APP, "IsFocusMode start.");
+       Camera_FocusMode focusMode = static_cast<Camera_FocusMode>(mode);
+       ret_ = OH_CaptureSession_IsFocusModeSupported(captureSession_, focusMode, &isFocusModeSupported_);
+       if (&isFocusModeSupported_ == nullptr || ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "IsFocusModeSupported failed.");
+           return CAMERA_INVALID_ARGUMENT;
+       }
+       ret_ = OH_CaptureSession_SetFocusMode(captureSession_, focusMode);
+       if (ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "SetFocusMode failed.");
+           return CAMERA_INVALID_ARGUMENT;
+       }
+       ret_ = OH_CaptureSession_GetFocusMode(captureSession_, &focusMode);
+       if (&focusMode == nullptr || ret_ != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "GetFocusMode failed.");
+           return CAMERA_INVALID_ARGUMENT;
+       }
+       OH_LOG_INFO(LOG_APP, "IsFocusMode end.");
+       return ret_;
+   }
+   
+   Camera_ErrorCode NDKCamera::setZoomRatioFn(uint32_t zoomRatio)
+   {
+       float zoom = float(zoomRatio);
+       // Obtain the supported zoom ratio range.
+       float minZoom;
+       float maxZoom;
+       Camera_ErrorCode ret = OH_CaptureSession_GetZoomRatioRange(captureSession_, &minZoom, &maxZoom);
+       if (captureSession_ == nullptr || ret != CAMERA_OK) {
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatioRange failed.");
+       } else {
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatioRange success. minZoom: %{public}f, maxZoom:%{public}f",
+               minZoom, maxZoom);
+       }
+   
+       // Set the zoom ratio.
+       ret = OH_CaptureSession_SetZoomRatio(captureSession_, zoom);
        if (ret == CAMERA_OK) {
            OH_LOG_INFO(LOG_APP, "OH_CaptureSession_SetZoomRatio success.");
        } else {
            OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_SetZoomRatio failed. %{public}d ", ret);
+       }
+   
+       // Obtain the zoom ratio in use.
+       ret = OH_CaptureSession_GetZoomRatio(captureSession_, &zoom);
+       if (ret == CAMERA_OK) {
+           OH_LOG_INFO(LOG_APP, "OH_CaptureSession_GetZoomRatio success. zoom: %{public}f ", zoom);
+       } else {
+           OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_GetZoomRatio failed. %{public}d ", ret);
        }
        return ret;
    }
@@ -403,56 +473,231 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
 
 8. Trigger photo capture.
 
-   Call [OH_PhotoOutput_Capture()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture) to trigger photo capture.
+   Call [OH_PhotoOutput_Capture_WithCaptureSetting()](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_capture_withcapturesetting) to trigger photo capture.
 
-   ```c++
-   Camera_ErrorCode Capture(Camera_PhotoOutput* photoOutput)
+   <!-- @[capture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+   
+   ``` C++
+   Camera_ErrorCode NDKCamera::TakePicture(int32_t degree)
    {
-       Camera_ErrorCode ret = OH_PhotoOutput_Capture(photoOutput);
-       if (ret == CAMERA_OK) {
-           OH_LOG_INFO(LOG_APP, "OH_PhotoOutput_Capture success ");
-       } else {
-           OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_Capture failed. %d ", ret);
-       }
+       Camera_ErrorCode ret = CAMERA_OK;
+       Camera_ImageRotation imageRotation;
+       bool isMirSupported;
+       OH_PhotoOutput_IsMirrorSupported(photoOutput_, &isMirSupported);
+       OH_PhotoOutput_GetPhotoRotation(photoOutput_, degree, &imageRotation);
+   
+       Camera_PhotoCaptureSetting curPhotoSetting = {
+           quality : QUALITY_LEVEL_HIGH,
+           rotation : imageRotation,
+           mirror : isMirSupported
+       };
+       ret = OH_PhotoOutput_Capture_WithCaptureSetting(photoOutput_, curPhotoSetting);
+       OH_LOG_INFO(LOG_APP, "TakePicture get quality %{public}d, rotation %{public}d, mirror %{public}d",
+           curPhotoSetting.quality, curPhotoSetting.rotation, curPhotoSetting.mirror);
+       OH_LOG_INFO(LOG_APP, "TakePicture ret = %{public}d.", ret);
        return ret;
    }
    ```
+
+## High-Performance Photo Capture
+
+High-performance photo capture is supported starting from API version 21. This feature allows you to set an explicit [quality-first strategy](#quality-first-strategy) for one-shot photo capture.
+
+User experience of one-shot photo capture is primarily measured by image output speed and final image quality. To meet differentiated requirements across scenarios, the emphasis on these two metrics varies. For example, street photography requires fast capture of fleeting moments, while landscape or portrait photography prioritizes optimal image quality.
+
+> **NOTE**
+>
+> Quality-first strategy is supported only for one-shot photo capture. Any such settings configured for deferred photo capture will not take effect.
+
+
+### Quality-First Strategy
+
+For one-shot photo capture, two quality-first strategies are supported, each mapped to a distinct [Camera_PhotoQualityPrioritization](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization) enumeration value:
+
+- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_SPEED](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization): prioritizes speed by reducing image quality to accelerate capture. This is the **default strategy** for one-shot photo capture if no explicit quality-first strategy is configured.
+- [CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY](../../reference/apis-camera-kit/capi-camera-h.md#camera_photoqualityprioritization): prioritizes quality by allowing longer processing time to produce higher-quality images.
+
+### How to Correctly Set a Quality-First Strategy
+
+To properly set a quality-first strategy for one-shot photo capture, the high-performance photo capture feature provides the following two APIs:
+
+- [OH_PhotoOutput_IsPhotoQualityPrioritizationSupported](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_isphotoqualityprioritizationsupported): queries whether the current device supports a specified quality-first strategy. Returns **true** if supported, **false** if not. You must verify support for the target strategy on the current device before configuration.
+- [OH_PhotoOutput_SetPhotoQualityPrioritization](../../reference/apis-camera-kit/capi-photo-output-h.md#oh_photooutput_setphotoqualityprioritization): The core API for setting a quality-first strategy. Use this API to configure the desired strategy and enable high-performance photo capture.
+
+### How to Develop
+ 	 
+APIs related to high-performance photo capture must be called during the [camera session management (C/C++)](native-camera-session-management.md) workflow. 
+ 	 
+The specific call timing is as follows:
+
+- Call the following APIs after the completion of [OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig) in the enablement step of the [camera session management (C/C++)](native-camera-session-management.md) workflow.
+
+  ```c++
+  Camera_ErrorCode StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
+    Camera_PreviewOutput* previewOutput, Camera_PhotoOutput* photoOutput)
+  {
+    // Add the camera input stream to the session.
+    Camera_ErrorCode ret = OH_CaptureSession_AddInput(captureSession, cameraInput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddInput failed.");
+      return ret;
+    }
+
+    // Add the preview output stream to the session.
+    ret = OH_CaptureSession_AddPreviewOutput(captureSession, previewOutput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPreviewOutput failed.");
+      return ret;
+    }
+
+    // Add the photo output stream to the session.
+    ret = OH_CaptureSession_AddPhotoOutput(captureSession, photoOutput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPhotoOutput failed.");
+      return ret;
+    }
+
+    // Commit the session configuration.
+    ret = OH_CaptureSession_CommitConfig(captureSession);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_CommitConfig failed.");
+      return ret;
+    }
+
+    // Start the session.
+    ret = OH_CaptureSession_Start(captureSession);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_Start failed.");
+    }
+
+    SetHighQualityPhotoQualityPrioritization(photoOutput);
+    return ret;
+  }
+
+  void SetHighQualityPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput)
+  {
+    Camera_PhotoQualityPrioritization quality = Camera_PhotoQualityPrioritization::CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY;
+    bool isSupported = false;
+    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, isSupported);
+    if (isSupported) {
+      ret = OH_PhotoOutput_SetPhotoQualityPrioritization(photoOutput, quality);
+      if (ret != 0) {
+        OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_SetPhotoQualityPrioritization failed.");
+      }
+    } else {
+      OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_IsPhotoQualityPrioritizationSupported not supported.");
+    }
+  }
+  ```
+
+- Call the following APIs before [OH_CaptureSession_CommitConfig()](../../reference/apis-camera-kit/capi-capture-session-h.md#oh_capturesession_commitconfig) in the enablement step of the [camera session management (C/C++)](native-camera-session-management.md) workflow.
+
+  ```c++
+  Camera_ErrorCode StartSession(Camera_CaptureSession* captureSession, Camera_Input* cameraInput,
+    Camera_PreviewOutput* previewOutput, Camera_PhotoOutput* photoOutput)
+  {
+    // Add the camera input stream to the session.
+    Camera_ErrorCode ret = OH_CaptureSession_AddInput(captureSession, cameraInput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddInput failed.");
+      return ret;
+    }
+
+    // Add the preview output stream to the session.
+    ret = OH_CaptureSession_AddPreviewOutput(captureSession, previewOutput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPreviewOutput failed.");
+      return ret;
+    }
+
+    // Add the photo output stream to the session.
+    ret = OH_CaptureSession_AddPhotoOutput(captureSession, photoOutput);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_AddPhotoOutput failed.");
+      return ret;
+    }
+
+    SetHighQualityPhotoQualityPrioritization(photoOutput);
+    
+    // Commit the session configuration.
+    ret = OH_CaptureSession_CommitConfig(captureSession);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_CommitConfig failed.");
+      return ret;
+    }
+
+    // Start the session.
+    ret = OH_CaptureSession_Start(captureSession);
+    if (ret != CAMERA_OK) {
+      OH_LOG_ERROR(LOG_APP, "OH_CaptureSession_Start failed.");
+    }
+
+    return ret;
+  }
+
+  void SetHighQualityPhotoQualityPrioritization(Camera_PhotoOutput* photoOutput)
+  {
+    Camera_PhotoQualityPrioritization quality = Camera_PhotoQualityPrioritization::CAMERA_PHOTO_QUALITY_PRIORITIZATION_HIGH_QUALITY;
+    bool isSupported = false;
+    Camera_ErrorCode ret = OH_PhotoOutput_IsPhotoQualityPrioritizationSupported(photoOutput, quality, isSupported);
+    if (isSupported) {
+      ret = OH_PhotoOutput_SetPhotoQualityPrioritization(photoOutput, quality);
+      if (ret != 0) {
+        OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_SetPhotoQualityPrioritization failed.");
+      }
+    } else {
+      OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_IsPhotoQualityPrioritizationSupported not supported.");
+    }
+  }
+  ```
 
 ## Status Listening
 
 During camera application development, you can listen for the status of the photo output stream, including the start of the photo stream, the start and end of the photo frame, and the errors of the photo output stream.
 
 - Register the **'onFrameStart'** event to listen for photo capture start events. This event can be registered when a PhotoOutput instance is created and is triggered when the bottom layer starts exposure for photo capture for the first time. The capture ID is returned.
-  ```c++
-  void PhotoOutputOnFrameStart(Camera_PhotoOutput* photoOutput)
+
+  <!-- @[photo_output_start_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  // PhotoOutput Callback
+  void PhotoOutputOnFrameStart(Camera_PhotoOutput *photoOutput)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutputOnFrameStart");
   }
-  void PhotoOutputOnFrameShutter(Camera_PhotoOutput* photoOutput, Camera_FrameShutterInfo* info)
+  
+  void PhotoOutputOnFrameShutter(Camera_PhotoOutput *photoOutput, Camera_FrameShutterInfo *info)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutputOnFrameShutter");
   }
   ```
 
 - Register the **'onFrameEnd'** event to listen for photo capture end events. This event can be registered when a PhotoOutput instance is created.
+
+  <!-- @[photo_output_end_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
   
-  ```c++
-  void PhotoOutputOnFrameEnd(Camera_PhotoOutput* photoOutput, int32_t frameCount)
+  ``` C++
+  void PhotoOutputOnFrameEnd(Camera_PhotoOutput *photoOutput, int32_t frameCount)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutput frameCount = %{public}d", frameCount);
   }
   ```
 
 - Register the **'onError'** event to listen for photo output errors. The callback function returns an error code when an API is incorrectly used. For details about the error code types, see [Camera_ErrorCode](../../reference/apis-camera-kit/capi-camera-h.md#camera_errorcode).
+
+  <!-- @[photo_output_error_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
   
-  ```c++
-  void PhotoOutputOnError(Camera_PhotoOutput* photoOutput, Camera_ErrorCode errorCode)
+  ``` C++
+  void PhotoOutputOnError(Camera_PhotoOutput *photoOutput, Camera_ErrorCode errorCode)
   {
       OH_LOG_INFO(LOG_APP, "PhotoOutput errorCode = %{public}d", errorCode);
   }
   ```
-  ```c++
-  PhotoOutput_Callbacks* GetPhotoOutputListener()
+
+  <!-- @[get_photo_output_listener_and_register_callback](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPhotoVideoSample/entry/src/main/cpp/camera_manager.cpp) -->
+  
+  ``` C++
+  PhotoOutput_Callbacks *NDKCamera::GetPhotoOutputListener(void)
   {
       static PhotoOutput_Callbacks photoOutputListener = {
           .onFrameStart = PhotoOutputOnFrameStart,
@@ -462,12 +707,13 @@ During camera application development, you can listen for the status of the phot
       };
       return &photoOutputListener;
   }
-  Camera_ErrorCode RegisterPhotoOutputCallback(Camera_PhotoOutput* photoOutput)
+  
+  Camera_ErrorCode NDKCamera::PhotoOutputRegisterCallback(void)
   {
-      Camera_ErrorCode ret = OH_PhotoOutput_RegisterCallback(photoOutput, GetPhotoOutputListener());
-      if (ret != CAMERA_OK) {
+      ret_ = OH_PhotoOutput_RegisterCallback(photoOutput_, GetPhotoOutputListener());
+      if (ret_ != CAMERA_OK) {
           OH_LOG_ERROR(LOG_APP, "OH_PhotoOutput_RegisterCallback failed.");
       }
-      return ret;
+      return ret_;
   }
   ```

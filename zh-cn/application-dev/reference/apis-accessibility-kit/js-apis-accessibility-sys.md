@@ -1,4 +1,4 @@
-# @ohos.accessibility (辅助功能)（系统接口）
+# @ohos.accessibility (辅助功能)(系统接口)
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->

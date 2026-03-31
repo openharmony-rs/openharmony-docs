@@ -6,12 +6,13 @@
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
 ## 功能简介
-
-应用发送通知给分布式通知服务后，该服务会把通知转发给三方应用实现的[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)扩展能力，此扩展能力的核心作用是让三方应用接收系统通知，应用可在此扩展能力中实现手机与穿戴设备之间的数据传输。若一定时间内无新通知发布，当前运行的[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)会被系统自动销毁。
+此扩展能力的核心作用是让三方应用接收系统通知，应用可在此扩展能力中实现手机与穿戴设备之间的数据传输。应用发送通知给分布式通知服务后，该服务会把通知转发给三方应用实现的[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)。若一定时间内无新通知发布，当前运行的[NotificationSubscriberExtensionAbility](../reference/apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)会被系统自动销毁。
 
 ## 前提条件
-- 用户已通过手机中与穿戴设备配套的应用程序连接穿戴设备。
+- 用户已通过手机中的穿戴应用程序与穿戴设备配对。
 - 用户已在手机的穿戴应用中，通过[openSubscriptionSettings](../reference/apis-notification-kit/js-apis-notificationExtensionSubscription.md#notificationextensionsubscriptionopensubscriptionsettings)接口拉起的半模态弹窗中，开启了“允许获取本机通知”与“已获取的本机通知”的开关。
+- 支持[HFP](../connectivity/terminology.md#hfp)连接的设备，需保证HFP连接一直处于连接状态。
+
 ## 应用场景
 <!--Del-->
 - **生态诉求**：支持第三方穿戴接收系统通知

@@ -9,7 +9,7 @@
 
 ## Overview
 
-This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscribe to main thread jank events. For details (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
+This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscribe to main thread jank events. For details about the parameter restrictions and value ranges, see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
 
 ## Available APIs
 
@@ -21,7 +21,7 @@ This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscri
 ## How to Develop
 
 ### Adding an Event Watcher
-1. Obtain the **jsoncpp** file on which the sample project depends. Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
+1. Obtain the **jsoncpp** file on which the sample project depends. Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source** in the **README** file.
 
 2. Create a native C++ project and import the preceding files to the project. The directory structure is as follows:
 

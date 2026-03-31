@@ -198,7 +198,7 @@ Creates a content modifier. Compared with [contentModifier](#contentmodifier12),
 
 ### onChange
 
-onChange(callback:(value: number) =&gt; void)
+onChange(callback:(value:&nbsp;number)&nbsp;=&gt;&nbsp;void)
 
 Triggered when the rating value changes.
 
@@ -267,7 +267,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 | Name | Type   |    Read-Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| rating    | number  | No| No| Value to rate.<br>Default value: **0**<br>Value range: [0, stars]<br>Values less than 0 are treated as **0**, and values greater than the value of [stars](#stars) are treated as the value of **stars**.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).|
+| rating    | number  | No| No| Value to rate.<br>Default value: **0**<br>Value range: [0, stars]<br>Values less than 0 are treated as **0**, and values greater than the value of [stars](#stars) are treated as the value of **stars**.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).|
 | indicator | boolean | No| No| Whether the rating bar is used as an indicator. **true**: used as an indicator. **false**: not used as an indicator.<br>Default value: **false**|
 | stars | number | No| No|Total number of ratings.<br>Default value: **5**|
 | stepSize | number | No| No|Step of an operation.<br>Default value: **0.5**|
@@ -308,9 +308,9 @@ Provides style settings for the selected, unselected, and partially selected sta
 
 | Name                      | Type  | Read-Only| Optional| Description                                                        |
 | -------------------------- | ------ | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the unselected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 4: Setting the Rating Style Through Resource Configuration](#example-4-setting-the-rating-style-through-resource-configuration).|
-| foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 4: Setting the Rating Style Through Resource Configuration](#example-4-setting-the-rating-style-through-resource-configuration).|
-| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Image path for the partially selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 4: Setting the Rating Style Through Resource Configuration](#example-4-setting-the-rating-style-through-resource-configuration).|
+| backgroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the unselected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](#example-3-setting-the-rating-style-through-resource-configuration).|
+| foregroundUri<sup>7+</sup> | [ResourceStr](ts-types.md#resourcestr) | No | No | Image path for the selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](#example-3-setting-the-rating-style-through-resource-configuration).|
+| secondaryUri<sup>7+</sup>  | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Image path for the partially selected star. You can use the default system image or a custom image.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Resource configuration is supported since API version 20. For details, see [Example 3: Setting the Rating Style Through Resource Configuration](#example-3-setting-the-rating-style-through-resource-configuration).|
 
 > **NOTE**
 >
@@ -376,43 +376,7 @@ struct RatingExample {
 
 ![rating](figures/rating.gif)
 
-### Example 2: Customizing the Rating Style
-
-This example shows how to customize the star images by configuring **starStyle**.
-
-```ts
-// xxx.ets
-@Entry
-@Component
-struct RatingExample {
-  @State rating: number = 3.5;
-
-  build() {
-    Column() {
-      Rating({ rating: this.rating, indicator: false })
-        .stars(5)
-        .stepSize(0.5)
-        .starStyle({
-          backgroundUri: '/common/image1.png', // The common directory is at the same level as the pages directory.
-          foregroundUri: '/common/image2.png',
-          secondaryUri: '/common/image3.png'
-        })
-        .margin({ top: 24 })
-        .onChange((value: number) => {
-          this.rating = value;
-        })
-      Text('current score is ' + this.rating)
-        .fontSize(16)
-        .fontColor('rgba(24,36,49,0.60)')
-        .margin({ top: 16 })
-    }.width('100%').height('100%').backgroundColor('#F1F3F5')
-  }
-}
-```
-
-![rating1](figures/rating1.gif)
-
-### Example 3: Implementing a Custom Rating Bar
+### Example 2: Implementing a Custom Rating Bar
 This example implements a custom rating bar, with each circle representing 0.5 point. When **ratingIndicator** is set to **true**, the rating bar acts as an indicator and the value cannot be changed. When **ratingIndicator** is set to **false**, the rating is interactive. **ratingStars** sets the total number of stars, and **ratingStepSize** sets the increment step.
 
 ```ts
@@ -614,11 +578,9 @@ struct ratingExample {
 }
 ```
 
-![rating2](figures/rating2.gif)
+### Example 3: Setting the Rating Style Through Resource Configuration
 
-### Example 4: Setting the Rating Style Through Resource Configuration
-
-This example shows how to configure custom star images through resource configuration using **starStyle**.
+This example demonstrates how to set **starStyle** through resource configuration to customize the star image link. This method is recommended for setting the style since API version 20.
 
 ```ts
 // xxx.ets
@@ -637,6 +599,46 @@ struct RatingExample {
           backgroundUri: $r('app.media.imag1'),
           foregroundUri: $r('app.media.imag2'),
           secondaryUri: $r('app.media.imag3')
+        })
+        .margin({ top: 24 })
+        .onChange((value: number) => {
+          this.rating = value;
+        })
+      Text('current score is ' + this.rating)
+        .fontSize(16)
+        .fontColor('rgba(24,36,49,0.60)')
+        .margin({ top: 16 })
+    }.width('100%').height('100%').backgroundColor('#F1F3F5')
+  }
+}
+```
+
+![rating1](figures/rating1.gif)
+
+### Example 4: Customizing the Rating Style
+
+This example shows how to customize the star images by configuring **starStyle**.
+
+> **Note**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct RatingExample {
+  @State rating: number = 3.5;
+
+  build() {
+    Column() {
+      Rating({ rating: this.rating, indicator: false })
+        .stars(5)
+        .stepSize(0.5)
+        .starStyle({
+          backgroundUri: '/common/image1.png', // The common directory is at the same level as the pages directory.
+          foregroundUri: '/common/image2.png',
+          secondaryUri: '/common/image3.png'
         })
         .margin({ top: 24 })
         .onChange((value: number) => {

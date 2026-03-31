@@ -1,7 +1,7 @@
 # Universal Events
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -252,9 +252,11 @@ Sets a custom drag image.
 import image from '@ohos.multimedia.image';
 
 export default {
+    // Generate a PixelMap with a size of 96 × 96, create a color buffer and fill it with random color values, and generate an instance after configuring the PixelMap parameters.
     createPixelMap() {
         let color = new ArrayBuffer(4 * 96 * 96);
         var buffer = new Uint8Array(color);
+        // Fill the buffer color values in a loop.
         for (var i = 0; i < buffer.length; i++) {
             buffer[i] = (i + 1) % 255;
         }
@@ -267,6 +269,7 @@ export default {
                 height: 96, width: 96
             }
         }
+        // Call image.createPixelMap to generate a PixelMap instance.
         const promise = image.createPixelMap(color, opts);
         promise.then((data) => {
             console.error('-create pixelMap has info message:' + JSON.stringify(data));
@@ -275,10 +278,12 @@ export default {
         })
     },
 
+    // Initialization method. Call createPixelMap to generate a PixelMap.
     onInit() {
         this.createPixelMap()
     },
 
+    // Drag start callback, and set the drag preview image to the generated PixelMap with an offset of (50, 50).
     dragStart(e) {
         e.dataTransfer.setDragImage(this.pixelMapReader, 50, 50);
     }

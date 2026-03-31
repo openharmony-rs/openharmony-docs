@@ -46,7 +46,7 @@ Enumerates the return results of intent execution.
 | uris<sup>18+</sup> | Array&lt;string&gt; | No| Yes| List of URIs returned by the intent execution. This field must be used together with the **flags** field to grant the corresponding permissions for the URI list to the system entry point.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | flags<sup>18+</sup> | number | No| Yes| Permissions to be granted to the system entry point for the URI list returned by the intent execution.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**NOTE**<br>This parameter supports only FLAG_AUTH_READ_URI_PERMISSION, FLAG_AUTH_WRITE_URI_PERMISSION, and FLAG_AUTH_READ_URI_PERMISSION\|FLAG_AUTH_WRITE_URI_PERMISSION. For details about the permissions, see [Flags](js-apis-app-ability-wantConstant.md#flags).|
 
-## IntentEntity<sup>20+<sup>
+## IntentEntity<sup>20+</sup>
 
 Defines the struct of an intent entity. It represents key information objects involved during intent execution, including intent parameters and execution results.
 
@@ -58,7 +58,7 @@ You can define intent entities by inheriting this class. The child class must be
 | -------- | -------- | -------- | -------- | -------- |
 | entityId | string | No| No| ID of the intent entity.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
-## IntentResult\<T><sup>20+<sup>
+## IntentResult\<T><sup>20+</sup>
 
 Defines the return result of intent execution. The [generic type](../../quick-start/introduction-to-arkts.md#generic-class-and-interface) is supported.
 

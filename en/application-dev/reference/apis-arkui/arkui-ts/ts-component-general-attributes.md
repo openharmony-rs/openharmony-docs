@@ -53,7 +53,7 @@
   - [Sheet Transition](ts-universal-attributes-sheet-transition.md)
   - [Sheet Transition (System API)](ts-universal-attributes-sheet-transition-sys.md)
 - [Obscuring](ts-universal-attributes-obscured.md)
-- [Universal Text Attributes](ts-universal-attributes-text-style.md)
+- [Text Box Component Common APIs](ts-universal-attributes-text-style.md)
 - [Drag and Drop Control](ts-universal-attributes-drag-drop.md)
 - [Drag-and-Drop Sorting](ts-universal-attributes-drag-sorting.md)
 - [Safe Area](ts-universal-attributes-expand-safe-area.md)

@@ -128,7 +128,7 @@
       - [Focus Axis Event](arkui-ts/ts-universal-events-focus_axis.md)
     - Interaction Response Events<!--interaction-events-->
       - [Click Event](arkui-ts/ts-universal-events-click.md)
-      - [Drag/Drop Event](arkui-ts/ts-universal-events-drag-drop.md)
+      - [Drag Event](arkui-ts/ts-universal-events-drag-drop.md)
       <!--Del-->
       - [Drag Event (System API)](arkui-ts/ts-universal-events-drag-drop-sys.md)
       <!--DelEnd-->
@@ -186,7 +186,7 @@
       - [Image Effect (System API)](arkui-ts/ts-universal-attributes-image-effect-sys.md)
       <!--DelEnd-->
     - Interaction Properties<!--interaction-property-->
-      - [Enable/Disable](arkui-ts/ts-universal-attributes-enable.md)
+      - [Enable/Disable Control](arkui-ts/ts-universal-attributes-enable.md)
       - [Focus Control](arkui-ts/ts-universal-attributes-focus.md)
       - [Drag and Drop Control](arkui-ts/ts-universal-attributes-drag-drop.md)
       - [Drag-and-Drop Sorting](arkui-ts/ts-universal-attributes-drag-sorting.md)
@@ -595,8 +595,10 @@
     - [ArkUI_GestureEventTargetInfo](capi-arkui-nativemodule-arkui-gestureeventtargetinfo.md)
     - [ArkUI_ParallelInnerGestureEvent](capi-arkui-nativemodule-arkui-parallelinnergestureevent.md)
     - [ArkUI_TouchRecognizer](capi-arkui-nativemodule-arkui-touchrecognizer.md)
+    - [ArkUI_TouchRecognizer*](capi-arkui-nativemodule-arkui-touchrecognizerhandle.md)
     - [ArkUI_TouchRecognizerHandle*](capi-arkui-nativemodule-arkui-touchrecognizerhandlearray.md)
-    - [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)
+    - [ArkUI_GestureRecognizer*](capi-arkui-nativemodule-arkui-gesturerecognizerhandle.md)
+    - [ArkUI_GestureRecognizerHandle*](capi-arkui-nativemodule-arkui-gesturerecognizerhandlearray.md)
     - [ArkUI_AccessibleAction](capi-arkui-accessibility-arkui-accessibleaction.md)
     - [ArkUI_AccessibleRect](capi-arkui-accessibility-arkui-accessiblerect.md)
     - [ArkUI_AccessibleRangeInfo](capi-arkui-accessibility-arkui-accessiblerangeinfo.md)
@@ -644,6 +646,7 @@
     - [ArkUI_TranslationOptions](capi-arkui-nativemodule-arkui-translationoptions.md)
     - [ArkUI_ScaleOptions](capi-arkui-nativemodule-arkui-scaleoptions.md)
     - [ArkUI_RotationOptions](capi-arkui-nativemodule-arkui-rotationoptions.md)
+    - [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md)
     - [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)
     - [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)
     - [ArkUI_Node](capi-arkui-nativemodule-arkui-node-descriptor.md)
@@ -747,7 +750,7 @@
     - [UI Context Error Codes](errorcode-uicontext.md)
     - [Render State Listening Error Codes](errorcode-node-render-monitor.md)
     - [Interaction Event Error Codes](errorcode-event.md)
-    - [Canvas Error Codes](errorcode-canvas.md)
+    - [Canvas Component Error Codes](errorcode-canvas.md)
     - [Custom Node Error Codes](errorcode-node.md)
     - [UIExtension Error Codes](errorcode-uiextension.md)
     - [UI Appearance Error Codes](errorcode-uiappearance.md)

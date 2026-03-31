@@ -141,7 +141,7 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
     };
     ```
 
-5. Call **init()** to initialize the screenCapture instance based on the preset screen capture parameters.
+5. Call [init](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#init12) to initialize **screenCapture** based on the preconfigured screen recording parameters.
 
     ```javascript
     await this.screenCapture.init(this.captureConfig);
@@ -154,7 +154,7 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
     await this.screenCapture.skipPrivacyMode(windowIDs);
     ```
 
-7. Call **startRecording()** to start screen capture and listen for state changes using the callback function.
+7. Call [startRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12) to start screen capture and use a listener to monitor state change events.
 
     ```javascript
     await this.screenCapture.startRecording();
@@ -162,15 +162,15 @@ After an AVScreenCaptureRecorder instance is created, different APIs can be call
 
 8. Stop screen capture.
 
-    - When the user touches the stop button in the screen capture capsule to stop screen capture, the screenCapture instance triggers the **SCREENCAPTURE_STATE_STOPPED_BY_USER** callback to notify the application that the screen recording has stopped. The application does not need to call the **stopRecording()** API.
+    - After the user taps the stop button in the screen capture capsule to stop screen capture, the **screenCapture** instance triggers the **SCREENCAPTURE_STATE_STOPPED_BY_USER** callback to notify the application that screen capture has been stopped. You do not need to call the [stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12) method.
 
-    - The application proactively calls **stopRecording()** to stop screen capture.
+    - The application proactively calls [stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12) to stop screen capture.
 
       ```javascript
       await this.screenCapture.stopRecording();
       ```
 
-9. Call **release()** to release the instance.
+9. Call [release](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#release12) to release the instance.
 
     ```javascript
     await this.screenCapture.release();
@@ -190,7 +190,7 @@ export class AVScreenCaptureDemo {
   private captureConfig: media.AVScreenCaptureRecordConfig | undefined = undefined;
 
   private openFile(context: Context): void {
-    const path: string = context.filesDir + '/screenCapture.mp4'; // File sandbox path. The file name extension must match the container format.
+    const path: string = context.filesDir + '/screenCapture.mp4'; // File sandbox path. The file name extension must match the encapsulation format.
     this.captureFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
   }
 

@@ -132,7 +132,7 @@ export default class EntryAbility extends UIAbility {
 
 ## CalendarManager
 
-Before calling any of the following APIs, you must use [getCalendarManager()](#calendarmanagergetcalendarmanager) to obtain a **CalendarManager** object first.
+Before calling any of the following APIs to manage the calendar, you must use [getCalendarManager()](#calendarmanagergetcalendarmanager) to obtain a **CalendarManager** object first.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -678,6 +678,10 @@ Adds an event, with no event ID, **instanceStartTime**, and **instanceEndTime** 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -722,6 +726,10 @@ addEvent(event: Event): Promise\<number>
 Adds an event, with no event ID, **instanceStartTime**, and **instanceEndTime** specified in **Event**. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -770,6 +778,10 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 addEvents(events: Event[], callback: AsyncCallback\<void>): void
 
 Adds events in batches, with no event ID, **instanceStartTime**, and **instanceEndTime** specified in **Event**. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -822,6 +834,10 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 addEvents(events: Event[]): Promise\<void>
 
 Adds events in batches, with no event ID, **instanceStartTime**, and **instanceEndTime** specified in **Event**. This API uses a promise to return the result.
+
+ **Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+ 	 
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -1233,6 +1249,10 @@ Obtains all events in the current calendar. This API uses an asynchronous callba
 
 For versions earlier than API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, and **reminderTime**. Since API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier**. The field is not returned if it is empty.
 
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -1270,6 +1290,10 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCallback\<Event[]>):void
 
 Obtains all events in a calendar that match the filter criteria. This API uses an asynchronous callback to return the result.
+
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -1338,6 +1362,10 @@ Obtains all events in a calendar that match the filter criteria. This API uses a
 If there is only one input parameter, the filter criteria, corresponding to the type **EventFilter**, must be set as the parameter.
 
 If no input parameter is specified, all events under the specified calendar account can be queried.
+
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -1550,6 +1578,10 @@ calendarMgr?.getCalendar((err: BusinessError, data:calendarManager.Calendar) => 
 queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyof Event)[]): Promise\<Event[]>
 
 Queries the event instance with a specified event key in a calendar. This API uses a promise to return the result.
+
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+ 	 
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
 

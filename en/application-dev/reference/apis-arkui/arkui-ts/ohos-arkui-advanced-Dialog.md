@@ -52,7 +52,7 @@ Displays an image-attached confirmation dialog box.
 | title                         | [ResourceStr](ts-types.md#resourcestr)                                                                                              | No  | -          | Title of the dialog box.<br>If this parameter is not set or is set to **undefined**, the title is not displayed.<br>  **NOTE**<br>If the title exceeds two lines, it will be truncated with an ellipsis (...).<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                       |
 | content                       | [ResourceStr](ts-types.md#resourcestr)                                                                                              | No  | -          | Content of the dialog box.<br>If this parameter is not set or is set to **undefined**, the content is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                      |
 | checkTips                     | [ResourceStr](ts-types.md#resourcestr)                                                                                              | No  | -          | Content of the check box.<br>If this parameter is not set or is set to **undefined**, the check box content is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                 |
-| isChecked                     | boolean                                                                                                                             | No  | \@Prop     | Whether to select the check box. The value **true** means to select the check box, and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                    |
+| isChecked                     | boolean                                                                                                                             | No  | \@Prop     | Whether to select the check box. The value **true** means to select the check box, and **false** means the opposite.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                    |
 | checkAction<sup>12+</sup>     | (isChecked: boolean) => void                                                                                                        | No  | -          | Event triggered when the selected status of the check box changes. **isChecked** indicates whether the check box is selected. The value **true** means the check box is selected, and **false** means the opposite. You are advised to use **onCheckedChange<sup>12+</sup>** instead.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | onCheckedChange<sup>12+</sup> | [Callback](ts-types.md#callback12)\<boolean>                                                                                        | No  | -          | Event triggered when the selected status of the check box changes. The value **Callback\<true>** means the check box is selected, and **Callback\<false>** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 12.              |
 | primaryButton                 | [ButtonOptions](#buttonoptions)                                                                                                     | No  | -          | Left button of the dialog box.<br>If this parameter is not set or is set to **undefined**, the left button is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                             |
@@ -87,7 +87,7 @@ ConfirmDialog({controller: CustomDialogController, title: ResourceStr, content?:
 
 Displays an error dialog box that informs the user of an operational error (for example, a network error or low battery level) or an incorrect operation (for example, fingerprint enrollment).
 
-**Decorator type**: \@CustomDialog
+**Decorator type**: @CustomDialog
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -97,7 +97,7 @@ Displays an error dialog box that informs the user of an operational error (for 
 | title                         | [ResourceStr](ts-types.md#resourcestr)                                                           | Yes  | -          | Title of the dialog box.<br>**NOTE**<br>If the title exceeds two lines, it will be truncated with an ellipsis (...).<br> **Atomic service API**: This API can be used in atomic services since API version 11.                                                           |
 | content                       | [ResourceStr](ts-types.md#resourcestr)                                                           | No  | -          | Content of the dialog box.<br>If this parameter is not set or is set to **undefined**, the content is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                 |
 | checkTips                     | [ResourceStr](ts-types.md#resourcestr)                                                           | No  | -          | Content of the check box.<br>If this parameter is not set or is set to **undefined**, the check box content is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                  |
-| isChecked                     | boolean                                                                                          | No  | \@Prop     | Whether to select the check box. The value **true** means to select the check box, and **false** means the opposite.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                     |
+| isChecked                     | boolean                                                                                          | No  | \@Prop     | Whether to select the check box. The value **true** means to select the check box, and **false** means the opposite.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                     |
 | onCheckedChange<sup>12+</sup> | [Callback](ts-types.md#callback12)\<boolean>                                                     | No  | -          | Event triggered when the selected status of the check box changes. The value **Callback\<true>** means the check box is selected, and **Callback\<false>** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | primaryButton                 | [ButtonOptions](#buttonoptions)                                                                  | No  | -          | Left button of the dialog box.<br>If this parameter is not set or is set to **undefined**, the left button is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                        |
 | secondaryButton               | [ButtonOptions](#buttonoptions)                                                                  | No  | -          | Right button of the dialog box.<br>If this parameter is not set or is set to **undefined**, the right button is not displayed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                        |
@@ -151,7 +151,7 @@ CustomContentDialog({controller: CustomDialogController, contentBuilder: () => v
 
 Displays a dialog box that contains custom content and operation area.
 
-**Decorator type**: \@CustomDialog
+**Decorator type**: @CustomDialog
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -189,7 +189,7 @@ Displays a popover dialog box that is positioned relative to the target componen
 
 | Name| Type| Mandatory| Decorator| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| visible | boolean | Yes| \@Link | Whether the popover dialog box is visible. The value **true** means that the popover dialog box is displayed, and **false** means the opposite.<br>Default value: **false**.|
+| visible | boolean | Yes| \@Link | Whether the popover dialog box is visible. The value **true** means that the popover dialog box is displayed, and **false** means the opposite.<br>Default value: **false**|
 | popover | [PopoverOptions](#popoveroptions14) | Yes| \@Prop<br>\@Require | Options of the popover dialog box.|
 | targetBuilder | [Callback](ts-types.md#callback12)\<void> | Yes| \@Require<br>\@BuilderParam | Target component relative to which the popover dialog box is positioned.|
 
@@ -201,12 +201,12 @@ Displays a popover dialog box that is positioned relative to the target componen
 | Name                     | Type                                                        | Read-Only| Optional| Description                                                                                                                            |
 | ------------------------- | ------------------------------------------------------------ |---|---|--------------------------------------------------------------------------------------------------------------------------------|
 | value                     | [ResourceStr](ts-types.md#resourcestr)                       | No| No| Content of the button.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                    |
-| action                    | () =&gt; void                                      | No| Yes| Click event of the button.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                  |
+| action                    | ()&nbsp;=&gt;&nbsp;void                                      | No| Yes| Click event of the button.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                  |
 | background                | [ResourceColor](ts-types.md#resourcecolor)                   | No| Yes| Background color of the button.<br>The setting follows **buttonStyle** by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                               |
 | fontColor                 | [ResourceColor](ts-types.md#resourcecolor)                   | No| Yes| Font color of the button.<br>The setting follows **buttonStyle** by default.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                              |
 | buttonStyle<sup>12+</sup> | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11) | No| Yes| Style of the button.<br>Default value: **ButtonStyleMode.NORMAL** for 2-in-1 devices and **ButtonStyleMode.TEXTUAL** for other devices<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | role<sup>12+</sup>        | [ButtonRole](ts-basic-components-button.md#buttonrole12) | No| Yes| Role of the button.<br>Default value: **ButtonRole.NORMAL**<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                         |
-| defaultFocus<sup>18+</sup> | boolean | No| Yes| Whether the button is the default focus.<br>**true**: The button is the default focus.<br>**false**: The button is not the default focus.<br>Default value: **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.         |
+| defaultFocus<sup>18+</sup> | boolean | No| Yes| Whether the button is the default focus.<br>**true**: The button is the default focus.<br>**false**: The button is not the default focus.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 18.         |
 
 >  **NOTE**
 >
@@ -366,7 +366,7 @@ struct Index {
   dialogControllerCheckBox: CustomDialogController = new CustomDialogController({
     builder: ConfirmDialog({
       title:'Title',
-      content: 'This is where content is displayed. This is where content is displayed.',
+      content: 'This is where the content of this dialog box is presented.',
       // Selected state of the check box
       isChecked: this.isChecked,
       // Content of the check box

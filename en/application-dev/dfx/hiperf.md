@@ -265,7 +265,7 @@ Collects the performance data of a specified process or application, including t
 | --exclude-thread | Specifies the thread name not to collect. Multiple thread names are supported; separate them with commas (,). This parameter cannot be used together with **-a**.| 
 | --offcpu | Traces the time when a thread is out of CPU scheduling.| 
 | -j | Samples branch stacks. The following filters are supported: **any**, **any_call**, **any_ret**, **ind_call**, **ind_jmp**, **cond** and **call**.| 
-| -s/--callstack | Sets the stack unwinding mode, which can be **fp** (stack pointer) or **dwarf** (debug information table). The default mode is **fp**.| 
+| -s/--call-stack | Sets the call stack mode, which can be configured to either **fp** (frame pointer) or **dwarf** (debug information table) mode.| 
 | --kernel-callchain | Collects kernel-mode stacks. This parameter must be used together with the **-s** parameter.| 
 | --callchain-useronly | Collects only user stacks.| 
 | --delay-unwind | Delays call stack unwinding until after recording when the stack mode is set to **dwarf**.| 
@@ -341,6 +341,7 @@ Monitors the specified application and periodically prints the values of perform
 | --control [command] | Controls the collection operation. The commands include **prepare**, **start**, and **stop**. This parameter cannot be used together with **-d**.<br>Note: This parameter is supported since API version 20.| 
 | -o | Sets the output file path. You can customize the file name.<br>For the default path, run the **hiperf stat -h/--help** command to view the description of the **-o** parameter.<br>This parameter must be used with **--control prepare**, and cannot be used with **--control**.<br>Note: This parameter is supported since API version 20.| 
 | -a | Collects the device performance data.|
+<!--RP2End-->
 
 **Example**
 
@@ -441,7 +442,7 @@ The application does not have the debug certificate signature.
 
 When the **hiperf record/stat -p [pid]** command is used, the process to be collected must be that of an application signed with the debug certificate.
 
-Run the **hdc shell "bm dump -n bundlename | grep appProvisionType"** command to check whether the application specified in the command is a debug-type application. The expected output is **"appProvisionType": "debug"**.
+Run the **hdc shell "bm dump -n bundlename | grep appProvisionType"** command to check whether the application specified in the command is a debuggable application. The expected output is **"appProvisionType": "debug"**.
 
 For example, run the following command to check the bundle name **com.example.myapplication**:
 

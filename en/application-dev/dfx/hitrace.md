@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-hitrace provides the capability of collecting trace information in text or binary format, including system logging and custom logging set through the [HiTraceMeter APIs](hitracemeter-intro.md), helping you observe program running status and locate faults.
+HiTrace provides the capability of collecting trace information, including system logging and custom logging set through the [HiTraceMeter APIs](hitracemeter-intro.md). This tool supports collecting trace information in text or binary format through multiple methods, helping you monitor program running status and locate faults.
 
 
 ## Environment Requirements
@@ -41,7 +41,7 @@ hitrace provides the capability of collecting trace information in text or binar
 | --dump_bgsrv | Dumps the trace data in the snapshot mode to a file.|
 | --stop_bgsrv | Stops trace collection in the snapshot mode.|
 | --trace_level | Sets the trace level threshold. The value can be **Debug**, **Info**, **Critical**, **Commercial**, or **D**, **I**, **C**, or **M**.<br>**Note**: This command is supported since API version 19.|
-| --get_level | Queries the trace level threshold.<br>Note: This command is supported since API version 20.|
+| --get_level | Queries the trace level threshold.<br>**Note**: This command is supported since API version 20.|
 
 > **NOTE**
 >
@@ -525,7 +525,7 @@ $ hitrace -z -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
 
 The priority of the trace level is as follows: **M** (**Commercial**), **C** (**Critical**), **I** (**Info**) and **D** (**Debug**). The trace level lower than the threshold does not take effect.
 
-You can use the logging APIs with the trace level (for details, see the logging APIs of API version 19 in [js-apis-hitracemeter](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) and [_hitrace](../reference/apis-performance-analysis-kit/capi-trace-h.md)) to test whether the trace output under different thresholds meets the expectation.
+You can use the logging APIs with the trace level (for details, see the logging APIs of API version 19 in [@ohos.hiTraceMeter](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md) and [trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)) to test whether the trace output under different thresholds meets the expectation.
 
 ```shell
 // Set the trace level threshold.

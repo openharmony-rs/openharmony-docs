@@ -29,7 +29,7 @@ Component3D(sceneOptions?: SceneOptions)
 
 | Name      | Type                                 | Mandatory| Description                                                        |
 | ------------ | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| sceneOptions | [SceneOptions](#sceneoptions) | No  | 3D scene configuration.<br>**NOTE**<br> The 3D scene configuration cannot be dynamically modified after the component is created.|
+| sceneOptions | [SceneOptions](#sceneoptions) | No  | 3D scene configuration options. The default value is **undefined**.<br>**NOTE**<br> The 3D scene configuration cannot be dynamically modified after the component is created.|
 
 
 ## SceneOptions

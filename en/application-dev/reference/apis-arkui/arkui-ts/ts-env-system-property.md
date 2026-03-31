@@ -63,7 +63,7 @@ Defines the @Env decorator type.
 
 **Error codes**
 
-For details, see [@Env Error Codes](../errorcode-env.md).
+For details, see [Environment Variable Error Codes](../errorcode-env.md).
 | ID| Error Message|
 | ------- | -------------------------------- |
 |140000|Invalid key for @Env|

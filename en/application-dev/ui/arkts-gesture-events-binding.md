@@ -39,7 +39,7 @@ For example, you can use it to bind the tap gesture to the **Text** component.
           .gesture(
             TapGesture()
               .onAction(() => {
-                hilog.info(DOMAIN, TAG,'TapGesture is onAction');
+                console.info('TapGesture is onAction');
               }))
       }
       .height(200)

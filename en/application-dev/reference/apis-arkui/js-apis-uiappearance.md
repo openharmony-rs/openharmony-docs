@@ -50,7 +50,7 @@ Obtains the current system dark mode configuration.
 
 | Type| Description|
 | -- | -- |
-|[DarkMode](#darkmode) | Color mode obtained.|
+|[DarkMode](#darkmode) | Dark mode.|
 
 **Error codes**
 

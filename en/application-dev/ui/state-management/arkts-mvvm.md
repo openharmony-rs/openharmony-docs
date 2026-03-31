@@ -77,7 +77,7 @@ For a component, the reasons are as follows:
 
 * The child components used by the component are clear, therefore, access is allowed.
 * The parent node where the component is placed is unknown. Therefore, the component can access the parent node only through notifications or events.
-* It is impossible for a component to know its sibling nodes, so the component cannot manipulate the sibling nodes.
+* It is impossible for a component to know its sibling nodes, so the component cannot manipulate them.
 
 ## Memo Development
 
@@ -283,7 +283,7 @@ struct PropLinkIndex {
 ```
 
 
-Below is how the component looks with the system bar effect applied.
+The following figure shows the effect.
 
 ![Prop&Link](./figures/MVVM_Prop&Link.gif)
 
@@ -421,7 +421,7 @@ struct ForEachIndex {
 ```
 
 
-Below is how the component looks with the system bar effect applied.
+The following figure shows the effect.
 
 ![ForEach](./figures/MVVM_ForEach.gif)
 
@@ -571,7 +571,7 @@ struct BuilderIndex {
 ```
 
 
- Below is how the component looks with the system bar effect applied.
+ The following figure shows the effect.
 
 ![builder](./figures/MVVM_builder.gif)
 

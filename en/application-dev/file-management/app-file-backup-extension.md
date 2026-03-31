@@ -33,7 +33,7 @@ The following table lists the key APIs of the backup and restore extension capab
 
 1. Add `extensionAbilities` to the application's `module.json5` file.
 
-   In `module.json5`, add the `extensionAbilities` field, set `type` to `backup`, and add a record with `name` set to `ohos.extension. backup` under ["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md).
+   In the file, add the `"extensionAbilities"` field, set `"type"` to `"backup"`, and add a record with `"name"` set to `"ohos.  extension. backup"` under ["metadata"](../reference/apis-ability-kit/js-apis-bundleManager-metadata.md).
 
    Example:
 
@@ -52,9 +52,6 @@ The following table lists the key APIs of the backup and restore extension capab
                        "resource": "$profile:backup_config"
                    }
                ],
-               // In the BackupExtension.ets file, define BackupExtensionAbility in extensionAbilities and override onBackup or onBackupEx
-               // and onRestore or onRestoreEx methods. onBackupEx and onRestoreEx are recommended.
-               // Empty implementation can be used if there is no special requirement. In this case, the backup and restore service backs up or restores data based on the unified backup and restore rules.
                "srcEntry": "./ets/BackupExtension/BackupExtension.ets"
            }      
        ]
@@ -63,7 +60,7 @@ The following table lists the key APIs of the backup and restore extension capab
 
 2. Add a metadata profile.
 
-   The metadata profile defines the files to be transferred during the backup and restore process. The profile is located in the `resources/base/profile` directory of the project, and the file name must be the same as the value of `metadata.resource, for example, backup_config.json` in the `module.json5` file.
+   The metadata profile defines the files to be transferred during the backup and restore process. The profile is located in the `resources/base/profile` directory of the project, and the file name must be the same as the value of `"metadata.resource"`, for example, `"backup_config.json"` in the `module.json5` file.
 
    Metadata profile example:
 
@@ -88,17 +85,17 @@ The following table lists the key APIs of the backup and restore extension capab
    The following example shows an empty implementation of the `BackupExtension.ets` file.
 
     ```ts
-    //onBackup && onRestore
+    // onBackup && onRestore
     import { BackupExtensionAbility, BundleVersion } from '@kit.CoreFileKit';
     import {hilog} from '@kit.PerformanceAnalysisKit';
     
     const TAG = `FileBackupExtensionAbility`;
     export default class BackupExtension extends  BackupExtensionAbility {
-      //onBackup
+      // onBackup
       async onBackup ()   {
         hilog.info(0x0000, TAG, `onBackup ok`);
       }
-      //onRestore
+      // onRestore
       async onRestore (bundleVersion : BundleVersion) {
         hilog.info(0x0000, TAG, `onRestore end`);
       }
@@ -121,7 +118,7 @@ The following table lists the key APIs of the backup and restore extension capab
    // ...
    
    class BackupExt extends BackupExtensionAbility {
-     //onBackupEx
+     // onBackupEx
      async onBackupEx(backupInfo: string): Promise<string> {
        console.info('onBackupEx ok');
        let errorInfo: ErrorInfo = {
@@ -201,7 +198,7 @@ The following table lists the key APIs of the backup and restore extension capab
 | excludes             | String array| No  | Items in `includes` that do not need to be backed up. The value is in the same format as `includes`.<br>When configuring `excludes`, ensure that it is within the subset of `includes`.<br>If `excludes` is not configured, the backup and restore framework uses an empty array by default.|
 | fullBackupOnly       | Boolean    | No  | Whether to use the default restore directory of the application. The default value is **false**. If the value is **true**, data will be cached in a temporary directory obtained by [backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md#properties) in the data restore process. If it is **false** or not specified, the restored data is decompressed in **/**.|
 | restoreDeps          | String    | No  | **(Not recommended)** Dependencies for the application to restore. The default value is "". You need to configure the names of the dependent applications. Currently, only one dependency is supported. The configured dependency takes effect only in the context of one restore task. If no dependent application is detected, the dependency description will be ignored and the restore task continues. The application restore will fail if the dependent application is not restored or fails to be restored.|
-| extraInfo            | JSON string    | No  | Additional information to be passed.                               |
+| extraInfo            | JSON string    | No  | Additional information to be passed.                                  |
 
 > **NOTE**
 >
@@ -213,7 +210,7 @@ The following table lists the key APIs of the backup and restore extension capab
 > You can determine the data restore mode to use based on service requirements.
 >
 > Example:
-> Assume that the application backup path is **data/storage/el2/base/files/A/**. During restoration: If **fullBackupOnly** is set to **false**, data will be directly decompressed to the **/data/storage/el2/base/files/A/** directory. If **fullBackupOnly** is set to **true**, data will be decompressed to the temporary directory **[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md)/restore/data/storage/el2/base/files/A/**.
+> Assume that the application backup path is **data/storage/el2/base/files/A/**. If **fullBackupOnly** is **false**, the restored data will be decompressed to the **/data/storage/el2/base/files/A/** directory. If **fullBackupOnly** is **true**, data will be decompressed to the temporary directory **[backupDir](../reference/apis-core-file-kit/js-apis-file-backupextensioncontext.md)/restore/data/storage/el2/base/files/A/**.
 
 The following lists the paths supported by **includes**:
 
@@ -240,3 +237,8 @@ The following lists the paths supported by **includes**:
 }
 ```
 
+##  
+
+ 
+
+-  

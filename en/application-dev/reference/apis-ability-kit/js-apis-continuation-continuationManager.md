@@ -11,6 +11,8 @@ The continuationManager module provides the continuation/collaboration managemen
 > **NOTE**
 > 
 > The initial APIs of this module have been supported since API version 8 and deprecated since API version 22. You are advised to use the APIs in [Distributed Device Management](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md) instead.
+>
+> The APIs of this module can be used only in the stage model.
 
 ## Modules to Import
 
@@ -27,6 +29,8 @@ Registers the continuation management service and obtains a token. This API does
 > **NOTE**
 > 
 > This API has been deprecated since API version 9. You are advised to use [ondevicestatechange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -61,6 +65,8 @@ Registers the continuation management service and obtains a token. This API uses
 > **NOTE**
 > 
 > This API has been deprecated since API version 9. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -100,6 +106,8 @@ Registers the continuation management service and obtains a token. This API uses
 > **NOTE**
 > 
 > This API has been deprecated since API version 9. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -144,6 +152,8 @@ Registers the continuation management service and obtains a token. This API does
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -197,6 +207,8 @@ Registers the continuation management service and obtains a token. This API uses
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -256,6 +268,8 @@ Registers the continuation management service and obtains a token. This API uses
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
 **Parameters**
@@ -314,6 +328,8 @@ Subscribes to device connection events. This API uses an asynchronous callback t
 > 
 > This API has been deprecated since API version 9. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
 **Parameters**
@@ -345,6 +361,8 @@ Subscribes to device disconnection events. This API uses an asynchronous callbac
 > 
 > This API has been deprecated since API version 9. You are advised to use [onDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#ondevicestatechange) instead.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
 **Parameters**
@@ -373,6 +391,8 @@ Unsubscribes from device connection events. This API uses an asynchronous callba
 > **NOTE**
 > 
 > This API has been deprecated since API version 9. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -404,6 +424,8 @@ Unsubscribes from device disconnection events. This API uses an asynchronous cal
 > **NOTE**
 > 
 > This API has been deprecated since API version 9. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -437,6 +459,8 @@ Subscribes to device connection events. This API uses an asynchronous callback t
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -493,6 +517,8 @@ Subscribes to device disconnection events. This API uses an asynchronous callbac
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -551,6 +577,8 @@ Unsubscribes from device connection events.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
 **Parameters**
@@ -599,6 +627,8 @@ Unsubscribes from device disconnection events.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
 **Parameters**
@@ -643,6 +673,8 @@ Starts the device selection module to show the list of available devices on the 
 > 
 > This API has been deprecated since API version 9. You are advised to use [startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering) instead.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
 **Parameters**
@@ -676,6 +708,8 @@ Starts the device selection module to show the list of available devices on the 
 > **NOTE**
 > 
 > This API has been deprecated since API version 9. You are advised to use [startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering) instead.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -716,6 +750,8 @@ Starts the device selection module to show the list of available devices on the 
 > **NOTE**
 > 
 > This API has been deprecated since API version 9. You are advised to use [startDiscovering](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#startdiscovering) instead.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -763,6 +799,8 @@ Starts the device selection module to show the list of available devices on the 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -816,6 +854,8 @@ Starts the device selection module to show the list of available devices on the 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -876,6 +916,8 @@ Starts the device selection module to show the list of available devices on the 
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
 **Parameters**
@@ -934,6 +976,8 @@ Instructs the device selection module to update the device connection state. Thi
 > 
 > This API has been deprecated since API version 9. You are advised to use [getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync) instead.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
 **Parameters**
@@ -970,6 +1014,8 @@ Instructs the device selection module to update the device connection state. Thi
 > **NOTE**
 > 
 > This API has been deprecated since API version 9. You are advised to use [getAvailableDeviceListSync](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#getavailabledevicelistsync) instead.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1017,6 +1063,8 @@ Instructs the device selection module to update the device connection state. Thi
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1073,6 +1121,8 @@ Instructs the device selection module to update the device connection state. Thi
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1133,6 +1183,8 @@ Unregisters the continuation management service by passing the token obtained du
 > 
 > This API has been deprecated since API version 9. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
 **Parameters**
@@ -1166,6 +1218,8 @@ Unregisters the continuation management service by passing the token obtained du
 > **NOTE**
 > 
 > This API has been deprecated since API version 9. You are advised to use [offDeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#offdevicestatechange) instead.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1209,6 +1263,8 @@ Unregisters the continuation management service by passing the token obtained du
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1262,6 +1318,8 @@ Unregisters the continuation management service by passing the token obtained du
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **Required permissions**: ohos.permission.DISTRIBUTED_DATASYNC
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1317,6 +1375,8 @@ Device connection state.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
 | Name| Value| Description|
@@ -1335,6 +1395,8 @@ Enumerates the continuation modes provided by the device selection module.
 > This API has been deprecated since API version 22. You are advised to use [DeviceStateChange](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicestatechange) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
@@ -1355,6 +1417,8 @@ Defines the device information returned by the continuation management entry.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 
 | Type| Description|
@@ -1372,6 +1436,8 @@ Defines the extra parameters required by the device selection module in the cont
 > This API has been supported since API version 10 and deprecated since API version 22. You are advised to use [DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Ability.DistributedAbilityManager
 

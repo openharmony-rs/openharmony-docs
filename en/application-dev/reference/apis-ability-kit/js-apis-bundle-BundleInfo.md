@@ -14,7 +14,7 @@ The module defines the bundle information, which can be obtained through [bundle
 > 
 > The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-BundleInfo](js-apis-bundleManager-bundleInfo.md) instead.
 
-## BundleInfo<sup>(deprecated)<sup>
+## BundleInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -50,7 +50,7 @@ The module defines the bundle information, which can be obtained through [bundle
 
 
 
-## ReqPermissionDetail<sup>(deprecated)<sup>
+## ReqPermissionDetail<sup>(deprecated)</sup>
 
 > **NOTE**
 >
@@ -68,7 +68,7 @@ Provides the detailed information of the permissions to request from the system.
 
 
 
-## UsedScene<sup>(deprecated)<sup>
+## UsedScene<sup>(deprecated)</sup>
 
 > **NOTE**
 >

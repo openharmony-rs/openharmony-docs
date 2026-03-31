@@ -255,7 +255,7 @@ on(type: 'locatingRequiredDataChange', config: LocatingRequiredDataConfig, callb
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -303,7 +303,7 @@ off(type: 'locatingRequiredDataChange', callback?: Callback&lt;Array&lt;Locating
 
 **错误码**：
 
-错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -349,7 +349,7 @@ enableLocation(callback: AsyncCallback&lt;void&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -396,7 +396,7 @@ enableLocation(): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -437,7 +437,7 @@ disableLocation(): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -472,7 +472,7 @@ enableLocationMock(): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -509,7 +509,7 @@ disableLocationMock(): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -554,7 +554,7 @@ setMockedLocations(config: LocationMockConfig): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -656,7 +656,7 @@ enableReverseGeocodingMock(): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -692,7 +692,7 @@ disableReverseGeocodingMock(): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -736,7 +736,7 @@ setReverseGeocodingMockInfo(mockInfos: Array&lt;ReverseGeocodingMockInfo&gt;): v
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -856,7 +856,7 @@ isLocationPrivacyConfirmed(type: LocationPrivacyType): boolean
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -899,7 +899,7 @@ setLocationPrivacyConfirmStatus(type: LocationPrivacyType, isConfirmed: boolean)
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -948,7 +948,7 @@ getLocatingRequiredData(config: LocatingRequiredDataConfig): Promise&lt;Array&lt
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -997,7 +997,7 @@ on(type: 'locationIconStatusChange', callback: Callback&lt;LocationIconStatus&gt
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1041,7 +1041,7 @@ off(type: 'locationIconStatusChange', callback?: Callback&lt;LocationIconStatus&
 
 **错误码**：
 
-错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1085,7 +1085,7 @@ getLocationIconStatus(): LocationIconStatus
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1132,7 +1132,7 @@ enableLocationByUserId(userId: number): Promise&lt;void&gt;
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1182,7 +1182,7 @@ disableLocationByUserId(userId: number): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1230,7 +1230,7 @@ isLocationEnabledByUserId(userId: number): boolean
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -1275,7 +1275,7 @@ setLocationSwitchIgnored(isIgnored: boolean): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[位置服务子系统错误码](errorcode-geoLocationManager.md)。
+以下错误码的详细介绍请参见[位置服务错误码](errorcode-geoLocationManager.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |

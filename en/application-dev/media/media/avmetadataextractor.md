@@ -14,7 +14,7 @@ The full process of obtaining the metadata of a media asset includes creating an
 
 Read [AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md) for the API reference.
 
-1. Call **createAVMetadataExtractor()** to create an AVMetadataExtractor instance.
+1. Use [createAVMetadataExtractor()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavmetadataextractor11-1) to create an instance.
    ```ts
    import { media } from '@kit.MediaKit';
    // Create an AVMetadataExtractor instance.

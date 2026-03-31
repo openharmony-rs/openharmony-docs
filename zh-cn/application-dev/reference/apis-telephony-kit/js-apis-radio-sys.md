@@ -41,7 +41,7 @@ setPrimarySlotId\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -96,7 +96,7 @@ setPrimarySlotId\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -142,7 +142,7 @@ getIMEI\(callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -190,7 +190,7 @@ getIMEI\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -244,7 +244,7 @@ getIMEI\(slotId?: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -289,7 +289,7 @@ getMEID\(callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -337,7 +337,7 @@ getMEID\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -391,7 +391,7 @@ getMEID\(slotId?: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -438,7 +438,7 @@ getUniqueDeviceId\(callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -488,7 +488,7 @@ getUniqueDeviceId\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -544,7 +544,7 @@ getUniqueDeviceId\(slotId?: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -589,7 +589,7 @@ sendUpdateCellLocationRequest\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -636,7 +636,7 @@ sendUpdateCellLocationRequest\(slotId: number, callback: AsyncCallback\<void\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -689,7 +689,7 @@ sendUpdateCellLocationRequest\(slotId?: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -734,7 +734,7 @@ getCellInformation\(callback: AsyncCallback\<Array\<CellInformation\>\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -782,7 +782,7 @@ getCellInformation\(slotId: number, callback: AsyncCallback\<Array\<CellInformat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -836,7 +836,7 @@ getCellInformation\(slotId?: number\): Promise\<Array\<CellInformation\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -882,7 +882,7 @@ setNetworkSelectionMode\(options: NetworkSelectionModeOptions, callback: AsyncCa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -946,7 +946,7 @@ setNetworkSelectionMode\(options: NetworkSelectionModeOptions\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1003,7 +1003,7 @@ getNetworkSearchInformation\(slotId: number, callback: AsyncCallback\<NetworkSea
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1055,7 +1055,7 @@ getNetworkSearchInformation\(slotId: number\): Promise\<NetworkSearchResult\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1101,7 +1101,7 @@ getNrOptionMode\(callback: AsyncCallback\<NrOptionMode\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1150,7 +1150,7 @@ getNrOptionMode\(slotId: number, callback: AsyncCallback\<NrOptionMode\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1205,7 +1205,7 @@ getNrOptionMode\(slotId?: number\): Promise\<NrOptionMode\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1249,7 +1249,7 @@ turnOnRadio\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1297,7 +1297,7 @@ turnOnRadio\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1351,7 +1351,7 @@ turnOnRadio(slotId?: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1396,7 +1396,7 @@ turnOffRadio\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1444,7 +1444,7 @@ turnOffRadio\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1498,7 +1498,7 @@ turnOffRadio\(slotId?: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1545,7 +1545,7 @@ setPreferredNetwork\(slotId: number, networkMode: PreferredNetworkMode, callback
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1600,7 +1600,7 @@ setPreferredNetwork\(slotId: number, networkMode: PreferredNetworkMode\): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1647,7 +1647,7 @@ getPreferredNetwork\(slotId: number, callback: AsyncCallback\<PreferredNetworkMo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1700,7 +1700,7 @@ getPreferredNetwork\(slotId: number\): Promise\<PreferredNetworkMode\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1747,7 +1747,7 @@ getImsRegInfo\(slotId: number, imsType: ImsServiceType, callback: AsyncCallback\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1802,7 +1802,7 @@ getImsRegInfo\(slotId: number, imsType: ImsServiceType\): Promise\<ImsRegInfo\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1851,7 +1851,7 @@ on\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callback
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1896,7 +1896,7 @@ off\(type: 'imsRegStateChange', slotId: number, imsType: ImsServiceType, callbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1940,7 +1940,7 @@ getBasebandVersion\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1994,7 +1994,7 @@ getBasebandVersion\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2042,7 +2042,7 @@ setNROptionMode\(slotId: number, mode: NROptionMode, callback: AsyncCallback\<vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2098,7 +2098,7 @@ setNROptionMode\(slotId: number, mode: NROptionMode\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                      |
 | -------- | -------------------------------------------- |
@@ -2144,7 +2144,7 @@ getNROptionMode\(slotId: number, callback: AsyncCallback\<NROptionMode\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2194,7 +2194,7 @@ getNROptionMode\(slotId: number\): Promise\<NROptionMode\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2241,7 +2241,7 @@ getNetworkCapability\(slotId: number, type: NetworkCapabilityType, callback: Asy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2297,7 +2297,7 @@ getNetworkCapability\(slotId: number, type: NetworkCapabilityType\): Promise\<Ne
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2326,8 +2326,7 @@ radio.getNetworkCapability(slotId, type).then((data: radio.NetworkCapabilityStat
 
 ## radio.setNetworkCapability<sup>10+</sup>
 
-setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState,
-      callback: AsyncCallback\<void\>\): void
+setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: NetworkCapabilityState, callback: AsyncCallback\<void\>\): void
 
 设置指定网络类型的开关状态。使用callback异步回调。
 
@@ -2348,7 +2347,7 @@ setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: Networ
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2406,7 +2405,7 @@ setNetworkCapability\(slotId: number, type: NetworkCapabilityType, state: Networ
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2459,7 +2458,7 @@ factoryReset\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2505,7 +2504,7 @@ getIMEISV\(slotId: number\): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2627,7 +2626,7 @@ LTE小区信息。
 | ------------- | ------- | ---- | ---- | ----------------------- |
 | cgi           | number  |  否  | 否|小区全球标识。          |
 | pci           | number  |  否  | 否|物理小区识别。          |
-| tac           | numbe否r  |  否  | 否|跟踪区域代码。          |
+| tac           | number  |  否  | 否|跟踪区域代码。          |
 | earfcn        | number  |  否  | 否| 绝对无线频率信道号。    |
 | bandwidth     | number   |  否  | 否| 带宽。                  |
 | mcc           | string   |  否  | 否| 移动国家码。            |

@@ -139,7 +139,7 @@ try {
 }
 ```
 
-Scenario 2: multiple Wi-Fi networks with the same name but different BSSIDs
+***Multiple Wi-Fi networks with the same name but different BSSIDs***
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';

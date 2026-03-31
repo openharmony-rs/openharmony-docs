@@ -8,7 +8,7 @@
 
 ## 接口说明
 
-获取设备的位置信息所使用的接口如下，详细说明参见：[Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
+获取设备的位置信息所使用的接口如下，详细说明参见Location Kit API参考：[@ohos.geoLocationManager (位置服务)](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
 
 本模块能力仅支持WGS-84坐标系。
 
@@ -31,6 +31,7 @@
    import { geoLocationManager } from '@kit.LocationKit';
    ```
 3. 调用获取位置接口之前需要先判断位置开关是否打开。
+
    查询当前位置开关状态，返回结果为布尔值，true代表位置开关开启，false代表位置开关关闭，示例代码如下：
 
    ```ts

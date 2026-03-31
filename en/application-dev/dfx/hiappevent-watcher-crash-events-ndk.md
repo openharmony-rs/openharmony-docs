@@ -31,7 +31,7 @@ The following example describes how to subscribe to a crash event triggered by b
 
 1. Obtain the dependency **jsoncpp** of the sample project.
 
-   Specifically, obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by referring to **Amalgamated source** in [JsonCpp](https://github.com/open-source-parsers/jsoncpp).
+   Specifically, obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by referring to **Amalgamated source** in the **README** file of [JsonCpp](https://github.com/open-source-parsers/jsoncpp).
 
 2. Create a native C++ project and import the preceding files to the project. The directory structure is as follows:
 
@@ -59,7 +59,7 @@ The following example describes how to subscribe to a crash event triggered by b
 3. In the **CMakeLists.txt** file, add the source file and dynamic libraries.
 
    ```cmake
-   # Add the jsoncpp.cpp file, which is used to parse the JSON strings in the subscription events.
+   # Add the **jsoncpp.cpp** file, which is used to parse the JSON strings in the subscription events.
    add_library(entry SHARED napi_init.cpp jsoncpp.cpp)
    # Add libhiappevent_ndk.z.so and libhilog_ndk.z.so (log output). 
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
@@ -244,7 +244,7 @@ The following example describes how to subscribe to a crash event triggered by b
 
    In the **napi_init.cpp** file, register **RegisterWatcher** as an ArkTS API.
     <!-- @[Sys_Crash_Event_C++_Init](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-    
+   
     ``` C++
     static napi_value Init(napi_env env, napi_value exports)
     {
@@ -264,13 +264,13 @@ The following example describes how to subscribe to a crash event triggered by b
    Define the ArkTS API in the **index.d.ts** file.
 
     <!-- @[Sys_Crash_Event_C++_Index.d.ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/types/libentry/Index.d.ts) -->
-    
+   
     ``` TypeScript
     export const registerWatcherClickCrash: () => void;
     export const registerWatcherCrashEvent: () => void;
     ```
 
-7. In the **EntryAbility.ets** file, add the following API to **onCreate()**.
+7. In the **EntryAbility.ets** file, add the following APIs to **onCreate()**.
 
     <!-- @[Sys_Crash_Event_Call_Capi_Function](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/entryability/EntryAbility.ets) -->
     

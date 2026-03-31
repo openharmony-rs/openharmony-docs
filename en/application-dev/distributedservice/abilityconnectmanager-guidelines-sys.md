@@ -59,6 +59,9 @@ Cross-device connection management is built on a distributed component managemen
 
 - The distributed component management framework does not censor the transmitted content during the collaboration process. If data privacy is involved, it is recommended that the application employs measures such as pop-up notification to notify users.
 
+<!--RP1-->
+<!--RP1End-->
+
 
 ## Environment setup
 
@@ -70,7 +73,7 @@ You have logged in to devices A and B with the same HUAWEI ID and the two device
 ### Setting Up the Environment
 
 1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) 4.1 or later on the PC.
-2. Update the public-SDK to API 18 or later. For details about how to update the SDK, see OpenHarmony SDK Upgrade Assistant.
+2. Update the public-SDK to API 18 or later.
 3. Connect device A and device B to the PC using USB cables.
 4. Enable Bluetooth on devices A and B to implement networking.
 

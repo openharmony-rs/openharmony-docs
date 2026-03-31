@@ -700,7 +700,7 @@ int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeImage_GetColorSpace()
 
@@ -729,7 +729,7 @@ int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_Colo
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image，colorSpace是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image，colorSpace是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |
 
 ### OH_NativeImage_AcquireLatestNativeWindowBuffer()
 
@@ -771,4 +771,4 @@ int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OH
 
 | 类型 | 说明 |
 | -- | -- |
-| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image，nativeWindowBuffer或fenceFd是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>没有buffer可以消费时返回NATIVE_ERROR_NO_BUFFER。 |
+| int32_t | 执行成功时返回NATIVE_ERROR_OK。<br>image，nativeWindowBuffer或fenceFd是空指针时返回NATIVE_ERROR_INVALID_ARGUMENTS。<br>没有buffer可以消费时返回NATIVE_ERROR_NO_BUFFER。<br>其他返回值可参考[OHNativeErrorCode](capi-graphic-error-code-h.md#ohnativeerrorcode)。 |

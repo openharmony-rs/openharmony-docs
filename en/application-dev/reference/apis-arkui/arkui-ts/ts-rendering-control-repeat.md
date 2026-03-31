@@ -139,7 +139,7 @@ Enables virtual scrolling for **Repeat**.
 
 | Name| Type  | Mandatory| Description |
 | ------ | ---------- | -------- | -------- |
-| virtualScrollOptions  | [VirtualScrollOptions](#virtualscrolloptions)  | No| Virtual scrolling configuration.|
+| virtualScrollOptions  | [VirtualScrollOptions](#virtualscrolloptions)  | No| Virtual scrolling configuration.<br>Default value: **undefined**|
 
 **Example**
 ```ts
@@ -172,7 +172,7 @@ Renders the corresponding template child component based on the template type.
 | ------ | ---------- | -------- | -------- |
 | type | string | Yes| Current template type.|
 | itemBuilder  | [RepeatItemBuilder](#repeatitembuildert)\<T\> | Yes| Component generator.|
-| templateOptions | [TemplateOptions](#templateoptions) | No| Current template configuration.|
+| templateOptions | [TemplateOptions](#templateoptions) | No| Current template configuration.<br>Default value: **undefined**|
 
 **Example**
 ```ts
@@ -259,52 +259,52 @@ Defines a union type for **Repeat** data source parameters.
 
 | Name    | Type  | Read-Only| Optional| Description                                                        |
 | ---------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| totalCount | number | No| Yes | Total number of data items to load, which may not equal the data source length.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| totalCount | number | No| Yes | Total number of data items to load, which may not equal the data source length.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | reusable<sup>18+</sup> | boolean | No| Yes | Whether to enable the reuse feature. The value **true** means to enable the reuse feature, and **false** means the opposite.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| onLazyLoading<sup>19+</sup> | (index: number) => void | No| Yes | Function to load data on demand for a given index.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| onTotalCount<sup>19+</sup> | () => number | No| Yes | Function to dynamically obtain the total number of items, which may not equal the data source length. Prioritize this function over **totalCount**. If both **totalCount** and **onTotalCount** are set, **totalCount** is ignored.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| onLazyLoading<sup>19+</sup> | (index: number) => void | No| Yes | Lazy loading function, which is used to write data to the specified data source index.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| onTotalCount<sup>19+</sup> | () => number | No| Yes | Function to obtain the total number of data items, which may not equal the data source length. It is recommended that you use **onTotalCount** instead of **totalCount**. If both **totalCount** and **onTotalCount** are set, **totalCount** is ignored.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 
-### totalCount: Length of the Data to Be Loaded
+### totalCount
 
 **totalCount** indicates the length of the data to be loaded, which is the length of the original array by default and can be greater than the number of loaded data items. **arr.length** represents the length of the data source. The processing rules for **totalCount** are as follows:
 
 - When **totalCount** is omitted or set to a non-natural number, the value of **totalCount** is **arr.length**, and the list scrolls normally.
-- When the value of **totalCount** is greater that or equal to **0** and smaller than the value of **arr.length**, only data within the range of [0, *totalCount* - 1] is rendered.
+- When the value of **totalCount** is greater than or equal to 0 and smaller than the value of **arr.length**, only data within the range of [0, *totalCount* - 1] is rendered.
 - When the value of **totalCount** is greater than the value of **arr.length**, data in the range of [0, *totalCount* - 1] will be rendered. The scrollbar style changes based on the value of **totalCount**.
 
 > **NOTE**
 >
-> When the value of **totalCount** is greater than the value of **arr.length**, during the scrolling of the parent component container, the application needs to ensure that subsequent data is requested when the list is about to scroll to the end of the data source. You need to handle error scenarios (such as network delays) for data requests until all data sources are loaded; otherwise, scrolling exceptions may occur during list scrolling. For solutions, see [The totalCount Value Is Greater Than the Length of Data Source](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md#handling-cases-where-the-totalcount-value-exceeds-the-data-source-length).
+> When the value of **totalCount** is greater than the value of **arr.length**, the application must ensure that subsequent data is requested when the list is about to scroll to the end of the data source during parent component container scrolling. You need to handle error scenarios (such as network delays) for data requests until all data sources are loaded; otherwise, scrolling exceptions may occur during list scrolling. For solutions, see [Handling Cases Where the totalCount Value Exceeds the Data Source Length](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md#handling-cases-where-the-totalcount-value-exceeds-the-data-source-length).
 
-### onLazyLoading<sup>19+</sup>: Precise Lazy Loading
+### onLazyLoading<sup>19+</sup>
 
-**onLazyLoading** is supported since API version 19 and is intended for use in lazy loading scenarios. You can implement a custom method to write data to a specified index in the data source. The processing rules for **onLazyLoading** are as follows:
+**onLazyLoading** is supported since API version 19 and designed for lazy loading scenarios. You can implement a custom method to write data to a specified index in the data source. The processing rules for **onLazyLoading** are as follows:
 
-- Before reading the data corresponding to an index in the data source, **Repeat** checks whether data exists at that index.
+- Before reading the data corresponding to an index in the data source, **Repeat** checks whether the index contains data.
 - If no data exists but the **onLazyLoading** method is implemented, **Repeat** calls this method.
-- In the **onLazyLoading** method, data should be written to the index specified by **Repeat** in the format of **arr[index] = ...**. In addition, array operations except **[]** are not allowed, and elements except the specified index cannot be written. Otherwise, the system throws an exception.
-- After the **onLazyLoading** method is executed, if no data exists in the specified index, rendering exceptions will occur.
+- In the **onLazyLoading** method, data should be written to the index specified by **Repeat** in the format of `arr[index] = ...`. Note that array operations except **[]** are not allowed, and elements except the specified index cannot be written. Otherwise, the system throws an exception.
+- After the **onLazyLoading** method is executed, if no data exists in the specified index, rendering exceptions occur.
 
 > **NOTE**
 >
-> - Whenever possible, use **onLazyLoading** together with **onTotalCount** instead of **totalCount**.
-> - **onLazyLoading** is recommended in scenarios where the expected data length is greater than the actual source length.
+> - When you use **onLazyLoading**, it is recommended that use it together with **onTotalCount** instead of **totalCount**.
+> - **onLazyLoading** is recommended when the expected data length is greater than the actual source length.
 > - Avoid using the **onLazyLoading** method to execute time-consuming operations. If data loading takes a long time, you are advised to create a placeholder for the data in the **onLazyLoading** method and then create an asynchronous task to load the data.
-> - When **onLazyLoading** is used and **onTotalCount** is set to **arr.length + 1**, data can be loaded infinitely. In this scenario, you need to provide the initial data required for the first screen display and set **cachedCount** to a value greater than 0 for the parent container component. Otherwise, rendering exceptions will occur. Avoid using the **onLazyLoading** method together with the loop mode of **Swipe**. Otherwise, staying at **index = 0** will trigger continuous **onLazyLoading** calls. In addition, you need to pay attention to the memory usage to avoid excessive memory consumption caused by continuous data loading.
+> - Data can be loaded infinitely when **onLazyLoading** is used and **onTotalCount** is set to **arr.length + 1**. Note that in this scenario, you must provide the initial data required for the first screen display, and you are advised to set **cachedCount > 0** for the parent container component. Otherwise, rendering exceptions will occur. Avoid using the **onLazyLoading** method together with the loop mode of **Swipe**. Otherwise, staying at **index = 0** will trigger continuous **onLazyLoading** calls. Pay attention to memory usage to avoid excessive memory consumption caused by continuous data loading.
 
-### onTotalCount<sup>19+</sup>: Calculating the Expected Data Length
+### onTotalCount<sup>19+</sup>
 
-**onTotalCount** is supported since API version 19 and is intended for use in lazy loading scenarios. You can implement a custom method that returns the expected array length. The return value must be a natural number and may not be equal to the actual data source length **arr.length**. The processing rules for **onTotalCount** are as follows:
+**onTotalCount** is supported since API version 19 and designed for lazy loading scenarios. You can set a custom method to calculate the expected array length. The return value must be a natural number and can be different from the actual data source length **arr.length**. The rules for processing **onTotalCount** are as follows:
 
 - When the return value is a non-natural number, **arr.length** is used as the return value and the list scrolls normally.
-- When the return value is greater that or equal to **0** and smaller than the value of **arr.length**, only data within the range of [0, *return value* - 1] is rendered.
+- When the return value is greater that or equal to **0** and smaller than **arr.length**, only data within the range of [0, *return value* - 1] is rendered.
 - When the return value is greater than **arr.length**, the data within the range of [0, *return value* - 1] is rendered. The scrollbar style changes based on the return value.
 
 > **NOTE**
 >
 > - Unlike **totalCount**, **onTotalCount** can be proactively called by **Repeat** to update the expected data length when necessary.
-> - Use either **totalCount** or **onTotalCount**, not both. If neither is set, the default value of **arr.length** is used. If both are set, **totalCount** is ignored.
-> - When the return value of **onTotalCount** is greater than the value of **arr.length**, you are advised to use **onLazyLoading** to implement lazy loading.
+> - Use either **totalCount** or **onTotalCount**, not both. If neither is set, **arr.length** is used by default. If both are set, **totalCount** is ignored.
+> - When the return value of **onTotalCount** is greater than **arr.length**, you are advised to use **onLazyLoading** to implement lazy loading.
 
 ### Example
 
@@ -318,7 +318,7 @@ List() {
 }
 
 // Assume that the total number of items is 100, and 3 items are needed for the initial screen rendering.
-// The initial array provides the first 3 items (arr = ['No.0', 'No.1', 'No.2']), and lazy loading is enabled.
+// The initial array provides the first three items (arr = ['No.0', 'No.1', 'No.2']) and enables the lazy loading feature.
 List() {
   Repeat<string>(this.arr)
     .each((obj: RepeatItem<string>) => { ListItem() { Text(obj.item) }})
@@ -341,7 +341,7 @@ type RepeatItemBuilder\<T\> = (repeatItem: RepeatItem\<T\>) => void
 
 | Name    | Type         | Mandatory     | Description                                   |
 | ---------- | ------------- | --------------------------------------- | --------------------------------------- |
-| repeatItem | [RepeatItem](#repeatitemt)\<T\> | No| State variable that combines **item** and **index**.|
+| repeatItem | [RepeatItem](#repeatitemt)\<T\> | No| State variable that combines **item** and **index**.<br>This parameter is ignored by default when it is not specified. Using this parameter in a closure function will cause a compilation error.|
 
 ## TemplateOptions
 
@@ -353,13 +353,13 @@ type RepeatItemBuilder\<T\> = (repeatItem: RepeatItem\<T\>) => void
 | ----------- | ------ | ---- | ---- | ------------------------------------------------------------ |
 | cachedCount | number | No| Yes | Maximum number of child component nodes that can be cached in the cache pool of the current template. The value range is [0, +∞). The default value is the sum of the number of nodes in the display area of the container component and the number of nodes in the preloading area. When this sum increases (during the scrolling, when only part of the height of child components is within the display area), the value of **cachedCount** also increases accordingly. Note that the value of **cachedCount** does not decrease.|
 
-When **cachedCount** is set to the maximum number of nodes in the display area of the container component for the current template, **Repeat** achieves maximum reuse efficiency. If there are no nodes of the current template in the container component's display area, the cache list is not released, which increases application memory usage. You are advised to set **cachedCount** to the number of nodes within the container component's display area and adjust the value according to the actual situation. Yet, setting **cachedCount** to less than 2 is not recommended, as this may lead to the frequent node creation during rapid scrolling and result in performance degradation.
+When **cachedCount** is set to the maximum number of nodes in the display area of the container component for the current template, **Repeat** achieves maximum reuse efficiency. If there are no nodes of the current template in the container component's display area, the cache list is not released, which increases application memory usage. You are advised to set **cachedCount** to the number of nodes within the container component's display area and adjust the value according to the actual situation. However, setting **cachedCount** to less than 2 is not recommended, as this may lead to the frequent node creation during rapid scrolling and result in performance degradation.
 
 > **NOTE**
 > 
 > The **.cachedCount()** attribute of the scrollable container component and the **cachedCount** parameter of the **.template()** method of **Repeat** are used to balance performance and memory, but their meanings are different.
 > - **.cachedCount()** of the scrollable container component: size of the preloading area outside the display area of the container component. The child component nodes in this area are located in the component tree. The scrollable container component renders nodes in these preloading areas, improving the list scrolling performance.
-> - cachedCount in .template(): size of the cache pool for each template in the **Repeat** component. When rendering a new child component, **Repeat** checks whether there are available nodes in the cache pool for the corresponding template. If yes, the nodes are reused. If no, new nodes are created.
+> - **cachedCount** in **.template()**: size of the cache pool for each template in the **Repeat** component. When rendering a new child component, **Repeat** checks whether there are available nodes in the cache pool for the corresponding template. If yes, the nodes are reused. If no, new nodes are created.
 
 **Example**
 ```ts
@@ -387,5 +387,5 @@ type TemplateTypedFunc\<T\> = (item: T, index: number) => string
 
 | Name| Type  | Mandatory| Description                                        |
 | ------ | ------ | ---- | -------------------------------------------- |
-| item   | T      | No  | Each data item in the **arr** array. **T** indicates the data type passed in.|
-| index  | number | No  | Index corresponding to the current data item.                      |
+| item   | T      | No  | Each data item in the **arr** array. **T** indicates the data type passed in.<br>This parameter is ignored by default when it is not specified. Using this parameter in a closure function will cause a compilation error.|
+| index  | number | No  | Index corresponding to the current data item.<br>This parameter is ignored by default when it is not specified. Using this parameter in a closure function will cause a compilation error.|

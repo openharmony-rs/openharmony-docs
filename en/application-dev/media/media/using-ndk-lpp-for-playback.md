@@ -11,7 +11,7 @@ Starting from API version 20, the low power player (LPP) can be used to implemen
 
 > **NOTE**
 >
-> The LLP does not support pure video or audio playback. For details about low-power audio playback, see [Low-Power Audio Playback](../audio/power-saving-for-playback.md).
+> The LPP does not support pure video or audio playback. For details about low-power audio playback, see [Low-Power Audio Playback](../audio/power-saving-for-playback.md).
 
 The full playback process includes creating a demuxer, creating a player, setting callback functions, configuring playback parameters (speed and volume), controlling playback (play, pause, resume, stop, and reset), and releasing the player instance.
 

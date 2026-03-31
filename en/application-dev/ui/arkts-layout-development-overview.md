@@ -37,7 +37,7 @@ You can use layout-related container components to create a specific layout.
 
   **Figure 2** Layout elements
 
-![layout-element-omposition](figures/layout-element-omposition.png)
+![layout-element-composition](figures/layout-element-omposition.png)
 
 - Component area (blue block): size of the component, subject to the [width](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#width) and [height](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md#height) attributes.
 

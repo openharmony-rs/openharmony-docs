@@ -56,10 +56,10 @@ Inherited from [DatePickerOptions](ts-basic-components-datepicker.md#datepickero
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| lunar | boolean | No| Yes| Whether to display dates in lunar calendar format.<br>- **true**: Display dates in lunar calendar format.<br>- **false**: Do not display dates in lunar calendar format.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| lunar | boolean | No| Yes| Whether to display dates in lunar calendar format.<br>- **true**: Display dates in lunar calendar format.<br>- **false**: Do not display dates in lunar calendar format.<br>Default value: **false**<br>**NOTE**<br>This attribute takes effect only in Simplified Chinese and Traditional Chinese locales; it has no effect in other locales.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | showTime<sup>10+</sup> | boolean | No| Yes| Whether to display the time picker in the dialog box.<br>- **true**: Display the time picker.<br>- **false**: Do not display the time picker.<br>Default value: **false**<br>**NOTE**<br>1. When **showTime** is **true**, clicking the date in the dialog box header toggles between date-only and date+time views.<br>2. When **showTime** is **true**, the **mode** parameter is ignored, meaning the date picker always shows year, month, and day columns.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | useMilitaryTime<sup>10+</sup> | boolean | No| Yes| Whether the time picker in the dialog box is in 24-hour format. This parameter has effect only when **showTime** is **true**.<br>- **true**: 24-hour format.<br>- **false**: 12-hour format.<br>Default value: **false**<br>**NOTE**<br>When 12-hour format is used in the time picker, the AM/PM indicator does not automatically update when the hour value changes.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| lunarSwitch<sup>10+</sup> | boolean | No| Yes| Whether to display the lunar calendar switch.<br>- **true**: Display the lunar calendar switch.<br>- **false**: Do not display the lunar calendar switch.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| lunarSwitch<sup>10+</sup> | boolean | No| Yes| Whether to display the lunar calendar switch.<br>- **true**: Display the lunar calendar switch.<br>- **false**: Do not display the lunar calendar switch.<br>Default value: **false**<br>**NOTE**<br>After being enabled, this attribute takes effect only in Simplified Chinese and Traditional Chinese; it has no effect in other locales. Therefore, you are advised to set this attribute to **false** in other locales.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | lunarSwitchStyle<sup>14+</sup> | [LunarSwitchStyle](#lunarswitchstyle14) | No| Yes| Style of the lunar calendar switch.<br>Default value: {<br>selectedColor: `$r('sys.color.ohos_id_color_text_primary_actived')`,<br>unselectedColor: `$r('sys.color.ohos_id_color_switch_outline_off')`,<br>strokeColor: Color.White<br>}<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | disappearTextStyle<sup>10+</sup> | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | No| Yes| Text color, font size, and font weight of edge items (the second item above or below the selected item).<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '14fp', <br>weight: FontWeight.Regular<br>}<br>}<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | textStyle<sup>10+</sup> | [PickerTextStyle](ts-picker-common.md#pickertextstyle) | No| Yes| Text color, font size, and font weight of candidate items (the first item immediately above or below the selected item).<br>Default value:<br>{<br>color: '#ff182431',<br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular<br>}<br>}<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -86,8 +86,8 @@ Inherited from [DatePickerOptions](ts-basic-components-datepicker.md#datepickero
 | dateTimeOptions<sup>12+</sup> | [DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) | No| Yes| Whether to display a leading zero for the hours and minutes. Currently only the configuration of the **hour** and **minute** parameters is supported.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | enableHoverMode<sup>14+</sup>     | boolean | No | Yes | Whether to respond when the device is in semi-folded mode.<br>- **true**: Respond when the device is in semi-folded mode.<br>- **false**: Do not respond when the device is in semi-folded mode.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No | Yes | Display area of the dialog box when the device is in semi-folded mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| enableHapticFeedback<sup>18+</sup> | boolean | No | Yes | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**NOTE**<br>1. Whether this parameter takes effect after being set to **true** depends on hardware support.<br>2. To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]|
-| canLoop<sup>20+</sup> | boolean | No| Yes| Whether to enable cyclic scrolling.<br>Default value: **true**.<br>**NOTE**<br>**true**: Cyclic scrolling is enabled, where the year values increment or decrement with month cycling, and month values increment or decrement with day cycling.<br>**false**: Cyclic scrolling is disabled, preventing out-of-bounds scrolling in year, month, and day columns and cross-column value synchronization.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| enableHapticFeedback<sup>18+</sup> | boolean | No | Yes | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**NOTE**<br>1. Whether this parameter takes effect after being set to **true** depends on hardware support.<br>2. To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]|
+| canLoop<sup>20+</sup> | boolean | No| Yes| Whether to enable cyclic scrolling.<br>Default value: **true**<br>**NOTE**<br>**true**: Cyclic scrolling is enabled, where the year values increment or decrement with month cycling, and month values increment or decrement with day cycling.<br>**false**: Cyclic scrolling is disabled, preventing out-of-bounds scrolling in year, month, and day columns and cross-column value synchronization.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## LunarSwitchStyle<sup>14+</sup>
 
@@ -305,7 +305,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialog_HoverMode.gif)
 
 ### Example 4: Setting the Dialog Box Position
 
@@ -341,7 +341,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialogDemo4.png)
 
 ### Example 5: Setting the Mask Area
 
@@ -381,7 +381,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialogDemo5.png)
 
 ### Example 6: Setting the Background
 
@@ -418,7 +418,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialogDemo6.png)
 
 ### Example 7: Switching Between Gregorian and Lunar Calendars
 
@@ -469,7 +469,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialogDemo7.gif)
 
 ### Example 8: Setting Display of Month and Day Columns
 
@@ -504,7 +504,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialogDemo8.gif)
 
 ### Example 9: Setting Cyclic Scrolling
 
@@ -548,7 +548,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![TextPickerDialog](figures/DatePickerDialogDemo9.gif)
 
 ### Example 10: Customizing the Background Blur Effect
 
@@ -587,7 +587,7 @@ struct DatePickerDialogExample {
 }
 ```
 
-
+![DataPickerDialog](figures/DatePickerDialog_BackgroundBlurStyleOptions.png)
 
 ### Example 11: Customizing the Background Effect
 
@@ -628,3 +628,4 @@ struct DatePickerDialogExample {
 }
 ```
 
+![DataPickerDialog](figures/DatePickerDialog_BackgroundEffect.png)

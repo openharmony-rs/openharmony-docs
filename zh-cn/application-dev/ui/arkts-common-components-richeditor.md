@@ -8,9 +8,9 @@
 
 RichEditor是支持图文混排和文本交互式编辑的组件，通常用于响应用户对图文混合内容的输入操作，例如可以输入图文的评论区。具体用法参考[RichEditor](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md)。
 
-对于仅需图文展示而不需要编辑的场景，推荐使用[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件。
+对于仅需图文展示而不需要编辑的场景，建议使用[Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md)组件。
 
-对于需要大量展示Html格式内容的场景，推荐使用[RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md)组件。
+对于需要大量展示Html格式内容的场景，建议使用[RichText](../reference/apis-arkui/arkui-ts/ts-basic-components-richtext.md)组件。
 
 ## 组件构成
 

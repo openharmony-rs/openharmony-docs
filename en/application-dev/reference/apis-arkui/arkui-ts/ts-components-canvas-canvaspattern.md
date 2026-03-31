@@ -30,7 +30,7 @@ Uses a **Matrix2D** object as a parameter to perform matrix transformation on th
 
 | Name     | Type | Mandatory| Description  |
 | --------- | -------------- | ------ | ---------- |
-| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | No | Transformation matrix.<br>The **undefined** and **null** values are treated as invalid.<br>Default value: **null**.|
+| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | No | Transformation matrix.<br>**undefined** and **null** are treated as invalid values, and no matrix transformation is performed.<br>Default value: no matrix transformation|
 
 ## Example
 

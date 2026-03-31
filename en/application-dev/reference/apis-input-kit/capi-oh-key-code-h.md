@@ -125,7 +125,7 @@ Enumerates the key codes.
 | KEYCODE_EQUALS = 2058 | Key =|
 | KEYCODE_LEFT_BRACKET = 2059 | Key [|
 | KEYCODE_RIGHT_BRACKET = 2060 | Key ]|
-| KEYCODE_BACKSLASH = 2061 | Key \|
+| KEYCODE_BACKSLASH = 2061 | Key \\|
 | KEYCODE_SEMICOLON = 2062 | Key ;|
 | KEYCODE_APOSTROPHE = 2063 | Key '|
 | KEYCODE_SLASH = 2064 | Key /|
@@ -134,7 +134,7 @@ Enumerates the key codes.
 | KEYCODE_MENU = 2067 | Menu key|
 | KEYCODE_PAGE_UP = 2068 | Page Up key|
 | KEYCODE_PAGE_DOWN = 2069 | Page Down key|
-| KEYCODE_ESCAPE = 2070 | ESC key|
+| KEYCODE_ESCAPE = 2070 | Esc key|
 | KEYCODE_FORWARD_DEL = 2071 | Forward Delete key|
 | KEYCODE_CTRL_LEFT = 2072 | Left Ctrl key|
 | KEYCODE_CTRL_RIGHT = 2073 | Right Ctrl key|
@@ -152,7 +152,7 @@ Enumerates the key codes.
 | KEYCODE_MEDIA_PLAY = 2085 | Media: Play key|
 | KEYCODE_MEDIA_PAUSE = 2086 | Media: Pause key|
 | KEYCODE_MEDIA_CLOSE = 2087 | Media: Close key|
-| KEYCODE_MEDIA_EJECT = 2088 | Media: Eject key|
+| KEYCODE_MEDIA_EJECT = 2088 | Media: Reject key|
 | KEYCODE_MEDIA_RECORD = 2089 | Media: Record key|
 | KEYCODE_F1 = 2090 | F1 key|
 | KEYCODE_F2 = 2091 | F2 key|
@@ -323,7 +323,7 @@ Enumerates the key codes.
 | KEYCODE_APPSELECT = 2720 | App Select key<br>**Since**: 22|
 | KEYCODE_SCREENSAVER = 2721 | Screen Saver key<br>**Since**: 22|
 | KEYCODE_ASSISTANT = 2722 | Assistant key<br>**Since**: 22|
-| KEYCODE_KBD_LAYOUT_NEXT  = 2723 | Next Keyboard Layout key<br>**Since**: 22|
+| KEYCODE_KBD_LAYOUT_NEXT = 2723 | Next Keyboard Layout key<br>**Since**: 22|
 | KEYCODE_BRIGHTNESS_MIN = 2724 | Min Brightness key<br>**Since**: 22|
 | KEYCODE_BRIGHTNESS_MAX = 2725 | Max Brightness key<br>**Since**: 22|
 | KEYCODE_KBDINPUTASSIST_PREV = 2726 | Assist_Previous key, used to view historical inputs<br>**Since**: 22|
@@ -343,7 +343,7 @@ Enumerates the key codes.
 | KEYCODE_MSDOS = 2808 | DOS key<br>**Since**: 22|
 | KEYCODE_SCREENLOCK = 2809 | Screen Lock key<br>**Since**: 22|
 | KEYCODE_DIRECTION_ROTATE_DISPLAY = 2810 | Directional Rotation Display key<br>**Since**: 22|
-| KEYCODE_CYCLEWINDOWS = 2811 | Windows Cycle key<br>**Since**: 22|
+| KEYCODE_CYCLEWINDOWS = 2811 | Window Cycle key<br>**Since**: 22|
 | KEYCODE_COMPUTER = 2812 | Computer key<br>**Since**: 22|
 | KEYCODE_EJECTCLOSECD = 2813 | Eject CD key<br>**Since**: 22|
 | KEYCODE_ISO = 2814 | ISO key<br>**Since**: 22|
@@ -371,7 +371,7 @@ Enumerates the key codes.
 | KEYCODE_SPORT = 2837 | Sport key<br>**Since**: 22|
 | KEYCODE_SHOP = 2838 | Shop key<br>**Since**: 22|
 | KEYCODE_ALTERASE = 2839 | Alternate key<br>**Since**: 22|
-| KEYCODE_SWITCHVIDEOMODE  = 2841 | Switch Video Mode key (monitor, LCD, and TV, etc.)<br>**Since**: 22|
+| KEYCODE_SWITCHVIDEOMODE = 2841 | Switch Video Mode key (monitor, LCD, and TV, etc.)<br>**Since**: 22|
 | KEYCODE_BATTERY = 2842 | Battery key<br>**Since**: 22|
 | KEYCODE_BLUETOOTH = 2843 | Bluetooth key<br>**Since**: 22|
 | KEYCODE_WLAN = 2844 | WLAN key<br>**Since**: 22|

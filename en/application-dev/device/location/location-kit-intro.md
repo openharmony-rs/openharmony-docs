@@ -10,9 +10,9 @@ Your application can call location-specific APIs to obtain the location informat
 
 ### Concepts
 
-Location awareness helps determine where a mobile device locates. Location Kit allows your system to identify the location of a mobile device with its coordinates, and uses location technologies such as Global Navigation Satellite System (GNSS) and network positioning (for example, base station positioning or WLAN/Bluetooth positioning) to provide diverse location-based services.
+The location subsystem provides services using multiple positioning technologies, such as Global Navigation Satellite System (GNSS) positioning and network positioning (for example, cellular, WLAN, and Bluetooth positioning). Using these technologies, the device location can be accurately determined whether the user's device is indoors or outdoors.
 
-These advanced location technologies make it possible to obtain the accurate location of the mobile device, regardless of whether it is indoors or outdoors.
+In addition to basic location services, Location Kit provides functions and APIs including geofence, geocoding, reverse geocoding, and country code.
 
 - **Coordinate**<br>
   A coordinate describes a location on the earth using the longitude and latitude in reference to the World Geodetic Coordinate System 1984.
@@ -41,4 +41,4 @@ Depending on the hardware support, Location Kit provides different capabilities 
 
 The following sample is provided to help you better understand how to use Location Kit:
 
-- [`Location`: Location Kit (ArkTS) (API9) ](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/BasicFeature/DeviceManagement/Location)
+- [Location: Location Kit (ArkTS) (API14)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ConnectivityKit/Location)

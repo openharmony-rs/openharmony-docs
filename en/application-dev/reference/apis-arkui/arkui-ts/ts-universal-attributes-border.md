@@ -58,7 +58,7 @@ Sets the border style.
 
 | Name| Type                                                        | Mandatory| Description                                              |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| value  | [BorderStyle](ts-appendix-enums.md#borderstyle) \| [EdgeStyles](./ts-types.md#edgestyles9)<sup>9+</sup> | Yes  | Border style.<br>Default value: **BorderStyle.Solid**|
+| value  | [BorderStyle](ts-appendix-enums.md#borderstyle)&nbsp;\|&nbsp;[EdgeStyles](./ts-types.md#edgestyles9)<sup>9+</sup> | Yes  | Border style.<br>Default value: **BorderStyle.Solid**|
 
 **Return value**
 
@@ -82,7 +82,7 @@ Sets the border width.
 
 | Name| Type                                                        | Mandatory| Description                              |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| value  | [Length](ts-types.md#length) \| [EdgeWidths](./ts-types.md#edgewidths9)<sup>9+</sup> \| [LocalizedEdgeWidths](./ts-types.md#localizededgewidths12)<sup>12+</sup> | Yes  | Border width. This parameter cannot be set in percentage.|
+| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[EdgeWidths](./ts-types.md#edgewidths9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedEdgeWidths](./ts-types.md#localizededgewidths12)<sup>12+</sup> | Yes  | Border width. This parameter cannot be set in percentage.|
 
 **Return value**
 
@@ -106,7 +106,7 @@ Sets the border color.
 
 | Name| Type                                                        | Mandatory| Description                                        |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) \| [EdgeColors](./ts-types.md#edgecolors9)<sup>9+</sup> \| [LocalizedEdgeColors](./ts-types.md#localizededgecolors12)<sup>12+</sup> | Yes  | Border color.<br>Default value: **Color.Black**|
+| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](./ts-types.md#edgecolors9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedEdgeColors](./ts-types.md#localizededgecolors12)<sup>12+</sup> | Yes  | Border color.<br>Default value: **Color.Black**|
 
 **Return value**
 
@@ -118,7 +118,7 @@ Sets the border color.
 
 borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses): T
 
-Sets the border radius. The radius value is restricted by the component size, with the maximum value being half of the component's width or height.
+Sets the border radius.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -130,7 +130,7 @@ Sets the border radius. The radius value is restricted by the component size, wi
 
 | Name| Type                                                        | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| value  | [Length](ts-types.md#length) \| [BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup> \| [LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup> | Yes  | Border radius of the component. Percentage values relative to component width are supported. The maximum value is half the component's width or height. When combined with the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, this setting clips child components to prevent them from extending beyond the component's boundaries.|
+| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)<sup>9+</sup>&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12)<sup>12+</sup> | Yes  | Radius of the border corners. The value can be expressed as a percentage of the component's width. When combined with the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, this setting clips child components to prevent them from extending beyond the component's boundaries.|
 
 **Return value**
 
@@ -142,7 +142,7 @@ Sets the border radius. The radius value is restricted by the component size, wi
 
 borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: RenderStrategy): T
 
-Sets the border corner radius and the rendering strategy for rounded corners. The radius value is restricted by the component size, with the maximum value being half of the component's width or height.
+Sets the border corner radius and the rendering strategy for rounded corners.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 22.
 
@@ -154,7 +154,7 @@ Sets the border corner radius and the rendering strategy for rounded corners. Th
 
 | Name| Type                                                        | Mandatory| Description                                  |
 | ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| value  | [Length](ts-types.md#length) \| [BorderRadiuses](./ts-types.md#borderradiuses9) \| [LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12) | Yes  | Radius of the border corners. The value can be expressed as a percentage of the component's width. When combined with the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, this setting clips child components to prevent them from extending beyond the component's boundaries.|
+| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12) | Yes  | Radius of the border corners. The value can be expressed as a percentage of the component's width. When combined with the [clip](./ts-universal-attributes-sharp-clipping.md#clip12) attribute, this setting clips child components to prevent them from extending beyond the component's boundaries.|
 | type  | [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | No  |Rendering strategy for drawing rounded corners.<br>Default value: **RenderStrategy.FAST**.|
 
 **Return value**
@@ -177,11 +177,11 @@ struct BorderExample {
   build() {
     Column() {
       Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // Dashed line
+        // Dashed border
         Text('dashed')
           .borderStyle(BorderStyle.Dashed).borderWidth(5).borderColor(0xAFEEEE).borderRadius(10)
           .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
-        // Dotted line
+        // Dotted border
         Text('dotted')
           .border({ width: 5, color: 0x317AF7, radius: 10, style: BorderStyle.Dotted })
           .width(120).height(120).textAlign(TextAlign.Center).fontSize(16)
@@ -209,9 +209,9 @@ struct BorderExample {
 
 ![en-us_image_0000001219982705](figures/en-us_image_0000001219982705.gif)
 
-### Example 2: Setting the Width and Color of Borders
+### Example 2: Setting the Border Width Type and Border Color
 
-The **width**, **radius**, and **color** property values for the **border** attribute use the **LocalizedEdgeWidths** and **LocalizedEdgeColors** types.
+In this example, the **width**, **radius**, and **color** properties of the **border** attribute use the **LocalizedEdgeWidths** and **LocalizedEdgeColors** types.
 
 ```ts
 // xxx.ets

@@ -173,7 +173,7 @@ Sets the number of times that the animation is played.
 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| value  | number | Yes  | By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. Values less than **-1** are treated as the default value. For the value is a floating-point number, it is rounded down.<br>Default value: **1**|
+| value  | number | Yes  | By default, the animation is played once. The value **-1** indicates that the animation is played for an unlimited number of times. Values less than **-1** are treated as the default value. When the value is a floating-point number, it is rounded down.<br>Default value: **1**|
 
 ### monitorInvisibleArea<sup>17+</sup>
 
@@ -189,7 +189,7 @@ Sets whether the component should automatically pause or resume based on its vis
 
 | Name| Type  | Mandatory| Description                                                  |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| monitorInvisibleArea  | boolean | Yes| Whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) event.<br> With the value **true**, when the component's [AnimationStatus](ts-appendix-enums.md#animationstatus) is **Running**, the component automatically pauses once it becomes invisible and resumes playback if it becomes visible again, based on the **onVisibleAreaChange** event.<br>Default value: **false**<br> **NOTE**<br>When this parameter is dynamically changed from **true** to **false**,<br> the component will resume from its last paused state based on the current [AnimationStatus](ts-appendix-enums.md#animationstatus).<br>Changes to this property do not affect the custom [state](./ts-basic-components-imageanimator.md#state) value.|
+| monitorInvisibleArea  | boolean | Yes| Whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange](./ts-universal-component-visible-area-change-event.md#onvisibleareachange) event.<br> With the value **true**, when the component's [AnimationStatus](ts-appendix-enums.md#animationstatus) is **Running**, the component automatically pauses once it becomes invisible and resumes playback if it becomes visible again, based on the **onVisibleAreaChange** event.<br>With the value **false**, the pause and playback of the component are not affected by **onVisibleAreaChange**.<br>Default value: **false**<br> **NOTE**<br>When this parameter is dynamically changed from **true** to **false**, the component will resume from its last paused state based on the current [AnimationStatus](ts-appendix-enums.md#animationstatus).<br>Changes to this property do not affect the custom [state](./ts-basic-components-imageanimator.md#state) value.|
 
 ## ImageFrameInfo
 
@@ -202,10 +202,10 @@ Image frame information set.
 | Name  | Type  | Read-Only| Optional| Description|
 | -------- | -------------- | -------- | -------- | -------- |
 | src      | string \| [Resource](ts-types.md#resource)<sup>9+</sup> \| [PixelMap](ts-image-common.md#pixelmap)<sup>12+</sup> | No | No  | Image path. The image format can be .jpg, .jpeg, .svg, .png, .bmp, .webp, .ico, or .heif. The [Resource](ts-types.md#resource) type is supported since API version 9, and the [PixelMap](ts-image-common.md#pixelmap) type is supported since API version 12.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
-| width    | number&nbsp;\|&nbsp;string | No| Yes| Image width. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.      |
-| height   | number&nbsp;\|&nbsp;string | No| Yes| Image height. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**.<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.       |
-| top      | number&nbsp;\|&nbsp;string | No| Yes| Vertical coordinate of the image relative to the upper left corner of the component. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10. |
-| left     | number&nbsp;\|&nbsp;string | No| Yes| Horizontal coordinate of the image relative to the upper left corner of the component. For the string type, numeric string values with optional units, for example, **"2"** or **"2px"**, are supported.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.  |
+| width    | number&nbsp;\|&nbsp;string | No| Yes| Image width. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.      |
+| height   | number&nbsp;\|&nbsp;string | No| Yes| Image height. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.       |
+| top      | number&nbsp;\|&nbsp;string | No| Yes| Vertical coordinate of the image relative to the upper left corner of the component. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10. |
+| left     | number&nbsp;\|&nbsp;string | No| Yes| Horizontal coordinate of the image relative to the upper left corner of the component. When the value is a string, it can represent a numeric value with or without units, for example, **"2"** or **"2px"**.<br>Default value: **0**<br>Unit: vp<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.  |
 | duration | number          | No   | Yes   | Playback duration of each image frame, in milliseconds.<br>Default value: **0**<br>Negative numbers are not supported. Setting negative values will cause the image to stay in the current frame for a long time, affecting normal playback.        |
 
 ## Events
@@ -287,7 +287,7 @@ Triggered when the animation playback returns to the initial state.
 
 onFinish(event:&nbsp;()&nbsp;=&gt;&nbsp;void)
 
-Triggered when the animation playback is complete or stopped.
+Triggered when the animation playback completes or stops.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 10.
 
@@ -299,7 +299,7 @@ Triggered when the animation playback is complete or stopped.
 
 | Name  | Type                                      | Mandatory| Description                      |
 | -------- | ------------------------------------------ | ---- | -------------------------- |
-| event | () => void                               | Yes   | Callback triggered when the animation playback is complete or stopped.|
+| event | () => void                               | Yes   | Callback triggered when the animation playback completes or stops.|
 
 ## Example
 
@@ -585,11 +585,10 @@ struct ImageAnimatorAutoPauseTest {
         console.info('Scroll Stop');
       })
 
-      Text('Last triggered callback (Pause/Start): ' + this.preCallBack)
+      Text('Last triggered callback (Pause/Start):' + this.preCallBack)
         .margin({ top: 60, left: 20 })
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
   }
 }
 ```
-
 

@@ -54,7 +54,14 @@
 | [OH_NativeXComponent_EventSourceType](#oh_nativexcomponent_eventsourcetype) | OH_NativeXComponent_EventSourceType | 触摸事件源类型。 |
 | [OH_NativeXComponent_MouseEventAction](#oh_nativexcomponent_mouseeventaction) | OH_NativeXComponent_MouseEventAction | 鼠标事件动作。 |
 | [OH_NativeXComponent_MouseEventButton](#oh_nativexcomponent_mouseeventbutton) | OH_NativeXComponent_MouseEventButton | 鼠标事件按键。 |
-| [OH_NativeXComponent_TouchEvent_SourceTool](#oh_nativexcomponent_touchevent_sourcetool) | OH_NativeXComponent_TouchEvent_SourceTool | 表示触摸事件的源工具类型 |
+| [OH_NativeXComponent_TouchEvent_SourceTool](#oh_nativexcomponent_touchevent_sourcetool) | OH_NativeXComponent_TouchEvent_SourceTool | 表示触摸事件的源工具类型。 |
+
+### 宏定义
+ 	  	 
+| 名称 | 描述 |
+| -------- | -------- |
+| OH_NATIVE_XCOMPONENT_OBJ ("__NATIVE_XCOMPONENT_OBJ__") | 代表Native XComponent实例。 |
+| OH_NATIVE_XCOMPONENT_MAX_TOUCH_POINTS_NUMBER 10 | 触摸事件中的可识别的触摸点个数最大值。 |
 
 ### 函数
 
@@ -305,7 +312,7 @@ enum OH_NativeXComponent_TouchEvent_SourceTool
 **描述：**
 
 
-表示触摸事件的源工具类型
+表示触摸事件的源工具类型。
 
 **起始版本：** 10
 

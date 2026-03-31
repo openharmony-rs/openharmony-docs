@@ -375,7 +375,7 @@ int32_t OH_NativeBuffer_FromNativeWindowBuffer(OHNativeWindowBuffer *nativeWindo
 | 参数项 | 描述 |
 | -- | -- |
 | [OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md) *nativeWindowBuffer | 一个指向[OHNativeWindowBuffer](capi-nativewindow-nativewindowbuffer.md)实例的指针。 |
-| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) **buffer | 一个指向OH_NativeBuffer实例的指针。 |
+| [OH_NativeBuffer](capi-oh-nativebuffer-oh-nativebuffer.md) **buffer | 一个指向OH_NativeBuffer实例的二级指针。 |
 
 **返回：**
 

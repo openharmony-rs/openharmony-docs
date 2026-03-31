@@ -551,7 +551,7 @@ trace单位流量实测方法：limitSize设置为最大值500M，调用startApp
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)与[HiDebug-Trace错误码](errorcode-hiviewdfx-hidebug-trace.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)与[HiDebug Trace错误码](errorcode-hiviewdfx-hidebug-trace.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
@@ -593,7 +593,7 @@ stopAppTraceCapture(): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[HiDebug-Trace错误码](errorcode-hiviewdfx-hidebug-trace.md)。
+以下错误码的详细介绍请参见[HiDebug Trace错误码](errorcode-hiviewdfx-hidebug-trace.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | ----------------------------------------------------------------- |
@@ -662,7 +662,7 @@ getSystemCpuUsage(): number
 
 **错误码**：
 
-以下错误码的详细介绍请参见[HiDebug-CpuUsage错误码](errorcode-hiviewdfx-hidebug-cpuusage.md)。
+以下错误码的详细介绍请参见[HiDebug CpuUsage错误码](errorcode-hiviewdfx-hidebug-cpuusage.md)。
 
 | 错误码ID | 错误信息                                            |
 | ------- |-------------------------------------------------|

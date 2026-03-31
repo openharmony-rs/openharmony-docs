@@ -78,6 +78,7 @@ Triggered when the tap gesture is recognized.
 Provides coordinate information for tap gestures.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
+
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
@@ -136,7 +137,6 @@ This example demonstrates how to obtain the coordinates of a single-tap gesture 
 @Entry
 @Component
 struct TapGestureExample {
-  @State value: string = ''
 
   build() {
     Column() {
@@ -154,7 +154,6 @@ struct TapGestureExample {
               }
             })
         )
-      Text(this.value)
     }
     .height(200)
     .width(300)

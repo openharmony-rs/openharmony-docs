@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Starting from API version 20, you can configure white balance effects. White balance is a color correction technique used by cameras to produce different visual effects in photos. Currently, white balance effects are supported in the following sessions: photo session (for taking photos), video session (for recording videos), and secure session (for secure camera operations).
+Starting from API version 20, you can configure white balance effects. White balance is a color correction technique used by cameras to produce different visual effects in photos. Currently, white balance is supported for the following scenarios: photo capture ([PhotoSession](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md)), video recording ([VideoSession](../../reference/apis-camera-kit/arkts-apis-camera-VideoSession.md)), and the camera secure mode ([SecureSession](../../reference/apis-camera-kit/arkts-apis-camera-SecureSession.md)).
 
 ## How to Develop
 

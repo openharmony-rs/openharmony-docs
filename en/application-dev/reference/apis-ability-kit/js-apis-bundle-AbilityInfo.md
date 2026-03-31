@@ -14,7 +14,7 @@ The module provides information about an ability. Unless otherwise specified, th
 >
 > The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-AbilityInfo](js-apis-bundleManager-abilityInfo.md) instead.
 
-## AbilityInfo<sup>(deprecated)<sup>
+## AbilityInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >

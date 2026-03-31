@@ -8,7 +8,7 @@
 
 ## 场景介绍
 
-FileIO模块提供了部分文件基础操作能力，其他能力请参考[libc标准库](../reference/native-lib/musl.md)/[标准C++库](../reference/native-lib/cpp.md)。
+FileIO模块提供了部分文件基础操作能力，其他能力请参考[libc标准库](../reference/native-lib/musl.md)/[c++标准库](../reference/native-lib/cpp.md)。
 
 ## 约束限制
 

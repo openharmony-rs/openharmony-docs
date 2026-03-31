@@ -577,7 +577,7 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arku
            console.info('TestTag', 'get NavParam, its desc: ' + (param as NavParam).desc);
            return;
          }
-         console.info('TestTag', 'param not instance of NavParam');;
+         console.info('TestTag', 'param not instance of NavParam');
        })
      }
    }
@@ -600,19 +600,14 @@ NavDestination组件中可以通过设置[onResult](../reference/apis-arkui/arku
 
 ### 路由拦截
 
-NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12)方法，用于设置Navigation页面跳转拦截回调。该方法需要传入一个[NavigationInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationinterception12)对象，该对象包含三个回调函数：
-
-| 名称       | 描述                                                 |
-| ------------ | ------------------------------------------------------ |
-| willShow   | 页面跳转前回调，允许操作栈，在当前跳转生效。       |
-| didShow    | 页面跳转后回调，在该回调中操作栈会在下一次跳转生效。 |
-| modeChange | Navigation单双栏显示状态发生变更时触发该回调。  |
+NavPathStack提供了[setInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#setinterception12)方法，用于设置Navigation页面跳转拦截回调。该方法需要传入一个[NavigationInterception](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navigationinterception12)对象，该对象包含多个回调函数，如willShow、didShow等，不同回调函数的调用时机不同，可根据业务需要选择拦截时机。
 
 > **说明：**
 >
-> 无论是哪个回调，在进入回调时路由栈都已经发生了变化。
+> - 无论是哪个回调，在进入回调时路由栈都已经发生了变化。
+> - interception回调时机比willShow更早，也可以做拦截重定向的能力，区别是，前者触发时不会创建被拦截的页面，willShow触发时会创建被拦截的页面然后销毁。
 
-开发者可以在willShow回调中通过修改路由栈来实现路由拦截重定向的能力。
+以willShow为例，在回调中通过修改路由栈实现路由拦截重定向。
 
    <!-- @[setInterception](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NavigationSample/entry/src/main/ets/pages/navigation/template2/Index.ets) -->
    

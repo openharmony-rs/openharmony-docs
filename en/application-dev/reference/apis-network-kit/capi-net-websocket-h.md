@@ -32,7 +32,7 @@ Defines the WebSocket client module APIs.
 | [int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct WebSocket_RequestOptions options)](#oh_websocketclient_connect) | Connects the WebSocket client to the server.|
 | [int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)](#oh_websocketclient_send) | Sends data from the WebSocket client to the server.|
 | [int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOption options)](#oh_websocketclient_close) | Closes the connection on the WebSocket client.|
-| [int OH_WebSocketClient_Destroy(struct WebSocket *client)](#oh_websocketclient_destroy) | Destorys the WebSocket client and releases the context and resources of the WebSocket connection.|
+| [int OH_WebSocketClient_Destroy(struct WebSocket *client)](#oh_websocketclient_destroy) | Destroys the WebSocket client and releases the context and resources of the WebSocket connection.|
 
 ## Function Description
 
@@ -164,7 +164,7 @@ int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOpt
 
 **Description**
 
-Lets the WebSocket client proactively close the connection.
+Closes the connection on the WebSocket client.
 
 **System capability**: SystemCapability.Communication.NetStack
 

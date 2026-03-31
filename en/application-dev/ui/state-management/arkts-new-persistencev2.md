@@ -268,7 +268,7 @@ When using **Navigation**, create a **route_map.json** file as shown below in th
 
 ### Using globalConnect to Store Data
 
-<!-- @[persistence_v2_global_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2GlobalConnect.ets) -->
+<!-- @[persistence_v2_global_connect](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2GlobalConnect.ets) --> 
 
 ``` TypeScript
 import { PersistenceV2, Type, ConnectOptions } from '@kit.ArkUI';
@@ -322,7 +322,7 @@ struct Page1 {
 
   build() {
     Column() {
-      /**************************** Display data **************************/
+      // Display data.
       // Data decorated by @Trace can be automatically persisted to disks.
       Text('Key SampleGlobalConnect: ' + this.p.father.childId.toString())
         .onClick(() => {
@@ -348,15 +348,15 @@ struct Page1 {
         })
         .fontSize(25)
         .fontColor(Color.Red)
-      /**************************** The keys API **************************/
-      // keys() is not updated by itself. You need to use the state variable to update it.
+      // keys() API.
+      // keys() itself does not trigger a refresh. It requires a state variable to trigger a refresh.
       Text('Persist keys: ' + PersistenceV2.keys().toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
           this.refresh += 1;
         })
         .fontSize(25)
 
-      /**************************** The remove API **************************/
+      // remove() API.
       Text('Remove key SampleGlobalConnect: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
           // Removing this key will disconnect from PersistenceV2. After that, PersistenceV2 cannot store data even if it is reconnected.
@@ -385,7 +385,7 @@ struct Page1 {
           this.refresh += 1;
         })
         .fontSize(25)
-      /**************************** reConnect **************************/
+      // reConnect
       // Fail to connect to the previous state variable after reconnection. Therefore, data cannot be saved.
       Text('ReConnect key global2: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
@@ -395,7 +395,7 @@ struct Page1 {
         })
         .fontSize(25)
 
-      /**************************** The save API **************************/
+      // save() API.
       Text('not save key SampleGlobalConnect: ' + this.p.father.groupId.toString() + ' refresh: ' + this.refresh)
         .onClick(() => {
           // Objects that are not saved by @Trace cannot be automatically stored.
@@ -431,7 +431,7 @@ Although **globalConnect** is an application-level path, you can set different e
 
 Create a module based on the project and redirect to the new module based on the sample code. The sample code is as follows:
 
-<!-- @[persistence_v2_module_connect_storage_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets) --> 
+<!-- @[persistence_v2_module_connect_storage_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ModuleConnectStorage1.ets) -->
 
 ``` TypeScript
 module 1
@@ -478,7 +478,7 @@ struct Page1 {
 
   build() {
     Column() {
-      /**************************** Display data **************************/
+      // Display data.
       Text('Key globalConnect1: ' + this.p1.father.childId.toString())
         .onClick(() => {
           this.p1.father.childId += 1;
@@ -492,7 +492,7 @@ struct Page1 {
         .fontSize(25)
         .fontColor(Color.Red)
 
-      /**************************** Redirection **************************/
+      // Jump
       Button('Jump to newModule')
         .onClick (() => { // Used between different modules. You are advised to use globalConnect.
           let want: Want = {
@@ -519,7 +519,7 @@ struct Page1 {
 }
 ```
 
-<!-- @[persistence_v2_module_connect_storage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/demo/src/main/ets/pages/Index.ets) -->
+<!-- @[persistence_v2_module_connect_storage_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/demo/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 // Module 2
@@ -558,7 +558,7 @@ struct Page1 {
 
   build() {
     Column() {
-      /**************************** Display data **************************/
+      // Display data.
       Text('Key globalConnect1: ' + this.p1.father.childId.toString())
         .onClick(() => {
           this.p1.father.childId += 1;
@@ -589,7 +589,7 @@ You are advised to use the new API **globalConnect** to create and obtain data. 
 
 ### Migrating from connect to globalConnect
 
-<!-- @[persistence_v2_connect_migration_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets) --> 
+<!-- @[persistence_v2_connect_migration_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration1.ets) -->
 
 ``` TypeScript
 // Use connect to store data.
@@ -625,7 +625,7 @@ struct Page1 {
 
   build() {
     Column({ space: 5 }) {
-      /**************************** Display data **************************/
+      // Display data.
       Text('Key connect3: ' + this.p.father.childId.toString())
         .onClick(() => {
           this.p.father.childId += 1;
@@ -633,7 +633,7 @@ struct Page1 {
         .fontSize(25)
         .fontColor(Color.Red)
 
-      /**************************** The save API **************************/
+      // save() API.
       // Variables that are not decorated by @Trace can be refreshed only by using the status variable refresh.
       Text('save key connect3: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {
@@ -649,7 +649,7 @@ struct Page1 {
 }
 ```
 
-<!-- @[persistence_v2_connect_migration_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration2.ets) -->
+<!-- @[persistence_v2_connect_migration_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/persistenceV2/PersistenceV2ConnectMigration2.ets) --> 
 
 ``` TypeScript
 // Migrate to globalConnect.
@@ -707,7 +707,7 @@ struct Page1 {
 
   build() {
     Column({ space: 5 }) {
-      /**************************** Display data **************************/
+      // Display data.
       Text('Key connect4: ' + this.p.father.childId.toString())
         .onClick(() => {
           this.p.father.childId += 1;
@@ -715,7 +715,7 @@ struct Page1 {
         .fontSize(25)
         .fontColor(Color.Red)
 
-      /**************************** The save API **************************/
+      // save() API.
       // Variables that are not decorated by @Trace can be refreshed only by using the status variable refresh.
       Text('save key connect4: ' + this.p.father.groupId.toString() + ' refresh:' + this.refresh)
         .onClick(() => {

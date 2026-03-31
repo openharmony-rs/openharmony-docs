@@ -313,10 +313,11 @@ Example of the **dark.json** file content:
     }
   ```
 
-  <!-- @[with_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme3/Theme3.ets) -->
+  <!-- @[with_theme](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ThemeSkinning/entry/src/main/ets/pages/Theme3/Theme3.ets) --> 
   
   ``` TypeScript
   import { ThemeControl } from '@kit.ArkUI';
+  
   ThemeControl.setDefaultTheme(undefined);
   
   @Entry
@@ -344,6 +345,7 @@ Example of the **dark.json** file content:
         }
         .backgroundColor($r('sys.color.background_primary'))
         .height('100%')
+        // Extend the safe area to implement an immersive effect that adapts to light and dark mode changes.
         .expandSafeArea(
           [SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.END, SafeAreaEdge.BOTTOM, SafeAreaEdge.START])
       }

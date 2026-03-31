@@ -1823,11 +1823,11 @@ try {
 
 | 名称                        | 类型                           |  只读  |  可选  | 说明               |
 | ------------------------------ | ------------------------------ | ------------------| ------------------ | ------------------ |
-| userId                         | number                         | 否                       | 是  | 指示用户id，默认值：调用方所在用户，取值范围：大于等于0，可使用[queryOsAccountLocalIdFromProcess](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取当前进程所在用户。当安装、卸载或恢复一个驱动应用时，该参数会被忽略，会在所有用户下执行。 |
+| userId                         | number                         | 否                       | 是  | 指示用户id，默认值：调用方所在用户，取值范围：大于等于0，可使用[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取当前进程所在用户。当安装、卸载或恢复一个驱动应用时，该参数会被忽略，会在所有用户下执行。 |
 | installFlag                    | number                         | 否                       | 是 | 指示安装标志，枚举值：0x00：应用初次安装，0x01：应用覆盖安装，0x10：应用免安装，默认值为应用初次安装。 |
 | isKeepData                     | boolean                        | 否                       | 是| 卸载时是否保留数据目录，默认值为false。true表示卸载时保留数据目录，false表示卸载时不保留数据目录。 |
 | hashParams        | Array<[HashParam](#hashparam)> | 否 | 是| 哈希值参数，默认值为空。         |
-| crowdtestDeadline| number                         | 否                       | 是 | 众测活动的截止日期，默认值为-1，表示无截止日期约束。 |
+| crowdtestDeadline| number                         | 否                       | 是 | 众测活动的截止日期，默认值为-1，表示无截止日期约束，单位：秒。 |
 | sharedBundleDirPaths<sup>10+</sup> | Array\<string> | 否 | 是|共享包文件所在路径，默认值为空。 |
 | specifiedDistributionType<sup>10+</sup> | string | 否 | 是|应用安装时指定的[分发类型](../../security/app-provision-structure.md)，默认值为空，最大长度为128字节。该字段通常由操作系统运营方的应用市场指定。 |
 | additionalInfo<sup>10+</sup> | string | 否 | 是|应用安装时的额外信息，默认值为空，最大长度为3000字节。该字段通常由操作系统运营方的应用市场在安装企业应用时指定，用于保存应用的额外信息。 |

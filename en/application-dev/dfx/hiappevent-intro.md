@@ -9,7 +9,7 @@
 
 ## Overview
 
-HiAppEvent is an event logging mechanism provided for recording faults, statistics, security events, and behavior events during application running. It helps you locate faults, analyze application running status, and collect statistics on access traffic, user activity, operation habits, and other key factors that affect user experience.
+HiAppEvent is an event subscription and logging mechanism provided for recording faults, statistics, security events, and behavior events during application running. It helps you locate faults, analyze application running status, and collect statistics on access traffic, user activity, operation habits, and other key factors that affect user experience.
 
 ## Basic Concepts
 
@@ -69,8 +69,8 @@ HiAppEvent associates application events based on the event domain and event nam
 |Main thread jank event|   Supported |   Supported  |   Supported  |
 |Task execution timeout event|   Supported |   Not supported  |   Supported  |
 |Application killed event|   Supported |   Supported  |   Supported  |
-|Time-consuming launch event|   Not supported |   Not supported  |   Not supported  |
-|Scrolling frame loss event|   Not supported |   Not supported  |   Not supported  |
+|Time-consuming launch event|   Not supported |   Supported  |   Not supported  |
+|Scrolling frame loss event|   Not supported |   Supported  |   Not supported  |
 |High CPU usage event|   Not supported |   Not supported  |   Supported  |
 |Battery usage statistics event|   Not supported |   Not supported  |   Supported  |
 |Audio jank event|   Not supported |   Not supported  |   Not supported  |

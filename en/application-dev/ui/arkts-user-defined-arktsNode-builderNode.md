@@ -2,9 +2,9 @@
 
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 ## Overview
@@ -1239,10 +1239,10 @@ In versions earlier than API version 16, you need to manually remove the Builder
 
 Since API version 16, the BuilderNode automatically refreshes its content when reused in a new page. This means you no longer need to remove the BuilderNode from the cache when the page is destroyed.
 
-  <!-- @[Main_RouterPage3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage3.ets) -->
+  <!-- @[Main_RouterPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderNode/entry/src/main/ets/pages/RouterPage1.ets) -->
   
   ``` TypeScript
-  // ets/pages/RouterPage3.ets
+  // ets/pages/RouterPage1.ets
   import { NodeController, BuilderNode, FrameNode, UIContext } from '@kit.ArkUI';
   import 'ets/pages/RouterPage2';
   
@@ -1313,8 +1313,6 @@ Since API version 16, the BuilderNode automatically refreshes its content when r
             .onClick(() => {
               // Change the state variable in AppStorage to trigger re-creation of the Text node.
               AppStorage.setOrCreate<boolean>('isShowText', false);
-              // Remove the BuilderNode from AppStorage.
-              AppStorage.delete('textNode');
   
               this.getUIContext().getRouter().replaceNamedRoute({ name: 'pageTwo' });
             })
@@ -2458,12 +2456,6 @@ In the preceding example:
 Since API version 20, the BuilderNode supports cross-boundary state sharing between [@Consume](./state-management/arkts-provide-and-consume.md) and [@Provide](./state-management/arkts-provide-and-consume.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
 
 For details, see [Example 5: Configuring the BuilderNode for Cross-Boundary @Provide-@Consume Communication](../reference/apis-arkui/js-apis-arkui-builderNode.md#example-5-configuring-the-buildernode-for-cross-boundary-provide-consume-communication).
-
-## Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication (State Management V2)
-
-Since API version 22, the BuilderNode supports cross-boundary state sharing between [@Consumer](./state-management/arkts-new-provider-and-consumer.md) and [@Provider](./state-management/arkts-new-provider-and-consumer.md) through the **BuildOptions** configuration. This feature enables seamless data flow from the host pages into BuilderNode's internal custom components.
-    
-For details, see [Example 6: Configuring the BuilderNode for Cross-Boundary @Provider-@Consumer Communication](../reference/apis-arkui/js-apis-arkui-builderNode.md#example-6-configuring-the-buildernode-for-cross-boundary-provider-consumer-communication).
 
 ## Implementing Page Pre-Rendering with BuilderNode and Web Components
 

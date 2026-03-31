@@ -159,7 +159,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    }
    ```
 
-3. Set video recording parameters and call **OH_AVRecorder_Prepare()**. The AVRecorder enters the **prepared** state.
+3. Set audio recording parameters and call **OH_AVRecorder_Prepare()**. The AVRecorder enters the **prepared** state.
 
    > **NOTE**
    >
@@ -167,7 +167,7 @@ target_link_libraries(entry PUBLIC libhilog_ndk.z.so)
    >
    > - Before parameter configuration, ensure that you have gained the required permissions. For details, see [Requesting Permissions](#requesting-permissions).
    >
-   > - In pure video recording scenarios, set only video-related parameters in **OH_AVRecorder_Config** of **OH_AVRecorder_Prepare()**.
+   > - Set only audio-related parameters in **OH_AVRecorder_Config** of **prepare()**, as shown in the sample code.
    >
    > - The recording output URL (URL in **OH_AVRecorder_Config** in the sample code) must be in the format of fd://xx (where xx indicates a file descriptor). You must call the basic file operation APIs to implement access to the application file. For details, see [Accessing Application Files](../../file-management/native-fileio-guidelines.md).
 

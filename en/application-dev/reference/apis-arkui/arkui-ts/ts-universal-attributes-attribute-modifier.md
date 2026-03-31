@@ -1,7 +1,7 @@
 # Attribute Modifier
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -136,7 +136,7 @@ In the preceding APIs, **instance** indicates the component type. You can custom
 
 **Value range of the instance parameter**
 
-[AlphabetIndexerAttribute](ts-container-alphabet-indexer.md#attributes), [BadgeAttribute](ts-container-badge.md#attributes), [BlankAttribute](ts-basic-components-blank.md#attributes), [ButtonAttribute](ts-basic-components-button.md#attributes), [CalendarPickerAttribute](ts-basic-components-calendarpicker.md#attributes), [CanvasAttribute](ts-components-canvas-canvas.md#attributes), [CheckboxAttribute](ts-basic-components-checkbox.md#attributes), [CheckboxGroupAttribute](ts-basic-components-checkboxgroup.md#attributes), [CircleAttribute](ts-drawing-components-circle.md#attributes), [ColumnAttribute](ts-container-column.md#attributes), [ColumnSplitAttribute](ts-container-columnsplit.md#attributes), [ShapeAttribute](ts-drawing-components-shape.md#attributes), [CommonAttribute](ts-component-general-attributes.md), [CounterAttribute](ts-container-counter.md#attributes), [DataPanelAttribute](ts-basic-components-datapanel.md#attributes), [DatePickerAttribute](ts-basic-components-datepicker.md#attributes), [DividerAttribute](ts-basic-components-divider.md#attributes), [EllipseAttribute](ts-drawing-components-ellipse.md#attributes), [FlexAttribute](ts-container-flex.md#attributes), [FlowItemAttribute](ts-container-flowitem.md#attributes), [FormLinkAttribute](ts-container-formlink.md#attributes), [GaugeAttribute](ts-basic-components-gauge.md#attributes), [GridAttribute](ts-container-grid.md#attributes), [GridColAttribute](ts-container-gridcol.md#attributes), [ColumnAttribute](ts-container-column.md#attributes), [GridItemAttribute](ts-container-griditem.md#attributes), [GridRowAttribute](ts-container-gridrow.md#attributes), [HyperlinkAttribute](ts-container-hyperlink.md#attributes), [IndicatorComponentAttribute](ts-swiper-components-indicator.md#attributes), [ImageAttribute](ts-basic-components-image.md#attributes), [ImageAnimatorAttribute](ts-basic-components-imageanimator.md#attributes), [ImageSpanAttribute](ts-basic-components-imagespan.md#attributes), [LineAttribute](ts-drawing-components-line.md#attributes), LinearIndicatorAttribute, [ListAttribute](ts-container-list.md#attributes), [ListItemAttribute](ts-container-listitem.md#attributes), [ListItemGroupAttribute](ts-container-listitemgroup.md#attributes), [LoadingProgressAttribute](ts-basic-components-loadingprogress.md#attributes), [MarqueeAttribute](ts-basic-components-marquee.md#attributes), [MenuAttribute](ts-basic-components-menu.md#attributes), [MenuItemAttribute](ts-basic-components-menuitem.md#attributes), MenuItemGroupAttribute, [NavDestinationAttribute](ts-basic-components-navdestination.md#attributes), [NavigationAttribute](ts-basic-components-navigation.md#attributes), [NavigatorAttribute](ts-container-navigator.md#attributes), [NavRouterAttribute](ts-basic-components-navrouter.md#attributes), [PanelAttribute](ts-container-panel.md#attributes), [PathAttribute](ts-drawing-components-path.md#attributes), [PatternLockAttribute](ts-basic-components-patternlock.md#attributes), [PolygonAttribute](ts-drawing-components-polygon.md#attributes), [PolylineAttribute](ts-drawing-components-polyline.md#attributes), [ProgressAttribute](ts-basic-components-progress.md#attributes), [QRCodeAttribute](ts-basic-components-qrcode.md#attributes), [RadioAttribute](ts-basic-components-radio.md#attributes), [RatingAttribute](ts-basic-components-rating.md#attributes), [RectAttribute](ts-drawing-components-rect.md#attributes), [RefreshAttribute](ts-container-refresh.md#attributes), [RelativeContainerAttribute](ts-container-relativecontainer.md#attributes), [RichEditorAttribute](ts-basic-components-richeditor.md#attributes), [RichTextAttribute](ts-basic-components-richtext.md#attributes), [RowAttribute](ts-container-row.md#attributes), [RowSplitAttribute](ts-container-rowsplit.md#attributes), [ScrollAttribute](ts-container-scroll.md#attributes), [ScrollBarAttribute](ts-basic-components-scrollbar.md#attributes), [SearchAttribute](ts-basic-components-search.md#attributes), [SelectAttribute](ts-basic-components-select.md#attributes), [ShapeAttribute](ts-drawing-components-shape.md#attributes), [SideBarContainerAttribute](ts-container-sidebarcontainer.md#attributes), [SliderAttribute](ts-basic-components-slider.md#attributes), [SpanAttribute](ts-basic-components-span.md#attributes), [StackAttribute](ts-container-stack.md#attributes), [StepperAttribute](ts-basic-components-stepper.md#attributes), [StepperItemAttribute](ts-basic-components-stepperitem.md#attributes), [SwiperAttribute](ts-container-swiper.md#attributes), [SymbolGlyphAttribute](ts-basic-components-symbolGlyph.md#attributes), [TabContentAttribute](ts-container-tabcontent.md#attributes), [TabsAttribute](ts-container-tabs.md#attributes), [TextAttribute](ts-basic-components-text.md#attributes), [TextAreaAttribute](ts-basic-components-textarea.md#attributes), [TextClockAttribute](ts-basic-components-textclock.md#attributes), [TextInputAttribute](ts-basic-components-textinput.md#attributes), [TextPickerAttribute](ts-basic-components-textpicker.md#attributes), [TextTimerAttribute](ts-basic-components-texttimer.md#attributes), [TimePickerAttribute](ts-basic-components-timepicker.md#attributes), [ToggleAttribute](ts-basic-components-toggle.md#attributes), [VideoAttribute](ts-media-components-video.md#attributes), [WaterFlowAttribute](ts-container-waterflow.md#attributes), [XComponentAttribute](ts-basic-components-xcomponent.md#attributes), [ParticleAttribute](ts-particle-animation.md#attributes), [UIPickerComponentAttribute](ts-container-ui-picker-component.md#attributes)<!--Del-->, [EffectComponentAttribute](ts-container-effectcomponent-sys.md#attributes), [FormComponentAttribute](ts-basic-components-formcomponent-sys.md#attributes), [PluginComponentAttribute](ts-basic-components-plugincomponent-sys.md#attributes), [RemoteWindowAttribute](ts-basic-components-remotewindow-sys.md#attributes), and [UIExtensionComponentAttribute](../js-apis-arkui-uiExtension.md#properties)<!--DelEnd-->
+[AlphabetIndexerAttribute](ts-container-alphabet-indexer.md#attributes), [BadgeAttribute](ts-container-badge.md#attributes), [BlankAttribute](ts-basic-components-blank.md#attributes), [ButtonAttribute](ts-basic-components-button.md#attributes), [CalendarPickerAttribute](ts-basic-components-calendarpicker.md#attributes), [CanvasAttribute](ts-components-canvas-canvas.md#attributes), [CheckboxAttribute](ts-basic-components-checkbox.md#attributes), [CheckboxGroupAttribute](ts-basic-components-checkboxgroup.md#attributes), [CircleAttribute](ts-drawing-components-circle.md#attributes), [ColumnAttribute](ts-container-column.md#attributes), [ColumnSplitAttribute](ts-container-columnsplit.md#attributes), [ShapeAttribute](ts-drawing-components-shape.md#attributes), [CommonAttribute](ts-component-general-attributes.md), [CounterAttribute](ts-container-counter.md#attributes), [DataPanelAttribute](ts-basic-components-datapanel.md#attributes), [DatePickerAttribute](ts-basic-components-datepicker.md#attributes), [DividerAttribute](ts-basic-components-divider.md#attributes), [EllipseAttribute](ts-drawing-components-ellipse.md#attributes), [FlexAttribute](ts-container-flex.md#attributes), [FlowItemAttribute](ts-container-flowitem.md#attributes), [FormLinkAttribute](ts-container-formlink.md#attributes), [GaugeAttribute](ts-basic-components-gauge.md#attributes), [GridAttribute](ts-container-grid.md#attributes), [GridColAttribute](ts-container-gridcol.md#attributes), [ColumnAttribute](ts-container-column.md#attributes), [GridItemAttribute](ts-container-griditem.md#attributes), [GridRowAttribute](ts-container-gridrow.md#attributes), [HyperlinkAttribute](ts-container-hyperlink.md#attributes), [IndicatorComponentAttribute](ts-swiper-components-indicator.md#attributes), [ImageAttribute](ts-basic-components-image.md#attributes), [ImageAnimatorAttribute](ts-basic-components-imageanimator.md#attributes), [ImageSpanAttribute](ts-basic-components-imagespan.md#attributes), [LineAttribute](ts-drawing-components-line.md#attributes), [ListAttribute](ts-container-list.md#attributes), [ListItemAttribute](ts-container-listitem.md#attributes), [ListItemGroupAttribute](ts-container-listitemgroup.md#attributes), [LoadingProgressAttribute](ts-basic-components-loadingprogress.md#attributes), [MarqueeAttribute](ts-basic-components-marquee.md#attributes), [MenuAttribute](ts-basic-components-menu.md#attributes), [MenuItemAttribute](ts-basic-components-menuitem.md#attributes), [MenuItemGroupAttribute](ts-basic-components-menuitemgroup.md), [NavDestinationAttribute](ts-basic-components-navdestination.md#attributes), [NavigationAttribute](ts-basic-components-navigation.md#attributes), [NavigatorAttribute](ts-container-navigator.md#attributes), [NavRouterAttribute](ts-basic-components-navrouter.md#attributes), [PanelAttribute](ts-container-panel.md#attributes), [PathAttribute](ts-drawing-components-path.md#attributes), [PatternLockAttribute](ts-basic-components-patternlock.md#attributes), [PolygonAttribute](ts-drawing-components-polygon.md#attributes), [PolylineAttribute](ts-drawing-components-polyline.md#attributes), [ProgressAttribute](ts-basic-components-progress.md#attributes), [QRCodeAttribute](ts-basic-components-qrcode.md#attributes), [RadioAttribute](ts-basic-components-radio.md#attributes), [RatingAttribute](ts-basic-components-rating.md#attributes), [RectAttribute](ts-drawing-components-rect.md#attributes), [RefreshAttribute](ts-container-refresh.md#attributes), [RelativeContainerAttribute](ts-container-relativecontainer.md#attributes), [RichEditorAttribute](ts-basic-components-richeditor.md#attributes), [RichTextAttribute](ts-basic-components-richtext.md#attributes), [RowAttribute](ts-container-row.md#attributes), [RowSplitAttribute](ts-container-rowsplit.md#attributes), [ScrollAttribute](ts-container-scroll.md#attributes), [ScrollBarAttribute](ts-basic-components-scrollbar.md#attributes), [SearchAttribute](ts-basic-components-search.md#attributes), [SelectAttribute](ts-basic-components-select.md#attributes), [ShapeAttribute](ts-drawing-components-shape.md#attributes), [SideBarContainerAttribute](ts-container-sidebarcontainer.md#attributes), [SliderAttribute](ts-basic-components-slider.md#attributes), [SpanAttribute](ts-basic-components-span.md#attributes), [StackAttribute](ts-container-stack.md#attributes), [StepperAttribute](ts-basic-components-stepper.md#attributes), [StepperItemAttribute](ts-basic-components-stepperitem.md#attributes), [SwiperAttribute](ts-container-swiper.md#attributes), [SymbolGlyphAttribute](ts-basic-components-symbolGlyph.md#attributes), [TabContentAttribute](ts-container-tabcontent.md#attributes), [TabsAttribute](ts-container-tabs.md#attributes), [TextAttribute](ts-basic-components-text.md#attributes), [TextAreaAttribute](ts-basic-components-textarea.md#attributes), [TextClockAttribute](ts-basic-components-textclock.md#attributes), [TextInputAttribute](ts-basic-components-textinput.md#attributes), [TextPickerAttribute](ts-basic-components-textpicker.md#attributes), [TextTimerAttribute](ts-basic-components-texttimer.md#attributes), [TimePickerAttribute](ts-basic-components-timepicker.md#attributes), [ToggleAttribute](ts-basic-components-toggle.md#attributes), [VideoAttribute](ts-media-components-video.md#attributes), [WaterFlowAttribute](ts-container-waterflow.md#attributes), [XComponentAttribute](ts-basic-components-xcomponent.md#attributes), [ParticleAttribute](ts-particle-animation.md#attributes), [UIPickerComponentAttribute](ts-container-ui-picker-component.md#attributes)<!--Del-->, [EffectComponentAttribute](ts-container-effectcomponent-sys.md#attributes), [FormComponentAttribute](ts-basic-components-formcomponent-sys.md#attributes), [PluginComponentAttribute](ts-basic-components-plugincomponent-sys.md#attributes), [RemoteWindowAttribute](ts-basic-components-remotewindow-sys.md#attributes), and [UIExtensionComponentAttribute](../js-apis-arkui-uiExtension.md#properties)<!--DelEnd-->
 
 **Supported attributes**
 
@@ -216,7 +216,7 @@ struct attributeDemo {
 
 ### Example 2: Implementing the Pressed State Effect with a Modifier
 
-This example demonstrates how to implement a pressed state effect for a **Button** component by binding it to a modifier. For details about how to use the attribute modifier with state management V2, see [Modifiers](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#modifier).
+This example demonstrates how to implement a pressed state effect for a **Button** component by binding it to a modifier. For details about how to use the attribute modifier with state management V2, see [Modifier](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#modifier).
 
 ```ts
 // xxx.ets
@@ -258,7 +258,8 @@ This example shows how to set the width of a custom modifier using state data. C
 ```ts
 import { CommonModifier } from "@kit.ArkUI";
 
-const TEST_TAG : string = "AttributeModifier";
+const TEST_TAG: string = "AttributeModifier";
+
 // Set the custom AttributeModifier for the universal component attributes.
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -303,6 +304,7 @@ struct Index {
     .width('100%')
   }
 }
+
 ```
 
 ![attributeModifier2](figures/attributeModifier2.gif)
@@ -466,6 +468,7 @@ class MyRadioModifier implements AttributeModifier<RadioAttribute> {
   applyNormalAttribute(instance: RadioAttribute): void {
     instance.backgroundColor(Color.Blue);
   }
+
   applySelectedAttribute(instance: RadioAttribute): void {
     instance.backgroundColor(Color.Red);
     instance.borderWidth(2);
@@ -522,7 +525,7 @@ class CustomModifier implements AttributeModifier<CommonAttribute> {
 @Entry
 @Component
 struct attributePressedDemo {
-  @State  modifier: CustomModifier = new CustomModifier()
+  @State modifier: CustomModifier = new CustomModifier()
 
   build() {
     Row() {
@@ -540,7 +543,10 @@ struct attributePressedDemo {
 @Component
 struct ChildComponent {
   build() {
-    Text("common").fontColor(Color.White).fontSize(28).textAlign(TextAlign.Center)
+    Text("common")
+      .fontColor(Color.White)
+      .fontSize(28)
+      .textAlign(TextAlign.Center)
       .width('35%')
       .height('10%')
   }

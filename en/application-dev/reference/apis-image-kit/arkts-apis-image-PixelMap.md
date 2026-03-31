@@ -779,7 +779,7 @@ function GetImageInfoSync(pixelMap:image.PixelMap) {
 
 getBytesNumberPerRow(): number
 
-Obtains the number of bytes per row of this image.
+Obtains the number of bytes per row of this image. Unit: bytes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -805,7 +805,7 @@ function GetBytesNumberPerRow(pixelMap: image.PixelMap) {
 
 getPixelBytesNumber(): number
 
-Obtains the total number of bytes of this image.
+Obtains the total number of bytes of this image. Unit: bytes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -831,7 +831,7 @@ function GetPixelBytesNumber(pixelMap: image.PixelMap) {
 
 getDensity():number
 
-Obtains the pixel density of this image.
+Obtains the pixel density of this image. Unit: ppi (pixels/inch)
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1007,7 +1007,7 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 
 createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 
-Creates a PixelMap object that contains only the alpha channel information. This object can be used for the shadow effect. This API uses an asynchronous callback to return the result. It is invalid for YUV images.
+Creates a PixelMap object that contains only the alpha channel information. This object can be used for the shadow effect. It is invalid for YUV images. This API returns the result through a callback.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1757,7 +1757,7 @@ Rotates this image based on a given angle. This API uses an asynchronous callbac
 
 | Name  | Type                | Mandatory| Description                         |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | number               | Yes  | Angle to rotate.|
+| angle    | number               | Yes  | Angle to rotate. Unit: degrees.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -1801,7 +1801,7 @@ Rotates a PixelMap based on a given angle. This API uses a promise to return the
 
 | Name| Type  | Mandatory| Description                         |
 | ------ | ------ | ---- | ----------------------------- |
-| angle  | number | Yes  | Angle to rotate.|
+| angle  | number | Yes  | Angle to rotate. Unit: degrees.|
 
 **Return value**
 
@@ -1845,7 +1845,7 @@ Rotates this image based on a given angle. This API returns the result synchrono
 
 | Name  | Type                | Mandatory| Description                         |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | number               | Yes  | Angle to rotate.|
+| angle    | number               | Yes  | Angle to rotate. Unit: degrees.|
 
 **Error codes**
 

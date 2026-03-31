@@ -259,7 +259,7 @@ Persists the specified key-value pair data once.
 
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
-| keyOrType | string \| TypeConstructorWithArgs\<T\> | Yes  | Key to be persisted. If a type is specified, the key for persistence is the name of the type.|
+| keyOrType | string \| [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst) | Yes  | Key to be persisted. If a type is specified, the key for persistence is the name of the type.|
 
 >**NOTE**
 >
@@ -301,7 +301,7 @@ Called when persistence fails.
 
 | Name  | Type  | Mandatory| Description              |
 | -------- | ------ | ---- | ---------------------- |
-| callback | PersistenceErrorCallback \| undefined  | Yes  | Callback called when persistence fails.|
+| callback | [PersistenceErrorCallback](#persistenceerrorcallback) \| undefined  | Yes  | Callback called when persistence fails.|
 
 **Example**
 
@@ -322,10 +322,10 @@ Defines the parameter type for **globalConnect**.
 
 |Parameter  |Type   |Read-Only  |Optional   |Description     |
 |--------|------------|------------|-----------|--------------|
-|type        | TypeConstructorWithArgs\<T\>   |No  |No  |Specified type.        |
+|type        | [TypeConstructorWithArgs\<T\>](#typeconstructorwithargst)   |No  |No  |Specified type.        |
 |key         | string   |No  |Yes  |Input key. If no value is passed in, the type name is used as the key.            |
-|defaultCreator   | StorageDefaultCreator\<T\>   |No  |Yes  |Default constructor. You are advised to pass this parameter. If **globalConnect** is connected to the key for the first time, an error is reported if this parameter is not passed in.|
-|areaMode      | contextConstant.AreaMode   |No  |Yes   |Encryption level, ranging from EL1 to EL5 (corresponding to the value from 0 to 4). For details, see [Encryption Levels](../../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels). If no value is passed in, EL2 is used by default. Storage paths vary based on the encryption levels. If the input value of encryption level is not in the range of **0** to **4**, a crash occurs.|
+|defaultCreator   | [StorageDefaultCreator\<T\>](#storagedefaultcreatort)   |No  |Yes  |Default constructor. You are advised to pass this parameter. If **globalConnect** is connected to the key for the first time, an error is reported if this parameter is not passed in.|
+|areaMode      | [contextConstant.AreaMode](../apis-ability-kit/js-apis-app-ability-contextConstant.md#areamode)   |No  |Yes   |Encryption level, ranging from EL1 to EL5 (corresponding to the value from 0 to 4). For details, see [Encryption Levels](../../application-models/application-context-stage.md#obtaining-and-modifying-encryption-levels). If no value is passed in, EL2 is used by default. Storage paths vary based on the encryption levels. If the input value of encryption level is not in the range of **0** to **4**, a crash occurs.|
 
 ## UIUtils
 
@@ -434,7 +434,7 @@ struct Index {
 
 static enableV2Compatibility\<T extends object\>(source: T): T
 
-Enables V1 state variables to be observable in @ComponentV2. This API is primarily used in scenarios where V1 and V2 state management are mixed. For details, see [Mixing Use of State Management V1 and V2](../../ui/state-management/arkts-v1-v2-mixusage.md).
+Enables V1 state variables to be observable in @ComponentV2. This API is primarily used in scenarios where V1 and V2 state management are mixed. For details, see [Mixed Use of State Management V1 and V2 (API Version 19 and Later)](../../ui/state-management/arkts-v1-v2-mixusage.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -499,7 +499,7 @@ static makeV1Observed\<T extends object\>(source: T): T
 
 Wraps an unobservable object into an object that is observable by V1 state management. This API is equivalent to @Observed and can be used to initialize @ObjectLink.
 
-This API can be used together with [enableV2Compatibility](#enablev2compatibility19) in scenarios where state management V1 and V2 are used together. For details, see [Mixing Use of State Management V1 and V2](../../ui/state-management/arkts-v1-v2-mixusage.md).
+This API can be used together with [enableV2Compatibility](#enablev2compatibility19) in scenarios where state management V1 and V2 are used together. For details, see [Mixed Use of State Management V1 and V2 (API Version 19 and Later)](../../ui/state-management/arkts-v1-v2-mixusage.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1327,7 +1327,7 @@ struct Index {
 
 type TypeDecorator = \<T\>(type: TypeConstructor\<T\>) => PropertyDecorator
 
-Defines a property decorator.
+Property decorator.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 

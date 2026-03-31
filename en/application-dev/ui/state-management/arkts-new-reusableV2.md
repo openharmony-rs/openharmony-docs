@@ -212,20 +212,24 @@ struct Index {
   @Local condition2: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('step1. appear')
+        .width('60%')
         .onClick(() => {
           this.condition1 = true;
         })
       Button('step2. recycle')
+        .width('60%')
         .onClick(() => {
           this.condition2 = false;
         })
       Button('step3. reuse')
+        .width('60%')
         .onClick(() => {
           this.condition2 = true;
         })
       Button('step4. disappear')
+        .width('60%')
         .onClick(() => {
           this.condition1 = false;
         })
@@ -233,6 +237,7 @@ struct Index {
         NormalV2Component({ condition: this.condition2 })
       }
     }
+    .width('100%')
   }
 }
 
@@ -283,6 +288,8 @@ You are advised to follow the steps below:
 
 If the reusable component has child components, **aboutToRecycle** and **aboutToReuse** of the child components are recursively called during recycling and reuse (irrelevant to whether the child components are marked for reuse) until all child components are traversed.
 
+![lifecycle](./figures/reusablev2-lifecycle.gif)
+
 ## Component Freezing in the Reuse Phase
 
 In the previous reuse, components of V1 can still respond to updates in the reuse pool, which has a negative impact on performance. Therefore, you need to use the component freezing capability to resolve this issue. For this, V2 components are automatically frozen when reused and do not respond to changes that occur during recycling. For example, changes in **aboutToRecycle** are not updated to the UI, and \@Computed and \@Monitor are not triggered. The frozen state lasts until **aboutToReuse** and subsequent variables change. In this case, the UI re-render, \@Computed recalculation, and \@Monitor are triggered.
@@ -310,12 +317,14 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Reuse/Recycle')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         })
       Button('Change value')
+        .width('60%')
         .onClick(() => {
           info.age++;
         })
@@ -323,6 +332,7 @@ struct Index {
         ReusableV2Component()
       }
     }
+    .width('100%')
   }
 }
 
@@ -365,6 +375,8 @@ You are advised to follow the steps below:
 2. Click the **Reuse/Recycle** button to call the **aboutToRecycle** method and output the log of **aboutToRecycle**. However, \@Monitor is not triggered and the **onRender** method is not called back.
 3. Click the **Change value** button. The UI is not re-rendered, \@Monitor is not triggered, and the **onRender** method is not called back.
 4. Click the **Reuse/Recycle** button to call the **aboutToReuse** method and output the **aboutToReuse** log. \@Monitor is triggered, the **info.age change** log is output, and the **info.age onRender** log is output by the **onRender** method. The UI changes.
+
+![freeze](./figures/reusablev2-freeze.gif)
 
 If the auto-increment operation is removed from the **aboutToReuse** method, the \@Monitor callback is not triggered in step 4.
 
@@ -417,12 +429,12 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Recycle/Reuse')
         .onClick(() => {
           this.condition = !this.condition;
         })
-      Column() {
+      Column({ space: 10 }) {
         Text('Variables of parent component')
         Text(`local: ${this.local}`)
           .onClick(() => {
@@ -432,7 +444,9 @@ struct Index {
           .onClick(() => {
             this.inheritProvider++;
           })
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
       if (this.condition) {
         ReusableV2Component({
@@ -444,6 +458,7 @@ struct Index {
         })
       }
     }
+    .width('100%')
   }
 }
 
@@ -479,8 +494,8 @@ struct ReusableV2Component {
   }
 
   build() {
-    Column() {
-      Column() {
+    Column({ space: 10 }) {
+      Column({ space: 10 }) {
         Text('Variables reset to local initial values')
         Text(`val: ${this.val}`)
           .onClick(() => {
@@ -502,9 +517,11 @@ struct ReusableV2Component {
           .onClick(() => {
             this.selfConsumer++;
           })
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
-      Column() {
+      Column({ space: 10 }) {
         Text('Reset to an external variable')
         Text(`paramOut: ${this.paramOut}`)
           .onClick(() => {
@@ -514,18 +531,22 @@ struct ReusableV2Component {
           .onClick(() => {
             this.paramOnce++;
           })
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
-      Column() {
+      Column({ space: 10 }) {
         Text('Depending on the parent component')
         Text(`inheritConsumer: ${this.inheritConsumer}`)
           .onClick(() => {
             this.inheritConsumer++;
           })
         Text(`plusParam: ${this.plusParam}`)
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
 
-      Column() {
+      Column({ space: 10 }) {
         Text('Not reset')
         Text(`noDecoVariable: ${this.noDecoVariable}`)
         Text(`noDecoInfo.age: ${this.noDecoInfo.age}`)
@@ -533,13 +554,18 @@ struct ReusableV2Component {
             this.noDecoInfo.age++;
           }) // Update can be triggered but the variable is not reset.
         Text(`readOnlyVariable: ${this.readOnlyVariable}`)
-      }.borderWidth(2)
+      }
+      .width('80%')
+      .borderWidth(2)
     }
+    .width('100%')
   }
 }
 ```
 
 You can click each variable and click **Recycle/Reuse** to view the reset state after reuse.
+
+![reset](./figures/reusablev2-reset.gif)
 
 In the preceding example, **noDecoInfo** is not reset. If a \@Monitor is used to listen for **noDecoInfo.age**, it will not be reset because **noDecoInfo** does not change. Therefore, when **noDecoInfo.age** is changed for the first time, the **before** value of **IMonitorValue** will not be reset, which is still the value before reuse.
 
@@ -568,8 +594,9 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Recycle/Reuse')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         })
@@ -577,6 +604,7 @@ struct Index {
         ReusableV2Component()
       }
     }
+    .width('100%')
   }
 }
 
@@ -617,6 +645,8 @@ You are advised to follow the steps below:
 2. Click **Recycle/Reuse** twice. The UI is re-rendered to **noDecoInfo.age: 35** and \@Monitor is triggered to output the log **age change from 31 to 35**.
 3. Click **noDecoInfo.age: 35**. The UI is re-rendered to **noDecoInfo.age: 36** and \@Monitor is triggered to output the log **age change from 35 to 36**.
 
+![resetmonitor](./figures/reusablev2-resetmonitor.gif)
+
 Due to the freezing mechanism, the value change in **aboutToRecycle** is not listened by \@Monitor. After the variable is reset, a new value is assigned to the variable. Therefore, for the state variable in the component, the value assignment in **aboutToRecycle** does not have obvious effect. For the constant (such as **noDecoInfo**), due to the freezing mechanism, the change of **age** in **aboutToRecycle** is not observable and cannot be reset, therefore, the \@Monitor bound to **age** will not be reset. Finally, in \@Monitor called back in step 2, the value of **monitor.value()?.before** is **31** instead of the initial value **30** of **age**.
 
 As such, you are advised to reduce the use of constant objects that contain the [\@Trace](./arkts-new-observedV2-and-trace.md) attribute in reuse scenarios to ensure that the reuse meets expectations.
@@ -641,8 +671,9 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Recycle/Reuse')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         }) // Switch the recycling or reuse status.
@@ -650,6 +681,7 @@ struct Index {
         ReusableV2Component()
       }
     }
+    .width('100%')
   }
 }
 
@@ -673,6 +705,8 @@ struct ReusableV2Component {
   }
 }
 ```
+
+![if](./figures/reusablev2-if.gif)
 
 ### Using in the Repeat Component
 
@@ -721,6 +755,7 @@ struct Index {
                 ReusableV2Component({ num: obj.item })
               }
             }
+            .width('100%')
           })
       }.height('50%')
       .cachedCount(2)
@@ -753,6 +788,8 @@ struct ReusableV2Component {
 }
 ```
 
+![repeat](./figures/reusablev2-repeat.gif)
+
 ### Using in the each Attribute of Repeat in the Non-Lazy Loading Scenarios
 
 In the non-lazy loading scenarios of the **Repeat** component, recycling or reuse is triggered when a subtree is deleted or created.
@@ -772,20 +809,24 @@ struct Index {
   @Local condition: boolean = true;
 
   build() {
-    Column() {
+    Column({ space: 10 }) {
       Button('Delete/Create Repeat')
+        .width('60%')
         .onClick(() => {
           this.condition = !this.condition;
         })
       Button('Add element')
+        .width('60%')
         .onClick(() => {
           this.simpleList.push(this.simpleList.length + 1);
         })
       Button('Delete element')
+        .width('60%')
         .onClick(() => {
           this.simpleList.pop();
         })
       Button('Change element')
+        .width('60%')
         .onClick(() => {
           this.simpleList[0]++;
         })
@@ -797,11 +838,13 @@ struct Index {
                 Column() {
                   ReusableV2Component({ num: obj.item })
                 }
+                .width('100%')
               }
             })
         }
       }
     }
+    .width('100%')
   }
 }
 
@@ -830,7 +873,10 @@ struct ReusableV2Component {
 }
 ```
 
+![repeat-nonvirtual](./figures/reusablev2-repeat-nonvirtual.gif)
+
 ### Using in ForEach
+
 >**NOTE**
 >
 >You are advised to use the non-lazy loading scenarios of **Repeat** to replace [ForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md).
@@ -855,11 +901,13 @@ struct Index {
       ForEach(this.simpleList, (num: number, index) => {
         Row() {
           Button('Click to change')
+            .margin({ right: 10 })
             .onClick(() => {
               this.simpleList[index]++;
             })
           ReusableV2Component({ num: num })
         }
+        .margin({ bottom: 10 })
       }) // The key changes from each click.
     }
   }
@@ -890,7 +938,10 @@ struct ReusableV2Component {
 }
 ```
 
+![foreach](./figures/reusablev2-foreach.gif)
+
 ### Using in LazyForEach
+
 >**NOTE**
 >
 >You are advised to use the lazy loading scenarios of **Repeat** to replace [LazyForEach](../../reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md).
@@ -1056,3 +1107,5 @@ struct ChildComponent {
   }
 }
 ```
+
+![lazyforeach](./figures/reusablev2-lazyforeach.gif)

@@ -25,14 +25,14 @@ The following table lists the APIs used for mutual conversion between coordinate
 > **NOTE**
 > The geocoding and reverse geocoding services need to access backend services to obtain information. Therefore, before performing the following steps, ensure that your device is connected to the network.
 
-1. Import the **geoLocationManager** modules. All geocoding and reverse geocoding APIs are provided by this module.
+1. Import the **geoLocationManager** module. All geocoding and reverse geocoding APIs are provided by this module.
    
    ```ts
    import { geoLocationManager } from '@kit.LocationKit';
    ```
 
 2. Check whether the geocoding and reverse geocoding services are available.
-   - Call **isGeoServiceAvailable** to check whether the geocoding and reverse geocoding services are available. If yes, go to step 3. If the services are unavailable, the device does not have the geocoding and reverse geocoding capabilities. Do not use related APIs.
+   - Call **isGeocoderAvailable** to check whether the geocoding and reverse geocoding services are available. If yes, go to step 3. If the services are unavailable, the device does not have the geocoding and reverse geocoding capabilities. Do not use related APIs.
      
       ```ts
       import { geoLocationManager } from '@kit.LocationKit';

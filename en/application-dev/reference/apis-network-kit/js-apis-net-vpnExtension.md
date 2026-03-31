@@ -284,7 +284,7 @@ Creates a VPN based on the specified configuration. This API uses a promise to r
 
 > **NOTE**
 >
-> You are advised to call [destroy()](#destroy) or [destroy(vpnId: string)](#destroy20) to destroy the VPN network and clear resources when the VPN network is not needed.
+> You are advised to call [destroy()](#destroy) or [destroy(vpnId: string)](#destroy20) to destroy the VPN and clear resources when the VPN is not needed.
 
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
@@ -505,7 +505,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 
 destroy(vpnId: string): Promise\<void\>
   
-Destroys a VPN network based on the specified VPN ID. This API uses a promise to return the result.
+Destroys a VPN based on the specified VPN ID. This API uses a promise to return the result.
   
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
@@ -558,6 +558,10 @@ generateVpnId(): Promise\<string\>
 Generates a unique VPN ID. This API uses a promise to return the result.
 
 To use the multi-VPN capability of the system, you need to call this API to generate a VPN ID and configure it in **VpnConfig**.
+
+>**NOTE**
+>
+>Currently, the multi-VPN capability of the system supports only IPv4.
 
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 

@@ -119,15 +119,15 @@ The following introduces how to create different types of gestures:
   Triggers a callback when the user pinches the component. You can specify the number of fingers (at least 2) and the pinch distance (in px).
 
   <!-- @[create_pinch_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
-    
-    ``` C
-    // Obtain the set of native gesture APIs.
-    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
-        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
-    // Create a pinch gesture.
-    // NUMBER_10 = 10
-    auto pinchGesture = gestureApi->createPinchGesture(1, NUMBER_10);
-    ```
+  
+  ``` C
+  // Obtain the set of native gesture APIs.
+  auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+      OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+  // Create a pinch gesture.
+  // NUMBER_2 = 2, NUMBER_10 = 10
+  auto pinchGesture = gestureApi->createPinchGesture(NUMBER_2, NUMBER_10);
+  ```
 
 
 - Rotation gesture
@@ -135,15 +135,15 @@ The following introduces how to create different types of gestures:
   Triggers a callback when the user rotates the component. You can specify the number of fingers (at least 2) and angle.
 
   <!-- @[create_rotation_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
-    
-    ``` C
-    // Obtain the set of native gesture APIs.
-    auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
-        OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
-    // Create a rotation gesture.
-    // NUMBER_10 = 10
-    auto rotationGesture = gestureApi->createRotationGesture(1, NUMBER_10);
-    ```
+  
+  ``` C
+  // Obtain the set of native gesture APIs.
+  auto gestureApi = reinterpret_cast<ArkUI_NativeGestureAPI_1 *>(
+      OH_ArkUI_QueryModuleInterfaceByName(ARKUI_NATIVE_GESTURE, "ArkUI_NativeGestureAPI_1"));
+  // Create a rotation gesture.
+  // NUMBER_2 = 2, NUMBER_10 = 10
+  auto rotationGesture = gestureApi->createRotationGesture(NUMBER_2, NUMBER_10);
+  ```
 
 
 - Swipe gesture
@@ -179,6 +179,7 @@ The following demonstrates how to create a combined gesture that recognizes a lo
 <!-- @[long_press_and_swipe_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndSwipeGesture.h) -->
 
 ``` C
+// LongPressAndSwipeGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -188,7 +189,7 @@ The following demonstrates how to create a combined gesture that recognizes a lo
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 ArkUI_NodeHandle LongPressAndSwipeGesture()
 {
     auto column = nodeAPI->createNode(ARKUI_NODE_COLUMN);
@@ -333,6 +334,7 @@ The following demonstrates how to create a combined gesture that recognizes long
 <!-- @[long_press_and_flick_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/LongPressAndFlickGesture.h) -->
 
 ``` C
+// LongPressAndFlickGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -342,7 +344,7 @@ The following demonstrates how to create a combined gesture that recognizes long
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 
 ArkUI_NodeHandle LongPressAndFlickGesture()
 {
@@ -490,6 +492,7 @@ The following example illustrates the exclusive recognition of pan and pinch ges
 <!-- @[swipe_and_pinch_exclusive_gesture](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/SwipeAndPinchExclusiveGesture.h) -->
 
 ``` C
+// SwipeAndPinchExclusiveGesture.h
 #include <arkui/native_animate.h>
 #include <arkui/native_gesture.h>
 #include <arkui/native_interface.h>
@@ -499,7 +502,7 @@ The following example illustrates the exclusive recognition of pan and pinch ges
 #include <hilog/log.h>
 #include "Common.h"
 #include "Function.h"
-// ···
+// ...
 
 ArkUI_NodeHandle SwipeAndPinchExclusiveGesture()
 {

@@ -34,7 +34,7 @@ Describes the screenshot options.
 | rotation               | number        | No | Yes| Angle by which the captured image should be rotated. Currently, the value can be **0** only. The default value is **0**.    |
 | displayId<sup>8+</sup> | number        | No| Yes | ID of the [display](js-apis-display.md#display) device on which the screen region is to be captured. The value must be an integer.|
 | isNotificationNeeded<sup>14+</sup>| boolean        | No | Yes| Whether to send a notification after a snapshot is captured. **true** to send, **false** otherwise. The default value is **true**. Such a notification can be listened for through [captureStatusChange](js-apis-display.md#displayoncapturestatuschange12).  |
-| isCaptureFullOfScreen<sup>20+</sup> | boolean        | No | Yes| Whether to capture all displays on the current screen. If the screen contains multiple displays, the value **true** means that the entire screen is captured, and **false** means that only the region of the logical screen associated with the specified display ID is captured.|
+| isCaptureFullOfScreen<sup>20+</sup> | boolean        | No | Yes| Whether to capture all displays on the current screen. If the screen contains multiple displays, the value **true** means that the entire screen is captured, and **false** means that only the region of the logical screen associated with the specified display ID is captured. The default value is **false**.|
 
 ## HdrScreenshotOptions<sup>20+</sup>
 
@@ -90,7 +90,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API.|
 | 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 | 1400001 | Invalid display or screen. |
 
 **Example**
@@ -200,7 +199,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | -------------------------- |
 | 201     | Permission verification failed. The application does not have the permission required to call the API.|
 | 202     | Permission verification failed. A non-system application calls a system API.|
-| 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types.|
 
 **Example**
 

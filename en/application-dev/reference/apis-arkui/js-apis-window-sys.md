@@ -83,7 +83,7 @@ Enumerates the window modes.
 | UNDEFINED  | 1    | The window mode is not defined by the application.      |
 | FULLSCREEN | 2    | The application is displayed in full screen.            |
 | PRIMARY    | 3    | The application is displayed in the primary window in split-screen mode. In top-bottom splits, the top screen is primary; in left-right splits, the left screen is primary. |
-| SECONDARY  | 4    | The application is displayed in the secondary window in split-screen mode. In top-bottom splits, the top screen is secondary; in left-right splits, the left screen is secondary. |
+| SECONDARY  | 4    | The application is displayed in the secondary window in split-screen mode. In top-bottom splits, the bottom screen is secondary; in left-right splits, the right screen is secondary. |
 | FLOATING   | 5    | The application is displayed in a floating window.|
 
 ## WindowLayoutMode<sup>9+</sup>
@@ -1518,7 +1518,7 @@ export default class EntryAbility extends UIAbility {
 
 bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a listener for target window destruction events is added. This API uses an asynchronous callback to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1529,7 +1529,7 @@ Binds the modal window to the target window. After the binding is successful, th
 | Name      | Type                     | Mandatory| Description                 |
 | ----------- | ------------------------- | ---- | -------------------- |
 | token       | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | Yes  | Token of the target window.|
-| deathCallback | Callback&lt;void&gt;        | Yes  | Callback used to listen for target window destruction events.|
+| deathCallback | Callback&lt;void&gt;        | Yes  | Callback used to listen for modal window destruction events.|
 | callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -1601,7 +1601,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): Promise&lt;void&gt;
 
-Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a listener for target window destruction events is added. This API uses a promise to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1612,7 +1612,7 @@ Binds the modal window to the target window. After the binding is successful, th
 | Name      | Type                     | Mandatory| Description                 |
 | ----------- | ------------------------- | ---- | -------------------- |
 | token       | [rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject) | Yes  | Token of the target window.|
-| deathCallback | Callback&lt;void&gt;        | Yes  | Callback used to listen for target window destruction events.|
+| deathCallback | Callback&lt;void&gt;        | Yes  | Callback used to listen for modal window destruction events.|
 
 **Return value**
 
@@ -1687,7 +1687,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback&lt;void&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a listener for target window destruction events is added. This API uses an asynchronous callback to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1698,7 +1698,7 @@ Binds the modal window to the target window. After the binding is successful, th
 | Name      | Type                     | Mandatory| Description                 |
 | ----------- | ------------------------- | ---- | -------------------- |
 | requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | Yes  | **RequestInfo** of the target window.|
-| deathCallback | Callback&lt;void&gt;    | Yes  | Callback used to listen for target window destruction events.|
+| deathCallback | Callback&lt;void&gt;    | Yes  | Callback used to listen for modal window destruction events.|
 | callback    | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result.|
 
 **Error codes**
@@ -1758,7 +1758,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback&lt;void&gt;): Promise&lt;void&gt;
 
-Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a listener for target window destruction events is added. This API uses a promise to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1769,7 +1769,7 @@ Binds the modal window to the target window. After the binding is successful, th
 | Name      | Type                     | Mandatory| Description                 |
 | ----------- | ------------------------- | ---- | -------------------- |
 | requestInfo | [dialogRequest.RequestInfo](../apis-ability-kit/js-apis-app-ability-dialogRequest.md#requestinfo) | Yes  | **RequestInfo** of the target window.|
-| deathCallback | Callback&lt;void&gt;    | Yes  | Callback used to listen for target window destruction events.|
+| deathCallback | Callback&lt;void&gt;    | Yes  | Callback used to listen for modal window destruction events.|
 
 **Return value**
 
@@ -2361,12 +2361,12 @@ Sets the shadow for the window borders.
 
 **Parameters**
 
-| Name | Type  | Mandatory| Description                                                         |
-| ------- | ------ | ---- |-------------------------------------------------------------|
-| radius  | number | Yes  | Radius of the shadow. The value is a floating-point number greater than or equal to 0.0, in px. The value **0.0** means that the shadow is disabled for the window borders.    |
-| color   | string | No  | Color of the shadow. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **#00FF00** or **#FF00FF00**.|
-| offsetX | number | No  | Offset of the shadow along the x-axis, in px. The value is a floating-point number.                             |
-| offsetY | number | No  | Offset of the shadow along the y-axis, in px. The value is a floating-point number.                             |
+| Name | Type  | Mandatory| Description                                                                      |
+| ------- | ------ | ---- |--------------------------------------------------------------------------|
+| radius  | number | Yes  | Radius of the shadow. The value is a floating-point number greater than or equal to 0.0, in px. The value **0.0** means that the shadow is disabled for the window borders.           |
+| color   | string | No  | Color of the shadow. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **#00FF00** or **#FF00FF00**. The default value is **'#000000'**.|
+| offsetX | number | No  | Offset of the shadow along the x-axis, in px. The value is a floating-point number, in px. The default value is **0.0**.                                   |
+| offsetY | number | No  | Offset of the shadow along the y-axis, in px. The value is a floating-point number, in px. The default value is **0.0**.                                   |
 
 **Error codes**
 
@@ -2937,7 +2937,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
 }
 ```
 ```json5
-//module.json5
+// module.json5
 {
   "module": {
     "name": "entry",
@@ -3083,7 +3083,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
@@ -3162,7 +3162,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 

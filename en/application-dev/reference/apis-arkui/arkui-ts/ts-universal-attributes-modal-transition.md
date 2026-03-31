@@ -36,7 +36,7 @@ Binds a full-screen modal to the component, which can be displayed when the comp
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | isShow  | boolean                        | Yes  | Whether to display the full-screen modal.<br>- **true**: Display the modal.<br>- **false**: Hide the modal.<br>Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>Since API version 18, this attribute supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).|
 | builder | [CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the modal. The root node in **builder** must be unique.                          |
-| type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | No  | System transition mode of the modal.<br> Default value: **ModalTransition.DEFAULT**.<br>**NOTE**<br> This property has no effect when it is set together with **transition**.                                |
+| type | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | No  | System transition mode of the modal.<br> Default value: **ModalTransition.DEFAULT**.<br>**NOTE**<br> This attribute has no effect when it is set together with **transition**.                                |
 
 **Return value**
 
@@ -77,7 +77,7 @@ Provides content options of the modal.
 
 | Name             | Type                                      | Read-Only|  Optional  | Description           |
 | --------------- | ---------------------------------------- | ---- | ---- | ------------- |
-| modalTransition | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | No| Yes   | System transition mode of the modal.<br> Default value: **ModalTransition.DEFAULT**.<br>**NOTE**<br> This property has no effect when it is set together with **transition**.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| modalTransition | [ModalTransition](ts-universal-attributes-sheet-transition.md#modaltransition) | No| Yes   | System transition mode of the modal.<br> Default value: **ModalTransition.DEFAULT**.<br>**NOTE**<br> This attribute has no effect when it is set together with **transition**.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
 | onWillDismiss<sup>12+</sup> | Callback&lt;[DismissContentCoverAction](#dismisscontentcoveraction12)&gt; | No| Yes  | Callback invoked to prevent a user attempt to dismiss the modal.<br>**NOTE**<br>After this callback is registered, touching the back button does not immediately dismiss the modal. You can use the **reason** parameter to determine the type of operation that triggers the dismiss and decide whether to dismiss the modal based on the reason. Nesting **onWillDismiss** callbacks is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | transition<sup>12+</sup> | [TransitionEffect](ts-transition-animation-component.md#transitioneffect10) | No| Yes  | Custom transition mode of the modal.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | enableSafeArea<sup>20+</sup> | boolean  | No| Yes | Whether the full-screen modal adapts to the safe area. **true** indicates the full-screen modal adapts to the safe area, restricting content within the safe area and avoiding the navigation and status bars. **false** indicates no processing is applied, maintaining the same style as before. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
@@ -681,4 +681,4 @@ struct SafeAreaController {
 }
 ```
 
-![en-us-enableSafeArea](figures/en-us-enablesafearea.png)
+![zh-cn-enableSafeArea](figures/en-us-enablesafearea.png)

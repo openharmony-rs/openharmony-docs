@@ -791,8 +791,8 @@ Obtains the profiles supported by a codec.
 | Name| Description|
 | -- | -- |
 | [OH_AVCapability](capi-avcapability-oh-avcapability.md) *capability | Pointer to the codec capability.|
-| const int32_t **profiles | Double pointer to the profile array.|
-| uint32_t *profileNum | Pointer to the number of profiles in the array.|
+| const int32_t **profiles |  Double pointer to the profile array.|
+| uint32_t *profileNum |  Pointer to the number of profiles in the array.|
 
 **Returns**
 

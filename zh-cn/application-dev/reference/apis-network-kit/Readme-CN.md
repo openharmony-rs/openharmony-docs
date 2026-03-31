@@ -19,9 +19,9 @@
   - [@ohos.net.vpn (VPN管理)](js-apis-net-vpn.md)
   - [@ohos.net.webSocket (WebSocket连接)](js-apis-webSocket.md)
   - [@ohos.net.netFirewall (网络防火墙)](js-apis-net-netfirewall.md)
-  - [@ohos.net.networkSecurity (Network Security)](js-apis-networkSecurity.md)
+  - [@ohos.net.networkSecurity (网络安全校验)](js-apis-networkSecurity.md)
   - [@ohos.net.eap (扩展认证)](js-apis-net-eap.md)
-  - [@ohos.app.ability.VpnExtensionAbility(三方VPN能力)](js-apis-VpnExtensionAbility.md)
+  - [@ohos.app.ability.VpnExtensionAbility (三方VPN能力)](js-apis-VpnExtensionAbility.md)
   - [VpnExtensionContext](js-apis-inner-application-VpnExtensionContext.md)
   <!--Del-->
   - [@ohos.net.connection (网络连接管理)（系统接口）](js-apis-net-connection-sys.md)
@@ -31,7 +31,7 @@
   - [@ohos.net.statistics (流量管理)（系统接口）](js-apis-net-statistics-sys.md)
   - [@ohos.net.vpn (VPN管理)（系统接口）](js-apis-net-vpn-sys.md)
   - [@ohos.net.vpnExtension (VPN增强管理)（系统接口）](js-apis-net-vpnExtension-sys.md)
-  - [@ohos.net.netFirewall (网络防火墙)（系统接口）](js-apis-net-netfirewall-sys.md)
+  - [@ohos.net.netFirewall (网络防火墙)(系统接口)](js-apis-net-netfirewall-sys.md)
   <!--DelEnd-->
 - C API<!--network-c-->
   - 模块<!--network-module-->
@@ -96,6 +96,6 @@
   - [MDNS错误码](errorcode-net-mdns.md)
   - [流量管理错误码](errorcode-net-statistics.md)
   - [VPN错误码](errorcode-net-vpn.md)
-  - [NetworkSecurity错误码](errorcode-net-networkSecurity.md)
+  - [网络安全校验错误码](errorcode-net-networkSecurity.md)
   - [内核错误码](errorcode-kernel.md)
   - [防火墙错误码](errorcode-net-netfirewall.md)

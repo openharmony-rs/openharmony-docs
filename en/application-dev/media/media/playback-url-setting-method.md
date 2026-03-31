@@ -175,7 +175,6 @@ If an application needs to play an online streaming media asset by parsing an M3
 **Case 2: local file playback**
 
 > **NOTE**
->
 > When the AVPlayer is used to play local resources, it exclusively occupies the file descriptor.
 
 ```ts
@@ -232,7 +231,7 @@ If an application needs to play an online streaming media asset by parsing an M3
     ```
 3. Comment out or uncomment the above examples in the **entry/src/main/ets/pages/Index.ets** file, and compile and run the application.
 
-4. After installing the application, you can run the following commands to add the /entry/src/main/resources/rawfile/test.m3u8 file in the sample project to the application sandbox, allowing you to run sandbox-related examples. (`<FILESDIR>` is the physical path. For example, in the sample project, you can print "this.context.filesDir" using **console.info** to obtain the application sandbox path and then find the physical path based on the mappings between application sandbox paths and physical paths in [Application Sandbox](../../file-management/app-sandbox-directory.md).)
+4. After installing the application, you can run the following commands to add the **/entry/src/main/resources/rawfile/test.m3u8** file in the sample project to the application sandbox, allowing you to run sandbox-related examples. (```<FILESDIR>``` is the physical path. For example, in the sample project, you can print **"this.context.filesDir"** using **console.info** to obtain the application sandbox path and then find the physical path based on the mappings between application sandbox paths and physical paths in [Application Sandbox](../../file-management/app-sandbox-directory.md).)
     ```
     hdc file send "[Directory]\test.m3u8" <FILESDIR>
     hdc file send "[Directory]\test_01.mp3" <FILESDIR>

@@ -42,10 +42,10 @@ Provides information about the check box.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name | Type| Read-Only| Optional| Description|
+| Name | Type| Read Only| Optional| Description|
 | --------| --------| ------ | -------- | -------- |
-| name    | string | No| Yes| Name of the check box.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| group   | string | No| Yes| Group name of the check box (that is, the name of the check box group to which the check box belongs).<br>**NOTE**<br>For the settings to take effect, this parameter must be used with the [CheckboxGroup](ts-basic-components-checkboxgroup.md) component.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| name    | string | No| Yes| Name of the check box.<br> Default value: **undefined**. If this parameter is set to **undefined**, it does not take effect.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| group   | string | No| Yes| Group name of the check box (that is, the name of the check box group to which the check box belongs).<br> Default value: **undefined**. In the default state, this parameter is used together with the option whose **group** value is **undefined** in [CheckboxGroupOptions](ts-basic-components-checkboxgroup.md#checkboxgroupoptions).<br>**NOTE**<br>For the settings to take effect, this parameter must be used with the [CheckboxGroup](ts-basic-components-checkboxgroup.md) component.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | indicatorBuilder<sup>12+</sup> | [CustomBuilder](ts-types.md#custombuilder8) | No| Yes| Custom component to indicate that the check box is selected. This custom component is center aligned with the check box. When **indicatorBuilder** is set to **undefined** or **null**, it defaults to the state where it is not set.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## Attributes
@@ -110,7 +110,7 @@ Sets the color of the check box when it is selected.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the check box when it is selected.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_activated')**.<br>An invalid value is handled as the default value.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Color of the check box when it is selected.<br>Default value: **$r('sys.color.ohos_id_color_text_primary_activated')**<br>An invalid value is handled as the default value.|
 
 ### selectedColor<sup>18+</sup>
 
@@ -144,7 +144,7 @@ Sets the border color of the check box when it is not selected.
 
 | Name| Type                                      | Mandatory| Description                    |
 | ------ | ------------------------------------------ | ---- | -------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Border color of the check box when it is not selected.<br>Default value: **$r('sys.color.ohos_id_color_switch_outline_off')**.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Border color of the check box when it is not selected.<br>Default value: **$r('sys.color.ohos_id_color_switch_outline_off')**|
 
 ### unselectedColor<sup>18+</sup>
 
@@ -192,7 +192,7 @@ Sets the check mark style of the check box. Compared with [mark](#mark10)<sup>10
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[MarkStyle](ts-types.md#markstyle10)> | Yes  | Check mark style of the check box. If **indicatorBuilder** is set, the style is determined by **indicatorBuilder**.<br>If **style** is set to **undefined**, the default value is used: {<br>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`,<br>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br>size: '20vp'<br>} |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[MarkStyle](ts-types.md#markstyle10) >| Yes  | Check mark style of the check box. If **indicatorBuilder** is set, the style is determined by **indicatorBuilder**.<br>If **style** is set to **undefined**, the default value is used: {<br>strokeColor : `$r('sys.color.ohos_id_color_foreground_contrary')`,<br>strokeWidth: `$r('sys.float.ohos_id_checkbox_stroke_width')`,<br>size: '20vp'<br>} |
 
 ### shape<sup>11+</sup>
 
@@ -328,7 +328,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name| Type   |    Read-Only   |    Optional     |  Description             |
+| Name| Type   |    Read Only   |    Optional     |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | name | string | No| No|Name of the check box.|
 | selected | boolean| No| No| Whether the check box is selected.<br>**true**: The check box is selected. <br>**false**: The check box is not selected.<br>If the **select** attribute is not set, the default value **false** is used.<br>If the **select** attribute is set, the attribute value is used here.|
@@ -692,7 +692,7 @@ struct CheckboxExample {
         }
       }.margin({ bottom: 15 })
 
-      // Global Select All button
+      // Select all.
       Flex({ justifyContent: FlexAlign.Start, alignItems: ItemAlign.Center }) {
         Row() {
           CheckboxGroup({ group: 'checkboxGroup' })
@@ -712,7 +712,7 @@ struct CheckboxExample {
         }
       }.margin({ bottom: 15 })
 
-      // Obtain the selection information.
+      // Obtain the selected information.
       Button('get selected info')
         .margin({ top: 10 })
         .onClick(() => {
@@ -827,7 +827,7 @@ struct Index {
     Column() {
       if (this.isChoosing) {
         Row() {
-          Text('Cancel')
+          Text ('Cancel')
             .onClick(() => {
               this.isChoosing = false;
               this.selectedStart = -1;

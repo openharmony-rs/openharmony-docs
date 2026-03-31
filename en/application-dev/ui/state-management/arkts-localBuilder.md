@@ -115,7 +115,7 @@ Parameters for \@LocalBuilder functions can be passed [by callback](#passing-par
 
 - All parameters must be immutable inside the \@LocalBuilder function body.
 
-- \@The UI syntax in LocalBuilder complies with [syntax rules](arkts-create-custom-components.md#build-1).
+- The \@LocalBuilder function body follows the same [syntax rules](arkts-create-custom-components.md#build-implementation-rules) as the **build()** function.
 
 - The UI components in the \@Builder function can be updated during callback-based transfer and reference-based transfer. Passing by reference takes effect only when one parameter is passed and the parameter is directly passed to the object literal. If there are multiple parameters, the UI component in the @Builder function cannot be refreshed.
 
@@ -509,7 +509,7 @@ struct Child {
 **Correct Usage**
 
 Create a state variable under the component that declares @LocalBuilder and access the state variable in the @LocalBuilder function. The UI component in @LocalBuilder can be updated when the state variable changes.
-<!-- @[problem_ui_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshPositive.ets) -->
+<!-- @[problem_ui_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshPositive.ets) --> 
 
 ``` TypeScript
 class LayoutSize {
@@ -549,7 +549,7 @@ struct Child {
       this.customBuilder()
       Button('add child size')
         .onClick(() => {
-          this.layoutSize.size += 1; //The parameter transferred by the subcomponent is changed. The @Link transfers the @State of the parent component to refresh the UI of the @LocalBuilder function declared by the parent component.
+          this.layoutSize.size += 1; // Changes to the parameters passed from the child component are propagated to the parent component's @State via @Link, refreshing the UI of the @LocalBuilder decorated function declared in the parent.
         })
     }
   }
@@ -557,3 +557,85 @@ struct Child {
 ```
 
 ![localBuilder_double_dollar.gif](./figures/localBuilder_double_dollar.gif)
+
+### The layout is incorrect when the @LocalBuilder decorated function is directly called in the parameter.
+
+When a function decorated with @LocalBuilder is used as a parameter, the function execution result is directly passed, which may cause the layout to be different from the expected effect.
+
+**Incorrect Usage**
+
+<!-- @[problem_ui_structure_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructureOpposite.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Page {
+  @State message: string[] = ['1', '2', '3'];
+
+  build() {
+    List() {
+      // Incorrect usage. The execution result of itemFoot is directly passed.
+      ListItemGroup({ space: 10, footer: this.itemFoot() }) {
+        ForEach(this.message, (item: string, index: number) => {
+          ListItem() {
+            Stack() {
+              Text(item)
+                .fontSize(30)
+            }
+          }
+        })
+      }
+    }
+  }
+
+  @LocalBuilder
+  itemFoot() {
+    Column() {
+      Text('itemFoot')
+        .fontSize(30)
+    }
+  }
+}
+```
+
+![localBuilder_parameter_passing_error_format.png](./figures/localBuilder_parameter_passing_error_format.png)
+
+**Correct Usage**
+
+ When a function decorated with @LocalBuilder is used as a parameter, use the () => {function call} format to ensure the layout behaves as expected.
+
+<!-- @[problem_ui_structure_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructurePositive.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Page {
+  @State message: string[] = ['1', '2', '3'];
+
+  build() {
+    List() {
+      //Correct usage. Use the () => {function call} format.
+      ListItemGroup({ space: 10, footer: () => { this.itemFoot() } }) {
+        ForEach(this.message, (item: string, index: number) => {
+          ListItem() {
+            Stack() {
+              Text(item)
+                .fontSize(30)
+            }
+          }
+        })
+      }
+    }
+  }
+
+  @LocalBuilder
+  itemFoot() {
+    Column() {
+      Text('itemFoot')
+        .fontSize(30)
+    }
+  }
+}
+```
+
+![localBuilder_parameter_transmission_in_correct_form.png](./figures/localBuilder_parameter_transmission_in_correct_form.png)

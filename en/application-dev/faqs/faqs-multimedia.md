@@ -110,7 +110,7 @@ let want = {
  uri: 'detail'
   }
 };
-let context = getContext(this) as common.UIAbilityContext;
+let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 context.startAbility(want);
 ```
 
@@ -145,7 +145,7 @@ Applicable to: stage model
 2. Call **requestPermissionsFromUser** to request the permissions from end users in the form of a dialog box. This operation is required because the grant mode of both permissions is **user_grant**.
 
    ```ts
-   let context = getContext(this) as common.UIAbilityContext;
+   let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
    let atManager = abilityAccessCtrl.createAtManager();
    let permissions: Array<Permissions> = ['ohos.permission.READ_MEDIA','ohos.permission.WRITE_MEDIA']
    atManager.requestPermissionsFromUser(context, permissions)

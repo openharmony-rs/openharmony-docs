@@ -136,7 +136,7 @@ Sets the size of the **Select** component.
 
 | Name| Type                                                        | Mandatory| Description                                             |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------- |
-| value  | [ControlSize](ts-basic-components-button.md#controlsize11)<sup>11+</sup> | Yes  | Size of the **Select** component.<br>Default value: **ControlSize.NORMAL**.|
+| value  | [ControlSize](ts-basic-components-button.md#controlsize11)<sup>11+</sup> | Yes  | Size of the **Select** component.<br>Default value: **ControlSize.NORMAL**|
 
 The priorities of **controlSize**, **width**, and **height** are as follows:
 
@@ -732,7 +732,7 @@ Sets the background blur style of the drop-down menu.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | Yes  | Background blur style of the drop-down menu.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**.|
+| value  | [BlurStyle](ts-universal-attributes-background.md#blurstyle9) | Yes  | Background blur style of the drop-down menu.<br>Default value: **BlurStyle.COMPONENT_ULTRA_THICK**|
 
 ### menuBackgroundBlurStyle<sup>18+</sup>
 
@@ -764,7 +764,7 @@ Sets the avoidance mode for the drop-down menu.
 
 | Name   | Type                                     | Mandatory| Description                                                        |
 | --------- | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode      | [AvoidanceMode](#avoidancemode19)  | Yes  | Avoidance mode for the drop-down menu.<br>Default value: **AvoidanceMode.COVER_TARGET**.|
+| mode      | [AvoidanceMode](#avoidancemode19)  | Yes  | Avoidance mode for the drop-down menu.<br>Default value: **AvoidanceMode.COVER_TARGET**|
 
 ### menuOutline<sup>20+</sup>
 
@@ -796,7 +796,7 @@ Sets whether to display the default selection icon.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| show  | boolean | Yes  | Whether to display the default selection icon.<br>true: The default icon is displayed. false: The default icon is not displayed. The background color is highlighted to indicate that the icon is selected.<br>Default value: **false**.<br>When show is set to true and the background color of the selected option is set, the background color of the selected option and the icon selected by default are displayed. If the background color of the selected item is not set using selectedOptionBgColor, the background color is not highlighted and only the icon selected by default is displayed.|
+| show  | boolean | Yes  | Whether to display the default selection icon.<br>true: The default icon is displayed. false: The default icon is not displayed. The background color is highlighted to indicate that the icon is selected.<br>Default value: **false**<br>When show is set to true and the background color of the selected option is set, the background color of the selected option and the icon selected by default are displayed. If the background color of the selected item is not set using selectedOptionBgColor, the background color is not highlighted and only the icon selected by default is displayed.|
 
 ### textModifier<sup>20+</sup>
 
@@ -886,17 +886,19 @@ If both [selectedOptionFont](#selectedoptionfont) and **Font** of **selectedOpti
 
 showInSubWindow(showInSubWindow:Optional\<boolean>)
 
-Sets whether the menu of the **Select** component is displayed in the subwindow.
+Sets whether the drop-down menu is displayed in the subwindow. If this API is not used, the drop-down menu is not displayed in the subwindow by default.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
+**Device behavior difference**: This API is supported on PCs and 2-in-1 devices but not available on other devices.
+
 **Parameters**
 
 | Name| Type  | Mandatory| Description          |
 | ------ | ------ | ---- | -------------- |
-| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether the menu of the **Select** component is displayed in the subwindow.<br>**true**: The menu of the **Select** component is displayed in the subwindow and takes effect only for 2-in-1 devices.<br>**false**: The menu of the **Select** component is not displayed in the subwindow.<br>Default value: **true** for 2-in-1 devices and **false** for other devices|
+| showInSubWindow  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | Yes  | Whether the drop-down menu is displayed in the subwindow.<br>**true**: The drop-down menu is displayed in the subwindow.<br>**false**: The drop-down menu is not displayed in the subwindow.|
 
 ## ArrowPosition<sup>10+</sup>
 
@@ -951,7 +953,7 @@ You need a custom class to implement the **ContentModifier** API. Inherits from 
 | value  | [ResourceStr](ts-types.md#resourcestr) | No | No | Text content of the drop-down menu option.<br>**NOTE**<br>If the length of the text exceeds the width of the menu item text area, the text will be truncated.|
 | icon  | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Icon of the drop-down menu option.<br>**NOTE**<br>The string type can be used to load network images and local images.|
 | symbolIcon  | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md) | No  | Yes | Symbol icon of the drop-down menu option.|
-| selected  | boolean | No | No | Whether the drop-down menu option is selected. The value **true** means that the option is selected, and **false** means the opposite.<br>Default value: **false**.|
+| selected  | boolean | No | No | Whether the drop-down menu option is selected. The value **true** means that the option is selected, and **false** means the opposite.<br>Default value: **false**|
 | index  | number | No | No | Index of the drop-down menu option. The index is zero-based.|
 | triggerSelect  | (index: number, value: string) :void | No | No | Invoked when a drop-down menu option is selected.<br>**index**: index of the selected option.<br>**value**: text of the selected option.<br>**NOTE**<br>The value of **index** will be assigned to the **index** parameter in the [onSelect](#onselect) callback; the value of **value** will be returned to the **Select** component for display and will also be assigned to the **value** parameter in the [onSelect](#onselect) callback.|
 
@@ -1069,7 +1071,7 @@ struct SelectExample {
 
 
 
-## Example 2: Setting the Symbol Icon
+##  Example 2: Setting the Symbol Icon
 This example demonstrates how to create a drop-down menu with symbol icons in the **Select** component and implement menu avoidance using the [avoidance](#avoidance19) attribute, available since API version 19.
 
 ```ts
@@ -1122,7 +1124,7 @@ struct SelectExample {
 
 ![](figures/SelectSymbol.png)
 
-## Example 3: Implementing a Custom Drop-down Menu
+##  Example 3: Implementing a Custom Drop-down Menu
 This example implements a custom drop-down menu, each option of which consists of text + symbol + blank area + text + drawn triangle. After a menu option is clicked, the text content of the menu option is displayed.
 
 ```ts
@@ -1195,7 +1197,7 @@ struct SelectExample {
 ```
 ![](figures/SelectBuilderSymbol.png)
 
-## Example 4: Using the Divider Style
+##  Example 4: Using the Divider Style
 This example uses **DividerOptions** to create a divider-style drop-down menu and implements menu avoidance using the [avoidance](#avoidance19) attribute, available since API version 19.
 
 ```ts
@@ -1244,7 +1246,7 @@ struct SelectExample {
 ```
 ![](figures/SelectCustomDivider.png)
 
-## Example 5: Using the No-Divider Style
+##  Example 5: Using the No-Divider Style
 This example sets the **divider** attribute to **null** to remove dividers, and implements menu avoidance using the [avoidance](#avoidance19) attribute, available since API version 19.
 
 ```ts
@@ -1288,7 +1290,7 @@ struct SelectExample {
 ```
 ![](figures/SelectHideDivider.png)
 
-## Example 6: Setting the Text and Arrow Styles of the Select Component
+##  Example 6: Setting the Text and Arrow Styles of the Select Component
 
 This example illustrates how to configure the text and arrow styles of the **Select** component using the [textModifier](#textmodifier20) and [arrowModifier](#arrowmodifier20) attributes, available since API version 20.
 
@@ -1355,7 +1357,7 @@ struct SelectExample {
 ```
 ![](figures/SelectModifier.png)
 
-## Example 7: Setting the Text Styles of Selected and Unselected Drop-Down Menu Options
+##  Example 7: Setting the Text Styles of Selected and Unselected Drop-Down Menu Options
 
 This example demonstrates how to use the [optionTextModifier](#optiontextmodifier20) and [selectedOptionTextModifier](#selectedoptiontextmodifier20) attributes to set text styles for unselected and selected drop-down menu options, available since API version 20.
 

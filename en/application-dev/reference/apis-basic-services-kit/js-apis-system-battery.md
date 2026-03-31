@@ -10,7 +10,7 @@
 The **battery** module allows you to query the charging status and remaining power of a device.
 
 >  **NOTE**
->  - The APIs of this module are no longer maintained since API version 6. It is recommended that you use [`@ohos.batteryInfo`](js-apis-battery-info.md).
+>  - The APIs of this module are no longer maintained since API version 6. You are advised to use [@ohos.batteryInfo](js-apis-battery-info.md) instead.
 >  - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 
@@ -41,7 +41,7 @@ Obtains the current charging state and battery level.
 ```js
 Battery.getStatus({
     success: (data: BatteryResponse) => {
-        console.log('success get battery level:' + data.level);
+        console.info('success get battery level:' + data.level);
     },
     fail: (data: string, code: number) => {
         console.error('fail to get battery level code:' + code + ', data: ' + data);
@@ -67,7 +67,7 @@ Defines a response that returns the charging status and remaining power of the d
 
 **System capability**: SystemCapability.PowerManager.BatteryManager.Lite
 
-| Name| Type| Readable| Writable| Description|
+| Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| charging | boolean | Yes| No| Whether the battery is being charged. The value **true** indicates that the battery is being changed; **false** indicates the opposite. The default value is **false**.|
-| level | number | Yes| No| Current battery level, which ranges from **0.00** to **1.00**.|
+| charging | boolean | No| No| Whether the battery is being charged. The value **true** indicates that the battery is being changed; **false** indicates the opposite. The default value is **false**.<br>Note: This API is no longer maintained since API version 6 except for lite wearables. You are advised to use [batteryInfo.chargingStatus](js-apis-battery-info.md#constants) instead.|
+| level | number | No| No| Current battery level, which ranges from **0.00** to **1.00**.<br>Note: This API is no longer maintained since API version 6 except for lite wearables. You are advised to use [batteryInfo.batterySOC](js-apis-battery-info.md#constants) instead.|

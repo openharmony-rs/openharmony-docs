@@ -27,6 +27,6 @@ typedef struct Hid_AbsAxesArray {...} Hid_AbsAxesArray
 | 名称 | 描述 |
 | -- | -- |
 | Hid_AbsAxes* hidAbsAxes | 绝对坐标属性编码 |
-| uint16_t length | 数组长度 |
+| uint16_t length | 数组的有效长度 |
 
 

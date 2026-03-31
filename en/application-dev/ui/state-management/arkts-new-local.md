@@ -78,7 +78,7 @@ In the preceding code, the \@State decorated **componentInfo** variable in the *
 | \@Local Variable Decorator| Description|
 | ------------------- | ------------------------------------------------------------ |
 | Decorator parameters| None.|
-| Allowed variable types| Basic types, such as object, class, string, number, boolean, and enum, and built-in types such as Array, Date, Map, and Set. null, undefined, and union types.|
+| Allowed variable types| Primitive types, such as object, class, string, number, boolean, and enum, and built-in types such as Array, Date, Map, and Set. null, undefined, and union types.|
 | Initial value for the decorated variable| Local initialization is required. External initialization is not allowed.|
 
 ## Variable Passing
