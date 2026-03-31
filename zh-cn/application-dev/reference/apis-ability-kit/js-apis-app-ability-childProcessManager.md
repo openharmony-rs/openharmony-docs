@@ -424,3 +424,26 @@ struct Index {
   }
 }
 ```
+
+## childProcessManager.isChildProcessSupported<sup>26.0.0+</sup>
+
+isChildProcessSupported(): boolean
+
+查询是否允许在此设备上创建子进程。返回true表示允许创建子进程，false表示不允许。
+
+**系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**返回值：**
+
+| 类型    | 说明                                          |
+| :------ | --------------------------------------------- |
+| boolean | 如果允许创建子进程，则为true；否则返回false。 |
+
+**示例：**
+
+```ts
+import { childProcessManager } from '@kit.AbilityKit';
+
+let isSupport: boolean = childProcessManager.isChildProcessSupported();
+console.log("isSupport:"+isSupport);
+```
