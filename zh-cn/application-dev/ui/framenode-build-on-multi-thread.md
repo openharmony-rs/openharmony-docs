@@ -429,3 +429,7 @@ struct Index {
   }
 }
 ```
+
+## 相关实例
+
+[使用FrameNode多线程接口创建UI组件](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS-Sta/FrameNodeBuildOnMultiThread/README.md)
