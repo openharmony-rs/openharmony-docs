@@ -96,6 +96,24 @@ task5(OUT A);
 
 <!-- @[parallel_dep_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel_cpp.cpp) -->
 
+``` C++
+const int FIB_NUM = 5;
+
+int DependenceCppExec()
+{
+    // 提交任务
+    auto handle_A = ffrt::submit_h([] () { OH_LOG_INFO(LOG_APP, "视频解析"); });
+    auto handle_B = ffrt::submit_h([] () { OH_LOG_INFO(LOG_APP, "视频转码"); }, {handle_A});
+    auto handle_C = ffrt::submit_h([] () { OH_LOG_INFO(LOG_APP, "视频生成缩略图"); }, {handle_A});
+    auto handle_D = ffrt::submit_h([] () { OH_LOG_INFO(LOG_APP, "视频添加水印"); }, {handle_B, handle_C});
+    ffrt::submit([] () { OH_LOG_INFO(LOG_APP, "视频发布"); }, {handle_D});
+
+    // 等待所有任务完成
+    ffrt::wait();
+    return 0;
+}
+```
+
 预期的输出可能为：
 
 ```plain
