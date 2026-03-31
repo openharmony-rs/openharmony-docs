@@ -71,7 +71,7 @@ struct Index {
             avSession.createAVSession(context, tag, "audio").then(async (data: avSession.AVSession) => {
             currentAVSession = data;
             sessionId = currentAVSession.sessionId;
-            console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
+            console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
             }).catch((err: BusinessError) => {
             console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
             });
@@ -134,7 +134,7 @@ struct Index {
             } else {
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
-              console.info(`CreateAVSession : SUCCESS : sessionId = ${sessionId}`);
+              console.info(`Succeeded in creating AV session, sessionId: ${sessionId}`);
             }
           });
         })
@@ -201,7 +201,7 @@ struct Index {
               currentAVSession = data;
               sessionId = currentAVSession.sessionId;
               sessionTag = currentAVSession.sessionTag;
-              console.info(`GetAVSession : SUCCESS : sessionId=${sessionId}, sessionTag=${sessionTag}`);
+              console.info(`Succeeded in getting AV session, sessionId: ${sessionId}, sessionTag: ${sessionTag}`);
             }).catch((err: BusinessError) => {
               console.error(`GetAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
             });
@@ -254,11 +254,11 @@ struct Index {
         Text(this.message)
           .onClick(()=>{
             avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-              console.info(`getAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
               if (descriptors.length > 0 ) {
-                console.info(`getAllSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
-                console.info(`GetAllSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
-                console.info(`GetAllSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
+                console.info(`Succeeded in getting session descriptor, isActive: ${descriptors[0].isActive}`);
+                console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`);
+                console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
               }
             }).catch((err: BusinessError) => {
               console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -320,10 +320,10 @@ struct Index {
         Text(this.message)
           .onClick(()=>{
             avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-              console.info(`getAllSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
               if (descriptors.length > 0 ) {
                 avSession.createController(descriptors[0]?.sessionId).then((avcontroller: avSession.AVSessionController) => {
-                  console.info('CreateController : SUCCESS ');
+                  console.info('Succeeded in creating controller.');
                 }).catch((err: BusinessError) => {
                   console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
                 });
@@ -669,7 +669,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 avSession.isDesktopLyricSupported().then((isSupported: boolean) => {
-  console.info(`isDesktopLyricSupported : SUCCESS : isSupported : ${isSupported}`);
+  console.info(`Succeeded in checking desktop lyric supported: ${isSupported}`);
 }).catch((err: BusinessError) => {
   console.error(`isDesktopLyricSupported BusinessError: code: ${err.code}, message: ${err.message}`);
 });

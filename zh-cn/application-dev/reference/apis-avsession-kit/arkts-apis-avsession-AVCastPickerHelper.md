@@ -122,7 +122,7 @@ class MyPage {
     };
 
     this.avCastPicker.select(avCastPickerOptions).then(() => {
-      console.info('select successfully');
+      console.info('Succeeded in selecting.');
     }).catch((err: BusinessError) => {
       console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
     });
@@ -155,7 +155,7 @@ import { avSession } from '@kit.AVSessionKit';
 async function avCastPicker(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);
   avCastPicker.resetCommunicationDevice().then(() => {
-    console.info('resetCommunicationDevice successfully');
+    console.info('Succeeded in resetting communication device.');
   });
 }
 ```
