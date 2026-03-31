@@ -179,7 +179,64 @@ int DependenceCExec()
 
 <!-- @[parallel_dep_c_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.h) -->
 
-``` C
+<!-- @[parallel_fib_c](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/FunctionFlowRuntime/TaskGraph/entry/src/main/cpp/parallel.cpp) -->
+
+``` C++
+const int FIB_NUM = 5;
+typedef struct {
+    int x;
+    int* y;
+} FibFfrtS;
+
+void FibFfrt(void* arg)
+{
+    FibFfrtS* p = (FibFfrtS*)arg;
+    int x = p->x;
+    int* y = p->y;
+
+    if (x <= 1) {
+        *y = x;
+    } else {
+        int y1;
+        int y2;
+        FibFfrtS s1 = {x - 1, &y1};
+        FibFfrtS s2 = {x - 2, &y2};
+
+        // 构建数据依赖
+        ffrt_dependence_t dx_deps[] = {{ffrt_dependence_data, &x}};
+        ffrt_deps_t dx = {1, dx_deps};
+        ffrt_dependence_t dy1_deps[] = {{ffrt_dependence_data, &y1}};
+        ffrt_deps_t dy1 = {1, dy1_deps};
+        ffrt_dependence_t dy2_deps[] = {{ffrt_dependence_data, &y2}};
+        ffrt_deps_t dy2 = {1, dy2_deps};
+        ffrt_dependence_t dy12_deps[] = {{ffrt_dependence_data, &y1}, {ffrt_dependence_data, &y2}};
+        ffrt_deps_t dy12 = {2, dy12_deps};
+
+        // 分别提交任务
+        ffrt_submit_f(FibFfrt, &s1, &dx, &dy1, NULL);
+        ffrt_submit_f(FibFfrt, &s2, &dx, &dy2, NULL);
+
+        // 等待任务完成
+        ffrt_wait_deps(&dy12);
+        *y = y1 + y2;
+    }
+}
+
+int FibCExec()
+{
+    int r;
+    FibFfrtS s = {FIB_NUM, &r};
+    ffrt_dependence_t dr_deps[] = {{ffrt_dependence_data, &r}};
+    ffrt_deps_t dr = {1, dr_deps};
+    ffrt_submit_f(FibFfrt, &s, NULL, &dr, NULL);
+
+    // 等待任务完成
+    ffrt_wait_deps(&dr);
+    OH_LOG_INFO(LOG_APP, "Fibonacci result: %{public}d", r);
+    printf("Fibonacci(5) is %d\n", r);
+    return r;
+}
+```
 #include <cstdio>
 #include "hilog/log.h"
 #include "ffrt/ffrt.h" // 来自 OpenHarmony 第三方库 "@ppd/ffrt"
