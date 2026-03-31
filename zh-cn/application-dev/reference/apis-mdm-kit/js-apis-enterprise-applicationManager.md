@@ -613,14 +613,14 @@ try {
 ```ts
 // 返回示例
 [
-	{
-    	"bundleName": "com.example.edmtest",
-        "abilityName": "EntryAbility",
-        // 从API version 24支持
-        "parameters": {
-        	"isHiddenStart": false
-        }
-    },
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // 从API version 24支持
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
    // ...
 ]
 ```
@@ -753,14 +753,14 @@ try {
 ```ts
 // 返回示例
 [
-	{
-    	"bundleName": "com.example.edmtest",
-        "abilityName": "EntryAbility",
-        // 从API version 24支持
-        "parameters": {
-        	"isHiddenStart": false
-        }
-    },
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // 从API version 24支持
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
    // ...
 ]
 ```
