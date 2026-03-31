@@ -138,7 +138,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
     |JumpContext|高亮跳转到指定上下文|
     |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在trigger接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码|
 
-  * groupId支持能力列表<br><a id="groupId支持能力列表"></a>
+  * groupId支持能力列表<br>
   
     |groupId支持能力列表|对应子项能力|功能说明|
     | ---- | ------ | ------|
@@ -556,7 +556,7 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力表。|
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
 |capture接口的capList支持的能力列表|功能说明|
@@ -615,7 +615,7 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力表。|
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
 |interact接口支持的capList能力列表|功能说明|
@@ -684,8 +684,15 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
-| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，支持的groupId能力列表见[groupId支持能力列表](#groupId支持能力列表)|
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
+
+|groupId支持能力列表|对应子项能力|功能说明|
+| ---- | ------ | ------|
+|SmartEdge|Acticle|获取阅读场景感知信息|
+|SmartEdge|ShortVideo|获取短视频场景的感知信息|
+|SmartEdge|Todo|获取待办场景的感知信息|
+|SmartEdge|Activity|获取基础服务的感知信息|
 
 **返回值：**
 
