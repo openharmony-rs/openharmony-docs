@@ -59,8 +59,8 @@
 
    (1) 生成沙箱内音频资源路径。
     <!-- @[specified_customized_ringtone_getAppContext](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets) -->
-
-    ```TypeScript
+    
+    ``` TypeScript
     // 生成沙箱内音频资源路径
     const uiContext: UIContext = this.getUIContext();
     let context: Context | undefined = uiContext.getHostContext() as common.UIAbilityContext;
