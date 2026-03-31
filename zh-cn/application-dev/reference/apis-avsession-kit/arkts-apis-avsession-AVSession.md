@@ -1900,6 +1900,77 @@ struct Index {
 }
 ```
 
+## setBackgroundPlayMode<sup>24+</sup>
+
+setBackgroundPlayMode(mode: BackgroundPlayMode): Promise\<void>
+
+设置后台播放模式。使用promise异步回调。
+
+建议与应用内“是否支持后台播放开关”关联。如未设置，'audio'类型会话默认值为ENABLE_BACKGROUND_PLAY；'video'类型会话默认值为DISABLE_BACKGROUND_PLAY。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
+**参数：**
+
+| 参数名 | 类型                   | 必填 | 说明                            |
+| ------ | ---------------------- | ---- | -------------------------------- |
+| mode   | [BackgroundPlayMode](./arkts-apis-avsession-e.md#backgroundplaymode24) | 是   | 后台播放模式。 |
+
+**返回值：**
+
+| 类型           | 说明                     |
+| -------------- | ----------------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------|
+| 6600101  | Session service exception. |
+| 6600102  | The session does not exist. |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+      Text(this.message)
+        .onClick(() => {
+          let currentAVSession: avSession.AVSession | undefined = undefined;
+          let tag = "createNewSession";
+          let context: Context = this.getUIContext().getHostContext() as Context;
+          avSession.createAVSession(context, tag, "audio", (err: BusinessError, data: avSession.AVSession) => {
+            if (err) {
+              console.error(`CreateAVSession BusinessError: code: ${err.code}, message: ${err.message}`);
+            } else {
+              currentAVSession = data;
+            }
+          });
+          if (currentAVSession !== undefined) {
+            try {
+              (currentAVSession as avSession.AVSession).setBackgroundPlayMode(avSession.BackgroundPlayMode.ENABLE_BACKGROUND_PLAY);
+            } catch (err) {
+              console.error(`setBackgroundPlayMode BusinessError: code: ${err.code}, message: ${err.message}`);
+            }
+          }
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## getController<sup>10+</sup>
 
