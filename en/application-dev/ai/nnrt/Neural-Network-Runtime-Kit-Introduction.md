@@ -1,4 +1,4 @@
-# Introduction to Neural Network Runtime Kit
+# About This Kit
 <!--Kit: Neural Network Runtime Kit-->
 <!--Subsystem: AI-->
 <!--Owner: @GbuzhidaoR-->
