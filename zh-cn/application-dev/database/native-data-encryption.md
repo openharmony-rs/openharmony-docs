@@ -93,7 +93,7 @@
       // 使用指定的密钥打开加密数据库。不指定则由数据库负责生成并保存密钥，并使用生成的密钥。
       const int32_t length = 6;
       OH_Crypto_SetEncryptionKey(cryptoParam, key, length);
-      // 密钥信息使用完之后要清空  
+      // 秘钥信息使用完之后要清空
       for (size_t i = 0; i < sizeof(key); i++) {
           key[i] = 0;
       }
