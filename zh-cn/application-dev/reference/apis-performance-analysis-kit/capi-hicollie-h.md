@@ -443,7 +443,7 @@ HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)
 | bool isFreezeEvent | 上报事件类型。true：上报6S冻屏事件。false：上报3S冻屏事件。 |
 
 
-> **注意：**
+> **说明：**
 >
 > BUSINESS_THREAD_BLOCK_3S、BUSINESS_THREAD_BLOCK_6S等同于BUSSINESS_THREAD_BLOCK_3S、BUSSINESS_THREAD_BLOCK_6S。
 
@@ -453,6 +453,6 @@ HiCollie_ErrorCode OH_HiCollie_AssociateProcessReport(bool isFreezeEvent)
 | -- | -- |
 | [HiCollie_ErrorCode](capi-hicollie-h.md#hicollie_errorcode) | HICOLLIE_SUCCESS：0 - 成功。<br> OH_HICOLLIE_REACH_REPORT_LIMIT：29800007 - 上报频率过高。 |
 
-> **注意：**
+> **说明：**
 >
 > 1分钟内最多上报1次。
