@@ -457,7 +457,7 @@ setAutoTimeStatus(status: boolean): Promise&lt;void&gt;
 | -------- |-------------------------------------------------------------------------------------------------------------|
 | 201       | Permission denied.                                                                                          |
 | 202       | Permission verification failed. A non-system application calls a system API.                                |
-| 13000001  | Network connection error or OS error. Possible causes: System memory is insufficient or Calls the underlying system interface failed|
+| 13000001  | Network connection error or OS error. Possible causes: 1. System memory is insufficient; 2. Calls the underlying system interface failed.|
 
 
 **示例：**
