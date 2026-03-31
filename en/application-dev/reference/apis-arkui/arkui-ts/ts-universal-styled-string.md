@@ -1919,6 +1919,7 @@ struct styled_string_set_image_demo {
 }
 ```
 
+![](figures/styledstring_4.gif)
 
 ### Example 5: Setting the Text Line Height and Paragraph Style
 
@@ -2185,7 +2186,7 @@ struct styled_string_set_customspan_demo {
     }
     this.isPageShow = false;
 
-    this.style.appendStyledString(new MutableStyledString("Text drawing sample CustomSpan", [
+    this.style.appendStyledString(new MutableStyledString("Text drawing Sample code CustomSpan", [
       {
         start: 0,
         length: 5,
@@ -2232,7 +2233,7 @@ struct styled_string_set_customspan_demo {
 }
 ```
 
-
+![](figures/CustomSpan-Hello-2.gif)
 
 ### Example 7: Storing Custom Extension Information
 
@@ -2682,7 +2683,7 @@ struct styled_string_set_decorationstyle_demo {
 
 ![](figures/styledString_14.png)
 
-### Sample 14: Obtaining the Image Size in vp
+### Example 14: Obtaining the Image Size in vp
 
 This example illustrates how to configure styled strings with images and obtain the image size in vp using the [ImageAttachmentInterface](#imageattachmentinterface) API, available since API version 21.
 
@@ -2778,7 +2779,7 @@ struct styled_string_demo4 {
   }
 }
 ```
-
+![](figures/styledString_16.gif)
 
 ### Example 15: Setting Custom Paragraph Indentation
 
@@ -2896,7 +2897,7 @@ struct leadingMarginSpanDemo {
   }
 }
 ```
-
+![](figures/styledString_15.gif)
 
 ### Example 16: Displaying an SVG Image Using the supportSvg2 Property
 Starting from API version 22, this example enables enhanced SVG usability capabilities through the [SVG tag parsing enhancement feature](ts-image-svg2-capabilities.md#improved-svg-usability) by configuring the **supportSvg2** property in [ResourceImageAttachmentOptions](#resourceimageattachmentoptions15).

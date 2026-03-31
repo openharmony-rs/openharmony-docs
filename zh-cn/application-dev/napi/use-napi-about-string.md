@@ -410,7 +410,7 @@ hilog.info(0x0000, 'testTag', 'Test Node-API  napi_create_string_latin1:%{public
 
 cpp部分代码
 
-<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) --> 
+<!-- @[napi_create_external_string_ascii](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIString/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 // 定义字符串的析构回调函数，如果需要释放外部资源，可以在该函数中实现
@@ -440,6 +440,8 @@ static napi_value CreateExternalStringAscii(napi_env env, napi_callback_info inf
         nullptr,                // 传递给析构回调函数的hint参数，本例不需要
         &result                 // 接受创建的ArkTS字符串值
     );
+    // 重要：str指向的内存必须在ArkTS string对象的整个生命周期内保持有效。
+    // 而且在调用此接口后，str指向的内存内容必须保持不可变。任何对该内存的写入操作都可能导致程序崩溃。
     if (status != napi_ok) {
         // 处理错误
         delete[] str;

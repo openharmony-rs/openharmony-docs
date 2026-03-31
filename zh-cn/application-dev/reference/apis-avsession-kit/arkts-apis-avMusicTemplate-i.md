@@ -8,7 +8,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于API version 23及以上版本的Car设备。
 
 ## MediaTab
 
@@ -65,8 +66,8 @@
 | title           | string                                                       | 否   | 否   | 合集的标题。                        |
 | hasMoreData     | boolean                                                      | 否   | 否   | 是否有更多的合集数据。true表示有，false表示没有。无默认值。|
 | totalSize       | number                                                       | 否   | 否   | 合集的总个数。                       |
-| memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 合集的媒体资源类型。                    |
-| topElements     | [MediaEntity](#mediaentity)                                  | 否   | 否   | 合集的内容。                        |
+| memberMediaType | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | 否   | 否   | 合集的媒体资源类型。                    |
+| topElements     | [MediaEntity](#mediaentity)[]                                  | 否   | 否   | 合集的内容。                        |
 
 ## Banner
 
@@ -118,13 +119,13 @@
 | 名称            | 类型                                                         | 只读 | 可选 | 说明                    |
 | --------------- | ------------------------------------------------------------ | ---- | ---- | ----------------------- |
 | mediaId         | string                                                       | 否   | 否   | 媒体资源的ID。          |
-| mediaType       | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源的类型。        |
+| mediaType       | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源的类型。        |
 | parentId        | string                                                       | 否   | 否   | 父节点的媒体资源ID。    |
-| parentMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 父节点的媒体资源类型。  |
+| parentMediaType | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | 否   | 否   | 父节点的媒体资源类型。  |
 | title           | string                                                       | 否   | 否   | 媒体资源的标题。        |
 | desc            | string                                                       | 否   | 是   | 媒体资源的描述。        |
 | imageUrl        | string                                                       | 否   | 否   | 媒体资源的封面图片URL。 |
-| playState       | [PlaybackState](arkts-apis-avsession-AVMusicTemplate-e.md#playbackstate) | 否   | 否   | 媒体资源的播放状态。    |
+| playState       | [PlaybackState](arkts-apis-avMusicTemplate-e.md#playbackstate) | 否   | 否   | 媒体资源的播放状态。    |
 
 ## QueryMediaEntityParam
 
@@ -138,9 +139,9 @@
 | ------------- | ------------------------------------------------------------ | ---- | ---- | ---------------------- |
 | entityId      | string                                                       | 否   | 否   | 媒体实例的ID。         |
 | pageIndex     | number                                                       | 否   | 否   | 媒体标签页的索引。     |
-| type          | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。         |
-| subEntityType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 是   | 子节点的媒体资源类型。 |
-| sort          | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)       | 否   | 是   | 查询到的列表数据排序。 |
+| type          | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。         |
+| subEntityType | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | 否   | 是   | 子节点的媒体资源类型。 |
+| sort          | [Sort](arkts-apis-avMusicTemplate-e.md#sort)       | 否   | 是   | 查询到的列表数据排序。 |
 | episodeRange  | [EpisodeRange](#episoderange) | 否   | 是   | 要查询的剧集区间。     |
 
 ## EpisodeRange
@@ -170,9 +171,9 @@
 | pageSize        | number                                                       | 否   | 否   | 页面的大小。                                 |
 | hasMoreData     | boolean                                                      | 否   | 否   | 是否有下一页。true表示有，false表示没有。无默认值。|
 | totalSize       | number                                                       | 否   | 否   | 数据总大小。                                 |
-| memberMediaType | [EntityType](arkts-apis-avsession-AVMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。                               |
+| memberMediaType | [EntityType](arkts-apis-avMusicTemplate-e.md#entitytype) | 否   | 否   | 媒体资源类型。                               |
 | elements        | [MediaEntity](#mediaentity)[] | 否   | 否   | 查询数据内容（根据类型传递相应的结构数据）。 |
-| sort            | [Sort](arkts-apis-avsession-AVMusicTemplate-e.md#sort)       | 否   | 是   | 数据排序。                                   |
+| sort            | [Sort](arkts-apis-avMusicTemplate-e.md#sort)       | 否   | 是   | 数据排序。                                   |
 | episodeRange    | [EpisodeRange](#episoderange) | 否   | 是   | 剧集区间。                                   |
 
 ## Single
@@ -191,7 +192,7 @@
 | favSubscribeData | [FavoriteData](#favoritedata) | 否   | 否   | 收藏或订阅的歌曲的信息。                   |
 | tags             | string[]                                                     | 否   | 是   | 歌曲标签信息的数组。                       |
 | settings         | [SettingItem](#settingitem)[]                                | 否   | 是   | 歌曲设置项的数组。                         |
-| downloadStatus   | [DownloadStatus](arkts-apis-avsession-AVMusicTemplate-e.md#downloadstatus) | 否   | 是   | 歌曲下载状态。                             |
+| downloadStatus   | [DownloadStatus](arkts-apis-avMusicTemplate-e.md#downloadstatus) | 否   | 是   | 歌曲下载状态。                             |
 | downloadProgress | number                                                       | 否   | 是   | 歌曲下载进度。                             |
 
 ## PlayInfo
@@ -250,7 +251,7 @@
 | id           | string                                                       | 否   | 否   | 设置项的唯一ID。                                             |
 | title        | string                                                       | 否   | 否   | 设置项的标题。                                               |
 | desc         | string                                                       | 否   | 否   | 设置项的描述。                                               |
-| settingType  | [SettingType](arkts-apis-avsession-AVMusicTemplate-e.md#settingtype) | 否   | 是   | 设置项的类型。                                               |
+| settingType  | [SettingType](arkts-apis-avMusicTemplate-e.md#settingtype) | 否   | 是   | 设置项的类型。                                               |
 | settingValue | string \| boolean \| [SettingContent](#settingcontent)[] \| [WantAgent](../apis-ability-kit/js-apis-app-ability-wantAgent.md#wantagent) | 否   | 是   | 设置项的值。<br>- 当settingType类型是SettingType.SWITCH时，本值数据类型是boolean。<br>- 当settingType类型是SettingType.LIST时，本值数据类型是SettingContent数组。<br>- 当settingType类型是SettingType.JUMP时，本值数据类型是string。 |
 | mediaId      | string                                                       | 否   | 否   | 与当前设置关联的媒体ID。<br>如果设置与当前媒体信息相关联，需要设置mediaId；否则，不需要设置mediaId。 |
 
@@ -279,7 +280,7 @@
 
 | 名称        | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| id          | string                                                       | 否   | 否   | 用于唯一标识用户登录的二维码会话。<br>当二维码过期时，MediaUI将使用此ID从第三方查询并更新新的二维码。 |
+| id          | string                                                       | 否   | 否   | 用于唯一标识用户登录的二维码会话。<br>当二维码过期时，MediaUI将使用此ID从媒体应用查询并更新新的二维码。 |
 | price       | string                                                       | 否   | 否   | 购买价格。                                                   |
 | titleName   | string                                                       | 否   | 否   | 标题名称。                                                   |
 | detailName  | string                                                       | 否   | 否   | 详情名称。                                                   |
@@ -314,7 +315,7 @@
 | 名称        | 类型                                                         | 只读 | 可选 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | dialogId    | string                                                       | 否   | 否   | 对话框的唯一ID。                                             |
-| dialogType  | [DialogType](arkts-apis-avsession-AVMusicTemplate-e.md#dialogtype) | 否   | 否   | 对话框的类型。                                               |
+| dialogType  | [DialogType](arkts-apis-avMusicTemplate-e.md#dialogtype) | 否   | 否   | 对话框的类型。                                               |
 | title       | string                                                       | 否   | 是   | 对话框的标题。                                               |
 | text        | string                                                       | 否   | 是   | 对话框的内容。                                               |
 | buttons     | [DialogButtonInfo](#dialogbuttoninfo)[] | 否   | 是   | 对话框按钮的数组。                                           |
@@ -333,7 +334,7 @@
 | ---------- | ------------------------------------------------------------ | ---- | ---- | ------------ |
 | buttonId   | string                                                       | 否   | 否   | 按钮的ID。   |
 | buttonText | string                                                       | 否   | 否   | 按钮的文本。 |
-| buttonType | [ButtonType](arkts-apis-avsession-AVMusicTemplate-e.md#buttontype) | 否   | 否   | 按钮的类型。 |
+| buttonType | [ButtonType](arkts-apis-avMusicTemplate-e.md#buttontype) | 否   | 否   | 按钮的类型。 |
 
 ## MemberPurchaseInfo
 
@@ -349,7 +350,7 @@
 | diagramUrl         | string                                                       | 否   | 否   | 会员购买图片的URL（该图片必须采用21:9的宽高比）。 |
 | diagramData        | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 否   | 是   | 会员购买图片。                   |
 | diagramContent     | string                                                       | 否   | 否   | 会员购买图片的内容。                |
-| memberPurchaseType | [MemberPurchaseType](arkts-apis-avsession-AVMusicTemplate-e.md#memberpurchasetype) | 否   | 否   | 会员购买类型。                   |
+| memberPurchaseType | [MemberPurchaseType](arkts-apis-avMusicTemplate-e.md#memberpurchasetype) | 否   | 否   | 会员购买类型。                   |
 
 ## CustomElement
 

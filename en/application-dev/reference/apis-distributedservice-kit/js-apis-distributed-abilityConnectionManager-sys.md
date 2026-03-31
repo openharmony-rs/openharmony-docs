@@ -36,7 +36,7 @@ Registers a listener for the collaborateEvent events. This API uses an asynchron
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **collaborateEvent**. This event is triggered when `collaborateEvent()` is called.  |
 | sessionId | number  | Yes   | Collaboration session ID.   |
-| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | Yes   | Registered callback function, which returns collaboration event information.   |
+| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | Yes   | Registered callback function, which returns collaboration event information.   |
 
 **Error codes**
 
@@ -75,7 +75,7 @@ Registers a listener for the **receiveImage** events.
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **receiveImage**. This event is triggered when `sendImage()` is called.  |
 | sessionId | number  | Yes   | Collaboration session ID.   |
-| callback | Callback&lt;[EventCallbackInfo](js-apis-distributed-abilityConnectionManager.md#eventcallbackinfo)&gt; | Yes   | Registered callback.   |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | Yes   | Registered callback.   |
 
 **Error codes**
 
@@ -113,7 +113,7 @@ Unregisters the listener for the **collaborateEvent** events.
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **collaborateEvent**.   |
 | sessionId | number  | Yes   | Collaboration session ID.   |
-| callback | Callback&lt;[CollaborateEventInfo](js-apis-distributed-abilityConnectionManager.md#collaborateeventinfo)&gt; | No   | Registered callback. If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, listening will be disabled for all event callbacks.   |
+| callback | Callback&lt;[CollaborateEventInfo](#collaborateeventinfo)&gt; | No   | Registered callback. If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, listening will be disabled for all event callbacks.   |
 
 **Error codes**
 
@@ -149,7 +149,7 @@ Unregisters the listener for the **receiveImage** events.
 | --------- | ------------------------------------- | ---- | ----- |
 | type | string  | Yes   |   Event type, which is **receiveImage**.   |
 | sessionId | number  | Yes   | Collaboration session ID.   |
-| callback | Callback&lt;[EventCallbackInfo](js-apis-distributed-abilityConnectionManager.md#eventcallbackinfo)&gt; | No   | Registered callback. If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, listening will be disabled for all event callbacks.   |
+| callback | Callback&lt;[EventCallbackInfo](#eventcallbackinfo)&gt; | No   | Registered callback. If a value is passed in, listening will be disabled for the specified event callback. If no value is passed in, listening will be disabled for all event callbacks.   |
 
 **Error codes**
 

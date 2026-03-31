@@ -394,6 +394,7 @@
         - [UI开发（ArkTS声明式开发范式）概述](ui/arkts-ui-development-overview.md)
         - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
           - [基本语法概述](ui/state-management/arkts-basic-syntax-overview.md)
+          - [UI装饰器总览](ui/state-management/arkts-decorator-overview.md)
           - [声明式UI描述](ui/state-management/arkts-declarative-ui-description.md)
           - 自定义组件<!--arkts-custom-components-->
             - [创建自定义组件](ui/state-management/arkts-create-custom-components.md)
@@ -406,9 +407,7 @@
               - [\@ReusableV2装饰器：V2组件复用](ui/state-management/arkts-new-reusableV2.md) 
             - 自定义组件冻结<!--arkts-component-freeze-->
               - [自定义组件冻结（V1）](ui/state-management/arkts-custom-components-freeze.md)
-              - [自定义组件冻结（V2）](ui/state-management/arkts-custom-components-freezeV2.md)            
-          - UI装饰器<!--arkts-ui-decorator-->
-            - [UI装饰器总览](ui/state-management/arkts-decorator-overview.md)
+              - [自定义组件冻结（V2）](ui/state-management/arkts-custom-components-freezeV2.md)
           - 组件扩展<!--arkts-extend-components-->
             - [组件扩展概述](ui/state-management/arkts-extend-components-overview.md)
             - [\@Builder装饰器：自定义构建函数](ui/state-management/arkts-builder.md)
@@ -449,7 +448,7 @@
               - [\@Local装饰器：组件内部状态](ui/state-management/arkts-new-local.md)
               - [\@Param装饰器：组件外部输入](ui/state-management/arkts-new-param.md)
               - [\@Once装饰器：初始化同步一次](ui/state-management/arkts-new-once.md)
-              - [\@Event装饰器：组件输出](ui/state-management/arkts-new-event.md)
+              - [\@Event装饰器：规范组件输出](ui/state-management/arkts-new-event.md)
               - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](ui/state-management/arkts-new-provider-and-consumer.md)
             - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
               - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](ui/state-management/arkts-new-observedV2-and-trace.md)

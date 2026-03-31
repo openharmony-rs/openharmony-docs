@@ -62,12 +62,12 @@ constructor(unit: LengthMetricsUnit)
 
 | 名称 | 类型 | 只读 | 可选   | 说明 |
 | ----- | ----- | --------------- | ------ | ------------------------ |
-| scaleX         | number | 否 | 是 | 水平缩放系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 |
-| scaleY         | number | 否 | 是 | 垂直缩放系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 |
-| rotateX       | number | 否 | 是 | 水平倾斜系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 |
-| rotateY       | number | 否 | 是 | 垂直倾斜系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 |
-| translateX | number | 否 | 是 | 水平平移距离，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 <br>默认单位：vp |
-| translateY | number | 否 | 是 | 垂直平移距离，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 <br>默认单位：vp |
+| scaleX         | number | 否 | 是 | 水平缩放系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 |
+| scaleY         | number | 否 | 是 | 垂直缩放系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 |
+| rotateX       | number | 否 | 是 | 水平倾斜系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 |
+| rotateY       | number | 否 | 是 | 垂直倾斜系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 |
+| translateX | number | 否 | 是 | 水平平移距离，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 <br>默认单位：vp |
+| translateY | number | 否 | 是 | 垂直平移距离，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 <br>默认单位：vp |
 
 >  **说明：**
 >  

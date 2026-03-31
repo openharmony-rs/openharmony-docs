@@ -288,7 +288,7 @@ AppServiceExtensionAbility组件当前仅支持2in1设备。
       this.context.terminateSelf().then(() => {
         hilog.info(0x0000, TAG, '----------- terminateSelf succeed -----------');
       }).catch((error: BusinessError) => {
-        hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: $   {error.message}`);
+        hilog.error(0x0000, TAG, `terminateSelf failed, error.code: ${error.code}, error.message: ${error.message}`);
       });
     }
   

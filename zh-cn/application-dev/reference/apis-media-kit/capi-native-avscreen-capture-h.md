@@ -26,6 +26,7 @@
 
 ### 函数
 
+<!--Table: 50%; 50% -->
 | 名称 | 描述 |
 | -- | -- |
 | [struct OH_AVScreenCapture *OH_AVScreenCapture_Create(void)](#oh_avscreencapture_create) | 实例化对象，创建OH_AVScreenCapture。<br> 可以通过调用[OH_AVScreenCapture_Release](#oh_avscreencapture_release)释放实例。 |

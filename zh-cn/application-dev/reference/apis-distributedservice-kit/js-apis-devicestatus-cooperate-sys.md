@@ -564,7 +564,7 @@ off(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;): void
 | -------- | ----------------- |
 | 201 | Permission denied. |
 | 202 | Permission verification failed. A non-system application calls a system API. |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.2.Incorrect parameter types.3.Parameter verification failed. |
+| 401 | Parameter error. Possible causes:1.Incorrect parameter types.2.Parameter verification failed. |
 
 **示例**：
 

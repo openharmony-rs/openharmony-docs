@@ -559,6 +559,10 @@ Generates a unique VPN ID. This API uses a promise to return the result.
 
 To use the multi-VPN capability of the system, you need to call this API to generate a VPN ID and configure it in **VpnConfig**.
 
+>**NOTE**
+>
+>Currently, the multi-VPN capability of the system supports only IPv4.
+
 **System capability**: SystemCapability.Communication.NetManager.Vpn
 
 **Return value**

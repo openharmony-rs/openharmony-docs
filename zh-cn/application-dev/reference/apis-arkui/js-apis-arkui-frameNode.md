@@ -9508,7 +9508,7 @@ export struct TrackNode {
     // 构建埋点的虚拟树，获取的node为当前页面的根节点（用例中为Row）
     let uid = this.getUniqueId()
     let node: FrameNode | null = this.getUIContext().getFrameNodeByUniqueId(uid);
-    console.info(`Track onDidBuild node:${node?.getNodeType()}`))
+    console.info(`Track onDidBuild node:${node?.getNodeType()}`);
     if (node === null) {
       return
     }

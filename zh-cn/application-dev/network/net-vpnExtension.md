@@ -20,7 +20,7 @@ OpenHarmony为开发者提供了用于创建VPN的API解决方案。当前提供
 
 ## VPN应用的显示体验
 
-借助系统提供的VPN Extension接口开发者可以构建支持不同协议的VPN服务。OpenHarmony系统提供了界面 (UI) 使用户可以了解当前VPN应用服务的启动和连接：
+借助系统提供的[VPN Extension](../reference/apis-network-kit/js-apis-net-vpnExtension.md)接口开发者可以构建支持不同协议的VPN服务。OpenHarmony系统提供了界面 (UI) 使用户可以了解当前VPN应用服务的启动和连接：
 
 - 在VPN应用首次启动连接之前，系统会显示VPN连接授权对话框。该对话框会提示用户是否信任该VPN应用并接受VPN连接请求。
 - 当VPN启动连接成功时，状态栏显示一个VPN (钥匙) 图标以提醒用户VPN处于连接状态。

@@ -354,3 +354,4 @@ struct MouseResponseRegionExample {
 }
 ```
 
+![touchtarget3.gif](figures/touchtarget3.gif)

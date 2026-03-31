@@ -41,7 +41,7 @@ The file declares the APIs related to an image effector.<br> You can use the API
 | [int32_t OH_ImageEffect_RemoveFilter(OH_ImageEffect *imageEffect, const char *filterName)](#oh_imageeffect_removefilter) | Removes a filter.|
 | [ImageEffect_ErrorCode OH_ImageEffect_RemoveFilterByIndex(OH_ImageEffect *imageEffect, uint32_t index)](#oh_imageeffect_removefilterbyindex) | Removes a filter from the specified position.|
 | [OH_EffectFilter *OH_ImageEffect_ReplaceFilter(OH_ImageEffect *imageEffect, uint32_t index, const char *filterName)](#oh_imageeffect_replacefilter) | Replaces a filter.|
-| [ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index, const char *filterName)](#oh_imageeffect_replacefilterbyfilter) | Replaces a filter at the specified position.|
+| [ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index, OH_EffectFilter *filter)](#oh_imageeffect_replacefilterbyfilter) | Replaces a filter at the specified position.|
 | [int32_t OH_ImageEffect_GetFilterCount(OH_ImageEffect *imageEffect)](#oh_imageeffect_getfiltercount) | Obtains the number of added filters.|
 | [OH_EffectFilter *OH_ImageEffect_GetFilter(OH_ImageEffect *imageEffect, uint32_t index)](#oh_imageeffect_getfilter) | Obtains the information about a filter.|
 | [ImageEffect_ErrorCode OH_ImageEffect_Configure(OH_ImageEffect *imageEffect, const char *key, const ImageEffect_Any *value)](#oh_imageeffect_configure) | Configures an image effector.|
@@ -293,7 +293,7 @@ Replaces a filter.
 ### OH_ImageEffect_ReplaceFilterByFilter()
 
 ```c
-ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index,const char *filterName)
+ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *imageEffect, uint32_t index, OH_EffectFilter *filter)
 ```
 
 **Description**
@@ -311,7 +311,7 @@ Replaces a filter at the specified position.
 | -- | -- |
 | [OH_ImageEffect](capi-imageeffect-oh-imageeffect.md) *imageEffect | Pointer to the image effector.|
 | uint32_t index | Index of the filter.|
-| const char *filterName | Pointer to the filter name.|
+| [OH_EffectFilter](capi-imageeffect-oh-effectfilter.md) *filter | Pointer to the filter.|
 
 **Returns**
 
@@ -765,7 +765,7 @@ Starts an image effector.
 
 | Type| Description|
 | -- | -- |
-| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | **EFFECT_SUCCESS**: The function is successfully called.<br>         **EFFECT_ERROR_PARAM_INVALID**: A parameter is a null pointer.<br>         **EFFECT_INPUT_OUTPUT_NOT_SUPPORTED**: The data types of the input and output images to be processed are different.<br>         **EFFECT_COLOR_SPACE_NOT_MATCH**: The color spaces of the input and output images are different.<br>         **EFFECT_ALLOCATE_MEMORY_FAILED**: Memory allocation fails.|
+| [ImageEffect_ErrorCode](capi-image-effect-errors-h.md#imageeffect_errorcode) | **EFFECT_SUCCESS**: The function is successfully called.<br>         **EFFECT_ERROR_PARAM_INVALID**: A parameter is a null pointer.<br>         **EFFECT_INPUT_OUTPUT_NOT_SUPPORTED**: The data types of the input and output images to be processed are different.<br>         **EFFECT_COLOR_SPACE_NOT_MATCH**: The color spaces of the input and output images do not match.<br>         **EFFECT_ALLOCATE_MEMORY_FAILED**: Memory allocation fails.|
 
 ### OH_ImageEffect_Stop()
 

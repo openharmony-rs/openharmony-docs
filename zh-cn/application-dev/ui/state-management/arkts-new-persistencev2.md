@@ -401,7 +401,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 10、如果开发者对数据持久化能力有较强的诉求，例如持久化时机，建议使用[Preferences](../../database/preferences-guidelines.md)进行数据持久化。注意：不允许混用PersistenceV2和Preferences，因为Preferences存储的数据不会有状态变量信息，反序列化的数据不能触发PersistenceV2的自动化存储。
 
-11、当开发者使用globalConnect持久化数据，从磁盘读取数据时，需要保证key数据在持久化前后类型一致，否则会抛出运行时异常，从API version 23开始，将返回错误码[140107](../../reference/apis-arkui/errorcode-stateManagement.md#140107-appstoragev2和persistencev2数据类型不匹配)。
+11、当开发者使用globalConnect持久化数据，从磁盘读取数据时，需要保证key数据在持久化前后类型一致。从API version 23开始，将返回错误码[140107](../../reference/apis-arkui/errorcode-stateManagement.md#140107-appstoragev2和persistencev2数据类型不匹配)。
 
 12、globalConnect仅支持设置EL1-EL5加密级别，否则会抛出运行时异常，从API version 23开始，将返回错误码[140106](../../reference/apis-arkui/errorcode-stateManagement.md#140106-使用persistencev2存储数据到不支持的加密级别)，示例见[使用globalConnect存储数据](#使用globalconnect存储数据)。
 

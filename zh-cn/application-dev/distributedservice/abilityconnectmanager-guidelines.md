@@ -105,6 +105,7 @@ hidumper -s 4700 -a "buscenter -l remote_device_info"
 | on(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | 监听<!--Del-->connect/disconnect/receiveMessage/receiveData<!--DelEnd-->事件。 |
 | off(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | 取消<!--Del-->connect/disconnect/receiveMessage/receiveData<!--DelEnd-->事件的监听。 |
 | sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;; | 发送文本信息。 |
+| sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;; | 发送ArrayBuffer字节流。 |
 
 
 ### 开发步骤

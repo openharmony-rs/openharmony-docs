@@ -18,6 +18,8 @@
 
  - master：最新开发版本。  
 
+ - OpenHarmony 6.1 Release版本（API Level 23）：点击[此处](zh-cn/release-notes/OpenHarmony-v6.1-release.md)了解版本详情。
+
  - OpenHarmony 6.0 Release版本（API Level 20）：点击[此处](zh-cn/release-notes/OpenHarmony-v6.0-release.md)了解版本详情。
 
  - OpenHarmony 5.1.0 Release版本（API Level 18）：点击[此处](zh-cn/release-notes/OpenHarmony-v5.1.0-release.md)了解版本详情。

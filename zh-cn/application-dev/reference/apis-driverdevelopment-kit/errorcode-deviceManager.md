@@ -22,7 +22,7 @@ ExternalDeviceManager service exception or busType parameter error.
 
 **可能原因**
 
-1. 产品形态不正确，仅支持2in1和tablet。
+1. 产品形态不正确，仅支持PC/2in1。
 2. 服务内部遇到通信输入输出异常。
 3. 若接口存在busType参数，请检查参数是否错误。
 
@@ -44,7 +44,7 @@ ExternalDeviceManager service exception.
 
 **可能原因**
 
-1. 产品形态不正确，仅支持2in1和tablet。
+1. 产品形态不正确，仅支持PC/2in1。
 2. 服务内部遇到通信输入输出异常。
 
 **处理步骤**
