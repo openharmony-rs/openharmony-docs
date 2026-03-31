@@ -412,7 +412,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
-| callback | Callback&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
+| callback | Callback&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 
 **错误码**：
@@ -467,7 +467,7 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 | 参数名   | 类型                             | 必填 | 说明               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
-| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 是   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 是   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个感知信息项。|
 
 **错误码**：
 
@@ -586,7 +586,7 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
+  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
  
 **错误码**：
 
@@ -644,7 +644,7 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
+  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
@@ -709,7 +709,7 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
-  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
+  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
