@@ -571,6 +571,7 @@ capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
   | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
+ 
 **错误码**：
 
 以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
@@ -604,7 +605,7 @@ try {
 
 interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
 
-主动触发屏幕行为交互。
+主动触发屏幕行为交互，实现对界面行为的识别与行为回执。例如：点击链接后，通过回执信息精准跳转至指定段落并实现文字高亮。
 
 **需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
@@ -629,6 +630,7 @@ interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): 
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
   | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
+
 **错误码**：
 
 以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
@@ -700,6 +702,7 @@ apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions)
   | 类型                           | 说明         |
   | ---------------------------- | ---------- |
   | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个元素。|
+
 **错误码**：
 
 以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
@@ -746,7 +749,6 @@ onReadingScreenPermissionListener(callback: Callback&lt;ReadingScreenPermissionS
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
 | callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | 是   | 回调函数，返回读取屏幕信息的授权状态。|
-
 
 **错误码**：
 
