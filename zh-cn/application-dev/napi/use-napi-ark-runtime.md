@@ -90,7 +90,8 @@
   }
   ```
 
-- 功能实现  
+- 功能实现
+
   新建线程并创建ArkTS基础运行时环境，加载自定义模块请参考[napi_load_module_with_info](./use-napi-load-module-with-info.md)。
 
   <!-- @[napi_ark_runtime_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
