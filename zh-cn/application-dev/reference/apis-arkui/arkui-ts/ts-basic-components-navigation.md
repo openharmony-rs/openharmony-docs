@@ -4611,7 +4611,9 @@ export class CustomTransition {
 
 ### 示例14（设置Navigation双栏模式）
 
-该示例主要展示Navigation在双栏模式下，右侧显示默认占位页，并通过[navBarWidthRange](#navbarwidthrange10)设置Navigation导航页最小和最大宽度。
+该示例主要展示Navigation组件在双栏模式下的使用效果，通过[splitPlaceholder](#splitplaceholder20)设置右侧默认占位页，使用[navBarWidthRange](#navbarwidthrange10)配置导航栏宽度范围，并借助[divider](#divider23)属性自定义导航栏与内容区之间的分割线样式。
+
+从API version 20开始，新增splitPlaceholder属性；API version 23开始，新增divider属性。
 
 此示例在运行前需要在工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "auto_rotation"。
 
@@ -4741,7 +4743,9 @@ struct NavigationExample {
 
 ### 示例15（Navigation工具栏自适应）
 
-该示例主要展示Navigation工具栏的自适应能力的启用及关闭。
+该示例主要通过[enableToolBarAdaptation](#enabletoolbaradaptation19)属性展示Navigation工具栏自适应能力的启用及关闭。
+
+从API version 19开始，新增了enableToolBarAdaptation属性。
 
 在工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "landscape"（该工程配置仅方便演示在横屏模式下的Navigation工具栏自适应能力，实际配置可自行设置为"auto_rotation"）。
 ```ts
@@ -4809,7 +4813,9 @@ struct NavigationExample {
 
 ### 示例16（Navigation使用NavDestination作为导航页）
 
-该示例代码主要展示Navigation可以使用[NavDestination](ts-basic-components-navdestination.md)作为导航页（主页）。
+该示例展示了Navigation组件通过配置[homeDestination](#navigation20)参数，实现以[NavDestination](ts-basic-components-navdestination.md)作为根导航页的效果。
+
+从API version 20开始，新增创建Navigation组件的方式。
 
 ```ts
 @Component
