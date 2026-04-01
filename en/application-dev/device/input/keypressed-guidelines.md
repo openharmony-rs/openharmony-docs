@@ -18,7 +18,7 @@ Each system function key has a default function, which is fixedly implemented by
 
 ## Available APIs
 
-The following table lists the APIs related to key press event listening. For details about the APIs, see [ohos.multimodalInput.inputConsumer](../../reference/apis-input-kit/js-apis-inputconsumer.md).
+The following table lists common APIs for key press events. For details, see [@ohos.multimodalInput.inputConsumer](../../reference/apis-input-kit/js-apis-inputconsumer.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
