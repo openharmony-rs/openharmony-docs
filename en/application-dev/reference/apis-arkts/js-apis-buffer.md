@@ -358,9 +358,9 @@ Creates a **Buffer** object of the specified length that shares memory with Arra
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | Yes| **ArrayBuffer** or **SharedArrayBuffer** object whose memory is to be shared.|
+| arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | Yes| Instance object.|
 | byteOffset | number | No| Byte offset. The default value is **0**.|
-| length | number | No| Length of the **Buffer** object to create, in bytes. The default value is **arrayBuffer.byteLength** minus **byteOffset**.|
+| length | number | No| Length of the **Buffer** object to create, in bytes. The default value is **arrayBuffer.byteLength** minus **byteOffset**. If null is passed, the byte length is 0.|
 
 **Return value**
 
@@ -658,7 +658,7 @@ console.info("newBuf = " + newBuf.toString('ascii'));
 | -------- | -------- | -------- | -------- | -------- |
 | length | number | Yes| No| Length of the **Buffer** object, in bytes.|
 | buffer | ArrayBuffer | Yes| No| **ArrayBuffer** object.|
-| byteOffset | number | Yes| No| Offset of the **Buffer** object in the memory pool.|
+| byteOffset | number | Yes| No| Offset of the **Buffer** object in the memory pool.<br>- When a Buffer is created using a memory pool (for example, using [allocUninitializedFromPool](#bufferallocuninitializedfrompool) to create a Buffer or using buffer.from() to pass a string whose length plus the offset of the current memory pool is less than 4 KB), the offset relative to the memory pool is returned.<br>- When a Buffer allocates memory directly (for example, using [alloc](#bufferalloc)), the return value is 0.|
 
 **Error codes**
 
@@ -673,14 +673,17 @@ For details about the error codes, see [Utils Error Codes](errorcode-utils.md).
 ```ts
 import { buffer } from '@kit.ArkTS';
 
-let buf = buffer.from("1236");
+let buf = buffer.from("12345678");
 console.info(JSON.stringify(buf.length));
-// Output: 4
+// Output: 8
 let arrayBuffer = buf.buffer;
 console.info(JSON.stringify(new Uint8Array(arrayBuffer)));
-// Output: {"0":49,"1":50,"2":51,"3":54}
+// Output: {"0":49,"1":50,"2":51,"3":52,"4":53,"5":54,"6":55,"7":56}
 console.info(JSON.stringify(buf.byteOffset));
 // Output: 0
+let buf1 = buffer.from("abcd");
+console.info(JSON.stringify(buf1.byteOffset));
+// Output: 8
 ```
 
 ### compare
@@ -818,7 +821,7 @@ while (!next.done) {
            buffer: 3,102
            buffer: 4,101
            buffer: 5,114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -1034,7 +1037,7 @@ Output: 0
         3
         4
         5
-*/
+ */
 ```
 
 ### lastIndexOf
@@ -2117,7 +2120,7 @@ Truncates this **Buffer** object from the specified position to create a new **B
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | start | number | No| Offset to the start position in this **Buffer** object where data is truncated. The default value is **0**.|
-| end | number | No|  Offset to the end position in this **Buffer** object (not inclusive). The default value is the length of this **Buffer** object.|
+| end | number | No|  Offset to the end position in this **Buffer** object (not inclusive). The default value is the length of this **Buffer** object. If null is passed, an empty Buffer is returned.|
 
 **Return value**
 
@@ -2298,7 +2301,7 @@ Converts the data at the specified position in this **Buffer** object into a str
 | -------- | -------- | -------- | -------- |
 | encoding | string | No| Encoding format (valid only when **value** is a string). The default value is **'utf8'**.|
 | start  | number | No|  Offset to the start position of the data to convert. The default value is **0**.|
-| end  | number | No|  Offset to the end position of the data to convert. The default value is the length of this **Buffer** object.|
+| end  | number | No|  Offset to the end position of data. The default value is the length of this **Buffer** object.|
 
 **Return value**
 
@@ -2360,7 +2363,7 @@ while (!next.done) {
            102
            101
            114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -3504,8 +3507,8 @@ Creates and returns a **Blob** object that contains specified data from this **B
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| start | number | No| Offset to the start position of the data to copy. The default value is **0**.|
-| end | number | No| Offset to the end position of the data to copy. The default value is the data length in the original **Blob** object.|
+| start | number | No| Offset to the start position of data. The default value is **0**.|
+| end | number | No| Offset to the end position of data. The default value is the data length in the original **Blob** object.|
 | type | string | No| Type of the data in the new **Blob** object. The default value is **''**.|
 
 **Return value**

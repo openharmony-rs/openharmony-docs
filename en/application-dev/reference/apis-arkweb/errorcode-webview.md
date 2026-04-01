@@ -58,20 +58,23 @@ Check whether the URL is correct and contains a maximum of 2 × 1024 × 1024 cha
 
 **Error Message**
 
-Invalid resource path or file type.
+1. Invalid resource path or file type.
+2. Calling a JS method that returns an empty ArrayBuffer via runJavaScript.
 
 **Description**
 
-This error code is reported when the path to the resource file is incorrect.
+1. This error code is reported when the path to the resource file is incorrect.
+2. This error code is reported when the method on the H5 side invoked via **runJavaScript** returns an empty **ArrayBuffer**.
 
 **Possible Causes**
 
-The resource file does not exist or cannot be accessed.
+1. The resource file does not exist or cannot be accessed.
+2. The method on the H5 side invoked via **runJavaScript** returns an empty **ArrayBuffer**.
 
 **Solution**
 
-Make sure the path to the resource file is correct.
-
+1. Make sure the path to the resource file is correct.
+2. Use the **runJavaScriptExt** API to replace the **runJavaScript** API.
 
 ## 17100004 Function Not Enabled
 
@@ -85,11 +88,11 @@ This error code is reported when the related function is not enabled.
 
 **Possible Causes**
 
-The related function is not set or enabled.
+The related function is not set or enabled, or the function is incorrectly invoked.
 
 **Solution**
 
-Make sure the related function is enabled.
+Check whether the related function is enabled, for example, whether XXXAccess is set to **true**, or whether the current API supports concurrency.
 
 
 ## 17100005 Invalid Cookie Value

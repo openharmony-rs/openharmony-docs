@@ -2304,7 +2304,7 @@ For details, see [Using Same-Layer Rendering](../../web/web-same-layer.md#render
           Web({ src: $rawfile('index.html'), controller: this.controller })
              // Enable same-layer rendering.
             .enableNativeEmbedMode(true)
-             // Register the same-layer tag of <object> and type of "native."
+             // Register the same-layer tag as <object> with the type prefixed by "native".
             .registerNativeEmbedRule("object", "native")
              // Obtain the lifecycle change data of the <object> tag.
             .onNativeEmbedLifecycleChange((object) => {
@@ -2348,7 +2348,7 @@ For details, see [Using Same-Layer Rendering](../../web/web-same-layer.md#render
 
 defaultTextEncodingFormat(textEncodingFormat: string)
 
-Sets the default text encoding format for the web page. When this attribute is not explicitly called, the default text encoding format of the web page is UTF-8.
+Sets the default text encoding format for the web page. When this attribute is not explicitly called, the default character encoding of the web page is UTF-8.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -2772,7 +2772,7 @@ struct WebComponent {
 
 enableHapticFeedback(enabled: boolean)
 
-Sets whether to enable haptic feedback for long-pressed text in the **Web** component. The **ohos.permission.VIBRATE** permission must be declared. When this attribute is not explicitly called, haptic feedback is enabled by default.
+Sets whether to enable haptic feedback for long-pressed text in the **Web** component. Requires the **ohos.permission.VIBRATE** permission. When this attribute is not explicitly called, haptic feedback is enabled by default.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3251,7 +3251,7 @@ Sets whether to enable segment-based HTML parsing optimization. If no attribute 
 
 To avoid occupying too many main thread resources and enable progressive loading of web pages, the ArkWeb kernel uses the segment-based parsing policy when parsing the HTML files. By default, the ArkWeb kernel uses the parsing time as the segment point. When the parsing time exceeds the threshold, the parsing is interrupted and then the layout and rendering operations are performed.
 
-After this optimization is enabled, the ArkWeb kernel checks whether the parsing time exceeds the limit and whether the number of parsed tokens (minimum parsing unit of HTML files, such as **\<div>** and **attr="xxx"**) exceeds the threshold specified by the kernel. If yes, the ArkWeb kernel decreases the threshold. When the First Contentful Paint (FCP) of the page is triggered, the default interrupt judgment logic is restored. In this way, the web page is parsed more frequently before the FCP is triggered, thereby the first-frame content may be parsed in advance and enter a rendering phase, effectively reducing the workload of first-frame rendering, and finally advancing the FCP.
+After this optimization is enabled, the ArkWeb kernel checks whether the parsing time exceeds the limit and whether the number of parsed tokens (minimum parsing unit of HTML files, such as `<div>` and `attr="xxx"`) exceeds the threshold specified by the kernel. If yes, the ArkWeb kernel decreases the threshold. When the First Contentful Paint (FCP) of the page is triggered, the default interrupt judgment logic is restored. In this way, the web page is parsed more frequently before the FCP is triggered, thereby the first-frame content may be parsed in advance and enter a rendering phase, effectively reducing the workload of first-frame rendering, and finally advancing the FCP.
 
 When the FCP of a page is triggered, the default segment parsing logic is restored. Therefore, the segment-based HTML parsing optimization takes effect only for the first page loaded by each **Web** component.
 
@@ -3643,7 +3643,7 @@ Sets the gesture focus mode of the **Web** component. If this attribute is not e
 
 rotateRenderEffect(effect: WebRotateEffect)
 
-Sets how the final state of the **Web** component's content is rendered during its width and height animation process when the component rotates. If this attribute is not explicitly called, by default, the component's content stays at the final size and always aligned with the upper left corner of the component.
+Sets how the content of the **Web** component is filled during the width and height animation when the component is rotated. If this attribute is not explicitly called, by default, the component's content stays at the final size and always aligned with the upper left corner of the component.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3651,7 +3651,7 @@ Sets how the final state of the **Web** component's content is rendered during i
 
 | Name             | Type                             | Mandatory  | Description         |
 | ------------------- | ------------------------------   | ------ | ------------- |
-| effect | [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect22) | Yes    | How the final state of the **Web** component's content is rendered during its width and height animation process when the component rotates.|
+| effect | [WebRotateEffect](./arkts-basic-components-web-e.md#webrotateeffect22) | Yes    | Sets how the content of the **Web** component is filled during the width and height animation when the component is rotated.|
 
 **Example**
 
@@ -3699,7 +3699,7 @@ Sets whether to enable the forcible zoom functionality for the **Web** component
 
 | Name       | Type   | Mandatory  | Description         |
 | ---------- | ------- | ---- | ------------- |
-| enable | boolean | Yes   | Whether to comply with the zoom restriction specified by the **\<meta name="viewport">** tag on the web page.<br>The value **true** means to not comply with the web page zoom restriction, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the attribute setting does not take effect.|
+| enable | boolean | Yes   | Whether to comply with the zoom restriction specified by the `<meta name="viewport">` tag on the web page.<br>The value **true** means to not comply with the web page zoom restriction, and **false** means the opposite.<br>When **undefined** or **null** is passed in, the attribute setting does not take effect.|
 
 **Example**
 

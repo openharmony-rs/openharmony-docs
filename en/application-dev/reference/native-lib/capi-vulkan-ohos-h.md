@@ -26,6 +26,9 @@ The file declares the Vulkan interfaces extended by OpenHarmony.
 | Name                                                                                     | typedef Keyword                        | Description                              |
 |-----------------------------------------------------------------------------------------|------------------------------------|----------------------------------|
 | [VkSurfaceCreateInfoOHOS](capi-vulkan-vksurfacecreateinfoohos.md)                       | VkSurfaceCreateInfoOHOS            | Describes the parameters required for creating a Vulkan surface.       |
+| [VkNativeBufferOHOS](capi-vulkan-vknativebufferohos.md) | VkNativeBufferOHOS | Contains parameters for the native device memory.|
+| [VkSwapchainImageCreateInfoOHOS](capi-vulkan-vkswapchainimagecreateinfoohos.md) | VkSwapchainImageCreateInfoOHOS | Contains parameters required for creating an image.|
+| [VkPhysicalDevicePresentationPropertiesOHOS](capi-vulkan-vkphysicaldevicepresentationpropertiesohos.md) | VkPhysicalDevicePresentationPropertiesOHOS | Contains parameters for the display attributes of the device.|
 | [VkNativeBufferUsageOHOS](capi-vulkan-vknativebufferusageohos.md)                       | VkNativeBufferUsageOHOS            | Describes the usage of the NativeBuffer.|
 | [VkNativeBufferPropertiesOHOS](capi-vulkan-vknativebufferpropertiesohos.md)             | VkNativeBufferPropertiesOHOS       | Describes the properties of the NativeBuffer.             |
 | [VkNativeBufferFormatPropertiesOHOS](capi-vulkan-vknativebufferformatpropertiesohos.md) | VkNativeBufferFormatPropertiesOHOS | Describes the format properties of the NativeBuffer.         |
@@ -33,7 +36,14 @@ The file declares the Vulkan interfaces extended by OpenHarmony.
 | [VkMemoryGetNativeBufferInfoOHOS](capi-vulkan-vkmemorygetnativebufferinfoohos.md)       | VkMemoryGetNativeBufferInfoOHOS    | Used to obtain an OH_NativeBuffer from the Vulkan memory.  |
 | [VkExternalFormatOHOS](capi-vulkan-vkexternalformatohos.md)                             | VkExternalFormatOHOS               | Describes an externally defined format.                   |
 | [NativeWindow](capi-vulkan-nativewindow.md)                                             | OHNativeWindow                     | Describes a native window.                           |
+| [OHBufferHandle](capi-vulkan-ohbufferhandle.md) | - | Describes the buffer handle, which is used to transfer and obtain buffer information.|
 | [OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md)                                   | -                                  | Describes the OH_NativeBuffer struct.                                |
+
+### Enumeration
+
+| Name| typedef Keyword| Description|
+| -- | -- | -- |
+| [VkSwapchainImageUsageFlagBitsOHOS](#vkswapchainimageusageflagbitsohos) | VkSwapchainImageUsageFlagBitsOHOS | Image usage flag.|
 
 ### Macros
 
@@ -42,6 +52,9 @@ The file declares the Vulkan interfaces extended by OpenHarmony.
 | VK_OHOS_surface 1 | Surface extension macro definition of OpenHarmony.<br>**Since**: 10|
 | VK_OHOS_SURFACE_SPEC_VERSION      1 | Surface extension version of OpenHarmony.<br>**Since**: 10|
 | VK_OHOS_SURFACE_EXTENSION_NAME    "VK_OHOS_surface" | Surface extension name of OpenHarmony.<br>**Since**: 10|
+| VK_OHOS_native_buffer 1 | Extended macro definition for native_buffer.<br>**Since**: 10|
+| VK_OHOS_NATIVE_BUFFER_SPEC_VERSION 1 | Extended version number for native_buffer.<br>**Since**: 10|
+| VK_OHOS_NATIVE_BUFFER_EXTENSION_NAME "VK_OHOS_native_buffer" | native_buffer extension name.<br>**Since**: 10|
 | VK_OHOS_external_memory 1 | External memory extension macro definition of OpenHarmony.<br>**Since**: 10|
 | VK_OHOS_EXTERNAL_MEMORY_SPEC_VERSION 1 | External memory extension version of OpenHarmony.<br>**Since**: 10|
 | VK_OHOS_EXTERNAL_MEMORY_EXTENSION_NAME "VK_OHOS_external_memory" | External memory extension name of OpenHarmony.<br>**Since**: 10|
@@ -59,6 +72,33 @@ The file declares the Vulkan interfaces extended by OpenHarmony.
 | [VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkgetswapchaingrallocusageohos)                               | -                       | Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag.|
 | [VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkacquireimageohos)                                                  | -                       | Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects.|
 | [VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkqueuesignalreleaseimageohos) | -                       | Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it.|
+| [VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkapi_ptr-pfn_vksetnativefencefdopenharmony) | VKAPI_PTR \*PFN_vkSetNativeFenceFdOpenHarmony | This API has been deprecated.|
+| [typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkapi_ptr-pfn_vkgetnativefencefdopenharmony) | VKAPI_PTR \*PFN_vkGetNativeFenceFdOpenHarmony | This API has been deprecated.|
+| [VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)](#vkapi_ptr-pfn_vkgetswapchaingrallocusageohos) | VKAPI_PTR \*PFN_vkGetSwapchainGrallocUsageOHOS | Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag. As an application developer, you do not need to use this function.|
+| [VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vkapi_ptr-pfn_vkacquireimageohos) | VKAPI_PTR \*PFN_vkAcquireImageOHOS | Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects. As an application developer, you do not need to use this function.|
+| [typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkapi_ptr-pfn_vkqueuesignalreleaseimageohos) | VKAPI_PTR \*PFN_vkQueueSignalReleaseImageOHOS | Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it. As an application developer, you do not need to use this function.|
+| [VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)](#vksetnativefencefdopenharmony) | - | This API has been deprecated.|
+| [VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)](#vkgetnativefencefdopenharmony) | - | This API has been deprecated.|
+
+
+## Enumeration Description
+
+### VkSwapchainImageUsageFlagBitsOHOS
+
+```c
+enum VkSwapchainImageUsageFlagBitsOHOS
+```
+
+**Description**
+
+Image usage flag.
+
+**Since**: 10
+
+| Enum Item| Description|
+| -- | -- |
+| VK_SWAPCHAIN_IMAGE_USAGE_SHARED_BIT_OHOS = 0x00000001 | Shared image flag.|
+| VK_SWAPCHAIN_IMAGE_USAGE_FLAG_BITS_MAX_ENUM_OHOS = 0x7FFFFFFF | Maximum value.|
 
 ## Function Description
 
@@ -268,6 +308,37 @@ Returns the appropriate gralloc usage flag based on the given Vulkan device, ima
 | -- | -- |
 | VkResult | One of the following error codes of the VkResult type:<br> **VK_SUCCESS**: The operation is successful.<br> **VK_ERROR_INITIALIZATION_FAILED**: An input parameter is abnormal.|
 
+### VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS()
+
+```c
+typedef VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device, VkFormat format, VkImageUsageFlags imageUsage, uint64_t* grallocUsage)
+```
+
+**Description**
+
+Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag. As an application developer, you do not need to use this function.
+
+**System capability**: SystemCapability.Graphic.Vulkan
+
+**Since**: 10
+
+**Deprecated from**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| VkDevice device | VkDevice object.|
+| VkFormat format | Image format.|
+| VkImageUsageFlags imageUsage | Image use flag.|
+| uint64_t\* grallocUsage | Pointer to the gralloc usage flag.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| VkResult | One of the following error codes of the VkResult type:<br>**VK_SUCCESS**: The operation is successful.<br>**VK_ERROR_INITIALIZATION_FAILED**: An input parameter is abnormal.|
+
 ### vkAcquireImageOHOS()
 
 ```c
@@ -299,6 +370,38 @@ Obtains the ownership of the swap chain image and imports the fence of the exter
 | -- | -- |
 | VkResult | One of the following error codes of the VkResult type:<br> **VK_SUCCESS**: The operation is successful.<br> **VK_ERROR_OUT_OF_HOST_MEMORY**: The host memory is insufficient.|
 
+### VKAPI_PTR *PFN_vkAcquireImageOHOS()
+
+```c
+typedef VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage image, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)
+```
+
+**Description**
+
+Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects. As an application developer, you do not need to use this function.
+
+**System capability**: SystemCapability.Graphic.Vulkan
+
+**Since**: 10
+
+**Deprecated from**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| VkDevice device | VkDevice object.|
+| VkImage image | Vulkan image to obtain.|
+| int32_t nativeFenceFd | File descriptor of the native fence.|
+| VkSemaphore semaphore | Vulkan semaphore indicating that the image is available.|
+| VkFence fence | Vulkan fence used for synchronization when the image acquisition is complete.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| VkResult | One of the following error codes of the VkResult type:<br>**VK_SUCCESS**: The operation is successful.<br>**VK_ERROR_OUT_OF_HOST_MEMORY**: The host memory is insufficient.|
+
 ### vkQueueSignalReleaseImageOHOS()
 
 ```c
@@ -329,3 +432,100 @@ Sends a signal to the system hardware buffer to release an image once it is no l
 | Type| Description|
 | -- | -- |
 | VkResult | One of the following error codes of the VkResult type:<br> **VK_SUCCESS**: The operation is successful.<br> **VK_ERROR_DEVICE_LOST**: The Vulkan device link is lost.<br> **VK_ERROR_OUT_OF_HOST_MEMORY**: The host memory is insufficient.|
+
+### VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS()
+
+```c
+typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)
+```
+
+**Description**
+
+Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it. As an application developer, you do not need to use this function.
+
+**System capability**: SystemCapability.Graphic.Vulkan
+
+**Since**: 10
+
+**Deprecated from**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| VkQueue queue | Handle to the Vulkan queue.|
+| uint32_t waitSemaphoreCount | Number of semaphores to wait on.|
+| const VkSemaphore\* pWaitSemaphores | Pointer to the array of semaphores to wait on.|
+| images | Handle to the Vulkan image to be released.|
+| int32_t\* pNativeFenceFd | Pointer to the file descriptor of the fence.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| VkResult | One of the following error codes of the VkResult type:<br>**VK_SUCCESS**: The operation is successful.<br>**VK_ERROR_DEVICE_LOST**: The Vulkan device link is lost.<br>**VK_ERROR_OUT_OF_HOST_MEMORY**: The host memory is insufficient.|
+
+
+### VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony()
+
+```c
+typedef VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)
+```
+
+**Description**
+
+This API has been deprecated.
+
+**Since**: 10
+
+**Deprecated from**: 10
+
+**Substitute**: [PFN_vkAcquireImageOHOS](#vkapi_ptr-pfn_vkacquireimageohos)
+
+### VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony()
+
+```c
+typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)
+```
+
+**Description**
+
+This API has been deprecated.
+
+**Since**: 10
+
+**Deprecated from**: 10
+
+**Substitute**: [PFN_vkQueueSignalReleaseImageOHOS](#vkapi_ptr-pfn_vkqueuesignalreleaseimageohos)
+
+### vkSetNativeFenceFdOpenHarmony()
+
+```c
+VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, int32_t nativeFenceFd, VkSemaphore semaphore, VkFence fence)
+```
+
+**Description**
+
+This API has been deprecated.
+
+**Since**: 10
+
+**Deprecated from**: 10
+
+**Substitute**: [vkAcquireImageOHOS](capi-vulkan-ohos-h.md#vkacquireimageohos)
+
+### vkGetNativeFenceFdOpenHarmony()
+
+```c
+VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint32_t waitSemaphoreCount, const VkSemaphore* pWaitSemaphores, VkImage image, int32_t* pNativeFenceFd)
+```
+
+**Description**
+
+This API has been deprecated.
+
+**Since**: 10
+
+**Deprecated from**: 10
+
+**Substitute**: [vkQueueSignalReleaseImageOHOS](capi-vulkan-ohos-h.md#vkqueuesignalreleaseimageohos)

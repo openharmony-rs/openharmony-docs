@@ -8,7 +8,7 @@
 
 Represents the event consumption result sent to the **Web** component. For details about the supported events, see [TouchType](../apis-arkui/arkui-ts/ts-appendix-enums.md#touchtype), [MouseAction](../apis-arkui/arkui-ts/ts-appendix-enums.md#mouseaction8), and left, middle, and right buttons in [MouseButton](../apis-arkui/arkui-ts/ts-appendix-enums.md#mousebutton8).
 
-If the application does not consume the event, set the consumption result to **false**, and the event will be consumed by the **Web** component. If the application consumes the event, set the consumption result to **true**, and the **Web** component will not consume the event. If the consumption result is not set according to the preceding specifications, exceptions may occur.
+If the application does not consume the event, set the consumption result to **false**, and the event will be consumed by the **Web** component. If the application consumes the event, set the consumption result to **true**, and the **Web** component will not consume the event. If the consumption result set by the application does not comply with the above specifications, behavior inconsistent with developer expectations will occur.
 
 For details about the sample code of the touch event, see [onNativeEmbedGestureEvent](./arkts-basic-components-web-events.md#onnativeembedgestureevent11).
 

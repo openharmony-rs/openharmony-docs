@@ -10,9 +10,9 @@ A utility class used to parse JSON strings into [sendable data](../../arkts-util
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - This module can be imported only to ArkTS files (with the file name extension .ets).
+> This module can be imported only to ArkTS files (with the file name extension .ets).
 
 ## Modules to Import
 
@@ -50,7 +50,7 @@ Defines the type of the conversion result function.
 | ------ | ------ | ---- | --------------- |
 | this   | [ISendable](#isendable) | Yes| Object to which the key-value pair to parse belongs.|
 | key  | string | Yes| Key to parse.|
-| value  | [ISendable](#isendable) \| undefined \| null| Yes| Value of the key.|
+| value  | [ISendable](#isendable) \| undefined \| null| Yes| Value of the key-value pair to parse.|
 
 **Return value**
 

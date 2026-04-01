@@ -70,7 +70,7 @@ Writes data to the buffer of the stream. This API uses an asynchronous callback 
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | No| Data to write. It cannot be **null**, **undefined**, or an empty string.|
+| chunk  | string \| Uint8Array | No| Data to write. The default value is **undefined**. It cannot be **null**, **undefined**, or an empty string.|
 | encoding  | string | No  | Encoding format. The default value is **'utf8'**. Currently, **'utf8'**, **'gb18030'**, **'gbk'**, and **'gb2312'** are supported.|
 | callback  | Function | No  | Callback used to return the result. It is not called by default.|
 
@@ -338,7 +338,7 @@ writable.write('hello', 'utf8', () => {
 
 off(event: string, callback?: Callback<emitter.EventData>): void
 
-Unregisters an event processing callback used to listen for different events on the writable stream.
+Removes the event processing function registered through [on](#on).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -973,7 +973,7 @@ readable.on('error', () => {
 
 off(event: string, callback?: Callback<emitter.EventData>): void
 
-Unregisters an event processing callback used to listen for different events on the writable stream.
+Removes the event processing function registered through [on](#on).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1117,7 +1117,7 @@ Pushes data into the buffer of the readable stream.
 
 | Name   | Type    | Mandatory    | Description|
 | -------- | -------- | -------- | -------- |
-| chunk | Uint8Array \| string  \| undefined \| null | Yes| Data to read.<br> There has been a compatibility change since API version 22. In API version 21 and earlier versions, the type is `Uint8Array \| string \| null`.|  |  |
+| chunk | Uint8Array \| string  \| undefined \| null | Yes| Data to read.<br> There has been a compatibility change since API version 22. In API version 21 and earlier versions, the type is `Uint8Array \| string \| null`.| string  \|  |
 | encoding | string | No| Encoding format. The default value is **'utf8'**. Currently, **'utf8'**, **'gb18030'**, **'gbk'**, and **'gb2312'** are supported.|
 
 **Return value**
@@ -1196,7 +1196,7 @@ Writes data to the buffer of the stream. This API uses an asynchronous callback 
 
 | Name| Type  | Mandatory| Description                      |
 | ------ | ------ | ---- | -------------------------- |
-| chunk  | string \| Uint8Array | No| Data to write. It cannot be **null**, **undefined**, or an empty string.|
+| chunk  | string \| Uint8Array | No| Data to write. The default value is **undefined**. It cannot be **null**, **undefined**, or an empty string.|
 | encoding  | string | No  | Encoding format. The default value is **'utf8'**. Currently, **'utf8'**, **'gb18030'**, **'gbk'**, and **'gb2312'** are supported.|
 | callback  | Function | No  | Callback used to return the result. It is not called by default.|
 

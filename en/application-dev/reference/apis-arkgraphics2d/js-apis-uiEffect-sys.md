@@ -184,7 +184,7 @@ Applies fly-in and fly-out animations onto the component.
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
 | degree  | number         | Yes  | Degree of control over deformation of the fly-in and fly-out animations. The value range is [0, 1].<br>A value closer to 1 results in more obvious deformation.<br>If a value outside this range is provided, no fly-in and fly-out animations will be displayed.|
-| flyMode      | [FlyMode](#flymode) | Yes  | Scene mode of the fly-in and fly-out animations.<br>**BOTTOM** means that the fly-in and fly-out animations occur from the bottom of the screen, and **TOP** means that the fly-in and fly-out animations occur from the top of the screen.|
+| flyMode      | [FlyMode](#flymode) | Yes  | Scene mode of the fly-in and fly-out animations.<br>**BOTTOM** means that the fly-in and fly-out animations occur from the bottom of the screen,<br>and **TOP** means that the fly-in and fly-out animations occur from the top of the screen.|
 
 
 **Return value**
@@ -259,7 +259,7 @@ Applies a radial linear gradient blur effect to the component.
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
 | value  | number         | Yes  | Blur radius. A larger value indicates a higher blur degree. The value range is [0, 128]. A zero blur radius disables the blur effect. Negative values default to **0**, while values above **128** cap at **128**.|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)        | Yes  | Linear gradient parameters, which include **fractionStops** and **direction**.|
+| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientblur12)        | Yes  | Linear gradient parameters, which include **fractionStops** and **direction**.|
 
 **Return value**
 
@@ -491,7 +491,7 @@ Detects the edge of the component content and adds an edge highlight effect.
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| alpha  | number         | Yes  | Specifies the highlight alpha value of the edge. A larger value indicates more obvious edges. The value range is [0, 1]. The value **0** disables the edge highlight effect. Negative values default to **0**, while values above **1** cap at **1**.|
+| alpha  | number         | Yes  | Specifies the highlight alpha value of the edge. A larger value indicates more obvious edges. The value range is [0,1]. The value **0** disables the edge highlight effect. Negative values default to **0**, while values above **1** cap at **1**.|
 | color  | [Color](#color20) | No  | Highlight color of the edge. If this parameter is not set, the original color of the component content is used by default. If there is a value, the specified color is used. If this parameter is set to a value other than NULL, the alpha value in **Color** does not take effect, and only the RGB value takes effect.|
 | mask  | [Mask](#mask20) | No  | Specifies the highlight strength of the edge. If this parameter is not set, the edge highlight effect is applied to all component content by default.|
 | bloom  | boolean | No  | Specifies whether the edge glows. **true** (default): both the edge highlight and glow effects are applied; **false**: only the edge highlight effect is applied. If the image size is less than 16 x 16, the edge highlight effect is applied by default, and the glow effect is not applied. In this case, this parameter does not take effect.|
@@ -1396,7 +1396,7 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   }
   let mask = uiEffect.Mask.createPixelMapMask(pixelMap, srcRect, dstRect, fillColor);
 }).catch((error: BusinessError)=>{
-  console.error('Failed to create pixelmap. code is ${error.code}, message is ${error.message}');
+  console.error(`Failed to create pixelmap. code is ${error.code}, message is ${error.message}`);
 })
 ```
 
