@@ -168,14 +168,14 @@ Describes the attach status of WebViewController and the **Web** component.
 
 ## BlanklessInfo<sup>20+</sup>
 
-Describes prediction information about blankless loading, including the first screen similarity, first screen loading duration, and error code. The application determines whether to enable the blankless loading solution based on the prediction information.
+Describes the prediction information about blankless loading, including the first screen similarity, first screen loading duration, and error code. The application determines whether to enable the blankless loading solution based on the prediction information.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
 | Name       | Type  | Read-Only| Optional|Description                |
 | ----------- | ------ | -----|------|------------------- |
 | errCode | WebBlanklessErrorCode | No  | No  | Error code of blankless loading. For details, see [WebBlanklessErrorCode](./arkts-apis-webview-e.md#webblanklesserrorcode20).|
-| similarity | number | No  | No  | First screen similarity, which is calculated based on the historical first screen content. The value ranges from 0 to 1.0. 1.0 indicates that the content is the same. A value closer to 1 indicates a higher similarity. This value is lagging, and the similarity of local loading is displayed in the next loading. You are advised not to enable the blankless loading solution when the similarity is low.|
+| similarity | number | No  | No  | First screen similarity, which is calculated based on the historical first screen content. The value range is [0, 1.0]. 1.0 indicates that the content is the same. A value closer to 1 indicates a higher similarity. This value is lagging, and the similarity of local loading is displayed in the next loading. You are advised not to enable the blankless loading solution when the similarity is low.|
 | loadingTime | number | No  | No  | Loading duration estimated based on the historical first screen loading durations, in milliseconds. The value must be greater than 0.|
 
 ## HistoryItem
@@ -191,7 +191,7 @@ Describes a historical page record.
 | historyRawUrl | string                                 | No  | No  | Original URL of the historical page.   |
 | title         | string                                 | No  | No  | Title of the historical page.          |
 
-## MediaInfo<sup>12+<sup>
+## MediaInfo<sup>12+</sup>
 
 Represents a **MediaInfo** object used as a parameter of the [CreateNativeMediaPlayerCallback](./arkts-apis-webview-t.md#createnativemediaplayercallback12) callback. The object contains information about media on the web page. The application may create, based on the information, a player that takes over media playback of the web page.
 
@@ -211,7 +211,7 @@ Represents a **MediaInfo** object used as a parameter of the [CreateNativeMediaP
 | headers | Record\<string, string\> | No| No| HTTP headers that need to be included in the player's request for media resources.|
 | attributes | Record\<string, string\> | No| No| Attributes in **\<video>** or **\<audio>**.|
 
-## RectEvent<sup>12+<sup>
+## RectEvent<sup>12+</sup>
 
 Defines a rectangle.
 

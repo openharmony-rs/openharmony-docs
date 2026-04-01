@@ -21,9 +21,9 @@ This topic uses the following to identify the use of generics:
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 8. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
+> Container classes, implemented in static languages, have restrictions on storage locations and properties, and do not support custom properties or methods.
 
 ## Specifications
 
@@ -414,7 +414,7 @@ Removes the element at the specified position from this LightWeightSet.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes| Position index of the element. Must be less than or equal to INT32_MAX, which is 2147483647.|
 
 **Return value**
 
@@ -456,7 +456,7 @@ Obtains the value of the element at the specified position in this LightWeightSe
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| index | number | Yes| Position index of the element. The value must be less than or equal to int32_max, that is, 2147483647.|
+| index | number | Yes| Position index of the element. Must be less than or equal to INT32_MAX, which is 2147483647.|
 
 **Return value**
 
