@@ -180,3 +180,5 @@ struct PagePicker {
 ```
 
 ![](figures/StatusBarLuminance100.gif)
+
+<!--no_check-->
