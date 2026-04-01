@@ -39,7 +39,7 @@
                 console.info('event.url:' + event.url);
                 console.info('event.message:' + event.message);
                 this.uiContext.showAlertDialog({
-                  title: 'from' + event.url + 'warning',
+                  title: 'Warning',
                   message: event.message,
                   confirm:{
                     value: 'confirm',
@@ -130,7 +130,7 @@
               if (event) {
                 console.info('event.url:' + event.url);
                 console.info('event.message:' + event.message);
-                this.title = 'from' + event.url + 'warning';
+                this.title = 'Warning';
                 this.message = event.message;
                 this.result = event.result;
                 this.dialogControllerAlert.open();
