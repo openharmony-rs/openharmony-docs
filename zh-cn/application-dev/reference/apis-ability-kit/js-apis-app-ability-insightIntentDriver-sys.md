@@ -291,7 +291,7 @@ EntityInfo继承自[IntentEntityDecoratorInfo](./js-apis-app-ability-InsightInte
 
 ## GetInsightIntentFlag<sup>20+<sup>
 
-意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于[getAllInsightIntentInfo](#insightintentdrivergetinsightintentinfobybundlename20)、[getInsightIntentInfoByBundleName](#insightintentdrivergetinsightintentinfobybundlename20)和[getInsightIntentInfoByIntentName](#insightintentdrivergetinsightintentinfobyintentname20)接口查询意图信息。
+意图信息（[InsightIntentInfo](#insightintentinfo20)）的标识，用于[getAllInsightIntentInfo](#insightintentdrivergetallinsightintentinfo20)、[getInsightIntentInfoByBundleName](#insightintentdrivergetinsightintentinfobybundlename20)和[getInsightIntentInfoByIntentName](#insightintentdrivergetinsightintentinfobyintentname20)接口查询意图信息。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
