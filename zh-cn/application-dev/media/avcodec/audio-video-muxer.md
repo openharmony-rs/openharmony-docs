@@ -92,9 +92,6 @@ target_link_libraries(sample PUBLIC libnative_media_core.so)
    OH_AVFormat_SetStringValue(format, OH_MD_KEY_CREATION_TIME, "2024-12-28T00:00:00:000000Z"); // 从API14开始支持设置创建时间（使用ISO 8601标准的时间格式且为UTC时间）。
    OH_AVFormat_SetStringValue(format, OH_MD_KEY_COMMENT, "comment test"); // 从API20开始支持设置评论。值类型为string。
    OH_AVFormat_SetIntValue(format, OH_MD_KEY_ENABLE_MOOV_FRONT, 1); // 从API20开始支持设置moov元数据是否前置。默认值为0，设置1代表前置。
-   OH_AVFormat_SetFloatValue(format, OH_MD_KEY_LATITUDE, 39.9); // 从API version 24开始支持设置纬度，值类型为float，范围为[-90.0, 90.0]。当需要设置地理位置信息时，纬度和经度是必选的，不能仅设置一种。
-   OH_AVFormat_SetFloatValue(format, OH_MD_KEY_LONGITUDE, 116.3); // 从API version 24开始支持设置经度，值类型为float，范围为[-180.0, 180.0]。当需要设置地理位置信息时，纬度和经度是必选的，不能仅设置一种。
-   OH_AVFormat_SetFloatValue(format, OH_MD_KEY_ALTITUDE, 44.4); // 从API version 24开始支持设置海拔，值类型为float，设置地理位置信息时海拔是可选的。
 
    // 设置用户自定义key（需要com.openharmony.开头）。
    OH_AVFormat_SetIntValue(format, "com.openharmony.testInt", 1024); // 值类型为int32_t。
