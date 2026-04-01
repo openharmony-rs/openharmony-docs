@@ -513,6 +513,23 @@ With this permission, the application can call **spaceManager.subscribeEvent** o
 
 **Valid since**: 20
 
+ ## ohos.permission.SCAN_REMEDIATE_VIRUS
+ 	  	 
+Allows an application to scan for and remediate viruses.
+
+This permission is only available to antivirus apps.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 24
+
 ## ohos.permission.sec.ACCESS_UDID
 
 Allows an application to obtain the Unified Device ID (UDID).
