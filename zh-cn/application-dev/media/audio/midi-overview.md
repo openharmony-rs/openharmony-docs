@@ -10,7 +10,7 @@
 
 乐器数字接口（Musical Instrument Digital Interface）是一种用于电子乐器、计算机和其他设备之间进行通信的国际标准协议。同时定义了音符、控制信号等音乐数据的传输方式，广泛应用于音乐制作、舞台演出和游戏开发等领域。
 
-从API version 24开始，Audio Kit支持MIDI（Musical Instrument Digital Interface）功能。由于OH_MIDI采用UMP（Universal MIDI Packet）作为统一的数据交互格式，所以开发者无需关心底层协议差异，只需要在OpenHarmony平台上以现代化的方式构建音乐创作、乐器控制和MIDI数据处理等应用。
+从API version 24开始，Audio Kit支持MIDI（Musical Instrument Digital Interface）功能。由于OH_MIDI采用UMP（Universal MIDI Packet）作为统一的数据交互格式，所以开发者无需关心底层协议差异，只需要以现代化的方式构建音乐创作、乐器控制和MIDI数据处理等应用。
 OH_MIDI包含客户端、设备、端口和事件四个核心概念，具体介绍如下。
 
 ### MIDI 1.0与MIDI 2.0
@@ -84,10 +84,10 @@ UMP格式通过消息类型(Message Type, MT)区分不同消息。MT是UMP数据
 
 ### 常用消息类型
 
-| MT值 | 名称 | 大小 | 说明 |
+| MT值 | 名称 | 大小（bit） | 说明 |
 |------|------|------|------|
-| 0x2 | MIDI 1.0 Channel Voice | 32位 | MIDI 1.0通道声音消息，兼容现有设备。 |
-| 0x4 | MIDI 2.0 Channel Voice | 64位 | MIDI 2.0高分辨率通道声音消息。 |
+| 0x2 | MIDI 1.0 Channel Voice | 32 | MIDI 1.0通道声音消息，兼容现有设备。 |
+| 0x4 | MIDI 2.0 Channel Voice | 64 | MIDI 2.0高分辨率通道声音消息。 |
 
 > 提示：
 >
@@ -95,17 +95,17 @@ UMP格式通过消息类型(Message Type, MT)区分不同消息。MT是UMP数据
 
 ### 完整消息类型参考
 
-| MT值 | 名称 | 大小 | 说明 |
+| MT值 | 名称 | 大小（bit） | 说明 |
 |------|------|------|------|
-| 0x0 | Utility Messages | 32位 | 实用消息，如JR时间戳。 |
-| 0x1 | System Common & Real-Time | 32位 | 系统公共消息和实时消息。 |
-| 0x2 | MIDI 1.0 Channel Voice | 32位 | MIDI 1.0通道声音消息，兼容现有设备。 |
-| 0x3 | Data Messages | 64位 | 数据消息，如SysEx（7位有效载荷）。 |
-| 0x4 | MIDI 2.0 Channel Voice | 64位 | MIDI 2.0高分辨率通道声音消息。 |
-| 0x5 | Extended Data Messages | 128位 | 扩展数据消息。 |
+| 0x0 | Utility Messages | 32 | 实用消息，如JR时间戳。 |
+| 0x1 | System Common & Real-Time | 32 | 系统公共消息和实时消息。 |
+| 0x2 | MIDI 1.0 Channel Voice | 32 | MIDI 1.0通道声音消息，兼容现有设备。 |
+| 0x3 | Data Messages | 64 | 数据消息，如SysEx（7位有效载荷）。 |
+| 0x4 | MIDI 2.0 Channel Voice | 64 | MIDI 2.0高分辨率通道声音消息。 |
+| 0x5 | Extended Data Messages | 128 | 扩展数据消息。 |
 | 0x6-0xD | Reserved | - | 保留供未来使用。 |
-| 0xE | Flex Data | 128位 | 灵活数据消息，如文本、歌词。 |
-| 0xF | Stream Messages | 128位 | UMP流消息，如端点发现、功能块配置。 |
+| 0xE | Flex Data | 128 | 灵活数据消息，如文本、歌词。 |
+| 0xF | Stream Messages | 128 | UMP流消息，如端点发现、功能块配置。 |
 
 > 注意：
 >
@@ -151,10 +151,3 @@ UMP格式通过消息类型(Message Type, MT)区分不同消息。MT是UMP数据
 - [使用OH_MIDI进行MIDI开发](using-ohmidi.md)
 - [OH_MIDI](../../reference/apis-audio-kit/capi-ohmidi.md) API参考
 - [OH_MIDIStatusCode](../../reference/apis-audio-kit/capi-native-midi-base-h.md#oh_midistatuscode)（MIDI状态码枚举）
-
-## 外部资源
-
-- [MIDI Manufacturers Association - MIDI 2.0规范](https://midi.org/midi-2-0-specifications)
-- [UMP和MIDI 2.0协议规范 (PDF)](https://amei.or.jp/midistandardcommittee/MIDI2.0/MIDI2.0-DOCS/M2-104-UM_v1-1-1_UMP_and_MIDI_2-0_Protocol_Specification.pdf)
-- [Linux Kernel - MIDI 2.0文档](https://www.kernel.org/doc/html/latest/sound/designs/midi-2.0.html)
-E
