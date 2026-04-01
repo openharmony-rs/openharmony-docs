@@ -613,15 +613,15 @@ try {
 ```ts
 // 返回示例
 [
-	{
-    	"bundleName": "com.example.edmtest",
-        "abilityName": "EntryAbility",
-        // 从API version 24支持
-        "parameters": {
-        	"isHiddenStart": false
-        }
-    },
-   // ...
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // 从API version 24支持
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
+  // ...
 ]
 ```
 
@@ -753,15 +753,15 @@ try {
 ```ts
 // 返回示例
 [
-	{
-    	"bundleName": "com.example.edmtest",
-        "abilityName": "EntryAbility",
-        // 从API version 24支持
-        "parameters": {
-        	"isHiddenStart": false
-        }
-    },
-   // ...
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // 从API version 24支持
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
+  // ...
 ]
 ```
 
@@ -1872,6 +1872,220 @@ try {
   console.error(`Failed to query whether the ability is disabled. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## applicationManager.addDockApp<sup>24+</sup>
+
+addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number): void
+
+根据位置索引添加应用到PC/2in1设备的底部快捷栏，添加后用户可以通过点击快捷栏的应用图标直接启动应用，应用图标为应用在桌面上显示的默认图标。
+
+> **说明：**
+>
+> 1.若位置0或1上已存在“应用中心”或“任务中心”，则尝试向该位置添加应用会返回错误码9201019；若该位置为其他应用，则可正常添加。
+>
+> 2.以下应用不可通过本接口添加到快捷栏：“应用中心”、“任务中心”、“文件管理”、“回收站”。
+>
+> 3.仅支持添加具有应用程序入口（即有图标）的应用，无图标的应用不支持添加。
+>
+> 4.仅支持配置当前用户下的快捷栏，每个用户的快捷栏最多可容纳100个应用。
+>
+> 5.在已有应用的位置插入新应用时，新应用将直接占用该位置，原应用及其后的应用依次向后顺移一位。
+>
+> 6.若不传index参数，或传入的index值大于快捷栏当前应用数量，则新应用默认追加到快捷栏末尾。
+>
+> 7.通过本接口添加应用到快捷栏后，用户可以手动移除或调整应用的位置。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备上生效，在其他设备中调用返回801错误码。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| bundleName   | string                                                  | 是   | 应用的包名。 |
+| abilityName  | string                                                  | 是   | 应用的Ability名称，仅支持应用程序入口Ability。 |
+| index        | number                                                  | 否   | 应用在快捷栏中的位置索引，取值范围：[0, 100)，默认值为99。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200015  | The ability does not exist. |
+| 9201013  | The number of applications in the Dock has reached the maximum. |
+| 9201014  | The application is already in the Dock. |
+| 9201015  | The application is not installed. |
+| 9201018  | The application is inoperable. |
+| 9201019  | The location is inoperable. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 需根据实际情况进行替换
+  let bundleName: string = 'com.example.exampleapplication';
+  let abilityName: string = 'EntryAbility';
+  applicationManager.addDockApp(wantTemp, bundleName, abilityName, 3);
+  console.info('Succeeded in adding dock app.');
+} catch(err) {
+  console.error(`Failed to add dock app. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.removeDockApp<sup>24+</sup>
+
+removeDockApp(admin: Want, bundleName: string, abilityName: string): void
+
+从快捷栏中移除应用。
+
+> **说明：**
+>
+> 以下应用不可通过本接口从快捷栏中移除：“应用中心”、“任务中心”、“文件管理”、“回收站”，否则报错9201018错误码。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备上生效，在其他设备中调用返回801错误码。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| bundleName   | string                                                  | 是   | 应用的包名。 |
+| abilityName  | string                                                  | 是   | 应用的Ability名称。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9201016  | The application has not been added to the Dock. |
+| 9201018  | The application is inoperable. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 需根据实际情况进行替换
+  let bundleName: string = 'com.example.exampleapplication';
+  let abilityName: string = 'EntryAbility';
+  applicationManager.removeDockApp(wantTemp, bundleName, abilityName);
+  console.info('Succeeded in removing dock app.');
+} catch(err) {
+  console.error(`Failed to remove dock app. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getDockApps<sup>24+</sup>
+
+getDockApps(admin: Want): Array\<DockInfo>
+
+获取当前快捷栏中应用信息的列表。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备上生效，在其他设备中调用返回801错误码。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[DockInfo](#dockinfo24)&gt; | 快捷栏中的应用信息数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: Array<applicationManager.DockInfo> = applicationManager.getDockApps(wantTemp);
+  console.info(`Succeeded in getting dock apps, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get dock apps. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+```ts
+// 返回示例
+[
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    "index": 5
+  },
+  // ...
+]
+```
+
 ## KioskFeature<sup>20+</sup>
 
 Kiosk模式的特征。
@@ -1887,3 +2101,17 @@ Kiosk模式的特征。
 | ALLOW_GESTURE_CONTROL<sup>24+</sup>    | 3   | 允许进入最近任务栏（通过单指底部上滑停留进入）。 |
 | ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | 禁止进入侧边DOCK栏（通过单指边缘内滑停留进入）。 |
 
+
+## DockInfo<sup>24+</sup>
+
+快捷栏中的应用信息。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型   | 只读  | 可选  |说明          |
+| ----------- | ------ |------ |------| ---------------|
+| bundleName  | string | 否    | 否   | 应用的包名。 |
+| abilityName | string | 否    | 否   | 应用的Ability名称。 |
+| index       | number | 否    | 否   | 应用在快捷栏中的位置索引。 |
