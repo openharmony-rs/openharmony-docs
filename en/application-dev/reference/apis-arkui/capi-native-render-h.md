@@ -482,7 +482,7 @@ Obtains the next sibling node of the specified node.
 | Name| Description|
 | -- | -- |
 | [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md) node | Reference node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node, which used to receive the next sibling node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* sibling | Pointer to the render node, which is used to receive the next sibling node.|
 
 **Return value**
 | Type| Description|
@@ -3065,8 +3065,8 @@ Obtains the RenderNode of the target node that has been accepted as a child node
 **Parameters**
 | Name| Description|
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | ArkUI_NodeHandle pointer, which specifies the target node.|
-| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* renderNode | ArkUI_RenderNodeHandle* pointer, which specifies the RenderNode of the target node.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | Pointer to **ArkUI_NodeHandle**, which specifies the target node.|
+| [ArkUI_RenderNodeHandle](./capi-arkui-nativemodule-arkui-rendernodehandle.md)* renderNode | Pointer to **ArkUI_RenderNodeHandle**, which specifies the RenderNode of the target node.|
 
 **Return value**
 | Type| Description|
