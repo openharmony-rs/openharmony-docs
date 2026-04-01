@@ -27,8 +27,8 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 | 名称       | 类型   | 只读 | 可选 | 说明                 |
 | :--------- | :----- | :--- | :--- | :------------------- |
-| sessionId  | string | 是   | 否   | 音频模板唯一的标识。 |
-| sessionTag | string | 是   | 否   | 音频模板标签。       |
+| sessionId  | string | 否   | 否   | 音频模板唯一的标识。 |
+| sessionTag | string | 否   | 否   | 音频模板标签。       |
 
 **示例：**
 
@@ -3559,7 +3559,7 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
 | 参数名       | 类型                                                         | 必填 | 说明         |
 | ------------ | ------------------------------------------------------------ | ---- | ------------ |
-| settingItems | [SettingItem](arkts-apis-avMusicTemplate-i.md#settingitem) | 是   | 设置项数组。 |
+| settingItems | [SettingItem](arkts-apis-avMusicTemplate-i.md#settingitem)[] | 是   | 设置项数组。 |
 
 **返回值：**
 

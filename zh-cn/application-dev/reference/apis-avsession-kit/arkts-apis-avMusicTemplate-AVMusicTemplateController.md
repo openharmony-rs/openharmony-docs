@@ -27,8 +27,8 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 | 名称      | 类型    | 只读 | 可选 | 说明                                                    |
 | :-------- | :------ | :--- | :--- | :------------------------------------------------------ |
-| sessionId | string  | 是   | 否   | 音频模板控制器唯一的标识。                              |
-| isDestroy | boolean | 是   | 否   | 音频模板是否销毁。true表示已经销毁，false表示没有销毁。无默认值。 |
+| sessionId | string  | 否   | 否   | 音频模板控制器唯一的标识。                              |
+| isDestroy | boolean | 否   | 否   | 音频模板是否销毁。true表示已经销毁，false表示没有销毁。无默认值。 |
 
 ## queryMainTabs
 
@@ -509,7 +509,7 @@ queryMediaEntityByKeyword(keyword: string, searchType: EntityType, pageIndex: nu
 
 | 类型                                                         | 说明                                                |
 | ------------------------------------------------------------ | --------------------------------------------------- |
-| Promise<[Compilation](arkts-apis-avMusicTemplate-i.md#compilation)[]> | Promise对象，返回与该关键字相关的媒体实体分页对象。 |
+| Promise<[PageMediaEntity](arkts-apis-avMusicTemplate-i.md#pagemediaentity)> | Promise对象，返回与该关键字相关的媒体实体分页对象。 |
 
 **错误码：**
 
