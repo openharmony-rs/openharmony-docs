@@ -670,7 +670,6 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ColorMetrics } from '@kit.ArkUI';
 import { window } from '@kit.ArkUI';
 
 try {
