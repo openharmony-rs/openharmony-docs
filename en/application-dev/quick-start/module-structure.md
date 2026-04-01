@@ -366,7 +366,7 @@ Example of the **abilities** attribute structure:
 | -------- | -------- | -------- | -------- |
 | actions | Actions of the **want** that can be accepted by the ability. Generally, the value is an **action** value predefined in the system.| String array| Yes (initial value: left empty)|
 | entities | Entities of the **want** that can be accepted by the ability, such as video and home applications.| String array| Yes (initial value: left empty)|
-| uris | Data specifications to be added to the want filter. The specification is a data type (using the **mimeType** attribute), a URI, or both a data type and a URI.<br>The URI is specified by separate attributes for each of its components: **<scheme>://<host>:<port>[<path>|<pathStartWith>|<pathRegex>]**.  <br>The field **scheme** is mandatory when the specification is of the URI type and is optional when the specification is a data type.| Object array| Yes (initial value: left empty)|
+| uris | Data specifications to be added to the want filter. The specification is a data type (using the **mimeType** attribute), a URI, or both a data type and a URI.<br>The URI is specified by separate attributes for each of its components: **&lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;[&lt;path&gt;\|&lt;pathStartWith&gt;\|&lt;pathRegex&gt;]**.  <br>The field **scheme** is mandatory when the specification is of the URI type and is optional when the specification is a data type.| Object array| Yes (initial value: left empty)|
 
 ## Internal Structure of the uris Attribute
 

@@ -2247,7 +2247,7 @@ Mode 2: Extract the code that the .ts file depends on from the .ets file to the 
 
 ## arkts-no-special-imports
 
-Use the regular **import { … } from '…'** syntax to import types.  
+Use the regular **import { ... } from '...'** syntax to import types.  
 
 **Before adaptation**
 
