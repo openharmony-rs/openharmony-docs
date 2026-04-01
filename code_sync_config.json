@@ -1170,7 +1170,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/bmsSample/InAppHsp2/library/src/main/ets/pages/library_menu.ets",
 				"functions":[
 					{
-						"end_line":51,
+						"end_line":50,
 						"name":"in_app_hsp_014",
 						"start_line":16
 					}
