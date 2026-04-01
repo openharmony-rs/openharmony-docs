@@ -654,11 +654,11 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 
 当前不支持设置页面级亮度，仅支持设置窗口级亮度。
 
-应用若想实现页面级亮度调整，可以在进入特定页面时在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)调整亮度，在退出特定页面时，在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，恢复成系统默认亮度。
+应用若想实现页面级亮度调整，可以在进入特定页面时在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)调整亮度，在退出特定页面时，在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，恢复成系统屏幕亮度。
 
-## 如何恢复系统默认亮度
+## 如何恢复系统屏幕亮度
 
-针对Phone、Tablet设备，应用可以调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，即可恢复为系统默认亮度。
+针对Phone、Tablet设备，应用可以调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，即可恢复为系统屏幕亮度。
 
 针对PC/2in1设备，由于窗口亮度和系统亮度已实现归一化，故调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)接口后将直接改变系统亮度，目前没有可以恢复设置窗口亮度前的方法。
 
