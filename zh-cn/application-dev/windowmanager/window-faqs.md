@@ -319,7 +319,7 @@ struct OrientationTestView {
     this.windowClass.setPreferredOrientation(orientation).then(() => {
       console.info('setWindowOrientation: ' + orientation + ' Succeeded.');
     }).catch((err: BusinessError) => {
-      console.info('setWindowOrientation: ' + orientation + ' Failed. Cause: ' + JSON.stringify(err));
+      console.error('setWindowOrientation: ' + orientation + ' Failed. Cause: ' + JSON.stringify(err));
     })
   }
   build() {
@@ -664,9 +664,19 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 
 ## 如何正常获取顶层窗口
 
-当使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)销毁子窗和[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)获取应用最顶层窗口时，建议在销毁完成之后再调用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)准确获取子窗销毁之后应用最顶层窗口。
+**问题现象**
 
-示例代码如下所示：
+当使用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)获取应用最顶层窗口时，获取到了正在销毁的子窗。
+
+**产生原因**
+
+当使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)销毁子窗时，未等待其销毁完成即调用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)，导致获取到了正在销毁的子窗。
+
+**解决措施**
+
+在使用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)获取应用最顶层窗口前，应确保子窗销毁、窗口创建等操作已完成。
+
+**示例代码**
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
