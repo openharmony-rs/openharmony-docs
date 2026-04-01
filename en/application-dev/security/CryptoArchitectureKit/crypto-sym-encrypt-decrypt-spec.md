@@ -220,7 +220,7 @@ Currently, RC4 encryption and decryption can be performed using the string param
 
 ## Blowfish (BF)
 
-In API version 26.0.0 and later versions, the block cipher algorithm [Blowfish](crypto-sym-key-generation-conversion-spec.md#blowfishbf) is supported. The block length is 64 bits, and the key length ranges from 32 bits to 448 bits.
+In API version 26.0.0 and later versions, the block cipher algorithm [Blowfish](crypto-sym-key-generation-conversion-spec.md#blowfish-bf) is supported. The block length is 64 bits, and the key length ranges from 32 bits to 448 bits.
 
 > **NOTE**
 >
