@@ -15,7 +15,7 @@
 ```ts
 import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend, RenderSort, Material,
   MaterialProperty, MetallicRoughnessMaterial, ShaderMaterial, SamplerFilter, SamplerAddressMode, Sampler,
-  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image } from '@kit.ArkGraphics3D';
+  SubMesh, Morpher, Mesh, MeshResource, Animation, EnvironmentBackgroundType, Environment, Image, ImageStream } from '@kit.ArkGraphics3D';
 ```
 ## SceneResourceType
 场景资源类型枚举，对场景中的资源进行分类。
@@ -598,6 +598,21 @@ function finish(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | width | number | 是 | 否 | 图片宽度，单位为像素（px），取值范围大于0。 |
 | height | number | 是 | 否 | 图片高度，单位为像素（px），取值范围大于0。 |
+
+## ImageStream
+图片流类型，继承自[Image](#image)。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| surfaceId | string | 是 | 否 | 图片流唯一标识符，取值范围大于0。 |
 
 ## Effect<sup>21+</sup>
 
