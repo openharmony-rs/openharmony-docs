@@ -1287,7 +1287,7 @@ getCrossingSwitchState(networkId: string): Promise&lt;boolean&gt;;
 
 **返回值**：
 
-| 参数                        | 说明                     |
+| 类型                        | 说明                     |
 | -------------------        | ------------------------------- |
 | Promise&lt;boolean&gt; | Promise对象，返回true表示目标设备键鼠穿越的开关开启，返回false表示开关未开启。 |
 
