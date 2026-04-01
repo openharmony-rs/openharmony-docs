@@ -544,9 +544,9 @@ ArkTS-Sta: alignRules(alignRule: AlignRuleOption | LocalizedAlignRuleOptions | u
 
 ## id<sup>15+</sup>
 
-ArkTS-Dyn: id(description: string)
+ArkTS-Dyn: id(id: string)
 
-ArkTS-Sta: id(description: string | undefined)
+ArkTS-Sta: id(id: string | undefined)
 
 组件的唯一标识，唯一性由使用者保证。
 
@@ -562,7 +562,7 @@ ArkTS-Sta: id(description: string | undefined)
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| description | ArkTS-Dyn: string <br> ArkTS-Sta: string \| undefined |  是  | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
+| id | ArkTS-Dyn: string <br> ArkTS-Sta: string \| undefined |  是  | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## chainMode<sup>15+</sup>
 
