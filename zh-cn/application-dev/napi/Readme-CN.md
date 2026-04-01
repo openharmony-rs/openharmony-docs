@@ -60,6 +60,7 @@
       - [使用Node-API接口产生的异常日志/崩溃分析](use-napi-about-crash.md)
       - [使用Node-API调用返回值为promise的ArkTS方法](use-napi-method-promise.md)
       - [使用扩展的Node-API接口创建对ArkTS对象的Sendable强引用](use-napi-about-sendable-reference.md)
+      - [使用扩展的Node-API接口加速属性访问](use-napi-about-fast-property-access.md)
     - Node-API常见问题汇总<!--napi-questions-->
       - [Node-API常见问题](use-napi-faqs.md)
       - [稳定性相关问题汇总](napi-faq-about-stability.md)
