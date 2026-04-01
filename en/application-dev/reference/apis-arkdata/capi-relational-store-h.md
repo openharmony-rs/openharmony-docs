@@ -523,7 +523,7 @@ Sets whether to encrypt the database for an [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-co
 | Parameter| Description|
 | -- | -- |
 | [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which is the configuration of the RDB store.|
-| bool isEncrypted | Whether to encrypt the RDB store. The value **true** means to encrypt the database; the value **false** means the opposite.|
+| bool isEncrypted | Whether to encrypt the RDB store. The value **true** means to encrypt the database; the value **false** means the opposite. After the database is created, this parameter cannot be modified directly. To change the database encryption status, call the [OH_Rdb_RekeyEx](capi-relational-store-h.md#oh_rdb_rekeyex) API.|
 
 **Returns**
 
@@ -761,7 +761,7 @@ Sets the tokenizer type.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the database configuration related to the RDB storage.|
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the database configuration related to the RDB store.|
 | [Rdb_Tokenizer](#rdb_tokenizer) tokenizer | Tokenizer type to set.|
 
 **Returns**
@@ -787,7 +787,7 @@ Sets whether to persist an RDB store.
 
 | Parameter| Description|
 | -- | -- |
-| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance, which specifies the database configuration.|
+| [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) *config | Pointer to the [OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md) instance.<br>which specifies the database configuration.|
 | bool isPersistent | Whether to persist the database data.|
 
 **Returns**

@@ -23,24 +23,28 @@ import { ArkTSUtils, taskpool } from '@kit.ArkTS';
 
 @Concurrent
 function notifyAll(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
+  console.info(`TaskPool Thread notifyAll`);
   conditionVariable.notifyAll();
 }
 
 @Concurrent
 function notifyOne(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
+  console.info(`TaskPool Thread notifyOne`);
   conditionVariable.notifyOne();
 }
 
 @Concurrent
 async function wait(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
-  await conditionVariable.wait();
-  console.info(`TaskPool Thread Wait: success`);
+  conditionVariable.wait().then(() => {
+    console.info(`TaskPool Thread Wait: success`);
+  });
 }
 
 @Concurrent
 async function waitFor(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
-  await conditionVariable.waitFor(3000);
-  console.info(`TaskPool Thread WaitFor: success`);
+  conditionVariable.waitFor(3000).then(() => {
+    console.info(`TaskPool Thread WaitFor: success`);
+  });
 }
 
 @Entry
@@ -51,32 +55,32 @@ struct Index {
   build() {
     Row() {
       Column() {
-        Text(this.message)
-          .fontSize(50)
+        Button(this.message)
+          .fontSize(25)
           .fontWeight(FontWeight.Bold)
-          .onClick(() => {
+          .onClick(async () => {
             // Create a conditionVariable object.
             const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
             // Pass the conditionVariable object to the wait thread.
-            taskpool.execute(wait, conditionVariable);
+            await taskpool.execute(wait, conditionVariable);
             // Pass the conditionVariable object to the notifyAll thread to wake up the wait thread. The log information "TaskPool Thread Wait: success" is displayed.
-            taskpool.execute(notifyAll, conditionVariable);
+            await taskpool.execute(notifyAll, conditionVariable);
             // Pass the conditionVariable object to the waitFor thread.
-            taskpool.execute(waitFor, conditionVariable);
+            await taskpool.execute(waitFor, conditionVariable);
             // Pass the conditionVariable object to the notifyOne thread to wake up the waitFor thread. The log information "TaskPool Thread WaitFor: success" is displayed.
-            taskpool.execute(notifyOne, conditionVariable);
+            await taskpool.execute(notifyOne, conditionVariable);
 
             // Create a conditionVariable object with a name.
             const conditionVariableRequest: ArkTSUtils.locks.ConditionVariable =
-                ArkTSUtils.locks.ConditionVariable.request("Request1");
+              ArkTSUtils.locks.ConditionVariable.request('Request1');
             // Pass the conditionVariableRequest object to the wait thread.
-            taskpool.execute(wait, conditionVariableRequest);
+            await taskpool.execute(wait, conditionVariableRequest);
             // Pass the conditionVariableRequest object to the notifyAll thread to wake up the wait thread. The log information "TaskPool Thread Wait: success" is displayed.
-            taskpool.execute(notifyAll, conditionVariableRequest);
+            await taskpool.execute(notifyAll, conditionVariableRequest);
             // Pass the conditionVariableRequest object to the waitFor thread.
-            taskpool.execute(waitFor, conditionVariableRequest);
+            await taskpool.execute(waitFor, conditionVariableRequest);
             // Pass the conditionVariableRequest object to the notifyOne thread to wake up the waitFor thread. The log information "TaskPool Thread WaitFor: success" is displayed.
-            taskpool.execute(notifyOne, conditionVariableRequest);
+            await taskpool.execute(notifyOne, conditionVariableRequest);
           })
       }
       .width('100%')

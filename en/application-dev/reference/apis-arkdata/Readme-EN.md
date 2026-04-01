@@ -51,7 +51,7 @@
     - [@ohos.data.storage (Lightweight Data Storage)](js-apis-data-storage.md)
     - [@system.storage (Data Storage)](js-apis-system-storage.md)
     - data/rdb<!--data-rdb-->
-      - [resultSet (Result Set)](js-apis-data-resultset.md) 
+      - [resultSet](js-apis-data-resultset.md)
 - ArkTS Components<!--arkdata-comp-->
   - [@ohos.data.UdmfComponents (Content Card)](js-apis-data-UdmfComponents.md)
 - C APIs<!--arkdata-c-->

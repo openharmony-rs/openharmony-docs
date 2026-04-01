@@ -6,7 +6,7 @@
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
 
-Multithreaded concurrency refers to the execution of multiple threads simultaneously within a single program, enhancing performance and resource utilization through parallel or alternating task execution. In ArkTS application development, multithreaded concurrency applies to multiple service scenarios. The common service scenarios are classified into the following three types. For more details, see [Multithreaded Development Practice Cases](batch-database-operations-guide.md).
+Multithreaded concurrency refers to the execution of multiple threads simultaneously within a single program, enhancing performance and resource utilization through parallel or alternating task execution. In ArkTS application development, multi-thread concurrency is applicable to multiple service scenarios. Common service scenarios are classified into the following three types. For details, see the **multi-thread development practice cases**.
 
 - Service logic that involves heavy computation or frequent I/O read/write operations, which require extended execution time, such as image/video encoding and decoding, file compression and decompression, and database operations.
 
@@ -93,6 +93,7 @@ class BufferQueue {
     // Attempt to acquire the lock.
     if (this.mutex.lock()) {
       if (this.queue.empty()) {
+        this.mutex.unlock();
         res = 1;
         return res;
       }

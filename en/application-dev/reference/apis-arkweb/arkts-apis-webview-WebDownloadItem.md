@@ -971,11 +971,11 @@ struct WebComponent {
 
 start(downloadPath: string): void
 
-Starts a download to a specified directory.
+Starts a download to a specified directory. The parameter is the disk storage path (including the file name) of the downloaded file.
 
 > **NOTE**
 >
->This API must be used in the **onBeforeDownload** callback of **WebDownloadDelegate**. If it is not called in the callback, the download task remains in the PENDING state and is downloaded to a temporary directory. After the target path is specified by **WebDownloadItem.start**, the temporary files are renamed to the target path and the unfinished files are directly downloaded to the target path. If you do not want to download the file to the temporary directory before invoking **WebDownloadItem.start**, you can call **WebDownloadItem.cancel** to cancel the current download task and then call **WebDownloadManager.resumeDownload** to resume the task.
+>This API must be used in the **onBeforeDownload** callback of **WebDownloadDelegate**. If start('xxx') is not called in the callback, the download task remains in the PENDING state and is downloaded to a temporary directory. After the target path is specified by **WebDownloadItem.start**, the temporary files are renamed to the target path and the unfinished files are directly downloaded to the target path. If you do not want to download the file to the temporary directory before invoking **WebDownloadItem.start**, you can call **WebDownloadItem.cancel** to cancel the current download task and then call **WebDownloadManager.resumeDownload** to resume the task.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

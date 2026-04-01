@@ -673,7 +673,7 @@ Triggered to notify the host application that the page loading starts. This meth
 
 > **NOTE**
 >
-> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. **onPageBegin** will not be simulated.
+> - When the document of the pop-up window is modified by JavaScript before being loaded, **onLoadStarted** is simulated and the URL is set to null, because displaying the URL that is being loaded may be insecure. <b class="+ topic/ph hi-d/b " id="b145733136532">onPageBegin</b> will not be simulated.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1585,6 +1585,7 @@ Triggered when an SSL client certificate request is received.
 >
 > - The **Web** component can respond with [ClientAuthenticationHandler.confirm](./arkts-basic-components-web-ClientAuthenticationHandler.md#confirm10), [ClientAuthenticationHandler.cancel](./arkts-basic-components-web-ClientAuthenticationHandler.md#cancel9), or [ClientAuthenticationHandler.ignore](./arkts-basic-components-web-ClientAuthenticationHandler.md#ignore9).
 > - If **ClientAuthenticationHandler.confirm** or **ClientAuthenticationHandler.cancel** is called, the **Web** component stores the authentication result in the memory (within the application lifecycle) and does not call **onClientAuthenticationRequest()** again for the same host and port. If **onClientAuthenticationRequest.ignore** is called, the **Web** component does not store the authentication result.
+> - The **ohos.permission.ACCESS_CERT_MANAGER** permission is required.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -1625,7 +1626,7 @@ struct Index {
           return;
         }
 
-        //Note: Replace badssl.com-client.p12 with the actual certificate file.
+        // Note: Replace badssl.com-client.p12 with the actual certificate file.
         let value: Uint8Array = this.context.resourceManager.getRawFileContentSync("badssl.com-client.p12");
         certificateManager.installPrivateCertificate(value, 'badssl.com', "1",
           async (err: BusinessError, data: certificateManager.CMResult) => {
@@ -1760,7 +1761,62 @@ Interconnect with certificate management to implement two-way authentication.
       }
     }
     ```
-3. Implement two-way authentication.
+3. Store the context of the current ability to GlobalContext.
+    <!--code_no_check-->
+    ```ts
+    // EntryAbility.ets
+    import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { window } from '@kit.ArkUI';
+    import { GlobalContext } from '../pages/GlobalContext';
+
+    const DOMAIN = 0x0000;
+
+    export default class EntryAbility extends UIAbility {
+      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
+        try {
+          this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
+          GlobalContext.getContext().setObject("AbilityContext", this.context);
+        } catch (err) {
+          hilog.error(DOMAIN, 'testTag', 'Failed to set colorMode. Cause: %{public}s', JSON.stringify(err));
+        }
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onCreate');
+      }
+
+      onDestroy(): void {
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onDestroy');
+      }
+
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+        // Main window is created, set main page for this ability
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+        windowStage.loadContent('pages/Index', (err) => {
+          if (err.code) {
+            hilog.error(DOMAIN, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+            return;
+          }
+          hilog.info(DOMAIN, 'testTag', 'Succeeded in loading the content.');
+        });
+      }
+
+      onWindowStageDestroy(): void {
+        // Main window is destroyed, release UI related resources
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onWindowStageDestroy');
+      }
+
+      onForeground(): void {
+        // Ability has brought to foreground
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onForeground');
+      }
+
+      onBackground(): void {
+        // Ability has back to background
+        hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
+      }
+    }
+    ```
+4. Implement two-way authentication.
     <!--code_no_check-->
     ```ts
     import { webview } from '@kit.ArkWeb';
@@ -2663,7 +2719,7 @@ Triggered to check whether a bound **Web** instance exists based on the name whe
             }
           })
           .onActivateContent(() => {
-            //The Web component needs to be displayed in the front. It is recommended that the application switch between tabs or windows to display the Web component.
+            // The Web component needs to be displayed in the front. It is recommended that the application switch between tabs or windows to display the Web component.
             console.info("NewWebViewComp onActivateContent")
           })
       }.height("50%")
@@ -2910,7 +2966,7 @@ Triggered when the key event is intercepted and before it is consumed by the web
 
 | Name   | Type  | Mandatory  | Description                 |
 | ------ | ------ | ---- | --------------------- |
-| callback | (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent)) => boolean| Yes| Key event that is triggered.<br>The return value is of the Boolean type. The value **true** means to pass the **KeyEvent** to the web kernel, and **false** means the opposite.|
+| callback | (event:[KeyEvent](../apis-arkui/arkui-ts/ts-universal-events-key.md#keyevent)) => boolean| Yes| Key event that is triggered.<br>The return value is of the Boolean type. The value **true** means to pass the **KeyEvent** to the Webview kernel, and **false** means the opposite.|
 
 **Example**
 
@@ -3464,6 +3520,11 @@ onSafeBrowsingCheckResult(callback: OnSafeBrowsingCheckResultCallback)
 
 Called when the safe browsing check result is received.
 
+> **NOTE**
+>
+> - The release package is required. The debug package does not take effect.
+> - Callback triggered when minor mode is enabled and web content blocking is set.
+
 **System capability**: SystemCapability.Web.Webview.Core
 
 **Parameters**
@@ -3500,6 +3561,11 @@ Called when the safe browsing check result is received.
 onSafeBrowsingCheckFinish(callback: OnSafeBrowsingCheckResultCallback)
 
 Called when the safe browsing check is complete.
+
+> **NOTE**
+>
+> - The release package is required. The debug package does not take effect.
+> - Callback triggered when minor mode is enabled and web content blocking is set.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -3873,6 +3939,10 @@ HTML file to be loaded:
 onIntelligentTrackingPreventionResult(callback: OnIntelligentTrackingPreventionCallback)
 
 Triggered when the intelligent tracking prevention feature is enabled and the tracker cookie is blocked.
+
+> **NOTE**
+>
+> - The release package is required. The debug package does not take effect.
 
 **System capability**: SystemCapability.Web.Webview.Core
 

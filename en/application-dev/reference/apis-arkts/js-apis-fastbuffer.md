@@ -327,7 +327,7 @@ Creates a **FastBuffer** object of the specified length that shares memory with 
 | -------- | -------- | -------- | -------- |
 | arrayBuffer | ArrayBuffer&nbsp;\|&nbsp;SharedArrayBuffer | Yes| Target object.|
 | byteOffset | number | No| Byte offset. The default value is **0**.|
-| length | number | No| Length of the **FastBuffer** object to create, in bytes. The default value is **arrayBuffer.byteLength** minus **byteOffset**. Value range: 0 <= length <= arrayBuffer.byteLength - byteOffset|
+| length | number | No| Length of the **FastBuffer** object to create, in bytes. The default value is **arrayBuffer.byteLength** minus **byteOffset**. Value range: 0 <= length <= arrayBuffer.byteLength - byteOffset. If null is passed, an empty FastBuffer is returned.|
 
 **Return value**
 
@@ -531,7 +531,7 @@ transcode(source: FastBuffer | Uint8Array, fromEnc: string, toEnc: string): Fast
 
 Transcodes a **FastBuffer** or **Uint8Array** object from one encoding format to another.
 
-This API supports the following encoding formats: 'ascii', 'utf8', 'utf16le', 'ucs2', 'latin1', and 'binary'.
+This API supports the following encoding formats: 'ascii' | 'utf8' | 'utf16le'| 'ucs2' | 'latin1'| 'binary'.
 
 **System capability**: SystemCapability.Utils.Lang
 
@@ -542,7 +542,7 @@ This API supports the following encoding formats: 'ascii', 'utf8', 'utf16le', 'u
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | source | [FastBuffer](#fastbuffer)&nbsp;\|&nbsp;Uint8Array | Yes| Target object.|
-| fromEnc | string | Yes| Current encoding format. For details about the supported formats, see [BufferEncoding](#bufferencoding).|
+| fromEnc | string | Yes| Current encoding format. The supported format range is BufferEncoding. If an empty string is passed, the encoding format 'utf8' is used.|
 | toEnc | string | Yes| Target encoding format. For details about the supported formats, see [BufferEncoding](#bufferencoding).|
 
 **Return value**
@@ -725,7 +725,7 @@ while (!next.done) {
            fastbuffer: 3,102
            fastbuffer: 4,101
            fastbuffer: 5,114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -933,7 +933,7 @@ Output: 0
         3
         4
         5
-*/
+ */
 ```
 
 ### values
@@ -969,7 +969,7 @@ while (!next.done) {
            102
            101
            114
-  */
+   */
   next = pair.next();
 }
 ```
@@ -1937,7 +1937,7 @@ Truncates this **FastBuffer** object from the specified position to create a **F
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | start | number | No| Offset to the start position in this **FastBuffer** object where data is truncated. The default value is **0**.|
-| end | number | No|  Offset to the end position in this **FastBuffer** object (not inclusive). The default value is the length of this **FastBuffer** object. Value range: start <= end <= this.length|
+| end | number | No|  Offset to the end position in this **FastBuffer** object (not inclusive). The default value is the length of this **FastBuffer** object. Value range: start <= end <= this.length. If null is passed, an empty FastBuffer is returned.|
 
 **Return value**
 
@@ -2779,7 +2779,7 @@ Writes a big-endian signed value of the specified length to this **FastBuffer** 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write. The value range depends on **byteLength**. |
-| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - byteLength If **null** or **undefined** is passed, the offset is **0**.|
 | byteLength | number | Yes| Number of bytes to write.|
 
 
@@ -2824,7 +2824,7 @@ Writes a little-endian signed value of the specified length to this **FastBuffer
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write. The value range depends on **byteLength**.|
-| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - byteLength If **null** or **undefined** is passed, the offset is **0**.|
 | byteLength | number | Yes| Number of bytes to write.|
 
 
@@ -3098,7 +3098,7 @@ Writes an unsigned big-endian value of the specified length to this **FastBuffer
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write. The value range depends on **byteLength**.|
-| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - byteLength If **null** or **undefined** is passed, the offset is **0**.|
 | byteLength | number | Yes| Number of bytes to write.|
 
 
@@ -3142,7 +3142,7 @@ Writes an unsigned little-endian value of the specified length to this **FastBuf
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
 | value | number | Yes| Data to write. The value range depends on **byteLength**.|
-| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - byteLength|
+| offset | number | Yes| Offset. The default value is **0**. Value range: 0 <= offset <= this.length - byteLength If **null** or **undefined** is passed, the offset is **0**.|
 | byteLength | number | Yes| Number of bytes to write.|
 
 

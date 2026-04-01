@@ -36,7 +36,7 @@ Constructs a **WebviewController** object.
 > 
 > When an empty parameter is passed in, such as **new webview.WebviewController("")** or **new webview.WebviewController(undefined)**, it is meaningless and cannot distinguish multiple instances. In this case, **undefined** is returned. You need to check whether the returned value is normal.
 >
-> After the **Web** component is destroyed, the **WebViewController** is unbound, and exception 17100001 will be thrown when the non-static method of **WebViewController** is called. You need to pay attention to the calling time and capture exceptions to prevent abnormal process exit.
+> After the **Web** component is destroyed, it is unbound from the WebViewController. If you call a non-static method of the WebViewController, the [17100001](../apis-arkweb/errorcode-webview.md#17100001-webviewcontroller-not-associated-with-a-web-component) exception is thrown. Pay attention to the calling time and capture the exception to prevent the process from exiting abnormally.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -130,7 +130,7 @@ HTML file to be loaded:
 
 static initializeWebEngine(): void
 
-Loads the dynamic link library (DLL) file of the web engine. This API can be called before the **Web** component is initialized to improve the startup performance. The frequently visited websites are automatically pre-connected.
+Before the **Web** component is initialized, the dynamic library file of the Web engine is loaded through this API to improve startup performance. The frequently visited websites are automatically pre-connected.
 
 > **NOTE**
 >
@@ -141,7 +141,7 @@ Loads the dynamic link library (DLL) file of the web engine. This API can be cal
 
 **Example**
 
-The following code snippet exemplifies calling this API after the EntryAbility is created.
+The following uses EntryAbility as an example to describe how to load the dynamic library of the **Web** component during ability creation.
 
 ```ts
 // EntryAbility.ets
@@ -369,7 +369,7 @@ struct WebComponent {
 
 2. Using resources protocol.
 
-When **$rawfile** is used to load a URL contains a number sign (#), the content following the number sign is treated as a fragment. To avoid this issue, you can use the **resource://rawfile/** protocol prefix instead.
+Using the `resource://rawfile/` protocol prefix avoids the limitations of the conventional `$rawfile` approach when processing routing links that contain the # character. When a URL contains the # character, the content after # is treated as an anchor (fragment).
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -458,7 +458,7 @@ If **encoding** is not base64 (including null values), ASCII encoding is used fo
 >
 > - In the scenario of loading a local image, **baseUrl** and **historyUrl** cannot be both empty. Otherwise, the image cannot be loaded.
 >
-> - If the rich text in HTML contains special characters such as hash (#), you are advised to set the values of **baseUrl** and **historyUrl** to spaces.
+> - If the rich text in HTML contains injected special characters such as #, you are advised to set the values of **baseUrl** and **historyUrl** to a single space.
 >
 > - To load texts, you need to set `<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">` to avoid inconsistent font sizes.
 
@@ -471,7 +471,7 @@ If **encoding** is not base64 (including null values), ASCII encoding is used fo
 | data       | string | Yes  | String obtained after being base64 or URL encoded.                   |
 | mimeType   | string | Yes  | Media type (MIME).                                          |
 | encoding   | string | Yes  | Encoding type, which can be base64 or URL.                      |
-| baseUrl    | string | No  | URL (HTTP/HTTPS/data compliant), which is assigned by the **Web** component to **window.origin**. If a large number of HTML files need to be loaded, set this parameter to **data**.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
+| baseUrl    | string | No  | A specified URL path (http/https/data protocol), which is assigned by the **Web** component to `window.origin`. If a large number of HTML files need to be loaded, set this parameter to **data**.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 | historyUrl | string | No  | URL used for historical records. If this parameter is not empty, historical records are managed based on this URL. This parameter is invalid when **baseUrl** is left empty.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 
 **Error codes**
@@ -627,7 +627,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.controller.loadData(
-              "<img src=bb.jpg>", // Try to download the image from "file:///xxx/" + "bb.jpg".
+              "<img src=bb.jpg>", // Try to load the image from "file:///xxx/" + "bb.jpg".
               "text/html",
               "UTF-8",
               // Load the image path in the local application sandbox. Change the path to the actual sandbox path.
@@ -1295,6 +1295,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100003 | Calling a JS method that returns an empty ArrayBuffer via runJavaScript.                       |
 
 **Example**
 
@@ -1395,6 +1396,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 | -------- | ------------------------------------------------------------ |
 | 17100001 | Init error. The WebviewController must be associated with a Web component.|
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| 17100003 | Calling a JS method that returns an empty ArrayBuffer via runJavaScript.                       |
 
 **Example**
 
@@ -4822,7 +4824,7 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      // Replace ''www.example1.com' with a real URL for the API to work.
+      // Replace 'www.example1.com' with a real URL for the API to work.
       Web({ src: 'www.example1.com', controller: this.controller })
     }
   }
@@ -4888,7 +4890,7 @@ struct WebComponent {
             console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
           }
         })
-      // Replace ''www.example1.com' with a real URL for the API to work.
+      // Replace 'www.example1.com' with a real URL for the API to work.
       Web({ src: 'www.example1.com', controller: this.controller })
     }
   }
@@ -5050,7 +5052,7 @@ setCustomUserAgent(userAgent: string): void
 
 Sets a custom user agent, which will overwrite the default user agent.
 
-When **src** of the **Web** component is set to a URL, set **User-Agent** in **onControllerAttached**. For details, see the following example. Avoid setting the user agent in **onLoadIntercept**. Otherwise, the setting may fail occasionally.
+When **src** of the **Web** component is set to a URL, set **User-Agent** in **onControllerAttached**. For details, see the following example. Avoid setting the **User-Agent** in **onLoadIntercept**. Otherwise, the setting may fail occasionally.
 
 When **src** of the **Web** component is set to an empty string, call **setCustomUserAgent** to set **User-Agent** and then use **loadUrl** to load a specific page.
 
@@ -5058,7 +5060,7 @@ For details about the default **User-Agent**, see [Developing User-Agent](../../
 
 > **NOTE**
 >
->If a URL is set for the **Web** component **src** and **User-Agent** is not set in the **onControllerAttached** callback, calling **setCustomUserAgent** may cause mismatches between the loaded page and the intended user agent.
+>If a URL is set for the **Web** component **src** and **User-Agent** is not set in the **onControllerAttached** callback, calling **setCustomUserAgent** may cause mismatches between the loaded page and the intended **User-Agent**.
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -5278,9 +5280,9 @@ static setAppCustomUserAgent(userAgent: string): void
 
 Sets the application-level custom user agent, which will overwrite the system user agent and take effect for all **Web** components in the application.
 
-If you need to set the application-level custom user agent, you are advised to call the **setAppCustomUserAgent** method to set the user agent before creating the **Web** component, and then create the **Web** component with the specified src or load the page using [loadUrl](#loadurl).
+If you need to set the application-level custom user agent, you are advised to call the **setAppCustomUserAgent** method to set the **User-Agent** before creating the **Web** component, and then create the **Web** component with the specified src or load the page using [loadUrl](#loadurl).
 
-For details about the default User-Agent definition, application scenarios, and API priorities, see [Developing User-Agent](../../web/web-default-userAgent.md).
+For details about the default **User-Agent** definition, application scenarios, and API priorities, see [Developing User-Agent](../../web/web-default-userAgent.md).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -5329,7 +5331,7 @@ Sets a custom user agent for a specific website, which overwrites the system use
 
 To set a custom user agent for a specific website, you are advised to call the **setUserAgentForHosts** method to set **User-Agent** before creating a **Web** component, and then create a **Web** component with a specified src or use [loadUrl](#loadurl) to load a specific page.
 
-For details about the default User-Agent definition, application scenarios, and API priorities, see [Developing User-Agent](../../web/web-default-userAgent.md).
+For details about the default **User-Agent** definition, application scenarios, and API priorities, see [Developing User-Agent](../../web/web-default-userAgent.md).
 
 **System capability**: SystemCapability.Web.Webview.Core
 
@@ -7494,7 +7496,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 The API is recommended for use in conjunction with dynamic components. Employ offline **Web** components to generate bytecode caches, and at the appropriate time, load service **Web** components to utilize these bytecode caches. The following is a code example:
 
-1. Save **UIContext** to localStorage in **EntryAbility**.
+1. First, store [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) in [localStorage](../../ui/state-management/arkts-localstorage.md) in the EntryAbility.
 
    ```ts
    // EntryAbility.ets
@@ -7615,7 +7617,7 @@ The API is recommended for use in conjunction with dynamic components. Employ of
    }
    ```
 
-JavaScript resources can also be obtained through [network requests](../apis-network-kit/js-apis-http.md). However, the HTTP response header obtained using this method is not in the standard HTTP response header format. Additional steps are required to convert the response header into the standard HTTP response header format before use. If the response header obtained through a network request is e-tag, convert it to E-Tag before using it.
+   JavaScript resources can also be obtained through [network requests](../apis-network-kit/js-apis-http.md). However, the HTTP response header obtained using this method is not in the standard HTTP response header format. Additional steps are required to convert the response header into the standard HTTP response header format before use. If the response header obtained through a network request is e-tag, convert it to E-Tag before using it.
 
 4. Compile the code of the service component.
 
@@ -7974,6 +7976,8 @@ Obtains the full drawing result of the web page.
 
 > **NOTE**
 >
+> This API does not support concurrent calls.
+>
 > Only static images and texts in the rendering process can be captured.
 > 
 > If there is a video on the page, the placeholder image of the video is displayed when you take a snapshot. If there is no placeholder image, the page is blank.
@@ -8060,7 +8064,7 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 **Example**
 
 When appropriate, use this API in conjunction with dynamic components. Offline **Web** components are used to inject resources into the engine's memory cache, and at the appropriate time, the service **Web** components load and utilize these resources. The following is a code example:
-1. Save **UIContext** to localStorage in **EntryAbility**.
+1. First, store [UIContext](../apis-arkui/arkts-apis-uicontext-uicontext.md) in [localStorage](../../ui/state-management/arkts-localstorage.md) in the EntryAbility.
 
    ```ts
    // EntryAbility.ets
@@ -8241,7 +8245,7 @@ When appropriate, use this API in conjunction with dynamic components. Offline *
        ],
        type: webview.OfflineResourceType.CLASSIC_JS,
        responseHeaders: [
-         // Used in <script crossorigin="anonymous"/> mode to provide additional response headers.
+         // Used in <script crossorigin="anonymous" /> mode to provide additional response headers.
          { headerKey: "Cross-Origin", headerValue:"anonymous" }
        ]
      },
@@ -8468,7 +8472,7 @@ Sets the URL trustlist of the web page. Only URLs in the trustlist can be loaded
 | scheme | string   | No| Optional parameter. The supported protocols are HTTP and HTTPS.|
 | host | string | Yes| Mandatory parameter. The URL is permitted only when its host field is the same as the rule field. Multiple rules for the same host at the same time are allowed.|
 | port | number | No| Optional parameter.|
-| path | string | No| Optional parameter. This field uses prefix matching. For example, in **pathA/pathB/pathC**, **pathA/pathB/** is specified, and all level-3 directories such as **pathC** can be accessed, which must be a complete directory name or file name. Partial matching is not allowed.|
+| path | string | No| Optional field. If not set, this item will not be matched. The matching mode is prefix matching. Taking **pathA/pathB/pathC** as an example: all content under the three-level directory **pathA/pathB/pathC** is allowed to be accessed. Among them, **pathC** must be a complete directory name or file name and partial matching is not allowed.|
 
 **Error codes**
 
@@ -8546,25 +8550,27 @@ For details about the error codes, see [Webview Error Codes](errorcode-webview.m
 
 setPathAllowingUniversalAccess(pathList: Array\<string\>): void
 
-Sets a path list. When the file protocol accesses resources in the path list, cross-origin access to local files and other online resources is allowed. In addition, when a path list is set, the file protocol can access only the resources in the path list. The behavior of [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess) will be overwritten by that of this API. The paths in the list must be any of the following:
+Sets a path list. When the file protocol accesses resources in the path list, cross-origin access to local files and other online resources is allowed. In addition, when a path list is set, the file protocol can access only the resources in the path list. The behavior of [fileAccess](./arkts-basic-components-web-attributes.md#fileaccess) will be overwritten by that of this API.
+ 
+Allowing cross-origin access to directories by using setPathAllowingUniversalAccess is a high-risk operation. Based on the principle of least privilege, the paths accessible for el1 and el2 are fixed.Paths in the path list must conform to any one of the following path formats:
 
-1. The path of subdirectory of the application file directory. (The application file directory is obtained using [Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in the Ability Kit.) For example:
+1. The path of subdirectory of the application file directory. (The application file directory is obtained using [Context.filesDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in the Ability Kit.) For example:
 
 * /data/storage/el2/base/files/example
 * /data/storage/el2/base/haps/entry/files/example
 
-2. The path of application resource directory or its subdirectory. (The application resource directory is obtained from [Context.resourceDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in the Ability Kit.) For example:
+2. The path of application resource directory and its subdirectory. (The application resource directory is obtained from [Context.resourceDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in the Ability Kit.) For example:
 
 * /data/storage/el1/bundle/entry/resources/resfile
 * /data/storage/el1/bundle/entry/resources/resfile/example
 
-3. Since API version 21, the application cache directory and its subdirectories are also supported. (The application cache directory is obtained through [Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in Ability Kit). For example:
+3. Since API version 21, the application cache directory and its subdirectories are also supported. (The application cache directory is obtained through [Context.cacheDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in the Ability Kit). For example:
 
 * /data/storage/el2/base/cache
 * /data/storage/el2/base/haps/entry/cache/example
 * The **cache/web** directory is not allowed. If it is included, an exception with the code **401** will be thrown. If the **cache** directory is set, **cache/web** cannot be accessed.
 
-4. Since API version 21, the temporary application directory and its subdirectories are also supported. (The temporary application directory is obtained through [Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#context) in Ability Kit). For example:
+4. Since API version 21, the temporary application directory and its subdirectories are also supported. (The temporary application directory is obtained through [Context.tempDir](../apis-ability-kit/js-apis-inner-application-context.md#properties) in the Ability Kit). For example:
 
 * /data/storage/el2/base/temp
 * /data/storage/el2/base/haps/entry/temp/example
@@ -10030,7 +10036,7 @@ In an applet or web application, when the content changes significantly during p
 
 | Name  | Type   | Mandatory| Description                     |
 | -------- | ------- | ---- | -------------------------------------- |
-| keys | Array\<string\> | No| Key value list on the pages using the blankless optimization solution. The **key** value has been specified in [getBlanklessInfoWithKey](#getblanklessinfowithkey20).<br>Default value: key list of all pages cached by the blankless optimization solution.<br>The key length cannot exceed 2048 characters, and the number of keys must be less than or equal to 100. The key value is the same as that input to the **Web** component during page loading.<br>Invalid value setting behavior: If **undefined** or **null** is passed, error code **401** is thrown. If the key length exceeds 2048, the key does not take effect. If the key length exceeds 100, the first 100 values are used. If the key is empty, the default value is used.|
+| keys | Array\<string\> | No| Key value list on the pages using the blankless optimization solution. The **key** value has been specified in [getBlanklessInfoWithKey](#getblanklessinfowithkey20).<br>Default value: key list of all pages cached by the blankless optimization solution.<br>Valid value range: The key length cannot exceed 2048 characters, and the number of keys must be less than or equal to 100. The key value is the same as that input to the **Web** component during page loading.<br>Invalid value setting behavior: If **undefined** or **null** is passed, error code **401** is thrown. If the key length exceeds 2048, the key does not take effect. If the key length exceeds 100, the first 100 values are used. If the key is empty, the default value is used.|
 
 **Error codes**
 
@@ -10081,7 +10087,7 @@ Sets the persistent cache capacity of the blankless loading solution and returns
 
 | Name  | Type   | Mandatory| Description                     |
 | -------- | ------- | ---- | -------------------------------------- |
-| capacity | number | Yes| Persistent cache capacity, in MB. The maximum value is 100 MB.<br>The value ranges from 0 to 100. If this parameter is set to **0**, no cache capacity is available and the functionality is disabled globally.<br>When a value less than 0 is set, the value **0** takes effect. When a value greater than 100 is set, the value **100** takes effect.|
+| capacity | number | Yes| Persistent cache capacity, in MB. The maximum value is 100 MB.<br>Valid value range: [0, 100]. If the value is set to **0**, no cache space is available and the function is disabled globally.<br>When a value less than 0 is set, the value **0** takes effect. When a value greater than 100 is set, the value **100** takes effect.|
 
 **Return value**
 

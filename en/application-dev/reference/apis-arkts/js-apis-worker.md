@@ -24,14 +24,14 @@ import { worker } from '@kit.ArkTS';
 ```
 
 
-## Properties
+## Constants
 
 **System capability**: SystemCapability.Utils.Lang
 
-| Name                             | Type                                                        | Read-only| Optional| Description                                                        |
-| --------------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
-| workerPort<sup>9+</sup>           | [ThreadWorkerGlobalScope](#threadworkerglobalscope9)         | No  | No  | Object of the Worker thread used to communicate with the host thread.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                        |
-| parentPort<sup>(deprecated)</sup> | [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated) | No  | No  | Object of the Worker thread used to communicate with the host thread.<br>This property is supported since API version 7 and deprecated since API version 9.<br>You are advised to use **workerPort<sup>9+</sup>** instead.|
+| Name                             | Type                                                        | Read-only| Description                                                        |
+| --------------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| workerPort<sup>9+</sup>           | [ThreadWorkerGlobalScope](#threadworkerglobalscope9)         | Yes  | Object of the Worker thread used to communicate with the host thread.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                        |
+| parentPort<sup>(deprecated)</sup> | [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscopedeprecated) | Yes  | Object of the Worker thread used to communicate with the host thread.<br>This property is supported since API version 7 and deprecated since API version 9.<br>You are advised to use **workerPort<sup>9+</sup>** instead.|
 
 
 ## WorkerOptions
@@ -120,7 +120,7 @@ A constructor used to create a ThreadWorker instance.
 | Name   | Type                           | Mandatory| Description                                                        |
 | --------- | ------------------------------- | ---- | ------------------------------------------------------------ |
 | scriptURL | string                          | Yes  | URL of the Worker thread file.<br>For details about the rules, see [Precautions for File URLs](../../arkts-utils/worker-introduction.md#precautions-for-file-urls).|
-| options   | [WorkerOptions](#workeroptions) | No  | Options that can be set for the Worker instance.                                          |
+| options   | [WorkerOptions](#workeroptions) | No  | Options that can be set for the Worker instance. If this parameter is left empty, the default value is used.|
 
 **Error codes**
 
@@ -285,10 +285,7 @@ workerInstance.postMessage("hello world");
 let buffer = new ArrayBuffer(8);
 
 // When the options parameter is specified, the ownership of the buffer is transferred to the Worker thread and will no longer be accessible from the host thread.
-workerInstance.postMessage(buffer, [buffer]);
-
-// When the options parameter is not provided, it defaults to undefined, and the buffer is sent to the Worker thread by copying the data.
-workerInstance.postMessage(buffer);
+workerInstance.postMessage(buffer, {transfer: [buffer]});
 ```
 
 
@@ -539,7 +536,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 ```ts
-//Index.ets
+// Index.ets
 import { worker } from '@kit.ArkTS';
 
 const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
@@ -575,7 +572,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
   try {
     // The method to call carries input parameters.
     let res : string = workerPort.callGlobalCallObjectMethod("myObj", "getMessageWithInput", 0, "hello there!") as string;
-    console.info("worker:", res); //worker: this is a message from TestObj with input: hello there!
+    console.info("worker:", res); // worker: this is a message from TestObj with input: hello there!
   } catch (error) {
     // Exception handling.
     console.error("worker: error code is " + error.code + " error message is " + error.message);
@@ -628,7 +625,7 @@ workerInstance.registerGlobalCallObject("myObj", registerObj);
 // Unregister the object.
 workerInstance.unregisterGlobalCallObject("myObj");
 // Unregister all objects from the ThreadWorker instance.
-//workerInstance.unregisterGlobalCallObject();
+// workerInstance.unregisterGlobalCallObject();
 workerInstance.postMessage("start worker");
 ```
 
@@ -792,7 +789,7 @@ workerInstance.addEventListener("alert", () => {
   console.info("alert listener callback");
 })
 
-let result: Boolean = workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp is not supported yet.
+let result: boolean = workerInstance.dispatchEvent({type: "alert", timeStamp: 0}); // timeStamp is not supported yet.
 
 console.info("dispatchEvent result is: ", result);
 ```
@@ -1236,7 +1233,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 **Example**
 ```ts
-//Index.ets
+// Index.ets
 import { worker } from '@kit.ArkTS';
 
 const workerInstance = new worker.ThreadWorker("entry/ets/workers/worker.ets");
@@ -1274,7 +1271,7 @@ workerPort.onmessage = (e: MessageEvents): void => {
   try {
     // The method to call carries input parameters.
     let res : string = workerPort.callGlobalCallObjectMethod("myObj", "getMessageWithInput", 0, "hello there!") as string;
-    console.info("worker:", res); //worker: this is a message from TestObj with input: hello there!
+    console.info("worker:", res); // worker: this is a message from TestObj with input: hello there!
   } catch (error) {
     // Exception handling.
     console.error("worker: error code is " + error.code + " error message is " + error.message);
@@ -1367,7 +1364,7 @@ workerInstance.addEventListener("alert", (event: Event) => {
   console.info("event type is: ", JSON.stringify(event.type));
 });
 
-const eventToDispatch : Event = { type: "alert", timeStamp: 0 }; // timeStamp is not supported.
+const eventToDispatch : Event = { type: "alert", timeStamp: 0 }; // timeStamp is not supported yet.
 workerInstance.dispatchEvent(eventToDispatch);
 ```
 
@@ -1399,9 +1396,9 @@ Holds the data transferred between Worker threads. The class inherits from [Even
 | ---- | ---- | ---- | ---- | ------------------ |
 | data | any  | Yes  | No  | Data transferred between threads.|
 
-## MessageType<sup>7+</sup>
+## MessageType
 
-type MessageType = 'message' | 'messageerror';
+type MessageType = 'message' | 'messageerror'
 
 Defines the message type. Reserved data type, which is not implemented yet.
 
@@ -2009,7 +2006,7 @@ Defines an event listener.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [(event:Event)<sup>9+</sup>](#event-event9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [(event:Event)](#event-event9) instead.
 
 **System capability**: SystemCapability.Utils.Lang
 
