@@ -91,7 +91,7 @@ type SubHeaderV2IconType = ResourceStr | SymbolGlyphModifier
 | primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否 | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| id<sup>24+</sup>|  string  | 否 | 是  | 标题id。<br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| id<sup>24+</sup>|  string  | 否 | 是  | 标题id。需要为标题设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置标题id。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -126,7 +126,7 @@ constructor(options: SubHeaderV2TitleOptions)
 | primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置标题文本属性，如设置主标题颜色、字体大小、字重等。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。|
 | titleAccessibilityText<sup>23+</sup>|   [ResourceStr](ts-types.md#resourcestr)  | 否 | 是  | 设置标题自定义朗读内容。<br />默认值：undefined<br/>值为undefined时，默认朗读组件显示的标题内容。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
-| id<sup>24+</sup>|   string | 否 | 是  | 标题id。<br/>默认值：undefined<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| id<sup>24+</sup>|   string | 否 | 是  | 标题id。需要为标题设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置标题id。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## SubHeaderV2Select
 
@@ -135,8 +135,6 @@ select内容以及事件。
 **装饰器类型：** @ObservedV2
 
 ### 属性
-
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -149,7 +147,7 @@ select内容以及事件。
 | selectedContent | [ResourceStr](ts-types.md#resourcestr)                         |  否  | 是  | 设置下拉按钮本身的文本内容。默认值：'' 。从API version 20开始，支持Resource类型。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。        |
 | onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)                                   |  否  | 是  | 下拉菜单选中某一项的回调。 <br />默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
 | defaultFocus | boolean |  否  | 是  |下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
-| id<sup>24+</sup> | string |  否  | 是  |下拉按钮id。<br/>默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| id<sup>24+</sup> | string |  否  | 是  |下拉按钮id。需要为下拉按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置下拉按钮id。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ### constructor
 
@@ -173,8 +171,6 @@ select内容以及事件构造函数。
 
 用于构建SubHeaderV2Select对象。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -186,7 +182,7 @@ select内容以及事件构造函数。
 | selectedContent | [ResourceStr](ts-types.md#resourcestr)       |  否  | 是  | 设置下拉按钮本身的文本内容。默认值：''。从API version 20开始，支持Resource类型。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
 | onSelect | [SubHeaderV2SelectOnSelect](#subheaderv2selectonselect)          |  否  | 是  | 下拉菜单选中某一项的回调。<br />默认值：undefined <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。           |
 | defaultFocus | boolean |  否  | 是  | 下拉按钮是否为默认焦点。<br/>true：下拉按钮是默认焦点。<br/>false：下拉按钮不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
-| id<sup>24+</sup> | string |  否  | 是  | 下拉按钮id。<br/>默认值：undefined <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。    |
+| id<sup>24+</sup> | string |  否  | 是  | 下拉按钮id。需要为下拉按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置下拉按钮id。 <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。    |
 
 ## SubHeaderV2SelectOnSelect
 
@@ -249,8 +245,6 @@ type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 
 ### 属性
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -263,7 +257,7 @@ type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 | accessibilityLevel | string | 否 | 是 | 子标题右侧icon图标无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧icon图标由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧icon图标可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧icon图标不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧icon图标及其所有子组件不可被无障碍辅助服务所识别。<br>默认值: “yes”。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 | 
 | accessibilityDescription|[ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 子标题右侧icon图标无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。         |
 | defaultFocus | boolean | 否 | 是 | 子标题右侧按钮是否为默认焦点。<br/>true：子标题右侧按钮是默认焦点。<br/>false：子标题右侧按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
-| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧按钮id。<br/>默认值：undefined<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。   |
+| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧按钮id。需要为子标题右侧按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置子标题右侧按钮id。<br/>装饰器类型：@Trace <br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。   |
 
 ### constructor
 
@@ -300,8 +294,6 @@ type SubHeaderV2OperationItemAction = () => void
 
 用于构建SubHeaderV2OperationItem对象。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
@@ -314,7 +306,7 @@ type SubHeaderV2OperationItemAction = () => void
 | accessibilityLevel       | string | 否 | 是 | 子标题右侧icon图标无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧icon图标由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧icon图标可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧icon图标不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧icon图标及其所有子组件不可被无障碍辅助服务所识别。<br>默认值: “yes”。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 | 
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题右侧icon图标无障碍说明，用于为用户进一步说明当前组件。<br>默认值：“单指双击即可执行”。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。              |
 | defaultFocus | boolean | 否 | 是 | 子标题右侧按钮是否为默认焦点。<br/>true：子标题右侧按钮是默认焦点。<br/>false：子标题右侧按钮不是默认焦点。<br />默认值：false <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。             |
-| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧按钮id。<br/>默认值：undefined<br/><br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。     |
+| id<sup>24+</sup> | string | 否 | 是 | 子标题右侧按钮id。需要为子标题右侧按钮设置id的时候设置此参数，缺省时不设置此参数。<br />默认值：undefined，表示不设置子标题右侧按钮id。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。     |
 
 ## SubHeaderV2TitleBuilder
 
