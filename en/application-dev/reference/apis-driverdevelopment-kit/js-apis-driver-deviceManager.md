@@ -179,7 +179,7 @@ Binds a peripheral device based on the device information returned by **queryDev
 
 You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
-> **Description**
+> **NOTE**<br>
 > This API is supported since API version 10 and deprecated since API version 19. You are advised to use [deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
@@ -239,7 +239,7 @@ Binds a peripheral device based on the device information returned by **queryDev
 
 You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
-> **Description**
+> **NOTE**<br>
 > This API is supported since API version 11 and deprecated since API version 19. You are advised to use [deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
@@ -294,7 +294,7 @@ Binds a peripheral device based on the device information returned by **queryDev
 
 You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
-> **Description**
+> **NOTE**<br>
 > This API is supported since API version 10 and deprecated since API version 19. You are advised to use [deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
@@ -352,7 +352,7 @@ Binds a peripheral device based on the device information returned by **queryDev
 
 You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obtain the peripheral device information and device.
 
-> **Description**
+> **NOTE**<br>
 > This API is supported since API version 11 and deprecated since API version 19. You are advised to use [deviceManager.bindDriverWithDeviceId](#devicemanagerbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
@@ -409,7 +409,7 @@ unbindDevice(deviceId: number, callback: AsyncCallback&lt;number&gt;): void
 
 Unbinds a peripheral device.
 
-> **Description**
+> **NOTE**<br>
 > This API is supported since API version 10 and deprecated since API version 19. You are advised to use [deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
@@ -458,7 +458,7 @@ unbindDevice(deviceId: number): Promise&lt;number&gt;
 
 Unbinds a peripheral device.
 
-> **Description**
+> **NOTE**<br>
 > This API is supported since API version 10 and deprecated since API version 19. You are advised to use [deviceManager.unbindDriverWithDeviceId](#devicemanagerunbinddriverwithdeviceid19) instead.
 
 **Required permissions**: ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER
