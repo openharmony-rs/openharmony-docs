@@ -20,7 +20,7 @@ Web组件嵌套滚动可通过[方案1：使用nestedScroll属性实现嵌套滚
 
 **完整代码**
 
-<!-- @[nested_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets) -->
+<!-- @[nested_scrolling](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/ImpNestedScroll.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
@@ -147,27 +147,27 @@ build() {
     .enableScrollInteraction(false)
     ```
 3. 如何检测List组件、Scroll组件是否滚动到边界。
-	
-	(1) 滚动到上边界：scroller.currentOffset().yOffset <= 0;
-		
-	(2) 滚动到下边界：scroller.isAtEnd() == true;
+
+   (1) 滚动到上边界：scroller.currentOffset().yOffset <= 0;
+
+   (2) 滚动到下边界：scroller.isAtEnd() == true;
 
 4. 如何检测Web组件是否滚动到边界。
-	
-	(1) 获取Web组件自身高度、内容高度和当前滚动偏移量来判定。
-	
-	(2) 判断Web组件是否滚动到顶部：webController.getPageOffset().y == 0;
-	
-	(3) 判断Web组件是否滚动到底部：webController.getPageOffset().y + this.webHeight >= webController.getPageHeight();
-	
-	(4) 获取Web组件自身高度：webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight);
-	
-	(5) 获取Web组件窗口高度：webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight');
-	
-	(6) 获取Web组件的滚动偏移量：webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20);
+
+   (1) 获取Web组件自身高度、内容高度和当前滚动偏移量来判定。
+
+   (2) 判断Web组件是否滚动到顶部：webController.getPageOffset().y == 0;
+
+   (3) 判断Web组件是否滚动到底部：webController.getPageOffset().y + this.webHeight >= webController.getPageHeight();
+
+   (4) 获取Web组件自身高度：webController.[getPageHeight()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageheight);
+
+   (5) 获取Web组件窗口高度：webController?.[runJavaScriptExt](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#runjavascriptext10)('window.innerHeight');
+
+   (6) 获取Web组件的滚动偏移量：webController.[getPageOffset()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#getpageoffset20);
 5. 如何让Scroll组件不滚动。
-	
-	Scroll组件绑定[onScrollFrameBegin](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollframebegin9)事件，将剩余滚动偏移量返回0，Scroll组件就不滚动，也不会停止惯性滚动动画。
+
+   Scroll组件绑定[onScrollFrameBegin](../reference/apis-arkui/arkui-ts/ts-container-scroll.md#onscrollframebegin9)事件，将剩余滚动偏移量返回0，Scroll组件就不滚动，也不会停止惯性滚动动画。
 6. 滚动偏移量如何派发给List。
     ```ts
     this.listScroller.scrollBy(0, offset)
@@ -183,7 +183,7 @@ build() {
 
 **完整代码**
 
-<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) -->
+<!-- @[nested_scrolling2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry/src/main/ets/pages/WebNestedScroll.ets) --> 
 
 ``` TypeScript
 import { webview } from '@kit.ArkWeb';
