@@ -9,7 +9,7 @@
 
 This topic uses RSA and SM2 as an example to describe how to generate an asymmetric key pair (**OH_CryptoKeyPair**) and obtain the binary data.
 
-The **OH_CryptoKeyPair** object created can be used for subsequent encryption and decryption operations, and the binary data can be used for key storage and transfer.
+The asymmetric key pair may be used for subsequent operations such as encryption and decryption, and binary data may be used for storage or transmission.
 
 ## Adding the Dynamic Library in the CMake Script
 ```txt
@@ -20,7 +20,7 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 For details about the algorithm specifications, see [RSA](crypto-asym-key-generation-conversion-spec.md#rsa).
 
-1. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create) with the string parameter **'RSA1024|PRIMES_2'** to create an asymmetric key generator (**OH_CryptoAsymKeyGenerator**) object for a 1024-bit RSA key with two primes.
+1. Call [OH_CryptoAsymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_create) with the string parameter **'RSA1024|PRIMES_2'** to create an asymmetric key generator (**OH_CryptoAsymKeyGenerator**) for a 1024-bit RSA key with two primes.
 
 2. Call [OH_CryptoAsymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-asym-key-h.md#oh_cryptoasymkeygenerator_generate) to randomly generate an asymmetric key object (**OH_CryptoKeyPair**).
 

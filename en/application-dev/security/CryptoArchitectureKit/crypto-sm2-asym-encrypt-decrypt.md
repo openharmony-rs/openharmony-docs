@@ -11,7 +11,7 @@ For details about the algorithm specifications, see [SM2](crypto-asym-encrypt-de
 
 **Encryption**
 
-1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to create a 256-bit SM2 asymmetric key pair (**KeyPair**). The **KeyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
+1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) and [AsyKeyGenerator.generateKeyPair](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatekeypair-1) to create an asymmetric key pair (**KeyPair**) with the SM2 key type **SM2_256**. The **KeyPair** object includes a public key (**PubKey**) and a private key (**PriKey**).
 
    In addition to the example in this topic, [SM2](crypto-asym-key-generation-conversion-spec.md#sm2) and [Randomly Generating an Asymmetric Key Pair](crypto-generate-asym-key-pair-randomly.md) may help you better understand how to generate an SM2 asymmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
 

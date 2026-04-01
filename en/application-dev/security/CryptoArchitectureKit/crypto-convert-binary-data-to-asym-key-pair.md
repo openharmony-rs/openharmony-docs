@@ -129,7 +129,7 @@ Obtain the binary data of the ECC public or private key, encapsulate the data in
 
 1. Call [cryptoFramework.createAsyKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreateasykeygenerator) with the string parameter **'ECC256'** to create an asymmetric key generator (**AsyKeyGenerator**) object for a 256-bit ECC key pair.
 
-2. Call [PubKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded) to obtain the byte stream of the public key data, and call [PriKey.getEncodeDer](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedder12-1) with **format** set to **'PKCS8'** to obtain the byte stream of the private key data. The binary data of the key object is obtained.
+2. Call [PubKey.getEncoded](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencoded) to obtain the byte stream of the public key data, and call [PriKey.getEncodedDer](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getencodedder12-1) passing the parameter value **'PKCS8'** to obtain the byte stream of the private key data. The binary data of the key object is obtained.
 
 3. Call [AsyKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-3) to convert the binary data into an asymmetric key pair.
 

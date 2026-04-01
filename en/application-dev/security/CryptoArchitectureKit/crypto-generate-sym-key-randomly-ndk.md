@@ -9,7 +9,7 @@
 
 The following uses AES and SM4 as an example to describe how to randomly generate a symmetric key (**OH_CryptoSymKey**).
 
-The symmetric key (**OH_CryptoSymKey**) object created can be used for subsequent encryption and decryption operations, and the binary data can be used for key storage or transfer.
+The symmetric key object may be used for subsequent encryption and decryption operations, and binary data may be used for storage or transmission.
 
 ## Adding the Dynamic Library in the CMake Script
 ```txt
