@@ -4366,3 +4366,85 @@ struct WebComponent {
   }
 }
 ```
+
+## enableDrag
+
+ArkTS-Dyn: enableDrag(value: boolean)
+
+ArkTS-Sta: enableDrag(value: boolean | undefined)
+
+设置是否启用拖拽功能。不调用该属性时，默认启用网页拖拽功能。
+
+ **ArkTS-Dyn起始版本：** 26.0.0
+
+ **ArkTS-Sta起始版本：** 26.0.0
+
+ **模型约束：** 此接口仅可在Stage模型下使用。
+
+ **系统能力：** SystemCapability.Web.Webview.Core
+
+ **参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------- | ---- | --------------------------------- |
+| value | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是 | 是否启用网页拖拽功能，true表示启用，false表示不启用。 |
+ **示例：**
+
+  ArkTS-Dyn示例：
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct Index {
+  private controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('test.html'), controller: this.controller })
+        .enableDrag(false)
+      }
+    }
+  }
+  ```
+
+  ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  import { Entry, Column, Component, Web, $rawfile } from '@ohos.arkui.component';
+  import web_webview from '@ohos.web.webview';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: web_webview.WebviewController = new web_webview.WebviewController(undefined);
+
+  build() {
+    Column() {
+      Web({ src: $rawfile("test.html"), controller: this.controller })
+      .enableDrag(false)
+
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+```html
+<!--test.html-->
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8"><title>拖拽测试</title></head>
+  <body>
+    <div id="drag" draggable="true" style="width:100px;height:100px;background:red;margin:20px;"></div>
+    <div id="drop" style="width:200px;height:200px;background:gray;margin:20px;"></div>
+    <script>
+      drag.ondragstart=e=>e.dataTransfer.setData('text/plain','');
+      drop.ondragover=e=>e.preventDefault();
+      drop.ondrop=e=>{e.preventDefault(); drop.style.background='green';};
+      drag.ondragend=()=>{drop.style.background='gray';};
+    </script>
+  </body>
+</html>
+```
