@@ -173,7 +173,7 @@ static napi_value RemoveTouchEventMonitor(napi_env env, napi_callback_info info)
 
 - **轴事件**
 
-<!-- @[axis_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[axis_event_monitor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventMonitor/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 struct AxisEvent {
