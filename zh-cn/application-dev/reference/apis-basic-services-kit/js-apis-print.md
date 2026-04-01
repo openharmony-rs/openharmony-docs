@@ -476,7 +476,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
@@ -508,7 +508,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-//传入文件的uri
+// 传入文件的uri
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: print.PrintTask) => {
     if (err) {
@@ -522,7 +522,7 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
@@ -558,7 +558,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-//传入文件的uri
+// 传入文件的uri
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('succeed', () => {
@@ -702,7 +702,7 @@ struct Index {
 
 print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: PrintAttributes, context: Context): Promise&lt;PrintTask&gt;
 
-打印接口，传入文件进行打印，三方应用需要更新打印文件，使用Promise异步回调。
+打印接口，传入文件进行打印，三方应用需要更新打印文件，使用Promise异步回调。当前支持的文件类型：".pdf"。
 
 **需要权限：** ohos.permission.PRINT
 
