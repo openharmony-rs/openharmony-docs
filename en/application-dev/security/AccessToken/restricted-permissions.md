@@ -1173,3 +1173,17 @@ Allows an application to apply for a continuous task of the special scenario typ
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 24
+
+## ohos.permission.FLOAT_VIEW
+
+Allows an application to use float views.
+
+<!--RP78--><!--RP78End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: user_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets 
+
+**Since**: 26.0.0
