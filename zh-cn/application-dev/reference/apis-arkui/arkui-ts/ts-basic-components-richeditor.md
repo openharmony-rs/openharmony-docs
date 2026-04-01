@@ -608,6 +608,30 @@ singleLine(isEnable: boolean | undefined)
 | ----- | -------------------- | --- | ------------------------------------------------------------ |
 | isEnable | boolean \| undefined | 是 | 是否启用单行模式。<br/>true表示启用单行模式；false表示不启用单行模式。<br/>设置为undefined或null时，按照false处理，不启用单行模式。 |
 
+### orphanCharOptimization
+
+ArkTS-Dyn: orphanCharOptimization(enabled: Optional\<boolean>)
+
+ArkTS-Sta: orphanCharOptimization(enabled: boolean | undefined)
+
+设置文本排版时是否使能孤字优化。不通过该接口设置，默认不使能孤字优化。
+
+孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[RichEditorParagraphStyle](#richeditorparagraphstyle11)的wordBreak属性为非BREAK_ALL并且待排版文本首个[TextStyle](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)的[locale](../../apis-arkgraphics2d/js-apis-graphics-text.md#textstyle)为“zh-Hans”或“zh-Hant”时生效。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                               |
+| ------ | ------- | ---- | ---------------------------------- |
+| enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 段落最后一行是否使能孤字优化。<br/>true表示使能孤字优化，false表示不使能孤字优化。设置为undefined或null时，不使能孤字优化。 |
+
 ## 事件
 
 除支持[通用事件](ts-component-general-events.md)外，还支持[OnDidChangeCallback](ts-text-common.md#ondidchangecallback12)、[StyledStringChangedListener](ts-text-common.md#styledstringchangedlistener12)、[StyledStringChangeValue](ts-text-common.md#styledstringchangevalue12)和以下事件：
@@ -6602,3 +6626,100 @@ struct RichEditorExample {
 }
 ```
 ![setStyledPlaceholder](figures/richEditorSetStyledPlaceholder.png)
+
+### 示例40（设置孤立字符不成行）
+
+该示例通过[orphanCharOptimization](#orphancharoptimization)接口设置使能孤字优化，确保段落最后一行不出现孤字。
+
+从API版本26.0.0开始，新增orphanCharOptimization接口。
+
+ArkTS-Dyn示例：
+
+``` ts
+// xxx.ets
+@Entry
+@Component
+struct RichEditorDemo {
+  controller1: RichEditorController = new RichEditorController();
+  controller2: RichEditorController = new RichEditorController();
+  @State text: string = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa文本';
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
+
+  build() {
+    Column({ space: 10 }) {
+      Text('orphanCharOptimization: true')
+        .fontSize(12).width('90%')
+      RichEditor({ controller: this.controller1 })
+        .onReady(() => {
+          this.controller1.addTextSpan(this.text, this.textSpanOptions)
+        })
+        .orphanCharOptimization(true)
+        .width(430)
+        .borderWidth(1)
+
+      Divider()
+
+      Text('orphanCharOptimization: false')
+        .fontSize(12).width('90%')
+
+      RichEditor({ controller: this.controller2 })
+        .onReady(() => {
+          this.controller2.addTextSpan(this.text, this.textSpanOptions)
+        })
+        .orphanCharOptimization(false)
+        .width(430)
+        .borderWidth(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+``` ts
+// xxx.ets
+import { Entry, Text, Column, Component, RichEditor, RichEditorController, RichEditorTextSpanOptions, ColumnOptions, Divider } from '@ohos.arkui.component';
+import { State, Observed } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct RichEditorDemo {
+  controller1: RichEditorController = new RichEditorController();
+  controller2: RichEditorController = new RichEditorController();
+  @State text: string = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa文本';
+  textSpanOptions: RichEditorTextSpanOptions = { style: { fontSize: 20 } };
+
+  build() {
+    Column({ space: 10 } as ColumnOptions) {
+      Text('orphanCharOptimization: true')
+        .fontSize(12).width('90%')
+      RichEditor({ controller: this.controller1 })
+        .onReady(() => {
+          this.controller1.addTextSpan(this.text, this.textSpanOptions)
+        })
+        .orphanCharOptimization(true)
+        .width(430)
+        .borderWidth(1)
+
+      Divider()
+
+      Text('orphanCharOptimization: false')
+        .fontSize(12).width('90%')
+
+      RichEditor({ controller: this.controller2 })
+        .onReady(() => {
+          this.controller2.addTextSpan(this.text, this.textSpanOptions)
+        })
+        .orphanCharOptimization(false)
+        .width(430)
+        .borderWidth(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![orphanCharOptimization](figures/richEditorOrphanCharOptimization.jpg)
