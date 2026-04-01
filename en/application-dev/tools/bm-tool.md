@@ -880,7 +880,16 @@ Scenario 1: When the HSP and HAP are in the same project, perform the following 
 Scenario 2: When the HSP and HAP are not in the same project, perform the following operations:
 
 Before installing the HAP, run the [bm install](#install) command to install the dependent HSP.
-  
+
+Scenario 3: When the integrated HSP is required, perform the following operations:
+
+If the integrated HSP is required, you need to install the package compiled from the integrated HSP at the same time or in advance when using the hdc tool to install the application. To check whether the integrated HSP is required, perform the following steps:
+
+When DevEco Studio automatically installs and runs an application, check logs in **Run**. If the **remote_hsp** directory exists, the integrated HSP is required. The HSP file in the **remote_hsp** directory is the package generated after the integrated HSP is compiled.
+
+![Example](figures/remote_hsp.png)
+
+
 ### 9568259 Some Fields Are Missing in the Configuration File
 **Error Message**
 
@@ -2758,13 +2767,19 @@ The new bundle cannot be installed because its bundle name matches that of the u
 
 **Possible Causes**
 
-The [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the bundle signature information and <!--RP7-->the **app-identifier** in the bundle [profile](../security/app-provision-structure.md)<!--RP7End--> are different from those of the uninstalled pre-installed bundle.
+Although the pre-installed bundle has been uninstalled, the system still installs the preset bundle before installing the new bundle package. This is because the key in the installation signature information of the pre-installed bundle and the <!--RP7-->**app-identifier** in the bundle profile<!--RP7End--> are different from those of the newly installed bundle.
 
 **Solution**
 
-Method 1: Re-sign the bundle to ensure that either the [key](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-signing#section462703710326) in the bundle signature information or <!--RP7-->the **app-identifier** in the bundle [profile](../security/app-provision-structure.md)<!--RP7End--> is the same as that of the pre-installed bundle.
+Method 1: Re-sign the bundle.
 
-Method 2: Modify the [bundleName](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) of the new bundle to ensure it is different from the pre-installed bundle's bundle name.
+Re-sign the bundle to ensure that either the [key](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section462703710326) in the bundle signature information or the <!--RP7-->**app-identifier** in the bundle [profile](../security/app-provision-structure.md)<!--RP7End--> is the same as that of the pre-installed bundle.
+
+<!--RP11--><!--RP11End-->
+
+Method 2: Change the bundle name.
+
+Modify the [bundleName](../quick-start/app-configuration-file.md#tags-in-the-configuration-file) of the new bundle to ensure it is different from the pre-installed bundle's bundle name.
 
 ### 9568418 Failed to Uninstall a Bundle Configured with an Uninstallation Disposed Rule
 **Error Message**
