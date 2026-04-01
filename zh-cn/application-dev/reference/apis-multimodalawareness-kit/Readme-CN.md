@@ -18,7 +18,7 @@
   - [@ohos.multimodalAwareness.onScreen (屏上感知)(系统接口)](js-apis-awareness-onScreen-sys.md)
   - [@ohos.multimodalAwareness.spatialAwareness (空间感知)(系统接口)](js-apis-awareness-spatialAwareness-sys.md)
   <!--DelEnd-->
-- 错误码<!--ultimodal-awareness-arkts-errcode-->
+- 错误码<!--multimodal-awareness-arkts-errcode-->
   - [动作感知错误码](errorcode-motion.md)
   - [记忆链接错误码](errorcode-metadataBinding.md)
   - [设备状态感知错误码](errorcode-deviceStatus.md)
