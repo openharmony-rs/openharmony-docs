@@ -513,6 +513,23 @@
 
 **起始版本**：20
 
+## ohos.permission.SCAN_REMEDIATE_VIRUS
+
+允许应用执行病毒扫描和处置操作。
+
+此权限仅面向杀毒软件开放申请。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：24
+
 ## ohos.permission.sec.ACCESS_UDID
 
 允许应用获取UDID。
