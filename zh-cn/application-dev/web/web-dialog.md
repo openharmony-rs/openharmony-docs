@@ -204,7 +204,7 @@
                 console.info('event.url:' + event.url);
                 console.info('event.message:' + event.message);
                 this.uiContext.showAlertDialog({
-                  title: 'from' + event.url + 'news',
+                  title: 'Confirm',
                   message: event.message,
                   primaryButton: {
                     value: 'cancel',
@@ -322,7 +322,7 @@
                 } else {
                   console.info('event.url:' + event.url);
                   console.info('event.message:' + event.message);
-                  this.title = 'from' + event.url + 'news';
+                  this.title = 'Confirm';
                   this.message = event.message;
                   this.result = event.result;
                   this.dialogControllerCheckBox.open();
@@ -447,7 +447,7 @@
                 console.info('event.url:' + event.url);
                 console.info('event.message:' + event.message);
                 console.info('event.value:' + event.value);
-                this.title = 'from' + event.url + 'news';
+                this.title = 'Prompt';
                 this.message = event.message;
                 this.promptResult = event.value;
                 this.result = event.result;
