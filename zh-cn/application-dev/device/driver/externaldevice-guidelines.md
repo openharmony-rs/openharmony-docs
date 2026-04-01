@@ -45,34 +45,32 @@
 
 1. 创建新工程，请参考[创建一个新的工程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)，创建一个OpenHarmony工程。
 
-    **注意：**
-
-    > 开发驱动客户端，请选择Empty Ability模板。
+    > **说明：**
     >
-    > 开发驱动服务端，请选择Native C++模板。
-    >
-    >同时开发驱动客户端和服务端，请选择Native C++模板。
+    > - 开发驱动客户端，请选择Empty Ability模板。
+    > - 开发驱动服务端，请选择Native C++模板。
+    > - 同时开发驱动客户端和服务端，请选择Native C++模板。
 
 
 2. 在文件中导入相关Kit，并声明想要绑定的USB设备的productId、vendorId以及与驱动通信的Code。
 
-    **说明：**
-
+    > **说明：**
+    >
     > 以下示例代码均写在entry/src/main/ets/pages/Index.ets文件中。
 
     <!-- @[driver_ui_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { deviceManager } from '@kit.DriverDevelopmentKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { rpc } from '@kit.IPCKit';
+    ``` TypeScript
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { deviceManager } from '@kit.DriverDevelopmentKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { rpc } from '@kit.IPCKit';
 
-const REQUEST_CODE: number = 99; // 自定义通信Code，此处仅供参考
-const productId: number = 4258;  // 请声明连接的USB设备的productId
-const vendorId: number = 4817;   // 请声明连接的USB设备的vendorId
-const DOMAIN = 0x0000;
-```
+    const REQUEST_CODE: number = 99; // 自定义通信Code，此处仅供参考
+    const productId: number = 4258;  // 请声明连接的USB设备的productId
+    const vendorId: number = 4817;   // 请声明连接的USB设备的vendorId
+    const DOMAIN = 0x0000;
+    ```
 
 
 3. 定义message变量和远程对象变量，后续与驱动通信使用。
