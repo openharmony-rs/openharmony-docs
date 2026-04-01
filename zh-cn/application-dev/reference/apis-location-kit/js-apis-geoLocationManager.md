@@ -234,7 +234,7 @@ GNSS围栏的配置参数。目前只支持圆形围栏。
 | altitude | number | 否 | 否 | 表示高度信息，单位米。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | accuracy | number | 否 | 否 | 表示精度信息，单位米。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | speed | number | 否 | 否 |表示速度信息，单位米每秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| timeStamp | number | 否 | 否 | 表示位置时间戳，UTC格式。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| timeStamp | number | 否 | 否 | 表示位置时间戳，UTC格式，单位毫秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | direction | number | 否 | 否 | 表示航向信息。单位是“度”，取值范围为0到360。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | timeSinceBoot | number | 否 | 否 | 表示获取位置成功的时间戳，值表示从本次开机到获取位置成功所经过的时间，单位为纳秒。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | additions | Array&lt;string&gt;| 否 | 是 | 附加信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
@@ -490,7 +490,7 @@ GNSS地理围栏请求参数。
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | deviceId | string | 否 | 否 | 表示扫描到的设备地址。例如："XX:XX:XX:XX:XX:XX"。 |
-| rssi | number | 否 | 否 | 表示扫描到的设备的rssi值。 |
+| rssi | number | 否 | 否 | 表示扫描到的设备的rssi值，单位dBm。 |
 | data | ArrayBuffer | 否 | 是 | 表示扫描到的设备发送的广播包。 |
 | deviceName | string | 否 | 否 | 表示扫描到的设备名称。 |
 | connectable | boolean | 否 | 否 | 表示扫描到的设备是否可连接。true表示可连接，false表示不可连接。 |
