@@ -317,9 +317,9 @@ struct OrientationTestView {
   private windowClass = (this.context as common.UIAbilityContext).windowStage.getMainWindowSync();
   setOrientation(orientation: number) {
     this.windowClass.setPreferredOrientation(orientation).then(() => {
-      console.log('setWindowOrientation: ' + orientation + ' Succeeded.');
+      console.info('setWindowOrientation: ' + orientation + ' Succeeded.');
     }).catch((err: BusinessError) => {
-      console.log('setWindowOrientation: ' + orientation + ' Failed. Cause: ' + JSON.stringify(err));
+      console.info('setWindowOrientation: ' + orientation + ' Failed. Cause: ' + JSON.stringify(err));
     })
   }
   build() {
@@ -444,7 +444,7 @@ supportWindowMode支持的取值如下：
 
 module.json5配置示例如下：
 
-```json
+```json5
 {
   "module": {
     "abilities": [
@@ -517,7 +517,7 @@ module.json5配置示例如下：
       try {
         // 注册窗口状态变化监听
         windowClass.on('windowStatusChange', (windowStatusType: window.WindowStatusType) => {
-          console.log(`status change, new status: ${windowStatusType}`);
+          console.info(`status change, new status: ${windowStatusType}`);
         });
       } catch (error) {
         console.error(`status listen err: ${JSON.stringify(error)}`);
@@ -639,8 +639,8 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
   return;
   }
   console.info('Succeeded in loading the content.');
-  let color1: string = '#8800FF33'; //采用ARGB方式
-  let color2: ColorMetrics = ColorMetrics.numeric(0x88112233);  //采用ColorMetrics方式
+  let color1: string = '#8800FF33'; // 采用ARGB方式
+  let color2: ColorMetrics = ColorMetrics.numeric(0x88112233);  // 采用ColorMetrics方式
   try {
     windowClass?.setWindowBackgroundColor(color1);
     windowClass?.setWindowBackgroundColor(color2);
@@ -665,3 +665,24 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 ## 如何正常获取顶层窗口
 
 当使用[destroyWindow()](../reference/apis-arkui/arkts-apis-window-Window.md#destroywindow9)销毁子窗和[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)获取应用最顶层窗口时，建议在销毁完成之后再调用[getLastWindow()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetlastwindow9)准确获取子窗销毁之后应用最顶层窗口。
+
+示例代码如下所示：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { ColorMetrics } from '@kit.ArkUI';
+import { window } from '@kit.ArkUI';
+
+try {
+  let lastWindow: window.Window | undefined = undefined;
+  // 不建议写法
+  windowClass.destroyWindow();
+  lastWindow = await window.getLastWindow(this.context);
+
+  // 建议写法
+  await windowClass.destroyWindow();
+  lastWindow = await window.getLastWindow(this.context);
+} catch (exception) {
+  console.error(`Failed to destroy and get last window. Cause code: ${exception.code}, message: ${exception.message}`);
+};
+```
