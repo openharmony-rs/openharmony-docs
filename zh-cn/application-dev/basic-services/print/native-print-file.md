@@ -7,7 +7,7 @@
 <!--Tester: @guoshengbang-->
 <!--Adviser: @RayShih-->
 
-OpenHarmony提供了两种打印方式：
+## OpenHarmony提供的两种打印方式
 
 [方式一](#步骤4-通过接口拉起系统打印预览界面下发任务)：应用通过接口拉起系统打印预览界面。适合没有实现打印预览能力的应用。
 
