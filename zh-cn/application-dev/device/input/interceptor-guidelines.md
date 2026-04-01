@@ -13,7 +13,7 @@
 
 ## 接口说明
 
-创建和删除事件拦截相关接口如下表所示，接口详细介绍请参考[Input文档](../../reference/apis-input-kit/capi-input.md)。
+创建和删除事件拦截相关接口如下表所示，接口详细介绍请参考[input](../../reference/apis-input-kit/capi-input.md)。
 
 | 接口名称  | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
@@ -57,11 +57,11 @@ struct KeyEvent {
     int64_t actionTime { -1 };
 };
 
-//定义按键事件回调函数
+// 定义按键事件回调函数
 void OnKeyEventCallback(const Input_KeyEvent* keyEvent)
 {
     KeyEvent event;
-    //Input_KeyEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
+    // Input_KeyEvent的生命周期仅限于回调函数内，回调函数执行完毕后会被自动销毁
     event.action = OH_Input_GetKeyEventAction(keyEvent);
     event.keyCode = OH_Input_GetKeyEventKeyCode(keyEvent);
     event.actionTime = OH_Input_GetKeyEventActionTime(keyEvent);
@@ -134,7 +134,7 @@ void OnMouseEventCallback(const Input_MouseEvent* mouseEvent)
 void OnTouchEventCallback(const Input_TouchEvent* touchEvent)
 {
     TouchEvent event;
-    //Input_TouchEvent的生命周期仅在回调函数内，回调函数结束时被销毁
+    // Input_TouchEvent的生命周期仅在回调函数内，回调函数结束时被销毁
     event.action = OH_Input_GetTouchEventAction(touchEvent);
     event.id = OH_Input_GetTouchEventFingerId(touchEvent);
     event.displayX = OH_Input_GetTouchEventDisplayX(touchEvent);
