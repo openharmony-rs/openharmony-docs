@@ -81,7 +81,7 @@ You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obta
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
 
 **Return value**
@@ -190,7 +190,7 @@ You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to ob
 
 | Name      | Type                                                                                                | Mandatory| Description                                  |
 | ------------ | ---------------------------------------------------------------------------------------------------- | ---- | -------------------------------------- |
-| deviceId     | number                                                                                               | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.          |
+| deviceId     | number                                                                                               | Yes  | Device ID, which can be obtained via **queryDevices()**.          |
 | onDisconnect | AsyncCallback&lt;number&gt;                                                                          | Yes  | Callback to be invoked when the bound peripheral device is disconnected.                    |
 | callback     | AsyncCallback&lt;{deviceId: number; remote: [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject);}&gt; | Yes  | Callback invoked to return the communication object of the peripheral device bound.|
 
@@ -250,7 +250,7 @@ You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to ob
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
 | callback     | AsyncCallback&lt;[RemoteDeviceDriver](#remotedevicedriver11)&gt;| Yes| Binding result, including the device ID and remote object.|
 
@@ -306,7 +306,7 @@ You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obta
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
 
 **Return value**
@@ -364,7 +364,7 @@ You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obta
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-| deviceId     | number                      | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
 
 **Return value**
@@ -421,7 +421,7 @@ Unbinds a peripheral device.
 
 | Name  | Type                       | Mandatory| Description                          |
 | -------- | --------------------------- | ---- | ------------------------------ |
-| deviceId | number                      | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback invoked to return the result.              |
 
 **Error codes**
@@ -470,7 +470,7 @@ Unbinds a peripheral device. This API uses a promise to return the result.
 
 | Name  | Type  | Mandatory| Description                          |
 | -------- | ------ | ---- | ------------------------------ |
-| deviceId | number | Yes  | ID of the device to unbind. It can be obtained by **queryDevices()**.|
+| deviceId | number | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 
 **Error codes**
 
