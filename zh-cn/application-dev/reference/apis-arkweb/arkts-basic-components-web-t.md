@@ -385,3 +385,87 @@ type OnFirstScreenPaintCallback = (firstScreenPaint: FirstScreenPaint) => void
 **示例：**
 
 完整示例代码参考[onFirstScreenPaint](./arkts-basic-components-web-events.md#onfirstscreenpaint23)。
+
+## OnCreateAISession
+
+type OnCreateAISession = (id: string, params: string, result: OnAISessionCallback) => boolean
+
+AI会话创建回调函数类型。允许自定义模型初始化和结果处理。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型                                            | 必填 | 说明                 |
+| ------ | --------------------------------------------- | -- | ------------------ |
+| id     | string                                        | 是  | 会话任务ID。            |
+| params | string                                        | 是  | 会话创建时传递的上下文数据。     |
+| result | [OnAISessionCallback](#onaisessioncallback) | 是  | 用于通知系统会话创建结果的回调函数。 |
+
+**返回值：**
+
+| 类型      | 说明                                            |
+| ------- | --------------------------------------------- |
+| boolean | `true`表示使用自定义逻辑，跳过系统默认行为；`false`表示继续执行系统默认逻辑。 |
+
+## OnExecuteAIAction
+
+type OnExecuteAIAction = (id: string, params: string, result: OnAISessionCallback) => void
+
+AI会话执行操作回调函数类型。用于自定义实现AI模型执行。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名    | 类型                                            | 必填 | 说明                 |
+| ------ | --------------------------------------------- | -- | ------------------ |
+| id     | string                                        | 是  | 会话任务ID。            |
+| params | string                                        | 是  | 执行操作时传递的上下文数据。     |
+| result | [OnAISessionCallback](#onaisessioncallback) | 是  | 用于通知系统操作执行结果的回调函数。 |
+
+## OnDestroyAISession
+
+type OnDestroyAISession = (id: string) => void
+
+AI会话销毁回调函数类型。用于清理与自定义AI模型关联的资源。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名 | 类型     | 必填 | 说明      |
+| --- | ------ | -- | ------- |
+| id  | string | 是  | 会话任务ID。 |
+
+## OnAISessionCallback
+
+type OnAISessionCallback = (state: AISessionResultType, content: string) => void
+
+AI会话操作结果回调函数类型。用于报告会话创建或执行的结果。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名     | 类型                                                                             | 必填 | 说明              |
+| ------- | ------------------------------------------------------------------------------ | -- | --------------- |
+| state   | [AISessionResultType](./arkts-basic-components-web-e.md#aisessionresulttype) | 是  | AI会话创建或执行的状态结果。 |
+| content | string                                                                         | 是  | AI会话的响应内容。      |
+

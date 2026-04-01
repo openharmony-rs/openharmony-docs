@@ -570,3 +570,39 @@ WebView中新窗口的打开方式。
 | ------- | --- | ------------------------------------ |
 | CONTENT | 0   | 滚动条左右布局模式跟随css设定。      |
 | SYSTEM  | 1   | 滚动条左右布局模式跟随系统语种设定。 |
+
+## AISessionType
+
+支持的AI会话类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称                 | 值 | 说明        |
+| ------------------ | - | --------- |
+| TRANSLATOR         | 1 | 翻译模型。     |
+| LANGUAGE_DETECTOR  | 2 | 语言检测模型。   |
+| SUMMARIZER         | 3 | 内容摘要生成模型。 |
+| WRITER             | 4 | 写作助手模型。   |
+| REWRITER           | 5 | 内容改写助手模型。 |
+| PROMPT             | 6 | 提示词模型。    |
+| PROOFREADER        | 7 | 内容校对助手模型。 |
+
+## AISessionResultType
+
+AI会话操作的结果状态。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称      | 值 | 说明       |
+| ------- | - | -------- |
+| SUCCESS | 0 | 操作执行成功。  |
+| FAILURE | 1 | 操作执行失败。  |
+| RUNNING | 2 | 操作正在执行中。 |

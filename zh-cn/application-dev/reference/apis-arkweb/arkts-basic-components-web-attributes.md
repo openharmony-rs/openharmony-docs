@@ -4382,6 +4382,130 @@ zoomControlAccess(zoomControlAccess: boolean)
   </html>
   ```
 
+## aiSessionOptions
+
+aiSessionOptions(aiSessions: Array&lt;AISessionEvent&gt;)
+
+自定义Web组件的前端AI会话配置，用于注册多个自定义AI会话。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| aiSessions | Array&lt;[AISessionEvent](./arkts-basic-components-web-i.md#aisessionevent)&gt; | 是 | 前端AI会话配置对象数组，每个对象包含AI会话类型及对应的生命周期回调方法。当前仅支持[AISessionType](./arkts-basic-components-web-e.md#aisessiontype)中包含的模型。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct DemoPage {
+  private webController: webview.WebviewController = new webview.WebviewController();
+  sessions: Map<string, string> = new Map<string, string>();
+
+  onCreateAISession = (id: string, params: string, result: OnAISessionCallback): boolean => {
+    this.sessions.set(id, params); // 模拟创建AI会话
+    console.info(`[AISession]onCreateAISession params: ${params}`);
+    result(AISessionResultType.SUCCESS, "AISession created");
+    return true;
+  }
+
+  onExecuteAIAction = (id: string, params: string, result: OnAISessionCallback): void => {
+    this.sessions.get(id); // 模拟取出会话，并执行动作
+    console.info(`[AISession]onExecuteAIAction params: ${params}`);
+    result(AISessionResultType.RUNNING, "AISession chunk 1\n");
+    result(AISessionResultType.RUNNING, "AISession chunk 2\n");
+    result(AISessionResultType.SUCCESS, "AISession chunk end\n");
+  }
+
+  onDestroyAISession = (id: string): void => {
+    this.sessions.delete(id); // 模拟销毁会话并释放资源
+  }
+
+  @State options: AISessionEvent = {
+    aiSessionType: AISessionType.SUMMARIZER,
+    onCreateAISession: this.onCreateAISession,
+    onExecuteAIAction: this.onExecuteAIAction,
+    onDestroyAISession: this.onDestroyAISession
+  }
+
+  build() {
+    Column() {
+      Web({ src: $rawfile('index.html'), controller: this.webController })
+        .aiSessionOptions([this.options])
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+```
+
+加载的html文件
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Summarizer API Test</title>
+</head>
+<body style="max-width:600px;margin:20px auto;padding:0 16px;">
+  <p id="status">checking...</p>
+  <button id="initBtn" onclick="init()">Create Session</button>
+  <br><br>
+  <textarea id="input" rows="6" style="width:100%;font:inherit" placeholder="paste text to summarize"></textarea>
+  <br><br>
+  <button id="btn" onclick="run()" disabled>Summarize</button>
+  <pre id="result"></pre>
+  <script>
+    let s;
+    (async () => {
+      const d = document.getElementById('status');
+      if (!('Summarizer' in self)) { d.textContent = 'API not supported'; return; }
+      const a = await Summarizer.availability();
+      d.textContent = 'Summarizer: ' + a;
+      if (a === 'unavailable') document.getElementById('initBtn').disabled = true;
+    })();
+
+    async function init() {
+      const d = document.getElementById('status'), ib = document.getElementById('initBtn');
+      ib.disabled = true;
+      d.textContent = 'creating...';
+      try {
+        s = await Summarizer.create({
+          type: 'tldr', length: 'medium', format: 'plain-text',
+          monitor(m) { m.addEventListener('downloadprogress', e => { d.textContent = 'downloading ' + (e.loaded * 100 | 0) + '%' }); }
+        });
+        d.textContent = 'ready';
+        document.getElementById('btn').disabled = false;
+      } catch (e) { d.textContent = 'Error: ' + e.message; ib.disabled = false; }
+    }
+
+    async function run() {
+      const t = document.getElementById('input').value.trim();
+      if (!t || !s) return;
+      const btn = document.getElementById('btn'), r = document.getElementById('result');
+      btn.disabled = true;
+      r.textContent = '...';
+      try { r.textContent = await s.summarize(t); }
+      catch (e) { r.textContent = 'Error: ' + e.message; }
+      btn.disabled = false;
+    }
+  </script>
+</body>
+</html>
+```
+
 ## scrollbarLayoutPolicy
 
 scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy)
