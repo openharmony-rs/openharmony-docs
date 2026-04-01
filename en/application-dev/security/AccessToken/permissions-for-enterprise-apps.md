@@ -513,7 +513,7 @@ With this permission, the application can call **spaceManager.subscribeEvent** o
 
 **Valid since**: 20
 
- ## ohos.permission.SCAN_REMEDIATE_VIRUS
+## ohos.permission.SCAN_REMEDIATE_VIRUS
  	  	 
 Allows an application to scan for and remediate viruses.
 
