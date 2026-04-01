@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-App clone allows multiple instances of the same application to be installed on one device, enabling simultaneous login and independent operation for multiple accounts. When users log in with two different accounts to a social media or a game application simultaneously, they do not have to switch accounts, reducing frequent logins.
+Application clone allows multiple instances of the same application to be installed on one device, enabling simultaneous login and independent operation for multiple accounts. When users log in with two different accounts to a social media or a game application simultaneously, they do not have to switch accounts, reducing frequent logins.
 
 After an application is cloned, multiple applications with the same icon are displayed on the home screen. An application with a lower corner mark is a cloned application.
 
