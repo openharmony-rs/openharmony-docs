@@ -50,7 +50,7 @@ import { media } from '@kit.MediaKit';
 
 on(type: 'stateChange', callback: OnAVPlayerStateChangeHandle): void
 
-监听播放状态机AVPlayerState切换的事件
+监听播放状态机AVPlayerState切换的事件。
 
 **原子化服务API：** 从API version 11 开始，该接口支持在原子化服务中使用。
 
