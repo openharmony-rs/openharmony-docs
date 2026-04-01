@@ -75,8 +75,8 @@
 
 3. 定义message变量和远程对象变量，后续与驱动通信使用。
 
-    **说明：**
-
+    > **说明：**
+    >
     > 第3步开始，以下接口均在struct Index{}中定义。
 
     <!-- @[driver_ui_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
@@ -201,7 +201,9 @@
 <!--RP1-->
 ## 应用签名
 
-**注意：** 先配置权限，再自动签名。
+> **注意：**
+>
+> 先配置权限，再自动签名。
 
 应用需要配置签名文件才能在设备上运行，并且扩展外设管理客户端开发，需要配置扩展外设的权限：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER及ohos.permission.ACCESS_DDK_DRIVERS。
 - ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER（API version 10及以上版本，需要申请此权限。）
