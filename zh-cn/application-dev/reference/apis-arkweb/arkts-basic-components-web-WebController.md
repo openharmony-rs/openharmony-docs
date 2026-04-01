@@ -14,7 +14,7 @@
 >
 > - 本Class首批接口从API version 8开始支持。
 >
-> - 该组件从API version 9开始不再维护，建议使用[WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md)代替。
+> - 该组件从API version 9开始废弃，建议使用[WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md)代替。
 >
 > - 示例效果请以真机运行为准。
 
