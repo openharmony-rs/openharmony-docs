@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-当Web页面加载缓慢时，可以使用预连接、预加载和预获取post请求的能力加速Web页面的访问。
+当Web页面加载缓慢时，可以使用预连接、预加载和预获取POST请求的能力加速Web页面的访问。
 
 针对Web页面加载性能优化的详细内容请参考[Web页面加载优化性能指导](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-web-develop-optimization#section128761465256)。
 
@@ -97,11 +97,11 @@ struct WebComponent {
 }
 ```
 
-## 预获取post请求
+## 预获取POST请求
 
-此方法可以针对请求级进行优化。可以通过[prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12)预获取将要加载页面中的post请求。在页面加载结束时，可以通过[clearPrefetchedResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#clearprefetchedresource12)清除后续不再使用的预获取资源缓存。
+此方法可以针对请求级进行优化。可以通过[prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12)预获取将要加载页面中的POST请求。在页面加载结束时，可以通过[clearPrefetchedResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#clearprefetchedresource12)清除后续不再使用的预获取资源缓存。
 
-  以下示例，在Web组件onAppear中，对要加载页面中的post请求进行预获取。在onPageEnd中，可以清除预获取的post请求缓存。
+  以下示例，在Web组件onAppear中，对要加载页面中的POST请求进行预获取。在onPageEnd中，可以清除预获取的POST请求缓存。
 
 <!-- @[prefetch_post_request_on_page_end_clear_cache](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_one.ets) -->
 
@@ -139,9 +139,9 @@ struct WebComponent {
 }
 ```
 
-如果能够预测到Web组件将要加载页面或者即将要跳转页面中的post请求。可以通过[prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12)预获取即将要加载页面的post请求。
+如果能够预测到Web组件将要加载页面或者即将要跳转页面中的POST请求。可以通过[prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12)预获取即将要加载页面的POST请求。
 
-  以下示例，在onPageEnd中，触发预获取一个要访问页面的post请求。
+  以下示例，在onPageEnd中，触发预获取一个要访问页面的POST请求。
 
 <!-- @[on_page_end_trigger_prefetch_post_request_access_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry2/src/main/ets/pages/PrefetchingAPOSTRequest_three.ets) -->
 
@@ -175,9 +175,9 @@ struct WebComponent {
 }
 ```
 
-也可以通过[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)提前初始化内核，然后在初始化内核后调用[prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12)预获取将要加载页面中的post请求。这种方式适合提前预获取首页的post请求。
+也可以通过[initializeWebEngine()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#initializewebengine)提前初始化内核，然后在初始化内核后调用[prefetchResource()](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#prefetchresource12)预获取将要加载页面中的POST请求。这种方式适合提前预获取首页的POST请求。
 
-  以下示例，在Ability的onCreate中，提前初始化Web内核并预获取首页的post请求。
+  以下示例，在Ability的onCreate中，提前初始化Web内核并预获取首页的POST请求。
 
 ```ts
 // xxx.ets
