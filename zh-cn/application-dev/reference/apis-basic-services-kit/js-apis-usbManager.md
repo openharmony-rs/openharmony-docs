@@ -1259,14 +1259,14 @@ openAccessory(accessory: USBAccessory): USBAccessoryHandle
 
 ```ts
 import { hilog } from '@kit.PerformanceAnalysisKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   let flag = usbManager.requestAccessoryRight(accList[0])
   let handle = usbManager.openAccessory(accList[0])
   hilog.info(0, 'testTag ui', `openAccessory success`)
   let arrayBuffer = new ArrayBuffer(4096);
-  let readLength = fs.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
+  let readLength = fileIo.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
   hilog.info(0, 'testTag ui', 'readSync ret: ' + readLength.toString(10));
 } catch (error) {
   hilog.info(0, 'testTag ui', `openAccessory error ${error.code}, message is ${error.message}`)
