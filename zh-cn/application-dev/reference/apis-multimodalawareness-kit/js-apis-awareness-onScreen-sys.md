@@ -110,7 +110,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 ## OnscreenAwarenessCap<sup>23+</sup>
 
-屏上感知能力（包括阅读场景感知、OCR识别等功能）。
+屏上感知能力（包括但不限于阅读场景感知、OCR识别等功能）。
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -118,22 +118,34 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
-| capList   | string[] | 否   | 否   | 表示能力列表, 包含页面内容、页面链接、文本选择等能力。  |
+| capList   | string[] | 否   | 是   | 表示能力集合, 包含页面内容、页面链接、文本选择等能力。 具体能力项见下表。|
+| groupId | string | 否 | 是 | 业务分组ID。按业务场景预设的一组能力集合。可统一订阅业务场景。具体分组ID见下表。|
 
-|能力列表|功能说明|
-| ---- | ------ |
-|contentUiTree|获取控件树信息|
-|contentUiOcr|获取OCR识别信息|
-|contentScreenshot|获取截屏信息|
-|contentLink|获取页面复访链接|
-|contentUiTreeWithImage|获取控件树和控件内图片信息|
-|interactionTextSelection|获取文本选择信息|
-|interactionClick|获取点击事件，以及控件节点信息|
-|interactionScroll|获取滚动事件，以及控件节点信息|
-|scenarioReading|获取阅读场景感知信息|
-|scenarioShortVideo|获取短视频场景的感知信息|
-|scenarioTodo|获取待办场景的感知信息|
-|QuickSnap|获取单次截屏信息。**使用规格**：仅在trigger接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码|
+**参数约束说明**：<br>
+用户可通过能力项（capList）或分组 ID（groupId）使用屏上感知功能。
+* 逻辑关系：capList 与 groupId 互为补充必填项, 至少需提供其一，且不为空。<br>
+* 校验规则：调用接口时，系统会单独检测capList和groupId。<br>
+* 能力列表：按能力项或分组ID使用屏上感知功能，具体定义如下。
+  * capList支持能力列表<br>
+
+    |capList支持能力列表|功能说明|
+    | ---- | ------ |
+    |Acticle|获取阅读场景感知信息|
+    |ShortVideo|获取短视频场景的感知信息|
+    |Todo|获取待办场景的感知信息|
+    |Activity|获取基础服务的感知信息|
+    |UiImage|获取页面内子图信息|
+    |JumpContext|高亮跳转到指定上下文|
+    |QuickSnap|获取单次截屏信息。<br> **使用规格**：仅在trigger接口使用，capList仅传递"QuickSnap"时生效，其它使用接口均返回401错误码|
+
+  * groupId支持能力列表<br>
+  
+    |groupId支持能力列表|对应子项能力|功能说明|
+    | ---- | ------ | ------|
+    |SmartEdge|Acticle|获取阅读场景感知信息|
+    |SmartEdge|ShortVideo|获取短视频场景的感知信息|
+    |SmartEdge|Todo|获取待办场景的感知信息|
+    |SmartEdge|Activity|获取基础服务的感知信息|
 
 ## OnscreenAwarenessOptions<sup>23+</sup>
 
@@ -159,9 +171,29 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | ------------------- | ---- | ---------------------- |
 | ALLOW | 1 << 0    | 应用支持采集 |
 | SPLIT_SCREEN | 1 << 1    | 应用分屏窗口采集策略。 |
-| UNSUPPORTED_APP | 1 << 2  | 应用不支持。 |
+| UNSUPPORTED_APP | 1 << 2  | 应用不支持自动采集。 |
 | PRIVATE_WINDOW | 1 << 3  | 应用隐私窗口。 |
-| VM_APP | 1 << 4 | 虚拟机应用，非鸿蒙应用。 |
+| ANCO_APP | 1 << 4 | 虚拟机应用，非鸿蒙应用。 |
+| ALLOW_USER_CHANGE | 1 << 5  | 应用的采集策略可配置。|
+| BUSINESS_APP | 1 << 6 | 应用数据可采集。 |
+| FLOAT_SCREEN | 1 << 7  | 悬浮窗口。 |
+| PIP_SCREEN | 1 << 8 | 画中画模式。 |
+| LAUNCHER | 1 << 9 | 桌面应用。 |
+
+## AwarenessItem<sup>23+</sup>
+
+提供页面信息。包括：
+* 页面基础信息，如页面内容、链接、截屏。
+* 页面实体信息，如页面文章的标题、正文信息。
+* 页面交互信息，如点击、滚动信息。
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**系统API**：此接口为系统接口
+
+| 名称 | 类型   | 只读 | 可选 | 说明                                     |
+| ---- | ------ | ---- | ---- | ---------------------------------------- |
+| itemInfo   | Record<string, Object> | 否   | 否   | 感知结果实体信息，包括内容、链接、截屏和其它实体信息。|
 
 ## EntityInfo<sup>23+</sup>
 
@@ -174,8 +206,7 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | 名称 | 类型   | 只读 | 可选 | 说明                                     |
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | entityName   | string | 否   | 否   | 感知结果实体名称，固定内容。 |
-| entityInfo   | Record<string, Object> | 否   | 否   | 感知结果实体信息，包括内容、链接、图像和其他实体。|
-
+| entityInfo   | Record<string, Object> | 否   | 否   | 感知结果实体信息，包括内容、链接、图像和其它实体。|
 
 ## OnscreenAwarenessInfo<sup>23+</sup>
 
@@ -189,14 +220,20 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | ---- | ------ | ---- | ---- | ---------------------------------------- |
 | resultCode  | number | 否   | 否   | 返回码，默认0 表示成功。 |
 | timestamp   | number | 否   | 否   | 表示进入特定页面的时间戳。 |
+| uid   | string | 否   | 是   | 表示应用UID。 |
 | bundleName  | string | 否   | 是   | 应用包名。 |
-| appID      | string | 否   | 是   | 小程序ID，如微信、支付宝等三方应用小程序ID。 |
+| appName  | string | 否   | 是   | 应用名称。 |
+| miniProgramId | string | 否   | 是   | 小程序ID，如微信、支付宝等三方应用小程序ID。|
+| miniProgramName | string | 否   | 是  | 小程序名称，三方应用小程序名称。 |
 | appIndex   | number | 否   | 是   | 应用索引。 |
 | pageId     | string | 否   | 是   | 应用页面ID。 |
 | sampleId   | string | 否   | 是   | 采集记录ID。 |
 | collectStrategy   | number | 否   | 是   | 页面采集策略，是 [CollectStrategy](#collectstrategy23) 的按位或运算组合。 |
 | displayId   | number | 否   | 是   | 屏幕ID。 |
 | windowId    | number | 否   | 是   | 窗口ID。 |
+| languageInfo | string | 否 | 是 | 页面语言信息。|
+| pageTags | string[] | 否 | 是 | 页面标签信息。|
+| items  | [AwarenessItem](#awarenessitem23)[] | 否   | 是   | 数据项信息。|
 | entityInfo  | [EntityInfo](#entityinfo23)[] | 否   | 是   | 实体信息。|
 
 ## ReadingScreenPermissionStatus<sup>23+</sup>
@@ -219,7 +256,7 @@ getPageContent(options?: [ContentOptions](#contentoptions)): Promise&lt;[PageCon
 
 在需要抓取内容的窗口在桌面上时，调用该接口以获取屏上内容。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -338,11 +375,11 @@ sendControlEvent(event: [ControlEvent](#controlevent)): Promise&lt;void&gt;
 
 ## onScreen.subscribe<sup>23+</sup>
 
-subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwarenessInfo&gt;, options?: OnscreenAwarenessOptions): void
+subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwarenessInfo[]&gt;, options?: OnscreenAwarenessOptions): void
 
 开启屏幕内容主动感知，并订阅屏幕感知结果。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -356,8 +393,7 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
-| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。|
-
+| callback | Callback&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
 **错误码**：
 
@@ -376,35 +412,32 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
    ```ts
    import onScreen from "@ohos.multimodalAwareness.onScreen";
    let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
-      capList: [
-         'contentUiTree',
-         'scenarioReading'
-      ],
-      description: 'reading scenario'
+      groupId: 'SmartEdge',
    }
 
    let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
       parameters: {
-         "windowId": 12,
-         "controlByPolicy": 1
-      } as Record<string, Object>
+         "SmartEdge" : {
+            "windowId":'102',
+         }
+      }
    }
-
    try {
-      onScreen.subscribe(onscreenAwarenessCap, (info: onScreen.OnscreenAwarenessInfo) => {
-         console.info(`subscribe resultCode: ${info.resultCode}`);
+      onScreen.subscribe(onscreenAwarenessCap, (info: onScreen.OnscreenAwarenessInfo[]) => {
+         console.info(`subscribe resultCode: ${info[0].resultCode}`);
       }, onscreenAwarenessOptions);
    } catch (err) {
       console.error('subscribe failed, errCode = ' + err.code);
    }
    ```
+
 ## onScreen.unsubscribe<sup>23+</sup>
 
-unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwarenessInfo&gt;): void
+unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwarenessInfo[]&gt;): void
 
 关闭屏幕内容主动感知，并取消订阅屏幕感知结果。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -415,11 +448,11 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 | 参数名   | 类型                             | 必填 | 说明               |
 | -------- | -------------------------------- | ---- | ---------------------------------------- |
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
-| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 是   | 需取消的回调函数。省略则移除该感知能力的所有回调。|
+| callback | Callback&lt;[OnscreenAwarenessInfo](#onscreenawarenessinfo23)&gt; | 是   | 需取消的回调函数。省略则移除该感知能力的所有回调。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回 2个感知信息项。|
 
 **错误码**：
 
-以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -433,15 +466,12 @@ unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback&lt;OnscreenAwa
 ```ts
 import onScreen from "@ohos.multimodalAwareness.onScreen";
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
-  capList: [
-	'contentUiTree',
-  ],
-  description: 'unsubscribe uiTree scenario'
+   groupId: 'SmartEdge'
 }
 
 try {
-  onScreen.unsubscribe(onscreenAwarenessCap, (info: onScreen.OnscreenAwarenessInfo) => {
-	console.info(`unsubscribe resultCode: ${info.resultCode}`);
+  onScreen.unsubscribe(onscreenAwarenessCap, (info: onScreen.OnscreenAwarenessInfo[]) => {
+    console.info(`unsubscribe resultCode: ${info[0].resultCode}`);
   });
 } catch (err) {
   console.error('unsubscribe failed, errCode = ' + err.code);
@@ -450,11 +480,11 @@ try {
 
 ## onScreen.trigger<sup>23+</sup>
 
-trigger(capability: OnscreenAwarenessCap,  options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo&gt;
+trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo&gt;
 
 主动触发屏幕内容感知，获取当前屏幕感知结果。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -467,7 +497,6 @@ trigger(capability: OnscreenAwarenessCap,  options?: OnscreenAwarenessOptions): 
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-
 **返回值：**
 
   | 类型                           | 说明         |
@@ -476,7 +505,7 @@ trigger(capability: OnscreenAwarenessCap,  options?: OnscreenAwarenessOptions): 
   
 **错误码**：
 
-以下错误码的详细介绍请参见[用户状态感知错误码](errorcode-userStatus.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -492,16 +521,13 @@ trigger(capability: OnscreenAwarenessCap,  options?: OnscreenAwarenessOptions): 
 import onScreen from "@ohos.multimodalAwareness.onScreen";
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
   capList: [
-    'contentUiTree',
-    'scenarioReading'
-  ],
-  description: 'subscribe reading scenario'
+    'UiImage'
+  ]
 }
 
 let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
   parameters: {
-    "windowId": 12,
-    "controlByPolicy": 1
+    "windowId": 102
   } as Record<string, Object>
 }
 try {
@@ -513,13 +539,200 @@ try {
 }
 ```
 
+## onScreen.capture<sup>23+</sup>
+
+capture(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
+
+主动触发屏幕内容感知，获取页面信息。
+
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
+
+**参数**：
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
+| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
+
+|capture接口的capList支持的能力列表|功能说明|
+| ---- | ------ |
+|UiImage|获取页面内子图信息|
+|QuickSnap|获取截屏信息|
+
+**返回值：**
+
+  | 类型                           | 说明         |
+  | ---------------------------- | ---------- |
+  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+ 
+**错误码**：
+
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 202      | Permission check failed. A non-system application uses the system API. |
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
+| 34000001 | Service exception. |
+| 34000002 | The application or page is not supported. |
+
+**示例**：
+
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  capList: [
+    'UiImage',
+  ]
+}
+try {
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.capture(onscreenAwarenessCap);
+  console.error(`capture resultCode: ${info[0].resultCode}`);
+} catch (err) {
+  console.info(`capture failed, error: ${err}`);
+}
+```
+
+## onScreen.interact<sup>23+</sup>
+
+interact(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
+
+主动触发屏幕行为交互，实现对界面行为的识别与行为回执。例如：点击链接后，通过回执信息精准跳转至指定段落并实现文字高亮。
+
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
+
+**参数**：
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
+| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
+
+|interact接口支持的capList能力列表|功能说明|
+| ---- | ------ |
+|JumpContext|高亮跳转到指定上下文|
+
+**返回值：**
+
+  | 类型                           | 说明         |
+  | ---------------------------- | ---------- |
+  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 202      | Permission check failed. A non-system application uses the system API. |
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
+| 34000001 | Service exception. |
+| 34000002 | The application or page is not supported. |
+
+**示例**：
+
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  capList: [
+    'JumpContext',
+  ]
+}
+
+let onscreenAwarenessOptions: onScreen.OnscreenAwarenessOptions = {
+  parameters: {
+    "JumpContext" : {
+      "pageId":'156',
+      "textCompIdList": ['235'],
+      "text": '文章开头'
+    }
+  }
+}
+
+try {
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.interact(onscreenAwarenessCap, onscreenAwarenessOptions);
+  console.error(`interact resultCode: ${info[0].resultCode}`);
+} catch (err) {
+  console.info(`interact failed, error: ${err}`);
+}
+```
+
+## onScreen.apperceive<sup>23+</sup>
+
+apperceive(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): Promise&lt;OnscreenAwarenessInfo[]&gt;
+
+主动触发屏幕内容感知，获取屏幕内容进行快照分析。
+
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
+
+**系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**设备行为差异**：该接口在Phone和Tablet中可正常调用，在其他设备类型中返回801错误码。
+
+**参数**：
+
+| 参数名   | 类型                             | 必填 | 说明                                                         |
+| -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
+| capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表，具体见下面支持的能力列表。|
+| options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
+
+|groupId支持能力列表|对应子项能力|功能说明|
+| ---- | ------ | ------|
+|SmartEdge|Acticle|获取阅读场景感知信息|
+|SmartEdge|ShortVideo|获取短视频场景的感知信息|
+|SmartEdge|Todo|获取待办场景的感知信息|
+|SmartEdge|Activity|获取基础服务的感知信息|
+
+**返回值：**
+
+  | 类型                           | 说明         |
+  | ---------------------------- | ---------- |
+  | Promise&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | Promise对象，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201      | Permission denied. An attempt was made to get page content forbidden by permission: ohos.permission.GET_SCREEN_CONTENT. |
+| 202      | Permission check failed. A non-system application uses the system API. |
+| 801      | Capability not supported. Function can not work correctly due to limited device capabilities.|
+| 34000001 | Service exception. |
+| 34000002 | The application or page is not supported. |
+
+**示例**：
+
+```ts
+import onScreen from "@ohos.multimodalAwareness.onScreen";
+let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
+  groupId: 'SmartEdge'
+}
+try {
+  let info: onScreen.OnscreenAwarenessInfo[] = await onScreen.apperceive(onscreenAwarenessCap);
+  console.error(`apperceive resultCode: ${info[0].resultCode}`);
+} catch (err) {
+  console.info(`apperceive failed, error: ${err}`);
+}
+```
+
 ## onScreen.onReadingScreenPermissionListener<sup>23+</sup>
 
 onReadingScreenPermissionListener(callback: Callback&lt;ReadingScreenPermissionStatus&gt;): void
 
 开启屏幕内容访问权限监测，实时返回授权状态。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
@@ -532,7 +745,6 @@ onReadingScreenPermissionListener(callback: Callback&lt;ReadingScreenPermissionS
 | 参数名   | 类型                             | 必填 | 说明                                                         |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------- |
 | callback | Callback&lt;[ReadingScreenPermissionStatus](#readingscreenpermissionstatus23)&gt; | 是   | 回调函数，返回读取屏幕信息的授权状态。|
-
 
 **错误码**：
 
@@ -564,7 +776,7 @@ offReadingScreenPermissionListener(callback?: Callback&lt;ReadingScreenPermissio
 
 关闭屏幕内容访问权限监测。
 
-**需要权限**：ohos.permission.GET_SCREEN_CONTENT.
+**需要权限**：ohos.permission.GET_SCREEN_CONTENT
 
 **系统能力**：SystemCapability.MultimodalAwareness.OnScreenAwareness
 
