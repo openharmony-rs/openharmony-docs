@@ -1116,7 +1116,7 @@ Allows an application or a service to use the DLP to register or unregister the 
 
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO
 
-Allows an application to apply for a continuous tasks of the special scenario type.
+Allows an application to apply for a continuous task of the special scenario type.
 
 <!--RP76--><!--RP76End-->
 
