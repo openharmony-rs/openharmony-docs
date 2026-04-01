@@ -80,7 +80,7 @@
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
-   let reportLatencyNs = 1000000000;
+   let reportLatencyNs = 1000000000; // 单位：纳秒
    try {
       stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
          console.info('data=' + JSON.stringify(data));
