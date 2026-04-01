@@ -48,7 +48,7 @@ target_link_libraries(entry PUBLIC libohinput.so)
 
 - **按键事件**
 
-<!-- @[key_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) -->
+<!-- @[key_event_interceptor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/NDKInputEventInterceptor/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
 struct KeyEvent {
