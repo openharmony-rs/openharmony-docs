@@ -105,6 +105,7 @@ The following table describes the APIs for cross-device connection management. F
 | on(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | Enable listening for <!--Del-->the **connect**, **disconnect**, **receiveMessage**, and **receiveData**<!--DelEnd-->events.|
 | off(type:&nbsp;'connect'&nbsp;\| &nbsp;'disconnect'&nbsp;\| &nbsp;'receiveMessage'&nbsp;\| &nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Callback&lt;EventCallbackInfo&gt;):&nbsp;void | Cancels listening for <!--Del-->the **connect**, **disconnect**, **receiveMessage**, and **receiveData**<!--DelEnd-->events.|
 | sendMessage(sessionId:&nbsp;number,&nbsp;msg:&nbsp;string):&nbsp;Promise&lt;void&gt;; | Sends a text message.|
+| sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;void&gt;; | Sends an **ArrayBuffer** byte stream.|
 
 
 ### Development Procedure

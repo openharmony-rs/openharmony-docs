@@ -91,6 +91,12 @@ In addition, ArkTS widgets do not support the following features:
 
 - Hot reload
 
-- setTimeOut
+- [setTimeout](../reference/common/js-apis-timer.md#settimeout)
 
 - For details about widget constraints in DevEco Studio, see [Constraints](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-service-widget#section1181172254318).
+
+##  
+
+ 
+
+-  

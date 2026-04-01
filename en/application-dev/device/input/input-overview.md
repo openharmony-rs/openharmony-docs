@@ -31,3 +31,7 @@ As a basic service provided by the system for applications, Input Kit fulfills i
 2. The APIs provided by the [inputConsumer](inputconsumer-guidelines-sys.md), [inputEventClient](inputeventclient-guidelines-sys.md), [inputMonitor](inputmonitor-guidelines-sys.md), and [shortKey](shortkey-guidelines-sys.md) modules are system APIs. Wherein, the APIs provided by the [inputMonitor](inputmonitor-guidelines-sys.md) module require the **ohos.permission.INPUT_MONITORING** permission.
 
 <!--DelEnd-->
+
+<!--RP1-->
+
+<!--RP1End-->

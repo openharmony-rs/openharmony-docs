@@ -1304,7 +1304,7 @@ console.info(t.createController()!.value);
 
 ## arkts-no-globalthis
 
-ArkTS does not support **globalThis** for two reasons:<br>- A static type cannot be added for **globalThis**. As a result, the properties of **globalThis** can be accessed only through search, which causes extra performance overhead.<br>- Type annotation is not available for properties of **globalThis**. As a result, the security and performance of operations on these properties cannot be ensured.
+ArkTS does not support **globalThis** for two reasons:<br> - A static type cannot be added to **globalThis**. As a result, the properties of **globalThis** can be accessed only through search, which causes extra performance overhead.<br> - Type annotation is not available for properties of **globalThis**. As a result, the security and performance of operations on these properties cannot be ensured.
 
 > **NOTE**
 >
@@ -1535,7 +1535,7 @@ let entries = new Map([
 ]);
 
 let obj: Record<string, Object> = {};
-entries.forEach((key, value) => {
+entries.forEach((value, key) => {
   if (key != undefined && key != null) {
     obj[key] = value;
   }
@@ -1986,7 +1986,7 @@ Mode 2: Extract the code that the .ts file depends on from the .ets file to the 
 
 ## arkts-no-special-imports
 
-Use **import { ... } from '...'** to import types.
+Use the regular **import { ... } from '...'** syntax to import types.  
 
 **Before adaptation**
 
@@ -2263,227 +2263,5 @@ function deepCopy(obj: object): object {
     }
   }
   return newObj;
-}
-```
-
-## Typical Application Scenarios of State Management
-
-### Using State Variables Outside of Structs
-
-The struct is different from the class. Therefore, avoid passing **this** as a parameter to the outside of the struct. Otherwise, the instance reference cannot be released and a memory leak may occur. You are advised to pass the state variable object outside the struct and modify the object properties to trigger UI re-render.
-
-**Not recommended**
-
-```typescript
-export class MyComponentController {
-  item: MyComponent = null;
-
-  setItem(item: MyComponent) {
-    this.item = item;
-  }
-
-  changeText(value: string) {
-    this.item.value = value;
-  }
-}
-
-@Component
-export default struct MyComponent {
-  public controller: MyComponentController = null;
-  @State value: string = 'Hello World';
-
-  build() {
-    Column() {
-      Text(this.value)
-        .fontSize(50)
-    }
-  }
-
-  aboutToAppear() {
-    if (this.controller)
-      this.controller.setItem(this); // You are not advised to pass this as a parameter to the outside struct.
-  }
-}
-
-@Entry
-@Component
-struct ObjThisOldPage {
-  controller = new MyComponentController();
-
-  build() {
-    Column() {
-      MyComponent({ controller: this.controller })
-      Button('change value').onClick(() => {
-        this.controller.changeText('Text');
-      })
-    }
-  }
-}
-```
-
-**Recommended**
-
-```typescript
-class CC {
-  value: string = '1';
-
-  constructor(value: string) {
-    this.value = value;
-  }
-}
-
-export class MyComponentController {
-  item: CC = new CC('1');
-
-  setItem(item: CC) {
-    this.item = item;
-  }
-
-  changeText(value: string) {
-    this.item.value = value;
-  }
-}
-
-@Component
-export default struct MyComponent {
-  public controller: MyComponentController | null = null;
-  @State value: CC = new CC('Hello World');
-
-  build() {
-    Column() {
-      Text(`${this.value.value}`)
-        .fontSize(50)
-    }
-  }
-
-  aboutToAppear() {
-    if (this.controller)
-      this.controller.setItem(this.value);
-  }
-}
-
-@Entry
-@Component
-struct StyleExample {
-  controller: MyComponentController = new MyComponentController();
-
-  build() {
-    Column() {
-      MyComponent({ controller: this.controller })
-      Button('change value').onClick(() => {
-        this.controller.changeText('Text');
-      })
-    }
-  }
-}
-```
-
-### Using Union Types in Structs
-
-The following code contains the arkts-no-any-unknown error. Because the struct does not support generics, you are advised to use the union type to implement generic-like functions of custom components.
-
-**Not recommended**
-
-```typescript
-class Data {
-  aa: number = 11;
-}
-
-@Entry
-@Component
-struct DatauionOldPage {
-  @State array: Data[] = [new Data(), new Data(), new Data()];
-
-  @Builder
-  componentCloser(data: Data) {
-    Text(data.aa + '').fontSize(50)
-  }
-
-  build() {
-    Row() {
-      Column() {
-        ForEachCom({ arrayList: this.array, closer: this.componentCloser })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-
-@Component
-export struct ForEachCom {
-  arrayList: any[]; // The struct does not support generics. An arkts-no-any-unknown error is reported.
-  @BuilderParam closer: (data: any) => void = this.componentCloser; // The struct does not support generics. An arkts-no-any-unknown error is reported.
-
-  @Builder
-  componentCloser() {
-  }
-
-  build() {
-    Column() {
-      ForEach(this.arrayList, (item: any) => { // The struct does not support generics. An arkts-no-any-unknown error is reported.
-        Row() {
-          this.closer(item)
-        }.width('100%').height(200).backgroundColor('#eee')
-      })
-    }
-  }
-}
-```
-
-**Recommended**
-
-```typescript
-class Data {
-  aa: number = 11;
-}
-
-class Model {
-  aa: string = '11';
-}
-
-type UnionData = Data | Model;
-
-@Entry
-@Component
-struct DatauionPage {
-  array: UnionData[] = [new Data(), new Data(), new Data()];
-
-  @Builder
-  componentCloser(data: UnionData) {
-    if (data instanceof Data) {
-      Text(data.aa + '').fontSize(50)
-    }
-  }
-
-  build() {
-    Row() {
-      Column() {
-        ForEachCom({ arrayList: this.array, closer: this.componentCloser })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-
-@Component
-export struct ForEachCom {
-  arrayList: UnionData[] = [new Data(), new Data(), new Data()];
-  @BuilderParam closer: (data: UnionData) => void = this.componentCloser;
-
-  @Builder
-  componentCloser() {
-  }
-
-  build() {
-    Column() {
-      ForEach(this.arrayList, (item: UnionData) => {
-        Row() {
-          this.closer(item)
-        }.width('100%').height(200).backgroundColor('#eee')
-      })
-    }
-  }
 }
 ```

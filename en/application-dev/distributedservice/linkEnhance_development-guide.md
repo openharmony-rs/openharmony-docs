@@ -31,6 +31,9 @@ The implementation process is as follows: 1. Enable the enhanced connection func
 
 - The **linkEnhance** module provides only connection capabilities, with the link security policy following the Bluetooth pairing policy initially set by the caller, such as Numeric Comparison, Passkey Entry, Just Works, and Out of Band.
 
+<!--RP1-->
+<!--RP1End-->
+
 ## Environment preparation
 
 ### Environment requirement

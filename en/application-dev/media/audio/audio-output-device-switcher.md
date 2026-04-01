@@ -64,8 +64,20 @@ To cancel the default output device set by calling **setDefaultOutputDevice**, y
 
    let audioSessionManager = audioManager.getSessionManager();  // Call an API of AudioManager to create an AudioSessionManager instance.
 
-   // Set the default output device to the device speaker.
-   audioSessionManager.setDefaultOutputDevice(audio.DeviceType.SPEAKER).then(() => {
+   // Set the audio concurrency mode.
+   let strategy: audio.AudioSessionStrategy = {
+     concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+   };
+   
+   // Activate an audio session.
+   audioSessionManager.activateAudioSession(strategy).then(() => {
+     console.info('Succeeded in activating audio session.');
+   }).catch((err: BusinessError) => {
+     console.error(`Failed to activate audio session. Code: ${err.code}, message: ${err.message}`);
+   });
+
+   // Set the default output device to the earpiece.
+   audioSessionManager.setDefaultOutputDevice(audio.DeviceType.EARPIECE).then(() => {
      console.info('Succeeded in setting default output device.');
    }).catch((err: BusinessError) => {
      console.error(`Failed to set default output device. Code: ${err.code}, message: ${err.message}`);
