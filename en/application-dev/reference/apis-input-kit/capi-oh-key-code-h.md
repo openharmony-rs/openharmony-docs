@@ -332,7 +332,6 @@ Enumerates the key codes.
 | KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729 | Assist_Next_Group key, used to switch to the next input method in the input group<br>**Since**: 22|
 | KEYCODE_KBDINPUTASSIST_ACCEPT = 2730 | Keyboard Input-assisted Accept key<br>**Since**: 22|
 | KEYCODE_KBDINPUTASSIST_CANCEL = 2731 | Keyboard Input-assisted Cancel key<br>**Since**: 22|
-| KEYCODE_AOD_SINGLE_CLICK = 2740 | Single tapping the smart phone's touch screen event, which is used when the Always On Display is enabled<br>**Since**: 24|
 | KEYCODE_FRONT = 2800 | Front key, which is used to launch the windshield defogger<br>**Since**: 22|
 | KEYCODE_SETUP = 2801 | Setup key<br>**Since**: 22|
 | KEYCODE_WAKEUP = 2802 | Wakeup key<br>**Since**: 22|
