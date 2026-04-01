@@ -10,26 +10,27 @@
 
 ## 编码场景错误用法
 
-### packing过程中PixelMap被释放/修改导致崩溃
+### 编码过程中PixelMap被释放/修改导致崩溃
 
 **错误代码：**
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs } from '@kit.CoreFileKit'
 
-async function wrongPackingExample(pixelMap: image.PixelMap): Promise<void> {
+async function wrongPackingExample(pixelMap: image.PixelMap, fd: number): Promise<void> {
   let imagePacker = image.ImagePacker | null = null;
 
   try {
     imagePacker = image.createImagePacker();
     let packOpts: image.PackingOption = { format: 'image/jpeg', quality: 95 };
-    // 错误：异步pack执行过程中，对pixelMap进行修改。
+    // 错误：异步编码执行过程中，对pixelMap进行修改。
     pixelMap.crop({x:1, y:1, size: {height:200, width:200}});
     
-    // 错误：异步操作没有使用await。
-    imagePacker.packToData(pixelMap, packOpts).then((data: ArrayBuffer) => {
-      console.info('Pack success');
+     // 错误：异步操作没有使用await。
+    imagePacker.packToFile(pixelMap, fd, packOpts).then(() => {
+      console.info('Succeeded in packing the image to file.');
     }).catch((error: BusinessError) => {
       console.error('Pack failed: ' + error);
     });
@@ -37,9 +38,9 @@ async function wrongPackingExample(pixelMap: image.PixelMap): Promise<void> {
   } catch (error) {
     console.error('Pack failed: ' + error);
   } finally {    
-    // 错误：异步pack未完成，直接释放PixelMap，触发应用闪退。
+    // 错误：异步编码未完成，直接释放PixelMap，触发应用闪退。
     pixelMap?.release();
-    imagePacker.release();
+    imagePacker?.release();
   }
 }
 ```
@@ -49,8 +50,9 @@ async function wrongPackingExample(pixelMap: image.PixelMap): Promise<void> {
 ``` TypeScript
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo as fs } from '@kit.CoreFileKit'
 
-async function correctPackingExample(pixelMap: image.PixelMap): Promise<void> {
+async function correctPackingExample(pixelMap: image.PixelMap, fd: number): Promise<void> {
   let imagePacker = image.ImagePacker | null = null;
 
   try {
@@ -61,7 +63,7 @@ async function correctPackingExample(pixelMap: image.PixelMap): Promise<void> {
     await pixelMap.crop({x:1, y:1, size: {height:200, width:200}});
     
     // 正确：使用await等待异步操作完成。
-    const data = await imagePacker.packToData(pixelMap, packOpts);
+    await imagePacker.packToFile(pixelMap, fd, packOpts);
     console.info('Pack success');
 
   } catch (error) {
@@ -75,25 +77,37 @@ async function correctPackingExample(pixelMap: image.PixelMap): Promise<void> {
 
 **典型崩溃堆栈示例：**
 
-```
+``` text
 Fault thread info:
-Tid: 7877, Name: 0S_FFRT_3_1
- #00 pc 0000000000f529f4 /system/lib64/libskia_canvaskit.z.so(SkARGB32_Shader_Blitten::blitRect(int, int, int, int)+768)(7155ee7097e240b489727ac2b4155793)
- #01 pc 0000000000ff5cc4 /system/lib64/libskia_canvaskit.z.so (SkBlitter(int, int, int, int, unsigned char)+96) (7155ee7097e240b489727ac2b4155793)
- ...
- #13 pc 00000000000f1b04 /system/lib64/platformsdk/libimage_native.z.so（OHOS::Media::DrawImage（bool, OHOS::Medias::AntiALiasingOption const&, SkCanvas&,sk_sp<SkImage>&(+464) (59bc4a53bbdaaae59d3489a422cac0fc)
- #14 pc 00000000000f2118 /system/lib64/platformsdk/libimage_native.z.so（OHOS::Media::PixelMap::DoTranslation(OHOS::Media:TransInfos&, OHOS::Media::AntiAliasingoption const&, bool）+1492)(59bc4a53bbdaaae59d3489a4226ac0fc)
- #15 pc 00000000000f2ef8 /system/lib64/platformsdk/libimage_native.z.so(OHOS::Media::PixelMap::scale(float, float)+192)(59bc4a53bbdaaae59d3489a422cac0fc)
- #16 pc 00000000000e5d0c /system/lib64/platformsdk/libimage_napi.z.so(OHOS::Media::PixelMapNapi::Scale(napi_env__*. napi_calLback_info__*)::$_19::__invoke(napi_env__*.void*)+68)(2685a6f94f433c89e1a68ae797ef8ba4)
- #17 pc 0000000000060728 /system/lib64/platformsdk/libace_napi.z.so(NativeAsyncWork::AsyncWorkCallback(uv_work_s*)+264)(a540b1c0156867802564e8971775356e)
- #18 pc 00000000003/system/lib64/platformsdk/libuv.so(uv__queue_work+48) (1910e9cc3d1caad339bbad0fb1197758)
+Tid:5005, Name:OS_FFRT_3_0
+#00 pc 000000000006d1f0 /system/lib64/platformsdk/libextplugin.z.so(OHOS::ImagePlugin::ExtWStream::write(void const*, unsigned long)+24)(300e33eb41735f2d3c8fe2259a671217)
+#01 pc 0000000001828c94 /system/lib64/libskia_canvaskit.z.so(sk_empty_output_buffer(jpeg_compress_struct*)+48)(484139254f1cae74fd86fe798dbea128)
+#02 pc 00000000010d1bb4 /system/lib64/libskia_canvaskit.z.so(encode_mcu_huff+692)(484139254f1cae74fd86fe798dbea128)
+#03 pc 00000000010c8a88 /system/lib64/libskia_canvaskit.z.so(compress_output+384)(484139254f1cae74fd86fe798dbea128)
+#04 pc 0000000000f8c4b0 /system/lib64/libskia_canvaskit.z.so(jpeg_finish_compress+220)(484139254f1cae74fd86fe798dbea128)
+#05 pc 0000000000f8bf08 /system/lib64/libskia_canvaskit.z.so(SkJpegEncoderImpl::onEncodeRows(int)+384)(484139254f1cae74fd86fe798dbea128)
+#06 pc 0000000000fd25ac /system/lib64/libskia_canvaskit.z.so(SkEncoder::encodeRows(int)+68)(484139254f1cae74fd86fe798dbea128)
+#07 pc 0000000000fd2514 /system/lib64/libskia_canvaskit.z.so(SkJpegEncoder::Encode(SkWStream*, SkPixmap const&, SkJpegEncoder::Options const&)+64)(484139254f1cae74fd86fe798dbea128)
+#08 pc 00000000000545dc /system/lib64/platformsdk/libextplugin.z.so(OHOS::ImagePlugin::ExtEncoder::SkEncodeImage(SkWStream*, SkBitmap const&, SkEncodedImageFormat, int)+188)(300e33eb41735f2d3c8fe2259a671217)
+#09 pc 00000000000547a4 /system/lib64/platformsdk/libextplugin.z.so(OHOS::ImagePlugin::ExtEncoder::DoEncode(SkWStream*, SkBitmap const&, SkEncodedImageFormat const&)+204)(300e33eb41735f2d3c8fe2259a671217)
+#10 pc 0000000000055464 /system/lib64/platformsdk/libextplugin.z.so(OHOS::ImagePlugin::ExtEncoder::EncodeImageByBitmap(SkBitmap&, bool, SkWStream&)+284)(300e33eb41735f2d3c8fe2259a671217)
+#11 pc 0000000000055ad8 /system/lib64/platformsdk/libextplugin.z.so(OHOS::ImagePlugin::ExtEncoder::EncodeImageByPixelMap(OHOS::Media::PixelMap*, bool, SkWStream&)+1356)(300e33eb41735f2d3c8fe2259a671217)
+#12 pc 0000000000053350 /system/lib64/platformsdk/libextplugin.z.so(OHOS::ImagePlugin::ExtEncoder::EncodeSdrImage(OHOS::ImagePlugin::ExtWStream&)+984)(300e33eb41735f2d3c8fe2259a671217)
+#13 pc 0000000000052684 /system/lib64/platformsdk/libextplugin.z.so(OHOS::ImagePlugin::ExtEncoder::PixelmapEncode(OHOS::ImagePlugin::ExtWStream&)+184)(300e33eb41735f2d3c8fe2259a671217)
+#14 pc 0000000000053a7c /system/lib64/platformsdk/libextplugin.z.so(OHOS::ImagePlugin::ExtEncoder::FinalizeEncode()+952)(300e33eb41735f2d3c8fe2259a671217)
+#15 pc 00000000000b7d00 /system/lib64/platformsdk/libimage_native.z.so(std::__h::__function::__func<OHOS::Media::ImagePacker::FinalizePacking()::$_3, std::__h::allocator<OHOS::Media::ImagePacker::FinalizePacking()::$_3>, unsigned int (OHOS::ImagePlugin::AbsImageEncoder*)>::operator()(OHOS::ImagePlugin::AbsImageEncoder*&&)+28)(abee48eb37a365d523ba3560f087b63a)
+#16 pc 00000000000b58b4 /system/lib64/platformsdk/libimage_native.z.so(OHOS::Media::ImagePacker::DoEncodingFunc(std::__h::function<unsigned int (OHOS::ImagePlugin::AbsImageEncoder*)>, bool)+272)(abee48eb37a365d523ba3560f087b63a)
+#17 pc 00000000000b6de4 /system/lib64/platformsdk/libimage_native.z.so(OHOS::Media::ImagePacker::FinalizePacking(long&)+80)(abee48eb37a365d523ba3560f087b63a)
+#18 pc 000000000009a5b8 /system/lib64/platformsdk/libimage_napi.z.so(OHOS::Media::PackToFileExec(napi_env__*, void*)+912)(1d95fd2a148829930aeec8cbeaf92976)
+#19 pc 000000000006258c /system/lib64/platformsdk/libace_napi.z.so(NativeAsyncWork::AsyncWorkCallback(uv_work_s*)+264)(f5de54fc91f8cc9643b4846b808f9d4c)
+#20 pc 0000000000013bd4 /system/lib64/platformsdk/libuv.so(uv__queue_work+48)(7dfe11681838c768af19f3408663affb)
  ...
  
 ```
 
 **注意事项：**
 
-1. **异步操作的生命周期管理：** 在调用Image Kit的异步接口（如[`packToData`](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13)、[`packToFile`](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11)、[`createPixelMap`](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7)等）时，必须确保传入的资源对象（如PixelMap、ImageSource）在异步操作完成之前不被释放或修改。
+1. **异步操作的生命周期管理：** 在调用Image Kit的异步接口（如[packToData](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13)、[packToFile](../../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11)、[createPixelMap](../../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createpixelmap7)等）时，必须确保传入的资源对象（如PixelMap、ImageSource）在异步操作完成之前不被释放或修改。
 
 2. **使用await或Promise.then：** 推荐使用`await`等待异步操作完成，或者在`Promise.then()`的回调中释放资源，确保释放时机正确。
 
@@ -165,7 +179,7 @@ async function correctSharedImageSourceExample(filePath: string): Promise<void> 
 
 **问题堆栈：**
 
-```
+``` text
 Fault thread info:
 Tid: 41048, Name: OS_FFRT_3_5
 #00 pc 00000000000b0864 /system/lib64/platformsdk/libimage_napi.z.so(OHOS::Media::CreatePixelMapInner(OHOS::Media::ImageSourceNapi*, std::__h::shared_ptr<OHOS::Media::ImageSource>, unsigned int, OHOS::Media::DecodeOptions, unsigned int8)+116) (3a63d0a0dc3ac58d9e1a58a77ad194f9)
@@ -178,6 +192,7 @@ pc 000000000008d13c /system/lib64/ndk/libffrt.so(ffrt::ExecuteTask(ffrt::TaskBas
 #06 pc 000000000002e054 /system/lib64/ndk/libffrt.so(ffrt::CPUWorker::RunTask(ffrt: :TaskBase*, ffrt::CPUWorker*)+84) (7921196b695415b02aa2bódfb05c7deb)
 #07 pc 00000000000cóc58 /system/lib64/ndk/libffrt.so(7921196b695415b02aa2b6dfb05c7deb)
 #08 pc 00000000001d8c5c /system/lib/ld-musl-aarch64.so.1(start+240)(05aecbbf0bdce12d75badb7b497d0f9f)
+ ...
 ```
 
 **注意事项：**
