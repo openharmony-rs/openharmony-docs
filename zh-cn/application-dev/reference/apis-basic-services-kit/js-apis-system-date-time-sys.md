@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
+>
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -24,6 +26,10 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 **系统能力**: SystemCapability.MiscServices.Time
 
+**ArkTS-Dyn起始版本:** 10
+
+**ArkTS-Sta起始版本:** 23
+
 | 名称    | 值   | 说明                                             |
 | ------- | ---- | ------------------------------------------------ |
 | STARTUP | 0    | 自系统启动以来经过的毫秒数，包括深度睡眠时间。   |
@@ -31,7 +37,9 @@ import { systemDateTime } from '@kit.BasicServicesKit';
 
 ## systemDateTime.setTime
 
-setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
+ArkTS-Dyn: setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
+
+ArkTS-Sta: setTime(time : long, callback : AsyncCallback&lt;void&gt;) : void
 
 设置系统时间，使用callback异步回调。
 
@@ -39,13 +47,17 @@ setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
+
 **需要权限：** ohos.permission.SET_TIME
 
 **参数：**
 
 | 参数名   | 类型            | 必填 | 说明                                       |
 | -------- | ----------- | ---- | ---------------- |
-| time     | number                    | 是   | 目标时间戳(ms)。                         |
+| time     | ArkTS-Dyn: number<br>ArkTS-Sta: long                    | 是   | 目标时间戳(ms)。                         |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。 |
 
 **错误码：**
@@ -61,6 +73,7 @@ setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -79,10 +92,31 @@ try {
   console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// time对应的时间为2021-01-20 02:36:25。
+let time = 1611081385000;
+try {
+  systemDateTime.setTime(time, (error: BusinessError<void> | null) => {
+    if (error) {
+      console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
+      return;
+    }
+    console.info(`Succeeded in setting time`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
+}
+```
 
 ## systemDateTime.setTime
 
-setTime(time : number) : Promise&lt;void&gt;
+ArkTS-Dyn: setTime(time : number) : Promise&lt;void&gt;
+
+ArkTS-Sta: setTime(time : long) : Promise&lt;void&gt;
 
 设置系统时间，使用Promise异步回调。
 
@@ -90,13 +124,17 @@ setTime(time : number) : Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
+
 **需要权限：** ohos.permission.SET_TIME
 
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
 | ------ | ------ | ---- | ------------------ |
-| time   | number | 是   | 目标时间戳(ms)。 |
+| time   | ArkTS-Dyn: AsyncCallback&lt;number><br>ArkTS-Sta: AsyncCallback&lt;long>   | 是   | 目标时间戳(ms)。 |
 
 **返回值：**
 
@@ -117,6 +155,7 @@ setTime(time : number) : Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -126,6 +165,24 @@ try {
   systemDateTime.setTime(time).then(() => {
     console.info(`Succeeded in setting time.`);
   }).catch((error: BusinessError) => {
+    console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
+}
+```
+
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// time对应的时间为2021-01-20 02:36:25。
+let time = 1611081385000;
+try {
+  systemDateTime.setTime(time).then(() => {
+    console.info(`Succeeded in setting time.`);
+  }).catch((error: Error) => {
     console.info(`Failed to set time. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {
@@ -255,6 +312,10 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
+
 **参数：**
 
 | 参数名   | 类型              | 必填 | 说明                  |
@@ -275,6 +336,7 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -291,6 +353,22 @@ try {
   console.info(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+impoer { BusinessError } from '@ohos.base';
+
+try {
+  systemDateTime.setTimezone('Asia/Jakarta', (error: BusinessError | null) => {
+    if (error) {
+      console.error(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
+      return;
+    }
+    console.error(`Succeeded in setting timezone.`);
+  });
+} catch(error: BusinessError) {
+  console.error(`setTimezone error: ${error.message}, code: ${error.code}`);
+}
+```
 
 ## systemDateTime.setTimezone
 
@@ -303,6 +381,10 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 **系统能力：** SystemCapability.MiscServices.Time
 
 **需要权限：** ohos.permission.SET_TIME_ZONE
+
+**ArkTS-Dyn起始版本:** 9
+
+**ArkTS-Sta起始版本:** 23
 
 **参数：**
 
@@ -329,6 +411,7 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -344,6 +427,24 @@ try {
 }
 ```
 
+ArkTS-Sta示例：
+```ts
+impoer { BusinessError } from '@ohos.base';
+
+try {
+  await systemDateTime.setTimezone('Europe/Moscow');
+  systemDateTime.getTimezone((error: BusinessError | null, data: String | undefined) => {
+    if (error) {
+      console.error(`Failed to set timezone. message: ${error.message}, code: ${error.code}`);
+      reutrn;
+    }
+    console.error(`Succeeded in getting timezone : ${data}`);
+  });
+} catch(error: BusinessError) {
+  console.error(`setTimezone error: ${error.message}, code: ${error.code}`);
+}
+```
+
 ## systemDateTime.updateNtpTime<sup>14+</sup>
 
 updateNtpTime(): Promise&lt;void&gt;
@@ -353,6 +454,10 @@ updateNtpTime(): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS-Dyn起始版本:** 14
+
+**ArkTS-Sta起始版本:** 23
 
 **返回值：**
 
@@ -371,6 +476,7 @@ updateNtpTime(): Promise&lt;void&gt;
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -385,10 +491,26 @@ try {
   console.error(`Failed to update ntp time. message: ${error.message}, code: ${error.code}`);
 }
 ```
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@ohos.base';
+
+try {
+  systemDateTime.updateNtpTime().then(() => {
+    console.info(`Succeeded in update ntp time.`);
+  }).catch((error) => {
+    console.error(`Failed to update ntp time. message: ${error.message}, code: ${error.code}`);
+  });
+} catch(error: BusinessError) {
+  console.error(`Failed to update ntp time. message: ${error.message}, code: ${error.code}`);
+}
+```
 
 ## systemDateTime.getNtpTime<sup>14+</sup>
 
-getNtpTime(): number
+ArkTS-Dyn: getNtpTime(): number
+
+ArkTS-Sta: getNtpTime(): long
 
 使用同步方式获取基于上次更新的NTP时间所计算出的真实时间。
 
@@ -396,11 +518,15 @@ getNtpTime(): number
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS-Dyn起始版本:** 14
+
+**ArkTS-Sta起始版本:** 23
+
 **返回值**：
 
 | 类型   | 说明                             |
 | ------ |--------------------------------|
-| number | 基于上次更新的NTP时间所计算出的Unix纪元时间(ms)。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 基于上次更新的NTP时间所计算出的Unix纪元时间(ms)。 |
 
 **错误码：**
 
@@ -413,13 +539,24 @@ getNtpTime(): number
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
-  let time: number = systemDateTime.getNtpTime();
+  let time = systemDateTime.getNtpTime();
 } catch(e) {
   let error = e as BusinessError;
+  console.error(`Failed to get ntp time. message: ${error.message}, code: ${error.code}`);
+}
+```
+ArkTS-Sta示例:
+```ts
+import { BusinessError } from '@ohos.base';
+
+try {
+  let time: long = systemDateTime.getNtpTime();
+} catch(error: BusinessError) {
   console.error(`Failed to get ntp time. message: ${error.message}, code: ${error.code}`);
 }
 ```
@@ -438,6 +575,10 @@ setAutoTimeStatus(status: boolean): Promise&lt;void&gt;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS-Dyn起始版本:** 21
+
+**ArkTS-Sta起始版本:** 23
 
 **需要权限：** ohos.permission.SET_TIME
 
@@ -474,6 +615,23 @@ try {
   systemDateTime.setAutoTimeStatus(true).then(() => {
     console.info(`Succeeded in setting autotime.`);
   }).catch((error: BusinessError) => {
+    console.error(`Failed to set autotime. message: ${error.message}, code: ${error.code}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`Failed to set autotime. message: ${error.message}, code: ${error.code}`);
+}
+```
+
+ArkTS-Sta示例:
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  systemDateTime.setAutoTimeStatus(true).then(() => {
+    console.info(`Succeeded in setting autotime.`);
+  }).catch((error: Error) => {
     console.error(`Failed to set autotime. message: ${error.message}, code: ${error.code}`);
   });
 } catch(e) {

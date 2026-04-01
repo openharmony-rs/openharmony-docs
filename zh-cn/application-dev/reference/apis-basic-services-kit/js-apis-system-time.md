@@ -10,6 +10,8 @@
 
 > **说明：**
 >
+> - 本模块仅适用于ArkTS-Dyn。
+>
 > - 从API Version 9 开始，该模块接口不再维护，推荐使用新模块接口[@ohos.systemDateTime (系统时间、时区)](js-apis-date-time.md)。
 > - 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
@@ -30,6 +32,10 @@ getCurrentTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -77,6 +83,10 @@ getCurrentTime(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
+
 **参数：**
 
 | 参数名   | 类型               | 必填 | 说明                            |
@@ -121,6 +131,10 @@ getCurrentTime(isNano?: boolean): Promise&lt;number&gt;
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTime](js-apis-date-time.md#systemdatetimegettime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -171,6 +185,10 @@ getRealActiveTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明   |
@@ -217,6 +235,10 @@ getRealActiveTime(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明    |
@@ -261,6 +283,10 @@ getRealActiveTime(isNano?: boolean): Promise&lt;number&gt;
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -311,6 +337,10 @@ getRealTime(isNano: boolean, callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明   |
@@ -357,6 +387,10 @@ getRealTime(callback: AsyncCallback&lt;number&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明      |
@@ -401,6 +435,10 @@ getRealTime(isNano?: boolean): Promise&lt;number&gt;
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getUptime](js-apis-date-time.md#systemdatetimegetuptime10)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -451,6 +489,10 @@ getDate(callback: AsyncCallback&lt;Date&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
+
 **参数：**
 
 | 参数名   | 类型           | 必填 | 说明                   |
@@ -496,6 +538,10 @@ getDate(): Promise&lt;Date&gt;
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
+
 **返回值：**
 
 | 类型                | 说明                                      |
@@ -538,6 +584,10 @@ getTimezone(callback: AsyncCallback&lt;string&gt;): void
 > 从API version 8开始支持，从API version 9开始废弃。建议使用[systemDateTime.getTimezone](js-apis-date-time.md#systemdatetimegettimezone)替代。
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
 
 **参数：**
 
@@ -584,6 +634,10 @@ getTimezone(): Promise&lt;string&gt;
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：8
+
 **返回值：**
 
 | 类型                  | 说明                                  |
@@ -628,6 +682,10 @@ setTime(time : number, callback : AsyncCallback&lt;void&gt;) : void
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
 
 **参数：**
 
@@ -678,6 +736,10 @@ setTime(time : number) : Promise&lt;void&gt;
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
 
 **参数：**
 
@@ -732,6 +794,10 @@ setDate(date: Date, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明             |
@@ -780,6 +846,10 @@ setDate(date: Date): Promise&lt;void&gt;
 **需要权限：** ohos.permission.SET_TIME
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
 
 **参数：**
 
@@ -833,6 +903,10 @@ setTimezone(timezone: string, callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力：** SystemCapability.MiscServices.Time
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
+
 **参数：**
 
 | 参数名   | 类型              | 必填 | 说明                  |
@@ -880,6 +954,10 @@ setTimezone(timezone: string): Promise&lt;void&gt;
 **需要权限：** ohos.permission.SET_TIME_ZONE
 
 **系统能力：** SystemCapability.MiscServices.Time
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本**：7
 
 **参数：**
 
