@@ -56,3 +56,5 @@ During the use of the certificate management functionalities, certificates need 
 ## Constraints
 
 Device Certificate Kit does not provide the capabilities of generating or issuing certificates and CRLs. Such capabilities are implemented by a certificate authority (CA) rather than a single application.
+
+<!--RP1--><!--RP1End-->
