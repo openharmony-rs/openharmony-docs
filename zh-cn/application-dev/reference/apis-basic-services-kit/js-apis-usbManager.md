@@ -45,9 +45,9 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 >
 > 当USB服务正常运行但无设备接入时，那么将会返回一个空的列表，这是正常情况，表示调用成功但当前没有连接的USB设备。
 >
-> 在USB主机模式未开启、USB服务未正确初始化、USB服务连接失败（如开发者模式关闭）、权限不足或其他系统错误时，接口会返回`undefined`，注意需要对接口返回值做判空处理。
+> 在USB主机模式未开启、USB服务未正确初始化、USB服务连接失败（如开发者模式关闭）、权限不足或其它系统错误时，接口会返回`undefined`，注意需要对接口返回值做判空处理。
 >
-> 三方应用没有权限获取serial字段读取设备序列号，需要通过requestRight申请权限后，自行发起控制传输获取。
+> 三方应用没有权限获取serial字段读取设备序列号，需要通过[requestRight](#usbmanagerrequestright)申请权限后，自行发起控制传输获取。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -138,7 +138,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | ---------------- |
-| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用getDevices获取的busNum和devAddress确定设备，当前其他属性不做处理。 |
+| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用[getDevices](#usbmanagergetdevices)获取的busNum和devAddress确定设备，当前其它属性不做处理。 |
 
 **返回值：**
 
@@ -187,7 +187,7 @@ hasRight(deviceName: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceName | string | 是 | 设备名称，来自getDevices获取的设备列表。 |
+| deviceName | string | 是 | 设备名称，来自获取的设备列表USBDevice。 |
 
 **返回值：**
 
@@ -234,7 +234,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceName | string | 是 | 设备名称，来自getDevices获取的设备列表。|
+| deviceName | string | 是 | 设备名称，来自[getDevice](#usbmanagergetdevices)获取的设备列表USBDevice。|
 
 **返回值：**
 
@@ -280,7 +280,7 @@ removeRight(deviceName: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceName | string | 是 | 设备名称，来自getDevices获取的设备列表。|
+| deviceName | string | 是 | 设备名称，来自[getDevice](#usbmanagergetdevices)获取的设备列表USBDevice。|
 
 **返回值：**
 
@@ -333,15 +333,15 @@ claimInterface(pipe: USBDevicePipe, iface: USBInterface, force ?: boolean): numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
-| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取接口的索引，需要调用getDevices获取设备信息并通过id确定唯一接口。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要获取接口的索引，需要调用[getDevice](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
 | force | boolean | 否 | 可选参数，是否强制获取。默认值为false&nbsp;，表示不强制获取，用户按需选择。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | claim通信接口成功返回0；claim通信接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。|
+| number | claim通信接口成功返回0；claim通信接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -379,7 +379,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 > **说明：**
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -387,14 +387,14 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
-| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要释放接口的索引，需要调用getDevices获取设备信息并通过id确定唯一接口。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| iface | [USBInterface](#usbinterface) | 是 | 用于确定需要释放接口的索引，需要调用[getDevice](#usbmanagergetdevices)获取设备信息并通过id确定唯一接口。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 释放接口成功返回0；释放接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。|
+| number | 释放接口成功返回0；释放接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -437,14 +437,14 @@ setConfiguration(pipe: USBDevicePipe, config: USBConfiguration): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
-| config | [USBConfiguration](#usbconfiguration) | 是 | 用于确定需要设置的配置，需要调用getDevices获取设备信息并通过id用于确定唯一设置。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| config | [USBConfiguration](#usbconfiguration) | 是 | 用于确定需要设置的配置，需要调用[getDevice](#usbmanagergetdevices)获取设备信息并通过id用于确定唯一设置。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备配置成功返回0；设置设备配置失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。<br>- -17：I/O失败。|
+| number | 设置设备配置成功返回0；设置设备配置失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。<br>- -17：I/O失败。|
 
 **错误码：**
 
@@ -484,7 +484,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 >
 > 一个USB接口可能存在多重选择模式，支持动态切换。使用的场景：数据传输时，通过该接口可重新设置端点，使端点与传输类型匹配。
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -492,14 +492,14 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
-| iface | [USBInterface](#usbinterface)   | 是 | 用于确定需要设置的接口，需要调用getDevices获取设备信息并通过id和alternateSetting确定唯一接口。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| iface | [USBInterface](#usbinterface)   | 是 | 用于确定需要设置的接口，需要调用[getDevice](#usbmanagergetdevices)获取设备信息并通过id和alternateSetting确定唯一接口。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 设置设备接口成功返回0；设置设备接口失败返回其他错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常 。|
+| number | 设置设备接口成功返回0；设置设备接口失败返回其它错误码如下：<br>- 88080389：服务未启动，可能原因：1.无设备插入；2.服务异常退出。<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常 。|
 
 **错误码：**
 
@@ -542,7 +542,7 @@ getRawDescriptor(pipe: USBDevicePipe): Uint8Array
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
@@ -587,13 +587,13 @@ getFileDescriptor(pipe: USBDevicePipe): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回设备对应的文件描述符，失败返回负数。|
+| number | 返回设备对应的文件描述符，失败返回其它错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -639,7 +639,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用connectDevice获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。|
 | timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
@@ -647,7 +647,7 @@ controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: 
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -713,7 +713,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -771,7 +771,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 >
 > 单次批量传输的传输数据总量（包括pipe、endpoint、buffer、timeout）请控制在200KB以下，数据总量过大会导致传输失败返回-1。
 >
-> 在调用接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
+> 在调用接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -779,8 +779,8 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用connectDevice获取。|
-| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用getDevices获取设备信息列表以及endpoint，address用于确定端点地址，direction用于确定端点的方向，interfaceId用于确定所属接口，当前其他属性不做处理。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| endpoint | [USBEndpoint](#usbendpoint) | 是 | 用于确定传输的端口，需要调用[getDevice](#usbmanagergetdevices)获取设备信息列表以及endpoint，address用于确定端点地址，direction用于确定端点的方向，interfaceId用于确定所属接口，当前其它属性不做处理。|
 | buffer | Uint8Array | 是 | 用于写入或读取数据的缓冲区。 |
 | timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待批量传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
@@ -788,7 +788,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 
 | 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其他错误码如下：<br>- -1：驱动异常。|
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -844,7 +844,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 >
 > 本接口为异步接口，调用后立刻返回，实际读写操作的结果以回调的方式返回。
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -928,7 +928,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 > **说明：**
 >
 > 该接口的主要作用是主动取消尚未完成的USB数据传输请求（如usbSubmitTransfer提交的传输）。<br>
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -936,7 +936,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，只需要填充[USBDevicePipe](#usbdevicepipe)和[USBEndpoint](#usbendpoint)即可。|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，只需要填充[USBDevicePipe](#usbdevicepipe)和usbendpoint即可。|
 
 **错误码：**
 
@@ -1018,13 +1018,13 @@ closePipe(pipe: USBDevicePipe): number
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定USB设备消息控制通道，需要调用connectDevice获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定USB设备消息控制通道，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其他错误码如下：<br>- 22：服务异常。 |
+| number | 关闭设备消息控制通道成功返回0；关闭设备消息控制通道失败返回其它错误码如下：<br>- 22：服务异常。 |
 
 **错误码：**
 
@@ -1095,7 +1095,7 @@ try {
   let flag = usbManager.hasAccessoryRight(accList[0])
   hilog.info(0, 'testTag ui', `hasAccessoryRight success, ret:${flag}`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `hasAccessoryRight error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `hasAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1142,7 +1142,7 @@ try {
   let flag = usbManager.requestAccessoryRight(accList[0])
   hilog.info(0, 'testTag ui', `requestAccessoryRight success, ret:${flag}`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `requestAccessoryRight error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `requestAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1184,7 +1184,7 @@ try {
   usbManager.cancelAccessoryRight(accList[0])
   hilog.info(0, 'testTag ui', `cancelAccessoryRight success`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `cancelAccessoryRight error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `cancelAccessoryRight error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1219,7 +1219,7 @@ try {
   let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList()
   hilog.info(0, 'testTag ui', `getAccessoryList success, accList: ${JSON.stringify(accList)}`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `getAccessoryList error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `getAccessoryList error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1273,7 +1273,7 @@ try {
   let readLength = fs.readSync(handle.accessoryFd, arrayBuffer, {offset: 0, length: 4096});
   hilog.info(0, 'testTag ui', 'readSync ret: ' + readLength.toString(10));
 } catch (error) {
-  hilog.info(0, 'testTag ui', `openAccessory error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `openAccessory error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1314,7 +1314,7 @@ try {
   usbManager.closeAccessory(handle)
   hilog.info(0, 'testTag ui', `closeAccessory success`)
 } catch (error) {
-  hilog.info(0, 'testTag ui', `closeAccessory error ${error.code}, message is ${error.message}`)
+  hilog.error(0, 'testTag ui', `closeAccessory error ${error.code}, message is ${error.message}`)
 }
 ```
 
@@ -1334,7 +1334,7 @@ resetUsbDevice(pipe: USBDevicePipe): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用connectDevice获取。|
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定总线号和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
 
 **返回值：**
 
@@ -1509,7 +1509,7 @@ USB设备消息传输通道，用于确定设备。
 | USB_REQUEST_TARGET_DEVICE    | 0    | 设备。 |
 | USB_REQUEST_TARGET_INTERFACE | 1    | 接口。 |
 | USB_REQUEST_TARGET_ENDPOINT  | 2    | 端点。 |
-| USB_REQUEST_TARGET_OTHER     | 3    | 其他。 |
+| USB_REQUEST_TARGET_OTHER     | 3    | 其它。 |
 
 ## USBControlRequestType
 
@@ -1566,7 +1566,7 @@ USB配件句柄。
 
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
-| devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线号和设备地址，需要调用connectDevice获取。 |
+| devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线号和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志。 |
 | endpoint | number | 否 | 否 | 端点地址，正整数。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型。 |
