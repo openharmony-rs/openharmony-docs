@@ -509,7 +509,7 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 | -- | -- | -- | -- | -- |
 | range | [TextRange](#textrange12) | 否 | 否 | 即将被替换的属性字符串子串在原字符串中的范围。 |
 | replacementString | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 否 | 用于替换的属性字符串。 |
-| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 是 | 预览样式字符串。 |
+| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 是 | 预览内容属性字符串。<br/> 该属性用于表示语音输入、输入法预上屏等场景下的未提交上屏的临时输入内容。|
 
 ## AutoCapitalizationMode<sup>20+</sup>枚举说明
 
