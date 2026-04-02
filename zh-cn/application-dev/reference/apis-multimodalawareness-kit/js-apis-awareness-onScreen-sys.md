@@ -395,7 +395,6 @@ subscribe(capability: OnscreenAwarenessCap, callback: Callback&lt;OnscreenAwaren
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 | callback | Callback&lt;[OnscreenAwarenessInfo[]](#onscreenawarenessinfo23)&gt; | 是   | 回调函数，返回屏幕感知结果。返回的感知信息列表 OnscreenAwarenessInfo[] 最多同时返回2个感知信息项。|
 
-
 **错误码**：
 
 以下错误码的详细介绍请参见[屏上感知错误码](errorcode-onScreen.md)和[通用错误码](../errorcode-universal.md)。
