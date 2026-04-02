@@ -32,7 +32,7 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 | MOVE   | 2 | 触屏移动。 |
 | UP     | 3 | 触屏抬起。 |
 | PULL_DOWN  | 4 | 触屏开始拖拽。<br/>**起始版本：** 26.0.0 |
-| PULL_MOVE  | 5 | 触屏拖拽。<br/>**起始版本：** 26.0.0 |
+| PULL_MOVE  | 5 | 触屏拖拽移动。<br/>**起始版本：** 26.0.0 |
 | PULL_UP    | 6 | 触屏结束拖拽。<br/>**起始版本：** 26.0.0 |
 
 ## ToolType
