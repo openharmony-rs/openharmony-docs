@@ -1087,7 +1087,7 @@ Creates a mutable two-way data binding instance, which is used to construct the 
 
 | Type| Description                                            |
 | ---- | ------------------------------------------------ |
-| [MutableBinding\<T\>](#mutablebindingt20)    | Returns a two-way data binding instance with a **value** attribute, which allows you read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**.|
+| [MutableBinding\<T\>](#mutablebindingt20)    | Returns a two-way data binding instance with a **value** attribute, which allows you to read and modify data. If the value is set, the system checks whether the value type matches the generic type **T**.|
 
 **Example**
 
