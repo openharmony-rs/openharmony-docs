@@ -1750,12 +1750,11 @@ getInstalledBundleList(bundleFlags: number, userId?: number): Promise<Array\<Bun
 
 根据给定的bundleFlags和userId获取系统中所有的BundleInfo。使用Promise异步回调。
 
+**起始版本：** 26.0.0
 
-**需要权限：** ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST 或 (ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST 和 ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS)
+**模型约束：** 此接口仅可在Stage模型下使用。
 
- - 获取当前用户下的全量应用列表时，需要申请权限ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST。
-
- - 获取其他用户下的全量应用列表时需要申请权限ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST和ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
+**需要权限：** ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
  
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1774,12 +1773,11 @@ getInstalledBundleList(bundleFlags: number, userId?: number): Promise<Array\<Bun
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.bundle错误码](errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[包管理子系统通用错误码](errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | ---------------------------------- |
 | 201 | Permission denied. |
-| 17700004 | The specified user ID is not found. |
 
 **示例：**
 
