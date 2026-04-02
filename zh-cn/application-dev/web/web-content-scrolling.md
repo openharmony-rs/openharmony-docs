@@ -29,8 +29,8 @@
 
   可以作为Web组件嵌套滚动中，控制Web组件滚动的接口，详见[滚动偏移量由滚动父组件统一派发](web-nested-scrolling.md#滚动偏移量由滚动父组件统一派发)。
 
-+ [pageUp](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pageup)：将Webview的内容向上滚动半个视框大小或者滚动到页面最顶部，通过top入参控制。
-+ [pageDown](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pagedown)：将Webview的内容向下滚动半个视框大小或者滚动到页面最底部，通过bottom入参控制。
++ [pageUp](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pageup)：将Webview的内容向上滚动半个视口大小或者滚动到页面最顶部，通过top入参控制。
++ [pageDown](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pagedown)：将Webview的内容向下滚动半个视口大小或者滚动到页面最底部，通过bottom入参控制。
 ## 调用js侧接口控制Web页面滚动
 + scrollBy：相对当前滚动位置滚动一定距离（正数向下/右，负数向上/左）。
 
@@ -53,7 +53,7 @@
   ```
   (2) 跳转到页面特定位置。
   ```javascript
-  window.scrollTo(0, 500); // 滚动到某个固定像素位置（如：500px)
+  window.scrollTo(0, 500); // 滚动到某个固定像素位置（如：500px）
   ```
 
 ## 点击状态栏回顶
