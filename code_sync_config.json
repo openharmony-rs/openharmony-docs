@@ -31276,9 +31276,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets",
 				"functions":[
 					{
-						"end_line":332,
+						"end_line":343,
 						"name":"allocator_called",
-						"start_line":318
+						"start_line":323
 					}
 				]
 			}
@@ -31311,7 +31311,7 @@
 						"start_line":31
 					},
 					{
-						"end_line":45,
+						"end_line":50,
 						"name":"get_fileFd",
 						"start_line":38
 					},
@@ -31391,14 +31391,14 @@
 						"start_line":103
 					},
 					{
-						"end_line":132,
+						"end_line":137,
 						"name":"packToFile_pixelMap",
-						"start_line":120
+						"start_line":125
 					},
 					{
-						"end_line":146,
+						"end_line":151,
 						"name":"packToFile_imageSource",
-						"start_line":134
+						"start_line":139
 					}
 				]
 			}
@@ -31426,7 +31426,7 @@
 						"start_line":31
 					},
 					{
-						"end_line":45,
+						"end_line":50,
 						"name":"get_fileFd",
 						"start_line":38
 					},
@@ -31501,9 +31501,9 @@
 						"start_line":148
 					},
 					{
-						"end_line":176,
+						"end_line":181,
 						"name":"packToFile_picture",
-						"start_line":165
+						"start_line":170
 					}
 				]
 			}
@@ -31536,7 +31536,7 @@
 						"start_line":100
 					},
 					{
-						"end_line":124,
+						"end_line":128,
 						"name":"adjust_width",
 						"start_line":118
 					}
@@ -32781,7 +32781,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/TranscodingUtility.ets",
 				"functions":[
 					{
-						"end_line":46,
+						"end_line":50,
 						"name":"transcoding_example",
 						"start_line":15
 					}
@@ -48850,7 +48850,7 @@
 						"start_line":31
 					},
 					{
-						"end_line":45,
+						"end_line":50,
 						"name":"get_fileFd",
 						"start_line":38
 					},
