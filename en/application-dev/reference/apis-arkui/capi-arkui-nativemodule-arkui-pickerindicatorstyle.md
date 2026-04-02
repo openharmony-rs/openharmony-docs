@@ -6,6 +6,10 @@
 <!--Tester: @xiong0104-->
 <!--Adviser: @Brilliantry_Rui-->
 
+``` c
+typedef struct {...} ArkUI_PickerIndicatorStyle
+```
+
 ## Overview
 
 Defines the style of the selected item indicator.
