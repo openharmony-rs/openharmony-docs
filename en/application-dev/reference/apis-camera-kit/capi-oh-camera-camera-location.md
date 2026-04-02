@@ -28,4 +28,4 @@ The struct describes the location where a photo is taken.
 | -- | -- |
 | double latitude | Latitude.|
 | double longitude | Longitude.|
-| double altitude | Altitude, in pixels.|
+| double altitude | Altitude, in meters.|

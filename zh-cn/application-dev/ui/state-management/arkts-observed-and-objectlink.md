@@ -379,9 +379,11 @@ struct Parent {
 
 该场景包含built-in类型（Array、Map、Set和Date）和普通class。从API version 19开始，\@ObjectLink接收\@State传递built-in类型和普通class对象，可以观察其API调用和第一层变化，无需额外添加\@Observed装饰。因为\@State等状态变量装饰器，会给对象（外层对象）添加一层“代理”包装，其功能等同于添加\@Observed装饰。
 
-```ts
+<!-- @[State_To_Objectlink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/StateToObjectlink.ets) -->
+
+``` TypeScript
 class Book {
-  name: string;
+  public name: string;
 
   constructor(name: string) {
     this.name = name;
@@ -506,8 +508,14 @@ struct Index {
 >
 > NextID是用来在[ForEach循环渲染](../rendering-control/arkts-rendering-control-foreach.md)过程中，为每个数组元素生成一个唯一且持久的键值，标识对应的组件。
 
-```ts
-let NextID: number = 1;
+<!-- @[Object_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectArray.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArkTSObservedAndObjectlink';
+let nextID: number = 1;
 
 @Observed
 class Info {
@@ -515,7 +523,7 @@ class Info {
   public info: number;
 
   constructor(info: number) {
-    this.id = NextID++;
+    this.id = nextID++;
     this.info = info;
   }
 }
@@ -575,18 +583,14 @@ struct Parent {
           if (this.arrA.length > 0) {
             this.arrA.shift();
           } else {
-            console.info('length <= 0');
+            hilog.info(DOMAIN, TAG, 'length <= 0');
           }
         })
       Button('ViewParent: item property in middle')
         .width(320)
         .margin(10)
         .onClick(() => {
-          if (this.arrA[Math.floor(this.arrA.length / 2)]) {
-            this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
-          } else {
-            console.info('middle element does not exist');
-          }
+          this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
         })
       Button('ViewParent: item property in middle')
         .width(320)
@@ -1880,13 +1884,17 @@ struct Index {
 
 【正例】
 
-```ts
+<!-- @[Change_Property_In_Constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ChangePropertyInConstructor.ets) -->
+
+``` TypeScript
 @Observed
 class DataDownloader {
-  state: number;
+  public state: number;
+
   constructor() {
     this.state = 0;
   }
+
   startIntervalUpdate() {
     setInterval(() => {
       this.state += 1;
@@ -1897,10 +1905,12 @@ class DataDownloader {
 @Entry
 @Component
 struct Index {
-  @State dataDownloader: DataDownloader = new DataDownloader()
+  @State dataDownloader: DataDownloader = new DataDownloader();
+
   aboutToAppear() {
-    this.dataDownloader.startIntervalUpdate(); // @Observed装饰的类构建后再修改属性可以触发更新UI.
+    this.dataDownloader.startIntervalUpdate(); // @Observed装饰的类构建后再修改属性可以触发更新UI
   }
+
   build() {
     Column() {
       Text(`Download state is ${this.dataDownloader.state}`)
@@ -2051,7 +2061,9 @@ struct ChildComponent {
 
 【正例】
 
-```ts
+<!-- @[Use_With_LazyForEach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/UseWithLazyForEach.ets) -->
+
+``` TypeScript
 // LazyForEach遍历数据基类
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -2114,7 +2126,7 @@ class MyDataSource extends BasicDataSource {
 
 @Observed
 class StringData {
-  message: string;
+  public message: string;
 
   constructor(message: string) {
     this.message = message;
@@ -2141,13 +2153,13 @@ struct MyComponent {
           ListItem() {
             ChildComponent({ data: item })
           }.width('100%')
-          //LazyForEach的key从index和message构建，每次替换元素时，需要修改key才能触发UI刷新。
+          // LazyForEach的key从index和message构建，每次替换元素时，需要修改key才能触发UI刷新。
         }, (item: StringData, index: number) => index.toString() + item.message)
       }.cachedCount(3)
       Button('替换第一个元素')
         .onClick(() => {
           this.data.dataArray[0] = new StringData('Hello ' + this.helloCount++);
-          //替换元素后通知LazyForEach，可以刷新UI。
+          // 替换元素后通知LazyForEach，可以刷新UI。
           this.data.notifyDataChanged(0);
         })
       Button('修改第一个元素的数据')

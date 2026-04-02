@@ -84,7 +84,7 @@
 
 ## Page Lifecycle
 
-The lifecycle of **Navigation** can be divided into three categories: custom component lifecycle, universal component lifecycle, and [NavDestination lifecycle](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#events). [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) and [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) are the lifecycle callbacks of custom components (custom components contained in the outer layer of **NavDestination**); [OnAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear) and [OnDisappear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear) are universal component lifecycle callbacks. The remaining lifecycle events are unique to **NavDestination**.
+The lifecycle of **Navigation** can be divided into three categories: custom component lifecycle, universal component lifecycle, and [NavDestination lifecycle](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#events). [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear) and [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) are the lifecycle callbacks of custom components (custom components contained in the outer layer of **NavDestination**); [onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear) and [onDisappear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#ondisappear) are universal component lifecycle callbacks. The remaining lifecycle events are unique to **NavDestination**.
 
 The sequence of these lifecycle events is illustrated in the figure below.
 
@@ -92,7 +92,7 @@ The sequence of these lifecycle events is illustrated in the figure below.
 
 - [aboutToAppear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear): invoked when the custom component is about to appear. Specifically, it is invoked after a new instance of the custom component is created and before its **build()** function is executed (before the creation of **NavDestination**). You can change state variables in this callback, and the changes take effect in the subsequent execution of **build()**.
 - [onWillAppear](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillappear12): invoked after the **NavDestination** component is created and before it is mounted to the component tree. Changing the state variable in this callback takes effect in the current frame.
-- [OnAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear): invoked when the **NavDestination** component is mounted to the component tree. It is a universal lifecycle event.
+- [onAppear](../reference/apis-arkui/arkui-ts/ts-universal-events-show-hide.md#onappear): invoked when the **NavDestination** component is mounted to the component tree. It is a universal lifecycle event.
 - [onWillShow](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onwillshow12): invoked before the **NavDestination** component layout is displayed. In this case, the page is invisible. (This callback is not invoked when the application is switched to the foreground.)
 - [onShown](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onshown10): invoked after the **NavDestination** component layout is displayed. At this time, the page layout is complete.
 - [onActive](../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17): invoked when the **NavDestination** component becomes active (on top of the stack and operable, with no special components blocking it).
@@ -105,7 +105,7 @@ The sequence of these lifecycle events is illustrated in the figure below.
 
 In addition, there are two special lifecycle callbacks:
 
-- **onResult**: invoked when you return from another **NavDestination** page by swiping left or right or by pressing the back button.
+- **onResult**: invoked when other **NavDestination** pages are popped, or when the user swipes left/right to return from another **NavDestination** page.
 - **onNewParam**: invoked when a **NavDestination** page that previously exists in the stack is moved to the top of the stack through [launchMode.MOVE_TO_TOP_SINGLETON](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#launchmode12) or [launchMode.POP_TO_SINGLETON](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#launchmode12).
 
 ## Page Listening and Query

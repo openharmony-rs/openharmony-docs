@@ -13,7 +13,7 @@
 > 
 > 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 从API version 9开始，该接口不再维护，推荐使用新接口[`@ohos.usbManager`](js-apis-usbManager.md)。
+> 从API version 9开始，该接口不再维护，推荐使用新接口[@ohos.usbManager](js-apis-usbManager.md)。
 >
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.usb (USB管理)(已停止维护)](js-apis-usb-deprecated.md)。
 

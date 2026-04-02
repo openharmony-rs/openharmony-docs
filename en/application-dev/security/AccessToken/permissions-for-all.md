@@ -1,8 +1,8 @@
 # Open system_grant Permissions
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -272,36 +272,6 @@ With this permission, the application can publish sticky common events, so that 
 
 **Valid since**: 7
 
-## ohos.permission.MODIFY_AUDIO_SETTINGS
-
-Allows an application to modify audio settings.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 8
-
-## ohos.permission.RUNNING_LOCK
-
-Allows an application to obtain a running lock.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 7
-
-## ohos.permission.SET_WALLPAPER
-
-Allows an application to set wallpapers.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 7
-
 ## ohos.permission.ACCESS_CERT_MANAGER
 
 Allows an application to query certificates and private credentials.
@@ -311,16 +281,6 @@ Allows an application to query certificates and private credentials.
 **Authorization mode**: system_grant
 
 **Valid since**: 9
-
-## ohos.permission.hsdr.HSDR_ACCESS
-
-Allows an application to access OpenHarmony Security Detection and Response Framework.
-
-**Permission level**: normal
-
-**Authorization mode**: system_grant
-
-**Valid since**: 10
 
 ## ohos.permission.RUN_DYN_CODE
 
@@ -682,3 +642,45 @@ With this permission, the application can query whether the system is in the Do 
 **Supported devices**: phones | tablets
 
 **Since**: 23
+
+## ohos.permission.ALLOW_COREDUMP
+
+Allows the system to dump the memory of an application process to the application sandbox.
+
+With this permission, the application allows the system to dump application memory to the sandbox.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: 2-in-1 devices
+
+**Since**: 23
+
+## ohos.permission.HDR_BRIGHTNESS
+
+Allows an application to use the HDR brightening capability.
+
+With this permission, the application can apply HDR brightening effects to component content.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: general devices
+
+**Valid since**: 24
+
+## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
+Allows an application to query information about and launch **ObjectEditorExtensionAbility** components.
+
+With this permission, the application can query available types of pluggable embedded content and edit the corresponding content.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | phones | tablets
+
+**Valid since**: 24

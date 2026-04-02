@@ -36,7 +36,7 @@ Obtains the sandbox path of the pre-authorized **Download** directory.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID   | Error Message      |
 |----------| --------- |
@@ -75,7 +75,7 @@ Obtains the sandbox path of the pre-authorized **Desktop** directory.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID   | Error Message      |
 |----------| --------- |
@@ -114,7 +114,7 @@ Obtains the sandbox path of the pre-authorized **Document** directory.
 
 **Error codes**
 
-For details about the error codes, see [File Management Error Codes](errorcode-filemanagement.md) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID   | Error Message      |
 |----------| --------- |

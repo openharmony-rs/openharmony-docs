@@ -132,7 +132,7 @@
 
 **问题现象**
 
-如何在文本的前后各添加一个标签，例如“专题”或“Top1”，且这些标签的[背景样式](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[尺寸设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)需要能够自定义。
+如何在文本的前后各添加一个标签，例如“专题”或“Top1”，且这些标签的[背景设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md)、[尺寸设置](../reference/apis-arkui/arkui-ts/ts-universal-attributes-size.md)需要能够自定义。
 
 **解决措施一**
 

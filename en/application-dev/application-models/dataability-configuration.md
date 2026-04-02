@@ -29,7 +29,7 @@ Example URIs:
 
 - Local device scenario: dataability:///_com.domainname.dataability.persondata_/_person_/_1_
 
-> **NOTE**
+> **NOTE**<br>
 >
 > In the case of local-device communication, **device_id** is empty, and therefore, there are three slashes (/) after **dataability:**.
 
@@ -38,7 +38,7 @@ Example URIs:
 
 Similar to a PageAbility, a DataAbility is configured in **abilities** under **module** of the **config.json** file. The difference between a DataAbility and PageAbility lies in the **type** and **uri** fields.
 
-**Table 1** DataAbility configuration items
+  **Table 1** DataAbility configuration items
 
 | Name| Description|
 | -------- | -------- |
@@ -50,7 +50,7 @@ Similar to a PageAbility, a DataAbility is configured in **abilities** under **m
 The following is an example **config.json** file:
 
 
-```json
+```json5
 "abilities": [
   ...
   {

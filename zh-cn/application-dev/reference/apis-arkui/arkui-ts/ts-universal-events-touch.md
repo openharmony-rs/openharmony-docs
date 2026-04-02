@@ -64,7 +64,7 @@ onTouch(event: (event: TouchEvent) => void): T
 
 getHistoricalPoints(): Array&lt;HistoricalPoint&gt;
 
-获取当前帧的所有历史点。不同设备每帧的触摸事件频率不同，且该接口仅能在[TouchEvent](#touchevent对象说明)中调用，用于获取触发[onTouch](#ontouch)时当前帧历史点的相关信息。[onTouch](#ontouch)一帧通常只会调用一次，如果当前帧收到的[TouchEvent](#touchevent对象说明)数目大于1，会将该帧最后一个点通过[onTouch](#ontouch)返还，其余点作为历史点。如果多指在同一帧上报事件，可能触发多次onTouch。
+获取当前帧的所有历史点。不同设备每帧的触摸事件频率不同，且该接口仅能在[TouchEvent](#touchevent对象说明)中调用，用于获取触发[onTouch](#ontouch)时当前帧历史点的相关信息。[onTouch](#ontouch)一帧通常只会调用一次，如果当前帧收到的[TouchEvent](#touchevent对象说明)数目大于1，会将该帧最后一个点通过[onTouch](#ontouch)返回，其余点作为历史点。如果多指在同一帧上报事件，可能触发多次onTouch。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -85,21 +85,21 @@ getHistoricalPoints(): Array&lt;HistoricalPoint&gt;
 | ------- | ----------------------------------|-----| -------------- | ------------------------------------- |
 | type    | [TouchType](ts-appendix-enums.md#touchtype) | 否 | 否 | 触摸事件的类型。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
 | id      | number                                      | 否 | 否 | 手指唯一标识符。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                      |
-| x       | number                                      | 否 | 否 | 触摸点相对于事件响应组件左上角的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| y       | number                                      | 否 | 否 | 触摸点相对于事件响应组件左上角的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| windowX<sup>10+</sup>  | number                       | 否 | 否 | 触摸点相对于应用窗口左上角的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| windowY<sup>10+</sup>  | number                       | 否 | 否 | 触摸点相对于应用窗口左上角的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| displayX<sup>10+</sup> | number                       | 否 | 否 | 触摸点相对于应用屏幕左上角的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| displayY<sup>10+</sup> | number                       | 否 | 否 | 触摸点相对于应用屏幕左上角的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
-| screenX<sup>(deprecated)</sup> | number               | 否 | 否 | 触摸点相对于应用窗口左上角的X坐标。<br/>单位：vp <br>**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用windowX替代。   |
-| screenY<sup>(deprecated)</sup> | number               | 否 | 否 | 触摸点相对于应用窗口左上角的Y坐标。<br/>单位：vp <br>**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用windowY替代。   |
+| x       | number                                      | 否 | 否 | 触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| y       | number                                      | 否 | 否 | 触摸点在事件响应组件为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| windowX<sup>10+</sup>  | number                       | 否 | 否 | 触摸点在当前应用窗口坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| windowY<sup>10+</sup>  | number                       | 否 | 否 | 触摸点在当前应用窗口坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| displayX<sup>10+</sup> | number                       | 否 | 否 | 触摸点在当前应用屏幕坐标系中的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| displayY<sup>10+</sup> | number                       | 否 | 否 | 触摸点在当前应用屏幕坐标系中的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| screenX<sup>(deprecated)</sup> | number               | 否 | 否 | 触摸点在当前应用窗口坐标系中的X坐标。<br/>单位：vp <br>**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用windowX替代。   |
+| screenY<sup>(deprecated)</sup> | number               | 否 | 否 | 触摸点在当前应用窗口坐标系中的Y坐标。<br/>单位：vp <br>**说明：** 从API version 7开始支持，从API version 10开始废弃，建议使用windowY替代。   |
 | pressedTime<sup>15+</sup> | number | 否 | 是 | 当前手指按下的时间。<br>单位：ns<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | pressure<sup>15+</sup> | number | 否 | 是 | 当前手指按压的压力值。<br/>取值范围：[0,65535)，压力越大，值越大。<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | width<sup>15+</sup> | number | 否 | 是 | 当前手指按压区域的宽度。<br />单位：vp<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | height<sup>15+</sup> | number | 否 | 是 | 当前手指按压区域的高度。<br />单位：vp<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
 | hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | 否 | 是 | 表示事件是由左手点击还是右手点击触发。<br />**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。 |
-| globalDisplayX<sup>20+</sup> | number | 否 | 是 | 触摸点位置相对于全局屏幕左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| globalDisplayY<sup>20+</sup> | number | 否 | 是 | 触摸点位置相对于全局屏幕左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| globalDisplayX<sup>20+</sup> | number | 否 | 是 | 触摸点在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| globalDisplayY<sup>20+</sup> | number | 否 | 是 | 触摸点在[全局坐标系](../../../windowmanager/window-terminology.md#全局坐标系)中的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 
 ## HistoricalPoint<sup>10+</sup>对象说明
 

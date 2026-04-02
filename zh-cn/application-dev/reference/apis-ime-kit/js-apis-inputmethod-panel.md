@@ -44,6 +44,10 @@ import { PanelInfo, PanelType, PanelFlag } from '@kit.IMEKit';
 
 输入法面板状态类型枚举。
 
+> **说明：**
+>
+>目前仅用于SOFT_KEYBOARD类型的面板。
+
 **系统能力**：SystemCapability.MiscServices.InputMethodFramework
 
 | 名称           | 值   | 说明                                                         |

@@ -110,5 +110,48 @@ struct UIEffectFilterExample {
 }
 ```
 
+### hdrBrightnessRatio<sup>24+</sup>
+hdrBrightnessRatio(ratio: number): Filter
+
+为组件内容添加HDR（高动态范围成像）提亮效果。不建议嵌套使用，强行嵌套使用可能造成过曝现象。
+
+提亮效果需要开启HDR渲染管线才能生效，某些场景下即使尝试触发HDR渲染管线也无法开启HDR，例如：设备硬件规格不支持HDR。
+
+设备当前支持最大提亮倍数为设备当前的最大亮度除以设备SDR参考白亮度得到的值。
+
+>  **说明：**
+>
+> 使用HDR提亮效果会带来一定的性能功耗开销，建议在已有HDR图片或视频的场景使用。
+
+**需要权限：** ohos.permission.HDR_BRIGHTNESS
+<!--Del-->系统应用无需申请此权限。<!--DelEnd-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**参数：**
+| 参数名         | 类型                  | 必填 | 说明                       |
+| ------------- | --------------------- | ---- | ------------------------- |
+| ratio  | number         | 是   | 提亮倍数，取值范围为[1.0, 设备当前支持最大提亮倍数]。设置小于1.0的值时，按值为1.0处理；当值等于1.0时，不做任何处理；当值大于1.0时，会尝试触发HDR渲染管线，设置大于设备当前支持最大提亮倍数的值时，按值为设备当前支持最大提亮倍数处理。|
+
+**返回值：**
+
+| 类型              | 说明                               |
+| ----------------- | --------------------------------- |
+| [Filter](#filter) | 返回挂载了HDR提亮效果的Filter。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+
+**示例：**
+
+```ts
+filter.hdrBrightnessRatio(2.0)
+```
+
 ## VisualEffect
 VisualEffect效果类，用于将相应的效果添加到指定的组件上。在调用VisualEffect的方法前，需要先通过[createEffect](#uieffectcreateeffect)创建一个VisualEffect实例。

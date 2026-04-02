@@ -20,11 +20,11 @@ Describes the parameters for creating a child window or system window.
 
 | Name| Type| Read-Only| Optional| Description                                                                         |
 | ---------- | -------------------------- | -- | -- |-----------------------------------------------------------------------------|
-| name       | string                     | No| No| Name of the window.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                                              |
+| name       | string                     | No| No| Window name.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                                              |
 | windowType | [WindowType](arkts-apis-window-e.md#windowtype7) | No| No| Window type.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                       |
 | ctx        | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | No| Yes| Current application context. If no value is passed, no context is used.<br>In the FA model, do not pass in this parameter when creating a child window. Otherwise, an error is reported.<br>In the stage model, you must pass in this parameter when creating a floating window, modal window, or system window.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core|
-| displayId  | number                     | No| Yes| ID of the current physical screen. If no value is passed, the default value **-1** is used. The value must be an integer.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core    |
-| parentId   | number                     | No| Yes| ID of the parent window. If no value is passed, the default value **-1** is used. The value must be an integer.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                                              |
+| displayId  | number                     | No| Yes| Screen ID of the current window. If no value is passed, the default value **-1** is used, which means to follow the parent window. The value must be an integer.<br>After the setting, the screen ID is verified. If the screen ID is less than 0 or does not exist, error code 401 is returned.<br>In scenarios involving extended screens or heterogeneous virtual screens, a global floating window can be displayed on a specified screen by setting the screen ID.<br>Setting the screen ID is invalid for modal windows and system windows; they default to following the parent window.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core    |
+| parentId   | number                     | No| Yes| ID of the parent window. If this parameter is not set, the default value **-1** is used. The default parent window is the main window corresponding to the current application context. The value must be an integer.<br>In the FA model, the passed parent window ID is verified. If the ID is less than 0 or does not exist, error code 1300009 is returned.<br>This parameter is invalid in the stage model.<br>**System capability**: SystemCapability.WindowManager.WindowManager.Core                                              |
 | decorEnabled<sup>12+</sup> | boolean | No| Yes| Whether the window decoration is enabled. This parameter is valid only when **windowType** is set to **TYPE_DIALOG**. **true** if enabled, **false** otherwise. The default value is **false**.<br>**System capability**: SystemCapability.Window.SessionManager|
 | title<sup>12+</sup> | string| No| Yes| Title of the window when **decorEnabled** is set to **true**. The title display area should not go past the left side of the three-button area of the system. Any part that goes beyond will show as an ellipsis. If this parameter is not set, an empty string is used.<br>**System capability**: SystemCapability.Window.SessionManager|
 
@@ -95,6 +95,21 @@ Describes the rectangular area of the window.
 | width  | number   | No  | No  | Width of the rectangle, in px. The value must be an integer.|
 | height | number   | No  | No  | Height of the rectangle, in px. The value must be an integer.|
 
+## RectInVP<sup>23+</sup>
+
+Describes the rectangular area of the window, in vp.
+
+**Model constraint**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name  | Type| Read-Only| Optional| Description              |
+| ------ | -------- | ---- | ---- | ------------------ |
+| left   | number   | No  | No  | Left boundary of the rectangle, in vp.|
+| top    | number   | No  | No  | Top boundary of the rectangle, in vp.|
+| width  | number   | No  | No  | Width of the rectangle, in vp.|
+| height | number   | No  | No  | Height of the rectangle, in vp.|
+
 ## AvoidArea<sup>7+</sup>
 
 Describes the area to avoid for window content.
@@ -121,6 +136,46 @@ In the avoid area, the application window content is obscured and does not respo
 >
 >  ![avoidArea](figures/avoidArea.png)
 
+## UIEnvAvoidAreaVP<sup>23+</sup>
+
+Describes the information about the window avoidance area in units of vp, which requires careful attention during [immersive layout](../../windowmanager/window-terminology.md#immersive-layout) adaptation.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name      | Type     | Read-Only| Optional| Description              |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| visible    | boolean       | No  | No  | Whether the avoid area is visible. **true** if visible, **false** otherwise.|
+| leftRect   | [RectInVP](#rectinvp23) | No  | No  | Rectangle centered to the left of the window's two diagonals, in vp.|
+| topRect    | [RectInVP](#rectinvp23) | No  | No  | Rectangle centered at the top of the window's two diagonals, in vp.|
+| rightRect  | [RectInVP](#rectinvp23) | No  | No  | Rectangle centered to the right of the window's two diagonals, in vp.|
+| bottomRect | [RectInVP](#rectinvp23) | No  | No  | Rectangle centered at the bottom of the window's two diagonals, in vp.|
+
+## UIEnvWindowAvoidAreaInfoPX<sup>23+</sup>
+
+Describes [environment variable](../../ui/arkts-env-system-property.md) data types for window avoidance areas of different types. All types of window avoidance areas are measured in px.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name      | Type     | Read-Only| Optional| Description              |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| statusBar            | [AvoidArea](#avoidarea7) | No  | No  | Avoidance area whose [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_SYSTEM** type, in px.|
+| cutout               | [AvoidArea](#avoidarea7) | No  | No  | Avoidance area whose [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_CUTOUT** type, in px.|
+| keyboard             | [AvoidArea](#avoidarea7) | No  | No  | Avoidance area whose [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_KEYBOARD** type, in px.|
+| navigationIndicator  | [AvoidArea](#avoidarea7) | No  | No  | Avoidance area whose [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_NAVIGATION_INDICATOR** type, in px.|
+
+## UIEnvWindowAvoidAreaInfoVP<sup>23+</sup>
+
+Describes [environment variable](../../ui/arkts-env-system-property.md) data types for window avoidance areas of different types. All types of window avoidance areas are measured in vp.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+| Name      | Type     | Read-Only| Optional| Description              |
+| ---------- | ------------- | ---- | ---- | ------------------ |
+| statusBar            | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | No  | No  | Avoidance area whose [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_SYSTEM** type, in vp.|
+| cutout               | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | No  | No  | Avoidance area whose [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_CUTOUT** type, in vp.|
+| keyboard             | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | No  | No  | Avoidance area whose [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_KEYBOARD** type, in vp.|
+| navigationIndicator  | [UIEnvAvoidAreaVP](#uienvavoidareavp23) | No  | No  | Avoidance area whose [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) is **TYPE_NAVIGATION_INDICATOR** type, in vp.|
+
 ## Size<sup>7+</sup>
 
 Describes the window size, in px.
@@ -137,6 +192,8 @@ Describes the window size, in px.
 ## SizeInVP<sup>23+</sup>
 
 Describes the window size, in vp.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **System capability**: SystemCapability.Window.SessionManager
 
@@ -223,22 +280,33 @@ Describes the button style of the system decoration bar.
 
 ## WindowLimits<sup>11+</sup>
 
-Describes the parameters for window size limits. Applications can obtain the current window size limits via [getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11).
+Describes the parameters for window size limits. Applications can obtain the current window size limits (in px) via [getWindowLimits](arkts-apis-window-Window.md#getwindowlimits11). Starting from API version 22, they can also be obtained via [getWindowLimitsVP](arkts-apis-window-Window.md#getwindowlimitsvp22) (in vp).
 
-Windows have default system-imposed size limits. Applications can adjust these limits using [setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11) or by configuring the [abilities field in the module.json5 file](../../quick-start/module-configuration-file.md#abilities).
+The actual window size limits applied are determined by the intersection of the default system limits, application configurations, and runtime settings, with the priority (from highest to lowest) as follows:
 
-Starting from API version 17, applications can also use [StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions) in [startAbility](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2) to specify the size limits.
-
-The actual limits applied are determined by the intersection of the default system limits and the application's settings.
+1. Window size limits configured by the application via [setWindowLimits](arkts-apis-window-Window.md#setwindowlimits11).
+2. Window size limits specified by the application via [StartOptions](../apis-ability-kit/js-apis-app-ability-startOptions.md#startoptions) when the application starts the window through [startAbility](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startability-2). (This approach is supported since API version 17.)
+3. Window size limits configured by the application in [abilities in the module.json5 file](../../quick-start/module-configuration-file.md#abilities).
+4. Default system limits (which vary depending on the product and window type).
 
 **System capability**: SystemCapability.Window.SessionManager
 
-| Name     | Type  | Read-Only| Optional| Description                                                        |
+> **NOTE**
+>
+> For the **maxWidth**, **maxHeight**, **minWidth**, and **minHeight** properties:
+>
+> - The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**.
+> - The value is an integer. Floating-point values will be rounded down.
+> - The default value is **0**, indicating that the property does not change.
+> - The lower bound of the effective range is the minimum height/width limited by the system.
+> - The upper bound of the effective range is the maximum height/width limited by the system.
+
+| Name     | Type  | Read-Only| Optional| Description                                                         |
 | :-------- | :----- | :--- | :--- | :----------------------------------------------------------- |
-| maxWidth  | number | No  | Yes  | Maximum window width. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the maximum width specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| maxHeight | number | No  | Yes  | Maximum window height. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the maximum height specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| minWidth  | number | No  | Yes  | Minimum window width. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the minimum width specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
-| minHeight | number | No  | Yes  | Minimum window height. The default unit is px. Starting from API version 22, the unit can be px or vp, depending on the setting of **pixelUnit**. The value is an integer. The default value is **0**, indicating that the property does not change. The lower limit is **0**, and the upper limit is the minimum height specified by the system.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
+| maxWidth  | number | No  | Yes  | Maximum window width.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| maxHeight | number | No  | Yes  | Maximum window height.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| minWidth  | number | No  | Yes  | Minimum window width.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| minHeight | number | No  | Yes  | Minimum window height.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | pixelUnit<sup>22+</sup> | [PixelUnit](arkts-apis-window-e.md#pixelunit22) | No| Yes| Unit of the window size limits. The default value is **px**. The value can be **px** or **vp**.|
 
 ## TitleButtonRect<sup>11+</sup>
@@ -385,6 +453,7 @@ Describes the window parameters during application startup.
 | Name            | Type                                                                    | Read-Only| Optional| Description                                                        |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | animationParams             | [StartAnimationParams](arkts-apis-window-i.md#startanimationparams20)                 | No  | Yes  | Parameters for the startup animation. The default value is **undefined**. If this parameter is not set, the default animation of the system is used.|
+| needAnimation<sup>23+</sup> | boolean | No| Yes| Whether to enable the window creation animation.<br>If this parameter is set to **true**, the system's default animation will be used. If this parameter is set to **false**, the window creation animation is disabled. This value takes effect for [freeform windows](../../windowmanager/window-terminology.md#freeform-window) only.<br>If this parameter is not set, it defaults to **undefined** and the system's default animation will be used.<br> **Model constraint**: This API can be used only in the stage model.|
 
 ## Callback<sup>15+</sup>
 
@@ -429,9 +498,7 @@ Describes the window information obtained during window rotation changes.
 
 ## RotationChangeResult<sup>19+</sup>
 
-Describes the information returned by the application during window rotation changes.
-
-The system uses the information to adjust the size of the current window rectangle. If the returned information is about the rotation change of the main window, the system does not change the size of the main window.
+Describes the information returned by the application during window rotation changes. The system uses the information to adjust the size of the current window rectangle. If the returned information is about the rotation change of the main window, the system does not change the size of the main window.
 
 There are limitations on the size of application windows and system windows. For details about specific restrictions and rules, see [resize](arkts-apis-window-Window.md#resize9).
 
@@ -458,7 +525,7 @@ Describes the parameters used for creating a child window.
 | modalityType<sup>14+</sup>    | [ModalityType](arkts-apis-window-e.md#modalitytype14) | No| Yes| Modality type of the child window. This parameter takes effect only when the modal property is enabled for the child window. **WINDOW_MODALITY** means window-modal, and **APPLICATION_MODALITY** means application-modal. The default value is **WINDOW_MODALITY**.<br>**Atomic service API**: This API can be used in atomic services since API version 14.      |
 | windowRect<sup>18+</sup>    | [Rect](arkts-apis-window-i.md#rect7) | No| Yes| Rectangle of the child window, and the size of the child window is limited. For details, see [resize()](arkts-apis-window-Window.md#resize9). If this parameter is not set and [showWindow()](arkts-apis-window-Window.md#showwindow9) is not called, the default value {left: 0, top: 0, width: 0, height: 0} is used. For details, see [Setting a Child Window of an Application](../../windowmanager/application-window-stage.md#setting-a-child-window-of-an-application).<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | zLevel<sup>18+</sup>    | number | No| Yes| Z-level of the child window. This parameter is valid only when the modal property is not enabled for the child window, that is, **isModal** is not set. The value is an integer in the range [-10000, 10000]. Floating-point numbers will be rounded down. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| maximizeSupported<sup>19+</sup>    | boolean | No| Yes| Whether the child window supports maximization. **true** if supported, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.<br> **Device behavior differences**: This parameter can be properly used on 2-in-1 devices and tablets in [free windows mode](../../windowmanager/window-terminology.md#free-windows). If it is used as an input parameter on other device types, the corresponding API has no effect and does not report errors.|
+| maximizeSupported<sup>19+</sup>    | boolean | No| Yes| Whether the child window supports maximization. **true** if supported, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 19.<br> **Device behavior differences**: This parameter can be used properly on devices that support the [freeform window](../../windowmanager/window-terminology.md#freeform-window) mode and are currently in that mode. On devices that do not support the freeform window mode, the API call will neither take effect nor report an error when this parameter is used as an input. On devices that support the freeform window mode but are not currently in that mode, the API call will neither take effect nor report an error when this parameter is used as an input. The setting will take effect after the devices switch to that mode.|
 | outlineEnabled<sup>20+</sup>    | boolean | No| Yes| Whether the child window displays an outline. **true** if displayed, **false** otherwise. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 20.<br> **Device behavior differences**: This parameter can be properly used on 2-in-1 devices. If it is used as an input parameter on other device types, the corresponding API has no effect and does not report errors.|
 
 ## KeyFramePolicy<sup>20+</sup>

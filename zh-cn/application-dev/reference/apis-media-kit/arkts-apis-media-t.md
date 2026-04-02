@@ -54,7 +54,7 @@ type AVPlayerState = 'idle' | 'initialized' | 'prepared' | 'playing' | 'paused' 
 |            'completed'            | 播放至结尾状态，当媒体资源播放至结尾时，如果用户未设置循环播放（loop = true），AVPlayer会进入completed状态，此时调用[play()](arkts-apis-media-AVPlayer.md#play9)会进入playing状态和重播，调用[stop()](arkts-apis-media-AVPlayer.md#stop9)会进入stopped状态。 |
 |             'stopped'             | 停止状态，在prepared/playing/paused/completed状态调用[stop()](arkts-apis-media-AVPlayer.md#stop9)方法，AVPlayer会进入stopped状态，此时播放引擎只会保留属性，但会释放内存资源，可以调用[prepare()](arkts-apis-media-AVPlayer.md#prepare9)重新准备，也可以调用[reset()](arkts-apis-media-AVPlayer.md#reset9)重置，或者调用[release()](arkts-apis-media-AVPlayer.md#release9)彻底销毁。 |
 |            'released'             | 销毁状态，销毁与当前AVPlayer关联的播放引擎，无法再进行状态转换，调用[release()](arkts-apis-media-AVPlayer.md#release9)方法后，会进入released状态，结束流程。 |
-| 'error' | 错误状态，当**播放引擎**发生**不可逆的错误**（详见[媒体错误码](errorcode-media.md)），则会转换至当前状态，可以调用[reset()](arkts-apis-media-AVPlayer.md#reset9)重置，也可以调用[release()](arkts-apis-media-AVPlayer.md#release9)销毁重建。<br/>**注意：**<br/>区分error状态和 [on('error')](arkts-apis-media-AVPlayer.md#onerror9) ：<br/>1、进入error状态时，会触发on('error')监听事件，可以通过on('error')事件获取详细错误信息；<br/>2、处于error状态时，播放服务进入不可播控的状态，要求客户端设计容错机制，使用[reset()](arkts-apis-media-AVPlayer.md#reset9)重置或者[release()](arkts-apis-media-AVPlayer.md#release9)销毁重建；<br/>3、如果客户端收到on('error')，但未进入error状态：<br/>原因1：客户端未按状态机调用API或传入参数错误，被AVPlayer拦截提醒，需要客户端调整代码逻辑；<br/>原因2：播放过程发现码流问题，导致容器、解码短暂异常，不影响连续播放和播控操作的，不需要客户端设计容错机制。 |
+| 'error' | 错误状态，当**播放引擎**发生**不可逆的错误**（详见[Media错误码](errorcode-media.md)），则会转换至当前状态，可以调用[reset()](arkts-apis-media-AVPlayer.md#reset9)重置，也可以调用[release()](arkts-apis-media-AVPlayer.md#release9)销毁重建。<br/>**注意：**<br/>区分error状态和 [on('error')](arkts-apis-media-AVPlayer.md#onerror9) ：<br/>1、进入error状态时，会触发on('error')监听事件，可以通过on('error')事件获取详细错误信息；<br/>2、处于error状态时，播放服务进入不可播控的状态，要求客户端设计容错机制，使用[reset()](arkts-apis-media-AVPlayer.md#reset9)重置或者[release()](arkts-apis-media-AVPlayer.md#release9)销毁重建；<br/>3、如果客户端收到on('error')，但未进入error状态：<br/>原因1：客户端未按状态机调用API或传入参数错误，被AVPlayer拦截提醒，需要客户端调整代码逻辑；<br/>原因2：播放过程发现码流问题，导致容器、解码短暂异常，不影响连续播放和播控操作的，不需要客户端设计容错机制。 |
 
 ## OnTrackChangeHandler<sup>12+</sup>
 
@@ -77,7 +77,7 @@ track变更事件回调方法。
 
 type OnAVPlayerStateChangeHandle = (state: AVPlayerState, reason: StateChangeReason) => void
 
-状态机切换事件回调方法。
+播放状态机切换事件回调方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -132,7 +132,7 @@ type OnSuperResolutionChanged = (enabled: boolean) => void
 
 出现以下两种情况，超分算法会自动关闭。
 * 目前超分算法最高仅支持30帧及以下的视频。若视频帧率超过30帧，或者在倍速播放等场景下导致输入帧率超出超分算法处理能力，超分会自动关闭。
-* 目前超分算法支持输入分辨率范围为320x320 ~ 1920x1080，单位为像素。若播放过程中输入视频分辨率超出此范围，超分算法会自动关闭。
+* 目前超分算法支持输入分辨率范围为[320x320, 1920x1080]，单位为像素。若播放过程中输入视频分辨率超出此范围，超分算法会自动关闭。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -218,7 +218,7 @@ type AVRecorderState = 'idle' | 'prepared' | 'started' | 'paused' | 'stopped' | 
 
 type OnAVRecorderStateChangeHandler = (state: AVRecorderState, reason: StateChangeReason) => void
 
-状态机切换事件回调方法。
+录制状态机切换事件回调方法。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -329,7 +329,7 @@ type SourceCloseCallback = (uuid: number) => void
 **示例：**
 
 ```ts
-import HashMap from '@ohos.util.HashMap';
+import { HashMap } from '@kit.ArkTS';
 
 let requests: HashMap<number, media.MediaSourceLoadingRequest> = new HashMap();
 

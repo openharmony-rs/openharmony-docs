@@ -424,7 +424,9 @@ Starts a second UIAbility after the first UIAbility instance is created, and dis
 > If the first UIAbility instance is destroyed, the second UIAbility is started in full-screen mode.
 > 
 > The second UIAbility supports only [explicit startup](../../application-models/explicit-implicit-want-mappings.md#matching-rules-of-explicit-want).
-> 
+>
+> If the caller is running in the background, the ohos.permission.START_ABILITIES_FROM_BACKGROUND permission is required (available only for system applications).
+>
 > For details about the startup rules for the components in the stage model, see [Component Startup Rules (Stage Model)](../../application-models/component-startup-rules.md).
 
 **System API**: This is a system API.

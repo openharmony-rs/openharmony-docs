@@ -13,7 +13,7 @@
 
 ImageReceiver可以接收相机预览流中的图片，实现[双路预览](../camera/camera-dual-channel-preview.md)。
 
-ImageReceiver信息相关API的详细介绍请参见[API参考](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)。
+相关API的详细介绍请参见[ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md)。
 
 ## 开发步骤
 

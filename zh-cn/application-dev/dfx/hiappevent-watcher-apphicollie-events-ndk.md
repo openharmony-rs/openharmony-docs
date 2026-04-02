@@ -5,11 +5,11 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 简介
 
-本文介绍如何使用HiAppEvent提供的C/C++接口订阅任务执行超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[HiAppEvent C API文档](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
+本文介绍如何使用HiAppEvent提供的C/C++接口订阅任务执行超时事件。接口的详细使用说明（参数限制、取值范围等）请参考[hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md)。
 
 ## 接口说明
 
@@ -121,6 +121,7 @@
                auto memory =  writer.write(params["memory"]);
                auto externalLog = writer.write(params["external_log"]);
                auto logOverLimit = params["log_over_limit"].asBool();
+               auto externalCallbackLog = params["external_callback_log"].asString();
                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
@@ -135,6 +136,7 @@
                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.memory=%{public}s", memory.c_str());
                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s", externalLog.c_str());
                OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+               OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s", externalCallbackLog.c_str());
            }
        }
    }
@@ -212,6 +214,7 @@
                    auto memory =  writer.write(eventInfo["memory"]);
                    auto externalLog = writer.write(eventInfo["external_log"]);
                    auto logOverLimit = eventInfo["log_over_limit"].asBool();
+                   auto externalCallbackLog = params["external_callback_log"].asString();
                    OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.time=%{public}lld", time);
                    OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.foreground=%{public}d", foreground);
                    OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.bundle_version=%{public}s",
@@ -228,6 +231,7 @@
                    OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_log=%{public}s",
                        externalLog.c_str());
                    OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.log_over_limit=%{public}d", logOverLimit);
+                   OH_LOG_INFO(LogType::LOG_APP, "HiAppEvent eventInfo.params.external_callback_log=%{public}s", externalCallbackLog.c_str());
                }
            }
        }
@@ -271,7 +275,7 @@
    <!-- @[Hicollie_Set_Timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
    
    ``` C++
-   //定义回调函数
+   // 定义回调函数
    void CallBack(void*)
    {
        OH_LOG_INFO(LogType::LOG_APP, "HiCollieTimerNdk CallBack");  // 回调函数中打印日志
@@ -369,7 +373,7 @@
    <!-- @[hicollie_timer_ndk_Button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
-   //添加点击事件，触发TestHiCollieTimerNdk方法。
+   // 添加点击事件，触发TestHiCollieTimerNdk方法。
    Button('TestHiCollieTimerNdk')
      .type(ButtonType.Capsule)
      .margin({
@@ -406,6 +410,7 @@
    HiAppEvent eventInfo.params.memory={"pss":0,"rss":124668,"sys_avail_mem":2220032,"sys_free_mem":526680,"sys_total_mem":11692576,"vss":4238700}
    HiAppEvent eventInfo.params.external_log=["/data/storage/el2/log/hiappevent/APP_HICOLLIE_1740993644458_26215.log"]
    HiAppEvent eventInfo.params.log_over_limit=0
+   HiAppEvent eventInfo.params.external_callback_log=THREAD_BLOCK_3S:log3s THREAD_BLOCK_6S:log6s
    ```
 
 ### 移除并销毁事件观察者

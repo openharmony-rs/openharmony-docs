@@ -12,7 +12,7 @@ This topic describes how the two application components of the [stage model](abi
 
 ## UIAbility Starting a PageAbility
 
-A UIAbility starts a PageAbility in the same way as it starts another UIAbility.
+  A UIAbility starts a PageAbility in the same way as it starts another UIAbility.
 
 > **NOTE**
 > 
@@ -33,11 +33,10 @@ struct Page_StartFAModel {
 
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -51,11 +50,8 @@ struct Page_StartFAModel {
             });
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```
@@ -87,7 +83,7 @@ struct Page_StartFAModel {
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -106,11 +102,8 @@ struct Page_StartFAModel {
             });
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```

@@ -15,6 +15,8 @@ This file declares the functions related to the memory stream in the drawing mod
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -32,7 +34,7 @@ This file declares the functions related to the memory stream in the drawing mod
 
 ### OH_Drawing_MemoryStreamCreate()
 
-```
+```c
 OH_Drawing_MemoryStream* OH_Drawing_MemoryStreamCreate(const void* data, size_t length, bool copyData)
 ```
 
@@ -61,7 +63,7 @@ Creates an **OH_Drawing_MemoryStream** object.<br>This API may return an error c
 
 ### OH_Drawing_MemoryStreamDestroy()
 
-```
+```c
 void OH_Drawing_MemoryStreamDestroy(OH_Drawing_MemoryStream* memoryStream)
 ```
 

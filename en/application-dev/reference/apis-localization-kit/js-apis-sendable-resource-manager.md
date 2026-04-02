@@ -52,18 +52,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```js
+```json5
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```js
 import { sendableResourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -74,7 +74,7 @@ try {
     let message = (error as BusinessError).message;
     console.error(`resourceToSendableResource failed, error code: ${code}, message: ${message}.`);
 }
-  ```
+```
 
 ## sendableResourceManager.sendableResourceToResource
 
@@ -107,18 +107,18 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401 | If the input parameter invalid. Possible causes: 1.Incorrect parameter types; 2.Parameter verification failed.                 |
 
 **Example**
-  ```json
-  // Resource file path: src/main/resources/base/element/string.json
-  {
-    "string": [
-      {
-        "name": "test",
-        "value": "I'm a test string resource."
-      }
-    ]
-  }
-  ```
-  ```js
+```json5
+// Resource file path: src/main/resources/base/element/string.json
+{
+  "string": [
+    {
+      "name": "test",
+      "value": "I'm a test string resource."
+    }
+  ]
+}
+```
+```js
 import { sendableResourceManager } from '@kit.LocalizationKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -129,7 +129,7 @@ try {
     let message = (error as BusinessError).message;
     console.error(`sendableResourceToResource failed, error code: ${code}, message: ${message}.`);
 }
-  ```
+```
 
 ## Resource
 

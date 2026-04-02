@@ -37,7 +37,7 @@ constructor(context: Context)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -96,7 +96,7 @@ select(options?: AVCastPickerOptions): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -122,9 +122,9 @@ class MyPage {
     };
 
     this.avCastPicker.select(avCastPickerOptions).then(() => {
-      console.info('select successfully');
-    }).catch((err: BusinerssError) => {
-      console.error('AVCastPicker.select failed with err: ${err.code}, ${err.message}');
+      console.info('Succeeded in selecting.');
+    }).catch((err: BusinessError) => {
+      console.error(`AVCastPicker.select failed with err: ${err.code}, ${err.message}`);
     });
   }
 }
@@ -155,7 +155,7 @@ import { avSession } from '@kit.AVSessionKit';
 async function avCastPicker(context: common.Context) {
   let avCastPicker = new avSession.AVCastPickerHelper(context);
   avCastPicker.resetCommunicationDevice().then(() => {
-    console.info('resetCommunicationDevice successfully');
+    console.info('Succeeded in resetting communication device.');
   });
 }
 ```
@@ -181,7 +181,7 @@ on(type: 'pickerStateChange', callback: Callback<AVCastPickerState\>) : void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -222,7 +222,7 @@ off(type: 'pickerStateChange', callback?: Callback<AVCastPickerState\>) : void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |

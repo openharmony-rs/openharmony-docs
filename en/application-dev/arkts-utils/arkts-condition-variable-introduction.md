@@ -18,7 +18,9 @@ ArkTS, which supports asynchronous operations, now provides the capability for a
 
 The following example demonstrates how to control asynchronous task waiting and awakening using [Sendable](arkts-sendable.md) objects across threads.
 
-```ts
+<!-- @[sendable_object](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ConcurrentThreadCommunication/InterThreadCommunicationObjects/SendableObject/AsynchronousWaiting/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { ArkTSUtils, taskpool } from '@kit.ArkTS';
 
 @Concurrent
@@ -48,13 +50,13 @@ async function waitFor(conditionVariable: ArkTSUtils.locks.ConditionVariable) {
 @Entry
 @Component
 struct Index {
-  @State message: string = 'Hello World';
+  @State message: string | ResourceStr = $r('app.string.AsyncButton');
 
   build() {
     Row() {
       Column() {
-        Text(this.message)
-          .fontSize(50)
+        Button(this.message)
+          .fontSize(25)
           .fontWeight(FontWeight.Bold)
           .onClick(() => {
             // Create a conditionVariable object.
@@ -70,7 +72,7 @@ struct Index {
 
             // Create a conditionVariable object with a name.
             const conditionVariableRequest: ArkTSUtils.locks.ConditionVariable =
-                ArkTSUtils.locks.ConditionVariable.request("Request1");
+              ArkTSUtils.locks.ConditionVariable.request('Request1');
             // Pass the conditionVariableRequest object to the wait thread.
             taskpool.execute(wait, conditionVariableRequest);
             // Pass the conditionVariableRequest object to the notifyAll thread to wake up the wait thread. The log information "TaskPool Thread Wait: success" is displayed.

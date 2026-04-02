@@ -1,7 +1,7 @@
 # 基础类型定义
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -316,7 +316,7 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | ----------------------------------- | ------------------------------------------------------------ |
 | [Color](ts-appendix-enums.md#color) | 颜色枚举值。                                                 |
 | number                              | HEX格式颜色，支持rgb或者argb。示例：0xffffff，0xffff0000。number无法识别传入位数，格式选择依据值的大小，例如0x00ffffff作rgb格式解析。 |
-| string                              | rgb或者argb格式颜色。示例：'#ffffff'，'#ff000000'，'rgb(255, 100, 255)'，'rgba(255, 100, 255, 0.5)'。 |
+| string                              | 支持rgb、rgba或者argb的格式颜色。<br/>rgb格式颜色示例：'#ffffff'、'rgb(255, 100, 255)'。<br/>rgba格式颜色示例：'rgba(255, 100, 255, 0.5)'。<br/>argb格式颜色示例：'#ff000000'。 |
 | [Resource](#resource)               | 使用引入资源的方式，引入系统资源或者应用资源中的颜色。       |
 
 ## LengthConstrain
@@ -368,8 +368,8 @@ type ResourceColor = [Color](ts-appendix-enums.md#color) | number | string | [Re
 | -------------- | ---------------------- | ------------------------------ |
 | width          | [Length](#length)      | 目标元素的宽度。<br/>单位：vp |
 | height         | [Length](#length)      | 目标元素的高度。<br/>单位：vp |
-| position       | [Position](#position) | 目标元素左上角相对父元素左上角的位置。            |
-| globalPosition | [Position](#position) | 目标元素左上角相对页面左上角的位置。             |
+| position       | [Position](#position) | 目标元素左上角在以父元素为基准的[组件坐标系](../../../ui/arkui-glossary.md#组件坐标系)中的位置。            |
+| globalPosition | [Position](#position) | 目标元素左上角在当前窗口坐标系中的位置。             |
 
 ## Position
 
@@ -563,7 +563,7 @@ type CustomBuilderT\<T> = (t: T) => void
 | width  | [Dimension](#dimension10)&nbsp;\|&nbsp;[EdgeOutlineWidths](#edgeoutlinewidths11对象说明)| 否 | 是 | 设置外描边宽度，不支持百分比。<br/>默认值：0，外描边效果中width为必设项，否则不显示外描边。 |
 | color  | [ResourceColor](#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](#edgecolors9)&nbsp;\|&nbsp;[LocalizedEdgeColors](#localizededgecolors12)<sup>12+</sup> | 否 | 是 | 设置外描边颜色。<br/>默认值：Color.Black                   |
 | radius | [Dimension](#dimension10)&nbsp;\|&nbsp;[OutlineRadiuses](#outlineradiuses11对象说明)| 否 | 是 | 设置外描边圆角半径，不支持百分比。<br/>默认值：0<br/>最大生效值：组件width/2 + outlineWidth或组件height/2 + outlineWidth。 |
-| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles11对象说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID            |
+| style  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明)&nbsp;\|&nbsp;[EdgeOutlineStyles](#edgeoutlinestyles11对象说明)| 否 | 是 | 设置外描边样式。<br/>默认值：OutlineStyle.SOLID            |
 
 ## EdgeOutlineWidths<sup>11+</sup>对象说明
 
@@ -609,10 +609,10 @@ type CustomBuilderT\<T> = (t: T) => void
 
 | 名称     | 类型                                     | 只读 | 可选  | 说明      |
 | ------ | ---------------------------------------- | -- | -- | ------- |
-| left   | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否 | 是   | 左侧外描边样式。 |
-| right  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否 | 是   | 右侧外描边样式。 |
-| top    | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否 | 是   | 上侧外描边样式。 |
-| bottom | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle11枚举说明) | 否  | 是  | 下侧外描边样式。 |
+| left   | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否 | 是   | 左侧外描边样式。 |
+| right  | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否 | 是   | 右侧外描边样式。 |
+| top    | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否 | 是   | 上侧外描边样式。 |
+| bottom | [OutlineStyle](ts-universal-attributes-outline.md#outlinestyle枚举说明) | 否  | 是  | 下侧外描边样式。 |
 
 ## Dimension<sup>10+</sup>
 
@@ -787,10 +787,10 @@ Callback<T,V = void> = (data: T) => V;
 | 名称                   | 类型    | 只读 | 可选 | 说明                                                         |
 | ---------------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | accessibilityPreferred | boolean | 否 | 是   | 若accessibilityPreferred设置为true，则深度遍历每个子节点时优先选择该子节点的无障碍文本accessibilityText。<br/>若无障碍文本为空则选择本身Text文本，最终将拼接完成的文本设置给accessibilityText与Text都为空的父节点。<br/>若accessibilityPreferred设置为false，表示不启用此功能。<br/>默认值：false <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。|
-| stateControllerRoleType<sup>23+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定类型的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| stateControllerId<sup>23+</sup> | string | 否 | 是   | 指定特定[唯一标识ID](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定标识的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>如果与stateControllerRoleType同时配置，则优先匹配ID一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| actionControllerRoleType<sup>23+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定类型的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
-| actionControllerId<sup>23+</sup> | string | 否 | 是   |  指定特定[唯一标识ID](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定标识的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>如果与actionControllerRoleType同时配置，则优先匹配ID一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbededUiextension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| stateControllerRoleType<sup>23+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定类型的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| stateControllerId<sup>23+</sup> | string | 否 | 是   | 指定特定[唯一标识ID](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，会将该特定标识的子组件的选中状态和状态播报文本作为聚合组件的状态和播报文本。从而聚合屏幕朗读下的状态播报，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>如果与stateControllerRoleType同时配置，则优先匹配ID一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| actionControllerRoleType<sup>23+</sup> | [AccessibilityRoleType](ts-universal-attributes-accessibility.md#accessibilityroletype18枚举说明) | 否 | 是   | 指定特定类型的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定类型的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
+| actionControllerId<sup>23+</sup> | string | 否 | 是   |  指定特定[唯一标识ID](ts-universal-attributes-component-id.md#id)的子组件。配置[accessibilityGroup](ts-universal-attributes-accessibility.md#accessibilitygroup14)的容器组件进行无障碍聚合后，如果触发无障碍的控制操作时，会将操作转发给该特定标识的子组件。从而聚合屏幕朗读下的点击事件，避免需要对子组件单独进行聚焦。<br/>**说明：**<br/>如果聚合组件内有多个相同类型的子组件，则以组件树上该聚合组件下的第一个查找到的子组件为控制组件。<br/>当前只支持无障碍点击操作。<br/>如果与actionControllerRoleType同时配置，则优先匹配ID一致的组件。<br/>不支持跨进程嵌入式组件内的特定类型，例如：卡片、EmbeddedUIExtension。<br/>默认值：无指定组件 <br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。|
 
 ## ScrollBarMargin<sup>20+</sup>对象说明
 
@@ -853,11 +853,14 @@ type ResponsiveFillType = PresetFillType
 ## Bias对象说明
 
 设置组件在锚点约束下的偏移参数。
-<br/>以水平方向Bias为例，其值为组件到左锚点的距离 D<sub>start</sub>与组件到水平方向锚点间总距离 D<sub>start</sub> +  D<sub>end</sub>的比值。镜像语言下，D<sub>start</sub>为组件到右锚点的距离。下图中D<sub>width</sub>表示组件宽度。
-<br/>![bias_horizontal_example.png](figures/bias_horizontal_example.png)
-<br/>竖直方向同理，其值为组件到上锚点的距离D<sub>top</sub>与组件到竖直方向锚点间总距离D<sub>top</sub> + D<sub>bottom</sub>的比值。下图中D<sub>height</sub>表示组件高度。
-<br/>![bias_vertical_example.png](figures/bias_vertical_example.png)
 
+以水平方向Bias为例，其值为组件到左锚点的距离 D<sub>start</sub>与组件到水平方向锚点间总距离 D<sub>start</sub> +  D<sub>end</sub>的比值。镜像语言下，D<sub>start</sub>为组件到右锚点的距离。下图中D<sub>width</sub>表示组件宽度。
+
+![bias_horizontal_example.png](figures/bias_horizontal_example.png)
+
+竖直方向同理，其值为组件到上锚点的距离D<sub>top</sub>与组件到竖直方向锚点间总距离D<sub>top</sub> + D<sub>bottom</sub>的比值。下图中D<sub>height</sub>表示组件高度。
+
+![bias_vertical_example.png](figures/bias_vertical_example.png)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

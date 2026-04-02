@@ -18,7 +18,7 @@ The low-latency mode optimizes the data read/write architecture to achieve lower
 
 The examples in each of the following steps are code snippets. You can click the link at the bottom right of the sample code to obtain the [complete sample codes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC).
 
-To use the low-latency mode, you must use OHAudio for audio development. For details, see [Using OHAudio for Audio Playback](using-ohaudio-for-playback.md) and [Using OHAudio for Audio Recording](using-ohaudio-for-recording.md). The following is an example of setting the low-latency mode:
+To use the low-latency mode, you need to use OHAudio for audio development. For details, please refer to [(Recommended) Using OHAudio for Audio Playback (C/C++)](using-ohaudio-for-playback.md) and [(Recommended) Using OHAudio for Audio Recording (C/C++)](using-ohaudio-for-recording.md). The following is an example of setting the low-latency mode:
 
 <!-- @[OH_AudioStreamBuilder_SetLatencyMode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRendererSampleC/entry/src/main/cpp/renderer.cpp) -->
 

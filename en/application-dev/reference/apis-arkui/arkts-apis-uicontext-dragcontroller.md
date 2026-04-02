@@ -57,7 +57,8 @@ class DragInfo {
 @Entry
 @Component
 struct DragControllerPage {
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
     }
@@ -81,7 +82,9 @@ struct DragControllerPage {
                 extraParams: ''
               };
               let eve: DragInfo = new DragInfo();
-              this.getUIContext().getDragController().executeDrag(() => { this.DraggingBuilder() }, dragInfo, (err, eve) => {
+              this.getUIContext().getDragController().executeDrag(() => {
+                this.DraggingBuilder()
+              }, dragInfo, (err, eve) => {
                 if (eve.event) {
                   if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                     // ...
@@ -94,9 +97,13 @@ struct DragControllerPage {
           }
         })
     }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
+
+![execute_drag_1](figures/execute_drag_1.gif)
 
 ## executeDrag<sup>11+</sup>
 
@@ -119,7 +126,7 @@ Initiates a drag action, with the object to be dragged and the drag information 
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise&lt;[dragController.DragEventParam](js-apis-arkui-dragController.md#drageventparam12)&gt; | Promise used to return the result.<br>- **event**: drag event information that includes only the drag result.<br>- **extraParams**: extra information about the drag event.|
+| Promise&lt;[dragController.DragEventParam](js-apis-arkui-dragController.md#drageventparam12)&gt; | Callback used to return the result.<br>- **event**: drag event information that includes only the drag result.<br>- **extraParams**: extra information about the drag event.|
 
 **Error codes**
 
@@ -147,7 +154,8 @@ class DragInfo {
 struct DragControllerPage {
   @State pixmap: image.PixelMap | null = null;
 
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
     }
@@ -156,7 +164,8 @@ struct DragControllerPage {
     .backgroundColor(Color.Blue)
   }
 
-  @Builder PixmapBuilder() {
+  @Builder
+  PixmapBuilder() {
     Column() {
       Text("PixmapBuilder")
     }
@@ -179,16 +188,22 @@ struct DragControllerPage {
                 data: unifiedData,
                 extraParams: ''
               };
-              let pb: CustomBuilder = (): void => { this.PixmapBuilder() };
+              let pb: CustomBuilder = (): void => {
+                this.PixmapBuilder()
+              };
               this.getUIContext().getComponentSnapshot().createFromBuilder(pb).then((pix: image.PixelMap) => {
                 this.pixmap = pix;
                 let dragItemInfo: DragItemInfo = {
                   pixelMap: this.pixmap,
-                  builder: () => { this.DraggingBuilder() },
+                  builder: () => {
+                    this.DraggingBuilder()
+                  },
                   extraInfo: "DragItemInfoTest"
                 };
                 let eve: DragInfo = new DragInfo();
-                this.getUIContext().getDragController().executeDrag(dragItemInfo, dragInfo)
+                this.getUIContext()
+                  .getDragController()
+                  .executeDrag(dragItemInfo, dragInfo)
                   .then((eve) => {
                     if (eve.event.getResult() == DragResult.DRAG_SUCCESSFUL) {
                       // ...
@@ -209,13 +224,17 @@ struct DragControllerPage {
 }
 ```
 
+![execute_drag_2](figures/execute_drag_2.gif)
+
 ## createDragAction<sup>11+</sup>
 
 createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragInfo: dragController.DragInfo): dragController.DragAction
 
 Creates a drag action object for initiating drag and drop operations. You need to explicitly specify one or more drag previews, the drag data, and the drag handle point. If a drag operation initiated by an existing drag action object is not completed, no new object can be created, and calling the API will throw an exception. After the lifecycle of the drag action object ends, the callback functions registered on this object become invalid. Therefore, it is necessary to hold this object within a longer scope and replace the old value with a new object returned by **createDragAction** before each drag initiation.
 
-Note: You are advised to control the number of drag previews. If too many previews are passed in, the drag efficiency may be affected.
+> **NOTE**
+>
+> For optimal drag and drop performance, limit the number of drag previews.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -257,6 +276,7 @@ let localStorage: LocalStorage = new LocalStorage('uiContext');
 
 export default class EntryAbility extends UIAbility {
   storage: LocalStorage = localStorage;
+
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
   }
@@ -275,10 +295,9 @@ export default class EntryAbility extends UIAbility {
         return;
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-      windowStage.getMainWindow((err, data) =>
-      {
+      windowStage.getMainWindow((err, data) => {
         if (err.code) {
-          console.error('Failed to obtain the main window. Cause:' + err.message);
+          console.error(`Failed to obtain the main window. Cause:${err.message}`);
           return;
         }
         let windowClass: window.Window = data;
@@ -319,7 +338,8 @@ struct DragControllerPage {
   customBuilders: Array<CustomBuilder | DragItemInfo> = new Array<CustomBuilder | DragItemInfo>();
   storages = this.getUIContext().getSharedLocalStorage();
 
-  @Builder DraggingBuilder() {
+  @Builder
+  DraggingBuilder() {
     Column() {
       Text("DraggingBuilder")
     }
@@ -330,21 +350,19 @@ struct DragControllerPage {
 
   build() {
     Column() {
-
-      Column() {
-        Text("Test")
-      }
-      .width(100)
-      .height(100)
-      .backgroundColor(Color.Red)
-
       Button('Drag Multiple Objects').onTouch((event?: TouchEvent) => {
         if (event) {
           if (event.type == TouchType.Down) {
-            console.info("muti drag Down by listener");
-            this.customBuilders.push(() => { this.DraggingBuilder() });
-            this.customBuilders.push(() => { this.DraggingBuilder() });
-            this.customBuilders.push(() => { this.DraggingBuilder() });
+            console.info("multi drag Down by listener");
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
+            this.customBuilders.push(() => {
+              this.DraggingBuilder()
+            });
             let text = new unifiedDataChannel.Text();
             let unifiedData = new unifiedDataChannel.UnifiedData(text);
             let dragInfo: dragController.DragInfo = {
@@ -352,7 +370,7 @@ struct DragControllerPage {
               data: unifiedData,
               extraParams: ''
             };
-            try{
+            try {
               let uiContext: UIContext = this.storages?.get<UIContext>('uiContext') as UIContext;
               this.dragAction = uiContext.getDragController().createDragAction(this.customBuilders, dragInfo);
               if (!this.dragAction) {
@@ -371,19 +389,24 @@ struct DragControllerPage {
                   this.dragAction.off('statusChange');
                 }
               })
-              this.dragAction.startDrag().then(() => {}).catch((err: Error) => {
-                console.error("start drag Error:" + err.message);
+              this.dragAction.startDrag().then(() => {
+              }).catch((err: Error) => {
+                console.error(`start drag Error:${err.message}`);
               })
-            } catch(err) {
-              console.error("create dragAction Error:" + err.message);
+            } catch (err) {
+              console.error(`create dragAction Error:${err.message}`);
             }
           }
         }
       }).margin({ top: 20 })
     }
+    .width('100%')
+    .height('100%')
   }
 }
 ```
+
+![multi_drag](figures/multi_drag.gif)
 
 ## getDragPreview<sup>11+</sup>
 
@@ -452,7 +475,7 @@ import { window, UIContext } from '@kit.ArkUI';
 
 cancelDataLoading(key: string): void
 
-Cancels the data loading initiated by the [startDataLoading](arkui-ts/ts-universal-events-drag-drop.md#dragevent7) API. This API can be called only after the drag is released.
+Cancels the data loading initiated by the [startDataLoading](arkui-ts/ts-universal-events-drag-drop.md#startdataloading15) API. This API can be called only after the drag is released.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -507,6 +530,7 @@ struct NormalEts {
   @State previewData: DragItemInfo | undefined = undefined;
 
   loadData() {
+    // Set a 4-second delay before initiating a drag action.
     let timeout = setTimeout(() => {
       this.getUIContext().getComponentSnapshot().get("image1", (error: Error, pixmap: image.PixelMap) => {
         this.pixmap = pixmap;
@@ -525,38 +549,43 @@ struct NormalEts {
     this.timeout1 = timeout;
   }
 
-
-    build() {
-      Column({space: 20}) {
-        Image($r("app.media.startIcon"))
-          .width(300)
-          .height(200)
-          .id("image1")
-          .draggable(true)
-          .dragPreview(this.previewData)
-          .onPreDrag((status: PreDragStatus) => {
-            if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
-              this.loadData();
-            } else {
-              clearTimeout(this.timeout1);
-            }
-          })
-          .onDragStart((event: DragEvent) => {
-            if (this.finished == false) {
-              this.getUIContext().getDragController().notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
-            } else {
-              event.setData(this.unifiedData1);
-            }
-          })
-          .onDragEnd(() => {
-            this.finished = false;
-          })
-      }
-      .height(400)
-      .backgroundColor(Color.Pink)
+  build() {
+    Column({ space: 20 }) {
+      Image($r("app.media.startIcon"))
+        .width(150)
+        .height(150)
+        .id("image1")
+        .draggable(true)
+        .dragPreview(this.previewData)
+        .onPreDrag((status: PreDragStatus) => {
+          if (status == PreDragStatus.PREPARING_FOR_DRAG_DETECTION) {
+            this.loadData();
+          } else {
+            clearTimeout(this.timeout1);
+          }
+        })
+        .onDragStart((event: DragEvent) => {
+          if (this.finished == false) {
+            this.getUIContext()
+              .getDragController()
+              // In the application data preparation phase, a drag action cannot be initiated.
+              .notifyDragStartRequest(dragController.DragStartRequestStatus.WAITING);
+          } else {
+            event.setData(this.unifiedData1);
+          }
+        })
+        .onDragEnd(() => {
+          this.finished = false;
+        })
     }
+    .width('100%')
+    .height(400)
+  }
 }
 ```
+
+![notify_drag](figures/notify_drag.gif)
+
 ## enableDropDisallowedBadge<sup>20+</sup>
 
 enableDropDisallowedBadge(enabled: boolean): void
@@ -577,26 +606,53 @@ Specifies whether to enable the display of a disallowed badge when dragged conte
 
 This example demonstrates how to use the **enableDropDisallowedBadge** API to enable the display of a disallowed badge when dragged content is incompatible with the target component's allowed drop types.
 
-```ts
-import { UIAbility } from '@kit.AbilityKit';
-import { window, UIContext } from '@kit.ArkUI';
+1. Call the **enableDropDisallowedBadge** API in **EntryAbility.ets** and set the **enabled** parameter to **true**.
 
- export default class EntryAbility extends UIAbility {
-   onWindowStageCreate(windowStage: window.WindowStage): void {
-       windowStage.loadContent('pages/Index', (err, data) => {
-         if (err.code) {
-         return;
-       }
-       windowStage.getMainWindow((err, data) => {
-         if (err.code) {
-           return;
-         }
-         let windowClass: window.Window = data;
-         let uiContext: UIContext = windowClass.getUIContext();
-         uiContext.getDragController().enableDropDisallowedBadge(true);
-     });
-   });
- }
-}
-```
+   ```ts
+   import { UIAbility } from '@kit.AbilityKit';
+   import { window, UIContext } from '@kit.ArkUI';
+
+    export default class EntryAbility extends UIAbility {
+      onWindowStageCreate(windowStage: window.WindowStage): void {
+          windowStage.loadContent('pages/Index', (err, data) => {
+            if (err.code) {
+            return;
+          }
+          windowStage.getMainWindow((err, data) => {
+            if (err.code) {
+              return;
+            }
+            let windowClass: window.Window = data;
+            let uiContext: UIContext = windowClass.getUIContext();
+            uiContext.getDragController().enableDropDisallowedBadge(true);
+        });
+      });
+    }
+   }
+   ```
+
+2. Drag the icon to the blank area below in **Index.ets**. The drag-disallowed badge is displayed.
+
+   ```ts
+   @Entry
+   @Component
+   struct Index {
+     build() {
+       Column({ space: 20 }) {
+         // Replace $r('app.media.startIcon') with the image resource file you use.
+         Image($r('app.media.startIcon'))
+           .width(120)
+           .height(120)
+         Text ('Invalid drop zone.')
+         Column()
+           .width('100%')
+           .layoutWeight(1)
+           .allowDrop(null)
+           .onDrop(() => {
+           })
+       }.width('100%')
+     }
+   }
+   ```
+
 ![UIContext](figures/UIContext.png)

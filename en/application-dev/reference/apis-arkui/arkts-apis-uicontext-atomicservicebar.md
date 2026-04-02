@@ -54,7 +54,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setVisible(false);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -99,7 +99,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setBackgroundColor(0x88888888);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -144,7 +144,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setTitleContent('text2');
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -189,7 +189,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setTitleFontStyle(FontStyle.Normal);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -235,7 +235,7 @@ export default class EntryAbility extends UIAbility {
       let uiContext: UIContext = windowStage.getMainWindowSync().getUIContext();
       let atomicServiceBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
       if (atomicServiceBar != undefined) {
-        hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully.');
+        hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully.');
         atomicServiceBar.setIconColor(0x12345678);
       } else {
         hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
@@ -281,10 +281,10 @@ struct Index {
         let currentBar: Nullable<AtomicServiceBar> = uiContext.getAtomicServiceBar();
         if (currentBar != undefined) {
           let rect = currentBar.getBarRect();
-          hilog.info(0x0000, 'testTag', 'Get AtomServiceBar Successfully. x:'
+          hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar Successfully. x:'
             + rect.x + ' y:' + rect.y + ' width:' + rect.width + ' height:' + rect.height);
         } else {
-          hilog.info(0x0000, 'testTag', 'Get AtomServiceBar failed.');
+          hilog.info(0x0000, 'testTag', 'Get AtomicServiceBar failed.');
         }
       })
   }

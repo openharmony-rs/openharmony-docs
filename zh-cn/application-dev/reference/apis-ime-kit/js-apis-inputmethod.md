@@ -811,7 +811,7 @@ Enter键的功能类型。
 | inputAttribute  | [InputAttribute](#inputattribute10) | 否 | 否 | 编辑框属性。|
 | cursorInfo  | [CursorInfo](#cursorinfo10) | 否 | 是 | 光标信息。|
 | selection  | [Range](#range10) | 否 | 是 | 文本选中的范围。|
-| windowId  | number | 否 | 是 | 编辑框所在的窗口Id，该参数应为整数。<br>推荐使用[getWindowProperties()](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
+| windowId  | number | 否 | 是 | 编辑框所在的窗口Id，该参数应为整数。<br>推荐使用[getWindowProperties](../apis-arkui/arkts-apis-window-Window.md#getwindowproperties9)方法获取窗口id属性。|
 | newEditBox<sup>20+</sup> | boolean | 否 | 是 | 表示是否为新编辑框。true表示新编辑框，false表示非新编辑框。 |
 | capitalizeMode<sup>20+</sup> | [CapitalizeMode](#capitalizemode20) | 否 | 是 | 编辑框设置大小写模式。如果没有设置或设置非法值，默认不进行任何首字母大写处理。|
 
@@ -2717,7 +2717,7 @@ off(type: 'moveCursor', callback?: (direction: Direction) => void): void
 | 参数名  | 类型    | 必填 | 说明  |
 | ------ | ------ | ---- | ---- |
 | type   | string | 是   | 设置监听类型，固定取值为'moveCursor'。 |
-| callback | (direction: [Direction<sup>10+</sup>](#direction10)) => void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (direction: [Direction](#direction10)) => void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 

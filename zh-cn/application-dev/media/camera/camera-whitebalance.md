@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-从API version 20开始，支持设置白平衡效果。白平衡是相机的色彩校正技术，通过设置白平衡，使照片产生不同的效果。目前白平衡效果支持：拍照（PhotoSession）、录像（VideoSession）和安全相机模式（SecureSession）。
+从API version 20开始，支持设置白平衡效果。白平衡是相机的色彩校正技术，通过设置白平衡，使照片产生不同的效果。目前白平衡效果支持：拍照（[PhotoSession](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md)）、录像（[VideoSession](../../reference/apis-camera-kit/arkts-apis-camera-VideoSession.md)）和安全相机模式（[SecureSession](../../reference/apis-camera-kit/arkts-apis-camera-SecureSession.md)）。
 
 ## 开发步骤
 
@@ -30,12 +30,12 @@
             let mode: camera.WhiteBalanceMode = camera.WhiteBalanceMode.DAYLIGHT;
             status = session.isWhiteBalanceModeSupported(mode);
             if(status){
-            session.setWhiteBalanceMode(mode);
+               session.setWhiteBalanceMode(mode);
             }
             whiteBalanceMode = session.getWhiteBalanceMode();
          } catch (error) {
-         let err = error as BusinessError;
-         console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
+            let err = error as BusinessError;
+            console.error(`The isWhiteBalanceModeSupported call failed. error code: ${err.code}`);
          }
          return status;
       }
@@ -48,8 +48,8 @@
          try {
             range = session.getWhiteBalanceRange();
             let whiteBalance: number = 3000;
-            if(whiteBalance > range[0] && whiteBalance < range[1]){
-            session.setWhiteBalance(whiteBalance);
+            if(whiteBalance >= range[0] && whiteBalance <= range[1]) {
+               session.setWhiteBalance(whiteBalance);
             }
             whiteBalance = session.getWhiteBalance();
          } catch (error) {

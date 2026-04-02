@@ -153,7 +153,7 @@ The **ArcSwiper** component supports four page switching modes: swiping with fin
   }
   ```
 
-  ![controller](figures/arcswiper_controll.gif)
+  ![controller](figures/arcswiper_control.gif)
 
 - Using the digital crown to switch between pages
 
@@ -298,7 +298,7 @@ export struct ArcSwiperAction {
 
 ## Implementing Swipe-to-Return
 
-The swipe gesture of the **ArcSwiper** component may conflict with the swipe-to-return functionality. To resolve this, you can use [gesture judgment](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin) to determine whether **ArcSwiper** has scrolled to the beginning. This allows you to intercept the swipe gesture and enable the swipe-to-return functionality.
+The swipe gesture of the **ArcSwiper** component may conflict with the swipe-to-return functionality. To resolve this, you can use [onGestureRecognizerJudgeBegin](../reference/apis-arkui/arkui-ts/ts-gesture-blocking-enhancement.md#ongesturerecognizerjudgebegin) to determine whether **ArcSwiper** has scrolled to the beginning. This allows you to intercept the swipe gesture and enable the swipe-to-return functionality.
 
 <!-- @[side_slip](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperSideSlip.ets) -->
 

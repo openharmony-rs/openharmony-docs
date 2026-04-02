@@ -569,7 +569,7 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
 
      （1）使用release或debug类型的json文件签名安装hap包失败，报错提示：device type is not supports
 
-     （2）使用debug类型的json文件安装hap包失败，报错提示：verify pkcs7 info falied
+     （2）使用debug类型的json文件安装hap包失败，报错提示：verify pkcs7 info failed
 
      （3）使用低版本的openharmony系统安装hap包失败，报错提示：install sign info inconsistent
 

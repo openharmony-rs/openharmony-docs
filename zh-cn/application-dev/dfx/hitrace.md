@@ -5,7 +5,7 @@
 <!--Owner: @qq_437963121-->
 <!--Designer: @kutcherzhou1; @MontSaintMichel-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 hitrace命令行工具提供trace信息采集能力，支持采集系统提供的打点和开发者使用[HitraceMeter接口](hitracemeter-intro.md)在应用中设置的打点。该工具支持多种方式采集文本格式或二进制格式的trace信息，帮助开发者观测程序运行情况和定位故障问题。
 
@@ -533,7 +533,7 @@ $ hitrace -z -b 102400 -t 10 sched freq idle disk -o /data/local/tmp/test.ftrace
 
 打点级别优先级从高到低分别为 M（Commercial）、C（Critical）、I（Info）、D（Debug），低于trace输出级别阈值的打点将不会生效。
 
-开发者可使用带trace级别的打点接口（参考[js-apis-hitracemeter](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)和[_hitrace](../reference/apis-performance-analysis-kit/capi-trace-h.md)中的API version 19的trace打点接口），测试不同阈值下的trace输出是否符合预期。
+开发者可使用带trace级别的打点接口（参考[@ohos.hiTraceMeter](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)和[trace.h](../reference/apis-performance-analysis-kit/capi-trace-h.md)中的API version 19的trace打点接口），测试不同阈值下的trace输出是否符合预期。
 
 ```shell
 // 设置trace输出级别阈值

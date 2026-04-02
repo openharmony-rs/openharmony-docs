@@ -242,7 +242,7 @@ struct Page3 {
 需要注意：数据的构建和处理可以在子线程中完成，但有观察能力的数据不能传给子线程，只有在主线程里才可以操作可观察的数据。所以上述例子中只是将`this.send`的属性`name`传给子线程操作。
 
 ### makeObserved和collections.Array/Set/Map配合使用
-collections提供ArkTS容器集，可用于并发场景下的高性能数据传递。详情见[@arkts.collections文档](../../reference/apis-arkts/arkts-apis-arkts-collections.md)。
+collections提供ArkTS容器集，可用于并发场景下的高性能数据传递。详情见[@arkts.collections (ArkTS容器集)](../../reference/apis-arkts/arkts-apis-arkts-collections.md)相关文档。
 
 makeObserved可以在ArkUI中导入可观察的collections容器，但makeObserved不能和状态管理V1的状态变量装饰器如@State和[@Prop](./arkts-prop.md)等配合使用，否则会抛出运行时异常。
 
@@ -253,7 +253,7 @@ collections.Array可以触发UI刷新的API有：
 - 改变数组项本身：sort、fill
 
 其他API不会改变原始数组，所以不会触发UI刷新。
-<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) --> 
+<!-- @[makeObserved_collections_Array_Set_Map](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/MakeObserved/entry/src/main/ets/View/Page4.ets) -->
 
 ``` TypeScript
 import { collections } from '@kit.ArkTS';
@@ -302,11 +302,9 @@ struct Page4 {
         .color('blue')
         .margin(5)
 
-      /****************************改变数据长度的api**************************/
+      // 改变数据长度的API
       Scroll(this.scroller) {
         Column({ space: 10 }) {
-          // Divider()
-          //   .color('blue')
           // push: 新增新元素
           Button('push')
             .width('50%')
@@ -354,7 +352,7 @@ struct Page4 {
           Divider()
             .color('blue')
 
-          /****************************************改变数组item本身*****************/
+          // 改变数组item本身
           // sort：从大到小排序
           Button('sort')
             .width('50%')
@@ -368,7 +366,7 @@ struct Page4 {
               this.arrCollect.fill(new Info(5), 0, 2);
             })
 
-          /*****************************不会改变数组本身API***************************/
+          // 不会改变数组本身的API
           // slice：返回新的数组，根据start end对原数组的拷贝，不会改变原数组，所以直接调用slice不会触发UI刷新
           // 可以构建用例为返回的浅拷贝的数据赋值给this.arrCollect,需要注意这里依然要调用makeObserved，否则this.arrCollect被普通变量赋值后，会丧失观察能力
           Button('slice')

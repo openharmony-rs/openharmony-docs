@@ -53,7 +53,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14400005 | Database operation exception. |
 | 31400001 | Serial port management exception. |
-| 31400003 | Device does not exist. |
+| 31400003 | PortId does not exist. |
 
 **Example**
 ```ts

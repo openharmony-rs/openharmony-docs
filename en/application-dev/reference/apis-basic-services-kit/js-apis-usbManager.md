@@ -27,7 +27,7 @@ Perform the following steps when using the APIs with the [USBDevicePipe](#usbdev
 
 1. Call [usbManager.getDevices](#usbmanagergetdevices) to obtain the USB device list.
 
-2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the temporary device access permission.
+2. Call [usbManager.requestRight](#usbmanagerrequestright) to request the device access permission.
 
 3. Call [usbManager.connectDevice](#usbmanagerconnectdevice) to obtain **USBDevicePipe** as an input parameter.
 
@@ -42,10 +42,6 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 Obtains the list of USB devices connected to the host.
 
 > **NOTE**
->
-> If the USB service is running properly but no device is connected, an empty list is returned, which indicates that the call is successful but no USB device is connected.
->
-> This API returns **undefined** in the following scenarios: the USB host mode is not enabled, the USB service is not correctly initialized, the USB service fails to be connected (for example, the developer mode is disabled), the permission is insufficient, or other system errors occur. Note that you should perform an empty check for the return value.
 >
 > Third-party applications are not allowed to obtain the device serial number from the **serial** field unless they request permission using **requestRight** and then initiate a control transfer to obtain it.
 
@@ -71,56 +67,56 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
 console.info(`devicesList = ${devicesList}`);
 /*
-The following is a simple example of the data structure for devicesList:
-[
-  {
-    name: "1-1",
-    serial: "",
-    manufacturerName: "",
-    productName: "",
-    version: "",
-    vendorId: 7531,
-    productId: 2,
-    clazz: 9,
-    subClass: 0,
-    protocol: 1,
-    devAddress: 1,
-    busNum: 1,
-    configs: [
-      {
-        id: 1,
-        attributes: 224,
-        isRemoteWakeup: true,
-        isSelfPowered: true,
-        maxPower: 0,
-        name: "1-1",
-        interfaces: [
-          {
-            id: 0,
-            protocol: 0,
-            clazz: 9,
-            subClass: 0,
-            alternateSetting: 0,
-            name: "1-1",
-            endpoints: [
-              {
-                address: 129,
-                attributes: 3,
-                interval: 12,
-                maxPacketSize: 4,
-                direction: 128,
-                number: 1,
-                type: 3,
-                interfaceId: 0,
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-]
-*/
+  The following is a simple example of the data structure for devicesList:
+  [
+    {
+      name: "1-1",
+      serial: "",
+      manufacturerName: "",
+      productName: "",
+      version: "",
+      vendorId: 7531,
+      productId: 2,
+      clazz: 9,
+      subClass: 0,
+      protocol: 1,
+      devAddress: 1,
+      busNum: 1,
+      configs: [
+        {
+          id: 1,
+          attributes: 224,
+          isRemoteWakeup: true,
+          isSelfPowered: true,
+          maxPower: 0,
+          name: "1-1",
+          interfaces: [
+            {
+              id: 0,
+              protocol: 0,
+              clazz: 9,
+              subClass: 0,
+              alternateSetting: 0,
+              name: "1-1",
+              endpoints: [
+                {
+                  address: 129,
+                  attributes: 3,
+                  interval: 12,
+                  maxPacketSize: 4,
+                  direction: 128,
+                  number: 1,
+                  type: 3,
+                  interfaceId: 0,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+ */
 ```
 
 ## usbManager.connectDevice
@@ -641,7 +637,7 @@ Performs control transfer. This API uses a promise to return the result.
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe. You need to call **connectDevice** to obtain its value.|
 | controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | Yes| Control transfer parameters. Set the parameters as required. For details, see the USB protocol.|
-| timeout | number | No| (Optional) Timeout duration, in ms. The default value is **0**. You can set this parameter as required.|
+| timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the control transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. Set this parameter as required.|
 
 **Return value**
 
@@ -707,7 +703,7 @@ Performs control transfer. This API uses a promise to return the result.
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe, which is used to determine the USB device.|
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | Yes| Control transfer parameters. Set the parameters as required. For details, see the USB protocol.|
-| timeout | number | No| (Optional) Timeout duration, in ms. The default value is **0**, indicating no timeout.|
+| timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the control transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. Set this parameter as required.|
 
 **Return value**
 
@@ -769,7 +765,7 @@ Performs bulk transfer. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> The total amount of data (including **pipe**, **endpoint**, **buffer**, and **timeout**) transferred in bulk must be less than 200 KB.
+> The total size of data (including **pipe**, **endpoint**, **buffer**, and **timeout**) to be transferred in a single bulk transfer must be less than 200 KB. Otherwise, the transfer fails and **-1** is returned.
 >
 > Before calling this API, call the [usbManager.claimInterface](#usbmanagerclaiminterface) API to claim a communication interface.
 
@@ -781,8 +777,8 @@ Performs bulk transfer. This API uses a promise to return the result.
 | -------- | -------- | -------- | -------- |
 | pipe | [USBDevicePipe](#usbdevicepipe) | Yes| USB device pipe. You need to call **connectDevice** to obtain its value.|
 | endpoint | [USBEndpoint](#usbendpoint) | Yes| USB endpoint, which is used to determine the USB interface for data transfer. You need to call **getDevices** to obtain the device information list and endpoint. Wherein, **address** is used to determine the endpoint address, **direction** is used to determine the endpoint direction, and **interfaceId** is used to determine the USB interface to which the endpoint belongs. Other parameters are passed transparently.|
-| buffer | Uint8Array | Yes| Buffer used to write or read data.|
-| timeout | number | No| (Optional) Timeout duration, in ms. The default value is **0**. You can set this parameter as required.|
+| buffer | Uint8Array | Yes| Buffer for writing or reading data.|
+| timeout | number | No| Timeout interval, in milliseconds. This parameter is optional. If the bulk transfer is complete within the specified time, the size of the transferred or received data block is returned; otherwise, a timeout error is returned. The default value is **0**, indicating that the system waits infinitely until the control transfer is complete. Set this parameter as required.|
 
 **Return value**
 

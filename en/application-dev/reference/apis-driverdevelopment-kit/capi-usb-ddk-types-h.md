@@ -18,7 +18,7 @@ Provides the enumerated variables, structures, and macros used in USB DDK APIs.
 
 **Since**: 10
 
-**Related module**: [UsbDDK](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-usbddk.md)
 
 ## Summary
 
@@ -26,16 +26,16 @@ Provides the enumerated variables, structures, and macros used in USB DDK APIs.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) | __attribute__((aligned(8))) UsbControlRequestSetup | Control transfer setup data, which corresponds to **Setup Data** in the USB protocol.|
-| [UsbDeviceDescriptor](capi-usbddk-usbdevicedescriptor.md) | __attribute__((aligned(8))) UsbDeviceDescriptor | Standard device descriptor, which corresponds to **Standard Device Descriptor** in the USB protocol.|
-| [UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) | __attribute__((packed)) UsbConfigDescriptor | Standard configuration descriptor, which corresponds to **Standard Configuration Descriptor** in the USB protocol.|
-| [UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) | __attribute__((packed)) UsbInterfaceDescriptor | Standard interface descriptor, which corresponds to **Standard Interface Descriptor** in the USB protocol.|
-| [UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) | __attribute__((packed)) UsbEndpointDescriptor | Standard endpoint descriptor, which corresponds to **Standard Endpoint Descriptor** in the USB protocol.|
+| [UsbControlRequestSetup](capi-usbddk-usbcontrolrequestsetup.md) | \_\_attribute\_\_((aligned(8))) UsbControlRequestSetup | Control transfer setup data, which corresponds to **Setup Data** in the USB protocol.|
+| [UsbDeviceDescriptor](capi-usbddk-usbdevicedescriptor.md) | \_\_attribute\_\_((aligned(8))) UsbDeviceDescriptor | Standard device descriptor, which corresponds to **Standard Device Descriptor** in the USB protocol.|
+| [UsbConfigDescriptor](capi-usbddk-usbconfigdescriptor.md) | \_\_attribute\_\_((packed)) UsbConfigDescriptor | Standard configuration descriptor, which corresponds to **Standard Configuration Descriptor** in the USB protocol.|
+| [UsbInterfaceDescriptor](capi-usbddk-usbinterfacedescriptor.md) | \_\_attribute\_\_((packed)) UsbInterfaceDescriptor | Standard interface descriptor, which corresponds to **Standard Interface Descriptor** in the USB protocol.|
+| [UsbEndpointDescriptor](capi-usbddk-usbendpointdescriptor.md) | \_\_attribute\_\_((packed)) UsbEndpointDescriptor | Standard endpoint descriptor, which corresponds to **Standard Endpoint Descriptor** in the USB protocol.|
 | [UsbDdkEndpointDescriptor](capi-usbddk-usbddkendpointdescriptor.md) | UsbDdkEndpointDescriptor | Endpoint descriptor.|
 | [UsbDdkInterfaceDescriptor](capi-usbddk-usbddkinterfacedescriptor.md) | UsbDdkInterfaceDescriptor | Interface descriptor.|
 | [UsbDdkInterface](capi-usbddk-usbddkinterface.md) | UsbDdkInterface | USB DDK interface, which is a collection of alternate settings for a particular USB interface.|
 | [UsbDdkConfigDescriptor](capi-usbddk-usbddkconfigdescriptor.md) | UsbDdkConfigDescriptor | Configuration descriptor.|
-| [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | __attribute__((aligned(8))) UsbRequestPipe | Defines a USB request pipe.|
+| [UsbRequestPipe](capi-usbddk-usbrequestpipe.md) | \_\_attribute\_\_((aligned(8))) UsbRequestPipe | Defines a USB request pipe.|
 | [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md) | UsbDeviceMemMap | Device memory map created by calling **OH_Usb_CreateDeviceMemMap**. A buffer using the device memory map can provide better performance.|
 | [Usb_DeviceArray](capi-usbddk-usb-devicearray.md) | Usb_DeviceArray | Defines the device ID list, which is used to store the device IDs and device quantity obtained using **OH_Usb_GetDevices**.|
 

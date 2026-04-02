@@ -1134,12 +1134,12 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code: BusinessError, number: number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
@@ -1148,7 +1148,7 @@ let sppOption: bluetoothManager.SppOption = {uuid: '00001810-0000-1000-8000-0080
 try {
     bluetoothManager.sppListen('server1', sppOption, serverSocket);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1187,20 +1187,20 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code: BusinessError, number: number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
 let clientNumber = -1;
 function acceptClientSocket(code: BusinessError, number: number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth clientSocket Number: ' + number);
+    console.info(`bluetooth clientSocket Number: ${number}`);
     // The obtained clientNumber is used as the socket ID for subsequent read/write operations on the server.
     clientNumber = number;
   }
@@ -1208,7 +1208,7 @@ function acceptClientSocket(code: BusinessError, number: number) {
 try {
     bluetoothManager.sppAccept(serverNumber, acceptClientSocket);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1258,7 +1258,7 @@ function clientSocket(code: BusinessError, number: number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // The obtained clientNumber is used as the socket ID for subsequent read/write operations on the client.
   clientNumber = number;
 }
@@ -1266,7 +1266,7 @@ let sppOption: bluetoothManager.SppOption = {uuid: '00001810-0000-1000-8000-0080
 try {
     bluetoothManager.sppConnect('XX:XX:XX:XX:XX:XX', sppOption, clientSocket);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1302,19 +1302,19 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 let serverNumber = -1;
 function serverSocket(code: BusinessError, number: number) {
-  console.log('bluetooth error code: ' + code.code);
+  console.info(`bluetooth error code: ${code.code}`);
   if (code.code == 0) {
-    console.log('bluetooth serverSocket Number: ' + number);
+    console.info(`bluetooth serverSocket Number: ${number}`);
     serverNumber = number;
   }
 }
 try {
     bluetoothManager.sppCloseServerSocket(serverNumber);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1356,14 +1356,14 @@ function clientSocket(code: BusinessError, number: number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // The obtained clientNumber is used as the socket ID for subsequent read/write operations on the client.
   clientNumber = number;
 }
 try {
     bluetoothManager.sppCloseClientSocket(clientNumber);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1406,7 +1406,7 @@ function clientSocket(code: BusinessError, number: number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // The obtained clientNumber is used as the socket ID for subsequent read/write operations on the client.
   clientNumber = number;
 }
@@ -1416,7 +1416,7 @@ data[0] = 123;
 try {
     bluetoothManager.sppWrite(clientNumber, arrayBuffer);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1460,18 +1460,18 @@ function clientSocket(code: BusinessError, number: number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // The obtained clientNumber is used as the socket ID for subsequent read/write operations on the client.
   clientNumber = number;
 }
 function dataRead(dataBuffer: ArrayBuffer) {
   let data = new Uint8Array(dataBuffer);
-  console.log('bluetooth data is: ' + data[0]);
+  console.info(`bluetooth data is: ${data[0]}`);
 }
 try {
     bluetoothManager.on('sppRead', clientNumber, dataRead);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -1513,14 +1513,14 @@ function clientSocket(code: BusinessError, number: number) {
   if (code == null || code.code != 0) {
     return;
   }
-  console.log('bluetooth serverSocket Number: ' + number);
+  console.info(`bluetooth serverSocket Number: ${number}`);
   // The obtained clientNumber is used as the socket ID for subsequent read/write operations on the client.
   clientNumber = number;
 }
 try {
     bluetoothManager.off('sppRead', clientNumber);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -2091,7 +2091,7 @@ Subscribes to the A2DP connection state changes.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value is **connectionStateChange**, which indicates a connection state change event.|
-| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the A2DP connection state change event.                              |
+| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the A2DP connection state.                              |
 
 **Error codes**
 
@@ -2333,7 +2333,7 @@ Subscribes to the HFP connection state changes.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value is **connectionStateChange**, which indicates a connection state change event.|
-| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the HFP connection state change event.                              |
+| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the HFP connection state.                              |
 
 **Error codes**
 
@@ -2429,7 +2429,7 @@ Subscribes to the HidHost connection state changes.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value is **connectionStateChange**, which indicates a connection state change event.|
-| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the HidHost connection state change event.                              |
+| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the HidHost connection state.                              |
 
 **Error codes**
 
@@ -2530,7 +2530,7 @@ Subscribes to the PAN connection state changes.
 | Name     | Type                                      | Mandatory  | Description                                      |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------- |
 | type     | string                                   | Yes   | Event type. The value is **connectionStateChange**, which indicates a connection state change event.|
-| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the PAN connection state change event.                              |
+| callback | Callback&lt;[StateChangeParam](#statechangeparamdeprecated)&gt; | Yes   | Callback used to return the PAN connection state.                              |
 
 **Error codes**
 
@@ -3626,7 +3626,7 @@ try {
 
 getServices(callback: AsyncCallback&lt;Array&lt;GattService&gt;&gt;): void
 
-Obtains all services of the remote BLE device.
+Obtains all services of the remote BLE device on the client.
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattClientDevice#getServices](js-apis-bluetooth-ble.md#getservices) instead.
@@ -3656,16 +3656,16 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 // Callback mode.
 function getServices(code: BusinessError, gattServices: Array<bluetoothManager.GattService>) {
   if (code.code == 0) {
       let services: Array<bluetoothManager.GattService> = gattServices;
-      console.log('bluetooth code is ' + code.code);
-      console.log("bluetooth services size is ", services.length);
+      console.info(`bluetooth code is ${code.code}`);
+      console.info(`bluetooth services size is ${services.length}`);
 
       for (let i = 0; i < services.length; i++) {
-        console.log('bluetooth serviceUuid is ' + services[i].serviceUuid);
+        console.info(`bluetooth serviceUuid is ${services[i].serviceUuid}`);
       }
   }
 }
@@ -3675,7 +3675,7 @@ try {
     device.connect();
     device.getServices(getServices);
 } catch (err) {
-    console.error("errCode:" + (err as BusinessError).code + ",errMessage:" + (err as BusinessError).message);
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
 
@@ -3684,7 +3684,7 @@ try {
 
 getServices(): Promise&lt;Array&lt;GattService&gt;&gt;
 
-Obtains all services of the remote BLE device. This API uses a promise to return the result.
+Obtains all services of the remote BLE device on the client. This API uses a promise to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattClientDevice#getServices](js-apis-bluetooth-ble.md#getservices-1) instead.
@@ -3769,9 +3769,9 @@ function readCcc(code: BusinessError, BLECharacteristic: bluetoothManager.BLECha
     if (code.code != 0) {
         return;
     }
-    console.log('bluetooth characteristic uuid: ' + BLECharacteristic.characteristicUuid);
+    console.info(`bluetooth characteristic uuid: ${BLECharacteristic.characteristicUuid}`);
     let value = new Uint8Array(BLECharacteristic.characteristicValue);
-    console.log('value length: ' + value.length);
+    console.info(`value length: ${value.length}`);
 }
 
 let descriptors: Array<bluetoothManager.BLEDescriptor> = [];
@@ -3870,7 +3870,7 @@ try {
 
 readDescriptorValue(descriptor: BLEDescriptor, callback: AsyncCallback&lt;BLEDescriptor&gt;): void
 
-Reads the descriptor contained in the specific characteristic of the remote BLE device. This API uses an asynchronous callback to return the result.
+Reads the descriptor contained in the specific characteristic of the remote BLE device on the client. This API uses an asynchronous callback to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattClientDevice#readDescriptorValue](js-apis-bluetooth-ble.md#readdescriptorvalue) instead.
@@ -3902,14 +3902,13 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 function readDesc(code: BusinessError, BLEDescriptor: bluetoothManager.BLEDescriptor) {
     if (code.code != 0) {
         return;
     }
-    console.log('bluetooth descriptor uuid: ' + BLEDescriptor.descriptorUuid);
+    console.info(`bluetooth descriptor uuid: ${BLEDescriptor.descriptorUuid}`);
     let value = new Uint8Array(BLEDescriptor.descriptorValue);
-    console.log('bluetooth descriptor value: ' + value[0] +','+ value[1]+','+ value[2]+','+ value[3]);
 }
 
 let bufferDesc = new ArrayBuffer(8);
@@ -3934,7 +3933,7 @@ try {
 
 readDescriptorValue(descriptor: BLEDescriptor): Promise&lt;BLEDescriptor&gt;
 
-Reads the descriptor contained in the specific characteristic of the remote BLE device. This API uses a promise to return the result.
+Reads the descriptor contained in the specific characteristic of the remote BLE device on the client. This API uses a promise to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattClientDevice#readDescriptorValue](js-apis-bluetooth-ble.md#readdescriptorvalue-1) instead.
@@ -4331,9 +4330,9 @@ For details about the error codes, see [Bluetooth Error Codes](errorcode-bluetoo
 **Example**
 
 ```js
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 function ConnectStateChanged(state: bluetoothManager.BLEConnectChangedState) {
-    console.log('bluetooth connect state changed');
+    console.info('bluetooth connect state changed');
     let connectState: bluetoothManager.ProfileConnectionState = state.state;
 }
 try {
@@ -4391,7 +4390,7 @@ try {
 
 getDeviceName(callback: AsyncCallback&lt;string&gt;): void
 
-Obtains the name of the remote BLE device.
+Obtains the name of the remote BLE device on the client.
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattClientDevice#getDeviceName](js-apis-bluetooth-ble.md#getdevicename) instead.
@@ -4440,7 +4439,7 @@ try {
 
 getDeviceName(): Promise&lt;string&gt;
 
-Obtains the name of the remote BLE device. This API uses a promise to return the result.
+Obtains the name of the remote BLE device on the client. This API uses a promise to return the result.
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattClientDevice#getDeviceName](js-apis-bluetooth-ble.md#getdevicename-1) instead.
@@ -4488,7 +4487,7 @@ try {
 
 getRssiValue(callback: AsyncCallback&lt;number&gt;): void
 
-Obtains the received signal strength indication (RSSI) of the remote BLE device. This API can be used only after a connection is set up by calling [connect](#connectdeprecated-1).
+Obtains the received signal strength indication (RSSI) of the remote BLE device on the client. This API can be used only after a connection is set up by calling [connect](#connectdeprecated-1).
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattClientDevice#getRssiValue](js-apis-bluetooth-ble.md#getrssivalue) instead.
@@ -4536,7 +4535,7 @@ try {
 
 getRssiValue(): Promise&lt;number&gt;
 
-Obtains the RSSI of the remote BLE device. This API uses a promise to return the result. It can be used only after a connection is set up by calling [connect](#connectdeprecated-1).
+Obtains the RSSI of the remote BLE device on the client. This API uses a promise to return the result. It can be used only after a connection is set up by calling [connect](#connectdeprecated-1).
 
 > **NOTE**<br>
 > This API is supported since API version 9 and deprecated since API version 10. You are advised to use [ble.GattClientDevice#getRssiValue](js-apis-bluetooth-ble.md#getrssivalue-1) instead.
@@ -4722,7 +4721,7 @@ Defines the parameters of the **CharacteristicReadReq** event received by the se
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
 | deviceId           | string | No   | No   | Address of the remote device that sends the **CharacteristicReadReq** event, for example, XX:XX:XX:XX:XX:XX.|
 | transId            | number | No   | No   | Transmission ID of the read request. The response returned by the server must use the same transmission ID.      |
-| offset             | number | No   | No   | Position from which the characteristic value is read. For example, **k** means to read from the kth byte. The response returned by the server must use the same offset.|
+| offset             | number | No   | No   | Start position from which the characteristic value is read. For example, **k** means to read from the kth byte. The response returned by the server must use the same offset.|
 | characteristicUuid | string | No   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
 | serviceUuid        | string | No   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|
 
@@ -4761,7 +4760,7 @@ Defines the parameters of the **DescriptorReadReq** event received by the server
 | ------------------ | ------ | ---- | ---- | ---------------------------------------- |
 | deviceId           | string | No   | No   | Address of the remote device that sends the **DescriptorReadReq** event, for example, XX:XX:XX:XX:XX:XX.|
 | transId            | number | No   | No   | Transmission ID of the read request. The response returned by the server must use the same transmission ID.      |
-| offset             | number | No   | No   | Position from which the descriptor is read. For example, **k** means to read from the kth byte. The response returned by the server must use the same offset.|
+| offset             | number | No   | No   | Start position from which the descriptor is read. For example, **k** means to read from the kth byte. The response returned by the server must use the same offset.|
 | descriptorUuid     | string | No   | No   | UUID of the descriptor, for example, **00002902-0000-1000-8000-00805f9b34fb**.|
 | characteristicUuid | string | No   | No   | UUID of the characteristic, for example, **00002a11-0000-1000-8000-00805f9b34fb**.|
 | serviceUuid        | string | No   | No   | UUID of the service, for example, **00001888-0000-1000-8000-00805f9b34fb**.|

@@ -11,15 +11,15 @@
 >
 > This topic describes only module-specific error codes. For details about universal error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-## 17620001 Memory Error
+## 17620001 Memory Operation Failed
 
 **Error Message**
 
-Memory error.
+Memory operation failed.
 
 **Description**
 
-A memory error occurs.
+The memory operation failed.
 
 **Possible Causes**
 
@@ -28,17 +28,17 @@ The memory allocation failed.
 **Solution**
 
 1. Check whether the system is running properly.
-2. Check whether the service data is too long.
+2. Check whether the service data is too long. 
 
-## 17620002 Runtime Error
+## 17620002 Parameter Conversion Between ArkTS and C Failed
 
 **Error Message**
 
-Runtime error.
+Failed to convert parameters between arkts and c.
 
 **Description**
 
-An external error occurs during running.
+The parameter conversion between ArkTS and C failed.
 
 **Possible Causes**
 
@@ -47,6 +47,24 @@ An unexpected error occurs.
 **Solution**
 
 Check whether the system is running properly.
+
+## 17620004 Invalid Function Call
+
+**Error Message**
+
+invalid function call. 
+
+**Description**
+
+Invalid function call.
+
+**Possible Causes**
+
+This operation is not supported by the current function.
+
+**Solution**
+
+Check whether the function is properly called.
 
 ## 17630001 Crypto Operation Error
 
@@ -67,4 +85,3 @@ An error occurs when the cryptography framework interacts with a third-party alg
 Check whether the input parameters of the API or associated APIs are correct.
 
 For details about AES decryption failure, see [AES Decryption Failure Returning 17630001](../../security/CryptoArchitectureKit/crypto-aes-decryption-error-faq.md).
-<!--no_check-->

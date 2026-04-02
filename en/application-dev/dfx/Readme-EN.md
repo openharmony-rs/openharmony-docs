@@ -11,17 +11,16 @@
 - Fault Detection<!--fault-analysis-->
   - [Overview](fault-detection-overview.md)
   - Crash Detection<!--crash-detection-->
-    - [Crash Detection Overview](crash-detection-overview.md)
     - [JS Crash (Process Crash) Detection](jscrash-guidelines.md)
     - [C++ Crash (Process Crash) Detection](cppcrash-guidelines.md)
   - [Address Sanitizer detection](address-sanitizer-guidelines.md)
-  - [Application Freeze Detection](appfreeze-guidelines.md)
+  - [Application Freeze Detection](appfreeze-guidelines.md)<!--RP1--><!--RP1End-->
   - [Task Timeout Detection](apptask-timeout-guidelines.md)
-  - [Application Killed Detection](appkilled-guidelines.md)
+  - [Application Killed Detection](appkilled-guidelines.md)<!--RP2--><!--RP2End-->
 - Log Printing<!--hilog-dev-->
   - [Using HiLog (ArkTS)](hilog-guidelines-arkts.md)
   - [Using HiLog (C/C++)](hilog-guidelines-ndk.md)
-- Event Subscription<!--event-subscription-->
+- Event Subscription<!--hiappevent-->
   - [Introduction to HiAppEvent](hiappevent-intro.md)
   - Using HiAppEvent to Subscribe to Events<!--event-subscription-->
     - [Event Subscription Overview](event-subscription-overview.md)
@@ -58,7 +57,7 @@
         - [Subscribing to Application Killed Events (C/C++)](hiappevent-watcher-app-killed-events-ndk.md)
       - ArkWeb Fling Jank Events<!--scroll-arkweb-fling-jank-events-->
         - [ArkWeb Fling Jank Event Overview](hiappevent-watcher-web-fling-jank-events.md)
-        - [Subscribing to ArkWeb Fling Jank Events (ArkTS)](hiappevent-watcher-web-fling-jank-events-arkts.md)
+        - [Subscribing to ArkWeb Fling Jank Events (ArkTS)](hiappevent-watcher-web-fling-jank-events-arkts.md)<!--RP3--><!--RP3End-->
   <!--Del-->
   - [Event Reporting](hiappevent-event-reporting.md)
   <!--DelEnd-->
@@ -88,7 +87,7 @@
 - [Performance Analysis Kit Terminology](performance-analysis-kit-terminology.md)
 - Command Line Tools<!--perform-command-line-utilities-->
   - [hdc](hdc.md)
-  - [hilog](hilog.md)
+  - [hilog](hilog.md)<!--RP4--><!--RP4End-->
   - hidumper<!--hidumper-tool-->
     - [hidumper](hidumper.md)
     - [PrivacyManagerService](hidumper-PrivacyManagerService.md)

@@ -471,7 +471,7 @@ Creates a [Data_Asset](capi-rdb-data-asset.md) instance.
 
 | Type| Description|
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | Returns the pointer to the [Data_Asset](capi-rdb-data-asset.md) instance created if the operation is successful; returns null otherwise.|
+| [Data_Asset](capi-rdb-data-asset.md) | Returns the pointer to the [Data_Asset](capi-rdb-data-asset.md) instance created if the operation is successful; returns null otherwise.<br>After the instance is used, call the [OH_Data_Asset_DestroyOne](#oh_data_asset_destroyone) API to release the memory.|
 
 ### OH_Data_Asset_DestroyOne()
 
@@ -520,7 +520,7 @@ Creates a specified number of [Data_Asset](capi-rdb-data-asset.md) instances.
 
 | Type| Description|
 | -- | -- |
-| [Data_Asset](capi-rdb-data-asset.md) | Returns the pointer to the [Data_Asset](capi-rdb-data-asset.md) instance created if the operation is successful; returns null otherwise.|
+| [Data_Asset](capi-rdb-data-asset.md) | Returns the pointer to the [Data_Asset](capi-rdb-data-asset.md) instance created if the operation is successful; returns null otherwise.<br>After the instance is used, call the [OH_Data_Asset_DestroyMultiple](#oh_data_asset_destroymultiple) API to release the memory.|
 
 ### OH_Data_Asset_DestroyMultiple()
 

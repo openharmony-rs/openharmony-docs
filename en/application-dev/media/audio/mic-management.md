@@ -1,4 +1,4 @@
-# Microphone Management
+# Managing Microphone Mute Status
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @songshenke-->
@@ -10,11 +10,13 @@ The microphone is used to record audio data. To deliver an optimal recording eff
 
 If the user mutes the microphone during audio recording, the recording process is normal, the size of the recorded file increases with the recording duration, but the data volume written into the file is 0.
 
+Volume adjustment is not supported during recording.
+
 ## How to Develop
 
 The examples in each of the following steps are code snippets. You can click the link at the bottom right of the sample code to obtain the [complete sample codes](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioCaptureSampleJS).
 
-The **AudioVolumeGroupManager** class provides APIs for managing the microphone state. For details, see [API Reference](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md).
+The **AudioVolumeGroupManager** class provides APIs for managing the microphone state. For details, see [AudioVolumeGroupManager](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md).
 
 1. Create an audioVolumeGroupManager object.
 
@@ -33,7 +35,7 @@ The **AudioVolumeGroupManager** class provides APIs for managing the microphone 
    }
    ```
 
-2. Call [on('micStateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#onmicstatechange9) to listen for microphone state changes. When the microphone state changes, the application will be notified of the change.
+2. Call [on('micStateChange')](../../reference/apis-audio-kit/arkts-apis-audio-AudioVolumeGroupManager.md#onmicstatechange9) to listen for microphone state changes. When the microphone mute state changes, the application will be notified of the change.
 
    Currently, when multiple AudioManager instances are used in a single process, only the subscription of the last instance takes effect, and the subscription of other instances is overwritten (even if the last instance does not initiate a subscription). Therefore, you are advised to use a single AudioManager instance.
 

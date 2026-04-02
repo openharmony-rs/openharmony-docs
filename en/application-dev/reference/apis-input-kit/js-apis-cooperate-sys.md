@@ -40,11 +40,11 @@ Specifies whether to enable screen hopping. This API uses an asynchronous callba
 | Name   | Type     | Mandatory | Description   |
 | -------- | ------------------------- | ---- | --------------------------- |
 | enable   | boolean                   | Yes  | Whether to enable screen hopping.|
-| callback | AsyncCallback&lt;void&gt;  | Yes |Callback used to return the result.  |
+| callback | AsyncCallback&lt;void&gt;  | Yes | Callback used to return the result.  |
 
 **Error codes**
 
-For details about the following error codes, see [Screen Hopping Error Codes](../apis-distributedservice-kit/errorcode-devicestatus.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message         |
 | -------- | -----------------|
@@ -232,7 +232,7 @@ Starts screen hopping. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Screen Hopping Error Codes](errorcode-cooperator.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Screen Hopping Error Codes](errorcode-cooperator.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -453,7 +453,7 @@ Checks whether screen hopping is enabled. This API uses a promise to return the 
 
 | Type                       | Description                    |
 | -------------------        | ------------------------------- |
-| Promise<{ state: boolean }>| Promise used to return the result. The value **true** indicates that screen hopping is enabled, and the **false** indicates the opposite.      |
+| Promise<{ state: boolean }>| Promise used to return the result. The value **true** indicates that screen hopping is enabled, and the value **false** indicates the opposite.      |
 
 **Error codes**
 
@@ -493,7 +493,7 @@ struct Index {
 }
 ```
 
-## on('cooperation')<sup>(deprecated)</sup>
+## inputDeviceCooperate.on('cooperation')<sup>(deprecated)</sup>
 
 on(type: 'cooperation', callback: AsyncCallback<{ deviceDescriptor: string, eventMsg: EventMsg }>): void
 
@@ -548,7 +548,7 @@ struct Index {
 }
 ```
 
-## off('cooperation')<sup>(deprecated)</sup>
+## inputDeviceCooperate.off('cooperation')<sup>(deprecated)</sup>
 
 off(type: 'cooperation', callback?: AsyncCallback\<void>): void
 

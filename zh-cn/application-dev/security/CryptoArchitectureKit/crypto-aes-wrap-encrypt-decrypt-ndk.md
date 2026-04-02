@@ -59,7 +59,7 @@ static OH_Crypto_ErrCode doAesWrapEncrypt(OH_CryptoSymKey *keyCtx, OH_CryptoSymC
     Crypto_DataBlob *msgBlob, Crypto_DataBlob *encData)
 {
     OH_CryptoSymCipher *encCtx = nullptr;
-    OH_Crypto_ErrCode ret = OH_CryptoSymCiphe87r_Create("AES128-WRAP", &encCtx);
+    OH_Crypto_ErrCode ret = OH_CryptoSymCipher_Create("AES128-WRAP", &encCtx);
     if (ret != CRYPTO_SUCCESS) {
         goto end;
     }

@@ -72,7 +72,7 @@ Sets the route mode used for redirecting the user from the **NavRouter** compone
 
 > **NOTE**
 >
-> This API is supported since API version 10 and deprecated since API version 13. No substitute is provided.
+> This API is supported since API version 10 and deprecated since API version 13. You are advised to use [LaunchMode](ts-basic-components-navigation.md#launchmode12) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -86,9 +86,7 @@ Sets the route mode used for redirecting the user from the **NavRouter** compone
 
 ## RouteInfo<sup>(deprecated)</sup>
 
-> **NOTE**
->
-> This API is supported since API version 10 and deprecated since API version 13. You are advised to use [NavPathStack](ts-basic-components-navigation.md#navpathstack10) and [navDestination](ts-basic-components-navigation.md#navdestination10) instead.
+Route information.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -96,10 +94,12 @@ Sets the route mode used for redirecting the user from the **NavRouter** compone
 
 | Name                | Type                                                    | Read-Only| Optional| Description                                                        |
 | -------------------- | ------------------------------------------------------- |---- | ---- | ------------------------------------------------------------ |
-| name             | string            | No  | No  | Name of the navigation destination page to be redirected to.|
-| param             | unknown            | No  | Yes  | Parameter transferred during redirection.|
+| name             | string            | No  | No  | Name of the navigation destination page to be redirected to.<br>**NOTE**<br>This API is supported since API version 10 and deprecated since API version 13. You are advised to use [name](ts-basic-components-navigation.md#properties-1) instead.|
+| param             | unknown            | No  | Yes  | Parameter transferred during redirection.<br>**NOTE**<br>This API is supported since API version 10 and deprecated since API version 13. You are advised to use [param](ts-basic-components-navigation.md#properties-1) instead.|
 
 ## NavRouteMode<sup>(deprecated)</sup>
+
+Defines the routing policy.
 
 > **NOTE**
 >
@@ -125,7 +125,7 @@ Called when the component activation status changes. **onStateChange(true)** is 
 
 > **NOTE**
 >
-> This API is supported since API version 9 and deprecated since API version 13. No substitute is provided.
+> This API is supported since API version 9 and deprecated since API version 13. You are advised to use [onShown](ts-basic-components-navdestination.md#onshown10) and [onHidden](ts-basic-components-navdestination.md#onhidden10) instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 

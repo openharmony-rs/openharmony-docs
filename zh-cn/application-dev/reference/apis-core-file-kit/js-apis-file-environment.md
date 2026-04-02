@@ -36,7 +36,7 @@ getUserDownloadDir(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
@@ -75,7 +75,7 @@ getUserDesktopDir(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |
@@ -114,7 +114,7 @@ getUserDocumentDir(): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID    | 错误信息       |
 |----------| --------- |

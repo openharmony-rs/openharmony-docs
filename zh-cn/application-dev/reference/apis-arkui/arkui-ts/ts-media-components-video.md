@@ -307,7 +307,7 @@ onError(event: VoidCallback | ErrorCallback)
 
 | 参数名 | 类型                                           | 必填 | 说明                                 |
 | ------ | --------------------------------------------- | ---- | ----------------------------------- |
-| event  | [VoidCallback](ts-types.md#voidcallback12) \| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<sup>20+</sup> | 是   | 视频播放失败时的回调函数。其中[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)类型入参的回调函数用于接收异常信息，回调返回的错误码详细介绍请参见[Video组件错误码](../errorcode-video.md)和[媒体错误码](../../apis-media-kit/errorcode-media.md)。|
+| event  | [VoidCallback](ts-types.md#voidcallback12) \| [ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)<sup>20+</sup> | 是   | 视频播放失败时的回调函数。其中[ErrorCallback](../../apis-basic-services-kit/js-apis-base.md#errorcallback)类型入参的回调函数用于接收异常信息，回调返回的错误码详细介绍请参见[Video组件错误码](../errorcode-video.md)和[Media错误码](../../apis-media-kit/errorcode-media.md)。|
 
 ### onStop<sup>12+</sup>
 
@@ -466,7 +466,7 @@ onFullscreenChange(callback: Callback\<FullscreenInfo>)
 
 ## VideoController
 
-一个VideoController对象可以控制一个或多个Video，可用视频播放实例请参考[@ohos.multimedia.media](../../apis-media-kit/arkts-apis-media.md)。
+一个VideoController对象可以控制一个或多个Video。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -638,7 +638,10 @@ struct VideoCreateComponent {
         previewUri: this.previewUri, // 设置预览图。
         currentProgressRate: this.curRate, // 设置播放速度。
         controller: this.controller,
-        posterOptions: { showFirstFrame: this.showFirstFrame, contentTransitionEffect: ContentTransitionEffect.OPACITY } // 关闭首帧送显, 设置预览图淡入淡出动效。
+        posterOptions: {
+          showFirstFrame: this.showFirstFrame,
+          contentTransitionEffect: ContentTransitionEffect.OPACITY
+        } // 关闭首帧送显, 设置预览图淡入淡出动效。
       })
         .width('100%')
         .height(600)
@@ -655,34 +658,34 @@ struct VideoCreateComponent {
           console.info('onFinish');
         })
         .onError(() => {
-          console.info('onError');
+          console.error('onError');
         })
         .onStop(() => {
           console.info('onStop');
         })
         .onPrepared((e?: DurationObject) => {
           if (e != undefined) {
-            console.info('onPrepared is ' + e.duration);
+            console.info(`onPrepared is ${e.duration}`);
           }
         })
         .onSeeking((e?: TimeObject) => {
           if (e != undefined) {
-            console.info('onSeeking is ' + e.time);
+            console.info(`onSeeking is ${e.time}`);
           }
         })
         .onSeeked((e?: TimeObject) => {
           if (e != undefined) {
-            console.info('onSeeked is ' + e.time);
+            console.info(`onSeeked is ${e.time}`);
           }
         })
         .onUpdate((e?: TimeObject) => {
           if (e != undefined) {
-            console.info('onUpdate is ' + e.time);
+            console.info(`onUpdate is ${e.time}`);
           }
         })
         .onFullscreenChange((e?: FullscreenObject) => {
           if (e != undefined) {
-            console.info('onFullscreenChange is ' + e.fullscreen);
+            console.info(`onFullscreenChange is ${e.fullscreen}`);
           }
         })
 
@@ -745,6 +748,8 @@ interface FullscreenObject {
 }
 ```
 
+![VideoSample](figures/video_sample.gif)
+
 ### 示例2（图像分析功能）
 
 通过enableAnalyzer属性开启图像AI分析。
@@ -795,7 +800,7 @@ struct ImageAnalyzerExample {
           this.controller.pause(); // 暂停播放
         }).margin(5)
         Button('getTypes').onClick(() => {
-            this.aiController.getImageAnalyzerSupportTypes();
+          this.aiController.getImageAnalyzerSupportTypes();
         }).margin(5)
       }
     }
@@ -969,34 +974,34 @@ class MyVideoModifier implements AttributeModifier<VideoAttribute> {
       console.info('video: onFinish');
     })
     instance.onError((err) => {
-      console.error('video: onError is code = ' + err.code + ', message = ' + err.message);
+      console.error(`video: onError is code = ${err.code}, message = ${err.message}`);
     })
     instance.onStop(() => {
       console.info('video: onStop');
     })
     instance.onPrepared((e?: DurationObject) => {
       if (e != undefined) {
-        console.info('video: onPrepared is ' + e.duration);
+        console.info(`video: onPrepared is ${e.duration}`);
       }
     })
     instance.onSeeking((e?: TimeObject) => {
       if (e != undefined) {
-        console.info('video: onSeeking is ' + e.time);
+        console.info(`video: onSeeking is ${e.time}`);
       }
     })
     instance.onSeeked((e?: TimeObject) => {
       if (e != undefined) {
-        console.info('video: onSeeked is ' + e.time);
+        console.info(`video: onSeeked is ${e.time}`);
       }
     })
     instance.onUpdate((e?: TimeObject) => {
       if (e != undefined) {
-        console.info('video: onUpdate is ' + e.time);
+        console.info(`video: onUpdate is ${e.time}`);
       }
     })
     instance.onFullscreenChange((e?: FullscreenObject) => {
       if (e != undefined) {
-        console.info('video: onFullscreenChange is ' + e.fullscreen);
+        console.info(`video: onFullscreenChange is ${e.fullscreen}`);
       }
     })
   }
@@ -1017,7 +1022,7 @@ struct VideoModifierDemo {
     Column() {
       Video({
         src: this.videoSrc,
-        currentProgressRate: this.curRate, //设置播放速度
+        currentProgressRate: this.curRate, // 设置播放速度
         controller: this.controller
       })
         .width(300)

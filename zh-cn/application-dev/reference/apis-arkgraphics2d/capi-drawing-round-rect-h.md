@@ -140,7 +140,7 @@ void OH_Drawing_RoundRectSetCorner(OH_Drawing_RoundRect* roundRect,OH_Drawing_Co
 | -- | -- |
 | [OH_Drawing_RoundRect](capi-drawing-oh-drawing-roundrect.md)* roundRect | 指向圆角矩形对象的指针。 |
 | [OH_Drawing_CornerPos](#oh_drawing_cornerpos) pos | 圆角位置的枚举，支持类型可见[OH_Drawing_CornerPos](capi-drawing-round-rect-h.md#oh_drawing_cornerpos)。 |
-| OH_Drawing_Corner_Radii radii | 圆角半径结构体OH_Drawing_Corner_Radii，其中包含x轴方向和y轴方向上的半径，半径小于等于0时无效。 |
+| [OH_Drawing_Corner_Radii](capi-drawing-oh-drawing-point2d.md) radii | 圆角半径结构体OH_Drawing_Corner_Radii，其中包含x轴方向和y轴方向上的半径，半径小于等于0时无效。 |
 
 ### OH_Drawing_RoundRectGetCorner()
 
@@ -168,7 +168,7 @@ OH_Drawing_Corner_Radii OH_Drawing_RoundRectGetCorner(OH_Drawing_RoundRect* roun
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_Drawing_Corner_Radii | 返回指定圆角位置的圆角半径结构体OH_Drawing_Corner_Radii，其中包含x轴方向和y轴方向上的半径。 |
+| [OH_Drawing_Corner_Radii](capi-drawing-oh-drawing-point2d.md) | 返回指定圆角位置的圆角半径结构体OH_Drawing_Corner_Radii，其中包含x轴方向和y轴方向上的半径。 |
 
 ### OH_Drawing_RoundRectDestroy()
 

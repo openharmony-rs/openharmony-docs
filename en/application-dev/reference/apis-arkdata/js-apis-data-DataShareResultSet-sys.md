@@ -15,8 +15,6 @@ The **DataShareResultSet** module provides APIs for accessing the result set obt
 > - The APIs provided by this module are system APIs.
 >
 > - The APIs of this module can be used only in the stage model.
->
-> - The system allows a maximum of 32 data share result sets. Release the data share result sets that are no longer used in a timely manner.
 
 ## Modules to Import
 
@@ -36,7 +34,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
     let dataShareHelper: dataShare.DataShareHelper | undefined = undefined;
-    let uri = ("datashare:///com.samples.datasharetest.DataShare");
+    let uri = "datashare:///com.samples.datasharetest.DataShare";
     let context = this.context;
     dataShare.createDataShareHelper(context, uri, (err:BusinessError, data:dataShare.DataShareHelper) => {
       if (err != undefined) {
@@ -183,7 +181,7 @@ Moves based on the specified offset.
 
 | **Name**| **Type**| **Mandatory**| Description                                                        |
 | ---------- | -------- | -------- | ------------------------------------------------------------ |
-| offset     | number   | Yes      | Offset relative to the current position. A negative value means to move backward, and a positive value means to move forward.|
+| offset     | number   | Yes      | Offset relative to the current position. A negative value means to move forward, and a positive value means to move backward.|
 
 **Return value**
 

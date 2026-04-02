@@ -25,7 +25,7 @@
 ```html
 <!-- xxx.hml -->
 <div style="width: 500px; height: 500px;">
-  <canvas ref="canvasId" style="width: 500px; height: 500px; background-color: #ffff00;"></canvas>
+  <canvas ref="canvasId" style="width: 500px; height: 500px; padding: 80px; background-color: rgb(213, 213, 213);"></canvas>
 </div>
 ```
 
@@ -74,6 +74,8 @@ export default {
   }
 }
 ```
+
+![zh-cn_image_js_offsetscreencanvas_rendering](figures/zh-cn_image_js_offsetscreencanvas_rendering.png)
 
 ## 方法
 

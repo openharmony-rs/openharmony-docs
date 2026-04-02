@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-This topic guides you through the transition from using APIs in the Router module to using the **Navigation** component. The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component stands out for its wider range of animations, higher flexibility in one-time development for multi-device deployment, and more adaptable stack operations.
+The [Navigation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md) component stands out for its wider range of animations, higher flexibility in one-time development for multi-device deployment, and more adaptable stack operations. This topic guides you through the transition from using APIs in the Router module to using the **Navigation** component in terms of page navigation, animation, and lifecycle.
 
 ## Page Structure
 
@@ -164,11 +164,11 @@ export struct PageOne {
 }
 ```
 
-Each subpage also needs to be configured in the system configuration file **route_map.json** (see [System Routing Table](./arkts-navigation-cross-package.md#system-routing-table)).
+Each subpage also needs to be configured in the system configuration file **router_map.json** (see [System Routing Table](./arkts-navigation-cross-package.md#system-routing-table)).
 
 ```json
-// Configure {"routerMap": "$profile:route_map"} in the project configuration file module.json5.
-// route_map.json
+// Configure {"routerMap": "$profile:router_map"} in the project configuration file module.json5.
+// router_map.json
 {
   "routerMap": [
     {
@@ -489,7 +489,7 @@ To animate shared elements during page transitions with **Router**, use the **sh
 
 [Shared Element Transition (sharedTransition)](../reference/apis-arkui/arkui-ts/ts-transition-animation-shared-elements.md).
 
-To animate shared elements during page transitions with **Navigation**, use the **geometryTransition** API. For details, see [Shared Element Transition](./arkts-navigation-animation.md#shared-element-transition).
+To animate shared elements during page transitions with **Navigation**, use the **geometryTransition** API. For details, see [Shared Element Transition](./arkts-navigation-animation.md#defining-a-shared-element-transition).
 
 ## Cross-Package Routing
 
@@ -684,7 +684,7 @@ For details, see [System Routing Table](./arkts-navigation-cross-package.md#syst
 
 ## Lifecycle Listening
 
-You can use the observer to register a listening for the lifecycle events with the **Router**. For details about the APIs, see [observer.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11).
+You can use the observer to register a listening for the lifecycle events with the **Router**. For details about the APIs, see [uiObserver.on('routerPageUpdate')](../reference/apis-arkui/js-apis-arkui-observer.md#uiobserveronrouterpageupdate11).
 
 
 <!-- @[observer_comm](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/routerToNavigation/observer/Comm.ets) -->

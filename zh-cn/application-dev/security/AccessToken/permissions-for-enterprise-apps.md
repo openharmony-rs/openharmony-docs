@@ -1,8 +1,8 @@
 # 企业类应用可用权限
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -20,7 +20,7 @@
 企业类应用可参考[声明权限](declare-permissions.md)，申请以下权限。
 
 > **注意：**
-> 
+>
 > 以下权限不支持自动签名，因此在调试和发布阶段，均需参照[手动签名](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-signing#section297715173233)的步骤，完成手动签名。
 
 ## ohos.permission.SET_FILE_GUARD_POLICY
@@ -86,6 +86,23 @@
 **起始版本**：7
 
 **变更信息**：API 7-13该权限仅向系统应用开放；从API 14开始，开放范围从系统应用变更为企业普通应用。
+
+## ohos.permission.GET_LOCAL_ACCOUNT_IDENTIFIERS
+
+允许应用查询指定或所有本地账号的身份标识（如名称、ID）。
+
+获取该权限后，应用可查询系统中指定或所有本地账号的身份标识。基于获取的身份标识，应用可进一步访问或管理目标本地账号。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：General
+
+**起始版本**：26.0.0
 
 ## ohos.permission.GET_RUNNING_INFO
 
@@ -402,9 +419,9 @@
 
 ## ohos.permission.SUPPORT_INSTALL_ON_U1
 
-允许应用安装在1用户。
+允许企业普通应用安装在特定用户下。
 
-1用户是支持三方应用单例运行的用户。
+特定用户是支持应用单例运行的用户。
 
 **权限级别**：system_basic
 
@@ -513,6 +530,23 @@
 
 **起始版本**：20
 
+## ohos.permission.SCAN_REMEDIATE_VIRUS
+
+允许应用执行病毒扫描和处置操作。
+
+此权限仅面向杀毒软件开放申请。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：24
+
 ## ohos.permission.sec.ACCESS_UDID
 
 允许应用获取UDID。
@@ -529,3 +563,20 @@ UDID（Unified Device ID）是设备的唯一标识。
 **起始版本**：7
 
 **变更信息**：API 7-19该权限仅向系统应用开放；从API 20开始，开放范围从系统应用变更为企业普通应用。
+
+## ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+允许企业应用调用打印管理接口。
+
+获取该权限后，应用可更新打印状态及打印机信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：24

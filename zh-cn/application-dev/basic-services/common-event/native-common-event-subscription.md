@@ -13,7 +13,7 @@
 
 ## 接口说明
 
-详细的API说明请参考[CommonEvent API参考](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md)。
+详细的API说明请参考[oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md)。
 
 | 接口名                               | 描述                                                             |
 | ------------------------------------ | ---------------------------------------------------------------- |
@@ -34,8 +34,6 @@
    
    ``` C
    #include <cstdint>
-   #include <cstdio>
-   #include <cwchar>
    #include <cstring>
    #include "hilog/log.h"
    #include "BasicServicesKit/oh_commonevent.h"
@@ -132,11 +130,11 @@
    
        // 补充说明：除int类型外，还支持获取以下多种类型的公共事件附加信息，调用对应鸿蒙API即可：
        // - 基础数据类型：bool（OH_CommonEvent_GetBoolFromParameters）、long（OH_CommonEvent_GetLongFromParameters）、
-       //   double（OH_CommonEvent_GetDoubleFromParameters）、char（OH_CommonEvent_GetCharFromParameters）
+       // double（OH_CommonEvent_GetDoubleFromParameters）、char（OH_CommonEvent_GetCharFromParameters）
        // -
        // 数组数据类型：int数组（OH_CommonEvent_GetIntArrayFromParameters）、long数组（OH_CommonEvent_GetLongArrayFromParameters）、
-       //   double数组（OH_CommonEvent_GetDoubleArrayFromParameters）、char数组（OH_CommonEvent_GetCharArrayFromParameters）、
-       //   bool数组（OH_CommonEvent_GetBoolArrayFromParameters）
+       // double数组（OH_CommonEvent_GetDoubleArrayFromParameters）、char数组（OH_CommonEvent_GetCharArrayFromParameters）、
+       // bool数组（OH_CommonEvent_GetBoolArrayFromParameters）
        // 所有类型均支持通过OH_CommonEvent_HasKeyInParameters先校验键是否存在，避免获取失败
    }
    ```

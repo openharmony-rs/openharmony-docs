@@ -27,7 +27,7 @@ customProperty(name: string, value: Optional\<Object>): T
 | 参数名 | 类型                                                 | 必填 | 说明                                                         |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | name  | string | 是   | 自定义属性的名称。 |
-| value  | [Optional](#optionalt12)\<Object> | 是   | 自定义属性的值。 |
+| value  | [Optional](#optionalt)\<Object> | 是   | 自定义属性的值。 |
 
 **返回值：**
 
@@ -36,7 +36,7 @@ customProperty(name: string, value: Optional\<Object>): T
 | T | 返回当前组件。 |
 
 
-## Optional\<T><sup>12+</sup>
+## Optional\<T>
 
 type Optional\<T> = T | undefined
 

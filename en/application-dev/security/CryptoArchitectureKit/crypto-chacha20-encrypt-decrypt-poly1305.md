@@ -51,16 +51,19 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
 
 - Example (using asynchronous APIs):
 
-  ```ts
+  <!-- @[encrypt_decrypt_chacha20_poly1305_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionAsync.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genPoly1305ParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -70,19 +73,19 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
     let dataTag = new Uint8Array(arr);
     let tagBlob: cryptoFramework.DataBlob = {
       data: dataTag
-    }; 
+    };
     // Obtain the Poly1305 authTag from the Cipher.doFinal result in encryption and fill it in the params parameter of Cipher.init in decryption.
     let poly1305ParamsSpec: cryptoFramework.Poly1305ParamsSpec = {
       iv: ivBlob,
       aad: aadBlob,
       authTag: tagBlob,
-      algName: "Poly1305ParamsSpec"
+      algName: 'Poly1305ParamsSpec'
     };
     return poly1305ParamsSpec;
   }
-
+  
   let poly1305Params = genPoly1305ParamsSpec();
-
+  
   // Encrypt the message.
   async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('ChaCha20|Poly1305');
@@ -100,7 +103,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
     // In Poly1305 mode, pass in null in Cipher.doFinal in decryption. Verify the tag data passed in Cipher.init. If the verification fails, an exception will be thrown.
     let decryptData = await decoder.doFinal(null);
     if (decryptData === null) {
-      console.info('poly1305 decrypt success, decryptData is null');
+      console.info('poly1305 decrypt result: success, decryptData is null.');
     }
     return decryptUpdata;
   }
@@ -108,7 +111,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
     let symKey = await chacha20Generator.convertKey(symKeyBlob);
-    console.info('convertKey success');
+    console.info('convertKey result: success.');
     return symKey;
   }
   async function main() {
@@ -116,34 +119,38 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159,
         83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
       let symKey = await genSymKeyByData(keyData);
-      let message = "This is a test";
+      let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = await encryptMessagePromise(symKey, plainText);
       let decryptText = await decryptMessagePromise(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`decrypt failed, error info is ${error}, error code: ${error.code}`);
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```
 
+
 - Example (using synchronous APIs):
 
-  ```ts
+  <!-- @[encrypt_decrypt_chacha20_poly1305_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceChaCha20/entry/src/main/ets/pages/chacha20/ChaCha20Poly1305EncryptionDecryptionSync.ets) -->
+  
+  ``` TypeScript
+  
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function generateRandom(len: number) {
     let rand = cryptoFramework.createRandom();
     let generateRandSync = rand.generateRandomSync(len);
     return generateRandSync;
   }
-
+  
   function genPoly1305ParamsSpec() {
     let ivBlob = generateRandom(12); // 12 bytes
     let arr = [1, 2, 3, 4, 5, 6, 7, 8]; // 8 bytes
@@ -153,19 +160,19 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
     let dataTag = new Uint8Array(arr);
     let tagBlob: cryptoFramework.DataBlob = {
       data: dataTag
-    }; 
+    };
     // Obtain the Poly1305 authTag from the Cipher.doFinal result in encryption and fill it in the params parameter of Cipher.init in decryption.
     let poly1305ParamsSpec: cryptoFramework.Poly1305ParamsSpec = {
       iv: ivBlob,
       aad: aadBlob,
       authTag: tagBlob,
-      algName: "Poly1305ParamsSpec"
+      algName: 'Poly1305ParamsSpec'
     };
     return poly1305ParamsSpec;
   }
-
+  
   let poly1305Params = genPoly1305ParamsSpec();
-
+  
   // Encrypt the message.
   function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
     let cipher = cryptoFramework.createCipher('ChaCha20|Poly1305');
@@ -183,7 +190,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
     // In Poly1305 mode, pass in null in Cipher.doFinal in decryption. Verify the tag data passed in Cipher.init. If the verification fails, an exception will be thrown.
     let decryptData = decoder.doFinalSync(null);
     if (decryptData === null) {
-      console.info('poly1305 decrypt success, decryptData is null');
+      console.info('poly1305 decrypt result: success, decryptData is null.');
     }
     return decryptUpdata;
   }
@@ -191,7 +198,7 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
     let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
     let chacha20Generator = cryptoFramework.createSymKeyGenerator('ChaCha20');
     let symKey = chacha20Generator.convertKeySync(symKeyBlob);
-    console.info('convertKeySync success');
+    console.info('convertKeySync result: success.');
     return symKey;
   }
   function main() {
@@ -199,18 +206,18 @@ Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-archite
       let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159,
         83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
       let symKey = genSymKeyByData(keyData);
-      let message = "This is a test";
+      let message = 'This is a test';
       let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
       let encryptText = encryptMessage(symKey, plainText);
       let decryptText = decryptMessage(symKey, encryptText);
       if (plainText.data.toString() === decryptText.data.toString()) {
-        console.info('decrypt ok');
+        console.info('decrypt ok.');
         console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
       } else {
         console.error('decrypt failed.');
       }
     } catch (error) {
-      console.error(`decrypt failed, error info is ${error}, error code: ${error.code}`);
+      console.error(`decrypt failed: errCode: ${error.code}, message: ${error.message}`);
     }
   }
   ```

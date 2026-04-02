@@ -39,8 +39,7 @@ Base class for intent execution.
 
 ### onExecuteInUIAbilityForegroundMode
 
-onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage):
-  insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>, pageLoader: window.WindowStage): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 Called during the UIAbility lifecycle when the [UIAbility](./js-apis-app-ability-uiAbility.md) that the intent execution depends on is started in the foreground. Both synchronous calls and asynchronous calls using Promise are supported.
 
@@ -153,8 +152,7 @@ The code snippet below shows the promise-based asynchronous call that returns th
 
 ### onExecuteInUIAbilityBackgroundMode
 
-onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>):
-    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInUIAbilityBackgroundMode(name: string, param: Record<string, Object>): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 Called during the UIAbility lifecycle when the [UIAbility](./js-apis-app-ability-uiAbility.md) that the intent execution depends on is started in the background. Both synchronous calls and asynchronous calls using Promise are supported.
 
@@ -225,8 +223,7 @@ The code snippet below shows the promise-based asynchronous call that returns th
 
 ### onExecuteInUIExtensionAbility
 
-onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageLoader: UIExtensionContentSession):
-  insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInUIExtensionAbility(name: string, param: Record<string, Object>, pageLoader: UIExtensionContentSession): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 Called during the UIExtensionAbility lifecycle when the [UIExtensionAbility](./js-apis-app-ability-uiExtensionAbility.md) that the intent execution depends on is started. Both synchronous calls and asynchronous calls using Promise are supported.
 
@@ -327,8 +324,7 @@ The code snippet below shows the promise-based asynchronous call that returns th
 
 ### onExecuteInServiceExtensionAbility
 
-onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>):
-    insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
+onExecuteInServiceExtensionAbility(name: string, param: Record<string, Object>): insightIntent.ExecuteResult | Promise<insightIntent.ExecuteResult>
 
 Called during the ServiceExtensionAbility lifecycle when the ServiceExtensionAbility that the intent execution depends on is started. Both synchronous calls and asynchronous calls using Promise are supported.
 

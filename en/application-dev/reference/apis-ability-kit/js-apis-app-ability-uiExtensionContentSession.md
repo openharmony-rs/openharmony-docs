@@ -518,8 +518,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 ### startAbilityByType<sup>11+</sup>
 
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>): void
+startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback, callback: AsyncCallback\<void>): void
 
 Implicitly starts a given type of UIExtensionAbility. This API uses an asynchronous callback to return the result. It can be called only by applications running in the foreground.
 
@@ -581,8 +580,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 
 ### startAbilityByType<sup>11+</sup>
 
-startAbilityByType(type: string, wantParam: Record<string, Object>,
-    abilityStartCallback: AbilityStartCallback): Promise\<void>
+startAbilityByType(type: string, wantParam: Record<string, Object>, abilityStartCallback: AbilityStartCallback): Promise\<void>
 
 Implicitly starts a given type of UIExtensionAbility. This API uses a promise to return the result. It can be called only by applications running in the foreground.
 

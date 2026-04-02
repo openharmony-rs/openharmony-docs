@@ -32,7 +32,7 @@ addAllowedUsbDevices(admin: Want, usbDeviceIds: Array\<UsbDeviceId>): void
 
 以下情况下，调用本接口会报策略冲突：
 
-1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB能力。
+1. 已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了设备USB或者USB转串口能力。
 2. 已经通过[setUsbStorageDeviceAccessPolicy](#usbmanagersetusbstoragedeviceaccesspolicy)接口设置了USB存储设备访问策略为禁用。
 3. 已经通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加了禁止使用的USB设备类型。
 
@@ -219,7 +219,7 @@ setUsbStorageDeviceAccessPolicy(admin: Want, usbPolicy: UsbPolicy): void
 
 通过本接口设置，或者通过[addDisallowedUsbDevices](#usbmanageradddisallowedusbdevices14)接口添加存储类型的USB设备，均可禁用USB存储设备。推荐使用后者。
 
-**需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
+**需要权限：** API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（应用[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)）。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -272,7 +272,7 @@ getUsbStorageDeviceAccessPolicy(admin: Want): UsbPolicy
 
 获取USB存储设备访问策略。
 
-**需要权限：** ohos.permission.ENTERPRISE_MANAGE_USB
+**需要权限：** API版本26.0.0之前：ohos.permission.ENTERPRISE_MANAGE_USB，API版本26.0.0开始：ohos.permission.ENTERPRISE_MANAGE_USB 或者 ohos.permission.PERSONAL_MANAGE_RESTRICTIONS（应用[激活为自带设备管理应用](./js-apis-enterprise-adminManager.md#adminmanagerstartadminprovision15)）。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

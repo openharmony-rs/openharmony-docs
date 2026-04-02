@@ -7,7 +7,7 @@
 <!--Adviser: @huipeizi-->
 
 
-  | API in the [FA Model](ability-terminology.md#fa-model)| Corresponding .d.ts File in the [Stage Model](ability-terminology.md#stage-model)| Corresponding API in the Stage Model| 
+| API in the [FA Model](ability-terminology.md#fa-model)| Corresponding .d.ts File in the [Stage Model](ability-terminology.md#stage-model)| Corresponding API in the Stage Model| 
 | -------- | -------- | -------- |
 | update?(uri:&nbsp;string,&nbsp;valueBucket:&nbsp;rdb.ValuesBucket,&nbsp;predicates:&nbsp;dataAbility.DataAbilityPredicates,&nbsp;callback:&nbsp;AsyncCallback&lt;number&gt;):&nbsp;void; | \@ohos.application.DataShareExtensionAbility.d.ts | [update?(uri:&nbsp;string,&nbsp;predicates:&nbsp;dataSharePredicates.DataSharePredicates,&nbsp;valueBucket:&nbsp;ValuesBucket,&nbsp;callback:&nbsp;AsyncCallback&lt;number&gt;):&nbsp;void;](../reference/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md#update) |
 | query?(uri:&nbsp;string,&nbsp;columns:&nbsp;Array&lt;string&gt;,&nbsp;predicates:&nbsp;dataAbility.DataAbilityPredicates,&nbsp;callback:&nbsp;AsyncCallback&lt;ResultSet&gt;):&nbsp;void; | \@ohos.application.DataShareExtensionAbility.d.ts | [query?(uri:&nbsp;string,&nbsp;predicates:&nbsp;dataSharePredicates.DataSharePredicates,&nbsp;columns:&nbsp;Array&lt;string&gt;,&nbsp;callback:&nbsp;AsyncCallback&lt;Object&gt;):&nbsp;void;](../reference/apis-arkdata/js-apis-application-dataShareExtensionAbility-sys.md#query) |

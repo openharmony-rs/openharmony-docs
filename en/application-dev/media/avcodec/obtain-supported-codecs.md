@@ -12,6 +12,7 @@ Due to differences in sources, codec protocols, and device capabilities, the ava
 To ensure that codec behavior meets expectations, use the audio and video codec capability interface to query the codecs supported by the system and their capabilities, select codecs that align with your development requirements, and configure parameters correctly.
 
 ## General Development
+
 1. Link the dynamic libraries in the CMake script.
 
    ``` cmake
@@ -24,7 +25,6 @@ To ensure that codec behavior meets expectations, use the audio and video codec 
    > **NOTE**
    >
    > The word **sample** in the preceding code snippet is only an example. Use the actual project directory name.
-   >
 
 2. Add the header files.
 
@@ -41,12 +41,14 @@ To ensure that codec behavior meets expectations, use the audio and video codec 
    You can use either of the following methods to obtain the instance:
    
    Method 1: Call **OH_AVCodec_GetCapability** to obtain the codec capability instance recommended by the system. The recommendation policy is the same as that of the **OH_XXX_CreateByMime** series APIs.
+
    ```c++
    // Obtain the AAC decoder capability instance recommended by the system.
    OH_AVCapability *capability = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_AUDIO_AAC, false);
    ```
    
    Method 2: Call **OH_AVCodec_GetCapabilityByCategory** to obtain the codec capability instance for the specified software or hardware.
+
    ```c++
    // Obtain the AVC encoder capability instance for the specified hardware.
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
@@ -56,6 +58,7 @@ To ensure that codec behavior meets expectations, use the audio and video codec 
 4. Call the query APIs as required. For details, see [AudioCodec](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md).
 
 ## Scenario-based Development
+
 This section provides examples to illustrate the use of capability query interfaces in specific scenarios that may be encountered during development.
 
 ### Creating a Codec with the Specified Name
@@ -242,7 +245,7 @@ if (ret != AV_ERR_OK || qualityRange.maxVal < 0) {
 if (quality > qualityRange.maxVal || quality < qualityRange.minVal) {
    // 3. (Optional) Adjust the quality parameters to be configured.
 }
-// 5. Set the encoding parameters.
+// 4. Set the encoding parameters.
 OH_AVCodec *videoEnc = OH_VideoEncoder_CreateByMime(OH_AVCODEC_MIMETYPE_VIDEO_AVC);
 if (videoEnc == nullptr) {
    // Handle exceptions.
@@ -407,9 +410,9 @@ if (ret != AV_ERR_OK || bitrateRange.maxVal <= 0) {
    // Handle exceptions.
 }
 if (bitrate > bitrateRange.maxVal || bitrate < bitrateRange.minVal ) {
-   //7. (Optional) Adjust the bit rate to be configured.
+   // 6. (Optional) Adjust the bit rate to be configured.
 }
-// 8. Set the encoding parameters.
+// 7. Set the encoding parameters.
 OH_AVCodec *audioEnc = OH_AudioCodec_CreateByMime(OH_AVCODEC_MIMETYPE_AUDIO_AAC, true);
 if (audioEnc == nullptr) {
    // Handle exceptions.
@@ -738,6 +741,7 @@ if (!isMatched) {
 ### Checking Whether a Codec Feature Is Supported and Obtaining Its Properties
 
 Codec features refer to optional features used in specific codec scenarios, such as temporal scalable encoding and low-latency codec in video encoding scenarios. For details, see [OH_AVCapabilityFeature](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md#oh_avcapabilityfeature).
+
 | API    | Description                        |
 | -------- | ---------------------------- |
 | OH_AVCapability_IsFeatureSupported              | Checks whether a codec supports a given feature.|

@@ -18,7 +18,7 @@ The swipe refresher is a component used to obtain and load content, typically wi
 
 ## Modules to Import
 
-```
+```ts
 import { SwipeRefresher } from '@kit.ArkUI';
 ```
 
@@ -31,6 +31,8 @@ Not supported
 
 SwipeRefresher ({content?: ResourceStr, isLoading: boolean})
 
+Implements the pull-down refresh function. When a user pulls down the page, it triggers a content loading operation, fetching new content from the data source and dynamically displaying it on the page.
+
 **Decorator**: @Component
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -38,8 +40,6 @@ SwipeRefresher ({content?: ResourceStr, isLoading: boolean})
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Device behavior differences**: On wearables, calling this API results in a runtime exception indicating that the API is undefined. On other devices, the API works correctly.
-
-**Parameters**
 
 | Name| Type| Mandatory| Decorator| Description                                                                |
 | -------- | -------- | -------- | -------- |--------------------------------------------------------------------|

@@ -176,7 +176,7 @@ ChipGroup的尾部图标选项类型。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | --- | ---- | ---- |
-| symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | 否 | 否 | 尾部图标属性。|
+| symbol | [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | 否 | 否 | 尾部图标属性。|
 | action | [VoidCallback](ts-types.md#voidcallback12) | 否 | 否 | 尾部图标响应事件。|
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标的无障碍文本属性。用于为用户进一步说明尾部图标，开发人员可为尾部图标的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从尾部图标本身属性与无障碍文本中了解到时。若尾部图标既拥有文本属性又拥有无障碍说明属性，则尾部图标被选中时，先播报尾部图标的文本属性，再播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标的无障碍描述。此描述用于向用户详细解释尾部图标，开发人员应为尾部图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从尾部图标的属性和无障碍文本中直接获知时。如果尾部图标同时具备文本属性和无障碍说明属性，当尾部图标被选中时，系统将首先播报尾部图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。 |
@@ -194,7 +194,7 @@ ChipGroup的尾部图标选项类型。
 
 | 名称     | 类型                    | 必填 | 装饰器类型 | 说明                                                              |
 | -------- | ---------------------- | ---- | ----------------------------------------------| ----------------------------------------------|
-| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| [ SymbolItemOptions](#symbolitemoptions14)> | 是   | @Require &nbsp;@Prop | 自定义builder items。|
+| items    | Array<[IconItemOptions](#iconitemoptions) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) \| [ SymbolItemOptions](#symbolitemoptions14)> | 是   | @Require &nbsp;@Prop | 自定义builder items。|
 
 > **说明：**
 >
@@ -211,7 +211,7 @@ ChipGroup的尾部图标选项类型。
 
 | 名称     | 类型                            | 只读 | 可选 | 说明                                    |
 | -------- | --------------                 | ---- | ------------------------------           | ------------------------------           |
-| icon     | [IconOptions](#iconoptions)    | 否  | 否  | 自定义Builder icon。<br/>Chip大小是ChipSize.SMALL时，suffix默认值：{width: 16,height: 16}。<br/>Chip大小是ChipSize.NORMAL时，suffix默认值：{width: 24,height: 24}。</br> 如果想动态修改size，那么必须在引入[IconGroupSuffix](#icongroupsuffix)时，使用[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)类型。<br>值为undefined时，按默认值处理。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| icon     | [IconOptions](#iconoptions)    | 否  | 否  | 自定义Builder icon。<br/>Chip大小是ChipSize.SMALL时，suffix默认值：{width: 16,height: 16}。<br/>Chip大小是ChipSize.NORMAL时，suffix默认值：{width: 24,height: 24}。</br> 如果想动态修改size，那么必须在引入[IconGroupSuffix](#icongroupsuffix)时，使用[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)类型。<br>值为undefined时，按默认值处理。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | action   | Callback\<void>        | 否  | 否  | 自定义Builder items 的Callback<br/>为undefined时，表示解绑事件。<br> **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。            |
 | accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标无障碍文本属性。用于为用户进一步说明尾部图标，开发人员可为尾部图标的该属性设置相对较详细的解释文本，帮助用户理解将要执行的操作。如帮助用户理解将要执行的操作可能导致什么后果，尤其是当这些后果无法从尾部图标本身属性与无障碍文本中了解到时。若尾部图标既拥有文本属性又拥有无障碍说明属性，则尾部图标被选中时，先播报尾部图标的文本属性，再播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 尾部图标无障碍描述。此描述用于向用户详细解释尾部图标，开发人员应为尾部图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从尾部图标的属性和无障碍文本中直接获知时。如果尾部图标同时具备文本属性和无障碍说明属性，当尾部图标被选中时，系统将首先播报尾部图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
@@ -264,6 +264,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。
         items: [
           {
             // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
@@ -298,6 +299,7 @@ struct Index {
             allowClose: true
           },
         ],
+        // 设置Chip的style属性。
         itemStyle: {
           size: ChipSize.SMALL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -336,6 +338,7 @@ struct Index {
 
   @LocalBuilder
   ChipGroupSuffix(): void {
+    // 开发者通过引用IconGroupSuffix，实现组件最右侧的自定义组件效果。
     IconGroupSuffix({
       items: [{
         icon: { src: $r('sys.media.ohos_ic_public_search_filled'), size: { width: 36, height: 36 } },
@@ -356,6 +359,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。
         items: [
           {
             // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
@@ -390,6 +394,7 @@ struct Index {
             allowClose: true
           },
         ],
+        // 设置Chip的style属性。
         itemStyle: {
           size: ChipSize.NORMAL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -404,6 +409,7 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        // 自定义builder，在组件最右侧显示自定义的内容。
         suffix: this.ChipGroupSuffix
       })
     }
@@ -433,6 +439,7 @@ struct Index {
 
   @LocalBuilder
   ChipGroupSuffix(): void {
+    // 开发者通过引用IconGroupSuffix，实现组件最右侧的自定义组件效果。
     IconGroupSuffix({
       items: [
         new SymbolGlyphModifier($r('sys.symbol.magnifyingglass'))
@@ -452,6 +459,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。
         items: [
           {
             prefixSymbol: { normal: this.prefixModifierNormal, activated: this.prefixModifierActivated },
@@ -485,6 +493,7 @@ struct Index {
             allowClose: true,
           },
         ],
+        // 设置Chip的style属性。
         itemStyle: {
           size: ChipSize.NORMAL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -499,6 +508,7 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        // 自定义builder，在组件最右侧显示自定义的内容。
         suffix: this.ChipGroupSuffix
       })
     }

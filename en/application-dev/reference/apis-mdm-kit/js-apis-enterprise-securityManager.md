@@ -10,11 +10,11 @@ The **securityManager** module provides device security management capabilities,
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -97,7 +97,7 @@ Installs a user certificate. This API uses a promise to return the result.
 | Name     | Type                                                   | Mandatory| Description          |
 | ----------- | ------------------------------------------------------- | ---- | -------------- |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| certificate | [CertBlob](#certblob)                                   | Yes  | Certificate information. The certificate file must be stored in a path that can be accessed by the application, such as the application sandbox path.    |
+| certificate | [CertBlob](#certblob)                                   | Yes  | Certificate information. The certificate file must be stored in the path that the app has the permission to access, such as the app sandbox path. For details about the mapping between the app sandbox path and the actual physical path, see [Mappings Between App Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).    |
 
 **Return value**
 
@@ -166,7 +166,7 @@ Installs a user certificate based on the system account.
 | Name     | Type                                                   | Mandatory| Description          |
 | ----------- | ------------------------------------------------------- | ---- | -------------- |
 | admin       | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| certificate | [CertBlob](#certblob)                                   | Yes  | Certificate information. The certificate file must be stored in a path that can be accessed by the application, such as the application sandbox path.    |
+| certificate | [CertBlob](#certblob)                                   | Yes  | Certificate information. The certificate file must be stored in the path that the app has the permission to access, such as the app sandbox path. For details about the mapping between the app sandbox path and the actual physical path, see [Mappings Between App Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).    |
 | accountId   | number                                                  | Yes  | User ID, which must be greater than or equal to 0. You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.|
 
 **Return value**
@@ -330,7 +330,7 @@ try {
 
 setPasswordPolicy(admin: Want, policy: PasswordPolicy): void
 
-Sets the device password policy.
+Sets the device screen lock password policy. During screen lock password setting, if the current screen lock password does not meet the requirements, a security message will be displayed, prompting the user to reset the screen lock password.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -338,12 +338,14 @@ Sets the device password policy.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                 |
-| policy | [PasswordPolicy](#passwordpolicy) | Yes| Device password policy.|
+| policy | [PasswordPolicy](#passwordpolicy) | Yes| Device screen lock password policy.|
 
 **Error codes**
 
@@ -385,7 +387,7 @@ try {
 
 getPasswordPolicy(admin: Want): PasswordPolicy
 
-Obtains the device password policy.
+Obtains the device screen lock password policy.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
 
@@ -403,7 +405,7 @@ Obtains the device password policy.
 
 | Type                  | Description                     |
 | --------------------- | ------------------------- |
-| [PasswordPolicy](#passwordpolicy) | Device password policy obtained.|
+| [PasswordPolicy](#passwordpolicy) | Device screen lock password policy.|
 
 **Error codes**
 
@@ -447,6 +449,8 @@ Sets the device clipboard policy.
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -556,6 +560,8 @@ Sets the device clipboard policy of a specified application for a specified user
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -671,13 +677,15 @@ Sets a watermark policy for a specified application of a specified user. Current
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy exclusivity](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity). The watermark of the same app under the same user is exclusive. Watermarks of different users and different apps are [merged](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Parameters**
 
 | Name     | Type                                      | Mandatory  | Description                      |
 | -------- | ---------------------------------------- | ---- | ------------------------------- |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md)     | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.     |
 | bundleName | string    | Yes  | Bundle name of the application for which the watermark is set.                                                      |
-| source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes  | **string** indicates the image path that can be accessed by the application, such as the application sandbox path.<br>**image.PixelMap** indicates an image object. The size of an image pixel cannot exceed 500 KB.<br>The size of an image pixel is calculated as follows: Image width (pixels) × Image height (pixels) × Number of bytes per pixel (typically 4). For example, the size of a 100 × 100 image is 100 × 100 × 4 = 40,000 bytes.                                                      |
+| source | string \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes  | **string** indicates the image path, which is the path that the app has the permission to access, such as the app sandbox path. For details about the mapping between the app sandbox path and the actual physical path, see [Mappings Between App Sandbox Paths and Physical Paths](../../file-management/app-sandbox-directory.md#mappings-between-application-sandbox-paths-and-physical-paths).<br>**image.PixelMap** indicates an image object. The size of an image pixel cannot exceed 500 KB.<br>The size of an image pixel is calculated as follows: Image width (pixels) × Image height (pixels) × Number of bytes per pixel (typically 4). For example, the size of a 100 × 100 image is 100 × 100 × 4 = 40,000 bytes.                                                      |
 | accountId     | number     | Yes  | User ID. You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.|
 
 **Error codes**
@@ -778,6 +786,8 @@ Sets the management policy for the [user_grant permission](../../security/Access
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: The same permission of the same app instance is [exclusive](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity), and different permissions of different app instances are [merged](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -915,6 +925,8 @@ Sets the management policy for extensions from external sources.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy exclusivity](../../mdm/mdm-kit-multi-mdm.md#rule-2-policy-exclusivity).
+
 **Parameters**
 
 | Name    | Type                                                     | Mandatory | Description                                                                                                                                                       |
@@ -1009,6 +1021,139 @@ try {
 }
 ```
 
+## securityManager.installEnterpriseReSignatureCertificate<sup>24+</sup>
+
+installEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, fd: number, accountId: number): void
+
+Installs the enterprise re-signing certificate.
+
+A maximum of 10 distinct certificates can be deployed per user. The certificate alias serves as a unique identifier for each certificate and cannot be duplicated during deployment. To update a certificate with an existing alias, you must first uninstall the old certificate by calling [uninstallEnterpriseReSignatureCertificate](#securitymanageruninstallenterpriseresignaturecertificate24).
+
+The installed certificates are retained on the device and will not be removed when the MDM app is uninstalled or the admin privilege is deactivated.
+
+In the enterprise app distribution scenario, <!--RP2--><!--RP2End-->you can use the re-signing certificate to re-sign enterprise apps. After re-signing, the app package is provided to enterprise administrators, who can then install the re-signed app on enterprise devices where the corresponding re-signing certificate has been deployed.
+
+Process of using the enterprise re-signing certificate:<!--RP3--><!--RP3End--><br>1. Installs the enterprise re-signing certificate through the MDM app.<br>2. Re-sign the original HAP package using a signing tool (**ohos-signer** or the DevEco Studio signing plugin).<br>3. Install the re-signed app (through the enterprise private app store).<br>4. Launch and run the app.
+
+Specifications:<br>1. Apps signed with the old certificate will continue to run normally after a new re-signing certificate is installed.<br>2. After a new enterprise signing certificate is installed for an installed enterprise app, if the installed app needs to be updated, you can directly overwrite the original app without uninstalling it.<br>3. In enterprise scenarios (especially those involving information security), enterprises need to ensure that only designated internal software and tools are installed and run on employees' mobile devices. The enterprise re-signing certificate, in conjunction with the system's app management and permission control mechanisms (via a unified app ID), supports silent installation of enterprise apps, controlled invocation of system capabilities, and restriction of app running scopes. This enables admission control and security governance for enterprise software on managed devices.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
+
+**Parameters**
+
+| Name     | Type                                                   | Mandatory| Description          |
+| ----------- | ------------------------------------------------------- | ---- | -------------- |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| certificateAlias | string | Yes| Certificate alias, which must end with **.cer**.|
+| fd | number | Yes| Descriptor of an existing re-signing certificate file. The certificate file must be stored in the [app sandbox directory](../../file-management/app-sandbox-directory.md).|
+| accountId | number | Yes| User ID, which must be greater than or equal to 0. You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9201006  | The number of certificates has reached the limit. |
+| 9201007  | The certificate is invalid. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+import { fileIo as fs } from '@kit.CoreFileKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// The test.cer certificate file must be placed in the app sandbox and be a valid enterprise re-signing certificate.
+// Replace with actual values.
+const filePath = '/test.cer';
+// Replace with actual values.
+let certificateAlias: string = 'test.cer';
+let fd: number = fs.openSync(filePath, fs.OpenMode.READ_ONLY).fd;
+// Replace with actual values.
+let accountId: number = 100;
+try {
+  securityManager.installEnterpriseReSignatureCertificate(
+    wantTemp, certificateAlias, fd, accountId);
+  console.info('Success to install enterprise re signature certificate.');
+} catch (err) {
+  console.error(`Failed to install enterprise re signature certificate.
+    Code: ${err.code}, message: ${err.message}`);
+};
+```
+
+## securityManager.uninstallEnterpriseReSignatureCertificate<sup>24+</sup>
+
+uninstallEnterpriseReSignatureCertificate(admin: Want, certificateAlias: string, accountId: number): void
+
+Uninstalls the enterprise re-signing certificate.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SECURITY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name     | Type                                                   | Mandatory| Description          |
+| ----------- | ------------------------------------------------------- | ---- | -------------- |
+| admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes| EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
+| certificateAlias | string | Yes| Certificate alias, which must end with **.cer**.|
+| accountId | number | Yes| User ID, which must be greater than or equal to 0. You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of **@ohos.account.osAccount** to obtain the user ID.|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                                    |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9201008  | The certificate does not exist. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+
+**Example**
+
+```ts
+import { securityManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // Replace with actual values.
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// Replace with actual values.
+let certificateAlias: string = 'test.cer';
+// Replace with actual values.
+let accountId: number = 100;
+try {
+  securityManager.uninstallEnterpriseReSignatureCertificate(
+    wantTemp, certificateAlias, accountId);
+  console.info('Success to uninstall enterprise re signature certificate.');
+} catch (err) {
+  console.error(`Failed to uninstall enterprise re signature certificate.
+    Code: ${err.code}, message: ${err.message}`);
+};
+```
+
 ## CertBlob
 
 Represents the certificate information.
@@ -1018,11 +1163,11 @@ Represents the certificate information.
 | Name  | Type      | Read-Only| Optional| Description              |
 | ------ | ---------- | ---- | ---- | ------------------ |
 | inData | Uint8Array | No  | No|Binary content of the certificate.|
-| alias  | string     | No  | No|Certificate alias.        |
+| alias  | string     | No  | No|Certificate alias. The value length must be less than 40 characters.        |
 
 ## PasswordPolicy
 
-Represents a device password policy.
+Represents a device screen lock password policy.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1030,7 +1175,7 @@ Represents a device password policy.
 | ----------- | --------| ---- | ---- | --------------------------- |
 | complexityRegex | string | No| Yes| Regular expression for password complexity.|
 | validityPeriod | number | No| Yes| Password validity period, in ms.|
-| additionalDescription | string | No| Yes| Description of the device password.|
+| additionalDescription | string | No| Yes| Password complexity description, for example, "The password must contain 8 to 30 characters consisting of letters, digits, and special characters".|
 
 ## ClipboardPolicy
 

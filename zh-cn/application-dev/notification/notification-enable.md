@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-接口详情参见[API参考](../reference/apis-notification-kit/js-apis-notificationManager.md)。
+接口详情参见[@ohos.notificationManager (NotificationManager模块)](../reference/apis-notification-kit/js-apis-notificationManager.md)。
 
 **表1** 通知授权接口功能介绍
 
@@ -45,9 +45,9 @@
    <!-- @[request_enable_notification_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
    
    ``` TypeScript
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
    notificationManager.isNotificationEnabled().then((data: boolean) => {
-     hilog.info(DOMAIN_NUMBER, TAG, 'isNotificationEnabled success, data: ' + JSON.stringify(data));
+     hilog.info(DOMAIN_NUMBER, TAG, `isNotificationEnabled success, data: ${data}` );
      if (!data) {
        notificationManager.requestEnableNotification(context).then(() => {
          hilog.info(DOMAIN_NUMBER, TAG, `[ANS] requestEnableNotification success`);
@@ -72,9 +72,9 @@
    <!-- @[reapply_notify_auth_halfmodal](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/RequestEnableNotification.ets) -->
    
    ``` TypeScript
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+   let context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
    notificationManager.isNotificationEnabled().then((data: boolean) => {
-     hilog.info(DOMAIN_NUMBER, TAG, 'isNotificationEnabled success, data: ' + JSON.stringify(data));
+     hilog.info(DOMAIN_NUMBER, TAG, `isNotificationEnabled success, data:  ${data}`);
      if (!data) {
        notificationManager.openNotificationSettings(context).then(() => {
          hilog.info(DOMAIN_NUMBER, TAG, `[ANS] openNotificationSettings success`);

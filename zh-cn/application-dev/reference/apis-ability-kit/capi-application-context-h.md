@@ -140,7 +140,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* bu
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收临时文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -166,7 +166,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* b
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收通用文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -192,7 +192,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDatabaseDir(char
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收数据库文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -218,7 +218,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetPreferencesDir(c
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收首选项文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -244,7 +244,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(ch
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收安装文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -270,7 +270,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFiles
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收分布式文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -296,7 +296,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(cha
 
 | 参数项 | 描述 |
 | -- | -- |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收云文件目录。 |
 | const int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -349,7 +349,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(cons
 | 参数项 | 描述 |
 | -- | -- |
 | char* moduleName | 模块名。 |
-| char* buffer | 指向缓冲区的指针，用于接收应用包名。 |
+| char* buffer | 指向缓冲区的指针，用于接收资源目录。 |
 | int32_t bufferSize | 缓冲区大小，单位为字节。 |
 | int32_t* writeLength | 在返回[ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)时，表示实际写入到缓冲区的字符串长度，单位为字节。 |
 
@@ -683,8 +683,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(
 
 **描述**
 
-该接口仅支持三方框架调用。三方框架每次切换页面时，将目标页面信息（包含目标页面路径、目标页面路径长度、目标页面对应的窗口ID）通知给系统。
-系统可按产品策略调整/恢复页面。
+该接口仅支持三方框架调用。三方框架每次切换页面时，将目标页面信息（包含目标页面路径、目标页面路径长度、目标页面对应的窗口ID）通知给系统。系统可按产品策略调整/恢复页面。
 
 **起始版本：** 23
 

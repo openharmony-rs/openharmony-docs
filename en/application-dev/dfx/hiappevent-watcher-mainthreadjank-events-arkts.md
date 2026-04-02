@@ -236,7 +236,7 @@ The following walks you through on how to subscribe to the main thread jank even
 
    The main thread jank event is triggered when two consecutive timeout events are detected within the interval of the detection task.
   
-   You can quickly click the timeout button for two or three times to trigger the main thread jank event.
+   You can quickly click the timeout button for two or three times (for example, **timeOut350**, **timeOut150**, or **timeOut500**) to trigger the main thread jank event.
 
 ### Verifying the Subscription
 

@@ -33,7 +33,6 @@ Currently, the HAR has a problem with duplicate packaging, leading an oversize a
 
 2. Create a **profile** folder in the **resources\base** directory. Then add the **main_pages.json** file to the created folder and configure it as follows:
     ```json
-    // MyApplication\library\src\main\resources\base\profile\main_pages.json
     {
       "src": [
         "pages/PageIndex"

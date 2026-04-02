@@ -10,11 +10,11 @@ The **adminManager** module provides administrator permission management capabil
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application).
 > 
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.adminManager](js-apis-enterprise-adminManager.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.adminManager](js-apis-enterprise-adminManager.md).
 
 ## Modules to Import
 
@@ -1434,6 +1434,55 @@ try {
   console.info(`Succeeded in setting admin running mode.`);
 } catch(err) {
   console.error(`Failed to set admin running mode. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## adminManager.setDelegatedPolicies<sup>20+</sup>
+   
+setDelegatedPolicies(bundleName: string, accountId: number, policies: Array&lt;string&gt;): void
+
+Delegates other applications to set device management policies. The applications must request the permissions required.
+
+**Required permissions**: ohos.permission.ENTERPRISE_MANAGE_DELEGATED_POLICY
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name  | Type                                 | Mandatory  | Description     |
+| ----- | ----------------------------------- | ---- | ------- |
+| bundleName | String                  | Yes   | Bundle name of the app to be delegated. The distribution type of the delegated app must be **enterprise_normal** or **enterprise_mdm**. You can call the [bundleManager.getBundleInfoForSelf](../apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to query the app **BundleInfo**. **BundleInfo.appInfo.appDistributionType** indicates the app distribution type.       |
+| accountId         | number                              | Yes   | User ID, which must be greater than or equal to 0. You can use [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9) to obtain the user ID.|
+| policies |  Array&lt;string&gt;                   | Yes  | [Delegation policy list](./js-apis-enterprise-adminManager.md#delegation-policy-list).|
+
+**Error codes**
+
+For details about the error codes, see [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                              |
+| ------- | ----------------------------------------------------- |
+| 9200009 | Failed to grant the permission to the application. |
+| 201 | Permission verification failed. The application does not have the permission required to call the API. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+
+**Example**
+
+```ts
+import { adminManager } from '@kit.MDMKit';
+import { common, Want } from '@kit.AbilityKit';
+
+// Replace with actual values.
+let bundleName = 'com.example.myapplication';
+let userId = 100;
+let policies: Array<string> = ["disabled_hdc"];
+
+try {
+  adminManager.setDelegatedPolicies(bundleName, userId, policies);
+  console.info(`Succeeded in setting delegated policies.`);
+} catch (err) {
+  console.error(`Failed to set delegated policies. Code: ${err.code}, message: ${err.message}`);
 }
 ```
 

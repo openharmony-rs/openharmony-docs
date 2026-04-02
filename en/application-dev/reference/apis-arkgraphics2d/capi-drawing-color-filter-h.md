@@ -15,6 +15,8 @@ This file declares the functions related to the color filter in the drawing modu
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -38,7 +40,7 @@ This file declares the functions related to the color filter in the drawing modu
 
 ### OH_Drawing_ColorFilterCreateBlendMode()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateBlendMode(uint32_t color, OH_Drawing_BlendMode blendMode)
 ```
 
@@ -66,7 +68,7 @@ Creates an **OH_Drawing_ColorFilter** object with a given blend mode.
 
 ### OH_Drawing_ColorFilterCreateCompose()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateCompose(OH_Drawing_ColorFilter* outerColorFilter,OH_Drawing_ColorFilter* innerColorFilter)
 ```
 
@@ -94,7 +96,7 @@ Creates an **OH_Drawing_ColorFilter** object by combining another two color filt
 
 ### OH_Drawing_ColorFilterCreateMatrix()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateMatrix(const float matrix[20])
 ```
 
@@ -121,7 +123,7 @@ Creates an **OH_Drawing_ColorFilter** object with a given 5x4 color matrix.<br>T
 
 ### OH_Drawing_ColorFilterCreateLinearToSrgbGamma()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLinearToSrgbGamma(void)
 ```
 
@@ -141,7 +143,7 @@ Creates an **OH_Drawing_ColorFilter** object that applies the sRGB gamma curve t
 
 ### OH_Drawing_ColorFilterCreateSrgbGammaToLinear()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateSrgbGammaToLinear(void)
 ```
 
@@ -161,7 +163,7 @@ Creates an **OH_Drawing_ColorFilter** object that applies the RGB channels to th
 
 ### OH_Drawing_ColorFilterCreateLuma()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLuma(void)
 ```
 
@@ -181,7 +183,7 @@ Creates a **ColorFilter** object that multiplies the luma into the alpha channel
 
 ### OH_Drawing_ColorFilterCreateLighting()
 
-```
+```c
 OH_Drawing_ColorFilter* OH_Drawing_ColorFilterCreateLighting(uint32_t mulColor, uint32_t addColor)
 ```
 
@@ -209,7 +211,7 @@ Creates a lighting color filter. It multiplies the RGB channel values by one col
 
 ### OH_Drawing_ColorFilterDestroy()
 
-```
+```c
 void OH_Drawing_ColorFilterDestroy(OH_Drawing_ColorFilter* colorFilter)
 ```
 

@@ -734,7 +734,7 @@ export struct SwiperIgnoreComponentSize {
 }
 ```
 
-![control](figures/indicator_space.gif)
+![indicator_space](figures/indicator_space.gif)
 
 ## Maintaining the Visible Content Position
 
@@ -838,6 +838,6 @@ export struct SwiperVisibleContentPosition {
 }
 ```
 
-![control](figures/maintainVisibleContentPosition_true.gif)
+![maintainVisibleContentPosition_true](figures/maintainVisibleContentPosition_true.gif)
 
 <!--RP1--><!--RP1End-->

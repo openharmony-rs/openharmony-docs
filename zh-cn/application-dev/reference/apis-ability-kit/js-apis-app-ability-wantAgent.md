@@ -793,13 +793,13 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentData: WantAgent;
 // triggerInfo
 let triggerInfo: wantAgent.TriggerInfo = {
-  code: 0 //自定义结果码
+  code: 0 // 自定义结果码
 };
-//WantAgentInfo对象
+// WantAgentInfo对象
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -827,14 +827,14 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.info(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
   } else {
     wantAgentData = data;
   }
-  //trigger回调
+  // trigger回调
   let triggerCallback = (err: BusinessError, data: wantAgent.CompleteData) => {
     if (err) {
       console.error(`trigger failed, code: ${err.code}, message: ${err.message}`);
@@ -895,10 +895,10 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgent1: WantAgent;
 let wantAgent2: WantAgent;
-//WantAgentInfo对象
+// WantAgentInfo对象
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -926,7 +926,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
@@ -934,7 +934,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     wantAgent1 = data;
     wantAgent2 = data;
   }
-  //equal回调
+  // equal回调
   let equalCallback = (err: BusinessError, data: boolean) => {
     if (err) {
       console.error(`equal failed! ${err.code} ${err.message}`);
@@ -962,7 +962,7 @@ equal(agent: WantAgent, otherAgent: WantAgent): Promise\<boolean\>
 
 判断两个WantAgent实例是否相等，使用Promise异步回调，以此来确定是否是来自同一应用的相同操作。
 
-当两个WantAgent实例由当前用户下的同一应用使用相同的[WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md)信息创建，并且实例未被[cancel](#wantagentcancel)取消，这两个实例相等。在通知（携带WantAgent实例）场景，通知更新时会比较2个通知中的WantAgent实例，不相等时会把就旧通知的WantAgent实例删除。
+当两个WantAgent实例由当前用户下的同一应用使用相同的[WantAgentInfo](js-apis-inner-wantAgent-wantAgentInfo.md)信息创建，并且实例未被[cancel](#wantagentcancel)取消，这两个实例相等。在通知（携带WantAgent实例）场景，通知更新时会比较2个通知中的WantAgent实例，不相等时会把旧通知的WantAgent实例删除。
 
 **原子化服务API**：从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -996,10 +996,10 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgent1: WantAgent;
 let wantAgent2: WantAgent;
-//WantAgentInfo对象
+// WantAgentInfo对象
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -1027,7 +1027,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
@@ -1088,9 +1088,9 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentData: WantAgent;
-//WantAgentInfo对象
+// WantAgentInfo对象
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -1118,14 +1118,14 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);
   } else {
     wantAgentData = data;
   }
-  //getOperationTypeCallback回调
+  // getOperationTypeCallback回调
   let getOperationTypeCallback = (err: BusinessError, data: number) => {
     if (err) {
       console.error(`getOperationType failed! ${err.code} ${err.message}`);
@@ -1187,9 +1187,9 @@ import { wantAgent, Want } from '@kit.AbilityKit';
 import type { WantAgent } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-//wantAgent对象
+// wantAgent对象
 let wantAgentData: WantAgent;
-//WantAgentInfo对象
+// WantAgentInfo对象
 let wantAgentInfo: wantAgent.WantAgentInfo = {
   wants: [
     {
@@ -1217,7 +1217,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
   wantAgentFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
 };
 
-//getWantAgent回调
+// getWantAgent回调
 function getWantAgentCallback(err: BusinessError, data: WantAgent) {
   if (err) {
     console.error(`getWantAgent failed, code: ${JSON.stringify(err.code)}, message: ${JSON.stringify(err.message)}`);

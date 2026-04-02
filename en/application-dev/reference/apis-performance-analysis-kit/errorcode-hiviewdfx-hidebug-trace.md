@@ -2,10 +2,10 @@
 
 <!--Kit: Performance Analysis Kit-->
 <!--Subsystem: HiviewDFX-->
-<!--Owner: @hello_harmony; @yu_haoqiaida-->
+<!--Owner: @hello_harmony; @leiguangyu-->
 <!--Designer: @kutcherzhou1-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 > **NOTE**
 >
@@ -106,3 +106,43 @@ The API call quota is exceeded.
 **Solution**
 
 Wait for the update of the API call quota.
+
+## 11400120 Trace File Storage Limit Reached
+
+**Error Message**
+
+Trace storage limit reached.
+
+**Description**
+
+The number of .sys files returned by the trace collection in the directory exceeds the upper limit.
+
+**Possible Causes**
+
+The number of .sys files returned by the trace collection in the directory is greater than or equal to 3.
+
+**Solution**
+
+Delete files from the trace directory.
+
+## 11400302 Trace Collection Exceeds the Resource Quota
+
+**Error Message**
+
+Resource unavailable.
+
+**Description**
+
+The number of times the application calls trace collection exceeds the system resource quota.
+
+> **NOTE**
+>
+> In developer mode, the [applications of the debug version](../../dfx/performance-analysis-kit-terminology.md#applications-of-the-debug-version) is not controlled.
+
+**Possible Causes**
+
+The number of times the application calls trace collection exceeds the daily quota of system resources.
+
+**Solution**
+
+If the quota is used up on the current day, wait until the system resource quota is updated on the next day.

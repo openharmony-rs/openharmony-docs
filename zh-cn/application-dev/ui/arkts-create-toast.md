@@ -70,8 +70,6 @@ export struct DefaultAndTopToastExample {
         Button('Toast of the DEFAULT type')
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
-        .height('100')
-        .width('100%')
         .onClick(() => {
           try {
             this.getUIContext().getPromptAction().showToast({
@@ -87,12 +85,9 @@ export struct DefaultAndTopToastExample {
           }
         })
 
-        Blank().height(200);
         Button('Toast of the TOPMOST type')
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
-        .height('100')
-        .width('100%')
         .onClick(() => {
           try {
             this.getUIContext().getPromptAction().showToast({
@@ -188,7 +183,7 @@ export struct OpenCloseToastExample {
           .onClick(() => {
             try {
               this.promptAction.openToast({
-                message: 'Toast Massage',
+                message: 'Toast Message',
                 duration: 10000,
               }).then((toastId: number) => {
                 this.toastId = toastId;

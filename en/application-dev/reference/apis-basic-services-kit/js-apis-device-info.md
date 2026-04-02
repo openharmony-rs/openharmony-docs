@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-The deviceInfo module provides terminal device information query, which cannot be configured by developers.
+The **deviceInfo** module provides terminal device information query, which cannot be configured by developers.
 
 > **NOTE**
 >
@@ -39,15 +39,15 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | productModelAlias<sup>14+</sup> | string | Yes| Product model alias.<br>**Atomic service API**: This API can be used in atomic services since API version 14.<br>Example: TAS-AL00|
 | softwareModel | string | Yes| Software model.<br>Example: <!--RP5-->TAS-AL00<!--RP5End--> |
 | hardwareModel | string | Yes| Hardware model.<br>Example: <!--RP6-->TASA00CVN1<!--RP6End--> |
-| hardwareProfile<sup>(deprecated) </sup> | string | Yes| Hardware profile.<br>**NOTE**<br>This API is supported since API version 6 and deprecated since API version 9. You are advised to use [SystemCapability](../syscap.md) instead.<br>Example: default|
-| serial | string | Yes| Device serial number (SN).<br>**NOTE**<br>The device SN can be used as the unique identifier of a device.<br>**Required permission**: ohos.permission.sec.ACCESS_UDID (for system applications and enterprise applications only)<br>Example: The SN varies with the device.|
+| hardwareProfile<sup>(deprecated) </sup> | string | Yes| Hardware profile.<br>Note:<br>This API is supported since API version 6 and deprecated since API version 9. You are advised to use [SystemCapability](../syscap.md) instead.<br>Example: default|
+| serial | string | Yes| Device serial number (SN).<br>Note: The device SN can be used as the unique identifier of a device.<br>**Required permission**: ohos.permission.sec.ACCESS_UDID (for system applications and enterprise applications only)<br>Example: The SN varies with the device.|
 | bootloaderVersion | string | Yes| Bootloader version.<br>Example: bootloader|
 | abiList | string | Yes| Application binary interface (Abi) list.<br>Example: arm64-v8a|
 | securityPatchTag | string | Yes| Security patch tag.<br>Example: <!--RP7-->2021/01/01<!--RP7End--> |
 | displayVersion | string | Yes| Product version.<br>Example: <!--RP8-->XXX X.X.X.X<!--RP8End--> |
 | incrementalVersion | string | Yes| Incremental version.<br>Example: default|
 | osReleaseType | string | Yes| OS release type. The options are as follows:<br>- **Canary**: Preliminary release open only to specific developers. This release does not promise API stability and may require tolerance of instability.<br>- **Beta**: Release open to all developers. This release does not promise API stability and may require tolerance of instability.<br>- **Release**: Official release open to all developers. This release promises that all APIs are stable.<br>Example: <!--RP9-->Canary/Beta/Release<!--RP9End--> |
-| osFullName | string | Yes| System version. The version number is in the format of **OpenHarmony-x.x.x.x**, where **x** is a digit.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Example: <!--RP10-->Openharmony-5.0.0.1<!--RP10End--> |
+| osFullName | string | Yes| System version. The version number is in the format of **OpenHarmony-x.x.x.x**<!--RP12-->, where **x** is a digit.<!--RP12End--><br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Example: <!--RP10-->Openharmony-5.0.0.1<!--RP10End--> |
 | majorVersion | number | Yes| Major version number, which increments with the main version. The value is the first digit in **osFullName**. You are advised to use **deviceInfo.majorVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.<br>Example: 5|
 | seniorVersion | number | Yes| Senior version number, which increments with architecture and feature updates. The value is the second digit in **osFullName**. You are advised to use **deviceInfo.seniorVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.<br>Example: 0|
 | featureVersion | number | Yes| Feature version number. The value is the third digit in **osFullName**. You are advised to use **deviceInfo.featureVersion** instead of parsing **osFullName** to obtain the value, facilitating efficiency improvement.<br>Example: 0|
@@ -60,14 +60,14 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | buildHost | string | Yes| Build host.<br>Example: default|
 | buildTime | string | Yes| Build time.<br>Example: default|
 | buildRootHash | string | Yes| Build root hash.<br>Example: default|
-| udid<sup>7+</sup> | string | Yes| Device UDID.<br>**NOTE**<br>The data length is 65 bytes. The UDID can be used as the unique identifier of a device.<br>**Required permission**: ohos.permission.sec.ACCESS_UDID (for system applications and enterprise applications only)<br>Example: 9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412 |
+| udid<sup>7+</sup> | string | Yes| Device UDID.<br>Note: The data length is 65 bytes. The UDID can be used as the unique identifier of a device.<br>**Required permission**: ohos.permission.sec.ACCESS_UDID (for system applications and enterprise applications only)<br>Example: 9D6AABD147XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXE5536412 |
 | distributionOSName<sup>10+</sup> | string | Yes| Distribution OS name.<!--Del--> It is defined by the issuer.<!--DelEnd--><br>Example: OpenHarmony|
 | distributionOSVersion<sup>10+</sup> | string | Yes| Distribution OS version.<!--Del--> It is defined by the issuer.<!--DelEnd--><!--RP11--><!--RP11End--><br>Example: 5.0.0 |
 | distributionOSApiVersion<sup>10+</sup> | number| Yes| Distribution OS API version.<!--Del--> It is defined by the issuer.<!--DelEnd--><br>Example: 50001|
 | distributionOSApiName<sup>13+</sup> | string | Yes| Distribution OS API name.<!--Del--> It is defined by the issuer.<!--DelEnd-->|
 | distributionOSReleaseType<sup>10+</sup> | string | Yes| Distribution OS release type.<!--Del--> It is defined by the issuer.<!--DelEnd--><br>Example: Release|
-| ODID<sup>12+</sup> | string | Yes|Open device identifier.<br>An ODID will be regenerated in the following scenarios:<br>Restore a phone to its factory settings.<br>Uninstall and reinstall all applications with the same **developerId** on one device.<br>An ODID is generated based on the following rules:<br>The value is generated based on the **groupId** parsed from the **developerId** in the signature information. As **groupId.developerId** is the rule, if no **groupId** exists, the **developerId** is used as the **groupId**.<br>Applications with the same **developerId** use the same ODID on one device.<br>Applications with different **developerId**s use different ODIDs on one device.<br>Applications with the same **developerId** use different ODIDs on different devices.<br>Applications with different **developerId**s use different ODIDs on different devices.<br>**NOTE**<br>The data length is 37 bytes.<br>Example: 1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX|
-| diskSN<sup>15+</sup> | string | Yes| Disk SN.<br>**NOTE**<br>This field can be queried only on the 2-in-1 device. For other devices, the query result is empty.<br> **Required permissions**: ohos.permission.ACCESS_DISK_PHY_INFO<br> Example: 2502EM400567|
+| ODID<sup>12+</sup> | string | Yes|Open device identifier.<br>An ODID will be regenerated in the following scenarios:<br>Restore a phone to its factory settings.<br>Uninstall and reinstall all applications with the same **developerId** on one device.<br>An ODID is generated based on the following rules:<br>The value is generated based on the **groupId** parsed from the **developerId** in the signature information. As **groupId.developerId** is the rule, if no **groupId** exists, the **developerId** is used as the **groupId**.<br>Applications with the same **developerId** use the same ODID on one device.<br>Applications with different **developerId**s use different ODIDs on one device.<br>Applications with the same **developerId** use different ODIDs on different devices.<br>Applications with different **developerId**s use different ODIDs on different devices.<br>Note: The data length is 37 bytes (including the terminator).<br>Example: 1234a567-XXXX-XXXX-XXXX-XXXXXXXXXXXX|
+| diskSN<sup>15+</sup> | string | Yes| Disk SN.<br> Note: This field can be queried only on the 2-in-1 device. For other devices, the query result is empty.<br> **Required permissions**: ohos.permission.ACCESS_DISK_PHY_INFO<br> Example: 2502EM400567|
 | performanceClass<sup>19+</sup> | [PerformanceClassLevel](#performanceclasslevel19) | Yes| Device capability level, which is evaluated based on the CPU, memory, storage read/write performance, and screen resolution.|
 | chipType<sup>21+</sup> | string | Yes| CPU chip model.<br> Example: xxxxx|
 | bootCount<sup>21+</sup> | number | Yes| Number of device reboots. If the number cannot be obtained, **–1** is returned.<br> Example: 100|

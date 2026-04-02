@@ -25,7 +25,7 @@
       - [HSP](in-app-hsp.md)
     - Application Management<!--application-package-install-->
       - [Application Installation, Uninstall, and Update](application-package-install-uninstall.md)
-      - [Consistency Verification for Application Installation and Update](multi_module_installation_update_consistency_verification.md)
+      - [Consistency Verification for Application Installation and Update](install-and-update-consistency-verification.md)
   - Application Configuration Files in Stage Model<!--application-configuration-file-stage-->
     - [Overview of Application Configuration Files in Stage Model](application-configuration-file-overview-stage.md)
     - [app.json5 Configuration File](app-configuration-file.md)
@@ -44,12 +44,12 @@
     - [Converting HSP to HAR](hsp-to-har.md)
     - [Converting HAP to HAR](hap-to-har.md)
     - [Integrated HSP](integrated-hsp.md)
-  - [FAQs About Application Packages](common_problem_of_application.md)
+  - [FAQs About Application Packages](common-problem-of-application.md)
   - [Application Package Glossary](application-package-glossary.md)
 - [Resource Categories and Access](resource-categories-and-access.md)
 - Learning ArkTS<!--learning-arkts-->
   - [Getting Started with ArkTS](arkts-get-started.md)
-  - [About This Kit](introduction-to-arkts.md)
+  - [Introduction to ArkTS](introduction-to-arkts.md)
   - [ArkTS Coding Style Guide](arkts-coding-style-guide.md)
   - Migration from TypeScript to ArkTS<!--typescript-to-arkts-migration-->
     - [ArkTS Migration Background](arkts-migration-background.md)
@@ -59,3 +59,5 @@
   - Migration from Other Languages to ArkTS<!--arkts-for-other-languages-->
     - [Migrating from Java to ArkTS](getting-started-with-arkts-for-java-programmers.md)
     - [Migrating from Swift to ArkTS](getting-started-with-arkts-for-swift-programmers.md)
+<!--RP2-->
+<!--RP2End-->

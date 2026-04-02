@@ -5,7 +5,7 @@
 <!--Owner: @rr_cn-->
 <!--Designer: @peterhuangyu-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 场景介绍
 
@@ -71,7 +71,7 @@ API 10开始支持应用卡死时的状态保存。JsError故障时，onSaveStat
 
 - 故障监听指的是通过[errorManager](../reference/apis-ability-kit/js-apis-app-ability-errorManager.md)注册[ErrorObserver](../reference/apis-ability-kit/js-apis-inner-application-errorObserver.md)，监听故障的发生，并通知到监听方。
 
-- 故障恢复指的是[appRecovery](../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md)，及故障发生后，将应用重启恢复到故障之前的状态。
+- 故障恢复指的是[appRecovery](../reference/apis-ability-kit/js-apis-app-ability-appRecovery.md)，即故障发生后，将应用重启恢复到故障之前的状态。
 
 - 故障查询指的是[faultLogger](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md)通过其查询接口获取当前的故障信息。
 
@@ -93,7 +93,7 @@ API 10开始支持应用卡死时的状态保存。JsError故障时，onSaveStat
 | -------- | -------- | -------- | -------- | -------- |
 | [JS_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | 支持 | 支持 | 支持 | 支持 |
 | [APP_FREEZE](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | API18及以上支持 | 支持 | 支持 | 支持 |
-| [CPP_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | 不支持 | 不支持 | 不支持 | 支持 |
+| [CPP_CRASH](../reference/apis-performance-analysis-kit/js-apis-faultLogger.md#faulttype) | 不支持 | 不支持 | API24及以上支持 | 支持 |
 
 这里状态保存指的是故障时状态保存，对于应用卡死场景，开发者可以采用定时保存状态或者在UIAbility切入后台后自动保存的方式最大限度的保护用户数据。
 

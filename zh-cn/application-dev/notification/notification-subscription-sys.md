@@ -27,7 +27,7 @@
 
 ## 接口说明
 
-通知订阅主要接口如下。详细接口介绍请参见[API参考](../reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md)。
+通知订阅主要接口如下。详细接口介绍请参见[@ohos.notificationSubscribe (NotificationSubscribe模块)(系统接口)](../reference/apis-notification-kit/js-apis-notificationSubscribe-sys.md)。
 
 **表1** 通知订阅接口介绍
 

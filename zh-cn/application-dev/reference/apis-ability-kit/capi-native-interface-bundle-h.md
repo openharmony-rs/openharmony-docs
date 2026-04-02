@@ -181,7 +181,7 @@ OH_NativeBundle_ModuleMetadata* OH_NativeBundle_GetModuleMetadata(size_t* size)
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_NativeBundle_ModuleMetadata*](capi-native-bundle-oh-nativebundle-modulemetadata.md) | 返回模块元数据数组，如果返回的对象为NULL，则表示获取失败。<br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
+| [OH_NativeBundle_ModuleMetadata](capi-native-bundle-oh-nativebundle-modulemetadata.md)* | 返回模块元数据数组，如果返回的对象为NULL，则表示获取失败。<br> 失败的可能原因是应用程序地址空间已满，导致空间分配失败。 |
 
 ### OH_NativeBundle_GetAbilityResourceInfo()
 

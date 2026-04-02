@@ -23,7 +23,6 @@ import { networkSecurity } from '@kit.NetworkKit';
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -78,7 +77,7 @@ Defines the certificate data.
 
 certVerification(cert: CertBlob, caCert?: CertBlob): Promise\<number\>
 
-Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application. This API uses a promise to return the result.
+Verifies the certificate passed by the application using the preset CA certificate and the CA certificate installed by the user in the certificate management. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -128,7 +127,6 @@ For details about the error codes, see [Network Security Error Codes](errorcode-
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define certificate blobs
 const cert:networkSecurity.CertBlob = {
@@ -160,7 +158,7 @@ networkSecurity.certVerification(cert, caCert)
 
 certVerificationSync(cert: CertBlob, caCert?: CertBlob): number
 
-Obtains the preset CA certificate and custom CA certificate from the certificate management module, and verifies the certificate passed by the application. This API returns the result synchronously.
+Verifies the certificate passed by the application using the preset CA certificate and the CA certificate installed by the user in the certificate management. This API returns the result synchronously.
 
 **System capability**: SystemCapability.Communication.NetStack
 
@@ -210,7 +208,6 @@ For details about the error codes, see [Network Security Error Codes](errorcode-
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 // Create certificate blobs
 const cert: networkSecurity.CertBlob = {
@@ -269,7 +266,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let result: boolean = networkSecurity.isCleartextPermitted();
@@ -313,7 +309,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { networkSecurity } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let result: boolean = networkSecurity.isCleartextPermittedByHostName("xxx");

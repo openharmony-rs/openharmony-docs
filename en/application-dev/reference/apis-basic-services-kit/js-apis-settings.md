@@ -89,7 +89,7 @@ Provides data items for setting the general information about the device.
 | CONTACT_METADATA_SYNC_STATUS<sup>(deprecated21)</sup>     | string | Yes | Whether contacts metadata synchronization is enabled.<br>- **true**: Contacts metadata synchronization is enabled.<br>- **false**: Contacts metadata synchronization is disabled. (This constant is deprecated.)                                                                               |
 | DEVICE_NAME                                               | string | Yes | Device name.                                                                                                                                            |
 | USB_STORAGE_STATUS<sup>(deprecated21)</sup>               | string | Yes | Whether USB mass storage is enabled.<br>- **true**: USB mass storage is enabled.<br>- **false**: USB mass storage is disabled. (This constant is deprecated.)                                                                   |
-| DEBUGGER_WAITING<sup>(deprecated21)</sup>                 | string | Yes | Whether the device waits for the debugger when starting an application to debug.<br>- **1**: The device waits for the debugger.<br>- **0**:The device does not wait for the debugger and the application runs normally. (This constant is deprecated.)                                                         |
+| DEBUGGER_WAITING<sup>(deprecated21)</sup>                 | string | Yes | Whether the device waits for the debugger when starting an application to debug.<br>- **1**: The device waits for the debugger.<br>- **0**: The device does not wait for the debugger and the application runs normally. (This constant is deprecated.)                                                         |
 | DEBUG_APP_PACKAGE<sup>(deprecated21)</sup>                | string | Yes | Bundle name of the application to be debugged. (This constant is deprecated.)                                                                                                                  |
 | ACCESSIBILITY_STATUS<sup>(deprecated21)</sup>             | string | Yes | Whether accessibility is enabled.<br>- **1**: Accessibility is enabled.<br>- **0**: Accessibility is disabled. (This constant is deprecated.)                                                                                      |
 | ACTIVATED_ACCESSIBILITY_SERVICES<sup>(deprecated21)</sup> | string | Yes | List of activated accessibility features. (This constant is deprecated.)                                                                                                                           |
@@ -150,19 +150,19 @@ Provides data items for setting the sound effects.
 
 **System capability**: SystemCapability.Applications.Settings.Core
 
-| Name                                                   | Type  | Read-Only| Description                                                                        |
-|-------------------------------------------------------| ------ |----|----------------------------------------------------------------------------|
-| VIBRATE_WHILE_RINGING<sup>(deprecated21)</sup>        | string | Yes | Whether the device vibrates when it is ringing for an incoming call. This property is applicable to the phone and settings applications<br>and affects only the scenario where the device rings for an incoming call. It does not affect any other application or scenario. (This constant is deprecated.)|
-| DEFAULT_ALARM_ALERT<sup>(deprecated21)</sup>          | string | Yes | Storage area of the system default alarms and alerts. (This constant is deprecated.)                                                              |
-| DTMF_TONE_TYPE_WHILE_DIALING<sup>(deprecated21)</sup> | string | Yes | Type of the dual tone multi-frequency (DTMF) tone played while dialing.<br>- **0**: normal short tone.<br>- **1**: long tone. (This constant is deprecated.)                |
-| DTMF_TONE_WHILE_DIALING<sup>(deprecated21)</sup>      | string | Yes | Whether the DTMF tone is played when dialing.<br>- **1**: DTMF tone is played when dialing.<br>- **0**: DTMF tone is not played when dialing. (This constant is deprecated.)                        |
-| AFFECTED_MODE_RINGER_STREAMS<sup>(deprecated21)</sup> | string | Yes | Effect on audio streams determined by changes in the ringing mode and Do Not Disturb (DND) mode. If you want a specific audio stream to be affected by changes of the ringing mode and DND mode, set the corresponding bit to **1**. (This constant is deprecated.)           |
-| AFFECTED_MUTE_STREAMS<sup>(deprecated21)</sup>        | string | Yes | Audio streams affected by the mute mode. If you want a specific audio stream to remain muted in mute mode, set the corresponding bit to **1**. (This constant is deprecated.)                                    |
-| DEFAULT_NOTIFICATION_SOUND<sup>(deprecated21)</sup>   | string | Yes | Storage area of the system default notification tone. (This constant is deprecated.)                                                             |
-| DEFAULT_RINGTONE<sup>(deprecated21)</sup>             | string | Yes | Storage area of the system default ringtone. (This constant is deprecated.)                                                              |
-| SOUND_EFFECTS_STATUS<sup>(deprecated21)</sup>         | string | Yes | Whether the sound feature is available.<br>- **0**: The sound feature is not available.<br>- **1**: The sound feature is available. (This constant is deprecated.)                                |
-| VIBRATE_STATUS<sup>(deprecated21)</sup>               | string | Yes | Whether the device vibrates for an event. This attribute is used inside the system.<br>- **1**: The device vibrates for an event.<br>- **0**: The device does not vibrate for an event. (This constant is deprecated.)       |
-| HAPTIC_FEEDBACK_STATUS<sup>(deprecated21)</sup>       | string | Yes | Whether haptic feedback is enabled.<br>- **true**: Haptic feedback is enabled.<br>- **false**: Haptic feedback is disabled. (This constant is deprecated.)               |
+| Name                                                   | Type  | Read-Only| Description                                                                           |
+|-------------------------------------------------------| ------ |----|-------------------------------------------------------------------------------|
+| VIBRATE_WHILE_RINGING<sup>(deprecated21)</sup>        | string | Yes | Whether the device vibrates when it is ringing for an incoming call. This property is applicable to the phone and settings applications<br>and affects only the scenario where the device rings for an incoming call. It does not affect any other application or scenario. (This constant is deprecated.) |
+| DEFAULT_ALARM_ALERT<sup>(deprecated21)</sup>          | string | Yes | Storage area of the system default alarms and alerts. (This constant is deprecated.)                                                       |
+| DTMF_TONE_TYPE_WHILE_DIALING<sup>(deprecated21)</sup> | string | Yes | Type of the dual tone multi-frequency (DTMF) tone played while dialing.<br>- **0**: normal short tone.<br>- **1**: long tone. (This constant is deprecated.)         |
+| DTMF_TONE_WHILE_DIALING<sup>(deprecated21)</sup>      | string | Yes | Whether the DTMF tone is played when dialing.<br>- **1**: DTMF tone is played when dialing.<br>- **0**: DTMF tone is not played when dialing. (This constant is deprecated.)                 |
+| AFFECTED_MODE_RINGER_STREAMS<sup>(deprecated21)</sup> | string | Yes | Effect on audio streams determined by changes in the ringing mode and Do Not Disturb (DND) mode. If you want a specific audio stream to be affected by changes of the ringing mode and DND mode, set the corresponding bit to **1**. (This constant is deprecated.)    |
+| AFFECTED_MUTE_STREAMS<sup>(deprecated21)</sup>        | string | Yes | Audio streams affected by the mute mode. If you want a specific audio stream to remain muted in mute mode, set the corresponding bit to **1**. (This constant is deprecated.)                             |
+| DEFAULT_NOTIFICATION_SOUND<sup>(deprecated21)</sup>   | string | Yes | Storage area of the system default notification tone. (This constant is deprecated.)                                                      |
+| DEFAULT_RINGTONE<sup>(deprecated21)</sup>             | string | Yes | Storage area of the system default ringtone. (This constant is deprecated.)                                                       |
+| SOUND_EFFECTS_STATUS<sup>(deprecated21)</sup>         | string | Yes | Whether the sound feature is available.<br>- **0**: The sound feature is not available.<br>- **1**: The sound feature is available. (This constant is deprecated.)                         |
+| VIBRATE_STATUS<sup>(deprecated21)</sup>               | string | Yes | Whether the device vibrates for an event. This attribute is used inside the system.<br>- **1**: The device vibrates for an event.<br>- **0**: The device does not vibrate for an event. (This constant is deprecated.)|
+| HAPTIC_FEEDBACK_STATUS<sup>(deprecated21)</sup>       | string | Yes | Whether haptic feedback is enabled.<br>- **true**: Haptic feedback is enabled.<br>- **false**: Haptic feedback is disabled. (This constant is deprecated.)        |
 
 ## TTS
 
@@ -522,7 +522,7 @@ Obtains the value of a data item. Unlike **getValue**, this API returns the resu
 import { settings } from '@kit.BasicServicesKit';
 import { common } from '@kit.AbilityKit';
 
-// Update the value of .SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
+// Update the value of SCREEN_BRIGHTNESS_STATUS (this data item already exists in the database).
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_STATUS, '100',  settings.domainName.DEVICE_SHARED);
@@ -743,7 +743,7 @@ import { common } from '@kit.AbilityKit';
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 settings.openNetworkManagerSettings(context).then((status) => {
-  console.info(`callback:return whether setings is open.`)
+  console.info(`callback:return whether settings is open.`);
 });
 ```
 
@@ -1108,6 +1108,8 @@ openInputMethodSettings(context: Context): void
 
 Open the input method settings page.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Applications.Settings.Core
 
 **Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
@@ -1145,6 +1147,8 @@ openInputMethodDetail(context: Context, bundleName: string, inputMethodId: strin
 
 Opens the input method details page.
 
+**Model restriction**: This API can be used only in the stage model.
+
 **System capability**: SystemCapability.Applications.Settings.Core
 
 **Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
@@ -1178,4 +1182,88 @@ const context: Context = this.getUIContext().getHostContext() as common.UIAbilit
 let bundleName: string = "target inputMethod bundle name";
 let inputMethodId: string = "target inputMethod id";
 settings.openInputMethodDetail(context, bundleName, inputMethodId);
+```
+
+## settings.openBiometricsSettingsPage<sup>24+</sup>
+
+openBiometricsSettingsPage(context: Context): void
+
+Opens the biometric recognition and password settings page.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones, tablets, and PCs/2-in-1 devices. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openBiometricsSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the biometrics and password settings page. code: ${err?.code}, message: ${err?.message}`);
+}
+```
+
+## settings.openNfcSettingsPage<sup>24+</sup>
+
+openNfcSettingsPage(context: Context): void
+
+Opens the NFC settings page.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Applications.Settings.Core
+
+**Device behavior differences**: This API can be properly called on phones and tablets. If it is called on other device types, it has no effect.
+
+**Parameters**
+
+| Name  | Type                  | Mandatory| Description                                                                                                                                        |
+| -------- | ---------------------- | ---- |--------------------------------------------------------------------------------------------------------------------------------------------|
+| context  | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes| Application context. Only UIAbilityContext and ExtensionContext are supported.<br>For details about the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
+
+**Error codes**
+
+For details about the error codes, see [Settings Error Codes](errorcode-settings.md).
+
+| ID   | Error Message                   |
+|----------|-------------------------|
+| 16900010 | Parameter error.        |
+| 16900020 | Failed to open the settings page via redirection. |
+
+**Example**
+
+```ts
+import { settings } from '@kit.BasicServicesKit';
+import { common } from '@kit.AbilityKit';
+
+// Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
+const context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+try {
+  settings.openNfcSettingsPage(context);
+} catch (err) {
+  console.error(`Failed to open the NFC settings page. code: ${err?.code}, message: ${err?.message}`);
+}
 ```

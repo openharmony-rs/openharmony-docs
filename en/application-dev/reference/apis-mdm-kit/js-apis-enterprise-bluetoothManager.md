@@ -10,13 +10,13 @@ The **bluetoothManager** module provides Bluetooth management capabilities, incl
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 >
-> - The global restriction policies are provided by **restrictions**. To disable Bluetooth globally, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
+> The global restriction policies are provided by **restrictions**. To disable Bluetooth globally, see [@ohos.enterprise.restrictions](js-apis-enterprise-restrictions.md).
 
 ## Modules to Import
 
@@ -97,6 +97,7 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -150,6 +151,7 @@ Removes allowed Bluetooth devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -262,6 +264,8 @@ A policy conflict is reported when this API is called in the following scenarios
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
+
 **Parameters**
 
 | Name   | Type                                                   | Mandatory| Description                                               |
@@ -312,6 +316,8 @@ Removes disallowed Bluetooth devices. If some Bluetooth devices are removed from
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -404,20 +410,6 @@ try {
 }
 ```
 
-## BluetoothInfo
-
-Represents the device Bluetooth information.
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-**Model restriction**: This API can be used only in the stage model.
-
-| Name           | Type                                                        | Read-Only| Optional| Description                    |
-| --------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
-| name            | string                                                       | No  | No| Bluetooth name of the device.    |
-| state           | [access.BluetoothState](../apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate) | No  | No| Bluetooth state of the device.    |
-| connectionState | [constant.ProfileConnectionState](../apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) | No  | No| Bluetooth profile connection state of the device.|
-
 ## bluetoothManager.turnOnBluetooth<sup>20+</sup>
 
 turnOnBluetooth(admin: Want): void
@@ -430,6 +422,7 @@ Enables Bluetooth. After Bluetooth is enabled, the user can manually disable it.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -479,6 +472,7 @@ Disables Bluetooth. After Bluetooth is disabled, the user can manually enable it
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -527,6 +521,8 @@ Adds disallowed Bluetooth protocols. Specified users cannot use the disallowed B
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -579,6 +575,8 @@ Removes disallowed Bluetooth protocols. After removing some protocols, the user 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
 **Parameters**
 
@@ -675,6 +673,20 @@ try{
     console.error(`Failed to get disallowed bluetooth protocols. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## BluetoothInfo
+
+Represents the device Bluetooth information.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name           | Type                                                        | Read-Only| Optional| Description                    |
+| --------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------ |
+| name            | string                                                       | No  | No| Bluetooth name of the device.    |
+| state           | [access.BluetoothState](../apis-connectivity-kit/js-apis-bluetooth-access.md#bluetoothstate) | No  | No| Bluetooth state of the device.    |
+| connectionState | [constant.ProfileConnectionState](../apis-connectivity-kit/js-apis-bluetooth-constant.md#profileconnectionstate) | No  | No| Bluetooth profile connection state of the device.|
 
 ## Protocol<sup>20+</sup>
 

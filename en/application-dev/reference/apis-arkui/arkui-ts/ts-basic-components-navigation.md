@@ -12,7 +12,7 @@ The **Navigation** component is the root view container for navigation. It typic
 >
 > - This component is supported since API version 8. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> - Since API version 11, this component supports the safe area attribute by default, with the default attribute value being **expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])**. You can override this attribute to change the default behavior. In earlier versions, you need to use the [expandSafeArea](ts-universal-attributes-expand-safe-area.md) attribute to implement the safe area feature.
+> - Since API version 11, this component supports the safe area attribute by default, with the default attribute value being **expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])**. You can override this attribute to change the default behavior. In earlier versions, you need to use the [expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea) attribute to implement the safe area feature.
 >
 > - When [NavBar](#navbar12) is nested within a **Navigation** component, the lifecycle of the inner **NavDestination** component does not synchronize with the outer **NavDestination** component or the lifecycle of a [modal](ts-universal-attributes-modal-transition.md).
 >
@@ -106,7 +106,7 @@ Sets the page title.
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | [ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8)&nbsp;\|&nbsp;[NavigationCommonTitle](#navigationcommontitle9)<sup>9+</sup>&nbsp;\|&nbsp;[NavigationCustomTitle](#navigationcustomtitle9)<sup>9+</sup> | Yes  | Page title. When the NavigationCustomTitle type is used to set the height, [titleMode](#titlemode) does not take effect.<br>When the title string is too long:<br>- If no subtitle is set, the string is scaled down, wrapped in two lines, and then clipped.<br> - If a subtitle is set, the subtitle is scaled down and then clipped.|
-| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | No  | Title bar options.                                                |
+| options<sup>11+</sup> | [NavigationTitleOptions](#navigationtitleoptions11) | No  | Defines the title bar options. Title bar options include the background color, background blur style, blur options, background properties, layout style, and padding at the start and end of the title bar, as well as main title attribute modifier, subtitle attribute modifier, and whether to respond when the device is in semi-folded mode..                                                |
 
 ### menus
 
@@ -188,7 +188,7 @@ Sets the content of the toolbar. If this attribute is not set, no toolbar is dis
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value   | &nbsp;Array&lt;[ToolbarItem](#toolbaritem10)&gt; &nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | Yes  | Content of the toolbar. When configured with Array&lt;[ToolbarItem](#toolbaritem10)&gt;, the toolbar follows the rules below:<br>Toolbar items are evenly distributed on the bottom toolbar, with text and icons evenly spaced in each content area.<br>In portrait mode, the toolbar shows a maximum of five icons, with any additional icons placed into an automatically generated **More** icon. In landscape mode, toolbar behavior depends on the display mode: <br>- If the display mode is [Split](#navigationmode9), the toolbar maintains the portrait mode. <br>- If the display mode is [Stack](#navigationmode9), the toolbar must be used together with Array&lt;[NavigationMenuItem](#navigationmenuitem)&gt; of the **menus** attribute; in this configuration, the bottom toolbar is automatically hidden, and all items on the toolbar are relocated to the menu in the upper right corner of the screen.<br>When configured with [CustomBuilder](ts-types.md#custombuilder8), the toolbar does not follow the above rules.|
-| options<sup>11+</sup> | [NavigationToolbarOptions](#navigationtoolbaroptions11) | No  | Toolbar options.                                               |
+| options<sup>11+</sup> | [NavigationToolbarOptions](#navigationtoolbaroptions11) | No  | Toolbar options. Toolbar options include the background color, background blur style and blur option, background properties, and layout mode of the toolbar, as well as whether to hide the toolbar text, and options for the toolbar's more button menu..                                               |
 
 ### hideToolBar
 
@@ -592,6 +592,8 @@ Sets the divider style in the split-column mode of the **Navigation** component.
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -1557,9 +1559,9 @@ Creates a **NavPathInfo** object.
 | name  | string  | Yes   | Name of the navigation destination page. The name matches the name in the following route tables:<br>1. Custom route table, which is passed via the [navDestination](#navdestination10) method.<br>2. System route table, which is set by **name** in **routerMap**. For details, please refer to [Example 2: Using NavPathStack APIs](#example-2-using-navpathstack-apis).|
 | param | unknown | Yes   | Detailed parameters for the custom **NavDestination** page. The **unknown** type can be replaced with a user-defined type.|
 | onPop<sup>11+</sup> | Callback\<[PopInfo](#popinfo11)> | No| Callback returned when [pop](#pop11), [popToName](#poptoname11), or [popToIndex](#poptoindex11) is called on the navigation destination page. It is triggered only when the **result** parameter is set in [pop](#pop11), [popToName](#poptoname11), or [popToIndex](#poptoindex11).|
-| isEntry<sup>12+</sup> | boolean | No| Whether the navigation destination page is the entry page.<br>**true**: yes; **false**: no<br>Default value: **false**<br>The value of this parameter is reviewed or reset under the following conditions:<br>- When a global return event is triggered on the current navigation destination page.<br> - When the application is switched to the background.<br>**NOTE**<br>The navigation destination page serving as an entry does not respond to the in-app global back events; instead, it directly triggers the global back event between applications.|
+| isEntry<sup>12+</sup> | boolean | No| Whether the navigation destination page is the entry page.<br>**true**: yes; **false**: no<br>Default value: **false**<br>The value of this parameter is reviewed or reset under the following conditions:<br>1. A global return event is triggered on the current navigation destination page.<br>2. The application is switched to the background.<br>**NOTE**<br>The navigation destination page serving as an entry does not respond to the in-app global back events; instead, it directly triggers the global back event between applications.|
 
-### Attributes
+### Properties
 
 Provides parameters of **NavPathInfo**.
 
@@ -1570,7 +1572,7 @@ Provides parameters of **NavPathInfo**.
 | name  | string  | No   | No   | Name of the navigation destination page. The name matches the name in the following route tables:<br>1. Custom route table, which is passed via the [navDestination](#navdestination10) method.<br>2. System route table, which is set by **name** in **routerMap**. For details, please refer to [Example 2: Using NavPathStack APIs](#example-2-using-navpathstack-apis).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | param | unknown | No   | Yes   | Detailed parameters for the custom **NavDestination** page. The **unknown** type can be replaced with a user-defined type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | onPop<sup>11+</sup> | Callback\<[PopInfo](#popinfo11)> | No| Yes   | Callback returned when [pop](#pop11), [popToName](#poptoname11), or [popToIndex](#poptoindex11) is called on the navigation destination page. It is triggered only when the **result** parameter is set in [pop](#pop11), [popToName](#poptoname11), or [popToIndex](#poptoindex11).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| isEntry<sup>12+</sup> | boolean | No| Yes   | Whether the navigation destination page is the entry page.<br>**true**: yes; **false**: no<br>Default value: **false**<br>The value of this parameter is reviewed or reset under the following conditions:<br>- When a global back event is triggered on the current navigation destination page.<br> - When the application is switched to the background.<br>**NOTE**<br>The navigation destination page serving as an entry does not respond to the in-app global back events; instead, it directly triggers the global back event between applications.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| isEntry<sup>12+</sup> | boolean | No| Yes   | Whether the navigation destination page is the entry page.<br>**true**: yes; **false**: no<br>Default value: **false**<br>The value of this parameter is reviewed or reset under the following conditions:<br>1. A global back event is triggered on the current navigation destination page.<br>2. The application is switched to the background.<br>**NOTE**<br>The navigation destination page serving as an entry does not respond to the in-app global back events; instead, it directly triggers the global back event between applications.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | navDestinationId<sup>19+</sup>  | string  | No   | Yes   | Unique ID of the navigation destination page. This ID is system-generated and globally unique. It can be obtained using the [getPathStack](#getpathstack19) API and should not be manually reassigned.<br>**Atomic service API**: This API can be used in atomic services since API version 19.  |
 
 ## PopInfo<sup>11+</sup>
@@ -1623,7 +1625,7 @@ Implements a custom transition animation proxy.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-### Attributes
+### Properties
 
 Provides parameters of **NavigationTransitionProxy**.
 
@@ -1853,7 +1855,7 @@ Color of the navigation divider and the upper and lower margins of the **Navigat
 
 | Name     | Type                                      | Read-Only| Optional| Description     |
 | ------- | ---------------------------------------- | ---- | ---- | -------- |
-| color       | [ResourceColor](ts-types.md#resourcecolor) | No| Yes  | Color of the divider.<br>Default value: **#33182431**, indicating gray |
+| color       | [ResourceColor](ts-types.md#resourcecolor) | No| Yes  | Color of the divider.<br>Default value: **#33000000**, indicating gray |
 | startMargin | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the top of the sidebar.<br>Default value: **0**<br>Unit: vp<br>Value range: [0, +∞)|
 | endMargin   | [Length](ts-types.md#length)        | No| Yes  | Distance between the divider and the bottom of the sidebar.<br>Default value: **0**<br>Unit: vp<br>Value range: [0, +∞)|
 
@@ -1898,7 +1900,7 @@ Display mode of the navigation page. When **Navigation** is displayed in split-c
 
 > **NOTE**
 >
-> For simplicity, **calcNavBarWidth** is defined as follows: Component width – minContentWidth – Divider width (1 vp)
+> For simplicity, **calcNavBarWidth** is defined as follows: Component width – minContentWidth – Divider width (1 px)
 
 ## NavigationOperation<sup>11+</sup>
 

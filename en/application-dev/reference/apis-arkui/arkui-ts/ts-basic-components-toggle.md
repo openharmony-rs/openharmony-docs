@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The component provides the check box style, status button style, and switch style.
+The **Toggle** component provides a clickable element in the check box, button, or switch type.
 
 >  **NOTE**
 >
@@ -14,7 +14,7 @@ The component provides the check box style, status button style, and switch styl
 
 ## Child Components
 
-This component can contain child components only when ToggleType is set to Button.
+This component can contain child components only when **ToggleType** is set to **Button**.
 
 ## APIs
 
@@ -49,11 +49,11 @@ Options of the toggle.
 | Name             | Type                             | Read-Only| Optional| Description                                                        |
 | ----------------- | --------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | type<sup>8+</sup> | [ToggleType](#toggletype) | No  | No  | Type of the toggle.<br>Default value: **ToggleType.Switch**<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| isOn<sup>8+</sup> | boolean                           | No  | Yes  | Whether the toggle is turned on.<br>true: yes; false: no.<br>Default value: **false**<br>This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| isOn<sup>8+</sup> | boolean                           | No  | Yes  | Whether the toggle is turned on.<br>**true**: on. **false**: off.<br>Default value: **false**<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This parameter supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## ToggleType
 
-Toggle style.
+Enumerates toggle types.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -61,11 +61,11 @@ Toggle style.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
-| Name    | Description                                                        |
-| -------- | ------------------------------------------------------------ |
-| Checkbox | Check box type.<br>**NOTE**<br>Since API version 11, the default style of the **Checkbox** component is changed from rounded square to circle.<br>The default value of the universal attribute [margin](ts-universal-attributes-size.md#margin) is as follows:<br>{<br> top: '14px',<br> right: '14px',<br> bottom: '14px',<br> left: '14px'<br> }.<br>Default size:<br>{width:'20vp', height:'20vp'}|
-| Switch   | Switch type.<br>**NOTE**<br>The default value of the universal attribute [margin](ts-universal-attributes-size.md#margin) is as follows:<br>{<br> top: '6px',<br> right: '14px',<br> bottom: '6px',<br> left: '14px'<br> }.<br>Default size:<br>{width:'36vp', height:'20vp'}|
-| Button   | Button style. If the text is set for the child component, the text content is displayed in the button. The default height is 28 vp, and there is no default width.|
+| Name    | Value  | Description                                                        |
+| -------- | ---- | ------------------------------------------------------------ |
+| Checkbox | 0    | Check box type.<br>**NOTE**<br>Since API version 11, the default style of the **Checkbox** component is changed from rounded square to circle.<br>The default value of the universal attribute [margin](ts-universal-attributes-size.md#margin) is as follows:<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }.<br>Default size:<br>{width:'20vp', height:'20vp'}|
+| Switch   | 1    | Switch type.<br>**NOTE**<br>The default value of the universal attribute [margin](ts-universal-attributes-size.md#margin) is as follows:<br>{<br>&nbsp;top: '6px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '6px',<br>&nbsp;left: '14px'<br> }.<br>Default size:<br>{width:'36vp', height:'20vp'}|
+| Button   | 2    | Status button type. If child content contains text, the text is displayed on the button. The default height is 28 vp, and there is no default width.|
 
 ## Attributes
 
@@ -75,7 +75,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 selectedColor(value: ResourceColor)
 
-Sets the background color of the component when it is turned on.
+Background color of the component when it is turned on.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -87,7 +87,7 @@ Sets the background color of the component when it is turned on.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the component when it is turned on.<br>Default value:<br>When ToggleType is set to Switch, the default value is $r('sys.color.ohos_id_color_component_activated').<br>When ToggleType is set to Checkbox, the default value is $r('sys.color.ohos_id_color_component_activated').<br>When **ToggleType** is set to **Button**, the default value is **$r('sys.color.ohos_id_color_component_activated')** with the opacity of **$r('sys.color.ohos_id_color_text_highlight_bg')**.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the component when it is turned on.<br>Default value:<br>When **ToggleType** is set to **Switch**, the default value is **$r('sys.color.ohos_id_color_emphasize')**.<br>When **ToggleType** is set to **Checkbox**, the default value is **$r('sys.color.ohos_id_color_emphasize')**.<br>When **ToggleType** is set to **Button**, the default value is **$r('sys.color.ohos_id_color_emphasize')** with the opacity of **$r('sys.float.ohos_id_alpha_highlight_bg')**.|
 
 ### switchPointColor
 
@@ -141,7 +141,7 @@ Creates a content modifier.
 
 ## SwitchStyle<sup>12+</sup>
 
-Switch style.
+Describes the switch type.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -150,7 +150,7 @@ Switch style.
 | Name             | Type                                       | Read-Only| Optional| Description                                                        |
 | ----------------- | ------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | pointRadius       | number \|  [Resource](ts-types.md#resource) | No  | Yes  | Radius of the circular slider when the component is of the **Switch** type. The unit is vp.<br>**NOTE**<br>Percentage values are not supported. The value specified is used only when it is greater than or equal to 0.<br>If the value is not specified or the specified one is less than 0, the radius is set using the following formula:<br>(Component height (in vp)/2) - (2 vp x Component height (in vp)/20 vp)|
-| unselectedColor   | [ResourceColor](ts-types.md#resourcecolor)  | No  | Yes  | Background color of the component when it is of the **Switch** type and is disabled.<br>Default value: **0x337F7F7F** (applies to both dark and light modes). Starting from API version 20, when [optimizing color mode switching overhead](../../../ui/ui-dark-light-color-adaptation.md#optimizing-color-mode-switching-overhead) is enabled, the default value is 0x337F7F7F in light mode and 0x19000000 in dark mode.  |
+| unselectedColor   | [ResourceColor](ts-types.md#resourcecolor)  | No  | Yes  | Background color of the component when it is of the **Switch** type and is disabled.<br>Default value: **0x337F7F7F** (applies to both dark and light modes). Starting from API version 20, when [optimizing color mode switching overhead](../../../ui/ui-dark-light-color-adaptation.md#optimizing-color-mode-switching-overhead) is enabled, the default value is 0x19000000 (black with 10% transparency) in light mode and 0x19FFFFFF (white with 10% transparency) in dark mode.  |
 | pointColor        | [ResourceColor](ts-types.md#resourcecolor)  | No  | Yes  | Color of the circular slider when the component is of the **Switch** type.<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')**|
 | trackBorderRadius | number \|  [Resource](ts-types.md#resource) | No  | Yes  | Radius of the slider track border corners when the component is of the **Switch** type. The unit is vp.<br>**NOTE**<br>This parameter cannot be set in percentage. If the value specified is less than 0, the radius is set using the default value formula. If the value specified is greater than half of the component height, the latter is used. In other cases, the value specified is used.<br>If the value is not specified or the specified one is less than 0, the radius is set using the default value formula.<br>Default value formula: Component height (in vp)/2|
 
@@ -160,7 +160,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onChange
 
-onChange(callback: (isOn: boolean) =&gt; void)
+onChange(callback:&nbsp;(isOn:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 
 Triggered when the toggle status changes.
 
@@ -174,7 +174,7 @@ Triggered when the toggle status changes.
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isOn   | boolean | Yes  | Toggle status.<br>true: The toggle is turned on. false: The toggle is turned off.|
+| isOn   | boolean | Yes  | Toggle status.<br>**true**: The toggle is turned on. **false**: The toggle is turned off.|
 
 ## ToggleConfiguration<sup>12+</sup>
 
@@ -186,9 +186,9 @@ You need a custom class to implement the **ContentModifier** API. This API inher
 
 | Name | Type   |    Read-Only   |    Optional   |  Description             |
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
-| isOn   | boolean| No | No| Whether the toggle is turned on.<br>true: The toggle is turned on. false: The toggle is turned off.<br>Default value: **false**|
-| enabled | boolean | No| No| Whether the toggle is enabled. When enabled, the toggle allows state switching.<br>true: The status can be switched. false: The status cannot be switched.<br>Default value: **true**|
-| triggerChange |Callback\<boolean>| No| No|Callback invoked when the toggle's state changes.<br>true: The switch is turned on. false: The switch is turned off.|
+| isOn   | boolean| No | No| Whether the toggle is turned on.<br>**true**: The toggle is turned on. **false**: The toggle is turned off.<br>Default value: **false**|
+| enabled | boolean | No| No| Whether the toggle is enabled for state switching.<br>**true**: The state can be changed. **false**: The state cannot be changed.<br>Default value: **true**|
+| triggerChange |Callback\<boolean>| No| No|Callback invoked when the toggle's state changes.<br>**true**: The toggle is turned on. **false**: The toggle is turned off.|
 
 
 ## Example
@@ -265,7 +265,7 @@ struct ToggleExample {
 
 ### Example 2: Customizing the Toggle Style
 
-This example demonstrates how to customize the switch style of the Toggle component, including the radius of the round slider, background color in the off state, color of the round slider, and rounded corners of the track.
+This example implements a toggle of the **Switch** type with custom settings, including the radius and color of the circular slider, background color in the off state, and radius of the slider track border corners.
 
 ```ts
 // xxx.ets
@@ -307,7 +307,7 @@ struct ToggleExample {
 
 ### Example 3: Implementing a Custom Toggle Style
 
-This example demonstrates how to customize the toggle style. The toggle button can be used to switch the background color. If you click the blue circle button, the background color changes to blue. If you click the yellow circle button, the background color changes to yellow.
+This example shows how to implement a custom toggle style. The toggle button switches the background color. Clicking the blue circle changes the background to blue. Clicking the yellow circle changes it to yellow.
 
 ```ts
 // xxx.ets

@@ -94,7 +94,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 
   **Figure 5** Vertical alignment of child elements in the Column container
 
-![vertial-arrangement-child-column](figures/vertial-arrangement-child-column.png)
+![vertical-arrangement-child-column](figures/vertical-arrangement-child-column.png)
 
 - **justifyContent(FlexAlign.Start)** (default value): The elements are vertically aligned with each other toward the start edge of the container.
 
@@ -215,7 +215,7 @@ In the layout container, you can use the [justifyContent](../reference/apis-arku
 
   **Figure 6** Horizontal alignment of child elements in the Row container 
 
-![vertial-arrangement-child-row](figures/vertial-arrangement-child-row.png)
+![vertical-arrangement-child-row](figures/vertical-arrangement-child-row.png)
 
 - **justifyContent(FlexAlign.Start)** (default value): The elements are horizontally aligned with each other toward the start edge of the container.
 

@@ -43,7 +43,7 @@ dialCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -66,7 +66,7 @@ call.dialCall("138xxxxxxxx", (err: BusinessError) => {
     if (err) {
         console.error(`dialCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`dialCall success.`);
+        console.info(`dialCall success.`);
     }
 });
 ```
@@ -94,7 +94,7 @@ dialCall\(phoneNumber: string, options: DialCallOptions, callback: AsyncCallback
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -123,7 +123,7 @@ call.dialCall("138xxxxxxxx", dialCallOptions, (err: BusinessError) => {
     if (err) {
         console.error(`dialCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`dialCall success.`);
+        console.info(`dialCall success.`);
     }
 });
 ```
@@ -156,7 +156,7 @@ dialCall\(phoneNumber: string, options?: DialCallOptions\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -182,7 +182,7 @@ let dialCallOptions: call.DialCallOptions = {
     dialType: 0
 }
 call.dialCall("138xxxxxxxx", dialCallOptions).then(() => {
-    console.log(`dialCall success.`);
+    console.info(`dialCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`dialCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -209,7 +209,7 @@ muteRinger\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -230,7 +230,7 @@ call.muteRinger((err: BusinessError) => {
     if (err) {
         console.error(`muteRinger fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`muteRinger success.`);
+        console.info(`muteRinger success.`);
     }
 });
 ```
@@ -256,7 +256,7 @@ muteRinger\(\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -272,7 +272,7 @@ muteRinger\(\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.muteRinger().then(() => {
-    console.log(`muteRinger success.`);
+    console.info(`muteRinger success.`);
 }).catch((err: BusinessError) => {
     console.error(`muteRinger fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -300,7 +300,7 @@ answerCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -321,7 +321,7 @@ call.answerCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`answerCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`answerCall success.`);
+        console.info(`answerCall success.`);
     }
 });
 ```
@@ -343,7 +343,7 @@ answerCall(callId?: number\): Promise\<void\>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。<br/>不填该参数则接通最近一通正在响铃的来电。|
+| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API version 9开始为可选参数。<br/>不填该参数则接通最近一通正在响铃的来电。|
 
 **返回值：**
 
@@ -353,7 +353,7 @@ answerCall(callId?: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -371,59 +371,11 @@ answerCall(callId?: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.answerCall(1).then(() => {
-    console.log(`answerCall success.`);
+    console.info(`answerCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
-
-
-## call.answerCall<sup>9+</sup>
-
-answerCall\(callback: AsyncCallback\<void\>\): void
-
-接听来电。使用callback异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限**：ohos.permission.ANSWER_CALL
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回接听电话的结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                     |
-| -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service. |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                          |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.answerCall((err: BusinessError) => {
-    if (err) {
-        console.error(`answerCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.info(`answerCall success.`);
-    }
-});
-```
-
 
 ## call.hangUpCall<sup>9+</sup>
 
@@ -446,7 +398,7 @@ hangUpCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -467,7 +419,7 @@ call.hangUpCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`hangUpCall success.`);
+        console.info(`hangUpCall success.`);
     }
 });
 ```
@@ -489,7 +441,7 @@ hangUpCall\(callId?: number\): Promise\<void\>
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。</br>不填该参数则挂断最近一通正在进行/拨号/连接的通话。|
+| callId | number | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API version 9开始为可选参数。</br>不填该参数则挂断最近一通正在进行/拨号/连接的通话。|
 
 **返回值：**
 
@@ -499,7 +451,7 @@ hangUpCall\(callId?: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -517,57 +469,9 @@ hangUpCall\(callId?: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.hangUpCall(1).then(() => {
-    console.log(`hangUpCall success.`);
+    console.info(`hangUpCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`hangUpCall fail, promise: err->${JSON.stringify(err)}`);
-});
-```
-
-
-## call.hangUpCall<sup>9+</sup>
-
-hangUpCall\(callback: AsyncCallback\<void\>\): void
-
-挂断电话。使用callback异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限**：ohos.permission.ANSWER_CALL
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回挂断电话的结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                     |
-| -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service. |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                          |
-
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.hangUpCall((err: BusinessError) => {
-    if (err) {
-        console.error(`hangUpCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.log(`hangUpCall success.`);
-    }
 });
 ```
 
@@ -593,7 +497,7 @@ rejectCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -615,7 +519,7 @@ call.rejectCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`rejectCall success.`);
+        console.info(`rejectCall success.`);
     }
 });
 ```
@@ -643,7 +547,7 @@ rejectCall\(callId: number, options: RejectMessageOptions, callback: AsyncCallba
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -667,7 +571,7 @@ call.rejectCall(1, rejectMessageOptions, (err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`rejectCall success.`);
+        console.info(`rejectCall success.`);
     }
 });
 ```
@@ -689,7 +593,7 @@ rejectCall\(callId?: number, options?: RejectMessageOptions\): Promise\<void\>
 
 | 参数名  | 类型                                           | 必填 | 说明                                                         |
 | ------- | ---------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callId  | number                                         | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API Version 9开始为可选参数。<br/>不填该参数则拒接最近一通正在响铃的来电。|
+| callId  | number                                         | 否   | 呼叫Id。可以通过订阅callDetailsChange事件获得。从API version 9开始为可选参数。<br/>不填该参数则拒接最近一通正在响铃的来电。|
 | options | [RejectMessageOptions](#rejectmessageoptions7) | 否   | 拒绝消息选项。不填该参数则不会发送拒接短信。|
 
 **返回值：**
@@ -700,7 +604,7 @@ rejectCall\(callId?: number, options?: RejectMessageOptions\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -721,59 +625,11 @@ let rejectMessageOptions: call.RejectMessageOptions = {
     messageContent: "拦截陌生号码"
 }
 call.rejectCall(1, rejectMessageOptions).then(() => {
-    console.log(`rejectCall success.`);
+    console.info(`rejectCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`rejectCall fail, promise: err->${JSON.stringify(err)}`);
 });
 ```
-
-
-## call.rejectCall<sup>9+</sup>
-
-rejectCall\(callback: AsyncCallback\<void\>\): void
-
-拒绝来电。使用callback异步回调。
-
-**系统接口：** 此接口为系统接口。
-
-**需要权限**：ohos.permission.ANSWER_CALL
-
-**系统能力**：SystemCapability.Telephony.CallManager
-
-**参数：**
-
-| 参数名   | 类型                      | 必填 | 说明       |
-| -------- | ------------------------- | ---- | ---------- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 以回调函数的方式返回拒接电话的结果。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                     |
-| -------- | -------------------------------------------- |
-| 201      | Permission denied.                           |
-| 202      | Non-system applications use system APIs.     |
-| 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
-| 8300001  | Invalid parameter value.                     |
-| 8300002  | Operation failed. Cannot connect to service. |
-| 8300003  | System internal error.                       |
-| 8300999  | Unknown error code.                          |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-call.rejectCall((err: BusinessError) => {
-    if (err) {
-        console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
-    } else {
-        console.log(`rejectCall success.`);
-    }
-});
-```
-
 
 ## call.rejectCall<sup>9+</sup>
 
@@ -796,7 +652,7 @@ rejectCall\(options: RejectMessageOptions, callback: AsyncCallback\<void\>\): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -820,7 +676,7 @@ call.rejectCall(rejectMessageOptions, (err: BusinessError) => {
     if (err) {
         console.error(`rejectCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`rejectCall success.`);
+        console.info(`rejectCall success.`);
     }
 });
 ```
@@ -847,7 +703,7 @@ holdCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -868,7 +724,7 @@ call.holdCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`holdCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`holdCall success.`);
+        console.info(`holdCall success.`);
     }
 });
 ```
@@ -900,7 +756,7 @@ holdCall\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -918,7 +774,7 @@ holdCall\(callId: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.holdCall(1).then(() => {
-    console.log(`holdCall success.`);
+    console.info(`holdCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`holdCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -945,7 +801,7 @@ unHoldCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -966,7 +822,7 @@ call.unHoldCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`unHoldCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`unHoldCall success.`);
+        console.info(`unHoldCall success.`);
     }
 });
 ```
@@ -998,7 +854,7 @@ unHoldCall\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -1016,7 +872,7 @@ unHoldCall\(callId: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.unHoldCall(1).then(() => {
-    console.log(`unHoldCall success.`);
+    console.info(`unHoldCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`unHoldCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1043,7 +899,7 @@ switchCall\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -1064,7 +920,7 @@ call.switchCall(1, (err: BusinessError) => {
     if (err) {
         console.error(`switchCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`switchCall success.`);
+        console.info(`switchCall success.`);
     }
 });
 ```
@@ -1096,7 +952,7 @@ switchCall\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -1114,7 +970,7 @@ switchCall\(callId: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.switchCall(1).then(() => {
-    console.log(`switchCall success.`);
+    console.info(`switchCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`switchCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1139,7 +995,7 @@ combineConference\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1160,7 +1016,7 @@ call.combineConference(1, (err: BusinessError) => {
     if (err) {
         console.error(`combineConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`combineConference success.`);
+        console.info(`combineConference success.`);
     }
 });
 ```
@@ -1190,7 +1046,7 @@ combineConference\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1208,7 +1064,7 @@ combineConference\(callId: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.combineConference(1).then(() => {
-    console.log(`combineConference success.`);
+    console.info(`combineConference success.`);
 }).catch((err: BusinessError) => {
     console.error(`combineConference fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1235,7 +1091,7 @@ kickOutFromConference\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1256,7 +1112,7 @@ call.kickOutFromConference(1, (err: BusinessError) => {
     if (err) {
         console.error(`kickOutFromConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`kickOutFromConference success.`);
+        console.info(`kickOutFromConference success.`);
     }
 });
 ```
@@ -1287,7 +1143,7 @@ kickOutFromConference\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1305,7 +1161,7 @@ kickOutFromConference\(callId: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.kickOutFromConference(1).then(() => {
-    console.log(`kickOutFromConference success.`);
+    console.info(`kickOutFromConference success.`);
 }).catch((err: BusinessError) => {
     console.error(`kickOutFromConference fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1330,7 +1186,7 @@ getMainCallId\(callId: number, callback: AsyncCallback\<number\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1351,7 +1207,7 @@ call.getMainCallId(1, (err: BusinessError, data: number) => {
     if (err) {
         console.error(`getMainCallId fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getMainCallId success, data->${JSON.stringify(data)}`);
+        console.info(`getMainCallId success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1381,7 +1237,7 @@ getMainCallId\(callId: number\): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1399,7 +1255,7 @@ getMainCallId\(callId: number\): Promise\<number\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getMainCallId(1).then((data: number) => {
-    console.log(`getMainCallId success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getMainCallId success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getMainCallId fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1424,7 +1280,7 @@ getSubCallIdList\(callId: number, callback: AsyncCallback\<Array\<string\>\>\): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1444,7 +1300,7 @@ call.getSubCallIdList(1, (err: BusinessError, data: Array<string>) => {
     if (err) {
         console.error(`getSubCallIdList fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getSubCallIdList success, data->${JSON.stringify(data)}`);
+        console.info(`getSubCallIdList success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1474,7 +1330,7 @@ getSubCallIdList\(callId: number\): Promise\<Array\<string\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1491,7 +1347,7 @@ getSubCallIdList\(callId: number\): Promise\<Array\<string\>\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getSubCallIdList(1).then((data: Array<string>) => {
-    console.log(`getSubCallIdList success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getSubCallIdList success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getSubCallIdList fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1516,7 +1372,7 @@ getCallIdListForConference\(callId: number, callback: AsyncCallback\<Array\<stri
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1536,7 +1392,7 @@ call.getCallIdListForConference(1, (err: BusinessError, data: Array<string>) => 
     if (err) {
         console.error(`getCallIdListForConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallIdListForConference success, data->${JSON.stringify(data)}`);
+        console.info(`getCallIdListForConference success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1566,7 +1422,7 @@ getCallIdListForConference\(callId: number\): Promise\<Array\<string\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1583,7 +1439,7 @@ getCallIdListForConference\(callId: number\): Promise\<Array\<string\>\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallIdListForConference(1).then((data: Array<string>) => {
-    console.log(`getCallIdListForConference success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallIdListForConference success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallIdListForConference fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1610,7 +1466,7 @@ getCallWaitingStatus\(slotId: number, callback: AsyncCallback\<CallWaitingStatus
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1631,7 +1487,7 @@ call.getCallWaitingStatus(0, (err: BusinessError, data: call.CallWaitingStatus) 
     if (err) {
         console.error(`getCallWaitingStatus fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallWaitingStatus success, data->${JSON.stringify(data)}`);
+        console.info(`getCallWaitingStatus success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -1663,7 +1519,7 @@ getCallWaitingStatus\(slotId: number\): Promise\<CallWaitingStatus\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1681,7 +1537,7 @@ getCallWaitingStatus\(slotId: number\): Promise\<CallWaitingStatus\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallWaitingStatus(0).then((data: call.CallWaitingStatus) => {
-    console.log(`getCallWaitingStatus success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallWaitingStatus success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallWaitingStatus fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1709,7 +1565,7 @@ setCallWaiting\(slotId: number, activate: boolean, callback: AsyncCallback\<void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1730,7 +1586,7 @@ call.setCallWaiting(0, true, (err: BusinessError) => {
     if (err) {
         console.error(`setCallWaiting fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallWaiting success.`);
+        console.info(`setCallWaiting success.`);
     }
 });
 ```
@@ -1763,7 +1619,7 @@ setCallWaiting\(slotId: number, activate: boolean\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1781,7 +1637,7 @@ setCallWaiting\(slotId: number, activate: boolean\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setCallWaiting(0, true).then(() => {
-    console.log(`setCallWaiting success.`);
+    console.info(`setCallWaiting success.`);
 }).catch((err: BusinessError) => {
     console.error(`setCallWaiting fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1809,7 +1665,7 @@ startDTMF\(callId: number, character: string, callback: AsyncCallback\<void\>\):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1829,7 +1685,7 @@ call.startDTMF(1, "0", (err: BusinessError) => {
     if (err) {
         console.error(`startDTMF fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`startDTMF success.`);
+        console.info(`startDTMF success.`);
     }
 });
 ```
@@ -1860,7 +1716,7 @@ startDTMF\(callId: number, character: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1877,7 +1733,7 @@ startDTMF\(callId: number, character: string\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.startDTMF(1, "0").then(() => {
-    console.log(`startDTMF success.`);
+    console.info(`startDTMF success.`);
 }).catch((err: BusinessError) => {
     console.error(`startDTMF fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -1904,7 +1760,7 @@ stopDTMF\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1924,7 +1780,7 @@ call.stopDTMF(1, (err: BusinessError) => {
     if (err) {
         console.error(`stopDTMF fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`stopDTMF success.`);
+        console.info(`stopDTMF success.`);
     }
 });
 ```
@@ -1954,7 +1810,7 @@ stopDTMF\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1971,7 +1827,7 @@ stopDTMF\(callId: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.stopDTMF(1).then(() => {
-    console.log(`stopDTMF success.`);
+    console.info(`stopDTMF success.`);
 }).catch((err: BusinessError) => {
     console.error(`stopDTMF fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -2001,7 +1857,7 @@ postDialProceed\(callId: number, proceed: boolean, callback: AsyncCallback\<void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2019,7 +1875,7 @@ postDialProceed\(callId: number, proceed: boolean, callback: AsyncCallback\<void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.postDialProceed(1, true, (err: BusinessError) => {
-    console.log(`callback: err->${JSON.stringify(err)}`);
+    console.info(`callback: err->${JSON.stringify(err)}`);
 });
 ```
 
@@ -2053,7 +1909,7 @@ postDialProceed\(callId: number, proceed: boolean\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2071,7 +1927,7 @@ postDialProceed\(callId: number, proceed: boolean\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.postDialProceed(1, true).then(() => {
-    console.log(`postDialProceed success.`);
+    console.info(`postDialProceed success.`);
 }).catch((err: BusinessError) => {
     console.error(`postDialProceed fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -2097,7 +1953,7 @@ isInEmergencyCall\(callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2118,7 +1974,7 @@ call.isInEmergencyCall((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isInEmergencyCall fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isInEmergencyCall success, data->${JSON.stringify(data)}`);
+        console.info(`isInEmergencyCall success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -2144,7 +2000,7 @@ isInEmergencyCall\(\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2160,7 +2016,7 @@ isInEmergencyCall\(\): Promise\<boolean\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isInEmergencyCall().then((data: boolean) => {
-    console.log(`isInEmergencyCall success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isInEmergencyCall success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isInEmergencyCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -2187,7 +2043,7 @@ on\(type: 'callDetailsChange', callback: Callback\<CallAttributeOptions\>\): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2203,7 +2059,7 @@ on\(type: 'callDetailsChange', callback: Callback\<CallAttributeOptions\>\): voi
 
 ```ts
 call.on('callDetailsChange', (data: call.CallAttributeOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2228,7 +2084,7 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2244,7 +2100,7 @@ on\(type: 'callEventChange', callback: Callback\<CallEventOptions\>\): void
 
 ```ts
 call.on('callEventChange', (data: call.CallEventOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2269,7 +2125,7 @@ on\(type: 'callDisconnectedCause', callback: Callback\<DisconnectedDetails\>\): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2285,7 +2141,7 @@ on\(type: 'callDisconnectedCause', callback: Callback\<DisconnectedDetails\>\): 
 
 ```ts
 call.on('callDisconnectedCause', (data: call.DisconnectedDetails) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2310,7 +2166,7 @@ on\(type: 'mmiCodeResult', callback: Callback\<MmiCodeResults\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2326,7 +2182,7 @@ on\(type: 'mmiCodeResult', callback: Callback\<MmiCodeResults\>\): void
 
 ```ts
 call.on('mmiCodeResult', (data: call.MmiCodeResults) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2351,7 +2207,7 @@ off\(type: 'callDetailsChange', callback?: Callback\<CallAttributeOptions\>\): v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2367,7 +2223,7 @@ off\(type: 'callDetailsChange', callback?: Callback\<CallAttributeOptions\>\): v
 
 ```ts
 call.off('callDetailsChange', (data: call.CallAttributeOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2392,7 +2248,7 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2408,7 +2264,7 @@ off\(type: 'callEventChange', callback?: Callback\<CallEventOptions\>\): void
 
 ```ts
 call.off('callEventChange', (data: call.CallEventOptions) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2433,7 +2289,7 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2449,7 +2305,7 @@ off\(type: 'callDisconnectedCause', callback?: Callback\<DisconnectedDetails\>\)
 
 ```ts
 call.off('callDisconnectedCause', (data: call.DisconnectedDetails) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2474,7 +2330,7 @@ off\(type: 'mmiCodeResult', callback?: Callback\<MmiCodeResults\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2490,7 +2346,7 @@ off\(type: 'mmiCodeResult', callback?: Callback\<MmiCodeResults\>\): void
 
 ```ts
 call.off('mmiCodeResult', (data: call.MmiCodeResults) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2516,7 +2372,7 @@ on\(type: 'audioDeviceChange', callback: Callback\<AudioDeviceCallbackInfo\>\): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2532,7 +2388,7 @@ on\(type: 'audioDeviceChange', callback: Callback\<AudioDeviceCallbackInfo\>\): 
 
 ```ts
 call.on('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2558,7 +2414,7 @@ off\(type: 'audioDeviceChange', callback?: Callback\<AudioDeviceCallbackInfo\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2574,7 +2430,7 @@ off\(type: 'audioDeviceChange', callback?: Callback\<AudioDeviceCallbackInfo\>\)
 
 ```ts
 call.off('audioDeviceChange', (data: call.AudioDeviceCallbackInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2599,7 +2455,7 @@ on\(type: 'postDialDelay', callback: Callback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2615,7 +2471,7 @@ on\(type: 'postDialDelay', callback: Callback\<string\>\): void
 
 ```ts
 call.on('postDialDelay', (data: string) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2640,7 +2496,7 @@ off\(type: 'postDialDelay', callback?: Callback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2656,7 +2512,7 @@ off\(type: 'postDialDelay', callback?: Callback\<string\>\): void
 
 ```ts
 call.off('postDialDelay', (data: string) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -2678,7 +2534,7 @@ isNewCallAllowed\(callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2698,7 +2554,7 @@ call.isNewCallAllowed((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isNewCallAllowed fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isNewCallAllowed success, data->${JSON.stringify(data)}`);
+        console.info(`isNewCallAllowed success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -2722,7 +2578,7 @@ isNewCallAllowed\(\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2737,7 +2593,7 @@ isNewCallAllowed\(\): Promise\<boolean\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isNewCallAllowed().then((data: boolean) => {
-    console.log(`isNewCallAllowed success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isNewCallAllowed success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isNewCallAllowed fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -2764,7 +2620,7 @@ separateConference\(callId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2785,7 +2641,7 @@ call.separateConference(1, (err: BusinessError) => {
     if (err) {
         console.error(`separateConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`separateConference success.`);
+        console.info(`separateConference success.`);
     }
 });
 ```
@@ -2815,7 +2671,7 @@ separateConference\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2833,7 +2689,7 @@ separateConference\(callId: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.separateConference(1).then(() => {
-    console.log(`separateConference success.`);
+    console.info(`separateConference success.`);
 }).catch((err: BusinessError) => {
     console.error(`separateConference fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -2861,7 +2717,7 @@ getCallRestrictionStatus\(slotId: number, type: CallRestrictionType, callback: A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2882,7 +2738,7 @@ call.getCallRestrictionStatus(0, 1, (err: BusinessError, data: call.RestrictionS
     if (err) {
         console.error(`getCallRestrictionStatus fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallRestrictionStatus success, data->${JSON.stringify(data)}`);
+        console.info(`getCallRestrictionStatus success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -2915,7 +2771,7 @@ getCallRestrictionStatus\(slotId: number, type: CallRestrictionType\): Promise\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2933,7 +2789,7 @@ getCallRestrictionStatus\(slotId: number, type: CallRestrictionType\): Promise\<
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallRestrictionStatus(0, 1).then((data: call.RestrictionStatus) => {
-    console.log(`getCallRestrictionStatus success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallRestrictionStatus success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallRestrictionStatus fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -2961,7 +2817,7 @@ setCallRestriction\(slotId: number, info: CallRestrictionInfo, callback: AsyncCa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -2987,7 +2843,7 @@ call.setCallRestriction(0, callRestrictionInfo, (err: BusinessError) => {
     if (err) {
         console.error(`setCallRestriction fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallRestriction success.`);
+        console.info(`setCallRestriction success.`);
     }
 });
 ```
@@ -3020,7 +2876,7 @@ setCallRestriction\(slotId: number, info: CallRestrictionInfo\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3043,7 +2899,7 @@ let callRestrictionInfo: call.CallRestrictionInfo = {
     mode: call.CallRestrictionMode.RESTRICTION_MODE_ACTIVATION
 }
 call.setCallRestriction(0, callRestrictionInfo).then(() => {
-    console.log(`setCallRestriction success.`);
+    console.info(`setCallRestriction success.`);
 }).catch((err: BusinessError) => {
     console.error(`setCallRestriction fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3072,7 +2928,7 @@ setCallRestrictionPassword\(slotId: number, oldPassword: string, newPassword: st
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3093,7 +2949,7 @@ call.setCallRestrictionPassword(0, "123456", "654321", (err: BusinessError) => {
     if (err) {
         console.error(`setCallRestrictionPassword fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallRestrictionPassword success.`);
+        console.info(`setCallRestrictionPassword success.`);
     }
 });
 ```
@@ -3126,7 +2982,7 @@ setCallRestrictionPassword\(slotId: number, oldPassword: string, newPassword: st
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3144,7 +3000,7 @@ setCallRestrictionPassword\(slotId: number, oldPassword: string, newPassword: st
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setCallRestrictionPassword(0, "123456", "654321").then(() => {
-    console.log(`setCallRestrictionPassword success.`);
+    console.info(`setCallRestrictionPassword success.`);
 }).catch((err: BusinessError) => {
     console.error(`setCallRestrictionPassword fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3172,7 +3028,7 @@ getCallTransferInfo\(slotId: number, type: CallTransferType, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3193,7 +3049,7 @@ call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY, (err: Busi
     if (err) {
         console.error(`getCallTransferInfo fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
+        console.info(`getCallTransferInfo success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -3226,7 +3082,7 @@ getCallTransferInfo\(slotId: number, type: CallTransferType\): Promise\<CallTran
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3244,7 +3100,7 @@ getCallTransferInfo\(slotId: number, type: CallTransferType\): Promise\<CallTran
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.getCallTransferInfo(0, call.CallTransferType.TRANSFER_TYPE_BUSY).then((data: call.CallTransferResult) => {
-    console.log(`getCallTransferInfo success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getCallTransferInfo success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getCallTransferInfo fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3272,7 +3128,7 @@ setCallTransfer\(slotId: number, info: CallTransferInfo, callback: AsyncCallback
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3298,7 +3154,7 @@ call.setCallTransfer(0, callTransferInfo, (err: BusinessError) => {
     if (err) {
         console.error(`setCallTransfer fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setCallTransfer success.`);
+        console.info(`setCallTransfer success.`);
     }
 });
 ```
@@ -3331,7 +3187,7 @@ setCallTransfer\(slotId: number, info: CallTransferInfo\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3354,7 +3210,7 @@ let callTransferInfo: call.CallTransferInfo = {
     settingType: call.CallTransferSettingType.CALL_TRANSFER_ENABLE
 }
 call.setCallTransfer(0, callTransferInfo).then(() => {
-    console.log(`setCallTransfer success.`);
+    console.info(`setCallTransfer success.`);
 }).catch((err: BusinessError) => {
     console.error(`setCallTransfer fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3380,7 +3236,7 @@ isRinging\(callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3401,7 +3257,7 @@ call.isRinging((err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isRinging fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isRinging success, data->${JSON.stringify(data)}`);
+        console.info(`isRinging success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -3427,7 +3283,7 @@ isRinging\(\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3443,7 +3299,7 @@ isRinging\(\): Promise\<boolean\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isRinging().then((data: boolean) => {
-    console.log(`isRinging success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isRinging success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isRinging fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3467,7 +3323,7 @@ setMuted\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3487,7 +3343,7 @@ call.setMuted((err: BusinessError) => {
     if (err) {
         console.error(`setMuted fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setMuted success.`);
+        console.info(`setMuted success.`);
     }
 });
 ```
@@ -3511,7 +3367,7 @@ setMuted\(\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3526,7 +3382,7 @@ setMuted\(\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setMuted().then(() => {
-    console.log(`setMuted success.`);
+    console.info(`setMuted success.`);
 }).catch((err: BusinessError) => {
     console.error(`setMuted fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3550,7 +3406,7 @@ cancelMuted\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3570,7 +3426,7 @@ call.cancelMuted((err: BusinessError) => {
     if (err) {
         console.error(`cancelMuted fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`cancelMuted success.`);
+        console.info(`cancelMuted success.`);
     }
 });
 ```
@@ -3594,7 +3450,7 @@ cancelMuted\(\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3609,7 +3465,7 @@ cancelMuted\(\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.cancelMuted().then(() => {
-    console.log(`cancelMuted success.`);
+    console.info(`cancelMuted success.`);
 }).catch((err: BusinessError) => {
     console.error(`cancelMuted fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3636,7 +3492,7 @@ setAudioDevice\(device: AudioDevice, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3660,7 +3516,7 @@ call.setAudioDevice(audioDevice, (err: BusinessError) => {
     if (err) {
         console.error(`setAudioDevice fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setAudioDevice success.`);
+        console.info(`setAudioDevice success.`);
     }
 });
 ```
@@ -3691,7 +3547,7 @@ setAudioDevice\(device: AudioDevice): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3712,7 +3568,7 @@ let audioDevice: call.AudioDevice = {
     deviceType: call.AudioDeviceType.DEVICE_EARPIECE
 }
 call.setAudioDevice(audioDevice).then(() => {
-    console.log(`setAudioDevice success.`);
+    console.info(`setAudioDevice success.`);
 }).catch((err: BusinessError) => {
     console.error(`setAudioDevice fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3738,7 +3594,7 @@ joinConference\(mainCallId: number, callNumberList: Array\<string\>, callback: A
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3761,7 +3617,7 @@ call.joinConference(1, callNumberList, (err: BusinessError) => {
     if (err) {
         console.error(`joinConference fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`joinConference success.`);
+        console.info(`joinConference success.`);
     }
 });
 ```
@@ -3791,7 +3647,7 @@ joinConference\(mainCallId: number, callNumberList: Array\<string\>\): Promise\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3811,7 +3667,7 @@ let callNumberList: Array<string> = [
     "138XXXXXXXX"
 ];
 call.joinConference(1, callNumberList).then(() => {
-    console.log(`joinConference success.`);
+    console.info(`joinConference success.`);
 }).catch((err: BusinessError) => {
     console.error(`joinConference fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3839,7 +3695,7 @@ updateImsCallMode\(callId: number, mode: ImsCallMode, callback: AsyncCallback\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3859,7 +3715,7 @@ call.updateImsCallMode(1, 1, (err: BusinessError) => {
     if (err) {
         console.error(`updateImsCallMode fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`updateImsCallMode success.`);
+        console.info(`updateImsCallMode success.`);
     }
 });
 ```
@@ -3889,7 +3745,7 @@ updateImsCallMode\(callId: number, mode: ImsCallMode\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3906,7 +3762,7 @@ updateImsCallMode\(callId: number, mode: ImsCallMode\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.updateImsCallMode(1, 1).then(() => {
-    console.log(`updateImsCallMode success.`);
+    console.info(`updateImsCallMode success.`);
 }).catch((err: BusinessError) => {
     console.error(`updateImsCallMode fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -3933,7 +3789,7 @@ enableImsSwitch\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -3954,7 +3810,7 @@ call.enableImsSwitch(0, (err: BusinessError) => {
     if (err) {
         console.error(`enableImsSwitch fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`enableImsSwitch success.`);
+        console.info(`enableImsSwitch success.`);
     }
 });
 ```
@@ -3985,7 +3841,7 @@ enableImsSwitch\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -4003,7 +3859,7 @@ enableImsSwitch\(slotId: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.enableImsSwitch(0).then(() => {
-    console.log(`enableImsSwitch success.`);
+    console.info(`enableImsSwitch success.`);
 }).catch((err: BusinessError) => {
     console.error(`enableImsSwitch fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4030,7 +3886,7 @@ disableImsSwitch\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -4051,7 +3907,7 @@ call.disableImsSwitch(0, (err: BusinessError) => {
     if (err) {
         console.error(`disableImsSwitch fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`disableImsSwitch success.`);
+        console.info(`disableImsSwitch success.`);
     }
 });
 ```
@@ -4082,7 +3938,7 @@ disableImsSwitch\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4100,7 +3956,7 @@ disableImsSwitch\(slotId: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.disableImsSwitch(0).then(() => {
-    console.log(`disableImsSwitch success.`);
+    console.info(`disableImsSwitch success.`);
 }).catch((err: BusinessError) => {
     console.error(`disableImsSwitch fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4125,7 +3981,7 @@ isImsSwitchEnabled\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4145,7 +4001,7 @@ call.isImsSwitchEnabled(0, (err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`isImsSwitchEnabled fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`isImsSwitchEnabled success, data->${JSON.stringify(data)}`);
+        console.info(`isImsSwitchEnabled success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -4174,7 +4030,7 @@ isImsSwitchEnabled\(slotId: number\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4191,7 +4047,7 @@ isImsSwitchEnabled\(slotId: number\): Promise\<boolean\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.isImsSwitchEnabled(0).then((data: boolean) => {
-    console.log(`isImsSwitchEnabled success, promise: data->${JSON.stringify(data)}`);
+    console.info(`isImsSwitchEnabled success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`isImsSwitchEnabled fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4221,7 +4077,7 @@ isImsSwitchEnabledSync\(slotId: number\): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -4240,7 +4096,7 @@ isImsSwitchEnabledSync\(slotId: number\): boolean
 let slotId: number = 0;
 try {
     let isEnabled: boolean = call.isImsSwitchEnabledSync(slotId);
-    console.log(`isImsSwitchEnabledSync success : ${isEnabled}`);
+    console.info(`isImsSwitchEnabledSync success : ${isEnabled}`);
 } catch (error) {
     console.error(`isImsSwitchEnabledSync fail : err->${JSON.stringify(error)}`);  
 }
@@ -4267,7 +4123,7 @@ closeUnfinishedUssd\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -4289,7 +4145,7 @@ call.closeUnfinishedUssd(slotId, (err: BusinessError) => {
     if (err) {
         console.error(`closeUnfinishedUssd fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`closeUnfinishedUssd success.`);
+        console.info(`closeUnfinishedUssd success.`);
     }
 });
 ```
@@ -4320,7 +4176,7 @@ closeUnfinishedUssd\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4339,7 +4195,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 call.closeUnfinishedUssd(slotId).then(() => {
-    console.log(`closeUnfinishedUssd success.`);
+    console.info(`closeUnfinishedUssd success.`);
 }).catch((err: BusinessError) => {
     console.error(`closeUnfinishedUssd fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4368,7 +4224,7 @@ setVoNRState\(slotId: number, state: VoNRState, callback: AsyncCallback\<void\>\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4391,7 +4247,7 @@ call.setVoNRState(slotId, state, (err: BusinessError) => {
     if (err) {
         console.error(`setVoNRState fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`setVoNRState success`);
+        console.info(`setVoNRState success`);
     }
 });
 ```
@@ -4424,7 +4280,7 @@ setVoNRState\(slotId: number, state: VoNRState\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4444,7 +4300,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let slotId: number = 0;
 let state: call.VoNRState = call.VoNRState.VONR_STATE_ON;
 call.setVoNRState(slotId, state).then(() => {
-    console.log(`setVoNRState success`);
+    console.info(`setVoNRState success`);
 }).catch((err: BusinessError) => {
     console.error(`setVoNRState fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4472,7 +4328,7 @@ getVoNRState\(slotId: number, callback: AsyncCallback\<VoNRState\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4494,7 +4350,7 @@ call.getVoNRState(slotId, (err: BusinessError, data: call.VoNRState) => {
     if (err) {
         console.error(`getVoNRState fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`getVoNRState success, data->${JSON.stringify(data)}`);
+        console.info(`getVoNRState success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -4526,7 +4382,7 @@ getVoNRState\(slotId: number\): Promise\<VoNRState\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4545,7 +4401,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 call.getVoNRState(slotId).then((data: call.VoNRState) => {
-    console.log(`getVoNRState success, promise: data->${JSON.stringify(data)}`);
+    console.info(`getVoNRState success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`getVoNRState fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4573,7 +4429,7 @@ canSetCallTransferTime\(slotId: number, callback: AsyncCallback\<boolean\>\): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4595,7 +4451,7 @@ call.canSetCallTransferTime(slotId, (err: BusinessError, data: boolean) => {
     if (err) {
         console.error(`canSetCallTransferTime fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`canSetCallTransferTime success, data->${JSON.stringify(data)}`);
+        console.info(`canSetCallTransferTime success, data->${JSON.stringify(data)}`);
     }
 });
 ```
@@ -4627,7 +4483,7 @@ canSetCallTransferTime\(slotId: number\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                     |
 | -------- | -------------------------------------------- |
@@ -4646,7 +4502,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let slotId: number = 0;
 call.canSetCallTransferTime(slotId).then((data: boolean) => {
-    console.log(`canSetCallTransferTime success, promise: data->${JSON.stringify(data)}`);
+    console.info(`canSetCallTransferTime success, promise: data->${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
     console.error(`canSetCallTransferTime fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -4674,7 +4530,7 @@ inputDialerSpecialCode\(inputCode: string, callback: AsyncCallback\<void\>\): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4694,7 +4550,7 @@ call.inputDialerSpecialCode('*#*#2846579#*#*', (err: BusinessError) => {
     if (err) {
         console.error(`inputDialerSpecialCode fail, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`inputDialerSpecialCode success`);
+        console.info(`inputDialerSpecialCode success`);
     }
 });
 ```
@@ -4725,7 +4581,7 @@ inputDialerSpecialCode\(inputCode: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4743,7 +4599,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
     call.inputDialerSpecialCode('*#*#2846579#*#*');
-    console.log(`inputDialerSpecialCode success`);
+    console.info(`inputDialerSpecialCode success`);
 } catch (error) {
     console.error(`inputDialerSpecialCode fail, promise: err->${JSON.stringify(error)}`);
 }
@@ -4770,7 +4626,7 @@ removeMissedIncomingCallNotification\(callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4790,7 +4646,7 @@ call.removeMissedIncomingCallNotification((err: BusinessError) => {
     if (err) {
         console.error(`removeMissedIncomingCallNotification failed, err->${JSON.stringify(err)}`);
     } else {
-        console.log(`removeMissedIncomingCallNotification success`);
+        console.info(`removeMissedIncomingCallNotification success`);
     }
 });
 ```
@@ -4816,7 +4672,7 @@ removeMissedIncomingCallNotification\(\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4832,7 +4688,7 @@ removeMissedIncomingCallNotification\(\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.removeMissedIncomingCallNotification().then(() => {
-    console.log(`removeMissedIncomingCallNotification success`);
+    console.info(`removeMissedIncomingCallNotification success`);
 }).catch((err: BusinessError) => {
     console.error(`removeMissedIncomingCallNotification failed, promise: err->${JSON.stringify(err)}`);
 });
@@ -4865,7 +4721,7 @@ sendCallUiEvent\(callId: number, eventName: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -4884,7 +4740,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let callId: number = 0;
 call.sendCallUiEvent(callId, 'eventName').then(() => {
-    console.log(`sendCallUiEvent success.`);
+    console.info(`sendCallUiEvent success.`);
 }).catch((err: BusinessError) => {
     console.error(`sendCallUiEvent fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5483,7 +5339,7 @@ answerCall(videoState: VideoStateType, callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                     |
 | -------- | -------------------------------------------- |
@@ -5501,7 +5357,7 @@ answerCall(videoState: VideoStateType, callId: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.answerCall(0, 1).then(() => {
-    console.log(`answerCall success.`);
+    console.info(`answerCall success.`);
 }).catch((err: BusinessError) => {
     console.error(`answerCall fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5533,7 +5389,7 @@ cancelCallUpgrade\(callId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5551,7 +5407,7 @@ cancelCallUpgrade\(callId: number\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.cancelCallUpgrade(1).then(() => {
-    console.log(`cancelCallUpgrade success.`);
+    console.info(`cancelCallUpgrade success.`);
 }).catch((err: BusinessError) => {
     console.error(`cancelCallUpgrade fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5584,7 +5440,7 @@ controlCamera\(callId: number, cameraId: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5602,7 +5458,7 @@ controlCamera\(callId: number, cameraId: string\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.controlCamera(1, "1").then(() => {
-    console.log(`controlCamera success.`);
+    console.info(`controlCamera success.`);
 }).catch((err: BusinessError) => {
     console.error(`controlCamera fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5635,7 +5491,7 @@ setPreviewSurface\(callId: number, surfaceId: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5653,7 +5509,7 @@ setPreviewSurface\(callId: number, surfaceId: string\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setPreviewSurface(1, "surfaceId1").then(() => {
-    console.log(`setPreviewSurface success.`);
+    console.info(`setPreviewSurface success.`);
 }).catch((err: BusinessError) => {
     console.error(`setPreviewSurface fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5686,7 +5542,7 @@ setDisplaySurface\(callId: number, surfaceId: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5704,7 +5560,7 @@ setDisplaySurface\(callId: number, surfaceId: string\): Promise\<void\>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setDisplaySurface(1, "surfaceId1").then(() => {
-    console.log(`setDisplaySurface success.`);
+    console.info(`setDisplaySurface success.`);
 }).catch((err: BusinessError) => {
     console.error(`setDisplaySurface fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5737,7 +5593,7 @@ setDeviceDirection\(callId: number, deviceDirection: DeviceDirection\): Promise\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5755,7 +5611,7 @@ setDeviceDirection\(callId: number, deviceDirection: DeviceDirection\): Promise\
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.setDeviceDirection(1, 0).then(() => {
-    console.log(`setDeviceDirection success.`);
+    console.info(`setDeviceDirection success.`);
 }).catch((err: BusinessError) => {
     console.error(`setDeviceDirection fail, promise: err->${JSON.stringify(err)}`);
 });
@@ -5782,7 +5638,7 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5800,7 +5656,7 @@ on\(type: 'imsCallModeChange', callback: Callback\<ImsCallModeInfo\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('imsCallModeChange', (data: call.ImsCallModeInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5825,7 +5681,7 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5843,7 +5699,7 @@ off\(type: 'imsCallModeChange', callback?: Callback\<ImsCallModeInfo\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.off('imsCallModeChange', (data: call.ImsCallModeInfo) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5868,7 +5724,7 @@ on\(type: 'callSessionEvent', callback: Callback\<CallSessionEvent\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5886,7 +5742,7 @@ on\(type: 'callSessionEvent', callback: Callback\<CallSessionEvent\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('callSessionEvent', (data: call.CallSessionEvent) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5911,7 +5767,7 @@ off\(type: 'callSessionEvent', callback?: Callback\<CallSessionEvent\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5929,7 +5785,7 @@ off\(type: 'callSessionEvent', callback?: Callback\<CallSessionEvent\>\): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.off('callSessionEvent', (data: call.CallSessionEvent) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5954,7 +5810,7 @@ on\(type: 'peerDimensionsChange', callback: Callback\<PeerDimensionsDetail\>\): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -5972,7 +5828,7 @@ on\(type: 'peerDimensionsChange', callback: Callback\<PeerDimensionsDetail\>\): 
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.on('peerDimensionsChange', (data: call.PeerDimensionsDetail) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -5997,7 +5853,7 @@ off\(type: 'peerDimensionsChange', callback?: Callback\<PeerDimensionsDetail\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -6015,7 +5871,7 @@ off\(type: 'peerDimensionsChange', callback?: Callback\<PeerDimensionsDetail\>\)
 import { BusinessError } from '@kit.BasicServicesKit';
 
 call.off('peerDimensionsChange', (data: call.PeerDimensionsDetail) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -6040,7 +5896,7 @@ on\(type: 'cameraCapabilitiesChange', callback: Callback\<CameraCapabilities\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -6056,7 +5912,7 @@ on\(type: 'cameraCapabilitiesChange', callback: Callback\<CameraCapabilities\>\)
 
 ```ts
 call.on('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
@@ -6081,7 +5937,7 @@ off\(type: 'cameraCapabilitiesChange', callback?: Callback\<CameraCapabilities\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)和[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -6097,7 +5953,7 @@ off\(type: 'cameraCapabilitiesChange', callback?: Callback\<CameraCapabilities\>
 
 ```ts
 call.off('cameraCapabilitiesChange', (data: call.CameraCapabilities) => {
-    console.log(`callback: data->${JSON.stringify(data)}`);
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 

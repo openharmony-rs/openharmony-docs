@@ -21,6 +21,7 @@ The **relationalStore** module provides the following functionalities:
 - [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md): provides predicates indicating the nature, feature, or relationship of a data entity in an RDB store. It is used to define the operation conditions for an RDB store.
 - [RdbStore](arkts-apis-data-relationalStore-RdbStore.md): provides APIs for managing data in an RDB store.
 - [ResultSet](arkts-apis-data-relationalStore-ResultSet.md): provides APIs for accessing the result set obtained from the RDB store.
+- [LiteResultSet](arkts-apis-data-relationalStore-LiteResultSet.md): provides APIs for accessing the result set obtained from the RDB store, such as [queryWithoutRowCount](arkts-apis-data-relationalStore-RdbStore.md#querywithoutrowcount23) and [querySqlWithoutRowCount](arkts-apis-data-relationalStore-RdbStore.md#querysqlwithoutrowcount23). Unlike [ResultSet](arkts-apis-data-relationalStore-ResultSet.md), **LiteResultSet** does not include the total number of rows in the query result.
 - [Transaction](arkts-apis-data-relationalStore-Transaction.md): provides APIs for managing transaction objects.
 
 > **NOTE**

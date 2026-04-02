@@ -5,7 +5,7 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -46,7 +46,6 @@ You are not advised to call the `exit` function in `cb`. Otherwise, undefined be
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -73,8 +72,13 @@ FFRT_C_API int ffrt_timer_stop(ffrt_qos_t qos, ffrt_timer_t handle)
 
 Stops the timer.
 
-**Since**: 12
+> **NOTE**
+>
+> - This is a blocking API and must not be used inside callback functions to prevent deadlocks or synchronization issues.
+>
+> - If the callback corresponding to the passed handle is being executed, this function will wait for the callback to complete before resuming its own execution.
 
+**Since**: 12
 
 **Parameters**
 

@@ -307,6 +307,8 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 当设置自定义键盘时，可以通过绑定[onKeyPreIme](ts-universal-events-key.md#onkeypreime12)事件规避物理键盘的输入。
 
+从API version 23开始，自定义键盘可以通过[setCustomKeyboardContinueFeature](../arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23)开启接续，在切换至其他自定义键盘时，会直接切换，不会触发键盘关闭和拉起动画。
+
 > **说明：**
 >
 > 该接口不支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -426,7 +428,7 @@ decoration(value: TextDecorationOptions)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12对象说明) | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>} |
+| value  | [TextDecorationOptions](ts-universal-attributes-text-style.md#textdecorationoptions12对象说明) | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID,<br/>&nbsp;thicknessScale:&nbsp;1.0<br/>} |
 
 >  **说明：**
 >
@@ -595,7 +597,7 @@ halfLeading(halfLeading: Optional\<boolean>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是  | 设置文本是否垂直居中。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
+| halfLeading | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是  | 设置文本是否垂直居中。<br/>true表示将行间距平分至行的顶部与底部，false则不平分。<br/>默认值：false |
 
 ### minFontScale<sup>18+</sup>
 
@@ -611,7 +613,7 @@ minFontScale(scale: Optional\<number | Resource>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最小的字体缩放倍数，支持undefined类型。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br/>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例19设置最小字体范围与最大字体范围](#示例19设置最小字体范围与最大字体范围)。 |
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最小的字体缩放倍数，支持undefined类型。<br/>取值范围：[0, 1]<br/>**说明：** <br/>设置的值小于0时，按值为0处理。设置的值大于1，按值为1处理。异常值默认不生效。<br/>使用前需在工程中配置[configuration.json](../../../quick-start//app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start//app-configuration-file.md)文件，具体详见[示例19设置最小字体范围与最大字体范围](#示例19设置最小字体范围与最大字体范围)。 |
 
 ### maxFontScale<sup>18+</sup>
 
@@ -627,7 +629,7 @@ maxFontScale(scale: Optional\<number | Resource>)
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最大的字体缩放倍数，支持undefined类型。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理。异常值默认不生效。<br/>设置maxFontScale属性后，search组件内容最多放大到2倍。<br/>使用前需在工程中配置configuration.json文件和app.json5文件，具体详见[示例19设置最小字体范围与最大字体范围](#示例19设置最小字体范围与最大字体范围)。 |
+| scale  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number \| [Resource](ts-types.md#resource)> | 是   | 文本最大的字体缩放倍数，支持undefined类型。<br/>取值范围：[1, +∞)<br/>**说明：** <br/>设置的值小于1时，按值为1处理。异常值默认不生效。<br/>设置maxFontScale属性后，search组件内容最多放大到2倍。<br/>使用前需在工程中配置[configuration.json](../../../quick-start//app-configuration-file.md#configuration标签)文件和[app.json5](../../../quick-start//app-configuration-file.md)文件，具体详见[示例19设置最小字体范围与最大字体范围](#示例19设置最小字体范围与最大字体范围)。 |
 
 ### editMenuOptions<sup>12+</sup>
 
@@ -675,7 +677,7 @@ enableHapticFeedback(isEnabled: boolean)
 
 设置是否开启触控反馈。
 
-开启触控反馈时，需要在工程的module.json5中配置requestPermissions字段以开启振动权限，配置如下：
+开启触控反馈时，需要在工程的[module.json5](../../../quick-start/module-configuration-file.md)中配置requestPermissions字段以开启振动权限，配置如下：
 
 ```json
 "requestPermissions": [
@@ -725,7 +727,7 @@ keyboardAppearance(appearance: Optional\<KeyboardAppearance>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------ |
-| appearance | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明)> | 是   | 键盘样式。<br/>默认值：KeyboardAppearance.NONE_IMMERSIVE |
+| appearance | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明)> | 是   | 键盘样式。<br/>默认值：KeyboardAppearance.NONE_IMMERSIVE |
 
 ### strokeWidth<sup>20+</sup>
 
@@ -741,7 +743,7 @@ strokeWidth(width: Optional\<LengthMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明             |
 | ------ | ------------------------------------------------------------ | ---- | ---------------- |
-| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。当LengthMetrics的单位为px时，<br/>若设置值小于0，显示实心字；若大于0，显示空心字。<br/>默认值为0，不做描边处理。 |
+| width  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)> | 是   | 文本描边的宽度。当LengthMetrics的单位为px时，<br/>若设置值小于0，显示实心字；若大于0，显示空心字。<br/>默认值为0，不做描边处理。 |
 
 ### strokeColor<sup>20+</sup>
 
@@ -757,7 +759,7 @@ strokeColor(color: Optional\<ResourceColor>)
 
 | 参数名 | 类型                                       | 必填 | 说明       |
 | ------ | ------------------------------------------ | ---- | ---------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 描边颜色。默认值为字体颜色，设置异常值时取默认值。|
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ResourceColor](ts-types.md#resourcecolor)> | 是   | 描边颜色。默认值为字体颜色，设置异常值时取默认值。|
 
 ### stopBackPress<sup>15+</sup>
 
@@ -773,7 +775,7 @@ stopBackPress(isStopped: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| isStopped | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否阻止返回键。<br/>true表示阻止，false表示不阻止。<br/>默认值：true。异常值取默认值。|
+| isStopped | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否阻止返回键。<br/>true表示阻止，false表示不阻止。<br/>默认值：true。异常值取默认值。|
 
 ### enableAutoSpacing<sup>20+</sup>
 
@@ -789,7 +791,7 @@ enableAutoSpacing(enabled: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
 
 ### selectedDragPreviewStyle<sup>23+</sup>
 
@@ -821,7 +823,7 @@ dividerColor(color: Optional\<ColorMetrics>)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| color | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | 是   | 设置分割线颜色。<br/>默认使用系统的主题色：浅色模式下为0x33000000，显示为浅黑色，深色模式下为0x33FFFFFF，显示为浅白色。 |
+| color | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | 是   | 设置分割线颜色。<br/>默认使用系统的主题色：浅色模式下为0x33000000，显示为浅黑色，深色模式下为0x33FFFFFF，显示为浅白色。 |
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
@@ -843,7 +845,7 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
 
 ### includeFontPadding<sup>23+</sup>
 
@@ -859,7 +861,7 @@ includeFontPadding(include: Optional\<boolean>)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| include | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否在首行和尾行增加间距以避免文字截断。<br/>true表示在首行和尾行增加间距；false表示在首行和尾行不增加间距。 |
+| include | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否在首行和尾行增加间距以避免文字截断。<br/>true表示在首行和尾行增加间距；false表示在首行和尾行不增加间距。 |
 
 ### fallbackLineSpacing<sup>23+</sup>
 
@@ -878,7 +880,7 @@ fallbackLineSpacing(enabled: Optional\<boolean>)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。 |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。 |
 
 ## IconOptions<sup>10+</sup>对象说明
 
@@ -1022,6 +1024,26 @@ onCopy(callback:Callback\<string>)
 | --------- | ------- | ---- | ---------------- |
 | callback | Callback\<string> | 是   | 复制回调，其返回值为复制的文本内容。 |
 
+### onWillCopy
+
+onWillCopy(callback: Callback\<string, boolean>)
+
+在进行复制操作前，触发该回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> | 是   | 复制操作前的回调。回调参数类型为string时，表示将要被复制的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被复制，true：允许文本被复制；false：不允许文本被复制。 |
+
 ### onCut
 
 onCut(callback:Callback\<string>)
@@ -1037,6 +1059,26 @@ onCut(callback:Callback\<string>)
 | 参数名    | 类型    | 必填 | 说明             |
 | --------- | ------- | ---- | ---------------- |
 | callback | Callback\<string> | 是   | 剪切回调，其返回值为剪切的文本内容。 |
+
+### onWillCut
+
+onWillCut(callback: Callback\<string, boolean>)
+
+在进行剪切操作前，触发该回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> | 是   | 剪切操作前的回调。回调参数类型为string时，表示将要被剪切的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被剪切，true：允许文本被剪切；false：不允许文本被剪切。 |
 
 ### onPaste
 
@@ -1099,7 +1141,7 @@ onEditChange(callback:&nbsp;Callback<&nbsp;boolean&nbsp;>)
 
 | 参数名    | 类型                                | 必填 | 说明                 |
 | --------- | ---------------------------------- | ---- | -------------------- |
-| callback | &nbsp;Callback<&nbsp;boolean&nbsp;> | 是   | 编辑状态改变回调，其返回值为true表示正在输入。 |
+| callback | &nbsp;Callback<&nbsp;boolean&nbsp;> | 是   | 编辑状态改变回调，其返回值为true表示正在输入，false表示无焦点，无法输入文字。 |
 
 ### onWillInsert<sup>12+</sup>
 
@@ -1935,7 +1977,9 @@ struct SearchExample {
 
 ### 示例12（设置文本是否可复制）
 
-从API version 9开始，该示例通过[copyOption](#copyoption9)属性展示如何设置文本是否可复制。
+该示例通过[copyOption](#copyoption9)、[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)接口展示如何设置文本复制、如何拦截系统复制、如何拦截系统剪切。
+
+从API版本26.0.0开始，新增[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)接口。
 
 ```ts
 // xxx.ets
@@ -1958,6 +2002,11 @@ struct SearchExample {
         .onCopy((value: string) => {
           this.copyValue = value;
         })
+        // 从API版本26.0.0开始支持onWillCopy
+        .onWillCopy((value: string) => {
+          this.copyValue = value;
+          return false;
+        })
         .onCut((value: string) => {
           this.cutValue = value;
         })
@@ -1970,6 +2019,11 @@ struct SearchExample {
         })
         .onCut((value: string) => {
           this.cutValue = value;
+        })
+        // 从API版本26.0.0开始支持onWillCut
+        .onWillCut((value: string) => {
+          this.cutValue = value;
+          return false;
         })
       Search({ value: 'Search CopyOption:LocalDevice', controller: this.controller })
         .width('95%')
@@ -2155,7 +2209,7 @@ struct SearchExample {
 }
 ```
 
-![searchSetTextSelection](figures/searchSetTextSelection.gif)
+![searchSetTextSelection](figures/searchSetTextSelection.png)
 
 ### 示例18（设置文本滚动事件）
 
@@ -2194,7 +2248,7 @@ struct SearchExample {
 
 从API version 18开始，该示例通过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置字体显示最小与最大范围。调整系统字体大小后，文本字体大小不会超过[minFontScale](#minfontscale18)、[maxFontScale](#maxfontscale18)设置的范围。如下示例展示了Search组件在不同的字体大小限制条件下，调整系统字体后的放大缩小效果。
 
-```json
+```json5
 // 开启应用缩放跟随系统
 // AppScope/resources/base，新建文件夹profile。
 // AppScope/resources/base/profile，新建文件configuration.json。
@@ -2207,7 +2261,7 @@ struct SearchExample {
 }
 ```
 
-```json
+```json5
 // AppScope/app.json5，修改如下代码。
 {
   "app": {

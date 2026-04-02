@@ -42,7 +42,7 @@ addDisallowedRunningBundlesSync(admin: Want, appIds: Array\<string>, accountId?:
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组，指定具体应用。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common_problem_of_application.md#什么是appid)和[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common_problem_of_application.md#什么是appid)。|
+| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组，指定具体应用。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。|
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **错误码**：
@@ -98,7 +98,7 @@ removeDisallowedRunningBundlesSync(admin: Want, appIds:  Array\<string>, account
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组，指定具体应用。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common_problem_of_application.md#什么是appid)和[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common_problem_of_application.md#什么是appid)（或[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)（或[appId](../../quick-start/common_problem_of_application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common_problem_of_application.md#什么是appid)。|
+| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组，指定具体应用。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。|
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **错误码**：
@@ -158,7 +158,7 @@ getDisallowedRunningBundlesSync(admin: Want, accountId?: number): Array&lt;strin
 
 | 类型                | 说明                             |
 | ------------------- | -------------------------------- |
-| Array&lt;string&gt; | 返回当前/指定用户下的应用运行禁止名单。<br/>**说明：** API version 20及之前版本，返回值为应用[appId](../../quick-start/common_problem_of_application.md#什么是appid)列表。从API version 21版本开始，返回值为应用[appId](../../quick-start/common_problem_of_application.md#什么是appid)或[appIdentifier](../../quick-start/common_problem_of_application.md#什么是appidentifier)列表。|
+| Array&lt;string&gt; | 返回当前/指定用户下的应用运行禁止名单。<br/>**说明：** API version 20及之前版本，返回值为应用[appId](../../quick-start/common-problem-of-application.md#什么是appid)列表。从API version 21版本开始，返回值为应用[appId](../../quick-start/common-problem-of-application.md#什么是appid)或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)列表。|
 
 **错误码**：
 
@@ -201,9 +201,9 @@ addAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, accountId:
 >
 > 1. 由于MDM Kit下大多数接口仅对MDM应用开放，本接口使用时，请将MDM应用同时添加至应用运行允许名单，否则会导致MDM应用不允许运行，阻塞接口调用。接口是否仅对MDM应用开放请查看对应的模块说明。
 >
-> 2. 如果应用运行禁止名单非空，不支持再使用本接口添加应用运行允许名单，否则会报9200010冲突错误码。应用运行禁止名单相关接口包括[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2)。
+> 2. 如果应用运行禁止名单非空，不支持再使用本接口添加应用运行允许名单，否则会报9200010冲突错误码。应用运行禁止名单相关接口包括[addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1)、[addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2)<!--DelEnd-->。
 >
-> 3. 本接口仅对三方应用生效，系统应用不受该名单管控，默认可以运行<!--DelEnd-->。
+> 3. 本接口仅对三方应用生效，系统应用不受该名单管控，默认可以运行。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -218,7 +218,7 @@ addAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, accountId:
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| appIdentifiers    | Array&lt;string&gt;                             | 是   | 应用[唯一标识符](../../quick-start/common_problem_of_application.md#什么是appidentifier)的数组，可以通过接口[bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.signatureInfo.appIdentifier。 <br>取值范围：<br> - 单个用户下该名单总数不能超过200。例如100用户下已经设置了50个、101用户未设置，则100用户还能再设置150个，101用户还能再设置200个。|
+| appIdentifiers    | Array&lt;string&gt;                             | 是   | 应用[唯一标识符](../../quick-start/common-problem-of-application.md#什么是appidentifier)的数组，可以通过接口[bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.signatureInfo.appIdentifier。 <br>取值范围：<br> - 单个用户下该名单总数不能超过200。例如100用户下已经设置了50个、101用户未设置，则100用户还能再设置150个，101用户还能再设置200个。|
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
@@ -274,7 +274,7 @@ removeAllowedRunningBundles(admin: Want, appIdentifiers: Array\<string>, account
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| appIdentifiers    | Array&lt;string&gt;                             | 是   | 应用[唯一标识符](../../quick-start/common_problem_of_application.md#什么是appidentifier)的数组。可以通过接口[bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.signatureInfo.appIdentifier。取值范围：数组长度不能超过200。|
+| appIdentifiers    | Array&lt;string&gt;                             | 是   | 应用[唯一标识符](../../quick-start/common-problem-of-application.md#什么是appidentifier)的数组。可以通过接口[bundleManager.getinstalledbundlelist](./js-apis-enterprise-bundleManager.md#bundlemanagergetinstalledbundlelist20)获取bundleInfo.signatureInfo.appIdentifier。取值范围：数组长度不能超过200。|
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。 |
 
 **错误码**：
@@ -375,7 +375,7 @@ addAutoStartApps(admin: Want, autoStartApps: Array\<Want>): void
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 对于API version 20及之前的版本，该接口在PC/2in1设备可正常调用，在其他设备中调用无效果。从API version 21开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。
+**设备行为差异：** 对于API version 20及之前的版本，该接口在PC/2in1设备可正常调用，在其他设备中调用无效果。从API version 21开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。从API version 24开始，该接口新增支持配置应用开机自启时是否隐藏UI界面，隐藏UI界面的能力仅在PC/2in1和Tablet的PC模式中可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -386,7 +386,7 @@ addAutoStartApps(admin: Want, autoStartApps: Array\<Want>): void
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                         |
-| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 是   | 开机自启动应用数组。数组长度上限为10。例如：如果名单中已有5个应用，则最多再通过本接口设置5个。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。 |
+| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 是   | 开机自启动应用数组。数组长度上限为10。例如：如果名单中已有5个应用，则最多再通过本接口设置5个。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。从API version 24开始，新增支持通过Want的parameters属性中的isHiddenStart字段配置应用开机自启是否隐藏UI界面，true表示隐藏，false表示不隐藏。默认值是false。该参数设置为true时，应用必须<!--RP8-->接入状态栏<!--RP8End-->，否则自启设置失败（若当前仅设置一个应用自启时隐藏UI界面，该应用未接入状态栏，则抛出401异常；若设置多个应用，有一个设置成功，返回成功）。设置成功后，应用自启后不显示UI界面，仅在状态栏显示，UI进程存在。隐藏UI界面能力仅在PC/2in1和Tablet的PC模式中可正常使用。 |
 
 **错误码**：
 
@@ -414,7 +414,12 @@ let autoStartApps: Array<Want> = [
   {
     // 需根据实际情况进行替换
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EntryAbility',
+    // 下面为非必选参数
+    parameters: {
+      // 从API version 24开始支持，配置应用开机自启时，是否隐藏UI界面，true代表隐藏，该参数设置为true时，应用需接入状态栏，否则自启设置失败，抛出401异常。
+      isHiddenStart: true 
+    }
   }
 ];
 
@@ -572,7 +577,7 @@ getAutoStartApps(admin: Want): Array\<Want>
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 应用自启动名单数组。 |
+| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 应用自启动名单数组。从API version 24开始，支持返回是否隐藏UI的配置。 |
 
 **错误码**：
 
@@ -605,6 +610,21 @@ try {
 }
 ```
 
+```ts
+// 返回示例
+[
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // 从API version 24支持
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
+  // ...
+]
+```
+
 ## applicationManager.addAutoStartApps<sup>20+</sup>
 
 addAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number, disallowModify: boolean): void
@@ -615,7 +635,7 @@ addAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number, di
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-**设备行为差异：** 对于API version 20及之前的版本，该接口在PC/2in1设备可正常调用，在其他设备中调用无效果。从API version 21开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。
+**设备行为差异：** 对于API version 20及之前的版本，该接口在PC/2in1设备可正常调用，在其他设备中调用无效果。从API version 21开始，该接口在Phone、Tablet、PC/2in1中均可正常使用。从API version 24开始，该接口新增支持配置应用开机自启时是否隐藏UI界面，隐藏UI界面的能力仅在PC/2in1和Tablet的PC模式中可正常使用。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -626,7 +646,7 @@ addAutoStartApps(admin: Want, autoStartApps: Array\<Want>, accountId: number, di
 | 参数名        | 类型                                                         | 必填 | 说明                                   |
 | ------------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
 | admin         | [Want](../apis-ability-kit/js-apis-app-ability-want.md)      | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                         |
-| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 是   | 开机自启动应用名单数组，数组总长度不超过10。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。 |
+| autoStartApps | Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 是   | 开机自启动应用名单数组，数组总长度不超过10。Want中必须包含bundleName和abilityName。Ability支持UIAbility和ServiceExtensionAbility。当[abilities](../../quick-start/module-configuration-file.md#abilities标签)标签中exported属性值为false时，不支持拉起Ability。从API version 24开始，新增支持通过Want的parameters属性中的isHiddenStart字段配置应用开机自启是否隐藏UI界面，true表示隐藏，false表示不隐藏。默认值是false。该参数设置为true时，应用必须<!--RP8-->接入状态栏<!--RP8End-->，否则自启设置失败（若当前仅设置一个应用自启时隐藏UI界面，该应用未接入状态栏，则抛出401异常；若设置多个应用，有一个设置成功，返回成功）。设置成功后，应用自启后不显示UI界面，仅在状态栏显示，UI进程存在。隐藏UI界面能力仅在PC/2in1和Tablet的PC模式中可正常使用。 |
 | accountId | number                                                  | 是   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。|
 | disallowModify | boolean | 是   | 是否禁止用户手动取消应用自启动，true表示禁止，false表示允许。<!--RP1--><!--RP1End-->|
 
@@ -656,7 +676,12 @@ let autoStartApps: Array<Want> = [
   // 需根据实际情况进行替换
   {
     bundleName: 'com.example.autoStartApplication',
-    abilityName: 'EntryAbility'
+    abilityName: 'EntryAbility',
+    // 下面为非必选参数
+    parameters: {
+      // 从API version 24开始支持，配置应用开机自启时，是否隐藏UI界面，true代表隐藏，该参数设置为true时，应用需接入状态栏，否则自启设置失败，抛出401异常。
+      isHiddenStart: true 
+    }
   }
 ];
 
@@ -693,7 +718,7 @@ getAutoStartApps(admin: Want, accountId: number): Array\<Want>
 
 | 类型                                                         | 说明                 |
 | ------------------------------------------------------------ | -------------------- |
-| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 应用自启动名单数组。|
+| Array\<[Want](../apis-ability-kit/js-apis-app-ability-want.md)> | 应用自启动名单数组。从API version 24开始，支持返回是否隐藏UI的配置。 |
 
 **错误码**：
 
@@ -723,6 +748,21 @@ try {
 } catch(err) {
   console.error(`Failed to get auto start apps. Code: ${err.code}, message: ${err.message}`);
 }
+```
+
+```ts
+// 返回示例
+[
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    // 从API version 24支持
+    "parameters": {
+      "isHiddenStart": false
+    }
+  },
+  // ...
+]
 ```
 
 ## applicationManager.isModifyAutoStartAppsDisallowed<sup>20+</sup>
@@ -1290,7 +1330,7 @@ try {
 
 setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
-设置Kiosk模式的特征。[进入Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)后，系统会默认禁用通知中心、控制中心和最近任务栏等能力。可通过本接口解除对部分能力的禁用或恢复禁用。
+设置Kiosk模式的特征。通过本接口可以控制在[Kiosk模式](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode)下能否进入通知中心、控制中心；从API version 24开始，新增支持设置能否进入最近任务栏、侧边DOCK栏。非Kiosk模式时，本接口可以正常调用，但是不会生效，进入Kiosk模式后才会生效。
 
 **需要权限：** ohos.permission.ENTERPRISE_SET_KIOSK
 
@@ -1300,12 +1340,14 @@ setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
 **冲突规则：** [合并](../../mdm/mdm-kit-multi-mdm.md#规则4合并)。
 
+**设备行为差异：** 该接口在PC/2in1设备上调用无效果，在Phone和Tablet设备上可正常调用。
+
 **参数：**
 
 | 参数名       | 类型                                                    | 必填 | 说明                   |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。         |
-| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | 是   | Kiosk模式的特征集合。 <br> 当传入空数组时，系统会清空之前下发过的特征，恢复到Kiosk模式的默认状态，即禁用通知中心、控制中心和最近任务栏等能力。|
+| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | 是   | Kiosk模式的特征集合（从API version 24开始，新增允许进入最近任务栏和禁止进入侧边DOCK栏）。 <br> 当传入空数组时，系统会清空之前下发过的特征，恢复到Kiosk模式的默认状态。即：禁用通知中心、控制中心、最近任务栏等能力；允许使用侧边Dock栏。|
 
 **错误码**：
 
@@ -1332,6 +1374,8 @@ let wantTemp: Want = {
 let kioskFeatures: Array<applicationManager.KioskFeature> = [];
 kioskFeatures.push(applicationManager.KioskFeature.ALLOW_NOTIFICATION_CENTER);
 kioskFeatures.push(applicationManager.KioskFeature.ALLOW_CONTROL_CENTER);
+kioskFeatures.push(applicationManager.KioskFeature.ALLOW_GESTURE_CONTROL);
+kioskFeatures.push(applicationManager.KioskFeature.ALLOW_SIDE_DOCK);
 try {
   applicationManager.setKioskFeatures(wantTemp, kioskFeatures);
   console.info('Succeeded in setting kiosk feature.');
@@ -1340,27 +1384,13 @@ try {
 }
 ```
 
-## KioskFeature<sup>20+</sup>
-
-Kiosk模式的特征。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-| 名称                        | 值  | 说明    |
-| ----------------------------| ----| ------------------------------- |
-| ALLOW_NOTIFICATION_CENTER   | 1   | 允许进入通知中心。 |
-| ALLOW_CONTROL_CENTER        | 2   | 允许进入控制中心。 |
-
 ## applicationManager.addUserNonStopApps<sup>22+</sup>
 
 addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
+为指定用户添加不可关停应用名单，仅可对已安装应用设置该策略。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
 
-若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
-<br>不可关停应用：用户不能在任务中心上划关闭应用；在设置-应用和元服务中点击应用名称进入详情页面后，页面中的强行停止按钮呈灰色不可用。
+不可关停应用：用户不能在任务中心上划关闭应用；在设置-应用和元服务中点击应用名称进入详情页面后，页面中的强行停止按钮呈灰色不可用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1542,10 +1572,9 @@ try {
 
 addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略，该策略重启后失效。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。
+为指定用户添加后台防冻结应用名单，仅可对已安装应用设置该策略，该策略重启后失效。若参数列表中存在未安装应用，则返回9200012错误码。若设置策略后，名单中有应用被卸载，则卸载的应用将从名单中移除。若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
 
-若添加已存在于名单中的应用，返回成功，但已设置策略名单中不会重复添加该应用。
-<br>冻结操作：对目标应用的挂起、软件资源代理、硬件资源代理和高功耗管控等操作。
+冻结操作：对目标应用的挂起、软件资源代理、硬件资源代理和高功耗管控等操作。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1843,3 +1872,246 @@ try {
   console.error(`Failed to query whether the ability is disabled. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## applicationManager.addDockApp<sup>24+</sup>
+
+addDockApp(admin: Want, bundleName: string, abilityName: string, index?: number): void
+
+根据位置索引添加应用到PC/2in1设备的底部快捷栏，添加后用户可以通过点击快捷栏的应用图标直接启动应用，应用图标为应用在桌面上显示的默认图标。
+
+> **说明：**
+>
+> 1.若位置0或1上已存在“应用中心”或“任务中心”，则尝试向该位置添加应用会返回错误码9201019；若该位置为其他应用，则可正常添加。
+>
+> 2.以下应用不可通过本接口添加到快捷栏：“应用中心”、“任务中心”、“文件管理”、“回收站”。
+>
+> 3.仅支持添加具有应用程序入口（即有图标）的应用，无图标的应用不支持添加。
+>
+> 4.仅支持配置当前用户下的快捷栏，每个用户的快捷栏最多可容纳100个应用。
+>
+> 5.在已有应用的位置插入新应用时，新应用将直接占用该位置，原应用及其后的应用依次向后顺移一位。
+>
+> 6.若不传index参数，或传入的index值大于快捷栏当前应用数量，则新应用默认追加到快捷栏末尾。
+>
+> 7.通过本接口添加应用到快捷栏后，用户可以手动移除或调整应用的位置。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备上生效，在其他设备中调用返回801错误码。
+
+**冲突规则：** [配置](../../mdm/mdm-kit-multi-mdm.md#规则3配置)。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| bundleName   | string                                                  | 是   | 应用的包名。 |
+| abilityName  | string                                                  | 是   | 应用的Ability名称，仅支持应用程序入口Ability。 |
+| index        | number                                                  | 否   | 应用在快捷栏中的位置索引，取值范围：[0, 100)，默认值为99。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed. |
+| 9200015  | The ability does not exist. |
+| 9201013  | The number of applications in the Dock has reached the maximum. |
+| 9201014  | The application is already in the Dock. |
+| 9201015  | The application is not installed. |
+| 9201018  | The application is inoperable. |
+| 9201019  | The location is inoperable. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 需根据实际情况进行替换
+  let bundleName: string = 'com.example.exampleapplication';
+  let abilityName: string = 'EntryAbility';
+  applicationManager.addDockApp(wantTemp, bundleName, abilityName, 3);
+  console.info('Succeeded in adding dock app.');
+} catch(err) {
+  console.error(`Failed to add dock app. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.removeDockApp<sup>24+</sup>
+
+removeDockApp(admin: Want, bundleName: string, abilityName: string): void
+
+从快捷栏中移除应用。
+
+> **说明：**
+>
+> 以下应用不可通过本接口从快捷栏中移除：“应用中心”、“任务中心”、“文件管理”、“回收站”，否则报错9201018错误码。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备上生效，在其他设备中调用返回801错误码。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+| bundleName   | string                                                  | 是   | 应用的包名。 |
+| abilityName  | string                                                  | 是   | 应用的Ability名称。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9201016  | The application has not been added to the Dock. |
+| 9201018  | The application is inoperable. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 需根据实际情况进行替换
+  let bundleName: string = 'com.example.exampleapplication';
+  let abilityName: string = 'EntryAbility';
+  applicationManager.removeDockApp(wantTemp, bundleName, abilityName);
+  console.info('Succeeded in removing dock app.');
+} catch(err) {
+  console.error(`Failed to remove dock app. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## applicationManager.getDockApps<sup>24+</sup>
+
+getDockApps(admin: Want): Array\<DockInfo>
+
+获取当前快捷栏中应用信息的列表。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_APPLICATION
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在PC/2in1设备上生效，在其他设备中调用返回801错误码。
+
+**参数：**
+
+| 参数名       | 类型                                                    | 必填 | 说明                                                         |
+| ------------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array&lt;[DockInfo](#dockinfo24)&gt; | 快捷栏中的应用信息数组。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { applicationManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  let result: Array<applicationManager.DockInfo> = applicationManager.getDockApps(wantTemp);
+  console.info(`Succeeded in getting dock apps, result : ${JSON.stringify(result)}`);
+} catch(err) {
+  console.error(`Failed to get dock apps. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+```ts
+// 返回示例
+[
+  {
+    "bundleName": "com.example.edmtest",
+    "abilityName": "EntryAbility",
+    "index": 5
+  },
+  // ...
+]
+```
+
+## KioskFeature<sup>20+</sup>
+
+Kiosk模式的特征。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称                        | 值  | 说明    |
+| ----------------------------| ----| ------------------------------- |
+| ALLOW_NOTIFICATION_CENTER   | 1   | 允许进入通知中心（通过单指左上方下滑进入）。 |
+| ALLOW_CONTROL_CENTER        | 2   | 允许进入控制中心（通过单指右上方下滑进入）。 |
+| ALLOW_GESTURE_CONTROL<sup>24+</sup>    | 3   | 允许进入最近任务栏（通过单指底部上滑停留进入）。 |
+| ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | 禁止进入侧边DOCK栏（通过单指边缘内滑停留进入）。 |
+
+
+## DockInfo<sup>24+</sup>
+
+快捷栏中的应用信息。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称         | 类型   | 只读  | 可选  |说明          |
+| ----------- | ------ |------ |------| ---------------|
+| bundleName  | string | 否    | 否   | 应用的包名。 |
+| abilityName | string | 否    | 否   | 应用的Ability名称。 |
+| index       | number | 否    | 否   | 应用在快捷栏中的位置索引。 |

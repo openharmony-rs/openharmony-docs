@@ -77,18 +77,18 @@ Triggered when the tap gesture is recognized.
 
 Provides coordinate information for tap gestures.
 
-**Atomic service API**: This API can be used in atomic services since API version 20.
-
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| x | number | No| No| X coordinate relative to the upper left corner of the component.<br>Value range: [0, +∞).<br>Unit: vp.|
-| y | number | No| No| Y coordinate relative to the upper left corner of the component.<br>Value range: [0, +∞).<br>Unit: vp.|
-| windowX | number | No| No| X coordinate relative to the upper left corner of the window.<br>Value range: [0, +∞).<br>Unit: vp.|
-| windowY | number | No| No| Y coordinate relative to the upper left corner of the window.<br>Value range: [0, +∞).<br>Unit: vp.|
-| displayX | number | No| No| X coordinate relative to the upper left corner of the screen.<br>Value range: [0, +∞).<br>Unit: vp.|
-| displayY | number | No| No| Y coordinate relative to the upper left corner of the screen.<br>Value range: [0, +∞).<br>Unit: vp.|
+| x | number | No| No| X coordinate relative to the upper left corner of the component.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| y | number | No| No| Y coordinate relative to the upper left corner of the component.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| windowX | number | No| No| X coordinate relative to the upper left corner of the window.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| windowY | number | No| No| Y coordinate relative to the upper left corner of the window.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| displayX | number | No| No| X coordinate relative to the upper left corner of the screen.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| displayY | number | No| No| Y coordinate relative to the upper left corner of the screen.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayX<sup>23+</sup> | number | No| Yes| X coordinate in the coordinate system with the upper left corner of the main screen as the origin.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| globalDisplayY<sup>23+</sup> | number | No| Yes| Y coordinate in the coordinate system with the upper left corner of the main screen as the origin.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## Example
 
@@ -152,6 +152,9 @@ struct TapGestureExample {
                 console.info(`windowY = ${JSON.stringify(event.tapLocation?.windowY)}`)
                 console.info(`displayX = ${JSON.stringify(event.tapLocation?.displayX)}`)
                 console.info(`displayY = ${JSON.stringify(event.tapLocation?.displayY)}`)
+                // The globalDisplayX and globalDisplayY attributes are added since API version 23.
+                console.info(`globalDisplayX = ${JSON.stringify(event.tapLocation?.globalDisplayX)}`)
+                console.info(`globalDisplayY = ${JSON.stringify(event.tapLocation?.globalDisplayY)}`)
               }
             })
         )

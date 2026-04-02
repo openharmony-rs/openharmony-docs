@@ -30,7 +30,7 @@ ImageSpan(value: ResourceStr | PixelMap)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| value | [ResourceStr](ts-types.md#resourcestr) \| [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)  | Yes| Image source. Both local and network images are supported.<br>When using an image referenced using a relative path, for example, **ImageSpan("common/test.jpg")**, the **ImageSpan** component cannot be called across bundles or modules. Therefore, you are advised to use **\$r** to reference image resources that need to be used globally.<br>\- The supported formats include PNG, JPG, BMP, SVG, GIF, and HEIF.<br>\- Base64 strings are supported. The value format is data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>\- Character string prefixed with file://data/storage, which is used to read image resources in the file folder in the application installation directory. Ensure that the application has the read permission to the files in the specified path.|
+| value | [ResourceStr](ts-types.md#resourcestr) \|&nbsp;[PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md)&nbsp; | Yes| Image source. Both local and network images are supported.<br>When using an image referenced using a relative path, for example, **ImageSpan("common/test.jpg")**, the **ImageSpan** component cannot be called across bundles or modules. Therefore, you are advised to use **\$r** to reference image resources that need to be used globally.<br>\- The supported formats include PNG, JPG, BMP, SVG, GIF, and HEIF.<br>\- Base64 strings are supported. The value format is data:image/[png\|jpeg\|bmp\|webp\|heif];base64,[base64 data], where *[base64 data]* is a Base64 string.<br>\- Character string prefixed with file://data/storage, which is used to read image resources in the file folder in the application installation directory. Ensure that the application has the read permission to the files in the specified path.|
 
 
 ## Attributes
@@ -71,7 +71,7 @@ Sets the image scale type.
 
 ### alt<sup>12+</sup>
 
-alt(value: PixelMap)
+alt(value:&nbsp;PixelMap)
 
 Sets the placeholder image displayed during image loading.
 

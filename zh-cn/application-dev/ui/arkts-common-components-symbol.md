@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-SymbolGlyph是图标小符号组件，便于使用精美的图标，如渲染多色图标和使用动效图标。SymbolSpan作为Text组件的子组件，可在文本中穿插显示图标小符号。具体用法请参考[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)和[SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md)组件的文档。
+SymbolGlyph是图标小符号组件，便于使用精美的图标，如渲染多色图标和使用动效图标。SymbolSpan作为Text组件的子组件，可在文本中穿插显示图标小符号。具体用法请参考[SymbolGlyph](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolGlyph.md)和[SymbolSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-symbolSpan.md)组件的API文档。
 
 
 ## 创建图标
@@ -471,11 +471,14 @@ struct SymbolMusicDemo {
   @State symbolSourcesIndex: number = 0;
   @State symbolText: string[] = [
     // 请将$r('app.string.play_in_order')替换为实际资源文件，在本示例中该资源文件的value值为"顺序播放"
-    resourceGetString.resourceToString($r('app.string.play_in_order')),
+    this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.play_in_order').id),
     // 请将$r('app.string.play_in_single_repeat')替换为实际资源文件，在本示例中该资源文件的value值为"单曲循环"
-    resourceGetString.resourceToString($r('app.string.play_in_single_repeat')),
+    this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.play_in_single_repeat').id),
     // 请将$r('app.string.shuffle_play')替换为实际资源文件，在本示例中该资源文件的value值为"随机播放"
-    resourceGetString.resourceToString($r('app.string.shuffle_play')),
+    this.getUIContext()
+      .getHostContext()!.resourceManager.getStringSync($r('app.string.shuffle_play').id),
   ];
   @State symbolTextIndex: number = 0;
   @State fontColorValue: ResourceColor = Color.Grey;
@@ -486,7 +489,8 @@ struct SymbolMusicDemo {
       Row() {
         Text() {
           // 请将$r('app.string.current_playlist')替换为实际资源文件，在本示例中该资源文件的value值为"当前播放列表"
-          Span(resourceGetString.resourceToString($r('app.string.current_playlist')))
+          Span(this.getUIContext()
+            .getHostContext()!.resourceManager.getStringSync($r('app.string.current_playlist').id))
             .fontSize(20)
             .fontWeight(FontWeight.Bolder)
           Span('（101）')

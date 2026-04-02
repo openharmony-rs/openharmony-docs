@@ -32,11 +32,10 @@ struct Page_StartFAModel {
 
   build() {
     Column() {
-      //...
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -50,11 +49,8 @@ struct Page_StartFAModel {
             });
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```
@@ -86,7 +82,7 @@ struct Page_StartFAModel {
       List({ initialIndex: 0 }) {
         ListItem() {
           Row() {
-            //...
+            // ...
           }
           .onClick(() => {
             let want: Want = {
@@ -105,11 +101,8 @@ struct Page_StartFAModel {
             });
           })
         }
-        //...
       }
-      //...
     }
-    //...
   }
 }
 ```

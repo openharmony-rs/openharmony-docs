@@ -33,6 +33,12 @@ There are two roles in **DataShare**:
 
 - The **ResultSet** module is implemented through shared memory. Shared memory stores the result sets, and interfaces are provided to traverse result sets.
 
+## Constraints
+
+- The upper limit of shared data result sets depends on the data provider (for example, a maximum of 32 shared data result sets are actually allowed for concurrent use). It is recommended that the data provider specify the upper limit to control resource usage. Query requests that exceed the limit set by the data provider must be processed with retry logic.
+- After the query is complete, the shared data result set returned should be released promptly after use. For details, see [DataShareResultSet](../reference/apis-arkdata/js-apis-data-DataShareResultSet-sys.md#close).
+
+
 ## How to Implement
 
 
@@ -221,7 +227,7 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
 
    | Name           | Description                                                    | Mandatory|
    | ------------------- | ------------------------------------------------------------ | ---- |
-   | tableConfig         | Configuration label, which includes **uri** and **crossUserMode**.<br>- **uri**: specifies the range for which the configuration takes effect. The URI supports the following formats in descending order by priority:<br> 1. *****: indicates all databases and tables.<br> 2. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}**: specifies a database.<br> 3. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}/{*tableName*}**: specifies a table.<br>If URIs of different formats are configured, only the URI with the higher priority takes effect.<br>- **crossUserMode**: Whether to share data between multiple users.<br>The value **1** means to share data between multiple users, and the value **2** means the opposite.| Yes  |
+   | tableConfig         | Configuration label, which includes **uri** and **crossUserMode**.<br>- **uri**: specifies the range for which the configuration takes effect. The URI supports the following formats in descending order by priority:<br> 1. *****: indicates all databases and tables.<br> 2. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}**: specifies a database.<br> 3. **datashare:///{*bundleName*}/{*moduleName*}/{*storeName*}/{*tableName*}**: specifies a table.<br>- **crossUserMode**: Whether to share data between multiple users.<br>The value **1** means to share data between multiple users, and the value **2** means the opposite.| Yes  |
    | isSilentProxyEnable | Whether to enable silent access for this ExtensionAbility.<br>**false**: Silent access is disabled.<br>**true**: Silent access is enabled.<br>The default value is **true**.<br>If an application has multiple ExtensionAbilities and this field is set to **false** for one of them, silent access is disabled for the application.<br>If the data provider has called **enableSilentProxy** or **disableSilentProxy**, silent access is enabled or disabled based on the API settings. Otherwise, the setting here takes effect.| No  |
    | launchInfos         | Information including **storeId** and **tableNames**.<br>If the data in a table involved in the configuration changes, an extensionAbility will be started based on the URI in **extensionAbilities**. You need to set this parameter only when the service needs to start an extensionAbility to process data that is not actively changed by the service.<br>- **storeId**: database name, excluding the file name extension. For example, if the database name is **test.db**, set this parameter to **test**.<br>- **tableNames**: names of the database tables. Any change in a table will start **extension**.| No  |
    
@@ -265,11 +271,11 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. Define the URI string for communicating with the data provider.<br> The URI is the identifier of the context data provider in set in the configuration file. It can be added with suffix parameters to set the access target. The suffix parameters must start with a question mark (?).<br> - Currently, only the **user** parameter is supported.<br> - The value of **user** must be an integer. It indicates the user ID of the data provider. If It is not specified, the user ID of the data consumer is used. For details about the definition of **user** and how to obtain it, see [user](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9).<br> - Currently, the data consumer in cross-user access must have the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission. Currently, cross-user access supports the add, delete, modify, and query operations, and does not support subscription notification.
+2. Define the URI string for communicating with the data provider.<br> The URI is the identifier of the context data provider in set in the configuration file. It can be added with suffix parameters to set the access target. The suffix parameters must start with a question mark (?).<br> - Currently, only the **user** parameter is supported.<br> - The value of **user** must be an integer. It indicates the user ID of the data provider. If It is not specified, the user ID of the data consumer is used. For details about the definition of **user** and how to obtain it, see [user](../reference/apis-basic-services-kit/js-apis-osAccount.md#getactivatedosaccountlocalids9).<br> - Currently, the data consumer in cross-user access must have the **ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS** permission. Currently, cross-user access supports the add, delete, modify, and query operations, and does not support subscription notification.
    
    ```ts
    // Different from the URI defined in the module.json5 file, the URI passed in the parameter has an extra slash (/) because there is a DeviceID parameter between the second and the third slash (/).
-   let dseUri = ('datashare:///com.ohos.settingsdata.DataAbility');
+   let dseUri = 'datashare:///com.ohos.settingsdata.DataAbility';
    ```
 
 3. Use **createDataShareHelper()** to pass the URI to create a **DataShareHelper** object.
@@ -358,3 +364,5 @@ Before implementing a **DataShare** service, you need to create a **DataShareExt
      (dsHelper as dataShare.DataShareHelper).close();
    }
    ```
+
+

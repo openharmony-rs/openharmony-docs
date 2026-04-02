@@ -44,7 +44,7 @@ enable(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[ohos.devicestatus错误码](../apis-distributedservice-kit/errorcode-devicestatus.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息          |
 | -------- | -----------------|
@@ -163,7 +163,7 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number, callback: AsyncCal
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[ohos.multimodalinput错误码](errorcode-cooperator.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[键鼠穿越管理错误码](errorcode-cooperator.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -232,7 +232,7 @@ start(sinkDeviceDescriptor: string, srcInputDeviceId: number): Promise\<void>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[ohos.multimodalinput错误码](errorcode-cooperator.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[键鼠穿越管理错误码](errorcode-cooperator.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------------------------------------- |
@@ -453,7 +453,7 @@ getState(deviceDescriptor: string): Promise<{ state: boolean }>
 
 | 类型                        | 说明                     |
 | -------------------        | ------------------------------- |
-| Promise<{ state: boolean }>| Promise对象，异步返回键鼠穿越开关状态。ture表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。       |
+| Promise<{ state: boolean }>| Promise对象，异步返回键鼠穿越开关状态。true表示键鼠穿越开关打开，false表示键鼠穿越开关关闭。       |
 
 **错误码**：
 

@@ -9,7 +9,7 @@
 
 [Swiper](../reference/apis-arkui/arkui-ts/ts-container-swiper.md)组件提供滑动轮播显示的能力。Swiper本身是一个容器组件，当设置了多个子组件后，可以对这些子组件进行轮播显示。通常，在一些应用首页显示推荐的内容时，需要用到轮播显示的能力。
 
-针对复杂页面场景，可以使用 Swiper 组件的预加载机制，利用主线程的空闲时间来提前构建和布局绘制组件，优化滑动体验。<!--Del-->详细指导见[Swiper高性能开发指导](../performance/swiper_optimization.md)。<!--DelEnd-->
+针对复杂页面场景，可以使用Swiper组件的预加载机制，利用主线程的空闲时间来提前构建和布局绘制组件，优化滑动体验。<!--Del-->详细指导见[Swiper高性能开发指导](../performance/swiper_optimization.md)。<!--DelEnd-->
 
 
 ## 布局与约束
@@ -742,7 +742,7 @@ Swiper通过设置[maintainVisibleContentPosition](../reference/apis-arkui/arkui
 
 maintainVisibleContentPosition为true时，显示区域上方或前方插入或删除数据时可见内容位置不变。
 
-关于数据[LazyForEach：懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)的具体使用，可参考数据懒加载章节中的示例。
+关于数据[LazyForEach：数据懒加载](../ui/rendering-control/arkts-rendering-control-lazyforeach.md)的具体使用，可参考数据懒加载章节中的示例。
 
 <!-- @[visible_content_position](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperVisibleContentPosition.ets) -->
 

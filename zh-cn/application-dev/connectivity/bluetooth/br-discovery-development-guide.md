@@ -56,7 +56,7 @@ try {
 ```
 
 **2. 发起设备扫描**<br>
-应用发起扫描后，整个扫描过程大约持续12s。应用可以对扫描到的蓝牙设备发起配对、连接和传输数据流程。具体操作请参考[配对连接设备](br-pair-device-development-guide.md)、[连接和传输数据](spp-development-guide.md)。
+应用发起扫描后，整个扫描过程大约持续12s。应用可以对扫描到的蓝牙设备发起配对、连接和传输数据流程。具体操作请参考[配对与连接设备](br-pair-device-development-guide.md)、[连接和传输数据](spp-development-guide.md)。
 ```ts
 try {
   // 判断本机设备是否正在进行扫描
@@ -111,14 +111,14 @@ try {
 ```
 
 ### 查找已配对设备信息
-在发起扫描设备前，可以查找该设备是否是已配对的设备，以减少扫描设备的流程。也可以对已配对设备发起连接和传输数据流程，具体操作请参考[配对连接设备](br-pair-device-development-guide.md)和[传输数据](spp-development-guide.md)。
+在发起扫描设备前，可以查找该设备是否是已配对的设备，以减少扫描设备的流程。也可以对已配对设备发起连接和传输数据流程，具体操作请参考[配对与连接设备](br-pair-device-development-guide.md)和[传输数据](spp-development-guide.md)。
 
 ```ts
 try {
   // 获取已配对设备信息
   let devices = connection.getPairedDevices();
   console.info('pairedDevices: ' + JSON.stringify(devices));
-  // 若已知道设备地址，可主动查询该设备是否是已配对的
+  // 若已知设备地址，可主动查询该设备是否是已配对的
   if (devices.length > 0) {
     let pairState = connection.getPairState(devices[0]);
     console.info('device: '+ devices[0] + ' pairState is ' + pairState);
@@ -191,7 +191,7 @@ export class DiscoveryDeviceManager {
       // 获取已配对设备信息
       let devices = connection.getPairedDevices();
       console.info('pairedDevices: ' + JSON.stringify(devices));
-      // 若已知道设备地址，可主动查询该设备是否是已配对的
+      // 若已知设备地址，可主动查询该设备是否是已配对的
       if (devices.length > 0) {
         let pairState = connection.getPairState(devices[0]);
         console.info('device: '+ devices[0] + ' pairState is ' + pairState);

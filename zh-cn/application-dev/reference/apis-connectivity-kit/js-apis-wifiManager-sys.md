@@ -225,6 +225,54 @@ Wifi 代理配置。
 | METHOD_AUTO  | 1 | 使用自动配置的代理。 |
 | METHOD_MANUAL  | 2 | 使用手动配置的代理。 |
 
+## wifiManager.getDeviceConfig<sup>24+</sup>
+
+getDeviceConfig(networkId: number): WifiDeviceConfig
+
+根据网络ID获取单条网络配置。
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG(仅系统应用可申请)
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| networkId | number | 是 | 待查询的网络配置ID。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| [WifiDeviceConfig](#wifideviceconfig9) | 指定网络ID的网络配置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码 | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 801 | Capability not supported.          |
+| 2501000  | Operation failed.|
+
+**示例：**
+```ts
+  import { wifiManager } from '@kit.ConnectivityKit';
+
+  try {
+    let networkId = 0;
+    let config = wifiManager.getDeviceConfig(networkId);
+    console.info(`config: ${JSON.stringify(config)}`);    
+  }catch(error){
+    console.error(`failed: ${JSON.stringify(error)}`);
+  }
+```
+
 ## wifiManager.connectToDevice<sup>9+</sup>
 
 connectToDevice(config: WifiDeviceConfig): void
@@ -1670,7 +1718,7 @@ on(type: 'deviceConfigChange', callback: Callback&lt;number&gt;): void
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1701,7 +1749,7 @@ off(type: 'deviceConfigChange', callback?: Callback&lt;number&gt;): void
 | -------- | -------- |
 | 201 | Permission denied.                 |
 | 202 | System API is not allowed called by Non-system application. |
-| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801 | Capability not supported.          |
 | 2501000  | Operation failed.|
 
@@ -1926,4 +1974,113 @@ try {
 }catch (error) {
   console.error("failed:" + JSON.stringify(error));
 }
+```
+## WifiCapability
+
+wifi支持的能力。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Communication.WiFi.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| WIFI_AUTO_ENABLE | 0 | wifi自动打开能力。 |
+
+
+## wifiManager.setWifiCapability
+
+setWifiCapability(capability: WifiCapability, enable: boolean): void
+
+设置wifi能力。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用
+
+**系统能力：** SystemCapability.Communication.WiFi.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| capability | [WifiCapability](#wificapability) | 是 | wifi能力枚举。 |
+| enable | boolean | 是 | 是否使能wifi能力，true表示使能，false表示不使能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码 | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported.          |
+| 2601000  | Operation failed. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+wifiManager.setWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE, true);
+
+```
+
+## wifiManager.getWifiCapability
+
+getWifiCapability(capability: WifiCapability): boolean
+
+获取wifi支持的能力。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**需要权限：** ohos.permission.SET_WIFI_INFO 和 ohos.permission.MANAGE_WIFI_CONNECTION，仅系统应用可用
+
+**系统能力：** SystemCapability.Communication.WiFi.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| capability | [WifiCapability](#wificapability)| 是 | wifi能力枚举。 |
+
+**返回值：**
+
+  | 类型 | 说明 |
+  | -------- | -------- |
+  | boolean | true:已使能，&nbsp;false:未使能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[WIFI错误码](errorcode-wifi.md)。
+
+| 错误码 | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied.                 |
+| 202 | System API is not allowed called by Non-system application. |
+| 401 | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| 801 | Capability not supported.          |
+| 2601000  | Operation failed. |
+
+**示例：**
+```ts
+import { wifiManager } from '@kit.ConnectivityKit';
+
+let result = wifiManager.getWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE);
+console.info("result:" + result);
+
 ```

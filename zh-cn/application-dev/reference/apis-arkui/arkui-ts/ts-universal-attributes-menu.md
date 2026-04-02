@@ -167,6 +167,8 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | undefined, 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名       | 类型                                               | 必填 | 说明                             |
@@ -239,13 +241,15 @@ bindContextMenuWithResponse(content: CustomBuilderT\<ResponseType> | undefined, 
 | outlineColor<sup>20+</sup> | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[EdgeColors](ts-types.md#edgecolors9) | 否 | 是 | 设置菜单边框外描边颜色。<br />**说明：**<br />默认值：'#19ffffff'<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | mask<sup>20+</sup> | boolean&nbsp;\|&nbsp;[MenuMaskType](#menumasktype20类型说明) | 否 | 是 | 设置菜单是否有蒙层及蒙层样式。<br/>true：有蒙层；false：没有蒙层；MenuMaskType：自定义蒙层的样式。<br/>默认值：菜单有预览图时默认显示蒙层，否则不显示。<br>**说明：** <br/>当设备配置不显示菜单蒙层时，该接口不生效。如当前在2in1设备上该接口不生效。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | modalMode<sup>20+</sup> | [ModalMode](#modalmode20枚举说明) | 否 | 是 | 设置菜单的模态模式。<br />**说明：**<br />默认值：ModalMode.AUTO<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
-| anchorPosition<sup>20+</sup> | [Position](ts-types.md#position) | 否   | 是  | 通过设定水平与垂直偏移量，控制菜单相对于绑定组件左上角的弹出位置，与单独使用offset接口不同的是可以覆盖显示在绑定组件上。<br/>默认值：{ x: 0, y: 0 }，不支持设置百分比。<br/>**说明：**<br />1. 当菜单处于预览状态时，设定的定位偏移量将无法生效。<br/>2. 预设的placement对齐参数将不再生效。<br/>3. 叠加offset参数的偏移量，最终确定菜单的精确显示位置。<br/>4.当水平与垂直偏移量均设为负值时，菜单以绑定组件左下角为基准点进行显示。<br/>5.当水平或垂直偏移量存在负值时，组件将以绑定组件的左上角为定位基准点，通过叠加偏移量参数实现反向偏移。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
+| anchorPosition<sup>20+</sup> | [Position](ts-types.md#position) | 否   | 是  | 通过设定水平与垂直偏移量，控制菜单相对于绑定组件左上角的弹出位置，与单独使用offset接口不同的是可以覆盖显示在绑定组件上。<br/>默认值：{ x: undefined, y: undefined }，不支持设置百分比。<br/>**说明：**<br />1. 当菜单处于预览状态时，设定的偏移量将无法生效。<br/>2. 预设的placement对齐参数将不再生效。<br/>3. 叠加offset参数的偏移量，最终确定菜单的精确弹出位置。<br/>4. 当水平与垂直偏移量均设为负值时，菜单重置到Placement.BottomLeft进行显示。<br/>5. 当水平或垂直偏移量存在undefined或null时，效果等同于不设置anchorPosition，此时预设的placement对齐参数可以生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | onWillAppear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 是 | 菜单显示动效前的事件回调。<br />**说明：**<br />1. 正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2. aboutToAppear是初始化时触发调用，onWillAppear是在动画执行前触发调用，onWillAppear在aboutToAppear之后执行。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | onDidAppear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 是 | 菜单弹出后的事件回调。<br />**说明：**<br />1. 正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br />2. 快速点击弹出，消失菜单时，存在onWillDisappear在onDidAppear前生效。<br />3. 当菜单入场动效未完成时关闭菜单，该回调不会触发。<br/>4.onAppear和onDidAppear触发时机相同，onDidAppear在onAppear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | onWillDisappear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 是 | 菜单退出动效前的事件回调。<br />**说明：**<br />1. 正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br />2. 快速点击弹出，消失菜单时，存在onWillDisappear在onDidAppear前生效。<br/>3. aboutToDisappear和onWillDisappear触发时机相同，onWillDisappear在aboutToDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
 | onDidDisappear<sup>20+</sup> | [Callback&lt;void&gt;](ts-types.md#callback12) | 否 | 是 | 菜单消失后的事件回调。<br />**说明：**<br />1. 正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2. onDisappear和onDidDisappear触发时机相同，onDidDisappear在onDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 |
 | keyboardAvoidMode<sup>23+</sup> | [MenuKeyboardAvoidMode](#menukeyboardavoidmode23枚举说明) | 否 | 是 | 设置菜单是否避让软键盘。<br /> **说明：** <br />未设置或设置为undefined时，按照MenuKeyboardAvoidMode.NONE处理。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 | minKeyboardAvoidDistance<sup>23+</sup> | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单避让软键盘的最小距离。<br /> **说明：** <br />未设置、设置为负数或undefined时，按照8vp处理。仅在keyboardAvoidMode设置为避让软键盘时生效。<br />**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| scrollBar | [BarState](ts-appendix-enums.md#barstate) | 否 | 是 | 设置菜单滚动条状态。 <br />默认值：BarState.Auto <br />未设置或undefined时，按照BarState.Auto处理。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| maxHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 是 | 设置菜单显示的最大高度。<br /> **说明：** 默认最大高度是可用高度的80%。<br />设置为0或负数以及设置为undefined时，按照默认最大高度处理。设置的菜单最大高度不能超过可用高度的100%。<br />预览图场景下不支持此能力，菜单按默认最大高度显示。<br />如果菜单所有选项的实际高度之和小于设定的高度，菜单的高度按实际高度显示。<br />**起始版本：** 26.0.0<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **表1：同时设置offset与placement时菜单的偏移位置** 
 
@@ -1507,3 +1511,59 @@ struct Index {
 ```
 
 ![anchorPositionMenu](figures/anchorPositionMenu.gif)
+
+### 示例22（设置菜单的最大高度）
+
+该示例为bindContextMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的maxHeight属性，设置菜单的最大高度。
+
+未设置maxHeight属性时，默认按照菜单的最大高度，可展示全部列表项，通过设置默认最大高度为窗口可用高度的50%时，仅能显示8个列表项。
+
+从API版本26.0.0开始，在ContextMenuOptions中新增了maxHeight属性。
+
+```ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r('app.media.startIcon');
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem1' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem2' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem3' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem4' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem5' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem6' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem7' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem8' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem9' })
+    }
+  }
+
+  build() {
+    Column({ space: 50 }) {
+      Column() {
+        Column() {
+          Text('LongPress-image')
+            .width(200)
+            .height(100)
+            .textAlign(TextAlign.Center)
+            .margin(100)
+            .fontSize(30)
+            .bindContextMenu(this.MyMenu, ResponseType.LongPress,
+              {
+                maxHeight: LengthMetrics.percent(0.5)
+              })
+            .backgroundColor('#ff7fcdff')
+        }
+      }.width('100%')
+    }
+  }
+}
+```
+
+![maxHeight-menu](figures/menuMaxHeight.png)

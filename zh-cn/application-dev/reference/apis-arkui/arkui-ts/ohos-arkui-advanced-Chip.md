@@ -69,7 +69,7 @@ ChipOptions定义Chip的样式及具体式样参数。
 | direction<sup>12+</sup> | [Direction](ts-appendix-enums.md#direction) | 否 | 是 | 布局方向。<br/>默认值：Direction.Auto。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | closeOptions<sup>14+</sup> | [CloseOptions](#closeoptions14) | 否 | 是 | 默认关闭图标的无障碍朗读功能属性。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | Chip组件的无障碍描述。此描述用于向用户详细解释当前组件，开发人员应为组件的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的结果。特别是当这些结果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：空字符串。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| accessibilityLevel<sup>14+</sup> | string | 否 | 是 | Chip组件无障碍重要性。用于控制后缀图标是否可被无障碍辅助服务所识别。<br>支持的值为:<br>"auto"：当前组件会转化为“yes”。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| accessibilityLevel<sup>14+</sup> | string | 否 | 是 | Chip组件无障碍重要性。用于控制后缀图标是否可被无障碍辅助服务所识别。<br>支持的值为:<br>"auto"：当前组件会转化为"yes"。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilitySelectedType<sup>14+</sup> | [AccessibilitySelectedType](#accessibilityselectedtype14) | 否 | 是 | Chip组件选中态类型。<br>默认值：当设置了activated属性但未指定accessibilitySelectedType时，默认使用CHECKED类型。当未设置activated属性时，默认使用CLICKED类型。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | maxFontScale<sup>23+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | Chip组件文本与图标的最大的字体缩放倍数。 <br>取值范围：[1, +∞)<br>设置的值小于1时，按值为1处理。异常值默认不生效。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | minFontScale<sup>23+</sup> | number&nbsp;\|&nbsp;[Resource](ts-types.md#resource) | 否 | 是 | Chip组件文本与图标的最小的字体缩放倍数。 <br>取值范围：[0, 1]<br>设置的值小于0时，按值为0处理。设置的值大于1时，按值为1处理。异常值默认不生效。 <br>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
@@ -165,7 +165,7 @@ SuffixIconOptions定义后缀图标的属性。
 | action | () => void | 否  | 是  | 后缀图标设定事件。<br>值为undefined时，不设定后缀图标事件。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | accessibilityText<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 后缀图标无障碍文本属性。当后缀图标不包含文本属性时，屏幕朗读选中后缀图标时不播报，使用者无法清楚地知道当前是否选中了后缀图标。为了解决此场景，开发人员可为不包含文字信息的后缀图标设置无障碍文本，当屏幕朗读选中后缀图标时播报无障碍文本的内容，帮助屏幕朗读的使用者清楚地知道自己是否选中了后缀图标。<br>默认值：‘ ’<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | accessibilityDescription<sup>14+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 后缀图标的无障碍描述。此描述用于向用户详细解释后缀图标，开发人员应为后缀图标的这一属性提供较为详尽的文本说明，以协助用户理解即将执行的操作及其可能产生的后果。特别是当这些后果无法仅从后缀图标的属性和无障碍文本中直接获知时。如果后缀图标同时具备文本属性和无障碍说明属性，当后缀图标被选中时，系统将首先播报后缀图标的文本属性，随后播报无障碍说明属性的内容。<br>默认值：‘ ’<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
-| accessibilityLevel<sup>14+</sup> | string | 否 | 是 | 后缀图标的无障碍重要性。用于控制后缀图标是否可被无障碍辅助服务识别。<br>支持的值为:<br>"auto"：当前组件存在action时转化为“yes”，不存在action时，转化为“no”。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
+| accessibilityLevel<sup>14+</sup> | string | 否 | 是 | 后缀图标的无障碍重要性。用于控制后缀图标是否可被无障碍辅助服务识别。<br>支持的值为:<br>"auto"：当前组件存在action时转化为"yes"，不存在action时，转化为"no"。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"。<br>值为undefined时，按默认值处理。<br>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 
 ## AccessibilityOptions<sup>14+</sup>
 
@@ -181,7 +181,7 @@ SuffixIconOptions定义后缀图标的属性。
 | ------ | ---------- | ---- | ------------------ | ------------------ |
 | accessibilityText | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍文本属性。当组件无文本属性时，屏幕朗读选中此组件不会播报，导致使用者无法清楚了解当前选中的组件。开发人员可为此类组件设置无障碍文本，屏幕朗读时将播报该文本，帮助使用者明确选中了什么组件。<br>默认值：‘ ’<br>值为undefined时，按默认值处理。 |
 | accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | 否 | 是 | 无障碍描述。此描述用于向用户详细解释当前组件，开发人员应提供详尽的文本说明，以协助用户理解即将执行的操作及其后果。特别是当这些后果无法仅从组件的属性和无障碍文本中直接获知时。如果组件同时具备文本属性和无障碍说明属性，当组件被选中时，系统将首先播报组件的文本属性，随后播报无障碍说明属性的内容。<br>默认值：‘ ’<br>值为undefined时，按默认值处理。 |
-| accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于控制组件是否可被无障碍辅助服务识别。<br>支持的值为:<br>"auto"：当前组件会转换为“yes”。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"。<br>值为undefined时，按默认值处理。 |
+| accessibilityLevel | string | 否 | 是 | 无障碍重要性。用于控制组件是否可被无障碍辅助服务识别。<br>支持的值为:<br>"auto"：当前组件会转换为"yes"。<br>"yes"：当前组件可被无障碍辅助服务所识别。<br>"no"：当前组件不可被无障碍辅助服务所识别。<br>"no-hide-descendants"：当前组件及其所有子组件不可被无障碍辅助服务所识别。<br>默认值："auto"。<br>值为undefined时，按默认值处理。 |
 
 ## ChipSuffixSymbolGlyphOptions<sup>14+</sup>
 
@@ -298,12 +298,14 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
+        // 设置前缀图标属性。
         prefixIcon: {
           // 'app.media.chips'仅作示例，请替换为实际使用图片。
           src: $r('app.media.chips'),
           size: { width: 16, height: 16 },
           fillColor: Color.Red
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -311,6 +313,7 @@ struct Index {
           fontFamily: 'HarmonyOS Sans',
           labelMargin: { left: 20, right: 30 }
         },
+        // 设置后缀图标属性。
         suffixIcon: {
           // 'app.media.close'仅作示例，请替换为实际使用图片。
           src: $r('app.media.close'),
@@ -351,12 +354,14 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
+        // 设置前缀图标属性。
         prefixIcon: {
           // 'app.media.chips'仅作示例，请替换为实际使用图片。
           src: $r('app.media.chips'),
           size: { width: 16, height: 16 },
           fillColor: Color.Blue
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -399,12 +404,14 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
+        // 设置前缀图标属性。
         prefixIcon: {
           // 'app.media.chips'仅作示例，请替换为实际使用图片。
           src: $r('app.media.chips'),
           size: { width: 16, height: 16 },
           fillColor: Color.Blue
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -451,6 +458,7 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
+        // 设置前缀图标属性。
         prefixIcon: {
           // 'app.media.chips'仅作示例，请替换为实际使用图片。
           src: $r('app.media.chips'),
@@ -458,6 +466,7 @@ struct Index {
           fillColor: Color.Blue,
           activatedFillColor: $r('sys.color.ohos_id_color_text_primary_contrary')
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -480,7 +489,7 @@ struct Index {
           console.info('chip on clicked');
         }
       })
-
+ 	  // 点击“改变激活状态”，用于控制操作块的激活与关闭。
       Button('改变激活状态')
         .onClick(() => {
           this.isActivated = !this.isActivated;
@@ -495,7 +504,7 @@ struct Index {
 
 ### 示例5（设置symbol类型图标）
 
-Chip组件的前缀、后缀图标使用symbol类型资源展示。
+Chip组件的前缀图标使用symbol类型资源展示。
 
 ```ts
 import { Chip, ChipSize, SymbolGlyphModifier } from '@kit.ArkUI';
@@ -508,10 +517,12 @@ struct Index {
   build() {
     Column({ space: 10 }) {
       Chip({
+        // 设置前缀图标属性，symbol类型。
         prefixSymbol: {
           normal: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16).fontColor([Color.Green]),
           activated: new SymbolGlyphModifier($r('sys.symbol.ohos_star')).fontSize(16).fontColor([Color.Red]),
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -560,12 +571,14 @@ struct ChipPage {
     Column() {
       Chip({
         direction: Direction.Rtl,
+        // 设置前缀图标属性。
         prefixIcon: {
           // 'app.media.chips'仅作示例，请替换为实际使用图片。
           src: $r('app.media.chips'),
           size: { width: 16, height: 16 },
           fillColor: Color.Red,
         },
+        // 设置文本属性。
         label: {
           text: '操作块',
           fontSize: 12,
@@ -573,6 +586,7 @@ struct ChipPage {
           fontFamily: 'HarmonyOS Sans',
           localizedLabelMargin: { start: LengthMetrics.vp(20), end: LengthMetrics.vp(20) },
         },
+        // 设置后缀图标属性。
         suffixIcon: {
           // 'app.media.close'仅作示例，请替换为实际使用图片。
           src: $r('app.media.close'),

@@ -12,7 +12,7 @@ Navigation组件是路由导航的根视图容器，一般作为Page页面的根
 >
 > - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
-> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md)属性实现安全区避让。
+> - 该组件从API version 11开始默认支持安全区避让特性(默认值为：expandSafeArea([SafeAreaType.SYSTEM, SafeAreaType.KEYBOARD, SafeAreaType.CUTOUT], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]))，开发者可以重写该属性覆盖默认行为，API version 11之前的版本需配合[expandSafeArea](ts-universal-attributes-expand-safe-area.md#expandsafearea)属性实现安全区避让。
 >
 > - [NavBar](#navbar12)嵌套使用Navigation时，内层NavDestination的生命周期不和外层NavDestination以及[全模态](ts-universal-attributes-modal-transition.md)的生命周期进行联动。
 >
@@ -495,7 +495,7 @@ systemBarStyle(style: Optional&lt;SystemBarStyle&gt;)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | 是   | 系统状态栏样式。 |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[SystemBarStyle](../arkts-apis-window-i.md#systembarstyle12)&gt; | 是   | 系统状态栏样式。 |
 
 ### recoverable<sup>14+</sup>
 
@@ -516,7 +516,7 @@ recoverable(recoverable: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| recoverable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | Navigation是否可恢复，默认为不可恢复。<br/>true：路由栈可恢复；false：路由栈不可恢复。<br/>传入参数非法时，按false处理。|
+| recoverable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | Navigation是否可恢复，默认为不可恢复。<br/>true：路由栈可恢复；false：路由栈不可恢复。<br/>传入参数非法时，按false处理。|
 
 ### enableDragBar<sup>14+</sup>
 
@@ -532,7 +532,7 @@ enableDragBar(isEnabled: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| isEnabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 是否开启拖拽条，默认为无拖拽条样式。<br/>true：有拖拽条样式；false：无拖拽条样式。<br/>传入参数非法时，按false处理。|
+| isEnabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 是否开启拖拽条，默认为无拖拽条样式。<br/>true：有拖拽条样式；false：无拖拽条样式。<br/>传入参数非法时，按false处理。|
 
 ### enableModeChangeAnimation<sup>15+</sup>
 
@@ -548,7 +548,7 @@ enableModeChangeAnimation(isEnabled: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型         | 必填 | 说明               |
 | ------ | -------------- | ---- | ------------------ |
-| isEnabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 是否开启单双栏切换动效。<br/>true：开启单双栏切换动效；false：关闭单双栏切换动效。<br/>传入参数非法时，按true处理。|
+| isEnabled  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 是否开启单双栏切换动效。<br/>true：开启单双栏切换动效；false：关闭单双栏切换动效。<br/>传入参数非法时，按true处理。|
 
 ### enableToolBarAdaptation<sup>19+</sup>
 
@@ -606,6 +606,10 @@ divider(style: NavigationDividerStyle | null)
 enableVisibilityLifecycleWithContentCover(isEnabled: Optional&lt;boolean&gt;)
 
 设置是否启用[NavDestination](./ts-basic-components-navdestination.md)页面[onHidden](./ts-basic-components-navdestination.md#onhidden10)、[onShown](./ts-basic-components-navdestination.md#onshown10)生命周期与全模态的联动触发。
+
+>**说明：**
+>
+> 从API version 23开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
 
@@ -1855,7 +1859,7 @@ Navigation分割线颜色及上下边距。
 
 | 名称      | 类型                                       | 只读 | 可选 | 说明      |
 | ------- | ---------------------------------------- | ---- | ---- | -------- |
-| color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#33182431，灰色。  |
+| color       | [ResourceColor](ts-types.md#resourcecolor) | 否 | 是   | 分割线的颜色。<br/>默认值：#33000000，灰色。  |
 | startMargin | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏顶端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞) |
 | endMargin   | [Length](ts-types.md#length)        | 否 | 是   | 分割线与侧边栏底端的距离。<br/>默认值：0<br/>单位：vp<br/>取值范围：[0, +∞) |
 
@@ -1876,15 +1880,14 @@ Navigation分割线颜色及上下边距。
 
 导航页显示模式。Navigation处于分栏显示状态时，导航页和内容区之间会显示分割线。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 值 |说明                                                         |
 | ----- | ----- |------------------------------------------------------------ |
-| Stack | 0 |导航页与内容区独立显示，相当于两个页面。                     |
-| Split | 1 |导航页与内容区分两栏显示。<br/>**1.** navBarWidth最终取值与开发者设置值的关系参见表1。<br/>**2.** 缩小组件尺寸时，先缩小内容区的尺寸至minContentWidth，然后再缩小导航页的尺寸至minNavBarWidth。若继续缩小，先缩小内容区，内容区消失后再缩小导航页。<br/>**3.** 设置导航页为固定尺寸时，若持续缩小组件尺寸，导航页最后压缩显示。<br/>**4.** 若只设置了navBarWidth属性，则导航页宽度为navBarWidth，且分割线不可拖动。<br/>**5.** 分割线的热区左右各2vp，建议避让4vp以上。<br/>**6.** Split模式下，内容区若只存在一个页面，则页面左上角不会显示返回按钮。 |
-| Auto  | 2 |API version 9之前：窗口宽度>=520vp时，采用Split模式显示；窗口宽度<520vp时，采用Stack模式显示。<br/>API version 10及以上：窗口宽度>=600vp时，采用Split模式显示；窗口宽度<600vp时，采用Stack模式显示，600vp等于minNavBarWidth(240vp) + minContentWidth (360vp)。 |
+| Stack | 0 |导航页与内容区独立显示，相当于两个页面。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                     |
+| Split | 1 |导航页与内容区分两栏显示。<br/>**1.** navBarWidth最终取值与开发者设置值的关系参见表1。<br/>**2.** 缩小组件尺寸时，先缩小内容区的尺寸至minContentWidth，然后再缩小导航页的尺寸至minNavBarWidth。若继续缩小，先缩小内容区，内容区消失后再缩小导航页。<br/>**3.** 设置导航页为固定尺寸时，若持续缩小组件尺寸，导航页最后压缩显示。<br/>**4.** 若只设置了navBarWidth属性，则导航页宽度为navBarWidth，且分割线不可拖动。<br/>**5.** 分割线的热区左右各2vp，建议避让4vp以上。<br/>**6.** Split模式下，内容区若只存在一个页面，则页面左上角不会显示返回按钮。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| Auto  | 2 |API version 9及之前版本，Navigation宽度>=520vp时，采用Split模式显示；Navigation宽度<520vp时，采用Stack模式显示。<br/>从API version 10开始：Navigation宽度>=600vp时，采用Split模式显示；Navigation宽度<600vp时，采用Stack模式显示，600vp等于minNavBarWidth(240vp) + minContentWidth (360vp)。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。   |
+| AUTO_WITH_ASPECT_RATIO<sup>24+</sup>  | 3 |Navigation宽度>=600vp且高宽比小于等于1.2时，采用Split模式显示；否则采用Stack模式显示。600vp等于minNavBarWidth(240vp) + minContentWidth (360vp)。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。   |
 
 **表1** navBarWidth最终取值与开发者设置值的关系表
 
@@ -1900,7 +1903,7 @@ Navigation分割线颜色及上下边距。
 
 > **说明：**
 >
-> 为了简化表示，可以将`组件宽度 - minContentWidth - 分割线宽度 (1vp)`称为calcNavBarWidth。
+> 为了简化表示，可以将`组件宽度 - minContentWidth - 分割线宽度 (1px)`称为calcNavBarWidth。
 
 ## NavigationOperation<sup>11+</sup>枚举说明
 
@@ -1943,8 +1946,8 @@ Navigation分割线颜色及上下边距。
 | barStyle<sup>12+</sup>   | [BarStyle](#barstyle12枚举说明)        | 否    | 是    | 设置标题栏布局方式。<br/>默认值：BarStyle.STANDARD<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | paddingStart<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏起始端内间距。<br/>仅支持以下任一场景：<br/>1. 显示返回图标，即[hideBackButton](#hidebackbutton)为false；<br/>2. 使用非自定义标题，即[标题value](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_left')`)。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | paddingEnd<sup>12+</sup>   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12)        | 否    | 是    | 标题栏结束端内间距。<br/>仅支持以下任一场景：<br/>1. 使用非自定义菜单，即[菜单value](#menus)为Array&lt;NavigationMenuItem&gt;；<br/>2. 没有右上角菜单，且使用非自定义标题，即[标题value](#title)类型为ResourceStr或NavigationCommonTitle。<br/>默认值：<br/>LengthMetrics.resource(`$r('sys.float.margin_right')`)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
-| mainTitleModifier<sup>13+</sup>   | [TextModifier](./ts-universal-attributes-attribute-modifier.md)  | 否    | 是    | 主标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置；<br/>3. [Free](#navigationtitlemode枚举说明)模式下设置字体大小时，原有滑动改变标题大小的效果失效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
-| subTitleModifier<sup>13+</sup>   | [TextModifier](./ts-universal-attributes-attribute-modifier.md)  | 否    | 是    | 子标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| mainTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否    | 是    | 主标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置；<br/>3. [Free](#navigationtitlemode枚举说明)模式下设置字体大小时，原有滑动改变标题大小的效果失效。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
+| subTitleModifier<sup>13+</sup>   | [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  | 否    | 是    | 子标题属性修改器。<br/>1. 通过Modifier设置的属性会覆盖系统默认的属性（如果Modifier设置了fontSize，maxFontSize，minFontSize任一属性，则系统设置的大小相关属性不生效，以开发者的设置为准）；<br/>2. 不设该属性或者设置了异常值，则恢复系统默认设置。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 | enableHoverMode<sup>13+</sup>   | boolean | 否    | 是    | 是否响应悬停态。<br/>使用规则：<br/>1. 需满足Navigation为全屏大小；<br/>2. 标题栏显示模式为[Free](#navigationtitlemode枚举说明)时或者标题栏布局方式为[STANDARD](#barstyle12枚举说明)时，此接口设置无效。<br/>true：响应悬停态；false：不响应悬停态。<br/>默认值：false<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 
 ## NavigationToolbarOptions<sup>11+</sup>
@@ -2089,8 +2092,8 @@ struct NavigationExample {
         .width(24)
         .height(24)
         .margin({ left: 24 })
-      // 'common/ic_public_more.svg'需要替换为开发者所需的资源文件
-      Image('common/ic_public_more.svg')
+      // 'resources/base/media/ic_public_more.svg'需要替换为开发者所需的资源文件
+      Image('resources/base/media/ic_public_more.svg')
         .width(24)
         .height(24)
         .margin({ left: 24 })
@@ -2224,7 +2227,7 @@ struct NavigationExample {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pageInfos.pushPath({ name: 'pageOne' }); //将name指定的NavDestination页面信息入栈
+            this.pageInfos.pushPath({ name: 'pageOne' }); // 将name指定的NavDestination页面信息入栈
           })
         Button('use interception', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2267,7 +2270,7 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             let tmp = new TmpClass();
-            this.pageInfos.pushPathByName('pageTwo', tmp); //将name指定的NavDestination页面信息入栈，传递的数据为param
+            this.pageInfos.pushPathByName('pageTwo', tmp); // 将name指定的NavDestination页面信息入栈，传递的数据为param
           })
         Button('singletonLaunchMode', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2275,14 +2278,14 @@ export struct PageOne {
           .margin(20)
           .onClick(() => {
             this.pageInfos.pushPath({ name: 'pageOne' },
-              { launchMode: LaunchMode.MOVE_TO_TOP_SINGLETON }); //从栈底向栈顶查找，如果指定的名称已经存在，则将对应的NavDestination页面移到栈顶
+              { launchMode: LaunchMode.MOVE_TO_TOP_SINGLETON }); // 从栈底向栈顶查找，如果指定的名称已经存在，则将对应的NavDestination页面移到栈顶
           })
         Button('popToname', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pageInfos.popToName('pageTwo'); //回退路由栈到第一个名为name的NavDestination页面
+            this.pageInfos.popToName('pageTwo'); // 回退路由栈到第一个名为name的NavDestination页面
             console.info(`popToName ${JSON.stringify(this.pageInfos)}，` + 
               `返回值 ${JSON.stringify(this.pageInfos.popToName('pageTwo'))}`); 
           })
@@ -2316,7 +2319,7 @@ export struct PageOne {
           .height(40)
           .margin(20)
           .onClick(() => {
-            this.pageInfos.clear(); //清除栈中所有页面
+            this.pageInfos.clear(); // 清除栈中所有页面
           })
         Button('get', { stateEffect: true, type: ButtonType.Capsule })
           .width('80%')
@@ -2595,7 +2598,7 @@ export struct PageOne {
           .height(40)
           .margin(20)
           .onClick(() => {
-            //将name指定的NavDestination页面信息入栈，传递的数据为param
+            // 将name指定的NavDestination页面信息入栈，传递的数据为param
             this.pageInfos.pushDestinationByName('pageTwo', CustomTransition.getInstance().getAnimationId());
           })
       }
@@ -2698,7 +2701,7 @@ export struct PageTwo {
           .height(40)
           .margin(20)
           .onClick(() => {
-            //将name指定的NavDestination页面信息入栈，传递的数据为param
+            // 将name指定的NavDestination页面信息入栈，传递的数据为param
             this.pageInfos.pushPath({ name: 'pageOne', param: CustomTransition.getInstance().getAnimationId() });
           })
       }
@@ -4832,7 +4835,7 @@ struct NavigationExample {
       }
     }
     .mode(NavigationMode.Stack)
-    .enableToolBarAdaptation(this.enable) //是否启用工具栏自适应能力
+    .enableToolBarAdaptation(this.enable) // 是否启用工具栏自适应能力
     .backButtonIcon(new SymbolGlyphModifier($r('sys.symbol.ohos_wifi')))
     .titleMode(NavigationTitleMode.Mini)
     .menus(this.menuItems)
@@ -4929,7 +4932,9 @@ struct Index {
 
 ### 示例17（使用新增导航控制器方法）
 
-该示例演示如何使用路由拦截功能，并在[NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11)中获取mode。
+该示例通过设置[setInterception](#setinterception12)方法来实现路由拦截功能，并在[NavDestinationContext](ts-basic-components-navdestination.md#navdestinationcontext11)中获取mode。
+
+从API version 22开始，在setInterception的参数类型[NavigationInterception](#navigationinterception12)中新增了interception接口。
 
 ```ts
 // Index.ets
@@ -5170,7 +5175,7 @@ export struct PageTwo {
 
 在src/main目录下的工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的module字段里配置"routerMap": "$profile:router_map"。
 
-```json
+```json5
 // src/main/resources/base/profile/router_map.json
 {
   "routerMap": [

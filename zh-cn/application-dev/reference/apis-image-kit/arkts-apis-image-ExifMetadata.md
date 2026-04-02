@@ -1,4 +1,4 @@
-# class (ExifMetadata)
+# Class (ExifMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -126,7 +126,7 @@ import { image } from '@kit.ImageKit';
 | meteringMode                        | number                                             | 否   | 是   | 测光模式。                                                   |
 | lightSource                         | number                                             | 否   | 是   | 光源。                                                       |
 | flash                               | number                                             | 否   | 是   | 闪光。                                                       |
-| focalLength                         | number                                             | 否   | 是   | 焦距。，单位为毫米。                                                       |
+| focalLength                         | number                                             | 否   | 是   | 焦距。单位为毫米。                                                       |
 | subjectArea                         | number[]                                           | 否   | 是   | 用于指示主要对象在整个场景中的位置和区域。                   |
 | makerNote                           | ArrayBuffer                                        | 否   | 是   | Exif/相机文件系统设计规则DCF（Design rule for Camera File system）写入器制造商记录所需信息的标签。                     |
 | userComment                         | string                                             | 否   | 是   | 用户评论。                                                   |
@@ -138,7 +138,7 @@ import { image } from '@kit.ImageKit';
 | pixelXDimension                     | number                                             | 否   | 是   | 图像在X轴上的（二维坐标系中的Horizontal Axis）尺寸。           |
 | pixelYDimension                     | number                                             | 否   | 是   | 图像在Y轴上的（二维坐标系中的Vertical Axis）尺寸。             |
 | relatedSoundFile                    | string                                             | 否   | 是   | 与图像数据相关的音频文件的名称。                             |
-| flashEnergy                         | number                                             | 否   | 是   | 图像捕获时的闪光灯能量。单位为光束烛光秒(BCPS，Beam Candlepower Seconds)。 |
+| flashEnergy                         | number                                             | 否   | 是   | 图像捕获时的闪光灯能量。单位为光束烛光秒（BCPS，Beam Candlepower Seconds）。 |
 | spatialFrequencyResponse            | ArrayBuffer                                        | 否   | 是   | 相机或输入设备空间频率表。                                   |
 | focalPlaneXResolution               | number                                             | 否   | 是   | 传感器物理平面X轴方向上每单位物理长度的像素数量。          |
 | focalPlaneYResolution               | number                                             | 否   | 是   | 传感器物理平面Y轴方向上每单位物理长度的像素数量。          |
@@ -192,8 +192,6 @@ static createInstance(): ExifMetadata
 **示例：**
 
 ```ts
-import { image } from '@kit.ImageKit';
-
 async function exifMetadataCreateInstance(context: Context) {
   let exifMetadata = image.ExifMetadata.createInstance();
   if (exifMetadata != undefined) {
@@ -239,7 +237,6 @@ getProperties(key: Array\<string>): Promise\<Record\<string, string \| null>>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { image } from '@kit.ImageKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
@@ -301,7 +298,6 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { image } from '@kit.ImageKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
@@ -351,7 +347,6 @@ getAllProperties(): Promise\<Record\<string, string \| null>>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { image } from '@kit.ImageKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
@@ -399,7 +394,6 @@ clone(): Promise\<ExifMetadata>
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { image } from '@kit.ImageKit';
 
 function getFileFd(context: Context): number | undefined {
   const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
@@ -421,6 +415,107 @@ async function exifMetadataClone(context: Context) {
     });
   } else {
     console.error('Metadata is null.');
+  }
+}
+```
+
+## getBlob
+
+getBlob(): Promise\<ArrayBuffer>
+
+以二进制数据的形式获取元数据。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**返回值：**
+
+| 类型                  | 说明                                  |
+| --------------------- | ------------------------------------- |
+| Promise\<ArrayBuffer> | Promise对象，返回元数据的二进制数据。 |
+
+**示例：**
+
+```ts
+import { fileIo as fs } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataGetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    let blob = await metaData.exifMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("get blob success");
+    }
+  }
+}
+```
+
+## setBlob
+
+setBlob(blob: ArrayBuffer): Promise\<void>
+
+使用二进制数据替换当前元数据。使用Promise异步回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**参数：**
+
+| 参数名 | 类型        | 必填 | 说明                 |
+| ------ | ----------- | ---- | -------------------- |
+| blob   | ArrayBuffer | 是   | 要替换的二进制数据。 |
+
+**返回值：**
+
+| 类型           | 说明          |
+| -------------- | ------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 7600206  | Invalid parameter. Possible causes: The blob is empty or has a length of 0. |
+
+**示例：**
+
+```ts
+import { fileIo as fs } from '@kit.CoreFileKit';
+
+function getFileFd(context: Context): number | undefined {
+  const filePath: string = context.cacheDir + '/exif.jpg';  // 图片包含exif metadata。
+  const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  const fd: number = file?.fd;
+  return fd;
+}
+
+async function exifMetadataSetBlob(context: Context) {
+  let fd = getFileFd(context);
+  let imageSource = image.createImageSource(fd);
+  let metaData = await imageSource.readImageMetadata(["ImageWidth", "ImageLength"]);
+  if (metaData != undefined && metaData.exifMetadata != undefined) {
+    let blob = await metaData.exifMetadata.getBlob();
+    if (blob != undefined) {
+      console.info("get blob success");
+      metaData.exifMetadata.setBlob(blob);
+    }
+    let new_blob = metaData.exifMetadata.getBlob();
+    if (new_blob != undefined) {
+      console.info("new_blob is not undefined");
+    }
   }
 }
 ```

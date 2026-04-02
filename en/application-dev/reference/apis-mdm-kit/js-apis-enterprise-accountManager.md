@@ -34,6 +34,7 @@ Users are not allowed to add accounts.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 
@@ -148,6 +149,7 @@ Adds an account in the background. This API uses a promise to return the result.
 
 **Model restriction**: This API can be used only in the stage model.
 
+**Conflict rule**: [Latest configuration precedence](../../mdm/mdm-kit-multi-mdm.md#rule-3-latest-configuration-precedence).
 
 **Parameters**
 
@@ -208,6 +210,8 @@ Sets the domain account policy.
 **Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
+
+**Conflict rule**: [Security-first](../../mdm/mdm-kit-multi-mdm.md#rule-1-security-first)
 
 **Parameters**
 

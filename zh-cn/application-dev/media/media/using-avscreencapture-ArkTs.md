@@ -16,7 +16,7 @@
 
 开始屏幕录制时正在通话中或者屏幕录制过程中来电，录屏将自动停止。因通话中断的录屏会上报SCREENCAPTURE_STATE_STOPPED_BY_CALL状态。
 
-本开发指导将以完成一次屏幕数据录制的过程为例，向开发者讲解如何使用AVScreenCaptureRecorder进行屏幕录制，详细的API声明请参考[AVScreenCaptureRecorder API参考](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md)。
+本开发指导将以完成一次屏幕数据录制的过程为例，向开发者讲解如何使用AVScreenCaptureRecorder进行屏幕录制，详细的API声明请参考[AVScreenCaptureRecorder](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md)。
 
 如果配置了采集麦克风音频数据，需对应配置麦克风权限ohos.permission.MICROPHONE和申请长时任务，配置方式请参见[向用户申请权限](../../security/AccessToken/request-user-authorization.md)、[申请长时任务](../../task-management/continuous-task.md)。
 
@@ -141,20 +141,20 @@
     };
     ```
 
-5. 基于预先配置的屏幕录制参数，调用init()方法初始化screenCapture。
+5. 基于预先配置的屏幕录制参数，调用[init](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#init12)方法初始化screenCapture。
 
     ```javascript
     await this.screenCapture.init(this.captureConfig);
     ```
 
-6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见[窗口API](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
+6. 创建豁免隐私窗口，这里填写的是子窗口id和主窗口id，具体开发步骤可参见窗口API[WindowProperties](../../reference/apis-arkui/arkts-apis-window-i.md#windowproperties)。
 
     ```javascript
     let windowIDs = [57, 86];
     await this.screenCapture.skipPrivacyMode(windowIDs);
     ```
 
-7. 调用startRecording()方法开始进行屏幕录制，并通过监听函数监听状态。
+7. 调用[startRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#startrecording12)方法开始进行屏幕录制，并通过监听函数监听状态。
 
     ```javascript
     await this.screenCapture.startRecording();
@@ -162,15 +162,15 @@
 
 8. 停止录屏。
 
-    - 点击录屏胶囊中的结束按钮停止录制：基于回调函数实现，录屏对象实例screenCapture会触发SCREENCAPTURE_STATE_STOPPED_BY_USER的回调，通知应用此次录屏已停止，不需要开发者主动调用stopRecording()方法。
+    - 点击录屏胶囊中的结束按钮停止录制：基于回调函数实现，录屏对象实例screenCapture会触发SCREENCAPTURE_STATE_STOPPED_BY_USER的回调，通知应用此次录屏已停止，不需要开发者主动调用[stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12)方法。
 
-    - 应用主动调用stopRecording()方法，停止录屏。
+    - 应用主动调用[stopRecording](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#stoprecording12)方法，停止录屏。
 
       ```javascript
       await this.screenCapture.stopRecording();
       ```
 
-9. 调用release()方法销毁实例，释放资源。
+9. 调用[release](../../reference/apis-media-kit/arkts-apis-media-AVScreenCaptureRecorder.md#release12)方法销毁实例，释放资源。
 
     ```javascript
     await this.screenCapture.release();

@@ -65,12 +65,10 @@ Defines the parameters for creating a child window or system window.
 
 **System API**: This is a system API.
 
-**System capability**: SystemCapability.Window.SessionManager
-
 | Name| Type| Read-Only| Optional| Description                      |
 | ---------- | --------- | ---- | ---- |-------------- |
-| zIndex<sup>20+</sup>       | number | No| Yes| Z-level of the system window. This parameter is valid only when [WindowType](#windowtype7) is set to **TYPE_DYNAMIC**.|
-| defaultDensityEnabled<sup>20+</sup> | boolean| No| Yes|Whether the window should use the default density of the system. If the default density is used, the window does not re-layout when the system display size changes.<br>If this parameter is set to **true** for a system window, the window uses the default density and is not affected by [setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12) or [setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15) settings for the main window or [setDefaultDensityEnabled()](#setdefaultdensityenabled20) settings for the current window.<br>If this parameter is set to **false**, the window does not use the default density and is affected by those settings.<br>The default value is **false**.|
+| zIndex<sup>20+</sup>       | number | No| Yes| Z-level of the system window. This parameter is valid only when [WindowType](#windowtype7) is set to **TYPE_DYNAMIC**.<br>**System capability**: SystemCapability.Window.SessionManager|
+| defaultDensityEnabled<sup>20+</sup> | boolean| No| Yes|Whether the window should use the default density of the system. If the default density is used, the window does not re-layout when the system display size changes.<br>If this parameter is set to **true** for a system window, the window uses the default density and is not affected by [setDefaultDensityEnabled()](arkts-apis-window-WindowStage.md#setdefaultdensityenabled12) or [setCustomDensity()](arkts-apis-window-WindowStage.md#setcustomdensity15) settings for the main window or [setDefaultDensityEnabled()](#setdefaultdensityenabled20) settings for the current window.<br>If this parameter is set to **false**, the window does not use the default density and is affected by those settings.<br>The default value is **false**.<br>**System capability**: SystemCapability.Window.SessionManager|
 
 ## WindowMode<sup>7+</sup>
 
@@ -85,7 +83,7 @@ Enumerates the window modes.
 | UNDEFINED  | 1    | The window mode is not defined by the application.      |
 | FULLSCREEN | 2    | The application is displayed in full screen.            |
 | PRIMARY    | 3    | The application is displayed in the primary window in split-screen mode. In top-bottom splits, the top screen is primary; in left-right splits, the left screen is primary. |
-| SECONDARY  | 4    | The application is displayed in the secondary window in split-screen mode. In top-bottom splits, the top screen is secondary; in left-right splits, the left screen is secondary. |
+| SECONDARY  | 4    | The application is displayed in the secondary window in split-screen mode. In top-bottom splits, the bottom screen is secondary; in left-right splits, the right screen is secondary. |
 | FLOATING   | 5    | The application is displayed in a floating window.|
 
 ## WindowLayoutMode<sup>9+</sup>
@@ -822,9 +820,7 @@ try {
 ## window.setGestureNavigationEnabled<sup>10+</sup>
 setGestureNavigationEnabled(enable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-Enables or disables gesture navigation. This API uses an asynchronous callback to return the result.
-
-For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation.
+Enables or disables gesture navigation. This API uses an asynchronous callback to return the result. For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation.
 
 **System API**: This is a system API.
 
@@ -870,9 +866,7 @@ try {
 ## window.setGestureNavigationEnabled<sup>10+</sup>
 setGestureNavigationEnabled(enable: boolean): Promise&lt;void&gt;
 
-Enables or disables gesture navigation. This API uses a promise to return the result.
-
-For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation.
+Enables or disables gesture navigation. This API uses a promise to return the result. For security purposes, the system does not interfere with the disabling and enabling of gesture navigation. If an application exits abnormally after it disables gesture navigation and wants to restore gesture navigation, it must implement automatic launch and call this API again to enable gesture navigation.
 
 **System API**: This is a system API.
 
@@ -1068,9 +1062,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 401     | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| 1300002  | This window state is abnormal.                |
+| 1300002  | This window state is abnormal. Possible cause: Internal task error. |
 | 1300003  | This window manager service works abnormally. |
-| 1300004  | This operation is not accessible.             |
 
 **Example**
 
@@ -1195,6 +1188,131 @@ try {
 }
 ```
 
+## window.setSpecificSystemWindowZIndex<sup>23+</sup>
+setSpecificSystemWindowZIndex(windowType: WindowType, zIndex: number): Promise&lt;void&gt;
+
+Sets the z-level of a system window. This API uses a promise to return the result.
+
+Adjusts the **zIndex** of all system windows of the specified type to the configured value. Before and after the adjustment, the relative z-level of these windows remains unchanged, and the focus window does not change. After the application is closed, the z-level of specified windows is restored to the default value.
+
+You are advised to set different **zIndex** values for different types of windows. If there are windows with the same **zIndex**, the relative z-level of windows remains unchanged before and after the setting.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name         | Type  | Mandatory | Description                   |
+| -------------- | ------ | ----- | ----------------------- |
+| windowType | [WindowType](#windowtype7) | Yes   | Window type. Only the following types are supported: **TYPE_WALLET_SWIPE_CARD**, **TYPE_VOICE_INTERACTION**, **TYPE_SCREENSHOT**, **TYPE_SCREEN_CONTROL**, **TYPE_FLOAT_NAVIGATION**, and **TYPE_MUTISCREEN_COLLABORATION**.|
+| zIndex | number | Yes   | Z-level of the system window. The value must be an integer. Floating-point numbers are rounded down. The value **0** or a negative number will place the window below the home screen.|
+
+**Return value**
+
+| Type               | Description                     |
+| ------------------- | ------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message                                     |
+| ------- | --------------------------------------------- |
+| 202     | Permission verification failed, non-system application uses system API. |
+| 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
+| 1300003 | This window manager service works abnormally. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Possible cause: Invalid window type. |
+
+**Example**
+
+```ts
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  window.setSpecificSystemWindowZIndex(window.WindowType.TYPE_WALLET_SWIPE_CARD, 200).then(() => {
+    console.info('Succeeded in setting zIndex');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set zIndex. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set zIndex. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
+## window.createSubWindowAndBindParent<sup>24+</sup>
+
+createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, parentWindowEventListener: WindowEventListener): Promise\<Window\>
+
+Creates a subwindow and binds it to the parent window. This API uses a promise to return the result.
+
+The subwindow is displayed or hidden along with the parent window, but is not destroyed when the parent window is destroyed. The subwindow listens to the lifecycle changes of the parent window through a callback function.
+
+It is recommended that you destroy the created subwindow after the parent window is destroyed.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                                               |
+| -------- | ----------------------- | -- |---------------------------------------------------|
+| name | string | Yes| Window name.|
+| parentId | number | Yes| Parent window ID. You are advised to call [getWindowProperties()](arkts-apis-window-Window.md#getwindowproperties9) to obtain the window ID.|
+| ctx | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Current application context.|
+| parentWindowEventListener | [WindowEventListener](arkts-apis-window-t.md#windoweventlistener24) | Yes| Callback used to return the lifecycle changes of the bound parent window.|
+
+**Return value**
+
+| Type| Description|
+| -------------------------------- | ------------------------------------ |
+| Promise&lt;[Window](arkts-apis-window-Window.md)&gt; | Promise used to return the child window created.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+| ------- | -------------------------------- |
+| 202     | Permission verification failed. A non-system application calls a system API. |
+| 801     | Capability not supported. This can not work correctly due to limited device capabilities. |
+| 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
+| 1300003 | This window manager service works abnormally. |
+| 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
+
+**Example**
+
+```ts
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    const parentWindowEventListener = (windowId: number, event: window.WindowEventType) => {
+      // ...
+    }
+    try {
+      let promise = window.createSubWindowAndBindParent('test', 100, this.context, parentWindowEventListener);
+      promise.then((data) => {
+        console.info('Succeeded in creating the window. Data:' + JSON.stringify(data));
+        windowClass = data;
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to create the Window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+}
+```
+
 ## Window
 
 Represents a window instance, which is the basic unit managed by the window manager.
@@ -1302,9 +1420,9 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
 
 **Example**
 
@@ -1344,9 +1462,9 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
 
 **Example**
 
@@ -1384,9 +1502,9 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
 
 **Example**
 
@@ -1426,9 +1544,9 @@ For details about the error codes, see [Window Error Codes](errorcode-window.md)
 | ID| Error Message|
 | ------- | -------------------------------------------- |
 | 202     | Permission verification failed. A non-system application calls a system API. |
-| 1300002 | This window state is abnormal.               |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation.                |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only system windows are supported. |
 
 **Example**
 
@@ -1580,7 +1698,7 @@ export default class EntryAbility extends UIAbility {
 
 bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Binds the modal window to the target window, and adds a callback to listen for modal window destruction events. This API uses an asynchronous callback to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1609,37 +1727,25 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { rpc } from '@kit.IPCKit';
+import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ServiceExtensionAbility } from '@kit.AbilityKit';
 
-class MyDeathRecipient {
-  onRemoteDied() {
-    console.info('server died');
-  }
-}
+export class Property {
+  public value: Object
 
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  addDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  removeDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  isObjectDead(): boolean {
-    return false;
+  constructor(value: Object) {
+    this.value = value
   }
 }
 
 export default class ServiceExtAbility extends ServiceExtensionAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let token: TestRemoteObject = new TestRemoteObject('testObject');
-    let config: window.Configuration = { name: "test", windowType: window.WindowType.TYPE_DIALOG, ctx: this.context };
+  onRequest(want: Want, startId: number) {
+    console.info('onRequest');
+    let config: window.Configuration = {
+      name: "test",
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
     try {
       window.createWindow(config, (err: BusinessError, data) => {
         let errCode: number = err?.code;
@@ -1651,19 +1757,21 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
           console.error('data is null');
           return;
         }
-        data.bindDialogTarget(token, () => {
+        let token = want.parameters?.['ohos.ability.params.request.token'] as Property;
+        let value = token.value as rpc.RemoteObject;
+        data.bindDialogTarget(value, () => {
           console.info('Dialog Window Need Destroy.');
           }, (err: BusinessError) => {
           let errCode: number = err?.code;
           if (errCode) {
-            console.error(`Failed to bind dialog target. Error code: ${err?.code}, message: ${err?.message}`);
+            console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
             return;
           }
           console.info('Succeeded in binding dialog target.');
         });
       });
-    } catch (exception) {
-      console.error(`Failed to bind dialog target. Cause code: ${exception.code}, message: ${exception.message}`);
+    } catch (err) {
+      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
     }
   }
 }
@@ -1673,7 +1781,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(token: rpc.RemoteObject, deathCallback: Callback&lt;void&gt;): Promise&lt;void&gt;
 
-Binds the modal window to the target window, and adds a callback to listen for modal window destruction events. This API uses a promise to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1707,36 +1815,20 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 import { rpc } from '@kit.IPCKit';
+import { dialogRequest, Want, ServiceExtensionAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { ServiceExtensionAbility } from '@kit.AbilityKit';
 
-class MyDeathRecipient {
-  onRemoteDied() {
-    console.info('server died');
-  }
-}
+export class Property {
+  public value: Object
 
-class TestRemoteObject extends rpc.RemoteObject {
-  constructor(descriptor: string) {
-    super(descriptor);
-  }
-
-  addDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  removeDeathRecipient(recipient: MyDeathRecipient, flags: number): boolean {
-    return true;
-  }
-
-  isObjectDead(): boolean {
-    return false;
+  constructor(value: Object) {
+    this.value = value
   }
 }
 
 export default class ServiceExtAbility extends ServiceExtensionAbility {
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    let token: TestRemoteObject = new TestRemoteObject('testObject');
+  onRequest(want: Want, startId: number) {
+    console.info('onRequest');
     let config: window.Configuration = {
       name: "test",
       windowType: window.WindowType.TYPE_DIALOG,
@@ -1753,17 +1845,19 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
           console.error('data is null');
           return;
         }
-        let promise = data.bindDialogTarget(token, () => {
+        let token = want.parameters?.['ohos.ability.params.request.token'] as Property;
+        let value = token.value as rpc.RemoteObject;
+        let promise = data.bindDialogTarget(value, () => {
           console.info('Dialog Window Need Destroy.');
         });
         promise.then(() => {
           console.info('Succeeded in binding dialog target.');
         }).catch((err: BusinessError) => {
-          console.error(`Failed to bind dialog target. Error code: ${err?.code}, message: ${err?.message}`);
+          console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`);
         });
       });
-    } catch (exception) {
-      console.error(`Failed to bind dialog target. Cause code: ${exception.code}, message: ${exception.message}`);
+    } catch (err) {
+      console.error(`Failed to bind dialog target. Cause code: ${err?.code}, message: ${err?.message}`)
     }
   }
 }
@@ -1773,7 +1867,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback&lt;void&gt;, callback: AsyncCallback&lt;void&gt;): void
 
-Binds the modal window to the target window, and adds a callback to listen for modal window destruction events. This API uses an asynchronous callback to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -1844,7 +1938,7 @@ export default class ServiceExtAbility extends ServiceExtensionAbility {
 
 bindDialogTarget(requestInfo: dialogRequest.RequestInfo, deathCallback: Callback&lt;void&gt;): Promise&lt;void&gt;
 
-Binds the modal window to the target window, and adds a callback to listen for modal window destruction events. This API uses a promise to return the result.
+Binds the modal window to the target window. After the binding is successful, the target window cannot respond to user operations. In addition, a callback used to listen for modal window destruction events is added. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1967,7 +2061,7 @@ If you want the window to always be ignored during screen capture, recording, or
 
 | Name       | Type   | Mandatory| Description                |
 | ------------- | ------- | ---- | -------------------- |
-| isSkip | boolean | Yes  | Whether to ignore the window. The default value is **false**. **true** to ignore, **false** otherwise.<br>|
+| isSkip | boolean | Yes  | Whether to ignore the window. The default value is **false**.<br>**true** to ignore, **false** otherwise.<br>|
 
 **Error codes**
 
@@ -2447,12 +2541,12 @@ Sets the shadow for the window borders.
 
 **Parameters**
 
-| Name | Type  | Mandatory| Description                                                         |
-| ------- | ------ | ---- |-------------------------------------------------------------|
-| radius  | number | Yes  | Radius of the shadow. The value is a floating-point number greater than or equal to 0.0, in px. The value **0.0** means that the shadow is disabled for the window borders.    |
-| color   | string | No  | Color of the shadow. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **#00FF00** or **#FF00FF00**.|
-| offsetX | number | No  | Offset of the shadow along the x-axis, in px. The value is a floating-point number.                             |
-| offsetY | number | No  | Offset of the shadow along the y-axis, in px. The value is a floating-point number.                             |
+| Name | Type  | Mandatory| Description                                                                      |
+| ------- | ------ | ---- |--------------------------------------------------------------------------|
+| radius  | number | Yes  | Radius of the shadow. The value is a floating-point number greater than or equal to 0.0, in px. The value **0.0** means that the shadow is disabled for the window borders.           |
+| color   | string | No  | Color of the shadow. The value is a hexadecimal RGB or ARGB color code and is case insensitive, for example, **#00FF00** or **#FF00FF00**. The default value is **'#000000'**.|
+| offsetX | number | No  | Offset of the shadow along the x-axis, in px. The value is a floating-point number, in px. The default value is **0.0**.                                   |
+| offsetY | number | No  | Offset of the shadow along the y-axis, in px. The value is a floating-point number, in px. The default value is **0.0**.                                   |
 
 **Error codes**
 
@@ -3023,7 +3117,7 @@ export default class RaiseMainWindowAbility extends UIAbility {
 }
 ```
 ```json5
-//module.json5
+// module.json5
 {
   "module": {
     "name": "entry",
@@ -3238,7 +3332,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
@@ -3317,7 +3411,7 @@ A non-system floating window is a floating window created by a non-system applic
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API has no effect and does not report errors for 2-in-1 devices. For other devices, this API can be called properly.
+**Device behavior differences**: This API has no effect and does not report errors when being called in 2-in-1 devices and other devices in Desktop mode. For other devices and modes, this API can be called properly.
 
 **Parameters**
 
@@ -3454,7 +3548,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally. |
 | 1300004  | Unauthorized operation. |
 
@@ -3500,9 +3594,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error.|
 | 1300003 | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **Example**
 
@@ -3541,9 +3635,9 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ------- | ------------------------------ |
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. Failed to call the API due to limited device capabilities. |
-| 1300002 | This window state is abnormal. |
+| 1300002 | This window state is abnormal. Possible cause: 1. The window is not created or destroyed; 2. Internal task error. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004  | Unauthorized operation. |
+| 1300004  | Unauthorized operation. Possible cause: Invalid window type. Only main windows and subwindows are supported. |
 
 **Example**
 
@@ -3644,7 +3738,11 @@ Called by the main window to place the window above all the other windows. This 
 
 **System capability**: SystemCapability.Window.SessionManager
 
-**Device behavior differences**: This API can be properly called on 2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**
+
+In versions earlier than <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called properly on 2-in-1 devices, and error code 801 is returned on other devices.
+
+Since <!--RP1-->OpenHarmony 6.1<!--RP1End-->, this API can be called on a device that supports [freeform windows](../../windowmanager/window-terminology.md#freeform-window) and is in the freeform window state. If the device does not support freeform windows, or if the device supports freeform windows but is not in the freeform window state, error code 801 is returned.
 
 **Parameters**
 
@@ -3828,6 +3926,8 @@ Allows a [system window](../../windowmanager/window-terminology.md#system-window
 > **NOTE**
 >
 > - If the main window sets the display orientation via [setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9) while rotation is locked, the window restores the last orientation request when brought to the foreground after unlocking.
+>
+> - If the system window sets the display orientation via [setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9) while rotation is locked, the window restores the last orientation request when brought to the foreground with the highest level after unlocking. The rotation lock set by a lower-level window using **setRotationLocked** does not hinder the system window at a higher level to set the display orientation by calling [setPreferredOrientation()](./arkts-apis-window-Window.md#setpreferredorientation9).
 >
 > - If the sensor orientation changes while rotation is locked, the last sensor orientation is restored after unlocking.
 >
@@ -4375,7 +4475,7 @@ Provides the context for the transition animation.
 
 | Name                 | Type         | Read-Only| Optional| Description            |
 | --------------------- | ----------------- | ---- | ---- | ---------------- |
-| toWindow<sup>9+</sup> | [Window](arkts-apis-window-Window.md) | No  | No  | Target window to display the animation.|
+| toWindow | [Window](arkts-apis-window-Window.md) | No  | No  | Target window to display the animation.|
 
 ### completeTransition<sup>9+</sup>
 
@@ -4671,3 +4771,5 @@ Describes the parameters for creating a window for a UI ServiceExtensionAbility.
 | windowRect   | [Rect](arkts-apis-window-i.md#rect7) | No| No  | Rectangular area of the window.|
 | subWindowOptions   | [SubWindowOptions](arkts-apis-window-i.md#subwindowoptions11) | No| Yes| Parameters used for creating a child window. There is no default value. This parameter is mandatory when **windowAttribute** is set to **SUB_WINDOW**. Otherwise, the window fails to be created.|
 | systemWindowOptions   | [SystemWindowOptions](#systemwindowoptions14) | No| Yes| Parameters for creating a system window. There is no default value. This parameter is mandatory when **windowAttribute** is set to **SYSTEM_WINDOW**. Otherwise, the window fails to be created.|
+
+<!--no_check-->

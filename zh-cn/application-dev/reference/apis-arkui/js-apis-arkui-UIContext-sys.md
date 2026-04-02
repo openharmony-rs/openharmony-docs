@@ -14,7 +14,7 @@
 >
 > 示例效果请以真机运行为准，当前DevEco Studio预览器不支持。
 >
-> 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.arkui.UIContext (UIContext)](arkts-apis-uicontext-uicontext.md)。
+> 当前页面仅包含本模块的系统接口，其他公开接口参见[Class (UIContext)](arkts-apis-uicontext-uicontext.md)。
 
 ## UIContext
 
@@ -409,6 +409,34 @@ struct MyStateSample {
 }
 ```
 
+### getLuminanceSampler<sup>23+</sup>
+
+getLuminanceSampler(target: TargetInfo): LuminanceSampler | undefined
+
+获取[LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md)取色对象，通过该对象设置背景亮度取色参数、注册亮度变化监听回调、取消注册监听回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。 
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名     | 类型    | 必填   | 说明      |
+| --- | --- | --- | --- |
+| target | [TargetInfo](arkts-apis-uicontext-i.md#targetinfo18) | 是 | 目标组件的标识。 |
+
+**返回值**：
+
+| 类型                                              | 说明                                                         |
+| ------------------------------------------------- | ------------------------------------------------------------ |
+| [LuminanceSampler](arkts-apis-uicontext-luminancesampler-sys.md) | 返回背景亮度取色器。 |
+
+**示例：**
+
+参考[offBackgroundLuminanceChange](arkts-apis-uicontext-luminancesampler-sys.md#offbackgroundluminancechange23)接口的示例。
+
 ## ComponentSnapshot<sup>12+</sup>
 
 以下API需先使用UIContext中的[getComponentSnapshot()](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
@@ -462,6 +490,7 @@ import { image } from '@kit.ImageKit';
 @Component
 struct SnapshotExample {
   @State pixmap: image.PixelMap | undefined = undefined
+
   build() {
     Column() {
       Row() {
@@ -473,22 +502,47 @@ struct SnapshotExample {
               Row() {
                 Text('Text3').id('text3')
               }.id('root5').backgroundColor('#E4E8F0')
-            }.width('80%').height('80%').justifyContent(FlexAlign.SpaceAround).backgroundColor('#C1D1F0').id('root4')
-          }.width('80%').height('80%').justifyContent(FlexAlign.Center).backgroundColor('#FFEEF0').id('root3')
+            }
+            .width('80%')
+            .height('80%')
+            .justifyContent(FlexAlign.SpaceAround)
+            .backgroundColor('#C1D1F0')
+            .id('root4')
+          }
+          .width('80%')
+          .height('80%')
+          .justifyContent(FlexAlign.Center)
+          .backgroundColor('#FFEEF0')
+          .id('root3')
           .backgroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.LIGHT })
-        }.width('80%').height('80%').justifyContent(FlexAlign.Center).backgroundColor('#D5D5D5').id('root2')
-      }.width('50%').height('50%').justifyContent(FlexAlign.Center).backgroundColor('#E4E8F0').id('root1')
+        }
+        .width('80%')
+        .height('80%')
+        .justifyContent(FlexAlign.Center)
+        .backgroundColor('#D5D5D5')
+        .id('root2')
+      }
+      .width('50%')
+      .height('50%')
+      .justifyContent(FlexAlign.Center)
+      .backgroundColor('#E4E8F0')
+      .id('root1')
+
       Row() {
         Button("getWithRange")
           .onClick(() => {
-            this.getUIContext().getComponentSnapshot().getWithRange('root2', 'root4', true)
+            this.getUIContext()
+              .getComponentSnapshot()
+              .getWithRange('root2', 'root4', true)
               .then((pixmap: image.PixelMap) => {
                 this.pixmap = pixmap
-              }).catch((err:Error) => {
-              console.error("error: " + err)
-            })
+              })
+              .catch((err: Error) => {
+                console.error("error: " + err)
+              })
           }).margin(10)
       }.justifyContent(FlexAlign.SpaceAround)
+
       Row() {
         Image(this.pixmap).width(200).height(300).border({ color: Color.Black, width: 2 }).margin(5)
       }.justifyContent(FlexAlign.SpaceAround)

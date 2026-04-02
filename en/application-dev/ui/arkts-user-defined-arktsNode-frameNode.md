@@ -426,7 +426,7 @@ struct Index {
     .width('100%')
   }
 }
-```
+``` 
 ![moveToDemo](figures/moveToDemo.gif)
 
 ## Setting Universal Attributes and Event Callbacks
@@ -710,7 +710,7 @@ class MyFrameNode extends FrameNode {
           y: this.uiContext.vp2px(this.offsetY)
         });
         let layoutPosition = child.getLayoutPosition();
-        hilog.info(0x0000, `child position: ${JSON.stringify(layoutPosition)}`, 'isClicked');
+        hilog.info(0x0000, 'testTag', `child position: ${JSON.stringify(layoutPosition)}`);
       }
     }
     this.setLayoutPosition(position);
@@ -1633,7 +1633,9 @@ class MyNodeAdapterController extends NodeController {
 @Component
 struct Index {
   adapterController: MyNodeAdapterController = new MyNodeAdapterController();
-
+  aboutToDisappear(): void {
+    this.adapterController.nodeAdapter?.dispose();
+  }
   build() {
     Column() {
       Text('ListNode Adapter');
@@ -2204,7 +2206,7 @@ struct ListNodeTest {
     .width("100%")
   }
 }
-```
+ ```
  ![invalidateAttributes](./figures/invalidateAttributes.png)
 
  ## Checking Whether a Node Is in Render State
@@ -2275,5 +2277,5 @@ struct Index {
     .width('100%')
   }
 }
-```
+ ```
  ![isInRenderState](./figures/isInRenderState.png)

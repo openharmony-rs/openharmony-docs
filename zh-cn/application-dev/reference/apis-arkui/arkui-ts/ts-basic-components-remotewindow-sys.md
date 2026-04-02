@@ -10,8 +10,8 @@
 远程控制窗口组件，可以通过此组件控制应用窗口，提供启动退出过程中控件动画和应用窗口联动动画的能力。
 
 >  **说明：**
->  
->  该组件从API Version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+>
+>  该组件从API version 9开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 >  本模块为系统接口。
 
@@ -162,7 +162,7 @@ import WindowAnimationControllerImpl from './WindowAnimationControllerImpl';
 @Component
 export default struct RemoteWindowExample {
   @State target:WindowAnimationTarget | undefined = undefined // 通过windowAnimationManager获取
-  
+
   aboutToAppear(): void {
     let controller: WindowAnimationControllerImpl = new WindowAnimationControllerImpl();
     windowAnimationManager.setController(controller);

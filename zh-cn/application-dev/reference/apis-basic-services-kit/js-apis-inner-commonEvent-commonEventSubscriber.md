@@ -1,5 +1,12 @@
 # commonEventSubscriber
 
+<!--Kit: Basic Services Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
+
 > **说明：**
 >
 > 本模块首批接口从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -22,7 +29,7 @@ import { commonEventManager } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义订阅者，用于保存创建成功的订阅者对象，后续使用其完成订阅及退订的动作
-let subscriber: commonEventManager.CommonEventSubscriber;
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // 订阅者信息
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
 	events: ['event']
@@ -1104,8 +1111,8 @@ getSubscribeInfoSync(): CommonEventSubscribeInfo
 <!--code_no_check-->
 
 ```ts
-let subscribeInfo = subscriber.getSubscribeInfoSync();
-console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
+let subscribeInfo1: commonEventManager.CommonEventSubscribeInfo = subscriber.getSubscribeInfoSync();
+console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo1)}`);
 ```
 
 ### finishCommonEvent<sup>9+</sup>

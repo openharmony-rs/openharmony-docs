@@ -27,6 +27,9 @@
     - [Vulkan模块](capi-vulkan.md)
     - [vulkan_ohos.h](capi-vulkan-ohos-h.md)
     - [VkSurfaceCreateInfoOHOS](capi-vulkan-vksurfacecreateinfoohos.md)
+    - [VkNativeBufferOHOS](capi-vulkan-vknativebufferohos.md) 
+    - [VkSwapchainImageCreateInfoOHOS](capi-vulkan-vkswapchainimagecreateinfoohos.md)
+    - [VkPhysicalDevicePresentationPropertiesOHOS](capi-vulkan-vkphysicaldevicepresentationpropertiesohos.md)
     - [VkNativeBufferUsageOHOS](capi-vulkan-vknativebufferusageohos.md)
     - [VkNativeBufferPropertiesOHOS](capi-vulkan-vknativebufferpropertiesohos.md)
     - [VkNativeBufferFormatPropertiesOHOS](capi-vulkan-vknativebufferformatpropertiesohos.md)
@@ -34,7 +37,10 @@
     - [VkMemoryGetNativeBufferInfoOHOS](capi-vulkan-vkmemorygetnativebufferinfoohos.md)
     - [VkExternalFormatOHOS](capi-vulkan-vkexternalformatohos.md)
     - [NativeWindow](capi-vulkan-nativewindow.md)
+    - [OHBufferHandle](capi-vulkan-ohbufferhandle.md)
     - [OH_NativeBuffer](capi-vulkan-oh-nativebuffer.md)
+<!--RP1-->
+<!--RP1End-->    
 - 附录<!--appendixes-->
   - [libc中没有导出的符号列表](musl-peculiar-symbol.md)
   - [NDK musl-libc接口受权限影响的说明](guidance-on-ndk-libc-interfaces-affected-by-permissions.md)
@@ -42,3 +48,4 @@
   - [Native api中导出的ICU4C符号列表](icu4c-symbol.md)
   - [Native api中导出的OpenGL ES 3.2符号列表](openglesv3-symbol.md)
   - [Native api中导出的OpenGL符号列表](opengl-symbol.md)
+  - [Seccomp开放系统调用列表](seccomp-symbol.md)

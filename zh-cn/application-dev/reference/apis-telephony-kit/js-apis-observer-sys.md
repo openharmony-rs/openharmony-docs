@@ -42,7 +42,7 @@ on\(type: \'cellInfoChange\', callback: Callback\<Array\<CellInformation\>\>\): 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -60,7 +60,7 @@ on\(type: \'cellInfoChange\', callback: Callback\<Array\<CellInformation\>\>\): 
 import { radio } from '@kit.TelephonyKit';
 
 observer.on('cellInfoChange', (data: Array<radio.CellInformation>) => {
-    console.log("on cellInfoChange, data:" + JSON.stringify(data));
+    console.info("on cellInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -87,7 +87,7 @@ on\(type: \'cellInfoChange\', options: ObserverOptions, callback: Callback\<Arra
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -108,7 +108,7 @@ let options: observer.ObserverOptions = {
     slotId: 0
 }
 observer.on('cellInfoChange', options, (data: Array<radio.CellInformation>) => {
-    console.log("on cellInfoChange, data:" + JSON.stringify(data));
+    console.info("on cellInfoChange, data:" + JSON.stringify(data));
 });
 ```
 
@@ -136,7 +136,7 @@ off\(type: \'cellInfoChange\', callback?: Callback\<Array\<CellInformation\>\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[电话子系统错误码](errorcode-telephony.md)。
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -153,7 +153,7 @@ off\(type: \'cellInfoChange\', callback?: Callback\<Array\<CellInformation\>\>\)
 import { radio } from '@kit.TelephonyKit';
 
 let callback: (data: Array<radio.CellInformation>) => void = (data: Array<radio.CellInformation>) => {
-    console.log("on cellInfoChange, data:" + JSON.stringify(data));
+    console.info("on cellInfoChange, data:" + JSON.stringify(data));
 }
 observer.on('cellInfoChange', callback);
 // 可以指定传入on中的callback取消一个订阅，也可以不指定callback清空所有订阅。

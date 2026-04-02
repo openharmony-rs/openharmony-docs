@@ -15,7 +15,6 @@
 
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
@@ -23,7 +22,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
-打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权"允许获取本机通知"开关与"已获取的本机通知"应用开关。使用Promise异步回调。
+打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -43,7 +42,7 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -57,18 +56,73 @@ openSubscriptionSettings(context: UIAbilityContext): Promise\<void\>
 ```ts
 import { common } from '@kit.AbilityKit';
 
-const DOMAIN = 0x0000;
-
 try {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
-    hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);
+    console.info(`openSubscriberSettings success`);
   }).catch((e:Error) => {
     let error = e as BusinessError
-    hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+    console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
   });
 } catch (error) {
-  hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+}
+```
+
+## notificationExtensionSubscription.openSubscriptionSettingsWithResult
+
+openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
+
+打开应用的通知扩展订阅授权页面，以半模态弹窗形式显示。用户可在该页面授权“允许获取本机通知”开关与“已获取的本机通知”应用开关。使用Promise异步回调，当半模态窗口关闭时返回用户设置的授权的结果。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**参数：**
+
+| 参数名   | 类型                     | 必填 | 说明                 |
+| -------- | ------------------------ | ---- |--------------------|
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | 是   | 通知设置页面绑定Ability的上下文。 |
+
+**返回值：**
+
+| 类型     | 说明 | 
+| ------- |--|
+| Promise\<[UserGrantSetting](#usergrantsetting)\> | Promise对象，返回用户设置的授权的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                            |
+| -------- | ----------------------------------- |
+| 201      | Permission denied or current device not supported.     |  
+| 1600001  | Internal error.                     |
+| 1600018  | The notification settings window is already displayed.           |
+| 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
+
+**示例：**
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+try {
+  // 请在组件内获取context，确保this.getuIContext().getHostContext()返回结果为UIAbilityContext。
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
+    console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
+  }).catch((e:Error) => {
+    let error = e as BusinessError
+    console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+  });
+} catch (error) {
+  console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
 }
 ```
 
@@ -96,7 +150,7 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -108,7 +162,6 @@ subscribe(info: NotificationExtensionSubscriptionInfo[]): Promise\<void\>
 **示例：**
 
 ```ts
-const DOMAIN = 0x0000;
 
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
   {
@@ -117,9 +170,9 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  hilog.info(DOMAIN, 'testTag',"subscribe success");
+  console.info("subscribe success");
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe fail: ${JSON.stringify(err)}`);
 });
 
 ```
@@ -142,7 +195,7 @@ unsubscribe(): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -153,12 +206,11 @@ unsubscribe(): Promise\<void\>
 **示例：**
 
 ```ts
-const DOMAIN = 0x0000;
 
 notificationExtensionSubscription.unsubscribe().then(() => {
-  hilog.info(DOMAIN, 'testTag',"unsubscribe success");
+  console.info("unsubscribe success");
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -180,7 +232,7 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -191,12 +243,11 @@ getSubscribeInfo(): Promise\<NotificationExtensionSubscriptionInfo[]\>
 **示例：**
 
 ```ts
-const DOMAIN = 0x0000;
 
-notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  hilog.info(DOMAIN, 'testTag',`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
+notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -204,7 +255,7 @@ notificationExtensionSubscription.getSubscribeInfo().then((data) => {
 
 isUserGranted(): Promise\<boolean\>
 
-查询"允许获取本机通知"的开关状态。使用Promise异步回调。
+查询“允许获取本机通知”的开关状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -218,7 +269,7 @@ isUserGranted(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -229,16 +280,15 @@ isUserGranted(): Promise\<boolean\>
 **示例：**
 
 ```ts
-const DOMAIN = 0x0000;
 
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
-    hilog.info(DOMAIN, 'testTag','isUserGranted true');
+    console.info('isUserGranted true');
   } else {
-    hilog.info(DOMAIN, 'testTag','isUserGranted false');
+    console.info('isUserGranted false');
   }
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`isUserGranted fail: ${JSON.stringify(err)}`);
+  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -246,7 +296,7 @@ notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
 
 getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
-获取指定应用中"已获取的本机通知"通知开关开启的应用列表。使用Promise异步回调。
+获取指定应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -256,11 +306,11 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回获取指定应用中"已获取的本机通知"通知开关开启的应用列表。        |
+| Promise\<[GrantedBundleInfo[]](./js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22)\>   | Promise对象，返回获取指定应用中“已获取的本机通知”通知开关开启的应用列表。        |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -271,12 +321,11 @@ getUserGrantedEnabledBundles(): Promise\<GrantedBundleInfo[]\>
 **示例：**
 
 ```ts
-const DOMAIN = 0x0000;
 
-notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
-  hilog.info(DOMAIN, 'testTag',`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
+notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -337,3 +386,19 @@ type GrantedBundleInfo = _GrantedBundleInfo
 | 类型 | 说明 |
 | --- | --- |
 | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | 授权应用的包信息。 |
+
+## UserGrantSetting
+
+type UserGrantSetting = _UserGrantSetting
+
+用户授权的设置信息。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**： SystemCapability.Notification.Notification
+
+| 类型 | 说明 |
+| --- | --- |
+| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting) | 用户授权的设置信息。 |

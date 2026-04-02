@@ -26,9 +26,9 @@
 
 - 当被\@Local装饰的变量变化时，会刷新使用该变量的组件。
 
-- \@Local支持观测number、boolean、string、Object、class等基本类型以及[Array](#装饰array类型变量)、[Set](#装饰set类型变量)、[Map](#装饰map类型变量)、[Date](#装饰date类型变量)等内嵌类型。
+- \@Local支持观测number、boolean、string、Object、class等基本类型以及[Array](#装饰array类型变量)、[Set](#装饰set类型变量)、[Map](#装饰map类型变量)、[Date](#装饰date类型变量)等内置类型。
 
-- \@Local的观测能力仅限于被装饰的变量本身。当装饰简单类型时，能够观测到对变量的赋值；当装饰对象类型时，仅能观测到对对象整体的赋值；当装饰数组类型时，能观测到数组整体以及数组元素项的变化；当装饰Array、Set、Map、Date等内嵌类型时，可以观测到通过API调用带来的变化。详见[观察变化](#观察变化)。
+- \@Local的观测能力仅限于被装饰的变量本身。当装饰简单类型时，能够观测到对变量的赋值；当装饰对象类型时，仅能观测到对对象整体的赋值；当装饰数组类型时，能观测到数组整体以及数组元素项的变化；当装饰Array、Set、Map、Date等内置类型时，可以观测到通过API调用带来的变化。详见[观察变化](#观察变化)。
 
 - \@Local支持null、undefined以及[联合类型](#联合类型)。
 
@@ -80,7 +80,7 @@ struct Index {
 | \@Local变量装饰器 | 说明 |
 | ------------------- | ------------------------------------------------------------ |
 | 装饰器参数 | 无。 |
-| 可装饰的变量类型 | Object、class、string、number、boolean、enum等基本类型以及Array、Date、Map、Set等内嵌类型。支持null、undefined以及联合类型。 |
+| 可装饰的变量类型 | Object、class、string、number、boolean、enum等基本类型以及Array、Date、Map、Set等内置类型。支持null、undefined以及联合类型。 |
 | 装饰变量的初始值 | 必须本地初始化，不允许外部传入初始化。 |
 
 ## 变量传递
@@ -124,7 +124,7 @@ struct Index {
   }
   ```
 
-- 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2](arkts-new-observedV2-and-trace.md)和[\@Trace](arkts-new-observedV2-and-trace.md)装饰器。注意，API version 19之前，\@Local无法和[\@Observed](./arkts-observed-and-objectlink.md)装饰的类实例对象混用。API version 19及以后，支持部分状态管理V1V2混用能力，允许\@Local和\@Observed同时使用，详情见[状态管理V1V2混用文档](../state-management/arkts-v1-v2-mixusage.md)。
+- 当装饰的变量类型为类对象时，仅可以观察到对类对象整体赋值的变化，无法直接观察到对类成员属性赋值的变化，对类成员属性的观察依赖[\@ObservedV2](arkts-new-observedV2-and-trace.md)和[\@Trace](arkts-new-observedV2-and-trace.md)装饰器。注意，API version 19之前，\@Local无法和[\@Observed](./arkts-observed-and-objectlink.md)装饰的类实例对象混用。API version 19及以后，支持部分状态管理V1V2混用能力，允许\@Local和\@Observed同时使用，详情见[状态管理V1和V2混用指导（API version 19及之后）](../../ui/state-management/arkts-v1-v2-mixusage.md)。
 
     <!-- @[Local_Observe_Changes_Decorator](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/local/LocalObserveChangesDecorator.ets) -->
     
@@ -365,7 +365,7 @@ struct Index {
       Column() {
         Text(`info: ${this.info.name}-${this.info.age}`) // Text1
           .margin(10)
-        Text(`localInfo: ${this.localInfo.name}-${this.localInfo.age}`) //Text2
+        Text(`localInfo: ${this.localInfo.name}-${this.localInfo.age}`) // Text2
           .margin(10)
         Button('change info&localInfo')
           .onClick(() => {

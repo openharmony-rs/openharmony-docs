@@ -9,7 +9,7 @@
 
 ArkTS is a new programming language that brings new development experience and opportunities to developers familiar with Java. It inherits the features of modern languages in terms of syntax and programming paradigms, and is deeply optimized for the ecosystem. Understanding the differences and commonalities between Java and ArkTS can help you quickly get started with application development and avoid common programming pitfalls.
 
-This topic compares ArkTS with Java from the perspective of basic syntax, language structure, and type system. For details, see [About This Kit](./introduction-to-arkts.md).
+This topic compares ArkTS with Java from the perspective of basic syntax, language structure, and type system. For details, see [Introduction to ArkTS](./introduction-to-arkts.md).
 
 ## Exploring the Differences Between Java and ArkTS
 
@@ -21,9 +21,11 @@ The following will sort out the misunderstandings and pitfalls you may encounter
 
 **Sample code in ArkTS**:
 
-```typescript
+<!-- @[variable_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // Type annotation (similar to Java).
-let age: number = 20; 
+let age: number = 20;
 const program: string = 'ArkTS';
 
 // Type inference (similar to that of local variable in Java).
@@ -58,14 +60,16 @@ let version = 5.0;
 
 **Sample code in ArkTS**:
 
-```typescript
+<!-- @[function_declaration](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // Define a common function.
 function add(x: number, y: number): number {
-    return x + y;
+  return x + y;
 }
-
-// Define a concise arrow function.
-const multiply = (a: number, b: number): number => a * b;
+// ...
+  // Define a concise arrow function.
+  const multiply = (a: number, b: number): number => a * b;
 ```
 
 ### Function Overloading
@@ -104,14 +108,16 @@ ArkTS provides polymorphism at the type declaration level, which is used only fo
 
 **Sample code in ArkTS**: ArkTS function overloading
 
-```typescript
+<!-- @[function_overloading](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 function foo(x: number): void;            /* First function definition */
 function foo(x: string): void;            /* Second function definition */
 function foo(x: number | string): void {  /* Function implementation */
 }
-
-foo(123);     // Use the first function definition.
-foo('aa'); // Use the second function definition.
+// ...
+  foo(123);     // Use the first function definition.
+  foo('aa'); // Use the second function definition.
 ```
 
 ### Utils
@@ -130,7 +136,9 @@ Java allows you to use packages to organize code and import classes in other pac
 
 **Sample code in ArkTS**:
 
-```typescript
+<!-- @[import_package](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // Import the ArkTS container set in the ArkTS standard library.
 
 import { collections } from '@kit.ArkTS';
@@ -154,15 +162,18 @@ ArkTS supports explicit namespaces and modular organization.
 
 **Sample code in ArkTS**:
 
-```typescript
+<!-- @[namespace_models](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 namespace Models {
-    export class User {
-        // Implementation details.
-    }
-    
-    export interface Repository {
-        // API definition.
-    }
+  export class User {
+    // Implementation details.
+    // ...
+  }
+
+  export interface Repository {
+    // API definition.
+  }
 }
 ```
 
@@ -180,7 +191,7 @@ Based on the event loop, ArkTS uses a promise/**async**/**await** to process asy
 
 In Java, use **try/catch** to capture exceptions in synchronous code. For asynchronous code, handle exceptions in a special manner (for example, using **Future.get()**).
 
-Uncaptured promise errors in ArkTS may cause silent failures. You need to explicitly use **try/catch** or **.catch**.
+Uncaptured promise errors in ArkTS may cause silent failures. You need to explicitly use **try/catch** or **.catch()**.
 
 ### Binding of this
 
@@ -200,7 +211,9 @@ In ArkTS, the instance pointed by **this** is determined by the context when the
 
 **Sample code in ArkTS**:
 
-```typescript
+<!-- @[class_this](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 class A {
   bar: string = 'I am A';
 
@@ -220,13 +233,13 @@ class B {
 function callFunction(fn: () => void) {
   fn();
 }
+// ...
+  let a: A = new A();
+  let b: B = new B();
 
-let a: A = new A();
-let b: B = new B();
-
-callFunction(a.foo); // Program crashes. The context of this changes.
-b.callFunction(a.foo); // Program crashes. The context of this changes.
-b.callFunction(a.foo.bind(b)) // Output 'I am B'.
+  // callFunction(a.foo); // Program crashes. The context of this changes.
+  // b.callFunction(a.foo); // Program crashes. The context of this changes.
+  b.callFunction(a.foo.bind(b)) // Output 'I am B'.
 ```
 
 ## Type System
@@ -242,7 +255,9 @@ ArkTS has powerful type inference capabilities. The compiler can automatically i
 
 **Sample code in ArkTS**:
 
-```typescript
+<!-- @[type_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 let num = 10; // The compiler automatically infers that num is of the number type.
 ```
 
@@ -250,14 +265,16 @@ In addition, ArkTS supports optional types. You can add a question mark (?) to t
 
 **Sample code in ArkTS**:
 
-```typescript
+<!-- @[optional_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 interface Person {
   name: string;
   age?: number;  // age is an optional property.
 }
 
 const person: Person = {
-  name: "Alice",
+  name: 'Alice',
 };
 ```
 
@@ -269,11 +286,12 @@ ArkTS supports union types (separated using **|**). A union type indicates that 
 
 **Sample code in ArkTS**:
 
-```typescript
+<!-- @[unite_type](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTs/MigrationFromOtherLanguagesToArkTS/MigratingFromJavaToArkTS/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 // Example of a union type.
 
 let value: string | number;
 value = 'hello';
 value = 123;
-
 ```

@@ -91,12 +91,12 @@ async function testPkcs7SignByPromise() {
   };
   cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
     if (error) {
-      console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
     } else {
       try {
         let cmsContentType = cert.CmsContentType.SIGNED_DATA;
         let cmsGenerator = cert.createCmsGenerator(cmsContentType);
-        console.info('testPkcs7SignByPromise createCmsGenerator success.');
+        console.info('testPkcs7SignByPromise createCmsGenerator result: success.');
         let privateKeyInfo: cert.PrivateKeyInfo = {
           key: rsaStr1024,
           password: '123456'
@@ -109,9 +109,9 @@ async function testPkcs7SignByPromise() {
           addSmimeCapAttr: true
         }
         cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
-        console.info('testPkcs7SignByPromise addSigner success.');
+        console.info('testPkcs7SignByPromise addSigner result: success.');
         cmsGenerator.addCert(x509Cert);
-        console.info('testPkcs7SignByPromise addCert success.');
+        console.info('testPkcs7SignByPromise addCert result: success.');
         let content = new Uint8Array([1, 2, 3, 4]);
         let optionsFinal: cert.CmsGeneratorOptions = {
           contentDataFormat: cert.CmsContentDataFormat.BINARY,
@@ -119,13 +119,13 @@ async function testPkcs7SignByPromise() {
           isDetached: true
         };
         cmsGenerator.doFinal(content, optionsFinal).then(result => {
-          console.info('testPkcs7SignByPromise doFinal success, result = %s', result);
+          console.info('testPkcs7SignByPromise doFinal result: success, result = %s', result);
         }).catch((error: BusinessError) => {
-          console.error('testPkcs7SignByPromise failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+          console.error(`testPkcs7SignByPromise failed: errCode: ${error.code}, message: ${error.message}`);
         });
       } catch (err) {
         let e: BusinessError = err as BusinessError;
-        console.error('testPkcs7SignByPromise failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+        console.error(`testPkcs7SignByPromise failed: errCode: ${e.code}, message: ${e.message}`);
       }
     }
   });
@@ -193,7 +193,7 @@ function testPkcs7SignBySync() {
   };
   cert.createX509Cert(certEncodingBlob, (error, x509Cert) => {
     if (error) {
-      console.error('createX509Cert failed, errCode: ' + error.code + ', errMsg: ' + error.message);
+      console.error(`createX509Cert failed: errCode: ${error.code}, message: ${error.message}`);
     } else {
       try {
         let cmsContentType = cert.CmsContentType.SIGNED_DATA;
@@ -211,9 +211,9 @@ function testPkcs7SignBySync() {
           addSmimeCapAttr:false
         }
         cmsGenerator.addSigner(x509Cert, privateKeyInfo, config);
-        console.info('testPkcs7SignBySync addSigner success.');
+        console.info('testPkcs7SignBySync addSigner result: success.');
         cmsGenerator.addCert(x509Cert);
-        console.info('testPkcs7SignBySync addCert success.');
+        console.info('testPkcs7SignBySync addCert result: success.');
         let content = new Uint8Array([1,2,3,4]);
         let optionsFinal: cert.CmsGeneratorOptions = {
           contentDataFormat : cert.CmsContentDataFormat.BINARY,
@@ -221,10 +221,10 @@ function testPkcs7SignBySync() {
           isDetached : false
         };
         let output = cmsGenerator.doFinalSync(content, optionsFinal);
-        console.info('testPkcs7SignBySync doFinalSync success, output = %s.', output);
+        console.info('testPkcs7SignBySync doFinalSync result: success, output = %s.', output);
       } catch (err) {
         let e: BusinessError = err as BusinessError;
-        console.error('testPkcs7SignBySync failed, errCode: ' + e.code + ', errMsg: ' + e.message);
+        console.error(`testPkcs7SignBySync failed: errCode: ${e.code}, message: ${e.message}`);
       }
     }
   });

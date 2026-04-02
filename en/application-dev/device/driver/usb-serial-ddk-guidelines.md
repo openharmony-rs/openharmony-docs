@@ -8,11 +8,11 @@
 
 ## Overview
 
-Non-standard serial port devices, such as temperature and humidity meters and special identity card readers, are used in industrial scenarios and on some legacy devices. If the system does not have a driver that adapts to the devices, the devices cannot be used after being connected. The USB Serial Driver Development Kit (DDK) is a toolset that helps you develop USB serial drivers at the application layer based on the user mode. The USB Serial DDK provides a series of APIs for the host to access devices, including APIs for enabling and disabling devices on the host and read/write data through serial ports. With these APIs, third-party peripheral devices can seamlessly integrate with the OpenHarmony ecosystem.
+Non-standard serial port devices, such as temperature and humidity meters and special identity card readers, are used in industrial scenarios and on some legacy devices. If the system does not have a driver that adapts to the devices, the devices cannot be used after being connected. The USB Serial Driver Development Kit (USBSerialDDK) is a toolset that helps you develop USB serial drivers at the application layer based on the user mode. The USBSerialDDK provides a series of APIs for the host to access devices, including APIs for enabling and disabling devices on the host and data read/write through serial ports. With these APIs, third-party peripheral devices can seamlessly integrate with the OpenHarmony ecosystem.
 
 ### Basic Concepts
 
-Before developing the USB Serial DDK, you must understand the following basic concepts:
+Before you get started, understand the following concepts:
 
 - **USB serial port**
 
@@ -40,19 +40,19 @@ Before developing the USB Serial DDK, you must understand the following basic co
 
 ### Implementation Principles
 
-A non-standard peripheral application obtains the USB serial port device ID by using the peripheral management service, and delivers the ID and the action to the USB serial port driver application through RPC. The USB serial port driver application can set the serial port attributes (such as the baud rate, data bit, and parity bit) and read the serial port data by calling the USB Serial DDK API. Then, the DDK API uses the HDI service to deliver instructions to the kernel driver, and the kernel driver uses instructions to communicate with the device.
+A non-standard peripheral application obtains the USB serial port device ID by using the peripheral management service, and delivers the ID and the action to the USB serial port driver application through RPC. The USB serial port driver application can set the serial port attributes (such as the baud rate, data bit, and parity bit) and read the serial port data by calling the USBSerialDDK API. Then, the DDK API uses the HDI service to deliver instructions to the kernel driver, and the kernel driver uses instructions to communicate with the device.
 
-**Figure 1** Principles of invoking the USB Serial DDK
+**Figure 1** Principles of invoking the USBSerialDDK
 
 ![USBSerial_DDK schematic diagram](figures/ddk-schematic-diagram.png)
 
 ### Constraints
 
-- The open APIs of USB Serial DDK can be used to develop drivers of non-standard USB peripherals that use USB serial ports.
+- The open APIs of the USBSerialDDK can be used to develop drivers of non-standard USB peripherals that use USB serial ports.
 
-- The open APIs of USB Serial DDK can be used only within the **DriverExtensionAbility** lifecycle.
+- The open APIs of the USBSerialDDK can be used only within the lifecycle of **DriverExtensionAbility**.
 
-- To use the open APIs of USB Serial DDK, you need to declare the matching ACL permissions in **module.json5**, for example, **ohos.permission.ACCESS_DDK_USB_SERIAL**.
+- To use the open APIs of the USBSerialDDK, you need to declare the matching ACL permissions in **module.json5**, for example, **ohos.permission.ACCESS_DDK_USB_SERIAL**.
 
 ## Environment Setup
 
@@ -64,8 +64,8 @@ Before you get started, make necessary preparations by following instructions in
 
 | Name| Description|
 | -------- | -------- |
-| OH_UsbSerial_Init(void) | Initializes the USB Serial DDK.|
-| OH_UsbSerial_Release(void) | Releases the USB Serial DDK.|
+| OH_UsbSerial_Init(void) | Initializes the USBSerialDDK.|
+| OH_UsbSerial_Release(void) | Releases the USBSerialDDK.|
 | OH_UsbSerial_Open(uint64_t deviceId, uint8_t interfaceIndex, UsbSerial_Device **dev) | Opens the USB serial port device based on the specified **deviceId** and **interfaceIndex**. Call **OH_UsbSerial_Close ()** to close the device after use. Otherwise, memory leakage occurs.|
 | OH_UsbSerial_Close(UsbSerial_Device **dev) | Closes the USB serial port device after use. Otherwise, memory leakage occurs.|
 | OH_UsbSerial_Read(UsbSerial_Device *dev, uint8_t *buff, uint32_t bufferSize, uint32_t *bytesRead) | Reads data from the USB serial port device to the buffer.|
@@ -78,11 +78,11 @@ Before you get started, make necessary preparations by following instructions in
 | OH_UsbSerial_FlushInput(UsbSerial_Device *dev) | Refreshes the input buffer. The data in the buffer is cleared immediately.|
 | OH_UsbSerial_FlushOutput(UsbSerial_Device *dev) | Refreshes the output buffer. The data in the buffer is cleared immediately.|
 
-For details about the APIs, see [USB Serial DDK](../../reference/apis-driverdevelopment-kit/capi-serialddk.md).
+For details about the APIs, see [USBSerialDDK](../../reference/apis-driverdevelopment-kit/capi-serialddk.md).
 
 ### How to Develop
 
-To develop the USB serial port driver by using the USB Serial DDK, perform the following steps:
+To develop the USB serial port driver by using the USBSerialDDK, perform the following steps:
 
 **Adding Dynamic Link Libraries**
 
@@ -97,14 +97,14 @@ libusb_serial_ndk.z.so
 #include <usb_serial/usb_serial_types.h>
 ```
 
-1. Initialize the USB Serial DDK.
+1. Initialize the USBSerialDDK.
 
-   Use **OH_UsbSerial_Init** in **usb_serial_api.h** to initialize the USB Serial DDK.
+   Use **OH_UsbSerial_Init** in **usb_serial_api.h** to initialize the USBSerialDDK.
 
    <!-- @[driver_serial_step1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
-   // Initialize the USB Serial DDK.
+   // Initialize the USBSerialDDK.
    OH_UsbSerial_Init();
    ```
 
@@ -196,14 +196,14 @@ libusb_serial_ndk.z.so
    OH_UsbSerial_Close(&dev);
    ```
 
-7. Release the USB Serial DDK.
+7. Release the USBSerialDDK.
 
-   After the USB serial port device is closed, use **OH_UsbSerial_Release** in **usb_serial_api.h** to release the USB Serial DDK.
+   After the USB serial port device is closed, use **OH_UsbSerial_Release** in **usb_serial_api.h** to release the USBSerialDDK.
 
    <!-- @[driver_serial_step7](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/UsbSerialDriverDemo/entry/src/main/cpp/hello.cpp) --> 
    
    ``` C++
-   // Release the USB Serial DDK.
+   // Release the USBSerialDDK.
    OH_UsbSerial_Release();
    ```
 

@@ -38,11 +38,11 @@ HiTraceChain is a lightweight implementation of the distributed call chain traci
 
 ## Constraints
 
-If [asynchronous call flag](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceflag) is enabled, **HiTraceId** can be automatically passed in the mechanism that supports HiTraceChain automatic transfer.
+You can set [HiTraceFlag](../reference/apis-performance-analysis-kit/js-apis-hitracechain.md#hitraceflag) to enable asynchronous call tracing. **HiTraceId** can be automatically transferred in the automatic transfer mechanism of **HiTraceChain**.
 
 The following table lists some common mechanisms that support and do not support HiTraceChain automatic transfer. If it is not supported, **HiTraceId** cannot be passed to the created asynchronous tasks, threads, or processes. As a result, the HiTraceChain tracing is interrupted. In this case, you need to manually pass and set **HiTraceId** to implement complete tracing.
 
 | Scenario| Asynchronous Task| Cross-thread| Cross-process| Cross-device|
 | -------- | -------- | -------- | -------- | -------- |
-| Mechanism supporting HiTraceChain automatic transfer| [async/await](../arkts-utils/async-concurrency-overview.md#asyncawait)<br>[promise/then](../arkts-utils/async-concurrency-overview.md#promise) | [HiAppEvent](hiappevent-intro.md)<br>[napi_async_work](../napi/use-napi-asynchronous-task.md)<br>[FFRT](../ffrt/ffrt-overview.md) | [IPC](../ipc/ipc-rpc-overview.md) | [RPC](../ipc/ipc-rpc-overview.md) |
+| Mechanism supporting HiTraceChain automatic transfer| [async/await](../arkts-utils/async-concurrency-overview.md#asyncawait)<br>[Promise](../arkts-utils/async-concurrency-overview.md#promise)  | [HiAppEvent](hiappevent-intro.md)<br>[napi_async_work](../napi/use-napi-asynchronous-task.md)<br>[FFRT](../ffrt/ffrt-overview.md) | [IPC](../ipc/ipc-rpc-overview.md) | [RPC](../ipc/ipc-rpc-overview.md) |
 | Mechanism not supporting HiTraceChain automatic transfer| Macro tasks and their asynchronous tasks (such as [setTimeout](../reference/common/js-apis-timer.md#settimeout) and [setInterval](../reference/common/js-apis-timer.md#setinterval))| [TaskPool](../arkts-utils/taskpool-introduction.md)<br>[Worker](../arkts-utils/worker-introduction.md)<br>Threads created using **std::thread**, **pthread_create**, and **std::async** of the C++ standard library.| [Socket](../network/socket-connection.md)<br>[Ashmem](../reference/apis-ipc-kit/js-apis-rpc.md#ashmem8) | - |

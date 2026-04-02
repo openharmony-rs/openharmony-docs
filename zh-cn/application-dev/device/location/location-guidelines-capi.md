@@ -1,9 +1,9 @@
 # 获取设备的位置信息开发指导(C/C++)
 <!--Kit: Location Kit-->
 <!--Subsystem: Location-->
-<!--Owner: @liu-binjun-->
+<!--Owner: @xxthadsl-->
 <!--Designer: @liu-binjun-->
-<!--Tester: @mhy123456789-->
+<!--Tester: @gcw_MslijYkf-->
 <!--Adviser: @RayShih-->
 
 
@@ -116,7 +116,7 @@
        return result;
    }
 
-   //取消订阅位置信息， g_requestConfig要和订阅时传入的对象保持一致
+   // 取消订阅位置信息， g_requestConfig要和订阅时传入的对象保持一致
    static napi_value OhLocationStopLocating(napi_env env, napi_callback_info info)
    {
        OH_Location_StopLocating(g_requestConfig);

@@ -97,12 +97,12 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
           hilog.error(DOMAIN, TAG,`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
-      })
+        hilog.info(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
+      });
     }
   
     build() {
-      // ···
+      // ...
     }
   }
   ```
@@ -133,7 +133,7 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
           hilog.error(DOMAIN, TAG, `Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
+        hilog.info(DOMAIN, TAG, 'Invoke pushUrl succeeded.');
       });
     }
   
@@ -216,7 +216,7 @@ onJumpClick(): void {
       hilog.error(DOMAIN, TAG,`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
-    hilog.error(DOMAIN, TAG,'Invoke pushUrl succeeded.');
+    hilog.info(DOMAIN, TAG,'Invoke pushUrl succeeded.');
   });
 }
 ```
@@ -364,7 +364,7 @@ struct Home {
 
 ## 生命周期
 
-[router](../reference/apis-arkui/js-apis-router.md)页面生命周期，即被[\@Entry](state-management/arkts-create-custom-components.md#entry)装饰的组件生命周期，提供以下生命周期接口：
+[router](../reference/apis-arkui/js-apis-router.md)页面生命周期，即被[\@Entry](state-management/arkts-create-custom-components.md#entry)装饰的组件生命周期，提供以下生命周期接口，其中onPageShow和onPageHide的生命周期时序图可参考Router切换Navigation中的[生命周期](./arkts-router-to-navigation.md#生命周期)：
 
 - [onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)：页面每次显示时触发一次，包括路由过程、应用进入前台等场景。
 
@@ -530,7 +530,7 @@ message：string类型，表示询问框的内容。
 
 自定义询问框的方式，可以使用弹窗[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1)或者自定义弹窗实现。这样可以让应用界面与系统默认询问框有所区别，提高应用的用户体验度。本文以弹窗为例，介绍如何实现自定义询问框。
 
-直接使用router可能导致[UI上下文不明确](./arkts-global-interface.md)的问题，建议使用getUIContext()获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
+直接使用router可能导致[UI上下文不明确](./arkts-global-interface.md#ui上下文不明确)的问题，建议使用getUIContext()获取[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)实例，并使用[getRouter](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getrouter)获取绑定实例的router。
 
 在事件回调中，调用弹窗的[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog-1)方法：
 

@@ -14,11 +14,13 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 如果EditableTitleBar设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到EditableTitleBar本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议EditableTitleBar设置通用属性和通用事件。
 
 ## 导入模块
 
-```
+```ts
 import { EditableTitleBar } from '@kit.ArkUI';
 ```
 
@@ -40,13 +42,13 @@ EditableTitleBar({leftIconStyle: EditableLeftIconType, imageItem?: EditableTitle
 | 名称 | 类型 | 必填 | 装饰器类型 | 说明                                                                                                                                                                                                                                             |
 | -------- | -------- | -------- | -------- |------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | leftIconStyle | [EditableLeftIconType](#editablelefticontype) | 是 | - | 左侧按钮类型。<br />默认值：EditableLeftIconType.Back，表示返回。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                           |
-| imageItem<sup>12+</sup> | [EditableTitleBarItem](#editabletitlebaritem12) | 否 | - | 用于左侧头像的单个菜单项目。<br />默认值：undefined。<br/>**说明：** 左侧头像不支持配置无障碍属性。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                             |
+| imageItem<sup>12+</sup> | [EditableTitleBarItem](#editabletitlebaritem12) | 否 | - | 用于左侧头像的单个菜单项目。需要在标题栏左侧显示头像时传入此参数，不传入时取默认值，不显示头像。<br />默认值：undefined。<br/>**说明：** 左侧头像不支持配置无障碍属性。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                             |
 | title | [ResourceStr](ts-types.md#resourcestr) | 是 | - | 标题。<br />默认值：''，表示标题内容为空。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                                  |
-| subtitle<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | - | 副标题。<br />默认值：''，表示副标题内容为空。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                |
-| menuItems | Array&lt;[EditableTitleBarMenuItem](#editabletitlebarmenuitem)&gt; | 否 | - | 右侧菜单项目列表。<br />默认值：undefined。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                              |
+| subtitle<sup>12+</sup> | [ResourceStr](ts-types.md#resourcestr) | 否 | - | 副标题。需要在标题下方显示补充说明信息时传入此参数，不传入时取默认值，不显示副标题。<br />默认值：''，表示副标题内容为空。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                                                                                |
+| menuItems | Array&lt;[EditableTitleBarMenuItem](#editabletitlebarmenuitem)&gt; | 否 | - | 右侧菜单项目列表。需要在标题栏右侧显示自定义操作按钮时传入此参数，不传入时取默认值，不显示右侧菜单项目列表。<br />默认值：undefined。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                              |
 | isSaveIconRequired<sup>12+</sup> | boolean | 是 | - | 是否需要右侧的保存按钮。<br />默认值：true，表示需要右侧的保存按钮。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                                                                                                              |
-| onSave | ()&nbsp;=&gt;&nbsp;void | 否 | - | 点击保存时的事件。<br />默认值：() => void。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                             |
-| onCancel | ()&nbsp;=&gt;&nbsp;void | 否 | - | 当左侧按钮类型为&nbsp;Cancel，触发取消时的事件。<br />默认值：() => void。<br />从API version 12开始，当左侧按钮类型为&nbsp;Back，触发返回时的事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                |
+| onSave | ()&nbsp;=&gt;&nbsp;void | 否 | - | 点击保存时的事件。需要自定义保存操作逻辑时传入此参数，缺省时点击按钮无响应。<br />默认值：() => void。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                                                                             |
+| onCancel | ()&nbsp;=&gt;&nbsp;void | 否 | - | 当左侧按钮类型为&nbsp;Cancel，触发取消时的事件。需要自定义返回/取消操作逻辑时传入此参数，缺省时点击左侧按钮无响应。<br />默认值：() => void。<br />从API version 12开始，当左侧按钮类型为&nbsp;Back，触发返回时的事件。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                |
 | options<sup>12+</sup> | [EditableTitleBarOptions](#editabletitlebaroptions12) | 是 | - | 标题样式。<br />默认值：<br />{<br />safeAreaTypes: [SafeAreaType.SYSTEM],<br />safeAreaEdges: [SafeAreaEdge.TOP], <br />backgroundColor: '#00000000'<br />}。<br/>**说明：** 未使用@Require装饰，构造时不强制校验参数。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
 | contentMargin<sup>12+</sup> | [LocalizedMargin](ts-types.md#localizedmargin12) | 否 | @Prop | 标题栏外边距，不支持设置负数。<br />默认值：<br /> {start: LengthMetrics.resource(`$r('sys.float.margin_left')`), end: LengthMetrics.resource(`$r('sys.float.margin_right')`)}。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                               |
 | leftIconDefaultFocus<sup>18+</sup> | boolean  | 否 | - | 左侧图标是否为默认焦点。<br />默认值：false，表示不是默认焦点。 <br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。                                                                                                                                                     |
@@ -340,7 +342,9 @@ struct Index1 {
 ![zh-cn_image_editabletitlebar_example03](figures/zh-cn_image_editabletitlebar_example03.png)
 
 ### 示例4（左侧图标设置为默认焦点）
-从API version 18开始，该示例通过设置标题栏属性leftIconDefaultFocus使左侧图标默认获焦。
+在获焦状态下，该示例通过设置标题栏属性leftIconDefaultFocus使左侧图标默认获焦。
+
+从API version 18开始，在[EditableTitleBar](#editabletitlebar-1)中新增leftIconDefaultFocus接口。
 ```ts
 
 import { Prompt, EditableLeftIconType, EditableTitleBar } from '@kit.ArkUI';
@@ -352,7 +356,7 @@ struct Index {
     Column() {
       EditableTitleBar({
         leftIconStyle: EditableLeftIconType.Back,
-        leftIconDefaultFocus: true, //设置左侧图标默认获焦。
+        leftIconDefaultFocus: true, // 设置左侧图标默认获焦。
         title: '编辑页面',
         menuItems: [],
         onSave: () => {
@@ -368,7 +372,9 @@ struct Index {
 ![editabletitlebarDefaultFocus01](figures/editabletitlebarDefaultFocus01.png)
 
 ### 示例5（右侧自定义图标设置为默认焦点）
-从API version 18开始，该示例通过设置标题栏右侧图标属性defaultFocus使右侧图标默认获焦。
+在获焦状态下，该示例通过设置标题栏右侧图标属性defaultFocus使右侧图标默认获焦。
+
+从API version 18开始，在[EditableTitleBarMenuItem](#editabletitlebarmenuitem)中新增defaultFocus接口。
 ```ts
 
 import { Prompt, EditableLeftIconType, EditableTitleBar } from '@kit.ArkUI';

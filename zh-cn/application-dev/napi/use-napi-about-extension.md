@@ -264,6 +264,10 @@ try {
 
 在Node-API模块中运行abc文件。
 
+> **注意**
+>
+> 在信号函数中调用不安全，直接调用可能导致栈溢出。
+
 cpp部分代码
 
 <!-- @[node_api_module_run_script_path](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPIExtendCapabilities/entry/src/main/cpp/napi_init.cpp) -->     
@@ -274,7 +278,7 @@ static napi_value RunScriptPath(napi_env env, napi_callback_info info)
 {
     napi_value value = nullptr;
     // 注意：记得在应用rawfile目录下放置.abc文件
-    const char *scriptPath = "/entry/src/main/resources/rawfile/test.abc";
+    const char *scriptPath = "/entry/resources/rawfile/test.abc";
     // 使用napi_run_script_path函数执行指定路径中的文件
     napi_status status = napi_run_script_path(env, scriptPath, &value);
     // 检查是否执行成功，如果失败，返回false
@@ -1384,13 +1388,13 @@ target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so)
 
 | 接口 | 描述 |
 | -------- | -------- |
-| napi_wrap_enhance | 在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行，如果异步执行，则回调函数必须是线程安全的。 |
+| napi_wrap_enhance | 在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。 |
 
 ### 使用示例
 
 **napi_wrap_enhance**
 
-在ArkTS对象上绑定一个Node-API模块对象实例并指定实例大小，开发者可以指定绑定的回调函数是否异步执行，如果异步执行，则回调函数必须是线程安全的。
+在ArkTS对象上绑定一个native对象实例并指定实例大小，运行时会统计传入的实例大小并将其累加，当累计大小达到GC触发阈值时，运行时会启动垃圾回收流程。开发者可以指定绑定的回调函数是否异步执行，如果是异步执行，回调函数必须保证是线程安全的。
 
 cpp部分代码
 
@@ -1524,3 +1528,20 @@ testNapi.testNapiWrapEnhance();
 **napi_throw_business_error**
 
 [使用扩展的Node-API接口抛出ArkTS异常](use-napi-about-error.md)
+
+## napi支持基于调用点内联缓存的快速属性访问
+
+### 接口描述
+
+| 接口                      | 描述                                                         |
+| ------------------------- | ------------------------------------------------------------ |
+| napi_create_callsite_info | 创建调用点信息句柄，用于缓存属性访问的内联缓存信息。        |
+| napi_delete_callsite_info | 删除调用点信息句柄，释放关联的缓存资源。                    |
+| napi_get_property_with_callsite_info | 使用调用点信息快速获取对象属性值，在缓存命中时跳过常规属性查找流程。 |
+| napi_set_property_with_callsite_info | 使用调用点信息快速设置对象属性值，在缓存命中时跳过常规属性设置流程。 |
+
+### 使用示例
+
+**napi_create_callsite_info、napi_delete_callsite_info、napi_get_property_with_callsite_info、napi_set_property_with_callsite_info**
+
+[使用扩展的Node-API接口加速属性访问](use-napi-about-fast-property-access.md)

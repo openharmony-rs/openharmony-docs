@@ -40,16 +40,116 @@ This API is deprecated since API version 9. You are advised to use [bundleManage
 
 **Example**
 
+ArkTS example:
 ```ts
 import app, { AppResponse } from '@system.app';
 export default class Info {
   getInfo() {
     let info:AppResponse = app.getInfo();
-    console.log(JSON.stringify(info));
+    console.info(JSON.stringify(info));
   }
 }
 ```
 
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        app.getInfo example
+    </text>
+    <div class="info-item">
+        <text class="label">appName:</text>
+        <text class="value">{{appName}}</text>
+    </div>
+    <div class="info-item">
+        <text class="label">versionName:</text>
+        <text class="value">{{versionName}}</text>
+    </div>
+    <div class="info-item">
+        <text class="label">versionCode:</text>
+        <text class="value">{{versionCode}}</text>
+    </div>
+    <input type="button" value="getAppInfo" style="width: 240px; height: 50px; margin: 5px;" onclick="getAppInfo"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 454px;
+    height: 454px;
+    background-color: #000000;
+}
+.title {
+    font-size: 32px;
+    text-align: center;
+    width: 400px;
+    height: 80px;
+    margin-top: 20px;
+    color: #ffffff;
+}
+.info-item {
+    width: 400px;
+    height: 60px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+}
+.label {
+    font-size: 24px;
+    color: #aaaaaa;
+}
+.value {
+    font-size: 24px;
+    color: #ffffff;
+}
+```
+
+```js
+// xxx.js
+import app from '@system.app';
+
+export default {
+    data: {
+        fontSize: '32px',
+        fontColor: '#ffffff',
+        appName: '',
+        versionName: '',
+        versionCode: ''
+    },
+    onInit() {
+        this.getAppInfo();
+    },
+    getAppInfo() {
+        try {
+            const info = app.getInfo();
+            console.info('app.getInfo success');
+            console.info('appName: ' + info.appName);
+            console.info('versionName: ' + info.versionName);
+            console.info('versionCode: ' + info.versionCode);
+            this.appName = info.appName || 'Unknown';
+            this.versionName = info.versionName || 'Unknown';
+            this.versionCode = String(info.versionCode) || 'Unknown';
+        } catch (error) {
+            console.error('app.getInfo failed: ' + error.message);
+            this.appName = 'Failed';
+            this.versionName = 'Failed';
+            this.versionCode = 'Failed';
+        }
+    }
+}
+```
 ### terminate
 
 static terminate(): void
@@ -64,12 +164,78 @@ This API is deprecated since API version 7. You are advised to use [@ohos.abilit
 
 **Example**
 
+ArkTS example:
 ```ts
 import app, { AppResponse } from '@system.app';
 export default class TerM {
   terminate() {
     app.terminate();
   }
+}
+```
+
+JS example:
+```xml
+<!-- xxx.hml -->
+<div class="container">
+    <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+        app.terminate example
+    </text>
+    <text class="desc">
+        Click the button below to exit the app
+    </text>
+    <input type="button" value="exit app" style="width: 240px; height: 50px; margin: 5px;" onclick="terminateApp"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left: 0px;
+    top: 0px;
+    width: 454px;
+    height: 454px;
+    background-color: #000000;
+}
+.title {
+    font-size: 32px;
+    text-align: center;
+    width: 400px;
+    height: 80px;
+    margin-top: 60px;
+    color: #ffffff;
+}
+.desc {
+    font-size: 24px;
+    text-align: center;
+    width: 290px;
+    height: 120px;
+    margin-top: 20px;
+    color: #aaaaaa;
+}
+```
+
+```js
+// xxx.js
+import app from '@system.app';
+
+export default {
+    data: {
+        fontSize: '32px',
+        fontColor: '#ffffff'
+    },
+    terminateApp() {
+        console.info('Calling app.terminate...');
+        try {
+            app.terminate();
+            console.info('app.terminate called');
+        } catch (error) {
+            console.error('app.terminate failed: ' + error.message);
+        }
+    }
 }
 ```
 ### setImageCacheCount<sup>7+</sup>
@@ -149,7 +315,7 @@ import app, { AppResponse } from '@system.app';
 @Component
 struct Index {
   onPageShow() {
-    // Set the upper limit of the memory for caching image data before decoding to 100 MB. (100 x 1024 x 1024 B =104857600 B = 100 MB).
+    // Set the upper limit of the memory for caching image data before decoding to 100 MB. (100 × 1024 × 1024 B =104857600 B = 100 MB).
     app.setImageRawDataCacheSize(104857600); 
     console.info('Application onPageShow');
   }
@@ -193,7 +359,7 @@ import app, { AppResponse } from '@system.app';
 export default class OnC {
   onCreate() {
     app.setImageFileCacheSize(209715200);
-    // Set the upper limit of the image file cache to 200 MB. (200 x 1024 x 1024 B= 209715200 B = 200 MB).
+    // Set the upper limit of the image file cache to 200 MB. (200 × 1024 × 1024 B= 209715200 B = 200 MB).
     console.info('Application onCreate');
   }
   onDestroy() {
@@ -204,7 +370,7 @@ export default class OnC {
 
 ### ScreenOnVisible<sup>(deprecated)</sup>
 
-static screenOnVisible(options?: ScreenOnVisibleOptions): void
+static screenOnVisible(options?: ScreenOnVisibleOptions):&nbsp;void
 
 Defines whether to keep the application visible when the screen is woken up.
 
@@ -222,7 +388,7 @@ static requestFullWindow(options?: RequestFullWindowOptions): void
 
 Requests the application to run in full window. You can call this API when the FA runs in a non-full window, for example, semi-modal FA. This API is invalid for an application already in full-window mode.
 
-You are advised to use [@ohos.window](arkts-apis-window.md) since API version 7.
+You are advised to use [@ohos.window (Window)](arkts-apis-window.md) since API version 7.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

@@ -101,12 +101,12 @@
   - Component Navigation and Page Routing<!--arkts-set-navigation-routing-->
     - [Component Navigation and Page Routing Overview](arkts-navigation-introduction.md)
   - Navigation (Recommended)<!--arkts-navigation-navigation-->
-      - [Introduction to Navigation Architecture](./arkts-navigation-architecture.md)
+      - [Navigation Architecture](./arkts-navigation-architecture.md)
       - [Subpage](./arkts-navigation-navdestination.md)
       - [Page Routing](./arkts-navigation-jump.md)
       - [Transition Animation](./arkts-navigation-animation.md)
       - [Cross-Package Routing](./arkts-navigation-cross-package.md)
-      - [Split-Column Layout](./arkts-navigation-split-mode.md)
+      - [Split-View Layout](./arkts-navigation-split-mode.md)
     - [Page Routing (@ohos.router) (Not Recommended)](arkts-routing.md)
     - [Transition from Router to Navigation](arkts-router-to-navigation.md)
   - Component Layouts<!--arkts-layout-development-->
@@ -117,9 +117,7 @@
       - [Flex Layout (Flex)](arkts-layout-development-flex-layout.md)
       - [Relative Layout (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [Responsive Grid Layout (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
-      - [Using Tabs (Tabs)](arkts-navigation-tabs.md)
-    <!--RP1-->
-    <!--RP1End-->
+      - [Using Tabs (Tabs)](arkts-navigation-tabs.md)<!--RP1--><!--RP1End-->
   - Lists and Grids<!--arkts-list-and-grid-->
     - [List and Grid Overview](arkts-list-grid-development-overview.md)
     - [Creating a List (List)](arkts-layout-development-create-list.md)

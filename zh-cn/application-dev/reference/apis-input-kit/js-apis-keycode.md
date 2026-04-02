@@ -10,7 +10,7 @@
 按键设备的键值，按键设备包括键盘、光盘、游戏手柄等。
 
 > **说明：**
-> 
+>
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 ## 导入模块
@@ -185,7 +185,7 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_BUTTON_THUMBR<sup>15+</sup>  |  2315 | 游戏手柄按键'THUMBR'。       |
 | KEYCODE_SLEEP                    |  2600 | 睡眠键。                         |
 | KEYCODE_ZENKAKU_HANKAKU          |  2601 | 日文全宽/半宽键。                    |
-| KEYCODE_102ND                    |  2602 | 102nd按键。                     |
+| KEYCODE_102ND                    |  2602 | 国际键盘扩展键。                     |
 | KEYCODE_RO                       |  2603 | 日文Ro键。                       |
 | KEYCODE_KATAKANA                 |  2604 | 日文片假名键。                      |
 | KEYCODE_HIRAGANA                 |  2605 | 日文平假名键。                      |
@@ -288,13 +288,13 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_SPREADSHEET              |  2703 | 电子表格键。                       |
 | KEYCODE_GRAPHICSEDITOR           |  2704 | 图形编辑器键。                      |
 | KEYCODE_PRESENTATION             |  2705 | 演示文稿键。                       |
-| KEYCODE_DATABASE                 |  2706 | 数据库键标。                       |
+| KEYCODE_DATABASE                 |  2706 | 数据库键。                       |
 | KEYCODE_NEWS                     |  2707 | 新闻键。                         |
 | KEYCODE_VOICEMAIL                |  2708 | 语音信箱。                        |
 | KEYCODE_ADDRESSBOOK              |  2709 | 通讯簿。                         |
 | KEYCODE_MESSENGER                |  2710 | 通信键。                         |
 | KEYCODE_BRIGHTNESS_TOGGLE        |  2711 | 亮度切换键。                       |
-| KEYCODE_SPELLCHECK               |  2712 | AL拼写检查。                      |
+| KEYCODE_SPELLCHECK               |  2712 | 拼写检查键。                      |
 | KEYCODE_COFFEE                   |  2713 | 终端锁/屏幕保护程序。                  |
 | KEYCODE_MEDIA_REPEAT             |  2714 | 媒体循环键。                       |
 | KEYCODE_IMAGES                   |  2715 | 图像键。                         |
@@ -314,6 +314,9 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_KBDINPUTASSIST_NEXTGROUP |  2729 | 键盘输入Assist_Next，切换输入组中下一个输入法。               |
 | KEYCODE_KBDINPUTASSIST_ACCEPT    |  2730 | 键盘输入Assist_Accept。           |
 | KEYCODE_KBDINPUTASSIST_CANCEL    |  2731 | 键盘输入Assist_Cancel。          |
+| KEYCODE_MOUSE_ASSISTANT<sup>24+</sup>    |  2732 | 鼠标AI助手键。          |
+| KEYCODE_MOUSE_INTELLIGENCE_SELECTION<sup>24+</sup>    |  2733 | 鼠标智慧框选键。          |
+| KEYCODE_AOD_SINGLE_CLICK<sup>24+</sup> | 2740 | 手机触摸屏单击事件，在熄屏显示状态下使用。 |
 | KEYCODE_FRONT                    |  2800 | 挡风玻璃除雾器开关。                   |
 | KEYCODE_SETUP                    |  2801 | 设置键。                         |
 | KEYCODE_WAKEUP                   |  2802 | 唤醒键。                         |
@@ -322,10 +325,10 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_XFER                     |  2805 | 文件传输（XFER）按键。                |
 | KEYCODE_PROG1                    |  2806 | 程序键1。                        |
 | KEYCODE_PROG2                    |  2807 | 程序键2。                       |
-| KEYCODE_MSDOS                    |  2808 | MS-DOS键（微软磁盘操作系统）。            |
+| KEYCODE_MSDOS                    |  2808 | DOS面板键。            |
 | KEYCODE_SCREENLOCK               |  2809 | 屏幕锁定键。                       |
 | KEYCODE_DIRECTION_ROTATE_DISPLAY |  2810 | 方向旋转显示键。                     |
-| KEYCODE_CYCLEWINDOWS             |  2811 | Windows循环键。                  |
+| KEYCODE_CYCLEWINDOWS             |  2811 | 窗口切换键。                  |
 | KEYCODE_COMPUTER                 |  2812 | 按键。                          |
 | KEYCODE_EJECTCLOSECD             |  2813 | 弹出CD键。                      |
 | KEYCODE_ISO                      |  2814 | ISO键。                        |
@@ -357,8 +360,8 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_BATTERY                  |  2842 | 电池按键。                        |
 | KEYCODE_BLUETOOTH                |  2843 | 蓝牙按键。                        |
 | KEYCODE_WLAN                     |  2844 | 无线局域网。                       |
-| KEYCODE_UWB                      |  2845 | 超宽带（UWB）。                    |
-| KEYCODE_WWAN_WIMAX               |  2846 | WWAN WiMAX按键。                |
+| KEYCODE_UWB                      |  2845 | 超宽带控制键。                    |
+| KEYCODE_WWAN_WIMAX               |  2846 | 移动网络控制键。                |
 | KEYCODE_RFKILL                   |  2847 | 控制所有收音机的键。                   |
 | KEYCODE_CHANNEL                  |  3001 | 向上频道键。                       |
 | KEYCODE_BTN_0                    |  3100 | 按键0。                         |
@@ -375,3 +378,4 @@ import { KeyCode } from '@kit.InputKit';
 | KEYCODE_DAGGER_DOUBLE_CLICK<sup>18+</sup> | 3212 | 智能手表智感窗按键双击。 |
 | KEYCODE_DAGGER_LONG_PRESS<sup>18+</sup> | 3213 | 智能手表智感窗按键长按。 |
 | KEYCODE_DIV<sup>20+</sup> | 3220 | 智能手表左按键。 |
+| KEYCODE_XKEY | 3232 | 自定义快捷键。<br/>**起始版本：** 26.0.0 |

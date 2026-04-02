@@ -55,7 +55,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
-| 12000001 | algorithm mode is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
@@ -158,6 +158,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The group key is not supported. 2. The crypto extension key is not supported. |
 | 12000004 | operating file failed. |
 | 12000005 | IPC communication failed. |
 | 12000011 | queried entity does not exist. |
@@ -270,7 +271,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
-| 12000001 | algorithm mode is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
@@ -376,7 +377,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
-| 12000001 | algorithm mode is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
@@ -470,14 +471,14 @@ async function LetKeyAttest(keyAlias: string, keyOptions: Array<huks.HuksParam>)
   let attestOptions: huks.HuksOptions = {
     properties: keyOptions,
   }
-  console.info ('start attestation')
+  console.info('Start attestation')
   await huks.attestKeyItemAsUser(userId, keyAlias, attestOptions).then((data) => {
     console.info('attestation ok!')
     console.debug(`The obtained certificate chain is ${JSON.stringify(data)}`) // Debugging information. The certificate chain does not need to be printed during the service function development.
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.debug(`Certificate ${i} is ${data.certChains[i]}`) // Debugging information. The certificate chain does not need to be printed during the service function development.
     }
-    console.info ("attest successful")
+    console.info("Attestation successful")
   }).catch((err: BusinessError) => {
     console.error("Attestation failed. Error code: " + err.code +" Error message: "+ err.message)
   })
@@ -532,7 +533,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
-| 12000001 | algorithm mode is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
@@ -633,9 +634,9 @@ async function LetKeyAnonAttest(keyAlias: string, keyOptions: Array<huks.HuksPar
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.info(`Certificate ${i} is ${data.certChains[i]}`)
     }
-    console.info ("Anonymous attest successful")
+    console.info("Anonymous attestation successful")
   }).catch((err: BusinessError) => {
-    console.error("Anonymous attestation failed. Error code: "+ err.code +" Error message: "+ err.message)
+    console.error("Anonymous attestation failed. Error code: " + err.code +" Error message: " + err.message)
   })
 }
 
@@ -651,11 +652,157 @@ export default function HuksAsUserTest() {
 }
 ```
 
+## huks.anonAttestKeyItemOfflineAsUser
+
+anonAttestKeyItemOfflineAsUser(userId: number, keyAlias: string, params[]: HuksParam) : Promise\<HuksReturnResult>
+
+Obtains an anonymous key certificate in offline mode for a specified user. This API uses a promise to return the result.
+
+> **NOTE**
+>
+> - Offline key attestation depends on the network. You need to periodically connect to the network to use this API to update the offline certificate.
+> - Offline anonymous key attestation requires that the local time be accurate. Otherwise, the peer end may fail to verify the certificate expiration.
+
+**Since**: 26.0.0
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS
+
+**System capability**: SystemCapability.Security.Huks.Extension
+
+**Parameters**
+
+| Name  | Type                       | Mandatory| Description                                |
+| -------- | --------------------------- | ---- | ------------------------------------ |
+| userId   | number                      | Yes  | User ID.                |
+| keyAlias | string                      | Yes  | Alias of the key. The certificate to be obtained stores the key.|
+| params | [HuksParam[]](js-apis-huks.md#huksparam) | Yes  | Options for attesting the key.  |
+
+**Return value**
+
+| Type                                          | Description                                         |
+| ---------------------------------------------- | --------------------------------------------- |
+| Promise<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise When the call is successful, the **certChains** member of the **HuksReturnResult** object is the obtained certificate chain. Otherwise, the member is empty.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [HUKS Error Codes](errorcode-huks.md).
+
+| ID| Error Message     |
+| -------- | ------------- |
+| 201 | the app permission is not sufficient permissions, which may be caused by lack of cross-account permission, or the system has not been unlocked by user, or the user does not exist. |
+| 202 | non-system applications are not allowed to use system APIs. |
+| 801 | api is not supported. |
+| 12000001 | algorithm mode is not supported. |
+| 12000002 | The algorithm parameter is missing. |
+| 12000003 | The algorithm parameter is invalid. |
+| 12000004 | operating file failed. |
+| 12000005 | IPC communication failed. |
+| 12000006 | error occurred in crypto engine. |
+| 12000011 | queried entity does not exist. |
+| 12000012 | Device environment or input parameter abnormal. |
+| 12000014 | memory is insufficient. |
+| 12000018 | group id specified by the access group tag is invalid. |
+| 12000024 | The operation times out. This may be caused by network jitter. |
+| 12000027 | The network is unavailable. Check network connections. |
+
+**Example**
+
+- Prerequisites: see **Example** of [generateKeyItemAsUser](#huksgeneratekeyitemasuser).
+
+```ts
+import { huks } from '@kit.UniversalKeystoreKit';
+import { BusinessError } from "@kit.BasicServicesKit"
+
+function StringToUint8Array(str: string) {
+  let arr: number[] = [];
+  for (let i = 0, j = str.length; i < j; ++i) {
+    arr.push(str.charCodeAt(i));
+  }
+  return new Uint8Array(arr);
+}
+
+const userId = 100;
+const userIdStorageLevel = huks.HuksAuthStorageLevel.HUKS_AUTH_STORAGE_LEVEL_CE;
+const keyAliasString = "key anon local attest as user";
+
+const securityLevel = StringToUint8Array('sec_level');
+const challenge = StringToUint8Array('challenge_data');
+
+async function generateKey(alias: string) {
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
+      value: huks.HuksKeyAlg.HUKS_ALG_ECC
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+      value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+      value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_DIGEST,
+      value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_PADDING,
+      value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }
+  ];
+  let options: huks.HuksOptions = {
+    properties: properties
+  };
+
+  await huks.generateKeyItemAsUser(userId, alias, options);
+}
+
+async function anonAttestKeyItemOfflineAsUser() {
+  let aliasString = keyAliasString;
+  let aliasUint8 = StringToUint8Array(aliasString);
+  let properties: Array<huks.HuksParam> = [
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE,
+      value: challenge
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS,
+      value: aliasUint8
+    },
+    {
+      tag: huks.HuksTag.HUKS_TAG_AUTH_STORAGE_LEVEL,
+      value: userIdStorageLevel,
+    }
+  ];
+
+  await generateKey(aliasString);
+  await huks.anonAttestKeyItemOfflineAsUser(userId, aliasString, {
+    properties: properties
+  }).then((data) => {
+    console.info('anonAttestationOffline ok!')
+    console.debug(`'CERT:${JSON.stringify(data)}`)
+    for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
+      console.info(`CERT${i} is ${data.certChains[i]}`)
+    }
+    console.info("anonAttestationOffline Success")
+  }).catch((err: Business) => {
+    console.error("anonAttestationOffline fail, erroCode: " + err.code + " erroInfo: " + err.message)
+  })
+}
+```
+
 ## huks.importWrappedKeyItemAsUser
 
 importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-Imports a wrapped (encrypted) key for the specified user. This API uses a promise to return the result.
+Imports a key securely for the specified user. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -688,7 +835,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
-| 12000001 | algorithm mode is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
@@ -1354,7 +1501,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
-| 12000001 | algorithm mode is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
@@ -1421,7 +1568,7 @@ async function ExportPublicKey(keyAlias: string) {
     }]
   }
   await huks.exportKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("Exported the public key with the alias of: " + keyAlias + ". The data length is" + data?.outData?.length)
+    console.info("Exported the public key with the alias of: " + keyAlias + ". The data length is " + data?.outData?.length)
   }).catch((err: BusinessError) => {
     console.error("Failed to export the key. Error code: " + err.code + " Error message: " + err.message)
   })
@@ -1474,7 +1621,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
-| 12000001 | algorithm mode is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
@@ -1591,6 +1738,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The group key is not supported. 2. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
@@ -1706,7 +1854,7 @@ For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
 | 202 | non-system applications are not allowed to use system APIs. |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
 | 801 | api is not supported. |
-| 12000001 | algorithm mode is not supported. |
+| 12000001 | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
 | 12000002 | algorithm param is missing. |
 | 12000003 | algorithm param is invalid. |
 | 12000004 | operating file failed. |
@@ -1842,7 +1990,7 @@ async function EncryptData(keyAlias: string, encryptProperties: Array<huks.HuksP
   await huks.initSessionAsUser(userId, keyAlias, options).then((data) => {
     handle = data.handle;
   }).catch((err: BusinessError) => {
-    console.error("Failed to initialize the key session. Error code: "+ err.code +" Error message: "+ err.message)
+    console.error("Failed to initialize the key session. Error code: " + err.code + " Error message: " + err.message)
   })
   await huks.finishSession(handle, options).then((data) => {
     console.info("Data is encrypted. Ciphertext: " + Uint8ArrayToString(data.outData))
@@ -1851,7 +1999,7 @@ async function EncryptData(keyAlias: string, encryptProperties: Array<huks.HuksP
     }
     console.info("running time result success!")
   }).catch((err: BusinessError) => {
-    console.error("An exception is captured in the encryption process. Error code: " + err.code +" Error message: "+ err.message)
+    console.error("An exception is captured in the encryption process. Error code: " + err.code + " Error message: " + err.message)
   })
   return cipherData
 }
@@ -1865,12 +2013,12 @@ async function DecryptData(keyAlias: string, decryptProperties: Array<huks.HuksP
   await huks.initSessionAsUser(userId, keyAlias, options).then((data) => {
     handle = data.handle;
   }).catch((err: BusinessError) => {
-    console.error("Failed to initialize the key session. Error code: "+ err.code +" Error message: "+ err.message)
+    console.error("Failed to initialize the key session. Error code: " + err.code + " Error message: " + err.message)
   })
   await huks.finishSession(handle, options).then((data) => {
     console.info("Data is decrypted. Plaintext: " + Uint8ArrayToString(data.outData))
   }).catch((err: BusinessError) => {
-    console.error("An exception is captured in the decryption process. Error code: " + err.code +" Error message: "+ err.message)
+    console.error("An exception is captured in the decryption process. Error code: " + err.code + " Error message: " + err.message)
   })
 }
 

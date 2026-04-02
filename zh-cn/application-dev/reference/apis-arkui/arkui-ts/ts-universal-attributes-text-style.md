@@ -36,7 +36,7 @@ getTextContentRect(): RectResult
 
 | 类型       | 说明       |
 | -------------------  | -------- |
-| [RectResult](ts-universal-attributes-on-child-touch-test.md#rectresult) | 获取已编辑文本内容区域相对组件的位置和大小。 |
+| [RectResult](ts-universal-attributes-on-child-touch-test.md#rectresult) | 获取已编辑文本内容区域相对组件的位置和大小。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 > **说明：**
 >
@@ -59,7 +59,7 @@ getTextContentLineCount(): number
 
 | 类型  | 说明       |
 | ----- | -------- |
-| number| 已编辑文本内容行数。 |
+| number| 已编辑文本内容行数。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### getCaretOffset<sup>11+</sup>
 
@@ -67,7 +67,13 @@ getCaretOffset(): CaretOffset
 
 返回当前光标所在位置信息。
 
-当无法获取光标位置时（例如[TextInputController](./ts-basic-components-textinput.md#textinputcontroller8)未与[TextInput](./ts-basic-components-textinput.md)组件绑定时），该接口返回null。
+> **说明：**
+>
+> - 在当前帧更新光标位置同时调用该接口，该接口不生效。
+> - 在Search组件中，返回的位置信息是相对Search组件中搜索图标的偏移值。
+> - 在Search组件中，不输入文本时，返回值中有相对Search组件的位置信息。
+> - 返回值中的位置信息是光标相对于可编辑组件的位置。
+> - 当无法获取光标位置时（例如[TextInputController](./ts-basic-components-textinput.md#textinputcontroller8)未与[TextInput](./ts-basic-components-textinput.md)组件绑定时），该接口返回null。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -77,14 +83,7 @@ getCaretOffset(): CaretOffset
 
 | 类型                      | 说明               |
 | ----------------------- | ---------------- |
-| [CaretOffset](#caretoffset11对象说明) | 光标相对输入框的位置。 |
-
-> **说明：**
->
-> - 在当前帧更新光标位置同时调用该接口，该接口不生效。
-> - 在Search组件中，返回的位置信息是相对Search组件中搜索图标的偏移值。
-> - 在Search组件中，不输入文本时，返回值中有相对Search组件的位置信息。
-> - 返回值中的位置信息是光标相对于可编辑组件的位置。
+| [CaretOffset](#caretoffset11对象说明) | 光标相对输入框的位置。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### addText<sup>15+</sup>
 
@@ -135,9 +134,9 @@ deleteText(range?: TextRange): void
 
 删除已编辑文本的指定区域的内容。
 
-拖拽文本的状态下不生效。
-
-`deleteText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑，不推荐在预上屏状态下调用。
+> **说明：**
+> - 拖拽文本的状态下不生效。
+> - `deleteText`仅影响应用内部的UI表现，不影响输入法应用的内部逻辑，不推荐在预上屏状态下调用。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
@@ -163,7 +162,7 @@ getSelection(): TextRange
 
 | 类型                      | 说明               |
 | ----------------------- | ---------------- |
-| [TextRange](ts-text-common.md#textrange12) | 文本当前的选择范围，未选中返回光标位置。 |
+| [TextRange](ts-text-common.md#textrange12) | 文本当前的选择范围，未选中返回光标位置。<br>当controller未绑定组件或绑定controller的组件被释放时，返回undefined。 |
 
 ### clearPreviewText<sup>17+</sup>
 
@@ -180,6 +179,8 @@ clearPreviewText(): void
 deleteBackward(): void
 
 删除基础控制器`controller`绑定的文本输入框内文本光标前的一个字符。如果在调用此功能前已用鼠标或键盘选中了部分文本，则会删除被选中的文本。
+
+该接口不支持预上屏场景使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
@@ -210,9 +211,9 @@ scrollToVisible(range?: TextRange): void
 | 名称   | 类型    |     只读    |     可选    |     说明    |
 | -------- | ------- | ----------- | ----------- | ----------- |
 | thresholdPercentage | number  | 否 | 是 | thresholdPercentage是可输入字符数占最大字符限制的百分比值。字符计数器显示的样式为当前输入字符数/最大字符数。当输入字符数大于最大字符数乘百分比值时，显示字符计数器。thresholdPercentage值的有效值区间为[1,100]，数值为小数时，向下取整，如果设置的number超出有效值区间内，不显示字符计数器。thresholdPercentage设置为undefined，显示字符计数器，但此参数不生效。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| highlightBorder     | boolean | 否  | 是 | 如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数达到最大字符数时，边框和计数器下标将变为红色。如果用户设置显示字符计数器同时thresholdPercentage参数数值在有效区间内，那么当输入字符数超过最大字符数时，边框和计数器下标将变成红色。如果此参数为true，则显示红色边框，参数为false则不显示。计数器默认显示红色边框。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
-| counterTextColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 设置组件中字符计数器的文本颜色。当用户输入字符数大于最大字符数乘百分比值时，计数器会显示当前输入的字符数，并且计数器的颜色为counterTextColor指定的颜色。如果不设置counterTextColor，则计数器的颜色为默认颜色，默认颜色为灰色。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
-| counterTextOverflowColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 设置组件中字符计数器在溢出时的文本颜色。当用户输入的字符数超过计数器最大长度时，计数器的文本颜色和边框的颜色会切换为counterTextOverflowColor指定的颜色，以提醒用户输入已超出限制。如果不设置counterTextOverflowColor，则计数器和边框在溢出时的文本颜色为默认颜色，默认颜色为红色。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| highlightBorder     | boolean | 否  | 是 | 如果用户设置计数器时不设置InputCounterOptions，那么当前输入字符数达到最大字符数时，边框和计数器下标将变为红色。如果用户设置显示字符计数器同时thresholdPercentage参数数值在有效区间内，那么当输入字符数超过最大字符数时，边框和计数器下标将变成红色。如果此参数为true，则显示红色边框，参数为false则不显示。<br>默认值：true<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。|
+| counterTextColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 设置组件中字符计数器的文本颜色。当用户输入字符数大于最大字符数乘百分比值时，计数器会显示当前输入的字符数，并且计数器的文本颜色为counterTextColor指定的颜色。如果不设置counterTextColor，则计数器的文本颜色为默认颜色，默认颜色为灰色。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| counterTextOverflowColor<sup>22+</sup> | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否 | 是 | 设置组件中字符计数器在溢出时的文本颜色。当用户输入的字符数超过计数器最大长度时，计数器的文本颜色和边框的颜色会切换为counterTextOverflowColor指定的颜色，以提醒用户输入已超出限制。如果不设置counterTextOverflowColor，则计数器和边框在溢出时的文本颜色为默认颜色，默认颜色为红色。<br/>**说明：**<br/>当设置了[InputCounterOptions](ts-universal-attributes-text-style.md#inputcounteroptions11对象说明)的highlightBorder属性时，边框颜色才会被同步更改。<br/>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 
 ## CaretOffset<sup>11+</sup>对象说明
 
@@ -232,15 +233,14 @@ scrollToVisible(range?: TextRange): void
 
 文本装饰线的配置项。
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 类型    |     只读    |     可选    |     说明    |
 | -------- | ------- | ----------- | ----------- | ----------- |
-| type  | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 否   | 否 | 设置文本装饰线类型。 |
-| color  | &nbsp;[ResourceColor](ts-types.md#resourcecolor) | 否   | 是 | 设置文本装饰线颜色。 |
-| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是 | 设置文本装饰线样式。 |
+| type  | [TextDecorationType](ts-appendix-enums.md#textdecorationtype) | 否   | 否 | 设置文本装饰线类型。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| color  | &nbsp;[ResourceColor](ts-types.md#resourcecolor) | 否   | 是 | 设置文本装饰线颜色。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| style | [TextDecorationStyle](ts-appendix-enums.md#textdecorationstyle12) | 否   | 是 | 设置文本装饰线样式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| thicknessScale | number | 否   | 是 | 设置文本装饰线的粗细缩放比例。<br/>默认值：1.0 <br/>取值范围：[0, +∞) <br/>**说明：** 负值按默认值处理。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## SelectionOptions<sup>12+</sup>对象说明
 

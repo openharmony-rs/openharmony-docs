@@ -33,10 +33,12 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
 
 - Example: Generate an RSA key pair asynchronously (by calling [getPubKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkey23)):
 
-  ```ts
+  <!-- @[prikey_get_pubkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubkeyAsync.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
     let buf1 = buffer.from(a);
     let buf2 = buffer.from(b);
@@ -46,8 +48,8 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
         return false;
     }
   }
-
-  async function generateAsyKey() {
+  
+  async function prikeyGetPubKeyAsync() {
     let skData =
       new Uint8Array([48, 130, 2, 119, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 97, 48,
         130, 2, 93, 2, 1, 0, 2, 129, 129, 0, 199, 32, 218, 8, 4, 63, 103, 229, 64, 128, 83, 31, 23, 156, 30, 168, 101, 22,
@@ -92,21 +94,24 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
       let priKey = keyPair.priKey;
       let pubkey = await priKey.getPubKey();
       let pkBlob = pubkey.getEncoded();
-      console.info('pk1 bin data' + pkBlob.data);
+      console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
-      console.info('result is ' + ret);
+      console.info('result: ' + ret);
     } catch (e) {
-      console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
+      console.error(`get pubkey from prikey failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```
 
+
 - Example: Generate an RSA key pair synchronously (by calling [getPubKeySync](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#getpubkeysync23)):
 
-  ```ts
+  <!-- @[prikey_get_pubkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/KeyGenerationConversion/PrikeyOperation/entry/src/main/ets/pages/prikeyGetPubKeySync.ets) -->
+  
+  ``` TypeScript
   import { cryptoFramework } from '@kit.CryptoArchitectureKit';
   import { buffer } from '@kit.ArkTS';
-
+  
   function compareUint8Array(a: Uint8Array, b: Uint8Array): boolean {
     let buf1 = buffer.from(a);
     let buf2 = buffer.from(b);
@@ -116,7 +121,7 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
         return false;
     }
   }
-
+  
   function generateAsyKey() {
     let skData =
       new Uint8Array([48, 130, 2, 119, 2, 1, 0, 48, 13, 6, 9, 42, 134, 72, 134, 247, 13, 1, 1, 1, 5, 0, 4, 130, 2, 97, 48,
@@ -162,11 +167,11 @@ For details about the algorithm specifications, see [RSA](crypto-asym-encrypt-de
       let priKey = keyPair.priKey;
       let pubkey = priKey.getPubKeySync();
       let pkBlob = pubkey.getEncoded();
-      console.info('pk1 bin data' + pkBlob.data);
+      console.info('pk1 bin data: ' + pkBlob.data);
       let ret: boolean = compareUint8Array(pkBlob.data, expectPkdata);
-      console.info('result is ' + ret);
+      console.info('result: ' + ret);
     } catch (e) {
-      console.error(`get pubkey from prikey failed, ${e.code}, ${e.message}`);
+      console.error(`get pubkey from prikey failed: errCode: ${e.code}, message: ${e.message}`);
     }
   }
   ```

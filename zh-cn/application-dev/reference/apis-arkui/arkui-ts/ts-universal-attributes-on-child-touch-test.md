@@ -59,7 +59,7 @@ onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 | x   | number| 否  | 否|按压点相对于子组件左上角的x轴坐标。<br />单位：vp |
 | y   | number| 否  |否| 按压点相对于子组件左上角的y轴坐标。<br />单位：vp |
 | rect   | [RectResult](#rectresult)| 否  |否|子组件的位置和宽高。  |
-| [id](ts-universal-attributes-component-id.md)   | string| 否  | 否|子组件的唯一标识。 |
+| [id](ts-universal-attributes-component-id.md#id)   | string| 否  | 否|子组件的唯一标识。 |
 
 ## RectResult
 

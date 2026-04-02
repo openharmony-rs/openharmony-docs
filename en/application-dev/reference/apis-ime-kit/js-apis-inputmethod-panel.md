@@ -44,6 +44,10 @@ Enumerates the types of the input method panel.
 
 Enumerates the state types of the input method panel.
 
+> **NOTE**
+>
+>Currently, only the **SOFT_KEYBOARD** panel is supported.
+
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 | Name          | Value  | Description                                                        |

@@ -337,7 +337,7 @@ export struct ContentPageNoAndTabLinkage {
               // app.string.homepage_content资源文件中的value值为“首页内容”
               Text($r('app.string.homepage_content')).width('100%').height('100%').backgroundColor('rgb(213,213,213)')
                 .fontSize(40).fontColor(Color.Black).textAlign(TextAlign.Center)
-            //app.string.homepage资源文件中的value值为“首页”
+            // app.string.homepage资源文件中的value值为“首页”
             }.tabBar(this.tabBuilder($r('app.string.homepage'), 0))
 
             TabContent() {
@@ -438,21 +438,21 @@ export struct ContentPageNoAndTabLinkage {
 <!-- @[custom_page_toggle_interception_events](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets) -->
 
 ``` TypeScript
-  Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo }) {
-    // ···
+Tabs({ barPosition: BarPosition.End, index: this.currentIndex, controller: this.controllerTwo }) {
+  // ...
+}
+// ...
+.onContentWillChange((currentIndex, comingIndex) => {
+  if (comingIndex === 2) {
+    return false;
   }
-// ···
-  .onContentWillChange((currentIndex, comingIndex) => {
-    if (comingIndex == 2) {
-      return false;
-    }
-    return true;
-  })
+  return true;
+})
 ```
   **图13** 支持开发者自定义页面切换拦截事件 
 
 ![TabsChange3](figures/TabsChange3.gif)
-<!--Del-->
+
 ## 支持适老化
 
 在适老化大字体场景下，底部页签提供大字体弹窗显示内容。当组件识别到大字体时，基于设置的文字和图标等内容，构建长按提示弹窗。当用户长按弹窗后，滑动到下一个页签位置时，使用新页签的弹窗提示内容替换上一个页签提示内容，抬手关闭弹窗并切换到对应TabContent内容页。
@@ -463,6 +463,7 @@ export struct ContentPageNoAndTabLinkage {
 
 **图14** 在适老化场景下通过长按底部页签显示适老化弹窗。
 
+<!--RP2-->
 ![适老化弹窗](figures/tabs11.png)
 
 <!-- @[age_friendly_tab](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/AgeFriendlyTabs.ets) -->
@@ -623,7 +624,7 @@ export struct AgeFriendlyTabs {
   }
 }
 ```
-<!--DelEnd-->
+<!--RP2End-->
 
 ## 控制页面缓存数
 
@@ -699,7 +700,7 @@ struct MyComponent {
 ```
 基于以上示例代码为例，不同场景下的缓存策略如下：
 
-1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1~3被缓存。再切换到red页，TabContent1~2释放，TabContent3~5被缓存。
+1. 如图16所示，使用默认翻页动画，CACHE_BOTH_SIDE模式，n设置为2，点击TabBar切换到yellow页，TabContent1\~3被缓存。再切换到red页，TabContent1、2释放，TabContent3\~5被缓存。
 
    **图16** 默认翻页动画，CACHE_BOTH_SIDE模式示意图
 

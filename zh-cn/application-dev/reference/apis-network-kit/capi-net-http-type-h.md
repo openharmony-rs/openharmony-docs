@@ -53,17 +53,17 @@
 
 | 名称                               | 描述                                                                                    |
 |----------------------------------|---------------------------------------------------------------------------------------|
-| OHOS_HTTP_MAX_PATH_LEN 128       | HTTP请求最长目录路径长度。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack   |
-| OHOS_HTTP_MAX_STR_LEN 256        | HTTP请求最长字符串长度。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack     |
-| OHOS_HTTP_DNS_SERVER_NUM_MAX 3   | HTTP请求最多DNS服务器数量。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack  |
-| NET_HTTP_METHOD_GET "GET"        | HTTP请求GET方法。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack     |
-| NET_HTTPMETHOD_HEAD "HEAD"       | HTTP请求HEAD方法。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack    |
-| NET_HTTPMETHOD_OPTIONS "OPTIONS" | HTTP请求OPTIONS方法。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack |
-| NET_HTTPMETHOD_TRACE "TRACE"     | HTTP请求TRACE方法。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack   |
-| NET_HTTPMETHOD_DELETE "DELETE"   | HTTP请求DELETE方法。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack  |
-| NET_HTTP_METHOD_POST "POST"      | HTTP请求POST方法。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack    |
-| NET_HTTP_METHOD_PUT "PUT"        | HTTP请求PUT方法。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack     |
-| NET_HTTP_METHOD_PATCH "CONNECT"  | HTTP请求CONNECT方法。<br>**起始版本：** 20<br>**系统能力：** SystemCapability.Communication.NetStack |
+| OHOS_HTTP_MAX_PATH_LEN 128       | HTTP请求最长目录路径长度。<br>**起始版本：** 20   |
+| OHOS_HTTP_MAX_STR_LEN 256        | HTTP请求最长字符串长度。<br>**起始版本：** 20     |
+| OHOS_HTTP_DNS_SERVER_NUM_MAX 3   | HTTP请求最多DNS服务器数量。<br>**起始版本：** 20  |
+| NET_HTTP_METHOD_GET "GET"        | HTTP请求GET方法。<br>**起始版本：** 20     |
+| NET_HTTPMETHOD_HEAD "HEAD"       | HTTP请求HEAD方法。<br>**起始版本：** 20    |
+| NET_HTTPMETHOD_OPTIONS "OPTIONS" | HTTP请求OPTIONS方法。<br>**起始版本：** 20 |
+| NET_HTTPMETHOD_TRACE "TRACE"     | HTTP请求TRACE方法。<br>**起始版本：** 20   |
+| NET_HTTPMETHOD_DELETE "DELETE"   | HTTP请求DELETE方法。<br>**起始版本：** 20  |
+| NET_HTTP_METHOD_POST "POST"      | HTTP请求POST方法。<br>**起始版本：** 20    |
+| NET_HTTP_METHOD_PUT "PUT"        | HTTP请求PUT方法。<br>**起始版本：** 20     |
+| NET_HTTP_METHOD_PATCH "CONNECT"  | HTTP请求CONNECT方法。<br>**起始版本：** 20 |
 
 ### 函数
 
@@ -209,7 +209,7 @@ HTTP协议版本号枚举定义。
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_HTTP_NONE = 0 | 跟随curl的协议版本选择。 |
+| OH_HTTP_NONE = 0 | 遵循curl的协议版本选择。 |
 | OH_HTTP1_1 | HTTP1.1版本。 |
 | OH_HTTP2 | HTTP2版本。 |
 | OH_HTTP3 | HTTP3版本。 |

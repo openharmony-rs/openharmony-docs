@@ -101,9 +101,9 @@
 
 2. 音频启动前的送显策略。  
 
-   音频未启动前，timestamp和framePostion返回结果为0。
+   音频未启动前，timestamp和framePosition返回结果为0。
    - API version 23前：暂不同步，视频帧直接送显，避免出现卡顿等问题。
-   - API version 23及以后：起播前可通过[OH_AudioRenderer_GetLatency()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getlatency)预估首帧时延，在拿到有效timestamp和framePostion前可按该时延节奏送显。
+   - API version 23及以后：起播前可通过[OH_AudioRenderer_GetLatency()](../reference/apis-audio-kit/capi-native-audiorenderer-h.md#oh_audiorenderer_getlatency)预估首帧时延，在拿到有效timestamp和framePosition前可按该时延节奏送显。
    ```c++
    // API version 23前：如果getTimeStamp方法报错或尚未返回有效值，直接按帧间隔送显。
    if (ret != AUDIOSTREAM_SUCCESS || (timestamp == 0) || (framePosition == 0)) {

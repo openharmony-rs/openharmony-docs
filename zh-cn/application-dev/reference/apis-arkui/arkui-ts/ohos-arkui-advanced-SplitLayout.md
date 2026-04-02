@@ -14,12 +14,14 @@
 >
 > - 该组件从API version 10开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
+> - 该组件仅可在Stage模型下使用。
+>
 > - 如果SplitLayout设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SplitLayout本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SplitLayout设置通用属性和通用事件。
 
 
 ## 导入模块
 
-```
+```ts
 import { SplitLayout } from '@kit.ArkUI';
 ```
 
@@ -44,8 +46,8 @@ SplitLayout({mainImage: Resource, primaryText: string, secondaryText?: string, t
 | -------- | -------- | -------- |---------------|--------|
 | mainImage | [ResourceStr](ts-types.md#resourcestr) | 是 | @State | 传入图片。  |
 | primaryText | [ResourceStr](ts-types.md#resourcestr) | 是 | @Prop         | 标题内容。  |
-| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop         | 副标题内容。 |
-| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop         | 辅助文本。  |
+| secondaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop         | 副标题内容。当需要在标题下方显示副标题时传入，不传入时取默认值，不显示副标题。 |
+| tertiaryText | [ResourceStr](ts-types.md#resourcestr) | 否 | @Prop         | 辅助文本。当需要显示辅助文本时传入，不传入时取默认值，不显示辅助文本。  |
 | container | ()&nbsp;=&gt;&nbsp;void | 是 | @BuilderParam | 容器内组件。 |
 
 ## 事件

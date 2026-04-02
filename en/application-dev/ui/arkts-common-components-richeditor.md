@@ -40,29 +40,48 @@ Compared with using controller APIs for content style updates, this approach off
 <!-- @[richEditor_create](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/CreateRichEditor.ets) -->
 
 ``` TypeScript
-fontStyle: TextStyle = new TextStyle({
-  fontColor: Color.Pink
-})
-// Define a text style object.
+@Entry
+@Component
+export struct CreateRichEditor {
+  // ...
+  fontStyle: TextStyle = new TextStyle({
+    fontColor: Color.Pink
+  })
+  // Define a text style object.
+  mutableStyledString: MutableStyledString =
+    // Replace $r('app.string.CreateRichEditor_Text_1') with the actual resource file. In this example, the value in the resource file is "Create a RichEditor component using a styled string."
+    new MutableStyledString(this.getUIContext().getHostContext()!.resourceManager.getStringSync($r('app.string.CreateRichEditor_Text_1').id),
+    [{
+      start: 0,
+      length: 5,
+      styledKey: StyledStringKey.FONT,
+      styledValue: this.fontStyle
+    }])
+  // Create a styled string.
 
-mutableStyledString: MutableStyledString =
-  // Replace $r('app.string.CreateRichEditor_Text_1') with the actual resource file. In this example, the value in the resource file is "Create a RichEditor component using a styled string."
-  new MutableStyledString(resource.resourceToString($r('app.string.CreateRichEditor_Text_1')),
-  [{
-    start: 0,
-    length: 5,
-    styledKey: StyledStringKey.FONT,
-    styledValue: this.fontStyle
-  }])
-// Create a styled string.
-
-controller: RichEditorStyledStringController = new RichEditorStyledStringController();
-options: RichEditorStyledStringOptions = { controller: this.controller };
-// ...
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.setStyledString(this.mutableStyledString);
-          })
+  controller: RichEditorStyledStringController = new RichEditorStyledStringController();
+  options: RichEditorStyledStringOptions = { controller: this.controller };
+  build() {
+    NavDestination() {
+      Column({ space: 12 }) {
+        Column({ space: 3 }) {
+          // ...
+          RichEditor(this.options)
+            .onReady(() => {
+              this.controller.setStyledString(this.mutableStyledString);
+            })
+        }
+        // ...
+      }
+      .width('100%')
+      .height('100%')
+      .padding({ left: 12, right: 12 })
+    }
+    .backgroundColor('#f1f2f3')
+    // Replace $r('app.string.Create_RichEditor_Component_title') with the actual resource file. In this example, the value in the resource file is "Create a RichEditor component."
+    .title($r('app.string.Create_RichEditor_Component_title'))
+  }
+}
 ```
 
 ![alt text](figures/richeditor_image_stylestringoptions.gif)
@@ -84,18 +103,23 @@ export struct CreateRichEditor {
     NavDestination() {
       Column({ space: 12 }) {
         // ...
+        Column({ space: 3 }) {
+          // ...
           RichEditor(this.optionsNoStyledString)
             .onReady(() => {
               this.controllerNoStyledString.addTextSpan(
-                /* Replace $r('app.string.CreateRichEditor_Text_2') with the actual resource file.
-                 In this example, the value in the resource file is "Create a RichEditor component without using a styled string." */
-                resource.resourceToString($r('app.string.CreateRichEditor_Text_2')), {
+                /**
+                 * Replace $r('app.string.CreateRichEditor_Text_2') with the actual resource file.
+                 * In this example, the value in the resource file is "Create a RichEditor component without using a styled string."
+                 */
+                $r('app.string.CreateRichEditor_Text_2'), {
                 style: {
                   fontColor: Color.Black,
                   fontSize: 15
                 }
               })
             })
+        }
         // ...
       }
       .width('100%')
@@ -240,19 +264,43 @@ TextBuilder() {
   .borderRadius('20')
   .width(220)
 }
-// ...
-          // Replace $r('app.string.AddBuilderDecoratorContent_Button_1') with the actual resource file. In this example, the value in the resource file is "addBuilderSpan."
-          Button($r('app.string.AddBuilderDecoratorContent_Button_1'), {
-            buttonStyle: ButtonStyleMode.NORMAL
+build() {
+  // ...
+    Column({ space: 12 }) {
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan(
+            /* 
+             * Replace $r('app.string.AddBuilderDecoratorContent_Text_3') with the actual resource file.
+             * In this example, the value in the resource file is "Click the button to add builderspan here."
+             */
+            $r('app.string.AddBuilderDecoratorContent_Text_3'), {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
           })
-            .height(30)
-            .fontSize(13)
-            .onClick(() => {
-              this.myBuilder = () => {
-                this.TextBuilder()
-              }
-              this.controller.addBuilderSpan(this.myBuilder)
-            })
+        })
+      Row() {
+        /* 
+         * Replace $r('app.string.AddBuilderDecoratorContent_Button_1') with the actual resource file.
+         * In this example, the value in the resource file is "addBuilderSpan."
+         */
+        Button($r('app.string.AddBuilderDecoratorContent_Button_1'), {
+          buttonStyle: ButtonStyleMode.NORMAL
+        })
+          .height(30)
+          .fontSize(13)
+          .onClick(() => {
+            this.myBuilder = () => {
+              this.TextBuilder()
+            }
+            this.controller.addBuilderSpan(this.myBuilder)
+          })
+      }.justifyContent(FlexAlign.Center).width('100%')
+    }
+  // ...
+}
 ```
 
 ![alt text](figures/richeditor_image_add_builder_span2.0.gif)
@@ -708,7 +756,7 @@ For details about all available events, see [RichEditor Events](../reference/api
 
 ## Implementing Component Interaction
 
-You can configure interaction element properties through APIs to respond to changes in those elements.
+You can configure interaction element attributes through APIs to respond to changes in those elements.
 
 ### Setting the Caret and Selection Handle Colors
 
@@ -897,27 +945,25 @@ struct PrepareMenu {
 
   build() {
     Column() {
-      ComponentCard({
-        // Replace $r('app.string.Set_Attributes_title_13') with the actual resource file. In this example, the value in the resource file is "Manage selected menu items."
-        title: $r('app.string.Set_Attributes_title_13'),
-        /* Replace $r('app.string.Set_Attributes_title_13_desc') with the actual resource file. In this example,
-         the value in the resource file is "When the rich text selection range changes, the onPrepareMenu callback is triggered before the menu is displayed. You can configure menu data within this callback."
-        description: $r('app.string.Set_Attributes_title_13_desc')
-      }) {
-        RichEditor(this.options)
-          .onReady(() => {
-            this.controller.addTextSpan('RichEditor editMenuOptions');
-          })
-          .editMenuOptions(this.editMenuOptions)
-          .onSelectionChange((range: RichEditorRange) => {
-            this.endIndex = range.end;
-          })
-          .height(50)
-          .margin({ top: 100 })
-          .borderWidth(1)
-          .borderColor(Color.Red)
-      }
-    }
+      // ...
+      RichEditor(this.options)
+        .onReady(() => {
+          this.controller.addTextSpan('RichEditor editMenuOptions');
+        })
+        .editMenuOptions(this.editMenuOptions)
+        .onSelectionChange((range: RichEditorRange) => {
+          this.endIndex = range.end;
+        })
+        .height(50)
+        .margin({ top: 100 })
+        .borderWidth(1)
+        .borderColor(Color.Red)
+      // ...
+    }.alignItems(HorizontalAlign.Start)
+    .backgroundColor('#fff')
+    .borderRadius(12)
+    .padding(12)
+    .width('100%')
   }
 }
 ```
@@ -1135,20 +1181,32 @@ This API controls the text display area to prevent overly long content from disr
 ``` TypeScript
 controller: RichEditorController = new RichEditorController();
 options: RichEditorOptions = { controller: this.controller };
-// ...
-      /*Replace $r('app.string.SetAttributes_Text_7') with the actual resource file. In this example,
-       the value in the resource file is "The maximum number of lines is set.\nExcess content will be displayed in scrolling mode.\nExceeds 1 line\nExceeds 2 lines\nExceeds 3 lines\nExceeds 4 lines." */
-      RichEditor(this.options)
-        .onReady(() => {
-          this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_7')),
-            {
-              style: {
-                fontColor: Color.Black,
-                fontSize: 15
-              }
-            })
-        })
-        .maxLines(2)
+
+build() {
+  Column() {
+    // ...
+    /*
+     *Replace $r('app.string.SetAttributes_Text_7') with the actual resource file. In this example,
+     * the value in the resource file is "The maximum number of lines is set.\nExcess content will be displayed in scrolling mode.\nExceeds 1 line\nExceeds 2 lines\nExceeds 3 lines\nExceeds 4 lines."
+     */
+    RichEditor(this.options)
+      .onReady(() => {
+        this.controller.addTextSpan(resource.resourceToString($r('app.string.SetAttributes_Text_7')),
+          {
+            style: {
+              fontColor: Color.Black,
+              fontSize: 15
+            }
+          })
+      })
+      .maxLines(2)
+    // ...
+  }.alignItems(HorizontalAlign.Start)
+  .backgroundColor('#fff')
+  .borderRadius(12)
+  .padding(12)
+  .width('100%')
+}
 ```
 
 ![max lines](figures/RichEditor_maxLines.gif)
@@ -1235,7 +1293,7 @@ options: RichEditorOptions = { controller: this.controller };
 
 ![RichEditor_decoration](figures/RichEditor_decoration.jpg)
 
-Use the **enableMultiType** property in [DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20) to apply multiple decoration lines simultaneously, such as an underline and a strikethrough.
+Use the **enableMultiType** attribute in [DecorationOptions](../reference/apis-arkui/arkui-ts/ts-universal-styled-string.md#decorationoptions20) to apply multiple decoration lines simultaneously, such as an underline and a strikethrough.
 
 This API is useful in complex scenarios that require diverse text decoration. For example, in collaborative document editing, different combinations of decoration lines can be used to distinguish text states contributed by various users, improving collaboration efficiency.
 
@@ -1328,9 +1386,9 @@ options: RichEditorOptions = { controller: this.controller };
 
 ### Enabling Automatic Spacing Between Chinese and Western Characters
 
-Use [enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20) to control whether automatic spacing is inserted between Chinese and Western characters.
+Use [enableAutoSpacing](../reference/apis-arkui/arkui-ts/ts-basic-components-richeditor.md#enableautospacing20) to control whether automatic spacing is inserted between Chinese and western characters.
 
-This API optimizes text layout and improves readability within the component. When automatic spacing is enabled, an appropriate gap is automatically added between Chinese and Western characters, making it easier to distinguish between languages and reducing visual interference.
+This API optimizes text layout and improves readability within the component. When automatic spacing is enabled, an appropriate gap is automatically added between Chinese and western characters, making it easier to distinguish between languages and reducing visual interference.
 
 <!-- @[richEditor_enableAutoSpacing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/richEditor/SetAttributes.ets) -->
 
@@ -1340,7 +1398,7 @@ options: RichEditorOptions = { controller: this.controller };
 // ...
         RichEditor(this.options)
           .onReady(() => {
-            // Replace $r('app.string.Demo_autoSpacingString') with the actual resource file. In this example, the value in the resource file is "Auto Spacing between Chinese and Western Characters."
+            // Replace $r('app.string.Demo_autoSpacingString') with the actual resource file. In this example, the value in the resource file is "Automatic spacing between Chinese and western characters."
             this.controller.addTextSpan($r('app.string.Demo_autoSpacingString'),
               {
                 style:

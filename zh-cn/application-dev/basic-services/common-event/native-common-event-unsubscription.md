@@ -13,7 +13,7 @@
 
 ## 接口说明
 
-详细的API说明请参考[CommonEvent API参考](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md)。
+详细的API说明请参考[oh_commonevent.h](../../reference/apis-basic-services-kit/capi-oh-commonevent-h.md)。
 
 | 接口名                               | 描述                                                             |
 | ------------------------------------ | ---------------------------------------------------------------- |
@@ -26,7 +26,6 @@
    <!-- @[event_unsubscriber_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/common_event/NativeCommonEvent/entry/src/main/cpp/common_event_unsubscribe.h) -->
    
    ``` C
-   #include <cstdint>
    #include "hilog/log.h"
    #include "BasicServicesKit/oh_commonevent.h"
    ```

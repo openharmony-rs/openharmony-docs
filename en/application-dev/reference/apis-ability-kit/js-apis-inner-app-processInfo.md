@@ -38,7 +38,7 @@ context.getProcessInfo((error, data) => {
     if (error && error.code !== 0) {
         console.error(`getProcessInfo fail, error: ${JSON.stringify(error)}`);
     } else {
-        console.log(`getProcessInfo success, data: ${JSON.stringify(data)}`);
+        console.info(`getProcessInfo success, data: ${JSON.stringify(data)}`);
         let pid = data.pid;
         let processName = data.processName;
     }

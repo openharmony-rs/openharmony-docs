@@ -159,4 +159,4 @@ Provides fingerprint gesture event types and the offset of the fingerprint senso
 | --------  | ------------------------                  |-------|------ |--------               |
 | action    | [FingerprintAction](#fingerprintaction12)   | No   |  No  | Enumeration of fingerprint gesture event types.          |
 | distanceX | double                                    | No   |  No  | Offset of the X axis for the fingerprint sensor relative to the side edge (a positive number indicates that a rightward offset, and a negative number indicates a leftward offset).|
-| distanceY | double                                    | No   |  No  | Offset of the Y axis for the fingerprint sensor relative to the side edge (a positive number indicates a upward offset, and a negative number indicates a downward offset).|
+| distanceY | double                                    | No   |  No  | Offset of the Y axis for the fingerprint sensor relative to the side edge (a positive number indicates an upward offset, and a negative number indicates a downward offset).|

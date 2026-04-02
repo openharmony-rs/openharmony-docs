@@ -48,7 +48,6 @@ FFRT_C_API int ffrt_cond_init(ffrt_cond_t* cond, const ffrt_condattr_t* attr)
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -74,7 +73,6 @@ FFRT_C_API int ffrt_cond_signal(ffrt_cond_t* cond)
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -99,7 +97,6 @@ FFRT_C_API int ffrt_cond_broadcast(ffrt_cond_t* cond)
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -123,7 +120,6 @@ FFRT_C_API int ffrt_cond_wait(ffrt_cond_t* cond, ffrt_mutex_t* mutex)
 条件变量等待函数，条件变量不满足时阻塞当前任务。
 
 **起始版本：** 10
-
 
 **参数：**
 
@@ -150,7 +146,6 @@ FFRT_C_API int ffrt_cond_timedwait(ffrt_cond_t* cond, ffrt_mutex_t* mutex, const
 
 **起始版本：** 10
 
-
 **参数：**
 
 | 参数项 | 描述 |
@@ -176,7 +171,6 @@ FFRT_C_API int ffrt_cond_destroy(ffrt_cond_t* cond)
 销毁条件变量。
 
 **起始版本：** 10
-
 
 **参数：**
 

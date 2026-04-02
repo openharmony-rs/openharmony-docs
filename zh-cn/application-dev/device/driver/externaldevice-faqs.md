@@ -33,10 +33,10 @@
 | 接口类型 | 支持的最小API | 对应OpenHarmony版本 |
 | --------- | --------- | --------- |
 | 应用开发接口（ArkTS接口） | API10 | 4.0 Release及以上 |
-| USB DDK接口 | API10 | 4.0 Release及以上 |
-| HID DDK接口 | API11 | 4.1 Release及以上 |
-| USB Serial DDK接口 | API18 | 5.1 Release及以上 |
-| SCSI Peripheral DDK接口 | API18 | 5.1 Release及以上 |
+| UsbDdk接口 | API10 | 4.0 Release及以上 |
+| HidDdk接口 | API11 | 4.1 Release及以上 |
+| USBSerialDDK接口 | API18 | 5.1 Release及以上 |
+| ScsiPeripheralDDK接口 | API18 | 5.1 Release及以上 |
 <!--RP3End-->
 
 ## 安装HAP时提示解析本地so文件失败
@@ -47,4 +47,4 @@
 
 ### 解决措施
 
-根据[应用调试](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5)中提供的解决方法，在`build-profile.json5`中的`buildOption/externalNativeOptions`内手动配置`abiFilters`的值。
+根据应用调试中[安装HAP时提示“code:9568347 error: install parse native so failed”错误，或者运行时候提示“TypeError：Cannot read property xxx of undefined”错误](https://developer.huawei.com/consumer/cn/doc/harmonyos-faqs-V5/faqs-app-debugging-14-V5)提供的解决方法，在`build-profile.json5`中的`buildOption/externalNativeOptions`内手动配置`abiFilters`的值。

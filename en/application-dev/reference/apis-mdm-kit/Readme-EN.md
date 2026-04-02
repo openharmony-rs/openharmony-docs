@@ -43,5 +43,7 @@
   - [@ohos.enterprise.usbManager (USB Management) (System API)](js-apis-enterprise-usbManager-sys.md)
   - [@ohos.enterprise.wifiManager (Wi-Fi Management) (System API)](js-apis-enterprise-wifiManager-sys.md)
   <!--DelEnd-->
+  - application<!--mdm-arkts-application-->
+    - [EnterpriseAdminExtensionContext](js-apis-application-EnterpriseAdminExtensionContext.md)
 - Error Codes<!--mdm-arkts-errcode-->
   - [Enterprise Device Management Error Codes](errorcode-enterpriseDeviceManager.md)

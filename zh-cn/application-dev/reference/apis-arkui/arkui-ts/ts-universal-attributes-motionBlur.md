@@ -97,7 +97,7 @@ motionBlur(motionBlur: Optional\<MotionBlurOptions>): T
 
 ## MotionBlurAnchor对象说明
 
-运动模糊锚坐标。
+运动模糊锚点坐标。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

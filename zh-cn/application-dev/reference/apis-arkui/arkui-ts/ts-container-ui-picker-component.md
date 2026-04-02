@@ -51,6 +51,8 @@ UIPickerComponent(options?: UIPickerComponentOptions)
 
 创建UIPickerComponent容器，其选中项由options参数中的selectedIndex属性值决定。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -64,6 +66,8 @@ UIPickerComponent(options?: UIPickerComponentOptions)
 ## UIPickerComponentOptions对象说明
 
 UIPickerComponent容器的参数说明。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -83,6 +87,8 @@ canLoop(isLoop: Optional\<boolean>)
 
 设置选项列是否可循环滚动。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -91,7 +97,7 @@ canLoop(isLoop: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否可循环滚动。<br/>- true：可循环滚动。<br/>- false：不可循环滚动。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。<br/>如果子组件的个数小于8个，无论isLoop设置为true还是false，都不会循环滚动。 |
+| isLoop  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否可循环滚动。<br/>- true：可循环滚动。<br/>- false：不可循环滚动。<br/>默认值：true<br/>当isLoop的值为undefined时，使用默认值。<br/>如果子组件的个数小于8个，无论isLoop设置为true还是false，都不会循环滚动。 |
 
 ### enableHapticFeedback
 
@@ -108,6 +114,8 @@ enableHapticFeedback(enable: Optional\<boolean>)
 ]
 ```
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -116,13 +124,15 @@ enableHapticFeedback(enable: Optional\<boolean>)
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>当enable的值为undefined时，使用默认值。<br/>开启后，是否存在触控反馈取决于系统硬件支持情况。|
+| enable  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 设置是否开启触控反馈。<br/>- true：开启触控反馈。<br/>- false：不开启触控反馈。<br/>默认值：true<br/>当enable的值为undefined时，使用默认值。<br/>开启后，是否存在触控反馈取决于系统硬件支持情况。|
 
 ### selectionIndicator
 
 selectionIndicator(style: Optional\<PickerIndicatorStyle>)
 
 设置选中项指示器的样式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -132,7 +142,7 @@ selectionIndicator(style: Optional\<PickerIndicatorStyle>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle对象说明)> | 是   | 选中项指示器的样式。<br/>默认值：<br/>{<br/>type: PickerIndicatorType.BACKGROUND,<br/>borderRadius: {<br/>value:12,<br/>unit:LengthUnit.vp<br/>},<br/>backgroundColor: 'sys.color.comp_background_tertiary'<br/>}<br/>当style的值为undefined时，使用默认值。|
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PickerIndicatorStyle](ts-container-ui-picker-component.md#pickerindicatorstyle对象说明)> | 是   | 选中项指示器的样式。<br/>默认值：<br/>{<br/>type: PickerIndicatorType.BACKGROUND,<br/>borderRadius: {<br/>value:12,<br/>unit:LengthUnit.vp<br/>},<br/>backgroundColor: 'sys.color.comp_background_tertiary'<br/>}<br/>当style的值为undefined时，使用默认值。|
 
 ## 事件
 
@@ -150,6 +160,8 @@ onChange(callback: Optional\<OnUIPickerComponentCallback>)
 > 
 > 选中项区域可通过设置[selectionIndicator](#selectionindicator)进行标识。如果设置选中项指示器为背景，则背景区域即为选中项区域。如果设置选中项指示器为分割线，则上下分割线的中心线内的区域为选中项区域。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -158,7 +170,7 @@ onChange(callback: Optional\<OnUIPickerComponentCallback>)
 
 | 参数名 | 类型                                       | 必填 | 说明                                              |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | 是   | 当选中项发生变化时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | 是   | 当选中项发生变化时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ### onScrollStop
 
@@ -166,6 +178,8 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
 选择器滑动停止时，触发该事件。选择器滑动停止指某次行为触发的滑动动画完全结束。如果某次滑动动画还未结束时又触发了新的滑动动画，则不属于滑动停止。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -174,11 +188,13 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
 | 参数名 | 类型                                       | 必填 | 说明                                              |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------- |
-| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | 是   | 当选择器滑动停止时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
+| callback | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[OnUIPickerComponentCallback](#onuipickercomponentcallback)> | 是   | 当选择器滑动停止时触发的回调函数。<br/>当callback的值为undefined时，不使用回调函数。 |
 
 ## PickerIndicatorStyle对象说明
 
 选中项指示器样式的参数说明。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
@@ -198,6 +214,8 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 
 设置选中项指示器的类型。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **原子化服务API：** 从API version 22开始，该类型支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -212,6 +230,8 @@ onScrollStop(callback: Optional\<OnUIPickerComponentCallback>)
 type OnUIPickerComponentCallback = (selectedIndex: number) => void
 
 定义[onChange](#onchange)和[onScrollStop](#onscrollstop)事件的回调类型。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 

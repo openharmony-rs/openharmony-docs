@@ -8,13 +8,13 @@
 
 **变更原因**
 
-变更前应用发生js OOM异常时，既可能产生jscrash，也可能产生cppcrash，影响三方生态应用对OOM异常的数据统计。
+变更前应用发生js OOM异常时产生jscrash或cppcrash，影响三方生态应用对OOM异常的数据统计。
 
 **变更影响**
 
 此变更不涉及应用适配。
 
-变更前：应用主线程堆发生js OOM异常时产生jscrash，worker/taskpool线程堆发生js OOM异常时产生cppcrash，共享堆发生js OOM异常时，既可能产生jscrash，也可能产生cppcrash。
+变更前：应用主线程堆发生js OOM异常时产生jscrash，worker/taskpool线程堆发生js OOM异常时产生cppcrash，共享堆发生js OOM异常时产生jscrash或cppcrash。
 
 变更后：应用主线程堆、worker/taskpool线程堆以及共享堆发生js OOM异常时，仅会产生jscrash。
 

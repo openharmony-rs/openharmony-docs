@@ -12,11 +12,11 @@ typedef struct ScsiPeripheral_RequestSenseRequest {...} ScsiPeripheral_RequestSe
 
 ## Overview
 
-Defines the request structure of the **request sense** command.
+Defines the request structure of the **Request Sense** command.
 
 **Since**: 18
 
-**Related module**: [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 

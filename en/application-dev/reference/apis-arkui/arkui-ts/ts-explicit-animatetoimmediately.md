@@ -16,23 +16,15 @@ Therefore, you are advised to use [animateTo](../arkts-apis-uicontext-uicontext.
 
 > **NOTE**
 >
-> This API is deprecated since API version 22. You are advised to use [animateToImmediately](../arkts-apis-uicontext-uicontext.md#animatetoimmediately22) instead.
->
 > The initial APIs of this module are supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
->
 
 ## APIs
 
-## animateToImmediately<sup>(deprecated)</sup>
+## animateToImmediately
 
 animateToImmediately(value: AnimateParam , event: () => void): void
 
 Delivers an explicit animation immediately.
-
-> **NOTE**
->
-> This API is supported since API version 12 and deprecated since API version 22. You are advised to use [animateToImmediately](../arkts-apis-uicontext-uicontext.md#animatetoimmediately22) instead.
->
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -47,7 +39,7 @@ Delivers an explicit animation immediately.
 
 ## Example
 
-This example demonstrates how to use the [animateToImmediately](#animatetoimmediatelydeprecated) API to deliver an explicit animation immediately.
+This example demonstrates how to use the [animateToImmediately](#animatetoimmediately) API to deliver an explicit animation immediately.
 
 ```ts
 // xxx.ets

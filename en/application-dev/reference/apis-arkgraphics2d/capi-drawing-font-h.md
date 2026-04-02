@@ -15,6 +15,8 @@ This file declares the functions related to the font in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -88,7 +90,7 @@ This file declares the functions related to the font in the drawing module.
 
 ### OH_Drawing_FontHinting
 
-```
+```c
 enum OH_Drawing_FontHinting
 ```
 
@@ -107,7 +109,7 @@ Defines an enum for the font hinting types.
 
 ### OH_Drawing_FontEdging
 
-```
+```c
 enum OH_Drawing_FontEdging
 ```
 
@@ -128,7 +130,7 @@ Enumerates the font edging types.
 
 ### OH_Drawing_FontMeasureSingleCharacterWithFeatures()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontMeasureSingleCharacterWithFeatures(const OH_Drawing_Font* font, const char* str, const OH_Drawing_FontFeatures* fontFeatures, float* textWidth)
 ```
 
@@ -158,7 +160,7 @@ Measures the width of a single character with font features. If the typeface of 
 
 ### OH_Drawing_FontFeaturesCreate()
 
-```
+```c
 OH_Drawing_FontFeatures* OH_Drawing_FontFeaturesCreate(void)
 ```
 
@@ -178,7 +180,7 @@ Creates an **OH_Drawing_FontFeatures** object.
 
 ### OH_Drawing_FontFeaturesAddFeature()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontFeaturesAddFeature(OH_Drawing_FontFeatures* fontFeatures, const char* name, float value)
 ```
 
@@ -207,7 +209,7 @@ Adds a font feature to an **OH_Drawing_FontFeatures** object.
 
 ### OH_Drawing_FontFeaturesDestroy()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontFeaturesDestroy(OH_Drawing_FontFeatures* fontFeatures)
 ```
 
@@ -234,7 +236,7 @@ Destroys an **OH_Drawing_FontFeatures** object and reclaims the memory occupied 
 
 ### OH_Drawing_FontMeasureTextWithBrushOrPen()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontMeasureTextWithBrushOrPen(const OH_Drawing_Font* font, const void* text,size_t byteLength, OH_Drawing_TextEncoding encoding, const OH_Drawing_Brush* brush, const OH_Drawing_Pen* pen,OH_Drawing_Rect* bounds, float* textWidth)
 ```
 
@@ -267,7 +269,7 @@ Obtains the width and bounding box of the text with a brush or pen.
 
 ### OH_Drawing_FontGetWidthsBounds()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetWidthsBounds(const OH_Drawing_Font* font, const uint16_t* glyphs, int count,const OH_Drawing_Brush* brush, const OH_Drawing_Pen* pen, float* widths, OH_Drawing_Array* bounds)
 ```
 
@@ -299,7 +301,7 @@ Obtains the width and bounding box of each glyph in a glyph array.
 
 ### OH_Drawing_FontGetPos()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetPos(const OH_Drawing_Font* font, const uint16_t* glyphs, int count,const OH_Drawing_Point* origin, OH_Drawing_Point2D* points)
 ```
 
@@ -329,7 +331,7 @@ Obtains the relative position of each glyph from the specified origin.
 
 ### OH_Drawing_FontGetSpacing()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetSpacing(const OH_Drawing_Font* font, float* spacing)
 ```
 
@@ -356,7 +358,7 @@ Obtains the recommended line spacing for a font.
 
 ### OH_Drawing_FontCreate()
 
-```
+```c
 OH_Drawing_Font* OH_Drawing_FontCreate(void)
 ```
 
@@ -376,7 +378,7 @@ Creates an **OH_Drawing_Font** object.
 
 ### OH_Drawing_FontSetBaselineSnap()
 
-```
+```c
 void OH_Drawing_FontSetBaselineSnap(OH_Drawing_Font* font, bool baselineSnap)
 ```
 
@@ -398,7 +400,7 @@ Sets whether to request that baselines be snapped to pixels when the current can
 
 ### OH_Drawing_FontIsBaselineSnap()
 
-```
+```c
 bool OH_Drawing_FontIsBaselineSnap(const OH_Drawing_Font* font)
 ```
 
@@ -425,7 +427,7 @@ Checks whether baselines are requested to be snapped to pixels when the current 
 
 ### OH_Drawing_FontSetSubpixel()
 
-```
+```c
 void OH_Drawing_FontSetSubpixel(OH_Drawing_Font* font, bool isSubpixel)
 ```
 
@@ -447,7 +449,7 @@ Sets whether to use sub-pixel rendering for a font.<br>This API may return an er
 
 ### OH_Drawing_FontIsSubpixel()
 
-```
+```c
 bool OH_Drawing_FontIsSubpixel(const OH_Drawing_Font* font)
 ```
 
@@ -474,7 +476,7 @@ Checks whether sub-pixel rendering is used for a font.<br>This API may return an
 
 ### OH_Drawing_FontSetForceAutoHinting()
 
-```
+```c
 void OH_Drawing_FontSetForceAutoHinting(OH_Drawing_Font* font, bool isForceAutoHinting)
 ```
 
@@ -496,7 +498,7 @@ Sets whether to forcibly use auto hinting, that is, whether to always hint glyph
 
 ### OH_Drawing_FontIsForceAutoHinting()
 
-```
+```c
 bool OH_Drawing_FontIsForceAutoHinting(const OH_Drawing_Font* font)
 ```
 
@@ -523,7 +525,7 @@ Checks whether auto hinting is forcibly used.<br>This API may return an error co
 
 ### OH_Drawing_FontSetTypeface()
 
-```
+```c
 void OH_Drawing_FontSetTypeface(OH_Drawing_Font* font, OH_Drawing_Typeface* typeface)
 ```
 
@@ -545,7 +547,7 @@ Sets a typeface for a font.<br>This API may return an error code. For details, c
 
 ### OH_Drawing_FontGetTypeface()
 
-```
+```c
 OH_Drawing_Typeface* OH_Drawing_FontGetTypeface(OH_Drawing_Font* font)
 ```
 
@@ -572,7 +574,7 @@ Obtains the typeface of a font.<br>This API may return an error code. For detail
 
 ### OH_Drawing_FontSetTextSize()
 
-```
+```c
 void OH_Drawing_FontSetTextSize(OH_Drawing_Font* font, float textSize)
 ```
 
@@ -594,7 +596,7 @@ Sets the text size for a font object.<br>This API may return an error code. For 
 
 ### OH_Drawing_FontGetTextSize()
 
-```
+```c
 float OH_Drawing_FontGetTextSize(const OH_Drawing_Font* font)
 ```
 
@@ -621,7 +623,7 @@ Obtains the text size of a font object.<br>This API may return an error code. Fo
 
 ### OH_Drawing_FontCountText()
 
-```
+```c
 int OH_Drawing_FontCountText(OH_Drawing_Font* font, const void* text, size_t byteLength,OH_Drawing_TextEncoding encoding)
 ```
 
@@ -651,7 +653,7 @@ Obtains the number of glyphs represented by text.<br>This API may return an erro
 
 ### OH_Drawing_FontTextToGlyphs()
 
-```
+```c
 uint32_t OH_Drawing_FontTextToGlyphs(const OH_Drawing_Font* font, const void* text, uint32_t byteLength,OH_Drawing_TextEncoding encoding, uint16_t* glyphs, int maxGlyphCount)
 ```
 
@@ -683,7 +685,7 @@ Converts text into glyph indices.<br>This API may return an error code. For deta
 
 ### OH_Drawing_FontGetWidths()
 
-```
+```c
 void OH_Drawing_FontGetWidths(const OH_Drawing_Font* font, const uint16_t* glyphs, int count, float* widths)
 ```
 
@@ -707,7 +709,7 @@ Obtains the width of each glyph in a string of text.<br>This API may return an e
 
 ### OH_Drawing_FontMeasureSingleCharacter()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontMeasureSingleCharacter(const OH_Drawing_Font* font, const char* str,float* textWidth)
 ```
 
@@ -736,7 +738,7 @@ Measures the width of a single character. If the typeface of the current font do
 
 ### OH_Drawing_FontMeasureText()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontMeasureText(const OH_Drawing_Font* font, const void* text, size_t byteLength,OH_Drawing_TextEncoding encoding, OH_Drawing_Rect* bounds, float* textWidth)
 ```
 
@@ -768,7 +770,7 @@ Obtains the text width and bounding box.
 
 ### OH_Drawing_FontSetLinearText()
 
-```
+```c
 void OH_Drawing_FontSetLinearText(OH_Drawing_Font* font, bool isLinearText)
 ```
 
@@ -790,7 +792,7 @@ Sets linear scaling for a font.<br>This API may return an error code. For detail
 
 ### OH_Drawing_FontIsLinearText()
 
-```
+```c
 bool OH_Drawing_FontIsLinearText(const OH_Drawing_Font* font)
 ```
 
@@ -817,7 +819,7 @@ Checks whether linear scaling is used for a font object.<br>This API may return 
 
 ### OH_Drawing_FontSetTextSkewX()
 
-```
+```c
 void OH_Drawing_FontSetTextSkewX(OH_Drawing_Font* font, float skewX)
 ```
 
@@ -839,7 +841,7 @@ Sets a horizontal skew factor for a font.<br>This API may return an error code. 
 
 ### OH_Drawing_FontGetTextSkewX()
 
-```
+```c
 float OH_Drawing_FontGetTextSkewX(const OH_Drawing_Font* font)
 ```
 
@@ -866,7 +868,7 @@ Obtains the horizontal skew factor of a font.<br>This API may return an error co
 
 ### OH_Drawing_FontSetFakeBoldText()
 
-```
+```c
 void OH_Drawing_FontSetFakeBoldText(OH_Drawing_Font* font, bool isFakeBoldText)
 ```
 
@@ -888,7 +890,7 @@ Sets fake bold for a font by increasing the stroke width.<br>This API may return
 
 ### OH_Drawing_FontIsFakeBoldText()
 
-```
+```c
 bool OH_Drawing_FontIsFakeBoldText(const OH_Drawing_Font* font)
 ```
 
@@ -915,7 +917,7 @@ Checks whether fake bold is used for a font.<br>This API may return an error cod
 
 ### OH_Drawing_FontSetScaleX()
 
-```
+```c
 void OH_Drawing_FontSetScaleX(OH_Drawing_Font* font, float scaleX)
 ```
 
@@ -937,7 +939,7 @@ Sets a horizontal scale factor for a font.<br>This API may return an error code.
 
 ### OH_Drawing_FontGetScaleX()
 
-```
+```c
 float OH_Drawing_FontGetScaleX(const OH_Drawing_Font* font)
 ```
 
@@ -964,7 +966,7 @@ Obtains the horizontal scale ratio of this font.<br>This API may return an error
 
 ### OH_Drawing_FontSetHinting()
 
-```
+```c
 void OH_Drawing_FontSetHinting(OH_Drawing_Font* font, OH_Drawing_FontHinting fontHinting)
 ```
 
@@ -986,7 +988,7 @@ Sets a font hinting effect.<br>This API may return an error code. For details, c
 
 ### OH_Drawing_FontGetHinting()
 
-```
+```c
 OH_Drawing_FontHinting OH_Drawing_FontGetHinting(const OH_Drawing_Font* font)
 ```
 
@@ -1013,7 +1015,7 @@ Obtains the font hinting effect.<br>This API may return an error code. For detai
 
 ### OH_Drawing_FontSetEmbeddedBitmaps()
 
-```
+```c
 void OH_Drawing_FontSetEmbeddedBitmaps(OH_Drawing_Font* font, bool isEmbeddedBitmaps)
 ```
 
@@ -1035,7 +1037,7 @@ Sets whether to use bitmaps in a font.<br>This API may return an error code. For
 
 ### OH_Drawing_FontIsEmbeddedBitmaps()
 
-```
+```c
 bool OH_Drawing_FontIsEmbeddedBitmaps(const OH_Drawing_Font* font)
 ```
 
@@ -1062,7 +1064,7 @@ Checks whether bitmaps are used in a font.<br>This API may return an error code.
 
 ### OH_Drawing_FontSetEdging()
 
-```
+```c
 void OH_Drawing_FontSetEdging(OH_Drawing_Font* font, OH_Drawing_FontEdging fontEdging)
 ```
 
@@ -1084,7 +1086,7 @@ Sets a font edging effect.<br>This API may return an error code. For details, ca
 
 ### OH_Drawing_FontGetEdging()
 
-```
+```c
 OH_Drawing_FontEdging OH_Drawing_FontGetEdging(const OH_Drawing_Font* font)
 ```
 
@@ -1111,7 +1113,7 @@ Obtains the font edging effect.<br>This API may return an error code. For detail
 
 ### OH_Drawing_FontDestroy()
 
-```
+```c
 void OH_Drawing_FontDestroy(OH_Drawing_Font* font)
 ```
 
@@ -1132,7 +1134,7 @@ Destroys an **OH_Drawing_Font** object and reclaims the memory occupied by the o
 
 ### OH_Drawing_FontGetMetrics()
 
-```
+```c
 float OH_Drawing_FontGetMetrics(OH_Drawing_Font* font, OH_Drawing_Font_Metrics* fontMetrics)
 ```
 
@@ -1160,7 +1162,7 @@ Obtains the measurement information about a font.<br>This API may return an erro
 
 ### OH_Drawing_FontGetBounds()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetBounds(const OH_Drawing_Font* font, const uint16_t* glyphs, uint32_t count,OH_Drawing_Array* bounds)
 ```
 
@@ -1190,7 +1192,7 @@ Obtains the rectangular bounding box for each glyph in the glyph array.
 
 ### OH_Drawing_FontGetPathForGlyph()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetPathForGlyph(const OH_Drawing_Font* font, uint16_t glyph,OH_Drawing_Path* path)
 ```
 
@@ -1219,7 +1221,7 @@ Obtains the path of a glyph.
 
 ### OH_Drawing_FontGetTextPath()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontGetTextPath(const OH_Drawing_Font* font, const void* text, size_t byteLength,OH_Drawing_TextEncoding encoding, float x, float y, OH_Drawing_Path* path)
 ```
 
@@ -1252,7 +1254,7 @@ Obtains the text outline path.
 
 ### OH_Drawing_FontSetThemeFontFollowed()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontSetThemeFontFollowed(OH_Drawing_Font* font, bool followed)
 ```
 
@@ -1280,7 +1282,7 @@ Sets whether to follow the theme font. When **followed** is set to **true**, the
 
 ### OH_Drawing_FontIsThemeFontFollowed()
 
-```
+```c
 OH_Drawing_ErrorCode OH_Drawing_FontIsThemeFontFollowed(const OH_Drawing_Font* font, bool* followed)
 ```
 

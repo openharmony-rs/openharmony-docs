@@ -74,8 +74,8 @@ function executeBatchOperation() {
         DAHelper.executeBatch(dataAbilityUri, operations).then((data) => {
             for (let i = 0; i < data.length; i++) {
                 let dataAbilityResult: ability.DataAbilityResult = data[i];
-                console.log(`dataAbilityResult.uri: ${dataAbilityResult.uri}`);
-                console.log(`dataAbilityResult.count: ${dataAbilityResult.count}`);
+                console.info(`dataAbilityResult.uri: ${dataAbilityResult.uri}`);
+                console.info(`dataAbilityResult.count: ${dataAbilityResult.count}`);
             }
         }).catch((err: BusinessError) => {
             console.error(`executeBatch error: ${JSON.stringify(err)}`);

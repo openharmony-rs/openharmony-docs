@@ -28,23 +28,23 @@ Define a callback function with the same name in the struct to handle the watche
 \'@BuilderParam\' property can only initialized by \'@Builder\' function or \'@LocalBuilder\' method in struct.
 
 **Description**<br>
-This error code is reported when @BuilderParam decorated variables are initialized using methods other than those decorated by @Builder.
+This error code is reported when @BuilderParam decorated variables are initialized using methods other than those decorated with @Builder.
 
 **Possible Cause**<br>
 The @BuilderParam decorated variable is being initialized using a regular function or variable of another type.
 
 **Solution**<br>
-Define functions decorated by @LocalBuilder or @Builder and use them to initialize variables decorated by @BuilderParam.
+Define functions decorated with @LocalBuilder or @Builder and use them to initialize variables decorated with @BuilderParam.
 
 ## 10905302 Mixed Use of Multiple State Management Decorators
 **Error Message**<br>
 The property \'xxx\' cannot have multiple state management decorators.
 
 **Description**<br>
-This error code is reported when a variable is decorated by multiple state management decorators.
+This error code is reported when a variable is decorated with multiple state management decorators.
 
 **Possible Cause**<br>
-The same variable is decorated by multiple state management decorators.
+The same variable is decorated with multiple state management decorators.
 
 **Solution**<br>
 Use only one appropriate state management decorator for the variable.
@@ -54,59 +54,59 @@ Use only one appropriate state management decorator for the variable.
 The \'xxx\' property \'yyy\' must be specified a default value.
 
 **Description**<br>
-This error code is reported when variables decorated by @State, @StorageLink, @StorageProp, @LocalStorageLink, @LocalStorageProp, or @Provide are not initialized.
+This error code is reported when variables decorated with @State, @StorageLink, @StorageProp, @LocalStorageLink, @LocalStorageProp, or @Provide are not initialized.
 
 **Possible Cause**<br>
-Variables decorated by @State, @StorageLink, @StorageProp, @LocalStorageLink, @LocalStorageProp, or @Provide are not initialized.
+Variables decorated with @State, @StorageLink, @StorageProp, @LocalStorageLink, @LocalStorageProp, or @Provide are not initialized.
 
 **Solution**<br>
-Initialize variables decorated by @State, @StorageLink, @StorageProp, @LocalStorageLink, @LocalStorageProp, and @Provide.
+Initialize variables decorated with @State, @StorageLink, @StorageProp, @LocalStorageLink, @LocalStorageProp, and @Provide.
 
 ## 10905304 Failed to Verify the Initialization of a Specific Decorated Variable
 **Error Message**<br>
 The \'xxx\' property cannot be specified a default value.
 
 **Description**<br>
-This error code is reported when initialization is performed on variables decorated by decorators such as @Consume, @Link, and @ObjectLink.
+This error code is reported when initialization is performed on variables decorated with decorators such as @Consume, @Link, and @ObjectLink.
 
 **Possible Cause**<br>
-Initialization is performed when defining variables decorated by decorators such as @Consume, @Link, and @ObjectLink.
+Initialization is performed when defining variables decorated with decorators such as @Consume, @Link, and @ObjectLink.
 
 **Solution**<br>
-Do not initialize variables decorated by @Consume, @Link, and @ObjectLink. Refer to the correct value assignment rules for decorators.
+Do not initialize variables decorated with @Consume, @Link, and @ObjectLink. Refer to the correct value assignment rules for decorators.
 
 ## 10905305 Variable Type Verification Exception
 **Error Message**<br>
 The property \'xxx\' must specify a type.
 
 **Description**<br>
-This error code is reported when the type is not specified for a variable decorated by a decorator.
+This error code is reported when the type is not specified for a variable decorated with a decorator.
 
 **Possible Cause**<br>
-The type is not specified for a variable decorated by a decorator.
+The type is not specified for a variable decorated with a decorator.
 
 **Solution**<br>
-Specify the type for the variable decorated by the decorator.
+Specify the type for the variable decorated with the decorator.
 
 ## 10905307 Failed to Verify the Specific Decorated Variable Type
 **Error Message**<br>
 \'@ObjectLink\' cannot be used with this type. Apply it only to classes decorated by \'@Observed\' or initialized using the return value of \'makeV1Observed\'.
 
 **Description**<br>
-This error code is reported when the type of a variable decorated by @ObjectLink is not a class or union type decorated by @Observed defined in an .ets file.
+This error code is reported when the type of a variable decorated with @ObjectLink is not a class or union type decorated with @Observed defined in an .ets file.
 
 **Possible Cause**<br>
-The variable decorated by @ObjectLink is initialized using a class that is not decorated by @Observed or another incompatible type.
+The variable decorated with @ObjectLink is initialized using a class that is not decorated with @Observed or another incompatible type.
 
 **Solution**<br>
-Ensure that class instances decorated by @Observed are used with @ObjectLink.
+Ensure that class instances decorated with @Observed are used with @ObjectLink.
 
 ## 10905308 Failed to Verify the Decorator of a Specific Variable Type
 **Error Message**<br>
 The \'xxx\' property \'yyy\' cannot be a \'zzz\' object.
 
 **Description**<br>
-This error code is reported when a variable decorated by @State or other state decorators is of type CustomDialogController.
+This error code is reported when a variable decorated with @State or other state decorators is of type CustomDialogController.
 
 **Possible Cause**<br>
 A state variable decorator is used on a variable of type CustomDialogController.
@@ -132,13 +132,13 @@ Rename the custom decorator to avoid conflicts with built-in property names.
 Regular variable \'xxx\' can not be decorated with \'@Watch\'. 
 
 **Description**<br>
-This error code is reported when a regular variable is decorated by @Watch.
+This error code is reported when a regular variable is decorated with @Watch.
 
 **Possible Cause**<br>
 The @Watch decorator is used on a regular variable.
 
 **Solution**<br>
-Use @Watch only on state variables decorated by appropriate state variable decorators, such as @State.
+Use @Watch only on state variables decorated with appropriate state variable decorators, such as @State.
 
 ## 10905311 @Watch Decorator Parameter Verification Error
 **Error Message**<br>
@@ -249,10 +249,10 @@ Add a valid condition to the **if** statement.
 In the trailing lambda case, \'xxx\' must have one and only one property decorated with \'@BuilderParam\', and its \'@BuilderParam\' expects no parameter.
 
 **Description**<br>
-This error code is reported when multiple variables decorated by @BuilderParam are defined in the trailing closure scenario, or a variable decorated by @BuilderParam contains parameters.
+This error code is reported when multiple variables decorated with @BuilderParam are defined in the trailing closure scenario, or a variable decorated with @BuilderParam contains parameters.
 
 **Possible Cause**<br>
-In the trailing closure scenario, there can be only one variable decorated by @BuilderParam (excluding parameters).
+In the trailing closure scenario, there can be only one variable decorated with @BuilderParam (excluding parameters).
 
 **Solution**<br>
 Remove unnecessary @BuilderParam decorators and retain only one @BuilderParam decorator without parameters.
@@ -301,13 +301,13 @@ Define only one **build()** method in the struct.
 The \'@CustomDialog\' decorated custom component must contain a property of the CustomDialogController type.
 
 **Description**<br>
-This error code is reported when a custom component decorated by @CustomDialog lacks a member property of the CustomDialogController type.
+This error code is reported when a custom component decorated with @CustomDialog lacks a member property of the CustomDialogController type.
 
 **Possible Cause**<br>
-The custom component decorated by @CustomDialog does not have a member property of the CustomDialogController type.
+The custom component decorated with @CustomDialog does not have a member property of the CustomDialogController type.
 
 **Solution**<br>
-Add a member property of the CustomDialogController type to the custom component decorated by @CustomDialog.
+Add a member property of the CustomDialogController type to the custom component decorated with @CustomDialog.
 
 ## 10905212 Struct Verification Error
 **Error Message**<br>
@@ -340,10 +340,10 @@ Remove the **static** keyword.
 \'@Styles\' decorated functions and methods cannot have arguments.
 
 **Description**<br>
-This error code is reported when parameters are included in functions decorated by @Styles.
+This error code is reported when parameters are included in functions decorated with @Styles.
 
 **Possible Cause**<br>
-Parameters are included in functions decorated by @Styles.
+Parameters are included in functions decorated with @Styles.
 
 **Solution**<br>
 Remove the parameters from the @Styles decorator.
@@ -379,10 +379,10 @@ Do not use built-in decorators to decorate static variables in structs.
 Property \'xxx\' cannot initialize using \'\$\' to create a reference to a variable.
 
 **Description**<br>
-This error code is reported when $ is used incorrectly to decorate a variable. $ can only be used on child component attributes decorated by @Link.
+This error code is reported when $ is used incorrectly to decorate a variable. $ can only be used on child component attributes decorated with @Link.
 
 **Possible Cause**<br>
-The \$ symbol is used to decorate a property member that is decorated by @Prop or other property members not decorated by @Link in a child component.
+The \$ symbol is used to decorate a property member that is decorated with @Prop or other property members not decorated with @Link in a child component.
 
 **Solution**<br>
 Use the @Link decorator to decorate the corresponding variable in the child component, or remove \$.
@@ -395,36 +395,36 @@ The \'xxx\' property \'yyy\' cannot be assigned to the \'zzz\' property \'nnn\'.
 This error code is reported when the value assignment between parent and child components is incorrect.
 
 **Possible Cause**<br>
-A regular variable is used to initialize a member variable decorated by @Link in a child component.
+A regular variable is used to initialize a member variable decorated with @Link in a child component.
 
 **Solution**<br>
-Do not use regular variables to initialize member variables decorated by @Link in child components.
+Do not use regular variables to initialize member variables decorated with @Link in child components.
 
 ## 10905316 @Link Decorator Variable Initialization Verification Exception
 **Error Message**<br>
 The property \'xxx\' in the custom component \'yyy\' is missing (mandatory to specify).
 
 **Description**<br>
-This error code is reported when variables decorated by @Link are not initialized from the parent component.
+This error code is reported when variables decorated with @Link are not initialized from the parent component.
 
 **Possible Cause**<br>
-The member variable decorated by @Link in the child component is not initialized when the parent component calls the child component.
+The member variable decorated with @Link in the child component is not initialized when the parent component calls the child component.
 
 **Solution**<br>
-Initialize variables decorated by @Link from the parent component.
+Initialize variables decorated with @Link from the parent component.
 
 ## 10905317 Failed to Verify the Initialization of a Decorated Variable
 **Error Message**<br>
 The property \'xxx\' in the custom component \'yyy\' cannot be initialized here (forbidden to specify).
 
 **Description**<br>
-This error code is reported when variables decorated by @StorageProp, @StorageLink, @Consume, or other decorators are initialized when a parent component calls a child component.
+This error code is reported when variables decorated with @StorageProp, @StorageLink, @Consume, or other decorators are initialized when a parent component calls a child component.
 
 **Possible Cause**<br>
-Member variables decorated by @StorageProp, @StorageLink, and @Consume are initialized when the parent component calls the child component.
+Member variables decorated with @StorageProp, @StorageLink, and @Consume are initialized when the parent component calls the child component.
 
 **Solution**<br>
-Correctly use variables decorated by the @StorageProp, @StorageLink, or @Consume decorator. For details, see the reference documentation of these decorators.
+Correctly use variables decorated with the @StorageProp, @StorageLink, or @Consume decorator. For details, see the reference documentation of these decorators.
 
 ## 10905318 Verification Error During Parent-to-Child Transfer Using !! with a V2 Component
 **Error Message**<br>
@@ -447,10 +447,10 @@ When the two-way binding syntax is used, the variable \'xxx\' must be decorated 
 This error code is reported when @Param is not used together with @Event when **!!** is used with a V2 component.
 
 **Possible Cause**<br>
-When a V2 component is used, the child component variable is not decorated by @Param or the @Event decorated callback method is not defined.
+When a V2 component is used, the child component variable is not decorated with @Param or the @Event decorated callback method is not defined.
 
 **Solution**<br>
-Use @Param to decorate child component variables and define the callback method decorated by @Event in the V2 scenario.
+Use @Param to decorate child component variables and define the callback method decorated with @Event in the V2 scenario.
 
 ## 10905320 @Param Initialization Verification Error in the V2 Scenario
 **Error Message**<br>
@@ -463,7 +463,7 @@ This error code is reported when optional symbols are used to transfer @Param de
 In the V2 scenario, an optional symbol is used for initializing an @Param decorated variable in the child component.
 
 **Solution**<br>
-Avoid using optional symbols when initializing variables decorated by @Param in the V2 scenario.
+Avoid using optional symbols when initializing variables decorated with @Param in the V2 scenario.
 
 ## 10905321 Failed to Verify the Initialization of @Prop and @BuilderParam Decorated Variables
 **Error Message**<br>
@@ -476,7 +476,7 @@ This error code is reported when the initialization of the @Prop and @BuilderPar
 The @Require decorator is used with @Prop and @BuilderParam to decorate child component variables, but these variables fail to be initialized when the parent component calls the child component.
 
 **Solution**<br>
-Make sure variables decorated by @Require, @Prop, or @BuilderParam are initialized when the parent component calls the child component.
+Make sure variables decorated with @Require, @Prop, or @BuilderParam are initialized when the parent component calls the child component.
 
 ## 10905213 Incorrect Mixed Use of V1 and V2 Components
 **Error Message**<br>
@@ -496,23 +496,23 @@ Avoid using V1 components with the @Link decorator in V2 components.
 Property \'xxx\' in the \'@ComponentV2\' component \'yyy\' is not allowed to be assigned values here.
 
 **Description**<br>
-This error code is reported when a property decorated by a V2 decorator is assigned to a V1 component.
+This error code is reported when a property decorated with a V2 decorator is assigned to a V1 component.
 
 **Possible Cause**<br>
-The V1 component called is assigned with a property decorated by a V2 decorator.
+The V1 component called is assigned with a property decorated with a V2 decorator.
 
 **Solution**<br>
-Do not assign values of properties decorated by V2 decorators to V1 components.
+Do not assign values of properties decorated with V2 decorators to V1 components.
 
 ## 10905324 Incorrect Initialization of a Specific Decorated Variable
 **Error Message**<br>
 The \'xxx\' property \'yyy\' in the custom component \'zzz\' cannot be initialized here (forbidden to specify).
 
 **Description**<br>
-This error code is reported when variables decorated by specific decorators are initialized during parent-child component calls.
+This error code is reported when variables decorated with specific decorators are initialized during parent-child component calls.
 
 **Possible Cause**<br>
-A variable decorated by a specific decorator in a child component is not correctly initialized when called in the parent component.
+A variable decorated with a specific decorator in a child component is not correctly initialized when called in the parent component.
 
 **Solution**<br>
 Follow the usage guidelines of the specific decorators.
@@ -538,7 +538,7 @@ When a variable decorated with \'@Once\', it must also be decorated with \'@Para
 This error code is reported when the @Once decorator is used without the @Param decorator in the V2 scenario.
 
 **Possible Cause**<br>
-The variable decorated by @Once is not decorated by @Param in the V2 scenario.
+The variable decorated with @Once is not decorated with @Param in the V2 scenario.
 
 **Solution**<br>
 Use @Once together with @Param.
@@ -548,26 +548,26 @@ Use @Once together with @Param.
 When a variable decorated with \'@Param\' is not assigned a default value, it must also be decorated with \'@Require\'. 
 
 **Description**<br>
-This error code is reported when a variable decorated by @Param in a V2 component is not assigned a default value and is not decorated by @Require.
+This error code is reported when a variable decorated with @Param in a V2 component is not assigned a default value and is not decorated with @Require.
 
 **Possible Cause**<br>
-In the V2 scenario, the @Param decorator is used to decorate variables that are not assigned default values or decorated by the @Require decorator.
+In the V2 scenario, the @Param decorator is used to decorate variables that are not assigned default values or decorated with the @Require decorator.
 
 **Solution**<br>
-Assign a default value to the variable decorated by @Param or decorate it with @Require.
+Assign a default value to the variable decorated with @Param or decorate it with @Require.
 
 ## 10905107 @BuilderParam Initialization Error
 **Error Message**<br>
 \'@BuilderParam\' property can only be initialized by \'@Builder\' function.
 
 **Description**<br>
-This error code is reported when @BuilderParam decorated variables are initialized using methods other than those decorated by @Builder.
+This error code is reported when @BuilderParam decorated variables are initialized using methods other than those decorated with @Builder.
 
 **Possible Cause**<br>
-Other types of variables or regular functions are used to initialize variables decorated by @BuilderParam.
+Other types of variables or regular functions are used to initialize variables decorated with @BuilderParam.
 
 **Solution**<br>
-Change the initial value of @BuilderParam to a function decorated by @Builder.
+Change the initial value of @BuilderParam to a function decorated with @Builder.
 
 ## 10905328 Failed to Verify the Member Type of a State Variable
 **Error Message**<br>
@@ -691,10 +691,10 @@ Change the parameter of **wrapBuilder** to an @Builder decorated method.
 \'@Styles\' decorated functions and methods cannot have arguments.
 
 **Description**<br>
-This error code is reported when the method decorated by the @Styles decorator contains parameters.
+This error code is reported when the method decorated with the @Styles decorator contains parameters.
 
 **Possible Cause**<br>
-The method decorated by the @Styles decorator contains parameters.
+The method decorated with the @Styles decorator contains parameters.
 
 **Solution**<br>
 Remove the parameters from the @Styles decorated method.
@@ -821,10 +821,10 @@ Use the correct decorator based on the error message.
 The \'xxx\' decorator can only be used in a \'struct\' decorated with \'@ComponentV2\'.
 
 **Description**<br>
-This error code is reported when a V2 member decorator is used in a struct not decorated by @ComponentV2.
+This error code is reported when a V2 member decorator is used in a struct not decorated with @ComponentV2.
 
 **Possible Cause**<br>
-The V2 member decorator is used in a struct decorated by @Component.
+The V2 member decorator is used in a struct decorated with @Component.
 
 **Solution**<br>
 Apply the V2 member decorator according to the instructions provided in the error message.
@@ -834,10 +834,10 @@ Apply the V2 member decorator according to the instructions provided in the erro
 The \'xxx\' decorator can only be used in a \'struct\' decorated with \'@Component\'.
 
 **Description**<br>
-This error code is reported when the member decorator of V1 is used in a struct not decorated by @Component.
+This error code is reported when the member decorator of V1 is used in a struct not decorated with @Component.
 
 **Possible Cause**<br>
-The V1 member decorator is used in a struct decorated by @ComponentV2.
+The V1 member decorator is used in a struct decorated with @ComponentV2.
 
 **Solution**<br>
 Apply the V1 member decorator according to the instructions provided in the error message.
@@ -853,7 +853,7 @@ This error code is reported when an @Observed decorated class inherits from an @
 An @Observed decorated class inherits from an @ObservedV2 decorated class.
 
 **Solution**<br>
-Inherit from a class decorated by @Observed or change the class decorator to @ObservedV2.
+Inherit from a class decorated with @Observed or change the class decorator to @ObservedV2.
 
 ## 10905225 An @ObservedV2 Decorated Class Cannot Inherit from an @Observed Decorated Class
 **Error Message**<br>
@@ -866,14 +866,14 @@ This error code is reported when an @ObservedV2 decorated class inherits from an
 An @ObservedV2 decorated class inherits from an @Observed decorated class.
 
 **Solution**<br>
-Inherit from a class decorated by @ObservedV2 or change the class decorator to @Observed.
+Inherit from a class decorated with @ObservedV2 or change the class decorator to @Observed.
 
 ## 10905226 Incorrect Mixed Use of @Observed and @ObservedV2
 **Error Message**<br>
 A class can not be decorated by \'@Observed\' and \'@ObservedV2\' at the same time.
 
 **Description**<br>
-This error code is reported when a class is decorated by both @Observed and @ObservedV2.
+This error code is reported when a class is decorated with both @Observed and @ObservedV2.
 
 **Possible Cause**<br>
 Both @Observed and @ObservedV2 are used to decorate the same class.
@@ -925,10 +925,10 @@ Remove the unsupported decorator.
 The \'xxx\' can decorate only member \'yyy\' within a \'class\' decorated with \'@ObservedV2\'.
 
 **Description**<br>
-This error code is reported when decorators designed to decorate member methods in an @ObservedV2 decorated class are used to decorate member methods in classes decorated by @Observed.
+This error code is reported when decorators designed to decorate member methods in an @ObservedV2 decorated class are used to decorate member methods in classes decorated with @Observed.
 
 **Possible Cause**<br>
-Decorators designed to decorate member methods in an @ObservedV2 decorated class are used to decorate member methods in classes decorated by @Observed.
+Decorators designed to decorate member methods in an @ObservedV2 decorated class are used to decorate member methods in classes decorated with @Observed.
 
 **Solution**<br>
 Use the decorator in question, such as @Monitor, only in @ObservedV2 decorated classes. In @Observed classes, use the @Watch decorator instead.
@@ -1000,7 +1000,7 @@ Use @Computed only to decorate getter methods.
 
 ## 10905117 Incorrect Mixed Use of Method Decorators
 **Error Message**<br>
-A function can only be decorated by one of the \'@AnimatedExtend\', \'@Builder\', \'@Extend\', \'@Styles\', \'@Concurrent\' and \'@Sendable\''.
+A function can only be decorated with one of the \'@AnimatedExtend\', \'@Builder\', \'@Extend\', \'@Styles\', \'@Concurrent\' and \'@Sendable\''.
 
 **Description**<br>
 This error code is reported when two different method decorators are defined on the same method.
@@ -1042,13 +1042,13 @@ Select a single appropriate built-in decorator to use.
 The type of the \'xxx\' property can not be a class decorated with \'@ObservedV2\'.
 
 **Description**<br>
-This error code is reported when a class decorated by @ObservedV2 is used as the type of a state variable.
+This error code is reported when a class decorated with @ObservedV2 is used as the type of a state variable.
 
 **Possible Cause**<br>
-A class decorated by @ObservedV2 is used as the type of a state variable.
+A class decorated with @ObservedV2 is used as the type of a state variable.
 
 **Solution**<br>
-Avoid using classes decorated by @ObservedV2 as the type for state variables.
+Avoid using classes decorated with @ObservedV2 as the type for state variables.
 
 ## 10905122 Incorrect Use of the @Concurrent Decorator
 **Error Message**<br> 
@@ -1107,7 +1107,7 @@ Rename the custom component to a name that is different from any built-in compon
 The struct \'xxx\' can not be decorated with \'@ComponentV2\' and \'@Component\', \'@Reusable\', \'@CustomDialog\' at the same time.
 
 **Description**<br>
-This error code is reported when a struct is decorated by multiple incompatible decorators such as @ComponentV2, @Component, @Reusable, and @CustomDialog.
+This error code is reported when a struct is decorated with multiple incompatible decorators such as @ComponentV2, @Component, @Reusable, and @CustomDialog.
 
 **Possible Cause**<br>
 Multiple decorators that are not compatible with each other are used on the same struct.
@@ -1120,13 +1120,13 @@ Avoid using incompatible decorators on the same struct. Use only one appropriate
 Decorator \'@Component\', \'@ComponentV2\', or \'@CustomDialog\' is missing for struct \'xxx\'.
 
 **Description**<br>
-TThis error code is reported when a child component is not decorated by @Component, @ComponentV2, or @CustomDialog.
+TThis error code is reported when a child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
 
 **Possible Cause**<br>
-The child component is not decorated with the required decorators.
+The child component is not decorated with @Component, @ComponentV2, or @CustomDialog.
 
 **Solution**<br>
-Make sure the child component is decorated by @Component, @ComponentV2, or @CustomDialog.
+Make sure the child component is decorated with @Component, @ComponentV2, or @CustomDialog.
 
 ## 10905402 Invalid Use of the @Entry Decorator
 **Error Message**<br>
@@ -1191,7 +1191,7 @@ This error code is reported when a child component is not decorated with @Compon
 The child component is not decorated with the required decorators.
 
 **Solution**<br>
-Make sure the child component is decorated by @Component, @ComponentV2, or @CustomDialog before calling it.
+Make sure the child component is decorated with @Component, @ComponentV2, or @CustomDialog before calling it.
 
 ## 10905125 Incorrect Use of Multiple Decorators on the Same Member Property or Method
 **Error Message**<br>
@@ -1250,13 +1250,13 @@ Change the name of the custom component to a valid component name that is differ
 Should not add return type to the function that is decorated by Styles.
 
 **Description**<br>
-This error code is reported when functions decorated by @Styles return function types.
+This error code is reported when functions decorated with @Styles return function types.
 
 **Possible Cause**<br>
-The return value of the function decorated by @Styles is of the function type.
+The return value of the function decorated with @Styles is of the function type.
 
 **Solution**<br>
-Do not declare the return value of a function decorated by @Styles as a function type.
+Do not declare the return value of a function decorated with @Styles as a function type.
 
 ## 10905238 Invalid Struct Declaration
 **Error Message**<br>
@@ -1276,13 +1276,13 @@ Name the struct correctly.
 Should not add return type to the function that is decorated by Extend.
 
 **Description**<br>
-This error code is reported when functions decorated by @Extend return function types.
+This error code is reported when functions decorated with @Extend return function types.
 
 **Possible Cause**<br>
-The return value of the function decorated by @Extend is of the function type.
+The return value of the function decorated with @Extend is of the function type.
 
 **Solution**<br>
-Do not declare the return value of a function decorated by @Extend as a function type.
+Do not declare the return value of a function decorated with @Extend as a function type.
 
 ## 10905129 Incorrect Mixed Use of @Computed and !!
 **Error Message**<br>
@@ -1341,78 +1341,78 @@ Do not use @Reusable and @ReusableV2 together. Choose one appropriate decorator.
 \'@ReusableV2\' is only applicable to custom components decorated by \'@ComponentV2\'.
 
 **Description**<br>
-This error code is reported when @ReusableV2 is used to decorate custom components that are not decorated by @ComponentV2.
+This error code is reported when @ReusableV2 is used to decorate custom components that are not decorated with @ComponentV2.
 
 **Possible Cause**<br>
-The @ReusableV2 decorator is used to decorate components that are not decorated by @ComponentV2.
+The @ReusableV2 decorator is used to decorate components that are not decorated with @ComponentV2.
 
 **Solution**<br>
-Use @ReusableV2 only with custom components decorated by @ComponentV2.
+Use @ReusableV2 only with custom components decorated with @ComponentV2.
 
 ## 10905244 Incorrect Use of @ReusableV2
 **Error Message**<br>
 A custom component decorated with \'@Component\' cannot contain child components decorated with \'@ReusableV2\'.
 
 **Description**<br>
-This error code is reported when components decorated by @Component contain child components decorated by @ReusableV2.
+This error code is reported when components decorated with @Component contain child components decorated with @ReusableV2.
 
 **Possible Cause**<br>
-A component decorated by @Component calls a child component decorated by @ReusableV2.
+A component decorated with @Component calls a child component decorated with @ReusableV2.
 
 **Solution**<br>
-Do not call components decorated by @ReusableV2 within components decorated by @Component.
+Do not call components decorated with @ReusableV2 within components decorated with @Component.
 
 ## 10905245 Incorrect Use of @ReusableV2
 **Error Message**<br>
 A custom component decorated with \'@Reusable\' cannot contain any child components decorated with \'@ReusableV2\'.
 
 **Description**<br>
-This error code is reported when components decorated by @Reusable contain child components decorated by @ReusableV2.
+This error code is reported when components decorated with @Reusable contain child components decorated with @ReusableV2.
 
 **Possible Cause**<br>
-A component decorated by @Reusable calls a child component decorated by @ReusableV2.
+A component decorated with @Reusable calls a child component decorated with @ReusableV2.
 
 **Solution**<br>
-Do not call components decorated by @ReusableV2 within components decorated by @Reusable.
+Do not call components decorated with @ReusableV2 within components decorated with @Reusable.
 
 ## 10905246 Incorrect Use of @Reusable
 **Error Message**<br>
 A custom component decorated with \'@ReusableV2\' cannot contain child components decorated with \'@Reusable\'.
 
 **Description**<br>
-This error code is reported when components decorated by @ReusableV2 contain child components decorated by @Reusable.
+This error code is reported when components decorated with @ReusableV2 contain child components decorated with @Reusable.
 
 **Possible Cause**<br>
-A component decorated by @ReusableV2 calls a child component decorated by @Reusable.
+A component decorated with @ReusableV2 calls a child component decorated with @Reusable.
 
 **Solution**<br>
-Do not call components decorated by @Reusable within components decorated by @ReusableV2.
+Do not call components decorated with @Reusable within components decorated with @ReusableV2.
 
 ## 10905359 Component Initialization Error
 **Error Message**<br>
 Property \'xxx\' must be initialized through the component constructor.
 
 **Description**<br>
-This error code is reported when the variable decorated by @Require is not initialized during parent component construction.
+This error code is reported when the variable decorated with @Require is not initialized during parent component construction.
 
 **Possible Cause**<br>
-The variable decorated by @Require is not initialized during parent component construction.
+The variable decorated with @Require is not initialized during parent component construction.
 
 **Solution**<br>
-Initialize variables decorated by @Require when constructing the parent component.
+Initialize variables decorated with @Require when constructing the parent component.
 
 ## 10905247 Incorrect Use of @ReusableV2
 **Error Message**<br>
 The template attribute of the Repeat component cannot contain any custom component decorated with \'@ReusableV2\'.
 
 **Description**<br>
-This error code is reported when **Repeat.template** contains custom components decorated by @ReusableV2.
+This error code is reported when **Repeat.template** contains custom components decorated with @ReusableV2.
 
 **Possible Cause**<br>
-The **template** property of **Repeat** contains a custom component decorated by @ReusableV2.
+The **template** property of **Repeat** contains a custom component decorated with @ReusableV2.
 
 **Solution**<br>
-Remove the component decorated by @ReusableV2 from the template property.
+Remove the component decorated with @ReusableV2 from the template property.
 
 ## 10905248 Incorrect Use of the reuse Attribute
 **Error Message**<br>
@@ -1422,20 +1422,20 @@ The reuse attribute is only applicable to custom components decorated with both 
 This error code is reported when the **reuse** attribute is incorrectly applied to components that are not properly decorated for reuse functionality.
 
 **Possible Cause**<br>
-The **reuse** attribute is not used with custom components that are decorated by both @ComponentV2 and @ReusableV2.
+The **reuse** attribute is not used with custom components that are decorated with both @ComponentV2 and @ReusableV2.
 
 **Solution**<br>
-Use the **reuse** attribute only for custom components decorated by both @ComponentV2 and @ReusableV2.
+Use the **reuse** attribute only for custom components decorated with both @ComponentV2 and @ReusableV2.
 
 ## 10905249 Incorrect Use of the reuseId Attribute
 **Error Message**<br>
 The reuseId attribute is not applicable to custom components decorated with both \'@ComponentV2\' and \'@ReusableV2\'.
 
 **Description**<br>
-This error code is reported when **reuseId** is used for custom components decorated by @ComponentV2 and @ReusableV2.
+This error code is reported when **reuseId** is used for custom components decorated with @ComponentV2 and @ReusableV2.
 
 **Possible Cause**<br>
-**reuseId** is used for custom components decorated by @ComponentV2 and @ReusableV2.
+**reuseId** is used for custom components decorated with @ComponentV2 and @ReusableV2.
 
 **Solution**<br>
 Use the **reuseId** attribute in the correct scenario.

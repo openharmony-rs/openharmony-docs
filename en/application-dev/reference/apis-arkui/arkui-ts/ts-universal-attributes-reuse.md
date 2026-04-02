@@ -9,7 +9,7 @@
 
 The **reuse** attribute is used to specify reuse options for custom components decorated with @ReusableV2.
 
-This document is solely for API reference. For details about the usage guidelines and constraints, see [@ReusableV2 Decorator: Reusing Components](../../../ui/state-management/arkts-new-reusableV2.md).
+This document is solely for API reference. For details about the usage guidelines and constraints, see [@ReusableV2 Decorator: Reusing V2 Components](../../../ui/state-management/arkts-new-reusableV2.md).
 
 >  **NOTE**
 >

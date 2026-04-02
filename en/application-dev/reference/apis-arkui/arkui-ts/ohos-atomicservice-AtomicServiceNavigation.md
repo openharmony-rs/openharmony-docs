@@ -22,7 +22,9 @@ import { AtomicServiceNavigation } from '@kit.ArkUI';
 ## Child Components
 
 Supported
+
 Since API version 10, you are advised to use [NavPathStack](ts-basic-components-navigation.md#navpathstack10) for page routing.
+
 ## AtomicServiceNavigation
 
 ``` ts

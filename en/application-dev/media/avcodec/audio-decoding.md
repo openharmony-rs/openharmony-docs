@@ -32,7 +32,7 @@ Read the [API reference](../../reference/apis-avcodec-kit/capi-native-avcodec-au
 
 Refer to the code snippet below to complete the entire audio decoding process, including creating a decoder, setting decoding parameters (such as the sample rate, bit rate, and audio channel count), and starting, refreshing, resetting, and destroying the decoder.
 
-During application development, you must call the APIs in the defined sequence. Otherwise, an exception or undefined behavior may occur.
+During application development, you must call the APIs in the defined sequence. Otherwise, the system may throw exceptions or exhibit other undefined behaviors.  
 
 The figure below shows the call relationship of audio decoding.
 
@@ -193,6 +193,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
 
     For details about DRM APIs, see [DRM](../../reference/apis-drm-kit/capi-drm.md).
 
+     
+
     Add the header files.
 
     ```c++
@@ -301,7 +303,6 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     ```c++
     #include <fstream>
     ```
-
    The sample code is as follows:
     ```c++
     ifstream inputFile_;
@@ -524,3 +525,8 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
     }
     ```
 
+## Samples
+
+The following sample is provided to help you better understand how to develop audio decoding:
+
+- [Audio Decoding](https://gitcode.com/openharmony/multimedia_av_codec/blob/master/test/nativedemo/audio_demo/avcodec_audio_avbuffer_decoder_demo.cpp)

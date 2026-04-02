@@ -1,7 +1,7 @@
 # 动态属性设置
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -136,7 +136,15 @@ applySelectedAttribute?(instance: T): void
 
 **instance参数支持范围：**
 
-[AlphabetIndexerAttribute](ts-container-alphabet-indexer.md#属性)、[BadgeAttribute](ts-container-badge.md#属性)、[BlankAttribute](ts-basic-components-blank.md#属性)、[ButtonAttribute](ts-basic-components-button.md#属性)、[CalendarPickerAttribute](ts-basic-components-calendarpicker.md#属性)、[CanvasAttribute](ts-components-canvas-canvas.md#属性)、[CheckboxAttribute](ts-basic-components-checkbox.md#属性)、[CheckboxGroupAttribute](ts-basic-components-checkboxgroup.md#属性)、[CircleAttribute](ts-drawing-components-circle.md#属性)、[ColumnAttribute](ts-container-column.md#属性)、[ColumnSplitAttribute](ts-container-columnsplit.md#属性)、[ShapeAttribute](ts-drawing-components-shape.md#属性)、[CommonAttribute](ts-component-general-attributes.md)、[CounterAttribute](ts-container-counter.md#属性)、[DataPanelAttribute](ts-basic-components-datapanel.md#属性)、[DatePickerAttribute](ts-basic-components-datepicker.md#属性)、[DividerAttribute](ts-basic-components-divider.md#属性)、[EllipseAttribute](ts-drawing-components-ellipse.md#属性)、[FlexAttribute](ts-container-flex.md#属性)、[FlowItemAttribute](ts-container-flowitem.md#属性)、[FormLinkAttribute](ts-container-formlink.md#属性)、[GaugeAttribute](ts-basic-components-gauge.md#属性)、[GridAttribute](ts-container-grid.md#属性)、[GridColAttribute](ts-container-gridcol.md#属性)、[ColumnAttribute](ts-container-column.md#属性)、[GridItemAttribute](ts-container-griditem.md#属性)、[GridRowAttribute](ts-container-gridrow.md#属性)、[HyperlinkAttribute](ts-container-hyperlink.md#属性)、[IndicatorComponentAttribute](ts-swiper-components-indicator.md#属性)、[ImageAttribute](ts-basic-components-image.md#属性)、[ImageAnimatorAttribute](ts-basic-components-imageanimator.md#属性)、[ImageSpanAttribute](ts-basic-components-imagespan.md#属性)、[LineAttribute](ts-drawing-components-line.md#属性)、LinearIndicatorAttribute、[ListAttribute](ts-container-list.md#属性)、[ListItemAttribute](ts-container-listitem.md#属性)、[ListItemGroupAttribute](ts-container-listitemgroup.md#属性)、[LoadingProgressAttribute](ts-basic-components-loadingprogress.md#属性)、[MarqueeAttribute](ts-basic-components-marquee.md#属性)、[MenuAttribute](ts-basic-components-menu.md#属性)、[MenuItemAttribute](ts-basic-components-menuitem.md#属性)、MenuItemGroupAttribute、[NavDestinationAttribute](ts-basic-components-navdestination.md#属性)、[NavigationAttribute](ts-basic-components-navigation.md#属性)、[NavigatorAttribute](ts-container-navigator.md#属性)、[NavRouterAttribute](ts-basic-components-navrouter.md#属性)、[PanelAttribute](ts-container-panel.md#属性)、[PathAttribute](ts-drawing-components-path.md#属性)、[PatternLockAttribute](ts-basic-components-patternlock.md#属性)、[PolygonAttribute](ts-drawing-components-polygon.md#属性)、[PolylineAttribute](ts-drawing-components-polyline.md#属性)、[ProgressAttribute](ts-basic-components-progress.md#属性)、[QRCodeAttribute](ts-basic-components-qrcode.md#属性)、[RadioAttribute](ts-basic-components-radio.md#属性)、[RatingAttribute](ts-basic-components-rating.md#属性)、[RectAttribute](ts-drawing-components-rect.md#属性)、[RefreshAttribute](ts-container-refresh.md#属性)、[RelativeContainerAttribute](ts-container-relativecontainer.md#属性)、[RichEditorAttribute](ts-basic-components-richeditor.md#属性)、[RichTextAttribute](ts-basic-components-richtext.md#属性)、[RowAttribute](ts-container-row.md#属性)、[RowSplitAttribute](ts-container-rowsplit.md#属性)、[ScrollAttribute](ts-container-scroll.md#属性)、[ScrollBarAttribute](ts-basic-components-scrollbar.md#属性)、[SearchAttribute](ts-basic-components-search.md#属性)、[SelectAttribute](ts-basic-components-select.md#属性)、[ShapeAttribute](ts-drawing-components-shape.md#属性)、[SideBarContainerAttribute](ts-container-sidebarcontainer.md#属性)、[SliderAttribute](ts-basic-components-slider.md#属性)、[SpanAttribute](ts-basic-components-span.md#属性)、[StackAttribute](ts-container-stack.md#属性)、[StepperAttribute](ts-basic-components-stepper.md#属性)、[StepperItemAttribute](ts-basic-components-stepperitem.md#属性)、[SwiperAttribute](ts-container-swiper.md#属性)、[SymbolGlyphAttribute](ts-basic-components-symbolGlyph.md#属性)、[TabContentAttribute](ts-container-tabcontent.md#属性)、[TabsAttribute](ts-container-tabs.md#属性)、[TextAttribute](ts-basic-components-text.md#属性)、[TextAreaAttribute](ts-basic-components-textarea.md#属性)、[TextClockAttribute](ts-basic-components-textclock.md#属性)、[TextInputAttribute](ts-basic-components-textinput.md#属性)、[TextPickerAttribute](ts-basic-components-textpicker.md#属性)、[TextTimerAttribute](ts-basic-components-texttimer.md#属性)、[TimePickerAttribute](ts-basic-components-timepicker.md#属性)、[ToggleAttribute](ts-basic-components-toggle.md#属性)、[VideoAttribute](ts-media-components-video.md#属性)、[WaterFlowAttribute](ts-container-waterflow.md#属性)、[XComponentAttribute](ts-basic-components-xcomponent.md#属性)、[ParticleAttribute](ts-particle-animation.md#属性)、[UIPickerComponentAttribute](ts-container-ui-picker-component.md#属性)<!--Del-->、[EffectComponentAttribute](ts-container-effectcomponent-sys.md#属性)、[FormComponentAttribute](ts-basic-components-formcomponent-sys.md#属性)、[PluginComponentAttribute](ts-basic-components-plugincomponent-sys.md#属性)、[RemoteWindowAttribute](ts-basic-components-remotewindow-sys.md#属性)、[UIExtensionComponentAttribute](../js-apis-arkui-uiExtension.md#属性)<!--DelEnd-->。
+[AlphabetIndexerAttribute](ts-container-alphabet-indexer.md#属性)、[BadgeAttribute](ts-container-badge.md#属性)、[BlankAttribute](ts-basic-components-blank.md#属性)、[ButtonAttribute](ts-basic-components-button.md#属性)、[CalendarPickerAttribute](ts-basic-components-calendarpicker.md#属性)、[CanvasAttribute](ts-components-canvas-canvas.md#属性)、[CheckboxAttribute](ts-basic-components-checkbox.md#属性)、[CheckboxGroupAttribute](ts-basic-components-checkboxgroup.md#属性)、[CircleAttribute](ts-drawing-components-circle.md#属性)、[ColumnAttribute](ts-container-column.md#属性)、[ColumnSplitAttribute](ts-container-columnsplit.md#属性)、[CommonAttribute](ts-component-general-attributes.md)、[CounterAttribute](ts-container-counter.md#属性)、[DataPanelAttribute](ts-basic-components-datapanel.md#属性)、[DatePickerAttribute](ts-basic-components-datepicker.md#属性)、[DividerAttribute](ts-basic-components-divider.md#属性)、[EllipseAttribute](ts-drawing-components-ellipse.md#属性)、[FlexAttribute](ts-container-flex.md#属性)、[FlowItemAttribute](ts-container-flowitem.md#属性)、[FormLinkAttribute](ts-container-formlink.md#属性)、[GaugeAttribute](ts-basic-components-gauge.md#属性)、[GridAttribute](ts-container-grid.md#属性)、[GridColAttribute](ts-container-gridcol.md#属性)、[GridItemAttribute](ts-container-griditem.md#属性)、[GridRowAttribute](ts-container-gridrow.md#属性)、[HyperlinkAttribute](ts-container-hyperlink.md#属性)、[IndicatorComponentAttribute](ts-swiper-components-indicator.md#属性)、[ImageAttribute](ts-basic-components-image.md#属性)、[ImageAnimatorAttribute](ts-basic-components-imageanimator.md#属性)、[ImageSpanAttribute](ts-basic-components-imagespan.md#属性)、[ContainerSpanAttribute](ts-basic-components-containerspan.md#属性)、[LineAttribute](ts-drawing-components-line.md#属性)、[ListAttribute](ts-container-list.md#属性)、[ListItemAttribute](ts-container-listitem.md#属性)、[ListItemGroupAttribute](ts-container-listitemgroup.md#属性)、[LoadingProgressAttribute](ts-basic-components-loadingprogress.md#属性)、[MarqueeAttribute](ts-basic-components-marquee.md#属性)、[MenuAttribute](ts-basic-components-menu.md#属性)、[MenuItemAttribute](ts-basic-components-menuitem.md#属性)、[MenuItemGroupAttribute](ts-basic-components-menuitemgroup.md)、[NavDestinationAttribute](ts-basic-components-navdestination.md#属性)、[NavigationAttribute](ts-basic-components-navigation.md#属性)、[NavigatorAttribute](ts-container-navigator.md#属性)、[NavRouterAttribute](ts-basic-components-navrouter.md#属性)、[PanelAttribute](ts-container-panel.md#属性)、[PathAttribute](ts-drawing-components-path.md#属性)、[PatternLockAttribute](ts-basic-components-patternlock.md#属性)、[PolygonAttribute](ts-drawing-components-polygon.md#属性)、[PolylineAttribute](ts-drawing-components-polyline.md#属性)、[ProgressAttribute](ts-basic-components-progress.md#属性)、[QRCodeAttribute](ts-basic-components-qrcode.md#属性)、[RadioAttribute](ts-basic-components-radio.md#属性)、[RatingAttribute](ts-basic-components-rating.md#属性)、[RectAttribute](ts-drawing-components-rect.md#属性)、[RefreshAttribute](ts-container-refresh.md#属性)、[RelativeContainerAttribute](ts-container-relativecontainer.md#属性)、[RichEditorAttribute](ts-basic-components-richeditor.md#属性)、[RichTextAttribute](ts-basic-components-richtext.md#属性)、[RowAttribute](ts-container-row.md#属性)、[RowSplitAttribute](ts-container-rowsplit.md#属性)、[ScrollAttribute](ts-container-scroll.md#属性)、[ScrollBarAttribute](ts-basic-components-scrollbar.md#属性)、[SearchAttribute](ts-basic-components-search.md#属性)、[SelectAttribute](ts-basic-components-select.md#属性)、[ShapeAttribute](ts-drawing-components-shape.md#属性)、[SideBarContainerAttribute](ts-container-sidebarcontainer.md#属性)、[SliderAttribute](ts-basic-components-slider.md#属性)、[SpanAttribute](ts-basic-components-span.md#属性)、[SymbolSpanAttribute](ts-basic-components-symbolSpan.md#属性)、[StackAttribute](ts-container-stack.md#属性)、[StepperAttribute](ts-basic-components-stepper.md#属性)、[StepperItemAttribute](ts-basic-components-stepperitem.md#属性)、[SwiperAttribute](ts-container-swiper.md#属性)、[SymbolGlyphAttribute](ts-basic-components-symbolGlyph.md#属性)、[TabContentAttribute](ts-container-tabcontent.md#属性)、[TabsAttribute](ts-container-tabs.md#属性)、[TextAttribute](ts-basic-components-text.md#属性)、[TextAreaAttribute](ts-basic-components-textarea.md#属性)、[TextClockAttribute](ts-basic-components-textclock.md#属性)、[TextInputAttribute](ts-basic-components-textinput.md#属性)、[TextPickerAttribute](ts-basic-components-textpicker.md#属性)、[TextTimerAttribute](ts-basic-components-texttimer.md#属性)、[TimePickerAttribute](ts-basic-components-timepicker.md#属性)、[ToggleAttribute](ts-basic-components-toggle.md#属性)、[VideoAttribute](ts-media-components-video.md#属性)、[WaterFlowAttribute](ts-container-waterflow.md#属性)、[XComponentAttribute](ts-basic-components-xcomponent.md#属性)、[ParticleAttribute](ts-particle-animation.md#属性)、[UIPickerComponentAttribute](ts-container-ui-picker-component.md#属性)<sup>22+</sup><!--Del-->、[EffectComponentAttribute](ts-container-effectcomponent-sys.md#属性)、[FormComponentAttribute](ts-basic-components-formcomponent-sys.md#属性)、[PluginComponentAttribute](ts-basic-components-plugincomponent-sys.md#属性)、[RemoteWindowAttribute](ts-basic-components-remotewindow-sys.md#属性)、[UIExtensionComponentAttribute](../js-apis-arkui-uiExtension.md#属性)<!--DelEnd-->。
+
+> **说明：**
+>
+> - StepperAttribute从API version 22开始废弃，建议使用SwiperAttribute替代。
+> - StepperItemAttribute从API version 22开始废弃，建议使用SwiperAttribute替代。
+> - NavigatorAttribute从API version 20开始废弃，建议使用NavigationAttribute替代。
+> - NavRouterAttribute从API version 20开始废弃，建议使用NavigationAttribute替代。
+> - PanelAttribute从API version 20开始废弃，推荐使用通用属性bindSheet。
 
 **属性支持范围：**
 
@@ -151,15 +159,117 @@ applySelectedAttribute?(instance: T): void
 
 不支持或者未实现的属性在使用时会抛出"Method not implemented."、"is not callable"、"Builder is not supported."等异常信息。具体Modifier支持范围可参考[属性或事件对attributemodifier的支持情况](../../../ui/arkts-user-defined-extension-attributeModifier.md#属性或事件对attributemodifier的支持情况)。
 
+## ModifierUtils
+
+ModifierUtils提供用于属性修改器和属性操作的工具方法。
+
+### isInstanceOf\<T\>
+
+isInstanceOf\<T\>(instance: T, componentName: string): boolean
+
+检查给定的实例是否为指定组件类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名       | 类型                        | 必填 | 说明                                                         |
+| ------------ | --------------------------- | ---- | ------------------------------------------------------------ |
+| instance     | T  | 是   | 要检查的实例，T为继承自[CommonMethod](./ts-component-general-attributes.md)的组件类型。               |
+| componentName | string                      | 是   | 要检查的组件类型名称。                                        |
+
+**返回值：**
+
+| 类型    | 说明                                                         |
+| ------- | ------------------------------------------------------------ |
+| boolean | 返回该实例是否为指定的组件类型，如果实例是指定的组件类型，则返回true；否则返回false。 |
+
+**示例：**  
+
+```ts
+// xxx.ets
+// 点击按钮，并检查日志，判断组件是否进入了自己的独有分支
+import { ModifierUtils } from '@kit.ArkUI';
+
+class MyModifier implements AttributeModifier<TextAttribute | ButtonAttribute> {
+  isDark: boolean = false
+
+  constructor(dark?: boolean) {
+    this.isDark = dark ?? false;
+  }
+
+  applyNormalAttribute(instance: TextAttribute | ButtonAttribute): void {
+    if (ModifierUtils.isInstanceOf(instance, 'Text')) {
+      console.info('This is TextAttribute')
+      const textInstance = instance as TextAttribute
+      if (this.isDark) {
+        textInstance.backgroundColor(Color.Blue)
+      } else {
+        textInstance.backgroundColor(Color.Green)
+      }
+    } else if (ModifierUtils.isInstanceOf(instance, 'Button')) {
+      console.info('This is ButtonAttribute')
+      const buttonInstance = instance as ButtonAttribute
+      if (this.isDark) {
+        buttonInstance.type(ButtonType.Circle)
+        buttonInstance.backgroundColor(Color.Blue)
+      } else {
+        buttonInstance.type(ButtonType.Normal)
+        buttonInstance.backgroundColor(Color.Green)
+      }
+    }
+  }
+}
+
+@Entry
+@Component
+struct MultiComponentAttributeDemo {
+  @State myModifier: MyModifier = new MyModifier();
+
+  build() {
+    Column() {
+      Text('Text')
+        .fontSize(50)
+        .attributeModifier(this.myModifier)
+        .onClick(() => {
+          this.myModifier.isDark = !this.myModifier.isDark;
+        })
+      Button('Button')
+        .attributeModifier(this.myModifier)
+        .onClick(() => {
+          this.myModifier.isDark = !this.myModifier.isDark;
+        })
+    }
+    .justifyContent(FlexAlign.SpaceEvenly)
+    .width('100%')
+    .height('50%')
+  }
+}
+```
+
 ## 自定义Modifier
 
 从API version 12开始，开发者可使用自定义Modifier构建组件并配置属性，通过此自定义的Modifier可调用所封装组件的属性和样式接口。
 
 **自定义Modifier支持范围：**  
 
-CommonModifier、ColumnModifier、ColumnSplitModifier、RowModifier、RowSplitModifier、SideBarContainerModifier、BlankModifier、DividerModifier、GridColModifier、GridRowModifier、NavDestinationModifier、NavigatorModifier、StackModifier、NavigationModifier、NavRouterModifier、StepperItemModifier、TabsModifier、GridModifier、GridItemModifier、ListModifier、ListItemModifier、ListItemGroupModifier、ScrollModifier、SwiperModifier、WaterFlowModifier、ButtonModifier、CounterModifier、TextPickerModifier、TimePickerModifier、ToggleModifier、CalendarPickerModifier、CheckboxModifier、CheckboxGroupModifier、DatePickerModifier、RadioModifier、RatingModifier、SelectModifier、SliderModifier、PatternLockModifier、SpanModifier、RichEditorModifier、RefreshModifier、SearchModifier、TextAreaModifier、TextModifier、TextInputModifier、ImageSpanModifier、ImageAnimatorModifier、ImageModifier、VideoModifier、DataPanelModifier、GaugeModifier、LoadingProgressModifier、MarqueeModifier、ProgressModifier、QRCodeModifier、TextClockModifier、TextTimerModifier、LineModifier、PathModifier、PolygonModifier、PolylineModifier、RectModifier、ShapeModifier、AlphabetIndexerModifier、FormComponentModifier、HyperlinkModifier、MenuModifier、MenuItemModifier、PanelModifier、SymbolGlyphModifier、ParticleModifier、UIPickerComponentModifier。 
+CommonModifier、ColumnModifier、ColumnSplitModifier、RowModifier、RowSplitModifier、SideBarContainerModifier、BlankModifier、DividerModifier、GridColModifier、GridRowModifier、NavDestinationModifier、NavigatorModifier、StackModifier、NavigationModifier、NavRouterModifier、StepperItemModifier、StepperModifier<sup>20+</sup>、TabsModifier、GridModifier、GridItemModifier、ListModifier、ListItemModifier、ListItemGroupModifier、ScrollModifier、SwiperModifier、WaterFlowModifier、ButtonModifier、CounterModifier、TextPickerModifier、TimePickerModifier、ToggleModifier、CalendarPickerModifier、CheckboxModifier、CheckboxGroupModifier、DatePickerModifier、RadioModifier、RatingModifier、SelectModifier、SliderModifier、PatternLockModifier、SpanModifier、SymbolSpanModifier、ContainerSpanModifier、RichEditorModifier、RefreshModifier、SearchModifier、TextAreaModifier、TextModifier、TextInputModifier、ImageSpanModifier、ImageAnimatorModifier、ImageModifier、VideoModifier、DataPanelModifier、GaugeModifier、LoadingProgressModifier、MarqueeModifier、ProgressModifier、QRCodeModifier、TextClockModifier、TextTimerModifier、LineModifier、PathModifier、PolygonModifier、PolylineModifier、RectModifier、ShapeModifier、AlphabetIndexerModifier、FormComponentModifier、HyperlinkModifier、MenuModifier、MenuItemModifier、PanelModifier、SymbolGlyphModifier、ParticleModifier、UIPickerComponentModifier<sup>22+</sup>。 
  
 未暴露的组件Modifier可以使用CommonModifier。
+
+> **说明：**
+>
+> - StepperModifier从API version 22开始废弃，建议使用SwiperModifier替代。
+> - StepperItemModifier从API version 22开始废弃，建议使用SwiperModifier替代。
+> - NavigatorModifier从API version 20开始废弃，建议使用NavigationModifier替代。
+> - NavRouterModifier从API version 20开始废弃，建议使用NavigationModifier替代。
+> - PanelModifier从API version 20开始废弃，推荐使用通用属性bindSheet。
 
 **注意事项**
 
@@ -216,7 +326,7 @@ struct attributeDemo {
 
 ### 示例2（组件绑定Modifier实现按压态效果）
 
-该示例通过Button绑定Modifier实现了按压态的效果。如果配合状态管理V2使用，详情见：[Modifier与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#modifier)。
+该示例通过Button绑定Modifier实现了按压态的效果。如果配合状态管理V2使用，详情见：[Modifier与makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#modifier)。
 
 ```ts
 // xxx.ets
@@ -258,7 +368,8 @@ struct attributePressedDemo {
 ```ts
 import { CommonModifier } from "@kit.ArkUI";
 
-const TEST_TAG : string = "AttributeModifier";
+const TEST_TAG: string = "AttributeModifier";
+
 // 设置通用组件属性的自定义AttributeModifier
 class MyModifier extends CommonModifier {
   applyNormalAttribute(instance: CommonAttribute): void {
@@ -303,6 +414,7 @@ struct Index {
     .width('100%')
   }
 }
+
 ```
 
 ![attributeModifier2](figures/attributeModifier2.gif)
@@ -466,6 +578,7 @@ class MyRadioModifier implements AttributeModifier<RadioAttribute> {
   applyNormalAttribute(instance: RadioAttribute): void {
     instance.backgroundColor(Color.Blue);
   }
+
   applySelectedAttribute(instance: RadioAttribute): void {
     instance.backgroundColor(Color.Red);
     instance.borderWidth(2);
@@ -522,7 +635,7 @@ class CustomModifier implements AttributeModifier<CommonAttribute> {
 @Entry
 @Component
 struct attributePressedDemo {
-  @State  modifier: CustomModifier = new CustomModifier()
+  @State modifier: CustomModifier = new CustomModifier()
 
   build() {
     Row() {
@@ -540,7 +653,10 @@ struct attributePressedDemo {
 @Component
 struct ChildComponent {
   build() {
-    Text("common").fontColor(Color.White).fontSize(28).textAlign(TextAlign.Center)
+    Text("common")
+      .fontColor(Color.White)
+      .fontSize(28)
+      .textAlign(TextAlign.Center)
       .width('35%')
       .height('10%')
   }

@@ -5,7 +5,7 @@
 <!--Owner: @mzyan-->
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## 通用
 

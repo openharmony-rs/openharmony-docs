@@ -18,9 +18,9 @@
   - 模块<!--driver-development-module-->
     - [BaseDdk](capi-baseddk.md)
     - [HidDdk](capi-hidddk.md)
-    - [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
-    - [UsbDDK](capi-usbddk.md)
-    - [SerialDdk](capi-serialddk.md)
+    - [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
+    - [UsbDdk](capi-usbddk.md)
+    - [USBSerialDDK](capi-serialddk.md)
   - 头文件<!--driver-development-headerfile-->
     - [ddk_api.h](capi-ddk-api-h.md)
     - [ddk_types.h](capi-ddk-types-h.md)
@@ -69,6 +69,7 @@
     - [UsbRequestPipe](capi-usbddk-usbrequestpipe.md)
     - [UsbDeviceMemMap](capi-usbddk-usbdevicememmap.md)
     - [Usb_DeviceArray](capi-usbddk-usb-devicearray.md)
+    - [Usb_NonRootHubArray](capi-usbddk-usb-nonroothubarray.md)
     - [UsbSerial_Params](capi-serialddk-usbserial-params.md)
     - [UsbSerial_Device](capi-serialddk-usbserial-devicehandle.md)
 - 错误码<!--driver-development-errcode-->

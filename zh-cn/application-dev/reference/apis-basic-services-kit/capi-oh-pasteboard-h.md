@@ -82,6 +82,7 @@
 | [OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteboard_GetDataParams* params,int* status)](#oh_pasteboard_getdatawithprogress) | - | 获取剪贴板的数据以及粘贴进度，不支持对文件夹的拷贝。 |
 | [uint32_t OH_Pasteboard_GetChangeCount(OH_Pasteboard *pasteboard)](#oh_pasteboard_getchangecount) | - | 获取剪贴板内容的变化次数。 |
 | [void OH_Pasteboard_SyncDelayedDataAsync(OH_Pasteboard* pasteboard, void (*callback)(int errorCode))](#oh_pasteboard_syncdelayeddataasync) | - | 通知剪贴板从应用同步所有延迟数据，与延迟复制接口[OH_UdmfRecordProvider_SetData](../apis-arkdata/capi-udmf-h.md#oh_udmfrecordprovider_setdata)搭配使用。当应用使用延迟复制功能复制时，仅将应用支持的数据类型写入剪贴板。应用应在退出时，重新调用[OH_Pasteboard_SetData](#oh_pasteboard_setdata)接口主动提交所有复制数据或调用此接口通知剪贴板获取全量数据，等待数据同步完成再继续退出，否则可能导致其他应用粘贴获取不到数据。 |
+| [bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)](#oh_pasteboard_hasremotedata) | - | 判断当前待粘贴的剪贴板数据是否在远端设备上。 |
 
 ## 宏定义说明
 
@@ -198,7 +199,6 @@ enum Pasteboard_ProgressIndicator
 | PASTEBOARD_NONE = 0 | 不采用系统默认进度显示。 |
 | PASTEBOARD_DEFAULT = 1 | 采用系统默认进度显示。 |
 
-
 ## 函数说明
 
 ### OH_Pasteboard_ProgressListener()
@@ -300,7 +300,7 @@ int OH_PasteboardObserver_Destroy(OH_PasteboardObserver* observer)
 
 | 类型 | 说明                                                                                                                                                                                                                                  |
 | -- |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 ### OH_PasteboardObserver_SetData()
 
@@ -328,7 +328,7 @@ int OH_PasteboardObserver_SetData(OH_PasteboardObserver* observer, void* context
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 ### OH_Pasteboard_Create()
 
@@ -346,7 +346,7 @@ OH_Pasteboard* OH_Pasteboard_Create()
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nullptr。<br> 当不再需要使用指针时，请使用[OH_PasteboardObserver_Destroy](#oh_pasteboard_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* | 执行成功则返回一个指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例对象的指针，否则返回nullptr。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_Destroy](#oh_pasteboard_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 ### OH_Pasteboard_Destroy()
 
@@ -392,7 +392,7 @@ int OH_Pasteboard_Subscribe(OH_Pasteboard* pasteboard, int type, const OH_Pasteb
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 ### OH_Pasteboard_Unsubscribe()
 
@@ -419,7 +419,7 @@ int OH_Pasteboard_Unsubscribe(OH_Pasteboard* pasteboard, int type, const OH_Past
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 ### OH_Pasteboard_IsRemoteData()
 
@@ -465,13 +465,13 @@ int OH_Pasteboard_GetDataSource(OH_Pasteboard* pasteboard, char* source, unsigne
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
 | char* source | 表示用于存放剪贴板数据源实例的指针，开发者需在调用接口前申请指针指向的内存。 |
-| unsigned int len | 表示source指针对应的内存长度，当内存长度不足时调用接口会失败，建议长度：128。 |
+| unsigned int len | 表示source指针对应的内存长度，当内存长度不足时调用接口会失败，建议长度：128字节。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 ### OH_Pasteboard_HasType()
 
@@ -524,6 +524,30 @@ bool OH_Pasteboard_HasData(OH_Pasteboard* pasteboard)
 | -- | -- |
 | bool | 返回剪贴板中是否有数据。返回true表示剪贴板中有数据，返回false表示剪贴板中没有数据。 |
 
+### OH_Pasteboard_HasRemoteData()
+
+```c
+bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
+```
+
+**描述：**
+
+判断剪贴板数据是否在远端设备上。由于数据跨端传输耗时较大，如果剪贴板数据在远端设备上，不建议在UI线程执行检查剪贴板数据中是否包含自定义数据类型，或读取剪贴板数据。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | 表示指向剪贴板[OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)实例的指针。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| bool | 返回指示剪贴板数据是否在远端设备上的结果。true表示剪贴板数据在远端设备上；false表示剪贴板数据不在远端设备上。默认为false。 |
+
 ### OH_Pasteboard_GetData()
 
 ```c
@@ -536,7 +560,7 @@ OH_UdmfData* OH_Pasteboard_GetData(OH_Pasteboard* pasteboard, int* status)
 
 **起始版本：** 13
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。使用[安全控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
 
 **参数：**
@@ -576,7 +600,7 @@ int OH_Pasteboard_SetData(OH_Pasteboard* pasteboard, OH_UdmfData* data)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 ### OH_Pasteboard_ClearData()
 
@@ -601,7 +625,7 @@ int OH_Pasteboard_ClearData(OH_Pasteboard* pasteboard)
 
 | 类型 | 说明 |
 | -- | -- |
-| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回[ERR_OK](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示执行成功。<br> 若返回[ERR_INVALID_PARAMETER](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)，表示传入了无效参数。 |
+| int | 返回执行的错误码。错误码定义详见[PASTEBOARD_ErrCode](capi-oh-pasteboard-err-code-h.md#pasteboard_errcode)。<br> 若返回ERR_OK，表示执行成功。<br> 若返回ERR_INVALID_PARAMETER，表示传入了无效参数。 |
 
 ### OH_Pasteboard_GetMimeTypes()
 
@@ -627,7 +651,7 @@ char **OH_Pasteboard_GetMimeTypes(OH_Pasteboard *pasteboard, unsigned int *count
 
 | 类型 | 说明 |
 | -- | -- |
-| char | 执行成功时返回剪贴板所有内容的MIME类型，否则返回nullptr。 |
+| char ** | 执行成功时返回剪贴板所有内容的MIME类型，否则返回nullptr。 |
 
 ### OH_Pasteboard_GetDataParams_Create()
 
@@ -645,7 +669,7 @@ Pasteboard_GetDataParams *OH_Pasteboard_GetDataParams_Create(void)
 
 | 类型 | 说明 |
 | -- | -- |
-| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
+| [Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md) * | 执行成功时返回一个指向剪贴板[Pasteboard_GetDataParams](capi-pasteboard-getdataparams.md)实例对象的指针，否则返回空指针。<br> 当不再需要使用指针时，请使用[OH_Pasteboard_GetDataParams_Destroy](capi-oh-pasteboard-h.md#oh_pasteboard_getdataparams_destroy)销毁实例对象，否则会导致内存泄漏。 |
 
 ### OH_Pasteboard_GetDataParams_Destroy()
 
@@ -803,7 +827,7 @@ OH_UdmfData* OH_Pasteboard_GetDataWithProgress(OH_Pasteboard* pasteboard, Pasteb
 
 **起始版本：** 15
 
-**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。使用[安全控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
+**需要权限**：ohos.permission.READ_PASTEBOARD，应用访问剪贴板内容需[申请访问剪贴板权限](../../basic-services/pasteboard/get-pastedata-permission-guidelines.md)。[使用粘贴控件](../../security/AccessToken/pastebutton.md)访问剪贴板内容的应用，可以无需申请权限。
 
 
 **参数：**

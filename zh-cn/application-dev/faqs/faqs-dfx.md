@@ -5,7 +5,7 @@
 <!--Owner: @mzyan-->
 <!--Designer: @liyueric-->
 <!--Tester: @gcw_KuLfPSbe-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## hilog日志如何落盘存储(API 9)
 
@@ -17,7 +17,7 @@
 
 参数解释：
 
-```
+```text
 -w 开启日志落盘任务,start表示开始，stop表示停止。
 -f 设置日志文件名
 -l 设置单个日志文件大小，单位可以是：B/K/M/G
@@ -32,7 +32,7 @@
 
 **解决措施**
 
-通过hilog命令行工具来过滤保留当前应用的日志日志。
+通过hilog命令行工具来过滤保留当前应用的日志。
 
 hilog -T xxx 按tag过滤;
 

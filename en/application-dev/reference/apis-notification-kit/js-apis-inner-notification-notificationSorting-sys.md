@@ -14,7 +14,7 @@ The **NotificationSorting** module provides APIs for defining the sorting inform
 >
 > The APIs provided by this module are system APIs.
 
-## Properties
+## NotificationSorting
 
 **System capability**: SystemCapability.Notification.Notification
 

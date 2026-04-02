@@ -11,7 +11,7 @@
 >  **说明：**
 >  - 从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  - 仅[Flex](ts-container-flex.md)、[Column](ts-container-column.md)或[Row](ts-container-row.md)支持下述四种属性，[GridRow](ts-container-gridrow.md)仅支持设置[alignSelf](#alignself)。
+>  - 仅[Flex](ts-container-flex.md)、[Column](ts-container-column.md)、[Row](ts-container-row.md)和[DynamicLayout](ts-container-dynamiclayout.md)支持下述四种属性，[GridRow](ts-container-gridrow.md)仅支持设置[alignSelf](#alignself)。
 
 ## flexBasis
 

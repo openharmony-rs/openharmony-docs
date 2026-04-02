@@ -585,7 +585,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let netQuotaPolicyList: Array<policy.NetQuotaPolicy> = [];
-let netquotapolicy: policy.NetQuotaPolicy = {
+let netQuotaPolicy: policy.NetQuotaPolicy = {
   networkMatchRule: {
     netType: connection.NetBearType.BEARER_CELLULAR,
     identity: '',
@@ -599,7 +599,7 @@ let netquotapolicy: policy.NetQuotaPolicy = {
     limitAction: policy.LimitAction.LIMIT_ACTION_NONE
   }
 }
-netQuotaPolicyList.push(netquotapolicy);
+netQuotaPolicyList.push(netQuotaPolicy);
 
 policy.setNetQuotaPolicies(netQuotaPolicyList, (error: BusinessError) => {
   console.error(JSON.stringify(error));
@@ -648,7 +648,7 @@ import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let netQuotaPolicyList: Array<policy.NetQuotaPolicy> = [];
-let netquotapolicy: policy.NetQuotaPolicy = {
+let netQuotaPolicy: policy.NetQuotaPolicy = {
   networkMatchRule: {
     netType: connection.NetBearType.BEARER_CELLULAR,
     identity: '',
@@ -662,7 +662,7 @@ let netquotapolicy: policy.NetQuotaPolicy = {
     limitAction: policy.LimitAction.LIMIT_ACTION_NONE
   }
 }
-netQuotaPolicyList.push(netquotapolicy);
+netQuotaPolicyList.push(netQuotaPolicy);
 
 policy
   .setNetQuotaPolicies(netQuotaPolicyList)

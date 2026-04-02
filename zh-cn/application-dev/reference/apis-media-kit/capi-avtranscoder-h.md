@@ -346,7 +346,7 @@ OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, 
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
-| bool enabled | 是否使能B帧编码。true表示开启B帧编码，默认为不开启B帧编码。 |
+| bool enabled | 是否使能B帧编码。true表示使能B帧编码，false表示不使能B帧编码，默认为false。 |
 
 **返回：**
 

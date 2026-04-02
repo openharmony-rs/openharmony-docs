@@ -4,7 +4,7 @@
 <!--Owner: @wangchen965-->
 <!--Designer: @yao_dashuai-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -32,7 +32,7 @@ The output is as follows:
 
 ```typescript
 Module loaded!
-1
+data is  1
 ```
 
 **Side effects produced**
@@ -55,7 +55,7 @@ console.info("data is ", data);
 The output is as follows:
 
 ```typescript
-1
+data is  1
 ```
 
 Optimization method 2: Encapsulate code that may cause side effects within functions or methods, and execute the code only when needed, rather than upon module loading.
@@ -75,7 +75,7 @@ console.info("data is ", data);
 The output is as follows:
 
 ```typescript
-1
+data is  1
 ```
 
 ### Modifying Global Objects
@@ -115,8 +115,8 @@ function maybeNotCalledAtAll() {
 The output is as follows:
 
 ```text
-data from module
-200
+data1 is  data from module
+globalThis.someGlobalVar is  200
 ```
 
 **Side effects produced**
@@ -163,8 +163,8 @@ function maybeNotCalledAtAll() {
 The output is as follows:
 
 ```text
-data from module
-100
+data1 is  data from module
+globalThis.someGlobalVar is  100
 ```
 
 ### Modifying State Variables of Application-level ArkUI Components
@@ -338,8 +338,8 @@ console.info("data is ", data); // During the use of the variable, the module is
 The output is as follows:
 
 ```text
-undefined
-data from module
+globalThis.someGlobalVar undefined
+data is  data from module
 ```
 
 **Side effects produced**
@@ -367,8 +367,8 @@ console.info("data is ", data);
 The output is as follows:
 
 ```text
-100
-data from module
+globalThis.someGlobalVar is  100
+data is  data from module
 ```
 
 ## Optimizing Performance with import Path Expansion

@@ -13,9 +13,9 @@
 >
 >  - 该组件从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
->  - 该组件从API version 12开始支持与垂直滚动的Swiper和Web的联动。当Swiper设置loop属性为true时，Refresh无法和Swiper产生联动。
+>  - 该组件从API version 12开始支持与垂直滚动的[Swiper](ts-container-swiper.md)和[Web](../arkui-js/js-components-basic-web.md)的联动。当[Swiper](ts-container-swiper.md)设置[loop](ts-container-swiper.md#loop)属性为true时，Refresh无法和[Swiper](ts-container-swiper.md)产生联动。
 >
->  - Refresh和内容大小小于组件自身的List组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果，可以将[alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11对象说明)参数设为true，此时List会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果，具体可以参考[示例9不满一屏实现下拉刷新](#示例9不满一屏场景实现下拉刷新)。
+>  - Refresh和内容大小小于组件自身的[List](ts-container-list.md)组件嵌套使用并且中间还有其他组件时，手势可能会被中间组件响应，导致Refresh未产生下拉刷新效果，可以将[alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11对象说明)参数设为true，此时[List](ts-container-list.md)会响应手势并通过嵌套滚动带动Refresh组件产生下拉刷新效果，具体可以参考[示例9不满一屏实现下拉刷新](#示例9不满一屏场景实现下拉刷新)。
 >
 >  - 组件内部已绑定手势实现跟手滚动等功能，需要增加自定义手势操作时请参考[手势拦截增强](ts-gesture-blocking-enhancement.md)进行处理。
 >
@@ -117,7 +117,7 @@ pullUpToCancelRefresh(enabled: boolean | undefined)
 
 ### pullDownRatio<sup>12+</sup>
 
-pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number>)
+pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number>)
 
 设置下拉跟手系数。
 
@@ -129,7 +129,7 @@ pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optio
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| ratio  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> |  是 | 下拉跟手系数。数值越大，跟随手势下拉的反应越灵敏。0表示不跟随手势下拉，1表示等比例跟随手势下拉。<br/>没有设置或设置为undefined时，默认使用动态下拉跟手系数，下拉距离越大，跟手系数越小。<br/>有效值为0-1之间的值，小于0的值会被视为0，大于1的值会被视为1。 |
+| ratio  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> |  是 | 下拉跟手系数。数值越大，跟随手势下拉的反应越灵敏。0表示不跟随手势下拉，1表示等比例跟随手势下拉。<br/>没有设置或设置为undefined时，默认使用动态下拉跟手系数，下拉距离越大，跟手系数越小。<br/>有效值为0-1之间的值，小于0的值会被视为0，大于1的值会被视为1。 |
 
 ### maxPullDownDistance<sup>20+</sup>
 
@@ -145,7 +145,7 @@ maxPullDownDistance(distance: Optional\<number>)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| distance  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> |  是 | 最大下拉距离。最大下拉距离的最小值为0，小于0按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理。<br/>默认值：undefined<br/>单位：vp |
+| distance  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> |  是 | 最大下拉距离。最大下拉距离的最小值为0，小于0按0处理。当该值小于刷新的下拉偏移量refreshOffset时，Refresh下拉离手不会触发刷新。<br/>undefined和null按没有设置此属性处理。<br/>默认值：undefined<br/>单位：vp |
 
 ## 事件
 
@@ -376,7 +376,7 @@ struct RefreshExample {
     .clip(true)
     // 设置最小高度约束保证自定义组件高度随刷新区域高度变化时自定义组件高度不会低于minHeight。
     .constraintSize({ minHeight: 32 })
-    .width("100%")
+    .width('100%')
   }
 
   build() {
@@ -452,7 +452,7 @@ function customRefreshingContent(params: Params) {
   .clip(true)
   // 设置最小高度约束保证自定义组件高度随刷新区域高度变化时自定义组件高度不会低于minHeight。
   .constraintSize({ minHeight: 32 })
-  .width("100%")
+  .width('100%')
 }
 
 @Entry
@@ -536,7 +536,7 @@ function customRefreshingContent() {
   .clip(true)
   // 设置最小高度约束保证自定义组件高度随刷新区域高度变化时自定义组件高度不会低于minHeight。
   .constraintSize({ minHeight: 32 })
-  .width("100%")
+  .width('100%')
 }
 
 @Entry
@@ -630,8 +630,8 @@ struct ListRefreshLoad {
       }
     }
     .clip(true)
-    .height("100%")
-    .width("100%")
+    .height('100%')
+    .width('100%')
   }
 
   @Builder
@@ -639,7 +639,7 @@ struct ListRefreshLoad {
     Row() {
       LoadingProgress().height(32).width(48)
       Text("加载中")
-    }.width("100%")
+    }.width('100%')
     .height(64)
     .justifyContent(FlexAlign.Center)
     // 当不处于加载中状态时隐藏组件。
@@ -834,7 +834,7 @@ struct RefreshExample {
 
 ### 示例9（不满一屏场景实现下拉刷新）
 
-通过设置[edgeEffect](ts-container-scrollable-common.md#edgeeffect11)属性中的alwaysEnabled参数，可以在不满一屏的情况下实现Refresh组件的下拉刷新效果。
+调用[edgeEffect](ts-container-scrollable-common.md#edgeeffect11)时，将options参数的[alwaysEnabled](./ts-container-scrollable-common.md#edgeeffectoptions11对象说明)设置为true，可以在不满一屏的情况下实现Refresh组件的下拉刷新效果。
 
 ```ts
 // xxx.ets

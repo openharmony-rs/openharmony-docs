@@ -69,7 +69,7 @@ UIExtension为了实现跨应用的能力共享，存在较开放的灵活性，
 | [分布式迁移标识](../reference/apis-arkui/arkui-ts/ts-universal-attributes-restoreId.md) | 不支持   | 组件的分布式迁移标识，指明了该组件在分布式迁移场景下可以将特定状态恢复到对端设备。 | —                                                            |
 | [拖拽控制](../reference/apis-arkui/arkui-ts/ts-universal-attributes-drag-drop.md) | 不支持   | 设置组件是否可以响应拖拽事件。                               | —                                                            |
 | [全屏模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-modal-transition.md) | 部分支持 | 通过bindContentCover属性为组件绑定全屏模态页面，在组件插入和删除时可通过设置转场参数ModalTransition显示过渡动效。 | 在UIExtension内的提供方产生的页面无法超出UIExtension组件的范围，不能像其他组件一样直接达到效果，需要应用开发者设置UIExtension的全屏模式。 |
-| [半模态专场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md) | 部分支持 | 通过bindSheet属性为组件绑定半模态页面，在组件插入时可通过设置自定义或默认的内置高度确定半模态大小。 | 在UIExtension内的提供方产生的页面无法超出UIExtension组件的范围，不能像其他组件一样直接达到效果，需要应用开发者设置UIExtension的全屏模式。 |
+| [半模态转场](../reference/apis-arkui/arkui-ts/ts-universal-attributes-sheet-transition.md) | 部分支持 | 通过bindSheet属性为组件绑定半模态页面，在组件插入时可通过设置自定义或默认的内置高度确定半模态大小。 | 在UIExtension内的提供方产生的页面无法超出UIExtension组件的范围，不能像其他组件一样直接达到效果，需要应用开发者设置UIExtension的全屏模式。 |
 
 **组件**
 
@@ -84,7 +84,7 @@ UIExtension为了实现跨应用的能力共享，存在较开放的灵活性，
 | 组件                                                         | 能力规格 | 功能说明                                                     | 规格补充说明                                                 |
 | ------------------------------------------------------------ | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [PluginComponent (系统接口)](../reference/apis-arkui/arkui-ts/ts-basic-components-plugincomponent-sys.md) | 不支持   | 用于给插件组件的使用者请求组件和数据，使用者发送组件模板和数据。支撑SystemUI实现插件化方式集成其他业务提供的UI。 | 1、和UIExtension能力类似，容易出现嵌套，增加复杂度。<br/>2、由于UIExtension组件的提供方已经在另一个进程中，默认能力下，无法提供访问宿主组件访问的能力。 |
-| [FormComponent（系统接口）](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md) | 不支持   | 提供卡片组件，实现卡片的显示功能。                           | 卡片组件提供的是跨进程的组件调用能力，UIExtension中嵌套使用会导致进程关系复杂，导致功能性能方面的问题。 |
+| [FormComponent (系统接口)](../reference/apis-arkui/arkui-ts/ts-basic-components-formcomponent-sys.md) | 不支持   | 提供卡片组件，实现卡片的显示功能。                           | 卡片组件提供的是跨进程的组件调用能力，UIExtension中嵌套使用会导致进程关系复杂，导致功能性能方面的问题。 |
 | [IsolatedComponent (系统接口)](../reference/apis-arkui/arkui-ts/ts-container-isolated-component-sys.md) | 不支持   | IsolatedComponent用于支持在本页面内嵌入显示独立Abc（.abc文件）提供的UI，展示的内容在受限worker线程中运行。 | 由于云卡能力也是一种跨应用调度的能力，UIExtension中暂不支持拉起云卡。 |
 | [FullScreenLaunchComponent (全屏启动元服务组件)](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-FullScreenLaunchComponent.md) | 不支持   | 全屏启动元服务组件，当被拉起方授权使用方可以嵌入式运行元服务时，使用方全屏嵌入式运行元服务；未授权时，使用方跳出式拉起元服务。 | 由于是一种跨应用调度的能力，UIExtension中暂不支持嵌套拉起。  |
 | [EmbeddedComponent](../reference/apis-arkui/arkui-ts/ts-container-embedded-component.md) | 不支持   | EmbeddedComponent用于支持在当前页面嵌入本应用内其他[EmbeddedUIExtensionAbility](../reference/apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md)提供的UI。EmbeddedUIExtensionAbility在独立进程中运行，完成页面布局和渲染。 | 由于是一种跨应用调度的能力，UIExtension中暂不支持嵌套拉起。  |

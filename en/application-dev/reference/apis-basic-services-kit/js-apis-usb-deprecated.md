@@ -39,57 +39,59 @@ Obtains the USB device list.
 
 ```js
 let devicesList = usb.getDevices();
-console.log(`devicesList = ${devicesList}`);
+console.info(`devicesList = ${devicesList}`);
 // devicesList is a list of USB devices.
 // A simple example of devicesList is provided as follows:
-/*[
-  {
-    name: "1-1",
-    serial: "",
-    manufacturerName: "",
-    productName: "",
-    version: "",
-    vendorId: 7531,
-    productId: 2,
-    clazz: 9,
-    subClass: 0,
-    protocol: 1,
-    devAddress: 1,
-    busNum: 1,
-    configs: [
-      {
-        id: 1,
-        attributes: 224,
-        isRemoteWakeup: true,
-        isSelfPowered: true,
-        maxPower: 0,
-        name: "1-1",
-        interfaces: [
-          {
-            id: 0,
-            protocol: 0,
-            clazz: 9,
-            subClass: 0,
-            alternateSetting: 0,
-            name: "1-1",
-            endpoints: [
-              {
-                address: 129,
-                attributes: 3,
-                interval: 12,
-                maxPacketSize: 4,
-                direction: 128,
-                number: 1,
-                type: 3,
-                interfaceId: 0,
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-]*/
+/*
+  [
+    {
+      name: "1-1",
+      serial: "",
+      manufacturerName: "",
+      productName: "",
+      version: "",
+      vendorId: 7531,
+      productId: 2,
+      clazz: 9,
+      subClass: 0,
+      protocol: 1,
+      devAddress: 1,
+      busNum: 1,
+      configs: [
+        {
+          id: 1,
+          attributes: 224,
+          isRemoteWakeup: true,
+          isSelfPowered: true,
+          maxPower: 0,
+          name: "1-1",
+          interfaces: [
+            {
+              id: 0,
+              protocol: 0,
+              clazz: 9,
+              subClass: 0,
+              alternateSetting: 0,
+              name: "1-1",
+              endpoints: [
+                {
+                  address: 129,
+                  attributes: 3,
+                  interval: 12,
+                  maxPacketSize: 4,
+                  direction: 128,
+                  number: 1,
+                  type: 3,
+                  interfaceId: 0,
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    },
+  ]
+ */
 ```
 
 ## usb.connectDevice
@@ -118,7 +120,7 @@ Before you do this, call [usb.getDevices](#usbgetdevices) to obtain the USB devi
 
 ```js
 let devicepipe= usb.connectDevice(device);
-console.log(`devicepipe = ${devicepipe}`);
+console.info(`devicepipe = ${devicepipe}`);
 ```
 
 ## usb.hasRight
@@ -146,7 +148,7 @@ Checks whether the application has the permission to access the device.
 ```js
 let devicesName= "1-1";
 let bool = usb.hasRight(devicesName);
-console.log(`hasRight = ${bool}`);
+console.info(`hasRight = ${bool}`);
 ```
 
 ## usb.requestRight
@@ -174,7 +176,7 @@ Requests the temporary permission for the application to access a USB device. Th
 ```js
 let devicesName= "1-1";
 usb.requestRight(devicesName).then((ret) => {
-  console.log(`requestRight = ${ret}`);
+  console.info(`requestRight = ${ret}`);
 });
 ```
 
@@ -206,7 +208,7 @@ Before you do this, call [usb.getDevices](#usbgetdevices) to obtain the USB devi
 
 ```js
 let ret = usb.claimInterface(devicepipe, interfaces);
-console.log(`claimInterface = ${ret}`);
+console.info(`claimInterface = ${ret}`);
 ```
 
 ## usb.releaseInterface
@@ -236,7 +238,7 @@ Before you do this, ensure that you have claimed the interface by calling [usb.c
 
 ```js
 let ret = usb.releaseInterface(devicepipe, interfaces);
-console.log(`releaseInterface = ${ret}`);
+console.info(`releaseInterface = ${ret}`);
 ```
 
 ## usb.setConfiguration
@@ -266,7 +268,7 @@ Before you do this, call [usb.getDevices](#usbgetdevices) to obtain the USB devi
 
 ```js
 let ret = usb.setConfiguration(devicepipe, config);
-console.log(`setConfiguration = ${ret}`);
+console.info(`setConfiguration = ${ret}`);
 ```
 
 ## usb.setInterface
@@ -296,7 +298,7 @@ Before you do this, call [usb.getDevices](#usbgetdevices) to obtain the USB devi
 
 ```js
 let ret = usb.setInterface(devicepipe, interfaces);
-console.log(`setInterface = ${ret}`);
+console.info(`setInterface = ${ret}`);
 ```
 
 ## usb.getRawDescriptor
@@ -391,7 +393,7 @@ let param = {
   data: null
 };
 usb.controlTransfer(devicepipe, param).then((ret) => {
- console.log(`controlTransfer = ${ret}`);
+ console.info(`controlTransfer = ${ret}`);
 })
 ```
 
@@ -427,7 +429,7 @@ Before you do this, call [usb.getDevices](#usbgetdevices) to obtain the USB devi
 // Pass the obtained USB device as a parameter to usb.connectDevice. Then, call usb.connectDevice to connect the USB device.
 // Call usb.claimInterface to claim the USB interface. After that, call usb.bulkTransfer to start bulk transfer.
 usb.bulkTransfer(devicepipe, endpoint, buffer).then((ret) => {
- console.log(`bulkTransfer = ${ret}`);
+ console.info(`bulkTransfer = ${ret}`);
 });
 ```
 
@@ -457,7 +459,7 @@ Before you do this, call [usb.getDevices](#usbgetdevices) to obtain the USB devi
 
 ```js
 let ret = usb.closePipe(devicepipe);
-console.log(`closePipe = ${ret}`);
+console.info(`closePipe = ${ret}`);
 ```
 
 ## USBEndpoint

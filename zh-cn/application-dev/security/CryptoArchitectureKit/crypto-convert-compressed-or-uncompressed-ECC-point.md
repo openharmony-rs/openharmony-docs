@@ -34,7 +34,7 @@ async function eccPubUncompressedToCompressed() {
   let generator = cryptoFramework.createAsyKeyGenerator('ECC_BrainPoolP256r1');
   let keyPair = await generator.convertKey(pubKeyBlob, null);
   let returnBlob = keyPair.pubKey.getEncodedDer('X509|COMPRESSED');
-  console.info('returnBlob data：' + returnBlob.data);
+  console.info('returnBlob data: ' + returnBlob.data);
 }
 ```
 
@@ -59,7 +59,7 @@ async function eccPointCompressedToPoint() {
     new Uint8Array([2, 143, 39, 57, 249, 145, 50, 63, 222, 35, 70, 178, 121, 202, 154, 21, 146, 129, 75, 76, 63, 8, 195,
       157, 111, 40, 217, 215, 148, 120, 224, 205, 82]);
   let returnPoint = cryptoFramework.ECCKeyUtil.convertPoint('NID_brainpoolP256r1', pkData);
-  console.info('convertPoint success');
+  console.info('convertPoint result: success.');
   let eccCommonParamsSpec = cryptoFramework.ECCKeyUtil.genECCCommonParamsSpec('NID_brainpoolP256r1');
   let eccPubKeySpec: cryptoFramework.ECCPubKeySpec = {
     algName: 'ECC',
@@ -77,7 +77,7 @@ async function eccPointCompressedToPoint() {
   let eccPkX = pubKey.getAsyKeySpec(cryptoFramework.AsyKeySpecItem.ECC_PK_X_BN);
   console.info('returnPoint x data: ' +
   returnPoint.x); // 64750044510792891439269945828433327517677381559622384455951527515863444933970
-  console.info('ECC_PK_X_BN：' +
+  console.info('ECC_PK_X_BN: ' +
     eccPkX); // 64750044510792891439269945828433327517677381559622384455951527515863444933970
 }
 ```

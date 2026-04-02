@@ -16,7 +16,7 @@ typedef struct UsbDdkEndpointDescriptor {...} UsbDdkEndpointDescriptor
 
 **起始版本：** 10
 
-**相关模块：** [UsbDDK](capi-usbddk.md)
+**相关模块：** [UsbDdk](capi-usbddk.md)
 
 **所在头文件：** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

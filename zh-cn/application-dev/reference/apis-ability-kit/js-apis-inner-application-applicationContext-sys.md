@@ -12,7 +12,10 @@ ApplicationContext模块继承自[Context](js-apis-inner-application-context.md)
 > **说明：**
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
 > 当前页面仅包含本模块的系统接口，其他公开接口参见[ApplicationContext](js-apis-inner-application-applicationContext.md)。
+>
+> 本模块接口仅可在Stage模型下使用。
 
 ## 导入模块
 
@@ -76,7 +79,7 @@ export default class EntryAbility extends UIAbility {
       abilityName: 'UIExtensionProvider',
       moduleName: 'entry',
       parameters: {
-        //与UIExtensionAbility在module.json5中"type"字段配置一致
+        // 与UIExtensionAbility在module.json5中"type"字段配置一致
         'ability.want.params.uiExtensionType': 'sys/commonUI'
       }
     };

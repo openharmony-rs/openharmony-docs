@@ -8,7 +8,7 @@
 
 ## 概述
 
-为您提供标准的开放api，用于控制马达振动的启停
+为您提供标准的开放API，用于控制马达振动的启停
 
 **引用文件：** <sensors/vibrator_type.h>
 
@@ -79,6 +79,6 @@ enum Vibrator_Usage
 | VIBRATOR_USAGE_TOUCH = 5 | 触摸 |
 | VIBRATOR_USAGE_MEDIA = 6 | 媒体 |
 | VIBRATOR_USAGE_PHYSICAL_FEEDBACK = 7 | 物理反馈 |
-| VIBRATOR_USAGE_SIMULATE_REALITY = 8 | 模拟现实 |
+| VIBRATOR_USAGE_SIMULATED_REALITY = 8 | 模拟现实 |
 
 

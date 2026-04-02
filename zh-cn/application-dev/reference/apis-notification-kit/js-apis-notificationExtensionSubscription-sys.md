@@ -41,7 +41,7 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -53,7 +53,7 @@ getAllSubscriptionBundles(): Promise\<BundleOption[]\>
 **示例：**
 
 ```ts
-notificationExtensionSubscription.getAllSubscriptionBundles().then((data) => {
+notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getAllSubscriptionBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getAllSubscriptionBundles fail: ${JSON.stringify(err)}`);
@@ -64,7 +64,7 @@ notificationExtensionSubscription.getAllSubscriptionBundles().then((data) => {
 
 getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 
-查询指定应用的"允许获取本机通知"的开关状态。使用Promise异步回调。
+查询指定应用的“允许获取本机通知”的开关状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -82,11 +82,11 @@ getUserGrantedState(targetBundle: BundleOption): Promise\<boolean\>
 
 | 类型     | 说明        | 
 | ------- |-----------|
-| Promise\<boolean\> | Promise对象，返回true表示目标应用的"允许获取本机通知"状态已启用；返回false表示目标应用的"允许获取本机通知"状态未启用。 | 
+| Promise\<boolean\> | Promise对象，返回true表示目标应用的“允许获取本机通知”状态已启用；返回false表示目标应用的“允许获取本机通知”状态未启用。 | 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -119,7 +119,7 @@ notificationExtensionSubscription.getUserGrantedState(targetBundle).then((isOpen
 
 setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void\>
 
-设置指定应用的"允许获取本机通知"的开关状态。使用Promise异步回调。
+设置指定应用的“允许获取本机通知”的开关状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -132,7 +132,7 @@ setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void
 | 参数名     | 类型                  | 必填 | 说明                 |
 | -------- | --------------------- | ---- | -------------------- |
 | targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码|
-| enable   | boolean | 是   | 表示应用的"允许获取本机通知"的开关状态，true表示启用，false表示未启用。 |
+| enable   | boolean | 是   | 表示应用的“允许获取本机通知”的开关状态，true表示启用，false表示未启用。 |
 
 **返回值：**
 
@@ -142,7 +142,7 @@ setUserGrantedState(targetBundle: BundleOption, enabled: boolean): Promise\<void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -171,7 +171,7 @@ notificationExtensionSubscription.setUserGrantedState(targetBundle, true).then((
 
 getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[]\>
 
-获取指定应用中"已获取的本机通知"通知开关开启的应用列表。使用Promise异步回调。
+获取指定应用中“已获取的本机通知”通知开关开启的应用列表。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -189,11 +189,11 @@ getUserGrantedEnabledBundles(targetBundle: BundleOption): Promise\<BundleOption[
 
 | 类型     | 说明        |
 | ------- |-----------|
-| Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise对象，返回指定应用中"已获取的本机通知"通知开关开启的应用列表。        |
+| Promise\<[BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)\>   | Promise对象，返回指定应用中“已获取的本机通知”通知开关开启的应用列表。        |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -211,7 +211,7 @@ let targetBundle: notificationExtensionSubscription.BundleOption =
   // 应改为开发者需要查询的目标应用信息
   bundle: 'com.example.testnotification',
 };
-notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data) => {
+notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).then((data: notificationExtensionSubscription.BundleOption[]) => {
   console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
   console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
@@ -222,7 +222,7 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).the
 
 setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOption[], enabled:boolean): Promise\<void\>
 
-设置指定应用中"已获取的本机通知"的应用通知开关状态。使用Promise异步回调。
+设置指定应用中“已获取的本机通知”的应用通知开关状态。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Notification.Notification
 
@@ -236,7 +236,7 @@ setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOpti
 | -------- | --------------------- | ---- | -------------------- |
 | targetBundle    | [BundleOption](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 需要设置的目标应用信息。应用需要具有[ohos.permission.SUBSCRIBE_NOTIFICATION](../../security/AccessToken/restricted-permissions.md#ohospermissionsubscribe_notification)权限，并且实现[NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md)，否则返回1600022错误码。|
 | enabledBundles    | [BundleOption[]](./js-apis-inner-notification-notificationCommonDef.md#bundleoption)       | 是   | 被授权的应用信息列表。 |
-| enabled    | boolean       | 是   | 表示"已获取的本机通知"的应用授权状态是否启用，true表示已启用，false表示未启用。 |
+| enabled    | boolean       | 是   | 表示“已获取的本机通知”的应用授权状态是否启用，true表示已启用，false表示未启用。 |
 
 **返回值：**
 
@@ -246,7 +246,7 @@ setUserGrantedBundleState(targetBundle: BundleOption, enabledBundles: BundleOpti
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |

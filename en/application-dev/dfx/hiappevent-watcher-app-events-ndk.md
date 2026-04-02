@@ -7,7 +7,7 @@
 <!--Tester: @gcw_KuLfPSbe-->
 <!--Adviser: @foryourself-->
 
-HiAppEvent provides APIs for subscribing to application events.
+HiAppEvent provides APIs for subscribing to and receiving application events.
 
 ## Available APIs
 
@@ -32,41 +32,52 @@ The following describes how to subscribe to a crash event (system event) and a b
 
 ### Step 1: Creating a Project and Configuring Compilation Options
 
-1. Obtain the **jsoncpp** file on which the sample project depends.
+1. Copy the **jsoncpp** library file on which the sample project depends to the new project.
 
-    Specifically, download the source code package from [JsonCpp](https://github.com/open-source-parsers/jsoncpp) and obtain the **jsoncpp.cpp**, **json.h**, and **json-forwards.h** files by following the procedure described in **Amalgamated source**.
-
-   Create a native C++ project and import the **jsoncpp** file to the project. The directory structure is as follows:
-
+   Click [HiAppEvent Sample Project EventSub](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub) and click **Download the directory** to download the EventSub project file.
+   
+   Create a native C++ project. Copy the **jsoncpp** library file (**entry/libs** and **entry/src/main/cpp/thirdparty**) from the decompressed **EventSub** folder to the new project. The directory structure is as follows:
    ```text
    entry
+   ├── libs        // Create a folder and place the related third-party libraries in the folder.
    └── src
-       └── main
-           ├── cpp
-           │   ├── CMakeLists.txt
-           │   ├── json
-           │   │   ├── json-forwards.h
-           │   │   └── json.h
-           │   ├── jsoncpp.cpp
-           │   ├── napi_init.cpp
-           │   └── types
-           │       └── libentry
-           │           ├── Index.d.ts
-           │           └── oh-package.json5
-           └── ets
-               ├── entryability
-               │   └── EntryAbility.ets
-               └── pages
-                   └── Index.ets
+       ├── main
+       │   ├── cpp
+       │   │   ├── CMakeLists.txt       // Import the link of the .so file.
+       │   │   ├── napi_init.cpp        // Define the function and watcher.
+       │   │   ├── thirdparty    // Create a folder and place the related third-party libraries in the folder.
+       │   │   │   └── jsoncpp
+       │   │   └── types
+       │   │       └── libentry
+       │   │           ├── Index.d.ts        // Define the ArkTS API.
+       │   │           └── oh-package.json5
+       │   ├── ets
+       │   │   ├── entryability
+       │   │   │   └── EntryAbility.ets    // Add an API call.
+       │   │   ├── entrybackupability
+       │   │   │   └── EntryBackupAbility.ets
+       │   │   └── pages
+       │   │       └── Index.ets        // Home page.
    ```
+   The source code corresponding to the **jsoncpp** library file in this sample project is derived from [the third-party open-source library JsonCpp](https://github.com/open-source-parsers/jsoncpp/archive/refs/tags/1.9.6.tar.gz)
 
-2. In the **CMakeLists.txt** file, add the source file and dynamic libraries.
+2. In the **CMakeLists.txt** file, add the required source files and dynamic libraries.
 
    ```cmake
-   # Add the jsoncpp.cpp file, which is used to parse the JSON strings in the subscription events.
-   add_library(entry SHARED napi_init.cpp jsoncpp.cpp)
+   set(GZ_FILE "${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/src/jsoncpp-1.9.6.tar.gz")
+   set(DEST_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../build")
+   # Check whether the entry/build directory exists.
+   execute_process(COMMAND ${CMAKE_COMMAND} -E make_directory ${DEST_DIR})
+   # Decompress jsoncpp-1.9.6.tar.gz to entry/build to obtain the directory of the jsoncpp header file.
+   execute_process(COMMAND tar -xzf ${GZ_FILE} -C ${DEST_DIR}
+       WORKING_DIRECTORY ${DEST_DIR})
+
+   add_library(entry SHARED napi_init.cpp)
    # Add libhiappevent_ndk.z.so and libhilog_ndk.z.so (log output). 
    target_link_libraries(entry PUBLIC libace_napi.z.so libhilog_ndk.z.so libhiappevent_ndk.z.so)
+   # Add the third-party library libjsoncpp.so (used to parse JSON strings in subscription events).
+   target_link_libraries(entry PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty/jsoncpp/${OHOS_ARCH}/lib/libjsoncpp.so)
+   target_include_directories(entry PRIVATE ${DEST_DIR}/jsoncpp-1.9.6/include/json)
    ```
 
 3. Import the dependencies to the **napi_init.cpp** file, and define **LOG_TAG**.
@@ -75,10 +86,10 @@ The following describes how to subscribe to a crash event (system event) and a b
    
    ``` C++
    #include "napi/native_api.h"
-   #include "json/json.h"
-   #include "hilog/log.h"
+   // Adapt the path for referencing json.h based on the location of the third-party library jsoncpp in the project.
+   #include "../../../build/jsoncpp-1.9.6/include/json/json.h"
    #include "hiappevent/hiappevent.h"
-   #include "hiappevent/hiappevent_event.h"
+   #include "hilog/log.h"
    
    #undef LOG_TAG
    #define LOG_TAG "testTag"

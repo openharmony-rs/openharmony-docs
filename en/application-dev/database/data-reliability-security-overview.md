@@ -29,6 +29,7 @@ Before developing functions related to data reliability and security, understand
 ### Database Backup and Restore
 
 - Database backup: A full backup is performed for OpenHarmony database files.
+
   The related API is called to perform the backup, without closing the database.
 
 - Database restore: Database data can be restored from a database backup file. After the data restore is complete, the database is restored to the state when the data was backed up.

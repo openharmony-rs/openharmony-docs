@@ -6,12 +6,12 @@
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
+在投播建立后，调用[avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
+
 > **说明：**
 >
 > - 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > - 本Interface首批接口从API version 10开始支持。
-
-在投播建立后，调用[avSession.getAVCastController](arkts-apis-avsession-AVSession.md#getavcastcontroller10)后，返回会话控制器实例。控制器可查看会话ID，并可完成对会话发送命令及事件，获取会话元数据，播放状态信息等操作。
 
 ## 导入模块
 
@@ -50,7 +50,7 @@ aVCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlay
   if (err) {
     console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('getAVPlaybackState : SUCCESS');
+    console.info('Succeeded in getting AV playback state.');
   }
 });
 ```
@@ -85,7 +85,7 @@ getAVPlaybackState(): Promise\<AVPlaybackState>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) => {
-  console.info('getAVPlaybackState : SUCCESS');
+  console.info('Succeeded in getting AV playback state.');
 }).catch((err: BusinessError) => {
   console.error(`getAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -121,9 +121,9 @@ getSupportedDecoders(): Promise\<Array\<DecoderType>>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getSupportedDecoders().then((decoderTypes: avSession.DecoderType[]) => {
-  console.info(`getSupportedDecoders : SUCCESS : decoderTypes.length : ${decoderTypes.length}`);
+  console.info(`Succeeded in getting supported decoders, length: ${decoderTypes.length}`);
   if (decoderTypes.length > 0 ) {
-    console.info(`getSupportedDecoders : SUCCESS : decoderTypes[0] : ${decoderTypes[0]}`);
+    console.info(`Succeeded in getting supported decoder: ${decoderTypes[0]}`);
   }
 }).catch((err: BusinessError) => {
   console.error(`getSupportedDecoders BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -167,7 +167,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let decoderType = avSession.DecoderType.OH_AVCODEC_MIMETYPE_VIDEO_AVC;
 aVCastController.getRecommendedResolutionLevel(decoderType).then((resolutionLevel: avSession.ResolutionLevel) => {
-  console.info('getRecommendedResolutionLevel successfully');
+  console.info('Succeeded in getting recommended resolution level.');
 }).catch((err: BusinessError) => {
   console.error(`getRecommendedResolutionLevel BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -204,9 +204,9 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import type hdrCapability from './@ohos.graphics.hdrCapability';
 
 aVCastController.getSupportedHdrCapabilities().then((hdrFormats: hdrCapability.HDRFormat[]) => {
-  console.info(`getSupportedHdrCapabilities : SUCCESS : hdrFormats.length : ${hdrFormats.length}`);
+  console.info(`Succeeded in getting supported HDR capabilities, length: ${hdrFormats.length}`);
   if (hdrFormats.length > 0 ) {
-    console.info(`getSupportedHdrCapabilities : SUCCESS : descriptors[0] : ${hdrFormats[0]}`);
+    console.info(`Succeeded in getting supported HDR capability: ${hdrFormats[0]}`);
   }
 }).catch((err: BusinessError) => {
   console.error(`getSupportedHdrCapabilities BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -243,9 +243,9 @@ getSupportedPlaySpeeds(): Promise\<Array\<number>>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
-  console.info(`getSupportedPlaySpeeds : SUCCESS : hdrFormats.length : ${nums.length}`);
+  console.info(`Succeeded in getting supported play speeds, length: ${nums.length}`);
   if (nums.length > 0 ) {
-    console.info(`getSupportedPlaySpeeds : SUCCESS : descriptors[0] : ${nums[0]}`);
+    console.info(`Succeeded in getting supported play speed: ${nums[0]}`);
   }
 }).catch((err: BusinessError) => {
   console.error(`getSupportedPlaySpeeds BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -293,7 +293,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let avCommand: avSession.AVCastControlCommand = {command:'play'};
 aVCastController.sendControlCommand(avCommand).then(() => {
-  console.info('SendControlCommand successfully');
+  console.info('Succeeded in sending control command.');
 }).catch((err: BusinessError) => {
   console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -335,7 +335,7 @@ aVCastController.sendControlCommand(avCommand, (err: BusinessError) => {
   if (err) {
     console.error(`SendControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('SendControlCommand successfully');
+    console.info('Succeeded in sending control command.');
   }
 });
 ```
@@ -430,7 +430,7 @@ aVCastController.prepare(playItem, (err: BusinessError) => {
   if (err) {
     console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('prepare successfully');
+    console.info('Succeeded in preparing.');
   }
 });
 ```
@@ -492,7 +492,7 @@ let playItem: avSession.AVQueueItem = {
 };
 // 准备播放，这个不会触发真正的播放，会进行加载和缓冲。
 aVCastController.prepare(playItem).then(() => {
-  console.info('prepare successfully');
+  console.info('Succeeded in preparing.');
 }).catch((err: BusinessError) => {
   console.error(`prepare BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -551,7 +551,7 @@ aVCastController.start(playItem, (err: BusinessError) => {
   if (err) {
     console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('start successfully');
+    console.info('Succeeded in starting.');
   }
 });
 ```
@@ -612,7 +612,7 @@ let playItem: avSession.AVQueueItem = {
 };
 // 启动播放。
 aVCastController.start(playItem).then(() => {
-  console.info('start successfully');
+  console.info('Succeeded in starting.');
 }).catch((err: BusinessError) => {
   console.error(`start BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -649,7 +649,7 @@ aVCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueIte
   if (err) {
     console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('getCurrentItem successfully');
+    console.info('Succeeded in getting current item.');
   }
 });
 ```
@@ -684,7 +684,7 @@ getCurrentItem(): Promise\<AVQueueItem>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getCurrentItem().then((value: avSession.AVQueueItem) => {
-  console.info('getCurrentItem successfully');
+  console.info('Succeeded in getting current item.');
 }).catch((err: BusinessError) => {
   console.error(`getCurrentItem BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -721,7 +721,7 @@ aVCastController.getValidCommands((err: BusinessError, state: avSession.AVCastCo
   if (err) {
     console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('getValidCommands successfully');
+    console.info('Succeeded in getting valid commands.');
   }
 });
 ```
@@ -754,7 +754,7 @@ getValidCommands(): Promise<Array\<AVCastControlCommandType>>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.getValidCommands().then((state: avSession.AVCastControlCommandType[]) => {
-  console.info('getValidCommands successfully');
+  console.info('Succeeded in getting valid commands.');
 }).catch((err: BusinessError) => {
   console.error(`getValidCommands BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -836,7 +836,7 @@ aVCastController.release((err: BusinessError) => {
   if (err) {
     console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('release successfully');
+    console.info('Succeeded in releasing.');
   }
 });
 ```
@@ -871,7 +871,7 @@ release(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 aVCastController.release().then(() => {
-  console.info('release successfully');
+  console.info('Succeeded in releasing.');
 }).catch((err: BusinessError) => {
   console.error(`release BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -880,9 +880,9 @@ aVCastController.release().then(() => {
 
 ## on('playbackStateChange')<sup>10+</sup>
 
-on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state: AVPlaybackState) => void): void
+on(type: 'playbackStateChange', filter: Array\<keyof AVPlaybackState> | 'all', callback: (state: AVPlaybackState) => void): void
 
-设置播放状态变化的监听事件。
+设置播放状态变化的监听事件。使用callback异步回调。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
@@ -895,8 +895,8 @@ on(type: 'playbackStateChange', filter: Array\<string> | 'all', callback: (state
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | type     | string                                                       | 是   | 事件回调类型，支持事件`'playbackStateChange'`：当播放状态变化时，触发该事件。 |
-| filter   |  Array\<string>\|'all'| 是   | 'all' 表示关注播放状态所有字段变化；Array\<string> 表示关注Array中的字段变化。<br>API version 20开始发生兼容变更，在API version 19及之前filter参数类型为：Array\<keyof AVPlaybackState> \| 'all'。|
-| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 是   | 回调函数，参数state是变化后的播放状态。                      |
+| filter   |  Array\<keyof AVPlaybackState>\|'all'| 是   | 'all' 表示关注播放状态所有字段变化；Array\<keyof AVPlaybackstate> 表示关注Array中的字段变化。|
+| callback | (state: [AVPlaybackState](arkts-apis-avsession-i.md#avplaybackstate10)) => void         | 是   | 回调函数，参数state是变化后的播放状态。 |
 
 **错误码：**
 
@@ -956,7 +956,7 @@ aVCastController.off('playbackStateChange');
 
 on(type: 'mediaItemChange', callback: Callback\<AVQueueItem>): void
 
-设置投播当前播放媒体内容的监听事件。
+设置投播当前播放媒体内容的监听事件。使用callback异步回调。
 
 每个指令支持注册多个回调，如果需要只执行最新监听，需要先注销旧的监听，否则新旧监听都会触发回调。
 
@@ -1350,7 +1350,7 @@ aVCastController.off('seekDone');
 
 ## on('validCommandChange')<sup>11+</sup>
 
-on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandType>>): void
+on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandType>>)
 
 会话支持的有效命令变化监听事件。
 
@@ -1367,10 +1367,11 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1378,14 +1379,14 @@ on(type: 'validCommandChange', callback: Callback\<Array\<AVCastControlCommandTy
 
 ```ts
 aVCastController.on('validCommandChange', (validCommands: avSession.AVCastControlCommandType[]) => {
-  console.info(`validCommandChange : SUCCESS : size : ${validCommands.length}`);
-  console.info(`validCommandChange : SUCCESS : validCommands : ${validCommands.values()}`);
+  console.info(`Succeeded in valid command change, size: ${validCommands.length}`);
+  console.info(`Succeeded in valid command change, validCommands: ${validCommands.values()}`);
 });
 ```
 
 ## off('validCommandChange')<sup>11+</sup>
 
-off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>): void
+off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommandType>>)
 
 取消会话有效命令变化事件监听。指定callback，可取消对应监听；未指定callback，取消所有事件监听。
 
@@ -1400,10 +1401,11 @@ off(type: 'validCommandChange', callback?: Callback\<Array\<AVCastControlCommand
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息           |
 | -------- | ---------------- |
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified.2.Incorrect parameter types.|
 | 6600101  | Session service exception. |
 | 6600103  | The session controller does not exist. |
 
@@ -1442,7 +1444,7 @@ on(type: 'videoSizeChange', callback: (width: number, height: number) => void): 
 
 ```ts
 aVCastController.on('videoSizeChange', (width: number, height: number) => {
-  console.info(`videoSizeChange : SUCCESS : size : ${width}, ${height}`);
+  console.info(`Succeeded in video size change, size: ${width}, ${height}`);
 });
 ```
 
@@ -1496,7 +1498,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)以及[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)以及[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1537,7 +1539,7 @@ off(type: 'error'): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)以及[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)以及[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1694,7 +1696,7 @@ off(type: 'castControlGenericError', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1777,7 +1779,7 @@ off(type: 'castControlIoError', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1848,7 +1850,7 @@ off(type: 'castControlParsingError', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1920,7 +1922,7 @@ off(type: 'castControlDecodingError', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -1989,7 +1991,7 @@ off(type: 'castControlAudioRendererError', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |
@@ -2065,7 +2067,7 @@ off(type: 'castControlDrmError', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息              |
 | -------- | --------------------- |

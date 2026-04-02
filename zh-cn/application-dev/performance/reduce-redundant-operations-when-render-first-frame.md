@@ -25,7 +25,7 @@
 
 ### 按需加载
 
-按需加载可以避免一次性初始化和加载所有元素，从而使首帧绘制时加载页面阶段的创建列表元素时间大大减少，从而提升性能表现。具体可参考文档[列表场景性能提升实践](list-perf-improvment.md#懒加载)。
+按需加载可以避免一次性初始化和加载所有元素，从而使首帧绘制时加载页面阶段的创建列表元素时间大大减少，从而提升性能表现。具体可参考文档[列表场景性能提升实践](list-perf-improvement.md#懒加载)。
 
 **案例：每一个列表元素都被初始化和加载，为了突出效果，方便观察，设定数组中的元素有1000个，使其在加载页面阶段创建列表内元素耗时大大增加。**
 
@@ -523,6 +523,8 @@ struct IsVisibleExample {
 
 ![reduce-redundant-operations-when-render-first-frame-ifelse-rs](figures/reduce-redundant-operations-when-render-first-frame-ifelse-rs.png)
 
-**说明**：在App泳道找到页面加载后第一个ReceiveVsync，其中的Trace标签H:MarshRSTransactionData携带参数transactionFlag，在render_service泳道找到相同transactionFlag的标签H:RSMainThread::ProcessCommandUni，其所属的ReceiveVsync时长就是render_service首帧耗时。
+>**说明**：
+>
+>在App泳道找到页面加载后第一个ReceiveVsync，其中的Trace标签H:MarshRSTransactionData携带参数transactionFlag，在render_service泳道找到相同transactionFlag的标签H:RSMainThread::ProcessCommandUni，其所属的ReceiveVsync时长就是render_service首帧耗时。
 
 从trace图可以看出，优化前使用Visibility.None隐藏图片后在Build阶段仍然有Image元素创建，Build耗时82ms230μs，使用if else隐藏图片后Build阶段耗时减少到660μs，显著减少页面加载耗时。同时优化前应用的render_service首帧耗时为10ms55μs，而优化后减少到了1ms604μs，渲染时间明显减少。

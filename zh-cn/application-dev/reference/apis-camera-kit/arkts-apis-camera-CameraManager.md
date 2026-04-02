@@ -65,7 +65,7 @@ getSupportedSceneModes(camera: CameraDevice): Array\<SceneMode\>
 
 | 参数名         | 类型                                                            | 必填 | 说明                      |
 | ------------ |--------------------------------------------------------------- | -- | -------------------------- |
-| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | 是 | 相机设备，通过 [getSupportedCameras](#getsupportedcameras) 接口获取。传参异常时，会返回错误码。       |
+| camera | [CameraDevice](arkts-apis-camera-i.md#cameradevice)                              | 是 | 相机设备，通过[getSupportedCameras](#getsupportedcameras)接口获取。传参异常时，会返回错误码[7400101](./errorcode-camera.md#7400101-无效入参)。       |
 
 **返回值：**
 
@@ -128,6 +128,10 @@ getSupportedFullOutputCapability(camera: CameraDevice, mode: SceneMode): CameraO
 
 查询指定相机在指定模式下支持的完整输出能力，包括未压缩图（YUV）、HEIF和HDR等能力。
 
+> **说明：**
+>
+> 使用YUV，HEIF或HDR等能力前，需要先显式调用此方法确保获取完整输出能力。
+ 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
@@ -449,6 +453,13 @@ function createPhotoOutput(cameraOutputCapability: camera.CameraOutputCapability
 createVideoOutput(profile: VideoProfile, surfaceId: string): VideoOutput
 
 创建录像输出对象，同步返回结果。
+
+在录像模式下，使能SDR或HDR_VIVID拍摄效果时，CameraFormat与ColorSpace必须按照下列表格中的对应关系配置，若不满足表格中CameraFormat与ColorSpace配置，会导致预览异常等问题。
+
+| SDR/HDR拍摄         | CameraFormat             | ColorSpace       |
+|--------------------|--------------------------|------------------|
+| SDR                | CAMERA_FORMAT_YUV_420_SP | BT709_LIMIT      |
+| HDR_VIVID          | CAMERA_FORMAT_YCRCB_P010<br>CAMERA_FORMAT_YCBCR_P010 | BT2020_HLG_LIMIT<br>BT2020_HLG_FULL |
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -959,11 +970,80 @@ function unregisterTorchStatusChange(cameraManager: camera.CameraManager): void 
 }
 ```
 
+## isTorchLevelControlSupported
+
+isTorchLevelControlSupported(): boolean
+
+检测设备是否支持手电筒亮度调节功能。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型        | 说明                          |
+| ---------- | ----------------------------- |
+| boolean    | 表示设备是否支持手电筒亮度调节功能。返回true表示支持，返回false表示不支持。若接口调用失败，返回undefined。 |
+
+**示例：**
+
+```ts
+function isTorchLevelControlSupported(cameraManager: camera.CameraManager): boolean {
+  let isSupported = cameraManager.isTorchLevelControlSupported();
+  return isSupported;
+}
+```
+
+## SetTorchModeOnWithLevel
+
+SetTorchModeOnWithLevel(torchLevel: number): void
+
+手电筒设置指定亮度级别。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型             | 必填 | 说明       |
+| -------- | --------------- | ---- | --------- |
+| torchLevel | number| 是 | 手电筒亮度级别。通常范围是[0.0, 1.0]（0.0为最暗，1.0为最亮）。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400201 | Camera service fatal error. |
+| 7400102 | Operation not allowed. |
+
+**示例：**
+
+```ts
+function SetTorchModeOnWithLevel(cameraManager: camera.CameraManager, torchLevel: number): void {
+  cameraManager.setTorchModeOnWithLevel(torchLevel);
+  return ;
+}
+```
+
 ## getCameraDevice<sup>18+</sup>
 
-getCameraDevice(position:CameraPosition, type: CameraType): CameraDevice
+getCameraDevice(position: CameraPosition, type: CameraType): CameraDevice
 
 根据相机位置和相机类型查询对应相机。
+
+获取指定[CameraPosition](arkts-apis-camera-e.md#cameraposition)和[CameraType](arkts-apis-camera-e.md#cameratype)的相机镜头，如果该接口返回结果为undefined，表示当前设备未查询到该镜头。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -1147,7 +1227,9 @@ createPhotoOutput(profile: Profile, surfaceId: string): PhotoOutput
 创建拍照输出对象，同步返回结果。
 
 > **说明：**
-> 从 API version 10开始支持，从API version 11开始废弃。建议使用[createPhotoOutput](#createphotooutput11)替代。
+>
+> - 从API version 10开始支持，从API version 11开始废弃。建议使用[createPhotoOutput](#createphotooutput11)替代。
+> - 该接口只支持创建JPEG格式的拍照输出对象。
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

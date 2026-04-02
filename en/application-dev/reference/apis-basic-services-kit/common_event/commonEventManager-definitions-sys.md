@@ -13,9 +13,9 @@ Common event types are defined in [Support enumeration of the ohos.commonEventMa
 
 > **NOTE**
 >
+> The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
 > The current page contains only the system APIs of this module. For details about other public APIs, see [System Common Events](../common_event/commonEventManager-definitions.md).
-
-
 
 
 ## Ability Kit
@@ -55,7 +55,7 @@ When a new application starts to be installed by a specified user on the device,
 
 ### COMMON_EVENT_BUNDLE_RESOURCES_CHANGED<sup>15+</sup>
 
-Indicates the common event of updating bundle management resource data.
+Indicates that the bundle management resource data has updated.
 
 This common event is sent when the bundle management resource data is updated in scenarios such as language or theme switching.
 
@@ -80,7 +80,7 @@ This common event is sent when the default application for opening a file change
 
 **Required permissions**: ohos.permission.CHANGE_DEFAULT_APPLICATION
 
-**Value:** "usual.event.DEFAULT_APPLICATION_CHANGED"
+**Value**: "usual.event.DEFAULT_APPLICATION_CHANGED"
 
 
 ### COMMON_EVENT_SHORTCUT_CHANGED<sup>20+</sup>
@@ -95,7 +95,7 @@ This common event is sent when the shortcut is changed (for example, when [setSh
 
 **Required permissions**: ohos.permission.MANAGE_SHORTCUTS
 
-**Value:** "usual.event.SHORTCUT_CHANGED"
+**Value**: "usual.event.SHORTCUT_CHANGED"
 
 
 ### COMMON_EVENT_KIOSK_MODE_ON<sup>20+</sup>
@@ -108,7 +108,7 @@ Indicates that the kiosk mode is enabled. When this mode is on, the common event
 
 **Required permissions**: none
 
-**Value:** usual.event.KIOSK_MODE_ON
+**Value**: usual.event.KIOSK_MODE_ON
 
 
 ### COMMON_EVENT_KIOSK_MODE_OFF<sup>20+</sup>
@@ -121,7 +121,7 @@ Indicates that the kiosk mode is disabled. When this mode is off, the common eve
 
 **Required permissions**: none
 
-**Value:** usual.event.KIOSK_MODE_OFF
+**Value**: usual.event.KIOSK_MODE_OFF
 
 
 ## Background Tasks Kit 
@@ -158,7 +158,7 @@ This common event is sent when the system updates the device configuration direc
 
 **Required permissions**: none
 
-**Value:** "usual.event.CUSTOM_CONFIG_POLICY_UPDATED"
+**Value**: "usual.event.CUSTOM_CONFIG_POLICY_UPDATED"
 
 ### COMMON_EVENT_CUSTOM_ROAMING_REGION_UPDATED<sup>20+</sup>
 
@@ -172,7 +172,7 @@ When the attributes such as network injection, persistent Connection, and GPS lo
 
 **Required permissions**: none
 
-**Value:** "usual.event.CUSTOM_ROAMING_REGION_UPDATED"
+**Value**: "usual.event.CUSTOM_ROAMING_REGION_UPDATED"
 
 ## Basic Services Kit - Power Supply
 
@@ -197,7 +197,7 @@ Indicates that a user has been added to the system.
 
 When a system account is created, the common event service is triggered to publish this event carrying the system account ID.
 
-APIs related to this event: **createOsAccount** and **createOsAccountForDomain**. These APIs are system APIs. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
+The system APIs related to this common event are **createOsAccount** and **createOsAccountForDomain**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -214,7 +214,7 @@ Indicates that a user has been removed from the system.
 
 When a system account is removed, the common event service is triggered to publish this event carrying the system account ID.
 
-APIs related to this event: **removeOsAccount**. This API is a system API. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
+The system API related to this common event is **removeOsAccount**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -231,7 +231,7 @@ Indicates that the status of the domain account status changes.
 
 When a domain user account is authenticated, deleted, or has the token updated, the common event service is triggered to publish this event carrying the system account ID, domain name, and account status.
 
-APIs related to this event: **removeOsAccount**, **DomainAccountManager.auth**, and **updateAccountToken**. These APIs are system APIs. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
+The system APIs related to this common event are **removeOsAccount**, **DomainAccountManager.auth**, and **updateAccountToken**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -248,7 +248,7 @@ Indicates that a user switchover is complete.
 
 When a system account is switched, the common event service is triggered to publish this event carrying the system account ID.
 
-APIs related to this event: **activateOsAccount**. This API is a system API. For details, see [@ohos.account.osAccount (System Account Management)](../js-apis-osAccount.md).
+The system API related to this common event is **activateOsAccount**. For details, see [@ohos.account.osAccount](../js-apis-osAccount.md).
 
 **System API**: This is a system API.
 
@@ -287,7 +287,7 @@ After a user is locked, the common event service is triggered to publish this ev
 
 ## Core File Kit
 
-This document lists the common system events provided by the file management subsystem to applications. Applications can use [APIs](../js-apis-commonEventManager.md) to subscribe to common system events.
+This topic lists the system common events provided by the file management subsystem to applications. For details about how to subscribe to system common events, see [@ohos.commonEventManager](../js-apis-commonEventManager.md).
 
 
 ### COMMON_EVENT_VOLUME_REMOVED
@@ -380,7 +380,7 @@ When a data migration application starts the backup and restore framework to per
 
 **Value**: "usual.event.RESTORE_START"
 
-### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+<sup>
+### COMMON_EVENT_CLOUD_DISK_STATE_CHANGED<sup>21+</sup>
 
 Indicates that the sync root of the cloud disk has been updated.
 
@@ -598,9 +598,9 @@ When an incoming call is missed on the device, the common event service is trigg
 
 ### COMMON_EVENT_RADIO_STATE_CHANGE<sup>10+</sup>
 
-Indicates that the radio state of the device has changed.
+Indicates that the radio state of the device modem has changed.
 
-When there is a change in the radio state of the device, the common event service is triggered to publish this event.
+When there is a change in the radio state of the device modem, the common event service is triggered to publish this event.
 
 **System API**: This is a system API.
 

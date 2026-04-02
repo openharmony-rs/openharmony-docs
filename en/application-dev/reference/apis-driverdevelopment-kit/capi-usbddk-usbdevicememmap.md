@@ -12,11 +12,11 @@ typedef struct UsbDeviceMemMap {...} UsbDeviceMemMap
 
 ## Overview
 
-Device memory map created by calling <b>OH_Usb_CreateDeviceMemMap</b>. A buffer using the device memory map can provide better performance.
+Device memory map created by calling <b>OH_Usb_CreateDeviceMemMap</b>. A buffer using the device memory map can improve data transmission performance.
 
 **Since**: 10
 
-**Related module**: [UsbDDK](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-usbddk.md)
 
 **Header file:** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

@@ -54,7 +54,7 @@ getDarkMode(): DarkMode
 
 **错误码：**
 
-错误码详细介绍请参考[errcode-uiappearance](errorcode-uiappearance.md)。
+错误码详细介绍请参考[用户界面外观服务错误码](errorcode-uiappearance.md)。
 
 | 错误码ID | 错误信息 |
 | -- | -- |
@@ -98,7 +98,7 @@ getFontScale(): number
 
 **错误码：**
 
-错误码详细介绍请参考[errcode-uiappearance](errorcode-uiappearance.md)。
+错误码详细介绍请参考[用户界面外观服务错误码](errorcode-uiappearance.md)。
 
 | 错误码ID | 错误信息 |
 | -- | -- |
@@ -142,7 +142,7 @@ getFontWeightScale(): number
 
 **错误码：**
 
-错误码详细介绍请参考[errcode-uiappearance](errorcode-uiappearance.md)。
+错误码详细介绍请参考[用户界面外观服务错误码](errorcode-uiappearance.md)。
 
 | 错误码ID | 错误信息 |
 | -- | -- |

@@ -10,17 +10,17 @@
 
 当设备需要获取传感器数据时，可以使用sensor模块，例如：通过订阅方向传感器数据感知用户设备当前的朝向，通过订阅计步传感器数据统计用户的步数等。
 
-详细的接口介绍请参考[Sensor接口](../../reference/apis-sensor-service-kit/js-apis-sensor.md)。
+详细的接口介绍请参考[@ohos.sensor (传感器)](../../reference/apis-sensor-service-kit/js-apis-sensor.md)。
 
 
 ## 接口说明
 
 | 名称 | 描述                              |
 | -------- |---------------------------------|
-| sensor.on(sensorId, callback:AsyncCallback&lt;Response&gt;, options?: Options): void | 持续监听传感器数据变化。                    |
+| sensor.on(sensorId, callback: AsyncCallback&lt;Response&gt;, options?: Options): void | 持续监听传感器数据变化。                    |
 | sensor.on(type: 'sensorStatusChange', callback: Callback&lt;SensorStatusEvent&gt;): void | 监听传感器动态上下线的状态变化，callback返回传感器状态事件数据。 |
-| sensor.once(sensorId, callback:AsyncCallback&lt;Response&gt;): void | 获取一次传感器数据变化。                    |
-| sensor.off(sensorId, callback?:AsyncCallback&lt;void&gt;): void | 注销传感器数据的监听。                     |
+| sensor.once(sensorId, callback: AsyncCallback&lt;Response&gt;): void | 获取一次传感器数据变化。                    |
+| sensor.off(sensorId, callback?: AsyncCallback&lt;void&gt;): void | 注销传感器数据的监听。                     |
 | sensor.off(sensorId, sensorInfoParam?: SensorInfoParam, callback?:AsyncCallback&lt;void&gt;): void | 注销传感器数据的监听，可传入设置参数。             |
 | sensor.off(type: 'sensorStatusChange', callback?: Callback&lt;SensorStatusEvent&gt;): void | 注销传感器动态上下线的状态变化的监听。             |
 | sensor.getSensorList(callback: AsyncCallback\<Array\<Sensor>>): void| 获取设备上的所有传感器信息。                  |
@@ -36,7 +36,7 @@
 
 2. 配置加速度传感器权限，具体配置方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-   <!-- @[sensor_js_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/module.json5) --> 
+   <!-- @[sensor_js_permission_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/module.json5) --> 
    
    ``` JSON5
    "requestPermissions": [
@@ -48,7 +48,7 @@
 
 3. 导入模块。
 
-   <!-- @[sensor_js_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_development_dependency_import_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    import { sensor } from '@kit.SensorServiceKit';
@@ -58,7 +58,7 @@
 
 4. 定义常量。
 
-   <!-- @[sensor_js_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_define_variables_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    let TAG = 'sensor: ';
@@ -66,7 +66,7 @@
 
 5. 查询设备支持的所有传感器的参数，如果获取不到某个传感器则代表该传感器在此设备上不存在或不可用，如果订阅没查到的传感器时需要处理异常。
 
-   <!-- @[sensor_js_get_sensor_list_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_get_sensor_list_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -93,7 +93,7 @@
 
    根据设备Id查询传感器。
 
-   <!-- @[sensor_js_get_sensor_list_by_device_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_get_sensor_list_by_device_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -111,16 +111,16 @@
 
    根据设备Id和传感器类型查询传感器。
 
-   <!-- @[sensor_js_get_single_sensor_by_device_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_get_single_sensor_by_device_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
      this.deviceId = -1;
      // 第二个参数deviceId 非必填
-     const sensorList: sensor.Sensor[] = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ACCELERO this.   deviceId);
+     const sensorList: sensor.Sensor[] = sensor.getSingleSensorByDeviceSync(sensor.SensorId.ACCELEROMETER, this.deviceId);
      console.info(`sensorList length: ${sensorList.length}`);
      console.info(`sensorList Json: ${JSON.stringify(sensorList)}`);
-     // ···
+     // ...
    } catch (error) {
      let e: BusinessError = error as BusinessError;
      console.error(`Failed to get sensorList. Code: ${e.code}, message: ${e.message}`);
@@ -131,7 +131,7 @@
 
    通过on()接口，实现对传感器的持续监听，传感器上报周期interval设置为100000000纳秒。
 
-   <!-- @[sensor_js_on_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_on_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try { 
@@ -147,7 +147,7 @@
 
    第三个参数还可以传入SensorInfoParam，传递deviceId、sensorIndex。
 
-   <!-- @[sensor_js_on_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_on_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try { 
@@ -165,7 +165,7 @@
 
    通过once()接口，实现对传感器的一次监听。
 
-   <!-- @[sensor_js_once_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_once_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -185,7 +185,7 @@
 
    取消持续监听，此场景下未订阅而取消监听为异常行为，需处理异常。
 
-   <!-- @[sensor_js_off_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_off_accelerometer_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -198,7 +198,7 @@
 
    根据SensorInfoParam取消监听。
 
-   <!-- @[sensor_js_off_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_off_accelerometer_use_sensor_info_param_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -213,7 +213,7 @@
 
    注册监听, SensorStatusEvent 会返回事件时间戳、传感器ID、传感器索引、上线或下线、设备id、设备名称等值。
 
-   <!-- @[sensor_js_on_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_on_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -231,7 +231,7 @@
 
    取消监听。
 
-   <!-- @[sensor_js_off_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_off_sensor_status_change_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -247,7 +247,7 @@
 
    使用callback方式。
 
-   <!-- @[sensor_js_get_geomagnetic_info_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+   <!-- @[sensor_js_get_geomagnetic_info_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
    
    ``` TypeScript
    try {
@@ -273,7 +273,7 @@
 
    使用promise方式。
 
-   <!-- @[sensor_js_get_geomagnetic_info_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+   <!-- @[sensor_js_get_geomagnetic_info_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
    
    ``` TypeScript
    try {
@@ -299,7 +299,7 @@
 
     使用callback方式。
 
-    <!-- @[sensor_js_get_device_altitude_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @[sensor_js_get_device_altitude_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
@@ -320,7 +320,7 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_get_device_altitude_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_device_altitude_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
@@ -328,7 +328,7 @@
       let currentPressure = 1500.0;
       const promise = sensor.getDeviceAltitude(seaPressure, currentPressure);
       promise.then((data: number) => {
-        console.info('Succeeded in getting sensor_getDeviceAltitude_Promise', data);
+        console.info('Succeeded in getting device altitude: ', data);
       }, (err: BusinessError) => {
         console.error(`Failed to get altitude. Code: ${err.code}, message: ${err.message}`);
       });
@@ -342,7 +342,7 @@
 
     使用callback方式。
 
-    <!-- @[sensor_js_get_inclination_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @[sensor_js_get_inclination_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
@@ -367,7 +367,7 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_get_inclination_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_inclination_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     try {
@@ -393,7 +393,7 @@
 
     使用callback方式。
 
-    <!-- @[sensor_js_get_angle_variation_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @[sensor_js_get_angle_variation_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
@@ -429,7 +429,7 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_get_angle_variation_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_angle_variation_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     try {
@@ -466,7 +466,7 @@
 
     使用callback方式。
 
-    <!-- @[sensor_js_get_rotation_matrix_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @[sensor_js_get_rotation_matrix_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
@@ -488,7 +488,7 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_get_rotation_matrix_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_rotation_matrix_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     try {
@@ -511,7 +511,7 @@
 
     使用callback方式。
 
-    <!-- @[sensor_js_transform_rotation_matrix_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @[sensor_js_transform_rotation_matrix_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
@@ -537,7 +537,7 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_transform_rotation_matrix_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_transform_rotation_matrix_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     try {
@@ -564,7 +564,7 @@
 
     使用callback方式。
 
-    <!-- @[sensor_js_get_quaternion_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
+    <!-- @[sensor_js_get_quaternion_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
@@ -586,7 +586,7 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_get_quaternion_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_quaternion_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     try {
@@ -609,7 +609,7 @@
 
     使用callback方式。
 
-    <!-- @[sensor_js_get_orientation_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_orientation_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     try {
@@ -638,7 +638,7 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_get_orientation_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_orientation_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
@@ -653,11 +653,11 @@
           console.info('Succeeded in getting data[' + i + ']: ' + data[i]);
         }
       }, (err: BusinessError) => {
-        console.error(`Failed to getOrientation. Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to get orientation. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
-      console.error(`Failed to getOrientation Code: ${e.code}, message: ${e.message}`);
+      console.error(`Failed to get orientation. Code: ${e.code}, message: ${e.message}`);
     }
     ```
 
@@ -665,13 +665,13 @@
 
     使用callback方式。
 
-    <!-- @[sensor_js_get_rotation_matrix_two_param_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_rotation_matrix_two_param_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
       let gravity = [-0.27775216, 0.5351276, 9.788099];
       let geomagnetic = [210.87253, -78.6096, -111.44444];
-      sensor.getRotationMatrix(gravity, geomagnetic, (err: BusinessError, data: sRotationMatrixResponse) =>     {
+      sensor.getRotationMatrix(gravity, geomagnetic, (err: BusinessError, data: sensor.RotationMatrixResponse) => {
         if (err) {
           console.error(`Failed to get rotationMatrix. Code: ${err.code}, message: ${err.message}`);
           return;
@@ -686,7 +686,7 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_get_rotation_matrix_two_param_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_rotation_matrix_two_param_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     try {
@@ -708,7 +708,7 @@
 
     使用callback方式。
 
-    <!-- @[sensor_js_get_single_sensor_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_single_sensor_callback_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     try {
@@ -727,14 +727,14 @@
 
     使用promise方式。
 
-    <!-- @[sensor_js_get_single_sensor_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_single_sensor_promise_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) --> 
     
     ``` TypeScript
     try {
       sensor.getSingleSensor(sensor.SensorId.ACCELEROMETER).then((data: sensor.Sensor) => {
         console.info('Succeeded in getting sensor: ' + JSON.stringify(data));
       }, (err: BusinessError) => {
-        console.error(`Failed to get singleSensor . Code: ${err.code}, message: ${err.message}`);
+        console.error(`Failed to get singleSensor. Code: ${err.code}, message: ${err.message}`);
       });
     } catch (error) {
       let e: BusinessError = error as BusinessError;
@@ -744,7 +744,7 @@
 
     使用sync方式。
 
-    <!-- @[sensor_js_get_single_sensor_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/DeviceManagement/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
+    <!-- @[sensor_js_get_single_sensor_sync_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Sensor/SensorJsSamples/entry/src/main/ets/pages/Index.ets) -->
     
     ``` TypeScript
     try {

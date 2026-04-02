@@ -17,6 +17,8 @@ This file declares functions related to the pen in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -66,10 +68,10 @@ This file declares functions related to the pen in the drawing module.
 | [bool OH_Drawing_PenGetFillPath(OH_Drawing_Pen* pen, const OH_Drawing_Path* src, OH_Drawing_Path* dst,const OH_Drawing_Rect* rect, const OH_Drawing_Matrix* matrix)](#oh_drawing_pengetfillpath) | Obtains the source path outline drawn using this pen and represents it using a destination path.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If any of **pen**, **src**, and **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [void OH_Drawing_PenReset(OH_Drawing_Pen* pen)](#oh_drawing_penreset) | Resets a pen to the initial state.<br>This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget).<br>If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.|
 | [OH_Drawing_ErrorCode OH_Drawing_PenSetColor4f(OH_Drawing_Pen* pen, float a, float r, float g, float b,OH_NativeColorSpaceManager* colorSpaceManager)](#oh_drawing_pensetcolor4f) | Sets the color for a pen, which is used to outline a shape.<br> The color is in ARGB format represented by floating-point numbers. The color space is specified by [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md).<br> If **colorSpaceManager** is a null pointer, the SRGB (standard red, green, and blue color space based on IEC 61966-2.1:1999) color space is used as the default value.|
-| [OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(const OH_Drawing_Pen* pen, float* a)](#oh_drawing_pengetalphafloat) | Obtains the alpha value of the pen color.|
-| [OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(const OH_Drawing_Pen* pen, float* r)](#oh_drawing_pengetredfloat) | Obtains the red component of the pen color.|
-| [OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(const OH_Drawing_Pen* pen, float* g)](#oh_drawing_pengetgreenfloat) | Obtains the green component of the pen color.|
-| [OH_Drawing_ErrorCode OH_Drawing_PenGetBlueFloat(const OH_Drawing_Pen* pen, float* b)](#oh_drawing_pengetbluefloat) | Obtains the blue component of the pen color.|
+| [OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(OH_Drawing_Pen* pen, float* a)](#oh_drawing_pengetalphafloat) | Obtains the alpha value of the pen color.|
+| [OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(OH_Drawing_Pen* pen, float* r)](#oh_drawing_pengetredfloat) | Obtains the red component of the pen color.|
+| [OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(OH_Drawing_Pen* pen, float* g)](#oh_drawing_pengetgreenfloat) | Obtains the green component of the pen color.|
+| [OH_Drawing_ErrorCode OH_Drawing_PenGetBlueFloat(OH_Drawing_Pen* pen, float* b)](#oh_drawing_pengetbluefloat) | Obtains the blue component of the pen color.|
 
 ## Enum Description
 
@@ -742,7 +744,7 @@ Sets the color for a pen, which is used to outline a shape.<br> The color is in 
 ### OH_Drawing_PenGetAlphaFloat()
 
 ```c
-OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(const OH_Drawing_Pen* pen, float* a)
+OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(OH_Drawing_Pen* pen, float* a)
 ```
 
 **Description**
@@ -757,7 +759,7 @@ Obtains the alpha value of the pen color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
+| [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
 | float* a | Alpha value of the pen color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
 **Returns**
@@ -769,7 +771,7 @@ Obtains the alpha value of the pen color.
 ### OH_Drawing_PenGetRedFloat()
 
 ```c
-OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(const OH_Drawing_Pen* pen, float* r)
+OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(OH_Drawing_Pen* pen, float* r)
 ```
 
 **Description**
@@ -784,7 +786,7 @@ Obtains the red component of the pen color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
+| [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
 | float* r | Red component of the pen color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
 **Returns**
@@ -796,7 +798,7 @@ Obtains the red component of the pen color.
 ### OH_Drawing_PenGetGreenFloat()
 
 ```c
-OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(const OH_Drawing_Pen* pen, float* g)
+OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(OH_Drawing_Pen* pen, float* g)
 ```
 
 **Description**
@@ -811,7 +813,7 @@ Obtains the green component of the pen color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
+| [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
 | float* g | Green component of the pen color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
 **Returns**
@@ -823,7 +825,7 @@ Obtains the green component of the pen color.
 ### OH_Drawing_PenGetBlueFloat()
 
 ```c
-OH_Drawing_ErrorCode OH_Drawing_PenGetBlueFloat(const OH_Drawing_Pen* pen, float* b)
+OH_Drawing_ErrorCode OH_Drawing_PenGetBlueFloat(OH_Drawing_Pen* pen, float* b)
 ```
 
 **Description**
@@ -838,7 +840,7 @@ Obtains the blue component of the pen color.
 
 | Name| Description|
 | -- | -- |
-| const [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
+| [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)* pen | Pointer to an [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object.|
 | float* b | Blue component of the pen color. The value is a floating-point number ranging from 0.0 to 1.0.|
 
 **Returns**

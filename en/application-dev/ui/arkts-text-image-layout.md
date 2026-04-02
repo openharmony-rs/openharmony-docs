@@ -10,7 +10,7 @@ Text and image layout combines images with text, allowing text to flow around im
 
 ## Using the Span and ImageSpan for Text and Image Layout
 
-Configure the [textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20) attribute of the **Text** component and set the **verticalAlign** attribute of the **ImageSpan** component to **ImageSpanAlignment.FOLLOW_PARAGRAPH** to display product pricing and discount information.
+Configure the [textVerticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#textverticalalign20) attribute of the [Text](../reference/apis-arkui/arkui-ts/ts-basic-components-text.md) component and set the [verticalAlign](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md#verticalalign) attribute of the [ImageSpan](../reference/apis-arkui/arkui-ts/ts-basic-components-imagespan.md) component to **ImageSpanAlignment.FOLLOW_PARAGRAPH** to display product price and discount.
 
 <!-- @[textImage_component](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/TextComponent/entry/src/main/ets/pages/textImageMixedLayout/TextImageComponent.ets) -->
 

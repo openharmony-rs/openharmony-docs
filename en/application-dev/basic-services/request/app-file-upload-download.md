@@ -377,11 +377,11 @@ async audioFileAgentTask(url: string, fileName: string, callback: (progress: num
 
 ### Downloading Images or Videos
 
-Call the [createAsset()](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2) API of [PhotoAccessHelper](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md) to create a media file and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10) to download the media file.
+Call the [createAsset()](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#createasset-2) API of the **PhotoAccessHelper** [module](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md) to create a media file and obtain the URI of the user file. Use this URI as the value of the **saveas** field of [Config](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentconfig10) to download the media file.
 
 Permission required: [ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo)
 
-[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo) is a [restricted permission](../../security/AccessToken/restricted-permissions.md) of the [system_basic](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism) level. If the normal-level application needs to request this permission, its APL level must be declared as system_basic or higher. In addition, you should [request the user_grant permission from users](../../security/AccessToken/request-user-authorization.md).
+[ohos.permission.WRITE_IMAGEVIDEO](../../security/AccessToken/restricted-permissions.md#ohospermissionwrite_imagevideo) is a [restricted permission](../../security/AccessToken/restricted-permissions.md) of the system_basic level (one of the [basic concepts in the permission mechanism](../../security/AccessToken/app-permission-mgmt-overview.md#basic-concepts-in-the-permission-mechanism)). If the normal-level application needs to request this permission, its APL level must be declared as system_basic or higher. In addition, you should [request the user_grant permission from users](../../security/AccessToken/request-user-authorization.md).
 
 <!-- @[media_user_file_download](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Basic-Services-Kit/request/UploadDownloadGuide/features/uploadanddownload/src/main/ets/download/userFile/MediaDownload.ets)-->
 
@@ -601,7 +601,7 @@ Since API version 22, you can use the [wantAgent](../../reference/apis-ability-k
 
 ### Feature Description
 
-The [wantAgent](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentnotification15) parameter set in the download task configuration specifies the application page to be redirected to. When a user taps a notification of an ongoing or completed download task, the system starts the specified application capability based on the **wantAgent** parameter.
+The **wantAgent** parameter set in [request.agent.Notification](../../reference/apis-basic-services-kit/js-apis-request.md#requestagentnotification15) of the download task configuration specifies the application page to be redirected to. When a user taps a notification of an ongoing or completed download task, the system starts the specified application capability based on the **wantAgent** parameter.
 
 ### Sample Code
 

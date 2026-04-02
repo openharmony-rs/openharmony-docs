@@ -37,7 +37,7 @@ Called to initialize a wallpaper extension ability when it is launched. Multi-th
 
 | Name| Type         | Mandatory| Description                            |
 | ------ | ----------- | ---- | ------------------------------- |
-| want   | [object](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | Want information related to the wallpaper extension ability, including the ability name and bundle name.|
+| want   | object | Yes  | Want information related to the wallpaper extension ability, including the ability name and bundle name.|
 
 **Example**
 

@@ -7,6 +7,10 @@
 <!--Tester: @lpw_work-->
 <!--Adviser: @Brilliantry_Rui-->
 
+```c
+typedef struct {...} RawFileDescriptor
+```
+
 ## Overview
 
 Defines the file descriptor of a rawfile. **RawFileDescriptor** is an output parameter of [OH_ResourceManager_GetRawFileDescriptor](capi-raw-file-h.md#oh_resourcemanager_getrawfiledescriptor). It contains the file descriptor of a rawfile and the start position and length of the rawfile in the HAP.

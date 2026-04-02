@@ -1414,7 +1414,7 @@ Enables listening for update events. This API uses an asynchronous callback to r
 | Name              | Type                                      | Mandatory  | Description  |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | Yes   | Event information.|
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | Yes   | Event callback.|
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | Yes   | Event callback.|
 
 **Error codes**
 
@@ -1449,7 +1449,7 @@ Disables listening for update events. This API uses an asynchronous callback to 
 | Name              | Type                                      | Mandatory  | Description  |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | Yes   | Event information.|
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | No   | Event callback.|
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | No   | Event callback.|
 
 **Error codes**
 
@@ -1773,7 +1773,7 @@ Enables listening for update events. This API uses an asynchronous callback to r
 | Name              | Type                                      | Mandatory  | Description  |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | Yes   | Event information.|
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | Yes   | Event callback.|
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | Yes   | Event callback.|
 
 **Error codes**
 
@@ -1810,7 +1810,7 @@ Disables listening for update events. This API uses an asynchronous callback to 
 | Name              | Type                                      | Mandatory  | Description  |
 | ----------------- | ---------------------------------------- | ---- | ---- |
 | eventClassifyInfo | [EventClassifyInfo](#eventclassifyinfo)  | Yes   | Event information.|
-| taskCallback      | [UpgradeTaskCallback](#upgradetaskcallback) | No   | Event callback.|
+| taskCallback<sup>23+</sup>      | [UpgradeTaskCallback](#upgradetaskcallback23) | No   | Event callback.|
 
 **Error codes**
 
@@ -1905,7 +1905,7 @@ Represents a version component.
 | size            | number                              | No| No| Size of the update package, in bytes.   |
 | effectiveMode   | [EffectiveMode](#effectivemode)     | No| No| Effective mode.    |
 | descriptionInfo | [DescriptionInfo](#descriptioninfo) | No| No| Information about the version description file.|
-| otaMode<sup>22+</sup> | [OtaMode](#otamode22)                 | No| Yes| OTA mode.    |
+| otaMode<sup>20+</sup> | [OtaMode](#otamode20)                 | No| Yes| OTA mode.    |
 
 ## DescriptionOptions
 
@@ -2097,7 +2097,7 @@ Represents an update file.
 | fileType | [ComponentType](#componenttype) | No   | No| File type.|
 | filePath | string                          | No   | No| File path.|
 
-## UpgradeTaskCallback
+## UpgradeTaskCallback<sup>23+</sup>
 
 type UpgradeTaskCallback = (eventInfo: EventInfo) => void
 
@@ -2162,7 +2162,7 @@ Enumerates effective modes.
 | LIVE          | 2    | Live update. |
 | LIVE_AND_COLD | 3    | Hybrid live and cold update.|
 
-## OtaMode<sup>22+</sup>
+## OtaMode<sup>20+</sup>
 
 Enumerates update modes.
 

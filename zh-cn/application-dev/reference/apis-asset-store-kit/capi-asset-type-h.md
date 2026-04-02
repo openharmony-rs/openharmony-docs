@@ -142,7 +142,7 @@ enum Asset_ResultCode
 | ASSET_SERVICE_UNAVAILABLE = 24000001 | 表示关键资产服务不可用。 |
 | ASSET_NOT_FOUND = 24000002 | 表示未找到关键资产。 |
 | ASSET_DUPLICATED = 24000003 | 表示关键资产已存在。 |
-| ASSET_ACCESS_DENIED = 24000004 | 表示拒绝访问关键资产。 |
+| ASSET_ACCESS_DENIED = 24000004 | 表示访问被拒绝。 |
 | ASSET_STATUS_MISMATCH = 24000005 | 表示锁屏状态不匹配。 |
 | ASSET_OUT_OF_MEMORY = 24000006 | 表示系统内存不足。 |
 | ASSET_DATA_CORRUPTED = 24000007 | 表示关键资产损坏。 |
@@ -150,7 +150,7 @@ enum Asset_ResultCode
 | ASSET_CRYPTO_ERROR = 24000009 | 表示算法库操作失败。 |
 | ASSET_IPC_ERROR = 24000010 | 表示进程通信错误。 |
 | ASSET_BMS_ERROR = 24000011 | 表示包管理服务异常。 |
-| ASSET_ACCOUNT_ERROR = 24000012 | 表示账号系统异常。 |
+| ASSET_ACCOUNT_ERROR = 24000012 | 表示账号系统服务异常。 |
 | ASSET_ACCESS_TOKEN_ERROR = 24000013 | 表示访问控制服务异常。 |
 | ASSET_FILE_OPERATION_ERROR = 24000014 | 表示文件操作失败。 |
 | ASSET_GET_SYSTEM_TIME_ERROR = 24000015 | 表示获取系统时间失败。 |

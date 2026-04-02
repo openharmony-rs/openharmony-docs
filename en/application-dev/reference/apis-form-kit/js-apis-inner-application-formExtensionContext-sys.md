@@ -16,8 +16,6 @@ You can use the APIs of this module to start a FormExtensionAbility.
 > - The APIs of this module can be used only in the stage model.
 > - The APIs provided by this module are system APIs.
 
-
-
 ## Modules to Import
 
 ```ts
@@ -33,6 +31,8 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.Form
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Error codes**
 
@@ -74,7 +74,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
     };
     this.context.startAbility(want, (error: BusinessError) => {
       if (error) {
-        console.error(`FormExtensionContext startAbility, error:${JSON.stringify(error)}`);
+        console.error(`FormExtensionContext startAbility, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message})`);
       } else {
         console.info('FormExtensionContext startAbility success');
       }
@@ -92,6 +92,8 @@ Starts an ability. This API uses a promise to return the result.
 **System API**: This is a system API.
 
 **System capability**: SystemCapability.Ability.Form
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -153,7 +155,9 @@ Connects this ability to a ServiceExtensionAbility.
 
 **System capability**: SystemCapability.Ability.Form
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -218,7 +222,7 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
         console.info('----------- onDisconnect -----------')
       },
       onFailed(code) {
-        console.error('----------- onFailed -----------')
+        console.error(`onFailed, code: ${code}`)
       }
     };
 
@@ -237,11 +241,13 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 
 disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback&lt;void&gt;): void
 
-Disconnects this ability from a ServiceExtensionAbility and after the successful disconnection, sets the remote object returned upon the connection to void. This API uses an asynchronous callback to return the result. 
+Disconnects this ability from a **ServiceExtensionAbility** and after the successful disconnection, sets the **remote** object returned upon the connection to void. This API uses an asynchronous callback to return the result.
 
 **System capability**: SystemCapability.Ability.Form
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -269,6 +275,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // commRemote is the remote object returned in the onConnect() callback. The value null is meaningless and is only an example.
 let commRemote: rpc.IRemoteObject | null = null;
+
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // In actual use, connection is the return value of connectServiceExtensionAbility(). The value 1 is meaningless and is only an example.
@@ -302,7 +309,9 @@ Disconnects this ability from a ServiceExtensionAbility and after the successful
 
 **System capability**: SystemCapability.Ability.Form
 
-**System API**: This is a system API and cannot be called by third-party applications.
+**System API**: This is a system API.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -335,6 +344,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 // commRemote is the remote object returned in the onConnect() callback. The value null is meaningless and is only an example.
 let commRemote: rpc.IRemoteObject | null = null;
+
 export default class MyFormExtensionAbility extends FormExtensionAbility {
   onFormEvent(formId: string, message: string) {
     // In actual use, connection is the return value of connectServiceExtensionAbility(). The value 1 is meaningless and is only an example.

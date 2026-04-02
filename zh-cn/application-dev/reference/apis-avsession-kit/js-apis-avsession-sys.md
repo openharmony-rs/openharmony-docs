@@ -27,6 +27,68 @@ import { avSession } from '@kit.AVSessionKit';
 
 本文档仅提供系统接口说明，以下接口的使用说明均需先创建实例，请参考公开接口[avSession.createAVSession](arkts-apis-avsession-f.md#avsessioncreateavsession10)的说明及示例，创建对应实例。
 
+## avSession.getAllSessionDescriptors 
+
+getAllSessionDescriptors(callback: AsyncCallback\<Array\<Readonly\<AVSessionDescriptor>>>): void 
+
+获取所有设置过媒体信息且注册过控制回调的会话的描述符信息。使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。 
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager 
+
+**系统接口：** 该接口为系统接口。 
+
+**参数：** 
+
+| 参数名   | 类型                                                         | 必填 | 说明                                       | 
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ | 
+| callback | AsyncCallback<Array<Readonly<[AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)\>\>\> | 是   | 回调函数。返回所有会话描述的只读对象。 | 
+
+**错误码：** 
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
+
+| 错误码ID | 错误信息 | 
+| -------- | ---------------------------------------- | 
+| 201 | permission denied. | 
+| 202 | Not System App. |
+| 6600101  |Session service exception. | 
+
+**示例：** 
+
+```ts 
+import { BusinessError } from '@kit.BasicServicesKit'; 
+import { avSession } from '@kit.AVSessionKit'; 
+@Entry 
+@Component 
+struct Index { 
+  @State message: string = 'hello world'; 
+
+  build() { 
+    Column() { 
+        Text(this.message) 
+          .onClick(()=>{ 
+            avSession.getAllSessionDescriptors((err: BusinessError, descriptors: avSession.AVSessionDescriptor[]) => { 
+              if (err) { 
+                console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`); 
+              } else { 
+                console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`); 
+                if (descriptors.length > 0 ) { 
+                    console.info(`Succeeded in getting session descriptor, isActive: ${descriptors[0].isActive}`); 
+                    console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`); 
+                    console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`); 
+                } 
+              } 
+            }); 
+          }) 
+      } 
+    .width('100%') 
+    .height('100%') 
+  } 
+} 
+```
+
 ## avSession.getSessionDescriptors<sup>22+</sup>
 
 getSessionDescriptors(category: SessionCategory): Promise\<Array\<Readonly\<AVSessionDescriptor>>>
@@ -68,11 +130,11 @@ getSessionDescriptors(category: SessionCategory): Promise\<Array\<Readonly\<AVSe
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((descriptors: avSession.AVSessionDescriptor[]) => {
-  console.info(`getSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+  console.info(`Succeeded in getting session descriptors, length: ${descriptors.length}`);
   if (descriptors.length > 0) {
-    console.info(`getSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
-    console.info(`GetSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
-    console.info(`GetSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
+    console.info(`Succeeded in getting session descriptor, isActive: ${descriptors[0].isActive}`);
+    console.info(`Succeeded in getting session descriptor, type: ${descriptors[0].type}`);
+    console.info(`Succeeded in getting session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
   }
 }).catch((err: BusinessError) => {
   console.error(`GetSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -120,13 +182,13 @@ getHistoricalSessionDescriptors(maxSize?: number): Promise\<Array\<Readonly\<AVS
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.getHistoricalSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
-  console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+  console.info(`Succeeded in getting historical session descriptors, length: ${descriptors.length}`);
   if (descriptors.length > 0 && descriptors[0]) {
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].sessionId : ${descriptors[0].sessionId}`);
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].elementName.bundleName : ${descriptors[0].elementName.bundleName}`);
+    console.info(`Succeeded in getting historical session descriptor, isActive: ${descriptors[0].isActive}`);
+    console.info(`Succeeded in getting historical session descriptor, type: ${descriptors[0].type}`);
+    console.info(`Succeeded in getting historical session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
+    console.info(`Succeeded in getting historical session descriptor, sessionId: ${descriptors[0].sessionId}`);
+    console.info(`Succeeded in getting historical session descriptor, bundleName: ${descriptors[0].elementName.bundleName}`);
   }
 }).catch((err: BusinessError) => {
   console.error(`getHistoricalSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
@@ -172,13 +234,13 @@ avSession.getHistoricalSessionDescriptors(1, (err: BusinessError, descriptors: a
   if (err) {
     console.error(`getHistoricalSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors.length : ${descriptors.length}`);
+    console.info(`Succeeded in getting historical session descriptors, length: ${descriptors.length}`);
     if (descriptors.length > 0 ) {
-      console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].isActive : ${descriptors[0].isActive}`);
-      console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].type : ${descriptors[0].type}`);
-      console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].sessionTag : ${descriptors[0].sessionTag}`);
-      console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].sessionId : ${descriptors[0].sessionId}`);
-      console.info(`getHistoricalSessionDescriptors : SUCCESS : descriptors[0].elementName.bundleName : ${descriptors[0].elementName.bundleName}`);
+      console.info(`Succeeded in getting historical session descriptor, isActive: ${descriptors[0].isActive}`);
+      console.info(`Succeeded in getting historical session descriptor, type: ${descriptors[0].type}`);
+      console.info(`Succeeded in getting historical session descriptor, sessionTag: ${descriptors[0].sessionTag}`);
+      console.info(`Succeeded in getting historical session descriptor, sessionId: ${descriptors[0].sessionId}`);
+      console.info(`Succeeded in getting historical session descriptor, bundleName: ${descriptors[0].elementName.bundleName}`);
     }
   }
 });
@@ -224,7 +286,7 @@ getHistoricalAVQueueInfos(maxSize: number, maxAppSize: number) : Promise\<Array\
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.getHistoricalAVQueueInfos(3, 5).then((avQueueInfos: avSession.AVQueueInfo[]) => {
-  console.info(`getHistoricalAVQueueInfos : SUCCESS : avQueueInfos.length : ${avQueueInfos.length}`);
+  console.info(`Succeeded in getting historical AV queue infos, length: ${avQueueInfos.length}`);
 }).catch((err: BusinessError) => {
   console.error(`getHistoricalAVQueueInfos BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -270,9 +332,76 @@ avSession.getHistoricalAVQueueInfos(3, 5, (err: BusinessError, avQueueInfos: avS
   if (err) {
     console.error(`getHistoricalAVQueueInfos BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`getHistoricalAVQueueInfos : SUCCESS : avQueueInfos.length : ${avQueueInfos.length}`);
+    console.info(`Succeeded in getting historical AV queue infos, length: ${avQueueInfos.length}`);
   }
 });
+```
+
+## avSession.createController 
+
+createController(sessionId: string, callback: AsyncCallback\<AVSessionController>): void 
+
+根据会话ID创建会话控制器。使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_MEDIA_RESOURCES，仅系统应用可用。 
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager 
+
+**系统接口：** 该接口为系统接口。 
+
+**参数：** 
+
+| 参数名    | 类型                                                        | 必填 | 说明                                                         | 
+| --------- | ----------------------------------------------------------- | ---- |------------------------------------------------------------ | 
+| sessionId | string                                                      | 是   | 会话ID。                                                     | 
+| callback  | AsyncCallback<[AVSessionController](arkts-apis-avsession-AVSessionController.md)\> | 是   | 回调函数。返回会话控制器实例，可查看会话ID，<br>并完成对会话发送命令及事件，获取元数据、播放状态信息等操作。 |
+
+**错误码：** 
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
+
+| 错误码ID | 错误信息 | 
+| -------- | ---------------------------------------- | 
+| 201 | permission denied. | 
+| 202 | Not System App. | 
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. | 
+| 6600101  | Session service exception. | 
+| 6600102  | The session does not exist. | 
+
+**示例：** 
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.getAllSessionDescriptors().then((descriptors: avSession.AVSessionDescriptor[]) => {
+              console.info(`Succeeded in getting all session descriptors, length: ${descriptors.length}`);
+              if (descriptors.length > 0 ) {
+                avSession.createController(descriptors[0]?.sessionId, (err: BusinessError, avcontroller: avSession.AVSessionController) => {
+                  if (err) {
+                    console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
+                  } else {
+                    console.info('Succeeded in creating controller.');
+                  }
+                });
+              }
+            }).catch((err: BusinessError) => {
+              console.error(`GetAllSessionDescriptors BusinessError: code: ${err.code}, message: ${err.message}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
 ```
 
 ## avSession.castAudio
@@ -333,7 +462,7 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
 
 if (audioDevices !== undefined) {
   avSession.castAudio('all', audioDevices as audio.AudioDeviceDescriptors).then(() => {
-    console.info('CreateController : SUCCESS');
+    console.info('Succeeded in creating controller.');
   }).catch((err: BusinessError) => {
     console.error(`CreateController BusinessError: code: ${err.code}, message: ${err.message}`);
   });
@@ -392,7 +521,7 @@ audioRoutingManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data)
       if (err) {
         console.error(`CastAudio BusinessError: code: ${err.code}, message: ${err.message}`);
       } else {
-        console.info('CastAudio : SUCCESS ');
+        console.info('Succeeded in casting audio.');
       }
     });
   }
@@ -444,7 +573,7 @@ import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
-  console.info('startAVPlayback : SUCCESS');
+  console.info('Succeeded in starting AV playback.');
 }).catch((err: BusinessError) => {
   console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -492,8 +621,8 @@ startAVPlayback(bundleName: string, assetId: string, info: CommandInfo): Promise
 import { audio } from '@kit.AudioKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-avSession.startAVPlayback("com.example.myapplication", "121278", "entry").then(() => {
-  console.info('startAVPlayback : SUCCESS');
+avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
+  console.info('Succeeded in starting AV playback.');
 }).catch((err: BusinessError) => {
   console.error(`startAVPlayback BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -541,7 +670,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 import { avSession } from '@kit.AVSessionKit';
 
 avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_SESSION_REMOTE).then((sessionControllers: Array<avSession.AVSessionController>) => {
-  console.info(`getDistributedSessionController : SUCCESS : sessionControllers.length : ${sessionControllers.length}`);
+  console.info(`Succeeded in getting distributed session controller, length: ${sessionControllers.length}`);
 }).catch((err: BusinessError) => {
   console.error(`getDistributedSessionController BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -564,6 +693,315 @@ avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_
 | pid       | number | 否  | 是 | 会话的进程ID。 |
 | uid       | number | 否   | 是| 用户ID。       |
 
+## avSession.on('sessionCreate') 
+
+on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => void): void 
+
+会话的创建事件监听。 使用callback异步回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager 
+
+**系统接口：** 此接口为系统接口。 
+
+**参数：** 
+ 
+| 参数名    | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| type     | string                 | 是   | 事件回调类型，支持的事件是'sessionCreate'：会话创建事件，检测到会话创建时触发。|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 是   | 回调函数。参数为会话相关描述。 |
+
+**错误码：** 
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
+
+| 错误码ID | 错误信息 | 
+| -------- | ---------------------------------------- | 
+| 202 | Not System App. | 
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. | 
+| 6600101  | Session service exception. | 
+
+ **示例：** 
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('sessionCreate', (descriptor: avSession.AVSessionDescriptor) => {
+              console.info(`on sessionCreate : isActive : ${descriptor.isActive}`);
+              console.info(`on sessionCreate : type : ${descriptor.type}`);
+              console.info(`on sessionCreate : sessionTag : ${descriptor.sessionTag}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+```
+
+## avSession.on('sessionDestroy') 
+
+on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => void): void 
+
+会话的销毁事件监听。使用callback异步回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager 
+
+**系统接口：** 此接口为系统接口。 
+
+**参数：** 
+
+| 参数名   | 类型            | 必填 | 说明                                                         |
+| -------- | ---------------| ---- | ------------------------------------------------------------ |
+| type     | string         | 是   | 事件回调类型，支持的事件是`'sessionDestroy'`：会话销毁事件，检测到会话销毁时触发。|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 是   | 回调函数。参数为会话相关描述。 |
+
+ **错误码：** 
+
+ 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
+ 
+ | 错误码ID | 错误信息 | 
+ | -------- | ---------------------------------------- | 
+ | 202 | Not System App. | 
+ | 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. | 
+ | 6600101  | Session service exception. | 
+ 
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('sessionDestroy', (descriptor: avSession.AVSessionDescriptor) => {
+              console.info(`on sessionDestroy : ${descriptor.sessionId}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+ 
+## avSession.on('topSessionChange') 
+
+on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) => void): void 
+
+最新播放会话变更的事件监听。使用callback异步回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager 
+
+**系统接口：** 此接口为系统接口。 
+
+**参数：** 
+
+| 参数名   | 类型                 | 必填 | 说明                                                         |
+| -------- | --------------------| ---- | ------------------------------------------------------------ |
+| type     | string      | 是   | 事件回调类型，支持的事件是 `'topSessionChange'`：最新播放会话的变化事件，检测到最新的会话改变时触发。|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 是   | 回调函数。参数为会话相关描述。 |
+
+**错误码：** 
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
+
+| 错误码ID | 错误信息 | 
+| -------- | ---------------------------------------- | 
+| 202 | Not System App. | 
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. | 
+| 6600101  | Session service exception. | 
+
+**示例：** 
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('topSessionChange', (descriptor: avSession.AVSessionDescriptor) => {
+              console.info(`on topSessionChange : isActive : ${descriptor.isActive}`);
+              console.info(`on topSessionChange : type : ${descriptor.type}`);
+              console.info(`on topSessionChange : sessionTag : ${descriptor.sessionTag}`);
+            });
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## avSession.off('sessionCreate') 
+
+off(type: 'sessionCreate', callback?: (session: AVSessionDescriptor) => void): void 
+
+注销会话创建事件监听。注销后，不再接收该事件。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager 
+
+**系统接口：** 此接口为系统接口。 
+
+ **参数：**
+
+| 参数名   | 类型       | 必填 | 说明       |
+| -------- | ----------| ---- | ----------|
+| type     | string    | 是   | 事件回调类型，支持的事件为：`'sessionCreate'`。|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。                               |
+
+**错误码：** 
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
+
+| 错误码ID | 错误信息 | 
+| -------- | ---------------------------------------- | 
+| 202 | Not System App. | 
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. | 
+| 6600101  | Session service exception. | 
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('sessionCreate', (descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.off('sessionCreate');
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## avSession.off('sessionDestroy') 
+
+off(type: 'sessionDestroy', callback?: (session: AVSessionDescriptor) => void): void 
+
+注销会话销毁事件监听。注销后，不再监听该事件。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager 
+
+**系统接口：** 此接口为系统接口。 
+
+**参数：**
+
+| 参数名   | 类型        | 必填 | 说明                      |
+| -------- | -----------| ---- | -------------------------|
+| type     | string     | 是   | 事件回调类型，支持的事件为`'sessionDestroy'`。|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。|
+
+**错误码：** 
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
+
+| 错误码ID | 错误信息 | 
+| -------- | ---------------------------------------- | 
+| 202 | Not System App. | 
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. | 
+| 6600101  | Session service exception. | 
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('sessionDestroy', (descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.off('sessionDestroy');
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## avSession.off('topSessionChange') 
+
+off(type: 'topSessionChange', callback?: (session: AVSessionDescriptor) => void): void 
+
+注销最新播放会话变更事件监听。注销后，不再进行该事件的监听。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Manager 
+
+**系统接口：** 此接口为系统接口。 
+
+**参数：**
+
+| 参数名   | 类型              | 必填 | 说明                        |
+| -------- | -----------------| ---- | ---------------------------- |
+| type     | string           | 是   | 事件回调类型，支持的事件为`'topSessionChange'`。|
+| callback | (session: [AVSessionDescriptor](arkts-apis-avsession-i.md#avsessiondescriptor-23)) => void | 否   | 回调函数。当监听事件取消成功，err为undefined，否则返回错误对象。<br>该参数为会话相关描述，为可选参数，若不填写该参数，则认为取消所有相关会话的事件监听。 |
+
+**错误码：** 
+
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。 
+
+| 错误码ID | 错误信息 | 
+| -------- | ---------------------------------------- | 
+| 202 | Not System App. | 
+| 401 |  parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. | 
+| 6600101  | Session service exception. | 
+
+**示例：**
+
+```ts
+import { avSession } from '@kit.AVSessionKit';
+@Entry
+@Component
+struct Index {
+  @State message: string = 'hello world';
+
+  build() {
+    Column() {
+        Text(this.message)
+          .onClick(()=>{
+            avSession.on('topSessionChange', (descriptor: avSession.AVSessionDescriptor) => {
+            });
+            avSession.off('topSessionChange');
+          })
+      }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 
 ## avSession.on('sessionServiceDie')
 
@@ -751,7 +1189,7 @@ avSession.sendSystemAVKeyEvent(event, (err: BusinessError) => {
   if (err) {
     console.error(`SendSystemAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('SendSystemAVKeyEvent : SUCCESS ');
+    console.info('Succeeded in sending system AV key event.');
   }
 });
 ```
@@ -803,7 +1241,7 @@ let keyItem: KeyEvent.Key = {code:0x49, pressedTime:2, deviceId:0};
 let event: KeyEvent.KeyEvent = {id:1, deviceId:0, actionTime:1, screenId:1, windowId:1, action:2, key:keyItem, unicodeChar:0, keys:[keyItem], ctrlKey:false, altKey:false, shiftKey:false, logoKey:false, fnKey:false, capsLock:false, numLock:false, scrollLock:false};
 
 avSession.sendSystemAVKeyEvent(event).then(() => {
-  console.info('SendSystemAVKeyEvent Successfully');
+  console.info('Succeeded in sending system AV key event.');
 }).catch((err: BusinessError) => {
   console.error(`SendSystemAVKeyEvent BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -864,7 +1302,7 @@ avSession.sendSystemControlCommand(avcommand, (err) => {
   if (err) {
     console.error(`SendSystemControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('sendSystemControlCommand successfully');
+    console.info('Succeeded in sending system control command.');
   }
 });
 ```
@@ -928,7 +1366,7 @@ let avcommand: avSession.AVControlCommand = {command:cmd};
 // let cmd : avSession.AVControlCommandType = 'toggleFavorite';
 // let avcommand = {command:cmd, parameter:"false"};
 avSession.sendSystemControlCommand(avcommand).then(() => {
-  console.info('SendSystemControlCommand successfully');
+  console.info('Succeeded in sending system control command.');
 }).catch((err: BusinessError) => {
   console.error(`SendSystemControlCommand BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -977,7 +1415,7 @@ avSession.startCastDeviceDiscovery((err: BusinessError) => {
   if (err) {
     console.error(`startCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('startCastDeviceDiscovery successfully');
+    console.info('Succeeded in starting cast device discovery.');
   }
 });
 ```
@@ -1032,7 +1470,7 @@ avSession.startCastDeviceDiscovery(filter, (err: BusinessError) => {
   if (err) {
     console.error(`startCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('startCastDeviceDiscovery successfully');
+    console.info('Succeeded in starting cast device discovery.');
   }
 });
 ```
@@ -1077,7 +1515,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let filter = 2;
 let drmSchemes = ['3d5e6d35-9b9a-41e8-b843-dd3c6e72c42c'];
 avSession.startCastDeviceDiscovery(filter, drmSchemes).then(() => {
-  console.info('startCastDeviceDiscovery successfully');
+  console.info('Succeeded in starting cast device discovery.');
 }).catch((err: BusinessError) => {
   console.error(`startCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -1116,7 +1554,7 @@ avSession.stopCastDeviceDiscovery((err: BusinessError) => {
   if (err) {
     console.error(`stopCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('stopCastDeviceDiscovery successfully');
+    console.info('Succeeded in stopping cast device discovery.');
   }
 });
 ```
@@ -1151,7 +1589,7 @@ stopCastDeviceDiscovery(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.stopCastDeviceDiscovery().then(() => {
-  console.info('stopCastDeviceDiscovery successfully');
+  console.info('Succeeded in stopping cast device discovery.');
 }).catch((err: BusinessError) => {
   console.error(`stopCastDeviceDiscovery BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -1192,7 +1630,7 @@ avSession.setDiscoverable(true, (err: BusinessError) => {
   if (err) {
     console.error(`setDiscoverable BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('setDiscoverable successfully');
+    console.info('Succeeded in setting discoverable.');
   }
 });
 ```
@@ -1234,7 +1672,7 @@ setDiscoverable(enable: boolean): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.setDiscoverable(true).then(() => {
-  console.info('setDiscoverable successfully');
+  console.info('Succeeded in setting discoverable.');
 }).catch((err: BusinessError) => {
   console.error(`setDiscoverable BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -1437,7 +1875,7 @@ struct Index {
               console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
             } else {
               aVCastController = avcontroller;
-              console.info('getAVCastController : SUCCESS ');
+              console.info('Succeeded in getting AV cast controller.');
             }
           });
         })
@@ -1509,7 +1947,7 @@ struct Index {
           let aVCastController: avSession.AVCastController;
           avSession.getAVCastController(sessionId).then((avcontroller: avSession.AVCastController) => {
             aVCastController = avcontroller;
-            console.info('getAVCastController : SUCCESS');
+            console.info('Succeeded in getting AV cast controller.');
           }).catch((err: BusinessError) => {
             console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
           });
@@ -1570,7 +2008,7 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
       if (err) {
         console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
       } else {
-        console.info('startCasting successfully');
+        console.info('Succeeded in starting casting.');
       }
     });
   }
@@ -1629,7 +2067,7 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   console.info(`on deviceAvailable  : ${device} `);
   if (castDevice !== undefined) {
     avSession.startCasting(myToken, castDevice).then(() => {
-      console.info('startCasting successfully');
+      console.info('Succeeded in starting casting.');
     }).catch((err: BusinessError) => {
       console.error(`startCasting BusinessError: code: ${err.code}, message: ${err.message}`);
     });
@@ -1676,7 +2114,7 @@ avSession.stopCasting(myToken, (err: BusinessError) => {
   if (err) {
     console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('stopCasting successfully');
+    console.info('Succeeded in stopping casting.');
   }
 });
 ```
@@ -1722,7 +2160,7 @@ let myToken: avSession.SessionToken = {
   sessionId: sessionId,
 }
 avSession.stopCasting(myToken).then(() => {
-  console.info('stopCasting successfully');
+  console.info('Succeeded in stopping casting.');
 }).catch((err: BusinessError) => {
   console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -1771,7 +2209,7 @@ import { fileIo } from '@kit.CoreFileKit';
 let file = await fileIo.open("filePath");
 let url = file.fd.toString();
 avSession.startDeviceLogging(url, 2048).then(() => {
-  console.info('startDeviceLogging successfully');
+  console.info('Succeeded in starting device logging.');
 }).catch((err: BusinessError) => {
   console.error(`startDeviceLogging BusinessError: code: ${err.code}, message: ${err.message}`);
 })
@@ -1809,7 +2247,7 @@ stopDeviceLogging(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 avSession.stopDeviceLogging().then(() => {
-  console.info('stopCasting successfully');
+  console.info('Succeeded in stopping casting.');
 }).catch((err: BusinessError) => {
   console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -2015,11 +2453,11 @@ let surfaceID: string = '';
 media.createAVRecorder().then((avRecorder) => {
   avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
     if (err == null) {
-      console.info('getInputSurface success');
+      console.info('Succeeded in getting input surface.');
       surfaceID = surfaceId;
       if (surfaceID) {
         aVCastController.setDisplaySurface(surfaceID).then(() => {
-          console.info('setDisplaySurface : SUCCESS');
+          console.info('Succeeded in setting display surface.');
         });
       }
     } else {
@@ -2065,14 +2503,14 @@ let surfaceID: string = '';
 media.createAVRecorder().then((avRecorder) => {
   avRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
     if (err == null) {
-      console.info('getInputSurface success');
+      console.info('Succeeded in getting input surface.');
       surfaceID = surfaceId;
       if (surfaceID) {
         aVCastController.setDisplaySurface(surfaceID, (err: BusinessError) => {
           if (err) {
             console.error(`setDisplaySurface BusinessError: code: ${err.code}, message: ${err.message}`);
           } else {
-            console.info('setDisplaySurface : SUCCESS');
+            console.info('Succeeded in setting display surface.');
           }
         });
       }
@@ -2234,6 +2672,7 @@ function offActiveSessionChanged(callback?: Callback<Array\<AVSessionDescriptor>
 | 201 | permission denied. |
 | 202 |  Not System App. |
 | 6600101  | Session service exception. |
+
 **示例：**
 
 ```ts

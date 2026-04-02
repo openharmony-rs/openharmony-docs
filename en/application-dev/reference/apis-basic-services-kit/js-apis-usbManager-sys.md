@@ -598,7 +598,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                                       |
 | -------- | ------------------------------------------------------------------------------- |
-| 401      | Parameter error. No parameters are required.                                    |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api. |
 | 801      | Capability not supported.                                    |
@@ -639,7 +638,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------------------------------------------------------------------------------------------- |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 202      | Permission denied. Normal application do not have permission to use system api.                         |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | 801      | Capability not supported.                                    |
 
 **Example**

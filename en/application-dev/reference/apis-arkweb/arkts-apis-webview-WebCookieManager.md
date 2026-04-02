@@ -45,7 +45,7 @@ Obtains the cookie value of the specified URL.
 | Name| Type  | Mandatory| Description                     |
 | ------ | ------ | ---- | :------------------------ |
 | url    | string | Yes  | URL of the cookie to obtain. A complete URL is recommended.|
-| incognito    | boolean | No  | Whether to obtain the cookie in incognito mode. The value **true** means to obtain the cookie in incognito mode, and **false** means the opposite.<br>The default value is **false**.|
+| incognito    | boolean | No  | Whether to obtain the cookie in incognito mode. The value **true** means to obtain the cookie in incognito mode, and **false** means the opposite.<br>The default value is **false**.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 
 **Return value**
 
@@ -308,7 +308,7 @@ Sets a cookie for the specified URL.
 | ------ | ------ | ---- | :------------------------ |
 | url    | string | Yes  | URL of the cookie to set. A complete URL is recommended.|
 | value  | string | Yes  | Cookie value to set.     |
-| incognito    | boolean | No  | Whether to set the cookies in incognito mode. The value **true** means to set the cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**.|
+| incognito    | boolean | No  | Whether to set the cookies in incognito mode. The value **true** means to set the cookies in incognito mode, and **false** means the opposite.<br>The default value is **false**.<br>If **undefined** or **null** is passed, error code **401** will be thrown.|
 
 **Error codes**
 

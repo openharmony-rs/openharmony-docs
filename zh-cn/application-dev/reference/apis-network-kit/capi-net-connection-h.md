@@ -254,7 +254,7 @@ int32_t OH_NetConn_GetAddrInfo(char *host, char *serv, struct addrinfo *hint, st
 | char *serv | 服务名。 |
 | struct addrinfo *hint | 指向addrinfo结构体的指针。 |
 | struct addrinfo **res | 存放DNS查询结果，以链表形式返回。 |
-| int32_t netId | DNS查询netId为0时，使用默认netid查询。 |
+| int32_t netId | DNS查询netId为0时，使用默认netId查询。 |
 
 **返回：**
 
@@ -609,7 +609,7 @@ int32_t OH_NetConn_UnregisterNetConnCallback(uint32_t callBackId)
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint32_t callBackId | 需要被注销的回调对应id。 |
+| uint32_t callBackId | 需要被注销的回调对应ID。 |
 
 **返回：**
 
@@ -712,7 +712,7 @@ int32_t OH_NetConn_QueryTraceRoute(char *destination, NetConn_TraceRouteOption *
 
 > **说明：**
 >
-> 应用调用该接口需申请精确位置权限。根据[申请位置权限开发指导](../../device/location/location-permission-guidelines.md)，调用方需同时申请ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION。
+> 应用调用该接口需申请精确位置权限。<!--RP1-->根据[申请位置权限开发指导](../../device/location/location-permission-guidelines.md)<!--RP1End-->，调用方需同时申请ohos.permission.APPROXIMATELY_LOCATION和ohos.permission.LOCATION。
 
 **需要权限：** ohos.permission.INTERNET、ohos.permission.LOCATION 和 ohos.permission.ACCESS_NET_TRACE_INFO
 

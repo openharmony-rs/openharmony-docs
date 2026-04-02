@@ -72,6 +72,8 @@ customKeyboard(value: CustomBuilder | ComponentContent | undefined, options?: Ke
 
 默认在输入控件失去焦点时，关闭自定义键盘。
 
+自定义键盘支持接续功能，使用[setCustomKeyboardContinueFeature](../arkts-apis-uicontext-uicontext.md#setcustomkeyboardcontinuefeature23)接口，可以设置自定义键盘之间切换时是否接续。
+
 > **说明：**
 >
 > 从API version 23开始，该接口支持在[attributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
@@ -391,7 +393,7 @@ maxLength(maxLength: Optional\<number\>)
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| maxLength  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 文本的最大输入字符数。<br/>默认值：Infinity，可以无限输入，支持undefined类型。<br/>**说明：** <br/>当不设置该属性或设置异常值时，取默认值，设置小数时，取整数部分。 |
+| maxLength  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 文本的最大输入字符数。<br/>默认值：Infinity，可以无限输入，支持undefined类型。<br/>**说明：** <br/>当不设置该属性或设置异常值时，取默认值，设置小数时，取整数部分。 |
 
 ### maxLines<sup>18+</sup>
 
@@ -407,7 +409,7 @@ maxLines(maxLines: Optional\<number\>)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<number> | 是   | 设置富文本可显示的最大行数。maxLines为可显示行数，当设置maxLines时，超出内容可滚动显示。同时设置组件高度和最大行数，组件高度优先生效。<br/>默认值：UINT32_MAX，可以无限输入，支持undefined类型。 <br/>取值范围：(0, UINT32_MAX] |
+| maxLines  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 设置富文本可显示的最大行数。maxLines为可显示行数，当设置maxLines时，超出内容可滚动显示。同时设置组件高度和最大行数，组件高度优先生效。<br/>默认值：UINT32_MAX，可以无限输入，支持undefined类型。 <br/>取值范围：(0, UINT32_MAX] |
 
 ### enableHapticFeedback<sup>13+</sup>
 
@@ -443,7 +445,7 @@ keyboardAppearance(appearance: Optional\<KeyboardAppearance\>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------ |
-| appearance | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明)\> | 是   | 键盘外观。<br/>默认值：KeyboardAppearance.NONE_IMMERSIVE |
+| appearance | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[KeyboardAppearance](ts-text-common.md#keyboardappearance15枚举说明)\> | 是   | 键盘外观。<br/>默认值：KeyboardAppearance.NONE_IMMERSIVE |
 
 ### stopBackPress<sup>18+</sup>
 
@@ -459,7 +461,7 @@ stopBackPress(isStopped: Optional&lt;boolean&gt;)
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;boolean&gt; | 是   | 是否阻止返回键。<br/>true表示阻止，false表示不阻止。<br/>默认值：true。异常值取默认值。|
+| isStopped  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;boolean&gt; | 是   | 是否阻止返回键。<br/>true表示阻止，false表示不阻止。<br/>默认值：true。异常值取默认值。|
 
 ### undoStyle<sup>20+</sup>
 
@@ -477,7 +479,7 @@ undoStyle(style: Optional&lt;UndoStyle&gt;)
 
 | 参数名 | 类型                                          | 必填  | 说明                                                                                  |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[UndoStyle](#undostyle20-1)&gt; | 是   | 撤销还原是否保留原样式选项。默认值：UndoStyle.CLEAR_STYLE |
+| style  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[UndoStyle](#undostyle20-1)&gt; | 是   | 撤销还原是否保留原样式选项。默认值：UndoStyle.CLEAR_STYLE |
 
 ### enableAutoSpacing<sup>20+</sup>
 
@@ -493,7 +495,7 @@ enableAutoSpacing(enable: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
+| enable | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
 
 ### scrollBarColor<sup>21+</sup>
 
@@ -509,7 +511,7 @@ scrollBarColor(color: Optional\<ColorMetrics>)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                     |
 | ------ | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | 是   | 设置组件滚动条颜色。<br />默认值：'#66182431'，显示为灰色。<br />**说明：** 设置异常值时按默认值处理。 |
+| color  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> | 是   | 设置组件滚动条颜色。<br />默认值：'#66182431'，显示为灰色。<br />**说明：** 设置异常值时按默认值处理。 |
 
 ### includeFontPadding<sup>23+</sup>
 
@@ -525,7 +527,7 @@ includeFontPadding(include: Optional\<boolean>)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| include | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否在首行和尾行增加间距以避免文字截断。<br/>true表示在首行和尾行增加间距；false表示在首行和尾行不增加间距。 |
+| include | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否在首行和尾行增加间距以避免文字截断。<br/>true表示在首行和尾行增加间距；false表示在首行和尾行不增加间距。 |
 
 ### fallbackLineSpacing<sup>23+</sup>
 
@@ -543,7 +545,7 @@ fallbackLineSpacing(enabled: Optional\<boolean>)
 
 | 参数名  | 类型                                                         | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。 |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 行高是否基于文字实际高度自适应。<br/>true表示行高基于文字实际高度自适应；false表示行高不基于文字实际高度自适应。 |
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
@@ -565,7 +567,7 @@ compressLeadingPunctuation(enabled: Optional\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
-| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
+| enabled | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<boolean> | 是   | 是否开启行首标点符号压缩。<br/>true表示开启行首标点符号压缩；false表示不开启行首标点符号压缩。 |
 
 ### selectedDragPreviewStyle<sup>23+</sup>
 
@@ -1387,6 +1389,22 @@ deleteBackward(): void
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### setStyledPlaceholder<sup>24+</sup>
+
+setStyledPlaceholder(styledString: StyledString): void
+
+设置无输入时的属性字符串样式的提示文本。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名  | 类型   | 必填   | 说明  |
+| ------- | ------ | ---- | ----- |
+| styledString | [StyledString](ts-universal-styled-string.md#styledstring) | 是 | 设置属性字符串样式的提示文本，其优先级高于[placeholder](#placeholder12)属性设置的提示文本。<br>提示文本不支持触发属性字符串[GestureStyle](./ts-universal-styled-string.md#gesturestyle)样式绑定的手势事件，以及[UrlStyle](./ts-universal-styled-string.md#urlstyle14)样式的超链接跳转能力。|
 
 ## RichEditorController
 
@@ -4525,8 +4543,8 @@ struct RichEditorDemo {
         .width("100%")
         .border({ width: 1, radius: 5 })
         .key('RichEditor')
-        .caretColor(this.color)//光标颜色
-        .selectedBackgroundColor(this.color)//选中背景色
+        .caretColor(this.color)// 光标颜色
+        .selectedBackgroundColor(this.color)// 选中背景色
         .margin({ top: 50 })
     }
     .width('100%')
@@ -5236,11 +5254,11 @@ struct Index {
           })
         }
         Row({space:2}){
-          //将属性字符串转换成span信息
+          // 将属性字符串转换成span信息
           Button("调用fromStyledString").onClick(() => {
             this.controller1.addTextSpan("调用fromStyledString：" +JSON.stringify(this.controller1.fromStyledString(this.mutableStyledString)))
           })
-          //将给定范围的组件内容转换成属性字符串
+          // 将给定范围的组件内容转换成属性字符串
           Button("调用toStyledString").onClick(() => {
             this.controller.setStyledString(this.controller1.toStyledString({start:0,end:13}))
           })
@@ -6505,3 +6523,82 @@ struct SingleLineDemo {
 ```
 
 ![SingleLine](figures/richEditorSingleLine.gif)
+
+### 示例39（设置属性字符串样式的提示文本）
+
+该示例通过[setStyledPlaceholder](#setstyledplaceholder24)接口设置属性字符串样式的提示文本。
+
+从API version 24开始，新增setStyledPlaceholder接口。
+
+``` ts
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct RichEditorExample {
+  styledString: MutableStyledString = new MutableStyledString("Placeholder：文本",
+    [
+      {
+        start: 0,
+        length: 12,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({
+          fontColor: Color.Orange,
+          fontSize: LengthMetrics.fp(24)
+        })
+      },
+      {
+        start: 12,
+        length: 4,
+        styledKey: StyledStringKey.FONT,
+        styledValue: new TextStyle({
+          fontColor: Color.Gray,
+          fontSize: LengthMetrics.fp(20),
+          fontWeight: FontWeight.Bold
+        })
+      },
+      {
+        start: 0,
+        length: 1,
+        styledKey: StyledStringKey.PARAGRAPH_STYLE,
+        styledValue: new ParagraphStyle({
+          textVerticalAlign: TextVerticalAlign.CENTER
+        })
+      }
+    ]);
+  imageStyledString = new MutableStyledString(new ImageAttachment(
+    {
+      // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+      resourceValue: $r('app.media.startIcon'),
+      size: { width: 50, height: 50 },
+      verticalAlign: ImageSpanAlignment.BASELINE,
+      objectFit: ImageFit.Fill
+    } as ResourceImageAttachmentOptions
+  ));
+
+  controller: RichEditorController = new RichEditorController();
+
+  aboutToAppear() {
+    this.styledString.appendStyledString(this.imageStyledString);
+    this.controller.setStyledPlaceholder(this.styledString)
+  }
+
+  build() {
+    Column() {
+      Text("RichEditor placeholder支持富文本样式")
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+      RichEditor({ controller: this.controller })
+        .width('80%')
+        .height('20%')
+        .margin(10)
+        .borderWidth(1)
+        .borderColor(Color.Blue)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('70%')
+  }
+}
+```
+![setStyledPlaceholder](figures/richEditorSetStyledPlaceholder.png)

@@ -16,7 +16,7 @@ Defines the SCSI inquiry data.
 
 **Since**: 18
 
-**Related module**: [SCSIPeripheralDDK](capi-scsiperipheralddk.md)
+**Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
 
 **Header file**: [scsi_peripheral_types.h](capi-scsi-peripheral-types-h.md)
 
@@ -27,7 +27,7 @@ Defines the SCSI inquiry data.
 | Name| Description|
 | -- | -- |
 | uint8_t deviceType | Device type.|
-| char idVendor | Vendor ID.|
-| char idProduct | Product ID.|
-| char revProduct | Product version.|
+| char idVendor[[SCSIPERIPHERAL_VENDOR_ID_LEN](capi-scsi-peripheral-types-h.md) + 1] | Vendor ID.|
+| char idProduct[[SCSIPERIPHERAL_PRODUCT_ID_LEN](capi-scsi-peripheral-types-h.md) + 1] | Product ID.|
+| char revProduct[[SCSIPERIPHERAL_PRODUCT_REV_LEN](capi-scsi-peripheral-types-h.md) + 1] | Product version.|
 | ScsiPeripheral_DeviceMemMap* data | Inquiry data.|

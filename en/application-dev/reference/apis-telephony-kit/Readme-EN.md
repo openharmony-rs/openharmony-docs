@@ -14,6 +14,7 @@
   - [@ohos.telephony.radio (Network Search)](js-apis-radio.md)
   - [@ohos.telephony.sim (SIM Management)](js-apis-sim.md)
   - [@ohos.telephony.sms (SMS)](js-apis-sms.md)
+  - [@ohos.telephony.vcard (VCard)](js-apis-vcard.md)
     <!--Del-->
   - [@ohos.telephony.call (Call) (System API)](js-apis-call-sys.md)
   - [@ohos.telephony.data (Cellular Data) (System API)](js-apis-telephony-data-sys.md)

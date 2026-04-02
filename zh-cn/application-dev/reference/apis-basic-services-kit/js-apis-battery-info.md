@@ -28,7 +28,7 @@ import {batteryInfo} from '@kit.BasicServicesKit';
 
 | 名称      | 类型        | 只读 |  说明     |
 | --------------- | ------------------- | ---- | ---------------------|
-| batterySOC                                | number                                         | 是   | 表示当前设备剩余电池电量百分比。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                           |
+| batterySOC                                | number                                         | 是   | 表示当前设备剩余电池电量百分比，取值范围是[0，100]。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                           |
 | chargingStatus                            | [BatteryChargeState](#batterychargestate)      | 是   | 表示当前设备电池的充电状态。<br>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。                               |
 | healthStatus                              | [BatteryHealthState](#batteryhealthstate)      | 是   | 表示当前设备电池的健康状态。                               |
 | pluggedType                               | [BatteryPluggedType](#batterypluggedtype)      | 是   | 表示当前设备连接的充电器类型。                             |
@@ -98,7 +98,7 @@ import {batteryInfo} from '@kit.BasicServicesKit';
 
 | 名称      | 值  | 说明            |
 | ------- | ---- | --------------- |
-| NONE    | 0    | 表示电池充电状态未知。     |
+| NONE    | 0    | 表示电池充电状态为未充电。     |
 | ENABLE  | 1    | 表示电池充电状态为使能状态。  |
 | DISABLE | 2    | 表示电池充电状态为停止状态。  |
 | FULL    | 3    | 表示电池充电状态为已充满状态。 |

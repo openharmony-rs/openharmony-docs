@@ -136,7 +136,7 @@ import wifi from '@ohos.wifi';
 
 wifi.getScanInfos().then(result => {
     let len = result.length;
-    console.log("wifi received scan info: " + len);
+    console.info("wifi received scan info: " + len);
     for (let i = 0; i < len; ++i) {
         console.info("ssid: " + result[i].ssid);
         console.info("bssid: " + result[i].bssid);
@@ -556,7 +556,7 @@ Represents the WLAN connection information.
 | -------- | -------- | -------- | -------- | -------- |
 | ssid | string | No| No| Service set identifier (SSID) of the hotspot, in UTF-8 format. The maximum length is 32 bytes.|
 | bssid | string | No| No| BSSID of the hotspot, for example, **00:11:22:33:44:55**.|
-| rssi | number | No| No| RSSI of the hotspot, in dBm.|
+| rssi | number | No| No| Received signal strength indicator (RSSI) of the hotspot, in dBm.|
 | band | number | No| No| Frequency band of the WLAN access point (AP). The value **1** indicates 2.4 GHz, and the value **2** indicates 5 GHz.|
 | linkSpeed | number | No| No| Speed of the WLAN AP, in Mbit/s.|
 | frequency | number | No| No| Frequency of the WLAN AP.|

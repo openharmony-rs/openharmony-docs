@@ -51,7 +51,7 @@ import { InsightIntentContext } from '@kit.AbilityKit';
         },
       };
       try {
-        //通过意图实例唯一ID返回意图执行结果
+        // 通过意图实例唯一ID返回意图执行结果
         insightIntentProvider.sendExecuteResult(this.context.instanceId, result)
           .then(() => {
             console.info('testTag setExecuteResult success');
@@ -121,7 +121,7 @@ startAbility(want: Want, callback: AsyncCallback\<void\>): void
     onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
       pageLoader: window.WindowStage): insightIntent.ExecuteResult {
       let want: Want = {
-        bundleName: 'com.ohos.intentExecuteDemo',
+        bundleName: 'com.ohos.intentExecuteDemo', // 此处仅为示例，开发者在实际使用中需替换为真实包名
         moduleName: 'entry',
         abilityName: 'AnotherAbility',
       };
@@ -206,7 +206,7 @@ startAbility(want: Want): Promise\<void\>
     async onExecuteInUIAbilityForegroundMode(name: string, param: Record<string, Object>,
       pageLoader: window.WindowStage): Promise<insightIntent.ExecuteResult> {
       let want: Want = {
-        bundleName: 'com.ohos.intentExecuteDemo',
+        bundleName: 'com.ohos.intentExecuteDemo', // 此处仅为示例，开发者在实际使用中需替换为真实包名
         moduleName: 'entry',
         abilityName: 'AnotherAbility',
       };

@@ -16,7 +16,7 @@ Defines standard endpoint descriptors, which correspond to **Standard Endpoint D
 
 **Since**: 10
 
-**Related module**: [UsbDDK](capi-usbddk.md)
+**Related module**: [UsbDdk](capi-usbddk.md)
 
 **Header file:** [usb_ddk_types.h](capi-usb-ddk-types-h.md)
 

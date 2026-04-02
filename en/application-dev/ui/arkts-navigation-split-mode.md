@@ -1,4 +1,4 @@
-# Split-Column Layout
+# Split-View Layout
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @mayaolll-->
@@ -6,19 +6,19 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
-[Navigation](https://developer.huawei.com/consumer/en/doc/harmonyos-references/ts-basic-components-navigation) is a container component that provides two layout styles: single-column layout and split-column layout. The split-column layout is applicable to wide-screen devices. In this layout, the navigation bar (**navBar**) is always displayed, and the subpage (**NavDestination**) is displayed through the navigation controller (**NavPathStack**). A divider line is displayed between the navigation bar and the subpage. You can drag the divider line to control the display ratio of the left and right sides. For details about the architecture, see [Navigation Architecture](./arkts-navigation-architecture.md).
+[Navigation](https://developer.huawei.com/consumer/en/doc/harmonyos-references/ts-basic-components-navigation) is a container component that provides two layouts: single-column layout and split-view layout. The split-view layout is applicable to wide-screen devices. In this layout, the navigation bar (**navBar**) is always displayed, and the subpage (**NavDestination**) is displayed through the navigation controller (**NavPathStack**). A divider is displayed between the navigation bar and the subpage. You can drag the divider to control the display ratio of the left and right sides. For details about the architecture, see [Navigation Architecture](./arkts-navigation-architecture.md).
 
 ## Available APIs
 
 ### mode
 
-The [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9) attribute is used to control the display mode of **Navigation**. There are three modes: single-column, split-column, and adaptive.
+The [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mode9) attribute is used to control the display mode of **Navigation**. Three modes are available: single-column, split-view, and adaptive.
 
   **Figure 1** Single-column layout (NavigationMode.Stack)
 
 ![img](figures/NavigationModeStack.png)
 
-  **Figure 2** Split-column layout (NavigationMode.Split)
+  **Figure 2** Split-view layout (NavigationMode.Split)
 
 ![img](figures/NavigationModeSplit.png)
 
@@ -46,13 +46,13 @@ The [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mo
 
 ![img](figures/LTR-NavBarPositionEnd.png)
 
-**Figure 7** Layout for LTR language system
+**Figure 7** Layout for RTL language system
 
 ![img](figures/RTL-NavBarPositionEnd.png)
 
 ### enableDragBar
 
-[enableDragBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enabledragbar14) is used to control whether to display the drag button of the column.
+[enableDragBar](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enabledragbar14) is used to control whether to display the drag button.
 
 **Figure 8** Layout with enableDragBar set to false
 
@@ -72,7 +72,7 @@ The [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mo
 
 ### minContentWidth
 
-[minContentWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mincontentwidth10) is used to control the minimum width of the column subpage. In split-column mode, there is a divider between the navigation bar and the subpage. Within the adjustable range, you can drag the divider to adjust the display size of the navigation bar and subpage.
+[minContentWidth](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mincontentwidth10) is used to control the minimum width of the column subpage. In split-view mode, there is a divider between the navigation bar and the subpage. Within the adjustable range, you can drag the divider to adjust the display size of the navigation bar and subpage.
 
 ### hideNavBar
 
@@ -80,17 +80,17 @@ The [mode](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#mo
 
 ### enableModeChangeAnimation
 
-[enableModeChangeAnimation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enablemodechangeanimation15) is used to control whether to enable the animation for switching between the single-column and split-column modes. By default, this API is enabled.
+[enableModeChangeAnimation](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#enablemodechangeanimation15) is used to control whether to enable the animation for switching between the single-column and split-view modes. This API is enabled by default.
 
 ### splitPlaceholder
 
-[splitPlaceholder](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#splitplaceholder20) is used to set the default placeholder page of the content area in split-column mode. In this mode, if there is no page in the stack by default, the content area displays a blank page. You can use this API to set the UI layout of the area.
+[splitPlaceholder](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#splitplaceholder20) is used to set the default placeholder page of the content area in split-view mode. In this mode, if there is no page in the stack by default, the content area displays a blank page. You can use this API to set the UI layout of this area.
 
-Note that the placeholder page is displayed only as a UI display page when the stack is empty in split-column mode. The placeholder page is not managed by the route stack and cannot be focused or respond to events.
+Note that the placeholder page is displayed only as a UI display page when the stack is empty in split-view mode. The placeholder page is not managed by the route stack and cannot gain focus or respond to events.
 
 ## How to Develop
 
-The following uses a news application to describe how to develop a split-column layout using related APIs.
+The following uses a news application to describe how to develop a split-view layout using related APIs.
 
 1. The content of the home page is placed in the navigation bar on the left. The content is a news list. When a user taps a news title, a details page is pushed on the right to display the news.
 

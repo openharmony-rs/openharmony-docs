@@ -27,10 +27,13 @@ import { Action,ToolType,SourceType,Touch,TouchEvent } from '@kit.InputKit';
 
 | 名称     | 值   | 说明   |
 | ------ | ------ | ---- |
-| CANCEL | 0 | 触屏取消。 |
+| CANCEL | 0 | 触屏取消。触屏down事件异常打断，未正常闭环，例如：手指按下后未抬起，屏幕发生旋转、折叠或有新hover等场景时触发cancel事件。 |
 | DOWN   | 1 | 触屏按下。 |
 | MOVE   | 2 | 触屏移动。 |
 | UP     | 3 | 触屏抬起。 |
+| PULL_DOWN  | 4 | 触屏开始拖拽。<br/>**起始版本：** 26.0.0 |
+| PULL_MOVE  | 5 | 触屏拖拽移动。<br/>**起始版本：** 26.0.0 |
+| PULL_UP    | 6 | 触屏结束拖拽。<br/>**起始版本：** 26.0.0 |
 
 ## ToolType
 

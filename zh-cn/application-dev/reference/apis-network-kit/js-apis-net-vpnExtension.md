@@ -1,4 +1,4 @@
-# @ohos.net.vpnExtension (VPN 增强管理)
+# @ohos.net.vpnExtension (VPN增强管理)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -12,14 +12,14 @@
 > **说明：**
 >
 > 本模块首批接口从 API version 11 开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。<br>
-> 如下模块不支持在VpnExtensionAbility引用，可能会导致程序异常退出。<br>
-> - [@ohos.contact(联系人)](../apis-contacts-kit/js-apis-contact.md)<br>
-> - [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md)、[@ohos.geoLocationManager(位置服务)](../apis-location-kit/js-apis-geoLocationManager.md)<br>
+> 以下模块不支持在VpnExtensionAbility中引用，可能会导致程序异常退出。<br>
+> - [@ohos.contact (联系人)](../apis-contacts-kit/js-apis-contact.md)<br>
+> - [@ohos.geolocation](../apis-location-kit/js-apis-geolocation.md)、[@ohos.geoLocationManager (位置服务)](../apis-location-kit/js-apis-geoLocationManager.md)<br>
 > - [@ohos.multimedia.audio(音频管理)](../apis-audio-kit/arkts-apis-audio.md)<br>
 > - [@ohos.multimedia.camera(相机管理)](../apis-camera-kit/arkts-apis-camera.md)<br>
-> - [@ohos.telephony.call(拨打电话)](../apis-telephony-kit/js-apis-call.md)<br>
-> - [@ohos.telephony.sim(SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)<br>
-> - [@ohos.telephony.sms(短信服务)](../apis-telephony-kit/js-apis-sms.md)<br>
+> - [@ohos.telephony.call (拨打电话)](../apis-telephony-kit/js-apis-call.md)<br>
+> - [@ohos.telephony.sim (SIM卡管理)](../apis-telephony-kit/js-apis-sim.md)<br>
+> - [@ohos.telephony.sms (短信服务)](../apis-telephony-kit/js-apis-sms.md)<br>
 
 ## 导入模块
 
@@ -222,6 +222,115 @@ struct Index {
 }
 ```
 
+## vpnExtension.createVpnObserver
+
+createVpnObserver(): VpnObserver
+
+创建一个VPN观察者对象。用于监听VPN相关事件。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型                            | 说明                    |
+| :------------------------------ | :---------------------- |
+| [VpnObserver](#vpnobserver) | 返回一个VPN观察者对象。 |
+
+**示例：**
+
+```ts
+import { vpnExtension } from '@kit.NetworkKit';
+
+let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
+```
+
+## VpnObserver
+
+VPN观察者对象。用于监听VPN相关事件。在调用VpnObserver的方法前，需要先通过[vpnExtension.createVpnObserver](#vpnextensioncreatevpnobserver)创建VPN连接对象。
+
+### onAuthorizationResult
+
+onAuthorizationResult(callback: Callback\<boolean\>): void
+
+注册用户授权结果监听器。授权结果在调用[startVpnExtensionAbility](#vpnextensionstartvpnextensionability)弹出授权弹窗，用户点击弹窗后通知，仅接收当前VPN的结果。在不需要监听授权结果时可以调用[offAuthorizationResult](#offauthorizationresult)接口取消注册。
+
+>**注意**
+>
+>多次调用该接口时，仅最后一次传入的callback生效。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback  | Callback\<boolean\> |是   | 回调函数，用于返回用户授权结果。true表示用户同意授权，false表示用户拒绝授权。 |
+
+**示例：**
+
+```ts
+import { vpnExtension } from '@kit.NetworkKit';
+
+let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
+vpnObserver.onAuthorizationResult((result: boolean) => {
+  if (result) {
+    console.info('VPN authorization succeeded');
+  } else {
+    console.error('VPN authorization failed');
+  }
+});
+```
+
+### offAuthorizationResult
+
+offAuthorizationResult(callback?: Callback\<boolean\>): void
+
+取消注册用户授权结果监听器。
+
+>**注意**
+>
+>多次调用[onAuthorizationResult](#onauthorizationresult)注册监听时，若需取消授权结果监听，需要传最后一次调用时传入的callback，或者不传入参数。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| callback  | Callback\<boolean\> | 否   | 监听器回调函数，用于返回用户授权结果。<br>传入该参数：取消注册指定的监听器。不传参数：取消注册所有已注册的监听器。 |
+
+**示例：**
+
+```ts
+import { vpnExtension } from '@kit.NetworkKit';
+
+let vpnObserver: vpnExtension.VpnObserver = vpnExtension.createVpnObserver();
+
+let callback = (result: boolean) => {
+  console.info('Authorization result: ' + result);
+};
+// 注册监听器
+vpnObserver.onAuthorizationResult(callback);
+
+// 取消注册指定监听器
+vpnObserver.offAuthorizationResult(callback);
+
+// 取消注册已注册的监听器
+vpnObserver.offAuthorizationResult();
+```
+
 ## vpnExtension.createVpnConnection
 
 createVpnConnection(context: VpnExtensionContext): VpnConnection
@@ -328,6 +437,13 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
     let vpnConnection : vpnExtension.VpnConnection = vpnExtension.createVpnConnection(context);
     console.info("vpn createVpnConnection: " + JSON.stringify(vpnConnection));
     this.SetupVpn();
+    
+    // 不需要VPN网络时，调用destroy()接口销毁启动的VPN网络，并执行资源清理等操作。
+    vpnConnection.destroy().then(() => {
+      console.info("destroy success.");
+    }).catch((error : BusinessError) => {
+      console.error(`destroy fail. Code:${error.code}, message:${error.message}`);
+    });
   }
   SetupVpn() {
         class Address {
@@ -552,6 +668,10 @@ generateVpnId(): Promise\<string\>
 
 如需使用系统多VPN能力，需调用该接口生成vpnId，配置到VpnConfig中。
 
+>**注意**
+>
+>当前系统多VPN能力仅支持IPv4。
+
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
 **返回值：**
@@ -639,9 +759,9 @@ export default class MyVpnExtAbility  extends VpnExtensionAbility {
 
 | 名称             | 类型                                      | 只读 | 可选 | 说明                                       |
 | ---------------- | ----------------------------------------- | ---- | ---- | ------------------------------------------ |
-| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | 否  | 否 | VPN虚拟网卡的IP地址。最多支持64个IP地址。                                  |
+| addresses           | Array\<[LinkAddress](js-apis-net-connection.md#linkaddress)\>  | 否  | 否 | VPN虚拟网卡的IP地址。API version 23之前，最多支持64个IP地址；从API version 23开始，最多支持2000个IP地址。                                  |
 | vpnId<sup>20+</sup>           | string | 否 | 是 | VPN唯一标识。 | 
-| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | 否  | 是 | VPN虚拟网卡的路由信息（目前最多可配置1024条路由）。                  |
+| routes              | Array\<[RouteInfo](js-apis-net-connection.md#routeinfo)\>      | 否  | 是 | VPN虚拟网卡的路由信息（API version 23前最多可配置1024条路由；从API version 23开始最多可配置10000条路由）。                  |
 | dnsAddresses        | Array\<string\>                                                 | 否  | 是 | DNS服务器地址信息。当配置DNS服务器地址后，VPN启动状态下被代理的应用上网时，使用配置的DNS服务器做DNS查询。                                    |
 | searchDomains       | Array\<string\>                                                | 否  | 是 | DNS的搜索域列表。                                     |
 | mtu                 | number                                                         | 否  | 是 | 最大传输单元MTU值（单位：字节）。取值范围：[576，1500]。               |

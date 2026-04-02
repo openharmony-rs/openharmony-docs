@@ -28,7 +28,7 @@ Notification is not enabled.
 
 **处理步骤**
 
-1. 申请通知使能权限弹窗[Notification.requestEnableNotification](../apis-notification-kit/js-apis-notification.md#notificationrequestenablenotification8)。
+1. 申请通知使能权限弹窗[notificationManager.requestEnableNotification](../apis-notification-kit/js-apis-notificationManager.md#notificationmanagerrequestenablenotification10)。
 2. 通知设置里开启应用通知开关。
 
 ## 1700002 提醒数量超出限制

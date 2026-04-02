@@ -20,23 +20,22 @@
 
   This callback is triggered when the service is no longer used and the instance is ready for destruction. You can clear resources in this callback, for example, deregister the listener.
 
-
 ## How to Develop
 
 To implement an input method application, manually create an InputMethodExtensionAbility component in DevEco Studio. The procedure is as follows:
 
 1. In the **ets** directory of the target module, right-click and choose **New** > **Directory** to create a directory named **InputMethodExtensionAbility**.
 
-2. Right-click the **InputMethodExtensionAbility** directory, choose **New** > **File**, and create four files: **KeyboardController.ts**, **InputMethodService.ts**, **Index.ets**, and **KeyboardKeyData.ts**. The file directory is as follows:
+2. Right-click the **InputMethodExtensionAbility** directory, choose **New** > **File**, and create four files: **KeyboardController.ets**, **InputMethodService.ets**, **Index.ets**, and **KeyboardKeyData.ets**. The file directory is as follows:
 
    ``` TypeScript
    /src/main/
    ├── ets/InputMethodExtensionAbility
-   │       └──model/KeyboardController.ts      # Displays the keyboard.
-   │       └──InputMethodService.ts        # Custom class that inherits InputMethodExtensionAbility and adds required lifecycle callbacks
+   │       └──model/KeyboardController.ets      # Keyboard display logic
+   │       └──InputMethodService.ets        # Custom class that inherits InputMethodExtensionAbility and implements lifecycle callbacks
    │       └──pages
-   │         └── Index.ets            # Renders the keyboard and implements input and deletion features.
-   │         └── KeyboardKeyData.ts          # Defines keyboard properties.
+   │         └── Index.ets            # Keyboard rendering with input and delete features
+   │         └── KeyboardKeyData.ets          # Definition of keyboard properties
    ├── resources/base/profile/main_pages.json  
    ```
 
@@ -46,7 +45,7 @@ To implement an input method application, manually create an InputMethodExtensio
 
    In the **InputMethodService.ts** file, add the dependency package for importing InputMethodExtensionAbility. Customize a class that inherits from InputMethodExtensionAbility and add the required lifecycle callbacks.
 
-   <!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets) -->
+   <!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets) -->
    
    ``` TypeScript
    
@@ -79,7 +78,7 @@ To implement an input method application, manually create an InputMethodExtensio
 
    ![Offset area diagram](./figures/offset-area-between-the-system-panel-and-soft-keyboard.png)
 
-   <!-- @[input_case_input_KeyboardControler358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+   <!-- @[input_case_input_KeyboardController358](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
    class KeyboardController {
@@ -163,7 +162,7 @@ To implement an input method application, manually create an InputMethodExtensio
          this.panel = panel;
          panel.resize(dWidth, keyHeight).then(() => {
            panel.moveTo(0, this.barPosition).then(() => {
-             panel.setUiContent('pages/Index').then(() => {
+             panel.setUiContent('InputMethodExtensionAbility/pages/Index').then(() => {
                this.inputHandle.addLog('loadContent finished');
              })
            })
@@ -229,9 +228,9 @@ To implement an input method application, manually create an InputMethodExtensio
        }
      }
    ```
-
-
-   <!-- @[input_case_input_KeyboardControler507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+   
+ 
+   <!-- @[input_case_input_KeyboardController507](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
    private registerListener(): void {
@@ -309,9 +308,9 @@ To implement an input method application, manually create an InputMethodExtensio
      }
    }
    ```
+ 
 
-
-   <!-- @[input_case_input_KeyboardControler587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
+   <!-- @[input_case_input_KeyboardController587](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/model/KeyboardController.ets) -->
    
    ``` TypeScript
      public isShiftKeyHold(): boolean {
@@ -455,13 +454,14 @@ To implement an input method application, manually create an InputMethodExtensio
    export const keyboardController: KeyboardController = new KeyboardController();
    ```
 
+
  
 3. **KeyboardKeyData.ts** file:
 
    In this file you can define the content displayed on the soft keyboard.
 
 
-   <!-- @[input_case_input_KeyboardKeyData016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
+   <!-- @[input_case_input_KeyboardKeyData016](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
    
    ``` TypeScript
    export interface keySourceListType {
@@ -633,7 +633,7 @@ To implement an input method application, manually create an InputMethodExtensio
    ```
 
 
-   <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
+   <!-- @[input_case_input_KeyboardKeyData186](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/model/KeyboardKeyData.ets) -->
    
    ``` TypeScript
    export let numberSourceListData: sourceListType[] = [
@@ -812,7 +812,7 @@ To implement an input method application, manually create an InputMethodExtensio
 
    <!--Del-->Add the path to this file to the **src** field in the **resources/base/profile/main_pages.json** file.<!--DelEnd-->
 
-   <!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
+   <!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
    
    ``` TypeScript
    import deviceInfo from '@ohos.deviceInfo';
@@ -936,7 +936,7 @@ To implement an input method application, manually create an InputMethodExtensio
 6. **module.json5** file:<br>Register the InputMethodExtensionAbility in the [module.json5 file](../quick-start/module-configuration-file.md) corresponding to the **Module** project. Set **type** to **"inputMethod"** and **srcEntry** to the code path of the **InputMethodExtensionAbility** component.
 
 
-   <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Solutions/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
+   <!-- @[input_case_entry_module_extensionAbilities](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/module.json5) -->
    
    ``` JSON5
    "extensionAbilities": [
@@ -944,7 +944,7 @@ To implement an input method application, manually create an InputMethodExtensio
        "srcEntry": "./ets/InputMethodExtensionAbility/InputMethodService.ets",
        "name": "InputMethodService",
        "label": "$string:MainAbility_label",
-       "description": "$string:extension_ability_descripter",
+       "description": "$string:extension_ability_descriptor",
        "type": "inputMethod",
        "exported": true,
        "metadata": [

@@ -16,7 +16,7 @@
 
 ## 开发步骤
 
-图片解码相关API的详细介绍请参见：[图片解码接口文档](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)。
+图片解码相关API的详细介绍请参见：[图片解码接口文档](../../reference/apis-image-kit/capi-image-source-mdk-h.md)。
 
 ### 添加依赖
 
@@ -91,7 +91,7 @@ EXTERN_C_END
 
 ### Native接口调用
 
-具体接口说明请参考[API文档](../../reference/apis-image-kit/capi-image.md)。
+具体接口说明请参考[Image](../../reference/apis-image-kit/capi-image.md)。
 
 在hello.cpp文件中获取JS的资源对象，并转为Native的资源对象，即可调用Native接口，调用方式示例代码如下：
 

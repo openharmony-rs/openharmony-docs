@@ -44,7 +44,7 @@ Form Kit provides the following methods for interval-based update:
 
 - Setting the next update time: The widget will be updated at the next specified time, which is specified by calling [setFormNextRefreshTime](../reference/apis-form-kit/js-apis-app-form-formProvider.md#formprovidersetformnextrefreshtime), at the minimum of 5 minutes. For example, you can configure the widget to update within 5 minutes after the API is called.
 
-  <!-- @[set_form_next_refreshime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) --> 
+  <!-- @[set_form_next_refreshtime](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ApplicationModels/StageServiceWidgetCards/entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts) -->
   
   ``` TypeScript
   // entry/src/main/ets/updatebytimeformability/UpdateByTimeFormAbility.ts
@@ -115,7 +115,7 @@ Form Kit provides the following methods for time-specific widget update:
     "forms": [
       {
         "name": "ScheduledUpdateTime",
-        "description": "$string:widget_scheupdatetime_desc",
+        "description": "$string:widget_scheduledUpdateTime_desc",
         "src": "./ets/scheduledupdatetime/pages/ScheduledUpdateTimeCard.ets",
         "uiSyntax": "arkts",
         "window": {
@@ -141,7 +141,7 @@ Form Kit provides the following methods for time-specific widget update:
     "forms": [
     {
         "name": "ScheduledUpdateTime",
-        "description": "$string:widget_scheupdatetime_desc",
+        "description": "$string:widget_scheduledUpdateTime_desc",
         "src": "./ets/scheduledupdatetime/pages/ScheduledUpdateTimeCard.ets",
         "uiSyntax": "arkts",
         "window": {

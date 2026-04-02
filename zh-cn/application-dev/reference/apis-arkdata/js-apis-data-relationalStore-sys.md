@@ -113,8 +113,8 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -211,8 +211,8 @@ update(table: string, values: ValuesBucket, predicates: dataSharePredicates.Data
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 | 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
 | 14800022  | SQLite: Callback routine requested an abort. |
@@ -302,10 +302,10 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates, callb
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -373,10 +373,10 @@ delete(table: string, predicates: dataSharePredicates.DataSharePredicates):Promi
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -438,7 +438,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, callba
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -499,7 +499,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -565,7 +565,7 @@ query(table: string, predicates: dataSharePredicates.DataSharePredicates, column
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14800000  | Inner error. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
 
 **示例：**
@@ -629,7 +629,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 | 202       | if permission verification failed, application which is not a system application uses system API. |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. 6.The callback must be a function.|
 | 801       | Capability not supported.  |
-| 14800014  | The RdbStore or ResultSet is already closed.      |
+| 14800014  | The target instance is already closed.      |
 
 **示例1：手动同步，同步模式为云端同步到本地设备**
 
@@ -715,7 +715,7 @@ cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;Progr
 | 202       | if permission verification failed, application which is not a system application uses system API.  |
 | 401       | Parameter error. Possible causes: 1. Need 2 - 4  parameter(s). 2. The RdbStore must be not nullptr. 3. The mode must be a SyncMode of cloud. 4. The tablesNames must be not empty. 5. The progress must be a callback type. |
 | 801       | Capability not supported.       |
-| 14800014  | The RdbStore or ResultSet is already closed.      |
+| 14800014  | The target instance is already closed.      |
 
 **示例1：手动同步，同步模式为云端同步到本地设备**
 
@@ -794,10 +794,10 @@ querySharingResource(predicates: RdbPredicates, columns?: Array&lt;string&gt;): 
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
 | 801       | Capability not supported.       |
 | 14800000  | Inner error.                      |
-| 14800011  | Failed to open the database because it is corrupted.           |
-| 14800014  | The RdbStore or ResultSet is already closed.                        |
+| 14800011  | The current operation failed because the database is corrupted.           |
+| 14800014  | The target instance is already closed.                        |
 | 14800015  | The database does not respond.          |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.             |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.          |
 | 14800023  | SQLite: Access permission denied.         |
 | 14800024  | SQLite: The database file is locked.         |
@@ -861,10 +861,10 @@ querySharingResource(predicates: RdbPredicates, callback: AsyncCallback&lt;Resul
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. |
 | 801       | Capability not supported.                 |
 | 14800000  | Inner error.          |
-| 14800011  | Failed to open the database because it is corrupted.       |
-| 14800014  | The RdbStore or ResultSet is already closed.      |
+| 14800011  | The current operation failed because the database is corrupted.       |
+| 14800014  | The target instance is already closed.      |
 | 14800015  | The database does not respond.        |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.        |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.         |
 | 14800023  | SQLite: Access permission denied.                    |
 | 14800024  | SQLite: The database file is locked.            |
@@ -930,10 +930,10 @@ querySharingResource(predicates: RdbPredicates, columns: Array&lt;string&gt;, ca
 | 401       | Parameter error. Possible causes: 1. Need 1 - 3  parameter(s)! 2. The RdbStore must be not nullptr. 3. The predicates must be an RdbPredicates. 4. The columns must be a string array. |
 | 801       | Capability not supported.       |
 | 14800000  | Inner error.            |
-| 14800011  | Failed to open the database because it is corrupted.         |
-| 14800014  | The RdbStore or ResultSet is already closed.          |
+| 14800011  | The current operation failed because the database is corrupted.         |
+| 14800014  | The target instance is already closed.          |
 | 14800015  | The database does not respond.          |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.           |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort.    |
 | 14800023  | SQLite: Access permission denied.     |
 | 14800024  | SQLite: The database file is locked.     |
@@ -1078,10 +1078,10 @@ restore(): Promise&lt;void&gt;
 | 202       | Permission verification failed, application which is not a system application uses system API. |
 | 14800000  | Inner error. |
 | 14800010  | Failed to open or delete the database by an invalid database path. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
 | 14800015  | The database does not respond. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1111,6 +1111,182 @@ if (store != undefined) {
 }
 ```
 
+### retainDeviceData<sup>24+</sup>
+
+retainDeviceData(retainDevices?: Record\<string, Array\<string>>): Promise\<void>
+
+保留对应[单版本表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表中对应设备同步过来的数据，删除其他设备同步过来的数据，使用Promise异步回调。
+
+不支持对[多设备协同表模式](../../database/data-sync-of-rdb-store.md#数据同步存储机制)分布式数据表进行删除。
+
+要删除数据越多，执行所需的时间越长。
+
+> **说明：**
+>
+> 入参允许为空，数据库表名对应的设备id列表也允许为空，但是数据库表名和设备id不允许为空字符串。
+> 
+> 入参如果为空，则删除当前数据库所有单版本分布式表中所有其他设备同步过来的数据。
+> 
+> 入参中如果数据库表名对应的设备id列表为空，则删除该表下所有其他设备同步过来的数据。
+>
+> 保留本地写入以及传入设备id同步过来的数据，其他设备id同步过来的数据会被删除。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型                                                               | 必填 | 说明                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| retainDevices  | Record<string, Array\<string>> |  否  | 指定要保留的分布式数据库表名和对应的设备id，无默认值，不传入则删除当前数据库中所有单版本分布式表中全量同步数据。|
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise\<void> | Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | The current operation failed because the database is corrupted.                    |
+| 14800014     | The target instance is already closed.                            |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800042     | The database does not exist. Possible causes: 1. The database is deleted; 2. The database is not created. |
+| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
+
+**示例：**
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+
+async function retainDeviceData(store : relationalStore.RdbStore){
+  const deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication4');
+  const deviceList = deviceManager.getAvailableDeviceListSync();
+  const devices: string[] = [];
+  deviceList.forEach(item => {
+    if (item.networkId) {
+      devices.push(item.networkId);
+    }
+  });
+  console.info(`retainDeviceData, length is ${devices.length}`);
+  if (store != undefined) {
+    try {
+      const retainDevices: Record<string, string[]> = {};
+      retainDevices['EMPLOYEE'] = devices;
+      await store.retainDeviceData(retainDevices);
+      console.info(`retainDeviceData success`);
+    } catch (e) {
+      console.error(`retainDeviceData failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+```
+
+### updateDistributedInfo<sup>24+</sup>
+
+updateDistributedInfo(info: DistributedInfo, predicates: RdbPredicates): Promise&lt;number&gt;
+
+更新分布式信息，只支持单版本表模式，使用Promise异步回调。
+
+不支持对多设备协同表模式分布式数据表进行更新。
+
+要更新数据越多，执行所需的时间越长。
+
+> **说明：**
+>
+> 入参info中若要传入设备id信息，则设备id必须是已与当前设备建立网络连接的设备id。
+>
+> 入参predicates中若要传入[ORIGIN_ORIDEVICE](#distributedinfo24)，则只允许使用等于空或不等于空。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名       | 类型                                                               | 必填 | 说明                                       |
+| ------------ | ----------------------------------------------------------------- | ---- | ----------------------------------------- |
+| info  | [DistributedInfo](#distributedinfo24) |  是  | 指定要更新的分布式表的日志信息。|
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是   | RdbPredicates的实例对象指定的查询条件。        |
+
+**返回值：**
+
+| 类型          | 说明                       |
+| -------------- | ------------------------ |
+| Promise&lt;number&gt; | Promise对象。如果操作成功，返回更新的数据个数，否则返回-1。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**                                                             |
+| ------------ | ----------------------------------------------------------------------- |
+| 202          | Permission verification failed, application which is not a system application uses system API.|
+| 14800001     | Invalid arguments. Possible causes: 1.Parameter is out of valid range.  |
+| 14800011     | The current operation failed because the database is corrupted.                    |
+| 14800014     | The target instance is already closed.                            |
+| 14800015     | The database does not respond. |
+| 14800021     | SQLite: Generic error.                                                  |
+| 14800024     | SQLite: The database file is locked.                                    |
+| 14800043     | The database does not support this scenario. Possible causes: 1. The database type is not supported;2. The table type is not supported; 3. This is a read-only database.|
+
+**示例：**
+
+```ts
+import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+async function updateDistributedInfoInsert(store : relationalStore.RdbStore){
+  const deviceManager = distributedDeviceManager.createDeviceManager('com.example.myapplication4');
+  const deviceList = deviceManager.getAvailableDeviceListSync();
+  const devices: string[] = [];
+  deviceList.forEach(item => {
+    if (item.networkId) {
+      devices.push(item.networkId);
+    }
+  });
+  console.info(`updateDistributedInfoInsert, length is ${devices.length}`);
+  if (store != undefined && devices.length > 0) {
+    try {
+      const DISTRIBUTEDINFOINSERT:relationalStore.DistributedInfo = {
+        flag: relationalStore.DistributedOrigin.ORI_REMOTE,
+        oriDevice: devices[0]
+      }
+      const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
+      await store.updateDistributedInfo(DISTRIBUTEDINFOINSERT, predicates);
+      console.info(`updateDistributedInfoInsert success`);
+    } catch (e) {
+      console.error(`updateDistributedInfoInsert failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+
+async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
+  if (store != undefined) {
+    try {
+      const DISTRIBUTEDINFOUPDATE:relationalStore.DistributedInfo = {
+        flag: relationalStore.DistributedOrigin.ORI_REMOTE,
+      }
+      const predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+      predicates.equalTo(relationalStore.DistributedField.ORIGIN, relationalStore.DistributedOrigin.ORI_LOCAL);
+      predicates.notEqualTo(relationalStore.DistributedField.ORIGIN_ORIDEVICE, "");
+      await store.updateDistributedInfo(DISTRIBUTEDINFOUPDATE, predicates);
+      console.info(`updateDistributedInfoUpdate success`);
+    } catch (e) {
+      console.error(`updateDistributedInfoUpdate failed, code is ${e.code},message is ${e.message}`);
+    }
+  }
+}
+```
+
 ## ResultSet
 
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
@@ -1119,7 +1295,7 @@ if (store != undefined) {
 
 getFloat32Array(columnIndex: number): Float32Array
 
-以浮点数组的形式获取当前行中指定列的值，仅可在[向量数据库](#storeconfig)下可用。
+以浮点数组的形式获取当前行中指定列的值，仅可在向量数据库（在[StoreConfig](arkts-apis-data-relationalStore-i.md#storeconfig)中配置vector为true）下可用。
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -1143,10 +1319,10 @@ getFloat32Array(columnIndex: number): Float32Array
 |-----------| ------------ |
 | 401       | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 801       | The capability is not supported because the database is not a vector DB. |
-| 14800011  | Failed to open the database because it is corrupted. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
+| 14800021  | SQLite: Generic error. |
 | 14800022  | SQLite: Callback routine requested an abort. |
 | 14800023  | SQLite: Access permission denied. |
 | 14800024  | SQLite: The database file is locked. |
@@ -1203,8 +1379,8 @@ getFloat32Array(columnIndex: number): Float32Array
 | **错误码ID** | **错误信息**                                                 |
 |-----------| ------------------------------------------------------------ |
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
-| 14800013  | ResultSet is empty or column index is out of bounds. |
-| 14800014  | The RdbStore or ResultSet is already closed. |
+| 14800013  | Column index is out of bounds. |
+| 14800014  | The target instance is already closed. |
 | 14800041  | Type conversion failed. |
 
 **示例：**
@@ -1223,3 +1399,43 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
   }
 }
 ```
+
+## DistributedOrigin<sup>24+</sup>
+
+表示数据来源。请使用枚举名称而非枚举值。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称           | 值   | 说明                               |
+| -------------- | ---- | ---------------------------------- |
+| ORI_LOCAL       |  0  | 表示本地数据。      |
+| ORI_CLOUD       |  1  | 表示云端同步的数据。     |
+| ORI_REMOTE      |  2  | 表示端端同步的数据。 |
+
+## DistributedField<sup>24+</sup>
+
+用于谓词查询条件的特殊字段。请使用枚举名称而非枚举值。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称           | 值   | 说明                               |
+| -------------- | ---- | ---------------------------------- |
+| ORIGIN      | '#_origin'     | 用于分布式数据库表对应log表查找或更新时指定数据来源的字段名。    |
+| ORIGIN_ORIDEVICE  | '#_ori_device' | 用于分布式数据库表对应log表查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。|
+
+## DistributedInfo<sup>24+</sup>
+
+记录分布式信息。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| flag | [DistributedOrigin](#distributedorigin24) | 否 | 是 | 表示数据来源，不传入则保持原有数值。 |
+| oriDevice | string | 否 | 是 | 表示数据产生者的设备id，不传入则保持原有设备id。 |

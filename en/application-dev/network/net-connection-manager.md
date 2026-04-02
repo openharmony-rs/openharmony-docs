@@ -80,15 +80,32 @@ The following describes the development procedure specific to each application s
      hilog.info(0x0000, 'testTag', 'Network available, NetId is ' + data.netId);
      // ...
    });
-   
+     
    // Subscribe to network status change events. If the network is unavailable, an on_netUnavailable event is returned.
    conn.on('netUnavailable', (data: void) => {
      hilog.info(0x0000, 'testTag', 'Network unavailable, data is ' + JSON.stringify(data));
      // ...
    });
+   // Subscribe to network capability change events. If the capability of the specified network changes, an on_netCapabilitiesChange event is returned.
+   conn.on('netCapabilitiesChange', (data: connection.NetCapabilityInfo) => {
+     hilog.info(0x0000, 'testTag', 'Network netCapabilitiesChange, data is ' + JSON.stringify(data));
+     // ...
+   });
+     
+   // Subscribe to network connection information change events. If the connection information of the specified network changes, an on_netConnectionPropertiesChange event is returned.
+   conn.on('netConnectionPropertiesChange', (data: connection.NetConnectionPropertyInfo) => {
+     hilog.info(0x0000, 'testTag', 'Network netConnectionPropertiesChange, data is ' + JSON.stringify(data));
+     // ...
+   });
+     
+   // Subscribe to network disconnection events. If the specified network is disconnected, an on_netLost event is returned.
+   conn.on('netLost', (data: connection.NetHandle) => {
+     hilog.info(0x0000, 'testTag', 'Network netLost, data is ' + JSON.stringify(data));
+     // ...
+   });
    ```
 
-5. Call [register()](../reference/apis-network-kit/js-apis-net-connection.md#register) to subscribe to network status changes of the specified network. When the network is available, the callback will be invoked to return the **netAvailable** event. When the network is unavailable, the callback will be invoked to return the **netUnavailable** event.
+5. Call [register()](../reference/apis-network-kit/js-apis-net-connection.md#register) to subscribe to network status changes of the specified network. When the network is available, the **netAvailable** event is triggered. When the network is disconnected, the **netLost** event is triggered. When the network connection information changes (for example, IPv6 addresses are added to linkAddresses), the **netConnectionPropertiesChange** event is triggered. When the network capability changes (for example, the network connectivity changes), the **netCapabilitiesChange** event is triggered.
 
    <!-- @[notification_network_register](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/NetWork_Kit/NetWorkKit_NetManager/NetConnection_Manage_case/entry/src/main/ets/pages/ConnectNetworkBtn.ets) -->
    

@@ -45,9 +45,11 @@ The @Watch decorator is used to listen for state variable changes in state manag
 @Component
 struct Index {
   @State @Watch('onChange') num: number = 0; // The @Watch input parameter is the function name.
+
   onChange() {
     console.info(`num change to ${this.num}`);
   }
+
   build() {
     Column() {
       Text(`num is: ${this.num}`)
@@ -65,6 +67,8 @@ Monitor: MonitorDecorator
 
 The @Monitor decorator is used to listen for state variable changes in state management V2. For details about how to use @Monitor, see [@Monitor Decorator: Listening for Value Changes of the State Variables](../../../ui/state-management/arkts-new-monitor.md).
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -74,6 +78,8 @@ The @Monitor decorator is used to listen for state variable changes in state man
 type MonitorDecorator = (value: string, ...args: string[]) => MethodDecorator
 
 Represents the actual type of the @Monitor decorator.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -100,21 +106,27 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @Monitor('name') // Listen for one variable.
-  onNameChange(monitor: IMonitor) {
+
+  // Listen for one variable.
+  @Monitor('name')
+  onNameChange() {
     console.info(`name change to ${this.name}`);
   }
-  @Monitor('age', 'height') // Listen for multiple variables.
+
+  // Listen for multiple variables.
+  @Monitor('age','height')
   onRecordChange(monitor: IMonitor) {
     monitor.dirty.forEach((path: string) => {
       console.info(`${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)
@@ -137,6 +149,8 @@ When the monitored variable changes, the state management framework will call th
 
 ### Properties
 
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -150,6 +164,8 @@ When the monitored variable changes, the state management framework will call th
 value\<T\>(path?: string): IMonitorValue\<T\> | undefined
 
 Obtains the change information for the specified path.
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -175,12 +191,16 @@ class Info {
   @Trace name: string = 'Tom';
   @Trace age: number = 25;
   @Trace height: number = 175;
-  @Monitor('name') // Listen for one variable.
+
+  //Listen for one variable.
+  @Monitor('name')
   onNameChange(monitor: IMonitor) {
     // If no path is specified for value, the first path in the dirty array is used by default.
     console.info(`path: ${monitor.value()?.path} change from ${monitor.value()?.before} to ${monitor.value()?.now}`);
   }
-  @Monitor('age', 'height') // Listen for multiple variables.
+
+  // Listen for multiple variables.
+  @Monitor('age','height')
   onRecordChange(monitor: IMonitor) {
     // If a path is specified for value, the change information for the specified path is returned.
     monitor.dirty.forEach((path: string) => {
@@ -188,10 +208,12 @@ class Info {
     })
   }
 }
+
 @Entry
 @ComponentV2
 struct Index {
   @Local info: Info = new Info();
+
   build() {
     Column() {
       Text(`info.name: ${this.info.name}`)
@@ -213,6 +235,8 @@ struct Index {
 Provides the specific change information for the monitored variable, obtained through the **value** API of **IMonitor**. **T** is the type of the variable.
 
 ### Properties
+
+**Widget capability**: This API can be used in ArkTS widgets since API version 23.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -245,6 +269,78 @@ struct Index {
       Text(`info.name: ${this.info.name}`)
         .onClick(() => {
           this.info.name = 'Bob'; // Output log: path: name change from Tom to Bob
+        })
+    }
+  }
+}
+```
+
+## SyncMonitor<sup>23+</sup>
+
+SyncMonitor: MonitorDecorator
+
+The @SyncMonitor decorator is used to listen for state variable changes in state management V2. For details about how to use @SyncMonitor, see [@SyncMonitor Decorator: Synchronous Listening for Value Changes of the State Variables](../../../ui/state-management/arkts-new-syncmonitor.md).
+
+**Atomic service API**: This API can be used in atomic services since API version 23.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name       | Type            | Description                          |
+| ----------- | ---------------- | ------------------------------ |
+| SyncMonitor | [MonitorDecorator](#monitordecorator12) | Attribute decorator, which listens for the changes of state variables.|
+
+**Error codes**:
+
+For details about the error codes, see [State Management Error Codes](../errorcode-stateManagement.md#130001-invalid-path-for-addmonitorclearmonitor).
+
+| ID| Error Message            |
+| -------- | -------------------- |
+| 130001   | The path is invalid. |
+
+**Example**
+
+```ts
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+@ObservedV2
+class Info {
+  @Trace name: string = 'Tom';
+  @Trace age: number = 25;
+  @Trace height: number = 175;
+
+  //Listen for one variable.
+  @SyncMonitor('name')
+  onNameChange() {
+    hilog.info(0xFF00, 'testTag', '%{public}s', `name change to ${this.name}`);
+  }
+
+  // Listen for multiple variables.
+  @SyncMonitor('age','height')
+  onRecordChange(monitor: IMonitor) {
+    monitor.dirty.forEach((path: string) => {
+      hilog.info(0xFF00, 'testTag', '%{public}s',
+        `${path} change from ${monitor.value(path)?.before} to ${monitor.value(path)?.now}`);
+    })
+  }
+}
+
+@Entry
+@ComponentV2
+struct Index {
+  @Local info: Info = new Info();
+
+  build() {
+    Column() {
+      Text(`info.name: ${this.info.name}`)
+        .onClick(() => {
+          this.info.name = 'Bob'; // Output log: name change to Bob
+        })
+      Text(`info.age: ${this.info.age}, info.height: ${this.info.height}`)
+        .onClick(() => {
+          this.info.age++; // Output log: age change from 25 to 26
+          this.info.height++; // Output log: height change from 175 to 176
         })
     }
   }

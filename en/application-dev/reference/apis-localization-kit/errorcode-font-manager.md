@@ -173,3 +173,39 @@ An exception occurs during uninstallation.
 **Solution**
 
 Try again, or restart the device and try again.
+
+## 31100110 Failed to Call the API Due to System Errors
+
+**Error Message**
+
+System error.
+
+**Symptom**
+
+The system service is abnormal, and the API fails to be called.
+
+**Possible Causes**
+
+An exception occurs during data migration task startup.
+ 
+**Solution**
+
+Perform the operation again or restart the device and then perform the operation again.
+
+## 31100111 Migration Task Being Executed
+
+**Error Message**
+
+DataMigrationing.
+
+**Symptom**
+
+The data migration task is being executed and cannot be started again.
+
+**Possible Causes**
+
+The data migration task is being executed.
+ 
+**Solution**
+
+The migration task cannot be started again. Wait until the current task is complete.

@@ -22,7 +22,7 @@
   - [SystemProperties.WINDOW_SIZE_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的大小信息，单位为px。
   - [SystemProperties.WINDOW_AVOID_AREA<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的避让区域信息，单位为vp。
   - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties)，用于获取窗口的避让区域信息，单位为px。
-- 系统环境变量改变时，通知\@Env装饰变量的更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新。
+- 系统环境变量改变时，通知\@Env装饰的变量更新，并触发\@Env关联组件刷新，以实现界面内容的同步更新。
 - \@Env装饰的变量不允许开发者初始化。\@Env会返回给开发者可观察的环境变量类（由[\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md)装饰，且其由属性[\@Trace](./state-management/arkts-new-observedV2-and-trace.md)装饰）的实例。开发者如果想监听环境变量的变化，可以使用[addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md)，具体示例见[在\@ComponentV2中使用\@Env](#在componentv2中使用env)。
 
 ## \@Env支持参数

@@ -8,3 +8,4 @@
 <!--Adviser: @RayShih-->
 
 - [Printing Files (C/C++)](native-print-file.md)
+- [PrintExtensionAbility](printExtensionAbilityGuide.md)

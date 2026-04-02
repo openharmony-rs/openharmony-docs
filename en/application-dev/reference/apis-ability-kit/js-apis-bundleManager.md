@@ -79,6 +79,7 @@ Enumerates the types of ExtensionAbility components.
 | FAULT_LOG<sup>21+</sup> | 33 | [FaultLogExtensionAbility](../apis-performance-analysis-kit/js-apis-hiviewdfx-FaultLogExtensionAbility.md): provides extended capabilities for delayed fault notifications.|
 | NOTIFICATION_SUBSCRIBER<sup>22+</sup> | 34 | [NotificationSubscriberExtensionAbility](../apis-notification-kit/js-apis-notificationSubscriberExtensionAbility.md): provides extended capabilities for notification subscription.|
 | CRYPTO<sup>22+</sup> | 35 | [CryptoExtensionAbility](../../security/UniversalKeystoreKit/huks-extension-ability-support-dev.md): provides extended capabilities for external key management.|
+| PARTNER_AGENT<sup>23+</sup> | 36 | [PartnerAgentExtensionAbility](../apis-connectivity-kit/js-apis-fusionConnectivity-partnerAgentExtensionAbility.md): provides the device discovery and device offline notification functions based on Bluetooth.|
 | UNSPECIFIED      | 255 | The ability type is not specified. <!--Del-->It can be used in [queryExtensionAbilityInfo](js-apis-bundleManager-sys.md#bundlemanagerqueryextensionabilityinfo) to obtain ExtensionAbility components of all types.<!--DelEnd-->|
 <!--RP2--><!--RP2End-->
 

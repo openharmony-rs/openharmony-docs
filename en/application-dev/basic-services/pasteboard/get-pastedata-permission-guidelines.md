@@ -33,7 +33,7 @@ Applications can access the pasteboard content in either of the following ways:
 
 - Using security components
 
-    Applications that use [security components](../../security/AccessToken/pastebutton.md) to access the pasteboard content do not need to request the permission.
+    Applications that use [PasteButton](../../security/AccessToken/pastebutton.md) can access the pasteboard content without the need to request permissions.
 
     Applications that use the security components can access the pasteboard content without any adaptation.
 
@@ -60,7 +60,7 @@ Before requesting the pasteboard permission, an application needs to check wheth
 
 - Use [getChangeCount](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getchangecount18) to obtain the number of pasteboard content changes and compare it with the number of changes queried when the pasteboard is read last time. If the numbers are the same, the pasteboard content does not change and the application does not access the pasteboard.
 
-- Use [detectPatterns](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#detectpatterns13) to detect patterns on the local pasteboard. If the application password does not match the pattern, the application does not access the pasteboard. If the application password matches the pattern, it is recommended that the application use [cleardata](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#cleardata9) to clear the password in the pasteboard.
+- Use [detectPatterns](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#detectpatterns13) to detect patterns on the local pasteboard. If the application password does not match the pattern, the application does not access the pasteboard. If the application password matches the pattern, it is recommended that the application use [clearData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#cleardata9) to clear the password in the pasteboard.
 
 ## Sample Code
 
@@ -134,7 +134,7 @@ struct Index {
           .onClick(() => {
             const context: common.UIAbilityContext = this.getUIContext().getHostContext() as common.UIAbilityContext;
             if (!isNeedGetPermissionFromUser()) {
-              hilog.info(0xFF00, '[Sample_pasteboard]', 'No neded to bring up the permission pop-up window');
+              hilog.info(0xFF00, '[Sample_pasteboard]', 'No need to bring up the permission pop-up window');
               return;
             }
             let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();

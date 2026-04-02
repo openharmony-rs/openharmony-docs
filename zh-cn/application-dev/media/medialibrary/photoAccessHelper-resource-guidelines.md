@@ -13,7 +13,7 @@
 > - 在进行功能开发前，请查阅[开发准备](photoAccessHelper-preparation.md)，了解如何获取相册管理模块实例和如何申请相册管理模块功能开发相关权限。
 > - 文档中使用到photoAccessHelper的地方，默认为使用[开发准备](photoAccessHelper-preparation.md)中获取的对象，如果未添加此段代码，报photoAccessHelper未定义的错误，请自行添加。
 
-为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。示例采用Promise函数，更多方式可以查阅[API参考](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
+为了保证应用的运行效率，大部分photoAccessHelper的接口调用都是异步的。示例采用Promise函数，更多方式可以查阅[模块描述](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper.md)。
 
 ## 获取指定媒体资源
 
@@ -22,14 +22,14 @@
 应用通过调用[PhotoAccessHelper.getAssets](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAccessHelper.md#getassets-1)获取媒体资源，并传入[FetchOptions](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-i.md#fetchoptions)对象指定检索条件。如无特别说明，文档中涉及的待获取的资源均视为已经预置且在数据库中存在相应数据。如出现获取资源为空的情况，请确认文件是否已预置，数据库中是否存在该文件的数据。
 
 > **注意：**
-> 使用[PhotoAccessHelper.PhotoKeys.URI](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys)做查询条件时，仅支持使用[DataSharePredicates.equalTo](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)的方式。
+> 使用[PhotoAccessHelper.PhotoKeys](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-e.md#photokeys).URI做查询条件时，仅支持使用[DataSharePredicates.equalTo](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md#equalto10)的方式。
 
 如果只想获取某个位置的对象（如第一个、最后一个、指定索引等），可以通过[FetchResult](../../reference/apis-media-library-kit/arkts-apis-photoAccessHelper-FetchResult.md)中的接口获取。
 
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块读权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
 - 导入[dataSharePredicates](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md)模块。
 
 ### 指定媒体文件名获取图片或视频资源
@@ -75,7 +75,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块读权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.READ_IMAGEVIDEO'。
 - 导入[dataSharePredicates](../../reference/apis-arkdata/js-apis-data-dataSharePredicates.md)模块。
 
 参考以下示例，获取图片的文件描述符fd后，需要解码为统一的PixelMap，以便在应用中进行图片显示或图片处理，具体请参考[图片解码](../image/image-decoding.md)。
@@ -131,7 +131,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块读写权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'。
 
 ### 创建图片或视频资源（仅向系统应用开放）
 
@@ -179,7 +179,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'和'ohos.permission.READ_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'和'ohos.permission.READ_IMAGEVIDEO'。
 
 下面以重命名标题为'oldTestPhoto'的图片为例。
 
@@ -234,7 +234,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 **前提条件**
 
 - 获取相册管理模块photoAccessHelper实例。
-- [申请相册管理模块权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'和'ohos.permission.READ_IMAGEVIDEO'。
+- [申请相册管理模块功能相关权限](photoAccessHelper-preparation.md#申请相册管理模块功能相关权限)'ohos.permission.WRITE_IMAGEVIDEO'和'ohos.permission.READ_IMAGEVIDEO'。
 
 下面以将文件检索结果中第一个文件放入回收站为例。
 

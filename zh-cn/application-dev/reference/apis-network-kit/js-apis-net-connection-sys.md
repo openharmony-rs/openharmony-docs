@@ -493,3 +493,252 @@ connection.getProxyMode().then(mode => {
     console.error("Error getting proxy mode:", error);
 });
 ```
+
+## connection.createVlanInterface<sup>23+</sup>
+
+createVlanInterface(ifName: string, vlanId: number): Promise\<void\>
+
+在指定的以太网网卡上，创建一个由vlanId指定的虚拟局域网。使用Promise异步回调。
+
+> **说明：**
+>
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+connection.createVlanInterface(ifName, vlanId).then(() => {
+  console.info(`Create vlan success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to create vlan. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.destroyVlanInterface<sup>23+</sup>
+
+destroyVlanInterface(ifName: string, vlanId: number): Promise\<void\>
+
+删除指定以太网网卡上由vlanId指定的虚拟局域网。使用Promise异步回调。
+
+> **说明：**
+>
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+connection.destroyVlanInterface(ifName, vlanId).then(() => {
+  console.info(`Destroy vlan success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to destroy vlan. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.addVlanIp<sup>23+</sup>
+
+addVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<void\>
+
+为以太网网卡上对应vlanId的虚拟局域网配置指定的IP地址及子网掩码。使用Promise异步回调。
+
+> **说明：**
+>
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
+| address | [LinkAddress](js-apis-net-connection.md#linkaddress) | 是 | 链路信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+let netAddress: connection.NetAddress = {
+  address: '192.168.1.1',
+  family: 1,
+  port: 8080
+}
+let address: connection.LinkAddress = {
+  address: netAddress,
+  prefixLength: 24
+}
+connection.addVlanIp(ifName, vlanId, address).then(() => {
+  console.info(`Add vlan ip success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to add vlan ip. Code:${error.code}, message:${error.message}`);
+});
+```
+
+## connection.deleteVlanIp<sup>23+</sup>
+
+deleteVlanIp(ifName: string, vlanId: number, address: LinkAddress): Promise\<void\>
+
+从以太网网卡上对应vlanId的虚拟局域网中，删除已配置的IP地址及子网掩码。使用Promise异步回调。
+
+> **说明：**
+>
+>- 本接口当前仅支持PC设备，其他设备类型上调用本接口返回错误码2100002。
+
+**系统接口**：此接口为系统接口。
+
+**需要权限**：ohos.permission.CONNECTIVITY_INTERNAL
+
+**系统能力**：SystemCapability.Communication.NetManager.Core
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----------------- |
+| ifName | string | 是 | 网卡名。 |
+| vlanId | number | 是 | vlan标识符，取值范围[0,4094]。 |
+| address | [LinkAddress](js-apis-net-connection.md#linkaddress) | 是 | 链路信息。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | ------------------------ |
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[网络连接管理错误码](errorcode-net-connection.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------- |
+| 201 | Permission denied. |
+| 202 | Nonsystem applications use system APIs. |
+| 2100002 | Failed to connect to the service. |
+| 2100003 | System internal error. |
+| 2100400 | The input network interface is incorrect. |
+| 2100401 | The input ip address not found. |
+
+**示例：**
+
+```typescript
+import { connection } from '@kit.NetworkKit';
+
+let ifName = "eth0";
+let vlanId = 1;
+let netAddress: connection.NetAddress = {
+  address: '192.168.1.1',
+  family: 1,
+  port: 8080
+}
+let address: connection.LinkAddress = {
+  address: netAddress,
+  prefixLength: 24
+}
+connection.deleteVlanIp(ifName, vlanId, address).then(() => {
+  console.info(`Delete vlan ip success`);
+}).catch((error: BusinessError) => {
+  console.error(`Failed to delete vlan ip. Code:${error.code}, message:${error.message}`);
+});
+```

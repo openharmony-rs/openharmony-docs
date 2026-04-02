@@ -262,12 +262,12 @@ Defines cookie-related fields.
 
 | Name| Type| Read-Only| Optional| Description|
 | ---- | --- | ---- | ---- | ---- |
-| samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#webhttpcookiesamesitepolicy23) | Yes| No| Same-site policy of the cookie.|
-| expiresDate | string | Yes| No| Expiration time of the cookie. The value is in GMT format.|
-| name | string | Yes| No| Name of the cookie.|
-| isSessionCookie | boolean | Yes| No| Whether the cookie is a session cookie.<br>The value **true** indicates that the cookie is a session cookie, and **false** indicates the opposite.|
-| value | string | Yes| No| Value of the cookie.|
-| path | string | Yes| No| Path of the cookie.|
-| isHttpOnly | boolean | Yes| No| Whether the cookie can be accessed only through HTTP requests.<br>The value **true** indicates that the cookie can be accessed only through HTTP requests, and **false** indicates the opposite.|
-| isSecure | boolean | Yes| No| Whether the cookie can be sent only through HTTPS.<br>The value **true** indicates that the cookie can be sent only through HTTPS, and **false** indicates that the cookie can be sent through HTTP.|
-| domain | string | Yes| No| Domain names that can access the cookie.|
+| samesitePolicy | [WebHttpCookieSameSitePolicy](./arkts-apis-webview-e.md#webhttpcookiesamesitepolicy23) | No| No| Same-site policy of the cookie.|
+| expiresDate | string | No| No| Expiration time of the cookie. For details about the time format, see [Date](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Date).|
+| name | string | No| No| Name of the cookie.|
+| isSessionCookie | boolean | No| No| Whether the cookie is a session cookie.<br>The value **true** indicates that the cookie is a session cookie, and **false** indicates the opposite.|
+| value | string | No| No| Value of the cookie.|
+| path | string | No| No| Path of the cookie.|
+| isHttpOnly | boolean | No| No| Whether the cookie can be accessed only through HTTP requests.<br>The value **true** indicates that the cookie can be accessed only through HTTP requests, and **false** indicates the opposite.|
+| isSecure | boolean | No| No| Whether the cookie can be sent only through HTTPS.<br>The value **true** indicates that the cookie can be sent only through HTTPS, and **false** indicates that the cookie can be sent through HTTP.|
+| domain | string | No| No| Domain names that can access the cookie.|

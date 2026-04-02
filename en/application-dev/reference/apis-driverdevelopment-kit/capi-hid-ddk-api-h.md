@@ -102,7 +102,7 @@ Sends an event list to a device.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The API call is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode): The hid_ddk service connection fails or the caller is not the device creator.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The parameter check fails. Possible causes: 1. The device ID is less than 0.<br>         2. The length of the input parameter length exceeds 7 characters. 3. The input parameter items is a null pointer.<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The input device is a null pointer.<br>         [HID_DDK_FAILURE](capi-hid-ddk-types-h.md#hid_ddkerrcode): The corresponding device does not exist.|
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The API call is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INVALID_OPERATION](capi-hid-ddk-types-h.md#hid_ddkerrcode): The hid_ddk service connection fails or the caller is not the device creator.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The parameter check fails. Possible causes: 1. The device ID is less than 0.<br>         2. The length of the input parameter **length** exceeds 7 characters. 3. The input parameter **items** is a null pointer.<br>         [HID_DDK_NULL_PTR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The input device is a null pointer.|
 
 ### OH_Hid_DestroyDevice()
 
@@ -198,7 +198,7 @@ Opens the device specified by **deviceId** and **interfaceIndex**.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK initialization fails.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Memory allocation for the device fails.<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The I/O operation fails.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The input **dev** is empty.<br>         [HID_DDK_DEVICE_NOT_FOUND](capi-hid-ddk-types-h.md#hid_ddkerrcode): No device is found based on **deviceId** and **interfaceIndex**.|
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK initialization fails.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.<br>         [HID_DDK_MEMORY_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Memory allocation for the device fails.<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The I/O operation fails.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The **dev** parameter or ***dev** is empty.<br>         [HID_DDK_DEVICE_NOT_FOUND](capi-hid-ddk-types-h.md#hid_ddkerrcode): No device is found based on **deviceId** and **interfaceIndex**.|
 
 ### OH_Hid_Close()
 
@@ -225,7 +225,7 @@ Closes an HID device.
 
 | Type| Description|
 | -- | -- |
-| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK initialization fails.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The I/O operation fails.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The dev parameter is empty.|
+| int32_t | [HID_DDK_SUCCESS](capi-hid-ddk-types-h.md#hid_ddkerrcode): The operation is successful.<br>         [HID_DDK_NO_PERM](capi-hid-ddk-types-h.md#hid_ddkerrcode): The permission verification fails.<br>         [HID_DDK_INIT_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The DDK initialization fails.<br>         [HID_DDK_SERVICE_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): Communication with the DDK server fails.<br>         [HID_DDK_IO_ERROR](capi-hid-ddk-types-h.md#hid_ddkerrcode): The I/O operation fails.<br>         [HID_DDK_INVALID_PARAMETER](capi-hid-ddk-types-h.md#hid_ddkerrcode): The **dev** parameter or ***dev** is empty.|
 
 ### OH_Hid_Write()
 
@@ -248,7 +248,7 @@ Writes reports to an HID device.
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle.|
 | uint8_t *data | Data to be written.|
-| uint32_t length | Length of the data to be written, in bytes. The value cannot exceed [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size).|
+| uint32_t length | Length of the data to be written. The maximum value is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
 | uint32_t *bytesWritten | Number of written bytes.|
 
 **Returns**
@@ -278,7 +278,7 @@ Reads reports from the HID device within the specified timeout interval.
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle.|
 | uint8_t *data | Buffer for storing the read data.|
-| uint32_t bufSize | Size of the buffer for storing read data. The value cannot exceed [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size).|
+| uint32_t bufSize | Size of the buffer for storing the read data. The maximum size is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
 | int timeout | Timeout interval, in ms. The value **-1** indicates block waiting.|
 | uint32_t *bytesRead | Number of bytes to read.|
 
@@ -309,7 +309,7 @@ Reads reports from the HID device. The blocking mode (that is, blocking remains 
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle.|
 | uint8_t *data | Buffer for storing the read data.|
-| uint32_t bufSize | Size of the buffer for storing read data. The value cannot exceed [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size).|
+| uint32_t bufSize | Size of the buffer for storing the read data. The maximum size is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
 | uint32_t *bytesRead | Number of bytes to read.|
 
 **Returns**
@@ -395,7 +395,7 @@ Obtains the original device name.
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle.|
 | char *data | Buffer for storing the read data.|
-| uint32_t bufSize | Size of the buffer for storing read data. The value cannot exceed [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size).|
+| uint32_t bufSize | Size of the buffer for storing the read data. The maximum size is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
 
 **Returns**
 
@@ -424,7 +424,7 @@ Obtains the physical address of the HID device.
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle.|
 | char *data | Buffer for storing the read data.|
-| uint32_t bufSize | Size of the buffer for storing read data. The value cannot exceed [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size).|
+| uint32_t bufSize | Size of the buffer for storing the read data. The maximum size is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
 
 **Returns**
 
@@ -453,7 +453,7 @@ Obtains the original unique identifier of a device.
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle.|
 | uint8_t *data | Buffer for storing the read data.|
-| uint32_t bufSize | Size of the buffer for storing read data. The value cannot exceed [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size).|
+| uint32_t bufSize | Size of the buffer for storing the read data. The maximum size is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
 
 **Returns**
 
@@ -483,7 +483,7 @@ Sends reports to the HID device.
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle.                                                                                          |
 | [Hid_ReportType](capi-hid-ddk-types-h.md#hid_reporttype) reportType | Report type.                                                                                            |
 | const uint8_t *data | Data to be sent.                                                                                          |
-| uint32_t length | Length of the data to be sent, in bytes. The value cannot exceed [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size).|
+| uint32_t length | Length of the data to be sent, in bytes. The maximum value is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
 
 **Returns**
 
@@ -513,7 +513,7 @@ Obtains reports from the HID device.
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle.|
 | [Hid_ReportType](capi-hid-ddk-types-h.md#hid_reporttype) reportType | Report type.|
 | uint8_t *data | Buffer for storing the read data.|
-| uint32_t bufSize | Size of the buffer for storing read data. The value cannot exceed [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size).|
+| uint32_t bufSize | Size of the buffer for storing the read data. The maximum size is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
 
 **Returns**
 
@@ -542,7 +542,7 @@ Obtains the report descriptor of the HID device.
 | -- | -- |
 | [Hid_DeviceHandle](capi-hidddk-hid-devicehandle.md) *dev | Device operation handle.|
 | uint8_t *buf | Buffer for storing descriptors.|
-| uint32_t bufSize | Buffer size, in bytes. The value cannot exceed [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size).|
+| uint32_t bufSize | Size of the buffer, in bytes. The maximum value is [HID_MAX_REPORT_BUFFER_SIZE](capi-hid-ddk-types-h.md#hid_max_report_buffer_size). Otherwise, the parameter verification fails.|
 | uint32_t *bytesRead | Number of bytes to read.|
 
 **Returns**

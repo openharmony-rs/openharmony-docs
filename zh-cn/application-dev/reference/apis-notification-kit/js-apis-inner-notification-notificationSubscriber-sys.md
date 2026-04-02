@@ -1,4 +1,4 @@
-# NotificationSubscriber(系统接口)
+# NotificationSubscriber (系统接口)
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @michael_woo888-->
@@ -20,7 +20,15 @@
 import { notificationSubscribe } from '@kit.NotificationKit';
 ```
 
-## onConsume
+## NotificationSubscriber
+
+提供订阅者接收到新通知、取消通知等的回调方法。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+### onConsume
 
 onConsume?: (data: SubscribeCallbackData) => void
 
@@ -62,7 +70,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onCancel
+### onCancel
 
 onCancel?: (data: SubscribeCallbackData) => void
 
@@ -104,7 +112,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onUpdate
+### onUpdate
 
 onUpdate?: (data: NotificationSortingMap) => void
 
@@ -142,7 +150,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onConnect
+### onConnect
 
 onConnect?: () => void
 
@@ -182,7 +190,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onDisconnect
+### onDisconnect
 
 onDisconnect?: () => void
 
@@ -236,7 +244,7 @@ notificationSubscribe.subscribe(subscriber, subscribeCallback);
 notificationSubscribe.unsubscribe(subscriber, unsubscribeCallback);
 ```
 
-## onDestroy
+### onDestroy
 
 onDestroy?: () => void
 
@@ -276,7 +284,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onDoNotDisturbDateChange<sup>(deprecated)</sup>
+### onDoNotDisturbDateChange<sup>(deprecated)</sup>
 
 onDoNotDisturbDateChange?: (mode: notification.DoNotDisturbDate) => void
 
@@ -321,7 +329,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onDoNotDisturbChanged<sup>11+</sup>
+### onDoNotDisturbChanged<sup>11+</sup>
 
 onDoNotDisturbChanged?: (mode: notificationManager.DoNotDisturbDate) => void
 
@@ -362,7 +370,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onEnabledNotificationChanged<sup>8+</sup>
+### onEnabledNotificationChanged<sup>8+</sup>
 
 onEnabledNotificationChanged?: (callbackData: EnabledNotificationCallbackData) => void
 
@@ -404,7 +412,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onBadgeChanged<sup>10+</sup>
+### onBadgeChanged<sup>10+</sup>
 
 onBadgeChanged?: (data: BadgeNumberCallbackData) => void
 
@@ -444,47 +452,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onBadgeEnabledChanged<sup>12+</sup>
-
-onBadgeEnabledChanged?: BadgeEnabledChangedCallback
-
-监听应用角标使能状态变化。
-
-**系统能力**：SystemCapability.Notification.Notification
-
-**系统接口**：此接口为系统接口。
-
-**参数：**
-
-| 参数名   | 类型                                                         | 必填 | 说明                       |
-| -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| onBadgeEnabledChanged | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | 否   | 回调应用角标使能状态变化。 |
-
-**示例：**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-let subscribeCallback = (err: BusinessError) => {
-  if (err) {
-    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
-  } else {
-    console.info('subscribeCallback');
-  }
-};
-
-let BadgeEnabledChangedCallback = (data: notificationSubscribe.EnabledNotificationCallbackData) => {
-  console.info(`onBadgeEnabledChanged, badge enabled state change to: ${JSON.stringify(data)}`);
-};
-let subscriber: notificationSubscribe.NotificationSubscriber = {
-  onBadgeEnabledChanged: BadgeEnabledChangedCallback
-};
-
-notificationSubscribe.subscribe(subscriber, subscribeCallback);
-```
-
-
-## onBatchCancel<sup>11+</sup>
+### onBatchCancel<sup>11+</sup>
 
 onBatchCancel?: (data: Array<SubscribeCallbackData\>) => void
 
@@ -526,7 +494,7 @@ let subscriber: notificationSubscribe.NotificationSubscriber = {
 notificationSubscribe.subscribe(subscriber, subscribeCallback);
 ```
 
-## onEnabledPriorityChanged<sup>23+</sup>
+### onEnabledPriorityChanged<sup>23+</sup>
 
 onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackData) => void
 
@@ -545,7 +513,6 @@ onEnabledPriorityChanged?: (callbackData: EnabledPriorityNotificationCallbackDat
 **示例：**
 
 ```ts
-import { notificationSubscribe } from '@kit.NotificationKit';
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledPriorityChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationCallbackData) => {
     console.info(`onEnabledPriorityChanged: ${JSON.stringify(callbackData)}`);
@@ -558,7 +525,7 @@ try {
 }
 ```
 
-## onEnabledPriorityByBundleChanged<sup>23+</sup>
+### onEnabledPriorityByBundleChanged<sup>23+</sup>
 
 onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByBundleCallbackData) => void
 
@@ -577,7 +544,6 @@ onEnabledPriorityByBundleChanged?: (callbackData: EnabledPriorityNotificationByB
 **示例：**
 
 ```ts
-import { notificationSubscribe } from '@kit.NotificationKit';
 let subscriber: notificationSubscribe.NotificationSubscriber = {
   onEnabledPriorityByBundleChanged: (callbackData: notificationSubscribe.EnabledPriorityNotificationByBundleCallbackData) => {
     console.info(`onEnabledPriorityByBundleChanged: ${JSON.stringify(callbackData)}`);
@@ -589,6 +555,22 @@ try {
   console.error("subscribe failed");
 }
 ```
+
+### 属性
+
+通知系统属性值变化的回调函数。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称   | 类型    | 只读 | 可选 | 说明             |
+| ------ | ------- | ---- | --- | ---------------- |
+| onSystemUpdate | [SystemUpdateCallback](#systemupdatecallback23) | 否 | 是 | 返回携带系统属性值的通知信息。 |
+| onEnabledSilentReminderChanged | [EnabledSilentReminderChangedCallback](#enabledsilentreminderchangedcallback24) | 否 | 是 | 返回应用通知静默提醒的使能状态变化。 |
+| onBadgeEnabledChanged | [BadgeEnabledChangedCallback](#badgeenabledchangedcallback12) | 否 | 是 | 返回应用角标的使能状态变化。 |
 
 ## SubscribeCallbackData
 
@@ -604,7 +586,6 @@ try {
 | sound           | string                                                             | 是  | 是  | 通知声音。 |
 | vibrationValues | Array\<number\>                                                    | 是  | 是  | 通知震动。 |
 
-
 ## EnabledNotificationCallbackData<sup>8+</sup>
 
 **系统能力**：SystemCapability.Notification.Notification
@@ -617,6 +598,19 @@ try {
 | uid    | number  | 是  | 否  | 应用的uid。        |
 | enable | boolean | 是  | 否  | 应用通知使能状态。<br> - true：允许。<br> - false：禁止。 |
 
+## EnabledSilentReminderCallbackData<sup>24+</sup>
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+| 名称   | 类型    | 只读 | 可选 | 说明             |
+| ------ | ------- | ---- | --- | ---------------- |
+| bundle | string  | 是  | 否  | 应用的包名。       |
+| uid    | number  | 是  | 否  | 应用的uid。        |
+| enableStatus | [notificationManager.SwitchState](js-apis-notificationManager-sys.md#switchstate20) | 是  | 否  | 应用通知的静默提醒开关状态。<br> - USER_MODIFIED_OFF：用户设置的关闭状态。<br> - USER_MODIFIED_ON：用户设置的开启状态。<br> - SYSTEM_DEFAULT_OFF：用户设置前的初始关闭状态。<br> - SYSTEM_DEFAULT_ON：用户设置前的初始开启状态。|
 
 ## BadgeNumberCallbackData<sup>10+</sup>
 
@@ -632,24 +626,6 @@ try {
 | instanceKey<sup>(deprecated)</sup>  | number | 是   | 是   | 应用实例键值。从API version 12开始支持，从API version 15开始废弃，建议使用appInstanceKey替代。   |
 | appInstanceKey<sup>15+</sup>  | string | 是   | 是   | 应用实例键值。   |
 
-
-## BadgeEnabledChangedCallback<sup>12+</sup>
-
-### (data: EnabledNotificationCallbackData)<sup>12+</sup>
-
-(data: EnabledNotificationCallbackData): void
-
-注册应用角标使能状态变化的回调函数类型。
-
-**系统能力**：SystemCapability.Notification.Notification
-
-**系统接口**：此接口为系统接口。
-
-**参数**：
-
-| 参数名        | 类型   | 必填 | 说明     |
-| --------- | ------ | ---- | ------------ |
-| data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | 是    |   回调返回监听到的角标使能状态信息。 |
 
 ## EnabledPriorityNotificationCallbackData<sup>23+</sup>
 
@@ -672,3 +648,119 @@ try {
 | bundle      | string | 是   | 否   | 应用的包名。 |
 | uid         | number | 是   | 否   | 应用的uid。  |
 | enableStatus | [PriorityEnableStatus](js-apis-notificationManager-sys.md#priorityenablestatus23) | 是  | 否  | 应用通知的优先使能状态。<br> - DISABLE：不允许设置为优先通知。<br> - ENABLE_BY_INTELLIGENT：允许经智能识别、用户关键词匹配、应用规则匹配等方式设置为优先通知。<br> - ENABLE：应用通知均设置为优先通知。 |
+
+
+## BadgeEnabledChangedCallback<sup>12+</sup>
+
+type BadgeEnabledChangedCallback = (data: EnabledNotificationCallbackData) => void
+
+注册应用角标使能状态变化的回调函数类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**参数**：
+
+| 参数名        | 类型   | 必填 | 说明     |
+| --------- | ------ | ---- | ------------ |
+| data        | [EnabledNotificationCallbackData](#enablednotificationcallbackdata8) | 是    |   回调返回监听到的角标使能状态信息。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info('subscribeCallback');
+  }
+};
+
+let BadgeEnabledChangedCallback = (data: notificationSubscribe.EnabledNotificationCallbackData) => {
+  console.info(`onBadgeEnabledChanged, badge enabled state change to: ${JSON.stringify(data)}`);
+};
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onBadgeEnabledChanged: BadgeEnabledChangedCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```
+
+## SystemUpdateCallback<sup>23+</sup>
+
+type SystemUpdateCallback = (data: SubscribeCallbackData) => void
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**参数**：
+
+| 参数名       | 类型   | 必填 | 说明         |
+| ----------- | ------ | ---- | ------------ |
+| data | [SubscribeCallbackData](#subscribecallbackdata) | 是 | 返回携带系统属性值的通知信息。 |
+
+**示例：**
+
+```ts
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onSystemUpdate: (data: notificationSubscribe.SubscribeCallbackData) => {
+    let req = data.request;
+    console.info(`onSystemUpdate callback req.priorityType: ${req.priorityNotificationType}`);
+  }
+};
+try {
+  notificationSubscribe.subscribe(subscriber);
+} catch (error) {
+  console.error("subscribe failed");
+}
+```
+
+## EnabledSilentReminderChangedCallback<sup>24+</sup>
+
+type EnabledSilentReminderChangedCallback = (callbackData: EnabledSilentReminderCallbackData) => void
+
+注册应用通知静默提醒使能状态变化的回调函数类型。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**参数**：
+
+| 参数名        | 类型   | 必填 | 说明     |
+| --------- | ------ | ---- | ------------ |
+| callbackData        | [EnabledSilentReminderCallbackData](#enabledsilentremindercallbackdata24) | 是    |   回调返回监听到的静默提醒使能状态信息。 |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let subscribeCallback = (err: BusinessError) => {
+  if (err) {
+    console.error(`subscribe failed, code is ${err.code}, message is ${err.message}`);
+  } else {
+    console.info("subscribeCallback");
+  }
+};
+
+let onEnabledSilentReminderChangedCallback: notificationSubscribe.EnabledSilentReminderChangedCallback = (callbackData: notificationSubscribe.EnabledSilentReminderCallbackData) => {
+  console.info("bundle: ", callbackData.bundle);
+  console.info("uid: ", callbackData.uid);
+  console.info("enable: ", callbackData.enableStatus);
+};
+
+let subscriber: notificationSubscribe.NotificationSubscriber = {
+  onEnabledSilentReminderChanged: onEnabledSilentReminderChangedCallback
+};
+
+notificationSubscribe.subscribe(subscriber, subscribeCallback);
+```

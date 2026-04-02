@@ -199,8 +199,8 @@ Displays a popover dialog box that is positioned relative to the target componen
 
 | Name           | Type                                                               | Mandatory| Decorator              | Description                                                |
 | ------------- |-------------------------------------------------------------------| -- |---------------------| -------------------------------------------------- |
-| visible       | boolean                                                           | Yes | @Param<br>@Require | Whether the popover dialog box is visible.<br>**false**: The popover dialog box is hidden.                                        |
-| \$visible     | [PopoverDialogV2OnVisibleChange](#popoverdialogv2onvisiblechange) | No | @Event              | Callback invoked when the visibility of the dialog box changes. Use the **!!** syntax for two-way binding with **visible**.<br>By default, there is no callback.|
+| visible       | boolean                                                           | Yes | @Param<br>@Require | Whether the popover dialog box is visible.<br>**false**: The popover dialog box is hidden.<br>**false**: The popover dialog box is hidden.                                        |
+| \$visible     | [PopoverDialogV2OnVisibleChange](#popoverdialogv2onvisiblechange) | No | @Event              | Callback invoked when the visibility of the dialog box changes. Use the **!!** syntax for two-way binding with **visible**.<br>By default, there is no event.|
 | popover       | [PopoverDialogV2Options](#popoverdialogv2options)                 | Yes | @Param<br>@Require | Options of the popover dialog box.                                        |
 | targetBuilder | [CustomBuilder](ts-types.md#custombuilder8)                       | Yes | @BuilderParam       | Target component relative to which the popover dialog box is positioned.                                     |
 
@@ -336,7 +336,7 @@ struct Index {
     Row() {
       Stack() {
         Column() {
-          Button("Open TipsDialogV2")
+          Button("TipsDialogV2")
             .width(96)
             .height(40)
             .onClick(() => {
@@ -444,7 +444,7 @@ struct Index {
   dialogBuilder(): void {
     ConfirmDialogV2({
       title:'Title',
-      content: 'This is where content is displayed. This is where content is displayed.',
+      content: 'This is where the content of this dialog box is presented.',
       checked: this.checked,
       checkTips: 'Do not ask me again',
       primaryButton: new AdvancedDialogV2Button({
@@ -625,7 +625,7 @@ struct Index {
   dialogBuilder(): void {
     WithTheme({ theme: new CustomThemeImpl(new CustomThemeColors()) }) {
       LoadingDialogV2({
-        content: 'This is where content is displayed.',
+        content: 'Text text text text text text',
       })
     }
   }

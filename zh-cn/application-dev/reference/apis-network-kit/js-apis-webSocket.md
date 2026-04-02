@@ -59,7 +59,6 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果。
 >
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
@@ -71,7 +70,7 @@ connect(url: string, callback: AsyncCallback\<boolean\>): void
 
 >**注意：**
 >
->URL地址长度不能超过1024个字符，否则会连接失败。从API15开始，URL地址长度限制由1024修改为2048。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。从API version 26开始，URL地址长度限制由2048修改为8196。
 
 **参数：**
 
@@ -120,8 +119,6 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
->
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
@@ -132,7 +129,7 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 
 >**注意：**
 >
->URL地址长度不能超过1024个字符，否则会连接失败。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。从API version 26开始，URL地址长度限制由2048修改为8196。
 
 **参数：**
 
@@ -162,6 +159,7 @@ connect(url: string, options: WebSocketRequestOptions, callback: AsyncCallback\<
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// 示例1：
 let ws = webSocket.createWebSocket();
 let options: webSocket.WebSocketRequestOptions | undefined;
 if (options !=undefined) {
@@ -180,6 +178,21 @@ ws.connect(url, options, (err: BusinessError, value: Object) => {
     console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
   }
 });
+
+// 示例2：
+let url = "ws://"
+let ws = webSocket.createWebSocket();
+let options: webSocket.WebSocketRequestOptions = {
+  minSupportTlsProtocol: webSocket.TlsProtocol.TLS_V_1_1
+};
+ws.connect(url, options, (err: BusinessError, value: Object) => {
+  if (!err) {
+    console.info("connect success")
+  } else {
+    console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
+  }
+});
+
 ```
 
 ### connect
@@ -190,8 +203,6 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误发生时会得到错误码：200。
->
 >callback中返回的boolean值仅表示连接请求创建是否成功。如需感知WebSocket是否连接成功，需要在调用该接口前调用[on('open')](#onopen)订阅open事件。
 
 **需要权限**：ohos.permission.INTERNET
@@ -200,9 +211,9 @@ connect(url: string, options?: WebSocketRequestOptions): Promise\<boolean\>
 
 **系统能力**：SystemCapability.Communication.NetStack
 
->**注意：** 
+> **注意：** 
 >
->URL地址长度不能超过1024个字符，否则会连接失败。
+>URL地址长度不能超过1024个字符，否则会连接失败。从API version 15开始，URL地址长度限制由1024修改为2048。从API version 26开始，URL地址长度限制由2048修改为8196。
 
 **参数：**
 
@@ -724,6 +735,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 订阅WebSocket的Error事件，使用callback异步回调。
 
+关于[error](#onerror)事件回调的错误码说明：WebSocket的本质是HTTP协议升级，若服务器同意升级，服务器会返回101。状态码表示协议从HTTP切换为WebSocket协议（触发open回调），而如果服务器拒绝了升级或出现其他异常，则返回200，表示服务器只是将请求当作普通的HTTP请求来处理。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
@@ -921,7 +934,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 
 > **说明：**
 >
-> 可通过监听error事件获得该接口的执行结果，错误码说明参见[webSocket错误码](errorcode-net-webSocket.md)。
+> 在多次调用该接口时，应避免监听同一端口。
 
 **需要权限**: ohos.permission.INTERNET
 
@@ -949,6 +962,7 @@ start(config: WebSocketServerConfig): Promise\<boolean\>
 | 2302002   | Websocket certificate file does not exist. |
 | 2302004   | Can't listen on the given NIC.            |
 | 2302005   | Can't listen on the given Port.           |
+| 2302007   | Websocket port already occupied.           |
 | 2302999   | Websocket other unknown error.             |
 
 **示例：**
@@ -1482,6 +1496,7 @@ localServer.off('error');
 | skipServerCertVerification<sup>20+</sup> | boolean | 否 | 是 | 是否跳过服务器证书验证。true表示跳过服务器证书验证，false表示不跳过服务器证书验证。默认为false。 |
 | pingInterval<sup>21+</sup> | number | 否 | 是 | 自定义[心跳检测](../../network/websocket-connection.md#场景介绍)时间，默认为30s。每pingInterval周期会发起心跳检测，设置为0则表示关闭心跳检测。最大值：30000s，最小值：0s。 |
 | pongTimeout<sup>21+</sup> | number | 否 | 是 | 自定义发起心跳检测后，超时断开时间，默认为30s。发起心跳检测后若pongTimeout时间未响应则断开连接。最大值：30000s，最小值：0s。pongTimeout须小于等于pingInterval。|
+| minSupportTlsProtocol<sup>26+</sup> | [TlsProtocol](#tlsprotocol26) | 否 | 是 | 自定义支持的最低TLS协议版本。例如：设置该参数为TLS_V_1_1，则客户端可支持TLS协议版本有TLS1.1、TLS1.2、TLS1.3。|
 
 ## ClientCert<sup>11+</sup>
 
@@ -1535,9 +1550,8 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 | reason | string | 否   |否 |原因值，订阅close事件得到的关闭连接的错误原因。 |
 
 ## ResponseHeaders<sup>12+</sup>
-type ResponseHeaders = {
-  [k: string]: string | string[] | undefined;
-}
+
+type ResponseHeaders = { [k: string]: string | string[] | undefined; }
 
 服务器发送的响应头。
 
@@ -1585,7 +1599,7 @@ type HttpProxy = connection.HttpProxy
 | serverPort | number | 否   | 否   | 服务端监听的端口号。                   |
 | serverCert | [ServerCert](#servercert19) | 否  | 是   | 指定服务端证书的信息，包括服务端证书文件路径和服务端证书的私钥文件路径。 |
 | protocol   | string | 否   | 是   | 自定义协议。 |
-| maxConcurrentClientsNumber | number | 否 | 否   | 最大并发客户端数量，当到达最大数时，服务端拒绝新连接。默认最大数量为10。 |
+| maxConcurrentClientsNumber | number | 否 | 否   | 最大并发客户端数量，当达到最大数时，服务端拒绝新连接。默认最大数量为10。 |
 | maxConnectionsForOneClient | number | 否 | 否   | 单个客户端的最大连接数。默认最大数量为10。 |
 
 ## ServerCert<sup>19+</sup>
@@ -1634,3 +1648,16 @@ type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, clo
 | ---------------- | -------------------  | ------ | --------------------------------------------- |
 | clientConnection | [WebSocketConnection](#websocketconnection19) | 是 | 客户端信息，包括客户端的ip地址和端口号port。             |
 | closeReason | [CloseResult](#closeresult10)  | 是 | 关闭WebSocket连接时，订阅close事件得到的关闭结果。 |
+
+## TlsProtocol<sup>26+</sup>
+
+TLS协议类型。
+
+**系统能力**：SystemCapability.Communication.NetStack
+
+|            名称         | 值   | 说明        |
+| :----------------------- | :---- | :---------- |
+| TLS_V_1_0 | 0    | TLS版本号1.0。  |
+| TLS_V_1_1  | 1    | TLS版本号1.1。 |
+| TLS_V_1_2 | 2    | TLS版本号1.2。 |
+| TLS_V_1_3 | 3    | TLS版本号1.3。 |

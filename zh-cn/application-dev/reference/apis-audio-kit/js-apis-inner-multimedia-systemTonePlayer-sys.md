@@ -56,7 +56,7 @@ getTitle(): Promise&lt;string&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -93,7 +93,7 @@ prepare(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -139,7 +139,7 @@ start(toneOptions?: SystemToneOptions): Promise&lt;number&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                                                                                                    |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
@@ -190,7 +190,7 @@ stop(id: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体服务错误码](../apis-media-kit/errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](../apis-media-kit/errorcode-media.md)。
 
 | 错误码ID | 错误信息                                                                                                    |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
@@ -203,7 +203,7 @@ stop(id: number): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let streamID: number = 0; //streamID为start方法返回的streamID,此处只做初始化。
+let streamID: number = 0; // streamID为start方法返回的streamID,此处只做初始化。
 systemTonePlayer.stop(streamID).then(() => {
   console.info('Succeeded in doing stop.');
 }).catch((err: BusinessError) => {
@@ -265,7 +265,7 @@ setAudioVolumeScale(scale: number): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息                                                                                                    |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
@@ -346,7 +346,7 @@ getSupportedHapticsFeatures(): Promise&lt;Array&lt;systemSoundManager.ToneHaptic
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -383,7 +383,7 @@ setHapticsFeature(hapticsFeature: systemSoundManager.ToneHapticsFeature): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[媒体服务错误码](../apis-media-kit/errorcode-media.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)、[Media错误码](../apis-media-kit/errorcode-media.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息                                                                                                    |
 | -------- | ----------------------------------------------------------------------------------------------------------- |
@@ -425,7 +425,7 @@ getHapticsFeature(): systemSoundManager.ToneHapticsFeature
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 
 | 错误码ID | 错误信息                            |
@@ -469,7 +469,7 @@ on(type: 'playFinished', streamId: number, callback: Callback\<number>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -515,7 +515,7 @@ off(type: 'playFinished', callback?: Callback\<number>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -557,7 +557,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -570,7 +570,7 @@ on(type: 'error', callback: ErrorCallback): void
 import { BusinessError } from '@kit.BasicServicesKit';
 
 systemTonePlayer.on('error', (err: BusinessError) => {
-  console.log("on error, err:" + JSON.stringify(err));
+  console.info(`Succeeded in using on function. code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -593,7 +593,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[铃声错误码说明文档](./errorcode-ringtone.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Ringtone错误码](./errorcode-ringtone.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -610,7 +610,7 @@ systemTonePlayer.off('error');
 
 // 同一监听事件中，on方法和off方法传入callback参数一致，off方法取消对应on方法订阅的监听。
 let callback = (err: BusinessError) => {
-  console.log("on error, err:" + JSON.stringify(err));
+  console.info(`Succeeded in using on or off function. code: ${err.code}, message: ${err.message}`);
 };
 
 systemTonePlayer.on('error', callback);

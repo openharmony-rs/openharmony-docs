@@ -251,7 +251,7 @@ export default class EntryAbility extends UIAbility {
 
     getGroupDirContext.getGroupDir("1", (err: BusinessError, data) => {
       if (err) {
-        console.error(`getGroupDir faile, err: ${JSON.stringify(err)}`);
+        console.error(`getGroupDir failed, err: ${JSON.stringify(err)}`);
       } else {
         console.info(`getGroupDir result is: ${JSON.stringify(data)}`);
       }

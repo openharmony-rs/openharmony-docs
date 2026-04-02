@@ -181,8 +181,8 @@ Sets the color and standard color gamut for this brush. The difference between t
 
 | Name| Type                                                | Mandatory| Description            |
 | ------ | ---------------------------------------------------- | ---- | ---------------- |
-| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Yes  | Color in the ARGB format. The value of each color channel is a floating point number ranging from 0.0 to 1.0. Values above 1.0 default to 1.0, and values below 0.0 default to 0.0.|
-| colorSpace  | [colorSpaceManager.ColorSpaceManager](js-apis-colorSpaceManager.md#colorspacemanager) \| null | Yes  | Standard color gamut object. null indicates SRGB.|
+| color4f  | [common2D.Color4f](js-apis-graphics-common2D.md#color4f20) | Yes  | Color in the ARGB format. The value of each color channel is a floating point number ranging from 0.0 to 1.0. Values above 1.0 default to **1.0**, and values below 0.0 default to **0.0**.|
+| colorSpace  | [colorSpaceManager.ColorSpaceManager](js-apis-colorSpaceManager.md#colorspacemanager) \| null | Yes  | Standard color gamut object. **null** indicates SRGB.|
 
 **Example**
 
@@ -382,7 +382,7 @@ let alpha = brush.getAlpha();
 
 ## setColorFilter
 
-setColorFilter(filter: ColorFilter) : void
+setColorFilter(filter: ColorFilter | null) : void
 
 Sets a color filter for this brush.
 
@@ -392,7 +392,7 @@ Sets a color filter for this brush.
 
 | Name| Type                       | Mandatory| Description        |
 | ------ | --------------------------- | ---- | ------------ |
-| filter | [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) | Yes  | Defines a color filter. If null is passed in, the color filter is cleared.|
+| filter | [ColorFilter](arkts-apis-graphics-drawing-ColorFilter.md) \| null | Yes  | Defines a color filter. If **null** is passed in, the color filter is cleared.|
 
 **Error codes**
 
@@ -414,7 +414,7 @@ brush.setColorFilter(colorFilter);
 
 ## setMaskFilter<sup>12+</sup>
 
-setMaskFilter(filter: MaskFilter): void
+setMaskFilter(filter: MaskFilter | null): void
 
 Adds a mask filter for this brush.
 
@@ -424,7 +424,7 @@ Adds a mask filter for this brush.
 
 | Name| Type                      | Mandatory| Description     |
 | ------ | ------------------------- | ---- | --------- |
-| filter | [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) | Yes  | Mask filter. If null is passed in, the mask filter is cleared.|
+| filter | [MaskFilter](arkts-apis-graphics-drawing-MaskFilter.md) \| null | Yes  | Mask filter. If **null** is passed in, the mask filter is cleared.|
 
 **Error codes**
 
@@ -452,7 +452,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## setShaderEffect<sup>12+</sup>
 
-setShaderEffect(shaderEffect: ShaderEffect): void
+setShaderEffect(shaderEffect: ShaderEffect | null): void
 
 Sets the shader effect for this brush.
 
@@ -462,7 +462,7 @@ Sets the shader effect for this brush.
 
 | Name | Type                      | Mandatory| Description        |
 | ------- | ------------------------- | ---- | ------------ |
-| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) | Yes  | **ShaderEffect** object. If null is passed in, the shader effect will be cleared.|
+| shaderEffect  | [ShaderEffect](arkts-apis-graphics-drawing-ShaderEffect.md) \| null | Yes  | **ShaderEffect** object. If **null** is passed in, the shader effect will be cleared.|
 
 **Error codes**
 
@@ -484,7 +484,7 @@ brush.setShaderEffect(shaderEffect);
 
 ## setShadowLayer<sup>12+</sup>
 
-setShadowLayer(shadowLayer: ShadowLayer): void
+setShadowLayer(shadowLayer: ShadowLayer | null): void
 
 Sets a shadow layer for this brush. The shadow layer effect takes effect only when text is drawn.
 
@@ -494,7 +494,7 @@ Sets a shadow layer for this brush. The shadow layer effect takes effect only wh
 
 | Name | Type                      | Mandatory| Description     |
 | ------- | ------------------------- | ---- | --------- |
-| shadowLayer  | [ShadowLayer](arkts-apis-graphics-drawing-ShadowLayer.md) | Yes  | Implements a shadow layer. If null is passed in, the shadow layer is cleared.|
+| shadowLayer  | [ShadowLayer](arkts-apis-graphics-drawing-ShadowLayer.md) \| null | Yes  | Implements a shadow layer. If **null** is passed in, the shadow layer is cleared.|
 
 **Error codes**
 
@@ -591,7 +591,7 @@ Sets an image filter for this brush.
 
 | Name| Type  | Mandatory| Description                   |
 | ------ | ------ | ---- | ----------------------- |
-| filter    | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | Yes  | Image filter. If null is passed in, the image filter effect of the brush will be cleared.|
+| filter    | [ImageFilter](arkts-apis-graphics-drawing-ImageFilter.md) \| null | Yes  | Image filter. If **null** is passed in, the image filter effect of the brush will be cleared.|
 
 **Error codes**
 
