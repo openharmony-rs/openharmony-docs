@@ -382,7 +382,7 @@ try {
 
 addHiddenSettingsMenu(admin: Want, menusToHidden: Array\<SettingsMenu>): void
 
-添加设置项至当前用户下的隐藏设置项列表。添加至隐藏设置项列表的设置项在当前用户的设置菜单中会被隐藏，隐藏后依然可以在设置的搜索中搜索到，但点击后无法打开。调用接口后即刻生效，无需重启设置应用。
+添加设置项至当前用户下的隐藏设置项列表。添加至隐藏设置项列表的设置项在当前用户的设置菜单中会被隐藏，隐藏后不可以在设置的搜索中搜索到。如果通过某种方式搜索到该设置项，点击后也无法打开。调用接口后即刻生效，无需重启设置应用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
@@ -407,7 +407,7 @@ addHiddenSettingsMenu(admin: Want, menusToHidden: Array\<SettingsMenu>): void
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200012  | The parameter validation failed.  |
+| 9200012  | Parameter verification failed.  |
 | 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
@@ -431,11 +431,7 @@ let menusToHidden: Array<deviceSettings.SettingsMenu> = [
 ]
 
 try {
-  const validMenus: Array<deviceSettings.SettingsMenu> = menusToHidden.filter(() => {});
-  if (validMenus.length === 0) {
-    console.warn('No valid SettingsMenu items to add.');
-  }
-  deviceSettings.addHiddenSettingsMenu(wantTemp, validMenus);
+  deviceSettings.addHiddenSettingsMenu(wantTemp, menusToHidden);
   console.info('Succeeded in adding hidden settings menu.');
 } catch (err) {
   console.error(`Failed to add hidden settings menu. Code: ${err.code}, message: ${err.message}`);
@@ -446,7 +442,7 @@ try {
 
 removeHiddenSettingsMenu(admin: Want, menusToHidden: Array\<SettingsMenu>): void
 
-将设置项从当前用户下的隐藏设置项列表中移除。隐藏设置项列表中的设置项在当前用户的设置菜单中会被隐藏，隐藏后依然可以在设置的搜索中搜索到，但点击后无法打开。若移除后剩余的隐藏设置项列表为空，则设置项会全部显示。调用接口后即刻生效，无需重启设置应用。
+将设置项从当前用户下的隐藏设置项列表中移除。隐藏设置项列表中的设置项在当前用户的设置菜单中会被隐藏，隐藏后不可以在设置的搜索中搜索到，如果通过某种方式搜索到该设置项，点击后也无法打开。若移除后剩余的隐藏设置项列表为空，则设置项会全部显示。调用接口后即刻生效，无需重启设置应用。
 
 **需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
 
@@ -471,7 +467,7 @@ removeHiddenSettingsMenu(admin: Want, menusToHidden: Array\<SettingsMenu>): void
 | -------- | ------------------------------------------------------------ |
 | 9200001  | The application is not an administrator application of the device. |
 | 9200002  | The administrator application does not have permission to manage the device. |
-| 9200012  | The parameter validation failed.  |
+| 9200012  | Parameter verification failed.  |
 | 9200016  | Service timeout. |
 | 201      | Permission verification failed. The application does not have the permission required to call the API. |
 | 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
@@ -495,11 +491,7 @@ let menusToHidden: Array<deviceSettings.SettingsMenu> = [
 ]
 
 try {
-  const validMenus: Array<deviceSettings.SettingsMenu> = menusToHidden.filter(() => {});
-  if (validMenus.length === 0) {
-    console.warn('No valid SettingsMenu items to remove.');
-  }
-  deviceSettings.removeHiddenSettingsMenu(wantTemp, validMenus);
+  deviceSettings.removeHiddenSettingsMenu(wantTemp, menusToHidden);
   console.info('Succeeded in removing hidden settings menu.');
 } catch (err) {
   console.error(`Failed to remove hidden settings menu. Code: ${err.code}, message: ${err.message}`);
@@ -570,7 +562,7 @@ try {
 ## SettingsItem<sup>24+</sup>
 
 设置的策略类型。
- 	 
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 
@@ -582,7 +574,7 @@ try {
 ## SettingsMenu<sup>24+</sup>
 
 设置项列表。
- 	 
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 | 名称   | 值 | 说明         |
@@ -607,17 +599,17 @@ try {
 | PRIVACY_AND_SECURITY        | 17     | 隐私和安全。 |
 | DIGITAL_BALANCE             | 18     | 健康使用设备。 |
 | SMART_ASSISTANT             | 19     | 智能助手。 |
-| ACCESSIBILITY               | 20     | 辅助功能。 |
+| ACCESSIBILITY               | 20     | 关怀和无障碍。 |
 | SYSTEM                      | 21     | 系统。 |
 | ABOUT_DEVICE                | 22     | 关于本机。 |
 | SYSTEM_NAVIGATION           | 23     | 系统-系统导航。 |
-| LANGUAGE_REGION             | 24     | 系统-语言和区域。 |
+| LANGUAGE_REGION             | 24     | 系统-语言和地区。 |
 | INPUT_METHODS               | 25     | 系统-输入法。 |
 | DATE_TIME                   | 26     | 系统-日期和时间。 |
 | DATA_CLONE                  | 27     | 系统-数据克隆。 |
 | BACKUP_SETTINGS             | 28     | 系统-备份和恢复。 |
 | RESET                       | 29     | 系统-重置。 |
-| SUPERHUB                    | 30     | 系统和更新-中转站。 |
+| SUPERHUB                    | 30     | 系统-中转站。 |
 | USER_EXPERIENCE             | 31     | 系统-用户体验改进计划。 |
 | SCREEN_CAST                 | 32     | 多设备协同-无线投屏。 |
 | PRINTERS_SCANNERS           | 33     | 打印机和扫描仪。 |
@@ -626,7 +618,7 @@ try {
 | SIM_MANAGEMENT              | 36     | 移动网络-SIM卡管理。 |
 | AIRPLANE_MODE               | 37     | 移动网络-飞行模式。 |
 | MANAGE_DATA_USAGE           | 38     | 移动网络-流量管理。 |
-| VPN_SETTINGS                | 39     | 多设备协同-VPN。 |
+| VPN_SETTINGS                | 39     | 移动网络-VPN。 |
 | TEXT_DISPLAY_SIZE           | 40     | 显示和亮度-字体大小和界面缩放。 |
 | APP_DUPLICATOR              | 41     | 系统-应用分身。 |
 | SEARCH                      | 42     | 搜索。 |
