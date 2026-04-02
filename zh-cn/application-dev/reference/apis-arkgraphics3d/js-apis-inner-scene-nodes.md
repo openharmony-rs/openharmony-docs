@@ -315,7 +315,7 @@ function count(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| position | [Position3](js-apis-inner-scene-types.md#position3) | 否 | 否 | 结点位置。 |
+| position | [Position3](js-apis-inner-scene-types.md#position3) | 否 | 否 | 结点位置，单位为世界坐标系下的场景单位（比如cm、m、km等）。 |
 | rotation | [Quaternion](js-apis-inner-scene-types.md#quaternion) | 否 | 否 | 结点旋转角度。 |
 | scale | [Scale3](js-apis-inner-scene-types.md#scale3) | 否 | 否 | 结点缩放。 |
 | visible | boolean | 否 | 否 | 结点是否可见。true表示该节点可见，false表示不可见。 |
@@ -387,7 +387,7 @@ function getNode(): void {
 | ---- | ---- | ---- | ---- | ---- |
 | lightType | [LightType](#lighttype) | 是 | 否 | 光源类型。 |
 | color | [Color](js-apis-inner-scene-types.md#color) | 否 | 否 | 颜色。 |
-| intensity | number | 否 | 否 | 光照密度，取值范围是大于0的实数。 |
+| intensity | number | 否 | 否 | 光照密度，单位为坎德拉（cd），取值范围是大于0的实数。 |
 | shadowEnabled | boolean | 否 | 否 | 是否使能阴影。true表示添加阴影，false表示没有阴影效果。 |
 | enabled | boolean | 否 | 否 | 是否使能光源。true表示使用光源，false表示不使用。 |
 
@@ -400,8 +400,8 @@ function getNode(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| innerAngle<sup>23+</sup> | number | 否 | 是 | 从聚光灯中心到开始衰减的角度，对应圆锥的半顶角，在这个圆锥体内光强不随角度衰减。以弧度制表示，默认值为0。设置的值必须大于等于0，小于等于outerAngle。 |
-| outerAngle<sup>23+</sup> | number | 否 | 是 | 从聚光灯中心到衰减结束的角度，对应圆锥的半顶角，在这个圆锥体外不再有光强度。以弧度制表示，默认值为PI/4。设置的值必须大于等于innerAngle，小于等于PI/2。 |
+| innerAngle<sup>23+</sup> | number | 否 | 是 | 从聚光灯中心到开始衰减的角度，对应圆锥的半顶角，在这个圆锥体内光强不随角度衰减。单位为弧度（rad），默认值为0。设置的值必须大于等于0，小于等于outerAngle。 |
+| outerAngle<sup>23+</sup> | number | 否 | 是 | 从聚光灯中心到衰减结束的角度，对应圆锥的半顶角，在这个圆锥体外不再有光强度。单位为弧度（rad），默认值为PI/4。设置的值必须大于等于innerAngle，小于等于PI/2。 |
 
 > **注意：** 
 > 
@@ -423,9 +423,9 @@ function getNode(): void {
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| fov | number | 否 | 否 | 视场，取值在0到π弧度之间。 |
-| nearPlane | number | 否 | 否 | 近平面，取值大于0。 |
-| farPlane | number | 否 | 否 | 远平面，取值大于nearPlane。 |
+| fov | number | 否 | 否 | 视场，单位为弧度（rad），取值在0到π弧度之间。 |
+| nearPlane | number | 否 | 否 | 近平面，单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于0。 |
+| farPlane | number | 否 | 否 | 远平面，单位为世界坐标系下的场景单位（比如cm、m、km等），取值大于nearPlane。 |
 | enabled | boolean | 否 | 否 | 是否使能相机。true表示使用相机，false表示不使用相机。 |
 | postProcess | [PostProcessSettings](js-apis-inner-scene-post-process-settings.md#postprocesssettings) \| null | 否 | 否 | 后处理设置。 |
 | effects<sup>21+</sup> | [Container](js-apis-inner-scene-nodes.md#containert)\<[Effect](js-apis-inner-scene-resources.md#effect21)> | 是 | 否 | 应用于相机输出的后处理特效。 |
