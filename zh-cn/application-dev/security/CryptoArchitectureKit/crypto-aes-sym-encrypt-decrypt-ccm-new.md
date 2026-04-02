@@ -1,4 +1,4 @@
-# 使用AES对称密钥（CCM模式）加解密(ArkTS)
+# 使用AES对称密钥（CCM模式）参数为AeadParamsSpec加解密(ArkTS)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -7,42 +7,40 @@
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
 
-查看[对称密钥加解密算法规格：AES](crypto-sym-encrypt-decrypt-spec.md#aes)。
+从API版本26.0.0开始，[AES](crypto-sym-encrypt-decrypt-spec.md#aes)对称密钥（CCM模式）的加解密支持使用AeadParamsSpec参数。
 
-从版本26.0.0开始，AES对称密钥（CCM模式）加解密支持使用AeadParamsSpec。
+**密钥生成**
+
+调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)、[SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1)，生成密钥算法为AES、密钥长度为128位的对称密钥（SymKey）。
+   
+   如何生成AES对称密钥，开发者可参考下文示例，并结合对称密钥生成和转换规格：[AES](crypto-sym-key-generation-conversion-spec.md#aes)和[随机生成对称密钥](crypto-generate-sym-key-randomly.md)进行理解，参考文档与当前示例可能存在入参差异，请注意区分。
+
 
 **加密**
 
-1. 调用[cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator)、[SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1)，生成密钥算法为AES、密钥长度为128位的对称密钥（SymKey）。
-   
-   如何生成AES对称密钥，开发者可参考下文示例，并结合[对称密钥生成和转换规格：AES](crypto-sym-key-generation-conversion-spec.md#aes)和[随机生成对称密钥](crypto-generate-sym-key-randomly.md)进行理解，参考文档与当前示例可能存在入参差异，请注意区分。
+1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'AES128|CCM'，创建对称密钥为AES128、分组模式为CCM的Cipher实例，用于执行加密操作。
 
-2. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'AES128|CCM'，创建对称密钥为AES128、分组模式为CCM的Cipher实例，用于执行加密操作。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定密钥（SymKey）和CCM模式对应的加密参数（AeadParamsSpec），初始化加密Cipher实例。
 
-3. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为加密（CryptoMode.ENCRYPT_MODE），指定密钥（SymKey）和CCM模式对应的加密参数（AeadParamsSpec），初始化加密Cipher实例。
+3. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)获取加密后的数据。
 
-4. 调用[Cipher.update](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#update-1)，更新数据（明文）。
-
-   当前单次update没有长度限制，开发者可以根据数据量决定如何调用update。
-  
    > **说明：**
-   > CCM模式不支持分段加解密。
-
-5. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)获取加密后的数据。
-   - 由于已通过update传入数据，此处传入null。
-   - doFinal输出结果可能为null，访问具体数据前，需先判断结果是否为null，以避免异常。
-
-6. 拼接upadate与doFinal的结果作为加密的密文信息。
-
-    在使用AeadParamsSpec结构的CCM模式下，算法库支持传入4-16字节的tagLen，如果不传默认为12字节。
+   >
+   > 当前使用AeadParamsSpec参数，CCM模式下update与doFinal只能调用其中一个进行加密。且每个方法只能调用一次。
+   > 
+   > 使用AeadParamsSpec初始化Cipher实例，身份认证标签（authTag）自动拼接在密文后，不需要单独保存。
+   >
+   > 在使用AeadParamsSpec结构的CCM模式下，算法库支持传入4-16字节的tagLen，如果不传默认为12字节。
 
 **解密**
 
 1. 调用[cryptoFramework.createCipher](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatecipher)，指定字符串参数'AES128|CCM'，创建对称密钥为AES128、分组模式为CCM的Cipher实例，用于完成解密操作。
 
-2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（CryptoMode.DECRYPT_MODE），指定密钥（SymKey）和CCM模式对应的解密参数（CcmParamsSpec），初始化解密Cipher实例。
+2. 调用[Cipher.init](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#init-1)，设置模式为解密（CryptoMode.DECRYPT_MODE），指定密钥（SymKey）和CCM模式对应的解密参数（AeadParamsSpec），初始化解密Cipher实例。
 
 3. 调用[Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1)，获取解密后的数据。
+
+## 示例
 
 - 异步方法示例：
   <!-- @[new_ccm_encrypt_decrypt_aes_symkey_async](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_new_ccm_encryption_decryption_asynchronous.ets) -->
