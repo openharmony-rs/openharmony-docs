@@ -276,14 +276,14 @@ OH_AVErrCode OH_AVDemuxer_SeekToTime(OH_AVDemuxer *demuxer, int64_t millisecond,
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md) *demuxer | 指向OH_AVDemuxer实例的指针。 |
-| int64_t millisecond | 期望跳转位置对应的时间，单位为毫秒，该时间戳是相对文件开始的位置。 |
+| int64_t millisecond | 期望跳转位置对应的时间，单位为ms，该时间戳是相对文件开始的位置。 |
 | [OH_AVSeekMode](capi-native-avcodec-base-h.md#oh_avseekmode) mode | 跳转的模式。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：<br>                           1. 输入的demuxer指针为空或为非解封装器实例。<br>                           2. 毫秒值超出范围。<br>         AV_ERR_OPERATE_NOT_PERMIT：<br>                           1. 轨道的索引没有被选中。<br>                           2. demuxer没有正确的初始化。<br>                           3. 资源无法seek。<br>         AV_ERR_UNKNOWN：<br>                           1. seek失败。<br>                           2. OH_AVSeekMode选择SEEK_MODE_NEXT_SYNC，并且时间点后无I帧，可能会跳转失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：<br>                           1. 输入的demuxer指针为空或为非解封装器实例。<br>                           2. ms值超出范围。<br>         AV_ERR_OPERATE_NOT_PERMIT：<br>                           1. 轨道的索引没有被选中。<br>                           2. demuxer没有正确的初始化。<br>                           3. 资源无法seek。<br>         AV_ERR_UNKNOWN：<br>                           1. seek失败。<br>                           2. OH_AVSeekMode选择SEEK_MODE_NEXT_SYNC，并且时间点后无I帧，可能会跳转失败。 |
 
 ### OH_AVDemuxer_SetMediaKeySystemInfoCallback()
 
