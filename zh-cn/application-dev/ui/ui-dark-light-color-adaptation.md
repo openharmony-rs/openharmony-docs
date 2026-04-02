@@ -101,11 +101,11 @@
         value.updateConfiguration();
       })
     }
-    // ···
+    // ...
       aboutToAppear(): void {
-        // ···
+        // ...
             this.getUIContext()?.postFrameCallback(new MyFrameCallback());
-        // ···
+        // ...
       }
     ```
 
@@ -119,7 +119,7 @@
     
     ``` TypeScript
     onCreate(): void {
-      // ···
+      // ...
       AppStorage.setOrCreate('currentColorMode', this.context.config.colorMode);
     }
     ```
@@ -150,13 +150,13 @@
     
     ``` TypeScript
     aboutToAppear(): void {
-      // ···
+      // ...
       if (this.currentMode == ConfigurationConstant.ColorMode.COLOR_MODE_LIGHT) {
         // 当前为浅色模式，资源初始化逻辑
-      // ···
+        // ...
       } else {
         // 当前为深色模式，资源初始化逻辑
-      // ···
+        // ...
       }
     }
     ```
