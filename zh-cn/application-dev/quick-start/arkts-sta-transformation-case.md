@@ -26,7 +26,7 @@ interface ToType {
 }
 
 // 通过属性逐个赋值，进行对象数据转换，从动态对象from中获取属性值，需要使用ESValue的接口
-objectAssign(from: ESValue, to: ToType):void {
+function objectAssign(from: ESValue, to: ToType): void {
   to.aNum = from.hasProperty('aNum') ? from.getProperty('aNum').toNumber() : 0;
   to.bStr = from.hasProperty('bStr') ? from.getProperty('bStr').toString() : '';
   to.cBool = from.hasProperty('cBool') ? from.getProperty('cBool').toBoolean() : false;
@@ -44,16 +44,18 @@ interface ToTypeA {
   bStr?: string,
   cBool?: boolean,
 }
+
 interface ToTypeB {
   dNum?: number,
   eStr?: string
 }
+
 // to对象是联合类型
 type ToType = ToTypeA | ToTypeB;
 
 // 1. 条件分支进行不同类型的不同处理逻辑
 // 2. 通过属性逐个赋值，进行对象数据转换，从动态对象from中获取属性值，需要使用ESValue的接口
-function objectAssign(from: ESValue, to: ToType):void {
+function objectAssign(from: ESValue, to: ToType): void {
   if (to instanceof ToTypeA) {
     to = to as ToTypeA;
     to.aNum = from.hasProperty('aNum') ? from.getProperty('aNum').toNumber() : 0;
@@ -84,13 +86,14 @@ interface FromType {
   bStr?: string,
   cBool?: boolean,
 }
+
 interface ToType {
   aNum?: number,
   bStr?: string,
 }
 
 // 直接取值赋值即可，性能敏感场景最优解
-function objectAssign(from: FromType, to: ToType):void {
+function objectAssign(from: FromType, to: ToType): void {
   to.aNum = from.aNum;
   to.bStr = from.bStr;
 }
@@ -105,16 +108,17 @@ interface FromType {
   bStr?: string,
   cBool?: boolean,
 }
+
 class ToType {
-  aNum?: number,
-  bStr?: string,
+  aNum?: number = 0;
+  bStr?: string = '';
 }
 
 // 通过JSON解析为静态对象，后续直接取值赋值即可
-function objectAssign(from: string, to: ToType):void {
+function objectAssign(from: string, to: ToType): void {
   const fromData = JSON.parse<FromType>(from, Type.from<FromType>());
-  to.aNum = fromData.aNum;
-  to.bStr = fromData.bStr;
+  to.aNum = fromData!.aNum;
+  to.bStr = fromData!.bStr;
 }
 ```
 
@@ -123,141 +127,143 @@ function objectAssign(from: string, to: ToType):void {
 
 ## 动态enum传入静态中如何使用
 ```TS
-  // ========== 动态文件 DynamicModule.ets ==========
-  // 动态代码中定义的枚举
-  export enum ProcessStatus {
-    IDLE = 0,
-    RUNNING = 1
-  }
- 
-  
-  //  ========== 静态文件 StaticModule.ets ==========
-  'use static'
-
-  /**
-   * 处理从动态代码传递过来的枚举值
-   * @param statusValue动态枚举值（Any类型）
-   */
-  function handleProcessStatus(statusValue: Any): void {
-    // 1. 加载动态模块
-    let dynamicModule: ESValue = ESValue.load("library/src/main/ets/DynamicModule");
-
-    // 2. 获取枚举对象
-    let statusEnum: ESValue = dynamicModule.getProperty("ProcessStatus");
-
-    // 3. 获取各个枚举值并转换为数字
-    let idleStatus: number = statusEnum.getProperty("IDLE").toNumber();
-    let runningStatus: number = statusEnum.getProperty("RUNNING").toNumber();
-
-    // 4. 使用switch进行分支处理
-    switch (statusValue) {
-      case idleStatus:
-        console.log("当前状态：空闲");
-        break;
-      case runningStatus:
-        console.log("当前状态：运行中");
-        break;
-      default:
-        console.log("未知状态");
-        break;
-    }
-  }
-// 动态中使用静态enum，正常import使用即可。
-```
-
-
-## 动态Record传入静态中如何使用
-动态语言中Record是类型，静态语言中是类。跨语言传递时，运行时实际得到的是动态语言中的普通对象(plain object)，而非Record类。
-```TS
 // ========== 动态文件 DynamicModule.ets ==========
-let dataRecord:Record<string,string> = {
-  "name":"jack",
-  "age":"20"
+// 动态代码中定义的枚举
+export enum ProcessStatus {
+  IDLE = 0,
+  RUNNING = 1
 }
-transferToSta(dataRecord);
 
 
 //  ========== 静态文件 StaticModule.ets ==========
 'use static'
 
 /**
-  * 处理从动态代码传递的record
-  * @param dataRecord 动态record（Any类型）
-  */
-transferToSta(dataRecord:Any):void{
-  let dataRecordDyna:ESValue = ESValue.wrap(dataRecord);
-  //1:获取指定key对应的value
-  let valueDyna:string = dataRecordDyna.getProperty("name").toString();
-  //2:静态中遍历动态record
-  for(const d of dataRecordDyna.keys()){
-    //3:打印动态record的key值
-    console.log("dataRecordDyna keys:"+d.toString());
-    //4:打印动态record中的value
-    console.log("dataRecordDyna value:"+dataRecordDyna.getProperty(d.toString()).toString());
+ * 处理从动态代码传递过来的枚举值
+ * @param statusValue动态枚举值（Any类型）
+ */
+function handleProcessStatus(statusValue: Any): void {
+  // 1. 加载动态模块
+  let dynamicModule: ESValue = ESValue.load("library/src/main/ets/DynamicModule");
+
+  // 2. 获取枚举对象
+  let statusEnum: ESValue = dynamicModule.getProperty("ProcessStatus");
+
+  // 3. 获取各个枚举值并转换为数字
+  const idleStatus: number = statusEnum.getProperty("IDLE").toNumber();
+  const runningStatus: number = statusEnum.getProperty("RUNNING").toNumber();
+
+  // 4. 使用switch进行分支处理
+  switch (statusValue) {
+    case idleStatus:
+      console.log("当前状态：空闲");
+      break;
+    case runningStatus:
+      console.log("当前状态：运行中");
+      break;
+    default:
+      console.log("未知状态");
+      break;
   }
 }
+
+// 动态中使用静态enum，正常import使用即可。
+```
+## 动态Record传入静态中如何使用
+动态语言中Record是类型，静态语言中是类。跨语言传递时，运行时实际得到的是动态语言中的普通对象(plain object)，而非Record类。
+```TS
+// ========== 动态文件 DynamicModule.ets ==========
+export let dataRecord: Record<string, string> = {
+  "name": "jack",
+  "age": "20"
+}
+
+
+//  ========== 静态文件 StaticModule.ets ==========
+'use static'
+import { dataRecord } from 'library';
+
+/**
+ * 处理从动态代码传递的record
+ * @param dataRecord 动态record（Any类型）
+ */
+function transferToSta(dataRecord: Any): void {
+  let dataRecordDyna: ESValue = ESValue.wrap(dataRecord);
+  //1:获取指定key对应的value
+  let valueDyna: string = dataRecordDyna.getProperty("name").toString();
+  //2:静态中遍历动态record
+  for (const d of dataRecordDyna.keys()) {
+    //3:打印动态record的key值
+    console.log("dataRecordDyna keys:" + d.toString());
+    //4:打印动态record中的value
+    console.log("dataRecordDyna value:" + dataRecordDyna.getProperty(d.toString()).toString());
+  }
+}
+
+transferToSta(dataRecord);
 ```
 
 ## 静态Record传入动态中如何使用
 ```typescript
-      // ========== 静态文件 StaticModule.ets ==========
-      'use static'
-     
-      /**
-       * 从静态代码返回 Record
-       * @returns Record<string, string> 返回键值对记录
-       */
-      export function getRecordFromSta(): Record<string, string> {
-        // 创建静态 Record 对象
-        let dataRecord: Record<string, string> = {
-          "name": "jack",
-          "age": "20"
-        }
-        return dataRecord;  // 返回给动态代码使用
-      }
-     
-      /**
-       * 在静态代码中遍历 Record，逐个将值传给动态代码处理
-       */
-      export function processRecords(): void {
-        // 获取静态 Record
-        let data: Record<string, string> = getRecordFromSta();
-     
-        // 静态中可以正常遍历 Record
-        for (let k of data.keys()) {
-          let v: string = data[k];  // 获取对应key的value
-     
-          // 通过 ESValue 调用动态代码的方法，传递包装后的值
-          ESValue.load("DynamicModule").invokeMethod("processRecordValue", ESValue.wrap(v));
-        }
-      }
-     
-      // ========== 动态文件 DynamicModule.ets ==========
-      /**
-       * 处理从静态代码返回的record
-       */
-      function processRecord(): void {
-        // 调用静态代码获取 Record
-        let recordSta:Record<string, string> = getRecordFromSta();
-     
-        // ✓ 直接通过索引访问 - 无感使用，可以正常获取值
-        let value:string = recordSta["name"];
-     
-        // ✗ 动态中无法对静态record进行遍历，下面是错误写法
-        // Object.entries(recordSta).forEach((key, value) => {
-        //   console.log(key, value);
-        // });
-      processRecordValue(value);
-      }
-     
-      /**
-       * 处理从静态代码传递过来的单个record值
-       * @param value Record中的某个值
-       */
-      export function processRecordValue(value: string): void {
-        console.log("processRecordValue:" + value);
-      }
-    
+// ========== 静态文件 StaticModule.ets ==========
+'use static'
+
+/**
+ * 从静态代码返回 Record
+ * @returns Record<string, string> 返回键值对记录
+ */
+export function getRecordFromSta(): Record<string, string> {
+  // 创建静态 Record 对象
+  let dataRecord: Record<string, string> = {
+    "name": "jack",
+    "age": "20"
+  }
+  return dataRecord; // 返回给动态代码使用
+}
+
+/**
+ * 在静态代码中遍历 Record，逐个将值传给动态代码处理
+ */
+export function processRecords(): void {
+  // 获取静态 Record
+  let data: Record<string, string> = getRecordFromSta();
+
+  // 静态中可以正常遍历 Record
+  for (let k of data.keys()) {
+    let v: string | undefined = data[k]; // 获取对应key的value
+
+    // 通过 ESValue 调用动态代码的方法，传递包装后的值
+    ESValue.load("DynamicModule").invokeMethod("processRecordValue", ESValue.wrap(v)); // DynamicModule为对应动态文件地址
+  }
+}
+
+// ========== 动态文件 DynamicModule.ets ==========
+import { getRecordFromSta } from 'StaticModule' // 从对应StaticModule路径内导入
+
+/**
+ * 处理从静态代码返回的record
+ */
+function processRecord(): void {
+  // 调用静态代码获取 Record
+  let recordSta: Record<string, string> = getRecordFromSta();
+
+  // ✓ 直接通过索引访问 - 无感使用，可以正常获取值
+  let value: string = recordSta["name"];
+
+  // ✗ 动态中无法对静态record进行遍历，下面是错误写法
+  // Object.entries(recordSta).forEach((key, value) => {
+  //   console.log(key, value);
+  // });
+  processRecordValue(value);
+}
+
+/**
+ * 处理从静态代码传递过来的单个record值
+ * @param value Record中的某个值
+ */
+export function processRecordValue(value: string): void {
+  console.log("processRecordValue:" + value);
+}
 ```
 
 ## JSON序列化和反序列化操作，动静态对比
@@ -267,7 +273,7 @@ transferToSta(dataRecord:Any):void{
 const str = "{ \"a\": 1, \"b\": \{ \"c\": true \} }";
 
 // 动态反序列化
-const jsonObj = JSON.parse(str);
+const jsonObj: object = JSON.parse(str);
 // 动态序列化
 const jsonStr = JSON.stringify(jsonObj);
 ```
@@ -281,47 +287,47 @@ const jsonStr = JSON.stringify(jsonObj);
 ```typescript
 'use static'
 
-let loginInfoStr:string = "{ \"userId\": \"123\", \"userInfo\": \{ \"token\": \"xxxxx\", \"vip\": true \} }";
+let loginInfoStr: string = "{ \"userId\": \"123\", \"userInfo\": \{ \"token\": \"xxxxx\", \"vip\": true \} }";
 
 class userInfoCls {
-    token?: string;
-    vip?: boolean;
+  token?: string;
+  vip?: boolean;
 }
 
 class loginInfoCls {
-    userId?: string;
-    userInfo?: userInfoCls;
+  userId?: string;
+  userInfo?: userInfoCls;
 }
 
 // 静态反序列化（基础用法）
 try {
-    const jsonObj: = JSON.parse<loginInfoCls>(loginInfoStr, Type.from<loginInfoCls>());
-    // 静态序列化
-    const jsonStr:string = JSON.stringify(jsonObj);
+  const jsonObj: loginInfoCls | null | undefined = JSON.parse<loginInfoCls>(loginInfoStr, Type.from<loginInfoCls>());
+  // 静态序列化
+  const jsonStr: string = JSON.stringify(jsonObj);
 } catch (error) {
-    const err: Error = error as Error;
-    console.error(`JSON解析失败: ${err.message}`);
+  const err: Error = error as Error;
+  console.error(`JSON解析失败: ${err.message}`);
 }
 
 // 静态反序列化（带reviver和options）
 // reviver：用于数据转换、过滤、校验等自定义处理
 const reviver = (key: string, value: Any): Any => {
-    if (key == "userId" && typeof value === 'String') {
-        return `id_${(value as string)}`;  // 对userId进行转换
-    }
-    return value;
+  if (key == "userId" && typeof value === 'String') {
+    return `id_${(value as string)}`; // 对userId进行转换
+  }
+  return value;
 };
 
 // options：用于控制解析行为，主要是BigInt的处理策略
 const options: jsonx.ParseOptions = {
-    bigIntMode: jsonx.BigIntMode.PARSE_AS_BIGINT
+  bigIntMode: jsonx.BigIntMode.PARSE_AS_BIGINT
 } as jsonx.ParseOptions;
 
 try {
-    const jsonObj = JSON.parse<loginInfoCls>(loginInfoStr, reviver, Type.from<loginInfoCls>(), options);
+  const jsonObj = JSON.parse<loginInfoCls>(loginInfoStr, reviver, Type.from<loginInfoCls>(), options);
 } catch (error) {
-    const err: Error = error as Error;
-    console.error(`JSON解析失败: ${err.message}`);
+  const err: Error = error as Error;
+  console.error(`JSON解析失败: ${err.message}`);
 }
 ```
 
@@ -332,49 +338,49 @@ try {
 ```typescript
 'use static'
 
-const str:string = "{ \"a\": 1, \"b\": \{ \"c\": true \} }";
+const str: string = "{ \"a\": 1, \"b\": \{ \"c\": true \} }";
 
 // 静态反序列化（基础用法）
 try {
-    const jsonElement: jsonx.JsonElement = JSON.parseJsonElement(str);
+  const jsonElement: jsonx.JsonElement = JSON.parseJsonElement(str);
 
-    // 取值 - 严格模式（key不存在会抛异常）
-    const aVal: jsonx.JsonElement = jsonElement.getElement("a");
-    console.info(aVal.asInteger());  // 1
+  // 取值 - 严格模式（key不存在会抛异常）
+  const aVal: jsonx.JsonElement = jsonElement.getElement("a");
+  console.info(aVal.asInteger()); // 1
 
-    // 取值 - 宽松模式（key不存在返回undefined）
-    const notExistVal = jsonElement.tryGetElement("notExist");
-    if (notExistVal !== undefined) {
-        console.info(notExistVal.asString());
-    }
+  // 取值 - 宽松模式（key不存在返回undefined）
+  const notExistVal = jsonElement.tryGetElement("notExist");
+  if (notExistVal !== undefined) {
+    console.info(notExistVal.asString());
+  }
 
-    // 设值
-    jsonElement.setElement('d', jsonx.JsonElement.createString('dVal'));
+  // 设值
+  jsonElement.setElement('d', jsonx.JsonElement.createString('dVal'));
 
-    // 删除元素
-    const removed = jsonElement.removeElement('a');
+  // 删除元素
+  const removed = jsonElement.removeElement('a');
 
-    // 静态序列化
-    const jsonStr:string = JSON.stringifyJsonElement(jsonElement);
+  // 静态序列化
+  const jsonStr: string = JSON.stringifyJsonElement(jsonElement);
 } catch (error) {
-    const err: Error = error as Error;
-    console.error(`JSON操作失败: ${err.message}`);
+  const err: Error = error as Error;
+  console.error(`JSON操作失败: ${err.message}`);
 }
 
 // 静态反序列化（带reviver）
 // reviver：用于数据转换、过滤、校验等自定义处理
 const reviver = (key: string, value: jsonx.JsonElement): jsonx.JsonElement => {
-    if (key === "a") {
-        return jsonx.JsonElement.createInteger(value.asInteger() * 2);  // 对a值进行转换
-    }
-    return value;
+  if (key === "a") {
+    return jsonx.JsonElement.createInteger(value.asInteger() * 2); // 对a值进行转换
+  }
+  return value;
 };
 
 try {
-    const jsonElement: jsonx.JsonElement = JSON.parseJsonElement(str, reviver);
+  const jsonElement: jsonx.JsonElement = JSON.parseJsonElement(str, reviver);
 } catch (error) {
-    const err: Error = error as Error;
-    console.error(`JSON解析失败: ${err.message}`);
+  const err: Error = error as Error;
+  console.error(`JSON解析失败: ${err.message}`);
 }
 ```
 
@@ -391,12 +397,14 @@ try {
 4. **性能考虑：** 明确数据结构时使用 `JSON.parse` 性能更好，不确定结构时使用 `JSON.parseJsonElement`。
 
 ### 相关资料
-JSON相关资料详见：[JSON](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_20250702/zh-cn/application-dev/reference/native-lib/arkts-sta-json.md)
-jsonx相关资料详见：[jsonx](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_20250702/zh-cn/application-dev/reference/native-lib/arkts-sta-jsonx.md)
+
+JSON相关资料详见：[JSON](../reference/native-lib/arkts-sta-json.md)。
+
+jsonx相关资料详见：[jsonx](../reference/native-lib/arkts-sta-jsonx.md)。
 
 
 ## EAWorker的使用以及提交任务到主线程执行
-[EAWorker的基本使用](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_20250328/zh-cn/application-dev/reference/native-lib/eaworker_managed.md)。
+[EAWorker的基本使用](../reference/native-lib/eaworker_managed.md)。
 
 EAWorker通过一个独立运行的线程来实现其功能，需要开发者创建、启动和销毁该线程。
 以下是示例代码：
@@ -404,29 +412,30 @@ EAWorker通过一个独立运行的线程来实现其功能，需要开发者创
 // ========== 静态文件 StaticModule.ets ==========
 'use static'
 
-export function foo(){
-//第二个参数表明需要开启interop,如果提交的任务中存在动态代码,会开启一个动态虚拟机
-let eaw:EAWorker = new EAWorker("workerTask",true);
-//开启EAWorker
-eaw.start();
-//设置优先级
-eaw.setPrioity(WorkerPriority.PRIORITY_HIGH);
-//向worker提交任务
-eaw.run(taskA)
-//主动销毁Worker线程资源
-eaw.join();
-}
-//在子线程中执行的任务
-export function taskA():void{
-   //如果某些任务必须在主线城中执行，可以使用PostToMain接口
-   const job:EAWorker.Job = EAWorker.postToMain<boolean>(taskB);
-   //获取任务执行结果
-   let jobresult:boolean = job.Await();
+export function foo(): void {
+  //第二个参数表明需要开启interop,如果提交的任务中存在动态代码,会开启一个动态虚拟机
+  let eaw: EAWorker = new EAWorker("workerTask", true);
+  //开启EAWorker
+  eaw.start();
+  //设置优先级
+  eaw.setPriority(WorkerPriority.PRIORITY_HIGH);
+  //向worker提交任务
+  eaw.run(taskA)
+  //主动销毁Worker线程资源
+  eaw.join();
 }
 
-export function taskB():boolean{
-   /// 必须在主线程执行的r任务
-   return true;
+//在子线程中执行的任务
+export function taskA(): void {
+  //如果某些任务必须在主线城中执行，可以使用PostToMain接口
+  const job = EAWorker.postToMain<boolean>(taskB);
+  //获取任务执行结果
+  let jobresult: boolean = job.Await();
+}
+
+export function taskB(): boolean {
+  /// 必须在主线程执行的r任务
+  return true;
 }
 ```
 
@@ -446,7 +455,8 @@ import { transfer } from '@kit.ArkTS';
 // ArkTS-Sta环境中的函数，接收来自ArkTS-Dyn的ArrayBuffer对象
 function processDynamicArrayBuffer(dynamicArrayBuffer: Any): void {
   // 将ArkTS-Dyn的ArrayBuffer转换为ArkTS-Sta的ArrayBuffer
-  let staticArrayBuffer: ArrayBuffer = transfer.transferStatic(dynamicArrayBuffer, 'InteropTransferHelper') as ArrayBuffer;
+  let staticArrayBuffer: ArrayBuffer =
+    transfer.transferStatic(dynamicArrayBuffer, 'InteropTransferHelper') as ArrayBuffer;
 
   // 现在可以在ArkTS-Sta环境中使用转换后的ArrayBuffer
   console.info(`ArrayBuffer length: ${staticArrayBuffer.byteLength}`);
@@ -477,8 +487,8 @@ view[0] = 42;
 let dynamicArrayBuffer: Any = transfer.transferDynamic(staticArrayBuffer, 'InteropTransferHelper');
 
 // 调用ArkTS-Dyn环境中的函数
-let jsModule:ESValue = ESValue.load('./dynamic-module');
-let processFunc:ESValue = jsModule.getProperty('processArrayBuffer');
+let jsModule: ESValue = ESValue.load('./dynamic-module'); // 入参为对应自定义dynamic-module的地址
+let processFunc: ESValue = jsModule.getProperty('processArrayBuffer');
 processFunc.invoke(ESValue.wrap(dynamicArrayBuffer));
 ```
 
@@ -489,7 +499,7 @@ processFunc.invoke(ESValue.wrap(dynamicArrayBuffer));
 ```typescript
 'use static'
 
-import { transfer, taskpool } from '@kit.ArkTS';
+import { transfer } from '@kit.ArkTS';
 
 // 在主线程中创建ArrayBuffer
 let mainArrayBuffer: ArrayBuffer = new ArrayBuffer(1024);
@@ -500,13 +510,13 @@ let transferableArrayBuffer: Any = transfer.transferDynamic(mainArrayBuffer, 'In
 // 在子线程中的函数
 function workerTask(data: Any): void {
   // 在子线程中将数据转换回ArkTS-Sta的ArrayBuffer
-  let workerArrayBuffer: ArrayBuffer = transfer.transferStatic(data, 'InteropTransferHelper')') as ArrayBuffer;
+  let workerArrayBuffer: ArrayBuffer = transfer.transferStatic(data, 'InteropTransferHelper') as ArrayBuffer;
 
   console.info(`Worker received ArrayBuffer length: ${workerArrayBuffer.byteLength}`);
 }
 
 // 创建任务并执行
-let task:Task = new taskpool.Task(workerTask, transferableArrayBuffer);
+let task = new taskpool.Task(workerTask, transferableArrayBuffer);
 taskpool.execute(task).then(() => {
   console.info('Task completed');
 });
@@ -589,6 +599,9 @@ function safeTransfer(dynamicObj: Any): Object | undefined {
     return undefined;
   }
 }
+
+safeTransfer(undefined);
+// arkts.console: Transfer failed: dynamicObject is null or undefined
 ```
 
 ### 相关资料
@@ -627,31 +640,37 @@ function safeTransfer(dynamicObj: Any): Object | undefined {
 
 1. 如何确定改造范围。
 
-因为改造步骤将分阶段进行，所以如何圈定改造范围，是进行ANI迁移以及保障迁移后流程正常的关键步骤，这一步取决于原始业务架构设计的复杂度和耦合度，这里提供一种确定方法。
-首先，按照改造流程，以业务类/文件为单位，确定涉及改造的一个或者多个业务类/文件；然后，查看这些类/文件是否依赖了NAPI构建，若是，则其必须进行改造，判断是否依赖NAPI有两种情况，类/文件中是否直接包含NAPI，或者，其依赖的模块或者继承的类中包含NAPI。一般来说，业务类/文件都是叶子节点，所以可以从叶节点开始向上查看依赖，一直查找到两种节点，即可停止查找，一种是纯C的依赖，因为纯C不需要改造，另一种是非业务的NAPI的基建依赖，因为依赖NAPI的这套深度耦合方案在ANI上无法实现，所以只需要提取流程中的业务单元即可。
-下面呈现了简单的业务类/文件依赖关系，结合上述方法，进行说明。
-- 首先确定业务接口A、B、C为改造流程，则其依赖的业务文件A、B、C为改造范围叶节点文件。
-- 由于A、B向上依赖链路中有NAPI相关，故其依赖的业务文件D也需要加入改造范围。
-- C其实向上全是纯C/C++业务，故本身其实并不需要大改，只需要将与NAPI的桥接换成ANI即可。
-最终圈定的改造范围就是**业务文件A、B、C（部分）、D**。
+    因为改造步骤将分阶段进行，所以如何圈定改造范围，是进行ANI迁移以及保障迁移后流程正常的关键步骤，这一步取决于原始业务架构设计的复杂度和耦合度，这里提供一种确定方法。
 
-![圈定改造范围](./figures/圈定改造范围.png)
+    首先，按照改造流程，以业务类/文件为单位，确定涉及改造的一个或者多个业务类/文件；然后，查看这些类/文件是否依赖了NAPI构建，若是，则其必须进行改造，判断是否依赖NAPI有两种情况，类/文件中是否直接包含NAPI，或者，其依赖的模块或者继承的类中包含NAPI。一般来说，业务类/文件都是叶子节点，所以可以从叶节点开始向上查看依赖，一直查找到两种节点，即可停止查找，一种是纯C的依赖，因为纯C不需要改造，另一种是非业务的NAPI的基建依赖，因为依赖NAPI的这套深度耦合方案在ANI上无法实现，所以只需要提取流程中的业务单元即可。
+    下面呈现了简单的业务类/文件依赖关系，结合上述方法，进行说明。
+   - 首先确定业务接口A、B、C为改造流程，则其依赖的业务文件A、B、C为改造范围叶节点文件。
+   - 由于A、B向上依赖链路中有NAPI相关，故其依赖的业务文件D也需要加入改造范围。
+   - C其实向上全是纯C/C++业务，故本身其实并不需要大改，只需要将与NAPI的桥接换成ANI即可。
+    
+    最终圈定的改造范围就是**业务文件A、B、C（部分）、D**。
+
+   ![圈定改造范围](./figures/圈定改造范围.png)
 
 2. 动态对象如何静态实现。
 
-根据NAPI的动态特性，允许开发者在运行时创建动态对象并赋予对象属性和方法，深度耦合的应用架构就是依赖这个能力，构建了动态创建业务对象的这一套方案，然而ANI上不支持动态创建对象，业务对象都必须使用ArkTS文件进行声明定义。根据业务使用情况，静态实现，可以分为一下两种情况：
-- 业务对象的使用仅在ArkTS侧进行；
-- 业务对象的使用在ArkTS侧和Native侧都有；
-两者的区别仅看业务是否会在Native侧调用业务对象的方法或属性，由于静态语法必须使用ArkTS文件进行声明定义，则天然支持业务对象在ArkTS侧使用，当其需要在Native侧调用方法或属性时，就需要在Native侧提供一个业务代理类来支持业务行为，改造迁移的变化如下：
+    根据NAPI的动态特性，允许开发者在运行时创建动态对象并赋予对象属性和方法，深度耦合的应用架构就是依赖这个能力，构建了动态创建业务对象的这一套方案，然而ANI上不支持动态创建对象，业务对象都必须使用ArkTS文件进行声明定义。根据业务使用情况，静态实现，可以分为一下两种情况：
 
-![改造后产物示例](./figures/改造后产物示例.png)
+    - 业务对象的使用仅在ArkTS侧进行；
+    - 业务对象的使用在ArkTS侧和Native侧都有；
+
+    两者的区别仅看业务是否会在Native侧调用业务对象的方法或属性，由于静态语法必须使用ArkTS文件进行声明定义，则天然支持业务对象在ArkTS侧使用，当其需要在Native侧调用方法或属性时，就需要在Native侧提供一个业务代理类来支持业务行为，改造迁移的变化如下：
+
+   ![改造后产物示例](./figures/改造后产物示例.png)
 
 3. 新逻辑桥接旧逻辑需要注意什么。
 
-由于新的业务逻辑由ANI实现，在很多特性方面跟NAPI还是有区别的，不同于ArkTS-Sta和ArkTS-Dyn的互操作，C/C++层面并没有互操作接口，所以，业务侧需要严格判断改造业务流程的交互情况，主要可以分为以下两种。
-- 业务流程执行过程中只有ArkTS静态绑定和Native的交互。
-- 业务流程中存在需要调用NAPI接口的业务逻辑。
-对于只有纯静态和Native交互的业务流程，在ANI改造和功能调试完成后即完结；对于存在最终走到NAPI依赖的业务逻辑的情况，需要判断线程行为，因为静态线程天然内存共享，而动态则是线程隔离的，虽然纯C/C++也是内存共享的，但是如果业务逻辑中最终调用到的是napi_value相关的行为，则需要考虑当前线程是否可以获取、是否需要添加线程调度和线程安全函数等行为。
+    由于新的业务逻辑由ANI实现，在很多特性方面跟NAPI还是有区别的，不同于ArkTS-Sta和ArkTS-Dyn的互操作，C/C++层面并没有互操作接口，所以，业务侧需要严格判断改造业务流程的交互情况，主要可以分为以下两种。
+    
+    - 业务流程执行过程中只有ArkTS静态绑定和Native的交互。
+    - 业务流程中存在需要调用NAPI接口的业务逻辑。
+    
+    对于只有纯静态和Native交互的业务流程，在ANI改造和功能调试完成后即完结；对于存在最终走到NAPI依赖的业务逻辑的情况，需要判断线程行为，因为静态线程天然内存共享，而动态则是线程隔离的，虽然纯C/C++也是内存共享的，但是如果业务逻辑中最终调用到的是napi_value相关的行为，则需要考虑当前线程是否可以获取、是否需要添加线程调度和线程安全函数等行为。
 
 ### 通过C++进行ArkTS动静态交互，手写互操作
 

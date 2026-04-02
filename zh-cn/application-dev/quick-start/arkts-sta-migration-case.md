@@ -6,8 +6,8 @@
 
 **案例工程地址：**
 
-- 仓库：[示例工程](https://gitcode.com/kkup180/arkts-sta)
-- 说明文档：[示例工程说明文档](https://gitcode.com/kkup180/arkts-sta/blob/main/README.md)
+- 仓库：[示例工程](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/ArkTS-Sta/ArkTSStaticSample)
+- 说明文档：[示例工程说明文档](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/ArkTS-Sta/ArkTSStaticSample/README.md)
 
 ### 案例目标
 
@@ -15,7 +15,7 @@
 
 1. 统一业务接口：对外仅暴露一套`DataParser`/`DataSource`/`CardData`等接口，业务层无感知。
 2. 双实现并存： 在library内同时保留ArkTS-Dyn与ArkTS-Sta两套实现。
-3. 运行时分发： 通过`dispatch` 层按 `sdkApiVersion`自动路由到dyn或sta。
+3. 运行时分发： 通过`dispatch`层按`sdkApiVersion`自动路由到ArkTS-Dyn或ArkTS-Sta。
 
 这是一种典型的“先兼容、后替换”迁移路径，适合存量应用平滑演进。
 
@@ -42,7 +42,7 @@ library（能力实现层）
 - **entry层：** 只调用统一接口，不直接依赖dyn/sta细节。
 - **dispatch层：** 负责运行时判断并选择具体实现。
 - **dyn/sta实现层：** 分别承载动态与静态代码逻辑，保持能力一致。
-- **wrapper/bridge层：** 解决“静态实现如何适配动态接口”“TS如何调用ETS”等迁移过程中的关键问题。
+- **wrapper/bridge层：** 解决“静态实现如何适配动态接口”、“TS如何调用ETS”等迁移过程中的关键问题。
 
 ### 动态改造为静态的关键改造路径
 
@@ -60,10 +60,10 @@ library（能力实现层）
 
 **第三步：增加dispatch版本分发**
 
-通过 `dispatch/DataParser.js` 按系统API版本进行路由：
+通过`dispatch/DataParser.js`按系统API版本进行路由：
 
-- `sdkApiVersion >= 23`：使用静态实现包装器（如 `DataParserStaW`）。
-- `sdkApiVersion < 23`：使用动态实现（如 `DataParserDyn`）。
+- `sdkApiVersion >= 23`：使用静态实现包装器（如`DataParserStaW`）。
+- `sdkApiVersion < 23`：使用动态实现（如`DataParserDyn`）。
 
 这样可以在同一版本应用中实现“按设备能力自动选择最优实现”。
 
@@ -137,23 +137,23 @@ ArkTS静态类型提供了以下并行化API方式：
 
 1. 声明式并行化 - ParallelizeUI
 
-| API接口 | 说明 | 适用场景 |
-|:---------|:-----|:---------|
-| `ParallelizeUI(options, content_)` | 基础声明式并行创建方法 | 不依赖外部状态变量的简单UI并行创建。 |
-| `ParallelizeUI<T>(options, param, content_)` | 支持状态变量传递的并行创建方法 | 需要使用外部状态变量的并行创建场景。 |
-| `ParallelizeUI<V, T>(options, arr, param, content_)` | 并行循环创建方法 | List/Grid长列表子项的并行创建场景。 |
+    | API接口 | 说明 | 适用场景 |
+    |:---------|:-----|:---------|
+    | `ParallelizeUI(options, content_)` | 基础声明式并行创建方法 | 不依赖外部状态变量的简单UI并行创建。 |
+    | `ParallelizeUI<T>(options, param, content_)` | 支持状态变量传递的并行创建方法 | 需要使用外部状态变量的并行创建场景。 |
+    | `ParallelizeUI<V, T>(options, arr, param, content_)` | 并行循环创建方法 | List/Grid长列表子项的并行创建场景。 |
 
 2. 命令式并行化 - BuilderNode
 
-| API能力 | 说明 |适用场景 |
-|:---------|:-----|:---------|
-| `build(builder, params, { useParallel: true })` | BuilderNode并行构建能力 | 命令式创建节点树的复杂UI场景。 |
+    | API能力 | 说明 |适用场景 |
+    |:---------|:-----|:---------|
+    | `build(builder, params, { useParallel: true })` | BuilderNode并行构建能力 | 命令式创建节点树的复杂UI场景。 |
 
 ### ParallelizeUI并行化改造
 
 **ParallelizeUI简介**
 
-`ParallelizeUI` 是声明式的并行化创建方法，其内部的UI在子线程中创建，创建完成后回到主线程完成树的挂载。后续更新、事件等操作仍在主线程中进行。
+`ParallelizeUI`是声明式的并行化创建方法，其内部的UI在子线程中创建，创建完成后回到主线程完成树的挂载。后续更新、事件等操作仍在主线程中进行。
 
 工作原理：
 
@@ -164,9 +164,6 @@ ArkTS静态类型提供了以下并行化API方式：
 原始代码（串行创建）：
 ```ts
 // ArkTS-Dyn 示例
-import { Entry, Text, Column, Component, Button, List, ListItem } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
-
 @Entry
 @Component
 struct Index {
@@ -197,8 +194,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, List, ListItem, Row } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Column, Component, Button, List, ListItem, Row, ForEach, State } from '@kit.ArkUI';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 @Entry
@@ -227,6 +223,7 @@ struct Index {
           })
         }
       }
+
     }
   }
 }
@@ -234,14 +231,13 @@ struct Index {
 
 **状态变量传递改造**
 
-在并行化环境中，不能直接使用外部定义的状态变量（如`@State`、`@Link`、`@PropRef`等），需要使用 `ParallelizeUI<T>`重载接口通过参数传递。
+在并行化环境中，不能直接使用外部定义的状态变量（如`@State`、`@Link`、`@PropRef`等），需要使用`ParallelizeUI<T>`重载接口通过参数传递。
 
 错误用法（会导致运行时异常）：
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Column, Component, State } from '@kit.ArkUI';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 @Entry
@@ -251,9 +247,9 @@ struct Index {
 
   build() {
     Column() {
-      // 错误：ParallelizeUI 内部不能直接使用外部状态变量
+      // 错误：ParallelizeUI内部不能直接使用外部状态变量
       ParallelizeUI(undefined) {
-        Text(this.str)  // 会在 Debug 模式下触发运行时异常
+        Text(this.str)  // 会在Debug模式下触发运行时异常
           .fontSize(50)
       }
     }
@@ -265,13 +261,13 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import { Entry, Text, Column, Component, Button, ClickEvent, State } from '@kit.ArkUI';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 // 封装参数类
 class Param {
   str: string;
+
   constructor(str: string) {
     this.str = str;
   }
@@ -284,10 +280,12 @@ struct Index {
 
   build() {
     Column() {
-      // 正确：使用 ParallelizeUI<T> 通过参数传递状态变量
+      // 正确：使用ParallelizeUI<T>通过参数传递状态变量
       ParallelizeUI<Param>(undefined,
-        () => { return new Param(this.str); },  // 在主线程构造参数
-        (param: Param) => {                     // 在子线程使用参数
+        () => {
+          return new Param(this.str);
+        }, // 在主线程构造参数
+        (param: Param) => { // 在子线程使用参数
           Text(param.str)
             .fontSize(50)
         }
@@ -295,7 +293,7 @@ struct Index {
 
       Button('UpperCase')
         .onClick((event: ClickEvent) => {
-          this.str = this.str.toUpperCase()  // 状态变量更新后，并行UI会在下一帧重新创建
+          this.str = this.str.toUpperCase() // 状态变量更新后，并行UI会在下一帧重新创建
         })
     }
   }
@@ -304,13 +302,13 @@ struct Index {
 
 **List&Grid并行化改造**   
 
-`ParallelizeUI` 提供了循环创建重载接口 `ParallelizeUI<V, T>`，用于并行化List和Grid的子组件创建。
+`ParallelizeUI`提供了循环创建重载接口`ParallelizeUI<V, T>`，用于并行化List和Grid的子组件创建。
 
 改造前（串行创建List子项）：
 ```ts
 // ArkTS-Dyn 或 ArkTS-Sta（串行）
-List({ space: 10 }) {
-  ForEach(this.videoList, (item: VideoInfo) => {
+List({ space: 10 }) { 
+  ForEach(this.videoList, (item: VideoInfo) => { // VideoInfo与VideoCard为自定义的类型与组件
     ListItem() {
       VideoCard({ info: item })
     }
@@ -322,8 +320,23 @@ List({ space: 10 }) {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, List, ListItem, Image, Row, Stack, $r, ImageFit, Alignment, FontWeight, TextOverflow } from '@ohos.arkui.component';
-import { State } from '@ohos.arkui.stateManagement';
+import {
+  Entry,
+  Text,
+  Column,
+  Component,
+  List,
+  ListItem,
+  Image,
+  Row,
+  Stack,
+  $r,
+  ImageFit,
+  Alignment,
+  FontWeight,
+  TextOverflow,
+  State
+} from '@kit.ArkUI';
 import { ParallelizeUI } from '@ohos.arkui.Parallelize';
 
 // 视频信息类
@@ -333,6 +346,7 @@ class Info {
   views: string
   likes: string
   coverRes: string
+
   constructor(title: string, up: string, views: string, likes: string, coverRes: string) {
     this.title = title
     this.up = up
@@ -437,7 +451,7 @@ struct Index {
 
 **BuilderNode并行化简介**
 
-`BuilderNode` 提供命令式的节点创建能力，支持在子线程完成复杂UI的创建与更新。其并行化能力适用于：
+`BuilderNode`提供命令式的节点创建能力，支持在子线程完成复杂UI的创建与更新。其并行化能力适用于：
 
 - 构建/更新节点数量较多的复杂UI。
 - 页面切换过程中降低响应时延。
@@ -445,13 +459,13 @@ struct Index {
 
 **改造方式**
 
-`BuilderNode` 的并行化改造非常简单，只需在调用 `build` 方法时传入 `useParallel: true` 参数：
+`BuilderNode`的并行化改造非常简单，只需在调用`build`方法时传入`useParallel: true`参数：
 
 改造前（串行构建）：
 ```ts
 // 串行构建
 let builderNode = new BuilderNode<Params>(uiContext, renderOptions);
-builderNode.build(wrapBuilder(MyBuilder), new Params("data"));  // 默认串行
+builderNode.build(wrapBuilder(MyBuilder), new Params("data")); // 默认串行
 ```
 
 改造后（并行构建）：
@@ -480,19 +494,16 @@ import {
   wrapBuilder,
   Text,
   UIContext,
-} from '@ohos.arkui.component';
-import {
-  BuilderNode,
-  NodeController,
-  FrameNode,
-  NodeRenderType,
-  RenderOptions,
   Size,
+} from '@kit.ArkUI';
+import {
+  BuilderNode, NodeController, FrameNode, NodeRenderType, RenderOptions,
 } from '@ohos.arkui.node';
 
 // 自定义参数
 class Params {
   text: string;
+
   constructor(text: string) {
     this.text = text;
   }
@@ -521,7 +532,7 @@ class MyNodeController extends NodeController {
       type: NodeRenderType.RENDER_TYPE_DISPLAY
     };
 
-    let builderNode:BuilderNode = new BuilderNode<Params>(uiContext, renderOptions);
+    let builderNode: BuilderNode<Params> = new BuilderNode<Params>(uiContext, renderOptions);
 
     // 并行执行 build
     builderNode.build(
@@ -569,19 +580,19 @@ struct Page {
 
 **状态变量使用约束**
 
-| 约束类型 | 说明 | 解决方案。 |
+| 约束类型 | 说明 | 解决方案 |
 |:---------|:-----|:---------|
-| **禁止使用外部状态变量** | `@State`、`@Link`、`@PropRef`、`@Consumer`、`@StorageLink`、`@StoragePropRef`、`@LocalStorageLink`、`@LocalStoragePropRef` 不能在 `ParallelizeUI` 中直接使用 | 使用 `ParallelizeUI<T>` 通过参数传递。 |
+| **禁止使用外部状态变量** | `@State`、`@Link`、`@PropRef`、`@Consumer`、`@StorageLink`、`@StoragePropRef`、`@LocalStorageLink`、`@LocalStoragePropRef`不能在`ParallelizeUI`中直接使用 | 使用`ParallelizeUI<T>`通过参数传递。 |
 | **普通变量需注意线程安全** | 普通变量可在多线程中使用，但需确保读写安全 | 使用线程安全容器或锁保护。 |
 
 **组件支持约束**
 
-当前 `ParallelizeUI` 暂不支持以下组件，使用会触发运行时错误：
+当前`ParallelizeUI`暂不支持以下组件，使用会触发运行时错误：
 
 | 不支持的组件 | 替代方案 |
 |:-----------|:---------|
 | `Web` | 暂无并行化方案。 |
-| `RichText` | 使用 `Text` 组件替代。 |
+| `RichText` | 使用`Text`组件替代。 |
 | `WithTheme` | 在并行区域外使用。 |
 
 **性能约束**
@@ -596,11 +607,11 @@ struct Page {
 
 **使用SmartPerf-Host抓取Trace**
 
-1. 按照 [使用SmartPerf-Host分析应用性能](https://docs.openharmony.cn/pages/v5.1/zh-cn/application-dev/performance/performance-optimization-using-smartperf-host.md) 文档进行配置。
+1. 按照 [使用SmartPerf-Host分析应用性能](https://gitcode.com/openharmony/docs/blob/OpenHarmony_feature_20250702/zh-cn/application-dev/performance/performance-optimization-using-smartperf-host.md) 文档进行配置。
 2. 抓取应用启动或页面跳转的Trace。
-3. 查看 `parallelize build` 相关Trace片段。
+3. 查看`parallelize build`相关Trace片段。
 
-并行化成功的标志：子线程 [Thread-XXXX] 中存在 "parallelize build" 的Trace。
+并行化成功的标志：子线程[Thread-XXXX]中存在"parallelize build"的Trace。
 
 **关键性能指标对比**
 
@@ -616,26 +627,25 @@ struct Page {
 
 | 场景 | 并行创建时延 | 串行创建时延 | 优化比例 |
 |:-----|:------------|:------------|:---------|
-| **声明式UI页面** | 87ms | 98.5ms | 13.2% |
-| **BuilderNode构建** | 53.6ms | 74.8ms | 28.34% |
-| **List/Grid列表** | 26.2ms | 31.0ms | 18.3% |
+| **声明式UI页面** | 87ms | 98.5ms | 11.7% |
+| **BuilderNode构建** | 53.6ms | 74.8ms | 28.3% |
+| **List/Grid列表** | 26.2ms | 31.0ms | 15.4% |
 
 ### 改造建议与案例
 
 **改造优先级建议**
 
-
 高优先级：
-1. 包含大量组件的复杂页面（组件数 > 100）
-2. List/Grid 长列表场景（子项数 > 50）
-3. 页面切换响应时延 > 100ms
+1. 包含大量组件的复杂页面（组件数 > 100）。
+2. List/Grid长列表场景（子项数 > 50）。
+3. 页面切换响应时延 > 100ms。
 
 中优先级：
-1. 中等复杂度页面（组件数 50~100）
-2. 有卡顿（响应时延 > 200ms）的用户反馈
+1. 中等复杂度页面（组件数 50~100）。
+2. 有卡顿（响应时延 > 200ms）的用户反馈。
 
 低优先级：
-1. 简单交互页面（组件数 < 50）
+1. 简单交互页面（组件数 < 50）。
 
 
 **改造步骤建议**
@@ -650,7 +660,7 @@ struct Page {
 
 | 问题 | 原因 | 解决方案 |
 |:-----|:-----|:---------|
-| Debug模式下崩溃 | 在 `ParallelizeUI` 中使用了外部状态变量 | 使用 `ParallelizeUI<T>` 通过参数传递。 |
+| Debug模式下崩溃 | 在`ParallelizeUI`中使用了外部状态变量 | 使用`ParallelizeUI<T>`通过参数传递。 |
 | 性能提升不明显 | 组件数量太少，调度开销大于并行收益 | 增加并行任务的组件数量，或取消并行化。 |
 | 显示内容有延迟 | 并行内容在下一帧才显示 | 将重要内容改为串行创建。 |
 | 编译错误 | 使用了不支持的组件 | 移除不支持的组件或调整并行区域。 |
