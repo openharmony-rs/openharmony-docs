@@ -187,7 +187,7 @@ hasRight(deviceName: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceName | string | 是 | 设备名称，来自获取的设备列表USBDevice。 |
+| deviceName | string | 是 | 设备名称，来自[getDevice](#usbmanagergetdevices)获取的设备列表USBDevice。 |
 
 **返回值：**
 
