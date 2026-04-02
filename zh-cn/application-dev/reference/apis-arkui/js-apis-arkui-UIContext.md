@@ -15507,6 +15507,72 @@ struct Index {
   }
 }
 ```
+## enableEventPassthrough
+
+ArkTS-Dyn: enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void
+
+ArkTS-Sta: enableEventPassthrough(enabled: boolean | undefined, eventType: RawInputEventType): void
+
+启用或禁用事件直通。事件直通表示在事件分发过程中，不经过重采样直接下发给组件。未通过该接口设置时，默认禁用事件直通。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填   | 说明                                    |
+| ----- | ---------------------------------------- | ---- | ------------------------------------- |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是    | 启用或禁用事件直通。true表示启用事件直通，false表示禁用事件直通，undefined表示禁用事件直通。 |
+| eventType | [RawInputEventType](./arkui-ts/ts-appendix-enums.md#rawinputeventtype) | 是    | 指定启用或禁用事件直通的原始输入事件类型。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Enable Event Passthrough')
+        .onClick(() => {
+          this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Column, Component, Button, RawInputEventType } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Enable Event Passthrough')
+        .onClick(() => {
+          this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
 ## setCustomKeyboardContinueFeature<sup>23+</sup>
 
 setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
