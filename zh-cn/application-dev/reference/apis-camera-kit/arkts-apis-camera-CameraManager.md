@@ -757,7 +757,7 @@ isTorchSupported(): boolean
 
 | 类型        | 说明                          |
 | ---------- | ----------------------------- |
-| boolean    | 返回true表示设备支持手电筒，返回false表示设备不支持手电。若接口调用失败，返回undefined。 |
+| boolean    | 返回true表示设备支持手电筒，返回false表示设备不支持手电，如果返回false，则[isTorchModeSupported](#istorchmodesupported11)，[getTorchMode](#gettorchmode11)，[setTorchMode](#settorchmode11)，[isTorchLevelControlSupported](#istorchlevelcontrolsupported)，[setTorchModeOnWithLevel](#settorchmodeonwithlevel)都不会生效。若接口调用失败，返回undefined。 |
 
 **示例：**
 
