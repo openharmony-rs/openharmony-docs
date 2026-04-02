@@ -28,7 +28,7 @@
 
 使用motion模块获取用户操作手时，需要权限：ohos.permission.ACTIVITY_MOTION 或 ohos.permission.DETECT_GESTURE，具体申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-  ```
+  ```JSON5
   "requestPermissions":[
       {
         "name" : "ohos.permission.ACTIVITY_MOTION"
@@ -127,7 +127,7 @@
 
 使用motion模块获取用户握持手时，需要权限： ohos.permission.DETECT_GESTURE，具体申请方式请参考[声明权限](../../security/AccessToken/declare-permissions.md)。
 
-  ```
+  ```JSON5
   "requestPermissions":[
       {
         "name" : "ohos.permission.DETECT_GESTURE"
