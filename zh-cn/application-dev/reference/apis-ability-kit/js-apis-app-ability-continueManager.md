@@ -79,8 +79,8 @@ export default class MigrationAbility extends UIAbility {
             } catch (e) {
               console.error('register failed, cause: ' + JSON.stringify(e));
             }
-            //若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
-            //可处理应用自定义跳转、时序等问题
+            // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+            // 可处理应用自定义跳转、时序等问题
             // ...
         }
     }
@@ -146,8 +146,8 @@ export default class MigrationAbility extends UIAbility {
             } catch (e) {
               console.error('unregister failed, cause: ' + JSON.stringify(e));
             }
-            //若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
-            //可处理应用自定义跳转、时序等问题
+            // 若应用迁移数据较大，可在此处添加加载页面(页面中显示loading等)
+            // 可处理应用自定义跳转、时序等问题
             // ...
         }
     }
