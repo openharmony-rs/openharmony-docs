@@ -1007,7 +1007,7 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 
 createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 
-根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用callback形式返回。
+根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用callback异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
