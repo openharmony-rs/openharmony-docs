@@ -208,7 +208,6 @@ import { onScreen } from '@kit.MultimodalAwarenessKit';
 | entityName   | string | 否   | 否   | 感知结果实体名称，固定内容。 |
 | entityInfo   | Record<string, Object> | 否   | 否   | 感知结果实体信息，包括内容、链接、图像和其它实体。|
 
-
 ## OnscreenAwarenessInfo<sup>23+</sup>
 
 屏上感知返回信息列表。
