@@ -660,7 +660,7 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 
 针对Phone、Tablet设备，应用可以调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，即可恢复为系统屏幕亮度。
 
-针对PC/2in1设备，由于窗口亮度和系统亮度已实现归一化，故调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)接口后将直接改变系统亮度，目前没有可以恢复设置窗口亮度前的方法。
+针对PC/2in1设备，由于窗口亮度和系统亮度已实现归一化，故调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)接口后将直接改变系统亮度，目前尚无恢复至调用前窗口亮度的方法。
 
 ## 如何正常获取顶层窗口
 
@@ -685,6 +685,7 @@ import { window } from '@kit.ArkUI';
 let lastWindow: window.Window | undefined = undefined;
 // 不建议写法
 try {
+  // 请先获取window实例
   windowClass.destroyWindow();
   try {
     window.getLastWindow(this.context).then((topWindow) => {
@@ -701,6 +702,7 @@ try {
 
 // 建议写法
 try {
+  // 请先获取window实例
   windowClass.destroyWindow().then(() => {
     try {
       window.getLastWindow(this.context).then((topWindow) => {
