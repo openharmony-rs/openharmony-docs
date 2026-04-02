@@ -166,6 +166,59 @@ type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array\<Gestu
 | event | [BaseGestureEvent](./ts-gesture-common.md#basegestureevent11对象说明) | 是   | [触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后的基础手势事件的信息。 <br/>**说明：** <br/>仅包含BaseGestureEvent的信息，不包含其子类拓展信息。<br/>axisHorizontal和axisVertical的值为0。 |
 | recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | [触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)结束后，所有手势识别器对象。 |
 
+## onGestureCollectIntercept
+
+onGestureCollectIntercept(callback: GestureCollectInterceptCallback): T
+
+在当前节点及更高优先级节点上的事件和手势被收集完成后触发该回调。该回调可用于干预事件和手势的收集结果。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名        | 类型                    | 必填  | 说明                          |
+| ---------- | -------------------------- | ------- | ----------------------------- |
+| callback      | [GestureCollectInterceptCallback](#gesturecollectinterceptcallback) | 是   |  组件进行触摸测试时使用的回调函数。在当前节点及更高优先级节点上的事件和手势收集完成后执行，以干预收集结果。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| T | 返回当前组件。 |
+
+## GestureCollectInterceptCallback
+
+type GestureCollectInterceptCallback = (recognizers: Array\<GestureRecognizer\>, touchRecognizers?: Array\<TouchRecognizer\>) => GestureCollectIntervention
+
+定义在[onGestureCollectIntercept](#ongesturecollectintercept)中使用的回调类型。
+
+**起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                      | 必填 | 说明                                                         |
+| -------- | ------------------------- | ---- | ------------------------------------------------------------ |
+| recognizers | Array\<[GestureRecognizer](ts-gesture-common.md#gesturerecognizer12)\> | 是   | 响应链上组件的手势识别器对象。 |
+| touchRecognizers | Array\<[TouchRecognizer](ts-gesture-common.md#touchrecognizer20)\> | 否   | 响应链上组件的触摸识别器对象。<br/>默认值为null。|
+
+**返回值：**
+
+| 类型     | 说明        |
+| ------ | --------- |
+| [GestureCollectIntervention](./ts-appendix-enums.md#gesturecollectintervention) | 手势收集干预结果。 |
+
 ## 示例
 
 ### 示例1（嵌套滚动）
@@ -796,3 +849,79 @@ struct TouchTestDoneExample {
 }
 ```
 ![example](figures/touchTestDone.gif)
+
+### 示例6（自定义干预事件和手势的收集结果）
+
+该示例通过配置[onGestureCollectIntercept](#ongesturecollectintercept)指定手势识别器或者触摸识别器是否透传到其他节点。点击button2时，不透传触摸事件到Column。点击button1时，透传触摸事件到Column，Column变色。
+
+从API版本26.0.0开始，新增onGestureCollectIntercept接口。
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State backgroundColorButton1: string = '#D5D5D5';
+  @State backgroundColorButton2: string = '#D5D5D5';
+  @State backgroundColorRow: string = '#FFFFFF';
+  @State backgroundColorColumn: string = '#FFFFFF';
+
+  build() {
+    Column() {
+      Column() {
+        Row({ space: 20 }) {
+          Button('button1')
+            .width('30%')
+            .height(40)
+            .id('button1')
+            .onTouch(() => {
+              this.backgroundColorButton1 = '#E5E5E5';
+            })
+            .backgroundColor(this.backgroundColorButton1)
+          Button('button2')
+            .width('30%')
+            .height(40)
+            .id('button2')
+            .onTouch(() => {
+              this.backgroundColorButton2 = '#E5E5E5';
+            })
+            .backgroundColor(this.backgroundColorButton2)
+        }
+        .justifyContent(FlexAlign.Center)
+        .width('90%')
+        .height(200)
+        .margin(25)
+        .onTouch(() => {
+          this.backgroundColorRow = '#666666';
+        })
+        .backgroundColor(this.backgroundColorRow)
+        .onGestureCollectIntercept((recognizers: Array<GestureRecognizer>,
+          touchRecognizers: Array<TouchRecognizer>) => {
+          if (!touchRecognizers) {
+            return GestureCollectIntervention.CONTINUE;
+          } else {
+            for (let i = 0; i < touchRecognizers.length; i++) {
+              let id = touchRecognizers[i].getEventTargetInfo().getId();
+              if (id == 'button2') {
+                return GestureCollectIntervention.DISCARD_LOWER;
+              }
+            }
+          }
+          return GestureCollectIntervention.CONTINUE;
+        })
+      }
+      .margin(25)
+      .padding(20)
+      .width('90%')
+      .height(250)
+      .borderWidth(2)
+      .onTouch(() => {
+        this.backgroundColorColumn = '#E5E5E5';
+      })
+      .backgroundColor(this.backgroundColorColumn)
+    }
+    .padding(15)
+  }
+}
+```
+![example](figures/gestureCollectIntercept.gif)
