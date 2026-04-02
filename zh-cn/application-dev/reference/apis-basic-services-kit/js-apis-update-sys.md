@@ -1583,6 +1583,93 @@ restorer.forceFactoryReset().then(() => {
   console.error(`forceFactoryReset error ${JSON.stringify(err)}`);
 });
 ```
+### deepFactoryReset<sup>26+</sup>
+deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
+
+深度擦除用户数据。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+**需要权限**：ohos.permission.FACTORY_RESET
+
+**参数：**
+
+| 参数名                | 类型                                       | 必填   | 说明             |
+| ------------------ | ---------------------------------------- | ---- | -------------- |
+| factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | 是    | 擦除策略。         |
+
+**返回值：**
+
+| 类型             | 说明                         |
+| -------------- | -------------------------- |
+| Promise\<void> | Promise对象。无返回结果。 |
+
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 201      | Permission denied.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 11500104 | IPC error.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let factoryResetStrategy: update.FactoryResetStrategy = {
+  scope: update.FactoryResetScope.DATA,
+  strategy: "deepfactoryReset"
+};
+restorer.deepFactoryReset(factoryResetStrategy).then(() => {
+  console.info(`deepfactoryReset success`);
+}).catch((err: BusinessError) => {
+  console.error(`deepfactoryReset error ${JSON.stringify(err)}`);
+});
+```
+### getDeepFactoryResetInfo<sup>26+</sup>
+
+getDeepFactoryResetInfo(factoryResetStrategy): Promise\<factoryResetInfo>
+
+获取深度擦除信息。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+**需要权限**：ohos.permission.FACTORY_RESET
+
+**返回值：**
+
+| 类型                              | 说明                  |
+| ------------------------------- | ------------------- |
+| Promise\<[FactoryResetInfo](#factoryresetinfo)> | Promise对象，返回任务信息对象。 |
+
+**错误码**：
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[升级错误码](errorcode-update.md)。
+
+| 错误码ID       | 错误信息                                                  |
+| -------  | ---------------------------------------------------- |
+| 201      | Permission denied.       |
+| 202      | Permission verification failed. A non-system application calls a system API. |
+| 11500104 | IPC error.               |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let factoryResetStrategy: update.FactoryResetStrategy = {
+  scope: update.FactoryResetScope.DATA,
+  strategy: "deepfactoryReset"
+};
+updater.getFactoryResetInfo(factoryResetStrategy).then((info: update.FaactoryResetInfo) => {
+  console.info(`getFactoryResetInfo success`);
+}).catch((err: BusinessError) => {
+  console.error(`getFactoryResetInfo promise error ${JSON.stringify(err)}`);
+});
+```
 
 ## LocalUpdater
 
@@ -2096,6 +2183,38 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | -------- | ------------------------------- | ---- | ---- | ---- |
 | fileType | [ComponentType](#componenttype) | 否    | 否 | 文件类型。 |
 | filePath | string                          | 否    | 否 | 文件路径。 |
+
+## FactoryResetStrategy<sup>26+</sup>
+
+深度恢厂策略。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+| 名称       | 类型                            | 只读 | 可选 | 说明   |
+| -------- | ------------------------------- | ---- | ---- | ---- |
+| scope | [FactoryResetScope](#factoryresetscope) | 否    | 否 | 擦除范围 |
+| strategy | string                          | 否    | 否 | 擦除策略。 |
+
+## FactoryResetInfo<sup>26+</sup>
+
+擦除信息。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+| 名称       | 类型                            | 只读 | 可选 | 说明   |
+| -------- | ------------------------------- | ---- | ---- | ---- |
+| duration | int                          | 否    | 否 | 擦除时间。 |
+
+## FactoryResetScope<sup>26+</sup>
+
+擦除范围。
+
+**系统能力**：SystemCapability.Update.UpdateService
+
+| 名称           | 值  | 说明   |
+| ------------- | ---- | ---- |
+| DATA | 1    | 数据擦除。|
+| DATA_AND_OS | 2    | 数据和系统擦除。|
 
 ## UpgradeTaskCallback<sup>23+</sup>
 
