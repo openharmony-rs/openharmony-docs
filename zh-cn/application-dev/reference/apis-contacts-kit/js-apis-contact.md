@@ -213,7 +213,7 @@ addContact(contact: Contact): Promise&lt;number&gt;
   ```js
   import { contact } from '@kit.ContactsKit';
 
-  // Promise 成功时返回添加成功后的数据
+  // Promise 成功时返回添加成功后的数据。
   let promise = contact.addContact({
     name: {
       fullName: 'xxx'
@@ -222,7 +222,7 @@ addContact(contact: Contact): Promise&lt;number&gt;
       phoneNumber: '138xxxxxxxx'
     }]
   });
-  // 成功回调： Promise resolve 时执行
+  // 成功回调：Promise resolve 时执行
   promise.then((data) => {
     console.info(`Succeeded in adding Contact. data: ${JSON.stringify(data)}`);
   });
@@ -997,7 +997,7 @@ isMyCard(id: number, callback: AsyncCallback&lt;boolean&gt;): void
   import { BusinessError } from '@kit.BasicServicesKit';
   import { contact } from '@kit.ContactsKit';
 
-  // 判断id为1的联系人是否为“我的名片”
+  // 判断id为1的名片是否为“我的名片”
   contact.isMyCard(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isMyCard. Code: ${err.code}, message: ${err.message}`);
@@ -1088,7 +1088,7 @@ isMyCard(id: number): Promise&lt;boolean&gt;
   ```js
   import { contact } from '@kit.ContactsKit';
 
-  // 判断id为1的联系人是否为“我的名片”
+  // 判断id为1的名片是否为“我的名片”
   let promise = contact.isMyCard(1);
   promise.then((data) => {
     console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
@@ -1352,7 +1352,7 @@ queryMyCard(attrs?: ContactAttributes): Promise&lt;Contact&gt;
   ```js
   import { contact } from '@kit.ContactsKit';
 
-  // 回调函数，传入联系人的属性列表，查询“我的名片”
+  // 回调函数，传入联系人的属性列表，查询“我的名片”。
   let promise = contact.queryMyCard({
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   });
@@ -2060,7 +2060,7 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
   ```js
   import { contact } from '@kit.ContactsKit';
 
-  // 异步查询，查询联系人
+  // 异步回调，查询联系人
   let promise = contact.queryContact('xxx', {
     holderId: 1,
     bundleName: "",
@@ -2530,7 +2530,7 @@ queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;C
 ```js
   import { contact } from '@kit.ContactsKit';
 
-  // 根据holder和attrs查询所有的联系人
+  // 根据holder和attrs查询所有联系人
   let promise = contact.queryContacts({
     holderId: 1,
     bundleName: "",
@@ -2979,7 +2979,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 
 queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -4565,7 +4565,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 |                名称               |                  类型                 | 只读  | 可选  |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
 | isMultiSelect<sup>10+</sup>         | boolean | 否   | 是   | 是否为多选，true:多选，false:单选。默认值为false。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。     |
-| maxSelectable<sup>15+</sup>         | number | 否   | 是   | 联系人数量上限。默认值为10000，超出上限则抛出异常。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     | 
+| maxSelectable<sup>15+</sup>         | number | 否   | 是   | 联系人数量上限。默认值为10000，超出上限则会抛出异常。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     | 
 | isDisplayedByName<sup>15+</sup>         | boolean | 否   | 是   | 是否按联系人姓名维度展示，默认值为false。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     |
 | filter<sup>15+</sup>         | [ContactSelectionFilter](#contactselectionfilter15) | 否   | 是   | 联系人查询过滤器。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     |
 
@@ -4583,30 +4583,29 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 | filterType        | [FilterType](#filtertype15) |  否  |  否    | 过滤类型。     |
 
 **示例：**
+使用contactSelectionFilter对联系人进行组合过滤，并通过 Promise 方式获取查询结果。
 
 >**说明：**
 >
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
-import { contact } from '@kit.ContactsKit';
 import { common } from '@kit.AbilityKit';
+import { contact } from '@kit.ContactsKit';
 
-// 请在组件内获取context
-const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-
-const phoneNumber = '13812345678';
+// 请在组件内获取context。
+const ctx = this.getUIContext().getHostContext() as common.UIAbilityContext;
 const filter = {
   filterType: 1,
   filterClause: {
     id: [{ filterCondition: contact.FilterCondition.EQUAL_TO, value: '1' }],
     name: [{ filterCondition: contact.FilterCondition.CONTAINS, value: '张' }],
-    dataItem: [{ filterCondition: contact.FilterCondition.IN, value: 'a@x.com', 'b@y.com' }]
+    dataItem: [{ filterCondition: contact.FilterCondition.IN, value: ['a@x.com', 'b@y.com'] }]
   }
 };
 contact.getContactList({ uiContext: ctx, selectionFilter: filter})
   .then(r =>console.info(`返回 ${r.contacts?.length ?? 0} 条`))
-  .catch(e => console.error(`查询错误 ${e.code}: ${e.message}`))
+  .catch(e => console.error(`查询错误 ${e.code}: ${e.message}`));
 
 ```
 
@@ -4667,7 +4666,7 @@ contact.getContactList({ uiContext: ctx, selectionFilter: filter})
 | NOT_EQUAL_TO | 2 | 对应字段不等于某值。<br/>**系统能力**：SystemCapability.Applications.Contacts |
 | IN | 3 | 对应字段值在某数组中，值类型为string。<br/>**系统能力**：SystemCapability.Applications.Contacts |
 | NOT_IN | 4 | 对应字段值不在某数组中。<br/>**系统能力**：SystemCapability.Applications.Contacts  |
-| CONTAINS | 5 | 对应字段值包含某值，值类型为string。<br/>**系统能力**：SystemCapability.Applications.Contacts。 |
+| CONTAINS | 5 | 对应字段值包含某值，值类型为string<br/>**系统能力**：SystemCapability.Applications.Contacts。 |
 
 ## DataFilter<sup>15+</sup>
 
