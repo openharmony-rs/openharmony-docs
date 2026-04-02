@@ -1046,9 +1046,9 @@ VM内存信息。
 | threadId           | number  | 否  | 否  | 线程号。      |
 | cpuUsage           | number  | 否  | 否  | 线程CPU使用率。 |
 
-## hidebug.tags
+## hidebug.tags<sup>12+</sup>
 
-### 常量<sup>12+</sup>
+### 常量
 
 支持trace使用场景的标签，用户可通过[hitrace](../../dfx/hitrace.md)抓取指定标签的trace内容。
 
