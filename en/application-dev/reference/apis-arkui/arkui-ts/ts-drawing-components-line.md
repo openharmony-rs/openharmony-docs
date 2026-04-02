@@ -33,7 +33,7 @@ Line(options?: LineOptions)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| options | [LineOptions](ts-drawing-components-line.md#lineoptions18) | No| Options for drawing a line.<br>The **undefined** and **null** values are treated as invalid and will not take effect.|
+| options | [LineOptions](ts-drawing-components-line.md#lineoptions18) | No| Options of the line.<br>The **undefined** and **null** values are treated as invalid and will not take effect.|
 
 ## LineOptions<sup>18+</sup>
 
@@ -290,7 +290,7 @@ Sets whether to enable anti-aliasing. This attribute can be dynamically set usin
 
 | Name| Type   | Mandatory| Description                                 |
 | ------ | ------- | ---- | ------------------------------------- |
-| value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>**true**: enable anti-aliasing; **false**: disable anti-aliasing.<br>Default value: **true**<br>Invalid values **undefined** and **null** are treated as **false**.|
+| value  | boolean | Yes  | Whether to enable anti-aliasing.<br>**true**: enable anti-aliasing; **false**: disable anti-aliasing.<br>Default value: **true**<br>Invalid values **undefined** and **null** are treated as **false**.|
 
 ## Examples
 
