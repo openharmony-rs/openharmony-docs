@@ -37,6 +37,7 @@
 
 - 打包工具需要运行在Java8及其以上环境。
 - 打包指令中参数和参数值需成对出现。例如，HAP打包指令中--resources-path \<path>，其中--resources-path为指令参数，path为参数值，两者需要同时出现。
+- 不建议使用JDK 20版本运行打包工具。JDK 20对zip64扩展数据字段的校验规则存在已知缺陷，当zip包（如HAP、HSP或任何zip64文件）的目录中zip64扩展字段长度异常时，解析会抛出`Invalid CEN header (invalid zip64 extra data field size)`异常。建议使用JDK 17（LTS）或JDK 21（LTS）等长期支持版本。若必须使用JDK 20，可在JVM启动参数中添加`-Djdk.util.zip.disableZip64ExtraFieldValidation=true`规避此问题。
 
 ## HAP打包指令
 
@@ -1023,11 +1024,16 @@ Read Stage hap verify info exist exception.
 
 **可能原因**
 
-解析module.json时发生I/O异常。
+1. 解析module.json时发生I/O异常。
+2. JDK 20对zip64扩展数据字段校验存在已知缺陷，当zip包（如HAP、HSP或任何zip64文件）的目录中zip64扩展字段长度异常时，解析会抛出`Invalid CEN header (invalid zip64 extra data field size)`异常。
 
 **处理步骤**
 
-根据日志中“Error Message:”信息，定位具体的I/O或格式化异常原因。
+1. 根据日志中“Error Message:”信息，定位具体的I/O或格式化异常原因。
+2. 若“Error Message:”中包含`Invalid CEN header (invalid zip64 extra data field size)`，请检查当前JDK版本是否为JDK 20。建议更换为JDK 17（LTS）或JDK 21（LTS）等长期支持版本。若无法更换JDK版本，可在JVM启动参数中添加`-Djdk.util.zip.disableZip64ExtraFieldValidation=true`规避此问题。在打包指令中添加JVM启动参数的示例如下：
+   ```bash
+   java -Djdk.util.zip.disableZip64ExtraFieldValidation=true -jar app_packing_tool.jar --mode app --hap-path <path> --out-path <path> --pack-info-path <path>
+   ```
 
 ### 10012014 打包--lib-path指定目录失败
 **错误信息**
