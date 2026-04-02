@@ -417,10 +417,10 @@ function releaseInterface() {
     return;
   }
 
-  let device: usbManager.USBDevice = devicesList[0];
+  let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
-  let interfaces: usbManager.USBInterface = device.configs[0].interfaces[0];
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
   let ret: number= usbManager.claimInterface(devicepipe, interfaces);
   ret = usbManager.releaseInterface(devicepipe, interfaces);
   console.info(`releaseInterface = ${ret}`);
