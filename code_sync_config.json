@@ -8902,7 +8902,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperToggle.ets",
 				"functions":[
 					{
-						"end_line":143,
+						"end_line":145,
 						"name":"toggle",
 						"start_line":16
 					},
@@ -8942,7 +8942,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperAction.ets",
 				"functions":[
 					{
-						"end_line":90,
+						"end_line":91,
 						"name":"action",
 						"start_line":16
 					}
@@ -8952,7 +8952,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/arcSwiper/ArcSwiperSideSlip.ets",
 				"functions":[
 					{
-						"end_line":83,
+						"end_line":84,
 						"name":"side_slip",
 						"start_line":16
 					}
@@ -9017,7 +9017,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperPageSwitchMethod.ets",
 				"functions":[
 					{
-						"end_line":117,
+						"end_line":119,
 						"name":"switch_pages",
 						"start_line":18
 					}
@@ -9052,7 +9052,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperCustomAnimation.ets",
 				"functions":[
 					{
-						"end_line":107,
+						"end_line":109,
 						"name":"customize_transition_animations",
 						"start_line":18
 					}
@@ -9062,7 +9062,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperAndTabsLinkage.ets",
 				"functions":[
 					{
-						"end_line":135,
+						"end_line":136,
 						"name":"swiper_tabs_linkage",
 						"start_line":19
 					}
@@ -9082,7 +9082,7 @@
 						"start_line":77
 					},
 					{
-						"end_line":150,
+						"end_line":151,
 						"name":"dot_indicator",
 						"start_line":16
 					}
@@ -9102,7 +9102,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/swiper/SwiperVisibleContentPosition.ets",
 				"functions":[
 					{
-						"end_line":134,
+						"end_line":135,
 						"name":"visible_content_position",
 						"start_line":21
 					}
@@ -10488,7 +10488,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/pages/BuilderNodeAdaptation.ets",
 				"functions":[
 					{
-						"end_line":158,
+						"end_line":162,
 						"name":"custom_node",
 						"start_line":93
 					},
@@ -10498,7 +10498,7 @@
 						"start_line":116
 					},
 					{
-						"end_line":157,
+						"end_line":161,
 						"name":"color_mode_change_appear",
 						"start_line":121
 					},
@@ -10513,7 +10513,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ColorAdaptionSys/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":33,
+						"end_line":37,
 						"name":"create_set_sys",
 						"start_line":24
 					},
@@ -24867,7 +24867,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentPageNoAndTabLinkage.ets",
 				"functions":[
 					{
-						"end_line":85,
+						"end_line":87,
 						"name":"content_page_tab_linkage",
 						"start_line":16
 					}
@@ -24877,7 +24877,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/ContentWillChange.ets",
 				"functions":[
 					{
-						"end_line":164,
+						"end_line":166,
 						"name":"switch_the_tab_specific_tab",
 						"start_line":18
 					},
@@ -24892,7 +24892,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/AgeFriendlyTabs.ets",
 				"functions":[
 					{
-						"end_line":171,
+						"end_line":173,
 						"name":"age_friendly_tab",
 						"start_line":16
 					}
@@ -24902,7 +24902,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ScrollableComponent/entry/src/main/ets/pages/tabs/NumberOfCachesTabBar.ets",
 				"functions":[
 					{
-						"end_line":83,
+						"end_line":85,
 						"name":"number_of_caches_tabBar",
 						"start_line":16
 					}
