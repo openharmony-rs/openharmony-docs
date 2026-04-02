@@ -682,16 +682,39 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 import { BusinessError } from '@kit.BasicServicesKit';
 import { window } from '@kit.ArkUI';
 
+let lastWindow: window.Window | undefined = undefined;
+// 不建议写法
 try {
-  let lastWindow: window.Window | undefined = undefined;
-  // 不建议写法
   windowClass.destroyWindow();
-  lastWindow = await window.getLastWindow(this.context);
-
-  // 建议写法
-  await windowClass.destroyWindow();
-  lastWindow = await window.getLastWindow(this.context);
+  try {
+    window.getLastWindow(this.context).then((topWindow) => {
+      lastWindow = topWindow;
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to obtain the last window. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  } catch (exception) {
+    console.error(`Failed to obtain the last window. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 } catch (exception) {
-  console.error(`Failed to destroy and get last window. Cause code: ${exception.code}, message: ${exception.message}`);
+  console.error(`Failed to destroy. Cause code: ${exception.code}, message: ${exception.message}`);
+};
+
+// 建议写法
+try {
+  windowClass.destroyWindow().then(() => {
+    try {
+      window.getLastWindow(this.context).then((topWindow) => {
+        lastWindow = topWindow;
+      }).catch((err: BusinessError) => {
+        console.error(`Failed to obtain the last window. Cause code: ${err.code}, message: ${err.message}`);
+      });
+    } catch (exception) {
+      console.error(`Failed to obtain the last window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to destroy the window. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to destroy. Cause code: ${exception.code}, message: ${exception.message}`);
 };
 ```
