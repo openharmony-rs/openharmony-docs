@@ -2213,7 +2213,6 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<vo
 
 配置资产兼容能力。系统会对特殊的资产（如高分辨率资产）进行兼容性处理，如果开发者希望获得原始资产需要向系统注册兼容能力。
 
-
 ​**模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -2246,13 +2245,13 @@ phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-a
 
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-    try {
+  try {
     let capability : photoAccessHelper.AssetCompatibleCapability = {
         supportedHighResolution : true,
     };
     await phAccessHelper.setAssetCompatibleCapability(capability);
   } catch (error) {
-    console.error('failed to setAssetCompatibleCapability err'， error);
+    console.error('failed to setAssetCompatibleCapability err', error);
   }
 }
 ```
