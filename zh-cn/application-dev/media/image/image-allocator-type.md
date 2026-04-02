@@ -107,18 +107,24 @@ stride的值可以通过[getImageInfo()](../../reference/apis-image-kit/arkts-ap
    <!-- @[allocator_called](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
-   async CreatePixelMapUsingAllocator(context: Context, type: image.AllocatorType): Promise<image.PixelMap> {
+   async CreatePixelMapUsingAllocator(context: Context, type: image.AllocatorType): Promise<image.PixelMap | undefined> {
      const resourceMgr = context.resourceManager;
-     const rawFile = await resourceMgr.getRawFileContent('99_132.jpg'); // 测试图片为99*132的jpg图。
-     let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer);
-     let options: image.DecodingOptions = {};
-     let pixelmap = await imageSource.createPixelMapUsingAllocator(options, type);
-     if (pixelmap != undefined) {
-       let info = await pixelmap.getImageInfo();
-       // 用DMA_ALLOC内存申请出的pixelmap的stride与SHARE_MEMORY内存申请出的pixelmap的stride不同。
-       console.info('stride = ' + info.stride);
+     try {
+       const rawFile = await resourceMgr.getRawFileContent('99_132.jpg'); // 测试图片为99*132的jpg图。
+       let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer);
+       let options: image.DecodingOptions = {};
+       let pixelmap = await imageSource.createPixelMapUsingAllocator(options, type);
+       if (pixelmap != undefined) {
+         let info = await pixelmap.getImageInfo();
+         // 用DMA_ALLOC内存申请出的pixelmap的stride与SHARE_MEMORY内存申请出的pixelmap的stride不同。
+         console.info('stride = ' + info.stride);
+       }
+       return pixelmap;
+     } catch (err) {
+       console.error(`Create PixelMap by setting allocator type failed: ${err}.`);
+       return undefined;
      }
-     return pixelmap;
+       
    }
    ```
 
