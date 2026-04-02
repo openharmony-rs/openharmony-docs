@@ -197,6 +197,118 @@ if (avScreenCaptureRecorder != undefined) {
 }
 ```
 
+## pauseRecording
+
+pauseRecording(): Promise\<void>
+
+暂停录屏。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**返回值：**
+
+| Type          | Description                             |
+| -------------- | --------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 5400102  | Operation not be permitted. Return by promise. |
+| 5400103  | IO error. Return by promise.     |
+| 5400105  | Service died. Return by promise. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 初始化avScreenCaptureRecorder。
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in creating avScreenCaptureRecorder');
+  } else {
+    console.error('Failed to create avScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+// 其余流程。
+
+// 调用pauseRecording方法。
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.pauseRecording().then(() => {
+    console.info('Succeeded in pausing avScreenCaptureRecorder');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to pause avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+## resumeRecording
+
+resumeRecording(): Promise\<void>
+
+恢复录屏。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
+
+**返回值：**
+
+| Type          | Description                             |
+| -------------- | --------------------------------- |
+| Promise\<void> | Promise that returns no value.|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| ID| Error Message                        |
+| -------- | -------------------------------- |
+| 5400102  | Operation not be permitted. Return by promise. |
+| 5400103  | IO error. Return by promise.     |
+| 5400105  | Service died. Return by promise. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+// 初始化avScreenCaptureRecorder。
+let avScreenCaptureRecorder: media.AVScreenCaptureRecorder | undefined;
+media.createAVScreenCaptureRecorder().then((captureRecorder: media.AVScreenCaptureRecorder) => {
+  if (captureRecorder != null) {
+    avScreenCaptureRecorder = captureRecorder;
+    console.info('Succeeded in creating avScreenCaptureRecorder');
+  } else {
+    console.error('Failed to create avScreenCaptureRecorder');
+  }
+}).catch((error: BusinessError) => {
+  console.error(`createAVScreenCaptureRecorder catchCallback, error message:${error.message}`);
+});
+
+// 其余流程。
+
+// 调用resumeRecording方法。
+if (avScreenCaptureRecorder != undefined) {
+  avScreenCaptureRecorder.resumeRecording().then(() => {
+    console.info('Succeeded in resuming avScreenCaptureRecorder');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to resume avScreenCaptureRecorder. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
 ## skipPrivacyMode<sup>12+</sup>
 
 skipPrivacyMode(windowIDs: Array\<number>): Promise\<void>
