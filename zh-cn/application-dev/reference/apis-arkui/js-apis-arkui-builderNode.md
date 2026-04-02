@@ -36,6 +36,8 @@
 >
 > - 从API version 20开始，在ArkTS-Dyn模式下，通过配置[BuildOptions](#buildoptions12)，内部自定义组件的[@Consume](../../ui/state-management/arkts-provide-and-consume.md)支持接收所在页面的[@Provide](../../ui/state-management/arkts-provide-and-consume.md)数据。
 >
+> - 在ArkTS-Sta模式下，BuilderNode下的自定义组件不支持使用[@Link装饰器](../../ui/state-management/arkts-link.md)来跨越BuilderNode同步外界的数据和状态。
+>
 > - 其余装饰器行为未定义，不建议使用。
 >
 > - 仅支持在自定义组件中使用[Repeat](../../ui/rendering-control/arkts-new-rendering-control-repeat.md)。
