@@ -995,9 +995,9 @@ Allows an application to obtain and manage the media resources playing on a devi
 
 ## ohos.permission.MANAGE_RECENT_SNAPSHOT
 
-Allows an application to set the preview thumbnail when a mouse hovers over the icon in the Dock.
+Allows an application to set the preview image displayed when a mouse hovers over its icon in the Dock or recent tasks are viewed.
 
-When the mouse hovers over an application icon in the Dock, a real-time preview thumbnail of the application will be displayed.
+When the mouse hovers over an application icon in the Dock or recent tasks are viewed, a real-time preview image of the application will be displayed. With this permission, the application is authorized to customize this image.
 
 <!--RP72--><!--RP72End-->
 
@@ -1011,7 +1011,9 @@ When the mouse hovers over an application icon in the Dock, a real-time preview 
 
 ## ohos.permission.SET_WINDOW_ALPHA
 
-Allows an application to set the window background transparency.
+Allows an application to set the main window container to be transparent.
+
+With this permission, the application can set the background color of the main window container.
 
 <!--RP73--><!--RP73End-->
 
