@@ -1075,13 +1075,13 @@ invalidate(): void
 
 ## CustomSpanMeasureInfo对象说明
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称  | 类型                              | 只读 | 可选 | 说明   |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
-| fontSize | number |  否  | 否 | 设置文本字体大小。<br/>单位：[fp](ts-pixel-units.md) |
+| fontSize | number |  否  | 否 | 设置文本字体大小。<br/>单位：[fp](ts-pixel-units.md)<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。 |
+| maxWidth | number |  否  | 是 | 自定义span所在父组件的内容区的最大宽度约束。<br/>单位：[px](ts-pixel-units.md)<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| layoutPolicy | [LayoutPolicy](./ts-universal-attributes-size.md#layoutpolicy15) |  否  | 是 | 自定义span所在父组件的宽度布局策略。<br/>**说明：** <br/>当值为null或undefined时，表示父组件没有设置宽度布局策略。<br/>**起始版本：** 26.0.0<br/>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CustomSpanMetrics对象说明
 
@@ -2085,6 +2085,8 @@ struct styled_string_set_lineheight_paragraphstyle_demo {
 
 从API version 12开始，该示例通过[CustomSpan](#customspan)接口和[measureTextSize](../arkts-apis-uicontext-measureutils.md#measuretextsize12)实现属性字符串设置自定义绘制Span。
 
+从API版本26.0.0开始，[CustomSpanMeasureInfo](#customspanmeasureinfo对象说明)新增maxWidth、layoutPolicy属性。
+
 ```ts
 // xxx.ets
 import { drawing } from '@kit.ArkGraphics2D';
@@ -2103,7 +2105,12 @@ class MyCustomSpan extends CustomSpan {
   onMeasure(measureInfo: CustomSpanMeasureInfo): CustomSpanMetrics {
     this.setPx(gUIContext.vp2px(2));
     let textSize = gUIContext.getMeasureUtils().measureTextSize({ textContent: this.word, fontSize: this.wordFontSize })
-    this.width = textSize.width as number;
+    // 从API版本26.0.0开始CustomSpanMeasureInfo支持maxWidth与layoutPolicy属性
+    if (measureInfo.layoutPolicy != LayoutPolicy.fixAtIdealSize) {
+      this.width = Math.min(textSize.width as number, measureInfo.maxWidth as number)
+    } else {
+      this.width = textSize.width as number
+    }
     this.height = textSize.height as number;
     return {
       width: gUIContext.px2vp(this.width) + (this.paddingLeft + this.paddingRight) * 2,
