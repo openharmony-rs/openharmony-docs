@@ -7139,8 +7139,8 @@ let bundleList: Array<string> = ["com.example.myapplication"];
 let userId: int = 100;
 try {
   notificationManager.disableNotificationFeature(disabled, bundleList, userId);
-} catch (error: BusinessError) {
-    console.error(`DisableNotificationFeature failed, code is ${error.code}, message is ${error.message}`);
+} catch (err) {
+    console.error(`DisableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -7424,7 +7424,7 @@ let bundle: notificationManager.BundleOption = {
 };
 try {
     notificationManager.setSilentReminderEnabled(bundle, true);
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`setSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -7500,7 +7500,7 @@ try {
     notificationManager.isSilentReminderEnabled(bundle).then((data: notificationManager.SwitchState) => {
         console.info(`Reminder data is ${JSON.stringify(data)}`);
     });
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`isSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -7577,7 +7577,7 @@ badges.set(bundle, true);
 
 try{
     notificationManager.setBadgeDisplayStatusByBundles(badges);
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
 };
 ```
@@ -7663,7 +7663,7 @@ try{
     data.forEach((value, key) => {
         console.info(`Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
     })});
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`GetBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
 };
 ```
@@ -7749,7 +7749,7 @@ let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
 
 try{
     notificationManager.setReminderInfoByBundles(reminderInfos);
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
 };
 ```
@@ -7832,7 +7832,7 @@ try{
     notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
         console.info(`Reminder data is ${JSON.stringify(data)}`);
     });
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`GetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
 };
 ```
@@ -7900,7 +7900,7 @@ try{
             return 1;
         }
     );
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`onBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -7952,7 +7952,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try{
     notificationManager.offBadgeNumberQuery();
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`OffBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -8054,13 +8054,13 @@ class EntryAbility extends UIAbility {
         }
         notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
           console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
-        }).catch((error: Error) => {
-            let e = error as BusinessError;
-            console.error(`setRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+        }).catch((err: Error) => {
+            let error = err as BusinessError;
+            console.error(`setRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
           });
-      } catch (error : BusinessError) {
-        let e = error as BusinessError;
-        console.error(`setRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+      } catch (err) {
+        let error = err as BusinessError;
+        console.error(`setRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
       }
     }
 }
@@ -8154,13 +8154,13 @@ class EntryAbility extends UIAbility {
           .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
             console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
           })
-          .catch((error: Error) => {
-            let e = error as BusinessError;
-            console.error(`getRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+          .catch((err: Error) => {
+            let error = err as BusinessError;
+            console.error(`getRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
           });
-      } catch (error : BusinessError) {
-        let e = error as BusinessError;
-        console.error(`getRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+      } catch (err) {
+        let error = err as BusinessError;
+        console.error(`getRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
       }
     }
 }
@@ -8425,7 +8425,7 @@ try {
     let err = e as BusinessError
     console.error(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`setPriorityEnabledByBundle failed, err is ${err}`);
 }
 ```
@@ -8566,7 +8566,7 @@ try {
     let err = e as BusinessError
     console.error(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`setBundlePriorityConfig failed, err is ${err}`);
 }
 ```
@@ -8633,7 +8633,7 @@ try {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `isPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`isPriorityIntelligentEnabled failed, err is ${err}`);
 }
 ```
@@ -8706,7 +8706,7 @@ try {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `setPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`setPriorityIntelligentEnabled failed, err is ${err}`);
 }
 ```
@@ -8788,7 +8788,7 @@ try {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `getPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`getPriorityEnabledByBundles failed, err is ${err}`);
 }
 ```
@@ -8866,7 +8866,7 @@ try {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `setPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`setPriorityEnabledByBundles failed, err is ${err}`);
 }
 ```
@@ -8950,7 +8950,7 @@ try {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `getPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`getPriorityStrategyByBundles failed, err is ${err}`);
 }
 ```
@@ -9030,7 +9030,7 @@ try {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `setPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`setPriorityStrategyByBundles failed, err is ${err}`);
 }
 ```
