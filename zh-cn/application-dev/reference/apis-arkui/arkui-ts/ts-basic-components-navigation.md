@@ -4611,9 +4611,9 @@ export class CustomTransition {
 
 ### 示例14（设置Navigation双栏模式）
 
-该示例主要展示Navigation组件在双栏模式下的使用效果，通过[splitPlaceholder](#splitplaceholder20)设置右侧默认占位页，使用[navBarWidthRange](#navbarwidthrange10)配置导航栏宽度范围，并借助[divider](#divider23)属性自定义导航栏与内容区之间的分割线样式。
+该示例主要展示Navigation组件在双栏模式下的使用效果，通过[splitPlaceholder](#splitplaceholder20)设置右侧默认占位页，并使用[navBarWidthRange](#navbarwidthrange10)配置导航栏宽度范围。
 
-从API version 20开始，新增splitPlaceholder属性；API version 23开始，新增divider属性。
+从API version 20开始，新增splitPlaceholder属性。
 
 此示例在运行前需要在工程配置文件[module.json5](../../../quick-start/module-configuration-file.md)中的abilities字段里配置"orientation": "auto_rotation"。
 
