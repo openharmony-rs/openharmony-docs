@@ -54,7 +54,7 @@ init(config: AVScreenCaptureRecordConfig): Promise\<void>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@ohos.file.fs';
+import fileIo from '@ohos.file.fs';
 import { media } from '@kit.MediaKit';
 
 // 初始化avScreenCaptureRecorder。
