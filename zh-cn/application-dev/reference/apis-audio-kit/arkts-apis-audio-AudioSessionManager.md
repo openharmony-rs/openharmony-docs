@@ -920,3 +920,39 @@ isOtherMediaPlaying(): boolean
 ```ts
 let isExistence = audioSessionManager.isOtherMediaPlaying();
 ```
+
+## setAudioSessionBehavior<sup>24+</sup>
+
+setAudioSessionBehavior(behavior: number): void
+
+设置音频会话行为参数，支持多种标志位的组合使用。
+
+> **说明：**
+>
+> - 当音频会话在激活状态时调用此接口，必须重新调用接口[activateAudioSession](./arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)使其生效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+**参数：**
+
+| 参数名   | 类型               | 必填 | 说明      |
+| -------- | ----------------- | ---- | --------- |
+| behavior   | number           | 是   | 用于设置音频会话行为。可以是单个标志，也可以是多个标志的按位OR组合。详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permit at current state. |
+
+**示例：**
+
+```ts
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+sessionManager.setAudioSessionBehavior(behavior);
+```
