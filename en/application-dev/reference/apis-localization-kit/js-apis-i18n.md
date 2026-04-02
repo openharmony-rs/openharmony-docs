@@ -2239,7 +2239,7 @@ For details about the error codes, see [ohos.i18n Error Codes](errorcode-i18n.md
 
 ### getZoneRules<sup>20+</sup>
 
-getZoneRules(): ZoneRules
+public getZoneRules(): ZoneRules
 
 Obtains the time zone transition rules. For details about the time zone transition logic, see [DST Transition](../../internationalization/i18n-dst-transition.md).
 
@@ -2287,7 +2287,7 @@ Queries the time zone transition rule.
 
 ### nextTransition<sup>20+</sup>
 
-nextTransition(date?: number): ZoneOffsetTransition
+public nextTransition(date?: number): ZoneOffsetTransition
 
 Obtains the **nextTransition** object for the specified time.
 
@@ -2330,7 +2330,7 @@ Parses the time zone transition rule.
 
 ### getMilliseconds<sup>20+</sup>
 
-getMilliseconds(): number
+public getMilliseconds(): number
 
 Obtains the timestamp of the time zone transition point.
 
@@ -2358,7 +2358,7 @@ zoneOffsetTransition.getMilliseconds(); // Timestamp of the transition point: 17
 
 ### getOffsetAfter<sup>20+</sup>
 
-getOffsetAfter(): number
+public getOffsetAfter(): number
 
 Obtains the offset after the time zone transition.
 
@@ -2386,7 +2386,7 @@ zoneOffsetTransition.getOffsetAfter(); // Post-transition offset: -28800000
 
 ### getOffsetBefore<sup>20+</sup>
 
-getOffsetBefore(): number
+public getOffsetBefore(): number
 
 Obtains the offset before the time zone transition.
 
