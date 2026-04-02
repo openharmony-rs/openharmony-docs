@@ -10885,3 +10885,431 @@ struct ConvertPositionWithWindow {
   }
 }
 ```
+
+## BlankFrameNode<sup>23+</sup>
+
+BlankFrameNode继承自[TypedFrameNode](#typedframenode12)，用于声明[Blank](./arkui-ts/ts-basic-components-blank.md)类型的FrameNode
+
+### getTextAttribute<sup>24+</sup>
+
+export function getTextAttribute(node: FrameNode): TextAttribute | undefined
+
+获取Text类型的FrameNode的文本属性TextAttribute。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| --- | --- | --- | --- |
+| node | [FrameNode](#framenode-1) | 是 | 被提取属性的TextNode。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| TextAttribute \| undefined | 若node为合法的文本节点，则返回其文本属性对象，否则返回undefined。   |
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, NodeContainer, Text, FrameNode, Color, ColumnOptions, UIContext } from '@kit.ArkUI';
+import { NodeController } from 'arkui.NodeController';
+import { typeNode } from 'arkui.FrameNode';
+
+class TextNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+
+    let col = typeNode.createColumnNode(uiContext);
+    col.initialize({ space: 5 } as ColumnOptions);
+    node.appendChild(col);
+
+    let text = typeNode.createTextNode(uiContext);
+    text.initialize("Hello");
+    typeNode.getTextAttribute(text)?.fontColor(Color.Red)
+    col.appendChild(text);
+
+    let text2 = typeNode.createTextNode(uiContext);
+    text2.initialize("world");
+    col.appendChild(text2);
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private textNodeController: TextNodeController = new TextNodeController();
+
+  build() {
+    Column(undefined) {
+      NodeContainer(this.textNodeController);
+    }
+    .height("100%")
+    .width("100%")
+  }
+}
+```
+
+![image](figures/getTextAttribute_static.jpg)
+
+### bindTextController<sup>24+</sup>
+
+export function bindTextController(node: FrameNode, controller: TextController): void
+
+将TextController绑定到指定的文本节点上。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| --- | --- | --- | --- |
+| node | [FrameNode](#framenode-1) | 是 | 被绑定控制器的文本节点。|
+| controller | [TextController](./arkui-ts/ts-basic-components-text.md#textcontroller11) | 是 | 文本控制器。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
+| 100021   | The FrameNode is not modifiable. |
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, NodeContainer, Text, TextController, FrameNode, ColumnOptions, UIContext } from '@kit.ArkUI';
+import { NodeController } from 'arkui.NodeController';
+import { typeNode } from 'arkui.FrameNode';
+
+class TextNodeController extends NodeController {
+  controller: TextController = new TextController();
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+
+    let col = typeNode.createColumnNode(uiContext);
+    col.initialize({ space: 5 } as ColumnOptions);
+    node.appendChild(col);
+
+    let text = typeNode.createTextNode(uiContext);
+    text.initialize("Hello world!");
+    col.appendChild(text);
+    typeNode.bindTextController(text, this.controller);
+
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private textNodeController: TextNodeController = new TextNodeController();
+
+  build() {
+    Column(undefined) {
+      NodeContainer(this.textNodeController);
+    }
+    .height("100%")
+    .width("100%")
+  }
+}
+```
+
+![image](figures/bindTextController_static.jpg)
+
+### getTextInputAttribute<sup>24+</sup>
+
+export function getTextInputAttribute(node: FrameNode): TextInputAttribute | undefined
+
+获取[TextInput](#textinput12)类型的[FrameNode](#framenode-1)文本输入框的文本属性[TextInputAttribute](./arkui-ts/ts-basic-components-textinput.md#属性)。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| --- | --- | --- | --- |
+| node | [FrameNode](#framenode-1) | 是 | 被提取属性的TextInputNode。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| TextInputAttribute \| undefined | 若node为合法的文本节点，则返回其文本属性对象，否则返回undefined。|
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, NodeContainer, TextInput, FrameNode, Color, ColumnOptions, UIContext } from '@kit.ArkUI';
+import { NodeController } from 'arkui.NodeController';
+import { typeNode } from 'arkui.FrameNode';
+
+class TextNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+
+    let col = typeNode.createColumnNode(uiContext);
+    col.initialize({ space: 5 } as ColumnOptions);
+    node.appendChild(col);
+
+    let text = typeNode.createTextInputNode(uiContext);
+    text.initialize({ text: "Hello" });
+    typeNode.getTextInputAttribute(text)?.fontColor(Color.Red)
+    col.appendChild(text);
+
+    let text2 = typeNode.createTextInputNode(uiContext);
+    text2.initialize({ text: "world" });
+    col.appendChild(text2);
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private textNodeController: TextNodeController = new TextNodeController();
+
+  build() {
+    Column(undefined) {
+      NodeContainer(this.textNodeController);
+    }
+    .height("100%")
+    .width("100%")
+  }
+}
+```
+
+![image](figures/getTextInputAttribute_static.jpg)
+
+### bindTextInputController<sup>24+</sup>
+
+export function bindTextInputController(node: FrameNode, controller: TextInputController): void
+
+将TextInputController绑定到指定的文本输入框节点上。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| --- | --- | --- | --- |
+| node | [FrameNode](#framenode-1) | 是 | 被绑定控制器的文本节点。|
+| controller | [TextInputController](./arkui-ts/ts-basic-components-textinput.md#textinputcontroller8) | 是 | 文本控制器。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
+| 100021   | The FrameNode is not modifiable. |
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, NodeContainer, TextInput, TextInputController, FrameNode, Color, ColumnOptions, UIContext } from '@kit.ArkUI';
+import { NodeController } from 'arkui.NodeController';
+import { typeNode } from 'arkui.FrameNode';
+
+class TextNodeController extends NodeController {
+  controller: TextInputController = new TextInputController();
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+
+    let col = typeNode.createColumnNode(uiContext);
+    col.initialize({ space: 5 } as ColumnOptions);
+    node.appendChild(col);
+
+    let text = typeNode.createTextInputNode(uiContext);
+    text.initialize({ text: "Hello world!" });
+    typeNode.bindTextInputController(text, this.controller);
+    col.appendChild(text);
+
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private textNodeController: TextNodeController = new TextNodeController();
+
+  build() {
+    Column(undefined) {
+      NodeContainer(this.textNodeController);
+    }
+    .height("100%")
+    .width("100%")
+  }
+}
+```
+
+![image](figures/bindTextInputController_static.jpg)
+
+### getTextAreaAttribute<sup>24+</sup>
+
+export function getTextAreaAttribute(node: FrameNode): TextAreaAttribute | undefined
+
+获取TextArea类型的FrameNode多行文本输入框的文本属性TextAreaAttribute。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| --- | --- | --- | --- |
+| node | [FrameNode](#framenode-1) | 是 | 被提取属性的TextAreaNode。|
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| TextAreaAttribute \| undefined | 若node为合法的文本节点，则返回其文本属性对象，否则返回undefined。 |
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, NodeContainer, TextArea, FrameNode, Color, ColumnOptions, UIContext } from '@kit.ArkUI';
+import { NodeController } from 'arkui.NodeController';
+import { typeNode } from 'arkui.FrameNode';
+
+class TextNodeController extends NodeController {
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+
+    let col = typeNode.createColumnNode(uiContext);
+    col.initialize({ space: 5 } as ColumnOptions);
+    node.appendChild(col);
+
+    let text = typeNode.createTextAreaNode(uiContext);
+    text.initialize({ text: "Hello" });
+    typeNode.getTextAreaAttribute(text)?.fontColor(Color.Red);
+    col.appendChild(text);
+
+    let text2 = typeNode.createTextAreaNode(uiContext);
+    text2.initialize({ text: "world!" });
+    col.appendChild(text2);
+
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private textNodeController: TextNodeController = new TextNodeController();
+
+  build() {
+    Column(undefined) {
+      NodeContainer(this.textNodeController);
+    }
+    .height("100%")
+    .width("100%")
+  }
+}
+```
+
+![image](figures/getTextAreaAttribute_static.jpg)
+
+### bindTextAreaController<sup>24+</sup>
+
+export function bindTextAreaController(node: FrameNode, controller: TextAreaController): void
+
+将TextAreaController绑定到指定的多行文本输入框节点上。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明  |
+| --- | --- | --- | --- |
+| node | [FrameNode](#framenode-1) | 是 | 被绑定控制器的文本节点。|
+| controller | [TextAreaController](./arkui-ts/ts-basic-components-textarea.md#textareacontroller8) | 是 | 文本控制器。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[自定义节点错误码](./errorcode-node.md)。
+
+| 错误码ID | 错误信息                         |
+| -------- | -------------------------------- |
+| 100023   | Parameter error. Possible causes: 1. The component type of the node is incorrect. 2. The node is null or undefined. 3. The controller is null or undefined. |
+| 100021   | The FrameNode is not modifiable. |
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, Button, NodeContainer, TextArea, TextAreaController, FrameNode, Color, ColumnOptions, UIContext } from '@kit.ArkUI';
+import { NodeController } from 'arkui.NodeController';
+import { typeNode } from 'arkui.FrameNode';
+
+class TextNodeController extends NodeController {
+  controller: TextAreaController = new TextAreaController();
+
+  makeNode(uiContext: UIContext): FrameNode | null {
+    let node = new FrameNode(uiContext);
+
+    let col = typeNode.createColumnNode(uiContext);
+    col.initialize({ space: 5 } as ColumnOptions);
+    node.appendChild(col);
+
+    let text = typeNode.createTextAreaNode(uiContext);
+    text.initialize({ text: "Hello world!" });
+    typeNode.bindTextAreaController(text, this.controller);
+    col.appendChild(text);
+
+    return node;
+  }
+}
+
+@Entry
+@Component
+struct FrameNodeTypeTest {
+  private textNodeController: TextNodeController = new TextNodeController();
+
+  build() {
+    Column(undefined) {
+      NodeContainer(this.textNodeController);
+    }
+    .height("100%")
+    .width("100%")
+  }
+}
+```
+
+![image](figures/bindTextAreaController_static.jpg)

@@ -1431,3 +1431,25 @@ off(type: 'tabContentUpdate', options: ObserverOptions, callback?: Callback\<Tab
 **示例：**
 
 参考[uiObserver.on('tabContentUpdate')](#uiobserverontabcontentupdate12-1)接口示例。
+
+## TextChangeEventInfo<sup>22+</sup>
+
+触发监听文本内容变化的回调函数时传递的参数。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
+| 名称 | 类型 | 只读    | 可选    | 说明 |
+| --- | --- | --- | --- | --- |
+| id | string | 否 | 否 | 文本组件的ID字符串。|
+| uniqueId | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 文本组件的唯一性ID。|
+| content | string | 否 | 否 | 当前文本组件的文本内容。|
+
+**示例：**
+
+请参考[onTextChange](./arkts-apis-uicontext-uicontext.md#ontextchange24)的示例。
