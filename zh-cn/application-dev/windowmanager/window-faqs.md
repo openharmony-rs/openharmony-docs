@@ -654,7 +654,7 @@ windowClass.loadContent("pages/page2", storage, (err: BusinessError) => {
 
 当前不支持设置页面级亮度，仅支持设置窗口级亮度。
 
-应用若想实现页面级亮度调整，可以在进入特定页面时在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)调整亮度，在退出特定页面时，在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，恢复成系统屏幕亮度。
+应用若想实现页面级亮度调整，可以在进入特定页面时在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)调整亮度，在退出特定页面时，在主窗调用[setWindowBrightness()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowbrightness9-1)传入-1，恢复为系统屏幕亮度。
 
 ## 如何恢复系统屏幕亮度
 
