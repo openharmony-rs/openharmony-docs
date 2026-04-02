@@ -27,11 +27,11 @@ web组件不跟随转场动画。一个页面仅支持一个web组件。
 ## 事件
 仅支持如下事件：
 
-| 名称 | 参数 | 描述                                                                                                                                          |
-| -------- |  -------- |---------------------------------------------------------------------------------------------------------------------------------------------|
-| pagestart      | {url: string} | 加载网页时触发。                                                                                                                                    |
-| pagefinish  | {url: string} | 网页加载结束时触发。                                                                                                                                  |
-| error  | {url: string, errorCode: number, description: string} | 加载网页出现错误时触发或打开网页出错时触发。错误码的详细介绍请参见[Webview错误码](../../apis-arkweb/errorcode-webview.md)、[通用错误码](../../../apis-arkweb/errorcode-universal.md)。 |
+| 名称 | 参数 | 描述                                                                                                                                 |
+| -------- |  -------- |------------------------------------------------------------------------------------------------------------------------------------|
+| pagestart      | {url: string} | 加载网页时触发。                                                                                                                           |
+| pagefinish  | {url: string} | 网页加载结束时触发。                                                                                                                         |
+| error  | {url: string, errorCode: number, description: string} | 加载网页出现错误时触发或打开网页出错时触发。错误码的详细介绍请参见[Webview错误码](../../apis-arkweb/errorcode-webview.md)、[通用错误码](../../../../errorcode-universal.md)。 |
 
 ## 方法
 仅支持如下方法：
