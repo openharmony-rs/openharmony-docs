@@ -15,7 +15,7 @@
 ## 导入模块
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 ```
 
 ## 使用说明
@@ -67,7 +67,7 @@ stat(file: string | number): Promise&lt;Stat&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.stat(filePath).then((stat: fs.Stat) => {
+  fileIo.stat(filePath).then((stat: fileIo.Stat) => {
     console.info("get file info succeed, the size of file is " + stat.size);
   }).catch((err: BusinessError) => {
     console.error("get file info failed with error message: " + err.message + ", error code: " + err.code);
@@ -99,7 +99,7 @@ stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  fs.stat(pathDir, (err: BusinessError, stat: fs.Stat) => {
+  fileIo.stat(pathDir, (err: BusinessError, stat: fileIo.Stat) => {
     if (err) {
       console.error("get file info failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -137,7 +137,7 @@ statSync(file: string | number): Stat
 **示例：**
 
   ```ts
-  let stat = fs.statSync(pathDir);
+  let stat = fileIo.statSync(pathDir);
   console.info("get file info succeed, the size of file is " + stat.size);
   ```
 
@@ -174,7 +174,7 @@ access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.access(filePath).then((res: boolean) => {
+  fileIo.access(filePath).then((res: boolean) => {
     if (res) {
       console.info("file exists");
     } else {
@@ -216,7 +216,7 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.access(filePath, fs.AccessModeType.EXIST, fs.AccessFlagType.LOCAL).then((res: boolean) => {
+  fileIo.access(filePath, fileIo.AccessModeType.EXIST, fileIo.AccessFlagType.LOCAL).then((res: boolean) => {
     if (res) {
       console.info("file exists");
     } else {
@@ -254,7 +254,7 @@ access(path: string, callback: AsyncCallback&lt;boolean&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.access(filePath, (err: BusinessError, res: boolean) => {
+  fileIo.access(filePath, (err: BusinessError, res: boolean) => {
     if (err) {
       console.error("access failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -300,7 +300,7 @@ accessSync(path: string, mode?: AccessModeType): boolean
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
   try {
-    let res = fs.accessSync(filePath);
+    let res = fileIo.accessSync(filePath);
     if (res) {
       console.info("file exists");
     } else {
@@ -344,7 +344,7 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
   try {
-    let res = fs.accessSync(filePath, fs.AccessModeType.EXIST, fs.AccessFlagType.LOCAL);
+    let res = fileIo.accessSync(filePath, fileIo.AccessModeType.EXIST, fileIo.AccessFlagType.LOCAL);
     if (res) {
       console.info("file exists");
     } else {
@@ -387,8 +387,8 @@ close(file: number | File): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath);
-  fs.close(file).then(() => {
+  let file = fileIo.openSync(filePath);
+  fileIo.close(file).then(() => {
     console.info("close file succeed");
   }).catch((err: BusinessError) => {
     console.error("close file failed with error message: " + err.message + ", error code: " + err.code);
@@ -421,8 +421,8 @@ close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath);
-  fs.close(file, (err: BusinessError) => {
+  let file = fileIo.openSync(filePath);
+  fileIo.close(file, (err: BusinessError) => {
     if (err) {
       console.error("close file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -455,8 +455,8 @@ closeSync(file: number | File): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath);
-  fs.closeSync(file);
+  let file = fileIo.openSync(filePath);
+  fileIo.closeSync(file);
   ```
 
 ## fileIo.copy<sup>11+</sup>
@@ -491,7 +491,6 @@ copy(srcUri: string, destUri: string, options?: CopyOptions): Promise\<void>
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
@@ -501,14 +500,14 @@ let dstDirPathLocal: string = pathDir + "/dest";
 let srcDirUriLocal: string = fileUri.getUriFromPath(srcDirPathLocal);
 let dstDirUriLocal: string = fileUri.getUriFromPath(dstDirPathLocal);
 
-let progressListener: fs.ProgressListener = (progress: fs.Progress) => {
+let progressListener: fileIo.ProgressListener = (progress: fileIo.Progress) => {
   console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
 };
-let copyOption: fs.CopyOptions = {
+let copyOption: fileIo.CopyOptions = {
   "progressListener" : progressListener
 }
 try {
-  fs.copy(srcDirUriLocal, dstDirUriLocal, copyOption).then(()=>{
+  fileIo.copy(srcDirUriLocal, dstDirUriLocal, copyOption).then(()=>{
     console.info("Succeeded in copying.");
   }).catch((err: BusinessError)=>{
     console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
@@ -554,7 +553,7 @@ let srcDirUriLocal: string = fileUri.getUriFromPath(srcDirPathLocal);
 let dstDirUriLocal: string = fileUri.getUriFromPath(dstDirPathLocal);
 
 try {
-  fs.copy(srcDirUriLocal, dstDirUriLocal, (err: BusinessError) => {
+  fileIo.copy(srcDirUriLocal, dstDirUriLocal, (err: BusinessError) => {
     if (err) {
       console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -593,7 +592,6 @@ copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallb
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
@@ -604,13 +602,13 @@ let srcDirUriLocal: string = fileUri.getUriFromPath(srcDirPathLocal);
 let dstDirUriLocal: string = fileUri.getUriFromPath(dstDirPathLocal);
 
 try {
-  let progressListener: fs.ProgressListener = (progress: fs.Progress) => {
+  let progressListener: fileIo.ProgressListener = (progress: fileIo.Progress) => {
     console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
   };
-  let copyOption: fs.CopyOptions = {
+  let copyOption: fileIo.CopyOptions = {
     "progressListener" : progressListener
   }
-  fs.copy(srcDirUriLocal, dstDirUriLocal, copyOption, (err: BusinessError) => {
+  fileIo.copy(srcDirUriLocal, dstDirUriLocal, copyOption, (err: BusinessError) => {
     if (err) {
       console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -656,7 +654,7 @@ copyFile(src: string | number, dest: string | number, mode?: number): Promise&lt
   import { BusinessError } from '@kit.BasicServicesKit';
   let srcPath = pathDir + "/srcDir/test.txt";
   let dstPath = pathDir + "/dstDir/test.txt";
-  fs.copyFile(srcPath, dstPath, 0).then(() => {
+  fileIo.copyFile(srcPath, dstPath, 0).then(() => {
     console.info("copy file succeed");
   }).catch((err: BusinessError) => {
     console.error("copy file failed with error message: " + err.message + ", error code: " + err.code);
@@ -692,7 +690,7 @@ copyFile(src: string | number, dest: string | number, mode: number, callback: As
   import { BusinessError } from '@kit.BasicServicesKit';
   let srcPath = pathDir + "/srcDir/test.txt";
   let dstPath = pathDir + "/dstDir/test.txt";
-  fs.copyFile(srcPath, dstPath, 0, (err: BusinessError) => {
+  fileIo.copyFile(srcPath, dstPath, 0, (err: BusinessError) => {
     if (err) {
       console.error("copy file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -729,7 +727,7 @@ copyFile(src: string | number, dest: string | number, callback: AsyncCallback&lt
   import { BusinessError } from '@kit.BasicServicesKit';
   let srcPath = pathDir + "/srcDir/test.txt";
   let dstPath = pathDir + "/dstDir/test.txt";
-  fs.copyFile(srcPath, dstPath, (err: BusinessError) => {
+  fileIo.copyFile(srcPath, dstPath, (err: BusinessError) => {
     if (err) {
       console.error("copy file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -766,7 +764,7 @@ copyFileSync(src: string | number, dest: string | number, mode?: number): void
   ```ts
   let srcPath = pathDir + "/srcDir/test.txt";
   let dstPath = pathDir + "/dstDir/test.txt";
-  fs.copyFileSync(srcPath, dstPath);
+  fileIo.copyFileSync(srcPath, dstPath);
   ```
 
 ## fileIo.copyDir<sup>10+</sup>
@@ -802,7 +800,7 @@ copyDir(src: string, dest: string, mode?: number): Promise\<void>
   // copy directory from srcPath to destPath
   let srcPath = pathDir + "/srcDir/";
   let destPath = pathDir + "/destDir/";
-  fs.copyDir(srcPath, destPath, 0).then(() => {
+  fileIo.copyDir(srcPath, destPath, 0).then(() => {
     console.info("copy directory succeed");
   }).catch((err: BusinessError) => {
     console.error("copy directory failed with error message: " + err.message + ", error code: " + err.code);
@@ -834,11 +832,11 @@ copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, ConflictFiles } from '@kit.CoreFileKit';
+  import { ConflictFiles } from '@kit.CoreFileKit';
   // copy directory from srcPath to destPath
   let srcPath = pathDir + "/srcDir/";
   let destPath = pathDir + "/destDir/";
-  fs.copyDir(srcPath, destPath, 0, (err: BusinessError<Array<ConflictFiles>>) => {
+  fileIo.copyDir(srcPath, destPath, 0, (err: BusinessError<Array<ConflictFiles>>) => {
     if (err && err.code == 13900015 && err.data?.length !== undefined) {
       for (let i = 0; i < err.data.length; i++) {
         console.error("copy directory failed with conflicting files: " + err.data[i].srcFile + " " + err.data[i].destFile);
@@ -877,11 +875,11 @@ copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, ConflictFiles } from '@kit.CoreFileKit';
+  import { ConflictFiles } from '@kit.CoreFileKit';
   // copy directory from srcPath to destPath
   let srcPath = pathDir + "/srcDir/";
   let destPath = pathDir + "/destDir/";
-  fs.copyDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
+  fileIo.copyDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
     if (err && err.code == 13900015 && err.data?.length !== undefined) {
       for (let i = 0; i < err.data.length; i++) {
         console.error("copy directory failed with conflicting files: " + err.data[i].srcFile + " " + err.data[i].destFile);
@@ -922,7 +920,7 @@ copyDirSync(src: string, dest: string, mode?: number): void
   let srcPath = pathDir + "/srcDir/";
   let destPath = pathDir + "/destDir/";
   try {
-    fs.copyDirSync(srcPath, destPath, 0);
+    fileIo.copyDirSync(srcPath, destPath, 0);
     console.info("copy directory succeed");
   } catch (error) {
     let err: BusinessError = error as BusinessError;
@@ -958,12 +956,12 @@ dup(fd: number): File
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file1 = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  let file1 = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   let fd: number = file1.fd;
-  let file2 = fs.dup(fd);
+  let file2 = fileIo.dup(fd);
   console.info("The name of the file2 is " + file2.name);
-  fs.closeSync(file1);
-  fs.closeSync(file2);
+  fileIo.closeSync(file1);
+  fileIo.closeSync(file2);
   ```
 
 ## fileIo.connectDfs<sup>12+</sup>
@@ -997,19 +995,18 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   let dmInstance = distributedDeviceManager.createDeviceManager("com.example.filesync");
   let deviceInfoList: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
   if (deviceInfoList && deviceInfoList.length > 0) {
     console.info(`Success to get available device list`);
     let networkId = deviceInfoList[0].networkId;
-    let listeners: fs.DfsListeners = {
+    let listeners: fileIo.DfsListeners = {
       onStatus(networkId, status) {
         console.info('onStatus');
       }
     };
-    fs.connectDfs(networkId, listeners).then(() => {
+    fileIo.connectDfs(networkId, listeners).then(() => {
       console.info("Success to connectDfs");
     }).catch((err: BusinessError) => {
       console.error(`Failed to connectDfs. Code: ${err.code}, message: ${err.message}`);
@@ -1047,14 +1044,13 @@ disconnectDfs(networkId: string): Promise&lt;void&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs } from '@kit.CoreFileKit';
   import { distributedDeviceManager } from '@kit.DistributedServiceKit';
   let dmInstance = distributedDeviceManager.createDeviceManager("com.example.filesync");
   let deviceInfoList: Array<distributedDeviceManager.DeviceBasicInfo> = dmInstance.getAvailableDeviceListSync();
   if (deviceInfoList && deviceInfoList.length > 0) {
     console.info(`Success to get available device list`);
     let networkId = deviceInfoList[0].networkId;
-    fs.disconnectDfs(networkId).then(() => {
+    fileIo.disconnectDfs(networkId).then(() => {
       console.info("Success to disconnect dfs");
     }).catch((err: BusinessError) => {
       console.error(`Failed to disconnect dfs. Code: ${err.code}, message: ${err.message}`);
@@ -1097,7 +1093,7 @@ setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
   let attrKey = "user.comment";
   let attrValue = "Test file.";
 
-  fs.setxattr(filePath, attrKey, attrValue).then(() => {
+  fileIo.setxattr(filePath, attrKey, attrValue).then(() => {
     console.info("Set extended attribute successfully.");
   }).catch((err: BusinessError) => {
     console.error("Failed to set extended attribute with error message: " + err.message + ", error code: " + err.code);
@@ -1134,7 +1130,7 @@ setxattrSync(path: string, key: string, value: string): void
   let attrValue = "Test file.";
 
   try {
-    fs.setxattrSync(filePath, attrKey, attrValue);
+    fileIo.setxattrSync(filePath, attrKey, attrValue);
     console.info("Set extended attribute successfully.");
   } catch (err) {
     console.error("Failed to set extended attribute with error message: " + err.message + ", error code: " + err.code);
@@ -1175,7 +1171,7 @@ getxattr(path: string, key: string): Promise&lt;string&gt;
   let filePath = pathDir + "/test.txt";
   let attrKey = "user.comment";
 
-  fs.getxattr(filePath, attrKey).then((attrValue: string) => {
+  fileIo.getxattr(filePath, attrKey).then((attrValue: string) => {
     console.info("Get extended attribute succeed, the value is: " + attrValue);
   }).catch((err: BusinessError) => {
     console.error("Failed to get extended attribute with error message: " + err.message + ", error code: " + err.code);
@@ -1217,7 +1213,7 @@ getxattrSync(path: string, key: string): string
   let attrKey = "user.comment";
 
   try {
-    let attrValue = fs.getxattrSync(filePath, attrKey);
+    let attrValue = fileIo.getxattrSync(filePath, attrKey);
     console.info("Get extended attribute succeed, the value is: " + attrValue);
   } catch (err) {
     console.error("Failed to get extended attribute with error message: " + err.message + ", error code: " + err.code);
@@ -1256,7 +1252,7 @@ mkdir(path: string): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir";
-  fs.mkdir(dirPath).then(() => {
+  fileIo.mkdir(dirPath).then(() => {
     console.info("mkdir succeed");
   }).catch((err: BusinessError) => {
     console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
@@ -1295,7 +1291,7 @@ mkdir(path: string, recursion: boolean): Promise\<void>
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir1/testDir2/testDir3";
-  fs.mkdir(dirPath, true).then(() => {
+  fileIo.mkdir(dirPath, true).then(() => {
     console.info("mkdir succeed");
   }).catch((err: BusinessError) => {
     console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
@@ -1328,7 +1324,7 @@ mkdir(path: string, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir";
-  fs.mkdir(dirPath, (err: BusinessError) => {
+  fileIo.mkdir(dirPath, (err: BusinessError) => {
     if (err) {
       console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -1364,7 +1360,7 @@ mkdir(path: string, recursion: boolean, callback: AsyncCallback&lt;void&gt;): vo
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir1/testDir2/testDir3";
-  fs.mkdir(dirPath, true, (err: BusinessError) => {
+  fileIo.mkdir(dirPath, true, (err: BusinessError) => {
     if (err) {
       console.error("mkdir failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -1397,7 +1393,7 @@ mkdirSync(path: string): void
 
   ```ts
   let dirPath = pathDir + "/testDir";
-  fs.mkdirSync(dirPath);
+  fileIo.mkdirSync(dirPath);
   ```
 
 ## fileIo.mkdirSync<sup>11+</sup>
@@ -1425,7 +1421,7 @@ mkdirSync(path: string, recursion: boolean): void
 
   ```ts
   let dirPath = pathDir + "/testDir1/testDir2/testDir3";
-  fs.mkdirSync(dirPath, true);
+  fileIo.mkdirSync(dirPath, true);
   ```
 
 ## fileIo.open
@@ -1460,9 +1456,9 @@ open(path: string, mode?: number): Promise&lt;File&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE).then((file: fs.File) => {
+  fileIo.open(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE).then((file: fileIo.File) => {
     console.info("file fd: " + file.fd);
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   }).catch((err: BusinessError) => {
     console.error("open file failed with error message: " + err.message + ", error code: " + err.code);
   });
@@ -1498,12 +1494,12 @@ open(path: string, mode: number, callback: AsyncCallback&lt;File&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE, (err: BusinessError, file: fs.File) => {
+  fileIo.open(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE, (err: BusinessError, file: fileIo.File) => {
     if (err) {
       console.error("open failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       console.info("file fd: " + file.fd);
-      fs.closeSync(file);
+      fileIo.closeSync(file);
     }
   });
   ```
@@ -1534,12 +1530,12 @@ open(path: string, callback: AsyncCallback&lt;File&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.open(filePath, (err: BusinessError, file: fs.File) => {
+  fileIo.open(filePath, (err: BusinessError, file: fileIo.File) => {
     if (err) {
       console.error("open failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       console.info("file fd: " + file.fd);
-      fs.closeSync(file);
+      fileIo.closeSync(file);
     }
   });
   ```
@@ -1575,9 +1571,9 @@ openSync(path: string, mode?: number): File
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   console.info("file fd: " + file.fd);
-  fs.closeSync(file);
+  fileIo.closeSync(file);
   ```
 
 ## fileIo.read
@@ -1614,16 +1610,16 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   let arrayBuffer = new ArrayBuffer(4096);
-  fs.read(file.fd, arrayBuffer).then((readLen: number) => {
+  fileIo.read(file.fd, arrayBuffer).then((readLen: number) => {
     console.info("read file data succeed");
     let buf = buffer.from(arrayBuffer, 0, readLen);
     console.info(`The content of file: ${buf.toString()}`);
   }).catch((err: BusinessError) => {
     console.error("read file data failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -1656,9 +1652,9 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCall
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   let arrayBuffer = new ArrayBuffer(4096);
-  fs.read(file.fd, arrayBuffer, (err: BusinessError, readLen: number) => {
+  fileIo.read(file.fd, arrayBuffer, (err: BusinessError, readLen: number) => {
     if (err) {
       console.error("read failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -1666,7 +1662,7 @@ read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCall
       let buf = buffer.from(arrayBuffer, 0, readLen);
       console.info(`The content of file: ${buf.toString()}`);
     }
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -1702,10 +1698,10 @@ readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE);
   let buf = new ArrayBuffer(4096);
-  fs.readSync(file.fd, buf);
-  fs.closeSync(file);
+  fileIo.readSync(file.fd, buf);
+  fileIo.closeSync(file);
   ```
 
 ## fileIo.rmdir
@@ -1743,7 +1739,7 @@ rmdir(path: string): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir";
-  fs.rmdir(dirPath).then(() => {
+  fileIo.rmdir(dirPath).then(() => {
     console.info("rmdir succeed");
   }).catch((err: BusinessError) => {
     console.error("rmdir failed with error message: " + err.message + ", error code: " + err.code);
@@ -1780,7 +1776,7 @@ rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let dirPath = pathDir + "/testDir";
-  fs.rmdir(dirPath, (err: BusinessError) => {
+  fileIo.rmdir(dirPath, (err: BusinessError) => {
     if (err) {
       console.error("rmdir failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -1817,7 +1813,7 @@ rmdirSync(path: string): void
 
   ```ts
   let dirPath = pathDir + "/testDir";
-  fs.rmdirSync(dirPath);
+  fileIo.rmdirSync(dirPath);
   ```
 
 ## fileIo.unlink
@@ -1851,7 +1847,7 @@ unlink(path: string): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.unlink(filePath).then(() => {
+  fileIo.unlink(filePath).then(() => {
     console.info("remove file succeed");
   }).catch((err: BusinessError) => {
     console.error("remove file failed with error message: " + err.message + ", error code: " + err.code);
@@ -1884,7 +1880,7 @@ unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.unlink(filePath, (err: BusinessError) => {
+  fileIo.unlink(filePath, (err: BusinessError) => {
     if (err) {
       console.error("remove file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -1917,7 +1913,7 @@ unlinkSync(path: string): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  fs.unlinkSync(filePath);
+  fileIo.unlinkSync(filePath);
   ```
 
 
@@ -1954,14 +1950,14 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): Promise
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   let str: string = "hello, world";
-  fs.write(file.fd, str).then((writeLen: number) => {
+  fileIo.write(file.fd, str).then((writeLen: number) => {
     console.info("write data to file succeed and size is:" + writeLen);
   }).catch((err: BusinessError) => {
     console.error("write data to file failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -1993,15 +1989,15 @@ write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions, callback
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   let str: string = "hello, world";
-  fs.write(file.fd, str, (err: BusinessError, writeLen: number) => {
+  fileIo.write(file.fd, str, (err: BusinessError, writeLen: number) => {
     if (err) {
       console.error("write data to file failed with error message:" + err.message + ", error code: " + err.code);
     } else {
       console.info("write data to file succeed and size is:" + writeLen);
     }
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -2037,11 +2033,11 @@ writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): num
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   let str: string = "hello, world";
-  let writeLen = fs.writeSync(file.fd, str);
+  let writeLen = fileIo.writeSync(file.fd, str);
   console.info("write data to file succeed and size is:" + writeLen);
-  fs.closeSync(file);
+  fileIo.closeSync(file);
   ```
 
 ## fileIo.truncate
@@ -2077,7 +2073,7 @@ truncate(file: string | number, len?: number): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
   let len: number = 5;
-  fs.truncate(filePath, len).then(() => {
+  fileIo.truncate(filePath, len).then(() => {
     console.info("truncate file succeed");
   }).catch((err: BusinessError) => {
     console.error("truncate file failed with error message: " + err.message + ", error code: " + err.code);
@@ -2112,7 +2108,7 @@ truncate(file: string | number, len?: number, callback: AsyncCallback&lt;void&gt
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
   let len: number = 5;
-  fs.truncate(filePath, len, (err: BusinessError) => {
+  fileIo.truncate(filePath, len, (err: BusinessError) => {
     if (err) {
       console.error("truncate failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -2147,7 +2143,7 @@ truncateSync(file: string | number, len?: number): void
   ```ts
   let filePath = pathDir + "/test.txt";
   let len: number = 5;
-  fs.truncateSync(filePath, len);
+  fileIo.truncateSync(filePath, len);
   ```
 
 ## fileIo.readLines<sup>11+</sup>
@@ -2179,12 +2175,12 @@ readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, Options } from '@kit.CoreFileKit';
+  import { Options } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
   let options: Options = {
     encoding: 'utf-8'
   };
-  fs.readLines(filePath, options).then((readerIterator: fs.ReaderIterator) => {
+  fileIo.readLines(filePath, options).then((readerIterator: fileIo.ReaderIterator) => {
     for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
       console.info("content: " + it.value);
     }
@@ -2217,12 +2213,12 @@ readLines(filePath: string, options?: Options, callback: AsyncCallback&lt;Reader
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, Options } from '@kit.CoreFileKit';
+  import { Options } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
   let options: Options = {
     encoding: 'utf-8'
   };
-  fs.readLines(filePath, options, (err: BusinessError, readerIterator: fs.ReaderIterator) => {
+  fileIo.readLines(filePath, options, (err: BusinessError, readerIterator: fileIo.ReaderIterator) => {
     if (err) {
       console.error("readLines failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -2261,12 +2257,12 @@ readLinesSync(filePath: string, options?: Options): ReaderIterator
 **示例：**
 
   ```ts
-  import { fileIo as fs, Options } from '@kit.CoreFileKit';
+  import { Options } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
   let options: Options = {
     encoding: 'utf-8'
   };
-  let readerIterator = fs.readLinesSync(filePath, options);
+  let readerIterator = fileIo.readLinesSync(filePath, options);
   for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
     console.info("content: " + it.value);
   }
@@ -2302,12 +2298,12 @@ next(): ReaderIteratorResult
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, Options } from '@kit.CoreFileKit';
+  import { Options } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
   let options: Options = {
     encoding: 'utf-8'
   };
-  fs.readLines(filePath, options).then((readerIterator: fs.ReaderIterator) => {
+  fileIo.readLines(filePath, options).then((readerIterator: fileIo.ReaderIterator) => {
     for (let it = readerIterator.next(); !it.done; it = readerIterator.next()) {
       console.info("content: " + it.value);
     }
@@ -2359,7 +2355,7 @@ readText(filePath: string, options?: ReadTextOptions): Promise&lt;string&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.readText(filePath).then((str: string) => {
+  fileIo.readText(filePath).then((str: string) => {
     console.info("readText succeed:" + str);
   }).catch((err: BusinessError) => {
     console.error("readText failed with error message: " + err.message + ", error code: " + err.code);
@@ -2392,15 +2388,15 @@ readText(filePath: string, options?: ReadTextOptions, callback: AsyncCallback&lt
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, ReadTextOptions } from '@kit.CoreFileKit';
+  import { ReadTextOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let stat = fs.statSync(filePath);
+  let stat = fileIo.statSync(filePath);
   let readTextOption: ReadTextOptions = {
       offset: 1,
       length: stat.size,
       encoding: 'utf-8'
   };
-  fs.readText(filePath, readTextOption, (err: BusinessError, str: string) => {
+  fileIo.readText(filePath, readTextOption, (err: BusinessError, str: string) => {
     if (err) {
       console.error("readText failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -2439,16 +2435,16 @@ readTextSync(filePath: string, options?: ReadTextOptions): string
 **示例：**
 
   ```ts
-  import { fileIo as fs, ReadTextOptions } from '@kit.CoreFileKit';
+  import { ReadTextOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
   let readTextOptions: ReadTextOptions = {
     offset: 1,
     length: 0,
     encoding: 'utf-8'
   };
-  let stat = fs.statSync(filePath);
+  let stat = fileIo.statSync(filePath);
   readTextOptions.length = stat.size;
-  let str = fs.readTextSync(filePath, readTextOptions);
+  let str = fileIo.readTextSync(filePath, readTextOptions);
   console.info("readText succeed:" + str);
   ```
 
@@ -2481,7 +2477,7 @@ lstat(path: string): Promise&lt;Stat&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/linkToFile";
-  fs.lstat(filePath).then((stat: fs.Stat) => {
+  fileIo.lstat(filePath).then((stat: fileIo.Stat) => {
     console.info("lstat succeed, the size of file is " + stat.size);
   }).catch((err: BusinessError) => {
     console.error("lstat failed with error message: " + err.message + ", error code: " + err.code);
@@ -2512,7 +2508,7 @@ lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/linkToFile";
-  fs.lstat(filePath, (err: BusinessError, stat: fs.Stat) => {
+  fileIo.lstat(filePath, (err: BusinessError, stat: fileIo.Stat) => {
     if (err) {
       console.error("lstat failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -2549,7 +2545,7 @@ lstatSync(path: string): Stat
 
   ```ts
   let filePath = pathDir + "/linkToFile";
-  let fileStat = fs.lstatSync(filePath);
+  let fileStat = fileIo.lstatSync(filePath);
   console.info("lstat succeed, the size of file is " + fileStat.size);
   ```
 
@@ -2590,7 +2586,7 @@ rename(oldPath: string, newPath: string): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + "/new.txt";
-  fs.rename(srcFile, dstFile).then(() => {
+  fileIo.rename(srcFile, dstFile).then(() => {
     console.info("rename succeed");
   }).catch((err: BusinessError) => {
     console.error("rename failed with error message: " + err.message + ", error code: " + err.code);
@@ -2629,7 +2625,7 @@ rename(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;): v
   import { BusinessError } from '@kit.BasicServicesKit';
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + "/new.txt";
-  fs.rename(srcFile, dstFile, (err: BusinessError) => {
+  fileIo.rename(srcFile, dstFile, (err: BusinessError) => {
     if (err) {
       console.error("rename failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -2668,7 +2664,7 @@ renameSync(oldPath: string, newPath: string): void
   ```ts
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + "/new.txt";
-  fs.renameSync(srcFile, dstFile);
+  fileIo.renameSync(srcFile, dstFile);
   ```
 
 ## fileIo.fsync
@@ -2700,13 +2696,13 @@ fsync(fd: number): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath);
-  fs.fsync(file.fd).then(() => {
+  let file = fileIo.openSync(filePath);
+  fileIo.fsync(file.fd).then(() => {
     console.info("sync data succeed");
   }).catch((err: BusinessError) => {
     console.error("sync data failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -2734,14 +2730,14 @@ fsync(fd: number, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath);
-  fs.fsync(file.fd, (err: BusinessError) => {
+  let file = fileIo.openSync(filePath);
+  fileIo.fsync(file.fd, (err: BusinessError) => {
     if (err) {
       console.error("fsync failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       console.info("fsync succeed");
     }
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -2768,9 +2764,9 @@ fsyncSync(fd: number): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath);
-  fs.fsyncSync(file.fd);
-  fs.closeSync(file);
+  let file = fileIo.openSync(filePath);
+  fileIo.fsyncSync(file.fd);
+  fileIo.closeSync(file);
   ```
 
 ## fileIo.fdatasync
@@ -2802,13 +2798,13 @@ fdatasync(fd: number): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath);
-  fs.fdatasync(file.fd).then(() => {
+  let file = fileIo.openSync(filePath);
+  fileIo.fdatasync(file.fd).then(() => {
     console.info("sync data succeed");
   }).catch((err: BusinessError) => {
     console.error("sync data failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -2836,14 +2832,14 @@ fdatasync(fd: number, callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath);
-  fs.fdatasync(file.fd, (err: BusinessError) => {
+  let file = fileIo.openSync(filePath);
+  fileIo.fdatasync(file.fd, (err: BusinessError) => {
     if (err) {
       console.error("fdatasync failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       console.info("fdatasync succeed");
     }
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -2869,9 +2865,9 @@ fdatasyncSync(fd: number): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath);
-  fs.fdatasyncSync(file.fd);
-  fs.closeSync(file);
+  let file = fileIo.openSync(filePath);
+  fileIo.fdatasyncSync(file.fd);
+  fileIo.closeSync(file);
   ```
 
 ## fileIo.symlink
@@ -2909,7 +2905,7 @@ symlink(target: string, srcPath: string): Promise&lt;void&gt;
   import { BusinessError } from '@kit.BasicServicesKit';
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + "/test";
-  fs.symlink(srcFile, dstFile).then(() => {
+  fileIo.symlink(srcFile, dstFile).then(() => {
     console.info("symlink succeed");
   }).catch((err: BusinessError) => {
     console.error("symlink failed with error message: " + err.message + ", error code: " + err.code);
@@ -2946,7 +2942,7 @@ symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): v
   import { BusinessError } from '@kit.BasicServicesKit';
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + "/test";
-  fs.symlink(srcFile, dstFile, (err: BusinessError) => {
+  fileIo.symlink(srcFile, dstFile, (err: BusinessError) => {
     if (err) {
       console.error("symlink failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -2983,7 +2979,7 @@ symlinkSync(target: string, srcPath: string): void
   ```ts
   let srcFile = pathDir + "/test.txt";
   let dstFile = pathDir + "/test";
-  fs.symlinkSync(srcFile, dstFile);
+  fileIo.symlinkSync(srcFile, dstFile);
   ```
 
 ## fileIo.listFile
@@ -3019,7 +3015,7 @@ listFile(path: string, options?: ListFileOptions): Promise<string[]>
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, Filter, ListFileOptions } from '@kit.CoreFileKit';
+  import { Filter, ListFileOptions } from '@kit.CoreFileKit';
   let listFileOption: ListFileOptions = {
     recursion: false,
     listNum: 0,
@@ -3029,7 +3025,7 @@ listFile(path: string, options?: ListFileOptions): Promise<string[]>
       fileSizeOver: 1024
     }
   }
-  fs.listFile(pathDir, listFileOption).then((filenames: Array<string>) => {
+  fileIo.listFile(pathDir, listFileOption).then((filenames: Array<string>) => {
     console.info("listFile succeed");
     for (let i = 0; i < filenames.length; i++) {
       console.info("fileName: %s", filenames[i]);
@@ -3067,7 +3063,7 @@ listFile(path: string, options?: ListFileOptions, callback: AsyncCallback<string
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, Filter, ListFileOptions } from '@kit.CoreFileKit';
+  import { Filter, ListFileOptions } from '@kit.CoreFileKit';
   let listFileOption: ListFileOptions = {
     recursion: false,
     listNum: 0,
@@ -3077,7 +3073,7 @@ listFile(path: string, options?: ListFileOptions, callback: AsyncCallback<string
       fileSizeOver: 1024
     }
   };
-  fs.listFile(pathDir, listFileOption, (err: BusinessError, filenames: Array<string>) => {
+  fileIo.listFile(pathDir, listFileOption, (err: BusinessError, filenames: Array<string>) => {
     if (err) {
       console.error("list file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -3122,7 +3118,7 @@ listFileSync(path: string, options?: ListFileOptions): string[]
 **示例：**
 
   ```ts
-  import { fileIo as fs, Filter, ListFileOptions} from '@kit.CoreFileKit';
+  import { Filter, ListFileOptions} from '@kit.CoreFileKit';
   let listFileOption: ListFileOptions = {
     recursion: false,
     listNum: 0,
@@ -3132,7 +3128,7 @@ listFileSync(path: string, options?: ListFileOptions): string[]
       fileSizeOver: 1024
     }
   };
-  let filenames = fs.listFileSync(pathDir, listFileOption);
+  let filenames = fileIo.listFileSync(pathDir, listFileOption);
   console.info("listFile succeed");
   for (let i = 0; i < filenames.length; i++) {
     console.info("filename: %s", filenames[i]);
@@ -3169,9 +3165,9 @@ lseek(fd: number, offset: number, whence?: WhenceType): number
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  console.info('The current offset is at ' + fs.lseek(file.fd, 5, fs.WhenceType.SEEK_SET));
-  fs.closeSync(file);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  console.info('The current offset is at ' + fileIo.lseek(file.fd, 5, fileIo.WhenceType.SEEK_SET));
+  fileIo.closeSync(file);
   ```
 
 ## fileIo.moveDir<sup>10+</sup>
@@ -3210,7 +3206,7 @@ moveDir(src: string, dest: string, mode?: number): Promise\<void>
   import { BusinessError } from '@kit.BasicServicesKit';
   let srcPath = pathDir + "/srcDir";
   let destPath = pathDir + "/destDir";
-  fs.moveDir(srcPath, destPath, 1).then(() => {
+  fileIo.moveDir(srcPath, destPath, 1).then(() => {
     console.info("move directory succeed");
   }).catch((err: BusinessError) => {
     console.error("move directory failed with error message: " + err.message + ", error code: " + err.code);
@@ -3246,10 +3242,10 @@ moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, ConflictFiles } from '@kit.CoreFileKit';
+  import { ConflictFiles } from '@kit.CoreFileKit';
   let srcPath = pathDir + "/srcDir";
   let destPath = pathDir + "/destDir";
-  fs.moveDir(srcPath, destPath, 1, (err: BusinessError<Array<ConflictFiles>>) => {
+  fileIo.moveDir(srcPath, destPath, 1, (err: BusinessError<Array<ConflictFiles>>) => {
     if (err && err.code == 13900015 && err.data?.length !== undefined) {
       for (let i = 0; i < err.data.length; i++) {
         console.error("move directory failed with conflicting files: " + err.data[i].srcFile + " " + err.data[i].destFile);
@@ -3292,10 +3288,10 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, ConflictFiles } from '@kit.CoreFileKit';
+  import { ConflictFiles } from '@kit.CoreFileKit';
   let srcPath = pathDir + "/srcDir";
   let destPath = pathDir + "/destDir";
-  fs.moveDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
+  fileIo.moveDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
     if (err && err.code == 13900015 && err.data?.length !== undefined) {
       for (let i = 0; i < err.data.length; i++) {
         console.error("move directory failed with conflicting files: " + err.data[i].srcFile + " " + err.data[i].destFile);
@@ -3336,11 +3332,11 @@ moveDirSync(src: string, dest: string, mode?: number): void
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs, ConflictFiles } from '@kit.CoreFileKit';
+import { ConflictFiles } from '@kit.CoreFileKit';
 let srcPath = pathDir + "/srcDir";
 let destPath = pathDir + "/destDir";
 try {
-  fs.moveDirSync(srcPath, destPath, 1);
+  fileIo.moveDirSync(srcPath, destPath, 1);
   console.info("move directory succeed");
 } catch (error) {
   let err: BusinessError<Array<ConflictFiles>> = error as BusinessError<Array<ConflictFiles>>;
@@ -3390,7 +3386,7 @@ moveFile(src: string, dest: string, mode?: number): Promise\<void>
   import { BusinessError } from '@kit.BasicServicesKit';
   let srcPath = pathDir + "/source.txt";
   let destPath = pathDir + "/dest.txt";
-  fs.moveFile(srcPath, destPath, 0).then(() => {
+  fileIo.moveFile(srcPath, destPath, 0).then(() => {
     console.info("move file succeed");
   }).catch((err: BusinessError) => {
     console.error("move file failed with error message: " + err.message + ", error code: " + err.code);
@@ -3428,7 +3424,7 @@ moveFile(src: string, dest: string, mode: number, callback: AsyncCallback\<void>
   import { BusinessError } from '@kit.BasicServicesKit';
   let srcPath = pathDir + "/source.txt";
   let destPath = pathDir + "/dest.txt";
-  fs.moveFile(srcPath, destPath, 0, (err: BusinessError) => {
+  fileIo.moveFile(srcPath, destPath, 0, (err: BusinessError) => {
     if (err) {
       console.error("move file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -3467,7 +3463,7 @@ moveFile(src: string, dest: string, callback: AsyncCallback\<void>): void
   import { BusinessError } from '@kit.BasicServicesKit';
   let srcPath = pathDir + "/source.txt";
   let destPath = pathDir + "/dest.txt";
-  fs.moveFile(srcPath, destPath, (err: BusinessError) => {
+  fileIo.moveFile(srcPath, destPath, (err: BusinessError) => {
     if (err) {
       console.error("move file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -3505,7 +3501,7 @@ moveFileSync(src: string, dest: string, mode?: number): void
   ```ts
   let srcPath = pathDir + "/source.txt";
   let destPath = pathDir + "/dest.txt";
-  fs.moveFileSync(srcPath, destPath, 0);
+  fileIo.moveFileSync(srcPath, destPath, 0);
   console.info("move file succeed");
   ```
 
@@ -3537,7 +3533,7 @@ mkdtemp(prefix: string): Promise&lt;string&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  fs.mkdtemp(pathDir + "/XXXXXX").then((dir: string) => {
+  fileIo.mkdtemp(pathDir + "/XXXXXX").then((dir: string) => {
     console.info("mkdtemp succeed:" + dir);
   }).catch((err: BusinessError) => {
     console.error("mkdtemp failed with error message: " + err.message + ", error code: " + err.code);
@@ -3567,7 +3563,7 @@ mkdtemp(prefix: string, callback: AsyncCallback&lt;string&gt;): void
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  fs.mkdtemp(pathDir + "/XXXXXX", (err: BusinessError, res: string) => {
+  fileIo.mkdtemp(pathDir + "/XXXXXX", (err: BusinessError, res: string) => {
     if (err) {
       console.error("mkdtemp failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -3603,7 +3599,7 @@ mkdtempSync(prefix: string): string
 **示例：**
 
   ```ts
-  let res = fs.mkdtempSync(pathDir + "/XXXXXX");
+  let res = fileIo.mkdtempSync(pathDir + "/XXXXXX");
   ```
 
 ## fileIo.utimes<sup>11+</sup>
@@ -3628,10 +3624,10 @@ utimes(path: string, mtime: number): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  fs.writeSync(file.fd, 'test data');
-  fs.closeSync(file);
-  fs.utimes(filePath, new Date().getTime());
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  fileIo.writeSync(file.fd, 'test data');
+  fileIo.closeSync(file);
+  fileIo.utimes(filePath, new Date().getTime());
   ```
 
 ## fileIo.createRandomAccessFile<sup>10+</sup>
@@ -3663,14 +3659,14 @@ createRandomAccessFile(file: string | File, mode?: number): Promise&lt;RandomAcc
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  fs.createRandomAccessFile(file).then((randomAccessFile: fs.RandomAccessFile) => {
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  fileIo.createRandomAccessFile(file).then((randomAccessFile: fileIo.RandomAccessFile) => {
     console.info("randomAccessFile fd: " + randomAccessFile.fd);
     randomAccessFile.close();
   }).catch((err: BusinessError) => {
     console.error("create randomAccessFile failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -3697,15 +3693,15 @@ createRandomAccessFile(file: string | File, callback: AsyncCallback&lt;RandomAcc
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  fs.createRandomAccessFile(file, (err: BusinessError, randomAccessFile: fs.RandomAccessFile) => {
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  fileIo.createRandomAccessFile(file, (err: BusinessError, randomAccessFile: fileIo.RandomAccessFile) => {
     if (err) {
       console.error("create randomAccessFile failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       console.info("randomAccessFile fd: " + randomAccessFile.fd);
       randomAccessFile.close();
     }
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -3733,15 +3729,15 @@ createRandomAccessFile(file: string | File, mode: number, callback: AsyncCallbac
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  fs.createRandomAccessFile(file, fs.OpenMode.READ_ONLY, (err: BusinessError, randomAccessFile: fs.RandomAccessFile) => {
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  fileIo.createRandomAccessFile(file, fileIo.OpenMode.READ_ONLY, (err: BusinessError, randomAccessFile: fileIo.RandomAccessFile) => {
     if (err) {
       console.error("create randomAccessFile failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       console.info("randomAccessFile fd: " + randomAccessFile.fd);
       randomAccessFile.close();
     }
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -3774,8 +3770,8 @@ createRandomAccessFile(file: string | File, mode?: number, options?: RandomAcces
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 let filePath = pathDir + "/test.txt";
-fs.createRandomAccessFile(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE, { start: 10, end: 100 })
-  .then((randomAccessFile: fs.RandomAccessFile) => {
+fileIo.createRandomAccessFile(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE, { start: 10, end: 100 })
+  .then((randomAccessFile: fileIo.RandomAccessFile) => {
     console.info("randomAccessFile fd: " + randomAccessFile.fd);
     randomAccessFile.close();
   })
@@ -3814,8 +3810,8 @@ createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  let randomAccessFile = fs.createRandomAccessFileSync(file);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  let randomAccessFile = fileIo.createRandomAccessFileSync(file);
   randomAccessFile.close();
   ```
 
@@ -3849,7 +3845,7 @@ createRandomAccessFileSync(file: string | File, mode?: number, options?: RandomA
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let randomAccessFile = fs.createRandomAccessFileSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE,
+  let randomAccessFile = fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE,
     { start: 10, end: 100 });
   randomAccessFile.close();
   ```
@@ -3886,7 +3882,7 @@ createStream(path: string, mode: string): Promise&lt;Stream&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.createStream(filePath, "a+").then((stream: fs.Stream) => {
+  fileIo.createStream(filePath, "a+").then((stream: fileIo.Stream) => {
     stream.closeSync();
     console.info("createStream succeed");
   }).catch((err: BusinessError) => {
@@ -3922,7 +3918,7 @@ createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;):
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  fs.createStream(filePath, "r+", (err: BusinessError, stream: fs.Stream) => {
+  fileIo.createStream(filePath, "r+", (err: BusinessError, stream: fileIo.Stream) => {
     if (err) {
       console.error("create stream failed with error message: " + err.message + ", error code: " + err.code);
     } else {
@@ -3963,7 +3959,7 @@ createStreamSync(path: string, mode: string): Stream
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   console.info("createStream succeed");
   stream.closeSync();
   ```
@@ -4001,14 +3997,14 @@ fdopenStream(fd: number, mode: string): Promise&lt;Stream&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath);
-  fs.fdopenStream(file.fd, "r+").then((stream: fs.Stream) => {
+  let file = fileIo.openSync(filePath);
+  fileIo.fdopenStream(file.fd, "r+").then((stream: fileIo.Stream) => {
     console.info("openStream succeed");
     stream.closeSync();
   }).catch((err: BusinessError) => {
     console.error("openStream failed with error message: " + err.message + ", error code: " + err.code);
     // 文件流打开失败后，文件描述符需要手动关闭
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -4043,12 +4039,12 @@ fdopenStream(fd: number, mode: string, callback: AsyncCallback&lt;Stream&gt;): v
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
-  fs.fdopenStream(file.fd, "r+", (err: BusinessError, stream: fs.Stream) => {
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY);
+  fileIo.fdopenStream(file.fd, "r+", (err: BusinessError, stream: fileIo.Stream) => {
     if (err) {
       console.error("fdopen stream failed with error message: " + err.message + ", error code: " + err.code);
       // 文件流打开失败后，文件描述符需要手动关闭
-      fs.closeSync(file);
+      fileIo.closeSync(file);
     } else {
       console.info("fdopen stream succeed");
       stream.closeSync();
@@ -4091,8 +4087,8 @@ fdopenStreamSync(fd: number, mode: string): Stream
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_ONLY | fs.OpenMode.CREATE);
-  let stream = fs.fdopenStreamSync(file.fd, "r+");
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY | fileIo.OpenMode.CREATE);
+  let stream = fileIo.fdopenStreamSync(file.fd, "r+");
   stream.closeSync();
   ```
 
@@ -4129,9 +4125,9 @@ createReadStream(path: string, options?: ReadStreamOptions ): ReadStream
 
   ```ts
   // 创建文件可读流
-  const rs = fs.createReadStream(`${pathDir}/read.txt`);
+  const rs = fileIo.createReadStream(`${pathDir}/read.txt`);
   // 创建文件可写流
-  const ws = fs.createWriteStream(`${pathDir}/write.txt`);
+  const ws = fileIo.createWriteStream(`${pathDir}/write.txt`);
   // 暂停模式拷贝文件
   rs.on('readable', () => {
     const data = rs.read();
@@ -4171,9 +4167,9 @@ createWriteStream(path: string, options?: WriteStreamOptions): WriteStream
 
   ```ts
   // 创建文件可读流
-  const rs = fs.createReadStream(`${pathDir}/read.txt`);
+  const rs = fileIo.createReadStream(`${pathDir}/read.txt`);
   // 创建文件可写流
-  const ws = fs.createWriteStream(`${pathDir}/write.txt`);
+  const ws = fileIo.createWriteStream(`${pathDir}/write.txt`);
   // 暂停模式拷贝文件
   rs.on('readable', () => {
     const data = rs.read();
@@ -4232,14 +4228,13 @@ getBaseFile(): File
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
-import { fileIo as fs} from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let pathDir = context.filesDir;
 
 try {
-  let atomicFile = new fs.AtomicFile(`${pathDir}/write.txt`);
+  let atomicFile = new fileIo.AtomicFile(`${pathDir}/write.txt`);
   let writeStream = atomicFile.startWrite();
   writeStream.write("hello, world", "utf-8", ()=> {
     atomicFile.finishWrite();
@@ -4274,14 +4269,13 @@ openRead(): ReadStream
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
-import { fileIo as fs} from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let pathDir = context.filesDir;
 
 try {
-  let file = new fs.AtomicFile(`${pathDir}/read.txt`);
+  let file = new fileIo.AtomicFile(`${pathDir}/read.txt`);
   let writeStream = file.startWrite();
   writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
@@ -4325,7 +4319,6 @@ readFully(): ArrayBuffer
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
-import { fileIo as fs} from '@kit.CoreFileKit';
 import { util, buffer } from '@kit.ArkTS';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
@@ -4333,7 +4326,7 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let pathDir = context.filesDir;
 
 try {
-  let file = new fs.AtomicFile(`${pathDir}/read.txt`);
+  let file = new fileIo.AtomicFile(`${pathDir}/read.txt`);
   let writeStream = file.startWrite();
   writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
@@ -4376,14 +4369,13 @@ startWrite(): WriteStream
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
-import { fileIo as fs} from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let pathDir = context.filesDir;
 
 try {
-  let file = new fs.AtomicFile(`${pathDir}/write.txt`);
+  let file = new fileIo.AtomicFile(`${pathDir}/write.txt`);
   let writeStream = file.startWrite();
   writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
@@ -4411,14 +4403,13 @@ finishWrite(): void
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
-import { fileIo as fs} from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let pathDir = context.filesDir;
 
 try {
-  let file = new fs.AtomicFile(`${pathDir}/write.txt`);
+  let file = new fileIo.AtomicFile(`${pathDir}/write.txt`);
   let writeStream = file.startWrite();
   writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
@@ -4445,13 +4436,12 @@ failWrite(): void
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
-import { fileIo as fs} from '@kit.CoreFileKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let pathDir = context.filesDir;
 
-let file = new fs.AtomicFile(`${pathDir}/write.txt`);
+let file = new fileIo.AtomicFile(`${pathDir}/write.txt`);
 try {
   let writeStream = file.startWrite();
   writeStream.write("hello, world", "utf-8", ()=> {
@@ -4480,7 +4470,6 @@ delete(): void
 <!--code_no_check-->
 ```ts
 import { common } from '@kit.AbilityKit';
-import { fileIo as fs} from '@kit.CoreFileKit';
 import { util } from '@kit.ArkTS';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
@@ -4488,7 +4477,7 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let pathDir = context.filesDir;
 
 try {
-  let file = new fs.AtomicFile(`${pathDir}/read.txt`);
+  let file = new fileIo.AtomicFile(`${pathDir}/read.txt`);
   let writeStream = file.startWrite();
   writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
@@ -4536,14 +4525,14 @@ createWatcher(path: string, events: number, listener: WatchEventListener): Watch
 <!--code_no_check-->
   ```ts
   import { common } from '@kit.AbilityKit';
-  import { fileIo as fs, WatchEvent } from '@kit.CoreFileKit';
+  import { WatchEvent } from '@kit.CoreFileKit';
 
   // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let pathDir = context.filesDir;
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-  let watcher = fs.createWatcher(filePath, 0x2 | 0x10, (watchEvent: WatchEvent) => {
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+  let watcher = fileIo.createWatcher(filePath, 0x2 | 0x10, (watchEvent: WatchEvent) => {
     if (watchEvent.event == 0x2) {
       console.info(watchEvent.fileName + 'was modified');
     } else if (watchEvent.event == 0x10) {
@@ -4551,8 +4540,8 @@ createWatcher(path: string, events: number, listener: WatchEventListener): Watch
     }
   });
   watcher.start();
-  fs.writeSync(file.fd, 'test');
-  fs.closeSync(file);
+  fileIo.writeSync(file.fd, 'test');
+  fileIo.closeSync(file);
   watcher.stop();
   ```
 
@@ -4618,7 +4607,6 @@ cancel(): void
 <!--code_no_check-->
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
 import { fileUri } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
@@ -4630,21 +4618,21 @@ let srcDirPathLocal: string = pathDir + "/src";
 let dstDirPathLocal: string = pathDir + "/dest";
 let srcDirUriLocal: string = fileUri.getUriFromPath(srcDirPathLocal);
 let dstDirUriLocal: string = fileUri.getUriFromPath(dstDirPathLocal);
-let copySignal = new fs.TaskSignal;
-let progressListener: fs.ProgressListener = (progress: fs.Progress) => {
+let copySignal = new fileIo.TaskSignal;
+let progressListener: fileIo.ProgressListener = (progress: fileIo.Progress) => {
   console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
   if (progress.processedSize / progress.totalSize > 0.5) {
     copySignal.cancel();
     console.info("copy cancel.");
   }
 };
-let options: fs.CopyOptions = {
+let options: fileIo.CopyOptions = {
   "progressListener" : progressListener,
   "copySignal" : copySignal,
 }
 
 try {
-  fs.copy(srcDirUriLocal, dstDirUriLocal, options, (err: BusinessError) => {
+  fileIo.copy(srcDirUriLocal, dstDirUriLocal, options, (err: BusinessError) => {
     if (err) {
       console.error("copy fail, err: ", err.message);
       return;
@@ -4678,9 +4666,8 @@ onCancel(): Promise&lt;string&gt;
 **示例：**
 
 ```ts
-import { fileIo as fs } from '@kit.CoreFileKit';
 import { TaskSignal } from '@kit.CoreFileKit';
-let copySignal: fs.TaskSignal = new TaskSignal();
+let copySignal: fileIo.TaskSignal = new TaskSignal();
 copySignal.onCancel();
 ```
 
@@ -4709,11 +4696,11 @@ copySignal.onCancel();
 
   ```ts
   import { TaskSignal } from '@kit.CoreFileKit';
-  let copySignal: fs.TaskSignal = new TaskSignal();
-  let progressListener: fs.ProgressListener = (progress: fs.Progress) => {
+  let copySignal: fileIo.TaskSignal = new TaskSignal();
+  let progressListener: fileIo.ProgressListener = (progress: fileIo.Progress) => {
     console.info(`processedSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
   };
-  let copyOption: fs.CopyOptions = {
+  let copyOption: fileIo.CopyOptions = {
     "progressListener" : progressListener,
     "copySignal" : copySignal,
   }
@@ -4768,7 +4755,7 @@ isBlockDevice(): boolean
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let isBLockDevice = fs.statSync(filePath).isBlockDevice();
+  let isBLockDevice = fileIo.statSync(filePath).isBlockDevice();
   ```
 
 ### isCharacterDevice
@@ -4793,7 +4780,7 @@ isCharacterDevice(): boolean
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let isCharacterDevice = fs.statSync(filePath).isCharacterDevice();
+  let isCharacterDevice = fileIo.statSync(filePath).isCharacterDevice();
   ```
 
 ### isDirectory
@@ -4820,7 +4807,7 @@ isDirectory(): boolean
 
   ```ts
   let dirPath = pathDir + "/test";
-  let isDirectory = fs.statSync(dirPath).isDirectory();
+  let isDirectory = fileIo.statSync(dirPath).isDirectory();
   ```
 
 ### isFIFO
@@ -4845,7 +4832,7 @@ isFIFO(): boolean
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let isFIFO = fs.statSync(filePath).isFIFO();
+  let isFIFO = fileIo.statSync(filePath).isFIFO();
   ```
 
 ### isFile
@@ -4872,7 +4859,7 @@ isFile(): boolean
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let isFile = fs.statSync(filePath).isFile();
+  let isFile = fileIo.statSync(filePath).isFile();
   ```
 
 ### isSocket
@@ -4897,7 +4884,7 @@ isSocket(): boolean
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let isSocket = fs.statSync(filePath).isSocket();
+  let isSocket = fileIo.statSync(filePath).isSocket();
   ```
 
 ### isSymbolicLink
@@ -4922,7 +4909,7 @@ isSymbolicLink(): boolean
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let isSymbolicLink = fs.statSync(filePath).isSymbolicLink();
+  let isSymbolicLink = fileIo.statSync(filePath).isSymbolicLink();
   ```
 
 ## Stream
@@ -4954,7 +4941,7 @@ close(): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   stream.close().then(() => {
     console.info("close fileStream succeed");
   }).catch((err: BusinessError) => {
@@ -4987,7 +4974,7 @@ close(callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   stream.close((err: BusinessError) => {
     if (err) {
       console.error("close stream failed with error message: " + err.message + ", error code: " + err.code);
@@ -5015,7 +5002,7 @@ closeSync(): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   stream.closeSync();
   ```
 
@@ -5044,7 +5031,7 @@ flush(): Promise&lt;void&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   stream.flush().then(() => {
     console.info("flush succeed");
     stream.close();
@@ -5078,7 +5065,7 @@ flush(callback: AsyncCallback&lt;void&gt;): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   stream.flush((err: BusinessError) => {
     if (err) {
       console.error("flush stream failed with error message: " + err.message + ", error code: " + err.code);
@@ -5107,7 +5094,7 @@ flushSync(): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   stream.flushSync();
   stream.close();
   ```
@@ -5143,9 +5130,9 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&g
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, WriteOptions } from '@kit.CoreFileKit';
+  import { WriteOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   let writeOption: WriteOptions = {
     offset: 5,
     length: 5,
@@ -5185,9 +5172,9 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallb
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, WriteOptions } from '@kit.CoreFileKit';
+  import { WriteOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   let writeOption: WriteOptions = {
     offset: 5,
     length: 5,
@@ -5235,9 +5222,9 @@ writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): number
 **示例：**
 
   ```ts
-  import { fileIo as fs, WriteOptions } from '@kit.CoreFileKit';
+  import { WriteOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath,"r+");
+  let stream = fileIo.createStreamSync(filePath,"r+");
   let writeOption: WriteOptions = {
     offset: 5,
     length: 5,
@@ -5279,9 +5266,9 @@ read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+  import { ReadOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   let arrayBuffer = new ArrayBuffer(4096);
   let readOption: ReadOptions = {
     offset: 5,
@@ -5324,9 +5311,9 @@ read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;numb
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   import { buffer } from '@kit.ArkTS';
-  import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+  import { ReadOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   let arrayBuffer = new ArrayBuffer(4096);
   let readOption: ReadOptions = {
     offset: 5,
@@ -5374,9 +5361,9 @@ readSync(buffer: ArrayBuffer, options?: ReadOptions): number
 **示例：**
 
   ```ts
-  import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+  import { ReadOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let stream = fs.createStreamSync(filePath, "r+");
+  let stream = fileIo.createStreamSync(filePath, "r+");
   let readOption: ReadOptions = {
     offset: 5,
     length: 5
@@ -5423,9 +5410,9 @@ getParent(): string
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   console.info('The parent path is: ' + file.getParent());
-  fs.closeSync(file);
+  fileIo.closeSync(file);
   ```
 
 ### lock
@@ -5457,13 +5444,13 @@ lock(exclusive?: boolean): Promise\<void>
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   file.lock(true).then(() => {
     console.info("lock file succeed");
   }).catch((err: BusinessError) => {
     console.error("lock file failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -5491,14 +5478,14 @@ lock(exclusive?: boolean, callback: AsyncCallback\<void>): void
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   file.lock(true, (err: BusinessError) => {
     if (err) {
       console.error("lock file failed with error message: " + err.message + ", error code: " + err.code);
     } else {
       console.info("lock file succeed");
     }
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -5524,10 +5511,10 @@ tryLock(exclusive?: boolean): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   file.tryLock(true);
   console.info("lock file succeed");
-  fs.closeSync(file);
+  fileIo.closeSync(file);
   ```
 
 ### unlock
@@ -5546,11 +5533,11 @@ unlock(): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   file.tryLock(true);
   file.unlock();
   console.info("unlock file succeed");
-  fs.closeSync(file);
+  fileIo.closeSync(file);
   ```
 
 ## fileIo.DfsListeners<sup>12+</sup>
@@ -5609,7 +5596,7 @@ setFilePointer(filePointer:number): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let randomAccessFile = fs.createRandomAccessFileSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let randomAccessFile = fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   randomAccessFile.setFilePointer(1);
   randomAccessFile.close();
   ```
@@ -5631,7 +5618,7 @@ close(): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let randomAccessFile = fs.createRandomAccessFileSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  let randomAccessFile = fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
   randomAccessFile.close();
   ```
 
@@ -5664,10 +5651,10 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&g
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, WriteOptions } from '@kit.CoreFileKit';
+  import { WriteOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  let randomAccessFile = fs.createRandomAccessFileSync(file);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  let randomAccessFile = fileIo.createRandomAccessFileSync(file);
   let bufferLength: number = 4096;
   let writeOption: WriteOptions = {
     offset: 1,
@@ -5681,7 +5668,7 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&g
     console.error("create randomAccessFile failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
     randomAccessFile.close();
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
 
   ```
@@ -5710,10 +5697,10 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallb
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, WriteOptions } from '@kit.CoreFileKit';
+  import { WriteOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  let randomAccessFile = fs.createRandomAccessFileSync(file);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  let randomAccessFile = fileIo.createRandomAccessFileSync(file);
   let bufferLength: number = 4096;
   let writeOption: WriteOptions = {
     offset: 1,
@@ -5730,7 +5717,7 @@ write(buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallb
       }
     }
     randomAccessFile.close();
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -5762,9 +5749,9 @@ writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): number
 **示例：**
 
   ```ts
-  import { fileIo as fs, WriteOptions } from '@kit.CoreFileKit';
+  import { WriteOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let randomAccessFile = fs.createRandomAccessFileSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  let randomAccessFile = fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   let writeOption: WriteOptions = {
     offset: 5,
     length: 5,
@@ -5803,10 +5790,10 @@ read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+  import { ReadOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  let randomAccessFile = fs.createRandomAccessFileSync(file);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  let randomAccessFile = fileIo.createRandomAccessFileSync(file);
   let bufferLength: number = 4096;
   let readOption: ReadOptions = {
     offset: 1,
@@ -5819,7 +5806,7 @@ read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
     console.error("create randomAccessFile failed with error message: " + err.message + ", error code: " + err.code);
   }).finally(() => {
     randomAccessFile.close();
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -5847,10 +5834,10 @@ read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;numb
 
   ```ts
   import { BusinessError } from '@kit.BasicServicesKit';
-  import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+  import { ReadOptions } from '@kit.CoreFileKit';
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  let randomAccessFile = fs.createRandomAccessFileSync(file);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  let randomAccessFile = fileIo.createRandomAccessFileSync(file);
   let length: number = 20;
   let readOption: ReadOptions = {
     offset: 1,
@@ -5866,7 +5853,7 @@ read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;numb
       }
     }
     randomAccessFile.close();
-    fs.closeSync(file);
+    fileIo.closeSync(file);
   });
   ```
 
@@ -5899,13 +5886,13 @@ readSync(buffer: ArrayBuffer, options?: ReadOptions): number
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  let randomAccessFile = fs.createRandomAccessFileSync(file);
+  let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+  let randomAccessFile = fileIo.createRandomAccessFileSync(file);
   let length: number = 4096;
   let arrayBuffer = new ArrayBuffer(length);
   let readLength = randomAccessFile.readSync(arrayBuffer);
   randomAccessFile.close();
-  fs.closeSync(file);
+  fileIo.closeSync(file);
   ```
 
 ### getReadStream<sup>12+</sup>
@@ -5930,7 +5917,7 @@ getReadStream(): ReadStream
 
   ```ts
   const filePath = pathDir + "/test.txt";
-  const randomAccessFile = fs.createRandomAccessFileSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  const randomAccessFile = fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const rs = randomAccessFile.getReadStream();
   rs.close();
   randomAccessFile.close();
@@ -5958,7 +5945,7 @@ getWriteStream(): WriteStream
 
   ```ts
   const filePath = pathDir + "/test.txt";
-  const randomAccessFile = fs.createRandomAccessFileSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+  const randomAccessFile = fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
   const ws = randomAccessFile.getWriteStream();
   ws.close();
   randomAccessFile.close();
@@ -5985,7 +5972,7 @@ start(): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let watcher = fs.createWatcher(filePath, 0xfff, () => {});
+  let watcher = fileIo.createWatcher(filePath, 0xfff, () => {});
   watcher.start();
   watcher.stop();
   ```
@@ -6006,7 +5993,7 @@ stop(): void
 
   ```ts
   let filePath = pathDir + "/test.txt";
-  let watcher = fs.createWatcher(filePath, 0xfff, () => {});
+  let watcher = fileIo.createWatcher(filePath, 0xfff, () => {});
   watcher.start();
   watcher.stop();
   ```
@@ -6208,8 +6195,8 @@ seek(offset: number, whence?: WhenceType): number
 
   ```ts
   const filePath = pathDir + "/test.txt";
-  const rs = fs.createReadStream(filePath);
-  const curOff = rs.seek(5, fs.WhenceType.SEEK_SET);
+  const rs = fileIo.createReadStream(filePath);
+  const curOff = rs.seek(5, fileIo.WhenceType.SEEK_SET);
   console.info(`current offset is ${curOff}`);
   rs.close();
   ```
@@ -6230,7 +6217,7 @@ close(): void
 
   ```ts
   const filePath = pathDir + "/test.txt";
-  const rs = fs.createReadStream(filePath);
+  const rs = fileIo.createReadStream(filePath);
   rs.close();
   ```
 
@@ -6276,8 +6263,8 @@ seek(offset: number, whence?: WhenceType): number;
 
   ```ts
   const filePath = pathDir + "/test.txt";
-  const ws = fs.createWriteStream(filePath);
-  const curOff = ws.seek(5, fs.WhenceType.SEEK_SET);
+  const ws = fileIo.createWriteStream(filePath);
+  const curOff = ws.seek(5, fileIo.WhenceType.SEEK_SET);
   console.info(`current offset is ${curOff}`);
   ws.close();
   ```
@@ -6298,7 +6285,7 @@ close(): void
 
   ```ts
   const filePath = pathDir + "/test.txt";
-  const ws = fs.createWriteStream(filePath);
+  const ws = fileIo.createWriteStream(filePath);
   ws.close();
   ```
 
