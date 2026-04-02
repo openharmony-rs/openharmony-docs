@@ -948,7 +948,7 @@ function cancelSerialRight() {
 
 | 名称     | 类型  |  只读 | 可选 | 说明    |
 |--------|--------|------|-------|--------|
-| portId | number | 否  |  否 | 端口号，来自[getPortList](#serialManager.getPortList)获取的串口参数SerialPort。 |
+| portId | number | 否  |  否 | 端口号。 |
 | deviceName | string | 否  |  否 | 串口设备名称。 |
 
 ## BaudRates
