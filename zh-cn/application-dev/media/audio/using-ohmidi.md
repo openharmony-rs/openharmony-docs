@@ -194,7 +194,7 @@ interface BleOpenedEventData {
 - onDeviceChange：当MIDI设备连接或断开时由系统自动调用。
 - onError：当MIDI服务发生错误时调用。
 
-使用OH_MIDIClient_Create创建客户端实例。
+使用[OH_MIDIClient_Create](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_create)接口创建客户端实例。
 
 - 创建客户端示例
 
@@ -300,8 +300,8 @@ ArkTS调用示例：
 ### 3. 枚举MIDI设备
 
 创建客户端后，可以枚举系统中当前可用的MIDI设备。枚举设备分为两步：
-1. 获取设备数量：调用OH_MIDIClient_GetDeviceCount获取当前连接的设备数量。
-2. 获取设备信息：分配足够大的缓冲区，调用OH_MIDIClient_GetDeviceInfos填充设备详细信息。
+1. 获取设备数量：调用[OH_MIDIClient_GetDeviceCount](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdevicecount)接口获取当前连接的设备数量。
+2. 获取设备信息：分配足够大的缓冲区，调用[OH_MIDIClient_GetDeviceInfos](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_getdeviceinfos)接口填充设备详细信息。
 
 注意：如果应用未获得蓝牙权限（ohos.permission.ACCESS_BLUETOOTH），蓝牙MIDI设备将不会包含在枚举结果中。
 
@@ -355,7 +355,7 @@ ArkTS调用示例：
 
 #### 4.1 打开USB MIDI设备
 
-使用OH_MIDIClient_OpenDevice同步打开USB MIDI设备。
+使用[OH_MIDIClient_OpenDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_opendevice)接口同步打开USB MIDI设备。
 
 - 打开USB MIDI设备示例
 
@@ -488,7 +488,7 @@ ArkTS调用示例：
 
 #### 4.3 打开BLE MIDI设备（异步）
 
-BLE MIDI设备的打开是异步操作，使用`OH_MIDIClient_OpenBLEDevice`函数。
+BLE MIDI设备的打开是异步操作，使用[OH_MIDIClient_OpenBLEDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_openbledevice)接口。
 
 获取BLE设备地址：
 BLE设备地址可通过以下方式获取：
@@ -778,7 +778,7 @@ ArkTS调用示例：
 
 #### 6.2 关闭输入端口
 
-使用 `OH_MIDIDevice_CloseInputPort` 关闭已打开的输入端口。关闭端口后，该端口将不再接收MIDI消息，注册的回调函数也将不再被调用。
+使用[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)接口关闭已打开的输入端口。关闭端口后，该端口将不再接收MIDI消息，注册的回调函数也将不再被调用。
 
 - 关闭输入端口示例
 
@@ -925,7 +925,7 @@ ArkTS调用示例：
 
 #### 6.4 关闭输出端口
 
-使用 `OH_MIDIDevice_CloseOutputPort` 关闭已打开的输出端口。关闭端口后，将无法再通过该端口发送MIDI消息。
+使用[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)接口关闭已打开的输出端口。关闭端口后，将无法再通过该端口发送MIDI消息。
 
 - 关闭输出端口示例
 
@@ -994,7 +994,7 @@ ArkTS调用示例：
 
 ### 7. 发送MIDI消息
 
-发送MIDI消息需要构造UMP格式的数据，然后通过OH_MIDIDevice_Send接口发送。UMP是Universal MIDI Packet的缩写，是MIDI 2.0标准统一使用的数据包格式。
+发送MIDI消息需要构造UMP格式的数据，然后通过[OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send)接口发送。UMP是Universal MIDI Packet的缩写，是MIDI 2.0标准统一使用的数据包格式。
 
 #### 7.1 发送自定义MIDI消息
 
@@ -1221,7 +1221,7 @@ static void BuildMIDI1NoteOff(uint32_t channel, uint32_t note, uint32_t velocity
 
 #### 7.7 发送系统专有消息(SysEx)
 
-系统专有消息（System Exclusive）：用于传输制造商特定的数据。使用OH_MIDIDevice_SendSysEx接口可以发送超过常规MIDI消息长度的SysEx消息。
+系统专有消息（System Exclusive）：用于传输制造商特定的数据。使用[OH_MIDIDevice_SendSysEx](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_sendsysex)接口可以发送超过常规MIDI消息长度的SysEx消息。
 
 C++ Native API示例：
 
@@ -1320,10 +1320,10 @@ async sendSysExMessage(): Promise<void> {
 
 正确的资源清理顺序非常重要：
 
-1. 关闭所有输入端口。
-2. 关闭所有输出端口。
-3. 关闭设备。
-4. 销毁客户端。
+1. 关闭所有输入端口：[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)。
+2. 关闭所有输出端口：[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)。
+3. 关闭设备：[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)。
+4. 销毁客户端：[OH_MIDIClient_Destroy](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)。
 
 - 资源清理示例
 
@@ -1510,9 +1510,9 @@ OH_MIDI API提供客户端级别、BLE连接级别和端口连接级别三个层
 10. 设备热插拔：应用应该处理设备连接和断开事件，及时更新内部状态并释放相关资源。
 
 11. 资源释放顺序：`OH_MIDIClient_Destroy()` 会自动关闭所有已打开的设备和端口。但如果初始化过程中发生错误需要提前退出函数，应按以下顺序手动释放资源：
-    1. 关闭已打开的端口（OH_MIDIDevice_CloseInputPort/CloseOutputPort）。
-    2. 关闭已打开的设备（OH_MIDIClient_CloseDevice）。
-    3. 销毁客户端（OH_MIDIClient_Destroy）。
+    1. 关闭已打开的端口（[OH_MIDIDevice_CloseInputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeinputport)/[OH_MIDIDevice_CloseOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_closeoutputport)）。
+    2. 关闭已打开的设备（[OH_MIDIClient_CloseDevice](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_closedevice)）。
+    3. 销毁客户端（[OH_MIDIClient_Destroy](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_midiclient_destroy)）。
 
 ## 调试验证
 
@@ -1566,7 +1566,7 @@ MIDI_LOGD("UMP Data: 0x%{public}08X", umpData[0]);
 A: 这表示发送缓冲区已满，无法立即发送消息。原因和处理方法：
 
 1. 发送速度超过缓冲区处理能力：降低发送频率（通常在发送大量SysEx消息的场景）。
-2. 缓冲区未及时处理：考虑使用OH_MIDIDevice_FlushOutputPort清空缓冲区。
+2. 缓冲区未及时处理：考虑使用[OH_MIDIDevice_FlushOutputPort](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_flushoutputport)接口清空缓冲区。
 3. 处理部分发送：检查`eventsWritten`参数，了解实际发送了多少事件。
 
 示例处理代码：
