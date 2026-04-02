@@ -94,8 +94,8 @@ function createNodePromise() : Promise<Node> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | node | [Node](js-apis-inner-scene-nodes.md#node) | 否 | 否 | 被射线击中的3D场景节点，可通过该节点操作目标物体（如移动、旋转、隐藏）。 |
-| centerDistance | number | 否 | 否 | 命中物体包围盒中心到摄像机中心的距离，取值范围大于0。 |
-| hitPosition | [Position3](js-apis-inner-scene-types.md#position3) | 否 | 否 | 射线与物体碰撞点的精确世界坐标（{x: number, y: number, z: number}）。 |
+| centerDistance | number | 否 | 否 | 命中物体包围盒中心到摄像机中心的距离，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
+| hitPosition | [Position3](js-apis-inner-scene-types.md#position3) | 否 | 否 | 射线与物体碰撞点的精确世界坐标（{x: number, y: number, z: number}），单位为世界坐标系下的场景单位（比如cm、m、km等）。 |
 
 
 ## RaycastParameters<sup>20+</sup>
@@ -714,7 +714,7 @@ function createEffect() : Promise<Effect> {
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | name | string | 否 | 否 | 要创建场景组件的名称，可由开发者自定填写，用于标识场景组件。|
-| property | Record<string, string \| number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1) \| boolean \| number[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined> | 是 | 否 | 组件的属性集合，以键值对形式存储。支持多种基础类型和复杂类型，用于描述场景组件的各种属性。|
+| property | Record<string, string \| number \| [Vec2](js-apis-inner-scene-types.md#vec2) \| [Vec3](js-apis-inner-scene-types.md#vec3) \| [Vec4](js-apis-inner-scene-types.md#vec4) \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1) \| boolean \| number[] \| string[] \| [SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)[] \| [Vec2](js-apis-inner-scene-types.md#vec2)[] \| [Vec3](js-apis-inner-scene-types.md#vec3)[] \| [Vec4](js-apis-inner-scene-types.md#vec4)[] \| null \| undefined> | 是 | 否 | 组件的属性集合，以键值对形式存储。支持多种基础类型和复杂类型，用于描述场景组件的各种属性，单位及取值范围取决于具体场景组件。|
 
 ## RenderContext<sup>20+</sup>
 定义了所有渲染资源的上下文。在同一渲染上下文中创建的多个场景之间，可以共享渲染资源。
