@@ -19,3 +19,5 @@ Defines a gesture style.<br>        [OH_ArkUI_GestureStyle_Create](capi-styled-s
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [styled_string.h](capi-styled-string-h.md)
+
+<!--no_check-->

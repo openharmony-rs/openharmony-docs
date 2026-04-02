@@ -19,3 +19,5 @@ Defines a paragraph style.<br>        [OH_ArkUI_ParagraphStyle_Create](capi-styl
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [styled_string.h](capi-styled-string-h.md)
+
+<!--no_check-->

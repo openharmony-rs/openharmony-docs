@@ -19,3 +19,5 @@ Defines a letter spacing style.<br>        [OH_ArkUI_LetterSpacingStyle_Create](
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [styled_string.h](capi-styled-string-h.md)
+
+<!--no_check-->

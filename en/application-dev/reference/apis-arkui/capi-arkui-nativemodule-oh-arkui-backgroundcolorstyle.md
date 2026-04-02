@@ -19,3 +19,5 @@ Defines a background color style.<br>        [OH_ArkUI_BackgroundColorStyle_Crea
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [styled_string.h](capi-styled-string-h.md)
+
+<!--no_check-->

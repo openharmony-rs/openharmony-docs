@@ -19,3 +19,5 @@ Defines a text component controller. [OH_ArkUI_TextController_Create](capi-nativ
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [native_type.h](capi-native-type-h.md)
+
+<!--no_check-->

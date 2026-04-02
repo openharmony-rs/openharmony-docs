@@ -19,3 +19,5 @@ Defines a URL style.<br>        [OH_ArkUI_UrlStyle_Create](capi-styled-string-h.
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 
 **Header file**: [styled_string.h](capi-styled-string-h.md)
+
+<!--no_check-->
