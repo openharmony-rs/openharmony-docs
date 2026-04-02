@@ -11,6 +11,10 @@
 
 应用退至后台一小段时间后，应用进程会被挂起，无法执行对应的任务。如果应用在后台仍需要执行耗时不长的任务，如状态保存等，可以通过本文申请短时任务，扩展应用在后台的运行时间。
 
+## 约束与限制
+
+申请短时任务的按钮，不可连续点击超过3次，否则会超出短时任务数量限制并报错。使用过程中更多的约束与限制请参考[短时任务(ArkTS)](transient-task.md#约束与限制)。
+
 ## 接口说明
 
 常用接口如下表所示，具体API说明详见[transient_task_api.h](../reference/apis-backgroundtasks-kit/capi-transient-task-api-h.md)。
@@ -258,7 +262,7 @@
      RequestSuspendDelay() {
        let requestId = testTransientTask.RequestSuspendDelay();
        // ...
-       console.info('The return requestId is ' + requestId);
+       console.info('The returned requestId is ' + requestId);
      }
    
      GetRemainingDelayTime() {
@@ -267,13 +271,13 @@
      }
    
      CancelSuspendDelay() {
-       let ret = testTransientTask.CancelSuspendDelay();
-       console.info('The ret is ' + ret);
+       let result = testTransientTask.CancelSuspendDelay();
+       console.info('The return value is ' + result);
      }
    
      GetTransientTaskInfo() {
-       let ret = testTransientTask.GetTransientTaskInfo();
-       console.info('The ret is ' + JSON.stringify(ret));
+       let info = testTransientTask.GetTransientTaskInfo();
+       console.info('The transientTaskInfo is ' + JSON.stringify(info));
      }
    }
    ```
@@ -282,6 +286,8 @@
 
 配置`CMakeLists.txt`，本模块需要用到的共享库是`libtransient_task.so`，在工程自动生成的`CMakeLists.txt`中的`target_link_libraries`中添加此共享库。
 
+   <!-- @[native_transient_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/NativeTransientTask/entry/src/main/cpp/CMakeLists.txt) -->
+   
    ```txt
    target_link_libraries(entry PUBLIC libace_napi.z.so libtransient_task.so)
    ```
@@ -311,6 +317,3 @@
    ```txt
    The ret is {"remainingQuota":600000,"transientTasks":[]}
    ```
-> **说明**
->
->申请短时任务的按钮，不可连续点击超过3次，否则会超出短时任务数量限制并报错。使用过程中更多的约束与限制请参考[短时任务(ArkTS)](transient-task.md#约束与限制)。
