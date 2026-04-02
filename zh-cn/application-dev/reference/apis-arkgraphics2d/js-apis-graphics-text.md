@@ -355,7 +355,7 @@ getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;n
 
 根据字体文件路径获取字体unicode数组。使用Promise异步回调。
 
-如果字体文件未找到、字体文件路径无效、字体文件无权限或者文件非字体格式，返回空数组。
+如果字体文件未找到、字体文件路径格式不正确或不存在、字体文件无权限或者文件非字体格式，返回空数组。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -366,13 +366,13 @@ getFontUnicodeSet(path: string | Resource, index: number): Promise&lt;Array&lt;n
 | 参数名 | 类型               | 必填 | 说明                              |
 | -----  | ------------------ | ---- | --------------------------------- |
 |  path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是 | 需要查询的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 $rawfile("工程中resources/rawfile目录下的文件名称")。 |
-|  index  | number | 是 | 字体文件格式为ttc/otc时，指定加载的字体索引。非ttc/otc格式文件索引值只能指定为0。如果该参数非法，将返回空数组。 |
+|  index  | number | 是 | 字体文件格式为ttc/otc时，指定加载的字体索引。非ttc/otc格式文件索引值只能指定为0。如果该参数为负数或超出字体文件实际索引范围，将返回空数组。 |
 
 **返回值：**
 
 | 类型           | 说明                      |
 | -------------- | ------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回字体文件持有的unicode码。 |
+| Promise&lt;Array&lt;number&gt;&gt; | Promise对象，返回字体文件对应的unicode码数组。 |
 
 **示例：**
 
@@ -906,7 +906,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 ## StrutStyle
 
-支柱样式，用于控制绘制文本的行间距、基线对齐方式以及其他与行高相关的属性，默认不开启。
+支柱样式，用于控制绘制文本的行间距、基线对齐方式以及行高、行间距比例等与行高相关的属性，默认不开启。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -920,7 +920,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | fontWeight     | [FontWeight](#fontweight)                            | 否   | 是 | 字重，默认为W400。系统默认字体支持字重调节，其他字体设置字重值小于W600时无变化，大于等于W600时可能触发伪加粗效果。                             |
 | fontSize       | number                                               | 否   | 是 | 字体大小，浮点数，默认14.0，单位为物理像素px。                             |
 | height         | number                                               | 否   | 是 | 行高缩放倍数，浮点数，默认为1.0。                                         |
-| leading        | number                                               | 否   | 是 | 以自定义行距应用于支柱的行距，浮点数，单位为物理像素px，默认为-1.0。                          |
+| leading        | number                                               | 否   | 是 | 自定义应用于支柱的行距，浮点数，单位为物理像素px，默认为-1.0。                          |
 | forceHeight    | boolean                                              | 否   | 是 | 是否所有行都将使用支柱的高度，true表示使用，false表示不使用，默认为false。     |
 | enabled        | boolean                                              | 否   | 是 | 是否启用支柱样式，true表示使用，false表示不使用，默认为false。              |
 | heightOverride | boolean                                              | 否   | 是 | 是否覆盖高度，true表示覆盖，false表示不覆盖，默认为false。                  |
@@ -1495,10 +1495,10 @@ struct Index {
 | strutStyle           | [StrutStyle](#strutstyle)                  | 否   | 是   | 支柱样式，默认为初始的StrutStyle。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。               |
 | textHeightBehavior   | [TextHeightBehavior](#textheightbehavior)  | 否   | 是   | 文本高度修饰符模式，默认为ALL。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。                              |
 | tab<sup>18+</sup>   | [TextTab](#texttab18)  | 否   | 是   | 表示段落中文本制表符后的文本对齐方式及位置，默认将制表符替换为一个空格。此参数与文本对齐方式（align属性）或省略号样式（[TextStyle](#textstyle)中的ellipsis属性）共同配置时无效。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| trailingSpaceOptimized<sup>20+</sup>   | boolean | 否   | 是   | 表示文本排版时行尾空格是否参与对齐计算。true表示行尾空格不参与计算，false表示行尾空格参与计算，默认值为false。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
+| trailingSpaceOptimized<sup>20+</sup>   | boolean | 否   | 是   | 表示文本排版时是否考虑行尾空格的对齐影响。true表示忽略行尾空格的对齐影响，false表示考虑行尾空格的对齐影响，默认值为false。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 | autoSpace<sup>20+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能自动间距。true表示使能自动间距，则会在文本排版时自动调整CJK（中文字符、日文字符、韩文字符）与西文（拉丁字母、西里尔字母、希腊字母）、CJK与数字、CJK与版权符号、版权符号与数字、版权符号与西文之间的间距。false表示不使能自动间距，默认值为false。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。|
 | verticalAlign<sup>20+</sup>   | [TextVerticalAlign](#textverticalalign20) | 否   | 是   | 文本垂直对齐方式，开启行高缩放（即设置[TextStyle](#textstyle)的heightScale）或行内不同字号（即设置[TextStyle](#textstyle)的fontSize）文本混排时生效。若行内有上下标文本（即设置[TextStyle](#textstyle)的badgeType属性文本），上下标文本将与普通文本一样参与垂直对齐。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
-| lineSpacing<sup>21+</sup>   | number | 否   | 是   | 行间距，单位为物理像素px，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认添加行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
+| lineSpacing<sup>21+</sup>   | number | 否   | 是   | 行间距，单位为物理像素px，默认值为0。lineSpacing不受[TextStyle](#textstyle)中lineHeightMaximum和lineHeightMinimum限制。尾行默认保留行间距，可通过设置[TextStyle](#textstyle).textHeightBehavior为DISABLE_ALL或DISABLE_LAST_ASCENT禁用尾行行间距。<br>**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。 |
 | compressHeadPunctuation<sup>23+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。<br/>**说明：**<br/>1. 需要字体文件支持[FontFeature](#fontfeature)中的"ss08"特性，否则无法压缩。<br/>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | includeFontPadding<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能首尾行padding。true表示使能首尾行padding，false表示不使能首尾行padding，默认值为false。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | fallbackLineSpacing<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能行高回退，当设置的行高小于实际行高时，将行高回退为实际行高。true表示使能行高回退，false表示不使能行高回退，默认值为false。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
@@ -1543,7 +1543,7 @@ struct Index {
 
 > **说明：**
 >
-> 示意图展示了后三种对齐方式，前三种对齐方式类似，比较位置是文本基线，即绿色线条部分。
+> 示意图展示了后三种对齐方式，前三种对齐方式在文本基线对齐方式上类似，比较位置是文本基线，即绿色线条部分。
 >
 >![zh-ch_image_Baseline.png](figures/zh-ch_image_Baseline.png)
 
@@ -1565,7 +1565,7 @@ struct Index {
 
 ## Range
 
-描述左闭右开区间。
+描述一个区间，包含起始值但不包含结束值（数学表示为[a, b)）。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -1578,7 +1578,7 @@ struct Index {
 
 ## TextRectSize<sup>24+</sup>
 
-文本布局后的矩形尺寸。值为浮点数，单位为px。
+文本完成排版计算后的矩形尺寸。值为浮点数，单位为px。
 
 **系统能力**：SystemCapability.Graphics.Drawing
 
@@ -1603,7 +1603,7 @@ struct Index {
 
 | 名称        | 类型                      | 只读 | 可选 | 说明                                    |
 | ----------- | ------------------------- | ---- | --- | --------------------------------------- |
-| fitStrRange | Array\<[Range](#range)\>  | 否   | 否   | 布局后可以容纳的字符范围数组。       |
+| fitStrRange | Array\<[Range](#range)\>  | 否   | 否   | 文本布局计算完成后能够完整显示的字符范围数组。       |
 | correctRect  | [TextRectSize](#textrectsize24) | 否   | 否   | 布局后段落的矩形尺寸。 |
 
 ## Paragraph
@@ -2599,7 +2599,7 @@ getLineBreak(startIndex: number, width: number): number
 
 | 参数名 | 类型   | 必填 | 说明           |
 | ----- | ------ | ---- | -------------- |
-| startIndex | number | 是 | 开始计算排版的起始位置（包括起始位置）。取值范围需要为[0,文本字符总数）的整数，参数非法时抛出异常。|
+| startIndex | number | 是 | 开始计算排版的起始位置（包括起始位置）。取值范围需要为[0,文本字符总数）的整数，当参数超出范围时抛出异常。|
 | width | number | 是   | 可用于排版的宽度，大于0的浮点数，单位为物理像素px。|
 
 **返回值：**
@@ -2639,7 +2639,7 @@ createLine(startIndex: number, count: number): TextLine
 | 参数名 | 类型   | 必填 | 说明           |
 | ----- | ------ | ---- | -------------- |
 | startIndex | number | 是 | 开始计算排版的起始位置，整数，取值范围为[0, 文本字符总数)。|
-| count | number | 是   | 从指定起始位置开始进行排版的字符个数，取值为[0,文本字符总数)的整数，startIndex和count之和不能大于文本字符总数。当count为0时，表示排版区间为[startIndex, 文本结尾]。可以先使用[getLineBreak](#getlinebreak18)获取合理的排版字符总数。|
+| count | number | 是   | 从指定起始位置开始进行排版的字符个数，取值为[0,文本字符总数)的整数，startIndex和count之和不能大于文本字符总数。当count为0时，表示排版区间为[startIndex, 文本的最后一个字符位置]。可以先使用[getLineBreak](#getlinebreak18)获取合理的排版字符总数。|
 
 **返回值：**
 
@@ -2701,7 +2701,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 ## TextBox
 
-文本矩形区域。
+文本矩形区域表示文本在布局时所占用的矩形空间。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -2714,7 +2714,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 ## PositionWithAffinity
 
-位置和亲和度。
+文本位置及其与相邻字符的亲和关系。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -2727,7 +2727,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 ## RectWidthStyle
 
-矩形区域宽度规格枚举。
+矩形区域宽度计算方式的枚举。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -2740,7 +2740,7 @@ let line : text.TextLine = lineTypeset.createLine(startIndex, count);
 
 ## RectHeightStyle
 
-矩形区域高度规格枚举。
+矩形区域高度计算方式的枚举类型。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -3193,7 +3193,7 @@ struct Index {
 
 >**说明：**
 >
->示意图展示了ascent、descent、leading、top、baseline、bottom、next line top的含义。width为文本行排版包括左右空格的宽度。ascent为文本行上升高度最高点，descent为文本行下降高度最低点，leading为文本行间距，top为文本行的最高点，baseline为字符基线，bottom为文本行的最低点，next line top为下一个文本行的最高点。
+示意图展示文本行排版参数：width（包含左右空格的文本行宽度）、ascent（上升高度最高点）、descent（下降高度最低点）、leading（行间距）、top（当前行最高点）、baseline（字符基线）、bottom（当前行最低点）、next line top（下一行最高点）。
 >
 >![zh-ch_image_Typographic.png](figures/zh-ch_image_Typographic.png)
 >
@@ -3674,7 +3674,7 @@ getGlyphs(range: Range): Array\<number>
 
 | 参数名    | 类型    | 必填 | 说明                       |
 | -------- | ------- | ---- | -------------------------- |
-| range    | [Range](#range)   | 是   | 要获取的字形序号范围，range.start表示范围开始的位置，range.end表示范围的长度，如果长度是0表示从范围range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。|
+| range    | [Range](#range)   | 是   | 要获取的字形序号范围，range.start表示范围开始的位置，range.end表示范围的长度，当range.end为0时表示从range.start开始获取到渲染块结束。当range.end、range.start为负数，或者传入null、undefined时，该方法将返回undefined。|
 
 **返回值：**
 
@@ -4083,7 +4083,7 @@ let advancesNull = runs[0].getAdvances(null); // null是非法参数，将返回
 
 | 名称               | 类型                    | 只读 | 可选 | 说明                                               |
 | -----------------  | ----------------------- | ---- | ---  | -------------------------------------------------- |
-| alignment          | [TextAlign](#textalign) | 否   |  否  | 段落中制表符之后的文本对齐方式，支持设置[TextAlign](#textalign)的LEFT左对齐、RIGHT右对齐和CENTER居中对齐方式，其他枚举值为左对齐，默认为左对齐。 |
+| alignment          | [TextAlign](#textalign) | 否   |  否  | 段落中制表符之后的文本对齐方式，支持设置[TextAlign](#textalign)的LEFT左对齐、RIGHT右对齐和CENTER居中对齐方式，未列出的枚举值会被视为左对齐，默认为左对齐。 |
 | location           | number                  | 否   |  否  | 制表符之后的文本对齐位置，浮点数，单位为物理像素px，最小值为1.0，当该值小于1.0时，该制表符会被替换为一个空格。 |
 
 **示例：**
