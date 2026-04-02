@@ -5,7 +5,7 @@
 <!--Designer: @weng-changcheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
 <!--Adviser: @ge-yafang-->
-表示可以进行连接的类似数组的对象。该接口扩展了`ISendable`接口。
+该接口定义了支持数组连接操作的对象，并扩展了`ISendable`接口，使其兼具高效数组拼接和跨线程传递能力。
 
 > **说明：**
 >
