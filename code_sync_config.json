@@ -3571,7 +3571,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/Mover.ts",
 				"functions":[
 					{
-						"end_line":29,
+						"end_line":33,
 						"name":"Mover",
 						"start_line":16
 					}
@@ -3611,7 +3611,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkData/KvStore/ECStoreSamples/entry/src/main/ets/entryability/EntryAbility.ets",
 				"functions":[
 					{
-						"end_line":143,
+						"end_line":145,
 						"name":"EntryAbility",
 						"start_line":16
 					}
