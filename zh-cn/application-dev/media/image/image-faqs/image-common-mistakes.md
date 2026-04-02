@@ -55,10 +55,9 @@ Tid:5005, Name:OS_FFRT_3_0
 ``` TypeScript
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit'
 
 async function wrongPackingExample(pixelMap: image.PixelMap, fd: number): Promise<void> {
-  let imagePacker = image.ImagePacker | null = null;
+  let imagePacker = image.ImagePacker | undefined = undefined;
 
   try {
     imagePacker = image.createImagePacker();
@@ -87,11 +86,9 @@ async function wrongPackingExample(pixelMap: image.PixelMap, fd: number): Promis
 
 ``` TypeScript
 import { image } from '@kit.ImageKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit'
 
 async function correctPackingExample(pixelMap: image.PixelMap, fd: number): Promise<void> {
-  let imagePacker = image.ImagePacker | null = null;
+  let imagePacker = image.ImagePacker | undefined = undefined;
 
   try {
     imagePacker = image.createImagePacker();
