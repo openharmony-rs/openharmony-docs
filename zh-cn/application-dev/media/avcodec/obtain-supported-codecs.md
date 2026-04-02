@@ -778,3 +778,46 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
    // 异常处理。
 }
 ```
+# 查询编解码能力列表
+
+部分业务场景需要一次性获取某一类编解码器的全部能力信息，例如遍历设备支持的所有视频编码器、筛选特定MIME类型的能力项，或区分安全编解码器与普通编解码器。
+
+开发者可通过编解码器类型获取能力列表，再结合能力项的名称、MIME类型、是否硬件、是否安全等属性进行筛选。
+
+## 接口说明
+
+| 接口     | 功能描述                         |
+| -------- | ---------------------------- |
+| OH_AVCodec_GetCapabilityList              | 确认当前编解码器是否支持给定的特性。  |
+| OH_AVCapability_GetMimeType               | 获取当前编解码器支持的指定特性的属性。|
+| OH_AVCapability_CheckMimeType             | 获取当前编解码器支持的指定特性的属性。|
+| OH_AVCapability_IsSecure                  | 获取当前编解码器支持的指定特性的属性。|
+
+## 使用场景示例
+
+### 获取所有的视频解码器能力
+
+示例如下
+
+```c++
+uint32_t count = 0;
+OH_AVcapability **capList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODEZR, &count);
+if (capList == nullptr || count == 0) {
+   // 异常处理
+}
+
+for (uint32_t i = 0; i < count; i++) {
+   OH_AVCapability *cap = capList[i];
+   if (cap == nullprt) {
+      continue;
+   }
+
+   const char *name = OH_Capability_GetName(cap);
+   const char *mime = OH_AVCapability_GetMimeType(cap);
+   bool isHardware = OH_AVCapability_IsHardware(cap);
+   bool isHardware = OH_AVCapability_IsSecure(cap);
+
+   // 根据实际业务处理能力项
+}
+
+```
