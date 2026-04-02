@@ -4720,6 +4720,136 @@ for (let i = 0; i < filenames.length; i++) {
 }
 ```
 
+## fileIo.listFileExt
+
+listFileExt(path: string, options?: ListFileExtOptions): Promise&lt;string[]&gt;
+
+列出目录下所有文件名，支持递归列出和自定义文件名过滤。使用Promise异步回调。
+
+可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----- |
+| path | string | 是 | 目录的应用沙箱路径。 |
+| options | [ListFileExtOptions](#listfileextoptions) | 否 | 文件过滤选项。默认不进行过滤。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| Promise&lt;string[]&gt; | Promise对象，返回文件名数组。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 13900002 | No such file or directory. |
+| 13900011 | Out of memory. |
+| 13900018 | Not a directory. |
+| 13900020 | Invalid argument. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo, ListFileExtOptions, FileFilter } from '@kit.CoreFileKit';
+
+let filter: FileFilter = {
+  filter: (name: string): boolean => {
+    return name.endsWith('.txt');
+  }
+};
+let options: ListFileExtOptions = {
+  recursion: false,
+  listNum: 0,
+  fileFilter: filter
+};
+fileIo.listFileExt(pathDir, options).then((filenames: Array<string>) => {
+  console.info("listFileExt succeed");
+  for (let i = 0; i < filenames.length; i++) {
+    console.info("filename: %s", filenames[i]);
+  }
+}).catch((err: BusinessError) => {
+  console.error("listFileExt failed with error message: " + err.message + ", error code: " + err.code);
+});
+```
+
+## fileIo.listFileExtSync
+
+listFileExtSync(path: string, options?: ListFileExtOptions): string[]
+
+以同步方式列出目录下所有文件名，支持递归列出和自定义文件名过滤。
+
+可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以“/”开头。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ----- |
+| path | string | 是 | 目录的应用沙箱路径。 |
+| options | [ListFileExtOptions](#listfileextoptions) | 否 | 文件过滤选项。默认不进行过滤。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| string[] | 返回文件名数组。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 13900002 | No such file or directory. |
+| 13900011 | Out of memory. |
+| 13900018 | Not a directory. |
+| 13900020 | Invalid argument. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo, ListFileExtOptions, FileFilter } from '@kit.CoreFileKit';
+
+let filter: FileFilter = {
+  filter: (name: string): boolean => {
+    return name.endsWith('.txt');
+  }
+};
+let options: ListFileExtOptions = {
+  recursion: false,
+  listNum: 0,
+  fileFilter: filter
+};
+try {
+  let filenames = fileIo.listFileExtSync(pathDir, options);
+  console.info("listFileExtSync succeed");
+  for (let i = 0; i < filenames.length; i++) {
+    console.info("filename: %s", filenames[i]);
+  }
+} catch (err) {
+  let error = err as BusinessError;
+  console.error("listFileExtSync failed with error message: " + error.message + ", error code: " + error.code);
+}
+```
+
 ## fileIo.lseek<sup>11+</sup>
 
 ArkTS-Dyn: lseek(fd: number, offset: number, whence?: WhenceType): number
@@ -9031,6 +9161,38 @@ open接口flags参数常量。文件打开标签。
 | SYNC       | ArkTS-Dyn: number<br>ArkTS-Sta: int | 0o4010000 | 以同步IO的方式打开文件。<br> **ArkTS-Dyn起始版本：** 9 <br> **ArkTS-Sta起始版本：** 23 |
 | UNCACHE | ArkTS-Dyn: number<br>ArkTS-Sta: int | 0o10000000000    | 读写文件不进行页缓存。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **ArkTS-Dyn起始版本：** 26.0.0 <br> **ArkTS-Sta起始版本：** 26.0.0 |
 
+## FileFilter
+
+文件名过滤器接口，可通过该接口自定义文件名过滤规则。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+### filter
+
+filter(name: string): boolean
+
+用于[listFileExt](#fileiolistfileext)或[listFileExtSync](#fileiolistfileextsync)接口的文件过滤，判断指定文件名是否应包含在返回的文件列表中。
+
+> **说明**：
+>
+> 该函数调用频率较高，请避免执行耗时操作，如文件I/O、网络请求等。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ---- |
+| name | string | 是 | 待过滤的文件名或文件相对路径。递归模式下为文件的相对路径，相对路径以“/”开头。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 表示是否包含在返回的文件列表中。true：包含该文件；false：不包含该文件。 |
+
 ## Filter<sup>10+</sup>
 
 文件过滤配置项，支持listFile接口使用。
@@ -9194,6 +9356,22 @@ open接口flags参数常量。文件打开标签。
 | offset   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。 |
 | length   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>**原子化服务API（仅ArkTS-Dyn）**：从API version 11开始，该接口支持在原子化服务中使用。                                                           |
 | encoding | string                             | 否   | 当数据是string类型时有效，表示数据的编码方式。默认 'utf-8'。仅支持 'utf-8'。                                                                                                                |
+
+## ListFileExtOptions
+
+可选项类型，支持listFileExt接口使用。
+
+**起始版本**：26.0.0
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.FileManagement.File.FileIO
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| recursion | boolean | 否 | 是 | 是否递归子目录下的文件名，默认为false。<br>true：返回该目录下所有符合过滤条件的文件的相对路径（以/开头）。<br>false：返回当前目录下满足过滤要求的文件名及目录名。 |
+| listNum | number | 否 | 是 | 列出文件名数量，默认为0，表示列出所有文件。 |
+| fileFilter | [FileFilter](#filefilter) | 否 | 是 | 自定义文件名过滤的规则。 |
 
 ## ListFileOptions<sup>11+</sup>
 
