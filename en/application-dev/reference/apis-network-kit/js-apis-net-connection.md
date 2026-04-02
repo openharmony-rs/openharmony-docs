@@ -1908,7 +1908,7 @@ Sets the URL of the Proxy Auto-Configuration Script (PAC) and enables the PAC pr
 
 >**NOTE**
 >
-> 1. Currently, this API can be used to parse scripts and enable the PAC proxy capability only on PCs. For other device types, only the script address is saved and the PAC proxy capability is not enabled.<br>
+> 1. This API can parse scripts and enable the PAC proxy capability on **PC/2in1<sup>20+</sup>**, **Phone<sup>23+</sup>**, **Tablet<sup>23+</sup>** and **TV<sup>23+</sup>** devices. For wearable devices, only the script address is saved, and the PAC proxy capability is not enabled.<br>
 > 2. This API does not verify the URL authenticity. After the URL is set on the PC, the PAC proxy is started. If the URL is incorrect, the proxy fails to be started and the error code 2100002 is returned.
 
 **Required permissions**: ohos.permission.SET_PAC_URL
@@ -1978,8 +1978,8 @@ Parses the specified URL proxy address based on the configured PAC script and re
 > **NOTE**
 >
 > 1. You can use [setPacFileUrl](#connectionsetpacfileurl20) or [setPacUrl](#connectionsetpacurl15) to set the PAC script.<br>
-> 2. If no PAC script is set before this interface is called, an empty string is returned.
-> 3. Currently, the [setPacFileUrl](#connectionsetpacfileurl20) interface can be used to parse scripts and enable the PAC proxy capability only for PCs. Therefore, this interface can be used to obtain PAC proxy information only for PCs. If other devices call this API, the function does not take effect and an empty string is returned.
+> 2. If no PAC script is set before this interface is called, an empty string is returned.<br>
+> 3. The [setPacFileUrl](#connectionsetpacfileurl20) API supports parsing scripts and enabling the PAC proxy capability on PC/2in1<sup>20+</sup>, Phone<sup>23+</sup>, Tablet<sup>23+</sup> and TV<sup>23+</sup> devices. Therefore, this API can be used to obtain the PAC proxy information on PCs. For wearable devices, this API does not take effect, and an empty string is returned.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 

@@ -13,7 +13,7 @@ typedef void *OH_AI_ContextHandle
 
 ## Overview
 
-Defines the pointer to the MindSpore context. 
+Defines the pointer to the MindSpore context.
 
 **Since**: 9
 
