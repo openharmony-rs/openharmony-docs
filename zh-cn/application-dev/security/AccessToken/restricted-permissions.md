@@ -1026,6 +1026,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**: 23
 
+## ohos.permission.SET_WINDOW_TOUCH_AREAS
+
+允许应用设置窗口事件热区，非热区事件将被透传。
+
+<!--RP75--><!--RP75End-->
+
+**权限级别**: system_basic
+
+**授权方式**: 系统授权（system_grant）
+
+**支持设备**：PC/2in1
+
+**起始版本**: 26.0.0
+
 ## ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME
 
 允许应用自定义BLE广播名称。

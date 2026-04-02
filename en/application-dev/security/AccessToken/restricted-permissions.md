@@ -1026,6 +1026,20 @@ Allows an application to manage call status, such as retrieving incoming call nu
 
 **Since**: 23
 
+## ohos.permission.SET_WINDOW_TOUCH_AREAS
+
+Allows an application to configure a touch target for window events. Events occurring outside the touch target will be passed through.
+
+<!--RP75--><!--RP75End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
 ## ohos.permission.MANAGE_BLUETOOTH_ADVERTISER_NAME
 
 Allows an application to customize the BLE broadcast name.
