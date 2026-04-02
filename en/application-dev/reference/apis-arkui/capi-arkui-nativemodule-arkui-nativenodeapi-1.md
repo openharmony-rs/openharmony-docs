@@ -169,7 +169,7 @@ Removes a component from its parent node. This API is used for node operations, 
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) if the operation is not supported for the node created in ArkTS.<br>             Returns [ERROR_CODE_NATIVE_IMPL_NODE_ADAPTER_EXIST](capi-native-type-h.md#arkui_errorcode) if [NodeAdapter](capi-arkui-nativemodule-arkui-nodeadapter8h.md) already exists.|
+| int32_t | Result code.<br>             Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>             Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>             Returns [ARKUI_ERROR_CODE_NOT_SUPPROTED_FOR_ARKTS_NODE](capi-native-type-h.md#arkui_errorcode) if the operation is not supported for the node created in ArkTS.|
 
 ### insertChildAfter()
 
