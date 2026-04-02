@@ -49097,5 +49097,45 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/notification/notification-customized-ringtone.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/SpecifiedCustomizedRingtone.ets",
+				"functions":[
+					{
+						"end_line":27,
+						"name":"specified_customized_ringtone_header",
+						"start_line":16
+					},
+					{
+						"end_line":66,
+						"name":"specified_resources_rawfile",
+						"start_line":64
+					},
+					{
+						"end_line":85,
+						"name":"specified_customized_ringtone_getAppContext",
+						"start_line":73
+					},
+					{
+						"end_line":101,
+						"name":"specified_customized_ringtone_copyToSandbox",
+						"start_line":86
+					},
+					{
+						"end_line":106,
+						"name":"specified_sandbox_file",
+						"start_line":102
+					},
+					{
+						"end_line":55,
+						"name":"specified_customized_ringtone_publish_notification",
+						"start_line":35
+					}
+				]
+			}
+		]
 	}
 ]
