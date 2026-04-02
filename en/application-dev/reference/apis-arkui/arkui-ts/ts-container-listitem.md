@@ -157,7 +157,7 @@ Enumerates the sticky effects for list items.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [stickyStyle of the List component](ts-container-list.md#stickystyle9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [stickyStyle](ts-container-list.md#stickystyle9) of the **List** component instead.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -214,7 +214,8 @@ The swipe gesture works only in the list item area. If a swipe causes a child co
 ## SwipeActionItem<sup>10+</sup>
 
 Describes the swipe action item.<br>For a list in vertical layout, it refers to the delete option displayed on the left (or right) of the list item when the list item is swiped right (or left).
-<br>For a list in horizontal layout, it refers to the delete option displayed below (or above) the list item when the list item is swiped up (or down).
+
+For a list in horizontal layout, it refers to the delete option displayed below (or above) the list item when the list item is swiped up (or down).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -284,7 +285,7 @@ Triggered when the selected state of the list item for multiselect changes.
 
 | Name    | Type   | Mandatory| Description                                                        |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| isSelected | boolean | Yes  | Returns **true** if the list item is selected for multi-select; returns **false** otherwise.|
+| isSelected | boolean | Yes  | Whether the list item is selected for multi-select. Returns **true** if the list item is selected for multi-select; returns **false** otherwise.|
 
 ## ListItemSwipeActionManager<sup>21+</sup>
 
@@ -304,7 +305,7 @@ Expands the swipe action menu for the specified list item.
 | Name    | Type   | Mandatory| Description                                                        |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
 | node | [FrameNode](../js-apis-arkui-frameNode.md) | Yes  | **ListItem** node object.|
-| direction | [ListItemSwipeActionDirection](#listitemswipeactiondirection21) | Yes  | Enumerates the swipe action menu display directions for **ListItem** components.|
+| direction | [ListItemSwipeActionDirection](#listitemswipeactiondirection21) | Yes  | Swipe action menu display direction for the **ListItem** component.|
 
 **Error codes**
 
