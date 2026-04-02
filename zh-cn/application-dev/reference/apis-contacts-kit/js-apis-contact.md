@@ -2145,7 +2145,9 @@ queryContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 异步回调查询联系人
   contact.queryContacts((err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Contacts. Code: ${err.code}, message: ${err.message}`);
@@ -2190,6 +2192,7 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -2232,7 +2235,9 @@ queryContacts(holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 异步回调查询联系人
   contact.queryContacts({
     holderId: 1,
     bundleName: "",
@@ -2281,6 +2286,7 @@ queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallba
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -2321,7 +2327,9 @@ queryContacts(attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Cont
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 异步回调查询联系人
   contact.queryContacts({
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
   }, (err: BusinessError, data) => {
@@ -2369,6 +2377,7 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -2414,7 +2423,9 @@ queryContacts(holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 异步回调查询联系人
   contact.queryContacts({
     holderId: 1,
     bundleName: "",
@@ -2470,7 +2481,7 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -2484,8 +2495,6 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Contacts. data: ${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Contacts. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -2519,8 +2528,9 @@ queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;C
 **示例：**
 
 ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 根据holder和attrs查询所有的联系人
   let promise = contact.queryContacts({
     holderId: 1,
     bundleName: "",
@@ -2530,8 +2540,6 @@ queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;C
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Contacts. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Contacts. Code: ${err.code}, message: ${err.message}`);
   });
 ```
 
@@ -2550,7 +2558,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
+| phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。              |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **错误码：**
@@ -2570,6 +2578,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -2601,14 +2610,16 @@ queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array
 
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
+| phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。              |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
 **示例：**
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 根据电话号码138xxxxxxxx查询联系人
   contact.queryContactsByPhoneNumber('138xxxxxxxx', (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Contacts By PhoneNumber. Code: ${err.code}, message: ${err.message}`);
@@ -2622,7 +2633,7 @@ queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和holder查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2633,7 +2644,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
+| phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                   |
 | holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
@@ -2654,6 +2665,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -2675,7 +2687,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和holder查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2689,7 +2701,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncC
 
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
+| phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                        |
 | holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
@@ -2697,7 +2709,9 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncC
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
+  // 根据电话号码138xxxxxxxx和holderId查询联系人
   contact.queryContactsByPhoneNumber('138xxxxxxxx', {
     holderId: 1,
     bundleName: "",
@@ -2715,7 +2729,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncC
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和attrs查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2726,7 +2740,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
+| phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                  |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                          |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
@@ -2747,6 +2761,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -2766,7 +2781,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 
 queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和attrs查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2780,7 +2795,7 @@ queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callba
 
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
+| phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                    |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
 
@@ -2788,6 +2803,7 @@ queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callba
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   contact.queryContactsByPhoneNumber('138xxxxxxxx', {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -2804,7 +2820,7 @@ queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callba
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2815,7 +2831,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
+| phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                      |
 | holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
@@ -2837,6 +2853,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -2860,7 +2877,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2874,7 +2891,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| phoneNumber | string                                                | 是   | 联系人的电话号码。                                           |
+| phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                    |
 | holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，为空则使用默认应用，即联系人应用。                                        |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回失败的错误码。 |
@@ -2883,6 +2900,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   contact.queryContactsByPhoneNumber('138xxxxxxxx', {
     holderId: 1,
@@ -2903,7 +2921,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 
 queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码、holder和attrs查询联系人。使用Promise异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -2914,7 +2932,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 | 参数名      | 类型                                    | 必填 | 说明                                                         |
 | ----------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| phoneNumber | string                                  | 是   | 联系人的电话号码。                                           |
+| phoneNumber | string                                  | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                      |
 | holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人。       |
 | attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。               |
 
@@ -2940,7 +2958,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -2954,8 +2972,6 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Contacts By PhoneNumber. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Contacts By PhoneNumber. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -2977,7 +2993,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: Contact
 
 | 参数名      | 类型                                    | 必填 | 说明                   |
 | ----------- | --------------------------------------- | ---- | ---------------------- |
-| phoneNumber | string                                  | 是   | 联系人的电话号码。     |
+| phoneNumber | string                                  | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。     |
 | holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人。 |
 | attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。     |
 
@@ -2990,7 +3006,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: Contact
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   let promise = contact.queryContactsByPhoneNumber('138xxxxxxxx', {
     holderId: 1,
@@ -3001,8 +3017,6 @@ queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: Contact
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Contacts By PhoneNumber. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Contacts By PhoneNumber. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -3010,7 +3024,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: Contact
 
 queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3041,6 +3055,7 @@ queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&l
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -3058,7 +3073,7 @@ queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&l
 
 queryContactsByEmail(email: string, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3079,6 +3094,7 @@ queryContactsByEmail(email: string, callback: AsyncCallback&lt;Array&lt;Contact&
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   contact.queryContactsByEmail('xxx@email.com', (err: BusinessError, data) => {
     if (err) {
@@ -3093,7 +3109,7 @@ queryContactsByEmail(email: string, callback: AsyncCallback&lt;Array&lt;Contact&
 
 queryContactsByEmail(context: Context,  email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和holder查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3125,6 +3141,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -3146,7 +3163,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
 
 queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和holder查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和holder查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3168,6 +3185,7 @@ queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;A
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   contact.queryContactsByEmail('xxx@email.com', {
     holderId: 1,
@@ -3186,7 +3204,7 @@ queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;A
 
 queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和attrs查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3218,6 +3236,7 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -3237,7 +3256,7 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
 
 queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email和attrs查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3259,6 +3278,7 @@ queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCal
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   contact.queryContactsByEmail('xxx@email.com', {
     attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
@@ -3275,7 +3295,7 @@ queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCal
 
 queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3308,6 +3328,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -3331,7 +3352,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
 
 queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据email、holder和attrs查询联系人。使用callback异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用callback异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3354,6 +3375,7 @@ queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, ca
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   contact.queryContactsByEmail('xxx@email.com', {
     holderId: 1,
@@ -3374,7 +3396,7 @@ queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, ca
 
 queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据email、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用Promise异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3411,7 +3433,6 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -3425,8 +3446,6 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Contacts By Email. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Contacts By Email. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -3434,7 +3453,7 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
 
 queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;Contact&gt;&gt;
 
-根据email、holder和attrs查询联系人。使用Promise异步回调。该接口仅返回联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据email、holder和attrs查询联系人。使用Promise异步回调。该接口返回列表，列表仅包含联系人信息中的id、key、Emails属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -3461,7 +3480,7 @@ queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes):
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   let promise = contact.queryContactsByEmail('xxx@email.com', {
     holderId: 1,
@@ -3472,8 +3491,6 @@ queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes):
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Contacts By Email. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Contacts By Email. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -3509,6 +3526,7 @@ queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -3546,6 +3564,7 @@ queryGroups(callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   contact.queryGroups((err: BusinessError, data) => {
     if (err) {
@@ -3591,6 +3610,7 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -3633,6 +3653,7 @@ queryGroups(holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): 
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   contact.queryGroups({
     holderId: 1,
@@ -3686,8 +3707,8 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
+  import { contact } from '@kit.ContactsKit';
 
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -3698,8 +3719,6 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -3732,7 +3751,7 @@ queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   let promise = contact.queryGroups({
     holderId: 1,
@@ -3741,8 +3760,6 @@ queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Groups. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Groups. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -3750,7 +3767,7 @@ queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
 queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
-查询所有创建联系人的应用信息。使用callback异步回调。
+查询所有创建联系人的应用信息类，为空则使用默认应用。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3780,6 +3797,7 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -3797,7 +3815,7 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
 
 queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
-查询所有创建联系人的应用信息。使用callback异步回调。
+查询所有创建联系人的应用信息类，为空则使用默认应用。使用callback异步回调。
 
 > **说明**
 >
@@ -3817,6 +3835,7 @@ queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   contact.queryHolders((err: BusinessError, data) => {
     if (err) {
@@ -3831,7 +3850,7 @@ queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
 queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 
-查询所有创建联系人的应用信息。使用Promise异步回调。
+查询所有创建联系人的应用信息类，为空则使用默认应用。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3865,16 +3884,14 @@ queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
+  import { contact } from '@kit.ContactsKit';
 
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryHolders(context);
   promise.then((data) => {
     console.info(`Succeeded in querying Holders. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Holders. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -3882,7 +3899,7 @@ queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 
 queryHolders(): Promise&lt;Array&lt;Holder&gt;&gt;
 
-查询所有创建联系人的应用信息。使用Promise异步回调。
+查询所有创建联系人的应用信息类，为空则使用默认应用。使用Promise异步回调。
 
 > **说明**
 >
@@ -3901,13 +3918,11 @@ queryHolders(): Promise&lt;Array&lt;Holder&gt;&gt;
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   let promise = contact.queryHolders();
   promise.then((data) => {
     console.info(`Succeeded in querying Holders. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Holders. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -3946,6 +3961,7 @@ queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): 
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -3984,6 +4000,7 @@ queryKey(id: number, callback: AsyncCallback&lt;string&gt;): void
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   contact.queryKey(1, (err: BusinessError, data) => {
     if (err) {
@@ -4030,6 +4047,7 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
   import { common } from '@kit.AbilityKit';
 
   // 请在组件内获取context。
@@ -4073,6 +4091,7 @@ queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): voi
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   contact.queryKey(1, {
     holderId: 1,
@@ -4127,8 +4146,8 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
 >在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
+  import { contact } from '@kit.ContactsKit';
 
   // 请在组件内获取context。
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -4139,8 +4158,6 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Key. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Key. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -4174,7 +4191,7 @@ queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
 **示例：**
 
   ```js
-  import { BusinessError } from '@kit.BasicServicesKit';
+  import { contact } from '@kit.ContactsKit';
 
   let promise = contact.queryKey(1, {
     holderId: 1,
@@ -4183,8 +4200,6 @@ queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
   });
   promise.then((data) => {
     console.info(`Succeeded in querying Key. data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to query Key. Code: ${err.code}, message: ${err.message}`);
   });
   ```
 
@@ -4223,17 +4238,19 @@ queryContactsCount(context: Context): Promise&lt;number&gt;
 
 **示例：**
 
+>**说明：**
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
 ```js
 import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
 
 // 请在组件内获取context。
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let promise = contact.queryContactsCount(context);
 promise.then((data) => {
   console.info(`Succeeded in querying ContactsCount. data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to query ContactsCount. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -4258,7 +4275,7 @@ addContactViaUI(context: Context, contact: Contact): Promise&lt;number&gt;
 
 | 类型                  | 说明                                       |
 | --------------------- | ------------------------------------------ |
-| Promise&lt;number&gt; | Promise对象。返回添加的联系人id。 |
+| Promise&lt;number&gt; | Promise对象。返回添加的联系人id，即新建联系人时系统自动生成的唯一标识，一个id唯一对应一个联系人。 |
 
 **错误码：**
 
@@ -4280,7 +4297,7 @@ addContactViaUI(context: Context, contact: Contact): Promise&lt;number&gt;
 
 ```js
 import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
 
 // 请在组件内获取context。
 let contactInfo: contact.Contact = {
@@ -4295,8 +4312,6 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let promise = contact.addContactViaUI(context, contactInfo);
 promise.then((data) => {
     console.info(`Succeeded in add Contact via UI.data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to add Contact via UI. Code: ${err.code}, message: ${err.message}`);
   });
 ```
 
@@ -4344,7 +4359,7 @@ saveToExistingContactViaUI(context: Context, contact: Contact): Promise&lt;numbe
 
 ```js
 import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
 
 // 请在组件内获取context。
 let contactInfo: contact.Contact = {
@@ -4360,8 +4375,6 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let promise = contact.saveToExistingContactViaUI(context, contactInfo);
 promise.then((data) => {
     console.info(`Succeeded in save to existing Contact via UI.data->${JSON.stringify(data)}`);
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to save to existing Contact via UI. Code: ${err.code}, message: ${err.message}`);
   });
 ``` 
 
@@ -4409,7 +4422,7 @@ addContacts(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&
 <!--code_no_check-->
 ```js
 import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
 
 const contactInfo1: contact.Contact = {
   name: { fullName: 'xxx1'},
@@ -4419,11 +4432,10 @@ const contactInfo2: contact.Contact = {
   name: { fullName: 'xxx2'},
   phoneNumbers: [{ phoneNumber: '139xxxxxx' }]
 };
+// 请在组件内获取context
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 contact.addContacts(context, [contactInfo1, contactInfo2]).then((data) => {
   console.info(`Succeeded in addContacts.data->${JSON.stringify(data)}`);
-}).catch((err: BusinessError) => {
-  console.error(`Failed to addContacts. Code: ${err.code}, message: ${err.message}`);
 });
 ```
 
@@ -4553,8 +4565,8 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 |                名称               |                  类型                 | 只读  | 可选  |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
 | isMultiSelect<sup>10+</sup>         | boolean | 否   | 是   | 是否为多选，true:多选，false:单选。默认值为false。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。     |
-| maxSelectable<sup>15+</sup>         | number | 否   | 是   | 联系人选择数量上限。默认值为10000。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     | 
-| isDisplayedByName<sup>15+</sup>         | boolean | 否   | 是   | 是否按联系人姓名维度展示，true:按联系人姓名维度展示，false:按联系人号码维度展示。默认值为false。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     |
+| maxSelectable<sup>15+</sup>         | number | 否   | 是   | 联系人数量上限。默认值为10000，超出上限则抛出异常。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     | 
+| isDisplayedByName<sup>15+</sup>         | boolean | 否   | 是   | 是否按联系人姓名维度展示，默认值为false。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     |
 | filter<sup>15+</sup>         | [ContactSelectionFilter](#contactselectionfilter15) | 否   | 是   | 联系人查询过滤器。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     |
 
 ## ContactSelectionFilter<sup>15+</sup>
@@ -4569,6 +4581,34 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
 | filterClause        | [FilterClause](#filterclause15) |  否  |  否   |  过滤条件。     |
 | filterType        | [FilterType](#filtertype15) |  否  |  否    | 过滤类型。     |
+
+**示例：**
+
+>**说明：**
+>
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+
+```js
+import { contact } from '@kit.ContactsKit';
+import { common } from '@kit.AbilityKit';
+
+// 请在组件内获取context
+const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+
+const phoneNumber = '13812345678';
+const filter = {
+  filterType: 1,
+  filterClause: {
+    id: [{ filterCondition: contact.FilterCondition.EQUAL_TO, value: '1' }],
+    name: [{ filterCondition: contact.FilterCondition.CONTAINS, value: '张' }],
+    dataItem: [{ filterCondition: contact.FilterCondition.IN, value: 'a@x.com', 'b@y.com' }]
+  }
+};
+contact.getContactList({ uiContext: ctx, selectionFilter: filter})
+  .then(r =>console.info(`返回 ${r.contacts?.length ?? 0} 条`))
+  .catch(e => console.error(`查询错误 ${e.code}: ${e.message}`))
+
+```
 
 ## FilterType<sup>15+</sup>
 
@@ -4586,7 +4626,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 
 ## FilterClause<sup>15+</sup>
 
-联系人过滤条件。
+联系人过滤条件。参数之间的关系为“或”，Array的最大长度为3。
 
 **原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。
 
@@ -4623,15 +4663,15 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 | 名称                  | 值 | 说明                               |
 | --------------------- | ---- | ---------------------------------- |
 | IS_NOT_NULL    | 0 | 对应字段不为空。<br/>**系统能力**：SystemCapability.Applications.Contacts |
-| EQUAL_TO            | 1 | 对应字段等于某值。<br/>**系统能力**：SystemCapability.Applications.Contacts |
+| EQUAL_TO            | 1 | 对应字段等于某值，值类型为string。<br/>**系统能力**：SystemCapability.Applications.Contacts |
 | NOT_EQUAL_TO | 2 | 对应字段不等于某值。<br/>**系统能力**：SystemCapability.Applications.Contacts |
-| IN | 3 | 对应字段值在某数组中。<br/>**系统能力**：SystemCapability.Applications.Contacts |
+| IN | 3 | 对应字段值在某数组中，值类型为string。<br/>**系统能力**：SystemCapability.Applications.Contacts |
 | NOT_IN | 4 | 对应字段值不在某数组中。<br/>**系统能力**：SystemCapability.Applications.Contacts  |
-| CONTAINS | 5 | 对应字段值包含某值<br/>**系统能力**：SystemCapability.Applications.Contacts。 |
+| CONTAINS | 5 | 对应字段值包含某值，值类型为string。<br/>**系统能力**：SystemCapability.Applications.Contacts。 |
 
 ## DataFilter<sup>15+</sup>
 
-联系人数据过滤项。
+联系人数据过滤项。参数之间的关系为“或”，Array的最大长度为3。
 
 **原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。
 
@@ -4684,7 +4724,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 | ----------------- | --------------------------------------- | ---- | ---- | -------------------------------------- |
 | id                | number                                  | 是   | 是   | 联系人的id，由系统自动生成。                           |
 | key               | string                                  | 是   | 是   | 联系人的key，由系统自动生成。               |
-| contactAttributes | [ContactAttributes](#contactattributes) | 否   | 是   | 联系人的属性列表。                     |
+| contactAttributes | [ContactAttributes](#contactattributes) | 否   | 是   | 联系人的属性列表，如果为空，则匹配联系人的所有属性字段。                     |
 | emails            | [Email](#email)[]                       | 否   | 是   | 联系人的邮箱地址列表。                 |
 | events            | [Event](#event)[]                       | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。 |
 | groups            | [Group](#group)[]                       | 否   | 是   | 联系人的群组列表。                     |
@@ -4705,6 +4745,8 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 使用JSON格式创建联系人数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let myContact: contact.Contact = {
     phoneNumbers: [{
         phoneNumber: "138xxxxxxxx"
@@ -4749,7 +4791,7 @@ let contactAttributes: contact.ContactAttributes = {
 
 ## Attribute
 
-枚举，联系人属性列表。
+枚举，类型为number。联系人属性列表。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -4820,6 +4862,8 @@ let attributes = [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME, con
   使用JSON格式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let email: contact.Email = {
     email: "xxx@email.com",
     displayName: "displayName"
@@ -4842,9 +4886,9 @@ email.email = "xxx@email.com";
 
 | 名称        | 类型   | 只读 | 可选 | 说明         |
 | ----------- | ------ | ---- | ---- | ------------ |
-| bundleName  | string | 是   | 否   | Bundle名称，值为com.ohos.contacts。 |
-| displayName | string | 是   | 是   | 应用名称。   |
-| holderId    | number | 否   | 是   | 应用Id。     |
+| bundleName  | string | 是   | 否   | Bundle名称，默认值为com.ohos.contacts。 |
+| displayName | string | 是   | 是   | 应用名称，默认值为空。   |
+| holderId    | number | 否   | 是   | 应用Id，默认值为空。    |
 
 **对象创建示例：**
 
@@ -4927,6 +4971,8 @@ event.eventDate = "2000-01-01";
   使用JSON格式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let group: contact.Group = {
     groupId: 1,
     title: "title"
@@ -4976,6 +5022,8 @@ let group: contact.Group = {
   使用JSON格式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let imAddress: contact.ImAddress = {
     imAddress: "imAddress",
     labelName: "labelName"
@@ -5014,6 +5062,8 @@ imAddress.imAddress = "imAddress";
   使用JSON格式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let name: contact.Name = {
     familyName: "familyName",
     fullName: "fullName"
@@ -5037,6 +5087,8 @@ let name: contact.Name = {
   使用JSON格式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let nickName: contact.NickName = {
     nickName: "nickName"
 };
@@ -5082,6 +5134,8 @@ let note: contact.Note = {
   使用JSON格式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let organization: contact.Organization = {
     name: "name",
     title: "title"
@@ -5144,6 +5198,8 @@ let organization: contact.Organization = {
   使用JSON格式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let phoneNumber: contact.PhoneNumber = {
     phoneNumber: "138xxxxxxxx",
     labelId: contact.PhoneNumber.NUM_HOME
@@ -5179,7 +5235,7 @@ uri为可访问的联系人头像文件地址，[PixelMap](../apis-image-kit/ark
   使用JSON格式创建数据。
 
 ```js
-import { BusinessError } from '@kit.BasicServicesKit';
+import { contact } from '@kit.ContactsKit';
 import { image } from '@kit.ImageKit';
 
 async function SetPortraitUri(uri: string) {
@@ -5242,6 +5298,8 @@ async function SetPortraitPixelMap(photo: image.PixelMap) {
   使用JSON格式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let postalAddress: contact.PostalAddress = {
     city: "city",
     postalAddress: "postalAddress"
@@ -5251,6 +5309,8 @@ let postalAddress: contact.PostalAddress = {
   或使用new一个PostalAddress对象的方式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let postalAddress = new contact.PostalAddress();
 postalAddress.city = "city";
 postalAddress.postalAddress = "postalAddress";
@@ -5306,6 +5366,8 @@ postalAddress.postalAddress = "postalAddress";
   使用JSON格式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let relation: contact.Relation = {
     relationName: "relationName",
     labelId: contact.Relation.RELATION_ASSISTANT
@@ -5315,6 +5377,8 @@ let relation: contact.Relation = {
   或使用new一个Relation对象的方式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let relation = new contact.Relation();
 relation.relationName = "relationName";
 relation.labelId = contact.Relation.RELATION_ASSISTANT;
@@ -5359,6 +5423,8 @@ relation.labelId = contact.Relation.RELATION_ASSISTANT;
   使用JSON格式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let sipAddress: contact.SipAddress = {
     sipAddress: "sipAddress"
 };
@@ -5367,6 +5433,8 @@ let sipAddress: contact.SipAddress = {
   或使用new一个SipAddress对象的方式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let sipAddress = new contact.SipAddress();
 sipAddress.sipAddress = "sipAddress";
 ```
@@ -5388,6 +5456,8 @@ sipAddress.sipAddress = "sipAddress";
   使用JSON格式创建数据。
 
 ```js
+import { contact } from '@kit.ContactsKit';
+
 let website: contact.Website = {
     website: "website"
 };
