@@ -78,7 +78,7 @@ notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notifi
 ArkTS-Sta示例：
 ```ts
 notificationExtensionSubscription.getAllSubscriptionBundles().then((data: notificationExtensionSubscription.BundleOption[]) => {
-  console.info('%{public}s', `getAllSubscriptionBundles successfully. Data:${String(data)}`);
+  console.info(`getAllSubscriptionBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((error: Error) => {
   console.error(`getAllSubscriptionBundles fail: ${error}`);
 });
