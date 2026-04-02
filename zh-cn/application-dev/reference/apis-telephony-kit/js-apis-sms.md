@@ -26,6 +26,10 @@ createMessage\(pdu: Array&lt;number&gt;, specification: string, callback: AsyncC
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
+**ArkTS-Dyn起始版本**： 6
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
 | 参数名        | 类型                                               | 必填 | 说明                                                         |
@@ -68,6 +72,10 @@ createMessage\(pdu: Array&lt;number&gt;, specification: string\): Promise\<Short
 根据协议数据单元(PDU)和指定的短信协议创建短信实例。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Telephony.SmsMms
+
+**ArkTS-Dyn起始版本**： 6
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -177,6 +185,10 @@ sendShortMessage\(options: SendMessageOptions, callback: AsyncCallback&lt;void&g
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
+**ArkTS-Dyn起始版本**： 10
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                     |
@@ -232,6 +244,10 @@ sendShortMessage\(options: SendMessageOptions\): Promise&lt;void&gt;
 **需要权限**：ohos.permission.SEND_MESSAGES（该权限仅系统应用可申请）
 
 **系统能力**：SystemCapability.Telephony.SmsMms
+
+**ArkTS-Dyn起始版本**： 10
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -297,6 +313,10 @@ getDefaultSmsSlotId\(callback: AsyncCallback&lt;number&gt;\): void
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
 | 参数名   | 类型                        | 必填 | 说明                                     |
@@ -322,6 +342,10 @@ getDefaultSmsSlotId\(\): Promise&lt;number&gt;
 获取发送短信的默认SIM卡槽ID。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Telephony.SmsMms
+
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
 
 **返回值：**
 
@@ -350,6 +374,10 @@ hasSmsCapability\(\): boolean
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
+
 **返回值：**
 
 | 类型    | 说明                                                         |
@@ -370,6 +398,10 @@ getDefaultSmsSimId\(callback: AsyncCallback&lt;number&gt;\): void
 获取发送短信的默认SIM卡ID。使用callback异步回调。
 
 **系统能力**：SystemCapability.Telephony.SmsMms
+
+**ArkTS-Dyn起始版本**： 10
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -411,6 +443,10 @@ getDefaultSmsSimId\(\): Promise&lt;number&gt;
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
+**ArkTS-Dyn起始版本**： 10
+
+**ArkTS-Sta起始版本**： 23
+
 **返回值：**
 
 | 类型            | 说明                                                         |
@@ -445,7 +481,7 @@ promise.then((data: number) => {
 ```
 
 
-## ShortMessage
+## ShortMessage<sup>23+</sup>
 
 短信实例。
 
@@ -466,7 +502,7 @@ promise.then((data: number) => {
 | visibleRawAddress        | string                                  |  否  |  否  | 发送者地址。                                                 |
 
 
-## ShortMessageClass
+## ShortMessageClass<sup>23+</sup>
 
 短信类型。
 
@@ -481,7 +517,7 @@ promise.then((data: number) => {
 | FORWARD_MESSAGE  | 4    | 要转发到另一台设备的短信。               |
 
 
-## SendMessageOptions
+## SendMessageOptions<sup>23+</sup>
 
 发送短信的参数和回调。根据SendMessageOptions中的可选参数content的值判断短信类型。
 
@@ -499,7 +535,7 @@ promise.then((data: number) => {
 
 
 
-## ISendShortMessageCallback
+## ISendShortMessageCallback<sup>23+</sup>
 
 回调实例。返回短信发送结果、存储已发送短信的URI和是否为长短信的最后一部分。
 
@@ -512,7 +548,7 @@ promise.then((data: number) => {
 | url        | string                          | 否   | 否   | 存储发送短信的URI。                                                                        |
 
 
-## IDeliveryShortMessageCallback
+## IDeliveryShortMessageCallback<sup>23+</sup>
 
 回调实例，返回短信送达报告。
 
@@ -523,7 +559,7 @@ promise.then((data: number) => {
 | pdu  | Array&lt;number&gt; | 否   | 否   | 短信送达报告。 |
 
 
-## SendSmsResult
+## SendSmsResult<sup>23+</sup>
 
 短信发送结果。
 

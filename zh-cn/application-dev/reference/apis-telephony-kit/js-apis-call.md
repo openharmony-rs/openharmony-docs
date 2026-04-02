@@ -140,6 +140,10 @@ makeCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **系统能力**：SystemCapability.Applications.Contacts
 
+**ArkTS-Dyn起始版本**： 11
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
 | 参数名      | 类型                      | 必填 | 说明                                       |
@@ -183,6 +187,10 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.Contacts
+
+**ArkTS-Dyn起始版本**： 11
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -230,6 +238,10 @@ makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Applications.Contacts
+
+**ArkTS-Dyn起始版本**： 11
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -284,6 +296,10 @@ makeCall\(context: Context, phoneNumber: string\): Promise\<void\>
 
 **系统能力**：SystemCapability.Applications.Contacts
 
+**ArkTS-Dyn起始版本**： 12
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明       |
@@ -334,6 +350,10 @@ hasCall\(callback: AsyncCallback\<boolean\>\): void
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本**： 6
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
 | 参数名   | 类型                         | 必填 | 说明                                                         |
@@ -363,6 +383,10 @@ hasCall\(\): Promise\<boolean\>
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本**： 6
+
+**ArkTS-Sta起始版本**： 23
+
 **返回值：**
 
 | 类型                   | 说明                                    |
@@ -389,6 +413,10 @@ hasCallSync\(\): boolean
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本**： 10
+
+**ArkTS-Sta起始版本**： 23
+
 **返回值：**
 
 | 类型                   | 说明          |
@@ -410,6 +438,10 @@ getCallState\(callback: AsyncCallback\<CallState\>\): void
 获取当前通话状态。使用callback异步回调。
 
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本**： 6
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -440,6 +472,10 @@ getCallState\(\): Promise\<CallState\>
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本**： 6
+
+**ArkTS-Sta起始版本**： 23
+
 **返回值：**
 
 | 类型                                   | 说明                                    |
@@ -466,6 +502,10 @@ getCallStateSync\(\): CallState
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本**： 8
+
+**ArkTS-Sta起始版本**： 23
+
 **返回值：**
 
 | 类型                                  | 说明          |
@@ -487,6 +527,10 @@ hasVoiceCapability\(\): boolean
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
+
 **返回值：**
 
 | 类型    | 说明                                                         |
@@ -505,6 +549,10 @@ isEmergencyPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<boolean\>\
 判断是否是紧急电话号码。使用callback异步回调。
 
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -547,6 +595,10 @@ isEmergencyPhoneNumber\(phoneNumber: string, options: EmergencyNumberOptions, ca
 根据电话号码参数，判断是否是紧急电话号码。使用callback异步回调。
 
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -591,6 +643,10 @@ isEmergencyPhoneNumber\(phoneNumber: string, options?: EmergencyNumberOptions\):
 根据电话号码参数，判断是否是紧急电话号码。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -640,6 +696,10 @@ formatPhoneNumber\(phoneNumber: string, callback: AsyncCallback\<string\>\): voi
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
 | 参数名      | 类型                        | 必填 | 说明                                 |
@@ -682,6 +742,10 @@ formatPhoneNumber\(phoneNumber: string, options: NumberFormatOptions, callback: 
 电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -730,6 +794,10 @@ formatPhoneNumber\(phoneNumber: string, options?: NumberFormatOptions\): Promise
 电话号码格式化后为标准数字字符串，例如：“138 xxxx xxxx”、“0755 xxxx xxxx”。
 
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -781,6 +849,10 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string, callback: Asy
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
 | 参数名      | 类型                        | 必填 | 说明                                                  |
@@ -827,6 +899,10 @@ formatPhoneNumberToE164\(phoneNumber: string, countryCode: string\): Promise\<st
 支持所有国家码。
 
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本**： 7
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -878,6 +954,10 @@ answerCall\(callback: AsyncCallback\<void\>\): void
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本**： 23
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
@@ -923,6 +1003,10 @@ hangUpCall\(callback: AsyncCallback\<void\>\): void
 - ohos.permission.ANSWER_CALL、ohos.permission.SET_TELEPHONY_STATE权限仅系统应用可申请。
 
 **系统能力**：SystemCapability.Telephony.CallManager
+
+**ArkTS-Dyn起始版本**： 23
+
+**ArkTS-Sta起始版本**： 23
 
 **参数：**
 
@@ -971,6 +1055,10 @@ rejectCall\(callback: AsyncCallback\<void\>\): void
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
+**ArkTS-Dyn起始版本**： 23
+
+**ArkTS-Sta起始版本**： 23
+
 **参数：**
 
 | 参数名   | 类型                      | 必填 | 说明       |
@@ -1015,7 +1103,7 @@ call.rejectCall((err: BusinessError) => {
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
 | extras                   | boolean                            | 否   | 是   | 根据extras的值判断是否为视频通话，默认为语音通话。<br/>- true：视频通话。<br/>- false：语音通话。   |
 
-## CallState
+## CallState<sup>23+</sup>
 
 通话状态码。
 
