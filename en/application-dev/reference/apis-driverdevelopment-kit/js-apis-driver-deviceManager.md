@@ -81,13 +81,8 @@ You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obta
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-<<<<<<< Updated upstream
-| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
-| onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. When the bound device is disconnected, the value of **err** is **undefined** and the value of **data** is the ID of the unbound device. Otherwise, **err** is an error object. |
-=======
 | deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
->>>>>>> Stashed changes
 
 **Return value**
 
@@ -195,15 +190,9 @@ You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to ob
 
 | Name      | Type                                                                                                | Mandatory| Description                                  |
 | ------------ | ---------------------------------------------------------------------------------------------------- | ---- | -------------------------------------- |
-<<<<<<< Updated upstream
 | deviceId     | number                                                                                               | Yes  | ID of Device ID, which can be obtained via **queryDevices()**.          |
 | onDisconnect | AsyncCallback&lt;number&gt;  | Yes  | Callback used to return the result. When the bound device is disconnected, the value of **err** is **undefined** and the value of **data** is the ID of the unbound device. Otherwise, **err** is an error object.                    |
 | callback     | AsyncCallback&lt;{deviceId: number; remote: [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject);}&gt; | Yes  | Callback used to return the result. When the device is bound successfully, **err** is **undefined**, and **data** contains the device ID and the bound device driver communication object. Otherwise, **err** is an error object.|
-=======
-| deviceId     | number                                                                                               | Yes  | ID of Device ID, which can be obtained via **queryDevices()**.          |
-| onDisconnect | AsyncCallback&lt;number&gt;                                                                          | Yes  | Callback to be invoked when the bound peripheral device is disconnected.                    |
-| callback     | AsyncCallback&lt;{deviceId: number; remote: [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject);}&gt; | Yes  | Callback invoked to return the communication object of the peripheral device bound.|
->>>>>>> Stashed changes
 
 **Error codes**
 
@@ -261,15 +250,9 @@ You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to ob
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-<<<<<<< Updated upstream
 | deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. When the bound device is disconnected, the value of **err** is **undefined** and the value of **data** is the ID of the unbound device. Otherwise, **err** is an error object.    |
 | callback     | AsyncCallback&lt;[RemoteDeviceDriver](#remotedevicedriver11)&gt;| Yes| Callback used to return the result. When the device driver is successfully bound, **err** is **undefined** and **data** is a [RemoteDeviceDriver](#remotedevicedriver11) object that contains the device ID and remote object. Otherwise, **err** is an error object.|
-=======
-| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
-| onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
-| callback     | AsyncCallback&lt;[RemoteDeviceDriver](#remotedevicedriver11)&gt;| Yes| Binding result, including the device ID and remote object.|
->>>>>>> Stashed changes
 
 **Error codes**
 
@@ -322,13 +305,8 @@ You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obta
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-<<<<<<< Updated upstream
 | deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. When the bound device is disconnected, the value of **err** is **undefined** and the value of **data** is the ID of the unbound device. Otherwise, **err** is an error object.          |
-=======
-| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
-| onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
->>>>>>> Stashed changes
 
 **Return value**
 
@@ -385,13 +363,8 @@ You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obta
 
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
-<<<<<<< Updated upstream
 | deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. When the bound device is disconnected, the value of **err** is **undefined** and the value of **data** is the ID of the unbound device. Otherwise, **err** is an error object.          |
-=======
-| deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
-| onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback to be invoked when the bound peripheral device is disconnected.          |
->>>>>>> Stashed changes
 
 **Return value**
 
@@ -447,13 +420,8 @@ Unbinds a peripheral device.
 
 | Name  | Type                       | Mandatory| Description                          |
 | -------- | --------------------------- | ---- | ------------------------------ |
-<<<<<<< Updated upstream
 | deviceId | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
 | callback | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. When the bound device is disconnected, the value of **err** is **undefined** and the value of **data** is the ID of the unbound device. Otherwise, **err** is an error object.              |
-=======
-| deviceId | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
-| callback | AsyncCallback&lt;number&gt; | Yes  | Callback invoked to return the result.              |
->>>>>>> Stashed changes
 
 **Error codes**
 
