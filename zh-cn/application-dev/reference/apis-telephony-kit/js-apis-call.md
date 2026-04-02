@@ -140,7 +140,7 @@ makeCall\(phoneNumber: string, callback: AsyncCallback\<void\>\): void
 
 **系统能力**：SystemCapability.Applications.Contacts
 
-**ArkTS-Dyn起始版本**： 11
+**ArkTS-Dyn起始版本**： 7
 
 **ArkTS-Sta起始版本**： 23
 
@@ -188,7 +188,7 @@ makeCall\(phoneNumber: string\): Promise\<void\>
 
 **系统能力**：SystemCapability.Applications.Contacts
 
-**ArkTS-Dyn起始版本**： 11
+**ArkTS-Dyn起始版本**： 7
 
 **ArkTS-Sta起始版本**： 23
 
@@ -237,11 +237,13 @@ makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
 
 **原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
 
+**ArkTs模式**：该接口仅适用于ArkTs-Dyn。
+
+**相关接口**：该接口对应的ArkTs-Sta接口是[makecall](#callmakecall7)
+
 **系统能力**：SystemCapability.Applications.Contacts
 
-**ArkTS-Dyn起始版本**： 11
-
-**ArkTS-Sta起始版本**： 23
+**ArkTS-Dyn起始版本**： 24
 
 **参数：**
 
@@ -502,7 +504,7 @@ getCallStateSync\(\): CallState
 
 **系统能力**：SystemCapability.Telephony.CallManager
 
-**ArkTS-Dyn起始版本**： 8
+**ArkTS-Dyn起始版本**： 10
 
 **ArkTS-Sta起始版本**： 23
 
@@ -1103,9 +1105,13 @@ call.rejectCall((err: BusinessError) => {
 | ------------------------ | ---------------------------------- | ---- | ---- | ----------------------------------------------------------------------------------------------- |
 | extras                   | boolean                            | 否   | 是   | 根据extras的值判断是否为视频通话，默认为语音通话。<br/>- true：视频通话。<br/>- false：语音通话。   |
 
-## CallState<sup>23+</sup>
+## CallState
 
 通话状态码。
+
+**ArkTS-Dyn起始版本**： 6
+ 
+**ArkTS-Sta起始版本**： 23
 
 **系统能力**：SystemCapability.Telephony.CallManager
 

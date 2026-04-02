@@ -481,9 +481,13 @@ promise.then((data: number) => {
 ```
 
 
-## ShortMessage<sup>23+</sup>
+## ShortMessage
 
 短信实例。
+
+**ArkTS-Dyn起始版本**： 6
+ 
+**ArkTS-Sta起始版本**： 23
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -502,9 +506,13 @@ promise.then((data: number) => {
 | visibleRawAddress        | string                                  |  否  |  否  | 发送者地址。                                                 |
 
 
-## ShortMessageClass<sup>23+</sup>
+## ShortMessageClass
 
 短信类型。
+
+**ArkTS-Dyn起始版本**： 6
+ 
+**ArkTS-Sta起始版本**： 23
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -517,9 +525,13 @@ promise.then((data: number) => {
 | FORWARD_MESSAGE  | 4    | 要转发到另一台设备的短信。               |
 
 
-## SendMessageOptions<sup>23+</sup>
+## SendMessageOptions
 
 发送短信的参数和回调。根据SendMessageOptions中的可选参数content的值判断短信类型。
+
+**ArkTS-Dyn起始版本**： 6
+ 
+**ArkTS-Sta起始版本**： 23
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -535,9 +547,13 @@ promise.then((data: number) => {
 
 
 
-## ISendShortMessageCallback<sup>23+</sup>
+## ISendShortMessageCallback
 
 回调实例。返回短信发送结果、存储已发送短信的URI和是否为长短信的最后一部分。
+
+**ArkTS-Dyn起始版本**： 6
+ 
+**ArkTS-Sta起始版本**： 23
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
@@ -548,7 +564,11 @@ promise.then((data: number) => {
 | url        | string                          | 否   | 否   | 存储发送短信的URI。                                                                        |
 
 
-## IDeliveryShortMessageCallback<sup>23+</sup>
+## IDeliveryShortMessageCallback
+
+**ArkTS-Dyn起始版本**： 6
+ 
+**ArkTS-Sta起始版本**： 23
 
 回调实例，返回短信送达报告。
 
@@ -559,9 +579,13 @@ promise.then((data: number) => {
 | pdu  | Array&lt;number&gt; | 否   | 否   | 短信送达报告。 |
 
 
-## SendSmsResult<sup>23+</sup>
+## SendSmsResult
 
 短信发送结果。
+
+**ArkTS-Dyn起始版本**： 6
+ 
+**ArkTS-Sta起始版本**： 23
 
 **系统能力**：SystemCapability.Telephony.SmsMms
 
