@@ -896,7 +896,10 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId: number, callback:
 
 获取调用方自身信息时不需要权限。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -981,7 +984,10 @@ getBundleInfo(bundleName: string, bundleFlags: number, callback: AsyncCallback\<
 
 获取调用方自身的信息时不需要权限。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1038,7 +1044,10 @@ getBundleInfo(bundleName: string, bundleFlags: number, userId?: number): Promise
 
 获取调用方自身的信息时不需要权限。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1121,7 +1130,10 @@ getBundleInfoSync(bundleName: string, bundleFlags: number, userId: number): Bund
 
 获取调用方自身的信息时不需要权限。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1179,7 +1191,10 @@ getBundleInfoSync(bundleName: string, bundleFlags: number): BundleInfo
 
 获取调用方自身的信息时不需要权限。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1231,7 +1246,10 @@ getBundleNameByUid(uid: number, callback: AsyncCallback\<string>): void
 
 根据给定的uid获取对应应用的bundleName。使用callback异步回调。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1280,7 +1298,10 @@ getBundleNameByUid(uid: number): Promise\<string>
 
 根据给定的uid获取对应应用的bundleName。使用Promise异步回调。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1332,7 +1353,10 @@ getBundleNameByUidSync(uid: number): string
 
 以同步方法根据给定的uid获取对应应用的bundleName。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -1381,7 +1405,10 @@ getAppCloneIdentity(uid: number): Promise\<AppCloneIdentity>;
 
 根据uid查询分身应用的包名和分身索引。使用Promise异步回调。
 
-**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
+**需要权限：** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED or ohos.permission.GET_BUNDLE_INFO
+
+ - 当调用方为三方应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED权限。
+ - 当调用方为系统应用时，需要申请ohos.permission.GET_BUNDLE_INFO_PRIVILEGED或者ohos.permission.GET_BUNDLE_INFO权限。
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
