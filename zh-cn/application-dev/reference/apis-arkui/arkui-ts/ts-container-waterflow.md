@@ -515,6 +515,10 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 设置当前WaterFlow组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。未设置时不支持空分支节点。此属性初次赋值后不支持更新，所以赋值后无法在支持空分支、不支持空分支行为之间切换。
 
+> **说明：**
+>
+> 当通过[sections](#waterflowoptions对象说明)参数设置了[WaterFlowSections](#waterflowsections12)分组，或通过[layoutMode](#waterflowoptions对象说明)设置[SLIDING_WINDOW](#waterflowlayoutmode12枚举说明)布局模式时，supportEmptyBranchInLazyLoading设为true、false、undefined或不设置supportEmptyBranchInLazyLoading，空分支后的FlowItem都会显示。
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -527,7 +531,7 @@ supportEmptyBranchInLazyLoading(supported: boolean | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                               |
 | ------ | ------ | ---- | -------------------------------------------------- |
-| supported  | boolean \| undefined | 是   | 当前WaterFlow组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，按false处理。 |
+| supported  | boolean \| undefined | 是   | 当前WaterFlow组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示显示空分支后的FlowItem；false表示不显示空分支后的FlowItem。</br>值为undefined时，按false处理。 |
 
 ## 事件
 
