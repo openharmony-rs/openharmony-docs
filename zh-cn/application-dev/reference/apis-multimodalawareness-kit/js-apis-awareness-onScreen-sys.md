@@ -497,7 +497,6 @@ trigger(capability: OnscreenAwarenessCap, options?: OnscreenAwarenessOptions): P
 | capability | [OnscreenAwarenessCap](#onscreenawarenesscap23)   | 是   | 屏上感知能力列表。 |
 | options|[OnscreenAwarenessOptions](#onscreenawarenessoptions23)| 否   | 屏上感知参数列表。|
 
-
 **返回值：**
 
   | 类型                           | 说明         |
