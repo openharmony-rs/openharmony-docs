@@ -33,6 +33,65 @@
 
 - 异步方法示例：
   <!-- @[xts_encrypt_decrypt_aes_symkey_asynchronous](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_xts_encryption_decryption/aes_xts_encryption_decryption_asynchronous.ets) -->
+  
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  function generateRandom(len: number) {
+    let rand = cryptoFramework.createRandom();
+    let generateRandSync = rand.generateRandomSync(len);
+    return generateRandSync;
+  }
+  
+  function genIvParamsSpec() {
+    let ivBlob = generateRandom(16);
+    let ivParamsSpec: cryptoFramework.IvParamsSpec = {
+      algName: 'IvParamsSpec',
+      iv: ivBlob
+    };
+    return ivParamsSpec;
+  }
+  
+  let iv = genIvParamsSpec();
+  
+  // 加密消息
+  async function encryptMessagePromise(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
+    let cipher = cryptoFramework.createCipher('AES128|XTS');
+    await cipher.init(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, iv);
+    let cipherData = await cipher.doFinal(plainText);
+    return cipherData;
+  }
+  
+  // 解密消息
+  async function decryptMessagePromise(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
+    let decoder = cryptoFramework.createCipher('AES128|XTS');
+    await decoder.init(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, iv);
+    let decryptData = await decoder.doFinal(cipherText);
+    return decryptData;
+  }
+  
+  export async function aesXTS() : Promise<string> {
+    try {
+      let synGenerator = cryptoFramework.createSymKeyGenerator('AES256')
+      let symKey = await synGenerator.generateSymKey()
+      let message = 'This is a xts encrypt decrypt test';
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = await encryptMessagePromise(symKey, plainText);
+      let decryptText = await decryptMessagePromise(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed');
+      }
+      return 'success';
+    } catch (error) {
+      console.error('xts decrypt failed. error: ' + error);
+      return 'fail';
+    }
+  }
+  ```
 
 
 - 同步方法示例：
