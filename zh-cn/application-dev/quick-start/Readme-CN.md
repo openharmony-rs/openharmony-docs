@@ -80,7 +80,7 @@
     - [ArkTS静态类型及应用迁移改造概述](arkts-sta-additions-application-migration.md)
     - [ArkTS静态类型迁移改造案例](arkts-sta-migration-case.md)
     - [ArkTS静态类型改造案例](arkts-sta-transformation-case.md)
-    - [ArkTS静态类型应用迁移改造常见问题](arkts-sta-migration-questions)
+    - [ArkTS静态类型应用迁移改造常见问题](arkts-sta-migration-questions.md)
   - [ArkTS静态类型术语](arkts-sta-terminology.md)
   - [ArkTS高性能编程实践](arkts-high-performance-programming.md)
   - 面向其他语言的ArkTS迁移指导
