@@ -239,8 +239,6 @@ makeCall\(phoneNumber: string, options?: MakeCallOptions\): Promise\<void\>
 
 **ArkTs模式**：该接口仅适用于ArkTs-Dyn。
 
-**相关接口**：该接口对应的ArkTs-Sta接口是[makecall](#callmakecall7)
-
 **系统能力**：SystemCapability.Applications.Contacts
 
 **ArkTS-Dyn起始版本**： 24
