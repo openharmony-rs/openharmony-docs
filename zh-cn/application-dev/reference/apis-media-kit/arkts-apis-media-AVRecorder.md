@@ -319,13 +319,15 @@ avRecorder.updateRotation(rotation).then(() => {
 });
 ```
 
-## setMetadata<sup>26+</sup>
+## setMetadata
 
 setMetadata(metadata: Record&lt;string, string&gt;): void
 
 设置录制的元数据信息，这些信息将会被写入到录制生成的音视频文件中。
 
 只能在[prepare()](#prepare9-1)事件成功触发后，且在[stop()](#stop9)之前调用setMetadata方法。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.Multimedia.Media.AVRecorder
 
