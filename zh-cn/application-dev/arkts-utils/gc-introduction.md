@@ -167,7 +167,7 @@ heap中生成两个Semi Space，供copying使用。
 | 参数名 | 范围 | 作用 |
 | --- | --- | --- |
 | semiSpaceSize | 2MB-4MB/2MB-8MB/2MB-16MB | SemiSpace空间大小，会根据堆总大小有不同的范围限制。 |
-| semiSpaceTriggerConcurrentMark | 1M/1.5M/1.5M | 首次单独触发Semi Space的并发mark的界限值，超过该值则触发。 |
+| semiSpaceTriggerConcurrentMark | 1MB/1.5MB/1.5MB | 首次单独触发Semi Space的并发mark的界限值，超过该值则触发。 |
 | semiSpaceStepOvershootSize| 2MB | 允许过冲最大大小。 |
 
 **Old Space 和 Huge Object Space**
@@ -233,7 +233,7 @@ heap中生成两个Semi Space，供copying使用。
 
 **Full GC**
 
-- **触发机制**：不会由内存阈值触发。应用切换到后台场景之后，若预测可回收对象大小超过2M，则会触发一次Full GC。DumpHeapSnapshot和AllocationTracker工具默认会触发Full GC。Native接口和ArkTS接口也可触发。
+- **触发机制**：不会由内存阈值触发。应用切换到后台场景之后，若预测可回收对象大小超过2MB，则会触发一次Full GC。DumpHeapSnapshot和AllocationTracker工具默认会触发Full GC。Native接口和ArkTS接口也可触发。
 - **功能描述**：对年轻代和老年代做全量压缩，主要用于性能不敏感场景，最大限度回收内存。
 - **场景**：后台场景。
 - **日志关键词**：`[ CompressGC ]`
