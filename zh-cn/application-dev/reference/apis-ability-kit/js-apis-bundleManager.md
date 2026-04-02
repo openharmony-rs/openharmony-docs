@@ -1746,9 +1746,9 @@ try {
 
 ## bundleManager.getInstalledBundleList
 
-getInstalledBundleList(bundleFlags: number, userId?: number): Promise<Array\<BundleInfo>>
+getInstalledBundleList(bundleFlags: number): Promise<Array\<BundleInfo>>
 
-根据给定的bundleFlags和userId获取系统中所有的BundleInfo。使用Promise异步回调。
+根据给定的bundleFlags获取系统中所有的BundleInfo。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1763,7 +1763,6 @@ getInstalledBundleList(bundleFlags: number, userId?: number): Promise<Array\<Bun
 | 参数名     | 类型   | 必填 | 说明                                             |
 | ----------- | ------ | ---- | -------------------------------------------------- |
 | [bundleFlags](js-apis-bundleManager.md#bundleflag) | number | 是   | 指定返回的BundleInfo所包含的信息。                   |
-| userId      | number | 否   | 表示用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取，默认值：调用方所在用户，取值范围：大于等于0。                      |
 
 **返回值：**
 
