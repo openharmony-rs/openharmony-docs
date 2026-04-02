@@ -4249,7 +4249,7 @@ export default class EntryAbility extends UIAbility {
 
 setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
 
-设置应用在多任务中显示的图片，使用Promise异步回调。
+设置应用在多任务中和Dock栏悬停时显示的图片，使用Promise异步回调。
 
 > **说明：**
 >
@@ -4338,7 +4338,7 @@ export default class EntryAbility extends UIAbility {
 
 removeImageForRecent(): Promise&lt;void&gt;
 
-移除应用设置的在多任务中显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。
+移除应用设置的在多任务中和Dock栏悬停时显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。
 
 **系统接口：** 此接口为系统接口。
 

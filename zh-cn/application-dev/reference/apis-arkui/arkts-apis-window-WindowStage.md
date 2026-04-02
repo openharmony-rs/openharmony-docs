@@ -1925,7 +1925,7 @@ export default class EntryAbility extends UIAbility {
 
 setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Promise&lt;void&gt;
 
-设置应用在多任务中显示的图片，使用Promise异步回调。
+设置应用在多任务中和Dock栏悬停时显示的图片，使用Promise异步回调。
 
 > **说明：**
 >
@@ -1935,11 +1935,13 @@ setImageForRecent(imageResource: number | image.PixelMap, value: ImageFit): Prom
 
 **系统能力**：SystemCapability.Window.SessionManager
 
+**需要权限：** ohos.permission.MANAGE_RECENT_SNAPSHOT
+
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ----------- | ------- | ---- | ------------------------------------------------------------ |
-| imgResource | number \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 应用自定义的图片资源，可传入资源id或PixelMap位图。|
+| imgResource | number \| [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是   | 应用自定义的图片资源，可传入资源id或PixelMap位图。传入资源id时，将图片资源需放在resources/base/media目录下，通过`$r`资源访问方式获取对应图片的资源id，这里以获取startIcon图片的资源id为例给出示意：`$r("app.media.startIcon").id`。|
 | value | [ImageFit](arkui-ts/ts-appendix-enums.md#imagefit) | 是 | 应用自定义图片的填充方式。 |
 
 **返回值：**
@@ -2003,6 +2005,18 @@ export default class EntryAbility extends UIAbility {
           console.error(`Failed to set image for recent.`);
         }
       })
+
+      let imgResourceId = $r("app.media.startIcon").id
+      try {
+        let promise2 = windowStage.setImageForRecent(imgResourceId, ImageFit.Fill);
+        promise2.then(() => {
+          console.info(`Succeeded in setting image for recent`);
+        }).catch((err: BusinessError) => {
+          console.error(`Failed to set image for recent. Cause code: ${err.code}, message: ${err.message}`);
+        });
+      } catch (exception) {
+        console.error(`Failed to set image for recent.`);
+      }
     });
   }
 };
@@ -2012,11 +2026,13 @@ export default class EntryAbility extends UIAbility {
 
 removeImageForRecent(): Promise&lt;void&gt;
 
-移除应用设置的在多任务中显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。
+移除应用设置的在多任务中和Dock栏悬停时显示的图片，下次进多任务查看应用卡片时生效，使用Promise异步回调。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Window.SessionManager
+
+**需要权限：** ohos.permission.MANAGE_RECENT_SNAPSHOT
 
 **返回值：**
 
