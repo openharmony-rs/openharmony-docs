@@ -1,4 +1,5 @@
-# 使用ImageSource完成图片解码
+# 使用ImageSource获取RAW数据
+
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -6,15 +7,17 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-将所支持格式的图片文件解码成[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)，以便在应用或系统中显示或处理图片。当前支持的图片文件格式包括JPEG、PNG、GIF、WebP、BMP、SVG、ICO、DNG、HEIC、TIFF<sup>23+</sup>、HEIFS<sup>23+</sup>、WBMP<sup>23+</sup>。部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats<sup>20+</sup>](../../reference/apis-image-kit/arkts-apis-image-f.md#imagegetimagesourcesupportedformats20)接口，动态查询当前设备上的解码能力。
+图像的 RAW 数据是直接从图像传感器获取的原始数据，完整保留了所有传感器信息且无任何压缩损失。通过使用RAW数据，开发者可以获得最高质量的图像信息，并根据具体需求自定义图像处理算法，实现更灵活的图像处理和优化效果。
 
-从API version 22开始，支持对专业相机拍摄的CR2、CR3、ARW、NEF、RAF、NRW、ORF、RW2、PEF、SRW格式图片内嵌的预览图（通常为JPEG格式）进行解码。该解码能力不受运行设备类型限制。
+从API version 24开始，支持将符合格式的图片文件解码为[ImageRawData](../../reference/apis-image-kit/arkts-apis-image-i.md#imagerawdata24)，以便在应用或系统中获取RAW数据。RAW数据包含图像缓冲区和像素位数。
+
+当前支持的图片文件格式为DNG。
 
 ## 开发步骤
 
-图片解码相关API的详细介绍请参见[ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md)。
+获取图片RAW数据相关API的详细介绍请参见：[createImageRawData](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#createimagerawdata24)。
 
-1. 全局导入Image模块。
+1. 全局导入Image模块，根据实际需求导入对应的Kit模块。
    
    <!-- @[decodingPixelMap_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
    
@@ -28,7 +31,7 @@
    ```
 
 2. 获取图片。
-   - 方法一：通过沙箱路径直接获取。该方法仅适用于应用沙箱中的图片。更多细节请参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
+   - 方法一：通过沙箱路径直接获取，此方法**仅适用**于应用沙箱中的图片。获取方式请参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。
      
      <!-- @[get_filePath](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -39,7 +42,7 @@
      }
      ```
 
-   - 方法二：通过沙箱路径获取图片的文件描述符。具体请参考文档[@ohos.file.fs (文件管理)](../../reference/apis-core-file-kit/js-apis-file-fs.md)。该方法需要导入\@kit.CoreFileKit模块。
+   - 方法二：通过沙箱路径获取图片的文件描述符。具体请参考[@ohos.file.fs (文件管理)](../../reference/apis-core-file-kit/js-apis-file-fs.md)文档。该方法需要导入\@kit.CoreFileKit模块。
    
      <!-- @[get_fileFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -57,7 +60,7 @@
      }
      ```
       
-   - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[资源管理器API参考文档](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1)。该方法需要导入\@kit.LocalizationKit模块。
+   - 方法三：通过资源管理器获取资源文件的ArrayBuffer。具体请参考[getRawFileContent](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfilecontent9-1)接口。该方法需要导入\@kit.LocalizationKit模块。
 
      <!-- @[get_fileBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -78,7 +81,7 @@
      }
      ```
       
-   - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[资源管理器API参考文档](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1)。该方法需要导入\@kit.LocalizationKit模块。
+   - 方法四：通过资源管理器获取资源文件的RawFileDescriptor。具体请参考[getRawFd](../../reference/apis-localization-kit/js-apis-resource-manager.md#getrawfd9-1)接口。该方法需要导入\@kit.LocalizationKit模块。
    
      <!-- @[get_RawFd](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
      
@@ -132,51 +135,40 @@
      const imageSource: image.ImageSource = image.createImageSource(rawFileDescriptor);
      ```
 
-4. 设置解码参数DecodingOptions，解码获取pixelMap图片对象。
+4. 获取ImageRawData图片对象并打印像素值。
 
-   配置解码选项参数进行解码：
-
-   <!-- @[create_pixelMap](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
+   <!-- @[createImageRawData](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
-   async createPixelMap(imageSource: image.ImageSource | undefined): Promise<image.PixelMap | undefined> {
+   async  createImageRawData(imageSource: image.ImageSource | undefined) : Promise<image.ImageRawData | undefined> {
      if (!imageSource) {
        console.error('imageSource is undefined.');
        return undefined;
      }
-     // 配置解码选项参数。
-     let decodingOptions: image.DecodingOptions = {
-       editable: true,
-       desiredPixelFormat: image.PixelMapFormat.RGBA_8888,
-       // 设置为AUTO会根据图片资源格式和设备支持情况进行解码，如果图片资源为HDR资源且设备支持HDR解码则会解码为HDR的pixelMap。
-       desiredDynamicRange: image.DecodingDynamicRange.HDR,
-     };
-   
-     try {
-       // 生成 pixelMap 并返回
-       const pixelMap = await imageSource.createPixelMap(decodingOptions);
-       if (pixelMap) {
-         console.info('Create PixelMap successfully.');
-         // 判断pixelMap是否为hdr内容。
-         let imageInfo = await pixelMap.getImageInfo();
-         console.info(`Create PixelMap successfully with imageInfo.isHdr: ${imageInfo.isHdr}.`);
-         return pixelMap;
-       } else {
-         console.info('Create PixelMap failed.');
-         return undefined;
+     await imageSource.createImageRawData().then((data: image.ImageRawData) => {
+       let array: Uint16Array = new Uint16Array();
+       if (data.bitsPerPixel == 16 && data.buffer) {
+         array = new Uint16Array(data.buffer);
        }
-     } catch (error) {
-       console.error(`Failed to create PixelMap: ${error}.`);
+       let length = array.byteLength.valueOf();
+       console.info(`uint16Array length: ${length}`);
+       let value: string = '';
+       for (let i = 0; i < array.length && i < 10; i++) {
+         value += array[i] + ', ';
+       }
+       console.info(`get dng rawdata is:${value}.`);
+       return data
+     }).catch((err: BusinessError) => {
+       console.error(`get dng rawdata failed.err: ${JSON.stringify(err)}`);
        return undefined;
-     }
+     })
+     return undefined;
    }
    ```
-      
-   解码完成，获取到pixelMap对象后，可以进行后续[图片处理](image-transformation.md)。
    
-5. 释放pixelMap和imageSource。
+5. 释放imageSource。
 
-   确认pixelMap和imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
+   确认imageSource的异步方法已经执行完成，不再使用该变量后，可按需手动调用下面方法释放。
 
    <!-- @[release_pixelMapDecoder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/pages/DecodingPixelMap.ets) -->   
    
@@ -188,18 +180,3 @@
      imageSource = undefined;
    }
    ```
-   
-   > **补充说明：**
-   > 1. 释放imageSource的合适时机：createPixelMap执行完成，成功获取pixelMap后，如果确定不再使用imageSource的其他方法，可以手动释放imageSource。由于解码得到的pixelMap是一个独立的实例，imageSource的释放不会导致pixelMap不可用。
-   > 2. 释放pixelMap的合适时机：如果使用系统的[Image组件](../../reference/apis-arkui/arkui-ts/ts-basic-components-image.md)进行图片显示，无需手动释放，Image组件会自动管理传递给它的pixelMap；如果应用自行处理pixelMap，则推荐在页面切换、应用退后台等场景下手动释放老页面pixelMap；在内存资源紧张的场景，推荐释放除当前页面外其他不可见页面的PixelMap。
-
-## 相关实例
-
-针对图片解码开发，有以下相关实例可供参考：
-
-- [图片编辑（ArkTS）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageEdit)
-
-- [图片编辑（JS）](https://gitcode.com/openharmony/codelabs/tree/master/Media/ImageEditorTemplate)
-
-<!--RP1-->
-<!--RP1End-->
