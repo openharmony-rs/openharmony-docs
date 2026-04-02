@@ -1371,7 +1371,7 @@ seek(timeMs: number, mode?:SeekMode): void
 
 > **注意：**
 >
-> 直播场景不支持seek。
+> 从API version 24开始，直播场景支持seek。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -1687,6 +1687,102 @@ off(type: 'playbackRateDone', callback?: OnPlaybackRateDone): void
 async function test(){
   let avPlayer = await media.createAVPlayer();
   avPlayer.off('playbackRateDone');
+}
+```
+
+## getLoadedTimeRanges<sup>24+</sup>
+
+getLoadedTimeRanges(): Promise\<Array\<Range>>
+
+获取已加载的时间区间段的列表。使用Promise异步回调。
+
+> **说明：**
+>
+> - 对于本地媒体资源，返回的时间区间为0到整个媒体时长。
+> - 对于网络媒体资源，返回本地已缓存的时间区间段的列表。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型             | 说明           |
+| ---------------- | -------------- |
+| Promise\<Array\<[Range](arkts-apis-media-i.md#range11)>> | Promise对象，返回播放器当前已加载的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。 |
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.getLoadedTimeRanges().then((range: Array<media.Range>) => {
+    console.info(`Succeeded getLoadedTimeRanges== ${range}`);
+  }).catch((err: BusinessError) => {
+    console.error('Failed to getLoadedTimeRanges, error message is :' + err.message);
+  });
+}
+```
+
+## getSeekableTimeRanges<sup>24+</sup>
+
+getSeekableTimeRanges(): Promise\<Array\<Range>>
+
+获取可跳转的时间区间段的列表。使用Promise异步回调。
+
+> **说明：**
+>
+> - 对于本地媒体资源及支持分段请求的媒体资源，返回的时间区间为0到整个媒体时长。
+> - 对于仅支持分块传输的媒体资源，没有可跳转的时间范围。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型             | 说明           |
+| ---------------- | -------------- |
+| Promise\<Array\<[Range](arkts-apis-media-i.md#range11)>> | Promise对象，返回播放器当前可跳转的时间区间段的列表。<br>时间区间段以播放时间轴上的[start, end]位置表示，单位为毫秒。 |
+
+**示例：**
+
+```ts
+async function test(){
+  let avPlayer = await media.createAVPlayer();
+  avPlayer.getSeekableTimeRanges().then((range: Array<media.Range>) => {
+    console.info(`Succeeded getSeekableTimeRanges== ${range}`);
+  }).catch((err: BusinessError) => {
+    console.error('Failed to getSeekableTimeRanges, error message is :' + err.message);
+  });
+}
+```
+
+## seekToDefaultPosition<sup>24+</sup>
+
+seekToDefaultPosition(): void
+
+跳转到播放源的默认接入点。直播流为当前推荐的最新接入点；点播视频通常为视频起始位置（等同于seek(0)）。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. Return by callback. |
+
+**示例：**
+
+```ts
+async function  test(){
+  let avPlayer = await media.createAVPlayer();
+  try {
+    avPlayer.seekToDefaultPosition()
+    console.info('Succeeded seekToDefaultPosition.');
+  } catch (err) {
+    console.error('Failed to seekToDefaultPosition, error message is :' + err.message);
+  }
 }
 ```
 
