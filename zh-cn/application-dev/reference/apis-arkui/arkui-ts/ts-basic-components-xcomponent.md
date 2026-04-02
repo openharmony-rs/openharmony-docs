@@ -484,7 +484,7 @@ onSurfaceChanged(surfaceId: string, rect: SurfaceRect): void
 
 onSurfaceDestroyed(surfaceId: string): void
 
-当XComponent持有的Surface销毁后进行该回调，仅XComponent类型为SURFACE("surface")或TEXTURE时有效。
+当XComponent持有的Surface销毁后进行该回调，仅XComponent类型为SURFACE("surface")或TEXTURE时有效，具体可以参考指南[创建XComponent和管理Surface生命周期](../../../ui/napi-xcomponent-guidelines.md#创建xcomponent和管理surface生命周期)章节。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
