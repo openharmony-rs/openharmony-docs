@@ -396,3 +396,4 @@ enum Input_KeyCode
 | KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | 智能手表智感窗按键双击<br/>**起始版本：** 22 |
 | KEYCODE_DAGGER_LONG_PRESS = 3213 | 智能手表智感窗按键长按<br/>**起始版本：** 22 |
 | KEYCODE_DIV = 3220 | 智能手表左按键<br/>**起始版本：** 22 |
+| KEYCODE_XKEY = 3232 | 自定义快捷键<br/>**起始版本：** 26.0.0 |
