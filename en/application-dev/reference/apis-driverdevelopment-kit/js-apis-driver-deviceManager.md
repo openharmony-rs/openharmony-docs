@@ -82,7 +82,7 @@ You need to use [deviceManager.queryDevices](#devicemanagerquerydevices) to obta
 | Name      | Type                       | Mandatory| Description                        |
 | ------------ | --------------------------- | ---- | ---------------------------- |
 | deviceId     | number                      | Yes  | Device ID, which can be obtained via **queryDevices()**.|
-| onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. When the bound device is disconnected, the value of **err** is **undefined** and the value of **data** is the ID of the unbound device. Otherwise, **err** is an error object.|
+| onDisconnect | AsyncCallback&lt;number&gt; | Yes  | Callback used to return the result. When the bound device is disconnected, the value of **err** is **undefined** and the value of **data** is the ID of the unbound device. Otherwise, **err** is an error object. |
 
 **Return value**
 
@@ -190,7 +190,7 @@ You need to use [deviceManager.queryDevices()](#devicemanagerquerydevices) to ob
 
 | Name      | Type                                                                                                | Mandatory| Description                                  |
 | ------------ | ---------------------------------------------------------------------------------------------------- | ---- | -------------------------------------- |
-| deviceId     | number                                                                                               | Yes  | ID of Device ID, which can be obtained via **queryDevices()**.          |
+| deviceId     | number                                                                                               | Yes  | Device ID, which can be obtained via **queryDevices()**.          |
 | onDisconnect | AsyncCallback&lt;number&gt;  | Yes  | Callback used to return the result. When the bound device is disconnected, the value of **err** is **undefined** and the value of **data** is the ID of the unbound device. Otherwise, **err** is an error object.                    |
 | callback     | AsyncCallback&lt;{deviceId: number; remote: [rpc.IRemoteObject](../apis-ipc-kit/js-apis-rpc.md#iremoteobject);}&gt; | Yes  | Callback used to return the result. When the device is bound successfully, **err** is **undefined**, and **data** contains the device ID and the bound device driver communication object. Otherwise, **err** is an error object.|
 
