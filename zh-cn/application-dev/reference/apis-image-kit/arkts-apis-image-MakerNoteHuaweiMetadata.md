@@ -1,4 +1,4 @@
-# class (MakerNoteHuaweiMetadata)
+# Class (MakerNoteHuaweiMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -305,7 +305,7 @@ async function makerNoteHuaweiClone(context: Context) {
 }
 ```
 
-## getBlob<sup>23+</sup>
+## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -346,7 +346,7 @@ async function makerNoteHuaweiGetBlob(context: Context) {
 }
 ```
 
-## setBlob<sup>23+</sup>
+## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 

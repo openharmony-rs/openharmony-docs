@@ -98,7 +98,7 @@ OH_JSVM_GetValueBigintWords signBit: 0.
 
 ### OH_JSVM_CreateBigintWords
 
-根据给定的Uint64_t数组创建一个JavaScript BigInt对象。
+根据给定的uint64_t数组创建一个JavaScript BigInt对象。
 
 cpp部分代码：
 
@@ -145,7 +145,7 @@ JSVM OH_JSVM_CreateBigintWords success
 
 ### OH_JSVM_CreateBigintUint64
 
-根据给定的Uint64类型对象创建JavaScript BigInt对象。
+根据给定的uint64类型对象创建JavaScript BigInt对象。
 
 cpp部分代码：
 
@@ -191,7 +191,7 @@ JSVM OH_JSVM_CreateBigintUint64 success
 
 ### OH_JSVM_GetValueBigintUint64
 
-获取给定JavaScript BigInt的Uint64_t基础类型值。
+获取给定JavaScript BigInt的uint64_t基础类型值。
 
 cpp部分代码：
 
@@ -242,7 +242,7 @@ JSVM GetValueBigintUint64 success
 
 ### OH_JSVM_CreateBigintInt64
 
-根据给定的Uint64类型对象创建JavaScript BigInt对象。
+根据给定的uint64类型对象创建JavaScript BigInt对象。
 
 cpp部分代码：
 

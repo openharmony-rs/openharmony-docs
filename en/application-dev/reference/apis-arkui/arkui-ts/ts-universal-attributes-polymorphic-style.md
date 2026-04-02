@@ -56,16 +56,16 @@ Sets the state-specific styles for the component.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| normal | any | No| Yes| Style of the component when being stateless. Only style code blocks modified by [@Styles](../../../ui/state-management/arkts-style.md) can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| pressed | any | No| Yes| Style of the component in the pressed state. Only style code blocks decorated with @Styles can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| disabled | any | No| Yes| Style of the component in the disabled state. Only style code blocks decorated with @Styles can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| focused | any | No| Yes| Style of the component in the focused state. Only style code blocks decorated with @Styles can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| clicked | any | No| Yes| Style of the component in the clicked state. Only style code blocks decorated with @Styles can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
-| selected<sup>10+</sup> | object | No| Yes| Style of the component in the selected state. Only style code blocks decorated with @Styles can be passed.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
+| normal | any | No| Yes| Style of the component when being stateless.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| pressed | any | No| Yes| Style of the component in the pressed state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| disabled | any | No| Yes| Style of the component in the disabled state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| focused | any | No| Yes| Style of the component in the focused state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| clicked | any | No| Yes| Style of the component in the clicked state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 9.|
+| selected<sup>10+</sup> | object | No| Yes| Style of the component in the selected state.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 10.|
 
 **Notes about the selected state:**
 
-- The selected state style depends on the value of the component's selected attribute. You can change the attribute value through [onClick](ts-universal-events-click.md) or [$$](../../../ui/state-management/arkts-two-way-sync.md).
+- The selected state style depends on the value of the component's selected attribute. You can change the attribute value through a [click event](ts-universal-events-click.md) or [$$](../../../ui/state-management/arkts-two-way-sync.md).
 
 - The table below lists the components that support the selected state style and their selected attributes or parameters.
 
@@ -189,7 +189,7 @@ struct StyleExample {
 }
 ```
 
-![en-us_image_0000001211898512](figures/en-us_image_0000001211898512.gif)
+![en-us_image_0000001188742468](figures/en-us_image_0000001188742468.gif)
 
 ### Example 2: Setting Polymorphic Styles for the Radio Component
 

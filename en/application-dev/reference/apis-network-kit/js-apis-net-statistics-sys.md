@@ -119,7 +119,7 @@ statistics.off('netStatsChange');
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-Obtain the historical data traffic of the specified NIC. This API uses an asynchronous callback to return the result.
+Obtains the historical data traffic of the specified NIC. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -182,7 +182,7 @@ if (iFaceInfo) {
 
 getTrafficStatsByIface(ifaceInfo: IfaceInfo): Promise\<NetStatsInfo>
 
-Obtain the historical data traffic of the specified NIC. This API uses a promise to return the result.
+Obtains the historical data traffic of the specified NIC. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -245,7 +245,7 @@ if (iFaceInfo) {
 
 getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback\<NetStatsInfo>): void
 
-Obtain the historical data traffic of the specified application. This API uses an asynchronous callback to return the result.
+Obtains the historical data traffic of the specified application. This API uses an asynchronous callback to return the result.
 
 **System API**: This is a system API.
 
@@ -317,7 +317,7 @@ statistics.getTrafficStatsByUid(
 
 getTrafficStatsByUid(uidInfo: UidInfo): Promise\<NetStatsInfo>
 
-Obtain the historical data traffic of the specified application. This API uses a promise to return the result.
+Obtains the historical data traffic of the specified application. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -377,7 +377,7 @@ statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInf
 
 getTrafficStatsByNetwork(networkInfo: NetworkInfo): Promise\<UidNetStatsInfo>
 
-Obtain the traffic statistics of all applications on the specified network within the specified period. This API uses a promise to return the result.
+Obtains the traffic statistics of all applications on the specified network within the specified period. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -435,7 +435,7 @@ statistics.getTrafficStatsByNetwork(networkInfo).then((statsInfo: statistics.Uid
 
 getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Promise\<NetStatsInfoSequence>
 
-Obtain the traffic statistics of the specified application on the specified network within the specified period. This method uses a promise to return the result.
+Obtains the traffic statistics of the specified application on the specified network within the specified period. This method uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -488,6 +488,61 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
     console.info("getTrafficStatsByUidNetwork item:" + JSON.stringify(statsInfoSequence[i]));
   }
 })
+```
+
+## statistics.setCalibrationTraffic<sup>26+</sup>
+
+setCalibrationTraffic(simId: number, remainTraffic: number, totalTraffic?: number): Promise\<void>;
+
+Sets traffic calibration data. You can use this API to set traffic data during traffic calibration. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_NETWORK_STATS
+
+**System capability**: SystemCapability.Communication.NetManager.Core
+
+**Parameters**
+
+| Name        | Type                           | Mandatory| Description                                        |
+|-------------|-------------------------------|----|--------------------------------------------|
+| simId         | number                        | Yes | SIM card ID.                              |
+| remainTraffic | number | Yes | Remaining traffic, in bytes.|
+| totalTraffic | number | No | Total traffic, in bytes.|
+
+**Return value**
+
+| Type                                                       | Description                              |
+|-----------------------------------------------------------|----------------------------------|
+| Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Common Error Codes](../errorcode-universal.md) and [Traffic Management Error Codes](errorcode-net-statistics.md).
+
+| ID| Error Message                                    |
+| --------- | -------------------------------------------- |
+| 201       | Permission denied.                           |
+| 202       | Non-system applications use system APIs.     |
+| 401       | Parameter error.                             |
+| 801       | Capability not supportedr.                             |
+| 2100001   | Invalid parameter value, such as simId error.                     |
+| 2100002   | Failed to connect to the service.            |
+| 2100003   | System internal error, such as nullptr.                       |
+
+**Example**
+
+```js
+import { connection, statistics } from '@kit.NetworkKit';
+
+let simId:number = 1;
+let remainData:number = 600*1024*1024;   // The remaining traffic is 600 MB.
+let totalData:number = 1024*1024*1024;   // The total traffic is 1 GB.
+statistics.setCalibrationTraffic(simId, remainData, totalData).then(() => {
+  console.info(`setCalibrationTraffic succ`);
+}).catch((error: BusinessError) => {
+  console.info(`setCalibrationTraffic error. code:${error.code}, message:${error.message}`);
+});
 ```
 
 ## IfaceInfo

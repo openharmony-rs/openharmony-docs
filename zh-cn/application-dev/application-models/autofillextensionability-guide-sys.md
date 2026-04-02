@@ -304,7 +304,7 @@
 
 ### 实现情景化自动填充功能
 
-情景化自动填充的具体类型可参考[自动填充类型的定义](../reference/apis-ability-kit/js-apis-inner-application-autoFillType-sys.md)。
+情景化自动填充的具体类型可参考[AutoFillType](../reference/apis-ability-kit/js-apis-inner-application-autoFillType-sys.md)。
 
 开发者在实现情景化自动填充服务时，需要在DevEco Studio工程中手动新建一个SmartAutoFillExtensionAbility，具体步骤如下。
 

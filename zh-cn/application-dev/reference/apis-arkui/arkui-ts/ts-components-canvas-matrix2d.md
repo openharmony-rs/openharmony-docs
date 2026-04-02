@@ -6,7 +6,15 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-矩阵对象，可以对矩阵进行缩放、旋转和平移等变换。
+用于画布绘制[CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)、[OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md)、[CanvasPattern](ts-components-canvas-canvaspattern.md)和[Path2D](ts-components-canvas-path2d.md)的矩阵对象，可以对矩阵进行缩放、旋转和平移等变换。
+
+Matrix2D的使用场景包括：
+
+1. [CanvasRenderingContext2D](ts-canvasrenderingcontext2d.md)和[OffscreenCanvasRenderingContext2D](ts-offscreencanvasrenderingcontext2d.md)中调用[getTransform](ts-canvasrenderingcontext2d.md#gettransform)接口获取画布的图形变换矩阵Matrix2D对象，调用[setTransform](ts-canvasrenderingcontext2d.md#settransform-1)接口对后续绘制内容进行Matrix2D对象对应的图形变换。
+
+2. [CanvasPattern](ts-components-canvas-canvaspattern.md)中调用[setTransform](ts-components-canvas-canvaspattern.md#settransform)接口对[CanvasPattern](ts-components-canvas-canvaspattern.md)对象进行Matrix2D对象对应的图形变换。
+
+3. [Path2D](ts-components-canvas-path2d.md)中调用[addPath](ts-components-canvas-path2d.md#addpath)接口对[Path2D](ts-components-canvas-path2d.md)对象进行Matrix2D对象对应的图形变换。
 
 >  **说明：**
 > 
@@ -54,12 +62,12 @@ constructor(unit: LengthMetricsUnit)
 
 | 名称 | 类型 | 只读 | 可选   | 说明 |
 | ----- | ----- | --------------- | ------ | ------------------------ |
-| scaleX         | number | 否 | 是 | 水平缩放系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 |
-| scaleY         | number | 否 | 是 | 垂直缩放系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 |
-| rotateX       | number | 否 | 是 | 水平倾斜系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 |
-| rotateY       | number | 否 | 是 | 垂直倾斜系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 |
-| translateX | number | 否 | 是 | 水平平移距离，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 <br>默认单位：vp |
-| translateY | number | 否 | 是 | 垂直平移距离，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常。 <br>默认单位：vp |
+| scaleX         | number | 否 | 是 | 水平缩放系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 |
+| scaleY         | number | 否 | 是 | 垂直缩放系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 |
+| rotateX       | number | 否 | 是 | 水平倾斜系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 |
+| rotateY       | number | 否 | 是 | 垂直倾斜系数，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 |
+| translateX | number | 否 | 是 | 水平平移距离，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 <br>默认单位：vp |
+| translateY | number | 否 | 是 | 垂直平移距离，取值范围无限制。<br>异常值undefined按无效值处理，NaN和Infinity会导致Matrix2D异常，设置后绘制内容不显示。 <br>默认单位：vp |
 
 >  **说明：**
 >  

@@ -32,11 +32,13 @@
 | DVVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | RAWVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 | MPEG1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
+| Cinepak<sup>24+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_CINEPAK](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#变量) |
 <!--RP14--> <!--RP14End-->
 
 通过MIME类型创建解码器时，如果系统平台支持硬件解码，系统平台会优先创建硬件解码器实例；如果系统平台不支持或者硬件解码器资源不足时，系统平台会创建软件解码器实例；如果系统平台无对应解码能力，会创建解码器实例失败。
 
 系统平台提供的解码能力和设备强相关，开发者可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取系统平台支持的软硬件解码能力和能力规格。
+
 例如可以通过<!--RP15-->OH_AVCODEC_MIMETYPE_VIDEO_AVC、OH_AVCODEC_MIMETYPE_VIDEO_HEVC<!--RP15End-->来查询系统平台支持的<!--RP16-->H.264、H.265的硬件解码能力。<!--RP16End-->
 
 具体开发指导请参考[视频解码](video-decoding.md)。
@@ -51,6 +53,7 @@
 如果系统平台无对应编码能力，会创建编码器实例失败。
 
 基于MimeType创建编码器时，可以配置为H.264(OH_AVCODEC_MIMETYPE_VIDEO_AVC)和H.265(OH_AVCODEC_MIMETYPE_VIDEO_HEVC)。
+
 系统平台支持情况和每种编码的能力范围，可以通过[获取支持的编解码能力](obtain-supported-codecs.md)获取。
 
 具体开发指导请参考[视频编码](video-encoding.md)。
@@ -127,6 +130,7 @@
 | 音频       | amr                        |音频轨：AMR(amrnb、amrwb)|
 | 音频       | ape                        |音频轨：APE|
 | 音频       | wma<sup>22+</sup>                        |音频轨：AC3、WMAV1、WMAV2、Vorbis、Flac、AMR(amrnb、amrwb)、AAC、MPEG(MP2、MP3)、GSM_MS、G711mu、G711a、PCM、ADPCM_G722、ADPCM_G726、ADPCM_IMA_WAV、ADPCM_MS、ADPCM_YAMAHA、DVAUDIO<sup>23+</sup>、DTS<sup>23+</sup>|
+| 音频       | sunAU<sup>24+</sup>          |音频轨：PCM、ADPCM_G722、ADPCM_G726LE、G711mu、G711a|
 | 音频       | dts<sup>23+</sup>          |音频轨：DTS|
 | 外挂字幕   | srt                        |字幕轨：SRT|
 | 外挂字幕   | webvtt                     |字幕轨：WEBVTT|
@@ -159,6 +163,9 @@ DRM解密能力支持的解封装格式：<!--RP10-->mp4(H.264，AAC)、mpeg-ts(
    | OH_MD_KEY_CREATION_TIME            | 媒体文件创建时间的元数据，值类型为string（API14开始支持）。        |
    | OH_MD_KEY_COMMENT                  | 媒体文件注释的键，值类型为string（API20开始支持）。               |
    | OH_MD_KEY_ENABLE_MOOV_FRONT        | 媒体文件moov元数据是否前置标志，值类型为int32_t（API20开始支持）。 |
+   | OH_MD_KEY_LATITUDE                 | 纬度的键，值类型为float，范围为[-90.0, 90.0]。表示地理位置信息中的纬度（从API version 24开始支持）。 |
+   | OH_MD_KEY_LONGITUDE                | 经度的键，值类型为float，范围为[-180.0, 180.0]。表示地理位置信息中的经度（从API version 24开始支持）。 |
+   | OH_MD_KEY_ALTITUDE                 | 海拔的键，值类型为float，该键是可选的。表示地理位置信息中的海拔（从API version 24开始支持）。 |
 
 > **说明：**
 >

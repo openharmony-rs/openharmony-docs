@@ -12,7 +12,7 @@
 >
 > 本模块首批接口从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
-> 本模块不支持x86模拟器。
+> 本模块不支持在x86平台上运行。
 
 ## 导入模块
 
@@ -80,7 +80,7 @@ on(activity: ActivityType, event: ActivityEvent, reportLatencyNs: number, callba
 | -------------------- | -------------------------------------------------- | ---- | ---------------------------- |
 | activity  | [ActivityType](#activitytype)  | 是   | 设备状态能力类型。              |
 | event  | [ActivityEvent](#activityevent)  | 是   | 事件类型。              |
-| reportLatencyNs  | number  | 是   | 报告延时(取值范围1000000000-3000000000)。              |
+| reportLatencyNs  | number  | 是   | 报告延时，单位为纳秒（ns）, 取值范围[1000000000-3000000000]。              |
 | callback             | Callback<[ActivityResponse](#activityresponse)\>  | 是   | 回调函数，接收上报状态变化事件。    |
 
 **示例：**

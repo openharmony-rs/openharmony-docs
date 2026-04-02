@@ -11,7 +11,7 @@ Unlike \@Styles, which are used to reuse styles only on static pages, stateStyle
 
 > **NOTE**
 >
-> Polymorphic styles support only universal attributes. If a polymorphic style does not take effect, the attribute may be a private, component-specific attribute, for example, [fontColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-text-style.md) or [backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) of the [TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) component. In this case, you can use [attributeModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier) to dynamically set component attributes to enable the polymorphic style.
+> Polymorphic styles support only universal attributes. If a polymorphic style does not take effect, the attribute may be a private, component-specific attribute, for example, [fontColor](../../reference/apis-arkui/arkui-ts/ts-basic-components-button.md#fontcolor) or [backgroundColor](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-background.md) of the [TextInput](../../reference/apis-arkui/arkui-ts/ts-basic-components-textinput.md) component. In this case, you can use [attributeModifier](../../reference/apis-arkui/arkui-ts/ts-universal-attributes-attribute-modifier.md#attributemodifier) to dynamically set component attributes to enable the polymorphic style.
 
 ## Overview
 

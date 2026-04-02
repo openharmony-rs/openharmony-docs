@@ -2344,7 +2344,7 @@ foo();
 
 **错误码：10605096**
 
-在ArkTS中，不支持`is`运算符，必须使用`instanceof`运算符来替代。在使用`instanceof`之前，必须先使用`as`运算符将对象转换为所需类型。
+在ArkTS中，不支持`is`关键字，必须使用`instanceof`运算符来替代。在使用`instanceof`之前，必须先使用`as`运算符将对象转换为所需类型。
 
 **TypeScript**
 
@@ -3508,21 +3508,6 @@ export class C {
 ```
 
 <!-- @[no_tsDeps_ts](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/MigrationFromTypeScriptToArkTS/TsToArkTSRules/entry/src/main/ets/TypeScriptExample/NoTsDeps.ts) --> 
-
-``` TypeScript
-// NoTsDeps.ts
-import { C } from './ExportMod'
-```
-
-``` TypeScript
-// NoTsDeps.ts
-import { C } from './ExportMod'
-```
-
-``` TypeScript
-// NoTsDeps.ts
-import { C } from './ExportMod'
-```
 
 ``` TypeScript
 // NoTsDeps.ts

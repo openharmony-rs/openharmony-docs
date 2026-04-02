@@ -67,7 +67,7 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
     }
     ```
 
-    获取到设备支持的DRM解决方案的名称和唯一标识的列表后，同DRM信息做匹配，创建对应的DRM解决方案。DRM信息可通过[媒体数据解析](../avcodec/audio-video-demuxer.md#开发步骤)开发步骤第4步获取，
+    获取到设备支持的DRM解决方案的名称和唯一标识的列表后，与DRM信息做匹配，创建对应的DRM解决方案。DRM信息可通过[媒体数据解析](../avcodec/audio-video-demuxer.md#开发步骤)开发步骤第4步获取，
 
     或者直接解析媒体协议或媒体数据得到DRM解决方案唯一标识及pssh数据以生成DRM信息。
 
@@ -132,9 +132,9 @@ target_link_libraries(sample PUBLIC libnative_drm.so)
         printf("OH_MediaKeySession_GenerateMediaKeyRequest failed.");
     }
     /*
-      应用通过网络请求DRM服务，获取媒体密钥响应mediaKeyResponse，将响应传到OH_MediaKeySession_ProcessMediaKeyResponse，
-      若是离线媒体密钥响应处理，则返回离线媒体密钥标识mediaKeyId，请根据实际的数据和长度传入。
-    */
+     应用通过网络请求DRM服务，获取媒体密钥响应mediaKeyResponse，将响应传到OH_MediaKeySession_ProcessMediaKeyResponse，
+     若是离线媒体密钥响应处理，则返回离线媒体密钥标识mediaKeyId，请根据实际的数据和长度传入。
+     */
     unsigned char mediaKeyId[128] = {0x00};
     int32_t mediaKeyIdLen = 128;
     // 媒体密钥响应长度最大为MAX_DRM_MEDIA_KEY_RESPONSE_BUF_SIZE，请按实际数据输入。

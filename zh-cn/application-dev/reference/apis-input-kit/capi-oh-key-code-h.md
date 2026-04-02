@@ -125,7 +125,7 @@ enum Input_KeyCode
 | KEYCODE_EQUALS = 2058 | 按键'=' |
 | KEYCODE_LEFT_BRACKET = 2059 | 按键'[' |
 | KEYCODE_RIGHT_BRACKET = 2060 | 按键']' |
-| KEYCODE_BACKSLASH = 2061 | 按键'\' |
+| KEYCODE_BACKSLASH = 2061 | 按键'\\' |
 | KEYCODE_SEMICOLON = 2062 | 按键';' |
 | KEYCODE_APOSTROPHE = 2063 | 按键''' (单引号) |
 | KEYCODE_SLASH = 2064 | 按键'/' |
@@ -134,14 +134,14 @@ enum Input_KeyCode
 | KEYCODE_MENU = 2067 | 菜单键 |
 | KEYCODE_PAGE_UP = 2068 | 向上翻页键 |
 | KEYCODE_PAGE_DOWN = 2069 | 向下翻页键 |
-| KEYCODE_ESCAPE = 2070 | ESC键 |
+| KEYCODE_ESCAPE = 2070 | Esc键 |
 | KEYCODE_FORWARD_DEL = 2071 | 删除键 |
 | KEYCODE_CTRL_LEFT = 2072 | 左Ctrl键 |
 | KEYCODE_CTRL_RIGHT = 2073 | 右Ctrl键 |
 | KEYCODE_CAPS_LOCK = 2074 | 大写锁定键 |
 | KEYCODE_SCROLL_LOCK = 2075 | 滚动锁定键 |
-| KEYCODE_META_LEFT = 2076 | 左元修改器键 |
-| KEYCODE_META_RIGHT = 2077 | 右元修改器键 |
+| KEYCODE_META_LEFT = 2076 | 左Meta键 |
+| KEYCODE_META_RIGHT = 2077 | 右Meta键 |
 | KEYCODE_FUNCTION = 2078 | 功能键 |
 | KEYCODE_SYSRQ = 2079 | 系统请求/打印屏幕键 |
 | KEYCODE_BREAK = 2080 | Break/Pause键 |
@@ -150,9 +150,9 @@ enum Input_KeyCode
 | KEYCODE_INSERT = 2083 | 插入键 |
 | KEYCODE_FORWARD = 2084 | 前进键 |
 | KEYCODE_MEDIA_PLAY = 2085 | 多媒体键：播放 |
-| KEYCODE_MEDIA_PAUSE = 2086 | 多媒体键：暂停 |
-| KEYCODE_MEDIA_CLOSE = 2087 | 多媒体键：关闭 |
-| KEYCODE_MEDIA_EJECT = 2088 | 多媒体键：弹出 |
+| KEYCODE_MEDIA_PAUSE = 2086 | 光盘暂停键 |
+| KEYCODE_MEDIA_CLOSE = 2087 | 光盘关闭键 |
+| KEYCODE_MEDIA_EJECT = 2088 | 光盘弹出键 |
 | KEYCODE_MEDIA_RECORD = 2089 | 多媒体键：录音 |
 | KEYCODE_F1 = 2090 | 按键'F1' |
 | KEYCODE_F2 = 2091 | 按键'F2' |
@@ -199,7 +199,7 @@ enum Input_KeyCode
 | KEYCODE_BUTTON_SELECT = 2311 | 游戏手柄按键'Select'<br/>**起始版本：** 22 |
 | KEYCODE_BUTTON_START = 2312 | 游戏手柄按键'Start'<br/>**起始版本：** 22 |
 | KEYCODE_BUTTON_MODE = 2313 | 游戏手柄按键'Mode'<br/>**起始版本：** 22 |
-| KEYCODE_BUTTON_THUMBL = 2314 | 游戏手柄按键'THUMBL'<br/>**起始版本：** 22|
+| KEYCODE_BUTTON_THUMBL = 2314 | 游戏手柄按键'THUMBL'<br/>**起始版本：** 22 |
 | KEYCODE_BUTTON_THUMBR = 2315 | 游戏手柄按键'THUMBR'<br/>**起始版本：** 22 |
 | KEYCODE_SLEEP = 2600 | 睡眠键<br/>**起始版本：** 22 |
 | KEYCODE_ZENKAKU_HANKAKU = 2601 | 日文全宽/半宽键<br/>**起始版本：** 22 |
@@ -306,7 +306,7 @@ enum Input_KeyCode
 | KEYCODE_SPREADSHEET = 2703 | 电子表格键<br/>**起始版本：** 22 |
 | KEYCODE_GRAPHICSEDITOR = 2704 | 图形编辑器键<br/>**起始版本：** 22 |
 | KEYCODE_PRESENTATION = 2705 | 演示文稿键<br/>**起始版本：** 22 |
-| KEYCODE_DATABASE = 2706 | 数据库键标<br/>**起始版本：** 22 |
+| KEYCODE_DATABASE = 2706 | 数据库键<br/>**起始版本：** 22 |
 | KEYCODE_NEWS = 2707 | 新闻键<br/>**起始版本：** 22 |
 | KEYCODE_VOICEMAIL = 2708 | 语音信箱<br/>**起始版本：** 22 |
 | KEYCODE_ADDRESSBOOK = 2709 | 通讯簿<br/>**起始版本：** 22 |
@@ -323,7 +323,7 @@ enum Input_KeyCode
 | KEYCODE_APPSELECT = 2720 | 应用程序选择键<br/>**起始版本：** 22 |
 | KEYCODE_SCREENSAVER = 2721 | 屏幕保护程序键<br/>**起始版本：** 22 |
 | KEYCODE_ASSISTANT = 2722 | 智慧键<br/>**起始版本：** 22 |
-| KEYCODE_KBD_LAYOUT_NEXT  = 2723 | 下一个键盘布局键<br/>**起始版本：** 22 |
+| KEYCODE_KBD_LAYOUT_NEXT = 2723 | 下一个键盘布局键<br/>**起始版本：** 22 |
 | KEYCODE_BRIGHTNESS_MIN = 2724 | 最小亮度键<br/>**起始版本：** 22 |
 | KEYCODE_BRIGHTNESS_MAX = 2725 | 最大亮度键<br/>**起始版本：** 22 |
 | KEYCODE_KBDINPUTASSIST_PREV = 2726 | 键盘输入Assist_Previous，查看输入法输入记录<br/>**起始版本：** 22 |
@@ -332,6 +332,9 @@ enum Input_KeyCode
 | KEYCODE_KBDINPUTASSIST_NEXTGROUP = 2729 | 键盘输入Assist_Next，切换输入组中下一个输入法<br/>**起始版本：** 22 |
 | KEYCODE_KBDINPUTASSIST_ACCEPT = 2730 | 键盘输入Assist_Accept<br/>**起始版本：** 22 |
 | KEYCODE_KBDINPUTASSIST_CANCEL = 2731 | 键盘输入Assist_Cancel<br/>**起始版本：** 22 |
+| KEYCODE_MOUSE_ASSISTANT = 2732 | 鼠标AI助手键<br/>**起始版本：** 24 |
+| KEYCODE_MOUSE_INTELLIGENCE_SELECTION = 2733 | 鼠标智慧框选键<br/>**起始版本：** 24 |
+| KEYCODE_AOD_SINGLE_CLICK = 2740 | 手机触摸屏单击事件，在熄屏显示状态下使用<br/>**起始版本：** 24 |
 | KEYCODE_FRONT = 2800 | 挡风玻璃除雾器开关<br/>**起始版本：** 22 |
 | KEYCODE_SETUP = 2801 | 设置键<br/>**起始版本：** 22 |
 | KEYCODE_WAKEUP = 2802 | 唤醒键<br/>**起始版本：** 22 |
@@ -371,7 +374,7 @@ enum Input_KeyCode
 | KEYCODE_SPORT = 2837 | 运动按键<br/>**起始版本：** 22 |
 | KEYCODE_SHOP = 2838 | 商城键<br/>**起始版本：** 22 |
 | KEYCODE_ALTERASE = 2839 | 交替键<br/>**起始版本：** 22 |
-| KEYCODE_SWITCHVIDEOMODE  = 2841 | 在可用视频之间循环输出（监视器/LCD/TV输出/等）<br/>**起始版本：** 22 |
+| KEYCODE_SWITCHVIDEOMODE = 2841 | 在可用视频之间循环输出（监视器/LCD/TV输出/等）<br/>**起始版本：** 22 |
 | KEYCODE_BATTERY = 2842 | 电池按键<br/>**起始版本：** 22 |
 | KEYCODE_BLUETOOTH = 2843 | 蓝牙按键<br/>**起始版本：** 22 |
 | KEYCODE_WLAN = 2844 | 无线局域网<br/>**起始版本：** 22 |
@@ -393,3 +396,4 @@ enum Input_KeyCode
 | KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | 智能手表智感窗按键双击<br/>**起始版本：** 22 |
 | KEYCODE_DAGGER_LONG_PRESS = 3213 | 智能手表智感窗按键长按<br/>**起始版本：** 22 |
 | KEYCODE_DIV = 3220 | 智能手表左按键<br/>**起始版本：** 22 |
+| KEYCODE_XKEY = 3232 | 自定义快捷键<br/>**起始版本：** 26.0.0 |

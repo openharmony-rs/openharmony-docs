@@ -144,7 +144,7 @@ With the global [animateTo](../reference/apis-arkui/capi-arkui-nativemodule-arku
 
 ## Using Component Appearance/Disappearance Transitions
 
-Use **NODE_*XX*_TRANSITION** properties (where *XX* can be **OPACITY**, **TRANSLATE**, **SCALE**, **ROTATE**, or **MOVE**) to configure transition effects for components, enhancing the user experience when components are added to or removed from containers. The [NODE_TRANSFORM_CENTER](../reference/apis-arkui/capi-native-node-h.md) property sets the center point for animations including **NODE_SCALE_TRANSITION** and **NODE_ROTATE_ROTATE**.  
+Use **NODE_*XX*_TRANSITION** properties (where *XX* can be **OPACITY**, **TRANSLATE**, **SCALE**, **ROTATE**, or **MOVE**) to configure transition effects for components, enhancing user experience when components are added to or removed from containers. The [NODE_TRANSFORM_CENTER](../reference/apis-arkui/capi-native-node-h.md) property sets the center point for animations including **NODE_SCALE_TRANSITION** and **NODE_ROTATE_ROTATE**.  
 
 1. Design an interactive UI with a button to manage the addition and removal of transition nodes. For details about how to obtain and use the ArkUI_NodeContentHandle node, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
 

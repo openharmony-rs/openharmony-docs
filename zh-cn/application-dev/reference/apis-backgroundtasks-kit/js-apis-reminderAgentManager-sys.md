@@ -55,7 +55,7 @@ import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 | -------- | -------- | -------- | -------- | -------- |
 | uri | string | 否 | 否 | 数据使用的URI，是跨应用数据访问的唯一标识。 |
 | equalTo | Record<string, number \| string \| boolean> | 否 | 否 | 指示筛选条件，当前仅支持通过等于筛选。|
-| value | [ValueBucket](../apis-arkdata/js-apis-data-valuesBucket.md#valuesbucket) | 否 | 否 | 指示要更新的数据。 |
+| value | [ValuesBucket](../apis-arkdata/js-apis-data-valuesBucket.md#valuesbucket) | 否 | 否 | 指示要更新的数据。 |
 
 ## ReminderRequestCalendar
 

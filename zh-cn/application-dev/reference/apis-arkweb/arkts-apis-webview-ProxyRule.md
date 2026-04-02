@@ -38,7 +38,7 @@ getSchemeFilter(): ProxySchemeFilter
 
 getUrl(): string
 
-获取代理规则中的代理的URL信息。
+获取代理规则中的代理的Url信息。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -109,7 +109,7 @@ Enumerates the camera scene modes.
 | Name                        | Value      | Description                                         |
 |----------------------------|---------|---------------------------------------------|
 | NORMAL_PHOTO               | 1       | Normal photo mode. For details, see [PhotoSession](arkts-apis-camera-PhotoSession.md).  |
-| NORMAL_VIDEO               | 2       | Normal record mode. For details, see [VideoSession](arkts-apis-camera-VideoSession.md).  |
+| NORMAL_VIDEO               | 2       | Normal record mode. For details, see [VideoSession](arkts-apis-camera-VideoSession.md). |
 | SECURE_PHOTO<sup>12+</sup> | 12      | Secure mode. For details, see [SecureSession](arkts-apis-camera-SecureSession.md).|
 
 ## CameraErrorCode
@@ -252,15 +252,14 @@ Enumerates the flash modes.
 
 Enumerates the exposure modes.
 
-**Atomic service API**: This API can be used in atomic services since API version 19.
-
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
 | Name                          | Value  | Description        |
 | ----------------------------- | ---- | ----------- |
-| EXPOSURE_MODE_LOCKED          | 0    | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.|
-| EXPOSURE_MODE_AUTO            | 1    | Auto exposure. The metering point can be set by calling [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11).<br>After this mode is used, it takes effect only for the first photo capture.|
-| EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | Continuous auto exposure. The metering point cannot be set.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.|
+| EXPOSURE_MODE_UNSPECIFIED<sup>24+</sup>      | -1    | Unspecified exposure.<br>**Model restriction**: This API can be used only in the stage model.<br>**Atomic service API**: This API can be used in atomic services since API version 24.|
+| EXPOSURE_MODE_LOCKED          | 0    | Exposure locked. The metering point cannot be set.<br>After this mode is used, the exposure will be locked by default for each photo capture.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| EXPOSURE_MODE_AUTO            | 1    | Auto exposure. The metering point can be set by calling [AutoExposure.setMeteringPoint](arkts-apis-camera-AutoExposure.md#setmeteringpoint11).<br>After this mode is used, it takes effect only for the first photo capture.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
+| EXPOSURE_MODE_CONTINUOUS_AUTO | 2    | Continuous auto exposure. The metering point cannot be set.<br>After this mode is used, the camera system automatically adjusts the exposure based on the environment changes each time.<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
 
 ## FocusMode
 

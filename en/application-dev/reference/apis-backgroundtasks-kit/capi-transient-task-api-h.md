@@ -83,7 +83,7 @@ Obtains the remaining time of a transient task.
 | Name| Description|
 | -- | -- |
 | int32_t requestId | Request ID of the transient task.|
-| int32_t *delayTime | Pointer to the remaining time.|
+| int32_t *delayTime | Pointer to the remaining time of the transient task, in ms.|
 
 **Return value**
 
@@ -135,7 +135,7 @@ Obtains all information about a transient task, including the remaining quota of
 
 | Name                                                                                                         | Description                                                                                                     |
 |--------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-| [TransientTask_TransientTaskInfo ](capi-transienttask-transienttask-transienttaskinfo.md) *transientTaskInfo | All information about a transient task. For details, see [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md).|
+| [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md) *transientTaskInfo | All information about a transient task. For details, see [TransientTask_TransientTaskInfo](capi-transienttask-transienttask-transienttaskinfo.md).|
 
 **Return value**
 

@@ -11,7 +11,7 @@
 
 当应用需要获取当前设备状态时，可以调用Stationary模块，例如：需要判断当前设备处于绝对静止状态或者相对静止状态。
 
-详细的接口介绍请参考[Stationary接口](../../reference/apis-multimodalawareness-kit/js-apis-stationary.md)。
+详细的接口介绍请参考[@ohos.stationary (设备状态感知框架)](../../reference/apis-multimodalawareness-kit/js-apis-stationary.md)。
 
 ## 设备状态类型参数说明
 
@@ -80,7 +80,7 @@
    import { stationary } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
 
-   let reportLatencyNs = 1000000000;
+   let reportLatencyNs = 1000000000; // 单位：纳秒
    try {
       stationary.on('still', stationary.ActivityEvent.ENTER, reportLatencyNs, (data) => {
          console.info('data=' + JSON.stringify(data));

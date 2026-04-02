@@ -1610,6 +1610,23 @@ HSP/HAP模块module.json文件中minAPIVersion小于21，且deduplicateHar的值
 
 打包HSP/HAP时，如果deduplicateHar的属性值为true时，则要求minAPIVersion大于等于21。
 
+### 10012055 二进制文件解压缩配置校验失败
+**错误信息**
+
+Binary file decompression configuration verification failed.
+
+**错误描述**
+
+打包HSP/HAP时，二进制文件的解压缩配置校验失败。
+
+**可能原因**
+
+HSP/HAP在[module.json5](../quick-start/module-configuration-file.md)配置了应用内可执行二进制文件的路径信息[executableBinaryPaths](../quick-start/module-configuration-file.md#executablebinarypaths标签)且存在二进制文件，但配置为以不解压libs库的方式进行安装。
+
+**处理步骤**
+
+如果module.json5中配置了executableBinaryPaths且存在二进制文件，请确保配置为应用以解压libs库的方式进行安装，即module.json5配置文件中的extractNativeLibs或compressNativeLibs中至少有一项为true。
+
 ### 10013001 解析module.json或config.json文件异常
 **错误信息**
 

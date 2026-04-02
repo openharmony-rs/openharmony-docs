@@ -4807,7 +4807,7 @@
 
 允许应用从文件管理目录读取录音文件。
 
-**权限级别**：system_core
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -4821,7 +4821,7 @@
 
 允许应用向文件管理目录写入录音文件。
 
-**权限级别**：system_core
+**权限级别**：system_basic
 
 **授权方式**：系统授权（system_grant）
 
@@ -5456,7 +5456,7 @@
 **起始版本**：23
 
 ## ohos.permission.ACCESS_MINI_SYSTEM
- 	 
+
 允许系统应用接入运行态能力框架。
 
 **权限级别**：system_basic
@@ -5470,7 +5470,7 @@
 **起始版本**：23
 
 ## ohos.permission.PUBLISH_FORM_CROSS_BUNDLE
- 	
+
 允许系统应用拉起其他应用卡片添加到桌面的预览面板。
 
 获取该权限后，应用可以拉起其他应用卡片加桌预览面板，以引导用户将希望分发的卡片添加到桌面。
@@ -5527,6 +5527,34 @@
 
 **起始版本**：23
 
+## ohos.permission.MANAGE_STANDBY
+
+允许应用管理页面的Standby状态，如进入、退出Standby状态等。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | TV | PC/2in1 | Tablet | Car
+
+**起始版本**：23
+
+## ohos.permission.ACCESS_STANDBY
+
+允许应用查询页面是否处于Standby状态，并在Standby状态时接入。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | TV | PC/2in1 | Tablet | Car
+
+**起始版本**：23
+
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
 允许应用获取本地账号授权。
@@ -5570,3 +5598,117 @@
 **支持设备**：General
 
 **起始版本**：24
+
+### ohos.permission.READ_APP_PROTECTION_RECORD
+
+允许系统应用读取应用保护记录。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+### ohos.permission.WRITE_APP_PROTECTION_RECORD
+
+允许系统应用修改应用保护记录。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+### ohos.permission.READ_SPAM_SHIELD_SETTING
+
+允许系统应用读取骚扰拦截配置项。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+### ohos.permission.WRITE_SPAM_SHIELD_SETTING
+
+允许系统应用修改骚扰拦截配置项。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：26.0.0
+
+## ohos.permission.EXEMPT_MOTION_SENSORS_RESTRICTION
+
+允许应用豁免传感器管控。
+
+获取该权限后，应用始终可以使用传感器。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.ENCRYPT_VOLUME_MANAGER
+
+允许应用调用storage_manager服务中管理卷加密的接口。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.ODD_MANAGER
+
+允许应用调用storage_manager服务中管理光驱刻录的接口。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：24
+
+## ohos.permission.NOTIFICATION_SYSTEM_SUBSCRIBER
+
+允许应用订阅通知服务。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | TV | Wearable | PC/2in1 | Tablet | Car
+
+**起始版本**：26.0.0

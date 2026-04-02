@@ -248,7 +248,7 @@ Obtains the proportion of completely transparent pixels in an image.
 
 | Type                                    | Description                                           |
 | :--------------------------------------- | :---------------------------------------------- |
-| number | Proportion of completely transparent pixels in an image. The value range is [0,1].|
+| number | Proportion of completely transparent pixels in an image. The value range is [0, 1].|
 
 **Error codes**
 

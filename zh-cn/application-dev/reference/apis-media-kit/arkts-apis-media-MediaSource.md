@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-媒体数据信息。来源自[createMediaSourceWithUrl](arkts-apis-media-f.md#mediacreatemediasourcewithurl12)。
+媒体数据信息。来源于[createMediaSourceWithUrl](arkts-apis-media-f.md#mediacreatemediasourcewithurl12)。
 
 > **说明：**
 >

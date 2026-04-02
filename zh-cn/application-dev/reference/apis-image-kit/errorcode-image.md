@@ -977,6 +977,10 @@ Memory copy failed.
 
 Failed to get the data from Surface.
 
+**错误描述**
+
+获取图像数据失败。
+
 **可能原因**
 
 1. 设备不支持该图像类型。
@@ -1064,6 +1068,10 @@ Unsupported memory format or pixel format.
 
 Invalid parameter.
 
+**错误描述**
+
+非法参数。
+
 **可能原因**
 
 输入的参数无效。
@@ -1113,6 +1121,10 @@ Memory copy failed.
 **错误信息**
 
 Failed to create the PixelMap.
+
+**错误描述**
+
+创建PixelMap失败。
 
 **可能原因**
 
@@ -1256,7 +1268,11 @@ Unsupported options, e.g, cannot convert image into desired pixel format.
 
 **错误信息**
 
-Invalid parameter. Possible causes: 1. The index is negative. 2. The index is greater than or equal to the number of frames in the image.
+Invalid parameter.
+
+**错误描述**
+
+非法参数。
 
 **可能原因**
 
@@ -1366,6 +1382,10 @@ Encode failed.
 **错误信息**
 
 Invalid parameter.
+
+**错误描述**
+
+非法参数。
 
 **可能原因**
 

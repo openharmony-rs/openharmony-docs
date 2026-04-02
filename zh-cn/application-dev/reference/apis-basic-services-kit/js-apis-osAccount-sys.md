@@ -2683,7 +2683,7 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见通用[错误码说明文档](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
+以下错误码的详细介绍请参见通用[通用错误码](../errorcode-universal.md)和[账号管理错误码](./errorcode-account.md)。
 
 | 错误码ID | 错误信息       |
 | -------- | ------------- |
@@ -2982,7 +2982,7 @@ try {
 | resultCode | [AuthorizationResultCode](#authorizationresultcode24) | 否 | 否 | 授权结果码。|
 | privilege | string | 否 | 否 | 与授权关联的权限。 |
 | isReused | boolean | 否 | 是 | 是否为复用的授权结果，默认为undefined。<br/>true：表示是复用的授权结果。false：表示不是复用的授权结果。 |
-| validityPeriod | number | 否 | 是 | 授权的有效期，默认300s。 |
+| validityPeriod | number | 否 | 是 | 授权的有效期，默认值为300，单位为s。 |
 | token | Uint8Array | 否 | 是 | 授权令牌，默认为undefined。 |
 
 ## UserAuth<sup>8+</sup>
@@ -4612,6 +4612,79 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
     console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
   }
   ```
+
+### auth<sup>24+</sup>
+
+auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, options: DomainAccountAuthOptions, callback: IUserAuthCallback): void
+
+认证指定的域账号，支持指定认证选项，如服务器参数。使用callback异步回调。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**需要权限：** ohos.permission.ACCESS_USER_AUTH_INTERNAL
+
+**参数：**
+
+| 参数名      | 类型                                    | 必填 | 说明             |
+| ---------- | --------------------------------------- | ---- | --------------- |
+| domainAccountInfo   | [DomainAccountInfo](#domainaccountinfo8)  | 是   | 指示域账号信息。|
+| credential   | Uint8Array  | 是   | 指示域账号的凭据。|
+| options   | [DomainAccountAuthOptions](#domainaccountauthoptions24)  | 是   | 表示域账号认证的选项。|
+| callback   | [IUserAuthCallback](#iuserauthcallback8)  | 是   | 指示认证结果回调。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[账号管理错误码](errorcode-account.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                     |
+| -------- | --------------------------- |
+| 201 | Permission denied.|
+| 202 | Not system application.|
+| 801 | Capability not supported.|
+| 12300001 | The system service works abnormally. |
+| 12300002 | Invalid domainAccountInfo or credential. |
+| 12300003 | Domain account does not exist. |
+| 12300013 | Network exception. |
+| 12300101 | Authentication failed. |
+| 12300109 | The authentication, enrollment, or update operation is canceled. |
+| 12300110 | The authentication is locked. |
+| 12300111 | The authentication time out. |
+| 12300112 | The authentication service is busy. |
+| 12300113 | The account authentication service does not exist. |
+| 12300114 | The account authentication service works abnormally. |
+| 12300211 | Server unreachable. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let domainAccountInfo: osAccount.DomainAccountInfo = {
+  domain: 'CHINA',
+  accountName: 'zhangsan'
+}
+let credential = new Uint8Array([0]);
+try {
+  let serverParams: Record<string, Object> = {
+    "uri": "test.example.com",
+    "port": 100
+  }
+  let authOptions: osAccount.DomainAccountAuthOptions = {
+    serverParams: serverParams
+  }
+  osAccount.DomainAccountManager.auth(domainAccountInfo, credential, authOptions, {
+    onResult: (resultCode: number, authResult: osAccount.AuthResult) => {
+      console.info('auth resultCode = ' + resultCode);
+      console.info('auth authResult = ' + JSON.stringify(authResult));
+    }
+  });
+} catch (e) {
+  const err = e as BusinessError;
+  console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
+}
+```
 
 ### authWithPopup<sup>10+</sup>
 
@@ -6369,10 +6442,10 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | result       | number                       | 否    | 否   | 指示结果。         |
 | authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。|
 | remainTimes  | number                       | 否    | 是   | 指示剩余次数，默认为-1。     |
-| freezingTime | number                       | 否    | 是   | 指示冻结时间，默认为-1。     |
+| freezingTime | number                       | 否    | 是   | 指示冻结时间，单位为ms，默认为-1。     |
 | enrollmentProgress<sup>10+</sup> | string   | 否    | 是   | 指示录入进度，默认为空。 |
 | sensorInfo<sup>10+</sup> | string           | 否    | 是   | 指示传感器信息，默认为空。 |
-| nextPhaseFreezingTime<sup>12+</sup> | number | 否    | 是   | 指示下次冻结时间，默认为undefined。 |
+| nextPhaseFreezingTime<sup>12+</sup> | number | 否    | 是   | 指示下次冻结时间，单位为ms，默认为undefined。 |
 | credentialLength<sup>20+</sup> | number | 否    | 是   | 指示凭据长度，默认为undefined。查询生物信息等无定长属性的凭据时返回undefined。 |
 
 ## AuthResult<sup>8+</sup>
@@ -6387,11 +6460,11 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | ------------ | ----------- | ----- | ----- | ----------------- |
 | token        | Uint8Array  | 否    | 是   | 指示认证令牌，默认为空。      |
 | remainTimes  | number      | 否    | 是   | 指示剩余次数，默认为空。      |
-| freezingTime | number      | 否    | 是   | 指示冻结时间，默认为空。      |
-| nextPhaseFreezingTime<sup>12+</sup> | number | 否    | 是   | 指示下次冻结时间，默认为undefined。 |
+| freezingTime | number      | 否    | 是   | 指示冻结时间，单位为ms，默认为空。      |
+| nextPhaseFreezingTime<sup>12+</sup> | number | 否    | 是   | 指示下次冻结时间，单位为ms，默认为undefined。|
 | credentialId<sup>12+</sup> | Uint8Array  | 否    | 是   | 指示凭据ID，默认为空。 |
 | accountId<sup>12+</sup>         | number | 否    | 是   | 指示系统账号标识，默认为undefined。 |
-| pinValidityPeriod<sup>12+</sup> | number | 否    | 是   | 指示认证有效期，默认为undefined。 |
+| pinValidityPeriod<sup>12+</sup> | number | 否    | 是   | 指示认证有效期，单位为ms，默认为undefined。 |
 
 ## CredentialInfo<sup>8+</sup>
 
@@ -6436,7 +6509,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | authSubType  | [AuthSubType](#authsubtype8) | 否    | 否   | 指示认证凭据子类型。 |
 | templateId   | Uint8Array                               | 否    | 否   | 指示凭据模板ID。     |
 | isAbandoned<sup>20+</sup>   | boolean                      | 否    | 是   | 指示凭据是否废弃。废弃后的凭据可能作为备份凭据保存一段时间。true表示已废弃，false表示未废弃。默认为undefined，表示是否废弃未定义。   |
-| validityPeriod<sup>20+</sup>   | number                    | 否    | 是   | 指示凭据有效期。默认为undefined，表示有效期未定义。     |
+| validityPeriod<sup>20+</sup>   | number                    | 否    | 是   | 指示凭据有效期，单位为ms。默认为undefined，表示有效期未定义。     |
 
 ## GetPropertyType<sup>8+</sup>
 
@@ -6670,7 +6743,7 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | 名称      | 类型   | 只读  | 可选 | 说明       |
 | ----------- | ------ | ---- | ---- | ---------- |
 | remainTimes  | number | 否 | 否  | 剩余次数。   |
-| freezingTime | number | 否 | 否  | 冻结时间。 |
+| freezingTime | number | 否 | 否  | 冻结时间，单位为ms。 |
 
 ## GetDomainAccessTokenOptions<sup>10+</sup>
 
@@ -6686,6 +6759,19 @@ onAcquireInfo?: (module: number, acquire: number, extraInfo: Uint8Array) => void
 | domainAccountToken | Uint8Array | 否 | 否  | 域账号的令牌。 |
 | businessParams | Record<string, Object> | 否 | 否  | 业务参数，由业务方根据请求协议自定义。 |
 | callerUid | number | 否 | 否  | 调用方唯一标识符。 |
+
+
+## DomainAccountAuthOptions<sup>24+</sup>
+
+表示域账号认证的选项。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+| 名称      | 类型   | 只读  | 可选 | 说明       |
+| ----------- | ------ | ---- | ---- | ---------- |
+| serverParams | Record<string, Object> | 否 | 是  | 域账号认证服务器配置参数。默认为undefined。|
 
 ## GetDomainAccountInfoOptions<sup>10+</sup>
 

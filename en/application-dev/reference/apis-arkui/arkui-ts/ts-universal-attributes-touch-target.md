@@ -31,7 +31,7 @@ Sets one or more touch targets.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[Rectangle](#rectangle)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle) | Yes  | Touch target, including the position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>}<br>|
+| value  | Array&lt;[Rectangle](#rectangle)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle)| Yes  | Touch target, including the position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>}<br>|
 
 **Return value**
 
@@ -53,7 +53,7 @@ Sets one or more mouse response regions.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | Array&lt;[Rectangle](#rectangle)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle) | Yes  | Mouse response regions, defining the position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>} |
+| value  | Array&lt;[Rectangle](#rectangle)&gt;&nbsp;\|&nbsp;[Rectangle](#rectangle)| Yes  | Mouse response regions, defining the position and size.<br>The default touch target is the entire component. Default value:<br>{<br>x: 0,<br>y: 0,<br>width: '100%',<br>height: '100%'<br>} |
 
 **Return value**
 
@@ -102,7 +102,7 @@ Sets the touch target list for the component. When this API is called, the [resp
   >
   > - **x** and **y** can be set to a positive or negative percentage value. For example, when **x** is set to **'100%'**, the touch target is the offset from the right edge of the component by the component's width. When **x** is set to **'-100%'**, the touch target is the offset from the left edge of the component by the component's width. When **y** is set to **'100%'**, the touch target is the offset from the bottom edge of the component by the component's height. When **y** is set to **'-100%'**, the touch target is the offset from the top edge of the component by the component's height.
   >
-  > - **width** and **height** can only be set to positive percentage values. When **width** is set to **'100%'**, the width of the touch target is equal to that of the component. For example, if the width of a component is 100 vp, **'100%'** indicates that the width of the touch target is also 100 vp. when **height** is set to **'100%'**, the height of the touch target is equal to that of the component.
+  > - **width** and **height** can only be set to positive percentage values. When **width** is set to **'100%'**, the width of the touch target is equal to that of the component. For example, if the width of a component is 100 vp, **'100%'** indicates that the width of the touch target is also 100 vp. When **height** is set to **'100%'**, the height of the touch target is equal to that of the component.
   >
   > - The percentage is measured relative to the component itself.
   >
@@ -152,28 +152,48 @@ struct TouchTargetExample {
   build() {
     Column({ space: 20 }) {
       Text("{x:0,y:0,width:'50%',height:'100%'}")
-      // The width of the touch target is half of that of the button. The user will get no response if they touch the right of the button.
+      // The width of the touch target is half of that of the button. No response after touching the right part of button1.
       Button("button1")
-        .responseRegion({ x: 0, y: 0, width: '50%', height: '100%' })
+        .responseRegion({
+          x: 0,
+          y: 0,
+          width: '50%',
+          height: '100%'
+        })
         .onClick(() => {
           this.text = 'button1 clicked'
         })
 
       // Add multiple touch targets for a component.
       Text("[{x:'100%',y:0,width:'50%',height:'100%'}," +
-      "\n{ x: 0, y: 0, width: '50%', height: '100%' }]")
+        "\n{ x: 0, y: 0, width: '50%', height: '100%' }]")
       Button("button2")
         .responseRegion([
-          { x: '100%', y: 0, width: '50%', height: '100%' }, // The width of the first touch target is half of that of the button. The touch event is triggered if the half width area on the right of the button is touched.
-          { x: 0, y: 0, width: '50%', height: '100%' } // The width of the second touch target is half of the button width. The touch event is triggered if the left half of button2 is touched.
+          {
+            x: '100%',
+            y: 0,
+            width: '50%',
+            height: '100%'
+          }, // The first touch target is located rightward by one button width, with its size equal to half of the button size. The touch event is triggered if the right part of button2 is clicked.
+          {
+            x: 0,
+            y: 0,
+            width: '50%',
+            height: '100%'
+          }// The width of the second touch target is half of the button width. The touch event is triggered if the left part of button2 is clicked.
         ])
         .onClick(() => {
           this.text = 'button2 clicked'
         })
-      // The touch target is located downward by one button height, with its size equal to the button size. The touch event is triggered if the lower part of button3 is touched.
+      // The touch target is located downward by one button height, with its size equal to the button size. The touch event is triggered if the area below the button3 is clicked.
       Text("{x:0,y:'100%',width:'100%',height:'100%'}")
       Button("button3")
-        .responseRegion({ x: 0, y: '100%', width: '100%', height: '100%' })
+        .responseRegion({
+          x: 0,
+          y: '100%',
+          width: '100%',
+          height: '100%'
+        })
         .onClick(() => {
           this.text = 'button3 clicked'
         })
@@ -204,7 +224,7 @@ struct TouchTargetExample {
   build() {
     Column({ space: 20 }) {
       Text("left part of button1")
-      // The width of the touch target is half of that of the button. The user will get no response if they touch the right of the button.
+      // The width of the touch target is half of that of the button. No response after touching the right part of button1.
       Button("button1")
         .responseRegionList([{
           x: LengthMetrics.vp(0),
@@ -216,8 +236,8 @@ struct TouchTargetExample {
           this.text = 'button1 clicked'
         })
 
-      // Touch target 1 is the entire button size, shifted right by one button width. Clicking the area one button size to the left of button2 triggers the click event.
-      // Touch target 2 is the entire button size, shifted down by one button height. Clicking the area one button size below button2 with the mouse triggers the click event.
+      // Touch target 1 is located rightward by one button width, with its size equal to the entire button size. The touch event is triggered if the left part of button2 is clicked.
+      // Touch target 2 is located downward by one button height, with its size equal to the entire button size. The touch event is triggered if the area below the button2 is clicked.
       Text("one button size right of button2," + "\n one button size below button2")
       Button("button2")
         .responseRegionList([{
@@ -242,6 +262,7 @@ struct TouchTargetExample {
 }
 ```
 
+![touchtarget2.gif](figures/touchtarget2.gif)
 
 ### Example 3: Setting the Mouse Touch Target to Respond to Click Events
 
@@ -257,9 +278,9 @@ struct MouseResponseRegionExample {
   build() {
     Column({ space: 30 }) {
       // Example 1: Single touch target (only the left half of the button)
-      Text ('Touch target: left half of button (click left half to trigger)')
+      Text('Touch target: left half of the button (triggered upon a touch)')
         .fontSize(14)
-      Button ('Button1 (Left Half Touch Target)')
+      Button('Button1 (Left Half Touch Target)')
         .width(200)
         .height(60)
         // Mouse touch target: only the left half of the button (x/y relative to the component itself, width 50%)
@@ -276,8 +297,8 @@ struct MouseResponseRegionExample {
         .onClick(() => {
           this.clickInfo = 'Left half touch target of Button1 clicked';
         })
-      // Example 2: Multiple touch targets (both left half and area below the button)
-      Text ('Touch target: left half + area below the button (click either to trigger)')
+      // Example 2: Multiple touch targets (both left half of the button and area below the button)
+      Text('Touch target: the left half of the button + the area below it (triggered upon a touch on either part)')
         .fontSize(14)
       Button('Button2 (Multiple Touch Targets)')
         .width(200)
@@ -302,10 +323,10 @@ struct MouseResponseRegionExample {
         .onClick(() => {
           this.clickInfo = 'Any touch target of Button2 clicked';
         })
-      // Example 3: Target outside the button (right side blank area of the button)
-      Text ('Touch target: outside the right side of the button (click the blank area to the right of the button to trigger)')
+      // Example 3: Touch target outside the button (blank area to the right of the button)
+      Text('Touch target: outside the right part of the button (triggered upon a touch on the blank area to the right of the button)')
         .fontSize(14)
-      Button ('Button3 (Right Outer Touch Target)')
+      Button('Button3 (Right Outer Touch Target)')
         .width(200)
         .height(60)
         // Mouse touch target: area outside the right side of the button (x=100% indicates the right edge of the button)
@@ -333,3 +354,4 @@ struct MouseResponseRegionExample {
 }
 ```
 
+![touchtarget3.gif](figures/touchtarget3.gif)

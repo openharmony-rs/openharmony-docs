@@ -149,7 +149,7 @@ struct Index {
       if (this.switch) {
         // If there is only one reusable component, you do not need to set the reuse property.
         Child({ message: new Message('Child') })
-          .reuse({reuseId: () => 'Child'})
+          .reuse({ reuseId: () => 'Child' })
       }
     }
     .height('100%')
@@ -262,17 +262,17 @@ struct Index {
 
   build() {
     Column() {
-      List({ space: 3}) {
+      List({ space: 3 }) {
         Repeat(this.dataSource)
           .virtualScroll()
           .each((ri) => {
             ListItem() {
               if (ri.item.image) {
-                OneMoment({ moment: ri.item})
-                  .reuse({reuseId: () => 'withImage'})
+                OneMoment({ moment: ri.item })
+                  .reuse({ reuseId: () => 'withImage' })
               } else {
-                OneMoment({ moment: ri.item})
-                  .reuse({reuseId: () => 'noImage'})
+                OneMoment({ moment: ri.item })
+                  .reuse({ reuseId: () => 'noImage' })
               }
             }
           })
@@ -281,6 +281,7 @@ struct Index {
     }
   }
 }
+
 @ObservedV2
 class FriendMoment {
   @Trace id: string = '';
@@ -304,7 +305,7 @@ export struct OneMoment {
   // Only components with the same reuseId trigger reuse.
   aboutToReuse(): void {
     // If no extra modification is required for the state variable, the aboutToReuse callback can be removed.
-    console.info('=====aboutToReuse====OneMoment==Reused==' + this.moment.text);
+    console.info(`=====aboutToReuse====OneMoment==Reused==${this.moment.text}`);
   }
 
   build() {
@@ -455,7 +456,7 @@ struct MyComponent {
           .virtualScroll()
           .each((ri) => {
             GridItem() {
-              ReusableV2ChildComponent({item: ri.item})
+              ReusableV2ChildComponent({ item: ri.item })
             }
           })
       }
@@ -474,6 +475,7 @@ struct MyComponent {
 @ComponentV2
 struct ReusableV2ChildComponent {
   @Param item: number = 0;
+
   aboutToAppear() {
   }
 
@@ -566,7 +568,7 @@ struct Index {
             .virtualScroll()
             .each((ri) => {
               FlowItem() {
-                ReusableV2FlowItem({ item: ri.item})
+                ReusableV2FlowItem({ item: ri.item })
               }.onAppear(() => {
                 if (ri.item + 20 == this.dataSource.length) {
                   for (let i = 0; i < 50; i++) {
@@ -618,6 +620,7 @@ struct Index {
     .margin({ top: 5 })
   }
 }
+
 @ObservedV2
 class Question {
   @Trace id: string = '';
@@ -803,7 +806,7 @@ struct ReusableV2Component {
 
   aboutToReuse() {
     // If no extra modification is required for the state variable, the aboutToReuse callback can be removed.
-    console.info('ReusableComponent aboutToReuse called' + this.item)
+    console.info(`ReusableComponent aboutToReuse called${this.item}`)
   }
 
   build() {

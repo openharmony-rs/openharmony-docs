@@ -49,7 +49,7 @@
 
 ## DES
 
-[DES](crypto-sym-key-generation-conversion-spec.md#des)算法的加密过程由 16 轮相同的加密函数组成，每轮都使用不同的子密钥。子密钥是通过对原始密钥进行一系列的置换和移位操作生成的。在每一轮中，明文块被分为左右两部分，然后通过一系列的置换、替换和异或操作进行加密。
+[DES](crypto-sym-key-generation-conversion-spec.md#des)算法的加密过程包含16轮相同的加密函数，每轮都使用不同的子密钥。子密钥是通过对原始密钥进行一系列的置换和移位操作生成的。在每一轮中，明文块被分为左右两部分，然后通过一系列的置换、替换和异或操作进行加密。
 
 算法库当前提供了DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
@@ -160,7 +160,7 @@
 
 - NoPadding：不带填充。输入数据需要与分组长度匹配。
 
-- PKCS5：填充字符由一个字节序列组成，而且每个字节填充的值与要填充的字节序列长度相同。PKCS5为8字节填充，即需将数据填充为八位字节的倍数。
+- PKCS5：填充字符由一个字节序列组成，而且每个字节填充的值与要填充的字节序列长度相同。PKCS5为8字节填充，即需将数据填充为八字节的倍数。
 
 - PKCS7：填充方法和PKCS5一致。但PKCS7可以在1-255字节之间任意填充，PKCS5固定为8字节。
 
@@ -184,3 +184,78 @@
 | -------- | -------- | -------- | -------- |
 | ChaCha20 | 256 | ChaCha20 | 22+ | 
 | ChaCha20 | 256 | ChaCha20\|Poly1305 | 22+ | 
+
+## RC2
+
+从API版本26.0.0开始，支持分组密码算法[RC2](crypto-sym-key-generation-conversion-spec.md#rc2)，分组长度为64位，密钥长度支持8位～1024位。
+
+算法库当前提供了RC2加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
+
+> **说明：**
+>
+> ECB、CBC加密模式，明文长度不是64位整数倍，必须使用填充方法补足。
+
+当前支持以字符串参数完成RC2加解密，具体的“字符串参数”由“对称密钥类型”、“分组模式”和“填充模式”使用符号“|”拼接而成。字符串参数为RC2。
+
+CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
+
+| 分组模式 | 字符串参数 | 填充模式 | API版本 | 
+| -------- | -------- | -------- | -------- |
+| ECB | RC2 | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
+| CBC | RC2 | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
+| OFB | RC2 | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
+| CFB | RC2 | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
+
+## RC4
+
+从API版本26.0.0开始，支持流密码算法[RC4](crypto-sym-key-generation-conversion-spec.md#rc4)，无需分组与填充。密钥长度支持8位～4096位。
+
+算法库当前提供RC4加解密，RC4为流密码模式，无需分组模式跟填充模式。
+
+当前支持以字符串参数完成RC4加解密，字符串参数为RC4：
+
+| 对称算法名 | 字符串参数 | API版本 | 
+| -------- | -------- | -------- |
+| RC4 | RC4 | 26.0.0+ | 
+
+## Blowfish（BF）
+
+从API版本26.0.0开始，支持密码算法[Blowfish](crypto-sym-key-generation-conversion-spec.md#blowfishbf)，是一种分组密码算法，分组长度为64位，长度支持32位～448位。
+
+> **说明：**
+>
+> ECB、CBC加密模式，明文长度不是64位整数倍，必须使用填充方法补足。
+
+CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
+
+当前支持以字符串参数完成Blowfish加解密，字符串参数为Blowfish：
+
+| 分组模式 | 字符串参数 | 填充模式 | API版本 | 
+| -------- | -------- | -------- | -------- |
+| ECB | Blowfish | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
+| CBC | Blowfish | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
+| OFB | Blowfish | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
+| CFB | Blowfish | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
+
+## CAST
+
+从API版本26.0.0开始，支持分组密码算法[CAST](crypto-sym-key-generation-conversion-spec.md#cast)，分组长度为64位，密钥长度支持40位～128位。
+
+[CAST](crypto-sym-key-generation-conversion-spec.md#cast)为分组密码算法，分组长度为64位，密钥长度支持40位～128位。
+
+算法库当前提供了CAST加解密常用的分组模式：ECB、CBC、OFB、CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
+
+> **说明：**
+>
+> ECB、CBC加密模式，明文长度不是64位整数倍，必须使用填充方法补足。
+
+当前支持以字符串参数完成CAST加解密，字符串参数为CAST：
+
+CBC、OFB、CFB模式需传入IV，IV长度为8字节，对应[IvParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#ivparamsspec)。
+ 
+| 分组模式 | 字符串参数 | 填充模式 | API版本 | 
+| -------- | -------- | -------- | -------- |
+| ECB | CAST | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
+| CBC | CAST | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
+| OFB | CAST | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 
+| CFB | CAST | [NoPadding\|PKCS5\|PKCS7] | 26.0.0+ | 

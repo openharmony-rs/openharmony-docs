@@ -551,8 +551,8 @@ horizontalScrollBarAccess(horizontalScrollBar: boolean)
 
 > **说明：**
 >
-> - 通过@State变量控制横向滚动条的隐藏/显示后，需要调用[controller.refresh()](./arkts-apis-webview-WebviewController.md#refresh)生效。
-> - 通过@State变量频繁动态改变时，建议切换开关变量和Web组件一一对应。
+> - 通过[@State](../../ui/state-management/arkts-state.md)变量控制横向滚动条的隐藏/显示后，需要调用[controller.refresh()](./arkts-apis-webview-WebviewController.md#refresh)生效。
+> - 通过[@State](../../ui/state-management/arkts-state.md)变量频繁动态改变时，建议切换开关变量和Web组件一一对应。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -2075,6 +2075,48 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
   </html>
   ```
 
+## enableScrollDirectionalLock
+
+enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType) 
+
+设置Web组件滑动方向锁定。不调用该方法进行设置时，默认在嵌套滚动场景下是支持滑动方向锁定的。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                      | 必填 | 说明                                                                                                                                                |
+| ------ | ------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| value  | boolean                   | 是   | 是否支持滑动方向锁定。`true` 表示滑动方向锁定，滚动视图会根据用户初始滑动的方向来锁定滚动轴，`false` 表示不锁定。        |
+| type   | [ScrollDirectionalLockType](./arkts-basic-components-web-e.md#scrolldirectionallocktype) | 是   | 设置Web组件在哪些场景下希望滑动方向锁定。ALL表示所有场景都支持滑动锁定，NESTED_SCROLL表示在嵌套滚动场景下支持滑动锁定。 |
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%')
+        .height('100%')
+        // 在所有场景下支持滑动方向的锁定
+        .enableScrollDirectionalLock(true, ScrollDirectionalLockType.ALL)
+    }
+  }
+}
+```
+
 ## bypassVsyncCondition<sup>20+</sup>
 
 bypassVsyncCondition(condition: WebBypassVsyncCondition)
@@ -3258,7 +3300,7 @@ optimizeParserBudget(optimizeParserBudget: boolean)
 
 ArkWeb内核在解析HTML文档结构时采取分段解析策略，旨在避免过多占用主线程资源，并使网页具有渐进式加载能力。ArkWeb内核默认使用解析时间作为分段点，当单次解析时间超过阈值时，会中断解析，随后进行布局和渲染操作。
 
-开启优化后，ArkWeb内核将不仅检查解析时间是否超出限制，还会额外判断解析的Token（HTML文档的最小解析单位，例如`<div>`、`attr="xxx"`等）数量是否超过内核规定的阈值，并下调此阈值。当页面的FCP(First Contentful Paint 首次内容绘制）触发时会恢复成默认的中断判断逻辑。这将使得网页在FCP到来之前的解析操作更频繁，从而提高首帧内容被提前解析完成并进入渲染阶段的可能性，同时有效缩减首帧渲染的工作量，最终实现FCP时间提前。
+开启优化后，ArkWeb内核将不仅检查解析时间是否超出限制，还会额外判断解析的Token（HTML文档的最小解析单位，例如`<div>`、`attr="xxx"`等）数量是否超过内核规定的阈值，并下调此阈值。当页面的FCP（First Contentful Paint 首次内容绘制）触发时会恢复成默认的中断判断逻辑。这将使得网页在FCP到来之前的解析操作更频繁，从而提高首帧内容被提前解析完成并进入渲染阶段的可能性，同时有效缩减首帧渲染的工作量，最终实现FCP时间提前。
 
 由于页面的FCP触发时会恢复成默认分段解析逻辑，因此分段解析HTML优化仅对每个Web组件加载的首个页面生效。
 
@@ -3869,7 +3911,7 @@ blankScreenDetectionConfig(detectConfig: BlankScreenDetectionConfig)
 
 enableImageAnalyzer(enable: boolean)
 
-设置是否启用网页图片AI分析，当前支持图片文字识别功能，该功能默认开启。
+设置是否启用网页图片AI分析，当前支持图片文字识别功能。属性未显式调用时，该功能默认开启。
 
 > **说明：** 
 >
@@ -4039,6 +4081,62 @@ enableDefaultContextMenu(enable: boolean)
     }
   }
   ```
+
+## enableDrag
+
+enableDrag(value: boolean)
+
+设置是否启用拖拽功能。不调用该属性时，默认启用网页拖拽功能。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：** 
+
+| 参数名 | 类型    | 必填 | 说明                              |
+| ------ | ------- | ---- | --------------------------------- |
+| value  | boolean | 是   | 是否启用网页拖拽功能，true表示启用，false表示不启用。 |
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct Index {
+    private controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: $rawfile('test.html'), controller: this.controller })
+          .enableDrag(false)
+      }
+    }
+  }
+  ```
+
+ 加载的html文件。
+```html
+<!--test.html-->
+<!DOCTYPE html>
+<html>
+  <head><meta charset="UTF-8"><title>拖拽测试</title></head>
+  <body>
+    <div id="drag" draggable="true" style="width:100px;height:100px;background:red;margin:20px;"></div>
+    <div id="drop" style="width:200px;height:200px;background:gray;margin:20px;"></div>
+    <script>
+      drag.ondragstart=e=>e.dataTransfer.setData('text/plain','');
+      drop.ondragover=e=>e.preventDefault();
+      drop.ondrop=e=>{e.preventDefault(); drop.style.background='green';};
+      drag.ondragend=()=>{drop.style.background='gray';};
+    </script>
+  </body>
+</html>
+```
 
 ## password<sup>(deprecated)</sup>
 
@@ -4283,3 +4381,44 @@ zoomControlAccess(zoomControlAccess: boolean)
   </body>
   </html>
   ```
+
+## scrollbarLayoutPolicy
+
+scrollbarLayoutPolicy(policy: ScrollbarLayoutPolicy)
+
+选择Web组件内垂直滚动条的布局方式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名 | 类型| 必填 | 说明 |
+| ------ | -------------- | ---- | -------------- |
+| policy | [ScrollbarLayoutPolicy](./arkts-basic-components-web-e.md#scrollbarlayoutpolicy) | 是   | 设置Web组件内垂直滚动条布局模式，可选择跟随系统语言方向设置或网页css的direction属性设置。入参设置为：<br/>CONTENT，表示跟随网页css的direction属性设置。<br/>SYSTEM，滚动条会根据系统语种的左右书写方向进行布局。对于从右向左书写的语言，滚动条将布局在左侧。对于网页内嵌套的多层滚动条均适用。|
+
+**示例：**
+
+```ts
+// xxx.ets
+import { webview } from '@kit.ArkWeb';
+
+@Entry
+@Component
+struct WebComponent {
+  controller: webview.WebviewController = new webview.WebviewController();
+
+  build() {
+    Column() {
+      Web({ src: 'www.example.com', controller: this.controller })
+        .width('100%')
+        .height('100%')
+        // 设置为SYSTEM表示跟随系统语言方向布局。设置为CONTENT表示沿用Web样式布局
+        .scrollbarLayoutPolicy(ScrollbarLayoutPolicy.SYSTEM)
+    }
+  }
+}
+```

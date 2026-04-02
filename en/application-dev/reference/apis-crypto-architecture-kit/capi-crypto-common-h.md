@@ -62,7 +62,8 @@ Enumerates the encryption and decryption error codes.
 | CRYPTO_INVALID_PARAMS = 401 | The input parameter is invalid.|
 | CRYPTO_NOT_SUPPORTED = 801 | The function or algorithm is not supported.|
 | CRYPTO_MEMORY_ERROR = 17620001 | Memory error.|
-| CRYPTO_PARAMETER_CHECK_FAILED = 17620003 | Parameter check failed.<br>**Since**: 20 |
+| CRYPTO_PARAMETER_CHECK_FAILED = 17620003 | Parameter check failed.<br>**Since**: 20|
+| CRYPTO_INVALID_CALL = 17620004 | Invalid function call.<br>**Since**: 26.0.0|
 | CRYPTO_OPERTION_ERROR = 17630001 | The encryption or decryption operation fails.|
 
 ### Crypto_CipherMode
@@ -96,7 +97,6 @@ void OH_Crypto_FreeDataBlob(Crypto_DataBlob *dataBlob)
 Releases a **dataBlob** instance.
 
 **Since**: 12
-
 
 **Parameters**
 

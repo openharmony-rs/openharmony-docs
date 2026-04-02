@@ -147,7 +147,7 @@ AVScreenCapture实例的配置信息为[OH_AVScreenCaptureConfig](../../referenc
 OH_AVScreenCaptureConfig config = {
     .dataType = OH_ORIGINAL_STREAM,
     .audioInfo = audioInfo,
-    .captureMode = OH_CAPTURE_HOME_SCREEN, //录屏模式设置。
+    .captureMode = OH_CAPTURE_HOME_SCREEN, // 录屏模式设置。
     .videoInfo = videoInfo
 };
 OH_AVScreenCapture_Init(capture, config);
@@ -359,6 +359,30 @@ config.videoInfo.videoCapInfo.displayId = 0;
 vector<int32_t> missionIds = {60, 61}; // 表示期望同时录制60、61号窗口。
 config.videoInfo.videoCapInfo.missionIDs = &missionIds[0];
 config.videoInfo.videoCapInfo.missionIDsLen = static_cast<int32_t>(missionIds.size());
+```
+
+## Phone/Tablet弹窗模式配置说明
+
+从API version 23开始，支持在设备Phone/Tablet上通过策略控制是否弹出选择共享内容弹窗。
+
+在PC/2in1设备上，是否弹出选择共享内容弹窗受录制模式控制，在Phone/Tablet设备上可以通过[OH_AVScreenCapture_StrategyForPickerPopUp](../../reference/apis-media-kit/capi-native-avscreen-capture-h.md#oh_avscreencapture_strategyforpickerpopup)配置选择共享内容弹窗模式，无需指定录制模式。
+
+```c++
+// 创建AVScreenCapture对象
+OH_AVScreenCapture* capture = OH_AVScreenCapture_Create();
+
+// 创建CaptureStrategy对象。
+OH_AVScreenCapture_CaptureStrategy* strategy = OH_AVScreenCapture_CreateCaptureStrategy();
+
+// 设置是否弹出屏幕捕获Picker。
+// 设置为true，代表录屏启动后统一弹出Picker。
+OH_AVScreenCapture_StrategyForPickerPopUp(strategy, true);
+
+// 设置CaptureStrategy到AVScreenCapture实例。
+OH_AVScreenCapture_SetCaptureStrategy(capture, strategy);
+
+// 释放CaptureStrategy对象。
+OH_AVScreenCapture_ReleaseCaptureStrategy(strategy);
 ```
 
 ## 更多资源

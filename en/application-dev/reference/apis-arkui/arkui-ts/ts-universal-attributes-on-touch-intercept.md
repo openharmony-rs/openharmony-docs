@@ -1,7 +1,7 @@
 # Custom Event Interception
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -31,7 +31,7 @@ Binds a custom event interception callback to a component.
 
 | Name       | Type                   | Mandatory | Description                        |
 | ---------- | -------------------------- | ------- | ----------------------------- |
-| callback      | Callback<[TouchEvent](ts-universal-events-touch.md#touchevent), [HitTestMode](ts-appendix-enums.md#hittestmode9)> | Yes    |  Custom event interception callback. Triggered during [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing). Returns a value to set the component's [hit test behavior](ts-universal-attributes-hit-test-behavior.md).|
+| callback      | Callback<[TouchEvent](ts-universal-events-touch.md#touchevent), [HitTestMode](ts-appendix-enums.md#hittestmode9)> | Yes    |  Custom event interception callback. Triggered during [hit testing](../../../ui/arkts-interaction-basic-principles.md#hit-testing) and sets the [hit test behavior](ts-universal-attributes-hit-test-behavior.md) for the component based on the return value.|
 
 **Return value**
 
@@ -75,7 +75,7 @@ struct Index {
         // Check whether touches is empty before using it.
         if (event && event.touches) {
           let touches = event.touches;
-          for(let i = 0; touches[i] != null; i++) {
+          for (let i = 0; touches[i] != null; i++) {
             console.info('onTouchIntercept touches:', JSON.stringify(touches[i]));
           }
         }

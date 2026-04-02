@@ -14,9 +14,11 @@ You can create an entity encapsulation component in either of the following ways
 
 > **NOTE**
 > 
-> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
-> **ComponentContent** and **ReactiveComponentContent** are not available in DevEco Studio Previewer.
+> - **ComponentContent** and **ReactiveComponentContent** are not available in DevEco Studio Previewer.
+>
+> - ComponentContent objects do not support JSON serialization.
 
 
 ## Modules to Import
@@ -99,7 +101,7 @@ interface ParamsInterface {
 @Builder
 function buildTextWithFunc(fun: Function) {
   Text(fun())
-    .fontSize(50)
+    .fontSize(20)
     .fontWeight(FontWeight.Bold)
     .margin({ bottom: 36 })
 }
@@ -108,9 +110,9 @@ function buildTextWithFunc(fun: Function) {
 function buildText(params: ParamsInterface) {
   Column() {
     Text(params.text)
-      .fontSize(50)
+      .fontSize(20)
       .fontWeight(FontWeight.Bold)
-      .margin({ bottom: 36 })
+      .margin({ bottom: 12 })
     buildTextWithFunc(params.func)
   }
 }
@@ -123,7 +125,7 @@ struct Index {
 
   build() {
     Row() {
-      Column() {
+      Column({ space: 12 }) {
         Button('addComponentContent')
           .onClick(() => {
             let column = typeNode.createNode(this.getUIContext(), "Column");
@@ -145,8 +147,8 @@ struct Index {
     .height('100%')
   }
 }
-
 ```
+![](figures/ReactiveComponentContent_constructor.gif)
 
 ### update
 
@@ -196,6 +198,7 @@ struct Index {
     Row() {
       Column() {
         Button("click me")
+          .margin({ top: 200 })
           .onClick(() => {
             let uiContext = this.getUIContext();
             let promptAction = uiContext.getPromptAction();
@@ -214,6 +217,7 @@ struct Index {
   }
 }
 ```
+![](figures/ComponentContent_update.gif)
 
 ### reuse
 
@@ -413,6 +417,7 @@ struct Index {
   }
 }
 ```
+![](figures/ReactiveComponentContent_recycle.gif)
 
 ### dispose
 
@@ -489,7 +494,7 @@ struct Index {
   }
 }
 ```
-
+![](figures/ComponentContent_dispose.gif)
 
 ### updateConfiguration
 
@@ -603,6 +608,7 @@ struct FrameNodeTypeTest {
   }
 }
 ```
+![](figures/ReactiveComponentContent_updateConfiguration.gif)
 
 ### isDisposed<sup>20+</sup>
 

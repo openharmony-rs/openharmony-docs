@@ -171,14 +171,22 @@ static query(name: string): AsyncLockState
 **示例：**
 
 ```ts
-// 你已经在别的地方创建了一个锁。
-// let lock = ArkTSUtils.locks.AsyncLock.request("queryTestLock");
+// 查询已存在的锁信息
+let lock = ArkTSUtils.locks.AsyncLock.request("queryTestLock");
 let state = ArkTSUtils.locks.AsyncLock.query('queryTestLock');
-if (!state) {
-    throw new Error('测试失败：期望有效的状态，但得到的是 ' + state);
-}
 let pending: ArkTSUtils.locks.AsyncLockInfo[] = state.pending;
 let held: ArkTSUtils.locks.AsyncLockInfo[] = state.held;
+// 输出当前处于pending状态的锁数量
+console.info(`Number of pending locks: ${pending.length}`);
+// 输出当前处于held状态的锁数量
+console.info(`Number of held locks: ${held.length}`);
+
+// 查询不存在的锁信息，会抛出错误信息：The lock does not exist.
+try {
+  let state1 = ArkTSUtils.locks.AsyncLock.query('queryTestLock1');
+} catch (e) {
+  console.error(`Error is: ${e}`);
+}
 ```
 
 ### queryAll
@@ -200,10 +208,12 @@ static queryAll(): AsyncLockState[]
 **示例：**
 
 ```ts
+// 查询已存在的锁信息
+let lock1 = ArkTSUtils.locks.AsyncLock.request("queryTestLock1");
+let lock2 = ArkTSUtils.locks.AsyncLock.request("queryTestLock2");
 let states: ArkTSUtils.locks.AsyncLockState[] = ArkTSUtils.locks.AsyncLock.queryAll();
-if (states.length === 0) {
-    throw new Error('测试失败：期望至少有1个状态，但得到的是 ' + states.length);
-}
+// 输出当前存在的锁数量
+console.info("The states size is " + states.length);
 ```
 
 ### lockAsync
@@ -544,7 +554,7 @@ wait(): Promise\<void>
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.wait().then(() => {
-  console.info(`Thread being awakened, then continue...`); //被唤醒后输出日志
+  console.info(`Thread being awakened, then continue...`); // 被唤醒后输出日志
 });
 ```
 
@@ -575,7 +585,7 @@ waitFor(timeout : number) : Promise\<void>
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.waitFor(3000).then(() => {
-  console.info(`Thread being awakened, then continue...`); //被唤醒后输出日志
+  console.info(`Thread being awakened, then continue...`); // 被唤醒后输出日志
 });
 ```
 
@@ -594,7 +604,7 @@ notifyAll() : void
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.waitFor(3000).then(() => {
-  console.info(`Thread being awakened, then continue...`); //被唤醒后输出日志
+  console.info(`Thread being awakened, then continue...`); // 被唤醒后输出日志
 });
 // 通知所有等待的线程。
 conditionVariable.notifyAll();
@@ -615,7 +625,7 @@ notifyOne() : void
 ```ts
 const conditionVariable: ArkTSUtils.locks.ConditionVariable = new ArkTSUtils.locks.ConditionVariable();
 conditionVariable.waitFor(3000).then(() => {
-  console.info(`Thread a being awakened, then continue...`); //被唤醒后输出日志
+  console.info(`Thread a being awakened, then continue...`); // 被唤醒后输出日志
 });
 // 通知第一个等待的线程。
 conditionVariable.notifyOne();

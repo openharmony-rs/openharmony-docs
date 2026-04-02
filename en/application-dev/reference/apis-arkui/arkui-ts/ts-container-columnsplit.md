@@ -34,7 +34,7 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 
 > **NOTE**
 >
-> The default value of the universal attribute [clip](ts-universal-attributes-sharp-clipping.md) is **true** for the **ColumnSplit** component.
+> The default value of [shape clipping](ts-universal-attributes-sharp-clipping.md) of the **ColumnSplit** component is **true**.
 
 ### resizeable
 
@@ -66,11 +66,11 @@ Margin of the divider.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ColumnSplitDividerStyle](#columnsplitdividerstyle10)&nbsp;\|&nbsp;null | Yes  | Margin of the divider, defining the spacing between the divider and adjacent child components.<br>Default value: **null**. If this parameter is set to **null**, the top and bottom margins of the divider are 0.0 vp.<br>Invalid values are treated as the default value.|
+| value  | [ColumnSplitDividerStyle](#columnsplitdividerstyle10)&nbsp;\|&nbsp;null | Yes  | Margin of the divider, that is, the distance between the divider and the child component.<br>Default value: **null**. When this parameter is set to null, the distance between the divider and the child component is 0 vp.<br>Invalid values are treated as the default value.|
 
 ## ColumnSplitDividerStyle<sup>10+</sup>
 
-Sets the spacing between the divider and adjacent child components.
+Sets the distance between the child component and the upper and lower dividers.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -78,8 +78,8 @@ Sets the spacing between the divider and adjacent child components.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| startMargin | [Dimension](ts-types.md#dimension10)       | No| Yes | Distance between the divider and the child component above it.<br>Default value: **0**<br>Invalid values are treated as the default value.|
-| endMargin   | [Dimension](ts-types.md#dimension10)       | No| Yes | Distance between the divider and the child component below it.<br>Default value: **0**<br>Invalid values are treated as the default value.|
+| startMargin | [Dimension](ts-types.md#dimension10)       | No| Yes | Distance between the child component and the upper divider.<br>Default value: **0**<br>Invalid values are treated as the default value. In this case, the attribute value obtained by the [getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9) API is **undefined**.|
+| endMargin   | [Dimension](ts-types.md#dimension10)       | No| Yes | Distance between the child component and the lower divider.<br>Default value: **0**<br>Invalid values are treated as the default value. In this case, the attribute value obtained by the [getInspectorByKey()](ts-universal-attributes-component-id.md#getinspectorbykey9) API is **undefined**.|
 
 >  **NOTE**
 >
@@ -142,7 +142,7 @@ struct ColumnSplitDividerExample {
         Text('5').width('100%').height(50).backgroundColor(0xF5DEB3).textAlign(TextAlign.Center)
       }
       .borderWidth(1)
-      .divider ({ startMargin: 5, endMargin: 5 }) // Set the spacing.
+      .divider({ startMargin: 5, endMargin: 5 }) // Set the spacing.
       .width('90%')
       .height('60%')
     }.width('100%')

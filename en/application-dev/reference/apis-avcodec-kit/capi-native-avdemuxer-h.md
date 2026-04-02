@@ -3,7 +3,7 @@
 <!--Kit: AVCodec Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @mr-chencxy-->
-<!--Designer: @dpy2650--->
+<!--Designer: @dpy2650-->
 <!--Tester: @baotianhao-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -247,7 +247,7 @@ Reads the sample and related information from the specified track.<br>You can us
 | Name| Description|
 | -- | -- |
 | [OH_AVDemuxer](capi-avdemuxer-oh-avdemuxer.md) *demuxer | Pointer to an OH_AVDemuxer instance.|
-| uint32_t trackIndex | Index of the track from which the compressed frame is to be read.. |
+| uint32_t trackIndex | Index of the track from which the compressed frame is to be read.|
 | OH_AVBuffer *sample | Pointer to the OH_AVBuffer instance for storing the compressed frame data and related information.|
 
 **Returns**

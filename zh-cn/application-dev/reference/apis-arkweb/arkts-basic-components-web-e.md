@@ -92,7 +92,7 @@ ConsoleMessage的日志来源。
 | 名称      | 值 | 说明                                   |
 | ------- | -- | ------------------------------------ |
 | Default<sup>9+</sup> | 0 | 优先使用未过期cache加载资源，无效或无cache时从网络获取。 |
-| None    | 1 | 优先使用cache(含过期)加载资源，无cache时从网络获取。     |
+| None    | 1 | 优先使用cache（含过期）加载资源，无cache时从网络获取。     |
 | Online  | 2 | 强制从网络获取最新资源，不使用任何cache。               |
 | Only    | 3 | 仅使用本地cache加载资源。                        |
 
@@ -540,3 +540,33 @@ WebView中新窗口的打开方式。
 | NEW_WINDOW                    | 1 | 在新窗口中打开。   |
 | NEW_BACKGROUND_TAB            | 2 | 在新标签页中以后台方式打开。 |
 | NEW_FOREGROUND_TAB            | 3 | 在新标签页中以前台方式打开。 |
+
+## ScrollDirectionalLockType
+
+定义滑动方向锁定的场景类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称           | 值 | 说明                           |
+| ------------- | -- | ------------------------------ |
+| ALL           | 0  | 所有场景都支持滑动锁定。     |
+| NESTED_SCROLL | 1  | 嵌套滚动场景下支持滑动锁定。 |
+
+## ScrollbarLayoutPolicy
+
+定义滚动条布局模式控制参数的枚举类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称    | 值  | 说明                                 |
+| ------- | --- | ------------------------------------ |
+| CONTENT | 0   | 滚动条左右布局模式跟随css设定。      |
+| SYSTEM  | 1   | 滚动条左右布局模式跟随系统语种设定。 |

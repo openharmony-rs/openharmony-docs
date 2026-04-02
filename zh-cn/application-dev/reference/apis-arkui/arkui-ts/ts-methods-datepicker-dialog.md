@@ -56,10 +56,10 @@ static show(options?: DatePickerDialogOptions)
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| lunar | boolean | 否 | 是 | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| lunar | boolean | 否 | 是 | 日期是否显示为农历。<br/>- true：显示为农历。<br/>- false：不显示为农历。<br/>默认值：false<br/>**说明：**<br/>仅在简体中文和繁体中文语言环境下生效，其他语言环境下设置该属性无效果。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | showTime<sup>10+</sup> | boolean | 否 | 是 | 是否在弹窗内展示时间选择器。<br/>- true：展示时间选择器。<br/>- false：不展示时间选择器。<br/>默认值：false<br/>**说明：**<br/>1. 当showTime为true时，点击弹窗的标题日期可以在"日期选择器"和"日期选择器+时间选择器"两个页面中切换。 <br/>2. 当showTime为true时，mode参数不生效，"日期选择器"页面显示默认年、月、日三列。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | useMilitaryTime<sup>10+</sup> | boolean | 否 | 是 | 弹窗内展示的时间选择器是否为24小时制，仅当showTime为true时生效。<br/>- true：显示24小时制。<br/>- false：显示12小时制。<br/>默认值：false<br />**说明：** <br/>当展示的时间选择器为12小时制时，上午和下午的标识不会根据小时数自动切换。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| lunarSwitch<sup>10+</sup> | boolean | 否 | 是 | 是否展示切换农历的开关。<br/>- true：展示切换农历的开关。<br/>- false：不展示切换农历的开关。<br/>默认值：false<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| lunarSwitch<sup>10+</sup> | boolean | 否 | 是 | 是否展示切换农历的开关。<br/>- true：展示切换农历的开关。<br/>- false：不展示切换农历的开关。<br/>默认值：false<br/>**说明：**<br/>开关打开后，仅在简体中文和繁体中文环境下生效，在其他语言环境农历不生效。因此建议在其他语言环境设置为不展示开关。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | lunarSwitchStyle<sup>14+</sup> | [LunarSwitchStyle](#lunarswitchstyle14对象说明) | 否 | 是 | 设置农历开关的颜色样式。<br/>默认值：{<br/>selectedColor: `$r('sys.color.ohos_id_color_text_primary_actived')`,<br/>unselectedColor: `$r('sys.color.ohos_id_color_switch_outline_off')`,<br/>strokeColor: Color.White<br/>}<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。 |
 | disappearTextStyle<sup>10+</sup> | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) | 否 | 是 | 设置边缘项（以选中项为基准向上或向下的第二项）的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '14fp', <br/>weight: FontWeight.Regular<br/>}<br/>}<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 | textStyle<sup>10+</sup> | [PickerTextStyle](ts-picker-common.md#pickertextstyle对象说明) | 否 | 是 | 设置待选项（以选中项为基准向上或向下的第一项）的文本颜色、字号、字体粗细。<br/>默认值：<br/>{<br/>color: '#ff182431',<br/>font: {<br/>size: '16fp', <br/>weight: FontWeight.Regular<br/>}<br/>}<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |

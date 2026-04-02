@@ -21,7 +21,7 @@ target_link_libraries(entry PUBLIC libhuks_ndk.z.so)
 ```
 ## How to Develop
 1. Device A (service side) generates an SM4 key (**cipherSm4**).
-2. Device A uses the generated SM4 key to encrypt the to-be-imported key **importKey** in ECB/NoPadding mode (**enImportKey** is set to **Encrypt(cipherSm4, importKey)**).
+2. Device A uses the generated SM4 key to encrypt the value of **importKey** in ECB/NoPadding mode, obtaining the encrypted key (enImportKey=Encrypt(cipherSm4, importKey)).
 3. Device B (key importer) exports the SM2 public key. Device A receives the key.
 4. Device A uses the received SM2 public key to encrypt the generated SM4 key (**enSm4** is set to **Encrypt(Sm2, cipherSm4)**).
 5. Device A sends the digital envelope data to device B.
