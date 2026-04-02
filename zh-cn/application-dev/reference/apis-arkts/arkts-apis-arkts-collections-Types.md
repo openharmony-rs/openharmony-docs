@@ -39,7 +39,7 @@ ArkTS Array归约函数类型，被Array类的'from' 接口使用。
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
 | value | FromElementType | 是 | 当前正在处理的元素。|
-| index | number | 是 | 当前遍历的ArkTS Array元素下标。 |
+| index | number | 是 | 当前遍历的ArkTS Array元素索引。 |
 
 **返回值：**
 
@@ -61,7 +61,7 @@ ArkTS Array归约函数类型，被Array类的'some'和'every'接口使用，用
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
 | value | ElementType | 是 | 当前正在处理的元素。|
-| index | number | 是 | 当前遍历的ArkTS Array元素下标。 |
+| index | number | 是 | 当前遍历的ArkTS Array元素索引。 |
 | array | ArrayType | 是 | 当前遍历的ArkTS Array本身。 |
 
 **返回值：**
@@ -85,7 +85,7 @@ ArkTS Array归约函数类型，被Array类的'reduceRight'接口使用。
 | ------- | ------ | ---- | --------------------------- |
 | previousValue | AccType | 是 | 当前遍历所累积的值。|
 | currentValue | ElementType | 是 | 当前遍历的ArkTS Array元素。 |
-| currentIndex | number | 是 | 当前遍历的ArkTS Array元素下标。 |
+| currentIndex | number | 是 | 当前遍历的ArkTS Array元素索引。 |
 | array | ArrayType | 是 | 当前遍历的ArkTS Array实例。 |
 
 **返回值：**
@@ -110,7 +110,7 @@ ArkTS TypedArray映射函数类型。
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
 | value | FromElementType | 是 | 当前遍历的用于构造ArkTS TypedArray的元素。 |
-| index | number | 是 | 当前遍历的用于构造ArkTS TypedArray的元素下标，从0开始。 |
+| index | number | 是 | 当前遍历的用于构造ArkTS TypedArray的元素索引，从0开始。 |
 
 **返回值：**
 
@@ -132,7 +132,7 @@ ArkTS TypedArray断言测试函数类型。
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
 | value | ElementType | 是 | 当前遍历的ArkTS TypedArray元素。 |
-| index | number | 是 | 当前遍历的ArkTS TypedArray元素下标，从0开始。 |
+| index | number | 是 | 当前遍历的ArkTS TypedArray元素索引，从0开始。 |
 | array | ArrayType | 是 | 当前遍历的ArkTS TypedArray实例。 |
 
 **返回值：**
@@ -155,7 +155,7 @@ ArkTS TypedArray遍历函数类型。
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
 | value | ElementType | 否 | 当前遍历的ArkTS TypedArray元素。 |
-| index | number | 否 | 当前遍历的ArkTS TypedArray元素下标，从0开始。 |
+| index | number | 否 | 当前遍历的ArkTS TypedArray元素索引，从0开始。 |
 | array | ArrayType | 否 | 当前遍历的ArkTS TypedArray实例。 |
 
 ## TypedArrayMapCallback
@@ -172,7 +172,7 @@ ArkTS TypedArray转换映射函数类型。
 | 参数名  | 类型   | 必填 | 说明                          |
 | ------- | ------ | ---- | --------------------------- |
 | value | ElementType | 是 | 当前映射的ArkTS TypedArray元素。 |
-| index | number | 是 | 当前映射的ArkTS TypedArray元素下标，从0开始。 |
+| index | number | 是 | 当前映射的ArkTS TypedArray元素索引，从0开始。 |
 | array | ArrayType | 是 | 当前映射的ArkTS TypedArray实例。 |
 
 **返回值：**
@@ -196,7 +196,7 @@ ArkTS TypedArray归约函数类型。
 | ------- | ------ | ---- | --------------------------- |
 | previousValue | AccType | 是 | 当前遍历所累积的值。|
 | currentValue | ElementType | 是 | 当前遍历的ArkTS TypedArray元素。 |
-| currentIndex | number | 是 | 当前遍历的ArkTS TypedArray元素下标，从0开始。 |
+| currentIndex | number | 是 | 当前遍历的ArkTS TypedArray元素索引，从0开始。 |
 | array | ArrayType | 是 | 当前遍历的ArkTS TypedArray实例。 |
 
 **返回值：**
