@@ -699,7 +699,7 @@ observer.on('callStateChangeEx', callback);
 ```
 
 ## observer.onCallStateChangeEx<sup>23+</sup>
- 	 
+
 onCallStateChangeEx(callback: Callback\<TelCallState\>, options?: ObserverOptions): void
 
 订阅通话状态变化拓展事件，使用callback方式作为异步方法。
