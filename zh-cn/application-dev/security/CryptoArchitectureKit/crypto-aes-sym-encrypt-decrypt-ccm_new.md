@@ -116,4 +116,69 @@
 
 - 同步方法示例：
   <!-- @[new_ccm_encrypt_decrypt_aes_symkey_sync](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/CryptoArchitectureKit/EncryptionDecryption/EncryptionDecryptionGuidanceAesArkTs/entry/src/main/ets/pages/aes_ccm_encryption_decryption/aes_new_ccm_encryption_decryption_synchronous.ets) -->
+  
+  ``` TypeScript
+  import { cryptoFramework } from '@kit.CryptoArchitectureKit';
+  import { buffer } from '@kit.ArkTS';
+  
+  function genCcmAeadParamsSpec() {
+    let nonce = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; // 12 bytes
+    let nonceValue = new Uint8Array(nonce);
+    let aad = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]; // 12 bytes
+    let aadValue = new Uint8Array(aad);
+    let aeadParamsSpec: cryptoFramework.AeadParamsSpec = {
+        nonce: nonceValue,
+        authenticatedData: aadValue,
+        algName: 'AeadParamsSpec'
+    };
+    return aeadParamsSpec;
+  }
+  
+    let aeadParams = genCcmAeadParamsSpec();
+  
+  // 加密消息
+  function encryptMessage(symKey: cryptoFramework.SymKey, plainText: cryptoFramework.DataBlob) {
+    let cipher = cryptoFramework.createCipher('AES128|CCM');
+    cipher.initSync(cryptoFramework.CryptoMode.ENCRYPT_MODE, symKey, aeadParams);
+    let encryptUpdate = cipher.doFinalSync(plainText);
+    return encryptUpdate;
+  }
+  
+  // 解密消息
+  function decryptMessage(symKey: cryptoFramework.SymKey, cipherText: cryptoFramework.DataBlob) {
+    let decoder = cryptoFramework.createCipher('AES128|CCM');
+    decoder.initSync(cryptoFramework.CryptoMode.DECRYPT_MODE, symKey, aeadParams);
+    let decryptUpdate = decoder.doFinalSync(cipherText);
+    return decryptUpdate;
+  }
+  
+  function genSymKeyByData(symKeyData: Uint8Array) {
+    let symKeyBlob: cryptoFramework.DataBlob = { data: symKeyData };
+    let aesGenerator = cryptoFramework.createSymKeyGenerator('AES128');
+    let symKey = aesGenerator.convertKeySync(symKeyBlob);
+    console.info('convertKeySync result: success.');
+    return symKey;
+  }
+  
+  export function main() : string {
+    try {
+      let keyData = new Uint8Array([83, 217, 231, 76, 28, 113, 23, 219, 250, 71, 209, 210, 205, 97, 32, 159]);
+      let symKey = genSymKeyByData(keyData);
+      let message = 'This is a test';
+      let plainText: cryptoFramework.DataBlob = { data: new Uint8Array(buffer.from(message, 'utf-8').buffer) };
+      let encryptText = encryptMessage(symKey, plainText);
+      let decryptText = decryptMessage(symKey, encryptText);
+      if (plainText.data.toString() === decryptText.data.toString()) {
+        console.info('decrypt ok.');
+        console.info('decrypt plainText: ' + buffer.from(decryptText.data).toString('utf-8'));
+      } else {
+        console.error('decrypt failed.');
+      }
+      return 'success';
+    } catch (error) {
+      console.error('decrypt failed. error: ' + error);
+      return 'fail';
+    }
+  }
+  ```
 
