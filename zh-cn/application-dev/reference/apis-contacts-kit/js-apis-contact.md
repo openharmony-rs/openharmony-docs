@@ -4432,7 +4432,7 @@ const contactInfo2: contact.Contact = {
   name: { fullName: 'xxx2'},
   phoneNumbers: [{ phoneNumber: '139xxxxxx' }]
 };
-// 请在组件内获取context
+// 请在组件内获取context。
 const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 contact.addContacts(context, [contactInfo1, contactInfo2]).then((data) => {
   console.info(`Succeeded in addContacts.data->${JSON.stringify(data)}`);
