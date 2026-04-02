@@ -1,10 +1,10 @@
 # web
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @lanshouren-->
-<!--Designer: @lanshouren-->
-<!--Tester: @liuli0427-->
-<!--Adviser: @Brilliantry_Rui-->
+<!--Owner: @zourongchun-->
+<!--Designer: @kurli1-->
+<!--Tester: @ghiker-->
+<!--Adviser: @HelloShuo-->
 
 展示网页内容的组件。
 >  **说明：** 
