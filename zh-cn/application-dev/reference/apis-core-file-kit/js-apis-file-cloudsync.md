@@ -136,7 +136,7 @@ constructor()
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -152,7 +152,7 @@ constructor()
 
 on(event: 'progress', callback: Callback\<SyncProgress>): void
 
-添加同步过程事件监听。
+云盘同步对象添加同步过程事件监听。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -167,11 +167,11 @@ on(event: 'progress', callback: Callback\<SyncProgress>): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | event | string | 是   | 订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | Callback\<[SyncProgress](#syncprogress12)> | 是   | 同步过程事件回调。|
+| callback | Callback\<[SyncProgress](#syncprogress12)> | 是   | 回调函数。同步过程事件。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -207,11 +207,11 @@ onProgress(callback: Callback\<SyncProgress>): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | Callback\<[SyncProgress](#syncprogress12)> | 是   | 同步过程事件回调。|
+| callback | Callback\<[SyncProgress](#syncprogress12)> | 是   | 回调函数。同步过程事件。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -233,7 +233,7 @@ onProgress(callback: Callback\<SyncProgress>): void
 
 off(event: 'progress', callback?: Callback\<SyncProgress>): void
 
-移除同步过程事件监听。
+云盘同步对象移除'progress'类型的指定callback回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -248,11 +248,11 @@ off(event: 'progress', callback?: Callback\<SyncProgress>): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | event | string | 是   | 取消订阅的事件类型，取值为'progress'（同步过程事件）。|
-| callback | Callback\<[SyncProgress](#syncprogress12)> |  否   | 同步过程事件回调， 默认值为null。 |
+| callback | Callback\<[SyncProgress](#syncprogress12)> |  否   | 回调函数。同步过程事件， 默认值为null。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -291,11 +291,11 @@ offProgress(callback?: Callback\<SyncProgress>): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | Callback\<[SyncProgress](#syncprogress12)> |  否   | 同步过程事件回调， 默认值为null。 |
+| callback | Callback\<[SyncProgress](#syncprogress12)> |  否   | 回调函数。同步过程事件， 默认值为null。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -320,7 +320,7 @@ offProgress(callback?: Callback\<SyncProgress>): void
 
 start(): Promise&lt;void&gt;
 
-异步方法启动云盘端云同步，以Promise形式返回结果。
+异步方法启动云盘端云同步。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -332,11 +332,11 @@ start(): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | Promise对象，无返回值。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -390,7 +390,7 @@ ArkTS-Sta示例：
 
 start(callback: AsyncCallback&lt;void&gt;): void
 
-异步方法启动云盘端云同步，以callback形式返回结果。
+异步方法启动云盘端云同步。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -402,11 +402,11 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步启动端云同步的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步启动端云同步。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -452,7 +452,7 @@ ArkTS-Sta示例：
 
 stop(): Promise&lt;void&gt;
 
-异步方法停止云盘端云同步，以Promise形式返回结果。
+异步方法停止云盘端云同步。使用Promise异步回调。
 
 调用stop接口，同步流程会停止。再次调用[start](#start12)接口会继续同步。
 
@@ -466,11 +466,11 @@ stop(): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回停止端云同步的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -509,7 +509,7 @@ ArkTS-Sta示例：
 
 stop(callback: AsyncCallback&lt;void&gt;): void
 
-异步方法停止云盘端云同步，以callback形式返回结果。
+异步方法停止云盘端云同步。使用callback异步回调。
 
 调用stop接口，同步流程会停止。再次调用[start](#start12)接口会继续同步。
 
@@ -523,11 +523,11 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步停止端云同步的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步停止端云同步。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -588,7 +588,7 @@ ArkTS-Sta: getLastSyncTime(): Promise&lt;long&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -633,7 +633,7 @@ ArkTS-Dyn: getLastSyncTime(callback: AsyncCallback&lt;number&gt;): void
 
 ArkTS-Sta: getLastSyncTime(callback: AsyncCallback&lt;long&gt;): void
 
-异步方法获取上次同步时间，以callback形式返回结果。
+获取上次同步时间。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -645,11 +645,11 @@ ArkTS-Sta: getLastSyncTime(callback: AsyncCallback&lt;long&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 异步获取上次同步时间的回调。|
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 回调函数。异步获取上次同步时间。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -708,7 +708,7 @@ ArkTS-Sta示例：
 
 constructor()
 
-云盘文件缓存流程的构造函数，用于获取CloudFileCache类的实例。
+云盘文件缓存流程的构造函数，用于获取CloudFileCache类的实例。多个实例之间不互相共享数据。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -717,6 +717,8 @@ constructor()
 **ArkTS-Sta起始版本：** 23
 
 **错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -747,11 +749,11 @@ on(event: 'progress', callback: Callback\<DownloadProgress>): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | event | string | 是   | 订阅的事件类型，取值为'progress'（下载过程事件）。|
-| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 是   | 云文件下载过程事件回调。 |
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 是   | 回调函数。云文件下载过程事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -794,7 +796,7 @@ on(event: 'batchDownload', callback: Callback&lt;MultiDownloadProgress&gt;): voi
 | 参数名   | 类型                                                              | 必填 | 说明                                                          |
 | -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------- |
 | event    | string                                                            | 是   | 订阅的事件类型，取值为'batchDownload'，表示批量缓存过程事件。 |
-| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 是   | 云文件批量缓存过程的事件回调。                                |
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 是   | 回调函数。云文件批量缓存过程的事件。                                |
 
 **错误码：**
 
@@ -846,11 +848,11 @@ onProgress(callback: Callback\<DownloadProgress>): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 是   | 云文件下载过程事件回调。 |
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 是   | 回调函数。云文件下载过程事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -891,7 +893,7 @@ onBatchDownload(callback: Callback&lt;MultiDownloadProgress&gt;): void
 
 | 参数名   | 类型                                                              | 必填 | 说明                                                          |
 | -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------- |
-| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 是   | 云文件批量缓存过程的事件回调。                                |
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 是   | 回调函数。云文件批量缓存过程的事件。                                |
 
 **错误码：**
 
@@ -929,7 +931,7 @@ try {
 
 off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 
-移除云盘文件缓存过程事件监听。
+云盘文件缓存对象移除'progress'类型的指定callback回调。
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
@@ -944,11 +946,11 @@ off(event: 'progress', callback?: Callback\<DownloadProgress>): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | event | string | 是   | 取消订阅的事件类型，取值为'progress'（同步过程事件）。|
-| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 否   | 云文件下载过程事件回调。若填写，将视为取消指定的回调函数；否则为取消当前订阅的所有回调函数。 |
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 否   | 回调函数。云文件下载过程事件。若填写，将视为取消指定的回调函数；否则为取消当前订阅的所有回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -993,7 +995,7 @@ off(event: 'batchDownload', callback?: Callback&lt;MultiDownloadProgress&gt;): v
 | 参数名   | 类型                                                              | 必填 | 说明                                                                                                    |
 | -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
 | event    | string                                                            | 是   | 取消订阅的事件类型，取值为'batchDownload'，表示批量缓存过程事件。                                       |
-| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 否   | 云文件批量缓存过程事件的回调。如果填写此参数，将取消指定的回调函数；否则，将取消当前订阅的相同事件类型的所有回调函数。 |
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 否   | 回调函数。云文件批量缓存过程事件。如果填写此参数，将取消指定的回调函数；否则，将取消当前订阅的相同事件类型的所有回调函数。 |
 
 **错误码：**
 
@@ -1041,11 +1043,11 @@ offProgress(callback?: Callback\<DownloadProgress>): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- | 
-| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 否   | 云文件下载过程事件回调。若填写，将视为取消指定的回调函数；否则为取消当前订阅的所有回调函数。 |
+| callback | Callback\<[DownloadProgress](#downloadprogress11)> | 否   | 回调函数。云文件下载过程事件。若填写，将视为取消指定的回调函数；否则为取消当前订阅的所有回调函数。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1088,7 +1090,7 @@ offBatchDownload(callback?: Callback&lt;MultiDownloadProgress&gt;): void
 
 | 参数名   | 类型                                                              | 必填 | 说明                                                                                                    |
 | -------- | ----------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------- |
-| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 否   | 云文件批量缓存过程事件的回调。如果填写此参数，将取消指定的回调函数；否则，将取消当前订阅的相同事件类型的所有回调函数。 |
+| callback | Callback&lt;[MultiDownloadProgress](#multidownloadprogress20)&gt; | 否   | 回调函数。云文件批量缓存过程事件。如果填写此参数，将取消指定的回调函数；否则，将取消当前订阅的相同事件类型的所有回调函数。 |
 
 **错误码：**
 
@@ -1122,7 +1124,7 @@ try {
 
 start(uri: string): Promise&lt;void&gt;
 
-异步方法启动云盘文件缓存，以Promise形式返回结果。
+异步方法启动云盘文件缓存。使用Promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1140,11 +1142,11 @@ start(uri: string): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回启动云文件下载的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1209,7 +1211,7 @@ ArkTS-Sta示例：
 
 start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法启动云盘文件缓存，以callback形式返回结果。
+异步方法启动云盘文件缓存。使用callback异步回调。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1222,11 +1224,11 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   | 待下载文件uri。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步启动云文件下载的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步启动云文件下载。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1367,9 +1369,9 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then<long>((do
 
 stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 
-异步方法停止云盘文件缓存，以Promise形式返回结果。
+异步方法停止云盘文件缓存。使用Promise异步回调。
 
-调用stop接口，当前文件下载流程会终止，缓存文件会被删除，再次调用start接口会重新开始下载。
+调用stop接口，当前文件下载流程会终止，默认不删除缓存文件，再次调用start接口重新启动下载。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1388,11 +1390,11 @@ stop(uri: string, needClean?: boolean): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回停止云文件下载的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1439,9 +1441,9 @@ ArkTS-Sta示例：
 
 stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 
-异步方法停止云盘文件缓存，以callback形式返回结果。
+异步方法停止云盘文件缓存。使用callback异步回调。
 
-调用stop接口，当前文件下载流程会终止，缓存文件会被删除，再次调用start接口会重新开始下载。
+调用stop接口，当前文件下载流程会终止，不删除缓存文件，再次调用start接口重新启动下载。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1454,11 +1456,11 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   | 待下载文件uri。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步停止云文件下载的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步停止云文件下载。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1925,7 +1927,7 @@ fileCache.startBatch(uriList, cloudSync.DownloadFileType.CONTENT).then<long>((do
 
 registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData&gt;): void
 
-订阅监听指定文件的变化通知。
+订阅监听指定文件的变化通知。callback返回更改的数据。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -1939,11 +1941,11 @@ registerChange(uri: string, recursion: boolean, callback: Callback&lt;ChangeData
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   | 待下载文件uri。 |
 | recursion | boolean | 是   | true为监听该URI以及子文件和子目录，false为仅监听该URI文件。|
-| callback | Callback&lt;[ChangeData](#changedata12)&gt; | 是   | 返回更改的数据。 |
+| callback | Callback&lt;[ChangeData](#changedata12)&gt; | 是   | 回调函数。返回更改。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -2011,7 +2013,7 @@ unregisterChange(uri: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -2271,7 +2273,7 @@ fileVersion.getHistoryVersionList(uri, limit).then<Array<cloudSync.HistoryVersio
 
 downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;VersionDownloadProgress&gt;): Promise&lt;string&gt;
 
-根据版本号获取指定文件的某一版本的文件内容。用户通过版本号指定云上某一版本，将其下载到本地临时存储路径，临时文件由应用自行决定是否替换原始文件，也可以选择保留或直接删除。使用Promise异步回调。
+根据版本号获取指定文件的某一版本的文件内容。用户通过版本号指定云上某一版本，将其下载到本地临时存储路径，临时文件由应用自行决定是否替换原始文件，也可以选择保留或直接删除。使用Promise异步回调。callback返回文件下载进度，Promise返回历史版本临时文件的URI。
 
 **系统能力**：SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -2285,7 +2287,7 @@ downloadHistoryVersion(uri: string, versionId: string, callback: Callback&lt;Ver
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   |  文件的URI。 |
 | versionId | string | 是 | 文件某一版本的版本号，格式以接口[gethistoryversionlist](#gethistoryversionlist20)返回为准。 |
-| callback | Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt; | 是 | 下载进度的回调。 |
+| callback | Callback&lt;[VersionDownloadProgress](#versiondownloadprogress20)&gt; | 是 | 回调函数。返回下载进度。 |
 
 **返回值：**
 
