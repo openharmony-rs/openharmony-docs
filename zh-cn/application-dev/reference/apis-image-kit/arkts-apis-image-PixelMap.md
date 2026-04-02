@@ -973,7 +973,7 @@ function OpacitySync(pixelMap:image.PixelMap) {
 
 createAlphaPixelmap(): Promise\<PixelMap>
 
-根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的PixelMap，可用于阴影效果，yuv格式不支持此接口。使用Promise异步回调。
+根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用Promise异步回调。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1007,7 +1007,7 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 
 createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 
-根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的PixelMap，可用于阴影效果，yuv格式不支持此接口，使用callback形式返回。
+根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。使用callback形式返回。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1044,7 +1044,7 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 
 createAlphaPixelmapSync(): PixelMap
 
-根据Alpha通道的信息，生成一个仅包含Alpha通道信息的PixelMap，可用于阴影效果，yuv格式不支持此接口，同步返回PixelMap类型的结果。
+根据Alpha通道的信息，生成一个仅包含Alpha通道信息的PixelMap，生成的新PixelMap不可编辑，可用于阴影效果。YUV格式不支持此接口。同步返回PixelMap类型的结果。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1320,7 +1320,7 @@ function ScaleSync(pixelMap: image.PixelMap) {
 
 createScaledPixelMap(x: number, y: number, level?: AntiAliasingLevel): Promise\<PixelMap>
 
-根据指定的缩放算法和输入的宽高的缩放倍数，创建一个新的缩放后的图片。使用Promise异步回调。
+根据指定的缩放算法和输入的宽高的缩放倍数，创建一个新的缩放后的图片，生成的新PixelMap不可编辑。使用Promise异步回调。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -1369,7 +1369,7 @@ async function CreateScaledPixelMap(pixelMap:image.PixelMap) {
 
 createScaledPixelMapSync(x: number, y: number, level?: AntiAliasingLevel): PixelMap
 
-根据指定的缩放算法和输入的宽高的缩放倍数，创建一个新的缩放后的图片，同步返回结果。
+根据指定的缩放算法和输入的宽高的缩放倍数，创建一个新的缩放后的图片，生成的新PixelMap不可编辑。同步返回结果。
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
