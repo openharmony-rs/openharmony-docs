@@ -201,7 +201,7 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_ARKTS_HEAP_MASK | arkts内存分配栈。 | 23 |
 | RES_JS_HEAP_MASK | 龙雀虚拟机JSVM内存跟踪 | 23 |
 | RES_KMP_HEAP_MASK | kmp内存分配栈。 | 23 |
-| RES_SO_MASK | so内存分配栈。 | 23 |
+| RES_SO_MASK | SO内存分配栈。 | 23 |
 | RES_ASHMEM_MASK | ashmem内存分配栈。 | 23 |
 | RES_RN_HEAP_MASK | rn内存分配栈。 | 23 |
 | RES_DMABUF_MASK | dmabuf内存分配栈。 | 23 |
