@@ -103,35 +103,51 @@
   static void *CreateArkRuntimeFunc(void *arg)
   {
       // 1. 创建基础运行环境
-      napi_env env;
+      napi_env env = nullptr;
       napi_status ret = napi_create_ark_runtime(&env);
       if (ret != napi_ok) {
           return nullptr;
       }
   
-      napi_handle_scope scope;
-      napi_open_handle_scope(env, &scope);
+      napi_handle_scope scope = nullptr;
+      if (napi_open_handle_scope(env, &scope) != napi_ok) {
+          napi_destroy_ark_runtime(&env);
+          return nullptr;
+      }
   
       // 2. 加载自定义模块
-      napi_value objUtils;
+      napi_value objUtils = nullptr;
       ret = napi_load_module_with_info(env, "entry/src/main/ets/pages/ObjectUtils", "com.example.myapplication/entry",
                                        &objUtils);
       if (ret != napi_ok) {
+          OH_LOG_INFO(LOG_APP, "Failed to load module");
+          napi_close_handle_scope(env, scope);
+          napi_destroy_ark_runtime(&env);
           return nullptr;
       }
   
       // 3. 使用ArkTS中的logger
-      napi_value logger;
+      napi_value logger = nullptr;
       ret = napi_get_named_property(env, objUtils, "Logger", &logger);
       if (ret != napi_ok) {
+          napi_close_handle_scope(env, scope);
+          napi_destroy_ark_runtime(&env);
           return nullptr;
       }
       ret = napi_call_function(env, objUtils, logger, 0, nullptr, nullptr);
+      if (ret != napi_ok) {
+          napi_close_handle_scope(env, scope);
+          napi_destroy_ark_runtime(&env);
+          return nullptr;
+      }
   
       napi_close_handle_scope(env, scope);
   
       // 4. 销毁ArkTS环境
       ret = napi_destroy_ark_runtime(&env);
+      if (ret != napi_ok) {
+          OH_LOG_INFO(LOG_APP, "Failed to destroy ark runtime");
+      }
   
       return nullptr;
   }
