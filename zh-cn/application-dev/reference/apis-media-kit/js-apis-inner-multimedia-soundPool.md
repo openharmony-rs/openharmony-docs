@@ -73,7 +73,7 @@ import { audio } from '@kit.AudioKit';
 >   - [on('playFinished')](#onplayfinished)：监听播放完成。
 >   - [on('error')](#onerror)：监听错误事件。
 >   - [on('errorOccurred')](#onerroroccurred20)：监听错误事件，同时返回[errorInfo](#errorinfo20)。
-> - SoundPool目前不支持后台播放、设置音频打断等音频焦点策略和跳过音频头尾的静音帧。SoudnPool低时延播放可参考[使用SoundPool播放短音频(ArkTS)](../../media/media/using-soundpool-for-playback.md)。
+> - SoundPool目前不支持后台播放、设置音频打断等音频焦点策略和跳过音频头尾的静音帧。SoundPool低时延播放可参考[使用SoundPool播放短音频(ArkTS)](../../media/media/using-soundpool-for-playback.md)。
 
 ### load
 
