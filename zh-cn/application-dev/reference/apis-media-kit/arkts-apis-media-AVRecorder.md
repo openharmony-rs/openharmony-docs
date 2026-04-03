@@ -323,7 +323,7 @@ avRecorder.updateRotation(rotation).then(() => {
 
 setMetadata(metadata: Record&lt;string, string&gt;): void
 
-设置录制的元数据信息。这些信息会覆盖config.metadata.customInfo（参考[prepare()](#prepare9-1)和[AVRecorderConfig](arkts-apis-media-i.md#avrecorderconfig9)）中的值，如果它们的键相同。
+设置录制的元数据信息。如果这些信息的键相同，会覆盖config.metadata.customInfo（参考[prepare()](#prepare9-1)和[AVRecorderConfig](arkts-apis-media-i.md#avrecorderconfig9)）中的值。
 
 该方法只能在[prepare()](#prepare9-1)事件成功触发后，且必须在[stop()](#stop9)之前调用。
 
