@@ -208,9 +208,9 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_ARK_GLOBAL_HANDLE | ark全局句柄分配栈。 | 23 |
 | RES_VMA_ARKWEB | ArkWeb PA分配器内存跟踪。 | 23 |
 | RES_ARK_LOCAL_HANDLE | ark本地句柄分配栈。 | 23 |
-| RES_KOTLIN_HEAP_MASK | KOTLIN平台内存分配跟踪。 | 23 |
-| RES_RN_HERMES_HEAP | RN HERMES内存分配跟踪。 | 23 |
-| RES_DART_HEAP | DART框架内存分配跟踪。 | 23 |
+| RES_KOTLIN_HEAP_MASK | KOTLIN平台内存分配跟踪。 | 24 |
+| RES_RN_HERMES_HEAP | RN HERMES内存分配跟踪。 | 24 |
+| RES_DART_HEAP | DART框架内存分配跟踪。 | 24 |
 
 **结果分析**
 
