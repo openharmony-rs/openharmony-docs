@@ -32406,7 +32406,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/DH.ets",
 				"functions":[
 					{
-						"end_line":172,
+						"end_line":266,
 						"name":"key_agreement_dh",
 						"start_line":15
 					}
@@ -32416,14 +32416,14 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/ECDH.ets",
 				"functions":[
 					{
-						"end_line":124,
+						"end_line":149,
 						"name":"prepare_ECDH",
 						"start_line":15
 					},
 					{
-						"end_line":247,
+						"end_line":272,
 						"name":"key_agreement_ECDH",
-						"start_line":126
+						"start_line":151
 					}
 				]
 			}
