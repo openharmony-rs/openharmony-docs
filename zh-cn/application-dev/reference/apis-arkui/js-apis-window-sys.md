@@ -255,6 +255,7 @@ import { window } from '@kit.ArkUI';
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
+
 | 名称             | 类型                                                                     | 只读 | 可选 | 说明                                                         |
 | ---------------- | ----------------------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | currentLayoutMode             | string               | 否   | 是   | 子窗当前布局模式，用于控制应用定制的UI效果。若不传，则默认为空字符串。|
@@ -1668,7 +1669,7 @@ attachLayoutToParentWindow(anchorInfo?: WindowAnchorInfo, attachOptions?: SubWin
 >
 > - 当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，并且可以监听主窗大小及模式切换。除非调用[detachLayoutToParentWindow()](#detachlayouttoparentwindow24)接口解绑，否则效果将持续。
 >
-> - 当子窗调用该接口后，再调用[moveWindowTo()](arkts-apis-window-window#movewindowto9)、[maximize()](arkts-apis-window-window#maximize12)、[setFollowParentWindowLayoutEnabled()](arkts-apis-window-window#setfollowparentwindowlayoutenabled17)等修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将不生效。
+> - 当子窗调用该接口后，再调用[moveWindowTo()](arkts-apis-window-Window.md#movewindowto9)、[maximize()](arkts-apis-window-Window.md#maximize12)、[setFollowParentWindowLayoutEnabled()](arkts-apis-window-Window.md#setfollowparentwindowlayoutenabled17)等修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将不生效。
 
 **系统接口：** 此接口为系统接口。
 
@@ -1762,7 +1763,7 @@ detachLayoutToParentWindow(): Promise&lt;void&gt;
 >
 > - 调用接口解除协同后，子窗将保持协同时的位置，可对子窗进行拖拽以修改子窗大小和位置。
 >
-> - 解除协同后，调用[moveWindowTo()](arkts-apis-window-window#movewindowto9)、[maximize()](arkts-apis-window-window#maximize12)、[setFollowParentWindowLayoutEnabled()](arkts-apis-window-window#setfollowparentwindowlayoutenabled17)修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将生效。
+> - 解除协同后，调用[moveWindowTo()](arkts-apis-window-Window.md#movewindowto9)、[maximize()](arkts-apis-window-Window.md#maximize12)、[setFollowParentWindowLayoutEnabled()](arkts-apis-window-Window.md#setfollowparentwindowlayoutenabled17)修改窗口位置的接口，或通过鼠标/触摸操作对子窗进行拖拽移动、拖拽缩放时将生效。
 
 **系统接口：** 此接口为系统接口。
 
