@@ -379,7 +379,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 > **说明：**
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)申明控制权 claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -484,7 +484,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 >
 > 一个USB接口可能存在多重选择模式，支持动态切换。使用的场景：数据传输时，通过该接口可重新设置端点，使端点与传输类型匹配。
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明控制权 claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -593,7 +593,7 @@ getFileDescriptor(pipe: USBDevicePipe): number
 
 | 类型     | 说明                   |
 | ------ | -------------------- |
-| number | 返回设备对应的文件描述符，失败返回其它错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用requestRight接口申请授权。<br>- -1：驱动异常。|
+| number | 返回设备对应的文件描述符，失败返回其它错误码如下：<br>- 88080486：服务初始化中，请稍后重试。<br>- 88080488：无设备访问权限，请先调用[requestRight](#usbmanagerrequestright)接口申请授权。<br>- -1：驱动异常。|
 
 **错误码：**
 
@@ -623,76 +623,6 @@ function getFileDescriptor() {
 }
 ```
 
-## usbManager.controlTransfer<sup>(deprecated)</sup>
-
-controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: number): Promise&lt;number&gt;
-
-控制传输。使用Promise异步回调。
-
-> **说明：**
->
-> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [usbControlTransfer](#usbmanagerusbcontroltransfer12) 替代。
-
-**系统能力：**  SystemCapability.USB.USBManager
-
-**参数：**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
-| controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。|
-| timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | -------- |
-| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
-
-**示例：**
-
-```ts
-class PARA {
-  request: number = 0
-  reqType: usbManager.USBControlRequestType = 0
-  target: usbManager.USBRequestTargetType = 0
-  value: number = 0
-  index: number = 0
-  data: Uint8Array = new Uint8Array()
-}
-
-let param: PARA = {
-  request: 0x06,
-  reqType: 0x80,
-  target:0,
-  value: 0x01 << 8 | 0,
-  index: 0,
-  data: new Uint8Array(18)
-};
-
-function controlTransfer() {
-  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-  if (!devicesList || devicesList.length == 0) {
-    console.info(`device list is empty`);
-    return;
-  }
-
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
-  usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
-  console.info(`controlTransfer = ${ret}`);
-  })
-}
-```
-
 ## usbManager.usbControlTransfer<sup>12+</sup>
 
 usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout ?: number): Promise&lt;number&gt;
@@ -705,7 +635,7 @@ usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, ti
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备。 |
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | requestparam | [USBDeviceRequestParams](#usbdevicerequestparams12) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。 |
 | timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
 
@@ -844,7 +774,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 >
 > 本接口为异步接口，调用后立刻返回，实际读写操作的结果以回调的方式返回。
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明控制权 claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -928,7 +858,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 > **说明：**
 >
 > 该接口的主要作用是主动取消尚未完成的USB数据传输请求（如usbSubmitTransfer提交的传输）。<br>
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明控制权 claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1376,6 +1306,76 @@ function resetUsbDevice() {
 }
 ```
 
+## usbManager.controlTransfer<sup>(deprecated)</sup>
+
+controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, timeout ?: number): Promise&lt;number&gt;
+
+控制传输。使用Promise异步回调。
+
+> **说明：**
+>
+> 从 API version 9开始支持，从API version 12开始废弃。建议使用 [usbControlTransfer](#usbmanagerusbcontroltransfer12) 替代。
+
+**系统能力：**  SystemCapability.USB.USBManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| pipe | [USBDevicePipe](#usbdevicepipe) | 是 | 用于确定设备，需要调用[connectDevice](#usbmanagerconnectdevice)获取。|
+| controlparam | [USBControlParams](#usbcontrolparamsdeprecated) | 是 | 控制传输参数，按需设置参数，参数传参类型请参考USB协议。|
+| timeout | number | 否 | 超时时间（单位：ms），可选参数，指定时间内等待控制传输完成，若在指定时间内传输完成则正常返回，否则返回超时；默认为0时无限等待直到传输完成。用户按需选择。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;number&gt; | Promise对象，获取传输或接收到的数据块大小。失败返回其它错误码如下：<br>- -1：驱动异常。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+
+**示例：**
+
+```ts
+class PARA {
+  request: number = 0
+  reqType: usbManager.USBControlRequestType = 0
+  target: usbManager.USBRequestTargetType = 0
+  value: number = 0
+  index: number = 0
+  data: Uint8Array = new Uint8Array()
+}
+
+let param: PARA = {
+  request: 0x06,
+  reqType: 0x80,
+  target:0,
+  value: 0x01 << 8 | 0,
+  index: 0,
+  data: new Uint8Array(18)
+};
+
+function controlTransfer() {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
+
+  usbManager.requestRight(devicesList[0].name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
+  console.info(`controlTransfer = ${ret}`);
+  })
+}
+```
+
 ## USBEndpoint
 
 通过USB发送和接收数据的端口。通过[USBInterface](#usbinterface)获取。
@@ -1463,25 +1463,6 @@ USB设备消息传输通道，用于确定设备。
 | ---------- | ------ | ---- | ----- |----- |
 | busNum     | number | 否 |否 | 总线地址。 |
 | devAddress | number | 否 |否 | 设备地址。 |
-
-## USBControlParams<sup>(deprecated)</sup>
-
-控制传输参数。
-
->**说明：**
->
-> 从 API version 9开始支持，从API version 18开始废弃。建议使用 [USBDeviceRequestParams](#usbdevicerequestparams12) 替代。
-
-**系统能力：** SystemCapability.USB.USBManager
-
-| 名称      | 类型                                            | 只读  | 可选               |说明               |
-| ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
-| request | number                                          | 否 | 否   |请求类型。            |
-| target  | [USBRequestTargetType](#usbrequesttargettype)   | 否 | 否   |请求目标类型。          |
-| reqType | [USBControlRequestType](#usbcontrolrequesttype) | 否 | 否   |请求控制类型。          |
-| value   | number                                          | 否 | 否   |请求参数。            |
-| index   | number                                          | 否 | 否   |请求参数value对应的索引值。 |
-| data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区。     |
 
 ## USBDeviceRequestParams<sup>12+</sup>
 
@@ -1641,3 +1622,22 @@ Usb异步传输回调。
 | length | number | 否 | 否 |读写操作的期望长度值，单位为字节。 |
 | actualLength | number|否 | 否 |读写操作的实际长度值，单位为字节。 |
 | status | [UsbTransferStatus](#usbtransferstatus18) | 否 | 否 |实时传输分包的状态码。 |
+
+## USBControlParams<sup>(deprecated)</sup>
+
+控制传输参数。
+
+>**说明：**
+>
+> 从 API version 9开始支持，从API version 18开始废弃。建议使用 [USBDeviceRequestParams](#usbdevicerequestparams12) 替代。
+
+**系统能力：** SystemCapability.USB.USBManager
+
+| 名称      | 类型                                            | 只读  | 可选               |说明               |
+| ------- | ----------------------------------------------- | ---- | ---------------- |---------------- |
+| request | number                                          | 否 | 否   |请求类型。            |
+| target  | [USBRequestTargetType](#usbrequesttargettype)   | 否 | 否   |请求目标类型。          |
+| reqType | [USBControlRequestType](#usbcontrolrequesttype) | 否 | 否   |请求控制类型。          |
+| value   | number                                          | 否 | 否   |请求参数。            |
+| index   | number                                          | 否 | 否   |请求参数value对应的索引值。 |
+| data    | Uint8Array                                      | 否 | 否   |用于写入或读取的缓冲区。     |
