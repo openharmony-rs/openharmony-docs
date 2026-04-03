@@ -3883,7 +3883,6 @@ setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapa
 | bundleName | string | 是   | 应用的bundleName。|
 | capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | 是   | 资产兼容能力。|
 
-
 **返回值：**
 
 | 类型                                    | 说明              |
