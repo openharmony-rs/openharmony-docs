@@ -264,6 +264,8 @@ function requestRight() {
   let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name).then(ret => {
     console.info(`requestRight = ${ret}`);
+  }).catch((error: BusinessError) => {
+    console.error(`requestRight failed : ${error}`);
   });
 }
 ```
@@ -750,7 +752,7 @@ function bulkTransfer() {
   usbManager.requestRight(device.name);
   if (!usbManager.hasRight(device.name)) {
     console.error(`request right fail`);
-    return; 
+    return;
   }
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(device);
   for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
@@ -830,7 +832,7 @@ function usbSubmitTransfer() {
   let endpoint = device.configs?.[0]?.interfaces?.[0]?.endpoints.find((value) => {
     return value.direction === 0 && value.type === 2
   })
-  // 获取设备的第一个id.
+  // 获取设备的第一个id。
   let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
 
   let transferParams: usbManager.UsbDataTransferParams = {
@@ -921,7 +923,7 @@ function usbCancelTransfer() {
     console.info(`invalid endpoint`);
     return;
   }
-  // 获取设备的第一个id.
+  // 获取设备的第一个id。
   let ret: number = usbManager.claimInterface(devicepipe, device.configs?.[0]?.interfaces?.[0], true);
   let transferParams: usbManager.UsbDataTransferParams = {
     devPipe: devicepipe,
