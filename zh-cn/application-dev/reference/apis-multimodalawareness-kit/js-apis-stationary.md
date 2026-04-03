@@ -51,9 +51,9 @@ type ActivityType = 'still' | 'relativeStill'
 
 | 名称                             | 值    | 说明                                       |
 | ------------------------------ | ---- | ---------------------------------------- |
-| ENTER         | 1    | 进入。   |
-| EXIT | 2   | 退出。 |
-| ENTER_EXIT | 3   | 进入和退出。 |
+| ENTER         | 1    | 进入事件。   |
+| EXIT | 2   | 退出事件。 |
+| ENTER_EXIT | 3   | 进入和退出事件。 |
 
 ## ActivityState
 
@@ -63,8 +63,8 @@ type ActivityType = 'still' | 'relativeStill'
 
 | 名称                             | 值    | 说明                                       |
 | ------------------------------ | ---- | ---------------------------------------- |
-| ENTER         | 1    | 进入。   |
-| EXIT | 2   | 退出。 |
+| ENTER         | 1    | 进入状态。   |
+| EXIT | 2   | 退出状态。 |
 
 ## stationary.on('still' | 'relativeStill')
 

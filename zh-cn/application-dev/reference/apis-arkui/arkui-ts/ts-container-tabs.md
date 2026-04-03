@@ -1001,6 +1001,8 @@ preloadItems(indices: Optional\<Array\<number>>): Promise\<void>
 > - Tabs的preloadItems需要在Tabs创建之后去调用，首次预加载推荐在Tabs的[onAppear](./ts-universal-events-show-hide.md#onappear)生命周期中去控制。
 > 
 > - 如果TabsController对象未绑定任何Tabs组件，直接调用该接口，会抛出JS异常。因此使用该接口时，建议通过try-catch捕获异常。
+>
+> - 使用preloadItems预加载标签页时，若需自定义TabBar上的显示内容，推荐使用ComponentContent实现，使用示例请参考[示例10](./ts-container-tabcontent.md#示例10通过componentcontent设置tabbar)。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

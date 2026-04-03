@@ -16,7 +16,7 @@ A date picker dialog box is a dialog box that allows users to select a date from
 >
 > - This module does not support dynamic updates for color mode (light or dark) changes. To apply a new color mode, close and reopen the dialog box.
 >
-> - The maximum number of rows that can be displayed varies by screen orientation: In portrait mode, the default number of rows is 5. In landscape mode, the number of rows depends on the system configuration. If no system configuration is set, the default is 3 rows. To check the specific system configuration value for landscape mode, use **$r('sys.float.ohos_id_picker_show_count_landscape')**.
+> - The maximum number of rows that can be displayed varies by screen orientation: In portrait mode, the default number of rows is 5. In landscape mode, the number of rows depends on the system configuration. If no system configuration is set, the default is 3 rows. To check the specific system configuration value for the landscape mode, use **$r('sys.float.ohos_id_picker_show_count_landscape')**.
 
 ## DatePickerDialog
 
@@ -86,7 +86,7 @@ Inherited from [DatePickerOptions](ts-basic-components-datepicker.md#datepickero
 | dateTimeOptions<sup>12+</sup> | [DateTimeOptions](../../apis-localization-kit/js-apis-intl.md#datetimeoptionsdeprecated) | No| Yes| Whether to display a leading zero for the hours and minutes. Currently only the configuration of the **hour** and **minute** parameters is supported.<br>Default value:<br>**hour**: For the 24-hour format, the default value is **"2-digit"**, meaning the hour is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X". For the 12-hour format, the default value is **"numeric"**, meaning no leading zero.<br>**minute**: The default value is **"2-digit"**, meaning the minute is displayed as a two-digit number. If the actual value is less than 10, a leading zero is added, displayed as "0X".<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | enableHoverMode<sup>14+</sup>     | boolean | No | Yes | Whether to respond when the device is in semi-folded mode.<br>- **true**: Respond when the device is in semi-folded mode.<br>- **false**: Do not respond when the device is in semi-folded mode.<br>Default value: **false**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
 | hoverModeArea<sup>14+</sup>       | [HoverModeAreaType](ts-universal-attributes-sheet-transition.md#hovermodeareatype14) | No | Yes | Display area of the dialog box when the device is in semi-folded mode.<br>Default value: **HoverModeAreaType.BOTTOM_SCREEN**<br>**Atomic service API**: This API can be used in atomic services since API version 14.|
-| enableHapticFeedback<sup>18+</sup> | boolean | No | Yes | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**NOTE**<br>1. Whether this parameter takes effect after being set to **true** depends on hardware support.<br>2. To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project.<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]|
+| enableHapticFeedback<sup>18+</sup> | boolean | No | Yes | Whether to enable haptic feedback.<br>- **true**: Enable haptic feedback.<br>- **false**: Disable haptic feedback.<br>Default value: **true**<br>**Atomic service API**: This API can be used in atomic services since API version 18.<br>**NOTE**<br>1. Whether this parameter takes effect after being set to **true** depends on hardware support.<br>2. To enable haptic feedback, you must declare the following permission under **requestPermissions** in **module** in **src/main/module.json5** of the project:<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}]|
 | canLoop<sup>20+</sup> | boolean | No| Yes| Whether to enable cyclic scrolling.<br>Default value: **true**<br>**NOTE**<br>**true**: Cyclic scrolling is enabled, where the year values increment or decrement with month cycling, and month values increment or decrement with day cycling.<br>**false**: Cyclic scrolling is disabled, preventing out-of-bounds scrolling in year, month, and day columns and cross-column value synchronization.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## LunarSwitchStyle<sup>14+</sup>
@@ -537,7 +537,7 @@ struct DatePickerDialogExample {
         })
 
       Row() {
-        Text('Cyclic scrolling').fontSize(20)
+        Text('Loop scrolling').fontSize(20)
         Toggle({ type: ToggleType.Switch, isOn: true })
           .onChange((isOn: boolean) => {
             this.isLoop = isOn;

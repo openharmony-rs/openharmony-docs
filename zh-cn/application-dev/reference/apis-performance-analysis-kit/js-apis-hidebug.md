@@ -950,6 +950,8 @@ VM内存信息。
 
 ## hidebug.tags<sup>12+</sup>
 
+### 常量
+
 支持trace使用场景的标签，用户可通过[hitrace](../../dfx/hitrace.md)抓取指定标签的trace内容。
 
 > **注意**：

@@ -74,7 +74,7 @@ The DES encryption and decryption can be implemented based on a string parameter
   | CFB | 64 | [NoPadding\|PKCS5\|PKCS7] | 20+ | 
 
 - Since API version 10, symmetric encryption and decryption support the algorithm specifications without the key length. If the symmetric key type does not contain the key length, the encryption and decryption operations vary with the actual key length.
-
+  
   For example, if the block cipher mode is CFB and the padding mode is **NoPadding** for a DES key with key length not specified, the string parameter is **DES|CFB|NoPadding**.
 
 ## 3DES
@@ -108,7 +108,7 @@ The 3DES encryption and decryption can be implemented based on a string paramete
   | CFB | 192 | [NoPadding\|PKCS5\|PKCS7] | 9+ | 
 
 - Since API version 10, symmetric encryption and decryption support the algorithm specifications without the key length. If the symmetric key type does not contain the key length, the encryption and decryption operations vary with the actual key length.
-
+  
   For example, if the block cipher mode is CFB and the padding mode is **NoPadding** for a 3DES key with key length not specified, the string parameter is **3DES|CFB|NoPadding**.
 
 ## SM4
@@ -160,7 +160,7 @@ The block cipher algorithm has a fixed block length. If the length of the last b
 
 - **NoPadding**: no padding. The length of the input data must match the block length.
 
-- **PKCS5**: pads a block cipher with a block size of 8 bytes. PKCS#5 applies padding in whole bytes. The value of each added byte is the number of bytes that are added.
+- **PKCS5**: pads a block cipher with a block size of 8 bytes. PKCS#5 applies padding in whole bytes. The value of each padding byte is equal to the length of the byte sequence to be padded.
 
 - **PKCS7**: pads a block cipher with a block size from 1 to 255 bytes. The padding scheme is the same as that of PKCS#5. PKCS#5 is defined for 8-byte block sizes, while PKCS#7 can work with block size ranging from 1 to 255 bytes.
 

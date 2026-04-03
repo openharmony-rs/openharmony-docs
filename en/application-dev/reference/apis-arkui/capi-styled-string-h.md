@@ -249,7 +249,7 @@ Unmarshals a byte array containing styled string information into a styled strin
 
 | Name| Description|
 | -- | -- |
-| uint8_t* buffer | Byte array to be deserialized.|
+| uint8_t* buffer | Pointer to the byte array to be deserialized.|
 | size_t bufferSize | Length of the byte array.|
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | Pointer to an **ArkUI_StyledString_Descriptor** object.|
 
@@ -275,10 +275,10 @@ Marshals the styled string information into a byte array.
 
 | Name| Description|
 | -- | -- |
-| uint8_t* buffer | Byte array where the serialized data will be stored.|
+| uint8_t* buffer | Pointer to the byte array where the serialized data will be stored.|
 | size_t bufferSize | Length of the byte array.|
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | Pointer to an **ArkUI_StyledString_Descriptor** object.|
-| size_t* resultSize | Actual length of the resulting byte array after deserialization.|
+| size_t* resultSize | Pointer to the actual length of the resulting byte array after deserialization.|
 
 **Return value**
 
@@ -308,7 +308,7 @@ Converts styled string information into HTML.
 
 | Type| Description|
 | -- | -- |
-| const char* | HTML object. This pointer is internally managed and is released when [OH_ArkUI_StyledString_Descriptor_Destroy()](#oh_arkui_styledstring_descriptor_destroy) is called.|
+| const char* | Pointer to the HTML object. This pointer is internally managed and is released when [OH_ArkUI_StyledString_Descriptor_Destroy()](#oh_arkui_styledstring_descriptor_destroy) is called.|
 
 ### OH_ArkUI_TextLayoutManager_Dispose()
 
@@ -345,7 +345,7 @@ Obtains the number of lines.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md)* layoutManager | Pointer to the **ArkUI_TextLayoutManager** object.|
-| int32_t* outLineCount | Number of text lines.|
+| int32_t* outLineCount | Pointer to the number of text lines.|
 
 **Return value**
 
