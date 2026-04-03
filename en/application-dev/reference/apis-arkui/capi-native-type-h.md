@@ -9635,7 +9635,7 @@ void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)
 
 **Description**
 
-Obtains the value of the **PositionEdges** object in the bottom direction.
+Sets the value of the **PositionEdges** object in the bottom direction.
 
 **Since**: 21
 
