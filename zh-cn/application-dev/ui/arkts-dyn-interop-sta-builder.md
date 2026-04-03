@@ -12,8 +12,130 @@
 
 ## 使用场景
 
-\@Builder的参数传递包括[按引用传递](./state-management/arkts-builder.md#按引用传递参数)与[按值传递](./state-management/arkts-builder.md#按值传递参数)，详见[参数传递规则](./state-management/arkts-builder.md#参数传递规则)。
+\@Builder的参数传递包括[按回调传递](./state-management/arkts-builder.md#按回调传递参数)、[按引用传递](./state-management/arkts-builder.md#按引用传递参数)与[按值传递](./state-management/arkts-builder.md#按值传递参数)，详见[参数传递规则](./state-management/arkts-builder.md#参数传递规则)。
 
+
+### 按回调传递参数
+
+开发者可以通过[`UIUtils.makeBinding()`](../reference/apis-arkui/js-apis-stateManagement-static.md#makebinding)函数、[`Binding`](../reference/apis-arkui/js-apis-stateManagement-static.md#bindingt)类和[`MutableBinding`](../reference/apis-arkui/js-apis-stateManagement-static.md#mutablebindingt)类实现[@Builder函数中状态变量的刷新](./state-management/arkts-builder.md#builder支持状态变量刷新)。
+
+在ArkTS-Dyn调用ArkTS-Sta自定义构建函数的场景下，ArkTS-Sta侧@Builder需要接收静态`Binding`或静态`MutableBinding`类型。由于ArkTS-Dyn侧通过`UIUtils.makeBinding()`创建的是动态`Binding`或`MutableBinding`，与ArkTS-Sta的参数类型不兼容。因此在传递给@Builder之前，需要使用[`transfer.transferStatic()`](../reference/apis-arkts/js-apis-transfer.md#transfertransferstatic)将其转换为静态`Binding`或静态`MutableBinding`类型。
+
+> **说明：**
+>
+> `transfer.transferStatic()`的返回类型为`Object`。完成转换后，编译器无法基于返回值继续校验目标侧@Builder参数类型，也无法在当前侧对`Binding<T>`、`MutableBinding<T>`及其泛型参数是否匹配进行静态检查。
+>
+> 因此，开发者需要自行保证传入的转换key值（如`'ArkUI.Binding'`、`'ArkUI.MutableBinding'`）与ArkTS-Sta侧@Builder声明的参数类型一致。若类型不匹配，通常无法在编译阶段发现，而会在运行时表现为异常或行为不符合预期。
+
+完整示例结构如下所示：
+
+```text
+project/
+├── entry/                             # ArkTS-Dyn主模块
+│   └── src/
+│       └── main/
+│           └── ets/
+│               └── pages/
+│                   └── Index.ets      # 调用ArkTS-Sta@Builder并按回调传递参数
+│
+└── static_library/                    # ArkTS-Sta子模块
+    └── src/
+        └── main/
+            └── ets/
+                └── components/
+                    └── MainPage.ets   # 定义@Builder和Binding转换函数
+```
+
+示例如下：
+
+- 创建ArkTS-Sta子模块`static_library`，在`static_library/src/main/ets/components`目录创建并导出@Builder自定义构建函数与转换函数。
+
+```TypeScript
+'use static'
+
+// static_library/src/main/ets/components/MainPage.ets
+import { Builder, Column, Button, Text, MutableBinding, Binding } from '@kit.ArkUI';
+import { transfer } from '@kit.ArkTS';
+
+export function createStaticMutableBinding(binding: Object): Any {
+  // 将动态MutableBinding转换为静态MutableBinding，供ArkTS-Sta @Builder接收。
+  return transfer.transferStatic(binding, 'ArkUI.MutableBinding');
+}
+
+export function createStaticBinding(binding: Object): Any {
+  // 将动态Binding转换为静态Binding，供ArkTS-Sta @Builder接收。
+  return transfer.transferStatic(binding, 'ArkUI.Binding');
+}
+
+@Builder
+export function CustomButton(num1: MutableBinding<number>, num2: Binding<number>) {
+  Column() {
+    Text(`CustomButton num1: ${num1.value}, num2: ${num2.value}`)
+    Button('change num1')
+      .onClick(() => {
+        num1.value++;
+      })
+  }
+}
+```
+
+```TypeScript
+'use static'
+
+// static_library/index.ets
+export { CustomButton, createStaticMutableBinding, createStaticBinding } from './src/main/ets/components/MainPage';
+```
+
+- 在ArkTS-Dyn主模块`entry`中引入ArkTS-Sta自定义构建函数，并通过静态侧封装的转换函数传递参数。且在`oh-package.json5`文件中配置子模块依赖。
+
+```TypeScript
+// entry/src/main/ets/pages/Index.ets
+import { UIUtils } from '@kit.ArkUI';
+import { CustomButton, createStaticMutableBinding, createStaticBinding } from 'static_library';
+
+@Entry
+@Component
+struct Parent {
+  @State num1: number = 10;
+  @State num2: number = 10;
+
+  build() {
+    Column() {
+      CustomButton(
+        createStaticMutableBinding(
+          UIUtils.makeBinding<number>(
+            () => this.num1,
+            (val: number) => {
+              this.num1 = val;
+            }
+          )
+        ),
+        createStaticBinding(
+          UIUtils.makeBinding<number>(() => this.num2)
+        )
+      )
+      Text(`num1: ${this.num1}`)
+      Button('change num1')
+        .onClick(() => {
+          this.num1++;
+        })
+      Text(`num2: ${this.num2}`)
+      Button('change num2')
+        .onClick(() => {
+          this.num2++;
+        })
+    }
+  }
+}
+```
+
+```json
+// entry/oh-package.json5
+
+"dependencies": {
+  "static_library": "file:../static_library"
+}
+```
 
 ### 按引用传递参数
 
@@ -218,7 +340,3 @@ struct Parent {
 }
 ```
 
-
-### 按回调函数传递参数
-
-不支持通过[`UIUtils.makeBinding()`函数、`Binding`类、`MutableBinding`类](./state-management/arkts-builder.md#@Builder支持状态变量刷新)实现@Builder函数中状态变量的刷新。
