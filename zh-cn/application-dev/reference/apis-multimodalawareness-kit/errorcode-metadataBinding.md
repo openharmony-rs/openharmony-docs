@@ -24,7 +24,7 @@ Internal handling failed. File creation failed.
 1. 定时重试操作，如间隔1s或者按照指数增长间隔重试。  
 2. 连续重试3次不可用则停止尝试，返回原始图片文件。  
 
-
+<!--Del-->
 ## 32100002 编码程序执行失败  
 **错误信息**  
 Encoding failed. Possible causes: 1. Image processing error; 2. Channel coding error. 
@@ -51,7 +51,8 @@ Decoding failed. Possible causes: 1. Image not encoded; 2. Image destroyed.
 
 **处理步骤**  
 1. 定时重试操作，如间隔1s或者按照指数增长间隔重试。  
-2. 连续重试3次不可用则停止尝试，返回空链接。  
+2. 连续重试3次不可用则停止尝试，返回空链接。
+<!--DelEnd-->  
 
 
 ## 32100004 订阅失败  
