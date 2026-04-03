@@ -35,6 +35,7 @@ import { inputMethod } from '@kit.IMEKit';
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | name<sup>9+</sup>  | string | 是 | 否 | 必填。输入法包名。|
@@ -793,6 +794,7 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | textInputType  | [TextInputType](#textinputtype10) | 否 | 否 | 文本输入类型。|
@@ -806,6 +808,7 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | inputAttribute  | [InputAttribute](#inputattribute10) | 否 | 否 | 编辑框属性。|
