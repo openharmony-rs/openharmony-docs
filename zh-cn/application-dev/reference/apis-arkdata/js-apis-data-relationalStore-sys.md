@@ -76,6 +76,20 @@ import { relationalStore } from '@kit.ArkData';
 | -------- | ------- | ----  | ---- | ------------------------------------------------------------ |
 | references<sup>11+</sup> | Array&lt;[Reference](#reference11)&gt; | 否 | 是   | 设置表之间的关联关系，可以设置多个字段的关联，子表和父表关联字段的值必须相同。默认数据库表之间无关联关系。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 11开始，支持此可选参数。|
 
+## CloudSyncConfig<sup>26+</sup>
+
+云同步配置信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口：** 此接口为系统接口。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+|------|------|------|------|------|
+| downloadOnly<sup>26+</sup> | boolean | 否 | 是 | 是否仅下载同步。true表示仅下载，false表示上传和下载。 |
+
 ## RdbStore
 
 提供管理关系型数据库（RDB）的接口。

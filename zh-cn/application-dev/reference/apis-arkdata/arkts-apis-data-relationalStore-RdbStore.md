@@ -5178,6 +5178,157 @@ if (store != undefined) {
 };
 ```
 
+## cloudSync<sup>26+</sup>
+
+cloudSync(mode: SyncMode, predicates: RdbPredicates, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
+
+同步数据到云端，使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| mode | [SyncMode](arkts-apis-data-relationalStore-e.md#syncmode) | 是 | 数据库同步模式。 |
+| predicates | [RdbPredicates](arkts-apis-data-relationalStore-RdbPredicates.md) | 是 | 同步条件，通过RdbPredicates实例对象指定。 |
+| progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 进度回调函数，返回ProgressDetails实例对象。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+|------|------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)和[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 801       | Capability not supported because the device does not support the device-cloud capability. |
+| 14800014  | The target instance is already closed. |
+
+**示例:**
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+predicates.equalTo('NAME', 'Lisa');
+
+if (store != undefined) {
+  (store as relationalStore.RdbStore).cloudSync(
+    relationalStore.SyncMode.SYNC_MODE_TIME_FIRST,
+    predicates,
+    (progressDetails: relationalStore.ProgressDetails) => {
+      console.info(`Cloud sync progress: ${progressDetails.schedule}, code: ${progressDetails.code}`);
+    }
+  ).then(() => {
+    console.info('Succeeded in cloud sync');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to cloud sync. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+## cloudSync<sup>26+</sup>
+
+cloudSync(config: CloudSyncConfig, progress: Callback&lt;ProgressDetails&gt;): Promise&lt;void&gt;
+
+根据配置同步数据到云端，使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| config | [CloudSyncConfig](arkts-apis-data-relationalStore-i.md#cloudsyncconfig26) | 是 | 云同步配置。 |
+| progress | Callback&lt;[ProgressDetails](arkts-apis-data-relationalStore-i.md#progressdetails10)&gt; | 是 | 进度回调函数，返回ProgressDetails实例对象。 |
+
+**返回值:**
+
+| 类型 | 说明 |
+|------|------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码:**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)和[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 14800014  | The target instance is already closed. |
+
+**示例:**
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let predicates = new relationalStore.RdbPredicates('EMPLOYEE');
+predicates.equalTo('NAME', 'Lisa');
+
+let config: relationalStore.CloudSyncConfig = {
+  mode: relationalStore.SyncMode.SYNC_MODE_TIME_FIRST,
+  enablePredicate: true,
+  predicate: predicates
+};
+if (store != undefined) {
+  (store as relationalStore.RdbStore).cloudSync(config, (progressDetails: relationalStore.ProgressDetails) => {
+    console.info(`Cloud sync progress: ${progressDetails.schedule}, code: ${progressDetails.code}`);
+  }).then(() => {
+    console.info('Succeeded in cloud sync');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to cloud sync. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
+## stopCloudSync<sup>26+</sup>
+
+stopCloudSync(): Promise&lt;void&gt;
+
+停止与云端的数据同步，使用Promise异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值:**
+
+| 类型 | 说明 |
+|------|------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码:**
+
+以下错误码的详细介绍请参见[关系型数据库错误码](errorcode-data-rdb.md)和[通用错误码](../errorcode-universal.md)。
+
+| **错误码ID** | **错误信息**                                                 |
+|-----------| ------------------------------------------------------------ |
+| 801       | Capability not supported because the device does not support the device-cloud capability. |
+| 14800000  | Inner error. |
+| 14800014  | The target instance is already closed. |
+
+**示例:**
+
+```ts
+import { relationalStore } from '@kit.ArkData';
+import { BusinessError } from '@kit.BasicServicesKit';
+if (store != undefined) {
+  (store as relationalStore.RdbStore).stopCloudSync().then(() => {
+    console.info('Succeeded in stopping cloud sync');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to stop cloud sync. Code: ${err.code}, message: ${err.message}`);
+  });
+}
+```
+
 ## on('dataChange')
 
 on(event: 'dataChange', type: SubscribeType, observer: Callback&lt;Array&lt;string&gt;&gt;): void

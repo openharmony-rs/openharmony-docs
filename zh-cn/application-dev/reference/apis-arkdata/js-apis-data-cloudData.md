@@ -84,4 +84,111 @@ cloudData.setCloudStrategy(cloudData.StrategyType.NETWORK, [cloudData.NetWorkStr
 });
 
 ```
+
+## AutoSyncTriggerMode<sup>26+</sup>
+
+自动同步触发模式枚举。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+|------|---|------|
+| ACCOUNT_LOGIN | 0 | 账号登录触发模式。 |
+| CLOUD_SWITCH_ON | 1 | 同步开关触发模式。 |
+| NETWORK_RECOVER | 2 | 网络恢复后的触发模式。 |
+| CLOUD_DATA_CHANGE | 3 | 云端数据变更触发模式。 |
+| USER_CHANGE | 4 | 用户变更触发模式。 |
+
+## AutoSyncTriggerInfo<sup>26+</sup>
+
+自动同步触发信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+|------|------|------|------|------|
+| mode | [AutoSyncTriggerMode](#autosynctriggermode26) | 否 | 否 | 自动同步触发模式。 |
+
+## onAutoSyncTrigger<sup>26+</sup>
+
+onAutoSyncTrigger(observer: Callback&lt;AutoSyncTriggerInfo&gt;): void
+
+订阅自动同步触发事件，使用callback异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo26)&gt; | 是 | 自动同步触发拦截的回调函数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 801      | Capability not supported. |
+
+**示例：**
+
+```ts
+import { cloudData } from '@kit.ArkData';
+
+function autoSyncTriggerObserver(info: cloudData.AutoSyncTriggerInfo) {
+  console.info(`Auto sync triggered, mode: ${info.mode}`);
+}
+
+cloudData.onAutoSyncTrigger(autoSyncTriggerObserver);
+```
+
+## offAutoSyncTrigger<sup>26+</sup>
+
+offAutoSyncTrigger(observer?: Callback&lt;AutoSyncTriggerInfo&gt;): void
+
+取消订阅自动同步触发事件，使用callback异步回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|--------|------|------|------|
+| observer | Callback&lt;[AutoSyncTriggerInfo](#autosynctriggerinfo26)&gt; | 否 | 自动同步触发拦截的回调函数。如果不传参数，则取消所有已注册的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 801      | Capability not supported. |
+
+**示例：**
+
+```ts
+import { cloudData } from '@kit.ArkData';
+
+function autoSyncTriggerObserver(info: cloudData.AutoSyncTriggerInfo) {
+  console.info(`Auto sync triggered, mode: ${info.mode}`);
+}
+
+// 订阅
+cloudData.onAutoSyncTrigger(autoSyncTriggerObserver);
+
+// 取消指定订阅
+cloudData.offAutoSyncTrigger(autoSyncTriggerObserver);
+
+// 取消所有订阅
+cloudData.offAutoSyncTrigger();
+```
 <!--no_check-->
