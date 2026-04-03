@@ -929,7 +929,7 @@ setAudioSessionBehavior(behavior: number): void
 
 > **说明：**
 >
-> - 当音频会话在激活状态时调用此接口，必须重新调用接口[activateAudioSession](./arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)使其生效。
+> 当音频会话在激活状态时调用此接口后，必须重新调用接口[activateAudioSession](./arkts-apis-audio-AudioSessionManager.md#activateaudiosession12)使其生效。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -939,7 +939,7 @@ setAudioSessionBehavior(behavior: number): void
 
 | 参数名   | 类型               | 必填 | 说明      |
 | -------- | ----------------- | ---- | --------- |
-| behavior   | number           | 是   | 用于设置音频会话行为。可以是单个标志，也可以是多个标志的按位OR组合。详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+| behavior   | number           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
 
 **错误码：**
 

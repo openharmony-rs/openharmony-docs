@@ -596,8 +596,8 @@
 | AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK | 5      | 提示音频会话躲避结束，恢复音量播放。<br/>如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers23)，此时可取消静音。 |
 | AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION<sup>23+</sup>    | 6      |  静音播放建议。<br/>当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。|
 | AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION<sup>23+</sup>  | 7      | 取消静音播放建议。<br/>当其他应用程序不可混音的音频已结束，该应用程序可自行决定是否取消静音。 <br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE<sup>24+</sup>    | 8      |  提示音频会话静音。<br/>该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置参数[AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED](#audiosessionbehaviorflags24)，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)，且音频会话已激活。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
-| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE<sup>24+</sup>  | 9      | 提示音频会话解除静音，恢复播放。<br/>该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置参数[AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED](#audiosessionbehaviorflags24)，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)，且音频会话已激活。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_MUTE<sup>24+</sup>    | 8      |  提示音频会话静音。<br/>该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置参数[AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)，且音频会话已激活。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
+| AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE<sup>24+</sup>  | 9      | 提示音频会话解除静音，恢复播放。<br/>该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置参数[AudioSessionBehaviorFlags](#audiosessionbehaviorflags24).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)，且音频会话已激活。<br/> **模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## AudioDataCallbackResult<sup>12+</sup>
 
@@ -708,7 +708,7 @@
 
 ## AudioSessionBehaviorFlags<sup>24+</sup>
 
-音频会话行为的枚举。
+表示音频会话行为的枚举。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -716,6 +716,6 @@
 
 | 名称                   | 值 | 说明      |
 | :--------------------- |:--|:--------|
-| DEFAULT_BEHAVIOR<sup>24+</sup> | 0x00000000 | 用于清空音频会话行为设置。 |
-| VOIP_PRIVACY_TYPE_PUBLIC<sup>26+</sup> | 0x00000001 | 非隐私VOIP，允许VOIP录音流与其他应用的录音流共同录音。<br/>**注意：** VOIP通话流属于隐私流，请谨慎使用该接口并确保符合隐私保护要求。 |
-| MUTE_WHEN_INTERRUPTED<sup>24+</sup> | 0x00000002 | 当音频流被打断时，使用静音所替代。<br/>通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置该行为时，也需调用接口[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)使其生效。<br/>当播放被静音时，应用将收到[InterruptHint.INTERRUPT_HINT_MUTE](#interrupthint)通知，并且在恢复时收到[InterruptHint.INTERRUPT_HINT_UNMUTE](#interrupthint)通知。 |
+| DEFAULT_BEHAVIOR<sup>24+</sup> | 0x00000000 | 默认行为，用于清空音频会话行为设置。 |
+| VOIP_PRIVACY_TYPE_PUBLIC | 0x00000001 | 非隐私VoIP，允许VoIP录音流与其他应用的录音流同时进行录音。<br/>**注意：** VoIP通话流属于隐私流，请谨慎使用该接口并确保符合隐私保护要求。<br/>**起始版本：** 26.0.0 |
+| MUTE_WHEN_INTERRUPTED<sup>24+</sup> | 0x00000002 | 当音频流被打断时，使用静音替代。<br/>通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior24)设置该行为的同时，也需要调用接口[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene20)使其生效。<br/>当播放被静音时，应用将收到[InterruptHint](#interrupthint).INTERRUPT_HINT_MUTE通知，并且在恢复时会收到[InterruptHint](#interrupthint).INTERRUPT_HINT_UNMUTE通知。 |

@@ -2751,7 +2751,9 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 
 > **说明：**
 >
-> - 当音频渲染器在运行状态时调用此接口，必须重新调用接口[start](./arkts-apis-audio-AudioRenderer.md#start8)使其生效。
+> 当音频渲染器在运行状态时调用此接口后，必须重新调用接口[start](./arkts-apis-audio-AudioRenderer.md#start8)使其生效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -2760,7 +2762,7 @@ setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: num
 | 参数名       | 类型    | 必填 | 说明                                      |
 | ------------ | -------| ---- |------------------------------------------ |
 | strategy | [AudioSessionStrategy](arkts-apis-audio-i.md#audiosessionstrategy12) | 是   | 音频会话策略。 |
-| behavior   | number           | 是   | 用于设置音频会话行为。可以是单个标志，也可以是多个标志的按位OR组合。详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+| behavior   | number           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
 
 **错误码：**
 
