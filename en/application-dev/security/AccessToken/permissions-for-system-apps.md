@@ -5711,4 +5711,4 @@ Allows an application and a service to access the device-side model deployment m
 
 **Supported devices**: General
 
-**Since**: 26
+**Since**: 24
