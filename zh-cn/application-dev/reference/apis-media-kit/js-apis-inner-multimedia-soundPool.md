@@ -159,7 +159,7 @@ load(uri: string): Promise\<number>
 
 该方法不支持加载rawfile目录资源，需要通过[load(fd: number, offset: number, length: number, callback: AsyncCallback\<number>): void](#load-2)或者[load(fd: number, offset: number, length: number): Promise\<number>](#load-3)实现。
 
->**说明：**
+> **说明：**
 >
 > - 将资源句柄（fd）或加载路径描述（uri）传递给音频池播放器之后，请不要通过该资源句柄或加载路径描述做其他读写操作，包括但不限于将同一个资源句柄或加载路径描述传递给多个音频池播放器。
 > - 同一时间通过同一个资源句柄或加载路径描述读写文件时存在竞争关系，将导致播放异常。
