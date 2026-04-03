@@ -32,7 +32,7 @@ Slider(options?: SliderOptions)
 
 | 参数名  | 类型                                    | 必填 | 说明               |
 | ------- | --------------------------------------- | ---- | ------------------ |
-| options | [SliderOptions](#slideroptions对象说明) | 否   | 配置滑动条的参数。 |
+| options | [SliderOptions](#slideroptions对象说明) | 否   | 配置滑动条的参数。若不传入，则使用SliderOptions中各属性的默认值。 |
 
 ## SliderOptions对象说明
 
@@ -523,7 +523,7 @@ prefix(content: ComponentContent, options?: SliderPrefixOptions)
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
 | content | [ComponentContent](../js-apis-arkui-ComponentContent.md) | 是   | 自定义组件内容，用于定义滑块前缀的可视化内容，该内容会显示在滑块的起始位置。 |
-| options | [SliderPrefixOptions](#sliderprefixoptions20) | 否   | 滑块前缀的配置选项，用于设置与无障碍功能相关的属性。 |
+| options | [SliderPrefixOptions](#sliderprefixoptions20) | 否   | 滑块前缀的配置选项，用于设置与无障碍功能相关的属性。 <br/>默认值：null |
 
 ### suffix<sup>20+</sup>
 
@@ -540,7 +540,7 @@ suffix(content: ComponentContent, options?: SliderSuffixOptions)
 | 参数名      | 类型                                                         | 必填 | 说明                                                    |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
 | content | [ComponentContent](../js-apis-arkui-ComponentContent.md)    | 是   | 自定义组件内容，用于定义滑块后缀的可视化内容，该内容会显示在滑块的结束位置。 |
-| options | [SliderSuffixOptions](#slidersuffixoptions20) | 否   | 滑块后缀的配置选项，用于设置与无障碍功能相关的属性。 |
+| options | [SliderSuffixOptions](#slidersuffixoptions20) | 否   | 滑块后缀的配置选项，用于设置与无障碍功能相关的属性。 <br/>默认值：null |
 
 ### showSteps<sup>20+</sup>
 
