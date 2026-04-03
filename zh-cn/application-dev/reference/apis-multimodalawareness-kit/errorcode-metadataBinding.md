@@ -12,7 +12,7 @@
 
 ## 32100001 文件创建失败  
 **错误信息**  
-Internal handling failed. File creation failed.  
+Internal handling failed.
 
 **错误描述**  
 当调用记忆链接模块接口时，若服务异常，会报此错误码。  
@@ -56,7 +56,7 @@ Decoding failed. Possible causes: 1. Image not encoded; 2. Image destroyed.
 
 
 ## 32100004 订阅失败  
-**错误码信息**  
+**错误信息**  
 Subscription failed. Possible causes: 1. Abnormal system capability; 2. IPC exception; 3. Algorithm loading exception. 
 
 **错误描述**  
