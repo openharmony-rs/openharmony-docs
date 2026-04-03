@@ -1621,12 +1621,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let factoryResetStrategy: update.FactoryResetStrategy = {
   scope: update.FactoryResetScope.DATA,
-  strategy: "deepfactoryReset"
+  strategy: "deepFactoryReset test"
 };
 restorer.deepFactoryReset(factoryResetStrategy).then(() => {
-  console.info(`deepfactoryReset success`);
+  console.info(`deepFactoryReset success`);
 }).catch((err: BusinessError) => {
-  console.error(`deepfactoryReset error ${JSON.stringify(err)}`);
+  console.error(`deepFactoryReset error ${JSON.stringify(err)}`);
 });
 ```
 ### getDeepFactoryResetInfo<sup>26+</sup>
@@ -1664,7 +1664,7 @@ let factoryResetStrategy: update.FactoryResetStrategy = {
   scope: update.FactoryResetScope.DATA,
   strategy: "deepfactoryReset"
 };
-updater.getFactoryResetInfo(factoryResetStrategy).then((info: update.FaactoryResetInfo) => {
+updater.getFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
   console.info(`getFactoryResetInfo success`);
 }).catch((err: BusinessError) => {
   console.error(`getFactoryResetInfo promise error ${JSON.stringify(err)}`);
@@ -2186,7 +2186,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 ## FactoryResetStrategy<sup>26+</sup>
 
-深度恢厂策略。
+深度恢复出厂设置策略。
 
 **系统能力**：SystemCapability.Update.UpdateService
 
