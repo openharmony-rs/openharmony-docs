@@ -1071,29 +1071,29 @@ showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSet
 | 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **示例：**
- 
-phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。	 
 
-```ts	 
-import { dataSharePredicates } from '@kit.ArkData';	 
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {	 
-  console.info('ShowSingleAssetCreationDialogExDemo.');	 
+```ts
+import { dataSharePredicates } from '@kit.ArkData';
 
-  try {	 
-    // 获取需要保存到媒体库的位于应用沙箱的图片/视频URI。	 
-    let srcFileUri: string = 'file://fileUriDemo1'; // 实际场景请使用真实的URI。	 
-    let photoCreationConfig: photoAccessHelper.CreationSetting = {	 
-      title: 'test2', // 可选。	 
-      fileNameExtension: 'jpg',	 
-      photoType: photoAccessHelper.PhotoType.IMAGE	 
-    }	 
-    let isImageFullyDisplayed: boolean = true	 
-    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed); 
-    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri); 
-  } catch (err) { 
-    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message); 
-  } 
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('ShowSingleAssetCreationDialogExDemo.');
+
+  try {
+    // 获取需要保存到媒体库的位于应用沙箱的图片/视频URI。
+    let srcFileUri: string = 'file://fileUriDemo1'; // 实际场景请使用真实的URI。
+    let photoCreationConfig: photoAccessHelper.CreationSetting = {
+      title: 'test2', // 可选。
+      fileNameExtension: 'jpg',
+      photoType: photoAccessHelper.PhotoType.IMAGE
+    }
+    let isImageFullyDisplayed: boolean = true
+    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed);
+    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri);
+  } catch (err) {
+    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
+  }
 }
 ```
 
@@ -2237,20 +2237,20 @@ setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<vo
 | -------- | ---------------------------------------- |
 | 23800151 | The scenario parameter verification fails, Invalid tokenId.|
 | 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
- 	 
+
 **示例：**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
- 	 
+
 ```ts
 async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
- 	try {
- 	  let capability : photoAccessHelper.AssetCompatibleCapability = {
- 	      supportedHighResolution : true,
- 	  };
- 	  await phAccessHelper.setAssetCompatibleCapability(capability);
- 	} catch (error) {
- 	  console.error('failed to setAssetCompatibleCapability err', error);
- 	}
+  try {
+    let capability : photoAccessHelper.AssetCompatibleCapability = {
+      supportedHighResolution : true,
+    };
+    await phAccessHelper.setAssetCompatibleCapability(capability);
+  } catch (error) {
+    console.error('failed to setAssetCompatibleCapability err', error);
+  }
 }
 ```

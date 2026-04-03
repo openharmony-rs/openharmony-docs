@@ -254,7 +254,7 @@ picker内宫格的捏合模式。
 | defaultGridLevel | [GridLevel](arkts-apis-photoAccessHelper-e.md#gridlevel23) | 否 | 是 | 拉起picker后宫格档位，默认为STANDARD。|
 
 ## AssetCompatibleCapability<sup>24+</sup>
-	 
+
 资产兼容能力。
 
 **模型约束**： 此接口仅可在Stage模型下使用。

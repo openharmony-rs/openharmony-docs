@@ -3981,7 +3981,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 ```
 
 ### setAssetCompatibleCapability<sup>24+</sup>
- 	 
+
 setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise\<void>
 
 根据bundleName配置资产兼容能力。开发者可以获取兼容性能力，并决定是否根据兼容性能力进行兼容性转换。
@@ -3998,7 +3998,6 @@ setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapa
 | ------- | ------- | ---- | -------------------------- |
 | bundleName | string | 是   | 应用的bundleName。|
 | capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | 是   | 资产兼容能力。|
-
 
 **返回值：**
 
