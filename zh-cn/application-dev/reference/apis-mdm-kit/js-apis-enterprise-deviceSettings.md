@@ -571,7 +571,7 @@ try {
 ## SettingsItem<sup>24+</sup>
 
 设置的策略类型。
- 	 
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 
@@ -583,7 +583,7 @@ try {
 ## SettingsMenu<sup>24+</sup>
 
 设置项列表。
- 	 
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 | 名称   | 值 | 说明         |
