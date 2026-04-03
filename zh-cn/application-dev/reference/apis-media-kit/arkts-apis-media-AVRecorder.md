@@ -323,7 +323,7 @@ avRecorder.updateRotation(rotation).then(() => {
 
 setMetadata(metadata: Record&lt;string, string&gt;): void
 
-设置录制的元数据信息，这些信息将会被写入到录制生成的音视频文件中。
+设置录制的元数据信息。这些信息会覆盖config.metadata.customInfo（参考[prepare()](#prepare9-1)和[AVRecorderConfig](arkts-apis-media-i.md#avrecorderconfig9)）中的值，如果它们的键相同。
 
 该方法只能在[prepare()](#prepare9-1)事件成功触发后，且必须在[stop()](#stop9)之前调用。
 
@@ -335,7 +335,7 @@ setMetadata(metadata: Record&lt;string, string&gt;): void
 
 | 参数名     | 类型             | 必填   | 说明                                                      |
 | ---------- |---------------- | ------ |---------------------------------------------------------|
-| metadata | Record&lt;string, string&gt; | 是  | 录制的元数据信息。<br>格式为字符串键值对，其中键需要以`com.openharmony.`开头，且值的长度不能超过256个字节。 |
+| metadata | Record&lt;string, string&gt; | 是  | 录制的元数据信息。<br>格式为字符串键值对，其中，键需要以`com.openharmony.`开头，且值的长度不能超过256个字节。 |
 
 **错误码：**
 
