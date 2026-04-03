@@ -42,7 +42,7 @@ let audioRoutingManager = audioManager.getRoutingManager(); // 再调用AudioMan
 <!-- @[getDevices_input](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // 导入audio模块。
+import { audio } from '@kit.AudioKit';  // 导入audio模块。
 // ...
   audioRoutingManager.getDevices(audio.DeviceFlag.INPUT_DEVICES_FLAG).then((data: audio.AudioDeviceDescriptors) => {
     console.info('Promise returned to indicate that the device list is obtained.');
@@ -58,17 +58,19 @@ import { audio } from '@kit.AudioKit'; // 导入audio模块。
 <!-- @[listen_InputStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
 
 ``` TypeScript
-import { audio } from '@kit.AudioKit'; // 导入audio模块。
+import { audio } from '@kit.AudioKit';  // 导入audio模块。
 // ...
   // 监听音频设备状态变化。
   audioRoutingManager.on('deviceChange', audio.DeviceFlag.INPUT_DEVICES_FLAG,
     (deviceChanged: audio.DeviceChangeAction) => {
-    console.info('device change type : ' + deviceChanged.type); // 设备连接状态变化,0为连接,1为断开连接。
+    console.info('device change type : ' + deviceChanged.type);  // 设备连接状态变化,0为连接,1为断开连接。
     console.info('device descriptor size : ' + deviceChanged.deviceDescriptors.length);
-    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole); // 设备角色。
-    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType); // 设备类型。
+    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceRole);  // 设备角色。
+    console.info('device change descriptor : ' + deviceChanged.deviceDescriptors[0].deviceType);  // 设备类型。
 
     // ...
+  });
+  // ...
   // 取消监听音频设备状态变化。
   audioRoutingManager.off('deviceChange', (deviceChanged: audio.DeviceChangeAction) => {
     console.info('Should be no callback.');
