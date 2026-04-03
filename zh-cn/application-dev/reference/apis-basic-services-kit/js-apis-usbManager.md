@@ -703,7 +703,7 @@ bulkTransfer(pipe: USBDevicePipe, endpoint: USBEndpoint, buffer: Uint8Array, tim
 >
 > 单次批量传输的传输数据总量（包括pipe、endpoint、buffer、timeout）请控制在200KB以下，数据总量过大会导致传输失败返回-1。
 >
-> 在调用接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
+> 在调用接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明控制权 claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -1314,7 +1314,7 @@ function resetUsbDevice() {
     return;
   }
 
-  usbManager.requestRight(devicesList?.[0].name);
+  usbManager.requestRight(devicesList?.[0]?.name);
   let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   try {
     let ret: boolean = usbManager.resetUsbDevice(devicepipe);
@@ -1387,8 +1387,8 @@ function controlTransfer() {
     return;
   }
 
-  usbManager.requestRight(devicesList[0].name);
-  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList[0]);
+  usbManager.requestRight(devicesList?.[0]?.name);
+  let devicepipe: usbManager.USBDevicePipe = usbManager.connectDevice(devicesList?.[0]);
   usbManager.controlTransfer(devicepipe, param).then((ret: number) => {
   console.info(`controlTransfer = ${ret}`);
   })
