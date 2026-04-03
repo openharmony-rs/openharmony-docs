@@ -53,7 +53,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | featureVersion | number | 是 | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：0 |
 | buildVersion | number | 是 | Build版本号，标识编译构建的版本号，值为osFullName中的第四位数值，建议直接使用deviceInfo.buildVersion获取，可提升效率，不建议开发者自主解析osFullName获取。<br/>示例：1 |
 | sdkApiVersion | number | 是 | 系统软件API版本。<br/>**原子化服务API**：从API version 14开始，该接口支持在原子化服务中使用。<br/>示例：12 |
-| sdkMinorApiVersion | number | 是 | 系统软件Minor API版本。<br/>**起始版本：** 26.0.0<br/>**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。<br/>示例：0 |
+| sdkMinorApiVersion | number | 是 | 系统软件Minor API版本。<br/>**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。<br/>示例：0 |
 | sdkPatchApiVersion<sup>26+</sup> | number | 是 | 系统软件Patch API版本。<br/>**原子化服务API**：从API version 26开始，该接口支持在原子化服务中使用。<br/>示例：0 |
 | firstApiVersion | number | 是 | 首个版本系统软件API版本。<br/>示例：3 |
 | versionId | string | 是 | 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。<br/>示例：wearable/HUAWEI/HUAWEI/TAS/OpenHarmony-5.0.0.1/TAS-AL00/TAS-AL00/12/default/release:nolog |
