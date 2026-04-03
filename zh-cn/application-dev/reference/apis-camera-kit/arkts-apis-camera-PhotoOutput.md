@@ -621,7 +621,7 @@ setMovingPhotoVideoCodecType(codecType: VideoCodecType): void
 
 | 参数名        | 类型                                  | 必填 |  说明                |
 | ------------- |-------------------------------------|-------| ------------        |
-| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  是    | 动态照片短视频编码类型。  |
+| codecType     | [VideoCodecType](arkts-apis-camera-e.md#videocodectype13) |  是    | 动态照片短视频编码类型。<br>如果设置不在枚举范围内，则该参数不会生效。  |
 
 **错误码：**
 
