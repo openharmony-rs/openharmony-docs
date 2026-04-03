@@ -84,7 +84,7 @@ struct Index {
       .getRouter()
       .pushUrl(options)
       .then(() => {
-        console.error(`pushUrl finish`);
+        console.info('pushUrl success');
       })
       .catch((err: ESObject) => {
         console.error(`pushUrl failed, code is ${(err as BusinessError).code}, message is ${(err as BusinessError).message}`);
