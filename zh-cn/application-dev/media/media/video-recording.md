@@ -97,7 +97,7 @@
    ```ts
    import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import fileIo from '@ohos.file.fs';
+   import { fileIo as fs } from '@kit.CoreFileKit';
 
    let avProfile: media.AVRecorderProfile = {
      fileFormat: media.ContainerFormatType.CFT_MPEG_4, // 视频文件封装格式。
@@ -114,7 +114,7 @@
 
    const context: Context = this.getUIContext().getHostContext()!; // 参考应用文件访问与管理。
    let filePath: string = context.filesDir + '/example.mp4';
-   let videoFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+   let videoFile: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
    let fileFd: number = videoFile.fd; // 获取文件fd。
   
    let avConfig: media.AVRecorderConfig = {
@@ -174,8 +174,7 @@ import { common } from '@kit.AbilityKit';
 import { camera } from '@kit.CameraKit';
 import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileUri } from '@kit.CoreFileKit';
-import fileIo from '@ohos.file.fs';
+import { fileIo as fs, fileUri } from '@kit.CoreFileKit';
 import { photoAccessHelper } from '@kit.MediaLibraryKit';
 
 async function videoRecording(context: common.Context): Promise<void> {
@@ -225,10 +224,10 @@ async function videoRecording(context: common.Context): Promise<void> {
 
   // 创建文件以及设置avConfig.url。
   let filePath: string = ''; // 文件路径。
-  let videoFile: fileIo.File | undefined = undefined;
+  let videoFile: fs.File | undefined = undefined;
   try {
     filePath = context.filesDir + '/example.mp4'; // 文件沙箱路径，文件后缀名应与封装格式对应。
-    videoFile = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE); // 打开文件。
+    videoFile = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE); // 打开文件。
   } catch (error) {
     let err = error as BusinessError;
     console.error(`Failed to open file, error code: ${err.code}, message: ${err.message}`);
@@ -316,7 +315,7 @@ async function videoRecording(context: common.Context): Promise<void> {
   // 关闭录制文件fd。
   try {
     if (videoFile !== undefined) {
-      await fileIo.close(videoFile.fd);
+      await fs.close(videoFile.fd);
     }
   } catch (error) {
     let err = error as BusinessError;
