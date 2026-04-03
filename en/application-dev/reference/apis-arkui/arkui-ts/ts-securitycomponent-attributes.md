@@ -1400,3 +1400,5 @@ struct Index {
 ```
 
 ![security_component_focus_box.gif](figures/security_component_focus_box.gif)
+
+<!--no_check-->
