@@ -71,7 +71,7 @@ Sets the absolute position of the security component, that is, the offset of the
 
 | Name| Type| Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) |Yes|Offset of the security component's upper left corner relative to its parent container's.<br>Default value:<br>{<br>x: 0,<br>y: 0<br>}.|
+| value | [Position](ts-types.md#position) |Yes|Offset of the security component's upper left corner relative to its parent container's.<br>Exception description:<br>1. The attribute does not take effect when the input parameter is invalid (for example, it does not comply with the definition of Position), or the input parameter is of the Position type but **x** and **y** are invalid values (for example, null or other character strings that do not comply with the format requirements).<br>2. When exactly one of **x** or **y** in the input Position is an invalid value, the invalid one is set to **0**. For example, if the input is **{x: 0, y: 'a'}**, the final effect is displayed as **{x: 0, y: 0}**.|
 
 **Return value**
 
@@ -93,7 +93,7 @@ Sets the anchor of the security component for moving the component with its uppe
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) |Yes|Anchor of the security component for moving the component with its upper left corner as the reference point. Generally, this attribute is used together with the **position** and **offset** attributes. When used alone, it produces an effect similar to that produced by **offset**.<br>Default value:<br>{<br>x: 0,<br>y: 0<br>}.|
+| value | [Position](ts-types.md#position) |Yes|Anchor of the security component for moving the component with its upper left corner as the reference point. Generally, this attribute is used together with the **position** and **offset** attributes. When used alone, it produces an effect similar to that produced by **offset**.<br>No default value. This attribute does not take effect when it is set to an invalid value.|
 
 **Return value**
 
@@ -115,7 +115,7 @@ Sets the coordinate offset of the security component relative to its own layout 
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) |Yes|Coordinate offset of the security component relative to its own layout position. This attribute does not affect the layout in the parent container. The offset is used only during drawing.<br>Default value:<br>{<br>x: 0,<br>y: 0<br>}.|
+| value | [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) |Yes|Coordinate offset of the security component relative to its own layout position. This attribute does not affect the layout in the parent container. The offset is used only during drawing.<br>No default value. This attribute does not take effect when it is set to an invalid value.|
 
 **Return value**
 
@@ -533,7 +533,7 @@ Sets the constraint size. The size range is restricted during component layout.
 
 | Name| Type                  | Mandatory| Description                  |
 |------------|------|-------|---------|
-| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) |Yes|Size constraints of the component during component layout. **constraintSize** takes precedence over **width** and **height**. For details about the value, see [Impact of constraintSize on Width and Height](ts-universal-attributes-size.md#constraintsize).<br>Default value:<br>{<br>minWidth:&nbsp;0,<br>maxWidth:&nbsp;Infinity,<br>minHeight:&nbsp;0,<br>maxHeight:&nbsp;Infinity<br>}.|
+| value | [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) |Yes|Size constraints of the component during component layout. If no unit is specified, the unit is vp. **constraintSize** takes precedence over **width** and **height**. For details about the value, see [Impact of constraintSize on Width and Height](ts-universal-attributes-size.md#constraintsize).<br>Default value:<br>{<br>minWidth:&nbsp;0,<br>maxWidth:&nbsp;Infinity,<br>minHeight:&nbsp;0,<br>maxHeight:&nbsp;Infinity<br>}.|
 
 **Return value**
 
@@ -644,7 +644,7 @@ Sets the minimum font scale factor for text.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Minimum font scale factor for text.<br>Value range: [0, 1].<br>**NOTE**<br>If the value is less than 0, it will be handled as 0, meaning no limit on scaling down. If the value is greater than 1, it will be handled as 1, meaning the scaling down will not take effect. Values outside the range are considered invalid and will not take effect by default.|
+| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Minimum font scale factor for text.<br>Value range: [0, 1]<br>**NOTE**<br>A value less than 0 is handled as **0**, meaning no limit on scaling down. A value larger than 1 is handled as **1**, meaning that scaling down does not take effect.|
 
 **Return value**
 
@@ -666,7 +666,7 @@ Sets the maximum font scale factor for text.
 
 | Name| Type                                         | Mandatory| Description                                         |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Maximum font scale factor for text.<br>Value range: [1, +∞).<br>**NOTE**<br>A value less than 1 is handled as **1**. Abnormal values are ineffective by default.|
+| scale  | number \| [Resource](ts-types.md#resource) | Yes  | Maximum font scale factor for text.<br>Value range: [1, +∞)<br>**NOTE**<br>A value less than 1 is handled as **1**. Abnormal values are ineffective by default.|
 
 **Return value**
 
@@ -737,7 +737,7 @@ Maximum number of lines in the text. By default, the text is automatically wrapp
 
 | Name| Type  | Mandatory| Description            |
 | ------ | ------ | ---- | ---------------- |
-| line  | number \| [Resource](ts-types.md#resource)<sup>20+</sup> | Yes  | Maximum number of lines in the text.<br>The value range of the input parameter of the number type is [1, +∞). The Resource type is supported since API version 20. The parameter of the Resource type supports only integers in the range [1, +∞).<br>**NOTE**<br>If the value is less than 1, it is handled as the default value 100000.|
+| line  | number \| [Resource](ts-types.md#resource)<sup>20+</sup> | Yes  | Maximum number of lines in the text.<br>The value range of the input parameter of the number type is [1, +∞). The Resource type is supported since API version 20. The parameter of the Resource type supports only integers in the range [1, +∞).<br>**NOTE**<br>A value less than 1 is handled as the default value 1000000.|
 
 **Return value**
 
@@ -1074,7 +1074,7 @@ struct Index {
                 }.width('90%')
 
                 // The text cannot be completely displayed in the current layout. Reduce the font size first. If the text still cannot be completely displayed after the font size is reduced, use the **maxLines** attribute to wrap lines.
-                // If the height is insufficient for the text to be completely displayed, the height is automatically adjusted.
+                // The height is automatically adjusted to ensure that the text can be completely displayed.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1097,7 +1097,7 @@ struct Index {
 
                 // The text cannot be completely displayed in the current layout. Reduce the font size first. If the text still cannot be completely displayed after the font size is reduced, use the **maxLines** attribute to wrap lines.
                 //The maxLines attribute is set to 3, and only three lines can be displayed. Therefore, the text is truncated.
-                // If the height is insufficient for the text to be completely displayed, the height is automatically adjusted.
+                // The height is automatically adjusted to ensure that the text can be completely displayed.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1188,7 +1188,7 @@ struct Index {
             Column() {
               Column({ space: 10 }) {
                 Row() {
-                  Text('Wrap lines and reduce the font size reduction with text truncated')
+                  Text('Wrap lines and reduce the font size, with text truncated')
                 }.width('90%')
 
                 // The current layout cannot fully display the text. The maxLines attribute is used preferentially for line-wrapping layout. If the text still cannot be fully displayed after wrapping, the font size is reduced for layout.
@@ -1244,7 +1244,7 @@ struct Index {
                   Text('Reduce font size first without changing layout constraints')
                 }.width('90%')
 
-                // The text cannot be completely displayed in the current layout. The font size is reduced first so that the text can be displayed in one line.
+                // The text cannot be completely displayed in the current layout. Reduce the font size first so that the text can be displayed in one line.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1266,7 +1266,7 @@ struct Index {
                 }.width('90%')
 
                 // The text cannot be completely displayed in the current layout. The font size is reduced first. The text still cannot be completely displayed so that lines are wrapped based on the maxlines attribute.
-                //In LAYOUT_CONSTRAINT_FIRST mode, the height of the security component cannot be adjusted adaptively.
+                // In LAYOUT_CONSTRAINT_FIRST mode, the height of the security component cannot be adjusted adaptively.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1287,8 +1287,8 @@ struct Index {
                   Text(`Maxlines is insufficient.\nThe text is truncated.`)
                 }.width('90%')
 
-                // The current layout cannot display the text completely. The font size is reduced. After the reduction, the text cannot be displayed completely. However, the height can display only one line. Therefore, the text is truncated.
-                //In LAYOUT_CONSTRAINT_FIRST mode, the height of the security component cannot be automatically adjusted.
+                // The current layout cannot display the text completely. After font size reduction, it still cannot be fully displayed. Since the height allows only one line, the text is truncated.
+                // In LAYOUT_CONSTRAINT_FIRST mode, the height of the security component cannot be adjusted adaptively.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1309,8 +1309,8 @@ struct Index {
                   Text(`The height is insufficient.\nThe text is truncated.`)
                 }.width('90%')
 
-                // The current layout cannot display the text completely. The font size is reduced first. After the reduction, the text cannot be displayed completely. However, the height can display only one line, leading to text is truncation.
-                //In LAYOUT_CONSTRAINT_FIRST mode, the height of the security compoonent cannot be automatically adjusted.
+                // The current layout cannot display the text completely. After font size reduction, it still cannot be fully displayed. Since the height allows only one line, the text is truncated.
+                // In LAYOUT_CONSTRAINT_FIRST mode, the height of the security component cannot be adjusted adaptively.
                 SaveButton({
                   text: SaveDescription.QUICK_SAVE_TO_GALLERY, buttonType: ButtonType.Normal
                 })
@@ -1333,6 +1333,7 @@ struct Index {
 }
 ```
 
+![security_component_demo_shot.jpg](figures/security_component_demo_shot.jpg)
 
 ### Example 4
 
@@ -1398,4 +1399,4 @@ struct Index {
 }
 ```
 
-
+![security_component_focus_box.gif](figures/security_component_focus_box.gif)
