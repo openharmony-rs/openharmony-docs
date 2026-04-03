@@ -377,7 +377,7 @@ releaseInterface(pipe: USBDevicePipe, iface: USBInterface): number
 
 > **说明：**
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明控制权 claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -482,7 +482,7 @@ setInterface(pipe: USBDevicePipe, iface: USBInterface): number
 >
 > 一个USB接口可能存在多重选择模式，支持动态切换。使用的场景：数据传输时，通过该接口可重新设置端点，使端点与传输类型匹配。
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明控制权 claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -777,7 +777,7 @@ usbSubmitTransfer(transfer: UsbDataTransferParams): void
 >
 > 本接口为异步接口，调用后立刻返回，实际读写操作的结果以回调的方式返回。
 >
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明控制权 claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
@@ -865,7 +865,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 > **说明：**
 >
 > 该接口的主要作用是主动取消尚未完成的USB数据传输请求（如usbSubmitTransfer提交的传输）。<br>
-> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface)声明控制权 claim通信接口。
+> 在调用该接口前需要通过[usbManager.claimInterface](#usbmanagerclaiminterface) claim通信接口。
 
 **系统能力：**  SystemCapability.USB.USBManager
 
