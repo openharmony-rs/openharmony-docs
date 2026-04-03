@@ -10,7 +10,9 @@
 ## 简介
 
 随着应用功能的日益丰富与复杂化，数据加载效率成为了衡量应用性能的重要指标。不合理的加载策略往往导致用户面临长时间的等待，这不仅损害了用户体验，还可能引发用户流失。因此，合理运用缓存技术变得尤为重要。  
-系统提供了[Preferences](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/data-persistence-by-preferences-V5)、[数据库](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/data-persistence-by-rdb-store-V5)、[文件](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-file-fs-V5)、[AppStorage](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-appstorage-V5)等缓存方式，开发者可以对应用数据先进行缓存，再次加载数据时优先展示缓存数据，减少加载时间，从而提升用户体验。  
+
+系统提供了[Preferences](../database/data-persistence-by-preferences.md)、[数据库](../database/data-persistence-by-rdb-store.md)、[文件](../reference/apis-core-file-kit/js-apis-file-fs.md)、[AppStorage](../ui/state-management/arkts-appstorage.md)等缓存方式，开发者可以对应用数据先进行缓存，再次加载时优先展示缓存数据，减少加载时间，从而提升用户体验。  
+
 本文将介绍以下内容，来帮助开发者通过缓存技术提升应用的冷启动速度、预下载网络图片减少Image白块时长，避免卡顿感：
 
 - [冷启动首页时，缓存网络数据](#场景1缓存网络数据)。
@@ -24,6 +26,7 @@
 3. 当子页面需要加载很大的网络图片时，可以在父页面提前[预下载图片数据](#场景3预下载图片数据)到应用沙箱中，子组件加载时从沙箱中读取，减少Image白块出现时长。
 
 ## 冷启动首页时常用的缓存使用流程
+
 图1 冷启动首页中三种常用的缓存使用流程
 
 ![reasonable_using_cache_improve_performance_flow_chart](./figures/reasonable_using_cache_improve_performance_flow_chart.png)
@@ -47,11 +50,11 @@
 
 ## 优化示例
 
-### 场景1缓存网络数据
+### 场景1：缓存网络数据
+
 **使用场景**
 
-在应用启动过程中，开发者往往会遇到冷启动完成时延长的问题。这是由于大部分应用的首页数据依赖于网络请求或定位服务等方式来获取相应数据。如果网络、位置服务等信号差，就会导致应用请求网络和位置数据耗时变长，从而在页面冷启动过程中出现较长时间的白屏或白块现象。
-因此可以使用本地缓存首页网络数据解决较长时间的白屏或白块问题。
+在应用启动过程中，开发者往往会遇到冷启动完成时延长的问题。这是由于大部分应用的首页数据依赖于网络请求或定位服务等方式来获取相应数据。如果网络、位置服务等信号差，就会导致应用请求网络和位置数据耗时变长，从而在页面冷启动过程中出现较长时间的白屏或白块现象。 因此可以使用本地缓存首页网络数据解决较长时间的白屏或白块问题。
 
 图2 使用本地缓存首页数据流程图
 
@@ -72,7 +75,7 @@ import { http } from '@kit.NetworkKit';
 import { image } from '@kit.ImageKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, common, Permissions } from '@kit.AbilityKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 
 const PERMISSIONS: Array<Permissions> = [
   'ohos.permission.READ_MEDIA',
@@ -144,9 +147,9 @@ struct Index {
     const context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     const filePath: string = context.cacheDir + '/test.jpg';
     AppStorage.set('net_picture', filePath);
-    const file = await fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-    await fs.write(file.fd, buffer);
-    await fs.close(file.fd);
+    const file = await fileIo.open(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    await fileIo.write(file.fd, buffer);
+    await fileIo.close(file.fd);
   }
 
   async useCachePic(): Promise<void> {
@@ -190,9 +193,11 @@ struct Index {
 下面对优化前后启动性能进行对比分析。分析阶段的起点为启动Ability（即H:void OHOS::AppExecFwk::MainThread::HandleLaunchAbility的开始点），阶段终点为应用首次解析Pixelmap（即H:Napi execute, name:CreatePixelMap, traceid:0x0）后的第一个vsync（即H:ReceiveVsync dataCount: 24bytes now:timestamp expectedEnd:timestamp vsyncId:int的开始点）。
 
 图3 优化前未使用本地缓存
+
 ![reasonable_using_cache_improve_performance_network_use_api](./figures/reasonable_using_cache_improve_performance_network_use_api.png)
 
 图4 优化后使用本地缓存
+
 ![reasonable_using_cache_improve_performance_network_use_cache](./figures/reasonable_using_cache_improve_performance_network_use_cache.png)
 
 图3是优化前未使用本地缓存（从网络端获取数据）的耗时，图4是优化后使用本地缓存的耗时，对比数据如下（性能耗时数据因设备版本环境而异，以实测为准）：
@@ -206,14 +211,15 @@ struct Index {
 
 可以看到在使用本地缓存后，应用冷启动时从Ability启动到图片显示的阶段耗时明显减少。
 
-### 场景2缓存地址数据
+### 场景2：缓存地址数据
 
 **使用场景**
 
-如果应用每次冷启动都先通过[getCurrentLocation](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-geolocationmanager-V5#geolocationmanagergetcurrentlocation)获取位置数据，特别是在信号较弱的区域，这可能导致显著的延迟，迫使用户等待较长时间才能获取到所需的位置信息，从而极大地影响了应用的冷启动体验。  
+如果应用每次冷启动都先通过[getCurrentLocation](../reference/apis-location-kit/js-apis-geoLocationManager.md#geolocationmanagergetcurrentlocation)获取位置数据，特别是在信号较弱的区域，这可能导致显著的延迟，迫使用户等待较长时间才能获取到所需的位置信息，从而极大地影响了应用的冷启动体验。  
+
 针对上述问题，下面将通过使用缓存减少首次数据加载展示时间，优化应用启动性能，为开发者优化应用性能提供参考。
 
-下面是一个使用[PersistentStorage（持久化存储UI状态）](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides-V5/arkts-persiststorage-V5)缓存地址数据的场景示例。主要步骤如下：
+下面是一个使用[PersistentStorage（持久化存储UI状态）](../ui/state-management/arkts-persiststorage.md)缓存位置数据的场景示例。主要步骤如下：
 
 1.通过persistProp初始化PersistentStorage。
 
@@ -342,7 +348,7 @@ struct Index {
 
 **性能分析**
 
-下面使用DevEco Studio内置的Profiler中的启动分析工具Launch，对使用getCurrentLocation获取地址数据及使用缓存获取地址数据的冷启动性能进行对比分析。本例中通过在aboutToAppear进行起始位置的[性能打点](https://developer.huawei.com/consumer/cn/doc/harmonyos-references-V5/js-apis-hitracemeter-V5)，然后在使用本地缓存和使用getCurrentLocation获取到地址数据的位置分别进行结束位置的性能打点来分析两者的性能差异。对比性能前，需要先打开一次应用页面，在弹出位置信息授权弹窗时选择允许授权的选项。
+下面使用DevEco Studio内置的Profiler中的启动分析工具Launch，对使用getCurrentLocation获取位置数据及使用缓存获取位置数据的冷启动性能进行对比分析。本例中通过在aboutToAppear进行起始位置的[性能打点](../reference/apis-performance-analysis-kit/js-apis-hitracemeter.md)，然后在使用本地缓存和使用getCurrentLocation获取数据的位置分别进行结束位置的性能打点来分析两者的性能差异。对比性能前，需要先打开一次应用页面，在弹出位置信息授权弹窗时选择允许授权的选项。
 
 优化前未使用本地缓存（通过getCurrentLocation获取地址数据）的测试步骤：先打开示例页面，点击'clear cache'按钮（清除本地位置信息的缓存）后退出应用，再使用Launch抓取性能数据。
 
@@ -367,14 +373,18 @@ struct Index {
 
 由此可见，在冷启动首页需要加载地址数据的场景中，先采用本地缓存策略获取地址数据相比调用getCurrentLocation接口，能显著缩短地址数据的获取时间，减少用户等待，提升冷启动完成时延性能与用户体验。
 
-### 场景3预下载图片数据
+### 场景3：预下载图片数据
+
 **原理介绍**
 
 在通过Image组件加载网络图片时，通常会经历四个关键阶段：组件创建、图片资源下载、图片解码和刷新。当加载的图片资源过大时，Image组件会在图片数据下载和解码完成后才刷新图片。这一过程中，由于图片下载较耗时，未成功加载的图片常常表现为空白或占位图（一般为白色或淡色），这可能引发“Image 白块”现象。为了提升用户体验并提高性能，应尽量避免这种情况。  
+
 图1 Image加载网络图片两种方式对比
+
 ![reasonable_using_cache_improve_performance_use_preRequest](./figures/reasonable_using_cache_improve_performance_use_preRequest.png)
 
-为了减少白块的出现，开发者可以采用预下载的方式，可以将网络图片通过应用沙箱的方式进行提前缓存，将图片下载解码提前到组件创建之前执行，当Image组件加载时从应用沙箱中获取缓存数据。非首次请求时会判断应用沙箱里是否存在资源，如存在直接从缓存里获取，不再重复下载，减少Image加载大的网络图片时白屏或白块出现时长较长的问题，提升用户体验。
+为了减少白块的出现，开发者可以采用预下载的方式，可以将网络图片通过应用沙箱的方式进行提前缓存，将图片下载解码提前到组件创建之前执行，当Image组件加载时从应用沙箱中获取缓存数据。非首次请求时会判断应用沙箱里是否存在资源，如存在直接从缓存里获取，不再重复下载，减少Image加载大的网络图片时白屏或白块持续时间较长的问题，提升用户体验。
+
 >**说明：**
 >
 > 1. 开发者在使用Image加载较大的网络图片时，网络下载推荐使用HTTP工具提前预下载。
@@ -421,153 +431,162 @@ export struct PageOne {
   }
 }
 ```
+
 >**说明：**
 >
 > 1. 使用Image直接加载网络图片时，可以使用.alt()的方式，在网络图片加载成功前使用占位图，避免白块出现时长过长，优化用户体验。
 > 2. 使用网络图片时，需要申请权限ohos.permission.INTERNET。
 
-【优化后】：子页面PageOne中需展示一张较大的网络图片，在父组件的aboutToAppear()中提前发起网络请求，并做判断文件是否存在，已下载的不再重复请求，存储在应用沙箱中。当父页面点击按钮跳转子页面PageOne，此时触发pixMap请求读取应用沙箱中已缓存解码的网络图片并存储在LocalStorage中，通过在子页面的Image中传入被@StorageLink修饰的变量ImageData进行数据刷新，图片送显。
+【优化后】：子页面PageOne中需展示一张较大的网络图片，在父组件的aboutToAppear()中提前发起网络请求，并判断文件是否存在，已下载的不再重复请求，存储在应用沙箱中。当父页面点击按钮跳转子页面PageOne，此时触发PixelMap请求读取应用沙箱中已缓存解码的网络图片并存储在LocalStorage中，通过在子页面的Image中传入被@StorageLink修饰的变量ImageData进行数据刷新，图片送显。
 
-图2 使用预下载的方式，由开发者灵活地处理网络图片，减少白块出现时长。  
+图2 使用预下载的方式，由开发者灵活地处理网络图片，减少白块持续时间。  
+
 ![reasonable_using_cache_improve_performance_use_preRequest2](./figures/reasonable_using_cache_improve_performance_use_preRequest2.png)  
+
 以下为关键示例代码：
 
 1. 在父组件里aboutToAppear()中提前发起网络请求，当父页面点击按钮跳转子页面PageOne，此时触发pixMap请求读取应用沙箱中已缓存解码的网络图片并存储在localStorage中。非首次点击时，不再重复调用getPixMap()，避免每次点击都从沙箱里读取文件。
-```typescript
-import { fileIo as fs } from '@kit.CoreFileKit';
-import { image } from '@kit.ImageKit';
-import { common } from '@kit.AbilityKit';
-import { httpRequest } from '../utils/NetRequest';
 
-let para: Record<string, PixelMap | undefined> = { 'imageData': undefined };
-let localStorage: LocalStorage = new LocalStorage(para);
-
-@Entry(localStorage)
-@Component
-struct MainPage {
-  @State childNavStack: NavPathStack = new NavPathStack();
-  @LocalStorageLink('imageData') imageData: PixelMap | undefined = undefined;
-  @State fileUrl: string = '';
-
-  getPixMap() { // 从应用沙箱里读取文件
-    try {
-      let file = fs.openSync(this.fileUrl, fs.OpenMode.READ_WRITE); // 以同步方法打开文件
-      const imageSource: image.ImageSource = image.createImageSource(file.fd);
-      const options: image.InitializationOptions = {
-        'alphaType': 0, // 透明度
-        'editable': false, // 是否可编辑
-        'pixelFormat': 3, // 像素格式
-        'scaleMode': 1, // 缩略值
-        'size': { height: 100, width: 100 }
-      };
-      fs.close(file);
-      imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
-        this.imageData = pixelMap;
-      });
-    } catch (e) {
-      console.error('资源加载错误，文件或不存在！');
-    }
-  }
-
-  aboutToAppear(): void {
-    // 获取应用文件路径
-    let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    let filesDir = context.filesDir;
-    this.fileUrl = filesDir + '/xxx.png'; // 当使用实际网络地址时，需填入实际地址的后缀。
-    httpRequest(context); // 在父组件提前发起网络请求
-  }
-
-  build() {
-    Navigation(this.childNavStack) {
-      Column() {
-        Button('push Path to pageOne', { stateEffect: true, type: ButtonType.Capsule })
-          .width('80%')
-          .height(40)
-          .margin({ bottom: '36vp' })
-          .onClick(() => {
-            if (!localStorage.get('imageData')) { // 非首次点击，不再重复调用getPixMap(),避免每次点击都从沙箱里读取文件。
-              this.getPixMap();
-            }
-            this.childNavStack.pushPath({ name: 'pageOne' });
-          })
+    ```typescript
+    import { fileIo } from '@kit.CoreFileKit';
+    import { image } from '@kit.ImageKit';
+    import { common } from '@kit.AbilityKit';
+    import { httpRequest } from '../utils/NetRequest';
+    
+    let para: Record<string, PixelMap | undefined> = { 'imageData': undefined };
+    let localStorage: LocalStorage = new LocalStorage(para);
+    
+    @Entry(localStorage)
+    @Component
+    struct MainPage {
+      @State childNavStack: NavPathStack = new NavPathStack();
+      @LocalStorageLink('imageData') imageData: PixelMap | undefined = undefined;
+      @State fileUrl: string = '';
+    
+      getPixMap() { // 从应用沙箱里读取文件
+        try {
+          let file = fileIo.openSync(this.fileUrl, fileIo.OpenMode.READ_WRITE); // 以同步方法打开文件
+          const imageSource: image.ImageSource = image.createImageSource(file.fd);
+          const options: image.InitializationOptions = {
+            'alphaType': 0, // 透明度
+            'editable': false, // 是否可编辑
+            'pixelFormat': 3, // 像素格式
+            'scaleMode': 1, // 缩略值
+            'size': { height: 100, width: 100 }
+          };
+          fileIo.close(file);
+          imageSource.createPixelMap(options).then((pixelMap: PixelMap) => {
+            this.imageData = pixelMap;
+          });
+        } catch (e) {
+          console.error('资源加载错误，文件或不存在！');
+        }
       }
-      .width('100%')
-        .height('100%')
-        .justifyContent(FlexAlign.End)
-    }
-    .backgroundColor(Color.Transparent)
-      .title('ParentNavigation')
-  }
-}
-```
-2. 在NetRequest.ets中定义网络请求httpRequest()，通过fs.access()检查文件是否存在，当文件存在时不再重复请求，并写入沙箱中。
-```typescript
-import { http } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo as fs } from '@kit.CoreFileKit';
-import { common } from '@kit.AbilityKit';
-
-export async function httpRequest(context: common.UIAbilityContext) {
-  // 获取应用文件路径
-  let filesDir = context.filesDir;
-  let fileUrl = filesDir + '/xxx.png'; // 当使用实际网络地址时，需填入实际地址的后缀。
-  fs.access(fileUrl, fs.AccessModeType.READ).then((res) => { // 检查文件是否存在
-    if (!res) { // 如沙箱里不存在地址，重新请求网络图片资源
-      http.createHttp()
-        .request('https://www.example.com/xxx.png', // 此处请填写一个具体的网络图片地址。
-          (error: BusinessError, data: http.HttpResponse) => {
-            if (error) {
-              // 下载失败时不执行后续逻辑
-              return;
-            }
-            // 处理网络请求返回的数据
-            if (http.ResponseCode.OK === data.responseCode) {
-              const imageData: ArrayBuffer = data.result as ArrayBuffer;
-              // 保存图片到应用沙箱
-              readWriteFileWithStream(fileUrl, imageData);
-            }
+    
+      aboutToAppear(): void {
+        // 获取应用文件路径
+        let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+        let filesDir = context.filesDir;
+        this.fileUrl = filesDir + '/xxx.png'; // 当使用实际网络地址时，需填入实际地址的后缀。
+        httpRequest(context); // 在父组件提前发起网络请求
+      }
+    
+      build() {
+        Navigation(this.childNavStack) {
+          Column() {
+            Button('push Path to pageOne', { stateEffect: true, type: ButtonType.Capsule })
+              .width('80%')
+              .height(40)
+              .margin({ bottom: '36vp' })
+              .onClick(() => {
+                if (!localStorage.get('imageData')) { // 非首次点击，不再重复调用getPixMap(),避免每次点击都从沙箱里读取文件。
+                  this.getPixMap();
+                }
+                this.childNavStack.pushPath({ name: 'pageOne' });
+              })
           }
-        )
-    }
-  })
-}
-
-// 写入到沙箱
-async function readWriteFileWithStream(fileUrl: string, imageData: ArrayBuffer): Promise<void> {
-  let outputStream = fs.createStreamSync(fileUrl, 'w+');
-  await outputStream.write(imageData);
-  outputStream.closeSync();
-}
-```
-3. 在子组件中通过在子页面的Image中传入被@StorageLink修饰的变量ImageData进行数据刷新，图片送显。
-```typescript
-@Builder
-export function PageOneBuilder(name: string,param: Object) {
-  PageOne()
-}
-
-@Component
-export struct PageOne {
-  pageInfo: NavPathStack = new NavPathStack();
-  @State name: string = 'pageOne';
-  @LocalStorageLink('imageData') imageData: PixelMap | undefined = undefined;
-
-  build() {
-    NavDestination() {
-      Row() {
-        Image(this.imageData) // 正例：此时Image拿到已提前加载好的网络图片，减少了白块出现时长
-          .objectFit(ImageFit.Auto)
           .width('100%')
-          .height('100%')
+            .height('100%')
+            .justifyContent(FlexAlign.End)
+        }
+        .backgroundColor(Color.Transparent)
+          .title('ParentNavigation')
       }
-      .width('100%')
-        .height('100%')
-        .justifyContent(FlexAlign.Center)
     }
-    .title(this.name)
-  }
-}
-```
+    ```
+
+2. 在NetRequest.ets中定义网络请求httpRequest()，通过fs.access()检查文件是否存在，当文件存在时不再重复请求，并写入沙箱中。
+
+    ```typescript
+    import { http } from '@kit.NetworkKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { fileIo } from '@kit.CoreFileKit';
+    import { common } from '@kit.AbilityKit';
+    
+    export async function httpRequest(context: common.UIAbilityContext) {
+      // 获取应用文件路径
+      let filesDir = context.filesDir;
+      let fileUrl = filesDir + '/xxx.png'; // 当使用实际网络地址时，需填入实际地址的后缀。
+      fileIo.access(fileUrl, fileIo.AccessModeType.READ).then((res) => { // 检查文件是否存在
+        if (!res) { // 如沙箱里不存在地址，重新请求网络图片资源
+          http.createHttp()
+            .request('https://www.example.com/xxx.png', // 此处请填写一个具体的网络图片地址。
+              (error: BusinessError, data: http.HttpResponse) => {
+                if (error) {
+                  // 下载失败时不执行后续逻辑
+                  return;
+                }
+                // 处理网络请求返回的数据
+                if (http.ResponseCode.OK === data.responseCode) {
+                  const imageData: ArrayBuffer = data.result as ArrayBuffer;
+                  // 保存图片到应用沙箱
+                  readWriteFileWithStream(fileUrl, imageData);
+                }
+              }
+            )
+        }
+      })
+    }
+    
+    // 写入到沙箱
+    async function readWriteFileWithStream(fileUrl: string, imageData: ArrayBuffer): Promise<void> {
+      let outputStream = fileIo.createStreamSync(fileUrl, 'w+');
+      await outputStream.write(imageData);
+      outputStream.closeSync();
+    }
+    ```
+   
+3. 在子组件中通过在子页面的Image中传入被@StorageLink修饰的变量ImageData进行数据刷新，图片送显。
+
+    ```typescript
+    @Builder
+    export function PageOneBuilder(name: string,param: Object) {
+      PageOne()
+    }
+    
+    @Component
+    export struct PageOne {
+      pageInfo: NavPathStack = new NavPathStack();
+      @State name: string = 'pageOne';
+      @LocalStorageLink('imageData') imageData: PixelMap | undefined = undefined;
+    
+      build() {
+        NavDestination() {
+          Row() {
+            Image(this.imageData) // 正例：此时Image拿到已提前加载好的网络图片，减少了白块出现时长
+              .objectFit(ImageFit.Auto)
+              .width('100%')
+              .height('100%')
+          }
+          .width('100%')
+            .height('100%')
+            .justifyContent(FlexAlign.Center)
+        }
+        .title(this.name)
+      }
+    }
+    ```
+   
 **性能分析**
 
 下面，使用trace对优化前后性能进行对比分析。
@@ -577,6 +596,7 @@ export struct PageOne {
 分析阶段的起点为父页面点击按钮开始计时即trace的H:DispatchTouchEvent，结束点为子页面图片渲染的首帧出现即H:CreateImagePixelMap标签后的第一个Vsync，记录白块出现时间为1.3s，其中以H:HttpRequestInner的标签起始为起点到H:DownloadImageSuccess标签结束为终点记录时间，即为网络下载耗时1.2s，因此使用Image直接加载网络图片时，出现长时间Image白块，其原因是需要等待网络下载资源完成。
 
 图3 直接使用Image加载网络数据  
+
 ![reasonable_using_cache_improve_performance_use_preRequest3](./figures/reasonable_using_cache_improve_performance_use_preRequest3.png)
 
 【优化后】
@@ -584,6 +604,7 @@ export struct PageOne {
 分析阶段的起点为父页面点击按钮开始计时即trace的H:DispatchTouchEvent，结束点为子页面图片渲染的首帧出现即H:CreateImagePixelMap标签后的第一个Vsync，记录白块出现时间为32.6ms，其中记录H:HttpRequestInner的标签耗时即为提前网络下载的耗时1.16s，对比白块时长可知提前预下载可以减少白块出现时长。
 
 图4 使用预下载的方式
+
 ![reasonable_using_cache_improve_performance_use_preRequest4](./figures/reasonable_using_cache_improve_performance_use_preRequest4.png)
 
 >**说明：**
@@ -609,7 +630,8 @@ export struct PageOne {
 >
 > 测试数据仅限于示例程序，不同设备特性和具体应用场景的多样性，所获得的性能数据存在差异，提供的数值仅供参考。
 
-由此可见，加载网络图片时，使用预下载，提前处理网络请求并从应用沙箱中读取缓存数据的方式，可以减少用户可见Image白屏或白块出现时长，提升用户体验。
+由此可见，加载网络图片时，使用预下载，提前处理网络请求并从应用沙箱中读取缓存数据的方式，可以减少用户可见Image白屏或白块持续时间，提升用户体验。
+
 ## 总结
 
 本文通过介绍了如何识别使用缓存场景以及优化方法。
