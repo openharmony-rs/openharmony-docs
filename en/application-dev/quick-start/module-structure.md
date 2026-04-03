@@ -102,7 +102,7 @@ Example of the **module** tag structure:
 
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
-| moduleName | Name of the HAP file. The maximum length is 31 bytes. This name can be changed during application update. However, if it is changed, you need to adapt the application to the migration of module-related directories. You can use the [file operation API](../reference/apis-core-file-kit/js-apis-file-fs.md) for this purpose.| String| No|
+| moduleName | Name of the HAP file. The maximum length is 31 bytes. This name can be changed during application updates. However, if it is changed, directories related to the module must be migrated. For details, see [@ohos.file.fs (File Management)](../reference/apis-core-file-kit/js-apis-file-fs.md).| String| No|
 | moduleType | Type of the HAP file, which can **entry**, **feature**, or **har**.| String| No|
 | installationFree | Whether the HAP file supports the installation-free feature. **true**: The HAP file supports the installation-free feature and meets installation-free constraints. **false**: The HAP file does not support the installation-free feature. If this tag is set to **true** for an entry-type HAP file (**entry.hap**), it must also be set to **true** for feature-type HAP files (**feature.hap**) of the same application. If this tag is set to **false** for an entry-type HAP file, it can be set to **true** or **false** for feature-type modules of the same application based on service requirements.| Boolean| No|
 | deliveryWithInstall | Whether the HAP file will be installed when the user installs the application. **true**: The HAP file will be installed when the user installs the application. **false**: The HAP file will not be installed when the user installs the application.| Boolean| No|
@@ -366,7 +366,7 @@ Example of the **abilities** attribute structure:
 | -------- | -------- | -------- | -------- |
 | actions | Actions of the **want** that can be accepted by the ability. Generally, the value is an **action** value predefined in the system.| String array| Yes (initial value: left empty)|
 | entities | Entities of the **want** that can be accepted by the ability, such as video and home applications.| String array| Yes (initial value: left empty)|
-| uris | Data specifications to be added to the want filter. The specification is a data type (using the **mimeType** attribute), a URI, or both a data type and a URI.<br>The URI is specified by separate attributes of each part: &lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;[&lt;path&gt;\|&lt;pathStartWith&gt;\|&lt;pathRegex&gt;].  <br>The field **scheme** is mandatory when the specification is of the URI type and is optional when the specification is a data type.| Object array| Yes (initial value: left empty)|
+| uris | Data specifications to be added to the want filter. The specification is a data type (using the **mimeType** attribute), a URI, or both a data type and a URI.<br>The URI is specified by separate attributes for each of its components: **&lt;scheme&gt;://&lt;host&gt;:&lt;port&gt;[&lt;path&gt;\|&lt;pathStartWith&gt;\|&lt;pathRegex&gt;]**.  <br>The field **scheme** is mandatory when the specification is of the URI type and is optional when the specification is a data type.| Object array| Yes (initial value: left empty)|
 
 ## Internal Structure of the uris Attribute
 
@@ -631,7 +631,7 @@ Example of the **forms** attribute structure:
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
-| value | API versions, for example, 4, 5, or 6. Example: If an application comes with two versions developed using API version 5 and API version 6 for the same device model, two installation packages of the entry type can be released for the application.| Array| No|
+| value | Shape.<br>Valid values:<br>- **circle**<br>- **rect**| String array| No|
 
 ## Internal Structure of the screenWindow Attribute
 
@@ -640,7 +640,7 @@ Example of the **forms** attribute structure:
 | Name| Description| Data Type| Initial Value Allowed|
 | -------- | -------- | -------- | -------- |
 | policy | Rule for the sub-attribute value. Set this attribute to **exclude** or **include**.<br>- **exclude**: Exclude the matches of the sub-attribute value.<br>- **include**: Include the matches of the sub-attribute value.| String| No|
-| value | API versions, for example, 4, 5, or 6. Example: If an application comes with two versions developed using API version 5 and API version 6 for the same device model, two installation packages of the entry type can be released for the application.| Array| No|
+| value | Resolution of the application runtime window. The value is in the format of *number***number*, for example, **466*466**.| String array| No|
 
 ## Internal Structure of the screenDensity Attribute
 

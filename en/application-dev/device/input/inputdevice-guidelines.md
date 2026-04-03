@@ -19,7 +19,7 @@ import { inputDevice } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists the common APIs for input device management. For details about the APIs, see [ohos.multimodalInput.inputDevice](../../reference/apis-input-kit/js-apis-inputdevice.md).
+The following table lists common APIs for input device management. For details, see [@ohos.multimodalInput.inputDevice](../../reference/apis-input-kit/js-apis-inputdevice.md).
 
 | API | Description|
 | ----------- | ------------------------------------------------------------ | 
