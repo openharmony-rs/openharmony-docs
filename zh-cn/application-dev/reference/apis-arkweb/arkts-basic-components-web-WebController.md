@@ -406,7 +406,7 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 | mimeType   | string | 是   | 媒体类型（MIME）。                              |
 | encoding   | string | 是   | 编码类型，具体为“Base64"或者”URL编码。                |
 | baseUrl    | string | 否   | 指定的一个URL路径（“http”/“https”/"data"协议），并由Web组件赋值给`window.origin`。默认值为空字符串。 |
-| historyUrl | string | 否   | 历史记录URL。默认值为空字符串。非空时，可被历史记录管理，实现前后后退功能。当baseUrl为空时，此属性无效。 |
+| historyUrl | string | 否   | 历史记录URL。默认值为空字符串。非空时，可被历史记录管理，实现前进后退功能。当baseUrl为空时，此属性无效。 |
 
 **示例：**
 
