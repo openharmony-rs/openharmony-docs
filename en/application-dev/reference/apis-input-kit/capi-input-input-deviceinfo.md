@@ -25,5 +25,5 @@ Defines the input device information.
 
 | Name| Description|
 | -- | -- |
-| [OH_Input_CreateDeviceInfo](capi-oh-input-manager-h.md#oh_input_createdeviceinfo) | Creates a **deviceInfo** object.|
+| [OH_Input_CreateDeviceInfo](capi-oh-input-manager-h.md#oh_input_createdeviceinfo) | Creates a **deviceInfo** object. You can call [OH_Input_DestroyDeviceInfo](capi-oh-input-manager-h.md#oh_input_destroydeviceinfo) to destroy a **deviceInfo** object.|
 | [OH_Input_DestroyDeviceInfo](capi-oh-input-manager-h.md#oh_input_destroydeviceinfo) | Destroys a **deviceInfo** object.|

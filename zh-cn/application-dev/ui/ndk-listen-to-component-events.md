@@ -75,7 +75,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
     ```
 
     卸载事件处理函数：
-    <!-- @[remove_node_evect_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    <!-- @[remove_node_event_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     nodeAPI->removeNodeEventReceiver(button, NodeEventReceiver);
@@ -109,7 +109,7 @@ NDK接口针对UI组件的事件，提供了监听函数的方式。首先，可
     ```
 
     解注册全局的事件处理函数：
-    <!-- @[unregister_node_event_receicer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
+    <!-- @[unregister_node_event_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NdkAddInteractionEvent/entry/src/main/cpp/Function.h) -->
     
     ``` C
     nodeAPI->unregisterNodeEventReceiver();

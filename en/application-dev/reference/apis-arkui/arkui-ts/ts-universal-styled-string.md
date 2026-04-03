@@ -6,7 +6,7 @@
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
 
-Styled strings are strings with associated style attributes. They can be linked to a **Text** component using the [setStyledString](./ts-basic-components-text.md#setstyledstring12) API  in [TextController](./ts-basic-components-text.md#textcontroller11) and linked to a [RichEditor](./ts-basic-components-richeditor.md) component using the [setStyledString](ts-basic-components-richeditor.md#setstyledstring12) API in [RichEditorStyledStringController](./ts-basic-components-richeditor.md#richeditorstyledstringcontroller12).
+Styled strings are strings with associated style attributes. They can be linked to a **Text** component using the [setStyledString](./ts-basic-components-text.md#setstyledstring12) API in [TextController](./ts-basic-components-text.md#textcontroller11) and linked to a [RichEditor](./ts-basic-components-richeditor.md) component using the [setStyledString](ts-basic-components-richeditor.md#setstyledstring12) API in [RichEditorStyledStringController](./ts-basic-components-richeditor.md#richeditorstyledstringcontroller12).
 
 >  **NOTE**
 >
@@ -30,7 +30,7 @@ Styled strings are strings with associated style attributes. They can be linked 
 
 ### constructor
 
-constructor(value: string | ImageAttachment | CustomSpan , styles?: Array\<StyleOptions>)
+constructor(value: string | ImageAttachment | CustomSpan, styles?: Array\<StyleOptions>)
 
 A constructor used to create a styled string.
 
@@ -126,7 +126,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 
 ### getStyles
 
-getStyles(start: number , length: number , styledKey?: StyledStringKey): Array\<SpanStyle>
+getStyles(start: number, length: number, styledKey?: StyledStringKey): Array\<SpanStyle>
 
 Obtains the styles in the specified range of a styled string. The specified range must not exceed the string's length.
 
@@ -142,7 +142,7 @@ This API returns only styles explicitly set by the developer.
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
 | start | number | Yes  | Subscript that corresponds to the target range in the styled string.|
 | length | number | Yes  | Length of the target range in the styled string.|
-| styledKey | [StyledStringKey](#styledstringkey) | No  | Style key of the styled string.|
+| styledKey | [StyledStringKey](#styledstringkey)| No  | Style key of the styled string.|
 
 **Return value**
 
@@ -401,7 +401,7 @@ This API equally works when the styled string contains an image.
 | ------- | --------------------------------- | ---- | ------------------------------------------------------------ |
 | start | number | Yes  | Subscript that corresponds to the start position of the target range.|
 | length | number | Yes  | Length of the target range.|
-| styledKey | [StyledStringKey](#styledstringkey) | Yes  | Styled key.|
+| styledKey | [StyledStringKey](#styledstringkey)| Yes  | Styled key.|
 
 **Error codes**
 
@@ -558,8 +558,8 @@ Defines the style for a styled string.
 | Name | Type                             | Read-Only| Optional| Description  |
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
 | start | number | No  | Yes| Start position of the styled string style.<br>If the value is less than 0 or exceeds the string length, it is treated as **0**.|
-| length | number | No  | Yes| Length of the styled string style.<br>f the value is less than 0 or exceeds the difference between the string length and the value of **start**, it is treated as the difference between the string length and the value of **start**.|
-| styledKey | [StyledStringKey](#styledstringkey) | No  | No| Style key.|
+| length | number | No  | Yes| Length of the styled string style.<br>If the value is less than 0 or exceeds the difference between the string length and the value of **start**, it is treated as the difference between the string length and the value of **start**.|
+| styledKey | [StyledStringKey](#styledstringkey)| No  | No| Style key.|
 | styledValue | [StyledStringValue](#styledstringvalue) | No  | No  | Style object.|
 
 ## SpanStyle
@@ -572,7 +572,7 @@ Defines the style for a styled string.
 | ------- | --------------------------------- | ---- | ---- |--------------------------------- |
 | start | number | No  | No  | Start position of the styled string style.|
 | length | number | No  | No  | Length of the styled string style.|
-| styledKey | [StyledStringKey](#styledstringkey) | No  | No  | Style key.|
+| styledKey | [StyledStringKey](#styledstringkey)| No  | No  | Style key.|
 | styledValue | [StyledStringValue](#styledstringvalue) | No  | No  | Style object.|
 
 ## TextStyle
@@ -905,7 +905,7 @@ Describes the image attachment.
 | ------------ |---------------------| ---- | ---- | ------ |
 | value  | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) |  Yes |  No | Image data source of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | size  | [SizeOptions](ts-types.md#sizeoptions) |  Yes |  Yes | Image size of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>Number-type values use px as the unit.|
-| sizeInVp<sup>21+</sup>   | [SizeOptions](ts-types.md#sizeoptions) |  Yes |  Yes | Image size of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 21.<br>Number-type values use vp as the unit.<br>Negative or **undefined** values return **undefined**.|
+| sizeInVp<sup>21+</sup>   | [SizeOptions](ts-types.md#sizeoptions) |  Yes |  Yes | Image size of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 21.<br>Number-type values use vp as the unit.<br>If **ImageAttachment** is set to a negative value or **undefined**, **undefined** is returned.|
 | verticalAlign  | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) |  Yes |  Yes | Image alignment mode of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | objectFit  | [ImageFit](ts-appendix-enums.md#imagefit) |  Yes |  Yes | Image scale type of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | layoutStyle  | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle) |  Yes |  Yes | Image layout of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -980,12 +980,12 @@ Defines the type for image color filter settings.
 
 | Name | Type                             | Read-Only| Optional| Description  |
 | ------- | --------------------------------- | ---- | ---- | --------------------------------- |
-| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) |  No | No| Image data source. **Atomic service API**: This API can be used in atomic services since API version 12.|
-| size | [SizeOptions](ts-types.md#sizeoptions) | No  | Yes| Image size, which does not support percentage values. **Atomic service API**: This API can be used in atomic services since API version 12.<br>The default value of **size** depends on the value of **objectFit**. For example, if the value of **objectFit** is **Cover**, the image height is the component height minus the top and bottom paddings, and the image width is the component width minus the left and right paddings.|
-| verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | No   | Yes| Alignment mode of the image with the text. **Atomic service API**: This API can be used in atomic services since API version 12.<br>Default value: **ImageSpanAlignment.BOTTOM**|
-| objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | No   | Yes| Image scaling type. The **ImageFit.MATRIX** enum value is not supported. **Atomic service API**: This API can be used in atomic services since API version 12.<br>Default value: **ImageFit.Cover**|
-| layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle) | No   | Yes| Image layout. **Atomic service API**: This API can be used in atomic services since API version 12.|
-| colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  No  | Yes| Image color filter of the styled string. **Atomic service API**: This API can be used in atomic services since API version 15.|
+| value | [PixelMap](../../apis-image-kit/arkts-apis-image-PixelMap.md) |  No | No| Image data source.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| size | [SizeOptions](ts-types.md#sizeoptions) | No  | Yes| Image size, which does not support percentage values.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>The default value of **size** depends on the value of **objectFit**. For example, if the value of **objectFit** is **Cover**, the image height is the component height minus the top and bottom paddings, and the image width is the component width minus the left and right paddings.|
+| verticalAlign | [ImageSpanAlignment](ts-appendix-enums.md#imagespanalignment10) | No   | Yes| Alignment mode of the image with the text.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>Default value: **ImageSpanAlignment.BOTTOM**|
+| objectFit | [ImageFit](ts-appendix-enums.md#imagefit) | No   | Yes| Image scaling type. The **ImageFit.MATRIX** enum value is not supported.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>Default value: **ImageFit.Cover**|
+| layoutStyle | [ImageAttachmentLayoutStyle](#imageattachmentlayoutstyle) | No   | Yes| Image layout.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| colorFilter<sup>15+</sup>  | [ColorFilterType](#colorfiltertype15) |  No  | Yes| Image color filter of the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
 
 ## ImageAttachmentLayoutStyle
 
@@ -1111,7 +1111,7 @@ Manually triggers a refresh of the **Text** component that uses this **CustomSpa
 
 Describes the text paragraph style.
 
-Except the first paragraph, all paragraphs are formed using the character escape '\n'.
+Except the first paragraph, all paragraphs are formed using the escape character '\n'.
 
 The style of a paragraph is the one (if any) set for the first element or the paragraph style of the bound component.
 
@@ -1130,7 +1130,7 @@ The style of a paragraph is the one (if any) set for the first element or the pa
 | wordBreak   | [WordBreak](ts-appendix-enums.md#wordbreak11) | Yes   | Yes   | Word break rule of the text paragraph.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | leadingMargin   | number \| [LeadingMarginPlaceholder](ts-basic-components-richeditor.md#leadingmarginplaceholder11) | Yes   | Yes  | Indent of the text paragraph.<br>If the return value is of the number type, the unit is vp.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | paragraphSpacing<sup>19+</sup>  | number | Yes   | Yes  | Paragraph spacing of the styled string text.<br>Unit: vp<br>**Atomic service API**: This API can be used in atomic services since API version 19.|
-| textVerticalAlign<sup>20+</sup>  | [TextVerticalAlign](ts-text-common.md#textverticalalign20) | Yes   | Yes  | Vertical alignment mode of the text paragraph.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| textVerticalAlign<sup>20+</sup>  | [TextVerticalAlign](ts-text-common.md#textverticalalign20) | Yes   | Yes  | Vertical alignment mode of the text paragraph.<br>The effect of this attribute is noticeable only when the same font size is used in a paragraph and [lineHeight](ts-basic-components-text.md#lineheight) is set, or when different font sizes are used in a paragraph and the font sizes are mixed. The **SuperscriptStyle** in [TextStyle](#textstyle) takes effect only when the value of [TextVerticalAlign](ts-text-common.md#textverticalalign20) is set to **TextVerticalAlign.BASELINE**. In other vertical alignment modes, the superscript and subscript texts are displayed in the same way as the normal text.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 | leadingMarginSpan<sup>22+</sup>   | [LeadingMarginSpan](#leadingmarginspan22) | Yes   | Yes  | Custom indentation information for text paragraphs in the styled string.<br>**Atomic service API**: This API can be used in atomic services since API version 22.|
 | textDirection<sup>23+</sup>  | [TextDirection](ts-text-common.md#textdirection22) |  Yes |  Yes | Text direction.<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
@@ -1346,7 +1346,7 @@ struct styled_string_process_demo {
   fontStyleAttr1: TextStyle = new TextStyle({ fontColor: Color.Blue });
   fontStyleAttr2: TextStyle = new TextStyle({ fontColor: Color.Orange });
   // Create a readable and writable styled string object: mutableStyledString1.
-  mutableStyledString1: MutableStyledString = new MutableStyledString ("45-minute workout");
+  mutableStyledString1: MutableStyledString = new MutableStyledString("45-minute workout");
   // Create the mutableStyledString2 object whose input parameters contain strings and styles.
   mutableStyledString2: MutableStyledString = new MutableStyledString("test hello world", [{
     start: 0,
@@ -2186,7 +2186,7 @@ struct styled_string_set_customspan_demo {
     }
     this.isPageShow = false;
 
-    this.style.appendStyledString(new MutableStyledString("Text drawing sample CustomSpan", [
+    this.style.appendStyledString(new MutableStyledString("Text drawing Sample code CustomSpan", [
       {
         start: 0,
         length: 5,
@@ -2233,7 +2233,7 @@ struct styled_string_set_customspan_demo {
 }
 ```
 
-
+![](figures/CustomSpan-Hello-2.gif)
 
 ### Example 7: Storing Custom Extension Information
 
@@ -2681,9 +2681,9 @@ struct styled_string_set_decorationstyle_demo {
 }
 ```
 
+![](figures/styledString_14.png)
 
-
-### Sample 14: Obtaining the Image Size in vp
+### Example 14: Obtaining the Image Size in vp
 
 This example illustrates how to configure styled strings with images and obtain the image size in vp using the [ImageAttachmentInterface](#imageattachmentinterface) API, available since API version 21.
 
@@ -2743,7 +2743,7 @@ struct styled_string_demo4 {
           .copyOption(CopyOptions.InApp)
           .draggable(true)
           .fontSize(30)
-        Button('Set image 50 vp x 50 vp')
+        Button('Set Image Size to 50 vp × 50 vp')
           .onClick(() => {
             if (this.imagePixelMap !== undefined) {
               this.mutableStr.appendStyledString(new MutableStyledString(new ImageAttachment({
@@ -2757,7 +2757,7 @@ struct styled_string_demo4 {
               this.updateImageInfoStr();
             }
           }).margin(10)
-        Button('Set image 70 vp x 70 vp')
+        Button('Set Image Size to 70 vp × 70 vp')
           .onClick(() => {
             if (this.imagePixelMap !== undefined) {
               this.mutableStr.appendStyledString(new MutableStyledString(new ImageAttachment({
@@ -2779,7 +2779,7 @@ struct styled_string_demo4 {
   }
 }
 ```
-
+![](figures/styledString_16.gif)
 
 ### Example 15: Setting Custom Paragraph Indentation
 
@@ -2838,7 +2838,7 @@ struct leadingMarginSpanDemo {
   leadingMarginSpan: LeadingMarginSpan = new MyLeadingMarginSpan("●");
   paragraphStyleAttr2: ParagraphStyle =
     new ParagraphStyle({ leadingMarginSpan: this.leadingMarginSpan });
-  style: StyledString = new StyledString("Paragraph title\nParagraph content 101234567890123456789012345678901234567890123456789",
+  style: StyledString = new StyledString("Paragraph Title\nParagraph content 101234567890123456789012345678901234567890123456789",
     [
       {
         start: 0,

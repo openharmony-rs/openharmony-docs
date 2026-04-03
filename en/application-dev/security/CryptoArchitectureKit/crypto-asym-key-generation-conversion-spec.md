@@ -173,7 +173,7 @@ Since API version 11, the ECC common parameter can be generated based on a curve
 
 ## DSA
 
-Digital Signature Algorithm (DSA) is a public-key algorithm based on the modular exponentiation and discrete logarithm problem. It is used for digital signatures and signature verification, but not for encryption and decryption.
+Digital Signature Algorithm (DSA) is a public-key algorithm based on the modulo and discrete logarithm problem in finite fields of integers. It is used for digital signing and signature verification, but not for encryption and decryption.
 
 A DSA key can be generated based on a string parameter or key parameters.
 

@@ -705,13 +705,13 @@ try {
 
 setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
 
-Sets whether local installation of enterprise applications is supported. When it is enabled, users can install enterprise applications (signing certificate distribution type: **enterprise_normal**) by double-tapping the application installation package on PCs/2-in-1 devices with local installation capability.
+Sets whether local installation of enterprise applications is supported. When local installation is enabled, users can install enterprise applications (signing certificate distribution type: **enterprise_normal**) by double-tapping their installation packages on PCs/2-in-1 enterprise devices with the local installation capability.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -767,7 +767,7 @@ Checks whether local installation of enterprise applications is supported.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -1094,7 +1094,7 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-let result = Array<systemManager.KeyEventPolicy>;
+let result: Array<systemManager.KeyEventPolicy> = [];
 try {
   result = systemManager.getKeyEventPolicies(wantTemp);
   console.info('Succeeded in getting key event policies.');

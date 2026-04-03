@@ -154,12 +154,12 @@ createHash(algorithm: string): HashStream
 
   ```ts
   // pages/xxx.ets
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
 
   function hashFileWithStream() {
     const filePath = pathDir + "/test.txt";
     // 创建文件可读流
-    const rs = fs.createReadStream(filePath);
+    const rs = fileIo.createReadStream(filePath);
     // 创建哈希流
     const hs = hash.createHash('sha256');
     rs.on('data', (emitData) => {

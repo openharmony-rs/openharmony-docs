@@ -101,7 +101,7 @@ import { userAuth } from '@kit.UserAuthenticationKit';
 | 名称         | 类型   | 只读 | 可选 | 说明                 |
 | ------------ | ---------- | ---- | ---- | -------------------- |
 | reuseMode        | [ReuseMode](#reusemode12) | 否 | 否   | 复用解锁认证结果的模式。       |
-| reuseDuration    | number | 否 | 否 | 允许复用解锁认证结果的有效时长，有效时长的值应大于0，最大值为[MAX_ALLOWABLE_REUSE_DURATION](#常量)。 |
+| reuseDuration    | number | 否 | 否 | 允许复用解锁认证结果的有效时长，单位为毫秒。有效时长的值应大于0，最大值为[MAX_ALLOWABLE_REUSE_DURATION](#常量)。 |
 
 ## userAuth.getAuthLockState<sup>22+</sup>
 
@@ -1920,7 +1920,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
 | ------------ | ---------- | ---- | ---- | -------------------|
 | token        | Uint8Array | 否 | 是 | 认证成功的令牌信息。 |
 | remainTimes  | number     | 否 | 是 | 剩余的认证操作次数。 |
-| freezingTime | number     | 否 | 是 | 认证操作的冻结时间。 |
+| freezingTime | number     | 否 | 是 | 认证操作的冻结时间。单位为毫秒。|
 
 ## ResultCode<sup>(deprecated)</sup>
 

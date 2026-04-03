@@ -66,7 +66,7 @@ struct FancyUse {
 
 ## Constraints
 
-- \@Styles decorated methods cannot contain parameters. Otherwise, an error will be reported during compilation.
+- The \@Styles method does not support passing parameters. A compilation error will be thrown.
 
 ``` TypeScript
   // Incorrect: @Styles does not support parameters. A compilation error will be thrown.

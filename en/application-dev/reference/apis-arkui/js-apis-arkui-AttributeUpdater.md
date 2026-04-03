@@ -1,9 +1,9 @@
 # AttributeUpdater
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 **AttributeUpdater** directly set attributes to a component to trigger UI re-renders, without marking them as state variables.
@@ -134,7 +134,7 @@ struct Index {
           .width('80%')
           .labelStyle({ maxLines: 2 })
           .onClick(() => {
-            this.flushTheButton = this.flushTheButton + ' Updated' ;
+            this.flushTheButton = this.flushTheButton + ' Updated';
           })
       }
       .width('100%')
@@ -207,7 +207,7 @@ struct updaterDemo2 {
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| updateConstructorParams | [C](#attributeupdatert-c--initializert) | No| No| Modifies component constructor parameters. **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component.|
+| updateConstructorParams | [C](#attributeupdatert-c--initializert) | No| No| **C** indicates the constructor type of the component, for example, **TextInterface** of the **Text** component and **ImageInterface** of the **Image** component. The type is used to change the constructor input parameters of the component.|
 
 **Example**
 
@@ -276,8 +276,8 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
       .height(30);
   }
 
-  onComponentChanged(instance: ButtonAttribute) :void {
-    instance.backgroundColor('#ff2787d9')
+  onComponentChanged(instance: ButtonAttribute): void {
+    instance.backgroundColor('#ff519db4')
       .width('50%')
       .height(30);
   }
@@ -295,7 +295,7 @@ struct updaterDemo4 {
         Button("Test")
           .onClick(() => {
             this.btnState = !this.btnState;
-        })
+          }).margin({ bottom: 20 })
 
         if (this.btnState) {
           Button("Button")
@@ -311,3 +311,4 @@ struct updaterDemo4 {
   }
 }
 ```
+![](figures/attribute-updater4.gif)

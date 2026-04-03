@@ -85,12 +85,13 @@ This example demonstrates dynamically modifying the **zIndex** attribute on a **
 @Entry
 @Component
 struct ZIndexExample {
-  @State zIndex_ : number = 0
+  @State zIndex_: number = 0
+
   build() {
     Column() {
       // Clicking the Button component changes the zIndex value. Components are sorted stably based on their previous stacking order.
       Button("change Text2 zIndex")
-        .onClick(()=>{
+        .onClick(() => {
           this.zIndex_ = (this.zIndex_ + 1) % 3;
         })
       Stack() {

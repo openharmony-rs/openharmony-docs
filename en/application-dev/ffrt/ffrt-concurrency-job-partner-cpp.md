@@ -5,11 +5,11 @@
 <!--Owner: @chuchihtung; @yanleo-->
 <!--Designer: @geoffrey_guo; @huangyouzhong-->
 <!--Tester: @lotsof; @sunxuhao-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
-Starting from API version 20, FFRT supports the Job_Partner feature. In some services, a thread (for example, the UI rendering thread) may take a long time, and the multi-core capability of the CPU cannot be fully utilized. In this case, you can split the large task of the original thread into multiple small tasks and assign them to other threads for execution. However, two problems may occur in practice:
+Function flow runtime (FFRT) supports the Job Partner function starting from API version 20. In some services, a thread (for example, the UI rendering thread) may take a long time, and the multi-core capability of the CPU cannot be fully utilized. In this case, you can split the large task of the original thread into multiple small tasks and assign them to other threads for execution. However, two problems may occur in practice:
 
 - Problem 1: Some segments of small tasks must be executed on a specified thread due to certain reasons (for example, accessing variables in the JS virtual machine).
 - Problem 2: Small tasks may be split into multiple smaller segments (possibly due to problem 1 or other reasons). The execution time of each segment may only be at the microsecond level, while the overhead of waking up a single thread is several tens of microseconds, making it difficult to obtain concurrency benefits.
@@ -82,7 +82,7 @@ The key FFRT APIs involved in the preceding example are as follows:
 > **NOTE**
 >
 > - For details about how to use FFRT C++ APIs, see [Using FFRT C++ APIs](ffrt-development-guideline.md#using-ffrt-c-api-1).
-> - When using FFRT C or C++ APIs, you can use the FFRT C++ API third-party library to simplify the header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file to include statements.
+> - When using FFRT C or C++ APIs, you can use the FFRT C++ API third-party library to simplify header file inclusion, that is, use the `#include "ffrt/ffrt.h"` header file to include statements.
 
 ## Constraints
 

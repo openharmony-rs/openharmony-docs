@@ -35,6 +35,7 @@ The universal attributes are not supported.
 
 ## UserAuthIcon
 
+```ts
 UserAuthIcon({
   authParam: userAuth.AuthParam,
   widgetParam: userAuth.WidgetParam,
@@ -43,6 +44,7 @@ UserAuthIcon({
   onIconClick?: ()=>void,
   onAuthResult: (result: userAuth.UserAuthResult)=>void
 })
+```
 
 **Decorator**: @Component
 
@@ -56,7 +58,7 @@ UserAuthIcon({
 | -------------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | authParam      | [userAuth.AuthParam](js-apis-useriam-userauth.md#authparam10)        | Yes  | User authentication parameters.                                            |
 | widgetParam    | [userAuth.WidgetParam](js-apis-useriam-userauth.md#widgetparam10)    | Yes  | Parameters on the user authentication page.                                     |
-| iconHeight     | [Dimension](../apis-arkui/arkui-ts/ts-types.md#dimension10) | No  | Height of the icon. The aspect ratio is 1:1. The default value is **64**.                            |
+| iconHeight     | [Dimension](../apis-arkui/arkui-ts/ts-types.md#dimension10) | No  | Height of the icon. The aspect ratio is 1:1. The default value is **64fp**. Percentage strings are not supported.             |
 | iconColor      | [ResourceColor](../apis-arkui/arkui-ts/ts-types.md#resourcecolor) | No  | Color of the icon. The default value is **$r('sys.color.ohos_id_color_activated')**.|
 | onIconClick    | ()=>void                                                      | No  | Callback to be invoked when the icon is tapped.                                        |
 | onAuthResult   | (result: [userAuth.UserAuthResult](js-apis-useriam-userauth.md#userauthresult10))=>void| Yes  | Callback used to return the user authentication result.<br>The application must request the `ohos.permission.ACCESS_BIOMETRIC` permission. Otherwise, it will only display the icon and cannot start the identity authentication components. |

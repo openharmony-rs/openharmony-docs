@@ -24,7 +24,7 @@ Describes area information in an image.
 | ------ | ------------------ | ---| -----|------------------------------------------------------- |
 | pixels | ArrayBuffer        | No|   No | Pixels of the image. Only pixel data in BGRA_8888 format is supported.|
 | offset | number             | No|   No |  Offset for data reading, in bytes.                                                    |
-| stride | number             | No|   No | Number of bytes from one row of pixels in memory to the next row of pixels in memory. The value of **stride** must be greater than or equal to the value of **region.size.width** multiplied by 4.                  |
+| stride | number             | No|   No | Number of bytes from one row of pixels in memory to the next row of pixels in memory. in bytes. The value of **stride** must be greater than or equal to the value of **region.size.width** multiplied by 4.                  |
 | region | [Region](#region8) | No|   No |Region to read or write. The width of the region to write plus the X coordinate cannot be greater than the width of the original image. The height of the region to write plus the Y coordinate cannot be greater than the height of the original image.|
 
 ## ImageInfo
@@ -37,10 +37,10 @@ Describes image information.
 | ---- | ------------- | --- |-----|---------- |
 | size<sup>6+</sup> | [Size](#size) | No|  No |Image size.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
 | density<sup>9+</sup> | number | No | No|Pixel density, in ppi.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
-| stride<sup>11+</sup> | number | No | No | Number of bytes from one row of pixels in memory to the next row of pixels in memory.stride >= region.size.width*4 <br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
+| stride<sup>11+</sup> | number | No | No | Number of bytes from one row of pixels in memory to the next row of pixels in memory. in bytes.stride >= region.size.width*4 <br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
 | pixelFormat<sup>12+</sup> | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | No |  No| Pixel format.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
 | alphaType<sup>12+</sup> | [AlphaType](arkts-apis-image-e.md#alphatype9)  | No |  No |Alpha type.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
-| mimeType<sup>12+</sup> | string  |  No |   No |Actual image format (MIME type).<br>The supported formats for image decoding and image encoding are different. Do not directly use the actual image format obtained after decoding as the value of **format** in [PackingOption](#packingoption) during image encoding.<br>You can use the **supportedFormats** property of [ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#properties) and [ImagePacker](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#properties) to view the supported formats for decoding and encoding. |
+| mimeType<sup>12+</sup> | string  |  No |   No |Actual image format (MIME type).<br>The supported formats for image decoding and image encoding are different. Do not directly use the actual image format obtained after decoding as the value of **format** in [PackingOption](#packingoption) during image encoding.<br>You can use the **supportedFormats** property of [ImageSource](../../reference/apis-image-kit/arkts-apis-image-ImageSource.md#properties) and of [ImagePacker](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#properties) to view the supported formats for decoding and encoding. |
 | isHdr<sup>12+</sup> | boolean  |  No | No | Whether the image is an HDR image. The value **true** means an HDR image, and **false** means an SDR image. For [ImageSource](arkts-apis-image-ImageSource.md), this parameter specifies whether the source image is in HDR format. For [PixelMap](arkts-apis-image-PixelMap.md), this parameter specifies whether the decoded PixelMap is in HDR format.|
 
 ## Size
@@ -57,6 +57,18 @@ Describes the size of an image.
 | ------ | ------ | -- |-----| -------------- |
 | height | number | No |  No |Image height, in px.|
 | width  | number | No |  No| Image width, in px.|
+
+## HdrComposeOptions<sup>23+</sup>
+
+Options for HDR image composition.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name        | Type  | Read Only| Optional| Description        |
+| ------------ | ------ | ---- | ---- | ------------ |
+| desiredPixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7)  | No  | Yes  | Pixel format for image composition. The RGBA_1010102, YCBCR_P010, and YCRCB_P010 formats are supported.|
 
 ## AuxiliaryPictureInfo<sup>13+</sup>
 
@@ -113,7 +125,7 @@ Describes the image decoding options.
 | ------------------ | ---------------------------------- | ---- | ---- | ---------------- |
 | sampleSize         | number                             | No  | Yes  | Sampling size of the thumbnail. The default value is **1**. Currently, the value can only be **1**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
 | rotate             | number                             | No  | Yes  | Rotation angle. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.      |
-| editable           | boolean                            | No  | Yes  | Whether the image is editable. **true** if editable, **false** otherwise. The default value is **false**. If this option is set to **false**, the image cannot be edited again, and operations such as writing pixels will fail.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12. |
+| editable           | boolean                            | No  | Yes  | Whether pixels are editable. **true** if editable, **false** otherwise. The default value is **false**.<br>If this parameter is set to **false**, the image rendering and transmission performance is improved, but the image cannot be edited. For example, the writePixels operation will fail.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12. |
 | desiredSize        | [Size](#size)                      | No  | Yes  | Expected output size. The value must be a positive integer and defaults to the original image size. If the output size is different from the original size, the output is stretched or scaled to the specified size.<br>Note: If both **desiredSize** and **desiredRegion** are passed to the decoding API, you must also include **cropAndScaleStrategy** to determine whether to crop or scale first. **CROP_FIRST** is recommended.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.  |
 | desiredRegion      | [Region](#region8)                 | No  | Yes  | Rectangle specified by **Region** in the decoded image. When the original image is large and only a specific part of the image is required, you can set this parameter to improve performance. The default value is the original image size.<br>Note: If both **desiredSize** and **desiredRegion** are passed to the decoding API, you must also include **cropAndScaleStrategy** to determine whether to crop or scale first. **CROP_FIRST** is recommended.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.      |
 | desiredPixelFormat | [PixelMapFormat](arkts-apis-image-e.md#pixelmapformat7) | No  | Yes  | Pixel format for decoding. The default value is **RGBA_8888**. Only RGBA_8888, BGRA_8888, and RGB_565 are supported. RGB_565 is not supported for images with alpha channels, such as PNG, GIF, ICO, and WEBP.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>**Widget capability**: This API can be used in ArkTS widgets since API version 12.|
@@ -157,8 +169,8 @@ Describes the options for image encoding.
 
 | Name   | Type  | Read Only| Optional| Description                                               |
 | ------- | ------ | ---- | ---- | --------------------------------------------------- |
-| format  | string | No  | No  | Format of the packed image.<br>Currently, only the following formats are supported: image/jpeg, image/webp, image/png, image/heic (or image/heif)<sup>12+</sup>, image/sdr_astc_4x4<sup>18+</sup>, image/sdr_sut_superfast_4x4<sup>18+</sup> (depending on the hardware), and image/hdr_astc_4x4<sup>20+</sup>.<br>**NOTE**: The JPEG format does not support the alpha channel. If the JPEG format with the alpha channel is used for data encoding, the transparent color turns black.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| quality | number | No  | No  | Quality of the output image set. This parameter takes effect only for JPEG and HEIF images. The value range is [0, 100]. The value **0** means the lowest quality, and **100** means the highest quality. The higher the quality, the larger the space occupied by the generated image. WebP and PNG images are lossless.<br>In the case of sdr_astc_4x4 encoding, the parameter can be set to **92** and **85**.<br>In the case of sut encoding, the parameter can be set to **92**.<br>(Available since API version 20) In the case of hdr_astc_4x4 encoding, the parameter can be set to **85**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| format  | string | No  | No  | Format of the packed image.<br>- When [the input is ImageSource or PixelMap](../../media/image/image-encoding.md), the following formats are supported: image/jpeg, image/webp, image/png, image/heic (or image/heif)<sup>12+</sup>, image/sdr_astc_4x4<sup>18+</sup>, image/sdr_sut_superfast_4x4<sup>18+</sup> (depending on the hardware), and image/hdr_astc_4x4<sup>20+</sup>.<br>- When [the input is Picture](../../media/image/image-picture-encoding.md), only image/jpeg and image/heic (or image/heif)<sup>12+</sup> are supported.<br>- GIF image encoding requires input of multiple **PixelMap** objects, with the format specified as image/gif. The encoding can be performed using [packToDataFromPixelmapSequence](./arkts-apis-image-ImagePacker.md#packtodatafrompixelmapsequence18) or [packToFileFromPixelmapSequence](./arkts-apis-image-ImagePacker.md#packtofilefrompixelmapsequence18).<br>**NOTE**: The JPEG format does not support the alpha channel. If the JPEG format with the alpha channel is used for data encoding, the transparent color turns black.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| quality | number | No  | No  | 1. Quality of the output image set. This parameter takes effect only for JPEG and HEIF images. The value range is [0, 100]. The value **0** means the lowest quality, and **100** means the highest quality. The higher the quality, the larger the space occupied by the generated image. WebP and PNG images are lossless.<br> 2. In the case of sdr_astc_4x4 encoding, the parameter can be set to **92** and **85**.<br>3. In the case of sut encoding, the parameter can be set to **92**.<br>4. (Available since API version 20) In the case of hdr_astc_4x4 encoding, the parameter can be set to **85**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | bufferSize<sup>9+</sup> | number | No  | Yes  | Size of the buffer for receiving the encoded data, in bytes. If this parameter is not set, the default value 25 MB is used. If the size of an image exceeds 25 MB, you must specify the size. The value of **bufferSize** must be greater than the size of the encoded image. The use of [packToFile](arkts-apis-image-ImagePacker.md#packtofile11) is not restricted by this parameter.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | desiredDynamicRange<sup>12+</sup> | [PackingDynamicRange](arkts-apis-image-e.md#packingdynamicrange12) | No  | Yes  | Desired dynamic range. The default value is **SDR**.|
 | needsPackProperties<sup>12+</sup> | boolean | No  | Yes  | Whether encoding image property information, for example, Exif, is required. **true** if required, **false** otherwise. The default value is **false**.|
@@ -231,6 +243,20 @@ Describes the data content of a single channel of the gain map. For details, see
 | baseOffset  | number     | No| No| Offset of the base graphic. For details, see ISO 21496-1.  |
 | alternateOffset  | number    | No| No| Offset of the alternative graphic that can be extracted. For details, see ISO 21496-1.   |
 
+## ImageMetadata<sup>23+</sup>
+
+Describes the image metadata set.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name                   | Type                   | Read Only| Optional| Description                           |
+| ----------------------- | ----------------------- | ---- | ---- | ------------------------------- |
+| exifMetadata            | [ExifMetadata](arkts-apis-image-ExifMetadata.md) | No  | Yes  | Exif metadata.                   |
+| makerNoteHuaweiMetadata | [MakerNoteHuaweiMetadata](arkts-apis-image-MakerNoteHuaweiMetadata.md) | No  | Yes  | Photo metadata from Huawei cameras.|
+| heifsMetadata | [HeifsMetadata](arkts-apis-image-HeifsMetadata.md) | No  | Yes  | HEIF image sequence metadata.|
+
 ## HdrGainmapMetadata<sup>12+</sup>
 
 Describes the metadata keys used by a gain map, that is, the values available for **HDR_GAINMAP_METADATA** in [HdrMetadataKey](arkts-apis-image-e.md#hdrmetadatakey12). For details, see ISO 21496-1.
@@ -247,6 +273,33 @@ Describes the metadata keys used by a gain map, that is, the values available fo
 | alternateHeadroom  | number     | No| No|  Headroom of the alternate graphic. For details, see ISO 21496-1. |
 | channels  | Array<[GainmapChannel](#gainmapchannel12)> | No| No| Number of channels. The length is 3. For details, see ISO 21496-1.|
 
+## ImageReceiverOptions<sup>23+</sup>
+
+Defines the initialization options for **ImageReceiver**.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageReceiver
+
+| Name             | Type                              | Read Only| Optional| Description              |
+| ----------------- | ---------------------------------- | ---- | ---- | ------------------ |
+| size     | [Size](#size) | No  | Yes  | Image size (including width and height), in pixels. Both the width and height values must be greater than 0.<br>This parameter does not affect the size of the received image. The actual returned size is determined by the producer, for example, the camera.|
+| capacity | number | No  | Yes  | Maximum number of images that can be accessed concurrently. The value must be a positive integer less than or equal to 64.<br>This parameter is used only as an expected value. The actual capacity depends on the device hardware.    |
+
+## ImageBufferData<sup>23+</sup>
+
+Saves the pointer to the image buffer data as well as the row stride and pixel stride information of different color components.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
+
+| Name             | Type             | Read Only| Optional| Description              |
+| ----------------- | ----------------- | ---- | ---- | ------------------ |
+| rowStride   | number[]  | Yes  | No  | Row strides of color components, in bytes.<br>This property is meaningless for encoded images such as JPEG images.<br>The camera preview stream data needs to be read by stride. For details, see [Solution to Screen Artifacts During Camera Preview](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-deal-stride-solution).|
+| pixelStride | number[]  | Yes  | No  | Pixel strides of color components, in bytes.<br>This property is meaningless for encoded images such as JPEG images.    |
+| byteBuffer  | ArrayBuffer | Yes  | No  | Image buffer.    |
+
 ## GetImagePropertyOptions<sup>(deprecated)</sup>
 
 Describes the image properties.
@@ -261,3 +314,4 @@ Describes the image properties.
 | ------------ | ------ | ---- | ---- | ------------ |
 | index        | number | No  | Yes  | Index of the image. The default value is **0**.  |
 | defaultValue | string | No  | Yes  | Default property value. The default value is null.|
+<!--no_check-->

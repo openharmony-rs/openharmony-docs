@@ -29,13 +29,13 @@
 
   可以作为Web组件嵌套滚动中，控制Web组件滚动的接口，详见[滚动偏移量由滚动父组件统一派发](web-nested-scrolling.md#滚动偏移量由滚动父组件统一派发)。
 
-+ [pageUp](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pageup)：将Webview的内容向上滚动半个视框大小或者跳转到页面最顶部，通过top入参控制。
-+ [pageDown](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pagedown)：将Webview的内容向下滚动半个视框大小或者跳转到页面最底部，通过bottom入参控制。
++ [pageUp](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pageup)：将Webview的内容向上滚动半个视口大小或者滚动到页面最顶部，通过top入参控制。
++ [pageDown](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#pagedown)：将Webview的内容向下滚动半个视口大小或者滚动到页面最底部，通过bottom入参控制。
 ## 调用js侧接口控制Web页面滚动
 + scrollBy：相对当前滚动位置滚动一定距离（正数向下/右，负数向上/左）。
 
   ```javascript
-  window.scrollBy(deltaX, deltaY);//deltaX是元素要在横轴上滚动的距离，deltaY是元素要在纵轴上滚动的距离。
+  window.scrollBy(deltaX, deltaY);// deltaX是元素要在横轴上滚动的距离，deltaY是元素要在纵轴上滚动的距离。
   ```
   渐进式滚动（如“阅读更多”按钮）。
   ```javascript
@@ -45,7 +45,7 @@
   ```
 + scrollTo：将页面滚动到绝对坐标位置。
   ```javascript
-  window.scrollTo(x, y);//X是你想要显示在左上角的元素沿水平轴的像素，Y是你想要显示在左上角的元素沿垂直轴的像素。
+  window.scrollTo(x, y);// X是你想要显示在左上角的元素沿水平轴的像素，Y是你想要显示在左上角的元素沿垂直轴的像素。
   ```
   (1) 返回页面顶部。
   ```javascript
@@ -53,7 +53,7 @@
   ```
   (2) 跳转到页面特定位置。
   ```javascript
-  window.scrollTo(0, 500); //滚动到某个固定像素位置（如：500px)
+  window.scrollTo(0, 500); // 滚动到某个固定像素位置（如：500px）
   ```
 
 ## 点击状态栏回顶

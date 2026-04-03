@@ -264,6 +264,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。
         items: [
           {
             // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
@@ -298,6 +299,7 @@ struct Index {
             allowClose: true
           },
         ],
+        // 设置Chip的style属性。
         itemStyle: {
           size: ChipSize.SMALL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -336,6 +338,7 @@ struct Index {
 
   @LocalBuilder
   ChipGroupSuffix(): void {
+    // 开发者通过引用IconGroupSuffix，实现组件最右侧的自定义组件效果。
     IconGroupSuffix({
       items: [{
         icon: { src: $r('sys.media.ohos_ic_public_search_filled'), size: { width: 36, height: 36 } },
@@ -356,6 +359,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。
         items: [
           {
             // $r('app.media.icon')需要替换为开发者所需的图像资源文件。
@@ -390,6 +394,7 @@ struct Index {
             allowClose: true
           },
         ],
+        // 设置Chip的style属性。
         itemStyle: {
           size: ChipSize.NORMAL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -404,6 +409,7 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        // 自定义builder，在组件最右侧显示自定义的内容。
         suffix: this.ChipGroupSuffix
       })
     }
@@ -433,6 +439,7 @@ struct Index {
 
   @LocalBuilder
   ChipGroupSuffix(): void {
+    // 开发者通过引用IconGroupSuffix，实现组件最右侧的自定义组件效果。
     IconGroupSuffix({
       items: [
         new SymbolGlyphModifier($r('sys.symbol.magnifyingglass'))
@@ -452,6 +459,7 @@ struct Index {
   build() {
     Column() {
       ChipGroup({
+        // items内每个对象设置的都是每个Chip的特定属性。
         items: [
           {
             prefixSymbol: { normal: this.prefixModifierNormal, activated: this.prefixModifierActivated },
@@ -485,6 +493,7 @@ struct Index {
             allowClose: true,
           },
         ],
+        // 设置Chip的style属性。
         itemStyle: {
           size: ChipSize.NORMAL,
           backgroundColor: $r('sys.color.ohos_id_color_button_normal'),
@@ -499,6 +508,7 @@ struct Index {
         onChange: (activatedChipsIndex: Array<number>) => {
           console.info('chips on clicked, activated index ' + activatedChipsIndex);
         },
+        // 自定义builder，在组件最右侧显示自定义的内容。
         suffix: this.ChipGroupSuffix
       })
     }

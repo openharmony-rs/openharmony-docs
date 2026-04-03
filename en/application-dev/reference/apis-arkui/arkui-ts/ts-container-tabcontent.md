@@ -696,7 +696,7 @@ Enumerates the layout modes of the images and texts on the bottom tabs.
 
 | Name        | Value| Description                                    |
 | ----------  | - | ---------------------------------------- |
-| AUTO        | 0 | When the tab width is greater than 104 vp, the tab content is arranged from left to right. Otherwise,the tab content is arranged from top to bottom. This parameter is valid only when the tab bar is in vertical mode or fixed horizontal mode.|
+| AUTO        | 0 | When the tab width is greater than 104 vp, the tab content is arranged from left to right. Otherwise, the tab content is arranged from top to bottom. This parameter is valid only when the tab bar is in vertical mode or fixed horizontal mode.|
 | VERTICAL    | 1 | The tab content is arranged from top to bottom.|
 | HORIZONTAL  | 2 | The tab content is arranged from left to right.|
 

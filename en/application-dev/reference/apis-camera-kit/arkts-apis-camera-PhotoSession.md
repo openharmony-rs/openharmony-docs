@@ -44,7 +44,7 @@ Checks whether this session supports a preconfigured resolution.
 
 | Type     | Description                                     |
 |---------|-----------------------------------------|
-| boolean | **true**: The preconfigured resolution is supported.<br>**false**: The preconfigured resolution is not supported.|
+| boolean | Whether a preconfigured resolution is supported. **true** if supported, **false** otherwise.|
 
 **Error codes**
 
@@ -191,7 +191,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 
 | Name    | Type                   | Mandatory| Description                      |
 | -------- | ---------------- | ---- | ------------------------ |
-| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in auto focus mode.|
+| type     | string                                    | Yes  | Event type. The value is fixed at **'focusStateChange'**. The event can be listened for when a session is created. This event is triggered only when the camera focus state changes in autofocus mode.|
 | callback | AsyncCallback\<[FocusState](arkts-apis-camera-e.md#focusstate)\> | Yes  | Callback used to return the focus state change. |
 
 **Example**

@@ -9,7 +9,7 @@
 
 The **WorkSchedulerExtensionContext** module, inherited from [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md), provides a context environment for the **WorkSchedulerExtensionAbility**.
 
-This module provides APIs for accessing the resources of a **WorkSchedulerExtensionAbility**.
+This module directly serves as the context for **WorkSchedulerExtension** and provides the capability to access resources specific to **WorkSchedulerExtensionAbility**.
 
 > **NOTE**
 > 
