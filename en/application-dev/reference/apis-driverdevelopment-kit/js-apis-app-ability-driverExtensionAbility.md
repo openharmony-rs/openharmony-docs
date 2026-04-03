@@ -21,7 +21,7 @@ import { DriverExtensionAbility } from '@kit.DriverDevelopmentKit';
 
 ## DriverExtensionAbility
 
-### Attributes
+### Properties
 
 **Model restriction**: This API can be used only in the stage model.
 
