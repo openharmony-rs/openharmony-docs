@@ -132,7 +132,7 @@ USB证书凭据授权请求信息。
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | certTypes | Array<[CertificateType](#certificatetype14)>   | 否   | 否   | 表示证书类型的列表。 |
 | certPurpose | [certificateManager.CertificatePurpose](js-apis-certManager.md#certificatepurpose22)    | 否   | 是   | 表示证书用途。<br>若certTypes参数中存在CertificateType.CREDENTIAL_UKEY类型，则certPurpose参数生效。 |
-| keyAlgIDs |  Array\<string>  | 否   | 是   | 表示证书公钥的算法类型。它用于筛选凭据授权对话框中的证书列表。仅显示与公钥算法匹配的证书。该值只能是RSA、EC或ECDSA。如果keyAlgIDs数组包含不支持的算法类型，则keyAlgIDs筛选器不会生效。数组最大长度为20。<br>**起始版本：** 26.0.0 |
+| keyAlgIDs |  Array\<string>  | 否   | 是   | 表示证书公钥的算法类型，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。支持的取值为RSA、EC或ECDSA。<br>若 keyAlgIDs包含不支持的算法，则该筛选器无效。<br>数组最大长度为20。<br>**起始版本：** 26.0.0 |
 | issuers |  Array\<Uint8Array>  | 否   | 是   | 表示以DER格式编码的证书颁发者，用于筛选用户在凭据授权对话框中可以选择的证书列表，仅显示与证书颁发者匹配的证书。如果issuers数组中存在元素长度为0，则issuers筛选器不会生效。数组最大长度为20。<br>**起始版本：** 26.0.0 |
 | uri | string  | 否   | 是   | 表示应用请求使用凭据用于验证服务器的地址，此uri显示在凭据授权对话框中。<br>**起始版本：** 26.0.0 |
 
