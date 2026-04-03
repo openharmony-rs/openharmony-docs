@@ -94,7 +94,7 @@
    ```ts
    import { media } from '@kit.MediaKit';
    import { BusinessError } from '@kit.BasicServicesKit';
-   import fileIo from '@ohos.file.fs';
+   import { fileIo as fs } from '@kit.CoreFileKit';
 
    let avProfile: media.AVRecorderProfile = {
      audioBitrate: 112000, // 音频比特率。
@@ -107,7 +107,7 @@
    
    const context: Context = this.getUIContext().getHostContext()!; // 参考应用文件访问与管理。
    let filePath: string = context.filesDir + '/example.mp3';
-   let audioFile: fileIo.File = fileIo.openSync(filePath, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+   let audioFile: fs.File = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
    let fileFd: number = audioFile.fd; // 获取文件fd。
     
    let avConfig: media.AVRecorderConfig = {
@@ -177,7 +177,7 @@
 import { common } from '@kit.AbilityKit';
 import { media } from '@kit.MediaKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import fileIo from '@ohos.file.fs';
+import { fileIo as fs } from '@kit.CoreFileKit';
 
 async function audioRecording(context: common.Context): Promise<void> {
   // 创建avRecorder对象。
@@ -220,10 +220,10 @@ async function audioRecording(context: common.Context): Promise<void> {
   };
 
   // 创建文件以及设置avConfig.url。
-  let audioFile: fileIo.File | undefined = undefined;
+  let audioFile: fs.File | undefined = undefined;
   try {
     let path: string = context.filesDir + '/example.mp3'; // 文件沙箱路径，文件后缀名应与封装格式对应。
-    audioFile = fileIo.openSync(path, fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE); // 打开文件。
+    audioFile = fs.openSync(path, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE); // 打开文件。
   } catch (error) {
     let err = error as BusinessError;
     console.error(`Failed to open file, error code: ${err.code}, message: ${err.message}`);
@@ -302,7 +302,7 @@ async function audioRecording(context: common.Context): Promise<void> {
   // 关闭录制文件fd。
   try {
     if (audioFile !== undefined) {
-      await fileIo.close(audioFile.fd);
+      await fs.close(audioFile.fd);
     }
   } catch (error) {
     let err = error as BusinessError;
