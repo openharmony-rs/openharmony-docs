@@ -127,7 +127,7 @@ Registers an ArkTS object in **javaScriptProxy** with the **Web** component. The
 
 > **NOTE**
 >
-> The **javaScriptProxy** API must be used in pair with the [deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deleteJavaScriptRegister) API to prevent memory leaks.
+> The **javaScriptProxy** API must be used in pair with the [deleteJavaScriptRegister<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#deletejavascriptregister) API to prevent memory leaks.
 > All parameters of the **javaScriptProxy** object cannot be updated.
 > When registering a **javaScriptProxy** object, select at least one of the synchronous and asynchronous method lists, or both.
 > Only one object can be registered through this API. To register multiple objects, use [registerJavaScriptProxy<sup>9+</sup>](./arkts-apis-webview-WebviewController.md#registerjavascriptproxy).
