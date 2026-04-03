@@ -7173,6 +7173,46 @@
 						"start_line":65
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/RenderTxtBoxSameLayer_two.ets",
+				"functions":[
+					{
+						"end_line":282,
+						"name":"set_web_peer_render",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/DrawXCompAVPBtn.ets",
+				"functions":[
+					{
+						"end_line":261,
+						"name":"draw_x_component_av_player_button",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/PlayerDemo.ets",
+				"functions":[
+					{
+						"end_line":107,
+						"name":"mp4_player_example",
+						"start_line":16
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkWeb/UseSameLayerRender/entry/src/main/ets/pages/NativeEmbedOverlay.ets",
+				"functions":[
+					{
+						"end_line":270,
+						"name":"native_embed_overlay",
+						"start_line":16
+					}
+				]
 			}
 		]
 	},
