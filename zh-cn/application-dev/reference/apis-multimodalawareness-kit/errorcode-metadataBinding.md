@@ -40,7 +40,7 @@ Encoding failed. Possible causes: 1. Image processing error; 2. Channel coding e
 2. 连续重试3次不可用则停止尝试，返回原始图片文件。  
 
 ## 32100003 解码程序执行失败  
-**错误码信息**  
+**错误信息**  
 Decoding failed. Possible causes: 1. Image not encoded; 2. Image destroyed. 
 
 **错误描述**  
@@ -71,7 +71,7 @@ Subscription failed. Possible causes: 1. Abnormal system capability; 2. IPC exce
 
 ## 32100005 取消订阅失败  
 
-**错误码信息**  
+**错误信息**  
 Unsubscription failed. Possible causes: 1. Abnormal system capability; 2. IPC exception. 
 
 **错误描述**  
