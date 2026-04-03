@@ -80,7 +80,7 @@ Defines the common types for the native module.
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines a struct for snapshot options.|
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | Defines the data selection list for the text picker.|
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | Defines the content array for a multi-column cascading data picker.|
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Returns the created instance of visible area change event parameters.|
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Defines the created instance of visible area change event parameters.|
 |[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)|ArkUI_PositionEdges|Provides position parameters relative to the boundaries of the container's content area.|
 |[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|Defines a struct for the component pixel rounding policy.|
 |[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|Defines the content transition effect.|
@@ -498,7 +498,7 @@ Defines the common types for the native module.
 | [int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_gettop) | - | Obtains the value of the **PositionEdges** object in the top direction.|
 | [void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setleft) | - | Sets the value of the **PositionEdges** object in the left direction.|
 | [int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getleft) | - | Obtains the value of the **PositionEdges** object in the left direction.|
-| [void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setbottom) | - | Obtains the value of the **PositionEdges** object in the bottom direction.|
+| [void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setbottom) | - | Sets the value of the **PositionEdges** object in the bottom direction.|
 | [int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getbottom) | - | Obtains the value of the **PositionEdges** object in the bottom direction.|
 | [void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setright) | - | Sets the value of the **PositionEdges** object in the right direction.|
 | [int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getright) | - | Obtains the value of the **PositionEdges** object in the right direction.|
@@ -4469,7 +4469,7 @@ Creates an alignment rule configuration for this **RelativeContainer** component
 
 | Type                            | Description|
 |--------------------------------| -- |
-| [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* | Alignment rule information.|
+| [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* | Pointer to the alignment rule information.|
 
 ### OH_ArkUI_AlignmentRuleOption_Dispose()
 
@@ -7083,7 +7083,7 @@ Expands the swipe action menu for the specified list item.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ListItem** node object.|
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Enumerates the swipe action menu display directions for **ListItem** components.|
+| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Swipe action menu display directions for the **ListItem** component.|
 
 **Returns**
 
@@ -7972,7 +7972,7 @@ Obtains the playback duration of an image.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Payback duration of the image, in milliseconds. If **imageInfo** is a null pointer, **0** is returned.|
+| int32_t | Playback duration of the image, in milliseconds. If **imageInfo** is a null pointer, **0** is returned.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Create()
 
