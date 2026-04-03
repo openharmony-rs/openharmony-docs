@@ -64,8 +64,8 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| aabbMin | [Vec3](#vec3) | 否 | 否 | 轴对齐边界盒的小值点。 |
-| aabbMax | [Vec3](#vec3) | 否 | 否 | 轴对齐边界盒的大值点。 |
+| aabbMin | [Vec3](#vec3) | 否 | 否 | 轴对齐边界盒的小值点，单位为世界坐标系下的场景单位（比如cm、m、km等）。 |
+| aabbMax | [Vec3](#vec3) | 否 | 否 | 轴对齐边界盒的大值点，单位为世界坐标系下的场景单位（比如cm、m、km等）。 |
 
 ## Color
 用于表示RGBA格式的颜色，包含四个分量，依次为红色、绿色、蓝色和透明度。
@@ -84,10 +84,10 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| x | number | 否 | 否 | 矩形左下角x轴分量，单位为所属坐标系的单位长度，取值为任意实数，具体范围依赖场景坐标系设置。 |
-| y | number | 否 | 否 | 矩形左下角y轴分量，单位为所属坐标系的单位长度，取值为任意实数，具体范围依赖场景坐标系设置。 |
-| width | number | 否 | 否 | 矩形宽度，单位为所属坐标系的单位长度，有效取值范围大于0。 |
-| height | number | 否 | 否 | 矩形高度，单位为所属坐标系的单位长度，有效取值范围大于0。 |
+| x | number | 否 | 否 | 矩形左下角x轴分量，单位为世界坐标系下的场景单位（比如cm、m、km等），取值为任意实数，具体范围依赖场景坐标系设置。 |
+| y | number | 否 | 否 | 矩形左下角y轴分量，单位为世界坐标系下的场景单位（比如cm、m、km等），取值为任意实数，具体范围依赖场景坐标系设置。 |
+| width | number | 否 | 否 | 矩形宽度，单位为世界坐标系下的场景单位（比如cm、m、km等），有效取值范围大于0。 |
+| height | number | 否 | 否 | 矩形高度，单位为世界坐标系下的场景单位（比如cm、m、km等），有效取值范围大于0。 |
 ## RenderingPipelineType<sup>21+</sup>
 
 渲染管线类型枚举。
@@ -151,7 +151,7 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| size | [Vec3](#vec3) | 否 | 否 | 立方体的宽、高和深度，表示立方体的大小。 |
+| size | [Vec3](#vec3) | 否 | 否 | 立方体的宽、高和深度，表示立方体的大小，单位为世界坐标系下的场景单位（比如cm、m、km等）。 |
 
 ## PlaneGeometry<sup>18+</sup>
 平面几何类型，继承自[GeometryDefinition](#geometrydefinition18)。
@@ -160,7 +160,7 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| size | [Vec2](#vec2) | 否 | 否 | 平面的宽、高，表示平面的大小。 |
+| size | [Vec2](#vec2) | 否 | 否 | 平面的宽、高，表示平面的大小，单位为世界坐标系下的场景单位（比如cm、m、km等）。 |
 
 ## SphereGeometry<sup>18+</sup>
 球体几何类型，继承自[GeometryDefinition](#geometrydefinition18)。
@@ -170,7 +170,7 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
 | radius | number | 否 | 否 | 球体半径，单位为世界坐标系下的场景单位（比如cm、m、km等），取值范围大于0。 |
-| segmentCount | number | 否 | 否 | 在球体上以经纬度分割的段数，取值范围大于0。 |
+| segmentCount | number | 否 | 否 | 在球体上以经纬度分割的段数，取值范围是大于等于3的正整数。 |
 
 ## Position3
 type Position3 = Vec3
@@ -181,7 +181,7 @@ type Position3 = Vec3
 
 | 类型  | 说明 |
 | ---- | ---- |
-| [Vec3](#vec3) | 类型为三维向量，可取任意值。 |
+| [Vec3](#vec3) | 类型为三维向量，单位为世界坐标系下的场景单位（比如cm、m、km等），可取任意值。 |
 
 ## Rotation3
 type Rotation3 = Vec3
@@ -192,7 +192,7 @@ type Rotation3 = Vec3
 
 | 类型  | 说明 |
 | ---- | ---- |
-| [Vec3](#vec3) | 类型为三维向量，可取任意值。 |
+| [Vec3](#vec3) | 类型为三维向量，单位为弧度（rad），可取任意值。 |
 
 ## Scale3
 type Scale3 = Vec3

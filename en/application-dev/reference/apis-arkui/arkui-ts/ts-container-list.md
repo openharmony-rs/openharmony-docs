@@ -185,7 +185,7 @@ When a list is nested with **LazyForEach**, and within **LazyForEach** there is 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Number of list items or list item groups to be preloaded (cached).<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞)|
+| value  | number | Yes  | Number of list items or list item groups to be preloaded (cached).<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.|
 
 ### cachedCount<sup>14+</sup>
 
@@ -210,7 +210,7 @@ When **cachedCount** is set for the list, the system preloads and lays out the *
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number | Yes  | Number of list items to be preloaded.<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞)|
+| count  | number | Yes  | Number of list items to be preloaded.<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.|
 | show  | boolean | Yes  | Whether to display the preloaded list items. If this parameter is set to **true**, the preloaded list items are displayed. If this parameter is set to **false**, the preloaded list items are not displayed.<br> Default value: **false**|
 
 ### cachedCount<sup>22+</sup>
@@ -242,7 +242,7 @@ Default behavior: The **count** parameter is of the **number** type by default, 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22) | Yes  | Number of preloaded **ListItem** components if the parameter is of the **number** type.<br>Value range: [0, +∞)<br>If the parameter type is CacheCountInfo, the parameter indicates the maximum and minimum preloading range.|
+| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22) | Yes  | Number of preloaded **ListItem** components if the parameter is of the **number** type.<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.<br>If the parameter type is CacheCountInfo, the parameter indicates the maximum and minimum preloading range.|
 | show  | boolean | Yes  | Whether to display the preloaded list items.<br>**true**: yes<br>**false**: no|
 
 ### edgeEffect
@@ -1579,7 +1579,7 @@ struct ListLanesExample {
       .alignListItem(this.alignListItem)
       .scrollBar(BarState.Off)
 
-      Button ('Change alignListItem:' + this.alignListItem).onClick(() => {
+      Button('Change alignListItem:' + this.alignListItem).onClick(() => {
         if (this.alignListItem == ListItemAlign.Start) {
           this.alignListItem = ListItemAlign.Center;
         } else if (this.alignListItem == ListItemAlign.Center) {
@@ -2523,7 +2523,7 @@ struct ContactsList {
                 .onAction((event: GestureEvent) => {
                   if (event) {
                     const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
-                    console.info ('The', index + 1, 'ListItemGroup of the', subIndex + 1, 'ListItem', x:', itemRect.x,
+                    console.info('The', index + 1, 'ListItemGroup of the', subIndex + 1, 'ListItem', x:', itemRect.x,
                       ' y:', itemRect.y, ' width:', itemRect.width, ' height:', itemRect.height)
                     this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
                   }

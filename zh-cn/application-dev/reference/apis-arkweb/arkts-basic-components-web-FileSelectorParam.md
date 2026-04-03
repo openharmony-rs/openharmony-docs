@@ -78,7 +78,7 @@ isCapture(): boolean
 
 | 类型      | 说明           |
 | ------- | ------------ |
-| boolean | 返回是否调用多媒体能力。<br>true表示返回调用多媒体能力，false表示返回未调用多媒体能力。 |
+| boolean | 返回是否调用多媒体能力。<br>true表示调用多媒体能力，false表示未调用多媒体能力。 |
 
 ## getMimeTypes<sup>18+</sup>
 

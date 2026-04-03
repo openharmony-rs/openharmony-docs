@@ -334,7 +334,7 @@ Sets whether to enable anti-aliasing. This attribute can be dynamically set usin
 | ------ | ------- | ---- | ------------------------------------- |
 | value  | boolean | Yes  | Whether anti-aliasing is enabled.<br>**true**: enable anti-aliasing; **false**: disable anti-aliasing.<br>Default value: **true**<br>Invalid values **undefined** and **null** are treated as **false**.|
 
-## Example
+## Examples
 
 ### Example 1: Drawing a Rectangle
 

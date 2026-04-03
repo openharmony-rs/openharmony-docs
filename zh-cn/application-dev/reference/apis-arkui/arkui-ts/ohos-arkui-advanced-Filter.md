@@ -64,7 +64,7 @@ Filter({ multiFilters: Array&lt;FilterParams&gt;,  additionFilters?: FilterParam
 | 名称 | 类型 | 只读 | 可选 | 说明                                                              |
 | -------- | -------- |----|----|-----------------------------------------------------------------|
 | name | [ResourceStr](ts-types.md#resourcestr) | 否  | 否  | 筛选项维度名称。<br/>默认值：空字符串。<br/>**说明**：如果文本大于列宽时，文本被截断。              |
-| options | Array&lt;[ResourceStr](ts-types.md#resourcestr)&gt; | 否  | 否  | 筛选项维度可选项列表。<br/>默认值：空字符串。<br/>**说明**：文本超长显示省略号。 |
+| options | Array&lt;[ResourceStr](ts-types.md#resourcestr)&gt; | 否  | 否  | 筛选项维度可选项列表。<br/>默认值：空数组。<br/>**说明**：文本超长显示省略号。 |
 
 ## FilterType
 
