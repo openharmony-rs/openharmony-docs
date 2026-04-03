@@ -39,7 +39,7 @@ onKeyEvent(event: (event: KeyEvent) => void): T
 ## onKeyEvent<sup>15+</sup>
 onKeyEvent(event: Callback\<KeyEvent, boolean>): T
 
-当绑定该方法的组件获得焦点后，按键操作将触发此回调。若此回调的返回值为`true`，则视为按键事件已被处理。
+当绑定该方法的组件获焦后，按键操作将触发此回调。若此回调的返回值为`true`，则视为按键事件已被处理。
 
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
