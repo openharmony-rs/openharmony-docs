@@ -51,8 +51,7 @@ The table below lists the common APIs used for application window development. F
 
 You can create a child window, such as a dialog box, and set its properties.
 
-> **NOTE**
->
+> **NOTE** 
 > In the following scenarios, you are not advised to use child windows. Instead, consider using the [overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md) capability of components first. 
 > - On mobile devices (tablets in non-freeform mode and phones), child windows cannot extend beyond the boundaries of the main window when it is in floating or split-screen mode, just like components. 
 > - In split-screen or freeform window mode, components, when compared with child windows, offer better real-time adaptability to changes in the main window's position and size. 
