@@ -951,5 +951,5 @@ Web屏幕捕获的配置。
 | 名称             | 类型      | 只读 | 可选   | 说明                                       |
 | -------------- | ---- | ---- | ---- | ---------------------------------------- |
 | url | string | 否 | 否 | 本次首屏渲染统计所对应的url。    |
-| navigationStartTime | number | 否 | 否 | url所指页面开始导航的时刻。    |
-| firstScreenPaintTime | number | 否 | 否 | url所指页面首屏绘制完成的时刻。    |
+| navigationStartTime | number | 否 | 否 | url所指页面开始导航的时刻。<br>单位：毫秒。 |
+| firstScreenPaintTime | number | 否 | 否 | url所指页面首屏绘制完成的时刻。<br>单位：毫秒。|
