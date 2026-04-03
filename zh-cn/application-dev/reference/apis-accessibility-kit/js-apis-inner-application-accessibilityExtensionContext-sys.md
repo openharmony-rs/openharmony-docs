@@ -1009,6 +1009,9 @@ export default class AccessibilityManager {
 | clip<sup>20+</sup>  | boolean                                                            | 否  | 是  | 组件是否需要裁剪。true表示需要裁剪，false表示不需要裁剪。|
 | parentId<sup>20+</sup>             | number                                                             | 否  | 是  | 组件的父元素ID。|
 | childrenIds<sup>20+</sup>             | Array\<number>                                                             | 否  | 是  | 组件的子元素ID列表。|
+| isEssential<sup>26+</sup>             | boolean              | 否   | 是   | 表示元素对用户是否是必需的。true表示元素是必需的，false表示元素不是必需的，默认值为false。 |
+| belongTreeId<sup>26+</sup>             | number              | 否   | 是   | 表示元素所属的组件树ID。默认值为-1。 |
+| childrenTreeId<sup>26+</sup>             | number              | 否   | 是   | 表示元素的子组件树ID。默认值为-1。 |
 
 **示例：**
 ```ts
