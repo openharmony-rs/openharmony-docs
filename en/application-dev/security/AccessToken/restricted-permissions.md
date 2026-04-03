@@ -1012,6 +1012,38 @@ Allows an application to obtain and manage the media resources playing on a devi
 
 **Since**: 23
 
+## ohos.permission.MANAGE_RECENT_SNAPSHOT
+
+Allows an application to set the preview image displayed when a mouse hovers over its icon in the Dock or recent tasks are viewed.
+
+When the mouse hovers over an application icon in the Dock or recent tasks are viewed, a real-time preview image of the application will be displayed. With this permission, the application is authorized to customize this image.
+
+<!--RP72--><!--RP72End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PC/2in1
+
+**Since**: 26.0.0
+
+## ohos.permission.SET_WINDOW_ALPHA
+
+Allows an application to set the main window container to be transparent.
+
+With this permission, the application can set the background color of the main window container.
+
+<!--RP73--><!--RP73End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PC/2in1
+
+**Since**: 26.0.0
+
 ## ohos.permission.MANAGE_CALL_FOR_DEVICES
 
 Allows an application to manage call status, such as retrieving incoming call numbers, answering, rejecting, and ending calls.
