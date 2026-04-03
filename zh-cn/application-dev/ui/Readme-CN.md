@@ -372,6 +372,7 @@
   - UI开发常见问题<!--ui-development-faq-->
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
+    - [弹窗组件常见问题](arkts-popup-component-faq.md)
     - [使用文本常见问题](arkts-text-faq.md)
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
