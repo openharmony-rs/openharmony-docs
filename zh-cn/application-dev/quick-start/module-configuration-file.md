@@ -854,7 +854,7 @@ atomicService标签示例：
 ``` JSON5
 {
   "module": {
-	// ···
+  // ···
     "atomicService": {
       "preloads":[
         {
@@ -863,7 +863,7 @@ atomicService标签示例：
       ],
       "resizeable": true
     },
-	// ···
+  // ···
 }
 ```
 
