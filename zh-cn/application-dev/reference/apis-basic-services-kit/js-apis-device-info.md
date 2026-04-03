@@ -311,6 +311,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 
 ## apiAvailable<sup>26+</sup>
+
 apiAvailable(version: string | number): boolean;
 <!--RP13-->
 检查指定的API版本在当前设备上是否可用。</br>
