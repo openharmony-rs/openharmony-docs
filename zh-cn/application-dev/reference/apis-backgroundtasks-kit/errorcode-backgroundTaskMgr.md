@@ -188,8 +188,8 @@ Caller information verification failed for a transient task.
 
 **可能原因**
 
-1. 获取调用方的uid或pid错误，校验失败。
-2. 获取调用方的bundleName错误，校验失败。
+1. 获取调用方的uid或pid错误，导致校验失败。
+2. 获取调用方的bundleName错误，导致校验失败。
 3. 取消短时任务时传入的requestId无效，在申请短时任务的列表中找不到对应的requestId。
 
 **处理步骤**
