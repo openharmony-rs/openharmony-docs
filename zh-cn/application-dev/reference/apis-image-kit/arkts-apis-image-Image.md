@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Image类，用于获取图像内容。
+Image类，提供获取[图片信息](arkts-apis-image-i.md#imageinfo)、将图片解码为PixelMap或Picture、读取和修改[图片属性](arkts-apis-image-e.md#propertykey7)的能力。[支持解码的图片格式](arkts-apis-image-ImageSource.md#属性)包括png、jpeg、bmp、gif、webp、dng、heic<sup>12+</sup>、wbmp<sup>23+</sup>、heifs<sup>23+</sup>、tiff<sup>23+</sup>。
 
 调用[readNextImage](arkts-apis-image-ImageReceiver.md#readnextimage9)和[readLatestImage](arkts-apis-image-ImageReceiver.md#readlatestimage9)接口时会返回Image实例。
 
