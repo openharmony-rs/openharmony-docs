@@ -40,7 +40,7 @@
 
 | 装饰器使用规则          | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| 从父组件初始化     | 如果本地有初始化，则是可选的，初始化行为和[\@State](./arkts-state.md#变量的传递访问规则说明)保持一致。没有的话，则必选，支持父组件中的常规变量（常规变量对@Prop赋值，只是数值的初始化，常规变量的变化不会触发UI刷新。只有状态变量才能触发UI刷新）、[\@State](arkts-state.md)、[\@Link](arkts-link.md)、\@Prop、[\@Provide](arkts-provide-and-consume.md)、[\@Consume](arkts-provide-and-consume.md)、[\@ObjectLink](arkts-observed-and-objectlink.md)、[\@StorageLink](arkts-appstorage.md#storagelink)、[\@StorageProp](arkts-appstorage.md#storageprop)、[\@LocalStorageLink](arkts-localstorage.md#localstoragelink)和[\@LocalStorageProp](arkts-localstorage.md#localstorageprop)去初始化子组件中的\@Prop变量。 |
+| 从父组件初始化     | 如果本地有初始化，则是可选的，初始化行为和[\@State](./arkts-state.md#变量的传递访问规则说明)保持一致。没有的话，则必选，支持父组件中的常规变量（常规变量对@Prop赋值，只是数值的初始化，常规变量的变化不会触发UI刷新。只有状态变量才能触发UI刷新）、[\@State](arkts-state.md)、[\@Link](arkts-link.md)、\@Prop、[\@Provide](arkts-provide-and-consume.md)、[\@Consume](arkts-provide-and-consume.md)、[\@ObjectLink](arkts-observed-and-objectlink.md)、[\@StorageLink](arkts-appstorage.md#storagelink)、[\@StorageProp](arkts-appstorage.md#storageprop)、[\@LocalStorageLink](arkts-localstorage.md#localstoragelink)和[\@LocalStorageProp](arkts-localstorage.md#localstorageprop)去初始化子组件中的\@Prop装饰的变量。 |
 |用于初始化子组件| \@Prop支持初始化子组件中的常规变量、\@State、\@Link、\@Prop、\@Provide。|
 | 是否支持组件外访问 | \@Prop装饰的变量是私有的，只能在组件内访问。                 |
 
@@ -129,10 +129,10 @@
 
 对于\@State和\@Prop的同步场景：
 
-- 使用父组件中\@State变量的值初始化子组件中的\@Prop变量。当\@State变量变化时，该变量值也会同步更新至\@Prop变量。
+- 使用父组件中\@State变量的值初始化子组件中的\@Prop装饰的变量。当\@State变量变化时，该变量值也会同步更新至\@Prop装饰的变量。
 - \@Prop装饰的变量的修改不会影响其数据源\@State装饰变量的值。
 - 除了\@State，数据源也可以用\@Link或\@Prop装饰，对\@Prop的同步机制是相同的。
-- 数据源和\@Prop变量的类型需要相同。
+- 数据源和\@Prop装饰的变量的类型需要相同。
 
 - 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性，详见[装饰Date类型变量](#装饰date类型变量)。
 
@@ -142,7 +142,7 @@
 
 ### 框架行为
 
-理解\@Prop变量值初始化和更新机制，需要了解父组件和子组件的渲染和更新流程。
+理解\@Prop装饰的变量值初始化和更新机制，需要了解父组件和子组件的渲染和更新流程。
 
 1. 初始渲染：
    1. 执行父组件的build()函数，创建子组件的新实例并传递数据源。
@@ -288,7 +288,7 @@ struct ParentComponent {
 
 3. 更新count状态变量值也会触发CountDownComponent的重新渲染，在重新渲染过程中，评估使用count状态变量的if语句条件（this.count &gt; 0），并执行true分支中的使用count状态变量的UI组件相关描述来更新Text组件的UI显示。
 
-4. 当按下子组件CountDownComponent的“Try again”按钮时，其\@Prop变量count将被更改，但是count值的更改不会影响父组件的countDownStartValue值。
+4. 当按下子组件CountDownComponent的“Try again”按钮时，其\@Prop装饰的变量count将被更改，但是count值的更改不会影响父组件的countDownStartValue值。
 
 5. 父组件的countDownStartValue值变化时，父组件的修改将覆盖掉子组件CountDownComponent中count本地的修改。
 
@@ -568,7 +568,7 @@ class Book {
 
 为了支持\@Component装饰的组件复用场景，\@Prop支持本地初始化，这样可以让\@Prop是否与父组件建立同步关系变得可选。当且仅当\@Prop有本地初始化时，从父组件向子组件传递\@Prop的数据源才是可选的。
 
-下面的示例中，子组件包含两个\@Prop变量：
+下面的示例中，子组件包含两个\@Prop装饰的变量：
 
 - \@Prop customCounter没有本地初始化，所以需要父组件提供数据源去初始化\@Prop，并当父组件的数据源变化时，\@Prop也将被更新。
 
