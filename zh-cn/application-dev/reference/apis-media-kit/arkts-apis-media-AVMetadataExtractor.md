@@ -138,7 +138,7 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 
 fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param: PixelMapParams, timeoutMs: number): Promise\<image.PixelMap | undefined>
 
-在给定时间内获取视频缩略图，时间范围为(0, 20000]，单位为毫秒（ms）。使用Promise异步回调。
+获取视频缩略图，支持设置缩略图获取最大耗时timeoutMs。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -153,7 +153,7 @@ fetchFrameByTimeWithTimeout(timeUs: number, options: AVImageQueryOptions, param:
 | timeUs | number                   | 是   | 需要获取的缩略图在视频中的时间点，单位为微秒（μs）。 |
 | options | [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
-| timeoutMs | number                   | 是   | 超时时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在指定超时时间内未获取缩略图则报错返回。 |
+| timeoutMs | number                   | 是   | 获取缩略图的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在指定的超时时间内未获取缩略图则返回错误码5400104。 |
 
 **返回值：**
 
@@ -279,7 +279,7 @@ async function fetchFramesByTimesDemo() {
 
 fetchFramesByTimesWithTimeout(timesUs: number[], queryOption: AVImageQueryOptions, param: PixelMapParams, timeoutMs: number, callback: OnFrameFetched): void
 
-在给定的超时时间内批量获取视频缩略图，时间范围为(0, 20000]，单位为毫秒（ms）。使用Callback异步回调。
+批量获取视频缩略图，支持设置每一帧缩略图获取最大耗时timeoutMs。使用Callback异步回调。
 
 > **说明：**
 >
@@ -300,7 +300,7 @@ fetchFramesByTimesWithTimeout(timesUs: number[], queryOption: AVImageQueryOption
 | timesUs | number[]                   | 是   | 需要获取的所有缩略图在视频中的时间点集合。<br>时间单位为微秒（μs），数组长度取值范围为(0, 4096]。 |
 | queryOption| [AVImageQueryOptions](arkts-apis-media-e.md#avimagequeryoptions12)     | 是   | 需要获取的缩略图时间点与视频帧的对应关系。 |
 | param | [PixelMapParams](arkts-apis-media-i.md#pixelmapparams12)    | 是   | 需要获取的缩略图的格式参数。 |
-| timeoutMs | number                  | 是   | 获取每一帧图像的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>时间单位为毫秒（ms）。 |
+| timeoutMs | number                  | 是   | 获取每一帧缩略图的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>对于每一帧缩略图，在指定的超时时间内未获取缩略图则返回错误码5400104。 |
 | callback | [OnFrameFetched](arkts-apis-media-t.md#onframefetched23)    | 是   | 需要返回的缩略图信息及可能的异常类型。<br>异常类型请参考具体返回的错误码信息。 |
 
 **错误码：**
@@ -464,7 +464,7 @@ async function test() {
 
 fetchMetadataWithTimeout(timeoutMs: number): Promise\<AVMetadata | undefined>
 
-在给定的时间timeoutMs内获取媒体元数据，时间范围为(0, 20000]，单位为毫秒（ms）。使用Promise异步回调。
+获取媒体元数据，支持设置获取最大耗时timeoutMs。使用Promise异步回调。
 
 **起始版本：** 26.0.0
 
@@ -476,7 +476,7 @@ fetchMetadataWithTimeout(timeoutMs: number): Promise\<AVMetadata | undefined>
 
 | 参数名   | 类型                                         | 必填 | 说明                                |
 | -------- | -------------------------------------------- | ---- | ----------------------------------- |
-| timeoutMs | number | 是 | 超时时间，单位为毫秒（ms）。<br>在给定时间内未返回元数据则抛出错误码。|
+| timeoutMs | number | 是 | 获取媒体元数据的最大等待时间，时间范围为(0, 20000]，单位为毫秒（ms）。<br>在给定的超时时间内未返回元数据则返回错误码5400104。|
 
 **返回值：**
 
