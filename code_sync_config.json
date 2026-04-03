@@ -16580,6 +16580,26 @@
 						"start_line":15
 					}
 				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/BuilderParamSceneJumpLogic.ets",
+				"functions":[
+					{
+						"end_line":94,
+						"name":"builder_param_scene_jump_logic",
+						"start_line":15
+					}
+				]
+			},
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/ParadigmStateRestock/entry/src/main/ets/pages/helloworld.ets",
+				"functions":[
+					{
+						"end_line":38,
+						"name":"builder_param_scene_jump_logic_comp",
+						"start_line":15
+					}
+				]
 			}
 		]
 	},
