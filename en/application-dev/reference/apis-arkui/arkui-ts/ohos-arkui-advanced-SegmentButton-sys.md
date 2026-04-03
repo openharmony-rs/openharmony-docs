@@ -106,3 +106,5 @@ struct IndexCl {
 ```
 
 ![segmentbutton-sample7](figures/segmentbutton-sample7.png)
+
+<!--no_check-->
