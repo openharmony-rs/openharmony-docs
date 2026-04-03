@@ -19,7 +19,7 @@
 应用可以通过[onAlert](../reference/apis-arkweb/arkts-basic-components-web-events.md#onalert)事件监听网页`alert`方法，并创建合适的弹框。
 
 - 用[AlertDialog](../reference/apis-arkui/arkui-ts/ts-methods-alert-dialog-box.md)创建弹框。
-    <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) -->
+    <!-- @[AchieveAlertDialogPage1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage1.ets) --> 
     
     ``` TypeScript
     import { webview } from '@kit.ArkWeb';
@@ -39,7 +39,7 @@
                 console.info('event.url:' + event.url);
                 console.info('event.message:' + event.message);
                 this.uiContext.showAlertDialog({
-                  title: 'from' + event.url + 'warning',
+                  title: 'Warning',
                   message: event.message,
                   confirm:{
                     value: 'confirm',
@@ -90,7 +90,7 @@
   ```
 
 - 用[CustomDialog-AlertDialog](../reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md#alertdialog)创建弹框。
-    <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) -->
+    <!-- @[AchieveAlertDialogPage2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ShowWebPageDialog/entry/src/main/ets/pages/AchieveAlertDialogPage2.ets) --> 
     
     ``` TypeScript
     import { AlertDialog } from '@kit.ArkUI';
@@ -130,7 +130,7 @@
               if (event) {
                 console.info('event.url:' + event.url);
                 console.info('event.message:' + event.message);
-                this.title = 'from' + event.url + 'warning';
+                this.title = 'Warning';
                 this.message = event.message;
                 this.result = event.result;
                 this.dialogControllerAlert.open();

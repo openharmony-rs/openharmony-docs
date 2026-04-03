@@ -17,6 +17,8 @@
 > - FrameNodes cannot be dragged.
 >
 > - FrameNode objects do not support JSON serialization.
+>
+> - When the API of the [FrameNode](#framenode-1) object is invoked in the scenario of [ambiguous UI context](../../ui/arkts-global-interface.md#ambiguous-ui-context), you are advised to use the [runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask) API of [UIContext](./arkts-apis-uicontext-uicontext.md) to specify the UI context. For details, see [Executing the Closure Bound to a UI Instance](../../ui/arkts-global-interface.md#executing-the-closure-bound-to-a-ui-instance).
 
 ## Modules to Import
 
@@ -1784,6 +1786,8 @@ Adds component content. The current node must be modifiable, which means the ret
 
 **Error codes**
 
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
+
 | ID| Error Message                        |
 | -------- | -------------------------------- |
 | 100021   | The FrameNode is not modifiable. |
@@ -2051,6 +2055,8 @@ Sets the cross-language access options for this FrameNode. This API allows you t
 | options | [CrossLanguageOptions](#crosslanguageoptions15) | Yes  | Cross-ArkTS language access options.|
 
 **Error codes**
+
+For details about the error codes, see [Custom Node Error Codes](./errorcode-node.md).
 
 | ID| Error Message                         |
 | -------- | -------------------------------- |

@@ -771,7 +771,7 @@ zh-cn/application-dev/device/device-location-geocoding.md @RayShih
 zh-cn/application-dev/media/ @w_Machine_cc
 
 [开发-MDM Kit]
-zh-cn/application-dev/mdm/ @huanleima @zhang_yixin13 @lpw_work @lucifinil_han
+zh-cn/application-dev/mdm/ @huanleima @zhang_yixin13 @lpw_work @fangyun
 
 [开发-MindSpore Lite Kit]
 zh-cn/application-dev/ai/MindSpore-Lite-Kit-Introduction.md @ge-yafang @principal87 @limingjiang
@@ -1658,13 +1658,13 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-page-transition-animation
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-particle-animation.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-picker-common.md	@weixin_52725220	@xiong0104	 @Brilliantry_Rui @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-pixel-units.md	@xiang-shouxing	@sally__	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md	@keerecles	@zhangwenhan12	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md	@keerecles	@zhangwenhan12	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md	@keerecles	@zhangwenhan12	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-environment-variables.md	@s10021109		@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-sys.md	@s10021109	@zhangwenhan12	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-foreach.md	@zhang_yixin13 @liuli0427 @keerecles @liubihao
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-lazyforeach.md	@zhang_yixin13 @liuli0427 @keerecles @liubihao
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-rendering-control-repeat.md	@zhang_yixin13 @liuli0427 @keerecles @liubihao
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-environment-variables.md	 @jiyujia926	@zhang_yixin13
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-sys.md	 @jiyujia926  @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-v1-parameter.md	@s10021109		@zhang_yixin13
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md	@s10021109	@zhangwenhan12	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management-watch-monitor.md	@s10021109		 @zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-state-management.md	@s10021109		@zhang_yixin13
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-swiper-components-indicator.md	@jiangdayuan	@lxl007	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-text-common-sys.md	@xiangyuan6	@jiaoaozihao	 @Brilliantry_Rui
@@ -2361,7 +2361,7 @@ zh-cn/application-dev/reference/apis-media-library-kit/ @w_Machine_cc
 
 
 [API参考-MDM Kit]
-zh-cn/application-dev/reference/apis-mdm-kit/ @huanleima @zhang_yixin13 @lpw_work @lucifinil_han
+zh-cn/application-dev/reference/apis-mdm-kit/ @huanleima @zhang_yixin13 @lpw_work @fangyun
 
 
 [API参考-MindSpore Lite Kit]
