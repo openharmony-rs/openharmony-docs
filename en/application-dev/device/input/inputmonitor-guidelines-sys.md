@@ -19,7 +19,7 @@ import { inputMonitor } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists the common APIs provided by the **inputMonitor** module. For details, see [ohos.multimodalInput.inputMonitor](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md).
+The following table lists common APIs for input monitor. For details, see [@ohos.multimodalInput.inputMonitor](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md).
 
 | API | Description|
 | ------------------------------------------------------------ | -------------------------- |
@@ -72,7 +72,7 @@ struct Index {
           }
           // Callback triggered when the mouse button is pressed.
           try {
-            inputMonitor.off('mouse', callback);// Disable listening for mouse events.
+            inputMonitor.off('mouse', callback); // Cancel listening for mouse events.
             console.info(`Monitor off success`);
           } catch (error) {
             console.error(`Monitor off failed, error: ${JSON.stringify(error, ["code", "message"])}`);
