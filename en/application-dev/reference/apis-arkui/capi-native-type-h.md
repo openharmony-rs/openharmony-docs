@@ -80,7 +80,7 @@ Defines the common types for the native module.
 | [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines a struct for snapshot options.|
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | Defines the data selection list for the text picker.|
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | Defines the content array for a multi-column cascading data picker.|
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Defines the created instance of visible area change event parameters.|
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Returns the created instance of visible area change event parameters.|
 |[ArkUI_PositionEdges](capi-arkui-nativemodule-arkui-positionedges.md)|ArkUI_PositionEdges|Provides position parameters relative to the boundaries of the container's content area.|
 |[ArkUI_PixelRoundPolicy](capi-arkui-nativemodule-arkui-pixelroundpolicy.md)|ArkUI_PixelRoundPolicy|Defines a struct for the component pixel rounding policy.|
 |[ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md)|ArkUI_ContentTransitionEffect|Defines the content transition effect.|
@@ -253,8 +253,8 @@ Defines the common types for the native module.
 | [float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getrowgap) | - | Obtains the gap between rows in the water flow section that matches the specified index.|
 | [void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index,float marginTop, float marginRight, float marginBottom, float marginLeft)](#oh_arkui_waterflowsectionoption_setmargin) | - | Sets the margins for the specified water flow section.|
 | [ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOption* option, int32_t index)](#oh_arkui_waterflowsectionoption_getmargin) | - | Obtains the margins of the water flow section that matches the specified index.|
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | Obtains the main axis size of a specified item based on **itemIndex** through a water flow section configuration.|
-| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | Obtains the main axis size of a specified item based on **flowItemIndex** through a water flow section configuration.|
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex (ArkUI_WaterFlowSectionOption* option, int32_t index, float(\*callback)(int32_t itemIndex))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) | - | Obtains the main axis size of a specified water flow item based on **itemIndex** in the water flow section configuration. To use custom data in the callback, call [OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata).|
+| [void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData (ArkUI_WaterFlowSectionOption* option, int32_t index, void* userData, float (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata) | - | Obtains the main axis size of a specified water flow item based on **itemIndex** in the water flow section configuration. The difference between this API and [OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) is that this API allows you to pass custom data (**userData**) and receive the data in the callback function.|
 | [ArkUI_GuidelineOption* OH_ArkUI_GuidelineOption_Create(int32_t size)](#oh_arkui_guidelineoption_create) | - | Creates a guideline configuration for this **RelativeContainer** component.|
 | [void OH_ArkUI_GuidelineOption_Dispose(ArkUI_GuidelineOption* guideline)](#oh_arkui_guidelineoption_dispose) | - | Disposes of a guideline configuration.|
 | [void OH_ArkUI_GuidelineOption_SetId(ArkUI_GuidelineOption* guideline, const char* value, int32_t index)](#oh_arkui_guidelineoption_setid) | - | Sets the ID of a guideline.|
@@ -498,7 +498,7 @@ Defines the common types for the native module.
 | [int32_t OH_ArkUI_PositionEdges_GetTop(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_gettop) | - | Obtains the value of the **PositionEdges** object in the top direction.|
 | [void OH_ArkUI_PositionEdges_SetLeft(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setleft) | - | Sets the value of the **PositionEdges** object in the left direction.|
 | [int32_t OH_ArkUI_PositionEdges_GetLeft(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getleft) | - | Obtains the value of the **PositionEdges** object in the left direction.|
-| [void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setbottom) | - | Sets the value of the **PositionEdges** object in the bottom direction.|
+| [void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setbottom) | - | Obtains the value of the **PositionEdges** object in the bottom direction.|
 | [int32_t OH_ArkUI_PositionEdges_GetBottom(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getbottom) | - | Obtains the value of the **PositionEdges** object in the bottom direction.|
 | [void OH_ArkUI_PositionEdges_SetRight(ArkUI_PositionEdges* edges, float value)](#oh_arkui_positionedges_setright) | - | Sets the value of the **PositionEdges** object in the right direction.|
 | [int32_t OH_ArkUI_PositionEdges_GetRight(ArkUI_PositionEdges* edges, float* value)](#oh_arkui_positionedges_getright) | - | Obtains the value of the **PositionEdges** object in the right direction.|
@@ -1437,7 +1437,7 @@ enum ArkUI_ScrollNestedMode
 **Description**
 
 
-Enumerates the nested scrolling modes.
+Enumerates nested scrolling modes.
 
 **Since**: 12
 
@@ -3576,7 +3576,7 @@ Obtains the pointer to the canvas for drawing, which can be converted into the [
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Drawing context.|
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Pointer to the drawing context.|
 
 **Returns**
 
@@ -3602,7 +3602,7 @@ Obtains the size of a drawing area.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Drawing context.|
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Pointer to the drawing context.|
 
 **Returns**
 
@@ -3953,7 +3953,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 **Description**
 
 
-Obtains the main axis size of a specified item based on **itemIndex** in the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
+Obtains the main axis size of a specified water flow item based on **itemIndex** in the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration. To use custom data in the callback, call [OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata).
 
 **Since**: 12
 
@@ -3975,7 +3975,7 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithU
 **Description**
 
 
-Obtains the main axis size of a specified water flow item based on **itemIndex** in the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.
+Obtains the main axis size of a specified water flow item based on **itemIndex** in the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration. The difference between this API and [OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex](#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindex) is that this API allows you to pass custom data (**userData**) and receive the data in the callback function.
 
 **Since**: 12
 
@@ -3986,8 +3986,8 @@ Obtains the main axis size of a specified water flow item based on **itemIndex**
 | -- | -- |
 | [ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)* option | Pointer to the [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md) section configuration.|
 | int32_t index | Index of the target water flow section.|
-|  void* userData | Pointer to the custom data of the water flow item.|
-| callback | Callback used to return the result. **itemIndex** indicates the index of [FlowItem](../apis-arkui/arkui-ts/ts-container-flowitem.md).|
+|  void* userData | Pointer to user-defined data, which will be passed back to the user in the callback.|
+| callback | Callback used to return the result. **itemIndex**: index of the [water flow item](../apis-arkui/arkui-ts/ts-container-flowitem.md); **userData**: user-defined data.|
 
 ### OH_ArkUI_GuidelineOption_Create()
 
@@ -4469,7 +4469,7 @@ Creates an alignment rule configuration for this **RelativeContainer** component
 
 | Type                            | Description|
 |--------------------------------| -- |
-| [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* | Pointer to an alignment rule information.|
+| [ArkUI_AlignmentRuleOption](capi-arkui-nativemodule-arkui-alignmentruleoption.md)* | Alignment rule information.|
 
 ### OH_ArkUI_AlignmentRuleOption_Dispose()
 
@@ -7083,7 +7083,7 @@ Expands the swipe action menu for the specified list item.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ListItem** node object.|
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Swipe action menu display direction for the **ListItem** component.|
+| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Enumerates the swipe action menu display directions for **ListItem** components.|
 
 **Returns**
 
@@ -7972,7 +7972,7 @@ Obtains the playback duration of an image.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Playback duration of the image, in milliseconds. If **imageInfo** is a null pointer, **0** is returned.|
+| int32_t | Payback duration of the image, in milliseconds. If **imageInfo** is a null pointer, **0** is returned.|
 
 ### OH_ArkUI_ListChildrenMainSizeOption_Create()
 
@@ -8901,7 +8901,7 @@ Destroys a snapshot options object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Screenshot options.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot options.|
 
 ### OH_ArkUI_SnapshotOptions_SetScale()
 
@@ -9475,7 +9475,7 @@ Sets the [onTerminated](../apis-arkui/arkui-ts/ts-container-embedded-component.m
 | Name| Description                          |
 | -- |------------------------------|
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md)* option | Pointer to the **EmbeddedComponent** option object.|
-| void (\*callback)(int32_t code, [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | Pointer to the user-defined callback function.<br>- **code**: result code returned when the started [EmbeddedUIExtensionAbility](../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) exits. If the EmbeddedUIExtensionAbility exits by calling [terminateSelfWithResult](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult), the result code is the value set by the EmbeddedUIExtensionAbility. If the EmbeddedUIExtensionAbility exits by calling [terminateSelf](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself), the result code is the default value **0**.<br>- **want**: data returned when the EmbeddedUIExtensionAbility exits.  |
+| void (\*callback)(int32_t code, [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md)* want) | User-defined callback function.<br>- **code**: result code returned when the started [EmbeddedUIExtensionAbility](../apis-ability-kit/js-apis-app-ability-embeddedUIExtensionAbility.md) exits. If the EmbeddedUIExtensionAbility exits by calling [terminateSelfWithResult](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateselfwithresult), the result code is the value set by the EmbeddedUIExtensionAbility. If the EmbeddedUIExtensionAbility exits by calling [terminateSelf](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#terminateself), the result code is the default value **0**.<br>- **want**: data returned when the EmbeddedUIExtensionAbility exits.  |
 
 ### OH_ArkUI_PositionEdges_Create()
 
@@ -10272,7 +10272,7 @@ Sets the title of a text menu item.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
-| const char* content | Title of a text menu item. The default value is an empty string.|
+| const char* content | Pointer to the title of a text menu item. The default value is an empty string.|
 
 **Returns**
 
@@ -10297,7 +10297,7 @@ Obtains the title of a text menu item.
 | Name| Description|
 | -- | -- |
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
-| char* buffer | Buffer. You can create it and allocate memory to store the title information of the text menu item.|
+| char* buffer | Pointer to the buffer. You can create it and allocate memory to store the title information of the text menu item.|
 | int32_t bufferSize | Buffer size.|
 | int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
 
@@ -10324,7 +10324,7 @@ Sets the icon path of a text menu item.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
-| const char* icon | Icon path of the text menu item. The default value is an empty string.|
+| const char* icon | Pointer to the icon path of the text menu item. The default value is an empty string.|
 
 **Returns**
 
@@ -10504,7 +10504,7 @@ Obtains the text menu item at a specified index from the text menu item array.
 | -- | -- |
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object.|
 | int32_t index | Index position.|
-| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)** item | Double pointer to the **ArkUI_TextMenuItem** object.|
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)** item | Level-2 pointer to the **ArkUI_TextMenuItem** object.|
 
 **Returns**
 
@@ -10896,7 +10896,7 @@ Obtains the content node of a custom text selection menu.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | Content node of the custom text selection menu.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | Pointer to the content node of the custom text selection menu.|
 
 **Returns**
 
