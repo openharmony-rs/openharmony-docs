@@ -505,6 +505,94 @@ struct SnapshotExample {
 
 ![componentget](figures/componentget.gif) 
 
+## componentSnapshot.getSizeLimitation
+
+getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
+
+查询组件截图的最大尺寸限制。
+
+> **说明：**
+>
+> 该接口需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                           | 说明             |
+| ------------------------------------------------------------ | -------------- |
+| componentSnapshot.[SnapshotSizeLimitation](#snapshotsizelimitation) | 组件截图的尺寸限制信息。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { ComponentUtils } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("获取截图尺寸限制")
+        .onClick(() => {
+          let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          let limitation = componentSnapshot.getSizeLimitation();
+          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+'use static'
+import { Entry, Column, Component, Button } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column(undefined) {
+      Button("获取截图尺寸限制")
+        .onClick(() => {
+          let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          let limitation = componentSnapshot.getSizeLimitation();
+          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## SnapshotSizeLimitation
+
+定义组件截图的尺寸限制。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称        | 类型     | 只读 | 可选 | 说明                   |
+| --------- | ------ | ---- | ---- | -------------------- |
+| maxWidth  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 否   | 组件截图的最大宽度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
+| maxHeight | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 否   | 组件截图的最大高度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
+
 ## SnapshotOptions<sup>12+</sup>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
