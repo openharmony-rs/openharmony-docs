@@ -35,33 +35,33 @@ For details, see [AVSession Management](../../reference/apis-avsession-kit/arkts
 | createController(sessionId: string, callback: AsyncCallback&lt;AVSessionController&gt;): void | Creates an AVSessionController.| 
 | sendSystemAVKeyEvent(event: KeyEvent, callback: AsyncCallback&lt;void&gt;): void | Sends a key event to the top session.|  
 | sendSystemControlCommand(command: AVControlCommand, callback: AsyncCallback&lt;void&gt;): void | Sends a playback control command to the top session.| 
-| getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallback\<Array\<Readonly\<AVSessionDescriptor>>>): void<sup>10+<sup> | Obtains the descriptors of historical sessions.|
+| getHistoricalSessionDescriptors(maxSize: number, callback: AsyncCallback\<Array\<Readonly\<AVSessionDescriptor>>>): void<sup>10+</sup> | Obtains the descriptors of historical sessions.|
 
 ### APIs Called by the AVSessionController Object
 
 | API| Description|
 | -------- | -------- |
-| getAVPlaybackState(callback: AsyncCallback&lt;AVPlaybackState&gt;): void<sup>10+<sup> | Obtains the information related to the playback state.|
-| getAVMetadata(callback: AsyncCallback&lt;AVMetadata&gt;): void<sup>10+<sup> | Obtains the session metadata.|
-| getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+<sup> | Obtains the output device information.|
-| sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Sends a key event to the session corresponding to this controller.|
-| getLaunchAbility(callback: AsyncCallback&lt;WantAgent&gt;): void<sup>10+<sup> | Obtains the WantAgent object saved by the application in the session.|
-| isActive(callback: AsyncCallback&lt;boolean&gt;): void<sup>10+<sup> | Checks whether the session is activated.|
-| destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Destroys this controller. A controller can no longer be used after being destroyed.|
-| getValidCommands(callback: AsyncCallback&lt;Array&lt;AVControlCommandType&gt;&gt;): void<sup>10+<sup> | Obtains valid commands supported by the session.|
-| sendControlCommand(command: AVControlCommand, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Sends a playback control command to the session through the controller.|
-| sendCommonCommand(command: string, args: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Sends a custom playback control command to the session through the controller.|
-| getAVQueueItems(callback: AsyncCallback&lt;Array&lt;AVQueueItem&gt;&gt;): void<sup>10+<sup> | Obtains the information related to the items in the playlist.|
-| getAVQueueTitle(callback: AsyncCallback&lt;string&gt;): void<sup>10+<sup> | Obtains the name of the playlist.|
-| skipToQueueItem(itemId: number, callback: AsyncCallback&lt;void&gt;): void<sup>10+<sup> | Sends the ID of an item in the playlist to the session for processing. The session can play the song.|
-| getExtras(callback: AsyncCallback&lt;{[key: string]: Object}&gt;): void<sup>10+<sup> | Obtains the custom media packet set by the provider.|
-| getOutputDeviceSync(): OutputDeviceInfo<sup>10+<sup> | Obtains the output device information. This API returns the result synchronously.|
-| getAVPlaybackStateSync(): AVPlaybackState<sup>10+<sup> | Obtains the information related to the playback state. This API returns the result synchronously.|
-| getAVMetadataSync(): AVMetadata<sup>10+<sup> | Obtains the session metadata. This API returns the result synchronously.|
-| getAVQueueTitleSync(): string<sup>10+<sup> | Obtains the name of the playlist. This API returns the result synchronously.|
-| getAVQueueItemsSync(): Array&lt;AVQueueItem&gt;<sup>10+<sup> | Obtains the information related to the items in the playlist. This API returns the result synchronously.|
-| isActiveSync(): boolean<sup>10+<sup> | Checks whether the session is activated. This API returns the result synchronously.|
-| getValidCommandsSync(): Array&lt;AVControlCommandType&gt;<sup>10+<sup> | Obtains valid commands supported by the session. This API returns the result synchronously.|
+| getAVPlaybackState(callback: AsyncCallback&lt;AVPlaybackState&gt;): void<sup>10+</sup> | Obtains the information related to the playback state.|
+| getAVMetadata(callback: AsyncCallback&lt;AVMetadata&gt;): void<sup>10+</sup> | Obtains the session metadata.|
+| getOutputDevice(callback: AsyncCallback&lt;OutputDeviceInfo&gt;): void<sup>10+</sup> | Obtains the output device information.|
+| sendAVKeyEvent(event: KeyEvent, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | Sends a key event to the session corresponding to this controller.|
+| getLaunchAbility(callback: AsyncCallback&lt;WantAgent&gt;): void<sup>10+</sup> | Obtains the WantAgent object saved by the application in the session.|
+| isActive(callback: AsyncCallback&lt;boolean&gt;): void<sup>10+</sup> | Checks whether the session is activated.|
+| destroy(callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | Destroys this controller. A controller can no longer be used after being destroyed.|
+| getValidCommands(callback: AsyncCallback&lt;Array&lt;AVControlCommandType&gt;&gt;): void<sup>10+</sup> | Obtains valid commands supported by the session.|
+| sendControlCommand(command: AVControlCommand, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | Sends a playback control command to the session through the controller.|
+| sendCommonCommand(command: string, args: {[key: string]: Object}, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | Sends a custom playback control command to the session through the controller.|
+| getAVQueueItems(callback: AsyncCallback&lt;Array&lt;AVQueueItem&gt;&gt;): void<sup>10+</sup> | Obtains the information related to the items in the playlist.|
+| getAVQueueTitle(callback: AsyncCallback&lt;string&gt;): void<sup>10+</sup> | Obtains the name of the playlist.|
+| skipToQueueItem(itemId: number, callback: AsyncCallback&lt;void&gt;): void<sup>10+</sup> | Sends the ID of an item in the playlist to the session for processing. The session can play the song.|
+| getExtras(callback: AsyncCallback&lt;{[key: string]: Object}&gt;): void<sup>10+</sup> | Obtains the custom media packet set by the provider.|
+| getOutputDeviceSync(): OutputDeviceInfo<sup>10+</sup> | Obtains the output device information. This API returns the result synchronously.|
+| getAVPlaybackStateSync(): AVPlaybackState<sup>10+</sup> | Obtains the information related to the playback state. This API returns the result synchronously.|
+| getAVMetadataSync(): AVMetadata<sup>10+</sup> | Obtains the session metadata. This API returns the result synchronously.|
+| getAVQueueTitleSync(): string<sup>10+</sup> | Obtains the name of the playlist. This API returns the result synchronously.|
+| getAVQueueItemsSync(): Array&lt;AVQueueItem&gt;<sup>10+</sup> | Obtains the information related to the items in the playlist. This API returns the result synchronously.|
+| isActiveSync(): boolean<sup>10+</sup> | Checks whether the session is activated. This API returns the result synchronously.|
+| getValidCommandsSync(): Array&lt;AVControlCommandType&gt;<sup>10+</sup> | Obtains valid commands supported by the session. This API returns the result synchronously.|
 
 ## How to Develop
 
@@ -363,3 +363,9 @@ To enable a system application to access the AVSession service as a controller, 
      });
    }
    ```
+
+## Samples
+
+The following sample is provided to help you better understand how to develop the controller:
+
+- [AVSession - Controller (for System Applications Only) (ArkTS, Full SDK, API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Media/AVSession/MediaController)

@@ -55,7 +55,7 @@
 配置发布方需要配置module.json5文件中的crossAppSharedConfig字段，通过crossAppSharedConfig字段引用shared_config.json文件，shared_config.json为共享配置文件，定义了应用希望与其他应用共享的配置项。共享配置文件需放置在工程resources/base/profile目录下，并通过`$`资源访问方式引用。  
 
 
-```json
+```json5
 {
   "module":{
     "crossAppSharedConfig": "$profile:shared_config"
@@ -74,7 +74,7 @@ crossAppSharedConfig字段配置说明：
 | value | 共享配置项的值，最大长度为4096字节。 | 字符串 | 是 |
 | allowList | 允许访问该共享配置项的应用程序列表。数组最大长度为256，超过256的部分不生效。数组中每个元素为应用的[appIdentifier](../quick-start/common-problem-of-application.md#什么是appidentifier)，单个appIdentifier为只包含数字的字符串，最大长度为128字节，超过128字节的appIdentifier不会生效。可使用[getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)接口来获取当前应用的appIdentifier。 | 字符串数组 | 是 |
 
-```json
+```json5
 {
     "crossAppSharedConfig": [
         {
@@ -101,75 +101,73 @@ crossAppSharedConfig字段配置说明：
 
 - 通过调用publish接口发布或修改配置项。
 
-<!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-function publishSharedConfig() {
-  dataShare.createDataProxyHandle().then((dataProxyHandle) => {
-    const newConfigData: dataShare.ProxyData[] = [
-      {
-        uri: 'datashareproxy://com.samples.shareconfig/config1',
-        value: 'Value1',
-        allowList: [
-          'appIdentifier1',
-          'appIdentifier2'
-        ]
-      },
-      {
-        uri: 'datashareproxy://com.samples.shareconfig/config2',
-        value: 'Value2',
-        allowList: [
-          'appIdentifier3',
-          'appIdentifier4'
-        ]
-      }
-    ];
-    const config: dataShare.DataProxyConfig = {
-      type: dataShare.DataProxyType.SHARED_CONFIG,
-    };
-    dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
-      results.forEach((result) => {
-        console.info(`URI: ${result.uri}, Result: ${result.result}`);
+  <!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  function publishSharedConfig() {
+    dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+      const newConfigData: dataShare.ProxyData[] = [
+        {
+          uri: 'datashareproxy://com.samples.shareconfig/config1',
+          value: 'Value1',
+          allowList: [
+            'appIdentifier1',
+            'appIdentifier2'
+          ]
+        },
+        {
+          uri: 'datashareproxy://com.samples.shareconfig/config2',
+          value: 'Value2',
+          allowList: [
+            'appIdentifier3',
+            'appIdentifier4'
+          ]
+        }
+      ];
+      const config: dataShare.DataProxyConfig = {
+        type: dataShare.DataProxyType.SHARED_CONFIG,
+      };
+      dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
+        results.forEach((result) => {
+          console.info(`URI: ${result.uri}, Result: ${result.result}`);
+        });
+      }).catch((error: BusinessError) => {
+        console.error('Error publishing config:', error);
       });
     }).catch((error: BusinessError) => {
-      console.error('Error publishing config:', error);
+      console.error('Error creating DataProxyHandle:', error);
     });
-  }).catch((error: BusinessError) => {
-    console.error('Error creating DataProxyHandle:', error);
-  });
-}
-
-```
+  }
+  ```
 
 
 
 - 通过调用delete接口删除配置项。
 
-<!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-function deleteSharedConfig() {
-  dataShare.createDataProxyHandle().then((dataProxyHandle) => {
-    const urisToDelete: string[] = [
-      'datashareproxy://com.samples.shareconfig/config1',
-      'datashareproxy://com.samples.shareconfig/config2'
-    ];
-    const config: dataShare.DataProxyConfig = {
-      type: dataShare.DataProxyType.SHARED_CONFIG,
-    };
-    dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
-      results.forEach((result) => {
-        console.info(`URI: ${result.uri}, Result: ${result.result}`);
+  <!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  function deleteSharedConfig() {
+    dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+      const urisToDelete: string[] = [
+        'datashareproxy://com.samples.shareconfig/config1',
+        'datashareproxy://com.samples.shareconfig/config2'
+      ];
+      const config: dataShare.DataProxyConfig = {
+        type: dataShare.DataProxyType.SHARED_CONFIG,
+      };
+      dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
+        results.forEach((result) => {
+          console.info(`URI: ${result.uri}, Result: ${result.result}`);
+        });
+      }).catch((error: BusinessError) => {
+        console.error('Error deleting config:', error);
       });
     }).catch((error: BusinessError) => {
-      console.error('Error deleting config:', error);
+      console.error('Error creating DataProxyHandle:', error);
     });
-  }).catch((error: BusinessError) => {
-    console.error('Error creating DataProxyHandle:', error);
-  });
-}
-
-```
+  }
+  ```
 
 
 

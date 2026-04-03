@@ -49,8 +49,8 @@ For FAQs about hidumper, see [FAQs](#faqs).
 | [--zip](#compressing-exported-information)| Saves the command output to a compressed file in ZIP format in **/data/log/hidumper**.|
 | [--ipc [pid]/-a --start-stat/stat/--stop-stat](#obtaining-ipc-information)| Collects IPC information of a process in a specified period. If **-a** is used, IPC information of all processes is collected. **--start-stat** starts the IPC information collection. **--stat** obtains the IPC information. **--stop-stat** stops the IPC information collection.|
 | [--mem-smaps pid [-v]](#querying-process-memory)| Obtains the memory usage of a specified process from **/proc/pid/smaps**. **-v** is used to specify more details about the process. (This command is available only for [applications of the debug version](performance-analysis-kit-terminology.md#applications-of-the-debug-version).)<br>Note: This parameter is supported since API version 20.|
-| [--mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]](#querying-vm-heap-memory)| Triggers GC and exports a heap snapshot for the JS thread of the ArkTS application. The **pid** parameter is mandatory. If **tid** is specified, only the thread's GC is triggered and its heap memory snapshot is exported. If **--gc** is specified, only GC is triggered and the snapshot is not exported. If **--leakobj** is specified, the list of leaked objects can be obtained after leak detection is enabled for the application.<br>The file is named in the format of <!--RP1-->jsheap-process ID-JS thread ID-timestamp<!--RP1End-->. The file content is a JS heap snapshot of the JSON structure.<br>If **--raw** is specified, the heap snapshot is exported in .rawheap format.<br>Note: The **--raw** parameter is supported since API version 19.|
-| <!--DelRow-->[--mem-cjheap pid [--gc]](#querying-vm-heap-memory)| Triggers GC and exports a heap snapshot for the Cangjie application. The **pid** parameter is mandatory. If **--gc** is specified, only GC is triggered. No snapshot is exported.<br>Note: This parameter is supported since API version 20.|
+| [--mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]](#querying-vm-heap-memory)| The pid parameter is mandatory. Triggers GC and exports the heap memory snapshot for the JS thread of an ArkTS application. If **tid** is specified, only the thread's GC is triggered and its heap memory snapshot is exported. If **--gc** is specified, only GC is triggered and the snapshot is not exported. If **--leakobj** is specified, the list of leaked objects can be obtained after leak detection is enabled for the application.<br>The file is named in the format of <!--RP1-->jsheap-process ID-JS thread ID-timestamp<!--RP1End-->. The file content is a JS heap snapshot of the JSON structure.<br>If **--raw** is specified, the heap snapshot is exported in .rawheap format.<br>Note: The **--raw** parameter is supported since API version 19.|
+| <!--DelRow-->[--mem-cjheap pid [--gc]](#querying-vm-heap-memory)| The pid parameter is mandatory. Triggers GC and exports the heap memory snapshot for a Cangjie application. If **--gc** is specified, only GC is triggered. No snapshot is exported.<br>Note: This parameter is supported since API version 20.|
 
 ## Querying Memory Information
 
@@ -431,7 +431,7 @@ Run the **hidumper --mem-jsheap pid [-T tid] [--gc] [--leakobj] [--raw]** comman
 
 - Run the **hidumper --mem-jsheap pid --leakobj** command to obtain the VM heap memory and leaked object information of a specified process. The file is named in the format of <!--RP6-->**leaklist-Process ID-Timestamp**<!--RP6End-->.
 
-    Before obtaining the VM heap memory and leaked object information of a specified process, ensure that the leak detection functionality is enabled for the application using the [@ohos.hiviewdfx.jsLeakWatcher (JS Leak Detection)](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md) API.
+    A prerequisite for obtaining the VM heap memory and leaked object information of a specified process is that the application has enabled the leak detection function via [@ohos.hiviewdfx.jsLeakWatcher](../reference/apis-performance-analysis-kit/js-apis-jsleakwatcher.md).
 
     The procedure is as follows:
 
@@ -1254,7 +1254,7 @@ StopIpcStatistics pid:1473 success
 
 ## Compressing Exported Information
 
-HiDiumper provides the **--zip** command to export any type of exported information into a ZIP file in **/data/log/hidumper**. This command can be combined with other commands, and the file is named with the current timestamp, as shown in the following example.
+HiDumper provides the **--zip** command to export any type of exported information into a ZIP file in **/data/log/hidumper**. This command can be combined with other commands, and the file is named with the current timestamp, as shown in the following example.
 
 ```shell
 $ hidumper --zip

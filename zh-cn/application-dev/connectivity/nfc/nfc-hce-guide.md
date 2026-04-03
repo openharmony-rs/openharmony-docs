@@ -44,7 +44,7 @@ NFC卡模拟完整的API说明以及实例代码请参考：[NFC卡模拟接口]
 HCE应用开发者根据业务需要，可以选择实现前台刷卡或者后台刷卡。两种不同的刷卡方式，代码实现上会存在一些差异。
 - HCE应用前台刷卡<br>
 1. 在配置文件module.json5中，不需要静态声明NFC读卡器选择的应用ID（AID，参考ISO/IEC 7816-4规范），而是通过[start](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#start9)来动态注册。
-2. HCE应用的刷卡页面退出时，需要显性调用[stop](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#stop9)来释放动态注册的AID刷卡配置项。
+2. HCE应用的刷卡页面退出时，需要显式调用[stop](../../reference/apis-connectivity-kit/js-apis-cardEmulation.md#stop9)来释放动态注册的AID刷卡配置项。
 - HCE应用后台刷卡<br>
 1. 在配置文件module.json5中，需要静态声明NFC读卡器选择的应用ID（AID）。根据业务选择， 选择声明的AID是属于Payment类型，还是Other类型。
 2. 如果选择Payment类型，该HCE应用会在系统设置页面的NFC"默认付款应用"里出现。用户必须选择该HCE应用作为默认支付应用后，才能实现后台刷卡功能。由于提供了默认支付应用的选项， 因此Payment类型的HCE应用，不会出现多个冲突的情况。

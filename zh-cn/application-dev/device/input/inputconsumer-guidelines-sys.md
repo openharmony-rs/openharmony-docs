@@ -21,7 +21,7 @@ import { inputConsumer } from '@kit.InputKit';
 
 ## 接口说明
 
-全局快捷键管理常用接口如下表所示，接口详细介绍请参考[ohos.multimodalInput.inputConsumer-sys文档](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md)和[ohos.multimodalInput.inputConsumer文档](../../reference/apis-input-kit/js-apis-inputconsumer.md)。
+全局快捷键管理常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputConsumer](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md)和[@ohos.multimodalInput.inputConsumer](../../reference/apis-input-kit/js-apis-inputconsumer.md)。
 
 | 接口名称  | 描述 |
 | ------------------------------------------------------------ | -------------------------- |
@@ -35,7 +35,7 @@ import { inputConsumer } from '@kit.InputKit';
 
 ## 开发步骤
 
-特定全局快捷键的应用开启时调用[on](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeron)方法订阅全局快捷键，应用关闭时调用[off](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeroff)方法取消订阅全局快捷键。
+特定全局快捷键的应用开启时调用[on](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeronkey)方法订阅全局快捷键，应用关闭时调用[off](../../reference/apis-input-kit/js-apis-inputconsumer-sys.md#inputconsumeroffkey)方法取消订阅全局快捷键。
 
 ```js
 import { inputConsumer } from '@kit.InputKit';
@@ -52,7 +52,7 @@ struct Index {
           let callback = (keyOptions: inputConsumer.KeyOptions) => {
             console.info(`keyOptions: ${JSON.stringify(keyOptions)}`);
           }
-          //应用开启
+          // 应用开启
           let keyOption: inputConsumer.KeyOptions = {
             preKeys: [leftAltKey],
             finalKey: tabKey,
@@ -60,13 +60,13 @@ struct Index {
             finalKeyDownDuration: 0
           };
           try {
-            inputConsumer.on("key", keyOption, callback); //订阅系统快捷键
+            inputConsumer.on("key", keyOption, callback); // 订阅系统快捷键
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
           }
-          //应用关闭
+          // 应用关闭
           try {
-            inputConsumer.off("key", keyOption, callback); //取消订阅系统快捷键
+            inputConsumer.off("key", keyOption, callback); // 取消订阅系统快捷键
             console.info(`Unsubscribe success`);
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
@@ -93,19 +93,19 @@ struct Index {
             console.info(`keyOptions: ${JSON.stringify(hotkeyOptions)}`);
           }
           let hotkeyOption: inputConsumer.HotkeyOptions = { preKeys: [leftCtrlKey], finalKey: zKey, isRepeat: false };
-          //在订阅全局快捷键之前，需要先获取所有系统快捷键，查询需要订阅的快捷键是否存在于系统快捷键列表中，避免冲突
-          inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => { //获取所有系统快捷键
+          // 在订阅全局快捷键之前，需要先获取所有系统快捷键，查询需要订阅的快捷键是否存在于系统快捷键列表中，避免冲突
+          inputConsumer.getAllSystemHotkeys().then((data: Array<inputConsumer.HotkeyOptions>) => { // 获取所有系统快捷键
             console.info(`List of system hotkeys : ${JSON.stringify(data)}`);
           });
-          //应用开启
+          // 应用开启
           try {
-            inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback); //订阅应用快捷键
+            inputConsumer.on("hotkeyChange", hotkeyOption, hotkeyCallback); // 订阅应用快捷键
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);
           }
-          //应用关闭
+          // 应用关闭
           try {
-            inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback); //取消订阅应用快捷键
+            inputConsumer.off("hotkeyChange", hotkeyOption, hotkeyCallback); // 取消订阅应用快捷键
             console.info(`Unsubscribe success`);
           } catch (error) {
             console.error(`Execute failed, error: ${JSON.stringify(error, ["code", "message"])}`);

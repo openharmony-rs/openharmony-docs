@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-使用Web组件大小自适应页面内容布局模式`layoutMode(WebLayoutMode.FIT_CONTENT)`时，能使Web组件的大小根据页面内容自适应变化。
+使用Web组件大小自适应页面内容布局模式[layoutMode](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#layoutmode11)([WebLayoutMode](../reference/apis-arkweb/arkts-basic-components-web-e.md#weblayoutmode11).FIT_CONTENT)时，能使Web组件的大小根据页面内容自适应变化。
 
 <!--RP1--><!--RP1End-->
 
@@ -86,7 +86,7 @@ struct WebHeightPage {
 fit_content.html页面代码如下：
 
 ```html
-<!--fit_content.html-->
+<!-- fit_content.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,7 +144,7 @@ fit_content.html页面代码如下：
 **可能原因：**
 
 - 内部H5页面高度超过了7680px（物理像素），但没有设置渲染模式为[同步渲染模式](web-render-mode.md#同步渲染模式)。
-- 未配置metaviewport属性。
+- 未配置[metaviewport](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#metaviewport12)属性。
 
 **解决方案：**
 

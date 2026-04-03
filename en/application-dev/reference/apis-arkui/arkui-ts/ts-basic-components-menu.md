@@ -26,15 +26,17 @@ Creates a fixed container for a menu. This API does not have any parameters.
 
 > **NOTE**
 >
-> Rules for calculating the width of menus and menu items:
+> - Rules for calculating the width of menus and menu items:
 >
-> During the layout, the width of each menu item is expected to be the same. If a child component has its width set, the [size calculation rule](ts-universal-attributes-size.md#constraintsize) prevails.
+>   - During the layout, the width of each menu item is expected to be the same. If a child component has its width set, the [size calculation rule](ts-universal-attributes-size.md#constraintsize) prevails.
 >
-> If no width is set for the **Menu** component, it applies a default two-column width to the **MenuItem** and **MenuItemGroup** child components. If a menu item's content area exceeds the two-column width, the **Menu** component automatically expands the menu item's content area.
+>   - If no width is set for the **Menu** component, it applies a default two-column width to the **MenuItem** and **MenuItemGroup** child components. If a menu item's content area exceeds the two-column width, the **Menu** component automatically expands the menu item's content area.
 >
-> When an explicit width is set for the **Menu** component, its child components **MenuItem** and **MenuItemGroup** adopt a fixed width (equal to the **Menu** component's configured width minus the padding).
+>   - When an explicit width is set for the **Menu** component, its child components **MenuItem** and **MenuItemGroup** adopt a fixed width (equal to the **Menu** component's configured width minus the padding).
 >
-> The minimum width is 64 vp.
+>   - The minimum width is 64 vp.
+>
+> - Universal attributes unsupported by **Menu**: [outline](ts-universal-attributes-outline.md) attributes and the [shadow](ts-universal-attributes-image-effect.md#shadow) attribute
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -356,7 +358,7 @@ struct Index {
     Menu() {
       MenuItem({
         symbolStartIcon: this.startIconModifier,
-        content: "Icon"
+        content: "Icons"
       })
       MenuItem({
         symbolStartIcon: this.startIconModifier,
@@ -371,17 +373,17 @@ struct Index {
       MenuItem({
         symbolStartIcon: this.startIconModifier,
         symbolEndIcon: this.endIconModifier,
-        content: "Create Folder",
+        content: "New folder",
         builder: (): void => this.SubMenu(),
       })
       MenuItem({
         symbolStartIcon: this.startIconModifier,
-        content: "Sort By",
+        content: "Sort",
         builder: (): void => this.SubMenu(),
       })
       MenuItem({
         symbolStartIcon: this.startIconModifier,
-        content: "View Mode",
+        content: "View",
         builder: (): void => this.SubMenu(),
       })
     }
@@ -397,8 +399,6 @@ struct Index {
   }
 }
 ```
-
-
 
 ### Example 4: Using the Divider Style
 

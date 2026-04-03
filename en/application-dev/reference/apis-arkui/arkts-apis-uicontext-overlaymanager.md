@@ -133,8 +133,6 @@ struct OverlayExample {
 }
 ```
 
-
-
 ## addComponentContentWithOrder<sup>18+</sup>
 
 addComponentContentWithOrder(content: ComponentContent, levelOrder?: LevelOrder): void
@@ -234,8 +232,6 @@ struct Index {
   }
 }
 ```
-
-
 
 ## removeComponentContent<sup>12+</sup>
 

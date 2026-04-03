@@ -184,7 +184,7 @@ import { b } from "./mod1";         // Obtain the attributes in "mod1". This syn
 // ...
 ```
 
-- In the same.ets file, re-exporting unused lazy-imported variables is not supported. To identify and resolve such issues, you can enable the **reExportCheckMode** switch in the project-level **build-profile.json5** file to perform a scan and check.
+- In the same .ets file, re-exporting unused lazy-imported variables is not supported. To identify and resolve such issues, you can enable the **reExportCheckMode** switch in the project-level **build-profile.json5** file to perform a scan and check.
 
 ```typescript
 // build-profile.json5

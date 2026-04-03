@@ -43,7 +43,8 @@ To display the dialog box in a specified page, use the second parameter [levelUn
 
 > **NOTE**
 > 
-> When the **levelMode** parameter is set to **LevelMode.EMBEDDED** but the node corresponding to the ID specified by **levelUniqueId** cannot be found, the page-level capability does not take effect. If the node mapped by **levelUniqueId** exists but there is no **NavDestination** node in the upper traversal, the dialog box node will be mounted to the **Page** node.
+> - When the **levelMode** parameter is set to **LevelMode.EMBEDDED** but the node corresponding to the ID specified by **levelUniqueId** cannot be found, the page-level capability does not take effect. If the node mapped by **levelUniqueId** exists but there is no **NavDestination** node in the upper traversal, the dialog box node will be mounted to the **Page** node.
+> - The value of **levelUniqueId** must be the value of **uniqueId** in [FrameNode](../reference/apis-arkui/js-apis-arkui-frameNode.md#framenode-1). You are advised to use [getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12) of FrameNode to obtain the value of **uniqueId**.
 
 In the following example, a **Text** node is used as a reference node on a specific page. The [getFrameNodeById](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#getframenodebyid12) API obtains the node, and the [getUniqueId](../reference/apis-arkui/js-apis-arkui-frameNode.md#getuniqueid12) API obtains the internal ID of the node, which is then passed as the value of **levelUniqueId**.
 

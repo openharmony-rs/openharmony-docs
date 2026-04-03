@@ -18,7 +18,7 @@ Audio input sources usually consist of audio data captured by built-in microphon
 
 Usually, when an application requests audio recording, it exclusively occupies the audio input. However, there are scenarios where two or more applications may request audio recording simultaneously or consecutively, all wishing to obtain data from the audio input within the same time frame. This situation is known as concurrent recording, which is further divided into concurrent existence and concurrent operation.
 
-- Concurrent existence refers to the state where one or more different audio recording clients (AudioCapturer) created by applications exist simultaneously within the same time frame.
+- Concurrent existence refers to the state where different [AudioCapturer](../../reference/apis-audio-kit/arkts-apis-audio-AudioCapturer.md) instances created by one or more applications exist simultaneously within the same time frame.
 - Concurrent operation refers to the state where, on the basis of concurrent existence, the audio streams initiated by different audio recording clients (AudioCapturer) are all in the running state within the same time frame, meaning these clients are recording audio simultaneously.
 
 When concurrent recording occurs, each application requesting audio recording wants to obtain the audio input data. This presents the challenge of transmitting the same audio source to multiple applications simultaneously.

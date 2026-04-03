@@ -45,7 +45,7 @@ You can display a custom dialog box by creating a dialog controller or by creati
       }
   ```
 
-- Destroying the Dialog Controller<br>When dialog box operations are no longer needed, actively call the **dispose** API to destroy the dialog controller object.
+- Destroying the Dialog Controller<br>When dialog box operations are no longer needed, actively call the [dispose](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-1.md#dispose) API to destroy the dialog controller object.
   <!-- @[dialog_dispose](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
   
   ``` C++
@@ -72,9 +72,10 @@ You can display a custom dialog box by creating a dialog controller or by creati
           g_dialogOptions = OH_ArkUI_CustomDialog_CreateOptions(textNode->GetHandle());
       }
   ```
+
   > **NOTE**
   > 
-  > For details about how to declare **ArkUITextNode**, refer to the implementation of the text component in the [ArkUINode.h](../ui/ndk-access-the-arkts-page.md) file.
+  > For details about how to declare **ArkUITextNode**, refer to the implementation of the text component in the [ArkUINode.h](../ui/ndk-access-the-arkts-page.md#example) file.
 
 - Destroying the Dialog Controller<br>When dialog box operations are no longer needed, actively call the [OH_ArkUI_CustomDialog_DisposeOptions](../reference/apis-arkui/capi-native-dialog-h.md#oh_arkui_customdialog_disposeoptions) API to destroy the dialog controller object.
   <!-- @[dialog_disposeOption](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
@@ -88,6 +89,11 @@ You can display a custom dialog box by creating a dialog controller or by creati
 You can set the alignment, offset, corner radius of the background, background color, mask color, and region of the dialog box.
 
 1. Create a dialog box content node.
+
+   > **NOTE**
+   >
+   > The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
+
    <!-- @[create_content](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
    
    ``` C++
@@ -316,14 +322,18 @@ You can create an interactive page to open or close a dialog box.
 
 ## Managing the Dialog Box Lifecycle
 
-Starting from API version 19, four lifecycle APIs are available for callbacks before and after a dialog box is displayed and closed: **registerOnWillAppear**, **registerOnDidAppear**, **registerOnWillDisappear**, and **registerOnDidDisappear**.
+From API version 19, four lifecycle callbacks are available before and after a dialog box is displayed and closed: [registerOnWillAppear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registeronwillappear), [registerOnDidAppear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registerondidappear), [registerOnWillDisappear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registeronwilldisappear), and [registerOnDidDisappear](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativedialogapi-3.md#registerondiddisappear).
 
 These lifecycle APIs must be called before the **show** API is invoked. The sequence of lifecycle events is as follows:
 
-registerOnWillAppear -> The dialog box display animation starts -> The dialog box display animation ends -> registerOnDidAppear -> The dialog box is fully displayed ->
-registerOnWillDisappear -> The dialog box exit animation starts -> The dialog box exit animation ends -> registerOnDidDisappear -> The dialog box is fully closed
+registerOnWillAppear -> Dialog box display animation starts -> Dialog box display animation ends -> registerOnDidAppear -> Dialog box display completes -> registerOnWillDisappear -> Dialog box close animation starts -> Dialog box close animation ends -> registerOnDidDisappear -> Dialog box close animation completes.
 
 The following is an example of creating a dialog box that triggers lifecycle callback functions when the dialog box is displayed and closed. For details about how to obtain and use nodes of the ArkUI_NodeContentHandle type, see [Integrating with ArkTS Pages](ndk-access-the-arkts-page.md).
+
+> **NOTE**
+>
+> The resources used in this example are not located in the **src** > **main** > **resource** directory. Starting from DevEco Studio 6.0.0 Beta2, the resources that are located outside the **resources** directory are not packaged by default when a project or module is created. To package these resources, go to **buildOptions** in the module's **build-profile.json5** file > **resOptions** > **copyCodeResource**, and set **enable** to **true**. For details, see the description of [resOptions](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356).
+ 
 <!-- @[dialog_lifecycle](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDialogSample/entry/src/main/cpp/customdialog/nativedialogdemo.cpp) -->
 
 ``` C++

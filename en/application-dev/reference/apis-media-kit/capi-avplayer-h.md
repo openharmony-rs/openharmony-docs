@@ -8,7 +8,7 @@
 
 ## Overview
 
-The file declares the AVPlayer APIs. You can use the native AVPlayer APIs to play a media asset.
+The **avplayer.h** file declares the AVPlayer APIs. You can use the native AVPlayer APIs to play a media asset.
 
 **File to include**: <multimedia/player_framework/avplayer.h>
 
@@ -19,6 +19,8 @@ The file declares the AVPlayer APIs. You can use the native AVPlayer APIs to pla
 **Since**: 11
 
 **Related module**: [AVPlayer](capi-avplayer.md)
+
+ 
 
 ## Summary
 
@@ -106,11 +108,7 @@ OH_AVPlayer *OH_AVPlayer_Create(void)
 
 **Description**
 
-Creates an OH_AVPlayer instance.
-
-You are advised to create a maximum of 16 AVPlayer instances for an application in both audio and video playback scenarios.
-
-<!--Del-->The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use. For example, in the case of RK3568, you are advised to create a maximum of 6 AVPlayer instances for an application in audio and video playback scenarios.<!--DelEnd-->
+Creates an OH_AVPlayer instance.<br> You are advised to create a maximum of 16 AVPlayer instances for an application in both audio and video playback scenarios.<br> <!--Del-->The actual number of instances that can be created may be different. It depends on the specifications of the device chip in use. For example, in the case of RK3568, you are advised to create a maximum of 6 AVPlayer instances for an application in audio and video playback scenarios.<!--DelEnd-->
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
@@ -441,7 +439,7 @@ Sets the loudness of the AVPlayer. This function can be called when the AVPlayer
 
 | Type| Description|
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The loudness is set successfully.<br>         **AV_ERR_INVALID_VAL**: The **player** parameter is nullptr, or the **loudnessGain** parameter is invalid.<br>         **AV_ERR_INVALID_STATE**: The function is called in an abnormal state, or the **usage** parameter in **audioRendererInfo** is not [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_MUSIC,<br>              [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_MOVIE, or [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_AUDIOBOOK.<br>         **AV_ERR_SERVICE_DIED**: A system error occurs.|
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | **AV_ERR_OK**: The loudness is set successfully.<br>**AV_ERR_INVALID_VAL**: The **player** parameter is nullptr, or the **loudnessGain** parameter is invalid.<br>**AV_ERR_INVALID_STATE**: The function is called in an abnormal state, or the **usage** parameter of **audioRendererInfo** is not one of the following:<br>[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC,<br>[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE,<br>and [OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOKs.<br>**AV_ERR_SERVICE_DIED**: A system error occurs.|
 
 ### OH_AVPlayer_Seek()
 
@@ -672,7 +670,7 @@ Sets the audio volume mode for an AVPlayer.
 
 **System capability**: SystemCapability.Multimedia.Media.AVPlayer
 
-**Since**: 18
+**Since**: 19
 
 **Parameters**
 

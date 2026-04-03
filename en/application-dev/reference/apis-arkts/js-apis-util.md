@@ -121,7 +121,7 @@ Formatted object using %o: { name: 'John',
   address:
   { city: 'New York',
     country: 'USA' } }
-*/
+ */
 const percentage = 80;
 let arg = 'homework';
 formattedString = util.format('John finished %d%% of the %s', percentage, arg);
@@ -190,9 +190,9 @@ Calls back an asynchronous function. In the callback, the first parameter indica
 
 > **NOTE**
 >
-> - **original** must be an asynchronous function. If a non-asynchronous function is passed in, the function is not intercepted, but the error message "callbackWrapper: The type of Parameter must be AsyncFunction" is displayed.
+> **original** must be an asynchronous function. If a non-asynchronous function is passed in, the function is not intercepted, but the error message "callbackWrapper: The type of Parameter must be AsyncFunction" is displayed.
 >
-> - This API converts an async function that returns a promise into an error-first callback function. The function returned by this API accepts a callback as its second input parameter. When this method is called, the original function is executed first. When the promise of **original** returns **resolve**, the first parameter of the callback function is **null**, and the second parameter is the value of **resolve**. When the promise of **original** returns **reject**, the first parameter of the callback function is an error object, and the second parameter is **null**. When **original** is a function without input parameters, the first input parameter of the function returned by this API must be an invalid placeholder parameter.
+> This API converts an async function that returns a promise into an error-first callback function. The function returned by this API accepts a callback as its second input parameter. When this method is called, the original function is executed first. When the promise of **original** returns **resolve**, the first parameter of the callback function is **null**, and the second parameter is the value of **resolve**. When the promise of **original** returns **reject**, the first parameter of the callback function is an error object, and the second parameter is **null**. When **original** is a function without input parameters, the first input parameter of the function returned by this API must be an invalid placeholder parameter.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -889,7 +889,7 @@ Creates a **TextDecoder** object. It provides the same function as the deprecate
 | Name  | Type  | Mandatory| Description                                            |
 | -------- | ------ | ---- | ------------------------------------------------ |
 | encoding | string | No  | Encoding format. The default format is **'utf-8'**.                     |
-| options  | [TextDecoderOptions](#textdecoderoptions11) | No  | Decoding-related options, which include **fatal** and **ignoreBOM**.|
+| options  | [TextDecoderOptions](#textdecoderoptions11) | No  | Decoding-related options, which include **fatal** and **ignoreBOM**. If this parameter is left empty, the default value is used.|
 
 **Return value**
 
@@ -924,6 +924,10 @@ decodeToString(input: Uint8Array, options?: DecodeToStringOptions): string
 
 Decodes the input content into a string.
 
+> **NOTE**
+>
+> This API parses the byte whose value is \0 and converts it into the Unicode character \u0000 (null character), which does not cause decoding interruption or errors.
+
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.Utils.Lang
@@ -952,6 +956,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// Sample code for parsing a byte that does not contain \0
 let textDecoderOptions: util.TextDecoderOptions = {
   fatal: false,
   ignoreBOM : true
@@ -964,6 +969,25 @@ let uint8 = new Uint8Array([0xEF, 0xBB, 0xBF, 0x61, 0x62, 0x63]);
 let retStr = textDecoder.decodeToString(uint8, decodeToStringOptions);
 console.info("retStr = " + retStr);
 // Output: retStr = abc
+```
+
+```ts
+// Sample code for parsing a byte containing \0
+let textDecoderOptions: util.TextDecoderOptions = {
+  fatal: false,
+  ignoreBOM : true
+}
+let decodeToStringOptions: util.DecodeToStringOptions = {
+  stream: false
+}
+let textDecoder = util.TextDecoder.create('utf-8', textDecoderOptions);
+let uint8 = new Uint8Array([97, 98, 0, 99]);
+let retStr = textDecoder.decodeToString(uint8, decodeToStringOptions);
+console.info("retStr = " + retStr);
+// Output: retStr = abc
+let retJson = JSON.stringify(retStr)
+console.info("retJson = " + retJson);
+// Output: retJson = ab/u0000c
 ```
 
 ### decodeWithStream<sup>(deprecated)</sup>
@@ -1061,7 +1085,7 @@ let textDecoder = new util.TextDecoder("utf-8",{ignoreBOM: true});
 
 decode(input: Uint8Array, options?: { stream?: false }): string
 
-Decodes the input content into a string.
+Decodes input parameters and outputs the corresponding text.
 
 > **NOTE**
 >
@@ -1605,8 +1629,8 @@ Obtains the greatest common divisor of two specified integers.
 
 | Name | Type  | Mandatory| Description      |
 | ------- | ------ | ---- | ---------- |
-| number1 | number | Yes  | The first integer used to get the greatest common divisor. Value range: -Number.MAX_VALUE <= number1 <= Number.MAX_VALUE.|
-| number2 | number | Yes  | The second integer used to get the greatest common divisor. Value range: -Number.MAX_VALUE <= number2 <= Number.MAX_VALUE.|
+| number1 | number | Yes  | Integer type. Value range: -Number.MAX_VALUE <= number1 <= Number.MAX_VALUE.|
+| number2 | number | Yes  | Integer type. Value range: -Number.MAX_VALUE <= number2 <= Number.MAX_VALUE.|
 
 **Return value**
 
@@ -1897,8 +1921,8 @@ Obtains the greatest common divisor of two specified integers.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| number1 | number | Yes| The first integer used to get the greatest common divisor.|
-| number2 | number | Yes| The second integer used to get the greatest common divisor.|
+| number1 | number | Yes| Integer type.|
+| number2 | number | Yes| Integer type.|
 
 **Return value**
 
@@ -2544,7 +2568,7 @@ Output: Entered via put.
          isEvict = false
          key = bb, valueStr = testB
          key = cc, valueStr = testC
-*/
+ */
 ```
 
 ### contains<sup>9+</sup>
@@ -3464,7 +3488,7 @@ console.info("result = " + result);
 
 ## Base64Helper<sup>9+</sup>
 
-Provides encoding and decoding for Base64 and Base64URL. The Base64 encoding table contains 64 characters, which are the uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), and the special characters plus sign (+) and slash (/). During encoding, the original data is divided into groups of three bytes, and each group contains a 6-bit number. Then, the corresponding characters in the Base64 encoding table are used to represent these numbers. If the last group contains only one or two bytes, the equal sign (=) is used for padding. The Base64URL encoding table contains 64 characters, which are the uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), and the special characters plus sign (+) and slash (/). The Base64URL encoding result does not contain equal signs (=).
+Provides encoding and decoding for Base64 and Base64URL. The Base64 encoding table contains 64 characters, which are the uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), and the special characters plus sign (+) and slash (/). During encoding, the original data is divided into groups of three bytes, and each group contains a 6-bit number. Then, the corresponding characters in the Base64 encoding table are used to represent these numbers. If the last group contains only one or two bytes, the equal sign (=) is used for padding. The Base64 URL encoding table contains 64 characters, including the uppercase letters (A-Z), lowercase letters (a-z), digits (0-9), hyphens (-), and underscores (_). The Base64 URL encoding result does not contain equal signs (=).
 
 ### constructor<sup>9+</sup>
 
@@ -3574,7 +3598,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   // Output: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-  */
+   */
 
   // BASIC encoding
   let base64Helper = new util.Base64Helper();
@@ -3590,7 +3614,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   console.info("result = " + result);
   /*
   Output: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-  */
+   */
   
   // MIME_URL_SAFE encoding
   let base64Helper = new util.Base64Helper();
@@ -3606,7 +3630,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   console.info("result = " + result);
   /*
   Output: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
-  */
+   */
   // MIME_URL_SAFE encoding
   let base64Helper = new util.Base64Helper();
   let array =
@@ -3623,7 +3647,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   // Output: result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
   aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
   aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU
-  */
+   */
   ```
 
 ### decodeSync<sup>9+</sup>
@@ -3666,7 +3690,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   console.info("result = " + result);
   /*
   Output: result = 77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101
-  */
+   */
   ```
 
 
@@ -3755,7 +3779,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     Output: TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNz
     aW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZl
     aGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
-    */
+     */
 
   })
   ```
@@ -3801,7 +3825,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     console.info(val.toString());
     /*
     Output: 77,97,110,105,115,100,105,115,116,105,110,103,117,105,115,104,101,100,110,111,116,111,110,108,121,98,121,104,105,115,114,101,97,115,111,110,98,117,116,98,121,116,104,105,115,115,105,110,103,117,108,97,114,112,97,115,115,105,111,110,102,114,111,109,111,116,104,101,114,97,110,105,109,97,108,115,119,104,105,99,104,105,115,97,108,117,115,116,111,102,116,104,101,109,105,110,100,101,120,99,101,101,100,115,116,104,101,115,104,111,114,116,118,101,104,101,109,101,110,99,101,111,102,97,110,121,99,97,114,110,97,108,112,108,101,97,115,117,114,101
-    */
+     */
   })
   ```
 
@@ -6785,7 +6809,7 @@ Performs Base64 encoding on the input Uint8Array byte array and returns the enco
 
 decodeSync(src: Uint8Array | string): Uint8Array
 
-Decodes the input content into a Uint8Array object.
+Decodes input parameters and outputs the corresponding text.
 
 > **NOTE**
 >
@@ -6819,7 +6843,7 @@ Decodes the input content into a Uint8Array object.
 
 encode(src: Uint8Array): Promise&lt;Uint8Array&gt;
 
-Encodes the input content into a Uint8Array object. This API uses a promise to return the result.
+Encodes the input parameter asynchronously and outputs the corresponding text.
 
 > **NOTE**
 >
@@ -6854,7 +6878,7 @@ Encodes the input content into a Uint8Array object. This API uses a promise to r
 
 encodeToString(src: Uint8Array): Promise&lt;string&gt;
 
-Encodes the input content into a string. This API uses a promise to return the result.
+Encodes the input parameter asynchronously and outputs the corresponding text.
 
 > **NOTE**
 >

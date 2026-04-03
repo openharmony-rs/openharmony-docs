@@ -45,40 +45,38 @@
 
 1. 创建新工程，请参考[创建一个新的工程](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-create-new-project)，创建一个OpenHarmony工程。
 
-    **注意：**
-
-    > 开发驱动客户端，请选择Empty Ability模板。
+    > **说明：**
     >
-    > 开发驱动服务端，请选择Native C++模板。
-    >
-    >同时开发驱动客户端和服务端，请选择Native C++模板。
+    > - 开发驱动客户端，请选择Empty Ability模板。
+    > - 开发驱动服务端，请选择Native C++模板。
+    > - 同时开发驱动客户端和服务端，请选择Native C++模板。
 
 
 2. 在文件中导入相关Kit，并声明想要绑定的USB设备的productId、vendorId以及与驱动通信的Code。
 
-    **说明：**
-
+    > **说明：**
+    >
     > 以下示例代码均写在entry/src/main/ets/pages/Index.ets文件中。
 
     <!-- @[driver_ui_step2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
 
-``` TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { deviceManager } from '@kit.DriverDevelopmentKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { rpc } from '@kit.IPCKit';
+    ``` TypeScript
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    import { deviceManager } from '@kit.DriverDevelopmentKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    import { rpc } from '@kit.IPCKit';
 
-const REQUEST_CODE: number = 99; // 自定义通信Code，此处仅供参考
-const productId: number = 4258;  // 请声明连接的USB设备的productId
-const vendorId: number = 4817;   // 请声明连接的USB设备的vendorId
-const DOMAIN = 0x0000;
-```
+    const REQUEST_CODE: number = 99; // 自定义通信Code，此处仅供参考
+    const productId: number = 4258;  // 请声明连接的USB设备的productId
+    const vendorId: number = 4817;   // 请声明连接的USB设备的vendorId
+    const DOMAIN = 0x0000;
+    ```
 
 
 3. 定义message变量和远程对象变量，后续与驱动通信使用。
 
-    **说明：**
-
+    > **说明：**
+    >
     > 第3步开始，以下接口均在struct Index{}中定义。
 
     <!-- @[driver_ui_step3](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
@@ -117,7 +115,7 @@ const DOMAIN = 0x0000;
 ```
 
 
-5. 定义获取对应驱动远程对象的接口，通过bindDriverWithDeviceId获取远程对象。
+5. 定义获取对应驱动远程对象的接口，通过bindDeviceDriver获取远程对象。
 
     <!-- @[driver_ui_step5](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/DriverDevelopmentKit/DriverDemo/entry/src/main/ets/pages/Index.ets) -->
 
@@ -203,7 +201,9 @@ const DOMAIN = 0x0000;
 <!--RP1-->
 ## 应用签名
 
-**注意：** 先配置权限，再自动签名。
+> **注意：**
+>
+> 先配置权限，再自动签名。
 
 应用需要配置签名文件才能在设备上运行，并且扩展外设管理客户端开发，需要配置扩展外设的权限：ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER及ohos.permission.ACCESS_DDK_DRIVERS。
 - ohos.permission.ACCESS_EXTENSIONAL_DEVICE_DRIVER（API version 10及以上版本，需要申请此权限。）

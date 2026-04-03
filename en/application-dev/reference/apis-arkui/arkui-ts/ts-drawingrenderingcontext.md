@@ -6,7 +6,7 @@
 <!--Tester: @liuli0427-->
 <!--Adviser: @Brilliantry_Rui-->
 
-**DrawingRenderingContext** provides a rendering context for drawing rectangles, text, images, and other objects on a canvas.
+After the **DrawingRenderingContext** object is bound to the **Canvas** component, you can draw shapes, texts, and images on the **Canvas** component.
 
 > **NOTE**
 >
@@ -74,7 +74,7 @@ Invalidates the component and triggers re-rendering of the component.
 
 type DrawingCanvas = Canvas
 
-Defines a canvas object for drawing content on the **XComponent** component.
+Draws content on the **DrawingRenderingContext**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -94,8 +94,8 @@ Provides size information of the **DrawingRenderingContext** object.
 
 | Name| Type| Read Only| Optional| Description|
 | ---------- | -------------- | ------ | ---------------- | ------------------------ |
-| width | number | No| No| Width of the **DrawingRenderingContext** object, which corresponds to the width of the associated **Canvas** component.|
-| height | number | No| No| Height of the **DrawingRenderingContext** object, which corresponds to the height of the associated **Canvas** component.|
+| width | number | No| No| Width of the **DrawingRenderingContext** object, which corresponds to the width of the associated **Canvas** component.<br>The unit can be vp or px.<br>Default unit: vp|
+| height | number | No| No| Height of the **DrawingRenderingContext** object, which corresponds to the height of the associated **Canvas** component.<br>The unit can be vp or px.<br>Default unit: vp|
 
 ## Example
 

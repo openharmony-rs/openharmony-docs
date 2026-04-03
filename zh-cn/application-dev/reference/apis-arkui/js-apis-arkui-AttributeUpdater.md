@@ -1,9 +1,9 @@
 # AttributeUpdater
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 将属性直接设置给组件，无需标记为状态变量即可直接触发UI更新。
@@ -36,6 +36,8 @@ import { AttributeUpdater } from '@kit.ArkUI';
 >  5. updateConstructorParams当前只支持Button，Image，Text，Span，SymbolSpan和ImageSpan组件。
 >  
 >  6. AttributeUpdater不支持深浅色切换等状态管理相关的操作。
+>
+>  7. 在[UI上下文不明确](../../ui/arkts-global-interface.md#ui上下文不明确)的场景中调用[AttributeUpdater](#attributeupdatert-c--initializert)对象的接口时，建议使用[UIContext](./arkts-apis-uicontext-uicontext.md)的[runScopedTask](./arkts-apis-uicontext-uicontext.md#runscopedtask)接口明确UI上下文，参考[执行绑定UI实例的闭包](../../ui/arkts-global-interface.md#执行绑定ui实例的闭包)示例。
 
 ## Initializer\<T>
 type Initializer\<T> = () => T
@@ -277,7 +279,7 @@ class MyButtonModifier extends AttributeUpdater<ButtonAttribute> {
   }
 
   onComponentChanged(instance: ButtonAttribute): void {
-    instance.backgroundColor('#ff2787d9')
+    instance.backgroundColor('#ff519db4')
       .width('50%')
       .height(30);
   }
@@ -295,7 +297,7 @@ struct updaterDemo4 {
         Button("Test")
           .onClick(() => {
             this.btnState = !this.btnState;
-          })
+          }).margin({ bottom: 20 })
 
         if (this.btnState) {
           Button("Button")
@@ -311,3 +313,4 @@ struct updaterDemo4 {
   }
 }
 ```
+![](figures/attribute-updater4.gif)

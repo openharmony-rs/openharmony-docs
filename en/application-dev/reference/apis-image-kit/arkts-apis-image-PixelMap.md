@@ -6,9 +6,9 @@
 <!--Tester: @zhaoxiaoguang2-->
 <!--Adviser: @w_Machine_cc-->
 
-The **PixelMap** class provides APIs to read or write image data and obtain image information. Before calling any API in PixelMap, you must use [image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8) to create a PixelMap object. Currently, the maximum size of a serialized PixelMap is 128 MB. A larger size will cause a display failure. The size is calculated as follows: Width * Height * Number of bytes occupied by each pixel.
+The **PixelMap** class provides APIs to read or write image data and obtain image information. Before calling any API in PixelMap, you must use [image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8) to create a PixelMap object. Currently, the maximum size of a serialized PixelMap is 128 MB. A larger size will cause a display failure. The size is calculated as follows: Width × Height × [Bytes per pixel](arkts-apis-image-e.md#pixelmapformat7).
 
-Since API version 11, PixelMap supports cross-thread calls through workers. If a PixelMap object is invoked by another thread through [Worker](../apis-arkts/js-apis-worker.md), all APIs of the PixelMap object cannot be called in the original thread. Otherwise, error 501 is reported, indicating that the server cannot complete the request.
+Since API version 11, PixelMap supports cross-thread calls through [Worker](../apis-arkts/js-apis-worker.md). If a PixelMap object is invoked by another thread through [Worker](../apis-arkts/js-apis-worker.md), all APIs of the PixelMap object cannot be called in the original thread. Otherwise, error 501 is reported, indicating that the server cannot complete the request.
 
 Before calling any API in PixelMap, you can use [image.createPixelMap](arkts-apis-image-f.md#imagecreatepixelmap8) to pass pixel data to create a PixelMap object, or use [ImageSource](arkts-apis-image-ImageSource.md) to decode an image to a PixelMap object.
 
@@ -136,7 +136,7 @@ Reads the pixels of this PixelMap object based on the PixelMap's pixel format an
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -202,7 +202,7 @@ async function ReadPixelsRGBA(pixelMap : image.PixelMap) {
       console.info('Succeeded in reading the image data in the area.'); // Called if the condition is met.
       console.info('RGBA data is ', new Uint8Array(area.pixels));
     }).catch((error: BusinessError) => {
-      console.error("Failed to read the image data in the area. code is ", error);// Called if no condition is met.
+      console.error("Failed to read the image data in the area. code is ", error);// Called if the condition is not met.
     })
   }
 }
@@ -219,7 +219,7 @@ async function ReadPixelsYUV(pixelMap : image.PixelMap) {
       console.info('Succeeded in reading the image data in the area.'); // Called if the condition is met.
       console.info('YUV data is ', new Uint8Array(area.pixels));
     }).catch((error: BusinessError) => {
-      console.error("Failed to read the image data in the area. code is ", error);// Called if no condition is met.
+      console.error("Failed to read the image data in the area. code is ", error);// Called if the condition is not met.
     })
   }
 }
@@ -314,7 +314,7 @@ Reads the pixels in the area specified by [PositionArea](arkts-apis-image-i.md#p
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -508,7 +508,7 @@ Reads the pixels in the [PositionArea](arkts-apis-image-i.md#positionarea7).regi
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -641,7 +641,7 @@ Reads the pixels in the buffer based on the PixelMap's pixel format and writes t
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -779,7 +779,7 @@ function GetImageInfoSync(pixelMap:image.PixelMap) {
 
 getBytesNumberPerRow(): number
 
-Obtains the number of bytes per row of this image.
+Obtains the number of bytes per row of this image. Unit: bytes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -805,7 +805,7 @@ function GetBytesNumberPerRow(pixelMap: image.PixelMap) {
 
 getPixelBytesNumber(): number
 
-Obtains the total number of bytes of this image.
+Obtains the total number of bytes of this image. Unit: bytes.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -831,7 +831,7 @@ function GetPixelBytesNumber(pixelMap: image.PixelMap) {
 
 getDensity():number
 
-Obtains the pixel density of this image.
+Obtains the pixel density of this image. Unit: ppi (pixels/inch)
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -951,7 +951,7 @@ Sets an opacity rate for this image. This API returns the result synchronously. 
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -1007,7 +1007,7 @@ async function CreateAlphaPixelmap(pixelMap:image.PixelMap) {
 
 createAlphaPixelmap(callback: AsyncCallback\<PixelMap>): void
 
-Creates a PixelMap object that contains only the alpha channel information. This object can be used for the shadow effect. This API uses an asynchronous callback to return the result. It is invalid for YUV images.
+Creates a PixelMap object that contains only the alpha channel information. This object can be used for the shadow effect. It is invalid for YUV images. This API returns the result through a callback.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -1058,7 +1058,7 @@ Creates a PixelMap object that contains only the alpha channel information. This
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -1195,7 +1195,7 @@ Scales this image based on the scale factors of the width and height. This API r
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -1247,7 +1247,7 @@ Scales this image based on the specified anti-aliasing level and the scale facto
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -1297,7 +1297,7 @@ Scales this image based on the specified anti-aliasing level and the scale facto
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -1330,7 +1330,7 @@ Creates an image that has been resized based on the specified anti-aliasing leve
 | ------ | ------ | ---- | ------------------------------- |
 | x      | number | Yes  | Scale factor of the width.|
 | y      | number | Yes  | Scale factor of the height.|
-| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level.|
+| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. The default value is **AntiAliasingLevel.NONE**.|
 
 **Return value**
 
@@ -1340,7 +1340,7 @@ Creates an image that has been resized based on the specified anti-aliasing leve
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -1379,7 +1379,7 @@ Creates an image that has been resized based on the specified anti-aliasing leve
 | ------ | ------ | ---- | ------------------------------- |
 | x      | number | Yes  | Scale factor of the width.|
 | y      | number | Yes  | Scale factor of the height.|
-| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level.|
+| level  | [AntiAliasingLevel](arkts-apis-image-e.md#antialiasinglevel12) | No  | Anti-aliasing level. The default value is **AntiAliasingLevel.NONE**.|
 
 **Return value**
 
@@ -1389,7 +1389,7 @@ Creates an image that has been resized based on the specified anti-aliasing leve
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -1717,7 +1717,7 @@ The size of the translated image is changed to width+X and height+Y. It is recom
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -1744,7 +1744,7 @@ Rotates this image based on a given angle. This API uses an asynchronous callbac
 
 > **NOTE**
 >
-> 1. The allowable range for image rotation angles is between 0 and 360 degrees. Angles outside this range are automatically adjusted according to the 360-degree cycle. For example, an angle of -100 degrees will produce the same result as 260 degrees.
+> 1. The allowable range for image rotation angles is [0, 360]. Angles outside this range are automatically adjusted according to the 360-degree cycle. For example, an angle of -100 degrees will produce the same result as 260 degrees.
 > 2. If the rotation angle is not an integer multiple of 90 degrees, the image size will change after rotation.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -1757,7 +1757,7 @@ Rotates this image based on a given angle. This API uses an asynchronous callbac
 
 | Name  | Type                | Mandatory| Description                         |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | number               | Yes  | Angle to rotate.|
+| angle    | number               | Yes  | Angle to rotate. Unit: degrees.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Example**
@@ -1788,7 +1788,7 @@ Rotates a PixelMap based on a given angle. This API uses a promise to return the
 
 > **NOTE**
 >
-> 1. The allowable range for image rotation angles is between 0 and 360 degrees. Angles outside this range are automatically adjusted according to the 360-degree cycle. For example, an angle of -100 degrees will produce the same result as 260 degrees.
+> 1. The allowable range for image rotation angles is [0, 360]. Angles outside this range are automatically adjusted according to the 360-degree cycle. For example, an angle of -100 degrees will produce the same result as 260 degrees.
 > 2. If the rotation angle is not an integer multiple of 90 degrees, the image size will change after rotation.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
@@ -1801,7 +1801,7 @@ Rotates a PixelMap based on a given angle. This API uses a promise to return the
 
 | Name| Type  | Mandatory| Description                         |
 | ------ | ------ | ---- | ----------------------------- |
-| angle  | number | Yes  | Angle to rotate.|
+| angle  | number | Yes  | Angle to rotate. Unit: degrees.|
 
 **Return value**
 
@@ -1834,7 +1834,7 @@ Rotates this image based on a given angle. This API returns the result synchrono
 
 > **NOTE**
 >
-> 1. The allowable range for image rotation angles is between 0 and 360 degrees. Angles outside this range are automatically adjusted according to the 360-degree cycle. For example, an angle of -100 degrees will produce the same result as 260 degrees.
+> 1. The allowable range for image rotation angles is [0, 360]. Angles outside this range are automatically adjusted according to the 360-degree cycle. For example, an angle of -100 degrees will produce the same result as 260 degrees.
 > 2. If the rotation angle is not an integer multiple of 90 degrees, the image size will change after rotation.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
@@ -1845,11 +1845,11 @@ Rotates this image based on a given angle. This API returns the result synchrono
 
 | Name  | Type                | Mandatory| Description                         |
 | -------- | -------------------- | ---- | ----------------------------- |
-| angle    | number               | Yes  | Angle to rotate.|
+| angle    | number               | Yes  | Angle to rotate. Unit: degrees.|
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -1970,7 +1970,7 @@ Flips this image horizontally or vertically, or both. This API returns the resul
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -2090,7 +2090,7 @@ Crops this image based on a given size. This API returns the result synchronousl
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -2129,10 +2129,10 @@ Obtains the color space of this image.
 For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
-| ------- | --------------------------------------------|
-| 62980101| If the image data abnormal.            |
-| 62980103| If the image data unsupport.             |
-| 62980115| If the image parameter invalid.            |
+| -------- | ------------------------------------------ |
+| 62980101 | The image data is abnormal.                |
+| 62980103 | The image data is not supported.           |
+| 62980115 | Invalid image parameter.                   |
 
 **Example**
 
@@ -2200,7 +2200,7 @@ Performs color space conversion (CSC) on the image pixel color based on a given 
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | ------------------------------------------|
@@ -2259,7 +2259,7 @@ Performs Color Space Converters (CSC) on the image pixel color based on a given 
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | ------------------------------------------|
@@ -2316,7 +2316,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 import { BusinessError } from '@kit.BasicServicesKit';
 
 async function ToSdr(context: Context) {
-  // Replace 'app.media.startIcon' with a local HDR image.
+  // Replace app.media.startIcon with a local HDR image.
   let img = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id);
   let imageSource = image.createImageSource(img.buffer.slice(0));
   let decodingOptions: image.DecodingOptions = {
@@ -2359,7 +2359,7 @@ Obtains the value of the metadata with a given key in this PixelMap.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -2372,7 +2372,7 @@ For details about the error codes, see [Image Error Codes](errorcode-image.md).
 
 ```ts
 async function GetMetadata(context: Context) {
-  // Replace 'app.media.startIcon' with a local HDR image.
+  // Replace app.media.startIcon with a local HDR image.
   let img = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id);
   let imageSource = image.createImageSource(img.buffer.slice(0));
   let decodingOptions: image.DecodingOptions = {
@@ -2417,7 +2417,7 @@ Sets the value for the metadata with a given key in this PixelMap. This API uses
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|
@@ -2850,7 +2850,7 @@ Sets a memory name for this PixelMap.
 
 **Error codes**
 
-For details about the error codes, see [Image Error Codes](errorcode-image.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Image Error Codes](errorcode-image.md).
 
 | ID| Error Message|
 | ------- | --------------------------------------------|

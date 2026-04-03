@@ -1045,7 +1045,7 @@ async function anonAttestKey(): Promise<void> {
 
 importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOptions, callback: AsyncCallback\<void>) : void
 
-Imports a wrapped key. This API uses an asynchronous callback to return the result.
+Imports keys in secure mode. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -1161,8 +1161,8 @@ async function TestImportWrappedKeyFunc(
    * For example, import keyA.
    * 1. Use ECC to generate a public and private key pair named keyB. The public key is keyB_pub, and the private key is keyB_pri.
    * 2. Use keyB_pri and the public key obtained from wrappingAlias to negotiate the shared key share_key.
-   * 3. Randomly generate a key **kek** and use it to encrypt **keyA** with AES-GCM. During the encryption, record **nonce1**, **aad1**, ciphertext **keyA_enc**, and encrypted **tag1**.
-   * 4. Use **share_key** to encrypt **kek** with AES-GCM. During the encryption, record **nonce2**, **aad2**, ciphertext **kek_enc**, and encrypted **tag2**.
+   * 3. Randomly generate a key kek and use it to encrypt keyA with AES-GCM. During the encryption, record nonce1, aad1, ciphertext keyA_enc, and encrypted tag1.
+   * 4. Use share_key to encrypt kek with AES-GCM. During the encryption, record nonce2, aad2, ciphertext kek_enc, and encrypted tag2.
    * 5. Generate the **importOptions.inData** field in the following format:
    *     keyB_pub length (4 bytes) + keyB_pub + aad2 length (4 bytes) + aad2 +
    *     Length of nonce2 (4 bytes) + Data of nonce2 + Length of tag2 (4 bytes) + Data of tag2 +
@@ -1254,7 +1254,7 @@ function huksImportWrappedKey() {
 
 importWrappedKeyItem(keyAlias: string, wrappingKeyAlias: string, options: HuksOptions) : Promise\<void>
 
-Imports a wrapped key. This API uses a promise to return the result.
+Imports keys in secure mode. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2560,8 +2560,8 @@ A key can be used only for a single purpose. You cannot use the same key for bot
 | HUKS_KEY_PURPOSE_VERIFY  | 8    | Used to verify the signature.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_KEY_PURPOSE_DERIVE  | 16   | Used to derive a key.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_KEY_PURPOSE_WRAP    | 32   | Used for an encrypted export.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_KEY_PURPOSE_UNWRAP  | 64   | Used for an encrypted import.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_KEY_PURPOSE_MAC     | 128  | Used to generate a message authentication code (MAC).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
+| HUKS_KEY_PURPOSE_UNWRAP  | 64   | Used for a secure import.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
+| HUKS_KEY_PURPOSE_MAC     | 128  | Used to generate a message authentication code.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_KEY_PURPOSE_AGREE   | 256  | Used for key agreement.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 
 ## HuksKeyDigest
@@ -2660,7 +2660,7 @@ Enumerates the key algorithms.
 | ------------------------- | ---- | --------------------- |
 | HUKS_ALG_RSA              | 1    | RSA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_ECC              | 2    | ECC.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
-| HUKS_ALG_DSA              | 3    | DSA.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
+| HUKS_ALG_DSA              | 3    | DSA<!--RP5--><!--RP5End-->.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_AES              | 20   | AES.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_ALG_HMAC             | 50   | HMAC.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_ALG_HKDF             | 51   | HKDF.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
@@ -2748,7 +2748,7 @@ Enumerates the sources of a key.
 
 ## HuksUnwrapSuite<sup>9+</sup>
 
-Enumerates the algorithm suites that can be used for importing a key in ciphertext.
+Enumerates the algorithm suites for securely importing a key.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2758,8 +2758,8 @@ The system capability is **SystemCapability.Security.Huks.Extension** in API ver
 
 | Name                                          | Value  | Description                                                 |
 | ---------------------------------------------- | ---- | ----------------------------------------------------- |
-| HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING | 1    | Use X25519 for key agreement and then use AES-256 GCM to encrypt the key.|
-| HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING   | 2    | Use ECDH for key agreement and then use AES-256 GCM to encrypt the key.  |
+| HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING | 1    | Use X25519 for key agreement and then use AES-256 GCM to decrypt the key. |
+| HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING   | 2    | Use ECDH for key agreement and then use AES-256 GCM to decrypt the key. |
 
 ## HuksImportKeyType<sup>9+</sup>
 
@@ -2888,7 +2888,9 @@ The system capability is **SystemCapability.Security.Huks.Extension** in API ver
 | HUKS_AUTH_STORAGE_LEVEL_DE | 0    | The key can be accessed only after the device is started.|
 | HUKS_AUTH_STORAGE_LEVEL_CE | 1    | The key can be accessed only after the first unlock of the device.|
 | HUKS_AUTH_STORAGE_LEVEL_ECE | 2    | The key can be accessed only when the device is unlocked.|
-
+> **NOTE**
+>
+>  When using a key whose storage level is ECE, you are advised to clear the session resources created using the key by detecting the [lock screen event](../../reference/apis-basic-services-kit/common_event/commonEventManager-definitions.md#common_event_screen_locked) to ensure security.
 ## HuksKeyWrapType<sup>20+</sup>
 
 Enumerates the key encryption types (exporting or importing keys).
@@ -2952,7 +2954,7 @@ Enumerates the tags used to invoke parameters.
 | HUKS_TAG_KEY_ALIAS                                          | HuksTagType.HUKS_TAG_TYPE_BYTES \| 23    | Key alias.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> **System capability**: SystemCapability.Security.Huks.Core|
 | HUKS_TAG_DERIVE_KEY_SIZE                                    | HuksTagType.HUKS_TAG_TYPE_UINT \| 24     | Size of the derived key.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>8-11</sup>|
 | HUKS_TAG_IMPORT_KEY_TYPE<sup>9+</sup>                       | HuksTagType.HUKS_TAG_TYPE_UINT \| 25     | Type of the imported key.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
-| HUKS_TAG_UNWRAP_ALGORITHM_SUITE<sup>9+</sup>                | HuksTagType.HUKS_TAG_TYPE_UINT \| 26     | Algorithm suite required for encrypted imports.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
+| HUKS_TAG_UNWRAP_ALGORITHM_SUITE<sup>9+</sup>                | HuksTagType.HUKS_TAG_TYPE_UINT \| 26     | Suite for securely importing a key.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>9-11</sup>|
 | HUKS_TAG_DERIVED_AGREED_KEY_STORAGE_FLAG<sup>10+</sup>      | HuksTagType.HUKS_TAG_TYPE_UINT \|29      | Storage type of the derived key or agreed key.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
 | HUKS_TAG_RSA_PSS_SALT_LEN_TYPE<sup>10+</sup>                | HuksTagType.HUKS_TAG_TYPE_UINT \|30      | Type of the **rsa_pss_salt_length**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Core<sup>12+</sup><br>SystemCapability.Security.Huks.Extension<sup>10-11</sup>|
 | HUKS_TAG_ACTIVE_DATETIME<sup>(deprecated)</sup>             | HuksTagType.HUKS_TAG_TYPE_ULONG \| 201   |  Parameter originally reserved for certificate management. It is deprecated because certificate management is no longer implemented in this module.<br> Note: This API is deprecated since API version 9. No substitute API is provided.<br> **System capability**: SystemCapability.Security.Huks.Extension|
@@ -2971,7 +2973,7 @@ Enumerates the tags used to invoke parameters.
 | HUKS_TAG_CHALLENGE_POS<sup>9+</sup>                         | HuksTagType.HUKS_TAG_TYPE_UINT \| 310    | Position of the 8-byte valid value in a custom challenge. For details, see [HuksChallengePosition](#hukschallengeposition9).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_KEY_AUTH_PURPOSE<sup>10+</sup>                     | HuksTagType.HUKS_TAG_TYPE_UINT \|311     | Key authentication purpose.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_AUTH_STORAGE_LEVEL<sup>11+</sup>                     | HuksTagType.HUKS_TAG_TYPE_UINT \|316    | Key storage security level, which is a value of [HuksAuthStorageLevel](#huksauthstoragelevel11).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
-| HUKS_TAG_USER_AUTH_MODE<sup>12+</sup>         | HuksTagType.HUKS_TAG_TYPE_UINT \| 319   | User authentication mode, which is a value of [HuksUserAuthMode](#huksuserauthmode12).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
+| HUKS_TAG_USER_AUTH_MODE<sup>12+</sup>         | HuksTagType.HUKS_TAG_TYPE_UINT \| 319   | User authentication mode. It is a value of [HuksUserAuthMode](#huksuserauthmode12).<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_ATTESTATION_CHALLENGE                              | HuksTagType.HUKS_TAG_TYPE_BYTES \| 501   | Challenge value used in the attestation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_ATTESTATION_APPLICATION_ID                         | HuksTagType.HUKS_TAG_TYPE_BYTES \| 502   | Application ID used in the attestation.<br>**Atomic service API**: This API can be used in atomic services since API version 12.<br> **System capability**: SystemCapability.Security.Huks.Extension|
 | HUKS_TAG_ATTESTATION_ID_BRAND<sup>(deprecated)</sup>        | HuksTagType.HUKS_TAG_TYPE_BYTES \| 503   | Brand of the device.<br>Note: This parameter is supported since API version 8 and deprecated since API version 9.<br> **System capability**: SystemCapability.Security.Huks.Extension|
@@ -3426,7 +3428,7 @@ exportKey(keyAlias: string, options: HuksOptions) : Promise\<HuksResult>
 
 Exports a key. This API uses a promise to return the result.
 
-> **NOTE**<br>
+> **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [huks.exportKeyItem<sup>9+</sup>](#huksexportkeyitem9-1) instead.
 
@@ -3515,7 +3517,7 @@ Obtains key properties. This API uses a promise to return the result.
 
 | Type              | Description                                                        |
 | ------------------ | ------------------------------------------------------------ |
-| Promise\<[HuksResult](#huksoptions)> | Promise that returns the **HuksResult**. **properties** of **HuksResult** returns the key parameters.|
+| Promise\<[HuksResult](#huksresultdeprecated)> | Promise that returns the **HuksResult**. **properties** of **HuksResult** returns the key parameters.|
 
 **Example**
 
@@ -3868,7 +3870,7 @@ abort(handle: number, options: HuksOptions) : Promise\<HuksResult>
 
 Aborts a key operation. This API uses a promise to return the result.
 
-> **NOTE**<br>
+> **NOTE**
 >
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [huks.abortSession<sup>9+</sup>](#huksabortsession9-1) instead.
 
@@ -3999,7 +4001,7 @@ Defines the struct for a HUKS handle.
 
 **System capability**: SystemCapability.Security.Huks.Extension
 
-> **NOTE**<br>
+> **NOTE**
 >
 > This API is deprecated since API version 9. You are advised to use [HuksSessionHandle<sup>9+</sup>](#hukssessionhandle9).
 
@@ -4015,7 +4017,7 @@ Represents the result returned.
 
 **System capability**: SystemCapability.Security.Huks.Extension
 
-> **NOTE**<br>
+> **NOTE**
 >
 > - This API is supported since API version 8 and deprecated since API version 9. You are advised to use [HuksReturnResult<sup>9+</sup>](#huksreturnresult9) instead.
 > - For details about the error codes, see [HUKS Error Codes](errorcode-huks.md).
@@ -4033,7 +4035,7 @@ Enumerates the error codes.
 
 **System capability**: SystemCapability.Security.Huks.Extension
 
-> **NOTE**<br>
+> **NOTE**
 >
 > This API is deprecated since API version 9. You are advised to use [HuksExceptionErrCode<sup>9+</sup>](#huksexceptionerrcode9).
 

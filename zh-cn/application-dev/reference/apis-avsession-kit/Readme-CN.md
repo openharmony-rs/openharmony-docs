@@ -26,7 +26,7 @@
   <!--DelEnd-->
 - ArkTS组件<!--avsession-comp-->
   - [@ohos.multimedia.avCastPicker (投播组件)](ohos-multimedia-avcastpicker.md)
-  - [@ohos.multimedia.avInputCastPicker（录音设备选择组件）](ohos-multimedia-avinputcastpicker.md)
+  - [@ohos.multimedia.avInputCastPicker (录音设备选择组件)](ohos-multimedia-avinputcastpicker.md)
 - C API<!--avsession-c-->
   - 模块<!--avsession-module-->
     - [OHAVSession](capi-ohavsession.md)

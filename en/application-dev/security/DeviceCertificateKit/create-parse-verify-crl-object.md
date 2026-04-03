@@ -105,7 +105,7 @@ let pubKeyData = new Uint8Array([
 function crlSample(): void {
   let textEncoder = new util.TextEncoder();
   let encodingBlob: cert.EncodingBlob = {
-    // Convert the CRL data from a string to a Unit8Array.
+    // Convert the CRL data from a string to a Uint8Array.
     data: textEncoder.encodeInto(crlData),
     // CRL format. Only the PEM and DER formats are supported. In this example, the CRL is in PEM format.
     encodingFormat: cert.EncodingFormat.FORMAT_PEM

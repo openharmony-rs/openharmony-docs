@@ -91,9 +91,9 @@ Enumerates the bit rate modes of a video encoder.
 
 | Value| Description|
 | -- | -- |
-| CBR = 0 | Constant bit rate.<br>**Deprecated from**: 14<br>**Substitute**: [BITRATE_MODE_CBR](capi-native-avcodec-base-h.md#oh_bitratemode)|
-| VBR = 1 | Variable bit rate.<br>**Deprecated from**: 14<br>**Substitute**: [BITRATE_MODE_VBR](capi-native-avcodec-base-h.md#oh_bitratemode)|
-| CQ = 2 | Constant QP.<br>**Deprecated from**: 14<br>**Substitute**: [BITRATE_MODE_CQ](capi-native-avcodec-base-h.md#oh_bitratemode)|
+| CBR = 0 | Constant bit rate.<br>**Substitute**: [BITRATE_MODE_CBR](capi-native-avcodec-base-h.md#oh_bitratemode)|
+| VBR = 1 | Variable bit rate.<br>**Substitute**: [BITRATE_MODE_VBR](capi-native-avcodec-base-h.md#oh_bitratemode)|
+| CQ = 2 | Constant quality.<br>**Substitute**: [BITRATE_MODE_CQ](capi-native-avcodec-base-h.md#oh_bitratemode)|
 
 
 ## Function Description
@@ -295,7 +295,7 @@ OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 
 **Description**
 
-Configures a video encoder. Typically, you need to configure the description information about the video track to be encoded, such as the width, height, and pixel format. This function must be called prior to **OH_VideoEncoder_Prepare**.<br> This function is used to verify the validity of configuration parameters. Some invalid parameters are not forcibly verified. The default values are used or discarded. Some invalid parameters are forcibly verified. The rules are as follows:<br> The value ranges of the following parameters can be obtained from [Capability Query](../../media/avcodec/obtain-supported-codecs.md). All the values of **OH_MD_KEY_I_FRAME_INTERVAL** are unsupported.<br> If the current platform does not support **OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY** or **OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT**, no error is reported and the normal encoding process is used.
+Configures a video encoder. Typically, you need to configure the description information about the video track to be encoded, such as the width, height, and pixel format. This function must be called prior to **OH_VideoEncoder_Prepare**.<br> This function is used to verify the validity of configuration parameters. Some invalid parameters are not forcibly verified. The default values are used or discarded. Some invalid parameters are forcibly verified. The rules are as follows:<br> The value ranges of the following parameters can be obtained from [Capability Query](../../media/avcodec/obtain-supported-codecs.md). All the values of **OH_MD_KEY_I_FRAME_INTERVAL** are supported.<br> If the current platform does not support **OH_MD_KEY_VIDEO_ENCODER_ENABLE_TEMPORAL_SCALABILITY** or **OH_MD_KEY_VIDEO_ENCODER_LTR_FRAME_COUNT**, no error is reported and the normal encoding process is used.
 
 Parameter verification rules are as follows:
 
@@ -764,7 +764,7 @@ Checks whether the encoder service is valid when an encoder instance exists.
 | Name| Description|
 | -- | -- |
 | [OH_AVCodec](capi-codecbase-oh-avcodec.md) *codec | Pointer to a video encoder instance.|
-| bool *isValid | Pointer to the Boolean type. The value indicates the validity of the encoder service only when the function returns **AV_ERR_OK**. The value **true** means that the encoder service is valid, and **false** means the opposite. It is recommended that you initialize **isValid** to **false**.|
+| bool *isValid | Pointer of the Boolean type. The value indicates the validity of the encoder service only when the function returns **AV_ERR_OK**. The value **true** means that the encoder service is valid, and **false** means the opposite. It is recommended that you initialize **isValid** to **false**.|
 
 **Returns**
 

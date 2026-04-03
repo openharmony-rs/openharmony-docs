@@ -73,7 +73,7 @@ Invocation pattern:
 
 - Private custom builder functions can be called in custom components, **build()**, and other custom builder functions.
 
-- In a custom component, **this** indicates the component to which the component belongs. The status variables of the component can be accessed in the custom build function. It is recommended that **this** be used to access the status variable of the component instead of being transferred through parameters.
+- In a custom component, **this** indicates the component to which the component belongs. The state variables of the component can be accessed in the custom build function. It is recommended that **this** be used to access the status variable of the component instead of being transferred through parameters.
 
 ### Global Custom Builder Function
 
@@ -113,7 +113,7 @@ Parameters for custom builder functions can be passed [by callback](#passing-par
 
 - All parameters must be immutable inside the custom builder function decorated by \@Builder.
 
-- The custom builder function body follows the same [syntax rules](arkts-create-custom-components.md#build-1) as **build()**.
+- The \@Builder function body follows the same [syntax rules](arkts-create-custom-components.md#build-implementation-rules) as the **build()** function.
 
 - The UI components in the \@Builder function can be updated during callback-based transfer and reference-based transfer. Passing by reference takes effect only when one parameter is passed and the parameter is directly passed to the object literal. If there are multiple parameters, the UI component in the @Builder function cannot be refreshed.
 
@@ -121,9 +121,9 @@ Parameters for custom builder functions can be passed [by callback](#passing-par
 
 ### Passing Parameters by Callback
 
-From API version 20, you can use the **UIUtils.makeBinding()** function, the **Binding** class, and the **MutableBinding** class to refresh status variables in the \@Builder function. For details, see [State Variables Can Be Refreshed in the \@Builder](#state-variables-can-be-refreshed-in-the-builder).
+From API version 20, you can use the **UIUtils.makeBinding()** function, the **Binding** class, and the **MutableBinding** class to refresh state variables in the \@Builder function. For details, see [State Variables Can Be Refreshed in the \@Builder](#state-variables-can-be-refreshed-in-the-builder).
 
-Use **UIUtils.makeBinding()** to wrap the callback function for reading status variables and transfer the callback function as a parameter to the @Builder function. The UI component in the @Builder function can be refreshed. The callback function of the write status variable transferred in **UIUtils.makeBinding()** can further transfer the parameter changes in @Builder to the component that calls the Builder function.
+Use **UIUtils.makeBinding()** to wrap the callback function for reading state variables and transfer the callback function as a parameter to the @Builder function. The UI component in the @Builder function can be refreshed. The callback function of the write status variable transferred in **UIUtils.makeBinding()** can further transfer the parameter changes in @Builder to the component that calls the Builder function.
 
 <!-- @[by_makebinding_parameter_passing](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/ParameterMakeBinding.ets) -->
 
@@ -767,7 +767,7 @@ Effect
 
 ![arkts-builder-usage-scenario6](figures/arkts-builder-usage-scenario6.gif)
 
-When a parameter is transferred to @Builder by reference, if the parameter is an object decorated by @Local, assigning a value to the object will trigger UI update in @Builder.
+When passing parameters to **@Builder** by reference, if the parameter is an object decorated with **@Local**, assigning a value to the entire object triggers a UI refresh within **@Builder**.
 
 <!-- @[builder_function_combined_with_the_v2_decorator_and_local](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/BuilderCombinedLocal.ets) -->
 
@@ -1051,7 +1051,7 @@ struct Single {
         .textAlign(TextAlign.Center)
       // Call the global @Builder function customButton.
       customButton(
-        UIUtils.makeBinding<number>(() => this.number1), // Use the UIUtils.makeBinding() function to update the status variables in the @Builder function.
+        UIUtils.makeBinding<number>(() => this.number1), // Use the UIUtils.makeBinding() function to update the state variables in the @Builder function.
         UIUtils.makeBinding<number>(
           () => this.number2,
           (val: number) => {
@@ -1230,7 +1230,7 @@ In @ComponentV2 decorated components, combine @ObservedV2 and @Trace decorators 
 
 **Incorrect Usage**
 
-Using primitive data types in @ComponentV2 decorated components fails to trigger UI re-rendering.
+In the custom component decorated by [@ComponentV2](arkts-create-custom-components.md#componentv2), using simple data types cannot trigger UI refresh.
 
 <!-- @[dynamic_rerendering_with_component_v2_incorrect_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/BuilderComponent/entry/src/main/ets/pages/DynamicIncorrectUsage.ets) -->
 

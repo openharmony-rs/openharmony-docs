@@ -112,16 +112,16 @@ controller: this.webController
 
 ![web-data-detector-preview-drag](figures/web-data-detector-preview-drag.gif)
 
-通过[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)绑定的[自定义菜单](web_menu.md#自定义菜单)与分词长按预览菜单互不影响。长按被高亮的分词超链接不会弹出自定义超链接菜单，长按普通超链接也不会弹出分词预览菜单。
+通过[bindSelectionMenu](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#bindselectionmenu13)绑定的[自定义菜单](web-menu.md#自定义菜单)与分词长按预览菜单互不影响。长按被高亮的分词超链接不会弹出自定义超链接菜单，长按普通超链接也不会弹出分词预览菜单。
 
 
 ## 文本选择菜单扩展
 从API version 22开始，支持通过[enableSelectedDataDetector](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#enableselecteddatadetector22)单独配置文本选择AI菜单的启用情况。
 
-在非编辑区域中，选中的文本满足以下条件时，文本选择菜单将展示对应的AI菜单选项：
+在非编辑区域中，选中的文本满足以下条件时，文本选择菜单将显示相应的AI菜单项：
 
 - 选中文本经过UTF-8编码转换后，其字节长度不超过255字节。
-- 选中文本中仅包含一个匹配识别类型的实体词（可通过[dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)配置支持的识别类型。
+- 选中文本中仅包含一个匹配识别类型的实体（可通过[dataDetectorConfig](../reference/apis-arkweb/arkts-basic-components-web-attributes.md#datadetectorconfig20)配置支持的识别类型）。
 - 不处于“全选”操作状态下的文本。
 
 ![web-data-detector-selection-menu](figures/web-data-detector-selection-menu.gif)

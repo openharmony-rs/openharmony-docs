@@ -44,7 +44,7 @@ sendMms\(context: Context, mmsParams: MmsParams, callback: AsyncCallback&lt;void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -159,7 +159,7 @@ sendMms\(context: Context, mmsParams: MmsParams\): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -267,7 +267,7 @@ downloadMms\(context: Context, mmsParams: MmsParams, callback: AsyncCallback&lt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -388,7 +388,7 @@ downloadMms\(context: Context, mmsParams: MmsParams\): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -502,7 +502,7 @@ setDefaultSmsSlotId\(slotId: number, callback: AsyncCallback&lt;void&gt;\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -553,7 +553,7 @@ setDefaultSmsSlotId\(slotId: number\): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -601,7 +601,7 @@ setSmscAddr\(slotId: number, smscAddr: string, callback: AsyncCallback\<void\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -654,7 +654,7 @@ setSmscAddr\(slotId: number, smscAddr: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -703,7 +703,7 @@ getSmscAddr\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -754,7 +754,7 @@ getSmscAddr\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -802,7 +802,7 @@ splitMessage\(content: string, callback: AsyncCallback\<Array\<string\>\>\): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -853,7 +853,7 @@ splitMessage\(content: string\): Promise\<Array\<string\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -901,7 +901,7 @@ addSimMessage\(options: SimMessageOptions, callback: AsyncCallback\<void\>\): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -957,7 +957,7 @@ addSimMessage\(options: SimMessageOptions\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1010,7 +1010,7 @@ delSimMessage\(slotId: number, msgIndex: number, callback: AsyncCallback\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1063,7 +1063,7 @@ delSimMessage\(slotId: number, msgIndex: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1112,7 +1112,7 @@ updateSimMessage\(options: UpdateSimMessageOptions, callback: AsyncCallback\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1169,7 +1169,7 @@ updateSimMessage\(options: UpdateSimMessageOptions\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1223,7 +1223,7 @@ getAllSimMessages\(slotId: number, callback: AsyncCallback\<Array\<SimShortMessa
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1274,7 +1274,7 @@ getAllSimMessages\(slotId: number\): Promise\<Array\<SimShortMessage\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1322,7 +1322,7 @@ setCBConfig\(options: CBConfigOptions, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1379,7 +1379,7 @@ setCBConfig\(options: CBConfigOptions\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1433,7 +1433,7 @@ getSmsSegmentsInfo\(slotId: number, message: string, force7bit: boolean, callbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1483,7 +1483,7 @@ getSmsSegmentsInfo\(slotId: number, message: string, force7bit: boolean\): Promi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1528,7 +1528,7 @@ isImsSmsSupported\(slotId: number, callback: AsyncCallback\<boolean\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1576,7 +1576,7 @@ isImsSmsSupported\(slotId: number\): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1620,7 +1620,7 @@ getImsShortMessageFormat\(callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1661,7 +1661,7 @@ getImsShortMessageFormat\(\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                  错误信息                    |
 | -------- | -------------------------------------------- |
@@ -1702,7 +1702,7 @@ decodeMms\(mmsFilePathName: string | Array\<number\>, callback: AsyncCallback\<M
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1755,7 +1755,7 @@ decodeMms\(mmsFilePathName: string | Array\<number\>\): Promise\<MmsInformation\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1808,7 +1808,7 @@ encodeMms\(mms: MmsInformation, callback: AsyncCallback\<Array\<number\>\>\): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1864,7 +1864,7 @@ encodeMms\(mms: MmsInformation\): Promise\<Array\<number\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |

@@ -84,7 +84,7 @@ import { media } from '@kit.MediaKit';
 
 function printfItemDescription(obj: media.MediaDescription, key: string) {
   let property: Object = obj[key];
-  console.info('audio key is ' + key); // Specify a key. For details about the keys, see MediaDescriptionKey.
+  console.info('audio key is ' + key); // Obtain the value of the key. For details about the keys, see MediaDescriptionKey.
   console.info('audio value is ' + property); // Obtain the value of the key. The value can be any type. For details about the types, see MediaDescriptionKey.
 }
 
@@ -96,7 +96,7 @@ media.createAVPlayer((err: BusinessError, player: media.AVPlayer) => {
     avPlayer.getTrackDescription((error: BusinessError, arrList: Array<media.MediaDescription>) => {
       if (arrList != null) {
         for (let i = 0; i < arrList.length; i++) {
-          printfItemDescription(arrList[i], media.MediaDescriptionKey.MD_KEY_TRACK_TYPE); // Print the MD_KEY_TRACK_TYPE value of each track.
+          printfItemDescription(arrList[i], media.MediaDescriptionKey.MD_KEY_TRACK_TYPE);  // Print the MD_KEY_TRACK_TYPE value of each track.
         }
       } else {
         console.error(`Failed to get TrackDescription, error:${error}`);
@@ -147,7 +147,7 @@ Describes the audio and video recording profile.
 | Name            | Type                                        | Read-Only| Optional| Description                                                        |
 | ---------------- | -------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
 | audioBitrate     | number                                       | No  | Yes  | Audio encoding bit rate. This parameter is mandatory for audio recording.<br>Supported bit rate ranges:<br>- Range [32000, 500000] for the AAC encoding format.<br>- 64000 for the G.711 μ-law encoding format.<br>- Range [8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000] for the MP3 encoding format.<br>When the MP3 encoding format is used, the mapping between the sample rate and bit rate is as follows:<br>- When the sample rate is lower than 16 kHZ, the bit rate range is [8000 - 64000].<br>- When the sample rate ranges from 16 kHz to 32 kHz, the bit rate range is [8000, 160000].<br>- When the sample rate is greater than 32 kHz, the bit rate range is [32000, 320000].<br>- Range [4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200] for the AMR-NB encoding format.<br>- Range [6600, 8850, 12650, 14250, 15850, 18250, 19850, 23050, 23850] for the AMR-WB encoding format.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
-| audioChannels    | number                                       | No  | Yes  | Audio channel count. This parameter is mandatory for audio recording.<br>- Range [1, 8] for the AAC encoding format.<br>- 1 for the G.711 μ-law encoding format.<br>- Range [1, 2] for the MP3 encoding format.<br>- 1 for the AMR-NB and AMR-WB encoding formats.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
+| audioChannels    | number                                       | No  | Yes  | Audio channel count. This parameter is mandatory for audio recording.<br>- Range [1, 2] for the AAC encoding format.<br>- 1 for the G.711 μ-law encoding format.<br>- Range [1, 2] for the MP3 encoding format.<br>- 1 for the AMR-NB and AMR-WB encoding formats.<br> **Atomic service API**: This API can be used in atomic services since API version 12.      |
 | audioCodec       | [CodecMimeType](arkts-apis-media-e.md#codecmimetype8)             | No  | Yes  | Audio encoding format. This parameter is mandatory for audio recording.<br>Currently, AUDIO_AAC, AUDIO_MP3, AUDIO_G711MU, AUDIO_AMR_NB, and AUDIO_AMR_WB are supported.<br> **Atomic service API**: This API can be used in atomic services since API version 12.    |
 | aacProfile<sup>22+</sup>       | [AacProfile](arkts-apis-media-e.md#aacprofile22)             | No  | Yes  | Extended audio encoding format. The default value is **AAC_LC**.<br>Currently, the following formats are supported: **AAC_LC**, **AAC_HE**, and **AAC_HE_V2**.<br> **Atomic service API**: This API can be used in atomic services since API version 22.    |
 | audioSampleRate  | number                                       | No  | Yes  | Audio sample rate. This parameter is mandatory for audio recording.<br>Supported sample rate ranges:<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000] for the AAC encoding format.<br>- 8000 for the G.711 μ-law encoding format.<br>- Range [8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000] for the MP3 encoding format.<br>- 8000 for the AMR-NB encoding format.<br>- 16000 for the AMR-WB encoding format.<br>Variable bit rate. The bit rate is for reference only.<br> **Atomic service API**: This API can be used in atomic services since API version 12.|
@@ -167,7 +167,7 @@ The following table lists the audio parameters. For details about each parameter
 
 |Encoding Format|Container Format|Sample Rate|Bit Rate|Audio Channel Count|
 |----|----|----|----|----|
-|AUDIO_AAC|MP4, M4A|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]|[32000-500000]|[1-8]|
+|AUDIO_AAC|MP4, M4A|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000, 64000, 88200, 96000]|[32000-500000]|[1-2]|
 |AUDIO_MP3|MP3|[8000, 11025, 12000, 16000, 22050, 24000, 32000, 44100, 48000]|<br>- When the sample rate is lower than 16000, the bit rate range is [8000, 16000, 32000, 40000, 48000, 56000, 64000].<br>- When the sample rate ranges from 16000 to 32000, the bit rate range is [8000, 16000, 32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000].<br>- When the sample rate is greater than 32000, the bit rate range is [32000, 40000, 48000, 56000, 64000, 80000, 96000, 112000, 128000, 160000, 192000, 224000, 256000, 320000].|[1-2]|
 |AUDIO_G711MU|WAV|[8000]|[64000]|[1]|
 |AUDIO_AMR_NB<sup>18+</sup> |AMR|[8000]|[4750, 5150, 5900, 6700, 7400, 7950, 10200, 12200]|[1]|
@@ -391,7 +391,7 @@ Describes the playback strategy.
 | preferredAudioLanguage<sup>13+</sup> | string | No  | Yes  | Preferred audio track language. Set this parameter based on service requirements in DASH scenarios. In non-DASH scenarios, this parameter is not supported, and you are advised to retain the default value.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | preferredSubtitleLanguage<sup>13+</sup> | string | No  | Yes  | Preferred subtitle language. Set this parameter based on service requirements in DASH scenarios. In non-DASH scenarios, this parameter is not supported, and you are advised to retain the default value.<br>**Atomic service API**: This API can be used in atomic services since API version 13.|
 | preferredBufferDurationForPlaying<sup>18+</sup> | number | No  | Yes  | Preferred buffer duration for playback, in seconds. The playback starts once the buffering time exceeds this value. The value range is [0, 20].<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
-| thresholdForAutoQuickPlay<sup>18+</sup> | number | No  | Yes  | Thread for starting smart frame catching, in seconds. The value must be greater than or equal to 2s and greater than **preferredBufferDurationForPlaying**. The default value is 5s.<br>You can use the playback strategy to maintain the real-time quality of live streams by adjusting the smart frame-catch threshold. For FLV live streams, you can set this parameter based on service requirements. This parameter is not supported for non-FLV live streams yet. Fluctuations in network conditions can cause the player to build up a lot of data over time. The player periodically checks the gap between the current playback time and the timestamp of the latest frame in the cache. If this gap is too big, the player starts catching up at 1.2x speed. The [speedDone](arkts-apis-media-AVPlayer.md#onspeeddone9) event is invoked with a value of 100, indicating that smart frame catching has started successfully. Once the gap falls below **preferredBufferDurationForPlaying**, the player stops catching up and resumes the normal playback speed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
+| thresholdForAutoQuickPlay<sup>18+</sup> | number | No  | Yes  | Thread for starting smart frame catching, in seconds. The value must be greater than or equal to 2s and greater than **preferredBufferDurationForPlaying**. The default value is 5s.<br>You can use the playback strategy to maintain the real-time quality of live streams by adjusting the smart frame-catch threshold. For FLV live streams, you can set this parameter based on service requirements. This parameter is not supported for non-FLV live streams yet. Fluctuations in network conditions can cause the player to build up a lot of data over time. The player periodically checks the gap between the current playback time and the timestamp of the latest frame in the cache. If this gap is too big, the player starts catching up at 1.2x speed. The [on('speedDone')](arkts-apis-media-AVPlayer.md#onspeeddone9) event will call back a specific value of **100**, indicating that the smart frame catching feature is enabled successfully. Once the gap falls below **preferredBufferDurationForPlaying**, the player stops catching up and resumes the normal playback speed.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | keepDecodingOnMute<sup>20+</sup>  | boolean | No  | Yes  | Whether the decoder continues to run when the video media is muted, which helps in quickly opening the media. Currently, this feature is available only for videos. The default value is **false**, indicating that the decoder stops running when the media is muted, reducing power consumption.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## AVScreenCaptureStrategy<sup>20+</sup>
@@ -414,10 +414,10 @@ Defines the screen capture parameters.
 | Name             | Type                                                        | Read-Only| Optional| Description                                                        |
 | ----------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | fd                | number                                                       | No  | No  | FD of the file output.                                          |
-| frameWidth        | number                                                       | No  | Yes  | Video width, in px. The default value varies according to the display in use.|
-| frameHeight       | number                                                       | No  | Yes  | Video height, in px. The default value varies according to the display in use.|
-| videoBitrate      | number                                                       | No  | Yes  | Video bit rate. The default value is **10000000**.                            |
-| audioSampleRate   | number                                                       | No  | Yes  | Audio sample rate. This value is used for both internal capture and external capture (using microphones). Only **48000** (default value) and **16000** are supported.|
+| frameWidth        | number                                                       | No  | Yes  | Width of the screen recording video, in pixels.<br>The default screen width varies depending on the screen.|
+| frameHeight       | number                                                       | No  | Yes  | Height of the screen recording video, in pixels.<br>The default screen height varies depending on the screen.|
+| videoBitrate      | number                                                       | No  | Yes  | Bit rate of the screen recording video.<br>The default value is **10000000**.                           |
+| audioSampleRate   | number                                                       | No  | Yes  | Audio sampling rate of the screen recording.<br>This value is used for both the system sound and microphone. Only **48000** (default) and **16000** are supported.|
 | audioChannelCount | number                                                       | No  | Yes  | Audio channel count. This value is used for both internal capture and external capture (using microphones). Only **1** and **2** (default) are supported.|
 | audioBitrate      | number                                                       | No  | Yes  | Audio bit rate. This value is used for both internal capture and external capture (using microphones). The default value is **96000**.|
 | preset            | [AVScreenCaptureRecordPreset](arkts-apis-media-e.md#avscreencapturerecordpreset12) | No  | Yes  | Encoding and container format used. The default value is **SCREEN_RECORD_PRESET_H264_AAC_MP4**.|
@@ -428,7 +428,6 @@ Defines the screen capture parameters.
 ## AudioRecorderConfig<sup>(deprecated)</sup>
 
 > **NOTE**
->
 > This API is supported since API version 6 and deprecated since API version 9. You are advised to use [AVRecorderConfig](#avrecorderconfig9) instead.
 
 Describes audio recording configurations.

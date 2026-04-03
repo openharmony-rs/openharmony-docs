@@ -46,13 +46,13 @@ Provides information about the slider.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| value | number | No| Yes| Current progress.<br>Default value: same as the value of **min**.<br>Since API version 10, this property supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This property supports two-way binding through the [!! syntax](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>Value range: [min, max]<br>Values less than the value of **min** are adjusted to the value of **min**, and values greater than the value of **max** are capped at the value of **max**.<br>The $$ operator enables two-way synchronization between the TS variable and the **Slider** component's **value**. For details, see [Example 7: Setting Two-Way Binding for the Slider](#example-7-setting-two-way-binding-for-the-slider).|
+| value | number | No| Yes| Current progress.<br>Default value: same as the value of **min**.<br>Since API version 10, this property supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>This property supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).<br>Value range: [min, max]<br>Values less than the value of **min** are adjusted to the value of **min**, and values greater than the value of **max** are capped at the value of **max**.<br>The $$ operator enables two-way synchronization between the TS variable and the **Slider** component's **value**. For details, see [Example 7: Setting Two-Way Binding for the Slider](#example-7-setting-two-way-binding-for-the-slider).|
 | min | number | No| Yes| Minimum value.<br>Default value: **0**|
 | max | number | No| Yes| Maximum value.<br>Default value: **100**<br>**NOTE**<br>If the value of **min** is greater than or equal to the value of **max**, the **min** value defaults to **0**, and the **max** value defaults to **100**.<br>If the value is not within the [min, max] range, the value of **min** or **max** is used, whichever is closer.|
 | step | number | No| Yes| Step of the slider.<br>Default value: **1**<br>Value range: [0.01, max - min]<br>**NOTE**<br>If this parameter is set to a value less than 0 or greater than the value of **max**, the default value is used.|
 | style | [SliderStyle](#sliderstyle) | No| Yes| Style of the slider thumb and track.<br>Default value: **SliderStyle.OutSet**|
 | direction<sup>8+</sup> | [Axis](ts-appendix-enums.md#axis) | No| Yes| Whether the slider moves horizontally or vertically.<br>Default value: **Axis.Horizontal**|
-| reverse<sup>8+</sup> | boolean | No| Yes| Whether the slider values are reversed.<br>**true**: A horizontal slider slides from right to left, and a vertical slider slides from bottom to top. **false**: A horizontal slider slides from left to right, and a vertical slider slides from top to bottom.<br>Default value: **false**.|
+| reverse<sup>8+</sup> | boolean | No| Yes| Whether the slider values are reversed.<br>**true**: A horizontal slider slides from right to left, and a vertical slider slides from bottom to top. **false**: A horizontal slider slides from left to right, and a vertical slider slides from top to bottom.<br>Default value: **false**|
 
 ## SliderStyle
 
@@ -122,7 +122,7 @@ When **SliderBlockType.SHAPE** is used, **blockColor** sets the color of the thu
 
 | Name| Type                                      | Mandatory| Description                               |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient](ts-basic-components-datapanel.md#lineargradient10)  | Yes  | Color of the thumb.<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')**|
+| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10)  | Yes  | Color of the thumb.<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')**|
 
 ### trackColor
 
@@ -142,7 +142,7 @@ Since API version 12, **LinearGradient** can be used to create a gradient effect
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient<sup>12+</sup>](ts-basic-components-datapanel.md#lineargradient10) | Yes  | Background color of the track.<br>Default value: **$r('sys.color.ohos_id_color_component_normal')**<br>**NOTE**<br>1. With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied.<br>2. The LinearGradient type cannot be used in atomic services.|
+| value  | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient<sup>12+</sup>](ts-basic-components-datapanel.md#lineargradient10) | Yes  | Background color of the track.<br>Default value: **$r('sys.color.ohos_id_color_component_normal')**<br>**NOTE**<br>1. With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied.<br>2. The LinearGradient type cannot be used in atomic services.|
 
 ### selectedColor
 
@@ -178,7 +178,7 @@ Sets the color of the portion of the track between the minimum value and the thu
 
 | Name       | Type                                                        | Mandatory| Description                                                        |
 | ------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| selectedColor | [ResourceColor](ts-types.md#resourcecolor) \| [LinearGradient](ts-basic-components-datapanel.md#lineargradient10) | Yes  | Color of the portion of the track between the minimum value and the thumb.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')**<br>**NOTE**<br>With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied. |
+| selectedColor | [ResourceColor](ts-types.md#resourcecolor)&nbsp;\|&nbsp;[LinearGradient](ts-basic-components-datapanel.md#lineargradient10) | Yes  | Color of the portion of the track between the minimum value and the thumb.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')**<br>**NOTE**<br>With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied. |
 
 ### showSteps
 
@@ -196,7 +196,7 @@ Sets whether to display the step markers along the slider track.
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | boolean | Yes  | Whether to display the step markers along the slider track.<br>**true**: Display the step markers. **false**: Do not display the step markers.<br>Default value: **false**.|
+| value  | boolean | Yes  | Whether to display the step markers along the slider track.<br>**true**: Display the step markers. **false**: Do not display the step markers.<br>Default value: **false**|
 
 ### showTips
 
@@ -218,7 +218,7 @@ The drawing area of the tooltip is the overlay of the slider.
 
 | Name               | Type                                  | Mandatory| Description                                      |
 | --------------------- | -------------------------------------- | ---- | ------------------------------------------ |
-| value                 | boolean                                | Yes  | Whether to display a tooltip when the user drags the slider.<br>**true**: Display a tooltip. **false**: Do not display a tooltip.<br>Default value: **false**.|
+| value                 | boolean                                | Yes  | Whether to display a tooltip when the user drags the slider.<br>**true**: Display a tooltip. **false**: Do not display a tooltip.<br>Default value: **false**|
 | content<sup>10+</sup> | [ResourceStr](ts-types.md#resourcestr) | No  | Content of the tooltip. By default, the tooltip shows the current percentage value.  |
 
 ### trackThickness<sup>8+</sup>
@@ -305,7 +305,7 @@ Sets the step color.
 
 | Name| Type                                      | Mandatory| Description                              |
 | ------ | ------------------------------------------ | ---- | ---------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Step color.<br>Default value:<br>**$r('sys.color.ohos_id_color_foreground')** mixed with<br>**$r('sys.color.ohos_id_alpha_normal_bg')** transparency|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Step color.<br>Default value:<br>**$r('sys.color.ohos_id_color_foreground')** mixed with **$r('sys.color.ohos_id_alpha_normal_bg')**|
 
 ### trackBorderRadius<sup>10+</sup>
 
@@ -359,7 +359,7 @@ When the slider type is set to **SliderBlockType.SHAPE**, this API sets the size
 
 | Name| Type                                  | Mandatory| Description                                                        |
 | ------ | -------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [SizeOptions](ts-types.md#sizeoptions) | Yes  | Size of the slider in the block direction.<br>Default value:<br>For [SliderStyle](#sliderstyle).OutSet: **{width: 18, height: 18}**<br/>- For [SliderStyle](#sliderstyle).InSet: **{width: 12, height: 12}**<br/>- For [SliderStyle](#sliderstyle).NONE: This parameter is not effective.<br>If the set **blockSize** has different width and height values, the smaller value is taken. If one or both of the width and height values are less than or equal to 0, the default value is used instead.|
+| value  | [SizeOptions](ts-types.md#sizeoptions) | Yes  | Size of the slider in the block direction.<br>Default value:<br>- For [SliderStyle](#sliderstyle).OutSet: **{width: 18, height: 18}**<br>- For [SliderStyle](#sliderstyle).InSet: **{width: 12, height: 12}**<br>- For [SliderStyle](#sliderstyle).NONE: This parameter is not effective.<br>If the set **blockSize** has different width and height values, the smaller value is taken. If one or both of the width and height values are less than or equal to 0, the default value is used instead.|
 
 ### blockStyle<sup>10+</sup>
 
@@ -486,7 +486,7 @@ To enable haptic feedback, you must declare the **ohos.permission.VIBRATE** perm
 
 | Name| Type                                         | Mandatory | Description                                                                                 |
 | ------ | --------------------------------------------- |-----|-------------------------------------------------------------------------------------|
-| enabled  | boolean | Yes  | Whether to enable haptic feedback.<br>**true**: Enable haptic feedback. **false**: Disable haptic feedback.<br>Default value: **true**.|
+| enabled  | boolean | Yes  | Whether to enable haptic feedback.<br>**true**: Enable haptic feedback. **false**: Disable haptic feedback.<br>Default value: **true**|
 
 ### digitalCrownSensitivity<sup>18+</sup>
 
@@ -506,7 +506,7 @@ Sets the sensitivity to the digital crown rotation.
 
 | Name     | Type                                                        | Mandatory| Description                                                   |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt12)[\<CrownSensitivity>](ts-appendix-enums.md#crownsensitivity18) | Yes  | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**|
+| sensitivity | [Optional](ts-universal-attributes-custom-property.md#optionalt)[\<CrownSensitivity>](ts-appendix-enums.md#crownsensitivity18) | Yes  | Sensitivity to the digital crown rotation.<br>Default value: **CrownSensitivity.MEDIUM**|
 
 ### prefix<sup>20+</sup>
 
@@ -562,8 +562,8 @@ The accessibility text settings take effect only when the step markers are displ
 
 | Name     | Type                                                        | Mandatory| Description                                                   |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------- |
-| value | boolean | Yes| Whether to display the step markers along the slider track.<br>**true**: Display the step markers. **false**: Do not display the step markers.<br>Default value: **false**.|
-| options | [SliderShowStepOptions](#slidershowstepoptions20) | No| Accessibility configuration of step markers.<br>Default value: **null**.|
+| value | boolean | Yes| Whether to display the step markers along the slider track.<br>**true**: Display the step markers. **false**: Do not display the step markers.<br>Default value: **false**|
+| options | [SliderShowStepOptions](#slidershowstepoptions20) | No| Accessibility configuration of step markers.<br>Default value: **null**|
 
 ### minLabel<sup>(deprecated)</sup>
 
@@ -573,7 +573,7 @@ Sets the minimum value.
 
 > **NOTE**
 >
-> This attribute is deprecated since API version 9. Use the **min** property in [SliderOptions](#slideroptions) instead.
+> This attribute is supported since API version 7 and deprecated since API version 9. You are advised to use **min** instead. **min** is an attribute of [SliderOptions](#slideroptions).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -591,7 +591,7 @@ Sets the maximum value.
 
 > **NOTE**
 >
-> This attribute is deprecated since API version 9. Use the **max** property in [SliderOptions](#slideroptions) instead.
+> This attribute is supported since API version 7 and deprecated since API version 9. You are advised to use **max** instead. **max** is an attribute of [SliderOptions](#slideroptions).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -611,10 +611,10 @@ Provides accessibility configuration of the slider prefix and suffix.
 
 | Name                    | Type       | Read-Only| Optional| Description                                                        |
 | ------------------------ | ----------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| accessibilityText        | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Text for assistive technologies (for example, screen readers).<br>Default value: **""**.|
-| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Detailed functional description for assistive technologies.<br>Default value: **"Double-tap to activate"**.|
-| accessibilityLevel       | string      | No  | Yes | Whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**.|
-| accessibilityGroup       | boolean     | No  | Yes | Whether to enable accessibility grouping.<br>The value **true** means to enable accessibility grouping, and **false** means the opposite. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components.<br>Default value: **false**.|
+| accessibilityText        | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Text for assistive technologies (for example, screen readers).<br>Default value: **""**|
+| accessibilityDescription | [ResourceStr](ts-types.md#resourcestr) | No  | Yes | Detailed functional description for assistive technologies.<br>Default value: **"Double-tap to activate"**|
+| accessibilityLevel       | string      | No  | Yes | Whether the component can be recognized by accessibility services.<br>The options are as follows:<br>**"auto"**: It is treated as "yes" by the system.<br>**"yes"**: The component can be recognized by accessibility services.<br>**"no"**: The component cannot be recognized by accessibility services.<br>**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.<br>Default value: **"auto"**|
+| accessibilityGroup       | boolean     | No  | Yes | Whether to enable accessibility grouping.<br>The value **true** means to enable accessibility grouping, and **false** means the opposite. When accessibility grouping is enabled, the component and all its children are treated as a single selectable unit, and the accessibility service will no longer focus on the individual child components.<br>Default value: **false**|
 
 ## SliderPrefixOptions<sup>20+</sup>
 
@@ -646,7 +646,7 @@ Provides accessibility configuration of the slider step markers.
 
 | Name                    | Type       | Read-Only| Optional| Description                                                        |
 | ------------------------ | ----------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| text | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Text for assistive technologies (for example, screen readers).<br>Default value: **""**.|
+| text | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Text for assistive technologies (for example, screen readers).<br>Default value: **""**|
 
 ## SliderShowStepOptions<sup>20+</sup>
 
@@ -658,7 +658,7 @@ Provides accessibility text mapping for the slider step markers.
 
 | Name                    | Type       | Read-Only| Optional| Description                                                        |
 | ------------------------ | ----------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| stepsAccessibility | Map<number, [SliderStepItemAccessibility](#sliderstepitemaccessibility20)> | No| Yes| Step value-to-text mappings for assistive technologies (for example, screen readers).<br>Value range for **Key**: [0, INT32_MAX].<br>If **Key** is set to a negative number or a decimal, the setting does not take effect.<br>Default value: **{}**.|
+| stepsAccessibility | Map<number, [SliderStepItemAccessibility](#sliderstepitemaccessibility20)> | No| Yes| Step value-to-text mappings for assistive technologies (for example, screen readers).<br>Value range for **Key**: [0, INT32_MAX].<br>If **Key** is set to a negative number or a decimal, the setting does not take effect.<br>Default value: **{}**|
 
 ## SliderBlockStyle<sup>10+</sup>
 
@@ -672,7 +672,7 @@ Describes the style of the slider in the block direction.
 | ----- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | type  | [SliderBlockType](#sliderblocktype10)                | No  | No  | Type of the slider in the block direction.<br>Default value: **SliderBlockType.DEFAULT**, indicating the round slider.|
 | image | [ResourceStr](ts-types.md#resourcestr)                       | No  | Yes  | Image resource of the slider.<br>The area size for displaying the image is subject to the **blockSize** attribute. Be mindful of the image size when selecting an image.|
-| shape | [Circle](ts-drawing-components-circle.md) \| [Ellipse](ts-drawing-components-ellipse.md) \| [Path](ts-drawing-components-path.md) \| [Rect](ts-drawing-components-rect.md)  | No  | Yes  | Custom shape of the slider.                                  |
+| shape | [Circle](ts-drawing-components-circle.md)&nbsp;\|&nbsp;[Ellipse](ts-drawing-components-ellipse.md)&nbsp;\|&nbsp;[Path](ts-drawing-components-path.md)&nbsp;\|&nbsp;[Rect](ts-drawing-components-rect.md)&nbsp; | No  | Yes  | Custom shape of the slider.                                  |
 
 ## SliderBlockType<sup>10+</sup>
 
@@ -729,7 +729,7 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onChange
 
-onChange(callback: (value: number, mode: SliderChangeMode) =&gt; void)
+onChange(callback:&nbsp;(value:&nbsp;number,&nbsp;mode:&nbsp;SliderChangeMode)&nbsp;=&gt;&nbsp;void)
 
 Triggered when the slider is dragged or clicked.
 
@@ -1463,16 +1463,16 @@ struct SliderExample {
 
 ### Example 6: Setting Accessibility Text for Slider Step Markers
 
-This example demonstrates how to set accessibility text for step markers in a **Slider** component using **showSteps**. The screen reader announces the set accessibility text accordingly.
+This example demonstrates how to set accessibility text for step markers in a **Slider** component using [showSteps](#showsteps20). The screen reader announces the set accessibility text accordingly. The [showSteps](#showsteps20) attribute is added since API version 20.
 
 ```ts
 
 class SliderBlockBorderColorModifier1 implements AttributeModifier<SliderAttribute>{
   optionMaps:Map<number, SliderStepItemAccessibility> = new Map()
-    .set(1, {text : "123123"})
-    .set(2, {text : "Slider accessibility text"})
+    .set(1, {text : '123123'})
+    .set(2, {text : 'Slider accessibility text'})
     .set(3, {text : $r('app.string.stepItemText')})
-    .set(4, {text : "!@#$%^&*()"});
+    .set(4, {text : '!@#$%^&*()'});
   applyNormalAttribute(instance: SliderAttribute): void {
     instance.showSteps(true, {stepsAccessibility: this.optionMaps})
   }
@@ -1484,15 +1484,15 @@ struct SliderExample {
   @State optionMaps:Map<number, SliderStepItemAccessibility> = new Map();
   private  sliderModifier: SliderBlockBorderColorModifier1 =new SliderBlockBorderColorModifier1()
   aboutToAppear(){
-    this.optionMaps.set(1, {text : "123123"})
-    this.optionMaps.set(2, {text : "Slider accessibility text"})
+    this.optionMaps.set(1, {text : '123123'})
+    this.optionMaps.set(2, {text : 'Slider accessibility text'})
     this.optionMaps.set(3, {text : $r('app.string.app_name')})
-    this.optionMaps.set(4, {text : "!@#$%^&*()"})
+    this.optionMaps.set(4, {text : '!@#$%^&*()'})
     this.show = true;
   }
   build() {
     Column({ space: 8 }) {
-      Text("show steps").fontSize(12).fontColor(0xCCCCCC).margin(15).width('90%')
+      Text('This is an example for showSteps attribute').fontSize(15).fontColor(0x000000).margin(15).width('90%')
       Row() {
         Slider({
           style: SliderStyle.InSet,
@@ -1505,9 +1505,10 @@ struct SliderExample {
           .stepSize(8)
           .stepColor(Color.Yellow)
           .showSteps(true, {stepsAccessibility: this.optionMaps})
-      } .width('80%').height(300)
+      }.width('80%').height(100)
       Divider()
-      Text("modifier").fontSize(12).fontColor(0xCCCCCC).margin(15).width('90%')
+      Text('This is an example for showSteps attribute with modifier').fontSize(15).fontColor(0x000000).margin(15)
+        .width('90%')
       Row() {
         Slider({
           style: SliderStyle.InSet,
@@ -1520,7 +1521,7 @@ struct SliderExample {
           .stepSize(8)
           .stepColor(Color.Yellow)
           .attributeModifier(this.sliderModifier)
-      } .width('80%').height(300)
+      }.width('80%').height(100)
       Divider()
     }
   }

@@ -58,7 +58,10 @@ FullScreenLaunchComponent({ content: Callback\<void>, appId: string, options?: A
 > - If the atomic service exits by calling [terminateSelf](../../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#terminateself), the callback parameter has a default **code** value of **0** and **want** of **undefined**.
 
 ## Example
+
 This example demonstrates component usage with extended atomic service capabilities. In real-world development, replace the sample **appId** with the actual application of your ID atomic service.
+
+**FullScreenLaunchComponent** needs to be invoked by the user. After the provider completes local installation, the component can be launched in full-screen embedded mode within the user application or atomic service.
 
 **User Implementation**
 ```ts

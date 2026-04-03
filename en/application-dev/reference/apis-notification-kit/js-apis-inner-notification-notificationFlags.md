@@ -21,7 +21,7 @@ Defines the notification flags.
 | Name            | Type                   | Read Only| Optional| Description                                        |
 | ---------------- | ---------------------- | ---- | -----|-------------------------------------------- |
 | soundEnabled     | [NotificationFlagStatus](#notificationflagstatus11) | Yes | Yes| Settings of the sound alert for the notification.   |
-| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | Yes | Yes| Settings of the vibration for the notification.|
+| vibrationEnabled | [NotificationFlagStatus](#notificationflagstatus11) | Yes | Yes| Settings of vibration for the notification.|
 
 
 ## NotificationFlagStatus<sup>11+</sup>

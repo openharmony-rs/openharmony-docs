@@ -215,7 +215,7 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
 3. Modify or delete data based on the conditions specified by **OH_Predicates**.
 
-   Call **OH_Rdb_Update** to modify data, and call **OH_Rdb_Delete** to delete data.<br>Example:
+   Call **OH_Rdb_Update** to modify data, and call **OH_Rdb_Delete** to delete data. <br>Example:
 
     <!--@[rdb_OH_Rdb_Update_and_UpdateWithConflictResolution](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
 
@@ -268,8 +268,8 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
     predicates->destroy(predicates);
     predicates2->destroy(predicates2);
     ```
-    <!--@[rdb_OH_Rdb_Delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
-
+    <!--@[rdb_OH_Rdb_Delete](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
+    
     ``` C++
     // Delete data.
     OH_Predicates *predicates = OH_Rdb_CreatePredicates("EMPLOYEE");
@@ -467,8 +467,8 @@ libnative_rdb_ndk.z.so, libhilog_ndk.z.so
 
    Call **OH_Rdb_CreateTransaction** to create a transaction object and use this object to execute the corresponding transaction operation.
 
-    <!--@[rdb_OH_Rdb_CreateTransaction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->
-
+    <!--@[rdb_OH_Rdb_CreateTransaction](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/RelationalStore/RdbStore/entry/src/main/cpp/napi_init.cpp)-->    
+    
     ``` C++
     OH_RDB_TransOptions *options = OH_RdbTrans_CreateOptions();
     // Configure the transaction type.

@@ -62,7 +62,7 @@ Read [Camera](../../reference/apis-camera-kit/capi-oh-camera.md) for the API ref
       librawfile.z.so)
    ```
 
-3. Call [OH_CameraManager_GetCameraDevice](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameradevice) to obtain the front and rear cameras.
+3. Call [OH_CameraManager_GetCameraDevice](../../reference/apis-camera-kit/capi-camera-manager-h.md#oh_cameramanager_getcameradevice) to obtain the front and rear cameras. If the return value is **CAMERA_SERVICE_FATAL_ERROR**, based on the configuration information in the sample, it indicates that the current device does not support the default type of camera for the specified position (front/rear), and the multi-camera concurrent mode cannot be enabled.
 
    ```c++
    void GetSupportedCameras(Camera_Manager *cameraManager)

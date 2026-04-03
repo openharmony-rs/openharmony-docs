@@ -20,69 +20,70 @@ Models come in a multitude of formats, but currently, ArkGraphics 3D supports on
 
 A glTF model can contain key elements of a 3D scene, including the light, camera, and model. If a glTF model contains a camera, you can use the APIs provided by ArkGraphics 3D to load the glTF model to render the 3D scene in the camera view. If the model does not contain a camera, you can use the ArkGraphics 3D APIs to create a camera for rendering. Due to the large size, a 3D model is usually loaded in asynchronous mode. After a model is loaded, a scene object is returned, based on which you can edit the 3D scene.
 
-  1. Import the required modules.
+1. Import the required modules.
 
-     Import the core types provided by ArkGraphics 3D in the page script to create and manage 3D scenes and cameras.
+   Import the core types provided by ArkGraphics 3D in the page script to create and manage 3D scenes and cameras.
 
-     <!-- @[model_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
-     
-     ``` TypeScript
-     import { Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
-     ```
+   <!-- @[model_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
+   
+   ``` TypeScript
+   import { Camera, Scene, SceneResourceFactory } from '@kit.ArkGraphics3D';
+   ```
 
-  2. Load scene resources.
+2. Load scene resources.
 
-     ArkGraphics 3D provides **Scene.load()** to load glTF model files. Upon successful model loading, a scene instance is returned, allowing for the creation of components like cameras and lighting. The API supports model files in .gltf and .glb formats, with .glb being a binary format that is content-equivalent to .gltf but more efficient for loading and usage. It provides two methods for loading models: relative path loading using $rawfile() to read built-in resource files from the **resources/rawfile/** directory of the application, and absolute path loading from the application sandbox directory. The API supports only accessing sandbox files created or written by the application itself. For specific examples, see [load()](../reference/apis-arkgraphics3d/js-apis-inner-scene.md#load).
-     The following example demonstrates loading a .glb model using a relative path:
+   ArkGraphics 3D provides **Scene.load()** to load glTF model files. Upon successful model loading, a scene instance is returned, allowing for the creation of components like cameras and lighting. The API supports model files in .gltf and .glb formats, with .glb being a binary format that is content-equivalent to .gltf but more efficient for loading and usage. It provides two methods for loading models: relative path loading using $rawfile() to read built-in resource files from the **resources/rawfile/** directory of the application, and absolute path loading from the application sandbox directory. The API supports only accessing sandbox files created or written by the application itself. For specific examples, see [load()](../reference/apis-arkgraphics3d/js-apis-inner-scene.md#load).
 
-     <!-- @[model_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
-     
-     ``` TypeScript
-     if (this.scene == null) {
-       // Load the model and place the gltf file in the related path. Use the actual path during loading.
-       // Switched from .gltf to .glb; same content, different format
-       Scene.load($rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.glb'))
-         .then(async (result: Scene) => {
-           this.scene = result;
-           let rf: SceneResourceFactory = this.scene.getResourceFactory();
-           // ...
-         })
-         .catch((error: string) => {
-         console.error('Scene load failed: ' + error);
-       });
-     }
-     ```
+   The following example demonstrates loading a .glb model using a relative path:
 
-  3. Create a camera and configure scene rendering parameters.
+   <!-- @[model_load](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
+   
+   ``` TypeScript
+   if (this.scene == null) {
+     // Load the model and place the gltf file in the related path. Use the actual path during loading.
+     // Switched from .gltf to .glb; same content, different format
+     Scene.load($rawfile('gltf/DamagedHelmet/glTF/DamagedHelmet.glb'))
+       .then(async (result: Scene) => {
+         this.scene = result;
+         let rf: SceneResourceFactory = this.scene.getResourceFactory();
+         // ...
+       })
+       .catch((error: string) => {
+       console.error('Scene load failed: ' + error);
+     });
+   }
+   ```
 
-     Call **SceneResourceFactory.createCamera()** to create a camera, and set its enabled state and viewing position. You can control the viewing distance by adjusting the z-axis position of the camera. Then, wrap the loaded scene into a SceneOptions object and specify the rendering type as **ModelType.SURFACE** to render the scene content via Component3D.
+3. Create a camera and configure scene rendering parameters.
 
-     <!-- @[camera_scene_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
-     
-     ``` TypeScript
-     // Create a Camera.
-     this.cam = await rf.createCamera({ 'name': 'Camera' });
-     // Set proper camera parameters.
-     this.cam.enabled = true;
-     this.cam.position.z = 5;
-     
-     this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
-     ```
+   Call **SceneResourceFactory.createCamera()** to create a camera, and set its enabled state and viewing position. You can control the viewing distance by adjusting the z-axis position of the camera. Then, wrap the loaded scene into a SceneOptions object and specify the rendering type as **ModelType.SURFACE** to render the scene content via Component3D.
 
-  4. Render the 3D model.
+   <!-- @[camera_scene_params](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
+   
+   ``` TypeScript
+   // Create a Camera.
+   this.cam = await rf.createCamera({ 'name': 'Camera' });
+   // Set proper camera parameters.
+   this.cam.enabled = true;
+   this.cam.position.z = 5;
+   
+   this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+   ```
 
-     Use Component3D to render the loaded 3D scene. If the model is not fully loaded, a prompt message is displayed. Component3D handles the rendering automatically based on the provided SceneOptions object.
+4. Render the 3D model.
 
-     <!-- @[render_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
-     
-     ``` TypeScript
-     if (this.sceneOpt) {
-       // Use Component3D to display the 3D scenario.
-       Component3D(this.sceneOpt);
-     } else {
-       Text('Loading···');
-     }
-     ```
+   Use Component3D to render the loaded 3D scene. If the model is not fully loaded, a prompt message is displayed. Component3D handles the rendering automatically based on the provided SceneOptions object.
+
+   <!-- @[render_model](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/init.ets) -->
+   
+   ``` TypeScript
+   if (this.sceneOpt) {
+     // Use Component3D to display the 3D scenario.
+     Component3D(this.sceneOpt);
+   } else {
+     Text('Loading···');
+   }
+   ```
 
 ## Creating and Managing a Camera
 
@@ -90,105 +91,105 @@ As an important part of a 3D scene, a camera determines the projection process f
 
 ArkGraphics 3D provides flexible camera APIs, which allow you to dynamically create, configure, and control cameras as required.
 
-  1. Import the required modules.
+1. Import the required modules.
 
-     Import the core types provided by ArkGraphics 3D in the page script to load scenes, create cameras, and manage resources.
+   Import the core types provided by ArkGraphics 3D in the page script to load scenes, create cameras, and manage resources.
 
-     <!-- @[cam_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
-     
-     ``` TypeScript
-     import { Camera, Scene, SceneNodeParameters, SceneResourceFactory } from '@kit.ArkGraphics3D';
-     ```
+   <!-- @[cam_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
+   
+   ``` TypeScript
+   import { Camera, Scene, SceneNodeParameters, SceneResourceFactory } from '@kit.ArkGraphics3D';
+   ```
 
-  2. Load scene resources.
+2. Load scene resources.
 
-     Use **Scene.load()** to load the .glb model file from the **resources/rawfile/** directory of the application. .glb is a binary format that is content-equivalent to .gltf but more efficient for loading and usage. Upon successful model loading, a scene object is returned, from which you can obtain a SceneResourceFactory for subsequent camera creation.
+   Use **Scene.load()** to load the .glb model file from the **resources/rawfile/** directory of the application. .glb is a binary format that is content-equivalent to .gltf but more efficient for loading and usage. Upon successful model loading, a scene object is returned, from which you can obtain a SceneResourceFactory for subsequent camera creation.
 
-     <!-- @[cam_load_and_factory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
-     
-     ``` TypeScript
-     let scene: Promise<Scene> = Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'));
-     scene.then(async (result: Scene) => {
-     // ···
-       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
-       let sceneCameraParameter: SceneNodeParameters = { name: 'camera' };
-     // ···
-     }).catch((error: string) => {
-       console.error('Scene load failed: ' + error);
-       reject(error);
-     });
-     ```
+   <!-- @[cam_load_and_factory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
+   
+   ``` TypeScript
+   let scene: Promise<Scene> = Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'));
+   scene.then(async (result: Scene) => {
+     // ...
+     let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+     let sceneCameraParameter: SceneNodeParameters = { name: 'camera' };
+     // ...
+   }).catch((error: string) => {
+     console.error('Scene load failed: ' + error);
+     reject(error);
+   });
+   ```
 
-  3. Create a camera and configure camera parameters.
+3. Create a camera and configure camera parameters.
 
-     Call **SceneResourceFactory.createCamera()** to create a camera, and configure its enabled state, position, FoV, and other parameters. The camera position affects the viewing distance of the scene, whereas the FoV determines the range of the scene visible in the view.
+   Call **SceneResourceFactory.createCamera()** to create a camera, and configure its enabled state, position, FoV, and other parameters. The camera position affects the viewing distance of the scene, whereas the FoV determines the range of the scene visible in the view.
 
-     <!-- @[cam_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
-     
-     ``` TypeScript
-     let camera: Promise<Camera> = sceneFactory.createCamera(sceneCameraParameter);
-     camera.then(async (cameraEntity: Camera) => {
-       // Enable the camera node.
-       cameraEntity.enabled = true;
-     
-       // Set the camera position.
-       cameraEntity.position.z = 5;
-     
-       // Set the FoV.
-       cameraEntity.fov = 60 * Math.PI / 180;
-     
-       // Set other camera parameters.
-       // ...
-       // ···
-     }).catch((error: string) => {
-       console.error('Camera create failed: ' + error + '.');
-       // ···
-     });
-     ```
+   <!-- @[cam_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
+   
+   ``` TypeScript
+   let camera: Promise<Camera> = sceneFactory.createCamera(sceneCameraParameter);
+   camera.then(async (cameraEntity: Camera) => {
+     // Enable the camera node.
+     cameraEntity.enabled = true;
+   
+     // Set the camera position.
+     cameraEntity.position.z = 5;
+   
+     // Set the FoV.
+     cameraEntity.fov = 60 * Math.PI / 180;
+   
+     // Set other camera parameters.
+     // ...
+     // ...
+   }).catch((error: string) => {
+     console.error('Camera create failed: ' + error + '.');
+     // ...
+   });
+   ```
 
-  4. Initialize the camera and bind it with the scene.
+4. Initialize the camera and bind it with the scene.
 
-     After completing the camera initialization, bind the loaded scene and camera together and configure the scene rendering parameters. By constructing a SceneOptions object, you can hand over the scene to Component3D for rendering and display. For specific rendering methods, refer to the model loading example.
+   After completing the camera initialization, bind the loaded scene and camera together and configure the scene rendering parameters. By constructing a SceneOptions object, you can hand over the scene to Component3D for rendering and display. For specific rendering methods, refer to the model loading example.
 
-     <!-- @[cam_init_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) --> 
-     
-     ``` TypeScript
-     this.camera = await createCameraPromise();
-     if (globalScene && this.camera) {
-       this.scene = globalScene;
-       this.positionX = this.camera.position.x;
-       this.positionY = this.camera.position.y;
-       this.positionZ = this.camera.position.z;
-       this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
-     }
-     ```
+   <!-- @[cam_init_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) --> 
+   
+   ``` TypeScript
+   this.camera = await createCameraPromise();
+   if (globalScene && this.camera) {
+     this.scene = globalScene;
+     this.positionX = this.camera.position.x;
+     this.positionY = this.camera.position.y;
+     this.positionZ = this.camera.position.z;
+     this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+   }
+   ```
 
-  5. Interact with the camera.
+5. Interact with the camera.
 
-     You can achieve interactive view control by setting the camera's position, rotation, scale, FoV, and other parameters. The following uses Z-axis control as an example, with similar logic for the X and Y axes.
+   You can achieve interactive view control by setting the camera's position, rotation, scale, FoV, and other parameters. The following uses Z-axis control as an example, with similar logic for the X and Y axes.
 
-     <!-- @[cam_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
-     
-     ``` TypeScript
-     Slider({
-       value: this.positionZ,
-       min: 5,
-       max: 10,
-       step: 0.1,
-       style: SliderStyle.OutSet
-     })
-       .showTips(false)
-       .onChange((value: number, mode: SliderChangeMode) => {
-         this.positionZ = value;
-         if (mode === SliderChangeMode.End) {
-           if (!this.scene || !this.camera) {
-             return;
-           }
-           this.camera.position.z = value;
+   <!-- @[cam_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/camera.ets) -->
+   
+   ``` TypeScript
+   Slider({
+     value: this.positionZ,
+     min: 5,
+     max: 10,
+     step: 0.1,
+     style: SliderStyle.OutSet
+   })
+     .showTips(false)
+     .onChange((value: number, mode: SliderChangeMode) => {
+       this.positionZ = value;
+       if (mode === SliderChangeMode.End) {
+         if (!this.scene || !this.camera) {
+           return;
          }
-       })
-       .width('100%')
-     ```
+         this.camera.position.z = value;
+       }
+     })
+     .width('100%')
+   ```
 
 ## Creating and Managing Light
 
@@ -198,109 +199,109 @@ There are many types of lights, for example, directional light and spotlight. Di
 
 ArkGraphics 3D provides APIs for creating light and modifying light parameters. You can adjust the 3D scene by setting light properties to obtain the expected rendering effect.
 
-  1. Import the required modules.
+1. Import the required modules.
 
-     Import the core types provided by ArkGraphics 3D in the page script to load scenes, and create cameras and lights.
+   Import the core types provided by ArkGraphics 3D in the page script to load scenes, and create cameras and lights.
 
-     <!-- @[light_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
-     
-     ``` TypeScript
-     import { Camera, Light, LightType, Scene, SceneNodeParameters, SceneResourceFactory } from '@kit.ArkGraphics3D';
-     ```
+   <!-- @[light_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
+   
+   ``` TypeScript
+   import { Camera, Light, LightType, Scene, SceneNodeParameters, SceneResourceFactory } from '@kit.ArkGraphics3D';
+   ```
 
-  2. Load scene resources.
+2. Load scene resources.
 
-     Use **Scene.load()** to load the .glb model file from the **resources/rawfile/** directory of the application. .glb is a binary format that is content-equivalent to .gltf but more efficient for loading and usage. Upon successful model loading, a scene object is returned, from which you can obtain a SceneResourceFactory for subsequent light creation.
+   Use **Scene.load()** to load the .glb model file from the **resources/rawfile/** directory of the application. .glb is a binary format that is content-equivalent to .gltf but more efficient for loading and usage. Upon successful model loading, a scene object is returned, from which you can obtain a SceneResourceFactory for subsequent light creation.
 
-     <!-- @[light_load_and_factory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
-     
-     ``` TypeScript
-     let scene: Promise<Scene> = Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'));
-     scene.then(async (result: Scene) => {
-     // ···
-       let sceneFactory: SceneResourceFactory = result.getResourceFactory();
-       let lightParameter: SceneNodeParameters = { name: 'light' };
-     // ···
-     }).catch((error: string) => {
-       console.error('Scene load failed: ' + error);
-     // ···
-     });
-     ```
+   <!-- @[light_load_and_factory](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
+   
+   ``` TypeScript
+   let scene: Promise<Scene> = Scene.load($rawfile('gltf/CubeWithFloor/glTF/AnimatedCube.glb'));
+   scene.then(async (result: Scene) => {
+     // ...
+     let sceneFactory: SceneResourceFactory = result.getResourceFactory();
+     let lightParameter: SceneNodeParameters = { name: 'light' };
+     // ...
+   }).catch((error: string) => {
+     console.error('Scene load failed: ' + error);
+     // ...
+   });
+   ```
 
-  3. Create a light and configure light parameters.
+3. Create a light and configure light parameters.
 
-     Call **SceneResourceFactory.createLight()** to create a light, and set the light type, position, color, and other parameters. The light type determines the light direction, the position determines the light position, and the color determines the hue of the emitted light.
+   Call **SceneResourceFactory.createLight()** to create a light, and set the light type, position, color, and other parameters. The light type determines the light direction, the position determines the light position, and the color determines the hue of the emitted light.
 
-     <!-- @[light_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
-     
-     ``` TypeScript
-     let light: Promise<Light> = sceneFactory.createLight(lightParameter, LightType.DIRECTIONAL);
-     light.then(async (lightEntity: Light) => {
-       // Set the color of the directional light.
-       lightEntity.color = { r: 0.8, g: 0.1, b: 0.2, a: 1.0 };
-     
-       // Set other light parameters.
-       // ...
-       // ···
-     }).catch((err: string) => {
-       console.error('Light create failed: ' + err + '.');
-       // ···
-     });
-     ```
+   <!-- @[light_create_and_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
+   
+   ``` TypeScript
+   let light: Promise<Light> = sceneFactory.createLight(lightParameter, LightType.DIRECTIONAL);
+   light.then(async (lightEntity: Light) => {
+     // Set the color of the directional light.
+     lightEntity.color = { r: 0.8, g: 0.1, b: 0.2, a: 1.0 };
+   
+     // Set other light parameters.
+     // ...
+     // ...
+   }).catch((err: string) => {
+     console.error('Light create failed: ' + err + '.');
+     // ...
+   });
+   ```
 
-  4. Initialize the camera and bind it with the scene.
+4. Initialize the camera and bind it with the scene.
 
-     After completing the light initialization, bind the loaded scene and light together and configure the scene rendering parameters. By constructing a SceneOptions object, you can hand over the scene to Component3D for rendering and display. Create a camera and set the viewing position to control the scene display effect.
+   After completing the light initialization, bind the loaded scene and light together and configure the scene rendering parameters. By constructing a SceneOptions object, you can hand over the scene to Component3D for rendering and display. Create a camera and set the viewing position to control the scene display effect.
 
-     <!-- @[light_init_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
-     
-     ``` TypeScript
-     this.light = await createLightPromise();
-     if (globalScene && this.light) {
-       this.scene = globalScene;
-       this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
-       this.rf = this.scene.getResourceFactory();
-       this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
-       this.cam.enabled = true;
-       this.cam.position.z = 5;
-       // Initialize color value
-       this.red = this.light.color.r;
-       this.green = this.light.color.g;
-       this.blue = this.light.color.b;
-     }
-     ```
+   <!-- @[light_init_bind](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
+   
+   ``` TypeScript
+   this.light = await createLightPromise();
+   if (globalScene && this.light) {
+     this.scene = globalScene;
+     this.sceneOpt = { scene: this.scene, modelType: ModelType.SURFACE } as SceneOptions;
+     this.rf = this.scene.getResourceFactory();
+     this.cam = await this.rf.createCamera({ 'name': 'Camera1' });
+     this.cam.enabled = true;
+     this.cam.position.z = 5;
+     // Initialize color value
+     this.red = this.light.color.r;
+     this.green = this.light.color.g;
+     this.blue = this.light.color.b;
+   }
+   ```
 
-  5. Interact with the light.
+5. Interact with the light.
 
-     You can achieve interactive light control by adjusting the light's color, position, and direction. The following illustrates interaction logic based on the color components (R/G/B), with similar approaches for other parameters.
+   You can achieve interactive light control by adjusting the light's color, position, and direction. The following illustrates interaction logic based on the color components (R/G/B), with similar approaches for other parameters.
 
-     <!-- @[light_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/graphic/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
-     
-     ``` TypeScript
-     Slider({
-       value: this.red,
-       min: 0,
-       max: 1,
-       step: 0.01,
-       style: SliderStyle.OutSet
-     })
-       .showTips(false)
-       .onChange((value: number, mode: SliderChangeMode) => {
-         this.red = value;
-         if (mode === SliderChangeMode.End) {
-           if (!this.scene || !this.light) {
-             return;
-           }
-           this.light.color = {
-             r: this.red,
-             g: this.green,
-             b: this.blue,
-             a: 1.0
-           }
+   <!-- @[light_ui_sliders](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkGraphics3D/entry/src/main/ets/scene/light.ets) -->
+   
+   ``` TypeScript
+   Slider({
+     value: this.red,
+     min: 0,
+     max: 1,
+     step: 0.01,
+     style: SliderStyle.OutSet
+   })
+     .showTips(false)
+     .onChange((value: number, mode: SliderChangeMode) => {
+       this.red = value;
+       if (mode === SliderChangeMode.End) {
+         if (!this.scene || !this.light) {
+           return;
          }
-       })
-       .width('100%')
-     ```
+         this.light.color = {
+           r: this.red,
+           g: this.green,
+           b: this.blue,
+           a: 1.0
+         }
+       }
+     })
+     .width('100%')
+   ```
 
 <!--RP1-->
 ## Samples

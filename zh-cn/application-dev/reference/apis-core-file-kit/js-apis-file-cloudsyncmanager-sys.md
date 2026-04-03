@@ -41,7 +41,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean): Pr
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回修改应用的端云文件同步开关的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -84,7 +84,7 @@ changeAppCloudSwitch(accountId: string, bundleName: string, status: boolean, cal
 | accountId | string | 是   | 账号Id。|
 | bundleName | string | 是   | 应用包名|
 | status | boolean | 是   | 修改的应用云同步开关状态。true为打开；false为关闭。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步修改应用的端云文件同步开关之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步修改应用的端云文件同步开关之后。 |
 
 **错误码：**
 
@@ -133,7 +133,7 @@ notifyDataChange(accountId: string, bundleName: string): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回通知端云服务应用的云数据变更的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -175,7 +175,7 @@ notifyDataChange(accountId: string, bundleName: string, callback: AsyncCallback&
 | ---------- | ------ | ---- | ---- |
 | accountId | string | 是   | 账号Id。|
 | bundleName | string | 是   | 应用包名。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步通知端云服务应用的云数据变更之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步通知端云服务应用的云数据变更之后。 |
 
 **错误码：**
 
@@ -239,11 +239,11 @@ notifyDataChange(userId: number, extraData: ExtraData): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回通知端云服务应用的云数据变更的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -284,11 +284,11 @@ notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncCallback&l
 | ---------- | ------ | ---- | ---- |
 | userId | number | 是   | 用户Id。|
 | extraData | ExtraData | 是   | 云端数据变更信息。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步通知端云服务应用的云数据变更之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步通知端云服务应用的云数据变更之后。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -336,7 +336,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>): Promise&lt;vo
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回使能端云协同能力的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -383,7 +383,7 @@ enableCloud(accountId: string, switches: Record<string, boolean>, callback: Asyn
 | ---------- | ------ | ---- | ---- |
 | accountId | string | 是   | 账号Id。|
 | switches | Record<string, boolean> | 是   | 应用的端云协同特性使能开关，string类型为应用包名，boolean类型为开关状态。true为打开；false为关闭。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步使能端云协同能力之后的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步使能端云协同能力之后。 |
 
 **错误码：**
 
@@ -436,7 +436,7 @@ disableCloud(accountId: string): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回去使能端云协同能力的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -478,7 +478,7 @@ disableCloud(accountId: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | accountId | string | 是   | 账号Id。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步去使能端云协同能力之后的回调。|
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步去使能端云协同能力之后。|
 
 **错误码：**
 
@@ -541,7 +541,7 @@ clean(accountId: string, appActions: Record<string, Action>): Promise&lt;void&gt
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回清理本地云相关数据的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -588,7 +588,7 @@ clean(accountId: string, appActions: Record<string, Action>, callback: AsyncCall
 | ---------- | ------ | ---- | ---- |
 | accountId | string | 是   | 账号Id。|
 | appActions | Record<string, Action> | 是   | 清理动作类型，string类型为待清理应用包名， [Action](#action)为清理动作类型。|
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步方法清理本地云相关数据。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步方法清理本地云相关数据。 |
 
 **错误码：**
 
@@ -649,7 +649,7 @@ constructor(bundleName: string)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -692,7 +692,7 @@ getCloudFileInfo(): Promise&lt;CloudFileInfo&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -720,7 +720,7 @@ downgradeMgr.getCloudFileInfo().then((fileInfo: cloudSyncManager.CloudFileInfo) 
 
 startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
-异步方法启动指定应用的云文件的降级下载，使用Promise异步回调。
+启动指定应用的云文件的降级下载，使用Promise异步回调。使用callback异步回调。
 
 同一应用存在正在执行的降级下载任务的情况下，重复触发会返回错误信息（22400006）。
 
@@ -734,7 +734,7 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 | 参数名   | 类型                             | 必填 | 说明                                                                                |
 | -------- | -------------------------------- | ---- | ----------------------------------------------------------------------------------- |
-| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | 是   | 降级下载进度回调，回调参数为DownloadProgress，返回值为void。 |
+| callback | Callback&lt;[DownloadProgress](js-apis-file-cloudsyncmanager.md#downloadprogress20)&gt; | 是   | 回调函数。降级下载进度，回调参数为DownloadProgress，返回值为void。 |
 
 **返回值：**
 
@@ -744,7 +744,7 @@ startDownload(callback: Callback&lt;DownloadProgress&gt;): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -798,7 +798,7 @@ stopDownload(): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[文件管理子系统错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[文件管理错误码](errorcode-filemanagement.md)以及[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                                                                                                                                          |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

@@ -19,8 +19,8 @@
       - [Key Import Overview and Algorithm Specifications](huks-key-import-overview.md)
       - [Importing a Key in Plaintext (ArkTS)](huks-import-key-in-plaintext-arkts.md)
       - [Importing a Key in Plaintext (C/C++)](huks-import-key-in-plaintext-ndk.md)
-      - [Importing a Key in Ciphertext (ArkTS)](huks-import-wrapped-key-arkts.md)
-      - [Importing a Key in Ciphertext (C/C++)](huks-import-wrapped-key-ndk.md)
+      - [Importing a Key in Secure Mode (ArkTS)](huks-import-wrapped-key-arkts.md)
+      - [Importing a Key in Secure Mode (C/C++)](huks-import-wrapped-key-ndk.md)
   - Key Use<!--huks-key-use-->
     - [General Process of Using a Key](huks-key-use-overview.md)
     - Encryption and Decryption<!--huks-encryption-decryption-->
@@ -98,7 +98,7 @@
     - [General Query Overview and Specifications](huks-ukey-general-query-overview.md)
     - [General Query (ArkTS)](huks-ukey-general-query-arkts.md)
     - [General Query (C/C++)](huks-ukey-general-query-ndk.md)
+  - [Ukey Process Example](huks-ukey-best-dev.md)
   - Driver HAP ExtensionAbility Adaptation Guide<!--huks-extension-ability-support-->
     - [CryptoExtensionAbility Extension Capability Overview](huks-extension-ability-support-overview.md)
     - [CryptoExtensionAbility Adaptation Development Guide](huks-extension-ability-support-dev.md)
-<!--no_check-->

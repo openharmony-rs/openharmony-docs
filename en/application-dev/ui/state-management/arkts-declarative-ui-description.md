@@ -20,13 +20,13 @@ You can create a component with or without parameters, depending on the componen
 
 If a component's API definition does not include mandatory constructor parameters, leave the parentheses empty. For example, the **Divider** component requires no parameters.
 
- <!-- @[segment1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) -->
+ <!-- @[segment1](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DeclarativeUIDescription/entry/src/main/ets/pages/Index.ets) --> 
  
  ``` TypeScript
  Column() {
-   Text('item 1')
+   // ...
    Divider()
-   Text('item 2')
+   // ...
  }
  ```
 

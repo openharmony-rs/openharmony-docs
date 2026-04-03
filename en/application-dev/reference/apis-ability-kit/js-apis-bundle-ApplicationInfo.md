@@ -14,7 +14,7 @@ The module provides application information. Unless otherwise specified, the inf
 > 
 > The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-ApplicationInfo](js-apis-bundleManager-applicationInfo.md) instead.
 
-## ApplicationInfo<sup>(deprecated)<sup>
+## ApplicationInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >

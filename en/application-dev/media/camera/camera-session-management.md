@@ -12,7 +12,7 @@ You can implement the following functions in the session:
 
 - Configure the camera input and output streams. This is mandatory for photo capture.
 
-  Configuring an input stream is to add a device input, which means that the user selects a camera for photo capture. Configuring an output stream is to select a data output mode. For example, to implement photo capture, you must configure both the preview stream and photo stream as the output stream. The data of the preview stream is displayed on the **XComponent**, and that of the photo stream is saved to the Gallery application through the **ImageReceiver** API.
+  Configuring an input stream is to add a device input, which means that the user selects a camera for photo capture. Configuring an output stream is to select a data output mode. When your application needs to implement photo capture, configure the output streams to include a preview stream and a capture stream: the preview stream data is displayed on the [XComponent](../../reference/apis-arkui/arkui-ts/ts-basic-components-xcomponent.md), while the capture stream data is saved to the photo album using the capabilities of the [ImageReceiver](../../reference/apis-image-kit/arkts-apis-image-ImageReceiver.md) API.
 
 - Perform more operations on the camera device. For example, add the flash and adjust the focal length. For details about the supported configurations and APIs, see [Camera](../../reference/apis-camera-kit/arkts-apis-camera.md).
 
@@ -28,7 +28,7 @@ After the session configuration is complete, the application must commit the con
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
 
-2. Call [createSession](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createsession11) in **CameraManager** to create a session.
+2. Call the [createSession](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md#createsession11) method in [cameraManager](../../reference/apis-camera-kit/arkts-apis-camera-CameraManager.md) to create a session.
      
    ```ts
    // videoSession is used as an example.
@@ -44,7 +44,7 @@ After the session configuration is complete, the application must commit the con
    }
    ```
 
-3. Call [beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11) in **VideoSession** to configure the session.
+3. Call the [beginConfig](../../reference/apis-camera-kit/arkts-apis-camera-Session.md#beginconfig11) method in [VideoSession](../../reference/apis-camera-kit/arkts-apis-camera-VideoSession.md) to configure the session.
      
    ```ts
    function beginConfig(videoSession: camera.VideoSession): void {

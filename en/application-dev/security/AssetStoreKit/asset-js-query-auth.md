@@ -89,8 +89,10 @@ The following table describes the attributes of **AssetMap** used for querying a
 > **NOTE**
 >
 > The **asset** module provides asynchronous and synchronous APIs. The following uses the asynchronous APIs as an example. For more information about the APIs, see [Asset Store Service](../../reference/apis-asset-store-kit/js-apis-asset.md).
+>
+> Before querying an asset, ensure that the asset that requires user authentication exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
 
-Query asset **demo_alias** with user authentication. For details about **@ohos.userIAM.userAuth** used in the example, see [@ohos.userIAM.userAuth (User Authentication)](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10).
+Query asset **demo_alias** with user authentication. For details about **@ohos.userIAM.userAuth** used in the example, see [start](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#start10) in the userAuth documentation.
 
 <!-- @[query_user_auth_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/query_auth.ets) -->
 

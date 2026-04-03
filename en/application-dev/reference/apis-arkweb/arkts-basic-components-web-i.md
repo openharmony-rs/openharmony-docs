@@ -36,7 +36,7 @@ Describes the web media options.
 | Name            | Type     | Read-Only| Optional | Description                                      |
 | -------------- | ------- | ---- | ---- | ---------------------------------------- |
 | resumeInterval | number  | No| Yes| Validity period for automatically resuming a web audio paused by another application, in seconds. The value range is [-2147483648, 2147483647]. If **resumeInterval** is set to **0**, the playback is not automatically resumed. If **resumeInterval** is set to a value greater than 0, the playback is resumed in the specified period. If **resumeInterval** is set to a value less than 0, the playback is resumed in an unlimited period. Due to the approximate value, the validity period may have a deviation of less than 1 second.<br>**NOTE**<br>After an HLS video is interrupted, the video playback is automatically resumed when the video is returned to the foreground.|
-| audioExclusive | boolean | No| Yes| Whether the audio of multiple **Web** instances in an application is exclusive.<br>The value **true** indicates that the audio of multiple **Web** instances in an application is exclusive, and **false** indicates the opposite.<br>The default value is **true**.                      |
+| audioExclusive | boolean | No| Yes| Whether the audio of multiple **Web** instances in an application is exclusive.<br>The value **true** indicates that the audio of multiple **Web** instances in an application is exclusive, and **false** indicates the opposite.<br>Default value: **true**.                      |
 | audioSessionType<sup>20+</sup> | [AudioSessionType](./arkts-basic-components-web-e.md#audiosessiontype20) | No| Yes| Web audio type in the application. The default value is [STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage). This parameter changes the mapping between the component audio type and the system audio type, which affects the ArkWeb audio focus policy.|
 
 ## ScriptItem<sup>11+</sup>
@@ -48,7 +48,7 @@ Describes the **ScriptItem** object registered with the **Web** component throug
 | Name        | Type          | Read-Only| Optional  | Description          |
 | ----------- | -------------- | --- | ------|--------------- |
 | script      | string         | No |  No   | JavaScript script to be registered and executed.|
-| scriptRules | Array\<string> | No |  No   | Matching rules for allowed sources.<br>1. To allow URLs from all sources, use the wildcard (\*).<br>2. If exact match is required, specify the exact URL, for example, **https:\//www\.example.com**.<br>3. For fuzzy match, you can use a wildcard (\*) in the website URL, for example, **https://*.example.com**. Websites such as "x,*.y.com" and "* foobar.com" are not allowed.<br>4. If the source is an IP address, follow rule 2.<br>5. For protocols other than HTTP/HTTPS (custom protocols), exact match and fuzzy match are not supported, and the protocol must end with **://**, for example, **resource://**.<br>6. If one of the preceding rules is not met in **scriptRules**, the **scriptRules** does not take effect.|
+| scriptRules | Array\<string> | No |  No   | Matching rules for allowed sources.<br>1. To allow URLs from all sources, use the wildcard (\*).<br>2. If exact match is required, specify the exact URL, for example, **https:\//www\.example.com**.<br>3. For fuzzy match, you can use a wildcard (\*) in the website URL, for example, **https://*.example.com**. Websites such as "x. * .y.com" and " * foobar.com" are not allowed.<br>4. If the source is an IP address, follow rule 2.<br>5. For protocols other than HTTP/HTTPS (custom protocols), exact match and fuzzy match are not supported, and the protocol must end with **://**, for example, **resource://**.<br>6. If one of the preceding rules is not met in **scriptRules**, the **scriptRules** does not take effect.|
 
 ## NestedScrollOptionsExt<sup>14+</sup>
 
@@ -403,7 +403,7 @@ Represents the callback invoked when an SSL client certificate is required from 
 | handler  | [ClientAuthenticationHandler](./arkts-basic-components-web-ClientAuthenticationHandler.md) | No| No| User operation. |
 | host     | string                                   | No| No| Host name of the server that requests a certificate.   |
 | port     | number                                   | No| No| Port number of the server that requests a certificate.   |
-| keyTypes | Array<string\>                           | No| No| Acceptable asymmetric private key types.   |
+| keyTypes | Array<string\>                           | No| No| Acceptable asymmetric key type.   |
 | issuers  | Array<string\>                           | No| No| Issuer of the certificate that matches the private key.|
 
 ## VerifyPinEvent<sup>22+</sup>
@@ -555,7 +555,7 @@ Represents the callback invoked when the web page loading progress changes.
 
 | Name            | Type     | Read-Only| Optional  | Description                                      |
 | -------------- | ---- | ---- | ------------|---------------------------- |
-| newProgress | number | No| No| New loading progress. The value is an integer ranging from 0 to 100.                      |
+| newProgress | number | No| No| New loading progress. The value is an integer of [0, 100].                      |
 
 ## OnTitleReceiveEvent<sup>12+</sup>
 
@@ -643,7 +643,7 @@ Provides detailed information about the same-layer tag.
 | height            | number                              | No   | Yes| Height of the same-layer tag, in px.         |
 | url               | string                              | No   | Yes| URL of the same-layer tag.           |
 | tag<sup>12+</sup> | string              | No   | Yes| Tag name, which is in uppercase.             |
-| params<sup>12+</sup>            | Map<string, string> | No   | Yes| List of key-value pairs contained in the **object** tag that form a map of the Object type. Use the methods provided by the Object type, such as **embed.info?.param?.["name"]** to operate the map object. |
+| params<sup>12+</sup>            | Map<string, string> | No   | Yes| List of key-value pairs for the **param** tag contained in the **object** tag.This map is essentially of the **Object** type. Please use methods provided by **Object** to operate on this object, as in `embed.info?.param?.["name"]`. |
 | position<sup>12+</sup>          | Position            | No   | Yes| Position of the same-layer tag relative to the upper left corner of the **Web** component as the coordinate origin, in pixels. This position is different from the standard position.|
 
 ## NativeEmbedParamItem<sup>21+</sup>

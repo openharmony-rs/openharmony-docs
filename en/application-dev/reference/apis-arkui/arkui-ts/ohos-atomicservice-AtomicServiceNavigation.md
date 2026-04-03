@@ -611,4 +611,3 @@ export struct PageTwo {
   }
 }
 ```
-![](figures/AtomicServiceNavigationDemo04.png)

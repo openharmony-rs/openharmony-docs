@@ -273,7 +273,7 @@ struct TimePickerDialogExample {
 }
 ```
 
-
+![TimePickerDialog](figures/TimePickerDialog_HoverMode.gif)
 
 ### Example 4: Setting the Dialog Box Position
 
@@ -520,7 +520,7 @@ struct TimePickerDialogExample {
 }
 ```
 
-
+![TimePickerDialog](figures/TimePickerDialog_BackgroundBlurStyleOptions.png)
 
 ### Example 11: Customizing the Background Effect
 
@@ -556,4 +556,4 @@ struct TimePickerDialogExample {
 }
 ```
 
-
+![TimePickerDialog](figures/TimePickerDialog_BackgroundEffect.png)

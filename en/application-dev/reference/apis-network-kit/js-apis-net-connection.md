@@ -7,7 +7,7 @@
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
 
-The network connection management module provides basic network management capabilities. You can obtain the default active network, the list of all active networks, and network capability information.
+The network connection management module provides basic network management capabilities. You can obtain the default active network, the list of all active networks, and network capability information. 
 
 > **NOTE**
 >
@@ -25,11 +25,11 @@ import { connection } from '@kit.NetworkKit';
 
 createNetConnection(netSpecifier?: NetSpecifier, timeout?: number): NetConnection
 
-Creates a **NetConnection** object, which can be used to listen for the network status. [netSpecifier](#netspecifier) indicates the network feature to be listened on, and **timeout** indicates the timeout duration (ms). **netSpecifier** is a mandatory parameter for **timeout**. If neither of them is present, the default network is used.
+Creates a **NetConnection** object, which can be used to listen for the network status. [netSpecifier](#netspecifier) specifies the network to be listened for, and **timeout** indicates the timeout duration (ms). **netSpecifier** is a mandatory parameter for **timeout**. If neither of them is present, the default network is used.
 
 >**NOTE**
 >
->If the network status needs to be listened on, after creating a **NetConnection** object, you need to call [register](#register) to register the notification of the specified network status change.
+>To listen for the network status, after creating a **NetConnection** object, you need to call [register](#register) to register the notification of the specified network status change.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -39,14 +39,14 @@ Creates a **NetConnection** object, which can be used to listen for the network 
 
 | Name      | Type                         | Mandatory| Description                                                        |
 | ------------ | ----------------------------- | ---- | ------------------------------------------------------------ |
-| netSpecifier | [NetSpecifier](#netspecifier) | No  | Network feature of the network to be listened on. If this parameter is not specified, the default network is listened on.                  |
-| timeout      | number                        | No  | Timeout interval for obtaining the network specified by **netSpecifier**. The input value must be an uint32_t integer. This parameter is valid only when **netSpecifier** is present. The default value is **0**.<br>**Note**: If the network to be listened on does not exist, the system attempts to activate the network. If the timeout interval is exceeded and the network status listening is registered, the **netUnavailable** event is triggered.|
+| netSpecifier | [NetSpecifier](#netspecifier) | No  | Specification of the network to be listened for. If this parameter is not specified, the default network is listened for.                  |
+| timeout      | number                        | No  | Timeout interval for obtaining the network specified by **netSpecifier**. The input value must be an uint32_t integer. This parameter is valid only when **netSpecifier** is present. The default value is **0**.<br>**Note**: If the network to be listened for does not exist, the system attempts to activate the network. If the timeout interval is exceeded and the network status listener is registered, the **netUnavailable** event is triggered.|
 
 **Return value**
 
 | Type                           | Description                |
 | ------------------------------- | -------------------- |
-| [NetConnection](#netconnection) | Type of the network connection object to be listened on.|
+| [NetConnection](#netconnection) | Type of the network connection object to be listened for.|
 
 **Example**
 
@@ -56,7 +56,7 @@ import { connection } from '@kit.NetworkKit';
 // Example 1: Only the default network is concerned. You do not need to specify the netSpecifier parameter. If the timeout parameter is not passed, the timeout interval is not used. In this case, the value of timeout is 0.
 let netConnection = connection.createNetConnection();
 
-// Example 2: Only the cellular network is concerned. You need to specify the network type as cellular.
+// Example 2: Only the cellular network is concerned. You need to specify the network type to cellular.
 let timeout = 1000;
 let netConnectionCellular = connection.createNetConnection({
   netCapabilities: {
@@ -64,7 +64,7 @@ let netConnectionCellular = connection.createNetConnection({
   }
 }, timeout);
 
-// Example 3: Both the cellular and Wi-Fi networks are concerned. You need to specify the network type as cellular and Wi-Fi.
+// Example 3: Both the cellular and Wi-Fi networks are concerned. You need to specify the network type to cellular and Wi-Fi.
 let netConnectionCellularAndWifi = connection.createNetConnection({
   netCapabilities: {
     bearerTypes: [connection.NetBearType.BEARER_CELLULAR,
@@ -85,7 +85,7 @@ Obtains the network handle used by the system by default, including the network 
 >
 >- The return value of this interface is determined by the system and is irrelevant to whether the application specifies a network.
 >
->- Generally, the priority is as follows: Ethernet (PC) | Bluetooth (watch) > Wi-Fi > Cellular. In special cases, the actual returned result prevails.
+>- Generally, the priority is as follows: Ethernet (PC) | Bluetooth (watch) > Wi-Fi > Cellular. In special cases, the actual return result prevails.
 >
 >- [NetHandle](#nethandle) is the unique identifier of the network. If no network is available, **0** is returned. It can be used by [getNetCapabilities](#connectiongetnetcapabilities) to query more network information.
 
@@ -701,7 +701,7 @@ Obtains the list of all connected networks. This API returns the result synchron
 
 | Type     | Description                              |
 | --------- | ---------------------------------- |
-| Array&lt;[NetHandle](#nethandle)&gt; | Returns the list of all networks that are in the connected state.|
+| Array&lt;[NetHandle](#nethandle)&gt; | List of all connected networks.|
 
 **Error codes**
 
@@ -895,7 +895,7 @@ Obtains the network capability set of the data network specified by **NetHandle*
 | Name   | Type                                               | Mandatory| Description                                                        |
 | --------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | netHandle | [NetHandle](#nethandle)                             | Yes  | Network handle.                                            |
-| callback  | AsyncCallback\<[NetCapabilities](#netcapabilities)> | Yes  | Callback used to return the result. If the capability set of the network corresponding to netHandle is successfully obtained, **error** is **undefined**, and **data** is the obtained network capability set. Otherwise, **error** is an error object.|
+| callback  | AsyncCallback\<[NetCapabilities](#netcapabilities)> | Yes  | Callback used to return the result. If the capability set of the network specified by **NetHandle** is successfully obtained, **error** is **undefined**, and **data** is the obtained network capability set. Otherwise, **error** is an error object.|
 
 **Error codes**
 
@@ -1058,7 +1058,7 @@ Checks whether the data traffic over the current default network is metered. For
 
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. Returns whether data traffic over the current network is metered. The value **true** indicates that the data traffic is metered, and the value **false** indicates the opposite.|
+| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. The value **true** indicates that the data traffic over the current network is metered, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1097,7 +1097,7 @@ Checks whether the data traffic over the current default network is metered. For
 
 | Type             | Description                                           |
 | ----------------- | ----------------------------------------------- |
-| Promise\<boolean> | Promise used to return the result. Whether data traffic over the current network is metered. The value **true** indicates that the data traffic is metered, and the value **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return the result. The value **true** indicates that the data traffic over the current network is metered, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1167,7 +1167,7 @@ Checks whether there is an available network. This API uses an asynchronous call
 
 | Name  | Type                   | Mandatory| Description                                  |
 | -------- | ----------------------- | ---- | -------------------------------------- |
-| callback | AsyncCallback\<boolean> | Yes  | Callback used to return the result. Returns whether there is an available network. The value **true** indicates that a network is available, and the value **false** indicates the opposite.|
+| callback | AsyncCallback\<boolean> | Yes  | Callback used to return whether there is an available network. The value **true** indicates that a network is available, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1206,7 +1206,7 @@ Checks whether there is an available network. This API uses a promise to return 
 
 | Type             | Description                                           |
 | ----------------- | ----------------------------------------------- |
-| Promise\<boolean> | Promise used to return the result. Returns whether there is an available network. The value **true** indicates that a network is available, and the value **false** indicates the opposite.|
+| Promise\<boolean> | Promise used to return whether there is an available network. The value **true** indicates that a network is available, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1242,7 +1242,7 @@ Checks whether there is an available network. This API returns the result synchr
 
 | Type             | Description                                           |
 | ----------------- | ----------------------------------------------- |
-| boolean | Returns whether there is an available network. The value **true** indicates that a network is available, and the value **false** indicates the opposite.|
+| boolean | Whether there is an available network. The value **true** indicates that a network is available, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -1423,7 +1423,7 @@ Reports the network unavailability to the network management module. This API us
 **Return value**
 | Type| Description|
 | -------- | -------- |
-| Promise&lt;void&gt; | Promise Promise that returns no value.|
+| Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
@@ -1453,7 +1453,7 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 
 getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>>): void
 
-Obtain all IP addresses of the default network by resolving the host name. This API uses an asynchronous callback to return the result.
+Obtains all IP addresses of the default network by resolving the host name. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1497,7 +1497,7 @@ connection.getAddressesByName("xxxx", (error: BusinessError, data: connection.Ne
 
 getAddressesByName(host: string): Promise\<Array\<NetAddress\>\>
 
-Obtain all IP addresses of the default network by resolving the host name. This API uses a promise to return the result.
+Obtains all IP addresses of the default network by resolving the host name. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1513,7 +1513,7 @@ Obtain all IP addresses of the default network by resolving the host name. This 
 
 | Type                                       | Description                         |
 | ------------------------------------------- | ----------------------------- |
-| Promise\<Array\<[NetAddress](#netaddress)>> | Promise used to return the result. All IP addresses.|
+| Promise\<Array\<[NetAddress](#netaddress)>> | Promise used to return all IP addresses.|
 
 **Error codes**
 
@@ -1832,7 +1832,7 @@ connection.clearCustomDnsRules().then(() => {
 
 setPacFileUrl(pacFileUrl: string): void
 
-Set the URL of the Proxy Auto-Configuration Script (PAC) and enable the PAC proxy capability, for example, http://127.0.0.1:21998/PacProxyScript.pac. You can call [findProxyForUrl](#connectionfindproxyforurl20) to parse the URL and obtain the proxy information.
+Sets the URL of the Proxy Auto-Configuration Script (PAC) and enables the PAC proxy capability, for example, http://127.0.0.1:21998/PacProxyScript.pac. You can call [findProxyForUrl](#connectionfindproxyforurl20) to parse the URL and obtain the proxy information.
 
 >**NOTE**
 >
@@ -2256,7 +2256,7 @@ connection.getIpNeighTable().then((data: connection.NetIpMacInfo[]) => {
 
 ## NetConnection
 
-Network connection object type.
+Represents the network connection object type.
 
 > **NOTE**
 >
@@ -2604,7 +2604,7 @@ netCon.unregister((error: BusinessError) => {
 
 ## NetHandle
 
-Network handle.
+Represents the network handle.
 
 Before invoking **NetHandle** APIs, call **getNetHandle** to obtain a **NetHandle** object. For example, you can call [getDefaultNet](#connectiongetdefaultnet) to obtain the network handle of the default network.
 
@@ -3205,7 +3205,7 @@ Defines an HTTP request, which can be created using [http.createHttp](js-apis-ht
 
 |       Type      |            Description            |
 | ---------------- | --------------------------- |
-| http.HttpRequest | HTTP request task. You need to obtain an HTTP request task before calling **HttpRequest** APIs.|
+| http.HttpRequest | HTTP request task. You need to obtain an HTTP request task before calling **HttpRequest** APIs .|
 
 ## TCPSocket
 
@@ -3234,7 +3234,7 @@ Defines a **UDPSocket** object, which can be created using [socket.constructUDPS
 
 ## NetIpMacInfo<sup>22+</sup>
 
-Information about entries in the IP neighbor table.
+Defines information about entries in the IP neighbor table.
 
 **System capability**: SystemCapability.Communication.NetManager.Core
 

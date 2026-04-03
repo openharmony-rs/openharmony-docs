@@ -146,7 +146,7 @@ Only one [main panel](./js-apis-selectionInput-selectionPanel-sys.md) and one [m
 | Name  | Type       | Mandatory| Description                    |
 | ------- | ----------- | ---- | ------------------------ |
 | ctx     | [Context](../apis-ability-kit/js-apis-inner-application-context.md) | Yes  | Context that the current word selection panel depends on.|
-| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel-sys.md)   | Yes  | Information about the word selection panel.|
+| info    | [PanelInfo](./js-apis-selectionInput-selectionPanel-sys.md#panelinfo)   | Yes  | Information about the word selection panel.|
 
 **Return value**
 | Type  | Description                                                                |

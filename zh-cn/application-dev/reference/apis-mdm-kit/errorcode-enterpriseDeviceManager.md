@@ -40,7 +40,7 @@ The administrator application does not have permission to manage the device.
 
 **可能原因**
 
-激活成了DA管理器，但调用了SDA管理器接口。
+已激活为DA管理器，但调用了SDA管理器接口。
 
 **处理步骤**
 

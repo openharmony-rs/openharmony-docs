@@ -59,7 +59,7 @@
 ```cpp
 #define CHECK(cond)                                                 \
     do {                                                            \
-        if (cond) {                                                 \
+        if (!(cond)) {                                                 \
             OH_LOG_FATAL(LOG_APP, "Failed to check `" #cond "`");   \
             std::abort();                                           \
         }                                                           \
@@ -88,7 +88,7 @@ public:
         if (argc_ > 0) {
             argv_ = new napi_value[argc_];
             CHECK_NOT_NULL(argv_);
-            memset(argv_, nullptr, sizeof(argv_));
+            memset(argv_, 0, sizeof(argv_));
             napi_get_cb_info(env, info, &argc_, argv_, nullptr, nullptr);
         }
     }
@@ -393,7 +393,7 @@ EXPAND_THREADSAFE_FUNCTION_CASE(TriggerDFXTsfnRelease,
 napi_add_env_cleanup_hook 和 napi_remove_env_cleanup_hook 的示例代码
 
 ```cpp
-static void EnvCLeanUpCallback(void *arg) {
+static void EnvCleanUpCallback(void *arg) {
     char* data = reinterpret_cast<char *>(arg);
     delete data;
 }
@@ -406,11 +406,11 @@ napi_value TriggerDFXClnAddXT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
+    *data = '\0';
     std::thread([](napi_env env, char* data) {
-        napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+        napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     }, env, data).join();
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     delete data;
     return nullptr; 
 }
@@ -423,10 +423,10 @@ napi_value TriggerDFXClnAddMT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    *data = '\0';
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     delete data;
     return nullptr;
 }
@@ -439,10 +439,10 @@ napi_value TriggerDFXClnRmXT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    *data = '\0';
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     std::thread([](napi_env env, char* data) {
-        napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+        napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
         delete data;
     }, env, data).join();
     return nullptr; 
@@ -456,11 +456,11 @@ napi_value TriggerDFXClnRmMT(napi_env env, napi_callback_info info)
 {
     char* data = new char;
     CHECK_NOT_NULL(data);
-    *data = nullptr;
-    napi_add_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    *data = '\0';
+    napi_add_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     // 解注册使用的参数与注册时的一致性，比重复解注册更值得关注
-    napi_remove_env_cleanup_hook(env, EnvCLeanUpCallback, reinterpret_cast<void *>(data));
+    napi_remove_env_cleanup_hook(env, EnvCleanUpCallback, reinterpret_cast<void *>(data));
     delete data;
     return nullptr;
 }

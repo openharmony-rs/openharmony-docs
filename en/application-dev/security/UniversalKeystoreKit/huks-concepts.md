@@ -84,12 +84,12 @@ let rsa2048KeyPairMaterial = new Uint8Array([
   | Key<br>Algorithm| Key<br>Size| X Coordinate<br>Length L<sub>x</sub>| Y Coordinate<br>Length L<sub>y</sub>| Z Coordinate<br>Length L<sub>z</sub>| x | y | z |
   | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
   | 4 bytes| 4 bytes| 4 bytes| 4 bytes| 4 bytes| L<sub>x</sub> bytes| L<sub>y</sub> bytes| L<sub>z</sub> bytes|
-
+<!--Del-->
 - DSA key pair material format
   | Key<br>Algorithm| Key<br>Size| Private Key x<br>Length L<sub>x</sub>| Public Key y<br>Length L<sub>y</sub>| Prime Number p<br>Length L<sub>p</sub>| Prime Factor q<br>Length L<sub>q</sub>| g length (L<sub>g</sub>)| x | y | p | q | g |
   | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
   | 4 bytes| 4 bytes| 4 bytes| 4 bytes| 4 bytes| 4 bytes| 4 bytes| L<sub>x</sub> bytes| L<sub>y</sub> bytes| L<sub>p</sub> bytes| L<sub>q</sub> bytes| L<sub>g</sub> bytes|
-
+<!--DelEnd-->
 - DH key pair material format
   | Key<br>Algorithm| Key<br>Size| Public Key (pk)<br>Length L<sub>pk</sub>| Private Key (sk)<br>Length L<sub>sk</sub>| Reserved<br>Field| pk | sk |
   | -------- | -------- | -------- | -------- | -------- | -------- | -------- |

@@ -18,7 +18,7 @@
 
 ## 导入模块
 
-```
+```ts
 import { ComposeListItem } from "@kit.ArkUI";
 ```
 
@@ -264,7 +264,7 @@ struct ComposeListItemExample {
               icon: {
                 value: $r('sys.media.ohos_app_icon'),
                 action: () => {
-                this.getUIContext().getPromptAction().showToast({
+                  this.getUIContext().getPromptAction().showToast({
                     message: 'icon'
                   });
                 },

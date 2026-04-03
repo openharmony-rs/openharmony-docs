@@ -1797,7 +1797,7 @@ Removes a directory and all its subdirectories and files synchronously.
 
 > **NOTE**
 >
-> This API can be used to remove a single file. However, you are advised to use **unlink()** instead.
+> This API can be used to remove a single file. However, you are advised to use **unlinkSync** instead.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -2880,6 +2880,10 @@ symlink(target: string, srcPath: string): Promise&lt;void&gt;
 
 Creates a symbolic link based on a file path. This API uses a promise to return the result.
 
+> **NOTE**
+>
+> Since API version 11, this API cannot be used by third-party applications.
+
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
 **Parameters**
@@ -2918,6 +2922,10 @@ symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): v
 
 Creates a symbolic link based on the file path. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> Since API version 11, this API cannot be used by third-party applications.
+
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
 **Parameters**
@@ -2952,6 +2960,10 @@ For details about the error codes, see [Basic File IO Error Codes](errorcode-fil
 symlinkSync(target: string, srcPath: string): void
 
 Creates a symbolic link based on the file path. This API returns the result synchronously.
+
+> **NOTE**
+>
+> Since API version 11, this API cannot be used by third-party applications.
 
 **System capability**: SystemCapability.FileManagement.File.FileIO
 
@@ -4213,7 +4225,7 @@ The FD needs to be closed by calling **close()**.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4255,7 +4267,7 @@ Creates a **ReadStream** instance.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4306,7 +4318,7 @@ Reads all content of a file.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4357,7 +4369,7 @@ Call **finishWrite()** if the write operation is successful; call **failWrite()*
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4374,6 +4386,7 @@ try {
   let file = new fs.AtomicFile(`${pathDir}/write.txt`);
   let writeStream = file.startWrite();
   writeStream.write("hello, world", "utf-8", ()=> {
+    file.finishWrite();
     console.info('AtomicFile write finished!');
   })
 } catch (err) {
@@ -4391,7 +4404,7 @@ Finishes writing file data when the write operation is complete.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4425,7 +4438,7 @@ Rolls back the file after the file fails to be written.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -4460,7 +4473,7 @@ Deletes the **AtomicFile** class, including the original files and temporary fil
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
 
 **Example**
 
@@ -6257,7 +6270,7 @@ Adjusts the position of the writeable stream offset pointer.
 
 **Error codes**
 
-For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes).
+For details about the error codes, see [Basic File IO Error Codes](errorcode-filemanagement.md#basic-file-io-error-codes) and [Universal Error Codes](../errorcode-universal.md).
 
 **Example**
 

@@ -21,9 +21,9 @@ When an application is backgrounded or closed, the system can still send schedul
 
 > **NOTE**
 >
-> - When the reminder time arrives, the notification center displays the relevant reminder. The reminder remains active and unexpired unless the user touches the CLOSE button, at which point the reminder becomes expired.
+> When the reminder time arrives, the notification center displays the relevant reminder. The reminder remains active and unexpired unless the user touches the CLOSE button, at which point the reminder becomes expired.
 >
-> - For a recurring reminder (for example, a daily reminder), the reminder is always valid regardless of whether the user touches the CLOSE button.
+> For a recurring reminder (for example, a daily reminder), the reminder is always valid regardless of whether the user touches the CLOSE button.
 
 - **Redirection limit**: The application that is redirected to upon a click on the notification must be the application that requested the agent-powered reminder.
 
@@ -64,22 +64,24 @@ Declare the ohos.permission.PUBLISH_AGENT_REMINDER permission. For details, see 
 ### Developing Functionalities
 
 1. Import the modules.
-   
-   ```ts
-   import { reminderAgentManager } from '@kit.BackgroundTasksKit';
-   import { notificationManager } from '@kit.NotificationKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
-   ```
+
+    <!-- @[reminder_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
+
+    ``` TypeScript
+    import { notificationManager } from '@kit.NotificationKit';
+    import { reminderAgentManager } from '@kit.BackgroundTasksKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    ```
 
 2. Define a reminder. You can define the following types of reminders based on project requirements.
 
    - Timer
      
-      <!-- [timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
+      <!-- @[timer_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/pages/timer/Timer.ets) -->
       
       ``` TypeScript
-      let timer: reminderAgent.ReminderRequestTimer = {
-        reminderType: reminderAgent.ReminderType.REMINDER_TYPE_TIMER,  // The reminder type is timer.
+      let timer: reminderAgentManager.ReminderRequestTimer = {
+        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,  // The reminder type is countdown timer.
         ringDuration: Constant.REMINDER_DURATION,
         title: context.resourceManager.getStringSync($r('app.string.timer').id),  // Reminder title. The value in the "app.string.timer" resource file is "timer".
         content: context.resourceManager.getStringSync($r('app.string.countdown_close').id),  // Reminder content. The value in the "app.string.countdown_close" resource file is "timer ended".
@@ -95,11 +97,11 @@ Declare the ohos.permission.PUBLISH_AGENT_REMINDER permission. For details, see 
 
    - Calendar
      
-      <!-- [calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+      <!-- @[calendar_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
       
       ``` TypeScript
-      let calendar: reminderAgent.ReminderRequestCalendar = {
-        reminderType: reminderAgent.ReminderType.REMINDER_TYPE_CALENDAR,  // The reminder type is calendar.
+      let calendar: reminderAgentManager.ReminderRequestCalendar = {
+        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_CALENDAR,  // The reminder type is calendar event.
         dateTime: {  // Reminder time.
           year: date.getFullYear(),
           month: date.getUTCMonth() + 1,
@@ -110,7 +112,7 @@ Declare the ohos.permission.PUBLISH_AGENT_REMINDER permission. For details, see 
         actionButton:  // Set the button type and title displayed for the reminder in the notification panel.
         [{
           title: context.resourceManager.getStringSync($r('app.string.calendar_close').id),  // The value in the "app.string.calendar_close" resource file is "disable calendar reminder".
-          type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
+          type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
         }],
         // Information about the target UIAbility that is displayed after the reminder notification is touched.
         wantAgent: { pkgName: 'com.example.reminderagentmanager', abilityName: 'EntryAbility' },
@@ -123,22 +125,22 @@ Declare the ohos.permission.PUBLISH_AGENT_REMINDER permission. For details, see 
 
    - Alarm
    
-      <!-- [alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) -->
+      <!-- @[alarm_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets) -->
       
       ``` TypeScript
-      let alarm: reminderAgent.ReminderRequestAlarm = {
-        reminderType: reminderAgent.ReminderType.REMINDER_TYPE_ALARM,  // The reminder type is alarm.
+      let alarm: reminderAgentManager.ReminderRequestAlarm = {
+        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_ALARM,  // The reminder type is alarm clock.
         hour: time.hour,  // Hour portion of the reminder time.
         minute: time.minute,  // Minute portion of the reminder time.
         actionButton:  // Set the button type and title displayed for the reminder in the notification panel.
         [
           {
             title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close').id),  // The value in the "app.string.alarm_clock_close" resource file is "disable alarm clock".
-            type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
+            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
           },
           {
             title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone').id),  // The value in the "app.string.alarm_clock_postpone" resource file is "postpone alarm clock".
-            type: reminderAgent.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
+            type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
           }
         ],
         slotType: notificationManager.SlotType.CONTENT_INFORMATION,  // Type of the slot used by the reminder.
@@ -157,10 +159,10 @@ Declare the ohos.permission.PUBLISH_AGENT_REMINDER permission. For details, see 
 
 3. Publish the reminder. After the reminder is published, your application can use the agent-powered reminder feature.
    
-   <!-- [publish_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+   <!-- @[publish_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
    
    ``` TypeScript
-   let reminderId: number = await reminderAgent.publishReminder(
+   let reminderId: number = await reminderAgentManager.publishReminder(
      this.calendarReminders[index].reminderRequestCalendar!);
    Logger.info(TAG, `publish reminder result: id is ${reminderId}`);
    this.calendarReminders[index].reminderId = reminderId;  // Save the ID of the published reminder.
@@ -168,10 +170,10 @@ Declare the ohos.permission.PUBLISH_AGENT_REMINDER permission. For details, see 
 
 4. Delete the reminder as required.
    
-   <!-- [cancel_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/TaskManagement/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
+   <!-- @[cancel_reminder](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets) -->
    
    ``` TypeScript
    Logger.info(TAG, `cancel reminder id is ${this.calendarReminders[index].reminderId}`)
-   await reminderAgent.cancelReminder(this.calendarReminders[index].reminderId);
+   await reminderAgentManager.cancelReminder(this.calendarReminders[index].reminderId);
    ```
 

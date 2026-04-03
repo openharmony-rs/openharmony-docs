@@ -1,4 +1,4 @@
-# # @ohos.net.webSocket (WebSocket Connection)
+# @ohos.net.webSocket (WebSocket Connection)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -66,7 +66,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 **System capability**: SystemCapability.Communication.NetStack
 
->**NOTE**
+> **NOTE**
 >
 >The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
 
@@ -127,7 +127,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 >**NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
 
 **Parameters**
 
@@ -195,7 +195,7 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 >**NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
 
 **Parameters**
 
@@ -717,6 +717,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 Subscribes to WebSocket error events. This API uses an asynchronous callback to return the result.
 
+The error code of the [error](#onerror) event callback is described as follows: WebSocket is essentially an HTTP protocol upgrade. If the server agrees to the upgrade, the server returns 101. The status code indicates that the protocol is switched from HTTP to WebSocket (the **open** callback is triggered). If the server rejects the upgrade or other exceptions occur, the server returns 200, indicating that the server only processes the request as a common HTTP request.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Communication.NetStack
@@ -912,7 +914,7 @@ Starts the WebSocketServer service based on the specified **config**. This API u
 
 > **NOTE**
 >
-> When this method is called for multiple times, do not listen on the same port.
+> You are advised not to listen for the same port when calling this API multiple times.
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -1123,7 +1125,7 @@ Closes a WebSocket connection. This API uses a promise to return the result.
 | Name | Type                   | Mandatory| Description                                                    |
 | ---------- | --------------------- | ---- | ----------------------------------------------------- |
 | connection | [WebSocketConnection](#websocketconnection19) | Yes | Client information, including the IP address and port number.                  |
-| options    | [webSocket.WebSocketCloseOptions](#websocketcloseoptions) | No | Defines the optional parameters carried in the request for closing a WebSocket connection.<br>By default, the error code is 200, and the cause is **Websocket connect failed**.|
+| options    | [webSocket.WebSocketCloseOptions](#websocketcloseoptions) | No | Optional parameters carried in the request for closing a WebSocket connection.<br>By default, the error code is 200, and the cause is **Websocket connect failed**.|
 
 **Return value**
 
@@ -1246,7 +1248,7 @@ Subscribes to the WebSocketServer connection event (the connection between the c
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **onconnect()** indicates that a connection is established between the client and server.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the result, which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the information about connected clients.|
 
 **Example**
 
@@ -1277,7 +1279,7 @@ Unsubscribes from WebSocketServer connection events (the connection between the 
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **offconnect()** indicates that listening for connection events is canceled successful.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the result, which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the information about connected clients.|
 
 **Example**
 
@@ -1445,7 +1447,7 @@ Unsubscribes from WebSocketServer error events. This API uses an asynchronous ca
 | Name | Type                   | Mandatory| Description                          |
 | -------- | ------------- | ---- | --------------------------------- |
 | type     | string        | Yes|  Event type, which has a fixed value of **error**. Successful calling of **offerror()** indicates that listening for the **error** events is canceled successfully.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the result, which is the error code (default value: **200**).                        |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the error code (default value: **200**).                        |
 
 **Example**
 

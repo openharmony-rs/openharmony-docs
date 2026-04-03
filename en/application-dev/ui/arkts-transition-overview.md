@@ -7,7 +7,7 @@
 <!--Adviser: @Brilliantry_Rui-->
 
 
-Compared with [property animations](arkts-attribute-animation-overview.md), which work for components that are always present, transition animations are applied to animate the appearing or disappearing components. With transition animations, you are freed from the burdensome tasks of disappearing component management, which are unavoidable if you use property animations instead. With property animations, in addition to deleting the component in the animation completion callback, you would also need to add logic to check the component status in the callback, in case that the component that has been deleted appears again before the animation ends.
+Transition animations are used to apply animation effects to components that are about to appear or disappear. Components that are always displayed should use the property animation (arkts-attribute-animation-overview.md). Transition animations aim to simplify the management of disappearing components. If you use property animations to implement component transitions, you need to manually delete the component nodes in the animation completion callback. In addition, the nodes that have been deleted before the animation ends may appear again. Therefore, you need to add the logic for checking the node status in the callback.
 
 
 There are several types of transition animations:

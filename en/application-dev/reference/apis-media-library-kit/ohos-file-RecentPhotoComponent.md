@@ -16,9 +16,10 @@ The RecentPhotoComponent embedded in the UI of an application allows the applica
 
 ```ts
 import {
-  RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
-  RecentPhotoClickCallback, PhotoSource, RecentPhotoInfo, RecentPhotoCheckInfoCallback,
-} from '@kit.MediaLibraryKit';
+  RecentPhotoComponent, RecentPhotoOptions, RecentPhotoCheckResultCallback,
+  RecentPhotoClickCallback, PhotoSource, RecentPhotoInfo,
+  RecentPhotoCheckInfoCallback
+} from '@ohos.file.RecentPhotoComponent';
 ```
 
 ## Properties
@@ -29,7 +30,7 @@ The [universal properties](../apis-arkui/arkui-ts/ts-component-general-attribute
 
 RecentPhotoComponent({ recentPhotoOptions?: RecentPhotoOptions, onRecentPhotoCheckResult?: RecentPhotoCheckResultCallback, onRecentPhotoClick: RecentPhotoClickCallback, onRecentPhotoCheckInfo?: RecentPhotoCheckInfoCallback, })
 
-**RecentPhotoComponent** allows an application to access the latest image or video file in the public directory according to configuration items without applying for media access permissions.
+Allows an application to access the latest image or video file in the public directory  to access the recent image or video in the user directory without the media access permission.
 
 **Decorator**: @Component
 
@@ -145,16 +146,18 @@ Enumerates the sources of the image or video data.
 ```ts
 // xxx.ets
 import {
+  RecentPhotoComponent, 
+  RecentPhotoOptions, 
+  PhotoSource, 
+  RecentPhotoCheckResultCallback, 
+  RecentPhotoClickCallback, 
+  RecentPhotoInfo,
+  RecentPhotoCheckInfoCallback,
+} from '@ohos.file.RecentPhotoComponent';
+import {
   photoAccessHelper,
-   RecentPhotoComponent, 
-   RecentPhotoOptions, 
-   PhotoSource, 
-   RecentPhotoInfo, 
-   RecentPhotoCheckResultCallback, 
-   RecentPhotoClickCallback, 
-   RecentPhotoCheckInfoCallback,
-   BaseItemInfo
-} from '@kit.MediaLibraryKit';
+  BaseItemInfo
+} from '@kit.MediaLibraryKit'
 
 @Entry
 @Component

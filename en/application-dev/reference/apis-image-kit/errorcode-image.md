@@ -311,7 +311,7 @@ The image source data is incorrect.
 
 **Description**
 
-This error code is reported when the image source data is incorrect.
+The image source data is incorrect.
 
 **Possible Cause**
 
@@ -552,7 +552,7 @@ The image does not support EXIF decoding.
 
 **Description**
 
-This error code is reported when the image does not support Exif decoding.
+The image does not support Exif decoding.
 
 **Possible Cause**
 
@@ -589,7 +589,7 @@ The EXIF data is out of range.
 
 **Description**
 
-This error code is reported when the image property value is out of range.
+The value of the image property is out of range.
 
 **Possible Cause**
 
@@ -975,11 +975,11 @@ Check whether the instance to be copied has been released. Check whether the mem
 
 **Error Message**
 
-Unsupported operation.
+Unsupported operation, e.g. on cross-platform.
 
 **Description**
 
-This error code is reported when an operation is not supported. For example, modify a PixelMap whose **Editable** property is **false**.
+The operation is not supported. For example, modify a PixelMap whose **Editable** property is **false**.
 
 **Possible Cause**
 
@@ -1121,7 +1121,7 @@ Check the image data or use another image.
 
 **Error Message**
 
-Unsupported mimetype.
+Unsupported MIME type.
 
 **Description**
 
@@ -1143,7 +1143,7 @@ Image too large.
 
 **Description**
 
-This error code is reported when the image is too large.
+The image is too large.
 
 **Possible Cause**
 
@@ -1175,7 +1175,7 @@ Use a correct memory allocation type.
 
 **Error Message**
 
-Unsupported metadata. For example, the property key is not supported, or the property value is invalid.
+Unsupported metadata.
 
 **Description**
 
@@ -1207,6 +1207,24 @@ Some parameters are incorrectly configured, or the operation required by the opt
 **Solution**
 
 Check the parameter settings.
+
+## 7700204 Invalid Parameter
+
+**Error Message**
+
+Invalid parameter.
+
+ **Description**
+ 	 
+ Invalid parameter.
+
+**Possible Cause**
+
+An input parameter is invalid.
+
+**Solution**
+
+Verify and enter correct parameters.
 
 ## 7700301 Decoding Failure
 

@@ -249,14 +249,14 @@ This example shows the basic usage of the **EmbeddedComponent** and EmbeddedUIEx
   .
   └── main
       ├── ets
-      │   ├── extensionAbility
-      │   │   └── ExampleEmbeddedAbility.ets
-      │   └── pages
+      │   ├── extensionAbility
+      │   │   └── ExampleEmbeddedAbility.ets
+      │   └── pages
       |       ├── extension.ets
-      │       └── Index.ets  
+      │       └── Index.ets  
       ├── resources
       |   └── base
-      |       └── profile
+      |       └── profile
       |           └── main_pages.json
       └── module.json5
   ```

@@ -373,15 +373,17 @@ When \@ObjectLink decorates a class that extends **Set**, it enables observation
    ```
 
 
-## Use Scenarios
+## When to Use
 
 ### Object Type
 
 This scenario contains built-in types (Array, Map, Set, and Date) and common classes. Since API version 19, \@ObjectLink receives the built-in type and common class object transferred by \@State. You can observe the API call and first-layer changes without adding \@Observed. State variable decorators such as \@State add a layer of "proxy" wrapper to the object (outer object), which is equivalent to adding \@Observed decorators.
 
-```ts
+<!-- @[State_To_Objectlink](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/StateToObjectlink.ets) -->
+
+``` TypeScript
 class Book {
-  name: string;
+  public name: string;
 
   constructor(name: string) {
     this.name = name;
@@ -506,8 +508,14 @@ An object array is a frequently used data structure. The following example shows
 >
 > NextID is used to generate a unique and persistent key value for each array element during [ForEach: Rendering Repeated Content](../rendering-control/arkts-rendering-control-foreach.md) to identify the corresponding component.
 
-```ts
-let NextID: number = 1;
+<!-- @[Object_Array](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/objectLinkusagescenarios/ObjectArray.ets) -->
+
+``` TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const DOMAIN = 0x0001;
+const TAG = 'ArkTSObservedAndObjectlink';
+let nextID: number = 1;
 
 @Observed
 class Info {
@@ -515,7 +523,7 @@ class Info {
   public info: number;
 
   constructor(info: number) {
-    this.id = NextID++;
+    this.id = nextID++;
     this.info = info;
   }
 }
@@ -575,18 +583,14 @@ struct Parent {
           if (this.arrA.length > 0) {
             this.arrA.shift();
           } else {
-            console.info('length <= 0');
+            hilog.info(DOMAIN, TAG, 'length <= 0');
           }
         })
       Button('ViewParent: item property in middle')
         .width(320)
         .margin(10)
         .onClick(() => {
-          if (this.arrA[Math.floor(this.arrA.length / 2)]) {
-            this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
-          } else {
-            console.info('middle element does not exist');
-          }
+          this.arrA[Math.floor(this.arrA.length / 2)].info = 10;
         })
       Button('ViewParent: item property in middle')
         .width(320)
@@ -1880,13 +1884,17 @@ struct Index {
 
 **Correct Usage**
 
-```ts
+<!-- @[Change_Property_In_Constructor](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/ChangePropertyInConstructor.ets) -->
+
+``` TypeScript
 @Observed
 class DataDownloader {
-  state: number;
+  public state: number;
+
   constructor() {
     this.state = 0;
   }
+
   startIntervalUpdate() {
     setInterval(() => {
       this.state += 1;
@@ -1897,10 +1905,12 @@ class DataDownloader {
 @Entry
 @Component
 struct Index {
-  @State dataDownloader: DataDownloader = new DataDownloader()
+  @State dataDownloader: DataDownloader = new DataDownloader();
+
   aboutToAppear() {
-    this.dataDownloader.startIntervalUpdate(); // @Observed: After the decorated class is built, you can modify the attributes to trigger the UI update.
+    this.dataDownloader.startIntervalUpdate(); // Modifying properties after the @Observed decorated class is built triggers a UI refresh.
   }
+
   build() {
     Column() {
       Text(`Download state is ${this.dataDownloader.state}`)
@@ -2051,7 +2061,9 @@ struct ChildComponent {
 
 **Correct Usage**
 
-```ts
+<!-- @[Use_With_LazyForEach](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/arktsobservedandobjectlink/entry/src/main/ets/pages/ObservedAndObjectLinkFAQs/UseWithLazyForEach.ets) -->
+
+``` TypeScript
 // LazyForEach traverses the data base class.
 class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -2114,7 +2126,7 @@ class MyDataSource extends BasicDataSource {
 
 @Observed
 class StringData {
-  message: string;
+  public message: string;
 
   constructor(message: string) {
     this.message = message;
@@ -2141,13 +2153,13 @@ struct MyComponent {
           ListItem() {
             ChildComponent({ data: item })
           }.width('100%')
-          //The key of LazyForEach is constructed from the index and message. Each time an element is replaced, the key needs to be modified to trigger UI refresh.
+          // The key of LazyForEach is constructed from the index and message. Each time an element is replaced, the key needs to be modified to trigger a UI refresh.
         }, (item: StringData, index: number) => index.toString() + item.message)
       }.cachedCount(3)
       Button('Replace the first element')
         .onClick(() => {
           this.data.dataArray[0] = new StringData('Hello ' + this.helloCount++);
-          //After the element is replaced, notify LazyForEach that the UI can be refreshed.
+          // After the element is replaced, notify LazyForEach that the UI can be refreshed.
           this.data.notifyDataChanged(0);
         })
       Button('Modify the data of the first element')

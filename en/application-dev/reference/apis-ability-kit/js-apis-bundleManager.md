@@ -133,8 +133,8 @@ Enumerates the types of ability components.
 |  Name  | Value  |                            Description                           |
 | :-----: | ---- | :--------------------------------------------------------: |
 | PAGE    | 1    | Ability that has the UI. FA developed using the Page template to provide the capability of interacting with users.       |
-| SERVICE | 2    | Ability of the background service type, without the UI. PA developed using the Service template to provide the capability of running tasks in the background. |
-|  DATA   | 3    | PA developed using the Data template to provide unified data access for external systems.|
+| SERVICE | 2    | Ability of the background service type, without the UI. [PA (ParticleAbility)](js-apis-ability-particleAbility.md) developed using the Service template to provide the capability of running tasks in the background, such as downloading files or playing music in the background. |
+|  DATA   | 3    | [PA (ParticleAbility)](js-apis-ability-particleAbility.md) developed using the Data template to provide unified data access for external systems.|
 
 ## DisplayOrientation
 
@@ -342,7 +342,6 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName: strin
 Obtains the JSON string array of the current application's configuration file based on the given module name, ability name, and metadata name (name configured under **metadata** in [abilities](../../quick-start/module-configuration-file.md#abilities) of the **module.json5** file). This API uses an asynchronous callback to return the result.
 
 > NOTE
->
 > If the profile uses the resource reference format, the return value retains this format (for example, **$string:res_id**). You can obtain the referenced resources through related APIs of the [resource manager module](../apis-localization-kit/js-apis-resource-manager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -402,7 +401,6 @@ getProfileByAbility(moduleName: string, abilityName: string, metadataName?: stri
 Obtains the JSON string array of the current application's configuration file based on the given module name, ability name, and metadata name (name configured under **metadata** in [abilities](../../quick-start/module-configuration-file.md#abilities) of the **module.json5** file). This API uses a promise to return the result.
 
 > NOTE
->
 > If the profile uses the resource reference format, the return value retains this format (for example, **$string:res_id**). You can obtain the referenced resources through related APIs of the [resource manager module](../apis-localization-kit/js-apis-resource-manager.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
@@ -1874,5 +1872,3 @@ Describes the identity information of an application clone.
 | Type                                                        | Description          |
 | ------------------------------------------------------------ | -------------- |
 | [_BundleInfo.AppCloneIdentity](js-apis-bundleManager-bundleInfo.md#appcloneidentity14) |Identity information of an application clone.|
-
-<!--no_check-->

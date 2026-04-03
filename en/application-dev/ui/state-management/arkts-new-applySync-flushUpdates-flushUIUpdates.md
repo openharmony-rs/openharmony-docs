@@ -160,9 +160,7 @@ import { UIUtils } from '@kit.ArkUI';
           .margin(20)
           .onClick(() => {
             // test1: Call the applySync API. The log is printed twice.
-            // UIUtils.applySync(() => {
-            //   this.message = 'Hello World';
-            // })
+            // UIUtils.applySync(() => { this.message = 'Hello World'; });
   
             // test2: Call the flushUpdates API. The log is printed twice.
             // this.message = 'Hello World';
@@ -227,9 +225,9 @@ import { UIUtils } from '@kit.ArkUI';
   }
   ```
 
-- Calling the **flushUpdates** or **flushUIUpdates** API in the **applySync** closure function will have no effect, and the warning message "UIUtils.flushUpdates will be skipped when called within UIUtils.applySync"/"UIUtils.flushUIUpdates will be skipped when called within UIUtils.applySync" will be printed.
+- Calling the flushUpdates or flushUIUpdates API in the applySync closure does not take effect. At the same time, the corresponding warning information "UIUtils.flushUpdates will be skipped when called within UIUtils.applySync" or "UIUtils.flushUIUpdates will be skipped when called within UIUtils.applySync" is printed.
   
-  <!-- @[ApplySyncNestOthers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestOthers.ets) -->
+  <!-- @[ApplySyncNestOthers](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/UpdateDirtySync/entry/src/main/ets/pages/ApplySyncNestOthers.ets) --> 
   
   ``` TypeScript
   import { UIUtils } from '@kit.ArkUI';

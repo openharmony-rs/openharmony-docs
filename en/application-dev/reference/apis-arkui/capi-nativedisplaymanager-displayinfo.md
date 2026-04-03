@@ -27,7 +27,7 @@ The struct describes the information about a display.
 | Name| Description|
 | -- | -- |
 | uint32_t id | ID of the display. The value must be a non-negative integer.|
-| char name[OH_DISPLAY_NAME_LENGTH + 1] | Name of the display.|
+| char name[[OH_DISPLAY_NAME_LENGTH](capi-oh-display-info-h.md#oh_display_name_length) + 1] | Name of the display.|
 | bool isAlive | Whether the display is active. **true** if active, **false** otherwise.|
 | int32_t width | Width of the display, in px. The value must be a non-negative integer.|
 | int32_t height | Height of the display, in px. The value must be a non-negative integer.|

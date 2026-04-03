@@ -60,7 +60,7 @@ A maximum of 512 child processes can be started through this module and [childPr
 | [Ability_NativeChildProcess_ErrCode OH_Ability_RegisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_registernativechildprocessexitcallback) | - | Registers a callback to listen for child process exit. The registered callback function is triggered only when the child process started by calling [OH_Ability_StartNativeChildProcess](#oh_ability_startnativechildprocess), [OH_Ability_StartNativeChildProcessWithConfigs](#oh_ability_startnativechildprocesswithconfigs), or [childProcessManager.startNativeChildProcess in @ohos.app.ability.childProcessManager](js-apis-app-ability-childProcessManager.md#childprocessmanagerstartnativechildprocess13) exits. If the same callback function is registered repeatedly, only one of them is kept.|
 | [Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCallback(OH_Ability_OnNativeChildProcessExit onProcessExit)](#oh_ability_unregisternativechildprocessexitcallback) | - | Unregisters the callback used to listen for child process exit.|
 | [Ability_NativeChildProcess_ErrCode OH_Ability_ChildProcessConfigs_SetIsolationUid(Ability_ChildProcessConfigs* configs, bool enableIsolationUid)](#oh_ability_childprocessconfigs_setisolationuid) | - | Sets whether the child process uses an independent UID. This setting takes effect only when **NativeChildProcess_IsolationMode** is set to **NCP_ISOLATION_MODE_ISOLATED**.|
-| [Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid))](#oh_ability_killchildprocess) | - | Terminates a child process created by the current process.|
+| [Ability_NativeChildProcess_ErrCode OH_Ability_KillChildProcess(int32_t pid)](#oh_ability_killchildprocess) | - | Terminates a child process created by the current process.|
 
 ## Enum Description
 
@@ -350,7 +350,7 @@ The following is an example:<br>void Main(NativeChildProcess_Args args);<br>The 
 
 | Name| Description|
 | -- | -- |
-| const char* entry | Pointer to the dynamic library and entry function to be loaded by the child process, for example, **libEntry.so:Main**. The value cannot be nullptr.|
+| const char* entry | Pointer to the dynamic library and entry function to be loaded by the child process, for example, **libEntry.so:Main**. The value cannot be **nullptr**.|
 | [NativeChildProcess_Args](capi-nativechildprocess-args.md) args | Parameters passed to the child process.|
 | [NativeChildProcess_Options](capi-nativechildprocess-options.md) options | Child process options.|
 | int32_t *pid | Pointer to the ID of the child process.|
@@ -475,7 +475,7 @@ Ability_NativeChildProcess_ErrCode OH_Ability_UnregisterNativeChildProcessExitCa
 
 Unregisters the callback used to listen for child process exit.
 
-The parameter must implement the entry function [OH_Ability_OnNativeChildProcessExit](#oh_ability_onnativechildprocessexit). For details, see [Registering the Native Child Process Exit Callback Function](../../application-models/capi-nativechildprocess-exit-info.md).
+The parameter must implement the entry function [OH_Ability_OnNativeChildProcessExit](#oh_ability_onnativechildprocessexit). For details, see [Unregistering the Native Child Process Exit Callback Function](../../application-models/capi-nativechildprocess-exit-info.md).
 
 **Since**: 20
 

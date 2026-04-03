@@ -13,7 +13,7 @@
 >
 > This component is supported since API version 18. Updates will be marked with a superscript to indicate their earliest API version.
 >
-> To implement an embeddable atomic service, make sure it inherits from [EmbeddableUIAbility](../../apis-ability-kit/js-apis-app-ability-embeddableUIAbility.md). This ensures that it functions properly.
+> To implement an embeddable atomic service, make sure it inherits from [EmbeddableUIAbility](../../apis-ability-kit/js-apis-app-ability-embeddableUIAbility.md). If the atomic service does not inherit from **EmbeddableUIAbility**, the system cannot guarantee its proper operation.
 
 ## Modules to Import
 
@@ -57,7 +57,7 @@ import { HalfScreenLaunchComponent } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
-  appId: string = "576****************"; // Application ID of the atomic service.
+  appId: string = "576****************"; // Application ID for the atomic service.
 
   build() {
     Column() {

@@ -139,7 +139,7 @@ try {
 }
 ```
 
-***适用于多个同名Wi-Fi但不同bssid的场景***
+***适用于多个同名Wi-Fi但不同BSSID的场景***
 ```ts
 import { wifiManager } from '@kit.MDMKit';
 import { Want } from '@kit.AbilityKit';
@@ -797,14 +797,120 @@ try {
 }
 ```
 
+## wifiManager.turnOnWifi<sup>20+</sup>
+
+turnOnWifi(admin: Want, isForce: boolean): void
+
+打开Wi-Fi开关。
+
+以下情况下，通过本接口打开Wi-Fi开关，会打开失败并提示"系统功能被禁用"：
+
+​已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口启用Wi-Fi，解决"系统功能被禁用"报错。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+
+
+**参数：**
+
+| 参数名  | 类型                                                    | 必填 | 说明                                                         |
+| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
+| isForce | boolean                                                 | 是   | 是否强制打开Wi-Fi功能。<br/>true表示强制开启Wi-Fi，强制开启后不支持用户在设备上手动关闭Wi-Fi开关，必须采用[turnOffWifi](#wifimanagerturnoffwifi20)接口关闭。false表示非强制开启Wi-Fi，此时用户可以在设备上手动操作关闭Wi-Fi开关。 |
+
+**错误码**：
+
+以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 203      | This function is prohibited by enterprise management policies. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { wifiManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  wifiManager.turnOnWifi(wantTemp, true);
+  console.info(`Succeeded in turning on Wi-Fi.`);
+} catch (err) {
+  console.error(`Failed to turn on Wi-Fi. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## wifiManager.turnOffWifi<sup>20+</sup>
+
+turnOffWifi(admin: Want): void
+
+关闭Wi-Fi开关。
+
+以下情况下，通过本接口关闭Wi-Fi开关，会提示"系统功能被禁用"：
+
+​已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口启用Wi-Fi，解决"系统功能被禁用"报错。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                   |
+| ------ | ------------------------------------------------------- | ---- | ---------------------- |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+
+**错误码**：
+
+以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 203      | This function is prohibited by enterprise management policies. |
+
+**示例：**
+
+```ts
+import { Want } from '@kit.AbilityKit';
+import { wifiManager } from '@kit.MDMKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  wifiManager.turnOffWifi(wantTemp);
+  console.info(`Succeeded in turning off Wi-Fi.`);
+} catch (err) {
+  console.error(`Failed to turn off Wi-Fi. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
 ## WifiAccessInfo<sup>19+</sup>
 
 Wi-Fi的SSID和BSSID信息。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称          | 类型                             | 只读 | 可选 | 说明                                                        |
 | ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
 | ssid          | string                           | 否   | 否 | Wi-Fi热点名称，编码格式为UTF-8，最大长度为32字节（中文字符占3位，英文字符占1位）。           |
@@ -829,7 +935,7 @@ Wi-Fi配置信息。
 | disableReason | number                                | 否   | 是 | 禁用原因。                                                  |
 | netId         | number                                | 否   | 是 | 分配的网络ID。                                              |
 | randomMacType | number                                | 否   | 是 | 随机MAC类型。0-随机MAC地址， 1-设备MAC地址。                  |
-| randomMacAddr | string                                | 否   | 是 | MAC地址。randomMacType为设备mac类型时，该字段必填。           |
+| randomMacAddr | string                                | 否   | 是 | MAC地址。randomMacType为设备MAC类型时，该字段必填。           |
 | ipType        | [IpType](#iptype)                     | 否   | 是 | IP地址类型。                                                |
 | staticIp      | [IpProfile](#ipprofile)               | 否   | 是 | 静态IP配置信息。ipType为STATIC时，该字段必填。                |
 | eapProfile    | [WifiEapProfile](#wifieapprofile)     | 否   | 是 | 可扩展身份验证协议配置。只有securityType为WIFI_SEC_TYPE_EAP时必填。             |
@@ -949,111 +1055,3 @@ IP配置信息。
 | PHASE2_SIM       | 5    | SIM类型。       |
 | PHASE2_AKA       | 6    | AKA类型。       |
 | PHASE2_AKA_PRIME | 7    | AKA Prime类型。 |
-
-## wifiManager.turnOnWifi<sup>20+</sup>
-
-turnOnWifi(admin: Want, isForce: boolean): void
-
-打开Wi-Fi开关。
-
-以下情况下，通过本接口打开Wi-Fi开关，会打开失败并提示"系统功能被禁用"：
-
-​已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口启用Wi-Fi，解决"系统功能被禁用"报错。
-
-**需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-
-
-**参数：**
-
-| 参数名  | 类型                                                    | 必填 | 说明                                                         |
-| ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                       |
-| isForce | boolean                                                 | 是   | 是否强制打开Wi-Fi功能。<br/>true表示强制开启Wi-Fi，强制开启后不支持用户在设备上手动关闭Wi-Fi开关，必须采用[turnOffWifi](#wifimanagerturnoffwifi20)接口关闭。false表示非强制开启Wi-Fi，此时用户可以在设备上手动操作关闭Wi-Fi开关。 |
-
-**错误码**：
-
-以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 203      | This function is prohibited by enterprise management policies. |
-
-**示例：**
-
-```ts
-import { Want } from '@kit.AbilityKit';
-import { wifiManager } from '@kit.MDMKit';
-
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-try {
-  wifiManager.turnOnWifi(wantTemp, true);
-  console.info(`Succeeded in turning on Wi-Fi.`);
-} catch (err) {
-  console.error(`Failed to turn on Wi-Fi. Code: ${err.code}, message: ${err.message}`);
-}
-```
-
-## wifiManager.turnOffWifi<sup>20+</sup>
-
-turnOffWifi(admin: Want): void
-
-关闭Wi-Fi开关。
-
-以下情况下，通过本接口关闭Wi-Fi开关，会提示"系统功能被禁用"：
-
-​已经通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口禁用了Wi-Fi。需通过[setDisallowedPolicy](js-apis-enterprise-restrictions.md#restrictionssetdisallowedpolicy)接口启用Wi-Fi，解决"系统功能被禁用"报错。
-
-**需要权限：** ohos.permission.ENTERPRISE_MANAGE_WIFI
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-
-
-**参数：**
-
-| 参数名 | 类型                                                    | 必填 | 说明                   |
-| ------ | ------------------------------------------------------- | ---- | ---------------------- |
-| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-
-**错误码**：
-
-以下的错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
-
-| 错误码ID | 错误信息                                                     |
-| -------- | ------------------------------------------------------------ |
-| 9200001  | The application is not an administrator application of the device. |
-| 9200002  | The administrator application does not have permission to manage the device. |
-| 201      | Permission verification failed. The application does not have the permission required to call the API. |
-| 203      | This function is prohibited by enterprise management policies. |
-
-**示例：**
-
-```ts
-import { Want } from '@kit.AbilityKit';
-import { wifiManager } from '@kit.MDMKit';
-
-let wantTemp: Want = {
-  // 需根据实际情况进行替换
-  bundleName: 'com.example.myapplication',
-  abilityName: 'EnterpriseAdminAbility'
-};
-
-try {
-  wifiManager.turnOffWifi(wantTemp);
-  console.info(`Succeeded in turning off Wi-Fi.`);
-} catch (err) {
-  console.error(`Failed to turn off Wi-Fi. Code: ${err.code}, message: ${err.message}`);
-}
-```
-

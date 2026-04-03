@@ -334,8 +334,8 @@ Defines arguments for an event query.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| beginTime | number | No| No| Start time (13-digit timestamp) for the event query.|
-| endTime | number | No| No| End time (13-digit timestamp) for the event query.|
+| beginTime | number | No| No| Start time of the system event to be queried. The value is a 13-digit timestamp, indicating the number of milliseconds elapsed since 00:00:00:00 on January 1, 1970.|
+| endTime | number | No| No| End time of the system event to be queried. The value is a 13-digit timestamp, indicating the number of milliseconds elapsed since 00:00:00:00 on January 1, 1970.|
 | maxEvents | number | No| No| Maximum number of events that can be queried.|
 | fromSeq<sup>10+</sup> | number | No| Yes| Start SN of the events to be queried. The default value is **-1**.|
 | toSeq<sup>10+</sup> | number | No| Yes| End SN of the system events to be queried. The default value is **-1**.|

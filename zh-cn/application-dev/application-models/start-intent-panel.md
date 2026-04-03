@@ -16,16 +16,21 @@
 ## 通过startAbilityByType接口拉起垂类应用选择框
 
 ### 实现机制
-开发者可通过特定的业务类型如导航、金融、邮件等，调用startAbilityByType接口拉起对应的垂类应用选择框。选择框中将展示已接入的垂类应用，由用户选择打开指定应用以实现相应的意图。
+开发者可通过特定的业务类型如导航、金融、邮件等，调用startAbilityByType接口拉起对应的垂类应用选择框。
 
-这种方式可以为调用方提供统一的安全、可信的目标方应用，同时降低调用方的接入成本。  
+- 如果当前设备已安装应用中存在匹配的应用，选择框中将展示已接入的垂类应用，由用户选择打开指定应用以实现相应的意图。
 
-![](./figures/process-start-intent-panel.png)
+    ![](./figures/process-start-intent-panel.png)
 
+- 如果当前设备已安装应用中没有匹配的应用，系统将自动弹窗提示用户没有相关应用（下图以导航类应用匹配失败为例）。无需开发者适配。
+
+    ![](./figures/process-start-navigation-panel-no-apps.png)
+
+这种方式可以为调用方提供统一的安全、可信的目标方应用，同时降低调用方的接入成本。
 
 ### 匹配规则
 
-[UIAbilityContext.startAbilityByType](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybytype11)和[UIExtensionContentSession.startAbilityByType](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#startabilitybytype11)接口支持基于业务类型拉起垂类应用选择框。调用方通过指定业务类型即可拉起对应的垂类应用选择框。选择框上将展示已接入的垂域应用。
+[UIAbilityContext.startAbilityByType](../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#startabilitybytype11)和[UIExtensionContentSession.startAbilityByType](../reference/apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#startabilitybytype11)接口支持基于业务类型拉起垂类应用选择框。调用方通过指定业务类型即可拉起对应的垂类应用选择框。选择框上将展示已接入的垂类应用。
 
 
 系统会根据调用方在startAbilityByType接口传入的type与wantParams.sceneType取值，按照如下映射关系，匹配到在module.json5配置文件中声明了对应[linkFeature](../quick-start/module-configuration-file.md#skills标签)的目标应用。

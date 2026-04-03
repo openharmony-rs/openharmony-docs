@@ -44,7 +44,7 @@ isOperatorSimCard\(slotId: number, operator: OperatorSimCard\): boolean
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -92,7 +92,7 @@ setDefaultVoiceSlotId\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -144,7 +144,7 @@ setDefaultVoiceSlotId\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -193,7 +193,7 @@ setShowName\(slotId: number, name: string, callback: AsyncCallback\<void\>\): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -245,7 +245,7 @@ setShowName\(slotId: number, name: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -293,7 +293,7 @@ getShowName\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -344,7 +344,7 @@ getShowName\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -392,7 +392,7 @@ setShowNumber\(slotId: number, number: string, callback: AsyncCallback\<void\>\)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -445,7 +445,7 @@ setShowNumber\(slotId: number, number: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -493,7 +493,7 @@ getShowNumber\(slotId: number, callback: AsyncCallback\<string\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -544,7 +544,7 @@ getShowNumber\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -591,7 +591,7 @@ activateSim\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -642,7 +642,7 @@ activateSim\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -689,7 +689,7 @@ deactivateSim\(slotId: number, callback: AsyncCallback\<void\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -740,7 +740,7 @@ deactivateSim\(slotId: number\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -788,7 +788,7 @@ setLockState\(slotId: number, options: LockInfo, callback: AsyncCallback\<LockSt
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -846,7 +846,7 @@ setLockState\(slotId: number, options: LockInfo\): Promise\<LockStatusResponse\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -900,7 +900,7 @@ getLockState\(slotId: number, lockType: LockType, callback: AsyncCallback\<LockS
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -953,7 +953,7 @@ getLockState\(slotId: number, lockType: LockType\): Promise\<LockState\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1003,7 +1003,7 @@ alterPin\(slotId: number, newPin: string, oldPin: string, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1057,7 +1057,7 @@ alterPin\(slotId: number, newPin: string, oldPin: string\): Promise\<LockStatusR
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1107,7 +1107,7 @@ alterPin2\(slotId: number, newPin2: string, oldPin2: string, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1161,7 +1161,7 @@ alterPin2\(slotId: number, newPin2: string, oldPin2: string\): Promise\<LockStat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1210,7 +1210,7 @@ unlockPin\(slotId: number, pin: string, callback: AsyncCallback\<LockStatusRespo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1264,7 +1264,7 @@ unlockPin\(slotId: number, pin: string\): Promise\<LockStatusResponse\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1315,7 +1315,7 @@ unlockPuk\(slotId: number, newPin: string, puk: string, callback: AsyncCallback\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1371,7 +1371,7 @@ unlockPuk\(slotId: number, newPin: string, puk: string\): Promise\<LockStatusRes
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1422,7 +1422,7 @@ unlockPin2\(slotId: number, pin2: string, callback: AsyncCallback\<LockStatusRes
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1476,7 +1476,7 @@ unlockPin2\(slotId: number, pin2: string\): Promise\<LockStatusResponse\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1527,7 +1527,7 @@ unlockPuk2\(slotId: number, newPin2: string, puk2: string, callback: AsyncCallba
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1583,7 +1583,7 @@ unlockPuk2\(slotId: number, newPin2: string, puk2: string\): Promise\<LockStatus
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1633,7 +1633,7 @@ getSimIccId\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1684,7 +1684,7 @@ getSimIccId\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1731,7 +1731,7 @@ getVoiceMailIdentifier\(slotId: number, callback: AsyncCallback\<string\>\): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1782,7 +1782,7 @@ getVoiceMailIdentifier\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1829,7 +1829,7 @@ getVoiceMailNumber\(slotId: number, callback: AsyncCallback\<string\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1880,7 +1880,7 @@ getVoiceMailNumber\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1930,7 +1930,7 @@ setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string, callback
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -1984,7 +1984,7 @@ setVoiceMailInfo\(slotId: number, mailName: string, mailNumber: string\): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2032,7 +2032,7 @@ getSimTelephoneNumber\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2083,7 +2083,7 @@ getSimTelephoneNumber\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2130,7 +2130,7 @@ getSimGid1\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2181,7 +2181,7 @@ getSimGid1\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2228,7 +2228,7 @@ getIMSI\(slotId: number, callback: AsyncCallback\<string\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2279,7 +2279,7 @@ getIMSI\(slotId: number\): Promise\<string\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2326,7 +2326,7 @@ getOperatorConfigs\(slotId: number, callback: AsyncCallback\<Array\<OperatorConf
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2376,7 +2376,7 @@ getOperatorConfigs\(slotId: number\): Promise\<Array\<OperatorConfig\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2428,7 +2428,7 @@ queryIccDiallingNumbers\(slotId: number, type: ContactType, callback: AsyncCallb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2486,7 +2486,7 @@ queryIccDiallingNumbers\(slotId: number, type: ContactType\): Promise\<Array\<Di
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2541,7 +2541,7 @@ addIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2605,7 +2605,7 @@ addIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2664,7 +2664,7 @@ delIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2729,7 +2729,7 @@ delIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Diall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2788,7 +2788,7 @@ updateIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Di
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2853,7 +2853,7 @@ updateIccDiallingNumbers\(slotId: number, type: ContactType, diallingNumbers: Di
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2907,7 +2907,7 @@ sendEnvelopeCmd\(slotId: number, cmd: string, callback: AsyncCallback\<void\>\):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -2959,7 +2959,7 @@ sendEnvelopeCmd\(slotId: number, cmd: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3007,7 +3007,7 @@ sendTerminalResponseCmd\(slotId: number, cmd: string, callback: AsyncCallback\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3059,7 +3059,7 @@ sendTerminalResponseCmd\(slotId: number, cmd: string\): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3108,7 +3108,7 @@ unlockSimLock\(slotId: number, lockInfo: PersoLockInfo, callback: AsyncCallback\
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3165,7 +3165,7 @@ unlockSimLock\(slotId: number, lockInfo: PersoLockInfo\): Promise\<LockStatusRes
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3216,7 +3216,7 @@ getDsdsMode\(callback: AsyncCallback\<DsdsMode\>\): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3262,7 +3262,7 @@ getDsdsMode\(\): Promise\<DsdsMode\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |
@@ -3315,7 +3315,7 @@ SIM卡鉴权。使用Promise异步回调。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[ohos.telephony(电话子系统)错误码](errorcode-telephony.md)。
+以下错误码的详细介绍请参见[电话子系统错误码](errorcode-telephony.md)
 
 | 错误码ID |                 错误信息                     |
 | -------- | -------------------------------------------- |

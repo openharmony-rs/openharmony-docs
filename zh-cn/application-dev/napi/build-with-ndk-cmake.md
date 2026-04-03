@@ -60,13 +60,13 @@ mac使用 SDK 包解压完成效果如下图所示：
 
    + 配置 windows 下的环境变量
 
-    右键点击我的电脑，在下拉框中选择【属性】，然后点击【高级系统设置】，进入【环境变量】，找到【Path】并点击【编辑】，接着点击【新建】添加路径，保存后退出。最后打开cmd（若下一步不能够实现，请重启电脑尝试）。
+      右键点击我的电脑，在下拉框中选择【属性】，然后点击【高级系统设置】，进入【环境变量】，找到【Path】并点击【编辑】，接着点击【新建】添加路径，保存后退出。最后打开cmd（若下一步不能够实现，请重启电脑尝试）。
 
-    ![zh-cn_image_20-25-11-18-11-56](figures/zh-cn_image_20-25-11-18-11-56.PNG)
+      ![zh-cn_image_20-25-11-18-11-56](figures/zh-cn_image_20-25-11-18-11-56.PNG)
 
-    打开命令框，输入cmake.exe -version，命令行正确回显cmake的版本号，说明环境变量配置完成。
+      打开命令框，输入cmake.exe -version，命令行正确回显cmake的版本号，说明环境变量配置完成。
 
-    ![zh-cn_image_20-25-12-23-11-59](figures/zh-cn_image_20-25-12-23-11-59.PNG)
+      ![zh-cn_image_20-25-12-23-11-59](figures/zh-cn_image_20-25-12-23-11-59.PNG)
 
 
 2. 查看CMake默认路径。
@@ -182,7 +182,7 @@ int sum(int a, int b)
 
 在工程目录的模块目录下，创建build目录，用来放置CMake构建时产生的中间文件。注意: ohos-sdk是下载下来的SDK的根目录，开发者需要自行替换成实际的下载目录。
 
-1. 采用OHOS_STL=c++_shared动态链接c++库方式构建工程，如不指定，默认采用c++_shared；DOHOS_ARCH参数可根据系统架构来决定具体值，例如当DOHOS_ARCH=armeabi-v7a会编译32位动态库，而当DOHOS_ARCH=arm64-v8a会编译64位动态库。
+1. 采用OHOS_STL=c++_shared动态链接c++库方式构建工程，如不指定，默认采用c++_shared；OHOS_ARCH参数可根据系统架构来决定具体值，例如当OHOS_ARCH=armeabi-v7a会编译32位动态库，而当OHOS_ARCH=arm64-v8a会编译64位动态库。
 
    ```shell
     >mkdir build && cd build
@@ -190,7 +190,7 @@ int sum(int a, int b)
     >cmake --build .
    ```
 
-2. 采用OHOS_STL=c++_static静态链接c++库方式构建工程，当DOHOS_ARCH=armeabi-v7a会编译32位静态库，而当DOHOS_ARCH=arm64-v8a会编译64位静态库。
+2. 采用OHOS_STL=c++_static静态链接c++库方式构建工程，当OHOS_ARCH=armeabi-v7a会编译32位静态库，而当OHOS_ARCH=arm64-v8a会编译64位静态库。
 
    ```shell
     >mkdir build && cd build

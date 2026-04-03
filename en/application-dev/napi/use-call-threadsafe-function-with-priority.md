@@ -1,4 +1,4 @@
-# Passing a Task with the Specified Priority to an ArkTS Thread from an Asynchronous Thread Using Node-API
+# Passing a Task with the Specified Priority and Enqueuing Mode to an ArkTS Thread from an Asynchronous Thread Using Node-API
 <!--Kit: NDK-->
 <!--Subsystem: arkcompiler-->
 <!--Owner: @xliu-huanwei; @shilei123; @huanghello-->
@@ -30,11 +30,10 @@ Pass a task to the ArkTS main thread from an asynchronous thread in a thread-saf
 
 - Implementation
 
-  <!-- @[napi_call_threadsafe_function_with_priority_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->
+  <!-- @[napi_call_threadsafe_function_with_priority_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIClassicUseCases/NodeAPIApplicationScenario/entry/src/main/cpp/napi_init.cpp) -->  
   
   ``` C++
   #include "napi/native_api.h"
-  #include <future>
   // ...
   #include <hilog/log.h>
   // ...

@@ -196,7 +196,7 @@ Read [AVTranscoder](../../reference/apis-media-kit/capi-avtranscoder.md) for the
 5. Call **OH_AVTranscoderConfig_SetDstFD()** to set the file descriptor of the output video.
 
     ```c++
-    OH_AVTranscoderConfig_SetDstFD(config, dstFd); // Set the file descriptor of the output video.
+    OH_AVTranscoderConfig_SetDstFD(config, dstFd); // Set the target file descriptor dstFd for transcoding.
     ```
 
 6. (Optional) Call **OH_AVTranscoderConfig_SetDstVideoType()** to set the encoding format of the output video.

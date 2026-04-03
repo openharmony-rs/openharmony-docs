@@ -316,7 +316,7 @@ ArcList({ initialIndex: 2 }) {
 
 ``` TypeScript
 ArcListItem() {
-// ···
+  // ...
 }
 .autoScale(false)
 ```

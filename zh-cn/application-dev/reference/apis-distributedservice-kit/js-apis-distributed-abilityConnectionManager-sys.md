@@ -83,7 +83,7 @@ on(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;C
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -121,7 +121,7 @@ off(type:&nbsp;'collaborateEvent',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -157,7 +157,7 @@ off(type:&nbsp;'receiveImage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
+| 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
 **示例：**
@@ -269,7 +269,6 @@ createStream(sessionId:&nbsp;number,&nbsp;param:&nbsp;StreamParam):&nbsp;Promise
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 | 32300001      | Only one stream can be created for the current session.|
@@ -345,7 +344,7 @@ setSurfaceId(streamId:&nbsp;number,&nbsp;surfaceId:&nbsp;string,&nbsp;param:&nbs
 
 ## abilityConnectionManager.getSurfaceId
 
-getSurfaceId(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
+getSurfaceId(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 获取指定传输流绑定的Surface的唯一标识符。
 
@@ -357,7 +356,7 @@ getSurfaceId(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 | param | [SurfaceParam](#surfaceparam) | 是    | 表示Surface的配置参数。 |
 
 **返回值：**
@@ -395,7 +394,7 @@ getSurfaceId(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;string
 
 ## abilityConnectionManager.updateSurfaceParam
 
-updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
+updateSurfaceParam(streamId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;void
 
 更新与传输流绑定的Surface的配置信息。
 
@@ -407,7 +406,7 @@ updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 | param | [SurfaceParam](#surfaceparam) | 是    | 表示Surface的配置参数。 |
 
 **错误码：**
@@ -439,7 +438,7 @@ updateSurfaceParam(sessionId:&nbsp;number,&nbsp;param:&nbsp;SurfaceParam):&nbsp;
 
 ## abilityConnectionManager.destroyStream
 
-destroyStream(sessionId:&nbsp;number):&nbsp;void
+destroyStream(streamId:&nbsp;number):&nbsp;void
 
 发送图片和视频流等业务结束后，创建传输流的应用应及时销毁传输流，否则会增加系统功耗。
 
@@ -451,7 +450,7 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 
 **错误码：**
 
@@ -459,7 +458,6 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------- |
-| 201      | Permission verification failed. The application does not have the permission required to call the API.|
 | 202      | Not system App.|
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.|
 
@@ -476,7 +474,7 @@ destroyStream(sessionId:&nbsp;number):&nbsp;void
 
 ## abilityConnectionManager.startStream
 
-startStream(sessionId:&nbsp;number):&nbsp;void
+startStream(streamId:&nbsp;number):&nbsp;void
 
 启动指定传输流。
 
@@ -488,7 +486,7 @@ startStream(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 
 **错误码：**
 
@@ -513,7 +511,7 @@ startStream(sessionId:&nbsp;number):&nbsp;void
 
 ## abilityConnectionManager.stopStream
 
-stopStream(sessionId:&nbsp;number):&nbsp;void
+stopStream(streamId:&nbsp;number):&nbsp;void
 
 停止指定传输流。
 
@@ -525,7 +523,7 @@ stopStream(sessionId:&nbsp;number):&nbsp;void
 
 | 参数名       | 类型                                      | 必填   | 说明    |
 | --------- | --------------------------------------- | ---- | ----- |
-| sessionId | number | 是    | 表示协同会话ID。 |
+| streamId | number | 是    | 表示协同会话ID。 |
 
 **错误码：**
 

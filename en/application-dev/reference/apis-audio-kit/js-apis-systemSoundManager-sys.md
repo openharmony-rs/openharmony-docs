@@ -752,7 +752,6 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType, callback
 Sets a URI for a ringtone. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [setRingtoneUri](#setringtoneuri11) instead.
 
 **System API**: This is a system API.
@@ -776,7 +775,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_DEFAULT;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -796,7 +795,6 @@ setSystemRingtoneUri(context: Context, uri: string, type: RingtoneType): Promise
 Sets a URI for a ringtone. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [setRingtoneUri](#setringtoneuri11) instead.
 
 **System API**: This is a system API.
@@ -825,7 +823,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_DEFAULT;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -843,7 +841,6 @@ getSystemRingtoneUri(context: Context, type: RingtoneType, callback: AsyncCallba
 Obtains the URI of a ringtone. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getRingtoneUri](#getringtoneuri11) instead.
 
 **System API**: This is a system API.
@@ -885,7 +882,6 @@ getSystemRingtoneUri(context: Context, type: RingtoneType): Promise&lt;string&gt
 Obtains the URI of a ringtone. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getRingtoneUri](#getringtoneuri11) instead.
 
 **System API**: This is a system API.
@@ -930,7 +926,6 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType, callback: AsyncCal
 Obtains a player to play a ringtone. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getRingtonePlayer](#getringtoneplayer11) instead.
 
 **System API**: This is a system API.
@@ -974,7 +969,6 @@ getSystemRingtonePlayer(context: Context, type: RingtoneType): Promise&lt;Ringto
 Obtains a player to play a ringtone. This API uses a promise to return the result.
 
 > **NOTE**
->
 > This API is supported since API version 10 and deprecated since API version 11. You are advised to use [getRingtonePlayer](#getringtoneplayer11) instead.
 
 **System API**: This is a system API.
@@ -1056,7 +1050,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 let type: systemSoundManager.RingtoneType = systemSoundManager.RingtoneType.RINGTONE_TYPE_SIM_CARD_0;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -1212,7 +1206,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 let type: systemSoundManager.SystemToneType = systemSoundManager.SystemToneType.SYSTEM_TONE_TYPE_SIM_CARD_0;
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -1621,7 +1615,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
@@ -1771,7 +1765,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.openAlarmTone(context, uri).then((value: number) => {
@@ -1867,8 +1861,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Caller is not a system application. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
-| 5400103 | I/O error. |
-| 20700004 | Data size exceeds the limit. |
+| 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. System sound manager service error.|
+| 20700004 | Data size exceeds the limit. Note:This error is returned when the file size is between 200MB and 2GB.|
 | 20700005 | The number of files exceeds the limit. |
 | 20700006 | Insufficient ROM space. |
 
@@ -1880,8 +1874,8 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let title = 'test'; // Set the title of the target tone.
-let fileName = 'displayName_test'; // Set the file name of the target tone.
+let title = 'test'; // Change it to the actual name.
+let fileName = 'displayName_test'; // Change it to the actual file name.
 let categoryValue = systemSoundManager.TONE_CATEGORY_ALARM;
 
 let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
@@ -1889,7 +1883,7 @@ toneAttrs.setTitle(title);
 toneAttrs.setFileName(fileName);
 toneAttrs.setCategory(categoryValue);
 
-let path = 'file://data/test.ogg'; // Set the URI of the target tone.
+let path = 'file://data/test.ogg'; // Change it to the URI of the actual tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((value: string) => {
@@ -1937,8 +1931,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202     | Caller is not a system application. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
-| 5400103 | I/O error. |
-| 20700004 | Data size exceeds the limit. |
+| 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error.|
+| 20700004 | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.|
 | 20700005 | The number of files exceeds the limit. |
 | 20700006 | Insufficient ROM space. |
 
@@ -1950,8 +1944,8 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let title = 'test'; // Set the title of the target tone.
-let fileName = 'displayName_test'; // Set the file name of the target tone.
+let title = 'test'; // Change it to the actual name.
+let fileName = 'displayName_test'; // Change it to the actual file name.
 let categoryValue = systemSoundManager.TONE_CATEGORY_ALARM;
 
 let toneAttrs = systemSoundManager.createCustomizedToneAttrs();
@@ -2016,7 +2010,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let uri = 'file://data/test.wav'; // Set the URI of the target tone file.
+let uri = 'file://data/test.wav'; // Change it to the URI of the target tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.removeCustomizedTone(context, uri).then(() => {
@@ -2125,7 +2119,7 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let type: systemSoundManager.ToneHapticsType = systemSoundManager.ToneHapticsType.CALL_SIM_CARD_0;
 let toneHapticsSettings: systemSoundManager.ToneHapticsSettings = {
   mode: systemSoundManager.ToneHapticsMode.NON_SYNC,
-  hapticsUri: '/data/storage/el2/base/haptics/synchronized/alarms/test.json', // Use the URI obtained through getToneHapticsList.
+  hapticsUri: '/data/storage/el2/base/haptics/synchronized/alarms/test.json', // Change it to the URI obtained through getToneHapticsList.
 }
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
@@ -2230,7 +2224,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let toneUri: string = '/data/storage/el2/base/RingTone/alarms/test.ogg'; // Use the actual URI of the ringtone.
+let toneUri: string = '/data/storage/el2/base/RingTone/alarms/test.ogg'; // Change it to the URI of the actual tone file.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then((value: systemSoundManager.ToneHapticsAttrs) => {
@@ -2283,7 +2277,7 @@ import { common } from '@kit.AbilityKit';
 
 // Obtain the context from the component and ensure that the return value of this.getUIContext().getHostContext() is UIAbilityContext.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json'; // Use the actual URI of the haptics resource.
+let hapticsUri = '/data/storage/el2/base/haptics/synchronized/alarms/test.json'; // Change it to the URI of the target haptics resource.
 
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: number) => {
@@ -2438,7 +2432,7 @@ systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: sys
 });
 ```
 
-## RingtonePlayer<sup>10+</sup>
+## RingtonePlayer
 
 type RingtonePlayer = _RingtonePlayer
 
@@ -2466,7 +2460,7 @@ Defines a system tone player.
 |-----------------|-----------|
 | [_SystemTonePlayer](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneplayer) | System tone player.|
 
-## RingtoneOptions<sup>10+</sup>
+## RingtoneOptions
 
 type RingtoneOptions = _RingtoneOptions
 

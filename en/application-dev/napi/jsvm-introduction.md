@@ -18,6 +18,10 @@ JSVM-API allows dynamically loaded JS code to be directly run during application
 
 Unless otherwise specified, JSVM-API in this document refers to OpenHarmony JSVM-API.
 
+> **NOTE**
+>
+> JSVM-API supports only the interaction between JS and C/C++. If you need to implement the interaction between ArkTS and C/C++, see [Node-API Overview](napi-introduction.md).
+
 ## JSVM-API Architecture
 
 **Figure 1** JSVM-API architecture

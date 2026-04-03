@@ -7,7 +7,7 @@
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
 
-The **PasteButton** component comes with the pasteboard (also called clipboard) read privilege, which allows an application to read data from the pasteboard without any prompt information.
+The **PasteButton** component comes with the pasteboard (also called clipboard) read privilege, which allows an application to silently read data from the pasteboard.
 
 After the component integrated into your application is tapped, no authorization dialog box will be displayed when your application reads data from the pasteboard. You can use this component for any application that needs to read data from the pasteboard, while eliminating the pop-up windows.
 
@@ -43,38 +43,40 @@ The following procedure shows how to make entering a verification code easier: A
 
    The following example uses the default parameters. For details, see [PasteButton](../../reference/apis-arkui/arkui-ts/ts-security-components-pastebutton.md). In addition, all security components inherit the [Security Component Universal Attributes](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md), which can be used to customize styles.
    
-  <!-- @[use_paste_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Paste.ets) -->
-
-``` TypeScript
-import { pasteboard, BusinessError } from '@kit.BasicServicesKit';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = '';
-
-  build() {
-    Row() {
-      Column({ space: 10 }) {
-        TextInput({placeholder: 'Please enter the verification code.', text: this.message})
-        PasteButton()
-          .padding({top: 12, bottom: 12, left: 24, right: 24})
-          .onClick((event: ClickEvent, result: PasteButtonOnClickResult) => {
-            if (PasteButtonOnClickResult.SUCCESS === result) {
-              pasteboard.getSystemPasteboard().getData((err: BusinessError, pasteData: pasteboard.PasteData) => {
-                if (err) {
-                  console.error(`Failed to get paste data. Code is ${err.code}, message is ${err.message}`);
-                  return;
-                }
-                // The content is '123456'.
-                this.message = pasteData.getPrimaryText();
-              });
-            }
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
+   <!-- @[use_paste_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Paste.ets) -->    
+   
+   ``` TypeScript
+   import { pasteboard, BusinessError } from '@kit.BasicServicesKit';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = '';
+   
+     build() {
+       Row() {
+         Column({ space: 10 }) {
+           TextInput({ placeholder: $r('app.string.input_verify_code'), text: this.message })
+             .onChange((val: string) => {
+               this.message = val;
+             })
+           PasteButton()
+             .padding({top: 12, bottom: 12, left: 24, right: 24})
+             .onClick((event: ClickEvent, result: PasteButtonOnClickResult) => {
+               if (PasteButtonOnClickResult.SUCCESS === result) {
+                 pasteboard.getSystemPasteboard().getData((err: BusinessError, pasteData: pasteboard.PasteData) => {
+                   if (err) {
+                     console.error(`Failed to get paste data. Code is ${err.code}, message is ${err.message}`);
+                     return;
+                   }
+                   this.message = pasteData.getPrimaryText();
+                 });
+               }
+             })
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
+   ```

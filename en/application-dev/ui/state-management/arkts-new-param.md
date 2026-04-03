@@ -524,6 +524,7 @@ class Info {
 @Entry
 @ComponentV2
 struct Index {
+  // Use @Local to decorate the infoList array and pass it to @Param of the child component as the data source.
   @Local infoList: Info[] = [new Info('Alice', 8, 0, 0), new Info('Barry', 10, 1, 20), new Info('Cindy', 18, 24, 40)];
 
   build() {
@@ -531,6 +532,7 @@ struct Index {
       ForEach(this.infoList, (info: Info) => {
         MiddleComponent({ info: info })
       })
+      // Modify the array elements and object attributes to trigger the update of MiddleComponent and SubComponent.
       Button('change')
         .onClick(() => {
           this.infoList[0] = new Info('Atom', 40, 27, 90);
@@ -543,12 +545,14 @@ struct Index {
 
 @ComponentV2
 struct MiddleComponent {
+  // Use @Param to receive the Info object passed by the parent component. The child component is updated when the data source changes.
   @Require @Param info: Info;
 
   build() {
     Column() {
       Text(`name: ${this.info.name}`)
       Text(`age: ${this.info.age}`)
+      // Pass the Region object to @Param of the child component.
       SubComponent({ region: this.info.region })
     }
   }
@@ -556,6 +560,7 @@ struct MiddleComponent {
 
 @ComponentV2
 struct SubComponent {
+  // Use @Param to receive the Region object passed by the parent component. The child component is updated when the data source changes.
   @Require @Param region: Region;
 
   build() {
@@ -574,6 +579,7 @@ By using \@Param to decorate the variables of the Array type, you can observe th
 ``` TypeScript
 @ComponentV2
 struct Child {
+  // Use @Param to receive the Array variable passed by the parent component.
   @Require @Param count: number[];
 
   build() {
@@ -590,21 +596,26 @@ struct Child {
 @Entry
 @ComponentV2
 struct Index {
+  // Use @Local to decorate the Array variable and pass it to @Param of the child component as the data source.
   @Local count: number[] = [1, 2, 3];
 
   build() {
     Row() {
       Column() {
         Child({ count: this.count })
+        // Reassign the value of the array, triggering child component re-rendering.
         Button('init array').onClick(() => {
           this.count = [9, 8, 7];
         })
+        // Add an array element, triggering child component re-rendering.
         Button('push').onClick(() => {
           this.count.push(0);
         })
+        // Reverse the array elements, triggering child component re-rendering.
         Button('reverse').onClick(() => {
           this.count.reverse();
         })
+        // Use the same element to fill the array, triggering child component re-rendering.
         Button('fill').onClick(() => {
           this.count.fill(6);
         })
@@ -625,6 +636,7 @@ By using \@Param to decorate the variables of the Date type, you can observe the
 ``` TypeScript
 @ComponentV2
 struct DateComponent {
+  // Use @Param to receive the Date variable passed by the parent component.
   @Param selectedDate: Date = new Date('2024-01-01');
 
   build() {
@@ -641,25 +653,30 @@ struct DateComponent {
 @Entry
 @ComponentV2
 struct Index {
+  // Use @Local to decorate the Date variable and pass it to @Param of the child component as the data source.
   @Local parentSelectedDate: Date = new Date('2021-08-08');
 
   build() {
     Column() {
+      // Reassign the value of the Date variable, triggering child component re-rendering.
       Button('parent update the new date')
         .margin(10)
         .onClick(() => {
           this.parentSelectedDate = new Date('2023-07-07');
         })
+      // Call the setFullYear method of Date to change the year, triggering child component re-rendering.
       Button('increase the year by 1')
         .margin(10)
         .onClick(() => {
           this.parentSelectedDate.setFullYear(this.parentSelectedDate.getFullYear() + 1);
         })
+      // Call the setMonth method of Date to change the month, triggering child component re-rendering.
       Button('increase the month by 1')
         .margin(10)
         .onClick(() => {
           this.parentSelectedDate.setMonth(this.parentSelectedDate.getMonth() + 1);
         })
+      // Call the setDate method of Date to change the date, triggering child component re-rendering.
       Button('parent increase the day by 1')
         .margin(10)
         .onClick(() => {
@@ -680,6 +697,7 @@ By using \@Param to decorate the variables of the **Map** type, you can observe 
 ``` TypeScript
 @ComponentV2
 struct Child {
+  // Use @Param to receive the Map variable passed by the parent component.
   @Param value: Map<number, string> = new Map();
 
   build() {
@@ -696,24 +714,30 @@ struct Child {
 @Entry
 @ComponentV2
 struct Index {
+  // Use @Local to decorate the Map variable and pass it to @Param of the child component as the data source.
   @Local message: Map<number, string> = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
 
   build() {
     Row() {
       Column() {
         Child({ value: this.message })
+        // Reassign the value of the Map variable, triggering child component re-rendering.
         Button('init map').onClick(() => {
           this.message = new Map([[0, 'a'], [1, 'b'], [3, 'c']]);
         })
+        // Add a key-value pair, triggering child component re-rendering.
         Button('set new one').onClick(() => {
           this.message.set(4, 'd');
         })
+        // Clear the Map variable, triggering child component re-rendering.
         Button('clear').onClick(() => {
           this.message.clear();
         })
+        // Update a key-value pair, triggering child component re-rendering.
         Button('replace the first one').onClick(() => {
           this.message.set(0, 'aa');
         })
+        // Delete a key-value pair, triggering child component re-rendering.
         Button('delete the first one').onClick(() => {
           this.message.delete(0);
         })
@@ -734,6 +758,7 @@ By using \@Param to decorate the variables of the **Set** type, you can observe 
 ``` TypeScript
 @ComponentV2
 struct Child {
+  // Use @Param to receive the Set variable passed by the parent component.
   @Param message: Set<number> = new Set();
 
   build() {
@@ -750,21 +775,26 @@ struct Child {
 @Entry
 @ComponentV2
 struct Index {
+  // Use @Local to decorate the Set variable and pass it to @Param of the child component as the data source.
   @Local message: Set<number> = new Set([0, 1, 2, 3, 4]);
 
   build() {
     Row() {
       Column() {
         Child({ message: this.message })
+        // Reassign the value of the Set variable, triggering child component re-rendering.
         Button('init set').onClick(() => {
           this.message = new Set([0, 1, 2, 3, 4]);
         })
+        // Add an element, triggering child component re-rendering.
         Button('set new one').onClick(() => {
           this.message.add(5);
         })
+        // Clear the Set variable, triggering child component re-rendering.
         Button('clear').onClick(() => {
           this.message.clear();
         })
+        // Delete an element, triggering child component re-rendering.
         Button('delete the first one').onClick(() => {
           this.message.delete(0);
         })
@@ -786,12 +816,13 @@ struct Index {
 @Entry
 @ComponentV2
 struct Index {
-  // Number of clicks, which is transferred to the subcomponent. The value can be undefined.
+  // Use @Local to decorate the union variable and pass it to @Param of the child component as the data source.
   @Local count: number | undefined = 0;
 
   build() {
     Column() {
       MyComponent({ count: this.count })
+      // Change the union type value to trigger child component re-rendering.
       Button('change')
         .onClick(() => {
           this.count = undefined;
@@ -802,7 +833,7 @@ struct Index {
 
 @ComponentV2
 struct MyComponent {
-  // Number of clicks, which is used to receive the value transferred by the parent component. The value can be undefined.
+  // Use @Param to receive the union variable passed by the parent component.
   @Param count: number | undefined = 0;
 
   build() {

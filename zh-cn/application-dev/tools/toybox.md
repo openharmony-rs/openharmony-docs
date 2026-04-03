@@ -99,7 +99,7 @@ toybox的执行方式有两种：
 | hostname  | 获取当前主机名。<br />usage: hostname [-bdsf] [-F FILENAME] [newname] |
 | insmod    | 加载内核模块。<br />usage: insmod MODULE [MODULE_OPTIONS] |
 | logger    | 记录系统日志。<br />usage: logger [-s] [-t TAG] [-p [FACILITY.]PRIORITY] [message...] |
-| lsmod     | 显示当前已经加载的模块，他们的大小和依赖。<br />usage: lsmod |
+| lsmod     | 显示当前已经加载的模块，它们的大小和依赖。<br />usage: lsmod |
 | mix       | 显示OSS声道，或者设置音量。<br />usage: mix [-d DEV] [-c CHANNEL] [-l VOL] [-r RIGHT] |
 | modinfo   | 显示内核模块信息。<br />usage: modinfo [-0] [-b basedir] [-k kernel] [-F field] [module \| file...] |
 | nproc     | 打印处理器数量。<br />usage: nproc [--all] |
@@ -233,7 +233,7 @@ toybox的执行方式有两种：
 | comm      | 读取FILE1和FILE2（这两个文件应该是有序的），并生成三个文本列作为输出：仅在FILE1中的行、仅在FILE2中的行、在两个文件中都有的行。“-”代表标准输入设备。<br />usage: comm [-123] FILE1 FILE2  |
 | count     | 将标准输入设备复制到标准输出设备，将简单的进度指示器显示到标准错误输出stderr。<br />usage: count |
 | cp        | 将文件从SOURCE复制到DEST。如果有多个源，DEST必须是一个目录。<br />usage: cp [-adfHiLlnPpRrsTv] [--preserve=motcxa] [-t TARGET] SOURCE... [DEST] |
-| cpio      | 从“newc”格式的cpio档案中中读写文件。<br />usage: cpio -{o\|t\|i\|p DEST} [-v] [--verbose] [-F FILE] [--no-preserve-owner]<br />&emsp;[ignored: -mdu -H newc] |
+| cpio      | 从“newc”格式的cpio档案中读写文件。<br />usage: cpio -{o\|t\|i\|p DEST} [-v] [--verbose] [-F FILE] [--no-preserve-owner]<br />&emsp;[ignored: -mdu -H newc] |
 | crc32     | 输出每个文件的crc32校验和。<br />usage: crc32 [file...] |
 | cut       | 将每个FILE中的行的选定部分打印到标准输出。每个选择列表以逗号分隔，可以是数字（从1开始计数）或破折号分隔的范围（其中X-表示X到行尾，-X表示从开始到X）。<br />usage: cut [-Ds] [-bcfF LIST] [-dO DELIM] [FILE...] |
 | dd        |  用于转换和复制文件的命令，可以用于创建磁盘镜像、备份数据、转换字符编码等任务。<br />usage:<br />&emsp; dd [if=FILE] [of=FILE] [ibs=N] [obs=N] [iflag=FLAGS] [oflag=FLAGS]<br />&emsp; [bs=N] [count=N] [seek=N] [skip=N]<br />&emsp; [conv=notrunc\|noerror\|sync\|fsync] [status=noxfer\|none] |

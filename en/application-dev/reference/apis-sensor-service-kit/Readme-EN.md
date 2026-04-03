@@ -12,8 +12,8 @@
   <!--Del-->
   - [@ohos.sensor (Sensor) (System API)](js-apis-sensor-sys.md)
   <!--DelEnd-->
-  - [@ohos.sensor (Sensor) (Deprecated API)](js-apis-system-sensor.md)
-  - [@ohos.vibrator (Vibrator) (Deprecated API)](js-apis-system-vibrate.md)
+  - [@system.sensor (Sensor)](js-apis-system-sensor.md)
+  - [@system.vibrator (Vibrator)](js-apis-system-vibrate.md)
 - C API<!--sensor-service-c-->
   - Modules<!--sensor-service-module-->
     - [Sensor](capi-sensor.md)
@@ -30,8 +30,7 @@
     - [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)
     - [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)
     - [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md)
-    - [Vibrator_File_Description](capi-vibrator-vibrator-filedescription.md)
+    - [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md)
 - Error Codes<!--sensor-service-arkts-errcode-->
   - [Sensor Error Codes](errorcode-sensor.md)
   - [Vibrator Error Codes](errorcode-vibrator.md)
-

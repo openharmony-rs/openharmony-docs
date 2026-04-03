@@ -9,7 +9,7 @@
 
 ## Overview
 
-This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscribe to task execution timeout events. For details (such as parameter restrictions and value ranges), see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
+This topic describes how to use the C/C++ APIs provided by HiAppEvent to subscribe to task execution timeout events. For details about the parameter restrictions and value ranges, see [hiappevent.h](../reference/apis-performance-analysis-kit/capi-hiappevent-h.md).
 
 ## Available APIs
 
@@ -292,7 +292,7 @@ The following describes how to subscribe to the freeze event triggered by a butt
    }
    ```
 
-7. In the **napi_init.cpp** file, register **RegisterWatcher** and **TestHiCollieTimerNdk** as ArkTS APIs.
+7. Register **RegisterWatcher** and **TestHiCollieTimerNdk** as ArkTS APIs.
 
    In the **napi_init.cpp** file, register the **TestHiCollieTimerNdk**, **RegisterAppHicollieWatcherR**, and **RegisterAppHicollieWatcherR** methods as ArkTS APIs in the **desc[]** array of the **Init** function.
    <!-- @[test_hicollie_timer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->

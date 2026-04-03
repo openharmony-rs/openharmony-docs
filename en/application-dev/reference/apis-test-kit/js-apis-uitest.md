@@ -17,7 +17,7 @@ This module provides the following functions:
 - [Driver<sup>9+</sup>](#driver9): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot.
 - [UiWindow<sup>9+</sup>](#uiwindow9): works as the entry class and provides APIs for obtaining window attributes, dragging windows, and adjusting window sizes.
 - [By<sup>(deprecated)</sup>](#bydeprecated): provides UI component feature description APIs for component filtering and matching. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
-- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [[Component<sup>9+</sup>](#component9)](#on9) instead.
+- [UiComponent<sup>(deprecated)</sup>](#uicomponentdeprecated): represents a component on the UI and provides APIs for obtaining component attributes, clicking a component, scrolling to search for a component, and text injection. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
 - [UiDriver<sup>(deprecated)</sup>](#uidriverdeprecated): works as the entry class and provides APIs for features such as component matching/search, key injection, coordinate clicking/sliding, and screenshot. This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Driver<sup>9+</sup>](#driver9) instead.
 
 > **NOTE**
@@ -255,7 +255,7 @@ Describes information about the touchpad swipe gesture option.
 | Name      | Type  | Read-Only| Optional| Description                                                    |
 | ---------- | ------ |----|----|--------------------------------------------------------|
 | stay | boolean | No | Yes | Whether the swipe gesture stays on the touchpad for 1s before it is lifted. The value **true** indicates that the swipe gesture stays on the touchpad for 1s, and **false** indicates the opposite. The default value is **false**.|
-| speed       | number | No | Yes | Swipe speed, in px/s. The value is an integer ranges from 200 to 40000. If the set value is not in the range, the default value **2000** is used. |
+| speed       | number | No | Yes | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **2000**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value 2000 is used. If the value is a negative number, an error code indicating a parameter error is returned. |
 
 
 ## InputTextMode<sup>20+</sup>
@@ -278,6 +278,7 @@ Since API version 9, the UiTest framework provides a wide range of UI component 
 The APIs provided by the **On** class exhibit the following features:<br>1. Allow one or more attributes as the match conditions. For example, you can specify both the **text** and **id** attributes to find the target component.<br>2. Provide multiple match patterns for component attributes.<br>3. Support absolute positioning and relative positioning for components. APIs such as [ON.isBefore](#isbefore9) and [ON.isAfter](#isafter9) can be used to specify the features of adjacent components to assist positioning.<br>All APIs provided in the **On** class are synchronous. You are advised to use the static constructor **ON** to create an **On** object in chain mode.
 
 ```ts
+// xxx.test.ets
 import { ON } from '@kit.TestKit';
 
 ON.text('123').type('Button');
@@ -291,7 +292,7 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 
 > **NOTE**
 >
-> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) of a component is set to **no** or **no-hide-descendants**, this API cannot be used to specify the text attribute of the target component for searching for the component. In this case, you can use the [On.originalText ()](#originaltext20) API.
+> If the [accessibilityLevel](../apis-arkui/arkui-ts/ts-universal-attributes-accessibility.md#accessibilitylevel) of a component is set to **no** or **no-hide-descendants**, this API cannot be used to specify the text attribute of the target component for searching for the component. In this case, you can use the [On.originalText()](#originaltext20) API.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -321,6 +322,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.text('123'); // Use the static constructor ON to create an On object and specify the text attribute of the target component.
@@ -359,6 +361,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.id('123'); // Use the static constructor ON to create an On object and specify the ID attribute of the target component.
@@ -398,6 +401,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
 let on: On = ON.id('id', MatchPattern.REG_EXP_ICASE); // Use case-insensitive regular expression to match the ID attribute value of the component.
@@ -436,6 +440,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.type('Button'); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
@@ -475,6 +480,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON, MatchPattern } from '@kit.TestKit';
 
 let on: On = ON.type('Button', MatchPattern.EQUALS); // Use the static constructor ON to create an On object and specify the type attribute of the target component.
@@ -513,6 +519,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.clickable(true); // Use the static constructor ON to create an On object and specify the clickable attribute of the target component.
@@ -551,6 +558,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.longClickable(true); // Use the static constructor ON to create an On object and specify the longClickable attribute of the target component.
@@ -589,6 +597,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.scrollable(true); // Use the static constructor ON to create an On object and specify the scrollable attribute of the target component.
@@ -627,6 +636,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.enabled(true); // Use the static constructor ON to create an On object and specify the enabled attribute of the target component.
@@ -665,6 +675,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.focused(true); // Use the static constructor ON to create an On object and specify the focused attribute of the target component.
@@ -703,6 +714,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.selected(true); // Use the static constructor ON to create an On object and specify the selected attribute of the target component.
@@ -741,6 +753,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.checked(true); // Use the static constructor ON to create an On object and specify the checked attribute of the target component.
@@ -779,6 +792,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.checkable(true); // Use the static constructor ON to create an On object and specify the checkable attribute of the target component.
@@ -817,6 +831,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located before the given attribute component.
@@ -856,6 +871,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located after the given attribute component.
@@ -895,6 +911,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 // Use the static constructor ON to create an On object and specify that the target component is located within the given attribute component.
@@ -934,6 +951,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.inWindow('com.uitestScene.acts'); // Use the static constructor ON to create an On object and specify that the target component is located within the given application window.
@@ -973,6 +991,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.description('123'); // Use the static constructor ON to create an On object and specify the description attribute of the target component.
@@ -1012,6 +1031,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { MatchPattern, On, ON } from '@kit.TestKit';
 
 let on: On = ON.hint('welcome', MatchPattern.EQUALS); // Use the static constructor ON to create an On object with the hint text attribute of the target component specified.
@@ -1050,6 +1070,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.belongingDisplay(0); // Use the static constructor ON to create an On object and specify the ID of the display to which the target component belongs.
@@ -1093,6 +1114,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { On, ON } from '@kit.TestKit';
 
 let on: On = ON.originalText('123'); // Use the static constructor ON to create an On object and specify the originalText attribute of the target component.
@@ -1132,6 +1154,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON, Component } from '@kit.TestKit';
 
 async function demo() {
@@ -1169,6 +1192,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1206,6 +1230,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1243,6 +1268,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1284,6 +1310,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1321,6 +1348,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1358,6 +1386,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1395,6 +1424,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1432,6 +1462,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1473,6 +1504,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1514,6 +1546,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1555,6 +1588,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1596,6 +1630,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1638,6 +1673,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1679,6 +1715,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1720,6 +1757,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1757,7 +1795,7 @@ Clears the original text in a component and inputs the specified text. This API 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -1768,6 +1806,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1802,7 +1841,7 @@ Inputs text to a component in a specified text input mode. This API takes effect
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -1813,6 +1852,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 
 **Example**
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function mode_demo() {
@@ -1850,6 +1890,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1883,7 +1924,7 @@ Scrolls on this component to search for the target component. This API is applic
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -1894,6 +1935,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1929,7 +1971,7 @@ Scrolls on this component to search for the target component. This API is applic
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -1940,6 +1982,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -1963,7 +2006,7 @@ Scrolls to the top of this component. This API is applicable to components that 
 
 | Name| Type  | Mandatory| Description                                                    |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -1973,7 +2016,7 @@ Scrolls to the top of this component. This API is applicable to components that 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -1984,6 +2027,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2007,7 +2051,7 @@ Scrolls to the bottom of this component. This API is applicable to components th
 
 | Name| Type  | Mandatory| Description                                                    |
 | ------ | ------ | ---- |--------------------------------------------------------|
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -2017,7 +2061,7 @@ Scrolls to the bottom of this component. This API is applicable to components th
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2028,6 +2072,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2063,7 +2108,7 @@ Drags a component to the target component. This API uses a promise to return the
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2074,6 +2119,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2108,7 +2154,7 @@ Pinches out a component at the specified scale. This API uses a promise to retur
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2119,6 +2165,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2152,7 +2199,7 @@ Pinches in a component at the specified scale. This API uses a promise to return
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2163,6 +2210,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2200,6 +2248,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2236,6 +2285,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2272,6 +2322,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2309,6 +2360,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2351,6 +2403,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2382,7 +2435,7 @@ Delays execution for the specified duration. This API uses a promise to return t
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2392,6 +2445,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2424,7 +2478,7 @@ Searches for the target component based on the specified attributes. This API us
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2434,6 +2488,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2466,7 +2521,7 @@ Searches for all matched components based on the specified attributes and saves 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2476,6 +2531,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2508,7 +2564,7 @@ Searches for a window based on the specified attributes. This API uses a promise
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2518,6 +2574,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -2551,7 +2608,7 @@ Searches for the target component based on the attributes within a specified tim
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2561,6 +2618,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2593,7 +2651,7 @@ Asserts whether a component matches the specified attributes exists on the curre
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2604,6 +2662,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -2639,6 +2698,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2681,6 +2741,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2713,7 +2774,7 @@ Triggers a key event by passing the key value. This API uses a promise to return
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2723,6 +2784,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
@@ -2757,7 +2819,7 @@ Triggers a key event by passing the key value on the specified screen. This API 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2767,6 +2829,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
@@ -2802,7 +2865,7 @@ Triggers a combination key event based on the specified key values. This API use
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2812,6 +2875,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2847,7 +2911,7 @@ Triggers a combination key event based on the specified key values on the specif
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2857,6 +2921,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2890,7 +2955,7 @@ Clicks the target coordinate point. This API uses a promise to return the result
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2900,6 +2965,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2942,6 +3008,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -2975,7 +3042,7 @@ Double-clicks the target coordinate point. This API uses a promise to return the
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -2985,6 +3052,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3027,6 +3095,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3060,7 +3129,7 @@ Long-clicks the target coordinate point. This API uses a promise to return the r
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3070,6 +3139,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3113,6 +3183,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3139,7 +3210,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.                      |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.                      |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.                      |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3149,7 +3220,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3159,6 +3230,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3183,7 +3255,7 @@ Swipes from the start coordinate point to the target coordinate point. This API 
 | ------ | ------ | ---- |------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
 
@@ -3203,6 +3275,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3231,7 +3304,7 @@ Drags from the start coordinate point to the target coordinate point. This API u
 | starty | number | Yes  | Number, which indicates the vertical coordinate of the start point. The value is an integer greater than or equal to 0.             |
 | endx   | number | Yes  | Number, which indicates the horizontal coordinate of the target point. The value is an integer greater than or equal to 0.             |
 | endy   | number | Yes  | Number, which indicates the vertical coordinate of the target point. The value is an integer greater than or equal to 0.             |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3241,7 +3314,7 @@ Drags from the start coordinate point to the target coordinate point. This API u
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3251,6 +3324,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3277,7 +3351,7 @@ Drags from the start point to the target point. You can specify the drag speed a
 | ------ | ------ | ---- |--------------------------------------------------------|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -3298,6 +3372,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3330,7 +3405,7 @@ Captures the current screen and saves it as a PNG image to the given save path. 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3340,6 +3415,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3373,7 +3449,7 @@ Captures the specified screen and saves it as a PNG image to the given save path
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3383,6 +3459,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3417,7 +3494,7 @@ Sets the display rotation of the current scene. This API uses a promise to retur
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3427,6 +3504,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, DisplayRotation } from '@kit.TestKit';
 
 async function demo() {
@@ -3462,6 +3540,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { DisplayRotation, Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3504,6 +3583,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { DisplayRotation, Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3538,7 +3618,7 @@ Enables or disables display rotation. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3548,6 +3628,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3583,6 +3664,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3625,6 +3707,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3660,6 +3743,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3702,6 +3786,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3737,6 +3822,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3774,6 +3860,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3818,6 +3905,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3851,7 +3939,7 @@ Checks whether all components on the current UI are idle. This API uses a promis
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3861,6 +3949,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3886,7 +3975,7 @@ Simulates a fling operation. This API uses a promise to return the result.
 | from    | [Point](#point9) | Yes  | Coordinates of the point where the finger touches the screen.                                       |
 | to      | [Point](#point9) | Yes  | Coordinates of the point where the finger leaves the screen.                                        |
 | stepLen | number           | Yes  | Step length, in pixels. The value is an integer greater than or equal to 0.                                        |
-| speed   | number           | Yes  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed   | number           | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3896,7 +3985,7 @@ Simulates a fling operation. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3906,6 +3995,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -3929,7 +4019,7 @@ Injects a multi-finger operation into a device. This API uses a promise to retur
 | Name  | Type                            | Mandatory| Description                                                    |
 | -------- | -------------------------------- | ---- |--------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | Yes  | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.                                 |
-| speed    | number                           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed    | number                           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3939,7 +4029,7 @@ Injects a multi-finger operation into a device. This API uses a promise to retur
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -3949,6 +4039,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -3983,7 +4074,7 @@ Simulates a fling operation with the specified direction and speed. This API use
 | Name   | Type                         | Mandatory| Description                                                    |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | Yes  | Direction of the fling operation.                                              |
-| speed     | number                        | Yes  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed     | number                        | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -3993,7 +4084,7 @@ Simulates a fling operation with the specified direction and speed. This API use
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4003,6 +4094,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
@@ -4026,7 +4118,7 @@ Simulates a fling operation on a specified display with the specified direction 
 | Name   | Type                         | Mandatory| Description                                                    |
 | --------- | ----------------------------- | ---- |--------------------------------------------------------|
 | direction | [UiDirection](#uidirection10) | Yes  | Direction of the fling operation.                                              |
-| speed     | number                        | Yes  | Fling speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed     | number                        | Yes  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the range, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 | displayId     | number | Yes | Display ID. The value is an integer greater than or equal to 0.<br> **Note**: If the input **displayId** does not exist, the exception **17000007** is reported.                 |
 
 **Return value**
@@ -4037,7 +4129,7 @@ Simulates a fling operation on a specified display with the specified direction 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4047,6 +4139,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
@@ -4080,7 +4173,7 @@ Captures the specified area of the current screen and saves the captured screens
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4090,6 +4183,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4130,7 +4224,7 @@ Injects a mouse click action at the specified coordinates, with the optional key
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4140,6 +4234,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
@@ -4176,7 +4271,7 @@ Injects a mouse scroll action at the specified coordinates, with the optional ke
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4186,6 +4281,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4218,7 +4314,7 @@ Moves the mouse cursor to the target point. This API uses a promise to return th
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4228,6 +4324,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4263,11 +4360,12 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let observer: UIEventObserver = driver.createUIEventObserver();
 }
 ```
 
@@ -4290,7 +4388,7 @@ Injects a mouse scroll action at the specified coordinates, with the optional ke
 | d      | number           | Yes  | Number of ticks scrolled by the mouse wheel. A tick indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.         |
 | key1   | number           | No  | First key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
 | key2   | number           | No  | Second key value. The value is an integer greater than or equal to 0. For details, see [KeyCode](../apis-input-kit/js-apis-keycode.md#keycode). The default value is 0.                              |
-| speed  | number           | No  | Scroll speed of the mouse wheel, in ticks/second. The value is an integer ranging from 1 to 500. If the value is not within the range, the default value **20** will be used.|
+| speed  | number           | No  | Scrolling speed of the mouse wheel, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4300,7 +4398,7 @@ Injects a mouse scroll action at the specified coordinates, with the optional ke
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4310,6 +4408,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4345,7 +4444,7 @@ Injects a double-click action at the specified coordinates, with the optional ke
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4355,6 +4454,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
@@ -4390,7 +4490,7 @@ Injects a mouse long-click action at the specified coordinates, with the optiona
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4400,6 +4500,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
@@ -4436,7 +4537,7 @@ Injects a mouse long-click action at the specified coordinates, with the optiona
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4446,6 +4547,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, MouseButton } from '@kit.TestKit';
 
 async function demo() {
@@ -4470,7 +4572,7 @@ Moves the mouse pointer from the start point to the end point. This API uses a p
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
 | to     | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
-| speed  | number           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4480,7 +4582,7 @@ Moves the mouse pointer from the start point to the end point. This API uses a p
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4490,6 +4592,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4516,7 +4619,7 @@ Drags the mouse pointer from the start point to the end point. This API uses a p
 | ------ | ---------------- | ---- |--------------------------------------------------------|
 | from   | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
 | to     | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
-| speed  | number           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 
 **Return value**
 
@@ -4526,7 +4629,7 @@ Drags the mouse pointer from the start point to the end point. This API uses a p
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4536,6 +4639,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4562,7 +4666,7 @@ Drags the mouse from the start point to the end point. You can specify the dragg
 | --------- | ---------------- | ---- |--------------------------------------------------------|
 | from      | [Point](#point9) | Yes  | Coordinates of the start point.                                                |
 | to        | [Point](#point9) | Yes  | Coordinates of the end point.                                                 |
-| speed     | number           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed     | number           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -4573,7 +4677,7 @@ Drags the mouse from the start point to the end point. You can specify the dragg
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4583,6 +4687,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4616,7 +4721,7 @@ Inputs text at a specified coordinate without clearing the original text in the 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4626,6 +4731,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -4662,7 +4768,7 @@ Inputs text at a specified coordinate point in a specified input mode. This API 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4673,6 +4779,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Component, Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -4709,7 +4816,7 @@ Simulates a multi-finger swipe gesture on the touchpad. This API uses a promise 
 | ------ |-----------------------------------------------|----|-----------------------|
 | fingers      | number                                        | Yes | Number of fingers. The value can be 3 or 4.|
 | direction | [UiDirection](#uidirection10)                 | Yes | Swipe direction.          |
-| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | No | Additional options.       |
+| options      | [TouchPadSwipeOptions](#touchpadswipeoptions18) | No | Additional options for the multi-finger swipe gesture on the touchpad. The default values of the attributes in **TouchPadSwipeOptions** are used by default.       |
 
 **Return value**
 
@@ -4719,7 +4826,7 @@ Simulates a multi-finger swipe gesture on the touchpad. This API uses a promise 
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4730,6 +4837,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
@@ -4757,7 +4865,7 @@ Simulates a two-finger scroll gesture on the touchpad. This API uses a promise t
 | point       | [Point](#point9) | Yes  | Point of the mouse cursor when the two-finger scrolling is performed on the touchpad.                                           |
 | direction   | [UiDirection](#uidirection10)                 | Yes | Direction of two-finger scrolling on the touchpad.          |
 | d           | number           | Yes  | Number of grids scrolled by two fingers on the touchpad. A grid indicates a 120 px shift to the target point. The value is an integer greater than or equal to 0.        |
-| speed       | number           | No  | Speed of two-finger scrolling on the touchpad, in cell/second. The value is an integer ranging from 1 to 500. If the value is not within the range, the default value **20** is used.|
+| speed       | number           | No  | Scrolling speed of two fingers on the touchpad, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
 
@@ -4778,6 +4886,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDirection } from '@kit.TestKit';
 
 async function demo() {
@@ -4810,7 +4919,7 @@ Simulates a pen click operation. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4820,6 +4929,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4853,7 +4963,7 @@ Simulates a pen long-click operation. This API uses a promise to return the resu
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4863,6 +4973,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4896,7 +5007,7 @@ Simulates a pen double-click operation. This API uses a promise to return the re
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4906,6 +5017,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4930,7 +5042,7 @@ Simulates a pen swipe operation. This API uses a promise to return the result.
 | ------ |-----------------------------------------------|----|--------------------------------------------------------|
 | startPoint      | [Point](#point9) | Yes | Coordinates of the start point.                                             |
 | endPoint      | [Point](#point9) | Yes | Coordinates of the end point.                                             |
-| speed      | number | No | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed      | number | No | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.|
 | pressure      | number | No | Swipe pressure of the pen. The value ranges from 0.0 to 1.0. The default value is **1.0**.                       |
 
 **Return value**
@@ -4941,7 +5053,7 @@ Simulates a pen swipe operation. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4951,6 +5063,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -4974,7 +5087,7 @@ Simulates a continuous multi-point pen injection operation. This API uses a prom
 | Name| Type                                           | Mandatory| Description                                                               |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers | [PointerMatrix](#pointermatrix9) | Yes |Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note**: Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**.|
-| speed      | number| No | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.           |
+| speed      | number| No | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, error code 401 is returned.           |
 | pressure      | number | No | Injection pressure. The value ranges from 0.0 to 1.0. The default value is **1.0**.                                |
 
 
@@ -4986,7 +5099,7 @@ Simulates a continuous multi-point pen injection operation. This API uses a prom
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -4996,6 +5109,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -5025,7 +5139,7 @@ Injects a crown rotation event. You can specify the rotation speed. This API use
 | Name| Type                                        | Mandatory| Description                                                            |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | d      | number   | Yes  | Number of rotation ticks. A positive value indicates rotation, and a negative value indicates counterclockwise rotation. The value must be an integer.        |
-| speed  | number   | No  | Rotation speed, in ticks/s. The value is an integer ranging from 1 to 500. The default value is 20.<br> **Note**: If the set value is not in the range, the default value 20 is used.|
+| speed  | number   | No  | Rotation speed, in ticks/s. The value is an integer ranging from 1 to 500. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **20** is used. If the value is a negative number, the 17000007 error code is returned.<br> **Note**: If the set value is not in the range, the default value 20 is used.|
 
 **Return value**
 
@@ -5035,7 +5149,7 @@ Injects a crown rotation event. You can specify the rotation speed. This API use
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -5046,6 +5160,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -5099,6 +5214,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, Point } from '@kit.TestKit';
 
 async function demo() {
@@ -5130,7 +5246,7 @@ Simulates a multi-point knuckle scrolling operation. This API uses a promise to 
 | Name| Type                                        | Mandatory| Description                                                            |
 | ------ |-----------------------------------------------|----|-------------------------------------------------------------------|
 | pointers  | [PointerMatrix](#pointermatrix9) | Yes  | Scroll trajectory, including the number of fingers and an array of coordinates along the trajectory.<br>**Note**: Currently, only the single-finger operation is supported. The value of **fingers** in **PointerMatrix** must be set to **1**.|
-| speed    | number                           | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed    | number                           | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
 
@@ -5151,6 +5267,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -5203,6 +5320,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -5228,7 +5346,7 @@ Drags from the start point to the end point and checks whether the target compon
 | on     | [On](#on9) | Yes  | Attributes of the target component.|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 | duration  | number | No  | Click duration, in ms. The value is an integer greater than or equal to 1500. The default value is 1500.|
 
 **Return value**
@@ -5249,6 +5367,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -5274,7 +5393,7 @@ Swipes from the start point to the end point and checks whether the target compo
 | on     | [On](#on9) | Yes  | Attributes of the target component.|
 | from | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the start point and the ID of the display to which the start point belongs.                      |
 | to  | [Point](#point9) | Yes  | Point object, which transfers the coordinates of the target point and the ID of the display to which it belongs.<br> **Note**: The target point and the start point must be on the same screen. Otherwise, the **17000007** exception is thrown.                      |
-| speed  | number | No  | Scroll speed, in px/s. The value ranges from 200 to 40000. If the set value is not in the range, the default value **600** is used.|
+| speed  | number | No  | Swipe speed, in px/s. The value is an integer ranging from 200 to 40000. The default value is **600**. If the value is a non-negative number that is not within the specified range or is **null** or **undefined**, the default value **600** is used. If the value is a negative number, the 17000007 error code is returned.|
 
 **Return value**
 
@@ -5294,6 +5413,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -5340,6 +5460,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -5376,6 +5497,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { PointerMatrix } from '@kit.TestKit';
 
 async function demo() {
@@ -5427,6 +5549,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5464,6 +5587,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5501,6 +5625,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5538,6 +5663,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5575,6 +5701,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5614,6 +5741,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5651,6 +5779,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5687,7 +5816,7 @@ Moves a window to the target point. This API uses a promise to return the result
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -5699,6 +5828,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5734,7 +5864,7 @@ Resizes a window based on the specified width, height, and direction. This API u
 
 **Error codes**
 
-For details about the following error codes, see [Universal Error Codes](../errorcode-universal.md) and [Uitest Error Codes](errorcode-uitest.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [UiTest Error Codes](errorcode-uitest.md).
 
 | ID| Error Message                              |
 | -------- | ---------------------------------------- |
@@ -5746,6 +5876,7 @@ For details about the following error codes, see [Universal Error Codes](../erro
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, ResizeDirection, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5786,6 +5917,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5826,6 +5958,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5866,6 +5999,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5906,6 +6040,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5946,6 +6081,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -5983,6 +6119,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiWindow } from '@kit.TestKit';
 
 async function demo() {
@@ -6020,6 +6157,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiWindow, Driver } from '@kit.TestKit';
 
 async function demo() {
@@ -6061,11 +6199,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let observer: UIEventObserver = driver.createUIEventObserver();
   let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
@@ -6103,11 +6242,12 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver } from '@kit.TestKit';
 
 async function demo() {
   let driver: Driver = Driver.create();
-  let observer: UIEventObserver = await driver.createUIEventObserver();
+  let observer: UIEventObserver = driver.createUIEventObserver();
   let callback = (UIElementInfo: UIElementInfo) => {
     console.info(UIElementInfo.bundleName);
     console.info(UIElementInfo.text);
@@ -6148,6 +6288,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver, WindowChangeOptions, WindowChangeType } from '@kit.TestKit';
 
 async function demo() {
@@ -6199,6 +6340,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UIElementInfo, UIEventObserver, ComponentEventOptions, ComponentEventType, ON } from '@kit.TestKit';
 
 async function demo() {
@@ -6234,6 +6376,7 @@ The APIs provided by the **By** class exhibit the following features:<br>1. Allo
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use [On<sup>9+</sup>](#on9) instead.
 
 ```ts
+// xxx.test.ets
 import { BY } from '@kit.TestKit';
 
 BY.text('123').type('Button');
@@ -6267,6 +6410,7 @@ Specifies the text attribute of the target component. Multiple match patterns ar
 **Example**
 
 ```ts
+// xxx.test.ets
 import { BY, By } from '@kit.TestKit';
 
 let by: By = BY.text('123'); // Use the static constructor BY to create a By object and specify the text attribute of the target component.
@@ -6300,6 +6444,7 @@ Specifies the key attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.key('123'); // Use the static constructor BY to create a By object and specify the key attribute of the target component.
@@ -6333,6 +6478,7 @@ Specifies the ID attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.id(123); // Use the static constructor BY to create a By object and specify the id attribute of the target component.
@@ -6366,6 +6512,7 @@ Specifies the type attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.type('Button'); // Use the static constructor BY to create a By object and specify the type attribute of the target component.
@@ -6399,6 +6546,7 @@ Specifies the clickable attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.clickable(true); // Use the static constructor BY to create a By object and specify the clickable attribute of the target component.
@@ -6432,6 +6580,7 @@ Specifies the scrollable attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.scrollable(true); // Use the static constructor BY to create a By object and specify the scrollable attribute of the target component.
@@ -6464,6 +6613,7 @@ Specifies the enabled attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.enabled(true); // Use the static constructor BY to create a By object and specify the enabled attribute of the target component.
@@ -6496,6 +6646,7 @@ Specifies the focused attribute of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.focused(true); // Use the static constructor BY to create a By object and specify the focused attribute of the target component.
@@ -6528,6 +6679,7 @@ Specifies the selected status of the target component.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 let by: By = BY.selected(true); // Use the static constructor BY to create a By object and specify the selected attribute of the target component.
@@ -6560,6 +6712,7 @@ Specifies that the target component is located before the given attribute compon
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located before the given attribute component.
@@ -6593,6 +6746,7 @@ Specifies that the target component is located after the given attribute compone
 **Example**
 
 ```ts
+// xxx.test.ets
 import { By, BY } from '@kit.TestKit';
 
 // Use the static constructor BY to create a by object and specify that the target component is located after the given attribute component.
@@ -6607,7 +6761,7 @@ All APIs provided in this class use a promise to return the result and must be i
 
 > **NOTE**
 > 
-> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [[Component<sup>9+</sup>](#component9)](#on9) instead.
+> This API is supported since API version 8 and deprecated since API version 9. You are advised to use [Component<sup>9+</sup>](#component9) instead.
 
 ### click<sup>(deprecated)</sup>
 
@@ -6630,6 +6784,7 @@ Clicks this component. This API uses a promise to return the result.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, Driver, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6660,6 +6815,7 @@ Double-clicks this component. This API uses a promise to return the result.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6690,6 +6846,7 @@ Long-clicks this component. This API uses a promise to return the result.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6720,6 +6877,7 @@ Obtains the ID of this component. This API uses a promise to return the result.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6750,6 +6908,7 @@ Obtains the key of this component. This API uses a promise to return the result.
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6780,6 +6939,7 @@ Obtains the text information of this component. This API uses a promise to retur
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6810,6 +6970,7 @@ Obtains the type of this component. This API uses a promise to return the result
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6840,6 +7001,7 @@ Obtains the clickable status of this component. This API uses a promise to retur
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6874,6 +7036,7 @@ Obtains the scrollable status of this component. This API uses a promise to retu
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6909,6 +7072,7 @@ Obtains the enabled status of this component. This API uses a promise to return 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6944,6 +7108,7 @@ Obtains the focused status of this component. This API uses a promise to return 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -6978,6 +7143,7 @@ Obtains the selected status of this component. This API uses a promise to return
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -7018,6 +7184,7 @@ Inputs text to a component. This API takes effect only for editable text compone
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -7054,6 +7221,7 @@ Scrolls on this component to search for the target component (applicable to comp
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -7094,6 +7262,7 @@ Creates a **UiDriver** object and returns the object created. This API is a stat
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7128,6 +7297,7 @@ Delays this **UiDriver** object within the specified duration. This API uses a p
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7163,6 +7333,7 @@ Searches this **UiDriver** object for the target component that matches the give
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -7198,6 +7369,7 @@ Searches this **UiDriver** object for all components that match the given attrib
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY, UiComponent } from '@kit.TestKit';
 
 async function demo() {
@@ -7243,6 +7415,7 @@ For details about the error codes, see [UiTest Error Codes](errorcode-uitest.md)
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver, BY } from '@kit.TestKit';
 
 async function demo() {
@@ -7272,6 +7445,7 @@ Presses the Back button on this **UiDriver** object. This API uses a promise to 
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7307,6 +7481,7 @@ Triggers the key of this **UiDriver** object that matches the given key code. Th
 **Example**
 
 ```ts
+// xxx.test.ets
 import { Driver, UiDriver } from '@kit.TestKit';
 import { KeyCode } from '@kit.InputKit';
 
@@ -7345,6 +7520,7 @@ Clicks a specific point of this **UiDriver** object based on the given coordinat
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7381,6 +7557,7 @@ Double-clicks a specific point of this **UiDriver** object based on the given co
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7417,6 +7594,7 @@ Long-clicks a specific point of this **UiDriver** object based on the given coor
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7455,6 +7633,7 @@ Swipes on this **UiDriver** object from the start point to the end point based o
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {
@@ -7491,6 +7670,7 @@ Captures the current screen of this **UiDriver** object and saves it as a PNG im
 **Example**
 
 ```ts
+// xxx.test.ets
 import { UiDriver } from '@kit.TestKit';
 
 async function demo() {

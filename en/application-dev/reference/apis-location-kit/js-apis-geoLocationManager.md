@@ -18,7 +18,7 @@ To use location services, turn on the Location switch on your device. If the swi
 ## Applying for Permissions
 
 <!--RP1-->
-For details, see [Applying for Location Permissions](../../device/location/location-guidelines.md#how-to-develop).
+For details, see [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md#how-to-develop).
 <!--RP1End-->
 
 ## Modules to Import
@@ -39,13 +39,13 @@ Defines a reverse geocoding request.
 | locale | string | No| Yes| Language used for the location description. **zh** indicates Chinese, and **en** indicates English. The default language is obtained from **Language and region** in **Settings**.|
 | country<sup>12+</sup> | string | No| Yes| Country information. The country code complies with the ISO 3166-1 alpha-2 standard. **CN** indicates China. The default language is obtained from **Language and region** in **Settings**.|
 | latitude | number | No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.|
-| longitude | number | No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude . The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
+| longitude | number | No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
 | maxItems | number | No| Yes| Maximum number of location records to be returned. The specified value must be greater than or equal to **0**. A value smaller than **10** is recommended. The default value is **1**.|
 
 
 ## GeoCodeRequest
 
-Defines a reverse geocoding request.
+Defines a geocoding request.
 
 **System capability**: SystemCapability.Location.Location.Geocoder
 
@@ -55,10 +55,10 @@ Defines a reverse geocoding request.
 | country<sup>12+</sup> | string | No| Yes| Country information. The country code complies with the ISO 3166-1 alpha-2 standard. **CN** indicates China. The default language is obtained from **Language and region** in **Settings**.|
 | description | string | No| No| Location information, for example, No. xx, xx Road, Pudong District, Shanghai. The value is a string of a maximum of 100 characters.|
 | maxItems | number | No| Yes| Maximum number of location records to be returned. The specified value must be greater than or equal to **0**. A value smaller than **10** is recommended. The default value is **1**.|
-| minLatitude | number | No| Yes| Minimum latitude. This parameter is used with **minLongitude**, **maxLatitude**, and **maxLongitude** to specify the latitude and longitude ranges. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported. The following three parameters are mandatory is this parameter is specified.|
-| minLongitude | number | No| Yes| Minimum longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
-| maxLatitude | number | No| Yes| Maximum latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.|
-| maxLongitude | number | No| Yes| Maximum longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
+| minLatitude | number | No| Yes| Minimum latitude. This parameter is used with **minLongitude**, **maxLatitude**, and **maxLongitude** to specify the latitude and longitude ranges. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported. The default value is **0**. The following three parameters are mandatory if this parameter is specified.|
+| minLongitude | number | No| Yes| Minimum longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported. The default value is **0**.|
+| maxLatitude | number | No| Yes| Maximum latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported. The default value is **0**.|
+| maxLongitude | number | No| Yes| Maximum longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported. The default value is **0**.|
 
 
 ## GeoAddress
@@ -70,13 +70,13 @@ Geocoding address information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude | number | No| Yes | Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.|
-| longitude | number | No| Yes | Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude . The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
+| longitude | number | No| Yes | Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.|
 | locale | string | No| Yes | Language used for the location description. **zh** indicates Chinese, and **en** indicates English.|
 | placeName | string | No| Yes | Address information.|
 | countryCode | string | No| Yes | Country code.|
 | countryName | string | No| Yes| Country name.|
-| administrativeArea | string | No| Yes| Level-1 administrative region, which is generally is a province or state.|
-| subAdministrativeArea | string | No| Yes| Level-2 administrative region, which is generally is a city.|
+| administrativeArea | string | No| Yes| Level-1 administrative region, which is generally a province or state.|
+| subAdministrativeArea | string | No| Yes| Level-2 administrative region, which is generally a city.|
 | locality | string | No| Yes| Locality information, which is usually a city.|
 | subLocality | string | No| Yes| Sub-locality information, which is usually a district or county.|
 | roadName | string | No| Yes| Road name.|
@@ -99,8 +99,8 @@ Defines a location request.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| priority | [LocationRequestPriority](#locationrequestpriority) | No| Yes| Priority of the location request. This parameter is effective only when **scenario** is set to **UNSET**. If this parameter and **scenario** are set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestPriority](#locationrequestpriority). The default value is **FIRST_FIX**.|
-| scenario | [LocationRequestScenario](#locationrequestscenario) | No| Yes| Scenario of the location request. The **priority** parameter is effective only when this parameter is set to **UNSET**. If this parameter and **priority** are set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestScenario](#locationrequestscenario). The default value is **UNSET**.|
+| priority | [LocationRequestPriority](#locationrequestpriority) | No| Yes| Priority of the location request. This parameter is effective only when **scenario** is set to **UNSET**. If this parameter and **scenario** are both set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestPriority](#locationrequestpriority). The default value is **FIRST_FIX**.|
+| scenario | [LocationRequestScenario](#locationrequestscenario) | No| Yes| Scenario of the location request. The **priority** parameter is effective only when this parameter is set to **UNSET**. If this parameter and **priority** are both set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestScenario](#locationrequestscenario). The default value is **UNSET**.|
 | timeInterval | number | No| Yes|  Time interval at which location information is reported, in seconds.<br>The value is greater than or equal to 0.<br>The default value is the minimum interval allowed in the corresponding positioning mode.<br>The default value is 1s for GNSS positioning and 20s for network positioning.<br>If the value is less than the minimum interval, the minimum interval takes effect.<br>If the value is set to **0**, location information is directly reported without checking of the time interval.|
 | distanceInterval | number | No| Yes| Distance interval at which location information is reported, in meters. The specified value must be greater than or equal to **0**. The default value is **0**. If this parameter is set to **0**, there is no limitation on the location reporting distance.|
 | maxAccuracy | number | No| Yes|  Location accuracy requested by the application, in meters. This parameter is valid only when the precise location function is enabled (both the **ohos.permission.APPROXIMATELY\_LOCATION** and **ohos.permission.LOCATION** permissions are granted). It is invalid when the approximate location function is enabled (only the **ohos.permission.APPROXIMATELY\_LOCATION** permission is enabled).<br>When this parameter is effective, the system compares the [location](#location) information reported by the GNSS or network location service with the location information requested by the application. If the accuracy in the reported [location](#location) information is less than or equal to **maxAccuracy**, the system sends the reported location information to the application. Otherwise, the system discards the location information.<br>The value must be greater than or equal to **0**. The default value is **0**, indicating no limitation on the location accuracy.<br>If **scenario** is set to **NAVIGATION**, **TRAJECTORY_TRACKING**, or **CAR_HAILING** or **priority** is set to **ACCURACY**, you are advised to set **maxAccuracy** to a value greater than **10**.<br>If scenario is set to **DAILY_LIFE_SERVICE** or **NO_POWER** or **priority** is set to **LOW_POWER** or **FIRST_FIX**, you are advised to set **maxAccuracy** to a value greater than **100**.<br>|
@@ -116,10 +116,10 @@ Defines a location request.
 
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| priority | [LocationRequestPriority](#locationrequestpriority) | No| Yes| Priority of the location request. This parameter is effective only when **scenario** is set to **UNSET**. If this parameter and **scenario** are set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestPriority](#locationrequestpriority). The default value is **FIRST_FIX**.|
-| scenario | [LocationRequestScenario](#locationrequestscenario) | No| Yes| Scenario of the location request. The **priority** parameter is effective only when this parameter is set to **UNSET**. If this parameter and **priority** are set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestScenario](#locationrequestscenario). The default value is **UNSET**.|
+| priority | [LocationRequestPriority](#locationrequestpriority) | No| Yes| Priority of the location request. This parameter is effective only when **scenario** is set to **UNSET**. If this parameter and **scenario** are both set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestPriority](#locationrequestpriority). The default value is **FIRST_FIX**.|
+| scenario | [LocationRequestScenario](#locationrequestscenario) | No| Yes| Scenario of the location request. The **priority** parameter is effective only when this parameter is set to **UNSET**. If this parameter and **priority** are both set to **UNSET**, the attempt to initiate a location request will fail. For details about the value range, see [LocationRequestScenario](#locationrequestscenario). The default value is **UNSET**.|
 | maxAccuracy | number | No| Yes|  Location accuracy requested by the application, in meters. This parameter is valid only when the precise location function is enabled (both the **ohos.permission.APPROXIMATELY\_LOCATION** and **ohos.permission.LOCATION** permissions are granted). It is invalid when the approximate location function is enabled (only the **ohos.permission.APPROXIMATELY\_LOCATION** permission is enabled).<br>When this parameter is effective, the system compares the [location](#location) information reported by the GNSS or network location service with the location information requested by the application. If the accuracy in the reported [location](#location) information is less than or equal to **maxAccuracy**, the system sends the reported location information to the application. Otherwise, the system discards the location information.<br>The value must be greater than or equal to **0**. The default value is **0**, indicating no limitation on the location accuracy.<br>If **scenario** is set to **NAVIGATION**, **TRAJECTORY_TRACKING**, or **CAR_HAILING** or **priority** is set to **ACCURACY**, you are advised to set **maxAccuracy** to a value greater than **10**.<br>If scenario is set to **DAILY_LIFE_SERVICE** or **NO_POWER** or **priority** is set to **LOW_POWER** or **FIRST_FIX**, you are advised to set **maxAccuracy** to a value greater than **100**.|
-| timeoutMs | number | No| Yes| Timeout duration, in milliseconds. The minimum value is **1000**. The specified value must be greater than or equal to **1000**.|
+| timeoutMs | number | No| Yes| Timeout duration, in milliseconds. The minimum value is **1000**. The default value is **5000**. The specified value must be greater than or equal to **1000**.|
 
 
 ## ContinuousLocationRequest<sup>12+</sup>
@@ -230,7 +230,7 @@ Location information.
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | latitude | number| No| No| Latitude information. A positive value indicates north latitude, and a negative value indicates south latitude. The value ranges from **-90** to **90**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| longitude | number| No| No| Longitude information. A positive value indicates east longitude , and a negative value indicates west longitude . The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| longitude | number| No| No| Longitude information. A positive value indicates east longitude, and a negative value indicates west longitude. The value ranges from **-180** to **180**. Only the WGS84 coordinate system is supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | altitude | number | No| No| Location altitude, in meters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | accuracy | number | No| No| Location accuracy, in meters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | speed | number | No| No|Speed, in m/s.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -372,7 +372,7 @@ Enumerates satellite constellation types.
 
 | Name| Value| Description|
 | -------- | -------- | -------- |
-| CONSTELLATION_CATEGORY_UNKNOWN   | 0 | Unknown type. This is the default value.|
+| CONSTELLATION_CATEGORY_UNKNOWN   | 0 | Unknown category. This is the default value.|
 | CONSTELLATION_CATEGORY_GPS   | 1 | Global positioning system (GPS), a high-precision radio navigation positioning system made up of artificial earth satellites launched by the United States.|
 | CONSTELLATION_CATEGORY_SBAS    | 2 | Satellite-based augmentation system (SBAS), which supports wide-area or regional augmentation through the use of geostationary (GEO) satellites for broadcasting augmentation information, such as ephemeris error, satellite clock difference, and ionospheric delay, to users. It enhances the accuracy, integrity, and availability of basic global navigation satellite systems.|
 | CONSTELLATION_CATEGORY_GLONASS    | 3 | Global navigation satellite system (GLONASS), a Russia space-based satellite navigation system that provides a global coverage positioning service similar to the GPS.|
@@ -458,7 +458,7 @@ Enumerates error codes in a continuous location request.
 | -------- | -------- | -------- |
 | LOCATING_FAILED_DEFAULT   | -1 |  Default value.|
 | LOCATING_FAILED_LOCATION_PERMISSION_DENIED   | -2 | Failed to verify the **ohos.permission.APPROXIMATELY_LOCATION** or **ohos.permission.LOCATION** permission.|
-| LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED    | -3 | Failed to verify the location permission when the application is running in the background. <!--RP3-->For details about how to apply for the location permission, see [Applying for Location Permissions](../../device/location/location-guidelines.md#how-to-develop).<!--RP3End--> |
+| LOCATING_FAILED_BACKGROUND_PERMISSION_DENIED    | -3 | Failed to verify the location permission when the application is running in the background. <!--RP3-->For details about how to apply for the location permission, see [Applying for Location Permissions (ArkTS)](../../device/location/location-permission-guidelines.md#how-to-develop).<!--RP3End--> |
 | LOCATING_FAILED_LOCATION_SWITCH_OFF    | -4 | Location switch turned off.|
 | LOCATING_FAILED_INTERNET_ACCESS_FAILURE    | -5 | Network access denied.|
 
@@ -597,8 +597,8 @@ Defines a beacon fence request. Either **transitionCallback** or **fenceExtensio
 | Name| Type| Read Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | beacon | [BeaconFence](#beaconfence20) | No| No| Beacon fence configuration.|
-| transitionCallback | Callback&lt;[GeofenceTransition](#geofencetransition12)&gt; | No| Yes| Callback of the beacon fence transition event. Only foreground callback is supported.|
-| fenceExtensionAbilityName | string | No| Yes| [FenceExtensionAbility](js-apis-app-ability-FenceExtensionAbility.md) name.|
+| transitionCallback | Callback&lt;[GeofenceTransition](#geofencetransition12)&gt; | No| Yes| Callback of the beacon fence transition event. The default value is **undefined**. Only foreground callback is supported.|
+| fenceExtensionAbilityName | string | No| Yes| [FenceExtensionAbility](js-apis-app-ability-FenceExtensionAbility.md) name. The default value is an empty string.|
 
 
 ## geoLocationManager.on('locationChange')
@@ -623,7 +623,7 @@ Subscribes to location change events with a location request initiated. This API
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -683,7 +683,7 @@ Unregisters the listener for location change events with the corresponding locat
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -731,7 +731,7 @@ Registers a listener for error codes generated during continuous location. This 
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -788,7 +788,7 @@ Unregisters the listener for error codes generated during continuous location.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -831,7 +831,7 @@ Subscribes to location service status change events. This API uses an asynchrono
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -872,7 +872,7 @@ Unsubscribes from location service status change events.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -917,7 +917,7 @@ Subscribes to cached GNSS location reports. This API is supported only by certai
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -963,7 +963,7 @@ Unsubscribes from cached GNSS location reports. This API is supported only by ce
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1010,7 +1010,7 @@ Subscribes to GNSS satellite status change events. This API uses an asynchronous
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1085,7 +1085,7 @@ Unsubscribes from GNSS satellite status change events.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1132,7 +1132,7 @@ Subscribes to GNSS NMEA message change events. This API uses an asynchronous cal
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1179,7 +1179,7 @@ Unsubscribes from GNSS NMEA message change events.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1212,7 +1212,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 on(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-Subscribes to status change events of the specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
+Subscribes to status change events of a specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
 **Permission required**: ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1228,7 +1228,7 @@ Subscribes to status change events of the specified geofence. This API is suppor
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1274,7 +1274,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 off(type: 'gnssFenceStatusChange', request: GeofenceRequest, want: WantAgent): void
 
-Unsubscribes from status change events of the specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
+Unsubscribes from status change events of a specified geofence. This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
 **Permission required**: ohos.permission.APPROXIMATELY_LOCATION
 
@@ -1290,7 +1290,7 @@ Unsubscribes from status change events of the specified geofence. This API is su
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1350,7 +1350,7 @@ Subscribes to country code change events. This API uses an asynchronous callback
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1394,7 +1394,7 @@ Unsubscribes from country code change events.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1442,7 +1442,7 @@ Obtains the current position. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1513,7 +1513,7 @@ Obtains the current position. This API uses an asynchronous callback to return t
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1561,7 +1561,7 @@ Obtains the current position. This API uses a promise to return the result.
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | request | [CurrentLocationRequest](#currentlocationrequest) &#124; [SingleLocationRequest](#singlelocationrequest12) | No| Location request.<br>**SingleLocationRequest** is newly added in API version 12.|
+  | request | [CurrentLocationRequest](#currentlocationrequest) &#124; [SingleLocationRequest](#singlelocationrequest12) | No| Location request.<br>**SingleLocationRequest** is newly added in API version 12. If this parameter is not set, **CurrentLocationRequest** is used as the default value.|
 
 **Return value**
 
@@ -1571,7 +1571,7 @@ Obtains the current position. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1636,7 +1636,7 @@ Obtains the last location.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1676,7 +1676,7 @@ Checks whether the location service is enabled.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1712,7 +1712,7 @@ Converts coordinates into geographic descriptions through reverse geocoding. Thi
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1763,7 +1763,7 @@ Converts coordinates into geographic descriptions through reverse geocoding. Thi
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1808,7 +1808,7 @@ Converts geographic descriptions into coordinates through geocoding. This API us
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1841,7 +1841,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 getAddressesFromLocationName(request: GeoCodeRequest): Promise&lt;Array&lt;GeoAddress&gt;&gt;
 
-Converts geographic descriptions into coordinates through geocoding. This API uses an a promise to return the result. 
+Converts geographic descriptions into coordinates through geocoding. This API uses a promise to return the result. 
 
 **System capability**: SystemCapability.Location.Location.Geocoder
 
@@ -1859,7 +1859,7 @@ Converts geographic descriptions into coordinates through geocoding. This API us
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1902,7 +1902,7 @@ Checks whether the geocoding and reverse geocoding services are available.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1939,7 +1939,7 @@ Obtains the number of cached GNSS locations. This API is supported only by certa
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -1986,7 +1986,7 @@ Obtains the number of cached GNSS locations. This API is supported only by certa
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2031,7 +2031,7 @@ Obtains all cached GNSS locations and clears the GNSS cache queue. This API is s
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2076,7 +2076,7 @@ Obtains all cached GNSS locations and clears the GNSS cache queue. This API is s
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2121,7 +2121,7 @@ Sends an extended command to the location subsystem. This API uses an asynchrono
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2168,7 +2168,7 @@ Sends an extended command to the location subsystem. This API uses a promise to 
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2211,7 +2211,7 @@ Obtains the current country code. This API uses an asynchronous callback to retu
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2255,7 +2255,7 @@ Obtains the current country code. This API uses a promise to return the result.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2285,7 +2285,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 addGnssGeofence(fenceRequest: GnssGeofenceRequest): Promise&lt;number&gt;
 
-Adds a GNSS geofence and subscribes to geofence transition events. This API uses a promise to return the result.
+Adds a GNSS geofence and subscribes to geofence events. This API uses a promise to return the result.
 
 The application can pass a callback to [GnssGeofenceRequest](#gnssgeofencerequest12) to receive geofence transition events. It can also pass [NotificationRequest](../apis-notification-kit/js-apis-notification.md#notificationrequest) so that a notification is displayed when a geofence transition event occurs.
 
@@ -2309,7 +2309,7 @@ This API is supported only by certain GNSS chip models. If the required chip mod
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2354,7 +2354,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
       notificationContentType: notificationManager.ContentType.NOTIFICATION_CONTENT_BASIC_TEXT,
       normal: {
         title: "Geofence Notification",
-        text:'Geofence Exit',
+        text: 'Geofence Exit',
         additionalText: ""
       }
     }
@@ -2400,7 +2400,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 removeGnssGeofence(geofenceId: number): Promise&lt;void&gt;
 
-Removes a GNSS geofence and unsubscribes from geofence transition events. This API uses a promise to return the result.
+Removes a GNSS geofence and unsubscribes from geofence events. This API uses a promise to return the result.
 
 This API is supported only by certain GNSS chip models. If the required chip model is not available, error code 801 (Capability not supported) will be reported.
 
@@ -2418,11 +2418,11 @@ This API is supported only by certain GNSS chip models. If the required chip mod
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise that that returns no value.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2467,7 +2467,7 @@ Obtains the list of supported coordinate systems.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2491,7 +2491,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 getCurrentWifiBssidForLocating(): string
 
-Obtains the Basic Service Set Identifier (BSSID) of the connected Wi-Fi access point (AP).
+Obtains the Basic Service Set Identifier (BSSID) of the connected Wi-Fi access point (AP). If the device is not connected to a Wi-Fi network, error code **3301900** will be returned. You are advised to use the **try-catch** structure to capture exceptions according to the sample code.
 
 **Required permissions**: ohos.permission.LOCATION and ohos.permission.APPROXIMATELY_LOCATION
 
@@ -2505,7 +2505,7 @@ Obtains the Basic Service Set Identifier (BSSID) of the connected Wi-Fi access p
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2553,7 +2553,7 @@ Currently, only BLE device scanning is supported.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2600,7 +2600,7 @@ Disables listening for Bluetooth scan information reporting events.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2657,7 +2657,7 @@ Queries whether the system supports the POI service.
 
 getPoiInfo(): Promise&lt;PoiInfo&gt;
 
-Obtains the POI near the current location.
+Obtains the POI near the current location. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2673,7 +2673,7 @@ Obtains the POI near the current location.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2746,7 +2746,7 @@ Obtains the linear distance between two locations.
 
 addBeaconFence(fenceRequest: BeaconFenceRequest): Promise&lt;number&gt;
 
-Subscribes to status change events of the specified beacon fence. This API uses a promise to return the result.
+Adds a beacon fence and subscribes to beacon fence events. This API uses a promise to return the result.
 
 A beacon fence refers to a virtual fence created through the cooperation of a Bluetooth beacon and a mobile phone application. When a user approaches or leaves a specific beacon, the mobile phone application receives a notification.
 
@@ -2772,7 +2772,7 @@ The application can pass a callback in [BeaconFenceRequest](#beaconfencerequest2
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2837,7 +2837,7 @@ For details about the error codes, see [Location Error Codes]](errorcode-geoLoca
 
 removeBeaconFence(beaconFence?: BeaconFence): Promise&lt;void&gt;
 
-Deletes a beacon fence and unsubscribes from beacon fence events. This API uses a promise to return the result.
+Removes a beacon fence and unsubscribes from beacon fence events. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -2856,11 +2856,11 @@ Deletes a beacon fence and unsubscribes from beacon fence events. This API uses 
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;void&gt; | Promise that that returns no value.|
+  | Promise&lt;void&gt; | Promise that returns no value.|
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -2932,7 +2932,7 @@ Checks whether the current device supports beacon fences.
 
 isWlanBssidMatched(wlanBssidArray: Array&lt;string&gt;, rssiThreshold: number, needStartScan: boolean): Promise&lt;boolean&gt;
 
-Checks whether a specified BSSID exists in the latest WLAN scan result.
+Checks whether a specified BSSID exists in the latest WLAN scan result. This API uses a promise to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 21.
 
@@ -2956,7 +2956,7 @@ Checks whether a specified BSSID exists in the latest WLAN scan result.
 
 **Error codes**
 
-For details about the error codes, see [Location Error Codes]](errorcode-geoLocationManager.md).
+For details about the error codes, see [Location Kit Error Codes](errorcode-geoLocationManager.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |

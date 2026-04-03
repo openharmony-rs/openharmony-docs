@@ -31,7 +31,7 @@ struct Index {
         // Create a Worker object.
         const newWorker = new worker.ThreadWorker('../workers/LazyImportWorkerNeg.ets');
 
-        // Register the onmessage callback to capture the message sent by the Worker thread through the workerPort.postMessage API. This callback is executed in the host thread.
+        // Registers the onmessage callback to capture messages received by the host thread from the Worker it created, which are sent via the workerPort.postMessage API. This callback executes on the host thread.
         newWorker.onmessage = (e: MessageEvents) => {
           let data: string = e.data;
           console.info('newWorker onmessage is: ', data);

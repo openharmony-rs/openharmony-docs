@@ -6,10 +6,9 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-```
+```c
 typedef struct {...} ArkWeb_WebMessageAPI
 ```
-
 
 ## Overview
 
@@ -45,7 +44,7 @@ Defines a native API for the post message. Before calling this API, you are advi
 
 ### createWebMessage()
 
-```
+```c
 ArkWeb_WebMessagePtr (*createWebMessage)()
 ```
 
@@ -61,7 +60,7 @@ Creates a message.
 
 ### destroyWebMessage()
 
-```
+```c
 void (*destroyWebMessage)(ArkWeb_WebMessagePtr* webMessage)
 ```
 
@@ -77,7 +76,7 @@ Destroys a message.
 
 ### setType()
 
-```
+```c
 void (*setType)(ArkWeb_WebMessagePtr webMessage, ArkWeb_WebMessageType type)
 ```
 
@@ -94,7 +93,7 @@ Sets the message type. @param webMessage Pointer to the message struct. @param t
 
 ### getType()
 
-```
+```c
 ArkWeb_WebMessageType (*getType)(ArkWeb_WebMessagePtr webMessage)
 ```
 
@@ -110,7 +109,7 @@ Obtains the message type.
 
 ### setData()
 
-```
+```c
 void (*setData)(ArkWeb_WebMessagePtr webMessage, void* data, size_t dataLength)
 ```
 
@@ -129,7 +128,7 @@ Sets data.
 
 ### getData()
 
-```
+```c
 void* (*getData)(ArkWeb_WebMessagePtr webMessage, size_t* dataLength)
 ```
 

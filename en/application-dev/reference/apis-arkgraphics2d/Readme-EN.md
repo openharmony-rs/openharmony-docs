@@ -9,6 +9,9 @@
 
 - ArkTS APIs<!--arkgraphics-arkts-->
   - [@ohos.effectKit (Image Effects)](js-apis-effectKit.md)
+  <!--Del-->
+  - [@ohos.effectKit (Image Effect) (System API)](js-apis-effectKit-sys.md)
+  <!--DelEnd-->
   - [@ohos.graphics.colorSpaceManager (Color Space Management)](js-apis-colorSpaceManager.md)
   - [@ohos.graphics.sendableColorSpaceManager (Sendable Color Space Management)](js-apis-sendableColorSpaceManager.md)
   - [@ohos.graphics.common2D (Common Data Types of 2D Graphics)](js-apis-graphics-common2D.md)
@@ -17,7 +20,7 @@
     - [Module Description](arkts-apis-graphics-drawing.md)
     - [Class (Brush)](arkts-apis-graphics-drawing-Brush.md)
     - [Class (Canvas)](arkts-apis-graphics-drawing-Canvas.md)
-    - [Class (ClorFilter)](arkts-apis-graphics-drawing-ColorFilter.md)
+    - [Class (ColorFilter)](arkts-apis-graphics-drawing-ColorFilter.md)
     - [Class (Font)](arkts-apis-graphics-drawing-Font.md)
     - [Class (ImageFilter)](arkts-apis-graphics-drawing-ImageFilter.md)
     - [Class (Lattice)](arkts-apis-graphics-drawing-Lattice.md)
@@ -33,7 +36,7 @@
     - [Class (SamplingOptions)](arkts-apis-graphics-drawing-SamplingOptions.md)
     - [Class (ShaderEffect)](arkts-apis-graphics-drawing-ShaderEffect.md)
     - [Class (ShadowLayer)](arkts-apis-graphics-drawing-ShadowLayer.md)
-    - [Class (TextBold)](arkts-apis-graphics-drawing-TextBlob.md)
+    - [Class (TextBlob)](arkts-apis-graphics-drawing-TextBlob.md)
     - [Class (Tool)](arkts-apis-graphics-drawing-Tool.md)
     - [Class (Typeface)](arkts-apis-graphics-drawing-Typeface.md)
     - [Class (TypefaceArguments)](arkts-apis-graphics-drawing-TypefaceArguments.md)

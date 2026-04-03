@@ -6,7 +6,7 @@
 <!--Tester: @chenmingze-->
 <!--Adviser: @HelloShuo-->
 
-Typically, a widget includes local images or online images downloaded from the network. To obtain local and online images, use the FormExtensionAbility. The following exemplifies how to show local and online images on a widget.
+A widget includes local images or online images downloaded from the network. To obtain local and online images, use the **FormExtensionAbility**. The following exemplifies how to show local and online images on a widget.
 
 
 1. For the widget to download online images, declare the **ohos.permission.INTERNET** permission for the widget. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
@@ -53,9 +53,9 @@ Typically, a widget includes local images or online images downloaded from the n
        class FormDataClass {
          text: string = 'Image: Bear';
          loaded: boolean = true;
-         // If an image needs to be displayed in the widget, the value of imgName must be the same as the key 'imgBear' in formImages.
+         // For scenarios where the widget needs to display an image, this value must match the key 'imgBear' in the 'formImages' field below.
          imgName: string = 'imgBear';
-         // If an image needs to be displayed in the widget, the formImages field is mandatory (formImages cannot be left blank or renamed), and 'imgBear' corresponds to the FD.
+         // For scenarios where the widget needs to display an image, this is a required field (formImages cannot be omitted or renamed). 'imgBear' corresponds to the FD.
          formImages: Record<string, number> = imgMap;
        }
    
@@ -221,4 +221,4 @@ Typically, a widget includes local images or online images downloaded from the n
 >
 > - The **Image** component displays images in the remote memory based on the (**memory://**) identifier in the input parameter (**memory://fileName**). The value of **fileName** must be consistent with the key in the object (**'formImages': {key: fd}**) passed by the **EntryFormAbility**.
 >
-> - The **Image** component determines whether to update the image by comparing the values of **imgName** consecutively passed by the EntryFormAbility. It updates the image only when the values are different.
+> - The **Image** component determines whether to update the image by comparing the values of **imgName** consecutively passed by the **EntryFormAbility**. It updates the image only when the values are different.

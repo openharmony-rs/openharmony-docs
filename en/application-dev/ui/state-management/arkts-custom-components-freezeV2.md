@@ -14,7 +14,7 @@ To implement this feature, a solid understanding of the basic syntax for @Compon
 >
 > Freezing of @ComponentV2 decorated custom components is supported since API version 12.
 >
-> From API version 18 onwards, the freezing function of custom components can be used together.
+> Since API version 18, custom components can be frozen and used together.
 >
 > Since API version 22, you can set [inheritFreezeOptions](../../reference/apis-arkui/js-apis-arkui-builderNode.md#inheritfreezeoptions20) of [BuilderNode](../../reference/apis-arkui/js-apis-arkui-builderNode.md) to true to implement the following scenario: When component freezing is enabled for the parent component and BuilderNode is enabled for the middle layer of the component tree, the child components of BuilderNode can be frozen. For details, see [Configuring BuilderNode Freeze Inheritance](../arkts-user-defined-arktsNode-builderNode.md#configuring-buildernode-freeze-inheritance).
 >
@@ -22,7 +22,7 @@ To implement this feature, a solid understanding of the basic syntax for @Compon
 
 ## Use Scenarios
 
-### Page Navigation and Routing
+### Defining Page Routes
 
 > **NOTE**
 >
@@ -30,11 +30,11 @@ To implement this feature, a solid understanding of the basic syntax for @Compon
 
 When page 1 navigates to page 2 using **this.getUIContext().getRouter().pushUrl()**, it enters the hidden state, where updating its state variables will not trigger UI re-rendering.
 
-The figure below shows these pages.
+For details, see the following.
 
 ![freezeInPage](./figures/freezeInPage.png)
 
-Page 1 implementation:
+Page 1:
 
 <!-- @[freeze_template1_Page1_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page1.ets) -->
 
@@ -83,7 +83,7 @@ export struct Page1 {
 
 
 
-Page 2 implementation:
+Page 2:
 
 <!-- @[freeze_template1_Page2_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template1/Page2.ets) -->
 
@@ -124,7 +124,7 @@ Freezes the TabContent that is currently invisible in Tabs. Modifying the status
 
 During initial rendering, only the **TabContent** component that is being displayed is created. The remaining **TabContent** components are created only when all TabContent components are switched.
 
-The figure below shows this mechanism.
+For details, see the following.
 
 ![freezeWithTab](./figures/freezewithTabs.png)
 
@@ -198,7 +198,7 @@ When a **NavDestination** component becomes invisible, its child custom componen
 
 Note: The terms "Active" and "Inactive" in this document refer to the component's frozen active/inactive state, distinct from the [onActive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#onactive17) and [onInactive](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md#oninactive17) lifecycle callbacks in the [NavDestination](../../reference/apis-arkui/arkui-ts/ts-basic-components-navdestination.md) component.
 
-<!-- @[freeze_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets) -->
+<!-- @[freeze_template3_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template3/MyNavigationTestStack.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -627,13 +627,13 @@ In the preceding example:
 - During the test, click the **change BookName** button; within 3 seconds, click the **Go to next page** button. When **bookTest** is updated, **PageA** is already in the inactive state after navigation to **PageB**. Due to component freezing enabled for **Child**, the **@Local bookTest** state variable does not respond to updates. This means that the @Monitor decorated method will not be called, and any nodes associated with the state variable will not be re-rendered.
 - After the **Back** button is clicked to return to the previous page, the @Monitor decorated callback is triggered, and components associated with the state variable will be re-rendered.
 
-### Component Freezing Across Mixed Scenarios
+### Mixed Use of Component Freezing
 
 When scenarios that support component freezing are used together, the freezing behavior varies according to the API version. Set the component freezing flag for the parent component. In API version 17 or earlier, when the parent component is unfrozen, all nodes of its child components are unfrozen. Since API version 18, when a parent component is unfrozen, only the on-screen nodes of its child components are unfrozen. For details, see [Mixed Component Usage](./arkts-custom-components-freeze.md#mixed-component-usage).
 
 **Mixed Use of Navigation and TabContent**
 
-<!-- @[freeze_template6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template6/MyNavigationTestStack.ets) -->
+<!-- @[freeze_template6_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/FreezeV2/entry/src/main/ets/pages/freeze/template6/MyNavigationTestStack.ets) --> 
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -849,7 +849,7 @@ class Params {
     return Params.singleton_;
   }
 
-  // Decorate the message attribute with the @Trace decorator so that its changes are observable.
+  // Use the @Trace decorator to decorate the message attribute so that its changes are observable.
   @Trace public message: string = 'Hello';
   public index: number = 0;
 
@@ -903,7 +903,7 @@ class TextNodeController extends NodeController {
   }
 }
 
-// Define an Index component that contains a message attribute and a data array.
+// Define an index component that contains a message attribute and a data array.
 @Entry
 @ComponentV2
 struct Index {

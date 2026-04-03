@@ -54,7 +54,7 @@ Represents the parameters used to construct an **ArcScrollBar** component.
 
 ## Example
 
-This example demonstrates how to use **ArcScrollBar** with a **Scroll** component to create an external circular scrollbar.
+This example demonstrates how to synchronize **ArcScrollBar** with the [Scroll](ts-container-scroll.md) component to implement an arc scrollbar.
 
 ```ts
 import { ArcScrollBar } from '@kit.ArkUI';

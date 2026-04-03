@@ -10,11 +10,11 @@ The **networkManager** module provides APIs for network management of enterprise
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 >
 
 ## Modules to Import
@@ -1048,12 +1048,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  // Replace it as required.
+  // Replace with actual values.
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1103,7 +1103,7 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
@@ -1153,12 +1153,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  // Replace it as required.
+  // Replace with actual values.
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1209,7 +1209,7 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
@@ -1264,12 +1264,12 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };
 let apnInfo: Record<string, string> = {
-  // Replace it as required.
+  // Replace with actual values.
   "apnName": "CTNET",
   "apn": "CTNET",
   "mnc": "11",
@@ -1325,7 +1325,7 @@ import { Want } from '@kit.AbilityKit';
 import { networkManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  // Replace it as required.
+  // Replace with actual values.
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility',
 };

@@ -22,7 +22,7 @@
 
 | 名称 | 类型 | 默认值 | 必填 | 描述 |
 | -------- | -------- | -------- | -------- | -------- |
-| type | string | <br/>button | 否 | input组件类型，可选值为button，checkbox，radio。<br/>button，checkbox，radio不支持动态修改。可选值定义如下：<br/>-&nbsp;button：定义可点击的按钮。<br/>-&nbsp;checkbox：定义多选框。<br/>-&nbsp;radio：定义单选按钮，允许在多个拥有相同name值的选项中选中其中一个。 |
+| type | string | <br/>button | 否 | input组件类型，可选值为button，checkbox，radio，text。<br/>button，checkbox，radio，text不支持动态修改。可选值定义如下：<br/>-&nbsp;button：定义可点击的按钮。<br/>-&nbsp;checkbox：定义多选框。<br/>-&nbsp;radio：定义单选按钮，允许在多个拥有相同name值的选项中选中其中一个。<br/>-&nbsp;text：定义用于文字输入的文本框，仅在支持输入法功能的真机设备上，支持点击拉起文字输入界面，[UI预览](../../../ui/ui-ide-previewer.md)无效果。 |
 | checked | boolean | false | 否 | 当前组件是否选中，true表示选中，false表示未选中。仅type为checkbox和radio生效。 |
 | name | string | - | 否 | input组件的名称。 |
 | value | string | - | 否 | input组件的value值，当类型为radio时必填且相同name值的选项该值唯一。 |
@@ -35,7 +35,7 @@
 ## 事件
 
 - 当input类型为checkbox、radio时，支持如下事件：
-    | 名称 | 参数 | 描述 |
+  | 名称 | 参数 | 描述 |
   | -------- | -------- | -------- |
   | change | {&nbsp;checked:true&nbsp;\|&nbsp;false&nbsp;} | checkbox多选框或radio单选框的checked状态发生变化时触发该事件。 |
   | click | - | 点击动作触发该事件。 |
@@ -43,7 +43,7 @@
   | swipe<sup>5+</sup> | [SwipeEvent](js-lite-common-events.md) | 组件上快速滑动后触发。 |
 
 - 当input类型为button时，支持如下事件：
-    | 名称 | 参数 | 描述 |
+  | 名称 | 参数 | 描述 |
   | -------- | -------- | -------- |
   | click | - | 点击动作触发该事件。 |
   | longpress | - | 长按动作触发该事件。 |

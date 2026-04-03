@@ -18,9 +18,9 @@ The [pasteboard](../../reference/apis-basic-services-kit/js-apis-pasteboard.md) 
 
 ## Pasteboard Access Principles
 
-- The pasteboard enables data copy and paste across applications as well as the sharing of copied or cut data either within a single application or between multiple applications. By default, the pasteboard supports data in common formats, such as the text, HTML rich text, file URI, and PixelMap, as well as custom extended data.
+-  The pasteboard enables data copy and paste across applications as well as the sharing of copied or cut data either within a single application or between multiple applications. By default, the pasteboard supports data in common formats, such as the text, HTML rich text, file URI, and PixelMap, as well as custom extended data.
 
-- **PasteData** defines pasteboard data. Applications write **PasteData** to the pasteboard service to copy data and read **PasteData** from the pasteboard service to paste data. The following figure shows the overall structure of **PasteData**.
+-  **PasteData** defines pasteboard data. Applications write **PasteData** to the pasteboard service to copy data and read **PasteData** from the pasteboard service to paste data. The following figure shows the overall structure of **PasteData**.
 
 ![pasteboard](figures/pastedata.png)
 
@@ -41,7 +41,7 @@ To ensure that applications have the same understanding of the pasteboard data a
 - Pasteboard data is personal data. The pasteboard provides security components and the ohos.permission.READ_PASTEBOARD permission granted by the user for applications to read the pasteboard data.<br>
 - The data written by the application to the pasteboard may be in multiple formats, so the applications need to select the most appropriate format based on the current page and scenario to paste the data.
 
-- The pasteboard also provides TS APIs and NDK APIs. Applications can select appropriate APIs as required to support the copy and paste functionality.
+-  The pasteboard also provides TS APIs and NDK APIs. Applications can select appropriate APIs as required to support the copy and paste functionality.
 
 ## Using Basic Data Types for Copy and Paste
 
@@ -111,12 +111,12 @@ Currently, the following basic data types are supported for copy and paste: text
 
 ### Available APIs
 
-| Name| Description                                                                                                  |
-| -------- |---------------------------------------------------------------------------------------------------|
-| [setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setunifieddata12) | Writes the data of a unified data object to the system pasteboard.                  |
-| [setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setunifieddatasync12) | Writes the data of a unified data object to the system pasteboard. This API returns the result synchronously.         |
-| [getUnifiedData(): Promise\<unifiedDataChannel.UnifiedData\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12) | Reads the data of a unified data object from the system pasteboard.                          |
-| [getUnifiedDataSync(): unifiedDataChannel.UnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddatasync12) | Reads the data of a unified data object from the system pasteboard. This API returns the result synchronously.                 |
+| Name| Description                                                                                               |
+| -------- |------------------------------------------------------------------------------------------------|
+| [setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise\<void\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setunifieddata12) | Writes the data of a unified data object to the system pasteboard.               |
+| [setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#setunifieddatasync12) | Writes the data of a unified data object to the system pasteboard. This API returns the result synchronously.      |
+| [getUnifiedData(): Promise\<unifiedDataChannel.UnifiedData\>](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddata12) | Reads the data of a unified data object from the system pasteboard.                       |
+| [getUnifiedDataSync(): unifiedDataChannel.UnifiedData](../../reference/apis-basic-services-kit/js-apis-pasteboard.md#getunifieddatasync12) | Reads the data of a unified data object from the system pasteboard. This API returns the result synchronously.              |
 
 ### Example
 

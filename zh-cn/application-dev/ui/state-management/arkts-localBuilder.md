@@ -115,7 +115,7 @@ struct Parent {
 
 - 在\@LocalBuilder修饰的函数内部，不允许改变参数值。
 
-- \@LocalBuilder内的UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数-1)。
+- \@LocalBuilder内的UI语法遵循[UI语法规则](arkts-create-custom-components.md#build函数实现规则)。
 
 - 按回调传递和按引用传递时，支持\@Builder函数内UI组件刷新。按引用传递只在传入一个参数且该参数直接传入对象字面量时生效，有多个参数时不支持@Builder函数内UI组件刷新。
 
@@ -509,7 +509,7 @@ struct Child {
 【正例】
 
 在声明@LocalBuilder的组件下创建状态变量并在@LocalBuilder函数内访问，可以在状态变量变化时更新@LocalBuilder内的UI组件。
-<!-- @[problem_ui_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshPositive.ets) -->
+<!-- @[problem_ui_not_refresh_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUINotRefreshPositive.ets) --> 
 
 ``` TypeScript
 class LayoutSize {
@@ -549,7 +549,7 @@ struct Child {
       this.customBuilder()
       Button('add child size')
         .onClick(() => {
-          this.layoutSize.size += 1; //子组件传入的参数发生变化，由@Link传入父组件@State，刷新父组件声明的@LocalBuilder函数的UI。
+          this.layoutSize.size += 1; // 子组件传入的参数发生变化，由@Link传入父组件@State，刷新父组件声明的@LocalBuilder函数的UI。
         })
     }
   }
@@ -557,3 +557,85 @@ struct Child {
 ```
 
 ![localBuilder_double_dollar.gif](./figures/localBuilder_double_dollar.gif)
+
+### @LocalBuilder函数在参数处直接调用出现布局错乱
+
+@LocalBuilder装饰的函数作为参数时，直接传递函数的执行结果，会导致布局和预期效果有偏差。
+
+【反例】
+
+<!-- @[problem_ui_structure_opposite](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructureOpposite.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Page {
+  @State message: string[] = ['1', '2', '3'];
+
+  build() {
+    List() {
+      // 错误写法，直接传递itemFoot的执行结果。
+      ListItemGroup({ space: 10, footer: this.itemFoot() }) {
+        ForEach(this.message, (item: string, index: number) => {
+          ListItem() {
+            Stack() {
+              Text(item)
+                .fontSize(30)
+            }
+          }
+        })
+      }
+    }
+  }
+
+  @LocalBuilder
+  itemFoot() {
+    Column() {
+      Text('itemFoot')
+        .fontSize(30)
+    }
+  }
+}
+```
+
+![localBuilder_parameter_passing_error_format.png](./figures/localBuilder_parameter_passing_error_format.png)
+
+【正例】
+
+ @LocalBuilder装饰的函数作为参数时，使用 `() => { 函数调用 }` 的形式，布局能够符合预期效果。
+
+<!-- @[problem_ui_structure_positive](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/localBuilder/ProblemUIStructurePositive.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Page {
+  @State message: string[] = ['1', '2', '3'];
+
+  build() {
+    List() {
+      // 正确写法，使用() => { 函数调用 }的形式。
+      ListItemGroup({ space: 10, footer: () => { this.itemFoot() } }) {
+        ForEach(this.message, (item: string, index: number) => {
+          ListItem() {
+            Stack() {
+              Text(item)
+                .fontSize(30)
+            }
+          }
+        })
+      }
+    }
+  }
+
+  @LocalBuilder
+  itemFoot() {
+    Column() {
+      Text('itemFoot')
+        .fontSize(30)
+    }
+  }
+}
+```
+
+![localBuilder_parameter_transmission_in_correct_form.png](./figures/localBuilder_parameter_transmission_in_correct_form.png)

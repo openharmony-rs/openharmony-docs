@@ -14,7 +14,7 @@ The module defines shortcut information configured in the configuration file. Fo
 >
 > The APIs of this module have been deprecated since API version 9. You are advised to use [bundleManager-ShortcutInfo](js-apis-bundleManager-shortcutInfo.md) instead.
 
-## ShortcutInfo<sup>(deprecated)<sup>
+## ShortcutInfo<sup>(deprecated)</sup>
 
 > **NOTE**
 >

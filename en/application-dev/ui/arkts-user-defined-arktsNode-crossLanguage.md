@@ -325,7 +325,7 @@ The following example creates an ArkTS [Scroll](../reference/apis-arkui/js-apis-
     }
     } // namespace NativeModule
 
-    #endif //MYAPPLICATION_CROSSLANGUAGEEXAMPLE_H
+    #endif // MYAPPLICATION_CROSSLANGUAGEEXAMPLE_H
     ```
 
 3. Mount the native node in **NativeEntry.cpp**.
@@ -334,7 +334,6 @@ The following example creates an ArkTS [Scroll](../reference/apis-arkui/js-apis-
 
 
     #include <arkui/native_node_napi.h>
-    #include <hilog/log.h>
     #include <js_native_api.h>
     #include "NativeEntry.h"
     #include "CrossLanguageExample.h"

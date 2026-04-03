@@ -13,7 +13,7 @@ The following lifecycle callbacks are provided for the lifecycle of a custom com
 
 - [onDidBuild](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#ondidbuild12): Invoked after the build function triggered by the first rendering of the component is executed. This API is not invoked when the component is re-rendered. You can use this callback for actions that do not directly affect the UI, such as tracking data reporting.
 
-- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear): Invoked when the custom component is about to be destroyed. Do not change state variables in the aboutToDisappear function. Modifying the @Link variable may lead to unstable application behavior.
+- [aboutToDisappear](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear): Invoked when the custom component is about to be destroyed. Do not change state variables in the **aboutToDisappear** function. Modifying the [@Link variable](./arkts-link.md) may lead to unstable application behavior.
 
 > **NOTE**
 >
@@ -62,7 +62,7 @@ You are not advised to use async await in aboutToDisappear. If asynchronous oper
 
 The following example details the call sequence of the custom component lifecycle when custom components are nested:
 
-<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) --> 
+<!-- @[nested_custom_components](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/CustomLifecycle/entry/src/main/ets/pages/parent/Index.ets) -->
 
 ``` TypeScript
 import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -94,7 +94,7 @@ struct Parent {
       if (this.showChild) {
         Child()
       }
-      Button('delete Child')
+      Button(this.showChild ? 'delete Child' : 'add Child')
         .margin(20)
         .backgroundColor(this.btnColor)
         .onClick(() => {

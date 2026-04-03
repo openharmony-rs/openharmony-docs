@@ -652,7 +652,7 @@ let removeSlotCallback = (err: BusinessError): void => {
     console.info(`Succeeded in removing slot.`);
   }
 }
-let slotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
+let slotType: notificationManager.SlotType = notificationManager.SlotType.SOCIAL_COMMUNICATION;
 notificationManager.removeSlot(slotType, removeSlotCallback);
 ```
 
@@ -884,7 +884,7 @@ For details about the error codes, see [Notification Error Codes](./errorcode-no
 **Example**
 
 ```ts
-let enabled = notificationManager.isNotificationEnabledSync();
+let enabled: boolean = notificationManager.isNotificationEnabledSync();
 console.info(`isNotificationEnabledSync success, data is : ${JSON.stringify(enabled)}`);
 ```
 
@@ -1703,6 +1703,42 @@ class MyAbility extends UIAbility {
     });
   }
 }
+```
+
+## notificationManager.getNotificationSetting<sup>20+</sup>
+
+getNotificationSetting(): Promise\<NotificationSetting\>
+
+Obtains the notification settings of an application. This API uses a promise to return the result.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Return value**
+
+| Type              | Description           |
+| ------------------ | --------------- |
+| Promise\<[NotificationSetting](#notificationsetting20)\> | Promise used to return the result.|
+
+**Error codes**
+
+For details about the error codes, see [Notification Error Codes](./errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 1600001  | Internal error.                     |
+| 1600002  | Marshalling or unmarshalling error. |
+| 1600003  | Failed to connect to the service.          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+notificationManager.getNotificationSetting().then((data: notificationManager.NotificationSetting) => {
+    console.info(`getNotificationSetting success, data: ${JSON.stringify(data)}`);
+}).catch((err: BusinessError) => {
+    console.error(`getNotificationSetting failed, code is ${err.code}, message is ${err.message}`);
+});
 ```
 
 ## ContentType

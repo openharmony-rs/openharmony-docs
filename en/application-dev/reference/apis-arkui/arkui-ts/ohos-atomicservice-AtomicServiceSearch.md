@@ -16,7 +16,7 @@
 
 ## Modules to Import
 
-```
+``` ts
 import { AtomicServiceSearch } from '@kit.ArkUI';
 ```
 
@@ -66,7 +66,7 @@ Provides optional attributes for the selection area.
 | selectValue             | [ResourceStr](ts-types.md#resourcestr) | No| Yes| Text content of the drop-down list button itself. Default value: **undefined**.|
 | onSelect                | [OnSelectCallback](#onselectcallback) | No| Yes| Callback invoked when an item in the drop-down list box is selected. Default value: **undefined**.|
 | menuItemContentModifier | [ContentModifier&lt;MenuItemConfiguration&gt;](ts-basic-components-select.md#menuitemconfiguration12) | No| Yes|  Content modifier to apply to the drop-down list box. Once it is applied, the drop-down list box content will be fully customizable by developers. Note that default style attributes (such as dividers, background color, and font styles) will no longer take effect.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. Default value: **undefined**.|
-| divider                 | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[DividerOptions](ts-basic-components-textpicker.md#divideroptions12)&gt; \| null | No| Yes| Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style. Default value: **{strokeWidth: '1px', color: '#33182431'}**<br>2. If this parameter is set to **null**, the divider is not displayed.<br>3. If the value of **strokeWidth** is too larger, the divider may overlap the text. The divider extends both upwards and downwards from the bottom of each item.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
+| divider                 | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[DividerOptions](ts-basic-components-textpicker.md#divideroptions12)&gt; \| null | No| Yes| Divider options.<br>1. If **DividerOptions** is set, the divider is displayed in the configured style. Default value: **{strokeWidth: '1px', color: '#33182431'}**<br>2. If this parameter is set to **null**, the divider is not displayed.<br>3. If the value of **strokeWidth** is too larger, the divider may overlap the text. The divider extends both upwards and downwards from the bottom of each item.<br>4. The default values for **startMargin** and **endMargin** are consistent with the style of the divider when the **divider** attribute is not set. If the sum of **startMargin** and **endMargin** is equal to the value of **optionWidth**, the divider is not displayed. If the sum of **startMargin** and **endMargin** exceeds the value of **optionWidth**, the divider line is displayed in the default style.|
 | font                    | [Font](ts-types.md#font) | No| Yes| Text font of the drop-down list button. Default value: **{size: $r('sys.float.ohos_id_text_size_body1')}**|
 | fontColor               | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Font color of the selected item in the drop-down list box. Default value: **{fontColor: $r('sys.color.ohos_id_color_text_primary')}**  |
 | selectedOptionBgColor   | [ResourceColor](ts-types.md#resourcecolor) | No| Yes| Background color of the selected item in the drop-down list box. Default value: **$r('sys.color.ohos_id_color_component_activated')** with the opacity of **$r('sys.color.ohos_id_alpha_highlight_bg')**|
@@ -102,8 +102,8 @@ Provides optional attributes for the search area.
 | placeholderFont          | [Font](ts-types.md#font) | No| Yes| Placeholder text style, including the font size, font weight, font family, and font style. Default value: **{size: $r('sys_float.ohos_id_text_size_body1')}**.|
 | textFont                 | [Font](ts-types.md#font) | No| Yes| Style of the text entered in the search box, including the font size, font width, font family, and font style. Currently, only the default font family is supported. Default value: **{size: $r('sys_float.ohos_id_text_size_body1')}**.|
 | textAlign                | [TextAlign](ts-appendix-enums.md#textalign) | No| Yes| Text alignment mode in the search text box. Default value: **TextAlign.Start**.  |
-| copyOptions              | [CopyOptions](ts-appendix-enums.md#copyoptions9) | No| Yes| Whether copy and paste is allowed. Default value: **CopyOptions.LocalDevice**.  |
-| searchIcon               | [IconOptions](ts-basic-components-search.md#iconoptions10) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) | No| Yes| Style of the search icon on the left.<br>Default value in light mode: **{size: '16vp', color: '#99182431', src:' '}**.<br>Default value in dark mode: **{size: '16vp', color: '#99ffffff', src:' '}**. |
+| copyOptions              | [CopyOptions](ts-appendix-enums.md#copyoptions9) | No| Yes| Whether the input text can be copied. Default value: **CopyOptions.LocalDevice**.  |
+| searchIcon               | [IconOptions](ts-basic-components-search.md#iconoptions10) \| [SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier) | No| Yes| Style of the search icon on the left.<br>Default value in light mode: **{size: '16vp', color: '#99182431', src:' '}**.<br>Default value in dark mode: **{size: '16vp', color: '#99ffffff', src:' '}**. |
 | cancelIcon               | [IconOptions](ts-basic-components-search.md#iconoptions10)| No| Yes| Style of the cancel button on the right. Default value: **{style: CancelButtonStyle.INPUT, icon: {size: '16vp', color: '#99ffffff', src:' '}}**.<br>When style is set to **CancelButtonStyle.CONSTANT**, the cancel button is displayed in a default style.  |
 | fontColor                | [ResourceColor](ts-types.md#resourcecolor) | No| Yes|  Font color of the input text. Default value: **$r('sys.color.ohos_id_color_text_secondary')**.|
 | caretStyle               | [CaretStyle](ts-text-common.md#caretstyle10) | No| Yes| Pointer style. Default value: **{width: '1.5vp', color: '#007DFF'}**.  |
@@ -1001,7 +1001,7 @@ struct Index {
 }
 ```
 
-
+![](figures/AtomicServiceSearchDemo11.png)
 
 
 

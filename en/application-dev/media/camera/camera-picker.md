@@ -19,7 +19,10 @@ Given that users are the ones who actively take and confirm the photos, your app
 Read [CameraPicker](../../reference/apis-camera-kit/js-apis-cameraPicker.md) for the API reference.
 
 1. Import the modules.
-   ```ts
+
+   <!-- @[camera_picker_imports](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/CameraPicker/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
    import { camera, cameraPicker as picker } from '@kit.CameraKit';
    import { fileIo, fileUri } from '@kit.CoreFileKit';
    ```
@@ -33,20 +36,15 @@ Read [CameraPicker](../../reference/apis-camera-kit/js-apis-cameraPicker.md) for
    > If you do not want to save photos and videos to the media library, configure a file path in the application sandbox.
    > Ensure that this file is already present and writable. By passing the file's URI into the **picker** API, you are effectively giving the camera picker permission to read from and write to this file. Upon completion of a photo or video capture, the camera picker will replace the contents of this file.
 
-   ```ts
-   import { BusinessError } from '@kit.BasicServicesKit';
+   <!-- @[camera_picker_profile_setup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/CameraPicker/entry/src/main/ets/pages/Index.ets) -->
    
-   function createPickerProfile(context: Context): picker.PickerProfile {
+   ``` TypeScript
+   createPickerProfile(context: Context): picker.PickerProfile {
      let pathDir = context.filesDir;
      let fileName = `${new Date().getTime()}`;
      let filePath = pathDir + `/${fileName}.tmp`;
-     try {
-       fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.CREATE);
-     } catch (error) {
-       let err = error as BusinessError;
-       console.error(`create picker profile failed. error code: ${err.code}`);
-     }
-     
+     fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.CREATE);
+   
      let uri = fileUri.getUriFromPath(filePath);
      let pickerProfile: picker.PickerProfile = {
        cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
@@ -55,13 +53,16 @@ Read [CameraPicker](../../reference/apis-camera-kit/js-apis-cameraPicker.md) for
      return pickerProfile;
    }
    ```
+
    For details about how to call the **fileIo** API, see [createRandomAccessFileSync](../../reference/apis-core-file-kit/js-apis-file-fs.md#fscreaterandomaccessfilesync10) and [getUriFromPath](../../reference/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath).
 
 3. Call the **picker** API to obtain the photo or video capture result.
-   ```ts
-   async function getPickerResult(context: Context, pickerProfile: picker.PickerProfile): Promise<picker.PickerResult> {
+
+   <!-- @[camera_picker_pick_usage](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/CameraPicker/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   async getPickerResult(context: Context, pickerProfile: picker.PickerProfile): Promise<picker.PickerResult> {
      let result: picker.PickerResult =
-       // Call the picker API to start the system camera and obtain the captured photo or video.
        await picker.pick(context, [picker.PickerMediaType.PHOTO, picker.PickerMediaType.VIDEO],
          pickerProfile);
      console.info(`picker resultCode: ${result.resultCode},resultUri: ${result.resultUri},mediaType: ${result.mediaType}`);
@@ -70,73 +71,77 @@ Read [CameraPicker](../../reference/apis-camera-kit/js-apis-cameraPicker.md) for
    ```
 
 ## Complete Sample Code
-   ```ts 
-   import { camera, cameraPicker as picker } from '@kit.CameraKit';
-   import { fileIo, fileUri } from '@kit.CoreFileKit';
 
-   @Entry
-   @Component
-   struct Index {
-     @State imgSrc: string = '';
-     @State videoSrc: string = '';
-     createPickerProfile(context: Context): picker.PickerProfile {
-       let pathDir = context.filesDir;
-       let fileName = `${new Date().getTime()}`;
-       let filePath = pathDir + `/${fileName}.tmp`;
-       fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.CREATE);
-       
-       let uri = fileUri.getUriFromPath(filePath);
-       let pickerProfile: picker.PickerProfile = {
-         cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
-         saveUri: uri
-       };
-       return pickerProfile;
-     }
+<!-- @[camera_picker_full_example](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/CameraPicker/entry/src/main/ets/pages/Index.ets) -->
 
-     async getPickerResult(context: Context, pickerProfile: picker.PickerProfile): Promise<picker.PickerResult> {
-       let result: picker.PickerResult =
-         await picker.pick(context, [picker.PickerMediaType.PHOTO, picker.PickerMediaType.VIDEO],
-           pickerProfile);
-       console.info(`picker resultCode: ${result.resultCode},resultUri: ${result.resultUri},mediaType: ${result.mediaType}`);
-       return result;
-     }
+``` TypeScript
+import { camera, cameraPicker as picker } from '@kit.CameraKit';
+import { fileIo, fileUri } from '@kit.CoreFileKit';
 
-     getContext(): Context | undefined {
-       let uiContext: UIContext = this.getUIContext();
-       let context: Context | undefined = uiContext.getHostContext();
-       return context;
-     }
+@Entry
+@Component
+struct Index {
+  @State imgSrc: string = '';
+  @State videoSrc: string = '';  
+  createPickerProfile(context: Context): picker.PickerProfile {
+    let pathDir = context.filesDir;
+    let fileName = `${new Date().getTime()}`;
+    let filePath = pathDir + `/${fileName}.tmp`;
+    fileIo.createRandomAccessFileSync(filePath, fileIo.OpenMode.CREATE);
 
-     build() {
-       RelativeContainer() {
-         Column() {
-           Image(this.imgSrc).width(200).height(200).backgroundColor(Color.Black).margin(5);
-           Video({ src: this.videoSrc}).width(200).height(200).autoPlay(true);
-           Button("Test Picker Photo&Video").fontSize(20)
-             .fontWeight(FontWeight.Bold)
-             .onClick(async () => {
-               let context = this.getContext();
-               if (context === undefined) {
-                 return;
-               }
-               let pickerProfile = this.createPickerProfile(context);
-               let result = await this.getPickerResult(context, pickerProfile);
-               if (result.resultCode == 0) {
-                 if (result.mediaType === picker.PickerMediaType.PHOTO) {
-                   this.imgSrc = result.resultUri;
-                 } else {
-                   this.videoSrc = result.resultUri;
-                 }
-               }
-             }).margin(5);
-   
-         }.alignRules({
-           center: { anchor: '__container__', align: VerticalAlign.Center },
-           middle: { anchor: '__container__', align: HorizontalAlign.Center }
-         });
-       }
-       .height('100%')
-       .width('100%')
-     }
-   }
-   ```
+    let uri = fileUri.getUriFromPath(filePath);
+    let pickerProfile: picker.PickerProfile = {
+      cameraPosition: camera.CameraPosition.CAMERA_POSITION_BACK,
+      saveUri: uri
+    };
+    return pickerProfile;
+  }
+
+  async getPickerResult(context: Context, pickerProfile: picker.PickerProfile): Promise<picker.PickerResult> {
+    let result: picker.PickerResult =
+      await picker.pick(context, [picker.PickerMediaType.PHOTO, picker.PickerMediaType.VIDEO],
+        pickerProfile);
+    console.info(`picker resultCode: ${result.resultCode},resultUri: ${result.resultUri},mediaType: ${result.mediaType}`);
+    return result;
+  }
+
+  getContext(): Context | undefined {
+    let uiContext: UIContext = this.getUIContext();
+    let context: Context | undefined = uiContext.getHostContext();
+    return context;
+  }
+
+  build() {
+    RelativeContainer() {
+      Column() {
+        Image(this.imgSrc).width(200).height(200).backgroundColor(Color.Black).margin(5);
+        Video({ src: this.videoSrc}).width(200).height(200).autoPlay(true);
+        Button("Test Picker Photo&Video").fontSize(20)
+          .fontWeight(FontWeight.Bold)
+          .onClick(async () => {
+            let context = this.getContext();
+            if (context === undefined) {
+              return;
+            }
+            let pickerProfile = this.createPickerProfile(context);
+            let result = await this.getPickerResult(context, pickerProfile);
+            if (result.resultCode == 0) {
+              if (result.mediaType === picker.PickerMediaType.PHOTO) {
+                this.imgSrc = result.resultUri;
+              } else {
+                this.videoSrc = result.resultUri;
+              }
+            }
+          }).margin(5);
+
+      }.alignRules({
+        center: { anchor: '__container__', align: VerticalAlign.Center },
+        middle: { anchor: '__container__', align: HorizontalAlign.Center }
+      })
+      .id('CaptureOrVideoButton')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```

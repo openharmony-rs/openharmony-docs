@@ -56,7 +56,7 @@ Invoked after the **build()** function of the custom component is executed. You 
 
 aboutToDisappear?(): void
 
-Invoked when this component is about to disappear. Do not change state variables in the **aboutToDisappear** function as doing this can cause unexpected errors. For example, the modification of the **@Link** decorated variable may cause unstable application running. For details, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md).
+Invoked when this component is about to disappear. Do not change state variables in the **aboutToDisappear** function as doing this can cause unexpected errors. For example, the modification of the **@Link** decorated variable may cause unstable application running. For details, see [Custom Component Lifecycle](../../../ui/state-management/arkts-page-custom-components-lifecycle.md). It is not recommended to trigger logic such as [the creation a custom dialog box](./ts-methods-custom-dialog-box.md#open) after the **aboutToDisappear** function is called. Otherwise, the application behavior may be abnormal due to component tree information loss. For example, [@Consume](../../../ui/state-management/arkts-provide-and-consume.md) may be unable to find the corresponding [@Provide](../../../ui/state-management/arkts-provide-and-consume.md), or a blank dialog box where components are not displayed may occur.
 
 > **NOTE**
 >
@@ -340,7 +340,7 @@ struct Index {
   @Local condition: boolean = true;
   build() {
     Column() {
-      Button('Recycle/Reuse').onClick(()=>{this.condition=!this.condition;}) // Click to switch between the recycle and reuse states.
+      Button('Recycle/Reuse').onClick(()=>{this.condition=!this.condition;}) // Click to toggle the recycle/reuse state.
       if (this.condition) {
         ReusableV2Component()
       }
@@ -352,7 +352,7 @@ struct Index {
 struct ReusableV2Component {
   @Local message: string = 'Hello World';
   aboutToReuse() {
-    console.info('ReusableV2Component aboutToReuse'); // Called when a component is reused.
+    console.info('ReusableV2Component aboutToReuse'); // Called when the component is reused.
   }
   build() {
     Column() {

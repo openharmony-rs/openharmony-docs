@@ -10,9 +10,9 @@ The **request** module provides applications with the basic capabilities of file
 
 - The child component **cacheDownload** provides the basic capability of caching application resources in advance.
 
-- **cacheDownload** uses the HTTP protocol to download data and caches data resources to the application memory or specified files in the application sandbox directory.
+- **cacheDownload** uses the HTTP to download data and caches data resources to the application memory or files in the application sandbox directory.
 
-- The cached data can be used by specific ArkUI components (such as **Image**) to improve resource loading efficiency. Check whether the ArkUI components support this function by referring to the ArkUI component topics.
+- The cached data can be used by some ArkUI components, such as the **Image** component, to improve resource loading efficiency. Check whether the ArkUI components support this function by referring to the ArkUI component topics.
 
 > **NOTE**
 >
@@ -35,31 +35,6 @@ Enumerates secure communication protocols.
 | TLS | 'TLS' | TLS.|
 | TLCP | 'TLCP' | TLCP.|
 
-## ErrorCode<sup>23+</sup>
-
-Enumerates the specific types of returned error code.
-
-**System capability**: SystemCapability.Request.FileTransferAgent
-
-| Name| Value|Description|
-| -------- | -------- |-------- |
-| OTHERS | 0xFF | Other types of errors that are not classified.|
-| DNS | 0x00 | DNS-related errors.|
-| TCP | 0x10 | TCP-related errors.|
-| SSL | 0x20 | SSL-related errors.|
-| HTTP | 0x30 | HTTP-related errors.|
-
-## CacheStrategy<sup>23+</sup>
-
-Enumerates cache update strategies.
-
-**System capability**: SystemCapability.Request.FileTransferAgent
-
-| Name| Value|Description|
-| -------- | -------- |-------- |
-| FORCE | 0 | Forcibly updates the cache, regardless of whether the cache already exists.|
-| LAZY | 1 | Updates the cache only when the cache does not exist.|
-
 ## CacheDownloadOptions
 
 Provides configuration options for download and cache, including HTTP options, transmission options, and task options.
@@ -68,10 +43,9 @@ Provides configuration options for download and cache, including HTTP options, t
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
-| headers | Record\<string, string\> | No | Yes| Request header used by a download task during HTTP transfer.|
+| headers | Record\<string, string\> | No | Yes| Request header used by a download task during HTTP transfer. The default value is empty.|
 | sslType<sup>21+</sup> | [SslType](#ssltype21) | No | Yes| Secure communication protocol, such as TSL or TLCP. TLS is used by default. Currently, TLS and TLCP do not support two-way authentication.|
 | caPath<sup>21+</sup> | string | No | Yes| CA certificate path. Currently, only the .pem certificate is supported. The CA certificate preset by the system is used by default.|
-| cacheStrategy<sup>23+</sup> | [CacheStrategy](#cachestrategy23) | No | Yes| Cache update strategies, including **FORCE** or **LAZY**. The **FORCE** policy is used by default.|
 
 ## ResourceInfo<sup>20+</sup>
 
@@ -81,7 +55,7 @@ Describes the pre-downloaded resource information.
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
-| size | number | Yes | No | Size of a pre-downloaded resource after decompression. If the value is a positive integer, the resource is successfully downloaded; if the value is **-1**, the resource fails to be downloaded.|
+| size | number | Yes | No | Size of a pre-downloaded resource after decompression. If the integer value is not **-1**, the resource is successfully downloaded.|
 
 ## NetworkInfo<sup>20+</sup>
 
@@ -92,7 +66,6 @@ Describes the pre-downloaded network information.
 | Name        | Type      | Read-Only| Optional| Description               |
 |------------|----------|----|----|-------------------|
 | dnsServers | string[] | Yes | No | DNS servers used for downloading resources.|
-| ip<sup>23+</sup> | string | Yes | Yes | IP address of the URL used for downloading resources. When the DNS resolution fails, the IP address is undefined.|
 
 ## PerformanceInfo<sup>20+</sup>
 
@@ -122,17 +95,6 @@ Describes the pre-downloaded download information.
 | network     | [NetworkInfo](#networkinfo20)         | Yes | No | Pre-downloaded network information.|
 | performance | [PerformanceInfo](#performanceinfo20) | Yes | No | Pre-downloaded performance information.|
 
-## DownloadError<sup>23+</sup>
-
-Describes the error message returned when a pre-download error occurs.
-
-**System capability**: SystemCapability.Request.FileTransferAgent
-
-| Name         | Type                                   | Read-Only| Optional| Description       |
-|-------------|---------------------------------------|----|----|-----------|
-| errorCode    | [ErrorCode](#errorcode23)       | Yes | No | Specific error type returned by the pre-download error callback.|
-| message     | string         | Yes | No | Error message. A [universal error code](../../reference/errorcode-universal.md) or [HTTP error code](../../reference/apis-network-kit/errorcode-net-http.md) is returned.|
-
 ## cacheDownload.download
 
 download(url: string, options: CacheDownloadOptions): void
@@ -145,7 +107,7 @@ Downloads a task from a specified URL. If the transfer is successful, the data i
 
 - In addition, the system determines whether to store the target resource in a specified location based on each cache type's size limit in **cacheDownload**. By default, the LRU mode is used to replace the existing cached data.
 
-- This API uses a synchronous method and does not block the calling thread.
+- This API returns the result synchronously, without blocking the calling thread.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -155,7 +117,7 @@ Downloads a task from a specified URL. If the transfer is successful, the data i
 
 | Name    | Type                                                        | Mandatory| Description                            |
 |---------|------------------------------------------------------------|----|--------------------------------|
-| url     | string                                                     | Yes | URL of the target resource. Only the HTTP protocol is supported. The URL length cannot exceed 8192 bytes.|
+| url     | string                                                     | Yes | URL of the target resource. HTTP and HTTPS are supported. The URL length cannot exceed 8192 bytes.|
 | options | [CacheDownloadOptions](#cachedownloadoptions) | Yes | Cache download options for the target resource.                  |
 
 **Error codes**
@@ -177,7 +139,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     headers: { 'Accept': 'application/json' },
     sslType: cacheDownload.SslType.TLS,
     caPath: '/path/to/ca.pem',
-    cacheStrategy: cacheDownload.CacheStrategy.FORCE,
   };
   
   try {
@@ -194,9 +155,9 @@ cancel(url: string): void
 
 Cancels an ongoing download task based on the URL. The saved memory cache and file cache are not affected.
 
-- If there is no download task with the specified URL, this API does not take effect.
+- If the task corresponding to the URL does not exist, no operation is required.
 
-- When this API is used for synchronous execution, the calling thread is not blocked.
+- This API returns the result synchronously, without blocking the calling thread.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -204,7 +165,7 @@ Cancels an ongoing download task based on the URL. The saved memory cache and fi
 
 | Name | Type    | Mandatory| Description                            |
 |------|--------|----|--------------------------------|
-| url  | string | Yes | URL of the target resource. Only the HTTP protocol is supported. The URL length cannot exceed 8192 bytes.|
+| url  | string | Yes | URL of the target resource. HTTP and HTTPS are supported. The URL length cannot exceed 8192 bytes.|
 
 **Error codes**
 
@@ -247,7 +208,7 @@ Sets the upper limit of the memory cache size for the **cacheDownload** componen
 
 - When this API is used to adjust the cache size, the LRU mode is used by default to clear redundant cached data in the memory.
 
-- This API uses a synchronous method and does not block the calling thread.
+- This API returns the result synchronously, without blocking the calling thread.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -320,7 +281,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   ```
 
 > **NOTE**
->
+​>
 > * Network cache files downloaded by the **cacheDownload** module are stored in the cache directory of the application sandbox.
 > * An application can use this API to clear cache files.
 > * Do not modify the cache directory and files directly to avoid function exceptions.
@@ -364,13 +325,13 @@ getDownloadInfo(url: string): DownloadInfo | undefined
 
 Obtains the download information based on the URL. The download information is stored in the download information list in memory and is cleared when the application exits.
 
-- If the specified URL is found in the download information list, the latest [DownloadInfo](#downloadinfo20) corresponding to the URL is returned.
+- If the specified URL can be found in the download information list, the latest [DownloadInfo](#downloadinfo20) of the URL is returned.
 
 - If the specified URL cannot be found in the download information list, **undefined** is returned.
 
 - If the download information has already cached in the URL, the new cached information will overwrite the old one.
 
-- When the target information is stored in the memory, the existing cache data is replaced in the LRU mode.
+- When the target information is stored in the memory, the existing cached information is replaced in LRU mode.
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 
@@ -428,173 +389,5 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
     }
   } catch (err) {
     console.error(`Failed to get download info. err code: ${err.code}, err message: ${err.message}`);
-  }
-  ```
-
-## cacheDownload.clearMemoryCache<sup>23+</sup>
-
-clearMemoryCache(): void
-
-Clears this memory cache.
-
-**System capability**: SystemCapability.Request.FileTransferAgent
-
-**Example**:
-
-```ts
-import { cacheDownload } from '@kit.BasicServicesKit';
-  
-cacheDownload.clearMemoryCache();
-```
-
-## cacheDownload.clearFileCache<sup>23+</sup>
-
-clearFileCache(): void
-
-Clears this file cache.
-
-**System capability**: SystemCapability.Request.FileTransferAgent
-
-**Example**:
-
-```ts
-import { cacheDownload } from '@kit.BasicServicesKit';
-  
-cacheDownload.clearFileCache();
-```
-
-## cacheDownload.onDownloadSuccess<sup>23+</sup>
-
-onDownloadSuccess(url: string, callback: Callback&lt;void&gt;): void
-
-Subscribes to the pre-download completion events. This API uses an asynchronous callback to return the result.
-
-**System capability**: SystemCapability.Request.FileTransferAgent
-
-**Parameters**
-
-| Name| Type    | Mandatory| Description                  |
-|-----|--------|----|----------------------|
-| url | string | Yes | URL to be registered, with a maximum of 8192 bytes.|
-| callback | Callback&lt;void&gt; | Yes| Callback used to return the result.|
-
-**Example**:
-
-  ```ts
-  import { cacheDownload } from '@kit.BasicServicesKit';
-  
-  try {
-    const successCallback = () => {
-      console.info("Succeeded in getting callback from cacheDownload");
-    };
-    // Subscribe to the pre-download completion events. Callback is invoked when the download is complete.
-    cacheDownload.onDownloadSuccess("https://www.example.com", successCallback)
-    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
-    cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
-    console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
-  }
-  ```
-
-## cacheDownload.onDownloadError<sup>23+</sup>
-
-onDownloadError(url: string, callback: Callback&lt;DownloadError&gt;): void
-
-Subscribes to the pre-download error events. This API uses an asynchronous callback to return the result.
-
-**System capability**: SystemCapability.Request.FileTransferAgent
-
-**Parameters**
-
-| Name| Type    | Mandatory| Description                  |
-|-----|--------|----|----------------------|
-| url | string | Yes | URL to be registered, with a maximum of 8192 bytes.|
-| callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | Yes| Callback used to return the error information about the pre-download.|
-
-**Example**:
-
-  ```ts
-  import { cacheDownload } from '@kit.BasicServicesKit';
-  
-  try {
-    const errorCallback = (error: cacheDownload.DownloadError) => {
-      console.info(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
-    };
-    // Subscribe to pre-download error events. When a download error occurs, the callback is invoked to return error information.
-    cacheDownload.onDownloadError("https://www.example.com", errorCallback)
-    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
-    cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
-    console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
-  }
-  ```
-
-## cacheDownload.offDownloadSuccess<sup>23+</sup>
-
-offDownloadSuccess(url: string, callback?: Callback&lt;void&gt;): void
-
-Unsubscribes from the pre-download completion events. This API uses an asynchronous callback to return the result.
-
-**System capability**: SystemCapability.Request.FileTransferAgent
-
-**Parameters**
-
-| Name| Type    | Mandatory| Description                  |
-|-----|--------|----|----------------------|
-| url | string | Yes | URL to be unregistered, with a maximum of 8192 bytes.|
-| callback | Callback&lt;void&gt; | No| Callback to unregister. If this parameter is left blank, all completion callback functions of the URL are unregistered.|
-
-**Example**:
-
-  ```ts
-  import { cacheDownload } from '@kit.BasicServicesKit';
-  
-  try {
-    const successCallback = () => {
-      console.info("Succeeded in getting callback from cacheDownload");
-    };
-    // Subscribe to the pre-download completion events. Callback is invoked when the download is complete.
-    cacheDownload.onDownloadSuccess("https://www.example.com", successCallback);
-    // Unsubscribes from the pre-download completion events.
-    cacheDownload.offDownloadSuccess("https://www.example.com", successCallback);
-    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
-    cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
-    console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
-  }
-  ```
-
-## cacheDownload.offDownloadError<sup>23+</sup>
-
-offDownloadError(url: string, callback?: Callback&lt;DownloadError&gt;): void
-
-Unsubscribes from the pre-download error events. This API uses an asynchronous callback to return the result.
-
-**System capability**: SystemCapability.Request.FileTransferAgent
-
-**Parameters**
-
-| Name| Type    | Mandatory| Description                  |
-|-----|--------|----|----------------------|
-| url | string | Yes | URL to be unregistered, with a maximum of 8192 bytes.|
-| callback | Callback&lt;[DownloadError](#downloaderror23)&gt; | No| Callback used to return the error information about the pre-download. If this parameter is left blank, all error callback functions of the URL are unregistered.|
-
-**Example**:
-
-  ```ts
-  import { cacheDownload } from '@kit.BasicServicesKit';
-  
-  try {
-    const errorCallback = (error: cacheDownload.DownloadError) => {
-      console.info(`Error callback from cacheDownload.error code: ${error.errorCode}, error message: ${error.message}`);
-    };
-    // Subscribe to pre-download error events. When a download error occurs, the callback is invoked to return error information.
-    cacheDownload.onDownloadError("https://www.example.com", errorCallback);
-    // Unsubscribes from the pre-download error events.
-    cacheDownload.offDownloadError("https://www.example.com", errorCallback);
-    // Download the resource. If the download is successful, the resource will be cached to the specified file in the application memory or sandbox directory. 
-    cacheDownload.download("https://www.example.com", {});
-  } catch (err) {
-    console.error(`Failed to download the resource. err code: ${err.code}, err message: ${err.message}`);
   }
   ```

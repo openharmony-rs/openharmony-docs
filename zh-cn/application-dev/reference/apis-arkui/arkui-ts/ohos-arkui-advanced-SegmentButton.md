@@ -660,21 +660,27 @@ import {
 @Entry
 @Component
 struct Index {
+  // 页签类分段按钮数组。
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
     buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
       text: '页签按钮3'
     }] as ItemRestriction<SegmentButtonTextItem>,
+    // 配置CommonSegmentButtonOptions，实现背景模糊样式。
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
+  // 胶囊类分段按钮数组。
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }] as SegmentButtonItemTuple,
     multiply: false,
+    // 配置CommonSegmentButtonOptions，实现背景模糊样式。
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
+  // 可多选胶囊类分段按钮数组。
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }] as SegmentButtonItemTuple,
     multiply: true
   });
+  // 胶囊类分段按钮带选中非选中图标数组。
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -683,8 +689,10 @@ struct Index {
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') }
     ] as SegmentButtonItemTuple,
     multiply: false,
+    // 配置CommonSegmentButtonOptions，实现背景模糊样式。
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
+  // 可多选胶囊类分段按钮带选中非选中图标数组。
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { text: '图标1', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -858,10 +866,12 @@ import {
 @Entry
 @Component
 struct Index {
+  // 胶囊类分段按钮数组。
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '1' }, { text: '2' }, { text: '3' },
       { text: '4' }, { text: '5' }] as SegmentButtonItemTuple,
     multiply: false,
+    // 配置CommonSegmentButtonOptions，实现背景模糊样式。
     backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
   });
   @State capsuleSelectedIndexes: number[] = [0];
@@ -874,28 +884,34 @@ struct Index {
             options: this.singleSelectCapsuleOptions,
             selectedIndexes: $capsuleSelectedIndexes
           })
+          // 点击’删除第一个按钮‘，第一个按钮会删除。
           Button('删除第一个按钮')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.shift()
             })
+          // 点击’删除最后一个按钮‘，最后一个按钮会删除。
           Button('删除最后一个按钮')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.pop()
             })
+          // 点击’末尾增加一个按钮push‘，在按钮末尾会增加一个按钮。
           Button('末尾增加一个按钮push')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.push({ text: 'push' })
             })
+          // 点击’开头增加一个按钮unshift‘，在按钮开头会增加一个按钮。
           Button('开头增加一个按钮unshift')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.unshift(({ text: 'unshift' }))
             })
+          // 点击’将按钮2、3替换为splice1、splice2‘，按钮2、3会被替换成splice1、splice2。
           Button('将按钮2、3替换为splice1、splice2')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons.splice(1, 2, new SegmentButtonItemOptions({
                 text: 'splice1'
               }), new SegmentButtonItemOptions({ text: 'splice2' }))
             })
+          // 点击’更改所有按钮文字‘，按钮会由1、2、3、4、5替换成a、b、c、d、e。
           Button('更改所有按钮文字')
             .onClick(() => {
               this.singleSelectCapsuleOptions.buttons =
@@ -920,35 +936,40 @@ import { LengthMetrics, SegmentButton, SegmentButtonOptions } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
+  // 页签类分段按钮数组。
   @State tabOptions: SegmentButtonOptions = SegmentButtonOptions.tab({
     buttons: [{ text: '页签按钮1' }, { text: '页签按钮2' }, {
       text: '页签按钮3'
     }],
-    direction: Direction.Rtl,
-    backgroundColor: Color.Green,
-    selectedBackgroundColor: Color.Orange,
+    direction: Direction.Rtl, // 设置分段按钮的布局方向。
+    backgroundColor: Color.Green, // 设置分段按钮的背景板颜色。
+    selectedBackgroundColor: Color.Orange, // 设置分段按钮组件的按钮选中态背景板颜色。
+    // 设置文本内边距。
     localizedTextPadding: {
       end: LengthMetrics.vp(10),
       start: LengthMetrics.vp(10)
     },
   });
+  // 胶囊类分段按钮数组。
   @State singleSelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '单选按钮1' }, { text: '单选按钮2' }, { text: '单选按钮3' }],
-    multiply: false,
-    direction: Direction.Rtl,
-    fontColor: Color.Black,
-    selectedFontColor: Color.Yellow,
-    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+    multiply: false, // 设置分段按钮组件是否可以多选。
+    direction: Direction.Rtl, // 设置分段按钮的布局方向。
+    fontColor: Color.Black, // 设置分段按钮组件的按钮未选中态的文本颜色。
+    selectedFontColor: Color.Yellow, // 设置分段按钮组件的按钮选中态的文本颜色。
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK // 设置分段按钮组件的背景模糊材质。
   });
+  // 胶囊类分段按钮数组。
   @State multiplySelectCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [{ text: '多选按钮1' }, { text: '多选按钮2' }, { text: '多选按钮3' }],
-    multiply: true,
-    direction: Direction.Rtl,
-    fontSize: 18,
-    selectedFontSize: 18,
-    fontWeight: FontWeight.Bolder,
-    selectedFontWeight: FontWeight.Lighter,
+    multiply: true, // 设置分段按钮组件是否可以多选。
+    direction: Direction.Rtl, // 设置分段按钮的布局方向。
+    fontSize: 18, // 设置分段按钮组件的按钮未选中态的字体大小。
+    selectedFontSize: 18, // 设置分段按钮组件的按钮选中态的字体大小。
+    fontWeight: FontWeight.Bolder, // 设置分段按钮组件的按钮未选中态的字体粗细。
+    selectedFontWeight: FontWeight.Lighter, // 设置分段按钮组件的按钮选中态的字体粗细。
   });
+  // 胶囊类分段按钮数组。
   @State iconCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
@@ -957,14 +978,15 @@ struct Index {
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
       { icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') }
     ],
-    multiply: false,
-    direction: Direction.Rtl,
-    imageSize: { width: 40, height: 40 },
+    multiply: false, // 设置分段按钮组件是否可以多选。
+    direction: Direction.Rtl, // 设置分段按钮的布局方向。
+    imageSize: { width: 40, height: 40 }, // 设置分段按钮组件的图片尺寸。
+    // 设置分段按钮组件的按钮内边距。
     localizedButtonPadding: {
       end: LengthMetrics.vp(10),
       start: LengthMetrics.vp(10)
     },
-    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK
+    backgroundBlurStyle: BlurStyle.BACKGROUND_THICK // 设置分段按钮组件的背景模糊材质。
   });
   @State iconTextCapsuleOptions: SegmentButtonOptions = SegmentButtonOptions.capsule({
     buttons: [
@@ -974,9 +996,9 @@ struct Index {
       { text: '图标4', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') },
       { text: '图标5', icon: $r('sys.media.ohos_ic_public_email'), selectedIcon: $r('sys.media.ohos_ic_public_clock') }
     ],
-    multiply: true,
-    direction: Direction.Rtl,
-    imageSize: { width: 10, height: 10 },
+    multiply: true, // 设置分段按钮组件是否可以多选。
+    direction: Direction.Rtl, // 设置分段按钮的布局方向。
+    imageSize: { width: 10, height: 10 }, // 设置分段按钮组件的图片尺寸。
   });
   @State tabSelectedIndexes: number[] = [0];
   @State singleSelectCapsuleSelectedIndexes: number[] = [0];
@@ -1042,35 +1064,35 @@ struct Index {
     buttons: [
       {
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconItem 新手提醒' // 无障碍说明。
       },
       {
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconItem 新手提醒' // 无障碍说明。
       },
       {
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconItem 新手提醒' // 无障碍说明。
       },
       {
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconItem 新手提醒' // 无障碍说明。
       }
     ] as SegmentButtonItemTuple,
     multiply: false,
@@ -1081,38 +1103,38 @@ struct Index {
       {
         text: '图标1',
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒' // 无障碍说明。
       },
       {
         text: '图标1',
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒' // 无障碍说明。
       },
       {
         text: '图标1',
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒' // 无障碍说明。
       },
       {
         text: '图标1',
         icon: $r('sys.media.ohos_ic_public_email'),
-        iconAccessibilityText: '未选中图标无障碍文本',
+        iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
         selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-        selectedIconAccessibilityText: '选中图标无障碍文本',
-        accessibilityLevel: 'yes',
-        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
+        selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+        accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+        accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒' // 无障碍说明。
       }
     ] as SegmentButtonItemTuple,
     multiply: true
@@ -1144,11 +1166,11 @@ struct Index {
               }), new SegmentButtonItemOptions({
                 text: 'splice2',
                 icon: $r('sys.media.ohos_ic_public_email'),
-                iconAccessibilityText: '未选中图标无障碍文本',
+                iconAccessibilityText: '未选中图标无障碍文本', // 未选中态按钮图标的无障碍文本。
                 selectedIcon: $r('sys.media.ohos_ic_public_clock'),
-                selectedIconAccessibilityText: '选中图标无障碍文本',
-                accessibilityLevel: 'yes',
-                accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒'
+                selectedIconAccessibilityText: '选中图标无障碍文本', // 选中态按钮图标的无障碍文本。
+                accessibilityLevel: 'yes', // 无障碍重要性，控制当前组件是否可被无障碍辅助服务识别。
+                accessibilityDescription: 'SegmentButtonIconTextItem 新手提醒' // 无障碍说明。
               }))
             })
         }.width('90%')

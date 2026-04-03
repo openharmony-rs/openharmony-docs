@@ -98,13 +98,13 @@ Registers audio and haptic resources via URIs. This API uses a promise to return
 | Name  | Type                                     | Mandatory| Description                    |
 | -------- | ---------------------------------------- | ---- | ------------------------ |
 | audioUri  | string                                  | Yes  | URI of the audio source.<br>- For details about the supported audio resource formats and path formats in the normal latency mode, see [AVPlayer](../apis-media-kit/arkts-apis-media-AVPlayer.md).<br>- For details about the supported audio resource formats in the low-latency mode, see [SoundPool](../apis-media-kit/js-apis-inner-multimedia-soundPool.md#soundpool). The path format must meet the requirements described in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).<br>- In both modes, you are advised to pass in the absolute path of the file.          |
-| hapticUri | string                                  | Yes  | URI of the haptic source.<br>For details about the supported vibration resource formats, see [HapticFileDescripto](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10). The path format must meet the requirements described in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).<br>You are advised to pass in the absolute path of the file.        |
+| hapticUri | string                                  | Yes  | URI of the haptic source.<br>For details about the supported haptic resource formats, see [HapticFileDescriptor](../apis-sensor-service-kit/js-apis-vibrator.md#hapticfiledescriptor10). The path format must meet the requirements described in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen).<br>You are advised to pass in the absolute path of the file.        |
 
 **Return value**
 
 | Type               | Description                           |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | Promise object, which returns the registered resource ID.<br>In normal cases, the returned resource ID is a non-negative number. A negative ID indicates a registration failure. In this case, check whether the number of registered resources exceeds the upper limit.|
+| Promise&lt;number&gt; | Promise, which returns the registered resource ID.<br>In normal cases, the returned resource ID is a non-negative number. A negative ID indicates a registration failure. In this case, check whether the number of registered resources exceeds the upper limit.|
 
 **Error codes**
 
@@ -155,7 +155,7 @@ Registers audio and haptic resources via file descriptors. This API uses a promi
 
 | Type              | Description                          |
 | ------------------- | ------------------------------- |
-| Promise&lt;number&gt; | Promise object, which returns the registered resource ID.<br>In normal cases, the returned resource ID is a non-negative number. A negative ID indicates a registration failure. In this case, check whether the number of registered resources exceeds the upper limit.|
+| Promise&lt;number&gt; | Promise, which returns the registered resource ID.<br>In normal cases, the returned resource ID is a non-negative number. A negative ID indicates a registration failure. In this case, check whether the number of registered resources exceeds the upper limit.|
 
 **Example**
 

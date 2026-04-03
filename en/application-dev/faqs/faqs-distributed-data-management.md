@@ -12,7 +12,7 @@ To encrypt an RDB store, set **encrypt** in **StoreConfig** to **true** when cre
 [RDB Store](../reference/apis-arkdata/arkts-apis-data-relationalStore-i.md#storeconfig)
 
 
-## What should I do if the table data in an RDB store cannot be cleared by using TRUNCATE TABLE? (API version 9)
+## What should I do if the table data in an RDB store cannot be cleared by using **TRUNCATE TABLE**? (API version 9)
 
 **Symptom**
 
@@ -23,9 +23,9 @@ An error is reported when the **TRUNCATE TABLE** statement is used to clear tabl
 The RDB store uses SQLite, which does not support the **TRUNCATE TABLE** statement. To clear a table in an RDB store, use the **DELETE** statement, for example, **DELETE FROM sqlite_sequence WHERE name = 'table_name'**.
 
 
-## What data types are supported by an RDB store? (API version 9)
+## What data types are supported by an RDB store? (API 9)
 
-Applicable to the stage model.
+Applicable to: stage model
 
 **Solution**
 
@@ -39,7 +39,7 @@ An RDB store supports data of the number, string, and Boolean types. The number 
 You can use the **PersistentStorage** class to implement application data persistence. You can link the persistent data with specific tags to **AppStorage**, and invoke **AppStorage** APIs to access the persistent data. Persistent data is stored in a local XML file in **/data/app/el2/100/base/&lt;bundleName&gt;/haps/&lt;hapName&gt;/files/persistent_storage**.
 
 Example:
-
+<!--deprecated_code_no_check-->
 ```
 AppStorage.Link('varA')
 PersistentStorage.PersistProp("varA", "111");
@@ -65,7 +65,7 @@ struct Index {
 [PersistentStorage: Persisting Application State](../ui/state-management/arkts-persiststorage.md)
 
 
-## How do I save pixel map data to a database? (API version 9)
+## How do I store pixel map data to a database? (API version 9)
 
 **Solution**
 
@@ -76,7 +76,7 @@ Convert the pixel map data into an **ArrayBuffer** and save the **ArrayBuffer** 
 [readPixelsToBuffer](../reference/apis-image-kit/arkts-apis-image-PixelMap.md#readpixelstobuffer7-1)
 
 
-## How do I obtain RDB store files? (API version 9)
+## How do I obtain RDB store files? (API 9)
 
 **Symptom**
 
@@ -132,7 +132,7 @@ The limit on the text file size has been removed since API9 version.
 
 **Symptom**
 
-Data is successfully saved using **Preferences.put()**, but fails to be obtained by **Preferences.get()**.
+Data is successfully saved using **Preferences.put**, but fails to be obtained.
 
 **Solution**
 
@@ -159,6 +159,6 @@ You can use [execute](../reference/apis-arkdata/arkts-apis-data-relationalStore-
 
 **Solution**
 
-1. If you has the root permission, run the **find /data -name database_name** command.
+1. If the user has the root permission, run the **find /data -name database_name** command.
 
 2. You can use File Browser of DevEco Studio to obtain the database file path.

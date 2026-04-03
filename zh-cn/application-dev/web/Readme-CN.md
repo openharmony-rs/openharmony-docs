@@ -19,7 +19,7 @@
   - [使用运动和方向传感器监测设备状态](web-sensor.md)
 - Web渲染和布局<!--web-render-layout-->
   - [Web组件渲染模式](web-render-mode.md)
-  - [使用Web组件大小自适应页面内容布局](web-fit-content.md)
+  - [Web组件大小自适应页面内容布局](web-fit-content.md)
   - [优化跳转至新Web组件过程中的页面闪烁现象](web-router-flash-optimization.md)
   - [获取网页内容高度](web-getpage-height.md)
 - 在应用中使用前端页面JavaScript<!--web-use-frontend-page-js-->
@@ -36,7 +36,7 @@
   - [使用Web组件的手势与应用交互](web-gesture.md)
   - [使用Web组件管理网页缩放](web-scale-zoom.md)
   - [使用Web组件显示网页弹框](web-dialog.md)
-  - [使用Web组件的拖拽功能与网页交互](web_drag.md)
+  - [使用Web组件的拖拽功能与网页交互](web-drag.md)
 - 管理Web组件的网络安全与隐私<!--web-manage-cyber-security-privacy-->
   - [解决Web组件本地资源跨域问题](web-cross-origin.md)
   - [使用智能防跟踪功能](web-intelligent-tracking-prevention.md)
@@ -54,7 +54,7 @@
   - [使用Web组件上传文件](web-file-upload.md)
   - [使用Web组件的下载能力](web-download.md)
 - 使用网页多媒体<!--web-use-multimedia-->
-  - [使用WebRTC进行Web视频会议](web-rtc.md)
+  - [在Web中打开摄像头和麦克风](web-rtc.md)
   - [托管网页中的媒体播放](app-takeovers-web-media.md)
   - [使用Web组件支持画中画](web-picture-in-picture.md)
   - [Web组件支持视频沉浸式全屏播放](web_full_screen.md)
@@ -63,12 +63,12 @@
   - [使用Web组件保存前端页面为PDF](web-createpdf.md)
   - [使用Web组件的PDF文档预览能力](web-pdf-preview.md)
   - [网页中安全区域计算和避让适配](web-safe-area-insets.md)
-  - [使用Web组件菜单处理网页内容](web_menu.md)
+  - [使用Web组件菜单处理网页内容](web-menu.md)
   - [使用Web组件与系统剪贴板交互处理网页内容](web-clipboard.md)
   - [使用Web组件的智能分词能力](web-data-detector.md)
 - [同层渲染](web-same-layer.md)
 - [使用离线Web组件](web-offline-mode.md)
-- [使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和原生应用通信场景](web-native-messaging.md)
+- [使用WebNativeMessagingExtensionAbility组件实现浏览器扩展和应用通信场景](web-native-messaging.md)
 - Web调试维测<!--web-debugging-->
   - [使用DevTools工具调试前端页面](web-debugging-with-devtools.md)
   - [使用crashpad收集Web组件崩溃信息](web-crashpad.md)

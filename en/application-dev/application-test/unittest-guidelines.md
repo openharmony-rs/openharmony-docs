@@ -145,8 +145,8 @@ The following lists the common commands used in the unit test. For details about
 | level        | Level of the test case to be executed. The value can be **0**, **1**, **2**, **3**, or **4**.                                             | -s level 0                                |
 | size         | Scale of the test case to be executed. The value can be **small**, **medium**, or **large**.                                       | -s size small        |
 | stress       | Stress execution mode, which specifies the number of times that a test case is executed. The value is a positive integer.<br> **Note**: This parameter is supported since @ohos/hypium 1.0.5.                 | -s stress 1000                            |
-| skipMessage       | Whether to skip the information about the skipped test suites and test cases. The value can be **true** (not display related information) or **false** (display related information). The default value is **false**.<br>**Note**: This parameter is supported since @ohos/hypium 1.0.17.| -s skipMessage true                            |
-| runSkipped       | Skip execution mode, which specifies the test suites and test cases to be skipped. The value can be **all**, **skipped**, or **describeName#itName**.<br>**Note**: This parameter is supported since @ohos/hypium 1.0.17.| -s runSkipped all                            |
+| skipMessage       | Whether to skip the information about the skipped test suites and test cases. The value can be **true** (not display related information) or **false** (display related information). The default value is **false**.<br>**Note**: This is supported since @ohos/hypium 1.0.17.| -s skipMessage true                            |
+| runSkipped       | Skip execution mode, which specifies the test suites and test cases to be skipped. The value can be **all**, **skipped**, or **describeName#itName**.<br>**Note**: This is supported since @ohos/hypium 1.0.17.| -s runSkipped all                            |
 
 * Running test scripts
 
@@ -291,8 +291,8 @@ JSUnit provides the basic process APIs required for executing test scripts. You 
 |  beforeItSpecified | Presets an action, which is performed only before the specified unit test case starts.<br>**Note**: This API is supported since @ohos/hypium 1.0.15.|
 |  afterItSpecified  | Presets a clear action, which is performed only after the specified unit test case ends.<br>**Note**: This API is supported since @ohos/hypium 1.0.15.|
 |  expect            | Defines a variety of assertion capabilities, which are used to declare expected Boolean conditions.                       |
-|  xdescribe    | Defines a skipped test suite. Multiple test case functions can be defined in a test suite, but asynchronous functions are not supported.<br>**Note**: This API is supported since @ohos/hypium 1.0.17.                            |
-|  xit                | Defines a skipped test case.<br>**Note**: This API is supported since @ohos/hypium 1.0.17.                    |
+|  xdescribe    | Defines a skipped test suite. Multiple test case functions can be defined in a test suite, but asynchronous functions are not supported.<br>**Note**: This is supported since @ohos/hypium 1.0.17.                            |
+|  xit                | Defines a skipped test case.<br>**Note**: This is supported since @ohos/hypium 1.0.17.                    |
 
 **Example 1**: Execute **beforeAll**, **beforeEach**, **afterEach**, and **afterAll**.
 
@@ -882,7 +882,7 @@ export default function verifyTest() {
       claser.method_1();
       claser.method_2('111');
       claser.method_2('111', '222');
-      // Verify that method_2 is executed only once when the parameter is '111'.
+      // Verify the two mocked functions: verify that method_2 is executed once with only '111' as parameter.
       mocker.verify('method_2',['111']).once(); // The assertion is successful.
     })
   })
@@ -963,9 +963,9 @@ export default function clearTest() {
       // Mock method_1 and method_2 of the ClassName class.
       let func_1: Function = mocker.mockFunc(claser, claser.method_1);
       let func_2: Function = mocker.mockFunc(claser, claser.method_2);
-      // It is expected that, after the claser.method_1 function is mocked, '4' is returned when the function is called with the number parameter passed in.
+      // It is expected that, after the claser.method_1 function is mocked, '4' is returned when the function is called with any number type as the parameter.
       when(func_1)(ArgumentMatchers.anyNumber).afterReturn('4');
-      // It is expected that, after the claser.method_2 function is mocked, '5' is returned when the function is called with the number parameter passed in.
+      // It is expected that, after the claser.method_2 function is mocked, '5' is returned when the function is called with any number type as the parameter.
       when(func_2)(ArgumentMatchers.anyNumber).afterReturn('5');
       // Call the functions.
       expect(claser.method_1(123)).assertEqual('4');
@@ -1004,7 +1004,7 @@ export default function afterThrowTest() {
       let claser: ClassName = new ClassName();
       // Mock method_1 of the ClassName class.
       let mockfunc: Function = mocker.mockFunc(claser, claser.method_1);
-      // It is expected that, after the claser.method_1 function is mocked, error xxx is thrown when the function is called with the test parameter passed in.
+      // It is expected that, after the claser.method_1 function is mocked, error xxx is thrown when the function is called with test as the parameter.
       when(mockfunc)('test').afterThrow('error xxx');
       // Execute the mocked function, capture the exception, and use assertEqual() to check whether message meets the expectation.
       try {
@@ -1366,3 +1366,7 @@ After the test case execution is complete, the console displays the error messag
 1. Check the case code logic and ensure that the **done** function can be called when the assertion fails.
 2. Modify the case execution timeout settings under **Run/Debug Configurations** in DevEco Studio.
 3. Check the test case code logic to ensure that the assertion is successful.
+## Complete Example
+<!--RP3-->
+[Test Framework](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Project/Test/jsunit)
+<!--RP3End-->

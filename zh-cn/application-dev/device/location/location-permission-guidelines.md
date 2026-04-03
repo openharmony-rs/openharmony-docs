@@ -12,7 +12,7 @@
 
 - ohos.permission.LOCATION_IN_BACKGROUND：用于应用切换到后台仍然需要获取定位信息的场景。
 
-Location Kit接口对权限的要求参见：[Location Kit](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
+Location Kit接口对权限的要求参见API参考：[@ohos.geoLocationManager (位置服务)](../../reference/apis-location-kit/js-apis-geoLocationManager.md)。
 
 ## 开发步骤
 

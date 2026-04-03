@@ -77,7 +77,7 @@ struct SnapshotExample {
         .onClick(() => {
           this.uiContext.getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error('error: ${JSON.stringify(error)}');
+              console.error(`error: ${JSON.stringify(error)}`);
               return;
             }
             this.pixmap = pixmap;
@@ -162,7 +162,7 @@ struct SnapshotExample {
               this.pixmap = pixmap;
             })
             .catch((err: Error) => {
-              console.error("error: " + err);
+              console.error(`error: ${err}`);
             })
         }).margin(10)
     }
@@ -195,7 +195,7 @@ Captures a snapshot of an offscreen-rendered component created from a [CustomBui
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | builder  | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8)         | Yes  | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.     |
 | callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes  | Callback used to return the result. If the snapshot capture is successful, **err** is **undefined**, and **data** contains the resulting [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md). Otherwise, **err** provides detailed error information. The coordinates and size of the offscreen component's drawing area can be obtained through the callback.|
-| delay   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncload** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.|
+| delay   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When PixelMap resources are used or when [syncLoad](arkui-ts/ts-basic-components-image.md#syncload8) is set to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.|
 | checkImageStatus  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. If the value is **true**, the system checks whether all **Image** components have been decoded before taking the snapshot. If the check is not completed, the system aborts the snapshot and returns an exception.<br>Default value: **false**.|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12) | No   | Custom settings of the snapshot.|
 
@@ -249,7 +249,7 @@ struct ComponentSnapshotExample {
           },
             (error: Error, pixmap: image.PixelMap) => {
               if (error) {
-                console.error('error: ${JSON.stringify(error)}');
+                console.error(`error: ${JSON.stringify(error)}`);
                 return;
               }
               this.pixmap = pixmap;
@@ -286,7 +286,7 @@ Captures a snapshot of an offscreen-rendered component created from a [CustomBui
 | Name | Type                                                | Mandatory| Description                                                   |
 | ------- | ---------------------------------------------------- | ---- | ------------------------------------------------------- |
 | builder | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) | Yes  | Builder of the custom component.<br>Note: The global builder is not supported.<br>If the root component of the builder has a width or height of zero, the snapshot operation will fail with error code 100001.|
-| delay   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When PixelMap resources are used or when [syncload](arkui-ts/ts-basic-components-image.md#syncload8) is set to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.|
+| delay   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When PixelMap resources are used or when [syncLoad](arkui-ts/ts-basic-components-image.md#syncload8) is set to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Default value: **300**<br> Unit: ms<br> Value range: [0, +∞). If the value is less than 0, the default value is used.|
 | checkImageStatus  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. If the value is **true**, the system checks whether all **Image** components have been decoded before taking the snapshot. If the check is not completed, the system aborts the snapshot and returns an exception.<br>Default value: **false**.|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)           | No   | Custom settings of the snapshot.|
 
@@ -349,7 +349,7 @@ struct ComponentSnapshotExample {
               this.pixmap = pixmap;
             })
             .catch((err: Error) => {
-              console.error("error: " + err);
+              console.error(`error: ${err}`);
             })
         })
       Image(this.pixmap)
@@ -429,7 +429,7 @@ struct SnapshotExample {
               this.getUIContext().getComponentSnapshot().getSync("root", { scale: 2, waitUntilRenderFinished: true });
             this.pixmap = pixelmap;
           } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message);
+            console.error(`getSync errorCode: ${error.code} message: ${error.message}`);
           }
         }).margin(10)
     }
@@ -444,7 +444,7 @@ struct SnapshotExample {
 
 getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-Obtains the snapshot of a component that has been loaded based on the provided [uniqueId](js-apis-arkui-frameNode.md#getuniqueid12). This API uses a promise to return the result.
+Obtains the snapshot of a component that has been loaded based on the provided **uniqueId**. This API uses a promise to return the result.
 
 > **NOTE**
 >
@@ -458,7 +458,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 | Name | Type    | Mandatory  | Description                                      |
 | ---- | ------ | ---- | ---------------------------------------- |
-| uniqueId   | number | Yes   | [Unique ID](js-apis-arkui-frameNode.md#getuniqueid12) of the target component.<br>Note: Off-screen or cached components not mounted in the component tree are not supported.|
+| uniqueId   | number | Yes   | Unique ID of the target component. The unique ID of the **FrameNode** can be obtained via the [getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12) API.<br>Note: Off-screen or cached components not mounted in the component tree are not supported.|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | No   | Custom settings of the snapshot.|
 
 **Return value**
@@ -525,10 +525,10 @@ struct SnapshotExample {
                 this.pixmap = pixmap;
               })
               .catch((err: Error) => {
-                console.error("error: " + err);
+                console.error(`error: ${err}`);
               })
           } catch (error) {
-            console.error('UniqueId get snapshot Error: ${JSON.stringify(error)}');
+            console.error(`UniqueId get snapshot Error: ${JSON.stringify(error)}`);
           }
         }).margin(10)
     }
@@ -543,7 +543,7 @@ struct SnapshotExample {
 
 getSyncWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
-Obtains the snapshot of a component that has been loaded based on the provided [uniqueId](js-apis-arkui-frameNode.md#getuniqueid12). This API synchronously waits for the snapshot to complete and returns a [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) object.
+Obtains the snapshot of a component that has been loaded based on the provided **uniqueId**. This API synchronously waits for the snapshot to complete and returns a [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) object.
 
 > **NOTE**
 >
@@ -557,7 +557,7 @@ Obtains the snapshot of a component that has been loaded based on the provided [
 
 | Name | Type    | Mandatory  | Description                                      |
 | ---- | ------ | ---- | ---------------------------------------- |
-| uniqueId   | number | Yes   | [Unique ID](js-apis-arkui-frameNode.md#getuniqueid12) of the target component.<br>Note: Off-screen or cached components not mounted in the component tree are not supported.|
+| uniqueId   | number | Yes   | Unique ID of the target component. The unique ID of the **FrameNode** can be obtained via the [getUniqueId](js-apis-arkui-frameNode.md#getuniqueid12) API.<br>Note: Off-screen or cached components not mounted in the component tree are not supported.|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12)            | No   | Custom settings of the snapshot.|
 
 **Return value**
@@ -623,7 +623,7 @@ struct SnapshotExample {
               .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
                 { scale: 2, waitUntilRenderFinished: true });
           } catch (error) {
-            console.error('UniqueId getSync snapshot Error: ${JSON.stringify(error)}');
+            console.error(`UniqueId getSync snapshot Error: ${JSON.stringify(error)}`);
           }
         }).margin(10)
     }
@@ -649,7 +649,7 @@ Captures a snapshot of the provided component content. This API uses a promise t
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | content  | [ComponentContent\<T>](./js-apis-arkui-ComponentContent.md)         | Yes  | Component content to be captured. This is the content currently displayed in the **UIContext**.     |
-| delay   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When pixel map resources are used or when **syncload** to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Value range: [0, +∞). If the value is less than 0, the default value is used.<br>Default value: **300**<br> Unit: ms|
+| delay   | number | No   | Delay time for triggering the screenshot command. When the layout includes an image component, it is necessary to set a delay time to allow the system to decode the image resources. The decoding time is subject to the resource size. In light of this, whenever possible, use pixel map resources that do not require decoding.<br> When PixelMap resources are used or when [syncLoad](arkui-ts/ts-basic-components-image.md#syncload8) is set to **true** for the **Image** component, you can set **delay** to **0** to forcibly capture snapshots without waiting. This delay time does not refer to the time from the API call to the return: As the system needs to temporarily construct the passed-in **builder** offscreen, the return time is usually longer than this delay.<br>Note: In the **builder** passed in, state variables should not be used to control the construction of child components. If they are used, they should not change when the API is called, so as to avoid unexpected snapshot results.<br> Value range: [0, +∞). If the value is less than 0, the default value is used.<br>Default value: **300**<br> Unit: ms|
 | checkImageStatus  | boolean | No   | Whether to verify the image decoding status before taking a snapshot. If the value is **true**, the system checks whether all **Image** components have been decoded before taking the snapshot. If the check is not completed, the system aborts the snapshot and returns an exception.<br>Default value: **false**.|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12) | No   | Custom settings of the snapshot. You can specify the scale ratio for the pixelmap during rendering and whether to force the system to complete all rendering commands before taking the snapshot.|
 
@@ -697,7 +697,7 @@ struct ReusableChildComponent {
   }
 
   aboutToRecycle(): void {
-    console.info("ReusableChildComponent aboutToRecycle " + this.text);
+    console.info(`ReusableChildComponent aboutToRecycle ${this.text}`);
   }
 
   build() {
@@ -733,7 +733,7 @@ struct Index {
                 this.pixmap = pixmap;
               })
               .catch((err: Error) => {
-                console.error("error: " + err);
+                console.error(`error: ${err}`);
               })
           })
         Image(this.pixmap)

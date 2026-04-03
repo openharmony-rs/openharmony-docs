@@ -8,7 +8,7 @@
 
 In this topic, you will learn how to use [AVRecorder](media-kit-intro.md#avrecorder) to develop audio recording functionalities including starting, pausing, resuming, and stopping recording.
 
-During application development, you can use the **state** property of the AVRecorder to obtain its state or call **on('stateChange')** to listen for state changes. Your code must meet the state machine requirements. For example, **pause()** is called only when the AVRecorder is in the **started** state, and **resume()** is called only when it is in the **paused** state.
+During application development, you can use the **state** property of AVRecorder to obtain its current state or use [on('stateChange')](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#onstatechange9) to listen for state change events. During development, you must strictly comply with the state machine requirements. For example, you can call the [pause](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#pause9-1) API only in the **started** state and call the [resume](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#resume9-1) API only in the **paused** state.
 
 **Figure 1** Recording state transition
 
@@ -78,10 +78,9 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    });
    ```
 
-3. Set audio recording parameters and call **prepare()**. The AVRecorder enters the **prepared** state.
+3. Set audio recording parameters and call [prepare](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#prepare9-1) to enter the **prepared** state.
 
    > **NOTE**
-   > 
    > Pay attention to the following when configuring parameters:
    >
    > - Before parameter configuration, ensure that you have gained the required permissions. For details, see [Requesting Permissions](#requesting-permissions).
@@ -90,6 +89,7 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    >   If video recording is required, follow the instructions provided in [Video Recording Development](video-recording.md). If video-related parameters are configured, an error will be reported in subsequent steps.
    > - The [recording specifications](media-kit-intro.md#supported-formats) in use must be those supported. The specific recording parameters must strictly comply with the specified [recording parameter configuration](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9).
    > - The recording output URL (URL in **avConfig** in the sample code) must be in the format of fd://xx (where xx indicates a file descriptor). You must call [ohos.file.fs of Core File Kit](../../reference/apis-core-file-kit/js-apis-file-fs.md) to implement access to the application file. For details, see [Accessing Application Files](../../file-management/app-file-access.md).
+   > - For details about the audio encoding format (**audioCodec**), extended audio encoding format (**aacProfile**), and encapsulation format (**fileFormat**) configured in the example, see [AVRecorderProfile](../../reference/apis-media-kit/arkts-apis-media-i.md#avrecorderprofile9).
 
    ```ts
    import { media } from '@kit.MediaKit';
@@ -99,10 +99,10 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    let avProfile: media.AVRecorderProfile = {
      audioBitrate: 112000, // Audio bit rate.
      audioChannels: 2, // Number of audio channels.
-     audioCodec: media.CodecMimeType.AUDIO_AAC, // Audio encoding format. Currently, AAC, MP3, and G711MU are supported. AMR_NB and AMR_WB are supported since API version 18.
-     aacProfile: media.AacProfile.AAC_HE, // Extended audio encoding format. AAC_HE and AAC_HE_V2 are supported since API version 22.
+     audioCodec: media.CodecMimeType.AUDIO_AAC, // Audio encoding format.
+     aacProfile: media.AacProfile.AAC_HE, // Extended audio encoding format.
      audioSampleRate: 48000, // Audio sampling rate.
-     fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // Container format. Currently, MP4, M4A, MP3, WAV, AMR, and AAC are supported.
+     fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // Encapsulation format.
    };
    
    const context: Context = this.getUIContext().getHostContext()!; // Refer to Accessing Application Files.
@@ -125,42 +125,42 @@ Read [AVRecorder](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md)
    }
    ```
 
-4. Call **start()** to start recording. The AVRecorder enters the **started** state.
+4. Call [start](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#start9-1) to start recording and enter the **started** state.
 
    ```ts
    // Start recording.
    await this.avRecorder?.start();
    ```
 
-5. Call **pause()** to pause recording. The AVRecorder enters the **paused** state.
+5. Call [pause](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#pause9-1) to pause recording and enter the **paused** state.
 
    ```ts
    // Pause recording.
    await this.avRecorder?.pause();
    ```
 
-6. Call **resume()** to resume recording. The AVRecorder enters the **started** state again.
+6. Call [resume](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#resume9-1) to resume recording and enter the **started** state again.
 
    ```ts
    // Resume recording.
    await this.avRecorder?.resume();
    ```
 
-7. Call **stop()** to stop recording. The AVRecorder enters the **stopped** state.
+7. Call [stop](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#stop9-1) to stop recording and enter the **stopped** state.
 
    ```ts
    // Stop recording.
    await this.avRecorder?.stop();
    ```
 
-8. Call **reset()** to reset the resources. The AVRecorder enters the **idle** state. In this case, you can reconfigure the recording parameters.
+8. Call [reset](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#reset9-1) to reset resources and enter the **idle** state again. Recording parameters can be configured again.
 
    ```ts
    // Reset resources.
    await this.avRecorder?.reset();
    ```
 
-9. Call **release()** to switch the AVRecorder to the **released** state. Now your application exits the recording.
+9. Call [release](../../reference/apis-media-kit/arkts-apis-media-AVRecorder.md#release9-1) to release the instance, enter the **released** state, and exit recording.
 
    ```ts
    // Destroy the instance.
@@ -208,10 +208,10 @@ async function audioRecording(context: common.Context): Promise<void> {
   let avProfile: media.AVRecorderProfile = {
     audioBitrate: 112000, // Audio bit rate.
     audioChannels: 2, // Number of audio channels.
-    audioCodec: media.CodecMimeType.AUDIO_AAC, // Audio encoding format. Currently, AAC, MP3, and G711MU are supported. AMR_NB and AMR_WB are supported since API version 18.
-    aacProfile: media.AacProfile.AAC_HE, // Extended audio encoding format. AAC_HE and AAC_HE_V2 are supported since API version 22.
+    audioCodec: media.CodecMimeType.AUDIO_AAC, // Audio encoding format.
+    aacProfile: media.AacProfile.AAC_HE, // Extended audio encoding format.
     audioSampleRate: 48000, // Audio sampling rate.
-    fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // Container format. Currently, MP4, M4A, MP3, WAV, AMR, and AAC are supported.
+    fileFormat: media.ContainerFormatType.CFT_MPEG_4A, // Encapsulation format.
   };
   let avConfig: media.AVRecorderConfig = {
     audioSourceType: media.AudioSourceType.AUDIO_SOURCE_TYPE_MIC, // Audio input source. In this example, the microphone is used.

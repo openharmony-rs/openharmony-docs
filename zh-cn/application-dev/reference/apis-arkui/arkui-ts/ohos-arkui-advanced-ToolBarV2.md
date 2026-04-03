@@ -30,7 +30,7 @@ import { ToolBarV2 } from '@kit.ArkUI';
 
 ## ToolBarV2
 
-ToolbarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
+ToolBarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifier: DividerModifier, toolBarModifier: ToolBarV2Modifier})
 
 工具栏。
 
@@ -45,13 +45,11 @@ ToolbarV2({toolBarList: ToolBarV2Item\[], activatedIndex?: number, dividerModifi
 | 名称                   | 类型                                                               | 必填 | 装饰器类型               | 说明                                                           |
 | -------------------- | ---------------------------------------------------------------- | -- |---------------------|--------------------------------------------------------------|
 | toolBarList          | [ToolBarV2Item](#toolbarv2item)\[]                               | 是  | @Param<br/>@Require | 工具栏列表。                                                       |
-| activatedIndex       | number                                                           | 否  | @Param              | 激活态的子项。<br ></div>默认值：-1，即无工具栏子项为激活态。<br />取值范围：[-1,4]。      |
-| dividerModifier<sup> | [DividerModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否  | @Param              | 工具栏头部分割线属性，可设置分割线高度、颜色等。<br />默认不生效。                         |
-| toolBarModifier<sup> | [ToolBarV2Modifier](#toolbarv2modifier)                          | 否  | @Param              | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。<br />默认不生效。 |
+| activatedIndex    | number                                                           | 否  | @Param              | 激活态的子项。<br ></div>默认值：-1，即无工具栏子项为激活态。<br />取值范围：[-1,4]。      |
+| dividerModifier | [DividerModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否  | @Param              | 工具栏头部分割线属性，可设置分割线高度、颜色等。<br />默认不生效。                         |
+| toolBarModifier | [ToolBarV2Modifier](#toolbarv2modifier)                          | 否  | @Param              | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。<br />默认不生效。 |
 
 ## ToolBarV2Item
-
-ToolbarV2({content?: ToolBarV2ItemText, action?: ToolBarV2ItemAction, icon?: 	ToolBarV2ItemIconType, state?: ToolBarV2ItemState, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
 
 定义工具栏子项。
 
@@ -95,8 +93,6 @@ ToolBarV2Item的构造函数。
 
 ## ToolBarV2ItemOptions
 
-ToolBarV2ItemOptions({content?: ToolBarV2ItemText, action?: ToolBarV2ItemAction, icon?: ToolBarV2ItemIconType, state?: ToolBarV2ItemState, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
-
 用于构建ToolBarV2Item对象。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -134,8 +130,6 @@ type ToolBarV2ItemAction = (index: number) => void
 | index | number | 是  |工具栏子项点击事件的回调。<br /> -index: 表示触发事件的工具栏子项索引。    |
 
 ## ToolBarV2ItemText
-
-ToolBarV2ItemText({text?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
 
 定义工具栏子项的文本。
 
@@ -175,8 +169,6 @@ ToolBarV2ItemText的构造函数。
 
 ## ToolBarV2ItemTextOptions
 
-ToolBarV2ItemTextOptions({text?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
-
 用于构建ToolBarV2ItemText对象。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
@@ -192,8 +184,6 @@ ToolBarV2ItemTextOptions({text?: ResourceStr, color?: ColorMetrics, activatedCol
 | activatedColor | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) | 否  | 是  | 工具栏子项在激活态下文本的颜色。<br/>默认值：$r('sys.color.font_emphasize') |
 
 ## ToolBarV2ItemImage
-
-ToolBarV2ItemImage({src?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
 
 定义工具栏子项的普通图标。
 
@@ -232,8 +222,6 @@ ToolBarV2ItemImage的构造函数。
 | options | [ToolBarV2ItemImageOptions](#toolbarv2itemimageoptions) | 是  | 工具栏子项图标信息。 |
 
 ## ToolBarV2ItemImageOptions
-
-ToolBarV2ItemImageOptions({src?: ResourceStr, color?: ColorMetrics, activatedColor?: ColorMetrics})
 
 用于构建ToolBarV2ItemImage对象。
 
@@ -390,8 +378,6 @@ stateEffect(stateEffect: boolean): ToolBarV2Modifier
 
 ## ToolBarV2SymbolGlyph
 
-ToolBarV2SymbolGlyph({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
-
 ToolBarV2SymbolGlyph定义Symbol图标的属性。
 
 **装饰器类型**：@ObservedV2
@@ -428,8 +414,6 @@ ToolBarV2SymbolGlyph的构造函数。
 | options | [ToolBarV2SymbolGlyphOptions](#toolbarv2symbolglyphoptions) | 是  | Symbol图标信息。 |
 
 ## ToolBarV2SymbolGlyphOptions
-
-ToolBarV2SymbolGlyphOptions({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
 
 ToolBarV2SymbolGlyphOptions定义图标的属性。
 
@@ -733,9 +717,9 @@ struct Index {
         }),
         action: () => {
         },
-        accessibilityText: '剪贴', //该项屏幕朗读播报文本为‘剪贴’
-        accessibilityDescription: '单指双击即可剪贴', //该项屏幕朗读播报描述为'单指双击即可剪贴'
-        accessibilityLevel: 'yes'  //该项可被无障碍屏幕朗读聚焦
+        accessibilityText: '剪贴', // 该项屏幕朗读播报文本为‘剪贴’
+        accessibilityDescription: '单指双击即可剪贴', // 该项屏幕朗读播报描述为'单指双击即可剪贴'
+        accessibilityLevel: 'yes'  // 该项可被无障碍屏幕朗读聚焦
       })
     )
     this.toolbarList.push(
@@ -749,7 +733,7 @@ struct Index {
         action: () => {
         },
         state: ToolBarV2ItemState.DISABLE,
-        accessibilityLevel: 'no'  //该项将无法被无障碍屏幕朗读聚焦
+        accessibilityLevel: 'no'  // 该项将无法被无障碍屏幕朗读聚焦
       }))
     this.toolbarList.push(
       new ToolBarV2Item({

@@ -49,6 +49,10 @@ onMemoryLevel(level: AbilityConstant.MemoryLevel): void
 
 Called when the system memory level changes, after [a listener has been registered for such events](js-apis-inner-application-applicationContext.md#applicationcontextonenvironment).
 
+> **NOTE**
+>
+> The **onMemoryLevel** callback runs in the main thread of the current process. If time-consuming UI component release is performed in this callback, the main thread task will be blocked. Therefore, you are not advised to release UI components in the callback.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Ability.AbilityRuntime.AbilityCore

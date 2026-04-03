@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-With the APIs provided by Camera Kit, you can develop a camera application. The application accesses and operates the camera device to implement basic operations, such as preview, photo capture, and video recording. It can also perform more operations, for example, controlling the flash and exposure time, and focusing or adjusting the focus.
+With the APIs provided by Camera Kit, you can develop a camera application. The application accesses and operates the camera device to implement basic operations, such as preview, photo capture, and video recording. It can also combine APIs to perform advanced operations such as controlling flash and exposure time, focusing, or zooming.
 
 ## When to Use
 
@@ -37,3 +37,9 @@ Take video recording as an example: the camera service can control the camera de
 
 **Figure 2** Camera development model 
 ![Camera Development Model](figures/camera-development-model.png)
+
+## Samples
+
+The following sample is provided to help you better understand how to develop the camera service:
+
+- [Camera and MediaLibrary (ArkTS, Full SDK, API version 10)](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/SystemFeature/Media/Camera)

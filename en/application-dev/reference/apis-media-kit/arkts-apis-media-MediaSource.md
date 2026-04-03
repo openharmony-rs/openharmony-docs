@@ -6,14 +6,12 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+The MediaSource class defines the media data information, which is from [createMediaSourceWithUrl](arkts-apis-media-f.md#mediacreatemediasourcewithurl12).
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 12.
-
-The MediaSource class defines the media data information, which is from [createMediaSourceWithUrl](arkts-apis-media-f.md#mediacreatemediasourcewithurl12).
-
-**System capability**: SystemCapability.Multimedia.Media.Core
 
 ## Modules to Import
 
@@ -51,7 +49,7 @@ Sets a MediaSourceLoader object, which is used to help the player request media 
 
 | Name  | Type    | Mandatory| Description                |
 | -------- | -------- | ---- | -------------------- |
-| resourceLoader | [MediaSourceLoader](arkts-apis-media-i.md#mediasourceloader18) | Yes  | MediaSourceLoader object used to obtain media data for the player.|
+| resourceLoader | [MediaSourceLoader](arkts-apis-media-i.md#mediasourceloader18) | Yes  | **MediaSourceLoader** object used to obtain media data for the player.|
 
 **Example**
 

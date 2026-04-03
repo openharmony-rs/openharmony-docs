@@ -485,3 +485,378 @@ The following example creates a custom drawing component that can draw a custom 
      target_link_libraries(entry PUBLIC
           ${hilog-lib} ${libace-lib} ${libnapi-lib} ${libuv-lib} libnative_drawing.so)
    ```
+
+## Irregular Grid Layout Example
+
+The following example creates an irregular grid layout container that supports grid cells of different sizes to achieve a layout similar to the waterfall layout.  
+
+Figure 3 Irregular grid layout
+
+![irregularGrid](figures/irregularGrid.jpg)
+
+1. Prepare a project as instructed in [Custom Layout Container](#custom-layout-container).
+
+2. Create the encapsulation object of the irregular grid layout container component.
+   <!-- @[irregular-grid](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/ArkUIIrregularGridNode.h) -->
+   
+   ``` C
+   // ArkUIIrregularGridNode.h
+   // Example of an irregular grid layout container
+   
+   #ifndef MYAPPLICATION_ARKUIIRREGULARGRIDNODE_H
+   #define MYAPPLICATION_ARKUIIRREGULARGRIDNODE_H
+   
+   #include "ArkUINode.h"
+   #include <vector>
+   #include <map>
+   
+   namespace NativeModule {
+   
+   // Grid cell configuration
+   struct GridItemConfig {
+       int32_t rowSpan = 1; // Number of rows occupied
+       int32_t columnSpan = 1; // Number of columns occupied
+   };
+   
+   class ArkUIIrregularGridNode : public ArkUINode {
+   public:
+       // Create a component using the custom component type ARKUI_NODE_CUSTOM.
+       ArkUIIrregularGridNode()
+           : ArkUINode((NativeModuleInstance::GetInstance()->GetNativeNodeAPI())->createNode(ARKUI_NODE_CUSTOM))
+       {
+           // Register a custom event listener.
+           nativeModule_->addNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
+           // Declare a custom event and pass itself as the custom data.
+           nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE, 0, this);
+           nativeModule_->registerNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT, 0, this);
+       }
+   
+       ~ArkUIIrregularGridNode() override
+       {
+           // Unregister the custom event listener.
+           nativeModule_->removeNodeCustomEventReceiver(handle_, OnStaticCustomEvent);
+           // Cancel the declaration of the custom event.
+           nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE);
+           nativeModule_->unregisterNodeCustomEvent(handle_, ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT);
+       }
+   
+       // Set the number of columns.
+       void SetColumnCount(int32_t count)
+       {
+           columnCount_ = count;
+           nativeModule_->markDirty(handle_, NODE_NEED_MEASURE);
+       }
+   
+       // Set the grid spacing.
+       void SetGap(int32_t gap)
+       {
+           gap_ = gap;
+           nativeModule_->markDirty(handle_, NODE_NEED_MEASURE);
+       }
+   
+       // Set the grid configuration of the child component.
+       void SetItemConfig(ArkUI_NodeHandle child, int32_t rowSpan, int32_t columnSpan)
+       {
+           GridItemConfig config;
+           config.rowSpan = rowSpan;
+           config.columnSpan = columnSpan;
+           itemConfigs_[child] = config;
+           nativeModule_->markDirty(handle_, NODE_NEED_MEASURE);
+       }
+   
+   private:
+       static void OnStaticCustomEvent(ArkUI_NodeCustomEvent *event)
+       {
+           // Obtain the component instance object and call the related instance methods.
+           auto customNode = reinterpret_cast<ArkUIIrregularGridNode *>(OH_ArkUI_NodeCustomEvent_GetUserData(event));
+           auto type = OH_ArkUI_NodeCustomEvent_GetEventType(event);
+           switch (type) {
+               case ARKUI_NODE_CUSTOM_EVENT_ON_MEASURE:
+                   customNode->OnMeasure(event);
+                   break;
+               case ARKUI_NODE_CUSTOM_EVENT_ON_LAYOUT:
+                   customNode->OnLayout(event);
+                   break;
+               default:
+                   break;
+           }
+       }
+   
+       // Calculate the height of a single subcomponent and update the column height information.
+       void MeasureChild(ArkUI_NodeHandle child, int32_t cellWidth,
+           ArkUI_LayoutConstraint *childConstraint, std::vector<int32_t> &columnHeights)
+       {
+           GridItemConfig config = {1, 1};
+           auto it = itemConfigs_.find(child);
+           if (it != itemConfigs_.end()) {
+               config = it->second;
+           }
+           if (config.columnSpan > columnCount_) {
+               config.columnSpan = columnCount_;
+           }
+   
+           int32_t startColumn = FindLowestColumn(columnHeights, config.columnSpan);
+           int32_t startY = 0;
+           for (int32_t col = startColumn; col < startColumn + config.columnSpan && col < columnCount_; col++) {
+               if (columnHeights[col] > startY) {
+                   startY = columnHeights[col];
+               }
+           }
+   
+           int32_t itemWidth = cellWidth * config.columnSpan + gap_ * (config.columnSpan - 1);
+           OH_ArkUI_LayoutConstraint_SetMaxWidth(childConstraint, itemWidth);
+           OH_ArkUI_LayoutConstraint_SetMinWidth(childConstraint, itemWidth);
+           nativeModule_->measureNode(child, childConstraint);
+           auto size = nativeModule_->getMeasuredSize(child);
+   
+           LayoutItemInfo info;
+           info.x = startColumn * (cellWidth + gap_);
+           info.y = startY;
+           info.width = size.width;
+           info.height = size.height;
+           layoutInfo_.push_back(info);
+   
+           int32_t newHeight = startY + size.height + gap_;
+           for (int32_t col = startColumn; col < startColumn + config.columnSpan && col < columnCount_; col++) {
+               columnHeights[col] = newHeight;
+           }
+       }
+   
+       //Customized calculation logic: irregular grid layout.
+       void OnMeasure(ArkUI_NodeCustomEvent *event)
+       {
+           auto layoutConstrain = OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure(event);
+           int32_t maxWidth = OH_ArkUI_LayoutConstraint_GetMaxWidth(layoutConstrain);
+   
+           int32_t totalGap = gap_ * (columnCount_ - 1);
+           int32_t cellWidth = (maxWidth - totalGap) / columnCount_;
+   
+           auto childConstraint = OH_ArkUI_LayoutConstraint_Copy(layoutConstrain);
+           std::vector<int32_t> columnHeights(columnCount_, 0);
+           layoutInfo_.clear();
+   
+           auto totalSize = nativeModule_->getTotalChildCount(handle_);
+           for (uint32_t i = 0; i < totalSize; i++) {
+               auto child = nativeModule_->getChildAt(handle_, i);
+               MeasureChild(child, cellWidth, childConstraint, columnHeights);
+           }
+   
+           int32_t maxHeight = 0;
+           for (int32_t height : columnHeights) {
+               if (height > maxHeight) {
+                   maxHeight = height;
+               }
+           }
+           if (maxHeight > gap_) {
+               maxHeight -= gap_;
+           }
+   
+           nativeModule_->setMeasuredSize(handle_, maxWidth, maxHeight);
+           OH_ArkUI_LayoutConstraint_Dispose(childConstraint);
+       }
+   
+       void OnLayout(ArkUI_NodeCustomEvent *event)
+       {
+           // Obtain the expected position of the parent component and set it.
+           auto position = OH_ArkUI_NodeCustomEvent_GetPositionInLayout(event);
+           nativeModule_->setLayoutPosition(handle_, position.x, position.y);
+   
+           // Layout the child component.
+           auto totalSize = nativeModule_->getTotalChildCount(handle_);
+           for (uint32_t i = 0; i < totalSize && i < layoutInfo_.size(); i++) {
+               auto child = nativeModule_->getChildAt(handle_, i);
+               nativeModule_->layoutNode(child, layoutInfo_[i].x, layoutInfo_[i].y);
+           }
+       }
+   
+       // Find the shortest column to ensure that the item with the specified column span can be placed.
+       int32_t FindLowestColumn(const std::vector<int32_t>& columnHeights, int32_t columnSpan)
+       {
+           int32_t lowestColumn = 0;
+           int32_t lowestHeight = INT32_MAX;
+   
+           // Traverse all possible start columns.
+           for (int32_t col = 0; col <= columnCount_ - columnSpan; col++) {
+               // Find the highest column in this range.
+               int32_t maxHeightInRange = 0;
+               for (int32_t i = col; i < col + columnSpan; i++) {
+                   if (columnHeights[i] > maxHeightInRange) {
+                       maxHeightInRange = columnHeights[i];
+                   }
+               }
+   
+               // If the highest point in this range is lower than the current lowest point, update the lowest column.
+               if (maxHeightInRange < lowestHeight) {
+                   lowestHeight = maxHeightInRange;
+                   lowestColumn = col;
+               }
+           }
+   
+           return lowestColumn;
+       }
+   
+       struct LayoutItemInfo {
+           int32_t x;
+           int32_t y;
+           int32_t width;
+           int32_t height;
+       };
+   
+       int32_t columnCount_ = 3;
+       int32_t gap_ = 10;
+       std::map<ArkUI_NodeHandle, GridItemConfig> itemConfigs_;
+       std::vector<LayoutItemInfo> layoutInfo_;
+   };
+   
+   } // namespace NativeModule
+   
+   #endif // MYAPPLICATION_ARKUIIRREGULARGRIDNODE_H
+   ```
+   
+
+3. Use the irregular grid layout container to create a sample UI.
+   <!-- @[irregular-grid-entrance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeType/CustomDrawIrregularSample/entry/src/main/cpp/NativeEntry.cpp) -->
+   
+   ``` C++
+   #include "NativeEntry.h"
+   
+   #include "ArkUIIrregularGridNode.h"
+   #include "ArkUINode.h"
+   
+   #include <arkui/native_node_napi.h>
+   #include <arkui/native_type.h>
+   #include <js_native_api.h>
+   #include <utility>
+   #include <vector>
+   
+   namespace NativeModule {
+   namespace {
+   napi_env g_env = nullptr;
+   
+   constexpr uint32_t GRID_BACKGROUND_COLOR = 0xFFF5F5F5;
+   constexpr int32_t GRID_COLUMN_COUNT = 4;
+   constexpr int32_t GRID_GAP = 8;
+   constexpr float GRID_ITEM_RADIUS = 8.0f;
+   constexpr float GRID_ITEM_BORDER_WIDTH = 1.0f;
+   constexpr uint32_t GRID_ITEM_BORDER_COLOR = 0xFFCCCCCC;
+   constexpr float GRID_ITEM_BASE_HEIGHT = 60.0f;
+   constexpr float GRID_ITEM_HEIGHT_STEP = 40.0f;
+   
+   using GridItemSize = std::pair<int32_t, int32_t>;
+   
+   const std::vector<GridItemSize>& GetGridItemSizes()
+   {
+       static const std::vector<GridItemSize> itemSizes = {
+           {1, 1}, // Small square
+           {2, 1}, // Vertical bar
+           {1, 3}, // Horizontal bar
+           {2, 2}, // Large square
+           {1, 1}, // Small square
+           {1, 2}, // Horizontal bar
+           {3, 1}, // Very long vertical bar
+       };
+       return itemSizes;
+   }
+   
+   const std::vector<uint32_t>& GetGridItemColors()
+   {
+       static const std::vector<uint32_t> colors = {
+           0xFF64B5F6, // Blue
+           0xFFE57373, // Red
+           0xFF81C784, // Green
+           0xFFFFB74D, // Orange
+           0xFF9575CD, // Purple
+           0xFF4DB6AC, // Cyan
+           0xFFFFD54F, // Yellow
+           0xFFF06292, // Pink
+           0xFF7986CB, // Indigo
+           0xFFA1887F, // Brown
+       };
+       return colors;
+   }
+   
+   void SetNodeColorAttribute(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node, uint32_t color)
+   {
+       ArkUI_NumberValue bgColor[] = {{.u32 = color}};
+       ArkUI_AttributeItem bgColorItem = {bgColor, 1};
+       nodeAPI->setAttribute(node, NODE_BACKGROUND_COLOR, &bgColorItem);
+   }
+   
+   void SetNodeBorderRadiusAttribute(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node, float radius)
+   {
+       ArkUI_NumberValue radiusValue[] = {{.f32 = radius}};
+       ArkUI_AttributeItem radiusItem = {radiusValue, 1};
+       nodeAPI->setAttribute(node, NODE_BORDER_RADIUS, &radiusItem);
+   }
+   
+   void SetNodeBorderStyle(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node)
+   {
+       ArkUI_NumberValue borderWidth[] = {{.f32 = GRID_ITEM_BORDER_WIDTH}};
+       ArkUI_AttributeItem borderWidthItem = {borderWidth, 1};
+       nodeAPI->setAttribute(node, NODE_BORDER_WIDTH, &borderWidthItem);
+   
+       ArkUI_NumberValue borderColor[] = {{.u32 = GRID_ITEM_BORDER_COLOR}};
+       ArkUI_AttributeItem borderColorItem = {borderColor, 1};
+       nodeAPI->setAttribute(node, NODE_BORDER_COLOR, &borderColorItem);
+   }
+   
+   void SetNodeHeightByRowSpan(ArkUI_NativeNodeAPI_1* nodeAPI, ArkUI_NodeHandle node, int32_t rowSpan)
+   {
+       float minHeight = GRID_ITEM_BASE_HEIGHT + (rowSpan - 1) * GRID_ITEM_HEIGHT_STEP;
+       ArkUI_NumberValue minHeightValue[] = {{.f32 = minHeight}};
+       ArkUI_AttributeItem minHeightItem = {minHeightValue, 1};
+       nodeAPI->setAttribute(node, NODE_HEIGHT, &minHeightItem);
+   }
+   
+   void AddGridItems(
+       ArkUI_NativeNodeAPI_1* nodeAPI,
+       const std::shared_ptr<ArkUIIrregularGridNode>& gridNode,
+       const std::vector<GridItemSize>& itemSizes,
+       const std::vector<uint32_t>& colors)
+   {
+       for (size_t i = 0; i < itemSizes.size(); ++i) {
+           auto itemNode = nodeAPI->createNode(ARKUI_NODE_STACK);
+           SetNodeColorAttribute(nodeAPI, itemNode, colors[i % colors.size()]);
+           SetNodeBorderRadiusAttribute(nodeAPI, itemNode, GRID_ITEM_RADIUS);
+           SetNodeBorderStyle(nodeAPI, itemNode);
+           SetNodeHeightByRowSpan(nodeAPI, itemNode, itemSizes[i].first);
+           gridNode->SetItemConfig(itemNode, itemSizes[i].first, itemSizes[i].second);
+           nodeAPI->addChild(gridNode->GetHandle(), itemNode);
+       }
+   }
+   } // namespace
+   
+   napi_value CreateNativeRoot(napi_env env, napi_callback_info info)
+   {
+       size_t argc = 1;
+       napi_value args[1] = {nullptr};
+       napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+   
+       ArkUI_NodeContentHandle contentHandle;
+       OH_ArkUI_GetNodeContentFromNapiValue(env, args[0], &contentHandle);
+       NativeEntry::GetInstance()->SetContentHandle(contentHandle);
+   
+       auto gridNode = std::make_shared<ArkUIIrregularGridNode>();
+       gridNode->SetBackgroundColor(GRID_BACKGROUND_COLOR);
+       gridNode->SetColumnCount(GRID_COLUMN_COUNT);
+       gridNode->SetGap(GRID_GAP);
+   
+       auto* nodeAPI = NativeModuleInstance::GetInstance()->GetNativeNodeAPI();
+       AddGridItems(nodeAPI, gridNode, GetGridItemSizes(), GetGridItemColors());
+   
+       // Store the native object in the manager class and maintain its lifecycle.
+       NativeEntry::GetInstance()->SetRootNode(gridNode);
+       g_env = env;
+       return nullptr;
+   }
+   
+   napi_value DestroyNativeRoot(napi_env env, napi_callback_info info)
+   {
+       // Release the native object from the manager class.
+       NativeEntry::GetInstance()->DisposeRootNode();
+       return nullptr;
+   }
+   
+   } // namespace NativeModule
+   ```
+   

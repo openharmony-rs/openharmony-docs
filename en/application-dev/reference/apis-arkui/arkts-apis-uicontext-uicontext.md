@@ -350,7 +350,7 @@ Obtains a UIContext instance along with its resolution strategy using a predefin
 > 3. If a UI instance has switched to the focused state, and the most recently focused UI instance has not been destroyed, the UIContext of that most recently focused instance is returned.
 > 4. If a UI instance has switched to the foreground state, and the most recently foreground UI instance has not been destroyed, the UIContext of that most recently foreground instance is returned.
 > 5. If multiple UI instances exist, the UIContext with the largest unique instance ID is returned.
-> 6. f none of the above conditions are met, an invalid UIContext instance is returned.
+> 6. If none of the above conditions are met, an invalid UIContext instance is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -498,7 +498,7 @@ Obtains the **ComponentUtils** object.
 
 **Example**
 
-See the example for [getComponentUtils](js-apis-arkui-componentUtils.md).
+For the complete example, see [Example 1: Obtaining the ComponentUtils Object](js-apis-arkui-componentUtils.md#example-1-obtaining-the-componentutils-object).
 
 ## getUIInspector
 
@@ -588,7 +588,7 @@ struct Index {
 
 getId(): number
 
-Obtains the unique ID of the backend instance.
+Obtains the unique ID of a UI instance object. In multi-instance scenarios, you can use this unique ID to distinguish between different UI instance objects for easier management.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -747,7 +747,7 @@ See the example for [OverlayManager](arkts-apis-uicontext-overlaymanager.md).
 
 animateTo(value: AnimateParam, event: () => void): void
 
-Applies a transition animation for state changes.
+Adds transition animations for state changes in closure code.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -866,7 +866,7 @@ Obtains the **LocalStorage** instance shared by this stage.
 
 | Type                            | Description               |
 | ------------------------------ | ----------------- |
-| [LocalStorage](arkui-ts/ts-state-management.md#localstorage9) \| undefined | **LocalStorage** instance if it exists; **undefined** if it does not exist.|
+| [LocalStorage](arkui-ts/ts-state-management.md#localstorage9)&nbsp;\|&nbsp;undefined | **LocalStorage** instance if it exists; **undefined** if it does not exist.|
 
 **Example**
 
@@ -927,7 +927,7 @@ Obtains the context of this ability.
 
 | Type| Description                            |
 | ------ | ------------------------------- |
-| [Context](arkts-apis-uicontext-t.md#context12) \| undefined | Context of the ability. The context type depends on the ability type. For example, if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). If this API is called in a page within an ExtensionAbility window, the returned context type is [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). If the ability context does not exist, **undefined** is returned.|
+| [Context](arkts-apis-uicontext-t.md#context12)&nbsp;\|&nbsp;undefined | Context of the ability. The context type depends on the ability type. For example, if this API is called in a page within a UIAbility window, the returned context type is [UIAbilityContext](../apis-ability-kit/js-apis-inner-application-uiAbilityContext.md#uiabilitycontext-1). If this API is called in a page within an ExtensionAbility window, the returned context type is [ExtensionContext](../apis-ability-kit/js-apis-inner-application-extensionContext.md). If the ability context does not exist, **undefined** is returned.|
 
 **Example**
 
@@ -1197,7 +1197,7 @@ Shows an alert dialog box.
 
 >  **NOTE**
 >
->  The showAlertDialog of the subwindow (showInSubwindow is set to true) cannot be used in the input method window. For details, see the [createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1) description of the input method framework.
+>  The **showAlertDialog** with [showInSubWindow](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparam) set to **true** cannot be used in the input method window. For details, see the [createPanel](../apis-ime-kit/js-apis-inputmethodengine.md#createpanel10-1) description.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1207,7 +1207,7 @@ Shows an alert dialog box.
 
 | Name    | Type                                      | Mandatory  | Description                 |
 | ------- | ---------------------------------------- | ---- | ------------------- |
-| options | [AlertDialogParamWithConfirm](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithconfirm) \| [AlertDialogParamWithButtons](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons) \| [AlertDialogParamWithOptions](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithoptions10) | Yes   | Shows an **AlertDialog** component in the given settings.|
+| options | [AlertDialogParamWithConfirm](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithconfirm)&nbsp;\|&nbsp;[AlertDialogParamWithButtons](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithbuttons)&nbsp;\|&nbsp;[AlertDialogParamWithOptions](arkui-ts/ts-methods-alert-dialog-box.md#alertdialogparamwithoptions10) | Yes   | Shows an **AlertDialog** component in the given settings.|
 
 
 **Example**
@@ -1246,6 +1246,7 @@ struct Index {
   }
 }
 ```
+![showAlertDialog](figures/showAlertDialog.gif)
 
 ## showActionSheet
 
@@ -1316,6 +1317,7 @@ struct Index {
   }
 }
 ```
+![showActionSheet](figures/showActionSheet.gif)
 
 ## showDatePickerDialog
 
@@ -1391,7 +1393,6 @@ struct DatePickerDialogExample {
   }
 }
 ```
-
 
 ## showTimePickerDialog
 
@@ -1855,7 +1856,7 @@ Obtains the **DragController** object, which can be used to create and initiate 
 
 |Type|Description|
 |----|----|
-|[DragController](js-apis-arkui-dragController.md)| **DragController** object.|
+|[DragController](arkts-apis-uicontext-dragcontroller.md)| **DragController** object.|
 
 **Example**
 
@@ -2136,7 +2137,7 @@ result1: {"$type":"root","width":"1260.000000","height":"2720.000000","$resoluti
 result2: {"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"id":"TEXT","isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":false}}
 result3: {"$type":"Text","$ID":6,"type":"build-in","$rect":"[457.00, 123.00],[804.00,199.00]","$debugLine":"","$attrs":{"isLayoutDirtyMarked":false,"isRenderDirtyMarked":false,"isMeasureBoundary":false,"hasPendingRequest":false,"isFirstBuilding":false}}
 ```
-To obtain the component specified by the **id** parameter in the **getFilteredInspectorTreeById** API, you must first convert the API's result into a JSON object (as demonstrated in the sample code), and then extract the first item from the **$children** array. A comparison between **result2** and **result3** reveals that, if the **filters** parameter is changed from **["id", "src"]** to **["src"]**, the **$attrs** property obtained does not contain the **id** key.
+To obtain the component specified by the **id** parameter in the **getFilteredInspectorTreeById** API, you must first convert the API's result into a JSON object (as demonstrated in the sample code), and then extract the first item from the **$children** array. A comparison between **result2** and **result3** reveals that, if the **filters** parameter is changed from **["id", "src"]** to **["src"]**, the **\$attrs** property obtained does not contain the **id** key.
 
 ## getCursorController<sup>12+</sup>
 
@@ -2156,7 +2157,7 @@ Obtains a [CursorController](arkts-apis-uicontext-cursorcontroller.md) object, w
 
 **Example**
 
-See the example for [CursorController](arkts-apis-uicontext-contextmenucontroller.md).
+See the example for [CursorController](arkts-apis-uicontext-cursorcontroller.md).
 
 ## getContextMenuController<sup>12+</sup>
 
@@ -2224,11 +2225,11 @@ Converts a value in units of vp to a value in units of px.
 
 Conversion formula: px value = vp value × pixel density
 
-Pixel density: effective pixel density of the current window, which is the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 > **NOTE**
 >
-> 1. **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> 1. **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 >
 > 2. When a UI instance has not been created yet, the **vp2px** API in [Pixel Units](./arkui-ts/ts-pixel-units.md) uses the default screen's virtual pixel ratio for conversion. In such scenarios, if you need to replace this API with a UIContext-based one, refer to [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../application-dev/ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
@@ -2282,11 +2283,11 @@ Converts a value in units of px to a value in units of vp.
 
 Conversion formula: vp value = px value/pixel density
 
-Pixel density: effective pixel density of the current window, which is the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 > **NOTE**
 >
-> 1. **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> 1. **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 >
 > 2. When a UI instance has not been created yet, the **px2vp** API in [Pixel Units](./arkui-ts/ts-pixel-units.md) uses the default screen's virtual pixel ratio for conversion. In such scenarios, if you need to replace this API with a UIContext-based one, refer to [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../application-dev/ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
@@ -2340,13 +2341,13 @@ Converts a value in units of fp to a value in units of px.
 
 Conversion formula: px value = fp value × pixel density × font scale factor
 
-Pixel density: effective pixel density of the current window, which is the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 Font scale factor: system font scaling coefficient ([Configuration.fontScale](arkui-ts/ts-types.md#configuration)).
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2398,13 +2399,13 @@ Converts a value in units of px to a value in units of fp.
 
 Conversion formula: fp value = px value/pixel density/font scale factor
 
-Pixel density: effective pixel density of the current window, which is typically the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 Font scale factor: system font scaling coefficient ([Configuration.fontScale](arkui-ts/ts-types.md#configuration)).
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2458,7 +2459,7 @@ Conversion formula: px value = lpx value × (actual screen width/logical width),
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2512,7 +2513,7 @@ Conversion formula: lpx value = px value/(actual screen width/logical width), wh
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3810,9 +3811,9 @@ For details about the error codes, see UI Context Error Codes.
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
-| 100101 | The parameter value cannot be less than 0. |
-| 100102 | The parameter value cannot be a floating-point number. |
-| 100103 | The function cannot be called from a non-main thread. |
+| 100101 | The parameter is less than 0. |
+| 100102 | The parameter value cannot be a floating point number. |
+| 100103 | The function cannot be called from a non main thread. |
 
 **Example**
 
@@ -3858,4 +3859,3 @@ Obtains a [Magnifier](arkts-apis-uicontext-magnifier.md) object, which can be us
 **Example**
 
 See the example of the [bind](arkts-apis-uicontext-magnifier.md#bind) API in [Magnifier](arkts-apis-uicontext-magnifier.md).
-<!--no_check-->

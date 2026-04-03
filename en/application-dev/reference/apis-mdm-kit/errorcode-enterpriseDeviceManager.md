@@ -40,7 +40,7 @@ This error code is reported when the device administrator application does not h
 
 **Possible Causes**
 
-A device administrator application calls an API that is accessible only by a super device administrator application.
+The device administrator application calls an API that is accessible only by a super device administrator application.
 
 **Solution**
 
@@ -110,7 +110,7 @@ The possible causes are as follows:
 
 1. Check that the target device administrator application has been enabled.
 2. Check that the specified device administrator ability component of the target device administrator application has been enabled.
-3. Check that the device administrator application to be disabled is the caller itself.
+3. Check whether the device administrator application to be disabled is the caller itself.
 
 ## 9200006 Invalid User ID
 

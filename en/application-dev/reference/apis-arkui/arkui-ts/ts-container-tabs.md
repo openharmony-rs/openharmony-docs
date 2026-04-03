@@ -262,7 +262,7 @@ Sets the animation mode for tab switching initiated by clicking a specific tab o
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[AnimationMode](#animationmode12)\>| Yes  | Animation mode for tab switching initiated by clicking a specific tab or by calling the **changeIndex** API of **TabsController**.<br>Default value: **AnimationMode.CONTENT_FIRST**, which means the target page content is loaded first, followed by the animation.|
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[AnimationMode](#animationmode12)\>| Yes  | Animation mode for tab switching initiated by clicking a specific tab or by calling the **changeIndex** API of **TabsController**.<br>Default value: **AnimationMode.CONTENT_FIRST**, which means the target page content is loaded first, followed by the animation.|
 
 ### barPosition<sup>9+</sup>
 
@@ -415,7 +415,7 @@ Sets the edge effect used when the boundary of the scrolling area is reached.
 
 | Name| Type                                         | Mandatory| Description                                        |
 | ------ | --------------------------------------------- | ---- | -------------------------------------------- |
-| edgeEffect  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)&lt;[EdgeEffect](ts-appendix-enums.md#edgeeffect)&gt; | Yes  | Effect used when the boundary of the scrolling area is reached.<br>Default value: **EdgeEffect.Spring**|
+| edgeEffect  | [Optional](ts-universal-attributes-custom-property.md#optionalt)&lt;[EdgeEffect](ts-appendix-enums.md#edgeeffect)&gt; | Yes  | Effect used when the boundary of the scrolling area is reached.<br>Default value: **EdgeEffect.Spring**|
 
 ### barBackgroundEffect<sup>18+</sup>
 
@@ -447,7 +447,7 @@ Sets the mode for flipping pages using the mouse wheel.
 
 | Name| Type                                                       | Mandatory| Description                                                        |
 | ------ | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | Yes  | Mode for flipping pages using the mouse wheel.<br>Default value: **PageFlipMode.CONTINUOUS**|
+| mode  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[PageFlipMode](ts-appendix-enums.md#pageflipmode15)> | Yes  | Mode for flipping pages using the mouse wheel.<br>Default value: **PageFlipMode.CONTINUOUS**|
 
 ### cachedMaxCount<sup>19+</sup>
 
@@ -567,7 +567,7 @@ Defines a parameter object for the **Tabs** component.
 
 ## TabsCacheMode<sup>19+</sup>
 
-Sets the caching mode for child components.
+Enumerates the caching modes for child components.
 
 **Atomic service API**: This API can be used in atomic services since API version 19.
 
@@ -1010,7 +1010,7 @@ Preloads child nodes. After this API is called, all specified child nodes will b
 
 | Name  | Type  | Mandatory  | Description                                    |
 | ----- | ------ | ---- | ---------------------------------------- |
-| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<Array\<number>> | Yes| Array of indexes of the child nodes to preload.<br>The default value is an empty array.|
+| indices | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<Array\<number>> | Yes| Array of indexes of the child nodes to preload.<br>The default value is an empty array.|
 
 **Return value**
 
@@ -1143,7 +1143,7 @@ struct TabsExample {
   }
 }
 ```
-
+![tabs1](figures/tabs_barMode.gif)
 
 ### Example 2: Setting the Layout Style for a Scrollable TabBar
 
@@ -1261,7 +1261,7 @@ struct TabsExample6 {
 }
 ```
 
-
+![tabs2](figures/tabs_scrollable.gif)
 
 ### Example 3: Implementing Custom Tab Switching Synchronization
 
@@ -1448,7 +1448,7 @@ struct TabsDivider1 {
 }
 ```
 
-
+![tabs4](figures/tabs_divider.gif)
 
 ### Example 5: Setting Tab Bar Fading
 
@@ -1562,7 +1562,7 @@ struct TabsOpaque {
 }
 ```
 
-
+![tabs5](figures/tabs_fadingEdge.gif)
 
 ### Example 6: Implementing TabBar Overlay on TabContent
 
@@ -1614,7 +1614,7 @@ struct barHeightTest {
 }
 ```
 
-
+![tabs6](figures/tabs_barOverlap.gif)
 
 ### Example 7: Setting the Visible Area for the Tab Bar in Responsive Grid Mode
 
@@ -2207,7 +2207,7 @@ struct TabsExample {
 }
 ```
 
-
+![tabs12](figures/tabBar_translate_opacity.gif)
 
 ### Example 13: Implementing Lazy Loading and Resource Release of Pages
 
@@ -2315,7 +2315,7 @@ struct TabsSwiperExample {
 }
 ```
 
-
+![tabs13](figures/tabs_swiper_lazyForEach.gif)
 
 ### Example 14: Implementing the Tab Switching Animation
 
@@ -2481,7 +2481,7 @@ struct TabsBarModifierExample {
 }
 ```
 
-
+![tabs15](figures/tabs_barModifier_clip.gif)
 
 ### Example 16: Aligning Tabs
 
@@ -2586,7 +2586,7 @@ struct TabsBarModifierExample {
 }
 ```
 
-
+![tabs16](figures/tabs_barModifier_align.gif)
 
 ### Example 17: Synchronizing Tabs and TabBar Synchronously
 
@@ -2669,7 +2669,7 @@ struct TabsExample {
 
 This example demonstrates how to release the **Tabs** child components by setting [cachedMaxCount](#cachedmaxcount19).
 
-The **cachedMaxCount** API is added since API version 18.
+The **cachedMaxCount** API is added since API version 19.
 
 ```ts
 @Entry

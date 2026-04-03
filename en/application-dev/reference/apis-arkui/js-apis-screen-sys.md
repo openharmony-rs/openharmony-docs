@@ -13,6 +13,8 @@ The module implements basic screen management. You can use the APIs of this modu
 > - The initial APIs of this module are supported since API version 9. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
 > - The APIs provided by this module are system APIs.
+> 
+> - For the system capability SystemCapability.Window.SessionManager, use [canIUse()](../common/js-apis-syscap.md#caniuse) to check whether the device supports this system capability and the corresponding APIs.
 
 ## Modules to Import
 
@@ -367,6 +369,8 @@ Sets the screen to independent display mode. This API uses a promise to return t
 
 **System capability**: SystemCapability.Window.SessionManager
 
+**Device behavior differences**: This API can be properly called on phones, PCs/2-in-1 devices, and tablets, but does not take effect or report errors when being called on other devices.
+
 **Parameters**
 
 | Name   | Type  | Mandatory| Description         |
@@ -377,7 +381,7 @@ Sets the screen to independent display mode. This API uses a promise to return t
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to returns the independent screen IDs, where each ID is an integer greater than 0.|
+| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the independent screen IDs, where each ID is an integer greater than 0.|
 
 **Error codes**
 
@@ -657,7 +661,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-//Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -734,7 +738,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-//Index.ets
+// Index.ets
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -916,7 +920,7 @@ Sets whether to lock auto rotate. This API uses a promise to return the result.
 
 | Name   | Type  | Mandatory| Description         |
 | --------- | ------ | ---- | ------------- |
-| isLocked  | boolean | Yes  | Whether to lock auto rotate. **true** to lock, **false** otherwise.|
+| isLocked  | boolean | Yes  | Whether to lock auto rotate. **true** to lock; **false** otherwise.|
 
 **Return value**
 
@@ -962,7 +966,7 @@ Sets whether to lock auto rotate. This API uses an asynchronous callback to retu
 
 | Name   | Type                     | Mandatory| Description                                                        |
 | --------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| isLocked  | boolean                   | Yes  | Whether to lock auto rotate. **true** to lock, **false** otherwise.                |
+| isLocked  | boolean                   | Yes  | Whether to lock auto rotate. **true** to lock; **false** otherwise.                |
 | callback  | AsyncCallback&lt;void&gt; | Yes  | Callback used to return the result. If the operation is successful, **err** is **undefined**; otherwise, **err** is an error object.|
 
 **Error codes**
@@ -1414,11 +1418,11 @@ Defines virtual screen parameters.
 | height    | number   | No  | No  | Height of the virtual screen, in px. The value must be an integer.|
 | density   | number   | No  | No  | Density of the virtual screen, in px. The value must be a floating-point number.|
 | surfaceId | string   | No  | No  | Surface ID of the virtual screen.       |
-| supportsFocus<sup>22+</sup> | boolean | No| Yes | Whether the virtual screen is focusable. **true** if focusable, **false** otherwise. The default value is **true**.|
+| supportsFocus<sup>22+</sup> | boolean | No| Yes | Whether the virtual screen is focusable. **true** if focusable; **false** otherwise. The default value is **true**.|
 
 ## Screen
 
-Implements a Screen instance.
+Defines the [physical screen](../../displaymanager/display-terminology.md#physical-screen) instance.
 
 Before calling any API in Screen, you must use [getAllScreens()](#screengetallscreens) or [createVirtualScreen()](#screencreatevirtualscreen) to obtain a Screen instance.
 
@@ -1438,13 +1442,13 @@ Before calling any API in Screen, you must use [getAllScreens()](#screengetallsc
 | activeModeIndex   | number                                         | Yes  | No  | Index of the active screen mode. The current value and value range of this parameter vary according to the screen resolution, refresh rate, and device hardware. The value is an integer.|
 | orientation       | [Orientation](#orientation)                     | Yes  | No  | Screen orientation.      |
 | sourceMode<sup>10+</sup> | [ScreenSourceMode](#screensourcemode10)            | Yes  | No  | Source mode of the screen.    |
-| serialNumber<sup>15+</sup> | string        | Yes  | Yes  | Serial number of the extended screen. By default, the value is an empty string.<br> **Device behavior differences**: This API can be called on 2-in-1 devices but is unavailable for other devices. |
+| serialNumber<sup>15+</sup> | string        | Yes  | Yes  | Serial number of the extended screen. By default, the value is an empty string.|       
 
 ### setOrientation
 
 setOrientation(orientation: Orientation, callback: AsyncCallback&lt;void&gt;): void
 
-Sets the screen orientation. This API uses an asynchronous callback to return the result.
+Sets the screen orientation. This API uses an asynchronous callback to return the result. The screen orientation changes only when the specified orientation complies with the [application rotation policy](../../quick-start/module-configuration-file.md#abilities) (you can configure the application rotation policy by setting the **orientation** field in the **abilities** tag in the **module.json5** file). If the specified orientation does not comply with the application rotation policy, the screen orientation does not change and no exception is thrown.
 
 **System API**: This is a system API.
 
@@ -1510,7 +1514,7 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 
 setOrientation(orientation: Orientation): Promise&lt;void&gt;
 
-Sets the screen orientation. This API uses a promise to return the result.
+Sets the screen orientation. This API uses a promise to return the result. The screen orientation changes only when the specified orientation complies with the [application rotation policy](../../quick-start/module-configuration-file.md#abilities) (you can configure the application rotation policy by setting the **orientation** field in the **abilities** tag in the **module.json5** file). If the specified orientation does not comply with the application rotation policy, the screen orientation does not change and no exception is thrown.
 
 **System API**: This is a system API.
 
@@ -1889,7 +1893,7 @@ Defines the screen mode information.
 
 | Name       | Type| Read-Only| Optional| Description                                              |
 | ----------- | -------- | ---- | ---- | -------------------------------------------------- |
-| id          | number   | No  | No  | Mode ID. The supported mode is determined by the device resolution and refresh rate. The value is an integer.|
+| id          | number   | No  | No  | Mode ID. The supported mode is determined by the device resolution and refresh rate. The value is an integer.| 
 | width       | number   | No  | No  | Width of the screen, in px. The value is an integer.                               |
 | height      | number   | No  | No  | Height of the screen, in px. The value is an integer.                               |
 | refreshRate | number   | No  | No  | Refresh rate of the screen, in hz. The value is an integer.                                    |

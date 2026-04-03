@@ -12,7 +12,7 @@ Among state variable decorators, @State is the most fundamental and serves as th
 
 Before reading this topic, you are advised to read [State Management Overview](./arkts-state-management-overview.md) to have a basic understanding of the positioning of AppStorage in the state management framework. For best practices, see [State Management](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-status-management). For FAQs, see [State Management Development](./arkts-state-management-faq.md).
 
-> **Note:**
+> **NOTE**
 >
 > This decorator can be used in ArkTS widgets since API version 9.
 >
@@ -112,7 +112,7 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
     this.title.value = 'Hi';
     ```
 
-  The value assignment of the nested property cannot be observed.
+  The value assignment of a property of the nested object cannot be observed. Therefore, the UI is not refreshed.
     <!-- @[state_decorate_object_change_03](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateChangeObservationObject.ets) -->
   
     ``` TypeScript
@@ -146,7 +146,41 @@ Not all changes to state variables cause UI updates. Only changes that can be ob
     @State count: number = 10;
     ```
 
-2. @State cannot decorate variables of the function type. Otherwise, the framework throws a runtime error.
+2. \@State cannot decorate variables of the function type. Otherwise, the framework throws a runtime error.
+
+3. If the parent component passes **undefined**, the variable decorated by \@State is still initialized using the local default value.
+    
+    <!-- @[state_input_undefined](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateInputUndefined.ets) -->
+
+    ``` TypeScript
+    @Entry
+    @Component
+    struct Parent {
+      @State count: number | undefined = undefined;
+    
+      build() {
+        Column() {
+          Text(`Parent count value: ${this.count}`)
+            .fontSize(20)
+            .margin(10)
+          Child({ count: this.count })
+        }
+      }
+    }
+    
+    @Component
+    struct Child {
+      @State count: number | undefined = 0;
+    
+      build() {
+        Column() {
+          Text(`Child count value: ${this.count}`)
+            .fontSize(20)
+            .margin(10)
+        }
+      }
+    }
+    ```
 
 ## When to Use
 
@@ -416,7 +450,7 @@ struct MapSample {
 > Since API version 11, \@State supports the Set type.
 
 In this example, the **fruits** variable decorated with \@State is of the **Set\<string\>** type. After the button is clicked, the value of **fruits** changes, and the UI is re-rendered.
-<!-- @[state_scene_type_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets) -->
+<!-- @[state_scene_type_set](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneTypeSet.ets) -->  
 
 ``` TypeScript
 @Entry
@@ -427,7 +461,7 @@ struct SetSample {
   build() {
     Row() {
       Column() {
-        ForEach(Array.from(this.fruits.entries()), (item: [number, number]) => {
+        ForEach(Array.from(this.fruits.entries()), (item: [string, string]) => {
           Text(`${item[0]}`)
             .fontSize(20)
             .margin(10)
@@ -529,7 +563,7 @@ struct DatePickerExample {
 
 ### Using Union Types
 
-\@State supports **undefined**, **null**, and union types. In the following example, the type of **count** is **number | undefined**. If the property or type of **count** is changed when the button is clicked, the change will be synced to the view.
+\@State supports **undefined**, **null**, and union types. In the following example, the type of **count** is number | undefined. If the value of **count** is changed when the button is clicked, the change will be synced to the view.
 <!-- @[state_scene_joint_type_instance](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/state/StateSceneJointTypeInstance.ets) -->
 
 ``` TypeScript

@@ -97,13 +97,13 @@ function factorial(n: number): number {
   if (n <= 1) {
     return 1;
   }
-  return n * factorial(n - 1);
+  return n * (n - 1);
 }
 
-factorial(n1)  //  7.660344000000002
-factorial(n2)  //  7.680640444893748
-factorial(n3)  //  1
-factorial(n4)  //  9.33262154439441e+157
+factorial(n1) // 6.719600000000001
+factorial(n2) // 6.728008294464001
+factorial(n3) // 1
+factorial(n4) // 9900
 ```
 
 `number`类型在表示大整数（即超过-9007199254740991~9007199254740991）时会造成精度丢失。在开发时可以按需使用`bigint`类型来确保精度：
@@ -1887,6 +1887,7 @@ export function add(a:number, b:number):number {
 }
 
 // Index.ets
+// ESObject是ArkTS跨语言调用场景中用于标注JS/TS对象的类型
 import('./Calc').then((obj: ESObject) => {
   console.info(obj.add(3, 5));
 }).catch((err: Error) => {

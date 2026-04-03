@@ -55,13 +55,13 @@ MovingPhotoView(options: MovingPhotoViewOptions)
 
 | Name     | Type                                                                                        | Read-Only| Optional| Description                                                                                                                                       |
 | ----------- | ------------------------------------------------------------------------------------------------ | ----------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| movingPhoto | [photoAccessHelper.MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | No| No | MovingPhoto instance. For details, see [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| movingPhoto | [photoAccessHelper.MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md) | No| No | MovingPhoto data source from the media library. For details, see [MovingPhoto](arkts-apis-photoAccessHelper-MovingPhoto.md).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | controller  | [MovingPhotoViewController](#movingphotoviewcontroller)                                          | No| Yes  | Controller used to control the playback status of the moving photo.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                     |
 | imageAIOptions<sup>18+</sup>   | [ImageAIOptions](../apis-arkui/arkui-ts/ts-image-common.md#imageaioptions12) | No| Yes| AI options. You can set the image analyzer type or bind an image analyzer controller.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 
-## Properties
+## Attributes
 
-In addition to the [universal properties](../apis-arkui/arkui-ts/ts-component-general-attributes.md), the following properties are supported.
+In addition to the [universal attributes](../apis-arkui/arkui-ts/ts-component-general-attributes.md), the following attributes are supported.
 
 ### muted
 
@@ -78,7 +78,7 @@ Sets whether to mute the player.
 
 | Name | Type   | Mandatory| Description                        |
 | ------- | ------- | ---- | ---------------------------- |
-| isMuted | boolean | Yes  | Whether to mute the player.<br>The default value is **false**.<br>**false**: no<br>**true**: yes|
+| isMuted | boolean | Yes  | Whether to mute the player.<br>The default value is **false**.<br>**true** to mute, **false** otherwise.|
 
 ### objectFit
 
@@ -134,7 +134,7 @@ You can call this API when the moving photo is loaded and ready to play. After p
 
 | Name | Type   | Mandatory| Description                        |
 | ------- | ------- | ---- | ---------------------------- |
-| isAutoPlay| boolean| Yes  | Whether to enable autoplay.<br>**false**: no<br>**true**: yes<br>The default value is **false**.|
+| isAutoPlay| boolean| Yes  | Whether to enable autoplay.<br>**true** to enable, **false** otherwise.<br>The default value is **false**.|
 
 ### repeatPlay<sup>13+</sup>
 
@@ -151,7 +151,7 @@ Sets repeat play. **repeatPlay** is mutually exclusive with **autoPlay** and **L
 
 | Name | Type   | Mandatory| Description                        |
 | ------- | ------- | ---- | ---------------------------- |
-| isRepeatPlay| boolean| Yes  | Whether to enable repeat play.<br>**false**: no<br>**true**: yes<br>The default value is **false**.|
+| isRepeatPlay| boolean| Yes  | Whether to enable repeat play.<br>**true** to enable, **false** otherwise.<br>The default value is **false**.|
 
 ### enableAnalyzer<sup>18+</sup> 
 
@@ -168,7 +168,7 @@ Sets the AI analyzer. Currently, the AI analyzer supports features, such as subj
 
 | Name | Type   | Mandatory| Description                        |
 | ------- | ------- | ---- | ---------------------------- |
-| enabled| boolean| Yes  | Whether to enable the AI analyzer.<br>**false**: no<br>**true**: yes<br>The default value is **true**.|
+| enabled| boolean| Yes  | Whether to enable the AI analyzer.<br>**true** to enable, **false** otherwise.<br>The default value is **true**.|
 
 ## Events
 

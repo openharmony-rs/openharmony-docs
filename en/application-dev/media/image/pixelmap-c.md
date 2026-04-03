@@ -152,7 +152,7 @@ Image_ErrorCode PixelmapTest()
 }
 
 // Example of converting between premultiplied and non-premultiplied formats in PixelMap.
-Image_ErrorCode PixelmapConverAlphaTypeTest()
+Image_ErrorCode PixelmapConvertAlphaTypeTest()
 {
     uint8_t data[96];
     size_t dataSize = 96;
@@ -173,7 +173,7 @@ Image_ErrorCode PixelmapConverAlphaTypeTest()
     OH_PixelmapNative *SrcPixelmap = nullptr;
     Image_ErrorCode errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &SrcPixelmap);
     if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest CreateSrcPixelMap failed, errCode: %{public}d.", errCode);
+        OH_LOG_ERROR(LOG_APP, "PixelmapConvertAlphaTypeTest CreateSrcPixelMap failed, errCode: %{public}d.", errCode);
     }
 
     // Create a Pixelmap instance in premultiplied format. DstPixelmap is used to store the data after the alpha type of SrcPixelmap is converted.
@@ -181,13 +181,13 @@ Image_ErrorCode PixelmapConverAlphaTypeTest()
     OH_PixelmapInitializationOptions_SetAlphaType(createOpts, PIXELMAP_ALPHA_TYPE_PREMULTIPLIED);
     errCode = OH_PixelmapNative_CreatePixelmap(data, dataSize, createOpts, &DstPixelmap);
     if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest CreateDstPixelMap failed, errCode: %{public}d.", errCode);
+        OH_LOG_ERROR(LOG_APP, "PixelmapConvertAlphaTypeTest CreateDstPixelMap failed, errCode: %{public}d.", errCode);
     }
 
     // Convert the alpha type. The data of SrcPixelmap is converted to premultiplied format and saved to DstPixelmap.
     errCode = OH_PixelmapNative_ConvertAlphaFormat(SrcPixelmap, DstPixelmap, true);
     if (errCode != IMAGE_SUCCESS) {
-        OH_LOG_ERROR(LOG_APP, "PixelmapConverAlphaTypeTest ConvertAlphaFormat failed, errCode: %{public}d.", errCode);
+        OH_LOG_ERROR(LOG_APP, "PixelmapConvertAlphaTypeTest ConvertAlphaFormat failed, errCode: %{public}d.", errCode);
     }
 
     // Release the Pixelmap and InitializationOptions instances.

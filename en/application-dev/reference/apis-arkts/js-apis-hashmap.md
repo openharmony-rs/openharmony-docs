@@ -227,7 +227,7 @@ console.info("result:", result);  // result: 356
 
 setAll(map: HashMap<K, V>): void
 
-Adds all elements in a **HashMap** instance to this HashMap.
+Adds all element groups in a HashMap to another HashMap.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -237,7 +237,7 @@ Adds all elements in a **HashMap** instance to this HashMap.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| map | HashMap<K, V> | Yes| **HashMap** instance whose elements are to be added to the current HashMap.|
+| map | HashMap<K, V> | Yes| HashMap for element addition.|
 
 **Error codes**
 
@@ -283,7 +283,7 @@ Adds or updates an element in this HashMap.
 
 | Type| Description|
 | -------- | -------- |
-| Object | HashMap that contains the new element.|
+| Object | HashMap after addition or update.|
 
 **Error codes**
 

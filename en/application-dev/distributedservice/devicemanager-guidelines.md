@@ -82,10 +82,10 @@ The APIs used in this section are based on the stage model.
 
 ``` TypeScript
     let atManager = abilityAccessCtrl.createAtManager();
-    atManager.requestPermissionsFromUser(getContext(this), ['ohos.permission.DISTRIBUTED_DATASYNC'])
+    atManager.requestPermissionsFromUser(context, ['ohos.permission.DISTRIBUTED_DATASYNC'])
       .then(async (data) => {
         logger.info(`data: ${JSON.stringify(data)}`);
-		// ···
+        // ···
       })
       .catch((err: BusinessError) => {
         logger.error(`requestPermissionsFromUser error: ${JSON.stringify(err)}`);
@@ -158,9 +158,7 @@ Starts to discover the devices that are in the same LAN or have Bluetooth enable
   startDeviceDiscovery(): void {
     if (typeof (this.deviceManager) == 'undefined') {
       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-      promptAction.showToast({
-        message: 'deviceManager has not initialized'
-      });
+      this.showErrMsg('deviceManager has not initialized');
       return;
     }
     let self = this;
@@ -221,9 +219,7 @@ Binds a device. For details, see [bindTarget](../reference/apis-distributedservi
     logger.info('[DeviceManager.RemoteDeviceModel] authenticateDevice ' + JSON.stringify(device));
     if (typeof (this.deviceManager) == 'undefined') {
       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-      promptAction.showToast({
-        message: 'deviceManager has not initialized'
-      });
+      this.showErrMsg('deviceManager has not initialized');
       return;
     }
 
@@ -284,9 +280,7 @@ Obtains information about all the available devices. For details, see [getAvaila
   getTrustedDeviceList(): void {
     if (typeof (this.deviceManager) == 'undefined') {
       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-      promptAction.showToast({
-        message: 'deviceManager has not initialized'
-      });
+      this.showErrMsg('deviceManager has not initialized');
       return;
     }
 
@@ -294,12 +288,9 @@ Obtains information about all the available devices. For details, see [getAvaila
     try {
       this.trustedDeviceList = this.deviceManager.getAvailableDeviceListSync();
 	// ···
-    } catch (err) {
-      let error: BusinessError = err as BusinessError;
+    } catch (error) {
       logger.error('[DeviceManager.RemoteDeviceModel] getTrustedDeviceList error: ${error}' + error.toString());
-      promptAction.showToast({
-        message: 'getTrustedDeviceList failed'
-      });
+      this.showErrMsg('deviceManager has not initialized');
     }
   }
 ```
@@ -343,9 +334,7 @@ Listens for device online/offline status. For details, see [on('deviceStateChang
     logger.info('[DeviceManager.RemoteDeviceModel] registerDeviceStateListener');
     if (typeof (this.deviceManager) == 'undefined') {
       logger.error('[DeviceManager.RemoteDeviceModel] deviceManager has not initialized');
-      promptAction.showToast({
-        message: 'deviceManager has not initialized'
-      });
+      this.showErrMsg('deviceManager has not initialized');
       return;
     }
 

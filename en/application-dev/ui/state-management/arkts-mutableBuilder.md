@@ -53,7 +53,7 @@ To solve this problem, **mutableBuilder** is introduced as an encapsulation func
 
 ## API Description
 
-**mutableBuilder** is a template function that returns a [MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2) object. Compared with [WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder), **MuableBuilder** can dynamically switch the global @Builder.
+**mutableBuilder** is a template function that returns a [MutableBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-mutableBuilder.md#mutablebuilder-2) object. Compared with [WrappedBuilder](../../reference/apis-arkui/arkui-ts/ts-universal-wrapBuilder.md#wrappedbuilder), **MutableBuilder** can dynamically switch the global @Builder.
 ```ts
 declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback): MutableBuilder<Args>;
 ```
@@ -68,7 +68,7 @@ declare class MutableBuilder<Args extends Object[]> extends WrappedBuilder<Args>
 >
 > The template parameter **Args extends Object[]** needs to match the type of the \@Builder function parameter.
 
-Usage:
+Invocation pattern:
 
 ```ts
 let builderVar: MutableBuilder<[string, number]> = mutableBuilder(MyBuilder);

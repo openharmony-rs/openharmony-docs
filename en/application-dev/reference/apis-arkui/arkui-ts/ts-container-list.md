@@ -103,7 +103,7 @@ In addition to [universal attributes](ts-component-general-attributes.md) and [s
 
 > **NOTE**
 >
-> The default value of the universal attribute [clip](ts-universal-attributes-sharp-clipping.md) is **true** for the **List** component.
+> The default value of the universal attribute [clip](ts-universal-attributes-sharp-clipping.md#clip12) is **true** for the **List** component.
 
 ### listDirection
 
@@ -185,7 +185,7 @@ When a list is nested with **LazyForEach**, and within **LazyForEach** there is 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Number of list items or list item groups to be preloaded (cached).<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞)|
+| value  | number | Yes  | Number of list items or list item groups to be preloaded (cached).<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.|
 
 ### cachedCount<sup>14+</sup>
 
@@ -210,7 +210,7 @@ When **cachedCount** is set for the list, the system preloads and lays out the *
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number | Yes  | Number of list items to be preloaded.<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞)|
+| count  | number | Yes  | Number of list items to be preloaded.<br>Default value: number of nodes visible on the screen, with the maximum value of 16<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.|
 | show  | boolean | Yes  | Whether to display the preloaded list items. If this parameter is set to **true**, the preloaded list items are displayed. If this parameter is set to **false**, the preloaded list items are not displayed.<br> Default value: **false**|
 
 ### cachedCount<sup>22+</sup>
@@ -221,7 +221,7 @@ Sets the number of list items or list item groups to be cached (preloaded) and s
 
 If the first parameter of the **cachedCount** attribute is of the **number** type, a specified number (specified by **count**) of rows of list items will be preloaded and laid out above and below the visible area during idle frames.
 
-If the first parameter of the **cachedCount** attribute is of the **CacheCountInfo** type, preloading and layout will occur during idle frames when the number of cached rows is less than **CacheCountInfo.minCount**. When the number of cached rows is greater than **CacheCountInfo.maxCount**, the nodes outside the specified range will  be destroyed or reused. When the UI is idle (no animation or user operation), a specified number (specified by **CacheCountInfo.maxCount**) of rows of list items will be preloaded above and below the visible area.
+If the first parameter of the **cachedCount** attribute is of the **CacheCountInfo** type, preloading and layout will occur during idle frames when the number of cached rows is less than **CacheCountInfo.minCount**. When the number of cached rows is greater than **CacheCountInfo.maxCount**, the nodes outside the specified range will be destroyed or reused. When the UI is idle (no animation or user operation), a specified number (specified by **CacheCountInfo.maxCount**) of rows of list items will be preloaded above and below the visible area.
 
 When calculating the number of rows for list items, the system takes into account the number of rows from the list items within a list item group. If a list item group does not contain any list items, then the entire list item group is counted as one row. This attribute can be combined with the [clip](ts-universal-attributes-sharp-clipping.md#clip12) or [clipContent](ts-container-scrollable-common.md#clipcontent14) attributes to display the preloaded nodes.
 
@@ -242,7 +242,7 @@ Default behavior: The **count** parameter is of the **number** type by default, 
 
 | Name| Type  | Mandatory| Description                                  |
 | ------ | ------ | ---- | -------------------------------------- |
-| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22) | Yes  | Number of preloaded **ListItem** components if the parameter is of the **number** type.<br>Value range: [0, +∞)<br>If the parameter type is CacheCountInfo, the parameter indicates the maximum and minimum preloading range.|
+| count  | number \| [CacheCountInfo](ts-types.md#cachecountinfo22) | Yes  | Number of preloaded **ListItem** components if the parameter is of the **number** type.<br>Value range: [0, +∞).<br>Values less than 0 are treated as **1**.<br>If the parameter type is CacheCountInfo, the parameter indicates the maximum and minimum preloading range.|
 | show  | boolean | Yes  | Whether to display the preloaded list items.<br>**true**: yes<br>**false**: no|
 
 ### edgeEffect
@@ -316,15 +316,14 @@ Sets whether to enable multiselect.
 
 lanes(value: number | LengthConstrain, gutter?: Dimension)
 
-Sets the number of columns or rows in the list. If the value is set to the **gutter** type, it indicates the gap between columns. It takes effect when the number of columns is greater than 1.
+Sets the number of columns or rows in the **List** component. (When the **List** is scrolled vertically, the number of columns is displayed. When the **List** is scrolled horizontally, the number of rows is displayed.)
 
-The rules are as follows:
+The following example describes how to set the number of columns:
 
-- If the value is of the **number** type, the number of columns or rows is specified. The column width is determined by dividing the cross-axis size of the **List** component by the number of columns.
-- If the value is of the **LengthConstrain** type, the minimum and maximum number of columns or rows are specified. That is, the value parameter of **lanes** is set to** {minLength, maxLength}**. The number of **lanes** (that is, the number of columns) is determined based on the width of the **List** component to ensure that the column width is always in the {minLength, maxLength} range during scaling. The **minLength** condition is prioritized, meaning that the cross-axis size of **ListItem** components is first guaranteed to meet the minimum constraint.
- - If the **value** parameter of **lane**s is set to **{minLength, maxLength}** and the cross-axis size constraint of the parent component is infinite, the list is displayed in one column. The column width of the list will equal the maximum column width of the **ListItem** within the visible area.
+- If **value** is a number, the number of columns is specified based on the number.
+- If **value** is of the **LengthConstrain** type, **minLength** in **LengthConstrain** indicates the minimum column width. The **List** component calculates the maximum number of columns based on its minimum column width. In addition, **LengthConstrain** is passed to the child components of the **List** component as the maximum and minimum layout width constraints. These constraints take effect when the child components do not have a specified width.
 - Each list item group occupies one row in multi-column mode. Its child list items are arranged based on the **lanes** attribute of the list.
-- When the **value** parameter of **lanes** is set to **{minLength, maxLength}**, the number of columns in **ListItemGroup** is calculated based on the cross-axis size of **ListItemGroup**. If the cross-axis width of the list item group is different from that of the list, the number of columns in the list item group may be different from that in the list.
+- If **value** is of the **LengthConstrain** type, the number of columns in **ListItemGroup** is calculated based on the width of **ListItemGroup**. Therefore, when the width of **ListItemGroup** is different from that of the **List** component, the number of columns in **ListItemGroup** may be different from that in the **List** component.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 9.
 
@@ -337,7 +336,7 @@ The rules are as follows:
 | Name              | Type                                                        | Mandatory| Description                                    |
 | -------------------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
 | value                | number&nbsp;\|&nbsp;[LengthConstrain](ts-types.md#lengthconstrain) | Yes  | Number of columns or rows in the list.<br>Default value: **1**<br>Value range: [1, +∞)|
-| gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | No  | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞)|
+| gutter<sup>10+</sup> | [Dimension](ts-types.md#dimension10)                         | No  | Column gap or row gap.<br>Default value: **0**<br>Value range: [0, +∞)<br>**NOTE**<br>This parameter takes effect when the number of columns or rows is greater than 1.|
 
 ### lanes<sup>22+</sup>
 
@@ -635,7 +634,7 @@ Sets the focus wrap mode for arrow keys.
 
 | Name| Type                                                        | Mandatory| Description                                                        |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| mode   | [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<[FocusWrapMode](ts-appendix-enums.md#focuswrapmode20)\> | Yes  | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE**<br>Abnormal values are treated as the default value, meaning that cross-axis arrow keys cannot wrap.|
+| mode   | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<[FocusWrapMode](ts-appendix-enums.md#focuswrapmode20)\> | Yes  | Focus wrap mode for cross-axis arrow keys.<br>Default value: **FocusWrapMode.DEFAULT**<br>**NOTE**<br>Abnormal values are treated as the default value, meaning that cross-axis arrow keys cannot wrap.|
 
 ### syncLoad<sup>20+</sup>
 
@@ -944,8 +943,8 @@ Automatic scrolling of the list cannot be triggered when a list item is dragged 
 
 | Name   | Type                                                     | Mandatory| Description                  |
 | --------- | --------------------------------------------------------- | ---- | ---------------------- |
-| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo) | Yes   | Information about the drag point.         |
-| itemIndex | number                                                    | Yes   | Index of the dragged item. |
+| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo) | Yes  | Information about the drag point.        |
+| itemIndex | number                                                    | Yes  | Index of the dragged item.|
 
 ### onItemDragEnter<sup>8+</sup>
 
@@ -1198,7 +1197,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   |Controller not bound to a component.|
+| 100004   |The controller not bound to component.|
 ### scrollToItemInGroup<sup>11+</sup>
 
 scrollToItemInGroup(index: number, indexInGroup: number, smooth?: boolean, align?: ScrollAlign): void
@@ -1225,7 +1224,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to a component.                               |
+| 100004   | Controller not bound to component.                               |
 
 ### closeAllSwipeActions<sup>11+</sup>
 
@@ -1251,7 +1250,7 @@ For details about the error codes, see [Universal Error Codes](../../errorcode-u
 | ID| Error Message|
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
-| 100004   | Controller not bound to a component.                               |
+| 100004   | Controller not bound to component.                               |
 
 > **NOTE**
 >
@@ -1580,7 +1579,7 @@ struct ListLanesExample {
       .alignListItem(this.alignListItem)
       .scrollBar(BarState.Off)
 
-      Button ('Change alignListItem:' + this.alignListItem).onClick(() => {
+      Button('Change alignListItem:' + this.alignListItem).onClick(() => {
         if (this.alignListItem == ListItemAlign.Start) {
           this.alignListItem = ListItemAlign.Center;
         } else if (this.alignListItem == ListItemAlign.Center) {
@@ -1724,7 +1723,7 @@ struct ListExample {
 ### Example 5: Implementing Accurate Scrolling
 This example shows that, by setting the [childrenMainSize](#childrenmainsize12) attribute, the list can jump to an exact specific location when the **scrollTo** API is called, even when the heights of the child components are inconsistent.
 
-For usage with state management V2, see [List and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-application-and-others.md#scroll-components).
+For usage with state management V2, see [List and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#scrollable-component).
 
 For details about **ListDataSource** and the complete code, see [Example 1: Adding a Scroll Event](#example-1-adding-a-scroll-event).
 
@@ -2167,7 +2166,7 @@ struct ListScrollBarMarginExample {
 
 ### Example 12: Implementing Dragging with OnMove
 
-Starting from API version 20, this his example demonstrates how to use the [onMove](./ts-universal-attributes-drag-sorting.md#onmove) API of **ForEach** to sort items by dragging them. The list can automatically scroll when an item is dragged to the edge of the list.
+Starting from API version 12, this example demonstrates how to use the [onMove](./ts-universal-attributes-drag-sorting.md#onmove) API of **ForEach** to sort items by dragging them. The list can automatically scroll when an item is dragged to the edge of the list.
 
 ```ts
 @Entry
@@ -2292,22 +2291,23 @@ struct ListExample {
         }, (item: string) => item)
       }
       .width('90%').height('90%')
+
       // Button to obtain the content size.
       Button('GetContentSize')
-        .onClick(()=> {
-            // Scroller throws an exception when not bound to a component; wrap with try-catch for safety.
-          	try {
-              // Obtain the content width using contentSize.
-              this.contentWidth=this.scrollerForList.contentSize().width;
-              // Obtain the content height using contentSize.
-              this.contentHeight=this.scrollerForList.contentSize().height;
-            } catch (error) {
-              let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
-            }
+        .onClick(() => {
+          // Scroller throws an exception when not bound to a component; wrap with try-catch for safety.
+          try {
+            // Obtain the content width using contentSize.
+            this.contentWidth = this.scrollerForList.contentSize().width;
+            // Obtain the content height using contentSize.
+            this.contentHeight = this.scrollerForList.contentSize().height;
+          } catch (error) {
+            let err: BusinessError = error as BusinessError;
+            console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+          }
         })
       // Display the obtained content size.
-      Text('Width: '+ this.contentWidth+', Height: '+ this.contentHeight)
+      Text('Width: ' + this.contentWidth + ', Height: ' + this.contentHeight)
         .fontColor(Color.Red)
         .height(50)
     }
@@ -2523,7 +2523,7 @@ struct ContactsList {
                 .onAction((event: GestureEvent) => {
                   if (event) {
                     const itemRect = this.scroller.getItemRectInGroup(index, subIndex);
-                    console.info ('The', index + 1, 'ListItemGroup of the', subIndex + 1, 'ListItem', x:', itemRect.x,
+                    console.info('The', index + 1, 'ListItemGroup of the', subIndex + 1, 'ListItem', x:', itemRect.x,
                       ' y:', itemRect.y, ' width:', itemRect.width, ' height:', itemRect.height)
                     this.scroller.scrollToItemInGroup(index, subIndex, true, ScrollAlign.CENTER);
                   }

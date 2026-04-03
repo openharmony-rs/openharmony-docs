@@ -1090,7 +1090,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 @Concurrent
-function printArgs(args: number): number {
+function printArgs(args: string): string {
   console.info("printArgs: " + args);
   return args;
 }
@@ -1178,6 +1178,8 @@ function inspectStatus(arg: number): number {
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function inspectStatus(arg: number): number {
   // Check whether the task has been canceled and respond accordingly.
@@ -1201,8 +1203,8 @@ function inspectStatus(arg: number): number {
 let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
 taskpool.execute(task).then((res: Object) => {
   console.info("taskpool test result: " + res);
-}).catch((err: string) => {
-  console.error("taskpool test occur error: " + err);
+}).catch((e: BusinessError) => {
+  console.error("taskpool test occur error: " + e);
 });
 // If cancel is not called, isCanceled() returns false by default, and the task execution result is 101.
 ```
@@ -1512,7 +1514,7 @@ async function sendDataTest(num: number) {
 function taskpoolTest() {
   try {
     let task: taskpool.Task = new taskpool.Task(sendDataTest, 10);
-    task.onReceiveData((data: string) => {
+    task.onReceiveData((data: number) => {
       console.info("taskpool: data is: " + data);
     });
     taskpool.execute(task);
@@ -1922,6 +1924,8 @@ Checks whether the task is complete.
 **Example**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function inspectStatus(arg: number): number {
   // 1s sleep
@@ -1936,8 +1940,8 @@ async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
     console.info("taskpool test result: " + res);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+  }).catch((e: BusinessError) => {
+    console.error("taskpool test occur error: " + e);
   });
 
   setTimeout(() => {
@@ -2772,6 +2776,8 @@ taskpoolExecute();
 **Example 3**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // The async functions are supported.
 @Concurrent
 async function delayExecute(): Promise<Array<Object>> {
@@ -2784,8 +2790,8 @@ async function delayExecute(): Promise<Array<Object>> {
 async function taskpoolExecute(): Promise<void> {
   taskpool.execute(delayExecute).then((result: Object) => {
     console.info("taskPoolTest task result: " + result);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+  }).catch((e: BusinessError) => {
+    console.error("taskpool test occur error: " + e);
   });
 }
 
@@ -2796,6 +2802,8 @@ taskpoolExecute();
 
 ```ts
 // c.ets
+import { BusinessError } from '@kit.BasicServicesKit';
+
 @Concurrent
 function strSort(inPutArr: Array<string>): Array<string> {
   let newArr = inPutArr.sort();
@@ -2814,8 +2822,8 @@ export async function func2(): Promise<void> {
   let strArray: Array<string> = ['c test string', 'b test string', 'a test string'];
   taskpool.execute(strSort, strArray).then((result: Object) => {
     console.info("func2 result: " + result);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+  }).catch((e: BusinessError) => {
+    console.error("taskpool test occur error: " + e);
   });
 }
 ```
@@ -2831,6 +2839,8 @@ func2();
 **Example 5**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // Success in canceling a task
 @Concurrent
 function inspectStatus(arg: number): number {
@@ -2856,8 +2866,8 @@ async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
     console.info("taskpool test result: " + res);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+  }).catch((e: BusinessError) => {
+    console.error("taskpool test occur error: " + e);
   });
   // Cancel the task 1s later.
   setTimeout(() => {
@@ -2875,6 +2885,8 @@ taskpoolCancel();
 **Example 6**
 
 ```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
 // Failure to cancel a task that has been executed
 @Concurrent
 function inspectStatus(arg: number): number {
@@ -2898,8 +2910,8 @@ async function taskpoolCancel(): Promise<void> {
   let task: taskpool.Task = new taskpool.Task(inspectStatus, 100); // 100: test number
   taskpool.execute(task).then((res: Object) => {
     console.info("taskpool test result: " + res);
-  }).catch((err: string) => {
-    console.error("taskpool test occur error: " + err);
+  }).catch((e: BusinessError) => {
+    console.error("taskpool test occur error: " + e);
   });
 
   setTimeout(() => {

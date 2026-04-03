@@ -174,6 +174,33 @@ hdc list targets
 hdc shell echo "Hello world"
 ```
 
+### 常用调试工具
+
+hdc支持和其他调试工具配套使用，工具列表如下：
+
+| 命令 | 说明 |
+| -------- | -------- |
+| [aa](../tools/aa-tool.md) | 应用调试工具 |
+| [bm](../tools/bm-tool.md) | 包管理工具 |
+| [cem](../tools/cem-tool.md) | 公共事件管理工具 |
+| [anm](../tools/anm-tool.md) | 通知管理工具 |
+| [edm](../tools/edm-tool.md) | 企业设备管理工具 |
+| [param](../tools/param-tool.md) | 操作系统参数管理工具 |
+| [power-shell](../tools/power-shell.md) | 设备电源状态转换工具 |
+| [atm](../tools/atm-tool.md) | 程序访问控制管理工具 |
+| [hilog](./hilog.md) | 日志管理工具 |
+| [hidumper](./hidumper.md) | 系统信息导出工具 |
+| [hitrace](./hitrace.md) | 系统打点及采集工具 |
+| [hiperf](./hiperf.md) | 性能分析工具 |
+| [uinput](./uinput.md) | 模拟操作工具 |
+| [mediatool](../tools/mediatool.md) | 媒体资源库工具 |
+| [devicedebug](../tools/devicedebug-tool.md) | 调试应用发送信号工具 |
+| [rawheap-translator](../tools/rawheap-translator.md) | rawheap文件解析工具 |
+| <!--DelRow-->[UItest](../application-test/uitest-guidelines.md) | UI测试框架 |
+| <!--DelRow-->[SmartPerf Device daemon](../application-test/smartperf-guidelines.md#smartperf-device-daemon端) | SmartPerf Device-daemon端工具命令 |
+| <!--DelRow-->[wukong](../application-test/wukong-guidelines.md) | wukong稳定性工具 |
+<!--RP1--><!--RP1End-->
+
 ### 获取帮助
 
 显示hdc相关帮助信息，命令格式如下：
@@ -608,26 +635,6 @@ name of a command to run, followed by any arguments to that command.
 $ hdc shell -b com.example.myapplication ls data/storage/el2/base/
 ```
 
-**常用调试工具**
-
-| 命令 | 说明 |
-| -------- | -------- |
-| [aa](../tools/aa-tool.md) | 应用调试工具 |
-| [bm](../tools/bm-tool.md) | 包管理工具 |
-| [cem](../tools/cem-tool.md) | 公共事件管理工具 |
-| [anm](../tools/anm-tool.md) | 通知管理工具 |
-| [edm](../tools/edm-tool.md) | 企业设备管理工具 |
-| [param](../tools/param-tool.md) | 操作系统参数管理工具 |
-| [power-shell](../tools/power-shell.md) | 设备电源状态转换工具 |
-| [atm](../tools/atm-tool.md) | 程序访问控制管理工具 |
-| [hilog](./hilog.md) | 日志管理工具 |
-| [hidumper](./hidumper.md) | 系统信息导出工具 |
-| [hitrace](./hitrace.md) | 系统打点及采集工具 |
-| [hiperf](./hiperf.md) | 性能分析工具 |
-| [mediatool](../tools/mediatool.md) | 媒体资源库工具 |
-| [devicedebug](../tools/devicedebug-tool.md) | 调试应用发送信号工具 |
-| [rawheap-translator](../tools/rawheap-translator.md) | rawheap文件解析工具 |
-
 ## 应用管理
 
 | 命令 | 说明 |
@@ -691,17 +698,17 @@ $ hdc install -s D:\example.hsp
 AppMod finish
 
 # 安装example.hap包示例（-w为bm模块install命令支持参数，指定bm工具等待时间）。
-$ hdc "-w 180" install D:\example.hap
+$ hdc install "-w 180" D:\example.hap
 [Info]App install path:D:\example.hap msg:install bundle successfully.
 AppMod finish
 
 # 安装example.hap包示例（-u为bm模块install命令支持参数，指定用户id）。
-$ hdc "-u 100" install D:\example.hap
+$ hdc install "-u 100" D:\example.hap
 [Info]App install path:D:\example.hap msg:install bundle successfully.
 AppMod finish
 
 # 安装D:\hap_dir下应用示例（-p为bm模块install命令支持参数，指定安装路径）。
-$ hdc -p install D:\hap_dir
+$ hdc install -p D:\hap_dir
 [Info]App install path:D:\hap_dir msg:install bundle successfully.
 AppMod finish
 ```

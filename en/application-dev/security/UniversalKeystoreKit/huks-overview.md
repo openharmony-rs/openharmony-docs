@@ -60,6 +60,8 @@ HUKS provides the following key management functionalities throughout their life
 | -------- | -------- |
 | **[Key attestation](huks-key-attestation-overview.md)**| Issues a certificate for the public key in an asymmetric key pair stored in HUKS to prove the validity of the key (the key is generated in a secure environment).|
 
+<!--RP1--><!--RP1End-->
+
 ## Related Kits
 
 [Key access control based on user identity authentication](huks-identity-authentication-overview.md) depends on [User Authentication Kit](../UserAuthenticationKit/user-authentication-overview.md).

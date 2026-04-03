@@ -41,8 +41,8 @@ Provides native APIs for obtaining resources.
 | [ResourceManager_ErrorCode OH_ResourceManager_GetDrawableDescriptorDataByName(const NativeResourceManager *mgr, const char *resName, ArkUI_DrawableDescriptor **drawableDescriptor, uint32_t density, uint32_t type)](#oh_resourcemanager_getdrawabledescriptordatabyname) | Obtains the **DrawableDescriptor** object of the icon resource with the specified screen density based on the specified resource name.|
 | [ResourceManager_ErrorCode OH_ResourceManager_GetSymbol(const NativeResourceManager *mgr, uint32_t resId, uint32_t *resultValue)](#oh_resourcemanager_getsymbol) | Obtains a **symbol** resource based on the specified resource ID.|
 | [ResourceManager_ErrorCode OH_ResourceManager_GetSymbolByName(const NativeResourceManager *mgr, const char *resName, uint32_t *resultValue)](#oh_resourcemanager_getsymbolbyname) | Obtains a **symbol** resource based on the specified resource name.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false)](#oh_resourcemanager_getlocales) | Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **localinfo**.|
-| [ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem)](#oh_resourcemanager_getlocalesdata) | Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **localinfo**.|
+| [ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem = false)](#oh_resourcemanager_getlocales) | Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **locales**.|
+| [ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResourceManager *mgr, char ***resultValue, uint32_t *resultLen, bool includeSystem)](#oh_resourcemanager_getlocalesdata) | Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **locales**.|
 | [ResourceManager_ErrorCode OH_ResourceManager_GetConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)](#oh_resourcemanager_getconfiguration) | Obtains the device configuration. After using this API, you need to call [OH_ResourceManager_ReleaseConfiguration](#oh_resourcemanager_releaseconfiguration) to release the memory. If the **ResourceManager_Configuration** object is created by using malloc, call **free()** to release the object. (It is deprecated in API version 20.)|
 | [ResourceManager_ErrorCode OH_ResourceManager_GetResourceConfiguration(const NativeResourceManager *mgr, ResourceManager_Configuration *configuration)](#oh_resourcemanager_getresourceconfiguration) | Obtains the device configuration. After using this API, you need to call [OH_ResourceManager_ReleaseConfiguration](#oh_resourcemanager_releaseconfiguration) to release the memory. If the **ResourceManager_Configuration** object is created by using malloc, call **free()** to release the object.|
 | [ResourceManager_ErrorCode OH_ResourceManager_ReleaseConfiguration(ResourceManager_Configuration *configuration)](#oh_resourcemanager_releaseconfiguration) | Releases the memory requested by using [OH_ResourceManager_GetConfiguration](#oh_resourcemanager_getconfiguration) or [OH_ResourceManager_GetResourceConfiguration](#oh_resourcemanager_getresourceconfiguration).|
@@ -466,7 +466,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocales(const NativeResourceMana
 
 **Description**
 
-Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **localinfo**.
+Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **locales**.
 
 **Since**: 12
 
@@ -493,7 +493,7 @@ ResourceManager_ErrorCode OH_ResourceManager_GetLocalesData(const NativeResource
 
 **Description**
 
-Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **localinfo**.
+Obtains the language list. After using this API, you need to call **OH_ResourceManager_ReleaseStringArray()** to release the memory of **locales**.
 
 **Since**: 12
 

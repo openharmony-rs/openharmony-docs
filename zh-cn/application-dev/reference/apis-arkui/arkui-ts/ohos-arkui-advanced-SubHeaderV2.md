@@ -36,7 +36,7 @@ import { SubHeaderV2 } from '@kit.ArkUI';
 
 ## SubHeaderV2
 
-SubHeaderV2({ icon?: SubHeaderV2IconType, title?: SubHeaderV2Title, select?: SubHeaderV2Select, operationType?: SubHeaderV2OperationType, operationItems?: SubHeaderV2OperationItem[], titleBuild?: SubHeaderV2TitleBuilder; })
+SubHeaderV2({ icon?: SubHeaderV2IconType, title?: SubHeaderV2Title, select?: SubHeaderV2Select, operationType?: SubHeaderV2OperationType, operationItems?: SubHeaderV2OperationItem[], titleBuilder?: SubHeaderV2TitleBuilder; })
 
 子标题，用于列表项顶部，将该组列表划分为一个区块，子标题名称用来概括该区块内容。也可以用于内容项顶部，子标题名称用来概括该区块内容。
 
@@ -122,12 +122,12 @@ constructor(options: SubHeaderV2TitleOptions)
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
-| 名称 | 类型 | 只读 | 可选 | 说明                          |
-| -------- | -------- |----|----|-----------------------------|
-| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 标题内容。<br />默认值：undefined                       |
-| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 副标题内容。<br />默认值：undefined                      |
-| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined |
-| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置副标题文本属性，如设置标题颜色、字体大小、字重等。<br />默认值：undefined |
+| 名称 | 类型 | 只读 | 可选 | 说明                                              |
+| -------- | -------- |----|----|-------------------------------------------------|
+| primaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 标题内容。<br />默认值：undefined                        |
+| secondaryTitle|  [ResourceStr](ts-types.md#resourcestr)  |  否  | 是  | 副标题内容。<br />默认值：undefined                       |
+| primaryTitleModifier|  [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置标题文本属性，如设置主标题颜色、字体大小、字重等。<br />默认值：undefined  |
+| secondaryTitleModifier|   [TextModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier)  |  否  | 是  | 设置副标题文本属性，如设置副标题颜色、字体大小、字重等。<br />默认值：undefined |
 
 ## SubHeaderV2Select
 
@@ -201,10 +201,10 @@ type SubHeaderV2SelectOnSelect = (selectedIndex: number, selectedContent?: strin
 
 **参数：**
 
-| 参数名            | 类型     | 必填 | 说明                       |
-|:--------------|:-------|:---|:-------------------------|
-| selectedIndex   | number | 是  | 下拉菜单选中某一项的回调类型。表示选中项的索引。 |
-| selectedContent | string | 否  | 下拉菜单选中某一项的回调类型。表示选中项的值。  |
+| 参数名            | 类型     | 必填 | 说明                      |
+|:--------------|:-------|:---|:------------------------|
+| selectedIndex   | number | 是  | 表示选中的下拉菜单项的索引值。         |
+| selectedContent | string | 否  | 表示选中的下拉菜单项的内容值。 |
 
 ## SubHeaderV2OperationType
 
@@ -267,7 +267,7 @@ type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 
 constructor(options: SubHeaderV2OperationItemOptions)
 
-下拉选项信息SubHeaderV2OperationItem的构造函数。
+操作项SubHeaderV2OperationItem的构造函数。
 
 **原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
 
@@ -279,7 +279,7 @@ constructor(options: SubHeaderV2OperationItemOptions)
 
 | 参数名    | 类型                                                                  | 必填 | 说明             |
 | --------- |---------------------------------------------------------------------| ------ | ------------------ |
-| options | [SubHeaderV2OperationItemOptions](#subheaderv2operationitemoptions) | 是   | 下拉选项信息。 |
+| options | [SubHeaderV2OperationItemOptions](#subheaderv2operationitemoptions) | 是   | 操作项配置信息。用于构建SubHeaderV2OperationItem对象。 |
 
 ## SubHeaderV2OperationItemAction
 
@@ -306,7 +306,7 @@ type SubHeaderV2OperationItemAction = () => void
 
 | 名称                       | 类型                                          | 只读 | 可选 | 说明                                                                                                                                                                                                                                              |
 |--------------------------|---------------------------------------------|---|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| content                  | [SubHeaderV2OperationItemType](#subheaderv2operationitemtype) | 否 | 否 | 文本内容。                                                                                                                                                                                                                                           |
+| content                  | [SubHeaderV2OperationItemType](#subheaderv2operationitemtype) | 否 | 否 | 操作项显示的内容。                 |
 | action                   | [SubHeaderV2OperationItemAction](#subheaderv2operationitemaction)         | 否 | 是 | 选项操作事件。默认值：() => void。                                                                                                                                                                                                                          |
 | accessibilityText        | [ResourceStr](ts-types.md#resourcestr)      | 否 | 是 | 子标题右侧icon图标无障碍描述。<br />默认值：undefined                                                                                                                                                                                                            |
 | accessibilityLevel       | string | 否 | 是 | 子标题右侧icon图标无障碍重要性。<br/>支持的值为：<br/>"auto"：当前子标题右侧icon图标由无障碍分组服务和ArkUI进行综合判断是否可被无障碍辅助服务所识别。<br/>"yes"：当前子标题右侧icon图标可被无障碍辅助服务所识别。<br/>"no"：当前子标题右侧icon图标不可被无障碍辅助服务所识别。<br/>"no-hide-descendants"：当前子标题右侧icon图标及其所有子组件不可被无障碍辅助服务所识别。<br>默认值: “yes”。 | 

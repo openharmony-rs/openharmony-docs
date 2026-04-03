@@ -6,7 +6,7 @@
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
 
-When an application performs audio output, the system selects the corresponding output device based on the audio stream type. (If the audio stream type is **STREAM_USAGE_MUSIC**, the speaker is used. If the audio stream type is **STREAM_USAGE_VOICE_COMMUNICATION**, the earpiece is used.) If the default output device does not meet the application requirements, the application can use **AVCastPicker** or **setDefaultOutputDevice** to switch the audio output device.
+When an application outputs audio, the system selects the corresponding output device ([STREAM_USAGE_MUSIC](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage): speaker; [STREAM_USAGE_VOICE_COMMUNICATION](../../reference/apis-audio-kit/arkts-apis-audio-e.md#streamusage): receiver) based on the audio stream type. If the default output device does not meet the application requirements, the application can use **AVCastPicker** or **setDefaultOutputDevice** to switch the audio output device.
 
 ## Switching Output Devices for Media Applications
 

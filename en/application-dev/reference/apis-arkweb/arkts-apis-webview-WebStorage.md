@@ -310,7 +310,7 @@ Obtains the storage quota of an origin in Web SQL Database and HTML5-supported W
 | Name  | Type                 | Mandatory| Description              |
 | -------- | --------------------- | ---- | ------------------ |
 | origin   | string                | Yes  | Index of the origin.|
-| callback | AsyncCallback\<number> | Yes  | Storage quota of the origin.<br>**number** is a long integer ranging from -2,147,483,648 to 2,147,483,647.  |
+| callback | AsyncCallback\<number> | Yes  | Storage quota of the origin.<br>**number** is a long integer, and the range is [-2147483648, 2147483647].  |
 
 **Error codes**
 

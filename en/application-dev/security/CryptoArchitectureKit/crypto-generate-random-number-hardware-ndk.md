@@ -14,7 +14,7 @@ Random numbers are used to generate temporary session keys and asymmetric encryp
 A stronger entropy source makes random numbers harder to predict or replicate, achieving true randomness.
 <!--Del-->You need to use HUKS for generating random numbers with hardware entropy sources. For systems or devices with a secure environment (such as TEE and secure chip), after the hardware entropy source is enabled, the secure random number (with hardware entropy source) is obtained from the TEE through HUKS as the entropy source of the algorithm library. The secure environment depends on the hardware. The implementation in the open source repository is simulated, and subject to adaptation by OEM vendors.<!--DelEnd-->
 
-You need to call the related APIs of [HUKS](../../../application-dev/security/UniversalKeystoreKit/huks-overview.md) to implement the hardware entropy source.
+You need to call the [HUKS](../../../application-dev/security/UniversalKeystoreKit/huks-overview.md) APIs to implement the hardware entropy source.
 
 You can call APIs to:
 

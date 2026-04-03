@@ -146,8 +146,8 @@ JS example:
 const char *srcCallNative = R"JS(getHeapStatistics())JS";
 ```
 <!-- @[oh_jsvm_get_heap_statistics](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/JSVMAPI/JsvmUsageGuide/UsageInstructionsTwo/getheapstatistics/src/main/cpp/hello.cpp) -->
-Expected result:
-```
+Expected output (heap statistics of a VM, which change in real time):
+```txt
 JSVM API heap totalHeapSize: 1597440
 JSVM API heap totalHeapSizeExecutable: 0
 JSVM API heap totalPhysicalSize: 1323008
@@ -189,4 +189,4 @@ Closes all remaining inspector connections.
 
 ### OH_JSVM_WaitForDebugger
 
-Waits for the host to set up a socket connection with the inspector. After the connection is set up, the application continues to run and sends the **Runtime.runIfWaitingForDebugger** command.
+Waits for the host to set up a socket connection with the inspector. After the connection is set up, the program continues to run and sends the **Runtime.runIfWaitingForDebugger** command.

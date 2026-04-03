@@ -52,7 +52,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 | ---------- | ---------------------------------------- |
 | Initialization and update from the parent component| Prohibited. Only initialization using the property corresponding to the key in AppStorage is supported. If the corresponding key does not exist, initialization uses the local default value.|
 | Child component initialization    | Supported. Can be used to initialize variables decorated with [\@State](./arkts-state.md), [\@Link](./arkts-link.md), [\@Prop](./arkts-prop.md), or [\@Provide](./arkts-provide-and-consume.md).|
-| Whether external access is supported | Not supported.                                      |
+| Access from outside the component | Not supported.                                      |
 
   **Figure 1** \@StorageProp initialization rule 
 
@@ -105,7 +105,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 | ---------- | ---------------------------------------- |
 | Initialization and update from the parent component| Forbidden.                                     |
 | Child component initialization    | Supported. The decorated variable can be used to initialize a regular variable or an \@State, \@Link, \@Prop, or \@Provide decorated variable in the child component.|
-| Whether external access is supported | Not supported.                                      |
+| Access from outside the component | Not supported.                                      |
 
   **Figure 2** \@StorageLink initialization rule 
 
@@ -119,7 +119,7 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 
 - When the decorated variable is of the class or object type, the complete object reassignment and property-level changes can be observed. For details, see [Using AppStorage from Inside the UI](#using-appstorage-from-inside-the-ui).
 
-- When the decorated object is an array, you can observe the changes of adding, deleting, and updating array units.
+- When the decorated object is an array, you can observe the changes of adding, deleting, and updating array units. For details, see [Decorating Variables of the Array Type](#decorating-variables-of-the-array-type).
 
 - When the decorated object is of the **Date** type, the following changes can be observed: (1) complete **Date** object reassignment; (2) property changes caused by calling **setFullYear**, **setMonth**, **setDate**, **setHours**, **setMinutes**, **setSeconds**, **setMilliseconds**, **setTime**, **setUTCFullYear**, **setUTCMonth**, **setUTCDate**, **setUTCHours**, **setUTCMinutes**, **setUTCSeconds**, or **setUTCMilliseconds**. For details, see [Decorating Variables of the Date Type](#decorating-variables-of-the-date-type).
 
@@ -142,11 +142,11 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 
    ```ts
    AppStorage.setOrCreate('propA', 47);
-
+   
    // Incorrect usage. An error is reported during compilation.
    @StorageProp() storageProp: number = 1;
    @StorageLink() storageLink: number = 2;
-
+   
    // Correct usage.
    @StorageProp('propA') storageProp: number = 1;
    @StorageLink('propA') storageLink: number = 2;
@@ -156,10 +156,10 @@ Properties in AppStorage support two-way synchronization and offer extended feat
 
 3. When using AppStorage together with [PersistentStorage](arkts-persiststorage.md) and [Environment](arkts-environment.md), pay attention to the following:
 
-   a. If a property exists in AppStorage before PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistpropdeprecated) is called, the value in AppStorage will overwrite the value in PersistentStorage. As such, when possible, initialize PersistentStorage properties first. For an example with incorrect usage, see [Accessing a Property in AppStorage Before PersistentStorage](arkts-persiststorage.md#accessing-a-property-in-appstorage-before-persistentstorage).
+   a. If a property exists in AppStorage before PersistentStorage.[persistProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#persistprop10) is called, the value in AppStorage will overwrite the value in PersistentStorage. As such, when possible, initialize PersistentStorage properties first. For an example with incorrect usage, see [Accessing a Property in AppStorage Before PersistentStorage](arkts-persiststorage.md#accessing-a-property-in-appstorage-before-persistentstorage).
 
    b. If a property has already been created in AppStorage, subsequent calls to Environment.[envProp](../../reference/apis-arkui/arkui-ts/ts-state-management.md#envprop10) to create a property with the same name will fail. Since AppStorage already contains a property with that name, the Environment variable will not be written to AppStorage. Therefore, avoid using the preset Environment variable names in AppStorage.
-    
+   
    ```ts
    AppStorage.setOrCreate('languageCode', 'en');
    // The result is false.
@@ -329,6 +329,58 @@ struct TestPageStorageLink {
       .width('100%')
     }
     .height('100%')
+  }
+}
+```
+
+### Decorating Variables of the Array Type
+
+In this example, the **message** variable decorated with @StorageLink is of the **number[]** type. After the button is clicked, the value of **message** changes, and the UI is re-rendered.
+
+<!-- @[appstorage_page_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageOne.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct ArraySample {
+  @StorageLink('array') message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Column() {
+      ForEach(this.message, (item: number) => {
+        Text(`${item}`)
+          .fontSize(20)
+          .margin(10)
+      })
+      // Add an element to the array, triggering UI update.
+      Button('Push element')
+        .onClick(() => {
+          this.message.push(4);
+        })
+        .width(300)
+        .margin(10)
+      // Delete an array element, triggering UI update.
+      Button('Pop element')
+        .onClick(() => {
+          this.message.pop();
+        })
+        .width(300)
+        .margin(10)
+      // Reassign the value of the array, triggering UI update.
+      Button('Reset array')
+        .onClick(() => {
+          this.message = [9, 8, 7, 6];
+        })
+        .width(300)
+        .margin(10)
+      // Update the array element, triggering UI update.
+      Button('Modify element[0]')
+        .onClick(() => {
+          this.message[0] = 10;
+        })
+        .width(300)
+        .margin(10)
+    }
   }
 }
 ```
@@ -694,7 +746,7 @@ Compared with the use of @StorageLink, the use of **emit** allows you to subscri
 >
 > The **emit** API is not available in DevEco Studio Previewer.
 
-<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) -->
+<!-- @[appstorage_page_eight](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageEight.ets) --> 
 
 ``` TypeScript
 import { emitter } from '@kit.BasicServicesKit';
@@ -882,9 +934,7 @@ export struct TapImage {
 
 ### Notes on Update Rules When @StorageProp Is Used with AppStorage APIs
 
-When a key's value is updated using the **setOrCreate** or** set** API, if the new value is identical to the existing one, **setOrCreate** will not trigger updates for \@StorageLink or \@StorageProp. In addition, since \@StorageProp keeps its own local data copy, modifying this local value directly will not synchronize the change back to AppStorage. This can lead to a common misunderstanding: You may assume you have updated the value via AppStorage, only to find that the @StorageProp value remains unchanged in practice.
-
-An example is as follows:
+When a key's value is updated using the **setOrCreate** or** set** API, if the new value is identical to the existing one, **setOrCreate** will not trigger updates for \@StorageLink or \@StorageProp. In addition, since \@StorageProp keeps its own local data copy, modifying this local value directly will not synchronize the change back to AppStorage. This can lead to a common misunderstanding: You may assume you have updated the value via AppStorage, only to find that the @StorageProp value remains unchanged in practice. An example is as follows:
 
 <!-- @[appstorage_page_ten](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/AppStorage/entry/src/main/ets/pages/PageTen.ets) -->
 

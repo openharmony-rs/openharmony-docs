@@ -34,7 +34,7 @@ The table below lists the types of continuous tasks, which are used in various s
 
 Description of **DATA_TRANSFER**:
 
-- During data transfer, if an application uses the [upload and download agent API](../reference/apis-basic-services-kit/js-apis-request.md) to hand over tasks to the system, the application will be suspended in the background even if it has requested the continuous task of the **DATA_TRANSFER** type.
+- During data transfer, if an application uses the [@ohos.request (Upload and Download)](../reference/apis-basic-services-kit/js-apis-request.md) to hand over tasks to the system, the application will be suspended in the background even if it has requested the continuous task of the **DATA_TRANSFER** type.
 
 - During data transfer, the application needs to update the progress. If the progress is not updated for a long time (more than 10 minutes after the first update), the continuous task of the **DATA_TRANSFER** type will be canceled. The notification type of the progress update must be live view. For details, see the example in [startBackgroundRunning()](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanagerstartbackgroundrunning12).
 
@@ -72,11 +72,11 @@ Description of **AUDIO_PLAYBACK**:
 
 > **NOTE**
 >
-> - An application must proactively cancel a continuous task once the task is completed. Otherwise, the application will be suspended when moved to the background. For example, when a user taps the UI to pause music playback, the application must cancel the continuous task in a timely manner. When the user taps the UI again to continue music playback, the application needs to request a continuous task.
+> An application must proactively cancel a continuous task once the task is completed. Otherwise, the application will be suspended when moved to the background. For example, when a user taps the UI to pause music playback, the application must cancel the continuous task in a timely manner. When the user taps the UI again to continue music playback, the application needs to request a continuous task.
 >
-> - If an application that plays an audio in the background is [interrupted](../media/audio/audio-playback-concurrency.md), the system automatically detects and stops the continuous task. The application must request a continuous task again to restart the playback.
+> If an application that plays an audio in the background is [interrupted](../media/audio/audio-playback-concurrency.md), the system automatically detects and stops the continuous task. The application must request a continuous task again to restart the playback.
 >
-> - When an application that plays audio in the background stops a continuous task, it must suspend or stop the audio stream. Otherwise, the application will be forcibly terminated by the system.
+> When an application that plays audio in the background stops a continuous task, it must suspend or stop the audio stream. Otherwise, the application will be forcibly terminated by the system.
 
 ## Available APIs
 
@@ -141,394 +141,427 @@ The following walks you through how to request a continuous task for recording t
 
 4. Request and cancel a continuous task.
 
-   The code snippet below shows how an application requests and cancels a continuous task for itself.  
-      
-   ```ts
-    function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
-      // ID of a continuous task.
-      console.info('OnContinuousTaskCancel callback id ' + info.id);
-      // Reason for canceling the continuous task.
-      console.info('OnContinuousTaskCancel callback reason ' + info.reason);
-    }
+   The code snippet below shows how an application requests and cancels a continuous task for itself.
+   
+   Since API version 15, you can use [on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15) to listen for the cancellation of a continuous task.
+   
+   Since API version 16, you can use [BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16) to implement the Bluetooth car key function.
 
-    @Entry
-    @Component
-    struct Index {
-      @State message: string = 'ContinuousTask';
+   <!-- @[continuous_task](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/Index.ets) -->
+   
+   ``` TypeScript
+   function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
+     // ID of a continuous task.
+     console.info('OnContinuousTaskCancel callback id ' + info.id);
+     // Reason for canceling the continuous task.
+     console.info('OnContinuousTaskCancel callback reason ' + info.reason);
+   }
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'ContinuousTask';
      // Obtain the UIAbility context of the page by calling getUIContext().getHostContext().
-      private context: Context | undefined = this.getUIContext().getHostContext();
-
-      OnContinuousTaskCancel() {
-        try {
-           backgroundTaskManager.on("continuousTaskCancel", callback);
-           console.info(`Succeeded in operationing OnContinuousTaskCancel.`);
-        } catch (error) {
-           console.error(`Operation OnContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
-      }
-
-      OffContinuousTaskCancel() {
-        try {
-           // If the callback parameter is not passed, all callbacks associated with the specified event are canceled.
-           backgroundTaskManager.off("continuousTaskCancel", callback);
-           console.info(`Succeeded in operationing OffContinuousTaskCancel.`);
-        } catch (error) {
-           console.error(`Operation OffContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
-      }
-
-      // Request a continuous task using .then().
-      startContinuousTask() {
-        let wantAgentInfo: wantAgent.WantAgentInfo = {
-          // List of operations to be executed after the notification is clicked.
-          // Add the bundleName and abilityName of the application to start.
-          wants: [
-            {
-              bundleName: "com.example.myapplication",
-              abilityName: "MainAbility"
-            }
-          ],
-          // Specify the action to perform (starting the ability) after the notification message is clicked.
-          actionType: wantAgent.OperationType.START_ABILITY,
-          // Custom request code.
-          requestCode: 0,
-          // Execution attribute of the operation to perform after the notification is clicked.
-          actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
-          // CAR_KEY subtype, which takes effect only when a continuous task of the bluetoothInteraction type is requested. This subtype is supported since API version 16.
-          // Ensure that the key value in the extraInfo parameter is backgroundTaskManager.BackgroundModeType.SUB_MODE. Otherwise, the subtype does not take effect.
-          // extraInfo: { [backgroundTaskManager.BackgroundModeType.SUB_MODE] : backgroundTaskManager.BackgroundSubMode.CAR_KEY }
-        };
-
-        try {
-          // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
-          // In atomic services, replace the following line of code with wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {.
-          wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
-            try {
-              let list: Array<string> = ["audioRecording"];
-              // let list: Array<string> = ["bluetoothInteraction"]; The bluetoothInteraction type is included in the continuous task, and the CAR_KEY subtype is valid.
-              // In atomic services, let list: Array<string> = ["audioPlayback"];
-              backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
-                console.info("Operation startBackgroundRunning succeeded");
-                // Execute the continuous task logic, for example, recording.
-                // The system checks the authenticity of the service scenario. If the corresponding service is not executed, the system may cancel the continuous task and suspend the application.
-              }).catch((error: BusinessError) => {
-                console.error(`Failed to Operation startBackgroundRunning. code is ${error.code} message is ${error.message}`);
-              });
-            } catch (error) {
-              console.error(`Failed to Operation startBackgroundRunning. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-            }
-          });
-        } catch (error) {
-          console.error(`Failed to Operation getWantAgent. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
-        }
-      }
-
-      // Cancel a continuous task using .then().
-      stopContinuousTask() {
-         backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
-           console.info(`Succeeded in operationing stopBackgroundRunning.`);
-         }).catch((err: BusinessError) => {
-           console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
+     private context: Context | undefined = this.getUIContext().getHostContext();
+   
+     // ...
+   
+     OnContinuousTaskCancel() {
+       try {
+         backgroundTaskManager.on('continuousTaskCancel', callback);
+         console.info(`Succeeded in operationing OnContinuousTaskCancel.`);
+       } catch (error) {
+         console.error(`Operation OnContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+       }
+     }
+   
+     OffContinuousTaskCancel() {
+       try {
+         // If the callback parameter is not passed, all callbacks associated with the specified event are canceled.
+         backgroundTaskManager.off('continuousTaskCancel', callback);
+         console.info(`Succeeded in operationing OffContinuousTaskCancel.`);
+       } catch (error) {
+         console.error(`Operation OffContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+       }
+     }
+   
+     // Request a continuous task using .then().
+     startContinuousTask() {
+       let wantAgentInfo: wantAgent.WantAgentInfo = {
+         // List of operations to be executed after the notification is clicked.
+         // Add the bundleName and abilityName of the application to start.
+         wants: [
+           {
+             bundleName: 'ohos.samples.continuoustask',
+             abilityName: 'MainAbility'
+           }
+         ],
+         // Specify the action to perform (starting the ability) after the notification message is clicked.
+         actionType: wantAgent.OperationType.START_ABILITY,
+         // Custom request code.
+         requestCode: 0,
+         // Execution attribute of the operation to perform after the notification is clicked.
+         actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
+         // CAR_KEY subtype, which takes effect only when a continuous task of the bluetoothInteraction type is requested. This subtype is supported since API version 16.
+         // Ensure that the key value in the extraInfo parameter is backgroundTaskManager.BackgroundModeType.SUB_MODE. Otherwise, the subtype does not take effect.
+         // extraInfo: {
+           // [backgroundTaskManager.BackgroundModeType.SUB_MODE] :backgroundTaskManager.BackgroundSubMode.CAR_KEY
+         // }
+       };
+   
+       try {
+         // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
+         // In atomic services, replace the following line of code with wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {.
+         wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: WantAgent) => {
+           try {
+             let list: string[] = ['audioPlayback'];
+             // let list: string[] = ['bluetoothInteraction']; The bluetoothInteraction type is included in the continuous task, and the CAR_KEY subtype is valid.
+             backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).
+               then((res: backgroundTaskManager.ContinuousTaskNotification) => {
+               console.info('Operation startBackgroundRunning succeeded');
+               // Execute the continuous task logic, for example, audio playback.
+               // The system checks the authenticity of the service scenario. If the corresponding service is not executed, the system may cancel the continuous task and suspend the application.
+               // ...
+             }).catch((error: BusinessError) => {
+               console.error(`Failed to Operation startBackgroundRunning. code is ${error.code} message is ${error.message}`);
+             });
+           } catch (error) {
+             console.error(`Failed to Operation startBackgroundRunning. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+           }
          });
-      }
-
-      build() {
-        Row() {
-          Column() {
-            Text("Index")
-              .fontSize(50)
-              .fontWeight(FontWeight.Bold)
+       } catch (error) {
+         console.error(`Failed to Operation getWantAgent. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+       }
+     }
+   
+     // Cancel a continuous task using .then().
+     stopContinuousTask() {
+       backgroundTaskManager.stopBackgroundRunning(this.context).then(() => {
+         console.info(`Succeeded in operationing stopBackgroundRunning.`);
+         // ...
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
+       });
+     }
+   
+     build() {
+       Row() {
+         Column() {
+           Text('Index')
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
    
            Button() {
-              Text('Request a continuous task').fontSize(25).fontWeight(FontWeight.Bold)
-            }
-            .type(ButtonType.Capsule)
-            .margin({ top: 10 })
-            .backgroundColor('#0D9FFB')
-            .width(250)
-            .height(40)
-            .onClick(() => {
-              // Request a continuous task through a button.
-              this.startContinuousTask();
-            })
+             Text('Request a continuous task').fontSize(25).fontWeight(FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(250)
+           .height(40)
+           .id('applyContinuousTask')
+           .onClick(() => {
+             // Request a continuous task by clicking a button.
+             this.startContinuousTask();
+           })
    
-            Button() {
-              Text('Cancel the continuous task').fontSize (25).fontWeight (FontWeight.Bold)
-            }
-            .type(ButtonType.Capsule)
-            .margin({ top: 10 })
-            .backgroundColor('#0D9FFB')
-            .width(250)
-            .height(40)
-            .onClick(() => {
-              // Stop the continuous task.
+           Button() {
+             Text('Cancel the continuous task').fontSize (25).fontWeight (FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(250)
+           .height(40)
+           .id('resetContinuousTask')
+           .onClick(() => {
+             // Stop the continuous task.
    
-              // Cancel the continuous task through a button.
-              this.stopContinuousTask();
-            })
-
-            Button() {
-              Text('Register a callback for canceling a continuous task').fontSize (25).fontWeight(FontWeight.Bold)
-            }
-            .type(ButtonType.Capsule)
-            .margin({ top: 10 })
-            .backgroundColor('#0D9FFB')
-            .width(250)
-            .height(40)
-            .onClick(() => {
-              // Use a button to register a callback for canceling a continuous task.
-              this.OnContinuousTaskCancel();
-            })
-
-            Button() {
-              Text('Unregister a callback for canceling the continuous task').fontSize (25).fontWeight(FontWeight.Bold)
-            }
-            .type(ButtonType.Capsule)
-            .margin({ top: 10 })
-            .backgroundColor('#0D9FFB')
-            .width(250)
-            .height(40)
-            .onClick(() => {
-              // Use a button to unregister a callback for canceling a continuous task.
-              this.OffContinuousTaskCancel();
-            })
-          }
-          .width('100%')
-        }
-        .height('100%')
-      }
-    }
+             // Cancel the continuous task through a button.
+             this.stopContinuousTask();
+           })
+   
+           Button() {
+             Text('Register a callback for canceling a continuous task').fontSize (25).fontWeight(FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(250)
+           .height(40)
+           .onClick(() => {
+             // Use a button to register a callback for canceling a continuous task.
+             this.OnContinuousTaskCancel();
+           })
+   
+           Button() {
+             Text('Unregister a callback for canceling the continuous task').fontSize (25).fontWeight(FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(250)
+           .height(40)
+           .onClick(() => {
+             // Use a button to unregister a callback for canceling a continuous task.
+             this.OffContinuousTaskCancel();
+           })
+           // ...
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
    ```
 
 5. Request and cancel a continuous task using **async**/**await**.
 
-   The code snippet below shows how an application requests and cancels a continuous task using **async**/**await** for itself.  
-      
-   ```ts
-    @Entry
-    @Component
-    struct Index {
-      @State message: string = 'ContinuousTask';
+   The code snippet below shows how an application requests and cancels a continuous task using **async**/**await** for itself.
+   
+   Since API version 15, you can use [on('continuousTaskCancel')](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundtaskmanageroncontinuoustaskcancel15) to listen for the cancellation of a continuous task.
+   
+   Since API version 16, you can use [BackgroundSubMode](../reference/apis-backgroundtasks-kit/js-apis-resourceschedule-backgroundTaskManager.md#backgroundsubmode16) to implement the Bluetooth car key function.
+
+   <!-- @[continuous_task_await](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/pages/IndexAsyncAndAwait.ets) -->
+   
+   ``` TypeScript
+   @Entry
+   @Component
+   struct IndexAsyncAndAwait {
+     @State message: string = 'ContinuousTask';
      // Obtain the UIAbility context of the page by calling getUIContext().getHostContext().
-      private context: Context | undefined = this.getUIContext().getHostContext();
-
-      // Request a continuous task using async/await.
-      async startContinuousTask() {
-        let wantAgentInfo: wantAgent.WantAgentInfo = {
-          // List of operations to be executed after the notification is clicked.
-          // Add the bundleName and abilityName of the application to start.
-          wants: [
-            {
-              bundleName: "com.example.myapplication",
-              abilityName: "MainAbility"
-            }
-          ],
-          // Specify the action to perform (starting the ability) after the notification message is clicked.
-          actionType: wantAgent.OperationType.START_ABILITY,
-          // Custom request code.
-          requestCode: 0,
-          // Execution attribute of the operation to perform after the notification is clicked.
-          actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
-          // CAR_KEY subtype, which takes effect only when a continuous task of the bluetoothInteraction type is requested. This subtype is supported since API version 16.
-          // Ensure that the key value in the extraInfo parameter is backgroundTaskManager.BackgroundModeType.SUB_MODE. Otherwise, the subtype does not take effect.
-          // extraInfo: { [backgroundTaskManager.BackgroundModeType.SUB_MODE] : backgroundTaskManager.BackgroundSubMode.CAR_KEY }
-        };
-
-        try {
-          // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
-          // In atomic services, replace the following line of code with const wantAgentObj: object = await wantAgent.getWantAgent(wantAgentInfo);.
-          const wantAgentObj: WantAgent = await wantAgent.getWantAgent(wantAgentInfo);
-          try {
-            let list: Array<string> = ["audioRecording"];
-            // let list: Array<string> = ["bluetoothInteraction"]; The bluetoothInteraction type is included in the continuous task, and the CAR_KEY subtype is valid.
-            // In atomic services, let list: Array<string> = ["audioPlayback"];
-            const res: backgroundTaskManager.ContinuousTaskNotification = await backgroundTaskManager.startBackgroundRunning(this.context as Context, list, wantAgentObj);
-            console.info(`Operation startBackgroundRunning succeeded, notificationId: ${res.notificationId}`);
-            // Execute the continuous task logic, for example, recording.
-          } catch (error) {
-            console.error(`Failed to Operation startBackgroundRunning. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
-          }
-        } catch (error) {
-          console.error(`Failed to Operation getWantAgent. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
-        }
-      }
-
-      // Cancel a continuous task using async/await.
-      async stopContinuousTask() {
-        try {
-          await backgroundTaskManager.stopBackgroundRunning(this.context);
-          console.info(`Succeeded in operationing stopBackgroundRunning.`);
-        } catch (error) {
-          console.error(`Failed to operation stopBackgroundRunning. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`)
-        }
-      }
-
-      build() {
-        Row() {
-          Column() {
-            Text("Index")
-              .fontSize(50)
-              .fontWeight(FontWeight.Bold)
+     private context: Context | undefined = this.getUIContext().getHostContext();
+   
+     // ...
+   
+     // Request a continuous task using async/await.
+     async startContinuousTask() {
+       let wantAgentInfo: wantAgent.WantAgentInfo = {
+         // List of operations to be executed after the notification is clicked.
+         // Add the bundleName and abilityName of the application to start.
+         wants: [
+           {
+             bundleName: 'ohos.samples.continuoustask',
+             abilityName: 'MainAbility'
+           }
+         ],
+         // Specify the action to perform (starting the ability) after the notification message is clicked.
+         actionType: wantAgent.OperationType.START_ABILITY,
+         // Custom request code.
+         requestCode: 0,
+         // Execution attribute of the operation to perform after the notification is clicked.
+         actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG],
+         // CAR_KEY subtype, which takes effect only when a continuous task of the bluetoothInteraction type is requested. This subtype is supported since API version 16.
+         // Ensure that the key value in the extraInfo parameter is backgroundTaskManager.BackgroundModeType.SUB_MODE. Otherwise, the subtype does not take effect.
+         // extraInfo: {
+           // [backgroundTaskManager.BackgroundModeType.SUB_MODE] :backgroundTaskManager.BackgroundSubMode.CAR_KEY
+         // }
+       };
+   
+       try {
+         // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
+         // In atomic services, replace the following line of code with const wantAgentObj: object = await wantAgent.getWantAgent(wantAgentInfo);.
+         const wantAgentObj: WantAgent = await wantAgent.getWantAgent(wantAgentInfo);
+         try {
+           let list: string[] = ['audioPlayback'];
+           // let list: string[] = ['bluetoothInteraction']; The bluetoothInteraction type is included in the continuous task, and the CAR_KEY subtype is valid.
+           // In atomic services, let list: Array<string> = ["audioPlayback"];
+           const res: backgroundTaskManager.ContinuousTaskNotification =
+             await backgroundTaskManager.startBackgroundRunning(this.context as Context, list, wantAgentObj);
+           console.info(`Operation startBackgroundRunning succeeded, notificationId: ${res.notificationId}`);
+           // Execute the continuous task logic, for example, audio playback.
+           // ...
+         } catch (error) {
+           console.error(`Failed to Operation startBackgroundRunning. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
+         }
+       } catch (error) {
+         console.error(`Failed to Operation getWantAgent. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`);
+       }
+     }
+   
+     // Cancel a continuous task using async/await.
+     async stopContinuousTask() {
+       try {
+         await backgroundTaskManager.stopBackgroundRunning(this.context);
+         console.info(`Succeeded in operationing stopBackgroundRunning.`);
+         // ...
+       } catch (error) {
+         console.error(`Failed to operation stopBackgroundRunning. Code is ${(error as BusinessError).code}, message is ${(error as BusinessError).message}`)
+       }
+     }
+   
+     build() {
+       Row() {
+         Column() {
+           Text('Index')
+             .fontSize(50)
+             .fontWeight(FontWeight.Bold)
    
            Button() {
-              Text('Request a continuous task').fontSize(25).fontWeight(FontWeight.Bold)
-            }
-            .type(ButtonType.Capsule)
-            .margin({ top: 10 })
-            .backgroundColor('#0D9FFB')
-            .width(250)
-            .height(40)
-            .onClick(() => {
-              // Request a continuous task through a button.
-              this.startContinuousTask();
-            })
+             Text('Request a continuous task').fontSize(25).fontWeight(FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(250)
+           .height(40)
+           .id('applyContinuousTask')
+           .onClick(() => {
+             // Request a continuous task by clicking a button.
+             this.startContinuousTask();
+           })
    
-            Button() {
-              Text('Cancel the continuous task').fontSize (25).fontWeight (FontWeight.Bold)
-            }
-            .type(ButtonType.Capsule)
-            .margin({ top: 10 })
-            .backgroundColor('#0D9FFB')
-            .width(250)
-            .height(40)
-            .onClick(() => {
-              // Stop the continuous task.
-
-              // Cancel the continuous task through a button.
-              this.stopContinuousTask();
-            })
-          }
-          .width('100%')
-        }
-        .height('100%')
-      }
-    }
+           Button() {
+             Text('Cancel the continuous task').fontSize (25).fontWeight (FontWeight.Bold)
+           }
+           .type(ButtonType.Capsule)
+           .margin({ top: 10 })
+           .backgroundColor('#0D9FFB')
+           .width(250)
+           .height(40)
+           .id('resetContinuousTask')
+           .onClick(() => {
+             // Stop the continuous task.
+   
+             // Cancel the continuous task through a button.
+             this.stopContinuousTask();
+           })
+           // ...
+         }
+         .width('100%')
+       }
+       .height('100%')
+     }
+   }
    ```
    <!--Del-->
 
    The code snippet below shows how an application requests a continuous task across devices or applications. When executing a continuous task in the background across devices or applications, you can create and run a **UIAbility** in the background via the **Call** method. For details, see [Using Cross-Device Call](../application-models/hop-multi-device-collaboration.md#using-cross-device-call).
    
-   ```ts
-    const MSG_SEND_METHOD: string = 'CallSendMsg'
- 
-    let mContext: Context;
-
-    function startContinuousTask() {
-      let wantAgentInfo : wantAgent.WantAgentInfo = {
-        // List of operations to be executed after the notification is clicked.
-        wants: [
-          {
-            bundleName: "com.example.myapplication",
-            abilityName: "com.example.myapplication.MainAbility",
-          }
-        ],
-        // Type of the operation to perform after the notification is clicked.
-        actionType: wantAgent.OperationType.START_ABILITY,
-        // Custom request code.
-        requestCode: 0,
-        // Execution attribute of the operation to perform after the notification is clicked.
-        actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
-      };
-
-      // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
-      // In atomic services, replace the following line of code with wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {.
-      wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
-        backgroundTaskManager.startBackgroundRunning(mContext,
-          backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK, wantAgentObj).then(() => {
-          console.info(`Succeeded in operationing startBackgroundRunning.`);
-        }).catch((err: BusinessError) => {
-          console.error(`Failed to operation startBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
-        });
-      });
-    }
-
-    function stopContinuousTask() {
-      backgroundTaskManager.stopBackgroundRunning(mContext).then(() => {
-        console.info(`Succeeded in operationing stopBackgroundRunning.`);
-      }).catch((err: BusinessError) => {
-        console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
-      });
-    }
-
-    class MyParcelable implements rpc.Parcelable {
-      num: number = 0;
-      str: string = '';
-
-      constructor(num: number, str: string) {
-        this.num = num;
-        this.str = str;
-      }
-
-      marshalling(messageSequence: rpc.MessageSequence) {
-        messageSequence.writeInt(this.num);
-        messageSequence.writeString(this.str);
-        return true;
-      }
-
-      unmarshalling(messageSequence: rpc.MessageSequence) {
-        this.num = messageSequence.readInt();
-        this.str = messageSequence.readString();
-        return true;
-      }
-    }
-
-    function sendMsgCallback(data: rpc.MessageSequence) {
-      console.info('BgTaskAbility funcCallBack is called ' + data);
-      let receivedData: MyParcelable = new MyParcelable(0, '');
-      data.readParcelable(receivedData);
-      console.info(`receiveData[${receivedData.num}, ${receivedData.str}]`);
-      // You can execute different methods based on the str value in the sequenceable data sent by the caller object.
-      if (receivedData.str === 'start_bgtask') {
-        // Request a continuous task.
-        startContinuousTask();
-      } else if (receivedData.str === 'stop_bgtask') {
-        // Cancel the continuous task.
-        stopContinuousTask();
-      }
-      return new MyParcelable(10, 'Callee test');
-    }
-
-    export default class BgTaskAbility extends UIAbility {
-      // Create an ability.
-      onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
-        console.info("[Demo] BgTaskAbility onCreate");
-        try {
-          this.callee.on(MSG_SEND_METHOD, sendMsgCallback)
-        } catch (error) {
-          console.error(`${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
-        }
-        mContext = this.context;
-      }
-     
-      // Destroy an ability.
-      onDestroy() {
-        console.info('[Demo] BgTaskAbility onDestroy');
-      }
-
-      onWindowStageCreate(windowStage: window.WindowStage) {
-        console.info('[Demo] BgTaskAbility onWindowStageCreate');
-
-        windowStage.loadContent('pages/Index', (error, data) => {
-          if (error.code) {
-            console.error(`load content failed with error ${JSON.stringify(error)}`);
-            return;
-          }
-          console.info(`load content succeed with data ${JSON.stringify(data)}`);
-        });
-      }
-
-      onWindowStageDestroy() {
-        console.info('[Demo] BgTaskAbility onWindowStageDestroy');
-      }
-      
-      onForeground() {
-        console.info('[Demo] BgTaskAbility onForeground');
-      }
-
-      onBackground() {
-        console.info('[Demo] BgTaskAbility onBackground');
-      }
-    };
+   <!-- @[continuous_task_call](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/BackGroundTasksKit/ContinuousTask/entry/src/main/ets/MainAbility/BgTaskAbility.ets) -->
+   
+   ``` TypeScript
+   const MSG_SEND_METHOD: string = 'CallSendMsg';
+   
+   let mContext: Context;
+   
+   function startContinuousTask() {
+     let wantAgentInfo : wantAgent.WantAgentInfo = {
+       // List of operations to be executed after the notification is clicked.
+       wants: [
+         {
+           bundleName: 'ohos.samples.continuoustask',
+           abilityName: 'MainAbility'
+         }
+       ],
+       // Type of the operation to perform after the notification is clicked.
+       actionType: wantAgent.OperationType.START_ABILITY,
+       // Custom request code.
+       requestCode: 0,
+       // Execution attribute of the operation to perform after the notification is clicked.
+       actionFlags: [wantAgent.WantAgentFlags.UPDATE_PRESENT_FLAG]
+     };
+   
+     // Obtain the WantAgent object by using the getWantAgent API of the wantAgent module.
+     // In atomic services, replace the following line of code with wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj: object) => {.
+     wantAgent.getWantAgent(wantAgentInfo).then((wantAgentObj : WantAgent) => {
+       backgroundTaskManager.startBackgroundRunning(mContext,
+         backgroundTaskManager.BackgroundMode.AUDIO_PLAYBACK, wantAgentObj).then(() => {
+         console.info(`Succeeded in operationing startBackgroundRunning.`);
+       }).catch((err: BusinessError) => {
+         console.error(`Failed to operation startBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
+       });
+     });
+   }
+   
+   function stopContinuousTask() {
+     backgroundTaskManager.stopBackgroundRunning(mContext).then(() => {
+       console.info(`Succeeded in operationing stopBackgroundRunning.`);
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to operation stopBackgroundRunning. Code is ${err.code}, message is ${err.message}`);
+     });
+   }
+   
+   class MyParcelable implements rpc.Parcelable {
+     public num: number = 0;
+     public str: string = '';
+   
+     constructor(num: number, str: string) {
+       this.num = num;
+       this.str = str;
+     }
+   
+     marshalling(messageSequence: rpc.MessageSequence) {
+       messageSequence.writeInt(this.num);
+       messageSequence.writeString(this.str);
+       return true;
+     }
+   
+     unmarshalling(messageSequence: rpc.MessageSequence) {
+       this.num = messageSequence.readInt();
+       this.str = messageSequence.readString();
+       return true;
+     }
+   }
+   
+   function sendMsgCallback(data: rpc.MessageSequence) {
+     console.info('BgTaskAbility funcCallBack is called ' + data);
+     let receivedData: MyParcelable = new MyParcelable(0, '');
+     data.readParcelable(receivedData);
+     console.info(`receiveData[${receivedData.num}, ${receivedData.str}]`);
+     // You can execute different methods based on the str value in the sequenceable data sent by the caller object.
+     if (receivedData.str === 'start_bgtask') {
+       // Request a continuous task.
+       startContinuousTask();
+     } else if (receivedData.str === 'stop_bgtask') {
+       // Cancel the continuous task.
+       stopContinuousTask();
+     }
+     return new MyParcelable(10, 'Callee test');
+   }
+   
+   export default class BgTaskAbility extends UIAbility {
+     // Create an ability.
+     onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+       console.info('[Demo] BgTaskAbility onCreate');
+       try {
+         this.callee.on(MSG_SEND_METHOD, sendMsgCallback);
+       } catch (error) {
+         console.error(`${MSG_SEND_METHOD} register failed with error ${JSON.stringify(error)}`);
+       }
+       mContext = this.context;
+     }
+   
+     // Destroy an ability.
+     onDestroy() {
+       console.info('[Demo] BgTaskAbility onDestroy');
+     }
+   
+     onWindowStageCreate(windowStage: window.WindowStage) {
+       console.info('[Demo] BgTaskAbility onWindowStageCreate');
+   
+       windowStage.loadContent('pages/Index', (error, data) => {
+         if (error.code) {
+           console.error(`load content failed with error ${JSON.stringify(error)}`);
+           return;
+         }
+         console.info(`load content succeed with data ${JSON.stringify(data)}`);
+       });
+     }
+   
+     onWindowStageDestroy() {
+       console.info('[Demo] BgTaskAbility onWindowStageDestroy');
+     }
+   
+     onForeground() {
+       console.info('[Demo] BgTaskAbility onForeground');
+     }
+   
+     onBackground() {
+       console.info('[Demo] BgTaskAbility onBackground');
+     }
+   };
    ```
 
    <!--DelEnd-->

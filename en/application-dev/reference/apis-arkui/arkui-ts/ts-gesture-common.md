@@ -344,7 +344,7 @@ Obtains the number of consecutive taps required for the tap gesture to be recogn
 
 | Type    | Description       |
 | ------ | --------- |
-| number | Number of consecutive taps required for the tap gesture to be recognized.<br>Value range: [0, +∞).|
+| number | Number of consecutive taps required for the tap gesture to be recognized.<br>Value range: [0, +∞)|
 
 ## LongPressRecognizer<sup>18+</sup>
 
@@ -380,7 +380,7 @@ Obtains the minimum duration required for the long press gesture to be recognize
 
 | Type    | Description       |
 | ------ | --------- |
-| number | Minimum duration, in ms.<br>Value range: [0, +∞).|
+| number | Minimum duration, in ms.<br>Value range: [0, +∞)|
 
 ### getAllowableMovement<sup>22+</sup>
 
@@ -396,7 +396,7 @@ Obtains the maximum movement distance allowed for gesture recognition by the lon
 
 | Type    | Description       |
 | ------ | --------- |
-| number | Maximum movement distance recognized by the long press gesture recognizer, in px.<br>Value range: (0, +∞).|
+| number | Maximum movement distance recognized by the long press gesture recognizer, in px.<br>Value range: (0, +∞)|
 
 ## SwipeRecognizer<sup>18+</sup>
 
@@ -416,7 +416,7 @@ Obtains the minimum velocity required for the swipe gesture to be recognized.
 
 | Type    | Description       |
 | ------ | --------- |
-| number | Minimum velocity required for the swipe gesture to be recognized, in vp/s.<br>Value range: [0, +∞).|
+| number | Minimum velocity required for the swipe gesture to be recognized, in vp/s.<br>Value range: [0, +∞)|
 
 ### getDirection<sup>18+</sup>
 
@@ -452,7 +452,7 @@ Obtains the minimum distance required for the pinch gesture to be recognized.
 
 | Type    | Description       |
 | ------ | --------- |
-| number | Minimum distance required for the pinch gesture to be recognized, in vp.<br>Value range: [0, +∞).|
+| number | Minimum distance required for the pinch gesture to be recognized, in vp.<br>Value range: [0, +∞)|
 
 ## RotationRecognizer<sup>18+</sup>
 
@@ -472,7 +472,7 @@ Obtains the minimum angle change required for the rotation gesture to be recogni
 
 | Type    | Description       |
 | ------ | --------- |
-| number | Minimum angle change required for the rotation gesture to be recognized, in degrees (deg).<br>Value range: [0, +∞).<br>**NOTE**<br>If the provided angle is less than or equal to 0 or greater than 360, it is converted to the default value **1**.|
+| number | Minimum angle change required for the rotation gesture to be recognized, in degrees (deg).<br>Value range: [0, +∞)<br>**NOTE**<br>If the provided angle is less than or equal to 0 or greater than 360, it is converted to the default value **1**.|
 
 ## PanRecognizer<sup>12+</sup> 
 
@@ -572,19 +572,19 @@ Defines the gesture event information. Inherits from [BaseEvent](ts-gesture-cust
 | Name| Type |   Read-Only | Optional   |  Description|
 | -------- | -------- | ---- | ---- |-------- |
 | repeat | boolean | No|  No |Whether the event is a repeated trigger event, used in the **LongPressGesture** scenarios. The value **true** means that the event is a repeated trigger event, and **false** means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| offsetX | number | No| No |X-axis offset of the gesture event relative to the finger press position, in vp. Used in **PanGesture** scenarios. A positive value means to pan from left to right, and a negative value means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Value range: (-∞, +∞).|
-| offsetY | number | No| No |Y-axis offset of the gesture event relative to the finger press position, in vp. Used in **PanGesture** scenarios. A positive value means to pan from top to bottom, and a negative value means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Value range: (-∞, +∞). |
-| angle | number | No| No |Rotation angle for the **RotationGesture** event;<br>angle of the swipe gesture for the **SwipeGesture** event, that is, the change in the included angle between the line segment created by the two fingers and the horizontal direction.<br>**NOTE**<br>Angle calculation method: After a swipe gesture is recognized, a line connecting the two fingers is identified as the initial line. As the fingers swipe, the line between the fingers rotates. Based on the coordinates of the initial line's and current line's end points, the arc tangent function is used to calculate the respective included angle of the points relative to the horizontal direction by using the following formula: Rotation angle = arctan2(cy2-cy1,cx2-cx1) - arctan2(y2-y1,x2-x1). The initial line is used as the coordinate system. The clockwise rotation is 0 to 180 degrees, and the counter-clockwise rotation is -180 to 0 degrees.<br>Value range: [-180, +180].<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| scale | number |No| No |Scale ratio. This attribute is used for the pinch gesture.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| pinchCenterX | number | No| No |X-coordinate of the center of the pinch gesture, in vp, relative to the original area of the current component. This attribute is used for the **PinchGesture** event.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| pinchCenterY | number | No| No |Y-coordinate of the center of the pinch gesture, in vp, relative to the original area of the current component. This attribute is used for the **PinchGesture** event.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| speed<sup>8+</sup> | number | No| No |Swipe gesture speed, that is, the average swipe speed of all fingers relative to the original area of the current component, in vp/s. Used for the **SwipeGesture** event.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| offsetX | number | No| No |X-axis offset of the gesture event relative to the finger press position, in vp. Used in **PanGesture** scenarios. A positive value means to pan from left to right, and a negative value means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Value range: (-∞, +∞)|
+| offsetY | number | No| No |Y-axis offset of the gesture event relative to the finger press position, in vp. Used in **PanGesture** scenarios. A positive value means to pan from top to bottom, and a negative value means the opposite.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br>Value range: (-∞, +∞) |
+| angle | number | No| No |Rotation angle for the **RotationGesture** event.<br>Angle of the swipe gesture for the **SwipeGesture** event, that is, the change in the included angle between the line segment created by the two fingers and the horizontal direction.<br>**NOTE**<br>Angle calculation method: After a swipe gesture is recognized, a line connecting the two fingers is identified as the initial line. As the fingers swipe, the line between the fingers rotates. Based on the coordinates of the initial line's and current line's end points, the arc tangent function is used to calculate the respective included angle of the points relative to the horizontal direction by using the following formula: Rotation angle = arctan2(cy2-cy1,cx2-cx1) - arctan2(y2-y1,x2-x1). The initial line is used as the coordinate system. The clockwise rotation is 0 to 180 degrees, and the counter-clockwise rotation is -180 to 0 degrees.<br>Value range: [-180, +180]<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| scale | number |No| No |Scale ratio. This attribute is used for the pinch gesture.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| pinchCenterX | number | No| No |X-coordinate of the center of the pinch gesture, in vp, relative to the original area of the current component. This attribute is used for the **PinchGesture** event.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| pinchCenterY | number | No| No |Y-coordinate of the center of the pinch gesture, in vp, relative to the original area of the current component. This attribute is used for the **PinchGesture** event.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| speed<sup>8+</sup> | number | No| No |Swipe gesture speed, that is, the average swipe speed of all fingers relative to the original area of the current component, in vp/s. Used for the **SwipeGesture** event.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | fingerList<sup>8+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8)[] | No| No |List of touch points of the gesture event. If the event input device is touchscreen, the list includes all touch points. If the event input device is mouse or touchpad, the list contains only one touch point.<br>**NOTE**<br>1. The index of a finger corresponds to its position, that is, the ID of a finger in **fingerList[index]** refers to its index. If a finger is pressed first and does not participate in triggering of the current gesture, its position in **fingerList** is left empty.<br>2. **fingerList** is empty when gestures are triggered using a keyboard or game controller and no finger information exists.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | fingerInfos<sup>20+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8)[] | No| Yes |Information about touch points of the gesture event. For gesture events initiated by a touchscreen, **fingerInfos** includes information about all touch points. For gesture events initiated by a mouse or touchpad, **fingerInfos** contains only one touch point.<br> **NOTE**<br>**fingerInfos** only records information about effective fingers that participate in the touch. Fingers that are pressed first but do not participate in triggering of the current gesture will not be shown in **fingerInfos**. The default value is an empty array **[]**, and an empty array indicates no effective touch point information.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| velocityX<sup>10+</sup> | number | No| No |Velocity along the x-axis. This parameter is used in [PanGesture](ts-basic-gestures-pangesture.md). The origin of the coordinate axis is the upper left corner of the screen. The velocity is positive if the movement is from left to right, and it is negative if the movement is from right to left. The unit is vp/s.<br>Value range: (-∞, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| velocityY<sup>10+</sup> | number | No| No |Velocity along the y-axis. This parameter is used in [PanGesture](ts-basic-gestures-pangesture.md). The origin of the coordinate axis is the upper left corner of the screen. The velocity is positive if the movement is from top to bottom, and it is negative if the movement is from bottom to top. The unit is vp/s.<br>Value range: (-∞, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| velocity<sup>10+</sup> | number | No| No |Velocity along the main axis. This parameter is used in [PanGesture](ts-basic-gestures-pangesture.md). The value is the arithmetic square root of the sum of squares of the velocity along the x- and y-axis. The unit is vp/s.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| tapLocation<sup>20+</sup> | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20) | No| Yes |Coordinate information of the current tap gesture.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| velocityX<sup>10+</sup> | number | No| No |Velocity along the x-axis. This parameter is used in [PanGesture](ts-basic-gestures-pangesture.md). The origin of the coordinate axis is the upper left corner of the screen. The velocity is positive if the movement is from left to right, and it is negative if the movement is from right to left. The unit is vp/s.<br>Value range: (-∞, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| velocityY<sup>10+</sup> | number | No| No |Velocity along the y-axis. This parameter is used in [PanGesture](ts-basic-gestures-pangesture.md). The origin of the coordinate axis is the upper left corner of the screen. The velocity is positive if the movement is from top to bottom, and it is negative if the movement is from bottom to top. The unit is vp/s.<br>Value range: (-∞, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| velocity<sup>10+</sup> | number | No| No |Velocity along the main axis. This parameter is used in [PanGesture](ts-basic-gestures-pangesture.md). The value is the arithmetic square root of the sum of squares of the velocity along the x- and y-axis. The unit is vp/s.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| tapLocation<sup>20+</sup> | [EventLocationInfo](ts-basic-gestures-tapgesture.md#eventlocationinfo20) | No| Yes |Coordinate information of the current tap gesture. For non-tap gestures, the return value of **tapLocation** is **undefined**.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## GestureMask
 
@@ -616,8 +616,6 @@ Enumerates gesture competition results.
 
 Enumerates gesture recognizer types.
 
-**Model restriction**: This API can be used only in the stage model.
-
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -645,7 +643,7 @@ Defines the gesture information type.
 | ---------------  | ---------------------|----|------| -----------|
 | tag              | string                | No| Yes| Gesture tag.<br>**NOTE**<br>Returns **undefined** if the gesture's **tag** attribute was not set.     |
 | type             | [GestureControl.GestureType](./ts-gesture-common.md#gesturetype11) | No| No| Gesture type.<br>**NOTE**<br> Returns **-1** for built-in gestures of unexposed types.|
-| isSystemGesture  | boolean                 | No| No| Whether the gesture is a system/component gesture. **true** if the gesture is a system/component gesture, **false** otherwise.<br>Default value: **false**.|
+| isSystemGesture  | boolean                 | No| No| Whether the gesture is a system/component gesture. **true** if the gesture is a system/component gesture, **false** otherwise.<br>Default value: **false**|
 
 ## FingerInfo<sup>8+</sup>
 
@@ -655,16 +653,16 @@ Defines the finger information type.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- |  -------- |--------- |-------- |
-| id | number | No | No    |Index of the finger, determined by the number of fingers pressed. The first pressed finger is assigned 0, with the index incrementing by one for each subsequent finger.<br>**NOTE**<br> Indexes for other input sources (mouse: 1001, stylus: 102, mouse wheel: 0, two-finger trackpad slide: 0) are also converted to finger indexes.<br>Value range: [0, 9).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| globalX | number | No |  No    |X-coordinate relative to the upper left corner of the application window, in vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| globalY | number | No |  No    |Y-coordinate relative to the upper left corner of the application window, in vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| localX | number | No |  No    |X-coordinate relative to the upper left corner of the current component's original area, in vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| localY | number | No |  No    |Y-coordinate relative to the upper left corner of the current component's original area, in vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| displayX<sup>12+</sup> | number | No | No    | X-coordinate relative to the upper left corner of the screen, in vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| displayY<sup>12+</sup> | number | No |  No    |Y-coordinate relative to the upper left corner of the screen, in vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| id | number | No | No    |Index of the finger, determined by the number of fingers pressed. The first pressed finger is assigned 0, with the index incrementing by one for each subsequent finger.<br>**NOTE**<br> Indexes for other input sources (mouse: 1001, stylus: 102, mouse wheel: 0, two-finger trackpad slide: 0) are also converted to finger indexes.<br>Value range: [0, 9)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| globalX | number | No |  No    |X-coordinate relative to the upper left corner of the application window, in vp.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| globalY | number | No |  No    |Y-coordinate relative to the upper left corner of the application window, in vp.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| localX | number | No |  No    |X-coordinate relative to the upper left corner of the current component's original area, in vp.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| localY | number | No |  No    |Y-coordinate relative to the upper left corner of the current component's original area, in vp.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| displayX<sup>12+</sup> | number | No | No    | X-coordinate relative to the upper left corner of the screen, in vp.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| displayY<sup>12+</sup> | number | No |  No    |Y-coordinate relative to the upper left corner of the screen, in vp.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | hand<sup>15+</sup> | [InteractionHand](./ts-appendix-enums.md#interactionhand15) | No |  Yes    |Whether the event is triggered by a left-hand or right-hand tap.<br>**Atomic service API**: This API can be used in atomic services since API version 15.|
-| globalDisplayX<sup>20+</sup> | number | No |  Yes    |X-coordinate relative to the upper left corner of the global display, in vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
-| globalDisplayY<sup>20+</sup> | number | No |  Yes    |Y-coordinate relative to the upper left corner of the global display, in vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayX<sup>20+</sup> | number | No |  Yes    |X-coordinate relative to the upper left corner of the global display, in vp.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayY<sup>20+</sup> | number | No |  Yes    |Y-coordinate relative to the upper left corner of the global display, in vp.<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## GestureType
 
@@ -694,8 +692,8 @@ Defines the basic gesture event type. Inherits from [BaseEvent](./ts-gesture-cus
 
 | Name     | Type                                 | Read-Only  |    Optional  | Description       |
 | ---------  | -------------------------------------|-------| -----------|  -----------|
-| fingerList | [FingerInfo[]](./ts-gesture-common.md#fingerinfo8) | No| No| Information about all fingers triggering the event.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| fingerInfos<sup>20+</sup> | [FingerInfo[]](./ts-gesture-common.md#fingerinfo8)  | No| Yes| Information about all valid touch points. The default value is an empty array **[]**, and an empty array indicates no effective touch point information.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
+| fingerList | [FingerInfo](./ts-gesture-common.md#fingerinfo8)[] | No| No| Information about all fingers triggering the event.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| fingerInfos<sup>20+</sup> | [FingerInfo](./ts-gesture-common.md#fingerinfo8)[]  | No| Yes| Information about all valid touch points. The default value is an empty array **[]**, and an empty array indicates no effective touch point information.<br>**Atomic service API**: This API can be used in atomic services since API version 20.|
 
 ## TapGestureEvent<sup>11+</sup>
 

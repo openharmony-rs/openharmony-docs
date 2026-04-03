@@ -470,14 +470,14 @@ async function LetKeyAttest(keyAlias: string, keyOptions: Array<huks.HuksParam>)
   let attestOptions: huks.HuksOptions = {
     properties: keyOptions,
   }
-  console.info ('start attestation')
+  console.info('Start attestation')
   await huks.attestKeyItemAsUser(userId, keyAlias, attestOptions).then((data) => {
     console.info('attestation ok!')
     console.debug(`The obtained certificate chain is ${JSON.stringify(data)}`) // Debugging information. The certificate chain does not need to be printed during the service function development.
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.debug(`Certificate ${i} is ${data.certChains[i]}`) // Debugging information. The certificate chain does not need to be printed during the service function development.
     }
-    console.info ("attest successful")
+    console.info("Attestation successful")
   }).catch((err: BusinessError) => {
     console.error("Attestation failed. Error code: " + err.code +" Error message: "+ err.message)
   })
@@ -633,9 +633,9 @@ async function LetKeyAnonAttest(keyAlias: string, keyOptions: Array<huks.HuksPar
     for (let i = 0; data?.certChains?.length && i < data?.certChains?.length; ++i) {
       console.info(`Certificate ${i} is ${data.certChains[i]}`)
     }
-    console.info ("Anonymous attest successful")
+    console.info("Anonymous attestation successful")
   }).catch((err: BusinessError) => {
-    console.error("Anonymous attestation failed. Error code: "+ err.code +" Error message: "+ err.message)
+    console.error("Anonymous attestation failed. Error code: " + err.code +" Error message: " + err.message)
   })
 }
 
@@ -655,7 +655,7 @@ export default function HuksAsUserTest() {
 
 importWrappedKeyItemAsUser(userId: number, keyAlias: string, wrappingKeyAlias: string, huksOptions: HuksOptions) : Promise\<void>
 
-Imports a wrapped (encrypted) key for the specified user. This API uses a promise to return the result.
+Imports a key securely for the specified user. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
@@ -1421,7 +1421,7 @@ async function ExportPublicKey(keyAlias: string) {
     }]
   }
   await huks.exportKeyItemAsUser(userId, keyAlias, options).then((data) => {
-    console.info("Exported the public key with the alias of: " + keyAlias + ". The data length is" + data?.outData?.length)
+    console.info("Exported the public key with the alias of: " + keyAlias + ". The data length is " + data?.outData?.length)
   }).catch((err: BusinessError) => {
     console.error("Failed to export the key. Error code: " + err.code + " Error message: " + err.message)
   })
@@ -1462,7 +1462,7 @@ Obtains key properties for the specified user. This API uses a promise to return
 
 | Type                                           | Description                                                        |
 | ----------------------------------------------- | ------------------------------------------------------------ |
-| Promise\<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise used to return the result. If the operation is successful, **properties** in **HuksReturnResult** holds the parameters required for generating the key.
+| Promise\<[HuksReturnResult](js-apis-huks.md#huksreturnresult9)> | Promise used to return the result. If the operation is successful, **properties** in **HuksReturnResult** holds the parameters required for generating the key.|
 
 **Error codes**
 
@@ -1842,7 +1842,7 @@ async function EncryptData(keyAlias: string, encryptProperties: Array<huks.HuksP
   await huks.initSessionAsUser(userId, keyAlias, options).then((data) => {
     handle = data.handle;
   }).catch((err: BusinessError) => {
-    console.error("Failed to initialize the key session. Error code: "+ err.code +" Error message: "+ err.message)
+    console.error("Failed to initialize the key session. Error code: " + err.code + " Error message: " + err.message)
   })
   await huks.finishSession(handle, options).then((data) => {
     console.info("Data is encrypted. Ciphertext: " + Uint8ArrayToString(data.outData))
@@ -1851,7 +1851,7 @@ async function EncryptData(keyAlias: string, encryptProperties: Array<huks.HuksP
     }
     console.info("running time result success!")
   }).catch((err: BusinessError) => {
-    console.error("An exception is captured in the encryption process. Error code: " + err.code +" Error message: "+ err.message)
+    console.error("An exception is captured in the encryption process. Error code: " + err.code + " Error message: " + err.message)
   })
   return cipherData
 }
@@ -1865,12 +1865,12 @@ async function DecryptData(keyAlias: string, decryptProperties: Array<huks.HuksP
   await huks.initSessionAsUser(userId, keyAlias, options).then((data) => {
     handle = data.handle;
   }).catch((err: BusinessError) => {
-    console.error("Failed to initialize the key session. Error code: "+ err.code +" Error message: "+ err.message)
+    console.error("Failed to initialize the key session. Error code: " + err.code + " Error message: " + err.message)
   })
   await huks.finishSession(handle, options).then((data) => {
     console.info("Data is decrypted. Plaintext: " + Uint8ArrayToString(data.outData))
   }).catch((err: BusinessError) => {
-    console.error("An exception is captured in the decryption process. Error code: " + err.code +" Error message: "+ err.message)
+    console.error("An exception is captured in the decryption process. Error code: " + err.code + " Error message: " + err.message)
   })
 }
 

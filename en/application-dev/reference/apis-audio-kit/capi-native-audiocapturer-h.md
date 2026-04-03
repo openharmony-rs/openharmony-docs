@@ -517,7 +517,7 @@ Defines the callback used to read audio data.
 | Name| Description|
 | -- | -- |
 | [OH_AudioCapturer](capi-ohaudio-oh-audiocapturerstruct.md)* capturer | Pointer to an audio capturer instance, which is created by calling [OH_AudioStreamBuilder_GenerateCapturer](capi-native-audiostreambuilder-h.md#oh_audiostreambuilder_generatecapturer).|
-|  void* userData | Pointer to the data storage area customized by the application.|
+|  void* userData | Pointer to the data storage region customized by an application, allowing the application to transfer data to itself.|
 |  void* audioData | Pointer to the captured data storage area, which is used by the application to read captured data.|
 | int32_t audioDataSize | Length of the captured data.|
 

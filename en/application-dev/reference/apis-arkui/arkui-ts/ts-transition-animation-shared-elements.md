@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-A shared element transition is a transition animation applied to a component that is present on two pages. This component is called the shared element and can be set in the **sharedTransition** attribute, , which is effective only during [page routing](../js-apis-router.md) transitions.
+A shared element transition is a transition animation applied to a component that is present on two pages. This component is called the shared element and can be set in the **sharedTransition** attribute. The **sharedTransition** attribute is effective only during [page routing](../js-apis-router.md) transitions.
 
 > **NOTE**
 >
@@ -54,7 +54,7 @@ Parameters of the shared element transition animation.
 | duration          |     number   |  No |    Yes         | Animation duration.<br>Default value: **1000**<br>Unit: ms<br>Value range: [0, +∞)|
 | curve             |      [Curve](ts-appendix-enums.md#curve)&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[ICurve](../js-apis-curve.md#icurve9)  | No| Yes| Animation curve.<br>You are advised to specify the curve using the **Curve** or **ICurve** type.<br>For the string type, this parameter indicates an animation interpolation curve. For available values, see the **curve** parameter in [AnimateParam](./ts-explicit-animation.md#animateparam).<br>Default value: **Curve.Linear**|
 | delay          |     number   |  No |  Yes        | Delay of animation playback.<br>Default value: **0**<br>Unit: ms|
-| motionPath          | [MotionPathOptions](./ts-motion-path-animation.md)  |  No  |  Yes       | Motion path.|
+| motionPath          | [MotionPathOptions](./ts-motion-path-animation.md#motionpathoptions)  |  No  |  Yes       | Motion path.|
 | zIndex          |     number   |  No  |   Yes          | Z-axis.<br>Value range: (-∞, +∞)<br>Default value: **0**|
 | type           |     [SharedTransitionEffectType](ts-appendix-enums.md#sharedtransitioneffecttype)   |  No |  Yes| Animation type.<br>Default value: **SharedTransitionEffectType.Exchange**|
 

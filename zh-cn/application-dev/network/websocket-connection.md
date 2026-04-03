@@ -8,17 +8,19 @@
 
 ## 场景介绍
 
-WebSocket是一种网络通信协议，它允许客户端和服务器之间建立一个持久的连接，并在该连接上进行全双工通信，连接之后客户端和服务器端可以同时主动发送数据，这是WebSocket和传统的HTTP协议最大的区别，HTTP以单向通信为主，客户端发起请求，服务器端响应数据，一次传输之后，连接会断开。一般情况下，HTTP适用于一次性数据获取（如网页内容加载），Websocket适用于实时性要求高的场景下（如在线聊天、实时游戏），以避免频繁建立连接提升用户体验。
+WebSocket是一种网络通信协议，它允许客户端和服务器之间建立一个持久的连接，并在该连接上进行全双工通信，连接之后客户端和服务器端可以同时主动发送数据，这是WebSocket和传统的HTTP协议最大的区别，HTTP以单向通信为主，客户端发起请求，服务器端响应数据，一次传输之后，连接会断开。一般情况下，HTTP适用于一次性数据获取（如网页内容加载），WebSocket适用于实时性要求高的场景下（如在线聊天、实时游戏），以避免频繁建立连接提升用户体验。
 
 该模块给第三方应用提供webSocket客户端和服务端能力，实现客户端与服务端的双向连接，目前服务端仅支持智慧屏使用。
 
 客户端：使用WebSocket建立服务器与客户端的双向连接，需要先通过[createWebSocket()](../reference/apis-network-kit/js-apis-webSocket.md#websocketcreatewebsocket)方法创建[WebSocket](../reference/apis-network-kit/js-apis-webSocket.md#websocket)对象，然后通过[connect()](../reference/apis-network-kit/js-apis-webSocket.md#connect)方法连接到服务器。当连接成功后，客户端会收到[open](../reference/apis-network-kit/js-apis-webSocket.md#onopen)事件的回调，之后客户端就可以通过[send()](../reference/apis-network-kit/js-apis-webSocket.md#send)方法与服务器进行通信。当服务器发信息给客户端时，客户端会收到[message](../reference/apis-network-kit/js-apis-webSocket.md#onmessage)事件的回调。当客户端想要取消此连接时，通过调用[close()](../reference/apis-network-kit/js-apis-webSocket.md#close)方法主动断开连接后，客户端会收到[close](../reference/apis-network-kit/js-apis-webSocket.md#onclose)事件的回调。若在上述任一过程中发生错误，客户端会收到[error](../reference/apis-network-kit/js-apis-webSocket.md#onerror)事件的回调。
 
+关于[error](../reference/apis-network-kit/js-apis-webSocket.md#onerror)事件回调的错误码说明：WebSocket的本质是HTTP协议升级，若服务器同意升级，服务器会返回101状态码表示协议从HTTP切换为WebSocket协议（触发[open](../reference/apis-network-kit/js-apis-webSocket.md#onopen)回调），而如果服务器拒绝了升级或出现其他异常，则返回200，表示服务器只是将请求当作普通的HTTP请求来处理。
+
 服务端：（目前服务端仅支持智慧屏使用）使用WebSocket建立服务器与客户端的双向连接，需要先通过[createWebSocketServer()](../reference/apis-network-kit/js-apis-webSocket.md#websocketcreatewebsocketserver19)方法创建[WebSocketServer](../reference/apis-network-kit/js-apis-webSocket.md#websocketserver19)对象，然后通过[start()](../reference/apis-network-kit/js-apis-webSocket.md#start19)方法启动服务器，监听客户端申请建链的消息。当连接成功后，服务端会收到[connect](../reference/apis-network-kit/js-apis-webSocket.md#onconnect19)事件的回调，之后服务端可以通过[send()](../reference/apis-network-kit/js-apis-webSocket.md#send19)方法与客户端进行通信，可以通过[listAllConnections()](../reference/apis-network-kit/js-apis-webSocket.md#listallconnections19)方法列举出当前与服务端建链的所有客户端信息。当客户端给服务端发消息时，服务端会收到[messageReceive](../reference/apis-network-kit/js-apis-webSocket.md#onmessagereceive19)事件回调。当服务端想断开某个与客户端的连接时，可以通过调用[close()](../reference/apis-network-kit/js-apis-webSocket.md#close19)方法主动断开与某个客户端的连接，之后服务端会收到[close](../reference/apis-network-kit/js-apis-webSocket.md#onclose19)事件的回调。当服务端想停止service时，可以调用[stop()](../reference/apis-network-kit/js-apis-webSocket.md#stop19)方法。若在上述任一过程中发生错误，服务端会收到[error](../reference/apis-network-kit/js-apis-webSocket.md#onerror19)事件的回调。
 
 > **说明：**
 >
-> websocket支持[心跳检测机制](https://datatracker.ietf.org/doc/html/rfc6455#section-5.5.2)，在客户端和服务端建立webSocket连接之后，从连接建立或者客户端收到Pong帧开始计时，每间隔pingInterval秒客户端会发送Ping帧给服务器。服务器若支持websocket协议则会在收到Ping帧后自动回复Pong帧，表示连接正常，若服务端异常或服务端不支持websocket协议则不会回复Pong帧；若Ping帧发出去后，pongTimeout秒内没有收到Pong帧，则会主动断开连接。支持开发者关闭心跳检测机制，自定义pingInterval与pongTimeout，详情请参考[WebsocketRequestOptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)。
+> websocket支持[心跳检测机制](https://datatracker.ietf.org/doc/html/rfc6455#section-5.5.2)，在客户端和服务端建立webSocket连接之后，从连接建立或者客户端收到Pong帧开始计时，每间隔pingInterval秒客户端会发送Ping帧给服务器。服务器若支持websocket协议则会在收到Ping帧后自动回复Pong帧，表示连接正常，若服务端异常或服务端不支持websocket协议则不会回复Pong帧；若Ping帧发出去后，pongTimeout秒内没有收到Pong帧，则会主动断开连接。支持开发者关闭心跳检测机制，自定义pingInterval与pongTimeout，详情请参考[WebSocketRequestOptions](../reference/apis-network-kit/js-apis-webSocket.md#websocketrequestoptions)。
 > 服务端从API version 19开始支持。
 
 ## client端开发步骤

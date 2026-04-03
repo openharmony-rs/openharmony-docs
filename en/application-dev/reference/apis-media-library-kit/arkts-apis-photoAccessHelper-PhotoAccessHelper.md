@@ -161,7 +161,7 @@ Obtains burst assets. This API uses a promise to return the result.
 
 | Name | Type               | Mandatory| Description            |
 | ------- | ------------------- | ---- | ---------------- |
-| burstKey | string   | Yes  | UUID of a set of burst photos (**BURST_KEY** of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)). The value is a string of 36 characters.|
+| burstKey | string   | Yes  | Universally Unique Identifier (UUID) of a group of burst photos, that is, **BURST_KEY** of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys). The string contains 36 bytes.|
 | options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions)   | Yes  | Retrieval options.    |
 
 **Return value**
@@ -838,7 +838,7 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 Displays a dialog box for the user to confirm whether to save the images or videos. If the user agrees to save the images or videos, this API returns a list of URIs that have been created and granted save permissions (this list is permanent), and the application can use these URIs to write the images or videos. If the user declines to save the images or videos, this API returns an empty list.
 
-The dialog box must display the application name, but this cannot be directly obtained. Therefore, when calling this API, ensure that the **abilities** tag in the **module.json5** file is configured with **label** and **icon** items. Note that the icon is not affected by the **icon** item in the **abilities** tag and cannot be modified.
+The dialog box must display the application name, but this cannot be directly obtained. Therefore, before calling this API, ensure that the **label** and **icon** items are configured in the **abilities** tag in the [module.json5 configuration file](../../../application-dev/quick-start/module-configuration-file.md). Note that the icon is not affected by the **icon** item in the **abilities** tag and cannot be modified.
 
 > **NOTE**
 >

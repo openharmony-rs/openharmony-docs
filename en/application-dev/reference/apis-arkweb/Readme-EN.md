@@ -76,7 +76,7 @@
     - [Interfaces (Others)](arkts-basic-components-web-i.md)
     - [Enums](arkts-basic-components-web-e.md)
     - [Types](arkts-basic-components-web-t.md)
-    - [Deprecated Class (WebController, deprecated)](arkts-basic-components-web-WebController.md)
+    - [Class (WebController)](arkts-basic-components-web-WebController.md)
 - C API<!--arkweb-c-->
   - Modules<!--arkweb-module-->
     - [Web](capi-web.md)
