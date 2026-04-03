@@ -212,7 +212,6 @@ hdc shell "bm dump -n com.example.myapplication | grep appProvisionType"
 | RES_RN_HERMES_HEAP | RN HERMES内存分配跟踪。 | 23 |
 | RES_DART_HEAP | DART框架内存分配跟踪。 | 23 |
 
-
 **结果分析**
 
 开启fp回栈+跨语言回栈（其中绿色部分为js栈）：
