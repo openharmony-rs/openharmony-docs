@@ -316,7 +316,7 @@ apiAvailable(version: string | number): boolean;
 检查指定的API版本在当前设备上是否可用。</br>
 此方法跨提供不同OpenHarmony/分布式操作系统版本的兼容性检查。它会根据输入格式和API版本范围自动选择合适的版本检查方法。
 
-**原子化服务API**：从API version 26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API**：从API版本26开始，该接口支持在原子化服务中使用。
 
 **模型约束：** 此接口Stage模型和FA模型下皆可使用。
 
