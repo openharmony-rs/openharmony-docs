@@ -5671,6 +5671,34 @@
 
 **起始版本**：24
 
+### ohos.permission.MODIFY_AGENT_CARD
+
+允许系统应用更新和删除AgentCard。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：General
+
+**起始版本**：26.0.0
+
+### ohos.permission.START_ABILITY_TO_PAGE
+
+允许系统应用启动其他应用到指定页面栈。
+
+**权限级别**：system_core
+
+**授权方式**：系统授权（system_grant）
+
+**ACL使能**：true
+
+**支持设备**：Phone | Tablet
+
+**起始版本**：26.0.0
+
 ## ohos.permission.ENCRYPT_VOLUME_MANAGER
 
 允许应用调用storage_manager服务中管理卷加密的接口。

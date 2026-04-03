@@ -506,6 +506,60 @@ RelativeContainer() {
 })
 ```
 
+<!--Del-->
+### moveTo<sup>(deprecated)</sup>
+
+moveTo(x: number, y: number): Promise\<void>
+
+移动划词面板至屏幕指定位置。使用Promise异步回调。
+
+> **说明：**
+>
+> 从API version 20开始支持，从API version 24开始废弃。建议使用[moveToGlobalDisplay](#movetoglobaldisplay)替代。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明     |
+| -------- | ---------------------- | ---- | -------- |
+| x | number | 是   |x轴方向移动的值，单位为px。|
+| y | number | 是   |y轴方向移动的值，单位为px。|
+
+**返回值：**
+
+| 类型   | 说明                             |
+| ------- | ------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。  |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[划词服务错误码](errorcode-selection.md)。
+
+| 错误码ID   | 错误信息                       |
+| ---------- | ----------------------------- |
+| 33600001   | Selection service exception. |
+| 33600002   | This selection window has been destroyed. |
+
+**示例：**
+<!--code_no_check-->
+```ts
+import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  selectionPanel.moveTo(200, 200).then(() => {
+    console.info('Succeeded in moving the panel.');
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+  });
+} catch (err) {
+  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
+}
+```
+<!--DelEnd-->
+
 ### moveToGlobalDisplay
 
 moveToGlobalDisplay(x: number, y: number): Promise\<void>

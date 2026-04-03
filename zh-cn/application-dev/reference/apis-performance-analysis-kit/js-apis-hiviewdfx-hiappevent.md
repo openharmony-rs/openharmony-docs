@@ -1314,6 +1314,8 @@ type ParamType = number | string | boolean | Array&lt;string&gt;
 
 ## hiAppEvent.event
 
+### 常量
+
 提供事件名称常量。包含系统事件名称常量和应用事件名称常量，其中应用事件名称常量是为开发者在调用[Write](#hiappeventwrite-1)接口进行应用事件打点时预留的可选自定义事件名称。
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent

@@ -302,14 +302,15 @@ struct ImageExample {
     let onDrawChildrenComplete_uniqueId:(childIds: number[])=>void = (childIds: number[]) : void => {
       // The onDrawChildren API is added since API version 24. After the DrawChildren event is received, you can customize the implementation logic.
     }
-  }
+
     let uniqueId: number = this.getUniqueId();
     let listenerForUniqueId: inspector.ComponentObserver = this.getUIContext().getUIInspector().createComponentObserver(uniqueId)
     listenerForUniqueId.onLayoutChildren(onLayoutChildrenComplete)
     this.listenerForRow.onDrawChildren(onDrawChildrenComplete_uniqueId)
-    // Unregister callbacks through the handle. You should decide when to call these APIs.
-    // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
-    // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
   }
+
+  // Unregister callbacks through the handle. You should decide when to call these APIs.
+  // listenerForUniqueId.offLayoutChildren(onLayoutChildrenComplete)
+  // this.listenerForRow.offDrawChildren(onDrawChildrenComplete_uniqueId)
 }
 ```

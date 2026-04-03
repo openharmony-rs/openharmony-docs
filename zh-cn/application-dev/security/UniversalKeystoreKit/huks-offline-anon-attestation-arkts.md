@@ -30,7 +30,7 @@
 
 ``` TypeScript
 import huks from '@ohos.security.huks';
-import {BusinessError} from "@kit.BasicServicesKit";
+import { BusinessError } from "@kit.BasicServicesKit";
 
 function StringToUint8Array(str: String) {
   let arr: number[] = new Array();
@@ -43,39 +43,43 @@ function StringToUint8Array(str: String) {
 let g_challenge: Uint8Array = StringToUint8Array("hi_challenge_data");
 let g_keyAlias: Uint8Array = StringToUint8Array("testKey");
 
-let gCommonParam : Array<huks.HuksParam> = [
-  {tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE, value: g_challenge},
-  {tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS, value: g_keyAlias},
+let gCommonParam: Array<huks.HuksParam> = [
+  { tag: huks.HuksTag.HUKS_TAG_ATTESTATION_CHALLENGE, value: g_challenge },
+  { tag: huks.HuksTag.HUKS_TAG_ATTESTATION_ID_ALIAS, value: g_keyAlias },
 ];
 
 let gKeyParam: Array<huks.HuksParam> = [
   {
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,
     value: huks.HuksKeyAlg.HUKS_ALG_ECC
-  }, {
-  tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
-  value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
-}, {
-  tag: huks.HuksTag.HUKS_TAG_PURPOSE,
-  value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
-}, {
-  tag: huks.HuksTag.HUKS_TAG_PADDING,
-  value: huks.HuksKeyPadding.HUKS_PADDING_NONE
-}, {
-  tag: huks.HuksTag.HUKS_TAG_DIGEST,
-  value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
-}
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_KEY_SIZE,
+    value: huks.HuksKeySize.HUKS_ECC_KEY_SIZE_256
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PURPOSE,
+    value: huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_SIGN | huks.HuksKeyPurpose.HUKS_KEY_PURPOSE_VERIFY
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_PADDING,
+    value: huks.HuksKeyPadding.HUKS_PADDING_NONE
+  },
+  {
+    tag: huks.HuksTag.HUKS_TAG_DIGEST,
+    value: huks.HuksKeyDigest.HUKS_DIGEST_SHA256
+  }
 ]
 
-let gKeyOption: huks.HuksOptions = {properties: gKeyParam};
+let gKeyOption: huks.HuksOptions = { properties: gKeyParam };
 
 async function AnonAttestKeyOfflineTest() {
-  let testKeyAlias : string = "testKey";
+  let testKeyAlias: string = "testKey";
   await huks.generateKeyItem(testKeyAlias, gKeyOption);
 
-  await huks.anonAttestKeyItemOffline(testKeyAlias, gCommonParam).then((data)=> {
+  await huks.anonAttestKeyItemOffline(testKeyAlias, gCommonParam).then((data) => {
     console.info("anonAttestKeyItemOffline success")
-  }).catch((error:BusinessError) =>
+  }).catch((error: BusinessError) =>
   console.error(`anonAttestKeyItemOffline error ${JSON.stringify(error)}`))
 }
 ```

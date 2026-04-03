@@ -8,7 +8,7 @@
 
 ## Overview
 
-Provides drag and drop APIs of ArkUI on the native side. For details, see [Implementing Unified Drag and Drop](../../ui/ndk-drag-event.md).
+Provides drag and drop APIs of ArkUI on the native side. For details, see [Drag Event](../../ui/ndk-drag-event.md).
 
 Provides the general key event APIs of ArkUI on the native side.
 

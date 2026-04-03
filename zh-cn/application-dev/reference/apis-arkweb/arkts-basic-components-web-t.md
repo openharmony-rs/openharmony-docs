@@ -326,7 +326,7 @@ type OnDetectBlankScreenCallback = (event: BlankScreenDetectionEventInfo) => voi
 
 type OnCameraCaptureStateChangeCallback = (event: CameraCaptureStateChangeInfo) => void;
 
-当页面摄像头状态发生改变时触发此回调。
+当页面摄像设备状态发生改变时触发此回调。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

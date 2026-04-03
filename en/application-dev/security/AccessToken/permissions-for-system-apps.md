@@ -5671,6 +5671,34 @@ With this permission, the application can always use sensors.
 
 **Since**: 24
 
+## ohos.permission.MODIFY_AGENT_CARD
+
+Allows a system application to update and delete AgentCard.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**Valid since**: 26.0.0
+
+### ohos.permission.START_ABILITY_TO_PAGE
+
+Allows a system application to launch another application to a specified page stack.
+
+**Permission level**: system_core
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: Phone | Tablet
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ENCRYPT_VOLUME_MANAGER
  	 
 Allows an application to call the API of storage manager for managing volume encryption.

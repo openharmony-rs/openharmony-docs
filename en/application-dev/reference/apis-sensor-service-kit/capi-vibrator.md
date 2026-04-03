@@ -16,4 +16,4 @@ Provides APIs for vibrator services to access the vibrator driver.
 | Name| Description|
 | -- | -- |
 | [vibrator.h](capi-vibrator-h.md) | Declares the APIs for starting or stopping vibration.|
-| [vibrator_type.h](capi-vibrator-type-h.md) | Defines the structs for the vibrator attribute and vibrator file description and provides the enums for error codes and vibration scenarios.|
+| [vibrator_type.h](capi-vibrator-type-h.md) | Declares the APIs for starting or stopping vibration.|

@@ -38,6 +38,7 @@ setValue(admin: Want, item: string, value: string): void
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
@@ -570,7 +571,7 @@ try {
 ## SettingsItem<sup>24+</sup>
 
 设置的策略类型。
- 	 
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 
@@ -582,7 +583,7 @@ try {
 ## SettingsMenu<sup>24+</sup>
 
 设置项列表。
- 	 
+
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
 | 名称   | 值 | 说明         |
