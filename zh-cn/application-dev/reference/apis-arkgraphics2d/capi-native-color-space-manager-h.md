@@ -27,7 +27,7 @@
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ColorSpacePrimaries](capi-nativecolorspacemanager-colorspaceprimaries.md) | ColorSpacePrimaries | 提供色彩原色结构体声明。 |
-| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | - | 提供白点数组结构体，白点是指在当前色域中表示白色的坐标。 |
+| [WhitePointArray](capi-nativecolorspacemanager-whitepointarray.md) | WhitePointArray | 提供白点数组结构体，白点是指在当前色域中表示白色的坐标。 |
 | [OH_NativeColorSpaceManager](capi-nativecolorspacemanager-oh-nativecolorspacemanager.md) | OH_NativeColorSpaceManager | 提供OH_NativeColorSpaceManager结构体声明。 |
 
 ### 枚举
