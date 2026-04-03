@@ -43,6 +43,7 @@ import { inputConsumer, KeyEvent } from '@kit.InputKit';
 
 **设备行为差异**：该接口仅在Phone和Tablet设备上生效，在其他设备上返回801错误码。
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | 名称        | 类型   | 只读   | 可选   | 说明      |
 | --------- | ------ | ------- | ------- | ------- |
 | key       | number  | 否      | 否      | 按键键值。<br/>**说明：** 从API version 21开始，支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键、[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode)键、[KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode)键和[KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode)键。<br/>对于API version 20及之前的版本，仅支持[KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode)键和[KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode)键。 |
