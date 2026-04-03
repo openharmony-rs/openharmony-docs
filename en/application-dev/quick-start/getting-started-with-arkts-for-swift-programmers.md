@@ -50,7 +50,7 @@ let version = 5.0;
 | **Set**: `var mySet: Set<String> = ["a", "b"]`| **Set**: `let mySet: Set<string> = new Set(["a", "b"]);`| `mySet.add('c'); // Add an element to the set.`<br>`for (const item of mySet) {...); // Iterate through the set.`<br>| Swift sets are declared by specifying types.<br>ArkTS sets are flexible and suitable for dynamic scenarios.|  
 | **Dictionary**: `var dict: [String: Int] = ["key": 1]`| **Map**: `let map: Map<string, number> = new Map();`| `map.set('key', 1); // Add a KV pair.`<br>`let value = map.get('key'); // Obtain the value.`<br>`map.has('key'); // Check whether the key exists.`<br>| Swift **Dictionary** requires explicit declaration of types.<br>ArkTS Map supports chain calls, which is more direct.|  
 | **Protocol**: `protocol Shape { func area() -> Double }`| **interface**: `interface Shapes { area(): number; }`| `class Rectangles implements Shapes {`<br>`  public width: number = 0;`<br>`  public height: number = 0;`<br>`  area(): number { return this.width * this.height; }`<br>`}`<br>| The syntax structures of Swift and ArkTS are similar, but ArkTS APIs do not require explicit modifiers and support optional properties.|  
-| **Class**: `class Circle: Shape { /* Class definition */ }`| **class**: `class Circles implements Shape { /* Class definition */ }`| `class Circles {`<br>`  radius: number;`<br>`  constructor(radius: number = 10) { // Support default parameter values.`<br>`    this.radius = radius;`<br>`  }`<br>`}`<br>| ArkTS classes support default property values and optional parameters. Constructor parameters can be directly declared as class properties, which is more concise.|  
+| **Class**: `class Circle: Shape { /* Class definition */ }`| **class**: `class Circles implements Shape { /* Class definition */ }`| `class Circles {`<br>`  radius: number;`<br>`  constructor(radius: number = 10) { // Support default parameter values.`<br>`    this.radius = radius;`<br>`  }`<br>`}`<br>| ArkTS classes support property default values and optional parameters, featuring a more concise syntax.|  
 | **Enumeration**: `enum Color { case red, green, blue }`| **enum**: `enum Colors { Red, Green, Blue }`| `enum Colors { Red = 1, Green, Blue };`<br>`let color = Colors.Green; // The value is 2, which is automatically incremented.`<br>| The basic concepts are the same. However, ArkTS enum does not support custom constructors and methods like Swift. Only a simple numeric or string enum is supported.|  
 
 ### Functions and Closures
@@ -83,16 +83,16 @@ function foo(x: string): void;            /*  Second function definition  */
 function foo(x: number | string): void {  /*  Function implementation       */
 }
 
-foo(123);     // Use the first function definition.
-foo('aa'); // Use the second function definition.
+foo(123);     // OK. Use the first function definition.
+foo('aa'); // OK. Use the second function definition.
 ```
 
 2. ArkTS uses **?** for optional parameters, for example, **function foo(name?: string)**, instead of the default value syntax in Swift.
 ```typescript
 function foo(name?: string){}  /*  name is an optional parameter.  */
 
-foo('hello');     //  Pass in the name parameter.
-foo();     //  Do not pass in the name parameter.
+foo('hello');     //  OK. Pass the name parameter.
+foo();     //  OK. Do not pass the name parameter.
 ```
 
 ### Utils

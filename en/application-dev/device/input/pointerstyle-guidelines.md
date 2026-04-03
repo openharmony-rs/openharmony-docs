@@ -19,7 +19,7 @@ import { pointer } from '@kit.InputKit';
 
 ## Available APIs
 
-The following table lists the common APIs for mouse pointer management. For details about the APIs, see [ohos.multimodalInput.pointer](../../reference/apis-input-kit/js-apis-pointer.md).
+The following table lists common APIs for mouse pointer management. For details, see [@ohos.multimodalInput.pointer](../../reference/apis-input-kit/js-apis-pointer.md).
 
 | API                                                      | Description                                                        |
 | ------------------------------------------ | ------------------------------------------------------- |

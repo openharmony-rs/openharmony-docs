@@ -83,7 +83,7 @@ Cross-device connection management enables real-time processing of application b
 
 ### Available APIs
 
-For details about how to use the **DistributedExtensionAbility** APIs, see [DistributedExtensionAbility API Reference](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md).
+For details about how to use the APIs, see [@ohos.application.DistributedExtensionAbility (Distributed Extension)](../reference/apis-distributedservice-kit/js-apis-distributedExtensionAbility.md).
 
 | Name                                                              | Description                      |
 | -------------------------------------------------------------------- | -------------------------- |

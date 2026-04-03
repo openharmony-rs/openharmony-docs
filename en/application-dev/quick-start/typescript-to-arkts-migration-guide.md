@@ -127,7 +127,7 @@ let p4 = new Point(4.0, 4.0);
 p4.x = 'Hello!';          // Compile-time error in TypeScript and ArkTS
 (p4 as any).x = 'Hello!'; // OK in TypeScript; compile-time error in ArkTS
 
-// Use the Point objects which are compliant with the class definition:
+// Usage of Point objects which are compliant with the class definition:
 function distance(p1: Point, p2: Point): number {
   return Math.sqrt(
     (p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y)
@@ -1713,7 +1713,7 @@ for (let i = 1; i < data.length; ++i) {
 ArkTS supports the comma operator (,) only in **for** loops. In other cases, the comma operator is useless as it makes the execution order harder to understand.
 > **NOTE**
 >
-> This is different from the comma separator used to declare variables and pass function parameters.
+> - This is different from the comma separator used to declare variables and pass function parameters.
 
 **TypeScript**
 
@@ -2158,7 +2158,7 @@ foo()
 
 **Error code: 10605096**
 
-ArkTS does not support the **is** operator, which must be replaced by the **instanceof** operator. Note that the fields of an object must be cast to the appropriate type with the **as** operator before **instanceof** is used.
+In ArkTS, the **is** keyword is not supported, and the **instanceof** operator must be used instead. Note that the fields of an object must be cast to the appropriate type with the **as** operator before **instanceof** is used.
 
 **TypeScript**
 

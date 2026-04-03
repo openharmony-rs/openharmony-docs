@@ -97,19 +97,19 @@ function factorial(n: number): number {
   if (n <= 1) {
     return 1;
   }
-  return n * factorial(n - 1);
+  return n * (n - 1);
 }
 
-factorial(n1)  //  7.660344000000002
-factorial(n2)  //  7.680640444893748
-factorial(n3)  //  1
-factorial(n4)  //  9.33262154439441e+157
+factorial(n1) // 6.719600000000001
+factorial(n2) // 6.728008294464001
+factorial(n3) // 1
+factorial(n4) // 9900
 ```
 
-The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use the BigInt type to ensure the precision as required.
+The number type tends to lose precision when it represents very large integers (ranging from -9007199254740991 to 9007199254740991). You can use **bigint** to ensure the precision as required.
 
 ```typescript
-let bigInt: BigInt = BigInt('999999999999999999999999999999999999999999999999999999999999');
+let bigInt: bigint = 999999999999999999999999999999999999999999999999999999999999n;
 console.info('bigInt:' + bigInt.toString());
 ```
 
@@ -444,7 +444,7 @@ If there is no **break**, then the next statements in the **switch** are execute
 
 A conditional expression returns the result of one of the other two expressions based on the Boolean value of the first expression.
 
-A conditional expression is as follows.
+Example:
 
 ```typescript
 condition ? expression1 : expression2
@@ -506,7 +506,7 @@ for (let i = 0; i < 10; i += 2) {
 
 **for-of statement**
 
-You can use the **for-of** statement to iterate over iterable types such as array, Set, Map, and string. A **for-of** statement is as follows.
+You can use the **for-of** statement to iterate over iterable types such as array, Set, Map, and string. Example:
 
 ```typescript
 for (forVar of IterableExpression) {
@@ -524,7 +524,7 @@ for (let ch of 'a string object') {
 
 **while statement**
 
-The **while** statement executes **statements** as long as the value of **condition** is **true**. A **while** statement is as follows.
+The **while** statement executes **statements** as long as the value of **condition** is **true**. Example:
 
 ```typescript
 while (condition) {
@@ -545,7 +545,7 @@ while (n < 3) {
 
 **do-while statement**
 
-If the value of **condition** is truthy (a value that is considered **true**), the **statements** is executed repeatedly. A **do-while** statement is as follows.
+If the value of **condition** is truthy (a value that is considered **true**), the **statements** is executed repeatedly. Example:
 
 ```typescript
 do {
@@ -566,7 +566,7 @@ do {
 
 A **break** statement is used to terminate any loop statement or the **switch** statement.
 
-A **break** statement is as follows.
+Example:
 
 ```typescript
 let x = 0;
@@ -597,7 +597,7 @@ label: while (true) {
 
 A **continue** statement stops the execution of the current loop iteration and passes control to the next iteration.
 
-A **continue** statement is as follows.
+Example:
 
 ```typescript
 let sum = 0;
@@ -855,8 +855,8 @@ function foo(x: string): void;            /* Second function definition */
 function foo(x: number | string): void {  /* Implementation signature */
 }
 
-foo(123);     // Use the first function definition.
-foo('aa'); // Use the second function definition.
+foo(123);     // OK. Use the first function definition.
+foo('aa'); // OK. Use the second function definition.
 ```
 
 An error occurs if two overload signatures have identical parameter lists.
@@ -964,14 +964,14 @@ class Person {
   }
   
   getName(): string {
-    // Return type "string" hides the fact that name can be undefined.
-    // The most correct action would be to write the return type as "string | undefined". By doing so, we could tell the users of our API about all possible return values.
+    // Return type "string" hides the fact that name can be "undefined".
+    // A more appropriate approach is to annotate the return type as "string | undefined" to inform users of all possible return values of this API.
     return this.name;
   }
 }
 
 let jack = new Person();
-// Assume that no value is assigned to name, that is, jack.setName('Jack') is not called.
+// Assume that no value is assigned to name, that is, "jack.setName('Jack')" is not called.
 jack.getName().length; // Runtime exception: name is undefined.
 ```
 
@@ -985,7 +985,7 @@ class Person {
     this.name = n;
   }
   
-  // The type is string in all cases; null and undefined are impossible.
+  // The type is 'string' in all cases; "null" and "undefined" are impossible.
   getName(): string {
     return this.name;
   }
@@ -993,7 +993,7 @@ class Person {
   
 
 let jack = new Person();
-// Assume that no value is assigned to name, that is, jack.setName('Jack') is not called.
+// Assume that no value is assigned to name, that is, "jack.setName('Jack')" is not called.
 jack.getName().length; // 0, no runtime error.
 ```
 
@@ -1007,7 +1007,7 @@ class Person {
     this.name = n;
   }
 
-  // Compilation error: name can be undefined. Therefore, the return value type of the API cannot be defined as string only.
+  // Compile-time error: name can be "undefined". Therefore, the return value type of the API cannot be defined as string only.
   getNameWrong(): string {
     return this.name;
   }
@@ -1018,7 +1018,7 @@ class Person {
 }
 
 let jack = new Person();
-// Assume that no value is assigned to name, that is, jack.setName('Jack') is not called.
+// Assume that no value is assigned to name, that is, "jack.setName('Jack')" is not called.
 
 // Compile-time error: Compiler suspects that the next line of code possibly accesses something undefined.
 jack.getName().length;  // Compilation failed.
@@ -1210,8 +1210,8 @@ class C {
   }
 }
 let c = new C();
-c.foo(123);     // Use the first signature.
-c.foo('aa'); // Use the second signature.
+c.foo(123);     // OK. Use the first signature.
+c.foo('aa'); // OK. Use the second signature.
 ```
 
 An error occurs if two overload signatures have identical names and parameter lists.
@@ -1268,8 +1268,8 @@ class C {
   constructor(x: number | string) {  /* Implementation signature */
   }
 }
-let c1 = new C(123);      // Use the first signature.
-let c2 = new C('abc');    // Use the second signature.
+let c1 = new C(123);      // OK. Use the first signature.
+let c2 = new C('abc');    // OK. Use the second signature.
 ```
 
 An error occurs if two overload signatures have identical names and parameter lists.
@@ -1298,7 +1298,7 @@ class C {
 }
 let c = new C();
 c.x = 'a'; // OK, as the field is public.
-c.y = 'b'; // Compile-time error: 'y' is not visible.
+c.y = 'b'; // Compile-time error: 'y' is invisible.
 ```
 
 **Protected**
@@ -1312,8 +1312,8 @@ class Base {
 }
 class Derived extends Base {
   foo() {
-    this.x = 'a'; // Access the protected member.
-    this.y = 'b'; // Compile-time error: 'y' is not visible because it is private.
+    this.x = 'a'; // OK. Access the protected member.
+    this.y = 'b'; // Compile-time error. 'y' is invisible because it is private.
   }
 }
 ```
@@ -1322,7 +1322,7 @@ class Derived extends Base {
 
 An object literal is an expression that can be used to create a class instance and provide some initial values. It can be used instead of the expression **new** as it is more convenient in some cases.
 
-An object literal is a list of ***property name*: *value*** enclosed in a pair of curly brackets ({}).
+An object literal is a list of **'*property name*: *value*'** enclosed in a pair of curly brackets ({}).
 
 ```typescript
 class C {
@@ -1376,7 +1376,7 @@ let map: Record<string, number> = {
 map['John']; // 25
 ```
 
-The **K** type can be either string or number (excluding BigInt), while **V** can be any type.
+The **K** type can be either string or number (excluding **bigint**), while **V** can be any type.
 
 ```typescript
 interface PersonInfo {
@@ -1867,7 +1867,7 @@ If a list of identifiers contains an alias in the form **ident as alias**, the e
 import { X as Z, Y } from './utils';
 Z // Denote X from Utils.
 Y // Denote Y from Utils.
-X // Compile-time error: 'X' is not visible.
+X // Compile-time error: 'X' is invisible.
 ```
 
 **Dynamic import**
@@ -1887,6 +1887,7 @@ export function add(a:number, b:number):number {
 }
 
 // Index.ets
+// ESObject is a type used to annotate JS/TS objects in ArkTS cross-language call scenarios.
 import('./Calc').then((obj: ESObject) => {
   console.info(obj.add(3, 5));
 }).catch((err: Error) => {
@@ -1997,7 +1998,7 @@ class MyClass {
 
 The name of the annotation to be used must be prefixed with the **@** symbol (for example, **@MyAnno**). No space or line separator is allowed between the **@** symbol and the name.
 ```typescript
-ClassAuthor({authorName: "Bob"}) // Compile-time error: The annotation must be prefixed with '@'.
+ClassAuthor({authorName: "Bob"}) // Compile-time error: The annotation must be prefixed with the @ symbol.
 @ ClassAuthor({authorName: "Bob"}) // Compile-time error: No space or line separator is allowed between the @ symbol and the name.
 ```
 If the annotation name cannot be accessed, a compile-time error occurs.
@@ -2037,7 +2038,7 @@ The following types can be used for annotation fields:
 >**NOTE**
 >
 > - If other types are used for annotation fields, a compile-time error occurs.
-> - The BigInt type is not supported for annotation fields.
+> - The **bigint** type is not supported for annotation fields.
 
 The default value of an annotation field must be specified using a constant expression.<br>The following types of constant expressions are used:
 * Numeric literal

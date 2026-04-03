@@ -50,7 +50,7 @@ let version = 5.0;
 | **List**: `List<String> list = new ArrayList<>();`| **Array**: `let strList: Array<string> = ['a', 'b'];`| `strList.push('c'); // Push an element to the end of an array.`<br>`let firstItem = strList[0]; // Access by index.`<br>| Java list separates APIs (such as **List**) from implementation classes (such as **ArrayList**).<br>ArkTS array uses basic types and set features, simplifying syntax.|  
 | **Map**: `Map<String, Integer> map = new HashMap<>();`| **Map**: `let map: Map<string, number> = new Map();`| `map.set('key', 1); // Add a KV pair.`<br>`let value = map.get('key'); // Obtain the value.`<br>`map.has('key'); // Check whether the key exists.`<br>|Java **Map** requires explicit declaration of generic types.<br>ArkTS **Map** supports chain calls (such as **map.set('a', 1).set('b', 2)**), which is more direct.|  
 | **Interface**: `interface Shape { double area(); }`| **interface**: `interface Shapes { area(): number; }`| `class Rectangles implements Shapes {`<br>`  public width: number = 0;`<br>`  public height: number = 0;`<br>`  area(): number { return this.width * this.height; }`<br>`}`<br>| The syntax structures of Java and ArkTS are similar, but ArkTS APIs do not require explicit modifiers (such as **public** in Java) and support optional properties (such as **name?: string**).|  
-| **Class**: `class Circle implements Shape { /* Class definition */ }`| **class**: `class Circles implements Shape { /* Class definition */ }`| `class Circles {`<br>`  radius: number;`<br>`  constructor(radius: number = 10) { // Support default parameter values.`<br>`    this.radius = radius;`<br>`  }`<br>`}`<br>| ArkTS classes support default property values and optional parameters. The constructor parameters can be directly declared as class properties (such as **constructor(public name: string)**), which is more concise.|  
+| **Class**: `class Circle implements Shape { /* Class definition */ }`| **class**: `class Circles implements Shape { /* Class definition */ }`| `class Circles {`<br>`  radius: number;`<br>`  constructor(radius: number = 10) { // Support default parameter values.`<br>`    this.radius = radius;`<br>`  }`<br>`}`<br>| ArkTS classes support property default values and optional parameters, featuring a more concise syntax.|  
 | **Enum**: `enum Color { RED, GREEN, BLUE; }`| **enum**: `enum Colors { Red, Green, Blue }`| `enum Colors { Red = 1, Green, Blue };`<br>`let color = Colors.Green; // The value is 2, which is automatically incremented.`<br>| The basic concepts are the same. However, ArkTS enum does not support custom constructors and methods like Java. Only a simple numeric or string enum is supported.|  
 
 
@@ -110,8 +110,8 @@ function foo(x: string): void;            /* Second function definition */
 function foo(x: number | string): void {  /* Function implementation */
 }
 
-foo(123);     // Use the first function definition.
-foo('aa'); // Use the second function definition.
+foo(123);     // OK. Use the first function definition.
+foo('aa'); // OK. Use the second function definition.
 ```
 
 ### Utils

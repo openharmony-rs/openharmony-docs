@@ -64,6 +64,7 @@ A well-named identifier meets the following requirements:
 **[Description]**
 
 Classes are named in upper camel case.
+
 Class names are usually nouns or noun phrases, for example, Person, Student, and Worker. Avoid verbs and ambiguous words like Data and Info in class names.
 
 **[Correct Example]**
@@ -112,6 +113,7 @@ A function is usually named as a verb or verb phrase in lower camel case. Exampl
 4. has + noun/adjective()
 5. verb()
 6. verb + object()
+
 A variable name is usually a noun or noun phrase in lower camel case.
 
 **[Correct Example]**
@@ -187,6 +189,7 @@ function hasNext() {}
 Use spaces only to indent.
 
 Preferentially use two-space indentation in most scenarios. Use four spaces in line break scenarios.
+
 Do not use the Tab key to indent. Currently, almost all IDEs and code editors support automatic conversion of a Tab input to two spaces. The code editors should be configured to use spaces for indentation.
 
 **[Correct Example]**
@@ -237,7 +240,9 @@ function test(dataSource: DataSource[]) {
 The code line width should not be too long. Otherwise, it is difficult to read.
 
 The line width requirement encourages you to shorten function and variable names, reduce nesting, and write concise comments to improve code readability.
+
 It is recommended that each line contain no more than 120 characters unless a longer line can significantly improve the code readability and no information is hidden.
+
 Exception: If a one-line comment contains a command or URL of more than 120 characters, you can keep the line for ease in using copy, paste, and search with the **grep** command. Put the error information of preprocessor directives in one line to facilitate reading and understanding even if the line contains more than 120 characters.
 
 ### Use Braces in Conditional Statements and Loop Statements
@@ -302,6 +307,7 @@ switch (condition) {
 **[Description]**
 
 When a statement is too long or difficult to read, start a new line at a proper position.
+
 During line breaking, always place operators at the end of lines, indicating that the operations are to be continued. This is also the default configurations of typical formatting tools.
 
 **[Correct Example]**
@@ -321,6 +327,7 @@ if (userCount > MAX_USER_COUNT ||
 **[Description]**
 
 Each statement should declare only one variable.
+
 In this way, it is easier to add variable declarations and can avoid errors, because you do not need to consider changing a semicolon (;) to a comma (,). It is also easier for the debugger to debug variables one by one, rather than skipping all variables at a time.
 
 **[Incorrect Example]**
@@ -351,7 +358,9 @@ Use spaces to highlight keywords and important information. The general recommen
 2. Do not add a space between the method name and the open parentheses of the parameter list when defining or calling the method.
 3. Add a space between the keyword **else** or **catch** and the close brace (}).
 4. Add a space before the open brace ({), except when:
+
 a. The open brace is used as the first parameter of a method or the first element in an array, for example, **foo({ name: 'abc' })**.
+
 b. The open brace is used in a template name, for example, **abc${name}**.
 5. Spaces are added before and after the binary operator (+, -, *, =, <, >, <=, >=, ===, !==, &&, ||). Spaces are added on both sides of the ternary operator (? :).
 6. Add a space after the comma in array initialization and the comma between multiple parameters in a method.
@@ -389,20 +398,24 @@ function fight(): void {
 
 **[Incorrect Example]**
 
-```
+<!-- @[highlight_else_incorrectExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 if (flag) {
   // ...
-}else {  // There is no space between the close brace and else.
+}else { // There is no space between the close brace and else.
   // ...
 }
 ```
 
 **[Correct Example]**
 
-```
+<!-- @[highlight_else_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 if (flag) {
   // ...
-} else {  // There is a space between the close brace and else.
+} else { // There is a space between the close brace and else.
   // ...
 }
 ```
@@ -423,8 +436,8 @@ bar('attr', {  // There is a space before the open brace.
 **[Correct Example]**
 
 ```
-const arr = [1, 2, 3];  // There is a space after the comma during array initialization. There is no space before the comma.
-myFunc(bar, foo, baz);  // There is a space after the comma between multiple parameters of a method. There is no space before the comma.
+const arr = [1, 2, 3];  // There is a space after the comma during array initialization and no space before the comma.
+myFunc(bar, foo, baz);  // There is a space after the comma between multiple parameters of a method and no space before the comma.
 ```
 
 ### Use Single Quotation Marks for Strings
@@ -636,7 +649,9 @@ const num = -0.7;
 **[Description]**
 
 In ArkTS, **Number.NaN** is a particular value of a numeric data type. It represents a non-numeric value in the double-precision 64-bit format, as defined in the IEEE floating-point standard.
+
 **Number.NaN** is unique in ArkTS because it is not equal to any value, including itself. For example, the result of comparison with **Number.NaN** is confusing, as the values of **Number.NaN !== Number.NaN** and **Number.NaN != Number.NaN** are both **true**.
+
 Therefore, you must use **Number.isNaN()** to check whether a value is **Number.NaN**.
 
 **[Incorrect Example]**
@@ -697,6 +712,7 @@ const increasedByOne: number[] = numbers.map(num => num + 1);
 **[Description]**
 
 Control conditional expressions are usually used in **if**, **while**, **for**, and **?:** statements.
+
 Assigning values in this type of expression often leads to unexpected behavior and poor code readability.
 
 **[Incorrect Example]**
@@ -795,10 +811,15 @@ export function getObject(value: number): I {
   let obj: I = { sum: value };
   return obj
 }
+```
 
-// app.ets
-import { getObject, I } from 'lib'
-let obj: I = getObject(123);
+<!-- @[noESObject_app_correctExample](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/Start/LearningArkTS/CodingStyleGuide/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
+// Index.ets
+import { getObject2, I } from './lib';
+// ...
+let obj2: I = getObject2(123);
 ```
 
 ### Use T[] for the Array Type

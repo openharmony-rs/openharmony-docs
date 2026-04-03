@@ -17,7 +17,7 @@ The system provides an efficient management mechanism for application packages. 
 
 ## Multi-Module Design Mechanism
 
-- **Modular development**: An application may provide a wide range of features. It is a good practice to divide and manage application features by module. During development, you can develop each functional module as an independent module, which contains source code, resource files, third-party libraries, and configuration files (also called profiles). Each module can be built independently to implement specific features. This modular, loosely coupling mode facilitates application development, maintenance, and expansion.
+- **Modular development**: An application may provide a wide range of features. It is a good practice to divide and manage application features by module. During development, you can develop each functional module as an independent module, which contains source code, resource files, third-party libraries, and configuration files. Each module can be built independently to implement specific features. This modular, loosely coupling mode facilitates application development, maintenance, and expansion.
 
 - **Multi-device adaptation**: You may want your application to deliver features specific to device types. With the multi-module design mechanism, you can achieve this purpose by specifying the supported device types for each of the modules in your application. You can configure some modules to support all device types, and some to support only one or more device types (such as tablet). In this way, the AppGallery can distribute application packages to specified device types, with appropriate filtering, matching, and combination.
 
