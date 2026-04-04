@@ -240,6 +240,70 @@
 - 客户端处理和发送安全认证请求
 
     <!-- @[agent_manager_four](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ConnectAgentExtension/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    import { common, Want, agentManager } from '@kit.AbilityKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    
+    @Entry
+    @Component
+    struct Index {
+      comProxy: common.AgentProxy | null = null;
+      connectCallback: common.AgentExtensionConnectCallback = {
+        onData: (data: string) => {
+          console.info(`onData, data: ${data}.`);
+        },
+        onAuth: (handShakeData: string): void => {
+          console.info(`onData, data: ${handShakeData}.`);
+        },
+        onDisconnect: () => {
+          console.info(`onDisconnect.`);
+          this.comProxy = null;
+        }
+      }
+    
+      build() {
+        Column() {
+          Row() {
+            // 创建连接按钮
+            Button('connect ability')
+              .enabled(true)
+              .onClick(() => {
+                let connectWant: Want = {
+                  bundleName: 'com.sample.agentextensionability',
+                  abilityName: 'AgentExtAbility',
+                };
+                let agentId: string = 'weather_assistant_001';
+                try {
+                  // 连接AgentExtensionAbility
+                  agentManager.connectAgentExtensionAbility(connectWant, agentId, this.connectCallback)
+                    .then((proxy: common.AgentProxy) => {
+                      this.comProxy = proxy;
+                      // ...
+                      let authorizeData = 'authorize data';
+                      try {
+                        this.comProxy.authorize(authorizeData);
+                      } catch (err) {
+                        let code = (err as BusinessError).code;
+                        let msg = (err as BusinessError).message;
+                        console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+                      }
+                    })
+                    .catch((err: BusinessError) => {
+                      console.error(`connectAgentExtensionAbility failed, err code: ${err.code}, err msg: ${err.message}.`);
+                    });
+                } catch (err) {
+                  let code = (err as BusinessError).code;
+                  let msg = (err as BusinessError).message;
+                  console.error(`connectAgentExtensionAbility failed, err code: ${code}, err msg: ${msg}.`);
+                }
+              })
+            // ...
+          }
+        }
+      }
+    }
+    ```
 
 - 服务端处理和发送安全认证请求
 
