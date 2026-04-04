@@ -32,6 +32,60 @@
 3. 在AgentExtAbility.ets文件中，补充[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)的导入模块，自定义类AgentExtAbility继承[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)并实现生命周期回调。
 
     <!-- @[ability_agent_service_one](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/AgentExtAbility/AgentExtAbility.ets) -->
+    
+    ``` TypeScript
+    import { common, AgentExtensionAbility, Want } from '@kit.AbilityKit';
+    import { hilog } from '@kit.PerformanceAnalysisKit';
+    
+    export default class AgentExtAbility extends AgentExtensionAbility {
+      private comProxy: common.AgentHostProxy | null = null;
+      // 创建AgentExtensionAbility
+      onCreate(want: Want) {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
+      }
+    
+      // 连接
+      onConnect(want: Want, proxy: common.AgentHostProxy) {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onConnect');
+        this.comProxy = proxy;
+      }
+    
+      // 断开连接
+      onDisconnect(want: Want, proxy: common.AgentHostProxy) {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDisconnect');
+        this.comProxy = null;
+      }
+      // 接收数据
+      onData(proxy: common.AgentHostProxy, data: string) {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onData');
+        try {
+          let replyData = 'reply message';
+          proxy.sendData(replyData);
+        } catch (err) {
+          let code = (err as BusinessError).code;
+          let msg = (err as BusinessError).message;
+          console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+        }
+      }
+      // 认证
+      onAuth(proxy: common.AgentHostProxy, handshakeData: string) {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onAuth');
+        try {
+          // 处理认证逻辑
+          let authResult = 'auth success';
+          proxy.authorize(authResult);
+        } catch (err) {
+          let code = (err as BusinessError).code;
+          let msg = (err as BusinessError).message;
+          console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+        }
+      }
+      // 销毁
+      onDestroy() {
+        hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onDestroy');
+      }
+    }
+    ```
 
 
 4. 在工程Module对应的[module.json5配置文件](../quick-start/module-configuration-file.md)中注册AgentExtensionAbility，type标签需要设置为"agent"，srcEntry标签表示当前ExtensionAbility组件所对应的代码路径。
