@@ -112,6 +112,54 @@
 - 使用[disconnectAgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentManager-sys.md#agentmanagerdisconnectagentextensionability)方法断开与[AgentExtensionAbility](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md)的连接。
 
     <!-- @[agent_manager_two](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/ConnectAgentExtension/entry/src/main/ets/pages/Index.ets) -->
+    
+    ``` TypeScript
+    import { common, Want, agentManager } from '@kit.AbilityKit';
+    import { BusinessError } from '@kit.BasicServicesKit';
+    
+    @Entry
+    @Component
+    struct Index {
+      comProxy: common.AgentProxy | null = null;
+      connectCallback: common.AgentExtensionConnectCallback = {
+        onData: (data: string) => {
+          console.info(`onData, data: ${data}.`);
+        },
+        onAuth: (handShakeData: string): void => {
+          console.info(`onData, data: ${handShakeData}.`);
+        },
+        onDisconnect: () => {
+          console.info(`onDisconnect.`);
+          this.comProxy = null;
+        }
+      }
+    
+      build() {
+        Column() {
+          Row() {
+            // ...
+            // 创建断连按钮
+            Button('disconnect ability')
+              .enabled(true)
+              .onClick(() => {
+                try{
+                  // this.agentProxy是连接时保存的proxy对象
+                  agentManager.disconnectAgentExtensionAbility(this.comProxy).then(() => {
+                    console.info(`disconnectAgentExtensionAbility success.`);
+                  }).catch((error: BusinessError) => {
+                    console.error(`disconnectAgentExtensionAbility failed, err code: ${error.code}, err msg: ${error.message}.`);
+                  });
+                } catch (err) {
+                  let code = (err as BusinessError).code;
+                  let msg = (err as BusinessError).message;
+                  console.error(`connectAgentExtensionAbility failed, err code: ${code}, err msg: ${msg}.`);
+                }
+              })
+          }
+        }
+      }
+    }
+    ```
 
 ## 客户端与服务端双向通信
 
