@@ -148,3 +148,26 @@ export default class AgentExtAbility extends AgentExtensionAbility {
 应用可以在服务端AgentExtensionAbility组件的[onAuth()](../reference/apis-ability-kit/js-apis-app-agent-agentExtensionAbility.md#onauth)方法中接收客户端的安全认证请求以及[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)对象，并且可以通过[AgentHostProxy](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md)的[authorize()](../reference/apis-ability-kit/js-apis-inner-application-agentHostProxy.md#authorize)方法向客户端发送安全认证请求。
 
 <!-- @[ability_agent_service_three](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/AgentExtAbility/AgentExtAbility.ets) -->
+
+``` TypeScript
+import { common, AgentExtensionAbility, Want } from '@kit.AbilityKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+export default class AgentExtAbility extends AgentExtensionAbility {
+  // ...
+  // 认证
+  onAuth(proxy: common.AgentHostProxy, handshakeData: string) {
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onAuth');
+    try {
+      // 处理认证逻辑
+      let authResult = 'auth success';
+      proxy.authorize(authResult);
+    } catch (err) {
+      let code = (err as BusinessError).code;
+      let msg = (err as BusinessError).message;
+      console.error(`sendData failed, err code: ${code}, err msg: ${msg}.`);
+    }
+  }
+  // ...
+}
+```
