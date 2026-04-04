@@ -680,7 +680,7 @@ getPropertyValue(propertyName: string): Object | null | undefined
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Object \| null \| undefined | 特效属性值，如果获取失败则返回null。 |
+| Object \| null \| undefined | 特效属性值。若当前Effect类型下不存在与传入的propertyName匹配的属性，则获取失败，返回null；若propertyName对应的可选属性未设置，则返回undefined。 |
 
 **示例：**
 
