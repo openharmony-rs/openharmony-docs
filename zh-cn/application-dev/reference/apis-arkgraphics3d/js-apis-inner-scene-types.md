@@ -210,7 +210,7 @@ import { Vec2, Vec3, Vec4, Quaternion, Aabb, Color, Rect, GeometryType, Primitiv
 
 > **说明：**
 >
-> 开发者需保证上述三个参数设置正确，否则无法创建圆柱体并可能引发未定义行为。
+> 开发者需保证上述三个参数设置正确，否则无法创建圆柱体并可能引发不可预期的行为。
 
 以radius=0.5，height=1，segmentCount=20为例，生成圆柱体的网格以及UV布局如下：
 
