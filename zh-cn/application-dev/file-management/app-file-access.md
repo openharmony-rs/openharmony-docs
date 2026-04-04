@@ -54,7 +54,7 @@
 
 ```ts
 // pages/xxx.ets
-import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+import { fileIo, ReadOptions } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { buffer } from '@kit.ArkTS';
 
@@ -62,30 +62,41 @@ import { buffer } from '@kit.ArkTS';
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[create_and_read_File](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
+<!--@[create_and_read_File](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->     
 
 ``` TypeScript
 function createFile(context: common.UIAbilityContext): void {
   let filesDir = context.filesDir;
-  // 文件不存在时创建并打开文件，文件存在时打开文件
-  let file = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-  // 写入一段内容至文件
-  let writeLen = fs.writeSync(file.fd, 'Try to write str.');
-  console.info('The length of str is: ' + writeLen);
-  // 创建一个大小为1024字节的ArrayBuffer对象，用于存储从文件中读取的数据
-  let arrayBuffer = new ArrayBuffer(1024);
-  // 设置读取的偏移量和长度
-  let readOptions: ReadOptions = {
-    offset: 0,
-    length: arrayBuffer.byteLength
-  };
-  // 读取文件内容到ArrayBuffer对象中，并返回实际读取的字节数
-  let readLen = fs.readSync(file.fd, arrayBuffer, readOptions);
-  // 将ArrayBuffer对象转换为Buffer对象，并转换为字符串输出
-  let buf = buffer.from(arrayBuffer, 0, readLen);
-  console.info('the content of file: ' + buf.toString());
-  // 关闭文件
-  fs.closeSync(file);
+  let file: fileIo.File | null = null;
+  try {
+    // 文件不存在时创建并打开文件，文件存在时打开文件
+    file = fileIo.openSync(filesDir + '/test.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    // 写入一段内容至文件
+    let writeLen = fileIo.writeSync(file.fd, 'Hello world');
+    console.info('The length of str is: ' + writeLen);
+    // 创建一个大小为1024字节的ArrayBuffer对象，用于存储从文件中读取的数据
+    let arrayBuffer = new ArrayBuffer(1024);
+    // 设置读取的偏移量和长度
+    let readOptions: ReadOptions = {
+      offset: 0,
+      length: arrayBuffer.byteLength
+    };
+    // 读取文件内容到ArrayBuffer对象中，并返回实际读取的字节数
+    let readLen = fileIo.readSync(file.fd, arrayBuffer, readOptions);
+    // 将ArrayBuffer对象转换为Buffer对象，并转换为字符串输出
+    let buf = buffer.from(arrayBuffer, 0, readLen);
+    console.info('the content of file: ' + buf.toString());
+  } catch (err) {
+    console.error(`Failed to createFile. Code: ${err.code}, message: ${err.message}`);
+  } finally {
+    if (file) {
+      try {
+        fileIo.closeSync(file);
+      } catch (err) {
+        console.error(`Failed to close file`);
+      }
+    }
+  }
 }
 ```
 
@@ -96,42 +107,62 @@ function createFile(context: common.UIAbilityContext): void {
 
 ```ts
 // pages/xxx.ets
-import { fileIo as fs, ReadOptions, WriteOptions } from '@kit.CoreFileKit';
+import { fileIo, ReadOptions, WriteOptions } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[read_write_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->     
+<!--@[read_write_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->      
 
 ``` TypeScript
 function readWriteFile(context: common.UIAbilityContext): void {
-  let filesDir = context.filesDir;
-  // 打开文件
-  let srcFile = fs.openSync(filesDir + '/test.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-  let destFile = fs.openSync(filesDir + '/destFile.txt', fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
-  // 读取源文件内容并写入至目的文件
-  let bufSize = 4096;
-  let readSize = 0;
-  let buf = new ArrayBuffer(bufSize);
-  let readOptions: ReadOptions = {
-    offset: readSize,
-    length: bufSize
-  };
-  let readLen = fs.readSync(srcFile.fd, buf, readOptions);
-  while (readLen > 0) {
-    readSize += readLen;
-    let writeOptions: WriteOptions = {
-      length: readLen
+  let srcFile: fileIo.File | null = null;
+  let destFile: fileIo.File | null = null;
+  try {
+    let filesDir = context.filesDir;
+    // 以读写的方式打开文件，文件不存在会新建文件
+    srcFile = fileIo.openSync(filesDir + '/readFile.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    destFile = fileIo.openSync(filesDir + '/writeFile.txt', fileIo.OpenMode.READ_WRITE | fileIo.OpenMode.CREATE);
+    // 创建缓冲区
+    let bufSize = 4096;
+    let buf = new ArrayBuffer(bufSize);
+    // 配置期望读取位置，及读取数据的长度
+    let readOffset = 0;
+    let readLength = 128;
+    let readOptions: ReadOptions = {
+      offset: readOffset,
+      length: readLength
     };
-    fs.writeSync(destFile.fd, buf, writeOptions);
-    readOptions.offset = readSize;
-    readLen = fs.readSync(srcFile.fd, buf, readOptions);
+    // 分次读取源文件内容并写入至目标文件
+    let readLen = fileIo.readSync(srcFile.fd, buf, readOptions);
+    while (readLen > 0) {
+      readOffset += readLen;
+      let writeOptions: WriteOptions = {
+        length: readLen
+      };
+      // 写入目标文件
+      fileIo.writeSync(destFile.fd, buf, writeOptions);
+      // 更新读取位置
+      readOptions.offset = readOffset;
+      readLen = fileIo.readSync(srcFile.fd, buf, readOptions);
+    }
+    console.info(`Read and write file success.`);
+  } catch (err) {
+    console.error(`Failed to readWriteFile. Code: ${err.code}, message: ${err.message}`);
+  } finally {
+    try {
+      if (srcFile) {
+        fileIo.closeSync(srcFile);
+      }
+      if (destFile) {
+        fileIo.closeSync(destFile);
+      }
+    } catch (closeErr) {
+      console.error(`Failed to close file`);
+    }
   }
-  // 关闭文件
-  fs.closeSync(srcFile);
-  fs.closeSync(destFile);
 }
 ```
 
@@ -146,43 +177,59 @@ function readWriteFile(context: common.UIAbilityContext): void {
 
 ```ts
 // pages/xxx.ets
-import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+import { fileIo, ReadOptions } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[read_write_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
+<!--@[read_write_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->     
 
 ``` TypeScript
 async function readWriteFileWithStream(context: common.UIAbilityContext): Promise<void> {
   let filesDir = context.filesDir;
-  // 创建并打开输入文件流
-  let inputStream = fs.createStreamSync(filesDir + '/test.txt', 'r+');
-  // 创建并打开输出文件流
-  let outputStream = fs.createStreamSync(filesDir + '/destFile.txt', 'w+');
-
-  let bufSize = 4096;
-  let readSize = 0;
-  let buf = new ArrayBuffer(bufSize);
-  let readOptions: ReadOptions = {
-    offset: readSize,
-    length: bufSize
-  };
-  // 以流的形式读取源文件内容并写入到目标文件
-  let readLen = await inputStream.read(buf, readOptions);
-  readSize += readLen;
-  while (readLen > 0) {
-    const writeBuf = readLen < bufSize ? buf.slice(0, readLen) : buf;
-    await outputStream.write(writeBuf);
-    readOptions.offset = readSize;
-    readLen = await inputStream.read(buf, readOptions);
+  let inputStream: fileIo.Stream | null = null;
+  let outputStream: fileIo.Stream | null = null;
+  try {
+    // 创建并打开输入文件流
+    inputStream = fileIo.createStreamSync(filesDir + '/test.txt', 'r+');
+    // 创建并打开输出文件流
+    outputStream = fileIo.createStreamSync(filesDir + '/destFile.txt', 'w+');
+    let bufSize = 4096;
+    let readSize = 0;
+    let buf = new ArrayBuffer(bufSize);
+    let readOptions: ReadOptions = {
+      offset: readSize,
+      length: bufSize
+    };
+    // 以流的形式读取源文件内容并写入到目标文件
+    let readLen = await inputStream.read(buf, readOptions);
     readSize += readLen;
+    while (readLen > 0) {
+      const writeBuf = readLen < bufSize ? buf.slice(0, readLen) : buf;
+      await outputStream.write(writeBuf);
+      readOptions.offset = readSize;
+      readLen = await inputStream.read(buf, readOptions);
+      readSize += readLen;
+    }
+    console.info(`readWriteFileWithStream with stream success.`);
+  } catch (err) {
+    console.error(`Failed to readWriteFileWithStream. Code: ${err.code}, message: ${err.message}`);
+  } finally {
+    try {
+      if (inputStream) {
+        inputStream.closeSync();
+        console.info(`readWriteFileWithStream inputStream closeSync.`);
+      }
+      if (outputStream) {
+        outputStream.closeSync();
+        console.info(`readWriteFileWithStream outputStream closeSync.`);
+      }
+    } catch (closeErr) {
+      console.error(`Failed to close stream`);
+    }
   }
-  // 关闭文件流
-  inputStream.closeSync();
-  outputStream.closeSync();
 }
 ```
 
@@ -197,14 +244,14 @@ async function readWriteFileWithStream(context: common.UIAbilityContext): Promis
 以下示例代码演示了如何查看文件列表。
 
 ```ts
-import { fileIo as fs, Filter, ListFileOptions } from '@kit.CoreFileKit';
+import { fileIo, Filter, ListFileOptions } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[get_list_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
+<!--@[get_list_file](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->     
 
 ``` TypeScript
 function getListFile(context: common.UIAbilityContext): void {
@@ -219,9 +266,14 @@ function getListFile(context: common.UIAbilityContext): void {
     }
   };
   let filesDir = context.filesDir;
-  let files = fs.listFileSync(filesDir, listFileOption);
-  for (let i = 0; i < files.length; i++) {
-    console.info(`The name of file: ${files[i]}`);
+  try {
+    let files = fileIo.listFileSync(filesDir, listFileOption);
+    for (let i = 0; i < files.length; i++) {
+      console.info(`The name of file: ${files[i]}`);
+    }
+    console.info(`List file success.`);
+  } catch (err) {
+    console.error(`Failed to List file. Code: ${err.code}, message: ${err.message}`);
   }
 }
 ```
@@ -233,51 +285,84 @@ function getListFile(context: common.UIAbilityContext): void {
 
 ```ts
 // pages/xxx.ets
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 ```
-<!--@[copy_file_with_readable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
+<!--@[copy_file_with_readable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->     
 
 ``` TypeScript
 function copyFileWithReadable(context: common.UIAbilityContext): void {
-  let filesDir = context.filesDir;
-  // 创建文件可读流
-  const rs = fs.createReadStream(`${filesDir}/test.txt`);
-  // 创建文件可写流
-  const ws = fs.createWriteStream(`${filesDir}/destFile.txt`);
-  // 暂停模式拷贝文件。在拷贝数据时，将原始数据暂停，然后将数据复制到另一个位置，适用于对数据完整性和一致性要求较高的场景
-  rs.on('readable', () => {
-    const data = rs.read();
-    if (!data) {
-      return;
-    }
-    ws.write(data);
-  });
+  try {
+    let filesDir = context.filesDir;
+    // 创建文件可读流
+    const rs = fileIo.createReadStream(`${filesDir}/test.txt`);
+    // 创建文件可写流
+    const ws = fileIo.createWriteStream(`${filesDir}/destFile.txt`);
+    // 暂停模式拷贝文件。在拷贝数据时，将原始数据暂停，然后将数据复制到另一个位置，适用于对数据完整性和一致性要求较高的场景
+    rs.on('readable', () => {
+      const data = rs.read();
+      if (!data) {
+        return;
+      }
+      ws.write(data);
+    });
+
+    rs.on('end', () => {
+      ws.end();
+      console.info(`copyFileWithReadable success.`);
+    });
+
+    // 捕获异常
+    rs.on('error', () => {
+      rs.close();
+      ws.close();
+    });
+  } catch (err) {
+    console.error(`Failed to copyFileWithReadable: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
 
 
-<!--@[copy_file_with_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
+<!--@[copy_file_with_data](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->     
 
 ``` TypeScript
 function copyFileWithData(context: common.UIAbilityContext): void {
   let filesDir = context.filesDir;
-  // 创建文件可读流
-  const rs = fs.createReadStream(`${filesDir}/test.txt`);
-  // 创建文件可写流
-  const ws = fs.createWriteStream(`${filesDir}/destFile.txt`);
-  // 流动模式拷贝文件。数据的读取和写入是同时进行的，不需要暂停原始数据的访问，适用于对数据实时性要求较高的场景
-  rs.on('data', (emitData) => {
-    const data = emitData?.data;
-    if (!data) {
-      return;
-    }
-    ws.write(data as Uint8Array);
-  });
+
+  try {
+    // 创建文件可读流
+    let rs = fileIo.createReadStream(`${filesDir}/test.txt`);
+    // 创建文件可写流
+    let ws = fileIo.createWriteStream(`${filesDir}/destFile.txt`);
+
+    rs.push('Hello world');
+    // 流动模式拷贝文件
+    rs.on('data', (emitData) => {
+      const data = emitData?.data;
+      if (!data) {
+        return;
+      }
+      ws.write(data as Uint8Array);
+    });
+
+    rs.on('end', () => {
+      ws.end();
+      console.info(`copyFileWithData success.`);
+    });
+
+    // 捕获异常
+    rs.on('error', () => {
+      rs.close();
+      ws.close();
+    });
+  } catch (err) {
+    console.error(`Failed to copyFileWithData: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
 
@@ -288,7 +373,7 @@ function copyFileWithData(context: common.UIAbilityContext): void {
 
 ```ts
 // pages/xxx.ets
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { hash } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
@@ -297,24 +382,28 @@ let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 
 
 ```
-<!--@[hash_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->    
+<!--@[hash_file_with_stream](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileApiFileSample/entry/src/main/ets/pages/Index.ets)-->     
 
 ``` TypeScript
 function hashFileWithStream(context: common.UIAbilityContext) {
-  let filesDir = context.filesDir;
-  const filePath = `${filesDir}/test.txt`;
-  // 创建文件可读流
-  const rs = fs.createReadStream(filePath);
-  // 创建哈希流
-  const hs = hash.createHash('sha256');
-  rs.on('data', (emitData) => {
-    const data = emitData?.data;
-    hs.update(new Uint8Array(data?.split('').map((x: string) => x.charCodeAt(0))).buffer);
-  });
-  rs.on('close', async () => {
-    const hashResult = hs.digest();
-    const fileHash = await hash.hash(filePath, 'sha256');
-    console.info(`hashResult: ${hashResult}, fileHash: ${fileHash}`);
-  });
+  try {
+    let filesDir = context.filesDir;
+    const filePath = `${filesDir}/test.txt`;
+    // 创建文件可读流
+    const rs = fileIo.createReadStream(filePath);
+    // 创建哈希流
+    const hs = hash.createHash('sha256');
+    rs.on('data', (emitData) => {
+      const data = emitData?.data;
+      hs.update(new Uint8Array(data?.split('').map((x: string) => x.charCodeAt(0))).buffer);
+    });
+    rs.on('end', async () => {
+      const hashResult = hs.digest();
+      const fileHash = await hash.hash(filePath, 'sha256');
+      console.info(`hashFileWithStream success, hashResult: ${hashResult}, fileHash: ${fileHash}`);
+    });
+  } catch (err) {
+    console.error(`Failed to hashFileWithStream: ${err.code}, message: ${err.message}`);
+  }
 }
 ```
