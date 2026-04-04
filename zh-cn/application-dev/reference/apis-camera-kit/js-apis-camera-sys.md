@@ -2568,66 +2568,9 @@ function enableSceneFeature(photoSession: camera.PhotoSessionForSys, cameraInput
 }
 ```
 
-## ZoomPointInfo<sup>12+</sup>
-
-等效焦距信息。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-| 名称     | 类型        |   只读   | 可选  | 说明       |
-| -------- | ---------- | -------- |-----| ---------- |
-| zoomRatio |   number   |   是     | 否   | 可变焦距比。 |
-| equivalentFocalLength |   number   |   是     | 否   | 当前焦距比对应的等效焦距值。 |
-
 ## ZoomQuery<sup>12+</sup>
 
 提供获取当前模式的等效焦距信息列表的方法。
-
-### getZoomPointInfos<sup>12+</sup>
-
-getZoomPointInfos(): Array\<ZoomPointInfo\>
-
-获取当前模式的等效焦距信息列表。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-| 类型                | 说明                                                  |
-| ----------          | -----------------------------                         |
-|  Array\<[ZoomPointInfo](#zoompointinfo12)\>| 获取当前模式的等效焦距信息列表。                   |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202                    |  Not System Application.                      |
-| 7400103                |  Session not config, only throw in session usage.      |
-
-**示例：**
-
-```ts
-import { camera } from '@kit.CameraKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getZoomPointInfos(photoSessionForSys: camera.PhotoSessionForSys): Array<camera.ZoomPointInfo> {
-  let zoomPointInfos: Array<camera.ZoomPointInfo> = [];
-  try {
-    zoomPointInfos = photoSessionForSys.getZoomPointInfos();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The getZoomPointInfos call failed. error code: ${err.code}`);
-  }
-  return zoomPointInfos;
-}
-```
 
 ## Zoom<sup>11+</sup>
 
