@@ -8,7 +8,7 @@
 
 本模块提供3D图形中场景资源结点的类型及操作方法。
 
-> **说明：** 
+> **说明：**
 >
 > 本模块首批接口从API version 12开始支持，后续版本的新增接口，采用上角标标记接口的起始版本。
 
@@ -20,9 +20,11 @@ import { LayerMask, NodeType, Container, Node, Geometry, LightType, Light, SpotL
 ```
 
 ## LayerMask
+
 用于定义结点的图层掩码。
 
 ### getEnabled
+
 getEnabled(index: number): boolean
 
 获取指定图层下标图层掩码的使能状态。
@@ -30,16 +32,19 @@ getEnabled(index: number): boolean
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | index | number | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
 
 **返回值：**
+
 | 类型 | 说明 |
 | ---- | ---- |
 | boolean | 返回特定下标的图层是否使能。true表示使用图层掩码，false表示不使用。 |
 
 **示例：**
+
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
 
@@ -69,12 +74,14 @@ setEnabled(index: number, enabled: boolean): void
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | index | number | 是 | 要使能图层的下标，值域为大于等于0的整数。 |
 | enabled | boolean | 是 | 要设置的使能状态。true表示使用图层掩码，false表示不使用。 |
 
 **示例：**
+
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
 
@@ -96,9 +103,11 @@ function layerMask(): void {
 ```
 
 ## NodeType
+
 结点类型枚举。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
+
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
 | NODE | 1 | 结点是空结点。 |
@@ -108,9 +117,11 @@ function layerMask(): void {
 | CUSTOM<sup>21+</sup> | 255 | 自定义类型节点，通常这意味着该节点是在扩展插件中定义的类型。 |
 
 ## Container\<T>
+
 定义场景对象的容器。容器提供了一种将场景对象分组到层次结构中的方法。
 
 ### append
+
 append(item: T): void
 
 追加一个对象到容器。
@@ -118,11 +129,13 @@ append(item: T): void
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | item | T | 是 | T类型对象。 |
 
 **示例：**
+
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
 
@@ -144,6 +157,7 @@ function append(): void {
 ```
 
 ### insertAfter
+
 insertAfter(item: T, sibling: T | null): void
 
 在兄弟结点后面插入对象。
@@ -151,12 +165,14 @@ insertAfter(item: T, sibling: T | null): void
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | item | T | 是 | 要插入结点。 |
 | sibling | T \| null | 是 | 兄弟结点。 |
 
 **示例：**
+
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
 
@@ -178,6 +194,7 @@ function insertAfter(): void {
 ```
 
 ### remove
+
 remove(item: T): void
 
 移除指定对象。
@@ -185,11 +202,13 @@ remove(item: T): void
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | item | T | 是 | 要移除的对象。 |
 
 **示例：**
+
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
 
@@ -211,6 +230,7 @@ function remove(): void {
 ```
 
 ### get
+
 get(index: number): T | null
 
 获取特定下标对象，获取不到则返回空。
@@ -218,16 +238,19 @@ get(index: number): T | null
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | index | number | 是 | 要获取对象的下标，取值范围是大于等于0的整数。 |
 
 **返回值：**
+
 | 类型 | 说明 |
 | ---- | ---- |
 | T \| null | 返回获取到的对象，获取不到则返回空值。 |
 
 **示例：**
+
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
 
@@ -247,6 +270,7 @@ function get(): void {
 ```
 
 ### clear
+
 clear(): void
 
 清空容器内的所有对象。
@@ -254,6 +278,7 @@ clear(): void
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **示例：**
+
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
 
@@ -275,6 +300,7 @@ function clear(): void {
 ```
 
 ### count
+
 count(): number
 
 获取容器中对象的数量。
@@ -282,11 +308,13 @@ count(): number
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **返回值：**
+
 | 类型 | 说明 |
 | ---- | ---- |
 | number | 返回容器中对象个数，取值范围是非负整数。 |
 
 **示例：**
+
 ```ts
 import { Container, Scene, Node } from '@kit.ArkGraphics3D';
 
@@ -307,6 +335,7 @@ function count(): void {
 ```
 
 ## Node
+
 3D场景由树状层次结构的结点组成，其中每个结点都实现了Node接口。继承自[SceneResource](js-apis-inner-scene-resources.md#sceneresource-1)。
 
 ### 属性
@@ -326,6 +355,7 @@ function count(): void {
 | children | [Container](js-apis-inner-scene-nodes.md#containert)\<[Node](#node)> | 是 | 否 | 结点的子结点，不存在则为空值。为只读属性，表示不能替换整个children容器，但可以通过容器方法操作子结点（如[append()](#append)、[insertAfter()](#insertafter)、[remove()](#remove)或[clear()](#clear)）。如果append或insertAfter的结点已存在于容器中，容器会先移除该结点再插入，因此数量不会增加，看似“无效”；添加新结点才会真正增加子结点数量。 |
 
 ### getNodeByPath
+
 getNodeByPath(path: string): Node | null
 
 根据路径获取结点，如果获取不到则返回空。
@@ -333,16 +363,19 @@ getNodeByPath(path: string): Node | null
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | path | string | 是 | 场景结点层次中的路径。每层之间使用'/'符号进行分割。|
 
 **返回值：**
+
 | 类型 | 说明 |
 | ---- | ---- |
 | [Node](#node) \| null | 返回结点对象。 |
 
 **示例：**
+
 ```ts
 import { Scene, Node } from '@kit.ArkGraphics3D';
 
@@ -359,6 +392,7 @@ function getNode(): void {
 ```
 
 ## Geometry
+
 几何节点类型，用于承载可渲染的网格数据，并支持可选的形变功能，继承自[Node](#node)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -369,6 +403,7 @@ function getNode(): void {
 | morpher<sup>20+</sup> | [Morpher](js-apis-inner-scene-resources.md#morpher20) | 是 | 是 | 可选的形变器，用于为几何体添加基于顶点的形变或动画效果。若未设置，则该几何体不支持形变功能。 |
 
 ## LightType
+
 光源类型枚举。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -379,6 +414,7 @@ function getNode(): void {
 | SPOT | 2 | 点光源类型。 |
 
 ## Light
+
 光源，继承自[Node](#node)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
@@ -392,6 +428,7 @@ function getNode(): void {
 | enabled | boolean | 否 | 否 | 是否使能光源。true表示使用光源，false表示不使用。 |
 
 ## SpotLight
+
 聚光灯类型，继承自[Light](#light)。
 
 聚光灯会朝某个方向发出锥形光，强度随着圆锥角度的衰减由innerAngle和outerAngle两个参数定义。另外与点光源类似，强度也会随着距离光源位置的增加而衰减。
@@ -407,14 +444,14 @@ function getNode(): void {
 > 
 > 用户需要保证设置的innerAngle与outerAngle值是合理的。当outerAngle设置的值大于PI/2时，内部会强制其等于PI/2。当outerAngle设置的值小于innerAngle时，内部会强制其等于innerAngle。
 
-
 ## DirectionalLight
+
 平行光类型，继承自[Light](#light)。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-
 ## Camera
+
 相机类型，Camera继承自[Node](#node)。
 
 ### 属性
@@ -434,6 +471,7 @@ function getNode(): void {
 | renderingPipeline<sup>21+</sup> | [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) | 否 | 是 | 控制渲染管线。若未设置，默认使用轻量级前向渲染管线。（如果选择了FORWARD_LIGHTWEIGHT管线，某些功能将不可用。） |
 
 ### raycast<sup>20+</sup>
+
 raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 
 从屏幕指定位置发射射线，检测并返回所有命中的3D物体信息。使用Promise异步回调。
@@ -441,17 +479,20 @@ raycast(viewPosition: Vec2, params: RaycastParameters): Promise<RaycastResult[]>
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **参数：**
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | viewPosition | [Vec2](js-apis-inner-scene-types.md#vec2) | 是 | 使用屏幕归一化坐标，取值范围为[0, 1]。其中(0,0)表示Component3D控件的左上角，(1,1)表示Component3D控件的右下角。|
 | params | [RaycastParameters](js-apis-inner-scene.md#raycastparameters20) | 是 | 射线检测的配置参数（如检测范围、过滤节点等）。|
 
 **返回值：**
+
 | 类型 | 说明 |
 | ---- | ---- |
 | Promise<[RaycastResult](js-apis-inner-scene.md#raycastresult20)[]> | 返回命中的结果数组（按距离从近到远排序），若无命中则返回空数组。 |
 
 **示例：**
+
 ```ts
 import { SceneNodeParameters, Camera, SceneResourceFactory, Scene, Node, Vec2, Vec3, Quaternion,
   RaycastParameters } from '@kit.ArkGraphics3D';
@@ -559,6 +600,7 @@ function lookAt(node: Node, eye: Vec3, center: Vec3, up: Vec3) {
 ```
 
 ### getViewMatrix<sup>23+</sup>
+
 getViewMatrix(): Mat4x4
 
 获取相机的视图矩阵。
@@ -566,11 +608,13 @@ getViewMatrix(): Mat4x4
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **返回值：**
+
 | 类型 | 说明 |
 | ---- | ---- |
 | [Mat4x4](js-apis-inner-scene-types.md#mat4x423) | 返回相机的视图矩阵。 |
 
 **示例：**
+
 ```ts
 import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
 
@@ -593,6 +637,7 @@ function GetViewMatrix(): void {
 ```
 
 ### getProjectionMatrix<sup>23+</sup>
+
 getProjectionMatrix(): Mat4x4
 
 获取相机的投影矩阵。
@@ -600,11 +645,13 @@ getProjectionMatrix(): Mat4x4
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 **返回值：**
+
 | 类型 | 说明 |
 | ---- | ---- |
 | [Mat4x4](js-apis-inner-scene-types.md#mat4x423) | 返回相机的投影矩阵。 |
 
 **示例：**
+
 ```ts
 import { Scene, SceneResourceFactory, SceneNodeParameters, Camera, Mat4x4 } from '@kit.ArkGraphics3D';
 
