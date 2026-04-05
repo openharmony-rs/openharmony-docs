@@ -3508,7 +3508,7 @@ try {
 
 getSimpleDateTimeFormatByPattern(pattern: string, locale?: intl.Locale): SimpleDateTimeFormat
 
-> 从API version 18开始支持，从API version 20开始废弃，建议使用[getSimpleDateTimeFormatByPattern(pattern: string, locale?: Intl.Locale)](#i18ngetsimpledatetimeformatbypattern20)替代。
+> 从API version 18开始支持，从API version 20开始废弃，建议使用[i18n.getSimpleDateTimeFormatByPattern(pattern: string, locale?: Intl.Locale)](#i18ngetsimpledatetimeformatbypattern20)替代。
 
 通过模式字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatBySkeleton](#i18ngetsimpledatetimeformatbyskeletondeprecated)接口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](#format18)的示例。
 
@@ -3600,7 +3600,7 @@ try {
 
 getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: intl.Locale): SimpleDateTimeFormat
 
-> 从API version 18开始支持，从API version 20开始废弃，建议使用[getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: Intl.Locale)](#i18ngetsimpledatetimeformatbyskeleton20)替代。
+> 从API version 18开始支持，从API version 20开始废弃，建议使用[i18n.getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: Intl.Locale)](#i18ngetsimpledatetimeformatbyskeleton20)替代。
 
 通过框架字符串获取SimpleDateTimeFormat对象。与[getSimpleDateTimeFormatByPattern](#i18ngetsimpledatetimeformatbypatterndeprecated)接口获取的对象在格式化后显示差异请参考[SimpleDateTimeFormat.format](#format18)的示例。
 
@@ -3876,7 +3876,7 @@ try {
 
 getSimpleNumberFormatBySkeleton(skeleton: string, locale?: intl.Locale): SimpleNumberFormat
 
-> 从API version 18开始支持，从API version 20开始废弃，建议使用[getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale)](#i18ngetsimplenumberformatbyskeleton20)替代。
+> 从API version 18开始支持，从API version 20开始废弃，建议使用[i18n.getSimpleNumberFormatBySkeleton(skeleton: string, locale?: Intl.Locale)](#i18ngetsimplenumberformatbyskeleton20)替代。
 
 通过框架字符串获取SimpleNumberFormat对象。
 
@@ -4592,6 +4592,7 @@ getFirstPreferredLanguage(): string
 
 ## Util<sup>(deprecated)</sup>
 
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.I18NUtil](#i18nutil9)替代。
 
 ### unitConvert<sup>(deprecated)</sup>
 
@@ -4622,6 +4623,7 @@ unitConvert(fromUnit: UnitInfo, toUnit: UnitInfo, value: number, locale: string,
 
 ## Character<sup>(deprecated)</sup>
 
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[i18n.Unicode](#unicode9)替代。
 
 ### isDigit<sup>(deprecated)</sup>
 
