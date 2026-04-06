@@ -20,7 +20,7 @@ Unknown error.
 **可能原因**
 
 1. 签名过程发生了错误，请查看日志中的签名验证失败详情。
-2. 签名后的应用包大小超过4G，错误提示信息为"uint32 value of out range: xxx"。
+2. 签名后的应用包大小超过4G，错误提示信息为"uint32 value out of range: xxx"。
 
 **处理步骤**
 
