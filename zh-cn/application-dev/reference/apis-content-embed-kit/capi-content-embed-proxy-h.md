@@ -3,7 +3,7 @@
 <!--Subsystem: officeservice -->
 <!--Owner: @weiguoning-->
 <!--Designer: @zhuwei-->
-<!--Tester: @zhaotianyu-->
+<!--Tester: @yinjian-->
 <!--Adviser: @jinqiuheng-->
 
 ## 概述
@@ -26,7 +26,7 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [ContentEmbed_Info](capi-contentembed-contentembed-info.md) | ContentEmbed_Info | 声明ContentEmbed_Info结构体类型。包括其唯一标识符HMID、显示名称、描述信息、图标和文件扩展名等属性。 |
+| [ContentEmbed_Info](capi-contentembed-contentembed-info.md) | ContentEmbed_Info | 声明ContentEmbed_Info结构体类型。包括其唯一标识符OEID、显示名称、描述信息、图标和文件扩展名等属性。 |
 | [ContentEmbed_Format](capi-contentembed-contentembed-format.md) | ContentEmbed_Format | 声明ContentEmbed_Format结构体类型。包含ContentEmbed_Info集合信息。 |
 | [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) | ContentEmbed_ExtensionProxy | 声明OE对象结构体类型。作为客户端与OE Extension之间的通信代理，负责与服务端进行交互。每个 OE 文档在客户端中都会对应一个相应的 OE 对象，用于管理该文档的相关操作与状态。 |
 | [ContentEmbed_Capability](capi-contentembed-contentembed-capability.md) | ContentEmbed_Capability | 声明ContentEmbed_Capability结构体类型。 |
@@ -49,8 +49,8 @@
 | [ContentEmbed_ErrorCode OH_ContentEmbed_GetFormatFromInfo(const ContentEmbed_Info *info, uint32_t index, ContentEmbed_Format **format)](#oh_contentembed_getformatfrominfo) | - | 从ContentEmbed_Info实例中获取指定索引位置的ContentEmbed_Format实例。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedFormat(ContentEmbed_Format **format)](#oh_contentembed_createcontentembedformat) | - | 创建ContentEmbed_Format实例。创建成功后，调用者负责通过调用[OH_ContentEmbed_DestroyContentEmbedFormat](capi-content-embed-proxy-h.md#oh_contentembed_destroycontentembedformat)销毁实例，以避免内存泄漏。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedFormat(ContentEmbed_Format *format)](#oh_contentembed_destroycontentembedformat) | - | 销毁ContentEmbed_Format实例。调用此函数后，该指针将失效，不得再使用。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByHmidAndLocale(const char *hmid, const char *locale, ContentEmbed_Format *format)](#oh_contentembed_getcontentembedformatbyhmidandlocale) | - | 根据HMID和区域设置获取ContentEmbed_Format实例。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_GetHmidFromFormat(const ContentEmbed_Format *format, char *hmid)](#oh_contentembed_gethmidfromformat) | - | 获取ContentEmbed_Format实例的HMID。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale(const char *oeid, const char *locale, ContentEmbed_Format *format)](#oh_contentembed_getcontentembedformatbyoeidandlocale) | - | 根据OEID和区域设置获取ContentEmbed_Format实例。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_GetOEidFromFormat(const ContentEmbed_Format *format, char *oeid)](#oh_contentembed_getoeidfromformat) | - | 获取ContentEmbed_Format实例的OEID。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_GetNameAndDescriptionFromFormat(const ContentEmbed_Format *format, char *name, char *description)](#oh_contentembed_getnameanddescriptionfromformat) | - | 从ContentEmbed_Format实例中获取其本地化的显示名称和描述信息。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_GetIconFromFormat(const ContentEmbed_Format *format, OH_PixelmapNative **icon)](#oh_contentembed_geticonfromformat) | - | 获取ContentEmbed_Format实例的图标。获取成功后，调用者负责通过调用[OH_PixelmapNative_Destroy](../apis-image-kit/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)销毁图标，以避免内存泄漏。 |
 | [char** OH_ContentEmbed_GetFileNameExtensionsFromFormat(const ContentEmbed_Format *format, unsigned int *count)](#oh_contentembed_getfilenameextensionsfromformat) | - | 获取ContentEmbed_Format实例的文件扩展名列表。 |
@@ -246,15 +246,15 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedFormat(ContentEmbed_Fo
 | -- | -- |
 | [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。 |
 
-### OH_ContentEmbed_GetContentEmbedFormatByHmidAndLocale()
+### OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale()
 
 ```c
-ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByHmidAndLocale(const char *hmid, const char *locale, ContentEmbed_Format *format)
+ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale(const char *oeid, const char *locale, ContentEmbed_Format *format)
 ```
 
 **描述**
 
-根据HMID和区域设置获取ContentEmbed_Format实例。
+根据OEID和区域设置获取ContentEmbed_Format实例。
 
 **起始版本：** 24
 
@@ -262,7 +262,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByHmidAndLocale(cons
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *hmid | 文档格式的唯一标识符字符串。 |
+| const char *oeid | 文档格式的唯一标识符字符串。 |
 | const char *locale | 表示区域ID的字符串，由语言、脚本、国家地区组成。 |
 | [ContentEmbed_Format](capi-contentembed-contentembed-format.md) *format | 输出参数。该指针指向ContentEmbed_Format对象。 |
 
@@ -272,15 +272,15 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByHmidAndLocale(cons
 | -- | -- |
 | [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)表示系统服务异常。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。 |
 
-### OH_ContentEmbed_GetHmidFromFormat()
+### OH_ContentEmbed_GetOEidFromFormat()
 
 ```c
-ContentEmbed_ErrorCode OH_ContentEmbed_GetHmidFromFormat(const ContentEmbed_Format *format, char *hmid)
+ContentEmbed_ErrorCode OH_ContentEmbed_GetOEidFromFormat(const ContentEmbed_Format *format, char *oeid)
 ```
 
 **描述**
 
-获取ContentEmbed_Format实例的HMID。
+获取ContentEmbed_Format实例的OEID。
 
 **起始版本：** 24
 
@@ -289,7 +289,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetHmidFromFormat(const ContentEmbed_Form
 | 参数项 | 描述 |
 | -- | -- |
 | [const ContentEmbed_Format](capi-contentembed-contentembed-format.md) *format | 指向ContentEmbed_Format对象指针。 |
-| char *hmid | 输出参数。用于存储HMID字符串的字符数组。数组大小应至少为[MAX_HMID_LENGTH](./capi-content-embed-common-h.md#宏定义)。 |
+| char *oeid | 输出参数。用于存储OEID字符串的字符数组。数组大小应至少为[MAX_OEID_LENGTH](./capi-content-embed-common-h.md#宏定义)。 |
 
 **返回：**
 
@@ -619,7 +619,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StartWork(ContentEmbed_ExtensionPro
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)表示必要的客户端回调未注册。<br>     返回[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)表示系统服务异常。<br>     返回[CE_ERR_FILE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)表示文件操作失败。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_CLIENT_CALLBACK_NOT_REGISTERED](capi-content-embed-common-h.md#contentembed_errorcode)表示必要的客户端回调未注册。<br>     返回[CE_ERR_SYSTEM_ABNORMAL](capi-content-embed-common-h.md#contentembed_errorcode)表示系统服务异常。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。<br>     返回[CE_ERR_CONNECT_LIMIT_EXCEED](capi-content-embed-common-h.md#contentembed_errorcode)表示OE Extension连接数超出限制。<br>     返回[CE_ERR_FILE_NOT_GRANT](capi-content-embed-common-h.md#contentembed_errorcode)表示文件未被授权。<br>     返回[CE_ERR_DISK_FULL](capi-content-embed-common-h.md#contentembed_errorcode)表示磁盘已满。 |
 
 ### OH_ContentEmbed_Proxy_StopWork()
 
@@ -668,7 +668,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetSnapshot(ContentEmbed_ExtensionP
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针。<br>     返回[CE_ERR_EXTENSION_ERROR](capi-content-embed-common-h.md#contentembed_errorcode)表示OE Extension发生错误。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针。<br>     返回[CE_ERR_EXTENSION_ERROR](capi-content-embed-common-h.md#contentembed_errorcode)表示OE Extension发生错误。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。<br>     返回[CE_ERR_EXTENSION_NOT_SUPPORT](capi-content-embed-common-h.md#contentembed_errorcode)表示OE Extension不支持该能力。 |
 
 ### OH_ContentEmbed_Proxy_DoEdit()
 
@@ -692,7 +692,7 @@ OE对象请求OE Extension实例进入编辑模式。
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_EXTENSION_ERROR](capi-content-embed-common-h.md#contentembed_errorcode)表示OE Extension发生错误。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_EXTENSION_ERROR](capi-content-embed-common-h.md#contentembed_errorcode)表示OE Extension发生错误。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。<br>     返回[CE_ERR_EXTENSION_NOT_SUPPORT](capi-content-embed-common-h.md#contentembed_errorcode)表示OE Extension不支持该能力。 |
 
 ### OH_ContentEmbed_Proxy_GetEditStatus()
 

@@ -3,7 +3,7 @@
 <!--Subsystem: officeservice -->
 <!--Owner: @weiguoning-->
 <!--Designer: @zhuwei-->
-<!--Tester: @zhaotianyu-->
+<!--Tester: @yinjian-->
 <!--Adviser: @jinqiuheng-->
 
 ## 概述
@@ -42,11 +42,11 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByHmid(const char *hmid, ContentEmbed_Document **document)](#oh_contentembed_createdocumentbyhmid) | 使用提供的HMID创建一个新的OE文档实例。创建成功后，调用者负责通过调用[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, ContentEmbed_Document **document)](#oh_contentembed_createdocumentbyoeid) | 使用提供的OEID创建一个新的OE文档实例。创建成功后，调用者负责通过调用[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByFile(const char *srcFilePath, size_t length, bool isLinking, ContentEmbed_Document **document)](#oh_contentembed_createdocumentbyfile) | 从源文件创建一个新的OE文档实例。创建成功后，调用者负责通过调用[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_LoadDocumentFromFile(const char *srcFilePath, size_t length, ContentEmbed_Document **document)](#oh_contentembed_loaddocumentfromfile) | 通过已存在的OE格式文件加载OE文档实例。加载成功后，调用者负责通过调用[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t length, ContentEmbed_Document *document, size_t offset, size_t *readSize)](#oh_contentembed_document_read) | 从OE文档对象的指定偏移位置读取数据到缓冲区。读取的数据是OE文档的原始二进制内容。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetHmid(const ContentEmbed_Document *document, char *hmid)](#oh_contentembed_document_gethmid) | 从OE文档对象获取系统可识别标识符HMID。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetOEid(const ContentEmbed_Document *document, char *oeid)](#oh_contentembed_document_getoeid) | 从OE文档对象获取系统可识别标识符OEID。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Document_IsLinking(const ContentEmbed_Document *document, bool *isLinking)](#oh_contentembed_document_islinking) | 源文件是否链接到OE文档。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetNativeFilePath(const ContentEmbed_Document *document, char *nativeFilePath)](#oh_contentembed_document_getnativefilepath) | 从OE文档中获取客户端沙箱目录下存储的被嵌入源文件路径。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetRootStorage(ContentEmbed_Document *document, ContentEmbed_Storage **storage)](#oh_contentembed_document_getrootstorage) | 从OE文档对象获取OE格式文件根目录。获取成功后，调用者负责通过调用[OH_ContentEmbed_DestroyStorage](capi-content-embed-document-h.md#oh_contentembed_destroystorage)销毁OE格式文件根目录，以避免内存泄漏。 |
@@ -65,8 +65,8 @@
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Stream_GetSize(ContentEmbed_Stream *stream, size_t *size)](#oh_contentembed_stream_getsize) | 获取OE格式文件流的总大小（以字节为单位）。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_DestroyStream(ContentEmbed_Stream *stream)](#oh_contentembed_destroystream) | 销毁OE格式文件流实例并回收内存。调用此函数后，该OE格式文件流指针将失效，不得再使用。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_DestroyDocument(ContentEmbed_Document *document)](#oh_contentembed_destroydocument) | 销毁OE格式文档实例并回收内存。调用此函数后，该OE格式文档指针将失效，不得再使用。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetHmid(ContentEmbed_Storage *storage, char *hmid, size_t hmidSize)](#oh_contentembed_storage_gethmid) | 获取OE格式文件目录的系统可识别标识符HMID。 |
-| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetHmid(ContentEmbed_Storage *storage, char *hmid, size_t hmidSize)](#oh_contentembed_storage_sethmid) | 设置OE格式文件目录的系统可识别标识符HMID。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)](#oh_contentembed_storage_getoeid) | 获取OE格式文件目录的系统可识别标识符OEID。 |
+| [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)](#oh_contentembed_storage_setoeid) | 设置OE格式文件目录的系统可识别标识符OEID。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Create(ContentEmbed_StorageElements **storageElements)](#oh_contentembed_storageelements_create) | 创建并初始化ContentEmbed_StorageElements实例，用于存储和管理OE格式文件目录中的元素列表。创建成功后，调用者负责通过调用[OH_ContentEmbed_StorageElements_Destroy](capi-content-embed-document-h.md#oh_contentembed_storageelements_destroy)销毁实例，以避免内存泄漏。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_StorageElements_Destroy(ContentEmbed_StorageElements *storageElements)](#oh_contentembed_storageelements_destroy) | 销毁ContentEmbed_StorageElements实例并回收其占用的内存。调用此函数后，该ContentEmbed_StorageElements指针将失效，不得再使用。 |
 | [ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetElements(const ContentEmbed_Storage *storage, ContentEmbed_StorageElements *storageElements)](#oh_contentembed_storage_getelements) | 获取OE格式文件目录中的元素列表。 |
@@ -81,15 +81,15 @@
 
 ## 函数说明
 
-### OH_ContentEmbed_CreateDocumentByHmid()
+### OH_ContentEmbed_CreateDocumentByOEid()
 
 ```c
-ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByHmid(const char *hmid, ContentEmbed_Document **document)
+ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByOEid(const char *oeid, ContentEmbed_Document **document)
 ```
 
 **描述**
 
-使用提供的HMID创建一个新的OE文档实例。创建成功后，调用者负责通过调用[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
+使用提供的OEID创建一个新的OE文档实例。创建成功后，调用者负责通过调用[OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument)销毁实例，以避免内存泄漏。
 
 **起始版本：** 24
 
@@ -97,7 +97,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateDocumentByHmid(const char *hmid, Co
 
 | 参数项 | 描述 |
 | -- | -- |
-| const char *hmid | 表示HMID值，是用于唯一表示OE文档的字符串，长度不应超过[MAX_HMID_LENGTH](capi-content-embed-common-h.md#宏定义)。 |
+| const char *oeid | 表示OEID值，是用于唯一表示OE文档的字符串，长度不应超过[MAX_OEID_LENGTH](capi-content-embed-common-h.md#宏定义)。 |
 | [ContentEmbed_Document](capi-contentembed-contentembed-document.md) **document | 输出参数。该指针指向新创建的OE文档对象。 |
 
 **返回：**
@@ -187,15 +187,15 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_Read(uint8_t *buffer, size_t len
 | -- | -- |
 | [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)表示OE格式文件目录相关操作失败。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
 
-### OH_ContentEmbed_Document_GetHmid()
+### OH_ContentEmbed_Document_GetOEid()
 
 ```c
-ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetHmid(const ContentEmbed_Document *document, char *hmid)
+ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetOEid(const ContentEmbed_Document *document, char *oeid)
 ```
 
 **描述**
 
-从OE文档对象获取系统可识别标识符HMID。
+从OE文档对象获取系统可识别标识符OEID。
 
 **起始版本：** 24
 
@@ -204,7 +204,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Document_GetHmid(const ContentEmbed_Docum
 | 参数项 | 描述 |
 | -- | -- |
 | [const ContentEmbed_Document](capi-contentembed-contentembed-document.md) *document | 指向OE文档对象指针。 |
-| char *hmid | 输出参数。用于存储HMID值的字符数组。数组大小应至少为[MAX_HMID_LENGTH](capi-content-embed-common-h.md#宏定义)。 |
+| char *oeid | 输出参数。用于存储OEID值的字符数组。数组大小应至少为[MAX_OEID_LENGTH](capi-content-embed-common-h.md#宏定义)。 |
 
 **返回：**
 
@@ -335,7 +335,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CreateStorage(const ContentEmbed_
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败，可能是parentStorage无效或名称无效。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针，可能是childStorage创建失败。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)表示存储操作失败，可能是磁盘空间不足。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败，可能是parentStorage无效或名称无效。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针，可能是childStorage创建失败。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)表示OE格式文件目录相关操作失败。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_Storage_GetStorage()
 
@@ -665,15 +665,15 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyDocument(ContentEmbed_Document *do
 | -- | -- |
 | [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
 
-### OH_ContentEmbed_Storage_GetHmid()
+### OH_ContentEmbed_Storage_GetOEid()
 
 ```c
-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetHmid(ContentEmbed_Storage *storage, char *hmid, size_t hmidSize)
+ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)
 ```
 
 **描述**
 
-获取OE格式文件目录的系统可识别标识符HMID。
+获取OE格式文件目录的系统可识别标识符OEID。
 
 **起始版本：** 24
 
@@ -682,24 +682,24 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetHmid(ContentEmbed_Storage *sto
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *storage | 指向OE格式文件目录对象指针。 |
-| char *hmid | 输出参数。用于存储HMID值的字符数组。数组大小应至少为[MAX_HMID_LENGTH](capi-content-embed-common-h.md#宏定义)。 |
-| size_t hmidSize | hmid缓冲区的大小。 |
+| char *oeid | 输出参数。用于存储OEID值的字符数组。数组大小应至少为[MAX_OEID_LENGTH](capi-content-embed-common-h.md#宏定义)。 |
+| size_t oeidSize | oeid缓冲区的大小。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针。<br>     返回[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)表示OE格式文件目录相关操作失败。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
 
-### OH_ContentEmbed_Storage_SetHmid()
+### OH_ContentEmbed_Storage_SetOEid()
 
 ```c
-ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetHmid(ContentEmbed_Storage *storage, char *hmid, size_t hmidSize)
+ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetOEid(ContentEmbed_Storage *storage, char *oeid, size_t oeidSize)
 ```
 
 **描述**
 
-设置OE格式文件目录的系统可识别标识符HMID。
+设置OE格式文件目录的系统可识别标识符OEID。
 
 **起始版本：** 24
 
@@ -708,14 +708,14 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_SetHmid(ContentEmbed_Storage *sto
 | 参数项 | 描述 |
 | -- | -- |
 | [ContentEmbed_Storage](capi-contentembed-contentembed-storage.md) *storage | 指向OE格式文件目录对象指针。 |
-| char *hmid | 要设置的HMID值的字符数组。 |
-| size_t hmidSize | hmid字符串的长度，不包括终止符。 |
+| char *oeid | 要设置的OEID值的字符数组。 |
+| size_t oeidSize | oeid字符串的长度，不包括终止符。 |
 
 **返回：**
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针。<br>     返回[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)表示OE格式文件目录相关操作失败。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_StorageElements_Create()
 
@@ -788,7 +788,7 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_GetElements(const ContentEmbed_St
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针。<br>     返回[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)表示OE格式文件目录相关操作失败。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
 
 ### OH_ContentEmbed_StorageElements_GetCount()
 
@@ -990,4 +990,4 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Storage_CopyTo(ContentEmbed_Storage *srcS
 
 | 类型 | 说明 |
 | -- | -- |
-| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)表示存储操作失败。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
+| [ContentEmbed_ErrorCode](capi-content-embed-common-h.md#contentembed_errorcode) | 返回特定的错误码。<br>     返回[CE_ERR_OK](capi-content-embed-common-h.md#contentembed_errorcode)表示操作成功。<br>     返回[CE_ERR_PARAM_INVALID](capi-content-embed-common-h.md#contentembed_errorcode)表示参数检查失败。<br>     返回[CE_ERR_NULL_POINTER](capi-content-embed-common-h.md#contentembed_errorcode)表示意外空指针。<br>     返回[CE_ERR_DEVICE_NOT_SUPPORTED](capi-content-embed-common-h.md#contentembed_errorcode)表示设备不支持。<br>     返回[CE_ERR_STORAGE_OPERATION_FAILED](capi-content-embed-common-h.md#contentembed_errorcode)表示OE格式文件目录相关操作失败。<br>     返回[CE_ERR_IN_DLP_SANDBOX](capi-content-embed-common-h.md#contentembed_errorcode)表示应用在DLP沙箱中，不支持此操作。 |
