@@ -3,7 +3,7 @@
 <!--Subsystem: officeservice -->
 <!--Owner: @weiguoning-->
 <!--Designer: @zhuwei-->
-<!--Tester: @zhaotianyu-->
+<!--Tester: @yinjian-->
 <!--Adviser: @jinqiuheng-->
 
 ## 概述
@@ -33,7 +33,7 @@
 
 | 名称 | 描述 |
 | -- | -- |
-| MAX_HMID_LENGTH (1 * 40) | 表示OE文档的系统可识别标识符的最大字符串长度。<br>**起始版本：** 24 |
+| MAX_OEID_LENGTH (1 * 40) | 表示OE文档的系统可识别标识符的最大字符串长度。<br>**起始版本：** 24 |
 
 ## 枚举类型说明
 
@@ -66,6 +66,10 @@ enum ContentEmbed_ErrorCode
 | CE_ERR_CLIENT_CALLBACK_FAILED = 35300010 | 表示客户端注册的回调函数在执行过程中发生异常。<br>**起始版本：** 24 |
 | CE_ERR_EXTENSION_ABNORMAL_EXIT = 35300011 | 表示OE Extension意外退出，可能是崩溃、被系统杀死或资源耗尽。<br>**起始版本：** 24 |
 | CE_ERR_INVALID_LINKING_PATH = 35300012 | 表示尝试链接到不允许被链接目录中的文件，如应用沙箱目录内的文件。<br>**起始版本：** 24 |
+| CE_ERR_CONNECT_LIMIT_EXCEED = 35300013 | 表示当前OE Extension连接超出限制。<br>**起始版本：** 24 |
+| CE_ERR_FILE_NOT_GRANT = 35300014 | 表示当前文件没有授权。<br>**起始版本：** 24 |
+| CE_ERR_DISK_FULL = 35300015 | 表示当前磁盘空间不足。<br>**起始版本：** 24 |
+| CE_ERR_EXTENSION_NOT_SUPPORT = 35300016 | 表示当前OE Extension不支持该能力。<br>**起始版本：** 24 |
 
 ### ContentEmbed_CapabilityCode
 
