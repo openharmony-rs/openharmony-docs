@@ -231,7 +231,7 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
 
     ```log
     resign-enterprise-app : 企业应用包重签名
-        ├── -mode          # 签名模式，必填项，包括localSign，remoteSign
+        ├── -mode          # 签名模式，必填项，包括localSign、remoteSign
         ├── -keyAlias      # 密钥别名，必填项
         ├── -keyPwd        # 密钥口令，localSign模式时为必填项
         ├── -appCertFile   # 应用签名证书文件（证书链，顺序为实体证书-中间CA证书-根证书），必填项
