@@ -241,7 +241,7 @@ OpenHarmony系统内置密钥库文件，文件名称为OpenHarmony.p12，内含
         ├── -keystoreFile  # 密钥库文件，localSign模式时为必填项
         ├── -keystorePwd   # 密钥库口令，localSign模式时为必填项
         ├── -outFile       # 输出重签名后的包文件，必填项
-        ├── -pwdInputMode  # 密码输入模式，0表示密码从命令行参数中获取，1表示通过控制台交互输入密吗，默认为0，可选项
+        ├── -pwdInputMode  # 密码输入模式，0表示密码从命令行参数中获取，1表示通过控制台交互输入密码，默认为0，可选项
     ```
 
 ### 签名步骤
