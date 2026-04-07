@@ -466,6 +466,10 @@ destroy(vpnId: string): Promise\<void\>
   
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名   | 类型   | 必填 | 说明                                                                                        |
@@ -522,6 +526,10 @@ generateVpnId(): Promise\<string\>
 
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **返回值：**
 
 | 类型            | 说明                                                  |
@@ -563,6 +571,10 @@ protectProcessNet(): Promise\<void\>
 保护应用进程不受VPN连接影响，被保护的进程直接基于物理网络收发数据，流量不通过VPN转发。使用Promise异步回调。
 
 **系统能力**：SystemCapability.Communication.NetManager.Vpn
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
