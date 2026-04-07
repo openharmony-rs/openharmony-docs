@@ -14,7 +14,7 @@
 
 **错误信息**
 
-Parameter error.Possible causes: Incorrect parameter range.
+Parameter error. Possible causes: Incorrect parameter range.
 
 **错误描述**
 
