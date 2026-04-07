@@ -848,28 +848,28 @@ struct Page1 {
       // remove接口
       Text('Remove key SampleGlobalConnect: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // 删除这个key，会导致和p失去联系，之后p无法存储，即使reconnect
+          // 删除这个key，会导致和p失去联系，之后即使reconnect，p也无法存储
           PersistenceV2.remove(SampleGlobalConnect);
           this.refresh += 1;
         })
         .fontSize(25)
       Text('Remove key global1: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // 删除这个key，会导致和p失去联系，之后p无法存储，即使reconnect
+          // 删除这个key，会导致和p1失去联系，之后即使reconnect，p1也无法存储
           PersistenceV2.remove('global1');
           this.refresh += 1;
         })
         .fontSize(25)
       Text('Remove key global2: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // 删除这个key，会导致和p失去联系，之后p无法存储，即使reconnect
+          // 删除这个key，会导致和p2失去联系，之后即使reconnect，p2也无法存储
           PersistenceV2.remove('global2');
           this.refresh += 1;
         })
         .fontSize(25)
       Text('Remove key global3: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // 删除这个key，会导致和p失去联系，之后p无法存储，即使reconnect
+          // 删除这个key，会导致和p3失去联系，之后即使reconnect，p3也无法存储
           PersistenceV2.remove('global3');
           this.refresh += 1;
         })
@@ -878,7 +878,7 @@ struct Page1 {
       // 重新连接也无法和之前的状态变量建立联系，因此无法保存数据
       Text('ReConnect key global2: ' + 'refresh: ' + this.refresh)
         .onClick(() => {
-          // 删除这个key，会导致和p失去联系，之后p无法存储，即使reconnect
+          // 此时会重新存储一个key为global2的变量，但该变量与p2无关
           PersistenceV2.globalConnect(this.options);
           this.refresh += 1;
         })
