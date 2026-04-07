@@ -126,7 +126,7 @@ createHttp(): HttpRequest
 
 **ArkTS-Dyn起始版本：** 6
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
