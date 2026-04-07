@@ -148,6 +148,10 @@ properties.extras = {
 };
 properties.tag = "This is a tag of properties";
 properties.shareOptions = unifiedDataChannel.ShareOptions.CROSS_APP;
+properties.uriAuthorizationPolicies = [
+  unifiedDataChannel.UriPermission.READ,
+  unifiedDataChannel.UriPermission.WRITE
+];
 properties.getDelayData = ((type: string) => {
   if (type == uniformTypeDescriptor.UniformDataType.PLAIN_TEXT) {
     let plainTextDetails : Record<string, string> = {
@@ -950,6 +954,10 @@ HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言
 let html = new unifiedDataChannel.HTML();
 html.htmlContent = '<div><p>标题</p></div>';
 html.plainContent = 'This is plainContent';
+html.uriAuthorizationPolicies = [
+  unifiedDataChannel.UriPermission.READ,
+  unifiedDataChannel.UriPermission.WRITE
+];
 ```
 
 ## File
@@ -985,6 +993,10 @@ export default class EntryAbility extends UIAbility {
     };
     let filePath = pathDir + '/test.txt';
     file.uri = fileUri.getUriFromPath(filePath);
+    file.uriAuthorizationPolicies = [
+      unifiedDataChannel.UriPermission.READ,
+      unifiedDataChannel.UriPermission.WRITE
+    ];
   }
 }
 ```
