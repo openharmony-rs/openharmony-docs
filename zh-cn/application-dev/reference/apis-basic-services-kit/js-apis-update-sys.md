@@ -1589,6 +1589,8 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 深度擦除用户数据。使用Promise异步回调。
 
+**起始版本：** 26.0.0
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.FACTORY_RESET
@@ -1632,13 +1634,21 @@ restorer.deepFactoryReset(factoryResetStrategy).then(() => {
 ```
 ### getDeepFactoryResetInfo
 
-getDeepFactoryResetInfo(factoryResetStrategy): Promise\<factoryResetInfo>
+getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<factoryResetInfo>
 
 获取深度擦除信息。使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.Update.UpdateService
 
 **需要权限**：ohos.permission.FACTORY_RESET
+
+**参数：**
+
+| 参数名                | 类型                                       | 必填   | 说明             |
+| ------------------ | ---------------------------------------- | ---- | -------------- |
+| factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | 是    | 擦除策略。         |
 
 **返回值：**
 
@@ -2189,6 +2199,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 深度恢复出厂设置策略。
 
+**起始版本：** 26.0.0
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
@@ -2200,6 +2212,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 擦除信息。
 
+**起始版本：** 26.0.0
+
 **系统能力**：SystemCapability.Update.UpdateService
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
@@ -2209,6 +2223,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 ## FactoryResetScope
 
 擦除范围。
+
+**起始版本：** 26.0.0
 
 **系统能力**：SystemCapability.Update.UpdateService
 
