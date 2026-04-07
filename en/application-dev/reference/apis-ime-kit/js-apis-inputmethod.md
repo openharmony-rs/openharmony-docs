@@ -35,6 +35,7 @@ Describes the input method application attributes.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | name<sup>9+</sup>  | string | Yes| No| Mandatory. Name of the input method package.|
@@ -793,6 +794,7 @@ Describes the attributes of the edit box, including the text input type and Ente
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | textInputType  | [TextInputType](#textinputtype10) | No| No| Enumerates the text input types.|
@@ -806,6 +808,7 @@ Describes the configuration of the edit box.
 
 **System capability**: SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | Name| Type| Read-only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
 | inputAttribute  | [InputAttribute](#inputattribute10) | No| No| Edit box attribute.|
@@ -908,7 +911,7 @@ Receives custom data sent by the input method application.
 
 > **NOTE**
 >
-> This callback is triggered when the registered MessageHandler receives custom communication data sent by the input method application.
+> This callback is triggered when the registered MeesageHandler receives custom communication data sent by the input method application.
 >
 > The **msgId** parameter is mandatory, and the **msgParam** parameter is optional. If only the custom **msgId** data is received, confirm it with the data sender.
 
