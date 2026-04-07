@@ -32,11 +32,11 @@ static fetchCookieSync(url: string, incognito?: boolean): string
 
 > **说明：**
 >
-> 系统会自动清理过期的cookie，对于同名key的数据，新数据将会覆盖前一个数据。
+> - 系统会自动清理过期的cookie，对于同名key的数据，新数据将会覆盖前一个数据。
 > 
-> 为了获取可正常使用的cookie值，fetchCookieSync需传入完整链接。
+> - 为了获取可正常使用的cookie值，fetchCookieSync需传入完整链接。
 > 
-> fetchCookieSync用于获取所有的cookie值，每条cookie值之间会通过"; "进行分隔，但无法单独获取某一条特定的cookie值。
+> - fetchCookieSync用于获取所有的cookie值，每条cookie值之间会通过"; "进行分隔，但无法单独获取某一条特定的cookie值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -286,21 +286,21 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 
 > **说明：**
 >
-> 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
+> - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
-> configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - 同步cookie的时机建议在Web组件加载之前完成。
 >
-> 同步cookie的时机建议在Web组件加载之前完成。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
-> 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
->
-> cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
 > 
-> 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+> - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
 >
-> value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
+> - 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+>
+> - 如果要覆盖HttpOnly的cookies，需要在value中指定HttpOnly属性。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -359,19 +359,19 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 
 > **说明：**
 >
-> configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
+> - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 >
-> 同步cookie的时机建议在Web组件加载之前完成。
+> - 同步cookie的时机建议在Web组件加载之前完成。
 >
-> 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
 >
-> cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync)进行强制落盘。
+> - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
 > 
-> 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
+> - 若存在相同host、path和名称的cookie，将被新cookie替换。若设置的cookie已过期，则不会存储该cookie。如需设置多个cookie，应多次调用此方法。
 >
-> value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以分号分隔的cookie属性列表（例如"key=value;Max-Age=100"）。
+> - 若通过configCookieSync进行两次或多次设置cookie，则每次设置的cookie之间会通过"; "进行分隔。
 >
-> 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
+> - 如果指定的值包含"Secure"属性，则url必须使用"https://"协议。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -623,9 +623,9 @@ static saveCookieSync(): void
 
 > **说明：**
 >
-> saveCookieSync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieSync，也不会将session cookie写入磁盘。
+> - saveCookieSync用于强制将需要持久化的cookies写入磁盘。PC/2in1和Tablet设备不会持久化session cookie，即使调用saveCookieSync，也不会将session cookie写入磁盘。
 >
-> saveCookieSync将阻塞调用者直到操作完成，期间可能会执行I/O操作。
+> - saveCookieSync将阻塞调用者直到操作完成，期间可能会执行I/O操作。
 
 **示例：**
 
@@ -663,7 +663,7 @@ static saveCookieAsync(callback: AsyncCallback\<void>): void
 
 > **说明：**
 >
-> Cookie信息存储在应用沙箱路径下/proc/{pid}/root/data/storage/el2/base/cache/web/Cookies。
+> - Cookie信息存储在应用沙箱路径下/proc/{pid}/root/data/storage/el2/base/cache/web/Cookies。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1281,9 +1281,9 @@ static setLazyInitializeWebEngine(lazy: boolean): void
 
 > **说明：**
 >
-> 该接口为全局静态方法，须在使用ArkWeb组件和初始化ArkWeb内核前调用，否则该设置无效。
+> - 该接口为全局静态方法，须在使用ArkWeb组件和初始化ArkWeb内核前调用，否则该设置无效。
 > 
-> 该接口仅适用于调用后会初始化CookieManager的接口，比如本类WebCookieManager的其他接口。调用本接口设置为true后，再调用适用的接口，会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
+> - 该接口仅适用于调用后会初始化CookieManager的接口，比如本类WebCookieManager的其他接口。调用本接口设置为true后，再调用适用的接口，会在初始化CookieManager时跳过初始化ArkWeb内核，后续需自行初始化ArkWeb内核。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
