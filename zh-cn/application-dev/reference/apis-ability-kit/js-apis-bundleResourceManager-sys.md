@@ -543,7 +543,7 @@ try {
 } catch (err) {
   let message = (err as BusinessError).message;
   let code = (err as BusinessError).code;
-  hilog.error(0x0000, 'testTag', 'getLauncherAbilityResourceInfo failed: %{public}d %{public}s', code, message);
+  hilog.error(0x0000, 'testTag', 'getExtensionAbilityResourceInfo failed: %{public}d %{public}s', code, message);
 }
 ```
 

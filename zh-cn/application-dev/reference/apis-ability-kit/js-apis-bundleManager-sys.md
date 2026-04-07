@@ -1594,7 +1594,7 @@ cleanAllBundleCache(): Promise\<void>
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1704,7 +1704,7 @@ cleanBundleCacheFiles(bundleName: string): Promise\<void>
 
 | 类型           | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1764,7 +1764,7 @@ cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise\<void>
 
 | 类型           | 说明                                                         |
 | -------------- | ------------------------------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1878,7 +1878,7 @@ setApplicationEnabled(bundleName: string, isEnabled: boolean): Promise\<void>
 
 | 类型           | 说明                                 |
 | -------------- | ------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1936,7 +1936,7 @@ setApplicationEnabled(bundleName: string, appIndex: number, isEnabled: boolean):
 
 | 类型           | 说明                                 |
 | -------------- | ------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2110,7 +2110,7 @@ setAbilityEnabled(info: AbilityInfo, isEnabled: boolean): Promise\<void>
 
 | 类型           | 说明                              |
 | -------------- | --------------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -2182,7 +2182,7 @@ setAbilityEnabled(info: AbilityInfo, appIndex: number, isEnabled: boolean): Prom
 
 | 类型           | 说明                              |
 | -------------- | --------------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4864,7 +4864,7 @@ enableDynamicIcon(bundleName: string, moduleName: string): Promise\<void>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4931,7 +4931,7 @@ enableDynamicIcon(bundleName: string, moduleName: string, option?: BundleOptions
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -4993,7 +4993,7 @@ disableDynamicIcon(bundleName: string): Promise\<void>;
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5056,7 +5056,7 @@ disableDynamicIcon(bundleName: string, option?: BundleOptions): Promise\<void>
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5484,7 +5484,7 @@ migrateData(sourcePaths: Array&lt;string&gt;, destinationPath: string): Promise&
 
 | 类型       | 说明                 |
 | ---------- | -------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5551,7 +5551,7 @@ verifyAbc(abcPaths: Array\<string>, deleteOriginalFiles: boolean): Promise\<void
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -5607,7 +5607,7 @@ deleteAbc(abcPath: string): Promise\<void>
 
 | 类型                                                        | 说明                        |
 | ----------------------------------------------------------- | --------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
