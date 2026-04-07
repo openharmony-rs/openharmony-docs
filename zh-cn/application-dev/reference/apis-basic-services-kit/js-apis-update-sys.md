@@ -1585,6 +1585,7 @@ restorer.forceFactoryReset().then(() => {
 ```
 
 ### deepFactoryReset
+
 deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 深度擦除用户数据。使用Promise异步回调。
@@ -1634,7 +1635,7 @@ restorer.deepFactoryReset(factoryResetStrategy).then(() => {
 ```
 ### getDeepFactoryResetInfo
 
-getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<factoryResetInfo>
+getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<FactoryResetInfo>
 
 获取深度擦除信息。使用Promise异步回调。
 
@@ -1675,7 +1676,7 @@ let factoryResetStrategy: update.FactoryResetStrategy = {
   scope: update.FactoryResetScope.DATA,
   strategy: "deepFactoryReset"
 };
-updater.getDeepFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
+restorer.getDeepFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
   console.info(`getDeepFactoryResetInfo success`);
 }).catch((err: BusinessError) => {
   console.error(`getDeepFactoryResetInfo promise error ${JSON.stringify(err)}`);
