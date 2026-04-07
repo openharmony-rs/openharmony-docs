@@ -141,9 +141,9 @@ let extraData: cloudData.ExtraData = {
 
 端云协同应用信息。
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -915,9 +915,9 @@ static queryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;
 
 批量查询上一次端云同步的信息，使用Promise异步回调。
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -978,9 +978,9 @@ static onSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress: Callbac
 
 订阅应用同步信息变化，使用callback异步回调。
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1032,9 +1032,9 @@ static offSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress?: Callb
 
 取消订阅应用同步信息变化，使用callback异步回调。
 
-**ArkTS-Dyn起始版本：** 26
+**ArkTS-Dyn起始版本：** 26.0.0
 
-**ArkTS-Sta起始版本：** 26
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
