@@ -49437,5 +49437,60 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/application-models/agent-extension-ability.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/AgentExtensionAbility/entry/src/main/ets/AgentExtAbility/AgentExtAbility.ets",
+				"functions":[
+					{
+						"end_line":79,
+						"name":"ability_agent_service_one",
+						"start_line":15
+					},
+					{
+						"end_line":78,
+						"name":"ability_agent_service_two",
+						"start_line":16
+					},
+					{
+						"end_line":77,
+						"name":"ability_agent_service_three",
+						"start_line":17
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/application-models/agent-manager-sys.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Ability/ConnectAgentExtension/entry/src/main/ets/pages/Index.ets",
+				"functions":[
+					{
+						"end_line":120,
+						"name":"agent_manager_one",
+						"start_line":15
+					},
+					{
+						"end_line":119,
+						"name":"agent_manager_two",
+						"start_line":16
+					},
+					{
+						"end_line":118,
+						"name":"agent_manager_three",
+						"start_line":17
+					},
+					{
+						"end_line":117,
+						"name":"agent_manager_four",
+						"start_line":18
+					}
+				]
+			}
+		]
 	}
 ]
