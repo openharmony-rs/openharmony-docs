@@ -216,7 +216,7 @@ Struct OH_WifiLinkedInfo
 | isHidden | bool | 否 | 否 | WLAN接入点是否是隐藏网络，true表示是隐藏网络，false表示不是隐藏网络。 |
 | isRestricted | bool | 否 | 否 | WLAN接入点是否限制数据量，true表示限制，false表示不限制。 |
 | macType | int32_t | 否 | 否 | MAC地址类型。0 - 随机MAC地址，1 - 设备MAC地址。 |
-| macAddress | char[] | 否 | 否 | 设备的MAC地址。当 macType 为 1 时需要请求 ohos.permission.GET_WIFI_LOCAL_MAC 权限。<br>格式："AA:BB:CC:DD:EE:FF"<br>长度 WIFI_MAC_LEN = 18。 |
+| macAddress | char[] | 否 | 否 | 设备的MAC地址。当macType为1时需要申请ohos.permission.GET_WIFI_LOCAL_MAC权限。<br>格式："AA:BB:CC:DD:EE:FF"<br>长度 WIFI_MAC_LEN = 18。 |
 | ipAddress | uint32_t | 否 | 否 | WLAN连接的IP地址。 |
 | connState | [OH_WifiConnState](capi-oh-wifi-h.md#oh_wificonnstate) | 否 | 否 | WLAN连接状态。详情见 OH_WifiConnState。 |
 | channelWidth | [OH_WifiChannelWidth](capi-oh-wifi-h.md#oh_wifichannelwidth) | 否 | 否 | 当前连接热点的信道带宽。详情见 OH_WifiChannelWidth。 |
