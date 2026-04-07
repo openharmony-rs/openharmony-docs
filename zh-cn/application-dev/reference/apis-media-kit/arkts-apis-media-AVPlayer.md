@@ -275,6 +275,98 @@ async function test(){
 }
 ```
 
+## getTrackSelectionFilter<sup>24+</sup>
+
+getTrackSelectionFilter(): Promise\<TrackSelectionFilter>
+
+获取播放器当前配置的轨道选择过滤器。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<[TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter24)> | Promise对象，返回当前配置的轨道选择过滤器。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. |
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  player.getTrackSelectionFilter().then((selectionFilter: media.TrackSelectionFilter) => {
+    console.info(`Succeeded in getting TrackSelectionFilter: ${selectionFilter}`);
+  }).catch((err: BusinessError) => {
+    console.error('Failed to getTrackSelectionFilter, error message is:' + err.message);
+  });
+}
+
+```
+
+## setTrackSelectionFilter<sup>24+</sup>
+
+setTrackSelectionFilter(filter : TrackSelectionFilter): Promise\<void>
+
+为播放器设置轨道选择过滤器，播放器将使用该过滤器来选择可用的轨道用于播放。使用Promise异步回调。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVPlayer
+
+**参数：**
+
+| 参数名   | 类型     | 必填 | 说明                 |
+| -------- | -------- | ---- | -------------------- |
+| filter | [TrackSelectionFilter](arkts-apis-media-i.md#trackselectionfilter24) | 是   | 轨道选择过滤器。 |
+
+**返回值：**
+
+| 类型           | 说明                                       |
+| -------------- | ------------------------------------------ |
+| Promise\<void> | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
+
+| 错误码ID | 错误信息                                  |
+| -------- | ----------------------------------------- |
+| 5400102  | Operation not allowed. |
+
+**示例：**
+
+```ts
+async function test() {
+  let player = await media.createAVPlayer();
+  let selectionFilter: media.TrackSelectionFilter = {
+    maxVideoBitrate: 80000,
+    minVideoBitrate: 0,
+    maxVideoFrameRate: 60,
+    minVideoFrameRate: 0,
+    maxVideoResolution: { width: 1080, height: 720 },
+    minVideoResolution: { width: 0, height: 0 },
+    preferredVideoMimeTypes: [media.CodecMimeType.VIDEO_AVC],
+    maxAudioBitrate: 8000,
+    minAudioBitrate: 0,
+    maxAudioChannels: 3,
+    preferredAudioMimeTypes: [media.CodecMimeType.AUDIO_AAC, media.CodecMimeType.AUDIO_MP3],
+    preferredAudioLanguages: [],
+    preferredSubtitleLanguages: []
+  };
+  player.setTrackSelectionFilter(selectionFilter).then(() => {
+    console.info('Succeeded in setting TrackSelectionFilter');
+  }).catch((err: BusinessError) => {
+    console.error('Failed to setTrackSelectionFilter, error message is:' + err.message);
+  });
+}
+```
+
 ## setPlaybackStrategy<sup>12+</sup>
 
 setPlaybackStrategy(strategy: PlaybackStrategy): Promise\<void>
@@ -1185,7 +1277,7 @@ selectTrack(index: number, mode?: SwitchMode): Promise\<void>
 | 参数名   | 类型     | 必填 | 说明                 |
 | -------- | -------- | ---- | -------------------- |
 | index | number | 是   | 多音视频资源的轨道索引，可通过[getTrackDescription](#gettrackdescription9-1)接口获取当前资源的所有轨道信息[MediaDescription](arkts-apis-media-i.md#mediadescription8)。 |
-| mode   | [SwitchMode](arkts-apis-media-e.md#switchmode12) | 否   | 切换视频轨道模式，默认为SMOOTH模式，**仅在DASH协议网络流视频轨切换时生效**，其他场景当前暂不支持。 |
+| mode   | [SwitchMode](arkts-apis-media-e.md#switchmode12) | 否   | 切换视频轨道模式，默认为SMOOTH模式，**仅在DASH/HLS协议网络流视频轨切换时生效。**<br>从API version 24开始支持HLS协议网络流视频。 |
 
 **返回值：**
 
