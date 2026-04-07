@@ -41,7 +41,7 @@ napi_status napi_load_module(napi_env env, const char* path, napi_value* result)
 | 本地工程模块   | 加载HSP模块名           | -                            |
 | 远程包         | 加载远程HAR模块名        | -                            |
 | 远程包         | 加载ohpm包名            | -                            |
-| 模块Native库   | 加载libNativeLibrary.so | -                            |
+| 模块Native库   | 加载Native模块(.so文件) | -                            |
 
 - **加载系统模块**
 
