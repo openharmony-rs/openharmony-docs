@@ -1644,7 +1644,7 @@ getDeepFactoryResetInfo(factoryResetStrategy): Promise\<factoryResetInfo>
 
 | 类型                              | 说明                  |
 | ------------------------------- | ------------------- |
-| Promise\<[FactoryResetInfo](#factoryresetinfo)> | Promise对象，返回任务信息对象。 |
+| Promise\<[FactoryResetInfo](#factoryResetInfo)> | Promise对象，返回任务信息对象。 |
 
 **错误码**：
 
@@ -1663,12 +1663,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let factoryResetStrategy: update.FactoryResetStrategy = {
   scope: update.FactoryResetScope.DATA,
-  strategy: "deepfactoryReset"
+  strategy: "deepFactoryReset"
 };
-updater.getFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
-  console.info(`getFactoryResetInfo success`);
+updater.getDeepFactoryResetInfo(factoryResetStrategy).then((info: update.FactoryResetInfo) => {
+  console.info(`getDeepFactoryResetInfo success`);
 }).catch((err: BusinessError) => {
-  console.error(`getFactoryResetInfo promise error ${JSON.stringify(err)}`);
+  console.error(`getDeepFactoryResetInfo promise error ${JSON.stringify(err)}`);
 });
 ```
 
