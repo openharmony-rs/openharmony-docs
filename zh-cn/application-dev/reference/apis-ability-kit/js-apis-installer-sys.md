@@ -353,7 +353,7 @@ install(hapFilePaths: Array\<string\>, installParam?: InstallParam) : Promise\<v
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -572,7 +572,7 @@ uninstall(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -769,7 +769,7 @@ recover(bundleName: string, installParam?: InstallParam) : Promise\<void\>
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -896,7 +896,7 @@ uninstall(uninstallParam: UninstallParam) : Promise\<void>
 
 | 类型          | 说明                                   |
 | ------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -962,7 +962,7 @@ addExtResource(bundleName: string, filePaths: Array\<string>): Promise\<void>;
 
 | 类型          | 说明                                   |
 | ------------- | -------------------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1023,7 +1023,7 @@ removeExtResource(bundleName: string, moduleNames: Array\<string>): Promise\<voi
 
 | 类型          | 说明                                   |
 | ------------- | -------------------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1235,7 +1235,7 @@ updateBundleForSelf(hapFilePaths: Array\<string\>, installParam?: InstallParam):
 
 | 类型          | 说明                                   |
 | ------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1318,7 +1318,7 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise\<void
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1456,7 +1456,7 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise\
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1521,7 +1521,7 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1597,7 +1597,7 @@ installPreexistingApp(bundleName: string, userId?: number): Promise\<void\>;
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1662,7 +1662,7 @@ installPlugin(hostBundleName: string, pluginFilePaths: Array\<string\>, pluginPa
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -1741,7 +1741,7 @@ uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: 
 
 | 类型            | 说明                                   |
 | --------------- | -------------------------------------- |
-| Promise\<void\> | Promise对象。无返回结果。 |
+| Promise\<void\> | Promise对象，无返回结果。 |
 
 **错误码：**
 

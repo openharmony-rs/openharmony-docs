@@ -1578,7 +1578,7 @@ cleanBundleCacheFilesForSelf(): Promise\<void>
 
 | 类型                                                         | 说明                                 |
 | ------------------------------------------------------------ | ------------------------------------ |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise对象，无返回结果。 |
 
 **示例：**
 
@@ -1771,14 +1771,6 @@ try {
   hilog.error(0x0000, 'testTag', 'getApplicationLabel failed: error %{public}d  %{public}s', err.code, err.message);
 }
 ```
-
-try {
-  let want: Want = bundleManager.getLaunchWantForBundleSync(bundleName, userId);
-  hilog.info(0x0000, 'testTag', 'getLaunchWantForBundleSync successfully. Data: %{public}s', JSON.stringify(want));
-} catch (err) {
-  let message = (err as BusinessError).message;
-  hilog.error(0x0000, 'testTag', 'getLaunchWantForBundleSync failed. Cause: %{public}s', message);
-}
 
 ## ApplicationInfo
 
