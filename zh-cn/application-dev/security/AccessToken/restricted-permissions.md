@@ -1055,3 +1055,19 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 **支持设备**: PC/2in1
 
 **起始版本**: 24
+
+## ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION
+
+允许应用注册ObjectEditorExtensionAbility组件。
+
+获取该权限后，应用可以提供嵌入内容编辑服务给其他应用使用。
+
+<!--RP67--><!--RP67End-->
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+**支持设备**：Phone | PC/2in1 | Tablet
+
+**起始版本**：24
