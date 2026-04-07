@@ -109,3 +109,51 @@ function getExposureBiasRange(photoSession: camera.PhotoSession): Array<number> 
   return biasRangeArray;
 }
 ```
+
+## isExposureMeteringModeSupported<sup>24+</sup>
+
+isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
+
+检测是否支持指定的曝光测光模式。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                           | 必填  | 说明                           |
+| -------- | -------------------------------| ---- | ----------------------------- |
+| aeMeteringMode   | [ExposureMeteringMode](arkts-apis-camera-e.md#exposuremeteringmode24)  | 是   | 曝光测光模式。                 |
+
+**返回值：**
+
+| 类型        | 说明                          |
+| ---------- | ----------------------------- |
+| boolean    | 是否支持曝光测光模式。true表示支持，false表示不支持 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400103                |  Session not config, only throw in session usage.          |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function isExposureMeteringModeSupported(photoSession: camera.PhotoSession, aeMeteringMode: camera.ExposureMeteringMode): boolean {
+  let isSupported: boolean = false;
+  try {
+    isSupported = photoSession.isExposureMeteringModeSupported(aeMeteringMode);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The isExposureMeteringModeSupported call failed. error code: ${err.code}`);
+  }
+  return isSupported;
+}
+```

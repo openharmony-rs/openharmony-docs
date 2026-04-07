@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Zoom 继承自 [ZoomQuery](arkts-apis-camera-ZoomQuery.md)。
+Zoom继承自[ZoomQuery](arkts-apis-camera-ZoomQuery.md)。
 
 变焦类，对设备变焦操作。
 
