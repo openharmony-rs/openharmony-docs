@@ -1317,11 +1317,11 @@ export default class EntryAbility extends UIAbility {
 ## window.moveMainWindowToTargetDisplay<sup>26+</sup>
 moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;void&gt;
 
-将指定的窗口迁移到指定的屏幕上。使用Promise异步回调。
+将指定的主窗口迁移到对应屏幕上。使用Promise异步回调。
 
-将所有该类型系统窗口zIndex调整为所设置的值，调整前后，该类型窗口之间相对层级保持不变，焦点窗口不发生变化。当应用关闭之后该类型窗口层级恢复默认值。
+对于PC/手机主屏幕与虚拟屏之间的窗口迁移，主窗及其子窗（全局悬浮子窗除外）会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦；对于PC主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕，抬升并获取焦点。
 
-推荐不同类型窗口设置不同的zIndex，如果已经存在相同zIndex的窗口，设置前后，窗口之间的相对层级保持不变。
+若指定的主窗口处于分屏状态，会先退出分屏再迁移。
 
 **系统接口：** 此接口为系统接口。
 
