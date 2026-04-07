@@ -39,7 +39,7 @@
 <!-- @[get_local_cap_ability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
 
 ``` TypeScript
-import { fileIo as fs } from '@kit.CoreFileKit';
+import { fileIo } from '@kit.CoreFileKit';
 import { backup } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 // ...
@@ -53,9 +53,9 @@ export async function getLocalCapabilities(): Promise<void> {
     let fileData = await backup.getLocalCapabilities();
     console.info('getLocalCapabilities success');
     let fpath = filesDir + '/localCapabilities.json';
-    fs.copyFileSync(fileData.fd, fpath);
+    fileIo.copyFileSync(fileData.fd, fpath);
     // ...
-    fs.closeSync(fileData.fd);
+    fileIo.closeSync(fileData.fd);
   } catch (error) {
     console.error(`getLocalCapabilities failed with err, code is ${error.code}, message is ${error.message}`);
   }
@@ -106,7 +106,7 @@ export async function getLocalCapabilities(): Promise<void> {
   <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
   
   ``` TypeScript
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
@@ -129,12 +129,12 @@ export async function getLocalCapabilities(): Promise<void> {
         }
         try {
           let bundlePath = filesDir + '/' + file.bundleName;
-          if (!fs.accessSync(bundlePath)) {
-            fs.mkdirSync(bundlePath);
+          if (!fileIo.accessSync(bundlePath)) {
+            fileIo.mkdirSync(bundlePath);
           }
           // 此处执行copyFileSync会多一次内存拷贝，开发者可以直接使用onFileReady的file.fd来进行数据处理，处理完成后close即可，这样会减少内存消耗
-          fs.copyFileSync(file.fd, bundlePath + `/${file.uri}`);
-          fs.closeSync(file.fd);
+          fileIo.copyFileSync(file.fd, bundlePath + `/${file.uri}`);
+          fileIo.closeSync(file.fd);
           console.info('onFileReady success');
         } catch (error) {
           let err: BusinessError = error as BusinessError;
@@ -205,7 +205,7 @@ export async function getLocalCapabilities(): Promise<void> {
   <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->    
   
   ``` TypeScript
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
@@ -241,13 +241,13 @@ export async function getLocalCapabilities(): Promise<void> {
         }
         // 此处开发者请根据实际场景待恢复文件存放位置进行调整 bundlePath
         let bundlePath: string = `${filesDir}/${file.bundleName}/`;
-        if (!fs.accessSync(bundlePath)) {
+        if (!fileIo.accessSync(bundlePath)) {
           console.error('onFileReady bundlePath err : ' + bundlePath);
         }
         console.info('fd : ' + file.fd);
         let targetPath = `${bundlePath}${file.uri}`;
-        fs.copyFileSync(targetPath, file.fd);
-        fs.closeSync(file.fd);
+        fileIo.copyFileSync(targetPath, file.fd);
+        fileIo.closeSync(file.fd);
         let currentCount = countMap.get(file.bundleName) || 0; // 如果没有找到对应的计数，则默认返回 0
         countMap.set(file.bundleName, ++currentCount);
         // 恢复数据传输完成后，会通知服务端文件准备就绪
