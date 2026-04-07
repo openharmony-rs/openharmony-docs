@@ -100,6 +100,23 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 | null | 表示null。 |
 | undefined | 表示undefined。 |
 
+## UriPermission<sup>26+</sup>
+
+定义用于拖拽场景的URI权限。
+
+**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
+
+| 名称 | 值 | 说明 |
+| ------------ | --- | ------------------------------------------- |
+| NONE | 0 | 表示未授予任何权限。 |
+| READ | 1 | 表示读取或查看数据的权限。 |
+| WRITE | 2 | 表示修改数据的权限。 |
+| PERSIST | 3 | 表示持久化文件的权限。 |
+
 ## UnifiedDataProperties<sup>12+</sup>
 
 定义统一数据对象中所有数据记录的属性，包含时间戳、标签、粘贴范围以及一些附加数据等。
@@ -115,6 +132,7 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 | timestamp | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。 |
 | shareOptions | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。 |
 | getDelayData | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，后续场景待开发。非必填字段，默认值为undefined。 |
+| uriAuthorizationPolicies<sup>26+</sup> | Array<[UriPermission](#uripermission26)> | 否 | 是 | 定义用于拖拽场景的URI授权策略。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -924,6 +942,7 @@ HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言
 | -------- | -------- | -------- | -------- | -------- |
 | htmlContent  | string | 否 | 否 | html格式内容。             |
 | plainContent | string | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。 |
+| uriAuthorizationPolicies<sup>26+</sup> | Array<[UriPermission](#uripermission26)> | 否 | 是 | 定义用于拖拽场景的URI授权策略。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -944,7 +963,8 @@ File类型数据，是[UnifiedRecord](#unifiedrecord)的子类，也是文件类
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | details | Record<string, string> | 否 | 是 | 是一个字典类型对象，key和value都是string类型，用于描述文件相关信息。例如，可生成一个details内容为<br/>{<br/>"name":"文件名",<br/>"type":"文件类型"<br/>}<br/>的数据对象，用于描述一个文件。非必填字段，默认值为空字典对象。 |
-| uri     | string                    | 否 | 否 | 本地文件数据uri或网络文件uri，本地文件数据uri可通过[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)函数获取。                                                                                                                                            |
+| uri     | string                    | 否 | 否 | 本地文件数据uri或网络文件uri，本地文件数据uri可通过[getUriFromPath](../apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath)函数获取。 |
+| uriAuthorizationPolicies<sup>26+</sup> | Array<[UriPermission](#uripermission26)> | 否 | 是 | 定义用于拖拽场景的URI授权策略。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
