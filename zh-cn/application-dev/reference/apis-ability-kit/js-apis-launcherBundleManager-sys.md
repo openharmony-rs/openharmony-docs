@@ -39,7 +39,7 @@ getLauncherAbilityInfo(bundleName: string, userId: number, callback: AsyncCallba
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
 | userId     | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。|
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为null，data为bundle包含的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为bundle包含的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -151,7 +151,7 @@ getAllLauncherAbilityInfo(userId: number, callback: AsyncCallback\<Array\<Launch
 | 参数名 | 类型   | 必填 | 说明         |
 | ------ | ------ | ---- | -------------- |
 | userId | number | 是   | 被查询的用户ID，可以通过[getOsAccountLocalId接口](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)获取。 |
-| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为null，data为指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
+| callback | AsyncCallback\<Array\<[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为指定用户下所有应用的[LauncherAbilityInfo](js-apis-bundleManager-launcherAbilityInfo.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -261,7 +261,7 @@ getShortcutInfo(bundleName :string, callback: AsyncCallback\<Array\<ShortcutInfo
 | 参数名     | 类型   | 必填 | 说明         |
 | ---------- | ------ | ---- | -------------- |
 | bundleName | string | 是   | 应用Bundle名称。 |
-| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为null，data为当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息。否则为错误对象。|
+| callback | AsyncCallback\<Array\<[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)\>\> | 是 | [回调函数](../apis-basic-services-kit/js-apis-base.md#asynccallback)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](js-apis-bundleManager-shortcutInfo.md)信息。否则为错误对象。|
 
 **错误码：**
 
@@ -492,7 +492,7 @@ startShortcut(shortcutInfo: ShortcutInfo, options?: StartOptions): Promise\<void
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
@@ -563,7 +563,7 @@ startShortcutWithReason(shortcutInfo: ShortcutInfo, startReason: string, options
 
 | 类型                                       | 说明      |
 | ---------------------------------------- | ------- |
-| Promise\<void> | Promise对象。无返回结果的Promise对象。 |
+| Promise\<void> | Promise对象。无返回结果。 |
 
 **错误码：**
 
