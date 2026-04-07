@@ -2603,6 +2603,10 @@ type SslType = 'TLS' | 'TLCP'
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  20
+
+**ArkTS-Sta起始版本：**  26.0.0
+
 | 类型   | 说明                                   |
 | ------ | -------------------------------------- |
 | 'TLS' | 表示使用TLS安全通信协议，值固定为'TLS'字符串。   |
@@ -2615,6 +2619,10 @@ HTTP拦截器的类型枚举。
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 | 名称   | 值 |说明                                   |
 | ------ | --|-------------------------------------- |
@@ -2631,6 +2639,10 @@ HTTP请求上下文数据。该对象实例在拦截器的[interceptorHandle](#i
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 ### 属性
 
@@ -2650,6 +2662,10 @@ type ChainContinue = boolean
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
+
 | 类型   | 说明                                    |
 | ------ | -------------------------------------- |
 | boolean | true表示继续处理拦截器链，false表示终止并返回HTTP响应。                   |
@@ -2661,6 +2677,10 @@ HTTP拦截器接口。用户可以实现此接口来定义拦截处理函数。
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 ### 属性
 
@@ -2678,6 +2698,10 @@ interceptorHandle(reqContext: HttpRequestContext, rspContext: HttpResponse): Pro
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 **参数：**
 
@@ -2720,6 +2744,10 @@ HTTP拦截器链。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
+
 **示例：**
 
 ```ts
@@ -2741,6 +2769,10 @@ addChain(chain: HttpInterceptor[]): boolean
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 **参数：**
 
@@ -2818,6 +2850,10 @@ getChain(): HttpInterceptor[]
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
+
 **返回值：**
 
 | 类型   | 说明                                     |
@@ -2875,6 +2911,10 @@ apply(httpRequest: HttpRequest): boolean
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  22
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 **参数：**
 
@@ -2974,6 +3014,10 @@ HTTP请求指定特定网络的类型枚举。
 > 当指定的网络没有激活时，系统按照指定默认网络处理。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS-Dyn起始版本：**  23
+
+**ArkTS-Sta起始版本：**  26.0.0
 
 
 | 类型   | 说明                                   |
