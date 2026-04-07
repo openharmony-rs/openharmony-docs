@@ -516,7 +516,7 @@ POI(Point of Interest, 兴趣点)信息。
 | locality | string | 否 | 否 | 表示POI所在的城市信息，一般是市。 |
 | subLocality | string | 否 | 否 | 表示POI所在的子城市信息，一般是区/县。 |
 | address | string | 否 | 否 | 表示POI的详细地址。 |
-| additionalInfo | string | 否 | 是 | 表示POI附加信息。 |
+| additionalInfo<sup>26+</sup> | string | 否 | 是 | 表示POI附加信息。 |
 
 ## PoiInfo<sup>19+</sup>
 
