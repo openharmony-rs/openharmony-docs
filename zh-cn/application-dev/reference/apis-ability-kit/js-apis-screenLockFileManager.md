@@ -62,7 +62,7 @@ import { screenLockFileManager } from '@kit.AbilityKit';
 |-----------------|----|----|
 | KEY_NOT_EXIST |  -2 | 应用未开启锁屏敏感数据保护功能。 |
 | KEY_RELEASED |  -1 | 锁屏敏感数据访问权限已释放。 |
-| KEY_EXIST |  0  |  应用可以访问锁屏敏感数据。  |
+| KEY_EXIST |  0  |  当前应用已成功获取锁屏下应用敏感数据访问权限，可以正常访问相关数据。  |
 
 ## screenLockFileManager.acquireAccess
 
