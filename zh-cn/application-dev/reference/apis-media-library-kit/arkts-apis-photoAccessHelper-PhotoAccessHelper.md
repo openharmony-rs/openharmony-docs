@@ -2207,7 +2207,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 }
 ```
 
-### setAssetCompatibleCapability<sup>24+</sup>
+## setAssetCompatibleCapability<sup>24+</sup>
 
 setAssetCompatibleCapability(capability: AssetCompatibleCapability): Promise\<void>
 
