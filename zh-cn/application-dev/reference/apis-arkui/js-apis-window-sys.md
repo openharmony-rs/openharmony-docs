@@ -1314,6 +1314,7 @@ createSubWindowAndBindParent(name: string, parentId: number, ctx: BaseContext, p
 | 202     | Permission verification failed. A non-system application calls a system API. |
 | 801     | Capability not supported. This can not work correctly due to limited device capabilities. |
 | 1300001 | Repeated operation. Possible cause: The window has been created and can not be created again. |
+| 1300002 | This window state is abnormal. Possible cause: 1. Internal task error. 2. The number of windows has reached the limit. |
 | 1300003 | This window manager service works abnormally. |
 | 1300009 | The parent window is invalid. Possible cause: The parent window does not exist or has been destroyed. |
 
