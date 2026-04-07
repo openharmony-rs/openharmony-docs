@@ -106,7 +106,7 @@ export async function getLocalCapabilities(): Promise<void> {
   <!-- @[session_backup](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
   
   ``` TypeScript
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
@@ -129,12 +129,12 @@ export async function getLocalCapabilities(): Promise<void> {
         }
         try {
           let bundlePath = filesDir + '/' + file.bundleName;
-          if (!fs.accessSync(bundlePath)) {
-            fs.mkdirSync(bundlePath);
+          if (!fileIo.accessSync(bundlePath)) {
+            fileIo.mkdirSync(bundlePath);
           }
           // 此处执行copyFileSync会多一次内存拷贝，开发者可以直接使用onFileReady的file.fd来进行数据处理，处理完成后close即可，这样会减少内存消耗
-          fs.copyFileSync(file.fd, bundlePath + `/${file.uri}`);
-          fs.closeSync(file.fd);
+          fileIo.copyFileSync(file.fd, bundlePath + `/${file.uri}`);
+          fileIo.closeSync(file.fd);
           console.info('onFileReady success');
         } catch (error) {
           let err: BusinessError = error as BusinessError;
