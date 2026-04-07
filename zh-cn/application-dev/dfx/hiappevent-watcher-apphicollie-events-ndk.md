@@ -174,8 +174,8 @@
    - onTrigger类型观察者
 
    编辑“napi_init.cpp”文件，定义OnTrigger类型观察者相关函数：
-   <!-- @[App_Hicollie_Watcher_ptr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
-
+   <!-- @[App_Hicollie_Watcher_T_ptr](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/PerformanceAnalysisKit/HiAppEvent/EventSub/entry/src/main/cpp/napi_init.cpp) -->
+   
    ``` C++
    // 定义一变量，用来缓存创建的观察者的指针。
    static HiAppEvent_Watcher *appHicollieWatcherT;
