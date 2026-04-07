@@ -553,3 +553,5 @@ struct demo {
 ```
 
 ![](figures/text_timer_example_font_setting.png)
+
+<!--no_check-->
