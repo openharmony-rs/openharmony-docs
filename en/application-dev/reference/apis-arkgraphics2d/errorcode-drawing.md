@@ -14,7 +14,7 @@
 
 **Error Message**
 
-Parameter error.Possible causes: Incorrect parameter range.
+Parameter error. Possible causes: Incorrect parameter range.
 
 **Description**
 
