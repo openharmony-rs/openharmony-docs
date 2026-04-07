@@ -932,7 +932,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowIcon(Abilit
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions为空，或者OH_PixelmapNative没有置为空指针。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions为空，或者startWindowIcon为空指针。 |
 
 **示例代码：**
 
@@ -1016,7 +1016,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowIcon(Abilit
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions或者StartWindowBackgroundColor为空。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions为空，或者startWindowIcon没有设置为空指针。 |
 
 **示例代码：**
 
@@ -1118,7 +1118,7 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundC
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions或者SupportedWindowModes为空，或者Size为0。<br>在返回ABILITY_RUNTIME_ERROR_CODE_INTERNAL时，表示开发者无法恢复的内部错误，比如内部调用malloc错误，或者字符串拷贝函数出错。 |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | 在返回ABILITY_RUNTIME_ERROR_CODE_NO_ERROR时，表示接口调用成功。<br>在返回ABILITY_RUNTIME_ERROR_CODE_PARAM_INVALID时，表示StartOptions为空，或者SupportedWindowModes没有置为空指针。<br>在返回ABILITY_RUNTIME_ERROR_CODE_INTERNAL时，表示开发者无法恢复的内部错误，比如内部调用malloc错误，或者字符串拷贝函数出错。 |
 
 **示例代码：**
 

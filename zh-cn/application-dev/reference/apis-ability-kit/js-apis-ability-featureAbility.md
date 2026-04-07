@@ -477,7 +477,7 @@ getWant(callback: AsyncCallback\<Want>): void
 
 | 参数名       | 类型                            | 必填   | 说明        |
 | -------- | ----------------------------- | ---- | --------- |
-| callback | AsyncCallback\<[Want](js-apis-application-want.md)> | 是    | 回调函数，返回want信息。 |
+| callback | AsyncCallback\<[Want](js-apis-application-want.md)> | 是    | 回调函数，当获取要拉起的Ability对应的Want成功，err为undefined，data为当前Ability对应的窗口；否则为错误对象。 |
 
 **示例：**
 
@@ -788,7 +788,7 @@ getWindow(callback: AsyncCallback\<window.Window>): void
 
 | 参数名     | 类型                          | 必填 | 说明                          |
 | -------- | ----------------------------- | ---- | ----------------------------- |
-| callback | AsyncCallback\<[window.Window](../apis-arkui/arkts-apis-window-Window.md)> | 是   | 回调函数，返回当前Ability对应的窗口。 |
+| callback | AsyncCallback\<[window.Window](../apis-arkui/arkts-apis-window-Window.md)> | 是   | 回调函数。当获取窗口成功，err为undefined，data为当前Ability对应的窗口；否则为错误对象。 |
 
 **示例：**
 
