@@ -71,7 +71,7 @@ enum ImageDetailEnhancer_QualityLevel
 | IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_NONE | 无细节增强。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。 |
 | IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_LOW | 细节增强质量较低，但速度较快。默认级别。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。 |
 | IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_MEDIUM | 细节增强质量中等，速度介于低级别与高级别之间。<br>支持输入分辨率（px）：宽：[32, 3000]，高：[32, 3000]。<br>支持输出分辨率（px）：宽：[32, 3000]，高：[32, 3000]。 |
-| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | 细节增强质量较高，但速度较慢。<br>支持输入分辨率（px）：宽：[180, 2000]，高：[180, 2000]。<br>支持输出分辨率（px）：宽：[180, 2000]，高：[180, 2000]。 |
+| IMAGE_DETAIL_ENHANCER_QUALITY_LEVEL_HIGH | 细节增强质量较高，但速度较慢。<br>API version 13-22支持输入分辨率（px）：宽：[512, 2000]，高：[512, 2000]。<br>API version 13-22支持输出分辨率（px）：宽：[512, 2000]，高：[512, 2000]。<br>API version 23及以后支持输入分辨率（px）：宽：[180, 2000]，高：[180, 2000]。<br>API version 23及以后支持输出分辨率（px）：宽：[180, 2000]，高：[180, 2000]。 |
 
 **参考：**
 
