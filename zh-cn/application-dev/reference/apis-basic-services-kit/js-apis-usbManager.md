@@ -183,7 +183,7 @@ hasRight(deviceName: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceName | string | 是 | 设备名称，来自[getDevices](#usbmanagergetdevices)获取的设备列表。 |
+| deviceName | string | 是 | 设备名称，来自[getDevices](#usbmanagergetdevices)获取的设备列表USBDevice。 |
 
 **返回值：**
 
@@ -230,7 +230,7 @@ requestRight(deviceName: string): Promise&lt;boolean&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceName | string | 是 | 设备名称，来自[getDevices](#usbmanagergetdevices)获取的设备列表。|
+| deviceName | string | 是 | 设备名称，来自[getDevices](#usbmanagergetdevices)获取的设备列表USBDevice。|
 
 **返回值：**
 
@@ -278,7 +278,7 @@ removeRight(deviceName: string): boolean
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| deviceName | string | 是 | 设备名称，来自[getDevices](#usbmanagergetdevices)获取的设备列表。|
+| deviceName | string | 是 | 设备名称，来自[getDevices](#usbmanagergetdevices)获取的设备列表USBDevice。|
 
 **返回值：**
 
