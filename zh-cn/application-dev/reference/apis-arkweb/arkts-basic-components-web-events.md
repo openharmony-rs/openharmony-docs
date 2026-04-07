@@ -1604,7 +1604,6 @@ onClientAuthenticationRequest(callback: Callback\<OnClientAuthenticationEvent\>)
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
 import { certificateManager } from '@kit.DeviceCertificateKit';
-import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -1821,7 +1820,6 @@ struct Index {
     ```ts
     import { webview } from '@kit.ArkWeb';
     import CertManagerService from './CertMgrService';
-    import { promptAction } from '@kit.ArkUI';
 
     @Entry
     @Component
