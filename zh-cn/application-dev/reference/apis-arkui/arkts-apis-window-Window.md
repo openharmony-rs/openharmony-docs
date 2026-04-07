@@ -1743,17 +1743,21 @@ try {
 }
 ```
 
-## setFloatNavigationAvoidAreaEnabled<sup>26+</sup>
+## setFloatNavigationAvoidAreaEnabled
 
-setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise<void>;
+setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
 
-设置当前窗口是否开启获取悬浮三键导航类型的避让区域。
+设置当前窗口是否开启获取悬浮三键导航类型的避让区域。使用Promise异步回调。
 
 调用该接口使能后才可以通过[getWindowAvoidArea()](#getwindowavoidarea9)获取到[TYPE_FLOAT_NAVIGATION](./arkts-apis-window-e.md#avoidareatype7)避让类型对应的避让区域或通过[on('avoidAreaChange')](#onavoidareachange9)监听TYPE_FLOAT_NAVIGATION避让类型对应的避让区域的变化。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **参数：**
 
@@ -1763,7 +1767,7 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise<void>;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
@@ -1790,11 +1794,15 @@ isFloatNavigationAvoidAreaEnabled(): boolean;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | -------------------------------------------- |
