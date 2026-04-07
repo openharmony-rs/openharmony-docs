@@ -64,7 +64,7 @@ InputMethod_PrivateCommand *OH_PrivateCommand_Create(char key[], size_t keyLengt
 | 参数项 | 描述 |
 | -- | -- |
 | char key[] | 私有数据的key值。 |
-| size_t keyLength | key长度，单次所有私有数据与Key值的大小限制32KB。 |
+| size_t keyLength | key长度，单次所有私有数据与key值的大小限制32KB。 |
 
 **返回：**
 
