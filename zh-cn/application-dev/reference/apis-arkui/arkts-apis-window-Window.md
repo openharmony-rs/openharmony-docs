@@ -7916,7 +7916,7 @@ try {
 
 keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
-窗口获焦时是否保留由其他窗口创建的软键盘，仅支持系统窗口与应用子窗口。
+当前窗口获焦时是否保留由其他窗口创建的软键盘，支持系统窗口、应用子窗口、模态窗和全局悬浮窗。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8595,7 +8595,9 @@ try {
 
 isFocused(): boolean
 
-判断当前窗口是否已获焦。
+判断当前窗口是否已获焦。为获取准确的获焦状态，需要在[WindowEventType](arkts-apis-window-e.md#windoweventtype10)生命周期处于WINDOW_ACTIVE之后调用。
+
+可使用[on('windowEvent')](#onwindowevent10)监听对应状态变更，再执行对应具体业务。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

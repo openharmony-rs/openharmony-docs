@@ -1055,6 +1055,22 @@ With this permission, the driver application can bind external input devices con
 
 **Since**: 24
 
+## ohos.permission.REGISTER_OBJECTEDITOR_EXTENSION
+
+Allows an application to register ObjectEditorExtensionAbility components.
+
+With this permission, the application can provide embedded content editing services for use by other applications.
+
+<!--RP67--><!--RP67End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 24
+
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO
 
 Allows an application to apply for a continuous task of the special scenario type.

@@ -129,7 +129,7 @@ radioStyle(value?: RadioStyle)
 
 | 参数名 | 类型                                | 必填 | 说明                               |
 | ------ | ----------------------------------- | ---- | ---------------------------------- |
-| value  | [RadioStyle](#radiostyle10对象说明) | 否   | 单选框选中状态和非选中状态的样式。 |
+| value  | [RadioStyle](#radiostyle10对象说明) | 否   | 单选框选中状态和非选中状态的样式。 <br/> 未设置时，则按照RadioStyle中各参数的默认值配置。 |
 
 ### contentModifier<sup>12+</sup>
 

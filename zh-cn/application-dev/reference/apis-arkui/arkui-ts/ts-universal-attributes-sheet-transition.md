@@ -575,7 +575,7 @@ struct bindSheetExample {
 
           onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
             if (dismissSheetAction.reason == DismissReason.SLIDE_DOWN) {
-              dismissSheetAction.dismiss();// 注册dismiss行为
+              dismissSheetAction.dismiss(); // 注册dismiss行为
             }
           }),
 
@@ -905,7 +905,7 @@ struct SheetSideExample {
           borderWidth: this.borderWidths,
           borderColor: this.borderColors,
 
-          onHeightDidChange: (height: number)=>{
+          onHeightDidChange: (height: number) => {
             console.info("SideSheet height change:" + height);
           },
           onTypeDidChange: (type: SheetType) => {

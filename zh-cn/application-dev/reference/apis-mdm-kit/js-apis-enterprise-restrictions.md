@@ -224,6 +224,7 @@ setDisallowedPolicyForAccount(admin: Want, feature: string, disallow: boolean, a
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
@@ -506,6 +507,7 @@ setUserRestriction(admin: Want, settingsItem: string, restricted: boolean): void
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名   | 类型                                                    | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |
@@ -557,6 +559,7 @@ getUserRestricted(admin: Want, settingsItem: string): boolean
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                   |

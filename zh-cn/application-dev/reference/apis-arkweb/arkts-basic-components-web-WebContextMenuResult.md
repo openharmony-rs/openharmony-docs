@@ -36,7 +36,7 @@ closeContextMenu(): void
 
 copyImage(): void
 
-当WebContextMenuParam有图片内容时则复制图片，从API version 24开始支持对canvas图片进行复制。
+当WebContextMenuParam包含图片内容时，用于复制该图片。从API version 24开始支持对canvas图片进行复制。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,7 +44,7 @@ copyImage(): void
 
 copy(): void
 
-执行与此上下文菜单相关的拷贝文本操作。
+执行拷贝文本操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -52,11 +52,11 @@ copy(): void
 
 paste(): void
 
-执行与此上下文菜单相关的粘贴操作。
+执行粘贴操作。
 
 > **说明：**
 >
-> 需要配置权限：ohos.permission.READ_PASTEBOARD。
+> 需要配置权限：[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -64,7 +64,7 @@ paste(): void
 
 cut(): void
 
-执行与此上下文菜单相关的剪切操作。
+执行剪切操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -72,7 +72,7 @@ cut(): void
 
 selectAll(): void
 
-执行与此上下文菜单相关的全选操作。
+执行全选操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -80,7 +80,7 @@ selectAll(): void
 
 undo(): void
 
-执行与此上下文菜单相关的撤销操作。
+执行撤销操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -88,7 +88,7 @@ undo(): void
 
 redo(): void
 
-执行与此上下文菜单相关的重做操作，即取消用户上一次的撤销操作。
+执行重做操作，即取消用户上一次的撤销操作。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -100,7 +100,7 @@ pasteAndMatchStyle(): void
 
 > **说明：**
 >
-> 需要配置权限：ohos.permission.READ_PASTEBOARD。
+> 需要配置权限：[ohos.permission.READ_PASTEBOARD](../../security/AccessToken/restricted-permissions.md#ohospermissionread_pasteboard)。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
