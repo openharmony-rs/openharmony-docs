@@ -205,7 +205,7 @@ export async function getLocalCapabilities(): Promise<void> {
   <!-- @[session_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFileBackup/entry/src/main/ets/backuprestore/BackupRestore.ets) -->
   
   ``` TypeScript
-  import { fileIo as fs } from '@kit.CoreFileKit';
+  import { fileIo } from '@kit.CoreFileKit';
   import { backup } from '@kit.CoreFileKit';
   import { BusinessError } from '@kit.BasicServicesKit';
   // ...
@@ -241,13 +241,13 @@ export async function getLocalCapabilities(): Promise<void> {
         }
         // 此处开发者请根据实际场景待恢复文件存放位置进行调整 bundlePath
         let bundlePath: string = `${filesDir}/${file.bundleName}/`;
-        if (!fs.accessSync(bundlePath)) {
+        if (!fileIo.accessSync(bundlePath)) {
           console.error('onFileReady bundlePath err : ' + bundlePath);
         }
         console.info('fd : ' + file.fd);
         let targetPath = `${bundlePath}${file.uri}`;
-        fs.copyFileSync(targetPath, file.fd);
-        fs.closeSync(file.fd);
+        fileIo.copyFileSync(targetPath, file.fd);
+        fileIo.closeSync(file.fd);
         let currentCount = countMap.get(file.bundleName) || 0; // 如果没有找到对应的计数，则默认返回 0
         countMap.set(file.bundleName, ++currentCount);
         // 恢复数据传输完成后，会通知服务端文件准备就绪
