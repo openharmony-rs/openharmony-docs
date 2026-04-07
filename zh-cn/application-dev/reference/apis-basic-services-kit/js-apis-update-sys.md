@@ -1583,7 +1583,8 @@ restorer.forceFactoryReset().then(() => {
   console.error(`forceFactoryReset error ${JSON.stringify(err)}`);
 });
 ```
-### deepFactoryReset<sup>26+</sup>
+
+### deepFactoryReset
 deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 深度擦除用户数据。使用Promise异步回调。
@@ -1629,7 +1630,7 @@ restorer.deepFactoryReset(factoryResetStrategy).then(() => {
   console.error(`deepFactoryReset error ${JSON.stringify(err)}`);
 });
 ```
-### getDeepFactoryResetInfo<sup>26+</sup>
+### getDeepFactoryResetInfo
 
 getDeepFactoryResetInfo(factoryResetStrategy): Promise\<factoryResetInfo>
 
@@ -2184,7 +2185,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | fileType | [ComponentType](#componenttype) | 否    | 否 | 文件类型。 |
 | filePath | string                          | 否    | 否 | 文件路径。 |
 
-## FactoryResetStrategy<sup>26+</sup>
+## FactoryResetStrategy
 
 深度恢复出厂设置策略。
 
@@ -2195,7 +2196,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | scope | [FactoryResetScope](#factoryresetscope) | 否    | 否 | 擦除范围 |
 | strategy | string                          | 否    | 否 | 擦除策略。 |
 
-## FactoryResetInfo<sup>26+</sup>
+## FactoryResetInfo
 
 擦除信息。
 
@@ -2205,7 +2206,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 | -------- | ------------------------------- | ---- | ---- | ---- |
 | duration | int                          | 否    | 否 | 擦除时间。 |
 
-## FactoryResetScope<sup>26+</sup>
+## FactoryResetScope
 
 擦除范围。
 
