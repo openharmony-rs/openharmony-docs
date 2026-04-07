@@ -1,5 +1,13 @@
 # 锁屏敏感数据管理错误码
 
+<!--Kit: Ability Kit-->
+<!--Subsystem: Security-->
+<!--Owner: @steven-q-->
+<!--Designer: @JiDong-CS1-->
+<!--Tester: @leiyuqian-->
+<!--Adviser: @zengyawen-->
+
+
 > **说明：**
 >
 > 以下仅介绍本模块特有错误码，通用错误码请参考[通用错误码说明文档](../errorcode-universal.md)。
@@ -23,7 +31,7 @@ Invalid DataType.
 
 **错误信息**
 
-The system ability work abnormally.
+The system ability works abnormally.
 
 **可能原因**
 
@@ -40,7 +48,7 @@ The system ability work abnormally.
 
 **错误信息**
 
-The application has not enabled the data protection under lock screen.
+The application has not enabled the data protection function under lock screen.
 
 **可能原因**
 
@@ -56,7 +64,7 @@ The application has not enabled the data protection under lock screen.
 
 **错误信息**
 
-File access is denied.
+The file access is denied due to security strategy.
 
 **可能原因**
 
@@ -64,14 +72,14 @@ File access is denied.
 
 **处理步骤**
 
-锁屏下无法访问敏感数据，如有需要，请提示用户重新解锁屏幕，解锁后敏感数据恢复方可使用。
+锁屏下无法访问敏感数据。如需继续使用，请引导用户重新解锁屏幕，待解锁完成后可恢复正常访问。
 
 
 ## 29300005 未申请锁屏敏感数据访问权限
 
 **错误信息**
 
-File access was not acquired.
+File access is not acquired.
 
 **可能原因**
 
