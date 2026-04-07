@@ -85,3 +85,33 @@
 
 2. 参考如下示例代码，进行业务功能开发。
    <!-- @[batch_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
+   
+   ``` TypeScript
+   let attributesArray: asset.AssetMap[] = [];
+   let attr1: asset.AssetMap = new Map();
+   attr1.set(asset.Tag.SECRET, stringToArray('demo_pwd1'));
+   attr1.set(asset.Tag.ALIAS, stringToArray('demo_alias1'));
+   attributesArray.push(attr1);
+   
+   let attr2: asset.AssetMap = new Map();
+   attr2.set(asset.Tag.SECRET, stringToArray('demo_pwd2'));
+   attr2.set(asset.Tag.ALIAS, stringToArray('demo_alias2'));
+   attributesArray.push(attr2);
+   
+   try {
+     asset.batchAdd(attributesArray).then((res: asset.BatchResult) => {
+       console.info(`Succeeded in batch adding Asset, failedCount: ${res.failedCount}`);
+       if (res.failedCount > 0) {
+         for (let i = 0; i < res.failedErrorInfos.length; i++) {
+           console.error(`Failed to add Asset at index ${res.failedErrorInfos[i].index},
+             errCode: ${res.failedErrorInfos[i].errCode}, message: ${res.failedErrorInfos[i].message}`);
+         }
+       }
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to batch add Asset. Code is ${err.code}, message is ${err.message}`);
+     })
+   } catch (error) {
+     let err = error as BusinessError;
+     console.error(`Failed to batch add Asset. Code is ${err.code}, message is ${err.message}`);
+   }
+   ```
