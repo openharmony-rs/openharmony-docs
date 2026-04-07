@@ -864,7 +864,7 @@ class DrawingRenderNode extends RenderNode {
 
 ## drawPixelMapMesh<sup>12+</sup>
 
-drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number, vertices: Array\<number>, vertOffset: number, colors: Array\<number>, colorOffset: number): void
+drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number, vertices: Array\<number>, vertOffset: number, colors: Array\<number> | null, colorOffset: number): void
 
 在网格上绘制像素图，网格均匀分布在像素图上。（只支持brush，使用pen没有绘制效果。）
 
@@ -879,7 +879,7 @@ drawPixelMapMesh(pixelmap: image.PixelMap, meshWidth: number, meshHeight: number
 | meshHeight  | number         | 是   | 网格中的行数，大于0的整数。 |
 | vertices    | Array\<number> | 是   | 顶点数组，指定网格的绘制位置，浮点数组，大小必须为((meshWidth+1) * (meshHeight+1) + vertOffset) * 2。 |
 | vertOffset  | number         | 是   | 绘图前要跳过的vert元素数，大于等于0的整数。 |
-| colors      | Array\<number> | 是   | 颜色数组，在每个顶点指定一种颜色，整数数组，可为null，大小必须为(meshWidth+1) * (meshHeight+1) + colorOffset。 |
+| colors      | Array\<number> \| null | 是   | 颜色数组，在每个顶点指定一种颜色，整数数组，可为null，大小必须为(meshWidth+1) * (meshHeight+1) + colorOffset。 |
 | colorOffset | number         | 是   | 绘制前要跳过的颜色元素数，大于等于0的整数。 |
 
 **错误码：**
@@ -2293,6 +2293,34 @@ class DrawingRenderNode extends RenderNode {
     canvas.clipRoundRect(roundRect);
     let color: common2D.Color = {alpha: 255, red: 255, green: 0, blue: 0};
     canvas.clear(color);
+  }
+}
+```
+
+## resetClip
+
+resetClip(): void
+
+将当前画布的裁剪状态重置为初始状态。
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**示例：**
+
+```ts
+import { RenderNode } from '@kit.ArkUI';
+import { common2D, drawing } from '@kit.ArkGraphics2D';
+
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    let rect: common2D.Rect = { left: 10, top: 100, right: 200, bottom: 300 };
+    canvas.clipRect(rect);
+    canvas.resetClip();
   }
 }
 ```

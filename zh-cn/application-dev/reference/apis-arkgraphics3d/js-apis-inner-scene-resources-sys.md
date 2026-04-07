@@ -1,4 +1,4 @@
-# SceneResource (系统接口)
+# SceneResources (系统接口)
 <!--Kit: ArkGraphics 3D-->
 <!--Subsystem: Graphics-->
 <!--Owner: @zzhao0-->

@@ -45,10 +45,11 @@ The file declares the video output concepts.
 | [Camera_ErrorCode OH_VideoOutput_DeleteProfile(Camera_VideoProfile* profile)](#oh_videooutput_deleteprofile) | - | Deletes the profile of a VideoOutput instance.|
 | [ Camera_ErrorCode OH_VideoOutput_IsMirrorSupported(Camera_VideoOutput* videoOutput, bool* isSupported)](#oh_videooutput_ismirrorsupported) | - | Checks whether a video output supports mirror mode.|
 | [ Camera_ErrorCode OH_VideoOutput_EnableMirror(Camera_VideoOutput* videoOutput, bool mirrorMode)](#oh_videooutput_enablemirror) | - | Enables or disables mirror mode for a video output.|
-| [ Camera_ErrorCode  OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)](#oh_videooutput_getvideorotation) | - | Obtains the rotation angle of a video output.|
+| [ Camera_ErrorCode OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)](#oh_videooutput_getvideorotation) | - | Obtains the rotation angle of a video.|
+| [Camera_ErrorCode OH_VideoOutput_GetVideoRotationWithoutDeviceDegree(Camera_VideoOutput* videoOutput, Camera_ImageRotation* imageRotation)](#oh_videooutput_getvideorotationwithoutdevicedegree) | - | Obtains the rotation angle of a video.|
 | [Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange** frameRateRange, uint32_t* size)](#oh_videooutput_getsupportedframerates) | - | Obtains the list of frame rates supported by a VideoOutput instance.|
 | [Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)](#oh_videooutput_deleteframerates) | - | Deletes the frame rate list.|
-| [Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput,int32_t minFps, int32_t maxFps)](#oh_videooutput_setframerate) | - | Sets the frame rates for a VideoOutput instance.|
+| [Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput, int32_t minFps, int32_t maxFps)](#oh_videooutput_setframerate) | - | Sets the frame rates for a VideoOutput instance.|
 | [Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)](#oh_videooutput_getactiveframerate) | - | Obtains the active frame rates of a VideoOutput instance.|
 
 ## Function Description
@@ -64,7 +65,6 @@ typedef void (*OH_VideoOutput_OnFrameStart)(Camera_VideoOutput* videoOutput)
 Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output frame start events.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -84,7 +84,6 @@ Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-video
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -103,7 +102,6 @@ typedef void (*OH_VideoOutput_OnError)(Camera_VideoOutput* videoOutput, Camera_E
 Defines the callback defined in the [VideoOutput_Callbacks](capi-oh-camera-videooutput-callbacks.md) struct and used to report video output errors.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -127,7 +125,6 @@ Camera_ErrorCode OH_VideoOutput_RegisterCallback(Camera_VideoOutput* videoOutput
 Registers a callback to listen for video output events.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -154,7 +151,6 @@ Unregisters the callback used to listen for video output events.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -180,7 +176,6 @@ Starts video output.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -204,7 +199,6 @@ Camera_ErrorCode OH_VideoOutput_Stop(Camera_VideoOutput* videoOutput)
 Stops video output.
 
 **Since**: 11
-
 
 **Parameters**
 
@@ -230,7 +224,6 @@ Releases a VideoOutput instance.
 
 **Since**: 11
 
-
 **Parameters**
 
 | Name| Description|
@@ -254,7 +247,6 @@ Camera_ErrorCode OH_VideoOutput_GetActiveProfile(Camera_VideoOutput* videoOutput
 Obtains the profile of a VideoOutput instance.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -281,7 +273,6 @@ Deletes the profile of a VideoOutput instance.
 
 **Since**: 12
 
-
 **Parameters**
 
 | Name| Description|
@@ -305,7 +296,6 @@ Deletes the profile of a VideoOutput instance.
 Checks whether a video output supports mirror mode.
 
 **Since**: 15
-
 
 **Parameters**
 
@@ -332,7 +322,6 @@ Enables or disables mirror mode for a video output.
 
 **Since**: 15
 
-
 **Parameters**
 
 | Name| Description|
@@ -349,15 +338,14 @@ Enables or disables mirror mode for a video output.
 ### OH_VideoOutput_GetVideoRotation()
 
 ```c
- Camera_ErrorCode  OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput, int deviceDegree,Camera_ImageRotation* imageRotation)
+ Camera_ErrorCode OH_VideoOutput_GetVideoRotation(Camera_VideoOutput* videoOutput, int deviceDegree, Camera_ImageRotation* imageRotation)
 ```
 
 **Description**
 
-Obtains the rotation angle of a video output.
+Obtains the rotation angle of a video.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -373,10 +361,35 @@ Obtains the rotation angle of a video output.
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>          **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>          **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
 
+### OH_VideoOutput_GetVideoRotationWithoutDeviceDegree()
+
+```c
+Camera_ErrorCode OH_VideoOutput_GetVideoRotationWithoutDeviceDegree(Camera_VideoOutput* videoOutput, Camera_ImageRotation* imageRotation)
+```
+
+**Description**
+
+Obtains the rotation angle of a video.
+
+**Since**: 23
+
+**Parameters**
+
+| Name| Description|
+| -- | -- |
+| [Camera_VideoOutput](capi-oh-camera-camera-videooutput.md)* videoOutput | Pointer to the target VideoOutput instance.|
+| [Camera_ImageRotation](capi-camera-h.md#camera_imagerotation)* imageRotation | Pointer to the rotation angle of the video output.|
+
+**Returns**
+
+| Type| Description|
+| -- | -- |
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>          **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>          **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+
 ### OH_VideoOutput_GetSupportedFrameRates()
 
 ```c
-Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* videoOutput,Camera_FrameRateRange** frameRateRange, uint32_t* size)
+Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange** frameRateRange, uint32_t* size)
 ```
 
 **Description**
@@ -384,7 +397,6 @@ Camera_ErrorCode OH_VideoOutput_GetSupportedFrameRates(Camera_VideoOutput* video
 Obtains the list of frame rates supported by a VideoOutput instance.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -403,7 +415,7 @@ Obtains the list of frame rates supported by a VideoOutput instance.
 ### OH_VideoOutput_DeleteFrameRates()
 
 ```c
-Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput,Camera_FrameRateRange* frameRateRange)
+Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)
 ```
 
 **Description**
@@ -411,7 +423,6 @@ Camera_ErrorCode OH_VideoOutput_DeleteFrameRates(Camera_VideoOutput* videoOutput
 Deletes the frame rate list.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -429,7 +440,7 @@ Deletes the frame rate list.
 ### OH_VideoOutput_SetFrameRate()
 
 ```c
-Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput,int32_t minFps, int32_t maxFps)
+Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput, int32_t minFps, int32_t maxFps)
 ```
 
 **Description**
@@ -437,7 +448,6 @@ Camera_ErrorCode OH_VideoOutput_SetFrameRate(Camera_VideoOutput* videoOutput,int
 Sets the frame rates for a VideoOutput instance.
 
 **Since**: 12
-
 
 **Parameters**
 
@@ -456,7 +466,7 @@ Sets the frame rates for a VideoOutput instance.
 ### OH_VideoOutput_GetActiveFrameRate()
 
 ```c
-Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutput,Camera_FrameRateRange* frameRateRange)
+Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutput, Camera_FrameRateRange* frameRateRange)
 ```
 
 **Description**
@@ -464,7 +474,6 @@ Camera_ErrorCode OH_VideoOutput_GetActiveFrameRate(Camera_VideoOutput* videoOutp
 Obtains the active frame rates of a VideoOutput instance.
 
 **Since**: 12
-
 
 **Parameters**
 

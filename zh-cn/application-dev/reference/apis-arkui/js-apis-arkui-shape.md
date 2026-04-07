@@ -21,7 +21,7 @@ import { CircleShape, EllipseShape, PathShape, RectShape } from "@kit.ArkUI";
 
 ## CircleShape
 
-用于 clipShape 和 maskShape 接口的圆形形状。
+用于clipShape和maskShape接口的圆形形状。
 
 继承自[BaseShape](#baseshape)。
 
@@ -51,7 +51,7 @@ constructor(options?: ShapeSize)
 
 ## EllipseShape
 
-用于 clipShape 和 maskShape 接口的椭圆形状。
+用于clipShape和maskShape接口的椭圆形状。
 
 继承自[BaseShape](#baseshape)。
 
@@ -81,7 +81,7 @@ constructor(options?: ShapeSize)
 
 ## PathShape
 
-用于 clipShape 和 maskShape 接口的路径。
+用于clipShape和maskShape接口的路径。
 
 继承自[CommonShapeMethod](#commonshapemethod)。
 
@@ -131,11 +131,11 @@ commands(commands: string): PathShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| PathShape | 返回PathShape对象。 |
+| [PathShape](#pathshape) | 返回PathShape对象。 |
 
 ## RectShape
 
-用于 clipShape 和 maskShape 接口的矩形形状。
+用于clipShape和maskShape接口的矩形形状。
 
 继承自[BaseShape](#baseshape)。
 
@@ -185,7 +185,7 @@ radiusWidth(rWidth: number | string): RectShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| RectShape | 返回RectShape对象。 |
+| [RectShape](#rectshape) | 返回RectShape对象。 |
 
 ### radiusHeight
 
@@ -209,7 +209,7 @@ radiusHeight(rHeight: number | string): RectShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| RectShape | 返回RectShape对象。 |
+| [RectShape](#rectshape) | 返回RectShape对象。 |
 
 ### radius
 
@@ -233,7 +233,7 @@ radius(radius: number | string | Array<number &nbsp;\|&nbsp; string>): RectShape
 
 | 类型   | 说明                     |
 | ------ | ------------------------ |
-| RectShape | 返回RectShape对象。 |
+| [RectShape](#rectshape) | 返回RectShape对象。 |
 
 
 ## ShapeSize
@@ -253,7 +253,7 @@ radius(radius: number | string | Array<number &nbsp;\|&nbsp; string>): RectShape
 
 ## PathShapeOptions
 
-PathShape 的构造函数参数。
+PathShape的构造函数参数。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 

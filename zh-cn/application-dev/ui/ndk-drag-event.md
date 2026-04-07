@@ -1,7 +1,7 @@
-# 拖拽事件
+# 绑定拖拽事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -24,7 +24,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    nodeAPI = nativeNodeAPI;
    ```
 
-   创建Image节点，并设置draggable和其它相关属性。
+   创建Image节点，通过[OH_ArkUI_SetNodeDraggable](../reference/apis-arkui/capi-drag-and-drop-h.md#oh_arkui_setnodedraggable)设置节点可拖拽，并设置其他相关属性。
 
    <!-- @[create_imageNode](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/thirdmodule.h) -->
    
@@ -32,8 +32,8 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    dragImage2 = nodeAPI->createNode(ARKUI_NODE_IMAGE);
    SetId(dragImage2, "dragImage");
    SetCommonAttribute(dragImage2, 140.0f, 140.0f, 0xFFFFFFFF, 5.0f);
-   // 图片src/main/ets/resources/seagull.png需要替换为开发者所需的资源文件
-   SetImageSrc(dragImage2, "/resources/seagull.png");
+   // 图片src/main/resources/base/media/seagull.png需要替换为开发者所需的资源文件
+   SetImageSrc(dragImage2, "/resources/base/media/seagull.png");
    OH_ArkUI_SetNodeDraggable(dragImage2, true);
    nodeAPI->registerNodeEvent(dragImage2, NODE_ON_DRAG_START, 1, nullptr);
    ```
@@ -41,6 +41,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    
    ``` C
    #define DEFAULT_WIDTH 200.0
+   // 设置节点宽度
    void SetWidth(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH)
    {
        if (!nodeAPI) {
@@ -52,6 +53,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_HEIGHT 200.0
+   // 设置节点高度
    void SetHeight(ArkUI_NodeHandle &node, float height = DEFAULT_HEIGHT)
    {
        if (!nodeAPI) {
@@ -63,6 +65,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BG_COLOR 0xFFFFFFFF
+   // 设置节点背景颜色
    void SetBackgroundColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BG_COLOR)
    {
        if (!nodeAPI) {
@@ -74,6 +77,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_MARGIN 5.0
+   // 设置节点外边距
    void SetMargin(ArkUI_NodeHandle &node, float margin = DEFAULT_MARGIN)
    {
        if (!nodeAPI) {
@@ -84,6 +88,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_MARGIN, &marginItem);
    }
    
+   // 设置Button节点标签
    void SetButtonLabel(ArkUI_NodeHandle &node, const char *label)
    {
        if (!nodeAPI) {
@@ -93,6 +98,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BUTTON_LABEL, &NODE_Button_SRC_Item);
    }
    
+   // 设置节点标识符
    void SetId(ArkUI_NodeHandle &node, const char *id)
    {
        if (!nodeAPI) {
@@ -103,6 +109,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BORDER_WIDTH 0.0
+   // 设置节点边框宽度
    void SetBorderWidth(ArkUI_NodeHandle &node, float width = DEFAULT_BORDER_WIDTH)
    {
        if (!nodeAPI) {
@@ -114,6 +121,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BORDER_COLOR 0xFF000000
+   // 设置节点边框颜色
    void SetBorderColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BORDER_COLOR)
    {
        if (!nodeAPI) {
@@ -124,6 +132,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BORDER_COLOR, &borderColorItem);
    }
    
+   // 设置节点常用属性（宽高、背景色、外边距、边框样式）
    void SetCommonAttribute(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH, float height = DEFAULT_HEIGHT,
                            unsigned int color = DEFAULT_BG_COLOR, float margin = DEFAULT_MARGIN)
    {
@@ -249,14 +258,14 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        int returnValue;
        OH_UdmfRecord *record = OH_UdmfRecord_Create();
        OH_UdsFileUri *imageValue = OH_UdsFileUri_Create();
-       // 图片src/main/ets/resources/seagull.png需要替换为开发者所需的资源文件
-       returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/seagull.png");
+       // 图片src/main/resources/base/media/seagull.png需要替换为开发者所需的资源文件
+       returnValue = OH_UdsFileUri_SetFileUri(imageValue, "/resources/base/media/seagull.png");
        returnValue = OH_UdmfRecord_AddFileUri(record, imageValue);
        OH_UdmfData *data = OH_UdmfData_Create();
        returnValue = OH_UdmfData_AddRecord(data, record);
        returnValue = OH_ArkUI_DragEvent_SetData(dragEvent, data);
    }
-   // ···
+   // ...
                case NODE_ON_DRAG_START: {
                    OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00U, "dragTest", "NODE_ON_DRAG_START EventReceiver");
                    SetImageData(dragEvent);
@@ -266,7 +275,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
 
 5. 处理NODE_ON_DROP事件。
 
-   在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作，通常需要获取拖拽过程中传递的数据。例如，引用<database/udmf/udmf_meta.h>头文件，获取[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)，判断是否存在所需的数据类型，从[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中提取相应的数据，最后销毁指针。
+   在NODE_ON_DROP事件中，应用可以执行与落入阶段相关的操作，通常需要获取拖拽过程中传递的数据。例如，引用[udmf_meta.h](../reference/apis-arkdata/capi-udmf-meta-h.md)头文件，获取[OH_UdmfData](../reference/apis-arkdata/capi-udmf-oh-udmfdata.md)，判断是否存在所需的数据类型，从[OH_UdmfRecord](../reference/apis-arkdata/capi-udmf-oh-udmfrecord.md)中提取相应的数据，最后销毁指针。
 
    <!-- @[on_drop](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/NativeDragDrop/entry/src/main/cpp/firstmodule.h) -->
    
@@ -362,6 +371,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    
    ``` C
    #define DEFAULT_WIDTH 200.0
+   // 设置节点宽度
    void SetWidth(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH)
    {
        if (!nodeAPI) {
@@ -373,6 +383,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_HEIGHT 200.0
+   // 设置节点高度
    void SetHeight(ArkUI_NodeHandle &node, float height = DEFAULT_HEIGHT)
    {
        if (!nodeAPI) {
@@ -384,6 +395,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BG_COLOR 0xFFFFFFFF
+   // 设置节点背景颜色
    void SetBackgroundColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BG_COLOR)
    {
        if (!nodeAPI) {
@@ -395,6 +407,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_MARGIN 5.0
+   // 设置节点外边距
    void SetMargin(ArkUI_NodeHandle &node, float margin = DEFAULT_MARGIN)
    {
        if (!nodeAPI) {
@@ -405,6 +418,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_MARGIN, &marginItem);
    }
    
+   // 设置Button节点标签
    void SetButtonLabel(ArkUI_NodeHandle &node, const char *label)
    {
        if (!nodeAPI) {
@@ -414,6 +428,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BUTTON_LABEL, &NODE_Button_SRC_Item);
    }
    
+   // 设置节点标识符
    void SetId(ArkUI_NodeHandle &node, const char *id)
    {
        if (!nodeAPI) {
@@ -424,6 +439,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BORDER_WIDTH 0.0
+   // 设置节点边框宽度
    void SetBorderWidth(ArkUI_NodeHandle &node, float width = DEFAULT_BORDER_WIDTH)
    {
        if (!nodeAPI) {
@@ -435,6 +451,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
    }
    
    #define DEFAULT_BORDER_COLOR 0xFF000000
+   // 设置节点边框颜色
    void SetBorderColor(ArkUI_NodeHandle &node, uint32_t color = DEFAULT_BORDER_COLOR)
    {
        if (!nodeAPI) {
@@ -445,6 +462,7 @@ ArkUI提供了使用C和C++开发拖拽功能的能力，开发者可调用C API
        nodeAPI->setAttribute(node, NODE_BORDER_COLOR, &borderColorItem);
    }
    
+   // 设置节点常用属性（宽高、背景色、外边距、边框样式）
    void SetCommonAttribute(ArkUI_NodeHandle &node, float width = DEFAULT_WIDTH, float height = DEFAULT_HEIGHT,
                            unsigned int color = DEFAULT_BG_COLOR, float margin = DEFAULT_MARGIN)
    {

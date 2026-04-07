@@ -41,9 +41,9 @@
 
 ## 文件介绍
 
-1. InputMethodService.ts文件。
+1. InputMethodService.ets文件。
 
-   在InputMethodService.ts文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
+   在InputMethodService.ets文件中，增加导入InputMethodExtensionAbility的依赖包，自定义类继承InputMethodExtensionAbility并加上需要的生命周期回调。
 
    <!-- @[input_case_module_import_InputMethodExtensionAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/InputMethodService.ets) -->
    
@@ -74,7 +74,7 @@
    ```
 
 
-2. KeyboardController.ts文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取[输入法键盘与系统面板的偏移区域](../reference/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
+2. KeyboardController.ets文件。KeyboardController中除创建输入法窗口，设置输入法事件监听，实现文本插入、删除之外，还可以获取[输入法键盘与系统面板的偏移区域](../reference/apis-ime-kit/js-apis-inputmethodengine.md#getsystempanelcurrentinsets21)，输入法系统面板在不同设备上存在差异，当设备有系统面板时，输入法软键盘相对系统面板的偏移区域如图所示：
 
    ![偏移区域示意图](./figures/系统面板与软键盘偏移区域示意图.png)
 
@@ -115,7 +115,17 @@
          return;
        }
        this.inputHandle.addLog('initWindow');
-       let dis = display.getDefaultDisplaySync();
+       let dis: display.Display | undefined = undefined;
+       try {
+         dis = display.getDefaultDisplaySync();
+       } catch (err) {
+         let error = err as BusinessError;
+         Log.showError(TAG, `getDefaultDisplaySync catch error: ${error.code} ${error.message}`);
+         return;
+       }
+       if (dis == undefined) {
+         return;
+       }
        this.inputHandle.addLog("initWindow-oncall display");
        let dWidth = dis.width;
        let dHeight = dis.height;
@@ -161,29 +171,44 @@
        inputMethodAbility.createPanel(this.mContext, panelInfo).then((panel: inputMethodEngine.Panel) => {
          this.panel = panel;
          panel.resize(dWidth, keyHeight).then(() => {
-           panel.moveTo(0, this.barPosition).then(() => {
-             panel.setUiContent('InputMethodExtensionAbility/pages/Index').then(() => {
-               this.inputHandle.addLog('loadContent finished');
-             })
+           panel.setUiContent('InputMethodExtensionAbility/pages/Index').then(() => {
+             this.inputHandle.addLog('loadContent finished');
            })
-         })
-       })
+         }).catch((err: BusinessError) => {
+           Log.showError(TAG, `Failed to setUiContent: ${err.code} ${err.message}`);
+         });
+       }).catch((err: BusinessError) => {
+         Log.showError(TAG, `Failed to resize: ${err.code} ${err.message}`);
+       });
      }
    
      private destroyPanel(): void {
        this.inputHandle.addLog('destroyPanel');
        if (this.panel) {
-         inputMethodAbility.destroyPanel(this.panel);
+         inputMethodAbility.destroyPanel(this.panel).then(() => {
+           this.inputHandle.addLog('Succeeded in destroyPanel.');
+         }).catch((err: BusinessError) => {
+           Log.showError(TAG, `Failed to destroyPanel: ${err.code} ${err.message}`);
+         });
        }
      }
    
      private resizePanel(): void {
        this.inputHandle.addLog('resizeWindow');
-       let dis = display.getDefaultDisplaySync();
+       let dis: display.Display | undefined = undefined;
+       try {
+         dis = display.getDefaultDisplaySync();
+       } catch (err) {
+         let error = err as BusinessError;
+         Log.showError(TAG, `getDefaultDisplaySync catch error: ${error.code} ${error.message}`);
+         return;
+       }
+       if (dis == undefined) {
+         return;
+       }
        this.inputHandle.addLog('resizeWindow-oncall display');
        let dWidth = dis.width;
        let dHeight = dis.height;
-       let navigationBar_height = dHeight * 0.07; // 有些产品导航栏高度为0，默认为0.07
        let keyHeightRate = KEYBOARD_HEIGHT_RATE_DEFAULT;
        AppStorage.setOrCreate<number>('windowWidth', dis.width);
        AppStorage.setOrCreate<number>('windowHeight', dis.height);
@@ -196,20 +221,15 @@
          AppStorage.setOrCreate('isLandscape', false);
        }
        if (dWidth === DEVICE_PHONE.width && dHeight === DEVICE_PHONE.height) {
-         navigationBar_height = 0;
          keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE;
        } else if (dWidth === DEVICE_PHONE.height && dHeight === DEVICE_PHONE.width) {
-         navigationBar_height = 0;
          keyHeightRate = KEYBOARD_HEIGHT_RATE_PHONE_LAND;
        } else if (dWidth === DEVICE_RK.width && dHeight === DEVICE_RK.height) {
-         navigationBar_height = KEYBOARD_HEIGHT_RATE_DEFAULT;
          AppStorage.setOrCreate('isRkDevice', true);
          isRkDevice = true;
        } else if (dWidth === DEVICE_BIG.width && dHeight === DEVICE_BIG.height) {
-         navigationBar_height = 0;
          keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG_LAND;
        } else if (dWidth === DEVICE_BIG.height && dHeight === DEVICE_BIG.width) {
-         navigationBar_height = 0;
          keyHeightRate = KEYBOARD_HEIGHT_RATE_BIG;
        }
        let keyHeight = dHeight * keyHeightRate;
@@ -217,13 +237,8 @@
        AppStorage.setOrCreate('inputStyle', inputStyle);
        if (this.panel) {
          this.panel.resize(dWidth, keyHeight).then(() => {
-           if (this.panel) {
-             this.panel.moveTo(0, dHeight - keyHeight - navigationBar_height).then(() => {
-               this.inputHandle.addLog('resizePanel-moveTo success');
-             })
-           }
          }).catch((err: BusinessError) => {
-           this.inputHandle.addLog(`resizePanel-moveTo err = ${err.code} ${err.message}`);
+           this.inputHandle.addLog(`resizePanel err = ${err.code} ${err.message}`);
          })
        }
      }
@@ -235,15 +250,20 @@
    ``` TypeScript
    private registerListener(): void {
      this.inputHandle.addLog('registerListener');
-   
-     display.on('change', () => {
-       this.inputHandle.addLog('screenChangeEvent');
-       this.resizePanel();
-     });
-     inputMethodAbility.on('inputStart', (kbController: inputMethodEngine.KeyboardController, textInputClient: inputMethodEngine.InputClient) => {
-       this.inputHandle.addLog('keyboard inputStart');
-       this.inputHandle.onInputStart(kbController, textInputClient);
-     })
+     try {
+       display.on('change', () => {
+         this.inputHandle.addLog('screenChangeEvent');
+         this.resizePanel();
+       });
+     } catch (err) {
+       let error = err as BusinessError;
+       Log.showError(TAG, `display on change catch error: ${error.code} ${error.message}`);
+     }
+     inputMethodAbility.on('inputStart',
+       (kbController: inputMethodEngine.KeyboardController, textInputClient: inputMethodEngine.InputClient) => {
+         this.inputHandle.addLog('keyboard inputStart');
+         this.inputHandle.onInputStart(kbController, textInputClient);
+       })
    
      // 设置监听子类型事件，改变输入法应用界面
      inputMethodAbility.on('setSubtype', (inputMethodSubtype: InputMethodSubtype) => {
@@ -265,7 +285,7 @@
    
      this.inputHandle.addLog('pre on privateCommand');
      try {
-       inputMethodAbility.on('privateCommand', (record : Record<string, inputMethodEngine.CommandDataType>) => {
+       inputMethodAbility.on('privateCommand', (record: Record<string, inputMethodEngine.CommandDataType>) => {
          this.inputHandle.addLog(`keyboard privateCommand : ${record}`);
          Object.keys(record).forEach((key: string) => {
            this.inputHandle.addLog(`onPageShow private command key: ${key}, value: ${record[key]}`);
@@ -299,9 +319,11 @@
        this.inputHandle.setCursorInfo(cursorInfo);
      });
      if (isDebug) {
-       this.mKeyboardDelegate.on('selectionChange', (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => {
-         this.inputHandle.setSelectInfo('selectInfo: from(' + oldBegin + ',' + oldEnd + ') to (' + newBegin + ',' + newEnd + ')');
-       });
+       this.mKeyboardDelegate.on('selectionChange',
+         (oldBegin: number, oldEnd: number, newBegin: number, newEnd: number) => {
+           this.inputHandle.setSelectInfo('selectInfo: from(' + oldBegin + ',' + oldEnd + ') to (' + newBegin + ',' +
+             newEnd + ')');
+         });
        this.mKeyboardDelegate.on('textChange', (text: string) => {
          this.inputHandle.setTextInfo('textInfo: ' + text);
        });
@@ -337,7 +359,7 @@
        if (this.isSpecialKeyPress || keyCode === KeyCode.KEYCODE_ALT_LEFT || keyCode === KeyCode.KEYCODE_ALT_RIGHT) {
          return false;
        }
-       let keyValue: string = GetHardKeyValue(keyCode, this.isShiftKeyHold());
+       let keyValue: string = getHardKeyValue(keyCode, this.isShiftKeyHold());
        if (keyValue === '') {
          this.inputHandle.addLog('onKeyDown: unknown keyCode');
          this.isSpecialKeyPress = true;
@@ -363,7 +385,7 @@
        }
    
        if (this.isSpecialKeyPress) {
-         let keyValue = GetHardKeyValue(keyCode, this.isShiftKeyHold());
+         let keyValue = getHardKeyValue(keyCode, this.isShiftKeyHold());
          if (!keyValue) {
            this.isSpecialKeyPress = true;
          }
@@ -381,7 +403,8 @@
      }
    
      public isKeyCodeNumber(keyCode: number): boolean {
-       return (keyCode >= KeyCode.KEYCODE_0 && keyCode <= KeyCode.KEYCODE_9) || (keyCode >= KeyCode.KEYCODE_NUMPAD_0 && keyCode <= KeyCode.KEYCODE_NUMPAD_9);
+       return (keyCode >= KeyCode.KEYCODE_0 && keyCode <= KeyCode.KEYCODE_9) ||
+         (keyCode >= KeyCode.KEYCODE_NUMPAD_0 && keyCode <= KeyCode.KEYCODE_NUMPAD_9);
      }
    
      public inputHardKeyCode(keyValue: string, keyCode: number): boolean {
@@ -456,7 +479,7 @@
 
 
  
-3. KeyboardKeyData.ts文件。
+3. KeyboardKeyData.ets文件。
 
    定义软键盘的按键显示内容。
 
@@ -815,18 +838,13 @@
    <!-- @[input_case_input_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputMethod/KikaInputMethod/entry/src/main/ets/InputMethodExtensionAbility/pages/Index.ets) -->
    
    ``` TypeScript
-   import deviceInfo from '@ohos.deviceInfo';
+   import { deviceInfo } from '@kit.BasicServicesKit';
    import Log from '../../model/Log';
    import { EditView } from '../../components/EditView';
    import { InputHandler } from '../model/KeyboardController';
    import {
      MenuType,
      SubMenuType,
-     keySourceListData,
-     numberSourceListData,
-     symbolSourceListData,
-     keySourceListType,
-     sourceListType
    } from '../../model/KeyboardKeyData';
    import { KeyMenu } from '../../components/KeyMenu';
    import { NumberMenu } from '../../components/NumberMenu';

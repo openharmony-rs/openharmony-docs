@@ -16,10 +16,10 @@ The **calendarManager** module provides APIs for calendar and event management, 
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> 
-> - To read a calendar or event, you should request the ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR permission.
-> 
-> - To add, delete, or modify a calendar or event, you should request the ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR permission.
+>
+> - To read a calendar or event, you should request the **ohos.permission.READ_CALENDAR** or **ohos.permission.READ_WHOLE_CALENDAR** permission.
+>
+> - To add, delete, or modify a calendar or event, you should request the **ohos.permission.WRITE_CALENDAR** or **ohos.permission.WRITE_WHOLE_CALENDAR** permission.
 
 The following table lists the supported operations after the corresponding permission is requested.
 
@@ -74,7 +74,7 @@ import {
   PermissionRequestResult, 
   Permissions, 
   UIAbility, 
-  Want 
+  Want
 } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { calendarManager } from '@kit.CalendarKit';
@@ -132,7 +132,7 @@ export default class EntryAbility extends UIAbility {
 
 ## CalendarManager
 
-Before calling any of the following APIs, you must use [getCalendarManager()](#calendarmanagergetcalendarmanager) to obtain a **CalendarManager** object first.
+Before calling any of the following APIs to manage the calendar, you must use [getCalendarManager()](#calendarmanagergetcalendarmanager) to obtain a **CalendarManager** object first.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -144,6 +144,7 @@ createCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calend
 Creates a **Calendar** object based on the calendar account information. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+
 ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
@@ -157,13 +158,14 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID| Error Message                       |
-| -------- | ------------------------------ |
-| 201      | Permission denied.  |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
-| 801      | Capability not supported.  |
+| ID   | Error Message                                                                                                                         |
+|----------| ------------------------------ |
+| 201      | Permission denied.                                                                                                            |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.                 |
+| 801      | Capability not supported.                                                                                                     |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -197,8 +199,8 @@ createCalendar(calendarAccount: CalendarAccount): Promise\<Calendar>
 Creates a **Calendar** object based on the calendar account information. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
-ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -216,13 +218,14 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID| Error Message                       |
-| -------- | ------------------------------ |
+| ID   | Error Message                       |
+|----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -251,8 +254,8 @@ deleteCalendar(calendar: Calendar, callback: AsyncCallback\<void>): void
 Deletes a specified **Calendar** object. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
-ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -260,18 +263,19 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 | Name  | Type                 | Mandatory| Description          |
 | -------- | --------------------- | ---- | -------------- |
-| calendar | [Calendar](#calendar) | Yes  | **Calendar** object to delete.|
+| calendar | [Calendar](#calendar) | Yes  | **Calendar** object to delete. The default account cannot be deleted.|
 | callback | AsyncCallback\<void>  | Yes  | Asynchronous callback that returns no value.    |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID| Error Message                       |
-| -------- | ------------------------------ |
+| ID   | Error Message                       |
+|----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -311,8 +315,8 @@ deleteCalendar(calendar: Calendar): Promise\<void>
 Deletes a specified **Calendar** object. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
-ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -320,7 +324,7 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 | Name  | Type                 | Mandatory| Description          |
 | -------- | --------------------- | ---- | -------------- |
-| calendar | [Calendar](#calendar) | Yes  | **Calendar** object to delete.|
+| calendar | [Calendar](#calendar) | Yes  | **Calendar** object to delete. The default account cannot be deleted.|
 
 **Return value**
 
@@ -330,13 +334,14 @@ ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API v
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID| Error Message                       |
-| -------- | ------------------------------ |
+| ID   | Error Message                       |
+|----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -372,8 +377,8 @@ getCalendar(callback: AsyncCallback\<Calendar>): void
 Obtains the default **Calendar** object, which is created when the data storage runs for the first time. This API uses an asynchronous callback to return the result. You can call this API instead of [createCalendar()](#createcalendar) to use the default calendar for a new event.
 
 **Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
-ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
 
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -387,13 +392,14 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID| Error Message                       |
-| -------- | ------------------------------ |
+| ID   | Error Message                       |
+|----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -419,6 +425,7 @@ getCalendar(calendarAccount: CalendarAccount, callback: AsyncCallback\<Calendar>
 Obtains a specified **Calendar** object. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+
 ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
 
 
@@ -435,13 +442,15 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID| Error Message                       |
-| -------- | ------------------------------ |
+| ID   | Error Message                       |
+|----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
+| 23900003 | The specified account was not found.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -473,9 +482,10 @@ calendarMgr?.createCalendar(calendarAccount).then((data: calendarManager.Calenda
 
 getCalendar(calendarAccount?: CalendarAccount): Promise\<Calendar>
 
-Obtains the default **Calendar** object or a specified **Calendar** object. This API uses a promise to return the result.
+Obtains the default or specified **Calendar** object. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+
 ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
 
 
@@ -497,13 +507,15 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID| Error Message                       |
-| -------- | ------------------------------ |
+| ID   | Error Message                       |
+|----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: Incorrect parameter types.  |
 | 801      | Capability not supported.  |
+| 23900003 | The specified account was not found. |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -527,6 +539,7 @@ getAllCalendars(callback: AsyncCallback\<Calendar[]>): void
 Obtains the created and default **Calendar** objects of the current application. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+
 ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
 
 
@@ -540,13 +553,14 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID| Error Message                       |
-| -------- | ------------------------------ |
+| ID   | Error Message                       |
+|----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types.  |
 | 801      | Capability not supported.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -574,6 +588,7 @@ getAllCalendars(): Promise\<Calendar[]>
 Obtains the created and default **Calendar** objects of the current application. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+
 ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
 
 
@@ -587,13 +602,14 @@ ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API ver
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
 
-| ID| Error Message                       |
-| -------- | ------------------------------ |
+| ID   | Error Message                       |
+|----------| ------------------------------ |
 | 201      | Permission denied.  |
 | 401      | Parameter error. Possible causes: Incorrect parameter types.  |
 | 801      | Capability not supported.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -616,7 +632,7 @@ calendarMgr?.getAllCalendars().then((data: calendarManager.Calendar[]) => {
 
 editEvent(event: Event): Promise\<number>
 
-Edits an event on the event creation page, with no event ID specified in **Event**. This API uses a promise to return the result. Events created using this API can be obtained and modified by the system calendar. Third-party applications can obtain and modify the events after they requested the READ_WHOLE_CALENDAR permission and the WRITE_WHOLE_CALENDAR permission, respectively.
+Edits an event on the event creation page, with no event ID specified in **Event**. This API uses a promise to return the result. Events created using this API can be obtained and modified by the system calendar. Third-party applications can obtain and modify the events after they requested the **READ_WHOLE_CALENDAR** permission and the **WRITE_WHOLE_CALENDAR** permission, respectively.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -660,13 +676,13 @@ In the following API examples, you need to use [createCalendar()](#createcalenda
 
 **System capability**: SystemCapability.Applications.CalendarData
 
-### Attributes
+### Properties
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
-| Name| Type  | Read Only| Optional| Description                                                                      |
+| Name| Type  | Read-Only| Optional| Description                                                                      |
 | ---- | ------ | ---- |----|--------------------------------------------------------------------------|
 | id   | number | Yes  | No | Calendar account ID, which is the unique identifier of a calendar account and is the auto-increment primary key of the database. If the value is less than **0**, the account creation fails; if the value is greater than **0**, the account creation succeeds.|
 
@@ -678,6 +694,10 @@ Adds an event, with no event ID, **instanceStartTime**, and **instanceEndTime** 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -686,6 +706,15 @@ Adds an event, with no event ID, **instanceStartTime**, and **instanceEndTime** 
 | -------- | ---------------------- | ---- |-----------------------------------------------------------------------|
 | event    | [Event](#event)        | Yes  | **Event** object.                                                             |
 | callback | AsyncCallback\<number> | Yes  | Callback used to return the event ID. The event ID is the unique identifier of an event and is the auto-increment primary key of the database. If the value is less than **0**, the event creation fails; if the value is greater than **0**, the event creation succeeds.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
+
+| ID   | Error Message                       |
+|----------| ------------------------------ |
+| 201      | Permission denied.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -723,6 +752,10 @@ Adds an event, with no event ID, **instanceStartTime**, and **instanceEndTime** 
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -736,6 +769,15 @@ Adds an event, with no event ID, **instanceStartTime**, and **instanceEndTime** 
 | Type            | Description                      |
 | ---------------- |--------------------------|
 | Promise\<number> | Promise used to return the event ID. The ID is greater than 0.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
+
+| ID   | Error Message                       |
+|----------| ------------------------------ |
+| 201      | Permission denied.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -771,6 +813,10 @@ addEvents(events: Event[], callback: AsyncCallback\<void>): void
 
 Adds events in batches, with no event ID, **instanceStartTime**, and **instanceEndTime** specified in **Event**. This API uses an asynchronous callback to return the result.
 
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -779,6 +825,15 @@ Adds events in batches, with no event ID, **instanceStartTime**, and **instanceE
 | -------- | -------------------- | ---- | --------------- |
 | events   | [Event](#event)[]    | Yes  | Array of **Event** objects.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result.     |
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
+
+| ID   | Error Message                       |
+|----------| ------------------------------ |
+| 201      | Permission denied.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -823,6 +878,10 @@ addEvents(events: Event[]): Promise\<void>
 
 Adds events in batches, with no event ID, **instanceStartTime**, and **instanceEndTime** specified in **Event**. This API uses a promise to return the result.
 
+**Required permissions**: ohos.permission.WRITE_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.WRITE_CALENDAR or ohos.permission.WRITE_WHOLE_CALENDAR for API version 21 and later
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -836,6 +895,15 @@ Adds events in batches, with no event ID, **instanceStartTime**, and **instanceE
 | Type          | Description                     |
 | -------------- | ------------------------- |
 | Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
+
+| ID   | Error Message                       |
+|----------| ------------------------------ |
+| 201      | Permission denied.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -886,7 +954,7 @@ Deletes an event with the specified ID. This API uses an asynchronous callback t
 
 | Name  | Type                | Mandatory| Description                                    |
 | -------- | -------------------- | ---- |----------------------------------------|
-| id       | number               | Yes  | Event ID, which is the unique identifier of an event. If the input event ID is a positive integer, the event is created.|
+| id       | number               | Yes  | Event ID, which is the unique identifier of an event. If the input event ID is an integer, the event is created.|
 | callback | AsyncCallback\<void> | Yes  | Callback used to return the result.                                 |
 
 **Example**
@@ -1231,7 +1299,11 @@ getEvents(callback: AsyncCallback\<Event[]>): void
 
 Obtains all events in the current calendar. This API uses an asynchronous callback to return the result.
 
-For versions earlier than API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, and **reminderTime**. Since API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier**.
+For versions earlier than API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, and **reminderTime**. Since API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier**. The field is not returned if it is empty.
+
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -1240,6 +1312,15 @@ For versions earlier than API version 20, the default fields to be obtained incl
 | Name  | Type                            | Mandatory| Description                             |
 | -------- | -------------------------------- | ---- | --------------------------------- |
 | callback | AsyncCallback<[Event](#event)[]> | Yes  | Callback used to return an array of events.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
+
+| ID   | Error Message                       |
+|----------| ------------------------------ |
+| 201      | Permission denied.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -1271,6 +1352,10 @@ getEvents(eventFilter: EventFilter, eventKey: (keyof Event)[], callback: AsyncCa
 
 Obtains all events in a calendar that match the filter criteria. This API uses an asynchronous callback to return the result.
 
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -1280,6 +1365,15 @@ Obtains all events in a calendar that match the filter criteria. This API uses a
 | eventFilter | [EventFilter](#eventfilter)      | Yes  | Filter criteria.                       |
 | eventKey    | (keyof [Event](#event))[]        | Yes  | Filter field.                       |
 | callback    | AsyncCallback<[Event](#event)[]> | Yes  | Callback used to return an array of events.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
+
+| ID   | Error Message                       |
+|----------| ------------------------------ |
+| 201      | Permission denied.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -1339,6 +1433,10 @@ If there is only one input parameter, the filter criteria, corresponding to the 
 
 If no input parameter is specified, all events under the specified calendar account can be queried.
 
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Parameters**
@@ -1346,13 +1444,22 @@ If no input parameter is specified, all events under the specified calendar acco
 | Name     | Type                       | Mandatory| Description      |
 | ----------- | --------------------------- | ---- | ---------- |
 | eventFilter | [EventFilter](#eventfilter) | No  | Filter criteria.|
-| eventKey    | (keyof [Event](#event))[]   | No  | Filter field. For versions earlier than API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, and **reminderTime** if this parameter is left empty. Since API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier** if this parameter is left empty.|
+| eventKey    | (keyof [Event](#event))[]   | No  | Filter field. For versions earlier than API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, and **reminderTime** if this parameter is left empty. Since API version 20, the default fields to be obtained include **id**, **type**, **title**, **startTime**, **endTime**, **isAllDay**, **description**, **timeZone**, **location**, **service**, **attendee**, **reminderTime**, and **identifier** if this parameter is left empty. The field is not returned if it is empty.|
 
 **Return value**
 
 | Type                      | Description                               |
 | -------------------------- | ----------------------------------- |
 | Promise<[Event](#event)[]> | Promise used to return the result, which is an array of **Event** objects.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
+
+| ID   | Error Message                       |
+|----------| ------------------------------ |
+| 201      | Permission denied.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -1438,6 +1545,14 @@ Sets the calendar configuration information. This API uses an asynchronous callb
 | config   | [CalendarConfig](#calendarconfig) | Yes  | Calendar configuration information.|
 | callback | AsyncCallback\<void>              | Yes  | Callback used to return the result.    |
 
+**Error codes**
+
+For details about the error codes, see [Calendar Error Codes](errorcode-calendarManager.md).
+
+| ID   | Error Message                  |
+|----------|------------------------|
+| 23900001 | Parameter value error. |
+
 **Example**
 
 ```typescript
@@ -1485,6 +1600,14 @@ Sets the calendar configuration information. This API uses a promise to return t
 | Type          | Description                     |
 | -------------- | ------------------------- |
 | Promise\<void> | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Calendar Error Codes](errorcode-calendarManager.md).
+
+| ID   | Error Message                  |
+|----------|------------------------|
+| 23900001 | Parameter value error. |
 
 **Example**
 
@@ -1551,6 +1674,10 @@ queryEventInstances(start: number, end: number, ids?: number[], eventKey?: (keyo
 
 Queries the event instance with a specified event key in a calendar. This API uses a promise to return the result.
 
+**Required permissions**: ohos.permission.READ_CALENDAR for versions earlier than API version 21;
+
+ohos.permission.READ_CALENDAR or ohos.permission.READ_WHOLE_CALENDAR for API version 21 and later
+
 **System capability**: SystemCapability.Applications.CalendarData
 
 **Atomic service API**: This API can be used in atomic services since API version 18.
@@ -1561,14 +1688,23 @@ Queries the event instance with a specified event key in a calendar. This API us
 | ----------- | --------------------------- |------|------------|
 | start  | number | Yes   | Start time of an event. The value is a 13-digit timestamp.   |
 | end    | number | Yes   | End time of an event. The value is a 13-digit timestamp.   |
-| ids    | number[] | No   | Array of event IDs to be queried, which can be empty or undefined. Otherwise, the value of each ID must be greater than **0**.   |
-| eventKey    | (keyof [Event](#event))[]   | No   | Event key for querying events. If this parameter is left empty, the default fields for filtering are **id**, **title**, **startTime**, **endTime**, **instanceStartTime**, **instanceEndTime**, **isAllDay**, **description**, **timeZone**, **location**, and **service**.|
+| ids    | number[] | No   | Array of event IDs to be queried, which can be empty or **undefined**.   |
+| eventKey    | (keyof [Event](#event))[]   | No   | Event key for querying events. If this parameter is left empty, the default fields for filtering are **id**, **title**, **startTime**, **endTime**, **instanceStartTime**, **instanceEndTime**, **isAllDay**, **description**, **timeZone**, **location**, and **service**. The field is not returned if it is empty.|
 
 **Return value**
 
 | Type                      | Description                               |
 | -------------------------- | ----------------------------------- |
 | Promise<[Event](#event)[]> | Promise used to return the result, which is an array of **Event** objects.|
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Calendar Error Codes](errorcode-calendarManager.md).
+
+| ID   | Error Message                       |
+|----------| ------------------------------ |
+| 201      | Permission denied.  |
+| 23900004 | Internal program errors. Possible causes: 1. dataShare database execution error; 2. null pointer error; 3. Data parsing error. |
 
 **Example**
 
@@ -1613,9 +1749,9 @@ Describes the calendar account information.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
-| Name       | Type                         | Read Only| Optional| Description                                          |
+| Name       | Type                         | Read-Only| Optional| Description                                          |
 | ----------- | ----------------------------- | ---- |----|----------------------------------------------|
-| name        | string                        | Yes  | No | Account name (defined by developers), with a maximum of 5000 characters.                  |
+| name        | string                        | Yes  | No | Account name (defined by developers), with a maximum of 5,000 characters.                  |
 | type        | [CalendarType](#calendartype) | No  | No | Account type.                                       |
 | displayName | string                        | No  | Yes | Account name displayed on the calendar application (defined by users). If this parameter is not specified, the default value is an empty string with a maximum of 64 characters.|
 
@@ -1625,7 +1761,7 @@ Describes the calendar configuration information.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
-| Name          | Type    | Read Only   | Optional| Description                                                        |
+| Name          | Type    | Read-Only   | Optional| Description                                                        |
 | -------------- |--------|-------|----| ------------------------------------------------------------ |
 | enableReminder | boolean | No    | Yes | Whether to enable the reminder for events in the calendar. The value **true** means to enable the reminder for events in the calendar, and **false** means the opposite. The default value is **true**.|
 | color          | number \| string | No  | Yes | Calendar color. If the value is a number, the value ranges from 0x000000 to 0xFFFFFF or from 0x00000000 to 0xFFFFFFFF. If the value is a string, the value contains 7 or 9 characters, for example, **#FFFFFF** or **#FFFFFFFFF**. If this parameter is not set, the default value **0xFF0A59F7** is used. If **undefined** or an incorrect value is input, an exception is thrown.|
@@ -1636,22 +1772,22 @@ Describes an **Event** object, including the event title, start time, and end ti
 
 **System capability**: SystemCapability.Applications.CalendarData
 
-| Name          | Type                             | Read Only| Optional| Description                                                                                                                                                                                                                                      |
+| Name          | Type                             | Read-Only| Optional| Description                                                                                                                                                                                                                                      |
 | -------------- | --------------------------------- | ---- |----|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| id             | number                            | No  | Yes | Event ID. When you call [addEvent()](#addevent) or [addEvents()](#addevents) to create an event, this parameter is not required. When you call [deleteEvent()](#deleteevent) or [deleteEvents()](#deleteevents) to delete an event, this parameter is required and must be set to an array of positive integers. If this parameter is set to an invalid value, an error will be reported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
+| id             | number                            | No  | Yes | Event ID. When you call [addEvent()](#addevent) or [addEvents()](#addevents) to create an event, this parameter is not required. When you call [deleteEvent()](#deleteevent) or [deleteEvents()](#deleteevents) to delete an event, this parameter is required and must be set to an array of integers. If this parameter is set to an invalid value, an error will be reported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.         |
 | type           | [EventType](#eventtype)           | No  | No | Event type.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                            |
-| title          | string                            | No  | Yes | Event title, with a maximum of 5000 characters. If this parameter is not specified, the default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                  |
+| title          | string                            | No  | Yes | Event title, with a maximum of 5,000 characters. If this parameter is not specified, the default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                  |
 | location       | [Location](#location)             | No  | Yes | Event location. If this parameter is not set, the default null value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                |
-| startTime      | number                            | No  | No | Start time of an event. The value is a 13-digit timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                   |
-| endTime        | number                            | No  | No | End time of an event. The value is a 13-digit timestamp.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                  |
+| startTime      | number                            | No  | No | Start time of an event. The value is a 13-digit timestamp. For an all-day event, this field is converted to the timestamp corresponding to 00:00 of the specified date.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                  |
+| endTime        | number                            | No  | No | End time of an event. The value is a 13-digit timestamp. For an all-day event, this field is converted to the timestamp corresponding to 24:00 of the specified date.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                  |
 | isAllDay       | boolean                           | No  | Yes | Whether the event is an all-day event. The value **true** means that the event is an all-day event, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                           |
-| attendee       | [Attendee](#attendee)[]           | No  | Yes | Attendee information in a meeting. If this parameter is not set, the default null value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                              |
-| timeZone       | string                            | No  | Yes | Time zone of the event, with a maximum of 5000 characters. If this parameter is not specified or set to an invalid value, the current time zone is used by default. If a different time zone is required, enter the corresponding time zone. You can call [systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone) to obtain the current system time zone.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| reminderTime   | number[]                          | No  | Yes | Reminder time offset relative to the event start time, in minutes. For example, if the value is 5, the reminder occurs 5 minutes before the event starts. If this parameter is not set, no reminder is set. A negative value indicates the delay time for sending a notification. For an all-day event, this parameter specifies the time offset in minutes before 9 a.m. on the event date. A negative value indicates the number of minutes after 9 a.m.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                            |
+| attendee       | [Attendee](#attendee)[]           | No  | Yes | Attendees in a meeting. If this parameter is not set, the default null value is used.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                              |
+| timeZone       | string                            | No  | Yes | Time zone of the event, with a maximum of 5,000 characters. If this parameter is not specified or set to an invalid value, the current time zone is used by default. If a different time zone is required, enter the corresponding time zone. You can call [systemDateTime.getTimezone()](../apis-basic-services-kit/js-apis-date-time.md#systemdatetimegettimezone) to obtain the current system time zone.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| reminderTime   | number[]                          | No  | Yes | Reminder time of the event, in minutes. For example, if the value is 5, the reminder occurs 5 minutes before the event starts. If this parameter is not set, no reminder is set. A negative value indicates the delay time for sending a notification. For an all-day event, this parameter specifies the time offset in minutes before 9 a.m. on the event date. A negative value indicates the number of minutes after 9 a.m.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                            |
 | recurrenceRule | [RecurrenceRule](#recurrencerule) | No  | Yes | Recurrence rule of an event. The event is a recurring event if this parameter is set; otherwise, the event is a non-recurring event.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                               |
-| description    | string                            | No  | Yes | Event description, with a maximum of 5000 characters. If this parameter is not specified, the default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                   |
-| service        | [EventService](#eventservice)     | No  | Yes | <!--RP1-->Event service. If this parameter is not set, no service is available. This function is not supported currently.<!--RP1End-->   <br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                |
-| identifier<sup>12+</sup>     | string                            | No  | Yes | Unique ID of an event, with a maximum of 5000 characters. If this parameter is not specified, the default value is **null**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                           |
+| description    | string                            | No  | Yes | Event description, with a maximum of 5,000 characters. If this parameter is not specified, the default value is an empty string.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                   |
+| service        | [EventService](#eventservice)     | No  | Yes | <!--RP1-->Event service. If this parameter is not set, no one-click service is available. This function is not supported currently.<!--RP1End-->   <br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                |
+| identifier<sup>12+</sup>     | string                            | No  | Yes | Unique ID of an event, with a maximum of 5,000 characters. If this parameter is not specified, the default value is **null**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                           |
 | isLunar<sup>12+</sup>     | boolean                            | No  | Yes | Whether it is a lunar calendar event. The value **true** means that the event is a lunar calendar event, and **false** means the opposite. The default value is **false**.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                           |
 | instanceStartTime<sup>18+</sup> | number                            | No  | Yes | Start time of an event. The value is a 13-digit timestamp. This parameter does not need to be set in [addEvent()](#addevent) or [addEvents()](#addevents).<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                                |
 | instanceEndTime<sup>18+</sup>   | number                            | No  | Yes | End time of an event. The value is a 13-digit timestamp. This parameter does not need to be set in [addEvent()](#addevent) or [addEvents()](#addevents).<br>**Atomic service API**: This API can be used in atomic services since API version 18.                                                                                               |
@@ -1680,11 +1816,11 @@ Describes the event location.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
-| Name     | Type  | Read Only| Optional| Description                    |
+| Name     | Type  | Read-Only| Optional| Description                    |
 | --------- | ------ | ---- |----| ------------------------ |
-| location  | string | No  | Yes | Location, with a maximum of 5000 characters. If this parameter is not specified, the default value is an empty string.|
-| longitude | number | No  | Yes | Longitude of the location. The value ranges from -180 to 180. The default value is **0**.   |
-| latitude  | number | No  | Yes | Latitude of the location. The value ranges from -90 to 90. The default value is **0**.   |
+| location  | string | No  | Yes | Location, with a maximum of 5,000 characters. If this parameter is not specified, the default value is an empty string.|
+| longitude | number | No  | Yes | Longitude of the location. The value range is [-180, 180]. The default value is **undefined**. If the value is out of the range, the map cannot be displayed properly.   |
+| latitude  | number | No  | Yes | Latitude of the location. The value range is [-90, 90]. The default value is **undefined**. If the value is out of the range, the map cannot be displayed properly.   |
 
 ## EventFilter
 
@@ -1698,7 +1834,7 @@ You can use [filterById()](#filterbyid), [filterByTime()](#filterbytime), or [fi
 
 static filterById(ids: number[]): EventFilter
 
-Defines an event ID based filter.
+Defines a filter based on the event ID.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -1706,7 +1842,7 @@ Defines an event ID based filter.
 
 | Name| Type    | Mandatory| Description        |
 | ------ | -------- | ---- | ------------ |
-| ids    | number[] | Yes  | An array of event IDs, where each event ID must be a positive integer.|
+| ids    | number[] | Yes  | An array of event IDs, where each event ID must be an integer.|
 
 **Return value**
 
@@ -1766,7 +1902,7 @@ calendarMgr?.getCalendar(async (err: BusinessError, data:calendarManager.Calenda
 
 static filterByTime(start: number, end: number): EventFilter
 
-Defines an event time based filter.
+Defines a filter based on the event time.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
@@ -1838,7 +1974,7 @@ Filters events by event title. This API supports fuzzy match.
 
 | Name| Type  | Mandatory| Description      |
 | ------ | ------ | ---- | ---------- |
-| title  | string | Yes  | Event title, with a maximum of 5000 characters.|
+| title  | string | Yes  | Event title, with a maximum of 5,000 characters.|
 
 **Return value**
 
@@ -1899,19 +2035,19 @@ Describes the recurrence rule of a recurring event.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
-| Name               | Type                                       | Read Only| Optional| Description                                                                                                                                                                                                                                                                                                                             |
+| Name               | Type                                       | Read-Only| Optional| Description                                                                                                                                                                                                                                                                                                                             |
 | ------------------- | ------------------------------------------- | ---- |----|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | recurrenceFrequency | [RecurrenceFrequency](#recurrencefrequency) | No  | No | Type of the event recurrence rule.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                                                |
 | expire              | number                                      | No  | Yes | End date of the recurrence period. The value is a 13-digit timestamp. If this parameter is not specified, the event has no end date.<br> If **expire**, **count**, and **interval** are set at the same time, the restriction that is reached first prevails.<br>**Atomic service API**: This API can be used in atomic services since API version 11.                                                                                                                                                                                                                                          |
 | count<sup>12+</sup>               | number                                      | No  | Yes | Number of times that an event recurs. The value is a non-negative integer. If the value is a floating point number, it is rounded down. If this parameter is left empty, the default value is **0**, indicating that the number of recurrence times is not limited and the event will continuously recur. If the value is negative, the effect is the same as that of **0**.<br> If **count**, **interval**, and **expire** are set at the same time, the restriction that is reached first prevails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | interval<sup>12+</sup>            | number                                      | No  | Yes | Recurrence interval of a recurring event. The value is a non-negative integer. If the value is a floating point number, it is rounded down.<br> If this parameter is not specified, the default value is **0**. If the value is **0**, **1**, or negative, the event recurs every day, week, month, or year.<br> If **interval**, **count**, and **expire** are set at the same time, the restriction that is reached first prevails.<br>This property is related to the **recurrenceFrequency** rule. The recurrence interval varies according to the recurrence rule. For example, if the **interval** value is **2**, the following situations occur:<br>Daily recurrence: The event recurs every two days.<br>Weekly recurrence: The event recurs every two weeks.<br>Monthly recurrence: The event recurs every two months.<br>Yearly recurrence: The event recurs every two years.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | excludedDates<sup>12+</sup>       | number[]                                    | No  | Yes | Excluded date of a recurrent event. The value is in the timestamp format. If this parameter is not set, the default value is empty, indicating that no date is excluded; if the value is **0** or a negative number, the effect is the same as that of the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                                |
-| daysOfWeek<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a week. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 7, corresponding to Monday to Sunday. Other values are invalid and have the same effect as the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                        |
-| daysOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 31, corresponding to the first to the last days of each month. Other values are invalid and have the same effect as **null**. The value **29**, **30**, or **31** is invalid if the corresponding date does not exist in the current month.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                  |
-| daysOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 366, corresponding to the first to the last days of each year. Other values are invalid and have the same effect as the empty value. If this year only has 365 days, the value **366** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                           |
-| weeksOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by week of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 5, corresponding to the first to the last weeks of each month. Other values are invalid and have the same effect as the empty value. If this month only has four weeks, the value **5** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                 |
-| weeksOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by week of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 53, corresponding to the first to the last weeks of each year. Other values are invalid and have the same effect as the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                               |
-| monthsOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by month of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value ranges from 1 to 12, corresponding to the first to the last months of each year. Other values are invalid and have the same effect as the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                               |
+| daysOfWeek<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a week. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 7], corresponding to Monday to Sunday. Other values are invalid and have the same effect as the empty value. The relevant field arrays are in one-to-one mapping. For example, if the values of **weeksOfMonth** and **daysOfWeek** are **[1, 2, 3]**, the event recurs on Monday of the first week, Tuesday of the second week, and Wednesday of the third week of each month.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                                        |
+| daysOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 31], corresponding to the first to the last days of each month. Other values are invalid and have the same effect as the empty value. The value **29**, **30**, or **31** is invalid if the corresponding date does not exist in the current month. The relevant field arrays are in one-to-one mapping. For example, if the values of **monthsOfYear** and **daysOfMonth** are **[1, 2, 3]**, the event recurs on January 1, February 2, and March 3.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                  |
+| daysOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by day of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 366], corresponding to the first to the last days of each year. Other values are invalid and have the same effect as the empty value. If this year only has 365 days, the value **366** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                           |
+| weeksOfMonth<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by week of a month. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 5], corresponding to the first to the last weeks of each month. Other values are invalid and have the same effect as the empty value. If this month only has four weeks, the value **5** is invalid.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                 |
+| weeksOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by week of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 53], corresponding to the first to the last weeks of each year. Other values are invalid and have the same effect as the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                               |
+| monthsOfYear<sup>12+</sup>       | number[]                                    | No  | Yes | Repeats by month of a year. If this parameter is not set, the default value is empty, indicating that there is no recurrence rule. The value range is [1, 12], corresponding to the first to the last months of each year. Other values are invalid and have the same effect as the empty value.<br>**Atomic service API**: This API can be used in atomic services since API version 12.                                                                                                                                                                                               |
 ## RecurrenceFrequency
 
 Enumerates the types of the event recurrence rule.
@@ -1929,14 +2065,14 @@ Enumerates the types of the event recurrence rule.
 
 ## Attendee
 
-Describes the attendee information in a meeting.
+Describes the attendees in a meeting.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
-| Name | Type  | Read Only| Optional| Description                                                                |
+| Name | Type  | Read-Only| Optional| Description                                                                |
 | ----- | ------ | ---- |----|--------------------------------------------------------------------|
-| name  | string | No  | No | Name of the attendee, with a maximum of 5000 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
-| email | string | No  | No | Email address of the attendee, with a maximum of 5000 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| name  | string | No  | No | Name of the attendee, with a maximum of 5,000 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 11. |
+| email | string | No  | No | Email address of the attendee, with a maximum of 5,000 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | role<sup>12+</sup>  | [AttendeeRole](#attendeerole12) | No  | Yes | Role of the attendee.<br>**Atomic service API**: This API can be used in atomic services since API version 12. |
 | status<sup>18+</sup> | [AttendeeStatus](#attendeestatus18) | No  | Yes| Status of the attendee. If this parameter is not set, the default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
 | type<sup>18+</sup>   | [AttendeeType](#attendeetype18)     | No  | Yes| Type of the attendee. If this parameter is not set, the default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 18.|
@@ -1949,11 +2085,11 @@ Describes the event service.
 
 **System capability**: SystemCapability.Applications.CalendarData
 
-| Name       | Type                       | Read Only| Optional| Description                                 |
+| Name       | Type                       | Read-Only| Optional| Description                                 |
 | ----------- | --------------------------- | ---- |----|-------------------------------------|
 | type        | [ServiceType](#servicetype) | No  | No | Service type.                              |
-| uri         | string                      | No  | No | Service URI, in the DeepLink format. It can be used to redirect the user to a page of another application. The value is a string with a maximum of 5000 characters.|
-| description | string                      | No  | Yes | Description of the service, with a maximum of 5000 characters. If this parameter is not specified, the default value is an empty string.                |
+| uri         | string                      | No  | No | Service URI, in the DeepLink format. The URI can then redirect the user to the corresponding third-party application page. The value is a string with a maximum of 5,000 characters.|
+| description | string                      | No  | Yes | Description of the service, with a maximum of 5,000 characters. If this parameter is not specified, the default value is an empty string.                |
 
 ## ServiceType
 

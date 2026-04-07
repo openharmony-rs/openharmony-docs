@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Focus 继承自 [FocusQuery](arkts-apis-camera-FocusQuery.md)。
+Focus继承自[FocusQuery](arkts-apis-camera-FocusQuery.md)。
 
 对焦类，对设备对焦操作。
 

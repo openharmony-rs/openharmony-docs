@@ -1205,6 +1205,8 @@ struct TextInputExample {
 
 V2迁移策略：装饰器修改为V1的同时，$$直接替换为!!。
 
+<!-- @[sync_state_manager_!!](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ParadigmStateManagement/entry/src/main/ets/pages/syncStateManager/SyncUsageExampleV2.ets) -->
+
 ``` TypeScript
 @Entry
 @ComponentV2

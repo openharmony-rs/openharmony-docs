@@ -60,15 +60,8 @@ Ability Kit（程序框架服务）提供了应用程序开发和运行的应用
 
 ## 与相关Kit的关系
 
-ArkUI: 在Ability Kit的UIAbility组件中，可以使用ArkUI提供的组件、事件、动效、状态管理等能力。
+ArkUI：在Ability Kit的UIAbility组件中，可以使用ArkUI提供的组件、事件、动效、状态管理等能力。
 
-ArkTS: ArkTS提供了语言运行时相关能力。
+ArkTS：ArkTS提供了语言运行时相关能力。
 
-## 模拟器支持情况
-
-本kit支持模拟器开发，但与真机存在部分能力差异，具体如下：
-
-- 不支持拉起垂类应用面板。
-- 不支持以免安装方式拉起原子化服务。
-- 不支持使用App Linking实现应用间跳转。
-- 不支持使用Deep Linking拉起应用选择框。由于模拟器无应用选择框，当使用Deep Linking匹配到多个应用时，无法弹出应用选择框。
+<!--RP3--><!--RP3End-->

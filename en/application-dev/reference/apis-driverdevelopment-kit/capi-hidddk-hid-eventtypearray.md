@@ -27,4 +27,4 @@ Defines a struct for an array of event types.
 | Name| Description|
 | -- | -- |
 | Hid_EventType* hidEventType | Array of event types.|
-| uint16_t length | Length of the array.|
+| uint16_t length | Valid length of an array.|

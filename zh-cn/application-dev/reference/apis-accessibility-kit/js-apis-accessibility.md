@@ -1,4 +1,4 @@
-# @ohos.accessibility (辅助应用)
+# @ohos.accessibility (辅助功能)
 
 <!--Kit: Accessibility Kit-->
 <!--Subsystem: BarrierFree-->
@@ -1258,6 +1258,48 @@ struct Index {
 }
 ```
 
+## accessibility.onSeniorModeStateChange
+
+onSeniorModeStateChange(callback: Callback&lt;boolean&gt;): void
+
+监听关怀模式启用状态变化事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                    | 必填 | 说明                                                         |
+| -------- | ----------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 是   | 回调函数。返回true表示关怀模式已开启；返回false表示关怀模式已关闭。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe senior mode state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.onSeniorModeStateChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
 ## accessibility.off('accessibilityStateChange')
 
 off(type: 'accessibilityStateChange', callback?: Callback&lt;boolean&gt;): void
@@ -1547,6 +1589,52 @@ struct Index {
 
   aboutToDisappear(): void {
     accessibility.offAudioMonoStateChange(this.callback);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.offSeniorModeStateChange
+
+offSeniorModeStateChange(callback?: Callback&lt;boolean&gt;): void
+
+取消监听关怀模式变化事件。使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**参数：**
+
+| 参数名   | 类型                   | 必填 | 说明                                                         |
+| -------- | ---------------------- | ---- | ------------------------------------------------------------ |
+| callback | Callback&lt;boolean&gt; | 否   | 回调函数。返回true表示关怀模式已开启；返回false表示关怀模式已关闭。取消指定callback对象的事件响应。需与[accessibility.onSeniorModeStateChange](#accessibilityonseniormodestatechange)的callback一致。缺省时，表示注销所有已注册事件。 |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+
+@Entry
+@Component
+struct Index {
+  callback: (data: boolean) => void = this.eventCallback;
+  eventCallback(data: boolean): void {
+    console.info(`subscribe senior mode state change, result: ${JSON.stringify(data)}`);
+  }
+
+  aboutToAppear(): void {
+    accessibility.onSeniorModeStateChange(this.callback);
+  }
+
+  aboutToDisappear(): void {
+    accessibility.offSeniorModeStateChange(this.callback);
   }
 
   build() {
@@ -1985,6 +2073,56 @@ struct Index {
   aboutToAppear(): void {
     let status: boolean = accessibility.isAudioMonoEnabledSync();
     console.info(`status: ${JSON.stringify(status)}`);
+  }
+
+  build() {
+    Column() {
+    }
+  }
+}
+```
+
+## accessibility.isSeniorModeEnabled
+
+isSeniorModeEnabled(): Promise&lt;boolean&gt;
+
+判断关怀模式是否开启。使用Promise异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力**：SystemCapability.BarrierFree.Accessibility.Core
+
+**返回值：**
+
+| 类型                   | 说明                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示关怀模式已开启；返回false表示关怀模式已关闭。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[无障碍子系统错误码](errorcode-accessibility.md)。
+
+| 错误码ID   | 错误信息                                     |
+| ------- | ---------------------------------------- |
+| 9300000 | System abnormality. |
+
+**示例：**
+
+```ts
+import { accessibility } from '@kit.AccessibilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Entry
+@Component
+struct Index {
+  aboutToAppear(): void {
+    accessibility.isSeniorModeEnabled().then((data: boolean) => {
+      console.info(`success data:isSeniorModeEnabled : ${JSON.stringify(data)}`);
+    }).catch((err: BusinessError) => {
+      console.error(`failed to call isSeniorModeEnabled, Code is ${err.code}, message is ${err.message}`);
+    });
   }
 
   build() {

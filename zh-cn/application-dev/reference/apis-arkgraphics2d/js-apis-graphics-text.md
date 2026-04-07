@@ -777,13 +777,13 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
-
 | 名称   | 值 | 说明      |
 | ------ | - | --------- |
-| START  | 0 | 开头省略号，只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。|
-| MIDDLE | 1 | 中间省略号，只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。|
-| END    | 2 | 末尾省略号。|
+| START  | 0 | 开头省略号，该枚举值只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
+| MIDDLE | 1 | 中间省略号，该枚举值只在[ParagraphStyle](#paragraphstyle)中设置maxLines为1时生效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
+| END    | 2 | 末尾省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。|
+| MULTILINE_START<sup>24+</sup> | 3 | 开头省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
+| MULTILINE_MIDDLE<sup>24+</sup> | 4 | 中间省略号，该枚举值在[ParagraphStyle](#paragraphstyle)中maxLines设置为任何值时均有效。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
 
 ## TextShadow
 
@@ -834,12 +834,11 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。
-
 | 名称      | 类型                                                 | 只读 | 可选 | 说明                                       |
 | --------- | ---------------------------------------------------- | --  | ---  | ----------------------------------------- |
-| axis      | string                                               | 否  |  否   | 可变字体属性键值对中的关键字标识的字符串。       |
-| value     | number                                               | 否  |  否   | 可变字体属性键值对的值。                        |
+| axis      | string                                               | 否  |  否   | 可变字体属性键值对中的关键字标识的字符串。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。       |
+| value     | number                                               | 否  |  否   | 可变字体属性键值对的值。<br>**原子化服务API**：从API version 22开始，该接口支持在原子化服务中使用。                        |
+| isNormalized<sup>24+</sup>     | boolean                         | 否  |  是   | 是否归一化。值为true时，value字段取值范围为-1~1，映射字体文件中配置的最小值到最大值范围，0表示字体文件中配置的默认值；值为false时，value字段取值范围为字体文件本身支持调节的范围；默认为false。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。  |
 
 ## TextBadgeType<sup>20+</sup>
 
@@ -893,7 +892,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | halfLeading   | boolean                                              | 否 | 是 | true表示将行间距平分至行的顶部与底部，false则不平分，默认为false。|
 | ellipsis      | string                                               | 否 | 是 | 省略号文本，表示省略号生效后使用该字段值替换省略号部分。       |
 | ellipsisMode  | [EllipsisMode](#ellipsismode)                        | 否 | 是 | 省略号类型，默认为END，行尾省略号。                       |
-| locale        | string                                               | 否 | 是 | 语言类型，如字段为'en'代表英文，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。具体请参照ISO 639-1规范，默认为空字符串。|
+| locale        | string                                               | 否 | 是 | 语言类型，如字段为'en-Latn'代表英文(拉丁文字)，'zh-Hans'代表简体中文，'zh-Hant'代表繁体中文。支持language-script格式的两段式语言标签，language遵循ISO 639-1规范，script遵循ISO 15924规范，默认为空字符串。|
 | baselineShift | number                                               | 否 | 是 | 文本下划线的偏移距离，浮点数，默认为0.0px。                 |
 | fontFeatures  | Array\<[FontFeature](#fontfeature)>                  | 否 | 是 | 文本字体特征数组。|
 | fontVariations| Array\<[FontVariation](#fontvariation)>              | 否 | 是 | 可变字体属性数组。|
@@ -903,6 +902,7 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | lineHeightMaximum<sup>21+</sup> | number | 否   | 是   | 行高上限。若同时应用行高缩放，行高上限在[TextStyle](#textstyle).heightScale大于0时生效。取值为正数浮点数，默认值为Number.MAX_VALUE。 |
 | lineHeightMinimum<sup>21+</sup> | number | 否 | 是 | 行高下限。若同时应用行高缩放，行高下限在[TextStyle](#textstyle).heightScale大于0时生效。取值范围为非负浮点数，默认值为0。 |
 | lineHeightStyle<sup>21+</sup> | [LineHeightStyle](#lineheightstyle21) | 否 | 是 | 行高缩放基数样式。默认为FONT_SIZE。 |
+| fontEdging<sup>24+</sup> | [drawing.FontEdging](arkts-apis-graphics-drawing-e.md#fontedging12) | 否 | 是 | 绘制文本的边缘处理方式，默认值为ANTI_ALIAS。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## StrutStyle
 
@@ -953,7 +953,41 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | copyright<sup>23+</sup> | string | 否 | 是 | 字体版权信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 | trademark<sup>23+</sup> | string | 否 | 是 | 字体商标信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
 | license<sup>23+</sup> | string | 否 | 是 | 字体许可证信息，可取任意字符串，默认为空字符串。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。 |
+| variationAxisRecords<sup>24+</sup> | Array<[FontVariationAxis](#fontvariationaxis24)> | 否 | 是 | 字体可变轴记录数组，用于描述字体支持的可变轴信息。非可变字体此字段为undefined。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
+| variationInstanceRecords<sup>24+</sup> | Array<[FontVariationInstance](#fontvariationinstance24)> | 否 | 是 | 字体可变实例记录数组，用于描述字体支持的可变实例信息。非可变字体此字段为undefined。<br>**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。 |
 | index<sup>23+</sup> | number | 否 | 是 | 字体索引，字体文件为ttc类型时有效，ttf类型统一为0。<br>**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
+
+## FontVariationAxis<sup>24+</sup>
+
+字体可变轴信息。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| - | - | - | - | - |
+| key | string | 否 | 否 | 字体可变轴的关键字标识。 |
+| minValue | number | 否 | 否 | 字体可变轴的最小值。 |
+| maxValue | number | 否 | 否 | 字体可变轴的最大值。 |
+| defaultValue | number | 否 | 否 | 字体可变轴的默认值。 |
+| flags | number | 否 | 否 | 字体可变轴的标志位，用于标记某个可变轴是否应该对用户隐藏，值为0或1。值为0时表示该轴对用户可见，值为1时表示该轴应隐藏。 |
+| name | string | 否 | 否 | 字体可变轴的英文名称。 |
+| localName | string | 否 | 否 | 字体可变轴的本地化名称，可以为空。 |
+
+## FontVariationInstance<sup>24+</sup>
+
+字体可变实例信息，存放预设的可变字体样式信息。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| - | - | - | - | - |
+| name | string | 否 | 否 | 字体可变实例的英文名称。 |
+| localName | string | 否 | 否 | 字体可变实例的本地化名称，可以为空。 |
+| coordinates | Array<[FontVariation](#fontvariation)> | 否 | 否 | 可变字体属性数组。 |
 
 ## FontCollection
 
@@ -1039,7 +1073,7 @@ loadFontSync(name: string, path: string | Resource): void
 
 | 参数名 | 类型               | 必填 | 说明                              |
 | ----- | ------------------ | ---- | --------------------------------------------------------------------------------- |
-| name  | string             | 是   | 加载成字体后，调用该字体所使用的名称。                                                |
+| name  | string             | 是   | 加载字体后，调用该字体所使用的名称。                                                |
 | path  | string \| [Resource](../apis-arkui/arkui-ts/ts-types.md#resource) | 是   | 需要导入的字体文件的路径，应为 "file:// + 字体文件绝对路径" 或 "rawfile/目录or文件名"。 |
 
 **示例：**
@@ -1468,6 +1502,7 @@ struct Index {
 | compressHeadPunctuation<sup>23+</sup>   | boolean | 否   | 是   | 设置文本排版时是否使能行首标点压缩。true表示使能行首标点压缩，false表示不使能行首标点压缩，默认值为false。<br/>**说明：**<br/>1. 需要字体文件支持[FontFeature](#fontfeature)中的"ss08"特性，否则无法压缩。<br/>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | includeFontPadding<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能首尾行padding。true表示使能首尾行padding，false表示不使能首尾行padding，默认值为false。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
 | fallbackLineSpacing<sup>23+</sup> | boolean | 否 | 是 | 设置文本排版时是否使能行高回退，当设置的行高小于实际行高时，将行高回退为实际行高。true表示使能行高回退，false表示不使能行高回退，默认值为false。<br>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。 |
+| orphanCharOptimization | boolean | 否 | 是 | 设置文本排版时是否使能孤字优化。孤字优化通过更高效地处理孤立字符（段落尾行首字符）来改善文本布局。使能后，它会调整换行点以尽可能避免孤立字符。孤字优化特性需在[wordBreak](#wordbreak)为非BREAK_ALL并且待排版文本首个[TextStyle](#textstyle)的[locale](#textstyle)为“zh-Hans”或“zh-Hant”时生效。true表示使能孤字优化，false表示不使能孤字优化，默认值为false。<br>**起始版本：** 26.0.0 <br>**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 行首压缩的标点范围:
 | 标点 | Unicode码位 | Unicode名称 |
@@ -1540,6 +1575,36 @@ struct Index {
 | ----- | ------ | ---- | --- | --------------- |
 | start | number | 否   | 否   | 区间左侧端点索引，整数。|
 | end   | number | 否   | 否   | 区间右侧端点索引，整数。|
+
+## TextRectSize<sup>24+</sup>
+
+文本布局后的矩形尺寸。值为浮点数，单位为px。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称    | 类型   | 只读 | 可选 | 说明                       |
+| ----- | ------ | ---- | --- | -------------------------- |
+| width  | number | 否   | 否   | 文本矩形的宽度，浮点数，单位为px。|
+| height | number | 否   | 否   | 文本矩形的高度，浮点数，单位为px。|
+
+## TextLayoutResult<sup>24+</sup>
+
+文本布局结果。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称        | 类型                      | 只读 | 可选 | 说明                                    |
+| ----------- | ------------------------- | ---- | --- | --------------------------------------- |
+| fitStrRange | Array\<[Range](#range)\>  | 否   | 否   | 布局后可以容纳的字符范围数组。       |
+| correctRect  | [TextRectSize](#textrectsize24) | 否   | 否   | 布局后段落的矩形尺寸。 |
 
 ## Paragraph
 
@@ -1676,6 +1741,41 @@ struct Index {
 >示意图展示了点击按钮后layout接口示例代码的运行结果。
 >
 >![zh-ch_image_layout.png](figures/zh-ch_image_layout.png)
+
+### layoutWithConstraints<sup>24+</sup>
+
+layoutWithConstraints(size: TextRectSize): TextLayoutResult
+
+使用给定的高度和宽度进行排版并计算所有字形的位置。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                      | 必填 | 说明                       |
+| ----- | ----------------------------------------- | ---- | -------------------------- |
+| size  | [TextRectSize](#textrectsize24) | 是   | 约束的高度和宽度，单位为px。|
+
+**返回值：**
+
+| 类型                                        | 说明                                    |
+| ------------------------------------------- | --------------------------------------- |
+| [TextLayoutResult](#textlayoutresult24) | 布局后的实际尺寸和排版后容下的字符范围。|
+
+**示例：**
+
+```ts
+let size: text.TextRectSize = { width: 200, height: 100 };
+let result = paragraph.layoutWithConstraints(size); // 功能增强的 layoutSync
+console.info('Width: ' + result.correctRect.width + ', Height: ' + result.correctRect.height);
+for (let i = 0; i < result.fitStrRange.length; ++i) {
+  console.info('fitRange: [' + result.fitStrRange[i].start + ', ' + result.fitStrRange[i].end + ']');
+}
+```
 
 ### paint
 
@@ -2271,6 +2371,212 @@ paragraph.updateDecoration({
   decorationStyle: text.TextDecorationStyle.WAVY,
   decorationThicknessScale: 2.0,
 });
+```
+
+### getCharacterRangeForGlyphRange<sup>24+</sup>
+
+getCharacterRangeForGlyphRange(glyphRange: Range, encoding: drawing.TextEncoding): Array\<Range\>
+
+获取指定字形范围对应的字符范围。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| - | - | - | - |
+| glyphRange | [Range](#range) | 是 | 字形范围。 |
+| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding)  | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的字符范围表示字节范围。对于UTF-16编码，返回的字符范围表示UTF-16编码单元范围。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| Array\<[Range](#range)\> | 字符范围。如果数组包含一个元素，它表示字符范围。如果包含两个元素，第一个是字符范围，第二个是实际的字形范围。|
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { drawing, text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get character range")
+        .onClick(() => {
+          let glyphRange: text.Range = { start: 0, end: 5 };
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let ranges = paragraph.getCharacterRangeForGlyphRange(glyphRange, encoding);
+        })
+    }
+  }
+}
+```
+
+### getGlyphRangeForCharacterRange<sup>24+</sup>
+
+getGlyphRangeForCharacterRange(characterRange: Range, encoding: drawing.TextEncoding): Array\<Range\>
+
+获取指定字符范围对应的字形范围。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| - | - | - | - |
+| characterRange | [Range](#range) | 是 | 字符范围。 |
+| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding)  | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的实际字符范围表示字节范围。对于UTF-16编码，返回的实际字符范围表示UTF-16编码单元范围。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| Array\<[Range](#range)\> | 字形范围。数组包含两个元素，第一个是字形范围，第二个是实际的字符范围。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { drawing, text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get glyph range")
+        .onClick(() => {
+          let characterRange: text.Range = { start: 0, end: 5 };
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let ranges = paragraph.getGlyphRangeForCharacterRange(characterRange, encoding);
+        })
+    }
+  }
+}
+```
+
+### getCharacterPositionAtCoordinate<sup>24+</sup>
+
+getCharacterPositionAtCoordinate(x: number, y: number, encoding: drawing.TextEncoding): PositionWithAffinity
+
+获取与给定坐标最接近的字符位置信息。
+
+**系统能力**：SystemCapability.Graphics.Drawing
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| - | - | - | - |
+| x | number | 是 | 文本排版区域内的水平坐标，单位为物理像素（px）。相对于文本排版区域左上角的x偏移量，向右为正方向。支持浮点数，可取负值（表示在文本区域左侧）。坐标超出文本区域范围时，将返回最近的字符位置。可通过触摸事件或点击事件获取。 |
+| y | number | 是 | 文本排版区域内的垂直坐标，单位为物理像素（px）。相对于文本排版区域左上角的y偏移量，向下为正方向。支持浮点数，可取负值（表示在文本区域上方）。坐标超出文本区域范围时，将返回最近的字符位置。可通过触摸事件或点击事件获取。 |
+| encoding | [drawing.TextEncoding](arkts-apis-graphics-drawing-e.md#textencoding)  | 是 | 文本编码类型。目前仅支持UTF-8和UTF-16编码类型。对于UTF-8编码，返回的字符位置表示字节偏移量。对于UTF-16编码，返回的字符位置表示UTF-16编码单元偏移量。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| - | - |
+| [PositionWithAffinity](#positionwithaffinity) | 字符位置信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[图形绘制与显示错误码](errorcode-drawing.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | --------------------------------------------|
+| 25900001 | Parameter error. Possible causes: Incorrect parameter range. |
+
+**示例：**
+
+```ts
+import { drawing, text } from '@kit.ArkGraphics2D'
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("get character position")
+        .onClick(() => {
+          let encoding: drawing.TextEncoding = drawing.TextEncoding.TEXT_ENCODING_UTF8;
+          let textData = "Heน้ำl👨‍👩‍👧lo1️⃣World";
+          let myTextStyle: text.TextStyle = {
+            color: { alpha: 255, red: 255, green: 0, blue: 0 },
+            fontSize: 33,
+          };
+          let myParagraphStyle: text.ParagraphStyle = {
+            textStyle: myTextStyle,
+            align: text.TextAlign.END,
+          };
+          let fontCollection = new text.FontCollection();
+          let paragraphBuilder = new text.ParagraphBuilder(myParagraphStyle, fontCollection);
+          paragraphBuilder.addText(textData);
+          let paragraph = paragraphBuilder.build();
+          paragraph.layoutSync(200);
+          let x = 10;
+          let y = 5;
+          let position = paragraph.getCharacterPositionAtCoordinate(x, y, encoding);
+        })
+    }
+  }
+}
 ```
 
 ## LineTypeset<sup>18+</sup>

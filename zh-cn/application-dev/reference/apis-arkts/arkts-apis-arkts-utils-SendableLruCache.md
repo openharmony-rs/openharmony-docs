@@ -486,7 +486,7 @@ remove(key: K): V | undefined
 
 | 类型                     | 说明                                                         |
 | ------------------------ | ------------------------------------------------------------ |
-| V&nbsp;\|&nbsp;undefined | 返回一个包含已删除键值对的Optional对象；如果key不存在，则返回undefined，如果key为null，则抛出异常。 |
+| V&nbsp;\|&nbsp;undefined | 返回与key关联的值；若key不存在，则返回undefined。 |
 
 **示例：**
 

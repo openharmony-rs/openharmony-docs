@@ -10,6 +10,8 @@
 
 定义游戏设备的接口。
 
+**引用文件：** <GameControllerKit/game_device.h>
+
 **库：** libohgame_controller.z.so
 
 **系统能力：** SystemCapability.Game.GameController

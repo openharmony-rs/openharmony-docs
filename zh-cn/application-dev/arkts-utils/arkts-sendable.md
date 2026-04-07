@@ -9,7 +9,7 @@
 
 在传统JS引擎中，要优化对象的并发通信开销，唯一的方法是将实现下沉到Native侧，通过[Transferable对象](transferabled-object.md)的转移或共享来降低开销。然而，开发者仍有大量对象并发通信的需求，这个问题在业界JS引擎中尚未解决。
 
-ArkTS提供了Sendable对象类型，在并发通信时支持通过引用传递来解决上述问题。
+ArkTS提供了Sendable对象类型，它是一种可在ArkTS并发实例间安全共享和传递的数据类型，它支持引用传递来减少通信成本。
 
 Sendable对象可共享，跨线程前后指向同一个JS对象。如果Sendable对象通过调用Napi接口与一个Native对象绑定，当共享传递Sendable对象时，其绑定的Native对象也会一并共享传递。通信过程如下图所示：
 
@@ -26,7 +26,7 @@ Sendable对象提供了并发实例间高效的通信能力，即引用传递，
 
 Sendable协议定义了ArkTS的可共享对象体系及其规格约束。符合Sendable协议的数据（以下简称Sendable数据）可以在ArkTS并发实例间传递。
 
-默认情况下，Sendable数据在ArkTS并发实例间（包括UI主线程、TaskPool线程、Worker线程）传递时采用引用传递。ArkTS还支持在这些实例间对Sendable数据进行拷贝传递。
+默认情况下，Sendable数据在ArkTS并发实例间（包括UI主线程、TaskPool线程、Worker线程）采用引用传递方式，同时还支持拷贝传递方式。
 
 ### ISendable
 

@@ -6,7 +6,7 @@
 <!--Tester: @kongjing2-->
 <!--Adviser: @Brilliantry_Rui-->
 
-The Zip module provides APIs for file compression and decompression.
+The **Zip** module provides APIs for file compression and decompression.
 
 > **NOTE**
 >
@@ -134,7 +134,7 @@ Compresses a file. This API uses an asynchronous callback to return the result.
 | inFile                  | string              | Yes  | Path of the folder or file to compress. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). The folder to compress cannot be empty. Otherwise, an error will be reported when [decompressFile](#zlibdecompressfile9) is used to decompress the folder.|
 | outFile                 | string              | Yes  | Path of the compressed file. When multiple threads compress files at the same time, the values of **outFile** must be different.                                          |
 | options                 | [Options](#options) | Yes  | Compression parameters.                                              |
-| callback | AsyncCallback\<void>            | Yes  | Callback used to return the result.              |
+| callback | AsyncCallback\<void>            | Yes  | Callback used to return the result. If the operation is successful, **null** is returned; otherwise, a specific error code is returned.            |
 
 **Error codes**
 
@@ -263,7 +263,7 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 | inFile                  | string              | Yes  | Path of the file to decompress. The file name extension must be .zip. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If the.zip file to be unzipped contains Chinese file names or folder names, use UTF-8 to encode them. Otherwise, garbled characters may be displayed after unzipping.|
 | outFile                 | string              | Yes  | Path of the decompressed file. The path must exist in the system. Otherwise, the decompression fails. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If a file or folder with the same name already exists in the path, they will be overwritten. When multiple threads decompress files at the same time, the values of **outFile** must be different.|
 | options                 | [Options](#options) | Yes  | Decompression parameters.                                            |
-| callback | AsyncCallback\<void>            | Yes  | Callback used to return the result.                                              |
+| callback | AsyncCallback\<void>            | Yes  | Callback used to return the result. If the operation is successful, **null** is returned; otherwise, a specific error code is returned.                                            |
 
 **Error codes**
 
@@ -392,7 +392,7 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 | ----------------------- | ------------------- | ---- | ------------------------------------------------------------ |
 | inFile                  | string              | Yes  | Path of the file to decompress. The file name extension must be .zip. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If the.zip file to be unzipped contains Chinese file names or folder names, use UTF-8 to encode them. Otherwise, garbled characters may be displayed after unzipping.|
 | outFile                 | string              | Yes  | Path of the decompressed file. The path must exist in the system. Otherwise, the decompression fails. The path must be an application sandbox path, which can be obtained from the context. For details about the context, see [FA Model](../apis-ability-kit/js-apis-inner-app-context.md) and [Stage Model](../apis-ability-kit/js-apis-inner-application-context.md). If a file or folder with the same name already exists in the path, they will be overwritten. When multiple threads decompress files at the same time, the values of **outFile** must be different.|
-| callback | AsyncCallback\<void>            | Yes  | Callback used to return the result.                                              |
+| callback | AsyncCallback\<void>            | Yes  | Callback used to return the result. If the operation is successful, **null** is returned; otherwise, a specific error code is returned.                                            |
 
 **Error codes**
 
@@ -1103,7 +1103,7 @@ Compresses the source buffer into the destination buffer. This API uses a promis
 
 | Type                                            | Description                                           |
 | ------------------------------------------------ | ----------------------------------------------- |
-| Promise&lt;[ZipOutputInfo](#zipoutputinfo12)&gt; | Promise used to returns the result status and the total size of the destination buffer.|
+| Promise&lt;[ZipOutputInfo](#zipoutputinfo12)&gt; | Promise used to return the result status and the total size of the destination buffer.|
 
 **Error codes**
 
@@ -4023,7 +4023,7 @@ Associates gzip file with the file descriptor (fd) and opens the file for readin
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | fd     | number | Yes  | File descriptor. Generally, the value is obtained by calling the **open** method or other methods.|
-| mode   | string | Yes  | Specifies the access mode.                                          |
+| mode   | string | Yes  | Specifies the access mode. For details, see the description of [gzopen](#gzopen12).           |
 
 **Return value**
 
@@ -4163,10 +4163,10 @@ Opens the .gz file in the specified path for reading and decompressing, or compr
 
 **Parameters**
 
-| Name| Type  | Mandatory| Description                |
-| ------ | ------ | ---- | -------------------- |
-| path   | string | Yes  | Path of the file to be opened.|
-| mode   | string | Yes  | Specifies a method for opening a file.  |
+| Name| Type  | Mandatory| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| path   | string | Yes  | Path of the file to be opened.                                        |
+| mode   | string | Yes  | Specifies a mode for opening a file.<br>Basic modes (one of the following must be selected):<br>- **"r"** or **"rb"**: read mode. The system automatically detects and decompresses the gzip file. If the file is not in gzip format, the original data is directly read.<br>- **"w"** or **"wb"**: write mode. The system creates a new file and compresses data.<br>- **"a"** or **"ab"**: append mode. The system appends a new gzip stream to the end of the existing file without verifying the format of the original file.<br>Optional function parameters (can be used together):<br>- Compression level: **0** (no compression) to **9** (maximum compression). The default compression level is **6**. This parameter must be used together with the write or append mode.<br>- Compression strategy: **"f"** (filtering strategy), **"h"** (Huffman coding strategy), **"R"** (RLE compression strategy), or **"F"** (fixed encoding strategy). You can only select one of the strategies.<br>- Transparent mode: **"T"**. In this mode, data is not compressed and no gzip header is generated during writing (a common file is generated). This parameter is mutually exclusive with the compression strategy parameter.<br>- Exclusive creation: **"x"**. The file fails to be opened if it already exists. This parameter must be used together with the write or append mode.<br>- Close-on-exec flag: **"e"**. This parameter is used to set the **FD_CLOEXEC** property of the file descriptor (system-dependent).<br>Examples:<br>- **"r"**: read mode. Data is read in binary format.<br>- **"rb"**: read mode. Data is read in binary format.<br>- **"wb6"**: write mode. Data is written in binary format with the compression level of 6.<br>- **"wb9f"**: write mode. Data is written in binary format with the maximum compression level and filtering strategy.<br>- **"wbT"**: write mode. Data is not compressed and a common file is generated.<br>- **"wbx"**: write mode. Data is written to the exclusively created file in binary format.<br>- **"abx"**: append mode. Data is appended and written to the exclusively created file in binary format.|
 
 **Return value**
 
@@ -4359,7 +4359,7 @@ Clears all pending output of the file. Closes the file and releases the decompre
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |
@@ -4489,7 +4489,7 @@ Describes the last error message that reported for the file. This API uses a pro
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message      |
 | -------- | -------------- |
@@ -4564,7 +4564,7 @@ Reads and decompresses a byte from a file. This API uses a promise to return the
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |
@@ -4858,7 +4858,7 @@ Implements the same functions as that of **gzclose()** for writing or appending.
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |
@@ -4921,7 +4921,7 @@ Implements the same functions as that of **gzclose()** for reading only. This AP
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message      |
 | -------- | -------------- |
@@ -5134,7 +5134,7 @@ Returns the start position of the next **gzread** or **gzwrite** in the file. Th
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |
@@ -5340,7 +5340,7 @@ Repositions the file pointer to the beginning of the file. This feature is appli
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |
@@ -5621,7 +5621,7 @@ Converts and formats the parameters under the control of the string format and t
 | Name| Type                         | Mandatory| Description                  |
 | ------ | ----------------------------- | ---- | ---------------------- |
 | format | string                        | Yes  | Format descriptors and plain text.|
-| ...args   | Array&lt;string \| number&gt; | No  | List of variable parameters.        |
+| ...args   | Array&lt;string \| number&gt; | No  | List of variable parameters. If variable parameters are passed, for example, **gzprintf("name is %s, age is %d", "Tom", 23)**, the content **"name is Tom, age is 23"** is written. If no variable parameter is passed, for example, **gzprintf("name is %s, age is %d")**, the content **"name is %s, age is %d"** is written.     |
 
 **Return value**
 
@@ -5696,7 +5696,7 @@ Returns the current compressed read or write offset of the file. This API uses a
 
 **Error codes**
 
-For details about the error codes, see [zlib Error Codes](errorcode-zlib.md).
+For details about the error codes, see [zlib Error Codes](./errorcode-zlib.md).
 
 | ID| Error Message                 |
 | -------- | ------------------------- |

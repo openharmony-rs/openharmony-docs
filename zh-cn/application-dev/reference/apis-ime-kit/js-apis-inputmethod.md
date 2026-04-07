@@ -35,6 +35,7 @@ import { inputMethod } from '@kit.IMEKit';
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | name<sup>9+</sup>  | string | 是 | 否 | 必填。输入法包名。|
@@ -793,6 +794,7 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | textInputType  | [TextInputType](#textinputtype10) | 否 | 否 | 文本输入类型。|
@@ -806,6 +808,7 @@ Enter键的功能类型。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+<!--Table: 20%; 20%; 10%; 10%; 40%-->
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | inputAttribute  | [InputAttribute](#inputattribute10) | 否 | 否 | 编辑框属性。|
@@ -2717,7 +2720,7 @@ off(type: 'moveCursor', callback?: (direction: Direction) => void): void
 | 参数名  | 类型    | 必填 | 说明  |
 | ------ | ------ | ---- | ---- |
 | type   | string | 是   | 设置监听类型，固定取值为'moveCursor'。 |
-| callback | (direction: [Direction<sup>10+</sup>](#direction10)) => void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
+| callback | (direction: [Direction](#direction10)) => void | 否 | 取消订阅的回调函数，需要与on接口传入的保持一致。<br>参数不填写时，取消订阅type对应的所有回调事件。 |
 
 **示例：**
 

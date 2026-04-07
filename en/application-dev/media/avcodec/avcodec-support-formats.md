@@ -23,12 +23,21 @@ Currently, the following decoding capabilities are supported:
 | H.263 | [OH_AVCODEC_MIMETYPE_VIDEO_H263](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
 | AVC(H.264) | [OH_AVCODEC_MIMETYPE_VIDEO_AVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
 | HEVC(H.265) | [OH_AVCODEC_MIMETYPE_VIDEO_HEVC](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| AV1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_AV1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| VP9<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_VP9](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| VP8<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_VP8](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| RV30<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RV30](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| RV40<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RV40](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| WVC1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_WVC1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| DVVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_DVVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| RAWVIDEO<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_RAWVIDEO](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
+| MPEG1<sup>23+</sup> | [OH_AVCODEC_MIMETYPE_VIDEO_MPEG1](../../reference/apis-avcodec-kit/capi-native-avcodec-base-h.md#variables)|
 <!--RP14--><!--RP14End-->
 
 When you attempt to create a decoder using the MIME type, if the system supports hardware decoding, the system preferentially creates a hardware decoder instance. If the system does not support hardware decoding or the hardware decoder resources are insufficient, the system creates a software decoder instance.
 
 The decoding capability provided by the system is closely related to the device. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
-For example, you can query the <!--RP16-->hardware decoding capabilities of H.264 and H.265<!--RP16End--> by using <!--RP15-->**OH_AVCODEC_MIMETYPE_VIDEO_AVC** and **OH_AVCODEC_MIMETYPE_VIDEO_HEVC**<!--RP15End-->.
+For example, you can query the <!--RP16-->hardware decoding capabilities of H.264 and H.265<!--RP16End--> by using <!--RP15-->**OH_AVCODEC_MIMETYPE_VIDEO_AVC** and **OH_AVCODEC_MIMETYPE_VIDEO_HEVC**<!--RP15End-->.<!--RP16End-->
 
 For details about the development guide, see [Video Decoding](video-decoding.md).
 
@@ -70,7 +79,7 @@ If the system does not support the required decoding capability, the decoder ins
 
 The decoding capability provided by the system is closely related to the device. You can obtain the supported capabilities and specifications by following the instructions provided in [Obtaining Supported Codecs](obtain-supported-codecs.md).
 
-Starting from API version 23, TWINVQ, ILBC, and TRUEHD are introduced.
+Supported since API version 23: TWINVQ, ILBC, TRUEHD, DVAUDIO, DTS, and COOK
 
 For details about the development guide, see [Audio Decoding](audio-decoding.md).
 
@@ -97,26 +106,28 @@ For details about the development guide, see [Audio Encoding](audio-encoding.md)
 The following formats are supported:
 | Media Format | Container Format                     | Track Format                     |
 | -------- | :----------------------------| :----------------------------|
-| Audio/Video    | mp4                        |<!--RP4-->Video track: AVC (H.264), MPEG4<br>Audio track: AAC, MPEG(MP3), ALAC<sup>22+</sup>, TRUEHD<sup>23+</sup><br>Subtitle track: WEBVTT<br>Auxiliary track: AUXL (such as audio raw information and video depth information)<br>Timed metadata track: time-related description information, such as frame-level maintenance and debugging information and sensor information.<!--RP4End-->|
-| Audio/Video    | fmp4                       |<!--RP5-->Video track: AVC (H.264)<br>Audio track: AAC, MPEG (MP3), TRUEHD<sup>23+</sup><!--RP5End-->|
-| Audio/Video    | mkv                        |<!--RP6-->Video track: AVC (H.264), MSVIDEO1<sup>22+</sup><br>Audio track: AAC, MPEG(MP3), OPUS, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>, ALAC<sup>22+</sup>, TRUEHD<sup>23+</sup><!--RP6End-->|
-| Audio/Video    | mpeg-ts                    |<!--RP7-->Video track: AVC (H.264), MPEG2, MPEG4<br>Audio track: AAC, MPEG (MP3), TRUEHD<sup>23+</sup><!--RP7End-->|
+| Audio/Video    | mp4                        |<!--RP4-->Video track: AVC (H.264), MPEG4<br>Audio track: AAC, MPEG (MP3), ALAC<sup>22+</sup>, TRUEHD<sup>23+</sup>, DTS<sup>23+</sup><br>Subtitle track: WEBVTT<br>Auxiliary track: AUXL (such as audio raw information and video depth information)<br>Timed metadata track: time-related description information, such as frame-level maintenance and debugging information and sensor information.<!--RP4End-->|
+| Audio/Video    | fmp4                       |<!--RP5-->Video track: AVC (H.264)<br>Audio track: AAC, MPEG (MP3), TRUEHD<sup>23+</sup>, DTS<sup>23+</sup><!--RP5End-->|
+| Audio/Video    | mkv                        |<!--RP6-->Video track: AVC (H.264), MSVIDEO1<sup>22+</sup><br>Audio track: AAC, MPEG (MP3), OPUS, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>, ALAC<sup>22+</sup>, TRUEHD<sup>23+</sup>, DTS<sup>23+</sup><!--RP6End-->|
+| Audio/Video    | mpeg-ts                    |<!--RP7-->Video track: AVC (H.264), MPEG2, MPEG4<br>Audio track: AAC, MPEG (MP3), TRUEHD<sup>23+</sup>, DTS<sup>23+</sup><!--RP7End-->|
 | Audio/Video    | flv                        |<!--RP8-->Video track: AVC (H.264)<br>Audio track: AAC<!--RP8End-->|
-| Audio/Video    | mpeg-ps                    |Video track: AVC (H.264), MPEG2<br>Audio track: MPEG (MP2, MP3)|
-| Audio/Video    | avi                        |Video track: H.263, AVC(H.264), MPEG2, MPEG4, MJPEG<sup>22+</sup>, MSVIDEO1<sup>22+</sup><br>Audio track: AAC, MPEG (MP2, MP3), PCM, GSM_MS<sup>22+</sup>, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>|
+| Audio/Video    | mpeg-ps                    |Video track: AVC (H.264), MPEG2<br>Audio track: MPEG (MP2, MP3), DTS<sup>23+</sup>|
+| Audio/Video    | avi                        |Video track: H.263, AVC(H.264), MPEG2, MPEG4, MJPEG<sup>22+</sup>, MSVIDEO1<sup>22+</sup><br>Audio track: AAC, MPEG(MP2, MP3), PCM, GSM_MS<sup>22+</sup>, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>, DVAUDIO<sup>23+</sup>, DTS<sup>23+</sup>|
 | Audio/Video    | 3gp<sup>22+</sup>                        |Video track: H.263, AVC (H.264), MPEG4<br>Audio track: AAC, AMR (amrnb and amrwb)|
 | Audio/Video    | 3g2<sup>22+</sup>                        |Video track: H.263, AVC (H.264), MPEG4<br>Audio track: AAC, AMR (amrnb and amrwb)|
 | Audio/Video    | m4v<sup>22+</sup>                        |<!--RP12-->Video track: AVC (H.264), MPEG4<!--RP12End--><br>Audio track: AAC, ALAC, AC3|
 | Audio/Video    | wmv<sup>22+</sup>                        |Video track: AVC (H.264), WMV3<br>Audio track: WMAV1, WMAV2, WMAPRO|
+| Audio/Video    | rm<sup>23+</sup>, rmvb<sup>23+</sup>                       |Video track: RV30, RV40<br>Audio track: AAC, AC3, COOK|
 | Audio      | m4a                        |<!--RP9-->Audio track: AAC, ALAC<sup>22+</sup><!--RP9End-->|
 | Audio      | aac                        |Audio track: AAC|
 | Audio      | mp3                        |Audio track: MPEG (MP3)|
 | Audio      | ogg                        |Audio track: Vorbis|
 | Audio      | flac                       |Audio track: FLAC|
-| Audio      | wav                        |Audio track: PCM, G711mu, G711a, GSM_MS<sup>22+</sup>, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>, ADPCM_G726<sup>22+</sup>|
+| Audio      | wav                        |Audio track: PCM, G711mu, G711a, GSM_MS<sup>22+</sup>, ADPCM_YAMAHA<sup>22+</sup>, ADPCM_G722<sup>22+</sup>, ADPCM_G726<sup>22+</sup>, DVAUDIO<sup>23+</sup>, DTS<sup>23+</sup>|
 | Audio      | amr                        |Audio track: AMR (amrnb and amrwb)|
 | Audio      | ape                        |Audio track: APE|
-| Audio      | wma<sup>22+</sup>                        |Audio track: AC3, WMAV1, WMAV2, Vorbis, Flac, AMR (amrnb and amrwb), AAC, MPEG (MP2 and MP3), GSM_MS, G711mu, G711a, PCM, ADPCM_G722, ADPCM_G726, ADPCM_IMA_WAV, ADPCM_MS, ADPCM_YAMAHA|
+| Audio      | wma<sup>22+</sup>                        |Audio track: AC3, WMAV1, WMAV2, Vorbis, Flac, AMR (amrnb, amrwb), AAC, MPEG (MP2, MP3), GSM_MS, G711mu, G711a, PCM, ADPCM_G722, ADPCM_G726, ADPCM_IMA_WAV, ADPCM_MS, ADPCM_YAMAHA, DVAUDIO<sup>23+</sup>, DTS<sup>23+</sup>|
+| Audio      | dts<sup>23+</sup>          |Audio track: DTS|
 | External subtitle  | srt                        |Subtitle track: SRT|
 | External subtitle  | webvtt                     |Subtitle track: WEBVTT|
 
@@ -135,6 +146,7 @@ Currently, the following muxer capabilities are supported:
 | wav      | -                     | G711mu (pcm-mulaw), raw (pcm)| -             |
 | aac      | -                     | AAC               | -             |
 | flac     | -                     | Flac              | jpeg, png, bmp|
+| ogg<sup>23+</sup>      | -                     | Vorbis, OPUS     | -              |
 
 > **NOTE**
 >
@@ -258,5 +270,12 @@ flac container format:
    | OH_MD_KEY_CHANNEL_LAYOUT           | Channel layout.             |  Optional |
    | OH_MD_KEY_BITRATE                  | Bit rate.                 |  Optional |
    | OH_MD_KEY_CODEC_CONFIG             | Codec-specific data.      |  Optional |
-   
+
+ogg container format (supported since API version 23):
+   |                key                 |         Description        | Vorbis |  OPUS  |
+   | ---------------------------------- | :------------------: | :----: | :----: |
+   | OH_MD_KEY_AUD_SAMPLE_RATE          | Sample rate.               |  Mandatory |  Mandatory |
+   | OH_MD_KEY_AUD_CHANNEL_COUNT        | Audio channel count.               |  Mandatory |  Mandatory |
+   | OH_MD_KEY_CODEC_CONFIG             | Codec-specific data.      |  Mandatory |  Mandatory |
+
 For details about the development guide, see [Media Data Multiplexing](audio-video-muxer.md).

@@ -97,12 +97,12 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
           hilog.error(DOMAIN, TAG,`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
-      })
+        hilog.info(DOMAIN, TAG,'Invoke replaceUrl succeeded.');
+      });
     }
   
     build() {
-      // ···
+      // ...
     }
   }
   ```
@@ -133,7 +133,7 @@ Router模块提供了两种跳转模式，分别是[pushUrl](../reference/apis-a
           hilog.error(DOMAIN, TAG, `Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
           return;
         }
-        hilog.error(DOMAIN, TAG, 'Invoke replaceUrl succeeded.');
+        hilog.info(DOMAIN, TAG, 'Invoke pushUrl succeeded.');
       });
     }
   
@@ -216,7 +216,7 @@ onJumpClick(): void {
       hilog.error(DOMAIN, TAG,`Invoke pushUrl failed, code is ${err.code}, message is ${err.message}`);
       return;
     }
-    hilog.error(DOMAIN, TAG,'Invoke pushUrl succeeded.');
+    hilog.info(DOMAIN, TAG,'Invoke pushUrl succeeded.');
   });
 }
 ```
@@ -364,7 +364,7 @@ struct Home {
 
 ## 生命周期
 
-[router](../reference/apis-arkui/js-apis-router.md)页面生命周期，即被[\@Entry](state-management/arkts-create-custom-components.md#entry)装饰的组件生命周期，提供以下生命周期接口：
+[router](../reference/apis-arkui/js-apis-router.md)页面生命周期，即被[\@Entry](state-management/arkts-create-custom-components.md#entry)装饰的组件生命周期，提供以下生命周期接口，其中onPageShow和onPageHide的生命周期时序图可参考Router切换Navigation中的[生命周期](./arkts-router-to-navigation.md#生命周期)：
 
 - [onPageShow](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onpageshow)：页面每次显示时触发一次，包括路由过程、应用进入前台等场景。
 

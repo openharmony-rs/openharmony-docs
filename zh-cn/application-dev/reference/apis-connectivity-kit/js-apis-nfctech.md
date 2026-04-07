@@ -219,7 +219,7 @@ NfcVTag获取方式请参考[nfc-tag开发指南](../../connectivity/nfc/nfc-tag
 
 以下是NfcVTag的独有接口。
 
-### NfcvTag.getResponseFlags
+### NfcVTag.getResponseFlags
 
 getResponseFlags(): number
 
@@ -245,7 +245,7 @@ let responseFlags : number = nfcV.getResponseFlags();
 console.info("nfcV responseFlags: " + responseFlags);
 ```
 
-### NfcvTag.getDsfId
+### NfcVTag.getDsfId
 
 getDsfId(): number
 
@@ -1087,7 +1087,7 @@ function nfcTechDemo() {
 
     try {
         let sectorIndex = 1; // 将其更改为正确的 index
-        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  //必须是6个字节，将其更改为正确的key
+        let key = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06]  // 必须是6个字节，将其更改为正确的key
         mifareClassic.authenticateSector(sectorIndex, key, true).then(() => {
             console.info("mifareClassic authenticateSector Promise success.");
         }).catch((err : BusinessError)=> {
@@ -1409,7 +1409,7 @@ function nfcTechDemo() {
     try {
         let blockIndex = 1; // 将其更改为正确的 index
         let rawData = [0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A,
-            0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; //必须是16个字节，将其更改为正确的data
+            0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10]; // 必须是16个字节，将其更改为正确的data
         mifareClassic.writeSingleBlock(blockIndex, rawData, (err : BusinessError)=> {
             if (err) {
                 console.error(`mifareClassic writeSingleBlock AsyncCallback err Code: ${err.code}, message: ${err.message}`);
@@ -2381,7 +2381,7 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // 将其更改为正确的 index
-        let rawData = [0x01, 0x02, 0x03, 0x04]; //必须是4个字节，将其更改为正确的data
+        let rawData = [0x01, 0x02, 0x03, 0x04]; // 必须是4个字节，将其更改为正确的data
         mifareUltralight.writeSinglePage(pageIndex, rawData).then(() => {
             console.info("mifareUltralight writeSinglePage Promise success.");
         }).catch((err : BusinessError)=> {
@@ -2443,7 +2443,7 @@ function nfcTechDemo() {
 
     try {
         let pageIndex = 1; // 将其更改为正确的 index
-        let rawData = [0x01, 0x02, 0x03, 0x04];  //必须是4个字节，将其更改为正确的data
+        let rawData = [0x01, 0x02, 0x03, 0x04];  // 必须是4个字节，将其更改为正确的data
         mifareUltralight.writeSinglePage(pageIndex, rawData, (err : BusinessError)=> {
         if (err) {
                 console.error(`mifareUltralight writeSinglePage AsyncCallback Code: ${err.code}, message: ${err.message}`);
@@ -2546,10 +2546,10 @@ function nfcTechDemo() {
     }
 
     try {
-        //从原始数据创建的ndefMessage，例如：
+        // 从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);  
         // 必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        // 或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
 
         ndefFormatable.format(ndefMessage).then(() => {
             console.info("ndefFormatable format Promise success.");
@@ -2610,9 +2610,9 @@ function nfcTechDemo() {
     }
 
     try {
-        //从原始数据创建的ndefMessage，例如：
+        // 从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);  // 必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        // 或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
 
         ndefFormatable.format(ndefMessage, (err : BusinessError)=> {
             if (err) {
@@ -2680,10 +2680,10 @@ function nfcTechDemo() {
     }
 
     try {
-        //从原始数据创建的ndefMessage，例如：
+        // 从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);
         // 必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        // 或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
 
         ndefFormatable.formatReadOnly(ndefMessage).then(() => {
             console.info("ndefFormatable formatReadOnly Promise success.");
@@ -2744,10 +2744,10 @@ function nfcTechDemo() {
     }
 
     try {
-        //从原始数据创建的ndefMessage，例如：
+        // 从原始数据创建的ndefMessage，例如：
         let ndefMessage = tag.ndef.createNdefMessage([0xD1, 0x01, 0x03, 0x54, 0x4E, 0x46, 0x43]);
-        //必须是可以被解析的NDEF记录
-        //或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
+        // 必须是可以被解析的NDEF记录
+        // 或从 tag.ndef.createNdefMessage(ndefRecords:NdefRecord[]) 创建 ndefMessage
 
         ndefFormatable.formatReadOnly(ndefMessage, (err : BusinessError)=> {
             if (err) {

@@ -12,8 +12,9 @@ SelectionExtensionContext是[SelectionExtensionAbility](./js-apis-selectionInput
 每个SelectionExtensionAbility组件实例化时，系统都会自动创建对应的SelectionExtensionContext。开发者可以通过SelectionExtensionContext拉起同应用内其他Ability。
 
 > **说明：**
-
-本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 本模块首批接口从API version 24开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅支持PC/2in1设备。
 
 ## 导入模块
 
@@ -23,6 +24,10 @@ import { SelectionExtensionContext } from '@kit.BasicServicesKit';
 
 ## SelectionExtensionContext
 
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ### startAbility
 
 startAbility(want: Want): Promise\<void>
@@ -30,6 +35,8 @@ startAbility(want: Want): Promise\<void>
 拉起目标应用。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -45,7 +52,7 @@ startAbility(want: Want): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[元能力错误码](../apis-ability-kit/errorcode-ability.md)。
+以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
@@ -102,12 +109,10 @@ class SelectionExtAbility extends SelectionExtensionAbility {
       this.context.startAbility(wantAbility).then(() => {
         console.info(`startAbility success`);
       }).catch((err: BusinessError) => {
-        let error = err as BusinessError;
-        console.error(`startAbility error: ${error.code} ${error.message}`);
+        console.error(`startAbility error: ${err.code}, errormessage: ${err.message}`);
       })
     } catch (err) {
-      let error = err as BusinessError;
-      console.error(`startAbility error: ${error.code} ${error.message}`);
+      console.error(`startAbility error: ${err.code}, errormessage: ${err.message}`);
     }
     return new SelectionAbilityStub('remote');
   }

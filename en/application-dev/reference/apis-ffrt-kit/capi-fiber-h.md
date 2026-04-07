@@ -44,16 +44,15 @@ Initializes a fiber. The initialized fiber instance can store contexts.
 
 **Since**: 20
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | fiber | Pointer to the fiber to be initialized. For details, see [ffrt_fiber_t](capi-ffrt-ffrt-fiber-t.md).|
 | func | Method to be executed after fiber switching.|
-|  void* arg | Pointer to the argument of the method.|
-|  void* stack | Pointer to the fiber stack memory.|
-|  size_t stack_size | Fiber stack size. For details, see [ffrt_storage_size_t](capi-type-def-h.md#ffrt_storage_size_t).|
+| void\* arg | Pointer to the argument of the method.|
+| void\* stack | Pointer to the fiber stack memory.|
+| size_t stack_size | Fiber stack size. For details, see [ffrt_storage_size_t](capi-type-def-h.md#ffrt_storage_size_t).|
 
 **Returns**
 
@@ -72,7 +71,6 @@ FFRT_C_API void ffrt_fiber_switch(ffrt_fiber_t* from, ffrt_fiber_t* to)
 Switches between fibers. The thread that calls this function suspends the current task, saves the context to the **from** fiber, and restores the context of the **to** fiber.
 
 **Since**: 20
-
 
 **Parameters**
 

@@ -8,7 +8,7 @@
 
 ## Overview
 
-Provides BASE DDK APIs for creating, mapping, unmapping, and destroying an **Ashmem** object.
+Provides BASE DDK APIs for creating, mapping, unmapping, and destroying the shared memory.
 
 **Since**: 12
 ## Files

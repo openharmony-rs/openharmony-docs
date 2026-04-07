@@ -27,4 +27,4 @@ typedef struct {...} Camera_OcclusionDetectionResult
 | 名称 | 描述 |
 | -- | -- |
 | bool isCameraOccluded | 检查相机镜头是否被遮挡。true表示被遮挡，false表示未被遮挡。 |
-| bool isCameraLensDirty | 检查相机相机镜头是否有脏污。true表示有脏污，false表示没有脏污。 |
+| bool isCameraLensDirty | 检查相机镜头是否有脏污。true表示有脏污，false表示没有脏污。 |

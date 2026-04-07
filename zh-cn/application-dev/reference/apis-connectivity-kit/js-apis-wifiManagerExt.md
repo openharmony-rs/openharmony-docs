@@ -173,9 +173,6 @@ getPowerMode(): Promise&lt;PowerMode&gt;
 
 获取功率模式，使用Promise异步回调。
 
-> **说明：**
-> 从API version 9开始支持，从API version 10开始废弃。
-
 **需要权限：** ohos.permission.GET_WIFI_INFO
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension

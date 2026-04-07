@@ -45,7 +45,7 @@ The APIs of this module return exceptions since API version 9. The following tab
 
 ## TypeCode<sup>12+</sup>
 
-Since API version 12, [writeArrayBuffer](#writearraybuffer12) and [readArrayBuffer](#readarraybuffer12) are added to pass ArrayBuffer data. The specific TypedArray type is determined by the **TypeCode** defined as follows:
+Since API version 12, [writeArrayBuffer](#writearraybuffer12) and [readArrayBuffer](#readarraybuffer12) are added to pass ArrayBuffer data. The specific TypedArray type is determined by the **TypeCode** defined as follows.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -2743,6 +2743,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -3449,10 +3450,11 @@ Writes raw data to this **MessageSequence** object.
 
 > **NOTE**
 >
-> - This API is supported since API version 9 and deprecated since API version 11. Use [writeRawDataBuffer](#writerawdatabuffer11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [writeRawDataBuffer](#writerawdatabuffer11) instead.
 >
-> - This API cannot be called for multiple times in one parcel communication.
-> - When the data volume is large (greater than 32 KB), the shared memory is used to transmit data. In this case, pay attention to the SELinux configuration.
+> This API cannot be called for multiple times in one parcel communication.
+>
+> When the data volume is large (greater than 32 KB), the shared memory is used to transmit data. In this case, pay attention to the SELinux configuration.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -3499,8 +3501,8 @@ Writes raw data to this **MessageSequence** object.
 
 > **NOTE**
 >
-> - This API cannot be called for multiple times in one parcel communication.
-> - When the data volume is large (greater than 32 KB), the shared memory is used to transmit data. In this case, pay attention to the SELinux configuration.
+> This API cannot be called for multiple times in one parcel communication.
+> When the data volume is large (greater than 32 KB), the shared memory is used to transmit data. In this case, pay attention to the SELinux configuration.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -3762,6 +3764,8 @@ Provides APIs for reading and writing data in specific format. During RPC, the s
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. Use [MessageSequence](#messagesequence9) instead.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### create<sup>(deprecated)</sup>
 
@@ -4339,7 +4343,7 @@ Moves the write pointer to the specified position.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 9. Use [reWindWrite](#rewindwrite9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. Use [rewindWrite](#rewindwrite9) instead.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -6282,6 +6286,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -7001,6 +7006,8 @@ try {
 
 Writes an object to a **MessageSequence** and reads it from the **MessageSequence** during IPC.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### marshalling<sup>9+</sup>
 
 marshalling(dataOut: MessageSequence): boolean
@@ -7122,6 +7129,8 @@ Writes objects of classes to a **MessageParcel** and reads them from the **Messa
 > **NOTE**
 >
 > This API is supported since API version 7 and deprecated since API version 9. Use [Parcelable](#parcelable9) instead.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### marshalling<sup>(deprecated)</sup>
 
@@ -7253,6 +7262,8 @@ try {
 
 Represents the holder of a remote proxy object. It is used to obtain a proxy object.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### asObject
 
 asObject(): IRemoteObject
@@ -7308,6 +7319,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want  = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -7343,6 +7355,8 @@ if (proxy != undefined) {
 ## DeathRecipient
 
 Subscribes to death notifications of a remote object. When the remote object is dead, the local end will receive a notification and **[onRemoteDied](#onremotedied)** will be called. A remote object is dead when the process holding the object is terminated or the device of the remote object is shut down or restarted. If the local and remote objects belong to different devices, the remote object is dead when the device holding the remote object is detached from the network. 
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### onRemoteDied
 
@@ -7413,6 +7427,8 @@ Defines the IPC context, including the PID and UID, local and remote device IDs,
 ## IRemoteObject
 
 Provides methods to query of obtain interface descriptors, add or delete death notifications, dump object status to specific files, and send messages.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### getLocalInterface<sup>9+</sup>
 
@@ -7497,7 +7513,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): Promise&lt;RequestResult&gt;
 
-Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendMessageRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendMessageRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -7528,7 +7544,7 @@ For details about the error codes, see [RPC Error Codes](errorcode-rpc.md).
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): Promise&lt;SendRequestResult&gt;
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
 
 > **NOTE**
 >
@@ -7567,7 +7583,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
   | data     | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object holding the data to send.                                           |
   | reply    | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object that receives the response.                                                   |
   | options  | [MessageOption](#messageoption)      | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
-  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | Yes  | Callback for receiving the sending result.                                                                  |
+  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | Yes  | Callback used to return the result. When the message is sent successfully, the data returned by the server can be read from **RequestResult**.|
 
 **Error codes**
 
@@ -7757,6 +7773,8 @@ Checks whether this object is dead.
 
 Provides APIs to implement **IRemoteObject**.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### Properties
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -7824,6 +7842,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -7872,7 +7891,7 @@ try {
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): Promise&lt;RequestResult&gt;
 
-Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendMessageRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendMessageRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -7927,6 +7946,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -7981,7 +8001,7 @@ try {
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): Promise&lt;SendRequestResult&gt;
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
 
 > **NOTE**
 >
@@ -8032,6 +8052,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8100,7 +8121,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
   | data     | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object holding the data to send.                                           |
   | reply    | [MessageSequence](#messagesequence9) | Yes  | **MessageSequence** object that receives the response.                                                   |
   | options  | [MessageOption](#messageoption)      | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                                                  |
-  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | Yes  | Callback for receiving the sending result.                                                                  |
+  | callback | AsyncCallback&lt;[RequestResult](#requestresult9)&gt;   | Yes  | Callback used to return the result. When the message is sent successfully, the data returned by the server can be read from **RequestResult**.|
 
 **Error codes**
 
@@ -8134,7 +8155,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 
 ### getLocalInterface<sup>9+</sup>
 
-getLocalInterface(interface: string): IRemoteBroker
+getLocalInterface(interfaceDes: string): IRemoteBroker
 
 Obtains the **LocalInterface** object of an interface token.
 
@@ -8144,7 +8165,7 @@ Obtains the **LocalInterface** object of an interface token.
 
   | Name   | Type  | Mandatory| Description                  |
   | --------- | ------ | ---- | ---------------------- |
-  | interface | string | Yes  | Interface descriptor.|
+  | interfaceDes | string | Yes  | Interface descriptor.|
 
 **Return value**
 
@@ -8189,6 +8210,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8274,6 +8296,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8352,6 +8375,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8393,7 +8417,7 @@ if (proxy != undefined) {
 
 addDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
-Adds a callback for receiving the death notifications of the remote object.
+Adds a callback for receiving death notifications of the remote object.
 
 > **NOTE**
 >
@@ -8442,6 +8466,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8525,6 +8550,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8616,6 +8642,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8699,6 +8726,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8777,6 +8805,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8845,6 +8874,7 @@ let connect: common.ConnectOptions = {
   }
 };
 let want: Want = {
+  // Obtain the package name and ability name on the server.
   bundleName: "com.ohos.server",
   abilityName: "com.ohos.server.EntryAbility",
 };
@@ -8873,6 +8903,8 @@ if (proxy != undefined) {
 ## MessageOption
 
 Defines the options used to construct the **MessageOption** object.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### Properties
 
@@ -8924,7 +8956,7 @@ A constructor used to create a **MessageOption** object.
   | Name   | Type  | Mandatory| Description                                         |
   | --------- | ------ | ---- | --------------------------------------------- |
   | syncFlags | number | No  | Call flag to set. The options are as follows: 0 (synchronous call) and 1 (asynchronous call). The default value is **synchronous**.       |
-  | waitTime  | number | No  | Maximum wait time for an RPC call. The default value is **TF_WAIT_TIME**.|
+  | waitTime  | number | No  | Maximum wait time for an RPC call, in seconds. The default value is **TF_WAIT_TIME**.|
 
 **Example**
 
@@ -8942,7 +8974,7 @@ class TestRemoteObject extends rpc.MessageOption {
 
 isAsync(): boolean
 
-Checks whether **SendMessageRequest** is called synchronously or asynchronously.
+Checks whether [sendMessageRequest](#sendmessagerequest9-2) is called asynchronously.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -8970,7 +9002,7 @@ try {
 
 setAsync(isAsync: boolean): void
 
-Sets whether **SendMessageRequest** is called synchronously or asynchronously.
+Sets whether to call [sendMessageRequest](#sendmessagerequest9-2) asynchronously.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9063,7 +9095,7 @@ try {
 
 getWaitTime(): number
 
-Obtains the maximum wait time for this RPC call.
+Obtains the maximum wait time for an RPC call.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9071,7 +9103,7 @@ Obtains the maximum wait time for this RPC call.
 
   | Type  | Description             |
   | ------ | ----------------- |
-  | number | Maximum wait time obtained. The default value is **TF_WAIT_TIME**.|
+  | number | Maximum wait time for an RPC call, in seconds. The default value is **TF_WAIT_TIME**.|
 
 **Example**
 
@@ -9095,7 +9127,7 @@ try {
 
 setWaitTime(waitTime: number): void
 
-Sets the maximum wait time for this RPC call.
+Sets the maximum wait time for an RPC call.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9103,7 +9135,7 @@ Sets the maximum wait time for this RPC call.
 
   | Name  | Type  | Mandatory| Description                 |
   | -------- | ------ | ---- | --------------------- |
-  | waitTime | number | Yes  | Maximum wait time to set. The upper limit is 3000 seconds.|
+  | waitTime | number | Yes  | Maximum wait time for an RPC call, in seconds. The upper limit is 3000 seconds.|
 
 **Example**
 
@@ -9124,6 +9156,8 @@ try {
 ## IPCSkeleton
 
 Obtains IPC context, including the UID and PID, local and remote device IDs, and whether the method is invoked on the same device.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### getContextObject
 
@@ -9157,7 +9191,7 @@ try {
 
 static getCallingPid(): number
 
-Obtains the PID of the caller. This API is a static method, which is invoked by the **RemoteObject** object in the **onRemoteRequest** method. If this method is not invoked in the IPC context (**onRemoteRequest**), the PID of the process will be returned.
+Obtains the PID of the caller. This API is a static method, which is called by the [RemoteObject](#remoteobject) object in the IPC context [onRemoteMessageRequest](#onremotemessagerequest9). If the method is not called in the IPC context, the PID of the current process is returned.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9191,7 +9225,7 @@ class Stub extends rpc.RemoteObject {
 
 static getCallingUid(): number
 
-Obtains the UID of the caller. This API is a static method, which is invoked by the **RemoteObject** object in the **onRemoteRequest** method. If this method is not invoked in the IPC context (**onRemoteRequest**), the UID of the process will be returned.
+Obtains the UID of the caller. This API is a static method, which is called by the [RemoteObject](#remoteobject) object in the IPC context [onRemoteMessageRequest](#onremotemessagerequest9). If the method is not called in the IPC context, the UID of the current process is returned.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9496,7 +9530,7 @@ class Stub extends rpc.RemoteObject {
 
 static restoreCallingIdentity(identity: string): void
 
-Restores the UID and PID of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required.
+Restores the UID and PID of the remote user. This API is a static method. It is usually called after **resetCallingIdentity**, and the UID and PID of the remote user returned by **resetCallingIdentity** are required. This API is supported only in the IPC context [onRemoteMessageRequest](#onremotemessagerequest9); otherwise, it returns directly.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9585,6 +9619,8 @@ class Stub extends rpc.RemoteObject {
 ## RemoteObject
 
 Provides methods to implement **RemoteObject**. The service provider must inherit from this class.
+
+**System capability**: SystemCapability.Communication.IPC.Core
 
 ### constructor
 
@@ -9680,7 +9716,7 @@ try {
 
 sendMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): Promise&lt;RequestResult&gt;
 
-Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendMessageRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageSequence** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendMessageRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9757,7 +9793,7 @@ try {
 
 sendRequest(code: number, data: MessageParcel, reply: MessageParcel, options: MessageOption): Promise&lt;SendRequestResult&gt;
 
-Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information.
+Sends a **MessageParcel** message to the remote process in synchronous or asynchronous mode. If asynchronous mode is set in **options**, a promise will be fulfilled immediately and the reply message is empty. The specific reply needs to be obtained from the callback on the service side. If synchronous mode is set in **options**, a promise will be fulfilled when the response to **sendRequest** is returned, and the reply message contains the returned information. This API returns the result asynchronously through a promise.
 
 > **NOTE**
 >
@@ -9843,7 +9879,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 | data          | [MessageSequence](#messagesequence9)                  | Yes  | **MessageSequence** object holding the data to send.                 |
 | reply         | [MessageSequence](#messagesequence9)                  | Yes  | **MessageSequence** object that receives the response.                         |
 | options       | [MessageOption](#messageoption)                       | Yes  | Request sending mode, which can be synchronous (default) or asynchronous.                        |
-| callback      | AsyncCallback&lt;[RequestResult](#requestresult9)&gt; | Yes  | Callback for receiving the sending result.                                        |
+| callback      | AsyncCallback&lt;[RequestResult](#requestresult9)&gt; | Yes  | Callback used to return the result. When the message is sent successfully, the data returned by the server can be read from **RequestResult**.|
 
 **Error codes**
 
@@ -9883,8 +9919,8 @@ Provides a response to **sendMessageRequest()**. The server processes the reques
 
 > **NOTE**
 >
-> - You are advised to overload the **onRemoteMessageRequest** method with the **CallingInfo** parameter to implement synchronous and asynchronous message processing.
-> - If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
+> You are advised to overload the **onRemoteMessageRequest** method with the **CallingInfo** parameter to implement synchronous and asynchronous message processing.
+> If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9996,12 +10032,12 @@ class TestRemoteObject extends rpc.RemoteObject {
 
 onRemoteMessageRequest(code: number, data: MessageSequence, reply: MessageSequence, options: MessageOption): boolean | Promise\<boolean>
 
+Called to return a response to **sendMessageRequest()**. The server processes the request synchronously or asynchronously and returns the result in this API.
+
 > **NOTE**
 >
-> - You are advised to overload **onRemoteMessageRequest** preferentially, which implements synchronous and asynchronous message processing.
-> - If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
-
-Called to return a response to **sendMessageRequest()**. The server processes the request synchronously or asynchronously and returns the result in this API.
+> You are advised to overload **onRemoteMessageRequest** preferentially, which implements synchronous and asynchronous message processing.
+> If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -10539,6 +10575,8 @@ Provides methods related to anonymous shared memory objects, including creating,
 
 The shared memory applies only to cross-process communication within the local device.
 
+**System capability**: SystemCapability.Communication.IPC.Core
+
 ### Properties
 
 **System capability**: SystemCapability.Communication.IPC.Core
@@ -10666,7 +10704,7 @@ For details about the error codes, see [RPC Error Codes](errorcode-rpc.md).
 
   | ID| Error Message|
   | -------- | -------- |
-  | 401      | Parameter error. Possible causes: <br> 1.The number of parameters is incorrect; <br> 2.The passed parameter is not an Ahmem object; <br> 3.The ashmem instance for obtaining packaging is empty. |
+  | 401      | Parameter error. Possible causes: <br> 1.The number of parameters is incorrect; <br> 2.The passed parameter is not an Ashmem object; <br> 3.The ashmem instance for obtaining packaging is empty. |
 
 **Example**
 
@@ -11161,9 +11199,9 @@ Writes data to the shared file associated with this **Ashmem** object.
 
 > **NOTE**
 >
-> - This API is supported since API version 9 and deprecated since API version 11. Use [writeDataToAshmem](#writedatatoashmem11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [writeDataToAshmem](#writedatatoashmem11) instead.
 >
-> - Before writing an **Ashmem** object, you need to call [mapReadWriteAshmem](#mapreadwriteashmem9) for mapping.
+> Before writing an **Ashmem** object, you need to call [mapReadWriteAshmem](#mapreadwriteashmem9) for mapping.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -11212,9 +11250,9 @@ Writes data to the shared file associated with this **Ashmem** object.
 
 > **NOTE**
 >
-> - This API is supported since API version 8 and deprecated since API version 9. Use [writeDataToAshmem](#writedatatoashmem11) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [writeDataToAshmem](#writedatatoashmem11) instead.
 >
-> - Before writing an **Ashmem** object, you need to call [mapReadWriteAshmem](#mapreadwriteashmem9) for mapping.
+> Before writing an **Ashmem** object, you need to call [mapReadWriteAshmem](#mapreadwriteashmem9) for mapping.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -11320,9 +11358,9 @@ Reads data from the shared file associated with this **Ashmem** object.
 
 > **NOTE**
 >
-> - This API is supported since API version 9 and deprecated since API version 11. Use [readDataFromAshmem](#readdatafromashmem11) instead.
+> This API is supported since API version 9 and deprecated since API version 11. Use [readDataFromAshmem](#readdatafromashmem11) instead.
 >
-> - Before writing an **Ashmem** object, you need to call [mapReadWriteAshmem](#mapreadwriteashmem9) for mapping.
+> Before writing an **Ashmem** object, you need to call [mapReadWriteAshmem](#mapreadwriteashmem9) for mapping.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -11378,9 +11416,9 @@ Reads data from the shared file associated with this **Ashmem** object.
 
 > **NOTE**
 >
-> - This API is supported since API version 8 and deprecated since API version 9. Use [readDataFromAshmem](#readdatafromashmem11) instead.
+> This API is supported since API version 8 and deprecated since API version 9. Use [readDataFromAshmem](#readdatafromashmem11) instead.
 >
-> - Before writing an **Ashmem** object, you need to call [mapReadWriteAshmem](#mapreadwriteashmem9) for mapping.
+> Before writing an **Ashmem** object, you need to call [mapReadWriteAshmem](#mapreadwriteashmem9) for mapping.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 

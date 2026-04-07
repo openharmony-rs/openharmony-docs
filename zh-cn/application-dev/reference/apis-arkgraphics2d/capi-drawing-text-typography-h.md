@@ -37,6 +37,7 @@
 | [OH_Drawing_FontStyleStruct](capi-drawing-oh-drawing-fontstylestruct.md) | OH_Drawing_FontStyleStruct | 定义字体样式信息的结构体。 |
 | [OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md) | OH_Drawing_FontFeature | 描述文本字体特征结构体。 |
 | [OH_Drawing_StrutStyle](capi-drawing-oh-drawing-strutstyle.md) | OH_Drawing_StrutStyle | 用于描述支柱样式的结构体。支柱样式用于控制绘制文本时行之间的间距、基线对齐方式以及其他与行高相关的属性。 |
+| [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md) | OH_Drawing_RectSize | 定义文本矩形结构体。 |
 
 ### 枚举
 
@@ -288,6 +289,14 @@
 | [OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool value)](#oh_drawing_settypographystyleattributebool) | 设置bool类型排版样式的属性。 |
 | [OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_TypographyStyle* style, OH_Drawing_TypographyStyleAttributeId id, bool* value)](#oh_drawing_gettypographystyleattributebool) | 获取bool类型排版样式的属性。 |
 | [void OH_Drawing_DestroyPositionAndAffinity(OH_Drawing_PositionAndAffinity* positionAndAffinity)](#oh_drawing_destroypositionandaffinity) | 释放[OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)对象持有的内存。 |
+| [OH_Drawing_Range* OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer(OH_Drawing_Typography* typography, size_t glyphRangeStart, size_t glyphRangeEnd, OH_Drawing_Range** actualGlyphRange, OH_Drawing_TextEncoding textEncodingType)](#oh_drawing_typographygetcharacterrangeforglyphrangewithbuffer) | 获取指定字形范围对应的字符范围。 |
+| [OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer(OH_Drawing_Typography* typography, double dx, double dy, OH_Drawing_TextEncoding textEncodingType)](#oh_drawing_typographygetcharacterpositionatcoordinatewithbuffer) | 获取与指定坐标最接近的字符位置信息。 |
+| [OH_Drawing_Range* OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer(OH_Drawing_Typography* typography, size_t characterRangeStart, size_t characterRangeEnd, OH_Drawing_Range** actualCharacterRange, OH_Drawing_TextEncoding textEncodingType)](#oh_drawing_typographygetglyphrangeforcharacterrangewithbuffer) | 获取指定字符范围对应的字形范围。 |
+| [void OH_Drawing_ReleaseRangeBuffer(OH_Drawing_Range* range)](#oh_drawing_releaserangebuffer) | 释放[OH_Drawing_Range](capi-drawing-oh-drawing-range.md)对象占用的内存。 |
+| [OH_Drawing_RectSize OH_Drawing_TypographyLayoutWithConstraintsWithBuffer(OH_Drawing_Typography* typography, OH_Drawing_RectSize constraintsRect, OH_Drawing_Array** fitStrRangeArr, size_t* fitStrRangeArrayLen)](#oh_drawing_typographylayoutwithconstraintswithbuffer) | 在约束矩形内布局文本。 |
+| [OH_Drawing_Range* OH_Drawing_GetRangeByArrayIndex(OH_Drawing_Array* array, size_t index)](#oh_drawing_getrangebyarrayindex) | 根据数组索引获取指向OH_Drawing_Range对象的指针。 |
+| [OH_Drawing_ErrorCode OH_Drawing_ReleaseArrayBuffer(OH_Drawing_Array* array)](#oh_drawing_releasearraybuffer) | 释放[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)对象占用的内存。 |
+| [void OH_Drawing_TextStyleAddFontVariationWithNormalization(OH_Drawing_TextStyle* style, const char* axis, const float normalizedValue)](#oh_drawing_textstyleaddfontvariationwithnormalization) | 添加归一化后的可变字体属性。对应的字体文件（.ttf文件）需要支持可变调节，此接口才能生效。 |
 
 ## 枚举类型说明
 
@@ -482,9 +491,11 @@ enum OH_Drawing_EllipsisModal
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ELLIPSIS_MODAL_HEAD = 0 | 头部模式，即省略号放在文本头部。 |
-| ELLIPSIS_MODAL_MIDDLE = 1 | 中部模式，即省略号放在文本中部。 |
-| ELLIPSIS_MODAL_TAIL = 2 | 尾部模式，即省略号放在文本尾部。 |
+| ELLIPSIS_MODAL_HEAD = 0 | 头部省略号模式，即省略号位置出现在行首。该枚举值仅在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为1时有效。 |
+| ELLIPSIS_MODAL_MIDDLE = 1 | 中部省略号模式，即省略号位置出现在行的中间。该枚举值仅在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为1时有效。 |
+| ELLIPSIS_MODAL_TAIL = 2 | 尾部省略号模式，即省略号位置出现在行的尾部。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。 |
+| ELLIPSIS_MODAL_MULTILINE_HEAD = 3 | 头部省略号模式，即省略号位置出现在行首。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。<br>**起始版本：** 24 |
+| ELLIPSIS_MODAL_MULTILINE_MIDDLE = 4 | 中间省略号模式，即省略号位置出现在行的中间。该枚举值在使用[OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines)接口设置文本最大行数为任何值时均有效。<br>**起始版本：** 24 |
 
 ### OH_Drawing_BreakStrategy
 
@@ -701,6 +712,7 @@ enum OH_Drawing_TextStyleAttributeId
 | TEXT_STYLE_ATTR_D_LINE_HEIGHT_MINIMUM = 1 | 行高下限。<br>若同时开启行高缩放，当FontHeight（可由[OH_Drawing_TextStyleGetFontHeight](capi-drawing-text-typography-h.md#oh_drawing_textstylegetfontheight)接口获取）大于0时行高下限才生效。<br>取值范围为单精度浮点数非负部分，默认值为0。 |
 | TEXT_STYLE_ATTR_I_LINE_HEIGHT_STYLE = 2 | 行高缩放基数样式。具体行高缩放基数样式可见[OH_Drawing_LineHeightStyle](capi-drawing-text-typography-h.md#oh_drawing_lineheightstyle)。 |
 | TEXT_STYLE_ATTR_I_FONT_WIDTH = 3 | 字宽。 |
+| TEXT_STYLE_ATTR_I_FONT_EDGING = 4 | 字体边缘处理方式。默认为抗锯齿，具体字体边缘处理方式可见[OH_Drawing_FontEdging](capi-drawing-font-h.md#oh_drawing_fontedging)。<br/>**起始版本：** 24 |
 
 ### OH_Drawing_TypographyStyleAttributeId
 
@@ -724,6 +736,7 @@ enum OH_Drawing_TypographyStyleAttributeId
 | TYPOGRAPHY_STYLE_ATTR_B_COMPRESS_HEAD_PUNCTUATION = 5 | 设置文本排版时是否使能行首标点压缩。<br>**说明：**<br>1. 需要字体文件支持[OH_Drawing_FontFeature](capi-drawing-oh-drawing-fontfeature.md)中的"ss08"特性，否则无法压缩。<br>2. 在行首标点压缩范围内的标点才在本特性作用范围内。<br>**起始版本：** 23 |
 | TYPOGRAPHY_STYLE_ATTR_B_INCLUDE_FONT_PADDING = 6 | 设置文本排版时是否使能字体内部的padding。<br>**起始版本：** 23 |
 | TYPOGRAPHY_STYLE_ATTR_B_FALLBACK_LINE_SPACING = 7 | 设置文本排版时是否使能行间距回退机制。<br>**起始版本：** 23 |
+| TYPOGRAPHY_STYLE_ATTR_I_ELLIPSIS_MODAL = 8 | 省略号样式。具体省略号样式可见[OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)。<br>**起始版本：** 24 |
 
 ## 函数说明
 
@@ -2532,6 +2545,12 @@ void OH_Drawing_SetTypographyTextEllipsisModal(OH_Drawing_TypographyStyle* style
 **描述**
 
 设置文本的省略模式。
+
+该接口仅支持省略号样式为ELLIPSIS_MODAL_HEAD、ELLIPSIS_MODAL_MIDDLE、ELLIPSIS_MODAL_TAIL，具体可见[OH_Drawing_EllipsisModal](capi-drawing-text-typography-h.md#oh_drawing_ellipsismodal)枚举。
+
+>**说明：** 
+> 
+> 从API version 24开始，推荐使用[OH_Drawing_SetTypographyStyleAttributeInt](capi-drawing-text-typography-h.md#oh_drawing_settypographystyleattributeint)接口设置省略号样式，以支持更多省略号样式的枚举值。
 
 **系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
@@ -6112,3 +6131,206 @@ void OH_Drawing_DestroyPositionAndAffinity(OH_Drawing_PositionAndAffinity* posit
 | 参数项 | 描述 |
 | -- | -- |
 | [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)* positionAndAffinity | 指向[OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)对象的指针。 |
+
+### OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer()
+
+```c
+OH_Drawing_Range* OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer(OH_Drawing_Typography* typography, size_t glyphRangeStart, size_t glyphRangeEnd, OH_Drawing_Range** actualGlyphRange, OH_Drawing_TextEncoding textEncodingType)
+```
+
+**描述**
+
+获取指定字形范围对应的字符范围。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | 指向OH_Drawing_Typography对象的指针，由[OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography)获取。 |
+| size_t glyphRangeStart | 表示字形范围的开始位置。 |
+| size_t glyphRangeEnd | 表示字形范围的结束位置。 |
+| [OH_Drawing_Range](capi-drawing-oh-drawing-range.md)** actualGlyphRange | 返回实际的字形范围，表示指向[OH_Drawing_Range](capi-drawing-oh-drawing-range.md)的二级指针，作为出参使用。<br>当请求的字形范围只包含复杂字形序列的一部分时，该参数返回对应的完整字形范围。<br>例如：连字、组合表情等可能由多个原子字形组成，必须作为整体处理。<br>如果该参数为NULL，将不返回实际字形范围，表示调用者不关心实际字形范围信息。<br>使用后需通过[OH_Drawing_ReleaseRangeBuffer](capi-drawing-text-typography-h.md#oh_drawing_releaserangebuffer)接口释放该对象。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncodingType | 表示文本编码类型[OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding)。<br>当前仅支持UTF-8和UTF-16编码类型。<br>对于UTF-8编码，返回的字符范围表示字节范围。<br>对于UTF-16编码，返回的字符范围表示UTF-16代码单元范围。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_Range*](capi-drawing-oh-drawing-range.md) | 返回表示字符范围的[OH_Drawing_Range](capi-drawing-oh-drawing-range.md)对象指针，当不再需要该对象时，请使用[OH_Drawing_ReleaseRangeBuffer](capi-drawing-text-typography-h.md#oh_drawing_releaserangebuffer)接口释放。 |
+
+### OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer()
+
+```c
+OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetCharacterPositionAtCoordinateWithBuffer(OH_Drawing_Typography* typography, double dx, double dy, OH_Drawing_TextEncoding textEncodingType)
+```
+
+**描述**
+
+获取与指定坐标最接近的字符位置信息。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | 指向OH_Drawing_Typography对象的指针，由[OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography)获取。 |
+| double dx | 文本排版区域内的水平坐标，单位为物理像素（px）。<br>相对于文本排版区域左上角的x偏移量，向右为正方向。<br>支持浮点数，可取负值（表示在文本区域左侧）。<br>坐标超出文本区域范围时，将返回最近的字符位置。可通过触摸事件或点击事件获取。 |
+| double dy | 文本排版区域内的垂直坐标，单位为物理像素（px）。<br>相对于文本排版区域左上角的y偏移量，向下为正方向。<br>支持浮点数，可取负值（表示在文本区域上方）。<br>坐标超出文本区域范围时，将返回最近的字符位置。可通过触摸事件或点击事件获取。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncodingType | 表示文本编码类型[OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding)。<br>当前仅支持UTF-8和UTF-16编码类型。<br>对于UTF-8编码，返回的位置表示字节偏移量；对于UTF-16编码，返回的位置表示UTF-16代码单元偏移量。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_PositionAndAffinity*](capi-drawing-oh-drawing-positionandaffinity.md) | 返回坐标处的字符索引位置和亲和性，返回类型为[OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md)结构体。<br>当不再需要该对象时，请使用[OH_Drawing_DestroyPositionAndAffinity](capi-drawing-text-typography-h.md#oh_drawing_destroypositionandaffinity)接口释放。 |
+
+### OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer()
+
+```c
+OH_Drawing_Range* OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer(OH_Drawing_Typography* typography, size_t characterRangeStart, size_t characterRangeEnd, OH_Drawing_Range** actualCharacterRange, OH_Drawing_TextEncoding textEncodingType)
+```
+
+**描述**
+
+获取指定字符范围对应的字形范围。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | 指向OH_Drawing_Typography对象的指针，由[OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography)获取。 |
+| size_t characterRangeStart | 表示字符范围的开始位置。 |
+| size_t characterRangeEnd | 表示字符范围的结束位置。 |
+| [OH_Drawing_Range](capi-drawing-oh-drawing-range.md)** actualCharacterRange | 返回实际的字符范围，表示指向[OH_Drawing_Range](capi-drawing-oh-drawing-range.md)的二级指针，作为出参使用。<br>当请求的字符范围只包含组合字符序列的一部分时，该参数返回对应的完整字符范围。<br>例如：基础字符加变音符号的组合字符，必须作为整体处理。<br>如果该参数为NULL，将不返回实际字符范围，表示调用者不关心实际字符范围信息。<br>使用后需通过[OH_Drawing_ReleaseRangeBuffer](capi-drawing-text-typography-h.md#oh_drawing_releaserangebuffer)接口释放该对象。 |
+| [OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding) textEncodingType | 表示文本编码类型[OH_Drawing_TextEncoding](capi-drawing-types-h.md#oh_drawing_textencoding)。<br>当前仅支持UTF-8和UTF-16编码类型。<br>对于UTF-8编码，输入字符范围应解释为字节范围；对于UTF-16编码，输入字符范围应解释为UTF-16代码单元范围。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_Range*](capi-drawing-oh-drawing-range.md) | 返回表示字形范围的[OH_Drawing_Range](capi-drawing-oh-drawing-range.md)对象指针，当不再需要该对象时，请使用[OH_Drawing_ReleaseRangeBuffer](capi-drawing-text-typography-h.md#oh_drawing_releaserangebuffer)接口释放。 |
+
+### OH_Drawing_ReleaseRangeBuffer()
+
+```c
+void OH_Drawing_ReleaseRangeBuffer(OH_Drawing_Range* range)
+```
+
+**描述**
+
+释放[OH_Drawing_Range](capi-drawing-oh-drawing-range.md)对象占用的内存。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Range](capi-drawing-oh-drawing-range.md)* range | 表示指向[OH_Drawing_Range](capi-drawing-oh-drawing-range.md)对象的指针。 |
+
+### OH_Drawing_TypographyLayoutWithConstraintsWithBuffer()
+
+```c
+OH_Drawing_RectSize OH_Drawing_TypographyLayoutWithConstraintsWithBuffer(OH_Drawing_Typography* typography, OH_Drawing_RectSize constraintsRect, OH_Drawing_Array** fitStrRangeArr, size_t* fitStrRangeArrayLen)
+```
+
+**描述**
+
+在约束矩形内布局文本。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)* typography | 指向文本对象[OH_Drawing_Typography](capi-drawing-oh-drawing-typography.md)的指针，由[OH_Drawing_CreateTypography](capi-drawing-text-typography-h.md#oh_drawing_createtypography)获取。 |
+| [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md) constraintsRect | 约束布局的高度和宽度。 |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)** fitStrRangeArr | 作为出参，包含实际容纳的段落文本的字符范围。指向数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。<br>通过[OH_Drawing_ReleaseArrayBuffer](capi-drawing-text-typography-h.md#oh_drawing_releasearraybuffer)释放内存。 |
+| size_t* fitStrRangeArrayLen | 作为出参，容纳的字符串数组的大小。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_RectSize](capi-drawing-oh-drawing-rectsize.md) | 返回OH_Drawing_RectSize对象，表示段落文本的实际矩形。 |
+
+### OH_Drawing_GetRangeByArrayIndex()
+
+```c
+OH_Drawing_Range* OH_Drawing_GetRangeByArrayIndex(OH_Drawing_Array* array, size_t index)
+```
+
+**描述**
+
+根据数组索引获取指向OH_Drawing_Range对象的指针。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* array | 指向数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。 |
+| size_t index | 目标[OH_Drawing_Range](capi-drawing-oh-drawing-range.md)对象在数组中的索引。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_Range*](capi-drawing-oh-drawing-range.md) | 返回指向OH_Drawing_Range对象的指针。 |
+
+### OH_Drawing_ReleaseArrayBuffer()
+
+```c
+OH_Drawing_ErrorCode OH_Drawing_ReleaseArrayBuffer(OH_Drawing_Array* array)
+```
+
+**描述**
+
+释放[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)对象占用的内存。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_Array](capi-drawing-oh-drawing-array.md)* array | 指向数组对象[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)的指针。<br>支持的数组类型：<br>字体全名数组，通过[OH_Drawing_GetSystemFontFullNamesByType](capi-drawing-text-font-descriptor-h.md#oh_drawing_getsystemfontfullnamesbytype)获取。<br>文本行数组，通过[OH_Drawing_TypographyGetTextLines](capi-drawing-text-line-h.md#oh_drawing_typographygettextlines)获取。<br>字符串索引数组，通过[OH_Drawing_GetRunStringIndices](capi-drawing-text-run-h.md#oh_drawing_getrunstringindices)获取。<br>矩形数组，通过[OH_Drawing_RectCreateArray](capi-drawing-rect-h.md#oh_drawing_rectcreatearray)获取。<br>字体描述符数组，通过[OH_Drawing_GetFontFullDescriptorsFromStream](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorsfromstream)或[OH_Drawing_GetFontFullDescriptorsFromPath](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorsfrompath)获取。<br>文本范围数组，通过[OH_Drawing_TypographyLayoutWithConstraintsWithBuffer](capi-drawing-text-typography-h.md#oh_drawing_typographylayoutwithconstraintswithbuffer)获取。 |
+
+**返回：**
+
+| 类型 | 说明 |
+| -- | -- |
+| [OH_Drawing_ErrorCode](capi-drawing-error-code-h.md#oh_drawing_errorcode) | 函数执行结果。<br>返回OH_DRAWING_SUCCESS表示操作成功。<br>返回OH_DRAWING_ERROR_INCORRECT_PARAMETER表示array为空指针或类型不支持。 |
+
+### OH_Drawing_TextStyleAddFontVariationWithNormalization()
+
+```c
+void OH_Drawing_TextStyleAddFontVariationWithNormalization(OH_Drawing_TextStyle* style, const char* axis, const float normalizedValue)
+```
+
+**描述**
+
+添加归一化后的可变字体属性。对应的字体文件（.ttf文件）需要支持可变调节，此接口才能生效。
+
+**起始版本：** 24
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md)* style | 指向OH_Drawing_TextStyle对象的指针，由[OH_Drawing_CreateTextStyle](capi-drawing-text-typography-h.md#oh_drawing_createtextstyle)获取。 |
+| const char* axis | 可变字体属性键值对中的键。 |
+| const float normalizedValue | 设置的可变字体属性键值对的值。归一化取值范围为[-1,1]，映射字体文件中配置的最小值到最大值范围，0表示字体文件中配置的默认值。 |

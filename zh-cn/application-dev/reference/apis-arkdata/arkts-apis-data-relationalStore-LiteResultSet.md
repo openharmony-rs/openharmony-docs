@@ -52,7 +52,7 @@ getColumnNames(): Array\<string>
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -106,7 +106,7 @@ getColumnIndex(columnName: string): number
 | 14800011  | The current operation failed because the database is corrupted. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -163,7 +163,7 @@ getColumnName(columnIndex: number): string
 | 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -221,7 +221,7 @@ getColumnType(columnIdentifier: number | string): Promise\<ColumnType>
 | 14800013     | Column index is out of bounds.                                        |
 | 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
-| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
+| 14800021     | SQLite: Generic error. |
 | 14800026     | SQLite: The database is out of memory.                       |
 | 14800028     | SQLite: Some kind of disk I/O error occurred.                |
 | 14800030     | SQLite: Unable to open the database file.                    |
@@ -287,7 +287,7 @@ getColumnTypeSync(columnIdentifier: number | string): ColumnType
 | 14800013     | Column index is out of bounds.                                        |
 | 14800014     | The target instance is already closed.                                              |
 | 14800019     | The SQL must be a query statement.                           |
-| 14800021     | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist.                                     |
+| 14800021     | SQLite: Generic error. |
 | 14800026     | SQLite: The database is out of memory.                       |
 | 14800028     | SQLite: Some kind of disk I/O error occurred.                |
 | 14800030     | SQLite: Unable to open the database file.                    |
@@ -346,7 +346,7 @@ goToNextRow(): boolean
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -765,7 +765,7 @@ getRow(): ValuesBucket
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -815,7 +815,7 @@ getCurrentRowData(): RowData
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -873,7 +873,7 @@ getRows(maxCount: number, position?: number): Promise<Array\<ValuesBucket>>
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -948,7 +948,7 @@ getRowsData(maxCount: number, position?: number): Promise\<RowsData>
 | 14800012  | ResultSet is empty or pointer index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |
@@ -1032,7 +1032,7 @@ isColumnNull(columnIndex: number): boolean
 | 14800013  | Column index is out of bounds. |
 | 14800014  | The target instance is already closed. |
 | 14800019  | The SQL must be a query statement. |
-| 14800021  | SQLite: Generic error. Possible causes: Insert failed or the updated data does not exist. |
+| 14800021  | SQLite: Generic error. |
 | 14800026  | SQLite: The database is out of memory. |
 | 14800028  | SQLite: Some kind of disk I/O error occurred. |
 | 14800030  | SQLite: Unable to open the database file. |

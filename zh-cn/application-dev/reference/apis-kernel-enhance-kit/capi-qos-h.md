@@ -26,8 +26,8 @@
 
 | 名称 | 描述                                      |
 | -- |-----------------------------------------|
-| [OH_QoS_GewuCreateSessionResult](capi-qos-oh-qos-gewucreatesessionresult.md) | 创建出来的会话句柄                               |
-| [OH_QoS_GewuSubmitRequestResult](capi-qos-oh-qos-gewusubmitrequestresult.md) | 错误码<br>-  创建会话成功返回OH_QOS_GEWU_OK。<br>-  由于没有足够的内存而创建会话失败返回OH_QOS_GEWU_NOMEM。 |
+| [OH_QoS_GewuCreateSessionResult](capi-qos-oh-qos-gewucreatesessionresult.md) | 格物创建会话的返回结果                               |
+| [OH_QoS_GewuSubmitRequestResult](capi-qos-oh-qos-gewusubmitrequestresult.md) | 格物提交请求的返回结果 |
 
 ### 枚举
 
@@ -60,8 +60,8 @@
 
 | 名称                 | 描述   |
 |--------------------|------|
-| OH_QoS_GewuSession | 会话句柄 |
-| OH_QoS_GewuRequest | 请求句柄 |
+| OH_QoS_GewuSession | 会话句柄。<br>**起始版本：** 20  |
+| OH_QoS_GewuRequest | 请求句柄。<br>**起始版本：** 20 |
 
 ## 枚举类型说明
 

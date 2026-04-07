@@ -36,7 +36,7 @@ setConfigurationString(configName: string, value: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -83,7 +83,7 @@ getConfigurationString(configName: string): string
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -125,7 +125,7 @@ setConfigurationByteArray(configName: string, value: Uint8Array): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -175,7 +175,7 @@ getConfigurationByteArray(configName: string): Uint8Array
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -342,7 +342,7 @@ processKeySystemResponse(response: Uint8Array): Promise<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -425,7 +425,7 @@ on(type: 'keySystemRequired', callback: (eventInfo: EventInfo) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -462,7 +462,7 @@ off(type: 'keySystemRequired', callback?: (eventInfo: EventInfo) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -501,7 +501,7 @@ createMediaKeySession(level: ContentProtectionLevel): MediaKeySession
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -630,7 +630,7 @@ getOfflineMediaKeyStatus(mediaKeyId: Uint8Array): OfflineMediaKeyStatus
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
@@ -673,7 +673,7 @@ clearOfflineMediaKeys(mediaKeyId: Uint8Array): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[DRM错误码](errorcode-drm.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[DRM错误码](errorcode-drm.md)。
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |

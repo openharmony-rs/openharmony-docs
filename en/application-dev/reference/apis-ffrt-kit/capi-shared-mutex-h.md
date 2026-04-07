@@ -49,13 +49,12 @@ Initializes a read-write lock.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [ffrt_rwlock_t](capi-ffrt-ffrt-rwlock-t.md)* rwlock | Pointer to the read-write lock.|
-| [const ffrt_rwlockattr_t](capi-ffrt-ffrt-rwlockattr-t.md)* attr | Pointer to the read-write lock attribute.|
+| [const ffrt_rwlockattr_t](capi-ffrt-ffrt-rwlockattr-t.md)* attr | Pointer to the **rwlock** property. Only the default value (null) is supported.|
 
 **Returns**
 
@@ -74,7 +73,6 @@ FFRT_C_API int ffrt_rwlock_wrlock(ffrt_rwlock_t* rwlock)
 Obtains a write lock.
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -100,7 +98,6 @@ Attempts to obtain a write lock.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -124,7 +121,6 @@ FFRT_C_API int ffrt_rwlock_rdlock(ffrt_rwlock_t* rwlock)
 Obtains a read lock.
 
 **Since**: 18
-
 
 **Parameters**
 
@@ -150,7 +146,6 @@ Attempts to obtain a read lock.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -175,7 +170,6 @@ Releases the read-write lock.
 
 **Since**: 18
 
-
 **Parameters**
 
 | Name| Description|
@@ -199,7 +193,6 @@ FFRT_C_API int ffrt_rwlock_destroy(ffrt_rwlock_t* rwlock)
 Destroys the read-write lock.
 
 **Since**: 18
-
 
 **Parameters**
 

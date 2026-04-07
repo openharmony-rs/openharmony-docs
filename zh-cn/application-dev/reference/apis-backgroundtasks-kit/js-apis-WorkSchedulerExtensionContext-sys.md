@@ -1,4 +1,4 @@
-# WorkSchedulerExtensionContext (系统接口)
+# WorkSchedulerExtensionContext（系统接口）
 
 <!--Kit: Background Tasks Kit-->
 <!--Subsystem: ResourceSchedule-->
@@ -71,7 +71,6 @@ startServiceExtensionAbility(want: Want): Promise\<void>
 | 16000011 | The context does not exist.        |
 | 16000012 | The application is controlled.        |
 | 16000013 | The application is controlled by EDM.       |
-| 16000019 | Can not match any component. |
 | 16000050 | Internal error. |
 | 16200001 | The caller has been released. |
 

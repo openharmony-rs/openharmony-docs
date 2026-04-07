@@ -38,6 +38,7 @@ setValue(admin: Want, item: string, value: string): void
 
 **参数：**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
@@ -150,7 +151,7 @@ setHomeWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| fd     | number                                                  | 是   | 需要设置为桌面壁纸图片的文件描述符，可以通过file.fs的[openSync](../apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口获取应用沙箱目录下的图片文件描述符。壁纸图片大小不能超过100MB。 |
+| fd     | number                                                  | 是   | 需要设置为桌面壁纸图片的文件描述符，可以通过file.fs的[openSync](../apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口获取应用沙箱目录下的图片文件描述符。壁纸图片大小不能超过100MB。 |
 
 **返回值：**
 
@@ -215,7 +216,7 @@ setUnlockWallpaper(admin: Want, fd: number): Promise&lt;void&gt;
 | 参数名 | 类型                                                    | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
-| fd     | number                                                  | 是   | 需要设置为锁屏壁纸图片的文件描述符，可以通过file.fs的[openSync](../apis-core-file-kit/js-apis-file-fs.md#fsopensync)接口获取应用沙箱目录下的图片文件描述符。壁纸图片大小不能超过100MB。 |
+| fd     | number                                                  | 是   | 需要设置为锁屏壁纸图片的文件描述符，可以通过file.fs的[openSync](../apis-core-file-kit/js-apis-file-fs.md#fileioopensync)接口获取应用沙箱目录下的图片文件描述符。壁纸图片大小不能超过100MB。 |
 
 **返回值：**
 
@@ -261,3 +262,364 @@ deviceSettings.setUnlockWallpaper(wantTemp, fd).then(() => {
   console.error(`Failed to set lock wallpaper. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+## deviceSettings.setValueForAccount<sup>24+</sup>
+
+setValueForAccount(admin: Want, item: SettingsItem, accountId: number, value: string): void
+
+设置指定用户的设备设置策略。该接口可以设置指定用户在设置应用中的某个参数，比如设置用户100的设备名称等。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| item   | [SettingsItem](#settingsitem24)                                                  | 是   | 设备设置策略类型。|
+| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。                       |
+| value  | string                                                  | 是   | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，value为设备名称的字符串。 字符串长度范围：大于等于1，小于等于100。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，value为三键导航的开关状态，'0'表示三键导航已开启，'1'表示三键导航已关闭。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { deviceSettings } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 需根据实际情况进行替换
+  let accountId = 100;
+  let deviceName: string = "deviceName"
+  deviceSettings.setValueForAccount(wantTemp, deviceSettings.SettingsItem.DEVICE_NAME, accountId, deviceName);
+  console.info('Succeeded in setting device name.');
+} catch (err) {
+  console.error(`Failed to set device name. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## deviceSettings.getValueForAccount<sup>24+</sup>
+
+getValueForAccount(admin: Want, item: SettingsItem, accountId: number): string
+
+获取指定用户的设备设置策略。该接口可以获取指定用户在设置应用中的某个参数，比如获取用户100的设备名称等。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| item   | [SettingsItem](#settingsitem24)                         | 是   | 设备设置策略类型。|
+| accountId | number                                                 | 是   | 用户ID，取值范围：大于等于0。<br/>accountId可以通过[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9)等接口来获取。  |
+
+**返回值：**
+
+| 类型   | 说明                                                         |
+| ------ | ------------------------------------------------------------ |
+| string | 策略类型值。<br/>当item为[SettingsItem.DEVICE_NAME](#settingsitem24)时，返回设备名称。 <br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，返回指定用户的三键导航的开关状态。<br/>当item为[SettingsItem.FLOATING_NAVIGATION](#settingsitem24)时，该接口在该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.  |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { deviceSettings } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  // 需根据实际情况进行替换
+  let accountId = 100;
+  let result: string = deviceSettings.getValueForAccount(wantTemp, deviceSettings.SettingsItem.DEVICE_NAME, accountId);
+  console.info(`Succeeded in getting device name, result : ${result}`);
+} catch (err) {
+  console.error(`Failed to get device name. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## deviceSettings.addHiddenSettingsMenu<sup>24+</sup>
+
+addHiddenSettingsMenu(admin: Want, menusToHidden: Array\<SettingsMenu>): void
+
+添加设置项至当前用户下的隐藏设置项列表。添加至隐藏设置项列表的设置项在当前用户的设置菜单中会被隐藏，隐藏后不可以在设置的搜索中搜索到。如果通过某种方式搜索到该设置项，点击后也无法打开。调用接口后即刻生效，无需重启设置应用。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| menusToHidden | Array\<[SettingsMenu](#settingsmenu24)>          | 是   | 隐藏的设置项列表。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.  |
+| 9200016  | Service timeout. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { deviceSettings } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let menusToHidden: Array<deviceSettings.SettingsMenu> = [
+  // 需根据实际情况进行替换或增加
+  deviceSettings.SettingsMenu.ACCOUNT_ID,
+  deviceSettings.SettingsMenu.WIFI,
+]
+
+try {
+  deviceSettings.addHiddenSettingsMenu(wantTemp, menusToHidden);
+  console.info('Succeeded in adding hidden settings menu.');
+} catch (err) {
+  console.error(`Failed to add hidden settings menu. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## deviceSettings.removeHiddenSettingsMenu<sup>24+</sup>
+
+removeHiddenSettingsMenu(admin: Want, menusToHidden: Array\<SettingsMenu>): void
+
+将设置项从当前用户下的隐藏设置项列表中移除。隐藏设置项列表中的设置项在当前用户的设置菜单中会被隐藏，隐藏后不可以在设置的搜索中搜索到，如果通过某种方式搜索到该设置项，点击后也无法打开。若移除后剩余的隐藏设置项列表为空，则设置项会全部显示。调用接口后即刻生效，无需重启设置应用。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+| menusToHidden | Array\<[SettingsMenu](#settingsmenu24)>          | 是   | 隐藏的设置项列表。|
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 9200012  | Parameter verification failed.  |
+| 9200016  | Service timeout. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { deviceSettings } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+let menusToHidden: Array<deviceSettings.SettingsMenu> = [
+  // 需根据实际情况进行替换或增加
+  deviceSettings.SettingsMenu.ACCOUNT_ID,
+  deviceSettings.SettingsMenu.WIFI,
+]
+
+try {
+  deviceSettings.removeHiddenSettingsMenu(wantTemp, menusToHidden);
+  console.info('Succeeded in removing hidden settings menu.');
+} catch (err) {
+  console.error(`Failed to remove hidden settings menu. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## deviceSettings.getHiddenSettingsMenu<sup>24+</sup>
+
+getHiddenSettingsMenu(admin: Want): Array\<SettingsMenu>
+
+获取配置在当前用户下被隐藏的设置项列表。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_SETTINGS
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**设备行为差异：** 该接口在Phone和Tablet设备中可正常调用，在其他设备中返回801错误码。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型                                                    | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                 |
+| ------------------------------------------------------------ | -------------------- |
+| Array\<[SettingsMenu](#settingsmenu24)> | 隐藏的设置项列表。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[企业设备管理错误码](errorcode-enterpriseDeviceManager.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 9200001  | The application is not an administrator application of the device. |
+| 9200002  | The administrator application does not have permission to manage the device. |
+| 201      | Permission verification failed. The application does not have the permission required to call the API. |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities. |
+
+**示例：**
+
+```ts
+import { deviceSettings } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+
+try {
+  const rawList: Array<number> = deviceSettings.getHiddenSettingsMenu(wantTemp) as Array<number>;
+  for (const item of rawList) {
+      const menu: deviceSettings.SettingsMenu = item as deviceSettings.SettingsMenu;
+      console.info(`Valid SettingsMenu item: ${item} -> ${menu}`);
+  }
+  console.info('Succeeded in getting hidden settings menu.');
+} catch (err) {
+  console.error(`Failed to get hidden settings menu. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+## SettingsItem<sup>24+</sup>
+
+设置的策略类型。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+
+| 名称 | 值   | 说明           |
+| ---- | ---- | -------------- |
+| DEVICE_NAME   | 0    | 设备名称。 |
+| FLOATING_NAVIGATION<sup>24+</sup>   | 1   | 三键导航。 |
+
+## SettingsMenu<sup>24+</sup>
+
+设置项列表。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称   | 值 | 说明         |
+| ------ | ------ | ----------- |
+| ACCOUNT_ID                  | 0      | 账号。 |
+| WIFI                        | 1      | WLAN。 |
+| WIFI_PROXY_SETTINGS         | 2      | WLAN 代理。 |
+| WIFI_IP_SETTINGS            | 3      | WLAN IP 。 |
+| BLUETOOTH                   | 4      | 星闪和蓝牙/蓝牙。 |
+| NETWORK                     | 5      | 网络。 |
+| MOBILE_NETWORK              | 6      | 移动网络。 |
+| SUPER_DEVICE                | 7      | 多设备协同-超级终端。 |
+| MORE_CONNECTIVITY_OPTIONS   | 8      | 多设备协同。 |
+| HOME_SCREEN_STYLE           | 9      | 桌面和个性化。 |
+| DISPLAY_BRIGHTNESS          | 10     | 显示和亮度。 |
+| SOUND_VIBRATION             | 11     | 声音和振动。 |
+| NOTIFICATIONS               | 12     | 通知和状态栏。 |
+| BIOMETRICS_PASSWORD         | 13     | 生物识别和密码。 |
+| APPS_AND_SERVICES           | 14     | 应用和元服务。 |
+| BATTERY                     | 15     | 电池。 |
+| STORAGE                     | 16     | 存储。 |
+| PRIVACY_AND_SECURITY        | 17     | 隐私和安全。 |
+| DIGITAL_BALANCE             | 18     | 健康使用设备。 |
+| SMART_ASSISTANT             | 19     | 智能助手。 |
+| ACCESSIBILITY               | 20     | 关怀和无障碍。 |
+| SYSTEM                      | 21     | 系统。 |
+| ABOUT_DEVICE                | 22     | 关于本机。 |
+| SYSTEM_NAVIGATION           | 23     | 系统-系统导航。 |
+| LANGUAGE_REGION             | 24     | 系统-语言和地区。 |
+| INPUT_METHODS               | 25     | 系统-输入法。 |
+| DATE_TIME                   | 26     | 系统-日期和时间。 |
+| DATA_CLONE                  | 27     | 系统-数据克隆。 |
+| BACKUP_SETTINGS             | 28     | 系统-备份和恢复。 |
+| RESET                       | 29     | 系统-重置。 |
+| SUPERHUB                    | 30     | 系统-中转站。 |
+| USER_EXPERIENCE             | 31     | 系统-用户体验改进计划。 |
+| SCREEN_CAST                 | 32     | 多设备协同-无线投屏。 |
+| PRINTERS_SCANNERS           | 33     | 打印机和扫描仪。 |
+| MOBILE_DATA                 | 34     | 移动网络-移动数据。 |
+| PERSONAL_HOTSPOT            | 35     | 移动网络-个人热点。 |
+| SIM_MANAGEMENT              | 36     | 移动网络-SIM卡管理。 |
+| AIRPLANE_MODE               | 37     | 移动网络-飞行模式。 |
+| MANAGE_DATA_USAGE           | 38     | 移动网络-流量管理。 |
+| VPN_SETTINGS                | 39     | 移动网络-VPN。 |
+| TEXT_DISPLAY_SIZE           | 40     | 显示和亮度-字体大小和界面缩放。 |
+| APP_DUPLICATOR              | 41     | 系统-应用分身。 |
+| SEARCH                      | 42     | 搜索。 |

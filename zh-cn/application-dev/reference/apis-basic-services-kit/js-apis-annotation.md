@@ -94,7 +94,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
   ```typescript
   import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicServicesKit';
-  import wifiManager from '@ohos.wifiManager';
+  import { wifiManager } from '@kit.ConnectivityKit';
   wifiManager.startScan();  // 该接口起始版本为21，直接调用会生成兼容性告警。
   // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
 
@@ -125,7 +125,7 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 
   ```typescript
   import { Available } from '@kit.BasicServicesKit';
-  import wifiManager from '@ohos.wifiManager';
+  import { wifiManager } from '@kit.ConnectivityKit';
   wifiManager.startScan();  // 该接口起始版本为21，直接调用会生成兼容性告警。
   // The 'startScan' API is supported since SDK version 21. However, the current compatible SDK version is 20.
 
@@ -148,3 +148,4 @@ import { Available, SuppressWarnings, SuppressWarningsType } from '@kit.BasicSer
 | 名称                   | 值   | 说明                           |
 | ---------------------- | ---- | ------------------------------ |
 | COMPATIBILITY     | compatibility    | 支持消除兼容性告警。 |
+| SYSCAP     | syscap    | 支持消除多设备告警。 |

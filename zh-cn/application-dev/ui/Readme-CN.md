@@ -10,6 +10,7 @@
   - [UI开发（ArkTS声明式开发范式）概述](arkts-ui-development-overview.md)
   - 学习UI范式基本语法<!--arkts-ui-paradigm-basic-syntax-->
     - [基本语法概述](state-management/arkts-basic-syntax-overview.md)
+    - [UI装饰器总览](state-management/arkts-decorator-overview.md)
     - [声明式UI描述](state-management/arkts-declarative-ui-description.md)
     - 自定义组件<!--arkts-custom-components-->
       - [创建自定义组件](state-management/arkts-create-custom-components.md)
@@ -23,8 +24,6 @@
       - 自定义组件冻结<!--arkts-component-freeze-->
         - [自定义组件冻结（V1）](state-management/arkts-custom-components-freeze.md)
         - [自定义组件冻结（V2）](state-management/arkts-custom-components-freezeV2.md)
-    - UI装饰器<!--arkts-ui-decorator-->
-      - [UI装饰器总览](state-management/arkts-decorator-overview.md)
     - 组件扩展<!--arkts-extend-components-->
       - [组件扩展概述](state-management/arkts-extend-components-overview.md)
       - [\@Builder装饰器：自定义构建函数](state-management/arkts-builder.md)
@@ -65,7 +64,7 @@
         - [\@Local装饰器：组件内部状态](state-management/arkts-new-local.md)
         - [\@Param装饰器：组件外部输入](state-management/arkts-new-param.md)
         - [\@Once装饰器：初始化同步一次](state-management/arkts-new-once.md)
-        - [\@Event装饰器：组件输出](state-management/arkts-new-event.md)
+        - [\@Event装饰器：规范组件输出](state-management/arkts-new-event.md)
         - [\@Provider和\@Consumer装饰器：跨组件层级双向同步](state-management/arkts-new-provider-and-consumer.md)
       - 管理数据对象的状态<!--arkts-v2-manage-data-object-state-->
         - [\@ObservedV2装饰器和\@Trace装饰器：类属性变化观测](state-management/arkts-new-observedV2-and-trace.md)
@@ -109,7 +108,6 @@
     - [ForEach：循环渲染](rendering-control/arkts-rendering-control-foreach.md)
     - [LazyForEach：数据懒加载](rendering-control/arkts-rendering-control-lazyforeach.md)
     - [Repeat：可复用的循环渲染](rendering-control/arkts-new-rendering-control-repeat.md)
-    - [LazyForEach迁移Repeat指南](rendering-control/arkts-lazyforeach-repeat-migration-guide.md)
     - [ContentSlot：混合开发](rendering-control/arkts-rendering-control-contentslot.md)
   - 学习响应式环境变量<!--arkts-env-property-->
     - [\@Env：环境变量](arkts-env-system-property.md)
@@ -132,6 +130,7 @@
       - [弹性布局 (Flex)](arkts-layout-development-flex-layout.md)
       - [相对布局 (RelativeContainer)](arkts-layout-development-relative-layout.md)
       - [栅格布局 (GridRow/GridCol)](arkts-layout-development-grid-layout.md)
+      - [动态布局 (DynamicLayout)](arkts-layout-development-dynamiclayout.md)
       - [选项卡 (Tabs)](arkts-navigation-tabs.md)<!--RP1--><!--RP1End-->
   - 列表与网格<!--arkts-list-and-grid-->
     - [列表与网格概述](arkts-list-grid-development-overview.md)
@@ -254,8 +253,8 @@
       - [属性修改器 (AttributeModifier)](arkts-user-defined-extension-attributeModifier.md)
       - [属性更新器 (AttributeUpdater)](arkts-user-defined-extension-attributeUpdater.md)
   - [UI国际化](arkts-internationalization.md)
-  - 无障碍与适老化<!--arkts-support-accessibility-friendliness-->
-    - [支持无障碍](arkts-universal-attributes-accessibility.md)
+  - 无障碍与适老化<!--arkts-support-accessibility-friendliness--><!--RP2-->
+    - [支持无障碍](arkts-universal-attributes-accessibility.md)<!--RP2End-->
     - [支持适老化](arkui-support-for-aging-adaptation.md)
   - 主题设置<!--arkts-theme-->
     - [应用深浅色适配](ui-dark-light-color-adaptation.md)
@@ -276,28 +275,41 @@
 - UI开发 (基于NDK构建UI)<!--arkts-use-ndk-->
   - [基于NDK构建UI概述](ndk-build-ui-overview.md)
   - [接入ArkTS页面](ndk-access-the-arkts-page.md)
+  - [添加事件监听](ndk-add-component-events.md)
   - 添加交互事件<!--arkts-add-event-->
-    - [监听组件事件](ndk-listen-to-component-events.md)
+    - [绑定基础输入事件](ndk-bind-input-events.md)
     - [绑定手势事件](ndk-bind-gesture-events.md)
-    - [拖拽事件](ndk-drag-event.md)
-    - [监听组件布局和绘制送显事件](ndk-inspector-component-observer.md)
-  - [使用动画](ndk-use-animation.md)
+    - [绑定拖拽事件](ndk-drag-event.md)
+  - 使用动画<!--arkts-use-animation-ndk-->
+    - [动画概述](ndk-use-animation.md)
+    - [使用动画开发指导](ndk-use-animation-scene.md)
   - 构建布局<!--arkts-build-layout-ndk-->
+    - [使用布局组件](ndk-layout-container.md)
+    - [设置通用布局属性](ndk-common-attribute-layout.md)
     - [使用列表](ndk-loading-long-list.md)
     - [使用瀑布流](ndk-waterflow.md)
+    - [使用网格](ndk-grid.md)
   - 使用文本<!--arkts-build-text-ndk-->
-      - [Text组件的文本绘制与显示](ndk-styled-string.md)
+      - [使用Text组件](ndk-use-text-component.md)
+      - [使用属性字符串的文本绘制与显示](ndk-styled-string.md)
       - [输入框文本事件监听](ndk-textarea-event.md)
+  - 使用选择类组件<!--arkts-build-picker-ndk-->
+      - [使用滑动选择器Picker](ndk-picker.md)
+  - [显示图片（Image）](ndk-image-component.md)
   - [构建弹窗](ndk-build-pop-up-window.md)
+  - [构建表单组件](ndk-build-form-components.md)
+  - 构建导航类组件<!--arkts-build-navigation-ndk-->
+    - [导航页面信息查询](ndk-navigation-query.md)
+    - [使用滑块视图容器 (Swiper)](ndk-swiper.md)
   - [构建自定义组件](ndk-build-custom-components.md)
   - [嵌入ArkTS组件](ndk-embed-arkts-components.md)
   - [构建渲染节点](ndk-embed-render-components.md)
-  - [通过XComponent接入无障碍](ndk-accessibility-xcomponent.md)
+  - [通过自绘制接入无障碍](ndk-accessibility-xcomponent.md)
   - [自定义绘制](arkts-user-defined-draw.md)
   - [查询和操作自定义节点](ndk-node-query-operate.md)
   - [通过EmbeddedComponent拉起EmbeddedUIExtensionAbility](ndk-embedded-component.md)
   - [在NDK中保证多实例场景功能正常](ndk-scope-task.md)
-  - [NDK支持多线程创建组件](ndk-build-on-multi-thread.md)
+  - [使用多线程NDK接口并行化构建UI页面](ndk-build-on-multi-thread.md)
 - UI开发 (兼容JS的类Web开发范式)<!--ui-js-dev-->
   - [UI开发 (兼容JS的类Web开发范式)概述](ui-js-overview.md)
   - 框架说明<!--js-framework-overview-->
@@ -385,9 +397,11 @@
     - [Navigation动画常见问题](arkts-navigation-animation-faq.md)
     - [自定义节点常见问题](arkts-user-defined-node-faq.md)
     - [按钮与选择组件常见问题](arkts-select-component-faq.md)
+    - [弹窗组件常见问题](arkts-popup-component-faq.md)
     - [使用文本常见问题](arkts-text-faq.md)
     - [动态属性设置常见问题](arkts-attribute-modifier-faq.md)
     - [命令式节点常见问题](arkts-arkui-frameNode-faq.md)
+    - [UI并行化常见问题](multi-thread-ui-build-faq.md)
 - [窗口管理](../windowmanager/Readme-CN.md)<!--window-manager-->
 - [屏幕管理](../displaymanager/Readme-CN.md)<!--display-manager-->
 - [ArkUI术语](arkui-glossary.md)

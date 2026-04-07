@@ -30,11 +30,15 @@ setTransform(transform?: Matrix2D): void
 
 | 参数名      | 类型  | 必填 | 说明   |
 | --------- | -------------- | ------ | ---------- |
-| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | 否  | 转换矩阵。<br>异常值undefined和null按无效值处理。<br>默认值：null |
+| transform | [Matrix2D](ts-components-canvas-matrix2d.md) | 否  | 转换矩阵。<br>异常值undefined和null按无效值不做矩阵变换处理。<br>默认值：不做矩阵变换 |
 
 ## 示例
 
 通过setTransform对当前CanvasPattern进行矩阵变换。
+
+> **说明：**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
 
 ```ts
 // xxx.ets
@@ -44,6 +48,7 @@ struct CanvasPatternPage {
   private settings: RenderingContextSettings = new RenderingContextSettings(true);
   private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
   private matrix: Matrix2D = new Matrix2D();
+  // "common/pattern.jpg"需要替换为开发者所需的图像资源文件
   private img: ImageBitmap = new ImageBitmap("common/pattern.jpg");
   private pattern: CanvasPattern | null = null;
 

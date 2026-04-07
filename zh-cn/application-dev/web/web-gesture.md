@@ -133,7 +133,7 @@ struct Index {
 
 ### 为什么Web加载后网页无法交互？
 
-网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以在Web组件中设置自定义User-Agent，例如：
+网页可能基于其他平台的User-Agent进行判断。为解决此问题，可以在[Web组件中设置自定义User-Agent](../reference/apis-arkweb/arkts-apis-webview-WebviewController.md#setcustomuseragent10)，例如：
 
 <!-- @[SetUserAgent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebGestureInteraction/entry/src/main/ets/pages/SetUserAgent.ets) -->
 

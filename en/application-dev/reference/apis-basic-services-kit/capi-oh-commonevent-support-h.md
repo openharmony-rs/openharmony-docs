@@ -13,6 +13,8 @@ Provides common event constants defined by the system.
 
 **Library**: libohcommonevent.so
 
+**File to include**: <BasicServicesKit/oh_commonevent_support.h>
+
 **System capability**: SystemCapability.Notification.CommonEvent
 
 **Since**: 12

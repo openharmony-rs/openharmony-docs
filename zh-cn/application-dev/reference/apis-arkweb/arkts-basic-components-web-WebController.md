@@ -8,13 +8,13 @@
 
 通过WebController可以控制Web组件各种行为。一个WebController对象只能控制一个Web组件，且必须在Web组件和WebController绑定后，才能调用WebController上的方法。
 
-从API version 9开始不再维护，建议使用[WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md)代替。
-
 > **说明：**
 >
 > - 该组件首批接口从API version 8开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
 >
 > - 本Class首批接口从API version 8开始支持。
+>
+> - 该组件接口从API version 9开始废弃，建议使用[WebviewController<sup>9+</sup>](./arkts-apis-webview-WebviewController.md)代替。
 >
 > - 示例效果请以真机运行为准。
 

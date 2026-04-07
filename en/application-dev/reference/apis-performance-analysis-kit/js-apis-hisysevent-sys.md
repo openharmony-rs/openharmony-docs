@@ -334,8 +334,8 @@ Defines arguments for an event query.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| beginTime | number | No| No| Start time (13-digit timestamp) for the event query.|
-| endTime | number | No| No| End time (13-digit timestamp) for the event query.|
+| beginTime | number | No| No| Start time of the system event to be queried. The value is a 13-digit timestamp, indicating the number of milliseconds elapsed since 00:00:00:00 on January 1, 1970.|
+| endTime | number | No| No| End time of the system event to be queried. The value is a 13-digit timestamp, indicating the number of milliseconds elapsed since 00:00:00:00 on January 1, 1970.|
 | maxEvents | number | No| No| Maximum number of events that can be queried.|
 | fromSeq<sup>10+</sup> | number | No| Yes| Start SN of the events to be queried. The default value is **-1**.|
 | toSeq<sup>10+</sup> | number | No| Yes| End SN of the system events to be queried. The default value is **-1**.|
@@ -350,7 +350,7 @@ Defines event query rules.
 | -------- | -------- | -------- | -------- | -------- |
 | domain | string | No| No| Event domain.|
 | names | string[] | No| No| Array of event names. A **QueryRule** object contains multiple system event names.|
-| condition<sup>10+</sup> | string | No| Yes| Additional event conditions. The value of this parameter is in the format of {"version":"V1","condition":{"and":[{"param":"*Parameter*","op":"*Operator*","value":"*Comparison value*"}]}}.|
+| condition<sup>10+</sup> | string | No| Yes| Additional event conditions. The value of this parameter is in the format of **{"version":"V1","condition":{"and":[{"param":"*Parameter*","op":"*Operator*","value":"*Comparison value*"}]}}**.<br>Parameter: key value of the specified event parameter.<br>Supported operators: **=**, **!=**, **<**, **<=**, **>** and **>=**.<br>Multiple conditions can be configured in the **"and"** array, and the intersection of the query results is used.|
 
 ## Querier
 
@@ -427,6 +427,7 @@ try {
   let queryRules: hiSysEvent.QueryRule[] = [{
     domain: "RELIABILITY",
     names: ["STACK"],
+    condition: '{"version":"V1","condition":{"and":[{"param":"PID","op":"=","value":487},{"param":"PROCESS_NAME","op":"=","value":"syseventservice"}]}}'
   } as hiSysEvent.QueryRule];
   let querier: hiSysEvent.Querier = {
     onQuery: (infos: hiSysEvent.SysEventInfo[]) => {

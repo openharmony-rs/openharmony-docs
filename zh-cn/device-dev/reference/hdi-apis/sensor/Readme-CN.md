@@ -1,12 +1,16 @@
 # Sensor HDI 参考
 
 - 模块
+    - [HdiSensor](_sensor_convert_hdi_sensor_v10.md)
     - [HdiSensor](_sensor_hdi_sensor_v31.md)
     - [HdiSensor](_sensor_hdi_sensor_v30.md)
     - [HdiSensor (V2_0)](_hdi_sensor_v20.md)
     - [HdiSensor (V1_1)](_hdi_sensor_v11.md)
     - [HdiSensor (V1_0)](_hdi_sensor_v10.md)
 - 头文件
+    - Convert (V1_0)
+        - [ISensorConvertInterfaces.idl](_sensor_i_sensor_convert_interfaces_8idl_v10.md)
+        - [ISensorConvertTypes.idl](_sensor_i_sensor_convert_types_8idl_v10.md)
     - HdiSensor (V3_1)
         - [ISensorInterface.idl](_sensor_i_sensor_interface_8idl_v31.md)
         - [SensorTypes.idl](_sensor_sensor_types_8idl_v31.md)
@@ -28,6 +32,10 @@
         - [ISensorInterface.idl](_i_sensor_interface_8idl_v10.md)
         - [SensorTypes.idl](_sensor_types_8idl_v10.md)
 - 结构体
+    - Convert (V1_0)
+        - [HdfDeviceStatusPolicy](_sensor_hdf_device_status_policy_v10.md)
+        - [HdfSensorData](_sensor_hdf_sensor_data_v10.md)
+        - [ISensorConvertInterfaces](_sensor_interface_i_sensor_convert_interfaces_v10.md)
     - HdiSensor (V3_1)
         - [ISensorInterface](_sensor_interface_i_sensor_interface_v31.md)
     - HdiSensor (V3_0)

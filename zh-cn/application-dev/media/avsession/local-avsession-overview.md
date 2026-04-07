@@ -38,7 +38,9 @@
 
 实际上，AVSessionManager与AVSession、AVSessionController对象不同，并不是一个具体的对象，它是媒体会话的根命名域。在实际编程过程中，可以通过如下方式引入：
 
-```ts
+<!-- @[avSession_manager_import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
+
+``` TypeScript
 import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 ```
 
@@ -50,9 +52,10 @@ import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 >
 > 以下示例代码仅展示创建AVSession对象的接口调用，应用在真正使用时，需要确保AVSession对象实例在应用后台播放业务活动期间一直存在，避免被系统回收、释放，导致后台发声时被系统管控。
  
-```ts
-import { avSession as AVSessionManager } from '@kit.AVSessionKit';
+<!-- @[avSession_manager](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/AVSession/LocalAVSession/LocalAVSessionOverview/entry/src/main/ets/pages/Index.ets) -->
 
+``` TypeScript
+import { avSession as AVSessionManager } from '@kit.AVSessionKit';
 @Entry
 @Component
 struct Index {

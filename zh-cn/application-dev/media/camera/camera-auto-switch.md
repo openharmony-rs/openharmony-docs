@@ -15,7 +15,7 @@
 > 
 > 自动切换镜头功能由系统自动完成输入设备切换，会话配置和参数接续。当系统发现镜头切换时，两颗镜头的变焦范围不一致，则会通过AutoDeviceSwitchStatus中的isDeviceCapabilityChanged字段告知应用，此时需要应用自己处理UX的变更（如变焦范围的调整，需要重新通过getZoomRatioRange接口获取数据并更新UX）。因此如相机拍照或录像等复杂场景的镜头选择，请参阅[适配不同折叠状态的摄像头变更](./camera-foldable-display.md)。
 
-详细的API说明请参考[Camera API参考](../../reference/apis-camera-kit/arkts-apis-camera.md)。
+详细的API说明请参考[@ohos.multimedia.camera (相机管理)](../../reference/apis-camera-kit/arkts-apis-camera.md)。
 
 Context获取方式请参考：[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
@@ -86,7 +86,7 @@ function enableAutoDeviceSwitch(session: camera.PhotoSession) {
 ## 监听或解监听自动切换摄像头状态
 可以通过[on('autoDeviceSwitchStatusChange')](../../reference/apis-camera-kit/arkts-apis-camera-PhotoSession.md#onautodeviceswitchstatuschange13)监听自动切换摄像头的结果。系统自动切换镜头结束后会触发该回调。
 
-自动切换摄像头期间，禁止调用任何session相关接口。
+自动切换摄像头期间，禁止调用任何[session](../../reference/apis-camera-kit/arkts-apis-camera-Session.md)相关接口。
 ```ts
 function callback(err: BusinessError, autoDeviceSwitchStatus: camera.AutoDeviceSwitchStatus): void {
   if (err !== undefined && err.code !== 0) {

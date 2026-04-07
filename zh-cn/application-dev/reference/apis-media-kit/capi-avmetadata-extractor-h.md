@@ -43,7 +43,7 @@
 | [OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extractor)](#oh_avmetadataextractor_getcustominfo) | 从媒体源中获取自定义元数据信息。该函数必须在设置资源之后使用。 |
 | [OH_AVErrCode OH_AVMetadataExtractor_SetMediaSource(OH_AVMetadataExtractor *extractor, OH_AVMediaSource *source)](#oh_avmetadataextractor_setmediasource) | 为提取器设置媒体源。 |
 | [OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)](#oh_avmetadataextractor_create) | 创建OH_AVMetadataExtractor实例。 |
-| [OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extractor, int32_t fd, int64_t offset, int64_t size)](#oh_avmetadataextractor_setfdsource) | 通过媒体文件描述设置数据源。 |
+| [OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extractor, int32_t fd, int64_t offset, int64_t size)](#oh_avmetadataextractor_setfdsource) | 通过媒体文件描述符设置数据源。 |
 | [OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extractor, OH_AVFormat* avMetadata)](#oh_avmetadataextractor_fetchmetadata) | 从媒体资源中获取元数据。<br>        此函数必须在[OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)之后调用。 |
 | [OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extractor, OH_PixelmapNative** pixelMap)](#oh_avmetadataextractor_fetchalbumcover) | 获取音频专辑封面。<br>        此函数必须在[OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)之后调用。 |
 | [OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)](#oh_avmetadataextractor_release) | 释放用于OH_AVMetadataExtractor的资源并销毁OH_AVMetadataExtractor实例。 |
@@ -223,7 +223,7 @@ OH_AVFormat *OH_AVMetadataExtractor_GetTrackDescription(OH_AVMetadataExtractor *
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | 成功时返回包含轨道描述信息的OH_AVFormat实例指针，失败时返回空指针。<br>         可能失败的原因：<br>         1、extractor为空指针。<br>         2、未设置媒体源。<br>         3、格式不支持。<br>         注意：用户需要使用[OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
+| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | 成功时返回包含轨道描述信息的OH_AVFormat实例指针，失败时返回空指针。<br>         可能失败的原因：<br>         1. extractor为空指针。<br>         2. 未设置媒体源。<br>         3. 格式不支持。<br>         注意：用户需要使用[OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
 
 ### OH_AVMetadataExtractor_GetCustomInfo()
 
@@ -247,7 +247,7 @@ OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extrac
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | 成功时返回包含自定义元数据的OH_AVFormat实例指针，失败时返回空指针。<br>         可能失败的原因：<br>         1、extractor为空指针。<br>         2、未设置媒体源。<br>         3、未找到自定义信息。<br>         注意：用户需要使用[OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
+| [OH_AVFormat *](../apis-avcodec-kit/capi-core-oh-avformat.md) | 成功时返回包含自定义元数据的OH_AVFormat实例指针，失败时返回空指针。<br>         可能失败的原因：<br>         1. extractor为空指针。<br>         2. 未设置媒体源。<br>         3. 未找到自定义信息。<br>         注意：用户需要使用[OH_AVFormat_Destroy](../apis-avcodec-kit/capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
 
 ### OH_AVMetadataExtractor_SetMediaSource()
 
@@ -302,7 +302,7 @@ OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extracto
 
 **描述**
 
-通过媒体文件描述设置数据源。
+通过媒体文件描述符设置数据源。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
@@ -348,7 +348,7 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extrac
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br>         AV_ERR_UNSUPPORTED_FORMAT：格式不支持。<br>         AV_ERR_NO_MEMORY：内部内存分配失败。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL： 输入的extractor为空指针或参数无效。<br>         AV_ERR_OPERATE_NOT_PERMIT：操作被禁止。<br>         AV_ERR_UNSUPPORTED_FORMAT：格式不支持。<br>         AV_ERR_NO_MEMORY：内部内存分配失败。<br>         AV_ERR_IO_CLEARTEXT_NOT_PERMITTED：（API version 23新增）不允许HTTP明文流量。 |
 
 ### OH_AVMetadataExtractor_FetchAlbumCover()
 

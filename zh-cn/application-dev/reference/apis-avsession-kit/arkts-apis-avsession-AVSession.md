@@ -61,7 +61,7 @@ setAVMetadata(data: AVMetadata): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -96,7 +96,7 @@ let metadata: avSession.AVMetadata = {
   nextAssetId: "121279"
 };
 currentAVSession.setAVMetadata(metadata).then(() => {
-  console.info('SetAVMetadata successfully');
+  console.info('Succeeded in setting AVMetadata.');
 }).catch((err: BusinessError) => {
   console.error(`SetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -119,7 +119,7 @@ setAVMetadata(data: AVMetadata, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -157,7 +157,7 @@ currentAVSession.setAVMetadata(metadata, (err: BusinessError) => {
   if (err) {
     console.error(`SetAVMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('SetAVMetadata successfully');
+    console.info('Succeeded in setting AVMetadata.');
   }
 });
 ```
@@ -184,7 +184,7 @@ setCallMetadata(data: CallMetadata): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -228,12 +228,12 @@ class CallManager {
         avatar: imagePixel
       };
       await this.currentAVSession?.setCallMetadata(calldata);
-      console.info('setCallMetadata successfully');
+      console.info('Succeeded in setting call metadata.');
     } catch (err) {
       if (err) {
-        console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+        console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
       } else {
-        console.error('setCallMetadata Error: ${err}')
+        console.error(`setCallMetadata Error: ${err}`)
       }
     }
   }
@@ -257,7 +257,7 @@ setCallMetadata(data: CallMetadata, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -302,9 +302,9 @@ class CallManager {
       };
       this.currentAVSession?.setCallMetadata(calldata, (err: BusinessError) => {
         if (err) {
-          console.error('setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}');
+          console.error(`setCallMetadata BusinessError: code: ${err.code}, message: ${err.message}`);
         } else {
-          console.info("setCallMetadata successfully");
+          console.info('Succeeded in setting call metadata.');
         }
       });
     }catch (syncErr) {
@@ -336,7 +336,7 @@ setAVCallState(state: AVCallState): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -354,7 +354,7 @@ let calldata: avSession.AVCallState = {
   muted: false
 };
 currentAVSession.setAVCallState(calldata).then(() => {
-  console.info('setAVCallState successfully');
+  console.info('Succeeded in setting AVCallState.');
 }).catch((err: BusinessError) => {
   console.error(`setAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -377,7 +377,7 @@ setAVCallState(state: AVCallState, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -398,7 +398,7 @@ currentAVSession.setAVCallState(avcalldata, (err: BusinessError) => {
   if (err) {
     console.error(`setAVCallState BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('setAVCallState successfully');
+    console.info('Succeeded in setting AVCallState.');
   }
 });
 ```
@@ -427,7 +427,7 @@ setAVPlaybackState(state: AVPlaybackState): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -449,7 +449,7 @@ let playbackState: avSession.AVPlaybackState = {
   isFavorite:true
 };
 currentAVSession.setAVPlaybackState(playbackState).then(() => {
-  console.info('SetAVPlaybackState successfully');
+  console.info('Succeeded in setting AVPlaybackState.');
 }).catch((err: BusinessError) => {
   console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -472,7 +472,7 @@ setAVPlaybackState(state: AVPlaybackState, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -497,7 +497,7 @@ currentAVSession.setAVPlaybackState(PlaybackState, (err: BusinessError) => {
   if (err) {
     console.error(`SetAVPlaybackState BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('SetAVPlaybackState successfully');
+    console.info('Succeeded in setting AVPlaybackState.');
   }
 });
 ```
@@ -526,7 +526,7 @@ setLaunchAbility(ability: WantAgent): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -570,7 +570,7 @@ let wantAgentInfo: wantAgent.WantAgentInfo = {
 
 wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
   currentAVSession.setLaunchAbility(agent).then(() => {
-    console.info('SetLaunchAbility successfully');
+    console.info('Succeeded in setting launch ability.');
   }).catch((err: BusinessError) => {
     console.error(`SetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
   });
@@ -594,7 +594,7 @@ setLaunchAbility(ability: WantAgent, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -641,7 +641,7 @@ wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
     if (err) {
       console.error(`SetLaunchAbility BusinessError: code: ${err.code}, message: ${err.message}`);
     } else {
-      console.info('SetLaunchAbility successfully');
+      console.info('Succeeded in setting launch ability.');
     }
   });
 });
@@ -675,7 +675,7 @@ dispatchSessionEvent(event: string, args: {[key: string]: Object}): Promise\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -710,7 +710,7 @@ struct Index {
                 let eventName = "dynamic_lyric";
                 if (currentAVSession !== undefined) {
                   (currentAVSession as avSession.AVSession).dispatchSessionEvent(eventName, {lyric : "This is lyric"}).then(() => {
-                    console.info('dispatchSessionEvent successfully');
+                    console.info('Succeeded in dispatching session event.');
                   }).catch((err: BusinessError) => {
                     console.error(`dispatchSessionEvent BusinessError: code: ${err.code}, message: ${err.message}`);
                   })
@@ -820,7 +820,7 @@ setAVQueueItems(items: Array\<AVQueueItem>): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -881,7 +881,7 @@ async function setAVQueueItems() {
     } as avSession.AVQueueItem;
     let queueItemsArray: avSession.AVQueueItem[] = [queueItem_1, queueItem_2];
     currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
-      console.info('SetAVQueueItems successfully');
+      console.info('Succeeded in setting AVQueueItems.');
     }).catch((err: BusinessError) => {
       console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
     });
@@ -910,7 +910,7 @@ setAVQueueItems(items: Array\<AVQueueItem>, callback: AsyncCallback\<void>): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -975,7 +975,7 @@ async function setAVQueueItems() {
       if (err) {
         console.error(`SetAVQueueItems BusinessError: code: ${err.code}, message: ${err.message}`);
       } else {
-        console.info('SetAVQueueItems successfully');
+        console.info('Succeeded in setting AVQueueItems.');
       }
     });
   } catch (err) {
@@ -1010,7 +1010,7 @@ setAVQueueTitle(title: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -1025,7 +1025,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 let queueTitle = 'QUEUE_TITLE';
 currentAVSession.setAVQueueTitle(queueTitle).then(() => {
-  console.info('SetAVQueueTitle successfully');
+  console.info('Succeeded in setting AVQueueTitle.');
 }).catch((err: BusinessError) => {
   console.error(`SetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -1048,7 +1048,7 @@ setAVQueueTitle(title: string, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -1066,7 +1066,7 @@ currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
   if (err) {
     console.error(`SetAVQueueTitle BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('SetAVQueueTitle successfully');
+    console.info('Succeeded in setting AVQueueTitle.');
   }
 });
 ```
@@ -1128,7 +1128,7 @@ struct Index {
                 currentAVSession = data;
                 if (currentAVSession !== undefined) {
                   (currentAVSession as avSession.AVSession).setExtras({extras : "This is custom media packet"}).then(() => {
-                      console.info('setExtras successfully');
+                      console.info('Succeeded in setting extras.');
                   }).catch((err: BusinessError) => {
                       console.error(`setExtras BusinessError: code: ${err.code}, message: ${err.message}`);
                   })
@@ -1267,7 +1267,7 @@ struct Index {
             });
             if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).sendCustomData({customData : "This is custom data"}).then(() => {
-                console.info('sendCustomData successfully');
+                console.info('Succeeded in sending custom data.');
             }).catch((err: BusinessError) => {
                 console.error(`sendCustomData BusinessError: code: ${err.code}, message: ${err.message}`);
             })
@@ -1339,7 +1339,7 @@ struct Index {
           });
           if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).enableDesktopLyric(true).then(() => {
-              console.info('enableDesktopLyric successfully');
+              console.info('Succeeded in enabling desktop lyric.');
             }).catch((err: BusinessError) => {
               console.error(`enableDesktopLyric BusinessError: code: ${err.code}, message: ${err.message}`);
             })
@@ -1413,7 +1413,7 @@ struct Index {
           });
           if (currentAVSession !== undefined) {
             (currentAVSession as avSession.AVSession).setDesktopLyricVisible(true).then(() => {
-              console.info('setDesktopLyricVisible successfully');
+              console.info('Succeeded in setting desktop lyric visible.');
             }).catch((err: BusinessError) => {
               console.error(`setDesktopLyricVisible BusinessError: code: ${err.code}, message: ${err.message}`);
             })
@@ -1686,7 +1686,7 @@ struct Index {
               isLocked: true,
             };
             (currentAVSession as avSession.AVSession).setDesktopLyricState(state).then(() => {
-              console.info('setDesktopLyricState successfully');
+              console.info('Succeeded in setting desktop lyric state.');
             }).catch((err: BusinessError) => {
               console.error(`setDesktopLyricState BusinessError: code: ${err.code}, message: ${err.message}`);
             })
@@ -1946,7 +1946,7 @@ struct Index {
             let avSessionController: avSession.AVSessionController;
             currentAVSession.getController().then((avController: avSession.AVSessionController) => {
               avSessionController = avController;
-              console.info(`GetController : SUCCESS : sessionid : ${avSessionController.sessionId}`);
+              console.info(`Succeeded in getting controller, sessionid: ${avSessionController.sessionId}`);
             }).catch((err: BusinessError) => {
               console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
             });
@@ -2010,7 +2010,7 @@ struct Index {
                 console.error(`GetController BusinessError: code: ${err.code}, message: ${err.message}`);
               } else {
                 avsessionController = avcontroller;
-                console.info(`GetController : SUCCESS : sessionid : ${avsessionController.sessionId}`);
+                console.info(`Succeeded in getting controller, sessionid: ${avsessionController.sessionId}`);
               }
             });
           } catch (err) {
@@ -2059,7 +2059,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let aVCastController: avSession.AVCastController;
 currentAVSession.getAVCastController().then((avcontroller: avSession.AVCastController) => {
   aVCastController = avcontroller;
-  console.info('getAVCastController : SUCCESS');
+  console.info('Succeeded in getting AV cast controller.');
 }).catch((err: BusinessError) => {
   console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -2099,7 +2099,7 @@ currentAVSession.getAVCastController((err: BusinessError, avcontroller: avSessio
     console.error(`getAVCastController BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
     aVCastController = avcontroller;
-    console.info('getAVCastController : SUCCESS');
+    console.info('Succeeded in getting AV cast controller.');
   }
 });
 ```
@@ -2135,7 +2135,7 @@ getOutputDevice(): Promise\<OutputDeviceInfo>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.getOutputDevice().then((outputDeviceInfo: avSession.OutputDeviceInfo) => {
-  console.info(`GetOutputDevice : SUCCESS : devices length : ${outputDeviceInfo.devices.length}`);
+  console.info(`Succeeded in getting output device, devices length: ${outputDeviceInfo.devices.length}`);
 }).catch((err: BusinessError) => {
   console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
 })
@@ -2173,7 +2173,7 @@ currentAVSession.getOutputDevice((err: BusinessError, outputDeviceInfo: avSessio
   if (err) {
     console.error(`GetOutputDevice BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info(`GetOutputDevice : SUCCESS : devices length : ${outputDeviceInfo.devices.length}`);
+    console.info(`Succeeded in getting output device, devices length: ${outputDeviceInfo.devices.length}`);
   }
 });
 ```
@@ -2209,7 +2209,7 @@ activate(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.activate().then(() => {
-  console.info('Activate : SUCCESS ');
+  console.info('Succeeded in activating.');
 }).catch((err: BusinessError) => {
   console.error(`Activate BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -2247,7 +2247,7 @@ currentAVSession.activate((err: BusinessError) => {
   if (err) {
     console.error(`Activate BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('Activate : SUCCESS ');
+    console.info('Succeeded in activating.');
   }
 });
 ```
@@ -2283,7 +2283,7 @@ deactivate(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.deactivate().then(() => {
-  console.info('Deactivate : SUCCESS ');
+  console.info('Succeeded in deactivating.');
 }).catch((err: BusinessError) => {
   console.error(`Deactivate BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -2323,7 +2323,7 @@ currentAVSession.deactivate((err: BusinessError) => {
   if (err) {
     console.error(`Deactivate BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('Deactivate : SUCCESS ');
+    console.info('Succeeded in deactivating.');
   }
 });
 ```
@@ -2359,7 +2359,7 @@ destroy(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.destroy().then(() => {
-  console.info('Destroy : SUCCESS ');
+  console.info('Succeeded in destroying.');
 }).catch((err: BusinessError) => {
   console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -2397,7 +2397,7 @@ currentAVSession.destroy((err: BusinessError) => {
   if (err) {
     console.error(`Destroy BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('Destroy : SUCCESS ');
+    console.info('Succeeded in destroying.');
   }
 });
 ```
@@ -2423,7 +2423,7 @@ on(type: 'play', callback: () => void): void
 
 **错误码：**
   
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2493,7 +2493,7 @@ on(type: 'pause', callback: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2530,7 +2530,7 @@ on(type:'stop', callback: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2567,7 +2567,7 @@ on(type:'playNext', callback: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2637,7 +2637,7 @@ on(type:'playPrevious', callback: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2709,7 +2709,7 @@ on(type: 'fastForward', callback: (time?: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2779,7 +2779,7 @@ on(type:'rewind', callback: (time?: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2918,7 +2918,7 @@ on(type: 'seek', callback: (time: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2955,7 +2955,7 @@ on(type: 'setSpeed', callback: (speed: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -2992,7 +2992,7 @@ on(type: 'setLoopMode', callback: (mode: LoopMode) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3029,7 +3029,7 @@ on(type: 'setTargetLoopMode', callback: Callback\<LoopMode>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3065,7 +3065,7 @@ on(type: 'toggleFavorite', callback: (assetId: string) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3102,7 +3102,7 @@ on(type: 'skipToQueueItem', callback: (itemId: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3139,7 +3139,7 @@ on(type: 'handleKeyEvent', callback: (event: KeyEvent) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | --------- |
@@ -3179,7 +3179,7 @@ on(type: 'outputDeviceChange', callback: (state: ConnectionState, device: Output
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3281,7 +3281,7 @@ off(type: 'play', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3345,7 +3345,7 @@ off(type: 'pause', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3378,7 +3378,7 @@ off(type: 'stop', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3411,7 +3411,7 @@ off(type: 'playNext', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3475,7 +3475,7 @@ off(type: 'playPrevious', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3539,7 +3539,7 @@ off(type: 'fastForward', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3603,7 +3603,7 @@ off(type: 'rewind', callback?: () => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3667,7 +3667,7 @@ off(type: 'seek', callback?: (time: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3700,7 +3700,7 @@ off(type: 'setSpeed', callback?: (speed: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3733,7 +3733,7 @@ off(type: 'setLoopMode', callback?: (mode: LoopMode) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3766,7 +3766,7 @@ off(type: 'setTargetLoopMode', callback?: Callback\<LoopMode>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3798,7 +3798,7 @@ off(type: 'toggleFavorite', callback?: (assetId: string) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3831,7 +3831,7 @@ off(type: 'skipToQueueItem', callback?: (itemId: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | --------- |
@@ -3864,7 +3864,7 @@ off(type: 'handleKeyEvent', callback?: (event: KeyEvent) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3897,7 +3897,7 @@ off(type: 'outputDeviceChange', callback?: (state: ConnectionState, device: Outp
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -3965,7 +3965,7 @@ on(type: 'answer', callback: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -4000,7 +4000,7 @@ off(type: 'answer', callback?: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4035,7 +4035,7 @@ on(type: 'hangUp', callback: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -4070,7 +4070,7 @@ off(type: 'hangUp', callback?: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4105,7 +4105,7 @@ on(type: 'toggleCallMute', callback: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ------------------------------ |
@@ -4140,7 +4140,7 @@ off(type: 'toggleCallMute', callback?: Callback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4175,7 +4175,7 @@ on(type: 'castDisplayChange', callback: Callback\<CastDisplayInfo>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4216,7 +4216,7 @@ currentAVSession.on('castDisplayChange', (display: avSession.CastDisplayInfo) =>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4261,7 +4261,7 @@ currentAVSession.stopCasting((err: BusinessError) => {
   if (err) {
     console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
   } else {
-    console.info('stopCasting successfully');
+    console.info('Succeeded in stopping casting.');
   }
 });
 ```
@@ -4296,7 +4296,7 @@ stopCasting(): Promise\<void>
 import { BusinessError } from '@kit.BasicServicesKit';
 
 currentAVSession.stopCasting().then(() => {
-  console.info('stopCasting successfully');
+  console.info('Succeeded in stopping casting.');
 }).catch((err: BusinessError) => {
   console.error(`stopCasting BusinessError: code: ${err.code}, message: ${err.message}`);
 });
@@ -4402,7 +4402,7 @@ on(type:'playFromAssetId', callback: (assetId: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|
@@ -4440,7 +4440,7 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体会话管理错误码](errorcode-avsession.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体会话管理错误码](errorcode-avsession.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | ---------|

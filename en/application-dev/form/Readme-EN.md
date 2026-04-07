@@ -19,9 +19,6 @@
       - [Using Canvas in ArkTS Widgets](arkts-ui-widget-page-custom-drawing.md)
       - [Dark and Light Mode Adaptation for ArkTS Widget UI](arkts-ui-widget-dark-light-color-adapt.md)
       - [Using Custom Fonts in ArkTS Widgets](arkts-ui-widget-load-custom-font.md)
-      <!--Del-->
-      - [Glass Material Adaptation for ArkTS Widgets (for System Applications Only)](arkts-ui-widget-visual-effect-sys.md)
-      <!--DelEnd-->
     - ArkTS Widget Update<!--arkts-ui-widget-interaction-->
       - [Overview of ArkTS Widget Update](arkts-ui-widget-interaction-overview.md)
       - [Active Update of ArkTS Widgets](arkts-ui-widget-active-refresh.md)
@@ -29,6 +26,7 @@
       <!--Del-->
       - [Updating Widget Content Through a Proxy (for System Applications Only)](arkts-ui-widget-update-by-proxy-sys.md)
       <!--DelEnd-->
+      <!--RP3--><!--RP3End-->
       - [Updating Local and Online Images in the Widget](arkts-ui-widget-image-update.md)
       - [Updating Widget Content by State](arkts-ui-widget-update-by-status.md)
     - ArkTS Widget Page Interaction<!--arkts-ui-widget-event-->
@@ -39,7 +37,6 @@
       - [Updating Widget Content Through the router or call Event](arkts-ui-widget-event-uiability.md)
     - ArkTS Widget Editing<!--arkts-ui-widget-edit-->
       - [Overview of ArkTS Widget Editing](arkts-ui-widget-event-formeditextensionability-overview.md)
-      - [Widget Editing Development](arkts-ui-widget-event-formeditextensionability.md)
     - Widget Addition to Home Screen<!--arkts-ui-widget-add-->
       - [Adding Widgets to the Home Screen](arkts-ui-widget-open-formmanager.md)
     <!--RP1--><!--RP1End-->
@@ -55,8 +52,8 @@
       - [Developing a Scene-based Widget](arkts-ui-liveform-sceneanimation-development.md)
       <!--Del-->
       - [Developing a Scene-based Widget (for System Applications)](arkts-ui-liveform-sceneanimation-development-sys.md)
-  - [ArkTS Widget Adaptation FAQs](arkts-ui-widget-adapt-faq.md)
       <!--DelEnd-->
+  - [ArkTS Widget Adaptation FAQs](arkts-ui-widget-adapt-faq.md)
 - JS Widget Development<!--form-js-ui-->
   - [JS Widget Overview](js-ui-widget-overview.md)
   - [Developing a JS Widget (Stage Model)](js-ui-widget-development.md)

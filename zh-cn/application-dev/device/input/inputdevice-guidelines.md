@@ -19,7 +19,7 @@ import { inputDevice } from '@kit.InputKit';
 
 ## 接口说明
 
-输入设备管理常用接口如下表所示，接口详细介绍请参考[ohos.multimodalInput.inputDevice文档](../../reference/apis-input-kit/js-apis-inputdevice.md)。
+输入设备管理常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputDevice (输入设备)](../../reference/apis-input-kit/js-apis-inputdevice.md)。
 
 | 接口名称  | 描述 |
 | ----------- | ------------------------------------------------------------ | 
@@ -37,7 +37,7 @@ import { inputDevice } from '@kit.InputKit';
 1. 调用[getDeviceList](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetdevicelist9)方法查询所有连接的输入设备，调用[getKeyboardType](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdevicegetkeyboardtype9)方法遍历所有连接的设备，判断是否有物理键盘，若有则标记已有物理键盘连接，该步骤确保监听设备热插拔之前，检测所有插入的输入设备。
 2. 调用[on](../../reference/apis-input-kit/js-apis-inputdevice.md#inputdeviceonchange9)接口监听输入设备热插拔事件，若监听到有物理键盘插入，则标记已有物理键盘连接；若监听到有物理键盘拔掉，则标记没有物理键盘连接。
 
-<!-- @[input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputDevice/entry/src/main/ets/pages/Index.ets) -->
+<!-- @[input_device](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/InputKit/ArkTSInputDevice/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
 import { inputDevice } from '@kit.InputKit';
@@ -50,7 +50,7 @@ const DOMAIN = 0x0000;
 struct Index {
   @State isPhysicalKeyboardExist: boolean = false;
   @State message: string = "Click to obtain the device list and monitor device hot-plug events";
-  keyBoards: Map<number, inputDevice.KeyboardType> = new Map();
+  keyboards: Map<number, inputDevice.KeyboardType> = new Map();
 
   // ...
 
@@ -69,7 +69,7 @@ struct Index {
                     if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD) {
                       // 物理键盘已连接
                       this.isPhysicalKeyboardExist = true;
-                      this.keyBoards.set(data[i], type);
+                      this.keyboards.set(data[i], type);
                     }
                   });
                 }
@@ -82,14 +82,14 @@ struct Index {
                   if (type === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD && data.type === 'add') {
                     // 物理键盘已插入
                     this.isPhysicalKeyboardExist = true;
-                    this.keyBoards.set(data.deviceId, type);
+                    this.keyboards.set(data.deviceId, type);
                   }
                 });
-                if (this.keyBoards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
+                if (this.keyboards.get(data.deviceId) === inputDevice.KeyboardType.ALPHABETIC_KEYBOARD &&
                   data.type === 'remove') {
-                  // 物理键盘已拔掉
+                  // 物理键盘已拔出
                   this.isPhysicalKeyboardExist = false;
-                  this.keyBoards.delete(data.deviceId);
+                  this.keyboards.delete(data.deviceId);
                 }
               });
               this.message = "Device monitoring enabled successfully"

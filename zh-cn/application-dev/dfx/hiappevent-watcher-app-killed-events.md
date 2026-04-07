@@ -35,12 +35,15 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | time     | number | 事件触发时间，单位为ms。 |
 | reason  | string | 终止原因，原因范围详见[reason字段说明](#reason字段说明)。 |
 | foreground | boolean | 应用是否处于前台状态。true表示应用处于前台；false表示应用处于后台。 |
+| app_running_unique_id | string | 应用运行时唯一关联id。<br/>**说明**：从API version 24开始支持该参数。 |
+| bundle_version | string | 应用版本信息。<br/>**说明**：从API version 24开始支持该参数。 |
 
 ### reason字段说明
 
 | 类型   | 说明                       |
 | ------- | ------------------------- |
 | IllegalAudioRendererBySuspend | 应用未申请合理的后台任务，但是后台有大量音频播放。 |
+| IllegalAudioCapturerBySuspend | 应用未申请合理的后台任务，但是后台有录音。 |
 | LowMemoryKill | 整机低内存。 |
 | OomKiller | 整机内存耗尽，无法继续分配。 |
 | PowerSaveClean | 整机切换到省电模式或应急模式。 |
@@ -50,3 +53,37 @@ HiAppEvent提供接口用于订阅应用终止事件。
 | ResourceLeak(IonLeak) | 应用的Ion内存占用超标。 |
 | RssThresholdKiller | 应用的RSS（Resident Size Set）占用超标。 |
 | SwapFull | 整机Swap空间耗尽。 |
+| Normal | 应用正常退出（如用户主动退出）。 |
+| CppCrash | native层程序崩溃。 |
+| JsError | js层程序崩溃。 |
+| AppFreeze | 应用冻屏无响应。 |
+| ResourceLeak(CES) | CES注册超限。 |
+| ResourceLeak(PSSSoftLeak) | 后台应用内存占用超过检测阈值两倍，其中pss内存占比最高。 |
+| ResourceLeak(PSSLeak) | 后台应用内存占用超过特定阈值，其中pss内存占比最高。 |
+| ResourceLeak(IONLeak) | ION泄漏。 |
+| ResourceLeak(AshmemLeak) | ASHMEM泄漏。 |
+| ResourceLeak(GPURSLeak) | GPU RS内存泄漏。 |
+| ResourceLeak(GPULeak) | GPU泄漏。 |
+| ResourceLeak(VMALeak) | VMA泄漏。 |
+| ResourceLeak(FDLeak) | FD泄漏。 |
+| ResourceLeak(ThreadLeak) | 线程泄漏。 |
+| ResourceLeak(KernelZoneLeak) | kernel zone泄漏。 |
+| AshmemKiller | ASHMEM超限。 |
+| GPUKiller | GPU占用达到阈值。 |
+| DmaKiller | Dma占用达到阈值。 |
+| ThreadKiller | 线程超限。 |
+| IOHighload | IO高负载。 |
+| CPUHighload | 应用后台CPU高负载，系统自动杀死。 |
+| CPUHighloadNotify | 应用后台CPU高负载，出现弹框，用户选择停止该应用。 |
+| CPUHighloadUserRequest | 应用后台CPU高负载，设置界面用户选择停止该应用。 |
+| KillApplication | 应用主动退出。 |
+| UnKnown | 未知原因。 |
+| Restart | 应用重启。 |
+| UserRequest | 最近任务上划或清理。 |
+| Uninstall | 应用卸载退出。 |
+| Upgrade | 应用更新退出。 |
+| Logout | 用户注销时，卸载应用沙箱。 |
+| UninstallStorage | 卸载存储卡。 |
+| HighTemperature | 温度超限。 |
+| TransientTaskTimeout | 短时任务超时6s并且处于后台。 |
+| FdRs | fd个数超限。 |

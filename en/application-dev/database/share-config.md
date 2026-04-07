@@ -55,7 +55,7 @@ The following table lists the APIs used to share configurations between applicat
 Reference the **shared_config.json** file by configuring the **crossAppSharedConfig** field in the **module.json5** file. The **shared_config.json** file defines the configuration items that can be shared between applications. You should store the file in the **resources/base/profile** directory of the project and reference it using the **$** symbol. 
 
 
-```json
+```json5
 {
   "module":{
     "crossAppSharedConfig": "$profile:shared_config"
@@ -72,9 +72,9 @@ The following table describes the parameters in the **crossAppSharedConfig** fie
 | ------- | ------- | ------- | ------- |
 | uri | Unique ID of a shared configuration, fixed at the format of **"datashareproxy://{*bundleName*}/{*path*}"**, in which **bundleName** indicates the bundle name of the publisher application, and **path** can be set to any value but must be unique in the same application. The maximum length is 256 bytes.| String| Yes|
 | value | Value of a shared configuration item, with a maximum of 4096 bytes.| String| Yes|
-| allowList | List of applications that are allowed to access the shared configuration items. The array can contain a maximum of 256 elements. Excess elements are invalid. Each element in the array is the [appIdentifier](../quick-start/common_problem_of_application.md#what-is-appidentifier) of an application. **appIdentifier** is a string containing only digits with a maximum of 128 bytes. If the **appIdentifier** exceeds 128 bytes, it does not take effect. You can use the [getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to obtain the **appIdentifier** of an application.| String array| Yes|
+| allowList | List of applications that are allowed to access the shared configuration items. The array can contain a maximum of 256 elements. Excess elements are invalid. Each element in the array is the [appIdentifier](../quick-start/common-problem-of-application.md#what-is-appidentifier) of an application. The maximum length of an **appIdentifier** is 128 bytes. If the length exceeds 128 bytes, the **appIdentifier** does not take effect. You can use the [getBundleInfoForSelf](../reference/apis-ability-kit/js-apis-bundleManager.md#bundlemanagergetbundleinfoforself) API to obtain the **appIdentifier** of an application.| String array| Yes|
 
-```json
+```json5
 {
     "crossAppSharedConfig": [
         {
@@ -101,75 +101,73 @@ You can call the **publish** or **delete** API to manage configuration items as 
 
 - Call the **publish** API to publish or modify configuration items.
 
-<!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-function publishSharedConfig() {
-  dataShare.createDataProxyHandle().then((dataProxyHandle) => {
-    const newConfigData: dataShare.ProxyData[] = [
-      {
-        uri: 'datashareproxy://com.samples.shareconfig/config1',
-        value: 'Value1',
-        allowList: [
-          'appIdentifier1',
-          'appIdentifier2'
-        ]
-      },
-      {
-        uri: 'datashareproxy://com.samples.shareconfig/config2',
-        value: 'Value2',
-        allowList: [
-          'appIdentifier3',
-          'appIdentifier4'
-        ]
-      }
-    ];
-    const config: dataShare.DataProxyConfig = {
-      type: dataShare.DataProxyType.SHARED_CONFIG,
-    };
-    dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
-      results.forEach((result) => {
-        console.info(`URI: ${result.uri}, Result: ${result.result}`);
+  <!-- @[publish_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  function publishSharedConfig() {
+    dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+      const newConfigData: dataShare.ProxyData[] = [
+        {
+          uri: 'datashareproxy://com.samples.shareconfig/config1',
+          value: 'Value1',
+          allowList: [
+            'appIdentifier1',
+            'appIdentifier2'
+          ]
+        },
+        {
+          uri: 'datashareproxy://com.samples.shareconfig/config2',
+          value: 'Value2',
+          allowList: [
+            'appIdentifier3',
+            'appIdentifier4'
+          ]
+        }
+      ];
+      const config: dataShare.DataProxyConfig = {
+        type: dataShare.DataProxyType.SHARED_CONFIG,
+      };
+      dataProxyHandle.publish(newConfigData, config).then((results: dataShare.DataProxyResult[]) => {
+        results.forEach((result) => {
+          console.info(`URI: ${result.uri}, Result: ${result.result}`);
+        });
+      }).catch((error: BusinessError) => {
+        console.error('Error publishing config:', error);
       });
     }).catch((error: BusinessError) => {
-      console.error('Error publishing config:', error);
+      console.error('Error creating DataProxyHandle:', error);
     });
-  }).catch((error: BusinessError) => {
-    console.error('Error creating DataProxyHandle:', error);
-  });
-}
-
-```
+  }
+  ```
 
 
 
 - Call the **delete** API to delete the configuration items.
 
-<!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-function deleteSharedConfig() {
-  dataShare.createDataProxyHandle().then((dataProxyHandle) => {
-    const urisToDelete: string[] = [
-      'datashareproxy://com.samples.shareconfig/config1',
-      'datashareproxy://com.samples.shareconfig/config2'
-    ];
-    const config: dataShare.DataProxyConfig = {
-      type: dataShare.DataProxyType.SHARED_CONFIG,
-    };
-    dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
-      results.forEach((result) => {
-        console.info(`URI: ${result.uri}, Result: ${result.result}`);
+  <!-- @[delete_shared_config](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkData/DataShare/ShareConfig/entry/src/main/ets/pages/Index.ets) -->
+  
+  ``` TypeScript
+  function deleteSharedConfig() {
+    dataShare.createDataProxyHandle().then((dataProxyHandle) => {
+      const urisToDelete: string[] = [
+        'datashareproxy://com.samples.shareconfig/config1',
+        'datashareproxy://com.samples.shareconfig/config2'
+      ];
+      const config: dataShare.DataProxyConfig = {
+        type: dataShare.DataProxyType.SHARED_CONFIG,
+      };
+      dataProxyHandle.delete(urisToDelete, config).then((results: dataShare.DataProxyResult[]) => {
+        results.forEach((result) => {
+          console.info(`URI: ${result.uri}, Result: ${result.result}`);
+        });
+      }).catch((error: BusinessError) => {
+        console.error('Error deleting config:', error);
       });
     }).catch((error: BusinessError) => {
-      console.error('Error deleting config:', error);
+      console.error('Error creating DataProxyHandle:', error);
     });
-  }).catch((error: BusinessError) => {
-    console.error('Error creating DataProxyHandle:', error);
-  });
-}
-
-```
+  }
+  ```
 
 
 

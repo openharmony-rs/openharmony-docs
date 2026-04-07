@@ -10,11 +10,11 @@ The **applicationManager** module provides application management capabilities, 
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md). The [applicationManager.isAppKioskAllowed](#applicationmanagerisappkioskallowed20) API is available to all applications.
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md). The [applicationManager.isAppKioskAllowed](#applicationmanagerisappkioskallowed20) API is available to all applications.
 >
 
 ## Modules to Import
@@ -42,7 +42,7 @@ Adds the applications that are not allowed to run by the current or specified us
 | Name   | Type                                                   | Mandatory| Description                                                        |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
-| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>Note: From API version 21 onwards, the **appId** and **appIdentifier** of the app can be passed. **appIdentifier** is recommended. In API version 20 and earlier versions, only **appId** can be passed.|
+| appIds    | Array&lt;string&gt;                                     | Yes  | IDs of the applications to add.<br>**Note**: From API version 21 onwards, the [appId](../../quick-start/common-problem-of-application.md#what-is-appid) and [appIdentifier](../../quick-start/common-problem-of-application.md#what-is-appidentifier) of the app can be passed. **appIdentifier** is recommended. In API version 20 and earlier versions, only **appId** can be passed.|
 | accountId | number                                                  | No  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.<br> - If **accountId** is passed in, this API applies to the specified user.<br> - If **accountId** is not passed in, this API applies to the current user.|
 
 **Error codes**
@@ -199,11 +199,11 @@ Adds the applications that are allowed to run under specified users.
 
 > **NOTE**
 >
-> - Most APIs provided by MDM Kit are available only to MDM applications. When using this API, add the MDM application to the application running trustlist. Otherwise, the MDM application will be prohibited from running, blocking the API call. For details about whether the API is open only to MDM applications, see the module description.
+> 1. Most APIs provided by MDM Kit are available only to MDM applications. When using this API, add the MDM application to the application running trustlist. Otherwise, the MDM application will be prohibited from running, blocking the API call. For details about whether the API is open only to MDM applications, see the module description.
 >
-> - If the application running blocklist is not empty, this API cannot be used to add applications to the running trustlist. Otherwise, the error code 9200010 is reported. APIs related to the application running blocklist include [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->, [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles), [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1), and [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2).
+> 2. If the application running blocklist is not empty, this API cannot be used to add applications to the running trustlist. Otherwise, the error code 9200010 is reported. APIs related to the application running blocklist include [addDisallowedRunningBundlesSync](#applicationmanageradddisallowedrunningbundlessync)<!--Del-->, [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles), [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-1), and [addDisallowedRunningBundles](./js-apis-enterprise-applicationManager-sys.md#applicationmanageradddisallowedrunningbundles-2)<!--DelEnd-->.
 >
-> - This API only takes effect for third-party applications. System applications are not subject to this list and are allowed to run by default.<!--DelEnd-->
+> 3. This API only takes effect for third-party applications. System applications are not subject to this list and are allowed to run by default.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -872,7 +872,7 @@ Adds applications to the keep-alive list; once added, the application processes 
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |
 | bundleNames    | Array&lt;string&gt;                                     | Yes  | Array of application bundle names, which specifies the applications to be kept alive. A maximum of 5 applications are supported.<br>Applications must be installed under user 1 (a user who supports single-instance running of third-party applications) and have integrated [background services](../../application-models/app-service-extension-ability.md#implementing-a-background-service)<!--RP3--><!--RP3End-->. Otherwise, the error code 9201005 will be reported. |
 | accountId | number                                                  | Yes  | Account ID, which must be greater than or equal to 0.<br> You can call [getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1) of @ohos.account.osAccount to obtain the ID.|
-| disallowModify | boolean | Yes  | Whether to forbid users to manually cancel the keep-alive status. The value **true** indicates that users are not allowed to manually cancel the keep-alive status, and the value **false** indicates the opposite.<!--RP2--><!--RP2End--> |
+| disallowModify | boolean | Yes  | Whether to restrict users from manually canceling the keep-alive status. The value **true** indicates that users are not allowed to manually cancel the keep-alive status, and the value **false** indicates the opposite.<!--RP2--><!--RP2End--> |
 
 **Error codes**
 
@@ -1051,7 +1051,7 @@ Checks whether the application is forbidden to cancel the keep-alive status.
 
 | Type                                                        | Description                |
 | ------------------------------------------------------------ | -------------------- |
-| boolean | Whether to forbid users to manually cancel the keep-alive status. The value **true** indicates that users are not allowed to manually cancel the keep-alive status, and the value **false** indicates the opposite.<!--RP2--><!--RP2End-->|
+| boolean | Whether to restrict users from manually canceling the keep-alive status. The value **true** indicates that users are not allowed to manually cancel the keep-alive status, and the value **false** indicates the opposite.<!--RP2--><!--RP2End-->|
 
 **Error codes**
 
@@ -1290,7 +1290,7 @@ try {
 
 setKioskFeatures(admin: Want, features: Array\<KioskFeature>): void
 
-Sets the features of kiosk mode. When [kiosk mode is activated](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode), the system disables capabilities such as the notification center, control panel, and recent tasks panel by default. This API can be used to disable or restore some capabilities.
+Sets the features of kiosk mode. This API is used to control whether the notification center and control center can be accessed in [Kiosk mode](../apis-ability-kit/js-apis-app-ability-kioskManager.md#kioskmanagerenterkioskmode). Since API version 24, this API can also be used to control whether the recent task bar and side dock bar can be accessed. In non-kiosk mode, this API can be called normally but does not take effect. It will take effect after kiosk mode is enabled.
 
 **Required permissions**: ohos.permission.ENTERPRISE_SET_KIOSK
 
@@ -1300,12 +1300,14 @@ Sets the features of kiosk mode. When [kiosk mode is activated](../apis-ability-
 
 **Conflict rule**: [Policy merging](../../mdm/mdm-kit-multi-mdm.md#rule-4-policy-merging).
 
+**Device behavior differences**: This API has no effect on PCs/2-in-1 devices, but can be properly called on phones and tablets.
+
 **Parameters**
 
 | Name      | Type                                                   | Mandatory| Description                  |
 | ------------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin        | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.        |
-| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | Yes  | Features of kiosk mode.<br> If an empty array is passed, the system will clear all previously configured features and restore kiosk mode to its default state, where capabilities such as the notification center, control panel, and recent tasks panel are disabled.|
+| features | Array&lt;[KioskFeature](#kioskfeature20)&gt;           | Yes  | Feature set of the Kiosk mode. (Since API version 24, allowing access to the recent task bar and forbidding access to the side dock are added.)<br> If an empty array is passed, the system will clear all previously delivered features and restore kiosk mode to its default state. To be specific, the notification center, control center, and recent task bar are not allowed to access, and the side dock is allowed to use.|
 
 **Error codes**
 
@@ -1332,6 +1334,8 @@ let wantTemp: Want = {
 let kioskFeatures: Array<applicationManager.KioskFeature> = [];
 kioskFeatures.push(applicationManager.KioskFeature.ALLOW_NOTIFICATION_CENTER);
 kioskFeatures.push(applicationManager.KioskFeature.ALLOW_CONTROL_CENTER);
+kioskFeatures.push(applicationManager.KioskFeature.ALLOW_GESTURE_CONTROL);
+kioskFeatures.push(applicationManager.KioskFeature.ALLOW_SIDE_DOCK);
 try {
   applicationManager.setKioskFeatures(wantTemp, kioskFeatures);
   console.info('Succeeded in setting kiosk feature.');
@@ -1340,27 +1344,13 @@ try {
 }
 ```
 
-## KioskFeature<sup>20+</sup>
-
-Defines the features of the kiosk mode.
-
-**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
-
-**Model restriction**: This API can be used only in the stage model.
-
-| Name                       | Value | Description   |
-| ----------------------------| ----| ------------------------------- |
-| ALLOW_NOTIFICATION_CENTER   | 1   | Allow access to the notification center.|
-| ALLOW_CONTROL_CENTER        | 2   | Allow access to the control panel.|
-
 ## applicationManager.addUserNonStopApps<sup>22+</sup>
 
 addUserNonStopApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-Adds applications to the non-stoppable application list for a specified user. This policy only applies to installed applications. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list.
+Adds applications to the non-stoppable application list for a specified user. This policy only applies to installed applications. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list. Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
 
-Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
-<br>Non-stoppable applications cannot be closed by swiping up in the task center. After a user taps the application name in **Settings** > **Apps & services** to go to the details page, the forcible stop button is unavailable.
+Non-stoppable applications cannot be closed by swiping up in the task center. After a user taps the application name in **Settings** > **Apps & services** to go to the details page, the forcible stop button is unavailable.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1542,10 +1532,9 @@ try {
 
 addFreezeExemptedApps(admin: Want, applicationInstances: Array&lt;common.ApplicationInstance&gt;): void
 
-Adds applications to the background freeze-exempt application list for a specified user. This policy applies only to installed applications and becomes invalid after the device is restarted. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list.
+Adds applications to the background freeze-exempt application list for a specified user. This policy applies only to installed applications and becomes invalid after the device is restarted. If the parameter list contains uninstalled applications, error code 9200012 will be returned. If an application in the list is uninstalled after the policy is set, the uninstalled application will be removed from the list. Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
 
-Adding an application that already exists in the list will return success, but the application will not be added repeatedly to the policy list.
-<br>Freezing operations include suspending the target application, and managing software resource agents, hardware resource agents, and high-power consumption.
+Freezing operations include suspending the target application, and managing software resource agents, hardware resource agents, and high-power consumption.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_APPLICATION
 
@@ -1843,3 +1832,17 @@ try {
   console.error(`Failed to query whether the ability is disabled. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+## KioskFeature<sup>20+</sup>
+
+Defines the features of the kiosk mode.
+
+**System capability**: SystemCapability.Customization.EnterpriseDeviceManager
+
+**Model restriction**: This API can be used only in the stage model.
+
+| Name                       | Value | Description   |
+| ----------------------------| ----| ------------------------------- |
+| ALLOW_NOTIFICATION_CENTER   | 1   | Allow access to the notification center (by swiping down from the upper left corner with one finger).|
+| ALLOW_CONTROL_CENTER        | 2   | Allow access to the control center (by swiping down from the upper right corner with one finger).|
+| ALLOW_GESTURE_CONTROL<sup>24+</sup>    | 3   | Allow access to the recent task bar (by swiping up from the bottom with one finger and holding).|
+| ALLOW_SIDE_DOCK<sup>24+</sup>    | 4   | Forbid access to the side dock (by swiping inward from the edge with one finger and holding).|

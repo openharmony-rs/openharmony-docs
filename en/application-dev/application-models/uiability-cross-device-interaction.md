@@ -65,7 +65,7 @@ The following table describes the main APIs used for call invocation. For detail
 
 For the [Callee UIAbility](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#callee), you need to implement the data reception callback function for the specified method, as well as the data marshalling and unmarshalling methods. During the period when data reception is required, register a listener via the [on](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#on) API; when data reception is no longer needed, remove the listener via the [off](../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md#off) API.
 
-1. Declare the **ohos.permission.DISTRIBUTED_DATASYNC** permission. For details, see [Declaring Permissions ](../security/AccessToken/declare-permissions.md).
+1. Declare the **ohos.permission.DISTRIBUTED_DATASYNC** permission. For details, see [Declaring Permissions](../security/AccessToken/declare-permissions.md).
 
 2. Ask for authorization from the user via a dialog box when the application is started for the first time. For details, see [Requesting User Authorization](../security/AccessToken/request-user-authorization.md).
 

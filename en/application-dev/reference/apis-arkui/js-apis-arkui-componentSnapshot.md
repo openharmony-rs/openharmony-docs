@@ -84,6 +84,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // Replace $r('app.media.img') with the image resource file you use.
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -97,7 +98,7 @@ struct SnapshotExample {
           // You are advised to use this.getUIContext().getComponentSnapshot().get().
           componentSnapshot.get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error))
+              console.error(`error:${JSON.stringify(error)}`)
               return;
             }
             this.pixmap = pixmap
@@ -172,6 +173,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // Replace $r('app.media.img') with the image resource file you use.
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -187,7 +189,7 @@ struct SnapshotExample {
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
             }).catch((err: Error) => {
-            console.error("error: " + err)
+            console.error(`error:${err}`)
           })
         }).margin(10)
     }
@@ -286,7 +288,7 @@ struct OffscreenSnapshotExample {
           },
             (error: Error, pixmap: image.PixelMap) => {
               if (error) {
-                console.error("error: " + JSON.stringify(error))
+                console.error(`error:${JSON.stringify(error)}`)
                 return;
               }
               this.pixmap = pixmap
@@ -404,10 +406,10 @@ struct OffscreenSnapshotExample {
               // ....
               // Obtain the component size and position.
               let info = this.getUIContext().getComponentUtils().getRectangleById("builder")
-              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' +
-              info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
+              console.info(`${info.size.width} ${info.size.height} ${info.localOffset.x} ${
+              info.localOffset.y} ${info.windowOffset.x} ${info.windowOffset.y}`)
             }).catch((err: Error) => {
-            console.error("error: " + err)
+            console.error(`error:${err}`)
           })
         })
       Image(this.pixmap)
@@ -458,6 +460,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 > **NOTE**
 > 
@@ -478,6 +481,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // Replace $r('app.media.img') with the image resource file you use.
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -493,7 +497,7 @@ struct SnapshotExample {
             let pixelmap = componentSnapshot.getSync("root", { scale: 2, waitUntilRenderFinished: true })
             this.pixmap = pixelmap
           } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message)
+            console.error(`getSync errorCode:${error.code} message:${error.message}`)
           }
         }).margin(10)
     }
@@ -529,7 +533,7 @@ Defines the color space used for the snapshot.
 | Name| Type| Read-Only | Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | colorSpace | [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace) | No| Yes| Color space used for the snapshot.<br>If the target component's color space is known, specify it through **colorSpace** and set **isAuto** to **false** to achieve optimal snapshot quality.<br>The value can be **DISPLAY_P3**, **SRGB**, or **DISPLAY_BT2020_SRGB** in [colorSpaceManager.ColorSpace](../apis-arkgraphics2d/js-apis-colorSpaceManager.md#colorspace).<br>Default value: **SRGB**<br>If the value is **undefined**, **null**, or not set, the default value is used. If an abnormal value is used, snapshot capture fails and the error code 160003 is returned.|
-| isAuto | boolean | No| Yes| Whether the system automatically determines the color space to be used.<br>The value **true** means to allow the system to automatically determine the color space to be used, and **false** means to manually set the color space through **colorSpace**. If an invalid value is used, the default value **false** is used.<br>Default value: **false**<br>For offscreen snapshots, this parameter can only be set to **false**. Otherwise, the error code 160004 will be returned.<br>If **isAuto** is set to **true**, you are advised to set **waitUntilRenderFinished** in [SnapshotOptions](#snapshotoptions12) to **true** to ensure that the system can properly detect the used color space.<br>If the color space used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the color space to be used.<br>When **isAuto** is set to true, the value of **colorSpace** is ignored. In this case, if the target component contains child components in different color spaces, the color space with the highest priority is used for the snapshot. The priority order of the color space is as follows: **DISPLAY_BT2020_SRGB** > **DISPLAY_P3** > **SRGB**.|
+| isAuto | boolean | No| Yes| Whether the system automatically determines the color space to be used.<br>The value **true** means to allow the system to automatically determine the color space to be used, and **false** means to manually set the color space through **colorSpace**. If an invalid value is used, the default value **false** is used.<br>Default value: **false**<br>For offscreen snapshots, this parameter can only be set to **false**. Otherwise, the error code 160004 will be returned.<br>If `isAuto` is set to **true**, you are advised to set `waitUntilRenderFinished` in [SnapshotOptions](#snapshotoptions12) to **true** to ensure that the system can properly detect the used color space.<br>If the color space used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the color space to be used.<br>When **isAuto** is set to true, the value of **colorSpace** is ignored. In this case, if the target component contains child components in different color spaces, the color space with the highest priority is used for the snapshot. The priority order of the color space is as follows: **DISPLAY_BT2020_SRGB** > **DISPLAY_P3** > **SRGB**.|
 
 **Example**
 
@@ -546,7 +550,8 @@ struct SnapshotColorModeExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.startIcon'))
+        // Replace $r('app.media.img') with the image resource file you use.
+        Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
           .height(200)
@@ -558,7 +563,7 @@ struct SnapshotColorModeExample {
         .onClick(() => {
           this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error))
+              console.error(`error:${JSON.stringify(error)}`)
               return;
             }
             this.pixmap = pixmap
@@ -577,6 +582,8 @@ struct SnapshotColorModeExample {
 }
 ```
 
+![componentget](figures/componentget.gif)
+
 ## DynamicRangeModeOptions<sup>23+</sup>
 
 Defines the dynamic range mode used for the snapshot.
@@ -588,7 +595,7 @@ Defines the dynamic range mode used for the snapshot.
 | Name| Type| Read-Only | Optional| Description|
 | ---- | ---- | ---- | ---- | ---- |
 | dynamicRangeMode| [DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12)| No| Yes| Dynamic range mode used for the snapshot.<br> By default, the system snapshots in [STANDARD](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12) mode. If the dynamic range mode used by the target component is known, you can specify the dynamic range mode using the **dynamicRangeMode** field and set **isAuto** to **false** to achieve the expected snapshot effect.<br>There are three dynamic range modes available. HDR is applied for **HIGH** and **CONSTRAINT** modes, and SDR is applied for **STANDARD** mode.<br>After a valid dynamic range mode is specified, the dynamic range to be used for the snapshot is determined by both the target component and the specified mode. The details are as follows:<br>1. If SDR is used for the component, SDR is applied for the snapshot even if the dynamic range mode is set to **HIGH**.<br>2. If HDR is used for the component, the specified dynamic range mode is applied for the screenshot.<br>3. If the [color space](#colormodeoptions23) is set to **SRGB** or **DISPLAY_P3**, SDR is applied for the snapshot.<br>4. If both SDR and HDR are used for the child components, HDR is applied for the snapshot.<br>5. If both conditions 3 and 4 are met, SDR is applied for the snapshot.<br>For details about the enum values, see [DynamicRangeMode](./arkui-ts/ts-basic-components-image.md#dynamicrangemode12).<br>Default value: **STANDARD**<br>If the value is **undefined**, **null**, or not set, the default value is used. If an abnormal value is used, snapshot capture fails and the error code 160003 is returned.|
-|isAuto | boolean | No| Yes| Whether the system automatically determines the dynamic range mode to be used.<br>The value **true** means to allow the system to automatically determine the dynamic range mode to be used, and **false** means to manually set the dynamic range mode through **dynamicRangeMode**. If an invalid value is used, the default value **false** is used.<br>Default value: **false**<br>For offscreen snapshots, this parameter can only be set to **false**. Otherwise, the error code 160004 will be returned.<br>If **isAuto** is set to **true**, you are advised to set **waitUntilRenderFinished** in [SnapshotOptions](#snapshotoptions12) to **true** to ensure that the system can properly detect the used dynamic range mode.<br>If the dynamic range mode used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the dynamic range mode to be used.<br> When **isAuto** is set to true, the value of **dynamicRangeMode** is ignored.|
+|isAuto | boolean | No| Yes| Whether the system automatically determines the dynamic range mode to be used.<br>The value **true** means to allow the system to automatically determine the dynamic range mode to be used, and **false** means to manually set the dynamic range mode through **dynamicRangeMode**. If an invalid value is used, the default value **false** is used.<br>Default value: **false**<br>For offscreen snapshots, this parameter can only be set to **false**. Otherwise, the error code 160004 will be returned.<br>If `isAuto` is set to **true**, you are advised to set `waitUntilRenderFinished` in [SnapshotOptions](#snapshotoptions12) to **true** to ensure that the system can properly detect the used dynamic range mode.<br>If the dynamic range mode used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the dynamic range mode to be used.<br> When **isAuto** is set to true, the value of **dynamicRangeMode** is ignored.|
 
 **Example**
 
@@ -604,7 +611,8 @@ struct SnapshotDynamicRangeExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.startIcon'))
+        // Replace $r('app.media.img') with the image resource file you use.
+        Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
           .height(200)
@@ -616,7 +624,7 @@ struct SnapshotDynamicRangeExample {
         .onClick(() => {
           this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error))
+              console.error(`error:${JSON.stringify(error)}`)
               return;
             }
             this.pixmap = pixmap
@@ -634,6 +642,8 @@ struct SnapshotDynamicRangeExample {
   }
 }
 ```
+
+![componentget](figures/componentget.gif)
 
 ## SnapshotRegionType<sup>15+</sup>
 
@@ -736,10 +746,13 @@ struct SnapshotExample {
               })
             this.pixmap = pixelmap
           } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message)
+            console.error(`getSync errorCode:${error.code} message:${error.message}`)
           }
         }).margin(10)
       Image(this.pixmap).border({ color: Color.Black, width: 2 }).width("600px")
     }.width("100%").align(Alignment.Center)
   }
 }
+```
+
+![localized_snapshot](figures/localized_snapshot.gif)

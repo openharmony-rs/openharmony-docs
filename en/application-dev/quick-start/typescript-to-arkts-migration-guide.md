@@ -127,7 +127,7 @@ let p4 = new Point(4.0, 4.0);
 p4.x = 'Hello!';          // Compile-time error in TypeScript and ArkTS
 (p4 as any).x = 'Hello!'; // OK in TypeScript; compile-time error in ArkTS
 
-// Usage of Point objects which is compliant with the class definition:
+// Use the Point objects which are compliant with the class definition:
 function distance(p1: Point, p2: Point): number {
   return Math.sqrt(
     (p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y)

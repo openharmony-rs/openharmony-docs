@@ -11,7 +11,7 @@ In traditional JS engines, there is only one way to optimize the overhead of con
 
 ArkTS introduces the concept of Sendable objects, which support pass-by-reference during concurrent communication.
 
-Sendable objects are designed to be shareable across threads, maintaining a consistent reference to the same JS object before and after crossing thread boundaries. If a Sendable object contains JS or native content, it can be directly shared. However, if the underlying implementation is native, thread safety must be ensured. The following figure shows the communication process.
+Sendable objects are designed to be shareable across threads, maintaining a consistent reference to the same JS object before and after crossing thread boundaries. If a Sendable object is bound to a native object by calling the N-API, the native object is also shared when the Sendable object is shared. The following figure shows the communication process.
 
 ![sendable](figures/sendable.png)
 

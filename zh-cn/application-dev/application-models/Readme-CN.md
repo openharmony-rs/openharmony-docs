@@ -56,6 +56,7 @@
     - 拉起指定应用<!--directional-redirection-->
       - [拉起指定应用概述](app-startup-overview.md)
       - [（可选）使用canOpenLink判断应用是否可访问](canopenlink.md)
+      - [获取目标应用的URL信息](obtaining-target-app-url-info.md)
       - [使用Deep Linking实现应用间跳转](deep-linking-startup.md)
       - [使用App Linking实现应用间跳转](app-linking-startup.md)
       - [显式Want跳转切换应用链接跳转适配指导](uiability-startup-adjust.md)
@@ -89,6 +90,8 @@
       - [使用装饰器开发意图](insight-intent-decorator-development.md)
       - [附录：标准意图接入规范](insight-intent-access-specifications.md)
     - [调试意图](insight-intent-debug.md)
+  - 智能体开发指导<!--agent-->
+    - [Agent配置文件说明](agent-extension-configuration.md)
 - FA模型开发指导<!--fa-model-development-->
   - [FA模型开发概述](fa-model-development-overview.md)
   - FA模型应用组件<!--fa-model-application-components-->

@@ -146,18 +146,20 @@ Empty file. The specified file is empty.
 
 **错误信息**
 
-Corrupted file. The file content is invalid or damaged and cannot be parsed.
+Corrupted file. The file content is invalid, damaged, or an index out of bounds occurs when accessing TTC/OTC files, making it impossible to parse.
 
 **错误描述**
 
-文件损坏。文件内容无效或损坏，无法解析。
+文件损坏。文件内容无效、损坏或者访问TTC/OTC文件时index越界，无法解析。
 
 **可能原因**
 
 1. 文件格式不正确。
 2. 文件内容损坏。
+3. TTC/OTC文件超出索引。
 
 **处理步骤**
 
 1. 确保文件格式符合预期。
 2. 确保文件内容正常。
+3. 确保index在TTC/OTC支持范围内。

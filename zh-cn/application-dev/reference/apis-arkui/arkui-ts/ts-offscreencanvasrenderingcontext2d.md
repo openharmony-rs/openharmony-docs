@@ -76,7 +76,7 @@ constructor(width: number, height: number, settings?: RenderingContextSettings, 
 
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置填充区域的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置填充区域的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效。<br/> |
+| string&nbsp;\|&nbsp;number<sup>10+</sup>&nbsp;\|&nbsp;[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置填充区域的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置填充区域的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效。<br/> |
 
 ```ts
 // xxx.ets
@@ -93,7 +93,7 @@ struct FillStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 使用string设置fillStyle属性
           offContext.fillStyle = '#0000ff'
@@ -125,7 +125,7 @@ struct FillStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 使用number设置fillStyle属性
           offContext.fillStyle = 0x0000FF
@@ -172,14 +172,14 @@ struct LineWidthExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 设置lineWidth属性
           offContext.lineWidth = 5
           offContext.strokeRect(25, 25, 85, 105)
           let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
-      })
+        })
     }
     .width('100%')
     .height('100%')
@@ -202,7 +202,7 @@ struct LineWidthExample {
 
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| string&nbsp;\|number<sup>10+</sup>&nbsp;\|[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置线条使用的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置线条使用的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效。<br/> |
+| string&nbsp;\|&nbsp;number<sup>10+</sup>&nbsp;\|&nbsp;[CanvasGradient](ts-components-canvas-canvasgradient.md)&nbsp;\|&nbsp;[CanvasPattern](ts-components-canvas-canvaspattern.md) | 否 | 否 | <br/>-&nbsp;类型为string时，表示设置线条使用的颜色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中string类型说明。<br/>- 类型为number时，表示设置线条使用的颜色，不支持设置全透明色，颜色格式参考[ResourceColor](ts-types.md#resourcecolor)中number类型说明。<br/>-&nbsp;类型为CanvasGradient时，表示渐变对象，使用[createLinearGradient](#createlineargradient)方法创建。<br/>-&nbsp;类型为CanvasPattern时，使用[createPattern](#createpattern)方法创建。<br/>默认值：'#000000'（黑色）<br/>异常值设置无效。<br/> |
 
 ```ts
 // xxx.ets
@@ -219,7 +219,7 @@ struct StrokeStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 10
           // 使用string设置strokeStyle属性
@@ -252,7 +252,7 @@ struct StrokeStyleExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 10
           // 使用number设置strokeStyle属性
@@ -300,7 +300,7 @@ struct LineCapExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 8
           offContext.beginPath()
@@ -351,7 +351,7 @@ struct LineJoinExample {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.beginPath()
           offContext.lineWidth = 8
@@ -386,7 +386,7 @@ struct LineJoinExample {
 
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
-| number | 否 | 否 | 默认值：10px<br/>单位：px。 <br/>miterLimit取值不支持0和负数，0、负数和NaN按默认值处理，Infinity会导致和miterLimit属性相关的接口无法绘制。 |
+| number | 否 | 否 | 默认值：10px<br/>单位：px <br/>miterLimit取值不支持0和负数，0、负数和NaN按默认值处理，Infinity会导致和miterLimit属性相关的接口无法绘制。 |
 
 ```ts
 // xxx.ets
@@ -403,7 +403,7 @@ struct MiterLimit {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.lineWidth = 8
           offContext.lineJoin = 'miter'
@@ -648,7 +648,7 @@ struct GlobalAlpha {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.fillStyle = 'rgb(0,0,255)'
           offContext.fillRect(0, 0, 50, 50)
@@ -698,10 +698,10 @@ struct LineDashOffset {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.arc(100, 75, 50, 0, 6.28)
-          offContext.setLineDash([10,20])
+          offContext.setLineDash([10, 20])
           // 设置lineDashOffset属性
           offContext.lineDashOffset = 10.0
           offContext.stroke()
@@ -940,7 +940,7 @@ struct ShadowBlur {
         .width('100%')
         .height('100%')
         .backgroundColor('rgb(213,213,213)')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 设置shadowBlur属性
           offContext.shadowBlur = 30
@@ -1038,7 +1038,7 @@ struct ShadowOffsetX {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.shadowBlur = 10
           // 设置shadowOffsetX属性
@@ -1088,7 +1088,7 @@ struct ShadowOffsetY {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           offContext.shadowBlur = 10
           // 设置shadowOffsetY属性
@@ -1123,6 +1123,10 @@ struct ShadowOffsetY {
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | boolean | 否 | 否 | 默认值：true |
 
+> **说明：**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+
 ```ts
 // xxx.ets
 @Entry
@@ -1140,11 +1144,11 @@ struct ImageSmoothingEnabled {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           // 设置imageSmoothingEnabled属性
           offContext.imageSmoothingEnabled = false
-          offContext.drawImage(this.img,0,0,400,200)
+          offContext.drawImage(this.img, 0, 0, 400, 200)
           let image = this.offCanvas.transferToImageBitmap()
           this.context.transferFromImageBitmap(image)
       })
@@ -1172,6 +1176,10 @@ imageSmoothingEnabled为true时，用于设置图像平滑度，此属性为只�
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | [ImageSmoothingQuality](ts-canvasrenderingcontext2d.md#imagesmoothingquality类型说明) | 否 | 否 | 默认值："low" |
 
+> **说明：**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+
 ```ts
   // xxx.ets
   @Entry
@@ -1191,7 +1199,7 @@ justifyContent: FlexAlign.Center }) {
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let offctx = offContext
             offctx.imageSmoothingEnabled = true
@@ -1242,7 +1250,7 @@ justifyContent: FlexAlign.Center }) {
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let offctx = offContext
             offctx.font = '48px serif';
@@ -1278,6 +1286,10 @@ justifyContent: FlexAlign.Center }) {
 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ---------- | -------------- | ---------------------------------------- |
 | string | 否 | 否 | 支持的滤镜效果如下：<br/>- 'none': 无滤镜效果。<br/>- 'blur(\<length>)'：给图像设置高斯模糊，取值范围≥0，支持单位px、vp、rem，默认值：blur(0px)。<br/>- 'brightness([\<number>\|\<percentage>])'：给图片应用一种线性乘法，使其看起来更亮或更暗，支持数字和百分比参数，取值范围≥0，默认值：brightness(1)。<br/>- 'contrast([\<number>\|\<percentage>])'：调整图像的对比度，支持数字和百分比参数，取值范围≥0，默认值：contrast(1)。<br/>- 'grayscale([\<number>\|\<percentage>])'：将图像转换为灰度图像，支持数字和百分比参数，取值范围[0, 1]，默认值：grayscale(0)。<br/>- 'hue-rotate(\<angle>)'：给图像应用色相旋转，取值范围0deg-360deg，默认值：hue-rotate(0deg)。<br/>- 'invert([\<number>\|\<percentage>])'：反转输入图像，支持数字和百分比参数，取值范围[0, 1]，默认值：invert(0)。<br/>- 'opacity([\<number>\|\<percentage>])'：调整图像的透明程度，支持数字和百分比参数，取值范围[0, 1]，默认值：opacity(1)。<br/>- 'saturate([\<number>\|\<percentage>])'：转换图像饱和度，支持数字和百分比参数，取值范围≥0，默认值：saturate(1)。<br/>- 'sepia([\<number>\|\<percentage>])'：将图像转换为深褐色，支持数字和百分比参数，取值范围[0, 1]，默认值：sepia(0)。|
+
+> **说明：**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
 
 ```ts
   // xxx.ets
@@ -1394,6 +1406,75 @@ justifyContent: FlexAlign.Center }) {
 
 ![letterSpacingDemo](figures/letterSpacingDemo.jpeg)
 
+
+### antialias<sup>24+</sup>
+
+用于设置绘制图形和文本时是否开启抗锯齿。设置此接口会覆盖[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果，未通过该接口设置时，默认值为undefined，与[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果保持一致。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ------ | ------ |
+| boolean | 否 | 否 | 设置绘制图形和文本时是否开启抗锯齿。<br/>true表示开启抗锯齿；false表示不开启抗锯齿。<br/>值为undefined时，与[RenderingContextSettings](ts-canvasrenderingcontext2d.md#renderingcontextsettings)中的抗锯齿效果保持一致。 |
+
+**示例：** 
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct AntialiasDemoOff {
+  private settings: RenderingContextSettings = new RenderingContextSettings(true);
+  private context: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
+  private offCanvas: OffscreenCanvas = new OffscreenCanvas(600, 600);
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+      Canvas(this.context)
+        .width('100%')
+        .height('100%')
+        .backgroundColor('rgb(213,213,213)')
+        .onReady(() => {
+          let offContext = this.offCanvas.getContext("2d", this.settings);
+          let anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+          // 设置antialias属性为非抗锯齿
+          offContext.antialias = false;
+          offContext.strokeStyle = 'rgb(0,0,0)';
+          offContext.lineWidth = 2;
+          offContext.beginPath();
+          offContext.arc(150, 150, 100, 0, Math.PI);
+          offContext.stroke();
+          offContext.font = 'normal bold 30vp monospace';
+          offContext.fillText("Hello World", 20, 100);
+          anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+
+          // 设置antialias属性为抗锯齿
+          offContext.antialias = true;
+          offContext.beginPath();
+          offContext.arc(150, 350, 100, 0, Math.PI);
+          offContext.stroke();
+          offContext.font = 'normal bold 30vp monospace';
+          offContext.fillText("Hello World", 20, 300);
+          anti = offContext.antialias;
+          console.info(`current antialias is ${anti}`);
+          let image = this.offCanvas.transferToImageBitmap();
+          this.context.transferFromImageBitmap(image);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+![AntialiasDemo](figures/AntialiasOffDemo.jpeg)
+
 ## 方法
 
 
@@ -1435,9 +1516,9 @@ fillRect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.fillRect(30,30,100,100)
+            offContext.fillRect(30, 30, 100, 100)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
          })
@@ -1489,7 +1570,7 @@ strokeRect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.strokeRect(30, 30, 200, 150)
             let image = this.offCanvas.transferToImageBitmap()
@@ -1543,14 +1624,14 @@ clearRect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = 'rgb(0,0,255)'
-            offContext.fillRect(20,20,200,200)
-            offContext.clearRect(30,30,150,100)
+            offContext.fillRect(20, 20, 200, 200)
+            offContext.clearRect(30, 30, 150, 100)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
-        })
+          })
       }
       .width('100%')
       .height('100%')
@@ -1599,7 +1680,7 @@ fillText(text: string, x: number, y: number, maxWidth?: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.font = '30px sans-serif'
             offContext.fillText("Hello World!", 20, 100)
@@ -1654,7 +1735,7 @@ strokeText(text: string, x: number, y: number, maxWidth?: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.font = '55px sans-serif'
             offContext.strokeText("Hello World!", 20, 60)
@@ -1928,7 +2009,7 @@ moveTo(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.moveTo(10, 10)
@@ -1983,7 +2064,7 @@ lineTo(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.moveTo(10, 10)
@@ -2031,7 +2112,7 @@ closePath(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
               let offContext = this.offCanvas.getContext("2d", this.settings)
               offContext.beginPath()
               offContext.moveTo(30, 30)
@@ -2078,6 +2159,10 @@ createPattern(image: ImageBitmap, repetition: string | null): CanvasPattern | nu
 | [CanvasPattern](ts-components-canvas-canvaspattern.md) \| null | 通过指定图像和重复方式创建图片填充的模板对象。 |
 
  **示例：**
+
+> **说明：**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
 
   ```ts
   // xxx.ets
@@ -2310,7 +2395,7 @@ arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, 
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.arc(100, 75, 50, 0, 6.28)
@@ -2367,7 +2452,7 @@ arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
 
             // 切线
@@ -2458,7 +2543,7 @@ ellipse(x: number, y: number, radiusX: number, radiusY: number, rotation: number
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.beginPath()
             offContext.ellipse(200, 200, 50, 100, Math.PI * 0.25, Math.PI * 0.5, Math.PI * 2, false)
@@ -2517,7 +2602,7 @@ rect(x: number, y: number, w: number, h: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rect(20, 20, 100, 100) // Create a 100*100 rectangle at (20, 20)
             offContext.stroke()
@@ -2669,7 +2754,7 @@ fill(fillRule?: CanvasFillRule): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = '#000000'
             offContext.rect(20, 20, 100, 100) // Create a 100*100 rectangle at (20, 20)
@@ -2722,7 +2807,7 @@ struct Fill {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffff00')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           let region = new Path2D()
           region.moveTo(30, 90)
@@ -2782,7 +2867,7 @@ clip(fillRule?: CanvasFillRule): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rect(0, 0, 100, 200)
             offContext.stroke()
@@ -2837,7 +2922,7 @@ clip(path: Path2D, fillRule?: CanvasFillRule): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let region = new Path2D()
             region.moveTo(30, 90)
@@ -2890,7 +2975,7 @@ reset(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = '#0000ff'
             offContext.fillRect(20, 20, 150, 100)
@@ -2938,16 +3023,16 @@ saveLayer(): void
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = "#0000ff"
-            offContext.fillRect(50,100,300,100)
+            offContext.fillRect(50, 100, 300, 100)
             offContext.fillStyle = "#00ffff"
-            offContext.fillRect(50,150,300,100)
+            offContext.fillRect(50, 150, 300, 100)
             offContext.globalCompositeOperation = 'destination-over'
             offContext.saveLayer()
             offContext.globalCompositeOperation = 'source-over'
             offContext.fillStyle = "#ff0000"
-            offContext.fillRect(100,50,100,300)
+            offContext.fillRect(100, 50, 100, 300)
             offContext.fillStyle = "#00ff00"
-            offContext.fillRect(150,50,100,300)
+            offContext.fillRect(150, 50, 100, 300)
             offContext.restoreLayer()
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
@@ -3053,7 +3138,7 @@ rotate(angle: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.rotate(45 * Math.PI / 180)
             offContext.fillRect(70, 20, 50, 50)
@@ -3106,7 +3191,7 @@ scale(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.lineWidth = 3
             offContext.strokeRect(30, 30, 50, 50)
@@ -3248,7 +3333,7 @@ setTransform方法使用的参数和transform()方法相同，但setTransform()�
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillStyle = 'rgb(255,0,0)'
             offContext.fillRect(0, 0, 100, 100)
@@ -3304,7 +3389,7 @@ setTransform(transform?: Matrix2D): void
           .width('230vp')
           .height('160vp')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext1.fillRect(100, 20, 50, 50);
             this.offcontext1.setTransform(1, 0.5, -0.5, 1, 10, 10);
             this.offcontext1.fillRect(100, 20, 50, 50);
@@ -3316,7 +3401,7 @@ setTransform(transform?: Matrix2D): void
           .width('230vp')
           .height('160vp')
           .backgroundColor('#0ffff0')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext2.fillRect(100, 20, 50, 50);
             let storedTransform = this.offcontext1.getTransform();
             this.offcontext2.setTransform(storedTransform);
@@ -3359,9 +3444,11 @@ getTransform(): Matrix2D
   struct TransFormDemo {
     private settings: RenderingContextSettings = new RenderingContextSettings(true);
     private context1: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offcontext1: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
+    private offcontext1: OffscreenCanvasRenderingContext2D =
+      new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
     private context2: CanvasRenderingContext2D = new CanvasRenderingContext2D(this.settings);
-    private offcontext2: OffscreenCanvasRenderingContext2D = new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
+    private offcontext2: OffscreenCanvasRenderingContext2D =
+      new OffscreenCanvasRenderingContext2D(600, 100, this.settings);
 
     build() {
       Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
@@ -3370,9 +3457,9 @@ getTransform(): Matrix2D
           .width('230vp')
           .height('120vp')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext1.fillRect(50, 50, 50, 50);
-            this.offcontext1.setTransform(1.2, Math.PI/8, Math.PI/6, 0.5, 30, -25);
+            this.offcontext1.setTransform(1.2, Math.PI / 8, Math.PI / 6, 0.5, 30, -25);
             this.offcontext1.fillRect(50, 50, 50, 50);
             let image = this.offcontext1.transferToImageBitmap();
             this.context1.transferFromImageBitmap(image);
@@ -3382,14 +3469,12 @@ getTransform(): Matrix2D
           .width('230vp')
           .height('120vp')
           .backgroundColor('#0ffff0')
-          .onReady(() =>{
+          .onReady(() => {
             this.offcontext2.fillRect(50, 50, 50, 50);
             let storedTransform = this.offcontext1.getTransform();
-            console.info("Matrix [scaleX = " + storedTransform.scaleX + ", scaleY = " + storedTransform.scaleY +
-            ", rotateX = " + storedTransform.rotateX + ", rotateY = " + storedTransform.rotateY +
-            ", translateX = " + storedTransform.translateX + ", translateY = " + storedTransform.translateY + "]")
+            console.info(`Matrix [scaleX = ${storedTransform.scaleX}, scaleY = ${storedTransform.scaleY}, rotateX = ${storedTransform.rotateX}, rotateY = ${storedTransform.rotateY}, translateX = ${storedTransform.translateX}, translateY = ${storedTransform.translateY}]`)
             this.offcontext2.setTransform(storedTransform);
-            this.offcontext2.fillRect(50,50,50,50);
+            this.offcontext2.fillRect(50, 50, 50, 50);
             let image = this.offcontext2.transferToImageBitmap();
             this.context2.transferFromImageBitmap(image);
           })
@@ -3438,7 +3523,7 @@ translate(x: number, y: number): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.fillRect(10, 10, 50, 50)
             offContext.translate(70, 70)
@@ -3477,6 +3562,10 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number): void
 | dy    | number | 是  | 绘制区域左上角在y轴的位置。<br>异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
  **示例：**
+
+> **说明：**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
 
   ```ts
   // xxx.ets
@@ -3533,6 +3622,10 @@ drawImage(image: ImageBitmap | PixelMap, dx: number, dy: number, dw: number, dh:
 | dh    | number | 是  | 绘制区域的高度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
  **示例：**
+
+> **说明：**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
 
   ```ts
   // xxx.ets
@@ -3593,6 +3686,10 @@ drawImage(image: ImageBitmap | PixelMap, sx: number, sy: number, sw: number, sh:
 | dh    | number | 是  | 绘制区域的高度。<br>负数、异常值undefined或null按0处理，NaN和Infinity按无效值处理，不进行绘制。<br>默认单位：vp |
 
  **示例：**
+
+> **说明：**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
 
   ```ts
   // xxx.ets
@@ -3700,7 +3797,10 @@ getPixelMap(sx: number, sy: number, sw: number, sh: number): PixelMap
 
 > **说明：**
 >
-> DevEco Studio的预览器不支持显示使用setPixelMap绘制的内容。
+> - DevEco Studio的预览器不支持显示使用setPixelMap绘制的内容。
+>
+> - 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+
 
   ```ts
   // xxx.ets
@@ -3783,6 +3883,10 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
 
 **示例：**
 
+> **说明：**
+>
+> 此示例的资源不在src > main > resource目录下，从DevEco Studio 6.0.0 Beta2版本开始，新建工程或模块时，默认创建的模块不会对非resources目录下的资源进行打包，需使能相关开关：模块的build-profile.json5中buildOption > resOptions > copyCodeResource > enable设置为true，详见resOptions中[copyCodeResource](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-hvigor-build-profile#table1476161719356)相关介绍。
+
   ```ts
   // xxx.ets
   @Entry
@@ -3800,11 +3904,11 @@ getImageData(sx: number, sy: number, sw: number, sh: number): ImageData
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.drawImage(this.img,0,0,130,130)
+            offContext.drawImage(this.img, 0, 0, 130, 130)
             let imageData = offContext.getImageData(50,50,130,130)
-            offContext.putImageData(imageData,150,150)
+            offContext.putImageData(imageData, 150, 150)
             let image = this.offCanvas.transferToImageBitmap()
             this.context.transferFromImageBitmap(image)
           })
@@ -4095,7 +4199,7 @@ toDataURL(type?: string, quality?: any): string
           .height(100)
           .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
-            offContext.fillRect(0,0,100,100)
+            offContext.fillRect(0, 0, 100, 100)
             this.dataURL = offContext.toDataURL()
           })
         Text(this.dataURL)
@@ -4201,7 +4305,7 @@ restore(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.save() // save the default state
             offContext.fillStyle = "#00ff00"
@@ -4249,7 +4353,7 @@ save(): void
           .width('100%')
           .height('100%')
           .backgroundColor('#ffff00')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             offContext.save() // save the default state
             offContext.fillStyle = "#00ff00"
@@ -4312,7 +4416,7 @@ createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGrad
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let grad = offContext.createLinearGradient(50,0, 300,100)
             grad.addColorStop(0.0, 'rgb(39,135,217)')
@@ -4379,7 +4483,7 @@ createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number,
           .width('100%')
           .height('100%')
           .backgroundColor('rgb(213,213,213)')
-          .onReady(() =>{
+          .onReady(() => {
             let offContext = this.offCanvas.getContext("2d", this.settings)
             let grad = offContext.createRadialGradient(200,200,50, 200,200,200)
             grad.addColorStop(0.0, 'rgb(39,135,217)')
@@ -4440,7 +4544,7 @@ struct OffscreenCanvasConicGradientPage {
         .width('100%')
         .height('100%')
         .backgroundColor('#ffffff')
-        .onReady(() =>{
+        .onReady(() => {
           let offContext = this.offCanvas.getContext("2d", this.settings)
           let grad = offContext.createConicGradient(0, 50, 80)
           grad.addColorStop(0.0, '#ff0000')

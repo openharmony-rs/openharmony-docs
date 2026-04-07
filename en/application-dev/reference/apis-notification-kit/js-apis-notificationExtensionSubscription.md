@@ -15,7 +15,6 @@ The **notificationExtensionSubscription** module provides capabilities for manag
 
 ```ts
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 ```
 
@@ -57,18 +56,71 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 ```ts
 import { common } from '@kit.AbilityKit';
 
-const DOMAIN = 0x0000;
-
 try {
+  // Obtain the context from the component and ensure that the return value of this.getuIContext().getHostContext() is UIAbilityContext.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   notificationExtensionSubscription.openSubscriptionSettings(context).then(() => {
-    hilog.info(DOMAIN, 'testTag', `openSubscriberSettings success`);
+    console.info(`openSubscriberSettings success`);
   }).catch((e:Error) => {
     let error = e as BusinessError
-    hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+    console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
   });
 } catch (error) {
-  hilog.error(DOMAIN, 'testTag', `failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+  console.error(`failed to call openSubscriptionSettings ${JSON.stringify(error)}`)
+}
+```
+
+## notificationExtensionSubscription.openSubscriptionSettingsWithResult<sup>26+</sup>
+
+openSubscriptionSettingsWithResult(context: UIAbilityContext): Promise\<UserGrantSetting\>
+
+Opens the settings screen of notification extension subscription in a semi-modal dialog box. On this screen, the user can toggle on the **Allow access to notifications on this device** switch and grant access to notifications for specified applications. This API uses a promise to return the result. When the semi-modal window is closed, the user-defined authorization result is returned.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+**Required permissions**: ohos.permission.SUBSCRIBE_NOTIFICATION
+
+**Parameters**
+
+| Name  | Type                    | Mandatory| Description                |
+| -------- | ------------------------ | ---- |--------------------|
+| context | [UIAbilityContext](../../reference/apis-ability-kit/js-apis-inner-application-uiAbilityContext.md) | Yes  | Ability context bound to the notification settings page.|
+
+**Return value**
+
+| Type    | Description| 
+| ------- |--|
+| Promise\<[UserGrantSetting](#usergrantsetting26)\> | Promise used to return the result of the authorization set by the user.| 
+
+**Error codes**
+
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Notification Error Codes](errorcode-notification.md).
+
+| ID| Error Message                           |
+| -------- | ----------------------------------- |
+| 201      | Permission denied or current device not supported.     |  
+| 1600001  | Internal error.                     |
+| 1600018  | The notification settings window is already displayed.           |
+| 1600023  | The application does not implement the NotificationSubscriberExtensionAbility.           |
+
+**Example**
+
+```ts
+import { common } from '@kit.AbilityKit';
+
+try {
+  // Obtain the context from the component and ensure that the return value of this.getuIContext().getHostContext() is UIAbilityContext.
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
+    console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
+  }).catch((e:Error) => {
+    let error = e as BusinessError
+    console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
+  });
+} catch (error) {
+  console.error(`failed to call openSubscriptionSettingsWithResult ${JSON.stringify(error)}`)
 }
 ```
 
@@ -108,7 +160,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-const DOMAIN = 0x0000;
 
 let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[] = [
   {
@@ -117,9 +168,9 @@ let infos: notificationExtensionSubscription.NotificationExtensionSubscriptionIn
   }
 ];
 notificationExtensionSubscription.subscribe(infos).then(() => {
-  hilog.info(DOMAIN, 'testTag',"subscribe success");
+  console.info("subscribe success");
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`subscribe fail: ${JSON.stringify(err)}`);
+  console.error(`subscribe fail: ${JSON.stringify(err)}`);
 });
 
 ```
@@ -153,12 +204,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-const DOMAIN = 0x0000;
 
 notificationExtensionSubscription.unsubscribe().then(() => {
-  hilog.info(DOMAIN, 'testTag',"unsubscribe success");
+  console.info("unsubscribe success");
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`unsubscribe fail: ${JSON.stringify(err)}`);
+  console.error(`unsubscribe fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -191,12 +241,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-const DOMAIN = 0x0000;
 
-notificationExtensionSubscription.getSubscribeInfo().then((data) => {
-  hilog.info(DOMAIN, 'testTag',`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
+notificationExtensionSubscription.getSubscribeInfo().then((data: notificationExtensionSubscription.NotificationExtensionSubscriptionInfo[]) => {
+  console.info(`getSubscribeInfo successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`getSubscribeInfo fail: ${JSON.stringify(err)}`);
+  console.error(`getSubscribeInfo fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -229,16 +278,15 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-const DOMAIN = 0x0000;
 
 notificationExtensionSubscription.isUserGranted().then((isOpen: boolean) => {
   if (isOpen) {
-    hilog.info(DOMAIN, 'testTag','isUserGranted true');
+    console.info('isUserGranted true');
   } else {
-    hilog.info(DOMAIN, 'testTag','isUserGranted false');
+    console.info('isUserGranted false');
   }
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`isUserGranted fail: ${JSON.stringify(err)}`);
+  console.error(`isUserGranted fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -271,12 +319,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 **Example**
 
 ```ts
-const DOMAIN = 0x0000;
 
-notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data) => {
-  hilog.info(DOMAIN, 'testTag',`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
+notificationExtensionSubscription.getUserGrantedEnabledBundles().then((data: notificationExtensionSubscription.GrantedBundleInfo[]) => {
+  console.info(`getUserGrantedEnabledBundles successfully. Data: ${JSON.stringify(data)}`);
 }).catch((err: BusinessError) => {
-  hilog.error(DOMAIN, 'testTag',`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
+  console.error(`getUserGrantedEnabledBundles fail: ${JSON.stringify(err)}`);
 });
 ```
 
@@ -337,3 +384,17 @@ Describes the bundle information of the authorized application.
 | Type| Description|
 | --- | --- |
 | [_GrantedBundleInfo](js-apis-inner-notification-notificationCommonDef.md#grantedbundleinfo22) | Bundle information of the authorized application.|
+
+## UserGrantSetting<sup>26+</sup>
+
+type UserGrantSetting = _UserGrantSetting
+
+Describes the user authorization settings.
+
+**Model restriction**: This API can be used only in the stage model.
+
+**System capability**: SystemCapability.Notification.Notification
+
+| Type| Description|
+| --- | --- |
+| [_UserGrantSetting](js-apis-inner-notification-notificationCommonDef.md#usergrantsetting26) | User authorization settings.|

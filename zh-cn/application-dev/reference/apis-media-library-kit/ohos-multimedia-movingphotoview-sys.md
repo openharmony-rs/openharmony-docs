@@ -94,7 +94,7 @@ setPlaybackStrategy(strategy: media.PlaybackStrategy): MovingPhotoViewAttribute
 // 该示例只展示参数用法，具体可以执行用例参考动态照片公开接口文档。
 // API version 21及之前版本导入方式：import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, MovingPhotoViewAttribute } from '@kit.MediaLibraryKit';
 // API version 22及之后版本导入方式如下：
-import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController，PixelMapFormat, DynamicRangeMode } from '@kit.MediaLibraryKit';
+import { photoAccessHelper, MovingPhotoView, MovingPhotoViewController, PixelMapFormat, DynamicRangeMode } from '@kit.MediaLibraryKit';
 import { media } from '@kit.MediaKit';
 
 let data: photoAccessHelper.MovingPhoto
@@ -115,7 +115,7 @@ struct Index {
   controller: MovingPhotoViewController = new MovingPhotoViewController();
   format: undefined | PixelMapFormat = PixelMapFormat.YCBCR_P010;
   mode: undefined | DynamicRangeMode = DynamicRangeMode.HIGH;
-  playbackstrategy: media.PlaybackStrategy = (enableCameraPostprocessing: true);
+  playbackstrategy: media.PlaybackStrategy = {enableCameraPostprocessing: true};
   private uiContext: UIContext = this.getUIContext()
   aboutToAppear(): void {
     loading(this.uiContext.getHostContext()!)
@@ -142,7 +142,7 @@ struct Index {
 
 ## MovingPhotoViewController
 
-一个MovingPhotoViewController对象可以控制一个MovingPhotoView，可用视频播放实例请参考[媒体业务模块](../apis-media-kit/arkts-apis-media.md)。
+一个MovingPhotoViewController对象可以控制一个MovingPhotoView，可用视频播放实例请参考媒体业务[模块描述](../apis-media-kit/arkts-apis-media.md)相关功能。
 
 ### pausePlayback<sup>20+</sup>
 

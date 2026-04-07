@@ -65,9 +65,9 @@
     |ComposeMail|指示撰写邮件功能。使用场景详见[拉起邮件类应用](./start-email-apps.md)。|
     |QueryByFlightNo|指示按航班号查询航班功能。使用场景详见[拉起航班类应用](./start-flight-apps.md)。|
     |QueryByLocation|指示按起降地查询航班功能。使用场景详见[拉起航班类应用](./start-flight-apps.md)。|
-    |QueryExpress|指示快递查询功能。使用场景详见[拉起类应用](./start-express-apps.md)。|    
-    |AppNotificationMgmt|指示应用内通知设置的功能。|
-
+    |QueryExpress|指示快递查询功能。使用场景详见[拉起快递类应用](./start-express-apps.md)。|    
+    |AppNotificationMgmt|指示应用内通知设置的功能。<!--RP1--><!--RP1End-->|
+    |PrimaryContactMgmt|从API version 23开始，新增支持该字段。指示社交通讯类应用“重要联系人列表”的设置功能。<!--RP2--><!--RP2End-->|
 2. 指定类型的应用被拉起时免跳转弹框：正常情况下，拉起指定类型的应用时，都会弹出确认是否打开应用的弹窗。如果您的应用有向其他应用提供登录/分享/支付的功能，可以在应用中声明对应的LinkFeature（取值参见下表）。应用通过上架审核后，当其他应用拉起您的应用时将不再弹窗提示。
 
     ![exempted-dialog-between-apps](figures/exempted-dialog-between-apps.png)
@@ -134,7 +134,7 @@
 
 1. 设置linkFeature属性以声明当前应用支持的特性功能，从而系统可以从设备已安装应用中找到当前支持该特性的应用，登录场景LinkFeature固定为Login。
 
-2. 设置scheme、host、port、path/pathStartWith属性，与want中uri相匹配，以便区分不同功能，linkFeature设置为Login。
+2. 设置scheme、host、port、path/pathStartWith属性，与Want中uri相匹配，以便区分不同功能，linkFeature设置为Login。
 
     <!-- @[pulllink_login](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Ability/PullLinking/entry/src/main/module.json5) -->
 

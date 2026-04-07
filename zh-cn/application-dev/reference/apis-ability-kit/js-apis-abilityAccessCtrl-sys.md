@@ -24,6 +24,8 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 
 管理访问控制模块的实例。
 
+AtManager接口调用依赖于tokenID，系统应用可通过[bundleManager.getApplicationInfo](js-apis-bundleManager-sys.md#bundlemanagergetapplicationinfo)或[bundleManager.getBundleInfoForSelf](js-apis-bundleManager.md#bundlemanagergetbundleinfoforself)获取tokenID。
+
 ### grantUserGrantedPermission
 
 grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
@@ -52,7 +54,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -72,7 +74,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取,普通应用可以通过bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('grantUserGrantedPermission success');
@@ -104,7 +106,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -124,7 +126,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取,普通应用可以通过bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
   if (err) {
@@ -163,7 +165,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -183,7 +185,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取,普通应用可以通过bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('revokeUserGrantedPermission success');
@@ -215,7 +217,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -235,7 +237,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取,普通应用可以通过bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 1;
 atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, (err: BusinessError, data: void) => {
   if (err) {
@@ -273,7 +275,7 @@ getPermissionFlags(tokenID: number, permissionName: Permissions): Promise&lt;num
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -293,7 +295,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取,普通应用可以通过bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIONS').then((data: number) => {
   console.info(`getPermissionFlags success, result: ${data}`);
 }).catch((err: BusinessError) => {
@@ -328,7 +330,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -349,7 +351,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 let atManager = abilityAccessCtrl.createAtManager();
 let permission: Permissions = 'ohos.permission.CAMERA';
 
-atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED).then((err) => {
+atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.PermissionRequestToggleStatus.CLOSED).then(() => {
   console.info('setPermissionRequestToggleStatus: set closed successful');
 }).catch((err: BusinessError) => {
   console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
@@ -382,7 +384,7 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise&lt;Permis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -429,6 +431,10 @@ getVersion(): Promise&lt;number&gt;
 | :------------ | :---------------------------------- |
 | Promise&lt;number&gt; | Promise对象，返回查询到的版本号。 |
 
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 202 | Not System App. Interface caller is not a system app. |
@@ -472,7 +478,7 @@ getPermissionsStatus(tokenID: number, permissionList: Array&lt;Permissions&gt;):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -490,7 +496,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取,普通应用可以通过bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: Array<abilityAccessCtrl.PermissionStatus>) => {
   console.info(`getPermissionsStatus success, result: ${data}`);
 }).catch((err: BusinessError) => {
@@ -525,7 +531,7 @@ on(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionLi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -580,7 +586,7 @@ off(type: 'permissionStateChange', tokenIDList: Array&lt;number&gt;, permissionL
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -632,7 +638,7 @@ requestPermissionOnApplicationSetting(tokenID: number): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -647,7 +653,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取，普通应用可以通过bundleManager.getBundleInfoForSelf获取。
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
   console.info('requestPermissionOnApplicationSetting success');
 }).catch((err: BusinessError) => {
@@ -683,7 +689,7 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -703,7 +709,7 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 2;
 atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('grantPermission success');
@@ -714,7 +720,7 @@ atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags
 
 ### revokePermission<sup>21+</sup>
 
-revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: number): Promise&lt;void&gt;
+revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: number, killProcess?: boolean): Promise&lt;void&gt;
 
 撤销应用权限。使用Promise异步回调。
 
@@ -731,6 +737,7 @@ revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: 
 | tokenID      | number              | 是   | 目标应用的身份标识，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。|
 | permissionName | Permissions              | 是   | 被撤销的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 | permissionFlags  | number | 是   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗，用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
+| killProcess | boolean | 否 | 是否终止应用进程。<br>- true表示终止应用进程。<br>- false表示不终止应用进程。<br>- 默认值为true。<br>**起始版本**：26.0.0 |
 
 **返回值：**
 
@@ -740,16 +747,16 @@ revokePermission(tokenID: number, permissionName: Permissions, permissionFlags: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
-| 201 | Permission denied. Interface caller does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
-| 202 | Not System App. Interface caller is not a system app. |
-| 12100001 | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
+| 201 | Permission denied. The interface invoker does not have permission "ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
+| 202 | Not a system application. The interface invoker is not a system application. |
+| 12100001 | Invalid parameter. The token ID is 0, the permission name exceeds 256 characters or is not declared in the module.json file, or the value of flags is invalid. |
 | 12100002 | The specified tokenID does not exist. |
 | 12100003 | The specified permission does not exist. |
-| 12100006 | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
+| 12100006 | The specified permission is not allowed to be revoked from the application specified by the tokenID. Either the application is a sandbox or the tokenID is from a remote device. |
 | 12100007 | The service is abnormal. |
 | 12100014 | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
 
@@ -760,8 +767,15 @@ import { abilityAccessCtrl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
-let tokenID: number = 0; // 系统应用可以通过bundleManager.getApplicationInfo获取
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
 let permissionFlags: number = 2;
+// 不终止应用进程
+atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags, false).then(() => {
+  console.info('revokePermission success, process not killed');
+}).catch((err: BusinessError) => {
+  console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
+});
+// 终止应用进程（默认行为）
 atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags).then(() => {
   console.info('revokePermission success');
 }).catch((err: BusinessError) => {
@@ -787,7 +801,7 @@ requestPermissionsFromUserWithWindowId(context: Context, windowId: number, permi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| context | [Context](js-apis-inner-application-context.md) | 是 | 请求权限的UIAbility的Context。 |
+| context | [Context](js-apis-inner-application-context.md#context) | 是 | 应用上下文Context。 |
 | windowId | number | 是 | 应用窗口的ID。 |
 | permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt; | 是 | 需要校验的权限名称，合法的权限名取值可在[应用权限列表](../../security/AccessToken/app-permissions.md)中查询。 |
 
@@ -799,7 +813,7 @@ requestPermissionsFromUserWithWindowId(context: Context, windowId: number, permi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[访问控制错误码](errorcode-access-token.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
 
 | 错误码ID | 错误信息 |
 | -------- | -------- |
@@ -832,7 +846,140 @@ atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permi
 });
 ```
 
-### PermissionRequestToggleStatus<sup>12+</sup>
+### queryStatusByPermission
+
+queryStatusByPermission(permissionList: Array&lt;Permissions&gt;): Promise&lt;Array&lt;PermissionStatusInfo&gt;&gt;
+
+根据权限列表查询所有已请求过该权限的应用及其权限状态。使用Promise异步回调。当查询的数据结果的大小超过50000条时，返回12100015错误码。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| permissionList | Array&lt;[Permissions](../../security/AccessToken/app-permissions.md)&gt;   | 是   | 待查询的权限名称列表。该参数不能为空，且长度不能超过1024。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| Promise&lt;Array&lt;[PermissionStatusInfo](#permissionstatusinfo)&gt;&gt; | Promise对象，返回查询到的权限状态信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| 202 | Not system application. Interface caller is not a system application. |
+| 12100001 | Invalid parameter. The permissionList is empty or exceeds the size limit. |
+| 12100003 | The specified permission does not exist. |
+| 12100007 | The service is abnormal. |
+| 12100015 | The queried data exceeds the upper limit. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let permissionList: Array<Permissions> = ['ohos.permission.CAMERA'];
+atManager.queryStatusByPermission(permissionList).then((data: Array<abilityAccessCtrl.PermissionStatusInfo>) => {
+  console.info('queryStatusByPermission success, data: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`queryStatusByPermission fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+### queryStatusByTokenID
+
+queryStatusByTokenID(tokenIDList: Array&lt;number&gt;): Promise&lt;Array&lt;PermissionStatusInfo&gt;&gt;
+
+根据应用tokenID列表查询其所有的权限状态。使用Promise异步回调。当查询的数据结果的大小超过50000条时，返回12100015错误码。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限：** ohos.permission.GET_SENSITIVE_PERMISSIONS，仅系统应用可用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| tokenIDList | Array&lt;number&gt;   | 是   | 待查询的应用tokenID列表，可通过应用的[ApplicationInfo](js-apis-bundleManager-applicationInfo.md)的accessTokenId字段获得。该参数不能为空，且长度不能超过1024。 |
+
+**返回值：**
+
+| 类型          | 说明                                |
+| :------------ | :---------------------------------- |
+| Promise&lt;Array&lt;[PermissionStatusInfo](#permissionstatusinfo)&gt;&gt; | Promise对象，返回查询到的权限状态信息列表。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[访问控制错误码](errorcode-access-token.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | -------- |
+| 201 | Permission denied. Interface caller does not have permission "ohos.permission.GET_SENSITIVE_PERMISSIONS". |
+| 202 | Not system application. Interface caller is not a system application. |
+| 12100001 | Invalid parameter. The tokenIDList is empty or exceeds the size limit. |
+| 12100002 | The specified tokenID does not exist. |
+| 12100007 | The service is abnormal. |
+| 12100015 | The queried data exceeds the upper limit. |
+
+**示例：**
+
+```ts
+import { abilityAccessCtrl } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let atManager: abilityAccessCtrl.AtManager = abilityAccessCtrl.createAtManager();
+let tokenID: number = 0; // 获取tokenID的方式可参考AtManager章节的描述。
+let tokenIDList: Array<number> = [tokenID];
+atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.PermissionStatusInfo>) => {
+  console.info('queryStatusByTokenID success, data: ' + JSON.stringify(data));
+}).catch((err: BusinessError) => {
+  console.error(`queryStatusByTokenID fail, code: ${err.code}, message: ${err.message}`);
+});
+```
+
+## PermissionStatusInfo
+
+表示权限状态信息。
+
+**起始版本：** 26.0.0
+
+**系统接口：** 此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+| 名称           | 类型                       | 只读 | 可选 | 说明                |
+| -------------- | ------------------------- | ---- | ---- | ------------------ |
+| tokenID        | number                    | 否   | 否   | 应用的身份标识。 |
+| permissionName | [Permissions](../../security/AccessToken/app-permissions.md) | 否   | 否   | 权限名称。 |
+| grantStatus    | [GrantStatus](js-apis-abilityAccessCtrl.md#grantstatus) | 否   | 否   | 权限授权状态。 |
+| grantFlags     | number                    | 否   | 否   | 授权选项。<br>- 1表示当次用户若选择禁止该权限，下次权限弹窗仍可以弹出申请用户授权。<br>- 2表示当次用户若选择禁止该权限，下次不会再弹出权限弹窗。用户需要在setting的权限管理中进行授权。<br>- 64表示当次用户若选择仅本次允许，权限仅本次授权。应用切换后台状态或退出后取消授权。 |
+
+## PermissionRequestToggleStatus<sup>12+</sup>
 
 表示指定权限对应的弹窗开关状态的枚举。
 

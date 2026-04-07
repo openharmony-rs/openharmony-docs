@@ -100,15 +100,15 @@ The symmetric key used by HMAC can be generated based on a string parameter.
 
 | MAC Algorithm| MD Algorithm| Key Length (Bit)| String Parameter| API Version| 
 | -------- | -------- | -------- | -------- | -------- |
-| HMAC | SHA1 | 160 | HMAC\|SHA1 | 11+ | 
-| HMAC | SHA224 | 224 | HMAC\|SHA224 | 11+ | 
-| HMAC | SHA256 | 256 | HMAC\|SHA256 | 11+ | 
-| HMAC | SHA384 | 384 | HMAC\|SHA384 | 11+ | 
-| HMAC | SHA512 | 512 | HMAC\|SHA512 | 11+ | 
+| HMAC | SHA-1| 160 | HMAC\|SHA1 | 11+ | 
+| HMAC | SHA-224| 224 | HMAC\|SHA224 | 11+ | 
+| HMAC | SHA-256| 256 | HMAC\|SHA256 | 11+ | 
+| HMAC | SHA-384| 384 | HMAC\|SHA384 | 11+ | 
+| HMAC | SHA-512| 512 | HMAC\|SHA512 | 11+ | 
 | HMAC | SM3 | 256 | HMAC\|SM3 | 11+ | 
 | HMAC | - | [1, 32768] | HMAC | 11+ | 
 
-### ChaCha20
+## ChaCha20
 
 The Crypto framework supports this algorithm since API version 22.
 
@@ -123,3 +123,59 @@ Features:
 | Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
 | -------- | -------- | -------- | -------- |
 | ChaCha20 | 256 | ChaCha20 | 22+ | 
+
+## RC2
+The Crypto framework supports this algorithm since API version 26.0.0.
+
+RC2 is a block cipher algorithm with a block size of 64 bits.
+
+Features:
+
+- Block size: 64 bits (8 bytes).
+- Key length: 8 to 1024 bits. The string parameter is **RC2**.
+
+| Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| RC2 | 8 to 1024| RC2 | 26.0.0+ | 
+
+## RC4
+The Crypto framework supports this algorithm since API version 26.0.0.
+
+RC4 is a stream cipher algorithm.
+
+Features:
+
+- It is a stream cipher, so no padding is required.
+- Key length: 8 to 4096 bits. The string parameter is **RC4**.
+
+| Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| RC4 | 8 to 4096 | RC4 | 26.0.0+ | 
+
+## Blowfish (BF)
+The Crypto framework supports this algorithm since API version 26.0.0.
+
+Blowfish is a block cipher algorithm with a block size of 64 bits.
+
+Features:
+
+- Block size: 64 bits (8 bytes)
+- Key length: 32 to 448 bits. The string parameter is **Blowfish**.
+
+| Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| Blowfish | 32 to 448| Blowfish | 26.0.0+ | 
+
+## CAST
+The Crypto framework supports this algorithm since API version 26.0.0.
+
+CAST (for example, CAST-128/CAST5) is a block cipher algorithm with a block size of 64 bits.
+
+Features:
+
+- Block size: 64 bits (8 bytes)
+- Key length: 40 to 128 bits. The string parameter is **CAST**.
+
+| Symmetric Key Algorithm| Key Length (Bit)| String Parameter| API Version| 
+| -------- | -------- | -------- | -------- |
+| CAST | 40 to 128| CAST | 26.0.0+ | 

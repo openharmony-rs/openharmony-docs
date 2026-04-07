@@ -94,15 +94,15 @@ enum OH_AudioNode_Type
 
 | 枚举项 | 描述 |
 | -- | -- |
-| INPUT_NODE_TYPE_DEFAULT = 1 | 输入节点，支持从应用程序获取音频数据。<br>**起始版本：** 22 |
-| OUTPUT_NODE_TYPE_DEFAULT = 101 | 输出节点，支持向应用程序提供音频数据。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_EQUALIZER = 201 | 均衡器效果节点。均衡器效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_NOISE_REDUCTION = 202 | 降噪效果节点。降噪效果节点输出的音频格式如下：<br> 采样率：16000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：1。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_SOUND_FIELD = 203 | 声场效果节点。声场效果节点支持的声场类型：[OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype)。<br> 声场效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204 | 音源分离效果节点。音源分离效果节点只能连接输出节点。<br> 音源分离效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE。<br> 声道数：4（前2个声道用于人声，后2个声道用于伴奏）。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205 | 声音美化效果节点。声音美化效果节点支持的声音美化类型：[OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype)。<br> 声音美化效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206 | 环境效果节点。环境效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 22 |
-| EFFECT_NODE_TYPE_AUDIO_MIXER = 207 | 混音效果节点。混音效果节点输出的音频格式如下：<br> 采样率：[OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate)。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE。<br> 声道数：2。<br>**起始版本：** 22 |
+| INPUT_NODE_TYPE_DEFAULT = 1 | 输入节点，支持从应用程序获取音频数据。 |
+| OUTPUT_NODE_TYPE_DEFAULT = 101 | 输出节点，支持向应用程序提供音频数据。 |
+| EFFECT_NODE_TYPE_EQUALIZER = 201 | 均衡器效果节点。均衡器效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。 |
+| EFFECT_NODE_TYPE_NOISE_REDUCTION = 202 | 降噪效果节点。降噪效果节点输出的音频格式如下：<br> 采样率：16000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：1。 |
+| EFFECT_NODE_TYPE_SOUND_FIELD = 203 | 声场效果节点。声场效果节点支持的声场类型：[OH_SoundFieldType](capi-native-audio-suite-base-h.md#oh_soundfieldtype)。<br> 声场效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。 |
+| EFFECT_MULTII_OUTPUT_NODE_TYPE_AUDIO_SEPARATION = 204 | 音源分离效果节点。音源分离效果节点只能连接输出节点。<br> 音源分离效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE。<br> 声道数：4（前2个声道用于人声，后2个声道用于伴奏）。 |
+| EFFECT_NODE_TYPE_VOICE_BEAUTIFIER = 205 | 声音美化效果节点。声音美化效果节点支持的声音美化类型：[OH_VoiceBeautifierType](capi-native-audio-suite-base-h.md#oh_voicebeautifiertype)。<br> 声音美化效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。 |
+| EFFECT_NODE_TYPE_ENVIRONMENT_EFFECT = 206 | 环境效果节点。环境效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。 |
+| EFFECT_NODE_TYPE_AUDIO_MIXER = 207 | 混音效果节点。混音效果节点输出的音频格式如下：<br> 采样率：[OH_Audio_SampleRate](capi-native-audio-suite-base-h.md#oh_audio_samplerate)。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_F32LE。<br> 声道数：2。|
 | EFFECT_NODE_TYPE_SPACE_RENDER = 208 | 空间渲染效果节点。空间渲染效果节点输出的音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 23 |
 | EFFECT_NODE_TYPE_PURE_VOICE_CHANGE = 209 | 传统变声效果节点。传统变声效果节点输出的音频格式如下：<br> 采样率：16000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：1。<br>**起始版本：** 23 |
 | EFFECT_NODE_TYPE_GENERAL_VOICE_CHANGE = 210 | 通用变声效果节点。通用变声效果节点的输出音频格式如下：<br> 采样率：48000Hz。<br> 采样格式：[OH_Audio_SampleFormat](capi-native-audio-suite-base-h.md#oh_audio_sampleformat).AUDIO_SAMPLE_S16LE。<br> 声道数：2。<br>**起始版本：** 23 |

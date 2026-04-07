@@ -280,8 +280,8 @@ onDragSpringLoading(callback: Callback\<SpringLoadingContext\> | null, configura
 
 | 名称          | 类型   | 描述                                       |
 | ------------- | ------ | ---------------------------------------- |
-| selectedIndex | number | 当拖拽事件设在父容器的子元素时，selectedIndex表示当前被拖拽子元素是父容器第selectedIndex个子元素，selectedIndex从0开始。<br/>仅在[ListItem](ts-container-listitem.md)组件的拖拽事件中生效。 |
-| insertIndex   | number | 当前拖拽元素在List组件中放下时，insertIndex表示被拖拽元素插入该组件的第insertIndex个位置，insertIndex从0开始。<br/>仅在[List](ts-container-list.md)组件的拖拽事件中生效。 |
+| selectedIndex | number | 当拖拽事件设在父容器的子元素时，selectedIndex表示当前被拖拽子元素是父容器第selectedIndex个子元素，selectedIndex从0开始。<br/>仅在[ListItem](ts-container-listitem.md)组件的拖拽事件中生效，否则返回undefined。 |
+| insertIndex   | number | 当前拖拽元素在List组件中放下时，insertIndex表示被拖拽元素插入该组件的第insertIndex个位置，insertIndex从0开始。<br/>仅在[List](ts-container-list.md)组件的拖拽事件中生效，否则返回undefined。 |
 
 ## DragEvent<sup>7+</sup>
 
@@ -728,17 +728,16 @@ getGlobalDisplayY(): number
 
 定义拖拽操作的结果及组件的落入选定状态。
 
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 值 | 说明 |
 | ----- | -- | --------------- |
-| DRAG_SUCCESSFUL | 0 |拖拽成功，在[onDrop](#ondrop)中使用。 |
-| DRAG_FAILED | 1 |拖拽失败，在[onDrop](#ondrop)中使用。 |
-| DRAG_CANCELED | 2 |拖拽取消，在[onDrop](#ondrop)中使用。 |
-| DROP_ENABLED | 3 |组件允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。 |
-| DROP_DISABLED | 4 |组件不允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。 |
+| UNKNOWN<sup>24+</sup> | -1 |拖拽结果尚未设置，在[onDragStart](#ondragstart)，[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)，[onDrop](#ondrop)中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+| DRAG_SUCCESSFUL | 0 |拖拽成功，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DRAG_FAILED | 1 |拖拽失败，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DRAG_CANCELED | 2 |拖拽取消，在[onDrop](#ondrop)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DROP_ENABLED | 3 |组件允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| DROP_DISABLED | 4 |组件不允许落入，在[onDragEnter](#ondragenter)，[onDragMove](#ondragmove)，[onDragLeave](#ondragleave)中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## DragBehavior<sup>10+</sup>
 
@@ -1177,7 +1176,7 @@ struct DropAnimationExample {
 
 ```ts
 import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-import { fileUri, fileIo as fs } from '@kit.CoreFileKit';
+import { fileUri, fileIo as fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -1205,9 +1204,9 @@ struct ImageExample {
               let data = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id, 120);
               const arrayBuffer: ArrayBuffer = data.buffer.slice(data.byteOffset, data.byteLength + data.byteOffset);
               let filePath = context.filesDir + '/test.png';
-              let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-              fs.writeSync(file.fd, arrayBuffer);
-              //获取图片的uri
+              let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+              fileIo.writeSync(file.fd, arrayBuffer);
+              // 获取图片的uri
               let uri = fileUri.getUriFromPath(filePath);
               let image: unifiedDataChannel.Image = new unifiedDataChannel.Image();
               image.imageUri = uri;
@@ -1649,7 +1648,7 @@ struct Index {
 
 ```ts
 import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-import { fileUri, fileIo as fs } from '@kit.CoreFileKit';
+import { fileUri, fileIo as fileIo } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 
 @Entry
@@ -1683,17 +1682,17 @@ struct VideoExample {
                 }
                 let data = context.resourceManager.getRawFdSync('test1.mp4');
                 let filePath = context.filesDir + '/test1.mp4';
-                let file: fs.File = null!;
+                let file: fileIo.File = null!;
                 try {
-                  file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+                  file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
                   let bufferSize = data.length as number;
                   let buf = new ArrayBuffer(bufferSize);
-                  fs.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
-                  fs.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
+                  fileIo.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
+                  fileIo.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
                 } catch (error) {
                   console.error(`openSync errorCode: ${error.code}, errorMessage: ${error.message}`);
                 } finally {
-                  fs.closeSync(file.fd);
+                  fileIo.closeSync(file.fd);
                 }
                 context.resourceManager.closeRawFdSync('test1.mp4')
                 this.uri = fileUri.getUriFromPath(filePath);

@@ -160,7 +160,7 @@ Opens the certificate management dialog box and displays the page of the specifi
 
 **Error codes**
 
-For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -193,13 +193,13 @@ try {
 
 openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise\<string>
 
-Opens a dialog box for installing a certificate. This API uses a promise to return the result.
+Opens a dialog box for installing a certificate. This API uses a promise to return the result. In API version 26.0.0 and later versions, you can use [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to check whether the CA certificate management dialog box can be opened.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
-**Device support**: This API is available on PCs/2-in-1 devices. For other devices, error code 29700004 is returned.
+**Device behavior differences**: This API can be properly called on PCs and 2-in-1 devices. If this API is called on other device types and **certType** is set to **CA_CERT**, error code 29700004 is returned.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -208,8 +208,8 @@ Opens a dialog box for installing a certificate. This API uses a promise to retu
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md)                   | Yes  | Context of the application.|
-| certType | [CertificateType](#certificatetype14)                   | Yes  | Type of the certificate to install.|
-| certScope | [CertificateScope](#certificatescope14)                   | Yes  | Defines the usage scope of the certificate to be installed.|
+| certType | [CertificateType](#certificatetype14)                   | Yes  | Type of the certificate to install. **CA_CERT**, **CREDENTIAL_USER**, and **CREDENTIAL_SYSTEM** are currently supported.|
+| certScope | [CertificateScope](#certificatescope14)                   | Yes  | Usage scope of the certificate to install. **CURRENT_USER** and **NOT_SPECIFIED** are currently supported.|
 | cert | Uint8Array                  | Yes  | Data of the certificate to install.|
 
 **Return value**
@@ -220,7 +220,7 @@ Opens a dialog box for installing a certificate. This API uses a promise to retu
 
 **Error codes**
 
-For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -264,7 +264,7 @@ try {
 
 openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise\<void>
 
-Opens a dialog box for deleting a certificate. This API uses a promise to return the result.
+Opens a dialog box for deleting a certificate. This API uses a promise to return the result. In API version 26.0.0 and later versions, you can use [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to check whether the CA certificate management dialog box can be opened.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -290,7 +290,7 @@ Opens a dialog box for deleting a certificate. This API uses a promise to return
 
 **Error codes**
 
-For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -330,7 +330,7 @@ try {
 
 openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property: CertificateDialogProperty): Promise\<void>
 
-Opens the certificate management dialog box and displays the certificate details. This API uses a promise to return the result.
+Opens the certificate management dialog box and displays the certificate details. This API uses a promise to return the result. In API version 26.0.0 and later versions, you can use [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to check whether the CA certificate management dialog box can be opened.
 
 **Required permissions**: ohos.permission.ACCESS_CERT_MANAGER
 
@@ -356,7 +356,7 @@ Opens the certificate management dialog box and displays the certificate details
 
 **Error codes**
 
-For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -419,7 +419,7 @@ Opens the authorization page of the certificate management dialog box to grant a
 
 **Error codes**
 
-For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
 
 | ID   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -577,5 +577,45 @@ try {
 } catch (err) {
     let error = err as BusinessError;
     console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## certificateManagerDialog.supportsCACertDialog
+
+supportsCACertDialog(): boolean
+
+Checks whether the CA certificate management dialog box can be opened.
+
+**System capability**: SystemCapability.Security.CertificateManagerDialog
+
+**Model restriction**: This API can be used only in the stage model.
+
+**Since**: 26.0.0
+
+**Return value**
+
+| Type              | Description                                  |
+|------------------|--------------------------------------|
+| boolean | Whether the CA certificate management dialog box can be opened. **true**: supported; **false**: not supported|
+
+**Error codes**
+
+For details about the error codes, see [Certificate Management Dialog Box Error Codes](errorcode-certManagerDialog.md).
+
+| ID   | Error Message                                                                                                                                           |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
+
+**Example**
+```ts
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isSupport: boolean = certificateManagerDialog.supportsCACertDialog();
+  console.info(`Success to check whether the device supports CA dialog.`)
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```

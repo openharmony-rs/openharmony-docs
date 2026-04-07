@@ -132,6 +132,9 @@ USB证书凭据授权请求信息。
 | ----------------- | ------- | ---- | ---- | ---------------------------- |
 | certTypes | Array<[CertificateType](#certificatetype14)>   | 否   | 否   | 表示证书类型的列表。 |
 | certPurpose | [certificateManager.CertificatePurpose](js-apis-certManager.md#certificatepurpose22)    | 否   | 是   | 表示证书用途。<br>若certTypes参数中存在CertificateType.CREDENTIAL_UKEY类型，则certPurpose参数生效。 |
+| keyAlgIDs |  Array\<string>  | 否   | 是   | 表示证书公钥的算法类型，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。支持的取值为RSA、EC或ECDSA。<br>若 keyAlgIDs包含不支持的算法，则该筛选器无效。<br>数组最大长度为20。<br>**起始版本：** 26.0.0 |
+| issuers |  Array\<Uint8Array>  | 否   | 是   | 表示以DER格式编码的证书颁发者，用于筛选凭据授权对话框中的证书列表，仅显示匹配的证书。<br>如果issuers数组中存在长度为0的元素，则issuers筛选器不会生效。<br>数组最大长度为20。<br>**起始版本：** 26.0.0 |
+| uri | string  | 否   | 是   | 表示应用请求使用凭据用于验证服务器的地址，此uri显示在凭据授权对话框中。<br>**起始版本：** 26.0.0 |
 
 ## certificateManagerDialog.openCertificateManagerDialog
 
@@ -160,7 +163,7 @@ openCertificateManagerDialog(context: common.Context, pageType: CertificateDialo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -193,7 +196,7 @@ try {
 
 openInstallCertificateDialog(context: common.Context, certType: CertificateType, certScope: CertificateScope, cert: Uint8Array): Promise\<string>
 
-表示拉起证书管理安装证书向导，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理安装证书向导，显示相应的页面，使用Promise方式异步返回结果。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -220,7 +223,7 @@ openInstallCertificateDialog(context: common.Context, certType: CertificateType,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -264,7 +267,7 @@ try {
 
 openUninstallCertificateDialog(context: common.Context, certType: CertificateType, certUri: string): Promise\<void>
 
-表示拉起证书管理删除证书向导，显示相应的页面，使用Promise方式异步返回结果。
+表示拉起证书管理删除证书向导，显示相应的页面，使用Promise方式异步返回结果。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -290,7 +293,7 @@ openUninstallCertificateDialog(context: common.Context, certType: CertificateTyp
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -330,7 +333,7 @@ try {
 
 openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property: CertificateDialogProperty): Promise\<void>
 
-表示拉起证书管理对话框显示证书的详情，使用Promise方式异步返回结果。
+表示拉起证书管理对话框显示证书的详情，使用Promise方式异步返回结果。从版本26.0.0开始，可以通过[supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog)来判断是否支持打开CA证书管理对话框。
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -356,7 +359,7 @@ openCertificateDetailDialog(context: common.Context, cert: Uint8Array, property:
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -419,7 +422,7 @@ openAuthorizeDialog(context: common.Context): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[证书管理对话框错误码](errorcode-certManagerDialog.md)。
 
 | 错误码ID    | 错误信息                                                                                                                                            |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -577,5 +580,45 @@ try {
 } catch (err) {
     let error = err as BusinessError;
     console.error(`Failed to open ukey authorization dialog. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+## certificateManagerDialog.supportsCACertDialog
+
+supportsCACertDialog(): boolean
+
+判断设备是否支持打开CA证书管理对话框。
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**返回值**：
+
+| 类型               | 说明                                   |
+|------------------|--------------------------------------|
+| boolean | 设备是否支持打开CA证书管理对话框。true：支持，false：不支持。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[证书管理对话框错误码](errorcode-certManagerDialog.md)。
+
+| 错误码ID    | 错误信息                                                                                                                                            |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.           |
+
+**示例**：
+```ts
+import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  let isSupport: boolean = certificateManagerDialog.supportsCACertDialog();
+  console.info(`Success to check whether the device supports CA dialog.`)
+} catch (err) {
+    let error = err as BusinessError;
+    console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```

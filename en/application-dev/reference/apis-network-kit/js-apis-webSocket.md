@@ -1,4 +1,4 @@
-# # @ohos.net.webSocket (WebSocket Connection)
+# @ohos.net.webSocket (WebSocket Connection)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -59,7 +59,6 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 > **NOTE**
 >
-> You can listen to **error** events to obtain the operation result. 
 >
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
@@ -71,7 +70,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 >**NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters. Since API version 26, the maximum length of URLs is changed from 2048 characters to 8196 characters.
 
 **Parameters**
 
@@ -120,8 +119,6 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 > **NOTE**
 >
-> You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
->
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
@@ -132,7 +129,7 @@ Initiates a WebSocket request to establish a WebSocket connection to a given URL
 
 >**NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters. Since API version 26, the maximum length of URLs is changed from 2048 characters to 8196 characters.
 
 **Parameters**
 
@@ -162,6 +159,7 @@ For details about the error codes, see [webSocket Error Codes](errorcode-net-web
 import { webSocket } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// Example 1:
 let ws = webSocket.createWebSocket();
 let options: webSocket.WebSocketRequestOptions | undefined;
 if (options !=undefined) {
@@ -180,6 +178,21 @@ ws.connect(url, options, (err: BusinessError, value: Object) => {
     console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
   }
 });
+
+// Example 2:
+let url = "ws://"
+let ws = webSocket.createWebSocket();
+let options: webSocket.WebSocketRequestOptions = {
+  minSupportTlsProtocol: webSocket.TlsProtocol.TLS_V_1_1
+};
+ws.connect(url, options, (err: BusinessError, value: Object) => {
+  if (!err) {
+    console.info("connect success")
+  } else {
+    console.error(`connect fail. Code: ${err.code}, message: ${err.message}`)
+  }
+});
+
 ```
 
 ### connect
@@ -190,8 +203,6 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 > **NOTE**
 >
-> You can listen to **error** events to obtain the operation result. If an error occurs, the error code 200 will be returned.
->
 >The boolean value returned in the callback indicates only whether the connection request is created successfully. To detect whether the WebSocket connection is successful, you need to subscribe to the **open** event via [on('open')](#onopen) before calling this API.
 
 **Required permissions**: ohos.permission.INTERNET
@@ -200,9 +211,9 @@ Establishes a WebSocket connection to a given URL. This API uses a promise to re
 
 **System capability**: SystemCapability.Communication.NetStack
 
->**NOTE**
+> **NOTE**
 >
->The URL cannot contain more than 1024 characters. Otherwise, the connection fails.
+>The URL cannot contain more than 1024 characters. Otherwise, the connection fails. Since API version 15, the maximum length of URLs is changed from 1024 characters to 2048 characters. Since API version 26, the maximum length of URLs is changed from 2048 characters to 8196 characters.
 
 **Parameters**
 
@@ -724,6 +735,8 @@ on(type: 'error', callback: ErrorCallback): void
 
 Subscribes to WebSocket error events. This API uses an asynchronous callback to return the result.
 
+The error code of the [error](#onerror) event callback is described as follows: WebSocket is essentially an HTTP protocol upgrade. If the server agrees to the upgrade, the server returns 101. The status code indicates that the protocol is switched from HTTP to WebSocket (the **open** callback is triggered). If the server rejects the upgrade or other exceptions occur, the server returns 200, indicating that the server only processes the request as a common HTTP request.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.Communication.NetStack
@@ -921,7 +934,7 @@ Starts the WebSocketServer service based on the specified **config**. This API u
 
 > **NOTE**
 >
-> You can listen for the **error** events to obtain the execution result of this API. For details about the result codes, see [WebSocket Error Codes](errorcode-net-webSocket.md).
+> You are advised not to listen for the same port when calling this API multiple times.
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -949,6 +962,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 2302002   | Websocket certificate file does not exist. |
 | 2302004   | Can't listen on the given NIC.            |
 | 2302005   | Can't listen on the given Port.           |
+| 2302007   | Websocket port already occupied.           |
 | 2302999   | Websocket other unknown error.             |
 
 **Example**
@@ -1132,7 +1146,7 @@ Closes a WebSocket connection. This API uses a promise to return the result.
 | Name | Type                   | Mandatory| Description                                                    |
 | ---------- | --------------------- | ---- | ----------------------------------------------------- |
 | connection | [WebSocketConnection](#websocketconnection19) | Yes | Client information, including the IP address and port number.                  |
-| options    | [webSocket.WebSocketCloseOptions](#websocketcloseoptions) | No | Defines the optional parameters carried in the request for closing a WebSocket connection.<br>By default, the error code is 200, and the cause is **Websocket connect failed**.|
+| options    | [webSocket.WebSocketCloseOptions](#websocketcloseoptions) | No | Optional parameters carried in the request for closing a WebSocket connection.<br>By default, the error code is 200, and the cause is **Websocket connect failed**.|
 
 **Return value**
 
@@ -1255,7 +1269,7 @@ Subscribes to the WebSocketServer connection event (the connection between the c
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **onconnect()** indicates that a connection is established between the client and server.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the result. which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | Yes| Callback used to return the information about connected clients.|
 
 **Example**
 
@@ -1286,7 +1300,7 @@ Unsubscribes from WebSocketServer connection events (the connection between the 
 | Name | Type                   | Mandatory| Description                                                    |
 | -------- | ----------------------- | ---- | ------------------------------------------- |
 | type     | string                  | Yes | Event type, which has a fixed value of **connect**. Successful calling of **offconnect()** indicates that listening for connection events is canceled successful.|
-| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the result. which is the information about connected clients.|
+| callback | Callback\<[WebSocketConnection](#websocketconnection19)\> | No | Callback used to return the information about connected clients.|
 
 **Example**
 
@@ -1454,7 +1468,7 @@ Unsubscribes from WebSocketServer error events. This API uses an asynchronous ca
 | Name | Type                   | Mandatory| Description                          |
 | -------- | ------------- | ---- | --------------------------------- |
 | type     | string        | Yes|  Event type, which has a fixed value of **error**. Successful calling of **offerror()** indicates that listening for the **error** events is canceled successfully.|
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the result. which is the error code (default value: **200**).                        |
+| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | No| Callback used to return the error code (default value: **200**).                        |
 
 **Example**
 
@@ -1482,6 +1496,7 @@ Defines the optional parameters carried in the request for establishing a WebSoc
 | skipServerCertVerification<sup>20+</sup> | boolean | No| Yes| Whether to skip server certificate verification. The value **true** means to skip server certificate verification, and the value **false** means the opposite. Default value: **false**.|
 | pingInterval<sup>21+</sup> | number | No| Yes| Custom [heartbeat detection interval](../../network/websocket-connection.md). The default value is 30s. Heartbeat detection is initiated at the specified interval. If the value is set to **0**, heartbeat detection is disabled. The maximum value is 30000s, and the minimum value is 0s.|
 | pongTimeout<sup>21+</sup> | number | No| Yes| Timeout interval for disconnecting a connection after heartbeat detection is initiated. The default value is 30s. If no response is received during the specified interval, the connection is disconnected. The maximum value is 30000s, and the minimum value is 0s. **pongTimeout** must be less than or equal to **pingInterval**.|
+| minSupportTlsProtocol<sup>26+</sup> | [TlsProtocol](#tlsprotocol26) | No| Yes| Custom minimum TLS version supported. For example, if this parameter is set to **TLS_V_1_1**, the client supports TLS 1.1, TLS 1.2, and TLS 1.3.|
 
 ## ClientCert<sup>11+</sup>
 
@@ -1535,9 +1550,8 @@ Represents the result obtained from the **close** event reported when the WebSoc
 | reason | string | No  |No|Error cause for closing the connection.|
 
 ## ResponseHeaders<sup>12+</sup>
-type ResponseHeaders = {
-  [k: string]: string | string[] | undefined;
-}
+
+type ResponseHeaders = { [k: string]: string | string[] | undefined; }
 
 Enumerates the response headers sent by the server.
 
@@ -1634,3 +1648,16 @@ Callback invoked when the WebSocketServer connection is closed.
 | ---------------- | -------------------  | ------ | --------------------------------------------- |
 | clientConnection | [WebSocketConnection](#websocketconnection19) | Yes| Client information, including the IP address and port number.            |
 | closeReason | [CloseResult](#closeresult10)  | Yes| Represents the result obtained from the **close** event reported when the WebSocket connection is closed.|
+
+## TlsProtocol<sup>26+</sup>
+
+Enumerates the TLS protocol types.
+
+**System capability**: SystemCapability.Communication.NetStack
+
+|            Name        | Value  | Description       |
+| :----------------------- | :---- | :---------- |
+| TLS_V_1_0 | 0    | TLS version 1.0. |
+| TLS_V_1_1  | 1    | TLS version 1.1.|
+| TLS_V_1_2 | 2    | TLS version 1.2.|
+| TLS_V_1_3 | 3    | TLS version 1.3.|

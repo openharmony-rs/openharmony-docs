@@ -60,7 +60,7 @@ struct KeyEventExample {
         .defaultFocus(true)
         .width(140).height(70)
         .onKeyEvent((event?: KeyEvent) => { // 给Button设置onKeyEvent事件
-          if(event){
+          if (event) {
             if (event.type === KeyType.Down) {
               this.buttonType = 'Down';
             }
@@ -68,9 +68,9 @@ struct KeyEventExample {
               this.buttonType = 'Up';
             }
             this.buttonText = 'Button: \n' +
-            'KeyType:' + this.buttonType + '\n' +
-            'KeyCode:' + event.keyCode + '\n' +
-            'KeyText:' + event.keyText;
+              'KeyType:' + this.buttonType + '\n' +
+              'KeyCode:' + event.keyCode + '\n' +
+              'KeyText:' + event.keyText;
           }
         })
 
@@ -81,7 +81,7 @@ struct KeyEventExample {
       Text(this.columnText).fontColor(Color.Red)
     }.width('100%').height('100%').justifyContent(FlexAlign.Center)
     .onKeyEvent((event?: KeyEvent) => { // 给父组件Column设置onKeyEvent事件
-      if(event){
+      if (event) {
         if (event.type === KeyType.Down) {
           this.columnType = 'Down';
         }
@@ -89,9 +89,9 @@ struct KeyEventExample {
           this.columnType = 'Up';
         }
         this.columnText = 'Column: \n' +
-        'KeyType:' + this.columnType + '\n' +
-        'KeyCode:' + event.keyCode + '\n' +
-        'KeyText:' + event.keyText;
+          'KeyType:' + this.columnType + '\n' +
+          'KeyCode:' + event.keyCode + '\n' +
+          'KeyText:' + event.keyText;
       }
     })
   }
@@ -109,7 +109,7 @@ struct KeyEventExample {
 
 1. 由于onKeyEvent事件默认是冒泡的，所以Button和Column的onKeyEvent都可以响应。
 
-2. 每个按键都有2次回调，分别对应KeyType.Down和KeyType.Up，表示按键被按下、然后抬起。
+2. 每个按键都有2次回调，分别对应KeyType.Down和KeyType.Up，表示按键被按下，然后抬起。
 
 
 如果要阻止冒泡，即仅Button响应键盘事件，Column不响应，在Button的onKeyEvent回调中加入event.stopPropagation()方法即可，如下：
@@ -132,8 +132,8 @@ struct KeyEventPreventBubble {
         .width(140).height(70)
         .onKeyEvent((event?: KeyEvent) => {
           // 通过stopPropagation阻止事件冒泡
-          if(event){
-            if(event.stopPropagation){
+          if (event) {
+            if (event.stopPropagation) {
               event.stopPropagation();
             }
             if (event.type === KeyType.Down) {
@@ -156,7 +156,7 @@ struct KeyEventPreventBubble {
       Text(this.columnText).fontColor(Color.Red)
     }.width('100%').height('100%').justifyContent(FlexAlign.Center)
     .onKeyEvent((event?: KeyEvent) => { // 给父组件Column设置onKeyEvent事件
-      if(event){
+      if (event) {
         if (event.type === KeyType.Down) {
           this.columnType = 'Down';
         }
@@ -197,8 +197,8 @@ struct PreImeEventExample {
       })
         .width('80%')
         .height('40vp')
-        .border({ radius:'20vp' })
-        .onKeyPreIme((event:KeyEvent) => {
+        .border({ radius: '20vp' })
+        .onKeyPreIme((event: KeyEvent) => {
           if (event.keyCode == KeyCode.KEYCODE_DPAD_LEFT) {
             return true;
           }

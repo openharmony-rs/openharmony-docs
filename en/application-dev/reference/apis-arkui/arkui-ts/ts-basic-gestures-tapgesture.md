@@ -39,15 +39,15 @@ When triggered by keyboard or gamepad input, the gesture event's [SourceTool](ts
 >
 >  To standardize anonymous object definitions, the element definitions here have been revised in API version 12. While historical version information is preserved for anonymous objects, there may be cases where the outer element's @since version number is higher than inner elements'. This does not affect interface usability.
 
-Defines tap gesture parameters. Inheritsfrom [BaseHandlerOptions](./ts-gesturehandler.md#basehandleroptions15).
+Defines tap gesture parameters. Inherits from [BaseHandlerOptions](./ts-gesturehandler.md#basehandleroptions15).
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| count<sup>11+</sup> | number | No| Yes| Number of consecutive taps. If the value is less than 1 or is not set, the default value is used.<br>Default value: **1**<br>Value range: [0, +∞).<br>**NOTE**<br>1. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>2. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails. In multi-finger scenarios, the tapped position is the average position of all fingers involved in the gesture response.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| count<sup>11+</sup> | number | No| Yes| Number of consecutive taps. If the value is less than 1 or is not set, the default value is used.<br>Default value: **1**<br>Value range: [0, +∞)<br>**NOTE**<br>1. If multi-tap is configured, the timeout interval between a lift and the next tap is 300 ms.<br>2. If the distance between the last tapped position and the current tapped position exceeds 60 vp, gesture recognition fails. In multi-finger scenarios, the tapped position is the average position of all fingers involved in the gesture response.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | fingers<sup>11+</sup> | number | No| Yes| Number of fingers required to trigger a tap. The value ranges from 1 to 10. If the value is less than 1 or is not set, the default value is used.<br>Default value: **1**<br>**NOTE**<br>1. For a multi-finger gesture, recognition fails if the required number of fingers is not pressed within 300 ms after the first finger; when fingers are lifted, if the remaining number of fingers is below the threshold after lifting, all fingers must be lifted within 300 ms for the gesture to be successfully recognized.<br>2. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| distanceThreshold | number | No| Yes| Movement threshold for the tap gesture. If the value is less than or equal to 0 or is not set, the default value is used.<br>Default value: 2³¹-1<br>Unit: vp.<br>**NOTE**<br>If the finger movement exceeds the preset movement threshold, the tap gesture recognition fails. If the default threshold is used during initialization and the finger moves beyond the component's touch target, the tap gesture recognition fails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| distanceThreshold | number | No| Yes| Movement threshold for the tap gesture. If the value is less than or equal to 0 or is not set, the default value is used.<br>Default value: 2³¹-1<br>Unit: vp<br>**NOTE**<br>If the finger movement exceeds the preset movement threshold, the tap gesture recognition fails. If the default threshold is used during initialization and the finger moves beyond the component's touch target, the tap gesture recognition fails.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## Events
 
@@ -81,14 +81,14 @@ Provides coordinate information for tap gestures.
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| x | number | No| No| X coordinate relative to the upper left corner of the component.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| y | number | No| No| Y coordinate relative to the upper left corner of the component.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| windowX | number | No| No| X coordinate relative to the upper left corner of the window.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| windowY | number | No| No| Y coordinate relative to the upper left corner of the window.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| displayX | number | No| No| X coordinate relative to the upper left corner of the screen.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| displayY | number | No| No| Y coordinate relative to the upper left corner of the screen.<br>Value range: [0, +∞).<br>Unit: vp.<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
-| globalDisplayX<sup>23+</sup> | number | No| Yes| X coordinate in the coordinate system with the upper left corner of the main screen as the origin.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
-| globalDisplayY<sup>23+</sup> | number | No| Yes| Y coordinate in the coordinate system with the upper left corner of the main screen as the origin.<br>Unit: vp.<br>Value range: [0, +∞).<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| x | number | No| No| X coordinate relative to the upper left corner of the component.<br>Value range: [0, +∞)<br>Unit: vp<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| y | number | No| No| Y coordinate relative to the upper left corner of the component.<br>Value range: [0, +∞)<br>Unit: vp<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| windowX | number | No| No| X coordinate relative to the upper left corner of the window.<br>Value range: [0, +∞)<br>Unit: vp<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| windowY | number | No| No| Y coordinate relative to the upper left corner of the window.<br>Value range: [0, +∞)<br>Unit: vp<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| displayX | number | No| No| X coordinate relative to the upper left corner of the screen.<br>Value range: [0, +∞)<br>Unit: vp<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| displayY | number | No| No| Y coordinate relative to the upper left corner of the screen.<br>Value range: [0, +∞)<br>Unit: vp<br> **Atomic service API**: This API can be used in atomic services since API version 20.|
+| globalDisplayX<sup>23+</sup> | number | No| Yes| X coordinate in the coordinate system with the upper left corner of the main screen as the origin.<br>Unit: vp<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
+| globalDisplayY<sup>23+</sup> | number | No| Yes| Y coordinate in the coordinate system with the upper left corner of the main screen as the origin.<br>Unit: vp<br>Value range: [0, +∞)<br>**Atomic service API**: This API can be used in atomic services since API version 23.|
 
 ## Example
 
@@ -137,7 +137,6 @@ This example demonstrates how to obtain the coordinates of a single-tap gesture 
 @Entry
 @Component
 struct TapGestureExample {
-  @State value: string = ''
 
   build() {
     Column() {
@@ -158,7 +157,6 @@ struct TapGestureExample {
               }
             })
         )
-      Text(this.value)
     }
     .height(200)
     .width(300)

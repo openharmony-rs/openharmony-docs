@@ -1219,9 +1219,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    //file had added, do something
+    // file had added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    //file had removed, do something
+    // file had removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);
@@ -1264,9 +1264,9 @@ let path = "/data/storage/el2/cloud/1.txt";
 let uri = fileUri.getUriFromPath(path);
 let onCallback1 = (changeData: cloudSync.ChangeData) => {
   if (changeData.type == cloudSync.NotifyType.NOTIFY_ADDED) {
-    //file had added, do something
+    // file had added, do something
   } else if (changeData.type== cloudSync.NotifyType.NOTIFY_DELETED) {
-    //file had removed, do something
+    // file had removed, do something
   }
 }
 cloudSync.registerChange(uri, false, onCallback1);

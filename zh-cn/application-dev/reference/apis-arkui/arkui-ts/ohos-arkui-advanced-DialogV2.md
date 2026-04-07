@@ -14,8 +14,8 @@
 > **说明：**
 >
 > - 该组件从API version 18开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
-> 
-> - 该组件不支持在Wearable设备上使用。
+>
+> - 该组件仅可在Stage模型下使用。
 >
 > - 如果DialogV2设置[通用属性](ts-component-general-attributes.md)和[通用事件](ts-component-general-events.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到DialogV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议DialogV2设置通用属性和通用事件。
 
@@ -199,8 +199,8 @@ PopoverDialogV2({visible: boolean, \$visible: PopoverDialogV2OnVisibleChange, po
 
 | 名称            | 类型                                                                | 必填 | 装饰器类型               | 说明                                                 |
 | ------------- |-------------------------------------------------------------------| -- |---------------------| -------------------------------------------------- |
-| visible       | boolean                                                           | 是  | @Param<br/>@Require | 跟手弹出框显示状态。<br />值为true时跟手弹出框显示，为false时隐藏。                                         |
-| \$visible     | [PopoverDialogV2OnVisibleChange](#popoverdialogv2onvisiblechange) | 否  | @Event              | 修改跟手弹出框显示状态时触发的回调函数，建议在visible后使用!!语法设置双向同步。<br />默认无事件。 |
+| visible       | boolean                                                           | 是  | @Param<br/>@Require | 跟手弹出框的显示状态。<br />值为true时跟手弹出框显示，为false时隐藏。                                         |
+| \$visible     | [PopoverDialogV2OnVisibleChange](#popoverdialogv2onvisiblechange) | 否  | @Event              | 修改跟手弹出框的显示状态时触发的回调函数，建议在visible后使用!!语法设置双向同步。<br />默认无事件。 |
 | popover       | [PopoverDialogV2Options](#popoverdialogv2options)                 | 是  | @Param<br/>@Require | 配置跟手弹出框的参数。                                         |
 | targetBuilder | [CustomBuilder](ts-types.md#custombuilder8)                       | 是  | @BuilderParam       | 跟手弹出框基于的目标组件。                                      |
 
@@ -234,20 +234,19 @@ type AdvancedDialogV2ButtonAction = () => void
 
 **装饰器类型：**@ObservedV2
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称           | 类型                                                                     | 只读 | 可选 | 说明                                                                          |
 |:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
-| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | 按钮的内容。<br/>装饰器类型：@Trace                                                                      |
-| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | 按钮的点击事件。<br />默认无事件。<br/>装饰器类型：@Trace                                                        |
-| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的背景。<br />默认值跟随buttonStyle。<br/>装饰器类型：@Trace                                               |
-| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的字体颜色。<br />默认值跟随buttonStyle。<br/>装饰器类型：@Trace                                             |
-| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>装饰器类型：@Trace |
-| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br />默认值：ButtonRole.NORMAL<br/>装饰器类型：@Trace                                           |
-| defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace               |
-| enabled       | boolean                                                                | 否  | 是  | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true<br/>装饰器类型：@Trace                         |
+| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | 按钮的内容。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。       |
+| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | 按钮的点击事件。<br />默认无事件。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
+| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的背景。<br />默认值跟随buttonStyle。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。    |
+| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                                | 否  | 是  | 按钮的字体颜色。<br />默认值跟随buttonStyle。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。     |
+| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br />默认值：ButtonRole.NORMAL<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| enabled       | boolean                                                                | 否  | 是  | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
+| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 按钮文本的对齐方式。<br/>默认值：TextAlign.Start<br/>装饰器类型：@Trace<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。          |
 
 > **说明：**
 >
@@ -275,20 +274,19 @@ AdvancedDialogV2Button的构造函数。
 
 用于初始化AdvancedDialogV2Button对象。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称           | 类型                                                                     | 只读 | 可选 | 说明                                                                          |
 |:-------------|:-----------------------------------------------------------------------|:---|:---|:----------------------------------------------------------------------------|
-| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | 按钮的内容。                                                                      |
-| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | 按钮的点击事件。<br />默认无事件。                                                        |
-| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | 否  | 是  | 按钮的背景。<br /> 默认值跟随buttonStyle。                                              |
-| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | 否  | 是  | 按钮的字体颜色。<br />默认值跟随buttonStyle。                                             |
-| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。 |
-| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br />默认值：ButtonRole.NORMAL                                           |
-| defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false               |
-| enabled       | boolean                                                                | 否  | 是  | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true                         |
+| content      | [ResourceStr](ts-types.md#resourcestr)                                 | 否  | 否  | 按钮的内容。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。      |
+| action       | [AdvancedDialogV2ButtonAction](#advanceddialogv2buttonaction)          | 否  | 是  | 按钮的点击事件。<br />默认无事件。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。    |
+| background   | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | 否  | 是  | 按钮的背景。<br /> 默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
+| fontColor    | [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)                              | 否  | 是  | 按钮的字体颜色。<br />默认值跟随buttonStyle。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
+| buttonStyle  | [ButtonStyleMode](ts-basic-components-button.md#buttonstylemode11枚举说明) | 否  | 是  | 按钮的样式。<br />默认值：2in1设备为ButtonStyleMode.NORMAL，其他设备为ButtonStyleMode.TEXTUAL。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。 |
+| role         | [ButtonRole](ts-basic-components-button.md#buttonrole12枚举说明)           | 否  | 是  | 按钮的角色。<br />默认值：ButtonRole.NORMAL<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
+| defaultFocus | boolean                                                                | 否  | 是  | 是否为默认焦点。<br/>true：按钮是默认焦点。<br/>false：按钮不是默认焦点。<br />默认值：false<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。  |
+| enabled       | boolean                                                                | 否  | 是  | 是否可用。<br/>true：按钮可用。<br/>false：按钮不可用。<br />默认值：true<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。   |
+| textAlign<sup>24+</sup> | [TextAlign](ts-appendix-enums.md#textalign) | 否 | 是 | 按钮文本的对齐方式。<br/>默认值：TextAlign.Start<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。  |
 
 ## 示例
 

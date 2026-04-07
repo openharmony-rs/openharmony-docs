@@ -16,7 +16,7 @@
 > 
 > 本模块为系统接口。
 
-## ShortcutWant<sup>(deprecated)<sup>
+## ShortcutWant<sup>(deprecated)</sup>
 
 > **说明：**
 >

@@ -40,7 +40,7 @@
 
 | 装饰器使用规则          | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| 从父组件初始化     | 如果本地有初始化，则是可选的，初始化行为和[\@State](./arkts-state.md#变量的传递访问规则说明)保持一致。没有的话，则必选，支持父组件中的常规变量（常规变量对@Prop赋值，只是数值的初始化，常规变量的变化不会触发UI刷新。只有状态变量才能触发UI刷新）、[\@State](arkts-state.md)、[\@Link](arkts-link.md)、\@Prop、[\@Provide](arkts-provide-and-consume.md)、[\@Consume](arkts-provide-and-consume.md)、[\@ObjectLink](arkts-observed-and-objectlink.md)、[\@StorageLink](arkts-appstorage.md#storagelink)、[\@StorageProp](arkts-appstorage.md#storageprop)、[\@LocalStorageLink](arkts-localstorage.md#localstoragelink)和[\@LocalStorageProp](arkts-localstorage.md#localstorageprop)去初始化子组件中的\@Prop变量。 |
+| 从父组件初始化     | 如果本地有初始化，则是可选的，初始化行为和[\@State](./arkts-state.md#变量的传递访问规则说明)保持一致。没有的话，则必选，支持父组件中的常规变量（常规变量对@Prop赋值，只是数值的初始化，常规变量的变化不会触发UI刷新。只有状态变量才能触发UI刷新）、[\@State](arkts-state.md)、[\@Link](arkts-link.md)、\@Prop、[\@Provide](arkts-provide-and-consume.md)、[\@Consume](arkts-provide-and-consume.md)、[\@ObjectLink](arkts-observed-and-objectlink.md)、[\@StorageLink](arkts-appstorage.md#storagelink)、[\@StorageProp](arkts-appstorage.md#storageprop)、[\@LocalStorageLink](arkts-localstorage.md#localstoragelink)和[\@LocalStorageProp](arkts-localstorage.md#localstorageprop)去初始化子组件中的\@Prop装饰的变量。 |
 |用于初始化子组件| \@Prop支持初始化子组件中的常规变量、\@State、\@Link、\@Prop、\@Provide。|
 | 是否支持组件外访问 | \@Prop装饰的变量是私有的，只能在组件内访问。                 |
 
@@ -129,10 +129,10 @@
 
 对于\@State和\@Prop的同步场景：
 
-- 使用父组件中\@State变量的值初始化子组件中的\@Prop变量。当\@State变量变化时，该变量值也会同步更新至\@Prop变量。
+- 使用父组件中\@State变量的值初始化子组件中的\@Prop装饰的变量。当\@State变量变化时，该变量值也会同步更新至\@Prop装饰的变量。
 - \@Prop装饰的变量的修改不会影响其数据源\@State装饰变量的值。
 - 除了\@State，数据源也可以用\@Link或\@Prop装饰，对\@Prop的同步机制是相同的。
-- 数据源和\@Prop变量的类型需要相同，\@Prop允许简单类型和class类型。
+- 数据源和\@Prop装饰的变量的类型需要相同。
 
 - 当装饰的对象是Date时，可以观察到Date整体的赋值，同时可通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性，详见[装饰Date类型变量](#装饰date类型变量)。
 
@@ -142,7 +142,7 @@
 
 ### 框架行为
 
-理解\@Prop变量值初始化和更新机制，需要了解父组件和子组件的渲染和更新流程。
+理解\@Prop装饰的变量值初始化和更新机制，需要了解父组件和子组件的渲染和更新流程。
 
 1. 初始渲染：
    1. 执行父组件的build()函数，创建子组件的新实例并传递数据源。
@@ -194,7 +194,41 @@ struct Father {
 - \@Prop装饰变量时会进行深拷贝，在拷贝的过程中除了基本类型、Map、Set、Date、Array外，都会丢失类型。例如，对于通过NAPI提供的复杂类型（如[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)），由于其部分实现在Native侧，因此无法在ArkTS侧通过深拷贝获得完整的数据；同样，RegExp类型在拷贝过程中会丢失原类型，导致被\@Prop装饰后无法调用正则相关函数。
 
 - \@Prop不支持装饰Function类型的变量，API version 23之前，框架会抛出运行时错误。
-从API version 23开始，添加对\@Prop装饰Function类型变量的校验，编译期会报错。
+  从API version 23开始，添加对\@Prop装饰Function类型变量的校验，编译期会报错。
+
+- 父组件传入undefined时，\@Prop装饰的变量仍使用本地默认值进行初始化。
+  
+  <!-- @[prop_twenty_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTwenty.ets) -->
+  
+  ``` TypeScript
+  @Entry
+  @Component
+  struct Parent {
+    @State count: number | undefined = undefined;
+  
+    build() {
+      Column() {
+        Text(`Parent count value: ${this.count}`)
+          .fontSize(20)
+          .margin(10)
+        Child({ count: this.count })
+      }
+    }
+  }
+  
+  @Component
+  struct Child {
+    @Prop count: number | undefined = 0;
+  
+    build() {
+      Column() {
+        Text(`Child count value: ${this.count}`)
+          .fontSize(20)
+          .margin(10)
+      }
+    }
+  }
+  ```
 
 ## 使用场景
 
@@ -257,7 +291,7 @@ struct ParentComponent {
 
 3. 更新count状态变量值也会触发CountDownComponent的重新渲染，在重新渲染过程中，评估使用count状态变量的if语句条件（this.count &gt; 0），并执行true分支中的使用count状态变量的UI组件相关描述来更新Text组件的UI显示。
 
-4. 当按下子组件CountDownComponent的“Try again”按钮时，其\@Prop变量count将被更改，但是count值的更改不会影响父组件的countDownStartValue值。
+4. 当按下子组件CountDownComponent的“Try again”按钮时，其\@Prop装饰的变量count将被更改，但是count值的更改不会影响父组件的countDownStartValue值。
 
 5. 父组件的countDownStartValue值变化时，父组件的修改将覆盖掉子组件CountDownComponent中count本地的修改。
 
@@ -537,7 +571,7 @@ class Book {
 
 为了支持\@Component装饰的组件复用场景，\@Prop支持本地初始化，这样可以让\@Prop是否与父组件建立同步关系变得可选。当且仅当\@Prop有本地初始化时，从父组件向子组件传递\@Prop的数据源才是可选的。
 
-下面的示例中，子组件包含两个\@Prop变量：
+下面的示例中，子组件包含两个\@Prop装饰的变量：
 
 - \@Prop customCounter没有本地初始化，所以需要父组件提供数据源去初始化\@Prop，并当父组件的数据源变化时，\@Prop也将被更新。
 
@@ -725,13 +759,80 @@ struct Child {
 
 ![Video-prop-UsageScenario-three](figures/Video-prop-UsageScenario-three.gif)
 
+### 装饰Array类型变量
+
+在下面的示例中，message类型为`number[]`，点击Button改变message的值，视图会随之刷新。
+
+<!-- @[prop_nineteen_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageNineteen.ets) -->
+
+``` TypeScript
+@Entry
+@Component
+struct Index {
+  @State message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Column() {
+      Child({ message: this.message })
+    }
+  }
+}
+
+@Component
+struct Child {
+  @Prop message: number[] = [0, 1, 2, 3];
+
+  build() {
+    Row() {
+      Column() {
+        ForEach(this.message, (item: number) => {
+          Text(`${item}`)
+            .fontSize(20)
+            .margin(10)
+        })
+        // 新增数组元素，触发UI刷新
+        Button('Push element')
+          .onClick(() => {
+            this.message.push(4);
+          })
+          .width(300)
+          .margin(10)
+        // 删除数组元素，触发UI刷新
+        Button('Pop element')
+          .onClick(() => {
+            this.message.pop();
+          })
+          .width(300)
+          .margin(10)
+        // 对数组整体重新赋值，触发UI刷新
+        Button('Reset array')
+          .onClick(() => {
+            this.message = [9, 8, 7, 6];
+          })
+          .width(300)
+          .margin(10)
+        // 更新数组元素，触发UI刷新
+        Button('Modify element[0]')
+          .onClick(() => {
+            this.message[0] = 10;
+          })
+          .width(300)
+          .margin(10)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
 ### 装饰Map类型变量
 
 > **说明：**
 >
 > 从API version 11开始，\@Prop支持Map类型。
 
-在下面的示例中，value类型为Map\<number, string\>，点击Button改变message的值，视图会随之刷新。
+在下面的示例中，value类型为Map\<number, string\>，点击Button改变value的值，视图会随之刷新。
 
 <!-- @[prop_ten_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Prop/entry/src/main/ets/pages/PageTen.ets) -->
 

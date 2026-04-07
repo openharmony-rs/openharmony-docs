@@ -1,7 +1,7 @@
 # 组件快捷键事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -101,7 +101,7 @@ struct Index {
           this.message = "I clicked Button 1";
           console.info("I clicked 1");
         }).keyboardShortcut('.', [ModifierKey.SHIFT, ModifierKey.CTRL, ModifierKey.ALT])
-          .onKeyEvent((event: KeyEvent)=>{
+          .onKeyEvent((event: KeyEvent) => {
             console.info("event.keyCode: " + JSON.stringify(event));
           })
         Button("Test short cut 2").onClick((event: ClickEvent) => {

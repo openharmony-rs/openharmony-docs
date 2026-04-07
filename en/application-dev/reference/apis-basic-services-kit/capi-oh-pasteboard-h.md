@@ -445,7 +445,7 @@ Checks whether the pasteboard data comes from remote devices.
 
 | Type| Description|
 | -- | -- |
-| bool | Returns a Boolean value indicating whether the data is from a remote device. The value **true** means the data is from a remote device; **false** means the data is from the local device.|
+| bool | Returns a Boolean value indicating whether the data comes from a remote device. The value **true** means the data is from a remote device; **false** means the data is from the local device.|
 
 ### OH_Pasteboard_GetDataSource()
 
@@ -466,7 +466,7 @@ Obtains the pasteboard data source.
 | -- | -- |
 | [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md)* pasteboard | Pointer to an [OH_Pasteboard](capi-pasteboard-oh-pasteboard.md) instance.|
 | char* source | Pointer to the pasteboard data source instance. You need to allocate the memory for the pointer before calling this API.|
-| unsigned int len | Memory length corresponding to the source. If the memory length is insufficient, the API call will fail. The recommended length is 128.|
+| unsigned int len | Memory length corresponding to the source. If the memory length is insufficient, the API call will fail. The recommended length is 128 bytes.|
 
 **Returns**
 
@@ -533,7 +533,7 @@ bool OH_Pasteboard_HasRemoteData(OH_Pasteboard* pasteboard)
 
 **Description**
 
-Checks whether the pasteboard data is on a remote device. It takes a long time to transfer data across devices. Therefore, if the pasteboard data is on a remote device, you are advised not to perform either of the following operations in the UI thread:<br>1. Check whether the pasteboard data contains custom data types.<br>2. Read the pasteboard data.
+Checks whether the pasteboard data is on a remote device. Transferring data across devices takes time. If the pasteboard data is on a remote device, do not check for custom data types or read the pasteboard data on the UI thread.
 
 **Since**: 24
 
@@ -547,7 +547,7 @@ Checks whether the pasteboard data is on a remote device. It takes a long time t
 
 | Type| Description|
 | -- | -- |
-| bool | Returns a check result indicating whether the pasteboard data is on a remote device. The value **true** indicates that the pasteboard data is on a remote device, and **false** indicates the opposite. The default value can be **true** or **false**.|
+| bool | Returns the check result. The value **true** indicates that the pasteboard data is on a remote device, and **false** indicates the opposite. Default value: **false**.|
 
 ### OH_Pasteboard_GetData()
 

@@ -17,6 +17,9 @@
   - [更新关键资产(ArkTS)](asset-js-update.md)
   - [查询关键资产(ArkTS)](asset-js-query.md)
   - [查询需要用户认证的关键资产(ArkTS)](asset-js-query-auth.md)
+  - [批量新增关键资产(ArkTS)](asset-js-batch-add.md)
+  - [批量刪除关键资产(ArkTS)](asset-js-batch-remove.md)
+  - [批量更新关键资产(ArkTS)](asset-js-batch-update.md)
   - [管理群组关键资产(ArkTS)](asset-js-group-access-control.md)
   - [同步（备份恢复）关键资产(ArkTS)](asset-js-sync.md)
   <!--Del-->

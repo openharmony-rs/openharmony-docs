@@ -12,10 +12,10 @@ typedef struct ArkUI_NodeBorderColor ArkUI_NodeBorderColorOption
 
 ## Overview
 
-Defines a struct for the node border color configuration.
+Defines a node border color option.
 
 **Since**: 20
 
-**Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
+**Related module**: [ArkUI_RenderNodeUtils](capi-arkui-rendernodeutils.md)
 
 **Header file**: [native_render.h](capi-native-render-h.md)

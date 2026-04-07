@@ -7,7 +7,7 @@
 <!--Adviser: @ge-yafang-->
 
 ```c
-struct OH_PixelmapNative
+typedef struct OH_PixelmapNative
 ```
 
 ## 概述

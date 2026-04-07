@@ -110,6 +110,9 @@ Enumerates the task QoS types.
 | ffrt_qos_utility | Real-time utility.|
 | ffrt_qos_default | Default type.|
 | ffrt_qos_user_initiated | User initiated.|
+| ffrt_qos_deadline_request | Time limit request.<br>**Since**: 23|
+| ffrt_qos_user_interactive | User interaction.<br>**Since**: 23|
+| ffrt_qos_max = ffrt_qos_user_interactive | Highest QoS level.<br>**Since**: 23|
 
 ### ffrt_storage_size_t
 
@@ -225,6 +228,9 @@ Enumerates the task QoS types.
 | qos_utility = ffrt_qos_utility | Real-time utility.|
 | qos_default = ffrt_qos_default | Default type.|
 | qos_user_initiated = ffrt_qos_user_initiated | User initiated.|
+| qos_deadline_request = ffrt_qos_deadline_request | Time limit request.<br>**Since**: 23|
+| qos_user_interactive = ffrt_qos_user_interactive | User interaction.<br>**Since**: 23|
+| qos_max = ffrt_qos_user_interactive | Highest QoS level.<br>**Since**: 23|
 
 
 ## Function Description
