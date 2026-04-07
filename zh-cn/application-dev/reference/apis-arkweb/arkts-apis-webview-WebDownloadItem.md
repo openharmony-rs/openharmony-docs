@@ -878,7 +878,7 @@ struct WebComponent {
 
 getReferrerUrl(): string
 
-获取下载文件的引用页url地址。
+获取下载文件的referrer地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -886,7 +886,7 @@ getReferrerUrl(): string
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| string | 下载文件的引用页url地址。 |
+| string | 下载文件的referrer地址。 |
 
 **示例：**
 
