@@ -513,6 +513,23 @@
 
 **起始版本**：20
 
+## ohos.permission.SCAN_REMEDIATE_VIRUS
+
+允许应用执行病毒扫描和处置操作。
+
+此权限仅面向杀毒软件开放申请。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：24
+
 ## ohos.permission.sec.ACCESS_UDID
 
 允许应用获取UDID。
@@ -529,3 +546,20 @@ UDID（Unified Device ID）是设备的唯一标识。
 **起始版本**：7
 
 **变更信息**：API 7-19该权限仅向系统应用开放；从API 20开始，开放范围从系统应用变更为企业普通应用。
+
+## ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+允许企业应用调用打印管理接口。
+
+获取该权限后，应用可更新打印状态及打印机信息。
+
+**权限级别**：system_basic
+
+**授权方式**：系统授权（system_grant）
+
+<!--Del-->
+**ACL使能**：true<!--DelEnd-->
+
+**支持设备**：PC/2in1
+
+**起始版本**：24

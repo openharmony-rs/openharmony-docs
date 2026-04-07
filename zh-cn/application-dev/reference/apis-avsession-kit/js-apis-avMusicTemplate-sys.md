@@ -15,8 +15,8 @@
 > **说明：**
 >
 > - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
->
-> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimedia.avMusicTemplate (音频模板)](arkts-apis-AVMusicTemplate.md)。
+> - 当前页面仅包含本模块的系统接口，其他公开接口参见[@ohos.multimedia.avMusicTemplate (音频模板)](arkts-apis-avMusicTemplate.md)。
+> - 本模块仅适用于API version 23及以上版本的Car设备。
 
 ## 导入模块
 
@@ -48,11 +48,11 @@ createAVMusicTemplateController(sessionId: string): AVMusicTemplateController
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [AVMusicTemplateController](arkts-apis-avsession-AVMusicTemplateController.md) | 音频模板控制器，可以获得音频模板控制器唯一的标识，用于与接入音频模板的媒体应用数据交互。 |
+| [AVMusicTemplateController](arkts-apis-avMusicTemplate-AVMusicTemplateController.md) | 音频模板控制器，可以获得音频模板控制器唯一的标识，用于与接入音频模板的媒体应用数据交互。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -180,7 +180,7 @@ export class ControllerManager {
     }
     try {
       this.controller = avMusicTemplate.createAVMusicTemplateController(sessionId);
-      console.info(TAG, `createController success, bundleName: ${this.currentBundleName}`);
+      console.info('Succeeded in creating controller.');
     } catch (e) {
       console.error(TAG, `createController: errCode: ${e?.code}`);
     }

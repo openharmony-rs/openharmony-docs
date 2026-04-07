@@ -494,49 +494,6 @@ function preLaunch(context: common.BaseContext): void {
 }
 ```
 
-### createDeferredPreviewOutput
-
-createDeferredPreviewOutput(profile?: Profile): PreviewOutput
-
-创建延迟预览输出对象，在配流时替代普通的预览输出对象加入数据流。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型             | 必填 | 说明       |
-| -------- | --------------- | ---- | --------- |
-| profile | [Profile](arkts-apis-camera-i.md#profile) | 否 | 相机预览流的配置文件。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | --------------- |
-| [PreviewOutput](#previewoutput) | 返回预览输出对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202             |  Not System Application.       |
-| 7400101         |  Parameter missing or parameter type incorrect. |
-
-**示例：**
-
-```ts
-import { common } from '@kit.AbilityKit';
-
-function getDeferredPreviewOutput(context: common.BaseContext, previewProfile: camera.Profile): camera.PreviewOutput {
-  const cameraManager: camera.CameraManager = camera.getCameraManager(context);
-  const output: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
-  return output;
-}
-```
-
 ### preSwitchCamera<sup>11+</sup>
 
 preSwitchCamera(cameraId: string): void
@@ -636,7 +593,7 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
 
 | 名称                       | 类型                                      | 只读 | 可选 | 说明        |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
-| depthDataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | 是  |  否  | 深度数据的精度，分为相对精度和绝对精度。 |
+| dataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | 是  |  否  | 深度数据的精度，分为相对精度和绝对精度。 |
 
 ## DepthDataQualityLevel<sup>13+</sup>
 
@@ -1169,59 +1126,6 @@ function enableDepthFusion(DepthFusion: camera.DepthFusion): void {
 ## PreviewOutput
 
 预览输出类。继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
-
-### addDeferredSurface
-
-addDeferredSurface(surfaceId: string): void
-
-配置延迟预览的Surface，可以在[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)配流和[Session.start](arkts-apis-camera-Session.md#start11-1)启流之后运行。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型         | 必填 | 说明                       |
-| -------- | --------------| ---- | ------------------------ |
-| surfaceId | string | 是 | 从[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件获取的surfaceId。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202                    |  Permission verification failed. A non-system application calls a system API.    |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-
-**示例：**
-
-```ts
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function preview(context: common.BaseContext, cameraDevice: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): Promise<void> {
-  const cameraManager: camera.CameraManager = camera.getCameraManager(context);
-  const cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameraDevice);
-  const previewOutput: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
-  const photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
-  const session: camera.Session  = cameraManager.createSession(mode);
-  session.beginConfig();
-  session.addInput(cameraInput);
-  session.addOutput(previewOutput);
-  session.addOutput(photoOutput);
-  await session.commitConfig();
-  try {
-    await session.start();
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`start session failed. error code: ${err.code}`);
-  }
-  previewOutput.addDeferredSurface(previewSurfaceId);
-}
-```
 
 ### isSketchSupported<sup>11+</sup>
 
@@ -2486,7 +2390,7 @@ setExposure(exposure: number): void
 
 | 参数名      | 类型                    | 必填 | 说明                                                                      |
 | -------- | --------------------------| ---- |-------------------------------------------------------------------------|
-| value    | number                    | 是   | 手动曝光时长，通过[getSupportedExposureRange](#getsupportedexposurerange11)接口获取。 |
+| exposure    | number                    | 是   | 手动曝光时长，通过[getSupportedExposureRange](#getsupportedexposurerange11)接口获取。 |
 
  **错误码：**
 
@@ -2561,9 +2465,9 @@ TripodDetectionResult extends [SceneFeatureDetectionResult](#scenefeaturedetecti
 | -------- |---------------------------------| -------- | -------- |---------|
 | tripodStatus | [TripodStatus](#tripodstatus13) |   是     |    否    | 脚架状态信息。 |
 
-## SceneDetection<sup>12+</sup>
+## SceneDetectionQuery<sup>12+</sup>
 
-场景检测能力。
+场景检测查询能力。
 
 ### isSceneFeatureSupported<sup>12+</sup>
 
@@ -2604,6 +2508,9 @@ function isSceneFeatureSupported(photoSessionForSys: camera.PhotoSessionForSys, 
   return isSupported;
 }
 ```
+## SceneDetection<sup>12+</sup>
+
+场景检测能力。继承[SceneDetectionQuery](#scenedetectionquery12)。
 
 ### enableSceneFeature<sup>12+</sup>
 
@@ -3169,9 +3076,9 @@ function getPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession): c
 | zoomRange  | [ZoomRange](#zoomrange11) | 否    | 否   | 特定物理光圈的变焦范围。  |
 | apertures  | Array\<number\>           | 否    | 否   | 支持的物理光圈列表。      |
 
-## Aperture<sup>11+</sup>
+## ApertureQuery<sup>12+</sup>
 
-光圈类，用于设置光圈参数。
+光圈查询能力。
 
 ### getSupportedVirtualApertures<sup>11+</sup>
 
@@ -3206,6 +3113,44 @@ function getSupportedVirtualApertures(session: camera.PortraitPhotoSession): Arr
   return virtualApertures;
 }
 ```
+
+### getSupportedPhysicalApertures<sup>11+</sup>
+
+getSupportedPhysicalApertures(): Array\<PhysicalAperture\> 
+
+获取支持的物理光圈列表。
+
+**系统接口：** 此接口为系统接口 
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型                                             | 说明                           |
+| ----------------------------------------------- | ---------------------------- |
+| Array<[PhysicalAperture](#physicalaperture11)>    | 支持的物理光圈列表。               |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400103         |  Session not config, only throw in session usage.                           |
+| 202             |  Not System Application.                      |
+
+**示例：**
+
+```ts
+function getSupportedPhysicalApertures(session: camera.PortraitPhotoSession): Array<camera.PhysicalAperture> {
+  let physicalApertures: Array<camera.PhysicalAperture> = session.getSupportedPhysicalApertures();
+  return physicalApertures;
+}
+```
+
+## Aperture<sup>11+</sup>
+
+光圈类，用于设置光圈参数。继承[ApertureQuery](#aperturequery12)。
 
 ### getVirtualAperture<sup>11+</sup>
 
@@ -3274,40 +3219,6 @@ function setVirtualAperture(session: camera.PortraitPhotoSession, virtualApertur
 }
 ```
 
-### getSupportedPhysicalApertures<sup>11+</sup>
-
-getSupportedPhysicalApertures(): Array\<PhysicalAperture\>
-
-获取支持的物理光圈列表。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**返回值：**
-
-| 类型                                             | 说明                           |
-| ----------------------------------------------- | ---------------------------- |
-| Array<[PhysicalAperture](#physicalaperture11)>    | 支持的物理光圈列表。               |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 7400102         |  Operation not allowed, the inputDevice or the session is abnormal.   |
-| 7400103         |  Session not config.                          |
-
-**示例：**
-
-```ts
-function getSupportedPhysicalApertures(session: camera.PortraitPhotoSession): Array<camera.PhysicalAperture> {
-  let physicalApertures: Array<camera.PhysicalAperture> = session.getSupportedPhysicalApertures();
-  return physicalApertures;
-}
-```
-
 ### getPhysicalAperture<sup>11+</sup>
 
 getPhysicalAperture(): number
@@ -3364,7 +3275,7 @@ setPhysicalAperture(aperture: number): void
 
 | 错误码ID         | 错误信息        |
 | --------------- | --------------- |
-| 7400103         |  Session not config.                          |
+| 7400103         |  Session not config.                    |
 | 202             |  Not System Application.                      |
 
 **示例：**

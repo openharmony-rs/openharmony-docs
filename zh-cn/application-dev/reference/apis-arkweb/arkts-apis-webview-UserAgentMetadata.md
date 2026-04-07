@@ -40,7 +40,7 @@ setBrandVersionList(brandVersionList: Array\<UserAgentBrandVersion>): void
 
 getBrandVersionList(): Array\<UserAgentBrandVersion>
 
-获取品牌和版本信息列表。
+获取品牌和版本信息列表。不调用对应的[setBrandVersionList](#setbrandversionlist)进行设置时，列表默认值：[{"brand":"Chromium","version":[ChromeCompatibleVersion](../../web/web-default-userAgent.md#默认user-agent结构)}, {"brand":"ArkWeb","version":[OSVersion](../../web/web-default-userAgent.md#默认user-agent结构)}]。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -80,7 +80,7 @@ setArchitecture(arch: string): void
 
 getArchitecture(): string
 
-获取平台的架构类型。
+获取平台的架构类型。不调用对应的[setArchitecture](#setarchitecture)设置时，架构类型默认值：""。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -120,7 +120,7 @@ setBitness(bitness: string): void
 
 getBitness(): string
 
-获取平台的位数类型。
+获取平台的位数类型。不调用对应的[setBitness](#setbitness)设置时，位数类型默认值：Desktop: "64"，其他设备: ""。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -160,7 +160,7 @@ setFormFactors(formFactors: Array\<UserAgentFormFactor>): void
 
 getFormFactors(): Array\<UserAgentFormFactor>
 
-获取设备形态信息，如手机、平板等。
+获取设备形态信息，如手机、平板等。不调用对应的[setFormFactors](#setformfactors)进行设置时，形态信息默认值：手机："Mobile"，手表: "Watch"，车机: "Automotive"，PC: "Desktop"，平板："Tablet"。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -190,7 +190,7 @@ setFullVersion(fullVersion: string): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| fullVersion | string | 是   | 对应请求标头的Sec-CH-UA-Full-Version。空代表使用ArkWeb默认值。 |
+| fullVersion | string | 是   | 对应请求标头的Sec-CH-UA-Full-Version。 |
 
 **示例：**
 
@@ -200,7 +200,7 @@ setFullVersion(fullVersion: string): void
 
 getFullVersion(): string
 
-获取完整版本号。
+获取完整版本号。不调用对应的[setFullVersion](#setfullversion)设置时，版本号默认值：""。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -240,7 +240,7 @@ setMobile(isMobile: boolean): void
 
 getMobile(): boolean
 
-获取是否为移动设备。
+获取是否为移动设备。不调用对应的[setMobile](#setmobile)设置时，默认值：手机: true，手表、车机、平板、大屏: false。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -270,7 +270,7 @@ setModel(model: string): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| model | string | 是   | 对应请求标头的Sec-CH-UA-Mobile。空代表使用ArkWeb默认值。 |
+| model | string | 是   | 对应请求标头的Sec-CH-UA-Model。 |
 
 **示例：**
 
@@ -280,7 +280,7 @@ setModel(model: string): void
 
 getModel(): string
 
-获取设备型号。
+获取设备型号。不调用对应的[setModel](#setmodel)设置时，型号默认值：手机根据const.product.model取设备型号，手表、大屏、车机、PC、平板：""。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -320,7 +320,7 @@ setPlatform(platform: string): void
 
 getPlatform(): string
 
-获取操作系统名称。
+获取操作系统名称。不调用对应的[setPlatform](#setplatform)设置时，名称默认值："OpenHarmony" 。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -350,7 +350,7 @@ setPlatformVersion(platformVersion: string): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| platformVersion | string | 是   | 对应请求标头的Sec-CH-UA-Platform-Version。空代表使用ArkWeb默认值。 |
+| platformVersion | string | 是   | 对应请求标头的Sec-CH-UA-Platform-Version。 |
 
 **示例：**
 
@@ -360,7 +360,7 @@ setPlatformVersion(platformVersion: string): void
 
 getPlatformVersion(): string
 
-获取操作系统版本号。
+获取操作系统版本号。不调用对应的[setPlatformVersion](#setplatformversion)设置时，版本号默认值：按OpenHarmony平台版本号规则，同const.product.os.dist.version。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 
@@ -390,7 +390,7 @@ setWow64(isWow64: boolean): void
 
 | 参数名              | 类型    | 必填   |  说明 |
 | ------------------ | ------- | ---- | ------------- |
-| isWow64 | boolean | 是   | 对应请求标头的Sec-CH-UA-WoW64。表示二进制文件是否在64位Windows上以32位模式运行。true为是，false为不是。默认值为false。 |
+| isWow64 | boolean | 是   | 对应请求标头的Sec-CH-UA-WoW64。表示二进制文件是否在64位Windows上以32位模式运行。true为是，false为不是。 |
 
 **示例：**
 
@@ -400,7 +400,7 @@ setWow64(isWow64: boolean): void
 
 getWow64(): boolean
 
-获取二进制文件是否是在64位Windows上以32位模式运行。
+获取二进制文件是否是在64位Windows上以32位模式运行。不调用对应的[setWow64](#setwow64)设置时，默认值为false。
 
 **系统能力：**  SystemCapability.Web.Webview.Core
 

@@ -21,13 +21,21 @@
 import { selectionManager } from '@kit.BasicServicesKit';
 ```
 
-## selectionManager.on('selectionCompleted')
+## selectionManager
+
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+### selectionManager.on('selectionCompleted')
 
 on(type: 'selectionCompleted', callback: Callback\<SelectionInfo>): void
 
 订阅划词完成事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -58,13 +66,15 @@ try {
 }
 ```
 
-## selectionManager.off('selectionCompleted')
+### selectionManager.off('selectionCompleted')
 
 off(type: 'selectionCompleted', callback?: Callback\<SelectionInfo>): void
 
 取消订阅划词完成事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -90,13 +100,15 @@ try {
 }
 ```
 
-## getSelectionContent()
+### getSelectionContent()
 
 getSelectionContent(): Promise\<string>
 
 获取选中文本的内容。使用Promise异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 | 类型   | 说明                                                                 |
@@ -130,7 +142,7 @@ selectionManager.on('selectionCompleted', async (info: selectionManager.Selectio
 });
 ```
 
-## createPanel
+### createPanel
 
 createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
@@ -140,7 +152,7 @@ createPanel(ctx: Context, info: PanelInfo): Promise\<Panel>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -193,8 +205,10 @@ class ServiceExtAbility extends SelectionExtensionAbility {
       width: 500,
       height: 200
     }
+    let selectionPanel: selectionManager.Panel | undefined = undefined;
     selectionManager.createPanel(this.context, panelInfo)
       .then((panel: selectionManager.Panel) => {
+        selectionPanel = panel;
         console.info('Succeed in creating panel.');
       }).catch((err: BusinessError) => {
       console.error(`Failed to create panel: ${err.code}, errormessage: ${err.message}`);
@@ -205,7 +219,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
 export default ServiceExtAbility;
 ```
 
-## destroyPanel
+### destroyPanel
 
 destroyPanel(panel: Panel): Promise\<void>
 
@@ -213,7 +227,7 @@ destroyPanel(panel: Panel): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -296,7 +310,7 @@ export default ServiceExtAbility;
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称      | 类型 | 只读 | 可选 | 说明         |
 | --------- | -------- | ---- | ---- | ------------ |
@@ -319,7 +333,7 @@ export default ServiceExtAbility;
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 下列API均需使用[createPanel](#createpanel)获取到Panel实例后，通过实例调用。
 
@@ -331,7 +345,7 @@ setUiContent(path: string): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -378,7 +392,7 @@ show(): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -415,6 +429,8 @@ hide(): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **返回值：**
 
 | 类型   | 说明                             |
@@ -450,7 +466,7 @@ startMoving(): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -536,10 +552,10 @@ try {
   selectionPanel.moveTo(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
+    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
+  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
 }
 ```
 <!--DelEnd-->
@@ -552,7 +568,7 @@ moveToGlobalDisplay(x: number, y: number): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -600,6 +616,8 @@ on(type: 'destroyed', callback: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                           |
@@ -629,6 +647,8 @@ off(type: 'destroyed', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
@@ -655,6 +675,8 @@ on(type: 'hidden', callback: Callback\<void>): void
 订阅划词窗口隐藏事件。使用callback异步回调。
 
 **系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -685,6 +707,8 @@ off(type: 'hidden', callback?: Callback\<void>): void
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **参数：**
 
 | 参数名   | 类型                                        | 必填 | 说明                                                         |
@@ -710,7 +734,7 @@ try {
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 | 名称         | 值 | 说明               |
 | ------------ | -- | ------------------ |

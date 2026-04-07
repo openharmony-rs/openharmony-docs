@@ -223,7 +223,7 @@
     console.info('. Length (bits): ' + bnValue.toString(2).length);
   }
   
-  // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数
+  // 根据密钥规格构造ECCCommonParamsSpec结构体。ECCCommonParamsSpec结构体定义了ECC私钥和公钥的公共参数
   function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
     let fieldFp: cryptoFramework.ECFieldFp = {
       fieldType: 'Fp',
@@ -328,7 +328,7 @@
     console.info('. Length (bits): ' + bnValue.toString(2).length);
   }
   
-  // 根据关键规范构造EccCommonSpec结构体。EccCommonSpec结构体定义了ECC私钥和公钥的公共参数
+  // 根据密钥规格构造ECCCommonParamsSpec结构体。ECCCommonParamsSpec结构体定义了ECC私钥和公钥的公共参数
   function genEccCommonSpec(): cryptoFramework.ECCCommonParamsSpec {
     let fieldFp: cryptoFramework.ECFieldFp = {
       fieldType: 'Fp',

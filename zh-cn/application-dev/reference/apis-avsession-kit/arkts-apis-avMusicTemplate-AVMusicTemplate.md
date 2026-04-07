@@ -6,11 +6,12 @@
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-调用[avMusicTemplate.createAVMusicTemplate](arkts-apis-avsession-AVMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)获取实例后，可获取其ID，启动音频模板界面，并配置数据获取方法。随后，同步数据给模板控制方，以完成后续操作。
+调用[avMusicTemplate.createAVMusicTemplate](arkts-apis-avMusicTemplate-f.md#avmusictemplatecreateavmusictemplate)获取实例后，可获取其ID，启动音频模板界面，并配置数据获取方法。随后，同步数据给模板控制方，以完成后续操作。
 
 > **说明：**
 >
-> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于API version 23及以上版本的Car设备。
 
 ## 导入模块
 
@@ -26,22 +27,10 @@ import { avMusicTemplate } from '@kit.AVSessionKit';
 
 | 名称       | 类型   | 只读 | 可选 | 说明                 |
 | :--------- | :----- | :--- | :--- | :------------------- |
-| sessionId  | string | 是   | 否   | 音频模板唯一的标识。 |
-| sessionTag | string | 是   | 否   | 音频模板标签。       |
+| sessionId  | string | 否   | 否   | 音频模板唯一的标识。 |
+| sessionTag | string | 否   | 否   | 音频模板标签。       |
 
 **示例：**
-
-```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { TemplateManager } from '../manager/TemplateManager';
-
-export default class EntryAbility extends UIAbility {
-    onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-        console.info('onCreate');
-        TemplateManager.getInstance().createTemplate();
-    }
-}
-```
 
 ```ts
 import { avMusicTemplate } from '@kit.AVSessionKit';
@@ -75,7 +64,7 @@ export class TemplateManager {
     }
     try {
       this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);
-      console.info('createTemplate: success');
+      console.info('Succeeded in creating template.');
     } catch (e) {
       console.error(`createTemplate, errCode: ${e?.code}`);
     }
@@ -97,7 +86,7 @@ startTemplate(): Promise&lt;OperResult&gt;
 
 | 类型                                                         | 说明                                          |
 | ------------------------------------------------------------ | --------------------------------------------- |
-| Promise\<[OperResult](arkts-apis-avsession-AVMusicTemplate-i.md#operresult)> | Promise对象，返回启动音频模板界面的操作结果。 |
+| Promise\<[OperResult](arkts-apis-avMusicTemplate-i.md#operresult)> | Promise对象，返回启动音频模板界面的操作结果。 |
 
 **错误码：**
 
@@ -138,11 +127,11 @@ onQueryMainTabs(callback: QueryMainTabsEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                           |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
-| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent) | 是   | 回调函数，返回查询主标签事件。 |
+| callback | [QueryMainTabsEvent](arkts-apis-avMusicTemplate-t.md#querymaintabsevent) | 是   | 回调函数，返回查询主标签事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -174,13 +163,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryMainTabs(this.queryMainTabsEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryMainTabs();
   }
 
   /**
@@ -217,11 +199,11 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                   |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
-| callback | [QueryMainTabsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymaintabsevent) | 否   | 查询主标签事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryMainTabsEvent](arkts-apis-avMusicTemplate-t.md#querymaintabsevent) | 否   | 查询主标签事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -231,7 +213,20 @@ offQueryMainTabs(callback?: QueryMainTabsEvent): void
 
 **示例：**
 
-请参考[onQueryMainTabs](#onquerymaintabs)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryMainTabs();
+  }
+}
+```
 
 ## onQueryMediaTabContent
 
@@ -247,11 +242,11 @@ onQueryMediaTabContent(callback: QueryMediaTabContentEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                     |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------- |
-| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent) | 是   | 回调函数，返回查询媒体标签页内容的事件。 |
+| callback | [QueryMediaTabContentEvent](arkts-apis-avMusicTemplate-t.md#querymediatabcontentevent) | 是   | 回调函数，返回查询媒体标签页内容的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -283,13 +278,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryMediaTabContent(this.queryMediaTabContentEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryMediaTabContent();
   }
 
   /**
@@ -360,11 +348,11 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [QueryMediaTabContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediatabcontentevent) | 否   | 查询媒体标签页内容的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryMediaTabContentEvent](arkts-apis-avMusicTemplate-t.md#querymediatabcontentevent) | 否   | 查询媒体标签页内容的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -374,7 +362,20 @@ offQueryMediaTabContent(callback?: QueryMediaTabContentEvent): void
 
 **示例：**
 
-请参考[onQueryMediaTabContent](#onquerymediatabcontent)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryMediaTabContent();
+  }
+}
+```
 
 ## onQueryMediaEntity
 
@@ -390,11 +391,11 @@ onQueryMediaEntity(callback: QueryMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent) | 是   | 回调函数，返回查询媒体实体的事件。 |
+| callback | [QueryMediaEntityEvent](arkts-apis-avMusicTemplate-t.md#querymediaentityevent) | 是   | 回调函数，返回查询媒体实体的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -427,13 +428,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryMediaEntity(this.queryMediaEntityEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryMediaEntity();
   }
 
   /**
@@ -489,11 +483,11 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [QueryMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentityevent) | 否   | 查询媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryMediaEntityEvent](arkts-apis-avMusicTemplate-t.md#querymediaentityevent) | 否   | 查询媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -503,7 +497,20 @@ offQueryMediaEntity(callback?: QueryMediaEntityEvent): void
 
 **示例：**
 
-请参考[onQueryMediaEntity](#onquerymediaentity)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryMediaEntity();
+  }
+}
+```
 
 ## onQueryCompilation
 
@@ -519,11 +526,11 @@ onQueryCompilation(callback: QueryCompilationEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                           |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
-| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent) | 是   | 回调函数，返回查询合集的事件。 |
+| callback | [QueryCompilationEvent](arkts-apis-avMusicTemplate-t.md#querycompilationevent) | 是   | 回调函数，返回查询合集的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -556,13 +563,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryCompilation(this.queryCompilationEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryCompilation();
   }
 
   /**
@@ -618,11 +618,11 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                   |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
-| callback | [QueryCompilationEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationevent) | 否   | 查询合集的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryCompilationEvent](arkts-apis-avMusicTemplate-t.md#querycompilationevent) | 否   | 查询合集的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -632,7 +632,20 @@ offQueryCompilation(callback?: QueryCompilationEvent): void
 
 **示例：**
 
-请参考[onQueryCompilation](#onquerycompilation)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryCompilation();
+  }
+}
+```
 
 ## onQueryPlaylist
 
@@ -648,11 +661,11 @@ onQueryPlaylist(callback: QueryPlaylistEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent) | 是   | 回调函数，返回查询播放列表的事件。 |
+| callback | [QueryPlaylistEvent](arkts-apis-avMusicTemplate-t.md#queryplaylistevent) | 是   | 回调函数，返回查询播放列表的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -685,13 +698,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryPlaylist(this.queryPlaylistEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryPlaylist();
   }
 
   /**
@@ -747,11 +753,11 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [QueryPlaylistEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryplaylistevent) | 否   | 查询播放列表的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryPlaylistEvent](arkts-apis-avMusicTemplate-t.md#queryplaylistevent) | 否   | 查询播放列表的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -761,7 +767,20 @@ offQueryPlaylist(callback?: QueryPlaylistEvent): void
 
 **示例：**
 
-请参考[onQueryPlaylist](#onqueryplaylist)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryPlaylist();
+  }
+}
+```
 
 ## onQueryCurrentSingle
 
@@ -777,11 +796,11 @@ onQueryCurrentSingle(callback: QueryCurrentSingleEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent) | 是   | 回调函数，返回查询当前单曲的事件。 |
+| callback | [QueryCurrentSingleEvent](arkts-apis-avMusicTemplate-t.md#querycurrentsingleevent) | 是   | 回调函数，返回查询当前单曲的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -813,13 +832,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryCurrentSingle(this.queryCurrentSingleEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryCurrentSingle();
   }
 
   /**
@@ -887,11 +899,11 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [QueryCurrentSingleEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycurrentsingleevent) | 否   | 查询当前单曲的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryCurrentSingleEvent](arkts-apis-avMusicTemplate-t.md#querycurrentsingleevent) | 否   | 查询当前单曲的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -901,7 +913,20 @@ offQueryCurrentSingle(callback?: QueryCurrentSingleEvent): void
 
 **示例：**
 
-请参考[onQueryCurrentSingle](#onquerycurrentsingle)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryCurrentSingle();
+  }
+}
+```
 
 ## onQueryCompilationByKeyword
 
@@ -917,11 +942,11 @@ onQueryCompilationByKeyword(callback: QueryCompilationByKeywordEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent) | 是   | 回调函数，返回按关键字查询合集的事件。 |
+| callback | [QueryCompilationByKeywordEvent](arkts-apis-avMusicTemplate-t.md#querycompilationbykeywordevent) | 是   | 回调函数，返回按关键字查询合集的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -954,13 +979,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryCompilationByKeyword(this.queryCompilationByKeywordEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryCompilationByKeyword();
   }
 
   /**
@@ -1016,11 +1034,11 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [QueryCompilationByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycompilationbykeywordevent) | 否   | 按关键字查询合集的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryCompilationByKeywordEvent](arkts-apis-avMusicTemplate-t.md#querycompilationbykeywordevent) | 否   | 按关键字查询合集的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1030,7 +1048,20 @@ offQueryCompilationByKeyword(callback?: QueryCompilationByKeywordEvent): void
 
 **示例：**
 
-请参考[onQueryCompilationByKeyword](#onquerycompilationbykeyword)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryCompilationByKeyword();
+  }
+}
+```
 
 ## onQueryMediaEntityByKeyword
 
@@ -1046,11 +1077,11 @@ onQueryMediaEntityByKeyword(callback: QueryMediaEntityByKeywordEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                       |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------ |
-| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent) | 是   | 回调函数，返回按关键字查询媒体实体的事件。 |
+| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avMusicTemplate-t.md#querymediaentitybykeywordevent) | 是   | 回调函数，返回按关键字查询媒体实体的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1083,13 +1114,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryMediaEntityByKeyword(this.queryMediaEntityByKeywordEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryMediaEntityByKeyword();
   }
 
   /**
@@ -1145,11 +1169,11 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymediaentitybykeywordevent) | 否   | 按关键字查询媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryMediaEntityByKeywordEvent](arkts-apis-avMusicTemplate-t.md#querymediaentitybykeywordevent) | 否   | 按关键字查询媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1159,7 +1183,20 @@ offQueryMediaEntityByKeyword(callback?: QueryMediaEntityByKeywordEvent): void
 
 **示例：**
 
-请参考[onQueryMediaEntityByKeyword](#onquerymediaentitybykeyword)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryMediaEntityByKeyword();
+  }
+}
+```
 
 ## onQueryRecommendMediaEntityList
 
@@ -1175,11 +1212,11 @@ onQueryRecommendMediaEntityList(callback: QueryRecommendMediaEntityListEvent): v
 
 | 参数名   | 类型                                                         | 必填 | 说明                                   |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 是   | 回调函数，返回查询推荐媒体列表的事件。 |
+| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 是   | 回调函数，返回查询推荐媒体列表的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1212,13 +1249,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryRecommendMediaEntityList(this.queryRecommendMediaEntityListEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryRecommendMediaEntityList();
   }
 
   /**
@@ -1255,11 +1285,11 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 否   | 查询推荐媒体列表的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryRecommendMediaEntityListEvent](arkts-apis-avMusicTemplate-t.md#queryrecommendmediaentitylistevent) | 否   | 查询推荐媒体列表的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1269,7 +1299,20 @@ offQueryRecommendMediaEntityList(callback?: QueryRecommendMediaEntityListEvent):
 
 **示例：**
 
-请参考[onQueryRecommendMediaEntityList](#onqueryrecommendmediaentitylist)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryRecommendMediaEntityList();
+  }
+}
+```
 
 ## onQueryHotWords
 
@@ -1285,11 +1328,11 @@ onQueryHotWords(callback: QueryHotWordsEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                           |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
-| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent) | 是   | 回调函数，返回查询热词的事件。 |
+| callback | [QueryHotWordsEvent](arkts-apis-avMusicTemplate-t.md#queryhotwordsevent) | 是   | 回调函数，返回查询热词的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1322,13 +1365,6 @@ export class TemplateManager {
   private registerListener() {
     this.template?.onQueryHotWords(this.queryHotWordsEvent);
   }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryHotWords();
-  }
 }
 ```
 
@@ -1346,11 +1382,11 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                   |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
-| callback | [QueryHotWordsEvent](arkts-apis-avsession-AVMusicTemplate-t.md#queryhotwordsevent) | 否   | 查询热词的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryHotWordsEvent](arkts-apis-avMusicTemplate-t.md#queryhotwordsevent) | 否   | 查询热词的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1360,7 +1396,20 @@ offQueryHotWords(callback?: QueryHotWordsEvent): void
 
 **示例：**
 
-请参考[onQueryHotWords](#onqueryhotwords)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryHotWords();
+  }
+}
+```
 
 ## onQuerySearchHistory
 
@@ -1376,11 +1425,11 @@ onQuerySearchHistory(callback: QuerySearchHistoryEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent) | 是   | 回调函数，返回查询搜索历史的事件。 |
+| callback | [QuerySearchHistoryEvent](arkts-apis-avMusicTemplate-t.md#querysearchhistoryevent) | 是   | 回调函数，返回查询搜索历史的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1413,13 +1462,6 @@ export class TemplateManager {
   private registerListener() {
     this.template?.onQuerySearchHistory(this.querySearchHistoryEvent);
   }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offClearSearchHistory();
-  }
 }
 ```
 
@@ -1437,11 +1479,11 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [QuerySearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querysearchhistoryevent) | 否   | 查询搜索历史的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QuerySearchHistoryEvent](arkts-apis-avMusicTemplate-t.md#querysearchhistoryevent) | 否   | 查询搜索历史的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1451,7 +1493,20 @@ offQuerySearchHistory(callback?: QuerySearchHistoryEvent): void
 
 **示例：**
 
-请参考[onQuerySearchHistory](#onquerysearchhistory)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQuerySearchHistory();
+  }
+}
+```
 
 ## onClearSearchHistory
 
@@ -1467,11 +1522,11 @@ onClearSearchHistory(callback: ClearSearchHistoryEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent) | 是   | 回调函数，返回清除搜索历史的事件。 |
+| callback | [ClearSearchHistoryEvent](arkts-apis-avMusicTemplate-t.md#clearsearchhistoryevent) | 是   | 回调函数，返回清除搜索历史的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1506,13 +1561,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offClearSearchHistory();
-  }
-
-  /**
    * 模拟操作结果。
    *
    * @returns 操作结果。
@@ -1540,11 +1588,11 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [ClearSearchHistoryEvent](arkts-apis-avsession-AVMusicTemplate-t.md#clearsearchhistoryevent) | 否   | 清除搜索历史的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [ClearSearchHistoryEvent](arkts-apis-avMusicTemplate-t.md#clearsearchhistoryevent) | 否   | 清除搜索历史的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1554,7 +1602,20 @@ offClearSearchHistory(callback?: ClearSearchHistoryEvent): void
 
 **示例：**
 
-请参考[onClearSearchHistory](#onclearsearchhistory)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offClearSearchHistory();
+  }
+}
+```
 
 ## onLogin
 
@@ -1570,11 +1631,11 @@ onLogin(callback: LoginEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent) | 是   | 回调函数，返回登录事件。 |
+| callback | [LoginEvent](arkts-apis-avMusicTemplate-t.md#loginevent) | 是   | 回调函数，返回登录事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1607,13 +1668,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onLogin(this.loginEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offLogin();
   }
 
   /**
@@ -1650,11 +1704,11 @@ offLogin(callback?: LoginEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                             |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------ |
-| callback | [LoginEvent](arkts-apis-avsession-AVMusicTemplate-t.md#loginevent) | 否   | 登录事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [LoginEvent](arkts-apis-avMusicTemplate-t.md#loginevent) | 否   | 登录事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1664,7 +1718,20 @@ offLogin(callback?: LoginEvent): void
 
 **示例：**
 
-请参考[onLogin](#onlogin)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offLogin();
+  }
+}
+```
 
 ## onRequestDialogInfo
 
@@ -1680,11 +1747,11 @@ onRequestDialogInfo(callback: RequestDialogInfoEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
-| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 是   | 回调函数，返回请求对话框信息的事件。 |
+| callback | [RequestDialogInfoEvent](arkts-apis-avMusicTemplate-t.md#requestdialoginfoevent) | 是   | 回调函数，返回请求对话框信息的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1717,13 +1784,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onRequestDialogInfo(this.requestDialogInfoEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offRequestDialogInfo();
   }
 
   /**
@@ -1766,11 +1826,11 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [RequestDialogInfoEvent](arkts-apis-avsession-AVMusicTemplate-t.md#requestdialoginfoevent) | 否   | 请求对话框信息的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [RequestDialogInfoEvent](arkts-apis-avMusicTemplate-t.md#requestdialoginfoevent) | 否   | 请求对话框信息的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1780,7 +1840,20 @@ offRequestDialogInfo(callback?: RequestDialogInfoEvent): void
 
 **示例：**
 
-请参考[onRequestDialogInfo](#onrequestdialoginfo)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offRequestDialogInfo();
+  }
+}
+```
 
 ## onHandleMemberPurchase
 
@@ -1796,11 +1869,11 @@ onHandleMemberPurchase(callback: HandleMemberPurchaseEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent) | 是   | 回调函数，返回处理购买会员的事件。 |
+| callback | [HandleMemberPurchaseEvent](arkts-apis-avMusicTemplate-t.md#handlememberpurchaseevent) | 是   | 回调函数，返回处理购买会员的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1833,13 +1906,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onHandleMemberPurchase(this.handleMemberPurchaseEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offHandleMemberPurchase();
   }
 
   /**
@@ -1882,11 +1948,11 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [HandleMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#handlememberpurchaseevent) | 否   | 处理购买会员的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [HandleMemberPurchaseEvent](arkts-apis-avMusicTemplate-t.md#handlememberpurchaseevent) | 否   | 处理购买会员的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1896,7 +1962,20 @@ offHandleMemberPurchase(callback?: HandleMemberPurchaseEvent): void
 
 **示例：**
 
-请参考[onHandleMemberPurchase](#onhandlememberpurchase)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offHandleMemberPurchase();
+  }
+}
+```
 
 ## onQueryMemberPurchase
 
@@ -1912,11 +1991,11 @@ onQueryMemberPurchase(callback: QueryMemberPurchaseEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent) | 是   | 回调函数，返回查询购买会员的事件。 |
+| callback | [QueryMemberPurchaseEvent](arkts-apis-avMusicTemplate-t.md#querymemberpurchaseevent) | 是   | 回调函数，返回查询购买会员的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1953,13 +2032,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryMemberPurchase();
-  }
-
-  /**
    * 模拟查询会员购买信息。
    *
    * @returns Promise类型的购买会员信息数组。
@@ -1990,11 +2062,11 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [QueryMemberPurchaseEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querymemberpurchaseevent) | 否   | 查询购买会员的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryMemberPurchaseEvent](arkts-apis-avMusicTemplate-t.md#querymemberpurchaseevent) | 否   | 查询购买会员的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2004,7 +2076,20 @@ offQueryMemberPurchase(callback?: QueryMemberPurchaseEvent): void
 
 **示例：**
 
-请参考[onQueryMemberPurchase](#onquerymemberpurchase)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryMemberPurchase();
+  }
+}
+```
 
 ## onQueryCustomContent
 
@@ -2020,11 +2105,11 @@ onQueryCustomContent(callback: QueryCustomContentEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                 |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------ |
-| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent) | 是   | 回调函数，返回查询自定义内容的事件。 |
+| callback | [QueryCustomContentEvent](arkts-apis-avMusicTemplate-t.md#querycustomcontentevent) | 是   | 回调函数，返回查询自定义内容的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2057,13 +2142,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onQueryCustomContent(this.queryCustomContentEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offQueryCustomContent();
   }
 
   /**
@@ -2114,11 +2192,11 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [QueryCustomContentEvent](arkts-apis-avsession-AVMusicTemplate-t.md#querycustomcontentevent) | 否   | 查询自定义内容的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [QueryCustomContentEvent](arkts-apis-avMusicTemplate-t.md#querycustomcontentevent) | 否   | 查询自定义内容的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2128,7 +2206,20 @@ offQueryCustomContent(callback?: QueryCustomContentEvent): void
 
 **示例：**
 
-请参考[onQueryCustomContent](#onquerycustomcontent)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offQueryCustomContent();
+  }
+}
+```
 
 ## onDownloadMediaEntity
 
@@ -2144,11 +2235,11 @@ onDownloadMediaEntity(callback: DownloadMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent) | 是   | 回调函数，返回下载媒体实体的事件。 |
+| callback | [DownloadMediaEntityEvent](arkts-apis-avMusicTemplate-t.md#downloadmediaentityevent) | 是   | 回调函数，返回下载媒体实体的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2182,13 +2273,6 @@ export class TemplateManager {
    */
   private registerListener() {
     this.template?.onDownloadMediaEntity(this.downloadMediaEntityEvent);
-  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offDownloadMediaEntity();
   }
 
   /**
@@ -2241,11 +2325,11 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [DownloadMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#downloadmediaentityevent) | 否   | 下载媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [DownloadMediaEntityEvent](arkts-apis-avMusicTemplate-t.md#downloadmediaentityevent) | 否   | 下载媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2255,7 +2339,20 @@ offDownloadMediaEntity(callback?: DownloadMediaEntityEvent): void
 
 **示例：**
 
-请参考[onDownloadMediaEntity](#ondownloadmediaentity)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offDownloadMediaEntity();
+  }
+}
+```
 
 ## onSettingsChange
 
@@ -2271,11 +2368,11 @@ onSettingsChange(callback: SettingsChangeEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                           |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
-| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent) | 是   | 回调函数，返回设置改变的事件。 |
+| callback | [SettingsChangeEvent](arkts-apis-avMusicTemplate-t.md#settingschangeevent) | 是   | 回调函数，返回设置改变的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2311,13 +2408,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offSettingsChange();
-  }
-
-  /**
    * 模拟设置改变。
    *
    * @returns Promise类型的设置条目。
@@ -2350,11 +2440,11 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                   |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
-| callback | [SettingsChangeEvent](arkts-apis-avsession-AVMusicTemplate-t.md#settingschangeevent) | 否   | 设置改变的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [SettingsChangeEvent](arkts-apis-avMusicTemplate-t.md#settingschangeevent) | 否   | 设置改变的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2364,7 +2454,20 @@ offSettingsChange(callback?: SettingsChangeEvent): void
 
 **示例：**
 
-请参考[onSettingsChange](#onsettingschange)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offSettingsChange();
+  }
+}
+```
 
 ## onProblemAndAdvice
 
@@ -2380,11 +2483,11 @@ onProblemAndAdvice(callback: ProblemAndAdviceEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                   |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------- |
-| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 是   | 回调函数，返回问题与建议的事件。 |
+| callback | [ProblemAndAdviceEvent](arkts-apis-avMusicTemplate-t.md#problemandadviceevent) | 是   | 回调函数，返回问题与建议的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2419,13 +2522,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offProblemAndAdvice();
-  }
-
-  /**
    * 模拟操作结果。
    *
    * @returns 操作结果。
@@ -2453,11 +2549,11 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | [ProblemAndAdviceEvent](arkts-apis-avsession-AVMusicTemplate-t.md#problemandadviceevent) | 否   | 处理问题与建议的回调。不填该参数则注销该类型对应的所有回调。 |
+| callback | [ProblemAndAdviceEvent](arkts-apis-avMusicTemplate-t.md#problemandadviceevent) | 否   | 处理问题与建议的回调。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2467,7 +2563,20 @@ offProblemAndAdvice(callback?: ProblemAndAdviceEvent): void
 
 **示例：**
 
-请参考[onProblemAndAdvice](#onproblemandadvice)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offProblemAndAdvice();
+  }
+}
+```
 
 ## onPlayForSearch
 
@@ -2483,11 +2592,11 @@ onPlayForSearch(callback: PlayForSearchEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                       |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------- |
-| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent) | 是   | 回调函数，返回搜播的事件。 |
+| callback | [PlayForSearchEvent](arkts-apis-avMusicTemplate-t.md#playforsearchevent) | 是   | 回调函数，返回搜播的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2523,13 +2632,6 @@ export class TemplateManager {
   }
 
   /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offPlayForSearch();
-  }
-
-  /**
    * 模拟操作结果。
    *
    * @returns 操作结果。
@@ -2557,11 +2659,11 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                               |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------------------------- |
-| callback | [PlayForSearchEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playforsearchevent) | 否   | 搜播的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [PlayForSearchEvent](arkts-apis-avMusicTemplate-t.md#playforsearchevent) | 否   | 搜播的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2571,7 +2673,20 @@ offPlayForSearch(callback?: PlayForSearchEvent): void
 
 **示例：**
 
-请参考[onPlayForSearch](#onplayforsearch)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offPlayForSearch();
+  }
+}
+```
 
 ## onExecuteAction
 
@@ -2587,11 +2702,11 @@ onExecuteAction(callback: ExecuteActionEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                           |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------ |
-| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent) | 是   | 回调函数，返回执行操作的事件。 |
+| callback | [ExecuteActionEvent](arkts-apis-avMusicTemplate-t.md#executeactionevent) | 是   | 回调函数，返回执行操作的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2622,13 +2737,7 @@ export class TemplateManager {
    * 注册监听。
    */
   private registerListener() {
-    this.template?.onExecuteAction(this.executeActionEvent);  }
-
-  /**
-   * 注销监听。
-   */
-  public unregisterListener() {
-    this.template?.offExecuteAction();
+    this.template?.onExecuteAction(this.executeActionEvent);
   }
 }
 ```
@@ -2647,11 +2756,11 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                   |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------ |
-| callback | [ExecuteActionEvent](arkts-apis-avsession-AVMusicTemplate-t.md#executeactionevent) | 否   | 执行操作的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [ExecuteActionEvent](arkts-apis-avMusicTemplate-t.md#executeactionevent) | 否   | 执行操作的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2661,7 +2770,20 @@ offExecuteAction(callback?: ExecuteActionEvent): void
 
 **示例：**
 
-请参考[onExecuteAction](#onexecuteaction)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offExecuteAction();
+  }
+}
+```
 
 ## onPlayMediaEntity
 
@@ -2677,11 +2799,11 @@ onPlayMediaEntity(callback: PlayMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent) | 是   | 回调函数，返回播放媒体实体的事件。 |
+| callback | [PlayMediaEntityEvent](arkts-apis-avMusicTemplate-t.md#playmediaentityevent) | 是   | 回调函数，返回播放媒体实体的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2707,13 +2829,6 @@ export class TemplateManager {
     private registerListener() {
         this.template?.onPlayMediaEntity(this.playMediaEntityEvent);
     }
-
-    /**
-     * 注销监听。
-     */
-    public unregisterListener() {
-        this.template?.offPlayMediaEntity();
-    }
 }
 ```
 
@@ -2732,11 +2847,11 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [PlayMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#playmediaentityevent) | 否   | 播放媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [PlayMediaEntityEvent](arkts-apis-avMusicTemplate-t.md#playmediaentityevent) | 否   | 播放媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2746,7 +2861,20 @@ offPlayMediaEntity(callback?: PlayMediaEntityEvent): void
 
 **示例：**
 
-请参考[onPlayMediaEntity](#onplaymediaentity)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offPlayMediaEntity();
+  }
+}
+```
 
 ## onFavoriteMediaEntity
 
@@ -2762,11 +2890,11 @@ onFavoriteMediaEntity(callback: FavoriteMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                               |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------- |
-| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent) | 是   | 回调函数，返回收藏媒体实体的事件。 |
+| callback | [FavoriteMediaEntityEvent](arkts-apis-avMusicTemplate-t.md#favoritemediaentityevent) | 是   | 回调函数，返回收藏媒体实体的事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2802,13 +2930,6 @@ export class TemplateManager {
     }
 
     /**
-     * 注销监听。
-     */
-    public unregisterListener() {
-        this.template?.offFavoriteMediaEntity();
-    }
-
-    /**
      * 模拟操作结果。
      *
      * @returns 操作结果。
@@ -2820,8 +2941,8 @@ export class TemplateManager {
         return operResult;
     };
 }
-
 ```
+
 ## offFavoriteMediaEntity
 
 offFavoriteMediaEntity(callback?: FavoriteMediaEntityEvent): void
@@ -2836,11 +2957,11 @@ offFavoriteMediaEntity(callback?: FavoriteMediaEntityEvent): void
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                       |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| callback | [FavoriteMediaEntityEvent](arkts-apis-avsession-AVMusicTemplate-t.md#favoritemediaentityevent) | 否   | 收藏媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
+| callback | [FavoriteMediaEntityEvent](arkts-apis-avMusicTemplate-t.md#favoritemediaentityevent) | 否   | 收藏媒体实体的事件。不填该参数则注销该类型对应的所有回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2850,7 +2971,20 @@ offFavoriteMediaEntity(callback?: FavoriteMediaEntityEvent): void
 
 **示例：**
 
-请参考[onFavoriteMediaEntity](#onfavoritemediaentity)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 注销监听。
+   */
+  public unregisterListener() {
+    this.template?.offFavoriteMediaEntity();
+  }
+}
+```
 
 ## setUserInfo
 
@@ -2866,7 +3000,7 @@ setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 
 | 参数名   | 类型                                                         | 必填 | 说明       |
 | -------- | ------------------------------------------------------------ | ---- | ---------- |
-| userInfo | [UserInfo](arkts-apis-avsession-AVMusicTemplate-i.md#userinfo) | 是   | 用户信息。 |
+| userInfo | [UserInfo](arkts-apis-avMusicTemplate-i.md#userinfo) | 是   | 用户信息。 |
 
 **返回值：**
 
@@ -2876,7 +3010,7 @@ setUserInfo(userInfo: UserInfo): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2934,8 +3068,8 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 
 | 参数名     | 类型                                                         | 必填 | 说明             |
 | ---------- | ------------------------------------------------------------ | ---- | ---------------- |
-| type       | [DialogControlType](arkts-apis-avsession-AVMusicTemplate-t.md#dialogcontroltype) | 是   | 对话框控制类型。 |
-| dialogInfo | [DialogInfo](arkts-apis-avsession-AVMusicTemplate-i.md#dialoginfo) | 是   | 对话框信息。     |
+| type       | [DialogControlType](arkts-apis-avMusicTemplate-t.md#dialogcontroltype) | 是   | 对话框控制类型。 |
+| dialogInfo | [DialogInfo](arkts-apis-avMusicTemplate-i.md#dialoginfo) | 是   | 对话框信息。     |
 
 **返回值：**
 
@@ -2945,7 +3079,7 @@ setDialogCommand(type: DialogControlType, dialogInfo: DialogInfo): Promise&lt;vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -2998,7 +3132,7 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 
 | 参数名 | 类型                                                         | 必填 | 说明       |
 | ------ | ---------------------------------------------------------- | ---- | ---------- |
-| single | [Single](arkts-apis-avsession-AVMusicTemplate-i.md#single) | 是   | 当前单曲。 |
+| single | [Single](arkts-apis-avMusicTemplate-i.md#single) | 是   | 当前单曲。 |
 
 **返回值：**
 
@@ -3008,7 +3142,7 @@ setCurrentSingle(single: Single): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3094,7 +3228,7 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 
 | 参数名   | 类型                                                         | 必填 | 说明             |
 | -------- | ------------------------------------------------------------ | ---- | ---------------- |
-| entities | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity)[] | 是   | 媒体实体的数组。 |
+| entities | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity)[] | 是   | 媒体实体的数组。 |
 
 **返回值：**
 
@@ -3104,7 +3238,7 @@ setMediaEntities(entities: MediaEntity[]): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3152,7 +3286,7 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 | 参数名     | 类型                                                         | 必填 | 说明             |
 | ---------- | ------------------------------------------------------------ | ---- | ---------------- |
 | tabId      | string                                                       | 是   | 标签的ID。       |
-| tabContent | [MediaTabContent](arkts-apis-avsession-AVMusicTemplate-i.md#mediatabcontent) | 是   | 媒体标签页内容。 |
+| tabContent | [MediaTabContent](arkts-apis-avMusicTemplate-i.md#mediatabcontent) | 是   | 媒体标签页内容。 |
 
 **返回值：**
 
@@ -3162,7 +3296,7 @@ setTabContent(tabId: string, tabContent: MediaTabContent): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3224,7 +3358,7 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 
 | 参数名   | 类型                                                         | 必填 | 说明           |
 | -------- | ------------------------------------------------------------ | ---- | -------------- |
-| playlist | [PageMediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#pagemediaentity) | 是   | 分页媒体实体。 |
+| playlist | [PageMediaEntity](arkts-apis-avMusicTemplate-i.md#pagemediaentity) | 是   | 分页媒体实体。 |
 
 **返回值：**
 
@@ -3234,7 +3368,7 @@ setPlaylist(playlist: PageMediaEntity): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3292,7 +3426,7 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 | 参数名 | 类型                                                         | 必填 | 说明       |
 | ------ | ------------------------------------------------------------ | ---- | ---------- |
-| single | [MediaEntity](arkts-apis-avsession-AVMusicTemplate-i.md#mediaentity) | 是   | 媒体实体。 |
+| single | [MediaEntity](arkts-apis-avMusicTemplate-i.md#mediaentity) | 是   | 媒体实体。 |
 
 **返回值：**
 
@@ -3302,7 +3436,7 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3312,7 +3446,30 @@ setDownloadMediaEntityStatus(single: MediaEntity): Promise&lt;void&gt;
 
 **示例：**
 
-请参考[onDownloadMediaEntity](#ondownloadmediaentity)的示例。
+```ts
+import { avMusicTemplate } from '@kit.AVSessionKit';
+
+export class TemplateManager {
+  private template: avMusicTemplate.AVMusicTemplate | undefined = undefined;
+
+  /**
+   * 下载状态，进度刷新。
+   */
+  public setDownloadMediaEntityStatus(mediaEntity: avMusicTemplate.MediaEntity) {
+    this.template?.setDownloadMediaEntityStatus(mediaEntity);
+  };
+
+  /**
+   * 模拟下载过程。
+   *
+   * @param mediaEntity 媒体实体。
+   */
+  private async downloadMediaEntity(mediaEntity: avMusicTemplate.MediaEntity) {
+    // 下载完成之后。
+    this.setDownloadMediaEntityStatus(mediaEntity);
+  };
+}
+```
 
 ## setCustomElements
 
@@ -3328,9 +3485,9 @@ setCustomElements(actionType: ActionType, customType: CustomType, customElement:
 
 | 参数名        | 类型                                                         | 必填 | 说明         |
 | ------------- | ------------------------------------------------------------ | ---- | ------------ |
-| actionType    | [ActionType](arkts-apis-avsession-AVMusicTemplate-t.md#actiontype) | 是   | 操作类型。   |
-| customType    | [CustomType](arkts-apis-avsession-AVMusicTemplate-t.md#customtype) | 是   | 自定义类型。 |
-| customElement | [CustomElement](arkts-apis-avsession-AVMusicTemplate-i.md#customelement) | 是   | 自定义元素。 |
+| actionType    | [ActionType](arkts-apis-avMusicTemplate-t.md#actiontype) | 是   | 操作类型。   |
+| customType    | [CustomType](arkts-apis-avMusicTemplate-t.md#customtype) | 是   | 自定义类型。 |
+| customElement | [CustomElement](arkts-apis-avMusicTemplate-i.md#customelement) | 是   | 自定义元素。 |
 
 **返回值：**
 
@@ -3340,7 +3497,7 @@ setCustomElements(actionType: ActionType, customType: CustomType, customElement:
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3402,7 +3559,7 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
 | 参数名       | 类型                                                         | 必填 | 说明         |
 | ------------ | ------------------------------------------------------------ | ---- | ------------ |
-| settingItems | [SettingItem](arkts-apis-avsession-AVMusicTemplate-i.md#settingitem) | 是   | 设置项数组。 |
+| settingItems | [SettingItem](arkts-apis-avMusicTemplate-i.md#settingitem)[] | 是   | 设置项数组。 |
 
 **返回值：**
 
@@ -3412,7 +3569,7 @@ setSettings(settingItems: SettingItem[]): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3470,7 +3627,7 @@ reportExecuteAction(actionType: string, params: string): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -3521,7 +3678,7 @@ setExtensionAbility(want: WantAgent): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |

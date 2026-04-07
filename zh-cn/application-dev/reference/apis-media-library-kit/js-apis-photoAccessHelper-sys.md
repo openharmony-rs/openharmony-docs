@@ -2038,6 +2038,122 @@ async function example(context: Context) {
 }
 ```
 
+### startAssetAnalysisAsync<sup>24+</sup>
+
+startAssetAnalysisAsync(config: AnalysisConfig, callback: Callback&lt;AnalysisResult&gt;): Promise&lt;number&gt;
+
+启动异步资产分析。使用callback异步回调。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限：** ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| config    | [AnalysisConfig](#analysisconfig24) | 是   | 资产分析配置，config中的uris从[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)对象中获取。 |
+| callback  | Callback&lt;[AnalysisResult](#analysisresult24)&gt; | 是   | 回调函数，用于返回资产分析结果信息。 |
+
+**返回值：**
+
+| 类型                  | 说明                        |
+| --------------------- | --------------------------- |
+| Promise&lt;number&gt; | Promise对象，返回服务的任务ID。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported or invalid types of config.<br>2. The types or uris array size of config exceed max value. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+let callback = (result: photoAccessHelper.AnalysisResult) => {
+  console.info('startAssetAnalysisAsync callback result: ' + JSON.stringify(result));
+};
+
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('startAssetAnalysisAsyncDemo');
+  let config: photoAccessHelper.AnalysisConfig = {
+    types: [photoAccessHelper.AnalysisType.ANALYSIS_SEARCH_INDEX],
+    uris: ['file://media/Photo/14/IMG_1729066473_013/IMG_20241016_122253.jpg'],
+    extraInfos: '{"trigger":"manual"}'
+  };
+
+  try {
+    let taskId = await phAccessHelper.startAssetAnalysisAsync(config, callback);
+    console.info('startAssetAnalysisAsync success, taskId=' + taskId);
+  } catch (err) {
+    console.error(`startAssetAnalysisAsync failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
+### stopAssetAnalysis<sup>24+</sup>
+
+stopAssetAnalysis(config: AnalysisConfig): void
+
+停止资产分析。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**需要权限：** ohos.permission.WRITE_IMAGEVIDEO
+
+**参数：**
+
+| 参数名    | 类型                | 必填 | 说明                                                         |
+| --------- | ------------------- | ---- | ------------------------------------------------------------ |
+| config    | [AnalysisConfig](#analysisconfig24) | 是   | 资产分析配置。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 201 | Permission denied. |
+| 202 | Called by non-system application. |
+| 23800151 | The scenario parameter verification fails. Possible causes:<br>1. Unsupported or invalid AnalysisType of config.<br>2. The types or uris array size of config exceed max value. |
+| 23800301 | Internal system error. It is recommended to retry and check the logs.<br>Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  console.info('stopAssetAnalysisDemo');
+  let config: photoAccessHelper.AnalysisConfig = {
+    types: [photoAccessHelper.AnalysisType.ANALYSIS_SEARCH_INDEX],
+    uris: ['file://media/Photo/14/IMG_1729066473_013/IMG_20241016_122253.jpg']
+  };
+
+  try {
+    phAccessHelper.stopAssetAnalysis(config);
+    console.info('stopAssetAnalysis success');
+  } catch (err) {
+    console.error(`stopAssetAnalysis failed with error: ${err.code}, ${err.message}`);
+  }
+}
+```
+
 ### createAssetsForAppWithMode<sup>12+</sup>
 
 createAssetsForAppWithMode(bundleName: string, appName: string, appId: string, tokenId: number, authorizationMode: AuthorizationMode, photoCreationConfigs:Array\<PhotoCreationConfig>): Promise\<Array\<string>>
@@ -3864,6 +3980,109 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+### setAssetCompatibleCapability<sup>24+</sup>
+
+setAssetCompatibleCapability(bundleName: string, capability: AssetCompatibleCapability): Promise\<void>
+
+根据bundleName配置资产兼容能力。开发者可以获取兼容性能力，并决定是否根据兼容性能力进行兼容性转换。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| bundleName | string | 是   | 应用的bundleName。|
+| capability | [AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24) | 是   | 资产兼容能力。|
+
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The bundleName or capability is invalid.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let bundleName = "com.test.example";
+    let capability : photoAccessHelper.AssetCompatibleCapability = {
+        supportedHighResolution : true,
+    };
+    await phAccessHelper.setAssetCompatibleCapability(bundleName, capability);
+  } catch (error) {
+    console.error('failed to setAssetCompatibleCapability err', error);
+  }
+}
+```
+
+### getAssetCompatibleCapability<sup>24+</sup>
+
+getAssetCompatibleCapability(bundleName: string): Promise\<AssetCompatibleCapability>
+
+根据bundleName获取资产兼容能力。当应用程序获取文件时，可判断该应用程序是否需要进行兼容性转换。
+
+​**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型    | 必填 | 说明                       |
+| ------- | ------- | ---- | -------------------------- |
+| bundleName | string | 是   | 应用的bundleName。|
+
+**返回值：**
+
+| 类型                                    | 说明              |
+| --------------------------------------- | ----------------- |
+| Promise&lt;[AssetCompatibleCapability](arkts-apis-photoAccessHelper-i.md#assetcompatiblecapability24)&gt; | Promise对象，返回指定的资产兼容功能。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202 | Called by non-system application. |
+| 23800151 | The bundleName is invalid, such as null, undefined and empty.|
+| 23800301 | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+
+**示例：**
+
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
+
+```ts
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
+  try {
+    let bundleName = "com.test.example";
+    let capability : photoAccessHelper.AssetCompatibleCapability = await phAccessHelper.getAssetCompatibleCapability(bundleName);
+  } catch (error) {
+    console.error('failed to getAssetCompatibleCapability err', error);
+  }
+}
+```
+
 ## getAlbumIdByBundleName<sup>22+</sup>
 
 getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
@@ -3877,7 +4096,6 @@ getAlbumIdByBundleName(bundleName: string): Promise&lt;number&gt;
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 
 **参数：**
 
@@ -7260,6 +7478,54 @@ async function example(asset: photoAccessHelper.PhotoAsset, hasAppLink: linkType
       await phAccessHelper.applyChanges(assetChangeRequest);
     } catch (error) {
       console.error('set hasAppLink error: ' + error);
+      return;
+    }
+}
+```
+
+### setAppLinkState<sup>24+</sup>
+
+setAppLinkState(appLinkState: AppLinkState): void
+
+设置文件记忆链接的状态信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**参数：**
+
+| 参数名  | 类型             | 必填   | 说明    |
+| ---- | -------------- | ---- | ----- |
+| appLinkState | [AppLinkState](#applinkstate24) | 是    | 设置文件记忆链接的状态信息。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[媒体库错误码](errorcode-medialibrary.md)。
+
+| 错误码ID | 错误信息 |
+| -------- | ---------------------------------------- |
+| 202   | Invoked by non-system applications.       |
+| 23800301 | Internal system error.It is recommended to retry and check the logs. |
+| 23800151 | The scenario parameter verification fails.Possible causes: The input parameter is not within the valid range. |
+
+**示例：**
+
+```ts
+import { photoAccessHelper } from '@kit.MediaLibraryKit';
+
+async function example(asset: photoAccessHelper.PhotoAsset, context: Context) {
+    try {
+      let phAccessHelper: photoAccessHelper.PhotoAccessHelper =
+        photoAccessHelper.getPhotoAccessHelper(context);
+      let assetChangeRequest: photoAccessHelper.MediaAssetChangeRequest =
+        new photoAccessHelper.MediaAssetChangeRequest(asset);
+      assetChangeRequest.setAppLinkState(photoAccessHelper.AppLinkState.HAS_NO_LINK);
+      await phAccessHelper.applyChanges(assetChangeRequest);
+    } catch (error) {
+      console.error('set appLink state error: ' + error);
       return;
     }
 }
@@ -12034,6 +12300,42 @@ async function example(context: Context) {
 | ANALYSIS\_HIGHLIGHT<sup>12+</sup>        | 14 | 时刻标签。**系统接口**：此接口为系统接口。    |
 | ANALYSIS\_MULTI\_CROP<sup>12+</sup>        | 15 | 2D运镜检测框标签。**系统接口**：此接口为系统接口。    |
 | ANALYSIS\_SEARCH\_INDEX<sup>18+</sup>        | 16 | 前台索引分析。**系统接口**：此接口为系统接口。    |
+| ANALYSIS\_SELECTED<sup>24+</sup>        | 17 | 优选分析类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。    |
+| ANALYSIS\_DUPLICATE\_SIMILARITY<sup>24+</sup>        | 18 | 重复和相似度分析类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。    |
+| ANALYSIS\_NEGATIVE\_EMOTION<sup>24+</sup>        | 19 | 负向情绪分析类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。    |
+| ANALYSIS\_FACE\_AESTHETICS<sup>24+</sup>        | 20 | 人脸美学分析类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。    |
+| ANALYSIS\_MAGIC\_EMOJI<sup>24+</sup>        | 21 | 魔法表情分析类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。    |
+| ANALYSIS\_AI\_EDIT<sup>24+</sup>        | 22 | AI编辑分析类别。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。    |
+
+## AnalysisConfig<sup>24+</sup>
+
+资产分析配置。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| types | [AnalysisType](#analysistype11)[]  | 否 | 否 | 智慧分析类型数组，数组大小上限为[AnalysisType](#analysistype11)枚举定义成员数量。 |
+| uris | string[]  | 否 | 否 | 资产URI数组。<br>长度范围：[0, 100]。 |
+| extraInfos | string  | 否 | 是 | JSON字符串格式的扩展信息。<br>长度范围：(0, 500]。|
+
+## AnalysisResult<sup>24+</sup>
+
+资产分析结果信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  | 类型                | 只读 | 可选 | 说明                                              |
+| ---- | ------- | ---- |  ---- | ----- |
+| result | number  | 否 | 否 | 资产分析的结果码。 |
 
 ## HighlightAlbumInfoType<sup>12+</sup>
 
@@ -12339,6 +12641,7 @@ async function example(context: Context) {
 | DOG<sup>23+</sup> |  14 | DOG表示狗照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | ARCHITECTURE<sup>23+</sup> |  15 | ARCHITECTURE表示建筑照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 | LANDSCAPE<sup>23+</sup> |  16 | LANDSCAPE表示风景照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| GAUSSIAN_SPLAT_3D<sup>24+</sup> |  17 | GAUSSIAN_SPLAT_3D表示通过3D高斯技术生成的照片会被推荐。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 ## RecommendationOptions<sup>11+</sup>
 
@@ -12349,6 +12652,7 @@ async function example(context: Context) {
 | 名称                    | 类型                | 只读 | 可选 | 说明                          |
 | ----------------------- | ------------------- | ---- | ---- | -------------------------------- |
 | recommendationTypeList<sup>23+</sup> | Array\<[RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)>   | 否   | 是 | 如果需要根据枚举值同时推荐多个分类的图片，则配置此参数。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
+| defaultRecommendationType<sup>24+</sup> | [RecommendationType](arkts-apis-photoAccessHelper-e.md#recommendationtype11)   | 否   | 是 | 表示打开Picker直接显示的推荐标签。需要配置recommendationTypeList后，该配置才生效。<br>如果该标签存在，则默认显示该标签页。<br>如果该标签不存在，则默认显示“全部”标签页。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>**系统接口**：此接口为系统接口。|
 
 
 ## ThumbnailChangeStatus<sup>20+</sup>
@@ -12887,3 +13191,19 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 | APPROVED |  1 |  无风险图片。  |
 | SUSPICIOUS |  2 |  疑似风险图片。  |
 | REJECTED |  3 |  确认风险图片。  |
+
+## AppLinkState<sup>24+</sup>
+
+枚举，用于标识文件记忆链接的状态信息。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+| 名称  |  值 |  说明 |
+| ----- |  ---- |  ---- |
+| DEFAULT |  0 |  无法确定文件是否具有记忆链接标记。|
+| HAS_NO_LINK |  1 |  文件无记忆链接标记。  |
+| HAS_LINK |  2 |  文件具有记忆链接标记。  |

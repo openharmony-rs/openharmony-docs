@@ -5566,6 +5566,20 @@ Allows an application to query whether the page is in the standby state and acce
 
 **Since**: 23
 
+## ohos.permission.RESTORE_END_NOTIFICATION
+
+Allows a system application to subscribe to the restore end event of the backup framework.
+ 	 
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
+
+**since**: 23
+
 ## ohos.permission.ACQUIRE_LOCAL_ACCOUNT_AUTHORIZATION
 
 Allows an application to acquire the local account authorization.
@@ -5607,5 +5621,21 @@ Allows a system application to connect to the Agent.
 **Enable via ACL**: true
 
 **Supported devices**: General
+
+**Since**: 24
+
+## ohos.permission.EXEMPT_MOTION_SENSORS_RESTRICTION
+
+Allows an application to bypass sensor controls.
+
+With the permission, the application can always use sensors.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: general devices
 
 **Since**: 24

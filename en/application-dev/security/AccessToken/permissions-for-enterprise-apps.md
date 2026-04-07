@@ -513,6 +513,23 @@ With this permission, the application can call **spaceManager.subscribeEvent** o
 
 **Valid since**: 20
 
+## ohos.permission.SCAN_REMEDIATE_VIRUS
+
+Allows an application to scan for and remediate viruses.
+
+This permission is only available to antivirus apps.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 24
+
 ## ohos.permission.sec.ACCESS_UDID
 
 Allows an application to obtain the Unified Device ID (UDID).
@@ -529,3 +546,20 @@ The UDID uniquely identifies a device.
 **Valid since**: 7
 
 **Changelog**: This permission is available only to system applications in API versions 7 to 19. From API version 20, it is available to normal enterprise applications.
+
+## ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+Allows an enterprise application to call print management APIs.
+
+With this permission, the application can update print status and printer information.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+<!--Del-->
+**Enable via ACL**: true<!--DelEnd-->
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Valid since**: 24

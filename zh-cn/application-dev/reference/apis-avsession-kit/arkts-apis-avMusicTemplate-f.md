@@ -9,7 +9,8 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 23开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块仅适用于API version 23及以上版本的Car设备。
 
 ## 导入模块
 
@@ -31,17 +32,17 @@ createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 
 | 参数名     | 类型                                                         | 必填 | 说明               |
 | ---------- | ------------------------------------------------------------ | ---- | ------------------ |
-| accessType | [AVMusicTemplateType](arkts-apis-avsession-AVMusicTemplate-e.md#avmusictemplatetype) | 是   | 音频模板枚举类型。 |
+| accessType | [AVMusicTemplateType](arkts-apis-avMusicTemplate-e.md#avmusictemplatetype) | 是   | 音频模板枚举类型。 |
 
 **返回值：**
 
 | 类型                                                       | 说明                             |
 | ---------------------------------------------------------- | -------------------------------- |
-| [AVMusicTemplate](arkts-apis-avsession-AVMusicTemplate.md) | 音频模板对象，可用于获取会话ID。 |
+| [AVMusicTemplate](arkts-apis-avMusicTemplate-AVMusicTemplate.md) | 音频模板对象，可用于获取会话ID。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avsession-avmusictemplate.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[音频模板错误码](errorcode-avmusictemplate.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -49,18 +50,6 @@ createAVMusicTemplate(accessType: AVMusicTemplateType): AVMusicTemplate
 | 35000001 | Failed to create the AVMusicTemplate.                        |
 
 **示例：**
-
-```ts
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
-import { TemplateManager } from '../manager/TemplateManager';
-
-export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
-    console.info('onCreate');
-    TemplateManager.getInstance().createTemplate();
-  }
-}
-```
 
 ```ts
 import { avMusicTemplate } from '@kit.AVSessionKit';
@@ -94,8 +83,7 @@ export class TemplateManager {
     }
     try {
       this.template = avMusicTemplate.createAVMusicTemplate(avMusicTemplate.AVMusicTemplateType.DEFAULT);
-      console.info('createTemplate: success');
-      this.registerListener();
+      console.info('Succeeded in creating template.');
     } catch (e) {
       console.error(`createTemplate, errCode: ${e?.code}`);
     }
