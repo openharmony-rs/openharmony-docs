@@ -49,7 +49,7 @@ keyboardShortcut(value: string | FunctionKey, keys: Array\<ModifierKey>, action?
 | 所有支持onClick事件的组件                         | 支持自定义组合键                           | 无                                        |
 | 自定义组合键要求                                 | 控制键Ctrl、Shift、Alt及它们的组合加上热键的单个字符（可以通过键盘输入的字符）或[FunctionKey](ts-appendix-enums.md#functionkey10) | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL]) |
 | 多个不同组件设置相同组合键                            | 只响应节点树上的深度最浅的组件，其它组件不响应快捷键          | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL])<br />Button('button2').keyboardShortcut('a',[ModifierKey.CTRL]) |
-| 无论组件是否获得焦点                               | 只要窗口获焦，快捷键就会响应                      | 无                                        |
+| 无论组件是否获焦                               | 只要窗口获焦，快捷键就会响应                      | 无                                        |
 | 使用单个`FunctionKey`触发快捷键 | 单个`FunctionKey`，没有`ModifierKey`，可以绑定为快捷键 | Button('button1').keyboardShortcut(FunctionKey.F2,[])                                        |
 | `keyboardShortcut`的入参`value`为空 | 取消绑定的快捷键。<br />绑定了多个快捷键的不能解除绑定快捷键| Button('button1').keyboardShortcut('',[ModifierKey.CTRL])<br />Button('button2').keyboardShortcut('',[]) |
 | keyboardShortcut接口中的keys命令中Ctrl、Shift、Alt | 不区分左右键都响应                          | Button('button1').keyboardShortcut('a',[ModifierKey.CTRL, ModifierKey.ALT]) |
