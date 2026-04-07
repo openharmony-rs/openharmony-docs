@@ -494,49 +494,6 @@ function preLaunch(context: common.BaseContext): void {
 }
 ```
 
-### createDeferredPreviewOutput
-
-createDeferredPreviewOutput(profile?: Profile): PreviewOutput
-
-创建延迟预览输出对象，在配流时替代普通的预览输出对象加入数据流。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型             | 必填 | 说明       |
-| -------- | --------------- | ---- | --------- |
-| profile | [Profile](arkts-apis-camera-i.md#profile) | 否 | 相机预览流的配置文件。 |
-
-**返回值：**
-
-| 类型 | 说明 |
-| -------- | --------------- |
-| [PreviewOutput](#previewoutput) | 返回预览输出对象。 |
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202             |  Not System Application.       |
-| 7400101         |  Parameter missing or parameter type incorrect. |
-
-**示例：**
-
-```ts
-import { common } from '@kit.AbilityKit';
-
-function getDeferredPreviewOutput(context: common.BaseContext, previewProfile: camera.Profile): camera.PreviewOutput {
-  const cameraManager: camera.CameraManager = camera.getCameraManager(context);
-  const output: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
-  return output;
-}
-```
-
 ### preSwitchCamera<sup>11+</sup>
 
 preSwitchCamera(cameraId: string): void
@@ -1168,59 +1125,6 @@ function enableDepthFusion(DepthFusion: camera.DepthFusion): void {
 ## PreviewOutput
 
 预览输出类。继承[CameraOutput](arkts-apis-camera-CameraOutput.md)。
-
-### addDeferredSurface
-
-addDeferredSurface(surfaceId: string): void
-
-配置延迟预览的Surface，可以在[Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11-1)配流和[Session.start](arkts-apis-camera-Session.md#start11-1)启流之后运行。
-
-**系统接口：** 此接口为系统接口。
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**参数：**
-
-| 参数名     | 类型         | 必填 | 说明                       |
-| -------- | --------------| ---- | ------------------------ |
-| surfaceId | string | 是 | 从[XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md)组件获取的surfaceId。|
-
-**错误码：**
-
-以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)和[通用错误码说明文档](../errorcode-universal.md)。
-
-| 错误码ID         | 错误信息        |
-| --------------- | --------------- |
-| 202                    |  Permission verification failed. A non-system application calls a system API.    |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-
-**示例：**
-
-```ts
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function preview(context: common.BaseContext, cameraDevice: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): Promise<void> {
-  const cameraManager: camera.CameraManager = camera.getCameraManager(context);
-  const cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameraDevice);
-  const previewOutput: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
-  const photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
-  const session: camera.Session  = cameraManager.createSession(mode);
-  session.beginConfig();
-  session.addInput(cameraInput);
-  session.addOutput(previewOutput);
-  session.addOutput(photoOutput);
-  await session.commitConfig();
-  try {
-    await session.start();
-  } catch (error) {
-    // 失败返回错误码error.code并处理。
-    let err = error as BusinessError;
-    console.error(`start session failed. error code: ${err.code}`);
-  }
-  previewOutput.addDeferredSurface(previewSurfaceId);
-}
-```
 
 ### isSketchSupported<sup>11+</sup>
 

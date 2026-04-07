@@ -60,7 +60,7 @@ import { PromptAction } from '@kit.ArkUI';
 
 const promptAction = new PromptAction();
 
-export async function reEncoding(context : Context, fd : number) {
+export async function reEncoding(context : Context, fd : number | undefined) {
   // 首先获取图片文件的fd，创建ImageSource。
   const imageSource : image.ImageSource = image.createImageSource(fd);
   // 创建ImagePacker，以便调用图片编码接口。
@@ -72,16 +72,20 @@ export async function reEncoding(context : Context, fd : number) {
   let packOpts : image.PackingOption = { format:'image/jpeg', quality:80, needsPackProperties:false };
   // 指定图片编码文件的存放路径。
   const filePath : string = context.cacheDir + '/result.jpg';
-  let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
-  imagePackerApi.packToFile(imageSource, file.fd, packOpts).then(() => {
-    promptAction.showToast({ message: `Succeed to pack the image.`});
-    console.info('Succeed to pack the image.');
-  }).catch((error : BusinessError) => {
-    promptAction.showToast({ message: 'Failed to pack the image. And the error is: ' + error});
+  try {
+    let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
+    imagePackerApi.packToFile(imageSource, file.fd, packOpts).then(() => {
+      promptAction.showToast({ message: `Succeed to pack the image.`});
+      console.info('Succeed to pack the image.');
+    }).catch((error : BusinessError) => {
+      promptAction.showToast({ message: 'Failed to pack the image. And the error is: ' + error});
+      console.error('Failed to pack the image. And the error is: ' + error);
+    }).finally(()=>{
+      fs.closeSync(file.fd);
+    })
+  } catch (error) {
     console.error('Failed to pack the image. And the error is: ' + error);
-  }).finally(()=>{
-    fs.closeSync(file.fd);
-  })
+  }
 }
 ```
 

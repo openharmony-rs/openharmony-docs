@@ -5726,3 +5726,17 @@ Allows an application to call the API of storage manager for managing optical di
 **Supported devices**: General
 
 **Since**: 24
+
+## ohos.permission.DCAS_OTA_PERMISSION
+
+Allows an application and a service to access the device-side model deployment management.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Supported devices**: General
+
+**Since**: 24
