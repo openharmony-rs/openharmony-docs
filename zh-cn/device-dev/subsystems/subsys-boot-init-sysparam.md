@@ -327,6 +327,7 @@ hilog_param=40960
     | int AclGetDevUdid(char *udid, int size) | 获取设备udid（带访问权限检查）。 |
     | const&nbsp;char\*&nbsp;GetChipType(void) | 返回当前设备CPU型号。 |
     | int GetBootCount(void) | 获取当前设备开机次数，获取失败时返回-1 |
+    | const&nbsp;char\*&nbsp;GetDeviceColor(void) | 返回当前设备颜色。 |
 
 ### 开发步骤
 
@@ -473,6 +474,9 @@ hilog_param=40960
     
     int value28 = GetBootCount();
     printf("device boot count =%d\n", value28);
+    
+    char* value29 = GetDeviceColor();
+    printf("device color =%s\n", value29);
     ```
 ### 系统参数错误码说明
 
