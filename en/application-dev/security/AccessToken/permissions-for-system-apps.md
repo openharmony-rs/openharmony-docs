@@ -2198,6 +2198,18 @@ Allows a system application to execute intent calls.
 
 **Valid since**: 11
 
+## ohos.permission.EXECUTE_DISTRIBUTED_INTENT
+
+Allows a system application to execute distributed intent calls.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Valid since**: 26
+
 ## ohos.permission.VERIFY_ACTIVATION_LOCK
 
 Allows an application to verify the validity of activation lock credentials.
