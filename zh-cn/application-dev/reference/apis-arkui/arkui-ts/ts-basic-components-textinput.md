@@ -3762,7 +3762,10 @@ struct TextExample {
   }
 }
 ```
+不开启孤字优化：
 
 ![textInputOrphanCharOptimization1](figures/textInputOrphanCharOptimization1.png)
+
+开启孤字优化：
 
 ![textInputOrphanCharOptimization2](figures/textInputOrphanCharOptimization2.png)
