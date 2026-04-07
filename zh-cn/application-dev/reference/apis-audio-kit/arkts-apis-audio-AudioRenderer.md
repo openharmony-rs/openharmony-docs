@@ -2742,3 +2742,43 @@ getLoudnessGain(): number
 ```ts
 let loudnessGain = audioRenderer.getLoudnessGain();
 ```
+
+## setIndependentAudioSessionStrategy<sup>24+</sup>
+
+setIndependentAudioSessionStrategy(strategy: AudioSessionStrategy, behavior: number): void
+
+设置独立的音频会话策略和行为参数。
+
+> **说明：**
+>
+> 当音频渲染器在运行状态时调用此接口后，必须重新调用接口[start](./arkts-apis-audio-AudioRenderer.md#start8)使其生效。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+**参数：**
+
+| 参数名       | 类型    | 必填 | 说明                                      |
+| ------------ | -------| ---- |------------------------------------------ |
+| strategy | [AudioSessionStrategy](arkts-apis-audio-i.md#audiosessionstrategy12) | 是   | 音频会话策略。 |
+| behavior   | number           | 是   | 用于设置音频会话行为。<br>该参数可以是单个标志，也可以是多个标志的按位OR组合。<br>当前支持的音频会话行为详见[AudioSessionBehaviorFlags](./arkts-apis-audio-e.md#audiosessionbehaviorflags24)中定义的标志。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Audio错误码](errorcode-audio.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ---------------------------------------------|
+| 6800101 | Parameter verification failed. |
+| 6800103 | Operation not permit at current state. |
+
+**示例：**
+
+```ts
+let strategy: audio.AudioSessionStrategy = {
+  concurrencyMode: audio.AudioConcurrencyMode.CONCURRENCY_MIX_WITH_OTHERS
+};
+let behavior: number = audio.AudioSessionBehaviorFlags.MUTE_WHEN_INTERRUPTED;
+audioRenderer.setIndependentAudioSessionStrategy(strategy, behavior);
+```
