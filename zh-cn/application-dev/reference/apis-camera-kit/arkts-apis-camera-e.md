@@ -124,17 +124,17 @@
 
 | 名称                       | 值          | 说明            |
 | -------------------------  | ----       | ------------    |
- | INVALID_ARGUMENT           | 7400101    | 参数缺失或者参数类型不对。   |	 
- | OPERATION_NOT_ALLOWED      | 7400102    | 操作流程不对，不允许。     |	 
- | SESSION_NOT_CONFIG         | 7400103    | session 未配置返回。       |	 
- | SESSION_NOT_RUNNING        | 7400104    | session 未运行返回。    |	 
- | SESSION_CONFIG_LOCKED      | 7400105    | session 配置已锁定返回。     |	 
- | DEVICE_SETTING_LOCKED      | 7400106    | 设备设置已锁定返回。     |	 
- | CONFLICT_CAMERA            | 7400107    | 设备重复打开返回。     |	 
- | DEVICE_DISABLED            | 7400108    | 安全原因相机被禁用。     |	 
- | DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。     |	 
- | UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。     |	 
- | SERVICE_FATAL_ERROR        | 7400201    | 相机服务异常返回。     |
+| INVALID_ARGUMENT           | 7400101    | 参数缺失或者参数类型不对。   |
+| OPERATION_NOT_ALLOWED      | 7400102    | 操作流程不对，不允许。     |
+| SESSION_NOT_CONFIG         | 7400103    | session 未配置返回。       |
+| SESSION_NOT_RUNNING        | 7400104    | session 未运行返回。    |
+| SESSION_CONFIG_LOCKED      | 7400105    | session 配置已锁定返回。     |
+| DEVICE_SETTING_LOCKED      | 7400106    | 设备设置已锁定返回。     |
+| CONFLICT_CAMERA            | 7400107    | 设备重复打开返回。     |
+| DEVICE_DISABLED            | 7400108    | 安全原因相机被禁用。     |
+| DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。     |
+| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。     |
+| SERVICE_FATAL_ERROR        | 7400201    | 相机服务异常返回。     |
 
 ## TorchMode<sup>11+</sup>
 
@@ -404,8 +404,8 @@
 
 | 名称      | 值 | 说明    |
 |-----------|---|---------|
- | BEAUTY    | 0 | 美颜。   |	 
- | PORTRAIT  | 1 | 人像虚化。|
+| BEAUTY    | 0 | 美颜。   |
+| PORTRAIT  | 1 | 人像虚化。|
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 
