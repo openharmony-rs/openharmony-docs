@@ -88,3 +88,38 @@
 
 2. 参考如下示例代码，进行业务功能开发。
    <!-- @[batch_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
+   
+   ``` TypeScript
+   let srcAttrs: asset.AssetMap[] = [];
+   let srcAttr1: asset.AssetMap = new Map();
+   srcAttr1.set(asset.Tag.ALIAS, stringToArray('demo_alias1'));
+   srcAttrs.push(srcAttr1);
+   let srcAttr2: asset.AssetMap = new Map();
+   srcAttr2.set(asset.Tag.ALIAS, stringToArray('demo_alias2'));
+   srcAttrs.push(srcAttr2);
+   
+   let destAttrs: asset.AssetMap[] = [];
+   let destAttr1: asset.AssetMap = new Map();
+   destAttr1.set(asset.Tag.SECRET, stringToArray('demo_pwd_new1'));
+   destAttrs.push(destAttr1);
+   let destAttr2: asset.AssetMap = new Map();
+   destAttr2.set(asset.Tag.SECRET, stringToArray('demo_pwd_new2'));
+   destAttrs.push(destAttr2);
+   
+   try {
+     asset.batchUpdate(srcAttrs, destAttrs).then((res: asset.BatchResult) => {
+       console.info(`Succeeded in batch updating Asset, failedCount: ${res.failedCount}`);
+       if (res.failedCount > 0) {
+         for (let i = 0; i < res.failedErrorInfos.length; i++) {
+           console.error(`Failed to update Asset at index ${res.failedErrorInfos[i].index},
+             errCode: ${res.failedErrorInfos[i].errCode}, message: ${res.failedErrorInfos[i].message}`);
+         }
+       }
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to batch update Asset. Code is ${err.code}, message is ${err.message}`);
+     })
+   } catch (error) {
+     let err = error as BusinessError;
+     console.error(`Failed to batch update Asset. Code is ${err.code}, message is ${err.message}`);
+   }
+   ```
