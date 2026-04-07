@@ -202,7 +202,7 @@ hdrBrightness(brightness: number)
 
 hdrBrightness(brightness: number, type?: HdrType)
 
-调整组件播放HDR视频时的亮度。<br/>
+调整组件显示HDR内容时的亮度。<br/>
 当参数type设置为非[HdrType](#hdrtype24枚举说明).DEFAULT时，调用该接口前需先检查[Display](../js-apis-display.md#display)的hdrFormats属性是否包含对应的[HDRFormat](../../apis-arkgraphics2d/js-apis-hdrCapability.md#hdrformat)。<br/>仅当hdrFormats包含对应的HDRFormat时，当前设备才支持对应的HDR类型，参数设置才会生效；否则将使用默认值[HdrType](#hdrtype24枚举说明).DEFAULT。<br/>
 其映射关系如下：
    | type取值 | hdrFormats需包含的HDRFormat |
