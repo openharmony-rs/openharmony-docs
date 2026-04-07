@@ -570,3 +570,22 @@ WebView中新窗口的打开方式。
 | ------- | --- | ------------------------------------ |
 | CONTENT | 0   | 滚动条左右布局模式跟随css设定。      |
 | SYSTEM  | 1   | 滚动条左右布局模式跟随系统语种设定。 |
+
+## WebKeyboardAppearanceMode
+
+WebView中输入法沉浸模式。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称 | 值 | 说明 |
+| ------- | ----  | ------------------- |
+| NONE_IMMERSIVE  | 0 |默认外观模式，不采用沉浸式风格。 |
+| IMMERSIVE       | 1 |沉浸式模式，跟随系统。|
+| LIGHT_IMMERSIVE | 2 |浅色沉浸式风格。                |
+| DARK_IMMERSIVE  | 3 |深色沉浸式风格。                |
