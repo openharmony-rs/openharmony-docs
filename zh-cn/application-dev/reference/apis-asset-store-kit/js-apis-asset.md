@@ -47,7 +47,7 @@ add(attributes: AssetMap): Promise\<void>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 201      | The caller doesn't have the permission.                    |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
@@ -108,7 +108,7 @@ addSync(attributes: AssetMap): void
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 201      | The caller doesn't have the permission.                    |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
@@ -177,7 +177,7 @@ batchAdd(attributesArray: Array\<AssetMap>): Promise\<BatchResult>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000005 | The screen lock status does not match.                         |
@@ -248,7 +248,7 @@ remove(query: AssetMap): Promise\<void>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -300,7 +300,7 @@ removeSync(query: AssetMap): void
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -360,7 +360,7 @@ batchRemove(assetsToBeRemoved: Array\<AssetMap>): Promise\<void>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000006 | Insufficient memory.                                       |
@@ -425,7 +425,7 @@ update(query: AssetMap, attributesToUpdate: AssetMap): Promise\<void>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -482,7 +482,7 @@ updateSync(query: AssetMap, attributesToUpdate: AssetMap): void
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -547,7 +547,7 @@ batchUpdate(sourceAttributes: Array\<AssetMap>, destAttributes: Array\<AssetMap>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000006 | Insufficient memory.                                       |
@@ -617,7 +617,7 @@ preQuery(query: AssetMap): Promise\<Uint8Array>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                            |
@@ -678,7 +678,7 @@ preQuerySync(query: AssetMap): Uint8Array
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                            |
@@ -740,7 +740,7 @@ query(query: AssetMap): Promise\<Array\<AssetMap>>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -810,7 +810,7 @@ querySync(query: AssetMap): Array\<AssetMap>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Incorrect parameter types.  <br> 2. Parameter verification failed. |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -877,7 +877,7 @@ postQuery(handle: AssetMap): Promise\<void>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -920,7 +920,7 @@ postQuerySync(handle: AssetMap): void
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 401      | Parameter error. Possible causes: <br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. <br> 3. Parameter verification failed.           |
 | 24000001 | The ASSET service is unavailable.                          |
@@ -965,7 +965,7 @@ querySyncResult(query: AssetMap): Promise\<SyncResult>
 
 以下错误码的详细介绍请参见[关键资产存储服务错误码](errorcode-asset.md)。
 
-| 错误码ID | 错误信息（此处仅提供错误抛出的关键信息）                       |
+| 错误码ID | 错误信息                                                    |
 | -------- | ---------------------------------------------------------- |
 | 24000001 | The ASSET service is unavailable.                          |
 | 24000006 | Insufficient memory.                                       |
