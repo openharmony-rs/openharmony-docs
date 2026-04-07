@@ -1644,7 +1644,7 @@ getDeepFactoryResetInfo(factoryResetStrategy): Promise\<factoryResetInfo>
 
 | 类型                              | 说明                  |
 | ------------------------------- | ------------------- |
-| Promise\<[FactoryResetInfo](#factoryResetInfo)> | Promise对象，返回任务信息对象。 |
+| Promise\<[FactoryResetInfo](#factoryresetinfo)> | Promise对象，返回任务信息对象。 |
 
 **错误码**：
 
