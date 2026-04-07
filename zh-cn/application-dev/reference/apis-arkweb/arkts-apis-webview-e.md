@@ -105,7 +105,7 @@ Web组件使用HTTPDNS的模式。
 | NUMBER       | 2 |数值类型。|
 | BOOLEAN      | 3 |布尔类型。|
 | ARRAY_BUFFER | 4 |原始二进制数据缓冲区。|
-| ARRAY        | 5 |数组类型|
+| ARRAY        | 5 |数组类型。|
 
 ## RenderProcessMode<sup>12+</sup>
 
@@ -231,10 +231,10 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 
 | 名称 | 值 | 说明 |
 |------|----|------|
-| PAUSED  | 0 | 播放状态为播放状态。 |
-| PLAYING | 1 | 播放状态为暂停状态。 |
+| PAUSED  | 0 | 播放状态为暂停状态，表示媒体已暂停。 |
+| PLAYING | 1 | 播放状态为播放状态，表示媒体正在播放。 |
 
-## NetworkState<sup>12+<sup>
+## NetworkState<sup>12+</sup>
 
 播放器的网络状态。
 
@@ -247,7 +247,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | LOADING       | 2 | 播放器正在下载媒体数据。 |
 | NETWORK_ERROR | 3 | 发生了网络错误。 |
 
-## ReadyState<sup>12+<sup>
+## ReadyState<sup>12+</sup>
 
 播放器的缓存状态。
 
@@ -261,7 +261,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | HAVE_FUTURE_DATA  | 3 | 缓存时长超过了当前的播放进度, 但是仍有可能导致卡顿。 |
 | HAVE_ENOUGH_DATA  | 4 | 缓存了足够的数据，保证播放流畅。 |
 
-## MediaError<sup>12+<sup>
+## MediaError<sup>12+</sup>
 
 播放器的错误类型。
 
@@ -273,7 +273,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | FORMAT_ERROR  | 2 | 媒体格式错误。 |
 | DECODE_ERROR  | 3 | 解码错误。 |
 
-## SuspendType<sup>12+<sup>
+## SuspendType<sup>12+</sup>
 
 表示播放器的挂起类型。
 
@@ -285,7 +285,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | ENTER_BACKGROUND         | 1 | 页面进后台。 |
 | AUTO_CLEANUP             | 2 | 系统自动清理。 |
 
-## MediaType<sup>12+<sup>
+## MediaType<sup>12+</sup>
 
 表示媒体类型。
 
@@ -296,7 +296,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | VIDEO | 0 | 视频。 |
 | AUDIO | 1 | 音频。 |
 
-## SourceType<sup>12+<sup>
+## SourceType<sup>12+</sup>
 
 表示媒体源的类型。
 
@@ -307,7 +307,7 @@ Scroll滚动类型，用于[setScrollable](./arkts-apis-webview-WebviewControlle
 | URL | 0 | 媒体源的类型是URL。 |
 | MSE | 1 | 媒体源的类型是blob。 |
 
-## Preload<sup>12+<sup>
+## Preload<sup>12+</sup>
 
 播放器预加载媒体数据。
 
@@ -455,5 +455,5 @@ Web软键盘自动控制模式。
 | MOBILE       | 'Mobile' |手机，字符串类型。|
 | EINK      | 'EInk' |墨水屏，字符串类型。|
 | TABLET | 'Tablet' |平板，字符串类型。|
-| WATCH        | 'Watch' |手表，字符串类型|
-| XR        | 'XR' |VR+AR设备，字符串类型|
+| WATCH        | 'Watch' |手表，字符串类型。|
+| XR        | 'XR' |VR+AR设备，字符串类型。|
