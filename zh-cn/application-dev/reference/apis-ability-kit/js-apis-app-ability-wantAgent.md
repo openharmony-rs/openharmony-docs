@@ -639,7 +639,7 @@ function getWantAgentCallback(err: BusinessError, data: WantAgent) {
     if (err) {
       console.error(`cancel failed, err code: ${err.code}, err msg: ${err.message}.`);
     } else {
-      console.info(`cancel sucecss.`);
+      console.info(`cancel success.`);
     }
   }
   try {
