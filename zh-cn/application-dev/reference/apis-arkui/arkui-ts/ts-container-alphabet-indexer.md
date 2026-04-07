@@ -49,7 +49,7 @@ AlphabetIndexer(options: AlphabetIndexerOptions)
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | ---- | ---- | -------- |
 | arrayValue<sup>7+</sup> | Array&lt;string&gt; | 否 | 否 | 字符串数组，每个字符串代表一个索引项。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| selected<sup>7+</sup>   | number              | 否 | 否    | 初始选中项索引值，若超出索引值范围，则取默认值0。<br />该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| selected<sup>7+</sup>   | number              | 否 | 否    | 初始选中项索引值，若超出索引值范围，则取默认值0。与[selected](#selected8)属性同时设置时，selected属性的优先级较高。<br/>取值范围：[0, arrayValue.length-1]<br/>该属性支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。<br />**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## 属性
 
@@ -254,7 +254,7 @@ selected(index: number)
 
 | 参数名 | 类型   | 必填 | 说明                         |
 | ------ | ------ | ---- | ---------------------------- |
-| index  | number | 是   | 选中项索引值。<br/>默认值：0 |
+| index  | number | 是   | 选中项索引值。<br/>取值范围：[0, [arrayValue](#alphabetindexeroptions18对象说明).length-1]<br/>默认值：0 |
 
 ### popupPosition<sup>8+</sup>
 
