@@ -1059,8 +1059,8 @@ on(type: 'keyDown'|'keyUp', callback: (event: KeyEvent) => boolean): void
 
 ```ts
 inputMethodEngine.getKeyboardDelegate().on('keyUp', (keyEvent: inputMethodEngine.KeyEvent) => {
-  console.info(`inputMethodEngine keyCode.(keyDown): ${keyEvent.keyCode}`);
-  console.info(`inputMethodEngine keyAction.(keyDown): ${keyEvent.keyAction}`);
+  console.info(`inputMethodEngine keyCode.(keyUp): ${keyEvent.keyCode}`);
+  console.info(`inputMethodEngine keyAction.(keyUp): ${keyEvent.keyAction}`);
   return true;
 });
 inputMethodEngine.getKeyboardDelegate().on('keyDown', (keyEvent: inputMethodEngine.KeyEvent) => {
