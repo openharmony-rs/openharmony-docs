@@ -1160,6 +1160,20 @@ HarmonyAppProvision配置文件示例如下所示，修改"bundle-info" &gt; "ap
 
 **起始版本**：26.0.0
 
+## ohos.permission.CONTROL_DEVICE
+ 	 
+允许应用注入输入事件以控制本设备。可申请此权限的特殊场景和功能： 面向远程登录器的被控端开放，当被控端需要接收主控端传递的输入事件来操作本地设备时申请。
+
+<!--RP79--><!--RP79End-->
+
+**权限级别**：system_basic
+
+**授权方式**：手动设置授权（manual_settings）
+
+**支持设备**：PC/2in1
+
+**起始版本**：26.0.0
+
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO
 
 允许应用申请特殊类型长时任务。

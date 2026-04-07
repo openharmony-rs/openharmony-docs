@@ -1160,6 +1160,20 @@ Allows an application or a service to use the DLP to register or unregister the 
 
 **Since**: 26.0.0
 
+## ohos.permission.CONTROL_DEVICE
+ 	 
+Allows an application to inject input events to control the device.Applicable scenarios and functionalities: Required when the controlled end of the remote login device needs to receive input events from thcontrolling end to operate the local device.
+
+<!--RP79--><!--RP79End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: manual_settings
+
+**Supported devices**: PCs/2-in-1 devices
+
+**Since**: 26.0.0
+
 ## ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO
 
 Allows an application to apply for a continuous task of the special scenario type.
