@@ -3295,6 +3295,7 @@ updateAccountInfo(oldAccountInfo: DomainAccountInfo, newAccountInfo: DomainAccou
 | domain      | string | 否 | 否  | 域名。     |
 | accountName | string | 否 | 否  | 域账号名。 |
 | serverConfigId<sup>18+</sup> | string | 否 | 是  | 域账号配置ID，默认为空字符串。 |
+| additionalInfo | ArkTS-Dyn: Record<string, Object><br/>ArkTS-Sta: Record<string, RecordData> | 否 | 是 | 域账号附加信息。<br/>**ArkTS-Dyn起始版本：** 26.0.0<br/>**ArkTS-Sta起始版本：** 26.0.0 <br/>**模型约束**：此接口仅可在Stage模型下使用。 |
 
 ## DomainServerConfig<sup>18+</sup>
 
