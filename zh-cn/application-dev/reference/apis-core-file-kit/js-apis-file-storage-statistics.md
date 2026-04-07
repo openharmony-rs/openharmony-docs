@@ -318,7 +318,7 @@ try {
 | dataSize  | number  | 否 | 否  | 应用文件存储大小（除应用安装文件）（单位为Byte）。 |
 
 ## storageStatistics.getTotalInodes<sup>24+</sup>
- 	 
+
 getTotalInodes(): Promise&lt;number&gt;
 
 获取文件系统的inode资源总量，仅支持查询系统数据分区。使用Promise异步回调。
