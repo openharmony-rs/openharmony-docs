@@ -224,7 +224,7 @@ Mutes or unmutes the camera device.
 
 | Name     | Type                             | Mandatory | Description       |
 | -------- | --------------------------------- | ---- | ---------- |
-| mute     | boolean                           |  Yes |  Whether to mute the camera device. **true** to mute, **false** otherwise. |
+| mute     | boolean                           |  Yes |  Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
 
 **Example**
 
@@ -249,7 +249,7 @@ Mutes the camera device permanently.
 
 | Name     | Type                         | Mandatory | Description                                        |
 | -------- |-----------------------------| ---- |--------------------------------------------|
-| mute     | boolean                     |  Yes | Whether to mute the camera device. **true** to mute, **false** otherwise.                  |
+| mute     | boolean                     |  Yes | Mutes or unmutes the camera device. **true** to mute, **false** otherwise.                  |
 | type     | [PolicyType](#policytype12) |  Yes | Policy type. For details about the available options, see [PolicyType](#policytype12).|
 
 **Error codes**
@@ -494,49 +494,6 @@ function preLaunch(context: common.BaseContext): void {
 }
 ```
 
-### createDeferredPreviewOutput
-
-createDeferredPreviewOutput(profile?: Profile): PreviewOutput
-
-Creates a deferred PreviewOutput instance and adds it, instead of a common PreviewOutput instance, to the data stream during stream configuration.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name    | Type            | Mandatory| Description      |
-| -------- | --------------- | ---- | --------- |
-| profile | [Profile](arkts-apis-camera-i.md#profile) | No| Configuration file of the camera preview stream.|
-
-**Return value**
-
-| Type| Description|
-| -------- | --------------- |
-| [PreviewOutput](#previewoutput) | PreviewOutput instance.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202             |  Not System Application.       |
-| 7400101         |  Parameter missing or parameter type incorrect. |
-
-**Example**
-
-```ts
-import { common } from '@kit.AbilityKit';
-
-function getDeferredPreviewOutput(context: common.BaseContext, previewProfile: camera.Profile): camera.PreviewOutput {
-  const cameraManager: camera.CameraManager = camera.getCameraManager(context);
-  const output: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
-  return output;
-}
-```
-
 ### preSwitchCamera<sup>11+</sup>
 
 preSwitchCamera(cameraId: string): void
@@ -602,7 +559,6 @@ Enumerates the camera output formats.
 
 | Name                    | Value       | Description        |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DNG<sup>12+</sup> |   4   | Image in digital negative format.     |
 | CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup> |    5    | Image in extreme digital format.  |
 | CAMERA_FORMAT_DEPTH_16<sup>13+</sup> |   3000   | Depth map in DEPTH_16 format.     |
 | CAMERA_FORMAT_DEPTH_32<sup>13+</sup> |   3001   | Depth map in DEPTH_32 format.     |
@@ -636,7 +592,7 @@ Describes the profile of depth data. It inherits from [Profile](arkts-apis-camer
 
 | Name                      | Type                                     | Read-only| Optional| Description       |
 | ------------------------- | ----------------------------------------- | --- | ---- |----------- |
-| depthDataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | Yes |  No | Accuracy of the depth data, which can be either relative accuracy or absolute accuracy.|
+| dataAccuracy            | [DepthDataAccuracy](#depthdataaccuracy13)         | Yes |  No | Accuracy of the depth data, which can be either relative accuracy or absolute accuracy.|
 
 ## DepthDataQualityLevel<sup>13+</sup>
 
@@ -1169,59 +1125,6 @@ Defines the effect parameters used to preheat an image.
 ## PreviewOutput
 
 Implements preview output. It inherits from [CameraOutput](arkts-apis-camera-CameraOutput.md).
-
-### addDeferredSurface
-
-addDeferredSurface(surfaceId: string): void
-
-Adds a surface for delayed preview. This API can run after [Session.commitConfig](arkts-apis-camera-Session.md#commitconfig11-1) or [Session.start](arkts-apis-camera-Session.md#start11-1) is called.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name    | Type        | Mandatory| Description                      |
-| -------- | --------------| ---- | ------------------------ |
-| surfaceId | string | Yes| Surface ID, which is obtained from [XComponent](../apis-arkui/arkui-ts/ts-basic-components-xcomponent.md).|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202                    |  Permission verification failed. A non-system application calls a system API.    |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-
-**Example**
-
-```ts
-import { common } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-async function preview(context: common.BaseContext, cameraDevice: camera.CameraDevice, previewProfile: camera.Profile, photoProfile: camera.Profile, mode: camera.SceneMode, previewSurfaceId: string): Promise<void> {
-  const cameraManager: camera.CameraManager = camera.getCameraManager(context);
-  const cameraInput: camera.CameraInput = cameraManager.createCameraInput(cameraDevice);
-  const previewOutput: camera.PreviewOutput = cameraManager.createDeferredPreviewOutput(previewProfile);
-  const photoOutput: camera.PhotoOutput = cameraManager.createPhotoOutput(photoProfile);
-  const session: camera.Session  = cameraManager.createSession(mode);
-  session.beginConfig();
-  session.addInput(cameraInput);
-  session.addOutput(previewOutput);
-  session.addOutput(photoOutput);
-  await session.commitConfig();
-  try {
-    await session.start();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`start session failed. error code: ${err.code}`);
-  }
-  previewOutput.addDeferredSurface(previewSurfaceId);
-}
-```
 
 ### isSketchSupported<sup>11+</sup>
 
@@ -2486,7 +2389,7 @@ Sets the manual exposure duration. Before using this API, call [getSupportedExpo
 
 | Name     | Type                   | Mandatory| Description                                                                     |
 | -------- | --------------------------| ---- |-------------------------------------------------------------------------|
-| value    | number                    | Yes  | Manual exposure duration, which must be one of the supported durations obtained by running [getSupportedExposureRange](#getsupportedexposurerange11).|
+| exposure    | number                    | Yes  | Manual exposure duration, which must be one of the supported durations obtained by running [getSupportedExposureRange](#getsupportedexposurerange11).|
 
  **Error codes**
 
@@ -2561,9 +2464,9 @@ Describes the tripod detection result.
 | -------- |---------------------------------| -------- | -------- |---------|
 | tripodStatus | [TripodStatus](#tripodstatus13) |   Yes    |    No   | Tripod status.|
 
-## SceneDetection<sup>12+</sup>
+## SceneDetectionQuery<sup>12+</sup>
 
-Provides the scene detection capability.
+Provides the scene detection and query capabilities.
 
 ### isSceneFeatureSupported<sup>12+</sup>
 
@@ -2604,6 +2507,9 @@ function isSceneFeatureSupported(photoSessionForSys: camera.PhotoSessionForSys, 
   return isSupported;
 }
 ```
+## SceneDetection<sup>12+</sup>
+
+Provides the scene detection capability. It inherits from [SceneDetectionQuery](#scenedetectionquery12).
 
 ### enableSceneFeature<sup>12+</sup>
 
@@ -2798,19 +2704,6 @@ function unprepareZoom(sessionExtendsZoom: camera.Zoom): void {
   }
 }
 ```
-
-## ZoomRange<sup>11+</sup>
-
-Obtains the supported zoom ratio range. The range is [min, max), which includes the minimum value but excludes the maximum value.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name    | Type          | Read-only| Optional| Description        |
-| -------- | ------------- |---- | ---- | -------------|
-| min      | number        | Yes |  No | Minimum value of the zoom ratio range. |
-| max      | number        | Yes |  No | Maximum value of the zoom ratio range.|
 
 ## Beauty<sup>11+</sup>
 
@@ -3156,22 +3049,9 @@ function getPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession): c
 }
 ```
 
-## PhysicalAperture<sup>11+</sup>
+## ApertureQuery<sup>12+</sup>
 
-Defines the physical aperture information.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name      | Type                      |  Read-only| Optional | Description              |
-| ---------- | ------------------------- | ----- |-----| ----------------- |
-| zoomRange  | [ZoomRange](#zoomrange11) | No   | No  | Zoom range of a given physical aperture. |
-| apertures  | Array\<number\>           | No   | No  | Array of physical apertures supported.     |
-
-## Aperture<sup>11+</sup>
-
-Provides the APIs for aperture settings.
+Provides the aperture query capability.
 
 ### getSupportedVirtualApertures<sup>11+</sup>
 
@@ -3206,6 +3086,10 @@ function getSupportedVirtualApertures(session: camera.PortraitPhotoSession): Arr
   return virtualApertures;
 }
 ```
+
+## Aperture<sup>11+</sup>
+
+Provides the APIs for aperture settings. It inherits from [ApertureQuery](#aperturequery12).
 
 ### getVirtualAperture<sup>11+</sup>
 
@@ -3274,107 +3158,6 @@ function setVirtualAperture(session: camera.PortraitPhotoSession, virtualApertur
 }
 ```
 
-### getSupportedPhysicalApertures<sup>11+</sup>
-
-getSupportedPhysicalApertures(): Array\<PhysicalAperture\>
-
-Obtains the supported physical apertures.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type                                            | Description                          |
-| ----------------------------------------------- | ---------------------------- |
-| Array<[PhysicalAperture](#physicalaperture11)>    | Array of physical apertures supported.              |
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400102         |  Operation not allowed, the inputDevice or the session is abnormal.   |
-| 7400103         |  Session not config.                          |
-
-**Example**
-
-```ts
-function getSupportedPhysicalApertures(session: camera.PortraitPhotoSession): Array<camera.PhysicalAperture> {
-  let physicalApertures: Array<camera.PhysicalAperture> = session.getSupportedPhysicalApertures();
-  return physicalApertures;
-}
-```
-
-### getPhysicalAperture<sup>11+</sup>
-
-getPhysicalAperture(): number
-
-Obtains the physical aperture in use.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type                | Description                          |
-| -------------------- | ---------------------------- |
-| number               | Physical aperture.          |
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400103         |  Session not config.                             |
-| 202             |  Not System Application.                         |
-
-**Example**
-
-```ts
-function getPhysicalAperture(session: camera.PortraitPhotoSession): number {
-  let physicalAperture: number = session.getPhysicalAperture();
-  return physicalAperture;
-}
-```
-
-### setPhysicalAperture<sup>11+</sup>
-
-setPhysicalAperture(aperture: number): void
-
-Sets a physical aperture. Before the setting, call [getSupportedPhysicalApertures](#getsupportedphysicalapertures11) to obtain the supported physical apertures.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name        | Type                   | Mandatory| Description                     |
-| ------------ |------------------------- | -- | -------------------------- |
-| aperture       | number                 | Yes| Physical aperture, which can be obtained by calling [getSupportedPhysicalApertures](#getsupportedphysicalapertures11).  |
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400103         |  Session not config.                          |
-| 202             |  Not System Application.                      |
-
-**Example**
-
-```ts
-function setPhysicalAperture(session: camera.PortraitPhotoSession, physicalAperture: number): void {
-  session.setPhysicalAperture(physicalAperture);
-}
-```
-
 ## CaptureSession<sup>(deprecated)</sup>
 
 Implements a capture session, which saves all [CameraInput](arkts-apis-camera-CameraInput.md) and [CameraOutput](arkts-apis-camera-CameraOutput.md) instances required to run the camera and requests the camera to complete shooting or video recording.
@@ -3429,7 +3212,7 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |Beauty levels supported when **type** is set to **AUTO**. The value **0** means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels.   |
 | SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels.   |
 | FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels.  |
-| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB, for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
+| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.  |
 
 > **NOTE**
 >This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11) instead.
@@ -5260,20 +5043,6 @@ Describes the ISO information.
 
 ---
 
-## ExposureInfo<sup>12+</sup>
-
-Describes the exposure information.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-| Name             | Type   | Read-only| Optional | Description              |
-| ----------------- | ------- | ---- |-----| ------------------ |
-| exposureTime | number  | Yes  | Yes  | Exposure time, in ms.|
-
----
-
 ## ApertureInfo<sup>12+</sup>
 
 Describes the aperture information.
@@ -5308,8 +5077,8 @@ Enumerates the camera output formats.
 
 | Name                    | Value       | Description        |
 | ----------------------- | --------- | ------------ |
-| CAMERA_FORMAT_DNG<sup>12+</sup>  | 4         | Raw image in DNG format. **System API**: This is a system API.        |
 | CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup>  | 5         | Enhanced raw image in DNG format, where JPG and raw images are packaged in the same file, and up to 16-bit raw data is supported. **System API**: This is a system API.        |
+
 ## ExposureMeteringMode<sup>12+</sup>
 
 Enumerates the exposure metering modes.
@@ -5320,152 +5089,7 @@ Enumerates the exposure metering modes.
 
 | Name                          | Value  | Description        |
 | ----------------------------- | ---- | ----------- |
-| MATRIX          | 0    | Performs metering on a wide area of the image.|
-| CENTER          | 1    | Performs metering on the entire image, with the center allocated with the maximum weight.|
-| SPOT            | 2    | Performs metering around 2.5% of the metering points.|
-
-## AutoExposureQuery<sup>12+</sup>
-
-Provides APIs to check whether a device supports an exposure mode or exposure metering mode and obtain the exposure compensation range.
-
-### isExposureMeteringModeSupported<sup>12+</sup>
-
-isExposureMeteringModeSupported(aeMeteringMode: ExposureMeteringMode): boolean
-
-Checks whether an exposure metering mode is supported.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name     | Type                          | Mandatory | Description                          |
-| -------- | -------------------------------| ---- | ----------------------------- |
-| aeMeteringMode   | [ExposureMeteringMode](#exposuremeteringmode12)  | Yes  | Metering mode.                     |
-
-**Return value**
-
-| Type       | Description                         |
-| ---------- | ----------------------------- |
-| boolean    | Check result for the support of the exposure metering mode. **true** if supported, **false** otherwise. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400103                |  Session not config, only throw in session usage.          |
-
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function isExposureMeteringModeSupported(professionalPhotoSession: camera.ProfessionalPhotoSession): boolean {
-  let isSupported: boolean = false;
-  try {
-    isSupported = professionalPhotoSession.isExposureMeteringModeSupported(camera.ExposureMeteringMode.CENTER);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The isExposureMeteringModeSupported call failed. error code: ${err.code}`);
-  }
-  return isSupported;
-}
-```
-
-## AutoExposure
-
-AutoExposure extends [AutoExposureQuery](#autoexposurequery12)
-
-Provides APIs related to automatic exposure of a camera device, including obtaining and setting the exposure mode and measurement point, obtaining the compensation range, setting the exposure compensation, and obtaining the exposure metering mode.
-
-### getExposureMeteringMode<sup>12+</sup>
-
-getExposureMeteringMode(): ExposureMeteringMode
-
-Obtains the exposure metering mode in use.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type       | Description                         |
-| ---------- | ----------------------------- |
-| [ExposureMeteringMode](#exposuremeteringmode12)    | Exposure metering mode. If the operation fails, an error code defined in [CameraErrorCode](arkts-apis-camera-e.md#cameraerrorcode) is returned.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400102                | Operation not allowed, the inputDevice or the session is abnormal. |
-| 7400103                |  Session not config, only throw in session usage.   |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getExposureMeteringMode(professionalPhotoSession: camera.ProfessionalPhotoSession): camera.ExposureMeteringMode | undefined {
-  let exposureMeteringMode: camera.ExposureMeteringMode | undefined = undefined;
-  try {
-    exposureMeteringMode = professionalPhotoSession.getExposureMeteringMode();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The getExposureMeteringMode call failed. error code: ${err.code}`);
-  }
-  return exposureMeteringMode;
-}
-```
-
-### setExposureMeteringMode<sup>12+</sup>
-
-setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
-
-Sets an exposure metering mode. Before the setting, call [isExposureMeteringModeSupported](#isexposuremeteringmodesupported12) to check whether the target exposure metering mode is supported.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name     | Type                           | Mandatory| Description                   |
-| -------- | -------------------------------| ---- | ----------------------- |
-| aeMeteringMode   | [ExposureMeteringMode](#exposuremeteringmode12)  | Yes  | Metering mode.               |
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.    |
-| 7400103                |  Session not config, only throw in session usage.             |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function setExposureMeteringMode(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
-  try {
-    professionalPhotoSession.setExposureMeteringMode(camera.ExposureMeteringMode.CENTER);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The setExposureMeteringMode call failed. error code: ${err.code}`);
-  }
-}
-```
+| CENTER_HIGHLIGHT_WEIGHTED   | 3    | Center-weighted and highlight metering mode. This mode focuses on the highlight area near the center of the screen.      |
 
 ## FocusRangeType<sup>15+</sup>
 
@@ -5900,96 +5524,6 @@ function getFocusDriven(session: camera.VideoSessionForSys): camera.FocusDrivenT
 }
 ```
 
-## ManualFocus<sup>12+</sup>
-
-Provides APIs related to manual focus operations.
-
-### setFocusDistance<sup>12+</sup>
-
-setFocusDistance(distance: number): void
-
-Sets the manual focus distance.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name     | Type                    | Mandatory| Description                |
-| -------- | ----------------------- | ---- | ------------------- |
-| distance | number | Yes  | Manual focus distance. The value is a floating-point number in the range [0, 1]. The value **0** indicates a close-up shot, and **1** indicates a long shot.<br> |
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400103                |  Session not config.                                   |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function setFocusDistance(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
-  try {
-    let distance: number = 0.5;
-    professionalPhotoSession.setFocusDistance(distance);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The setFocusDistance call failed. error code: ${err.code}`);
-  }
-}
-```
-
-### getFocusDistance<sup>12+</sup>
-
-getFocusDistance(): number
-
-Obtains the focus distance in use.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type       | Description                         |
-| ---------- | ----------------------------- |
-| number    | Normalized value of the focus distance.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 7400103                |  Session not config.                                   |
-| 202     | Not System Application. |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getFocusDistance(professionalPhotoSession: camera.ProfessionalPhotoSession): number {
-  let distance: number = 0;
-  try {
-    distance = professionalPhotoSession.getFocusDistance();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The getFocusDistance call failed. error code: ${err.code}`);
-  }
-  return distance;
-}
-```
-
 ## ManualIsoQuery<sup>12+</sup>
 
 Provides APIs to check whether a camera device supports manual ISO setting and obtain the ISO range supported by the device.
@@ -6077,101 +5611,6 @@ function getIsoRange(professionalPhotoSession: camera.ProfessionalPhotoSession):
     console.error(`The getIsoRange call failed. error code: ${err.code}`);
   }
   return isoRange;
-}
-```
-
-## ManualIso<sup>12+</sup>
-
-ManualIso extends [ManualIsoQuery](#manualisoquery12)
-
-Provides APIs for obtaining and setting the manual ISO (sensitivity) of a camera device.
-
-### setIso<sup>12+</sup>
-setIso(iso: number): void
-
-Sets the ISO.
-
-> **NOTE**
->
-> When the ISO is set to 0, automatic ISO is used.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Parameters**
-
-| Name     | Type                    | Mandatory| Description                |
-| -------- | ----------------------- | ---- | ------------------- |
-| iso | number | Yes  | ISO.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400101                |  Parameter missing or parameter type incorrect.        |
-| 7400103                |  Session not config.                                   |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function setIso(professionalPhotoSession: camera.ProfessionalPhotoSession): void {
-  try {
-    let iso: number = 200;
-    professionalPhotoSession.setIso(iso);
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The setIso call failed. error code: ${err.code}`);
-  }
-}
-```
-
-### getIso<sup>12+</sup>
-
-getIso(): number
-
-Obtains the ISO in use.
-
-**System API**: This is a system API.
-
-**System capability**: SystemCapability.Multimedia.Camera.Core
-
-**Return value**
-
-| Type       | Description                         |
-| ---------- | ----------------------------- |
-| number    | ISO.|
-
-**Error codes**
-
-For details about the error codes, see [Camera Error Codes](errorcode-camera.md) and [Universal Error Codes](../errorcode-universal.md).
-
-| ID        | Error Message       |
-| --------------- | --------------- |
-| 202     | Not System Application. |
-| 7400103                |  Session not config.                                   |
-
-**Example**
-
-```ts
-import { BusinessError } from '@kit.BasicServicesKit';
-
-function getIso(professionalPhotoSession: camera.ProfessionalPhotoSession): number {
-  let iso: number = 0;
-  try {
-    iso = professionalPhotoSession.getIso();
-  } catch (error) {
-    // If the operation fails, error.code is returned and processed.
-    let err = error as BusinessError;
-    console.error(`The getIso call failed. error code: ${err.code}`);
-  }
-  return iso;
 }
 ```
 
@@ -6496,7 +5935,7 @@ Subscribes to exposure information change events to obtain the exposure informat
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| Yes  | Callback used to return the exposure information.        |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes  | Callback used to return the exposure information.        |
 
 **Error codes**
 
@@ -6539,7 +5978,7 @@ Unsubscribes from exposure information change events.
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
 
 **Error codes**
 
@@ -7030,7 +6469,7 @@ Subscribes to exposure information change events to obtain the exposure informat
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| Yes  | Callback used to return the exposure information.        |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes  | Callback used to return the exposure information.        |
 
 **Error codes**
 
@@ -7073,7 +6512,7 @@ Unsubscribes from exposure information change events.
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
 
 **Error codes**
 
@@ -8073,7 +7512,7 @@ Subscribes to exposure information change events to obtain the exposure informat
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| Yes  | Callback used to return the exposure information.        |
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| Yes  | Callback used to return the exposure information.        |
 
 **Error codes**
 
@@ -8116,7 +7555,7 @@ Unsubscribes from exposure information change events.
 | Name    | Type                                                     | Mandatory| Description                              |
 | -------- | ------------------------------------------------------- | ---- | ---------------------------------- |
 | type     | string                                                  | Yes  | Event type. The value is fixed at **'exposureInfoChange'**.        |
-| callback | AsyncCallback\<[ExposureInfo](#exposureinfo12)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
+| callback | AsyncCallback\<[ExposureInfo](arkts-apis-camera-i.md#exposureinfo24)\>| No  | Callback, which is optional and is used to match **callback** in **on('exposureInfoChange')**.|
 
 **Error codes**
 
