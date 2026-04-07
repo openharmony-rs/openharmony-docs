@@ -64,7 +64,7 @@ InputMethod_PrivateCommand *OH_PrivateCommand_Create(char key[], size_t keyLengt
 | 参数项 | 描述 |
 | -- | -- |
 | char key[] | 私有数据的key值。 |
-| size_t keyLength | key长度。 |
+| size_t keyLength | key长度，单次所有私有数据与Key值的大小限制32KB。 |
 
 **返回：**
 
@@ -328,5 +328,4 @@ InputMethod_ErrorCode OH_PrivateCommand_GetStrValue(InputMethod_PrivateCommand *
 | 类型 | 说明 |
 | -- | -- |
 | [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) | 返回一个特定的错误码。<br>     [IME_ERR_OK](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 表示成功。<br>     [IME_ERR_NULL_POINTER](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 非预期的空指针。<br>     [IME_ERR_QUERY_FAILED](capi-inputmethod-types-capi-h.md#inputmethod_errorcode) - 查询失败，命令中没有字符串值。<br> 具体错误码可以参考 [InputMethod_ErrorCode](capi-inputmethod-types-capi-h.md#inputmethod_errorcode)。 |
-
 
