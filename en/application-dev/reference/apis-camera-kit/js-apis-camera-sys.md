@@ -3212,7 +3212,11 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 | AUTO           | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     |Beauty levels supported when **type** is set to **AUTO**. The value **0** means that beauty mode is disabled, and other positive values mean the corresponding automatic beauty levels.   |
 | SKIN_SMOOTH    | [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]     | Beauty levels supported when **type** is set to **SKIN_SMOOTH**. The value **0** means that the skin smoothing feature is disabled, and other positive values mean the corresponding skin smoothing levels.   |
 | FACE_SLENDER   | [0, 1, 2, 3, 4, 5]      | Beauty levels supported when **type** is set to **FACE_SLENDER**. The value **0** means that the face slimming feature is disabled, and other positive values mean the corresponding face slimming levels.  |
+<<<<<<< HEAD
 | SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.  |
+=======
+| SKIN_TONE      | [-1, 16242611]      | Beauty levels supported when **type** is set to **SKIN_TONE**. The value **-1** means that the skin tone perfection feature is disabled. Other non-negative values mean the skin tone perfection levels represented by RGB,<br> for example, 16242611, which is 0xF7D7B3 in hexadecimal format, where F7, D7, and B3 represent the values of the R channel, G channel, and B channel, respectively.   |
+>>>>>>> 9ba5f6cc4e84ea735211dc4ca116a8e42643bd29
 
 > **NOTE**
 >This API is supported since API version 10 and deprecated since API version 11. You are advised to use [Beauty.getSupportedBeautyRange](#getsupportedbeautyrange11) instead.
@@ -5079,7 +5083,11 @@ Enumerates the camera output formats.
 | ----------------------- | --------- | ------------ |
 | CAMERA_FORMAT_DNG_XDRAW<sup>18+</sup>  | 5         | Enhanced raw image in DNG format, where JPG and raw images are packaged in the same file, and up to 16-bit raw data is supported. **System API**: This is a system API.        |
 
+<<<<<<< HEAD
 ## ExposureMeteringMode<sup>12+</sup>
+=======
+## ExposureMeteringMode<sup>12+</sup> 
+>>>>>>> 9ba5f6cc4e84ea735211dc4ca116a8e42643bd29
 
 Enumerates the exposure metering modes.
 
@@ -5087,8 +5095,13 @@ Enumerates the exposure metering modes.
 
 **System capability**: SystemCapability.Multimedia.Camera.Core
 
+<<<<<<< HEAD
 | Name                          | Value  | Description        |
 | ----------------------------- | ---- | ----------- |
+=======
+| Name                          | Value  | Description        | 
+| ----------------------------- | ---- | ----------- | 
+>>>>>>> 9ba5f6cc4e84ea735211dc4ca116a8e42643bd29
 | CENTER_HIGHLIGHT_WEIGHTED   | 3    | Center-weighted and highlight metering mode. This mode focuses on the highlight area near the center of the screen.      |
 
 ## FocusRangeType<sup>15+</sup>
