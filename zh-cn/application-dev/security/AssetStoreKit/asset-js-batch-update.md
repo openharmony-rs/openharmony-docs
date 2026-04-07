@@ -1,4 +1,4 @@
-# 更新关键资产(ArkTS)
+# 批量更新关键资产(ArkTS)
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
@@ -9,15 +9,15 @@
 
 ## 接口介绍
 
-可通过API文档查看更新关键资产的异步接口[update(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdate)、同步接口[updateSync(query: AssetMap, attributesToUpdate: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetupdatesync12)的详细介绍。
+从版本26.0.0开始，系统提供异步接口[batchUpdate](../../reference/apis-asset-store-kit/js-apis-asset.md#assetbatchupdate)以便开发者批量更新关键资产。
 
-在更新关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
+在批量更新关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 
 > **注意：**
 >
 > 下表中“ALIAS”和名称包含“DATA_LABEL”的关键资产属性，用于存储业务自定义信息，其内容不会被加密，请勿存放敏感个人数据。
 
-- **query的参数列表：**
+- **sourceAttributes的参数列表：**
 
   | 属性名称（Tag）        | 属性内容（Value）                                             | 是否必选  | 说明                                             |
   | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------ |
@@ -42,7 +42,7 @@
   | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | 类型为boolean。 | 可选 | 是否更新业务自定义附属信息被加密的数据。为true时表示更新业务自定义附属信息加密存储的数据，为false时表示更新业务自定义附属信息不加密存储的数据。默认值为false。|
   | GROUP_ID<sup>18+</sup> | 类型为Uint8Array，长度为7-127字节。 | 可选 | 待更新的关键资产所属群组，默认更新不属于任何群组的关键资产。|
 
-- **attributesToUpdate的参数列表：**
+- **destAttributes的参数列表：**
 
   | 属性名称（Tag）        | 属性内容（Value）                      | 是否必选  | 说明                                                         |
   | --------------------- | -------------------------------| -------- | ------------------------------- |
@@ -56,20 +56,24 @@
   | DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | 类型为Uint8Array，长度为1-2048字节。 | 可选 | 关键资产附属的本地信息，内容由业务自定义且无完整性保护，该项信息不会进行同步。 |
   | DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | 类型为Uint8Array，长度为1-2048字节。 | 可选 | 关键资产附属的本地信息，内容由业务自定义且无完整性保护，该项信息不会进行同步。 |
 
-## 代码示例
+## 约束和限制
+
+批量更新的关键资产必须具有相同的[GROUP_ID](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)和[REQUIRE_ATTR_ENCRYPTED](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性。
+
+批量更新的关键资产数量最大值为100。
+
+## 开发步骤
 
 > **说明：**
 >
-> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[@ohos.security.asset (关键资产存储服务)](../../reference/apis-asset-store-kit/js-apis-asset.md)。
->
-> 在指定群组中更新一条关键资产的使用示例详见[更新群组关键资产](asset-js-group-access-control.md#更新群组关键资产)。
+> 以下为批量更新接口的使用示例。
 >
 > 在更新前，需确保已有关键资产，可参考[指南文档](asset-js-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
 
-更新别名是demo_alias的关键资产，将关键资产明文更新为demo_pwd_new，附属属性更新成demo_label_new。
+批量更新两条关键资产，将别名分别为demo_alias1和demo_alias2的关键资产明文更新为demo_pwd_new1和demo_pwd_new2。
 
 1. 引用头文件，定义工具函数。
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets) -->
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -83,26 +87,39 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @[update_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/update.ets) -->
+   <!-- @[batch_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
    
    ``` TypeScript
-   let query: asset.AssetMap = new Map();
-   query.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-   let attrsToUpdate: asset.AssetMap = new Map();
-   attrsToUpdate.set(asset.Tag.SECRET, stringToArray('demo_pwd_new'));
-   attrsToUpdate.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label_new'));
+   let srcAttrs: asset.AssetMap[] = [];
+   let srcAttr1: asset.AssetMap = new Map();
+   srcAttr1.set(asset.Tag.ALIAS, stringToArray('demo_alias1'));
+   srcAttrs.push(srcAttr1);
+   let srcAttr2: asset.AssetMap = new Map();
+   srcAttr2.set(asset.Tag.ALIAS, stringToArray('demo_alias2'));
+   srcAttrs.push(srcAttr2);
+   
+   let destAttrs: asset.AssetMap[] = [];
+   let destAttr1: asset.AssetMap = new Map();
+   destAttr1.set(asset.Tag.SECRET, stringToArray('demo_pwd_new1'));
+   destAttrs.push(destAttr1);
+   let destAttr2: asset.AssetMap = new Map();
+   destAttr2.set(asset.Tag.SECRET, stringToArray('demo_pwd_new2'));
+   destAttrs.push(destAttr2);
+   
    try {
-     asset.update(query, attrsToUpdate).then(() => {
-       console.info(`Succeeded in updating Asset.`);
-       // ...
+     asset.batchUpdate(srcAttrs, destAttrs).then((res: asset.BatchResult) => {
+       console.info(`Succeeded in batch updating Asset, failedCount: ${res.failedCount}`);
+       if (res.failedCount > 0) {
+         for (let i = 0; i < res.failedErrorInfos.length; i++) {
+           console.error(`Failed to update Asset at index ${res.failedErrorInfos[i].index},
+             errCode: ${res.failedErrorInfos[i].errCode}, message: ${res.failedErrorInfos[i].message}`);
+         }
+       }
      }).catch((err: BusinessError) => {
-       console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
-       // ...
-     });
+       console.error(`Failed to batch update Asset. Code is ${err.code}, message is ${err.message}`);
+     })
    } catch (error) {
      let err = error as BusinessError;
-     console.error(`Failed to update Asset. Code is ${err.code}, message is ${err.message}`);
-     // ...
+     console.error(`Failed to batch update Asset. Code is ${err.code}, message is ${err.message}`);
    }
    ```
-
