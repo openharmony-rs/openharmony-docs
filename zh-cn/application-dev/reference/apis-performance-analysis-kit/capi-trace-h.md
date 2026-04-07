@@ -659,7 +659,7 @@ void OH_HiTrace_SetParentSpanId(HiTraceId *id, uint64_t parentSpanId)
 
 **描述**
 
-设置HiTraceId结构的parentSpanId字段。
+设置HiTraceId结构的parentSpanId字符。
 
 **系统能力：** SystemCapability.HiviewDFX.HiTrace
 
