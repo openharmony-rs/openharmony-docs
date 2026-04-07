@@ -55,7 +55,7 @@ import { audio } from '@kit.AudioKit'; // 导入audio模块。
 
 可以设置监听事件来监听设备连接状态的变化，当有设备连接或断开时触发回调：
 
-<!-- @[listen_InputStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->
+<!-- @[listen_InputStatus](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/AudioRoutingManagerSampleJS/entry/src/main/ets/pages/FindAndListenAudioInputDevice.ets) -->  
 
 ``` TypeScript
 import { audio } from '@kit.AudioKit'; // 导入audio模块。
