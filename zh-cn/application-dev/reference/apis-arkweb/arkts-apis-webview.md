@@ -22,7 +22,7 @@
 
 - [AdsBlockManager](./arkts-apis-webview-AdsBlockManager.md)：广告过滤配置。
 - [BackForwardCacheOptions](./arkts-apis-webview-BackForwardCacheOptions.md)：前进后退缓存配置。
-- [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md)：前进后退缓存特性配置。
+- [BackForwardCacheSupportedFeatures](./arkts-apis-webview-BackForwardCacheSupportedFeatures.md)：设置前进后退缓存配置相关特性。
 - [GeolocationPermissions](./arkts-apis-webview-GeolocationPermissions.md)：地理位置权限配置。
 - [JsMessageExt](./arkts-apis-webview-JsMessageExt.md)：执行JavaScript脚本的结果。
 - [MediaSourceInfo](./arkts-apis-webview-MediaSourceInfo.md)：媒体源信息配置。
