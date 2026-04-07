@@ -415,7 +415,6 @@ getCurrentBundleInodes(): Promise&lt;number&gt;
 | -------- | ------------------------------------------------------------ |
 | 13600001 | IPC error.                                                   |
 | 13600002 | File system not supported.                                   |
-| 13600010 | The input parameter is invalid.                              |
 | 13600017 | Failed to query the inode information of the application.    |
 
 **示例：**
