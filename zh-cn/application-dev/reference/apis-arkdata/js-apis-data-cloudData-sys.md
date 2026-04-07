@@ -920,7 +920,7 @@ static queryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
 | accountId  | string | 是   | 具体打开的云账号ID。                                         |
-| bundleInfos | Array&lt;[BundleInfo](#bundleinfo26)&gt; | 是   | 应用信息配置数组。 |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo26)&gt; | 是   | 应用信息配置数组, 最多支持30个应用信息。 |
 
 **返回值：**
 
@@ -978,7 +978,7 @@ static onSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress: Callbac
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
-| bundleInfos | Array&lt;[BundleInfo](#bundleinfo26)&gt; | 是   | 应用信息配置数组。 |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo26)&gt; | 是   | 应用信息配置数组, 最多支持30个应用信息。 |
 | progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 是   | 同步信息变化回调函数。返回应用包名以及对应数据库的同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
 
 **错误码：**
@@ -1028,7 +1028,7 @@ static offSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress?: Callb
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
-| bundleInfos | Array&lt;[BundleInfo](#bundleinfo26)&gt; | 是   | 应用信息配置数组。 |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo26)&gt; | 是   | 应用信息配置数组, 最多支持30个应用信息。 |
 | progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 否   | 同步信息变化回调函数。如果不传此参数，则取消所有订阅。 |
 
 **错误码：**
