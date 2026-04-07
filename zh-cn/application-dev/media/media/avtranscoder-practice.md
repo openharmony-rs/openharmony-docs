@@ -80,7 +80,7 @@
    ```ts
    import { sendableContextManager } from '@kit.AbilityKit';
 
-   //发送的参数必须加上@Sendable标注。
+   // 发送的参数必须加上@Sendable标注。
    @Sendable
    export class SendableObject {
      constructor(sendableContext: sendableContextManager.SendableContext, data: string = '') {
@@ -127,7 +127,7 @@
      sendableObject.getSendableContext() as sendableContextManager.SendableContext;
    const context: common.Context =
      sendableContextManager.convertToContext(sendableContext) as common.Context;
-   //执行转码逻辑。
+   // 执行转码逻辑。
    await doSome(context);
    // 向主线程发送消息。
    workerPort.postMessage('start end');
