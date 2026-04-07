@@ -1049,7 +1049,7 @@ static offSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress?: Callb
 | -------- | ---------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported because the device does not support the device-cloud capability.|
 | 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0.|
 
 **示例：**
