@@ -1755,8 +1755,6 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise<void>;
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
-**设备行为差异：** xxx
-
 **参数：**
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
@@ -1793,8 +1791,6 @@ isFloatNavigationAvoidAreaEnabled(): boolean;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
-
-**设备行为差异：** xxx
 
 **错误码：**
 
