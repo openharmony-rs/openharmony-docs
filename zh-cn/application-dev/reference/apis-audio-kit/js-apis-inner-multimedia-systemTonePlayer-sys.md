@@ -272,7 +272,7 @@ setAudioVolumeScale(scale: number): void
 | 202      | Caller is not a system application.                                                                         |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102  | Operation not allowed.                                                                                      |
-| 20700002 | Parameter check error, For example, value is out side [0, 1].                                                |
+| 20700002 | Parameter check error. For example, value is outside [0,1]. |
 
 **示例：**
 
