@@ -1573,8 +1573,8 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-components-canvas-path2d.
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-components-contentSlot.md	@sunbees	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-components-offscreencanvas.md	@sunbees	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-ability-component-sys.md	@sunbees	@liuli0427	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-alphabet-indexer.md	@jiangdayuan	@gouyuanyuan	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arc-alphabet-indexer.md	@jiangdayuan	@gouyuanyuan	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arclist.md	@yylong	@rongShao-Z @huchuyun	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arclistitem.md	@yylong	@rongShao-Z @huchuyun	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-arcswiper.md	@jiangdayuan	@gouyuanyuan	 @Brilliantry_Rui
@@ -1613,7 +1613,7 @@ zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-sidebarcontaine
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack-sys.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-stack.md	@lanshouren	@liuli0427	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-swiper.md	@jiangdayuan	@gouyuanyuan	 @Brilliantry_Rui
-zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabcontent.md	@CCFFWW	@lxl007	 @Brilliantry_Rui
+zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabcontent.md	@jiangdayuan	@gouyuanyuan	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-tabs.md	@jiangdayuan @gouyuanyuan	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-ui-extension-component-sys.md	@dutie123	@fredyuan0912	 @Brilliantry_Rui
 zh-cn/application-dev/reference/apis-arkui/arkui-ts/ts-container-unioneffectcomponent-sys.md  @CCFFWW  @lxl007  @Brilliantry_Rui
