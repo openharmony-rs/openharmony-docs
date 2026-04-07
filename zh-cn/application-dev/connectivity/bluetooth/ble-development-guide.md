@@ -371,7 +371,7 @@ try {
 ### BLE扫描流程
 ```ts
 import { ble } from '@kit.ConnectivityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { BusinessError } from '@ohos.base';
 
 const TAG: string = 'BleScanManager';
 
