@@ -13,11 +13,13 @@ The module provides image post-processing methods (for example, tone mapping) in
 > The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 
 ## Modules to Import
+
 ```ts
 import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSettings } from '@kit.ArkGraphics3D';
 ```
 
 ## ToneMappingType
+
 Enumerates the tone mapping types.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -29,6 +31,7 @@ Enumerates the tone mapping types.
 | FILMIC | 2 | Filmic.|
 
 ## ToneMappingSettings
+
 Describes the tone mapping settings.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -39,6 +42,7 @@ Describes the tone mapping settings.
 | exposure | number | No| Yes| Exposure. The value must be greater than 0. The default value is undefined.|
 
 ## BloomSettings<sup>18+</sup>
+
 Describes the settings for bloom effects. It is unavailable when [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) is set to **FORWARD_LIGHTWEIGHT**.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -51,6 +55,7 @@ Describes the settings for bloom effects. It is unavailable when [RenderingPipel
 | scatter | number | No| Yes| Scatter amount. The value must be greater than 0. The default value is **1.0**.|
 
 ## VignetteSettings<sup>22+</sup>
+
 Describes the settings for vignette effects.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -61,6 +66,7 @@ Describes the settings for vignette effects.
 | intensity | number | No| Yes| Strength of the effect. The default value is **0.4**.|
 
 ## ColorFringeSettings<sup>22+</sup>
+
 Describes the settings for color fringing. It is unavailable when [RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21) is set to **FORWARD_LIGHTWEIGHT**.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
@@ -70,6 +76,7 @@ Describes the settings for color fringing. It is unavailable when [RenderingPipe
 | intensity | number | No| Yes| Strength of the effect. The value ranges from 0 to 1. The default value is **0.2**.|
 
 ## PostProcessSettings
+
 Describes the post-processing settings.
 
 **System capability**: SystemCapability.ArkUi.Graphics3D
