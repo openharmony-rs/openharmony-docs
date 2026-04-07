@@ -3482,7 +3482,9 @@ struct Index {
           let paragraph = paragraphBuilder.build();
           paragraph.layoutSync(200);
           let paragraphStyle = paragraph.getParagraphStyle();
-          console.log("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+          if (paragraphStyle.textStyle != undefined) {
+            console.log("Print fontSize: " + paragraphStyle.textStyle?.fontSize);
+          }
         })
     }
   }
