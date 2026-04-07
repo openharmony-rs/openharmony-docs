@@ -12,7 +12,7 @@
 **系统能力**：SystemCapability.Notification.Notification
 
 | 名称                            | 类型                                                    |  只读 | 可选 | 说明                                                                    |
-|-------------------------------| -------------------------------------------------------- | ----- | --- |-----------------------------------------------------------------------|
+| ---------------------------------- | -------------------------------------------------------- | ----- | --- |-----------------------------------------------------------------------|
 | content                       | [NotificationContent](js-apis-inner-notification-notificationContent.md#notificationcontent-1)   |   否  | 否  | 通知内容。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23                 |
 | id                            | ArkTS-Dyn: number <br/>ArkTS-Sta: int         |   否  | 是  | 通知ID，默认为0。当相同通知ID存在时，将更新该通知的内容。 <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23         |
 | slotType<sup>(deprecated)</sup> | ArkTS-Dyn: [notification.SlotType](./js-apis-notification.md#slottype)    |   否  | 是  | 通知渠道类型。从API version 7 开始支持，从API version 11 开始废弃，建议使用[notificationSlotType](#notificationrequest)替代。 <br/>**ArkTS模式：** 该属性仅适用于ArkTS-Dyn。 <br/>**ArkTS-Dyn起始版本**：7    |
@@ -34,7 +34,7 @@
 | label                         | string                                                   |   否  | 是  | 通知标签。<br>label字段的功能类似于id，可以单独使用，也可与id结合共同作为通知的标识。优先推荐使用id。<br>如果发布通知时label不为空，那么在更新或删除该通知时，也需要指定相应的label。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23                    |
 | badgeIconStyle                | ArkTS-Dyn:number <br/>ArkTS-Sta:int                     |   否  | 是  | 通知角标类型。预留能力，暂未支持。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23         |
 | showDeliveryTime              | boolean                                                  |   否  | 是  | 是否显示分发时间。预留能力，暂未支持。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23             |
-| actionButtons                 | Array\<[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md)\>             |   否  | 是  | 通知按钮，默认一条通知中最多包含两个按钮。从API version 16开始，支持`wearable`设备，`wearable`设备中一条通知中最多包含三个按钮。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23                  |
+| actionButtons                 | Array\<[NotificationActionButton](js-apis-inner-notification-notificationActionButton.md)\>             |   否  | 是  | 通知按钮，默认为空。一条通知中最多包含两个按钮。从API version 16开始，`wearable`设备一条通知最多包含三个按钮。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23                  |
 | smallIcon                     | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知小图标。可选字段，图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。<br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23       |
 | largeIcon                     | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)             |   否  | 是  | 通知大图标。可选字段，图标像素的总字节数不超过192KB（图标像素的总字节数通过[getPixelBytesNumber](../apis-image-kit/arkts-apis-image-PixelMap.md#getpixelbytesnumber7)获取），建议图标像素长宽为128*128。实际显示效果依赖于设备能力和通知中心UI样式。  <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23            |
 | creatorBundleName             | string                                                   |   是  | 是  | 创建通知的包名。  <br/>**ArkTS-Dyn起始版本**：7<br/>**ArkTS-Sta起始版本**：23                             |
