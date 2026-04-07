@@ -1328,7 +1328,7 @@ executableBinaryPaths示例：
     // ...
     "executableBinaryPaths": [
       {
-        "path": "framework/test.bin"
+        "path": "libs/arm64-v8a/test.bin"
       }
     ],
     // ...
