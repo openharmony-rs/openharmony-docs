@@ -2109,10 +2109,9 @@ LazyForEach(this.data, (item: string, index: number) => {
 
 ### string类型数组的BasicDataSource代码
 
-<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets) -->    
+<!-- @[basic_data_source_string](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/BasicDataSource.ets) -->
 
 ``` TypeScript
-// BasicDataSource.ets
 // BasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
 export class BasicDataSource implements IDataSource {
   private listeners: DataChangeListener[] = [];
@@ -2194,7 +2193,6 @@ export class BasicDataSource implements IDataSource {
 <!-- @[generic_basic_data_source](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/RenderingControl/entry/src/main/ets/pages/RenderingLazyForeach/GenericBasicDataSource.ets) -->
 
 ``` TypeScript
-// GenericBasicDataSource.ets
 // GenericBasicDataSource实现了IDataSource接口，用于管理listener监听，以及通知LazyForEach数据更新
 export class GenericBasicDataSource<T> implements IDataSource {
   private listeners: DataChangeListener[] = [];
