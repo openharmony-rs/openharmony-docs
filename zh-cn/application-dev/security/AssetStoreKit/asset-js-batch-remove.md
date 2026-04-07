@@ -1,4 +1,4 @@
-# 删除关键资产(ArkTS)
+# 批量删除关键资产(ArkTS)
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
@@ -9,9 +9,9 @@
 
 ## 接口介绍
 
-可通过API文档查询删除关键资产的异步接口[remove(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremove)、同步接口[removeSync(query: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetremovesync12)的详细介绍。
+从版本26.0.0开始，系统提供异步接口[batchRemove](../../reference/apis-asset-store-kit/js-apis-asset.md#assetbatchremove)以便开发者批量删除关键资产。
 
-在删除关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
+在批量删除关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 
 > **注意：**
 >
@@ -40,20 +40,24 @@
 | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | 类型为boolean。 | 可选 | 是否删除业务自定义附属信息被加密的数据。为true时表示删除业务自定义附属信息加密存储的数据，为false时表示删除业务自定义附属信息不加密存储的数据。默认值为false。|
 | GROUP_ID<sup>18+</sup> | 类型为Uint8Array，长度为7-127字节。 | 可选 | 待删除的关键资产所属群组，默认删除不属于任何群组的关键资产。|
 
-## 代码示例
+## 约束和限制
+
+批量删除的关键资产必须具有相同的[GROUP_ID](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)和[REQUIRE_ATTR_ENCRYPTED](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性。
+
+批量删除的关键资产数量最大值为100。
+
+## 开发步骤
 
 > **说明：**
 >
-> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[@ohos.security.asset (关键资产存储服务)](../../reference/apis-asset-store-kit/js-apis-asset.md)。
->
-> 在指定群组中删除一条关键资产的使用示例详见[删除群组关键资产](asset-js-group-access-control.md#删除群组关键资产)。
+> 以下为批量刪除接口的使用示例。
 >
 > 在删除前，需确保已有关键资产，可参考[指南文档](asset-js-add.md)新增关键资产，否则将抛出NOT_FOUND错误（错误码24000002）。
 
-删除一条别名是demo_alias的关键资产。
+批量删除两条别名分别为demo_alias1和demo_alias2的关键资产。
 
 1. 引用头文件，定义工具函数。
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -67,23 +71,25 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @[remove_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/remove.ets) -->
+   <!-- @[batch_remove](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
    
    ``` TypeScript
-   let query: asset.AssetMap = new Map();
-   query.set(asset.Tag.ALIAS, stringToArray('demo_alias')); // 此处指定别名删除单条关键资产，也可不指定别名删除多条关键资产。
+   let assetsToBeRemoved: asset.AssetMap[] = [];
+   let query1: asset.AssetMap = new Map();
+   query1.set(asset.Tag.ALIAS, stringToArray('demo_alias1'));
+   assetsToBeRemoved.push(query1);
+   let query2: asset.AssetMap = new Map();
+   query2.set(asset.Tag.ALIAS, stringToArray('demo_alias2'));
+   assetsToBeRemoved.push(query2);
+   
    try {
-     asset.remove(query).then(() => {
-       console.info(`Succeeded in removing Asset.`);
-       // ...
+     asset.batchRemove(assetsToBeRemoved).then(() => {
+       console.info(`Succeeded in batch removing Asset.`);
      }).catch((err: BusinessError) => {
-       console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-       // ...
-     });
+       console.error(`Failed to batch remove Asset. Code is ${err.code}, message is ${err.message}`);
+     })
    } catch (error) {
      let err = error as BusinessError;
-     console.error(`Failed to remove Asset. Code is ${err.code}, message is ${err.message}`);
-     // ...
+     console.error(`Failed to batch remove Asset. Code is ${err.code}, message is ${err.message}`);
    }
    ```
-

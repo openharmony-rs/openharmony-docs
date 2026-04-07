@@ -1,4 +1,4 @@
-# 新增关键资产(ArkTS)
+# 批量新增关键资产(ArkTS)
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
@@ -9,9 +9,9 @@
 
 ## 接口介绍
 
-可通过API文档查看新增关键资产的异步接口[add(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetadd)、同步接口[addSync(attributes: AssetMap)](../../reference/apis-asset-store-kit/js-apis-asset.md#assetaddsync12)的详细介绍。
+从版本26.0.0开始，系统提供异步接口[batchAdd](../../reference/apis-asset-store-kit/js-apis-asset.md#assetbatchadd)以便开发者批量新增关键资产。
 
-在新增关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
+在批量新增关键资产时，关键资产属性的内容（AssetMap）参数如下表所示：
 
 > **注意：**
 >
@@ -40,7 +40,7 @@
 | DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | 类型为Uint8Array，长度为1-2048字节。 | 可选 | 关键资产附属的本地信息，内容由业务自定义且无完整性保护，该项信息不会进行同步。 |
 | CONFLICT_RESOLUTION   | 类型为number，取值范围详见[ConflictResolution](../../reference/apis-asset-store-kit/js-apis-asset.md#conflictresolution)。 | 可选     | 新增关键资产时的冲突（如：别名相同）处理策略，默认值为THROW_ERROR，即抛出异常，由业务进行后续处理。  |
 | REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | 类型为boolean。 | 可选 | 是否加密业务自定义附属信息。为true时表示业务自定义附属信息加密存储，为false时表示业务自定义附属信息不加密存储。默认值为false。|
-| GROUP_ID<sup>18+</sup> | 类型为Uint8Array，长度为7-127字节。 | 可选 | 待新增的关键资产所属群组，默认新增不属于任何群组的关键资产。|
+| GROUP_ID<<sup>18+</sup> | 类型为Uint8Array，长度为7-127字节。 | 可选 | 待新增的关键资产所属群组，默认新增不属于任何群组的关键资产。|
 | WRAP_TYPE<sup>18+</sup> | 类型为number，取值范围详见[WrapType](../../reference/apis-asset-store-kit/js-apis-asset.md#wraptype18)。 | 可选 | 关键资产支持的加密导入导出类型，默认值为NEVER，即不允许加密导入导出关键资产。|
 
 ## 约束和限制
@@ -55,18 +55,22 @@
 
   ASSET对以“DATA_LABEL_CRITICAL”开头的属性提供完整性保护，写入后不可更新。
 
-## 代码示例
+- 批量新增限制。
+
+  批量新增的关键资产必须具有相同的[GROUP_ID](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)和[REQUIRE_ATTR_ENCRYPTED](../../reference/apis-asset-store-kit/js-apis-asset.md#tag)属性。
+
+  批量新增的关键资产数量最大值为100。
+
+## 开发步骤
 
 > **说明：**
 >
-> 本模块提供了异步和同步两套接口，以下为异步接口的使用示例，同步接口详见[@ohos.security.asset (关键资产存储服务)](../../reference/apis-asset-store-kit/js-apis-asset.md)API文档。
->
-> 在指定群组中新增一条关键资产的使用示例详见[新增群组关键资产](asset-js-group-access-control.md#新增群组关键资产)。
+> 以下为批量新增接口的使用示例。
 
-新增一条密码是demo_pwd，别名是demo_alias，附属信息是demo_label的关键资产，该关键资产在用户首次解锁设备后可被访问。
+批量新增两条关键资产，密码分别为demo_pwd1和demo_pwd2，别名分别为demo_alias1和demo_alias2。
 
 1. 引用头文件，定义工具函数。
-   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+   <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
    
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
@@ -80,26 +84,34 @@
    ```
 
 2. 参考如下示例代码，进行业务功能开发。
-   <!-- @[add_asset](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/add.ets) -->
+   <!-- @[batch_add](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
    
    ``` TypeScript
-   let attr: asset.AssetMap = new Map();
-   attr.set(asset.Tag.SECRET, stringToArray('demo_pwd'));
-   attr.set(asset.Tag.ALIAS, stringToArray('demo_alias'));
-   attr.set(asset.Tag.ACCESSIBILITY, asset.Accessibility.DEVICE_FIRST_UNLOCKED);
-   attr.set(asset.Tag.DATA_LABEL_NORMAL_1, stringToArray('demo_label'));
+   let attributesArray: asset.AssetMap[] = [];
+   let attr1: asset.AssetMap = new Map();
+   attr1.set(asset.Tag.SECRET, stringToArray('demo_pwd1'));
+   attr1.set(asset.Tag.ALIAS, stringToArray('demo_alias1'));
+   attributesArray.push(attr1);
+   
+   let attr2: asset.AssetMap = new Map();
+   attr2.set(asset.Tag.SECRET, stringToArray('demo_pwd2'));
+   attr2.set(asset.Tag.ALIAS, stringToArray('demo_alias2'));
+   attributesArray.push(attr2);
+   
    try {
-     asset.add(attr).then(() => {
-       console.info(`Succeeded in adding Asset.`);
-       // ...
+     asset.batchAdd(attributesArray).then((res: asset.BatchResult) => {
+       console.info(`Succeeded in batch adding Asset, failedCount: ${res.failedCount}`);
+       if (res.failedCount > 0) {
+         for (let i = 0; i < res.failedErrorInfos.length; i++) {
+           console.error(`Failed to add Asset at index ${res.failedErrorInfos[i].index},
+             errCode: ${res.failedErrorInfos[i].errCode}, message: ${res.failedErrorInfos[i].message}`);
+         }
+       }
      }).catch((err: BusinessError) => {
-       console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-       // ...
+       console.error(`Failed to batch add Asset. Code is ${err.code}, message is ${err.message}`);
      })
    } catch (error) {
      let err = error as BusinessError;
-     console.error(`Failed to add Asset. Code is ${err.code}, message is ${err.message}`);
-     // ...
+     console.error(`Failed to batch add Asset. Code is ${err.code}, message is ${err.message}`);
    }
    ```
-
