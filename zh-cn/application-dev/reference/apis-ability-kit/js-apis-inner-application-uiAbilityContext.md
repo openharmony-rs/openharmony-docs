@@ -2423,7 +2423,7 @@ backToCallerAbilityWithResult(abilityResult: AbilityResult, requestCode: string)
 // 调用方
 // index.ets
 import { common, Want } from '@kit.AbilityKit';
-import { BusinessError } from '@ohos.base';
+import { BusinessError } from '@kit.BasicServicesKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
