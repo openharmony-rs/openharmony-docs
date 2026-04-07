@@ -3285,6 +3285,11 @@
 						"end_line":973,
 						"name":"APP_Hicollie_DestroyWatcher",
 						"start_line":925
+					},
+					{
+						"end_line":59,
+						"name":"App_Hicollie_Watcher_T_ptr",
+						"start_line":56
 					}
 				]
 			},
