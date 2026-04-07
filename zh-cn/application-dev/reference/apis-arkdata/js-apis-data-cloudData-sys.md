@@ -137,9 +137,13 @@ let extraData: cloudData.ExtraData = {
 | action     | [ClearAction](#clearaction)           | 否   | 否   | 数据库默认数据清除方式。 |
 | tableInfo  | Record<string, [ClearAction](#clearaction)> | 否   | 是   | 要清除数据的表信息及清除规则。键为表名称，值为该表的清除方式。当未配置该参数时，默认使用数据库的数据清除方式。   |
 
-## BundleInfo<sup>26+</sup>
+## BundleInfo
 
 应用信息配置。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
 
@@ -903,11 +907,13 @@ try {
 }
 ```
 
-### queryLastSyncInfo<sup>26+</sup>
+### queryLastSyncInfo
 
 static queryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;
 
-批量查询上一次端云同步信息，使用Promise异步回调。
+批量查询上一次端云同步的信息，使用Promise异步回调。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -920,23 +926,23 @@ static queryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
 | accountId  | string | 是   | 具体打开的云账号ID。                                         |
-| bundleInfos | Array&lt;[BundleInfo](#bundleinfo26)&gt; | 是   | 应用信息配置数组, 最多支持30个应用信息。 |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 应用信息配置数组，最多支持30个应用信息。 |
 
 **返回值：**
 
 | 类型                                                         | 说明                                         |
 | ------------------------------------------------------------ | -------------------------------------------- |
-| Promise&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 返回应用包名以及对应数据库的上一次端云同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
+| Promise&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | Promise对象，返回应用包名以及对应数据库的上一次端云同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported because the device does not support the device-cloud capability.|
 | 14800001 | Invalid arguments. Possible causes: 1. the accountId is empty; 2. the bundlename is null; 3. the number of bundleInfos exceeds the upper limit or the number is 0.|
 
 **示例：**
@@ -962,11 +968,13 @@ try {
 }
 ```
 
-### onSyncInfoChanged<sup>26+</sup>
+### onSyncInfoChanged
 
 static onSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress: Callback&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;): void
 
 订阅应用同步信息变化，使用callback异步回调。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -978,18 +986,18 @@ static onSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress: Callbac
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
-| bundleInfos | Array&lt;[BundleInfo](#bundleinfo26)&gt; | 是   | 应用信息配置数组, 最多支持30个应用信息。 |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 应用信息配置数组，最多支持30个应用信息。 |
 | progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 是   | 同步信息变化回调函数。返回应用包名以及对应数据库的同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
 | 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
 | 202      | Permission verification failed, application which is not a system application uses system API.|
-| 801      | Capability not supported.|
+| 801      | Capability not supported because the device does not support the device-cloud capability.|
 | 14800001 | Invalid arguments. Possible causes: 1. bundlename is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0.|
 
 **示例：**
@@ -1012,11 +1020,13 @@ try {
 }
 ```
 
-### offSyncInfoChanged<sup>26+</sup>
+### offSyncInfoChanged
 
 static offSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress?: Callback&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;): void
 
 取消订阅应用同步信息变化，使用callback异步回调。
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1028,12 +1038,12 @@ static offSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress?: Callb
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
-| bundleInfos | Array&lt;[BundleInfo](#bundleinfo26)&gt; | 是   | 应用信息配置数组, 最多支持30个应用信息。 |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 应用信息配置数组，最多支持30个应用信息。 |
 | progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 否   | 同步信息变化回调函数。如果不传此参数，则取消所有订阅。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
 
 | 错误码ID | 错误信息                                             |
 | -------- | ---------------------------------------------------- |
