@@ -24,12 +24,12 @@ import { DrawContext, Size, Offset, Position, Pivot, Scale, Translation, Matrix4
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型   | 只读 | 可选 | 说明                   |
 | ------ | ------ | ---- | ---- | ---------------------- |
-| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 组件大小的宽度。<br/>单位：vp<br/>取值范围：[0, +∞) |
-| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 组件大小的高度。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 组件大小的宽度。<br/>单位：vp<br/>取值范围：[0, +∞) |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 组件大小的高度。<br/>单位：vp<br/>取值范围：[0, +∞) |
 
 ## Position
 
@@ -49,19 +49,17 @@ type Position = Vector2
 | ------------------- | ----------------------------------- |
 | [Vector2](#vector2) | 包含x和y两个值的向量。<br/>单位：vp |
 
-## NodePosition<sup>20+</sup>
+## NodePosition<sup>23+</sup>
 
 type NodePosition = Vector2
 
 用于设置或返回组件的位置。
 
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                | 说明                                |
 | ------------------- | ----------------------------------- |
@@ -77,6 +75,10 @@ type PositionT\<T> = Vector2T\<T>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                         | 说明                                |
 | ---------------------------- | ----------------------------------- |
 | [Vector2T\<T>](#vector2tt12) | 包含x和y两个值的向量。<br/>单位：vp |
@@ -91,14 +93,14 @@ type PositionT\<T> = Vector2T\<T>
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型   | 只读 | 可选 | 说明                        |
 | ------ | ------ | ---- | ---- | --------------------------- |
-| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 水平方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
-| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 垂直方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
-| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 组件的宽度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
-| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 组件的高度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
+| x      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 水平方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
+| y      | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 垂直方向位置。<br/>单位：vp<br/>取值范围：(-∞, +∞) |
+| width  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 组件的宽度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
+| height | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 组件的高度。<br/>单位：vp<br/>取值范围：[0, +∞)   |
 
 ## Pivot
 
@@ -109,6 +111,10 @@ type Pivot = Vector2
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                | 说明                                                         |
 | ------------------- | ------------------------------------------------------------ |
@@ -124,6 +130,10 @@ type Scale = Vector2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                | 说明                                            |
 | ------------------- | ----------------------------------------------- |
 | [Vector2](#vector2) | x和y轴的缩放参数。该参数为浮点数，默认值为1.0。 |
@@ -137,6 +147,10 @@ type Translation = Vector2
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                | 说明                          |
 | ------------------- | ----------------------------- |
@@ -152,6 +166,10 @@ type Rotation = Vector3
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                | 说明                                   |
 | ------------------- | -------------------------------------- |
 | [Vector3](#vector3) | x、y、z轴方向的旋转角度。<br/>单位：度 |
@@ -165,6 +183,26 @@ type Offset = Vector2
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
+| 类型                | 说明                              |
+| ------------------- | --------------------------------- |
+| [Vector2](#vector2) | x和y轴方向的偏移量。<br/>单位：vp |
+
+## NodeOffset<sup>23+</sup>
+
+type NodeOffset = Vector2
+
+用于设置组件或效果的偏移。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                | 说明                              |
 | ------------------- | --------------------------------- |
@@ -184,7 +222,7 @@ ArkTS-Sta: type Matrix4 = [double,double,double,double,double,double,double,doub
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                                         | 说明                                 |
 | ------------------------------------------------------------ | ------------------------------------ |
@@ -211,7 +249,7 @@ const transform: Matrix4 = [
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明              |
 | ---- | ------ | ---- | ---- | ----------------- |
@@ -228,7 +266,7 @@ const transform: Matrix4 = [
 
 **ArkTS-Dyn起始版本：** 11
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明                |
 | ---- | ------ | ---- | ---- | ------------------- |
@@ -244,6 +282,10 @@ const transform: Matrix4 = [
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 类型   | 只读 | 可选 | 说明              |
 | ---- | ------ | ---- | ---- | ----------------- |
 | x    | T | 否  | 否  | 向量x轴方向的值。 |
@@ -252,6 +294,14 @@ const transform: Matrix4 = [
 ## DrawContext
 
 图形绘制上下文，提供绘制所需的画布宽度和高度。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型   | 只读 | 可选 | 说明              |
 | ---- | ------ | ---- | ---- | ----------------- |
@@ -383,14 +433,14 @@ struct Index {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------ | ---- | ---- | ---- | ---------------- |
-| left   | T    | 是   | 是   | 左侧边框的属性。 |
-| top    | T    | 是   | 是   | 顶部边框的属性。 |
-| right  | T    | 是   | 是   | 右侧边框的属性。 |
-| bottom | T    | 是   | 是   | 底部边框的属性。 |
+| left   | T    | 否   | 否   | 左侧边框的属性。 |
+| top    | T    | 否   | 否   | 顶部边框的属性。 |
+| right  | T    | 否   | 否   | 右侧边框的属性。 |
+| bottom | T    | 否   | 否   | 底部边框的属性。 |
 
 ## LengthUnit<sup>12+</sup>
 
@@ -399,6 +449,10 @@ struct Index {
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -416,10 +470,14 @@ struct Index {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------ | ---- | ---- | ---- | ---------------- |
-| width   | T    | 是   | 是   | 宽度的属性。 |
-| height    | T    | 是   | 是   | 高度的属性。 |
+| width   | T    | 否   | 否   | 宽度的属性。 |
+| height    | T    | 否   | 否   | 高度的属性。 |
 
 ## LengthMetricsUnit<sup>12+</sup>
 
@@ -428,6 +486,10 @@ struct Index {
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
@@ -446,12 +508,12 @@ struct Index {
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型 | 只读 | 可选 | 说明             |
 | ------------ | ---------------------------------------- | ---- | ---- | ------ |
-| value       | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 长度属性的值。   |
-| unit | [LengthUnit](#lengthunit12)                                   | 是   | 是   | 长度属性的单位，默认为VP。|
+| value       | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 长度属性的值。   |
+| unit | [LengthUnit](#lengthunit12)                                   | 否   | 否   | 长度属性的单位，默认为VP。|
 
 ### constructor<sup>12+</sup>
 
@@ -467,7 +529,7 @@ LengthMetrics的构造函数。若参数unit不传入值或传入undefined，返
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -490,7 +552,7 @@ ArkTS-Sta: static px(value: double): LengthMetrics
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -518,7 +580,7 @@ ArkTS-Sta: static vp(value: double): LengthMetrics
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -546,7 +608,7 @@ ArkTS-Sta: static fp(value: double): LengthMetrics
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -574,7 +636,7 @@ ArkTS-Sta: static percent(value: double): LengthMetrics
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -602,7 +664,7 @@ ArkTS-Sta: static lpx(value: double): LengthMetrics
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -625,6 +687,10 @@ static resource(value: Resource): LengthMetrics
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -689,7 +755,28 @@ struct SizeExample {
 
 用于混合颜色。
 
+### 属性
+
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称   | 类型   | 只读 | 可选 | 说明                   |
+| ------ | ------ | ---- | ---- | ---------------------- |
+| WHITE  | int | 是   | 否   | 白色。 |
+| BLACK | int | 是   | 否   | 黑色。 |
+| BLUE | int | 是   | 否   | 蓝色。 |
+| BROWN | int | 是   | 否   | 棕色。 |
+| GRAY | int | 是   | 否   | 灰色。 |
+| GREEN | int | 是   | 否   | 绿色。 |
+| GREY | int | 是   | 否   | 灰色。 |
+| ORANGE | int | 是   | 否   | 橘色。 |
+| PINK | int | 是   | 否   | 粉色。 |
+| RED | int | 是   | 否   | 红色。 |
+| YELLOW | int | 是   | 否   | 黄色。 |
+| TRANSPARENT | string | 是   | 否   | 透明度。 |
 
 ### numeric<sup>12+</sup>
 
@@ -705,7 +792,7 @@ ArkTS-Sta: static numeric(value: int): ColorMetrics
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -733,7 +820,7 @@ ArkTS-Sta: static rgba(red: double, green: double, blue: double, alpha?: double)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -752,7 +839,9 @@ ArkTS-Sta: static rgba(red: double, green: double, blue: double, alpha?: double)
 
 ### colorWithSpace<sup>20+</sup>
 
-static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
+ArkTS-Dyn: static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: number, alpha?: number): ColorMetrics
+
+ArkTS-Sta: static colorWithSpace(colorSpace: ColorSpace, red: double, green: double, blue: double, alpha?: double): ColorMetrics
 
 使用[ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20)和rgba格式颜色实例化ColorMetrics类。仅部分属性支持在display-p3色彩空间中设置颜色。
 
@@ -760,15 +849,19 @@ static colorWithSpace(colorSpace: ColorSpace, red: number, green: number, blue: 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型          | 必填 | 说明         |
 | ------ | ------------- | ---- | ------------ |
 | colorSpace   | [ColorSpace](./arkui-ts/ts-appendix-enums.md#colorspace20) | 是   | 颜色空间，用于指定颜色的色彩空间。使用ColorSpace.DISPLAY_P3，需要对应窗口调用[setWindowColorSpace](./arkts-apis-window-Window.md#setwindowcolorspace9-1)接口，将当前窗口设置为广色域模式。 |
-| red   | number | 是   | 颜色的R分量（红色），值是0~1的浮动数值。 |
-| green | number | 是   | 颜色的G分量（绿色），值是0~1的浮动数值。 |
-| blue  | number | 是   | 颜色的B分量（蓝色），值是0~1的浮动数值。 |
-| alpha | number | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。|
+| red   | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 颜色的R分量（红色），值是0~1的浮动数值。 |
+| green | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 颜色的G分量（绿色），值是0~1的浮动数值。 |
+| blue  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 颜色的B分量（蓝色），值是0~1的浮动数值。 |
+| alpha | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 颜色的A分量（透明度），值是0.0~1.0的浮点数，默认值为1.0，不透明。|
 
 **返回值：**
 
@@ -785,6 +878,10 @@ static resourceColor(color: ResourceColor): ColorMetrics
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -816,6 +913,10 @@ blendColor(overlayColor: ColorMetrics): ColorMetrics
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -852,6 +953,10 @@ get color(): string
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -1068,12 +1173,16 @@ struct ColorMetricsSample {
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型 | 只读 | 可选 | 说明                   |
 | ----------- | ---- | ---- | ---- | ---------------------- |
-| topLeft     | T    | 是   | 是   | 左上边框的圆角属性。   |
-| topRight    | T    | 是   | 是   | 右上边框的圆角属性。 |
-| bottomLeft  | T    | 是   | 是   | 左下边框的圆角属性。   |
-| bottomRight | T    | 是   | 是   | 右下边框的圆角属性。   |
+| topLeft     | T    | 否   | 否   | 左上边框的圆角属性。   |
+| topRight    | T    | 否   | 否   | 右上边框的圆角属性。 |
+| bottomLeft  | T    | 否   | 否   | 左下边框的圆角属性。   |
+| bottomRight | T    | 否   | 否   | 右下边框的圆角属性。   |
 
 ## CornerRadius<sup>12+</sup>
 
@@ -1084,6 +1193,10 @@ type CornerRadius = Corners\<Vector2>
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                         | 说明               |
 | -------------------------------------------- | ------------------ |
@@ -1109,7 +1222,7 @@ type BorderRadiuses = Corners\<number>
 
 ## NodeBorderRadiuses<sup>20+</sup>
 
-type BorderRadiuses = Corners\<double>
+type NodeBorderRadiuses = Corners\<double>
 
 设置四个角的圆角度数。
 
@@ -1117,7 +1230,7 @@ type BorderRadiuses = Corners\<double>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 类型                            | 说明               |
 | ------------------------------- | ------------------ |
@@ -1133,6 +1246,10 @@ type Rect = common2D.Rect
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                                                         | 说明       |
 | ------------------------------------------------------------ | ---------- |
 | [common2D.Rect](../apis-arkgraphics2d/js-apis-graphics-common2D.md#rect) | 矩形区域。 |
@@ -1145,10 +1262,14 @@ type Rect = common2D.Rect
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称    | 类型                          | 只读 | 可选 | 说明             |
 | ------- | ----------------------------- | ---- | ---- | ---------------- |
-| rect    | [Rect](#rect12)                 | 是   | 是   | 设置矩形的属性。 |
-| corners | [CornerRadius](#cornerradius12) | 是   | 是   | 设置圆角的属性。 |
+| rect    | [Rect](#rect12)                 | 否   | 否   | 设置矩形的属性。 |
+| corners | [CornerRadius](#cornerradius12) | 否   | 否   | 设置圆角的属性。 |
 
 ## Circle<sup>12+</sup>
 
@@ -1160,13 +1281,13 @@ type Rect = common2D.Rect
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                      |
 | ------- | ------ | ---- | ---- | ------------------------- |
-| centerX | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 圆心x轴的位置，单位为px。 |
-| centerY | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 圆心y轴的位置，单位为px。 |
-| radius  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 是   | 圆形的半径，单位为px。 <br/> 取值范围：[0, +∞)   |
+| centerX | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 圆心x轴的位置，单位为px。 |
+| centerY | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 圆心y轴的位置，单位为px。 |
+| radius  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 否   | 圆形的半径，单位为px。 <br/> 取值范围：[0, +∞)   |
 
 ## CommandPath<sup>12+</sup>
 
@@ -1176,9 +1297,13 @@ type Rect = common2D.Rect
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                                                         | 类型   | 只读 | 可选 | 说明                                                         |
 | ------------------------------------------------------------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | 是   | 是   | 路径绘制的指令字符串。像素单位的转换方法请参考[像素单位转换](./arkui-ts/ts-pixel-units.md#像素单位转换)。<br/>单位：px |
+| [commands](./arkui-ts/ts-drawing-components-path.md#commands) | string | 否   | 否   | 路径绘制的指令字符串。像素单位的转换方法请参考[像素单位转换](./arkui-ts/ts-pixel-units.md#像素单位转换)。<br/>单位：px |
 
 ## ShapeMask<sup>12+</sup>
 
@@ -2066,7 +2191,7 @@ ArkTS-Sta: edgeColors(all: int): NodeEdges\<int>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2177,7 +2302,7 @@ ArkTS-Sta: edgeWidths(all: double): NodeEdges\<double>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2288,7 +2413,7 @@ ArkTS-Sta: borderStyles(all: BorderStyle): NodeEdges\<BorderStyle>
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -2357,7 +2482,7 @@ ArkTS-Sta: borderRadiuses(all: double): NodeBorderRadiuses
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

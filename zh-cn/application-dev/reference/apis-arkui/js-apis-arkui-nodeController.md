@@ -53,7 +53,9 @@ abstract makeNode(uiContext : UIContext): FrameNode | null
 
 ### aboutToAppear
 
-aboutToAppear?(): void
+ArkTs-Dyn: aboutToAppear?(): void
+
+ArkTs-Sta: aboutToAppear(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)挂载显示后触发此回调。
 
@@ -71,7 +73,9 @@ aboutToAppear?(): void
 
 ### aboutToDisappear
 
-aboutToDisappear?(): void
+ArkTs-Dyn: aboutToDisappear?(): void
+
+ArkTs-Sta: aboutToDisappear(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)卸载消失时触发此回调。
 
@@ -89,7 +93,9 @@ aboutToDisappear?(): void
 
 ### onAttach<sup>18+</sup>
 
-onAttach?(): void
+ArkTs-Dyn: onAttach?(): void
+
+ArkTs-Sta: onAttach(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)挂载至主节点树时触发此回调。
 
@@ -107,7 +113,9 @@ onAttach?(): void
 
 ### onDetach<sup>18+</sup>
 
-onDetach?(): void
+ArkTs-Dyn: onDetach?(): void
+
+ArkTs-Sta: onDetach(): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)从主节点树卸载时触发此回调。
 
@@ -213,7 +221,9 @@ ArkTS-Sta: onUnbind(containerId: long): void
 
 ### aboutToResize
 
-aboutToResize?(size: Size): void
+ArkTs-Dyn: aboutToResize?(size: Size): void
+
+ArkTs-Sta: aboutToResize(size: Size): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)布局的时候触发此回调。
 
@@ -233,7 +243,9 @@ aboutToResize?(size: Size): void
 
 ### onTouchEvent
 
-onTouchEvent?(event: TouchEvent): void
+ArkTs-Dyn: onTouchEvent?(event: TouchEvent): void
+
+ArkTs-Sta: onTouchEvent(event: TouchEvent): void
 
 当NodeController绑定的[NodeContainer](arkui-ts/ts-basic-components-nodecontainer.md)收到Touch事件时触发此回调。
 
