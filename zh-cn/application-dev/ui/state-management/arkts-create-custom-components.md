@@ -606,7 +606,7 @@ struct MyComponent {
 >
 > ArkUI给自定义组件设置样式时，相当于给ChildComponent套了一个不可见的容器组件，这些样式是设置在容器组件上，而非直接设置给ChildComponent的Button组件。渲染结果显示，背景颜色红色并没有直接设置到Button上，而是设置在Button所在的不可见容器组件上。
 
-### 自定义组件支持跨Ability迁移
+## 自定义组件支持跨Ability迁移
 
 API version 24前，自定义组件不支持跨Ability迁移，自定义组件实例在跨Ability后，改变自定义组件的状态变量将无法触发UI组件刷新。需要注意，在系统升级API version 24之前，即使在module.json5配置了```"enableCustomComponentCrossAbility"```为```"true"```，该能力也不会生效。
 
@@ -623,7 +623,9 @@ API version 24开始，可在应用工程的module.json5配置文件中配置met
 ]
 ```
 
-需要注意，不建议在原Ability的onBackground阶段异步修改迁移组件中的状态变量，此时状态变量可以被赋值，但无法触发关联组件的刷新。
+需要注意：
+1. 不建议在原Ability的onBackground阶段异步修改迁移组件中的状态变量，此时状态变量可以被赋值，但无法触发关联组件的刷新。
+2. 仅支持组件树上的自定义组件迁移。对于未挂载在组件树上的自定义组件将不支持迁移。例如使用[OH_ArkUI_GetNodeHandleFromNapiValue](../../reference/apis-arkui/capi-native-node-napi-h.md)获取[ArkUI_NodeHandle](../../reference/apis-arkui/capi-arkui-nativemodule-arkui-node8h.md)场景中，如果OH_ArkUI_GetNodeHandleFromNapiValue接收的参数为[ComponentContent](../../reference/apis-arkui/js-apis-arkui-ComponentContent.md)，获取到的ArkUI_NodeHandle为ComponentContent下子树的第一个[FrameNode](../../reference/apis-arkui/js-apis-arkui-frameNode.md)节点，中间跳过的自定义组件将不会在组件树上，不支持迁移。
 
 <!-- @[EnableCustomComponentCrossAbility_EntryAbility](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/EnableCustomComponentCrossAbility/entry/src/main/ets/entryability/EntryAbility.ets) -->
 
