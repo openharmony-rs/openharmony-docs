@@ -4546,3 +4546,56 @@ struct WebComponent {
   }
 }
 ```
+
+## keyboardAppearance
+
+keyboardAppearance(mode: WebKeyboardAppearanceMode)
+
+设置键盘外观。不调用该方法时，默认跟随系统的沉浸式模式。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**起始版本：** 26.0.0
+
+**参数：** 
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | --------- | ---- | ---- |
+| mode | [WebKeyboardAppearanceMode](./arkts-basic-components-web-e.md#webkeyboardappearancemode)| 是   | 键盘外观。传入undefined或null时，跟随系统的沉浸式模式。|
+
+**示例：**
+
+  ```ts
+  // xxx.ets
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+    @State appearanceMode: WebKeyboardAppearanceMode = WebKeyboardAppearanceMode.DARK_IMMERSIVE;
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+        .keyboardAppearance(this.appearanceMode)
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <title>测试网页</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Text">
+  </body>
+  </html>
+  ```
