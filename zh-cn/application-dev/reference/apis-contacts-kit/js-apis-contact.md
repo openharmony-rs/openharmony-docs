@@ -37,7 +37,7 @@ addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                     | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | contact  | [Contact](#contact)         | 是   | 联系人信息。                                                 |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。成功返回添加的联系人id；失败返回错误码。     |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。     |
 
 **错误码：**
 
@@ -52,7 +52,7 @@ addContact(context: Context, contact: Contact, callback: AsyncCallback&lt;number
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -96,7 +96,7 @@ addContact(contact: Contact, callback: AsyncCallback&lt;number&gt;): void
 | 参数名   | 类型                        | 必填 | 说明                                                     |
 | -------- | --------------------------- | ---- | -------------------------------------------------------- |
 | contact  | [Contact](#contact)         | 是   | 联系人信息。                                             |
-| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。成功返回添加的联系人id；失败返回错误码。 |
+| callback | AsyncCallback&lt;number&gt; | 是   | 回调函数。成功返回添加的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -161,7 +161,7 @@ addContact(context: Context, contact: Contact): Promise<number&gt;
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
   import { contact } from '@kit.ContactsKit';
@@ -244,7 +244,7 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | key      | string                    | 是   | 联系人的唯一查询键key值，一个联系人对应一个key，可通过[selectContacts](#contactselectcontacts10-1)接口获取。            |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回删除的联系人id；失败返回错误码。     |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。     |
 
 **错误码：**
 
@@ -257,7 +257,7 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -268,7 +268,7 @@ deleteContact(context: Context, key: string, callback: AsyncCallback&lt;void&gt;
   contact.selectContacts().then((data) => {
     // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    // 第二个参数传入选择联系人的key值
+    // 第二个参数传入选择联系人的key
     contact.deleteContact(context, data[0].key, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
@@ -298,7 +298,7 @@ deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                                 |
 | -------- | ------------------------- | ---- | ------------------------------------ |
 | key      | string                    | 是   | 联系人的唯一查询键key值，一个联系人对应一个key，可通过[selectContacts](#contactselectcontacts10-1)接口获取。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回删除的联系人id；失败返回错误码。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回删除的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -310,7 +310,7 @@ deleteContact(key: string, callback: AsyncCallback&lt;void&gt;): void
   contact.selectContacts().then((data) => {
     // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    // 第一个参数传入选择联系人的key值
+    // 第一个参数传入选择联系人的key
     contact.deleteContact(data[0].key, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to delete Contact. Code: ${err.code}, message: ${err.message}`);
@@ -355,7 +355,7 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { common } from '@kit.AbilityKit';
@@ -365,7 +365,7 @@ deleteContact(context: Context,  key: string): Promise&lt;void&gt;
   contact.selectContacts().then((data) => {
     // 请在组件内获取context。
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-    // 第二个参数传入选择联系人的key值
+    // 第二个参数传入选择联系人的key
     let promise = contact.deleteContact(context, data[0].key);
     promise.then(() => {
       console.info(`Succeeded in deleting Contact.`);
@@ -406,7 +406,7 @@ deleteContact(key: string): Promise&lt;void&gt;
 
   // 通过selectContacts接口选择联系人。
   contact.selectContacts().then((data) => {
-    // 第一个参数传入选择联系人的key值
+    // 第一个参数传入选择联系人的key
     let promise = contact.deleteContact(data[0].key);
     promise.then(() => {
       console.info(`Succeeded in deleting Contact.`);
@@ -430,7 +430,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                   | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                         |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回错误码。     |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。     |
 
 **错误码：**
 
@@ -443,7 +443,7 @@ updateContact(context: Context, contact: Contact, callback: AsyncCallback&lt;voi
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -492,7 +492,7 @@ updateContact(contact: Contact, callback: AsyncCallback&lt;void&gt;): void
 | 参数名   | 类型                      | 必填 | 说明                                 |
 | -------- | ------------------------- | ---- | ------------------------------------ |
 | contact  | [Contact](#contact)       | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                         |
-| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回错误码。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -538,8 +538,8 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 | -------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                         |
-| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                         |
-| callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回错误码。     |
+| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                         |
+| callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。     |
 
 **错误码：**
 
@@ -552,7 +552,7 @@ updateContact(context: Context,  contact: Contact, attrs: ContactAttributes, cal
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -602,8 +602,8 @@ updateContact(contact: Contact, attrs: ContactAttributes, callback: AsyncCallbac
 | 参数名   | 类型                                    | 必填 | 说明                                 |
 | -------- | --------------------------------------- | ---- | ------------------------------------ |
 | contact  | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                         |
-| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                   |
-| callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回错误码。 |
+| attrs    | [ContactAttributes](#contactattributes) | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                   |
+| callback | AsyncCallback&lt;void&gt;               | 是   | 回调函数。成功返回更新的联系人id；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -650,7 +650,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。                                                 |
-| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                       |
+| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                       |
 
 **返回值：**
 
@@ -669,7 +669,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
   import { contact } from '@kit.ContactsKit';
@@ -700,7 +700,7 @@ updateContact(context: Context,  contact: Contact, attrs?: ContactAttributes): P
 
 updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 
-更新联系人（支持传入联系人的属性列表）。使用Promise异步回调。
+更新联系人，支持传入联系人的属性列表。使用Promise异步回调。
 
 > **说明**
 >
@@ -715,7 +715,7 @@ updateContact(contact: Contact, attrs?: ContactAttributes): Promise&lt;void&gt;
 | 参数名  | 类型                                    | 必填 | 说明               |
 | ------- | --------------------------------------- | ---- | ------------------ |
 | contact | [Contact](#contact)                     | 是   | 联系人信息。id必填，可通过[selectContacts](#contactselectcontacts10-1)接口获取。       |
-| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。 |
+| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
 
@@ -763,7 +763,7 @@ isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                      | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | id       | number                       | 是   | 联系人对象的id属性，一个联系人对应一个id。                   |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。成功返回布尔值，true代表联系人id在本地电话簿中，false则代表联系人id不在本地电话簿中；失败返回错误码。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。成功返回布尔值，true代表联系人id在本地电话簿中，false则代表联系人id不在本地电话簿中；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -778,7 +778,7 @@ isLocalContact(context: Context,  id: number, callback: AsyncCallback&lt;boolean
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -815,7 +815,7 @@ isLocalContact(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 | 参数名   | 类型                         | 必填 | 说明                                                         |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
 | id       | number                       | 是   | 联系人对象的id属性，一个联系人对应一个id。                   |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。成功返回布尔值，true代表联系人id在本地电话簿中，false则代表联系人id不在本地电话簿中；失败返回错误码。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。成功返回布尔值，true代表联系人id在本地电话簿中，false则代表联系人id不在本地电话簿中；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -869,7 +869,7 @@ isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
   import { contact } from '@kit.ContactsKit';
@@ -937,7 +937,7 @@ isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;):
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                      | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | id       | number                       | 是   | 名片对象的id属性。                                           |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。成功返回是否为“我的名片”的布尔值。true代表的是“我的名片”，false表示不是；失败时则返回错误码。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。成功返回是否为“我的名片”的布尔值。true代表的是“我的名片”，false代表不是；失败时则返回错误码。 |
 
 **错误码：**
 
@@ -952,7 +952,7 @@ isMyCard(context: Context,  id: number, callback: AsyncCallback&lt;boolean&gt;):
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -989,7 +989,7 @@ isMyCard(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 | 参数名   | 类型                         | 必填 | 说明                                                         |
 | -------- | ---------------------------- | ---- | ------------------------------------------------------------ |
 | id       | number                       | 是   | 名片对象的id属性。                                           |
-| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。成功返回是否为“我的名片”的布尔值。true代表的是“我的名片”，false则代表不是；失败返回错误码。 |
+| callback | AsyncCallback&lt;boolean&gt; | 是   | 回调函数。成功返回是否为“我的名片”的布尔值。true代表的是“我的名片”，false则代表不是；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -1028,7 +1028,7 @@ isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                       |
 | ---------------------- | ---------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示是“我的名片”，返回false表示不是。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示是“我的名片”，返回false代表不是。 |
 
 **错误码：**
 
@@ -1043,7 +1043,7 @@ isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
   import { contact } from '@kit.ContactsKit';
@@ -1081,7 +1081,7 @@ isMyCard(id: number): Promise&lt;boolean&gt;
 
 | 类型                   | 说明                                                       |
 | ---------------------- | ---------------------------------------------------------- |
-| Promise&lt;boolean&gt; | Promise对象。返回true表示是“我的名片”，返回false表示不是。 |
+| Promise&lt;boolean&gt; | Promise对象。返回true表示是“我的名片”，返回false代表不是。 |
 
 **示例：**
 
@@ -1110,7 +1110,7 @@ queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回错误码。     |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。     |
 
 **错误码：**
 
@@ -1125,7 +1125,7 @@ queryMyCard(context: Context,  callback: AsyncCallback&lt;Contact&gt;): void
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1161,7 +1161,7 @@ queryMyCard(callback: AsyncCallback&lt;Contact&gt;): void
 
 | 参数名   | 类型                                     | 必填 | 说明                                                     |
 | -------- | ---------------------------------------- | ---- | -------------------------------------------------------- |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回错误码。 |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -1194,8 +1194,8 @@ queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                    |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回错误码。     |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                    |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。     |
 
 **错误码：**
 
@@ -1210,7 +1210,7 @@ queryMyCard(context: Context,  attrs: ContactAttributes, callback: AsyncCallback
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1248,8 +1248,8 @@ queryMyCard(attrs: ContactAttributes, callback: AsyncCallback&lt;Contact&gt;): v
 
 | 参数名   | 类型                                     | 必填 | 说明                                                     |
 | -------- | ---------------------------------------- | ---- | -------------------------------------------------------- |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                       |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回错误码。 |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                       |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回“我的名片”信息；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -1284,7 +1284,7 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                     |
+| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                     |
 
 **返回值：**
 
@@ -1305,7 +1305,7 @@ queryMyCard(context: Context,  attrs?: ContactAttributes): Promise&lt;Contact&gt
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
   import { contact } from '@kit.ContactsKit';
@@ -1339,7 +1339,7 @@ queryMyCard(attrs?: ContactAttributes): Promise&lt;Contact&gt;
 
 | 参数名 | 类型                                    | 必填 | 说明               |
 | ------ | --------------------------------------- | ---- | ------------------ |
-| attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。 |
+| attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。 |
 
 **返回值：**
 
@@ -1377,7 +1377,7 @@ selectContact(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -1451,7 +1451,7 @@ selectContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -1512,7 +1512,7 @@ selectContacts(): Promise&lt;Array&lt;Contact&gt;&gt;
 
 selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入筛选条件）。使用callback异步回调。
+调用选择联系人接口，打开选择联系人UI界面（选择联系人时支持传入[筛选条件](#contactselectionoptions10)）。使用callback异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
 
@@ -1523,7 +1523,7 @@ selectContacts(options: ContactSelectionOptions, callback: AsyncCallback&lt;Arra
 | 参数名   | 类型                                                  | 必填 | 说明                                 |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------ |
 | options | [ContactSelectionOptions](#contactselectionoptions10) | 是   | 选择联系人时的筛选条件，表示单选或多选。 |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回选择的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -1608,8 +1608,8 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回错误码。   |
+| key      | string                                   | 是   | 联系人的key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
 
 **错误码：**
 
@@ -1624,7 +1624,7 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1646,9 +1646,9 @@ queryContact(context: Context,  key: string,  callback: AsyncCallback&lt;Contact
 
 queryContact(key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
-根据key查询联系人。使用callback异步回调。
+根据联系人唯一标识符key查询联系人。使用callback异步回调。
 
-> **说明**
+> **说明：**
 >
 > 从API version 7 开始支持，从API version 10 开始废弃，建议使用[queryContact](#contactquerycontact10)替代。
 
@@ -1660,8 +1660,8 @@ queryContact(key: string,  callback: AsyncCallback&lt;Contact&gt;): void
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                     |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回错误码。 |
+| key      | string                                   | 是   | 联系人的key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                     |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -1694,9 +1694,9 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                      |
-| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                       |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回错误码。   |
+| key      | string                                   | 是   | 联系人的key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                      |
+| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                       |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
 
 **错误码：**
 
@@ -1711,7 +1711,7 @@ queryContact(context: Context,  key: string, holder: Holder, callback: AsyncCall
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1753,7 +1753,7 @@ queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
 | key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                    |
 | holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                     |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回错误码。 |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -1790,9 +1790,9 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                        |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回错误码。   |
+| key      | string                                   | 是   | 联系人的key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                       |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
 
 **错误码：**
 
@@ -1807,7 +1807,7 @@ queryContact(context: Context,  key: string,  attrs: ContactAttributes, callback
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1845,9 +1845,9 @@ queryContact(key: string,  attrs: ContactAttributes, callback: AsyncCallback&lt;
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                     |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                        |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回错误码。 |
+| key      | string                                   | 是   | 联系人的key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                     |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                        |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -1883,9 +1883,9 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
-| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                       |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回错误码。   |
+| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                       |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
 
 **错误码：**
 
@@ -1900,7 +1900,7 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -1943,9 +1943,9 @@ queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: As
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
 | key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                     |
-| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，为空则默认使用联系人应用。                                     |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                         |
-| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回错误码。 |
+| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                     |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                         |
+| callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -1984,9 +1984,9 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key     | string                                  | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
-| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。       |
-| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。           |
+| key     | string                                  | 是   | 联系人的key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
+| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则不使用该条件过滤联系人。       |
+| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传该参数，则默认查询所有联系人属性。           |
 
 **返回值：**
 
@@ -2007,7 +2007,7 @@ queryContact(context: Context,  key: string, holder?: Holder, attrs?: ContactAtt
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { contact } from '@kit.ContactsKit';
@@ -2046,7 +2046,7 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
 | 参数名 | 类型                                    | 必填 | 说明                                   |
 | ------ | --------------------------------------- | ---- | -------------------------------------- |
 | key    | string                                  | 是   | 联系人的key值，是新建联系人时自动生成的唯一标识，一个联系人对应一个key。 |
-| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数则查询所有应用创建的联系人。                |
+| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数则系统将不会基于应用信息来筛选联系人。                |
 | attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。                    |
 
 **返回值：**
@@ -2088,7 +2088,7 @@ queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -2103,7 +2103,7 @@ queryContacts(context: Context,  callback: AsyncCallback&lt;Array&lt;Contact&gt;
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2139,7 +2139,7 @@ queryContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -2172,8 +2172,8 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                       |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                       |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -2188,7 +2188,7 @@ queryContacts(context: Context,  holder: Holder, callback: AsyncCallback&lt;Arra
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2228,8 +2228,8 @@ queryContacts(holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                       |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                       |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -2266,8 +2266,8 @@ queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallba
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -2282,7 +2282,7 @@ queryContacts(context: Context,  attrs: ContactAttributes, callback: AsyncCallba
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2320,8 +2320,8 @@ queryContacts(attrs: ContactAttributes, callback: AsyncCallback&lt;Array&lt;Cont
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -2356,9 +2356,9 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                       |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                       |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -2373,7 +2373,7 @@ queryContacts(context: Context,  holder: Holder, attrs: ContactAttributes, callb
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2415,9 +2415,9 @@ queryContacts(holder: Holder, attrs: ContactAttributes, callback: AsyncCallback&
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                        |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -2456,8 +2456,8 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
 | 参数名  | 类型                                    | 必填 | 说明                                                         |
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数将不使用该条件过滤联系人。       |
-| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。               |
+| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，如果为空，系统将不会基于应用信息来筛选联系人。       |
+| attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传该参数默认查询所有联系人属性。               |
 
 **返回值：**
 
@@ -2478,7 +2478,7 @@ queryContacts(context: Context,  holder?: Holder, attrs?: ContactAttributes): Pr
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { contact } from '@kit.ContactsKit';
@@ -2516,7 +2516,7 @@ queryContacts(holder?: Holder, attrs?: ContactAttributes): Promise&lt;Array&lt;C
 
 | 参数名 | 类型                                    | 必填 | 说明                   |
 | ------ | --------------------------------------- | ---- | ---------------------- |
-| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。 |
+| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则系统将不会基于应用信息来筛选联系人。 |
 | attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。     |
 
 **返回值：**
@@ -2559,7 +2559,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。              |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -2574,7 +2574,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, callback: Asy
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2611,7 +2611,7 @@ queryContactsByPhoneNumber(phoneNumber: string, callback: AsyncCallback&lt;Array
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。              |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -2645,8 +2645,8 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                   |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                        |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -2661,7 +2661,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2702,8 +2702,8 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncC
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                        |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                        |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -2741,8 +2741,8 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                  |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                          |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                          |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -2757,7 +2757,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, attrs: Contac
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2796,8 +2796,8 @@ queryContactsByPhoneNumber(phoneNumber: string, attrs: ContactAttributes, callba
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                    |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -2832,9 +2832,9 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                      |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则使用默认联系人应用。                                        |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则系统将不会基于应用信息来筛选联系人。                                        |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -2849,7 +2849,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -2892,9 +2892,9 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                    |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则使用默认联系人应用。                                        |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则系统将不会基于应用信息来筛选联系人。                                        |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果该参数为空，则查询联系人的所有属性字段。                                           |
-| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -2933,7 +2933,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 | ----------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                  | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                      |
-| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。       |
+| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则系统将不会基于应用信息来筛选联系人。       |
 | attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。               |
 
 **返回值：**
@@ -2955,7 +2955,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { contact } from '@kit.ContactsKit';
@@ -2994,7 +2994,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: Contact
 | 参数名      | 类型                                    | 必填 | 说明                   |
 | ----------- | --------------------------------------- | ---- | ---------------------- |
 | phoneNumber | string                                  | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。     |
-| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。 |
+| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则系统将不会基于应用信息来筛选联系人。 |
 | attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。     |
 
 **返回值：**
@@ -3036,7 +3036,7 @@ queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&l
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -3051,7 +3051,7 @@ queryContactsByEmail(context: Context,  email: string, callback: AsyncCallback&l
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3088,7 +3088,7 @@ queryContactsByEmail(email: string, callback: AsyncCallback&lt;Array&lt;Contact&
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -3121,8 +3121,8 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用系统联系人应用。                                        |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -3137,7 +3137,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, callback:
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3179,7 +3179,7 @@ queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;A
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
 | holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -3216,8 +3216,8 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -3232,7 +3232,7 @@ queryContactsByEmail(context: Context,  email: string, attrs: ContactAttributes,
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3271,8 +3271,8 @@ queryContactsByEmail(email: string, attrs: ContactAttributes, callback: AsyncCal
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -3307,9 +3307,9 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                        |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -3324,7 +3324,7 @@ queryContactsByEmail(context: Context,  email: string, holder: Holder, attrs: Co
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3367,9 +3367,9 @@ queryContactsByEmail(email: string, holder: Holder, attrs: ContactAttributes, ca
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                       |
-| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
-| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                       |
+| attrs    | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
+| callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -3408,7 +3408,7 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email   | string                                  | 是   | 联系人的邮箱地址。                                           |
-| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。                                       |
+| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则系统将不会基于应用信息来筛选联系人。                                       |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。                                           |
 
 **返回值：**
@@ -3430,7 +3430,7 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { common } from '@kit.AbilityKit';
@@ -3468,7 +3468,7 @@ queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes):
 | 参数名 | 类型                                    | 必填 | 说明                   |
 | ------ | --------------------------------------- | ---- | ---------------------- |
 | email  | string                                  | 是   | 联系人的邮箱地址。     |
-| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。 |
+| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则系统将不会基于应用信息来筛选联系人。 |
 | attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。     |
 
 **返回值：**
@@ -3509,7 +3509,7 @@ queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                           | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -3522,7 +3522,7 @@ queryGroups(context: Context,  callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3558,7 +3558,7 @@ queryGroups(callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): void
 
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -3590,8 +3590,8 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                           | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder   | [Holder](#holder)                                 | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                       |
-| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回错误码。 |
+| holder   | [Holder](#holder)                                 | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选群组。                                       |
+| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -3606,7 +3606,7 @@ queryGroups(context: Context,  holder: Holder, callback: AsyncCallback&lt;Array&
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3646,8 +3646,8 @@ queryGroups(holder: Holder, callback: AsyncCallback&lt;Array&lt;Group&gt;&gt;): 
 
 | 参数名   | 类型                                              | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| holder   | [Holder](#holder)                                 | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
-| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回错误码。 |
+| holder   | [Holder](#holder)                                 | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选群组。                                        |
+| callback | AsyncCallback&lt;Array&lt;[Group](#group)&gt;&gt; | 是   | 回调函数。成功返回查询到的群组对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -3683,7 +3683,7 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
 | 参数名  | 类型              | 必填 | 说明                                                         |
 | ------- | ----------------- | ---- | ------------------------------------------------------------ |
 | context | Context           | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder  | [Holder](#holder) | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人群组。                                       |
+| holder  | [Holder](#holder) | 否   | 创建联系人的应用信息，不传该参数，则系统将不会基于应用信息来筛选群组。                                       |
 
 **返回值：**
 
@@ -3704,7 +3704,7 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { common } from '@kit.AbilityKit';
@@ -3740,7 +3740,7 @@ queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
 | 参数名 | 类型              | 必填 | 说明                   |
 | ------ | ----------------- | ---- | ---------------------- |
-| holder | [Holder](#holder) | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人群组。 |
+| holder | [Holder](#holder) | 否   | 创建联系人的应用信息类，不传该参数，则不使用该条件过滤联系人群组。 |
 
 **返回值：**
 
@@ -3767,7 +3767,7 @@ queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
 queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
-查询所有创建联系人的应用信息类，为空则使用默认应用。使用callback异步回调。
+查询所有创建联系人的应用信息类。使用callback异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3778,7 +3778,7 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
 | 参数名   | 类型                                                | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                             | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| callback | AsyncCallback&lt;Array&lt;[Holder](#holder)&gt;&gt; | 是   | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Holder](#holder)&gt;&gt; | 是   | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -3793,7 +3793,7 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3815,7 +3815,7 @@ queryHolders(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt
 
 queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
-查询所有创建联系人的应用信息类，为空则使用默认应用。使用callback异步回调。
+查询所有创建联系人的应用信息类。使用callback异步回调。
 
 > **说明**
 >
@@ -3829,7 +3829,7 @@ queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
 | 参数名   | 类型                                                | 必填 | 说明                                                         |
 | -------- | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| callback | AsyncCallback&lt;Array&lt;[Holder](#holder)&gt;&gt; | 是   | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回错误码。 |
+| callback | AsyncCallback&lt;Array&lt;[Holder](#holder)&gt;&gt; | 是   | 回调函数。成功返回查询到的创建联系人应用信息的对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -3850,7 +3850,7 @@ queryHolders(callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;): void
 
 queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 
-查询所有创建联系人的应用信息类，为空则使用默认应用。使用Promise异步回调。
+查询所有创建联系人的应用信息类。使用Promise异步回调。
 
 **需要权限**：ohos.permission.READ_CONTACTS
 
@@ -3881,7 +3881,7 @@ queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { common } from '@kit.AbilityKit';
@@ -3899,7 +3899,7 @@ queryHolders(context: Context): Promise&lt;Array&lt;Holder&gt;&gt;
 
 queryHolders(): Promise&lt;Array&lt;Holder&gt;&gt;
 
-查询所有创建联系人的应用信息类，为空则使用默认应用。使用Promise异步回调。
+查询所有创建联系人的应用信息类。使用Promise异步回调。
 
 > **说明**
 >
@@ -3941,8 +3941,8 @@ queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): 
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                     | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| id       | number                      | 是   | 联系人对象的id属性。                                         |
-| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回错误码。 |
+| id       | number                      | 是   | 联系人对象的id属性，是联系人对象在数据库中的唯一标识符。                                         |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -3957,7 +3957,7 @@ queryKey(context: Context,  id: number, callback: AsyncCallback&lt;string&gt;): 
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -3994,7 +3994,7 @@ queryKey(id: number, callback: AsyncCallback&lt;string&gt;): void
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | id       | number                      | 是   | 联系人对象的id属性。                                         |
-| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回错误码。 |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -4027,8 +4027,8 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                     | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | id       | number                      | 是   | 联系人对象的id属性。                                         |
-| holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
-| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回错误码。 |
+| holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息类，如果传入参数为空则使系统将不会基于应用信息来筛选key。                                        |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **错误码：**
 
@@ -4043,7 +4043,7 @@ queryKey(context: Context,  id: number, holder: Holder, callback: AsyncCallback&
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
@@ -4084,8 +4084,8 @@ queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): voi
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | id       | number                      | 是   | 联系人对象的id属性。                                         |
-| holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
-| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回错误码。 |
+| holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息类，如果传入参数为空则使系统将不会基于应用信息来筛选key。                                        |
+| callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **示例：**
 
@@ -4122,7 +4122,7 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
 | ------- | ----------------- | ---- | ------------------------------------------------------------ |
 | context | Context           | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | id      | number            | 是   | 联系人对象的id属性。                                         |
-| holder  | [Holder](#holder) | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。                                       |
+| holder  | [Holder](#holder) | 否   | 创建联系人的应用信息类，不传该参数，则不使用该条件过滤联系人。                                       |
 
 **返回值：**
 
@@ -4143,7 +4143,7 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
   ```js
   import { common } from '@kit.AbilityKit';
@@ -4180,7 +4180,7 @@ queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
 | 参数名 | 类型              | 必填 | 说明                   |
 | ------ | ----------------- | ---- | ---------------------- |
 | id     | number            | 是   | 联系人对象的id属性。   |
-| holder | [Holder](#holder) | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。 |
+| holder | [Holder](#holder) | 否   | 创建联系人的应用信息类，不传该参数，则不使用该条件过滤联系人。 |
 
 **返回值：**
 
@@ -4240,7 +4240,7 @@ queryContactsCount(context: Context): Promise&lt;number&gt;
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
 import { common } from '@kit.AbilityKit';
@@ -4293,7 +4293,7 @@ addContactViaUI(context: Context, contact: Contact): Promise&lt;number&gt;
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
 import { common } from '@kit.AbilityKit';
@@ -4355,7 +4355,7 @@ saveToExistingContactViaUI(context: Context, contact: Contact): Promise&lt;numbe
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
 import { common } from '@kit.AbilityKit';
@@ -4417,7 +4417,7 @@ addContacts(context: Context, contacts: Array&lt;Contact&gt;): Promise&lt;Array&
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 <!--code_no_check-->
 ```js
@@ -4480,7 +4480,7 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number, wi
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -4539,7 +4539,7 @@ hasMatchedCallLog(context: Context, phoneNumber: string, minDuration: number): P
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
 import { contact } from '@kit.ContactsKit';
@@ -4587,7 +4587,7 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 
 >**说明：**
 >
->在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在页面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
+>在本文档的示例中，通过this.context来获取UIAbilityContext，其中this代表继承自UIAbility的UIAbility实例。如需要在界面中使用UIAbilityContext提供的能力，请参见[获取UIAbility的上下文信息](../../application-models/uiability-usage.md#获取uiability的上下文信息)。
 
 ```js
 import { common } from '@kit.AbilityKit';
@@ -4625,7 +4625,7 @@ contact.getContactList({ uiContext: ctx, selectionFilter: filter})
 
 ## FilterClause<sup>15+</sup>
 
-联系人过滤条件。参数之间的关系为“或”，Array的最大长度为3。
+联系人过滤条件。各过滤条件参数之间的关系为“或”，Array的最大长度为3。
 
 **原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。
 
@@ -4723,7 +4723,7 @@ contact.getContactList({ uiContext: ctx, selectionFilter: filter})
 | ----------------- | --------------------------------------- | ---- | ---- | -------------------------------------- |
 | id                | number                                  | 是   | 是   | 联系人的id，由系统自动生成。                           |
 | key               | string                                  | 是   | 是   | 联系人的key，由系统自动生成。               |
-| contactAttributes | [ContactAttributes](#contactattributes) | 否   | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                     |
+| contactAttributes | [ContactAttributes](#contactattributes) | 否   | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                     |
 | emails            | [Email](#email)[]                       | 否   | 是   | 联系人的邮箱地址列表。                 |
 | events            | [Event](#event)[]                       | 否   | 是   | 联系人的生日、周年纪念等重要日期列表。 |
 | groups            | [Group](#group)[]                       | 否   | 是   | 联系人的群组列表。                     |
@@ -4776,7 +4776,7 @@ let myContact: contact.Contact = {
 
 **对象创建示例：**
 
-使用JSON格式创建数据。
+通过JSON格式创建数据。
 
 ```js
 let contactAttributes: contact.ContactAttributes = {
@@ -4815,7 +4815,7 @@ let contactAttributes: contact.ContactAttributes = {
 
 **对象创建示例：**
 
-使用JSON格式创建数据。
+通过JSON格式创建数据。
 
 ```js
 let attributes = [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE];
