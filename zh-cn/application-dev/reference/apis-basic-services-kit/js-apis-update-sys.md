@@ -1588,7 +1588,7 @@ restorer.forceFactoryReset().then(() => {
 
 deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
-深度擦除用户数据。使用Promise异步回调。
+深度擦除用户数据。使用 Promise 异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1600,13 +1600,13 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 | 参数名                | 类型                                       | 必填   | 说明             |
 | ------------------ | ---------------------------------------- | ---- | -------------- |
-| factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | 是    | 擦除策略。         |
+| factoryResetStrategy | [FactoryResetStrategy](#factoryresetstrategy) | 是 | 擦除策略。         |
 
 **返回值：**
 
 | 类型             | 说明                         |
 | -------------- | -------------------------- |
-| Promise\<void> | Promise对象。无返回结果。 |
+| Promise\<void> | Promise 对象。无返回结果。 |
 
 **错误码**：
 
@@ -1637,7 +1637,7 @@ restorer.deepFactoryReset(factoryResetStrategy).then(() => {
 
 getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<FactoryResetInfo>
 
-获取深度擦除信息。使用Promise异步回调。
+获取深度擦除信息。使用 Promise 异步回调。
 
 **起始版本：** 26.0.0
 
