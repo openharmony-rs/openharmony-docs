@@ -1763,7 +1763,7 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| enabled    | boolean | 是   | 是否开启沉浸式布局。<br>true表示开启，false表示关闭。</br> |
+| enabled    | boolean | 是   | 是否开启获取悬浮三键导航类型的避让区域。<br>true表示开启，false表示关闭。</br> |
 
 **错误码：**
 
