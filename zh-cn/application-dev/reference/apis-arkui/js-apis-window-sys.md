@@ -1314,14 +1314,16 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## window.moveMainWindowToTargetDisplay<sup>26+</sup>
+## window.moveMainWindowToTargetDisplay
 moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;void&gt;
 
 将指定的主窗口迁移到对应屏幕上。使用Promise异步回调。
 
-对于PC/手机主屏幕与虚拟屏之间的窗口迁移，主窗及其子窗（全局悬浮子窗除外）会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦；对于PC主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕，抬升并获取焦点。
+对于PC/2in1或手机主屏幕与虚拟屏之间的窗口迁移，主窗及其子窗（全局悬浮子窗除外）会一起被迁移到对应屏幕上且被抬升，如果存在子窗，最上层可获焦子窗会获取焦点，否则主窗口获焦；对于PC主屏与扩展屏之间的窗口迁移，只会将主窗口迁移到对应屏幕，抬升并获取焦点。
 
 若指定的主窗口处于分屏状态，会先退出分屏再迁移。
+
+<br>**起始版本：** 26.0.0 <br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 **系统接口：** 此接口为系统接口。
 
@@ -1331,8 +1333,8 @@ moveMainWindowToTargetDisplay(displayId: number, windowId: number): Promise&lt;v
 
 | 参数名          | 类型   | 必填  | 说明                    |
 | -------------- | ------ | ----- | ----------------------- |
-| displayId | number | 是    | 屏幕ID，该参数仅支持整数输入，输入浮点数会向下取整。 |
-| windowId | number | 是    | 目标主窗口的id，用于指定要迁移的窗口。该参数应为大于0的整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。|
+| displayId | number | 是    | 目标屏幕的ID，用于指定要迁移到的屏幕。该参数应为大于0的整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.displayId获取。 |
+| windowId | number | 是    | 目标主窗口的ID，用于指定要迁移的窗口。该参数应为大于0的整数，通过[getWindowProperties](arkts-apis-window-Window.md#getwindowproperties9)接口获取到[properties](arkts-apis-window-i.md#windowproperties)后，再通过properties.id获取。|
 
 **返回值：**
 
