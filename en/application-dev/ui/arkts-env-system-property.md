@@ -23,7 +23,7 @@ In multi-device development scenarios, you can use the [\@Env](../reference/apis
   - [SystemProperties.WINDOW_AVOID_AREA<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the avoid area of a window, in vp.
   - [SystemProperties.WINDOW_AVOID_AREA_PX<sup>23+</sup>](../reference/apis-arkui/arkui-ts/ts-env-system-property.md#systemproperties): obtains the avoid area of a window, in px.
 - When the system environment variable changes, the \@Env-decorated variable is updated and the component associated with \@Env is refreshed, implementing synchronous update of the UI content.
-- You are not allowed to initialize the variables decorated by \@Env. @Env returns an instance of an observable environment variable class decorated by @ObservedV2, whose attributes are in turn decorated by @Trace. To listen for the change of an environment variable, use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For details, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
+- You are not allowed to initialize the variables decorated by \@Env. @Env returns an instance of an observable environment variable class decorated by [\@ObservedV2](./state-management/arkts-new-observedV2-and-trace.md), whose attributes are in turn decorated by [\@Trace](./state-management/arkts-new-observedV2-and-trace.md). To listen for the change of an environment variable, use [addMonitor](./state-management/arkts-new-addMonitor-clearMonitor.md). For details, see [Using \@Env in \@ComponentV2](#using-env-in-componentv2).
 
 ## Supported Parameters
 

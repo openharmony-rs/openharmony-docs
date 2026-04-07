@@ -6,14 +6,15 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-> **NOTE**
->
-> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The initial APIs of this interface are supported since API version 12.
 
 AVTranscoder is a transcoding management class. It provides APIs to transcode videos. Before calling any API in AVTranscoder, you must use [createAVTranscoder()](arkts-apis-media-f.md#mediacreateavtranscoder12) to create an AVTranscoder instance.
 
 For details about the AVTranscoder demo, see [Using AVTranscoder for Transcoding](../../media/media/using-avtranscoder-for-transcodering.md).
+
+> **NOTE**
+>
+> - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - The initial APIs of this interface are supported since API version 12.
 
 ## Modules to Import
 
@@ -23,12 +24,14 @@ import { media } from '@kit.MediaKit';
 
 ## Properties
 
+**Atomic service API**: This API can be used in atomic services since API version 22.
+
 **System capability**: SystemCapability.Multimedia.Media.AVTranscoder
 
 | Name   | Type                                | Read-Only| Optional| Description              |
 | ------- | ------------------------------------ | ---- | ---- | ------------------ |
-| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  No | No  | Source media file descriptor, which specifies the data source.<br> **Example:**<br>There is a media file that stores continuous assets, the address offset is 0, and the byte length is 100. Its file descriptor is **AVFileDescriptor { fd = resourceHandle; offset = 0; length = 100; }**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
-| fdDst<sup>12+</sup>                               | number                 |  No | No  | Destination media file descriptor, which specifies the data source. After creating an AVTranscoder instance, you must set both **fdSrc** and **fdDst**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance. Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.<br> **Atomic service API**: This API can be used in atomic services since API version 22.|
+| fdSrc<sup>12+</sup>                                  | [AVFileDescriptor](arkts-apis-media-i.md#avfiledescriptor9)                       |  No | No  | Source media file descriptor, which specifies the data source.<br> **Example:**<br>There is a media file that stores continuous assets, the address offset is 0, and the byte length is 100. Its file descriptor is **AVFileDescriptor { fd = resourceHandle; offset = 0; length = 100; }**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance.<br> - Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
+| fdDst<sup>12+</sup>                               | number                 |  No | No  | Destination media file descriptor, which specifies the data source. After creating an AVTranscoder instance, you must set both **fdSrc** and **fdDst**.<br>**NOTE**<br> - After the resource handle (FD) is transferred to an AVTranscoder instance, do not use the resource handle to perform other read and write operations, including but not limited to transferring this handle to other AVPlayer, AVMetadataExtractor, AVImageGenerator, or AVTranscoder instance.<br> - Competition occurs when multiple AVTranscoders use the same resource handle to read and write files at the same time, resulting in errors in obtaining data.|
 
 ## prepare<sup>12+</sup>
 
@@ -94,7 +97,7 @@ async function test() {
 
 start(): Promise\<void>
 
-Starts transcoding. This API uses a promise to return the result.
+Starts video transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [prepare()](#prepare12) API is called.
 
@@ -139,7 +142,7 @@ async function test() {
 
 pause(): Promise\<void>
 
-Pauses transcoding. This API uses a promise to return the result.
+Pauses video transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [start()](#start12) API is called. You can call [resume()](#resume12) to resume transcoding.
 
@@ -184,7 +187,7 @@ async function test() {
 
 resume(): Promise\<void>
 
-Resumes transcoding. This API uses a promise to return the result.
+Resumes video transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [pause()](#pause12) API is called.
 
@@ -229,7 +232,7 @@ async function test() {
 
 cancel(): Promise\<void>
 
-Cancels transcoding. This API uses a promise to return the result.
+Cancels video transcoding. This API uses a promise to return the result.
 
 This API can be called only after the [prepare()](#prepare12), [start()](#start12), [pause()](#pause12), or [resume()](#resume12) API is called.
 
@@ -274,7 +277,7 @@ async function test() {
 
 release(): Promise\<void>
 
-Releases the video transcoding resources. This API uses a promise to return the result.
+Releases video transcoding resources. This API uses a promise to return the result.
 
 After the resources are released, you can no longer perform any operation on the AVTranscoder instance.
 
@@ -318,7 +321,7 @@ async function test() {
 
 on(type:'progressUpdate', callback: Callback\<number\>):void
 
-Subscribes to transcoding progress updates. An application can subscribe to only one transcoding progress update event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
+Subscribes to transcoding progress updates. An application can subscribe to only one transcoding progress update event. When the application initiates multiple subscriptions to this event, the last subscription is applied. This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -329,7 +332,7 @@ Subscribes to transcoding progress updates. An application can subscribe to only
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'progressUpdate'** in this case. This event is triggered by the system during transcoding.|
-| callback | [Callback\<number>](../apis-basic-services-kit/js-apis-base.md#callback) | Yes  | Callback invoked when the event is triggered. **progress** is a number that indicates the current transcoding progress.|
+| callback | [Callback\<number>](../apis-basic-services-kit/js-apis-base.md#callback) | Yes  | Callback used to return the progress update event. The **number** parameter in the function indicates the current transcoding progress.|
 
 **Example**
 
@@ -378,7 +381,7 @@ async function test() {
 
 on(type: 'error', callback: ErrorCallback): void
 
-Subscribes to AVTranscoder errors. If this event is reported, call [release()](#release12) to exit the transcoding.
+Subscribes to AVTranscoder errors. If this event is reported, call [release()](#release12) to exit the transcoding. This API uses an asynchronous callback to return the result.
 
 An application can subscribe to only one AVTranscoder error event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
 
@@ -456,7 +459,7 @@ async function test() {
 
 on(type: 'complete', callback: Callback\<void>): void
 
-Subscribes to the event indicating that transcoding is complete. An application can subscribe to only one transcoding completion event. When the application initiates multiple subscriptions to this event, the last subscription is applied.
+Subscribes to the event indicating that transcoding is complete. An application can subscribe to only one transcoding progress update event. When the application initiates multiple subscriptions to this event, the last subscription is applied. This API uses an asynchronous callback to return the result.
 
 When this event is reported, the current transcoding operation is complete. You need to call [release()](#release12) to exit the transcoding.
 
@@ -469,7 +472,7 @@ When this event is reported, the current transcoding operation is complete. You 
 | Name  | Type    | Mandatory| Description                                                        |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | Yes  | Event type, which is **'complete'** in this case. This event is triggered by the system during transcoding.|
-| callback | [Callback\<void>](../apis-basic-services-kit/js-apis-base.md#callback) | Yes  | Callback that has been registered to listen for transcoding completion events.|
+| callback | [Callback\<void>](../apis-basic-services-kit/js-apis-base.md#callback) | Yes  | Callback used to return the event callback method.|
 
 **Example**
 

@@ -17,7 +17,7 @@
     - [@ohos.arkui.node(自定义节点)](js-apis-arkui-node.md)
     - [@ohos.arkui.observer (无感监听)](js-apis-arkui-observer.md)
     - [@ohos.arkui.prefetcher (Prefetching)](js-apis-arkui-Prefetcher.md)
-    - [@ohos.arkui.shape(形状)](js-apis-arkui-shape.md)
+    - [@ohos.arkui.shape (形状)](js-apis-arkui-shape.md)
     - [@ohos.arkui.theme(主题换肤)](js-apis-arkui-theme.md)
     - @ohos.arkui.UIContext (UIContext)<!--js-apis-arkui-uicontext-->
       - [模块描述](arkts-apis-uicontext.md)
@@ -312,7 +312,7 @@
     - [Rating](arkui-ts/ts-basic-components-rating.md)
     - [Select](arkui-ts/ts-basic-components-select.md)
     <!--Del-->
-    - [Select（系统接口）](arkui-ts/ts-basic-components-select-sys.md)
+    - [Select (系统接口)](arkui-ts/ts-basic-components-select-sys.md)
     <!--DelEnd-->    
     - [Slider](arkui-ts/ts-basic-components-slider.md)
     - [ArcButton](arkui-ts/ohos-arkui-advanced-ArcButton.md)
@@ -339,7 +339,7 @@
     - [TextInput (系统接口)](arkui-ts/ts-basic-components-textinput-sys.md)
     - [TextArea (系统接口)](arkui-ts/ts-basic-components-textarea-sys.md)
     - [属性字符串 (系统接口)](arkui-ts/ts-universal-styled-string-sys.md)
-    - [RichEditor(系统接口)](arkui-ts/ts-basic-components-richeditor-sys.md)
+    - [RichEditor (系统接口)](arkui-ts/ts-basic-components-richeditor-sys.md)
     <!--DelEnd-->
   - 图片与视频<!--images-and-videos-->
     - [Image](arkui-ts/ts-basic-components-image.md)
@@ -784,7 +784,7 @@
     - [UI上下文错误码](errorcode-uicontext.md)
     - [注册节点渲染状态监听错误码](errorcode-node-render-monitor.md)
     - [交互事件错误码](errorcode-event.md)
-    - [Canvas错误码](errorcode-canvas.md)
+    - [Canvas组件错误码](errorcode-canvas.md)
     - [自定义节点错误码](errorcode-node.md)
     - [动态属性设置错误码](errorcode-attributeModifier.md)
     - [逻辑组件错误码](errorcode-rendering-control.md)

@@ -196,7 +196,7 @@ export default {
 
   ```javascript
   ctx.beginPath();              
-  ctx.lineWidth = '6';
+  ctx.lineWidth = 6;
   ctx.strokeStyle = '#0000ff';
   ctx.moveTo(15, 80); 
   ctx.lineTo(280, 80);

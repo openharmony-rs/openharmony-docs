@@ -49,7 +49,7 @@
 
 ## DES
 
-[DES](crypto-sym-key-generation-conversion-spec.md#des)算法的加密过程由 16 轮相同的加密函数组成，每轮都使用不同的子密钥。子密钥是通过对原始密钥进行一系列的置换和移位操作生成的。在每一轮中，明文块被分为左右两部分，然后通过一系列的置换、替换和异或操作进行加密。
+[DES](crypto-sym-key-generation-conversion-spec.md#des)算法的加密过程包含16轮相同的加密函数，每轮都使用不同的子密钥。子密钥是通过对原始密钥进行一系列的置换和移位操作生成的。在每一轮中，明文块被分为左右两部分，然后通过一系列的置换、替换和异或操作进行加密。
 
 算法库当前提供了DES加解密常用的4种加密模式：ECB、CBC、OFB和CFB。不同的加密模式适用的加解密参数不同，具体请参考[ParamsSpec](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#paramsspec)。
 
@@ -160,7 +160,7 @@
 
 - NoPadding：不带填充。输入数据需要与分组长度匹配。
 
-- PKCS5：填充字符由一个字节序列组成，而且每个字节填充的值与要填充的字节序列长度相同。PKCS5为8字节填充，即需将数据填充为八位字节的倍数。
+- PKCS5：填充字符由一个字节序列组成，而且每个字节填充的值与要填充的字节序列长度相同。PKCS5为8字节填充，即需将数据填充为八字节的倍数。
 
 - PKCS7：填充方法和PKCS5一致。但PKCS7可以在1-255字节之间任意填充，PKCS5固定为8字节。
 

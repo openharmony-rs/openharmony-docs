@@ -10,11 +10,11 @@ The **systemManager** module provides system management capabilities.
 
 > **NOTE**
 > 
-> - The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 12. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
+> The APIs of this module can be called only by a device administrator application that is enabled. For details, see [MDM Kit Development](../../mdm/mdm-kit-guide.md).
 
 ## Modules to Import
 
@@ -41,7 +41,7 @@ Sets the NTP server.
 | Name  | Type                                 | Mandatory  | Description     |
 | ----- | ----------------------------------- | ---- | ------- |
 | admin | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| server | string | Yes| NTP server addresses separated by a comma (,). For example, **ntpserver1.com,ntpserver2.com**. The value can contain a maximum of 96 bytes (including the end character).|
+| server | string | Yes| NTP server addresses separated by commas (,). For example, **ntpserver1.com,ntpserver2.com**. The value can contain a maximum of 96 bytes (including the end character).|
 
 **Error codes**
 
@@ -223,7 +223,7 @@ try {
 let otaUpdatePolicy5: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.POSTPONE,
   "version": "version_1.0.0.4",
-  "delayUpdateTime": 5, // Time for which the update is delayed, in hours.
+  "delayUpdateTime": 5, // Unit: hour
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy5);
@@ -705,13 +705,13 @@ try {
 
 setInstallLocalEnterpriseAppEnabled(admin: Want, isEnable: boolean): void
 
-Sets whether local installation of enterprise applications is supported. When it is enabled, users can install enterprise applications (signing certificate distribution type: **enterprise_normal**) by double-tapping the application installation package on PCs/2-in-1 devices with local installation capability.
+Sets whether local installation of enterprise applications is supported. When local installation is enabled, users can install enterprise applications (signing certificate distribution type: **enterprise_normal**) by double-tapping their installation packages on PCs/2-in-1 enterprise devices with the local installation capability.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -767,7 +767,7 @@ Checks whether local installation of enterprise applications is supported.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices. If it is called on other device types, error code 801 is returned.
+**Device behavior differences**: This API can be properly called on PCs/2-in-1 devices but returns error code 801 on other devices.
 
 **Model restriction**: This API can be used only in the stage model.
 
@@ -928,7 +928,7 @@ try {
 
 addKeyEventPolicies(admin: Want, keyPolicies: Array&lt;KeyEventPolicy&gt;): void
 
-Adds a key event handling policy. When the system triggers a key event, if the event matches the delivered key event policy, the MDM app will be notified via the [EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23) callback, with the key event information of the matched policy carried in the callback.
+Adds a key event handling policy. When the system triggers a key event, if the event matches the delivered key event policy, the MDM app will be notified via the [EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23) callback, with the key event information of the matched policy carried in the callback.
 
 **Required permissions**: ohos.permission.ENTERPRISE_MANAGE_SYSTEM
 
@@ -943,7 +943,7 @@ Adds a key event handling policy. When the system triggers a key event, if the e
 | Name| Type                                                   | Mandatory| Description                  |
 | ------ | ------------------------------------------------------- | ---- | ---------------------- |
 | admin  | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.|
-| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | Yes  | Key policy. Physical keys (power key, volume up, and volume down) and navigation keys (back, home, and recently opened) are supported. Physical keys can be combined into a combination key, but navigation keys cannot. For details about the combination key event response, see [Key Event Callback](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23).|
+| keyPolicies     | Array&lt;[KeyEventPolicy](#keyeventpolicy23)&gt; | Yes  | Key policy. Physical keys (power key, volume up, and volume down) and navigation keys (back, home, and recently opened) are supported. Physical keys can be combined into a combination key, but navigation keys cannot. For details about the combination key event response, see [Key Event Callback](./js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23).|
 
 **Error codes**
 
@@ -1094,7 +1094,7 @@ let wantTemp: Want = {
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
-let result = Array<systemManager.KeyEventPolicy>;
+let result: Array<systemManager.KeyEventPolicy> = [];
 try {
   result = systemManager.getKeyEventPolicies(wantTemp);
   console.info('Succeeded in getting key event policies.');
@@ -1111,8 +1111,8 @@ Starts to collect the [fault logs](../apis-performance-analysis-kit/js-apis-faul
 
 - After the API is called, the system starts a log collection task. The API returns a response immediately after the task is started. The task may fail due to system performance constraints.
 - This API can be called by multiple MDM apps. Logs collected by different MDM apps under different users are saved separately and do not affect each other. Only one MDM app can start a log collection task at a time. If this API is called before the task is complete, the error code 9201009 is returned, and other MDM apps may call the API only after the task finishes.
-- Upon task completion, the MDM app is notified via the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23) callback. The system mounts the collected log files to the MDM app sandbox path, enabling the MDM app to read the logs within the callback.
-- If the log collection task takes more than 5 minutes, the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23) callback returns a failure message.
+- Upon task completion, the MDM app is notified via the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback. The system mounts the collected log files to the MDM app sandbox path, enabling the MDM app to read the logs within the callback.
+- If the log collection task takes more than 5 minutes, the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback returns a task execution failure message.
 - After the app obtains the logs, you are advised to call [systemManager.finishLogCollected](#systemmanagerfinishlogcollected23) to remove the collected logs.
 
 **Required permissions**: ohos.permission.ENTERPRISE_READ_LOG
@@ -1176,9 +1176,9 @@ Deletes the device logs collected by the current MDM app under the current user.
 
 > **NOTE**
 > 
-> - After the app calls [startCollectLog](#systemmanagerstartcollectlog23) to initiate log collection and receives the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23) callback, you are advised to immediately copy or process the logs, then call this API to delete the collected logs.
+> After the app calls [startCollectLog](#systemmanagerstartcollectlog23) to initiate log collection and receives the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback, you are advised to immediately copy or process the logs, and then call this API to delete the collected logs.
 > 
-> - If this API is not called, device logs will occupy the system storage space, which does not affect the next call of [startCollectLog](#systemmanagerstartcollectlog23) to start a log collection task.
+> If this API is not called, device logs will occupy the system storage space, which does not affect the next call of [startCollectLog](#systemmanagerstartcollectlog23) to start a log collection task.
 
 **Required permissions**: ohos.permission.ENTERPRISE_READ_LOG
 
@@ -1388,7 +1388,7 @@ Enumerates key event handling policies. When a key event occurs, only the keys f
 
 ## KeyCode<sup>23+</sup>
 
-Enumerates key codes. Key codes are used to map to the actual physical keys on a device in the following scenarios: [adding a key event policy](#systemmanageraddkeyeventpolicies23), [removing a key event policy](#systemmanagerremovekeyeventpolicies23), [querying a key event policy](#systemmanagergetkeyeventpolicies23), and [invoking the key event callback API](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23).
+Key code. Key codes are used to map to the actual physical keys on a device in the following scenarios: [adding a key event policy](#systemmanageraddkeyeventpolicies23), [removing a key event policy](#systemmanagerremovekeyeventpolicies23), [querying a key event policy](#systemmanagergetkeyeventpolicies23), and [invoking the key event callback API](./js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23).
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -1414,11 +1414,11 @@ Enumerates key policies. This refers to the system behavior triggered after the 
 | Name              | Value | Description   |
 | -----------------  | ---- | ----- |
 | INTERCEPTION     | 0 |  Intercepts messages. After this parameter is set, only the current key event is intercepted. The system does not process the event, and the key callback API does not respond to the key event. For example, after the power key interception policy is delivered, pressing the power key does not respond, the device cannot be powered off or locked, and only the power key event in the power-on state is affected. When the device is powered off, the power key can be used to power on the device.|
-| CUSTOM        | 1 | Intercepts and forwards messages. When this policy is configured, the system intercepts the current key event and does not process the event. In addition, the [EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23) callback API notifies the MDM app of the key event. The notification does not block the processing of other events.|
+| CUSTOM        | 1 | Intercepts and forwards messages. When this policy is configured, the system intercepts the current key event and does not process the event. In addition, the [EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23) callback API is used to notify the MDM app of the key event, which does not block the processing of other events.|
 
 ## KeyEvent<sup>23+</sup>
 
-Enumerates key events. When the [EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonkeyevent23) key event callback is triggered, the current key event information is transferred.
+Enumerates key events. When the [EnterpriseAdminExtensionAbility.onKeyEvent](./js-apis-EnterpriseAdminExtensionAbility.md#onkeyevent23) key event callback is triggered, the current key event information is transferred.
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 

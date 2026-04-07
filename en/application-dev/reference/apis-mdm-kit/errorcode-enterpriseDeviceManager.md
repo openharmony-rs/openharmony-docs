@@ -40,7 +40,7 @@ This error code is reported when the device administrator application does not h
 
 **Possible Causes**
 
-A device administrator application calls an API that is accessible only by a super device administrator application.
+The device administrator application calls an API that is accessible only by a super device administrator application.
 
 **Solution**
 
@@ -110,7 +110,7 @@ The possible causes are as follows:
 
 1. Check that the target device administrator application has been enabled.
 2. Check that the specified device administrator ability component of the target device administrator application has been enabled.
-3. Check that the device administrator application to be disabled is the caller itself.
+3. Check whether the device administrator application to be disabled is the caller itself.
 
 ## 9200006 Invalid User ID
 
@@ -435,64 +435,6 @@ The possible causes are as follows:
 3. Check whether the application has the tray service.
 4. Check whether the application has been added to the tray.
 
-## 9201006 Installed Enterprise Re-signing Certificate Exceeding the Limit
-
-**Error Message**
-
-The number of certificates has reached the limit.
-
-**Description**
-
-This error code is reported when the number of installed enterprise re-signing certificates reaches 10.
-
-**Possible Causes**
-
-The number of installed enterprise re-signing certificates reaches the upper limit.
-
-**Solution**
-
-Check whether the number of installed enterprise re-signing certificates reaches 10. If yes, uninstall unnecessary certificates.
-
-## 9201007 Invalid Enterprise Re-signing Certificate
-
-**Error Message**
-
-The certificate is invalid.
-
-**Description**
-
-This error code is generated when the enterprise re-signing certificate fails to be installed.
-
-**Possible Causes**
-
-The enterprise re-signing certificate fails to be installed. The possible causes are as follows:
-
-1. The certificate is invalid.
-2. A certificate with the same name has been installed.
-
-**Solution**
-
-1. Check whether the certificate is a valid enterprise re-signing certificate.
-2. Check whether a certificate with the same name has been installed.
-
-## 9201008 Enterprise Re-signing Certificate Not Exist
-
-**Error Message**
-
-The certificate does not exist.
-
-**Description**
-
-This error code is generated when the enterprise re-signing certificate fails to be uninstalled.
-
-**Possible Causes**
-
-The uninstalled certificate does not exist.
-
-**Solution**
-
-Check whether the uninstalled certificate exists.
-
 ## 9201009 Failed to Create a Log Collection Task
 
 **Error Message**
@@ -509,7 +451,7 @@ When a log collection task is being executed, the [systemManager.startCollectLog
 
 **Solution**
 
-After the previous log collection task is complete (that is, the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#enterpriseadminextensionabilityonlogcollected23) callback is received), the [systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23) API is called to create a log collection task.
+Wait until the previous log collection task is complete (that is, the [EnterpriseAdminExtensionAbility.onLogCollected](js-apis-EnterpriseAdminExtensionAbility.md#onlogcollected23) callback is received), and then call the [systemManager.startCollectLog](./js-apis-enterprise-systemManager.md#systemmanagerstartcollectlog23) API to create a new log collection task.
 
 ## 9201010 Failed to Configure the Ethernet Network Interface
 

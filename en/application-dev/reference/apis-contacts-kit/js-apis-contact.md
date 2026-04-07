@@ -54,12 +54,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.addContact(context, {
     name: {
@@ -104,7 +103,7 @@ Adds a contact. This API uses an asynchronous callback to return the result.
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
   
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.addContact(context, {
     name: {
@@ -162,12 +161,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.addContact(context, {
     name: {
@@ -261,14 +259,13 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
  // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Pass the key of the selected contact as the second parameter.
     contact.deleteContact(context, data[0].key, (err: BusinessError) => {
@@ -311,7 +308,7 @@ Deletes a contact. This API uses an asynchronous callback to return the result.
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Pass the key of the selected contact as the first parameter.
     contact.deleteContact(data[0].key, (err: BusinessError) => {
@@ -362,14 +359,13 @@ Deletes a contact. This API uses a promise to return the result.
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     // Pass the key of the selected contact as the second parameter.
     let promise = contact.deleteContact(context, data[0].key);
@@ -459,14 +455,13 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     contact.updateContact(context, {
       id: data[0].id, // Select the contact ID.
@@ -516,7 +511,7 @@ Updates a contact. This API uses an asynchronous callback to return the result.
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     contact.updateContact(context, {
       id: data[0].id, // Select the contact ID.
@@ -570,14 +565,13 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     contact.updateContact(context, {
       id: data[0].id, // Select the contact ID.
@@ -689,14 +683,13 @@ Updates a contact. (The contact attribute list can be imported.) This API uses a
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
   // Select a contact via selectContacts.
   contact.selectContacts().then((data) => {
-    // Obtain the application context.
+    // Obtain the context within the component.
     let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     let promise = contact.updateContact(context, {
       id: data[0].id, // Select the contact ID.
@@ -807,14 +800,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.isLocalContact(context, /*id*/1, (err: BusinessError, data) => {
+  contact.isLocalContact(context, 1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isLocalContact. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -849,7 +841,7 @@ Checks whether the ID of this contact is in the local address book. This API use
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.isLocalContact(/*id*/1, (err: BusinessError, data) => {
+  contact.isLocalContact(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isLocalContact. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -896,14 +888,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let promise = contact.isLocalContact(context, /*id*/1);
+  let promise = contact.isLocalContact(context, 1);
   promise.then((data) => {
     console.info(`Succeeded in isLocalContact. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -919,7 +910,7 @@ Checks whether the ID of this contact is in the local address book. This API use
 
 > **NOTE**
 >
-> This API is supported since API version 7 and deprecated since API version 10. Use [isLocalContact](#contactislocalcontact10-1) instead.[isLocalContact](#contactislocalcontact10-1)
+> This API is supported since API version 7 and deprecated since API version 10. Use [isLocalContact](#contactislocalcontact10-1) instead.
 
 **Permission required**: ohos.permission.READ_CONTACTS
 
@@ -942,7 +933,7 @@ Checks whether the ID of this contact is in the local address book. This API use
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let promise = contact.isLocalContact(/*id*/1);
+  let promise = contact.isLocalContact(1);
   promise.then((data) => {
     console.info(`Succeeded in isLocalContact. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -983,14 +974,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.isMyCard(context, /*id*/1, (err: BusinessError, data) => {
+  contact.isMyCard(context, 1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isMyCard. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -1025,7 +1015,7 @@ Checks whether a contact is included in my card. This API uses an asynchronous c
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.isMyCard(/*id*/1, (err: BusinessError, data) => {
+  contact.isMyCard(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to isMyCard. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -1072,14 +1062,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let promise = contact.isMyCard(context, /*id*/1);
+  let promise = contact.isMyCard(context, 1);
   promise.then((data) => {
     console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -1118,7 +1107,7 @@ Checks whether a contact is included in my card. This API uses a promise to retu
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let promise = contact.isMyCard(/*id*/1);
+  let promise = contact.isMyCard(1);
   promise.then((data) => {
     console.info(`Succeeded in isMyCard. data->${JSON.stringify(data)}`);
   }).catch((err: BusinessError) => {
@@ -1158,12 +1147,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryMyCard(context, (err: BusinessError, data) => {
     if (err) {
@@ -1241,12 +1229,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryMyCard(context, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -1334,12 +1321,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryMyCard(context, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -1640,12 +1626,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', (err: BusinessError, data) => {
     if (err) {
@@ -1725,12 +1710,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', {
     holderId: 1,
@@ -1819,12 +1803,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -1910,12 +1893,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
 ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContact(context, 'xxx', {
     holderId: 1,
@@ -2015,12 +1997,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContact(context, 'xxx', {
     holderId: 1,
@@ -2115,12 +2096,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, (err: BusinessError, data) => {
     if (err) {
@@ -2198,12 +2178,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, {
     holderId: 1,
@@ -2290,12 +2269,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -2379,12 +2357,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContacts(context, {
     holderId: 1,
@@ -2482,12 +2459,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContacts(context, {
     holderId: 1,
@@ -2582,12 +2558,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', (err: BusinessError, data) => {
     if (err) {
@@ -2667,12 +2642,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
@@ -2761,12 +2735,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     attributes: [contact.Attribute.ATTR_NAME, contact.Attribute.ATTR_PHONE]
@@ -2852,12 +2825,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
@@ -2957,12 +2929,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContactsByPhoneNumber(context, '138xxxxxxxx', {
     holderId: 1,
@@ -3058,12 +3029,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', (err: BusinessError, data) => {
     if (err) {
@@ -3143,12 +3113,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
@@ -3237,12 +3206,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', {
     attributes: [contact.Attribute.ATTR_EMAIL, contact.Attribute.ATTR_NAME]
@@ -3328,12 +3296,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
@@ -3433,12 +3400,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryContactsByEmail(context, 'xxx@email.com', {
     holderId: 1,
@@ -3531,12 +3497,11 @@ Queries all groups of a contact. This API uses an asynchronous callback to retur
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryGroups(context, (err: BusinessError, data) => {
     if (err) {
@@ -3614,12 +3579,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryGroups(context, {
     holderId: 1,
@@ -3711,12 +3675,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryGroups(context, {
     holderId: 1,
@@ -3805,12 +3768,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   contact.queryHolders(context, (err: BusinessError, data) => {
     if (err) {
@@ -3892,12 +3854,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
   let promise = contact.queryHolders(context);
   promise.then((data) => {
@@ -3973,14 +3934,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.queryKey(context, /*id*/1, (err: BusinessError, data) => {
+  contact.queryKey(context, 1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Key. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -4015,7 +3975,7 @@ Queries the key of a contact based on the specified contact ID. This API uses an
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.queryKey(/*id*/1, (err: BusinessError, data) => {
+  contact.queryKey(1, (err: BusinessError, data) => {
     if (err) {
       console.error(`Failed to query Key. Code: ${err.code}, message: ${err.message}`);
       return;
@@ -4058,14 +4018,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  contact.queryKey(context, /*id*/1, {
+  contact.queryKey(context, 1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
@@ -4105,7 +4064,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  contact.queryKey(/*id*/1, {
+  contact.queryKey(1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
@@ -4157,14 +4116,13 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-  <!--code_no_check-->
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
   import { common } from '@kit.AbilityKit';
 
-  // Obtain the application context.
+  // Obtain the context within the component.
   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-  let promise = contact.queryKey(context, /*id*/1, {
+  let promise = contact.queryKey(context, 1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
@@ -4208,7 +4166,7 @@ Queries the key of a contact based on the specified contact ID and holder. This 
   ```js
   import { BusinessError } from '@kit.BasicServicesKit';
 
-  let promise = contact.queryKey(/*id*/1, {
+  let promise = contact.queryKey(1, {
     holderId: 1,
     bundleName: "",
     displayName: ""
@@ -4259,7 +4217,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Obtain the application context.
+// Obtain the context within the component.
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
 let promise = contact.queryContactsCount(context);
 promise.then((data) => {
@@ -4310,12 +4268,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-<!--code_no_check-->
 ```js
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Obtain the application context.
+// Obtain the context within the component.
 let contactInfo: contact.Contact = {
   name: {
     fullName: 'xxx'
@@ -4375,12 +4332,11 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 >
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use UIAbilityContext APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
-<!--code_no_check-->
 ```js
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-// Obtain the application context.
+// Obtain the context within the component.
 let contactInfo: contact.Contact = {
   id: 1,
   name: {
@@ -4416,7 +4372,7 @@ Adds contacts in batches. This API uses a promise to return the result.
 | Name | Type               | Mandatory| Description                                                        |
 | ------- | ------------------- | ---- | ------------------------------------------------------------ |
 | context | Context             | Yes  | Application context. For the application context of the stage model, see [Context](../apis-ability-kit/js-apis-inner-application-context.md).|
-| contacts | Array&lt;[Contact]&gt;(#contact) | Yes  | Contact information array.                                                |
+| contacts | Array&lt;[Contact](#contact)&gt; | Yes  | Contact information array.                                                |
 
 **Return Value**
 
@@ -4432,7 +4388,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | -------- | ------------------ |
 | 201      | Permission denied. |
 | 16700001      | General error. |
-| 16700002      | Invalid Parameter value. |
+| 16700002      | Invalid parameter value. |
 
 **Example**
 
@@ -5082,7 +5038,7 @@ Defines a contact's portrait.
 >
 >  Since API version 22, contact portraits can be set in URI or [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) format. (Currently, contact avatars cannot be set through the [addContactViaUI](#contactaddcontactviaui15) or [saveToExistingContactViaUI](#contactsavetoexistingcontactviaui15) API.)<br>
 URI indicates the address of the contact portrait file that can be accessed, and [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) indicates the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) object generated based on the contact portrait resource.<br>
->  Contact portrait resources can be read only in URI format. This format can be opened only in [fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen) mode and cannot be directly displayed in the **Image** component. The contact portrait resources need to be read and converted into the [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) format for display.
+>  Since API version 22, the profile picture resource can be read through URI. The resource can be opened only in **fileIo.open** mode and cannot be directly displayed in the **Image** component using a URI. You need to read the resource and display it in [PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) format.
 
 **System capability**: SystemCapability.Applications.ContactsData
 

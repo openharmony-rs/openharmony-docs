@@ -8,7 +8,7 @@
 
 UserStatus（用户状态感知）模块提供用户感知能力，可以感知到操作者特定状态，例如：检测用户年龄组。
 
-详细的接口介绍请参考[userStatus接口](../../reference/apis-multimodalawareness-kit/js-apis-awareness-userStatus.md)。
+详细的接口介绍请参考[@ohos.multimodalAwareness.userStatus (用户状态感知)](../../reference/apis-multimodalawareness-kit/js-apis-awareness-userStatus.md)。
 
 ## 感知用户年龄组开发指导
 ### 场景介绍
@@ -32,24 +32,28 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
 
 1. 导入模块。
 
+   <!-- @[import_the_user_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
+
    ```ts
    import { userStatus } from '@kit.MultimodalAwarenessKit';
    import { BusinessError } from '@kit.BasicServicesKit';
    ```
-   <!-- @[import_the_user_status_module](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 2. 定义回调函数，监听年龄群组检测结果变化。
 
-   ```
+   <!-- @[user_status_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
    let callback : Callback<userStatus.UserClassification> = (data : userStatus.UserClassification) => {
      console.info('callback succeeded, ageGroup:' + data.ageGroup + ", confidence:" + data.confidence);
    };
    ```
-   <!-- @[user_status_parameter](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 3. 订阅年龄群组检测功能。
 
-   ```
+   <!-- @[user_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
+
+   ```ts
    try {
       userStatus.on('userAgeGroupDetected', callback);  
       console.info("on succeeded");
@@ -58,11 +62,12 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
       console.error("Failed on and err code is " + error.code);
    }
    ```
-   <!-- @[user_status_subscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
 
 4. 取消订阅年龄群组检测功能。
 
-   ```
+   <!-- @[user_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->
+   
+   ```ts
    try {
       userStatus.off('userAgeGroupDetected');
       console.info("off succeeded");
@@ -71,4 +76,3 @@ UserStatus（用户状态感知）模块提供用户感知能力，可以感知�
       console.error("Failed off and err code is " + error.code);
    }
    ```
-   <!-- @[user_status_unsubscribe](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Stationary/UserStatus/entry/src/main/ets/pages/Index.ets) -->

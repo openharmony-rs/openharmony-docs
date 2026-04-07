@@ -32,7 +32,7 @@ enable(isEnable: boolean): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| isEnable | boolean | 是 | 是否使能jsLeakWatcher。true：使能jsleakwatcher；false：不使能jsleakwatcher。 |
+| isEnable | boolean | 是 | 是否使能jsLeakWatcher。true：使能jsLeakWatcher；false：不使能jsLeakWatcher。 |
 
 **示例：**
 
@@ -102,7 +102,7 @@ dump(filePath: string): Array&lt;string&gt;
 
 | 类型    | 说明                                                       |
 | ------- | ---------------------------------------------------------- |
-| Array&lt;string&gt; | 导出结果。分别为文件名后缀为.jsleaklist的泄漏列表和文件名后缀为.heapsnapshot虚拟机内存快照文件。<br>**说明**：dump成功，返回泄漏列表文件路径和和虚拟机内存快照路径；dump失败，返回空数组。 |
+| Array&lt;string&gt; | 导出结果。分别为文件名后缀为.jsleaklist的泄漏列表和文件名后缀为.heapsnapshot虚拟机内存快照文件。<br>**说明**：dump成功，返回泄漏列表文件路径和虚拟机内存快照路径；dump失败，返回空数组。 |
 
 **错误码：**
 

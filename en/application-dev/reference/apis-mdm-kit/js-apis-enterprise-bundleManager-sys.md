@@ -10,13 +10,13 @@ The **bundleManager** module provides APIs for bundle management, including addi
 
 > **NOTE**
 >
-> - The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> The initial APIs of this module are supported since API version 10. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
-> - The APIs of this module can be used only in the stage model.
+> The APIs of this module can be used only in the stage model.
 >
-> - The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
+> The APIs of this module can be called only by a [device administrator application](../../mdm/mdm-kit-term.md#mdm-application-device-administrator-application) that is [enabled](js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin-2).
 > 
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.bundleManager](js-apis-enterprise-bundleManager.md).
+> This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.enterprise.bundleManager](js-apis-enterprise-bundleManager.md).
 
 ## Modules to Import
 
@@ -1596,6 +1596,10 @@ uninstall(admin: Want, bundleName: string, callback: AsyncCallback&lt;void&gt;):
 
 Uninstalls an application of the current user without retaining the bundle data. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> Error code **401** will be returned if this API is called to uninstall an application that is either a non-removable pre-installed application or one configured as non-uninstallable via the [addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync) API.
+
 **Required permissions**: ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -1650,6 +1654,10 @@ bundleManager.uninstall(wantTemp, 'bundleName', (err) => {
 uninstall(admin: Want, bundleName: string, userId: number, callback: AsyncCallback&lt;void&gt;): void
 
 Uninstalls an application of the specified user without retaining the bundle data This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> Error code **401** will be returned if this API is called to uninstall an application that is either a non-removable pre-installed application or one configured as non-uninstallable via the [addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync) API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -1707,6 +1715,10 @@ uninstall(admin: Want, bundleName: string, isKeepData: boolean, callback: AsyncC
 
 Uninstalls an application of the current user. The **isKeepData** parameter specifies whether to retain the bundle data. This API uses an asynchronous callback to return the result.
 
+> **NOTE**
+>
+> Error code **401** will be returned if this API is called to uninstall an application that is either a non-removable pre-installed application or one configured as non-uninstallable via the [addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync) API.
+
 **Required permissions**: ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
@@ -1762,6 +1774,10 @@ bundleManager.uninstall(wantTemp, 'bundleName', true, (err) => {
 uninstall(admin: Want, bundleName: string, userId: number, isKeepData: boolean, callback: AsyncCallback&lt;void&gt;): void
 
 Uninstalls an application of the specified user. The **isKeepData** parameter specifies whether to retain the bundle data. This API uses an asynchronous callback to return the result.
+
+> **NOTE**
+>
+> Error code **401** will be returned if this API is called to uninstall an application that is either a non-removable pre-installed application or one configured as non-uninstallable via the [addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync) API.
 
 **Required permissions**: ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 

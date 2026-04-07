@@ -13,7 +13,7 @@ typedef struct NetConn_NetConnCallback {...} NetConn_NetConnCallback
 
 ## 概述
 
-网络状态监听回调集合。
+ 网络状态监听回调集合，所有回调事件需全部注册，无需关注的回调可以设为空实现。
 
 **起始版本：** 12
 

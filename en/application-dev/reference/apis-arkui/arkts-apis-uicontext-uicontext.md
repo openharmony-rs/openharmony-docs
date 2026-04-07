@@ -350,7 +350,7 @@ Obtains a UIContext instance along with its resolution strategy using a predefin
 > 3. If a UI instance has switched to the focused state, and the most recently focused UI instance has not been destroyed, the UIContext of that most recently focused instance is returned.
 > 4. If a UI instance has switched to the foreground state, and the most recently foreground UI instance has not been destroyed, the UIContext of that most recently foreground instance is returned.
 > 5. If multiple UI instances exist, the UIContext with the largest unique instance ID is returned.
-> 6. f none of the above conditions are met, an invalid UIContext instance is returned.
+> 6. If none of the above conditions are met, an invalid UIContext instance is returned.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -498,7 +498,7 @@ Obtains the **ComponentUtils** object.
 
 **Example**
 
-See the example for [getComponentUtils](js-apis-arkui-componentUtils.md).
+For the complete example, see [Example 1: Obtaining the ComponentUtils Object](js-apis-arkui-componentUtils.md#example-1-obtaining-the-componentutils-object).
 
 ## getUIInspector
 
@@ -588,7 +588,7 @@ struct Index {
 
 getId(): number
 
-Obtains the unique ID of the backend instance.
+Obtains the unique ID of a UI instance object. In multi-instance scenarios, you can use this unique ID to distinguish between different UI instance objects for easier management.
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 
@@ -826,7 +826,7 @@ struct AnimateToImmediatelyExample {
 
 animateTo(value: AnimateParam, event: () => void): void
 
-Applies a transition animation for state changes.
+Adds transition animations for state changes in closure code.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -1937,7 +1937,7 @@ Obtains the **DragController** object, which can be used to create and initiate 
 
 |Type|Description|
 |----|----|
-|[DragController](js-apis-arkui-dragController.md)| **DragController** object.|
+|[DragController](arkts-apis-uicontext-dragcontroller.md)| **DragController** object.|
 
 **Example**
 
@@ -2238,7 +2238,7 @@ Obtains a [CursorController](arkts-apis-uicontext-cursorcontroller.md) object, w
 
 **Example**
 
-See the example for [CursorController](arkts-apis-uicontext-contextmenucontroller.md).
+See the example for [CursorController](arkts-apis-uicontext-cursorcontroller.md).
 
 ## getContextMenuController<sup>12+</sup>
 
@@ -2306,11 +2306,11 @@ Converts a value in units of vp to a value in units of px.
 
 Conversion formula: px value = vp value × pixel density
 
-Pixel density: effective pixel density of the current window, which is the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 > **NOTE**
 >
-> 1. **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> 1. **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 >
 > 2. When a UI instance has not been created yet, the **vp2px** API in [Pixel Units](./arkui-ts/ts-pixel-units.md) uses the default screen's virtual pixel ratio for conversion. In such scenarios, if you need to replace this API with a UIContext-based one, refer to [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../application-dev/ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
@@ -2364,11 +2364,11 @@ Converts a value in units of px to a value in units of vp.
 
 Conversion formula: vp value = px value/pixel density
 
-Pixel density: effective pixel density of the current window, which is the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 > **NOTE**
 >
-> 1. **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> 1. **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 >
 > 2. When a UI instance has not been created yet, the **px2vp** API in [Pixel Units](./arkui-ts/ts-pixel-units.md) uses the default screen's virtual pixel ratio for conversion. In such scenarios, if you need to replace this API with a UIContext-based one, refer to [Replacing Pixel Unit Conversion APIs with UIContext APIs](../../../application-dev/ui/arkts-global-interface.md#replacing-pixel-unit-conversion-apis-with-uicontext-apis).
 
@@ -2422,13 +2422,13 @@ Converts a value in units of fp to a value in units of px.
 
 Conversion formula: px value = fp value × pixel density × font scale factor
 
-Pixel density: effective pixel density of the current window, which is the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 Font scale factor: system font scaling coefficient ([Configuration.fontScale](arkui-ts/ts-types.md#configuration)).
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2480,13 +2480,13 @@ Converts a value in units of px to a value in units of fp.
 
 Conversion formula: fp value = px value/pixel density/font scale factor
 
-Pixel density: effective pixel density of the current window, which is typically the screen's physical pixel density [VirtualScreenConfig.density](js-apis-display.md#virtualscreenconfig16).
+Pixel density: effective pixel density of the current window, which is the virtual screen density [VirtualScreenConfig](js-apis-display.md#virtualscreenconfig16).density.
 
 Font scale factor: system font scaling coefficient ([Configuration.fontScale](arkui-ts/ts-types.md#configuration)).
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2540,7 +2540,7 @@ Conversion formula: px value = lpx value × (actual screen width/logical width),
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -2594,7 +2594,7 @@ Conversion formula: lpx value = px value/(actual screen width/logical width), wh
 
 > **NOTE**
 >
-> **getUIContext** must be called after [windowStage.loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
+> **getUIContext** must be called after windowStage.[loadContent](./arkts-apis-window-WindowStage.md#loadcontent9) to ensure the UIContext is initialized before this API is called. Otherwise, accurate results cannot be guaranteed.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -3941,9 +3941,9 @@ For details about the error codes, see UI Context Error Codes.
 
 | ID | Error Message                              |
 | ------ | ---------------------------------- |
-| 100101 | The parameter value cannot be less than 0. |
-| 100102 | The parameter value cannot be a floating-point number. |
-| 100103 | The function cannot be called from a non-main thread. |
+| 100101 | The parameter is less than 0. |
+| 100102 | The parameter value cannot be a floating point number. |
+| 100103 | The function cannot be called from a non main thread. |
 
 **Example**
 
@@ -4084,7 +4084,11 @@ See the example of the [bind](arkts-apis-uicontext-magnifier.md#bind) API in [Ma
 
 setCustomKeyboardContinueFeature(feature: CustomKeyboardContinueFeature): void
 
-Sets whether the input context persists when switching custom keyboards..
+Sets whether the custom keyboard remains persistent during input field switches.
+
+When enabled, the customer keyboard will remain displayed without being dismissed and re-launched during input field switches.
+
+When disabled, the customer keyboard will dismiss and re-launch during input field switches.
 
 **Atomic service API**: This API can be used in atomic services since API version 23.
 
@@ -4206,3 +4210,4 @@ struct Index {
 ```
 
 ![customKeyboardContinueFeature](arkui-ts/figures/customKeyboardContinueFeature.gif)
+<!--no_check-->

@@ -1,9 +1,9 @@
 # RenderNode
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @xiang-shouxing-->
-<!--Designer: @xiang-shouxing-->
-<!--Tester: @sally__-->
+<!--Owner: @sunbees-->
+<!--Designer: @sunbees-->
+<!--Tester: @khq-->
 <!--Adviser: @Brilliantry_Rui-->
 
 The **RenderNode** module provides APIs for creating a RenderNode in custom drawing settings with C APIs.
@@ -13,6 +13,8 @@ The **RenderNode** module provides APIs for creating a RenderNode in custom draw
 > - The initial APIs of this module are supported since API version 11. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > 
 > - Avoid modifying RenderNodes in [BuilderNode](./js-apis-arkui-builderNode.md). The [FrameNode](./js-apis-arkui-frameNode.md) associated with BuilderNode is designed solely for mounting the BuilderNode as a child component. Modifying attributes or operations on the FrameNode's child nodes or their corresponding RenderNodes may lead to undefined behavior, including display, event handling, and stability issues.
+>
+> - RenderNode objects do not support JSON serialization.
 
 ## Modules to Import
 
@@ -35,10 +37,15 @@ Constructor used to create a RenderNode.
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 100,
+  height: 100
+};
 renderNode.backgroundColor = 0xffff0000;
 
 // Implement a custom UI controller by extending NodeController.
@@ -97,13 +104,23 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 100, height: 100 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 100,
+  height: 100
+};
 renderNode.backgroundColor = 0xffff0000;
 const child = new RenderNode();
-child.frame = { x: 10, y: 10, width: 50, height: 50 };
+child.frame = {
+  x: 10,
+  y: 10,
+  width: 50,
+  height: 50
+};
 child.backgroundColor = 0xff00ff00;
 renderNode.appendChild(child);
 
@@ -165,20 +182,35 @@ For details about the error codes, see [Custom Node Error Codes](./errorcode-nod
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
 
 const child = new RenderNode();
-child.frame = { x: 70, y: 70, width: 50, height: 50 };
+child.frame = {
+  x: 70,
+  y: 70,
+  width: 50,
+  height: 50
+};
 child.backgroundColor = 0xffffff00;
 const sibling = renderNode.getChild(1);
 // Insert a child node after the sibling node.
@@ -231,14 +263,24 @@ Deletes the specified child node from this RenderNode.
 
 **Example**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -438,14 +480,24 @@ Obtains the first child node of this RenderNode.
 **Example**
 
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -509,14 +561,24 @@ Obtains the next sibling node of this RenderNode.
 
 **Example**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -553,10 +615,9 @@ struct Index {
           // Obtain the child node at index 1 of the renderNode, and then obtain its next sibling node.
           const nextSibling = child!.getNextSibling()
           if (nextSibling === null || child === null) {
-            console.info('the child or nextChild is null');
+            console.error('the child or nextChild is null');
           } else {
-            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-              `the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
+            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of nextSibling is x: ${nextSibling.position.x}, y: ${nextSibling.position.y}`);
           }
         })
     }
@@ -582,14 +643,24 @@ Obtains the previous sibling node of this RenderNode.
 
 **Example**
 ```ts
-import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
+import { RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 
 const renderNode = new RenderNode();
-renderNode.frame = { x: 0, y: 0, width: 200, height: 350 };
+renderNode.frame = {
+  x: 0,
+  y: 0,
+  width: 200,
+  height: 350
+};
 renderNode.backgroundColor = 0xffff0000;
 for (let i = 0; i < 5; i++) {
   const node = new RenderNode();
-  node.frame = { x: 10, y: 10 + 60 * i, width: 50, height: 50 };
+  node.frame = {
+    x: 10,
+    y: 10 + 60 * i,
+    width: 50,
+    height: 50
+  };
   node.backgroundColor = 0xff00ff00;
   renderNode.appendChild(node);
 }
@@ -628,8 +699,7 @@ struct Index {
           if (child === null || previousSibling === null) {
             console.error('the child or previousChild is null');
           } else {
-            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, ` +
-              `the position of previousSibling is x: ${previousSibling.position.x}, y: ${previousSibling.position.y}`);
+            console.info(`the position of child is x: ${child.position.x}, y: ${child.position.y}, the position of previousSibling is x: ${previousSibling.position.x}, y: ${previousSibling.position.y}`);
           }
         })
     }
@@ -1174,9 +1244,9 @@ import {  RenderNode, FrameNode, NodeController } from '@kit.ArkUI';
 const renderNode = new RenderNode();
 renderNode.backgroundColor = 0xffff0000;
 renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
-// Set the scale factor of the RenderNode.
+// Set the scale factor of the renderNode.
 renderNode.scale = { x: 0.5, y: 1 };
-// Obtain the pivot of the renderNode.
+// Obtain the scaling factor of the renderNode.
 const scale = renderNode.scale;
 
 // Implement a custom UI controller by extending NodeController.
@@ -1546,9 +1616,9 @@ renderNode.backgroundColor = 0xffff0000;
 renderNode.frame = { x: 10, y: 10, width: 100, height: 100 };
 renderNode.shadowElevation = 10;
 renderNode.shadowColor = 0XFF00FF00;
-// Set the shadow color of the renderNode.
+// Set the shadow offset of the renderNode.
 renderNode.shadowOffset = { x: 10, y: 10 };
-// Obtain the shadow color of the renderNode.
+// Obtain the shadow offset of the renderNode.
 const shadowOffset = renderNode.shadowOffset;
 
 // Implement a custom UI controller by extending NodeController.
@@ -1608,7 +1678,7 @@ Obtains the label of this RenderNode.
 
 | Type  | Description                                          |
 | ------ | ---------------------------------------------- |
-| string | Label of the current RenderNode.<br>Default value: **""**|
+| string | Label of the current RenderNode. Default value: **""**|
 
 **Example**
 
@@ -1913,7 +1983,7 @@ Code in ArkTS:
 
 ```ts
 // Index.ets
-import bridge from "libentry.so" // This .so file is compiled from your Node-API implementation.
+import bridge from "libentry.so"; // This .so file is compiled from your Node-API implementation.
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 // Extend RenderNode to implement custom drawing.
@@ -2083,7 +2153,7 @@ Triggers the re-rendering of this RenderNode.
 **Example**
 
 ```ts
-import bridge from "libentry.so" // This .so file is compiled from your Node-API implementation.
+import bridge from "libentry.so"; // This .so file is compiled from your Node-API implementation.
 import { RenderNode, FrameNode, NodeController, DrawContext } from '@kit.ArkUI';
 
 // Extend RenderNode to implement custom drawing.
@@ -2237,7 +2307,7 @@ Sets the border width for this RenderNode.
 
 | Name| Type                                               | Mandatory| Description                  |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| width  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Yes  | Border width of the RenderNode, in vp.|
+| width  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes  | Border width of the RenderNode, in vp.|
 
 get borderWidth(): Edges\<number>
 
@@ -2251,7 +2321,7 @@ Obtains the border width of this RenderNode.
 
 | Type                                               | Description                  |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Border width of the RenderNode. The default width of all borders is 0 vp.|
+| [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Border width of the RenderNode. The default width of all borders is 0 vp.|
 
 **Example**
 
@@ -2310,7 +2380,7 @@ Sets the border color for this RenderNode.
 
 | Name| Type                                               | Mandatory| Description                  |
 | ------ | --------------------------------------------------- | ---- | ---------------------- |
-| color  | [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Yes  | Border color of the RenderNode.|
+| color  | [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Yes  | Border color of the RenderNode.|
 
 get borderColor(): Edges\<number>
 
@@ -2324,7 +2394,7 @@ Obtains the border color of this RenderNode.
 
 | Type                                               | Description                  |
 | --------------------------------------------------- | ---------------------- |
-| [Edges\<number>](./js-apis-arkui-graphics.md#edgest12) | Border color of the RenderNode. By default, the color of all borders is 0XFF000000.|
+| [Edges](./js-apis-arkui-graphics.md#edgest12)\<number> | Border color of the RenderNode. By default, the color of all borders is 0XFF000000.|
 
 **Example**
 
@@ -2335,7 +2405,7 @@ const renderNode = new RenderNode();
 renderNode.frame = { x: 0, y: 0, width: 150, height: 150 };
 renderNode.backgroundColor = 0XFF00FF00;
 renderNode.borderWidth = { left: 8, top: 8, right: 8, bottom: 8 };
-// Set the border style of the renderNode.
+// Set the border color of the renderNode.
 renderNode.borderColor = { left: 0xFF0000FF, top: 0xFF0000FF, right: 0xFF0000FF, bottom: 0xFF0000FF };
 // Obtain the border color of the renderNode.
 const borderColor = renderNode.borderColor;

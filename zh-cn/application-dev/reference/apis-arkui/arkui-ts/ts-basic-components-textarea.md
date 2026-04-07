@@ -437,7 +437,7 @@ minLines(lines: Optional\<number>)
 
 | 参数名 | 类型                                      | 必填 | 说明                                                         |
 | ------ | ----------------------------------------- | ---- | ------------------------------------------------------------ |
-| lines  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 最小行数。</br>默认值：1</br>取值范围：取值范围：[1, INT32_MAX]</br>如果lines的值小于1，取默认值。 |
+| lines  | [Optional](ts-universal-attributes-custom-property.md#optionalt)\<number> | 是   | 最小行数。</br>默认值：1</br>取值范围：[1, INT32_MAX]</br>如果lines的值小于1，取默认值。 |
 
 ### customKeyboard<sup>10+</sup>
 
@@ -2432,7 +2432,7 @@ struct TextAreaExample {
 }
 ```
 <!--code_no_check-->
-```json
+```json5
 // AppScope/app.json5，修改如下代码。
 {
   "app": {

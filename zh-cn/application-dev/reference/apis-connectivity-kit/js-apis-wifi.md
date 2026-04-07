@@ -573,7 +573,7 @@ wifi.getLinkedInfo().then(data => {
 
 > **说明：**
 >
-> 从API version 6开始支持，从API version 9开始废弃。建议使用[WifiLinkedInfo](js-apis-wifiManager.md#connstate)替代。
+> 从API version 6开始支持，从API version 9开始废弃。建议使用[ConnState](js-apis-wifiManager.md#connstate)替代。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

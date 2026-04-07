@@ -36,7 +36,7 @@
 | 名称 | typedef关键字 | 描述 |
 |----|------------|----|
 | void  | CommonEvent_Subscriber    | 提供CommonEvent_Subscriber订阅者结构体声明。   |
-| void  | CommonEvent_Parameters    | 提供CommonEvent_RcvData公共事件附件信息结构体声明。  |
+| void  | CommonEvent_Parameters    | 提供CommonEvent_RcvData公共事件附加信息结构体声明。  |
 
 ### 枚举
 

@@ -2342,7 +2342,7 @@ foo();
 
 **错误码：10605096**
 
-在ArkTS中，不支持`is`运算符，必须使用`instanceof`运算符来替代。在使用`instanceof`之前，必须先使用`as`运算符将对象转换为所需类型。
+在ArkTS中，不支持`is`关键字，必须使用`instanceof`运算符来替代。在使用`instanceof`之前，必须先使用`as`运算符将对象转换为所需类型。
 
 **TypeScript**
 

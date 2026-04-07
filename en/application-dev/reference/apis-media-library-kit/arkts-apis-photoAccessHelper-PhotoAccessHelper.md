@@ -161,7 +161,7 @@ Obtains burst assets. This API uses a promise to return the result.
 
 | Name | Type               | Mandatory| Description            |
 | ------- | ------------------- | ---- | ---------------- |
-| burstKey | string   | Yes  | UUID of a set of burst photos (**BURST_KEY** of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys)). The value is a string of 36 characters.|
+| burstKey | string   | Yes  | Universally Unique Identifier (UUID) of a group of burst photos, that is, **BURST_KEY** of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys). The string contains 36 bytes.|
 | options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions)   | Yes  | Retrieval options.    |
 
 **Return value**
@@ -898,7 +898,7 @@ showAssetsCreationDialog(srcFileUris: Array&lt;string&gt;, photoCreationConfigs:
 
 Displays a dialog box for the user to confirm whether to save the images or videos. If the user agrees to save the images or videos, this API returns a list of URIs that have been created and granted save permissions (this list is permanent), and the application can use these URIs to write the images or videos. If the user declines to save the images or videos, this API returns an empty list.
 
-The dialog box must display the application name, but this cannot be directly obtained. Therefore, when calling this API, ensure that the **abilities** tag in the **module.json5** file is configured with **label** and **icon** items. Note that the icon is not affected by the **icon** item in the **abilities** tag and cannot be modified.
+The dialog box must display the application name, but this cannot be directly obtained. Therefore, before calling this API, ensure that the **label** and **icon** items are configured in the **abilities** tag in the [module.json5 configuration file](../../../application-dev/quick-start/module-configuration-file.md). Note that the icon is not affected by the **icon** item in the **abilities** tag and cannot be modified.
 
 > **NOTE**
 >
@@ -970,7 +970,7 @@ Displays a dialog box for the user to confirm whether to save the images or vide
 > **NOTE**
 >
 > - If the user agrees, the list of created URIs with the save permission granted is returned. The list is permanently valid and supports image or video writing. If the user rejects, an empty list is returned.
-> - The dialog box must display the application name. The name and icon need to be configured in the **label** and **icon** items in the **abilities** tag of the **module.json5** file.
+> - The application name and icon need to be displayed in the dialog box. The name and icon need to be configured in the **label** and **icon** items in the **abilities** tag of the [module.json5 configuration file](../../../application-dev/quick-start/module-configuration-file.md).
 > - When the passed URI is a sandbox path, images or videos can be saved properly, but the preview is not displayed.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -1004,31 +1004,32 @@ For details about the error codes, see [Media Library Error Codes](errorcode-med
 
 For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
 
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
+```ts 
+import { dataSharePredicates } from '@kit.ArkData';	 
 
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('ShowAssetsCreationDialogExDemo.');
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) { 
+  console.info('ShowAssetsCreationDialogExDemo.'); 
 
-  try {
-    // Obtain the sandbox URIs of the images or videos to be saved to the media library.
-    let srcFileUris: Array<string> = [
-      'file://fileUriDemo1' // The URI here is an example only.
-    ];
-    let creationSettings: Array<photoAccessHelper.CreationSetting> = [
-      {
-        title: 'test2', // Optional.
-        fileNameExtension: 'jpg',
-        photoType: photoAccessHelper.PhotoType.IMAGE
-      }
-    ];
-    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);
-    console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);
-  } catch (err) {
-    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
-  }
+  try {	 
+    // Obtain the sandbox URIs of the images or videos to be saved to the media library. 
+    let srcFileUris: Array<string> = [	 
+      'file://fileUriDemo1' // The URI here is an example only. 
+    ];	 
+    let photoCreationConfigs: Array<photoAccessHelper.CreationSetting> = [	 
+      {	 
+        title: 'test2', // Optional. 
+        fileNameExtension: 'jpg',	 
+        photoType: photoAccessHelper.PhotoType.IMAGE	 
+      }	 
+    ];	 
+    let desFileUris: Array<string> = await phAccessHelper.showAssetsCreationDialogEx(srcFileUris, photoCreationConfigs);	 
+    console.info('showAssetsCreationDialogEx success, data is ' + desFileUris);	 
+  } catch (err) {	 
+    console.error('showAssetsCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);	 
+  }	 
 }
 ```
+
 ## showSingleAssetCreationDialogEx<sup>23+</sup>
 
 showSingleAssetCreationDialogEx(srcFileUri: string, creationSetting: CreationSetting, isImageFullyDisplayed: boolean): Promise&lt;string&gt;
@@ -1038,7 +1039,7 @@ Displays a dialog box for the user to confirm whether to save an image or video.
 > **NOTE**
 >
 > - If the user agrees to save the images or videos, this API returns a URI that has been created and granted with the save permission (this URI is permanent), and the application can use this URI to write the image or video. If the user declines to save the image or video, this API returns an empty string.
-> - The dialog box must display the application name, but this cannot be directly obtained. Therefore, when calling this API, ensure that the **abilities** tag in the **module.json5** file is configured with **label** and **icon** items. Note that the icon is not affected by the **icon** item in the **abilities** tag and cannot be modified.
+> - The dialog box must display the application name, but this cannot be directly obtained. Therefore, before calling this API, ensure that the **label** and **icon** items are configured in the **abilities** tag in the [module.json5 configuration file](../../../application-dev/quick-start/module-configuration-file.md). Note that the icon is not affected by the **icon** item in the **abilities** tag and cannot be modified.
 > - If the passed URI is a sandbox path, images or videos can be saved but cannot be previewed.
 
 **Model restriction**: This API can be used only in the stage model.
@@ -1069,32 +1070,30 @@ For details about the error codes, see [Media Library Error Codes](errorcode-med
 | -------- | ---------------------------------------- |
 | 23800301 |Internal system error. It is recommended to retry and check the logs. Possible causes: 1. Database corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
-**Example**
+**Example** 
 
-For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).	 
 
-```ts
-import { dataSharePredicates } from '@kit.ArkData';
+```ts	 
+import { dataSharePredicates } from '@kit.ArkData';	 
 
-async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
-  console.info('ShowSingleAssetCreationDialogExDemo.');
+async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {	 
+  console.info('ShowSingleAssetCreationDialogExDemo.');	 
 
-  try {
-    // Obtain the sandbox URIs of the images or videos to be saved to the media library.
-    let srcFileUri: string = [
-      'file://fileUriDemo1' // The URI here is an example only.
-    ];
-    let creationSetting: photoAccessHelper.CreationSetting = {
-      title: 'test2', // Optional.
-      fileNameExtension: 'jpg',
-      photoType: photoAccessHelper.PhotoType.IMAGE
-    }
-    let isImageFullyDisplayed: boolean = true
-    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUris, photoCreationConfigs, isImageFullyDisplayed);
-    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUris);
-  } catch (err) {
-    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message);
-  }
+  try {	 
+    // Obtain the sandbox URIs of the images or videos to be saved to the media library. 
+    let srcFileUri: string = 'file://fileUriDemo1'; // The URI here is an example only. 
+    let photoCreationConfig: photoAccessHelper.CreationSetting = {	 
+      title: 'test2', // Optional. 
+      fileNameExtension: 'jpg',	 
+      photoType: photoAccessHelper.PhotoType.IMAGE	 
+    }	 
+    let isImageFullyDisplayed: boolean = true	 
+    let desFileUri: string = await phAccessHelper.showSingleAssetCreationDialogEx(srcFileUri, photoCreationConfig, isImageFullyDisplayed); 
+    console.info('showSingleAssetCreationDialogEx success, data is ' + desFileUri); 
+  } catch (err) { 
+    console.error('showSingleAssetCreationDialogEx failed, errCode is ' + err.code + ', errMsg is ' + err.message); 
+  } 
 }
 ```
 
@@ -1968,7 +1967,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 offSinglePhotoChange(asset?: PhotoAsset, callback?: Callback&lt;PhotoAssetChangeInfos&gt;): void;
 
-Unregisters the listener for a single asset. The rules are as follows: (1) If no parameter is specified, all listeners for the single assets are unregistered. (2) If **asset** is specified but **callback** is not specified, all callback listeners of the **asset** are unregistered. (3) If both **asset** and **callback** are specified, the listener for the specified **callback** is unregistered.
+Unregisters the listener for a single asset. Note the following:
+
+1. If no parameter is specified, all listeners for the single assets are unregistered.
+
+2. If **asset** is specified but **callback** is not specified, all callback listeners of the **asset** are unregistered.
+
+3. If both **asset** and **callback** are specified, only the specified callback listener is unregistered.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
@@ -2119,7 +2124,13 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper, cont
 
 offSinglePhotoAlbumChange(album?: Album, callback?: Callback&lt;AlbumChangeInfos&gt;): void
 
-Unregisters the listener for a single album. The rules are as follows: (1) If no parameter is specified, the listeners for all single albums are unregistered. (2) If **album** is specified but **callback** is not specified, all callback listeners of the album are unregistered. (3) If both **album** and **callback** are specified, only the specified callback listener is unregistered.
+Unregisters the listener for a single album. Note the following:
+
+1. If no parameter is specified, all listeners for the single albums are unregistered.
+
+2. If **album** is specified but **callback** is not specified, all callback listeners of the album are unregistered.
+
+3. If both **album** and **callback** are specified, only the specified callback listener is unregistered.
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 

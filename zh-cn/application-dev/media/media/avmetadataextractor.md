@@ -8,11 +8,11 @@
 
 使用[AVMetadataExtractor](media-kit-intro.md#avmetadataextractor)可以实现从原始媒体资源中获取元数据。本指南将以获取一个媒体资源的元数据作为示例，向开发者讲解AVMetadataExtractor元数据相关功能。
 
-获取音视频资源的元数据的全流程包含：创建AVMetadataExtractor、设置资源、获取元数据、获取音频资源的专辑封面或获取视频缩略图、销毁资源。
+获取音视频资源的元数据的全流程包含：创建AVMetadataExtractor、设置资源、获取元数据、获取音频资源的专辑封面或获取视频缩略图、释放资源。
 
 ## 开发步骤及注意事项
 
-详细的API说明请参考[AVMetadataExtractor API参考](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md)。
+详细的API说明请参考[AVMetadataExtractor](../../reference/apis-media-kit/arkts-apis-media-AVMetadataExtractor.md)。
 
 1. 使用[createAVMetadataExtractor()](../../reference/apis-media-kit/arkts-apis-media-f.md#mediacreateavmetadataextractor11-1)创建实例。
    ```ts
@@ -41,7 +41,7 @@
 
    - 如果设置dataSrc，必须正确设置dataSrc中的callback属性，确保callback被调用时能正确读取到对应资源，使用应用沙箱路径访问对应资源，参考[获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。应用沙箱的介绍及如何向应用沙箱推送文件，请参考[文件管理](../../file-management/app-sandbox-directory.md)。
      ```ts
-     import { fileIo as fs, ReadOptions } from '@kit.CoreFileKit';
+     import { fileIo, ReadOptions } from '@kit.CoreFileKit';
      import { common } from '@kit.AbilityKit';
      import { media } from '@kit.MediaKit';
      const TAG = 'MetadataDemo';
@@ -51,10 +51,10 @@
      let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let rootPath: string = context.filesDir; // 应用文件目录。
      let testFilename: string = '/test.mp3'; // test.mp3为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
-     // 使用fs文件系统打开沙箱地址获取媒体文件地址，设置dataSrc属性。
+     // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置dataSrc属性。
      // 通过UIAbilityContext获取沙箱地址filesDir（以Stage模型为例）。
-     let fd: number = fs.openSync(rootPath + testFilename).fd;
-     let fileSize: number = fs.statSync(rootPath + testFilename).size;
+     let fd: number = fileIo.openSync(rootPath + testFilename).fd;
+     let fileSize: number = fileIo.statSync(rootPath + testFilename).size;
      // 设置dataSrc描述符，通过callback从文件中获取资源，写入buffer中。
      let dataSrc: media.AVDataSrcDescriptor = {
        fileSize: fileSize,
@@ -67,7 +67,7 @@
            offset: pos,
            length: len
          };
-         let num = fs.readSync(fd, buffer, options);
+         let num = fileIo.readSync(fd, buffer, options);
          console.info(TAG, 'readAt end, num: ' + num);
          if (num > 0 && fileSize >= pos) {
            return num;
@@ -96,16 +96,16 @@
    - 不同AVMetadataExtractor或者[AVImageGenerator](../../reference/apis-media-kit/arkts-apis-media-AVImageGenerator.md)实例，如果需要操作同一资源，需要多次打开文件描述符，不要共用同一文件描述符。
      ```ts
      import { common } from '@kit.AbilityKit';
-     import { fileIo as fs } from '@kit.CoreFileKit';
+     import { fileIo } from '@kit.CoreFileKit';
      import { media } from '@kit.MediaKit';
 
      // 创建AVMetadataExtractor对象。
      let avMetadataExtractor: media.AVMetadataExtractor = await media.createAVMetadataExtractor();
-     // 使用fs文件系统打开沙箱地址获取媒体文件地址，设置fdSrc属性。
+     // 使用fileIo文件系统打开沙箱地址获取媒体文件地址，设置fdSrc属性。
      let context: Context = this.getUIContext().getHostContext() as common.UIAbilityContext;
      let rootPath: string = context.filesDir; // 应用文件目录。
      let testFilename: string = '/test.mp3'; // test.mp3为应用文件目录下的预置资源，需要开发者根据实际情况进行替换。
-     avMetadataExtractor.fdSrc = fs.openSync(rootPath + testFilename); // 设置fdSrc属性。
+     avMetadataExtractor.fdSrc = fileIo.openSync(rootPath + testFilename); // 设置fdSrc属性。
      ```
 
 3. 获取元数据：调用fetchMetadata()，可以获取到一个[AVMetadata](../../reference/apis-media-kit/arkts-apis-media-i.md#avmetadata11)对象，通过访问该对象的各个属性，可以获取到元数据。

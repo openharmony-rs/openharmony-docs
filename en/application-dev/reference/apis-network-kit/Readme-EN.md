@@ -29,7 +29,7 @@
   - [@ohos.net.policy (Network Policy Management) (System API)](js-apis-net-policy-sys.md)
   - [@ohos.net.sharing (Network Sharing Management) (System API)](js-apis-net-sharing-sys.md)
   - [@ohos.net.statistics (Traffic Management) (System API)](js-apis-net-statistics-sys.md)
-  - [@ohos.net.vpn (VPN Management) (System API)] (js-apis-net-vpn-sys.md)
+  - [@ohos.net.vpn (VPN Management) (System API)](js-apis-net-vpn-sys.md)
   - [@ohos.net.vpnExtension (Enhanced VPN Management) (System API)](js-apis-net-vpnExtension-sys.md)
   - [@ohos.net.netFirewall (Network Firewall) (System API)](js-apis-net-netfirewall-sys.md)
   <!--DelEnd-->
@@ -98,3 +98,4 @@
   - [VPN Error Codes](errorcode-net-vpn.md)
   - [Network Security Error Codes](errorcode-net-networkSecurity.md)
   - [Kernel Error Codes](errorcode-kernel.md)
+  - [Firewall Error Codes](errorcode-net-netfirewall.md)

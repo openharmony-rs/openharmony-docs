@@ -28,13 +28,13 @@
 | -------------------------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------------------------ |
 | name                       | string                                                       | 是   | 否   | 应用程序的名称。                                             |
 | description                | string                                                       | 是   | 否   | 应用程序的描述信息。                                         |
-| descriptionId              | number                                                       | 是   | 否   | 应用程序的描述信息的资源id。                                 |
+| descriptionId              | number                                                       | 是   | 否   | 应用程序的描述信息的资源ID。                                 |
 | systemApp                  | boolean                                                      | 是   | 否   | 判断是否为系统应用程序，取值为true表示系统应用，取值为false表示非系统应用。                        |
 | enabled                    | boolean                                                      | 是   | 否   | 判断应用程序是否可以使用，取值为true表示可以使用，取值为false表示不可使用。                       |
 | label                      | string                                                       | 是   | 否   | 应用程序显示的标签。                                         |
-| labelId                    | string                                                       | 是   | 否   | 应用程序的标签的资源id值。                                   |
+| labelId                    | string                                                       | 是   | 否   | 应用程序的标签的资源ID值。                                   |
 | icon                       | string                                                       | 是   | 否   | 应用程序的图标。                                             |
-| iconId                     | string                                                       | 是   | 否   | 应用程序图标的资源id值。                                     |
+| iconId                     | string                                                       | 是   | 否   | 应用程序图标的资源ID值。                                     |
 | process                    | string                                                       | 是   | 否   | 应用程序的进程名称。                 |
 | supportedModes             | number                                                       | 是   | 否   | 标识应用支持的运行模式，当前只定义了驾驶模式（drive）。该标签只适用于车机。 |
 | moduleSourceDirs           | Array\<string>                                               | 是   | 否   | 应用程序的资源存放的相对路径。不能拼接路径访问资源文件，请使用[资源管理接口](../apis-localization-kit/js-apis-resource-manager.md)访问资源。                               |

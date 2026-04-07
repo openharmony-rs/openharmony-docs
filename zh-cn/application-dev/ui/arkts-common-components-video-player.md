@@ -25,7 +25,7 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
 
 - 普通本地视频。
 
-  加载本地视频时，首先在本地rawfile目录指定对应的文件，如下图所示。
+  加载本地视频时，需在工程资源的rawfile目录中放置视频文件，如下图所示。
 
   ![zh-cn_image_0000001562700409](figures/zh-cn_image_0000001562700409.png)
 
@@ -47,7 +47,7 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
         Video({
           src: this.innerResource,  // 设置视频源
           previewUri: this.previewUris, // 设置预览图
-          controller: this.controller //设置视频控制器，可以控制视频的播放状态
+          controller: this.controller // 设置视频控制器，可以控制视频的播放状态
         })
       }
     }
@@ -61,11 +61,13 @@ Video组件支持加载本地视频和网络视频。具体的数据源配置请
   
   ``` TypeScript
   // xxx.ets
-  // ···
+  // ...
   @Component
   export struct LocalVideoTwo {
     private controller: VideoController = new VideoController();
+    // $r('app.media.preview')需要替换为开发者所需的图像资源文件
     private previewUris: Resource = $r('app.media.preview');
+    // $rawfile('videoTest.mp4')需要替换为开发者所需的影像资源文件
     private videoSrc: string = 'dataability://device_id/com.domainname.dataability.videodata/video/10';
   
     build() {

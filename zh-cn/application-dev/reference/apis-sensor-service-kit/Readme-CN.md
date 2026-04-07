@@ -7,13 +7,13 @@
 <!--Adviser: @hu-zhiqiong-->
 
 - ArkTS API<!--sensor-service-arkts-->
-  - [@ohos.sensor(传感器)](js-apis-sensor.md)
-  - [@ohos.vibrator(振动)](js-apis-vibrator.md)
+  - [@ohos.sensor (传感器)](js-apis-sensor.md)
+  - [@ohos.vibrator (振动)](js-apis-vibrator.md)
   <!--Del-->
-  - [@ohos.sensor(传感器)(系统接口)](js-apis-sensor-sys.md)
+  - [@ohos.sensor (传感器)(系统接口)](js-apis-sensor-sys.md)
   <!--DelEnd-->
-  - [@ohos.sensor(传感器)(已废弃接口)](js-apis-system-sensor.md)
-  - [@ohos.vibrator(振动)(已废弃接口)](js-apis-system-vibrate.md)
+  - [@system.sensor (传感器)](js-apis-system-sensor.md)
+  - [@system.vibrator (振动)](js-apis-system-vibrate.md)
 - C API<!--sensor-service-c-->
   - 模块<!--sensor-service-module-->
     - [Sensor](capi-sensor.md)
@@ -30,7 +30,7 @@
     - [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md)
     - [Sensor_Subscriber](capi-sensor-sensor-subscriber.md)
     - [Vibrator_Attribute](capi-vibrator-vibrator-attribute.md)
-    - [Vibrator_File_Description](capi-vibrator-vibrator-filedescription.md)
+    - [Vibrator_FileDescription](capi-vibrator-vibrator-filedescription.md)
 - 错误码<!--sensor-service-arkts-errcode-->
-  - [Sensor错误码](errorcode-sensor.md)
-  - [Vibrator错误码](errorcode-vibrator.md)
+  - [传感器错误码](errorcode-sensor.md)
+  - [振动错误码](errorcode-vibrator.md)

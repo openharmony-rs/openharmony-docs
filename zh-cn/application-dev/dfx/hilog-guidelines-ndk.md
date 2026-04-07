@@ -13,7 +13,7 @@ HiLog日志系统，提供给系统框架、服务、以及应用，用于打印
 
 ## 接口说明
 
-HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅[API参考文档](../reference/apis-performance-analysis-kit/capi-log-h.md)。
+HiLog中定义了DEBUG、INFO、WARN、ERROR、FATAL五种日志级别，并提供了对应的方法输出不同级别的日志，接口如下表所示，具体说明可查阅[log.h](../reference/apis-performance-analysis-kit/capi-log-h.md)。
 
 | 方法/宏 | 接口描述 |
 | -------- | -------- |

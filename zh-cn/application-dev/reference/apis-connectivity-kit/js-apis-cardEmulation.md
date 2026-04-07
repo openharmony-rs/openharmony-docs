@@ -198,7 +198,7 @@ if (!isHceSupported) {
 ```
 <!--code_no_check_fa-->
 ```js
-// 适用于轻量化智能穿戴设备
+// 适用于轻量级智能穿戴设备
 import cardEmulation from '@ohos.nfc.cardEmulation';
 
 let isHceSupported = cardEmulation.isSupported(cardEmulation.FeatureType.HCE);
@@ -248,7 +248,7 @@ if (!hasHceCap) {
 
 <!--code_no_check_fa-->
 ```js
-// 适用于轻量化智能穿戴设备
+// 适用于轻量级智能穿戴设备
 import cardEmulation from '@ohos.nfc.cardEmulation';
 
 let hasHceCap = cardEmulation.hasHceCapability();
@@ -310,7 +310,7 @@ let isDefaultService: boolean = cardEmulation.isDefaultService(elementName, card
 
 <!--code_no_check_fa-->
 ```js
-// 适用于轻量化智能穿戴设备
+// 适用于轻量级智能穿戴设备
 import cardEmulation from '@ohos.nfc.cardEmulation';
 
 let appName = "com.example.testquestionlite";

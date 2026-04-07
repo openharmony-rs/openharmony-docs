@@ -16,7 +16,7 @@ Focus control attributes determine whether a component can receive focus and how
 >  
 >  - Components can actively acquire focus independently of the window's focus state.
 >  
->  - For details about focus development, see [Focus Event](../../../ui/arkts-common-events-focus-event.md).
+>  - For details about focus development, see [Implementing Focus Support](../../../ui/arkts-common-events-focus-event.md).
 
 ## focusable
 
@@ -374,7 +374,7 @@ Sets the target component for focus movement based on key presses. If it is not 
 
 > **NOTE**
 > 
-> Directly using **focusControl** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then call the [getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12) API through this object.
+> Directly using **focusControl** can lead to the issue of [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the [UIContext](../arkts-apis-uicontext-uicontext.md) object using the **getUIContext()** API and then obtain the **focusControl** bound to the instance using the [getFocusController](../arkts-apis-uicontext-uicontext.md#getfocuscontroller12) API.
 
 ## Example
 
@@ -398,7 +398,7 @@ struct FocusableExample {
               .width(165)
               .height(40)
               .fontColor(Color.White)
-              .focusOnTouch(true)           // The button is focusable on touch.
+              .focusOnTouch(true) // The button is focusable on touch.
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -408,8 +408,9 @@ struct FocusableExample {
                 .width(80)
                 .height(40)
                 .fontColor(Color.White)
-                .focusOnTouch(true)           // The button is focusable on touch.
+                .focusOnTouch(true) // The button is focusable on touch.
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -421,7 +422,7 @@ struct FocusableExample {
                 .fontColor(Color.White)
             }
           }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
-          .tabIndex(1)                      // The column is the initial component to have focus in sequential keyboard navigation.
+          .tabIndex(1) // The Column component is the first component that obtains the focus when the Tab key is pressed.
           Column({ space: 5 }) {
             Button('Group2')
               .width(165)
@@ -436,8 +437,9 @@ struct FocusableExample {
                 .width(80)
                 .height(40)
                 .fontColor(Color.White)
-                .groupDefaultFocus(true)      // The button obtains focus when its upper-level column is in focus.
+                .groupDefaultFocus(true) // The button obtains focus when its upper-level column is in focus.
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -449,15 +451,16 @@ struct FocusableExample {
                 .fontColor(Color.White)
             }
           }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
-          .tabIndex(2)                      // The column is the second component to have focus in sequential keyboard navigation.
+          .tabIndex(2) // The Column component is the second component that obtains the focus when the Tab key is pressed.
         }
+
         Column({ space: 5 }) {
-          TextInput({placeholder: 'input', text: this.inputValue})
+          TextInput({ placeholder: 'input', text: this.inputValue })
             .onChange((value: string) => {
               this.inputValue = value
             })
             .width(156)
-            .defaultFocus(true)             // The TextInput component is the initial default focus of the hierarchical page.
+            .defaultFocus(true) // The TextInput component is the initial default focus of the hierarchical page.
           Button('Group3')
             .width(165)
             .height(40)
@@ -472,6 +475,7 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
@@ -486,6 +490,7 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
@@ -501,7 +506,7 @@ struct FocusableExample {
               .fontColor(Color.White)
           }
         }.borderWidth(2).borderColor(Color.Orange).borderStyle(BorderStyle.Dashed)
-        .tabIndex(3)                      // The column is the third component to have focus in sequential keyboard navigation.
+        .tabIndex(3) // The Column component is the third component that obtains the focus when the Tab key is pressed.
       }.alignItems(VerticalAlign.Top)
     }
   }
@@ -542,17 +547,20 @@ struct RequestFocusExample {
   @State selectId: string = 'LastPageId';
 
   build() {
-    Column({ space:20 }){
-      Row({space: 5}) {
+    Column({ space: 20 }) {
+      Row({ space: 5 }) {
         Button("id: " + this.idList[0] + " focusable(false)")
-          .width(180).height(70).fontColor(Color.White)
+          .width(180)
+          .height(70)
+          .fontColor(Color.White)
           .id(this.idList[0])
           .focusable(false)
         Button("id: " + this.idList[1])
           .width(180).height(70).fontColor(Color.White)
           .id(this.idList[1])
       }
-      Row({space: 5}) {
+
+      Row({ space: 5 }) {
         Button("id: " + this.idList[2])
           .width(180).height(70).fontColor(Color.White)
           .id(this.idList[2])
@@ -560,7 +568,8 @@ struct RequestFocusExample {
           .width(180).height(70).fontColor(Color.White)
           .id(this.idList[3])
       }
-      Row({space: 5}) {
+
+      Row({ space: 5 }) {
         Button("id: " + this.idList[4])
           .width(180).height(70).fontColor(Color.White)
           .id(this.idList[4])
@@ -568,14 +577,15 @@ struct RequestFocusExample {
           .width(180).height(70).fontColor(Color.White)
           .id(this.idList[5])
       }
-      Row({space: 5}) {
-        Select([{value: this.idList[0]},
-                {value: this.idList[1]},
-                {value: this.idList[2]},
-                {value: this.idList[3]},
-                {value: this.idList[4]},
-                {value: this.idList[5]},
-                {value: this.idList[6]}])
+
+      Row({ space: 5 }) {
+        Select([{ value: this.idList[0] },
+          { value: this.idList[1] },
+          { value: this.idList[2] },
+          { value: this.idList[3] },
+          { value: this.idList[4] },
+          { value: this.idList[5] },
+          { value: this.idList[6] }])
           .value(this.selectId)
           .onSelect((index: number) => {
             this.selectId = this.idList[index]
@@ -584,15 +594,15 @@ struct RequestFocusExample {
           .width(180).height(70).fontColor(Color.White)
           .onClick(() => {
             // You are advised to use this.getUIContext().getFocusController().requestFocus().
-            let res = focusControl.requestFocus(this.selectId)      // Move the focus to the component specified by this.selectId.
+            let res = focusControl.requestFocus(this.selectId) // Move the focus to the component specified by this.selectId.
             if (res) {
-              this.getUIContext().getPromptAction().showToast({message: 'Request success'})
+              this.getUIContext().getPromptAction().showToast({ message: 'Request success' })
             } else {
-              this.getUIContext().getPromptAction().showToast({message: 'Request failed'})
+              this.getUIContext().getPromptAction().showToast({ message: 'Request failed' })
             }
           })
       }
-    }.width('100%').margin({ top:20 })
+    }.width('100%').margin({ top: 20 })
   }
 }
 ```
@@ -660,7 +670,7 @@ struct FocusableExample {
   build() {
     Scroll() {
       Row({ space: 20 }) {
-        Column({ space: 20 }) {  // Labeled as Column1.
+        Column({ space: 20 }) { // Labeled as Column1.
           Column({ space: 5 }) {
             Button('Group1')
               .width(165)
@@ -676,6 +686,7 @@ struct FocusableExample {
                 .height(40)
                 .fontColor(Color.White)
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -687,6 +698,7 @@ struct FocusableExample {
                 .fontColor(Color.White)
             }
           }.borderWidth(2).borderColor(Color.Red).borderStyle(BorderStyle.Dashed)
+
           Column({ space: 5 }) {
             Button('Group2')
               .width(165)
@@ -703,6 +715,7 @@ struct FocusableExample {
                 .fontColor(Color.White)
                 .focusScopePriority('ColumnScope1', FocusPriority.PRIOR) // Focus when Column1 first gains focus.
             }
+
             Row({ space: 5 }) {
               Button()
                 .width(80)
@@ -716,8 +729,9 @@ struct FocusableExample {
           }.borderWidth(2).borderColor(Color.Green).borderStyle(BorderStyle.Dashed)
         }
         .focusScopeId('ColumnScope1')
-        Column({ space: 5 }) {  // Labeled as Column2.
-          TextInput({placeholder: 'input', text: this.inputValue})
+
+        Column({ space: 5 }) { // Labeled as Column2.
+          TextInput({ placeholder: 'input', text: this.inputValue })
             .onChange((value: string) => {
               this.inputValue = value
             })
@@ -736,11 +750,12 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
             .fontColor(Color.White)
-            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS)  // Focus when Column2 first gains focus.
+            .focusScopePriority('ColumnScope2', FocusPriority.PREVIOUS) // Focus when Column2 gains focus.
           Row({ space: 5 }) {
             Button()
               .width(80)
@@ -751,6 +766,7 @@ struct FocusableExample {
               .height(40)
               .fontColor(Color.White)
           }
+
           Button()
             .width(165)
             .height(40)
@@ -817,6 +833,7 @@ struct TabStop {
                 strokeWidth: LengthMetrics.px(10)
               })
           }
+
           Row({ space: 5 }) {
             Button("button 2")
               .width(200).height(70).fontColor(Color.White)
@@ -828,6 +845,7 @@ struct TabStop {
           }
         }.width('80%').margin({ top: 30 }).borderColor(Color.Black)
       }.width('95%').margin({ top: 60 }).borderColor(Color.Black)
+
       Column({ space: 20 }) {
         Column({ space: 20 }) {
           Row({ space: 5 }) {
@@ -891,7 +909,7 @@ Without [nextFocus](#nextfocus18) configured, the default focus navigation order
 class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
   applyNormalAttribute(instance: ButtonAttribute): void {
     instance.id('M')
-    instance.nextFocus({forward: 'D', up: 'C', down: 'D'})
+    instance.nextFocus({ forward: 'D', up: 'C', down: 'D' })
   }
 }
 
@@ -902,29 +920,38 @@ struct Index {
   @State idList: string[] = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   build() {
-    Column({space: 10}) {
-      Row({space: 10}) {
+    Column({ space: 10 }) {
+      Row({ space: 10 }) {
         Button("id: M")
           .attributeModifier(this.modifier)
         Button("id: " + this.idList[0])
           .id(this.idList[0])
-          .nextFocus({forward: 'C', backward: 'M', up: 'E', right: 'F', down: 'B', left: 'D'});
+          .nextFocus({
+            forward: 'C',
+            backward: 'M',
+            up: 'E',
+            right: 'F',
+            down: 'B',
+            left: 'D'
+          });
         Button("id: " + this.idList[1])
           .id(this.idList[1])
       }
-      Column({space: 10}) {
+
+      Column({ space: 10 }) {
         Button("id: " + this.idList[2])
           .id(this.idList[2]);
         Button("id: " + this.idList[3])
           .id(this.idList[3])
-          .nextFocus({forward: 'F'});
+          .nextFocus({ forward: 'F' });
       }
-      Row({space: 10}) {
+
+      Row({ space: 10 }) {
         Button("id: " + this.idList[4])
           .id(this.idList[4]);
         Button("id: " + this.idList[5])
           .id(this.idList[5])
-          .nextFocus({forward: 'B'});
+          .nextFocus({ forward: 'B' });
       }
     }
   }

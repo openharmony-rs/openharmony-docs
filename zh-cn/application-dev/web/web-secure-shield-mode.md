@@ -28,7 +28,7 @@
 
 - 禁止使用Service Worker能力。
 
-- 禁止使用非代理UDP流量，防止WebRTC泄露真实源ip。
+- 禁止使用非代理UDP流量，防止WebRTC泄露真实源IP。
 
 - 禁止即时编译（JIT）能力。
 

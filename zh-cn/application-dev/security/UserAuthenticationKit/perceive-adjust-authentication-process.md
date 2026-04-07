@@ -15,7 +15,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的[API文档](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md)。
+具体参数、返回值、错误码等描述，请参考对应的[@ohos.userIAM.userAuth (用户认证)](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md)。
 
 | 接口名称 | 功能描述 | 
 | ------- | ------- |
