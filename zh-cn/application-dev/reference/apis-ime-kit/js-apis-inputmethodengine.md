@@ -824,7 +824,7 @@ let panelInfo: inputMethodEngine.PanelInfo = {
 
 class InputMethodExt extends InputMethodExtensionAbility {
     onCreate(want: Want): void {
-        console.info('onCreate, want:' + want.abilityName);
+        console.info(`onCreate, want: ${want.abilityName}`);
         if (!this.context) {
             inputMethodEngine.getInputMethodAbility()
             .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
@@ -887,7 +887,7 @@ let panelInfo: inputMethodEngine.PanelInfo = {
 
 class InputMethodExt extends InputMethodExtensionAbility {
     onCreate(want: Want): void {
-        console.info('onCreate, want:' + want.abilityName);
+        console.info(`onCreate, want: ${want.abilityName}`);
         if (this.context) {
             inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo)
                 .then((panel: inputMethodEngine.Panel) => {
