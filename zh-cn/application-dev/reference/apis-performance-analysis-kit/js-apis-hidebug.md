@@ -747,7 +747,7 @@ import { hidebug } from '@kit.PerformanceAnalysisKit';
 
 let appMemoryLimit:hidebug.MemoryLimit = hidebug.getAppMemoryLimit();
 console.info(`rssLimit: ${appMemoryLimit.rssLimit}, vssLimit: ${appMemoryLimit.vssLimit},` +
- 	`vmHeapLimit: ${appMemoryLimit.vmHeapLimit}, vmTotalHeapSize: ${appMemoryLimit.vmTotalHeapSize}`);
+  `vmHeapLimit: ${appMemoryLimit.vmHeapLimit}, vmTotalHeapSize: ${appMemoryLimit.vmTotalHeapSize}`);
 ```
 
 ## hidebug.getSystemCpuUsage<sup>12+</sup>
