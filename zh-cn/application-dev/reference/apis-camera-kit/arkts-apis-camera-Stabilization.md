@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-Stabilization 继承自 [StabilizationQuery](arkts-apis-camera-StabilizationQuery.md)。
+Stabilization继承自[StabilizationQuery](arkts-apis-camera-StabilizationQuery.md)。
 
 提供设备在录像模式下设置视频防抖的操作。
 

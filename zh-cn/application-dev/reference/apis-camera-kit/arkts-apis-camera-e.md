@@ -165,6 +165,7 @@
 | CAMERA_FORMAT_YCBCR_P010<sup>11+</sup> |   2001    | YCBCR_P010格式的图片。      |
 | CAMERA_FORMAT_YCRCB_P010<sup>11+</sup> |   2002    | YCRCB_P010格式的图片。      |
 | CAMERA_FORMAT_HEIC<sup>13+</sup>       |   2003    | HEIF格式的图片。            |
+| CAMERA_FORMAT_DNG<sup>24+</sup>        |   4    |  DNG（数字负片）格式的图片。<br>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。|
 
 ## VideoCodecType<sup>13+</sup>
 
@@ -416,3 +417,81 @@
 |--------------|-------|---------|
 | HIGH_QUALITY | 0     | 画质优先，拍照需要较长的时间，以输出高画质的图片。 |
 | SPEED        | 1     | 性能优先，会降低画质来提升拍照的速度。 |
+
+## SensorColorFilterArrangement<sup>24+</sup>
+
+枚举，传感器颜色滤镜排列方式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                         | 值   | 说明                                                              |
+| --------------------------- | ---- |-----------------------------------------------------------------|
+| BGGR                        | 0    | 蓝绿绿红（Blue-Green-Green-Red）滤镜排列方式。                                                        |
+| GBRG                        | 1    | 绿蓝红绿（Green-Blue-Red-Green）滤镜排列方式。                                                           |
+| GRBG                        | 2    | 绿红蓝绿（Green-Red-Blue-Green）滤镜排列方式。                                                           |
+| RGGB                        | 3    | 红绿绿蓝（Red-Green-Green-Blue）滤镜排列方式。                                                           |
+
+## FlashState<sup>24+</sup>
+
+枚举，闪光灯状态。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明            |
+| ------------------------- | ---- | ------------    |
+| FLASH_STATE_UNAVAILABLE      | 0    | 闪光灯为不可用状态，为默认值。   |
+| FLASH_STATE_READY   | 1    | 闪光灯为可用状态。 |
+| FLASH_STATE_FLASHING   | 2    | 闪光灯已经被打开。       |
+
+## ExposureMeteringMode<sup>24+</sup>
+
+枚举，曝光测光模式。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明            |
+| ------------------------- | ---- | ------------    |
+| MATRIX      | 0    | 矩阵测光模式。对画面广泛区域进行测光，适合拍摄自然风光。   |
+| CENTER   | 1    | 中心测光模式。对整个画面进行测光，但最大比重分配给中央区域，适合拍摄人像。 |
+| SPOT   | 2    | 点测光模式。对画面测光点周围约2.5%进行测光，专注于特定微小区域的光线，如被摄主体的眼睛。       |
+
+## OISMode<sup>24+</sup>
+
+枚举，光学防抖（Optical Image Stabilization）模式。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明            |
+| ------------------------- | ---- | ------------    |
+| OFF      | 0    | 光学防抖关闭。   |
+| AUTO   | 1    | 光学防抖自动控制。 |
+| CUSTOM   | 2    | 光学防抖由应用控制。       |
+
+## OISAxes<sup>24+</sup>
+
+枚举，光学防抖（OIS）轴向。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+| 名称                       | 值   | 说明            |
+| ------------------------- | ---- | ------------    |
+| PITCH      | 0    | 俯仰轴。相控制相机机身上下旋转，即机身围绕与镜头水平方向的轴旋转。   |
+| YAW   | 1    | 偏航轴。控制相机机身左右旋转，即机身围绕与镜头垂直方向的轴旋转。 |
