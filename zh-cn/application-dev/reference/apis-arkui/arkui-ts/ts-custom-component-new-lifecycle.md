@@ -243,7 +243,7 @@ aboutToDisappear函数在自定义组件被销毁之前执行。不建议在abou
 
 aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
-当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，以接收组件的构造函数。当params存在时，表示V1组件的复用回调。
+当可复用的自定义组件从缓存中重新添加到节点树时调用aboutToReuse函数，以接收组件的构造参数。当params存在时，表示V1组件的复用回调。
 
 **原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
