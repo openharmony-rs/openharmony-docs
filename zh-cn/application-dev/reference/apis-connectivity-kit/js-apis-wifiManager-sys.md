@@ -231,6 +231,8 @@ getDeviceConfig(networkId: number): WifiDeviceConfig
 
 根据网络ID获取单条网络配置。
 
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 **系统接口：** 此接口为系统接口。
 
 **需要权限：** ohos.permission.GET_WIFI_INFO 和 ohos.permission.GET_WIFI_CONFIG(仅系统应用可申请)
