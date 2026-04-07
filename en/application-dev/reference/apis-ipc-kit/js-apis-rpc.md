@@ -45,7 +45,7 @@ The APIs of this module return exceptions since API version 9. The following tab
 
 ## TypeCode<sup>12+</sup>
 
-Since API version 12, [writeArrayBuffer](#writearraybuffer12) and [readArrayBuffer](#readarraybuffer12) are added to pass ArrayBuffer data. The specific TypedArray type is determined by the **TypeCode** defined as follows:
+Since API version 12, [writeArrayBuffer](#writearraybuffer12) and [readArrayBuffer](#readarraybuffer12) are added to pass ArrayBuffer data. The specific TypedArray type is determined by the **TypeCode** defined as follows.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -7654,7 +7654,7 @@ Adds a callback for receiving death notifications of the remote object.
 
 unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
 
-Unregisters the callback used for receiving death notifications of the remote object.
+Unregisters from the callback used to receive death notifications of the remote object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -7679,7 +7679,7 @@ For details about the error codes, see [RPC Error Codes](errorcode-rpc.md).
 
 removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
-Removes the callback for receiving death notifications of the remote object.
+Removes the callback used to receive death notifications of the remote object.
 
 > **NOTE**
 >
@@ -8487,7 +8487,7 @@ if (proxy != undefined) {
 
 unregisterDeathRecipient(recipient: DeathRecipient, flags: number): void
 
-Unregisters the callback for receiving death notifications of the remote object.
+Unregisters from the callback used to receive death notifications of the remote object.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -8578,7 +8578,7 @@ if (proxy != undefined) {
 
 removeDeathRecipient(recipient: DeathRecipient, flags: number): boolean
 
-Removes the callback for receiving death notifications of the remote object.
+Removes the callback used to receive death notifications of the remote object.
 
 > **NOTE**
 >
@@ -9080,7 +9080,7 @@ try {
 
 getWaitTime(): number
 
-Obtains the maximum wait time for this RPC call.
+Obtains the maximum wait time for an RPC call.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9112,7 +9112,7 @@ try {
 
 setWaitTime(waitTime: number): void
 
-Sets the maximum wait time for this RPC call.
+Sets the maximum wait time for an RPC call.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9904,8 +9904,8 @@ Called to return a response to **sendMessageRequest()**. The server processes th
 
 > **NOTE**
 >
-> You are advised to overload **onRemoteMessageRequest** preferentially, which implements synchronous and asynchronous message processing.
-> If both **onRemoteRequest()** and **onRemoteMessageRequest()** are overloaded, only **onRemoteMessageRequest()** takes effect.
+> You are advised to override **onRemoteMessageRequest** preferentially, which implements synchronous and asynchronous message processing.
+> If both **onRemoteRequest** and **onRemoteMessageRequest** are overridden, only **onRemoteMessageRequest** takes effect.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 
@@ -9924,9 +9924,10 @@ Called to return a response to **sendMessageRequest()**. The server processes th
   | ----------------- | ----------------------------------------------------------------------------------------------- |
   | boolean \| Promise\<boolean>  | - If the request is processed synchronously in **onRemoteMessageRequest**, a Boolean value is returned. The value **true** means that the operation is successful, and **false** means the opposite.<br>- If the request is processed asynchronously in **onRemoteMessageRequest**, a promise object is returned. The value **true** means that the operation is successful, and **false** means the opposite.|
 
-**Example**: Overload **onRemoteMessageRequest** to process requests synchronously.
+**Example**
 
 ```ts
+// Override **onRemoteMessageRequest** to process requests synchronously.
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9948,9 +9949,10 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-  **Example**: Overload **onRemoteMessageRequest** to process requests asynchronously.
+**Example**
 
 ```ts
+// Override **onRemoteMessageRequest** to process requests asynchronously.
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
@@ -9975,9 +9977,10 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-**Example**: Overload **onRemoteMessageRequest** and **onRemoteRequest** to process requests synchronously.
+**Example**
 
 ```ts
+// Override **onRemoteMessageRequest** and **onRemoteRequest** to process requests synchronously.
 import { rpc } from '@kit.IPCKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 

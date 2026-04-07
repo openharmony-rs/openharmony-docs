@@ -146,11 +146,13 @@ enum OH_AudioSession_OutputDeviceChangeRecommendedAction
 
 Enumerates the recommended actions to take after an output device changes.
 
+Common scenario example: switching between a headset and a loudspeaker device. Upon switching from the loudspeaker device to the headset upon wearing, the system suggests continuing playback and prompts that the application does not need to pause. Upon transitioning from the headset to the loudspeaker device upon removal, the system suggests suspending playback.
+
 **Since**: 20
 
 | Enum Item| Description|
 | -- | -- |
-| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0 | Suggests continuing playback.|
+| DEVICE_CHANGE_RECOMMEND_TO_CONTINUE = 0 | Suggests continuing playback. (This event serves as a playback maintenance indication, informing the application that audio playback does not need to stop during this device change. However, it must not be used as a criterion for triggering audio playback.)|
 | DEVICE_CHANGE_RECOMMEND_TO_STOP = 1 | Suggests stopping playback.|
 
 ### OH_AudioSession_DeactivatedReason
@@ -208,7 +210,7 @@ Defines a function pointer to the callback used to listen for audio session stat
 
 | Name| Description|
 | -- | -- |
-| [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event | Pointer to the event indicating that the audio session state changes.|
+| [OH_AudioSession_StateChangedEvent](capi-ohaudio-oh-audiosession-statechangedevent.md) event | Event indicating that the audio session state changes.|
 
 ### OH_AudioSession_AvailableDeviceChangedCallback()
 
@@ -284,7 +286,7 @@ Defines a function pointer to the callback used to listen for audio session deac
 
 | Name| Description|
 | -- | -- |
-| [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) event | Pointer to the event indicating that an audio session is deactivated.|
+| [OH_AudioSession_DeactivatedEvent](capi-ohaudio-oh-audiosession-deactivatedevent.md) event | Event indicating that an audio session is deactivated.|
 
 ### OH_AudioManager_GetAudioSessionManager()
 
@@ -522,7 +524,7 @@ Sets the default audio output device.
 > - This API is applicable to the following scenarios: If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to VoIP, this API takes effect immediately after the audio session is activated. If [OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene) is set to non-VoIP, this API does not take effect when the audio session is activated. It takes effect only when [OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage) of the started playback is a voice message, VoIP voice call, or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
 > - This API can be called at any time after an [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) instance is created. The system records the device set by the application. However, the setting takes effect only after the AudioSession is activated. When the application starts playback, if an external device such as a Bluetooth or wired headset is connected, the system preferentially uses the external device to play sound. Otherwise, the system uses this default device to play sound.
 
-**Device behavior difference**: If the default audio output device is set to earpiece on a device without a earpiece, the speaker will still be used for audio output.
+**Device behavior difference**: If the default audio output device is set to earpiece on a device without an earpiece, the speaker will still be used for audio output.
 
 **Since**: 20
 
@@ -783,7 +785,7 @@ Sets the preferred device category for recording with Bluetooth or NearLink. App
 | Name| Description|
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
-| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) category | Enumerates the preferred device categories available for recording with Bluetooth or NearLink.|
+| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) category | Preferred device category for recording with Bluetooth or NearLink.|
 
 **Returns**
 
@@ -808,7 +810,7 @@ Obtains the preferred device category for recording with Bluetooth or NearLink.
 | Name| Description|
 | -- | -- |
 | [OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md) *audioSessionManager | Pointer to an audio session manager instance, which is created by calling [OH_AudioManager_GetAudioSessionManager](#oh_audiomanager_getaudiosessionmanager).|
-| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) *category | Enumerates the preferred device categories available for recording with Bluetooth or NearLink.|
+| [OH_AudioSession_BluetoothAndNearlinkPreferredRecordCategory](#oh_audiosession_bluetoothandnearlinkpreferredrecordcategory) *category | Pointer to the preferred device category for recording with Bluetooth or NearLink.|
 
 **Returns**
 

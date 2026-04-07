@@ -157,7 +157,7 @@ Defines the Wi-Fi scanning information, including the SSID, BSSID, and RSSI of t
 | bssid | string | No| No| Base station subsystem identifier (BSSID) of a Wi-Fi hotspot.<br> **System API**: This is a system API.|
 | rssi | number | No| No| Received signal strength indicator (RSSI) of a Wi-Fi hotspot, in dBm.<br> **System API**: This is a system API.|
 | frequency | number | No| No| Frequency of a Wi-Fi hotspot, in Hz.<br>**System API**: This is a system API.|
-| timestamp | number | No| No| Scanning timestamp.<br> **System API**: This is a system API.|
+| timestamp | number | No| No| Timestamp, in microseconds.<br> **System API**: This is a system API.|
 
 
 ## BluetoothScanInfo<sup>10+</sup>
@@ -173,7 +173,7 @@ Defines the Bluetooth scanning information.
 | deviceName | string | No| No| Name of a Bluetooth device.<br> **System API**: This is a system API.|
 | macAddress | string | No| No| MAC address of a Bluetooth device.<br> **System API**: This is a system API.|
 | rssi | number | No| No| Signal strength of a Bluetooth device, in dBm.<br> **System API**: This is a system API.|
-| timestamp | number | No| No| Scanning timestamp.<br> **System API**: This is a system API.|
+| timestamp | number | No| No| Timestamp, in microseconds.<br> **System API**: This is a system API.|
 
 ## LocationPrivacyType
 

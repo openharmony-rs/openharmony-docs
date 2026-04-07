@@ -910,8 +910,7 @@ Represents Wi-Fi access information containing Service Set Identifier (SSID) and
 
 **System capability**: SystemCapability.Customization.EnterpriseDeviceManager
 
-
-
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name         | Type                            | Read-Only| Optional| Description                                                       |
 | ------------- | --------------------------------| ---- | -----| ------------------------------------------------------ |
 | ssid          | string                           | No  | No| Name of the Wi-Fi hotspot. The encoding format is UTF-8 and the maximum length is 32 bytes (three bytes for each Chinese character and one byte for each English character).          |

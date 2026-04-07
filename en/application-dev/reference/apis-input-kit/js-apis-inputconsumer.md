@@ -43,6 +43,7 @@ Sets the key event consumption configuration.
 
 **Device behavior differences**: This API takes effect only on phones and tablets. If this API is called on other devices, error code 801 is returned.
 
+<!--Table: 10%; 10%; 10%; 10%; 60%-->
 | Name       | Type  | Read-Only  | Optional  | Description     |
 | --------- | ------ | ------- | ------- | ------- |
 | key       | number  | No     | No     | Key value.<br>**Note**: From API version 21, the [KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode), [KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode), [KEYCODE_MEDIA_PLAY_PAUSE](js-apis-keycode.md#keycode), [KEYCODE_MEDIA_NEXT](js-apis-keycode.md#keycode), and [KEYCODE_MEDIA_PREVIOUS](js-apis-keycode.md#keycode) keys.<br>In API version 20 or earlier versions, only the [KEYCODE_VOLUME_UP](js-apis-keycode.md#keycode) and [KEYCODE_VOLUME_DOWN](js-apis-keycode.md#keycode) keys are supported.|

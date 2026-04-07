@@ -36,6 +36,7 @@ Allows the specified device administrator application to operate devices.
 
 **Parameters**
 
+<!--Table: 10%; 10%; 10%; 70%-->
 | Name  | Type                                                   | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin    | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes  | EnterpriseAdminExtensionAbility. **Want** must contain the ability name of the EnterpriseAdminExtensionAbility and the bundle name of the application.                                              |

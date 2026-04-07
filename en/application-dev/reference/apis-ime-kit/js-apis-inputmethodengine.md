@@ -1672,7 +1672,7 @@ Obtains the window ID. This API uses a promise to return the result.
 
 | Type  | Description                            |
 | ------- | ------------------------------ |
-|Promise\<number>| Promise used to return the result. It returns the **displayId** of the window. |
+|Promise\<number>| Promise used to return the result. It returns **displayId** of the window. |
 
 **Error codes**
 
@@ -4213,6 +4213,7 @@ Sets the preview text. This API uses a promise to return the result.
 
 **Parameters**
 
+<!--Table: auto; auto; 10%; 60%-->
 | Name| Type             | Mandatory| Description                                                        |
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
 | text   | string            | Yes  | Preview text to set.                                          |
@@ -4257,6 +4258,7 @@ Sets the preview text.
 
 **Parameters**
 
+<!--Table: auto; auto; 10%; 60%-->
 | Name| Type             | Mandatory| Description                                                        |
 | ------ | ----------------- | ---- | ------------------------------------------------------------ |
 | text   | string            | Yes  | Preview text to set.                                          |

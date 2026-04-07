@@ -168,7 +168,7 @@ Obtains the image information with the specified index. This API returns the res
 
 ```ts
 function GetImageInfoSync(context : Context) {
-  // 'test.jpg' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
+  // "test.jpg" is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
   let filePath: string = context.filesDir + "/test.jpg";
   let imageSource = image.createImageSource(filePath);
   let imageInfo = imageSource.getImageInfoSync(0);
@@ -625,7 +625,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed. |
-| 7700301  | Failed to decode image.                                      |
+| 7700203  | Unsupported options. For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. |
+| 7700301  | Decode failed.                                               |
 
 **Example**
 
@@ -871,7 +872,7 @@ Starting from API version 15, you are advised to use [createPixelMapUsingAllocat
 
 ```ts
 function CreatePixelMapSync(context : Context) {
-  // 'test.jpg' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
+  // "test.jpg" is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
   let filePath: string = context.filesDir + "/test.jpg";
   let imageSource = image.createImageSource(filePath);
   let decodingOptions: image.DecodingOptions = {
@@ -1138,7 +1139,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 async function CreatePixelMapUsingAllocator(context : Context) {
-  // 'test.jpg' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
+  // "test.jpg" is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
   let filePath: string = context.filesDir + "/test.jpg";
   let imageSource = image.createImageSource(filePath);
   let decodingOptions: image.DecodingOptions = {
@@ -1208,7 +1209,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 ```ts
 async function CreatePixelMapUsingAllocator(context : Context) {
-  // 'test.jpg' is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
+  // "test.jpg" is only an example. Replace it with the actual one in use. Otherwise, the imageSource instance fails to be created, and subsequent operations cannot be performed.
   let filePath: string = context.filesDir + "/test.jpg";
   let imageSource = image.createImageSource(filePath);
   let decodingOptions: image.DecodingOptions = {

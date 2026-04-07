@@ -10,7 +10,7 @@ The **geolocation** module provides only basic functions such as GNSS positionin
 
 > **NOTE**
 > - The initial APIs of this module are supported since API version 3. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - The APIs provided by this module are no longer maintained since API version 9. You are advised to use [geoLocationManager](js-apis-geoLocationManager.md) instead.
+> - The APIs provided by this module are no longer maintained since API version 9. You are advised to use [geoLocationManager](js-apis-geoLocationManager.md).
 
 
 ## Modules to Import
@@ -44,7 +44,42 @@ Obtains the geographic location.
 | -------- | -------- | -------- | -------- |
 | options | [GetLocationOption](#getlocationoptiondeprecated) | No| Options of a single location request.|
 
-**Example**
+**JS example**:
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    getLocation
+  </text>
+  <input type="button" value="Obtain Device Geographic Location" style="width: 240px; height: 50px;" onclick="getLocation"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```
 export default {    
@@ -57,7 +92,7 @@ export default {
         console.info('fail to get location. code:' + code + ', data:' + data);            
       }
     });    
-  }
+  },
 }
 ```
 
@@ -79,7 +114,42 @@ Obtains the supported location types.
 | -------- | -------- | -------- | -------- |
 | options | [GetLocationTypeOption](#getlocationtypeoptiondeprecated) | No| Callback used to return the result.|
 
-**Example**
+**JS example**:
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    getLocationType
+  </text>
+  <input type="button" value="Obtain Location Types Supported by Current Device" style="width: 240px; height: 50px;" onclick="getLocationType"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```
 export default {    
@@ -101,7 +171,7 @@ export default {
 
 subscribe(options: SubscribeLocationOption): void
 
-Listens to the geographic location. If this method is called multiple times, the last call takes effect.
+Listens to the geographic location. If this API is called multiple times, the last call takes effect.
 
 > **NOTE**<br>
 > This API is deprecated since API version 9. You are advised to use [geoLocationManager.on('locationChange')](js-apis-geoLocationManager.md#geolocationmanageronlocationchange).
@@ -116,7 +186,42 @@ Listens to the geographic location. If this method is called multiple times, the
 | -------- | -------- | -------- | -------- |
 | options | [SubscribeLocationOption](#subscribelocationoptiondeprecated) | Yes| Options for continuous location.|
 
-**Example**
+**JS example**:
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    subscribe
+  </text>
+  <input type="button" value="Subscribe to Device Geographic Location Information" style="width: 240px; height: 50px;" onclick="subscribe"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```
 export default {    
@@ -147,13 +252,48 @@ Cancels listening to the geographic location.
 
 **System capability**: SystemCapability.Location.Location.Lite
 
-**Example**
+**JS example**:
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    unsubscribe
+  </text>
+  <input type="button" value="Unsubscribe from Device Geographic Location Information" style="width: 240px; height: 50px;" onclick="unsubscribe"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```
 export default {    
   unsubscribe() {        
     geolocation.unsubscribe();    
-  }
+  },
 }
 ```
 
@@ -175,12 +315,48 @@ Obtains coordinate system types supported by the device.
 | -------- | -------- | -------- |
 | Array&lt;string&gt; | Yes| Coordinate system types, for example, **[wgs84, gcj02]**.|
 
-**Example**
+**JS example**:
+
+```xml
+<div class="container">
+  <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
+    getSupportedCoordTypes
+  </text>
+  <input type="button" value="Obtain Coordinate System Types Supported by Device" style="width: 240px; height: 50px;" onclick="getSupportedCoordTypes"></input>
+</div>
+```
+
+```css
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+```
 
 ```
 export default {    
   getSupportedCoordTypes() {       
-    var types = geolocation.getSupportedCoordTypes();   
+    var types = geolocation.getSupportedCoordTypes();
+    console.info('getSupportedCoordTypes:' types); 
   },
 }
 ```
