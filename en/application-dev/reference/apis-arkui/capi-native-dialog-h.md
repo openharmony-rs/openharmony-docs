@@ -39,7 +39,7 @@ Declares a set of custom dialog box APIs of ArkUI on the native side.
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [ArkUI_DismissReason](#arkui_dismissreason) | ArkUI_DismissReason | Enumerates the actions for triggering closure of the dialog box.|
-| [ArkUI_LevelMode](#arkui_levelmode) | ArkUI_LevelMode | Enumerates the display levels of the dialog box.|
+| [ArkUI_LevelMode](#arkui_levelmode) | ArkUI_LevelMode | Enumerates the display level modes of the dialog box.|
 | [ArkUI_ImmersiveMode](#arkui_immersivemode) | ArkUI_ImmersiveMode | Enumerates the display areas of the embedded dialog box overlay.|
 | [ArkUI_DialogState](#arkui_dialogstate) | ArkUI_DialogState | Enumerates the dialog box status.|
 
@@ -55,7 +55,7 @@ Declares a set of custom dialog box APIs of ArkUI on the native side.
 | [int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, void (*callback)(int32_t dialogId))](#oh_arkui_customdialog_updatedialog) | - | Updates a custom dialog box.|
 | [int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)](#oh_arkui_customdialog_closedialog) | - | Closes a custom dialog box.|
 | [ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle content)](#oh_arkui_customdialog_createoptions) | - | Creates options for a custom dialog.|
-| [void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)](#oh_arkui_customdialog_disposeoptions) | - | Destroys custom dialog box options.|
+| [void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)](#oh_arkui_customdialog_disposeoptions) | - | Disposes of the custom dialog box options.|
 | [int32_t OH_ArkUI_CustomDialog_SetLevelMode(ArkUI_CustomDialogOptions* options, ArkUI_LevelMode levelMode)](#oh_arkui_customdialog_setlevelmode) | - | Sets the display level of the dialog box.|
 | [int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* options, int32_t uniqueId)](#oh_arkui_customdialog_setleveluniqueid) | - | Sets the ID of the node under the dialog box's display level.|
 | [int32_t OH_ArkUI_CustomDialog_SetImmersiveMode(ArkUI_CustomDialogOptions* options, ArkUI_ImmersiveMode immersiveMode)](#oh_arkui_customdialog_setimmersivemode) | - | Sets the display area of the embedded dialog box overlay.|
@@ -103,7 +103,7 @@ Enumerates the actions for triggering closure of the dialog box.
 
 | Value| Description|
 | -- | -- |
-| DIALOG_DISMISS_BACK_PRESS = 0 | Touching the system-defined Back button or pressing the Esc key.|
+| DIALOG_DISMISS_BACK_PRESS = 0 | Touching the Back button, swiping left or right on the screen, or pressing the Esc key.|
 | DIALOG_DISMISS_TOUCH_OUTSIDE = 1 | Touching the mask.|
 | DIALOG_DISMISS_CLOSE_BUTTON = 2 | Touching the Close button.|
 | DIALOG_DISMISS_SLIDE_DOWN = 3 | Sliding down.|
@@ -265,7 +265,7 @@ Obtains the dismissal reason from a dialog box dismiss event object.
 
 | Type| Description|
 | -- | -- |
-| int32_t | Dismissal reason, or **-1** if an exception occurs.<br>         [DIALOG_DISMISS_BACK_PRESS](capi-native-dialog-h.md#arkui_dismissreason): touching the back button, swiping left or right on the screen, or pressing the Esc key.<br>         [DIALOG_DISMISS_TOUCH_OUTSIDE](capi-native-dialog-h.md#arkui_dismissreason): touching the mask.<br>         [DIALOG_DISMISS_CLOSE_BUTTON](capi-native-dialog-h.md#arkui_dismissreason): touching the close button.<br>         [DIALOG_DISMISS_SLIDE_DOWN](capi-native-dialog-h.md#arkui_dismissreason): swiping down.|
+| int32_t | Dismissal reason, or **-1** if an exception occurs.<br>         [DIALOG_DISMISS_BACK_PRESS](capi-native-dialog-h.md#arkui_dismissreason): touching the Back button, swiping left or right on the screen, or pressing the Esc key.<br>         [DIALOG_DISMISS_TOUCH_OUTSIDE](capi-native-dialog-h.md#arkui_dismissreason): touching the mask.<br>         [DIALOG_DISMISS_CLOSE_BUTTON](capi-native-dialog-h.md#arkui_dismissreason): touching the close button.<br>         [DIALOG_DISMISS_SLIDE_DOWN](capi-native-dialog-h.md#arkui_dismissreason): swiping down.|
 
 ### OH_ArkUI_CustomDialog_OpenDialog()
 
@@ -286,7 +286,7 @@ Displays a custom dialog box.
 | Name                                   | Description|
 |----------------------------------------| -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| callback                               | Callback invoked when the dialog box is displayed. The parameter is the dialog box ID.|
+| void (*callback)(int32_t dialogId)                               | Callback invoked when the dialog box is displayed. The parameter is the dialog box ID.|
 
 **Returns**
 
@@ -313,7 +313,7 @@ Updates a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| callback                               | Callback invoked when the dialog box is updated. The parameter is the dialog box ID.|
+| void (*callback)(int32_t dialogId)                               | Callback invoked when the dialog box is updated. The parameter is the dialog box ID.|
 
 **Returns**
 
@@ -356,7 +356,7 @@ ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle 
 **Description**
 
 
-Creates options for a custom dialog.
+Creates custom dialog box options.
 
 **Since**: 19
 
@@ -371,7 +371,7 @@ Creates options for a custom dialog.
 
 | Type                            | Description|
 |--------------------------------| -- |
-| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* | Pointer to the custom dialog box options.|
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* | Pointer to the custom dialog box configuration.|
 
 ### OH_ArkUI_CustomDialog_DisposeOptions()
 
@@ -382,7 +382,7 @@ void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 **Description**
 
 
-Destroys custom dialog box options.
+Disposes of the custom dialog box options.
 
 **Since**: 19
 
@@ -391,7 +391,7 @@ Destroys custom dialog box options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Pointer to the custom dialog box options.|
+| [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Pointer to the custom dialog box configuration.|
 
 ### OH_ArkUI_CustomDialog_SetLevelMode()
 
@@ -501,7 +501,7 @@ Sets the background color of a dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| uint32_t backgroundColor | Background color of the dialog box.|
+| uint32_t backgroundColor | Background color of the dialog box, in 0xARGB format.|
 
 **Returns**
 
@@ -528,10 +528,10 @@ Sets the corner radius for a custom dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| float topLeft | Radius of the upper left corner of the dialog box.|
-| float topRight | Radius of the upper right corner of the dialog box.|
-| float bottomLeft | Radius of the lower left corner of the dialog box.|
-| float bottomRight | Radius of the lower right corner of the dialog box.|
+| float topLeft | Radius of the upper left corner of the dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+| float topRight | Radius of the upper right corner of the dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+| float bottomLeft | Radius of the lower left corner of the dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
+| float bottomRight | Radius of the lower right corner of the dialog box, in vp. Default value: 32 vp since API version 12; 24 vp in API version 11 and earlier versions.|
 
 **Returns**
 
@@ -589,10 +589,10 @@ Sets the border color of the dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| uint32_t top | Color of the top border of the dialog box.|
-| uint32_t right | Color of the right border of the dialog box.|
-| uint32_t bottom | Color of the bottom border of the dialog box.|
-| uint32_t left | Color of the left border of the dialog box.|
+| uint32_t top | Color of the top border of the dialog box, in 0xARGB format.|
+| uint32_t right | Color of the right border of the dialog box, in 0xARGB format.|
+| uint32_t bottom | Color of the bottom border of the dialog box, in 0xARGB format.|
+| uint32_t left | Color of the left border of the dialog box, in 0xARGB format.|
 
 **Returns**
 
@@ -619,10 +619,10 @@ Sets the border style of a dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| int32_t top | Style of the top border of the dialog box.|
-| int32_t right | Style of the right border of the dialog box.|
-| int32_t bottom | Style of the bottom border of the dialog box.|
-| int32_t left | Style of the left border of the dialog box.|
+| int32_t top | Style of the top border of the dialog box. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
+| int32_t right | Style of the right border of the dialog box. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
+| int32_t bottom | Style of the bottom border of the dialog box. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
+| int32_t left | Style of the left border of the dialog box. The parameter type is [ArkUI_BorderStyle](capi-native-type-h.md#arkui_borderstyle). The default value is **ARKUI_BORDER_STYLE_SOLID**.|
 
 **Returns**
 
@@ -677,7 +677,7 @@ Sets the height of the dialog box background.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| float height | Width of the dialog box background.|
+| float height | Height of the dialog box background.|
 | [ArkUI_LengthMetricUnit](capi-native-type-h.md#arkui_lengthmetricunit) unit | Unit of the height. The default value is vp.|
 
 **Returns**
@@ -787,8 +787,8 @@ Sets the alignment mode of a dialog box.
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
 | int32_t alignment | Alignment mode of the dialog box. The parameter type is [ArkUI_Alignment](capi-native-type-h.md#arkui_alignment).|
-| float offsetX | Horizontal offset of the custom dialog box. The value is a floating point number.|
-| float offsetY | Vertical offset of the custom dialog box. The value is a floating point number.|
+| float offsetX | Horizontal offset of the dialog box. The value is a floating point number, in vp.|
+| float offsetY | Vertical offset of the dialog box. The value is a floating point number, in vp.|
 
 **Returns**
 
@@ -869,7 +869,7 @@ Sets whether to display the dialog box in a subwindow.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| bool showInSubwindow | Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window. The default value is **false**, meaning the dialog box is displayed within the application, not in a separate subwindow. The value **true** means that dialog box can be displayed outside the main window.|
+| bool showInSubwindow | Whether to show the dialog box in a subwindow when the dialog box needs to be displayed outside the main window. If the value is **true**, the dialog box can be displayed in an independent subwindow outside the main window. If the value is **false**, the dialog box is displayed within the application, not in an independent subwindow.<br>Default value: **false**.|
 
 **Returns**
 
@@ -1006,7 +1006,7 @@ Registers a callback for the dismissal event of a custom dialog box.
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
 | void* userData | Pointer to user data.|
-| callback | Callback for the dismissal event of the custom dialog box.<br> - **event**: input parameter of the callback, which captures the reason for dismissal.|
+| void (\*callback)(ArkUI_DialogDismissEvent\* event) | Callback for the dismissal event of the custom dialog box.<br> - **event**: input parameter of the callback, which captures the reason for dismissal.|
 
 **Returns**
 
@@ -1034,7 +1034,7 @@ Registers a callback to be invoked when the specified custom dialog box is about
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
 | void* userData | Pointer to user data.|
-| callback | Event callback before the dialog box appearance animation.|
+| void (\*callback)(void\* userData) | Event callback before the dialog box appearance animation.|
 
 **Returns**
 
@@ -1062,7 +1062,7 @@ Registers a callback to be invoked when the specified custom dialog box appears.
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
 | void* userData | Pointer to user data.|
-| callback | Event callback after the dialog box appears.|
+| void (\*callback)(void\* userData) | Event callback after the dialog box appears.|
 
 **Returns**
 
@@ -1090,7 +1090,7 @@ Registers a callback to be invoked when the specified custom dialog box is about
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
 | void* userData | Pointer to user data.|
-| callback | Event callback before the dialog box disappearance animation.|
+| void (\*callback)(void\* userData) | Event callback before the dialog box disappearance animation.|
 
 **Returns**
 
@@ -1118,7 +1118,7 @@ Registers a callback to be invoked when the specified custom dialog box disappea
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
 | void* userData | Pointer to user data.|
-| callback | Event callback when the dialog box disappears.|
+| void (\*callback)(void\* userData) | Event callback when the dialog box disappears.|
 
 **Returns**
 
@@ -1172,7 +1172,7 @@ Sets the background blur effect for a dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| [const ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundBlurStyleOptions | Background blur effect for the dialog box. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].i32: color mode, specified by an enumerated value of [ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode).<br>        .value[1]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[2]? .f32: blur degree. The value range is [0.0, 1.0].<br>        .value[3]?.u32: brightness of black in the grayscale blur. The value range is [0, 127].<br>        .value[4]?.u32: degree of darkening the white color in the grayscale blur. The value range is [0, 127].<br>        .value[5]?.i32: blur activation policy, specified by an enumeration value of [ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy).<br>        .value[6]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed).|
+| [const ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundBlurStyleOptions | Background blur effect for the dialog box. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].i32: color mode, specified by an enumerated value of [ArkUI_ColorMode](capi-native-type-h.md#arkui_colormode).<br>        .value[1]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[2]?.f32: blur degree. The value range is [0.0, 1.0]. If the value is out of the valid range, the boundary value is used.<br>        .value[3]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[4]?.u32: darkening degree of white in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[5]?.i32: blur activation policy, specified by an enumerated value of [ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy).<br>        .value[6]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed).|
 
 **Returns**
 
@@ -1199,7 +1199,7 @@ Sets the background effect parameters for a dialog box.
 | Name| Description|
 | -- | -- |
 | [ArkUI_CustomDialogOptions](capi-arkui-nativemodule-arkui-customdialogoptions.md)* options | Dialog box parameters.|
-| [const ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundEffect | Background effect of the dialog box. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].f32: blur radius, in vp.<br>        .value[1]?.f32: saturation.<br>        .value[2]?.f32: brightness.<br>        .value[3]?.u32: color, in 0xARGB format.<br>        .value[4]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[5]?.u32: brightness of black in the grayscale blur. The value range is [0, 127].<br>        .value[6]?.u32: degree of darkening the white color in the grayscale blur. The value range is [0, 127].<br>        .value[7]?.i32: blur activation policy, specified by an enumeration value of [ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy).<br>        .value[8]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed).|
+| [const ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)* backgroundEffect | Background effect of the dialog box. The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter is as follows:<br>        .value[0].f32: blur radius, in vp.<br>        .value[1]?.f32: saturation.<br>        .value[2]?.f32: brightness.<br>        .value[3]?.u32: color, in 0xARGB format.<br>        .value[4]?.i32: adaptive color mode, specified by an enumerated value of [ArkUI_AdaptiveColor](capi-native-type-h.md#arkui_adaptivecolor).<br>        .value[5]?.u32: brightness of black in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[6]?.u32: darkening degree of white in the grayscale blur. The value range is [0, 127]. If the value is out of the valid range, **0** is used.<br>        .value[7]?.i32: blur activation policy, specified by an enumerated value of [ArkUI_BlurStyleActivePolicy](capi-native-type-h.md#arkui_blurstyleactivepolicy).<br>        .value[8]?.u32: background color, in 0xARGB format, of the components within the window after the window loses focus (in which case, the blur effect on the components within the window is removed).|
 
 **Returns**
 

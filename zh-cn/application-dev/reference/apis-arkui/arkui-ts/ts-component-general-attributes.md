@@ -54,7 +54,7 @@
   - [半模态转场](ts-universal-attributes-sheet-transition.md)
   - [半模态转场 (系统接口)](ts-universal-attributes-sheet-transition-sys.md)
 - [隐私遮罩](ts-universal-attributes-obscured.md)
-- [文本通用](ts-universal-attributes-text-style.md)
+- [输入框类组件通用接口](ts-universal-attributes-text-style.md)
 - [拖拽控制](ts-universal-attributes-drag-drop.md)
 - [拖拽排序](ts-universal-attributes-drag-sorting.md)
 - [安全区域](ts-universal-attributes-expand-safe-area.md)

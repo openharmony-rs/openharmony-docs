@@ -48,13 +48,13 @@ getWindowAvoidArea(type: window.AvoidAreaType): window.AvoidArea
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| type | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 表示规避区类型。 |
+| type | [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是 | 表示避让区类型。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 宿主窗口内容规避区域。 |
+| [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) | 宿主窗口内容避让区域。 |
 
 **错误码：**
 
@@ -84,7 +84,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
-注册系统规避区变化的监听。
+注册系统避让区变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -94,8 +94,8 @@ on(type: 'avoidAreaChange', callback: Callback<{ type: window.AvoidAreaType, are
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| type     | string | 是   | 监听的事件类型，固定为'avoidAreaChange'，即系统规避区变化事件。 |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | 是 | 回调函数：入参用于接收当前规避区的信息，其中，"type"表示窗口规避区类型，"area"表示窗口内容规避区域。 |
+| type     | string | 是   | 监听的事件类型，固定为'avoidAreaChange'，即系统避让区变化事件。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | 是 | 回调函数：入参用于接收当前避让区的信息，其中，"type"表示窗口避让区类型，"area"表示窗口内容避让区域。 |
 
 **错误码：** 
 
@@ -124,7 +124,7 @@ export default class EntryAbility extends UIExtensionAbility {
 
 off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, area: window.AvoidArea }>): void
 
-注销系统规避区变化的监听。
+注销系统避让区变化的监听。
 
 **系统能力**：SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,8 +134,8 @@ off(type: 'avoidAreaChange', callback?: Callback<{ type: window.AvoidAreaType, a
 
 | 参数名   | 类型   | 必填 | 说明                   |
 | -------- | ------ | ---- | ---------------------- |
-| type     | string | 是   | 注销的事件类型，固定为'avoidAreaChange'，即系统规避区变化事件。 |
-| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统规避区变化的监听。 |
+| type     | string | 是   | 注销的事件类型，固定为'avoidAreaChange'，即系统避让区变化事件。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<{ type: [window.AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), area: [window.AvoidArea](arkts-apis-window-i.md#avoidarea7) }> | 否 | 回调函数：如果传入该参数，则关闭该监听。如果未传入参数，则关闭所有系统避让区变化的监听。 |
 
 **错误码：** 
 
@@ -314,7 +314,9 @@ createSubWindowWithOptions(name: string, subWindowOptions: window.SubWindowOptio
 
 **系统接口：** 此接口为系统接口。
 
-**模型约束：** StageModelOnly
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -397,6 +399,8 @@ createSubWindowWithOptions(name: string, subWindowConfig: window.SubWindowOption
 **系统接口：** 此接口为系统接口。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -724,9 +728,9 @@ export default class EntryAbility extends UIExtensionAbility {
           let rect = this.extensionHostWindow?.properties.uiExtensionHostWindowProxyRect;
           console.info(`UIExtensionComponent的宽高和位置信息: ${JSON.stringify(rect)}`);
         })
-        Button("获取系统规避区信息").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
+        Button("获取系统避让区信息").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let avoidArea: window.AvoidArea | undefined = this.extensionHostWindow?.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
-          console.info(`系统规避区: ${JSON.stringify(avoidArea)}`);
+          console.info(`系统避让区: ${JSON.stringify(avoidArea)}`);
         })
         Button("创建子窗口").width('90%').margin({top: 5, bottom: 5}).fontSize(16).onClick(() => {
           let subWindowOpts: window.SubWindowOptions = {

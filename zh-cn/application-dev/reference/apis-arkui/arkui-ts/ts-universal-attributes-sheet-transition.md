@@ -575,7 +575,7 @@ struct bindSheetExample {
 
           onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
             if (dismissSheetAction.reason == DismissReason.SLIDE_DOWN) {
-              dismissSheetAction.dismiss();// 注册dismiss行为
+              dismissSheetAction.dismiss(); // 注册dismiss行为
             }
           }),
 
@@ -652,8 +652,8 @@ struct Index {
 
 ```ts
 // xxx.ets
-import window from '@ohos.window';
-import { BusinessError } from '@ohos.base';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
@@ -905,7 +905,7 @@ struct SheetSideExample {
           borderWidth: this.borderWidths,
           borderColor: this.borderColors,
 
-          onHeightDidChange: (height: number)=>{
+          onHeightDidChange: (height: number) => {
             console.info("SideSheet height change:" + height);
           },
           onTypeDidChange: (type: SheetType) => {
@@ -920,7 +920,7 @@ struct SheetSideExample {
 }
 ```
 
-![zh-cn_sheet](figures/zh-cn_sheet8_side.png)
+![zh-cn_sheet](figures/sheet8_side.gif)
 
 ### 示例9（半模态ContentCover全屏样式）
 
@@ -982,4 +982,4 @@ struct ContentCoverExample {
   }
 }
 ```
-![zh-cn_sheet](figures/zh-cn_sheet9_content_cover.gif)
+![zh-cn_sheet](figures/sheet9_content_cover.gif)

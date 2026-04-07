@@ -20,11 +20,11 @@
     // index.d.ets
     @Sendable
     export class MyObject {
-    constructor(arg: number);
-    plusOne(): number;
+      constructor(arg: number);
+      plusOne(): number;
 
-    public get value();
-    public set value(newVal: number);
+      public get value();
+      public set value(newVal: number);
     }
     ```
 
@@ -89,21 +89,37 @@
     }
 
     napi_value MyObject::Init(napi_env env, napi_value exports) {
-        napi_value num;
-        napi_create_double(env, 0, &num);
+        napi_value num = nullptr;
+        napi_status status = napi_create_double(env, 0, &num);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_create_double fail");
+            return nullptr;
+        }
         napi_property_descriptor properties[] = {
             {"value", nullptr, nullptr, GetValue, SetValue, nullptr, napi_default, nullptr},
             {"plusOne", nullptr, PlusOne, nullptr, nullptr, nullptr, napi_default, nullptr},
         };
 
-        napi_value cons;
+        napi_value cons = nullptr;
         // 定义一个Sendable class MyObject
-        napi_define_sendable_class(env, "MyObject", NAPI_AUTO_LENGTH, New, nullptr,
+        status = napi_define_sendable_class(env, "MyObject", NAPI_AUTO_LENGTH, New, nullptr,
                                 sizeof(properties) / sizeof(properties[0]), properties, nullptr, &cons);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_define_sendable_class fail");
+            return nullptr;
+        }
 
-        napi_create_reference(env, cons, 1, &g_ref);
+        status = napi_create_reference(env, cons, 1, &g_ref);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_create_reference fail");
+            return nullptr;
+        }
         // 在exports对象上挂载MyObject类
-        napi_set_named_property(env, exports, "MyObject", cons);
+        status = napi_set_named_property(env, exports, "MyObject", cons);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_set_named_property fail");
+            return nullptr;
+        }
         return exports;
     }
 
@@ -136,39 +152,72 @@
     napi_value MyObject::New(napi_env env, napi_callback_info info) {
         OH_LOG_INFO(LOG_APP, "MyObject::New called");
 
-        napi_value newTarget;
-        napi_get_new_target(env, info, &newTarget);
+        napi_value newTarget = nullptr;
+        napi_status status = napi_get_new_target(env, info, &newTarget);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_get_new_target fail");
+            return nullptr;
+        }
         if (newTarget != nullptr) {
             // 使用`new MyObject(...)`调用方式
             size_t argc = 1;
-            napi_value args[1];
-            napi_value jsThis;
-            napi_get_cb_info(env, info, &argc, args, &jsThis, nullptr);
+            napi_value args[1] = { nullptr };
+            napi_value jsThis = nullptr;
+            status = napi_get_cb_info(env, info, &argc, args, &jsThis, nullptr);
+            if (status != napi_ok) {
+                napi_throw_error(env, nullptr, "Node-API napi_get_cb_info fail");
+                return nullptr;
+            }
 
             double value = 0.0;
-            napi_valuetype valuetype;
-            napi_typeof(env, args[0], &valuetype);
+            napi_valuetype valuetype = napi_undefined;
+            status = napi_typeof(env, args[0], &valuetype);
+            if (status != napi_ok) {
+                napi_throw_error(env, nullptr, "Node-API napi_typeof fail");
+                return nullptr;
+            }
             if (valuetype != napi_undefined) {
-                napi_get_value_double(env, args[0], &value);
+                status = napi_get_value_double(env, args[0], &value);
+                if (status != napi_ok) {
+                    napi_throw_error(env, nullptr, "Node-API napi_get_value_double fail");
+                    return nullptr;
+                }
             }
 
             MyObject *obj = new MyObject(value);
 
             obj->env_ = env;
             // 通过napi_wrap_sendable将Sendable ArkTS对象jsThis与C++对象obj绑定
-            napi_wrap_sendable(env, jsThis, reinterpret_cast<void *>(obj), MyObject::Destructor, nullptr);
+            status = napi_wrap_sendable(env, jsThis, reinterpret_cast<void *>(obj), MyObject::Destructor, nullptr);
+            if (status != napi_ok) {
+                napi_throw_error(env, nullptr, "Node-API napi_wrap_sendable fail");
+                delete obj;
+                return nullptr;
+            }
 
             return jsThis;
         } else {
             // 使用`MyObject(...)`调用方式
             size_t argc = 1;
-            napi_value args[1];
-            napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+            napi_value args[1] = { nullptr };
+            status = napi_get_cb_info(env, info, &argc, args, nullptr, nullptr);
+            if (status != napi_ok) {
+                napi_throw_error(env, nullptr, "Node-API napi_get_cb_info fail");
+                return nullptr;
+            }
 
-            napi_value cons;
-            napi_get_reference_value(env, g_ref, &cons);
-            napi_value instance;
-            napi_new_instance(env, cons, argc, args, &instance);
+            napi_value cons = nullptr;
+            status = napi_get_reference_value(env, g_ref, &cons);
+            if (status != napi_ok) {
+                napi_throw_error(env, nullptr, "Node-API napi_get_reference_value fail");
+                return nullptr;
+            }
+            napi_value instance = nullptr;
+            status = napi_new_instance(env, cons, argc, args, &instance);
+            if (status != napi_ok) {
+                napi_throw_error(env, nullptr, "Node-API napi_new_instance fail");
+                return nullptr;
+            }
 
             return instance;
         }
@@ -181,14 +230,26 @@
     napi_value MyObject::GetValue(napi_env env, napi_callback_info info) {
         OH_LOG_INFO(LOG_APP, "MyObject::GetValue called");
 
-        napi_value jsThis;
-        napi_get_cb_info(env, info, nullptr, nullptr, &jsThis, nullptr);
+        napi_value jsThis = nullptr;
+        napi_status status = napi_get_cb_info(env, info, nullptr, nullptr, &jsThis, nullptr);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_get_cb_info fail");
+            return nullptr;
+        }
 
-        MyObject *obj;
+        MyObject *obj = nullptr;
         // 通过napi_unwrap_sendable将jsThis之前绑定的C++对象取出，并对其进行操作
-        napi_unwrap_sendable(env, jsThis, reinterpret_cast<void **>(&obj));
-        napi_value num;
-        napi_create_double(env, obj->value_, &num);
+        status = napi_unwrap_sendable(env, jsThis, reinterpret_cast<void **>(&obj));
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_unwrap_sendable fail");
+            return nullptr;
+        }
+        napi_value num = nullptr;
+        status = napi_create_double(env, obj->value_, &num);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_create_double fail");
+            return nullptr;
+        }
 
         return num;
     }
@@ -197,15 +258,27 @@
         OH_LOG_INFO(LOG_APP, "MyObject::SetValue called");
 
         size_t argc = 1;
-        napi_value value;
-        napi_value jsThis;
+        napi_value value = nullptr;
+        napi_value jsThis = nullptr;
 
-        napi_get_cb_info(env, info, &argc, &value, &jsThis, nullptr);
+        napi_status status = napi_get_cb_info(env, info, &argc, &value, &jsThis, nullptr);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_get_cb_info fail");
+            return nullptr;
+        }
 
-        MyObject *obj;
+        MyObject *obj = nullptr;
         // 通过napi_unwrap_sendable将jsThis之前绑定的C++对象取出，并对其进行操作
-        napi_unwrap_sendable(env, jsThis, reinterpret_cast<void **>(&obj));
-        napi_get_value_double(env, value, &obj->value_);
+        status = napi_unwrap_sendable(env, jsThis, reinterpret_cast<void **>(&obj));
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_unwrap_sendable fail");
+            return nullptr;
+        }
+        status = napi_get_value_double(env, value, &obj->value_);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_get_value_double fail");
+            return nullptr;
+        }
 
         return nullptr;
     }
@@ -213,15 +286,27 @@
     napi_value MyObject::PlusOne(napi_env env, napi_callback_info info) {
         OH_LOG_INFO(LOG_APP, "MyObject::PlusOne called");
 
-        napi_value jsThis;
-        napi_get_cb_info(env, info, nullptr, nullptr, &jsThis, nullptr);
+        napi_value jsThis = nullptr;
+        napi_status status = napi_get_cb_info(env, info, nullptr, nullptr, &jsThis, nullptr);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_get_cb_info fail");
+            return nullptr;
+        }
 
-        MyObject *obj;
+        MyObject *obj = nullptr;
         // 通过napi_unwrap_sendable将jsThis之前绑定的C++对象取出，并对其进行操作
-        napi_unwrap_sendable(env, jsThis, reinterpret_cast<void **>(&obj));
+        status = napi_unwrap_sendable(env, jsThis, reinterpret_cast<void **>(&obj));
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_unwrap_sendable fail");
+            return nullptr;
+        }
         obj->value_ += 1;
-        napi_value num;
-        napi_create_double(env, obj->value_, &num);
+        napi_value num = nullptr;
+        status = napi_create_double(env, obj->value_, &num);
+        if (status != napi_ok) {
+            napi_throw_error(env, nullptr, "Node-API napi_create_double fail");
+            return nullptr;
+        }
 
         return num;
     }
@@ -233,8 +318,12 @@
     import { hilog } from '@kit.PerformanceAnalysisKit';
     import { MyObject } from 'libentry.so';
 
-    let object : MyObject = new MyObject(0);
-    object.value = 1023;
-    hilog.info(0x0000, 'testTag', 'MyObject value after set: %{public}d', object.value);
-    hilog.info(0x0000, 'testTag', 'MyObject plusOne: %{public}d', object.plusOne());
+    try {
+        let object : MyObject = new MyObject(0);
+        object.value = 1023.1;
+        hilog.info(0x0000, 'testTag', 'MyObject value after set: %{public}s', object.value.toString());
+        hilog.info(0x0000, 'testTag', 'MyObject plusOne: %{public}s', object.plusOne().toString());
+    } catch (error) {
+        hilog.error(0x0000, 'testTag', 'Test Node-API error: %{public}s', error.message);
+    }
     ```

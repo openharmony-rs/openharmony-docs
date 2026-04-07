@@ -25,7 +25,7 @@ Starting from API version 12, the [aboutToDisappear](../reference/apis-arkui/ark
 
 - Remove the custom component to be released from its parent node to eliminate the parent node's impact on the component's lifecycle.
 - For custom components created using [BuilderNode](./arkts-user-defined-arktsNode-builderNode.md), call [dispose](../reference/apis-arkui/js-apis-arkui-builderNode.md#dispose12) to immediately release the frontend BuilderNode's strong reference to the backend node.
-- For root nodes obtained via **OH_ArkUI_GetNodeHandleFromNapiValue** (from **BuilderNode** or **ComponentContent**), call [disposenode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) to decrease the reference count increased by **OH_ArkUI_GetNodeHandleFromNapiValue**.
+- For root nodes obtained via **OH_ArkUI_GetNodeHandleFromNapiValue** (from **BuilderNode** or **ComponentContent**), call [disposeNode](../reference/apis-arkui/capi-arkui-nativemodule-arkui-nativenodeapi-1.md#disposenode) to decrease the reference count increased by **OH_ArkUI_GetNodeHandleFromNapiValue**.
 - If **dispose** is not called, the frontend BuilderNode object will be reclaimed during [garbage collection (GC)](../arkts-utils/gc-introduction.md), and the reference to the backend root node will be released. For debugging, use the [hidumper](../dfx/hidumper.md) command to trigger GC or [query heap memory](../dfx/hidumper.md#querying-vm-heap-memory) to analyze reference relationships.
 
 **Example**
@@ -291,6 +291,7 @@ When [BuilderNode](./arkts-user-defined-arktsNode-builderNode.md) is used to cre
 **Example**
 
 The following example demonstrates a scenario where the BuilderNode frontend object is passed as a parameter to a custom component, creating a circular reference between frontend and backend.
+
 In the code, [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) is the callback triggered when the custom component (**TestComponent**) built inside the BuilderNode is destroyed.
 
 - Without calling **dispose** (clicking the **Destroy** button): Due to the circular reference, the custom component cannot be destroyed, manifested by the [aboutToDisappear](../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear) callback not being triggered.

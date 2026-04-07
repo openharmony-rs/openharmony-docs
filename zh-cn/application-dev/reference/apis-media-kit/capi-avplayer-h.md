@@ -8,7 +8,7 @@
 
 ## 概述
 
-定义avplayer接口。使用AVPlayer提供的Native API播放媒体源。
+定义AVPlayer接口。使用AVPlayer提供的Native API播放媒体源。
 
 **引用文件：** <multimedia/player_framework/avplayer.h>
 
@@ -69,7 +69,7 @@
 | [bool OH_AVPlayer_IsLooping(OH_AVPlayer *player)](#oh_avplayer_islooping) | - | 判断是否循环播放。 |
 | [OH_AVErrCode OH_AVPlayer_SetLooping(OH_AVPlayer *player, bool loop)](#oh_avplayer_setlooping) | - | 设置循环播放。 |
 | [OH_AVErrCode OH_AVPlayer_SetPlayerCallback(OH_AVPlayer *player, AVPlayerCallback callback)](#oh_avplayer_setplayercallback) | - | 设置播放器回调函数。<br> 由于通过此方法设置的信息监听回调函数[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)和错误监听回调函数[OH_AVPlayerOnError](capi-avplayer-base-h.md#oh_avplayeronerror)可以传递的信息有限，也不便于应用区分多个播放器实例。<br> 从API version 12开始，应使用[OH_AVPlayer_SetOnInfoCallback](capi-avplayer-h.md#oh_avplayer_setoninfocallback)、[OH_AVPlayer_SetOnErrorCallback](capi-avplayer-h.md#oh_avplayer_setonerrorcallback)接口分别设置信息监听回调函数[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)和错误监听回调函数[OH_AVPlayerOnErrorCallback](capi-avplayer-base-h.md#oh_avplayeronerrorcallback)。(API12废弃) |
-| [OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_selecttrack) | - | 选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨迹。<br> 设置生效后，原音轨将失效。请设置字幕处于准备/播放/暂停/完成状态，并将音轨设置为准备状态。 |
+| [OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_selecttrack) | - | 选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨道。<br> 设置生效后，原音轨将失效。请设置字幕处于准备/播放/暂停/完成状态，并将音轨设置为准备状态。 |
 | [OH_AVErrCode OH_AVPlayer_DeselectTrack(OH_AVPlayer *player, int32_t index)](#oh_avplayer_deselecttrack) | - | 取消选择当前音频或字幕轨道。 |
 | [OH_AVErrCode OH_AVPlayer_GetCurrentTrack(OH_AVPlayer *player, int32_t trackType, int32_t *index)](#oh_avplayer_getcurrenttrack) | - | 获取当前有效的轨道索引。请将状态设置为准备/正在播放/暂停/完成。 |
 | [OH_AVErrCode OH_AVPlayer_SetMediaKeySystemInfoCallback(OH_AVPlayer *player, Player_MediaKeySystemInfoCallback callback)](#oh_avplayer_setmediakeysysteminfocallback) | - | 设置播放器媒体密钥系统信息回调的方法。 |
@@ -473,7 +473,7 @@ OH_AVErrCode OH_AVPlayer_SetLoudnessGain(OH_AVPlayer *player, float loudnessGain
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置响度。<br>         AV_ERR_INVALID_VAL：输入player为空指针，或者输入的loudnessGain是无效参数。<br>         AV_ERR_INVALID_STATE：函数在不正常的状态下调用，或者audioRendererInfo的usage参数不是[StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_MUSIC，<br>              [StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_MOVIE ，[StreamUsage](../apis-audio-kit/arkts-apis-audio-e.md#streamusage).STREAM_USAGE_AUDIOBOOK 之一。<br>         AV_ERR_SERVICE_DIED：系统错误。 |
+| [OH_AVErrCode](../apis-avcodec-kit/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：成功设置响度。<br>AV_ERR_INVALID_VAL：输入player为空指针，或者输入的loudnessGain是无效参数。<br>AV_ERR_INVALID_STATE：函数在不正常的状态下调用，或者audioRendererInfo的usage参数不是<br>[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MUSIC，<br>[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_MOVIE和<br>[OH_AudioStream_Usage](../apis-audio-kit/capi-native-audiostream-base-h.md#oh_audiostream_usage).AUDIOSTREAM_USAGE_AUDIOBOOK之一。<br>AV_ERR_SERVICE_DIED：系统错误。 |
 
 ### OH_AVPlayer_Seek()
 
@@ -729,7 +729,7 @@ OH_AVErrCode OH_AVPlayer_SetVolumeMode(OH_AVPlayer *player, OH_AudioStream_Volum
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 
-**起始版本：** 18
+**起始版本：** 19
 
 **参数：**
 
@@ -1024,7 +1024,7 @@ OH_AVErrCode OH_AVPlayer_SelectTrack(OH_AVPlayer *player, int32_t index)
 
 **描述**
 
-选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨迹。<br> 设置生效后，原音轨将失效。请设置字幕处于准备/播放/暂停/完成状态，并将音轨设置为准备状态。
+选择音频或字幕轨道。<br> 默认播放第一个带数据的音轨，不播放字幕轨道。<br> 设置生效后，原音轨将失效。请设置字幕处于准备/播放/暂停/完成状态，并将音轨设置为准备状态。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVPlayer
 

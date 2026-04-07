@@ -12,20 +12,25 @@ This section describes how to execute concurrent tasks through TaskPool within a
 
 1. Create a Worker thread in the main thread and send a message.
 
-   ```ts
-   // Index.ets
+   <!-- @[worker_taskpool](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/pages/workerAndTaskpool.ets) -->    
+   
+   ``` TypeScript
+   // workerAndTaskpool.ets
    import { MessageEvents, worker } from '@kit.ArkTS';
+   import { PromptAction } from '@kit.ArkUI';
    
    @Entry
    @Component
    struct Index {
-     @State message: string = 'Hello World';
+     @State message: string = 'Create a Worker thread in the main thread and send a message.';
+     @State returnMessage: string = 'return...';
+     @State promptAction: PromptAction = this.getUIContext().getPromptAction();
    
      build() {
        RelativeContainer() {
-         Text(this.message)
+         Button(this.message)
+           .fontSize(25)
            .id('HelloWorld')
-           .fontSize($r('app.float.page_text_font_size'))
            .fontWeight(FontWeight.Bold)
            .alignRules({
              center: { anchor: '__container__', align: VerticalAlign.Center },
@@ -35,15 +40,18 @@ This section describes how to execute concurrent tasks through TaskPool within a
              // 1. Create a Worker instance.
              const myWorker = new worker.ThreadWorker('entry/ets/workers/Worker.ets');
    
-             // 2. Handle results from the Worker instance.
+             // 2. Register the onmessage callback function to process the messages sent by the Worker to the main thread.
              myWorker.onmessage = (e: MessageEvents) => {
                console.info('Main thread receives the final result:', e.data.result);
+               this.returnMessage = 'Main thread receives the final result:' + e.data.result;
+               this.promptAction.showToast({ message: this.returnMessage });
                myWorker.terminate(); // Destroy the Worker instance at an appropriate time.
              };
    
              // 3. Send a startup instruction to the Worker instance.
              myWorker.postMessage({ type: 'start', data: 10 });
            })
+         // ...
        }
        .height('100%')
        .width('100%')
@@ -53,7 +61,9 @@ This section describes how to execute concurrent tasks through TaskPool within a
 
 2. Call TaskPool to execute concurrent tasks in the Worker thread.
 
-   ```ts
+   <!-- @[define_worker](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTsConcurrent/ApplicationMultithreadingDevelopment/PracticalCasesSecond/entry/src/main/ets/workers/Worker.ets) -->    
+   
+   ``` TypeScript
    // Worker.ets
    import { MessageEvents, ThreadWorkerGlobalScope, worker } from '@kit.ArkTS';
    import { taskpool } from '@kit.ArkTS';

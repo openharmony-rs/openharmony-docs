@@ -42,7 +42,7 @@ publish(request: NotificationRequest, userId: number, callback: AsyncCallback\<v
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -125,7 +125,7 @@ publish(request: NotificationRequest, userId: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                              |
 | -------- | ---------------------------------------------------- |
@@ -199,7 +199,7 @@ addSlot(slot: NotificationSlot, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -257,7 +257,7 @@ addSlot(slot: NotificationSlot): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -306,7 +306,7 @@ addSlots(slots: Array\<NotificationSlot\>, callback: AsyncCallback\<void\>): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -368,7 +368,7 @@ addSlots(slots: Array\<NotificationSlot\>): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -423,7 +423,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -480,7 +480,7 @@ setNotificationEnable(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -527,7 +527,7 @@ getAllNotificationEnabledBundles(): Promise<Array<BundleOption\>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -629,7 +629,7 @@ isNotificationEnabled(bundle: BundleOption, callback: AsyncCallback\<boolean\>):
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -687,7 +687,7 @@ isNotificationEnabled(bundle: BundleOption): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -735,7 +735,7 @@ isNotificationEnabled(userId: number, callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -792,7 +792,7 @@ isNotificationEnabled(userId: number): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -843,7 +843,7 @@ displayBadge(bundle: BundleOption, enable: boolean, callback: AsyncCallback\<voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -903,7 +903,7 @@ displayBadge(bundle: BundleOption, enable: boolean): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -954,7 +954,7 @@ isBadgeDisplayed(bundle: BundleOption, callback: AsyncCallback\<boolean\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1013,7 +1013,7 @@ isBadgeDisplayed(bundle: BundleOption): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1071,7 +1071,7 @@ setSlotFlagsByBundle(bundle: BundleOption, slotFlags: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1128,7 +1128,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback: AsyncCal
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1193,7 +1193,7 @@ setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1254,7 +1254,7 @@ getSlotFlagsByBundle(bundle: BundleOption): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1305,7 +1305,7 @@ getSlotsByBundle(bundle: BundleOption, callback: AsyncCallback\<Array\<Notificat
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1364,7 +1364,7 @@ getSlotsByBundle(bundle: BundleOption): Promise\<Array\<NotificationSlot>>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1416,7 +1416,7 @@ getSlotNumByBundle(bundle: BundleOption, callback: AsyncCallback\<number\>): voi
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1477,7 +1477,7 @@ getSlotNumByBundle(bundle: BundleOption): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1527,7 +1527,7 @@ getAllActiveNotifications(callback: AsyncCallback\<Array\<NotificationRequest>>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1574,7 +1574,7 @@ getAllActiveNotifications(): Promise\<Array\<NotificationRequest\>\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1618,7 +1618,7 @@ getActiveNotificationByFilter(filter: NotificationFilter, callback: AsyncCallbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
@@ -1681,7 +1681,7 @@ getActiveNotificationByFilter(filter: NotificationFilter): Promise\<Notification
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ---------------------------------------- | 
@@ -1736,7 +1736,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string, callback: AsyncCall
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1794,7 +1794,7 @@ removeGroupByBundle(bundle: BundleOption, groupName: string): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -1844,7 +1844,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate, callback: AsyncCallback\<void\>): vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1908,7 +1908,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -1963,7 +1963,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number, callback: AsyncCallb
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2031,7 +2031,7 @@ setDoNotDisturbDate(date: DoNotDisturbDate, userId: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2089,7 +2089,7 @@ getDoNotDisturbDate(callback: AsyncCallback\<DoNotDisturbDate\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2140,7 +2140,7 @@ getDoNotDisturbDate(): Promise\<DoNotDisturbDate\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2188,7 +2188,7 @@ getDoNotDisturbDate(userId: number, callback: AsyncCallback\<DoNotDisturbDate\>)
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2249,7 +2249,7 @@ getDoNotDisturbDate(userId: number): Promise\<DoNotDisturbDate\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2301,7 +2301,7 @@ notificationManager.getDoNotDisturbDate(userId).then((data: notificationManager.
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                             |
 | -------- | ----------------------------------- |
@@ -2351,7 +2351,7 @@ isSupportDoNotDisturbMode(): Promise\<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2397,7 +2397,7 @@ setDistributedEnable(enable: boolean, callback: AsyncCallback\<void\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2454,7 +2454,7 @@ setDistributedEnable(enable: boolean): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2504,7 +2504,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean, callback: As
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2568,7 +2568,7 @@ setDistributedEnableByBundle(bundle: BundleOption, enable: boolean): Promise\<vo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2621,7 +2621,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, callback: AsyncCallback\<bool
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2681,7 +2681,7 @@ isDistributedEnabledByBundle(bundle: BundleOption): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -2733,7 +2733,7 @@ getDeviceRemindType(callback: AsyncCallback\<DeviceRemindType\>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2782,7 +2782,7 @@ getDeviceRemindType(): Promise\<DeviceRemindType\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -2829,7 +2829,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2915,7 +2915,7 @@ publishAsBundle(request: NotificationRequest, representativeBundle: string, user
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -2996,7 +2996,7 @@ publishAsBundle(representativeBundle: BundleOption, request: NotificationRequest
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[HTTP错误码](../apis-network-kit/errorcode-net-http.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -3072,7 +3072,7 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number, callbac
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3134,7 +3134,7 @@ cancelAsBundle(id: number, representativeBundle: string, userId: number): Promis
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3193,7 +3193,7 @@ cancelAsBundle(representativeBundle: BundleOption, id: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -3250,7 +3250,7 @@ cancel(representativeBundle: BundleOption, id: number): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
@@ -3304,7 +3304,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3364,7 +3364,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3430,7 +3430,7 @@ setNotificationEnableSlot(bundle: BundleOption, type: SlotType, enable: boolean,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3484,7 +3484,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType, callback: AsyncC
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3546,7 +3546,7 @@ isNotificationSlotEnabled(bundle: BundleOption, type: SlotType): Promise\<boolea
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -3598,7 +3598,7 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean, callback: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3659,7 +3659,7 @@ setSyncNotificationEnabledWithoutApp(userId: number, enable: boolean): Promise\<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3709,7 +3709,7 @@ getSyncNotificationEnabledWithoutApp(userId: number, callback: AsyncCallback\<bo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3765,7 +3765,7 @@ getSyncNotificationEnabledWithoutApp(userId: number): Promise\<boolean>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3816,7 +3816,7 @@ on(type: 'checkNotification', callback: (checkInfo: NotificationCheckInfo) => No
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- | 
@@ -3872,7 +3872,7 @@ on(type: 'checkNotification', checkRequest: NotificationCheckRequest, callback: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3925,7 +3925,7 @@ off(type: 'checkNotification', callback?: (checkInfo: NotificationCheckInfo) => 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -3975,7 +3975,7 @@ triggerSystemLiveView(bundle: BundleOption, notificationId: number, buttonOption
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -4038,7 +4038,7 @@ subscribeSystemLiveView(subscriber: SystemLiveViewSubscriber): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
@@ -4098,7 +4098,7 @@ setDistributedEnabledByBundle(bundle: BundleOption, deviceType: string, enable: 
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4161,7 +4161,7 @@ setDistributedEnableByBundles(bundleEnableInfos: Array\<DistributedBundleEnableI
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4230,7 +4230,7 @@ isDistributedEnabledByBundle(bundle: BundleOption, deviceType: string): Promise<
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4291,7 +4291,7 @@ setSmartReminderEnabled(deviceType: string, enable: boolean): Promise<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4348,7 +4348,7 @@ isSmartReminderEnabled(deviceType: string): Promise<boolean\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4403,7 +4403,7 @@ setBadgeNumberByBundle(bundle: BundleOption, badgeNumber: number): Promise\<void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |  
@@ -4465,7 +4465,7 @@ getSlotByBundle(bundle: BundleOption, slotType: SlotType): Promise\<Notification
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                 |
 | -------- | ---------------------------------------- |
@@ -4525,7 +4525,7 @@ addDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -4673,7 +4673,7 @@ removeDoNotDisturbProfile(templates: Array\<DoNotDisturbProfile>): Promise\<void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -4795,7 +4795,7 @@ setAdditionalConfig(key: string, value: string): Promise\<number\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -4847,7 +4847,7 @@ getDoNotDisturbProfile(id: number): Promise\<DoNotDisturbProfile\>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                            |
 | -------- | ----------------------------------- |
@@ -4961,7 +4961,7 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>): Prom
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5021,7 +5021,7 @@ disableNotificationFeature(disabled: boolean, bundleList: Array\<string\>, userI
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5066,7 +5066,7 @@ setTargetDeviceStatus(deviceType: string, status: number): Promise\<void\>
 
 | 参数名   | 类型                                                         | 必填 | 说明                     |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------ |
-| deviceType | string | 是   | 设备类型。当前仅支持`headset`（可穿戴式音频设备）、`liteWearable`（轻量级智能穿戴设备）、`wearable`（智能穿戴设备）、`current`（本设备）。 |
+| deviceType | string | 是   | 设备类型。当前仅支持`headset`（可穿戴式音频设备）、`liteWearable`（轻量级智能穿戴设备）、`wearable`（智能穿戴设备）、`glasses`（智能眼镜设备）、`current`（本设备）。 |
 | status | number | 是   | 设备状态。<br>- bit0：设备是否正在被使用。0表示未使用，1表示使用中。<br>- bit1：当前设备使用者是否为机主。0表示为非机主，1表示为机主。<br>- bit2：设备是否处于勿扰模式。0表示处于非勿扰模式，1表示处于勿扰模式。 |
 
 **返回值：**
@@ -5228,7 +5228,7 @@ setSilentReminderEnabled(bundle: BundleOption, enabled: boolean): Promise\<void\
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5282,7 +5282,7 @@ isSilentReminderEnabled(bundle: BundleOption): Promise\<SwitchState\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)、[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5506,7 +5506,7 @@ setRingtoneInfoByBundle(bundle: BundleOption, ringtoneInfo: RingtoneInfo): Promi
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5575,7 +5575,7 @@ getRingtoneInfoByBundle(bundle: BundleOption): Promise\<RingtoneInfo\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5640,7 +5640,7 @@ setBadgeDisplayStatusByBundles(badges: Map<BundleOption, boolean>): Promise\<voi
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5695,7 +5695,7 @@ getBadgeDisplayStatusByBundles(bundles:Array\<BundleOption\>): Promise\<Map\<Bun
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5754,7 +5754,7 @@ setReminderInfoByBundles(reminderInfos: Array\<NotificationReminderInfo\>): Prom
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5813,7 +5813,7 @@ getReminderInfoByBundles(bundles: Array\<BundleOption\>):  Promise\<Array\<Notif
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5864,7 +5864,7 @@ isPriorityEnabled(): Promise\<boolean\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5912,7 +5912,7 @@ setPriorityEnabled(enable: boolean): Promise\<void\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -5961,7 +5961,7 @@ isPriorityEnabledByBundle(bundle: BundleOption): Promise\<PriorityEnableStatus\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6013,7 +6013,7 @@ setPriorityEnabledByBundle(bundle: BundleOption, enableStatus: PriorityEnableSta
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6064,7 +6064,7 @@ getBundlePriorityConfig(bundle: BundleOption): Promise\<string\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6116,7 +6116,7 @@ setBundlePriorityConfig(bundle: BundleOption, value: string): Promise\<void\>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](./errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -6138,6 +6138,323 @@ notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').t
   hilog.info(0x0000, 'testTag', `setBundlePriorityConfig success`);
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', `setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.isPriorityIntelligentEnabled<sup>23+</sup>
+
+isPriorityIntelligentEnabled(): Promise\<boolean\>
+
+获取优先通知智能服务使能状态。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<boolean\> | Promise对象，返回包含优先通知智能服务使能状态的Promise对象。<br> - true：优先通知智能服务为打开状态。<br> - false：优先通知智能服务为关闭状态。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+notificationManager.isPriorityIntelligentEnabled().then((result: boolean) => {
+  hilog.info(0x0000, 'testTag', `isPriorityIntelligentEnabled result: ${result}`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', `isPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setPriorityIntelligentEnabled<sup>23+</sup>
+
+setPriorityIntelligentEnabled(enable: boolean): Promise\<void\>
+
+设置优先通知智能服务使能状态。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| enable   | boolean | 是  | 优先通知智能服务使能状态。<br> - true：优先通知智能服务为打开状态。<br> - false：优先通知智能服务为关闭状态。 |
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+notificationManager.setPriorityIntelligentEnabled(false).then(() => {
+  hilog.info(0x0000, 'testTag', `setPriorityIntelligentEnabled success`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', `setPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getPriorityEnabledByBundles<sup>23+</sup>
+
+getPriorityEnabledByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, boolean\>\>
+
+批量获取应用通知优先级开关状态。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundles | Array\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\> | 是 | 应用包信息数组。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean\>\> | Promise对象，返回应用通知优先级开关状态的键值对集合的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let bundles: Array<notificationManager.BundleOption> = new Array(bundleOption);
+notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<notificationManager.BundleOption, boolean>) => {
+  switches.forEach((value, key) => {
+    hilog.info(0x0000, 'testTag', `getPriorityEnabledByBundles switches: ${key.bundle} ${key.uid}, ${value}`);
+  })
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', `getPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+
+## notificationManager.setPriorityEnabledByBundles<sup>23+</sup>
+
+setPriorityEnabledByBundles(switches: Map\<BundleOption, boolean\>): Promise\<void\>
+
+批量设置应用通知优先级开关状态。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| switches | Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), boolean\> | 是 | 应用通知优先级开关状态的键值对集合。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let switches: Map<notificationManager.BundleOption, boolean> = new Map([[bundleOption, false]]);
+notificationManager.setPriorityEnabledByBundles(switches).then(() => {
+  hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundles success`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', `setPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getPriorityStrategyByBundles<sup>23+</sup>
+
+getPriorityStrategyByBundles(bundles: Array\<BundleOption\>): Promise\<Map\<BundleOption, number\>\>;
+
+批量获取应用通知优先策略。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| bundles | Array\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)\> | 是 | 应用包信息数组。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\>\> | Promise对象，返回应用通知优先策略的键值对集合的Promise对象。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let bundles: Array<notificationManager.BundleOption> = new Array(bundleOption);
+notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<notificationManager.BundleOption, number>) => {
+  strategies.forEach((value, key) => {
+    hilog.info(0x0000, 'testTag', `getPriorityStrategyByBundles strategies: ${key.bundle} ${key.uid}, ${value}`);
+  })
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', `getPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.setPriorityStrategyByBundles<sup>23+</sup>
+
+setPriorityStrategyByBundles(strategies: Map\<BundleOption, number\>): Promise\<void\>
+
+批量设置应用通知优先策略。使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名   | 类型                                                         | 必填 | 说明                     |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------ |
+| strategies | Map\<[BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption), number\> | 是 | 应用通知优先策略的键值对集合。与[PriorityStrategyStatus](#prioritystrategystatus23)的枚举进行按位或运算得到值。|
+
+**返回值：**
+
+| 类型            | 说明                     |
+|-----------------|-------------------------|
+| Promise\<void\> | Promise对象，无返回结果。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)、[通知错误码](errorcode-notification.md)和[包管理子系统通用错误码](../../reference/apis-ability-kit/errorcode-bundle.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+| 1600012 | No memory space |
+| 17700001 | The specified bundle name was not found. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
+
+const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
+let strategies: Map<notificationManager.BundleOption, number> = new Map([[bundleOption, notificationManager.PriorityStrategyStatus.STATUS_APPLICATION_DEFINED]]);
+notificationManager.setPriorityStrategyByBundles(strategies).then(() => {
+  hilog.info(0x0000, 'testTag', `setPriorityStrategyByBundles success`);
+}).catch((err: BusinessError) => {
+  hilog.error(0x0000, 'testTag', `setPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -6266,6 +6583,63 @@ notificationManager.setGeofenceEnabled(true).then(() => {
   hilog.info(0x0000, 'testTag', '%{public}s', "setGeofenceEnabled success");
 }).catch((err: BusinessError) => {
   hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getNotificationStatisticsByBundle
+
+getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<BundleNotificationStatistics[]\>
+
+批量获取指定应用列表的通知统计信息，使用Promise异步回调。
+
+**起始版本**：26.0.0
+
+**系统接口**：此接口为系统接口。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**设备行为差异**：该接口仅在Phone/PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                         |
+| --------- | --------------------- | ---- | ---------------------------- |
+| bundles   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)[] | 是  | 应用的包信息列表。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics)[]\> | Promise对象。返回指定应用列表的通知统计信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 801 | Capability not supported. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: notificationManager.BundleOption[] = [
+  { bundle:"com.example.test01" },
+  { bundle:"com.example.test02" }
+];
+notificationManager.getNotificationStatisticsByBundle(bundles).then(
+  (data: notificationManager.BundleNotificationStatistics[]) => {
+  console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
+}).catch((err: BusinessError):void => {
+  console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
 });
 ```
 
@@ -6505,6 +6879,22 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | reminderFlags | number | 否 | 否 | 表示通知提醒方式的标志位。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
 
+## BundleNotificationStatistics
+
+描述指定应用通知统计信息。
+
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+| 名称      | 类型    | 只读 | 可选 | 说明           |
+| --------- | ------ | ---- | ---- | ------------- |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
+| lastTime | number | 否 | 否 | 应用最后一次发布通知的时间。数据格式：时间戳。单位：ms。 |
+| recentCount | number | 否 | 否 | 应用最近7天发布的通知总量。 |
+
 ## PriorityNotificationType<sup>23+</sup>
 
 描述通知的优先级类型。
@@ -6635,3 +7025,40 @@ type MonitorEvent = _MonitorEvent
 | 类型 | 说明 |
 | --- | --- |
 | [_MonitorEvent](js-apis-inner-notification-notificationRequest-sys.md#monitorevent23) | 地理围栏的监控事件类型。 |
+
+## PriorityStrategyStatus<sup>23+</sup>
+
+描述应用通知的优先策略。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+| 名称                 | 值  | 说明                              |
+| ------------------- | --- | --------------------------------- |
+| STATUS_SYSTEM_DEFAULT | 1<<0 | 默认优先策略。 |
+| STATUS_SYSTEM_RULE | 1<<1 | 仅优先规则。 |
+| STATUS_INTELLIGENT | 1<<2 | 仅智能识别。 |
+| STATUS_USER_DEFINED | 1<<3 | 仅用户自定义。 |
+| STATUS_APPLICATION_DEFINED | 1<<4 | 仅应用自定义。 |
+| STATUS_ALL_PRIORITY | 1<<5 | 全部通知优先。 |
+
+## GroupInfo
+
+type GroupInfo = _GroupInfo
+
+组通知定制信息。
+
+**起始版本**：26.0.0
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统接口**：此接口为系统接口。
+
+| 类型 | 说明 |
+| --- | --- |
+| [_GroupInfo](js-apis-inner-notification-notificationRequest-sys.md#groupinfo) | 组通知定制信息的类型。 |

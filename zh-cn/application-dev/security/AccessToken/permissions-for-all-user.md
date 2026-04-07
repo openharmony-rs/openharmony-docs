@@ -1,8 +1,8 @@
 # 开放权限（用户授权）
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -94,12 +94,11 @@
 
 1. 在“module.json5”配置文件中[声明权限](declare-permissions.md)。
 
-   由于在申请后台权限前，必须先申请前台位置权限，因此开发者在配置时，应同时配置后台位置权限ohos.permission.LOCATION_IN_BACKGROUND和前台位置权限。前台位置权限的申请有两种允许情况：
-   - 申请前台模糊位置权限：[ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location)。
-   - 申请前台精确位置权限：[ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location)和[ohos.permission.LOCATION](#ohospermissionlocation)。
+   由于在申请后台位置权限前，必须先申请前台位置权限，因此开发者在配置时，应同时配置后台位置权限和前台位置权限。前台位置权限的申请有两种允许情况：
+   - 申请前台模糊位置权限：声明权限[ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location)。
+   - 申请前台精确位置权限：同时声明权限[ohos.permission.APPROXIMATELY_LOCATION](#ohospermissionapproximately_location)和[ohos.permission.LOCATION](#ohospermissionlocation)。
 2. 应用调用[requestPermissionsFromUser()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissionsfromuser9)拉起弹窗向用户申请对应的前台位置权限。
-3. 当用户点击弹窗授予前台位置权限后，应用调用[requestPermissionOnSetting()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)拉起权限设置弹窗，引导用户授权。
-4. 用户可在弹窗中点击授予用户后台位置权限。
+3. 若用户点击弹窗允许应用使用前台位置权限，应用可以引导用户在系统应用“设置”中，授予后台位置权限；若用户点击弹窗禁止应用使用前台位置权限，应用可以引导用户在系统应用“设置”中授权，或通过调用[requestPermissionOnSetting()](../../reference/apis-ability-kit/js-apis-abilityAccessCtrl.md#requestpermissiononsetting12)再次拉起权限设置弹窗，引导用户授权。
 
 当前系统提供了长时任务机制，对于需要在后台使用位置的应用，结合自身业务场景，可通过申请LOCATION类型的长时任务和前台位置权限的方式在后台获取位置，而不必申请后台位置权限。请参考：[长时任务指导](../../task-management/continuous-task.md)。
 

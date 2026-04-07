@@ -34,10 +34,10 @@ Alternatively, you can [import a key](huks-key-import-overview.md).
 3. Use [OH_Huks_InitParamSet](../../reference/apis-universal-keystore-kit/capi-native-huks-param-h.md#oh_huks_initparamset) to set algorithm parameters.
     
    The parameters to be configured vary with the algorithm used.
-   - If the AES algorithm is used for encryption, the block mode is CBC, and the padding mode is PKCS7, the **IV** parameter is mandatory. For details, see [AES/CBC/PKCS7](#aescbcpkcs7).
+   - If the AES algorithm is used for encryption, the block mode is CBC, and the padding mode is PKCS #7, the **IV** parameter is mandatory. For details, see [AES/CBC/PKCS #7](#aescbcpkcs-7).
    - If the AES algorithm is used for encryption and the block mode is GCM, the **NONCE** and **AAD** parameters are optional. For details, see [AES/GCM/NoPadding](#aesgcmnopadding).
    - If the AES algorithm is used for encryption and the block mode is CCM, the **NONCE** and **AAD** parameters are optional. For details, see [AES/CCM/NoPadding](#aesccmnopadding).
-   - If the RSA algorithm is used for encryption, you need to select the corresponding block mode, padding mode, and digest algorithm. For details, see [RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5) and [RSA/ECB/OAEP/SHA256](#rsaecboaepsha256).
+   - If the RSA algorithm is used for encryption, the corresponding block mode, padding mode, and digest algorithm must be selected. For details, see [RSA/ECB/PKCS1_V1_5](#rsaecbpkcs1_v1_5) and [RSA/ECB/OAEP/SHA256](#rsaecboaepsha256).
    - If the SM2 algorithm is used for encryption, the digest algorithm must be SM3. For details, see [SM2](#sm2).
    <!--Del-->
    - If the DES algorithm is used for encryption and the block mode is CBC, the **IV** parameter is mandatory. For details, see [DES/CBC/NoPadding](#descbcnopadding).
@@ -74,7 +74,7 @@ Use **OH_Huks_DeleteKeyItem** to delete the key that is not required. For detail
 ## Development Cases
 
 
-### AES/CBC/PKCS7
+### AES/CBC/PKCS #7
 <!-- @[encrypt_and_decrypt_AESCBCPKCS7_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/EncryptionDecryption/entry/src/main/cpp/types/projects/napi_aescbcpkcs7.cpp) -->
 
 ``` C++

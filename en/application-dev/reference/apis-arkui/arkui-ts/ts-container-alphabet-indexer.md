@@ -49,7 +49,7 @@ Defines the options of the **AlphabetIndexer** component.
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | ---- | ---- | -------- |
 | arrayValue<sup>7+</sup> | Array&lt;string&gt; | No| No| Array of index items.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| selected<sup>7+</sup>   | number              | No| No   | Index of the initially selected item. If the value exceeds the value range, the default value 0 is used.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| selected<sup>7+</sup>   | number              | No| No   | Index of the initial selected item. If the value is out of range, the default value **0** is used.<br>This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 ## Attributes
 
@@ -75,7 +75,7 @@ Sets the text color for unselected items.
 
 | Name| Type                                      | Mandatory| Description                               |
 | ------ | ------------------------------------------ | ---- | ----------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of unselected items.<br>Default value: 0x99182431, which is a slightly transparent brown.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of unselected items.<br>Default value: **0x99182431**, which is a slightly transparent brown.|
 
 ### selectedColor
 
@@ -91,7 +91,7 @@ Sets the text color for the selected item.
 
 | Name| Type                                      | Mandatory| Description                                     |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of the selected item.<br>Default value: 0xFF007DFF, which is displayed in blue.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of the selected item.<br>Default value: **0xFF007DFF**, which is blue.|
 
 ### popupColor
 
@@ -107,7 +107,7 @@ Sets the text color for the primary index item in the pop-up window.
 
 | Name| Type                                      | Mandatory| Description                                       |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of the primary index item in the pop-up window.<br>Default value: 0xFF007DFF, which is displayed in blue.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of the primary index item in the pop-up window.<br>Default value: **0xFF007DFF**, which is blue.|
 
 ### selectedBackgroundColor
 
@@ -123,7 +123,7 @@ Sets the background color of the selected item.
 
 | Name| Type                                      | Mandatory| Description                                     |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the selected item.<br>Default value: 0x1A007DFF, which is displayed in translucent blue-green.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the selected item.<br>Default value: **0x1A007DFF**, which is semi-transparent blue-green.|
 
 ### popupBackground
 
@@ -139,7 +139,7 @@ Sets the background color for the pop-up window.
 
 | Name| Type                                      | Mandatory| Description                                                        |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the pop-up window.<br>The background blur effect of the pop-up text can affect the background color. You can disable the effect by setting [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) to **NONE**.<br>Default value:<br>API version 11 and earlier: 0xFFFFFFFF, which is displayed in white.<br>API version 12 and later: #66808080, which is displayed in translucent gray.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the pop-up window.<br>The background blur effect of the pop-up text can affect the background color. You can disable the effect by setting [popupBackgroundBlurStyle](#popupbackgroundblurstyle12) to **NONE**.<br>Default value:<br>API version 11 and earlier: **0xFFFFFFFF**, which is white.<br>Since API version 12: **#66808080**, which is semi-transparent gray.|
 
 ### usingPopup
 
@@ -235,8 +235,8 @@ Sets the alignment style of the indexer pop-up window.
 
 | Name              | Type                                 | Mandatory| Description                                                        |
 | -------------------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| value                | [IndexerAlign](#indexeralign) | Yes  | Alignment style of the indexer pop-up window. The pop-up window can be displayed on the right or left of the indexer.<br>Default value: IndexerAlign.END|
-| offset<sup>10+</sup> | [Length](ts-types.md#length)          | No  | Spacing between the pop-up window and the alphabetic index bar. A value greater than or equal to **0** is valid. If this parameter is set to a value less than **0** or is not set, the spacing is the same as **popupPosition**. When this parameter and [popupPosition](#popupposition8) are set at the same time, offset takes effect in the horizontal direction, and popupPosition.y takes effect in the vertical direction.|
+| value                | [IndexerAlign](#indexeralign) | Yes  | Alignment style of the indexer pop-up window. The pop-up window can be displayed on the right or left of the indexer.<br>Default value: **IndexerAlign.END**|
+| offset<sup>10+</sup> | [Length](ts-types.md#length)          | No  | Spacing between the pop-up window and the alphabetic index bar. A value greater than or equal to **0** is valid. If this parameter is set to a value less than **0** or is not set, the spacing is the same as **popupPosition**. When this parameter and [popupPosition](#popupposition8) are set at the same time, **offset** takes effect in the horizontal direction, and **popupPosition.y** takes effect in the vertical direction.|
 
 ### selected<sup>8+</sup>
 
@@ -270,7 +270,7 @@ Sets the position of the pop-up window relative to the center of the indexer's t
 
 | Name| Type                             | Mandatory| Description                                                        |
 | ------ | --------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | [Position](ts-types.md#position) | Yes  | Position of the pop-up window relative to the center of the indexer's top border.<br>Default value: {x: 60.0, y: 48.0}|
+| value  | [Position](ts-types.md#position) | Yes  | Position of the pop-up window relative to the center of the indexer's top border.<br>Default value: **{x: 60.0, y: 48.0}**|
 
 ### popupSelectedColor<sup>10+</sup>
 
@@ -286,7 +286,7 @@ Sets the text color for the selected secondary index item in the pop-up window.
 
 | Name| Type                                      | Mandatory| Description                                                 |
 | ------ | ------------------------------------------ | ---- | ----------------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of the selected secondary index item in the pop-up window.<br>The default value is #FF182431, which is displayed as dark blue.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of the selected secondary index items in the pop-up window.<br>Default value: **#FF182431**, which is dark blue.|
 
 ### popupUnselectedColor<sup>10+</sup>
 
@@ -302,7 +302,7 @@ Sets the text color for the unselected secondary index items in the pop-up windo
 
 | Name| Type                                      | Mandatory| Description                                                   |
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of the unselected item in the secondary index of a toast message.<br>The default value is #FF182431, which is displayed as dark blue.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Text color of the unselected secondary index items in the pop-up window.<br>Default value: **#FF182431**, which is dark blue.|
 
 ### popupItemFont<sup>10+</sup>
 
@@ -334,7 +334,7 @@ Sets the background color for the secondary index item in the pop-up window.
 
 | Name| Type                    | Mandatory| Description                                           |
 | ------ | ------------------------ | ---- | ----------------------------------------------- |
-| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the secondary index item in the pop-up window.<br>Default value:<br>API version 11 and earlier: #FFFFFFFF, which is displayed in white.<br>API version 12 and later: #00000000, which is displayed in black.|
+| value  | [ResourceColor](ts-types.md#resourcecolor) | Yes  | Background color of the secondary index item in the pop-up window.<br>Default value:<br>API version 11 and earlier: **#FFFFFFFF**, which is white.<br>Since API version 12: **#00000000**, which is black.|
 
 ### autoCollapse<sup>11+</sup>   
 
@@ -342,9 +342,9 @@ autoCollapse(value: boolean)
 
 Sets whether to enable the adaptive collapse behavior for the indexer.
 
-When the first index item is **"#"**: Remaining items ≤ 9: Full display mode; 9 < Remaining items ≤ 13: Adapts between full display and short collapse modes based on the indexer height. Remaining items > 13: Adapts between short and long collapse modes based on the indexer height.
+When the first index item is **"#"**: Remaining items ≤ 9: Full display mode; 9 < Remaining items ≤ 13: Adapts between full display and short collapse modes based on the indexer height; remaining items > 13: Adapts between short and long collapse modes based on the indexer height.
 
-If the first index item is not **"#"**: Total index items ≤ 9: Full display mode; 9 < Total index items ≤ 13: Adapts between full display and short collapse modes based on the indexer height. Total index items > 13: Adapts between short and long collapse modes based on the indexer height.
+When the first index item is not **"#"**: All items ≤ 9: Full display mode; 9 < All items ≤ 13: Adapts between full display and short collapse modes based on the indexer height; all items > 13: Adapts between short and long collapse modes based on the indexer height.
 
 >**NOTE**
 >
@@ -358,7 +358,7 @@ If the first index item is not **"#"**: Total index items ≤ 9: Full display mo
 
 | Name| Type   | Mandatory| Description                                      |
 | ------ | ------- | ---- | ------------------------------------------ |
-| value  | boolean | Yes  | Whether to auto-collapse or expand the indexer bar.<br>Default value:<br>Versions earlier than API version 12: false<br>API version 12 and later: true<br>**true**: Enable the adaptive collapse behavior.<br>**false**: Disable the adaptive collapse behavior.|
+| value  | boolean | Yes  | Whether to auto-collapse or expand the indexer bar.<br>Default value:<br>Before API version 12: **false**<br>Since API version 12: **true**<br>**true**: Enable the adaptive collapse behavior.<br>**false**: Disable the adaptive collapse behavior.|
 
 ### popupItemBorderRadius<sup>12+</sup>   
 
@@ -374,7 +374,7 @@ Sets the radius of the index border corners in the pop-up window.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Radius of the index background border corners in the pop-up window.<br>Default value: **24vp**.<br>This parameter cannot be set in percentage. If the value specified is less than **0**, **0** is used.<br>The radius of the index background border corners in the pop-up window is automatically adaptive (radius of the index rounded corners + 4 vp).|
+| value  | number | Yes  | Radius of the index background border corners in the pop-up window.<br>Default value: **24vp**.<br>This parameter cannot be set in percentage. If the value specified is less than **0**, **0** is used.<br>The radius of the index background border corners in the pop-up window is automatically adaptive (radius of the index corners + 4 vp).|
 
 ### itemBorderRadius<sup>12+</sup>   
 
@@ -390,13 +390,13 @@ Sets the radius of the index background border corners in the alphabetic index b
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| value  | number | Yes  | Radius of the index background border corners in the alphabetic index bar.<br>Default value: **8vp**<br>This parameter cannot be set in percentage. If the value specified is less than **0**, **0** is used.<br>The radius of the index background border corners in the alphabetic index bar is automatically adaptive (radius of the index rounded corners + 4 vp).|
+| value  | number | Yes  | Radius of the index background border corners in the alphabetic index bar.<br>Default value: **8vp**<br>This parameter cannot be set in percentage. If the value specified is less than **0**, **0** is used.<br>The radius of the index background border corners in the alphabetic index bar is automatically adaptive (radius of the index corners + 4 vp).|
 
 ### popupBackgroundBlurStyle<sup>12+</sup>   
 
 popupBackgroundBlurStyle(value: BlurStyle)
 
-Sets the background blur style of the pop-up window. If this API is not called to set the background blur style, the component regular blur style is used by default, which corresponds to COMPONENT_REGULAR in BlurStyle.
+Sets the background blur style of the pop-up window. If this API is not called, the component is regularly blurred by default. The corresponding value is **COMPONENT_REGULAR** in **BlurStyle**.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -428,7 +428,7 @@ Sets the background color for the primary index item in the pop-up window.
 
 enableHapticFeedback(value: boolean)
 
-Whether to enable haptic feedback.
+Sets whether to enable haptic feedback.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -438,11 +438,11 @@ Whether to enable haptic feedback.
 
 | Name        | Type                                                 | Mandatory| Description                        |
 |-------------|-----------------------------------------------------|----|----------------------------|
-| value | boolean | Yes | Whether to enable haptic feedback.<br>true: Touch feedback is supported.<br>false: Touch feedback is not supported.<br>Default value: **true**<br>To enable haptic feedback, you must declare the **ohos.permission.VIBRATE** permission under **requestPermissions** in the [module.json5](../../../quick-start/module-configuration-file.md) file of the project.<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
+| value | boolean | Yes | Whether to enable haptic feedback.<br>**true**: To enable haptic feedback.<br>**false**: Not to enable haptic feedback.<br>Default value: **true**<br>To enable haptic feedback, you must declare the **ohos.permission.VIBRATE** permission under **requestPermissions** in the [module.json5](../../../quick-start/module-configuration-file.md) file of the project.<br>"requestPermissions": [{"name": "ohos.permission.VIBRATE"}] |
 
 ## IndexerAlign
 
-Enumerates the alignment styles of the index bar pop-up window.
+Enumerates the alignment styles of the indexer pop-up window.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -450,8 +450,8 @@ Enumerates the alignment styles of the index bar pop-up window.
 | -------- | --- | ----- |
 | Left | 0 | The pop-up window is displayed on the right of the indexer.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | Right | 1 | The pop-up window is displayed on the left of the indexer.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| START<sup>12+</sup> | 2 | In the left-to-right (LTR) scenario, the prompt dialog is displayed on the right of the index bar. and on the left of the indexer for right-to-left scripts.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
-| END<sup>12+</sup> | 3 | In the left-to-right (LTR) scenario, the prompt dialog is displayed on the left of the index bar. and on the right of the indexer for right-to-left scripts.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| START<sup>12+</sup> | 2 | The pop-up window is displayed on the right of the indexer for left-to-right scripts, and on the left of the indexer for right-to-left scripts.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
+| END<sup>12+</sup> | 3 | The pop-up window is displayed on the left of the indexer for left-to-right scripts, and on the right of the indexer for right-to-left scripts.<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 
 ## Events
 
@@ -495,7 +495,7 @@ Triggered when an index item is selected, with the callback parameter being the 
 
 onRequestPopupData(callback: OnAlphabetIndexerRequestPopupDataCallback)
 
-Triggered to set the content of the secondary index items in the pop-up window. The callback parameter is the index of the currently selected item, and the return value is the content to be displayed in the pop-up window.
+Triggered for a secondary index item content event in the pop-up window. The callback parameter is the index of the selected secondary index item. The return value is the secondary index item content to be displayed in the pop-up window.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -505,7 +505,7 @@ Triggered to set the content of the secondary index items in the pop-up window. 
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| callback  | [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) | Yes  | Event triggered to set the content of the secondary index items in the pop-up window.|
+| callback  | [OnAlphabetIndexerRequestPopupDataCallback](#onalphabetindexerrequestpopupdatacallback18) | Yes  | Callback for setting the secondary index item content event in the pop-up window.|
 
 ### onPopupSelect<sup>8+</sup>
 
@@ -650,11 +650,11 @@ struct AlphabetIndexerSample {
           .itemSize(28) // Size of each index item.
           .alignStyle (IndexerAlign.Left) // The pop-up window is displayed on the right of the indexer.
           .popupItemBorderRadius(24) // Set the radius of the index background rounded corners in the pop-up window.
-          .itemBorderRadius(14) // Set the radius of the index background rounded corners in the alphabetic indexer bar.
+          .itemBorderRadius(14) // Set the radius of the index background rounded corners.
           .popupBackgroundBlurStyle(BlurStyle.NONE) // Set the background blur style of the pop-up window.
           .popupTitleBackground(0xCCCCCC) // Background color of the primary index item in the pop-up window.
-          .popupSelectedColor(0x00FF00) // Text color of the selected level-2 index item in the popup window.
-          .popupUnselectedColor(0x0000FF) // Text color of the unselected level-2 index item in the popup window.
+          .popupSelectedColor(0x00FF00) // Text color of the selected secondary index items in the pop-up window.
+          .popupUnselectedColor(0x0000FF) // Text color of the unselected secondary index item in the pop-up window.
           .popupItemFont({ size: 30, style: FontStyle.Normal }) // Text style of the secondary index item in the pop-up window.
           .popupItemBackgroundColor(0xCCCCCC) // Background color of the secondary index item in the pop-up window.
           .onSelect((index: number) => {
@@ -898,7 +898,7 @@ struct AlphabetIndexerSample {
 
         Column() {
           Column() {
-            Text('Switch Blue Style:')
+            Text('Switch Blur Style: ')
               .fontSize(24)
               .fontColor(0xcccccc)
               .width('100%')
@@ -921,7 +921,7 @@ struct AlphabetIndexerSample {
               .usingPopup(true) // Display a pop-up window when an index item is selected.
               .alignStyle (IndexerAlign.Left) // The pop-up window is displayed on the right of the indexer.
               .popupItemBorderRadius(24) // Set the radius of the index background rounded corners in the pop-up window.
-              .itemBorderRadius(14) // Set the radius of the index background rounded corners in the alphabetic indexer bar.
+              .itemBorderRadius(14) // Set the radius of the index background rounded corners.
               .popupBackgroundBlurStyle(this.customBlurStyle) // Set the background blur style of the pop-up window.
               .popupTitleBackground(0xCCCCCC) // Background color of the primary index item in the pop-up window.
               .onSelect((index: number) => {

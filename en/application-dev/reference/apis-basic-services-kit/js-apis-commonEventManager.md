@@ -158,7 +158,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
-let subscriber: commonEventManager.CommonEventSubscriber;
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
@@ -216,7 +216,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
-let subscriber: commonEventManager.CommonEventSubscriber;
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
@@ -265,7 +265,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
-let subscriber: commonEventManager.CommonEventSubscriber;
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
@@ -313,7 +313,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
-let subscriber: commonEventManager.CommonEventSubscriber;
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
@@ -383,7 +383,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
-let subscriber: commonEventManager.CommonEventSubscriber | undefined; 
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ['event']
@@ -427,8 +427,8 @@ setTimeout(() => {
         console.error(`Failed to unsubscribe. Code is ${err.code}, message is ${err.message}`);
         return;
       }
-      // If the subscriber is no longer used, set it to undefined to avoid memory leakage.
-      subscriber = undefined;
+      // If the subscriber is no longer used, set it to null to avoid memory leakage.
+      subscriber = null;
       console.info(`Succeeded in unsubscribing.`);
     });
   } catch (error) {
@@ -442,7 +442,7 @@ setTimeout(() => {
 
 subscribeToEvent(subscriber: CommonEventSubscriber, callback: Callback\<CommonEventData>): Promise\<void>
 
-Subscribes to common events. This API uses a promise to return the result, indicating subscription success or failure.
+Subscribes to a common event. This API uses a promise to return the result, indicating subscription success or failure.
 
 **Atomic service API**: This API can be used in atomic services since API version 20.
 
@@ -477,7 +477,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // Define a subscriber to save the created subscriber object for subsequent subscription and unsubscription.
-let subscriber: commonEventManager.CommonEventSubscriber; 
+let subscriber: commonEventManager.CommonEventSubscriber | null = null;
 // Subscriber information.
 let subscribeInfo: commonEventManager.CommonEventSubscribeInfo = {
   events: ["event"]
@@ -567,4 +567,4 @@ Describes the content and properties of a common event.
 
 | Type| Description|
 | --- | --- |
-| [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and properties of a common event. |
+| [_CommonEventPublishData](js-apis-inner-commonEvent-commonEventPublishData.md) | Content and properties of a common event.|

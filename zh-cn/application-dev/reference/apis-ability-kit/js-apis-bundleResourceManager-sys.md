@@ -373,7 +373,7 @@ try {
 
 getBundleResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): [BundleResourceInfo](js-apis-bundleManager-BundleResourceInfo-sys.md)
 
-以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用的BundleResourceInfo。
+以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用或分身应用的BundleResourceInfo。
 
 **系统接口：** 此接口为系统接口。
 
@@ -433,7 +433,7 @@ try {
 
 getLauncherAbilityResourceInfo(bundleName: string, resourceFlags?: [number](#resourceflag), appIndex?: number): Array<[LauncherAbilityResourceInfo](js-apis-LauncherAbilityResourceInfo-sys.md)>
 
-以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用的LauncherAbilityResourceInfo。
+以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用或分身应用的LauncherAbilityResourceInfo。
 
 **系统接口：** 此接口为系统接口。
 
@@ -610,6 +610,8 @@ getLauncherAbilityResourceInfoList(optionsList: Array\<BundleOptions>, resourceF
 **需要权限：** ohos.permission.GET_INSTALLED_BUNDLE_LIST 和 ohos.permission.GET_BUNDLE_RESOURCES
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 

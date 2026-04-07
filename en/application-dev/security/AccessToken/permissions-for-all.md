@@ -1,8 +1,8 @@
 # Open system_grant Permissions
 
-<!--Kit: ArkUI-->
+<!--Kit: Ability Kit-->
 <!--Subsystem: Security-->
-<!--Owner: @harylee-->
+<!--Owner: @xia-bubai-->
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
@@ -68,7 +68,7 @@ Allows an application to obtain the print framework capability.
 
 Allows an application to configure Bluetooth on a device, initiate or cancel a scan for Bluetooth devices, and pair with Bluetooth devices.
 
-
+ 
 
 **Permission level**: normal
 
@@ -80,7 +80,7 @@ Allows an application to configure Bluetooth on a device, initiate or cancel a s
 
 Allows an application to read data from an acceleration sensor, uncalibrated acceleration sensor, or linear acceleration sensor.
 
-
+ 
 
 **Permission level**: normal
 
@@ -150,7 +150,7 @@ With this permission, the application can obtain Wi-Fi information, including th
 
 Allows an application to read data from a gyroscope sensor or uncalibrated gyroscope sensor.
 
-
+ 
 
 **Permission level**: normal
 
@@ -653,6 +653,34 @@ With this permission, the application allows the system to dump application memo
 
 **Authorization mode**: system_grant
 
-**Supported devices**: 2in1
+**Supported devices**: 2-in-1 devices
 
 **Since**: 23
+
+## ohos.permission.HDR_BRIGHTNESS
+
+Allows an application to use the HDR brightening capability.
+
+With this permission, the application can apply HDR brightening effects to component content.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: general devices
+
+**Valid since**: 24
+
+## ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
+
+Allows an application to query information about and launch **ObjectEditorExtensionAbility** components.
+
+With this permission, the application can query available types of pluggable embedded content and edit the corresponding content.
+
+**Permission level**: normal
+
+**Authorization mode**: system_grant
+
+**Supported devices**: PCs/2-in-1 devices | phones | tablets
+
+**Valid since**: 24

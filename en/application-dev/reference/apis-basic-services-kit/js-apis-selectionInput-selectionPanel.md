@@ -10,8 +10,9 @@
 This module provides the properties and types of the word selection panel.
 
 > **NOTE**
-
-The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+>
+> - The initial APIs of this module are supported since API version 24. Newly added APIs will be marked with a superscript to indicate their earliest API version.
+> - This module is supported only on PCs/2-in-1 devices.
 
 ## Modules to Import
 
@@ -24,6 +25,8 @@ import { PanelInfo, PanelType } from '@kit.BasicServicesKit';
 Describes the properties of the word selection panel.
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 | Name| Type| Read-Only| Optional| Description|
 | --------- | -------- | -------- | -------- | -------- |
@@ -38,6 +41,8 @@ Describes the properties of the word selection panel.
 Enumerates the word selection panel types.
 
 **System capability**: SystemCapability.SelectionInput.Selection
+
+**Model constraint**: This API can be used only in the stage model.
 
 | Name         | Value  | Description        |
 | ------------- | ---- | ------------ |

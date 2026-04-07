@@ -44,7 +44,7 @@
 | ------------------------------------------------------------ |--------|
 | usbControlTransfer(pipe: USBDevicePipe, requestparam: USBDeviceRequestParams, timeout?: number): Promise&lt;number&gt; | 控制传输。  |
 
-更多关于设备管理和传输模式的详细接口介绍，请查阅[API参考文档](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
+更多关于设备管理和传输模式的详细接口介绍，请查阅[@ohos.usbManager](../../../../reference/apis-basic-services-kit/js-apis-usbManager.md)。
 
 ### 开发步骤
 
@@ -130,7 +130,7 @@
        ]
      }
    ]
-   */
+    */
    this.deviceList_ = deviceList;
    ```
 
@@ -185,7 +185,7 @@
    /*
     打开对应接口，在设备信息（deviceList）中选取对应的interface。
    interface1为设备配置中的一个接口。
-   */
+    */
    usbManager.claimInterface(pipe, interface1, true);
    this.pipe_ = pipe;
    this.interface_ = interface1;
@@ -207,13 +207,13 @@
    let pipe: usbManager.USBDevicePipe = this.pipe_;
    /*
    构造控制传输参数
-   */
+    */
    let param: usbManager.USBDeviceRequestParams = {
-     bmRequestType: 0x80, //0x80指一次由设备到主机的标准请求命令
-     bRequest: 0x06, //0x06指获取描述符
-     wValue: 0x01 << 8 | 0, //该值为2个字节，高字节指描述符类型，此处0x01指设备描述符；低字节指描述符索引，设备描述符不涉及，填0
-     wIndex: 0, //索引值，可填0
-     wLength: 18, //描述符的长度，此处18表示设备描述符长度，最大支持1024
+     bmRequestType: 0x80, // 0x80指一次由设备到主机的标准请求命令
+     bRequest: 0x06, // 0x06指获取描述符
+     wValue: 0x01 << 8 | 0, // 该值为2个字节，高字节指描述符类型，此处0x01指设备描述符；低字节指描述符索引，设备描述符不涉及，填0
+     wIndex: 0, // 索引值，可填0
+     wLength: 18, // 描述符的长度，此处18表示设备描述符长度，最大支持1024
      data: new Uint8Array(18)
    };
    

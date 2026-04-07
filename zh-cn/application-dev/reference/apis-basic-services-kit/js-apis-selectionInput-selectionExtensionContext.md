@@ -24,6 +24,10 @@ import { SelectionExtensionContext } from '@kit.BasicServicesKit';
 
 ## SelectionExtensionContext
 
+**系统能力：** SystemCapability.SelectionInput.Selection
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
 ### startAbility
 
 startAbility(want: Want): Promise\<void>
@@ -32,7 +36,7 @@ startAbility(want: Want): Promise\<void>
 
 **系统能力：** SystemCapability.SelectionInput.Selection
 
-**模型约束：** 此接口仅可在Stage模式下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
@@ -48,7 +52,7 @@ startAbility(want: Want): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[元能力错误码](../apis-ability-kit/errorcode-ability.md)。
+以下错误码的详细介绍请参见[元能力子系统错误码](../apis-ability-kit/errorcode-ability.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
@@ -105,12 +109,10 @@ class SelectionExtAbility extends SelectionExtensionAbility {
       this.context.startAbility(wantAbility).then(() => {
         console.info(`startAbility success`);
       }).catch((err: BusinessError) => {
-        let error = err as BusinessError;
-        console.error(`startAbility error: ${error.code} ${error.message}`);
+        console.error(`startAbility error: ${err.code}, errormessage: ${err.message}`);
       })
     } catch (err) {
-      let error = err as BusinessError;
-      console.error(`startAbility error: ${error.code} ${error.message}`);
+      console.error(`startAbility error: ${err.code}, errormessage: ${err.message}`);
     }
     return new SelectionAbilityStub('remote');
   }

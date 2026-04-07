@@ -40,7 +40,7 @@ The operation is not performed in the specified mode.
 
 **Possible Cause**
 
-The API execution sequence is incorrect. For example, the **commitConfig** API is called in prior to **beginConfig**.
+The API execution sequence is incorrect. For example, the [commitConfig](arkts-apis-camera-Session.md#commitconfig11) API is called in prior to [beginConfig](arkts-apis-camera-Session.md#beginconfig11).
 
 **Solution**
 

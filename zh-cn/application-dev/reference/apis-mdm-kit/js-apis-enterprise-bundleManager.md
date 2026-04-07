@@ -374,7 +374,7 @@ addDisallowedUninstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, acco
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。 |
+| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组。<br/>取值范围：单个用户下该名单总数不能超过200。例如100用户下已经设置了50个、101用户未设置，则100用户还能再设置150个，101用户还能再设置200个。不建议一次性设置个数大于50个，可能引入性能问题。<br/>**说明：** 从API version 21版本开始，支持传入应用的[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，推荐使用[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)。API version 20及之前版本，仅支持[appId](../../quick-start/common-problem-of-application.md#什么是appid)。 |
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **错误码**：
@@ -430,7 +430,7 @@ removeDisallowedUninstallBundlesSync(admin: Want, appIds: Array&lt;string&gt;, a
 | 参数名    | 类型                                                    | 必填 | 说明                                                         |
 | --------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | admin     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 企业设备管理扩展组件。Want中必须包含企业设备管理扩展能力的abilityName和所在应用的bundleName。                                               |
-| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。                   |
+| appIds    | Array&lt;string&gt;                                     | 是   | 应用ID数组。<br/>取值范围：不建议一次性设置个数大于50个，可能引入性能问题。<br/>**说明：** 从API version 21版本开始，数组中的元素支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)和[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)，仅移除传入的[appId](../../quick-start/common-problem-of-application.md#什么是appid)（或[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)），不会移除同一应用的[appIdentifier](../../quick-start/common-problem-of-application.md#什么是appidentifier)（或[appId](../../quick-start/common-problem-of-application.md#什么是appid)）。API version 20及之前版本，数组中的元素只支持使用[appId](../../quick-start/common-problem-of-application.md#什么是appid)。                   |
 | accountId | number                                                  | 否   | 用户ID，取值范围：大于等于0。<br> accountId可以通过@ohos.account.osAccount中的[getOsAccountLocalId](../apis-basic-services-kit/js-apis-osAccount.md#getosaccountlocalid9-1)等接口来获取。<br> - 调用接口时，若传入accountId，表示指定用户。<br> - 调用接口时，若未传入accountId，表示当前用户。 |
 
 **错误码**：
@@ -529,6 +529,10 @@ try {
 uninstall(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean): Promise&lt;void&gt;
 
 卸载当前/指定用户下的指定包接口，选择是否保留包数据（由isKeepData指定）。使用promise异步回调。
+
+> **说明：**
+>
+> 当应用为不可卸载的预置应用或者通过[addDisallowedUninstallBundlesSync](./js-apis-enterprise-bundleManager.md#bundlemanageradddisalloweduninstallbundlessync)接口设置了不允许卸载时，调用此接口卸载应用会返回401错误码。
 
 **需要权限：** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -791,18 +795,6 @@ bundleManager.getInstalledBundleList(wantTemp, accountId, bundleInfoGetFlag).the
 });
 ```
 
-## InstallParam
-
-应用包安装需指定的参数信息。
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-| 名称                     | 类型                   | 只读 | 可选 | 说明                                                         |
-| ------------------------ | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
-| userId                   | number                 | 否   | 是 | 指示用户id，默认值：调用方所在用户，取值范围：大于等于0。    |
-| installFlag              | number                 | 否   | 是 |安装标志。枚举值：0：应用初次安装，1：应用覆盖安装，2：应用免安装，默认值为应用初次安装。 |
-| parameters<sup>19+</sup> | Record&lt;string, string&gt; | 否   | 是 | 扩展参数，默认值为空。key取值支持"ohos.bms.param.enterpriseForAllUser"，若对应的value值为"true"，表示为所有用户安装应用。 |
-
 ## bundleManager.addInstallationAllowedAppDistributionTypes<sup>20+</sup>
 
 addInstallationAllowedAppDistributionTypes(admin: Want, appDistributionTypes: Array&lt;AppDistributionType&gt;): void
@@ -843,7 +835,7 @@ import { Want } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -896,7 +888,7 @@ import { Want } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.myapplication',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -950,7 +942,7 @@ import { Want } from '@kit.AbilityKit';
 import { bundleManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
-  //需根据实际情况进行替换
+  // 需根据实际情况进行替换
   bundleName: 'com.example.edmtest',
   abilityName: 'EnterpriseAdminAbility'
 };
@@ -1016,6 +1008,18 @@ try {
     console.error(`Failed to install market apps. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+## InstallParam
+
+应用包安装需指定的参数信息。
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+| 名称                     | 类型                   | 只读 | 可选 | 说明                                                         |
+| ------------------------ | ---------------------- | ---- | ---- | ------------------------------------------------------------ |
+| userId                   | number                 | 否   | 是 | 指示用户id，默认值：调用方所在用户，取值范围：大于等于0。    |
+| installFlag              | number                 | 否   | 是 |安装标志。枚举值：0：应用初次安装，1：应用覆盖安装，2：应用免安装，默认值为应用初次安装。 |
+| parameters<sup>19+</sup> | Record&lt;string, string&gt; | 否   | 是 | 扩展参数，默认值为空。key取值支持"ohos.bms.param.enterpriseForAllUser"，若对应的value值为"true"，表示为所有用户安装应用。 |
 
 ## AppDistributionType<sup>20+</sup>
 

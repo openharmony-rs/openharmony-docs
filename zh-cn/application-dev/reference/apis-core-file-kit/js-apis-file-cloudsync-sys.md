@@ -56,11 +56,11 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | evt | string | 是   | 订阅的事件类型，取值为'progress'（同步过程事件）。 |
-| callback | (pg: SyncProgress) => void | 是   | 同步过程事件回调，回调入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
+| callback | (pg: SyncProgress) => void | 是   | 回调函数。同步过程事件，入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -96,11 +96,11 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | evt | string | 是   | 取消订阅的事件类型，取值为'progress'（同步过程事件）。|
-| callback | (pg: SyncProgress) => void | 是   | 同步过程事件回调，回调入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
+| callback | (pg: SyncProgress) => void | 是   | 回调函数。同步过程事件，入参为[SyncProgress](./js-apis-file-cloudsync.md#syncprogress12)，返回值为void。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -143,7 +143,7 @@ off(evt: 'progress'): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -168,7 +168,7 @@ gallerySync.off('progress');
 
 start(): Promise&lt;void&gt;
 
-异步方法启动端云同步。使用Promise异步回调。
+启动端云同步。使用Promise异步回调。
 
 **需要权限**：ohos.permission.CLOUDFILE_SYNC
 
@@ -180,11 +180,11 @@ start(): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回启动端云同步的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -229,11 +229,11 @@ start(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步启动端云同步的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步启动端云同步。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -280,7 +280,7 @@ stop(): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回停止端云同步的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -326,7 +326,7 @@ stop(callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步停止端云同步的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步停止端云同步。 |
 
 **错误码：**
 
@@ -391,11 +391,11 @@ on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | evt | string | 是   | 订阅的事件类型，取值为'progress'（下载过程事件）。|
-| callback | (pg: DownloadProgress) => void | 是   | 云文件下载过程事件回调，回调入参为[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)，返回值为void。|
+| callback | (pg: DownloadProgress) => void | 是   | 回调函数。云文件下载过程事件，入参为[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)，返回值为void。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -431,11 +431,11 @@ off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | evt | string | 是   | 取消订阅的事件类型，取值为'progress'（同步过程事件）。|
-| callback | (pg: DownloadProgress) => void | 是   | 云文件下载过程事件回调，回调入参为[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)，返回值为void。|
+| callback | (pg: DownloadProgress) => void | 是   | 回调函数。云文件下载过程事件，入参为[DownloadProgress](js-apis-file-cloudsync.md#downloadprogress11)，返回值为void。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -478,7 +478,7 @@ off(evt: 'progress'): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -521,11 +521,11 @@ start(uri: string): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回启动云文件下载的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -571,11 +571,11 @@ start(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   | 待下载文件uri。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步启动云文件下载的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步启动云文件下载。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -628,7 +628,7 @@ stop(uri: string): Promise&lt;void&gt;
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;void&gt; | 使用Promise形式返回停止云文件下载的结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
@@ -676,7 +676,7 @@ stop(uri: string, callback: AsyncCallback&lt;void&gt;): void
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | string | 是   | 待下载文件uri。 |
-| callback | AsyncCallback&lt;void&gt; | 是   | 异步停止云文件下载的回调。 |
+| callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。异步停止云文件下载。 |
 
 **错误码：**
 
@@ -766,7 +766,7 @@ cleanCache(uri: string): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -818,11 +818,11 @@ getFileSyncState(uri: Array&lt;string&gt;): Promise&lt;Array&lt;FileSyncState&gt
 
 | 类型                  | 说明             |
 | --------------------- | ---------------- |
-| Promise&lt;Array&lt;FileSyncState&gt;&gt; | 使用Promise形式返回文件同步状态的结果。 |
+| Promise&lt;Array&lt;FileSyncState&gt;&gt; | Promise对象，返回文件同步状态的结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -866,11 +866,11 @@ getFileSyncState(uri: Array&lt;string&gt;, callback: AsyncCallback&lt;Array&lt;F
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | uri | Array&lt;string&gt; | 是   | 待获取同步状态的uri。 |
-| callback | AsyncCallback&lt;Array&lt;FileSyncState&gt;&gt; | 是   | 异步获取文件状态的回调。|
+| callback | AsyncCallback&lt;Array&lt;FileSyncState&gt;&gt; | 是   | 回调函数。异步获取文件状态。|
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -922,7 +922,7 @@ getFileSyncState(uri: string): FileSyncState
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -986,11 +986,11 @@ optimizeStorage(): Promise&lt;void&gt;
 
   | 类型                  | 说明                           |
   | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1015,7 +1015,7 @@ cloudSync.optimizeStorage().then(() => {
 
 startOptimizeSpace(optimizePara: OptimizeSpaceParam, callback?: Callback\<OptimizeSpaceProgress>): Promise&lt;void&gt;
 
-优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。
+优化图库已同步云空间的本地资源，执行立即优化空间策略，对老化天数前未访问的本地图片/视频进行优化。使用Promise异步回调。callback返回优化进度。
 
 startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复开启将返回其他任务正在执行的错误信息（22400006）。
 
@@ -1030,17 +1030,17 @@ startOptimizeSpace的使用和stopOptimizeSpace方法调用一一对应，重复
 | 参数名     | 类型   | 必填 | 说明 |
 | ---------- | ------ | ---- | ---- |
 | optimizePara | [OptimizeSpaceParam](#optimizespaceparam17) | 是   | 优化参数。 |
-| callback | Callback&lt;[OptimizeSpaceProgress](#optimizespaceprogress17)&gt; | 否   | 返回优化进度。缺省情况下返回401错误，不执行清理任务 |
+| callback | Callback&lt;[OptimizeSpaceProgress](#optimizespaceprogress17)&gt; | 否   | 回调函数。返回优化进度，缺省情况下返回401错误，不执行清理任务 |
 
 **返回值：**
 
   | 类型                  | 说明                           |
   | ------------------- | ---------------------------- |
-  | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
+  | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |
@@ -1087,7 +1087,7 @@ stopOptimizeSpace(): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理子系统错误码](errorcode-filemanagement.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[文件管理错误码](errorcode-filemanagement.md)。
 
 | 错误码ID                     | 错误信息        |
 | ---------------------------- | ---------- |

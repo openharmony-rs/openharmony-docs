@@ -388,7 +388,7 @@ struct TodoList {
 
 Building on the current task list functionality, you can enhance user experience with additional features, such as listening for task status changes and dynamically calculating the number of unfinished tasks. This is where the [\@Monitor](./arkts-new-monitor.md) and [\@Computed](./arkts-new-computed.md) decorators prove useful: \@Monitor is used to listen for deep changes in state variables, triggering custom callback methods when properties are modified. \@Computed decorates getter methods to detect changes in computed properties. It recalculates the value only once when dependencies change, reducing the overhead of redundant computations.
 
-In Example 7, \@Monitor is applied to listen for deep changes in the **isFinish** property of the **task** object within **TaskItem**. When the task status changes, the **onTasksFinished** callback is invoked to log the update. In addition, the number of unfinished tasks in **TodoList** is recorded using \@Computed to decorate **tasksUnfinished**, whose value automatically recalculates whenever task statuses change. Together, these two decorators enable deep listening of state variables and efficient computation of derived properties.
+In Example 7, \@Monitor is applied to listen for deep changes in the **isFinish** property of the **task** object within **TaskItem**. When the task status changes, the **onTasksFinished** callback is invoked to log the update. In addition, the number of unfinished tasks in **TodoList** is recorded using \@Computed to decorate **tasksUnfinished**, whose value automatically recalculates whenever task status change. Together, these two decorators enable deep listening of state variables and efficient computation of derived properties.
 
 **Example 7**
 
@@ -674,7 +674,7 @@ struct SettingPage {
 
 ### Implementing Persistent UI State with PersistenceV2
 
-To preserve task status when users reopen the application, use PersistenceV2 for persistent data storage. Persistence V2 stores data on device disks. Compared with the runtime memory of AppStorage V2, Persistence V2 ensures that data remains unchanged when an application is restarted after being closed.
+To preserve task status when users reopen the application, use PersistenceV2 for persistent data storage. PersistenceV2 stores data on device disks. Compared with the runtime memory of AppStorageV2, PersistenceV2 ensures that data remains unchanged when an application is restarted after being closed.
 
 In Example 9, a **TaskList** class is created to store all task information persistently through PersistenceV2, using the key **TaskList** (with the corresponding data being an instance of the **TaskList** class). When PersistenceV2 connects to **TaskList** for the first time, if no existing data is found, it initializes a **TaskList** instance with an empty tasks array by default. In the **aboutToAppear** lifecycle function, if **TaskList** connected to PersistenceV2 contains no task data, tasks are loaded from the local file **defaultTasks.json** and stored in PersistenceV2. Subsequent changes to each task's completion status are synchronized to PersistenceV2. This ensures all task data remains unchanged even after the application is restarted, achieving persistent storage of the application's state.
 
@@ -829,7 +829,7 @@ struct TodoList {
 }
 ```
 
-The JSON file is stored in src/main/resources/rawfile/defaultTasks.json.
+The JSON file is stored in **src/main/resources/rawfile/defaultTasks.json**.
 ```json
 [
   {"taskName": "Learn ArkTS development", "isFinish": false},

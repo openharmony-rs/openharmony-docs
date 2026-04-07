@@ -78,7 +78,7 @@ struct SnapshotExample {
         .onClick(() => {
           this.uiContext.getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error('error: ${JSON.stringify(error)}');
+              console.error(`error: ${JSON.stringify(error)}`);
               return;
             }
             this.pixmap = pixmap;
@@ -164,7 +164,7 @@ struct SnapshotExample {
               this.pixmap = pixmap;
             })
             .catch((err: Error) => {
-              console.error("error: " + err);
+              console.error(`error: ${err}`);
             })
         }).margin(10)
     }
@@ -253,7 +253,7 @@ struct ComponentSnapshotExample {
           },
             (error: Error, pixmap: image.PixelMap) => {
               if (error) {
-                console.error('error: ${JSON.stringify(error)}');
+                console.error(`error: ${JSON.stringify(error)}`);
                 return;
               }
               this.pixmap = pixmap;
@@ -355,7 +355,7 @@ struct ComponentSnapshotExample {
               this.pixmap = pixmap;
             })
             .catch((err: Error) => {
-              console.error("error: " + err);
+              console.error(`error: ${err}`);
             })
         })
       Image(this.pixmap)
@@ -436,7 +436,7 @@ struct SnapshotExample {
               this.getUIContext().getComponentSnapshot().getSync("root", { scale: 2, waitUntilRenderFinished: true });
             this.pixmap = pixelmap;
           } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message);
+            console.error(`getSync errorCode: ${error.code} message: ${error.message}`);
           }
         }).margin(10)
     }
@@ -533,10 +533,10 @@ struct SnapshotExample {
                 this.pixmap = pixmap;
               })
               .catch((err: Error) => {
-                console.error("error: " + err);
+                console.error(`error: ${err}`);
               })
           } catch (error) {
-            console.error('UniqueId get snapshot Error: ${JSON.stringify(error)}');
+            console.error(`UniqueId get snapshot Error: ${JSON.stringify(error)}`);
           }
         }).margin(10)
     }
@@ -632,7 +632,7 @@ struct SnapshotExample {
               .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
                 { scale: 2, waitUntilRenderFinished: true });
           } catch (error) {
-            console.error('UniqueId getSync snapshot Error: ${JSON.stringify(error)}');
+            console.error(`UniqueId getSync snapshot Error: ${JSON.stringify(error)}`);
           }
         }).margin(10)
     }
@@ -708,7 +708,7 @@ struct ReusableChildComponent {
   }
 
   aboutToRecycle(): void {
-    console.info("ReusableChildComponent aboutToRecycle " + this.text);
+    console.info(`ReusableChildComponent aboutToRecycle ${this.text}`);
   }
 
   build() {
@@ -744,7 +744,7 @@ struct Index {
                 this.pixmap = pixmap;
               })
               .catch((err: Error) => {
-                console.error("error: " + err);
+                console.error(`error: ${err}`);
               })
           })
         Image(this.pixmap)

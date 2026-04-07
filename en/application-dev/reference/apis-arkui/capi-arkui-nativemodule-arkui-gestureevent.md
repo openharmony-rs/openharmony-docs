@@ -1,7 +1,7 @@
 # ArkUI_GestureEvent
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -12,7 +12,7 @@ typedef struct ArkUI_GestureEvent ArkUI_GestureEvent
 
 ## Overview
 
-Defines the gesture event.
+Defines a gesture event.
 
 **Since**: 12
 

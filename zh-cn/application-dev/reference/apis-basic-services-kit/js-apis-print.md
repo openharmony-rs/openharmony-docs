@@ -33,14 +33,15 @@ on(type: 'block', callback: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：block，<br/>表示打印任务阻塞。 |
 | callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务阻塞。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -76,14 +77,15 @@ on(type: 'succeed', callback: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：succeed，<br/>表示打印任务成功。 |
 | callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务成功。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -119,14 +121,15 @@ on(type: 'fail', callback: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：fail，<br/>表示打印任务失败。 |
 | callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务失败。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -162,14 +165,15 @@ on(type: 'cancel', callback: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 注册监听，<br/>监听字段：cancel，<br/>表示打印任务被取消。 |
 | callback | Callback&lt;void&gt; | 是 | 回调函数，通知调用方打印任务被取消。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -205,14 +209,15 @@ off(type: 'block', callback?: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：block，<br/>表示打印任务阻塞。 |
 | callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务阻塞事件订阅。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -248,14 +253,15 @@ off(type: 'succeed', callback?: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：succeed，<br/>表示打印任务成功。 |
 | callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务成功事件订阅。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -291,14 +297,15 @@ off(type: 'fail', callback?: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：fail，<br/>表示打印任务失败。 |
 | callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务失败事件订阅。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -334,14 +341,15 @@ off(type: 'cancel', callback?: Callback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | string | 是 | 取消监听，<br/>监听字段：cancel，<br/>表示打印任务被取消。 |
 | callback | Callback&lt;void&gt; | 否 | 回调函数，取消指定的打印任务被取消事件订阅。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -381,7 +389,8 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示打印任务ID。 |
 | oldAttrs | [PrintAttributes](#printattributes11) | 是 | 表示旧打印参数。 |
@@ -391,7 +400,7 @@ onStartLayoutWrite(jobId: string, oldAttrs: PrintAttributes, newAttrs: PrintAttr
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -435,14 +444,15 @@ onJobStateChanged(jobId: string, state: PrintDocumentAdapterState): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobId | string | 是 | 表示打印任务ID。 |
 | state | [PrintDocumentAdapterState](#printdocumentadapterstate11) | 是 | 表示打印任务更改为该状态。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -476,7 +486,7 @@ class MyPrintDocumentAdapter implements print.PrintDocumentAdapter {
 }
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): void
 
@@ -487,14 +497,15 @@ print(files: Array&lt;string&gt;, callback: AsyncCallback&lt;PrintTask&gt;): voi
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 | callback | AsyncCallback&lt;[PrintTask](#printtask)&gt; | 是 | 异步获取打印完成之后的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -508,7 +519,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-//传入文件的uri
+// 传入文件的uri
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: print.PrintTask) => {
     if (err) {
@@ -522,7 +533,7 @@ print.print([fileUri.getUriFromPath(filePath)], (err: BusinessError, printTask: 
 })
 ```
 
-## print.print<sup>10+</sup>
+## print.print
 
 print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 
@@ -533,18 +544,20 @@ print(files: Array&lt;string&gt;): Promise&lt;PrintTask&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，支持图片（.jpg .png .gif .bmp .webp）和pdf。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PrintTask](#printtask)&gt; | 打印完成结果。 |
+| Promise&lt;[PrintTask](#printtask)&gt; | Promise对象，返回[PrintTask](#printtask)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -558,7 +571,7 @@ import { print } from '@kit.BasicServicesKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
 
-//传入文件的uri
+// 传入文件的uri
 let filePath = '/data/storage/el2/base/haps/entry/files/test.pdf';
 print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask) => {
     printTask.on('succeed', () => {
@@ -581,7 +594,8 @@ print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;P
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，当前支持的文件类型：".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", ".xml"。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
@@ -589,7 +603,7 @@ print(files: Array&lt;string&gt;, context: Context, callback: AsyncCallback&lt;P
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -644,19 +658,21 @@ print(files: Array&lt;string&gt;, context: Context): Promise&lt;PrintTask&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | files | Array&lt;string&gt; | 是 | 待打印文件列表，当前支持的文件类型：".bm", ".bmp", ".doc", ".docm", ".docx", ".dot", ".dotm", ".dotx", ".gif", ".jfif", ".jpe", ".jpeg", ".jpg", "pdf", ".pot", ".potm", ".potx", ".pps", ".ppsm", ".ppsx", ".ppt", ".pptm", ".pptx", ".png", ".rtf", ".txt", ".webp", ".wps", ".xls", ".xlsb", ".xlsm", ".xlsx", ".xlt", ".xltx", ".xml"。文件需先保存到应用沙箱，通过fileUri.getUriFromPath获取到沙箱uri，再作为参数传入到本接口。 |
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PrintTask](#printtask)&gt; | 打印完成结果。 |
+| Promise&lt;[PrintTask](#printtask)&gt; | Promise对象，返回[PrintTask](#printtask)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -702,14 +718,15 @@ struct Index {
 
 print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: PrintAttributes, context: Context): Promise&lt;PrintTask&gt;
 
-打印接口，传入文件进行打印，三方应用需要更新打印文件，使用Promise异步回调。
+打印接口，传入文件进行打印，三方应用需要更新打印文件，使用Promise异步回调。当前支持的文件类型：".pdf"。
 
 **需要权限：** ohos.permission.PRINT
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | jobName | string | 是 | 表示待打印文件名称，例如：test.pdf。打印侧会通过[onStartLayoutWrite](#onstartlayoutwrite11)接口将空的pdf文件的fd传给接口调用方，由调用方使用新的打印参数更新待打印文件。 |
 | printAdapter | [PrintDocumentAdapter](#printdocumentadapter11) | 是 | 表示三方应用实现的[PrintDocumentAdapter](#printdocumentadapter11)接口实例。 |
@@ -717,13 +734,14 @@ print(jobName: string, printAdapter: PrintDocumentAdapter, printAttributes: Prin
 | context | Context | 是 | 用于拉起系统打印界面的UIAbilityContext。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PrintTask](#printtask)&gt; | 打印完成结果。 |
+| Promise&lt;[PrintTask](#printtask)&gt; | Promise对象，返回[PrintTask](#printtask)。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -785,7 +803,8 @@ struct Index {
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | copyNumber | number | 否 | 是 | 表示文件打印份数。默认值为1。 |
 | pageRange | [PrintPageRange](#printpagerange11) | 否 | 是 | 表示待打印文件的页面范围。 |
@@ -801,7 +820,8 @@ struct Index {
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | startPage | number | 否 | 是 | 表示起始页。默认值为1。 |
 | endPage | number | 否 | 是 | 表示结束页。默认值为待打印文件的最大页数。 |
@@ -815,7 +835,8 @@ struct Index {
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | id | string | 否 | 否 | 表示纸张类型ID。 |
 | name | string | 否 | 否 | 表示纸张类型名称。 |
@@ -830,7 +851,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DIRECTION_MODE_AUTO | 0 | 表示自动选择纸张方向。 |
 | DIRECTION_MODE_PORTRAIT | 1 | 表示纵向打印。 |
@@ -842,7 +863,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | COLOR_MODE_MONOCHROME | 0 | 表示黑白打印。 |
 | COLOR_MODE_COLOR | 1 | 表示彩色打印。 |
@@ -853,7 +874,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DUPLEX_MODE_NONE | 0 | 表示单面打印。 |
 | DUPLEX_MODE_LONG_EDGE | 1 | 表示双面打印沿长边翻转。 |
@@ -865,7 +886,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PAGE_ISO_A3 | 0 | 表示A3。 |
 | PAGE_ISO_A4 | 1 | 表示A4。 |
@@ -886,7 +907,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PREVIEW_DESTROY | 0 | 表示预览失败。 |
 | PRINT_TASK_SUCCEED | 1 | 表示打印任务成功。 |
@@ -900,7 +921,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINT_FILE_CREATED | 0 | 表示打印文件创建成功。 |
 | PRINT_FILE_CREATION_FAILED | 1 | 表示打印文件创建失败。|
@@ -912,7 +933,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINTER_ADDED | 0 | 表示新打印机到达。 |
 | PRINTER_REMOVED | 1 | 表示打印机丢失。 |
@@ -927,7 +948,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINT_JOB_PREPARE | 0 | 表示打印任务的初始状态。 |
 | PRINT_JOB_QUEUED | 1 | 表示打印任务传送到打印机。 |
@@ -941,7 +962,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINT_JOB_COMPLETED_SUCCESS | 0 | 表示打印任务成功。 |
 | PRINT_JOB_COMPLETED_FAILED | 1 | 表示打印任务失败。 |
@@ -983,7 +1004,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | E_PRINT_NONE | 0 | 表示没有错误。 |
 | E_PRINT_NO_PERMISSION | 201 | 表示没有许可。 |
@@ -996,6 +1017,9 @@ struct Index {
 | E_PRINT_INVALID_PRINT_JOB | 13100006 | 表示打印任务无效。 |
 | E_PRINT_FILE_IO | 13100007 | 表示文件输入/输出错误。 |
 | E_PRINT_TOO_MANY_FILES<sup>18+</sup> | 13100010 | 表示文件数量超过上限，当前上限99个。 |
+| E_PRINT_SMB_LOGIN_LOCKOUT<sup>24+</sup> | 13100012 | 表示当前SMB协议共享打印机账号因多次登录失败而被锁定。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| E_PRINT_SMB_CONNECTION_FAILURE<sup>24+</sup> | 13100013 | 表示SMB协议共享打印机连接失败（发生网络错误、主机不可达或端口被阻止）。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| E_PRINT_SMB_INVALID_CREDENTIALS<sup>24+</sup> | 13100014 | 表示SMB协议共享打印机账号/密码错误。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 
 ## ApplicationEvent<sup>14+</sup>
 
@@ -1003,7 +1027,7 @@ struct Index {
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | APPLICATION_CREATED | 0 | 表示打印应用被拉起的事件。 |
 | APPLICATION_CLOSED_FOR_STARTED | 1 | 表示由于点击打印而关闭打印应用的事件。 |
@@ -1020,18 +1044,20 @@ addPrinterToDiscovery(printerInformation: PrinterInformation): Promise&lt;void&g
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerInformation | [PrinterInformation](#printerinformation14) | 是 | 表示新发现的打印机。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 添加打印机到系统打印机发现列表完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1071,18 +1097,20 @@ updatePrinterInDiscovery(printerInformation: PrinterInformation): Promise&lt;voi
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerInformation | [PrinterInformation](#printerinformation14) | 是 | 表示待更新能力的打印机。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 更新打印机能力到系统打印机发现列表完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1140,18 +1168,20 @@ removePrinterFromDiscovery(printerId: string): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 表示待移除的打印机。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 从系统打印机发现列表里移除打印机完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1183,18 +1213,20 @@ getPrinterInformationById(printerId: string): Promise&lt;PrinterInformation&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 表示待获取信息的打印机id。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;[PrinterInformation](#printerinformation14)&gt; | 根据打印机id获取的对应打印机信息。 |
+| Promise&lt;[PrinterInformation](#printerinformation14)&gt; | Promise对象，返回打印机信息。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1222,7 +1254,8 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | printerId | string | 否 | 否 | 表示打印机ID。 |
 | printerName | string | 否 | 否 | 表示打印机名称。 |
@@ -1233,6 +1266,8 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | printerMake | string | 否 | 是 | 表示打印机型号。 |
 | preferences<sup>18+</sup> | [PrinterPreferences](#printerpreferences18) | 否 | 是 | 表示打印机首选项。 |
 | alias<sup>18+</sup> | string | 否 | 是 | 表示打印机别名。 |
+| selectedDriver<sup>24+</sup> | [PpdInfo](#ppdinfo24) | 否 | 是 | 表示添加打印机时选择的驱动的信息。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| selectedProtocol<sup>24+</sup> | string | 否 | 是 | 表示添加打印机时使用的协议。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 | options | string | 否 | 是 | 表示打印机详细信息。 |
 
 ## PrinterCapabilities<sup>14+</sup>
@@ -1242,7 +1277,8 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | supportedPageSizes | Array&lt;[PrintPageSize](#printpagesize11)&gt; | 否 | 否 | 表示打印机支持的纸张尺寸列表。 |
 | supportedColorModes | Array&lt;[PrintColorMode](#printcolormode11)&gt; | 否 | 否 | 表示打印机支持的色彩模式列表。 |
@@ -1258,7 +1294,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | QUALITY_DRAFT | 3 | 表示经济的打印质量。 |
 | QUALITY_NORMAL | 4 | 表示标准的打印质量。 |
@@ -1270,7 +1306,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | ORIENTATION_MODE_PORTRAIT | 0 | 表示纵向打印。 |
 | ORIENTATION_MODE_LANDSCAPE | 1 | 表示横向打印。 |
@@ -1284,7 +1320,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINTER_IDLE | 0 | 表示打印机空闲状态。 |
 | PRINTER_BUSY | 1 | 表示打印机忙碌状态。 |
@@ -1297,7 +1333,8 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **属性：**
-| **名称** | **类型** | **只读** | **可选** | **说明** |
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
 | defaultDuplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 是 | 表示默认单双面模式。 |
 | defaultPrintQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示默认打印质量。 |
@@ -1305,6 +1342,9 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 | defaultPageSizeId | string | 否 | 是 | 表示默认纸张尺寸的ID，其范围包含国际标准化组织定义的标准纸张尺寸，如ISO_A4，和系统中定义的非标准的纸张尺寸，如Custom.178x254mm，表示这种纸张尺寸为178毫米 x 254毫米。 |
 | defaultOrientation | [PrintOrientationMode](#printorientationmode14) | 否 | 是 | 表示默认打印方向。 |
 | borderless | boolean | 否 | 是 | 表示是否无边距打印，true表示无边距，false表示有边距。默认值为false。 |
+| defaultColorMode<sup>24+</sup> | [PrintColorMode](#printcolormode11) | 否 | 是 | 表示默认色彩模式。默认值为黑白。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| defaultCollate<sup>24+</sup> | boolean | 否 | 是 | 表示默认出纸顺序。true表示逐份打印，false表示逐页打印。默认值为逐份。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
+| defaultReverse<sup>24+</sup> | boolean | 否 | 是 | 表示默认打印顺序。true表示逆序打印，false表示正序打印。默认值为正序打印。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/> |
 | options | string | 否 | 是 | 表示打印机首选项中不在以上字段中的其他字段，查询打印机或者从打印机驱动获取，以json格式存储在string中。 |
 
 ## PrinterEvent<sup>18+</sup>
@@ -1313,7 +1353,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | PRINTER_EVENT_ADDED | 0 | 表示打印机添加事件。 |
 | PRINTER_EVENT_DELETED | 1 | 表示打印机删除事件。 |
@@ -1328,7 +1368,7 @@ print.getPrinterInformationById(printerId).then((printerInformation : print.Prin
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-| **名称** | **值** | **说明** |
+| 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | DEFAULT_PRINTER_TYPE_SET_BY_USER | 0 | 表示将用户手动设置的默认打印机作为当前默认打印机。 |
 | DEFAULT_PRINTER_TYPE_LAST_USED_PRINTER | 1 | 表示自动将上次使用的打印机作为当前默认打印机。 |
@@ -1344,13 +1384,14 @@ getAddedPrinters(): Promise&lt;Array&lt;string&gt;&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;Array&lt;string&gt;&gt; | 获取系统中已添加的打印机列表的完成结果回调。 |
+| Promise&lt;Array&lt;string&gt;&gt; | Promise对象，返回包含所有已添加打印机的打印机ID的列表。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1379,7 +1420,8 @@ type PrinterChangeCallback = (event: PrinterEvent, printerInformation: PrinterIn
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | event | [PrinterEvent](#printerevent18) | 是 | 表示打印机事件。 |
 | printerInformation | [PrinterInformation](#printerinformation14) | 是 | 表示打印机信息。 |
@@ -1395,14 +1437,15 @@ on(type: 'printerChange', callback: PrinterChangeCallback): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'printerChange' | 是 | 表示打印机变动事件。 |
 | callback | [PrinterChangeCallback](#printerchangecallback18) | 是 | 打印机变动之后的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1433,14 +1476,15 @@ off(type: 'printerChange', callback?: PrinterChangeCallback): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | type | 'printerChange' | 是 | 表示打印机变动事件。 |
 | callback | [PrinterChangeCallback](#printerchangecallback18) | 否 | 表示取消注册打印机变动事件后的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1472,14 +1516,15 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;, callback: AsyncCallback
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| extensionList | Array&lt;string&gt; | 是 | 要加载的[打印扩展能力](./js-apis-app-ability-PrintExtensionAbility.md)列表，列表成员为打印扩展能力的包名，空列表表示加载所有扩展能力。 |
+| extensionList | Array&lt;string&gt; | 是 | 要加载的[打印扩展能力](js-apis-app-ability-PrintExtensionAbility.md)列表，列表成员为打印扩展能力的包名，空列表表示加载所有扩展能力。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 异步开始发现打印机之后的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1515,18 +1560,20 @@ startDiscoverPrinter(extensionList: Array&lt;string&gt;): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| extensionList | Array&lt;string&gt; | 是 | 要加载的[打印扩展能力](./js-apis-app-ability-PrintExtensionAbility.md)列表，列表成员为打印扩展能力的包名，空列表表示加载所有扩展能力。 |
+| extensionList | Array&lt;string&gt; | 是 | 要加载的[打印扩展能力](js-apis-app-ability-PrintExtensionAbility.md)列表，列表成员为打印扩展能力的包名，空列表表示加载所有扩展能力。 |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 开始发现打印机的完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1560,13 +1607,14 @@ stopDiscoverPrinter(callback: AsyncCallback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | callback | AsyncCallback&lt;void&gt; | 是 | 停止发现打印机的异步回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1598,13 +1646,14 @@ stopDiscoverPrinter(): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; | 停止发现打印机的完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1634,14 +1683,15 @@ connectPrinter(printerId: string, callback: AsyncCallback&lt;void&gt;): void
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 打印机ID。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 通过打印机ID异步连接打印机的回调。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1674,18 +1724,20 @@ connectPrinter(printerId: string): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Print.PrintFramework
 
 **参数：**
-| **参数名** | **类型** | **必填** | **说明** |
+
+| 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
 | printerId | string | 是 | 打印机ID |
 
 **返回值：**
-| **类型** | **说明** |
+
+| 类型 | 说明 |
 | -------- | -------- |
-| Promise&lt;void&gt; |通过打印机ID连接打印机完成结果。 |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[打印服务错误码](./errorcode-print.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                    |
 | -------- | ------------------------------------------- |
@@ -1703,4 +1755,667 @@ print.connectPrinter(printerId).then(() => {
 }).catch((error: BusinessError) => {
     console.error('failed to connect Printer because : ' + JSON.stringify(error));
 })
+```
+
+## print.startPrint<sup>23+</sup>
+
+startPrint(job: PrintJobData): Promise&lt;void&gt;
+
+打印接口，传入文件或者二进制数据进行打印，使用Promise异步回调。
+
+**需要权限：** ohos.permission.PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| job | [PrintJobData](#printjobdata23) | 是 | 打印任务数据。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+import { fileIo } from '@kit.CoreFileKit';
+
+let tempPath = '/data/stroage/el2/base/haps/entry/files/note.jpg';
+let file: fileIo.File;
+file = fileIo.openSync(tempPath, 4);
+
+let printJobData: print.PrintJobData = {
+    printerId: "printerId",
+    jobName: "jobName",
+    documentFormat: print.PrintDocumentFormat.DOCUMENT_FORMAT_AUTO,
+    docFlavor: print.DocFlavor.FILE_DESCRIPTOR,
+    copyNumber: 1,
+    isLandscape: false,
+    colorMode: print.PrintColorMode.COLOR_MODE_MONOCHROME,
+    duplexMode: print.PrintDuplexMode.DUPLEX_MODE_NONE,
+    pageSize: {id: "ISO_A4", name: "ISO_A4", width:8268, height: 11692},
+    fdList: [file.fd],
+}
+print.startPrint(printJobData).then(() => {
+    console.info('start print success');
+}).catch((error: BusinessError) => {
+    console.error('failed to print because : ' + JSON.stringify(error));
+})
+```
+## PrintDocumentFormat<sup>23+</sup>
+
+打印数据格式的枚举。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| DOCUMENT_FORMAT_AUTO | 0 | 表示自动检测格式。 |
+| DOCUMENT_FORMAT_JPEG | 1 | 表示Jpeg格式。 |
+| DOCUMENT_FORMAT_PDF | 2 | 表示PDF格式。 |
+| DOCUMENT_FORMAT_POSTSCRIPT | 3 | 表示PostScript格式。 |
+| DOCUMENT_FORMAT_TEXT | 4 | 表示文本格式。 |
+| DOCUMENT_FORMAT_RAW | 5 | 表示RAW格式。 |
+
+## DocFlavor<sup>23+</sup>
+
+打印数据来源形式的枚举。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| FILE_DESCRIPTOR | 0 | 表示文件数据。 |
+| BYTES | 1 | 表示二进制数据。 |
+
+## PrintJobData<sup>23+</sup>
+
+定义打印任务的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| printerId | string | 否 | 否 | 表示打印机ID。 |
+| jobName | string | 否 | 否 | 表示打印任务名称。 |
+| documentFormat | [PrintDocumentFormat](#printdocumentformat23) | 否 | 否 | 表示打印数据格式。 |
+| docFlavor | [DocFlavor](#docflavor23) | 否 | 否 | 表示打印数据来源形式。 |
+| copyNumber | number | 否 | 否 | 表示文件列表副本数。 |
+| isLandscape | boolean | 否 | 否 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。 |
+| colorMode | [PrintColorMode](#printcolormode11) | 否 | 否 | 表示色彩模式。 |
+| duplexMode | [PrintDuplexMode](#printduplexmode11) | 否 | 否 | 表示单双面打印模式。 |
+| pageSize | [PrintPageSize](#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
+| jobId | string | 否 | 是 | 表示打印任务的唯一标识符。 |
+| fdList | number[]; | 否 | 是 | 表示待打印文件fd列表。 |
+| binaryData | Uint8Array | 否 | 是 | 表示待打印二进制数据。 |
+| printQuality | [PrintQuality](#printquality14) | 否 | 是 | 表示打印质量。 |
+| mediaType | string | 否 | 是 | 表示打印纸张类型。 |
+| isBorderless | boolean | 否 | 是 | 表示是否无边框打印。true表示无边框打印，false表示有边框打印。默认值为true。 |
+| isAutoRotate | boolean | 否 | 是 | 表示是否自动旋转页面。true表示自动旋转页面，false表示不自动旋转页面。默认值为true。 |
+| isReverse | boolean | 否 | 是 | 表示是否逆序打印。true表示逆序打印，false表示顺序打印。默认值为false。 |
+| isCollate | boolean | 否 | 是 | 表示打印顺序方式。true表示逐页打印，false表示逐份打印。默认值为true。 |
+| isSequential | boolean | 否 | 是 | 表示是否连续打印。true表示连续打印，false表示不连续打印。默认值为false。 |
+| options | string | 否 | 是 | 表示以JSON格式字符串化的对象。 |
+
+## PrintMargin<sup>24+</sup>
+
+定义打印页边距的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| top | number | 否 | 是 | 表示页面上边距。默认值为0。单位：毫米。|
+| bottom | number | 否 | 是 | 表示页面下边距。默认值为0。单位：毫米。 |
+| left | number | 否 | 是 | 表示页面左边距。默认值为0。单位：毫米。 |
+| right | number | 否 | 是 | 表示页面右边距。默认值为0。单位：毫米。 |
+
+## PrinterRange<sup>24+</sup>
+
+定义打印范围的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| startPage | number | 否 | 是 | 表示起始页。默认值为1。 |
+| endPage | number | 否 | 是 | 表示结束页。默认值为待打印文件的最大页数。 |
+| pages | Array&lt;number&gt; | 否 | 是 | 表示待打印的页面范围的集合。默认值为空。 |
+
+## PreviewAttribute<sup>24+</sup>
+
+定义打印预览属性的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| previewRange | [PrinterRange](#printerrange24) | 否 | 否 | 表示预览页面范围。 |
+| result | number | 否 | 是 | 表示预览文件结果。默认值为-1。 |
+
+## PrintResolution<sup>24+</sup>
+
+定义打印分辨率的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| id | string | 否 | 否 | 表示分辨率ID。 |
+| horizontalDpi | number | 否 | 否 | 表示水平DPI。单位：DPI。 |
+| verticalDpi | number | 否 | 否 | 表示垂直DPI。单位：DPI。 |
+
+## PrinterCapability<sup>24+</sup>
+
+定义打印能力的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| colorMode | number | 否 | 否 | 表示色彩模式。 |
+| duplexMode | number | 否 | 否 | 表示单双面打印模式。 |
+| pageSize | Array&lt;[PrintPageSize](#printpagesize11)&gt; | 否 | 否 | 表示打印机支持的页面尺寸列表。 |
+| resolution | Array&lt;[PrintResolution](#printresolution24)&gt; | 否 | 是 | 表示打印机支持的分辨率列表。 |
+| minMargin | [PrintMargin](#printmargin24) | 否 | 是 | 表示打印机最小边距。 |
+| options | Object | 否 | 是 | 表示JSON对象字符串。 |
+
+## PrinterInfo<sup>24+</sup>
+
+定义打印信息的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| printerId | string | 否 | 否 | 表示打印机ID。 |
+| printerName | string | 否 | 否 | 表示打印机名称。 |
+| printerState | [PrinterState](#printerstate14) | 否 | 否 | 表示当前打印机状态。 |
+| printerIcon | number | 否 | 是 | 表示打印机图标的资源ID。默认值为-1。 |
+| description | string | 否 | 是 | 表示打印机说明。 |
+| capability | [PrinterCapability](#printercapability24) | 否 | 是 | 表示打印机功能。 |
+| options | Object | 否 | 是 | 表示JSON对象字符串。 |
+
+## PrintJob<sup>24+</sup>
+
+定义打印任务的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| fdList | Array&lt;number&gt; | 否 | 否 | 表示待打印文件fd列表。 |
+| jobId | string | 否 | 否 | 表示打印任务ID。 |
+| printerId | string | 否 | 否 | 表示负责打印的打印机ID。 |
+| jobState | [PrintJobState](#printjobstate14) | 否 | 否 | 表示当前打印任务状态。 |
+| jobSubstate | [PrintJobSubState](#printjobsubstate14) | 否 | 否 | 表示当前打印任务子状态。 |
+| copyNumber | number | 否 | 否 | 表示文件列表副本。 |
+| pageRange | [PrinterRange](#printerrange24) | 否 | 否 | 表示打印范围大小。 |
+| isSequential | boolean | 否 | 否 | 表示是否连续打印。true表示连续打印，false表示不连续打印。默认值为false。 |
+| pageSize | [PrintPageSize](#printpagesize11) | 否 | 否 | 表示选定的页面尺寸。 |
+| isLandscape | boolean | 否 | 否 | 表示是否横向打印。true表示横向打印，false表示纵向打印。默认值为false。 |
+| colorMode | number | 否 | 否 | 表示色彩模式。 |
+| duplexMode | number | 否 | 否 | 表示单双面打印模式。 |
+| margin | [PrintMargin](#printmargin24) | 否 | 是 | 表示当前页边距设置。 |
+| preview | [PreviewAttribute](#previewattribute24) | 否 | 是 | 表示预览设置。 |
+| options | Object | 否 | 是 | 表示JSON对象字符串。 |
+
+## print.updatePrintJobState<sup>24+</sup>
+
+updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState, callback: AsyncCallback&lt;void&gt;): void
+
+更新打印任务状态，使用callback异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| jobId | string | 是 | 表示打印任务ID。 |
+| state | [PrintJobState](#printjobstate14) | 是 | 表示打印任务状态。 |
+| subState | [PrintJobSubState](#printjobsubstate14) | 是 | 表示打印任务子状态。 |
+| callback | AsyncCallback&lt;void&gt; | 是 | 异步更新打印任务状态之后的回调。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | The application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let jobId : string = 'jobId';
+let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
+let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
+print.updatePrintJobState(jobId, state, subState, (err: BusinessError) => {
+    if (err) {
+        console.error('updataPrintJobState failed, because : ' + JSON.stringify(err));
+    } else {
+        console.info('updatePrintJobState success');
+    }
+})
+```
+
+## print.updatePrintJobState<sup>24+</sup>
+
+updatePrintJobState(jobId: string, state: PrintJobState, subState: PrintJobSubState): Promise&lt;void&gt;
+
+更新打印任务状态，使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| jobId | string | 是 | 表示打印任务ID。 |
+| state | [PrintJobState](#printjobstate14) | 是 | 表示打印任务状态。 |
+| subState | [PrintJobSubState](#printjobsubstate14) | 是 | 表示打印任务子状态。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let jobId : string = 'jobId';
+let state : print.PrintJobState = print.PrintJobState.PRINT_JOB_PREPARE;
+let subState : print.PrintJobSubState = print.PrintJobSubState.PRINT_JOB_COMPLETED_SUCCESS;
+print.updatePrintJobState(jobId, state, subState).then(() => {
+    console.info('update print job state success');
+}).catch((error: BusinessError) => {
+    console.error('update print job state error : ' + JSON.stringify(error));
+})
+```
+
+## print.updatePrinterInformation<sup>24+</sup>
+
+updatePrinterInformation(printerInformation: PrinterInformation): Promise&lt;void&gt;
+
+更新系统中打印机的部分信息，使用Promise异步回调。当前仅允许更新[PrinterInformation](#printerinformation14)的alias和options字段。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB or ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| printerInformation | [PrinterInformation](#printerinformation14) | 是 | 表示待更新信息的打印机。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 401 | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let testPageSize : print.PrintPageSize = {
+    id : 'ISO_A4',
+    name : 'iso_a4_210x297mm',
+    width : 8268,
+    height : 11692
+};
+
+let testCapability : print.PrinterCapabilities = {
+    supportedPageSizes : [testPageSize],
+    supportedColorModes : [print.PrintColorMode.COLOR_MODE_MONOCHROME],
+    supportedDuplexModes : [print.PrintDuplexMode.DUPLEX_MODE_NONE],
+    supportedMediaTypes : ['stationery'],
+    supportedQualities : [print.PrintQuality.QUALITY_NORMAL],
+    supportedOrientations : [print.PrintOrientationMode.ORIENTATION_MODE_PORTRAIT],
+    options : 'testOptions'
+};
+
+let printerInformation : print.PrinterInformation = {
+    printerId : 'testPrinterId',
+    printerName : 'testPrinterName',
+    printerStatus : 0,
+    description : 'testDesc',
+    capability : testCapability,
+    uri : 'testUri',
+    printerMake : 'testPrinterMake',
+    options : 'testOptions'
+};
+print.updatePrinterInformation(printerInformation).then(() => {
+    console.info('updatePrinterInformation success');
+}).catch((error: BusinessError) => {
+    console.error('updatePrinterInformation error : ' + JSON.stringify(error));
+})
+```
+
+## PpdInfo<sup>24+</sup>
+
+定义打印机所使用驱动的PPD文件信息的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| manufacturer | string | 否 | 否 | 表示当前PPD文件内的打印机厂商名称。 |
+| nickName | string | 否 | 否 | 表示当前PPD文件内的打印机别名。 |
+| ppdName | string | 否 | 否 | 表示当前PPD文件的名称。 |
+
+## SharedHost<sup>24+</sup>
+
+定义共享设备信息的接口。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**属性：**
+
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| -------- | -------- | -------- | -------- | -------- |
+| ip | string | 否 | 否 | 表示共享设备的IP地址。 |
+| shareName | string | 否 | 否 | 表示共享设备的主机名称。 |
+| workgroupName | string | 否 | 否 | 表示共享设备的工作组名称。 |
+
+## print.addPrinter<sup>24+</sup>
+
+addPrinter(printerName: string, uri: string, ppdName?: string, options?: string): Promise&lt;boolean&gt;
+
+添加打印机到系统中，使用Promise异步回调。
+
+**需要权限：** ohos.permission.MANAGE_PRINT_JOB
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| printerName | string | 是 | 表示打印机名称。 |
+| uri | string | 是 | 表示打印机的URI。 |
+| ppdName | string | 否 | 表示打印机的PPD文件名称。 |
+| options | string | 否 | JSON对象字符串，表示打印机选项参数。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| Promise&lt;boolean&gt; | Promise对象，返回添加打印机成功与否的结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+| 13100003 | Add the printer to system failed. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let printerName : string = 'printerName';
+let uri : string = 'uri';
+let ppdName : string = 'ppdName';
+print.addPrinter(printerName, uri, ppdName).then(() => {
+    console.info('add printer success');
+}).catch((error: BusinessError) => {
+    console.error('add printer error : ' + JSON.stringify(error));
+})
+```
+
+## WatermarkHandleResult<sup>24+</sup>
+
+强制水印处理结果的枚举。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| WATERMARK_HANDLE_SUCCESS | 0 | 表示强制水印处理成功。 |
+| WATERMARK_HANDLE_FAILURE | 1 | 表示强制水印处理失败。 |
+
+## print.WatermarkCallback<sup>24+</sup>
+
+type WatermarkCallback = (jobId: string, fd: number) => void
+
+定义用来注册强制水印处理的监听事件时使用的回调类型。
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| jobId | string | 是 | 表示当前打印任务的id。 |
+| fd | number | 是 | 表示当前文件的文件描述符。 |
+
+## print.registerWatermarkCallback<sup>24+</sup>
+
+registerWatermarkCallback(callback: WatermarkCallback): void
+
+注册强制水印处理的监听事件。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [WatermarkCallback](#printwatermarkcallback24) | 是 | 表示注册强制水印处理的监听事件时使用的回调类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+} catch (error) {
+    console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
+}
+```
+
+## print.unregisterWatermarkCallback<sup>24+</sup>
+
+unregisterWatermarkCallback(callback?: WatermarkCallback): void
+
+注销强制水印处理的监听事件。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| callback | [WatermarkCallback](#printwatermarkcallback24) | 否 | 表示注册监听强制水印处理时使用的回调类型。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+    // 取消注册指定的水印处理回调
+    print.unregisterWatermarkCallback(watermarkCallback);
+    console.info('unregisterWatermarkCallback success');
+} catch (error) {
+    console.error('unregisterWatermarkCallback error: ' + JSON.stringify(error));
+}
+```
+
+## print.notifyWatermarkComplete<sup>24+</sup>
+
+notifyWatermarkComplete(jobId: string, result: WatermarkHandleResult): void
+
+通知水印处理完成。
+
+**需要权限：** ohos.permission.ENTERPRISE_MANAGE_PRINT
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| jobId | string | 是 | 表示打印任务ID。 |
+| result | [WatermarkHandleResult](#watermarkhandleresult24) | 是 | 表示水印处理结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息                                    |
+| -------- | ------------------------------------------- |
+| 201 | the application does not have permission to call this function. |
+
+**示例：**
+
+```ts
+import { print } from '@kit.BasicServicesKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let watermarkCallback: print.WatermarkCallback = (jobId: string, fd: number) => {
+    console.info('Watermark callback triggered, jobId: ' + jobId + ', fd: ' + fd);
+    
+    try {
+        // 处理水印后通知系统处理成功
+        print.notifyWatermarkComplete(jobId, print.WatermarkHandleResult.WATERMARK_HANDLE_SUCCESS);
+        console.info('notifyWatermarkComplete success');
+    } catch (error) {
+        console.error('notifyWatermarkComplete error: ' + JSON.stringify(error));
+    }
+}
+
+try {
+    print.registerWatermarkCallback(watermarkCallback);
+    console.info('registerWatermarkCallback success');
+} catch (error) {
+    console.error('registerWatermarkCallback error: ' + JSON.stringify(error));
+}
 ```

@@ -84,6 +84,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -97,7 +98,7 @@ struct SnapshotExample {
           // 建议使用this.getUIContext().getComponentSnapshot().get()
           componentSnapshot.get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error))
+              console.error(`error:${JSON.stringify(error)}`)
               return;
             }
             this.pixmap = pixmap
@@ -172,6 +173,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -187,7 +189,7 @@ struct SnapshotExample {
             .then((pixmap: image.PixelMap) => {
               this.pixmap = pixmap
             }).catch((err: Error) => {
-            console.error("error: " + err)
+            console.error(`error:${err}`)
           })
         }).margin(10)
     }
@@ -286,7 +288,7 @@ struct OffscreenSnapshotExample {
           },
             (error: Error, pixmap: image.PixelMap) => {
               if (error) {
-                console.error("error: " + JSON.stringify(error))
+                console.error(`error:${JSON.stringify(error)}`)
                 return;
               }
               this.pixmap = pixmap
@@ -404,10 +406,10 @@ struct OffscreenSnapshotExample {
               // ....
               // 获取组件大小和位置
               let info = this.getUIContext().getComponentUtils().getRectangleById("builder")
-              console.info(info.size.width + ' ' + info.size.height + ' ' + info.localOffset.x + ' ' +
-              info.localOffset.y + ' ' + info.windowOffset.x + ' ' + info.windowOffset.y)
+              console.info(`${info.size.width} ${info.size.height} ${info.localOffset.x} ${
+              info.localOffset.y} ${info.windowOffset.x} ${info.windowOffset.y}`)
             }).catch((err: Error) => {
-            console.error("error: " + err)
+            console.error(`error:${err}`)
           })
         })
       Image(this.pixmap)
@@ -458,6 +460,7 @@ getSync(id: string, options?: SnapshotOptions): image.PixelMap
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
+| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 > **说明：**
 > 
@@ -478,6 +481,7 @@ struct SnapshotExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
         Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
@@ -493,7 +497,7 @@ struct SnapshotExample {
             let pixelmap = componentSnapshot.getSync("root", { scale: 2, waitUntilRenderFinished: true })
             this.pixmap = pixelmap
           } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message)
+            console.error(`getSync errorCode:${error.code} message:${error.message}`)
           }
         }).margin(10)
     }
@@ -504,7 +508,71 @@ struct SnapshotExample {
 }
 ```
 
-![componentget](figures/componentget.gif) 
+![componentget](figures/componentget.gif)
+
+## componentSnapshot.getSizeLimitation
+
+getSizeLimitation(): componentSnapshot.SnapshotSizeLimitation
+
+查询组件截图的最大尺寸限制。
+
+> **说明：**
+>
+> 该接口需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentSnapshot](arkts-apis-uicontext-uicontext.md#getcomponentsnapshot12)方法获取[ComponentSnapshot](arkts-apis-uicontext-componentsnapshot.md)对象，然后通过该对象进行调用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型                                                           | 说明             |
+| ------------------------------------------------------------ | -------------- |
+| componentSnapshot.[SnapshotSizeLimitation](#snapshotsizelimitation) | 组件截图的尺寸限制信息。 |
+
+**示例：**
+
+```ts
+import { ComponentUtils } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button("获取截图尺寸限制")
+        .onClick(() => {
+          let componentSnapshot = this.getUIContext().getComponentSnapshot();
+          let limitation = componentSnapshot.getSizeLimitation();
+          console.info(`Max width: ${limitation.maxWidth}, Max height: ${limitation.maxHeight}`);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+## SnapshotSizeLimitation
+
+定义组件截图的尺寸限制。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称        | 类型     | 只读 | 可选 | 说明                   |
+| --------- | ------ | ---- | ---- | -------------------- |
+| maxWidth  | number | 是   | 否   | 组件截图的最大宽度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
+| maxHeight | number | 是   | 否   | 组件截图的最大高度限制。<br>取值范围：（-∞，+∞）<br>单位：px |
 
 ## SnapshotOptions<sup>12+</sup>
 
@@ -546,7 +614,8 @@ struct SnapshotColorModeExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.startIcon'))
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
           .height(200)
@@ -558,7 +627,7 @@ struct SnapshotColorModeExample {
         .onClick(() => {
           this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error))
+              console.error(`error:${JSON.stringify(error)}`)
               return;
             }
             this.pixmap = pixmap
@@ -576,6 +645,8 @@ struct SnapshotColorModeExample {
   }
 }
 ```
+
+![componentget](figures/componentget.gif)
 
 ## DynamicRangeModeOptions<sup>23+</sup>
 
@@ -604,7 +675,8 @@ struct SnapshotDynamicRangeExample {
     Column() {
       Row() {
         Image(this.pixmap).width(200).height(200).border({ color: Color.Black, width: 2 }).margin(5)
-        Image($r('app.media.startIcon'))
+        // $r('app.media.img')需要替换为开发者所需的图像资源文件
+        Image($r('app.media.img'))
           .autoResize(true)
           .width(200)
           .height(200)
@@ -616,7 +688,7 @@ struct SnapshotDynamicRangeExample {
         .onClick(() => {
           this.getUIContext().getComponentSnapshot().get("root", (error: Error, pixmap: image.PixelMap) => {
             if (error) {
-              console.error("error: " + JSON.stringify(error))
+              console.error(`error:${JSON.stringify(error)}`)
               return;
             }
             this.pixmap = pixmap
@@ -634,6 +706,8 @@ struct SnapshotDynamicRangeExample {
   }
 }
 ```
+
+![componentget](figures/componentget.gif)
 
 ## SnapshotRegionType<sup>15+</sup>
 
@@ -736,10 +810,13 @@ struct SnapshotExample {
               })
             this.pixmap = pixelmap
           } catch (error) {
-            console.error("getSync errorCode: " + error.code + " message: " + error.message)
+            console.error(`getSync errorCode:${error.code} message:${error.message}`)
           }
         }).margin(10)
       Image(this.pixmap).border({ color: Color.Black, width: 2 }).width("600px")
     }.width("100%").align(Alignment.Center)
   }
 }
+```
+
+![localized_snapshot](figures/localized_snapshot.gif)

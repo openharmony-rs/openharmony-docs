@@ -8,13 +8,13 @@
 
 图片编码指将PixelMap压缩成不同格式的图片文件，用于保存和传输。
 
-支持使用[PackToData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13-1)和[PackToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11-2)将PixelMap编码为JPEG、WebP、PNG和HEIC格式。
+支持使用[PackToData](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodata13-1)和[PackToFile](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofile11-2)将[PixelMap](../../reference/apis-image-kit/arkts-apis-image-PixelMap.md)编码为JPEG、WebP、PNG和HEIC格式。
 
 从API version 18开始，支持使用[PackToDataFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtodatafrompixelmapsequence18)和[PackToFileFromPixelmapSequence](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md#packtofilefrompixelmapsequence18)将多个PixelMap编码为GIF格式。
 
 ## 开发步骤
 
-图片编码相关API的详细介绍请参见：[图片编码接口说明](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md)。
+图片编码相关API的详细介绍请参见[ImagePacker](../../reference/apis-image-kit/arkts-apis-image-ImagePacker.md)。
 
 ### 图片编码进文件流
 
@@ -102,8 +102,8 @@
        const imagePackerApi = image.createImagePacker();
        let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
        const path : string = context.cacheDir + '/pixel_map.jpg';
-       let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
        try {
+         let file = fs.openSync(path, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
          await imagePackerApi.packToFile(pixelMap, file.fd, packOpts);
        } catch (error) {
          console.error('Failed to pack the pixelMap to file. And the error is: ' + error);
@@ -119,8 +119,8 @@
        const imagePackerApi = image.createImagePacker();
        let packOpts : image.PackingOption = { format: 'image/jpeg', quality: 95 };
        const filePath : string = context.cacheDir + '/image_source.jpg';
-       let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
        try {
+         let file = fs.openSync(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE);
          await imagePackerApi.packToFile(imageSource, file.fd, packOpts);
        } catch (error) {
          console.error('Failed to pack the imageSource to file. And the error is: ' + error);

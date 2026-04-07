@@ -20,6 +20,7 @@
     - [Class (ExifMetadata)](arkts-apis-image-ExifMetadata.md)
     - [Class (MakerNoteHuaweiMetadata)](arkts-apis-image-MakerNoteHuaweiMetadata.md)
     - [Class (HeifsMetadata)](arkts-apis-image-HeifsMetadata.md)
+    - [Class (WebPMetadata)](arkts-apis-image-WebPMetadata.md)
     - [Interface (Picture)](arkts-apis-image-Picture.md)
     - [Interface (PixelMap)](arkts-apis-image-PixelMap.md)
     - [Interfaces (其他)](arkts-apis-image-i.md)

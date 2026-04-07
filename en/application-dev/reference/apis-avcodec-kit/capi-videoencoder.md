@@ -15,7 +15,7 @@ You can refer to the corresponding development guide and samples based on your d
 - [Video Encoding](../../media/avcodec/video-encoding.md)
 - [Temporal Layered Video Encoding](../../media/avcodec/video-encoding-temporal-scalability.md)
 
-**System capability**: SystemCapability.Multimedia.VideoEncoder
+**System capability**: SystemCapability.Multimedia.Media.VideoEncoder
 
 **Since**: 9
 

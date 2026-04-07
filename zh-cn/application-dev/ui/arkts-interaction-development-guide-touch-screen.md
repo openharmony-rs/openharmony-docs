@@ -1,7 +1,7 @@
 # 支持触屏输入事件
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -15,7 +15,7 @@
 
 ## 触摸事件
 
-触摸事件可以通过通用属性[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)在组件上接收，该回调响应遵循命中测试规则
+触摸事件可以通过通用事件[onTouch](../reference/apis-arkui/arkui-ts/ts-universal-events-touch.md#ontouch)在组件上接收，该回调响应遵循命中测试规则。
 
 触摸事件的上报频率会由系统降采样到与屏幕刷新率一致，详见[重采样与历史点](#重采样与历史点)章节。
 
@@ -84,7 +84,7 @@ struct PreventBubbling {
 - 帧内的move报点并不会立即下发，而是会在送显帧到来时重采样合并后上报；
 - 抬起时产生的事件会立即上报给应用，并在上报之前先将还未处理的move事件上报；
 
-重采样会合并同一个触点在同一帧内多次上报的move事件，并通过算法尽可能计算出一个合适的坐标上报给应用，因此经过重采样后的坐标信息，与底层设备真实上报的点会存在细微的差异，这些差异是有益的，经过重采样后的点通常具备更好的平顺性。
+重采样会合并同一个触点在同一帧内多次上报的move事件，并通过算法尽可能计算出一个合适的坐标上报给应用，因此经过重采样后的坐标信息，与底层设备真实上报的点会存在细微的差异，这些差异是有益的，经过重采样后的点通常具备更好的平滑性。
 
 重采样之前的所有原始点信息也都保留下来上报给了应用，如果需要直接处理它们，则可通过`getHistoricalPoints(): Array`来获取。
 

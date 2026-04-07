@@ -1,4 +1,4 @@
-# 关键资产存储服务(ASSET)错误码
+# 关键资产存储服务错误码
 
 <!--Kit: Asset Store Kit-->
 <!--Subsystem: Security-->
@@ -276,3 +276,17 @@ Parameter verify failed.
 **处理步骤**
 
 根据错误信息，调整API参数，并重新调用接口。
+
+## 24000019 属性值不一致
+
+**错误信息**
+
+Each value of [Tag.GROUP_ID](js-apis-asset.md#tag) and [Tag.REQUIRE_ATTR_ENCRYPTED](js-apis-asset.md#tag) in the array is not consistent.
+
+**可能原因**
+
+批量操作时，数组中每个关键资产的GROUP_ID和REQUIRE_ATTR_ENCRYPTED属性值不一致。
+
+**处理步骤**
+
+确保批量操作数组中所有关键资产的GROUP_ID和REQUIRE_ATTR_ENCRYPTED属性值一致，然后重新调用接口。

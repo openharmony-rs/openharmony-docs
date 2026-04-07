@@ -6,7 +6,7 @@
 <!--Tester: @liuhaonan2-->
 <!--Adviser: @fang-jinxu-->
 
-The request module provides applications with basic upload, download, and background transmission agent capabilities.
+The **request** module provides applications with basic upload, download, and background transmission agent capabilities.
 
 - Currently, the **request** module cannot be called in extensions.
 
@@ -121,7 +121,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
     url: 'http://www.example.com', // Replace the URL with the HTTP address of the real server.
     header: { 'Accept': '*/*' },
     method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // Set type to the MIME type of the HTTP protocol.
+    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // Set type to the MIME type specified by the HTTP.
     data: [{ name: "name123", value: "123" }],
   };
   try {
@@ -181,7 +181,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
     url: 'http://www.example.com', // Replace the URL with the HTTP address of the real server.
     header: { 'Accept': '*/*' },
     method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // Set type to the MIME type of the HTTP protocol.
+    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // Set type to the MIME type specified by the HTTP.
     data: [{ name: "name123", value: "123" }],
   };
   try {
@@ -241,7 +241,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
     url: 'http://www.example.com', // Replace the URL with the HTTP address of the real server.
     header: { 'Accept': '*/*' },
     method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // Set type to the MIME type of the HTTP protocol.
+    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // Set type to the MIME type specified by the HTTP.
     data: [{ name: "name123", value: "123" }],
   };
   request.upload(uploadConfig).then((data: request.UploadTask) => {
@@ -291,7 +291,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
     url: 'http://www.example.com', // Replace the URL with the HTTP address of the real server.
     header: { 'Accept': '*/*' },
     method: "POST",
-    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // Set type to the MIME type of the HTTP protocol.
+    files: [{ filename: "test", name: "test", uri: "internal://cache/test.jpg", type: "image/jpeg" }], // Set type to the MIME type specified by the HTTP.
     data: [{ name: "name123", value: "123" }],
   };
   request.upload(uploadConfig, (err: BusinessError, data: request.UploadTask) => {
@@ -407,7 +407,7 @@ Subscribes to upload completion or failure events. This API uses an asynchronous
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | type | string | Yes| Type of the event to subscribe to.|The options are as follows:<br>\- **'complete'**: upload task completion.<br>\- **'fail'**: upload task failure.| 
-  | callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | Yes| Callback used to return the result.  |
+  | callback | Callback&lt;Array&lt;[TaskState](#taskstate9)&gt;&gt; | Yes| Callback used to return the state of the upload task.|
 
 
 **Error codes**
@@ -794,7 +794,7 @@ The following table describes the enum values of **responseCode**.
 | Result Code| Description                              |
 |-----|------------------------------------|
 | 0   | uploaded success.                              |
-| 5   | Task suspended or stopped proactively.                        |
+| 5   | Task suspended or stopped.                        |
 | 6   | Foreground task stopped. The reason is that the application, to which the task belongs, is switched to the background or terminated. Check the application status. |
 | 7   | No network connection. Check whether the device is connected to the network.                 |
 | 8   | Network mismatch. Check whether the current network type matches the network type required by the task.    |
@@ -834,7 +834,7 @@ Describes the form data in [UploadConfig](#uploadconfig).
 
 downloadFile(context: BaseContext, config: DownloadConfig): Promise&lt;DownloadTask&gt;
 
-Downloads a file. This API uses a promise to return the result. HTTP is supported. You can use [on('complete'|'pause'|'remove')](#oncompletepauseremove7) to obtain the download task state, which can be completed, paused, or removed. You can also use [on('fail')](#onfail7) to obtain the task download error information.
+Downloads a file. This API uses a promise to return the result. HTTP is supported. You can use [on('complete'|'pause'|'remove')](#oncompletepauseremove7) to obtain the download task state, including task completion, pause, and removal. You can also use [on('fail')](#onfail7) to obtain the task download error information.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -894,7 +894,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 downloadFile(context: BaseContext, config: DownloadConfig, callback: AsyncCallback&lt;DownloadTask&gt;): void
 
-Downloads a file. This API uses an asynchronous callback to return the result. HTTP is supported. You can use [on('complete'|'pause'|'remove')](#oncompletepauseremove7) to obtain the download task state, which can be completed, paused, or removed. You can also use [on('fail')](#onfail7) to obtain the task download error information.
+Downloads a file. This API uses an asynchronous callback to return the result. HTTP is supported. You can use [on('complete'|'pause'|'remove')](#oncompletepauseremove7) to obtain the download task state, including task completion, pause, and removal. You can also use [on('fail')](#onfail7) to obtain the task download error information.
 
 **Required permissions**: ohos.permission.INTERNET
 
@@ -1011,7 +1011,7 @@ Downloads files. This API uses an asynchronous callback to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 6 and is deprecated since API version 9. You are advised to use [request.downloadFile](#requestdownloadfile9-1) instead.
+> This API is supported since API version 6 and deprecated since API version 9. You are advised to use [request.downloadFile](#requestdownloadfile9-1) instead.
 
 **Parameters**
 
@@ -1025,7 +1025,7 @@ Downloads files. This API uses an asynchronous callback to return the result.
 For details about the error codes, see [Upload and Download Error Codes](errorcode-request.md) and [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message|
-  | -------- | -------- |
+| -------- | -------- |
 | 201 | The permissions check fails. |
 
 **Example**
@@ -1661,7 +1661,7 @@ Obtains the MIME type (that is, media type of resources in HTTP) of a download t
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;string&gt; | Promise used to return the result.|
+  | Promise&lt;string&gt; | Promise used to return the MIME type of a download task.|
 
 **Error codes**
 
@@ -2098,7 +2098,7 @@ Queries this download task. This API uses an asynchronous callback to return the
 
 > **NOTE**
 >
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [getTaskInfo](#gettaskinfo9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getTaskInfo](#gettaskinfo9-1) instead.
 
 **Parameters**
 
@@ -2145,7 +2145,7 @@ Queries the MIME type of this download task. This API uses a promise to return t
 
   | Type| Description|
   | -------- | -------- |
-  | Promise&lt;string&gt; | Promise used to return the result.|
+  | Promise&lt;string&gt; | Promise used to return the MIME type of this download task.|
 
 **Error codes**
 
@@ -2178,7 +2178,7 @@ Queries the MIME type of this download task. This API uses an asynchronous callb
 
 > **NOTE**
 >
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [getTaskMimeType](#gettaskmimetype9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [getTaskMimeType](#gettaskmimetype9-1) instead.
 
 **Parameters**
 
@@ -2219,7 +2219,7 @@ Pauses this download task. This API uses a promise to return the result.
 
 > **NOTE**
 >
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [suspend](#suspend9) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [suspend](#suspend9) instead.
 
 **Return value**
 
@@ -2258,7 +2258,7 @@ Pauses this download task. This API uses an asynchronous callback to return the 
 
 > **NOTE**
 >
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [suspend](#suspend9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [suspend](#suspend9-1) instead.
 
 **Parameters**
 
@@ -2338,7 +2338,7 @@ Resumes a download task. This API uses an asynchronous callback to return the re
 
 > **NOTE**
 >
-> This API is supported since API version 7 and is deprecated since API version 9. You are advised to use [restore](#restore9-1) instead.
+> This API is supported since API version 7 and deprecated since API version 9. You are advised to use [restore](#restore9-1) instead.
 
 **Parameters**
 
@@ -2375,13 +2375,13 @@ Defines the download task configuration.
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
 | url | string | No| No| Resource URL. From API version 6 to 14, the value contains a maximum of 2048 characters; since API version 15, the value contains a maximum of 8192 characters. [Intercepting HTTP](../../basic-services/request/app-file-upload-download.md#intercepting-http) is supported.|
-| header | Object | No| Yes| HTTPS flag header to be included in the download request.|
+| header | Object | No| Yes| HTTPS flag header to be included in the download request. The default value is empty.|
 | enableMetered | boolean | No| Yes| Whether download is allowed on a metered connection. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.<br>**NOTE**<br> In general cases, a mobile data connection is metered, while a Wi-Fi connection is not.|
 | enableRoaming | boolean | No| Yes| Whether download is allowed on a roaming network. The value **true** means the download is allowed, and **false** means the opposite. The default value is **false**.|
 | description | string | No| Yes| Description of the download session. The default value is an empty string.|
 | filePath<sup>7+</sup> | string | No| Yes| Path where the downloaded file is stored. The default value is the cache directory of the caller (that is, the input **context**). The default file name is the part truncated from the last slash (/) in the URL.<br>- In the FA model, use the [Context.getCacheDir](../apis-ability-kit/js-apis-inner-app-context.md#contextgetcachedir) method to obtain the application storage path.<br>- In the Stage model, use the **AbilityContext** class in [Context (Context Base Class of the Stage Model)](../apis-ability-kit/js-apis-inner-application-context.md) to obtain the file path.|
-| networkType | number | No| Yes| Network type allowed for download. The default value can be **NETWORK_MOBILE** or **NETWORK_WIFI**.<br>- **NETWORK_MOBILE**: 0x00000001<br>- **NETWORK_WIFI**: 0x00010000|
-| title | string | No| Yes| Download task name.|
+| networkType | number | No| Yes| Network type that can be used for download. The allowed network type is determined by bitwise operation of [network type constants](#constants). The following settings are supported:<br>- Only the cellular network is supported. The parameter is **NETWORK_MOBILE** or **0x00000001**.<br>- Only WLAN is supported. The parameter is **NETWORK_WIFI** or **0x00010000**.<br>- Both cellular network and WLAN are supported, which is the default settings. The parameter is **NETWORK_MOBILE \| **NETWORK_WIFI** or **0x00010001**.<br>When the parameter is **NETWORK_MOBILE \| **NETWORK_WIFI**, the **enableMetered** and **enableRoaming** parameters do not take effect.|
+| title | string | No| Yes| Download task name. The default value is **download**.|
 | background<sup>9+</sup> | boolean | No| Yes| Whether to enable the background task notification. When this parameter is enabled, the download status is displayed in the notification panel. The value **true** means the parameter is enabled, and **false** means the opposite. The default value is **false**.|
 
 
@@ -2462,7 +2462,7 @@ If the network does not meet the preset conditions, the tasks that have not been
 
 Defines a custom system event. You can use a common event API to obtain the event.
 
-The upload and download SA has the ohos.permission.SEND_TASK_COMPLETE_EVENT permission. You can configure the level-2 configuration file to which the metadata of an event points to intercept other event senders.
+The upload and download SA has the **ohos.permission.SEND_TASK_COMPLETE_EVENT** permission. You can configure the level-2 configuration file to which the metadata of an event points to intercept other event senders.
 
 Use the **CommonEventData** type to transmit data related to common events. The members in **CommonEventData** are different from those described in [CommonEventData](js-apis-inner-commonEvent-commonEventData.md). Specifically, **CommonEventData.code** indicates the task status, which is **0x40 COMPLETE** or **0x41 FAILED**, and **CommonEventData.data** indicates the task ID.
 
@@ -2482,11 +2482,11 @@ Provides the file information of a table item.
 
 | Name  | Type    | Read-Only| Optional| Description                           |
 |------|--------|----|----|-------------------------------|
-| path | string | No| No| File path.<br>- Relative path, which is in the cache directory of the caller.<br>Example: **./xxx/yyy/zzz.html** or **xxx/yyy/zzz.html**<br>- Internal protocol path, which can be **internal://** or its subdirectory. **internal** indicates the cache directory of the caller (that is, the input **context**), and **internal://cache** corresponds to **context.cacheDir**.<br>Example: **internal://cache/path/to/file.txt**<br>- Application sandbox directory. Only the **base** directory and its subdirectories are supported.<br>Example: **/data/storage/el1/base/path/to/file.txt**<br>- File protocol path, which must match the application bundle name. Only the **base** directory and its subdirectories are supported.<br>Example: **file://com.example.test/data/storage/el2/base/file.txt**<br>- Public files of users. Only upload tasks and foreground tasks are supported<br>Example: **file://media/Photo/path/to/file.img**  <br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| path | string | No| No| File path.<br>- Relative path, which is in the cache directory of the caller.<br>Example: **./xxx/yyy/zzz.html** or **xxx/yyy/zzz.html**<br>- Internal protocol path, which can be **internal://** or its subdirectory. **internal** indicates the cache directory of the caller (that is, the input **context**), and **internal://cache** corresponds to **context.cacheDir**.<br>Example: **internal://cache/path/to/file.txt**<br>- Application sandbox directory. Only the **base** directory and its subdirectories are supported.<br>Example: **/data/storage/el1/base/path/to/file.txt**<br>- File protocol path, which must match the application bundle name. Only the **base** directory and its subdirectories are supported.<br>Example: **file://com.example.test/data/storage/el2/base/file.txt**<br>- Public files of users. Only upload tasks are supported.<br>Example: **file://media/Photo/path/to/file.img**. Only foreground tasks are supported.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | mimeType<sup>(deprecated)</sup> | string | No| Yes| MIME type of the file, which is obtained from the file name. The default value is the file name extension.<br>**Atomic service API**: This API can be used in atomic services since API version 11.<br> This API is deprecated since API version 18. You are advised to use **contentType** instead.|
 | contentType<sup>18+</sup> | string | No| Yes| Content type of the file. The default value is the file name extension. This option is filled in the **Content-Type** field specified in the HTTP form.|
 | filename | string | No| Yes| File name. The default value is obtained from the file path.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| extras | object | No| Yes| Additional information. This parameter is not included in HTTP requests.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
+| extras | object | No| Yes| Additional information. This parameter is not included in HTTP requests. The default value is empty.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 
 
 ## request.agent.FormItem<sup>10+</sup> 
@@ -2524,7 +2524,7 @@ Provides the configuration information of an upload or download task.
 | roaming | boolean | No| Yes| Whether the task is allowed on a roaming network. The default value is **true**.<br>- **true**: The task is allowed on a roaming network.<br>- **false**: The task is not allowed on a roaming network.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | retry | boolean | No| Yes| Whether automatic retry is enabled for the task. This parameter is only applicable to background tasks. The default value is **true**.<br>- **true**: The automatic retry is enabled.<br>- **false**: The automatic retry is disabled.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | redirect | boolean | No| Yes| Whether redirection is allowed. The default value is **true**.<br>- **true**: The redirection is allowed.<br>- **false**: The redirection is not allowed.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
-| proxy<sup>12+</sup> | string | No| Yes| Proxy address. The value contains a maximum of 512 characters.<br>It is in the format of **http://\<*domain or address*\>:\<port\>**. By default, this parameter is left blank.|
+| proxy<sup>12+</sup> | string | No| Yes| Proxy address. The value contains a maximum of 512 characters.<br>It is in the format of **http://\<*domain or address*\>:\<port\>**. By default, this parameter is left empty.|
 | index | number | No| Yes| Path index of the task. It is usually used for resumable transfers. The default value is **0**.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | begins | number | No| Yes| File start point of the task. It is usually used for resumable transfers. The default value is **0**. The value is a closed interval.<br>- For the download task, the value is obtained by sending an HTTP range request to read the start position when the server starts to download files.<br>- For the upload task, the value is obtained at the start position of the upload.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
 | ends | number | No| Yes| File end point of the task. It is usually used for resumable transfers. The default value is **-1**. The value is a closed interval.<br>- For the download task, the value is obtained by sending an HTTP range request to read the end position when the server starts to download files.<br>- For the upload task, the value is obtained at the end position of the upload.<br>**Atomic service API**: This API can be used in atomic services since API version 11.|
@@ -2572,7 +2572,7 @@ Describes the data structure of the task progress.
 | index | number | Yes| No| Index of the file that is being processed in the task.                                                    |
 | processed | number | Yes| No| Size of processed data in the current file in the task, in bytes.                                              |
 | sizes | Array&lt;number&gt; | Yes| No| Size of a file in a task, in bytes. If the server uses the chunk mode for data transmission and the total file size cannot be obtained from the request header, the value of **sizes** is treated as **-1**.|
-| extras | object | Yes| Yes| Extra information of the task, for example, the header and body of the response from the server.                                    |
+| extras | object | Yes| Yes| Extra information of the task, for example, the header and body of the response from the server. The default value is empty.                                    |
 
 
 ## request.agent.Faults<sup>10+</sup>  
@@ -2664,7 +2664,7 @@ Describes the custom information of the notification bar.
 | title   | string | No| Yes| Custom title, with a maximum of 1024 bytes. The default title is used if this parameter is not set.  |
 | text    | string | No| Yes| Custom body text, with a maximum of 3072 bytes. The default text is used if this parameter is not set.   |
 | visibility<sup>21+</sup> | number | No| Yes| Task visibility mode for the notification bar, which is determined by bitwise operations on the [VISIBILITY constant](#constants-1). The options are as follows:<br>- Only the completion notification is displayed. The parameter is **VISIBILITY_COMPLETION** or **1**. The corresponding notification is displayed after the task is complete or fails. <br>- Only the progress notification is displayed when the task is in progress. The parameter is **VISIBILITY_PROGRESS** or **2**. Completion notification is not displayed when the download task is complete or fails.<br>- The progress notification and completion notification are displayed. The parameter is **VISIBILITY_COMPLETION \| VISIBILITY_PROGRESS** or **3**. The progress notification is displayed when the task is in progress. When the download task is complete or fails, the completion notification is displayed as well.<br>If this parameter is not set, the **gauge** field is used for determination. If there is no **gauge** field, only the completion notification is displayed.|
-| wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | No| Yes| Notification parameter, which is used to implement redirection after a task notification is tapped.|
+| wantAgent<sup>22+</sup> | [WantAgent](../../reference/apis-ability-kit/js-apis-app-ability-wantAgent.md) | No| Yes| Notification parameter, which is used to implement redirection after a task notification is tapped. The default value is empty.|
 
 
 **Example**
@@ -2763,7 +2763,7 @@ Defines the timeout configuration of a task. The task waiting duration is not co
 | Name     | Type    | Read-Only| Optional| Description                                     |
 |---------|--------|----|----|-----------------------------------------|
 | connectionTimeout   | number | No | Yes | Task connection timeout interval, in seconds. The connection timeout interval indicates the maximum time required for establishing a connection between the client and server. If this parameter is not set, the default value **60** is used. The minimum value is **1**.|
-| totalTimeout    | number | No | Yes |Total timeout interval of a task, in seconds. The total timeout interval includes the time required for establishing a connection, sending a request, and receiving a response. If this parameter is not set, the default value **604800** is used. The minimum value is 1, and the maximum value is **604800** (that is, one week). |
+| totalTimeout    | number | No | Yes |Total timeout interval of a task, in seconds. The total timeout interval includes the time required for establishing a connection, sending a request, and receiving a response. If this parameter is not set, the default value **604800** is used. The minimum value is **1**, and the maximum value is **604800** (that is, one week). |
 
 
 ## request.agent.Task<sup>10+</sup> 
@@ -2804,7 +2804,7 @@ Subscribes to task progress changes. This API uses an asynchronous callback to r
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | event | string | Yes| Event type.<br>- **'progress'**: task progress.|
-  | callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | callback | function | Yes| Callback to be invoked when the specified event occurs.|
 
 Parameters of the callback function
 
@@ -2888,7 +2888,7 @@ Subscribes to task completion events. This API uses an asynchronous callback to 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | event | string | Yes| Event type.<br>- **'completed'**: task completion.|
-  | callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | callback | function | Yes| Callback to be invoked when the specified event occurs.|
 
 Parameters of the callback function
 
@@ -2971,8 +2971,8 @@ Subscribes to task failure events. This API uses an asynchronous callback to ret
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | event | string | Yes| Event type.<br>- **'fail'**: task failure.|
-  | callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | event | string | Yes| Event type.<br>- **'failed'**: task failure.|
+  | callback | function | Yes| Callback to be invoked when the specified event occurs.|
 
 Parameters of the callback function
 
@@ -3054,7 +3054,7 @@ Subscribes to task pause events. This API uses an asynchronous callback to retur
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | event | string | Yes| Event type.<br>- **'pause'**: task pause.|
-  | callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | callback | function | Yes| Callback to be invoked when the specified event occurs.|
 
 Parameters of the callback function
 
@@ -3141,7 +3141,7 @@ Subscribes to task resume events. This API uses an asynchronous callback to retu
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | event | string | Yes| Event type.<br>- **'resume'**: task resume.|
-  | callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | callback | function | Yes| Callback to be invoked when the specified event occurs.|
 
 Parameters of the callback function
 
@@ -3233,7 +3233,7 @@ Subscribes to task removal events. This API uses an asynchronous callback to ret
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | event | string | Yes| Event type.<br>- **'remove'**: task removal.|
-  | callback | function | Yes| Callback used to return the data structure of the task progress.|
+  | callback | function | Yes| Callback to be invoked when the specified event occurs.|
 
 Parameters of the callback function
 
@@ -3552,7 +3552,7 @@ Unsubscribes from task progress events.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | event | string | Yes| Event type.<br>- **'progress'**: task progress.|
-  | callback | function | No| Callback used to return the data structure of the task progress.|
+  | callback | function | No| Callback to be invoked when the specified event occurs. If this parameter is not specified, all callbacks of the task progress events are unregistered.|
 
 Parameters of the callback function
 
@@ -3645,7 +3645,7 @@ Unsubscribes from task completion events.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | event | string | Yes| Event type.<br>- **'completed'**: task completion.|
-  | callback | function | No| Callback used to return the data structure of the task progress.|
+  | callback | function | No| Callback to be invoked when the specified event occurs. If this parameter is not specified, all callbacks of the task completion events are unregistered.|
 
 Parameters of the callback function
 
@@ -3738,7 +3738,7 @@ Unsubscribes from task failure events.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | event | string | Yes| Event type.<br>- **'failed'**: task failure.|
-  | callback | function | No| Callback used to return the data structure of the task progress.|
+  | callback | function | No| Callback to be invoked when the specified event occurs. If this parameter is not specified, all callbacks of the task failure events are unregistered.|
 
 Parameters of the callback function
 
@@ -3828,7 +3828,7 @@ Unsubscribes from the foreground task pause event.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | event | string | Yes| Event type.<br>- **'pause'**: task pause.|
-  | callback | function | No| Callback used to return the data structure of the task progress.|
+  | callback | function | No| Callback to be invoked when the specified event occurs. If this parameter is not specified, all callbacks of the task pause events are unregistered.|
 
 Parameters of the callback function
 
@@ -3918,7 +3918,7 @@ Unsubscribes from foreground task resume events.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | event | string | Yes| Event type.<br>- **'resume'**: task resume.|
-  | callback | function | No| Callback used to return the data structure of the task progress.|
+  | callback | function | No| Callback to be invoked when the specified event occurs. If this parameter is not specified, all callbacks of the task resume events are unregistered.|
 
 Parameters of the callback function
 
@@ -4008,7 +4008,7 @@ Unsubscribes from the task removal event.
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
   | event | string | Yes| Event type.<br>- **'remove'**: task removal.|
-  | callback | function | No| Callback used to return the data structure of the task progress.|
+  | callback | function | No| Callback to be invoked when the specified event occurs. If this parameter is not specified, all callbacks of the task removal events are unregistered.|
 
 Parameters of the callback function
 
@@ -5187,7 +5187,7 @@ Obtains task information based on the task ID. This API uses a promise to return
   | -------- | -------- | -------- | -------- |
   | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | Yes| Application-based context.|
   | id | string | Yes| Task ID.|
-  | token | string | No| Token for task query.|
+  | token | string | No| Token for task query. The default value is empty.|
 
 **Return value**
 
@@ -5566,7 +5566,7 @@ Searches for task IDs based on [Filter](#requestagentfilter10). This API uses a 
 
   | Name| Type| Mandatory| Description|
   | -------- | -------- | -------- | -------- |
-  | filter | [Filter](#requestagentfilter10) | No| Filter criteria.|
+  | filter | [Filter](#requestagentfilter10) | No| Filter criteria. The default value is empty.|
 
 **Return value**
 
@@ -5603,7 +5603,7 @@ For details about the error codes, see [Upload and Download Error Codes](errorco
 
 createGroup(config: GroupConfig): Promise\<string\>
 
-Creates a group based on [GroupConfig](#requestagentgroupconfig15). This API uses a promise to return the group ID. This API uses a promise to return the result.
+Creates a group based on [GroupConfig](#requestagentgroupconfig15). This API uses a promise to return the result.
 
 **System capability**: SystemCapability.Request.FileTransferAgent
 
@@ -5617,7 +5617,7 @@ Creates a group based on [GroupConfig](#requestagentgroupconfig15). This API use
 
 | Type               | Description                              |
 |-------------------|----------------------------------|
-| Promise\<string\> | Promise used to return the result.|
+| Promise\<string\> | Promise used to return the ID of the created group.|
 
 **Error codes**
 

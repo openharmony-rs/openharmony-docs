@@ -20,7 +20,7 @@
 ## 子组件
 
 
-仅支持[FlowItem](ts-container-flowitem.md)子组件和自定义组件。自定义组件在WaterFlow下使用时，建议使用FlowItem作为自定组件的顶层组件，不建议给自定义组件设置属性和事件方法。
+仅支持[FlowItem](ts-container-flowitem.md)子组件和自定义组件。自定义组件在WaterFlow下使用时，建议使用FlowItem作为自定义组件的顶层组件，不建议给自定义组件设置属性和事件方法。
 
 支持通过渲染控制类型（[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)、[ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md)、[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)和[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)）动态生成子组件，更推荐使用LazyForEach或Repeat以优化性能。
 
@@ -508,6 +508,26 @@ syncLoad(enable: boolean)
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | enable   | boolean | 是   | 是否同步加载WaterFlow区域内所有子组件。<br/>true表示同步加载，false表示异步加载。<br/>默认值：true。<br/>**说明：** <br/>设置为false时，在首次显示、不带动画[scrollToIndex](ts-container-scroll.md#scrolltoindex)跳转场景，若当帧布局耗时超过50ms，会将WaterFlow区域内尚未布局的子组件延后到下一帧进行布局。 |
+
+### supportEmptyBranchInLazyLoading
+
+supportEmptyBranchInLazyLoading(supported: boolean | undefined)
+
+设置当前WaterFlow组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。未设置时不支持空分支节点。此属性初次赋值后不支持更新，所以赋值后无法在支持空分支、不支持空分支行为之间切换。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型   | 必填 | 说明                                               |
+| ------ | ------ | ---- | -------------------------------------------------- |
+| supported  | boolean \| undefined | 是   | 当前WaterFlow组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，按false处理。 |
 
 ## 事件
 

@@ -24,10 +24,12 @@ import { insightIntentProvider } from '@kit.AbilityKit';
 
 sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Promise&lt;void&gt;
 
-如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将[意图执行结果返回形式](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果，适用于[配置类意图](../../application-models/insight-intent-config-development.md)。使用Promise异步回调。<br/>
-[意图执行结果返回形式](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecuteInUIAbilityForegroundMode接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)或[onExecuteInUIExtensionAbility接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability)的返回值返回意图执行结果。
+如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果，适用于[配置类意图](../../application-models/insight-intent-config-development.md)。使用Promise异步回调。<br/>
+意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecuteInUIAbilityForegroundMode接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiabilityforegroundmode)或[onExecuteInUIExtensionAbility接口](./js-apis-app-ability-insightIntentExecutor.md#onexecuteinuiextensionability)的返回值返回意图执行结果。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -146,10 +148,12 @@ struct Index {
 
 sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;): Promise&lt;void&gt;
 
-如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将[意图执行结果返回形式](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果。适用于[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)修饰的[装饰器类意图](../../application-models/insight-intent-decorator-development.md)。使用Promise异步回调。<br/>
-[意图执行结果返回形式](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecute接口](./js-apis-app-ability-InsightIntentEntryExecutor.md#onexecute)的返回值返回意图执行结果。
+如果意图提供方需要在业务处理的特定流程中主动发送意图执行结果，可以先通过[setReturnModeForUIAbilityForeground接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiabilityforeground23)或[setReturnModeForUIExtensionAbility接口](./js-apis-app-ability-insightIntentContext.md#insightintentcontextsetreturnmodeforuiextensionability23)将意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION，然后调用该接口发送意图执行结果。适用于[@InsightIntentEntry](./js-apis-app-ability-InsightIntentDecorator.md#insightintententry)修饰的[装饰器类意图](../../application-models/insight-intent-decorator-development.md)。使用Promise异步回调。<br/>
+意图执行结果返回形式[ReturnMode](./js-apis-app-ability-insightIntent.md#returnmode23)设置为FUNCTION后，应用将无需再通过[onExecute接口](./js-apis-app-ability-InsightIntentEntryExecutor.md#onexecute)的返回值返回意图执行结果。
 
 **模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
@@ -158,7 +162,7 @@ sendIntentResult(instanceId: number, result: insightIntent.IntentResult&lt;T&gt;
   | 参数名 | 类型 | 必填 | 说明 |
   | -------- | -------- | -------- | -------- |
   | [instanceId](./js-apis-app-ability-insightIntentContext.md#属性) | number | 是 | 意图实例唯一ID。 |
-  | result | [insightIntent.IntentResult](js-apis-app-ability-insightIntent.md#intentresultt20) | 是 | 返回意图执行结果，表示本次意图执行返回给系统入口的数据。 |
+  | result | [insightIntent.IntentResult\<T>](js-apis-app-ability-insightIntent.md#intentresultt20) | 是 | 返回意图执行结果，表示本次意图执行返回给系统入口的数据。 |
 
 **返回值：**
 

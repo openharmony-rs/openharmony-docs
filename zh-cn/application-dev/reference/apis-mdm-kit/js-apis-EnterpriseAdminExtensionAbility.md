@@ -536,22 +536,22 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onKeyEvent<sup>23+</sup>
+### onKeyEvent<sup>23+</sup>
 
 onKeyEvent(keyEvent: systemManager.KeyEvent): void
 
 [系统按键事件](./js-apis-enterprise-systemManager.md#keyevent23)回调。MDM应用需要通过[systemManager.addKeyEventPolicies](./js-apis-enterprise-systemManager.md#systemmanageraddkeyeventpolicies23)接口下发按键事件处理策略，当系统按键事件触发时，如果事件与已下发的策略匹配，则触发该回调。回调信息[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中包含当前发生的按键事件信息。
 
-单按键事件响应。设备单按键被触发时，[onKeyEvent](#enterpriseadminextensionabilityonkeyevent23)会在按下和抬起时触发两次回调事件，可由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyAction属性进行判断。[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性在单按键事件中可忽略。
+单按键事件响应。设备单按键被触发时，[onKeyEvent](#onkeyevent23)会在按下和抬起时触发两次回调事件，可由[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyAction属性进行判断。[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中keyItems属性在单按键事件中可忽略。
 
 组合按键事件响应。组合按键仅支持物理按键：电源键、音量加键、音量减键进行组合。用户按下组合键时，后按下按键的事件回调将通过[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)中的keyItems属性携带当前所有已按下的按键信息。其他与单按键事件响应逻辑一致。
 
-长按事件响应。当单个按键或组合按键被长时间按下时，[onKeyEvent](#enterpriseadminextensionabilityonkeyevent23)会以50ms的间隔（具体间隔时间可能因系统状态及性能而稍有延长）被连续触发，其中每次回调事件[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)的actionTime属性均与按键首次按下事件回调的[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)的actionTime属性相同。其他情况下的响应逻辑与单个按键和组合按键一致。
+长按事件响应。当单个按键或组合按键被长时间按下时，[onKeyEvent](#onkeyevent23)会以50ms的间隔（具体间隔时间可能因系统状态及性能而稍有延长）被连续触发，其中每次回调事件[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)的actionTime属性均与按键首次按下事件回调的[keyEvent](./js-apis-enterprise-systemManager.md#keyevent23)的actionTime属性相同。其他情况下的响应逻辑与单个按键和组合按键一致。
 
 **系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
 
 **模型约束：** 此接口仅可在Stage模型下使用。
-  
+
 **参数：**
 
 | 参数名   | 类型                                  | 必填   | 说明      |
@@ -576,7 +576,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   * 1.2 用户短按电源键
   * 1.3 触发回调
   * 结果：按下：onKeyEvent event:{"actionTime": 1895101259, "keyCode": 0, "keyAction": 0,
-  *	         "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
+  *          "keyItems": [{"pressed": true, "keyCode": 0, "downTime": 1895101259}]}
   *       抬起：onKeyEvent event:{"actionTime": 1895478977, "keyCode": 0, "keyAction": 1,
   *         "keyItems": [{"pressed": false, "keyCode": 0, "downTime": 1895101259}]}
   *
@@ -657,7 +657,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 };
 ```
 
-## EnterpriseAdminExtensionAbility.onLogCollected<sup>23+</sup>
+### onLogCollected<sup>23+</sup>
 
 onLogCollected(result: common.Result): void
 
@@ -715,6 +715,94 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
     if (result === common.Result.FAIL) {
       console.error("onLogCollected", "Failed to collect log.")
     }
+  }
+};
+```
+
+### onStartupGuideCompleted<sup>24+</sup>
+
+onStartupGuideCompleted(scene: common.StartupScene): void
+
+开机向导完成事件回调。通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_STARTUP_GUIDE_COMPLETED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅开机向导完成事件，端侧系统在首次切换子用户完成（仅限PC）、OTA升级完成、首次开机完成开机向导时会通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                   |
+| ---------- | ------ | ---- | ---------------------- |
+| scene | [common.StartupScene](./js-apis-enterprise-common.md#startupscene24) | 是   | 开机向导完成场景。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility, common } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onStartupGuideCompleted(scene: common.StartupScene) {
+    if (scene === common.StartupScene.USER_SETUP) {
+      console.info('onStartupGuideCompleted scene is USER_SETUP');
+    } else if (scene === common.StartupScene.OTA) {
+      console.info('onStartupGuideCompleted scene is OTA');
+    } else if (scene === common.StartupScene.DEVICE_PROVISION) {
+      console.info('onStartupGuideCompleted scene is DEVICE_PROVISION');
+    }
+  }
+};
+```
+
+### onDeviceBootCompleted<sup>24+</sup>
+
+onDeviceBootCompleted(): void
+
+设备开机完成事件回调。通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_BOOT_COMPLETED事件才能收到此回调。企业设备管理场景下，设备管理应用订阅设备启动完成事件，端侧系统在设备开机完成后会通知设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知企业管理员。
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onDeviceBootCompleted() {
+    console.info("EnterpriseAdminExtensionAbility onDeviceBootCompleted");
+  }
+};
+```
+
+### onBundleUpdated
+
+onBundleUpdated(bundleName: string, accountId: number): void
+
+应用更新事件回调，回调中包含应用包名和用户ID。通过接口[adminManager.subscribeManagedEventSync](js-apis-enterprise-adminManager.md#adminmanagersubscribemanagedeventsync)注册MANAGED_EVENT_BUNDLE_UPDATED事件才能收到此回调。企业设备管理场景下，设备管理应用可订阅所有用户下的应用更新事件，应用更新事件触发时会通知当前用户下的设备管理应用，设备管理应用可以在此回调函数中进行事件上报，通知主用户下的企业管理员。
+
+**起始版本：** 26.0.0
+
+**系统能力**：SystemCapability.Customization.EnterpriseDeviceManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+
+**参数：**
+
+| 参数名   | 类型                                  | 必填   | 说明      |
+| ----- | ----------------------------------- | ---- | ------- |
+| bundleName | string | 是    | 被更新应用的包名。 |
+| accountId | number | 是    | 被更新应用所在的用户ID。 |
+
+**示例：**
+
+```ts
+import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
+
+export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
+  onBundleUpdated(bundleName: string, accountId: number) {
+    console.info(`Succeeded in calling onBundleUpdated callback, update bundle name : ${bundleName}, accountId: ${accountId}`);
   }
 };
 ```

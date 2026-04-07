@@ -37,7 +37,7 @@ type OnProxyConfigChangeCallback = () => void
 
 完整示例代码参考[removeProxyOverride](./arkts-apis-webview-ProxyController.md#removeproxyoverride15)。
 
-## CreateNativeMediaPlayerCallback<sup>12+<sup>
+## CreateNativeMediaPlayerCallback<sup>12+</sup>
 
 type CreateNativeMediaPlayerCallback = (handler: NativeMediaPlayerHandler, mediaInfo: MediaInfo) => NativeMediaPlayerBridge
 

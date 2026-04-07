@@ -25,5 +25,5 @@ Defines a key event.
 
 | Name| Description|
 | -- | -- |
-| [OH_Input_CreateKeyEvent](capi-oh-input-manager-h.md#oh_input_createkeyevent) | Creates a key event object.|
+| [OH_Input_CreateKeyEvent](capi-oh-input-manager-h.md#oh_input_createkeyevent) | Creates a key event object. You can call [OH_Input_DestroyKeyEvent](capi-oh-input-manager-h.md#oh_input_destroykeyevent) to destroy a key event object.|
 | [OH_Input_DestroyKeyEvent](capi-oh-input-manager-h.md#oh_input_destroykeyevent) | Destroys a key event object.|

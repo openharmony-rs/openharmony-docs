@@ -56,8 +56,8 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | ---- | ---- | ---- |
-| roundness | number | 否 | 是 | 作用范围，取值范围为0到1之间，取值为1时作用范围为全局，默认值为sqrt(0.5)。 |
-| intensity | number | 否 | 是 | 作用强度，默认值为0.4。 |
+| roundness | number | 否 | 是 | 作用范围，取值范围为[0, 1]，取值为0时作用范围收缩至最小，取值为1时作用范围为全局，默认值为sqrt(0.5)。 |
+| intensity | number | 否 | 是 | 作用强度，取值范围为[0, 1]，取值为0时无暗角效果，取值为1时为最大暗角强度，默认值为0.4。 |
 
 ## ColorFringeSettings<sup>22+</sup>
 色晕设置。当[RenderingPipelineType](js-apis-inner-scene-types.md#renderingpipelinetype21)为FORWARD_LIGHTWEIGHT时，此功能不可用。

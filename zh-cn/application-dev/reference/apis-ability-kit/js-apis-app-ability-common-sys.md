@@ -37,7 +37,7 @@ ServiceExtensionContext二级模块。
 | --- | --- |
 | [_ServiceExtensionContext.default](js-apis-inner-application-serviceExtensionContext-sys.md) | ServiceExtensionContext二级模块。 |
 
-## AutoFillExtensionContext<sup>11+<sup>
+## AutoFillExtensionContext<sup>11+</sup>
 
 type AutoFillExtensionContext = _AutoFillExtensionContext.default
 
@@ -51,7 +51,7 @@ AutoFillExtensionContext二级模块。
 | --- | --- |
 | [_AutoFillExtensionContext.default](js-apis-inner-application-autoFillExtensionContext-sys.md) | AutoFillExtensionContext二级模块。 |
 
-## AutoStartupInfo<sup>11+<sup>
+## AutoStartupInfo<sup>11+</sup>
 
 type AutoStartupInfo = _AutoStartupInfo
 
@@ -65,7 +65,7 @@ AutoStartupInfo二级模块。
 | --- | --- |
 | [_AutoStartupInfo](js-apis-inner-application-autoStartupInfo-sys.md) | AutoStartupInfo二级模块。 |
 
-## AutoStartupCallback<sup>11+<sup>
+## AutoStartupCallback<sup>11+</sup>
 
 type AutoStartupCallback = _AutoStartupCallback
 
@@ -79,7 +79,7 @@ AutoStartupCallback二级模块。
 | --- | --- |
 | [_AutoStartupCallback](js-apis-inner-application-autoStartupCallback-sys.md) | AutoStartupCallback二级模块。 |
 
-## UIServiceExtensionContext<sup>14+<sup>
+## UIServiceExtensionContext<sup>14+</sup>
 
 type UIServiceExtensionContext = _UIServiceExtensionContext.default
 
@@ -93,7 +93,7 @@ UIServiceExtensionContext二级模块。
 | --- | --- |
 | [_UIServiceExtensionContext.default](js-apis-inner-application-uiserviceExtensionContext-sys.md) | UIServiceExtensionContext二级模块。 |
 
-## UIServiceHostProxy<sup>14+<sup>
+## UIServiceHostProxy<sup>14+</sup>
 
 type UIServiceHostProxy = _UIServiceHostProxy.default
 

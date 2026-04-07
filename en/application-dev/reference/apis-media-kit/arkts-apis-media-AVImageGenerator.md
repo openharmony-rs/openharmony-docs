@@ -6,14 +6,14 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
+AVImageGenerator is a class for video thumbnail retrieval. It provides APIs to obtain a thumbnail from a video. Before calling any API in AVImageGenerator, you must use [createAVImageGenerator()](arkts-apis-media-f.md#mediacreateavimagegenerator12) to create an AVImageGenerator instance.
+
+For details about the demo for obtaining video thumbnails, see [Obtaining Video Thumbnails](../../media/media/avimagegenerator.md).
+
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 6. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 > - The initial APIs of this interface are supported since API version 12.
-
-AVImageGenerator is a class for video thumbnail retrieval. It provides APIs to obtain a thumbnail from a video. Before calling any API in AVImageGenerator, you must use [createAVImageGenerator()](arkts-apis-media-f.md#mediacreateavimagegenerator12) to create an AVImageGenerator instance.
-
-For details about the demo for obtaining video thumbnails, see [Obtaining Video Thumbnails](../../media/media/avimagegenerator.md).
 
 ## Modules to Import
 
@@ -301,7 +301,7 @@ import { media } from '@kit.MediaKit';
 
 let avImageGenerator: media.AVImageGenerator | undefined = undefined;
 
-// Release the instance.
+// Release the resources.
 media.createAVImageGenerator((err: BusinessError, generator: media.AVImageGenerator) => {
   if (generator != null) {
     avImageGenerator = generator;

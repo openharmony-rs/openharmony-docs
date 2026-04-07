@@ -76,6 +76,79 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 | --------------------------------------------- | ----------- |
 | [PositionWithAffinity](#positionwithaffinity12) | 字形位置信息。|
 
+### getCharacterPositionAtCoordinate<sup>24+</sup>
+
+getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | undefined
+
+获取距给定坐标最近的字符的位置信息。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| x | number | 是    | 相对于组件的横坐标。<br/>单位：[px](ts-pixel-units.md) |
+| y | number | 是    | 相对于组件的纵坐标。<br/>单位：[px](ts-pixel-units.md) |
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+| [PositionWithAffinity](#positionwithaffinity12) \| undefined | 字符的位置信息。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+
+### getGlyphRangeForCharacterRange<sup>24+</sup>
+
+getGlyphRangeForCharacterRange(charRange: [TextRange](#textrange12)): Array&lt;[TextRange](#textrange12)&gt; | undefined
+
+根据给定的文本字符范围来获取范围内的字形范围，以及实际的字符范围。例如文本为"世界Hello"，其中文本"世"的字形索引范围为[0, 1]，一个汉字占三个字符，所以其对应的字符索引范围为[0, 3]。如果指定的字符索引范围是[0, 1]，但无法解析出三分之一个汉字，所以实际的字符索引范围是[0, 3]。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| charRange | [TextRange](#textrange12) | 是    | 文本的字符范围。|
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+|  Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字形范围，第二个元素是实际的字符范围，当返回的范围是异常值时，范围内元素为-1。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+
+### getCharacterRangeForGlyphRange<sup>24+</sup>
+
+getCharacterRangeForGlyphRange(glyphRange: [TextRange](#textrange12)): Array&lt;[TextRange](#textrange12)&gt; | undefined
+
+根据给定的文本字形范围来获取范围内的字符范围，以及实际的字形范围。例如文本为"世界Hello"，其字形索引范围为[0, 7]，一个汉字占三个字符，所以其对应的字符索引范围为[0, 11]。如果指定的索引范围是[0, 11]，但字形一共只有7个，所以实际的字形索引范围是[0, 7]。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名    | 类型   | 必填   | 说明                 |
+| ------ | ------ | ---- | -------------------- |
+| glyphRange | [TextRange](#textrange12) | 是    | 文本的字形范围。|
+
+**返回值：**
+
+| 类型                                          | 说明        |
+| --------------------------------------------- | ----------- |
+| Array&lt;[TextRange](#textrange12)&gt; \| undefined | 数组中含有两个元素，第一个元素是字符范围，第二个元素是实际的字形范围，当返回的范围是异常值时，范围内元素为-1。当[LayoutManager](#layoutmanager12)没有和组件绑定时，该接口会返回undefined。|
+
 ### getLineMetrics<sup>12+</sup>
 
 getLineMetrics(lineNumber: number): LineMetrics
@@ -132,7 +205,7 @@ getRectsForRange(range: TextRange, widthStyle: RectWidthStyle, heightStyle: Rect
 
 | 名称      | 类型                   | 只读 | 可选 | 说明                      |
 | --------- | --------------------- | ---- | ---- | ------------------------ |
-| position  | number                | 否   | 否   | 字形相对于组件内容的索引，整数。  |
+| position  | number                | 否   | 否   | 字形或字符相对于组件内容的索引，整数。  |
 | affinity  | [Affinity](#affinity12) | 否   | 否   | 位置亲和度。             |
 
 ## TextMenuItemId<sup>12+</sup>
@@ -467,6 +540,31 @@ type EditableTextOnChangeCallback = (value: string, previewText?: PreviewText, o
 | -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
 | enableVariableFontWeight | boolean | 否 | 是  | 是否启用可变字重调节。字体配置项作为[fontWeight](./ts-basic-components-text.md#fontweight12)接口的入参，fontWeight接口中weight取值为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br/>默认值：false <br/>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight。<br/>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。|
 
+## FontConfigs<sup>24+</sup>对象说明
+
+字体配置项。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
+| -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
+| fontWeightConfigs | [FontWeightConfigs](#fontweightconfigs24对象说明) | 否 | 是 | 字体粗细配置。默认值继承[FontWeightConfigs](#fontweightconfigs24对象说明)。 |
+
+## FontWeightConfigs<sup>24+</sup>对象说明
+
+字体粗细配置项。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+| 名称     | 类型                                             | 只读 | 可选 | 说明                                                     |
+| -------- | ------------------------------------------------ | ---- | ---- | -------------------------------------------------------- |
+| enableVariableFontWeight | boolean | 否 | 是 | 是否启用可变字重调节。当设置字体粗细的值weight为[100, 900]内非整百数值时，enableVariableFontWeight用于设置weight的值是否生效。<br/>默认值：false <br/>true：启用可变字重调节。此时如果weight取值为[100, 900]范围内任意整数，字重取值为weight，否则取默认值400。<br/>false：禁用可变字重调节。此时如果weight取值为[100, 900]范围内的整百数值，字重取值为weight；weight是非整百数值时，字重取默认值400。当启用了可变字重调节，则文本字体粗细不再跟随设备的字体粗细级别更新。|
+| enableDeviceFontWeightCategory | boolean | 否 | 是 | 是否随设备的字体粗细级别自动更新字重。<br/>默认值：true <br/>true：当设备的字体粗细级别发生变化时，字重会自动更新。<br/>false：当设备的字体粗细级别发生变化时，字重不会自动更新。 |
+
 ## OnDidChangeCallback<sup>12+</sup>
 
 type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => void
@@ -509,7 +607,7 @@ type OnDidChangeCallback = (rangeBefore: TextRange, rangeAfter: TextRange) => vo
 | -- | -- | -- | -- | -- |
 | range | [TextRange](#textrange12) | 否 | 否 | 即将被替换的属性字符串子串在原字符串中的范围。 |
 | replacementString | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 否 | 用于替换的属性字符串。 |
-| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 是 | 预览样式字符串。 |
+| previewText | [StyledString](ts-universal-styled-string.md#styledstring) | 否 | 是 | 预览内容属性字符串。<br/> 该属性用于表示语音输入、拍摄输入、输入法预上屏场景下的未提交上屏的临时输入内容。|
 
 ## AutoCapitalizationMode<sup>20+</sup>枚举说明
 
@@ -857,7 +955,7 @@ type RectWidthStyle = RectWidthStyle
 | 名称 | 值 | 说明 |
 | ------- | ---- | ------------------- |
 | DEFAULT | 0 | 显示在当前窗口中。<br/>|
-| PREFER_WINDOW | 1 | 优先显示在独立窗口中，若不支持独立窗口，则显示在当前窗口中。<br/>**说明：** <br/>除应用主窗口、应用子窗口、系统模态窗口及系统桌面类型的窗口外，其他类型的窗口不支持将文本选择菜单显示在独立窗口中。<br/>在预览器中不支持将文本选择菜单显示在独立窗口中。<br/>在UIExtension中不支持将文本选择菜单显示在独立窗口中。<br/>当文本类组件已经显示在子窗类型的Popup、Dialog、Toast、Menu中时，不支持将其对应的文本选择菜单显示在独立窗口中。<br/>当TextInput、TextArea可支持拉起AutoFill时，不支持将其对应的文本选择菜单显示在独立窗口中。<br/>|
+| PREFER_WINDOW | 1 | 优先显示在独立窗口中，若不支持独立窗口，则显示在当前窗口中。<br/>**说明：** <br/>除应用主窗口、应用子窗口、系统模态窗口及系统桌面类型的窗口外，其他类型的窗口不支持将文本选择菜单显示在独立窗口中。<br/>在预览器中不支持将文本选择菜单显示在独立窗口中。<br/>在[UIExtension](../js-apis-arkui-uiExtension.md)中不支持将文本选择菜单显示在独立窗口中。<br/>当文本类组件已经显示在子窗类型的[Popup](./ohos-arkui-advanced-Popup.md)、[Dialog](./ohos-arkui-advanced-Dialog.md)、[Toast](../../../ui/arkts-create-toast.md)、[Menu](./ts-basic-components-menu.md)中时，不支持将其对应的文本选择菜单显示在独立窗口中。<br/>当TextInput、TextArea可支持拉起AutoFill时，不支持将其对应的文本选择菜单显示在独立窗口中。<br/>|
 
 ## TextMenuOptions<sup>16+</sup>对象说明
 
@@ -1021,7 +1119,7 @@ setExtraConfig(config: InputMethodExtraConfig): void
 
 | 名称              | 类型    | 只读 | 可选  | 说明                                                         |
 | ------------------- | ------- | ------- | ------- | ------------------------------------------------------------ |
-| overflowMode | [MaxLinesMode](#maxlinesmode20)  | 否  | 是 | `overflowMode`可配置TextArea组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[`textOverflow`](ts-basic-components-textarea.md#textoverflow12)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。 |
+| overflowMode | [MaxLinesMode](#maxlinesmode20)  | 否  | 是 | `overflowMode`可配置[TextArea](./ts-basic-components-textarea.md)组件的非内联模式。当超出设置的`maxLines`最大行数时，会启用滚动效果。需同时配置[`textOverflow`](ts-basic-components-textarea.md#textoverflow12)，且仅当`textOverflow`为None或Clip时，`MaxLinesMode`才能生效。默认情况下，`MaxLinesMode`的值为Clip，超出`maxLines`后文本会被截断。 |
 
 ## MaxLinesMode<sup>20+</sup>
 

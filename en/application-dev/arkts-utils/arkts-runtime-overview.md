@@ -4,7 +4,7 @@
 <!--Owner: @guobingbing3-->
 <!--Designer: @xwcai98-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ArkTS Runtime is the default language runtime for applications on OpenHarmony. It supports the bytecode of ArkTS, TS, and JS languages and related standard libraries. It provides the interpreter, Ahead-of-Time (AOT), and Just-In-Time (JIT) for efficient execution, and implements comprehensive cross-language APIs via [Node-API](../napi/napi-introduction.md), supporting multi-language hybrid development.
 

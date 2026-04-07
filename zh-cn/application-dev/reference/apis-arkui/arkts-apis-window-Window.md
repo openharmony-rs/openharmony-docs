@@ -1,4 +1,4 @@
-# Interface (Window)
+﻿# Interface (Window)
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @waterwin-->
@@ -358,9 +358,9 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 >
 > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）外的其他窗口模式下使用。
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
 >
-> - 若需在非自由窗口状态下实现相对于屏幕的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
+> - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
 >
 > - 该方法对非自由窗口状态下的主窗口无效。
 
@@ -372,8 +372,8 @@ moveWindowTo(x: number, y: number, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | --------------------------------------------- |
-| x        | number                    | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示位置在x轴右侧；值为负表示位置在x轴左侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y        | number                    | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在y轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| x        | number                    | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| y        | number                    | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                     |
 
 **错误码：**
@@ -415,9 +415,9 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 >
 > - 不建议在除自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）外的其他窗口模式下使用。
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于父窗口移动。
+> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕左上顶点移动；在非自由窗口状态下，窗口相对于父窗口左上顶点移动。
 >
-> - 若需在非自由窗口状态下实现相对于屏幕的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
+> - 若需在非自由窗口状态下实现相对于屏幕左上顶点的移动，请使用[moveWindowToGlobal()](#movewindowtoglobal15)。
 >
 > - 该方法对非自由窗口状态下的主窗口无效。
 
@@ -429,8 +429,8 @@ moveWindowTo(x: number, y: number): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示位置在x轴右侧；值为负表示位置在x轴左侧；值为0表示位置在x轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
-| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示位置在y轴下侧；值为负表示位置在y轴上侧；值为0表示位置在y轴坐标原点。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| x | number | 是 | 窗口在x轴方向移动到的坐标位置，单位为px，值为正表示在原点右侧，值为负表示在原点左侧。该参数仅支持整数输入，浮点数输入将向下取整。 |
+| y | number | 是 | 窗口在y轴方向移动到的坐标位置，单位为px，值为正表示在原点下方，值为负表示在原点上方。该参数仅支持整数输入，浮点数输入将向下取整。 |
 
 **返回值：**
 
@@ -471,13 +471,15 @@ moveWindowToAsync(x: number, y: number): Promise&lt;void&gt;
 
 移动窗口位置，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-> **说明：**
->
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
->
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于主窗口移动。
->
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+
+在自由悬浮窗口模式下，不同类型窗口的移动行为如下：
+
+| 窗口类型 | [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态 | 非自由窗口状态 |
+|---------|---------------|-----------------|
+| 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |
+| 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
+| 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -532,13 +534,16 @@ moveWindowToAsync(x: number, y: number, moveConfiguration?: MoveConfiguration): 
 
 移动窗口位置，支持配置moveConfiguration参数指定窗口移动的目标屏幕ID，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
-> **说明：**
->
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
->
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口相对于屏幕移动；在非自由窗口状态下，窗口相对于主窗口移动。
->
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+
+在自由悬浮窗口模式下，不同类型窗口的移动行为如下：
+
+| 窗口类型 | [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态 | 非自由窗口状态 |
+|---------|---------------|-----------------|
+| 主窗口 | 相对于屏幕移动 | 调用不生效不报错 |
+| 应用子窗口/模态窗 | 相对于屏幕移动 | 相对于主窗口移动 |
+| 系统窗口/全局悬浮窗 | 相对于屏幕移动 | 相对于屏幕移动 |
+
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -598,12 +603,11 @@ moveWindowToGlobal(x: number, y: number): Promise&lt;void&gt;
 
 基于屏幕坐标移动窗口位置，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+
 > **说明：**
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
->
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
-
+> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -658,11 +662,11 @@ moveWindowToGlobal(x: number, y: number, moveConfiguration?: MoveConfiguration):
 
 基于屏幕坐标移动窗口位置，支持配置moveConfiguration参数指定窗口移动的目标屏幕ID，使用Promise异步回调。调用生效后返回，回调中可使用[getWindowProperties()](#getwindowproperties9)（见示例）立即获取最终生效结果。
 
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+
 > **说明：**
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
->
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -722,11 +726,11 @@ moveWindowToGlobalDisplay(x: number, y: number): Promise&lt;void&gt;
 
 基于[全局坐标系](../../windowmanager/window-terminology.md#全局坐标系)移动窗口位置，使用Promise异步回调。
 
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回错误码1300010错误码。
+
 > **说明：**
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
->
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 主窗处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不生效不报错。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -786,8 +790,8 @@ clientToGlobalDisplay(winX: number, winY: number): Position
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| winX | number | 是 | 表示以当前窗口左上角为起点，组件在x轴方向移动的值，单位为px。值为正表示右移，值为负表示左移。该参数应该为整数，非整数输入将向下取整。 |
-| winY | number | 是 | 表示以当前窗口左上角为起点，组件在y轴方向移动的值，单位为px。值为正表示下移，值为负表示上移。该参数应该为整数，非整数输入将向下取整。 |
+| winX | number | 是 | 表示以当前窗口左上角为原点的x轴方向偏移量，单位为px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应为整数，非整数输入将向下取整。 |
+| winY | number | 是 | 表示以当前窗口左上角为原点的y轴方向偏移量，单位为px。值为正表示在原点下方，值为负表示在原点上方。该参数应为整数，非整数输入将向下取整。 |
 
 **返回值：**
 
@@ -831,8 +835,8 @@ globalDisplayToClient(globalDisplayX: number, globalDisplayY: number): Position
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -- | ----- | -- | --------------------------------------------- |
-| globalDisplayX | number | 是 | 表示以主屏幕左上角为起点，组件在x轴方向移动的值，单位为px。值为正表示右移，值为负表示左移。该参数应该为整数，非整数输入将向下取整。 |
-| globalDisplayY | number | 是 | 表示以主屏幕左上角为起点，组件在y轴方向移动的值，单位为px。值为正表示下移，值为负表示上移。该参数应该为整数，非整数输入将向下取整。 |
+| globalDisplayX | number | 是 | 表示以当前窗口左上角为原点的x轴方向偏移量，单位为px。值为正表示在原点右侧，值为负表示在原点左侧。该参数应为整数，非整数输入将向下取整。 |
+| globalDisplayY | number | 是 | 表示以当前窗口左上角为原点的y轴方向偏移量，单位为px。值为正表示在原点下方，值为负表示在原点上方。该参数应为整数，非整数输入将向下取整。 |
 
 **返回值：**
 
@@ -878,11 +882,11 @@ resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回1300002错误码。
+
 > **说明：**
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300002。
->
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 主窗口处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不报错不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -941,11 +945,11 @@ resize(width: number, height: number): Promise&lt;void&gt;
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，在其他窗口模式下调用返回1300002错误码。
+
 > **说明：**
 >
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300002。
->
-> - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
+> - 主窗口处于自由悬浮窗口模式时，在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下调用不报错不生效。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -1007,9 +1011,9 @@ resizeAsync(width: number, height: number): Promise&lt;void&gt;
 
 若所设置的窗口宽/高尺寸大于窗口最大宽/高限制值，则窗口最大宽/高限制值生效。
 
+该接口仅在窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，窗口模式可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
+
 > **说明：**
->
-> - 在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，窗口为自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING，WindowStatusType可通过[getWindowStatus()](#getwindowstatus12)获取）时调用生效，否则抛出错误码1300010。
 >
 > - 在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，主窗口调用不生效。
 
@@ -1248,7 +1252,7 @@ getWindowAvoidArea(type: AvoidAreaType): AvoidArea
 获取当前窗口避让区域。
 
 主窗口/子窗口：
-- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
+- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-apis-window-e.md#windowstatustype11)）下，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 - 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
@@ -1303,7 +1307,7 @@ getWindowAvoidAreaIgnoringVisibility(type: AvoidAreaType): AvoidArea
 获取当前应用窗口的避让区域，即使避让区域当前处于不可见状态。
 
 主窗口/子窗口：
-- 主窗口在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
+- 主窗口在非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-apis-window-e.md#windowstatustype11)）下，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
 - 主窗口在其余场景下，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 - 子窗口在非自由窗口状态或非自由悬浮窗口模式下，仅当窗口的位置和大小与主窗口一致时，才能通过此接口获取计算后的避让区域，否则获取的避让区域为空。
 
@@ -1460,34 +1464,49 @@ isSystemAvoidAreaEnabled(): boolean
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { window } from '@kit.ArkUI';
 
-let windowClass: window.Window | undefined = undefined;
-let config: window.Configuration = {
-  name: "test",
-  windowType: window.WindowType.TYPE_DIALOG,
-  decorEnabled: true,
-  ctx: this.context
-};
-try {
-  window.createWindow(config, (err: BusinessError, data) => {
-    const errCode: number = err.code;
-    if (errCode) {
-      console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
-      return;
-    }
-    windowClass = data;
-    windowClass.setUIContent("pages/Test");
-    let enabled = true;
-    let promise = windowClass.setSystemAvoidAreaEnabled(enabled);
-    promise.then(() => {
-      let enable = windowClass?.isSystemAvoidAreaEnabled();
-    }).catch((err: BusinessError) => {
-      console.error(`Failed to obtain whether the system window can get avoid area. Cause code: ${err.code}, message: ${err.message}`);
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    console.info('onWindowStageCreate');
+    windowStage.loadContent('pages/Index', (err) => {
+      if (err.code) {
+        console.error('Failed to load the content. Cause: %{public}s', JSON.stringify(err));
+        return;
+      }
+      console.info('Succeeded in loading the content.');
+      let windowClass: window.Window | undefined = undefined;
+      let config: window.Configuration = {
+        name: "test",
+        windowType: window.WindowType.TYPE_DIALOG,
+        decorEnabled: true,
+        ctx: this.context
+      };
+      try {
+        window.createWindow(config, (err: BusinessError, data) => {
+          const errCode: number = err.code;
+          if (errCode) {
+            console.error(`Failed to create the system window. Cause code: ${err.code}, message: ${err.message}`);
+            return;
+          }
+          windowClass = data;
+          windowClass.setUIContent("pages/Test");
+          let promise = windowClass.setSystemAvoidAreaEnabled(true);
+          promise.then(() => {
+            let enabled = windowClass?.isSystemAvoidAreaEnabled();
+          }).catch((err: BusinessError) => {
+            console.error(`Failed to obtain the system window avoid area enable. Cause code: ${err.code}, message: ${err.message}`);
+          });
+        });
+      } catch (exception) {
+        console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
+      }
     });
-  });
-} catch (exception) {
-  console.error(`Failed to create the system window. Cause code: ${exception.code}, message: ${exception.message}`);
+  }
 }
 ```
 
@@ -1809,7 +1828,7 @@ setDragKeyFramePolicy(keyFramePolicy: KeyFramePolicy): Promise&lt;KeyFramePolicy
 
 **设备行为差异：** 在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在2in1设备可正常调用，在其他设备中返回801错误码。
 
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、PC/2in1设备可正常调用，在其他设备中返回801错误码。
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在2in1设备、其他设备的电脑模式中可正常调用；在其他设备和其他模式中不生效不报错。
 
 **参数：**
 
@@ -2569,7 +2588,7 @@ setUIContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | ------------------------- | -- | -------------------- |
-| path     | string                    | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path     | string                    | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 | callback | AsyncCallback&lt;void&gt; | 是 | 回调函数。          |
 
 **错误码：**
@@ -2614,7 +2633,7 @@ setUIContent(path: string): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ------ | -- | ------------------ |
-| path | string | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path | string | 是 | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 
 **返回值：**
 
@@ -2652,7 +2671,11 @@ try {
 
 loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void&gt;): void
 
-根据当前工程中指定的页面路径为窗口加载具体页面内容，通过LocalStorage传递状态属性给加载的页面，使用callback异步回调。建议在UIAbility启动过程中使用该接口，重复调用将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+根据当前工程中指定的页面路径为窗口加载具体页面内容，通过LocalStorage传递状态属性给加载的页面，使用callback异步回调。
+
+建议在UIAbility启动过程中使用该接口，重复调用将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2664,7 +2687,7 @@ loadContent(path: string, storage: LocalStorage, callback: AsyncCallback&lt;void
 
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path     | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。 |
+| path     | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
 | storage  | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 | callback | AsyncCallback&lt;void&gt;                       | 是   | 回调函数。                                                   |
 
@@ -2698,7 +2721,11 @@ windowClass.loadContent('pages/page2', storage, (err: BusinessError) => {
 
 loadContent(path: string, storage: LocalStorage): Promise&lt;void&gt;
 
-根据当前工程中指定的页面路径为窗口加载具体页面内容，通过LocalStorage传递状态属性给加载的页面，使用Promise异步回调。建议在UIAbility启动过程中使用该接口，重复调用将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+根据当前工程中指定的页面路径为窗口加载具体页面内容，通过LocalStorage传递状态属性给加载的页面，使用Promise异步回调。
+
+建议在UIAbility启动过程中使用该接口，重复调用将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2710,7 +2737,7 @@ loadContent(path: string, storage: LocalStorage): Promise&lt;void&gt;
 
 | 参数名  | 类型                                            | 必填 | 说明                                                         |
 | ------- | ----------------------------------------------- | ---- | ------------------------------------------------------------ |
-| path    | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。 |
+| path    | string                                          | 是   | 要加载到窗口中的页面内容的路径，该路径需添加到工程的main_pages.json文件中。不支持相对路径写法，需与main_pages.json中的src取值保持一致。 |
 | storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 是   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
 
 **返回值：**
@@ -2747,7 +2774,11 @@ promise.then(() => {
 
 loadContentByName(name: string, storage: LocalStorage, callback: AsyncCallback&lt;void&gt;): void
 
-根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用callback异步回调。建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用callback异步回调。
+
+建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2836,7 +2867,11 @@ export struct Index {
 
 loadContentByName(name: string, callback: AsyncCallback&lt;void&gt;): void
 
-根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，使用callback异步回调。建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，使用callback异步回调。
+
+建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2906,7 +2941,11 @@ export struct Index {
 
 loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 
-根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+根据指定路由页面名称为当前窗口加载[命名路由](../../ui/arkts-routing.md#命名路由)页面，通过LocalStorage传递状态属性至加载页面，使用Promise异步回调。
+
+建议在UIAbility启动过程中使用该接口，重复调用该接口将先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2919,7 +2958,7 @@ loadContentByName(name: string, storage?: LocalStorage): Promise&lt;void&gt;
 | 参数名  | 类型                                                    | 必填 | 说明                                                         |
 | ------- | ------------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | name    | string                                                  | 是   | 命名路由页面的名称。                                             |
-| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性。 |
+| storage | [LocalStorage](../../ui/state-management/arkts-localstorage.md) | 否   | 页面级UI状态存储单元，这里用于为加载到窗口的页面内容传递状态属性，默认值为空。 |
 
 **返回值：**
 
@@ -3098,10 +3137,10 @@ try {
 
 on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
-开启当前应用窗口系统规避区变化的监听。
+开启当前应用窗口系统避让区域变化的监听。
 
 主窗口/子窗口：
-- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）下触发回调时，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
+- [自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的自由悬浮窗口模式（即窗口模式为[window.WindowStatusType.FLOATING](arkts-apis-window-e.md#windowstatustype11)）下触发回调时，仅存在固定态软键盘（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_KEYBOARD）类型的避让区域。
 - 主窗口在非自由窗口状态的自由悬浮窗口模式下触发回调时，仅存在系统栏（[AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)为TYPE_SYSTEM）类型的避让区域。
 - 主窗口在其余场景下触发回调时，仅当在非自由悬浮窗口模式下或设备类型为Phone和Tablet，才能返回计算后的避让区域，否则直接返回空的避让区域。
 - 子窗口在非自由窗口状态或非自由悬浮窗口模式下触发回调时，仅当子窗口的位置和大小与主窗口一致时，才能返回计算后的子窗口避让区域，否则直接返回空的避让区域。
@@ -3109,7 +3148,7 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 全局悬浮窗、模态窗或系统窗口：
 - 仅在调用[setSystemAvoidAreaEnabled](#setsystemavoidareaenabled18)方法使能后，触发回调时才能返回计算后的避让区域，否则直接返回空的避让区域。
 
-<!--RP7-->常见的触发避让区回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；多折叠设备在屏幕折叠态和展开态之间的切换；应用窗口在多设备之间的流转。<!--RP7End-->
+<!--RP7-->常见的触发避让区回调的场景如下：应用窗口在全屏模式、悬浮模式、分屏模式之间的切换；应用窗口旋转；可折叠设备在屏幕折叠状态发生变化；应用窗口在多设备之间的流转。<!--RP7End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -3119,8 +3158,8 @@ on(type: 'avoidAreaChange', callback: Callback&lt;AvoidAreaOptions&gt;): void
 
 | 参数名   | 类型                              | 必填 | 说明                                  |
 | -------- |----------------------------------| ---- |--------------------------------------|
-| type     | string                           | 是   | 监听事件，固定为'avoidAreaChange'，即系统规避区变化事件。 |
-| callback | Callback&lt;[AvoidAreaOptions](arkts-apis-window-i.md#avoidareaoptions12)&gt; | 是   | 回调函数。返回当前规避区以及规避区类型。|
+| type     | string                           | 是   | 监听事件，固定为'avoidAreaChange'，即系统避让区变化事件。 |
+| callback | Callback&lt;[AvoidAreaOptions](arkts-apis-window-i.md#avoidareaoptions12)&gt; | 是   | 回调函数。返回当前避让区以及避让区类型。|
 
 **错误码：**
 
@@ -3147,7 +3186,7 @@ try {
 
 off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
-关闭当前窗口系统规避区变化的监听。
+关闭当前窗口系统避让区变化的监听。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -3157,8 +3196,8 @@ off(type: 'avoidAreaChange', callback?: Callback&lt;AvoidAreaOptions&gt;): void
 
 | 参数名   | 类型                              | 必填 | 说明                                |
 | -------- |----------------------------------|------|------------------------------------|
-| type     | string                           | 是   | 监听事件，固定为'avoidAreaChange'，即系统规避区变化事件。 |
-| callback | Callback&lt;[AvoidAreaOptions](arkts-apis-window-i.md#avoidareaoptions12)&gt; | 否   | 回调函数。返回当前规避区以及规避区类型。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有系统规避区变化的监听。|
+| type     | string                           | 是   | 监听事件，固定为'avoidAreaChange'，即系统避让区变化事件。 |
+| callback | Callback&lt;[AvoidAreaOptions](arkts-apis-window-i.md#avoidareaoptions12)&gt; | 否   | 回调函数。返回当前避让区以及避让区类型。如果传入参数，则关闭该监听。如果未传入参数，则关闭所有系统避让区变化的监听。|
 
 **错误码：**
 
@@ -4277,7 +4316,7 @@ on(type: 'frameMetricsMeasured', callback: Callback&lt;FrameMetrics&gt;): void
 
 开启窗口帧率指标变化事件的监听。该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。
+应用注册帧率变化监听后，只有当客户端UI内容发生重绘时（如页面切换、和可响应组件交互、设置背景色和透明度等），才会触发注册的回调。但当同时使用该接口和[postFrameCallback](arkts-apis-uicontext-uicontext.md#postframecallback12)、[postDelayedFrameCallback](arkts-apis-uicontext-uicontext.md#postdelayedframecallback12)、[displaySync.on('frame')](../apis-arkgraphics2d/js-apis-graphics-displaySync.md#onframe)中的任意一个时，即使无UI内容重绘，也可能触发回调。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -4286,7 +4325,7 @@ on(type: 'frameMetricsMeasured', callback: Callback&lt;FrameMetrics&gt;): void
 | 参数名   | 类型                           | 必填 | 说明                                                     |
 | -------- | ------------------------------ | ---- | -------------------------------------------------------- |
 | type     | string                         | 是   | 监听事件类型，固定为'frameMetricsMeasured'，即窗口帧率指标变化事件。 |
-| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 是  | 窗口帧率指标变化时的回调函数。详情见[帧率指标](arkts-apis-window-i.md#framemetrics22)。|
+| callback | Callback&lt;[FrameMetrics](arkts-apis-window-i.md#framemetrics22)&gt; | 是  | 窗口帧率指标变化时的回调函数。详情见帧率指标[FrameMetrics](arkts-apis-window-i.md#framemetrics22)。|
 
 **错误码：**
 
@@ -5327,7 +5366,15 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在非2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：**
+
+针对PC/2in1设备：在API version 23之前，调用该接口会返回801错误码；从API version 23开始，可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
 
 **参数：**
 
@@ -5349,18 +5396,23 @@ on(type: 'rotationChange', callback: RotationChangeCallback&lt;RotationChangeInf
 **示例：**
 
 ```ts
+// EntryAbility.ets
+import { UIAbility } from '@kit.AbilityKit';
+import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 function calculateRect(info: window.RotationChangeInfo): window.Rect {
-    // calculate result with info
-    let rect : window.Rect = {
-      left: 0,
-      top: 0,
-      width: 500,
-      height: 600,
-    }
-    return rect;
+  // calculate result with info
+  let rect: window.Rect = {
+    left: 0,
+    top: 0,
+    width: 500,
+    height: 600,
+  };
+  return rect;
 }
 
-const callback = (info: window.RotationChangeInfo): window.RotationChangeResult | void => {
+function callback(info: window.RotationChangeInfo): window.RotationChangeResult | void {
   let result: window.RotationChangeResult = {
     rectType: window.RectType.RELATIVE_TO_SCREEN,
     windowRect: {
@@ -5370,20 +5422,46 @@ const callback = (info: window.RotationChangeInfo): window.RotationChangeResult 
       height: 0,
     }
   };
+
   if (info.type === window.RotationChangeType.WINDOW_WILL_ROTATE) {
-      result.rectType = window.RectType.RELATIVE_TO_SCREEN;
-      result.windowRect = calculateRect(info);
-      return result;
+    result.rectType = window.RectType.RELATIVE_TO_SCREEN;
+    result.windowRect = calculateRect(info);
+    return result;
   } else {
-      // do something after rotate
-      return;
+    // do something after rotate
+    return;
   }
 }
 
-try {
-  windowClass.on('rotationChange', callback);
-} catch (exception) {
-  console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+export default class EntryAbility extends UIAbility {
+  // ...
+  onWindowStageCreate(windowStage: window.WindowStage): void {
+    let windowClass: window.Window | undefined = undefined;
+    let config: window.Configuration = {
+      name: 'test',
+      windowType: window.WindowType.TYPE_DIALOG,
+      ctx: this.context
+    };
+
+    try {
+      window.createWindow(config, (err: BusinessError, data: window.Window) => {
+        const errCode: number = err.code;
+        if (errCode) {
+          console.error(`Failed to create the window. Cause code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        windowClass = data;
+        try {
+          windowClass.on('rotationChange', callback);
+        } catch (exception) {
+          console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
+        }
+        windowClass.resize(500, 1000);
+      });
+    } catch (exception) {
+      console.error(`Failed to create the window. Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
 }
 ```
 
@@ -5397,7 +5475,15 @@ off(type: 'rotationChange', callback?: RotationChangeCallback&lt;RotationChangeI
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在非2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用且立即生效；在非2in1且支持sensor旋转，支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效；在其他情况的设备上调用不生效也不报错。
+**设备行为差异：**
+
+针对PC/2in1设备：在API version 23之前，调用该接口会返回801错误码；从API version 23开始，可正常调用该接口且立即生效。
+
+针对非PC/2in1且支持sensor旋转但不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：可正常调用且立即生效。
+
+针对非PC/2in1且支持sensor旋转，支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备：当处于非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用该接口且立即生效；当处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时，调用该接口时不生效也不报错，切换到非[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效。
+
+针对其他设备：调用该接口不生效也不报错。
 
 **参数：**
 
@@ -6129,9 +6215,9 @@ try {
 
 setWindowKeepScreenOn(isKeepScreenOn: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置屏幕是否为常亮状态，使用callback异步回调。
+设置当前窗口位于前台时当前设备的屏幕是否为常亮状态，异源虚拟屏下不生效。使用callback异步回调。
 
-规范使用该接口：仅在必要场景（导航、视频播放、绘画、游戏等场景）下，设置该属性为true；退出上述场景后，应当重置该属性为false；其他场景（无屏幕互动、音频播放等）下，不使用该接口；系统检测到非规范使用该接口时，可能会恢复自动灭屏功能。
+仅在必要场景（导航、视频播放、绘画、游戏等场景）下，设置该属性为true；退出上述场景后，应当重置该属性为false；其他场景（无屏幕互动、音频播放等）下，不使用该接口；系统检测到非规范使用该接口时，可能会恢复自动灭屏功能。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6178,9 +6264,9 @@ try {
 
 setWindowKeepScreenOn(isKeepScreenOn: boolean): Promise&lt;void&gt;
 
-设置屏幕是否为常亮状态，使用Promise异步回调。
+设置当前窗口位于前台时当前设备的屏幕是否为常亮状态，异源虚拟屏下不生效。使用Promise异步回调。
 
-规范使用该接口：仅在必要场景（导航、视频播放、绘画、游戏等场景）下，设置该属性为true；退出上述场景后，应当重置该属性为false；其他场景（无屏幕互动、音频播放等）下，不使用该接口；系统检测到非规范使用该接口时，可能会恢复自动灭屏功能。
+仅在必要场景（导航、视频播放、绘画、游戏等场景）下，设置该属性为true；退出上述场景后，应当重置该属性为false；其他场景（无屏幕互动、音频播放等）下，不使用该接口；系统检测到非规范使用该接口时，可能会恢复自动灭屏功能。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -6341,7 +6427,9 @@ try {
 
 setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): void
 
-设置窗口是否为可触状态，使用callback异步回调。
+设置窗口是否为可点击状态，使用callback异步回调。
+
+当窗口处于可点击状态时，若用户点击命中该窗口，事件将发送给该窗口处理。当窗口处于不可点击状态时，透传点击事件，传递给下层窗口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6351,7 +6439,7 @@ setWindowTouchable(isTouchable: boolean, callback: AsyncCallback&lt;void&gt;): v
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----------- | ------------------------- | -- | ----------------------------------------------- |
-| isTouchable | boolean                   | 是 | 窗口是否为可触状态。true表示可触；false表示不可触。 |
+| isTouchable | boolean                   | 是 | 窗口是否为可点击状态。true表示可点击；false表示不可点击。 |
 | callback    | AsyncCallback&lt;void&gt; | 是 | 回调函数。                                        |
 
 **错误码：**
@@ -6388,7 +6476,9 @@ try {
 
 setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 
-设置窗口是否为可触状态，使用Promise异步回调。
+设置窗口是否为可点击状态，使用Promise异步回调。
+
+当窗口处于可点击状态时，若用户点击命中该窗口，事件将发送给该窗口处理。当窗口处于不可点击状态时，透传点击事件，传递给下层窗口。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6398,7 +6488,7 @@ setWindowTouchable(isTouchable: boolean): Promise&lt;void&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ----------- | ------- | -- | ----------------------------------------------- |
-| isTouchable | boolean | 是 | 窗口是否为可触状态。true表示可触；false表示不可触。 |
+| isTouchable | boolean | 是 | 窗口是否为可点击状态。true表示可点击；false表示不可点击。 |
 
 **返回值：**
 
@@ -7100,7 +7190,7 @@ maximize(presentation?: MaximizePresentation, acrossDisplay?: boolean): Promise&
 | 参数名 | 类型  | 必填 | 说明 |
 | ----- | ---------------------------- | -- | --------------------------------- |
 | presentation | [MaximizePresentation](arkts-apis-window-e.md#maximizepresentation12) | 否 | 主窗口或子窗口最大化时的布局枚举。默认值window.MaximizePresentation.ENTER_IMMERSIVE，即默认最大化时进入全屏模式。 |
-| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`或不传值时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。 |
+| acrossDisplay | boolean | 否 | 控制悬停态下主窗口在最大化时的瀑布流模式行为。默认值为`undefined`。<br>仅主窗口可设置此参数，非主窗口调用时返回错误码`1300004`。<br>取值为`true`时：<br>- 悬停态下，窗口将直接进入瀑布流模式；<br>- 展开态下，窗口进入最大化，并在悬停态下保持瀑布流模式。<br>取值为`false`时：<br>- 悬停态下，窗口将退出瀑布流模式，进入单面最大化（即窗口最大化时只在上半屏或下半屏显示）；<br>- 展开态下，窗口进入最大化，并在悬停态下退出瀑布流模式。<br>取值为`undefined`时，不修改窗口瀑布流模式行为：<br>- 悬停态下，窗口进入单面最大化；<br>- 展开态下，窗口进入最大化，并在悬停态下默认保持瀑布流模式。<br>**设备行为差异：** 仅在具备折叠功能的2in1设备可正常调用；在其他设备上调用不生效。 |
 
 **返回值：**
 
@@ -7252,7 +7342,7 @@ recover(): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **返回值：**
 
@@ -7371,8 +7461,6 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在Phone设备、Tablet设备和2in1设备上可正常调用，在其他设备中返回801错误码。
-
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -7395,7 +7483,7 @@ restoreMainWindow(wantParameters?: Record<string, Object>): Promise&lt;void&gt;
 | 1300002      | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error.   |
 | 1300003      | This window manager service works abnormally.      |
 | 1300004      | Unauthorized operation. Possible cause: 1. The window is not float window. 2. The window is not at foreground or has never been clicked. 3. The window cannot find main window.   |
-| 1300007      | Restore parent main window failed. Possible cause: 1. The main window is at PAUSED lifecycle state. 2. The main window is in background during recent. |
+| 1300007      | Restore parent main window failed. Possible cause: 1. The main window is in PAUSED lifecycle state. 2. The main window is in background during recent. |
 
 **示例：**
 
@@ -7705,7 +7793,7 @@ try {
 
 ## setWindowMask<sup>12+</sup>
 
-setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;;
+setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 
 设置异形窗口的掩码，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
 
@@ -7746,14 +7834,17 @@ setWindowMask(windowMask: Array&lt;Array&lt;number&gt;&gt;): Promise&lt;void&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
-  let windowMask: Array<Array<number>> = [
-      [0, 0, 0, 1, 0, 0, 0],
-      [0, 0, 1, 1, 1, 0, 0],
-      [0, 1, 1, 0, 1, 1, 0],
-      [1, 1, 0, 0, 0, 1, 1]
-    ];
+  let maskWidth = windowClass.getWindowProperties().windowRect.width;
+  let maskHeight = windowClass.getWindowProperties().windowRect.height;
+  let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
+    let array = Array<number>(maskWidth);
+    for (let i = 0 ; i < maskWidth; i++) {
+      array[i] = (i + row) > (maskWidth + maskHeight) / 2 ? 1 : 0;
+    }
+    return array;
+  });
   let promise = windowClass.setWindowMask(windowMask);
-    promise.then(() => {
+  promise.then(() => {
     console.info('Succeeded in setting the window mask.');
   }).catch((err: BusinessError) => {
     console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
@@ -7763,11 +7854,69 @@ try {
 }
 ```
 
+## clearWindowMask<sup>24+</sup>
+
+clearWindowMask(): Promise&lt;void&gt;
+
+清除异形窗口的掩码使其恢复为矩形窗口，使用Promise异步回调。异形窗口为非常规形状的窗口，掩码用于描述异形窗口的形状。此接口仅限子窗和全局悬浮窗可用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**返回值：**
+
+| 类型                                         | 说明                                |
+| :------------------------------------------- | :---------------------------------- |
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息                                      |
+| :------- | :-------------------------------------------- |
+| 801      | Capability not supported. Failed to call the API due to limited device capabilities.                               |
+| 1300002  | This window state is abnormal. Possible cause: 1. The window is not created or destroyed. 2. Internal task error. 3. The window has not set window mask yet.  |
+| 1300003  | This window manager service works abnormally.                                                                      |
+| 1300004  | Unauthorized operation.  Possible cause: Invalid window type. Only subwindows and float windows are supported.                       |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+try {
+  let maskWidth = windowClass.getWindowProperties().windowRect.width;
+  let maskHeight = windowClass.getWindowProperties().windowRect.height;
+  let windowMask = Array<Array<number>>(maskHeight).fill([]).map((_, row) => {
+    let array = Array<number>(maskWidth);
+    for (let i = 0 ; i < maskWidth; i++) {
+      array[i] = (i + row) > (maskWidth + maskHeight) / 2 ? 1 : 0;
+    }
+    return array;
+  });
+  let promise = windowClass.setWindowMask(windowMask);
+  promise.then(() => {
+    console.info('Succeeded in setting the window mask.');
+    promise = windowClass.clearWindowMask();
+    promise.then(() => {
+      console.info('Succeeded in clearing the window mask.');
+    }).catch((err: BusinessError) => {
+      console.error(`Failed to clear the window mask. Cause code: ${err.code}, message: ${err.message}`);
+    });
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to set the window mask. Cause code: ${err.code}, message: ${err.message}`);
+  });
+} catch (exception) {
+  console.error(`Failed to set or clear the window mask. Cause code: ${exception.code}, message: ${exception.message}`);
+}
+```
+
 ## keepKeyboardOnFocus<sup>11+</sup>
 
 keepKeyboardOnFocus(keepKeyboardFlag: boolean): void
 
-窗口获焦时是否保留由其他窗口创建的软键盘，仅支持系统窗口与应用子窗口。
+当前窗口获焦时是否保留由其他窗口创建的软键盘，支持系统窗口、应用子窗口、模态窗和全局悬浮窗。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7861,11 +8010,7 @@ getWindowDecorVisible(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错，返回false。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **返回值：**
 
@@ -7905,11 +8050,7 @@ setWindowTitle(titleName: string): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：**
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回1300002或801错误码。
 
 **参数：**
 
@@ -7960,11 +8101,7 @@ setWindowTitleMoveEnabled(enabled: boolean): void
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：**
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -8166,15 +8303,15 @@ setWindowDecorHeight(height: number): void
 
 设置窗口的标题栏高度，对存在标题栏和三键区的窗口形态生效。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
 
-针对Tablet设备，非[自由多窗模式](../../windowmanager/window-terminology.md#自由多窗模式)下调用此接口后，当设备切换到自由多窗模式时生效；在自由多窗模式下调用此接口后，立刻生效。
-
 当主窗口进入全屏沉浸状态时，此时鼠标Hover到窗口标题栏热区时，会显示悬浮标题栏，悬浮标题栏高度固定为37vp。
+
+由于系统像素转换可能存在精度误差，设置后调用[getWindowDecorHeight()](#getwindowdecorheight11)获取的值可能与设置的值存在1vp的差异。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不生效也不报错。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -8221,8 +8358,6 @@ setDecorButtonStyle(dectorStyle: DecorButtonStyle): void
 在OpenHarmony 5.1.0之前，该接口在2in1设备中可正常调用，在其他设备中返回801错误码。
 
 从OpenHarmony 5.1.0开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
 
 **参数：**
 
@@ -8324,6 +8459,8 @@ try {
 getWindowDecorHeight(): number
 
 对存在标题栏和三键区的窗口形态生效，用于获取窗口的标题栏高度。如果使用Stage模型，该接口需要在[loadContent()](#loadcontent9)或[setUIContent()](#setuicontent9)调用生效后使用。
+
+由于系统像素转换可能存在精度误差，调用[setWindowDecorHeight()](#setwindowdecorheight11)设置的值与获取的值可能存在1vp的差异。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -8458,7 +8595,9 @@ try {
 
 isFocused(): boolean
 
-判断当前窗口是否已获焦。
+判断当前窗口是否已获焦。为获取准确的获焦状态，需要在[WindowEventType](arkts-apis-window-e.md#windoweventtype10)生命周期处于WINDOW_ACTIVE之后调用。
+
+可使用[on('windowEvent')](#onwindowevent10)监听对应状态变更，再执行对应具体业务。
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -8670,11 +8809,7 @@ setWindowTitleButtonVisible(isMaximizeButtonVisible: boolean, isMinimizeButtonVi
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：**
-
-在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
-
-从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效，切换到[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态后生效；在不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备调用不报错不生效。
+**设备行为差异：** 该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上可正常调用；在支持但不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备及不支持[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用返回801错误码。
 
 **参数：**
 
@@ -8773,7 +8908,7 @@ setWindowTopmost(isWindowTopmost: boolean): Promise&lt;void&gt;
 **示例：**
 
 ```ts
-// ets/pages/Index.ets
+// Index.ets
 import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -9226,7 +9361,9 @@ try {
 
 startMoving(): Promise&lt;void&gt;
 
-[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，对系统窗口、应用主窗口、应用子窗口、全局悬浮窗和模态窗口生效。非自由窗口状态下，仅对系统窗口、应用子窗口、全局悬浮窗和模态窗口生效。用于开始移动窗口，使用Promise异步回调。
+开始移动窗口，使用Promise异步回调。
+
+[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下，对系统窗口、应用主窗口、应用子窗口、全局悬浮窗和模态窗口生效。非自由窗口状态下，仅对系统窗口、应用子窗口、全局悬浮窗和模态窗口生效，应用主窗口调用该接口返回801或1300004错误码。
 
 仅在[onTouch](./arkui-ts/ts-universal-events-touch.md#touchevent对象说明)事件（其中，事件类型必须为TouchType.Down）的回调方法中调用此接口才会有移动效果，成功调用此接口后，窗口将跟随鼠标或触摸点移动。
 
@@ -9235,8 +9372,6 @@ startMoving(): Promise&lt;void&gt;
 **系统能力：** SystemCapability.Window.SessionManager
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
-
-**设备行为差异：** 该接口在Phone设备、2in1设备和Tablet设备上可正常调用，在其他设备中返回801错误码。
 
 **返回值：**
 
@@ -9468,7 +9603,7 @@ setGestureBackEnabled(enabled: boolean): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在其他设备上可正常调用。
+**设备行为差异：** 该接口在2in1、其他设备的电脑模式中调用会返回801错误码，在其他设备和其他模式中可正常调用。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -9542,7 +9677,7 @@ isGestureBackEnabled(): boolean
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备上调用会返回801错误码，在其他设备上可正常调用。
+**设备行为差异：** 该接口在2in1、其他设备的电脑模式中调用会返回801错误码，在其他设备和其他模式中可正常调用。
 
 **原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
 
@@ -10177,21 +10312,25 @@ export default class EntryAbility extends UIAbility {
 
 setRelativePositionToParentWindowEnabled(enabled: boolean, anchor?: WindowAnchor, offsetX?: number, offsetY?: number): Promise&lt;void&gt;
 
-该接口仅在[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态下生效，用于设置一级子窗是否支持与主窗保持相对位置不变。使用Promise异步回调。
+用于设置一级子窗是否支持与主窗保持相对位置不变。使用Promise异步回调。
 
 该相对位置通过一级子窗与主窗之间锚点的偏移量表示，子窗和主窗使用的窗口锚点相同。
 
-1、只支持非最大化一级子窗使用该接口。
+1. 只支持一级子窗调用该接口，子窗需处于自由悬浮窗口模式（即窗口模式为window.WindowStatusType.FLOATING）。
 
-2、当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，除非传入false再次调用该接口，否则效果将持续。
+2. 当子窗调用该接口后，立即使其显示位置跟随主窗并保持相对位置不变，除非传入false再次调用该接口，否则效果将持续。
 
-3、当子窗调用该接口后，再调用[moveWindowTo()](#movewindowto9)、[maximize()](#maximize12)修改窗口位置或大小的接口将不生效。
+3. 当子窗调用该接口后，再调用[moveWindowTo()](#movewindowto9)、[maximize()](#maximize12)修改窗口位置或大小的接口将不生效。
 
 该接口调用生效后，[setFollowParentWindowLayoutEnabled()](#setfollowparentwindowlayoutenabled17)接口调用不生效。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-**设备行为差异：** 该接口在2in1设备、Tablet设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异：**
+
+在<!--RP1-->OpenHarmony 6.1<!--RP1End-->之前，该接口在支持并处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备（Phone设备除外，在Phone设备上调用该接口会返回801错误码）上可正常调用；在支持并不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态的设备上调用不报错不生效；在不支持自由窗口的设备中返回801错误码。
+
+从<!--RP1-->OpenHarmony 6.1<!--RP1End-->开始，该接口在Phone、Tablet、2in1设备上可调用且不报错（当设备处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时可正常调用此接口并生效；当设备不处于[自由窗口](../../windowmanager/window-terminology.md#自由窗口)状态时调用此接口不生效不报错，设备切换到自由窗口状态时生效）；在其他设备中调用返回801错误码。
 
 **参数：**
 
@@ -10444,7 +10583,7 @@ setSubWindowZLevel(zLevel: number): Promise&lt;void&gt;
 | 801     | Capability not supported. Function setSubWindowZLevel can not work correctly due to limited device capabilities. |
 | 1300002 | This window state is abnormal. Possible cause: The window is not created or destroyed. |
 | 1300003 | This window manager service works abnormally. |
-| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only sub windows are supported. |
+| 1300004 | Unauthorized operation. Possible cause: Invalid window type. Only non-modal subwindows are supported. |
 | 1300009 | The parent window is invalid.                 |
 
 **示例：**
@@ -11325,8 +11464,8 @@ getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7), callb
 
 | 参数名   | 类型                                            | 必填 | 说明                                                         |
 | -------- |-----------------------------------------------| ---- | ------------------------------------------------------------ |
-| type     | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)              | 是   | 表示规避区类型。|
-| callback | AsyncCallback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 是   | 回调函数。返回窗口内容规避区域。                             |
+| type     | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)              | 是   | 表示避让区类型。|
+| callback | AsyncCallback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 是   | 回调函数。返回窗口内容避让区域。                             |
 
 **示例：**
 
@@ -11369,13 +11508,13 @@ getAvoidArea(type: [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7)): Prom
 
 | 参数名 | 类型                               | 必填 | 说明                                                         |
 | ------ |----------------------------------| ---- | ------------------------------------------------------------ |
-| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是   | 表示规避区类型。 |
+| type   | [AvoidAreaType](arkts-apis-window-e.md#avoidareatype7) | 是   | 表示避让区类型。 |
 
 **返回值：**
 
 | 类型                                      | 说明                                |
 |-----------------------------------------| ----------------------------------- |
-| Promise&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Promise对象。返回窗口内容规避区域。 |
+| Promise&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | Promise对象。返回窗口内容避让区域。 |
 
 **示例：**
 
@@ -11871,7 +12010,11 @@ export default class EntryAbility extends UIAbility {
 
 loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-为当前窗口加载具体页面内容，使用callback异步回调。建议在UIAbility启动过程中使用该接口，多次调用该接口会先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+为当前窗口加载具体页面内容，使用callback异步回调。
+
+建议在UIAbility启动过程中使用该接口，多次调用该接口会先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 > **说明：**
 >
@@ -11883,7 +12026,7 @@ loadContent(path: string, callback: AsyncCallback&lt;void&gt;): void
 
 | 参数名   | 类型                      | 必填 | 说明                 |
 | -------- | ------------------------- | ---- | -------------------- |
-| path     | string                    | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path     | string                    | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。 |
 | callback | AsyncCallback&lt;void&gt; | 是   | 回调函数。           |
 
 **示例：**
@@ -11905,7 +12048,11 @@ windowClass.loadContent('pages/page2/page3', (err: BusinessError) => {
 
 loadContent(path: string): Promise&lt;void&gt;
 
-为当前窗口加载具体页面内容，使用Promise异步回调。建议在UIAbility启动过程中使用该接口，多次调用该接口会先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。当前UI的执行上下文可能不明确，所以不建议在回调函数中做UI相关的操作。
+为当前窗口加载具体页面内容，使用Promise异步回调。
+
+建议在UIAbility启动过程中使用该接口，多次调用该接口会先销毁旧的页面内容（即UIContent）再加载新的页面内容，请谨慎使用。
+
+当前UI的执行上下文可能不明确，所以不建议在本接口的回调函数中做UI相关的操作。
 
 > **说明：**
 >
@@ -11917,7 +12064,7 @@ loadContent(path: string): Promise&lt;void&gt;
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| path   | string | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。 |
+| path   | string | 是   | 要加载到窗口中的页面内容的路径，Stage模型下该路径需添加到工程的main_pages.json文件中，FA模型下该路径需添加到工程的config.json文件中。不支持相对路径写法，需与main_pages.json或config.json中的src取值保持一致。|
 
 **返回值：**
 
@@ -12006,7 +12153,7 @@ promise.then((data) => {
 
 on(type: 'systemAvoidAreaChange', callback: Callback&lt;AvoidArea&gt;): void
 
-开启当前窗口系统规避区变化的监听。
+开启当前窗口系统避让区变化的监听。
 
 > **说明：**
 >
@@ -12018,8 +12165,8 @@ on(type: 'systemAvoidAreaChange', callback: Callback&lt;AvoidArea&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'systemAvoidAreaChange'，即系统规避区变化事件。 |
-| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 是   | 回调函数。返回当前规避区。                             |
+| type     | string                                   | 是   | 监听事件，固定为'systemAvoidAreaChange'，即系统避让区变化事件。 |
+| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 是   | 回调函数。返回当前避让区。                             |
 
 
 **示例：**
@@ -12034,7 +12181,7 @@ windowClass.on('systemAvoidAreaChange', (data) => {
 
 off(type: 'systemAvoidAreaChange', callback?: Callback&lt;AvoidArea&gt;): void
 
-关闭当前窗口系统规避区变化的监听。
+关闭当前窗口系统避让区变化的监听。
 
 > **说明：**
 >
@@ -12046,8 +12193,8 @@ off(type: 'systemAvoidAreaChange', callback?: Callback&lt;AvoidArea&gt;): void
 
 | 参数名   | 类型                                       | 必填 | 说明                                                    |
 | -------- |------------------------------------------| ---- | ------------------------------------------------------- |
-| type     | string                                   | 是   | 监听事件，固定为'systemAvoidAreaChange'，即系统规避区变化事件。 |
-| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 否   | 回调函数。返回当前规避区。若传入参数，则关闭该监听。若未传入参数，则关闭所有系统规避区变化的监听。           |
+| type     | string                                   | 是   | 监听事件，固定为'systemAvoidAreaChange'，即系统避让区变化事件。 |
+| callback | Callback&lt;[AvoidArea](arkts-apis-window-i.md#avoidarea7)&gt; | 否   | 回调函数。返回当前避让区。若传入参数，则关闭该监听。若未传入参数，则关闭所有系统避让区变化的监听。           |
 
 **示例：**
 

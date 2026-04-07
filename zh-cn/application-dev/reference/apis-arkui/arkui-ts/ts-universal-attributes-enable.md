@@ -1,7 +1,7 @@
 # 禁用控制
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -47,7 +47,6 @@ enabled(value: boolean): T
 @Entry
 @Component
 struct EnabledExample {
-
   build() {
     Flex({ justifyContent: FlexAlign.SpaceAround }) {
       // 点击时无响应

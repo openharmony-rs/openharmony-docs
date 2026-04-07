@@ -18,6 +18,7 @@
     - [查找设备](bluetooth/ble-development-guide.md)
     - [连接和传输数据](bluetooth/gatt-development-guide.md)
 - NFC<!--nfc-->
+  - [NFC服务开发概述](nfc/nfc-overview.md)
   - [NFC标签读写开发指南](nfc/nfc-tag-access-guide.md)
   - [HCE卡模拟开发指南](nfc/nfc-hce-guide.md)
   - [安全单元访问开发指南](nfc/nfc-se-access-guide.md)
@@ -26,4 +27,7 @@
   - [P2P模式开发指南](wlan/p2p-development-guide.md)
   - [STA模式开发指南](wlan/sta-development-guide.md)
   - [Wi-Fi扫描开发指南](wlan/scan-development-guide.md)
+- 融合短距<!--fusion-connectivity-->
+  - [融合短距服务开发概述](fusion-connectivity/fusion-connectivity-overview.md)
+  - [外设与OpenHarmony设备互通的开发指南](fusion-connectivity/partneragent-life-application-guide.md)
 - [Connectivity Kit术语](terminology.md)

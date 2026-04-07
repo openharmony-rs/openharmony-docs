@@ -23,7 +23,7 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
 
 - 生命周期管理：组件生命周期状态变化，通知Web页面的加载状态变化等。
 
-- 常用属性与事件：User-Agent管理、Cookie与存储管理、字体与深色模式管理、权限管理等。
+- 常用属性与事件：[User-Agent开发指导](./web-default-userAgent.md)、[管理Cookie及数据存储](./web-cookie-and-data-storage-mgmt.md)、字体与[Web深色模式适配](./web-set-dark-mode.md)、权限管理等。
 
 - 与应用界面交互：自定义文本选择菜单、上下文菜单、文件上传界面等与应用界面交互能力。
 
@@ -59,7 +59,9 @@ Web组件为开发者提供了丰富的控制Web页面能力。包括：
   | OpenHarmony 4.1-5.1 | M114 |
   | OpenHarmony 6.0 | M132（默认，推荐使用）<br>M114（可选，若应用需切换为此内核，请参考[M114内核在OpenHarmony6.0系统上的适配指导](https://gitcode.com/openharmony-tpc/chromium_src/blob/132_trunk/web/ReleaseNote/CompatibleWithLegacyWebEngine.md)） |
   | OpenHarmony开发套件（基于API 23） | M132 |
+<!--RP3--><!--RP3End-->
 
+<!--RP4--><!--RP4End-->
 ## 相关实例
 
 针对Web组件开发，有以下相关实例可供参考：

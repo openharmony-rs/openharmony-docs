@@ -947,7 +947,7 @@ getUIExtensionHostWindowProxy(): uiExtensionHost.UIExtensionHostWindowProxy
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [uiExtensionHost.UIExtensionHostWindowProxy](../apis-arkui/js-apis-uiExtensionHost-sys.md) | 宿主应用窗口信息。 |
+| [uiExtensionHost.UIExtensionHostWindowProxy](../apis-arkui/js-apis-uiExtensionHost-sys.md#uiextensionhostwindowproxy) | 宿主应用窗口信息。 |
 
 **错误码：**
 

@@ -10,7 +10,9 @@ The **PatternLock** component allows users to use a pattern password for authent
 
 >  **NOTE**
 >
-> This component is supported since API version 9. Updates will be marked with a superscript to indicate their earliest API version.
+> - This component is supported since API version 9. Updates will be marked with a superscript to indicate their earliest API version.
+> 
+> - If you require additional features, use [custom components](../../../ui/state-management/arkts-create-custom-components.md). For example, the custom component<!--RP1--> [CustomPatternLock](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/UI/CustomPatternLock)<!--RP1End--> implements the pattern lock function using the [Canvas](ts-components-canvas-canvas.md) component. You can extend its functionality as required.
 
 ## Child Components
 
@@ -44,7 +46,7 @@ Sets the width and height (same value) of the component. If this attribute is se
 
 > **NOTE**
 > 
-> When the **PatternLock** component has the universal attribute [aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio) set and the ratio is not equal to 1 (the component is constrained to a rectangule), the nine‑grid pattern is still drawn as a square, which exceeds the component's bounds.
+> When the **PatternLock** component has the universal attribute [aspectRatio](ts-universal-attributes-layout-constraints.md#aspectratio) set and the ratio is not equal to 1 (the component is constrained to a rectangle), the nine‑grid pattern is still drawn as a square, which exceeds the component's bounds.
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -217,7 +219,7 @@ Sets whether unselected dots in the grid are automatically skipped when the pass
 
 | Name| Type   | Mandatory| Description                                                        |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| skipped  | boolean | Yes  | Whether to unselected dots in the grid are automatically skipped when the password path passes over them.<br>**true** to skip the unselected dots when the password path passes over them; **false** otherwise. Default value: **false**|
+| skipped  | boolean | Yes  | Whether unselected dots in the grid are automatically skipped when the password path passes over them.<br>**true** to skip the unselected dots when the password path passes over them; **false** otherwise. Default value: **false**|
 
 ## Events
 
@@ -237,7 +239,7 @@ Invoked when the pattern password input is complete.
 
 | Name| Type           | Mandatory| Description                                                        |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| input  | Array\<number\> | Yes  | Array of digits representing the indices of the selected grid dots, in the order they were connected. The dot indices are assigned row-wise from top to bottom: The first row contains indices 0, 1, 2 (left to right); the second row 3, 4, 5; and the third row 6, 7, 8.|
+| input  | Array\<number\> | Yes  | Array of digits representing the indices of the selected grid dots, in the order they were connected. Grid dots are indexed row-wise from top to bottom, left to right: The first row contains indices 0, 1, 2; the second row 3, 4, 5; and the third row 6, 7, 8.|
 
 ### onDotConnect<sup>11+</sup>
 
@@ -245,7 +247,7 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 
 Invoked when a grid dot is connected during pattern password input.
 
-The callback parameter is an array of digits, where each digit represents the index of a selected grid dot, listed in the order they were connected. Grid dots are indexed row-wise from top to bottom: The first row contains indices 0, 1, 2 (left to right); the second row 3, 4, 5; and the third row 6, 7, 8.
+The callback parameter is an array of digits, where each digit represents the index of a selected grid dot, listed in the order they were connected. Grid dots are indexed row-wise from top to bottom, left to right: The first row contains indices 0, 1, 2; the second row 3, 4, 5; and the third row 6, 7, 8.
 
 >**NOTE**
 >

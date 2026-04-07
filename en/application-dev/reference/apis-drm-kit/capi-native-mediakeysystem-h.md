@@ -9,9 +9,7 @@
 
 ## Overview
 
-The file declares the MediaKeySystem APIs for DRM operations.
-
-The APIs can be used to check the support for a DRM solution, create a media key session, obtain and set configurations, obtain DRM metrics, obtain the content protection level, generate media key system requests, process responses to media key system requests, listen for events, and manage offline media keys.
+The file declares the MediaKeySystem APIs for DRM operations.  <br>The APIs can be used to check the support for a DRM solution, create a media key session, obtain and set configurations, obtain DRM metrics, obtain the content protection level, generate media key system requests, process responses to media key system requests, listen for events, and manage offline media keys.
 
 **File to include**: <multimedia/drm_framework/native_mediakeysystem.h>
 
@@ -32,7 +30,7 @@ The APIs can be used to check the support for a DRM solution, create a media key
 | [typedef  Drm_ErrCode (\*MediaKeySystem_Callback)(DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#mediakeysystem_callback) | MediaKeySystem_Callback | Defines the callbacks for media key system events. It does not provide a MediaKeySystem instance, making it suitable for single-system scenarios.|
 | [typedef Drm_ErrCode (\*OH_MediaKeySystem_Callback)(MediaKeySystem *mediaKeySystem, DRM_EventType eventType, uint8_t *info, int32_t infoLen, char *extra)](#oh_mediakeysystem_callback) | OH_MediaKeySystem_Callback | Defines the callbacks for media key system events. It provides a MediaKeySystem instance, making it suitable for multi-system scenarios.|
 | [Drm_ErrCode OH_MediaKeySystem_SetCallback(MediaKeySystem *mediaKeySystem, OH_MediaKeySystem_Callback callback)](#oh_mediakeysystem_setcallback) | - | Sets a media key system event callback.|
-| [Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *infos, uint32_t *count)](#oh_mediakeysystem_getmediakeysystems) | - | Obtains the name and ID list of DRM solutions supported by the device.|
+| [Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *descs, uint32_t *count)](#oh_mediakeysystem_getmediakeysystems) | - | Obtains the name and ID list of DRM solutions supported by the device.|
 | [bool OH_MediaKeySystem_IsSupported(const char *name)](#oh_mediakeysystem_issupported) | - | Checks whether the device supports the specified DRM solution.|
 | [bool OH_MediaKeySystem_IsSupported2(const char *name, const char *mimeType)](#oh_mediakeysystem_issupported2) | - | Checks whether the device supports the combination of the DRM solution and MIME type.|
 | [bool OH_MediaKeySystem_IsSupported3(const char *name, const char *mimeType, DRM_ContentProtectionLevel contentProtectionLevel)](#oh_mediakeysystem_issupported3) | - | Checks whether the device supports the combination of the DRM solution, MIME type, and content protection level.|
@@ -141,7 +139,7 @@ Sets a media key system event callback.
 ### OH_MediaKeySystem_GetMediaKeySystems()
 
 ```c
-Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *infos, uint32_t *count)
+Drm_ErrCode OH_MediaKeySystem_GetMediaKeySystems(DRM_MediaKeySystemDescription *descs, uint32_t *count)
 ```
 
 **Description**
@@ -155,14 +153,14 @@ Obtains the name and ID list of DRM solutions supported by the device.
 
 | Name| Description|
 | -- | -- |
-| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) *infos | Pointer to the list of the names and UUIDs of DRM solutions.|
+| [DRM_MediaKeySystemDescription](capi-drm-drm-mediakeysystemdescription.md) *descs | Pointer to the list of the names and UUIDs of DRM solutions.|
 | uint32_t *count | Pointer to the number of DRM solutions in the list.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: Possible causes:<br>                            1. The input parameter **infos** or **count** is nullptr.<br>                            2. The input parameter **infos** has insufficient length.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
+| [Drm_ErrCode](capi-native-drm-err-h.md#drm_errcode) | **DRM_ERR_OK**: The operation is successful.<br>**DRM_ERR_INVALID_VAL**: Possible causes:<br>                            1. The input parameter **descs** or **count** is a null pointer.<br>                            2. The length of the input parameter **descs** is insufficient.<br>**DRM_ERR_UNKNOWN**: An internal error occurs. Check the log details.|
 
 ### OH_MediaKeySystem_IsSupported()
 

@@ -4,7 +4,7 @@
 <!--Owner: @zju-wyx-->
 <!--Designer: @xiao-peiyang; @liyancheng-->
 <!--Tester: @kirl75; @zsw_zhushiwei-->
-<!--Adviser: @foryourself-->
+<!--Adviser: @jinqiuheng-->
 
 ## Overview
 
@@ -25,13 +25,16 @@
 Below provides an example configuration of the **types** Field in **arkOptions**.
 
 Add the **types** field to the **arkOptions** property in the **buildOption** section of the module-level **build-profile.json5** file.
-```json
+
+<!-- @[add_types](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/build-profile.json5) --> 
+
+``` JSON5
 // In /entry/build-profile.json5
-{
-  "arkOptions": {
-    "types": ["chai", "./oh_modules/@types/mocha", "./src/main/ets/pages/global"]
-  }
-}
+"arkOptions": {
+  "types": [
+    "../node_modules/@types/chai/index", "../node_modules/@types/mocha/index", "./src/main/ets/pages/global"
+  ]
+},
 ```
 
 The **types** field can be set to a package name, relative path to a package, or relative path to a declaration file. It supports searches only within the current module. If there are files with the same name but different extensions in a directory, the default loading order is .d.ets > .d.ts.<br>
@@ -50,14 +53,18 @@ If you specify a package name or a relative path to a package in the **types** f
 ```
 
 If you specify a relative path to a declaration file in the **types** field, ensure the corresponding declaration file exists in the module. Below is the content of a declaration file named **global.d.ts** in **src/main/ets/pages**:
-```typescript
+<!-- @[declare_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/global.d.ts) --> 
+
+``` TypeScript
 declare namespace Global {
   type ObjectType = string | number;
 }
 ```
 
 After configuring types, you can use these global types in your code:
-```typescript
+<!-- @[call_global](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/entry/src/main/ets/pages/Index.ets) --> 
+
+``` TypeScript
 // In entry/src/main/ets/pages/Index.ets
 let a: Chai.Message;
 let b: Mocha.HookFunction;
@@ -79,13 +86,13 @@ let c: Global.ObjectType;
 Below provides an example configuration of the **maxFlowDepth** field in **arkOptions/tscConfig**.
 Add the **maxFlowDepth** field to the **arkOptions/tscConfig** property in the **buildOption** section of the project-level **build-profile.json5** file.
 
-```typescript
+<!-- @[add_tscConfig](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/ArkTSCompilationToolchain/ArkoptionsGuide/build-profile.json5) --> 
+
+``` JSON5
 // In projectName/build-profile.json5
-{
-  "arkOptions": {
-    "tscConfig": {
-      "maxFlowDepth": 2222
-    }
+"arkOptions": {
+  "tscConfig": {
+    "maxFlowDepth": 2222
   }
 }
 ```
@@ -101,7 +108,7 @@ Add the **maxFlowDepth** field to the **arkOptions/tscConfig** property in the *
       {
          instancePath: 'app.products[0].buildOption.arkOptions.tscConfig.maxFlowDepth',
          keyword: 'maximum',
-         params: { comparision: '<=', limit: 65535 },
+         params: { comparison: '<=', limit: 65535 },
          message: 'must be <= 65535',
          location: 'D:/projectName/build-profile.json5:rowNo:columnNo'
       }

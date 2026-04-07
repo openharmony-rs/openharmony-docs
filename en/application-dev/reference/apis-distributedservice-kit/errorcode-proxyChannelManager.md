@@ -118,7 +118,7 @@ This error code is reported if an API call is restricted.
 
 **Possible Causes**
 
-The callers is not authorized to perform the operation.
+The caller is not authorized to perform the operation.
 
 **Solution**
 

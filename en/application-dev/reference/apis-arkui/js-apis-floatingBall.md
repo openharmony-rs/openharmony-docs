@@ -463,7 +463,7 @@ floatingBallController.getFloatingBallWindowInfo().then((data: floatingBall.Floa
 
 restoreMainWindow(want: Want): Promise&lt;void&gt;
 
-Restores the main window of the application and loads the specified page. This API can be called only after the floating ball is tapped. This API uses a promise to return the result.
+Restores the main window of the application and loads the specified page. This API uses a promise to return the result. This API can be called only after the floating ball is tapped. If the application has the **ohos.permission.AUTO_RESTORE_MAIN_WINDOW** permission, this API can be called directly without tapping the floating ball.
 
 **Required permissions**: ohos.permission.USE_FLOAT_BALL
 
@@ -495,7 +495,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 1300023 | Floating ball internal error. |
 | 1300024 | The floating ball window state is abnormal. |
 | 1300025 | The floating ball state does not support this operation. |
-| 1300026 | Failed to restore the main window. |
+| 1300026 | Failed to restore the main window. Possiable causes: <br>1. Invalid parameter. The provided bundleName does not match the caller's application bundleName.<br>2. The application lacks the ohos.permission.AUTO_RESTORE_MAIN_WINDOW permission, and no user interaction (click) on the floating ball has occurred. |
 
 **Example**
 
@@ -516,6 +516,53 @@ try {
 } catch(e) {
   console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
 }
+```
+
+### setFloatingBallVisibilityInApp<sup>24+</sup>
+
+setFloatingBallVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
+
+Sets whether the floating ball is visible in the application. This API uses a promise to return the result.
+- When the application is on the recent tasks screen (the [lifecycle state](../../windowmanager/window-overview.md#lifecycle-states) is **PAUSED**), the floating ball is invisible.
+- By default (when this API is not called) or when this API is called with the value **true** passed in, the floating ball is visible except on the recent tasks screen.
+- When this API is called with the value **false** passed in, the floating ball is invisible when the application is in the foreground (the [lifecycle state](../../windowmanager/window-overview.md#lifecycle-states) is **SHOWN** or **RESUMED**) and is visible when the application is in the background (the [lifecycle state](../../windowmanager/window-overview.md#lifecycle-states) is **HIDDEN**).
+
+**System capability**: SystemCapability.Window.SessionManager
+
+**Model constraint**: This API can be used only in the stage model.
+
+**Parameters**
+
+| Name| Type| Mandatory| Description|
+|------------|------------|------------|------------|
+| isVisible | boolean | Yes| **true** indicates that the floating ball is visible in the application, and **false** indicates the opposite.|
+
+**Return value**
+
+| Type| Description|
+|------------|------------|
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Window Error Codes](errorcode-window.md).
+
+| ID| Error Message|
+|------------|------------|
+| 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error. |
+| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
+| 1300024 | The floating ball window state is abnormal. Possible causes: The floating ball window has not been created or has been destroyed. |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+floatingBallController?.setFloatingBallVisibilityInApp(false).then(() => {
+  console.info('Succeeded in setting floating ball visibility.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set floating ball visibility. Cause code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## FloatingBallParams

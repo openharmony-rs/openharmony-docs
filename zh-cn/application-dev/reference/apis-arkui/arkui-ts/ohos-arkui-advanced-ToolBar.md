@@ -31,7 +31,7 @@ import { SymbolGlyphModifier, DividerModifier, ToolBar, ToolBarOptions, ToolBarM
 
 ## ToolBar
 
-Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsController, dividerModifier?: DividerModifier, toolBarModifier?: ToolBarModifier})
+ToolBar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsController, dividerModifier?: DividerModifier, toolBarModifier?: ToolBarModifier})
 
 工具栏组件，用于展示针对当前界面内容的操作选项，在界面底部显示。底部最多显示5个入口，超过则收纳入“更多”子项中，在最右侧显示。
 
@@ -45,7 +45,7 @@ Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsCo
 | ----------------------------- | ------------------------------------------------------------ | ---- | ----------- |----------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | toolBarList                   | [ToolBarOptions](#toolbaroptions)                            | 是   | @ObjectLink | 工具栏列表。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                                     |
 | activateIndex                 | number                                                       | 否   | @Prop       | 激活态的子项。<br/>取值范围：大于等于-1。<br/>默认值：-1，没有激活态的子项。若设置数值小于-1，按没有激活项处理。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                           |
-| controller                    | [TabsController](ts-container-tabs.md#tabscontroller)        | 是   | -           | 工具栏控制器，不支持控制工具栏子项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                                                                                         |
+| controller                    | [TabsController](ts-container-tabs.md#tabscontroller)        | 是   | -           | 工具栏控制器，不支持控制工具栏子项。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。                            |
 | dividerModifier<sup>13+</sup> | [DividerModifier](ts-universal-attributes-attribute-modifier.md#自定义modifier) | 否   | @Prop       | 工具栏头部分割线属性，可设置分割线高度、颜色等。<br/>默认值：系统默认值。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。                                                                    |
 | toolBarModifier<sup>13+</sup> | [ToolBarModifier](#toolbarmodifier13)                        | 否   | @Prop       | 工具栏属性，可设置工具栏高度、背景色、内边距（仅在工具栏子项数量小于5时生效）、是否显示按压态。<br/>默认值：<br/>工具栏高度：56vp<br/>背景色：ohos_id_toolbar_bg<br/>内边距：24vp<br/>显示按压态。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。 |
 
@@ -62,8 +62,6 @@ Toolbar({toolBarList: ToolBarOptions, activateIndex?: number, controller: TabsCo
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
 
 ## ToolBarOption
-
-ToolBarOption({content?: ResourceStr, action?: () => void, icon?: Resource, state?: ItemState, iconColor?: ResourceColor, activatedIconColor?: ResourceColor, textColor?: ResourceColor, activatedTextColor?: ResourceColor, toolBarSymbolOptions?: ToolBarSymbolGlyphOptions, accessibilityText?: ResourceStr, accessibilityDescription?: ResourceStr, accessibilityLevel?: string})
 
 定义工具栏的列表内容和属性。
 
@@ -207,8 +205,6 @@ stateEffect(stateEffect: boolean): ToolBarModifier
 | ACTIVATE | 3 | 工具栏子项为激活状态，可点击。 |
 
 ## ToolBarSymbolGlyphOptions<sup>13+</sup>
-
-ToolBarSymbolGlyphOptions({normal?: SymbolGlyphModifier, activated?: SymbolGlyphModifier})
 
 ToolBarSymbolGlyphOptions定义图标的属性。
 

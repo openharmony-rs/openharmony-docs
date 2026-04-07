@@ -491,7 +491,7 @@ Detects the edge of the component content and adds an edge highlight effect.
 **Parameters**
 | Name        | Type                 | Mandatory| Description                      |
 | ------------- | --------------------- | ---- | ------------------------- |
-| alpha  | number         | Yes  | Specifies the highlight alpha value of the edge. A larger value indicates more obvious edges. The value range is [0,1]. The value **0** disables the edge highlight effect. Negative values default to **0**, while values above **1** cap at **1**.|
+| alpha  | number         | Yes  | Specifies the highlight alpha value of the edge. A larger value indicates more obvious edges. The value range is [0, 1]. The value **0** disables the edge highlight effect. Negative values default to **0**, while values above **1** cap at **1**.|
 | color  | [Color](#color20) | No  | Highlight color of the edge. If this parameter is not set, the original color of the component content is used by default. If there is a value, the specified color is used. If this parameter is set to a value other than NULL, the alpha value in **Color** does not take effect, and only the RGB value takes effect.|
 | mask  | [Mask](#mask20) | No  | Specifies the highlight strength of the edge. If this parameter is not set, the edge highlight effect is applied to all component content by default.|
 | bloom  | boolean | No  | Specifies whether the edge glows. **true** (default): both the edge highlight and glow effects are applied; **false**: only the edge highlight effect is applied. If the image size is less than 16 x 16, the edge highlight effect is applied by default, and the glow effect is not applied. In this case, this parameter does not take effect.|

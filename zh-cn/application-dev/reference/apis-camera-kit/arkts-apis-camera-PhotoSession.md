@@ -6,9 +6,9 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-PhotoSession 继承自 [Session](arkts-apis-camera-Session.md)、[Flash](arkts-apis-camera-Flash.md)、[AutoExposure](arkts-apis-camera-AutoExposure.md)、[WhiteBalance](arkts-apis-camera-WhiteBalance.md)、[Focus](arkts-apis-camera-Focus.md)、[Zoom](arkts-apis-camera-Zoom.md)、[ColorManagement](arkts-apis-camera-ColorManagement.md)、[AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md)、[Macro](arkts-apis-camera-Macro.md)。
+PhotoSession继承自[Session](arkts-apis-camera-Session.md)、[Flash](arkts-apis-camera-Flash.md)、[AutoExposure](arkts-apis-camera-AutoExposure.md)、[WhiteBalance](arkts-apis-camera-WhiteBalance.md)、[Focus](arkts-apis-camera-Focus.md)、[Zoom](arkts-apis-camera-Zoom.md)、[ColorManagement](arkts-apis-camera-ColorManagement.md)、[AutoDeviceSwitch](arkts-apis-camera-AutoDeviceSwitch.md)、[Macro](arkts-apis-camera-Macro.md)、[ManualExposure](arkts-apis-camera-ManualExposure.md)、[ManualFocus](arkts-apis-camera-ManualFocus.md)、[ManualIso](arkts-apis-camera-ManualIso.md)、[OIS](arkts-apis-camera-OIS.md)、[Aperture](arkts-apis-camera-Aperture.md)。
 
-普通拍照模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦、色彩空间及微距的操作。
+普通拍照模式会话类，提供了对闪光灯、曝光、白平衡、对焦、变焦、色彩空间、微距、手动曝光、手动对焦、手动ISO、光学防抖及光圈的操作。
 
 默认的拍照模式，用于拍摄标准照片。支持多种照片格式和分辨率，适合大多数日常拍摄场景。
 
@@ -44,7 +44,7 @@ canPreconfig(preconfigType: PreconfigType, preconfigRatio?: PreconfigRatio): boo
 
 | 类型      | 说明                                      |
 |---------|-----------------------------------------|
-| boolean | true: 支持指定预配值类型。<br/>false: 不支持指定预配值类型。 |
+| boolean | 是否支持指定预配置类型。true表示支持，false表示不支持。 |
 
 **错误码：**
 
@@ -479,12 +479,66 @@ off(type: 'macroStatusChanged', callback?: AsyncCallback\<boolean\>): void
 | 参数名     | 类型                    | 必填 | 说明                                                                     |
 | -------- | ------------------------ | ---- |------------------------------------------------------------------------|
 | type     | string                   | 是   | 注销监听事件，固定为'macroStatusChanged'，session创建成功可触发此事件。|
-| callback | AsyncCallback\<boolean\> | 否   | 回调函数，可选，如果指定参数则取消对应callback (callback对象不可是匿名函数)，否则参数默认为空，取消所有callback。 |
+| callback | AsyncCallback\<boolean\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则参数默认为空，取消所有callback。 |
 
 **示例：**
 
 ```ts
 function unregisterMacroStatusChanged(photoSession: camera.PhotoSession): void {
   photoSession.off('macroStatusChanged');
+}
+```
+
+## onIsoInfoChange<sup>24+</sup>
+
+onIsoInfoChange(callback: Callback\<IsoInfo\>): void
+
+订阅ISO信息变化事件回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型            | 必填 | 说明       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\> | 是   | 回调函数，用于获取ISO信息变化信息。 |
+
+**示例：**
+
+```ts
+function onIsoInfoChange(photoSession: camera.PhotoSession): void {
+  photoSession.onIsoInfoChange((isoInfo: camera.IsoInfo) => {
+    console.info(`ISO info changed, iso: ${isoInfo.iso}`);
+  });
+}
+```
+
+## offIsoInfoChange<sup>24+</sup>
+
+offIsoInfoChange(callback?: Callback\<IsoInfo\>): void
+
+取消订阅ISO信息变化事件回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名     | 类型            | 必填 | 说明       |
+| -------- | -----------------| ---- | --------- |
+| callback | Callback\<[IsoInfo](arkts-apis-camera-i.md#isoinfo22)\> | 否   | 回调函数，如果指定参数则取消对应callback（callback对象不可是匿名函数），否则取消所有callback。 |
+
+**示例：**
+
+```ts
+function offIsoInfoChange(photoSession: camera.PhotoSession): void {
+  photoSession.offIsoInfoChange();
 }
 ```

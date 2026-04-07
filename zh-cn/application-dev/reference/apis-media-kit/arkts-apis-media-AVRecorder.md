@@ -54,7 +54,7 @@ prepare(config: AVRecorderConfig, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -132,7 +132,7 @@ prepare(config: AVRecorderConfig): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -201,7 +201,7 @@ getInputSurface(callback: AsyncCallback\<string>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -248,7 +248,7 @@ getInputSurface(): Promise\<string>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -295,7 +295,7 @@ updateRotation(rotation: number): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -341,7 +341,7 @@ setWillMuteWhenInterrupted(muteWhenInterrupted: boolean): Promise&lt;void&gt;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -379,7 +379,7 @@ start(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -421,7 +421,7 @@ start(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -460,7 +460,7 @@ pause(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -502,7 +502,7 @@ pause(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -541,7 +541,7 @@ resume(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -583,7 +583,7 @@ resume(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -624,7 +624,7 @@ stop(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                |
 | -------- | --------------------------------------- |
@@ -668,7 +668,7 @@ stop(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                               |
 | -------- | -------------------------------------- |
@@ -707,7 +707,7 @@ reset(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -746,7 +746,7 @@ reset(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -784,7 +784,7 @@ release(callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -824,7 +824,7 @@ release(): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -849,7 +849,7 @@ getCurrentAudioCapturerInfo(callback: AsyncCallback\<audio.AudioCapturerChangeIn
 
 获取当前音频采集参数。使用callback异步回调。
 
-在prepare()成功触发后，才能调用此方法。在stop()成功触发后，调用此方法会报错。
+在[prepare()](#prepare9)成功触发后，才能调用此方法。在[stop()](#stop9)成功触发后，调用此方法会报错。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 
@@ -861,7 +861,7 @@ getCurrentAudioCapturerInfo(callback: AsyncCallback\<audio.AudioCapturerChangeIn
 
 **错误码**：
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -893,7 +893,7 @@ getCurrentAudioCapturerInfo(): Promise\<audio.AudioCapturerChangeInfo>
 
 获取当前音频采集参数。使用Promise异步回调。
 
-在prepare()成功触发后，才能调用此方法。在stop()成功触发后，调用此方法会报错。
+在[prepare()](#prepare9)成功触发后，才能调用此方法。在[stop()](#stop9)成功触发后，调用此方法会报错。
 
 **系统能力**：SystemCapability.Multimedia.Media.AVRecorder
 
@@ -905,7 +905,7 @@ getCurrentAudioCapturerInfo(): Promise\<audio.AudioCapturerChangeInfo>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -936,7 +936,7 @@ getAudioCapturerMaxAmplitude(callback: AsyncCallback\<number>): void
 
 获取当前音频最大振幅。使用callback异步回调。
 
-在prepare()成功触发后，才能调用此方法。在stop()成功触发后，调用此方法会报错。
+在[prepare()](#prepare9)成功触发后，才能调用此方法。在[stop()](#stop9)成功触发后，调用此方法会报错。
 
 调用接口时，获取到的返回值是上一次获取最大振幅的时刻到当前这段区间内的音频最大振幅。例如，在1s时获取了一次最大振幅，到2s时再获取到的最大振幅是1-2s这个区间里面的最大值。
 
@@ -950,7 +950,7 @@ getAudioCapturerMaxAmplitude(callback: AsyncCallback\<number>): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -980,7 +980,7 @@ getAudioCapturerMaxAmplitude(): Promise\<number>
 
 获取当前音频最大振幅。使用Promise异步回调。
 
-在prepare()成功触发后，才能调用此方法。在stop()成功触发后，调用此方法会报错。
+在[prepare()](#prepare9)成功触发后，才能调用此方法。在[stop()](#stop9)成功触发后，调用此方法会报错。
 
 调用接口时，获取到的返回值是上一次获取最大振幅的时刻到当前这段区间内的音频最大振幅。例如，在1s时获取了一次最大振幅，到2s时再获取到的最大振幅是1-2s这个区间里面的最大值。
 
@@ -994,7 +994,7 @@ getAudioCapturerMaxAmplitude(): Promise\<number>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -1033,7 +1033,7 @@ getAvailableEncoder(callback: AsyncCallback\<Array\<EncoderInfo>>): void
 
 **错误码**：
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -1077,7 +1077,7 @@ getAvailableEncoder(): Promise\<Array\<EncoderInfo>>
 
 **错误码**：
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                         |
 | -------- | -------------------------------- |
@@ -1122,7 +1122,7 @@ getAVRecorderConfig(callback: AsyncCallback\<AVRecorderConfig>): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -1165,7 +1165,7 @@ getAVRecorderConfig(): Promise\<AVRecorderConfig>;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                  |
 | -------- | ----------------------------------------- |
@@ -1193,7 +1193,7 @@ avRecorder.getAVRecorderConfig().then((config: media.AVRecorderConfig) => {
 
 on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 
-订阅录制状态机AVRecorderState切换的事件，当AVRecorderState状态机发生变化时，会通过订阅的回调方法通知用户。用户只能订阅一个状态机切换事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。使用callback异步回调。
+订阅录制状态机AVRecorderState切换的事件，当AVRecorderState状态机发生变化时，会通过订阅的回调方法通知用户。用户只能订阅一个录制状态机切换事件的回调方法，当用户重复订阅时，以最后一次订阅的回调接口为准。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1203,12 +1203,12 @@ on(type: 'stateChange', callback: OnAVRecorderStateChangeHandler): void
 
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
-| type     | string   | 是   | 状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
-| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 是   | 回调函数，返回状态机切换事件。 |
+| type     | string   | 是   | 录制状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
+| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 是   | 回调函数，返回录制状态机切换事件。 |
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                          |
 | -------- | --------------------------------- |
@@ -1227,7 +1227,7 @@ avRecorder.on('stateChange', async (state: media.AVRecorderState, reason: media.
 
 off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 
-取消订阅播放状态机[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9)切换的事件。使用callback异步回调。
+取消订阅录制状态机[AVRecorderState](arkts-apis-media-t.md#avrecorderstate9)切换的事件。使用callback异步回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1237,8 +1237,8 @@ off(type: 'stateChange', callback?: OnAVRecorderStateChangeHandler): void
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| type   | string | 是   | 状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
-| callback | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 否   | 回调函数，返回状态机切换事件。<br/>从API version 12开始支持此参数。 |
+| type   | string | 是   | 录制状态机切换事件回调类型，支持的事件：'stateChange'，用户操作和系统都会触发此事件。 |
+| callback<sup>12+</sup> | [OnAVRecorderStateChangeHandler](arkts-apis-media-t.md#onavrecorderstatechangehandler12) | 否   | 回调函数，返回录制状态机切换事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。 |
 
 **示例：**
 
@@ -1267,7 +1267,7 @@ on(type: 'error', callback: ErrorCallback): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -1307,7 +1307,7 @@ off(type: 'error', callback?: ErrorCallback): void
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录制错误事件回调类型'error'。 <br>- 'error'：录制过程中发生错误，触发该事件。 |
-| callback | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，返回录制错误事件。<br/>从API version 12开始支持此参数。                   |
+| callback<sup>12+</sup> | [ErrorCallback](../apis-basic-services-kit/js-apis-base.md#errorcallback) | 否   | 回调函数，返回录制错误事件。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。                   |
 
 **示例：**
 
@@ -1366,7 +1366,7 @@ off(type: 'audioCapturerChange', callback?: Callback<audio.AudioCapturerChangeIn
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录音配置变化的回调类型，支持的事件：'audioCapturerChange'。 |
-| callback | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 否 | 回调函数，返回变化后的录音配置全量信息。<br/>从API version 12开始支持此参数。|
+| callback<sup>12+</sup> | Callback<[audio.AudioCapturerChangeInfo](../apis-audio-kit/arkts-apis-audio-i.md#audiocapturerchangeinfo9)> | 否 | 回调函数，返回变化后的录音配置全量信息。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。<br/>从API version 12开始支持此参数。|
 
 **示例：**
 
@@ -1393,7 +1393,7 @@ on(type: 'photoAssetAvailable', callback: Callback\<photoAccessHelper.PhotoAsset
 
 **错误码：**
 
-以下错误码的详细介绍请参见[媒体错误码](errorcode-media.md)。
+以下错误码的详细介绍请参见[Media错误码](errorcode-media.md)。
 
 | 错误码ID | 错误信息                                   |
 | -------- | ------------------------------------------ |
@@ -1446,7 +1446,7 @@ off(type: 'photoAssetAvailable', callback?: Callback<photoAccessHelper.PhotoAsse
 | 参数名 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
 | type   | string | 是   | 录音配置变化的回调类型，支持的事件：'photoAssetAvailable'。 |
-| callback | Callback<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)> | 否 | 回调函数，返回系统创建的资源文件对应的PhotoAsset对象。|
+| callback | Callback<[photoAccessHelper.PhotoAsset](../apis-media-library-kit/arkts-apis-photoAccessHelper-PhotoAsset.md)> | 否 | 回调函数，返回系统创建的资源文件对应的PhotoAsset对象。如果指定参数则取消对应callback（callback对象不能是匿名函数），否则取消所有callback。|
 
 **示例：**
 

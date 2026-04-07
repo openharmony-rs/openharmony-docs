@@ -186,9 +186,9 @@ destroyAbilityConnectionSession(sessionId:&nbsp;number):&nbsp;void
 
 **参数：**
 
-| 参数名       | 类型                                       | 必填   | 说明       |
-| --------- | ---------------------------------------- | ---- | -------- |
-| sessionId | number  | 是    | 待销毁的协同会话ID。   |
+| 参数名       | 类型                                       | 必填   | 说明                              |
+| --------- | ---------------------------------------- | ---- |---------------------------------|
+| sessionId | number  | 是    | 待销毁的协同会话ID。<br />取值范围是大于100的整数。 |
 
 **示例：**
 
@@ -221,7 +221,7 @@ getPeerInfoById(sessionId:&nbsp;number):&nbsp;PeerInfo&nbsp;|&nbsp;undefined
 
 | 类型                  | 说明               |
 | ------------------- | ---------------- |
-| [PeerInfo](https://developer.huawei.com/consumer/cn/doc/harmonyos-references/js-apis-distributed-abilityconnectionmanager#peerinfo) \| undefined | 若存在对应peerInfo，则返回接收端的协作应用信息。若sessionId未找到，则查询失败，返回undefined。|
+| [PeerInfo](#peerinfo) \| undefined | 若存在对应PeerInfo，则返回接收端的协作应用信息。若sessionId未找到，则查询失败，返回undefined。|
 
 **错误码：**
 
@@ -295,7 +295,7 @@ connect(sessionId:&nbsp;number):&nbsp;Promise&lt;ConnectResult&gt;
 
 acceptConnect(sessionId:&nbsp;number,&nbsp;token:&nbsp;string):&nbsp;Promise&lt;void&gt;
 
-设备B上的应用，在创建协同会话成功并获得会话ID后，调用acceptConnect()方法接受连接。
+设备B上的应用，在创建协同会话成功并获得会话ID后，调用acceptConnect()方法接受连接。使用Promise异步回调。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -843,7 +843,7 @@ sendData(sessionId:&nbsp;number,&nbsp;data:&nbsp;ArrayBuffer):&nbsp;Promise&lt;v
   abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
     hilog.info(0x0000, 'testTag', "sendMessage success");
   }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage failed");
+    hilog.error(0x0000, 'testTag', "sendMessage failed");
   })
   ```
 

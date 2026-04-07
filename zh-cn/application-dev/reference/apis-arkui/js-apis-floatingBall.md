@@ -463,7 +463,7 @@ floatingBallController.getFloatingBallWindowInfo().then((data: floatingBall.Floa
 
 restoreMainWindow(want: Want): Promise&lt;void&gt;
 
-恢复应用主窗口并加载指定页面。仅支持在点击闪控球后调用，使用Promise异步回调。
+恢复应用主窗口并加载指定页面。使用Promise异步回调。仅支持在点击闪控球后调用；若应用拥有`ohos.permission.AUTO_RESTORE_MAIN_WINDOW`权限，可以无需点击直接调用该接口。
 
 **需要权限：** ohos.permission.USE_FLOAT_BALL
 
@@ -495,7 +495,7 @@ restoreMainWindow(want: Want): Promise&lt;void&gt;
 | 1300023 | Floating ball internal error. |
 | 1300024 | The floating ball window state is abnormal. |
 | 1300025 | The floating ball state does not support this operation. |
-| 1300026 | Failed to restore the main window. |
+| 1300026 | Failed to restore the main window. Possiable causes: </br>1. Invalid parameter. The provided bundleName does not match the caller's application bundleName.</br>2. The application lacks the ohos.permission.AUTO_RESTORE_MAIN_WINDOW permission, and no user interaction (click) on the floating ball has occurred. |
 
 **示例：**
 
@@ -516,6 +516,53 @@ try {
 } catch(e) {
   console.error(`Failed to create floating ball controller. Cause:${e.code}, message:${e.message}`);
 }
+```
+
+### setFloatingBallVisibilityInApp<sup>24+</sup>
+
+setFloatingBallVisibilityInApp(isVisible: boolean): Promise&lt;void&gt;
+
+设置闪控球在应用内是否可见。使用Promise异步回调。
+- 当应用处于多任务界面时（[生命周期状态](../../windowmanager/window-overview.md#生命周期状态)为PAUSED），闪控球不可见。
+- 默认情况（即未调用此接口设置时）和调用此接口传入true时：除多任务界面外，闪控球均可见。
+- 调用此接口传入false时：当应用处于前台（[生命周期状态](../../windowmanager/window-overview.md#生命周期状态)为SHOWN或者RESUMED）时，闪控球不可见；当应用处于后台（[生命周期状态](../../windowmanager/window-overview.md#生命周期状态)为HIDDEN）时，闪控球可见。
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+|------------|------------|------------|------------|
+| isVisible | boolean | 是 | true表示闪控球在应用内可见；false表示闪控球在应用内不可见。|
+
+**返回值：**
+
+| 类型 | 说明 |
+|------------|------------|
+| Promise&lt;void&gt; | Promise对象，无返回结果。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[窗口错误码](errorcode-window.md)。
+
+| 错误码ID | 错误信息 |
+|------------|------------|
+| 1300003 | This window manager service works abnormally. Possible cause: Internal IPC error. |
+| 1300023 | Floating ball internal error. Possible cause: The floating ball controller is null. |
+| 1300024 | The floating ball window state is abnormal. Possible causes: The floating ball window has not been created or has been destroyed. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+floatingBallController?.setFloatingBallVisibilityInApp(false).then(() => {
+  console.info('Succeeded in setting floating ball visibility.');
+}).catch((err: BusinessError) => {
+  console.error(`Failed to set floating ball visibility. Cause code: ${err.code}, message: ${err.message}`);
+});
 ```
 
 ## FloatingBallParams

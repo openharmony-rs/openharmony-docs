@@ -8,9 +8,11 @@
 
 堆叠容器，子组件按照顺序依次入栈，后一个子组件覆盖前一个子组件。
 
->  **说明：**
+> **说明：**
 >
->  该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 该组件从API version 7开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> 
+> - 通用属性[align](./ts-universal-attributes-location.md#align)在该组件上支持镜像能力。
 
 
 ## 子组件
@@ -23,7 +25,7 @@ Stack(options?: StackOptions)
 
 > **说明：**
 >
-> 过多的嵌套组件数会导致性能劣化。在部分场景中，直接使用组件属性或借助系统API的能力可以替代层叠容器的效果，减少了嵌套组件数进而优化性能。最佳实践请参考[组件嵌套优化-优先使用组件属性代替嵌套组件](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-nesting-optimization#section78181114123811)。
+> 过多的组件嵌套会导致性能劣化。在部分场景中，直接使用组件属性或借助系统API的能力可以替代层叠容器的效果，减少了嵌套组件数进而优化性能。最佳实践请参考[组件嵌套优化-优先使用组件属性代替嵌套组件](https://developer.huawei.com/consumer/cn/doc/best-practices/bpta-component-nesting-optimization#section78181114123811)。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 

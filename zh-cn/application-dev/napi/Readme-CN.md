@@ -11,13 +11,13 @@
   - [NDK工程构建概述](build-with-ndk-overview.md)
   - [使用DevEco Studio模板构建NDK工程](build-with-ndk-ide.md)
   - [使用命令行CMake构建NDK工程](build-with-ndk-cmake.md)
-  - [在NDK工程中使用预构建库](build-with-ndk-prebuilts.md)
+  - [在NDK工程中使用预构建库](build-with-ndk-prebuilts.md)<!--RP1--><!--RP1End-->
 - 代码开发<!--coding-->
   - [代码开发概述](develop-code-overview.md)
   - C/C++标准库<!--c-cpp-->
     - [C/C++标准库机制概述](c-cpp-overview.md)
     - [fdsan使用指导](fdsan.md)
-  - 使用Node-API实现跨语言交互<!--using-napi-interaction-with-cpp-->
+  - 使用Node-API实现ArkTS/JS与C/C++语言交互<!--using-napi-interaction-with-cpp-->
     - [Node-API简介](napi-introduction.md)
     - [Node-API接口返回状态码介绍](napi_status_introduction.md)
     - [Node-API支持的数据类型和接口](napi-data-types-interfaces.md)
@@ -60,6 +60,7 @@
       - [使用Node-API接口产生的异常日志/崩溃分析](use-napi-about-crash.md)
       - [使用Node-API调用返回值为promise的ArkTS方法](use-napi-method-promise.md)
       - [使用扩展的Node-API接口创建对ArkTS对象的Sendable强引用](use-napi-about-sendable-reference.md)
+      - [使用扩展的Node-API接口加速属性访问](use-napi-about-fast-property-access.md)
     - Node-API常见问题汇总<!--napi-questions-->
       - [Node-API常见问题](use-napi-faqs.md)
       - [稳定性相关问题汇总](napi-faq-about-stability.md)
@@ -132,7 +133,7 @@
     - [NativeBundle开发指导](native-bundle-guidelines.md)
 - 调试和性能分析<!--debugging-profiling-->
   - [调试和性能分析概述](debug-performance-profiling-overview.md)
-  - [C/C++内存错误检测](debug-asan.md)
+  - [C/C++内存错误检测](debug-asan.md)<!--RP2--><!--RP2End-->
 - 硬件兼容性<!--hardware-compatibility-->
   - [硬件兼容性简介](hw-guide.md)
   - [OpenHarmony ABI](ohos-abi.md)

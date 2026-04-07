@@ -1,10 +1,16 @@
 # @ohos.notification (Notification)
+<!--Kit: Notification Kit-->
+<!--Subsystem: Notification-->
+<!--Owner: @peixu-->
+<!--Designer: @dongqingran; @wulong158-->
+<!--Tester: @wanghong1997-->
+<!--Adviser: @fang-jinxu-->
 
 The **Notification** module provides notification management capabilities, covering notifications, notification slots, notification subscription, notification enabled status, and notification badge status.
 
 > **NOTE**
 >
-> The APIs provided by this module are no longer maintained since API version 9. You are advised to use [@ohos.notificationManager](js-apis-notificationManager.md).
+> The APIs of this module are deprecated since API version 9. You are advised to use [@ohos.notificationManager](js-apis-notificationManager.md) instead.
 > The initial APIs of this module are supported since API version 7. Newly added APIs will be marked with a superscript to indicate their earliest API version.
 >
 > Notification subscription and unsubscription APIs are available only to system applications.
@@ -165,7 +171,7 @@ Cancels a notification with the specified ID and optional label. This API uses a
 import Base from '@ohos.base';
 
 Notification.cancel(0).then(() => {
-	console.info("cancel success");
+  console.info("cancel success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancel failed, code is ${err}`);
 });
@@ -256,7 +262,7 @@ Cancels all notifications. This API uses a promise to return the result.
 import Base from '@ohos.base';
 
 Notification.cancelAll().then(() => {
-	console.info("cancelAll success");
+  console.info("cancelAll success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancelAll failed, code is ${err}`);
 });
@@ -740,7 +746,7 @@ import Base from '@ohos.base';
 
 let groupName: string = "GroupName";
 Notification.cancelGroup(groupName).then(() => {
-	console.info("cancelGroup success");
+  console.info("cancelGroup success");
 }).catch((err: Base.BusinessError) => {
   console.error(`cancelGroup failed, code is ${err}`);
 });

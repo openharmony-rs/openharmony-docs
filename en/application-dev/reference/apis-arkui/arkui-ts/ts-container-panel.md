@@ -19,7 +19,7 @@ The **Panel** component is a slidable panel that presents lightweight content wi
 
 ## Child Components
 
-Supported
+Supported.
 
 >  **NOTE**
 >
@@ -30,6 +30,8 @@ Supported
 
 Panel(show: boolean)
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -38,7 +40,7 @@ Panel(show: boolean)
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| show | boolean | Yes| Whether the panel is shown.<br>**NOTE**<br>The panel is hidden and does not take up space in the layout if this parameter is set to **false** or [Visible.None](ts-universal-attributes-visibility.md) is set.|
+| show | boolean | Yes| Whether the panel is shown.<br>**NOTE**<br>The panel is hidden and does not take up space in the layout if this parameter is set to **false** If either [Visible.None](ts-universal-attributes-visibility.md) or **show** is valid, the panel is hidden without occupying space.|
 
 ## Attributes
 
@@ -49,6 +51,8 @@ In addition to the [universal attributes](ts-component-general-attributes.md), t
 type(value: PanelType)
 
 Sets the type of the panel.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -66,6 +70,8 @@ mode(value: PanelMode)
 
 Sets the initial mode of the panel.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -74,13 +80,15 @@ Sets the initial mode of the panel.
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | [PanelMode](#panelmode) | Yes  | Initial mode of the panel.<br>Default value for the Minibar type: PanelMode.Mini; default value for other types: PanelMode.Half<br>Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).|
+| value   | [PanelMode](#panelmode)| Yes  | Initial mode of the panel.<br>Default value for the Minibar type: **PanelMode.Mini**; default value for other types: **PanelMode.Half**<br>Since API version 10, this attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).|
 
 ### dragBar
 
 dragBar(value: boolean)
 
 Sets whether to enable a drag bar.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -98,6 +106,8 @@ customHeight(value: Dimension | PanelHeight)
 
 Sets the height of the panel in the **PanelType.CUSTOM** type.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -106,7 +116,7 @@ Sets the height of the panel in the **PanelType.CUSTOM** type.
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | [Dimension](ts-types.md#dimension10) \| [PanelHeight](#panelheight10) | Yes  | Height of the panel in the **PanelType.CUSTOM** type.<br>Default value: **0**<br>**NOTE**<br>This attribute cannot be set in percentage.|
+| value   | [Dimension](ts-types.md#dimension10)&nbsp;\|&nbsp;[PanelHeight](#panelheight10)| Yes  | Panel height in the **PanelType.CUSTOM** mode.<br>Default value: **0**<br>**NOTE**<br>Percentage values are not supported.|
 
 ### fullHeight
 
@@ -114,6 +124,8 @@ fullHeight(value: number | string)
 
 Sets the height of the panel in the **PanelType.Full** type.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -122,7 +134,7 @@ Sets the height of the panel in the **PanelType.Full** type.
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number \| string | Yes  | Height of the panel in **PanelMode.Full** mode.<br>Default value: main axis height of the panel minus 8 vp<br>**NOTE**<br>This attribute cannot be set in percentage.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Panel height in the **PanelMode.Full** mode.<br>Default value: main axis height of the panel minus 8 vp<br>**NOTE**<br>Percentage values are not supported.|
 
 ### halfHeight
 
@@ -130,6 +142,8 @@ halfHeight(value: number | string)
 
 Sets the height of the panel in **PanelMode.Half** mode.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -138,13 +152,15 @@ Sets the height of the panel in **PanelMode.Half** mode.
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number \| string | Yes  | Height of the panel in **PanelMode.Half** mode.<br>Default value: half of the main axis height of the panel<br>**NOTE**<br>This attribute cannot be set in percentage.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Panel height in the **PanelMode.Half** mode.<br>Default value: half of the main axis height of the panel<br>**NOTE**<br>Percentage values are not supported.|
 
 ### miniHeight
 
 miniHeight(value: number | string)
 
-Panel height in the **PanelMode.Mini** mode.
+Sets the height of the panel in the **PanelMode.Mini** mode.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -154,13 +170,15 @@ Panel height in the **PanelMode.Mini** mode.
 
 | Name| Type                      | Mandatory| Description                                                        |
 | ------ | -------------------------- | ---- | ------------------------------------------------------------ |
-| value  | number \| string | Yes  | Panel height in the **PanelMode.Mini** mode.<br>Default value: **48**<br>Unit: vp<br>**NOTE**<br>This attribute cannot be set in percentage.|
+| value  | number&nbsp;\|&nbsp;string | Yes  | Panel height in the **PanelMode.Mini** mode.<br>Default value: **48**<br>Unit: vp<br>**NOTE**<br>Percentage values are not supported.|
 
 ### show
 
 show(value: boolean)
 
-Sets whether the panel is shown.
+Set whether to show the panel.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -170,13 +188,15 @@ Sets whether the panel is shown.
 
 | Name | Type                                                        | Mandatory| Description                                                        |
 | ------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value   | boolean | Yes  | Whether the panel is shown. The value **true** means to show the panel, and **false** means the opposite.<br>Default value: **true**<br>**NOTE**<br>The priority of this attribute is higher than that of the **show** parameter.|
+| value   | boolean | Yes  | Whether to show the panel. The value **true** means to show the panel, and **false** means the opposite.<br>Default value: **true**<br>**NOTE**<br>The priority of this attribute is higher than that of the **show** parameter.|
 
 ### backgroundMask<sup>9+</sup>
 
 backgroundMask(color: ResourceColor)
 
-Background mask of the panel.
+Set the background mask of the panel.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -194,6 +214,8 @@ showCloseIcon(value: boolean)
 
 Sets whether to display the close icon.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -205,6 +227,8 @@ Sets whether to display the close icon.
 | value   | boolean | Yes  | Whether to display the close icon. The value **true** means to display the close icon, and **false** means the opposite.<br>Default value: **false**|
 
 ## PanelType
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -219,6 +243,8 @@ Sets whether to display the close icon.
 
 ## PanelMode
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -230,6 +256,8 @@ Sets whether to display the close icon.
 | Full |2  | Displays a panel in a large (fullscreen-like) area.|
 
 ## PanelHeight<sup>10+</sup>
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -244,9 +272,11 @@ In addition to the [universal events](ts-component-general-events.md), the follo
 
 ### onChange
 
-onChange(event: (width: number, height: number, mode: PanelMode) =&gt; void)
+onChange(event:&nbsp;(width:&nbsp;number,&nbsp;height:&nbsp;number,&nbsp;mode:&nbsp;PanelMode)&nbsp;=&gt;&nbsp;void)
 
 Triggered when the status of the panel changes.
+
+**Model constraint**: This API can be used only in the stage model.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -266,6 +296,8 @@ onHeightChange(callback: (value: number) => void)
 
 Triggered when the height of the panel changes.
 
+**Model constraint**: This API can be used only in the stage model.
+
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
@@ -274,9 +306,9 @@ Triggered when the height of the panel changes.
 
 | Name   | Type                                               | Mandatory| Description      |
 | --------- | --------------------------------------------------- | ---- | ---------- |
-| value     | number  | Yes  | Height of the content area. The default unit is px.<br>When the value of **dragBar** is **true**, the panel height is the sum of the drag bar height and content area height.<br>For user experience purposes, the panel can be slid to only this height: **fullHeight** - 8 vp.|
+| value     | number  | Yes  | Height of the content area. The default unit is px.<br>When the value of **dragBar** is **true**, the panel height is the sum of the drag bar height and content area height.<br>For user experience purposes, the panel can be slid to only this height: **fullHeight** – 8 vp.|
 
-## Example
+## Examples
 
 ```ts
 // xxx.ets

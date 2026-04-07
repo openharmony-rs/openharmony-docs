@@ -1,7 +1,7 @@
 # 添加交互响应
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
-<!--Owner: @jiangtao92-->
+<!--Owner: @yihao-lin-->
 <!--Designer: @piggyguy-->
 <!--Tester: @songyanhong-->
 <!--Adviser: @Brilliantry_Rui-->
@@ -21,6 +21,6 @@ ArkUI框架提供了丰富的接口，用于处理用户通过不同外设生成
 [支持焦点处理](arkts-common-events-focus-event.md)：了解如何控制和管理界面中的组件焦点。
 
 通过以下链接了解使用`NDK`开发UI界面时，如何为组件添加交互响应：
-- [监听组件事件](ndk-listen-to-component-events.md)：通过NDK为组件添加基础事件响应。
+- [绑定基础输入事件](ndk-bind-input-events.md)：通过NDK为组件添加基础输入事件响应。
 - [绑定手势事件](ndk-bind-gesture-events.md)：通过NDK为组件添加手势交互。
-- [拖拽事件](ndk-drag-event.md)：通过NDK为组件支持统一拖拽。
+- [绑定拖拽事件](ndk-drag-event.md)：通过NDK为组件支持统一拖拽。

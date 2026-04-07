@@ -1,4 +1,4 @@
-# class (MakerNoteHuaweiMetadata)
+# Class (MakerNoteHuaweiMetadata)
 <!--Kit: Image Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @aulight02-->
@@ -57,7 +57,7 @@ import { image } from '@kit.ImageKit';
 | isFrontCamera             | boolean        | 否   | 是   | 是否使用前置摄像头。true表示使用，false表示不使用。                     |
 | rollAngle                 | number         | 否   | 是   | 左右滚动角度。                                                 |
 | pitchAngle                | number         | 否   | 是   | 俯仰角度。                                                   |
-| physicalAperture          | number         | 否   | 是   | 物理光圈值。单位是[fNumber](arkts-apis-image-ExifMetadata.md)。                                                   |
+| physicalAperture          | number         | 否   | 是   | 物理光圈值。单位是fNumber。                                                   |
 | focusMode                 | [FocusMode](arkts-apis-image-e.md#focusmode23) | 否   | 是   | 镜头对焦控制策略，决定相机如何调整焦距。                |
 
 ## createInstance
@@ -305,7 +305,7 @@ async function makerNoteHuaweiClone(context: Context) {
 }
 ```
 
-## getBlob<sup>23+</sup>
+## getBlob
 
 getBlob(): Promise\<ArrayBuffer>
 
@@ -346,7 +346,7 @@ async function makerNoteHuaweiGetBlob(context: Context) {
 }
 ```
 
-## setBlob<sup>23+</sup>
+## setBlob
 
 setBlob(blob: ArrayBuffer): Promise\<void>
 

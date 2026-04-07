@@ -8,7 +8,7 @@
 
 应用在进行图片解码操作时，需要申请对应内存。当前指导将介绍不同的内存类型，以及如何进行申请。
 
-应用侧通过解码API接口获取PixelMap，并将其传递给Image组件以进行显示。
+应用侧通过解码API接口获取PixelMap，并将其传递给[Image组件](../../../application-dev/reference/apis-arkui/arkui-js/js-components-basic-image.md)以进行显示。
 
 当PixelMap较大且使用共享内存时，RS主线程将经历较长的纹理上传时间，导致卡顿现象。图形侧提供了DMA内存零拷贝功能，可在绘制图片时避免纹理上传时间消耗。
 
@@ -107,18 +107,24 @@ stride的值可以通过[getImageInfo()](../../reference/apis-image-kit/arkts-ap
    <!-- @[allocator_called](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Image/ImageArkTSSample/entry/src/main/ets/tools/CodecUtility.ets) -->   
    
    ``` TypeScript
-   async CreatePixelMapUsingAllocator(context: Context, type: image.AllocatorType): Promise<image.PixelMap> {
+   async CreatePixelMapUsingAllocator(context: Context, type: image.AllocatorType): Promise<image.PixelMap | undefined> {
      const resourceMgr = context.resourceManager;
-     const rawFile = await resourceMgr.getRawFileContent('99_132.jpg'); // 测试图片为99*132的jpg图。
-     let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer);
-     let options: image.DecodingOptions = {};
-     let pixelmap = await imageSource.createPixelMapUsingAllocator(options, type);
-     if (pixelmap != undefined) {
-       let info = await pixelmap.getImageInfo();
-       // 用DMA_ALLOC内存申请出的pixelmap的stride与SHARE_MEMORY内存申请出的pixelmap的stride不同。
-       console.info('stride = ' + info.stride);
+     try {
+       const rawFile = await resourceMgr.getRawFileContent('99_132.jpg'); // 测试图片为99*132的jpg图。
+       let imageSource: image.ImageSource = image.createImageSource(rawFile.buffer as ArrayBuffer);
+       let options: image.DecodingOptions = {};
+       let pixelmap = await imageSource.createPixelMapUsingAllocator(options, type);
+       if (pixelmap != undefined) {
+         let info = await pixelmap.getImageInfo();
+         // 用DMA_ALLOC内存申请出的pixelmap的stride与SHARE_MEMORY内存申请出的pixelmap的stride不同。
+         console.info('stride = ' + info.stride);
+       }
+       return pixelmap;
+     } catch (err) {
+       console.error(`Create PixelMap by setting allocator type failed: ${err}.`);
+       return undefined;
      }
-     return pixelmap;
+       
    }
    ```
 

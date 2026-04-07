@@ -770,7 +770,7 @@ OH_AVErrCode OH_AVCapability_GetVideoSupportedNativeBufferFormats(OH_AVCapabilit
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：能力实例无效、能力实例是音频编码解码器能力、指向NativeBuffer格式数组的指针为空指针、<br> 或指向NativeBuffer格式数组的元素数目的指针为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
+| [OH_AVErrCode](capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK：执行成功。<br>         AV_ERR_INVALID_VAL：能力实例无效、能力实例是音频编解码器能力、指向NativeBuffer格式数组的指针为空指针、<br> 或指向NativeBuffer格式数组的元素数目的指针为空指针。<br>         AV_ERR_UNKNOWN：未知错误。<br>         AV_ERR_NO_MEMORY：内部使用内存分配失败。 |
 
 ### OH_AVCapability_GetSupportedProfiles()
 

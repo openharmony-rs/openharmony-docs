@@ -83,13 +83,23 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
 | 干预方式       | 功能描述                             | 对应接口         | 说明                                                                                                                                                                                                                                                                                                                                      |
 | -------------- | ------------------------------------ | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 触摸热区设置   | 设置组件能够响应用户交互的热区范围。 | [responseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregion)   | 1.热区会被用来识别用户手指落下的位置是否在热区范围内，只有在范围内的才会被收集；<br/>2. 热区也会影响一些手势的判定，比如点击，只有当在热区范围抬手时才会被触发。<br/>                                                                                                                                                                     |
+| 触摸热区设置   | 设置组件能够响应鼠标交互的热区范围。 | [mouseResponseRegion](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#mouseresponseregion10)   | 设置一个或多个鼠标触摸热区。功能与responseRegion类似，但仅对鼠标事件生效。<br/>                                                                                                                                                                     |
+| 触摸热区设置   | 设置组件的触摸热区列表。 | [responseRegionList](../reference/apis-arkui/arkui-ts/ts-universal-attributes-touch-target.md#responseregionlist22)   | 设置组件的触摸热区列表，可指定每个热区适用的输入工具类型（如鼠标、触摸等）。调用该接口时，responseRegion与mouseResponseRegion接口不再生效。从API version 22开始支持。<br/>                                                                                                                                                                     |
 | 触摸测试控制   | 干预自身及其他组件收集结果。         | [hitTestBehavior](../reference/apis-arkui/arkui-ts/ts-universal-attributes-hit-test-behavior.md#hittestbehavior)  | 与onTouchIntercept效果相同，但是hitTestBehavior是静态配置。                                                                                                                                                                                                                                                                               |
 | 自定义事件拦截 | 干预自身及其他组件收集结果。         | [onTouchIntercept](../reference/apis-arkui/arkui-ts/ts-universal-attributes-on-touch-intercept.md#ontouchintercept) | 当用户触发按下事件时，系统开始收集当前位置下所有需要参与事件处理的组件时触发，应用可通过该回调返回一个HitTestMode值，进而影响系统收集子节点或兄弟节点的行为。可以通过该回调达到动态控制交互响应的效果，如某些组件，根据业务状态的变化，可能有时候需要参与交互，有时候不需要参与交互。<br/>与hitTestBehavior效果相同，但是onTouchIntercept是动态回调。 |
 
 
 1. 触摸热区设置
 
-   默认情况下，组件的响应热区即为组件自身的位置和大小，这与用户看到的范围相一致，从而最大程度地保证用户操作的手眼一致性。在极少数情况下，应用需调整热区大小以限制或扩大组件响应的操作范围，这一功能通过组件的responseRegion接口实现。
+   默认情况下，组件的响应热区即为组件自身的位置和大小，这与用户看到的范围相一致，从而最大程度地保证用户操作的手眼一致性。在极少数情况下，应用需调整热区大小以限制或扩大组件响应的操作范围。
+
+   ArkUI提供了以下三个接口来设置组件的触摸热区：
+
+   - **responseRegion**：设置一个或多个触摸热区，适用于所有输入设备类型（如触摸、鼠标等）。从API version 8开始支持。
+
+   - **mouseResponseRegion**：设置一个或多个鼠标触摸热区，仅对鼠标事件生效。从API version 10开始支持。
+
+   - **responseRegionList**：设置组件的触摸热区列表，可为每个热区指定适用的输入工具类型。调用该接口时，responseRegion与mouseResponseRegion接口不再生效。从API version 22开始支持。
 
    响应热区影响指向性事件的派发，通过与组件自身区域的相对关系进行指定，可以指定一个或多个区域，将组件的响应热区分割为多个部分。
 
@@ -109,12 +119,12 @@ ArkUI事件响应链通过触摸测试进行收集，遵循右子树（按组件
    @Component
    struct FocusOnclickExample {
      @State text: string = '';
-     @State number:number = 0;
+     @State number: number = 0;
    
      build() {
        Column() {
          Text(this.text)
-           .margin({bottom:20})
+           .margin({ bottom: 20 })
          // 请将$r('app.string.button')替换为实际资源文件，在本示例中该资源文件的value值为"按钮"
          Button($r('app.string.button'))
            .responseRegion([

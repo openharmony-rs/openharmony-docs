@@ -60,10 +60,10 @@ pixelRound(value: PixelRoundPolicy): T
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| start | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件前部边界取整对齐方式。<br/>设置异常值时按四舍五入规则取整。|
-| top | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件上部边界取整对齐方式。<br/>设置异常值时按四舍五入规则取整。|
-| end | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件尾部边界取整对齐方式。<br/>设置异常值时按四舍五入规则取整。|
-| bottom | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件底部边界取整对齐方式。<br/>设置异常值时按四舍五入规则取整。|
+| start | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件前部边界取整对齐方式。<br/>不设置[pixelRound](#pixelround)或者设置异常值时按四舍五入规则取整。|
+| top | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件上部边界取整对齐方式。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
+| end | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件尾部边界取整对齐方式。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
+| bottom | [PixelRoundCalcPolicy](ts-appendix-enums.md#pixelroundcalcpolicy11) |否| 是 | 组件底部边界取整对齐方式。<br/>不设置pixelRound或者设置异常值时按四舍五入规则取整。|
 
 ## 常见问题
 
@@ -87,7 +87,7 @@ struct PixelRoundExample {
 
     build() {
         Column() {
-            Button(){
+            Button() {
                 Text(this.curWidth.toString())
             }
             .onClick(() => {
@@ -118,7 +118,7 @@ struct PixelRoundExample {
                 end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
             })
         }
-        .width("100%")
+        .width('100%')
         .height('100%')
         .backgroundColor('#ffe5e5e5')
     }

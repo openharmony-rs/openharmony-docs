@@ -48,7 +48,7 @@ getImageInfo(index: number, callback: AsyncCallback\<ImageInfo>): void
 
 | 参数名   | 类型                                   | 必填 | 说明                                     |
 | -------- | -------------------------------------- | ---- | ---------------------------------------- |
-| index    | number                                 | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：0~（帧数-1）。                   |
+| index    | number                                 | 是   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：[0, (帧数-1)]。                   |
 | callback | AsyncCallback<[ImageInfo](arkts-apis-image-i.md#imageinfo)> | 是   | 回调函数。当获取图片信息成功，err为undefined，data为获取到的图片信息；否则为错误对象。 |
 
 **示例：**
@@ -117,7 +117,7 @@ getImageInfo(index?: number): Promise\<ImageInfo>
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：0~（帧数-1）。 |
+| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：[0, (帧数-1)]。 |
 
 **返回值：**
 
@@ -156,7 +156,7 @@ getImageInfoSync(index?: number): ImageInfo
 
 | 参数名| 类型   | 必填 | 说明                                  |
 | ----- | ------ | ---- | ------------------------------------- |
-| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：0~（帧数-1）。 |
+| index | number | 否   | 创建ImageSource时的序号。默认值为0，表示第一张图片。当取值为N时，表示第N+1张图片。单帧图片场景中index取值只能为0，动图等多帧图片场景中index的取值范围为：[0, (帧数-1)]。 |
 
 **返回值：**
 
@@ -207,7 +207,7 @@ getImageProperty(key:PropertyKey, options?: ImagePropertyOptions): Promise\<stri
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -264,7 +264,7 @@ getImageProperties(key: Array&#60;PropertyKey&#62;): Promise<Record<PropertyKey,
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -320,6 +320,7 @@ getImagePropertySync(key:PropertyKey): string
 **错误码：**
 
 以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
 | 7700101  | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete. 3. Read image data failed. 4. Codec create failed.|
@@ -372,7 +373,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -428,7 +429,7 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise\<void>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息 |
 | ------- | --------------------------------------------|
@@ -537,6 +538,7 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise\<ImageMetada
 > - GPSVersionID字段：当没有有效的GPS数据时，会清除GPS版本号并返回0。
 > - GPSAltitudeRef字段：当未设置GPSAltitude时，会设置为0xFFFFFFFF。
 > - ISOSpeedRatings字段：当该标签值为0或65535时，会优先使用推荐曝光指数，若不存在则依次使用标准输出灵敏度、ISO速度、曝光指数。
+> - 从API版本24开始，支持读取DNG元数据。要查询的属性的具体信息请参考[DngPropertyKey](arkts-apis-image-e.md#dngpropertykey24)。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -641,6 +643,112 @@ async function WriteImageMetadata(imageSourceObj : image.ImageSource) {
 }
 ```
 
+## readImageMetadataByType<sup>24+</sup>
+
+readImageMetadataByType(metadataTypes?: MetadataType[], index?: number): Promise\<ImageMetadata>
+
+读取图像源的元数据，使用metadataTypes指定元数据类型。若未指定metadataTypes，则返回所有支持的元数据。使用Promise异步回调。
+
+该接口仅支持JPEG、PNG、HEIF、WEBP、DNG和HEIFS（不同硬件设备支持情况不同）文件。
+
+> **说明：**
+>
+> - EXIF_METADATA元数据类型适用于JPEG、PNG、HEIF、WEBP和DNG格式图片。
+> - HEIFS_METADATA元数据类型适用于HEIFS格式图片。
+> - 当传入的MetadataType与图片格式无法匹配时，返回错误码7700102。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**参数：**
+
+| 参数名        | 类型            | 必填 | 说明                      |
+| ------------- | -------------- | ---- | ------------------------- |
+| metadataTypes | [MetadataType](arkts-apis-image-e.md#metadatatype13)[] | 否   | 元数据类型的数组。当该参数缺省时，获取全部支持的元数据。 |
+| index         | number         | 否   | 图片帧序号，表示获取指定帧的元数据。默认值为0。<br>- 单帧图片场景中index取值只能为0。<br>- 动图等多帧图片场景中index的取值范围为[0, 帧数-1]。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Promise\<[ImageMetadata](arkts-apis-image-i.md#imagemetadata23)> | Promise对象。返回的ImageMetadata对象中含有对应的metadata对象，通过ImageMetadata中的metadata对象可以获取图片属性值。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7700102  | Unsupported MIME type. |
+| 7700202  | Unsupported metadata.  |
+| 7700204  | Invalid parameter. Possible causes: 1.The index is negative.2. The index is greater than or equal to the number of frames in the image. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { image } from '@kit.ImageKit';
+
+async function ReadImageMetadataByType(imageSource : image.ImageSource, type: image.MetadataType) {
+  let types: image.MetadataType[] = [type];
+  await imageSource.readImageMetadataByType(types, 0).then((metaData: image.ImageMetadata) => {
+    if (metaData != undefined && metaData.exifMetadata != undefined) {
+      console.info("ImageWidth: " + metaData.exifMetadata.imageWidth);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`ReadImageMetadataByType failed error.code is ${error.code}, error.message is ${error.message}`);
+  })
+}
+```
+
+## createImageRawData<sup>24+</sup>
+
+createImageRawData(): Promise\<ImageRawData>
+
+获取图片原始数据。使用Promise异步回调。目前仅支持获取DNG图片类型的原始数据。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Multimedia.Image.ImageSource
+
+**返回值：**
+
+| 类型           | 说明                      |
+| -------------- | ------------------------- |
+| Promise\<[ImageRawData](arkts-apis-image-i.md#imagerawdata24)> | Promise对象，返回ImageRawData对象，其中含有数据缓冲区和像素位数。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+
+| 错误码ID | 错误信息               |
+| -------- | ---------------------- |
+| 7700101  | Bad source.  |
+| 7700102  | Unsupported MIME type. |
+
+**示例：**
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+async function createImageRawData(imageSourceObj: image.ImageSource) {
+  await imageSourceObj.createImageRawData().then((data: image.ImageRawData) => {
+    console.info(`createImageRawData success. length: ${data.buffer.byteLength}, bitPerPixel:${data.bitsPerPixel}`);
+    if (data.bitsPerPixel == 16) {
+      let array: Uint16Array = new Uint16Array();
+      let value: string = "";
+      array = new Uint16Array(data.buffer);
+      for (let i = 0; i < array.length && i < 10; i++) {
+        value += array[i] + ', ';
+      }
+      console.info(`get dng rawdata is:${value}.`);
+    }
+  }).catch((error: BusinessError) => {
+    console.error(`createImageRawData failed error.code is ${error.code}, error.message is ${error.message}`);
+  });
+}
+```
+
 ## updateData<sup>9+</sup>
 
 updateData(buf: ArrayBuffer, isFinished: boolean, offset: number, length: number): Promise\<void>
@@ -741,12 +849,13 @@ createPicture(options?: DecodingOptionsForPicture): Promise\<Picture>
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
 | 401      | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified.2.Incorrect parameter types; 3.Parameter verification failed. |
-| 7700301  | Failed to decode image.                                      |
+| 7700203  | Unsupported options. For example, unsupported desiredPixelFormat causes a failure in converting an image into the desired pixel format. |
+| 7700301  | Decode failed.                                               |
 
 **示例：**
 
@@ -780,7 +889,7 @@ createPictureAtIndex(index: number): Promise\<Picture>
 
 | 参数名 | 类型    | 必填 | 说明                                              |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| index  | number | 是   | 解码图片序号。图片序号有效的取值范围为：[0，帧数-1]。 |
+| index  | number | 是   | 解码图片序号。图片序号有效的取值范围为：[0, (帧数-1)]。 |
 
 **返回值：**
 
@@ -822,11 +931,13 @@ createPixelMap(options?: DecodingOptions): Promise\<PixelMap>
 
 通过图片解码参数创建PixelMap对象。使用Promise异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
-
-释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
 从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
+
+> **说明：**
+>
+> - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+> - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -866,11 +977,13 @@ createPixelMap(callback: AsyncCallback\<PixelMap>): void
 
 通过默认参数创建PixelMap对象。使用callback异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
-
-释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
 从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
+
+> **说明：**
+>
+> - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+> - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -906,11 +1019,13 @@ createPixelMap(options: DecodingOptions, callback: AsyncCallback\<PixelMap>): vo
 
 通过图片解码参数创建PixelMap对象。使用callback异步回调。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
-
-释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
 从API version 15开始，推荐使用[createPixelMapUsingAllocator](#createpixelmapusingallocator15)，该接口可以指定输出pixelMap的内存类型[AllocatorType](arkts-apis-image-e.md#allocatortype15)，详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
+
+> **说明：**
+>
+> - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+> - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
@@ -1017,12 +1132,12 @@ createPixelMapList(options?: DecodingOptions): Promise<Array\<PixelMap>>
 
 针对动态图（如Gif、Webp），该接口会返回每帧图片数据；针对静态图，该接口会返回唯一的一帧图片数据。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
-
-释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-> **注意：**
-> 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
+> **说明：**
+>
+> - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+> - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1088,12 +1203,12 @@ createPixelMapList(callback: AsyncCallback<Array\<PixelMap>>): void
 
 针对动态图（如Gif、Webp），该接口会返回每帧图片数据；针对静态图，该接口会返回唯一的一帧图片数据。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
-
-释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-> **注意：**
-> 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
+> **说明：**
+>
+> - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+> - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1147,12 +1262,12 @@ createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array\<Pixe
 
 针对动态图（如Gif、Webp），该接口会返回每帧图片数据；针对静态图，该接口会返回唯一的一帧图片数据。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
-
-释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
-
-> **注意：**
-> 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
+> **说明：**
+>
+> - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+> - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> - 此接口会一次性解码全部帧，当帧数过多或单帧图像过大时，会占用较大内存，造成系统内存紧张，此种情况推荐使用Image组件显示动图，Image组件采用逐帧解码，占用内存比此接口少。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1213,9 +1328,11 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 
 使用指定的分配器根据图像解码参数异步创建PixelMap对象。使用Promise异步回调。接口使用详情请参考[图片解码内存优化(ArkTS)](../../media/image/image-allocator-type.md)。
 
-由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
-
-释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
+> **说明：**
+>
+> - 该方法为非线程安全的方法，不支持在同一个ImageSource实例上并发调用。
+> - 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](./arkts-apis-image-PixelMap.md#release7)方法，及时释放内存。
+> - 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1234,7 +1351,7 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1304,7 +1421,7 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 
 **错误码：**
 
-以下错误码的详细介绍请参见[Image错误码](errorcode-image.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[Image错误码](errorcode-image.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1754,9 +1871,9 @@ modifyImageProperty(key: string, value: string): Promise\<void>
 
 > **说明：**
 >
-> 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 >
-> 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
+> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 
@@ -1801,9 +1918,9 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback\<void>):
 
 > **说明：**
 >
-> 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
+> - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 >
-> 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
+> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty11)代替。
 
 **系统能力：** SystemCapability.Multimedia.Image.ImageSource
 

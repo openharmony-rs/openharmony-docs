@@ -7,7 +7,7 @@
 <!--Adviser: @fang-jinxu-->
 
 - C API<!--kernel-c-->
-  - Modules<!--kernel-moudle-->
+  - Modules<!--kernel-module-->
     - [QoS](capi-qos.md)
   - Header Files<!--kernel-headerfile-->
     - [qos.h](capi-qos-h.md)

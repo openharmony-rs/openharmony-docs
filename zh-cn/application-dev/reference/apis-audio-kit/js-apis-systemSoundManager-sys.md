@@ -1861,8 +1861,8 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, externalUri: string
 | 202     | Caller is not a system application. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
-| 5400103 | I/O error. |
-| 20700004 | Data size exceeds the limit. |
+| 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. System sound manager service error.|
+| 20700004 | Data size exceeds the limit. Note:This error is returned when the file size is between 200MB and 2GB.|
 | 20700005 | The number of files exceeds the limit. |
 | 20700006 | Insufficient ROM space. |
 
@@ -1911,7 +1911,7 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 |-----|-----------|----|------------------------------------------------------------------------|
 | context | [BaseContext](../apis-ability-kit/js-apis-inner-application-baseContext.md) | 是  | 当前应用的上下文。                                                              |
 | toneAttr | [ToneAttrs](#toneattrs12) | 是  | 铃音属性。                                                                  |
-| fd  | number    | 是  | 文件描述符，可通过[fs.open](../apis-core-file-kit/js-apis-file-fs.md#fsopen)获取。 |
+| fd  | number    | 是  | 文件描述符，可通过[fileIo.open](../apis-core-file-kit/js-apis-file-fs.md#fileioopen)获取。 |
 | offset | number    | 否  | 读取数据的偏移量（以字节为单位）。默认情况下为0。                                              |
 | length | number    | 否  | 读取的数据的长度（以字节为单位）。默认情况下，长度为偏移后的剩余全部字节数。                                 |
 
@@ -1931,8 +1931,8 @@ addCustomizedTone(context: BaseContext, toneAttr: ToneAttrs, fd: number, offset?
 | 202     | Caller is not a system application. |
 | 401     | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | 5400102     | Operation is not allowed, e.g. ringtone to add is not customized. |
-| 5400103 | I/O error. |
-| 20700004 | Data size exceeds the limit. |
+| 5400103  | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error.|
+| 20700004 | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.|
 | 20700005 | The number of files exceeds the limit. |
 | 20700006 | Insufficient ROM space. |
 
@@ -2432,7 +2432,7 @@ systemSoundManagerInstance.removeCustomizedToneList([ringPath]).then((value: sys
 });
 ```
 
-## RingtonePlayer<sup>10+</sup>
+## RingtonePlayer
 
 type RingtonePlayer = _RingtonePlayer
 
@@ -2460,7 +2460,7 @@ type SystemTonePlayer = _SystemTonePlayer
 |-----------------|-----------|
 | [_SystemTonePlayer](js-apis-inner-multimedia-systemTonePlayer-sys.md#systemtoneplayer) | 系统提示音播放器。 |
 
-## RingtoneOptions<sup>10+</sup>
+## RingtoneOptions
 
 type RingtoneOptions = _RingtoneOptions
 

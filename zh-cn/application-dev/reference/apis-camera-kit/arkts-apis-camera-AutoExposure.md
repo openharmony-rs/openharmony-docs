@@ -6,7 +6,7 @@
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
 
-AutoExposure 继承自 [AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md)。
+AutoExposure继承自[AutoExposureQuery](arkts-apis-camera-AutoExposureQuery.md)。
 
 自动曝光类，对设备自动曝光（AE）操作。
 
@@ -156,7 +156,7 @@ setMeteringPoint(point: Point): void
 
 设置曝光区域中心点，曝光点应在0-1坐标系内，该坐标系左上角为{0，0}，右下角为{1，1}。
 
-此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为{w，h}，且触碰点为{x，y}，则转换后的坐标点为{y/h，1-x/w}。
+此坐标系是以设备充电口在右侧时的横向设备方向为基准的，例如应用的预览界面布局以设备充电口在下侧时的竖向方向为基准，布局宽高为{w，h}，且触摸点为{x，y}，则转换后的坐标点为{y/h，1-x/w}。
 
 **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
 
@@ -279,5 +279,89 @@ function getExposureValue(photoSession: camera.PhotoSession): number {
     console.error(`The getExposureValue call failed. error code: ${err.code}`);
   }
   return exposureValue;
+}
+```
+
+## getExposureMeteringMode<sup>24+</sup>
+
+getExposureMeteringMode(): ExposureMeteringMode
+
+获取当前曝光测光模式。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**返回值：**
+
+| 类型        | 说明                          |
+| ---------- | ----------------------------- |
+| [ExposureMeteringMode](arkts-apis-camera-e.md#exposuremeteringmode24)    | 当前曝光测光模式。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
+| 7400103                |  Session not config, only throw in session usage.                                   |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function getExposureMeteringMode(photoSession: camera.PhotoSession): camera.ExposureMeteringMode {
+  let meteringMode: camera.ExposureMeteringMode = camera.ExposureMeteringMode.MATRIX;
+  try {
+    meteringMode = photoSession.getExposureMeteringMode();
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The getExposureMeteringMode call failed. error code: ${err.code}`);
+  }
+  return meteringMode;
+}
+```
+
+## setExposureMeteringMode<sup>24+</sup>
+
+setExposureMeteringMode(aeMeteringMode: ExposureMeteringMode): void
+
+设置曝光测光模式。
+
+**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**参数：**
+
+| 参数名      | 类型                           | 必填  | 说明                           |
+| -------- | -------------------------------| ---- | ----------------------------- |
+| aeMeteringMode   | [ExposureMeteringMode](arkts-apis-camera-e.md#exposuremeteringmode24)  | 是   | 曝光测光模式。                 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[Camera错误码](errorcode-camera.md)。
+
+| 错误码ID         | 错误信息        |
+| --------------- | --------------- |
+| 7400102                |  Operation not allowed, the inputDevice or the session is abnormal.                                   |
+| 7400103                |  Session not config, only throw in session usage.                                   |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+function setExposureMeteringMode(photoSession: camera.PhotoSession, aeMeteringMode: camera.ExposureMeteringMode): void {
+  try {
+    photoSession.setExposureMeteringMode(aeMeteringMode);
+  } catch (error) {
+    // 失败返回错误码error.code并处理。
+    let err = error as BusinessError;
+    console.error(`The setExposureMeteringMode call failed. error code: ${err.code}`);
+  }
 }
 ```

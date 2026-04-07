@@ -71,6 +71,7 @@ struct IfExample {
   }
 }
 ```
+![](figures/render_if.gif)
 
 if语句的每个分支都包含一个构建函数。此类构建函数必须创建一个或多个子组件。在初始渲染时，if语句会执行构建函数，并将生成的子组件添加到其父组件中。
 
@@ -130,6 +131,7 @@ struct MainView {
   }
 }
 ```
+![](figures/render_if_else.gif)
 
 **初次渲染**：创建CounterView子组件（label为 'CounterView \#positive'），其状态变量counter初始值为0。
 
@@ -191,6 +193,7 @@ struct KeepMainView {
   }
 }
 ```
+![](figures/render_keep_counter.gif)
 
 此处，\@State counter变量归父组件所有。因此，当KeepCounterView组件实例被删除时，该变量不会被销毁。KeepCounterView组件通过[\@Link](../state-management/arkts-link.md)装饰器引用状态。状态必须从子级移动到其父级（或父级的父级），以避免在条件内容或重复内容被销毁时丢失状态。
 
@@ -249,4 +252,4 @@ struct NestedIf {
   }
 }
 ```
-
+![](figures/render_nested_if.gif)

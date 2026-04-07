@@ -293,7 +293,7 @@ SyncMonitor: MonitorDecorator
 
 **错误码：**
 
-以下错误码的详细介绍请参见[状态管理错误码](../errorcode-stateManagement.md#130001-addmonitorclearmonitor非法路径)。
+以下错误码的详细介绍请参见[状态管理错误码](../errorcode-stateManagement.md)。
 
 | 错误码ID | 错误信息             |
 | -------- | -------------------- |

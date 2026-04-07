@@ -8,7 +8,7 @@
 
 The @AnimatableExtend decorator enables animation capabilities for normally non-animatable component properties. During animation execution, frame-by-frame callbacks are executed to change the values of non-animatable properties to allow them to achieve animation effects. Additionally, you can implement frame-by-frame layout effects by changing the values of animatable properties in the per-frame callback function.
 
-- Animatable property: A property is considered animatable if, when its method is called before the **animation** attribute, changing its value triggers the animation effect specified by **animation**. Examples include **height**, **width**, **backgroundColor**, **translate**, and **fontSize** (of the **Text** component).
+- Animatable property: A property is considered animatable if, when its method is called before the [animation](../arkts-animation.md) attribute, changing its value triggers the animation effect specified by **animation**. Examples include **height**, **width**, **backgroundColor**, **translate**, and **fontSize** (of the **Text** component).
 
 - Non-animatable property: A property is non-animatable if, when its method is called before the **animation** attribute, changing its value does not trigger the animation effect specified by **animation**. For example, the **points** property of the **Polyline** component is a non-animatable.
 

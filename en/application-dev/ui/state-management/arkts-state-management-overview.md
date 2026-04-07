@@ -24,7 +24,7 @@ Custom components have variables. A variable must be decorated by a decorator wh
 
 - State: data that drives UI re-rendering. State data is changed through component event methods, which in turn causes the UI to re-render.
 
-Before implementing state management, you need to understand the basic syntax of the UI paradigm. You are advised to read [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), [State Management Rules](./arkts-state-management-glossary.md), and [Custom Component - Creating a Custom Component](./arkts-create-custom-components.md) in advance.
+Before implementing state management, you need to understand the basic syntax of the UI paradigm. You are advised to read [Basic Syntax Overview](./arkts-basic-syntax-overview.md), [Declarative UI Description](./arkts-declarative-ui-description.md), [State Management Terms](./arkts-state-management-glossary.md), and [Creating a Custom Component](./arkts-create-custom-components.md) in advance.
 
 >**NOTE**
 >
@@ -39,7 +39,7 @@ ArkUI provides two versions of state management: V1 and V2.
 
 ## State Management V1
 
-State management V1 provides a diverse range of decorators for applicaiton development.
+State management V1 provides a diverse range of decorators for application development.
 
 ### State Management V1 Decorators
 
@@ -51,13 +51,13 @@ ArkUI state management V1 provides a diverse array of decorators. You can use th
 
 By data flow patterns and synchronization types, decorators can be categorized into read-only (one-way data flow) and mutable (two-way synchronization).
 
-The following figure illustrates the decorators. For details, see [Component State Management](arkts-state.md) and [Application State Management](arkts-application-state-management-overview.md). You can use these decorators to implement linkage between data and the UI.
+The following figure illustrates the decorators. For details, see <!--RP1-->[@State Decorator: State Owned by Component](arkts-state.md)<!--RP1End--> and <!--RP2-->[Application State Management Overview](arkts-application-state-management-overview.md)<!--RP2End-->. You can use these decorators to implement linkage between data and the UI.
 
 ![en-us_image_0000001502704640](figures/en-us_image_0000001502704640.png)
 
 In the preceding figure, the decorators in the **Components** area are used for component-level state management, while others are used for application-level state management. Specifically, you can use [@StorageLink](arkts-appstorage.md#storagelink) or [@LocalStorageLink](arkts-localstorage.md#localstoragelink) to implement two-way synchronization for the application and component state, and [@StorageProp](arkts-appstorage.md#storageprop) or [@LocalStorageProp](arkts-localstorage.md#localstorageprop) to implement one-way synchronization.
 
-Decorators for [component-level state management](arkts-state.md):
+<!--RP1-->[@State Decorator: State Owned by Component](arkts-state.md)<!--RP1End-->, that is, state management at the component level in the figure.
 
 - [\@State](arkts-state.md): An \@State decorated variable holds the state of the owning component. It can be the source of one- or two-way synchronization with child components. When the variable changes, the dependent component will be updated.
 
@@ -76,7 +76,7 @@ Decorators for [component-level state management](arkts-state.md):
 > Only [\@Observed/\@ObjectLink](arkts-observed-and-objectlink.md) can be used to observe changes of nested properties. Other decorators can be used to observe top-level property changes. For details, see the "Observed Changes and Behavior" part in each decorator section.
 
 
-Decorators for [application-level state management](arkts-application-state-management-overview.md):
+<!--RP2-->[Application State Management Overview](arkts-application-state-management-overview.md)<!--RP2End-->, that is, state management at the application level in the figure.
 
 
 - [AppStorage](arkts-appstorage.md): a special [LocalStorage](arkts-localstorage.md) singleton instance. It is an application-wide database bound to the application process and can be linked to components through the [@StorageProp](arkts-appstorage.md#storageprop) and [@StorageLink](arkts-appstorage.md#storagelink) decorators.
@@ -99,7 +99,7 @@ Decorators for [application-level state management](arkts-application-state-mana
 
 -  
 
-- [Target Management (ArkTS) (API9)](https://gitcode.com/openharmony/codelabs/tree/master/ETSUI/TargetManagement)
+-  
 
 ## State Management V2
 
@@ -120,15 +120,15 @@ State management V2 adopts direct data observation, making the data itself obser
 
 - State variables are independent of the UI. Data changes automatically trigger updates to associated views.
 
-- Deep observation and listening of objects are supported, with no performance impact from the deep observation mechanism.
+- Deep observation and listening of objects are supported, with no performance impact.
 
 - Objects support property-level updates, and arrays support element-level updates.
 
-- Decorators are more user-friendly and scalable. Components explicitly define inputs and outputs, simplifying componentization.
+- Decorators are more user-friendly and scalable. Input and output are specified in components, which facilitates componentization.
 
 ![arkts-new-state-management](figures/arkts-new-state-management.png)
 
-### State Management V1 Decorators
+### State Management V2 Decorators
 
 State management of V2 provides a new set of decorators.
 
@@ -136,7 +136,7 @@ State management of V2 provides a new set of decorators.
 
 - [\@Trace](arkts-new-observedV2-and-trace.md): \@Trace is used to decorate a property in an \@ObservedV2 class, enabling the property to be observed.
 
-- [\@ComponentV2](arkts-create-custom-components.md#componentv2): In structs decorated by \@ComponentV2, the following decorators can be used: \@Local, \@Param, \@Event, \@Once, \@Monitor, \@Provider and \@Consumer.
+- [\@ComponentV2](arkts-create-custom-components.md#componentv2): \@ComponentV2 decorated structs can use new decorators. \@Local, \@Param, \@Event, \@Once, \@Monitor, \@Provider and \@Consumer.
 
 - [\@Local](arkts-new-local.md): An \@Local decorated variable is internal state of the component and cannot be initialized externally.
 
@@ -148,7 +148,7 @@ State management of V2 provides a new set of decorators.
 
 - [\@Monitor](arkts-new-monitor.md): \@Monitor is used in custom components decorated with \@ComponentV2 or classes decorated with \@ObservedV2 to implement deep observation on state variables.
 
-- [\@Provider and \@Consumer](arkts-new-provider-and-consumer.md): used for cross-component-level bidirectional synchronization.
+- [\@Provider and \@Consumer](arkts-new-provider-and-consumer.md): used for two-way synchronization across component levels.
 
 - [\@Computed](arkts-new-computed.md): An \@Computed decorated method is a computed property, for which computation is performed only once when the value changes. It is mainly used to solve the performance problem caused by repeated computation when the UI reuses the property multiple times.
 
@@ -159,7 +159,7 @@ State management of V2 provides a new set of decorators.
 | V1 Capability  | V2 Capability                                            | Description                                                        |
 | ------------ | ------------------------------------------------------ | ------------------------------------------------------------ |
 | \@Observed   | \@ObservedV2                                           | Both mark an object as observable, but with key differences:<br>\@Observed is used to observe the top-level properties and requires \@ObjectLink to take effect.<br>\@ObservedV2 does not have the observation capability. It only marks a class as observable. To observe the class properties, use it together with \@Trace.|
-| \@Track      | \@Trace                                                | \@Track enables precise observation and can be used independently of @Observed. without it, precise observation of class properties is unavailable.<br>\@Trace in V2 similarly enables precise tracking of decorated properties.|
+| \@Track      | \@Trace                                                | \@Track enables precise observation and can be used independently of @Observed. Without it, precise observation of class properties is unavailable.<br>\@Trace in V2 similarly enables precise tracking of decorated properties.|
 | \@Component  | \@ComponentV2                                          | \@Component is the decorator for custom components in V1.<br>@ComponentV2 is the decorator for custom components in V2.|
 | \@State      | \@Local (no external initialization)<br>\@Param and \@Once (one-time external initialization)| Both \@State and \@Local can work as data sources. The difference is that \@State can be initialized through external input, but \@Local cannot.|
 | \@Prop       | \@Param                                                | \@Prop and \@Param both represent parameters for custom components. For complex input types, \@Prop uses deep copying, while \@Param uses references.|
@@ -177,8 +177,8 @@ State management of V2 provides a new set of decorators.
 | \@Reusable   | \@ReusableV2                                                 | Component reuse, including [aboutToReuse](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoreuse10) and [aboutToRecycle](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttorecycle10)|
 | $$            | !!         | Two-way binding. For V2, you are advised to use **!!** to implement a two-way binding.|
 | \@CustomDialog | [openCustomDialog](../../../application-dev/reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog12)  | Custom dialog box. For V2, you are advised to use **openCustomDialog** to implement a custom dialog box.|
-| WithTheme     | WithTheme   | Theming, used to set custom theme styles for partial application pages, including [onWillApplyTheme](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12).<br>Since API version 18, this API is supported in V2 components.|
+| WithTheme     | WithTheme   | Theme, used to set custom theme styles for partial application pages, including [onWillApplyTheme](../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#onwillapplytheme12).<br>Since API version 18, this API is supported in V2 components.|
 | Built-in UI component library    | Built-in UI component library   | Built-in UI component libraries for their respective state management versions. Built-in UI components that work with V1 include the following: [Dialog](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-Dialog.md), [ProgressButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButton.md), and [SegmentButton](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButton.md).<br>New V2-optimized components are available since API version 18, including [DialogV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-DialogV2.md), [ProgressButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-ProgressButtonV2.md), and [SegmentButtonV2](../../../application-dev/reference/apis-arkui/arkui-ts/ohos-arkui-advanced-SegmentButtonV2.md).|
 | animateTo | Partial support| When **animateTo** is used in V2, exceptions may occur under certain scenarios. For details, see [Using animateTo Failed in State Management V2](./arkts-new-local.md#using-animateto-failed-in-state-management-v2).|
 
-For details about how to migrate applications from V1 to V2, see [Migrating Applications from V1 to V2](./arkts-v1-v2-migration.md).<br>For details about how to use decorators of V1 and V2 together, see [Mixing Use of Custom Components](./arkts-custom-component-mixed-scenarios.md).
+For details about how to migrate applications from V1 to V2, see [V1 to V2 Migration Overview](./arkts-v1-v2-migration.md). <!--RP3-->For details about how to use decorators of V1 and V2 together, see [Mixed Use of State Management V1 and V2](./arkts-v1-v2-mixusage-before-api-version.md)<!--RP3End-->).

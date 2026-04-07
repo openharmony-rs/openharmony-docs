@@ -27,16 +27,16 @@ The [GridRow](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md) componen
 
 ### Breakpoints
 
-**GridRow** defines breakpoints, which are screen width types in effect, based on screen width ([screen density pixels](../reference/apis-arkui/arkui-ts/ts-pixel-units.md), in vp). You can use the breakpoints to meet specific layout requirements.
+**GridRow** defines breakpoints, which are screen width types in effect, based on screen width ([pixel unit](../reference/apis-arkui/arkui-ts/ts-pixel-units.md), in vp). You can use the breakpoints to meet specific layout requirements.
 
 By default, devices are categorized into four breakpoints.
 
 | Breakpoint| Value Range (vp)       | Device Description     |
 | ---- | --------------- | --------- |
 | xs   | [0, 320)  | Minimum-width device.|
-| sm   | [320, 600) | Small-width device. |
-| md   | [600, 840) | Medium-width device.|
-| lg   | [840, +∞)  | Large-width device. |
+| sm   | [320,&nbsp;600) | Small-width device. |
+| md   | [600,&nbsp;840) | Medium-width device.|
+| lg   | [840,&nbsp;+∞)  | Large-width device. |
 
 You can customize breakpoints using the [BreakPoints](../reference/apis-arkui/arkui-ts/ts-container-gridrow.md#breakpoints) parameter, supporting up to six breakpoints: xs, sm, md, lg, xl, and xxl.
 
@@ -63,9 +63,9 @@ You can customize breakpoints using the [BreakPoints](../reference/apis-arkui/ar
   |xxl|[n4, INF)  |
 
   ```ts
-  breakpoints: {value: ['100vp', '200vp']} // Three breakpoints: xs, sm, md. < 100 vp: xs breakpoint. 100–200 vp: sm breakpoint. > 200 vp: md breakpoint.
-  breakpoints: {value: ['320vp', '600vp']} // Three breakpoints: xs, sm, md. < 320 vp: xs breakpoint. 320–600 vp: sm breakpoint. > 600 vp: md breakpoint.
-  breakpoints: {value: ['320vp', '600vp', '840vp', '1440vp']} // Five breakpoints: xs, sm, md, lg, xl. < 320 vp: xs breakpoint. 320–600 vp: sm breakpoint. 600–840 vp: md breakpoint. 840–1440 vp: lg breakpoint. > 1440 vp: xl breakpoint.
+  breakpoints: {value: ['100vp', '200vp']} // Three breakpoints: xs (< 100 vp), sm (100–200 vp), md (> 200 vp)
+  breakpoints: {value: ['320vp', '600vp']} // Three breakpoints: xs (< 320 vp), sm (320–600 vp), md (> 600 vp)
+  breakpoints: {value: ['320vp', '600vp', '840vp', '1440vp']} // Five breakpoints: xs (< 320 vp), sm (320–600 vp), md (600–840 vp), lg (840–1440 vp), xl (> 1440 vp)
   ```
 
 - The **GridRow** container implements breakpoints by listening for the changes in the window or container size, and sets the breakpoint references through **reference**. Since the application may be displayed in non-full-screen mode, it is better to design the breakpoints with the application window width as the reference.

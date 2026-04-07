@@ -78,13 +78,13 @@ struct Index {
 
 getAssets(options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
-Obtains media assets. This API uses a promise to return the result.
+Obtains image and video assets. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-If the caller does not have the ohos.permission.READ_IMAGEVIDEO permission, use Picker to access the file and then call this API based on the URI obtained by Picker. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
+Applications without the **ohos.permission.READ_IMAGEVIDEO** permission can call this API in picker mode to query the image or video resource corresponding to a specified URI. For details, see [Obtaining an Image or Video by URI](../../media/medialibrary/photoAccessHelper-photoviewpicker.md#obtaining-an-image-or-video-by-uri).
 
 **Parameters**
 
@@ -143,7 +143,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getBurstAssets(burstKey: string, options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
-Obtains burst assets. This API uses a promise to return the result.
+Obtains resources of burst photos. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -153,7 +153,7 @@ Obtains burst assets. This API uses a promise to return the result.
 
 | Name  | Type                                                     | Mandatory| Description                                                        |
 | -------- | --------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| burstKey | string                                                    | Yes  | Universally Unique Identifier (UUID) of a group of burst photos, that is, **BURST_KEY** of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys). The value is a string of 36 characters.|
+| burstKey | string                                                    | Yes  | Universally Unique Identifier (UUID) of a group of burst photos, that is, **BURST_KEY** of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys). The string contains 36 bytes.|
 | options  | [photoAccessHelper.FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes  | Retrieval options.                                          |
 
 **Return value**
@@ -218,7 +218,7 @@ createAsset(photoType: PhotoType, extension: string, options?: photoAccessHelper
 
 Creates an image or video asset with the specified file type, file name extension, and options. This API uses a promise to return the result.
 
-If the caller does not have the ohos.permission.WRITE_IMAGEVIDEO permission, you can create a media asset by using a security component. For details, see [Creating a Media Asset Using a Security Component](../../media/medialibrary/photoAccessHelper-savebutton.md).
+If you do not have the **ohos.permission.WRITE_IMAGEVIDEO** permission, you can create a media asset by using a security component. For details, see [Saving Media Assets](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 12.
 
@@ -231,7 +231,7 @@ If the caller does not have the ohos.permission.WRITE_IMAGEVIDEO permission, you
 | Name   | Type                                                       | Mandatory| Description                                |
 | --------- | ----------------------------------------------------------- | ---- | ------------------------------------ |
 | photoType | [PhotoType](#phototype)                                     | Yes  | Type of the file to create, which can be **IMAGE** or **VIDEO**.|
-| extension | string                                                      | Yes  | File name extension, for example, **'jpg'**. The value contains 1 to 255 characters.       |
+| extension | string                                                      | Yes  | File name extension, for example, **'jpg'**. The string length ranges from 1 to 255.       |
 | options   | [photoAccessHelper.CreateOptions](arkts-apis-photoAccessHelper-i.md#createoptions) | No  | Options for creating the media asset, for example, **{title: 'testPhoto'}**.<br>The file name must not contain any invalid characters.<br>Starting from API version 18, the following characters are considered invalid: \ / : * ? " < > \| <br>For API versions 10 to 17, the following characters are considered invalid: . .. \ / : * ? " ' ` < > \| { } [ ]|
 
 **Return value**
@@ -291,7 +291,7 @@ Before the operation, ensure that the albums to obtain exist.
 
 | Name | Type                                                     | Mandatory| Description                                  |
 | ------- | --------------------------------------------------------- | ---- | -------------------------------------- |
-| type    | [AlbumType](#albumtype)                                   | Yes  | Type of the albums to obtain.                            |
+| type    | [AlbumType](#albumtype)                                   | Yes  | Album type.                            |
 | subtype | [AlbumSubtype](#albumsubtype)                             | Yes  | Subtype of the album.                          |
 | options | [photoAccessHelper.FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | No  | Retrieval options. If this parameter is not specified, the albums are obtained based on the album type by default.|
 
@@ -348,7 +348,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 getAlbums(options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;Album&gt;&gt;
 
-Obtains albums. This API uses a promise to return the result.
+Obtains albums based on the specified options. This API uses a promise to return the result.
 
 Before the operation, ensure that the albums to obtain exist.
 
@@ -415,8 +415,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 release(): Promise&lt;void&gt;
 
-Releases this PhotoAccessHelper instance. This API uses a promise to return the result.
-Call this API when the APIs of the PhotoAccessHelper instance are no longer used.
+Releases the **PhotoAccessHelper** instance. Call this method when the APIs of the **PhotoAccessHelper** instance are no longer used. This API uses a promise to return the result.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -428,7 +427,7 @@ Call this API when the APIs of the PhotoAccessHelper instance are no longer used
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -461,7 +460,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 Provides APIs for encapsulating file asset attributes.
 
-### Properties
+### Attributes
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -469,7 +468,7 @@ Provides APIs for encapsulating file asset attributes.
 | ----------- | ----------------------- | ---- | ---- | ------------------------------------------------------------ |
 | uri<sup>12+</sup>         | string                  | Yes  | No  | Media asset URI, for example, **file://media/Photo/1/IMG_datetime_0001/displayName.jpg**. For details, see [Media File URI](../../file-management/user-file-uri-intro.md#media-file-uri).<br>**Atomic service API**: This API can be used in atomic services since API version 12.|
 | photoType   | [PhotoType](#phototype) | Yes  | No  | Type of the file.                                              |
-| displayName | string                  | Yes  | No  | File name, including the file name extension, to display. The value contains 1 to 255 characters.                                    |
+| displayName | string                  | Yes  | No  | File name, including the file name extension, to display. The string length ranges from 1 to 255.                                    |
 
 ### convertToPhotoAsset
 
@@ -543,7 +542,7 @@ Obtains a **PhotoAsset** member parameter.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -593,12 +592,12 @@ Sets a **PhotoAsset** member parameter.
 
 | Name| Type  | Mandatory| Description                                                        |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
-| member | string | Yes  | Name of the parameter to set, for example, [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE. The value contains 1 to 255 characters.|
-| value  | string | Yes  | Value to set. Only the value of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE can be changed. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The total length of the file name, which is in the format of title+file name extension, must be between 1 and 255 characters.<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]  |
+| member | string | Yes  | Name of the parameter to set, for example, [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE. The string length ranges from 1 to 255.|
+| value  | string | Yes  | Value to set. Only the value of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE can be changed. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The string length ranges from 1 to 255. (The asset file name is in the format of title + file name extension.)<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]  |
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -655,8 +654,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201      | Permission denied.                                           |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.                                        |
 
 **Example**
@@ -777,7 +776,7 @@ Obtains the total number of files in the result set.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -821,7 +820,7 @@ Checks whether the cursor is in the last row of the result set.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -912,7 +911,7 @@ Obtains the first asset in the result set. This API uses a promise to return the
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -945,6 +944,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 getNextObject(): Promise&lt;T&gt;
 
 Obtains the next asset in the result set. This API uses a promise to return the result.
+
 Before using this API, you must use [isAfterLast()](#isafterlast) to check whether the current position is the end of the result set.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
@@ -957,7 +957,7 @@ Before using this API, you must use [isAfterLast()](#isafterlast) to check wheth
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1002,7 +1002,7 @@ Obtains the last asset in the result set. This API uses a promise to return the 
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1097,7 +1097,7 @@ Obtains all the file assets in the result set. This API uses a promise to return
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
@@ -1129,13 +1129,13 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 Provides APIs to manage albums.
 
-### Properties
+### Attributes
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 | Name        | Type                         | Read-Only                        | Optional| Description            |
 | ------------ | ----------------------------- | ---------------------------- | ---- | ---------------- |
-| albumType    | [AlbumType](#albumtype)       | Yes                          | No  | Type of the album.      |
+| albumType    | [AlbumType](#albumtype)       | Yes                          | No  | Album type.      |
 | albumSubtype | [AlbumSubtype](#albumsubtype) | Yes                          | No  | Subtype of the album.    |
 | albumName    | string                        | Yes for a user album; no for a system album.| No  | Name of the album.      |
 | albumUri     | string                        | Yes                          | No  | URI of the album.       |
@@ -1201,7 +1201,7 @@ async function example(phAccessHelper: sendablePhotoAccessHelper.PhotoAccessHelp
 
 ### getAssets
 
-getAssets(options: FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
+getAssets(options: photoAccessHelper.FetchOptions): Promise&lt;FetchResult&lt;PhotoAsset&gt;&gt;
 
 Obtains media assets. This API uses a promise to return the result.
 
@@ -1213,7 +1213,7 @@ Obtains media assets. This API uses a promise to return the result.
 
 | Name | Type                                                     | Mandatory| Description      |
 | ------- | --------------------------------------------------------- | ---- | ---------- |
-| options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes  | Retrieval options.|
+| options | [photoAccessHelper.FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes  | Retrieval options.|
 
 **Return value**
 
@@ -1227,9 +1227,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID| Error Message                                                    |
 | -------- | ------------------------------------------------------------ |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 201      | Permission denied.                                           |
-| 13900020 | Invalid argument.                                            |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 | 14000011 | Internal system error.                                        |
 
 **Example**

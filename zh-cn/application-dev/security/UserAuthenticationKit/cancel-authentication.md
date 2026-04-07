@@ -11,7 +11,7 @@
 
 ## 接口说明
 
-具体参数、返回值、错误码等描述，请参考对应的[API文档](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#cancel10)。
+具体参数、返回值、错误码等描述，请参考对应的[cancel](../../reference/apis-user-authentication-kit/js-apis-useriam-userauth.md#cancel10)。
 
 此处仅展示了取消认证操作的接口，在取消认证前，需要先发起认证，发起认证的接口列表、详细说明可参考[发起认证](start-authentication.md)章节和API文档。
 

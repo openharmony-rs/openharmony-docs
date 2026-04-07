@@ -345,6 +345,7 @@ createUriData(uri: string): PasteData
 ```ts
 let pasteData: pasteboard.PasteData = pasteboard.createUriData('dataability:///com.example.myapplication1/user.txt');
 ```
+
 ## pasteboard.createHtmlTextRecord<sup>(deprecated)</sup>
 
 createHtmlTextRecord(htmlText: string): PasteDataRecord
@@ -479,10 +480,10 @@ let record: pasteboard.PasteDataRecord = pasteboard.createUriRecord('dataability
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- |-------------------------------|
-| additions | {[key:string]:object} | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。|
+| additions | Record<string, object> | 否 | 否 | 设置其他附加属性数据。不支持动态追加属性，只能通过重新赋值的方式修改附加值，具体见相关示例setProperty， 默认为空。|
 | mimeTypes | Array&lt;string&gt; | 是 | 否 | 剪贴板内容条目的数据类型，非重复的类型列表。 |
 | tag | string | 否 | 否 | 用户自定义标签，默认为空。 |
-| timestamp | number | 是 | 否 | 剪贴板数据的写入时间戳（单位：ms）。 |
+| timestamp | number | 是 | 否 | 剪贴板数据的写入时间戳（单位：已开机时间的ns数）。 |
 | localOnly | boolean | 否 | 否 | 配置剪贴板内容是否为“仅在本地”，默认值为false。其值会被shareOption属性覆盖，推荐使用[ShareOption](#shareoption9)属性。 |
 | shareOption<sup>9+</sup> | [ShareOption](#shareoption9) | 否 | 否 | 指示剪贴板数据可以粘贴到的范围，默认值为CROSSDEVICE。 |
 
@@ -560,7 +561,7 @@ cancel(): void
 
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-import { fileUri} from '@kit.CoreFileKit';
+import { fileUri } from '@kit.CoreFileKit';
 @Entry
 @Component
 struct PasteboardTest {
@@ -588,7 +589,7 @@ struct PasteboardTest {
                 progressListener: progressListenerInfo,
               };
               systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
-                console.error('getDataWithProgress succ');
+                console.info('getDataWithProgress success');
               }).catch((err: BusinessError) => {
                 console.error('Failed to get PasteData. Cause: ' + err.message);
               })
@@ -634,7 +635,7 @@ struct PasteboardTest {
 | plainText | string | 是 | 否 | 纯文本内容。 |
 | uri | string | 是 | 否 | URI内容。 |
 | pixelMap<sup>9+</sup> | [image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 是 | 否 | PixelMap内容。 |
-| data<sup>9+</sup> | Record<string, ArrayBuffer>; | 是 | 否 | 自定义数据内容。 |
+| data<sup>9+</sup> | Record<string, ArrayBuffer> | 是 | 否 | 自定义数据内容。 |
 
 ### toPlainText<sup>9+</sup>
 
@@ -1244,7 +1245,7 @@ getRecord(index: number): PasteDataRecord
 | 错误码ID | 错误信息 |
 | -------- | -------- |
 | 12900001 | The index is out of the record. |
-| 401      | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例：**
 
@@ -1513,7 +1514,7 @@ pasteData.addWantRecord(object);
 
 addTextRecord(text: string): void
 
-向当前剪贴板内容中添加一条纯文本条目，并将MIME_TEXT_PLAIN添加到[PasteDataProperty](#pastedataproperty7)的mimeTypes中。入参均不能为空，否则添加失败。
+向当前剪贴板内容中添加一条纯文本条目，并将MIMETYPE_TEXT_PLAIN添加到[PasteDataProperty](#pastedataproperty7)的mimeTypes中。入参均不能为空，否则添加失败。
 
 > **说明：**
 >
@@ -1558,6 +1559,7 @@ addUriRecord(uri: string): void
 let pasteData: pasteboard.PasteData = pasteboard.createPlainTextData('hello');
 pasteData.addUriRecord('dataability:///com.example.myapplication1/user.txt');
 ```
+
 ### getRecordAt<sup>(deprecated)</sup>
 
 getRecordAt(index: number): PasteDataRecord
@@ -2855,7 +2857,7 @@ setAppShareOptions(shareOptions: ShareOption): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| shareOptions | [ShareOption](js-apis-pasteboard.md#shareoption9) | 是 | 可粘贴的范围，参数只允许pasteboard.ShareOption.INAPP。|
+| shareOptions | [ShareOption](#shareoption9) | 是 | 可粘贴的范围，参数只允许pasteboard.ShareOption.INAPP。|
 
 **错误码：**
 
@@ -2919,6 +2921,8 @@ try {
 | URL                              | 0   | URL类型。                                                              |
 | NUMBER                        | 1   | 数字类型。                                                    |
 | EMAIL_ADDRESS | 2   | 邮箱地址类型。 |
+| HTTP_URL<sup>24+</sup> | 3   | HTTP web链接类型。</br> **模型约束**：此接口仅可在Stage模型下使用。 |
+| FLIGHT_NUMBER<sup>24+</sup> | 4   | 航班号类型。</br> **模型约束**：此接口仅可在Stage模型下使用。 |
 
 ### detectPatterns<sup>13+</sup>
 
@@ -2993,7 +2997,7 @@ getMimeTypes(): Promise&lt;Array&lt;string&gt;&gt;
 import { pasteboard, BusinessError } from '@kit.BasicServicesKit'
 
 const systemPasteboard: pasteboard.SystemPasteboard = pasteboard.getSystemPasteboard();
-systemPasteboard.getMimeTypes().then((data: Array<String>) => {
+systemPasteboard.getMimeTypes().then((data: Array<string>) => {
     console.info('Succeeded in getting mimeTypes. mimeTypes: ' + data.sort().join(','));
 }).catch((err: BusinessError) => {
     console.error('Failed to get mimeTypes. Cause:' + err.message);
@@ -3042,7 +3046,7 @@ getDataWithProgress(params: GetDataParams): Promise&lt;PasteData&gt;
 
 ```ts
 import { BusinessError, pasteboard } from '@kit.BasicServicesKit';
-import { fileUri} from '@kit.CoreFileKit';
+import { fileUri } from '@kit.CoreFileKit';
 @Entry
 @Component
 struct PasteboardTest {
@@ -3068,7 +3072,7 @@ struct PasteboardTest {
                 progressListener: progressListenerInfo,
               };
               systemPasteboard.getDataWithProgress(params).then((pasteData: pasteboard.PasteData) => {
-                console.error('getDataWithProgress succ');
+                console.info('getDataWithProgress success');
               }).catch((err: BusinessError) => {
                 console.error('Failed to get PasteData. Cause: ' + err.message);
               })
@@ -3123,7 +3127,7 @@ type UpdateCallback = () => void
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-### onRemoteUpdate(callback: UpdateCallback)<sup>22+</sup>
+### onRemoteUpdate<sup>22+</sup>
 
 onRemoteUpdate(callback: UpdateCallback): void
 

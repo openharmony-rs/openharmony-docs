@@ -27,4 +27,4 @@ import { wantAgent } from '@kit.AbilityKit';
 
 | 名称       | 类型                 | 只读 | 可选 | 说明        |
 | ---------- | ------------------- | ---- | ---- | ----------- |
-| startOptions<sup>12+<sup>|[StartOptions](js-apis-app-ability-startOptions.md)         | 否 | 是 | 触发启动Ability的wantAgent时，由该属性指定启动参数。 |
+| startOptions<sup>12+<sup>|[StartOptions](js-apis-app-ability-startOptions.md)         | 否 | 是 | 触发启动Ability的wantAgent时，由该属性指定启动参数。<br>**模型约束**：此接口仅可在Stage模型下使用。 |
