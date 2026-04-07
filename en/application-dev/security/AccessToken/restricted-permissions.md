@@ -1070,3 +1070,17 @@ With this permission, the application can provide embedded content editing servi
 **Supported devices**: phones | PCs/2-in-1 devices | tablets
 
 **Since**: 24
+
+## ohos.permission.KEEP_BACKGROUND_RUNNING_SPECIAL_SCENARIO
+
+Allows an application to apply for a continuous task of the special scenario type.
+
+<!--RP76--><!--RP76End-->
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Supported devices**: phones | PCs/2-in-1 devices | tablets
+
+**Since**: 24
