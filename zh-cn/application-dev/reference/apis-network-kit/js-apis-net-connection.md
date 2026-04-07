@@ -1864,6 +1864,10 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
@@ -1910,6 +1914,10 @@ connection.getAddressesByNameWithOptions("www.example.com", option).then((data: 
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称 | 类型  | 只读 | 可选 | 说明               |
 | ------ | ------| ---- | ---- | ------------------ |
 | family   | [FamilyType](#familytype23) | 否 | 是   | 需要查询的具体IP地址类型，默认值为FAMILY_TYPE_ALL。 |
@@ -1919,6 +1927,10 @@ connection.getAddressesByNameWithOptions("www.example.com", option).then((data: 
 需要查询的具体IP地址类型。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称  |值         | 说明               |
 | ------ |---------- | ------------------ |
@@ -2324,6 +2336,10 @@ setPacFileUrl(pacFileUrl: string): void
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26.0.0
+
 **参数：**
 
 | 参数名      | 类型   | 必填 | 说明                           |
@@ -2354,6 +2370,10 @@ getPacFileUrl(): string
 获取当前PAC脚本的URL地址。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **返回值：**
 
@@ -2391,6 +2411,10 @@ findProxyForUrl(url: string): string
 > 3、由于[setPacFileUrl](#connectionsetpacfileurl20)接口当前仅支持PC设备解析脚本并启用PAC代理能力，因此本接口当前也仅支持PC设备获取PAC代理信息。 其他设备调用本接口功能不生效，返回空字串。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **参数：**
 
@@ -2705,6 +2729,10 @@ getIpNeighTable(): Promise\<Array\<NetIpMacInfo>>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
 **返回值：**
 
 | 类型   | 说明                     |
@@ -2754,6 +2782,10 @@ getConnectOwnerUid(protocol: ProtocolType, local: NetAddress, remote: NetAddress
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -2812,6 +2844,10 @@ getConnectOwnerUidSync(protocol: ProtocolType, local: NetAddress, remote: NetAdd
 **需要权限**：ohos.permission.GET_NETWORK_INFO
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2874,6 +2910,10 @@ getDnsAscii(host: string, flag?: ConversionProcess): string
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -2915,6 +2955,10 @@ getDnsUnicode(host: string, flag?: ConversionProcess): string
 使用Punycode编码方式，将ASCII编码形式的主机名转换为Unicode编码形式，并通过可选的conversionProcess参数控制转换行为。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -2969,6 +3013,10 @@ getSystemNetPortStates(): Promise\<NetPortStatesInfo>
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 **返回值：**
 
@@ -4040,6 +4088,10 @@ getAddressesByNameWithOptions(host: string, option?: QueryOptions): Promise\<Arr
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明               |
@@ -4131,6 +4183,10 @@ ASCII/Unicode转码转换流程参数的枚举。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称 | 值 | 说明 |
 | ---------------- | --------------- | --------------------------- |
 | NO_CONFIGURATION | 0 | 仅允许转换已分配的Unicode代码点的域名（Unicode为每个字符分配一个唯一的数字，这个数字就叫做代码点）。 |
@@ -4144,6 +4200,10 @@ TCP状态。
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 |            名称         | 值   | 说明        |
 | ----------------------- | ---- | ---------- |
@@ -4351,7 +4411,7 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 | gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
 | hasGateway     | boolean                     | 否 | 否 |true：有网关；false：无网关。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
 | isDefaultRoute | boolean                     | 否 | 否 |true：默认路由；false：非默认路由。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|
-| isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
+| isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。<br> **ArkTS-Dyn起始版本：** 20<br> **ArkTS-Sta起始版本：** 26.0.0|
 
 ## LinkAddress
 
@@ -4430,6 +4490,10 @@ IP邻居表条目信息。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | ipAddress | [NetAddress](#netaddress)     | 否 | 否 |IP地址相关信息。   |
@@ -4446,14 +4510,18 @@ TCP端口状态信息。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | tcpLocalIp    | string | 否 | 否 |TCP网络本地IP地址。                       |
-| tcpLocalPort  | number | 否 | 是 |TCP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
+| tcpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |TCP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
 | tcpRemoteIp   | string | 否 | 是 |TCP网络远程IP地址，默认是"0.0.0.0"。  |
-| tcpRemotePort | number | 否 | 是 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
-| tcpUid        | number | 否 | 是 |监听该TCP端口的进程UID，默认值为0。 |
-| tcpPid        | number | 否 | 是 |监听该TCP端口的用户会UID，默认值为0。 |
+| tcpRemotePort | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |TCP网络远程端口，取值范围\[0, 65535]，默认值为0。 |
+| tcpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该TCP端口的进程UID，默认值为0。 |
+| tcpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该TCP端口的用户会UID，默认值为0。 |
 | tcpState      | [TcpState](#tcpstate24) | 否 | 是 |TCP网络状态，默认值为0。  |
 
 
@@ -4465,12 +4533,16 @@ UDP端口状态信息。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
 | udpLocalIp    | string | 否 | 否 |UDP网络本地IP地址。                       |
-| udpLocalPort  | number | 否 | 是 |UDP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
-| udpUid        | number | 否 | 是 |监听该UDP端口的进程UID，默认值为0。 |
-| udpPid        | number | 否 | 是 |监听该UDP端口的用户会UID，默认值为0。 |
+| udpLocalPort  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |UDP网络本地端口，取值范围\[0, 65535]，默认值为0。 |
+| udpUid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该UDP端口的进程UID，默认值为0。 |
+| udpPid        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |监听该UDP端口的用户会UID，默认值为0。 |
 
 
 ## NetPortStatesInfo<sup>24+</sup>
@@ -4480,6 +4552,10 @@ UDP端口状态信息。
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
 
 | 名称    | 类型   | 只读|可选 |说明                      |
 | ------ | ------ | --- |---|------------------------- |
