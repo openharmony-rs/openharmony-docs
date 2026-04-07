@@ -39,7 +39,7 @@ constructor()
 let gallerySync = new cloudSync.GallerySync()
 ```
 
-### on
+### on('progress')
 
 on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
@@ -79,7 +79,7 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 });
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 
@@ -123,7 +123,7 @@ gallerySync.on('progress', callback);
 gallerySync.off('progress', callback);
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress'): void
 
@@ -374,7 +374,7 @@ constructor()
 let download = new cloudSync.Download()
 ```
 
-### on
+### on('progress')
 
 on(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
@@ -414,7 +414,7 @@ download.on('progress', (pg: cloudSync.DownloadProgress) => {
 });
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress', callback: (pg: DownloadProgress) => void): void
 
@@ -458,7 +458,7 @@ download.on('progress', callback);
 download.off('progress', callback);
 ```
 
-### off
+### off('progress')
 
 off(evt: 'progress'): void
 
