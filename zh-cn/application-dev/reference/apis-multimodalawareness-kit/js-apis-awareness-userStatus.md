@@ -10,7 +10,7 @@
 
 > **说明：**
 >
-> 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> 本模块首批接口从API version 20开始支持。从API version 24开始废弃，无替代接口。
 
 
 ## 导入模块
@@ -19,7 +19,7 @@
 import { userStatus } from '@kit.MultimodalAwarenessKit';
 ```
 
-## UserAgeGroup
+## UserAgeGroup<sup>(deprecated)</sup>
 
 表示用户具体的年龄分类群组，例如，儿童或成年人。
 
@@ -30,7 +30,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | OTHERS  | 0    | 表示是成年人操作。 |
 | CHILD  | 1    | 表示是儿童操作。 |
 
-## UserClassification
+## UserClassification<sup>(deprecated)</sup>
 
 表示用户年龄群组分类检测结果。
 
@@ -42,7 +42,7 @@ import { userStatus } from '@kit.MultimodalAwarenessKit';
 | confidence  | float    |否|是| 表示年龄群组检测结果的置信度，取值范围[0,1]的浮点数，数值越大代表置信度越高。 |
 
 
-## userStatus.on('userAgeGroupDetected')
+## userStatus.on('userAgeGroupDetected')<sup>(deprecated)</sup>
 
  on(type: 'userAgeGroupDetected', callback: Callback&lt;UserClassification&gt;): void
 
@@ -93,7 +93,7 @@ try {
 
 
 
-## userStatus.off('userAgeGroupDetected')
+## userStatus.off('userAgeGroupDetected')<sup>(deprecated)</sup>
 
 off(type: 'userAgeGroupDetected', callback?: Callback&lt;UserClassification&gt;): void
 
