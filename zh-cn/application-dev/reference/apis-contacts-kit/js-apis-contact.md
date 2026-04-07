@@ -835,7 +835,7 @@ isLocalContact(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 ## contact.isLocalContact<sup>10+</sup>
 
-isLocalContact(context: Context,  id: number): Promise&lt;boolean&gt;
+isLocalContact(context: Context, id: number): Promise&lt;boolean&gt;
 
 判断当前联系人id是否在电话簿中。使用Promise异步回调。
 
@@ -1009,7 +1009,7 @@ isMyCard(id: number, callback: AsyncCallback&lt;boolean&gt;): void
 
 ## contact.isMyCard<sup>10+</sup>
 
-isMyCard(context: Context,  id: number): Promise&lt;boolean&gt;
+isMyCard(context: Context, id: number): Promise&lt;boolean&gt;
 
 判断是否为“我的名片”。使用Promise异步回调。
 
@@ -1751,8 +1751,8 @@ queryContact(key: string, holder: Holder, callback: AsyncCallback&lt;Contact&gt;
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                    |
-| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                     |
+| key      | string                                   | 是   | 联系人的key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                    |
+| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                     |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
 **示例：**
@@ -1882,7 +1882,7 @@ queryContact(context: Context,  key: string, holder: Holder, attrs: ContactAttri
 | 参数名   | 类型                                     | 必填 | 说明                                                         |
 | -------- | ---------------------------------------- | ---- | ------------------------------------------------------------ |
 | context  | Context                                  | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
+| key      | string                                   | 是   | 联系人的key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                       |
 | holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                       |
 | attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                           |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。   |
@@ -1942,9 +1942,9 @@ queryContact(key: string, holder: Holder, attrs: ContactAttributes, callback: As
 
 | 参数名   | 类型                                     | 必填 | 说明                                                       |
 | -------- | ---------------------------------------- | ---- | ---------------------------------------------------------- |
-| key      | string                                   | 是   | 联系人的key值，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                     |
-| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                     |
-| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                         |
+| key      | string                                   | 是   | 联系人的key，是新建联系人时系统自动生成的唯一标识，一个联系人对应一个key。                     |
+| holder   | [Holder](#holder)                        | 是   | 创建联系人的应用信息类，为空则系统将不会基于应用信息来筛选联系人。                                     |
+| attrs    | [ContactAttributes](#contactattributes)  | 是   | 联系人的属性列表，当该参数为空时，则查询联系人的所有属性字段（包括姓名、电话、邮箱等）。                                         |
 | callback | AsyncCallback&lt;[Contact](#contact)&gt; | 是   | 回调函数。成功返回查询的联系人对象；失败返回具体的错误码信息。 |
 
 **示例：**
@@ -2045,7 +2045,7 @@ queryContact(key: string, holder?: Holder, attrs?: ContactAttributes): Promise&l
 
 | 参数名 | 类型                                    | 必填 | 说明                                   |
 | ------ | --------------------------------------- | ---- | -------------------------------------- |
-| key    | string                                  | 是   | 联系人的key值，是新建联系人时自动生成的唯一标识，一个联系人对应一个key。 |
+| key    | string                                  | 是   | 联系人的key，是新建联系人时自动生成的唯一标识，一个联系人对应一个key。 |
 | holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数则系统将不会基于应用信息来筛选联系人。                |
 | attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。                    |
 
@@ -2702,7 +2702,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncC
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                        |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选联系人。                                        |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空系统将不会基于应用信息来筛选联系人。                                        |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
@@ -2933,7 +2933,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 | ----------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                  | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                      |
-| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则系统将不会基于应用信息来筛选联系人。       |
+| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则系统将不会基于应用信息来筛选联系人。       |
 | attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。               |
 
 **返回值：**
@@ -2994,7 +2994,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: Contact
 | 参数名      | 类型                                    | 必填 | 说明                   |
 | ----------- | --------------------------------------- | ---- | ---------------------- |
 | phoneNumber | string                                  | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。     |
-| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则系统将不会基于应用信息来筛选联系人。 |
+| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息类，不传该参数，则系统将不会基于应用信息来筛选联系人。 |
 | attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。     |
 
 **返回值：**
@@ -3178,7 +3178,7 @@ queryContactsByEmail(email: string, holder: Holder, callback: AsyncCallback&lt;A
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | email    | string                                                | 是   | 联系人的邮箱地址。                                           |
-| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
+| holder   | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空系统将不会基于应用信息来筛选联系人。                                        |
 | callback | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回具体的错误码信息。 |
 
 **示例：**
@@ -3683,7 +3683,7 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
 | 参数名  | 类型              | 必填 | 说明                                                         |
 | ------- | ----------------- | ---- | ------------------------------------------------------------ |
 | context | Context           | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder  | [Holder](#holder) | 否   | 创建联系人的应用信息，不传该参数，则系统将不会基于应用信息来筛选群组。                                       |
+| holder  | [Holder](#holder) | 否   | 创建联系人的应用信息类，不传该参数，则系统将不会基于应用信息来筛选群组。                                       |
 
 **返回值：**
 
@@ -4084,7 +4084,7 @@ queryKey(id: number, holder: Holder, callback: AsyncCallback&lt;string&gt;): voi
 | 参数名   | 类型                        | 必填 | 说明                                                         |
 | -------- | --------------------------- | ---- | ------------------------------------------------------------ |
 | id       | number                      | 是   | 联系人对象的id属性。                                         |
-| holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息类，如果传入参数为空则使系统将不会基于应用信息来筛选key。                                        |
+| holder   | [Holder](#holder)           | 是   | 创建联系人的应用信息类，如果传入参数为空则系统将不会基于应用信息来筛选key。                                        |
 | callback | AsyncCallback&lt;string&gt; | 是   | 回调函数。成功返回查询到的联系人对应的key；失败返回具体的错误码信息。 |
 
 **示例：**
