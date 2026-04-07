@@ -2687,7 +2687,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 
 queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 
-根据电话号码和holder查询联系人。使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
+根据电话号码和holder查询联系人，使用callback异步回调。该接口返回的列表仅包含联系人信息中的id、key、phoneNumbers属性。如果要查询联系人的所有信息，建议使用[queryContact](#contactquerycontact10-3)接口，根据该接口返回的属性key查询。
 
 > **说明**
 >
@@ -2832,7 +2832,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder: Holde
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                               | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                      |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则使用默认联系人应用。                                        |
 | attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
 
@@ -2892,8 +2892,8 @@ queryContactsByPhoneNumber(phoneNumber: string, holder: Holder, attrs: ContactAt
 | 参数名      | 类型                                                  | 必填 | 说明                                                         |
 | ----------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | phoneNumber | string                                                | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                    |
-| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果传入参数为空则使用默认联系人应用。                                        |
-| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果为空，则查询联系人的所有属性字段。                                           |
+| holder      | [Holder](#holder)                                     | 是   | 创建联系人的应用信息类，如果该参数为空，则使用默认联系人应用。                                        |
+| attrs       | [ContactAttributes](#contactattributes)               | 是   | 联系人的属性列表，如果该参数为空，则查询联系人的所有属性字段。                                           |
 | callback    | AsyncCallback&lt;Array&lt;[Contact](#contact)&gt;&gt; | 是   | 回调函数。成功返回查询到的联系人对象数组；失败返回错误码。 |
 
 **示例：**
@@ -2933,7 +2933,7 @@ queryContactsByPhoneNumber(context: Context,  phoneNumber: string, holder?: Hold
 | ----------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context     | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | phoneNumber | string                                  | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。                      |
-| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人。       |
+| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。       |
 | attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。               |
 
 **返回值：**
@@ -2994,7 +2994,7 @@ queryContactsByPhoneNumber(phoneNumber: string, holder?: Holder, attrs?: Contact
 | 参数名      | 类型                                    | 必填 | 说明                   |
 | ----------- | --------------------------------------- | ---- | ---------------------- |
 | phoneNumber | string                                  | 是   | 联系人的电话号码，仅支持全匹配，不支持通配符匹配。     |
-| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人。 |
+| holder      | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。 |
 | attrs       | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。     |
 
 **返回值：**
@@ -3408,7 +3408,7 @@ queryContactsByEmail(context: Context,  email: string, holder?: Holder, attrs?: 
 | ------- | --------------------------------------- | ---- | ------------------------------------------------------------ |
 | context | Context                                 | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | email   | string                                  | 是   | 联系人的邮箱地址。                                           |
-| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人。                                       |
+| holder  | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。                                       |
 | attrs   | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。                                           |
 
 **返回值：**
@@ -3468,7 +3468,7 @@ queryContactsByEmail(email: string, holder?: Holder, attrs?: ContactAttributes):
 | 参数名 | 类型                                    | 必填 | 说明                   |
 | ------ | --------------------------------------- | ---- | ---------------------- |
 | email  | string                                  | 是   | 联系人的邮箱地址。     |
-| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人。 |
+| holder | [Holder](#holder)                       | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。 |
 | attrs  | [ContactAttributes](#contactattributes) | 否   | 联系人的属性列表，不传默认查询所有联系人属性。     |
 
 **返回值：**
@@ -3683,7 +3683,7 @@ queryGroups(context: Context,  holder?: Holder): Promise&lt;Array&lt;Group&gt;&g
 | 参数名  | 类型              | 必填 | 说明                                                         |
 | ------- | ----------------- | ---- | ------------------------------------------------------------ |
 | context | Context           | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
-| holder  | [Holder](#holder) | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人群组。                                       |
+| holder  | [Holder](#holder) | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人群组。                                       |
 
 **返回值：**
 
@@ -3740,7 +3740,7 @@ queryGroups(holder?: Holder): Promise&lt;Array&lt;Group&gt;&gt;
 
 | 参数名 | 类型              | 必填 | 说明                   |
 | ------ | ----------------- | ---- | ---------------------- |
-| holder | [Holder](#holder) | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人群组。 |
+| holder | [Holder](#holder) | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人群组。 |
 
 **返回值：**
 
@@ -4122,7 +4122,7 @@ queryKey(context: Context,  id: number, holder?: Holder): Promise&lt;string&gt;
 | ------- | ----------------- | ---- | ------------------------------------------------------------ |
 | context | Context           | 是   | 应用上下文Context，Stage模型的应用Context定义见[Context](../apis-ability-kit/js-apis-inner-application-context.md)。 |
 | id      | number            | 是   | 联系人对象的id属性。                                         |
-| holder  | [Holder](#holder) | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人。                                       |
+| holder  | [Holder](#holder) | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。                                       |
 
 **返回值：**
 
@@ -4180,7 +4180,7 @@ queryKey(id: number, holder?: Holder): Promise&lt;string&gt;
 | 参数名 | 类型              | 必填 | 说明                   |
 | ------ | ----------------- | ---- | ---------------------- |
 | id     | number            | 是   | 联系人对象的id属性。   |
-| holder | [Holder](#holder) | 否   | 创建联系人的应用信息，不传默认不使用该条件过滤联系人。 |
+| holder | [Holder](#holder) | 否   | 创建联系人的应用信息，不传该参数，则不使用该条件过滤联系人。 |
 
 **返回值：**
 
@@ -4666,7 +4666,7 @@ contact.getContactList({ uiContext: ctx, selectionFilter: filter})
 | NOT_EQUAL_TO | 2 | 对应字段不等于某值。<br/>**系统能力**：SystemCapability.Applications.Contacts |
 | IN | 3 | 对应字段值在某数组中，值类型为string。<br/>**系统能力**：SystemCapability.Applications.Contacts |
 | NOT_IN | 4 | 对应字段值不在某数组中。<br/>**系统能力**：SystemCapability.Applications.Contacts  |
-| CONTAINS | 5 | 对应字段值包含某值，值类型为string<br/>**系统能力**：SystemCapability.Applications.Contacts。 |
+| CONTAINS | 5 | 对应字段值包含某值，值类型为string<br/>**系统能力**：SystemCapability.Applications.Contacts |
 
 ## DataFilter<sup>15+</sup>
 
