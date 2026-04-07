@@ -72,3 +72,24 @@
 
 2. 参考如下示例代码，进行业务功能开发。
    <!-- @[batch_remove](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
+   
+   ``` TypeScript
+   let assetsToBeRemoved: asset.AssetMap[] = [];
+   let query1: asset.AssetMap = new Map();
+   query1.set(asset.Tag.ALIAS, stringToArray('demo_alias1'));
+   assetsToBeRemoved.push(query1);
+   let query2: asset.AssetMap = new Map();
+   query2.set(asset.Tag.ALIAS, stringToArray('demo_alias2'));
+   assetsToBeRemoved.push(query2);
+   
+   try {
+     asset.batchRemove(assetsToBeRemoved).then(() => {
+       console.info(`Succeeded in batch removing Asset.`);
+     }).catch((err: BusinessError) => {
+       console.error(`Failed to batch remove Asset. Code is ${err.code}, message is ${err.message}`);
+     })
+   } catch (error) {
+     let err = error as BusinessError;
+     console.error(`Failed to batch remove Asset. Code is ${err.code}, message is ${err.message}`);
+   }
+   ```
