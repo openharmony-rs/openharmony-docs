@@ -204,8 +204,8 @@ Struct OH_WifiLinkedInfo
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| ssid | char[] | 否 | 否 | 热点的SSID（Service Set Identifier 服务集标识符），用于获取当前设备已连接的WIFI热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>长度 WIFI_MAX_SSID_LEN = 18。 |
-| bssid | char[] | 否 | 否 | 热点的BSSID（Basic Service Set Identifier 基本服务集标识符）即无线网络的MAC地址。如果应用已请求 ohos.permission.GET_WIFI_PEERS_MAC 权限，则返回的bssid为真实BSSID地址；否则为随机设备地址。<br>格式："AA:BB:CC:DD:EE:FF"<br>最大长度 WIFI_MAC_LEN = 33。 |
+| ssid | char[] | 否 | 否 | 热点的SSID（Service Set Identifier，服务集标识符），用于获取当前设备已连接的WIFI热点的公开名称（即无线网络的名称），编码格式为UTF-8。<br>长度 WIFI_MAX_SSID_LEN = 18。 |
+| bssid | char[] | 否 | 否 | 热点的BSSID（Basic Service Set Identifier，基本服务集标识符）即无线网络的MAC地址。如果应用已请求 ohos.permission.GET_WIFI_PEERS_MAC 权限，则返回的bssid为真实BSSID地址；否则为随机设备地址。<br>格式："AA:BB:CC:DD:EE:FF"<br>最大长度 WIFI_MAC_LEN = 33。 |
 | rssi | int32_t | 否 | 否 | 热点的信号强度(dBm)。RSSI（Received Signal Strength Indicator，接收信号强度指示）。 |
 | band | int32_t | 否 | 否 | WLAN接入点的频段，1表示2.4GHZ；2表示5GHZ。 |
 | linkSpeed | int32_t | 否 | 否 | WLAN接入点的上行速度单位Mbps。 |
