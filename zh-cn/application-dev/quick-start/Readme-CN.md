@@ -76,6 +76,12 @@
     - [ArkTS-Sta互操作类型映射规则](arkts-interop-type-mapping.md)
     - [ArkTS-Sta互操作场景](arkts-interop-more.md)
     - [ArkTS-Sta互操作特性规范](arkts-interop-spec.md)
+  - 从ArkTS-Dyn到ArkTS-Sta的改造指导<!--arkts-dyn-to-arkts-sta-transformation-->
+    - [ArkTS静态类型及应用迁移改造概述](arkts-sta-additions-application-migration.md)
+    - [ArkTS静态类型迁移改造案例](arkts-sta-migration-case.md)
+    - [ArkTS静态类型改造案例](arkts-sta-transformation-case.md)
+    - [ArkTS静态类型应用迁移改造常见问题](arkts-sta-migration-questions.md)
+  - [ArkTS静态类型术语](arkts-sta-terminology.md)
   - [ArkTS高性能编程实践](arkts-high-performance-programming.md)
   - 面向其他语言的ArkTS迁移指导
     - [从Java到ArkTS的迁移指导](getting-started-with-arkts-for-java-programmers.md)

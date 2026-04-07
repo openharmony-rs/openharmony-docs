@@ -20,8 +20,8 @@
 | type                             | string                                                       | 是   | 否   | 应用包类型。                                                 |
 | appId                            | string                                                       | 是   | 否   | 应用包里应用程序的id。                                       |
 | uid                              | number                                                       | 是   | 否   | 应用包里应用程序的uid。                                      |
-| installTime                      | number                                                       | 是   | 否   | HAP安装时间。                                                |
-| updateTime                       | number                                                       | 是   | 否   | HAP更新时间。                                                |
+| installTime                      | number                                                       | 是   | 否   | HAP安装时间，单位：毫秒。                                                |
+| updateTime                       | number                                                       | 是   | 否   | HAP更新时间，单位：毫秒。                                                |
 | appInfo                          | [ApplicationInfo](js-apis-bundle-ApplicationInfo.md)         | 是   | 否   | 应用程序的配置信息。                                         |
 | abilityInfos                     | Array\<[AbilityInfo](js-apis-bundle-AbilityInfo.md)>         | 是   | 否   | Ability的配置信息<br />通过调用[bundle.getBundleInfo](js-apis-Bundle.md#bundlegetbundleinfodeprecated)接口时，传入GET_BUNDLE_WITH_ABILITIES获取。 |
 | reqPermissions                   | Array\<string>                                               | 是   | 否   | 应用运行时需向系统申请的权限集合<br />通过调用[bundle.getBundleInfo](js-apis-Bundle.md#bundlegetbundleinfodeprecated)接口时，传入GET_BUNDLE_WITH_REQUESTED_PERMISSION获取。 |

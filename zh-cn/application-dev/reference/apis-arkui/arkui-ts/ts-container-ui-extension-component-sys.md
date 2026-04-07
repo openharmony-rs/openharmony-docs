@@ -35,6 +35,10 @@ UIExtensionComponent(want: Want, options?: UIExtensionOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名                | 类型                                                   | 必填 | 说明           |
@@ -68,7 +72,7 @@ UIExtensionAbility连接完成时的回调，之后可使用proxy向被拉起的
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -90,7 +94,7 @@ ArkTS-Sta: onReceive(callback: ReceiveCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -107,7 +111,16 @@ onResult(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#call
 本回调内可处理对端Ability的结果数据，可参考[AbilityResult](../../apis-ability-kit/js-apis-inner-ability-abilityResult.md)。
 
 > **说明：**
+>
 > 从 API version 10 开始支持，从 API version 12 开始废弃，建议使用[onTerminated](#onterminated12)替代。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -127,7 +140,16 @@ onRelease(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#cal
 被拉起的Ability扩展意外Crash或被kill时，触发本回调，此时releaseCode为1。
 
 > **说明：**
+>
 > 从 API version 10 开始支持，从 API version 12 开始废弃，建议使用[onTerminated](#onterminated12)或者[onError](#onerror)替代。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 10
 
 **参数：**
 
@@ -149,7 +171,7 @@ ArkTS-Sta: onError(callback:[ErrorCallback](../../apis-basic-services-kit/js-api
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -171,7 +193,7 @@ ArkTS-Sta: onTerminated(callback: Callback&lt;TerminationInfo&gt; | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -198,7 +220,7 @@ ArkTS-Sta: onDrawReady(callback: VoidCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -214,13 +236,20 @@ ArkTS-Sta: onDrawReady(callback: VoidCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 |  名称 | 类型   | 只读 |可选 | 说明                                                 |
 | ------- | ------ | ------ | ------ |---------------------------------------------------  |
-| code    | ArkTS1.1: number <br>ArkTS1.2: int  | 否 | 是 | 被拉起UIExtensionAbility退出时返回的结果码。 |
+| code    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否 | 是 | 被拉起UIExtensionAbility退出时返回的结果码。 |
 | want    | [Want](../../apis-ability-kit/js-apis-app-ability-want.md)   | 否 | 是 | 被拉起UIExtensionAbility退出时返回的数据。   |
 
 ## ReceiveCallback<sup>18+</sup>
-type ReceiveCallback = Callback\<Record\<string, Object\>\>
+
+ArkTS-Dyn: type ReceiveCallback = Callback\<Record\<string, Object\>\>
+
+ArkTS-Sta: type ReceiveCallback = Callback\<Record\<string, RecordData\>\>
 
 用于封装被拉起的Ability发送的数据。
 
@@ -228,10 +257,14 @@ type ReceiveCallback = Callback\<Record\<string, Object\>\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 | 参数名                       | 类型   | 必填 | 说明                                                         |
 | ---------------------------- | ------ | ------ | --------------------------------------------------------- |
-| data                        | Record\<string, Object\> | 否 | 收到来自对端Ability的数据。                 |
+| data                        | ArkTS-Dyn: Record\<string, Object\> <br/>ArkTS-Sta: Record\<string, RecordData\> | 否 | 收到来自对端Ability的数据。                 |
 
 ## UIExtensionOptions<sup>11+</sup>
 
@@ -241,13 +274,16 @@ type ReceiveCallback = Callback\<Record\<string, Object\>\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型                             | 只读 | 可选 | 说明                                                                                                      |
 | ----                 | ---------------------------------------- | ---- | ---- | ---------------                                                                                               |
 | isTransferringCaller | boolean                                  | 否 | 是  | 在使用UIExtensionComponent嵌套时，设置当前UIExtensionComponent是否转发上一级的Caller信息。</br> 默认值：false |
-| placeholder<sup>12+</sup> | [ComponentContent](../js-apis-arkui-ComponentContent.md)       | 否 | 是   | 设置占位符，在UIExtensionComponent与UIExtensionAbility建立连接前显示。 |
+| placeholder<sup>12+</sup> | ArkTS-Dyn: [ComponentContent](../js-apis-arkui-ComponentContent.md) <br/>ArkTS-Sta: [ComponentContentBase](../js-apis-arkui-ComponentContent.md#componentcontentbase12)       | 否 | 是   | 设置占位符，在UIExtensionComponent与UIExtensionAbility建立连接前显示。 |
 | dpiFollowStrategy<sup>12+</sup> | [DpiFollowStrategy](ts-container-ui-extension-component-sys.md#dpifollowstrategy12)                 | 否 | 是   | 提供接口支持设置DPI跟随宿主或跟随UIExtensionAbility。</br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_DPI |
-| areaChangePlaceholder<sup>14+</sup> | Record<string, [ComponentContent](../js-apis-arkui-ComponentContent.md)>      | 否 | 是   | 设置尺寸变化占位符，在UIExtensionComponent尺寸发生变化并且UIExtension内部渲染未完成时显示, key值支持"FOLD_TO_EXPAND"(折叠展开尺寸变化)、"UNDEFINED"(默认尺寸变化)。 |
+| areaChangePlaceholder<sup>14+</sup> | ArkTS-Dyn: Record\<string, [ComponentContent](../js-apis-arkui-ComponentContent.md)\> <br/>ArkTS-Sta: Record\<string, [ComponentContentBase](../js-apis-arkui-ComponentContent.md#componentcontentbase12)\>      | 否 | 是   | 设置尺寸变化占位符，在UIExtensionComponent尺寸发生变化并且UIExtension内部渲染未完成时显示, key值支持"FOLD_TO_EXPAND"(折叠展开尺寸变化)、"UNDEFINED"(默认尺寸变化)。 |
 | windowModeFollowStrategy<sup>18+</sup> | [WindowModeFollowStrategy](ts-container-ui-extension-component-sys.md#windowmodefollowstrategy18)   | 否 | 是   | 提供接口以支持设置窗口Mode，使其能够跟随宿主或UIExtensionAbility。</br> 默认值：FOLLOW_UI_EXTENSION_ABILITY_WINDOW_MODE |
 
 ## DpiFollowStrategy<sup>12+</sup>
@@ -278,9 +314,15 @@ type ReceiveCallback = Callback\<Record\<string, Object\>\>
 
 用于在双方建立连接成功后，组件使用方向被拉起的Ability发送数据、订阅和取消订阅注册。
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 ### send
 
-send(data: Record\<string, Object\>): void
+ArkTS-Dyn: send(data: Record\<string, Object\>): void
+
+ArkTS-Sta: send(data: Record\<string, RecordData\>): void
 
 用于在双方建立连接成功后，组件使用方向被拉起的Ability发送数据的场景，提供异步发送数据。
 
@@ -288,15 +330,21 @@ send(data: Record\<string, Object\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                     | 必填   | 说明            |
 | ---- | ---------------------------------------- | ---- | --------------- |
-| data | Record\<string, Object\> | 是    | 异步发送给被拉起的扩展Ability的数据。 |
+| data | ArkTS-Dyn: Record\<string, Object\> <br/>ArkTS-Sta: Record\<string, RecordData\> | 是    | 异步发送给被拉起的扩展Ability的数据。 |
 
 ### sendSync<sup>11+</sup>
 
-sendSync(data: Record\<string, Object\>): Record\<string, Object\>
+ArkTS-Dyn: sendSync(data: Record\<string, Object\>): Record\<string, Object\>
+
+ArkTS-Sta: sendSync(data: Record\<string, RecordData\>): Record\<string, RecordData\>
 
 用于在双方建立连接成功后，组件使用方向被拉起的Ability发送数据的场景，提供同步发送数据。
 
@@ -304,17 +352,21 @@ sendSync(data: Record\<string, Object\>): Record\<string, Object\>
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                     | 必填   | 说明            |
 | ---- | ---------------------------------------- | ---- | --------------- |
-| data | Record\<string, Object\> | 是    | 同步发送给被拉起的扩展Ability的数据。 |
+| data | ArkTS-Dyn: Record\<string, Object\> <br/>ArkTS-Sta: Record\<string, RecordData\> | 是    | 同步发送给被拉起的扩展Ability的数据。 |
 
 **返回值：**
 
 | 类型 | 描述 |
 | ---- | ----|
-| Record\<string, Object\> | 扩展Ability回复的数据。 |
+| ArkTS-Dyn: Record\<string, Object\> <br/>ArkTS-Sta: Record\<string, RecordData\> | 扩展Ability回复的数据。 |
 
 **错误码：**
 
@@ -334,6 +386,10 @@ on(type: 'asyncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型 |必填 | 说明 |
@@ -350,6 +406,10 @@ on(type: 'syncReceiverRegister', callback: Callback\<UIExtensionProxy\>): void;
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -368,6 +428,10 @@ off(type: 'asyncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): voi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型 | 必填 | 说明 |
@@ -384,6 +448,10 @@ off(type: 'syncReceiverRegister', callback?: Callback\<UIExtensionProxy\>): void
 **系统接口：** 此接口为系统接口。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -402,7 +470,7 @@ UIExtensionComponent组件使用分为使用方和提供方。本示例仅展示
 
 使用方入口界面Index.ets内容如下:
 
-ArkTS1.1示例:
+ArkTS-Dyn示例:
 
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
@@ -506,7 +574,7 @@ function syncRegisterCallback2(proxy: UIExtensionProxy) {
 }
 ```
 
-ArkTS1.2示例:
+ArkTS-Sta示例:
 
 ```ts
 'use static';

@@ -270,7 +270,7 @@ let pres = process.getUidForName("tool");
 
 getThreadPriority(v: number): number
 
-根据指定的tid获取线程优先级。
+根据指定的tid获取线程优先级，优先级顺序取决于当前操作系统。
 
 > **说明：**
 >

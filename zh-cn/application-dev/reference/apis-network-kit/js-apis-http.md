@@ -545,7 +545,7 @@ httpRequest.destroy();
 ### requestInStream<sup>10+</sup>
 
 ArkTS-Dyn: requestInStream(url: string, callback: AsyncCallback\<number\>): void
-ArkTS-Sta: requestInStream(url: string, callback: AsyncCallback\<int\>): void
+<br>ArkTS-Sta: requestInStream(url: string, callback: AsyncCallback\<int\>): void
 
 根据URL地址，发起HTTP网络请求并返回流式响应，使用callback方式作为异步方法。
 
@@ -645,7 +645,7 @@ httpRequest.requestInStream("EXAMPLE_URL", (err: BusinessError<void> | null, dat
 ### requestInStream<sup>10+</sup>
 
 ArkTS-Dyn: requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallback\<number\>): void
-ArkTS-Sta: requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallback\<int\>): void
+<br>ArkTS-Sta: requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallback\<int\>): void
 
 根据URL地址和相关配置项，发起HTTP网络请求并返回流式响应，使用callback方式作为异步方法。
 
@@ -781,7 +781,7 @@ httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> | 
 ### requestInStream<sup>10+</sup>
 
 ArkTS-Dyn: requestInStream(url: string, options? : HttpRequestOptions): Promise\<number\>
-ArkTS-Sta: requestInStream(url: string, options?: HttpRequestOptions): Promise\<int\>
+<br>ArkTS-Sta: requestInStream(url: string, options?: HttpRequestOptions): Promise\<int\>
 
 根据URL地址，发起HTTP网络请求并返回流式响应，使用Promise方式作为异步方法。
 
@@ -1764,14 +1764,14 @@ request方法回调函数的返回值类型。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-| 名称                 | 类型                                         | 必填 | 说明                                                          |
-| -------------------- | -------------------------------------------- | ---- | ------------------------------------------------------------ |
-| result               | ArkTS-Dyn: string \| Object \| ArrayBuffer<br />ArkTS-Sta: string \| RecordData \| ArrayBuffer | 是 | HTTP请求根据响应头中content-type类型返回对应的响应格式内容，若HttpRequestOptions无expectDataType字段，按如下规则返回：<br />- application/json：返回JSON格式的字符串。<br />- application/octet-stream：ArrayBuffer。<br />- image：ArrayBuffer。<br />- 其他：string。<br /> 若HttpRequestOption有expectDataType字段，开发者需传入与服务器返回类型相同的数据类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 22 |
-| resultType<sup>9+</sup> | [HttpDataType](#httpdatatype9)             | 是   | 返回值类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 22 |
-| responseCode         | ArkTS-Dyn: [ResponseCode](#responsecode) \| number<br />ArkTS-Sta: [ResponseCode](#responsecode) \| int |    | 回调函数执行成功时，此字段为[ResponseCode](#responsecode)。若执行失败，错误码将会从AsyncCallback中的err字段返回。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 22 |
-| header               | ArkTS-Dyn: Object<br />ArkTS-Sta: Record<string, string> | 是   | 发起HTTP请求返回来的响应头。当前返回的是JSON格式字符串，如需具体字段内容，需开发者自行解析。常见字段及解析方式如下：<br/>- content-type：header['content-type']。<br />- status-line：header['status-line']。<br />- date：header.date/header['date']。<br />- server：header.server/header['server']。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 22 |
-| cookies<sup>8+</sup> | string                                       | 是   | 服务器返回的原始cookies。开发者可自行处理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 22 |
-| performanceTiming<sup>11+</sup> | [PerformanceTiming](#performancetiming11) | 是 | HTTP请求的各个阶段的耗时。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 22 |
+| 名称                 | 类型                                         | 只读 | 可选  | 说明                                                          |
+| -------------------- | ---------------------|----------------------- | ---- | ------------------------------------------------------------ |
+| result               | ArkTS-Dyn: string \| Object \| ArrayBuffer<br />ArkTS-Sta: string \| RecordData \| ArrayBuffer | 否   | 否   | HTTP请求根据响应头中content-type类型返回对应的响应格式内容，若HttpRequestOptions无expectDataType字段，按如下规则返回：<br />- application/json：返回JSON格式的字符串。<br />- application/octet-stream：ArrayBuffer。<br />- image：ArrayBuffer。<br />- 其他：string。<br /> 若HttpRequestOption有expectDataType字段，开发者需传入与服务器返回类型相同的数据类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 22 |
+| resultType<sup>9+</sup> | [HttpDataType](#httpdatatype9)             | 否   | 否   | 返回值类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 9<br />**ArkTS-Sta起始版本：** 22 |
+| responseCode         | ArkTS-Dyn: [ResponseCode](#responsecode) \| number<br />ArkTS-Sta: [ResponseCode](#responsecode) \| int |  否   | 否   | 回调函数执行成功时，此字段为[ResponseCode](#responsecode)。若执行失败，错误码将会从AsyncCallback中的err字段返回。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 22 |
+| header               | ArkTS-Dyn: Object<br />ArkTS-Sta: Record<string, string> | 否   | 否   | 发起HTTP请求返回来的响应头。当前返回的是JSON格式字符串，如需具体字段内容，需开发者自行解析。常见字段及解析方式如下：<br/>- content-type：header['content-type']。<br />- status-line：header['status-line']。<br />- date：header.date/header['date']。<br />- server：header.server/header['server']。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 6<br />**ArkTS-Sta起始版本：** 22 |
+| cookies<sup>8+</sup> | string                                       | 否   | 否   | 服务器返回的原始cookies。开发者可自行处理。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br />**ArkTS-Dyn起始版本：** 8<br />**ArkTS-Sta起始版本：** 22 |
+| performanceTiming<sup>11+</sup> | [PerformanceTiming](#performancetiming11) | 否   | 否   | HTTP请求的各个阶段的耗时。<br />**ArkTS-Dyn起始版本：** 11<br />**ArkTS-Sta起始版本：** 22 |
 
 ## ClientCert<sup>11+</sup>
 
@@ -1800,18 +1800,18 @@ request方法回调函数的返回值类型。
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称       | 类型   | 必填   | 说明                   |
-| ---------- | ------ | ---- | --------------------- |
-| dnsTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 从[request](#request)请求到DNS解析完成耗时。 |
-| tcpTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 从[request](#request)请求到TCP连接完成耗时。 |
-| tlsTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 从[request](#request)请求到TLS连接完成耗时。 |
-| firstSendTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 从[request](#request)请求到开始发送第一个字节的耗时。 |
-| firstReceiveTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 从[request](#request)请求到接收第一个字节的耗时。 |
-| totalFinishTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 从[request](#request)请求到完成请求的耗时。 |
-| redirectTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 从[request](#request)请求到完成所有重定向步骤的耗时。 |
-| responseHeaderTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 从[request](#request)请求到header解析完成的耗时。 |
-| responseBodyTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 从[request](#request)请求到body解析完成的耗时。 |
-| totalTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是   | 从[request](#request)请求回调到应用程序的耗时。 |
+| 名称       | 类型   | 只读  | 可选   | 说明                   |
+| ---------- | ------ | -----|----- | --------------------- |
+| dnsTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否   | 从[request](#request)请求到DNS解析完成耗时。 |
+| tcpTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否 | 否      | 从[request](#request)请求到TCP连接完成耗时。 |
+| tlsTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否 | 否     | 从[request](#request)请求到TLS连接完成耗时。 |
+| firstSendTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否 | 否      | 从[request](#request)请求到开始发送第一个字节的耗时。 |
+| firstReceiveTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否 | 否      | 从[request](#request)请求到接收第一个字节的耗时。 |
+| totalFinishTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否 | 否     | 从[request](#request)请求到完成请求的耗时。 |
+| redirectTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 否      | 从[request](#request)请求到完成所有重定向步骤的耗时。 |
+| responseHeaderTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否 | 否     | 从[request](#request)请求到header解析完成的耗时。 |
+| responseBodyTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否 | 否     | 从[request](#request)请求到body解析完成的耗时。 |
+| totalTiming  | ArkTS-Dyn: number<br/>ArkTS-Sta: double |  否 | 否    | 从[request](#request)请求回调到应用程序的耗时。 |
 
 ## DataReceiveProgressInfo<sup>11+</sup>
 
@@ -1821,14 +1821,13 @@ request方法回调函数的返回值类型。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
 
 | 名称          | 类型                               | 只读  | 可选  | 说明                |
 | ----------- | -------------------------------- | --- | --- | ----------------- |
-| receiveSize | ArkTS-Dyn: int<br>ArkTS-Sta: int | 否   | 否   | 已接收的数据量（单位：字节）。   |
-| totalSize   | ArkTS-Dyn: int<br>ArkTS-Sta: int | 否   | 否   | 总共要接收的数据量（单位：字节）。 |
+| receiveSize | number | 否   | 否   | 已接收的数据量（单位：字节）。   |
+| totalSize   | number | 否   | 否   | 总共要接收的数据量（单位：字节）。 |
 
 ## DataSendProgressInfo<sup>11+</sup>
 
@@ -1838,16 +1837,14 @@ request方法回调函数的返回值类型。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：** 11
-
-**ArkTS-Sta起始版本：** 22
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 ### 属性
 
 | 名称        | 类型                               | 只读  | 可选  | 说明                |
 | --------- | -------------------------------- | --- | --- | ----------------- |
-| sendSize  | ArkTS-Dyn: int<br>ArkTS-Sta: int | 否   | 否   | 每次发送的数据量(单位：字节)。  |
-| totalSize | ArkTS-Dyn: int<br>ArkTS-Sta: int | 否   | 否   | 总共要发送的数据量(单位：字节)。 |
+| sendSize  | number | 否   | 否   | 每次发送的数据量(单位：字节)。  |
+| totalSize | number | 否   | 否   | 总共要发送的数据量(单位：字节)。 |
 
 ## MultiFormData<sup>11+</sup>
 
@@ -1869,8 +1866,7 @@ request方法回调函数的返回值类型。
 
 ## http.createHttpResponseCache<sup>9+</sup>
 
-ArkTS-Dyn: createHttpResponseCache(cacheSize?: number): HttpResponseCache
-ArkTS-Sta: createHttpResponseCache(cacheSize?: int): HttpResponseCache
+ArkTS-Dyn: createHttpResponseCache(cacheSize?: number): HttpResponseCache<br>ArkTS-Sta: createHttpResponseCache(cacheSize?: int): HttpResponseCache
 
 创建一个HttpResponseCache对象，可用于存储HTTP请求的响应数据。对象中可调用[flush](#flush9)与[delete](#delete9)方法，cacheSize指定缓存大小。
 
@@ -1878,7 +1874,7 @@ ArkTS-Sta: createHttpResponseCache(cacheSize?: int): HttpResponseCache
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：**  11
+**ArkTS-Dyn起始版本：**  9
 
 **ArkTS-Sta起始版本：**  23
 
@@ -1957,7 +1953,7 @@ let httpResponseCache: http.HttpResponseCache = http.createHttpResponseCache();
 ### flush<sup>9+</sup>
 
 ArkTS-Dyn: flush(callback: AsyncCallback\<void\>): void
-ArkTS-Sta: flush(callback: AsyncCallback\<void\>): void
+<br>ArkTS-Sta: flush(callback: AsyncCallback\<void\>): void
 
 将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用callback方式作为异步方法。缓存数据包括：响应头(header)、响应体(result)、cookies、请求时间(requestTime)和响应时间(responseTime)。
 
@@ -2032,7 +2028,7 @@ httpRequest.request("EXAMPLE_URL", (err: BusinessError<void>|null, data: http.Ht
 ### flush<sup>9+</sup>
 
 ArkTS-Dyn: flush(): Promise\<void\>
-ArkTS-Sta: flush(): Promise\<void\>
+<br>ArkTS-Sta: flush(): Promise\<void\>
 
 将缓存中的数据写入文件系统，以便在下一个HTTP请求中访问所有缓存数据，使用Promise方式作为异步方法。
 
@@ -2344,9 +2340,9 @@ TLS加密版本及套件配置。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：**  18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**  22
+**ArkTS-Sta起始版本：** 22
 
 | 名称            | 类型                              | 只读  | 可选  | 说明           |
 | ------------- | ------------------------------- | --- | --- | ------------ |
@@ -2383,9 +2379,9 @@ TLS配置。
 
 **系统能力**：SystemCapability.Communication.NetStack
 
-**ArkTS-Dyn起始版本：**  18
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：**  22
+**ArkTS-Sta起始版本：** 22
 
 | 类型         | 说明                                          |
 | ---------- | ------------------------------------------- |

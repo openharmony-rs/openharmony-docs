@@ -155,7 +155,25 @@ queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undef
 
 | 类型                                                                       | 说明      |
 | -------------------------------------------------------------------------- | --------- |
-| [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) \| undefined | 返回NavDestinationInfo实例对象。|
+| [NavDestinationInfo](#navdestinationinfo) \| undefined | 返回NavDestinationInfo实例对象。|
+
+## NavDestinationInfo
+
+type NavDestinationInfo = NavDestinationInfo
+
+NavDestinationInfo实例对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型     | 说明       |
+| ------ | ---------- |
+| [NavDestinationInfo](../js-apis-arkui-observer.md#navdestinationinfo) | 返回NavDestinationInfo实例对象。 |
 
 **示例：**
 
@@ -279,7 +297,25 @@ queryNavigationInfo(): NavigationInfo | undefined
 
 | 类型                                                                       | 说明      |
 | -------------------------------------------------------------------------- | --------- |
-| [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) \| undefined | 返回NavigationInfo实例对象。 |
+| [NavigationInfo](#navigationinfo12) \| undefined | 返回NavigationInfo实例对象。 |
+
+## NavigationInfo<sup>12+</sup>
+
+type NavigationInfo = NavigationInfo
+
+NavigationInfo实例对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型     | 说明       |
+| ------ | ---------- |
+| [NavigationInfo](../js-apis-arkui-observer.md#navigationinfo12) | 返回NavigationInfo实例对象。 |
 
 **示例：**
 
@@ -339,7 +375,25 @@ queryRouterPageInfo(): RouterPageInfo | undefined;
 
 | 类型                                                         | 说明                         |
 | ------------------------------------------------------------ | ---------------------------- |
-| [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) \| undefined | 返回RouterPageInfo实例对象。 |
+| [RouterPageInfo](#routerpageinfo) \| undefined | 返回RouterPageInfo实例对象。 |
+
+## RouterPageInfo<sup>12+</sup>
+
+type RouterPageInfo = RouterPageInfo
+
+RouterPageInfo实例对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+| 类型     | 说明       |
+| ------ | ---------- |
+| [RouterPageInfo](../js-apis-arkui-observer.md#routerpageinfo) | 返回RouterPageInfo实例对象。 |
 
 **示例：**
 

@@ -17,13 +17,19 @@
 
 ## expandSafeArea
 
-expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&gt;): T
+ArkTS-Dyn: expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&gt;): T
+
+ArkTS-Sta: expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&gt;): this
 
 控制组件扩展其安全区域。
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -36,7 +42,7 @@ expandSafeArea(types?: Array&lt;SafeAreaType&gt;, edges?: Array&lt;SafeAreaEdge&
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 >  **说明：**
 >
@@ -102,7 +108,9 @@ getKeyboardAvoidMode(): KeyboardAvoidMode
 
 ## ignoreLayoutSafeArea<sup>20+</sup>
 
-ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;LayoutSafeAreaEdge&gt;): T
+ArkTS-Dyn: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;LayoutSafeAreaEdge&gt;): T
+
+ArkTS-Sta: ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt; | undefined, edges?: Array&lt;LayoutSafeAreaEdge&gt; | undefined): this
 
 控制组件布局时延伸至安全区域。设置ignoreLayoutSafeArea属性可使组件的布局范围扩展至[组件级安全区（safeAreaPadding）](./ts-universal-attributes-size.md#safeareapadding14)和页面级安全区（状态栏、导航栏、挖孔区）。依据safeAreaPadding功能，组件能够感知并利用向外累积的邻接可用安全区范围（详见[累计安全区延伸](./ts-universal-attributes-size.md#safeareapadding14)），通过ignoreLayoutSafeArea属性利用该范围进行布局。
 
@@ -110,18 +118,22 @@ ignoreLayoutSafeArea(types?: Array&lt;LayoutSafeAreaType&gt;, edges?: Array&lt;L
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                               | 必填 | 说明                                                         |
 | ------ | -------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| types  | Array <[LayoutSafeAreaType](ts-types.md#layoutsafeareatype12)> | 否   | 配置扩展布局安全区域的种类。<br />默认值：[LayoutSafeAreaType.SYSTEM]<br />扩展至系统默认非安全区域。<br />非法值：按默认值处理。 |
-| edges  | Array <[LayoutSafeAreaEdge](ts-types.md#layoutsafeareaedge12)> | 否   | 扩展布局安全区域的方向且支持[镜像能力](../../../ui/arkts-mirroring-display.md)。<br />默认值：[LayoutSafeAreaEdge.ALL]<br />扩展至所有方向。<br />非法值：按默认值处理。|
+| types  | ArkTS-Dyn: Array <[LayoutSafeAreaType](ts-types.md#layoutsafeareatype12)><br />ArkTS-Sta: Array <[LayoutSafeAreaType](ts-types.md#layoutsafeareatype12)> \| undefined | 否   | 配置扩展布局安全区域的种类。<br />默认值：[LayoutSafeAreaType.SYSTEM]<br />扩展至系统默认非安全区域。<br />非法值：按默认值处理。 |
+| edges  | ArkTS-Dyn: Array <[LayoutSafeAreaEdge](ts-types.md#layoutsafeareaedge12)><br />ArkTS-Sta: Array <[LayoutSafeAreaEdge](ts-types.md#layoutsafeareaedge12)> \| undefined | 否   | 扩展布局安全区域的方向且支持[镜像能力](../../../ui/arkts-mirroring-display.md)。<br />默认值：[LayoutSafeAreaEdge.ALL]<br />扩展至所有方向。<br />非法值：按默认值处理。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 >  **说明：**
 >

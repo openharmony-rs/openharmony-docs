@@ -724,6 +724,48 @@ ArkTS-Sta: syncLoad(enable: boolean | undefined)
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | enable   | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined | 是   | 是否同步加载Grid区域内所有子组件。<br/> true表示同步加载，false表示异步加载。<br/>取值为undefined时，同步加载Grid区域内所有子组件。<br/> **说明：** <br/>设置为false时，在首次显示、不带动画scrollToIndex跳转场景，若当帧布局耗时超过50ms，会将Grid区域内尚未布局的子组件延后到下一帧进行布局。 |
 
+### supportEmptyBranchInLazyLoading<sup>23+</sup>
+
+supportEmptyBranchInLazyLoading(supported: boolean | undefined)
+
+设置当前Grid组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。未设置时不支持空分支节点。此属性初次赋值后不支持更新，所以赋值后无法在支持空分支、不支持空分支行为之间切换。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明                                               |
+| ------ | ------ | ---- | -------------------------------------------------- |
+| supported  | boolean \| undefined | 是   | 当前Grid组件是否支持在[LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md)或[Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md)中使用[if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md)渲染控制语法生成一个不含任何子节点的空分支节点。</br>true表示支持空分支节点；false表示不支持空分支节点。</br>值为undefined时，按false处理。 |
+
+### editModeOptions<sup>23+</sup>
+
+editModeOptions(options?: EditModeOptions)
+
+配置编辑模式选项参数。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| options   | [EditModeOptions](ts-container-scrollable-common.md#editmodeoptions23对象说明) | 否   | 编辑模式选项。|
+
 ## GridItemAlignment<sup>12+</sup>枚举说明
 
 GridItem的对齐方式枚举。
@@ -799,9 +841,11 @@ ArkTS-Sta: onScrollIndex(event: ((first: int, last: int) => void) | undefined)
 
 ### onItemDragStart<sup>8+</sup>
 
-onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => (() => any) \| void)
+ArkTS-Dyn: onItemDragStart(event: OnItemDragStartCallback)
 
-开始拖拽网格元素时触发。返回void表示不能拖拽。
+ArkTS-Sta: onItemDragStart(event: OnItemDragStartCallback | undefined)
+
+开始拖拽网格元素时触发。
 
 手指长按GridItem时触发该事件。
 
@@ -817,17 +861,17 @@ onItemDragStart(event: (event: ItemDragInfo, itemIndex: number) => (() => any) \
 
 **ArkTS-Sta起始版本：** 23
 
-
 **参数：** 
 
 | 参数名    | 类型                                  | 必填 | 说明                   |
 | --------- | ------------------------------------- | ---- | ---------------------- |
-| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。         |
-| itemIndex | number                                | 是   | 被拖拽网格元素索引值。 |
+| event     | [OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23) | 是   | 网格元素拖拽开始时触发的回调。<br>API version 22及之前版本，该参数类型为(event: ItemDragInfo, itemIndex: number) => (() => any) \| void，其中event和itemIndex参数含义参考[OnItemDragStartCallback](ts-container-scrollable-common.md#onitemdragstartcallback23)。 |
 
 ### onItemDragEnter<sup>8+</sup>
 
-onItemDragEnter(event: (event: ItemDragInfo) => void)
+ArkTS-Dyn: onItemDragEnter(event: (event: ItemDragInfo) => void)
+
+ArkTS-Sta: onItemDragEnter(event: (event: ItemDragInfo) => void | undefined)
 
 拖拽进入网格元素范围内时触发。
 
@@ -959,14 +1003,13 @@ onReachStart(event: () => void)
 
 Grid初始化时会触发一次，Grid滚动到起始位置时触发一次。Grid边缘效果为弹簧效果时，划动经过起始位置时触发一次，回弹回起始位置时再触发一次。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 
 ### onReachEnd<sup>10+</sup>
 
@@ -976,18 +1019,19 @@ onReachEnd(event: () => void)
 
 Grid边缘效果为弹簧效果时，划动经过末尾位置时触发一次，回弹回末尾位置时再触发一次。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
-**ArkTS-Sta起始版本：** 23
-
-
 ### onScrollFrameBegin<sup>10+</sup>
 
-onScrollFrameBegin(event: (offset: number, state:  ScrollState) => { offsetRemain: number })
+ArkTS-Dyn: onScrollFrameBegin(event: OnScrollFrameBeginCallback)
+
+ArkTS-Sta: onScrollFrameBegin(event: OnScrollFrameBeginCallback | undefined)
 
 该接口回调时，事件参数传入即将发生的滑动量，事件处理函数中可根据应用场景计算实际需要的滑动量并作为事件处理函数的返回值返回，网格将按照返回值的实际滑动量进行滑动。
 
@@ -1011,19 +1055,11 @@ onScrollFrameBegin(event: (offset: number, state:  ScrollState) => { offsetRemai
 
 **ArkTS-Sta起始版本：** 23
 
-
 **参数：** 
 
 | 参数名 | 类型                                                    | 必填 | 说明                       |
 | ------ | ------------------------------------------------------- | ---- | -------------------------- |
-| offset | number                                                  | 是   | 即将发生的滑动量，单位vp。 |
-| state  | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是   | 当前滑动状态。             |
-
-**返回值：** 
-
-| 类型                     | 说明                 |
-| ------------------------ | -------------------- |
-| { offsetRemain: number } | 实际滑动量，单位vp。 |
+| event | [OnScrollFrameBeginCallback](ts-container-scroll.md#onscrollframebegincallback18)   | 是   | 每帧滚动开始回调函数。 |
 
 ### onScrollStart<sup>10+</sup>
 
@@ -1031,14 +1067,15 @@ onScrollStart(event: () => void)
 
 网格滑动开始时触发。手指拖动网格或网格的滚动条触发的滑动开始时，会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画开始时会触发该事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口:** 该接口对应的ArkTS-Sta接口是[onScrollStart](./ts-container-scrollable-common.md#onscrollstart11)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
-
-**ArkTS-Sta起始版本：** 23
-
 
 ### onScrollStop<sup>10+</sup>
 
@@ -1046,14 +1083,57 @@ onScrollStop(event: () => void)
 
 网格滑动停止时触发。手指拖动网格或网格的滚动条触发的滑动，手指离开屏幕并且滑动停止时会触发该事件。使用[Scroller](ts-container-scroll.md#scroller)滑动控制器触发的带动画的滑动，动画停止会触发该事件。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口:** 该接口对应的ArkTS-Sta接口是[onScrollStop](./ts-container-scrollable-common.md#onscrollstop11)。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 10
 
+### onWillScroll<sup>23+</sup> 
+
+onWillScroll(handler: OnWillScrollCallback | undefiend)
+
+滚动事件回调，Grid滚动前触发。
+
+回调当前帧将要滚动的偏移量和当前滚动状态和滚动操作来源，其中回调的偏移量为计算得到的将要滚动的偏移量值，并非最终实际滚动偏移。可以通过该回调返回值指定滚动组件将要滚动的偏移。
+
+**ArkTS模式:** 该接口仅适用于ArkTS-Sta。
+
+**相关接口:** 该接口对应的ArkTS-Dyn的接口是[onWillScroll](./ts-container-scrollable-common.md#onwillscroll12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **ArkTS-Sta起始版本：** 23
 
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ------ | ------|
+| handler | [OnWillScrollCallback](./ts-container-scrollable-common.md#onwillscrollcallback12) \| undefined | 是 | Grid滑动前触发的回调。 |
+
+### onDidScroll<sup>23+</sup> 
+
+onDidScroll(handler: OnScrollCallback | undefined)
+
+Grid滑动时触发，返回当前帧滑动的偏移量和当前滑动状态。
+
+**ArkTS模式:** 该接口仅适用于ArkTS-Sta。
+
+**相关接口:** 该接口对应的ArkTS-Dyn的接口是[onDidScroll](./ts-container-scrollable-common.md#ondidscroll12)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ------ | ------|
+| handler | [OnScrollCallback](./ts-container-scrollable-common.md#onscrollcallback12) \| undefined | 是 | Grid滑动时触发的回调。 |
 
 ### onScroll<sup>(deprecated)</sup>
 onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-list.md#scrollstate枚举说明)) => void) 
@@ -1064,14 +1144,13 @@ onScroll(event: (scrollOffset: number, scrollState: [ScrollState](ts-container-l
 
 从API version 12开始废弃不再使用，建议使用[onDidScroll](ts-container-scrollable-common.md#ondidscroll12)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **ArkTS-Dyn起始版本：** 7
-
-**ArkTS-Sta起始版本：** 23
-
 
 **参数：**
 
@@ -1183,6 +1262,8 @@ Grid组件可见区域item变化事件的回调类型。
 **ArkTS-Dyn起始版本：** 19
 
 **ArkTS-Sta起始版本：** 24
+
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ------ | ------ | ------|

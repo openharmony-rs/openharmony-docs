@@ -7139,8 +7139,8 @@ let bundleList: Array<string> = ["com.example.myapplication"];
 let userId: int = 100;
 try {
   notificationManager.disableNotificationFeature(disabled, bundleList, userId);
-} catch (error: BusinessError) {
-    console.error(`DisableNotificationFeature failed, code is ${error.code}, message is ${error.message}`);
+} catch (err) {
+    console.error(`DisableNotificationFeature failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
 
@@ -7424,7 +7424,7 @@ let bundle: notificationManager.BundleOption = {
 };
 try {
     notificationManager.setSilentReminderEnabled(bundle, true);
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`setSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -7500,7 +7500,7 @@ try {
     notificationManager.isSilentReminderEnabled(bundle).then((data: notificationManager.SwitchState) => {
         console.info(`Reminder data is ${JSON.stringify(data)}`);
     });
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`isSilentReminderEnabled failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -7577,7 +7577,7 @@ badges.set(bundle, true);
 
 try{
     notificationManager.setBadgeDisplayStatusByBundles(badges);
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
 };
 ```
@@ -7663,7 +7663,7 @@ try{
     data.forEach((value, key) => {
         console.info(`Bundle is ${key.bundle}, uid is ${key.uid}, badge status is ${value}.`);
     })});
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`GetBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
 };
 ```
@@ -7749,7 +7749,7 @@ let reminderInfos: Array<notificationManager.NotificationReminderInfo> = [
 
 try{
     notificationManager.setReminderInfoByBundles(reminderInfos);
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`setBadgeDisplayStatusByBundles failed, code is ${err.code}, message is ${err.message}`);
 };
 ```
@@ -7832,7 +7832,7 @@ try{
     notificationManager.getReminderInfoByBundles(bundles).then((data: Array<notificationManager.NotificationReminderInfo>) => {
         console.info(`Reminder data is ${JSON.stringify(data)}`);
     });
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`GetReminderInfoByBundles failed, code is ${err.code}, message is ${err.message}`);
 };
 ```
@@ -7900,7 +7900,7 @@ try{
             return 1;
         }
     );
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`onBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -7952,7 +7952,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try{
     notificationManager.offBadgeNumberQuery();
-} catch(err: BusinessError) {
+} catch (err) {
     console.info(`OffBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
@@ -8054,13 +8054,13 @@ class EntryAbility extends UIAbility {
         }
         notificationManager.setRingtoneInfoByBundle(bundle, ringtoneInfo).then(() => {
           console.info(`setRingtoneInfoByBundle bundle: ${JSON.stringify(bundle)}', ringtoneInfoJSON：' ${JSON.stringify(ringtoneInfo)}`);
-        }).catch((error: Error) => {
-            let e = error as BusinessError;
-            console.error(`setRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+        }).catch((err: Error) => {
+            let error = err as BusinessError;
+            console.error(`setRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
           });
-      } catch (error : BusinessError) {
-        let e = error as BusinessError;
-        console.error(`setRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+      } catch (err) {
+        let error = err as BusinessError;
+        console.error(`setRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
       }
     }
 }
@@ -8154,13 +8154,13 @@ class EntryAbility extends UIAbility {
           .then((ringtoneInfo: notificationManager.RingtoneInfo) => {
             console.info(`getRingtoneInfoByBundle success: ${JSON.stringify(ringtoneInfo)}`);
           })
-          .catch((error: Error) => {
-            let e = error as BusinessError;
-            console.error(`getRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+          .catch((err: Error) => {
+            let error = err as BusinessError;
+            console.error(`getRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
           });
-      } catch (error : BusinessError) {
-        let e = error as BusinessError;
-        console.error(`getRingtoneInfoByBundle failed, code is ${e.code}, message is ${e.message}`);
+      } catch (err) {
+        let error = err as BusinessError;
+        console.error(`getRingtoneInfoByBundle failed, code is ${error.code}, message is ${error.message}`);
       }
     }
 }
@@ -8205,10 +8205,10 @@ ArkTS-Dyn示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.isPriorityEnabled().then((result : boolean) => {
-    console.info(`isPriorityEnabled result is ${result}`);
+notificationManager.isPriorityEnabled().then((result: boolean) => {
+  console.info(`isPriorityEnabled result is ${result}`);
 }).catch((err: BusinessError) => {
-    console.error(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8216,8 +8216,8 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-notificationManager.isPriorityEnabled().then((result : boolean) => {
-    console.info(`isPriorityEnabled result is ${result}`);
+notificationManager.isPriorityEnabled().then((result: boolean) => {
+  console.info(`isPriorityEnabled result is ${result}`);
 }).catch((e: Error) => {
   let err = e as BusinessError
   console.error(`isPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
@@ -8271,9 +8271,9 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setPriorityEnabled(false).then(() => {
-    console.info(`setPriorityEnabled success`);
+  console.info(`setPriorityEnabled success`);
 }).catch((err: BusinessError) => {
-    console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8282,10 +8282,10 @@ ArkTS-Sta示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 
 notificationManager.setPriorityEnabled(false).then(() => {
-    console.info(`setPriorityEnabled success`);
+  console.info(`setPriorityEnabled success`);
 }).catch((e: Error) => {
   let err = e as BusinessError
-    console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
+  console.error(`setPriorityEnabled failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
 
@@ -8420,12 +8420,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
 try {
   notificationManager.setPriorityEnabledByBundle(bundleOption, notificationManager.PriorityEnableStatus.ENABLE).then(() => {
-      console.info(`setPriorityEnabledByBundle success`);
-    }).catch((e: Error) => {
-      let err = e as BusinessError
-      console.error(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
-    });
-} catch (err: Error) {
+    console.info(`setPriorityEnabledByBundle success`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError
+    console.error(`setPriorityEnabledByBundle failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (err) {
   console.error(`setPriorityEnabledByBundle failed, err is ${err}`);
 }
 ```
@@ -8561,12 +8561,12 @@ import { BusinessError } from '@kit.BasicServicesKit';
 const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 0 };
 try {
   notificationManager.setBundlePriorityConfig(bundleOption, 'keyword\nkeyword1').then(() => {
-      console.info(`setBundlePriorityConfig success`);
-    }).catch((e: Error) => {
-      let err = e as BusinessError
-      console.error(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
-    });
-} catch (err: Error) {
+    console.info(`setBundlePriorityConfig success`);
+  }).catch((e: Error) => {
+    let err = e as BusinessError
+    console.error(`setBundlePriorityConfig failed, code is ${err.code}, message is ${err.message}`);
+  });
+} catch (err) {
   console.error(`setBundlePriorityConfig failed, err is ${err}`);
 }
 ```
@@ -8633,7 +8633,7 @@ try {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `isPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`isPriorityIntelligentEnabled failed, err is ${err}`);
 }
 ```
@@ -8706,7 +8706,7 @@ try {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `setPriorityIntelligentEnabled failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`setPriorityIntelligentEnabled failed, err is ${err}`);
 }
 ```
@@ -8779,7 +8779,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let bundles: Array<notificationManager.BundleOption> = new Array(bundleOption);
+  let bundles: Array<notificationManager.BundleOption> = [bundleOption];
   notificationManager.getPriorityEnabledByBundles(bundles).then((switches: Map<notificationManager.BundleOption, boolean>) => {
     switches.forEach((value, key) => {
       hilog.info(0x0000, 'testTag', `getPriorityEnabledByBundles switches: ${key.bundle} ${key.uid}, ${value}`);
@@ -8788,7 +8788,7 @@ try {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `getPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`getPriorityEnabledByBundles failed, err is ${err}`);
 }
 ```
@@ -8859,14 +8859,14 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let switches: Map<notificationManager.BundleOption, boolean> = new Map([[bundleOption, false]]);
+  let switches: Map<notificationManager.BundleOption, boolean> = new Map<notificationManager.BundleOption, boolean>([[bundleOption, false]]);
   notificationManager.setPriorityEnabledByBundles(switches).then(() => {
     hilog.info(0x0000, 'testTag', `setPriorityEnabledByBundles success`);
   }).catch((e: Error) => {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `setPriorityEnabledByBundles failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`setPriorityEnabledByBundles failed, err is ${err}`);
 }
 ```
@@ -8941,7 +8941,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let bundles: Array<notificationManager.BundleOption> = new Array(bundleOption);
+  let bundles: Array<notificationManager.BundleOption> = [bundleOption];
   notificationManager.getPriorityStrategyByBundles(bundles).then((strategies: Map<notificationManager.BundleOption, long>) => {
     strategies.forEach((value, key) => {
       hilog.info(0x0000, 'testTag', `getPriorityStrategyByBundles strategies: ${key.bundle} ${key.uid}, ${value}`);
@@ -8950,7 +8950,7 @@ try {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `getPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`getPriorityStrategyByBundles failed, err is ${err}`);
 }
 ```
@@ -9023,14 +9023,14 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 
 try {
   const bundleOption : notificationManager.BundleOption = { bundle: 'bundleName', uid: 1000 };
-  let strategies: Map<notificationManager.BundleOption, long> = new Map([[bundleOption, notificationManager.PriorityStrategyStatus.STATUS_APPLICATION_DEFINED]]);
+  let strategies: Map<notificationManager.BundleOption, long> = new Map<notificationManager.BundleOption, long>([[bundleOption, notificationManager.PriorityStrategyStatus.STATUS_APPLICATION_DEFINED]]);
   notificationManager.setPriorityStrategyByBundles(strategies).then(() => {
     hilog.info(0x0000, 'testTag', `setPriorityStrategyByBundles success`);
   }).catch((e: Error) => {
     let err = e as BusinessError
     hilog.error(0x0000, 'testTag', `setPriorityStrategyByBundles failed, code is ${err.code}, message is ${err.message}`);
   });
-} catch (err: Error) {
+} catch (err) {
   console.error(`setPriorityStrategyByBundles failed, err is ${err}`);
 }
 ```
@@ -9100,6 +9100,80 @@ notificationManager.setGeofenceEnabled(true).then(() => {
 }).catch((e: Error) => {
   let err = e as BusinessError
   hilog.error(0x0000, 'testTag', '%{public}s',`setGeofenceEnabled failed, code is ${err.code}, message is ${err.message}`);
+});
+```
+
+## notificationManager.getNotificationStatisticsByBundle
+
+getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise\<BundleNotificationStatistics[]\>
+
+批量获取指定应用列表的通知统计信息，使用Promise异步回调。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**设备行为差异**：该接口仅在Phone/PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+
+**需要权限**：ohos.permission.NOTIFICATION_CONTROLLER
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+**参数：**
+
+| 参数名      | 类型                  | 必填 | 说明                         |
+| --------- | --------------------- | ---- | ---------------------------- |
+| bundles   | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption)[] | 是  | 应用的包信息列表。 |
+
+**返回值：**
+
+| 类型            | 说明                                   |
+| --------------- | -------------------------------------- |
+| Promise\<[BundleNotificationStatistics](#bundlenotificationstatistics)[]\> | Promise对象。返回指定应用列表的通知统计信息。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[通知错误码](errorcode-notification.md)。
+
+| 错误码ID | 错误信息                                                     |
+| -------- | ------------------------------------------------------------ |
+| 201 | Permission denied. |
+| 202 | Not system application to call the interface. |
+| 801 | Capability not supported. |
+| 1600001 | Internal error. |
+| 1600003 | Failed to connect to the service. |
+
+**示例：**
+
+ArkTS-Dyn示例：
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let bundles: notificationManager.BundleOption[] = [
+  { bundle:"com.example.test01" },
+  { bundle:"com.example.test02" }
+];
+notificationManager.getNotificationStatisticsByBundle(bundles).then(
+  (data: notificationManager.BundleNotificationStatistics[]) => {
+  console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
+}).catch((err: BusinessError):void => {
+  console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
+});
+```
+
+ArkTS-Sta示例：
+```ts
+let bundles: notificationManager.BundleOption[] = [
+  { bundle:"com.example.test01" },
+  { bundle:"com.example.test02" }
+];
+notificationManager.getNotificationStatisticsByBundle(bundles).then(
+  (data: notificationManager.BundleNotificationStatistics[]) => {
+  console.info(`getNotificationStatisticsByBundle success, data is ${JSON.stringify(data)}`)
+}).catch((err: Error):void => {
+  console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
 });
 ```
 
@@ -9396,6 +9470,24 @@ type NotificationLiveViewContent = _NotificationLiveViewContent
 | reminderFlags | <br/>ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 表示通知提醒方式的标志位。 |
 | silentReminderEnabled | boolean | 否 | 否 | 表示静默提醒开关使能状态（true：使能，false：禁止）。 |
 
+## BundleNotificationStatistics
+
+描述指定应用通知统计信息。
+
+**系统能力**：SystemCapability.Notification.Notification
+
+**系统接口**：此接口为系统接口。
+
+**ArkTS-Dyn起始版本**：26.0.0
+
+**ArkTS-Sta起始版本**：26.0.0
+
+| 名称      | 类型    | 只读 | 可选 | 说明           |
+| --------- | ------ | ---- | ---- | ------------- |
+| bundle | [BundleOption](js-apis-inner-notification-notificationCommonDef.md#bundleoption) | 否 | 否 | 指定应用的包信息。|
+| lastTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long<br/> | 否 | 否 | 应用最后一次发布通知的时间。数据格式：时间戳。单位：ms。 |
+| recentCount | ArkTS-Dyn: number<br/>ArkTS-Sta: int<br/> | 否 | 否 | 应用最近7天发布的通知总量。 |
+
 ## PriorityNotificationType<sup>23+</sup>
 
 描述通知的优先级类型。
@@ -9582,7 +9674,7 @@ type MonitorEvent = _MonitorEvent
 | STATUS_APPLICATION_DEFINED | 1<<4 | 仅应用自定义。 |
 | STATUS_ALL_PRIORITY | 1<<5 | 全部通知优先。 |
 
-## GroupInfo <sup>26+</sup>
+## GroupInfo
 
 type GroupInfo = _GroupInfo
 
@@ -9594,10 +9686,10 @@ type GroupInfo = _GroupInfo
 
 **系统接口**：此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.0.0
 
 | 类型 | 说明 |
 | --- | --- |
-| [_GroupInfo](js-apis-inner-notification-notificationRequest-sys.md#groupinfo26) | 组通知定制信息的类型。 |
+| [_GroupInfo](js-apis-inner-notification-notificationRequest-sys.md#groupinfo) | 组通知定制信息的类型。 |

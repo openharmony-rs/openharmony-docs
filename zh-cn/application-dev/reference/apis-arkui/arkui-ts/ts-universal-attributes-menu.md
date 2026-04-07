@@ -244,6 +244,8 @@ ArkTS-Sta:bindContextMenu(content: CustomBuilderT\<ResponseType> | undefined, op
 | onDidDisappear<sup>20+</sup> | ArkTS-Dyn: [Callback&lt;void&gt;](ts-types.md#callback12) <br/>ArkTS-Sta: [VoidCallback](ts-types.md#voidcallback12) | 否 | 菜单消失时的事件回调。<br />**说明：**<br />1.正常时序依次为：aboutToAppear>>onWillAppear>>onAppear>>onDidAppear>>aboutToDisappear>>onWillDisappear>>onDisappear>>onDidDisappear。<br/>2.onDisappear和onDidDisappear触发时机相同，onDidDisappear在onDisappear后生效。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 | previewScaleMode<sup>20+</sup> | [PreviewScaleMode](#previewscalemode20类型说明) | 否 | 预览图缩放方式。<br />默认值：PreviewScaleMode.AUTO<br />**说明：**<br />布局空间不足时，控制预览图的缩放方式。未设置或设置undefined按照PreviewScaleMode.AUTO处理。当设置成PreviewScaleMode.CONSTANT时，如果预览图过大，剩余的空间不足以放置菜单时，菜单将重叠显示在预览图之下。<br />预览图的最大宽高不会超过预览图最大可布局区域（窗口大小减去上下左右的安全边距）。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
 | availableLayoutArea<sup>20+</sup> | [AvailableLayoutArea](#availableLayoutArea20类型说明) | 否 | 设置预览图宽高的可布局区域，预览图的百分比依据此设置计算，最终可能因安全区限制而被压缩或裁剪。<br />**说明：**<br />未设置或设置为undefined时，百分比依据窗口大小计算。若设置为AvailableLayoutArea.SAFE_AREA，预览图的可布局区域为窗口大小减去上下左右的安全边距。<br />**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 20 <br/>**ArkTS-Sta起始版本：** 23 |
+| scrollBar | [BarState](ts-appendix-enums.md#barstate) | 否 | 设置菜单滚动条状态。 <br />默认值：BarState.Auto <br />未设置或undefined时，按照BarState.Auto处理。<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
+| maxHeight | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否 | 设置菜单显示的最大高度。<br /> **说明：** <br />默认最大高度是可用高度的80%。<br />未设置、设置为负数或undefined时，按照默认最大高度处理。设置的菜单最大高度不能超过可用高度的100%。<br />预览图场景下不支持此能力，菜单按默认最大高度显示。<br />如果菜单所有选项的实际高度之和小于设定的高度，菜单的高度按实际高度显示。<br />**原子化服务API：** 从API version 26.0.0开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**ArkTS-Dyn起始版本：** 26.0.0 <br/>**ArkTS-Sta起始版本：** 26.0.0 |
 
 ## MenuPreviewMode<sup>11+</sup>
 
@@ -2524,3 +2526,110 @@ struct Index {
 ```
 
 ![bindContextMenuWithType](figures/bindContextMenuWithType.gif)
+
+### 示例19（设置菜单的最大高度）
+
+该示例为bindContextMenu通过配置[ContextMenuOptions](#contextmenuoptions10)中的maxHeight属性，设置菜单的最大高度。
+
+未设置maxHeight属性时，默认按照菜单的最大高度，可展示全部列表项，通过设置默认最大高度为窗口可用高度的50%时，仅能显示8个列表项。
+
+从API版本26.0.0开始，在ContextMenuOptions中新增了maxHeight属性。
+
+ArkTS-Dyn示例：
+```ts
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r('app.media.startIcon');
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem1' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem2' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem3' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem4' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem5' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem6' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem7' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem8' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem9' })
+    }
+  }
+
+  build() {
+    Column({ space: 50 }) {
+      Column() {
+        Column() {
+          Text('LongPress-image')
+            .width(200)
+            .height(100)
+            .textAlign(TextAlign.Center)
+            .margin(100)
+            .fontSize(30)
+            .bindContextMenu(this.MyMenu, ResponseType.LongPress,
+              {
+                maxHeight: LengthMetrics.percent(0.5)
+              })
+            .backgroundColor('#ff7fcdff')
+        }
+      }.width('100%')
+    }
+  }
+}
+
+```
+
+ArkTS-Sta示例：
+```ts
+// xxx.ets
+import {
+  Entry, Text, Column, Component, LengthMetrics, Builder, TextAlign, AttributeModifier, ColumnOptions, Menu, MenuItem,
+  ResourceStr, $r, ResponseType
+} from '@ohos.arkui.component';
+import { State } from '@ohos.arkui.stateManagement';
+
+@Entry
+@Component
+struct Index {
+  // $r('app.media.startIcon')需要替换为开发者所需的图像资源文件。
+  private iconStr: ResourceStr = $r('app.media.startIcon');
+
+  @Builder
+  MyMenu() {
+    Menu() {
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem1' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem2' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem3' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem4' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem5' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem6' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem7' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem8' })
+      MenuItem({ startIcon: this.iconStr, content: 'MenuItem9' })
+    }
+  }
+
+  build() {
+    Column({ space: 5 } as ColumnOptions) {
+      Text('LongPress-image')
+        .width(200)
+        .height(100)
+        .textAlign(TextAlign.Center)
+        .margin(100)
+        .fontSize(30)
+        .bindContextMenu(this.MyMenu, ResponseType.LongPress,
+          {
+            maxHeight: LengthMetrics.percent(0.5)
+          })
+        .backgroundColor('#ff7fcdff')
+    }
+  }
+}
+```
+
+![maxHeight-menu](figures/menuMaxHeight.png)

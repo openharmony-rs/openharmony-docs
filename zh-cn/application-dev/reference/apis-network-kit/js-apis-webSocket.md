@@ -750,6 +750,8 @@ onOpen(callback: Callback\<OpenResult\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                          |
@@ -820,6 +822,8 @@ offOpen(callback?: Callback\<OpenResult\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                          |
@@ -886,6 +890,8 @@ onMessage(callback: AsyncCallback\<string | ArrayBuffer\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                    | 必填 | 说明                                         |
@@ -950,6 +956,8 @@ offMessage(callback?: AsyncCallback\<string | ArrayBuffer\>): void
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **参数：**
 
 | 参数名   | 类型                                                | 必填 | 说明                                         |
@@ -1008,6 +1016,8 @@ onWebSocketClose(callback: AsyncCallback\<CloseResult\>): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -1069,6 +1079,8 @@ offWebSocketClose(callback?: AsyncCallback\<CloseResult\>): void
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -1196,6 +1208,8 @@ offWebSocketError(callback?: ErrorCallback): void
 | -------- | ------------- | ---- | ------------------------------- |
 | callback | ErrorCallback | 否   | 回调函数，用于指定需要移除的回调。      |
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
 **示例：**
 
 ```ts
@@ -1238,6 +1252,8 @@ onDataEnd(callback: Callback\<void\>): void
 订阅WebSocket的数据接收结束事件，使用callback方式作为异步方法。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -1294,6 +1310,8 @@ offDataEnd(callback?: Callback\<void\>): void
 > 可以指定传入onDataEnd中的callback取消一个订阅，也可以不指定callback清空所有订阅。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -2493,11 +2511,11 @@ localServer.offWebSocketServerError();
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称 | 类型   | 必填 | 说明                |
-| ------ | ------ | ---- |-------------------|
-| certPath   | string  | 是   | 证书路径。             |
-| keyPath | string | 是   | 证书密钥的路径。          |
-| keyPassword | string | 否   | 证书密钥的密码。缺省为空字符串。 |
+| 名称 | 类型   | 只读 |可选| 说明                |
+| ------ | ------ | ---- |---|----------------|
+| certPath   | string  | 否   |否 |证书路径。             |
+| keyPath | string | 否   |否| 证书密钥的路径。          |
+| keyPassword | string | 否   |是| 证书密钥的密码。缺省为空字符串。 |
 
 ## ProxyConfiguration<sup>12+</sup>
 type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
@@ -2528,10 +2546,10 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 错误码，关闭WebSocket连接时的可选参数，可根据实际情况来填。传入值需为正整数，默认值为1000。 |
-| reason | string | 否   | 原因值，关闭WebSocket连接时的可选参数，可根据实际情况来填。默认值为空字符串（""）。 |
+| 名称 | 类型   | 只读 | 可选  | 说明                                                         |
+| ------ | ------ | ---- | ---------|--------------------------------------------------- |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是  | 错误码，关闭WebSocket连接时的可选参数，可根据实际情况来填。传入值需为正整数，默认值为1000。 |
+| reason | string | 否 | 是    | 原因值，关闭WebSocket连接时的可选参数，可根据实际情况来填。默认值为空字符串（""）。 |
 
 ## CloseResult<sup>10+</sup>
 
@@ -2545,10 +2563,10 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称 | 类型   | 必填 | 说明                                                         |
-| ------ | ------ | ---- | ------------------------------------------------------------ |
-| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 错误码，订阅close事件得到的关闭连接的错误码。 |
-| reason | string | 是   | 原因值，订阅close事件得到的关闭连接的错误原因。 |
+| 名称 | 类型   | 只读 | 可选  | 说明                                                         |
+| ------ | ------ | ---- | -----|------------------------------------------------------- |
+| code   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 否   | 错误码，订阅close事件得到的关闭连接的错误码。 |
+| reason | string |  否 | 否   | 原因值，订阅close事件得到的关闭连接的错误原因。 |
 
 ## OpenResult<sup>22+</sup>
 
@@ -2557,6 +2575,8 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 **原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Communication.NetStack
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 | 名称 | 类型   | 必填 | 说明                                                         |
 | ------ | ------ | ---- | ------------------------------------------------------------ |
@@ -2567,8 +2587,7 @@ type ProxyConfiguration = 'system' | 'no-proxy' | HttpProxy
 ArkTS-Dyn: type ResponseHeaders = {
   [k: string]: string | string[] | undefined;
 }
-
-ArkTS-Sta: type ResponseHeaders = Record\<string, string | string[] | undefined\>
+<br>ArkTS-Sta: type ResponseHeaders = Record\<string, string | string[] | undefined\>
 
 服务器发送的响应头。
 
@@ -2684,6 +2703,7 @@ type ClientConnectionCloseCallback = (clientConnection: WebSocketConnection, clo
 
 **系统能力**：SystemCapability.Communication.NetStack
 
+**参数：**
 | 名称 | 类型   | 只读 | 可选 | 说明                            |
 | ---------------- | ------------------- | ---- | ------ | --------------------------------------------- |
 | clientConnection | [WebSocketConnection](#websocketconnection19) | 否 | 否 | 客户端信息，包括客户端的ip地址和端口号port。             |

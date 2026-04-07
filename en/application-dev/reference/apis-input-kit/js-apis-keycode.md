@@ -308,6 +308,7 @@ Keycode value.
 | KEYCODE_KBDINPUTASSIST_NEXTGROUP |  2729 | Assist_Next_Group key, used to switch to the next input method in the input group              |
 | KEYCODE_KBDINPUTASSIST_ACCEPT    |  2730 | Keyboard Input-assisted Accept key          |
 | KEYCODE_KBDINPUTASSIST_CANCEL    |  2731 | Keyboard Input-assisted Cancel key         |
+| KEYCODE_AOD_SINGLE_CLICK<sup>24+</sup> | 2740 | Single tapping the smart phone's touch screen event, which is used when the Always On Display is enabled |
 | KEYCODE_FRONT                    |  2800 | Front key, which is used to launch the windshield defogger                  |
 | KEYCODE_SETUP                    |  2801 | Setup key                        |
 | KEYCODE_WAKEUP                   |  2802 | Wakeup key                        |

@@ -1768,9 +1768,7 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>>): 
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 22
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -1793,26 +1791,11 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>>): 
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 connection.getAddressesByName("xxxx", (error: BusinessError, data: connection.NetAddress[]) => {
-  if (error) {
-    console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
-    return;
-  }
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-```
-
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-connection.getAddressesByName("xxxx", (error: BusinessError|null, data: Array<connection.NetAddress>|undefined) => {
   if (error) {
     console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
     return;
@@ -1833,9 +1816,7 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress\>\>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 22
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -1863,20 +1844,10 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress\>\>
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 
 connection.getAddressesByName("xxxx").then((data: connection.NetAddress[]) => {
-  console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-});
-```
-
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-
-connection.getAddressesByName("xxxx").then((data: Array<connection.NetAddress>) => {
   console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
 });
 ```
@@ -3604,9 +3575,9 @@ netCon.unregister((error: BusinessError|null) => {
 
 ### 属性
 
-| 名称    | 类型   | 必填 | 说明                      |
-| ------ | ------ | --- |------------------------- |
-| netId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  |  网络ID，取值为0代表没有默认网络，其余取值必须大于等于100。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| 名称    | 类型   | 只读 | 可选 | 说明                      |
+| ------ | ------ | --- |-----|-------------------- |
+| netId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否  |  网络ID，取值为0代表没有默认网络，其余取值必须大于等于100。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ### bindSocket<sup>9+</sup>
 
@@ -3794,9 +3765,7 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>\>\)
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 22
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -3819,7 +3788,6 @@ getAddressesByName(host: string, callback: AsyncCallback\<Array\<NetAddress>\>\)
 
 **示例：**
 
-ArkTS-Dyn示例：
 ```ts
 import { connection } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -3840,26 +3808,6 @@ connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
 });
 ```
 
-ArkTS-Sta示例：
-```ts
-import { connection } from '@kit.NetworkKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-connection.getDefaultNet().then((netHandle: connection.NetHandle) => {
-  if (netHandle.netId == 0) {
-    // 当前没有已连接的网络时，netHandler的netId为0，属于异常场景。可根据实际情况添加处理机制。
-    return 0;
-  }
-  let host = "xxxx";
-  netHandle.getAddressesByName(host, (error: BusinessError|null, data: Array<connection.NetAddress>|undefined) => {
-    if (error) {
-      console.error(`Failed to get addresses. Code:${error.code}, message:${error.message}`);
-      return;
-    }
-    console.info(`Succeeded to get data: ${JSON.stringify(data)}`);
-  });
-});
-```
 
 ### getAddressesByName
 
@@ -3871,9 +3819,7 @@ getAddressesByName(host: string): Promise\<Array\<NetAddress>>
 
 **系统能力**：SystemCapability.Communication.NetManager.Core
 
-**ArkTS-Dyn起始版本：** 8
-
-**ArkTS-Sta起始版本：** 22
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
 **参数：**
 
@@ -4223,13 +4169,13 @@ TCP状态。
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称    | 类型   | 必填 | 说明                      |
-| ------ | ------ | --- |------------------------- |
-| host  | string | 是  | 代理服务器主机名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| port  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是  | 主机端口。取值范围[0,65535]。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
-| exclusionList  | Array\<string\> | 是  | 不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了 “ample.com”，则  “ample.com”、“www.ample.com”、“ample.com:80”都会被匹配，而 “www.example.com”、“ample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http和https等协议前缀。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| username<sup>12+</sup>  | string | 否 | 使用代理的用户名。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
-| password<sup>12+</sup>  | string | 否 | 使用代理的用户密码。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
+| 名称    | 类型   | 只读 | 可选 | 说明                      |
+| ------ | ------ | ---| --- |------------------------- |
+| host  | string |  否 | 否  | 代理服务器主机名。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| port  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否   | 主机端口。取值范围[0,65535]。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。|
+| exclusionList  | Array\<string\> | 否 | 否   | 不使用代理的主机名列表，主机名支持域名、IP地址以及通配符形式，详细匹配规则如下：<br/>1、域名匹配规则：<br/>（1）完全匹配：代理服务器主机名只要与列表中的任意一个主机名完全相同，就可以匹配。<br/>（2）包含匹配：代理服务器主机名只要包含列表中的任意一个主机名，就可以匹配。<br/>例如，如果在主机名列表中设置了 “ample.com”，则  “ample.com”、“www.ample.com”、“ample.com:80”都会被匹配，而 “www.example.com”、“ample.com.org”则不会被匹配。<br/>2、IP地址匹配规则：代理服务器主机名只要与列表中的任意一个IP地址完全相同，就可以匹配。<br/>3、域名跟IP地址可以同时添加到列表中进行匹配。<br/>4、单个“\*”是唯一有效的通配符，当列表中只有通配符时，将与所有代理服务器主机名匹配，表示禁用代理。通配符只能单独添加，不可以与其他域名、IP地址一起添加到列表中，否则通配符将不生效。<br/>5、匹配规则不区分主机名大小写。<br/>6、匹配主机名时，不考虑http和https等协议前缀。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| username<sup>12+</sup>  | string | 否 | 是 | 使用代理的用户名。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
+| password<sup>12+</sup>  | string | 否 | 是  | 使用代理的用户密码。<br />**ArkTS-Dyn起始版本：** 12<br />**ArkTS-Sta起始版本：** 22 |
 
 ## NetSpecifier
 
@@ -4243,10 +4189,10 @@ TCP状态。
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称                     | 类型                                | 必填  | 说明                                                         |
-| ----------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| netCapabilities         | [NetCapabilities](#netcapabilities) |  是  | 存储数据网络的传输能力和承载类型。                                |	
-| bearerPrivateIdentifier | string                              |  否  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
+| 名称                     | 类型                                | 只读 | 可选  | 说明                                                         |
+| ----------------------- | ----------------------------------- | ----|---- | ------------------------------------------------------------ |
+| netCapabilities         | [NetCapabilities](#netcapabilities) |  否 | 否  | 存储数据网络的传输能力和承载类型。                                |	
+| bearerPrivateIdentifier | string                              |  否 | 是  |  网络标识符，蜂窝网络的标识符是"slot0"（对应SIM卡1）、"slot1"（对应SIM卡2）。从API12开始可以通过传递注册的WLAN热点信息表示应用希望激活的指定的WLAN网络。 |
 
 **示例：**
 
@@ -4312,10 +4258,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称                    | 类型                                 | 必填  | 说明                                                         |
-| ----------------------- | ------------------------------------ | ---- | ------------------------------------------------------------ |
-| netHandle               | [NetHandle](#nethandle)              |  是  | 数据网络句柄。                                                |	
-| netCap                  |  [NetCapabilities](#netcapabilities) |  是  |  存储数据网络的传输能力和承载类型。                            |
+| 名称                    | 类型                                 | 只读	| 可选 | 说明                                                         |
+| ----------------------- | -------------------------|----------- | ---- | ------------------------------------------------------------ |
+| netHandle               | [NetHandle](#nethandle)              |  否 | 否  | 数据网络句柄。                                                |	
+| netCap                  |  [NetCapabilities](#netcapabilities) |  否 | 否  |  存储数据网络的传输能力和承载类型。                            |
 
 ## NetCapabilities
 
@@ -4327,12 +4273,12 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称                  | 类型                                | 必填 | 说明                     |
-| --------------------- | ---------------------------------- | --- | ------------------------ |
-| linkUpBandwidthKbps   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 |  上行（设备到网络）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
-| linkDownBandwidthKbps | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 |  下行（网络到设备）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
-| networkCap            | Array\<[NetCap](#netcap)>           |  否 |  网络具体能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。           |	
-| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  是 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      
+| 名称                  | 类型                                | 只读	| 可选 | 说明                     |
+| --------------------- | ----------------------|------------ | --- | ------------------------ |
+| linkUpBandwidthKbps   | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 是 |  上行（设备到网络）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
+| linkDownBandwidthKbps | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 是 |  下行（网络到设备）带宽，单位(kb/s)。0表示无法评估当前网络带宽。|
+| networkCap            | Array\<[NetCap](#netcap)>           | 否 | 是 |  网络具体能力。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。           |	
+| bearerTypes           | Array\<[NetBearType](#netbeartype)> |  否 | 否 |  网络类型。数组里面只包含了一种网络类型。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。      
 
 ## NetConnectionPropertyInfo<sup>11+</sup>
 
@@ -4346,10 +4292,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 ### 属性
 
-| 名称                 |                          类型                        | 必填 |         说明           |
-| -------------------- | --------------------------------------------------- | ---- |----------------------- |
-| netHandle            | [NetHandle](#nethandle)                             | 是   |数据网络句柄(netHandle)。|	
-| connectionProperties | [ConnectionProperties](#connectionproperties)       | 是   |网络连接属性。           |
+| 名称                 |                          类型                        |  只读 | 可选 |         说明           |
+| -------------------- | ----------------------------------|----------------- | ---- |----------------------- |
+| netHandle            | [NetHandle](#nethandle)                             | 否 | 否   |数据网络句柄(netHandle)。|	
+| connectionProperties | [ConnectionProperties](#connectionproperties)       | 否 | 否   |网络连接属性。           |
 
 ## NetBlockStatusInfo<sup>11+</sup>
 
@@ -4363,10 +4309,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 ### 属性
 
-| 名称                 | 类型                                  | 必填 |            说明            |
-| -------------------- | ------------------------------------- | --- |--------------------------- |
-| netHandle            | [NetHandle](#nethandle)               | 是   |数据网络句柄(netHandle)。   |	
-| blocked              | boolean                               | 是   |true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
+| 名称                 | 类型                                  |  只读 | 可选 |            说明            |
+| -------------------- | --------------------------|----------- | --- |--------------------------- |
+| netHandle            | [NetHandle](#nethandle)               | 否 | 否  |数据网络句柄(netHandle)。   |	
+| blocked              | boolean                               |否 | 否   |true：标识当前网络是堵塞状态；false：标识当前网络不是堵塞状态。 |
 
 ## ConnectionProperties
 
@@ -4378,14 +4324,14 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称          |                类型                 | 必填 |               说明                     |
+| 名称          |                类型                 | 只读 | 可选 |               说明                     |
 | ------------- | ----------------------------------- | ----|--------------------------------------- |
-| interfaceName | string                              | 是 |网卡名称。                                |	
-| domains       | string                              | 是 |域名。                                    |	
-| linkAddresses | Array\<[LinkAddress](#linkaddress)> | 是 |链路信息。                                |	
-| routes        | Array\<[RouteInfo](#routeinfo)>     | 是 |路由信息。                                |	
-| dnses         | Array\<[NetAddress](#netaddress)>   | 是 |网络地址，参考[NetAddress](#netaddress)。 |	
-| mtu           | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 |最大传输单元。                            |
+| interfaceName | string                              |  否 | 否 |网卡名称。                                |	
+| domains       | string                              |  否 | 否 |域名。                                    |	
+| linkAddresses | Array\<[LinkAddress](#linkaddress)> |  否 | 否 |链路信息。                                |	
+| routes        | Array\<[RouteInfo](#routeinfo)>     |  否 | 否 |路由信息。                                |	
+| dnses         | Array\<[NetAddress](#netaddress)>   |  否 | 否 |网络地址，参考[NetAddress](#netaddress)。 |	
+| mtu           | ArkTS-Dyn: number<br/>ArkTS-Sta: int |  否 | 否 |最大传输单元。                            |
 
 ## RouteInfo
 
@@ -4397,15 +4343,15 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称           | 类型                        | 必填 |     说明      |
-| -------------- | --------------------------- | --- |-------------- |
-| interface      | string                      | 是 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br> **ArkTS-Dyn起始版本：** 8|	
-| iface      | string                      | 是 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 <br> **ArkTS-Sta起始版本：** 22|	
-| destination    | [LinkAddress](#linkaddress) | 是 |目的地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
-| gateway        | [NetAddress](#netaddress)   | 是 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
-| hasGateway     | boolean                     | 是 |true：有网关；false：无网关。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
-| isDefaultRoute | boolean                     | 是 |true：默认路由；false：非默认路由。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|
-| isExcludedRoute<sup>20+</sup>| boolean                     | 否 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
+| 名称           | 类型                        | 只读 | 可选|     说明      |
+| -------------- | ---------------|------------ | --- |-------------- |
+| interface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。 <br> **ArkTS-Dyn起始版本：** 8|	
+| iface      | string                      | 否 | 否 |网卡名称。<br> **ArkTS模式：** 该接口仅适用于ArkTS-Sta。 <br> **ArkTS-Sta起始版本：** 22|	
+| destination    | [LinkAddress](#linkaddress) | 否 | 否 |目的地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
+| gateway        | [NetAddress](#netaddress)   | 否 | 否 |网关地址。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
+| hasGateway     | boolean                     | 否 | 否 |true：有网关；false：无网关。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|	
+| isDefaultRoute | boolean                     | 否 | 否 |true：默认路由；false：非默认路由。<br> **ArkTS-Dyn起始版本：** 8<br> **ArkTS-Sta起始版本：** 22|
+| isExcludedRoute<sup>20+</sup>| boolean                     | 否 | 是 |是否为排除路由。true表示排除路由，false表示非排除路由，默认值为false。|
 
 ## LinkAddress
 
@@ -4417,10 +4363,10 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Sta起始版本：** 22
 
-| 名称         |           类型            | 必填 |        说明         |
-| ------------ | ------------------------- |---- |-------------------- |
-| address      | [NetAddress](#netaddress) | 是  | 链路地址。           |	
-| prefixLength | number                    | 是  |链路地址前缀的长度。  |
+| 名称         |           类型            | 只读 | 可选 |        说明         |
+| ------------ | -----------------|-------- |---- |-------------------- |
+| address      | [NetAddress](#netaddress) | 否 | 否  | 链路地址。           |	
+| prefixLength | number                    | 否 | 否  |链路地址前缀的长度。  |
 
 ## NetAddress
 
@@ -4434,11 +4380,11 @@ wifiManager.addCandidateConfig(config,(error,networkId) => {
 
 **ArkTS-Sta起始版本：** 22
 
-|  名称   | 类型   |必填|            说明              |
-| ------- | ------ | -- |---------------------------- |
-| address | string | 是 |地址。                       |	
-| family  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 |IPv4 = 1，IPv6 = 2，默认IPv4。|	
-| port    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 |端口，取值范围\[0, 65535]，默认值为0。  |
+|  名称   | 类型   | 只读 | 可选 |            说明              |
+| ------- | ------ | -- |--------|-------------------- |
+| address | string | 否 | 否 |地址。                       |	
+| family  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |IPv4 = 1，IPv6 = 2，默认IPv4。|	
+| port    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 是 |端口，取值范围\[0, 65535]，默认值为0。  |
 
 ## HttpRequest
 

@@ -320,7 +320,9 @@ alignRulesWithAlignRuleOptionTypedValue(value: AlignRuleOption | undefined): thi
 
 ## layoutGravity<sup>20+</sup>
 
-layoutGravity(alignment: LocalizedAlignment): T
+ArkTS-Dyn: layoutGravity(alignment: LocalizedAlignment): T
+
+ArkTS-Sta: layoutGravity(alignment: LocalizedAlignment | undefined): this
 
 单独设置Stack容器中子组件的对齐规则，仅当父容器为Stack时生效。与align属性同时使用时，layoutGravity优先级更高。
 
@@ -330,17 +332,21 @@ layoutGravity(alignment: LocalizedAlignment): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| alignment  | [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) | 是   | 指定设置在Stack容器中子组件的对齐规则。<br/>默认值：LocalizedAlignment.CENTER 。说明：当传入异常值时，按默认值处理。|
+| alignment  | ArkTS-Dyn: [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20)<br/>ArkTS-Sta: [LocalizedAlignment](ts-appendix-enums.md#localizedalignment20) \| undefined | 是   | 指定设置在Stack容器中子组件的对齐规则。<br/>默认值：LocalizedAlignment.CENTER 。说明：当传入异常值时，按默认值处理。|
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## AlignRuleOption<sup>9+</sup>对象说明
 
@@ -490,7 +496,9 @@ ArkTS-Sta: chainMode(direction: Axis | undefined, style: ChainStyle | undefined)
 
 ## chainWeight<sup>14+</sup>
 
-chainWeight(chainWeight: ChainWeightOptions): T
+ArkTS-Dyn: chainWeight(chainWeight: ChainWeightOptions): T
+
+ArkTS-Sta: chainWeight(chainWeight: ChainWeightOptions | undefined): this
 
 对形成链的组件进行重新布局。仅当父容器为[RelativeContainer](ts-container-relativecontainer.md)时生效。
 
@@ -498,17 +506,21 @@ chainWeight(chainWeight: ChainWeightOptions): T
 
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型                                        | 必填 | 说明                     |
 | ------ | ------------------------------------------- | ---- | ------------------------ |
-| chainWeight  | [ChainWeightOptions](ts-types.md#chainweightoptions14对象说明) | 是   | 设置了chainWeight属性的组件与同一条链上的兄弟组件在水平或竖直方向的尺寸会按照设置的权重进行分配，分配时会忽略组件本身尺寸设置，按分配的权重自适应占满剩余空间。 |
+| chainWeight  | ArkTS-Dyn: [ChainWeightOptions](ts-types.md#chainweightoptions14对象说明)<br/>ArkTS-Sta: [ChainWeightOptions](ts-types.md#chainweightoptions14对象说明) \| undefined | 是   | 设置了chainWeight属性的组件与同一条链上的兄弟组件在水平或竖直方向的尺寸会按照设置的权重进行分配，分配时会忽略组件本身尺寸设置，按分配的权重自适应占满剩余空间。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-|  T | 返回当前组件。 |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 ## 示例
 

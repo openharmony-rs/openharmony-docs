@@ -40,6 +40,10 @@ Swiper(controller?: SwiperController)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名        | 类型                                  | 必填   | 说明                 |
@@ -59,7 +63,7 @@ Swiper(controller?: SwiperController)
 
 ArkTS-Dyn: index(value: number)
 
-ArkTS-Sta: index(value: int | undefined)
+ArkTS-Sta: index(value: int | Bindable\<int> | undefined)
 
 设置当前在容器中显示的子组件的索引值。设置小于0或大于等于子组件数量时，按照默认值0处理。
 
@@ -79,7 +83,7 @@ ArkTS-Sta: index(value: int | undefined)
 
 | 参数名 | 类型   | 必填 | 说明                                             |
 | ------ | ------ | ---- | ------------------------------------------------ |
-| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| undefined | 是   | 当前在容器中显示的子组件的索引值。<br/>默认值：0 <br/>**说明：** <br/>设置的值小于0或大于最大页面索引时，取0。|
+| value  | ArkTS-Dyn: number<br/>ArkTS-Sta: int \| [Bindable](../js-apis-twoWayBinding1.2.md#bindablet20)\<int> \| undefined | 是   | 当前在容器中显示的子组件的索引值。<br/>默认值：0 <br/>**说明：** <br/>设置的值小于0或大于最大页面索引时，取0。|
 
 ### autoPlay
 
@@ -160,9 +164,7 @@ ArkTS-Sta: interval(value: int | undefined)
 
 ### indicator
 
-ArkTS-Dyn: indicator(value: DotIndicator | DigitIndicator | boolean)
-
-ArkTS-Sta: indicator(value: DotIndicator | DigitIndicator | boolean | undefined)
+indicator(value: DotIndicator | DigitIndicator | boolean)
 
 设置可选导航点指示器样式。
 
@@ -172,21 +174,21 @@ ArkTS-Sta: indicator(value: DotIndicator | DigitIndicator | boolean | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[indicator](#indicator23)。
+
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 23
-
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [DotIndicator](#dotindicator10)<sup>10+</sup>&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)<sup>10+</sup>&nbsp;\|&nbsp;boolean<br/>ArkTS-Sta: [DotIndicator](#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)&nbsp;\|&nbsp;boolean \| undefined | 是   | 可选导航点指示器样式。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/> \- boolean：是否启用导航点指示器。设置为true启用，false不启用。<br/>&nbsp;&nbsp;默认值：true<br/>&nbsp;&nbsp;默认类型：DotIndicator |
+| value  | [DotIndicator](#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)&nbsp;\|&nbsp;boolean | 是   | 可选导航点指示器样式。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/> \- boolean：是否启用导航点指示器。设置为true启用，false不启用。<br/>&nbsp;&nbsp;默认值：true<br/>&nbsp;&nbsp;默认类型：DotIndicator |
 
 ### indicator<sup>15+</sup>
 
-ArkTS-Dyn: indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicator | boolean)
-
-ArkTS-Sta: indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicator | boolean | undefined)
+indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicator | boolean)
 
 设置外部绑定的导航点组件控制器。
 
@@ -196,7 +198,29 @@ ArkTS-Sta: indicator(indicator: IndicatorComponentController | DotIndicator | Di
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[indicator](#indicator23)。
+
 **ArkTS-Dyn起始版本：** 15
+
+**参数：**
+
+| 参数名 | 类型                                                         | 必填 | 说明                                                         |
+| ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| indicator  | [IndicatorComponentController](ts-swiper-components-indicator.md#indicatorcomponentcontroller)&nbsp;\| [DotIndicator](#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)&nbsp;\|&nbsp;boolean | 是   | 可选导航点指示器样式。<br/>\- IndicatorComponentController：单独导航点指示器控制器。当使用单独导航点指示器控制器时，可以与外部单独导航点进行绑定，但是绑定的单独导航点和内置导航点不能同时存在。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/> \- boolean：是否启用导航点指示器。设置为true启用，false不启用。<br/>&nbsp;&nbsp;默认值：true<br/>&nbsp;&nbsp;默认类型：DotIndicator。|
+
+### indicator<sup>23+</sup>
+
+indicator(indicator: IndicatorComponentController | DotIndicator | DigitIndicator | boolean | undefined)
+
+设置可选导航点指示器样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[indicator](#indicator)和[indicator](#indicator15)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -204,7 +228,7 @@ ArkTS-Sta: indicator(indicator: IndicatorComponentController | DotIndicator | Di
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| indicator  | ArkTS-Dyn: [IndicatorComponentController](ts-swiper-components-indicator.md#indicatorcomponentcontroller)<sup>15+</sup>&nbsp;\| [DotIndicator](#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)&nbsp;\|&nbsp;boolean<br/>ArkTS-Sta: [IndicatorComponentController](ts-swiper-components-indicator.md#indicatorcomponentcontroller)&nbsp;\| [DotIndicator](#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)&nbsp;\|&nbsp;boolean \| undefined| 是   | 可选导航点指示器样式。<br/>\- IndicatorComponentController：单独导航点指示器控制器。当使用单独导航点指示器控制器时，可以与外部单独导航点进行绑定，但是绑定的单独导航点和内置导航点不能同时存在。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/> \- boolean：是否启用导航点指示器。设置为true启用，false不启用。<br/>&nbsp;&nbsp;默认值：true<br/>&nbsp;&nbsp;默认类型：DotIndicator。|
+| indicator  | [IndicatorComponentController](ts-swiper-components-indicator.md#indicatorcomponentcontroller)&nbsp;\| [DotIndicator](#dotindicator10)&nbsp;\|&nbsp;[DigitIndicator](#digitindicator10)&nbsp;\|&nbsp;boolean \| undefined | 是   | 可选导航点指示器样式。<br/>\- IndicatorComponentController：单独导航点指示器控制器。当使用单独导航点指示器控制器时，可以与外部单独导航点进行绑定，但是绑定的单独导航点和内置导航点不能同时存在。<br/> \- DotIndicator：圆点指示器样式。<br/> \- DigitIndicator：数字指示器样式。<br/> \- boolean：是否启用导航点指示器。设置为true启用，false不启用。<br/>&nbsp;&nbsp;默认值：true<br/>&nbsp;&nbsp;默认类型：DotIndicator。|
 
 
 ### loop
@@ -456,9 +480,125 @@ indicatorStyle(value?: IndicatorStyle)
 
 ### displayCount<sup>8+</sup>
 
-ArkTS-Dyn: displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean)
+displayCount(value: number | string | SwiperAutoFill, swipeByGroup?: boolean)
 
-ArkTS-Sta: displayCount(value: int | string | SwiperAutoFill | undefined, swipeByGroup?: boolean)
+设置Swiper视窗内元素显示个数。
+
+使用number类型时，子元素主轴宽度会基于Swiper主轴宽度适应。子组件按照主轴均分Swiper宽度（减去displayCount-1个itemSpace）的方式进行主轴拉伸（收缩）布局，设置为小于等于0的值时，按默认值1显示。<br/>
+使用string类型时，根据子元素的主轴宽度线性布局，不再适应Swiper主轴宽度。此时value值仅支持设置为'auto'，设置[customContentTransition](#customcontenttransition12)和[onContentDidScroll](#oncontentdidscroll12)事件不生效。<br/>
+使用SwiperAutoFill类型时，子元素元素主轴宽度会基于Swiper主轴宽度适应。通过设置一个子组件最小宽度值minSize，会根据Swiper当前宽度和minSize值自动计算并更改一页内元素显示个数。当minSize为空或者小于等于0时，Swiper显示1列。
+
+> **说明：**
+>
+>1.按组进行翻页时，判定翻页的拖拽距离阈值将调整为Swiper宽度的50%（若按子元素翻页，该阈值为子元素宽度的50%）。若最后一组的子元素数量少于displayCount，将利用占位子元素进行填充，占位子元素仅用于布局定位，不显示任何内容，其位置将直接显示Swiper的背景样式。
+>
+>2.displayCount设置为'auto'，并且设置非循环时，选中导航点的位置与视窗内首个页面的位置保持一致。如果翻页完成后，视窗内首个页面仅部分显示在视窗内，选中导航点亦与页面的位置保持一致，位于两个未选中的导航点之间。在此情况下，建议开发者隐藏导航点。
+>
+>3.导航点样式设定为圆形导航点，视窗内显示子元素数量等于1时（单页场景）或者 displayCount设置为'auto'时，显示导航点数量等于子元素数量。
+>
+>4.displayCount设置为'auto'时，若设置swipeByGroup为true，则单个子元素按组翻页，一次只能翻一页。在此情况下，建议开发者不设置swipeByGroup或者设置swipeByGroup为false。
+
+当导航点样式设定为圆形导航点，视窗内显示子元素数量大于1（多页场景），显示导航点数量情况如下表：
+
+| 子元素总数量是否大于视窗内显示的子元素数量 | 是否按组翻页 | 是否循环        | 圆形导航点显示数量                                           | 说明                                     |
+| ------------------------------------------ | ------------ | --------------- | ------------------------------------------------------------ | ---------------------------------------- |
+| 是                                         | 是           | loop设置为true  | 圆形导航点的数量数量将与组数相等（组数计算方式为子元素总数量除以视窗内显示的子元素数量，若除不尽，则向上取整） | 该效果在displayCount设置为'auto'时不生效 |
+| 是                                         | 是           | loop设置为false | 圆形导航点的数量数量将与组数相等（组数计算方式为子元素总数量除以视窗内显示的子元素数量，若除不尽，则向上取整） | 该效果在displayCount设置为'auto'时不生效 |
+| 是                                         | 否           | loop设置为true  | 圆形导航点的数量数量将与实际可翻页次数一致（显示导航点的数量等于子元素总数量） | —— |
+| 是                                         | 否           | loop设置为false | 圆形导航点的数量数量将与实际可翻页次数一致（计算方式是子元素的总数量减去视窗内显示的子元素数量+1个） | 该效果在displayCount设置为'auto'时不生效 |
+| 否（同时子元素的总数量大于0）                       | —— | —— | 显示1个圆形导航点                                            | 该效果在displayCount设置为'auto'时不生效 |
+| 否（同时子元素的总数量等于0） | —— | —— | 显示0个圆形导航点 | —— |
+
+**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[displayCount](#displaycount23)。
+
+**ArkTS-Dyn起始版本：** 8
+
+**参数：**
+
+| 参数名                     | 类型                                                         | 必填 | 说明                                                         |
+| -------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value                      | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10) | 是   | 视窗内显示的子元素个数。<br/> 默认值：1<br/>取值范围：(0, +∞)，设置小于等于0的值时，按照默认值处理。 |
+| swipeByGroup | boolean                                                      | 否   | 是否按组进行翻页。如果设为true，在翻页时会按组进行翻页，每组内子元素的数量为displayCount value的值；如果为false，则为默认翻页行为，即按照子元素进行翻页。<br/> 默认值：false |
+
+> **说明：**
+>
+>  当Swiper子组件个数小于等于Swiper组件内容区内显示的节点总个数(totalDisplayCount = DisplayCount + prevMargin? (1 : 0) + nextMargin? (1 : 0))时，一般按照非循环模式布局处理，此时，前后边距对应子组件不显示，但依然会在视窗内占位。Swiper组件按照totalDisplayCount个数判断测算规格。例外情况如下：
+>    
+>  - 当Swiper子组件个数等于Swiper组件内容区内显示的节点总个数且prevMargin和nextMargin都生效时，设置loop为true支持循环。
+>
+>  - 当Swiper子组件个数等于Swiper组件DisplayCount数 + 1，且prevMargin和nextMargin至少一个生效时，设置loop为true会生成截图占位组件(如果使用图片异步加载等显示耗时较长的组件可能不能正确生成截图，不建议在该场景开启循环)，支持循环。
+>
+
+### displayCount<sup>22+</sup>
+
+displayCount(value: number | string | SwiperAutoFill | ItemFillPolicy, swipeByGroup?: boolean)
+
+设置Swiper视窗内元素显示个数。
+
+使用number类型时，子元素主轴宽度会基于Swiper主轴宽度适应。子组件按照主轴均分Swiper宽度（减去displayCount-1个itemSpace）的方式进行主轴拉伸（收缩）布局，设置为小于等于0的值时，按默认值1显示。<br/>
+使用string类型时，根据子元素的主轴宽度线性布局，不再适应Swiper主轴宽度。此时value值仅支持设置为'auto'，设置[customContentTransition](#customcontenttransition12)和[onContentDidScroll](#oncontentdidscroll12)事件不生效。<br/>
+使用SwiperAutoFillFill类型时，子元素主轴宽度会基于Swiper主轴宽度适应。通过设置一个子组件最小宽度值minSize，会根据Swiper当前宽度和minSize值自动计算并更改一页内元素显示个数。当minSize为空或者小于等于0时，Swiper显示1列。
+
+> **说明：**
+>
+>1.按组进行翻页时，判定翻页的拖拽距离阈值将调整为Swiper宽度的50%（若按子元素翻页，该阈值为子元素宽度的50%）。若最后一组的子元素数量少于displayCount，将利用占位子元素进行填充，占位子元素仅用于布局定位，不显示任何内容，其位置将直接显示Swiper的背景样式。
+>
+>2.displayCount设置为'auto'，并且设置非循环时，选中导航点的位置与视窗内首个页面的位置保持一致。如果翻页完成后，视窗内首个页面仅部分显示在视窗内，选中导航点亦与页面的位置保持一致，位于两个未选中的导航点之间。在此情况下，建议开发者隐藏导航点。
+>
+>3.导航点样式设定为圆形导航点，视窗内显示子元素数量等于1时（单页场景）或者 displayCount设置为'auto'时，显示导航点数量等于子元素数量。
+>
+>4.displayCount设置为'auto'时，若设置swipeByGroup为true，则单个子元素按组翻页，一次只能翻一页。在此情况下，建议开发者不设置swipeByGroup或者设置swipeByGroup为false。
+
+当导航点样式设定为圆形导航点，视窗内显示子元素数量大于1（多页场景），显示导航点数量情况如下表：
+
+| 子元素总数量是否大于视窗内显示的子元素数量 | 是否按组翻页 | 是否循环        | 圆形导航点显示数量                                           | 说明                                     |
+| ------------------------------------------ | ------------ | --------------- | ------------------------------------------------------------ | ---------------------------------------- |
+| 是                                         | 是           | loop设置为true  | 圆形导航点的数量将与组数相等（组数计算方式为子元素总数量除以视窗内显示的子元素数量，若除不尽，则向上取整） | 该效果在displayCount设置为'auto'时不生效 |
+| 是                                         | 是           | loop设置为false | 圆形导航点的数量将与组数相等（组数计算方式为子元素总数量除以视窗内显示的子元素数量，若除不尽，则向上取整） | 该效果在displayCount设置为'auto'时不生效 |
+| 是                                         | 否           | loop设置为true  | 圆形导航点的数量将与实际可翻页次数一致（显示导航点的数量等于子元素总数量） | —— |
+| 是                                         | 否           | loop设置为false | 圆形导航点的数量将与实际可翻页次数一致（计算方式是子元素的总数量减去视窗内显示的子元素数量+1个） | 该效果在displayCount设置为'auto'时不生效 |
+| 否（同时子元素的总数量大于0）                       | —— | —— | 显示1个圆形导航点                                            | 该效果在displayCount设置为'auto'时不生效 |
+| 否（同时子元素的总数量等于0） | —— | —— | 显示0个圆形导航点 | —— |
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[displayCount](#displaycount23)。
+
+**ArkTS-Dyn起始版本：** 22
+
+**参数：**
+
+| 参数名                     | 类型                                                         | 必填 | 说明                                                         |
+| -------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value                      | number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10)&nbsp;\|&nbsp;[ItemFillPolicy](ts-appendix-enums.md#itemfillpolicy) | 是   | 视窗内显示的子元素个数。<br/> 默认值：1<br/>取值范围：(0, +∞)，设置小于等于0的值时，按照默认值处理。 |
+| swipeByGroup | boolean                                                      | 否   | 是否按组进行翻页。如果设为true，在翻页时会按组进行翻页，每组内子元素的数量为displayCount value的值；如果为false，则为默认翻页行为，即按照子元素进行翻页。<br/> 默认值：false |
+
+> **说明：**
+>
+>  当Swiper子组件个数小于等于Swiper组件内容区内显示的节点总个数(totalDisplayCount = DisplayCount + prevMargin? (1 : 0) + nextMargin? (1 : 0))时，一般按照非循环模式布局处理，此时，前后边距对应子组件不显示，但依然会在视窗内占位。Swiper组件按照totalDisplayCount个数判断测算规格。例外情况如下：
+>    
+>  - 当Swiper子组件个数等于Swiper组件内容区内显示的节点总个数且prevMargin和nextMargin都生效时，设置loop为true支持循环。
+>
+>  - 当Swiper子组件个数等于Swiper组件DisplayCount数 + 1，且prevMargin和nextMargin至少一个生效时，设置loop为true会生成截图占位组件(如果使用图片异步加载等显示耗时较长的组件可能不能正确生成截图，不建议在该场景开启循环)，支持循环。
+>
+
+### displayCount<sup>23+</sup>
+
+displayCount(value: int | string | SwiperAutoFill | ItemFillPolicy | undefined, swipeByGroup?: boolean | undefined)
 
 设置Swiper视窗内元素显示个数。
 
@@ -483,26 +623,24 @@ ArkTS-Sta: displayCount(value: int | string | SwiperAutoFill | undefined, swipeB
 | 是                                         | 是           | loop设置为true  | 圆形导航点的数量将与组数相等（组数计算方式为子元素总数量除以视窗内显示的子元素数量，若除不尽，则向上取整） | 该效果在displayCount设置为'auto'时不生效 |
 | 是                                         | 是           | loop设置为false | 圆形导航点的数量将与组数相等（组数计算方式为子元素总数量除以视窗内显示的子元素数量，若除不尽，则向上取整） | 该效果在displayCount设置为'auto'时不生效 |
 | 是                                         | 否           | loop设置为true  | 圆形导航点的数量将与实际可翻页次数一致（显示导航点的数量等于子元素总数量） | —— |
-| 是                                         | 否           | loop设置为false | 圆形导航点的数量将与实际可翻页次数一致（计算方式是子元素的总数量减去视窗内显示的子元素数量+1个） | 该效果在displayCount设置为'auto'时不生效 |
+| 是                                         | 否                     | loop设置为false | 圆形导航点的数量将与实际可翻页次数一致（计算方式是子元素的总数量减去视窗内显示的子元素数量+1个） | 该效果在displayCount设置为'auto'时不生效 |
 | 否（同时子元素的总数量大于0）                       | —— | —— | 显示1个圆形导航点                                            | 该效果在displayCount设置为'auto'时不生效 |
 | 否（同时子元素的总数量等于0） | —— | —— | 显示0个圆形导航点 | —— |
 
-**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[displayCount<sup>8+</sup>](#displaycount8)和[displayCount<sup>22+</sup>](#displaycount22)。
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
-| 参数名                     | 类型                                                         | 必填 | 说明                                                         |
-| -------------------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value                      | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10)<sup>10+</sup><br/>ArkTS-Sta: int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10) \| undefined | 是   | 视窗内显示的子元素个数。<br/> 默认值：1<br/>取值范围：(0, +∞)，设置小于等于0的值时，按照默认值处理。 |
-| swipeByGroup<sup>11+</sup> | boolean                                                      | 否   | 是否按组进行翻页。如果设为true，在翻页时会按组进行翻页，每组内子元素的数量为displayCount value的值；如果为false，则为默认翻页行为，即按照子元素进行翻页。<br/> 默认值：false |
+| 参数名                     | 类型                                                                                                                 | 必填 | 说明                                                         |
+| -------------------------- | ------------------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value                      | ArkTS-Dyn: number&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10)&nbsp;\|&nbsp;[ItemFillPolicy](ts-appendix-enums.md#itemfillpolicy)<br/>ArkTS-Sta: int&nbsp;\|&nbsp;string&nbsp;\|&nbsp;[SwiperAutoFill](#swiperautofill10)&nbsp;\|&nbsp;[ItemFillPolicy](ts-appendix-enums.md#itemfillpolicy)&nbsp;\|&nbsp;undefined | 是   | 视窗内显示的子元素个数。<br/> 默认值：1<br/>取值范围：(0, +∞)，设置小于等于0的值时，按照默认值处理。 |
+| swipeByGroup | boolean \| undefined                     | 否   | 是否按组进行翻页。如果设为true，在翻页时会按组进行翻页，每组内子元素的数量为displayCount value的值；如果为false，则为默认翻页行为，即按照子元素进行翻页。<br/> 默认值：false |
 
 > **说明：**
 >
@@ -541,7 +679,7 @@ ArkTS-Sta: effectMode(value: EdgeEffect | undefined)
 
 ArkTS-Dyn: displayArrow(value: ArrowStyle | boolean, isHoverShow?: boolean)
 
-ArkTS-Sta: displayArrow(value: ArrowStyle | boolean | undefined, isHoverShow?: boolean)
+ArkTS-Sta: displayArrow(value: ArrowStyle | boolean | undefined, isHoverShow?: boolean | undefined)
 
 设置导航点箭头样式。
 
@@ -558,7 +696,7 @@ ArkTS-Sta: displayArrow(value: ArrowStyle | boolean | undefined, isHoverShow?: b
 | 参数名                     | 类型                                             | 必填 | 说明                                                         |
 | -------------------------- | ------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value                      | ArkTS-Dyn: [ArrowStyle](#arrowstyle10对象说明)&nbsp;\|&nbsp;boolean<br/>ArkTS-Sta: [ArrowStyle](#arrowstyle10对象说明)&nbsp;\|&nbsp;boolean \| undefined | 是   | 支持设置箭头和底板样式，异常场景使用ArrowStyle对象中的默认值。设置为false不显示箭头和底板，true显示默认的箭头和底板样式。<br/>默认值：false |
-| isHoverShow                | boolean                                          | 否   | 设置鼠标悬停时是否显示箭头。<br/>默认值：false<br/>**说明：**<br/>1、isHoverShow为false时，常驻显示箭头。<br/>2、isHoverShow为true时，有导航点时鼠标悬停在导航点和箭头范围内显示箭头，无导航点时鼠标悬停在Swiper显示范围内显示箭头。<br/>3、箭头显示时，支持点击翻页。 |
+| isHoverShow     | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined  | 否   | 设置鼠标悬停时是否显示箭头。<br/>默认值：false<br/>**说明：**<br/>1、isHoverShow为false时，常驻显示箭头。<br/>2、isHoverShow为true时，有导航点时鼠标悬停在导航点和箭头范围内显示箭头，无导航点时鼠标悬停在Swiper显示范围内显示箭头。<br/>3、箭头显示时，支持点击翻页。 |
 
 > **说明：**
 >
@@ -566,9 +704,9 @@ ArkTS-Sta: displayArrow(value: ArrowStyle | boolean | undefined, isHoverShow?: b
 
 ### nextMargin<sup>10+</sup>
 
-ArkTS-Dyn: nextMargin(value: Length, ignoreBlank?:boolean)
+ArkTS-Dyn: nextMargin(value: Length, ignoreBlank?: boolean)
 
-ArkTS-Sta: nextMargin(value: Length | undefined, ignoreBlank?:boolean)
+ArkTS-Sta: nextMargin(value: Length | undefined, ignoreBlank?: boolean | undefined)
 
 设置后边距，用于露出后一项的一小部分，使用效果可以参考[示例1设置导航点交互及翻页动效](#示例1设置导航点交互及翻页动效)。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
 
@@ -584,18 +722,18 @@ ArkTS-Sta: nextMargin(value: Length | undefined, ignoreBlank?:boolean)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                         | 必填 | 说明                   |
 | ------ | ---------------------------- | ---- | ---------------------- |
 | value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 后边距。不支持设置百分比。<br/>默认值：0 |
-| ignoreBlank<sup>12+</sup>  | boolean | 否   | 非loop场景下尾页不显示nextMargin。在非loop场景下，设置为true时，尾页不显示空白的nextMargin，尾页的右边缘与Swiper视窗右边缘对齐；设置false时，尾页显示空白nextMargin，尾页的右边缘与Swiper视窗右边缘的距离为nextMargin。<br/>默认值：false <br/>**说明：**<br/>尾页场景下，prevMargin和nextMargin的值相加作为左边边距显示前一个页面。 |
+| ignoreBlank<sup>12+</sup>  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 否   | 非loop场景下尾页不显示nextMargin。在非loop场景下，设置为true时，尾页不显示空白的nextMargin，尾页的右边缘与Swiper视窗右边缘对齐；设置false时，尾页显示空白nextMargin，尾页的右边缘与Swiper视窗右边缘的距离为nextMargin。<br/>默认值：false <br/>**说明：**<br/>尾页场景下，prevMargin和nextMargin的值相加作为左边边距显示前一个页面。 |
 
 ### prevMargin<sup>10+</sup>
 
-ArkTS-Dyn: prevMargin(value: Length, ignoreBlank?:boolean)
+ArkTS-Dyn: prevMargin(value: Length, ignoreBlank?: boolean)
 
-ArkTS-Sta: prevMargin(value: Length | undefined, ignoreBlank?:boolean)
+ArkTS-Sta: prevMargin(value: Length | undefined, ignoreBlank?: boolean | undefined)
 
 设置前边距，用于露出前一项的一小部分，使用效果可以参考[示例1设置导航点交互及翻页动效](#示例1设置导航点交互及翻页动效)。仅当Swiper子组件的布局方式为拉伸时生效，主要包括两种场景：1、displayMode属性设置为SwiperDisplayMode.STRETCH；2、displayCount属性设置为number类型。
 
@@ -611,12 +749,12 @@ ArkTS-Sta: prevMargin(value: Length | undefined, ignoreBlank?:boolean)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                         | 必填 | 说明                   |
 | ------ | ---------------------------- | ---- | ---------------------- |
 | value  | ArkTS-Dyn: [Length](ts-types.md#length)<br/>ArkTS-Sta: [Length](ts-types.md#length) \| undefined | 是   | 前边距。不支持设置百分比。<br/>默认值：0 |
-| ignoreBlank<sup>12+</sup>  | boolean | 否   | 非loop场景下首页不显示prevMargin。在非loop场景下，设置为true时，首页不显示空白的prevMargin，首页的左边缘与Swiper视窗左边缘对齐；设置false时，首页显示空白prevMargin，首页的左边缘与Swiper视窗左边缘的距离为prevMargin。<br/>默认值：false <br/>**说明：**<br/>首页场景下，prevMargin和nextMargin的值相加作为右边边距显示后一个页面。|
+| ignoreBlank<sup>12+</sup>  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 否   | 非loop场景下首页不显示prevMargin。在非loop场景下，设置为true时，首页不显示空白的prevMargin，首页的左边缘与Swiper视窗左边缘对齐；设置false时，首页显示空白prevMargin，首页的左边缘与Swiper视窗左边缘的距离为prevMargin。<br/>默认值：false <br/>**说明：**<br/>首页场景下，prevMargin和nextMargin的值相加作为右边边距显示后一个页面。|
 
 ### nestedScroll<sup>11+</sup>
 
@@ -745,8 +883,8 @@ Swiper在主轴上的尺寸大小模式枚举。
 
 | 名称                               | 说明                                                         |
 | ---------------------------------- | ------------------------------------------------------------ |
-| Stretch<sup>(deprecated)</sup>     | Swiper滑动一页的宽度为Swiper组件自身的宽度。<br>从API version 10开始不再维护，建议使用STRETCH代替。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
-| AutoLinear<sup>(deprecated)</sup>  | Swiper滑动一页的宽度为子组件宽度中的最大值。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br>从API version 10开始不再维护，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)代替。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
+| Stretch<sup>(deprecated)</sup>     | Swiper滑动一页的宽度为Swiper组件自身的宽度。<br>从API version 10开始不再维护，建议使用STRETCH代替。<br/>**卡片能力：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
+| AutoLinear<sup>(deprecated)</sup>  | Swiper滑动一页的宽度为子组件宽度中的最大值。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br>从API version 10开始不再维护，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)代替。<br/>**卡片能力：** 从API version 7开始，该接口支持在ArkTS卡片中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 7 |
 | STRETCH<sup>10+</sup>              | Swiper滑动一页的宽度为Swiper组件自身的宽度。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 | AUTO_LINEAR<sup>(deprecated)</sup> | Swiper滑动一页的宽度为视窗内最左侧子组件的宽度。此枚举表现形式与[displayCount](#displaycount8)中使用string类型，将值设置为auto表现一致，具体可参考[displayCount](#displaycount8)说明。<br/>从API version 10开始支持，从API version 12开始不再维护，建议使用[Scroller.scrollTo](ts-container-scroll.md#scrollto)代替。<br/>**卡片能力：** 从API version 10开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**ArkTS-Dyn起始版本：** 10 |
 
@@ -799,7 +937,7 @@ SwiperController的构造函数。
 
 ### showNext
 
-showNext()
+showNext(): void
 
 翻至下一页。翻页带动效切换过程，时长通过Swiper的[duration](#duration)属性设置。
 
@@ -809,9 +947,13 @@ showNext()
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 ### showPrevious
 
-showPrevious()
+showPrevious(): void
 
 翻至上一页。翻页带动效切换过程，时长通过Swiper的[duration](#duration)属性设置。
 
@@ -941,6 +1083,128 @@ ArkTS-Sta: preloadItems(indices: Array\<int> | undefined): Promise\<void>
 | --------   | -------------------------------------------- |
 | 401 | Parameter invalid. Possible causes: 1. The parameter type is not Array\<number>; 2. The parameter is an empty array; 3. The parameter contains an invalid index. |
 | 100004 | Controller not bound to component. |
+
+### startFakeDrag<sup>23+</sup>
+
+startFakeDrag(): boolean
+
+开启模拟拖拽功能。
+
+> **说明：**
+>
+> - Swiper已经处在真实手势拖拽中，或者已经开启了模拟拖拽，调用接口会返回false表示操作失败。
+>
+> - 模拟拖拽无法触发嵌套滚动。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型    | 说明                                          |
+| ------- | --------------------------------------------  |
+| boolean | 是否开启模拟拖拽功能。<br/>true表示开启模拟拖拽功能成功；false表示开启模拟拖拽功能失败。 |
+
+### fakeDragBy<sup>23+</sup>
+
+ArkTS-Dyn: fakeDragBy(offset: number): boolean
+
+ArkTS-Sta: fakeDragBy(offset: float): boolean
+
+设置模拟拖拽的拖拽距离。
+
+> **说明：**
+>
+> - 模拟拖拽的距离需要依赖布局体现，建议接口在布局前调用，拖拽效果可以在当前帧布局后体现。如果在未布局前调用了多次该接口，当前帧布局时只生效最后一次调用传入的拖拽距离。
+>
+> - 在[loop](#loop)设置为true的循环场景下，如果设置的模拟拖拽的距离大于布局总长度，此时模拟拖拽距离会被调整为拖拽到刚好显示第一个子节点（向布局起点拖拽）或者最后一个子节点（向布局终点方向拖拽）的距离。
+>
+> - [onGestureSwipe](#ongestureswipe10)事件、[onContentWillScroll](#oncontentwillscroll15)事件在拖拽过程中不触发。[customContentTransition](#customcontenttransition12)会在布局前触发，由于真实的拖拽距离可能在布局时被调整，在传入拖拽距离过大时，触发事件时的返回的节点显示信息可能与布局结果不一致。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型   | 必填   | 说明                                                  |
+| -----  | ------ | ---- | -------------------------------------------------------- |
+| offset | ArkTS-Dyn: number<br/>ArkTS-Sta: float | 是   | 需要模拟拖拽的拖拽距离。<br/>正数表示向布局起点拖拽；负数表示向布局终点方向拖拽。|
+
+**返回值：**
+
+| 类型    | 说明                                          |
+| ------- | --------------------------------------------  |
+| boolean | 是否消费传入的拖拽距离。<br/>true表示消费任意传入的拖拽距离；false表示当前没有在模拟拖拽中，或者已经拖拽到边界，没有消费传入的拖拽距离。<br/>设置0为不可消费的拖拽距离。 |
+
+### stopFakeDrag<sup>23+</sup>
+
+stopFakeDrag(): boolean
+
+关闭模拟拖拽功能。
+
+> **说明：**
+>
+> 在开启模拟拖拽后，如果接收到真实拖拽手势，模拟拖拽会结束。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型    | 说明                                          |
+| ------- | --------------------------------------------  |
+| boolean | 是否关闭模拟拖拽功能。<br/>true表示关闭模拟拖拽功能成功；false表示关闭模拟拖拽功能失败。 |
+
+### isFakeDragging<sup>23+</sup>
+
+isFakeDragging(): boolean
+
+获取是否在模拟拖拽中的状态。
+
+**卡片能力：** 从API version 23开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型    | 说明                                          |
+| ------- | --------------------------------------------  |
+| boolean | 是否处在模拟拖拽状态。<br/>true表示当前处在模拟拖拽状态；false表示当前不处在模拟拖拽状态。 |
 
 ## SwiperAnimationMode<sup>15+</sup>枚举说明
 
@@ -1115,7 +1379,6 @@ ArkTS-Sta: bottom(bottom: LengthMetrics | Length | undefined, ignoreSize: boolea
 **ArkTS-Sta起始版本：** 23
 
 **参数：**
-
 
 | 参数名 | 类型                         | 必填 | 说明                                                         |
 | ------ | ---------------------------- | ---- | ------------------------------------------------------------ |
@@ -1751,6 +2014,28 @@ DigitIndicator的构造函数。
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
 
+### onScrollStateChanged<sup>20+</sup>
+
+onScrollStateChanged(event: Callback\<ScrollState>)
+
+Swiper滑动状态变化事件回调，在跟手滑动、离手动画、停止三种滑动状态变化时触发，返回值为当前滑动状态。
+
+**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| event  | [Callback](./ts-types.md#callback12)\<[ScrollState](ts-container-list.md#scrollstate枚举说明)> | 是   | 滑动状态变化的回调。 |
+
 ### onChange
 
 ArkTS-Dyn: onChange(event: Callback\<number>)
@@ -2089,6 +2374,8 @@ Swiper滑动时触发的回调，参数可参考[SwiperContentTransitionProxy](#
 
 **ArkTS-Sta起始版本：** 23
 
+**参数：** 
+
 | 参数名 | 类型 | 必填 | 说明 |
 | ------ | ---- | ---- | ---- |
 | selectedIndex | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是 | 当前选中页面的索引。 |
@@ -2192,6 +2479,14 @@ Swiper自定义切换动画执行过程中，返回给开发者的proxy对象。
 **ArkTS-Sta起始版本：** 23
 
 ### 属性
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ---- | ---- | --- | ---- | --- |

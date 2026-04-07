@@ -154,7 +154,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm");
-  console.log("isMediaKeySystemSupported: ", supported);
+  console.info("isMediaKeySystemSupported: ", supported);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`isMediaKeySystemSupported ERROR: ${error}`);
@@ -223,7 +223,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc");
-  console.log("isMediaKeySystemSupported: ", supported);
+  console.info("isMediaKeySystemSupported: ", supported);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`isMediaKeySystemSupported ERROR: ${error}`);
@@ -293,7 +293,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   let supported: boolean = drm.isMediaKeySystemSupported("com.clearplay.drm", "video/avc", drm.ContentProtectionLevel.CONTENT_PROTECTION_LEVEL_SW_CRYPTO);
-  console.log("isMediaKeySystemSupported: ", supported);
+  console.info("isMediaKeySystemSupported: ", supported);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`isMediaKeySystemSupported ERROR: ${error}`);
@@ -360,7 +360,7 @@ import { drm } from '@kit.DrmKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 try {
   let uuid: String = drm.getMediaKeySystemUuid("com.clearplay.drm");
-  console.log("getMediaKeySystemUuid: ", uuid);
+  console.info("getMediaKeySystemUuid: ", uuid);
 } catch (err) {
   let error = err as BusinessError;
   console.error(`getMediaKeySystemUuid ERROR: ${error}`);  

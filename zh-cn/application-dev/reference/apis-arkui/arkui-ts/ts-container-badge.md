@@ -33,9 +33,11 @@ Badge(value: BadgeParamWithNumber)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[badge](#badge23)。
+
+**ArkTS-Dyn起始版本：** 7
 
 **参数：**
 
@@ -55,9 +57,11 @@ Badge(value: BadgeParamWithString)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 7
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[badge](#badge23)。
+
+**ArkTS-Dyn起始版本：** 7
 
 从API version 12开始，该组件显隐时支持scale动效。
 
@@ -66,6 +70,26 @@ Badge(value: BadgeParamWithString)
 | 参数名 | 类型                                              | 必填 | 说明             |
 | ------ | ----------------------------------------------------- | ---- | -------------------- |
 | value  | [BadgeParamWithString](#badgeparamwithstring对象说明) | 是   | 字符串标记组件参数。 |
+
+### Badge<sup>23+</sup>
+
+Badge(value: BadgeParamWithNumber | BadgeParamWithString)
+
+根据数字或者字符串创建标记组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[badge](#badge-1)和[badge](#badge-2)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型                                              | 必填 | 说明             |
+| ------ | ----------------------------------------------------- | ---- | -------------------- |
+| value  | [BadgeParamWithNumber](#badgeparamwithnumber对象说明) \| [BadgeParamWithString](#badgeparamwithstring对象说明) | 是   | 数字、字符串标记组件参数。 |
 
 ## BadgeParam对象说明
 

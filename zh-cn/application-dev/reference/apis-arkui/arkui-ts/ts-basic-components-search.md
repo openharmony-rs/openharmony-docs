@@ -22,6 +22,10 @@ Search(options?: SearchOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 **参数:**
 
 | 参数名      | 类型         | 必填 | 说明        |
@@ -180,9 +184,7 @@ ArkTS-Sta: textAlign(value: TextAlign | undefined)
 
 ### textDirection<sup>23+</sup>
 
-ArkTS-Dyn: textDirection(direction: TextDirection)
-
-ArkTS-Sta: textDirection(direction: TextDirection | undefined)
+textDirection(direction: TextDirection | undefined)
 
 指定文本排版方向，未通过该接口设置时，默认文本排版方向遵循组件布局方向。
 
@@ -198,7 +200,7 @@ ArkTS-Sta: textDirection(direction: TextDirection | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                       |
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
-| direction  | ArkTS-Dyn: [TextDirection](ts-text-common.md#textdirection22)<br/>ArkTS-Sta: [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br/>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
+| direction  | [TextDirection](ts-text-common.md#textdirection22) \| undefined | 是   | 文本排版方向。<br/>设置为undefined时，按照TextDirection.DEFAULT处理，表现为文本排版方向遵循组件布局方向。 |
 
 ### copyOption<sup>9+</sup>
 
@@ -478,9 +480,7 @@ ArkTS-Sta: enterKeyType(value: EnterKeyType | undefined)
 
 ### enableSelectedDataDetector<sup>22+</sup>
 
-ArkTS-Dyn: enableSelectedDataDetector(enable: boolean)
-
-ArkTS-Sta: enableSelectedDataDetector(enable: boolean | undefined)
+enableSelectedDataDetector(enable: boolean | undefined)
 
 设置是否对选中文本进行实体识别。该接口依赖设备底层应具有文本识别能力，否则设置不会生效。
 
@@ -494,13 +494,13 @@ ArkTS-Sta: enableSelectedDataDetector(enable: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 22
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                              |
 | ------ | ------- | ---- | --------------------------------- |
-| enable  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启选中词文本识别；false：关闭选中词文本识别。<br>值为undefined时，开启选中词文本识别。 |
+| enable  | boolean \| undefined | 是   | 开启选中词文本识别。<br/>true：开启选中词文本识别；false：关闭选中词文本识别。<br>值为undefined时，开启选中词文本识别。 |
 
 ### lineHeight<sup>12+</sup>
 
@@ -548,7 +548,7 @@ ArkTS-Sta: decoration(value: TextDecorationOptions | undefined)
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [TextDecorationOptions](ts-types.md#textdecorationoptions12对象说明)<br/>ArkTS-Sta: [TextDecorationOptions](ts-types.md#textdecorationoptions12对象说明) \| undefined | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID&nbsp;<br/>} |
+| value  | ArkTS-Dyn: [TextDecorationOptions](ts-types.md#textdecorationoptions12对象说明)<br/>ArkTS-Sta: [TextDecorationOptions](ts-types.md#textdecorationoptions12对象说明) \| undefined | 是   | 文本装饰线对象。<br />默认值：{<br/>&nbsp;type:&nbsp;TextDecorationType.None,<br/>&nbsp;color:&nbsp;Color.Black,<br/>&nbsp;style:&nbsp;TextDecorationStyle.SOLID,<br/>&nbsp;thicknessScale:&nbsp;1.0<br/>} |
 
 ### letterSpacing<sup>12+</sup>
 
@@ -894,7 +894,7 @@ ArkTS-Sta: autoCapitalizationMode(mode: AutoCapitalizationMode | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -926,7 +926,7 @@ ArkTS-Sta: keyboardAppearance(appearance: KeyboardAppearance | undefined)
 
 ### strokeWidth<sup>20+</sup>
 
-ArkTS-Dyn: strokeWidth(width: Optional<LengthMetrics>)
+ArkTS-Dyn: strokeWidth(width: Optional\<LengthMetrics>)
 
 ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
 
@@ -938,7 +938,7 @@ ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -948,7 +948,7 @@ ArkTS-Sta: strokeWidth(width: LengthMetrics | undefined)
 
 ### strokeColor<sup>20+</sup>
 
-ArkTS-Dyn: strokeColor(color: Optional<ResourceColor>)
+ArkTS-Dyn: strokeColor(color: Optional\<ResourceColor>)
 
 ArkTS-Sta: strokeColor(color: ResourceColor | undefined)
 
@@ -960,7 +960,7 @@ ArkTS-Sta: strokeColor(color: ResourceColor | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1004,13 +1004,35 @@ ArkTS-Sta: enableAutoSpacing(enabled: boolean | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                               |
 | ------ | ------- | ---- | ---------------------------------- |
 | enabled | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | 是否开启中文与西文的自动间距。<br/>true为开启自动间距，false为不开启。<br />默认值：false |
+
+### dividerColor<sup>23+</sup>
+
+ArkTS-Dyn: dividerColor(color: Optional\<ColorMetrics>)
+
+ArkTS-Sta: dividerColor(color: ColorMetrics | undefined)
+
+设置输入框分割线颜色。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型    | 必填 | 说明                               |
+| ------ | ------- | ---- | ---------------------------------- |
+| color | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<[ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12)> <br/> ArkTS-Sta: [ColorMetrics](../js-apis-arkui-graphics.md#colormetrics12) \| undefined | 是   | 设置分割线颜色。<br/>默认使用系统的主题色：浅色模式下为0x33000000，显示为浅黑色，深色模式下为0x33FFFFFF，显示为浅白色。 |
 
 ### compressLeadingPunctuation<sup>23+</sup>
 
@@ -1032,7 +1054,7 @@ ArkTS-Sta: compressLeadingPunctuation(enabled: boolean | undefined)
 
 | 参数名           | 类型             | 必填 | 说明                                            |
 | ---------------- | ------- | ---- | ----------------------------------------------- |
-| enabled         |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optionalt12)\<boolean> <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用，undefined表示禁用。|
+| enabled         |  ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> <br/>ArkTS-Sta: boolean \| undefined | 是   | 是否启用行首标点符号压缩功能。<br/>true表示启用，false表示禁用，undefined表示禁用。|
 
 ### includeFontPadding<sup>23+</sup>
 
@@ -1082,9 +1104,7 @@ ArkTS-Sta: fallbackLineSpacing(enabled: boolean | undefined)
 
 ### selectedDragPreviewStyle<sup>23+</sup>
 
-ArkTS-Dyn: selectedDragPreviewStyle(value: SelectedDragPreviewStyle)
-
-ArkTS-Sta: selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
+selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 设置搜索框内文本拖拽时的背板样式。
 
@@ -1100,13 +1120,17 @@ ArkTS-Sta: selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 
 | 参数名 | 类型                                             | 必填 | 说明                                                       |
 | ------ | ------------------------------------------------ | ---- | ---------------------------------------------------------- |
-| value  | ArkTS-Dyn: [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明)<br/>ArkTS-Sta: [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 文本拖拽时的背板样式。<br/>设置为undefined时：背板颜色跟随主题，浅色模式显示白色，深色模式显示黑色。|
+| value  | [SelectedDragPreviewStyle](ts-text-common.md#selecteddragpreviewstyle23对象说明) \| undefined | 是   | 文本拖拽时的背板样式。<br/>设置为undefined时：背板颜色跟随主题，浅色模式显示白色，深色模式显示黑色。|
 
 ## IconOptions<sup>10+</sup>对象说明
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称 | 类型                                   | 必填 | 说明    |
 | ------ | ------------------------------------------ | ---- | ----------- |
@@ -1117,6 +1141,10 @@ ArkTS-Sta: selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 ## SearchButtonOptions<sup>10+</sup>对象说明
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                   | 必填 | 说明         |
 | --------- | ------------------------------------------ | ---- | ---------------- |
@@ -1129,6 +1157,10 @@ ArkTS-Sta: selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                    | 说明        |
 | ----------------------- | ---------------- |
@@ -1148,13 +1180,17 @@ ArkTS-Sta: selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 | EMAIL    | 5 | 邮箱地址输入模式。<br/>支持数字，字母，下划线、小数点、!、#、$、%、&、'、*、+、-、/、=、?、^、`、\{、\|、\}、~，以及@字符（只能存在一个@字符）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
 | NUMBER_DECIMAL<sup>12+</sup>  | 12 | 带小数点的数字输入模式。<br/>支持数字，小数点（只能存在一个小数点）。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | URL<sup>12+</sup>  | 13 | 带URL的输入模式。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 23<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
+| ONE_TIME_CODE<sup>20+</sup>  | 14 | 验证码输入模式。<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24<br/>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## CancelButtonOptions<sup>12+</sup>对象说明
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                   | 必填 | 说明         |
 | --------- | ------------------------------------------ | ---- | ---------------- |
@@ -1166,6 +1202,10 @@ ArkTS-Sta: selectedDragPreviewStyle(value: SelectedDragPreviewStyle | undefined)
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型                                   | 必填 | 说明         |
 | --------- | ------------------------------------------ | ---- | ---------------- |
@@ -1266,6 +1306,30 @@ ArkTS-Sta: onCopy(callback:Callback\<string> \| undefined)
 | --------- | ------- | ---- | ---------------- |
 | callback | ArkTS-Dyn: Callback\<string><br/>ArkTS-Sta: Callback\<string> \| undefined | 是   | 复制回调，其返回值为复制的文本内容。 |
 
+### onWillCopy
+
+ArkTS-Dyn: onWillCopy(callback: Callback\<string, boolean>)
+
+ArkTS-Sta: onWillCopy(callback:Callback\<string, boolean> \| undefined)
+
+在进行复制操作前，触发该回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> \| undefined| 是   | 复制操作前的回调。回调参数类型为string时，表示将要被复制的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被复制，true：允许文本被复制；false：不允许文本被复制。undefined时，恢复组件默认复制行为。 |
+
 ### onCut
 
 ArkTS-Dyn: onCut(callback:Callback\<string>)
@@ -1287,6 +1351,30 @@ ArkTS-Sta: onCut(callback:Callback\<string> \| undefined)
 | 参数名    | 类型    | 必填 | 说明             |
 | --------- | ------- | ---- | ---------------- |
 | callback | ArkTS-Dyn: Callback\<string><br/>ArkTS-Sta: Callback\<string> \| undefined | 是   | 剪切回调，其返回值为剪切的文本内容。 |
+
+### onWillCut
+
+ArkTS-Dyn: onWillCut(callback: Callback\<string, boolean>)
+
+ArkTS-Sta: onWillCut(callback:Callback\<string, boolean> \| undefined)
+
+在进行剪切操作前，触发该回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：** 
+
+| 参数名 | 类型   | 必填 | 说明             |
+| ------ | ------ | ---- | ---------------- |
+| callback  | Callback\<string, boolean> \| undefined | 是   | 剪切操作前的回调。回调参数类型为string时，表示将要被剪切的文本内容。回调参数类型为boolean时，表示当前选中文本是否允许被剪切，true：允许文本被剪切；false：不允许文本被剪切。undefined时，恢复组件默认剪切行为。 |
 
 ### onPaste
 
@@ -1505,7 +1593,7 @@ ArkTS-Sta: onWillAttachIME(callback: Callback\<IMEClient> | undefined)
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Sta起始版本：** 23
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1572,7 +1660,7 @@ stopEditing(): void
 
 ArkTS-Dyn: setTextSelection(selectionStart: number, selectionEnd: number, options?: SelectionOptions): void
 
-ArkTS-Sta: setTextSelection(selectionStart: int, selectionEnd: int, options?: SelectionOptions | undefined): void
+ArkTS-Sta: setTextSelection(selectionStart: int, selectionEnd: int, options?: SelectionOptions): void
 
 组件在获焦状态下，调用该接口设置文本选择区域并高亮显示，且只有在selectionStart小于selectionEnd时，文字才会被选取并高亮显示。
 
@@ -1590,7 +1678,7 @@ ArkTS-Sta: setTextSelection(selectionStart: int, selectionEnd: int, options?: Se
 | -------------- | ---------------------------------------------| ---- | ---------------------------------- |
 | selectionStart | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 文本选择区域起始位置，文本框中文字的起始位置为0。<br/>当selectionStart小于0时、按照0处理；当selectionStart大于文字最大长度时、按照文字最大长度处理。<br/> |
 | selectionEnd   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 文本选择区域结束位置。<br/>当selectionEnd小于0时、按照0处理；当selectionEnd大于文字最大长度时、按照文字最大长度处理。<br/> |
-| options      | ArkTS-Dyn: [SelectionOptions](ts-types.md#selectionoptions12对象说明)<br/>ArkTS-Sta: [SelectionOptions](ts-types.md#selectionoptions12对象说明) \| undefined | 否    | 选中文字时的配置。<br />默认值：MenuPolicy.DEFAULT。 |
+| options      | [SelectionOptions](ts-types.md#selectionoptions12对象说明) | 否    | 选中文字时的配置。<br />默认值：MenuPolicy.DEFAULT。 |
 
 >  **说明：**
 >
@@ -1609,6 +1697,10 @@ type SearchSubmitCallback = (searchContent: string, event?: SubmitEvent) => void
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：** 
 
@@ -2278,7 +2370,9 @@ struct SearchExample {
 
 ### 示例12（设置文本是否可复制）
 
-该示例通过copyOption属性展示如何设置文本是否可复制。
+该示例通过[copyOption](#copyoption9)、[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)接口展示如何设置文本复制、如何拦截系统复制、如何拦截系统剪切。
+
+从API版本26.0.0开始，新增[onWillCopy](#onwillcopy)、[onWillCut](#onwillcut)接口。
 
 ```ts
 // xxx.ets
@@ -2301,6 +2395,11 @@ struct SearchExample {
         .onCopy((value: string) => {
           this.copyValue = value;
         })
+        // 从API版本26.0.0开始支持onWillCopy
+        .onWillCopy((value: string) => {
+          this.copyValue = value;
+          return false;
+        })
         .onCut((value: string) => {
           this.cutValue = value;
         })
@@ -2313,6 +2412,11 @@ struct SearchExample {
         })
         .onCut((value: string) => {
           this.cutValue = value;
+        })
+         // 从API版本26.0.0开始支持onWillCut
+        .onWillCut((value: string) => {
+          this.cutValue = value;
+          return false;
         })
       Search({ value: 'Search CopyOption:LocalDevice', controller: this.controller })
         .width('95%')

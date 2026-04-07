@@ -23,7 +23,7 @@ import { Provider, Consumer } from '@kit.ArkUI';
 | 能力 | V2装饰器\@Provider和\@Consumer                                             |V1装饰器\@Provide和\@Consume|
 | ------------------ | ----------------------------------------------------- |----------------------------------------------------- |
 | \@Consume(r)         |需要本地初始化，当找不到\@Provider的时候使用本地默认值。| 禁止本地初始化，当找不到对应的\@Provide时候，会抛出异常。 |
-| 支持类型           | 支持function。 | 不支持function。 |
+| 支持类型           | 支持Function类型。 | 不支持Function类型。 |
 | 观察能力           | 仅能观察自身赋值变化，如果要观察嵌套场景，配合[\@Trace](./arkts-static-new-observedV2-and-trace.md)一起使用。 | 观察第一层变化，如果要观察嵌套场景，配合\@Observed和\@ObjectLink一起使用。 |
 | alias和属性名         | alias是唯一匹配的key，缺省时默认属性名为alias。 | alias和属性名都为key，优先匹配alias，匹配不到可以匹配属性名。|
 | \@Provide(r) 从父组件初始化      | 不允许。 | 允许。|
@@ -43,7 +43,7 @@ import { Provider, Consumer } from '@kit.ArkUI';
 | \@Provider属性装饰器 | 说明                                                  |
 | ------------------ | ----------------------------------------------------- |
 | 装饰器参数         | `alias?: string`，别名，常量字符串，可选。<br/>如果指定了别名，则通过别名来绑定变量；如果未指定别名，则通过变量名绑定变量。<br/>默认允许重写，即可以存在同名的\@Provider变量。 |
-| 允许装饰的变量类型 | - 支持Object、class、number、string、boolean、enum、interface等基本类型。<br/>- 支持[Array](#装饰数组类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。<br/>- 支持null、undefined以及联合类型。 |
+| 允许装饰的变量类型 | - 支持Object、class、number、string、boolean、enum、interface等基本类型。<br/>- 支持[Array](#装饰数组类型变量)、[Date](#装饰date类型变量)、[Map](#装饰map类型变量)、[Set](#装饰set类型变量)等内嵌类型。<br/>- 支持null、undefined以及联合类型。<br/>- 支持装饰Function类型，例如[箭头函数](#provider和consumer装饰箭头函数)。 |
 | 初始化规则 | 必须本地初始化，不支持从父组件传入初始化。 |
 | 同步规则      | **在子组件使用时：**<br/>\@Provider装饰的变量仅允许本地初始化，不允许从外部传入初始化。<br/>**在父组件使用时：**<br/>- 可以初始化子组件中[\@Param](./arkts-static-new-param.md)装饰的变量。<br/>- 与后代子组件中别名匹配的@Consumer变量双向同步。 |
 
@@ -58,7 +58,7 @@ import { Provider, Consumer } from '@kit.ArkUI';
 | \@Consumer属性装饰器 | 说明                                                         |
 | --------------------- | ------------------------------------------------------------ |
 | 装饰器参数            | `alias?: string`，别名，常量字符串，可选。<br/>如果指定了别名，则通过别名向上查找最近的\@Provider；如果未指定别名，则通过变量名绑定\@Provider。 |
-| 允许装饰的变量类型 | - 支持Object、class、number、string、boolean、enum、interface等基本类型。<br/>- 支持Array、Date、Map、Set等内嵌类型。<br/>- 支持null、undefined以及联合类型。 |
+| 允许装饰的变量类型 | - 支持Object、class、number、string、boolean、enum、interface等基本类型。<br/>- 支持Array、Date、Map、Set等内嵌类型。<br/>- 支持null、undefined以及联合类型。<br/>- 支持装饰Function类型，例如[箭头函数](#provider和consumer装饰箭头函数)。 |
 | 初始化规则   | 必须本地初始化，不支持从父组件传入初始化。 |
 | 同步规则    | **在子组件使用时：**<br/>与祖先组件匹配的\@Provider变量双向同步。<br/>**在父组件使用时：**<br/>可以初始化子组件中\@Param装饰的变量。 |
 
@@ -132,7 +132,8 @@ struct Child {
    import { Entry, ComponentV2 } from '@kit.ArkUI';
    import { Provider, Consumer } from '@kit.ArkUI';
    
-   @Provider // 错误用法
+   // 错误用法
+   @Provider
    class Info {
      name: string;
    
@@ -145,6 +146,7 @@ struct Child {
    @ComponentV2
    struct Parent {
      @Provider() message: string = 'Hello World'; // 正确用法
+   
      build() {
      }
    }
@@ -152,6 +154,7 @@ struct Child {
    @ComponentV2
    struct Child {
      @Consumer() message: string = 'Hello World'; // 正确用法
+   
      build() {
      }
    }
@@ -169,6 +172,7 @@ struct Child {
    @ComponentV2
    struct Parent {
      @Provider() message: string = 'Hello World'; // 正确用法
+   
      build() {
      }
    }
@@ -176,6 +180,7 @@ struct Child {
    @ComponentV2
    struct Child {
      @Consumer() message: string = 'Hello World'; // 正确用法
+   
      build() {
      }
    }
@@ -183,6 +188,7 @@ struct Child {
    @Component
    struct Test {
      @Provider() message: string = 'Hello World'; // 错误用法，编译时报错
+   
      build() {
      }
    }
@@ -199,6 +205,7 @@ struct Child {
    @ComponentV2
    struct ProviderComponent {
      @Provider() message: string = 'Hello World';
+   
      build() {
      }
    }
@@ -206,6 +213,7 @@ struct Child {
    @ComponentV2
    struct ConsumerComponent {
      @Consumer() message: string = 'Hello World';
+   
      build() {
      }
    }
@@ -338,6 +346,7 @@ interface Info {
 struct Parent {
   // 装饰字面量
   @Provider() info: Info = { name: 'Bob' } as Info;
+
   build() {
     Column() {
       Text(`parent name: ${this.info.name}`)
@@ -358,6 +367,7 @@ struct Parent {
 struct Child {
   // 装饰字面量
   @Consumer() info: Info = { name: 'Mary' } as Info;
+
   build() {
     Column() {
       Text(`child name: ${this.info.name}`)
@@ -458,6 +468,7 @@ struct Parent {
     }
   }
 }
+
 @ComponentV2
 struct Child {
   @Consumer() SelectedDate: Date = new Date('2022-07-07');
@@ -517,6 +528,7 @@ struct Parent {
     }
   }
 }
+
 @ComponentV2
 struct Child {
   @Consumer() message: Map<number, string> = new Map<number, string>([[0, 'd'], [1, 'e'], [2, 'f']]);
@@ -568,6 +580,7 @@ struct Parent {
     }
   }
 }
+
 @ComponentV2
 struct Child {
   @Consumer() message: Set<number> = new Set<number>([1, 2, 3, 4, 5, 6]);
@@ -603,9 +616,9 @@ import { Provider, Consumer, Local } from '@kit.ArkUI';
 struct Parent {
   @Local childSub: number = 0;
   @Local childSum: number = 1;
-  @Provider() onChange: (x: number, y: number) => void = (x: number, y: number): void => {
-    this.childSub = x - y;
-    this.childSum = x + y;
+  @Provider() onChange: (axisX: number, axisY: number) => void = (axisX: number, axisY: number): void => {
+    this.childSub = axisX - axisY;
+    this.childSum = axisX + axisY;
   }
 
   build() {
@@ -618,14 +631,15 @@ struct Parent {
 
 @ComponentV2
 struct Child {
-  @Local x: number = 0;
-  @Local y: number = 1;
-  @Consumer() onChange: (x: number, y: number) => void = (x: number, y: number): void => {};
+  @Local axisX: number = 0;
+  @Local axisY: number = 1;
+  @Consumer() onChange: (axisX: number, axisY: number) => void = (axisX: number, axisY: number): void => {
+  };
 
   build() {
     Button('changed')
       .onClick((e: ClickEvent) => {
-        this.onChange(this.x, this.y);
+        this.onChange(this.axisX, this.axisY);
       })
   }
 }
@@ -652,7 +666,9 @@ class User {
     this.age = age;
   }
 }
+
 const data: User[] = [new User('Json', 10), new User('Eric', 15)];
+
 @Entry
 @ComponentV2
 struct Parent {

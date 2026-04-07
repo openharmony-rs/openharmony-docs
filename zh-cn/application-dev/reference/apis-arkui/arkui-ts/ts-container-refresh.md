@@ -30,7 +30,7 @@ Refresh(value: RefreshOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
@@ -108,6 +108,26 @@ ArkTS-Sta: pullToRefresh(value: boolean | undefined)
 | ------ | ------------------------------------------- | ---- | ---------------------------------------------------------- |
 | value  |  ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;undefined |  是 | 当下拉距离超过[refreshOffset](#refreshoffset12)时是否能触发刷新。true表示能触发刷新，false表示不能触发刷新。<br/>默认值：true |
 
+### pullUpToCancelRefresh<sup>23+</sup>
+
+pullUpToCancelRefresh(enabled: boolean | undefined)
+
+设置上划是否取消刷新。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名  | 类型                 | 必填 | 说明                                                         |
+| ------- | -------------------- | ---- | ------------------------------------------------------------ |
+| enabled | boolean \| undefined | 是   | 设置上划是否取消刷新。<br/>true表示取消刷新；false表示不取消刷新。<br/>值为undefined时，上划取消刷新。 |
+
 ### pullDownRatio<sup>12+</sup>
 
 ArkTS-Dyn: pullDownRatio(ratio: [Optional](ts-universal-attributes-custom-property.md#optional12)\<number>)
@@ -158,7 +178,9 @@ ArkTS-Sta: maxPullDownDistance(distance: double | undefined)
 
 ### onStateChange
 
-onStateChange(callback: (state: RefreshStatus) => void)
+ArkTS-Dyn: onStateChange(callback: (state: RefreshStatus) => void)
+
+ArkTS-Sta: onStateChange(callback: ((state: RefreshStatus) => void) | undefined)
 
 当前刷新状态变更时，触发回调。
 
@@ -166,7 +188,7 @@ onStateChange(callback: (state: RefreshStatus) => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
@@ -178,7 +200,9 @@ onStateChange(callback: (state: RefreshStatus) => void)
 
 ### onRefreshing
 
-onRefreshing(callback: () => void)
+ArkTS-Dyn: onRefreshing(callback: () => void)
+
+ArkTS-Sta: onRefreshing(callback: (() => void) | undefined)
 
 进入刷新状态时触发回调。
 
@@ -186,11 +210,11 @@ onRefreshing(callback: () => void)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 
-### onOffsetChange
+### onOffsetChange<sup>12+</sup>
 
 ArkTS-Dyn: onOffsetChange(callback: Callback\<number>)
 
@@ -221,7 +245,7 @@ RefreshStatus刷新状态枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 8
 
 **ArkTS-Sta起始版本：** 23
 

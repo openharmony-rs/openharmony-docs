@@ -66,7 +66,7 @@ ethernet.getMacAddress().then((data: Array<ethernet.MacAddressInfo>) => {
 
 **系统能力**：SystemCapability.Communication.NetManager.Ethernet
 
-| 名称         | 类型                    | 必填 | 说明                                                 |
-| ------------ | ----------------------- | --- | ---------------------------------------------------- |
-| iface        | string                  |  是 | 以太网网卡名称。                                        |
-| macAddress       | string                |  是 | 以太网网卡MAC地址信息。 |
+| 名称   | 类型                                           | 只读 | 可选 |说明                    |
+| -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
+| iface        | string                  |  否   | 否 | 以太网网卡名称。                                        |
+| macAddress       | string                |  否   | 否 | 以太网网卡MAC地址信息。 |

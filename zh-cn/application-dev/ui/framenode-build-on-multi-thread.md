@@ -63,19 +63,23 @@
 
 - 多线程接口中，组件有以下两种状态：
 
-  - **Free（游离状态）：** 组件未挂载到主树，不参与UI流水线，属性可安全更新。
-  - **Attached（已挂载状态）：** 组件已挂载，交由UI流水线管理，属性更新必须在UI线程中调用，否则抛出异常。
+  - **Free（游离状态）：** 组件未挂载到主树，不参与UI测量、布局和渲染，属性可在任意线程安全更新。
+  - **Attached（已挂载状态）：** 组件已挂载到主树，参与UI测量、布局和渲染，属性更新必须在UI线程中调用，否则抛出异常。
 
 - 多线程场景下，共有以下两种场景会导致接口抛出异常：
 
-  - 在非UI线程中调用不支持多线程的接口将抛出异常。
-  - 挂载到UI主树后，非UI线程调用组件接口将抛出异常。
+  - 在非UI线程中调用不支持多线程的接口将抛出错误码为106204，错误信息为“The node is not running on main thread.”的异常。
+  - 挂载到UI主树后，非UI线程调用组件接口将抛出错误码为106204，错误信息为“The node is not running on valid thread.”的异常。
 
 - 建议开发者使用try-catch捕获异常及时进行异常处理以确保代码的健壮性。
 
 ## 多线程FrameNode接口集规格
 
 下面介绍FrameNode接口集中各个接口的多线程规格，接口包括：[组件创建销毁](#组件创建销毁)，[组件树操作](#组件树操作)，[组件属性查询](#组件属性查询)，[组件布局测算](#组件布局测算)，[组件样式查询](#组件样式查询)，[组件动画](#组件动画)，[组件事件](#组件事件)，[组件生命周期](#组件生命周期)，[组件跨语言](#组件跨语言)，[坐标转换](#坐标转换)和[其他接口](#其他接口)。
+
+> **说明：**
+>
+> 接口规格表中，"接口抛出异常"是指抛出错误码为106204的异常。
 
 ### 组件创建销毁
 
@@ -219,9 +223,13 @@ class MultiThreadNodeController extends NodeController {
   makeNode(uiContext: UIContext): FrameNode | null {
     if (!this.rootNode) {
       this.uiContext = uiContext;
+      // 创建支持多线程的根节点。
       this.rootNode = typeNode.createColumnNode(uiContext, { supportMultiThread: true });
+      // 设置根节点宽高属性。
       this.rootNode!.commonAttribute.width('100%').height('100%');
+      // 在UI线程中创建部分组件树。
       this.createNodeOnUIThread();
+      // 在用户线程中并行创建其余组件树。
       this.createNodeOnUserThread();
       this.isCreated = true;
     }
@@ -241,15 +249,19 @@ class MultiThreadNodeController extends NodeController {
   // 在用户线程中创建组件树
   createNodeOnUserThread(): void {
     const USER_NODE_TREE_NUMBER = 3;
+    // 创建用户线程（EAWorker独占线程）。
     const userWorker = new EAWorker();
     userWorker.start();
 
     for (let i = 0; i < USER_NODE_TREE_NUMBER; i++) {
+      // 向用户线程提交组件树创建任务。
       userWorker.postTask(() => {
         try {
           const nodeTree = this.createNodeTree(true);
+          // 获取主线程（UI线程）引用。
           const mainWorker = EAWorker.main();
           if (mainWorker) {
+            // 组件树创建完成后回到UI线程挂载到主树上。
             mainWorker.postTask(() => {
               this.rootNode!.appendChild(nodeTree);
             });
@@ -262,14 +274,16 @@ class MultiThreadNodeController extends NodeController {
     userWorker.quit();
   }
 
-  // 创建节点树
+  // 创建组件树，isOnUserThread标识是否在用户线程中调用。
   createNodeTree(isOnUserThread: boolean): FrameNode {
+    // 创建支持多线程的Column和Row容器节点。
     const columnNode = typeNode.createColumnNode(this.uiContext!, { supportMultiThread: true });
     columnNode.commonAttribute.width('80%').height(70)
 
     const rowNode = typeNode.createRowNode(this.uiContext!, { supportMultiThread: true });
     rowNode.commonAttribute.width('100%').height('100%');
 
+    // 创建第一个Button节点并设置属性和点击事件。
     const buttonNode1 = typeNode.createButtonNode(this.uiContext!, { supportMultiThread: true });
     buttonNode1.commonAttribute.width(150).height(50).margin(5);
     buttonNode1.commonEvent.setOnClick((event: ClickEvent) => {
@@ -280,6 +294,7 @@ class MultiThreadNodeController extends NodeController {
       .fontColor(isOnUserThread ? Color.White : Color.Black);
     buttonNode1.appendChild(textNode1);
 
+    // 创建第二个Button节点并设置属性和点击事件。
     const buttonNode2 = typeNode.createButtonNode(this.uiContext!, { supportMultiThread: true });
     buttonNode2.commonAttribute.width(150).height(50).margin(5);
     buttonNode2.commonEvent.setOnClick((event: ClickEvent) => {
@@ -290,6 +305,7 @@ class MultiThreadNodeController extends NodeController {
       .fontColor(isOnUserThread ? Color.White : Color.Black);
     buttonNode2.appendChild(textNode2);
 
+    // 把组件挂载到组件树上。
     rowNode.appendChild(buttonNode1);
     rowNode.appendChild(buttonNode2);
     columnNode.appendChild(rowNode);
@@ -330,3 +346,90 @@ struct Index {
 ```
 
 ![build_on_multi_thread](figures/framenode_build_on_multi_thread.gif)
+
+## 常见问题
+
+### 能否在多个线程中同时操作同一组件树？
+
+多个线程可以同时操作各自独立的组件树，但**禁止**多个线程同时操作同一组件或同一组件树。组件内部不是线程安全的，并发访问同一组件会出现稳定性问题。
+
+错误示例：两个线程同时操作同一个节点，示例如下。
+
+```ts
+import { Entry, Component, Column, ContentSlot, NodeContent, FrameNode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private nodeContent: NodeContent = new NodeContent();
+
+  aboutToAppear(): void {
+    const worker1 = new EAWorker();
+    const worker2 = new EAWorker();
+    worker1.start();
+    worker2.start();
+
+    const frameNode = new FrameNode(this.getUIContext(), { supportMultiThread: true });
+    // worker1和worker2同时操作同一个frameNode，可能导致崩溃或数据异常
+    worker1.postTask(() => {
+      frameNode.commonAttribute.width(100).height(100);
+    })
+    worker2.postTask(() => {
+      frameNode.commonAttribute.backgroundColor("#ffff0000").grayscale(0.8);
+    })
+  }
+
+  build() {
+    Column() {
+      ContentSlot(this.nodeContent)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+解决方案：使用[Mutex互斥锁](../reference/native-lib/arkts-sta-mutex.md)进行线程同步，具体示例如下。
+
+```ts
+import { Entry, Component, Column, ContentSlot, NodeContent, FrameNode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  private nodeContent: NodeContent = new NodeContent();
+  private mutexLock: Mutex = new Mutex();
+
+  aboutToAppear(): void {
+    const worker1 = new EAWorker();
+    const worker2 = new EAWorker();
+    worker1.start();
+    worker2.start();
+
+    const frameNode = new FrameNode(this.getUIContext(), { supportMultiThread: true });
+    // 通过互斥锁保证同一时刻只有一个线程操作节点
+    worker1.postTask(() => {
+      this.mutexLock.lock(); // 获取互斥锁
+      frameNode.commonAttribute.width(100).height(100);
+      this.mutexLock.unlock(); // 释放互斥锁
+    })
+    worker2.postTask(() => {
+      this.mutexLock.lock(); // 获取互斥锁
+      frameNode.commonAttribute.backgroundColor("#ffff0000").grayscale(0.8);
+      this.mutexLock.unlock(); // 释放互斥锁
+    })
+  }
+
+  build() {
+    Column() {
+      ContentSlot(this.nodeContent)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+## 相关实例
+
+[使用FrameNode多线程接口创建UI组件](https://gitcode.com/openharmony/applications_app_samples/tree/OpenHarmony_feature_20250702/code/ArkTS-Sta/FrameNodeBuildOnMultiThread/README.md)

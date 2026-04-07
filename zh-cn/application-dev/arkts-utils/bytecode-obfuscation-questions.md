@@ -742,15 +742,38 @@ AppAbility
 
 ### 开启-enable-bytecode-obfuscation，没有生成相应的混淆文件如何处理
 
-首先确保Build Mode设置为release，查看moudle目录下的build-profile.json5中，ruleOptions的enable是否设置为true。
+**问题现象：**
+
+开启-enable-bytecode-obfuscation属性混淆后，没有生成混淆文件。
+
+**解决方案：**
+
+1. 确保Build Mode设置为release。
+2. 查看moudle目录下的build-profile.json5中，ruleOptions的enable是否设置为true。
 
 ### 开启-enable-bytecode-obfuscation后，编译失败如何处理
 
-首先在obfuscation-rules.txt文件中，开启-enable-bytecode-obfuscation-debugging， 重新rebuild编译后，查看build下的debug.txt文件，查找是否有混淆错误信息；如果新增内容混淆失败，可以先尝试keep保留。
+**问题现象：**
+
+开启-enable-bytecode-obfuscation属性后，编译失败。
+
+**解决方案：**
+1. 在obfuscation-rules.txt文件中，开启-enable-bytecode-obfuscation-debugging， 重新rebuild编译后。
+2. 查看build下的debug.txt文件，查找是否有混淆错误信息；如果新增内容混淆失败，可以先尝试keep保留。
 
 ### 为什么interface中get/set方法可以精准keep，而class中get/set方法不可以
 
-interface中定义的field，get/set方法和其field字段同名，但class中定义一个field，语法限制必须将get/set重命名，这样会导致混淆时无法将两者进行关联，会混淆成不同名字； 需要使用通配符*去全量keep。
+**问题现象：**
+
+class中定义属性，同时定义get/set方法，混淆后，属性名被混淆成不同名称。
+
+**问题分析：**
+
+interface中定义的field，get/set方法和其field字段同名，但class中定义一个field，语法限制必须将get/set重命名，这样会导致混淆时无法将两者进行关联，会混淆成不同名字。
+
+**解决方案：**
+
+使用通配符*去全量keep。
 
 示例：
 
@@ -774,7 +797,9 @@ class ClassTest{
 
 ### class中static和instance变量重名，编译异常报错
 
-不支持class中static和instance变量重名的混淆，需要手动keep，或重命名变量
+**解决方案：**
+
+不支持class中static和instance变量重名的混淆，需要手动keep，或重命名变量。
 
 ```typescript
 //StaticDemo.ets
@@ -791,6 +816,8 @@ keep命令：
 
 ### 继承的虚拟类的方法，在进行abstract修饰符keep时，子类和父类都会被keep
 
+例如：
+
 ```typescript
 //StaticDemo.ets
 abstract class AbstractClass {
@@ -803,13 +830,29 @@ class ExampleClass extends AbstractClass {
     protected override PROTECTED_ABSTRACT_METHOD():void{};
 }
 ```
+
 为保证父子类继承的属性或者方法多态一致性，在keep的时候，会一起被保留。例如：
-添加`-keep class entry.src.main.ets.entryability.StaticDemo.AbstractClass {PROTECTED_ABSTRACT_METHOD():void;}`或`-keep class entry.src.main.ets.entryability.StaticDemo.ExampleClass{PROTECTED_ABSTRACT_METHOD():void;}`时，`AbstractClass`和`ExampleClass`中的`PROTECTED_ABSTRACT_METHOD()`会被同时保留。
+
+添加
+
+```json
+-keep class entry.src.main.ets.entryability.StaticDemo.AbstractClass {PROTECTED_ABSTRACT_METHOD():void;}
+```
+
+或
+
+```json
+-keep class entry.src.main.ets.entryability.StaticDemo.ExampleClass{PROTECTED_ABSTRACT_METHOD():void;}
+```
+
+`AbstractClass`和`ExampleClass`中的`PROTECTED_ABSTRACT_METHOD()`会被同时保留。
 
 ### 混合工程/interop相关的问题和解决方案
 
 对于包含ArkTS-Dyn与ArkTS-Sta组件的混合工程，请注意ArkTS-Dyn的字节码混淆和ArkTS-Sta的字节码混淆会独立执行各自的混淆流程。
 
-若工程中存在通过interop机制进行Arkts-Dyn和ArkTS-Sta交互，开发者需手动将交互所涉及的关键类、方法或字段等添加到混淆白名单中，同时将涉及的文件路径添加到白名单中，以确保混淆后名称一致，避免因混淆导致交互失败。
+**解决方案：**
 
-若工程中存在Arkts-Dyn组件引用ArkTS-Sta组件，开发者需要手动将ArkTS-Sta组件相关的文件路径和文件的所有内容进行keep处理。
+1. 若工程中存在通过interop机制进行ArkTS-Dyn和ArkTS-Sta交互，开发者需手动将交互所涉及的关键类、方法或字段等添加到混淆白名单中，同时将涉及的文件路径添加到白名单中，以确保混淆后名称一致，避免因混淆导致交互失败。
+
+2. 若工程中存在ArkTS-Dyn组件引用ArkTS-Sta组件，开发者需要手动将ArkTS-Sta组件相关的文件路径和文件的所有内容进行keep处理。

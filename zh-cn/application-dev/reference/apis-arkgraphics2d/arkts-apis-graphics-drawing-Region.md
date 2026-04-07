@@ -210,7 +210,7 @@ isEqual(other: Region): boolean
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -226,10 +226,39 @@ isEqual(other: Region): boolean
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
-import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
 import { RenderNode, DrawContext } from '@kit.ArkUI';
+class DrawingRenderNode extends RenderNode {
+  draw(context : DrawContext) {
+    const canvas = context.canvas;
+    const pen = new drawing.Pen();
+    pen.setColor({ alpha: 255, red: 255, green: 0, blue: 0 });
+    pen.setStrokeWidth(10);
+    canvas.attachPen(pen);
+    let region = new drawing.Region();
+    let other = new drawing.Region();
+    region.setRect(100, 100, 400, 400);
+    other.setRect(150, 150, 250 ,250);
+    let flag: boolean = false;
+    flag = region.isEqual(other);
+    console.info('flag: ', flag);
+    canvas.drawRegion(region);
+    canvas.drawRegion(other);
+    canvas.detachPen();
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import drawing from "@ohos.graphics.drawing";
+import common2D from "@ohos.graphics.common2D";
+import { RenderNode, DrawContext } from '@ohos.arkui.node';
+
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {
     const canvas = context.canvas;
@@ -872,7 +901,7 @@ setRegion(region: Region): void
 
 **ArkTS-Dyn起始版本：** 20
 
-**ArkTS-Dyn起始版本：** 24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -974,6 +1003,7 @@ ArkTS-Sta: setRect(left: int, top: int, right: int, bottom: int): boolean
 **示例：**
 
 ArkTS-Dyn示例：
+
 ```ts
 import { RenderNode } from '@kit.ArkUI';
 import { drawing } from '@kit.ArkGraphics2D';
@@ -996,9 +1026,11 @@ class DrawingRenderNode extends RenderNode {
 ```
 
 ArkTS-Sta示例：
+
 ```ts
-import { RenderNode, DrawContext } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
+import { RenderNode, DrawContext } from '@ohos.arkui.node';
+import drawing from "@ohos.graphics.drawing";
+import common2D from "@ohos.graphics.common2D";
 
 class DrawingRenderNode extends RenderNode {
   draw(context : DrawContext) {

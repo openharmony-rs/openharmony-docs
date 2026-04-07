@@ -4,9 +4,6 @@
 提供XComponent节点XComponentNode，表示组件树中的[XComponent组件](arkui-ts/ts-basic-components-xcomponent.md)，用于[EGL](../native-lib/egl.md)/[OpenGLES](../native-lib/opengles.md)和媒体数据写入，并支持动态修改节点渲染类型。
 
 > **说明：** 
->
-> - 本模块仅适用于ArkTS-Dyn。
->
 > - 从API version 12开始，该接口不再维护，推荐使用[XComponent类型typeNode](./js-apis-arkui-frameNode.md#xcomponent12)的方式实现。
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
@@ -27,7 +24,9 @@ constructor(uiContext: UIContext, options: RenderOptions, id: string, type: XCom
 
 XComponentNode的构造函数。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -51,6 +50,10 @@ XComponentNode加载完成时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                                                         |
@@ -65,6 +68,10 @@ XComponentNode销毁时触发该回调。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
+
 ### changeRenderType
 
 changeRenderType(type: NodeRenderType): boolean
@@ -72,6 +79,10 @@ changeRenderType(type: NodeRenderType): boolean
 修改XComponentNode的渲染类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 

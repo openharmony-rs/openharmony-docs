@@ -756,6 +756,70 @@ try {
 }
 ```
 
+## hidebug.requestTrace<sup>24+</sup>
+
+requestTrace(config: RequestTraceConfig): Promise&lt;string&gt;
+
+获取当前进程的trace信息，包含应用tag、图像窗口tag、cpu调度和binder内核信息。使用Promise异步回调。
+
+采集trace返回的.sys文件在目录下最多存储3份，数量大于等于3份时再次调用接口会抛出错误码11400120。
+
+接口不支持在[输入法应用](../../inputmethod/ime-kit-intro.md)中使用。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+**参数**：
+
+| 参数名   | 类型     | 必填 | 说明                                 |
+| -------- | ------   | ---- |------------------------------------|
+| config   | [RequestTraceConfig](#requesttraceconfig24) | 是 | trace采集配置信息。 |
+
+**返回值**：
+
+| 类型             | 说明            |
+| -----------------|---------------|
+| Promise&lt;string&gt; | Promise对象，返回以.sys作为后缀的trace文件的应用沙箱路径。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[HiDebug错误码](errorcode-hiviewdfx-hidebug.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | ----------------------------------------------------------------- |
+| 11400104 | Remote service exception.                                         |
+| 11400120 | Trace storage limit reached.                                |
+| 11400302 | Resource unavailable.                                 |
+
+**示例**：
+
+```ts
+import { hidebug, hilog } from '@kit.PerformanceAnalysisKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  hidebug.requestTrace({
+    identifier: "trace_name",
+    bufferSizeKb: 1024,
+    durationMs: 1000,
+    reserved: 0,
+  }).then((tracePath: string) => {
+    hilog.info(0x0000, 'hidebug', `tracePath: ${tracePath}`)
+  }).catch((error) => {
+    hilog.error(0x0000, 'hidebug', `error code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`)
+  })
+} catch (error) {
+  hilog.error(0x0000, 'hidebug', `error code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`)
+}
+```
+
 ## hidebug.getAppMemoryLimit<sup>12+</sup>
 
 getAppMemoryLimit(): MemoryLimit
@@ -1276,6 +1340,27 @@ GcStats包含以下键值信息：
 | ------------ | ---- | ------------------------------------------------------------ |
 | TRIM_LEVEL_1 | 0    | LEVEL 1级别裁剪，主要裁剪字符串。                       |
 | TRIM_LEVEL_2 | 1    | LEVEL 2级别裁剪，在TRIM_LEVEL_1的基础上，精简了对象地址标识的大小，从8个字节减少到4个字节。 |
+
+## RequestTraceConfig<sup>24+</sup>
+
+提供trace采集的参数选项。
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**原子化服务API**：从API version 24开始，该接口支持在原子化服务中使用。
+
+**系统能力**：SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+**ArkTS-Dyn起始版本**：24
+
+**ArkTS-Sta起始版本**：24
+
+| 名称      | 类型                    | 只读 | 可选 | 说明                                                         |
+| --------- | ----------------------- | ---- | ---- | ------------------------------------------------------------ |
+| identifier   | string | 否 | 否 | 采集trace输出的文件名前缀。文件名前缀只取字符串前20个字符，超过部分将抛弃。前20个字符只包含大小写字母和下划线，若不符合则默认为空字符串。 |
+| bufferSizeKb | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | trace文件的缓存大小，以KB为单位。数值为32位无符号整型数字，超出有效范围将导致数值溢出。取值范围为[1024, 15360]，传入参数超过取值范围，参数将被设置为最近的边界值。 |
+| durationMs   | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | trace采集时长，以ms为单位。数值为32位无符号整型数字，超出有效范围将导致数值溢出。取值范围为[1000, 15000]，传入参数超过取值范围，参数将被设置为最近的边界值。 |
+| reserved     | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 否 | 预留字段，可以设置为0。 |
 
 ## hidebug.isDebugState<sup>12+</sup>
 

@@ -60,9 +60,9 @@ SideBarContainer(type?: SideBarContainerType)
 
 ### showSideBar
 
-ArkTS-Dyn: showSideBar(value: boolean): SideBarContainerAttribute
+ArkTS-Dyn: showSideBar(value: boolean)
 
-ArkTS-Sta: showSideBar(value: boolean | Bindable<boolean> | undefined): this
+ArkTS-Sta: showSideBar(value: boolean | Bindable\<boolean> | undefined)
 
 设置是否显示侧边栏。
 
@@ -86,9 +86,9 @@ ArkTS-Sta：该属性支持双向绑定变量。
 
 ### controlButton
 
-ArkTS-Dyn: controlButton(value: ButtonStyle): SideBarContainerAttribute
+ArkTS-Dyn: controlButton(value: ButtonStyle)
 
-ArkTS-Sta: controlButton(value: ButtonStyle | undefined): this
+ArkTS-Sta: controlButton(value: ButtonStyle | undefined)
 
 设置侧边栏控制按钮的属性。
 
@@ -108,9 +108,9 @@ ArkTS-Sta: controlButton(value: ButtonStyle | undefined): this
 
 ### showControlButton
 
-ArkTS-Dyn: showControlButton(value: boolean): SideBarContainerAttribute
+ArkTS-Dyn: showControlButton(value: boolean)
 
-ArkTS-Sta: showControlButton(value: boolean | undefined): this
+ArkTS-Sta: showControlButton(value: boolean | undefined)
 
 设置是否显示控制按钮。
 
@@ -130,7 +130,7 @@ ArkTS-Sta: showControlButton(value: boolean | undefined): this
 
 ### sideBarWidth
 
-sideBarWidth(value: number): SideBarContainerAttribute
+sideBarWidth(value: number)
 
 设置侧边栏的宽度。设置为小于0的值时按默认值显示。受最小宽度和最大宽度限制，不在限制区域内取最近的点。
 
@@ -154,7 +154,7 @@ sideBarWidth(value: number): SideBarContainerAttribute
 
 ### sideBarWidth<sup>9+</sup>
 
-sideBarWidth(value: Length): SideBarContainerAttribute
+sideBarWidth(value: Length)
 
 设置侧边栏的宽度。设置为小于0的值时按默认值显示。受最小宽度和最大宽度限制，不在限制区域内取最近的点。与[sideBarWidth](#sidebarwidth)相比，value参数新增了对百分比字符串和其他[像素单位](ts-pixel-units.md)的支持。
 
@@ -178,7 +178,7 @@ sideBarWidth(value: Length): SideBarContainerAttribute
 
 ### sideBarWidth<sup>23+</sup>
 
-sideBarWidth(value: Length | Bindable<Length> | undefined): this
+sideBarWidth(value: Length | Bindable<Length> | undefined)
 
 设置侧边栏的宽度。设置为小于0的值时按默认值显示。受最小宽度和最大宽度限制，不在限制区域内取最近的点。
 
@@ -200,7 +200,7 @@ sideBarWidth(value: Length | Bindable<Length> | undefined): this
 
 ### minSideBarWidth
 
-minSideBarWidth(value: number): SideBarContainerAttribute
+minSideBarWidth(value: number)
 
 设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
 
@@ -224,7 +224,7 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 
 ### minSideBarWidth<sup>9+</sup>
 
-minSideBarWidth(value: Length): SideBarContainerAttribute
+minSideBarWidth(value: Length)
 
 设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。与[minSideBarWidth](#minsidebarwidth)相比，value参数新增了对百分比字符串和其他[像素单位](ts-pixel-units.md)的支持。
 
@@ -248,7 +248,7 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 
 ### minSideBarWidth<sup>23+</sup>
 
-minSideBarWidth(value: Length | undefined): this
+minSideBarWidth(value: Length | undefined)
 
 设置侧边栏最小宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
 
@@ -270,7 +270,7 @@ minSideBarWidth优先于侧边栏子组件minWidth，minSideBarWidth未设置时
 
 ### maxSideBarWidth
 
-maxSideBarWidth(value: number): SideBarContainerAttribute
+maxSideBarWidth(value: number)
 
 设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
 
@@ -294,7 +294,7 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 
 ### maxSideBarWidth<sup>9+</sup>
 
-maxSideBarWidth(value: Length): SideBarContainerAttribute
+maxSideBarWidth(value: Length)
 
 设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
 
@@ -318,7 +318,7 @@ maxSideBarWidth优先于侧边栏子组件maxWidth，maxSideBarWidth未设置时
 
 ### maxSideBarWidth<sup>23+</sup>
 
-maxSideBarWidth(value: Length | undefined): this
+maxSideBarWidth(value: Length | undefined)
 
 设置侧边栏最大宽度。设置为小于0的值时按默认值显示。值不能超过侧边栏容器本身宽度，超过使用侧边栏容器本身宽度。
 
@@ -522,9 +522,9 @@ minContentWidth优先于侧边栏的maxSideBarWidth与sideBarWidth属性，minCo
 
 ### onChange
 
-ArkTS-Dyn: onChange(callback: (value: boolean) => void): SideBarContainerAttribute
+ArkTS-Dyn: onChange(callback: (value: boolean) => void)
 
-ArkTS-Sta: onChange(callback: ((value: boolean) => void) | undefined): this
+ArkTS-Sta: onChange(callback: ((value: boolean) => void) | undefined)
 
 当侧边栏的状态在显示和隐藏之间切换时触发回调。
 

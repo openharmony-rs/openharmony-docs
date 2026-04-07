@@ -2,7 +2,7 @@
 
 HashMap底层采用数组、链表和红黑树实现，支持高效查询、插入和删除。HashMap存储内容基于key-value的键值对映射，不允许重复的key，且一个key只能对应一个value。
 
-HashMap和[TreeMap](js-apis-treemap.md)相比，HashMap依据键的hashCode存取数据，访问速度较快。而TreeMap是有序存取，效率较低。
+HashMap和[TreeMap](js-apis-treemap.md)相比，HashMap依据键的hashCode存取数据，访问速度较快。而TreeMap是有序存储和访问，效率较低。
 
 [HashSet](js-apis-hashset.md)基于HashMap实现。HashMap的输入参数由key、value两个值组成。在HashSet中，只对value对象进行处理。
 
@@ -790,7 +790,7 @@ hashMap.forEach((value?: number, key?: string) => {
 });
 ```
 ```ts
-// 不建议在forEach中使用set、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
+// 不建议在forEach中使用set、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 let hashMap: HashMap<string, number> = new HashMap<string, number>();
 for(let i = 0; i < 10; i++) {
   hashMap.set("sparrow" + i, 123);
@@ -882,7 +882,7 @@ while(!temp.done) {
 }
 ```
 ```ts
-// 不建议在entries中使用set、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
+// 不建议在entries中使用set、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 let hashMap: HashMap<string, number> = new HashMap<string, number>();
 for(let i = 0; i < 10; i++) {
   hashMap.set("sparrow" + i, 123);
@@ -908,7 +908,7 @@ while(!temp.done) {
 }
 ```
 ```ts
-// 不建议在entries中使用set、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
+// 不建议在entries中使用set、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 let hashMap = new HashMap<string, int>();
 for(let i = 0; i < 10; i++) {
   hashMap.set("sparrow" + i, 123);
@@ -974,7 +974,7 @@ for (let key of keys) {
 ```
 
 ```ts
-// 不建议在Symbol.iterator中使用set、remove方法，会导致死循环等不可预知的风险，可使用for循环来进行插入和删除。
+// 不建议在Symbol.iterator中使用set、remove方法，因其可能导致迭代过程中的状态异常，建议使用for循环来进行安全的插入与删除操作。
 let hashMap: HashMap<string, number> = new HashMap<string, number>();
 for(let i = 0; i < 10; i++) {
   hashMap.set("sparrow" + i, 123);

@@ -65,12 +65,33 @@ ArkTS-Sta: static createComposeShader(dstShaderEffect: ShaderEffect, srcShaderEf
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { drawing } from '@kit.ArkGraphics2D';
 
 let dstShader = drawing.ShaderEffect.createColorShader(0xFF0000FF);
 let srcShader = drawing.ShaderEffect.createColorShader(0xFFFF0000);
 let shader = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC);
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { drawing } from '@kit.ArkGraphics2D';
+import { RenderNode,DrawContext } from "@ohos.arkui.node"
+
+class DrawingRenderNode extends RenderNode {
+  draw(context: DrawContext) {
+    let dstShader = drawing.ShaderEffect.createColorShader(0xFF0000FF.toInt());
+    let srcShader = drawing.ShaderEffect.createColorShader(0xFFFF0000.toInt());
+    if (dstShader == undefined || srcShader == undefined)
+    {
+      return;
+    }
+    let shader = drawing.ShaderEffect.createComposeShader(dstShader, srcShader, drawing.BlendMode.SRC);
+  }
+}
 ```
 
 ## createImageShader<sup>20+</sup>
@@ -114,7 +135,7 @@ ArkTS-Sta: static createImageShader(pixelmap: image.PixelMap, tileX: TileMode, t
 **示例：**
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
+import { RenderNode,DrawContext } from "@ohos.arkui.node"
 import { image } from '@kit.ImageKit';
 import { drawing } from '@kit.ArkGraphics2D';
 
@@ -135,7 +156,7 @@ class DrawingRenderNode extends RenderNode {
 
     let opts: image.InitializationOptions = {
       editable: true,
-      pixelFormat: 3,
+      pixelFormat: image.PixelMapFormat.ARGB_8888,
       size: { height, width }
     }
 

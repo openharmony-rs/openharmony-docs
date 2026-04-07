@@ -78,7 +78,7 @@ ArkTS-Sta: position(value: Position | undefined)
 
 | 参数名 | 类型 | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Position](ts-types.md#position) <br> ArkTS-Sta: [Position](ts-types.md#position) \| undefined |是 |安全控件的左上角相对于父容器左上角的偏移位置。<br/>**异常情况说明**：<br/>1.当入参为异常值（如入参不符合Position定义等）、入参为Position类型但x和y均为异常值（如null或其他与格式要求不符的字符串等）时，该属性不生效；<br/>2.当入参的Position中，x和y有且仅有一个异常值时，值异常的属性会被置为0。如输入{x: 0, y: 'a'}，最终效果按{x: 0, y: 0}显示。<br/>ArkTS-Sta: 设定为undefined时该属性不生效。|
+| value | ArkTS-Dyn: [Position](ts-types.md#position) <br> ArkTS-Sta: [Position](ts-types.md#position) \| undefined |是 |安全控件的左上角相对于父容器左上角的偏移位置。<br/>**异常情况说明**：<br/>1.当入参为异常值（如入参不符合Position定义等）、入参为Position类型但x和y均为异常值（如undefined或其他与格式要求不符的字符串等）时，该属性不生效；<br/>2.当入参的Position中，x和y有且仅有一个异常值时，值异常的属性会被置为0。如输入{x: 0, y: 'a'}，最终效果按{x: 0, y: 0}显示。|
 
 ## markAnchor
 
@@ -100,7 +100,7 @@ ArkTS-Sta: markAnchor(value: Position | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Position](ts-types.md#position) <br> ArkTS-Sta: [Position](ts-types.md#position) \| undefined |是 |安全控件在位置定位时的锚点，以控件左上角作为基准点进行偏移。通常配合position和offset属性使用，单独使用时，效果类似offset。<br/>默认值：<br/>{<br/>x: 0,<br/>y: 0<br/>}。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
+| value | ArkTS-Dyn: [Position](ts-types.md#position) <br> ArkTS-Sta: [Position](ts-types.md#position) \| undefined |是 |安全控件在位置定位时的锚点，以控件左上角作为基准点进行偏移。通常配合position和offset属性使用，单独使用时，效果类似offset。<br/>无默认值，设置异常值时该属性不生效。|
 
 ## offset
 
@@ -122,7 +122,7 @@ ArkTS-Sta: offset(value: Position | Edges | LocalizedEdges | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) <br> ArkTS-Sta: [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) \| undefined |是 |安全控件相对于自身布局位置的坐标偏移。设置此属性不会影响父容器的布局，仅在绘制过程中调整位置。<br/>默认值：<br/>{<br/>x: 0,<br/>y: 0<br/>}。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
+| value | ArkTS-Dyn: [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) <br> ArkTS-Sta: [Position](ts-types.md#position) \| [Edges<sup>12+</sup>](ts-types.md#edges12) \| [LocalizedEdges<sup>12+</sup>](ts-types.md#localizededges12) \| undefined |是 |安全控件相对于自身布局位置的坐标偏移。设置此属性不会影响父容器的布局，仅在绘制过程中调整位置。<br/>无默认值，设置异常值时该属性不生效。|
 
 ## fontSize
 
@@ -518,7 +518,7 @@ ArkTS-Sta: constraintSize(value: ConstraintSizeOptions | undefined)
 
 | 参数名 | 类型                   | 必填 | 说明                   |
 |------------|------|-------|---------|
-| value | ArkTS-Dyn: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) <br> ArkTS-Sta: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) \| undefined |是 |约束尺寸，组件布局时，进行尺寸范围限制。constraintSize的优先级高于Width和Height。取值结果参考[constraintSize取值对width/height影响](ts-universal-attributes-size.md#constraintsize)。<br>默认值：<br>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
+| value | ArkTS-Dyn: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) <br> ArkTS-Sta: [ConstraintSizeOptions](ts-types.md#constraintsizeoptions) \| undefined |是 |约束尺寸，组件布局时，进行尺寸范围限制。未显式指定单位时，单位为vp。constraintSize的优先级高于Width和Height。取值结果参考[constraintSize取值对width/height影响](ts-universal-attributes-size.md#constraintsize)。<br>默认值：<br>{<br/>minWidth:&nbsp;0,<br/>maxWidth:&nbsp;Infinity,<br/>minHeight:&nbsp;0,<br/>maxHeight:&nbsp;Infinity<br/>}。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## alignRules<sup>15+</sup>
 
@@ -544,9 +544,9 @@ ArkTS-Sta: alignRules(alignRule: AlignRuleOption | LocalizedAlignRuleOptions | u
 
 ## id<sup>15+</sup>
 
-ArkTS-Dyn: id(description: string)
+ArkTS-Dyn: id(id: string)
 
-ArkTS-Sta: id(description: string | undefined)
+ArkTS-Sta: id(id: string | undefined)
 
 组件的唯一标识，唯一性由使用者保证。
 
@@ -562,7 +562,7 @@ ArkTS-Sta: id(description: string | undefined)
 
 | 参数名   | 类型      | 必填 | 说明                       |
 | ------ | -------- | -----|---------------------- |
-| description | ArkTS-Dyn: string <br> ArkTS-Sta: string \| undefined |  是  | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
+| id | ArkTS-Dyn: string <br> ArkTS-Sta: string \| undefined |  是  | 组件的唯一标识，唯一性由使用者保证。<br>默认值：''。<br/>ArkTS-Sta: 设定为undefined时使用默认值进行设置。|
 
 ## chainMode<sup>15+</sup>
 

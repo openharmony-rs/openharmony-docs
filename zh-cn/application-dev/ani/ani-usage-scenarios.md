@@ -672,11 +672,40 @@ static void handleData_union(ani_env *env, ani_object obj, ani_object union_obj)
 
 目的：
 1. 满足函数参数类型要求。
-2. 将基本类型的值转换为类实例（例如，将 `ani_int` 转换为 `ani_ref`）。
+2. 将基本类型的值转换为类实例（例如，将 `ani_int` 转换为 `ani_object`）。
 
 在托管代码中，对于可选参数，装箱操作会自动进行。省略可选基本类型的值默认为 `undefined`。在原生（native）代码中，必须显式传递参数。
 
-- 创建一个装箱对象：
+**快速装箱接口：**
+
+| 函数名 | 描述 |
+| --- | --- |
+| `Primitive_Box_<Type>` | 将ANI基本数据类型装箱为对应的类对象 |
+
+其中 `<Type>` 为待装箱的数据类型。
+
+示例：
+
+```cpp
+ani_object createDouble(ani_env *env)
+{
+    ani_object doubleObj {};
+    if (env->Primitive_Box_Double(static_cast<ani_double>(2.0), &doubleObj) != ANI_OK) {
+        std::cerr << "Failed to allocate Double!" << std::endl;
+        ani_ref undefinedRef;
+        env->GetUndefined(&undefinedRef);
+        return static_cast<ani_object>(undefinedRef);
+    }
+    return doubleObj;
+}
+```
+
+**传统装箱方式：**
+
+通过 `Object_New` 接口创建 `std.core.<Type>` 的类对象。
+
+示例：
+
 ```cpp
 ani_object createDouble(ani_env *env)
 {
@@ -686,14 +715,14 @@ ani_object createDouble(ani_env *env)
     env->FindClass(className, &doubleCls);
     ani_method ctor {};
     env->Class_FindMethod(doubleCls, "<ctor>", "d:", &ctor);
-    ani_object obj {};
-    if (env->Object_New(doubleCls, ctor, &obj, static_cast<ani_double>(2.0)) != ANI_OK) {
+    ani_object doubleObj {};
+    if (env->Object_New(doubleCls, ctor, &doubleObj, static_cast<ani_double>(2.0)) != ANI_OK) {
         std::cerr << "Failed to allocate Double!" << std::endl;
         ani_ref undefinedRef;
         env->GetUndefined(&undefinedRef);
         return undefinedRef;
     }
-    return obj;
+    return doubleObj;
 }
 ```
 
@@ -701,7 +730,24 @@ ani_object createDouble(ani_env *env)
 
 ### 4.1.3 拆箱
 
+**快速拆箱接口：**
+
+| 函数名 | 描述 |
+| --- | --- |
+| `Primitive_Unbox_<Type>` | 提取装箱对象对应的基本类型的值 |
+
+示例：
+
+```cpp
+ani_double doubleVal {};
+env->Primitive_Unbox_Double(doubleObj, &doubleVal);
+```
+开发者需要保证传入的装箱对象类型与调用的拆箱接口类型一致，如传入 `Double` 类型装箱对象则调用 `Primitive_Unbox_Double` 接口。
+
+**传统拆箱方式：**
+
 使用 `to<Type>` 方法来提取基本类型的值，其中 `<Type>` 为对应的数据类型：
+
 ```cpp
 Object_CallMethodByName_Double(boxed_double_obj, "toDouble", ":d", &unboxed_value)
 ```

@@ -525,7 +525,7 @@ on(type: 'stateChange', callback: Callback\<AVScreenCaptureStateCode>): void
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 状态切换事件回调类型，支持的事件：'stateChange'。            |
-| callback | function | 是   | 状态切换事件回调方法，[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)表示切换到的状态。 |
+| callback | Callback<[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)> | 是   | 状态切换事件回调方法，[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)表示切换到的状态。 |
 
 **示例：**
 
@@ -591,7 +591,7 @@ avScreenCaptureRecorder.on('error', (err: BusinessError) => {
 | 参数名   | 类型     | 必填 | 说明                                                         |
 | -------- | -------- | ---- | ------------------------------------------------------------ |
 | type     | string   | 是   | 状态切换事件回调类型，支持的事件：'stateChange'。            |
-| callback | function | 否   | 状态切换事件回调方法，[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
+| callback | Callback<[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)> | 否   | 状态切换事件回调方法，[AVScreenCaptureStateCode](arkts-apis-media-e.md#avscreencapturestatecode12)表示切换到的状态，不填此参数则会取消最后一次订阅事件。 |
 
 **示例：**
 
@@ -634,7 +634,7 @@ onStateChange(callback: Callback\<AVScreenCaptureStateCode>): void
 
 当状态发生的时候，会通过订阅的回调通知用户。用户只能订阅一个状态切换的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('stateChange')](#onstatechange12)。
 
@@ -664,7 +664,7 @@ onError(callback: ErrorCallback): void
 
 用户可以根据应用自身逻辑对错误事件进行处理。用户只能订阅一个错误事件的回调方法，重复订阅时，以最后一次订阅的回调接口为准。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[on('error')](#onerror12)。
 
@@ -704,7 +704,7 @@ avScreenCaptureRecorder.onError((err: BusinessError) => {
 
 用户可以指定填入状态切换的回调方法来取消订阅。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('stateChange')](#offstatechange12)。
 
@@ -731,7 +731,7 @@ offError(callback?: ErrorCallback): void
 
 用户可以指定填入错误回调方法来取消订阅。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **相关接口：** 该接口对应的ArkTS-Dyn接口是[off('error')](#offerror12)。
 

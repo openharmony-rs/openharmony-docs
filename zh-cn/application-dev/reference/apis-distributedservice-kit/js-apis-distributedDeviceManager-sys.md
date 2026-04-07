@@ -25,11 +25,11 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 设备认证用户界面状态改变通知信息。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -41,9 +41,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 表示心跳广播策略。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -58,9 +58,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 设备信息过滤器选项。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -76,9 +76,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 服务配置信息。根据云端返回的数据填充。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -95,9 +95,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 设备信息。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -138,9 +138,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 设备图标信息过滤选项。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -158,9 +158,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 设备图标信息。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -180,9 +180,9 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 设备网络ID过滤器选项。
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -201,7 +201,7 @@ import { distributedDeviceManager } from '@kit.DistributedServiceKit';
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API**：此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本**：24
 
@@ -224,11 +224,11 @@ ArkTS-Sta: replyUiAction(action: int, actionResult: string): void
 
 回复用户UI操作行为。此接口只能被devicemanager的PIN码hap使用。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -306,15 +306,15 @@ on(type: 'replyResult', callback: Callback&lt;{ param: string;}&gt;): void
 
 回复UI操作结果回调。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [onReplyResult](#onreplyresult23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [onReplyResult](#onreplyresult23)。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：**  此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -370,15 +370,15 @@ onReplyResult(callback: Callback&lt;ReplyResult&gt;): void
 
 回复UI操作结果回调。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [on('replyResult')](#onreplyresult)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [on('replyResult')](#onreplyresult)。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -420,15 +420,15 @@ off(type: 'replyResult', callback?: Callback&lt;{ param: string;}&gt;): void
 
 取消回复UI操作结果回调。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是 [offReplyResult](#offreplyresult23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是 [offReplyResult](#offreplyresult23)。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 10
 
@@ -471,17 +471,17 @@ offReplyResult(callback?: Callback&lt;ReplyResult&gt;): void
 
 取消回复UI操作结果回调。使用callback异步回调。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTS-Dyn接口是 [off('replyResult')](#offreplyresult)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是 [off('replyResult')](#offreplyresult)。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
-**ArkTS-Sta起始版本**: 23
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -520,11 +520,11 @@ ArkTS-Sta: setHeartbeatPolicy(policy: StrategyForHeartbeat, delayTime: int): voi
 
 设置心跳广播策略。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -590,11 +590,11 @@ getDeviceProfileInfoList(filterOptions: DeviceProfileInfoFilterOptions): Promise
 
 获取同账号下全部的设备列表，使用Promise异步回调。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 15
 
@@ -653,11 +653,11 @@ ArkTS-Sta: putDeviceProfileInfoList(deviceProfileInfoList: Array&lt;DeviceProfil
 
 业务调用更新设备列表，使用Promise异步回调。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -733,11 +733,11 @@ getDeviceIconInfo(filterOptions: DeviceIconInfoFilterOptions): Promise&lt;Device
 
 获取设备图标，使用Promise异步回调。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -806,11 +806,11 @@ ArkTS-Sta: getLocalDisplayDeviceName(maxNameLength: int): Promise&lt;string&gt;
 
 获取本机指定长度（字节数）的显示名，使用Promise异步回调。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -888,11 +888,11 @@ ArkTS-Sta: setLocalDeviceName(deviceName: string): Promise&lt;int&gt;
 
 修改本机设备名称，使用Promise异步回调。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -973,11 +973,11 @@ ArkTS-Sta: setRemoteDeviceName(deviceId: string, deviceName: string): Promise&lt
 
 设置配件设备名称，使用Promise异步回调。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -1053,58 +1053,17 @@ ArkTS-Sta示例：
   }
   ```
 
-### restoreLocalDeivceName<sup>18+</sup>
-
-restoreLocalDeivceName(): void
-
-系统重置还原网络设置时，还原本机设备名。
-
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
-
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
-
-**系统API：** 此接口为系统接口。
-
-**ArkTS-Dyn起始版本：** 18
-
-**ArkTS-Sta起始版本：** 23
-
-**错误码：**
-
-以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
-
-| 错误码ID | 错误信息                                                        |
-| -------- | --------------------------------------------------------------- |
-| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
-| 202 | Permission verification failed. A non-system application calls a system API.                              |
-| 11600102 | Failed to obtain the service.                                 |
-
-**示例：**
-
-  ```ts
-  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
-  import { BusinessError } from '@kit.BasicServicesKit';
-
-  try {
-    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
-    dmInstance.restoreLocalDeivceName();
-  } catch (err) {
-    let e: BusinessError = err as BusinessError;
-    console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
-  }
-  ```
-
 ### getDeviceNetworkIdList<sup>18+</sup>
 
 getDeviceNetworkIdList(filterOptions: NetworkIdQueryFilter): Promise&lt;Array&lt;string&gt;&gt;
 
 获取符合条件的网络设备ID列表。
 
-**需要权限：** ohos.permission.ACCESS_SERVICE_DM
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
 
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
 
-**系统API：** 此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
 **ArkTS-Dyn起始版本：** 18
 
@@ -1169,11 +1128,11 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
-**系统API**：此接口为系统接口。
+**系统API**： 此接口为系统接口。
 
-**ArkTS-Dyn起始版本**：24
+**ArkTS-Dyn起始版本：** 24
 
-**ArkTS-Sta起始版本**：24
+**ArkTS-Sta起始版本：** 24
 
 **参数：**
 
@@ -1193,10 +1152,10 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
 
 | 错误码ID    | 错误信息                                                                                                              |
 |----------|-------------------------------------------------------------------------------------------------------------------|
-| 201      | Permission verification failed. The application does not have the permission required to call the API.            |
-| 202      | Permission verification failed. A non-system application calls a system API.                                      |
-| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Parameter verification failed; |
-| 11600101 | Failed to execute the function.                                                                                   |
+| 201      | User permission verify failed.            |
+| 202      | The caller is not a system application.                                    |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;3. Parameter verification failed; |
+| 11600101 | Failed to execute the function.                                                                        |
 
 **示例：**
 
@@ -1223,5 +1182,93 @@ getIdentificationByDeviceIds(deviceIds: Array&lt;string&gt;): Array&lt;DeviceIde
         }
       }
     }
+  }
+  ```
+
+### restoreLocalDeviceName<sup>24+</sup>
+
+restoreLocalDeviceName(): void
+
+系统重置还原网络设置时，还原本机设备名。
+
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**模型约束**：此接口仅可在Stage模型下使用。
+
+**系统API**： 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 24
+
+**ArkTS-Sta起始版本：** 24
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain the service.                                 |
+
+**示例：**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.restoreLocalDeviceName();
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error('restoreLocalDeviceName errCode:' + e.code + ',errMessage:' + e.message);
+  }
+  ```
+
+### restoreLocalDeivceName<sup>(deprecated)</sup>
+
+restoreLocalDeivceName(): void
+
+系统重置还原网络设置时，还原本机设备名。
+
+> **说明：**
+>
+> 从API version 18开始支持，从API version 24开始废弃，建议使用[restoreLocalDeviceName](#restorelocaldevicename24)替代。
+
+**需要权限**：ohos.permission.ACCESS_SERVICE_DM
+
+**系统能力**：SystemCapability.DistributedHardware.DeviceManager
+
+**系统API**： 此接口为系统接口。
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[设备管理错误码](errorcode-device-manager.md)。
+
+| 错误码ID | 错误信息                                                        |
+| -------- | --------------------------------------------------------------- |
+| 201 | Permission verification failed. The application does not have the permission required to call the API.                                            |
+| 202 | Permission verification failed. A non-system application calls a system API.                              |
+| 11600102 | Failed to obtain the service.                                 |
+
+**示例：**
+
+  ```ts
+  import { distributedDeviceManager } from '@kit.DistributedServiceKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
+
+  try {
+    let dmInstance = distributedDeviceManager.createDeviceManager('ohos.samples.jsHelloWorld');
+    dmInstance.restoreLocalDeivceName();
+  } catch (err) {
+    let e: BusinessError = err as BusinessError;
+    console.error('restoreLocalDeivceName errCode:' + e.code + ',errMessage:' + e.message);
   }
   ```

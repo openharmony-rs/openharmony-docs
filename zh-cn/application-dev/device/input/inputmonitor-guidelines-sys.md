@@ -1,4 +1,4 @@
-# 输入监听开发指导
+# 输入监听开发指导（仅对系统应用开放）
 
 ## 场景介绍
 
@@ -12,7 +12,7 @@ import { inputMonitor } from '@kit.InputKit';
 
 ## 接口说明
 
-输入监听常用接口如下表所示，接口详细介绍请参考[ohos.multimodalInput.inputMonitor文档](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md)。
+输入监听常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputMonitor (输入监听)(系统接口)](../../reference/apis-input-kit/js-apis-inputmonitor-sys.md)。
 
 | 接口名称  | 描述 |
 | ------------------------------------------------------------ | -------------------------- |

@@ -54,7 +54,9 @@
 
 - 在\@ComponentV2装饰的struct中，\@ComponentReuse装饰的函数不能有入参，否则编译会报错。
 
-- 新增生命周期装饰器装饰方法时，自定义组件对应事件发生时会回调该方法。新增生命周期装饰器建议单独使用，不与其他状态变量装饰器联合使用。比如生命周期装饰器和[\@Computed](../state-management/arkts-new-computed.md)联合使用时，生命周期装饰器不生效。
+- 新增生命周期装饰器不能与状态变量装饰器联合使用。例如，\@ComponentInit、\@ComponentAppear、\@ComponentBuilt、\@ComponentDisappear、\@ComponentReuse和\@ComponentRecycle不能与[\@State](./arkts-static-state.md)、[\@Local](./arkts-static-new-local.md)等装饰器一起使用，否则编译会报错。
+
+- 新增生命周期装饰器建议单独使用，不与其他装饰器联合使用。比如生命周期装饰器和[\@Computed](./arkts-static-new-computed.md)联合使用时，生命周期装饰器不生效。
   ```typescript
   @Computed
   @ComponentAppear

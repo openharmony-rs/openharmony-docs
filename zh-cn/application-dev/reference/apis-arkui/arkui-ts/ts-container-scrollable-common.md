@@ -114,7 +114,7 @@ ArkTS-Sta: scrollBarWidth(value: double | string | undefined): this
 
 | 参数名 | 类型                       | 必填 | 说明                                      |
 | ------ | -------------------------- | ---- | ----------------------------------------- |
-| value  | ArkTS-Dyn: string&nbsp;\|&nbsp;number<br/>ArkTS-Sta: string&nbsp;\|&nbsp;double&nbsp;\|&nbsp;undefined | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp <br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。 |
+| value  | ArkTS-Dyn: number&nbsp;\|&nbsp;string<br/>ArkTS-Sta: double&nbsp;\|&nbsp;string&nbsp;\|&nbsp;undefined | 是   | 滚动条的宽度。<br/>默认值：4<br/>单位：vp <br/>取值范围：设置为小于0的值时，按默认值处理。设置为0时，不显示滚动条。 |
 
 **返回值：**
 
@@ -382,7 +382,9 @@ ArkTS-Sta: scrollBarMargin(margin: ScrollBarMargin | undefined): this
 
 ### digitalCrownSensitivity<sup>18+</sup>
 
-digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>): T
+ArkTS-Dyn: digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>): T
+
+ArkTS-Sta: digitalCrownSensitivity(sensitivity: CrownSensitivity | undefined): this
 
 设置表冠响应事件灵敏度。
 
@@ -392,17 +394,21 @@ digitalCrownSensitivity(sensitivity: Optional\<CrownSensitivity>): T
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：** 
 
 | 参数名      | 类型                                                         | 必填 | 说明                                                         |
 | ----------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| sensitivity | [Optional&lt;CrownSensitivity&gt;](ts-appendix-enums.md#crownsensitivity18) | 是   | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
+| sensitivity | ArkTS-Dyn: Optional&lt;[CrownSensitivity](ts-appendix-enums.md#crownsensitivity18)&gt; <br/>ArkTS-Sta: [CrownSensitivity](ts-appendix-enums.md#crownsensitivity18) \| undefined | 是   | 表冠响应灵敏度。<br/>默认值：CrownSensitivity.MEDIUM，响应速度适中。 |
 
 **返回值：**
 
 | 类型 | 说明           |
 | --- | -------------- |
-| T | 返回当前滚动组件。 |
+| ArkTS-Dyn: T <br/>ArkTS-Sta: this | 返回当前滚动组件。 |
 
 ### contentStartOffset<sup>22+</sup>
 
@@ -489,7 +495,7 @@ ArkTS-Sta: onReachStart(event: (() => void) | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void&nbsp;\|&nbsp;undefined | 是   | 滚动组件到达起始位置时的回调。 |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void)&nbsp;\|&nbsp;undefined | 是   | 滚动组件到达起始位置时的回调。 |
 
 **返回值：**
 
@@ -519,7 +525,7 @@ ArkTS-Sta: onReachEnd(event: (() => void) | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void&nbsp;\|&nbsp;undefined | 是   | 滚动组件到达末尾位置时的回调。 |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void)&nbsp;\|&nbsp;undefined | 是   | 滚动组件到达末尾位置时的回调。 |
 
 **返回值：**
 
@@ -553,7 +559,7 @@ ArkTS-Sta: onScrollStart(event: (() => void) | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void&nbsp;\|&nbsp;undefined | 是   | 滚动开始时的回调。 |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void)&nbsp;\|&nbsp;undefined | 是   | 滚动开始时的回调。 |
 
 **返回值：**
 
@@ -587,7 +593,7 @@ ArkTS-Sta: onScrollStop(event: (() => void) | undefined): this
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: () => void&nbsp;\|&nbsp;undefined | 是   | 滚动停止时的回调。 |
+| event  | ArkTS-Dyn: () => void<br/>ArkTS-Sta: (() => void)&nbsp;\|&nbsp;undefined | 是   | 滚动停止时的回调。 |
 
 **返回值：**
 
@@ -603,9 +609,13 @@ onWillScroll(handler: Optional&lt;OnWillScrollCallback&gt;): T
 
 回调当前帧将要滚动的偏移量和当前滚动状态和滚动操作来源，其中回调的偏移量为计算得到的将要滚动的偏移量值，并非最终实际滚动偏移。可以通过该回调返回值指定滚动组件将要滚动的偏移。
 
+**ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -630,11 +640,15 @@ onDidScroll(handler: OnScrollCallback): T
 
 滚动组件滑动时触发，返回当前帧滑动的偏移量和当前滑动状态。
 
+**ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
+
 **卡片能力：** 从API version 12开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -658,9 +672,13 @@ onScroll(event: (scrollOffset: number, scrollState: ScrollState) => void): T
 
 从API version 12开始废弃不再使用，Scroll组件的onScroll事件在布局之前触发，建议使用[onWillScroll](#onwillscroll12)替代；List、Grid和WaterFlow组件的onScroll事件在布局之后触发，建议使用[onDidScroll](#ondidscroll12)替代。
 
+**ArkTS模式:** 该接口仅适用于ArkTS-Dyn。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：**
 
@@ -832,6 +850,10 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称         | 类型         |   描述         |
 | ---------- | ---------- | ---------- |
 | x | number |  当前拖拽点的x坐标，单位vp。    |
@@ -844,6 +866,10 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined): this
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型  | 必填 | 描述              |
 | ----- | ------ | ------ | ----------------- |
@@ -871,9 +897,32 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 | 参数名           | 类型                                                         | 必填 | 描述                                                         |
 | ---------------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
 | fadingEdgeLength | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 设置边缘渐隐长度。如果设置小于0的值则取默认值，默认长度为32vp。<br/>如果设置的长度超过容器高度的一半时，渐隐长度取容器高度的一半。 |
+
+## EditModeOptions<sup>23+</sup>对象说明
+
+List/Grid组件编辑模式选项属性参数对象。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称           | 类型                                                         | 只读 | 可选 | 说明                                                         |
+| ---------------- | ------------------------------------------------------------ | ---- | -- | ------------------------------------------------------------ |
+| enableGatherSelectedItemsAnimation | boolean | 否   | 是 | 是否启用多选聚拢动画。设置true时启用聚拢动画，设置为false时关闭聚拢动画。<br>只有GridItem或ListItem上设置了[bindContextMenu](ts-universal-attributes-menu.md#bindcontextmenu8)且responseType设置为[ResponseType](ts-appendix-enums.md#responsetype8).LongPress、[preview](ts-universal-attributes-menu.md#contextmenuoptions10)参数设置为MenuPreviewMode.IMAGE或CustomBuilder时会显示多选聚拢动画。<br>如果GridItem或ListItem上设置了[拖拽事件](ts-universal-events-drag-drop.md)，是否聚拢以[dragPreviewOptions](ts-universal-attributes-drag-drop.md#dragpreviewoptions11)设置为准。<br>默认值：false |
+| onGetPreviewBadge | [OnGetPreviewBadgeCallback](#ongetpreviewbadgecallback23) | 否   | 是 | 即将启动多选长按聚拢动画时，触发用于获取选中数量的回调。<br>缺省时用Grid或List显示范围内选中item的数量作为多选长按聚拢动画后菜单预览图的角标。 |
 
 ## EffectEdge<sup>18+</sup>枚举说明
 
@@ -883,23 +932,14 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称  | 值   | 说明         |
 | ----- | ---- | ------------ |
 | START | 1    | 起始边生效。 |
 | END   | 2    | 末尾边生效。 |
-
-## ScrollBarMargin<sup>20+</sup>对象说明
-
-滚动条边距。
-
-**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-| 名称  | 类型                                                         | 必填 | 说明                                   |
-| ----- | ------------------------------------------------------------ | ---- | -------------------------------------- |
-| start | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 滚动条起始边距。<br/>默认值：0，单位：vp |
-| end   | [LengthMetrics](../js-apis-arkui-graphics.md#lengthmetrics12) | 否   | 滚动条末尾边距。<br/>默认值：0，单位：vp |
 
 ## ContentClipMode<sup>14+</sup>枚举说明
 
@@ -908,6 +948,10 @@ ArkTS-Sta: onDidStopFling(handler: VoidCallback | undefined): this
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 下图是组件配置了边距属性后的示意图，可理解每种枚举对应的裁剪区域。
 
@@ -972,6 +1016,59 @@ ArkTS-Sta: type OnScrollCallback = (scrollOffset: double, scrollState: ScrollSta
 | scrollOffset | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 是 | 每帧滚动的偏移量，滚动组件的内容向上滚动时偏移量为正，向下滚动时偏移量为负。<br/>单位vp。 |
 | scrollState | [ScrollState](ts-container-list.md#scrollstate枚举说明) | 是 | 当前滑动状态。 |
 
+## OnItemDragStartCallback<sup>23+</sup>
+
+ArkTS-Dyn: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: number) => CustomBuilder
+
+ArkTS-Sta: type OnItemDragStartCallback = (event: ItemDragInfo, itemIndex: int) => CustomBuilder
+
+开始拖拽列表或网格元素时触发的回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                                      | 必填 | 说明                   |
+| --------- | --------------------------------------------------------- | ---- | ---------------------- |
+| event     | [ItemDragInfo](ts-container-scrollable-common.md#itemdraginfo对象说明) | 是   | 拖拽点的信息。         |
+| itemIndex | ArkTS-Dyn: number<br/> ArkTS-Sta: int    | 是   | 被拖拽列表元素索引值。 |
+
+**返回值：** 
+
+| 类型                          | 说明                                  |
+| ----------------------------- | ------------------------------------ |
+| [CustomBuilder](ts-types.md#custombuilder8) |  返回CustomBuilder用于构建被拖拽元素的拖拽图。返回void表示不能拖拽。|
+
+## OnGetPreviewBadgeCallback<sup>23+</sup>
+
+ArkTS-Dyn: type OnGetPreviewBadgeCallback = () => boolean | number
+
+ArkTS-Sta: type OnGetPreviewBadgeCallback = () => boolean | int
+
+即将启动多选长按聚拢动画时，触发用于获取选中数量的回调。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型                          | 说明                                  |
+| ----------------------------- | ------------------------------------  |
+| ArkTS-Dyn: boolean \| number <br>ArkTS-Sta: boolean \| int |  多选长按聚拢动画后菜单预览图是否显示选中数量角标，或需要显示的数量。<br>返回true表示显示选中数量角标，对应Grid或List显示范围内选中item数量；false表示不显示角标。<br>返回数字时默认显示角标，该数字表示角标中需要显示的数量。取值范围：[0, 2<sup>31</sup>-1]，超过取值范围时按返回true处理。<br>返回浮点数时，向下取整。|
+
 ## ScrollResult<sup>12+</sup>对象说明
 
 [OnWillScrollCallback](#onwillscrollcallback12)返回值对象。
@@ -1002,9 +1099,9 @@ ArkTS-Sta: type OnScrollCallback = (scrollOffset: double, scrollState: ScrollSta
 
 ### constructor<sup>12+</sup>
 
-ArkTS-Dyn: constructor(childDefaultSize: number): void
+ArkTS-Dyn: constructor(childDefaultSize: number)
 
-ArkTS-Sta: constructor(childDefaultSize: double): void
+ArkTS-Sta: constructor(childDefaultSize: double)
 
 ChildrenMainSize有参构造函数。
 
@@ -1022,12 +1119,19 @@ ChildrenMainSize有参构造函数。
 | ---- | ----------------------------- | ---- | -------------------- |
 | childDefaultSize | ArkTS-Dyn: number<br/> ArkTS-Sta: double | 是    | 子组件在主轴方向的默认大小。<br/>单位：vp<br/>**说明：** <br/>必须是有限的非负数值，否则抛出异常。|
 
+**错误码**：
+
+以下错误码详细介绍请参考[通用错误码](../../errorcode-universal.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types; 3. Parameter verification failed.   |
 
 ### childDefaultSize<sup>12+</sup>
 
-ArkTS-Dyn: set childDefaultSize(value: number): void
+ArkTS-Dyn: set childDefaultSize(value: number)
 
-ArkTS-Sta: set childDefaultSize(value: double): void
+ArkTS-Sta: set childDefaultSize(value: double)
 
 修改子组件在主轴方向的默认大小。
 
@@ -1052,8 +1156,6 @@ ArkTS-Sta: set childDefaultSize(value: double): void
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-
-### get childDefaultSize()
 
 ArkTS-Dyn: get childDefaultSize(): number
 
@@ -1099,7 +1201,6 @@ ArkTS-Sta: splice(start: int, deleteCount?: int, childrenSize?: Array\<double\>)
 | deleteCount | ArkTS-Dyn: number<br/> ArkTS-Sta: int | 否    | 从start开始删除的大小信息的数量。<br/>**说明：** <br/>1.  必须是有限的非负数值，否则处理为0。<br/>2. 非整数会被截断为整数。<br/>3. start + deleteCount - 1可以超过最大索引值，会删除索引值start开始之后的所有子组件的大小信息。<br/>默认值为+∞。 <br/>取值范围：[0, +∞) |
 | childrenSize | ArkTS-Dyn: Array\<number><br/> ArkTS-Sta: Array\<double> | 否    | 要在start位置插入的所有子组件的主轴方向的大小。<br/>Array中各个数值单位：vp <br/>**说明：** <br/>1.数组中数值如果是有限的非负值，则认为是指定的大小，后续不随默认大小的变化而变化。<br/>2. 数组中数值如果不是有限的非负值，会被处理成默认大小，后续会随默认大小的变化而变化。<br/>默认值为空数组。 <br/>取值范围：[0, +∞) |
 
-
 **错误码**：
 
 以下错误码详细介绍请参考[通用错误码](../../errorcode-universal.md)。
@@ -1107,7 +1208,6 @@ ArkTS-Sta: splice(start: int, deleteCount?: int, childrenSize?: Array\<double\>)
 | 错误码ID | 错误信息 |
 | ------- | -------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3. Parameter verification failed.   |
-
 
 > **说明：**
 >
