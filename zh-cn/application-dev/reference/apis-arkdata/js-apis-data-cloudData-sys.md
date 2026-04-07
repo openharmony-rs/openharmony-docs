@@ -1038,7 +1038,7 @@ static offSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress?: Callb
 
 | 参数名     | 类型   | 必填 | 说明                                                         |
 | ---------- | ------ | ---- | ------------------------------------------------------------ |
-| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 应用信息配置数组，最多支持30个应用信息。 |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 应用信息配置数组，最多支持30个应用信息，取消订阅时应用信息的storeId需要与订阅时保持一致。 |
 | progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 否   | 同步信息变化回调函数。如果不传此参数，则取消所有订阅。 |
 
 **错误码：**
