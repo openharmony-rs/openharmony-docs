@@ -118,22 +118,23 @@
 
 接口使用不正确以及on接口监听error状态返回。
 
+**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称                       | 值          | 说明            |
 | -------------------------  | ----       | ------------    |
-| INVALID_ARGUMENT           | 7400101    | 参数缺失或者参数类型不对。<br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| OPERATION_NOT_ALLOWED      | 7400102    | 操作流程不对，不允许。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| SESSION_NOT_CONFIG         | 7400103    | session 未配置返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  |
-| SESSION_NOT_RUNNING        | 7400104    | session 未运行返回。<br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| SESSION_CONFIG_LOCKED      | 7400105    | session 配置已锁定返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| DEVICE_SETTING_LOCKED      | 7400106    | 设备设置已锁定返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。|
-| CONFLICT_CAMERA            | 7400107    | 设备重复打开返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| DEVICE_DISABLED            | 7400108    | 安全原因相机被禁用。<br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。  |
-| UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。 |
-| SERVICE_FATAL_ERROR        | 7400201    | 相机服务异常返回。 <br> **原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。    |
-| UNSUPPORTED_MULTI_CAMERA_COMBINATION<sup>24+</sup> | 7400113 | 不支持多摄像头组合。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+ | INVALID_ARGUMENT           | 7400101    | 参数缺失或者参数类型不对。   |	 
+ | OPERATION_NOT_ALLOWED      | 7400102    | 操作流程不对，不允许。     |	 
+ | SESSION_NOT_CONFIG         | 7400103    | session 未配置返回。       |	 
+ | SESSION_NOT_RUNNING        | 7400104    | session 未运行返回。    |	 
+ | SESSION_CONFIG_LOCKED      | 7400105    | session 配置已锁定返回。     |	 
+ | DEVICE_SETTING_LOCKED      | 7400106    | 设备设置已锁定返回。     |	 
+ | CONFLICT_CAMERA            | 7400107    | 设备重复打开返回。     |	 
+ | DEVICE_DISABLED            | 7400108    | 安全原因相机被禁用。     |	 
+ | DEVICE_PREEMPTED           | 7400109    | 相机被抢占导致无法使用。     |	 
+ | UNRESOLVED_CONFLICTS_WITH_CURRENT_CONFIGURATIONS<sup>12+</sup> | 7400110   | 与当前配置存在冲突。     |	 
+ | SERVICE_FATAL_ERROR        | 7400201    | 相机服务异常返回。     |
 
 ## TorchMode<sup>11+</sup>
 
@@ -397,13 +398,14 @@
 
 枚举，相机控制器支持的效果类型。
 
+ **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
 | 名称      | 值 | 说明    |
 |-----------|---|---------|
-| BEAUTY    | 0 | 美颜。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。   |
-| PORTRAIT  | 1 | 人像虚化。<br> **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。|
-| AUTO_FRAMING<sup>24+</sup> | 2 | 自动构图。<br> **原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 |
+ | BEAUTY    | 0 | 美颜。   |	 
+ | PORTRAIT  | 1 | 人像虚化。|
 
 ## PhotoQualityPrioritization<sup>21+</sup>
 
