@@ -45,10 +45,15 @@
      
      ``` TypeScript
      function getFileFd(context: Context, fileName: string): number | undefined {
-       const filePath: string = context.cacheDir + '/' + fileName;
-       const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
-       const fd: number = file?.fd;
-       return fd;
+       try {
+         const filePath: string = context.cacheDir + '/' + fileName;
+         const file: fs.File = fs.openSync(filePath, fs.OpenMode.READ_ONLY);
+         const fd: number = file?.fd;
+         return fd;
+       } catch (err) {
+         console.error(`Failed to get the fileFd with error: ${err}.`);
+         return undefined;
+       }
      }
      ```
       
