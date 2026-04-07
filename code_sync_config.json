@@ -14601,7 +14601,7 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/ArkUISample/EventProject/entry/src/main/ets/pages/singlegesture/OnClickGesture.ets",
 				"functions":[
 					{
-						"end_line":67,
+						"end_line":69,
 						"name":"click_event",
 						"start_line":16
 					}
@@ -49120,7 +49120,7 @@
 						"start_line":386
 					},
 					{
-						"end_line":562,
+						"end_line":578,
 						"name":"Cpp_InputEventListExample",
 						"start_line":15
 					}
