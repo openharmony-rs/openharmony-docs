@@ -225,7 +225,7 @@ PixelMap的初始化选项。
 | whitePointX  | number  | 否 | 否 | 归一化后白点值的X坐标，以0.00002为单位，范围[0.0, 1.0]。   |
 | whitePointY  | number   | 否 | 否 | 归一化后白点值的Y坐标，以0.00002为单位，范围[0.0, 1.0]。   |
 | maxLuminance  | number  | 否 | 否 | 图像主监视器最大亮度。单位为尼特（nit），最大值为65535。   |
-| minLuminance  | number   | 否 | 否 | 图像主监视器最小亮度。单位为尼特（nit），实际值 = 存储值 x 0.0001，最大值为6.5535。   |
+| minLuminance  | number   | 否 | 否 | 图像主监视器最小亮度。单位为尼特（nit），实际值 = 存储值 × 0.0001，最大值为6.5535。   |
 | maxContentLightLevel  | number  | 否 | 否 | 显示内容的最大亮度。单位为尼特（nit），最大值为65535。   |
 | maxFrameAverageLightLevel  | number  | 否 | 否 | 显示内容的最大平均亮度。单位为尼特（nit），最大值为65535。 |
 
