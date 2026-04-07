@@ -49377,5 +49377,65 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-add.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"import",
+						"start_line":16
+					},
+					{
+						"end_line":56,
+						"name":"batch_add",
+						"start_line":28
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-remove.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"import",
+						"start_line":16
+					},
+					{
+						"end_line":116,
+						"name":"batch_remove",
+						"start_line":97
+					}
+				]
+			}
+		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/security/AssetStoreKit/asset-js-batch-update.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets",
+				"functions":[
+					{
+						"end_line":25,
+						"name":"import",
+						"start_line":16
+					},
+					{
+						"end_line":93,
+						"name":"batch_update",
+						"start_line":60
+					}
+				]
+			}
+		]
 	}
 ]
