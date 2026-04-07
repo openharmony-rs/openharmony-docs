@@ -539,7 +539,7 @@ getVolumeInUnitOfDbByStream(streamUsage: StreamUsage, volumeLevel: number, devic
 | 参数名   | 类型                                   | 必填 | 说明                                                         |
 | -------- | -------------------------------------- | ---- | ------------------------------------------------------------ |
 | streamUsage     | [StreamUsage](arkts-apis-audio-e.md#streamusage)                                 | 是   | 音频流。 |
-| volumeLevel     | number                                 | 是   | 音量值等级。 |
+| volumeLevel     | number                                 | 是   | 音量等级。 |
 | device     | [DeviceType](arkts-apis-audio-e.md#devicetype)                                 | 是   | 设备类型。 |
 
 **返回值：**
