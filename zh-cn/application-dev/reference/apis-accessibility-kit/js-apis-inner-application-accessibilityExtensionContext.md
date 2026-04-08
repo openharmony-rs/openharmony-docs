@@ -90,7 +90,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 | valueNow             | number                                                             | 否   | 否   | 当前值。默认值为0。 |
 | windowId             | number                                                             | 否   | 否   | 窗口ID。默认值为-1。 |
 | textType<sup>12+</sup>             | string                                                             | 否   | 否   | 元素的无障碍文本类型，由组件accessibilityTextHint属性配置。 |
-| offset<sup>12+</sup>             | number              | 否   | 否   | 对于可滚动类控件，如List、Grid，内容区相对控件的顶部坐标滚动的像素偏移量。默认值为0。 |
+| offset<sup>12+</sup>             | number              | 否   | 否   | 对于可滚动类控件，如List、Grid，内容区相对控件的顶部坐标滚动的像素偏移量，单位为像素（px）。默认值为0。 |
 | hotArea<sup>12+</sup>             | [Rect](#rect)                                                              | 否   | 否   | 元素的可触摸区域。 |
 | customComponentType<sup>18+</sup>             | string                                                             | 否   | 是   | 自定义组件类型。|
 | accessibilityNextFocusId<sup>18+</sup>             | number                | 否   | 是   | 下一个要聚焦的组件ID。通过findElement('elementId')查询到的AccessibilityElementInfo对象中可获取到用户在控件上设置的该属性值。默认值为-1。 |
@@ -136,10 +136,10 @@ type FocusType = 'accessibility' | 'normal'
 
 | 名称     | 类型     | 只读   | 可选   | 说明        |
 | ------ | ------ | ---- | ---- | --------- |
-| left   | number | 否    | 否    | 矩形区域的左边界。 |
-| top    | number | 否    | 否    | 矩形区域的上边界。 |
-| width  | number | 否    | 否    | 矩形区域的宽度。  |
-| height | number | 否    | 否    | 矩形区域的高度。  |
+| left   | number | 否    | 否    | 矩形区域的左边界，单位为像素（px）。 |
+| top    | number | 否    | 否    | 矩形区域的上边界，单位为像素（px）。 |
+| width  | number | 否    | 否    | 矩形区域的宽度，单位为像素（px）。  |
+| height | number | 否    | 否    | 矩形区域的高度，单位为像素（px）。  |
 
 ## WindowType
 
