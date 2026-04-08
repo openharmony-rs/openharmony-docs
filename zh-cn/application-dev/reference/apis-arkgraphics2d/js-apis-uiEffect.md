@@ -109,6 +109,7 @@ struct UIEffectFilterExample {
     }
 }
 ```
+![zh-ch_image_UIEffect_blur.png](figures/zh-ch_image_UIEffect_blur.png)
 
 ### hdrBrightnessRatio<sup>24+</sup>
 hdrBrightnessRatio(ratio: number): Filter
