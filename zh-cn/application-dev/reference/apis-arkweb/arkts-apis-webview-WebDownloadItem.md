@@ -813,7 +813,7 @@ struct WebComponent {
 
 getOriginalUrl(): string
 
-获取下载文件的原始url地址。
+获取下载文件的原始URL地址。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -821,7 +821,7 @@ getOriginalUrl(): string
 
 | 类型   | 说明                      |
 | ------ | ------------------------- |
-| string | 下载文件的原始url地址。 |
+| string | 下载文件的原始URL地址。 |
 
 **示例：**
 
@@ -842,7 +842,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download, origin url:" + webDownloadItem.getOriginalUrl());
+              console.info("will start a download, origin URL:" + webDownloadItem.getOriginalUrl());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
@@ -907,7 +907,7 @@ struct WebComponent {
         .onClick(() => {
           try {
             this.delegate.onBeforeDownload((webDownloadItem: webview.WebDownloadItem) => {
-              console.info("will start a download, referrer url:" + webDownloadItem.getReferrerUrl());
+              console.info("will start a download, referrer URL:" + webDownloadItem.getReferrerUrl());
               // 传入一个下载路径，并开始下载。
               webDownloadItem.start("/data/storage/el2/base/cache/web/" + webDownloadItem.getSuggestedFileName());
             })
