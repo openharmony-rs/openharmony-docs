@@ -889,7 +889,7 @@ currentOffset(): OffsetResult
 | -------- | -------- |
 |  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。|
 
-### offset<sup>23+<sup>
+### offset<sup>23+</sup>
 
 offset(): OffsetResult | undefined
 
