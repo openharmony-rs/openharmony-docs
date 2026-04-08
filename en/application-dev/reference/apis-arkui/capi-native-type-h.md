@@ -64,7 +64,7 @@ Defines the common types for the native module.
 | [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) | ArkUI_CustomProperty | Defines a struct for the custom property information.|
 | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | Defines a struct for the host window information.|
 | [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | Defines a struct for active child node information.|
-| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | Defines cross-language configuration options.|
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | Defines a cross-language configuration option.|
 | [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | Declares a **Want** object.|
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | Defines the **EmbeddedComponentOption** parameter for **EmbeddedComponent**.|
 | [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md) | ArkUI_AccessibilityState | Defines a struct for the component accessibility state.|
@@ -77,7 +77,7 @@ Defines the common types for the native module.
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | Defines the style of the digit navigation indicator for the **Swiper** component.|
 | [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | Defines the navigation arrow style for the **Swiper** component.|
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | Defines a struct for the styled string descriptor object supported by the text component.|
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines a struct for snapshot options.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines snapshot options.|
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | Defines the data selection list for the text picker.|
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | Defines the content array for a multi-column cascading data picker.|
 | [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)| ArkUI_SelectionOptions | Defines options of the selection operation.|
@@ -170,7 +170,7 @@ Defines the common types for the native module.
 | [ArkUI_BlendMode](#arkui_blendmode)                                 | ArkUI_BlendMode                 | Enumerates the blend modes.                         |
 | [ArkUI_Direction](#arkui_direction)                                 | ArkUI_Direction                 | Enumerates the modes in which components are laid out along the main axis of the container.              |
 | [ArkUI_ItemAlignment](#arkui_itemalignment)                         | ArkUI_ItemAlignment             | Enumerates the modes in which components are laid out along the cross axis of the container.            |
-| [ArkUI_ColorStrategy](#arkui_colorstrategy)                         | ArkUI_ColorStrategy             | Enumerates the foreground and shadow colors.                          |
+| [ArkUI_ColorStrategy](#arkui_colorstrategy)                         | ArkUI_ColorStrategy             | Enumerates foreground and shadow colors.                          |
 | [ArkUI_FlexAlignment](#arkui_flexalignment)                         | ArkUI_FlexAlignment             | Enumerates the vertical alignment modes.                      |
 | [ArkUI_FlexDirection](#arkui_flexdirection)                         | ArkUI_FlexDirection             | Enumerates the directions of the main axis in the flex container.                   |
 | [ArkUI_FlexWrap](#arkui_flexwrap)                                   | ArkUI_FlexWrap                  | Defines whether the flex container has a single line or multiple lines.                  |
@@ -483,8 +483,8 @@ Defines the common types for the native module.
 | [bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getscaneffectenabled) | - | Obtains the enabled status of the scan effect.|
 | [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokewidth) | - | Obtains the stroke width of the progress indicator.|
 | [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokeradius) | - | Obtains the corner radius of the progress indicator.|
-| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | - | Creates a snapshot options object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.|
-| [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | - | Destroys a snapshot options object.|
+| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | - | Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.|
+| [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | - | Destroys a snapshot option object.|
 | [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | - | Sets the scale property in the snapshot options.|
 | [int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)](#oh_arkui_snapshotoptions_setcolormode) | - | Sets the color space in the screenshot option.|
 | [int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)](#oh_arkui_snapshotoptions_setdynamicrangemode) | - | Sets the dynamic range mode in the screenshot options.|
@@ -542,8 +542,8 @@ Defines the common types for the native module.
 | [void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutOptions* option, void* userData, ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData))](#oh_arkui_gridlayoutoptions_registergetrectbyindexcallback) | - | Registers a callback to obtain the starting row, starting column, row span, and column span for the grid item at the specified index.|
 | [ArkUI_SelectionOptions OH_ArkUI_SelectionOptions_Create()](#oh_arkui_selectionoptions_create) | - | Creates a selection option.|
 | [void OH_ArkUI_SelectionOptions_Dispose(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_dispose) | - | Releases the selection option object.|
-| [void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, ArkUI_MenuPolicy menuPolicy)](#oh_arkui_selectionoptions_setmenupolicy) | - | Sets the menu pop-up policy for selecting options.|
-| [ArkUI_MenuPolicy OH_ArkUI_SelectionOptions_GetMenuPolicy(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_getmenupolicy) | - | Obtains the menu display policy for selecting options.|
+| [void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, ArkUI_MenuPolicy menuPolicy)](#oh_arkui_selectionoptions_setmenupolicy) | - | Sets the menu pop-up policy for selection options.|
+| [ArkUI_MenuPolicy OH_ArkUI_SelectionOptions_GetMenuPolicy(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_getmenupolicy) | - | Obtains the menu pop-up policy for selection options.|
 | [ArkUI_TextContentBaseController* OH_ArkUI_TextContentBaseController_Create()](#oh_arkui_textcontentbasecontroller_create) | - | Creates a basic controller object for text content.|
 | [void OH_ArkUI_TextContentBaseController_Dispose(ArkUI_TextContentBaseController* controller)](#oh_arkui_textcontentbasecontroller_dispose) | - | Destroys a basic controller object for text content.|
 | [void OH_ArkUI_TextContentBaseController_DeleteBackward(ArkUI_TextContentBaseController* controller)](#oh_arkui_textcontentbasecontroller_deletebackward) | - | Deletes the character before the cursor in editing state; deletes the last character of the text box component in other states.|
@@ -582,25 +582,25 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenushowcallback) | - | Registers the callback for the event of showing a custom text selection menu.|
 | [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenuhidecallback) | - | Registers the callback for the event of hiding a custom text selection menu.|
 | [ArkUI_TextMarqueeOptions* OH_ArkUI_TextMarqueeOptions_Create()](#oh_arkui_textmarqueeoptions_create) | - | Creates text marquee options.|
-| [void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_dispose) | - | Destroys the pointer to the text marquee options.|
-| [void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool start)](#oh_arkui_textmarqueeoptions_setstart) | - | Sets whether to play text marquee options.|
-| [bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstart) | - | Obtains whether to play text marquee options.|
-| [void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float step)](#oh_arkui_textmarqueeoptions_setstep) | - | Sets the step of text marquee options.|
-| [float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstep) | - | Obtains the step of text marquee options.|
-| [void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, float spacing)](#oh_arkui_textmarqueeoptions_setspacing) | - | Sets the distance between the start and end items of the text marquee options.|
-| [float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getspacing) | - | Obtains the distance between the start and end items of the text marquee options.|
-| [void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32_t loop)](#oh_arkui_textmarqueeoptions_setloop) | - | Sets the number of repetitions for looping text marquee options. The value **0** or negative value indicates infinite looping.|
-| [int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getloop) | - | Obtains the number of repetitions for looping text marquee options.|
-| [void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, bool fromStart)](#oh_arkui_textmarqueeoptions_setfromstart) | - | Sets the scrolling direction for looping text marquee options.|
-| [bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfromstart) | - | Obtains the scrolling direction for looping text marquee options.|
-| [void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)](#oh_arkui_textmarqueeoptions_setdelay) | - | Sets the delay of each loop for text marquee options.|
-| [int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getdelay) | - | Obtains the delay of each loop for text marquee options.|
-| [void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)](#oh_arkui_textmarqueeoptions_setfadeout) | - | Sets whether text marquee options support a fade-out effect when the text is too long. When supported, if the text content exceeds the display range, the edges of the partially visible text will have a fade-out effect applied. If both ends have partially visible text, both ends will have the fade-out effect applied. When the fade-out effect is enabled, the [NODE_CLIP](./capi-native-node-h.md#arkui_nodeattributetype) attribute is automatically fixed at **true** and cannot be set to **false**.|
-| [bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfadeout) | - | Obtains whether text marquee options support a fade-out effect when the text is too long.|
-| [void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)](#oh_arkui_textmarqueeoptions_setstartpolicy) | - | Sets the startup policy of the text marquee options.|
-| [ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstartpolicy) | - | Obtains the startup policy of the text marquee options.|
-| [void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeUpdatePolicy updatePolicy)](#oh_arkui_textmarqueeoptions_setupdatepolicy) | - | Sets the update policy of the text marquee options.|
-| [ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getupdatepolicy) | - | Obtains the update policy of the text marquee options.|
+| [void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_dispose) | - | Destroys the pointer to the text marquee option.|
+| [void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool start)](#oh_arkui_textmarqueeoptions_setstart) | - | Sets whether to play the text marquee option.|
+| [bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstart) | - | Obtains whether the text marquee option is played.|
+| [void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float step)](#oh_arkui_textmarqueeoptions_setstep) | - | Sets the step of the text marquee option.|
+| [float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstep) | - | Obtains the step of the text marquee option.|
+| [void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, float spacing)](#oh_arkui_textmarqueeoptions_setspacing) | - | Sets the distance between the start and end items of the text marquee option.|
+| [float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getspacing) | - | Obtains the distance between the start and end items of the text marquee option.|
+| [void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32_t loop)](#oh_arkui_textmarqueeoptions_setloop) | - | Sets the number of repetitions for looping the text marquee option. The value **0** or negative value indicates infinite looping.|
+| [int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getloop) | - | Obtains the number of repetitions for looping the text marquee option.|
+| [void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, bool fromStart)](#oh_arkui_textmarqueeoptions_setfromstart) | - | Sets the scrolling direction for looping the text marquee option.|
+| [bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfromstart) | - | Obtains the scrolling direction for looping the text marquee option.|
+| [void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int32_t delay)](#oh_arkui_textmarqueeoptions_setdelay) | - | Sets the delay of each loop for the text marquee option.|
+| [int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getdelay) | - | Obtains the delay of each loop for the text marquee option.|
+| [void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bool fadeout)](#oh_arkui_textmarqueeoptions_setfadeout) | - | Sets whether the text marquee option supports a fade-out effect when the text is too long. When supported, if the text content exceeds the display range, the edges of the partially visible text will have a fade-out effect applied. If both ends have partially visible text, both ends will have the fade-out effect applied. When the fade-out effect is enabled, the [NODE_CLIP](./capi-native-node-h.md#arkui_nodeattributetype) attribute is automatically fixed at **true** and cannot be set to **false**.|
+| [bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getfadeout) | - | Obtains whether the text marquee option supports a fade-out effect when the text is too long.|
+| [void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeStartPolicy startPolicy)](#oh_arkui_textmarqueeoptions_setstartpolicy) | - | Sets the startup policy of the text marquee option.|
+| [ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getstartpolicy) | - | Obtains the startup policy of the text marquee option.|
+| [void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* option, ArkUI_MarqueeUpdatePolicy updatePolicy)](#oh_arkui_textmarqueeoptions_setupdatepolicy) | - | Sets the update policy of the text marquee option.|
+| [ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_TextMarqueeOptions* option)](#oh_arkui_textmarqueeoptions_getupdatepolicy) | - | Obtains the update policy of the text marquee option.|
 | [ArkUI_PickerIndicatorStyle OH_ArkUI_PickerIndicatorStyle_Create(ArkUI_PickerIndicatorType type)](#oh_arkui_pickerindicatorstyle_create) | ArkUI_PickerIndicatorStyle | Creates a style instance of the selected item indicator.|
 | [void  OH_ArkUI_PickerIndicatorStyle_Dispose(ArkUI_PickerIndicatorStyle* style)](#oh_arkui_pickerindicatorstyle_dispose) | - | Destroys a style instance of the selected item indicator.|
 | [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorBackground* background)](#oh_arkui_pickerindicatorstyle_configurebackground) | - | Sets the background style parameters. This API takes effect only when the type of the selected item indicator is [ARKUI_PICKER_INDICATOR_BACKGROUND](capi-native-type-h.md#arkui_pickerindicatortype).|
@@ -1512,7 +1512,7 @@ enum ArkUI_ScrollNestedMode
 **Description**
 
 
-Enumerates the nested scrolling modes.
+Enumerates nested scrolling modes.
 
 **Since**: 12
 
@@ -3862,7 +3862,7 @@ Obtains the pointer to the canvas for drawing, which can be converted into the [
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Drawing context.|
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Pointer to the drawing context.|
 
 **Returns**
 
@@ -3888,7 +3888,7 @@ Obtains the size of a drawing area.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Drawing context.|
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Pointer to the drawing context.|
 
 **Returns**
 
@@ -9159,7 +9159,7 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 **Description**
 
 
-Creates a snapshot options object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.
+Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.
 
 **Since**: 15
 
@@ -9167,7 +9167,7 @@ Creates a snapshot options object, which must be released using [OH_ArkUI_Destro
 
 | Type                        | Description|
 |----------------------------| -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* | Pointer to the created snapshot options object. If a null pointer is returned, creation failed, possibly due to insufficient memory.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* | Pointer to the created snapshot option object. If a null pointer is returned, creation failed, possibly due to insufficient memory.|
 
 ### OH_ArkUI_DestroySnapshotOptions()
 
@@ -9178,7 +9178,7 @@ void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 **Description**
 
 
-Destroys a snapshot options object.
+Destroys a snapshot option object.
 
 **Since**: 15
 
@@ -9187,7 +9187,7 @@ Destroys a snapshot options object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Screenshot options.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option.|
 
 ### OH_ArkUI_SnapshotOptions_SetScale()
 
@@ -9207,7 +9207,7 @@ Sets the scale property in the snapshot options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot options.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option.|
 | float scale | Scale factor.|
 
 **Returns**
@@ -9257,7 +9257,7 @@ Sets the dynamic range mode in the screenshot options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot options.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option.|
 | int32_t dynamicRangeMode | Dynamic range mode used for screenshot.<br>If the dynamic range mode used for screenshot is known, you can specify the dynamic range mode using the **dynamicRangeMode** field and set **isAuto** to **false** to achieve the expected snapshot effect.<br>The value can be one of the enumerated values of [ArkUI_DynamicRangeMode](#arkui_dynamicrangemode).<br>Default value: **ARKUI_DYNAMIC_RANGE_MODE_STANDARD**<br>This parameter takes effect only when **isAuto** is set to **false**.|
 | bool isAuto | Whether the system automatically determines the dynamic range mode to be used.<br>**true**: whether the system automatically determines the dynamic range mode to be used. If the dynamic range mode used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the dynamic range mode to be used.<br>**false**: The dynamic range mode set by the **dynamicRangeMode** field is used for screenshot.<br>Default value: **false**.|
 
@@ -9972,7 +9972,7 @@ void OH_ArkUI_PositionEdges_SetBottom(ArkUI_PositionEdges* edges, float value)
 
 **Description**
 
-Obtains the value of the **PositionEdges** object in the bottom direction.
+Sets the value of the **PositionEdges** object in the bottom direction.
 
 **Since**: 21
 
@@ -10304,7 +10304,7 @@ Creates **Grid** layout options.
 
 | Type                               | Description|
 |-----------------------------------| -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | Pointer to the **Grid** layout option.|
 
 ### OH_ArkUI_GridLayoutOptions_Dispose()
 
@@ -10314,7 +10314,7 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 
 **Description**
 
-Disposes of **Grid** layout options.
+Disposes of the **Grid** layout option.
 
 **Since**: 22
 
@@ -10323,7 +10323,7 @@ Disposes of **Grid** layout options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option.|
 
 
 ### OH_ArkUI_GridLayoutOptions_SetIrregularIndexes()
@@ -10343,7 +10343,7 @@ Sets the irregular grid item index array for the grid layout.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option.|
 | uint32_t* irregularIndexes |  Pointer to the **GridItem** index array.|
 | int32_t size | Size of the **GridItem** index array.|
 
@@ -10370,7 +10370,7 @@ Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option.|
 | uint32_t* irregularIndexes |  Pointer to the **GridItem** index array.|
 | int32_t size | Size of the **GridItem** index array.|
 
@@ -10397,7 +10397,7 @@ Registers a callback to obtain the row and column span for the grid item at the 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option.|
 | void* userData | Pointer to the user-defined data.|
 | ArkUI_GridItemSize (\*callback)(int32_t itemIndex, void* userData) | Callback that returns the row and column span for the grid item at the specified index.<br> **itemIndex**: grid item index, which must be within the range set by [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes).|
 
@@ -10418,7 +10418,7 @@ Registers a callback to obtain the starting row, starting column, row span, and 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option.|
 | void* userData | Pointer to the user-defined data.|
 | ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData) | Callback that returns the starting row, starting column, row span, and column span for the grid item at the specified index.<br>   **itemIndex**: grid item index.|
 ### OH_ArkUI_ShowCounterConfig_Create()
@@ -10574,7 +10574,7 @@ Creates a selection option.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* | Pointer to the selection options.|
+| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* | Pointer to the selection option.|
 
 ### OH_ArkUI_SelectionOptions_Dispose()
 
@@ -10593,7 +10593,7 @@ Releases a selection option.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* options | Pointer to the selection options to be released.|
+| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* options | Pointer to the selection option to be released.|
 
 ### OH_ArkUI_SelectionOptions_SetMenuPolicy()
 
@@ -10604,7 +10604,7 @@ void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, Ar
 **Description**
 
 
-Sets the menu pop-up policy for selecting options.
+Sets the menu pop-up policy for selection options.
 
 **Since**: 23
 
@@ -10612,7 +10612,7 @@ Sets the menu pop-up policy for selecting options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* options | Pointer to the selection options.|
+| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* options | Pointer to the selection option.|
 | [ArkUI_MenuPolicy ](#arkui_menupolicy) menuPolicy | Menu display policy.|
 
 ### OH_ArkUI_SelectionOptions_GetMenuPolicy()
@@ -10624,7 +10624,7 @@ ArkUI_MenuPolicy  OH_ArkUI_SelectionOptions_GetMenuPolicy(ArkUI_SelectionOptions
 **Description**
 
 
-Obtains the menu display policy for selecting options.
+Obtains the menu display policy of a selection option.
 
 **Since**: 23
 
@@ -10632,7 +10632,7 @@ Obtains the menu display policy for selecting options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* options | Pointer to the selection options.|
+| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* options | Pointer to the selection option.|
 
 **Returns**
 
@@ -10767,7 +10767,7 @@ Sets the title of a text menu item.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
-| const char* content | Title of a text menu item. The default value is an empty string.|
+| const char* content | Pointer to the title of a text menu item. The default value is an empty string.|
 
 **Returns**
 
@@ -10792,7 +10792,7 @@ Obtains the title of a text menu item.
 | Name| Description|
 | -- | -- |
 | const [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
-| char* buffer | Buffer. You can create it and allocate memory to store the title information of the text menu item.|
+| char* buffer | Pointer to the buffer. You can create it and allocate memory to store the title information of the text menu item.|
 | int32_t bufferSize | Buffer size.|
 | int32_t* writeLength | If the return value is [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode), the length of the data written to the buffer is returned.<br> If the return value is [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode), the minimum length required for writing the string to the buffer is returned.|
 
@@ -10800,7 +10800,7 @@ Obtains the title of a text menu item.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode): The buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_TextMenuItem_SetIcon()
 
@@ -10819,7 +10819,7 @@ Sets the icon path of a text menu item.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object.|
-| const char* icon | Icon path of the text menu item. The default value is an empty string.|
+| const char* icon | Pointer to the icon path of the text menu item. The default value is an empty string.|
 
 **Returns**
 
@@ -10852,7 +10852,7 @@ Obtains the icon path of a text menu item.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode): The buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_TextMenuItem_SetLabelInfo()
 
@@ -10904,7 +10904,7 @@ Obtains the shortcut hint for a text menu item, for example, the shortcut hint f
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode): The buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_TextMenuItem_SetId()
 
@@ -11391,7 +11391,7 @@ Obtains the content node of a custom text selection menu.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | Content node of the custom text selection menu.|
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md)* node | Pointer to the content node of the custom text selection menu.|
 
 **Returns**
 
@@ -11516,7 +11516,7 @@ Creates text marquee options.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)*| Pointer to the text marquee options to be created.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)*| Pointer to the text marquee option to be created.|
 
 ### OH_ArkUI_TextMarqueeOptions_Dispose
 ``` c
@@ -11525,7 +11525,7 @@ void OH_ArkUI_TextMarqueeOptions_Dispose(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Destroys the pointer to text marquee options.
+Destroys the pointer to the text marquee option.
 
 **Since**: 23
 
@@ -11533,7 +11533,7 @@ Destroys the pointer to text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options to be destroyed.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to a text marquee option to be destroyed.|
 
 
 ### OH_ArkUI_TextMarqueeOptions_SetStart
@@ -11543,7 +11543,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStart(ArkUI_TextMarqueeOptions* option, bool
 
 **Description**
 
-Sets whether to play text marquee options.
+Sets whether to play the text marquee option.
 
 **Since**: 23
 
@@ -11551,8 +11551,8 @@ Sets whether to play text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
-| bool start | Whether to play text marquee options. **true** indicates to play; **false** indicates not to play.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
+| bool start | Whether to play the text marquee option. **true** indicates to play; **false** indicates not to play.|
 
 ### OH_ArkUI_TextMarqueeOptions_GetStart
 ``` c
@@ -11561,7 +11561,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetStart(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Obtains whether to play text marquee options.
+Obtains whether the text marquee option is displayed.
 
 **Since**: 23
 
@@ -11569,13 +11569,13 @@ Obtains whether to play text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| bool | Whether to play text marquee options. **true** indicates to play; **false** indicates not to play.|
+| bool | Whether the text marquee option is played. **true** indicates the text marquee option is played; **false** indicates the opposite.|
 
 
 ### OH_ArkUI_TextMarqueeOptions_SetStep
@@ -11585,7 +11585,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStep(ArkUI_TextMarqueeOptions* option, float
 
 **Description**
 
-Sets the step of text marquee options.
+Sets the step of the text marquee option.
 
 **Since**: 23
 
@@ -11593,7 +11593,7 @@ Sets the step of text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 | float step | Step. Unit: vp.|
 
 ### OH_ArkUI_TextMarqueeOptions_GetStep
@@ -11603,7 +11603,7 @@ float OH_ArkUI_TextMarqueeOptions_GetStep(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Obtains the step of text marquee options.
+Obtains the step of the text marquee option.
 
 **Since**: 23
 
@@ -11611,7 +11611,7 @@ Obtains the step of text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 
 **Returns**
 
@@ -11627,7 +11627,7 @@ void OH_ArkUI_TextMarqueeOptions_SetSpacing(ArkUI_TextMarqueeOptions* option, fl
 
 **Description**
 
-Sets the distance between the start and end items of the text marquee options.
+Sets the distance between the start and end items of the text marquee option.
 
 **Since**: 23
 
@@ -11635,7 +11635,7 @@ Sets the distance between the start and end items of the text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 | float spacing | Spacing between the start and end items. Unit: vp.|
 
 ### OH_ArkUI_TextMarqueeOptions_GetSpacing
@@ -11645,7 +11645,7 @@ float OH_ArkUI_TextMarqueeOptions_GetSpacing(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Obtains the distance between the start and end items of the text marquee options.
+Obtains the distance between the start and end items of the text marquee option.
 
 **Since**: 23
 
@@ -11653,7 +11653,7 @@ Obtains the distance between the start and end items of the text marquee options
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 
 **Returns**
 
@@ -11670,7 +11670,7 @@ void OH_ArkUI_TextMarqueeOptions_SetLoop(ArkUI_TextMarqueeOptions* option, int32
 
 **Description**
 
-Sets the number of repetitions for looping text marquee options. The value **0** or negative value indicates infinite looping.
+Sets the number of repetitions for looping the text marquee option. The value **0** or negative value indicates infinite looping.
 
 **Since**: 23
 
@@ -11678,7 +11678,7 @@ Sets the number of repetitions for looping text marquee options. The value **0**
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 | int32_t loop | Number of loops.|
 
 ### OH_ArkUI_TextMarqueeOptions_GetLoop
@@ -11688,7 +11688,7 @@ int32_t OH_ArkUI_TextMarqueeOptions_GetLoop(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Obtains the number of repetitions for looping text marquee options.
+Obtains the number of repetitions for looping the text marquee option.
 
 **Since**: 23
 
@@ -11696,7 +11696,7 @@ Obtains the number of repetitions for looping text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 
 **Returns**
 
@@ -11713,7 +11713,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFromStart(ArkUI_TextMarqueeOptions* option, 
 
 **Description**
 
-Sets the scrolling direction for looping text marquee options.
+Sets the scrolling direction for looping the text marquee option.
 
 **Since**: 23
 
@@ -11721,8 +11721,8 @@ Sets the scrolling direction for looping text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
-| bool fromStart | Scrolling direction for looping text marquee options. **true** to scroll from the start; **false** to scroll in reverse.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
+| bool fromStart | Scrolling direction for looping the text marquee option. **true** to scroll from the start; **false** to scroll in reverse.|
 
 ### OH_ArkUI_TextMarqueeOptions_GetFromStart
 ``` c
@@ -11731,7 +11731,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetFromStart(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Obtains the scrolling direction for looping text marquee options.
+Obtains the scrolling direction for looping the text marquee option.
 
 **Since**: 23
 
@@ -11739,13 +11739,13 @@ Obtains the scrolling direction for looping text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| bool | Scrolling direction for looping text marquee options. **true** to scroll from the start; **false** to scroll in reverse.|
+| bool | Scrolling direction for looping the text marquee option. **true** to scroll from the start; **false** to scroll in reverse.|
 
 
 ### OH_ArkUI_TextMarqueeOptions_SetDelay
@@ -11755,7 +11755,7 @@ void OH_ArkUI_TextMarqueeOptions_SetDelay(ArkUI_TextMarqueeOptions* option, int3
 
 **Description**
 
-Sets the delay of each loop for text marquee options.
+Sets the delay of each loop for the text marquee option.
 
 **Since**: 23
 
@@ -11763,7 +11763,7 @@ Sets the delay of each loop for text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 | int32_t delay| Delay of each loop, in milliseconds.|
 
 ### OH_ArkUI_TextMarqueeOptions_GetDelay
@@ -11773,7 +11773,7 @@ int32_t OH_ArkUI_TextMarqueeOptions_GetDelay(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Obtains the delay of each loop for text marquee options.
+Obtains the delay of each loop for the text marquee option.
 
 **Since**: 23
 
@@ -11781,7 +11781,7 @@ Obtains the delay of each loop for text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 
 **Returns**
 
@@ -11796,7 +11796,7 @@ void OH_ArkUI_TextMarqueeOptions_SetFadeout(ArkUI_TextMarqueeOptions* option, bo
 
 **Description**
 
-Sets whether text marquee options support a fade-out effect when the text is too long. When supported, if the text content exceeds the display range, the edges of the partially visible text will have a fade-out effect applied.<br> If both ends have partially visible text, both ends will have the fade-out effect applied.<br> When the fade-out effect is enabled, the [NODE_CLIP](./capi-native-node-h.md#arkui_nodeattributetype) attribute is automatically fixed at **true** and cannot be set to **false**.
+Sets whether the text marquee option supports a fade-out effect when the text is too long. When supported, if the text content exceeds the display range, the edges of the partially visible text will have a fade-out effect applied.<br> If both ends have partially visible text, both ends will have the fade-out effect applied.<br> When the fade-out effect is enabled, the [NODE_CLIP](./capi-native-node-h.md#arkui_nodeattributetype) attribute is automatically fixed at **true** and cannot be set to **false**.
 
 
 **Since**: 23
@@ -11805,8 +11805,8 @@ Sets whether text marquee options support a fade-out effect when the text is too
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
-| bool fadeout| Whether text marquee options support a fade-out effect when the text is too long.<br>**true** to apply a fade-out effect when the text is too long, **false** otherwise.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
+| bool fadeout| Whether the text marquee option supports a fade-out effect when the text is too long.<br>**true** to apply a fade-out effect when the text is too long, **false** otherwise.|
 
 ### OH_ArkUI_TextMarqueeOptions_GetFadeout
 ``` c
@@ -11815,7 +11815,7 @@ bool OH_ArkUI_TextMarqueeOptions_GetFadeout(ArkUI_TextMarqueeOptions* option)
 
 **Description**
 
-Obtains whether text marquee options support a fade-out effect when the text is too long.
+Obtains whether the text marquee option supports a fade-out effect when the text is too long.
 
 **Since**: 23
 
@@ -11823,13 +11823,13 @@ Obtains whether text marquee options support a fade-out effect when the text is 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| bool | Whether text marquee options support a fade-out effect when the text is too long.|
+| bool | Whether the text marquee option supports a fade-out effect when the text is too long.|
 
 
 ### OH_ArkUI_TextMarqueeOptions_SetStartPolicy
@@ -11840,7 +11840,7 @@ void OH_ArkUI_TextMarqueeOptions_SetStartPolicy(ArkUI_TextMarqueeOptions* option
 
 **Description**
 
-Sets the startup policy of the text marquee options.
+Sets the startup policy of the text marquee option.
 
 **Since**: 23
 
@@ -11848,7 +11848,7 @@ Sets the startup policy of the text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 | [ArkUI_MarqueeStartPolicy](#arkui_marqueestartpolicy) startPolicy| Startup policy.|
 
 ### OH_ArkUI_TextMarqueeOptions_GetStartPolicy
@@ -11858,7 +11858,7 @@ ArkUI_MarqueeStartPolicy OH_ArkUI_TextMarqueeOptions_GetStartPolicy(ArkUI_TextMa
 
 **Description**
 
-Obtains the startup policy of the text marquee options.
+Obtains the startup policy of the text marquee option.
 
 **Since**: 23
 
@@ -11866,7 +11866,7 @@ Obtains the startup policy of the text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 
 **Returns**
 
@@ -11883,7 +11883,7 @@ void OH_ArkUI_TextMarqueeOptions_SetUpdatePolicy(ArkUI_TextMarqueeOptions* optio
 
 **Description**
 
-Sets the update policy of the text marquee options.
+Sets the update policy of the text marquee option.
 
 **Since**: 23
 
@@ -11891,7 +11891,7 @@ Sets the update policy of the text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 | [ArkUI_MarqueeUpdatePolicy](#arkui_marqueeupdatepolicy) updatePolicy| Update policy.|
 
 ### OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy
@@ -11901,7 +11901,7 @@ ArkUI_MarqueeUpdatePolicy OH_ArkUI_TextMarqueeOptions_GetUpdatePolicy(ArkUI_Text
 
 **Description**
 
-Obtains the update policy of the text marquee options.
+Obtains the update policy of the text marquee option.
 
 **Since**: 23
 
@@ -11909,7 +11909,7 @@ Obtains the update policy of the text marquee options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee options.|
+| [ArkUI_TextMarqueeOptions](./capi-arkui-nativemodule-arkui-textmarqueeoptions.md)* option | Pointer to the text marquee option.|
 
 **Returns**
 
@@ -12081,13 +12081,13 @@ Obtains the motion path string stored in the motion path configuration item of t
 | const [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md)* options | Pointer to [ArkUI_MotionPathOptions](capi-arkui-nativemodule-arkui-motionpathoptions.md).|
 | char* svgPathBuffer | Pointer to the buffer for storing the motion path string.|
 | const int32_t bufferSize | Size of the buffer that the **svgPathBuffer** parameter points to.|
-| int32_t* writeLength | Pointer to the length of the string written to the buffer when [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.<br> When [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned due to an input parameter error, **writeLength** is not assigned. If the error is due to a copy exception, **writeLength** indicates the minimum buffer size required to hold the target string.<br> When [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned, it indicates the minimum buffer size required to hold the target string.|
+| int32_t* writeLength | Pointer to the length of the string actually written to the buffer if [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) is returned.<br> When [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) is returned due to an input parameter error, **writeLength** is not assigned. If the error is due to a copy exception, **writeLength** indicates the minimum buffer size required to hold the target string.<br> When [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) is returned, it indicates the minimum buffer size required to hold the target string.|
 
 **Returns**
 
 | Type| Description|
 | -- | -- |
-| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the provided buffer size is insufficient.|
+| int32_t | Result code.<br>         Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br>         Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.<br>Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer size is insufficient.|
 
 ### OH_ArkUI_MotionPathOptions_SetFrom()
 
@@ -12285,7 +12285,7 @@ Disposes of the style instance of the selected item indicator.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | Pointer to the [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) instance to be disposed.|
+| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) instance to be disposed.|
 
 ### OH_ArkUI_PickerIndicatorStyle_ConfigureBackground()
 
@@ -12329,7 +12329,7 @@ Sets the divider style parameters. This API takes effect only when the type of t
 | Name| Description|
 | -- | -- |
 | [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | Pointer to the [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) instance.|
-| [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)* divider | Pointer to the divider.|
+| [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)* divider | Pointer to the divider style.|
 
 **Returns**
 
