@@ -1765,6 +1765,12 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
 | enabled    | boolean | 是   | 是否开启获取悬浮三键导航类型的避让区域。<br>true表示开启，false表示关闭。</br> |
 
+**返回值：**
+
+| 类型             | 说明              |
+| -------------- | --------------- |
+| Promise\<void> | Promise对象，无返回结果。 |
+
 **错误码：**
 
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[窗口错误码](errorcode-window.md)。
@@ -1786,7 +1792,7 @@ try {
 }
 ```
 
-## isFloatNavigationAvoidAreaEnabled<sup>
+## isFloatNavigationAvoidAreaEnabled
 
 isFloatNavigationAvoidAreaEnabled(): boolean
 
@@ -1799,6 +1805,12 @@ isFloatNavigationAvoidAreaEnabled(): boolean
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**返回值：**
+
+| 类型             | 说明              |
+| -------------- | --------------- |
+| enabled | 是否开启获取悬浮三键导航类型的避让区域。<br>true表示开启，false表示关闭。</br> |
 
 **错误码：**
 
