@@ -1106,7 +1106,7 @@ get(field: string): number
 
 | 参数名   | 类型     | 必填   | 说明                                       |
 | ----- | ------ | ---- | ---------------------------------------- |
-| field | string | 是    | 指定的日历属性，取值包括：<br>"era"：纪元，例如公历中的公元前或者公元后。<br>"year"：年。<br>"month":月。说明：月份从0开始计数，例如0表示一月。<br>"date"：日。<br>"hour":挂钟小时数。<br>"hour_of_day"：一天中的第几小时。<br>"minute"：分。<br>"second"：秒。<br>"millisecond"：毫秒。<br>"week_of_year"：一年中的第几周，按照星期计算周，注意：第一周的归属算法各地有区别。<br>"year_woy"：一年中的第几周，按照数值计算周，例如一年中前1~7日属于第一周。<br>"week_of_month"：一个月中的第几周，按照星期计算周。<br>"day_of_week_in_month"：一月中的第几周，按照数值计算周，例如1-7日属于第一周。<br>"day_of_year"：一年中的第几天。<br>"day_of_week"：一周中的第几天(星期)。<br>"milliseconds_in_day"：一天中的第几毫秒。<br>"zone_offset"：以毫秒计时的时区固定偏移量（不含夏令时）。<br>"dst_offset"：以毫秒计时的夏令时偏移量。<br>"dow_local"：本地星期。<br>"extended_year"：扩展的年份数值，支持负数。<br>"julian_day"：儒略日，与当前时区相关。<br>"is_leap_month"：是否为闰月。<br> |
+| field | string | 是    | 指定的日历属性，取值包括：<br>"era"：纪元，例如公历中的公元前或者公元后。<br>"year"：年。<br>"month"：月，从0开始计数，0表示一月。<br>"date"：日。<br>"hour"：挂钟小时数。<br>"hour_of_day"：一天中的第几小时。<br>"minute"：分。<br>"second"：秒。<br>"millisecond"：毫秒。<br>"week_of_year"：一年中的第几周，按照星期计算周，第一周的归属各地有区别。<br>"year_woy"：一年中的第几周，按照数值计算周，例如一年中前1~7日属于第一周。<br>"week_of_month"：一个月中的第几周，按照星期计算周。<br>"day_of_week_in_month"：一月中的第几周，按照数值计算周，例如1-7日属于第一周。<br>"day_of_year"：一年中的第几天。<br>"day_of_week"：一周中的第几天(星期)。<br>"milliseconds_in_day"：一天中的第几毫秒。<br>"zone_offset"：以毫秒计时的时区固定偏移量（不含夏令时）。<br>"dst_offset"：以毫秒计时的夏令时偏移量。<br>"dow_local"：本地星期。<br>"extended_year"：扩展的年份数值，支持负数。<br>"julian_day"：儒略日，与当前时区相关。<br>"is_leap_month"：返回1表示是闰月，返回0表示不是闰月。<br> |
 
 **返回值：**
 
