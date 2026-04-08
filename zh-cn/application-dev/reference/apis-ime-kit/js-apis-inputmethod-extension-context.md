@@ -29,7 +29,7 @@ import { Want } from '@kit.AbilityKit';
 
 class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context: InputMethodExtensionContext = this.context;
+    console.info('onCreate, want:' + want.abilityName);
   }
 }
 ```
@@ -57,7 +57,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context: InputMethodExtensionContext = this.context;
+    console.info('onCreate, want:' + want.abilityName);
   }
 
   onDestroy() {
@@ -95,7 +95,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 class InputMethodExtAbility extends InputMethodExtensionAbility {
   onCreate(want: Want): void {
-    let context: InputMethodExtensionContext = this.context;
+    console.info('onCreate, want:' + want.abilityName);
   }
 
   onDestroy() {
