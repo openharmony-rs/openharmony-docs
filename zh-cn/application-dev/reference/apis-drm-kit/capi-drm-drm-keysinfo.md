@@ -26,7 +26,7 @@ typedef struct DRM_KeysInfo {...} DRM_KeysInfo
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t keysInfoCount | 钥匙计数。 |
+| uint32_t keysInfoCount | 密钥计数。 |
 | uint8_t keyId[MAX_KEY_INFO_COUNT][MAX_KEY_ID_LEN] | 密钥ID集合。 |
 | char statusValue[MAX_KEY_INFO_COUNT][MAX_KEY_STATUS_VALUE_LEN] | 密钥状态值。 |
 
