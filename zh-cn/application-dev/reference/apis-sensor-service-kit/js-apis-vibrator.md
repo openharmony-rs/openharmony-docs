@@ -9,8 +9,10 @@
 vibrator模块提供控制设备马达振动的能力。包括启动指定时长、预置效果、自定义文件等模式的振动；停止指定时长、预置效果或所有模式的振动。
 
 > **说明：**
+> 
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
-> 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 本模块首批接口从API version 8开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 
 
 ## 导入模块
@@ -30,6 +32,10 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute, callback: Asy
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -184,6 +190,10 @@ startVibration(effect: VibrateEffect, attribute: VibrateAttribute): Promise&lt;v
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -340,6 +350,10 @@ stopVibration(stopMode: VibratorStopMode, callback: AsyncCallback&lt;void&gt;): 
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                                  | 必填 | 说明                                                         |
@@ -452,6 +466,10 @@ stopVibration(stopMode: VibratorStopMode): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                                  | 必填 | 说明                                                         |
@@ -563,6 +581,10 @@ stopVibration(callback: AsyncCallback&lt;void&gt;): void
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
@@ -611,6 +633,10 @@ stopVibration(): Promise&lt;void&gt;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值**：
 
 | 类型                | 说明          |
@@ -654,6 +680,10 @@ stopVibration(param?: VibratorInfoParam): Promise&lt;void&gt;
 **需要权限**：ohos.permission.VIBRATE
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -722,6 +752,10 @@ stopVibrationSync(): void
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **错误码**：
 
 以下错误码的详细介绍请参见[振动错误码](errorcode-vibrator.md)和[通用错误码](../errorcode-universal.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
@@ -755,6 +789,10 @@ isSupportEffect(effectId: string, callback: AsyncCallback&lt;boolean&gt;): void
 查询是否支持传入参数effectId。使用callback异步回调。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -823,6 +861,10 @@ isSupportEffect(effectId: string): Promise&lt;boolean&gt;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型   | 必填 | 说明                   |
@@ -890,6 +932,10 @@ isSupportEffectSync(effectId: string): boolean
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型   | 必填 | 说明                   |
@@ -935,6 +981,10 @@ getEffectInfoSync(effectId: string, param?: VibratorInfoParam): EffectInfo
 通过设备ID和可控马达ID获取预置振动效果信息，用于判断该预置振动效果是否受支持。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 **参数**：
 
@@ -983,6 +1033,10 @@ getVibratorInfoSync(param?: VibratorInfoParam): Array&lt;VibratorInfo&gt;;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                                      | 必填 | 说明                                |
@@ -1018,7 +1072,13 @@ on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): 
 
 注册一个回调函数，在马达上线或下线时触发回调。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[onVibratorStateChange](#vibratoronvibratorstatechange23)。
+
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数**：
 
@@ -1057,6 +1117,55 @@ on(type: 'vibratorStateChange', callback: Callback&lt;VibratorStatusEvent&gt;): 
    }
    ```
 
+## vibrator.onVibratorStateChange<sup>23+</sup>
+
+onVibratorStateChange(callback: Callback&lt;VibratorStatusEvent&gt;): void
+
+注册一个回调函数，在马达上线或下线时触发回调。
+
+**ArkTS模式:** 该接口仅适用于ArkTS-Sta。
+
+**相关接口:** 该接口对应的ArkTS-Dyn接口是[on('vibratorStateChange')](#vibratoron19)。
+
+**系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| callback | Callback&lt;[VibratorStatusEvent](#vibratorstatusevent19)&gt; | 是   | 回调函数，回调参数数据为VibratorStatusEvent。 |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[振动错误码](errorcode-vibrator.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 14600101 | Device operation failed. |
+
+
+**示例**：
+
+   ```ts
+   import { vibrator } from '@kit.SensorServiceKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
+   // 回调函数 
+   const vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
+     console.info('vibrator state callback info:', JSON.stringify(data));
+   }
+
+   // 使用try catch对可能出现的异常进行捕获
+   try {
+     // 订阅 vibratorStateChange事件
+     vibrator.onVibratorStateChange(vibratorStateChangeCallback);
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
 
 ## vibrator.off<sup>19+</sup>
 
@@ -1064,7 +1173,13 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 注销马达上线或下线事件的回调函数。
 
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
+
+**相关接口**：该接口对应的ArkTS-Sta接口是[offVibratorStateChange](#vibratoroffvibratorstatechange23)。
+
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 19
 
 **参数**：
 
@@ -1104,6 +1219,57 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
    }
    ```
 
+## vibrator.offVibratorStateChange<sup>23+</sup>
+
+offVibratorStateChange(callback?: Callback&lt;VibratorStatusEvent&gt;): void
+
+注销马达上线或下线事件的回调函数。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Sta。
+
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off](#vibratoroff19)。
+
+**系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Sta起始版本：** 23
+
+**参数**：
+
+| 参数名   | 类型                                                         | 必填 | 说明                                                        |
+| -------- | ------------------------------------------------------------ | ---- | ----------------------------------------------------------- |
+| callback | Callback&lt;[VibratorStatusEvent](#vibratorstatusevent19)&gt; | 否   | 回调函数，回调参数数据为VibratorStatusEvent，不填此参数则为注销所有callback |
+
+**错误码**：
+
+以下错误码的详细介绍请参见[振动错误码](errorcode-vibrator.md)。错误码和错误信息会以异常的形式抛出，调用接口时需要使用try catch对可能出现的异常进行捕获操作。
+
+| 错误码ID | 错误信息                 |
+| -------- | ------------------------ |
+| 14600101 | Device operation failed. |
+
+
+**示例**：
+
+   ```ts
+   import { vibrator } from '@kit.SensorServiceKit';
+   import { BusinessError } from '@kit.BasicServicesKit';
+
+   // 回调函数 
+   const vibratorStateChangeCallback = (data: vibrator.VibratorStatusEvent) => {
+     console.info('vibrator state callback info:', JSON.stringify(data));
+   }
+   // 使用try catch对可能出现的异常进行捕获
+   try {
+     // 取消订阅 vibratorStateChange事件
+     vibrator.offVibratorStateChange('vibratorStateChange', vibratorStateChangeCallback);
+     // 取消订阅所有 vibratorStateChange事件
+     // vibrator.offVibratorStateChange
+   } catch (error) {
+     let e: BusinessError = error as BusinessError;
+     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+   }
+   ```
+
 
 ## VibratorStatusEvent<sup>19+</sup>
 
@@ -1111,12 +1277,15 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称               | 类型      | 只读 | 可选 | 说明                               |
 |------------------|---------|----|----|----------------------------------|
-| timestamp        | number  | 否  | 否  | 报告事件的时间戳。                        |
-| deviceId         | number  | 否  | 否  | 设备的ID。                           |
-| vibratorCount    | number  | 否  | 否  | 设备上的马达的数量。                       |
+| timestamp        | ArkTS-Dyn: number<br/>ArkTS-Sta: long  | 否  | 否  | 报告事件的时间戳。                        |
+| deviceId         | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 设备的ID。                           |
+| vibratorCount    | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 设备上的马达的数量。                       |
 | isVibratorOnline | boolean | 否  | 否  | 指示设备的上线和下线状态，true表示上线，false表示下线。 |
 
 
@@ -1126,11 +1295,15 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 
 | 名称 | 类型   | 只读 | 可选 | 说明                                                         |
 | ---- | ------ | ---- | ---- |------------------------------------------------------------|
-| deviceId    | number | 否   | 是   | 设备的ID：默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 |
-| vibratorId    | number | 否   | 是   | 马达ID：默认值为0，控制的是该设备的全部马达，API19以后马达ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)设备上下线接口[on](#vibratoron19)查询。     |
+| deviceId    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 设备的ID：默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 |
+| vibratorId    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 是   | 马达ID：默认值为0，控制的是该设备的全部马达，API19以后马达ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)设备上下线接口[on](#vibratoron19)查询。     |
 
 
 
@@ -1139,6 +1312,10 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 查询的预制效果信息。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
 
 
 | 名称                | 类型      | 只读 | 可选 | 说明                            |
@@ -1152,10 +1329,14 @@ off(type: 'vibratorStateChange', callback?: Callback&lt;VibratorStatusEvent&gt;)
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 19
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                  | 类型      | 只读 | 可选 | 说明        |
-|---------------------|---------|----|----|-----------|
-| deviceId            | number  | 否  | 否  | 设备ID。     |
-| vibratorId          | number  | 否  | 否  | 马达ID。     |
+|---------------------|---------|----|----|-----------| 
+| deviceId            | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 设备ID。     |
+| vibratorId          | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否  | 否  | 马达ID。     |
 | deviceName          | string  | 否  | 否  | 设备名称。     |
 | isHdHapticSupported | boolean | 否  | 否  | 是否支持高清振动，true为支持，false为不支持。 |
 | isLocalVibrator     | boolean | 否  | 否  | 是否为本地设备，true为本地设备，false为非本地设备。 |
@@ -1168,6 +1349,10 @@ isHdHapticSupported(): boolean
 查询是否支持高清振动。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -1204,18 +1389,24 @@ isHdHapticSupported(): boolean
 
 ### vibrator('addContinuousEvent')<sup>18+</sup>
 
-addContinuousEvent(time: number, duration: number, options?: ContinuousParam): VibratorPatternBuilder;
+ArkTS-Dyn: addContinuousEvent(time: number, duration: number, options?: ContinuousParam): VibratorPatternBuilder;
+
+ArkTS-Sta: addContinuousEvent(time: int, duration: int, options?: ContinuousParam): VibratorPatternBuilder;
 
 添加长振事件的方法成VibratorPattern对象。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名   | 类型                                  | 必填 | 说明                                                         |
 | -------- | ------------------------------------- | ---- | ------------------------------------------------------------ |
-| time     | number                                | 是   | 长振事件的起始时间。单位ms，取值范围[0,1800000]区间内所有整数。 |
-| duration | number                                | 是   | 长振事件的持续时间。单位ms，取值范围(0,5000]区间内所有整数。 |
+| time     | ArkTS-Dyn: number <br> ArkTS-Sta: int                                | 是   | 长振事件的起始时间。单位ms，取值范围[0,1800000]区间内所有整数。 |
+| duration | ArkTS-Dyn: number <br> ArkTS-Sta: int                                | 是   | 长振事件的持续时间。单位ms，取值范围(0,5000]区间内所有整数。 |
 | options  | [ContinuousParam](#continuousparam18) | 否   | 可选参数，可选参数对象。                                     |
 
 **返回值**：
@@ -1234,53 +1425,97 @@ addContinuousEvent(time: number, duration: number, options?: ContinuousParam): V
 
 **示例**：
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-   let builder = new vibrator.VibratorPatternBuilder();
-   // 使用try catch对可能出现的异常进行捕获
-   try {
-     let pointsMe: vibrator.VibratorCurvePoint[] = [
-       { time: 0, intensity: 0, frequency: -7 },
-       { time: 42, intensity: 1, frequency: -6 },
-       { time: 128, intensity: 0.94, frequency: -4 },
-       { time: 217, intensity: 0.63, frequency: -14 },
-       { time: 763, intensity: 0.48, frequency: -14 },
-       { time: 1125, intensity: 0.53, frequency: -10 },
-       { time: 1503, intensity: 0.42, frequency: -14 },
-       { time: 1858, intensity: 0.39, frequency: -14 },
-       { time: 2295, intensity: 0.34, frequency: -17 },
-       { time: 2448, intensity: 0.21, frequency: -14 },
-       { time: 2468, intensity: 0, frequency: -21 }
-     ] // VibratorCurvePoint参数最少设置4个，最大设置16个
-     let param: vibrator.ContinuousParam = {
-       intensity: 97,
-       frequency: 34,
-       points:pointsMe,
-       index: 0
-     }
-     builder.addContinuousEvent(0, 2468, param);
-     console.info(`addContinuousEvent builder is ${builder.build()}`);
-   } catch(error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`Exception. Code ${e.code}`);
-   }
-   ```
+```ts
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let builder = new vibrator.VibratorPatternBuilder();
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let pointsMe: vibrator.VibratorCurvePoint[] = [
+    { time: 0, intensity: 0, frequency: -7 },
+    { time: 42, intensity: 1, frequency: -6 },
+    { time: 128, intensity: 0.94, frequency: -4 },
+    { time: 217, intensity: 0.63, frequency: -14 },
+    { time: 763, intensity: 0.48, frequency: -14 },
+    { time: 1125, intensity: 0.53, frequency: -10 },
+    { time: 1503, intensity: 0.42, frequency: -14 },
+    { time: 1858, intensity: 0.39, frequency: -14 },
+    { time: 2295, intensity: 0.34, frequency: -17 },
+    { time: 2448, intensity: 0.21, frequency: -14 },
+    { time: 2468, intensity: 0, frequency: -21 }
+  ] // VibratorCurvePoint参数最少设置4个，最大设置16个
+  let param: vibrator.ContinuousParam = {
+    intensity: 97,
+    frequency: 34,
+    points:pointsMe,
+    index: 0
+  }
+  builder.addContinuousEvent(0, 2468, param);
+  console.info(`addContinuousEvent builder is ${builder.build()}`);
+} catch(error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Exception. Code ${e.code}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { vibrator } from '@kit.SensorServiceKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let builder = new vibrator.VibratorPatternBuilder();
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let pointsMe: vibrator.VibratorCurvePoint[] = [
+    { time: 0, intensity: 0, frequency: -7 },
+    { time: 42, intensity: 1, frequency: -6 },
+    { time: 128, intensity: 0.94, frequency: -4 },
+    { time: 217, intensity: 0.63, frequency: -14 },
+    { time: 763, intensity: 0.48, frequency: -14 },
+    { time: 1125, intensity: 0.53, frequency: -10 },
+    { time: 1503, intensity: 0.42, frequency: -14 },
+    { time: 1858, intensity: 0.39, frequency: -14 },
+    { time: 2295, intensity: 0.34, frequency: -17 },
+    { time: 2448, intensity: 0.21, frequency: -14 },
+    { time: 2468, intensity: 0, frequency: -21 }
+  ] // VibratorCurvePoint参数最少设置4个，最大设置16个
+  let param: vibrator.ContinuousParam = {
+    intensity: 97,
+    frequency: 34,
+    points:pointsMe,
+    index: 0
+  }
+  builder.addContinuousEvent(0, 2468, param);
+  console.info(`addContinuousEvent builder is ${builder.build()}`);
+} catch(error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`Exception. Code ${e.code}`);
+}
+```
 
 ### vibrator('addTransientEvent')<sup>18+</sup>
 
-addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilder;
+ArkTS-Dyn: addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilder;
+
+ArkTS-Sta: addTransientEvent(time: int, options?: TransientParam): VibratorPatternBuilder;
 
 添加短振事件的方法成VibratorPattern对象。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
 **参数**：
 
 | 参数名  | 类型                                | 必填 | 说明                                                         |
 | ------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| time    | number                              | 是   | 短振事件的起始时间。单位ms，取值范围[0,1800000]区间内所有整数。 |
+| time    | ArkTS-Dyn: number <br> ArkTS-Sta: int                              | 是   | 短振事件的起始时间。单位ms，取值范围[0,1800000]区间内所有整数。 |
 | options | [TransientParam](#transientparam18) | 否   | 可选参数，可选参数对象。                                     |
 
 **返回值**：
@@ -1299,25 +1534,49 @@ addTransientEvent(time: number, options?: TransientParam): VibratorPatternBuilde
 
 **示例**：
 
-   ```ts
-   import { vibrator } from '@kit.SensorServiceKit';
-   import { BusinessError } from '@kit.BasicServicesKit';
+ArkTS-Dyn示例：
 
-   let builder = new vibrator.VibratorPatternBuilder();
-   // 使用try catch对可能出现的异常进行捕获
-   try {
-     let param: vibrator.TransientParam = {
-       intensity: 80,
-       frequency: 70,
-       index: 0
-     }
-     builder.addTransientEvent(0, param);
-     console.info(`addTransientEvent builder is ${builder.build()}`);
-   } catch(error) {
-     let e: BusinessError = error as BusinessError;
-     console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
-   }
-   ```
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vibrator } from '@kit.SensorServiceKit';
+
+let builder = new vibrator.VibratorPatternBuilder();
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let param: vibrator.TransientParam = {
+    intensity: 80,
+    frequency: 70,
+    index: 0
+  }
+  builder.addTransientEvent(0, param);
+  console.info(`addTransientEvent builder is ${builder.build()}`);
+} catch(error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+import { vibrator } from '@kit.SensorServiceKit';
+
+let builder = new vibrator.VibratorPatternBuilder();
+// 使用try catch对可能出现的异常进行捕获
+try {
+  let param: vibrator.TransientParam = {
+    intensity: 80,
+    frequency: 70,
+    index: 0
+  }
+  builder.addTransientEvent(0, param);
+  console.info(`addTransientEvent builder is ${builder.build()}`);
+} catch(error) {
+  let e: BusinessError = error as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${e.code}, message: ${e.message}`);
+}
+```
 
 ### vibrator('build')<sup>18+</sup>
 
@@ -1326,6 +1585,10 @@ build(): VibratorPattern;
 构造组合短事件或长事件的振动序列的方法。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值**：
 
@@ -1382,6 +1645,10 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 值                   | 说明                         |
 | ----------- | -------------------- | ---------------------------- |
 | EFFECT_CLOCK_TIMER | 'haptic.clock.timer' | 描述用户调整计时器时的振动效果。 |
@@ -1392,20 +1659,28 @@ build(): VibratorPattern;
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称                                | 值                      | 说明                         |
 | ----------------------------------- | ----------------------- | ---------------------------- |
-| EFFECT_SOFT                         | 'haptic.effect.soft'    | 较松散的振动效果，频率偏低。 |
-| EFFECT_HARD                         | 'haptic.effect.hard'    | 较沉重的振动效果，频率居中。 |
-| EFFECT_SHARP                        | 'haptic.effect.sharp'   | 较尖锐的振动效果，频率偏高。 |
-| EFFECT_NOTICE_SUCCESS<sup>18+</sup> | 'haptic.notice.success' | 表达成功通知的振动效果。     |
-| EFFECT_NOTICE_FAILURE<sup>18+</sup> | 'haptic.notice.fail'    | 表达失败通知的振动效果。     |
-| EFFECT_NOTICE_WARNING<sup>18+</sup> | 'haptic.notice.warning' | 表达警告通知的振动效果。     |
+| EFFECT_SOFT                         | 'haptic.effect.soft'    | 较松散的振动效果，频率偏低。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| EFFECT_HARD                         | 'haptic.effect.hard'    | 较沉重的振动效果，频率居中。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| EFFECT_SHARP                        | 'haptic.effect.sharp'   | 较尖锐的振动效果，频率偏高。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
+| EFFECT_NOTICE_SUCCESS<sup>18+</sup> | 'haptic.notice.success' | 表达成功通知的振动效果。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23     |
+| EFFECT_NOTICE_FAILURE<sup>18+</sup> | 'haptic.notice.fail'    | 表达失败通知的振动效果。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23     |
+| EFFECT_NOTICE_WARNING<sup>18+</sup> | 'haptic.notice.warning' | 表达警告通知的振动效果。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23     |
 
 ## VibratorStopMode
 
 停止振动的模式。在调用[vibrator.stopVibration9+](#vibratorstopvibration9)或[vibrator.stopVibration9+](#vibratorstopvibration9-1)接口时，需要使用此参数类型指定停止的振动模式。停止模式和[VibrateEffect9+](#vibrateeffect9)中下发的模式为对应关系。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 8
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                      | 值       | 说明                     |
 | ------------------------- | -------- | ------------------------ |
@@ -1419,6 +1694,10 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 马达振动效果，支持以下四种：在调用[vibrator.startVibration9+](#vibratorstartvibration9)或[vibrator.startVibration9+](#vibratorstartvibration9-1)接口时，此参数的四种类型表示以四种不同的形式触发振动。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 | 类型                                  | 说明                                                         |
 | ------------------------------------- | ------------------------------------------------------------ |
@@ -1435,10 +1714,14 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称     | 类型   | 只读 | 可选 | 说明                                                        |
-| -------- | ------ | ---- | ---- | ----------------------------------------------------------- |
-| type     | 'time' | 否   | 否   | 值为'time'，按照指定时长触发马达振动。                      |
-| duration | number | 否   | 否   | 马达持续振动时长, 单位ms。取值范围(0,1800000]区间内所有整数。由于实际产品厂商驱动对器件保护设计规格不同，不同设备实际最大振动时长会有差异。单次触发长振动一般建议不超过10秒，以最大化用户体验。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选 | 说明                          |
+|----------------|---------|----|----|-----------------------------|
+| type      | 'time'  | 否  | 否  | 值为'time'，按照指定时长触发马达振动。                   |
+| duration       | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 否  | 马达持续振动时长, 单位ms。取值范围(0,1800000]区间内所有整数。由于实际产品厂商驱动对器件保护设计规格不同，不同设备实际最大振动时长会有差异。单次触发长振动一般建议不超过10秒，以最大化用户体验。 |
 
 ## VibratePreset<sup>9+</sup>
 
@@ -1446,12 +1729,16 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称                    | 类型     | 只读 | 可选 | 说明                                                         |
-| ----------------------- | -------- | ---- | ---- | ------------------------------------------------------------ |
-| type                    | 'preset' | 否   | 否   | 值为'preset'，按照预置振动效果触发马达振动。                 |
-| effectId                | string   | 否   | 否   | 预置的振动效果ID，字符串最大长度64，超出截取64。                             |
-| count                   | number   | 否   | 是   | 可选参数，振动的重复次数，默认值为1。                        |
-| intensity<sup>12+</sup> | number   | 否   | 是   | 可选参数，振动调节强度，取值范围(0,100]内所有整数，默认值为100。若振动效果不支持强度调节或设备不支持时，则按默认强度振动。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选 | 说明                          |
+|----------------|---------|----|----|-----------------------------|
+| type      | 'preset'  | 否  | 否  | 值为'preset'，按照预置振动效果触发马达振动。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                   |
+| effectId       | string  | 否  | 否  | 预置的振动效果ID，字符串最大长度64，超出截取64。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                     |
+| count       | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 可选参数，振动的重复次数，默认值为1。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                     |
+| intensity<sup>12+</sup>       | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 是  | 可选参数，振动调节强度，取值范围(0,100]内所有整数，默认值为100。若振动效果不支持强度调节或设备不支持时，则按默认强度振动。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23                     |
 
 ## VibrateFromFile<sup>10+</sup>
 
@@ -1459,10 +1746,14 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称     | 类型                                                         | 只读 | 可选 | 说明                                       |
-| -------- | ------------------------------------------------------------ | ---- | ---- | ------------------------------------------ |
-| type     | 'file'                                                       | 否   | 否   | 值为'file'，按照振动配置文件触发马达振动。 |
-| hapticFd | [HapticFileDescriptor](#hapticfiledescriptor10)<sup>10+</sup> | 否   | 否   | 振动配置文件的描述符。                     |
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选 | 说明                          |
+|----------------|---------|----|----|-----------------------------|
+| type      | 'file'  | 否  | 否  | 值为'file'，按照振动配置文件触发马达振动。                   |
+| hapticFd       | [HapticFileDescriptor](#hapticfiledescriptor10)<sup>10+</sup> | 否  | 否  | 振动配置文件的描述符。                     |
 
 ## HapticFileDescriptor<sup>10+</sup>
 
@@ -1470,11 +1761,15 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称   | 类型   | 只读 | 可选 | 说明                                                         |
-| ------ | ------ | ---- | ---- | ------------------------------------------------------------ |
-| fd     | number | 否   | 否   | 资源文件描述符。                                             |
-| offset | number | 否   | 是   | 距文件起始位置的偏移量，单位为字节，默认为文件起始位置，不可超出文件有效范围。 |
-| length | number | 否   | 是   | 资源长度，单位为字节，默认值为从偏移位置至文件结尾的长度，不可超出文件有效范围。 |
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选 | 说明                          |
+|----------------|---------|----|----|-----------------------------|
+| fd      | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 否  | 资源文件描述符。                   |
+| offset       | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否  | 是  | 距文件起始位置的偏移量，单位为字节，默认为文件起始位置，不可超出文件有效范围。                     |
+| length       | ArkTS-Dyn: number <br> ArkTS-Sta: long | 否  | 是  | 资源长度，单位为字节，默认值为从偏移位置至文件结尾的长度，不可超出文件有效范围。                     |
 
 ## VibratorEventType<sup>18+</sup>
 
@@ -1482,10 +1777,14 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称       | 值   | 说明              |
-| --------- | ------ | ----------------- |
-| CONTINUOUS | 0 | 表示长振。 |
-| TRANSIENT  | 1 | 表示短振。 |
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称                                | 值                      | 说明                         |
+| ----------------------------------- | ----------------------- | ---------------------------- |
+| CONTINUOUS                         | 0    | 表示长振。 |
+| TRANSIENT                         | 1    | 表示短振。 |
 
 ## VibratorCurvePoint<sup>18+</sup>
 
@@ -1493,11 +1792,15 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称      | 类型   | 只读 | 可选 | 说明                                                         |
-| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| time      | number | 否   | 否   | 起始时间偏移。                                               |
-| intensity | number | 否   | 是   | 可选参数，相对事件振动强度增益，取值范围[0,100%]，省略时默认值为1。 |
-| frequency | number | 否   | 是   | 可选参数，相对事件振动频率变化，取值范围[-100,100]内所有整数，省略时默认值为0。 |
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选 | 说明                          |
+|----------------|---------|----|----|-----------------------------|
+| time      | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 否  | 起始时间偏移。                   |
+| intensity       | ArkTS-Dyn: number <br> ArkTS-Sta: double | 否  | 是  | 可选参数，相对事件振动强度增益，取值范围[0,100%]，省略时默认值为1。                     |
+| frequency       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 可选参数，相对事件振动频率变化，取值范围[-100,100]内所有整数，省略时默认值为0。                     |
 
 ## VibratorEvent<sup>18+</sup>
 
@@ -1505,15 +1808,19 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称      | 类型                            | 只读 | 可选 | 说明                                                         |
-| --------- | ------------------------------- | ---- | ---- | ------------------------------------------------------------ |
-| eventType | VibratorEventType               | 否   | 否   | 振动事件类型。                                               |
-| time      | number                          | 否   | 否   | 振动起始时间，单位ms。取值范围[0,1800000]区间内所有整数。    |
-| duration  | number                          | 否   | 是   | 可选参数，表示振动持续时间，取值范围（0,5000]区间所有整数，短振默认值为48，长振默认值为1000 |
-| intensity | number                          | 否   | 是   | 可选参数，表示振动强度，取值范围[0,100]区间所有整数，省略时默认值为100。 |
-| frequency | number                          | 否   | 是   | 可选参数，表示振动频率，取值范围[0,100]区间内所有整数，省略时默认值为50。 |
-| index     | number                          | 否   | 是   | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。        |
-| points    | Array&lt;[VibratorCurvePoint](#vibratorcurvepoint18)&gt; | 否   | 是   | 可选参数，表示振动调节曲线数组。                             |
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选 | 说明                          |
+|----------------|---------|----|----|-----------------------------|
+| eventType      | VibratorEventType  | 否  | 否  | 振动起始时间，单位ms。取值范围[0,1800000]区间内所有整数。                   |
+| time       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 否  | 振动起始时间，单位ms。取值范围[0,1800000]区间内所有整数。                     |
+| duration       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 可选参数，表示振动持续时间，取值范围（0,5000]区间所有整数，短振默认值为48，长振默认值为1000                     |
+| intensity       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 可选参数，表示振动强度，取值范围[0,100]区间所有整数，省略时默认值为100。                     |
+| frequency       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 可选参数，表示振动频率，取值范围[0,100]区间内所有整数，省略时默认值为50。                     |
+| index       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。                     |
+| points       | Array&lt;[VibratorCurvePoint](#vibratorcurvepoint18)&gt; | 否  | 是  | 可选参数，表示振动调节曲线数组。                     |
 
 ## VibratorPattern<sup>18+</sup>
 
@@ -1521,10 +1828,14 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称   | 类型                       | 只读 | 可选 | 说明                                                 |
-| ------ | -------------------------- | ---- | ---- | ---------------------------------------------------- |
-| time   | number                     | 否   | 否   | 振动绝对起始时间。                                   |
-| events | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | 否   | 否   | 振动事件数组，build()方法返回的VibratorPattern对象。 |
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选 | 说明                          |
+|----------------|---------|----|----|-----------------------------|
+| time      | ArkTS-Dyn: number <br> ArkTS-Sta: int  | 否  | 否  | 振动绝对起始时间。                   |
+| events       | Array&lt;[VibratorEvent](#vibratorevent18)&gt; | 否  | 否  | 振动事件数组，build()方法返回的VibratorPattern对象。                     |
 
 ## ContinuousParam<sup>18+</sup>
 
@@ -1532,12 +1843,16 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称      | 类型                 | 只读 | 可选 | 说明                                                         |
-| --------- | -------------------- | ---- | ---- | ------------------------------------------------------------ |
-| intensity | number               | 否   | 是   | 可选参数，表示振动强度，取值范围[0,100]内所有整数，省略时默认值为100。 |
-| frequency | number               | 否   | 是   | 可选参数，表示振动频率，取值范围[0,100]内所有整数，省略时默认值为50。 |
-| points    | [VibratorCurvePoint](#vibratorcurvepoint18)[] | 否   | 是   | 可选参数，表示振动调节曲线数组。                             |
-| index     | number               | 否   | 是   | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。                    |
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选 | 说明                          |
+|----------------|---------|----|----|-----------------------------|
+| intensity       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 可选参数，表示振动强度，取值范围[0,100]区间所有整数，省略时默认值为100。                     |
+| frequency       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 可选参数，表示振动频率，取值范围[0,100]区间内所有整数，省略时默认值为50。                     |
+| points       | [VibratorCurvePoint](#vibratorcurvepoint18)[] | 否  | 是  | 可选参数，表示振动调节曲线数组。                     |
+| index       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。                     |
 
 ## TransientParam<sup>18+</sup>
 
@@ -1545,11 +1860,15 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称      | 类型   | 只读 | 可选 | 说明                                                         |
-| --------- | ------ | ---- | ---- | ------------------------------------------------------------ |
-| intensity | number | 否   | 是   | 可选参数，表示振动强度，取值范围[0,100]内所有整数，省略时默认值为100。 |
-| frequency | number | 否   | 是   | 可选参数，表示振动频率，取值范围[0,100]内所有整数，省略时默认值为50。 |
-| index     | number | 否   | 是   | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。                    |
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选 | 说明                          |
+|----------------|---------|----|----|-----------------------------|
+| intensity       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 可选参数，表示振动强度，取值范围[0,100]区间所有整数，省略时默认值为100。                     |
+| frequency       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 可选参数，表示振动频率，取值范围[0,100]区间内所有整数，省略时默认值为50。                     |
+| index       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 可选参数，表示通道编号，取值范围[0,2]区间内所有整数，省略时默认值为0。                     |
 
 ## VibrateFromPattern<sup>18+</sup>
 
@@ -1557,10 +1876,14 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称    | 类型            | 只读 | 可选 | 说明                                                 |
-| ------- | --------------- | ---- | ---- | ---------------------------------------------------- |
-| type    | 'pattern'       | 否   | 否   | 值为“pattern”，根据组合模式触发电机振动。            |
-| pattern | VibratorPattern | 否   | 否   | 振动事件数组，build()方法返回的VibratorPattern对象。 |
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选 | 说明                          |
+|----------------|---------|----|----|-----------------------------|
+| type       | 'pattern' | 否  | 否  | 值为“pattern”，根据组合模式触发电机振动。                     |
+| pattern       | VibratorPattern | 否  | 否  | 振动事件数组，build()方法返回的VibratorPattern对象。                     |
 
 ## VibrateAttribute<sup>9+</sup>
 
@@ -1570,11 +1893,15 @@ type VibrateEffect = VibrateTime | VibratePreset | VibrateFromFile | VibrateFrom
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
 
-| 名称                   | 类型             | 只读 | 可选 | 说明                                                         |
-| ---------------------- | ---------------- | ---- | ---- | ------------------------------------------------------------ |
-| id                     | number           | 否   | 是   | 马达ID， 默认值为0。                                         |
-| deviceId<sup>19+</sup> | number           | 否   | 是   | 设备ID，默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 <br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。 |
-| usage                  | [Usage](#usage9) | 否   | 否   | 马达振动的使用场景。默认值为'unknown'，取值范围只允许在[Usage](#usage9)提供的类型中选取。 |
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称             | 类型      | 只读 | 可选 | 说明                          |
+|----------------|---------|----|----|-----------------------------|
+| id       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 马达ID， 默认值为0。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                     |
+| deviceId<sup>19+</sup>       | ArkTS-Dyn: number <br> ArkTS-Sta: int | 否  | 是  | 设备ID，默认值为-1，表示本地设备，API19以后设备ID可以使用[getVibratorInfoSync](#vibratorgetvibratorinfosync19)或设备上下线接口[on](#vibratoron19)查询。 <br/>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23                    |
+| usage       | [Usage](#usage9) | 否  | 否  | 马达振动的使用场景。默认值为'unknown'，取值范围只允许在[Usage](#usage9)提供的类型中选取。<br/>**ArkTS-Dyn起始版本：** 9<br/>**ArkTS-Sta起始版本：** 23                     |
 
 ## Usage<sup>9+</sup>
 
@@ -1585,6 +1912,10 @@ type Usage = 'unknown' | 'alarm' | 'ring' | 'notification' | 'communication' | '
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 <!--RP1-->
 
 | 类型               | 说明                                                    |
@@ -1607,11 +1938,17 @@ vibrate(duration: number): Promise&lt;void&gt;
 
 按照指定持续时间触发马达振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
+> **说明**：
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.VIBRATE
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数**：
 
@@ -1644,11 +1981,17 @@ vibrate(duration: number, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定持续时间触发马达振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
+> **说明**：
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.VIBRATE
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数**：
 
@@ -1679,11 +2022,17 @@ vibrate(effectId: EffectId): Promise&lt;void&gt;
 
 按照预置振动效果触发马达振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
+> **说明**：
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9-1)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.VIBRATE
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数**：
 
@@ -1717,11 +2066,17 @@ vibrate(effectId: EffectId, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定振动效果触发马达振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
+> **说明**：
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.startVibration](#vibratorstartvibration9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.VIBRATE
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数**：
 
@@ -1751,11 +2106,17 @@ stop(stopMode: VibratorStopMode): Promise&lt;void&gt;
 
 按照指定模式停止马达的振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup>代替。
+> **说明**：
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9-1)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.VIBRATE
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数**：
 
@@ -1798,11 +2159,17 @@ stop(stopMode: VibratorStopMode, callback?: AsyncCallback&lt;void&gt;): void
 
 按照指定模式停止马达的振动。
 
-从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup>代替。
+> **说明**：
+>
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用 [vibrator.stopVibration](#vibratorstopvibration9)<sup>9+</sup>代替。
+
+**ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
 **需要权限**：ohos.permission.VIBRATE
 
 **系统能力**：SystemCapability.Sensors.MiscDevice
+
+**ArkTS-Dyn起始版本：** 8
 
 **参数**：
 
