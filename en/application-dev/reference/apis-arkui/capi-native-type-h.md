@@ -4681,7 +4681,7 @@ Obtains the direction of a barrier.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_BarrierDirection](capi-native-type-h.md#arkui_barrierdirection) | Pointer to the direction of the barrier.|
+| [ArkUI_BarrierDirection](capi-native-type-h.md#arkui_barrierdirection) | Direction of the barrier.|
 
 ### OH_ArkUI_BarrierOption_GetReferencedId()
 
@@ -4709,7 +4709,7 @@ Obtains the referenced components of a barrier.
 
 | Type| Description|
 | -- | -- |
-| const char* | Referenced components of the barrier.|
+| const char* | Pointer to the referenced components of the barrier.|
 
 ### OH_ArkUI_BarrierOption_GetReferencedIdSize()
 
@@ -5183,7 +5183,7 @@ Obtains the ID of the bottom alignment anchor component.
 
 | Type| Description|
 | -- | -- |
-| const char* | ID of the bottom alignment anchor component.|
+| const char* | Pointer to the ID of the bottom alignment anchor component.|
 
 ### OH_ArkUI_AlignmentRuleOption_GetBottomAlignment()
 
@@ -6919,7 +6919,7 @@ Creates a **ListItemSwipeActionItem** instance.
 
 | Type                                | Description|
 |------------------------------------| -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* | Pointer to the **ListItemSwipeActionItem** instance to dispose of.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* | Pointer to the **ListItemSwipeActionItem** instance.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_Dispose()
 
@@ -6939,7 +6939,7 @@ Disposes of a **ListItemSwipeActionItem** instance.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | **ListItemSwipeActionItem** instance to dispose of.|
+| [ArkUI_ListItemSwipeActionItem](capi-arkui-nativemodule-arkui-listitemswipeactionitem.md)* item | Pointer to the **ListItemSwipeActionItem** instance to dispose of.|
 
 ### OH_ArkUI_ListItemSwipeActionItem_SetContent()
 
@@ -7369,7 +7369,7 @@ Expands the swipe action menu for the specified list item.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ListItem** node object.|
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Swipe action menu display directions for the **ListItem** component.|
+| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Swipe action menu display direction for the **ListItem** component.|
 
 **Returns**
 
@@ -10418,8 +10418,8 @@ Registers a callback to obtain the starting row, starting column, row span, and 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | **Grid** layout options.|
-| void* userData | User-defined data.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| void* userData | Pointer to the user-defined data.|
 | ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData) | Callback that returns the starting row, starting column, row span, and column span for the grid item at the specified index.<br>   **itemIndex**: grid item index.|
 ### OH_ArkUI_ShowCounterConfig_Create()
 
@@ -11253,7 +11253,7 @@ Registers the callback for text menu item clicks.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object.|
-| void* userData | User-defined data.|
+| void* userData | Pointer to the user-defined data.|
 | [ArkUI_TextMenuItemClickCallback](capi-native-type-h.md#arkui_textmenuitemclickcallback) cb | Callback for text menu item clicks.|
 
 **Returns**
@@ -11441,7 +11441,7 @@ Obtains the response type of a custom text selection menu.
 | Name| Description|
 | -- | -- |
 | [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object.|
-| [ArkUI_TextResponseType](capi-native-type-h.md#arkui_textresponsetype)* responseType | Response type of the custom text selection menu.|
+| [ArkUI_TextResponseType](capi-native-type-h.md#arkui_textresponsetype)* responseType | Pointer to the response type of the custom text selection menu.|
 
 **Returns**
 
