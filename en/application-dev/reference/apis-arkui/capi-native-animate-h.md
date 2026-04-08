@@ -41,7 +41,7 @@ Defines a set of animation APIs of ArkUI on the native side. The APIs in **nativ
 | [ArkUI_AnimatorOnFrameEvent](capi-arkui-nativemodule-arkui-animatoronframeevent.md) | ArkUI_AnimatorOnFrameEvent | Defines the callback object when the animator receives a frame.|
 | [ArkUI_TransitionEffect](capi-arkui-nativemodule-arkui-transitioneffect.md) | ArkUI_TransitionEffect | Defines the transition effect.|
 
-### Callback
+### Functions
 
 | Name| Description|
 | -- | -- |
