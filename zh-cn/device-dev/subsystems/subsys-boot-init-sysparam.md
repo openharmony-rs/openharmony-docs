@@ -334,7 +334,7 @@ hilog_param=40960
 
     通过定义子系统或者产品的.para和.para.dac文件，实现默认系统参数的定义和权限控制。
 
-    ​     在标准系统上通过ohos_prebuilt_para模版安装配置文件到到/etc/param/目录下，GN脚本示例如下：
+    ​     在标准系统上通过ohos_prebuilt_para模板安装配置文件到/etc/param/目录下，GN脚本示例如下：
 
     ```go
     import("//base/startup/init/services/etc/param/param_fixer.gni")
