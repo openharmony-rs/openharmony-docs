@@ -2450,7 +2450,7 @@ cloudData.sharing.changeConfirmation('sharing_resource_test', cloudData.sharing.
 
 ### changeConfirmation<sup>11+</sup>
 
-changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;): void;
+changeConfirmation(sharingResource: string, state: State, callback: AsyncCallback&lt;Result&lt;void&gt;&gt;): void
 
 根据共享资源标识更改共享邀请的状态，使用callback异步回调。
 
