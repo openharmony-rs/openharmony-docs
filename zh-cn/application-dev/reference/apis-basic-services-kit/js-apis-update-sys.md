@@ -1588,7 +1588,7 @@ restorer.forceFactoryReset().then(() => {
 
 deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
-深度擦除用户数据。使用 Promise 异步回调。
+深度清理用户数据及操作系统。使用 Promise 异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1600,7 +1600,7 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise\<void>
 
 | 参数名                | 类型                                       | 必填   | 说明             |
 | ------------------ | ---------------------------------------- | ---- | -------------- |
-| factoryResetStrategy | [FactoryResetStrategy](#factoryresetstrategy) | 是 | 擦除策略。         |
+| factoryResetStrategy | [FactoryResetStrategy](#factoryresetstrategy) | 是 | 恢复出厂设置策略。         |
 
 **返回值：**
 
@@ -1637,7 +1637,7 @@ restorer.deepFactoryReset(factoryResetStrategy).then(() => {
 
 getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<FactoryResetInfo>
 
-获取深度擦除信息。使用 Promise 异步回调。
+获取深度恢复出厂设置信息。使用 Promise 异步回调。
 
 **起始版本：** 26.0.0
 
@@ -1649,7 +1649,7 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise\<Fa
 
 | 参数名                | 类型                                       | 必填   | 说明             |
 | ------------------ | ---------------------------------------- | ---- | -------------- |
-| factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | 是    | 擦除策略。         |
+| factoryResetStrategy  | [FactoryResetStrategy](#factoryresetstrategy)  | 是 | 恢复出厂设置策略。         |
 
 **返回值：**
 
@@ -2198,7 +2198,7 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 ## FactoryResetStrategy
 
-深度恢复出厂设置策略。
+恢复出厂设置策略。
 
 **起始版本：** 26.0.0
 
@@ -2206,12 +2206,12 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
 | -------- | ------------------------------- | ---- | ---- | ---- |
-| scope | [FactoryResetScope](#factoryresetscope) | 否    | 否 | 擦除范围 |
-| strategy | string                          | 否    | 否 | 擦除策略。 |
+| scope | [FactoryResetScope](#factoryresetscope) | 否    | 否 | 重置范围。|
+| strategy | string                          | 否    | 否 | 重置策略。 |
 
 ## FactoryResetInfo
 
-擦除信息。
+恢复出厂设置信息。
 
 **起始版本：** 26.0.0
 
@@ -2219,11 +2219,11 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 | 名称       | 类型                            | 只读 | 可选 | 说明   |
 | -------- | ------------------------------- | ---- | ---- | ---- |
-| duration | int                          | 否    | 否 | 擦除时间。 |
+| duration | int                          | 否    | 否 | 恢复出厂设置所需持续时间。 |
 
 ## FactoryResetScope
 
-擦除范围。
+恢复出厂设置范围。
 
 **起始版本：** 26.0.0
 
@@ -2231,8 +2231,8 @@ localUpdater.off(eventClassifyInfo, onTaskUpdate);
 
 | 名称           | 值  | 说明   |
 | ------------- | ---- | ---- |
-| DATA | 1    | 数据擦除。|
-| DATA_AND_OS | 2    | 数据和系统擦除。|
+| DATA | 1    | 用户数据。|
+| DATA_AND_OS | 2    | 用户数据和操作系统。|
 
 ## UpgradeTaskCallback<sup>23+</sup>
 
