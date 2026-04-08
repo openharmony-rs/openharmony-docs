@@ -210,8 +210,8 @@ try {
 let otaUpdatePolicy4: systemManager.OtaUpdatePolicy = {
   "policyType": systemManager.PolicyType.WINDOWS,
   "version": "version_1.0.0.3",
-  "installStartTime": 1716281049, // // 时间戳
-  "installEndTime": 1716343200, // // 时间戳
+  "installStartTime": 1716281049, // 时间戳
+  "installEndTime": 1716343200, // 时间戳
 };
 try {
   systemManager.setOtaUpdatePolicy(wantTemp, otaUpdatePolicy4);
