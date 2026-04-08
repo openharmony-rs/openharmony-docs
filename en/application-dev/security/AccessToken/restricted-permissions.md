@@ -1131,7 +1131,7 @@ Allow an application to use the accessory connection service for pairing and aut
 **Supported devices**: phones | PCs/2-in-1 devices | tablets | cars
 
 **Since**: 26.0.0
- 	 
+
 ## ohos.permission.CHECK_CALL_LOG
 
 Allows an application to query the system for matching call records within a specified period based on specific criteria (such as the mobile number and call duration).
@@ -1161,8 +1161,8 @@ Allows an application or a service to use the DLP to register or unregister the 
 **Since**: 26.0.0
 
 ## ohos.permission.CONTROL_DEVICE
- 	 
-Allows an application to inject input events to control the device.Applicable scenarios and functionalities: Required when the controlled end of the remote login device needs to receive input events from thcontrolling end to operate the local device.
+
+Allows an application to inject input events to control the device. Applicable scenarios and functionalities: Required when the controlled end of the remote login device needs to receive input events from the controlling end to operate the local device.
 
 <!--RP79--><!--RP79End-->
 
