@@ -18,7 +18,9 @@
 
 共享云是指： 端云共享的服务端，是同应用跨账号跨设备的共享。
 
-> **说明：** 
+> **说明：**
+>
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
 > - 本模块首批接口从API version 11开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 >
@@ -36,9 +38,13 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称          | 类型                          | 只读 | 可选 | 说明           |
 | ----------- | --------------------------- | ---- | ---- | ------------ |
-| code        | number                      | 否   | 否   | 错误码。       |
+| code        | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 错误码。       |
 | description | string                      | 否   | 是   | 错误码详细描述，默认为undefined。       |
 | value       | T                           | 否   | 是   | 返回结果的值，具体类型由参数T指定，默认为undefined。       |
 
@@ -47,6 +53,10 @@ import { cloudExtension } from '@kit.ArkData';
 云资产的信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称    | 类型   | 只读 | 可选 | 说明                                 |
 | ------- | ------ | ---- | ---- | ------------------------------------ |
@@ -59,6 +69,10 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                             | 说明                                      |
 | -------------------------------- | ----------------------------------------- |
 | Array<[CloudAsset](#cloudasset)> | 表示[CloudAsset](#cloudasset)类型的数组。 |
@@ -69,19 +83,27 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型    | 只读 | 可选 | 说明                                                         |
 | -------------- | ------- | ---- | ---- | ------------------------------------------------------------ |
 | enableCloud    | boolean | 否   | 否   | 表示是否启用了云服务。为true时是启用云服务，为false时是未启用。 |
 | id             | string  | 否   | 否   | 使用哈希函数SHA256生成的云账号ID。                           |
-| totalSpace     | number  | 否   | 否   | 服务器上账号的总空间（KB）。                                 |
-| remainingSpace | number  | 否   | 否   | 服务器上账号的可用空间（KB）。                               |
-| user           | number  | 否   | 否   | 设备的当前用户ID。                                           |
+| totalSpace     | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否   | 否   | 服务器上账号的总空间（KB）。                                 |
+| remainingSpace | ArkTS-Dyn: number<br/>ArkTS-Sta: long | 否   | 否   | 服务器上账号的可用空间（KB）。                               |
+| user           | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 设备的当前用户ID。                                           |
 
 ## Flag
 
 描述数据库上执行操作的枚举。请使用枚举名而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 值   | 说明       |
 | ------ | ---- | ---------- |
@@ -95,23 +117,35 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型            | 只读 | 可选 | 说明                 |
 | ---------- | --------------- | ---- | ---- | ------------------ |
 | id         | string          | 是   | 否   | 执行插入操作时生成。 |
-| createTime | number          | 是   | 否   | 创建行数据的时间（ms）。   |
-| modifyTime | number          | 是   | 否   | 修改行数据的时间（ms）。   |
+| createTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long          | 是   | 否   | 创建行数据的时间（ms）。   |
+| modifyTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long          | 是   | 否   | 修改行数据的时间（ms）。   |
 | operation  | [Flag](#flag)   | 是   | 否   | 对行数据所作的操作。 |
 
 ## CloudType
+
+ArkTS-Dyn: type CloudType = null | number | string | boolean | Uint8Array | CloudAsset | CloudAssets
+
+ArkTS-Sta: type CloudType = null | long | double | string | boolean | Uint8Array | CloudAsset | CloudAssets
 
 表示允许出现的云数据字段类型，接口参数具体类型根据其功能而定。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 类型                      | 说明                            |
 | ------------------------- | ------------------------------- |
 | null                      | 表示值的类型为空。              |
-| number                    | 表示值的类型为数字类型。         |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: long \| double   | 表示值的类型为数字类型。         |
 | string                    | 表示值的类型为字符串类型。       |
 | boolean                   | 表示值的类型为布尔类型。         |
 | Uint8Array                | 表示值的类型为Uint8类型的数组。 |
@@ -124,6 +158,10 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称      | 类型                                                | 只读 | 可选 | 说明           |
 | --------- | --------------------------------------------------- | ---- | ---- | -------------- |
 | cloudInfo | [ServiceInfo](#serviceinfo)                         | 否   | 否  | 云服务信息。   |
@@ -134,6 +172,10 @@ import { cloudExtension } from '@kit.ArkData';
 云数据。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称       | 类型                                                       | 只读 | 可选 | 说明                                                         |
 | ---------- | ---------------------------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
@@ -147,18 +189,26 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型    | 只读 | 可选 | 说明                               |
 | ----------- | ------- | ---- | ---- | ---------------------------------- |
 | appId       | string  | 否   | 否   | 应用程序ID。                      |
 | bundleName  | string  | 否   | 否   | 应用包名。                         |
 | cloudSwitch | boolean | 否   | 否   | 云开关，表示应用程序是否启用云。true表示启用云，false表示不启用云。 |
-| instanceId  | number  | 否   | 否   | 应用分身ID，0表示应用本身，分身ID依次递增。 |
+| instanceId  | ArkTS-Dyn: number<br/>ArkTS-Sta: int  | 否   | 否   | 应用分身ID，0表示应用本身，分身ID依次递增。 |
 
 ## FieldType
 
 描述数据库表中字段类型的枚举。请使用枚举名而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                                               | 值   | 说明                                   |
 | -------------------------------------------------- | ---- | -------------------------------------- |
@@ -177,6 +227,10 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型                      | 只读 | 可选  | 说明                   |
 | -------- | ------------------------- | ---- | ---- | ---------------------- |
 | alias    | string                    | 否   | 否   | 该字段在服务器表中的别名。 |
@@ -191,6 +245,10 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称   | 类型                         | 只读 | 可选 | 说明                         |
 | ------ | ---------------------------- | ---- | ---- | ---------------------------- |
 | alias  | string                       | 否   | 否   | 该表在服务器数据库中的别名。 |
@@ -202,6 +260,10 @@ import { cloudExtension } from '@kit.ArkData';
 数据库结构信息。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称   | 类型                         | 只读 | 可选 | 说明                             |
 | ------ | ---------------------------- | ---- | ---- | -------------------------------- |
@@ -215,10 +277,14 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                 | 只读 | 可选 | 说明               |
 | ---------- | ------------------------------------ | ---- | ---- | ------------------ |
 | bundleName | string                               | 否   | 否   | 应用包名。         |
-| version    | number                               | 否   | 否   | 数据库模式的版本。 |
+| version    | ArkTS-Dyn: number<br/>ArkTS-Sta: int                               | 否   | 否   | 数据库模式的版本。 |
 | databases  | Array&lt;[Database](#database)&gt;   | 否   | 否   | 应用的数据库信息。 |
 
 ## SubscribeId
@@ -226,6 +292,10 @@ import { cloudExtension } from '@kit.ArkData';
 订阅ID。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称          | 类型   | 只读 | 可选 | 说明                   |
 | ------------- | ------ | ---- | ---- | ---------------------- |
@@ -238,9 +308,13 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称           | 类型                                                         | 只读 | 可选 | 说明                 |
 | -------------- | ------------------------------------------------------------   | ---- | ---- | -------------------- |
-| expirationTime | number                                                         | 否   | 否   | 订阅过期时间（ms）。 |
+| expirationTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long                                                         | 否   | 否   | 订阅过期时间（ms）。 |
 | subscribe      | Record&lt;string, Array&lt;[SubscribeId](#subscribeid)&gt;&gt; | 否   | 否   | 订阅信息。           |
 
 ## LockInfo
@@ -249,16 +323,24 @@ import { cloudExtension } from '@kit.ArkData';
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称     | 类型   | 只读 | 可选 | 说明                            |
 | -------- | ------ | ---- | ---- | ------------------------------- |
-| interval | number | 否   | 否    | 云数据库锁的持续时间，单位为s。 |
-| lockId   | number | 否   | 否    | 锁ID。                          |
+| interval | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否    | 云数据库锁的持续时间，单位为s。 |
+| lockId   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否    | 锁ID。                          |
 
 ## ErrorCode
 
 表示端云共享过程的状态。请使用枚举名而非枚举值。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 | 名称                  | 值   | 说明                                                         |
 | --------------------- | ---- | ------------------------------------------------------------ |
@@ -278,6 +360,10 @@ createCloudServiceStub(instance: CloudService): Promise&lt;rpc.RemoteObject&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名    | 类型                            | 必填 | 说明                                                         |
@@ -291,6 +377,8 @@ createCloudServiceStub(instance: CloudService): Promise&lt;rpc.RemoteObject&gt;
 | Promise&lt;[rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)&gt; | Promise对象，返回[CloudService](#cloudservice)的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { Want, ServiceExtensionAbility } from '@kit.AbilityKit';
@@ -323,6 +411,61 @@ export default class MyServiceExtension extends ServiceExtensionAbility {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import ServiceExtensionAbility from '@ohos.app.ability.ServiceExtensionAbility';
+import Want from '@ohos.app.ability.Want';
+import rpc from '@ohos.rpc';
+import cloudExtension from '@ohos.data.cloudExtension';
+class MyCloudService implements cloudExtension.CloudService {
+  constructor() {}
+  async connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int> {
+    return 0;
+  }
+  async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
+    return {};
+  }
+  async getAppSchema(bundleName: string): Promise<cloudExtension.Result<cloudExtension.AppSchema>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.AppSchema>;
+  }
+  async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
+    return { remainingSpace: 0, totalSpace: 0, id: "", user: 0, enableCloud: false } as cloudExtension.ServiceInfo;
+  }
+  async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async connectAssetLoader(bundleName: string, dbInfo: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: long): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.SubscribeInfo>;
+  }
+}
+
+export default class MyServiceExtension extends ServiceExtensionAbility {
+  onCreate(want: Want) {
+    console.info(`onCreate: ${want}`);
+  }
+  onRequest(want: Want, startId: int) {
+    console.info(`onRequest: ${want} ${startId}`);
+  }
+  onConnect(want: Want): rpc.RemoteObject | Promise<rpc.RemoteObject> {
+    console.info(`onConnect: ${want}`);
+    return cloudExtension.createCloudServiceStub(new MyCloudService());
+  }
+  async onDisconnect(want: Want) {
+    console.info(`onDisconnect: ${want}`);
+  }
+  onDestroy() {
+    console.info('onDestroy');
+  }
+}
+```
+
 ## cloudExtension.createShareServiceStub
 
 createShareServiceStub(instance: ShareCenter): Promise&lt;rpc.RemoteObject&gt;
@@ -330,6 +473,10 @@ createShareServiceStub(instance: ShareCenter): Promise&lt;rpc.RemoteObject&gt;
 根据[ShareCenter](#sharecenter)类的实例创建对应的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，系统内部通过该对象调用[ShareCenter](#sharecenter)的实现接口，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -344,6 +491,8 @@ createShareServiceStub(instance: ShareCenter): Promise&lt;rpc.RemoteObject&gt;
 | Promise&lt;[rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)&gt; | Promise对象，返回[ShareCenter](#sharecenter)的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { rpc } from '@kit.IPCKit';
@@ -362,6 +511,79 @@ class MyCloudService implements cloudExtension.CloudService {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import rpc from '@ohos.rpc';
+import cloudExtension from '@ohos.data.cloudExtension';
+import cloudData from '@ohos.data.cloudData';
+type Participant = cloudData.sharing.Participant;
+class EmptyRemoteObj extends rpc.RemoteObject {
+  constructor() {
+    super("EmptyRemoteObj");
+  }
+}
+class MyShareCenter implements cloudExtension.ShareCenter {
+  constructor() {}
+  // ...
+  async share(userId: int, bundleName: string, sharingResource: string, participants: Array<Participant>):
+    Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>> {
+    return { code: 0, value: [] as Array<cloudExtension.Result<Participant>> };
+  }
+  async unshare(userId: int, bundleName: string, sharingResource: string, participants: Array<Participant>):
+    Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>> {
+    return { code: 0, value: [] as Array<cloudExtension.Result<Participant>> };
+  }
+  async exit(userId: int, bundleName: string, sharingResource: string): Promise<cloudExtension.Result<void>> {
+    return { code: 0 };
+  }
+  async queryParticipants(userId: int, bundleName: string, sharingResource: string): Promise<cloudExtension.Result<Array<Participant>>> {
+    return { code: 0, value: [] as Array<Participant> };
+  }
+  async queryParticipantsByInvitation(userId: int, bundleName: string, invitationCode: string): Promise<cloudExtension.Result<Array<Participant>>> {
+    return { code: 0, value: [] as Array<Participant> };
+  }
+  async changePrivilege(userId: int, bundleName: string, sharingResource: string, participants: Array<Participant>): Promise<cloudExtension.Result<Array<cloudExtension.Result<Participant>>>> {
+    return { code: 0, value: [] as Array<cloudExtension.Result<Participant>> };
+  }
+  async changeConfirmation(userId: int, bundleName: string, sharingResource: string, state: cloudData.sharing.State): Promise<cloudExtension.Result<void>> {
+    return { code: 0 };
+  }
+  async confirmInvitation(userId: int, bundleName: string, invitationCode: string, state: cloudData.sharing.State): Promise<cloudExtension.Result<string>> {
+    return { code: 0, value: '' };
+  }
+}
+
+export default class MyCloudService implements cloudExtension.CloudService {
+  constructor() {}
+  async connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject> {
+    console.info(`connect share center, bundle: ${bundleName}`);
+    return cloudExtension.createShareServiceStub(new MyShareCenter());
+  }
+  async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new EmptyRemoteObj();
+  }
+  async unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int> {
+    return 0;
+  }
+  async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
+    return {};
+  }
+  async getAppSchema(bundleName: string): Promise<cloudExtension.Result<cloudExtension.AppSchema>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.AppSchema>;
+  }
+  async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
+    return { remainingSpace: 0, totalSpace: 0, id: "", user: 0, enableCloud: false } as cloudExtension.ServiceInfo;
+  }
+  async connectAssetLoader(bundleName: string, dbInfo: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: long): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.SubscribeInfo>;
+  }
+}
+```
+
 ## cloudExtension.createCloudDBStub
 
 createCloudDBStub(instance: CloudDB): Promise&lt;rpc.RemoteObject&gt;
@@ -369,6 +591,10 @@ createCloudDBStub(instance: CloudDB): Promise&lt;rpc.RemoteObject&gt;
 根据[CloudDB](#clouddb)类的实例创建对应的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，系统内部通过该对象调用[CloudDB](#clouddb)的实现接口，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -381,6 +607,10 @@ createCloudDBStub(instance: CloudDB): Promise&lt;rpc.RemoteObject&gt;
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Promise&lt;[rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)&gt; | Promise对象，返回[CloudDB](#clouddb)的[rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { rpc } from '@kit.IPCKit';
@@ -399,6 +629,77 @@ class MyCloudService implements cloudExtension.CloudService {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import rpc from '@ohos.rpc';
+import cloudExtension from '@ohos.data.cloudExtension';
+class MyCloudDB implements cloudExtension.CloudDB {
+  // ...
+  async generateId(count: int): Promise<cloudExtension.Result<string[]>> {
+    return { code: 0, value: [] };
+  }
+  async query(table: string, fields: string[], queryCount: int, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
+    return {
+      code: 0,
+      value: {
+        values: [],
+        hasMore: false,
+        nextCursor: ""
+      } as cloudExtension.CloudData
+    };
+  }
+  async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async delete(table: string, values: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+  async unlock(sessionId: int): Promise<cloudExtension.Result<boolean>> {
+    return { code: 0, value: true };
+  }
+  async heartbeat(sessionId: int): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+}
+
+export default class MyCloudService implements cloudExtension.CloudService {
+  constructor() {}
+  // ...
+  async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    console.info(`connect DB, bundleName: ${bundleName}`);
+    return cloudExtension.createCloudDBStub(new MyCloudDB());
+  }
+  async unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int> {
+    return 0;
+  }
+  async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
+    return {};
+  }
+  async getAppSchema(bundleName: string): Promise<cloudExtension.Result<cloudExtension.AppSchema>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.AppSchema>;
+  }
+  async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
+    return { remainingSpace: 0, totalSpace: 0, id: "", user: 0, enableCloud: false } as cloudExtension.ServiceInfo;
+  }
+  async connectAssetLoader(bundleName: string, dbInfo: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: long): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.SubscribeInfo>;
+  }
+}
+```
+
 ## cloudExtension.createAssetLoaderStub
 
 createAssetLoaderStub(instance: AssetLoader): Promise&lt;rpc.RemoteObject&gt;
@@ -406,6 +707,10 @@ createAssetLoaderStub(instance: AssetLoader): Promise&lt;rpc.RemoteObject&gt;
 根据[AssetLoader](#assetloader)类的实例创建对应的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，系统内部通过该对象调用[AssetLoader](#assetloader)的实现接口，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -420,6 +725,8 @@ createAssetLoaderStub(instance: AssetLoader): Promise&lt;rpc.RemoteObject&gt;
 | Promise&lt;[rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)&gt; | Promise对象，返回[AssetLoader](#assetloader)的[rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { rpc } from '@kit.IPCKit';
@@ -438,7 +745,55 @@ class MyCloudService implements cloudExtension.CloudService {
 }
 ```
 
+ArkTS-Sta示例：
 
+```ts
+import rpc from '@ohos.rpc';
+import cloudExtension from '@ohos.data.cloudExtension';
+class MyAssetLoader implements cloudExtension.AssetLoader {
+  // ...
+  async download(table: string, gid: string, prefix: string, assets: cloudExtension.CloudAsset[]): Promise<cloudExtension.Result<cloudExtension.CloudAsset>[]> {
+    return [] as cloudExtension.Result<cloudExtension.CloudAsset>[];
+  }
+  async upload(table: string, gid: string, assets: cloudExtension.CloudAsset[]): Promise<cloudExtension.Result<cloudExtension.CloudAsset>[]> {
+    return [] as cloudExtension.Result<cloudExtension.CloudAsset>[];
+  }
+}
+class EmptyRemoteObj extends rpc.RemoteObject {
+  constructor() {
+    super("EmptyRemoteObj");
+  }
+}
+export default class MyCloudService implements cloudExtension.CloudService {
+  constructor() {}
+  // ...
+  async connectAssetLoader(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    console.info(`connect asset loader, bundle: ${bundleName}`);
+    return cloudExtension.createAssetLoaderStub(new MyAssetLoader());
+  }
+  async unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int> {
+    return 0;
+  }
+  async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
+    return {};
+  }
+  async getAppSchema(bundleName: string): Promise<cloudExtension.Result<cloudExtension.AppSchema>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.AppSchema>;
+  }
+  async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
+    return { remainingSpace: 0, totalSpace: 0, id: "", user: 0, enableCloud: false } as cloudExtension.ServiceInfo;
+  }
+  async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new EmptyRemoteObj();
+  }
+  async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: long): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.SubscribeInfo>;
+  }
+  async connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+}
+```
 
 ## CloudDB
 
@@ -446,17 +801,23 @@ class MyCloudService implements cloudExtension.CloudService {
 
 ### generateId
 
-generateId(count: number): Promise&lt;Result&lt;Array&lt;string&gt;&gt;&gt;
+ArkTS-Dyn: generateId(count: number): Promise&lt;Result&lt;Array&lt;string&gt;&gt;&gt;
+
+ArkTS-Sta: generateId(count: int): Promise&lt;Result&lt;Array&lt;string&gt;&gt;&gt;
 
 为插入的云数据生成ID。生成的ID具有唯一性。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| count  | number | 是   | 表示要生成ID的数量。 |
+| count  | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 表示要生成ID的数量。 |
 
 **返回值：**
 
@@ -465,6 +826,8 @@ generateId(count: number): Promise&lt;Result&lt;Array&lt;string&gt;&gt;&gt;
 | Promise&lt;[Result](#resultt)&lt;Array&lt;string&gt;&gt; | Promise对象，以[Result](#resultt)结构将生成的ID以数组形式返回。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 class MyCloudDB implements cloudExtension.CloudDB {
@@ -482,6 +845,53 @@ class MyCloudDB implements cloudExtension.CloudDB {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import cloudExtension from '@ohos.data.cloudExtension';
+export default class MyCloudDB implements cloudExtension.CloudDB {
+  async generateId(count: int): Promise<cloudExtension.Result<Array<string>>> {
+    console.info(`generate id, count: ${count}`);
+    let result = new Array<string>();
+    // ...
+    return {
+      code: cloudExtension.ErrorCode.SUCCESS,
+      description: 'generateId succeeded',
+      value: result
+    };
+  }
+  // ...
+  async query(table: string, fields: string[], queryCount: int, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
+    return {
+      code: 0,
+      value: {
+        values: [],
+        hasMore: false,
+        nextCursor: ""
+      } as cloudExtension.CloudData
+    };
+  }
+  async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async delete(table: string, values: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+  async unlock(sessionId: int): Promise<cloudExtension.Result<boolean>> {
+    return { code: 0, value: true };
+  }
+  async heartbeat(sessionId: int): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+}
+```
+
 ### update
 
 update(table: string, values: Array&lt;Record&lt;string, CloudType>>, extensions: Array&lt;Record&lt;string, CloudType>> ): Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType>>>>
@@ -489,6 +899,10 @@ update(table: string, values: Array&lt;Record&lt;string, CloudType>>, extensions
 通过该接口更新云上的数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -506,6 +920,8 @@ update(table: string, values: Array&lt;Record&lt;string, CloudType>>, extensions
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 class MyCloudDB implements cloudExtension.CloudDB {
   // ...
@@ -520,6 +936,50 @@ class MyCloudDB implements cloudExtension.CloudDB {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import cloudExtension from '@ohos.data.cloudExtension';
+export default class MyCloudDB implements cloudExtension.CloudDB {
+  async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extensions: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    console.info(`update, table: ${table}`);
+    let updateRes: Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>> = [];
+    // ...
+    // 返回更新数据的结果
+    return updateRes;
+  }
+  async generateId(count: int): Promise<cloudExtension.Result<string[]>> {
+    return { code: 0, value: [] };
+  }
+  async query(table: string, fields: string[], queryCount: int, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
+    return {
+      code: 0,
+      value: {
+        values: [],
+        hasMore: false,
+        nextCursor: ""
+      } as cloudExtension.CloudData
+    };
+  }
+  async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async delete(table: string, values: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+  async unlock(sessionId: int): Promise<cloudExtension.Result<boolean>> {
+    return { code: 0, value: true };
+  }
+  async heartbeat(sessionId: int): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+  // ...
+}
+```
+
 ### insert
 
 insert(table: string, values: Array<Record<string, CloudType>>, extensions: Array<Record<string, CloudType>>): Promise<Array<Result<Record<string, CloudType&gt;&gt;&gt;&gt;
@@ -527,6 +987,10 @@ insert(table: string, values: Array<Record<string, CloudType>>, extensions: Arra
 将数据插入云数据库表中。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -544,6 +1008,8 @@ insert(table: string, values: Array<Record<string, CloudType>>, extensions: Arra
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 class MyCloudDB implements cloudExtension.CloudDB {
   // ...
@@ -558,6 +1024,51 @@ class MyCloudDB implements cloudExtension.CloudDB {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import cloudExtension from '@ohos.data.cloudExtension';
+export default class MyCloudDB implements cloudExtension.CloudDB {
+  // ...
+  async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extensions: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    console.info(`insert, table: ${table}`);
+    let insertRes: Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>> = [];
+    // ...
+    // 返回插入数据的结果
+    return insertRes;
+  }
+  // ...
+  async generateId(count: int): Promise<cloudExtension.Result<string[]>> {
+    return { code: 0, value: [] };
+  }
+  async query(table: string, fields: string[], queryCount: int, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
+    return {
+      code: 0,
+      value: {
+        values: [],
+        hasMore: false,
+        nextCursor: ""
+      } as cloudExtension.CloudData
+    };
+  }
+  async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async delete(table: string, values: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+  async unlock(sessionId: int): Promise<cloudExtension.Result<boolean>> {
+    return { code: 0, value: true };
+  }
+  async heartbeat(sessionId: int): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+}
+```
+
 ### delete
 
 delete(table: string, extensions: Array&lt;Record&lt;string, CloudType>> ): Promise&lt;Array&lt;Result&lt;Record&lt;string, CloudType&gt;&gt;&gt;&gt;
@@ -565,6 +1076,10 @@ delete(table: string, extensions: Array&lt;Record&lt;string, CloudType>> ): Prom
 删除云数据库表中的指定数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -581,6 +1096,8 @@ delete(table: string, extensions: Array&lt;Record&lt;string, CloudType>> ): Prom
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 class MyCloudDB implements cloudExtension.CloudDB {
   // ...
@@ -595,13 +1112,57 @@ class MyCloudDB implements cloudExtension.CloudDB {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import cloudExtension from '@ohos.data.cloudExtension';
+export default class MyCloudDB implements cloudExtension.CloudDB {
+  // ...
+  async delete(table: string, extensions: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    console.info(`delete, table: ${table}`);
+    let deleteRes: Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>> = [];
+    // ...
+    // 返回插入数据的结果
+    return deleteRes;
+  }
+  // ...
+  async generateId(count: int): Promise<cloudExtension.Result<string[]>> {
+    return { code: 0, value: [] };
+  }
+  async query(table: string, fields: string[], queryCount: int, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
+    return { code: 0, value: { values: [], hasMore: false, nextCursor: "" } as cloudExtension.CloudData };
+  }
+  async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+  async unlock(sessionId: int): Promise<cloudExtension.Result<boolean>> {
+    return { code: 0, value: true };
+  }
+  async heartbeat(sessionId: int): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+}
+```
+
 ### query
 
-query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCursor: string): Promise&lt;Result&lt;CloudData&gt;&gt;
+ArkTS-Dyn: query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCursor: string): Promise&lt;Result&lt;CloudData&gt;&gt;
+
+ArkTS-Sta: query(table: string, fields: Array&lt;string&gt;, queryCount: int, queryCursor: string): Promise&lt;Result&lt;CloudData&gt;&gt;
 
 在云数据库表中查询数据。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -609,7 +1170,7 @@ query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCurso
 | ----------- | ------------- | ---- | ------------------------ |
 | table       | string        | 是   | 表名。                   |
 | fields      | Array&lt;string&gt; | 是   | 表示字段名。          |
-| queryCount  | number        | 是   | 表示要查询的数据记录数。 |
+| queryCount  | ArkTS-Dyn: number<br/>ArkTS-Sta: int        | 是   | 表示要查询的数据记录数。 |
 | queryCursor | string        | 是   | 表示要查询的游标。       |
 
 **返回值：**
@@ -619,6 +1180,8 @@ query(table: string, fields: Array&lt;string&gt;, queryCount: number, queryCurso
 | Promise&lt;[Result](#resultt)&lt;[CloudData](#clouddata)&gt;&gt; | Promise对象，返回被查询数据和查询结果。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 class MyCloudDB implements cloudExtension.CloudDB {
@@ -641,6 +1204,51 @@ class MyCloudDB implements cloudExtension.CloudDB {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import cloudExtension from '@ohos.data.cloudExtension';
+export default class MyCloudDB implements cloudExtension.CloudDB {
+  // ...
+  async query(table: string, fields: Array<string>, queryCount: int, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
+    console.info(`query, table: ${table}`);
+    // ...
+    // 返回插入数据的结果
+    return {
+      code: cloudExtension.ErrorCode.SUCCESS,
+      description: 'query succeeded',
+      value: {
+        nextCursor: "test_nextCursor",
+        hasMore: true,
+        values: []
+      }
+    };
+  }
+  // ...
+  async generateId(count: int): Promise<cloudExtension.Result<string[]>> {
+    return { code: 0, value: [] };
+  }
+  async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async delete(table: string, values: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+  async unlock(sessionId: int): Promise<cloudExtension.Result<boolean>> {
+    return { code: 0, value: true };
+  }
+  async heartbeat(sessionId: int): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+}
+```
+
 ###  lock
 
 lock(): Promise&lt;Result&lt;LockInfo&gt;&gt;
@@ -649,6 +1257,10 @@ lock(): Promise&lt;Result&lt;LockInfo&gt;&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                         | 说明                                                |
@@ -656,6 +1268,8 @@ lock(): Promise&lt;Result&lt;LockInfo&gt;&gt;
 | Promise&lt;[Result](#resultt)&lt;[LockInfo](#lockinfo)&gt;&gt; | Promise对象，返回加锁的信息，包含加锁时长和锁的ID。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let test_time: number = 10;
@@ -679,19 +1293,71 @@ class MyCloudDB implements cloudExtension.CloudDB {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import cloudExtension from '@ohos.data.cloudExtension';
+let test_time: int = 10;
+let test_lockId: int = 1;
+export default class MyCloudDB implements cloudExtension.CloudDB {
+  // ...
+  async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    console.info(`DB lock`);
+    // ...
+    // 返回插入数据的结果
+    return {
+      code: cloudExtension.ErrorCode.SUCCESS,
+      description: 'lock succeeded',
+      value: {
+        interval: test_time,
+        lockId: test_lockId
+      }
+    };
+  }
+  // ...
+  async generateId(count: int): Promise<cloudExtension.Result<string[]>> {
+    return { code: 0, value: [] };
+  }
+  async query(table: string, fields: string[], queryCount: int, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
+    return { code: 0, value: { values: [], hasMore: false, nextCursor: "" } as cloudExtension.CloudData };
+  }
+  async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async delete(table: string, values: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async unlock(sessionId: int): Promise<cloudExtension.Result<boolean>> {
+    return { code: 0, value: true };
+  }
+  async heartbeat(sessionId: int): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+}
+```
+
 ### heartbeat
 
-heartbeat(lockId: number): Promise&lt;Result&lt;LockInfo&gt;&gt;
+ArkTS-Dyn: heartbeat(lockId: number): Promise&lt;Result&lt;LockInfo&gt;&gt;
+
+ArkTS-Sta: heartbeat(lockId: int): Promise&lt;Result&lt;LockInfo&gt;&gt;
 
 延长数据库的加锁时效。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明                  |
 | ------ | ------ | ---- | --------------------- |
-| lockId | number | 是   | 表示需要延时的锁ID。 |
+| lockId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 表示需要延时的锁ID。 |
 
 **返回值：**
 
@@ -700,6 +1366,8 @@ heartbeat(lockId: number): Promise&lt;Result&lt;LockInfo&gt;&gt;
 | Promise&lt;[Result](#resultt)&lt;[LockInfo](#lockinfo)&gt;&gt; | Promise对象，返回锁的信息，包含加锁时长和锁的ID。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let test_lockId: number = 1;
@@ -723,19 +1391,71 @@ class MyCloudDB implements cloudExtension.CloudDB {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import cloudExtension from '@ohos.data.cloudExtension';
+let test_lockId: int = 1;
+let test_time: int = 10;
+export default class MyCloudDB implements cloudExtension.CloudDB {
+  // ...
+  async heartbeat(lockId: int): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    console.info(`heartbeat lock`);
+    // ...
+    // 返回插入数据的结果
+    return {
+      code: cloudExtension.ErrorCode.SUCCESS,
+      description: 'heartbeat succeeded',
+      value: {
+        interval: test_time,
+        lockId: test_lockId
+      }
+    };
+  }
+  // ...
+  async generateId(count: int): Promise<cloudExtension.Result<string[]>> {
+    return { code: 0, value: [] };
+  }
+  async query(table: string, fields: string[], queryCount: int, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
+    return { code: 0, value: { values: [], hasMore: false, nextCursor: "" } as cloudExtension.CloudData };
+  }
+  async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async delete(table: string, values: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+  async unlock(sessionId: int): Promise<cloudExtension.Result<boolean>> {
+    return { code: 0, value: true };
+  }
+}
+```
+
 ### unlock
 
-unlock(lockId: number): Promise&lt;Result&lt;boolean&gt;&gt;
+ArkTS-Dyn: unlock(lockId: number): Promise&lt;Result&lt;boolean&gt;&gt;
+
+ArkTS-Sta: unlock(lockId: int): Promise&lt;Result&lt;boolean&gt;&gt;
 
 为云数据库解锁。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型   | 必填 | 说明          |
 | ------ | ------ | ---- | ------------- |
-| lockId | number | 是   | 表示锁的ID。 |
+| lockId | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 是   | 表示锁的ID。 |
 
 **返回值：**
 
@@ -744,6 +1464,8 @@ unlock(lockId: number): Promise&lt;Result&lt;boolean&gt;&gt;
 | Promise&lt;[Result](#resultt)&lt;boolean&gt;&gt; | Promise对象，返回解锁结果，true表示解锁成功，false表示解锁失败。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 class MyCloudDB implements cloudExtension.CloudDB {
@@ -762,6 +1484,47 @@ class MyCloudDB implements cloudExtension.CloudDB {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import cloudExtension from '@ohos.data.cloudExtension';
+export default class MyCloudDB implements cloudExtension.CloudDB {
+  // ...
+  async unlock(lockId: int): Promise<cloudExtension.Result<boolean>> {
+    console.info(`unlock`);
+    // ...
+    // 返回插入数据的结果
+    return {
+      code: cloudExtension.ErrorCode.SUCCESS,
+      description: 'unlock succeeded',
+      value: false
+    };
+  }
+  // ...
+  async generateId(count: int): Promise<cloudExtension.Result<string[]>> {
+    return { code: 0, value: [] };
+  }
+  async query(table: string, fields: string[], queryCount: int, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
+    return { code: 0, value: { values: [], hasMore: false, nextCursor: "" } as cloudExtension.CloudData };
+  }
+  async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async delete(table: string, values: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+  async heartbeat(sessionId: int): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+}
+```
+
 ## CloudService
 
 提供对接同步云服务的类。开发者需要继承此类并实现类的接口，系统内部通过该类的接口连接并使用同步云服务。
@@ -774,6 +1537,10 @@ getServiceInfo(): Promise<ServiceInfo&gt;
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                         | 说明                                |
@@ -781,6 +1548,8 @@ getServiceInfo(): Promise<ServiceInfo&gt;
 | Promise&lt;[ServiceInfo](#serviceinfo)&gt; | Promise对象，返回获取的服务器信息。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 import { rpc } from '@kit.IPCKit';
@@ -805,6 +1574,56 @@ class MyCloudService implements cloudExtension.CloudService {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import rpc from '@ohos.rpc';
+import cloudExtension from '@ohos.data.cloudExtension';
+let test_space: int = 100;
+let test_userId: int = 1;
+class EmptyRemoteObj extends rpc.RemoteObject {
+  constructor() {
+    super("EmptyRemoteObj");
+  }
+}
+export default class MyCloudService implements cloudExtension.CloudService {
+  constructor() {}
+  // ...
+  async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
+    console.info(`get service info`);
+    // ...
+    return {
+      enableCloud: true,
+      id: "test_id",
+      totalSpace: test_space,
+      remainingSpace: test_space,
+      user: test_userId,
+    };
+  }
+  async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new EmptyRemoteObj();
+  }
+  async unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int> {
+    return 0;
+  }
+  async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
+    return {};
+  }
+  async getAppSchema(bundleName: string): Promise<cloudExtension.Result<cloudExtension.AppSchema>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.AppSchema>;
+  }
+  async connectAssetLoader(bundleName: string, dbInfo: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: long): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.SubscribeInfo>;
+  }
+}
+```
+
 ### getAppBriefInfo
 
 getAppBriefInfo(): Promise<Record<string, AppBriefInfo>>
@@ -813,6 +1632,10 @@ getAppBriefInfo(): Promise<Record<string, AppBriefInfo>>
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型                                                         | 说明                                                         |
@@ -820,6 +1643,8 @@ getAppBriefInfo(): Promise<Record<string, AppBriefInfo>>
 | Promise&lt;Record&lt;string, [AppBriefInfo](#appbriefinfo)&gt;&gt;&gt; | Promise对象，返回与bundleName和 [AppBriefInfo](#appbriefinfo)相对应的键值对。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 class MyCloudService implements cloudExtension.CloudService {
@@ -841,6 +1666,56 @@ class MyCloudService implements cloudExtension.CloudService {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import cloudExtension from '@ohos.data.cloudExtension';
+import rpc from '@ohos.rpc';
+class EmptyRemoteObj extends rpc.RemoteObject {
+  constructor() {
+    super("EmptyRemoteObj");
+  }
+}
+export default class MyCloudService implements cloudExtension.CloudService {
+  constructor() {}
+  // ...
+  async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
+    console.info(`get app brief info`);
+    // ...
+    return {
+      "test_bundle":
+      {
+        appId: "test_appID",
+        bundleName: "test_bundlename",
+        cloudSwitch: true,
+        instanceId: 0,
+      }
+    };
+  }
+  async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new EmptyRemoteObj();
+  }
+  async unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int> {
+    return 0;
+  }
+  async getAppSchema(bundleName: string): Promise<cloudExtension.Result<cloudExtension.AppSchema>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.AppSchema>;
+  }
+  async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
+    return { remainingSpace: 0, totalSpace: 0, id: "", user: 0, enableCloud: false } as cloudExtension.ServiceInfo;
+  }
+  async connectAssetLoader(bundleName: string, dbInfo: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: long): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.SubscribeInfo>;
+  }
+}
+```
+
 ### getAppSchema
 
  getAppSchema(bundleName: string): Promise&lt;Result&lt;AppSchema&gt;&gt;
@@ -848,6 +1723,10 @@ class MyCloudService implements cloudExtension.CloudService {
 获取应用Schema（数据库模式）信息。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -862,6 +1741,8 @@ class MyCloudService implements cloudExtension.CloudService {
 | Promise&lt;[Result](#resultt)&lt;[AppSchema](#appschema)&gt;&gt; | Promise对象，返回数据库的schema信息。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 class MyCloudService implements cloudExtension.CloudService {
@@ -884,20 +1765,77 @@ class MyCloudService implements cloudExtension.CloudService {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import cloudExtension from '@ohos.data.cloudExtension';
+import rpc from '@ohos.rpc';
+class EmptyRemoteObj extends rpc.RemoteObject {
+  constructor() {
+    super("EmptyRemoteObj");
+  }
+}
+export default class MyCloudService implements cloudExtension.CloudService {
+  constructor() {
+  }
+  // ...
+  async getAppSchema(bundleName: string): Promise<cloudExtension.Result<cloudExtension.AppSchema>> {
+    console.info(`get app schema, bundleName:${bundleName}`);
+    // ...
+    return {
+      code: cloudExtension.ErrorCode.SUCCESS,
+      description: "get app schema success",
+      value: {
+        bundleName: "test_bundleName",
+        version: 1,
+        databases: []
+      }
+    };
+  }
+  async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new EmptyRemoteObj();
+  }
+  async unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int> {
+    return 0;
+  }
+  async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
+    return {};
+  }
+  async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
+    return { remainingSpace: 0, totalSpace: 0, id: "", user: 0, enableCloud: false } as cloudExtension.ServiceInfo;
+  }
+  async connectAssetLoader(bundleName: string, dbInfo: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: long): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.SubscribeInfo>;
+  }
+}
+```
+
 ### subscribe
 
-subscribe(subInfo: Record&lt;string, Array&lt;Database&gt;&gt;, expirationTime: number): Promise&lt;Result&lt;SubscribeInfo&gt;&gt;
+ArkTS-Dyn: subscribe(subInfo: Record&lt;string, Array&lt;Database&gt;&gt;, expirationTime: number): Promise&lt;Result&lt;SubscribeInfo&gt;&gt;
+
+ArkTS-Sta: subscribe(subInfo: Record&lt;string, Array&lt;Database&gt;&gt;, expirationTime: long): Promise&lt;Result&lt;SubscribeInfo&gt;&gt;
 
 发起订阅，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名         | 类型                                                       | 必填 | 说明                                                   |
 | -------------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------ |
 | subInfo        | Record&lt;string, Array&lt;[Database](#database)&gt;&gt; | 是   | 需要订阅的数据，由应用包名称和数据库信息组成的键值对。 |
-| expirationTime | number                                                     | 是   | 表示订阅到期时间（ms）。                                     |
+| expirationTime | ArkTS-Dyn: number<br/>ArkTS-Sta: long                                                     | 是   | 表示订阅到期时间（ms）。                                     |
 
 **返回值：**
 
@@ -906,6 +1844,8 @@ subscribe(subInfo: Record&lt;string, Array&lt;Database&gt;&gt;, expirationTime: 
 | Promise&lt;[Result](#resultt)&lt;[SubscribeInfo](#subscribeinfo)&gt;&gt; | Promise对象，返回订阅的结果，包含订阅的过期时间和订阅信息。 |
 
 **示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 let test_time: number = 10;
@@ -929,15 +1869,71 @@ class MyCloudService implements cloudExtension.CloudService {
 }
 ```
 
+ArkTS-Sta示例：
 
+```ts
+import cloudExtension from '@ohos.data.cloudExtension';
+import rpc from '@ohos.rpc';
+let test_time: int = 10;
+class EmptyRemoteObj extends rpc.RemoteObject {
+  constructor() {
+    super("EmptyRemoteObj");
+  }
+}
+export default class MyCloudService implements cloudExtension.CloudService {
+  constructor() {
+  }
+  // ...
+  async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: long): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
+    console.info
+    (`subscribe expirationTime: ${expirationTime}`);
+    // ...
+    return {
+      code: cloudExtension.ErrorCode.SUCCESS,
+      description: "subscribe success",
+      value: {
+        expirationTime: test_time,
+        subscribe: {}
+      }
+    };
+  }
+  async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new EmptyRemoteObj();
+  }
+  async unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int> {
+    return 0;
+  }
+  async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
+    return {};
+  }
+  async getAppSchema(bundleName: string): Promise<cloudExtension.Result<cloudExtension.AppSchema>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.AppSchema>;
+  }
+  async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
+    return { remainingSpace: 0, totalSpace: 0, id: "", user: 0, enableCloud: false } as cloudExtension.ServiceInfo;
+  }
+  async connectAssetLoader(bundleName: string, dbInfo: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+}
+```
 
 ### unsubscribe
 
-unsubscribe(unsubscribeInfo: Record&lt;string, Array&lt;string&gt;&gt;): Promise&lt;number&gt;
+ArkTS-Dyn: unsubscribe(unsubscribeInfo: Record&lt;string, Array&lt;string&gt;&gt;): Promise&lt;number&gt;
+
+ArkTS-Sta: unsubscribe(unsubscribeInfo: Record&lt;string, Array&lt;string&gt;&gt;): Promise&lt;int&gt;
 
 取消订阅云中的数据变更。使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -949,7 +1945,11 @@ unsubscribe(unsubscribeInfo: Record&lt;string, Array&lt;string&gt;&gt;): Promise
 
 | 类型                  | 说明                                    |
 | --------------------- | --------------------------------------- |
-| Promise&lt;number&gt; | Promise对象，返回取消订阅结果的错误码。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br/>ArkTS-Sta: Promise&lt;int&gt; | Promise对象，返回取消订阅结果的错误码。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
 
 ```ts
 class MyCloudService implements cloudExtension.CloudService {
@@ -964,6 +1964,49 @@ class MyCloudService implements cloudExtension.CloudService {
 }
 ```
 
+ArkTS-Sta示例：
+
+```ts
+import rpc from '@ohos.rpc';
+import cloudExtension from '@ohos.data.cloudExtension';
+class EmptyRemoteObj extends rpc.RemoteObject {
+  constructor() {
+    super("EmptyRemoteObj");
+  }
+}
+export default class MyCloudService implements cloudExtension.CloudService {
+  constructor() {
+  }
+  // ...
+  async unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int> {
+    console.info(`unsubscribe`);
+    // ...
+    return cloudExtension.ErrorCode.SUCCESS;
+  }
+  async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new EmptyRemoteObj();
+  }
+  async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
+    return {};
+  }
+  async getAppSchema(bundleName: string): Promise<cloudExtension.Result<cloudExtension.AppSchema>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.AppSchema>;
+  }
+  async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
+    return { remainingSpace: 0, totalSpace: 0, id: "", user: 0, enableCloud: false } as cloudExtension.ServiceInfo;
+  }
+  async connectAssetLoader(bundleName: string, dbInfo: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: long): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.SubscribeInfo>;
+  }
+}
+```
+
 ### connectDB
 
  connectDB(bundleName: string, database: Database): Promise&lt;rpc.RemoteObject&gt;
@@ -971,6 +2014,10 @@ class MyCloudService implements cloudExtension.CloudService {
 系统内部通过该接口获取[CloudDB](#clouddb)的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象，可以通过[createCloudDBStub](#cloudextensioncreateclouddbstub)接口进行创建，使用Promise异步回调。
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -985,6 +2032,10 @@ class MyCloudService implements cloudExtension.CloudService {
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Promise&lt;[rpc.RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)&gt; | Promise对象，返回[CloudDB](#clouddb)的[RemoteObject](../apis-ipc-kit/js-apis-rpc.md#remoteobject)对象。 |
 
+**示例：**
+
+ArkTS-Dyn示例：
+
 ```ts
 import { rpc } from '@kit.IPCKit';
 
@@ -998,6 +2049,71 @@ class MyCloudService implements cloudExtension.CloudService {
   async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
     console.info(`connect DB, bundleName: ${bundleName}`);
     return cloudExtension.createCloudDBStub(new MyCloudDB());
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import rpc from '@ohos.rpc';
+import cloudExtension from '@ohos.data.cloudExtension';
+
+class MyCloudDB implements cloudExtension.CloudDB {
+  // ...
+  async generateId(count: int): Promise<cloudExtension.Result<string[]>> {
+    return { code: 0, value: [] };
+  }
+  async query(table: string, fields: string[], queryCount: int, queryCursor: string): Promise<cloudExtension.Result<cloudExtension.CloudData>> {
+    return { code: 0, value: { values: [], hasMore: false, nextCursor: "" } as cloudExtension.CloudData };
+  }
+  async insert(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async update(table: string, values: Array<Record<string, cloudExtension.CloudType>>, extValues: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async delete(table: string, values: Array<Record<string, cloudExtension.CloudType>>): Promise<Array<cloudExtension.Result<Record<string, cloudExtension.CloudType>>>> {
+    return [{ code: 0, value: {} } as cloudExtension.Result<Record<string, cloudExtension.CloudType>>];
+  }
+  async lock(): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+  async unlock(sessionId: int): Promise<cloudExtension.Result<boolean>> {
+    return { code: 0, value: true };
+  }
+  async heartbeat(sessionId: int): Promise<cloudExtension.Result<cloudExtension.LockInfo>> {
+    return { code: 0, value: { lockId: 0, interval: 0 } };
+  }
+}
+
+export default class MyCloudService implements cloudExtension.CloudService {
+  constructor() {}
+  // ...
+  async connectDB(bundleName: string, database: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    console.info(`connect DB, bundleName: ${bundleName}`);
+    return cloudExtension.createCloudDBStub(new MyCloudDB());
+  }
+  async unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<int> {
+    return 0;
+  }
+  async getAppBriefInfo(): Promise<Record<string, cloudExtension.AppBriefInfo>> {
+    return {};
+  }
+  async getAppSchema(bundleName: string): Promise<cloudExtension.Result<cloudExtension.AppSchema>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.AppSchema>;
+  }
+  async getServiceInfo(): Promise<cloudExtension.ServiceInfo> {
+    return { remainingSpace: 0, totalSpace: 0, id: "", user: 0, enableCloud: false } as cloudExtension.ServiceInfo;
+  }
+  async connectAssetLoader(bundleName: string, dbInfo: cloudExtension.Database): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async connectShareCenter(userId: int, bundleName: string): Promise<rpc.RemoteObject> {
+    return new rpc.RemoteObject('');
+  }
+  async subscribe(subInfo: Record<string, Array<cloudExtension.Database>>, expirationTime: long): Promise<cloudExtension.Result<cloudExtension.SubscribeInfo>> {
+    return { code: 0 } as cloudExtension.Result<cloudExtension.SubscribeInfo>;
   }
 }
 ```
