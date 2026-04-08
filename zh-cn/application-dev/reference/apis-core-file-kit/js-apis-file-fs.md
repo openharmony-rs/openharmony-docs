@@ -3196,7 +3196,7 @@ listFileExt(path: string, options?: ListFileExtOptions): Promise&lt;string[]&gt;
 
 可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以"/"开头。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -3213,7 +3213,7 @@ listFileExt(path: string, options?: ListFileExtOptions): Promise&lt;string[]&gt;
 
 | 类型 | 说明 |
 | ---- | ---- |
-| Promise&lt;string[]&gt; | Promise对象。返回文件名数组。 |
+| Promise&lt;string[]&gt; | Promise对象，返回文件名数组。 |
 
 **错误码：**
 
@@ -3231,6 +3231,7 @@ listFileExt(path: string, options?: ListFileExtOptions): Promise&lt;string[]&gt;
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo, ListFileExtOptions, FileFilter } from '@kit.CoreFileKit';
+
 let filter: FileFilter = {
   filter: (name: string): boolean => {
     return name.endsWith('.txt');
@@ -3259,7 +3260,7 @@ listFileExtSync(path: string, options?: ListFileExtOptions): string[]
 
 可通过配置options中recursion参数实现递归列出所有文件的相对路径，相对路径以"/"开头。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -3294,6 +3295,7 @@ listFileExtSync(path: string, options?: ListFileExtOptions): string[]
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo, ListFileExtOptions, FileFilter } from '@kit.CoreFileKit';
+
 let filter: FileFilter = {
   filter: (name: string): boolean => {
     return name.endsWith('.txt');
@@ -6239,17 +6241,33 @@ open接口flags参数常量。文件打开标签。
 
 ## FileFilter
 
-文件名过滤器接口，支持listFileExt接口使用。可通过该接口自定义文件名过滤规则。
+文件名过滤器接口，可通过该接口自定义文件名过滤规则。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-| 名称 | 类型 | 只读 | 可选 | 说明 |
-| ------ | ------ | ---- | ---- | ----- |
-| filter | (name: string) => boolean | 否 | 否 | 过滤函数，根据文件名判断是否应包含在文件列表中。返回true表示包含，false表示排除。<br>**说明**：该函数调用频率较高，请避免执行耗时操作，如文件I/O、网络请求等。 |
+### filter
+
+filter(name: string): boolean
+
+过滤函数，判断指定文件名是否应包含在返回的文件列表中。返回true表示包含，false表示排除。
+
+**说明**：该函数调用频率较高，请避免执行耗时操作，如文件I/O、网络请求等。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ------ | ---- | ---- |
+| name | string | 是 | 待过滤的文件名。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 返回true表示包含该文件，false表示排除。 |
 
 ## Filter<sup>10+</sup>
 
@@ -6376,9 +6394,9 @@ open接口flags参数常量。文件打开标签。
 
 ## ListFileExtOptions
 
-可选项类型，支持listFileExt接口使用自定义过滤规则。
+可选项类型，支持listFileExt接口使用。
 
-**起始版本：** 26.0.0
+**起始版本**：26.0.0
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -6386,9 +6404,9 @@ open接口flags参数常量。文件打开标签。
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | ------ | ------ | ---- | ---- | ----- |
-| recursion | boolean | 否 | 是 | 是否递归子目录下文件名。可选，默认为false。当recursion为false时，返回当前目录下满足过滤要求的文件名及目录名。当recursion为true时，返回此目录下所有满足过滤要求的文件的相对路径（以/开头）。 |
-| listNum | number | 否 | 是 | 列出文件名数量。可选，当设置0时，列出所有文件，默认为0。 |
-| fileFilter | [FileFilter](#filefilter) | 否 | 是 | 文件名过滤器接口。可选，设置自定义文件名过滤规则。 |
+| recursion | boolean | 否 | 是 | 是否递归子目录下的文件名，默认为false。<br>true：返回该目录下所有符合过滤条件的文件的相对路径（以/开头）。<br>false：返回当前目录下满足过滤要求的文件名及目录名。 |
+| listNum | number | 否 | 是 | 列出文件名数量，默认为0，表示列出所有文件。 |
+| fileFilter | [FileFilter](#filefilter) | 否 | 是 | 自定义文件名过滤的规则。 |
 
 ## ListFileOptions<sup>11+</sup>
 
