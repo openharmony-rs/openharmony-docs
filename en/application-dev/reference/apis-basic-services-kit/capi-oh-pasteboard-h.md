@@ -219,7 +219,7 @@ Defines a callback to be invoked to obtain the progress information when the def
 
 | Name| Description|
 | -- | -- |
-| [Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)* progressInfo | A struct for the progress information. This information is reported only when [Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md) is set to **NONE**.|
+| [Pasteboard_ProgressInfo](capi-pasteboard-progressinfo.md)* progressInfo | A struct for the progress information. This information is reported only when [Pasteboard_ProgressIndicator](#pasteboard_progressindicator) is set to **PASTEBOARD_NONE**.|
 
 ### Pasteboard_Notify()
 
