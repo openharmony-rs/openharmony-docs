@@ -148,7 +148,7 @@ setProperties(records: Record\<string, string \| null>): Promise\<void>
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
-| 7600202  | Unsupported metadata. Possible causes: Unsupported metadata type|
+| 7600202  | Unsupported metadata. Possible causes: unsupported metadata type. |
 
 **示例：**
 
