@@ -537,7 +537,8 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 
 **描述**
 
-设置录屏屏幕数据旋转。<br> 调用该方法可以设置录屏屏幕数据是否旋转，当canvasRotation为true时，打开录屏屏幕数据旋转功能，录制的屏幕数据保持正向。<br> 默认为false。
+设置录屏屏幕数据旋转。<br> 调用该方法可以设置录屏屏幕数据是否旋转，当canvasRotation为true时，打开录屏屏幕数据旋转功能，录制的屏幕数据保持正向。<br> 默认为false。<br>
+从6.0版本开始支持区域旋转录屏。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
@@ -555,6 +556,10 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 | 类型 | 说明 |
 | -- | -- |
 | [OH_AVSCREEN_CAPTURE_ErrCode](capi-native-avscreen-capture-errors-h.md#oh_avscreen_capture_errcode) | AV_SCREEN_CAPTURE_ERR_OK：执行成功。<br>         AV_SCREEN_CAPTURE_ERR_INVALID_VAL：输入参数capture为空指针。<br>         AV_SCREEN_CAPTURE_ERR_UNSUPPORT（API version 20新增）：设备不支持该操作。<br>         AV_SCREEN_CAPTURE_ERR_OPERATE_NOT_PERMIT：不允许操作，设置录屏屏幕数据旋转失败。 |
+
+>  **说明：**
+>
+>  - 在MateBook Fold折叠电脑5.0版本上不支持录屏屏幕数据旋转功能。
 
 ### OH_AVScreenCapture_CreateContentFilter()
 
