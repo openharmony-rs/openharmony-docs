@@ -789,7 +789,7 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 
 ### 筛选特定MIME类型的安全解码器（DRM播放场景）
 
-在处理受数字版权管理 (DRM) 保护的加密媒体资源时，可以使用支持安全链路的“安全解码器”。
+在处理受数字版权管理保护的DRM媒体资源时，可以使用支持安全链路的“安全解码器”。
 
 开发者可以通过获取解码器列表，并结合MIME类型通过接口OH_AVCapability_IsSecure查询解码器类型，精准筛选出符合要求的安全解码器。
 

@@ -257,7 +257,7 @@ bool OH_AVCapability_IsSecure(OH_AVCapability *capability)
 
 **描述**
 
-检查能力实例描述了安全编解码器，是否支持处理加密资源。
+检查该能力实例是否描述了一个支持处理DRM资源的安全解码器。
 
 **系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
@@ -273,7 +273,7 @@ bool OH_AVCapability_IsSecure(OH_AVCapability *capability)
 
 | 类型 | 说明 |
 | -- | -- |
-| bool | 如果能力实例描述的是支持处理加密资源的安全编解码器，则返回true；如果能力实例描述的是不支持处理加密资源的非安全编解码器，则返回false。 |
+| bool | 如果能力实例描述的是支持处理DRM资源的安全解码器，则返回true；如果能力实例描述的是不支持处理DRM资源的非安全解码器，则返回false。 |
 
 ### OH_AVCapability_GetName()
 
