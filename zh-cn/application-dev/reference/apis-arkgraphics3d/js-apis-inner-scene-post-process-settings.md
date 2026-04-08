@@ -77,7 +77,7 @@ import { ToneMappingType, ToneMappingSettings, BloomSettings, PostProcessSetting
 
 ## PostProcessSettings
 
-后处理设置。
+后处理设置，用于配置相机渲染后的图像处理效果，包括色调映射、泛光、边缘暗角和色晕等，作为[Camera](js-apis-inner-scene-nodes.md#camera)的postProcess属性来使用。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
