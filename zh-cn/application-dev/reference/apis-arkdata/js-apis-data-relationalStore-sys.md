@@ -39,6 +39,7 @@ import { relationalStore } from '@kit.ArkData';
 | ---- | ---- | ---- | ---- | ---- |
 | isSearchable<sup>11+</sup> | boolean | 否 | 是 | 指定数据库是否支持搜索，true表示支持搜索，false表示不支持搜索，默认不支持搜索。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 11开始，支持此可选参数。<br/> |
 | haMode<sup>12+</sup> | [HAMode](#hamode12) | 否 | 是 | 指定关系型数据库存储的高可用性模式，SINGLE表示将数据写入单个关系型数据库存储，MAIN_REPLICA表示将数据写入主关系型数据库存储和副本关系型数据库存储，但不支持加密场景和attach场景。MAIN_REPLICA会导致数据库写入性能的劣化，默认为SINGLE。<br/>**系统接口：** 此接口为系统接口。<br/>从API version 12开始，支持此可选参数。<br/> |
+| autoCleanDeviceDirtyData<sup>26+</sup> | boolean | 否 | 是 | 指定是否自动清理其他设备删除后同步到本地的数据，true表示自动清理，false表示手动清理，默认自动清理。<br/>对于设备间协同的数据库，当其他设备删除的数据同步到本地时，可通过该参数设置本地是否自动清理。<br/>从API version 26开始，支持此可选参数。
 
 ## HAMode<sup>12+</sup>
 
@@ -1287,6 +1288,61 @@ async function updateDistributedInfoUpdate(store : relationalStore.RdbStore){
 }
 ```
 
+## cleanDeviceDirtyData<sup>26+</sup>
+
+cleanDeviceDirtyData(table: string, cursor?: number): Promise&lt;void&gt;
+
+清理其他设备删除的数据同步到本地后，未自动清理的数据。如果指定了游标，则清理游标大于对应cursor的数据，否则清理当前数据库表中所有逻辑删除数据。使用Promise异步回调。
+
+**模型约束：** 此接口仅在Stage模型下可用。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                               |
+| -------- | ----------------------------------------------------- | ---- | -------------------------------------------------- |
+| table     | string           | 是   | 表示当前数据库的表的名称。长度范围为1到256，只允许字母、数字和下划线。           |
+| cursor    | number           | 否   | 整数类型，表示数据游标，小于此游标的脏数据将被清理。当此参数不填时，清理当前表的所有脏数据。 |
+
+**返回值：**
+
+| 类型     | 说明                                              |
+| -------- | ------------------------------------------------- |
+| Promise\<void> | 无返回结果的Promise对象。        |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| **错误码ID** | **错误信息**     |
+|-----------|---------------|
+| 202       | Permission verification failed, application which is not a system application uses system API. |
+| 14800001  | Invalid arguments. Possible causes: 1. Parameter is out of valid range. |
+| 14800011  | The current operation failed because the database is corrupted. |
+| 14800014  | The target instance is already closed. |
+| 14800015  | The database does not respond. |
+| 14800021  | SQLite: Generic error. |
+| 14800024  | SQLite: The database file is locked. |
+| 14800043  | DB is not support this scenario. Possible causes: 1. DB type is not support; 2. Table type is not support; 3. This is a readonly db. |
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+if (store != undefined) {
+  try{
+    await store.cleanDeviceDirtyData('test_table', 100);
+    console.info('clean device dirty data succeeded');
+  } catch (err) {
+      console.error(`clean device dirty data failed, code is ${err.code},message is ${err.message}`);
+  };
+}
+```
+
 ## ResultSet
 
 提供通过查询数据库生成的数据库结果集的访问方法。结果集是指用户调用关系型数据库查询接口之后返回的结果集合，提供了多种灵活的数据访问方式，以便用户获取各项数据。
@@ -1426,6 +1482,8 @@ async function getFloat32ArrayExample(store : relationalStore.RdbStore) {
 | -------------- | ---- | ---------------------------------- |
 | ORIGIN      | '#_origin'     | 用于分布式数据库表对应log表查找或更新时指定数据来源的字段名。    |
 | ORIGIN_ORIDEVICE  | '#_ori_device' | 用于分布式数据库表对应log表查找或更新时指定数据产生者的设备id，该值传入若为空，则表示本地设备；若不为空，则表示其他组网设备。|
+| CURSOR_FIELD      | '#_cursor'     | 用于分布式数据库表对应log表cursor查找的字段名。    |
+| DELETED_FLAG_FIELD  | '#_deleted_flag' | 用于cursor查找的结果集返回时填充的字段，表示对端删除的数据，同步到本端后数据是否清理。返回的结果集中，该字段对应的value为1表示数据未清理，0表示数据已清理。|
 
 ## DistributedInfo<sup>24+</sup>
 
