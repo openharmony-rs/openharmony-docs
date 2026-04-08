@@ -2751,10 +2751,10 @@ hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is $
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |
 | vibrationEnabled | boolean | 否   |  否  | 表示是否开启振动。<br/> - true：开启。<br/> - false：关闭。 |
 | soundEnabled     | boolean | 否   |  否  | 表示是否开启响铃。<br/> - true：开启。<br/> - false：关闭。 |
-| lockScreenEnabled    | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
-| bannerEnabled     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
-| badgeNumberEnabled     | boolean | 否   |  是  | 表示是否开启通知角标数字展示。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
-| notificationEnabled     | boolean | 否   |  是  | 表示应用通知使能状态。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| lockScreenEnabled    | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| bannerEnabled     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| badgeNumberEnabled     | boolean | 否   |  是  | 表示是否开启通知角标数字展示。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| notificationEnabled     | boolean | 否   |  是  | 表示应用通知使能状态。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
 
 ## BundleOption
 
