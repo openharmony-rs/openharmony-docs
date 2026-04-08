@@ -144,8 +144,8 @@ enum Image_CropAndScaleStrategy
 
 | 枚举项 | 描述 |
 | -- | -- |
-| IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1 | 先裁剪，后缩放。 |
-| IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2 | 先缩放，后裁剪。 |
+| IMAGE_CROP_AND_SCALE_STRATEGY_SCALE_FIRST = 1 | 先缩放，后裁剪。 |
+| IMAGE_CROP_AND_SCALE_STRATEGY_CROP_FIRST = 2 | 先裁剪，后缩放。 |
 
 
 ## 函数说明
