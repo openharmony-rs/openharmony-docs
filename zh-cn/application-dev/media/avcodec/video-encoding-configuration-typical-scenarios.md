@@ -121,6 +121,55 @@ target_link_libraries(sample PUBLIC libnative_media_venc.so)
    如果需要适配网络波动，推荐结合采用[时域可分层视频编码](video-encoding-temporal-scalability.md)配置。
 
 
+从API版本26.0.0开始，在支持CBRHQ（高质量恒定码率模式）的平台下，推荐使用CBRHQ码控方式替代CBR（恒定码率）码控方式。如果配置了CBRHQ但是平台不支持，会自动使用CBR码控模式替代。
+
+以视频通话场景为例，典型分辨率的编码参数（以H.265为例）推荐如下：
+
+| 分辨率（px）    | 帧率（fps） | 码率（kbps）| 接入帧间隔（ms） | 码控模式 |
+| ------------------| -------- | -------- | ------ | ------ |
+| 1920x1080  | 30       | 1500     | -1 |  CBRHQ  |
+| 1280x720  | 30       | 1000     | -1 |  CBRHQ  |
+| 960x540  | 30       | 700    | -1 |  CBRHQ  |
+| 640x360  | 30       | 550     | -1 |  CBRHQ  |
+| 320x180  | 20       | 200     | -1 |  CBRHQ  |
+
+CBRHQ码控方式配置如下：
+
+```c++
+// 1. 创建AVFormat参数实例。
+OH_AVFormat *format = OH_AVFormat_Create();
+// 2. 填充编码参数键值对（以1080p@15fps SDR输入源为例）。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_WIDTH, 1080); // 必须配置，视频像素宽。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_HEIGHT, 1920); // 必须配置，视频像素高。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_PIXEL_FORMAT, AV_PIXEL_FORMAT_NV12); // 必须配置，视频源数据排布格式。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_RANGE_FLAG, 0); // VUI，视频YUV值域标志，0:limited range 1:full range。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_COLOR_PRIMARIES, OH_ColorPrimary::COLOR_PRIMARY_BT709); // VUI，视频源色域。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_TRANSFER_CHARACTERISTICS, OH_TransferCharacteristic::TRANSFER_CHARACTERISTIC_BT709); // VUI，OETF/EOTF曲线。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_MATRIX_COEFFICIENTS, OH_MatrixCoefficient::MATRIX_COEFFICIENT_BT709); // VUI，YUV和RGB转换矩阵。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_PROFILE, OH_HEVCProfile::HEVC_PROFILE_MAIN); // 视频编码器profile。
+OH_AVFormat_SetDoubleValue(format, OH_MD_KEY_FRAME_RATE, 15.0); // 必须配置，视频帧率。
+OH_AVFormat_SetIntValue(format, OH_MD_KEY_I_FRAME_INTERVAL,10000); // 必须配置，接入帧间隔，单位为ms。
+
+// 3. 查询CBRHQ支持情况选择合适的码控配置。
+OH_AVCapability *cap = OH_AVCodec_GetCapability(OH_AVCODEC_MIMETYPE_VIDEO_HEVC, true);
+if (cap == nullptr || !OH_AVCapability_IsEncoderBitrateModeSupported(cap, OH_BitrateMode::BITRATE_MODE_CBR_HIGH_QUALITY)) {
+    // 不支持CBRHQ，使用CBR代替。
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, OH_BitrateMode::BITRATE_MODE_CBR); // 必须配置，码控模式配置为CBR。
+} else {
+    // 支持CBRHQ，配置CBRHQ码控模式。
+    OH_AVFormat_SetIntValue(format, OH_MD_KEY_VIDEO_ENCODE_BITRATE_MODE, OH_BitrateMode::BITRATE_MODE_CBR_HIGH_QUALITY); // 必须配置，码控模式配置为CBRHQ。
+}
+OH_AVFormat_SetLongValue(format, OH_MD_KEY_BITRATE, 1520000); // 必须配置，设置码率，单位为bps。
+
+// 4. 配置视频编码器的编码参数。
+int32_t ret = OH_VideoEncoder_Configure(videoEnc, format);
+if (ret != AV_ERR_OK) {
+    // 异常处理。
+}
+// 5. 配置完成后销毁AVFormat实例。
+OH_AVFormat_Destroy(format);
+```
+
 ## 实时流媒体编码
 
 实时流媒体编码场景包括泛娱乐直播、游戏直播等对视频端到端时延要求不高的应用场景。
@@ -344,4 +393,4 @@ OH_AVFormat_Destroy(format);
 ## 注意事项
 
 本指南的编码建议，在实际应用中还需要结合业务具体情况进行优化。在确定的码率下，视频编码的画质会因为所编码的视频内容的时空域复杂度不同而有较大差异。一般而言，运动复杂，画面纹理丰富的视频内容，在码率不足时容易出现模糊或马赛克，此时需要配置较高码率。
- 
+
