@@ -4,13 +4,14 @@
 
 涉及活跃分支：
 
-> **说明**：确认活跃分支表示已知晓修改涉及的分支，并在对应分支上采用配套SDK进行了验证。
+> **说明：**
+> 确认活跃分支表示已知晓修改涉及的分支，并在对应分支上采用配套SDK进行了验证。
 
-（Y/N）master <br/>
-（Y/N）(master with sta) OpenHarmony_feature_sta_20260331 <br/>
-（Y/N）(API 24 Beta)  weekly_20260309 <br/>
-（Y/N）(API 23 Release)  OpenHarmony-6.1-Release <br/>
-（Y/N）(API 22 Release)  weekly_20251117
+- （Y/N）master <br/>
+- （Y/N）(master with sta) OpenHarmony_feature_sta_20260331 <br/>
+- （Y/N）(API 24 Beta)  weekly_20260309 <br/>
+- （Y/N）(API 23 Release)  OpenHarmony-6.1-Release <br/>
+- （Y/N）(API 22 Release)  weekly_20251117
 
 ## （必填）文档变更来源
 
@@ -22,11 +23,10 @@
   
 ## （必填）文档更新内容自检
 
-为确保文档合入质量，请遵循如下要求完成基础质量自检Checklist，**并在自检项后的括号内填写Y**：
+为确保文档合入质量，请遵循如下要求完成基础质量自检Checklist：
 
-- 文档中示例代码片段已经在IDE中自验证，确保编译通过，并在下方给出截图证明。（ ）
-- API的定义与使用方式与配套版本的SDK严格一致，无文档与SDK不一致问题。（ ）
-- 文档需完成[AI辅助工具DocLinter扫描](https://gitcode.com/openharmony/docs/wiki/HarmonyPilot-DocLinter_AI%E8%BE%85%E5%8A%A9%E5%86%99%E4%BD%9C%E6%8F%92%E4%BB%B6.md)并完成问题修改，并在此附加在线扫描报告的链接。
+- API的定义与使用方式与配套版本的SDK严格一致，无文档与SDK不一致问题。
+- 文档触发门禁时会同步触发文档规范性AI检查，需对所报问题逐一处理。
 
 ## （必填）示例代码编译通过截图证明（如涉及示例代码需提供）：
 
