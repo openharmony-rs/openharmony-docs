@@ -340,7 +340,7 @@ const descriptionOptions: update.DescriptionOptions = {
 
 updater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (err, info) => {
   console.info(`getNewVersionDescription info ${JSON.stringify(info)}`);
- 	console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
+  console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
 });
 ```
 
