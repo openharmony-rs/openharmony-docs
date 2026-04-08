@@ -297,41 +297,41 @@ on(type: 'play' | 'pause' | 'stop' | 'reset' | 'dataLoad' | 'finish' | 'volumeCh
 import { fileIo } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let audioPlayer: media.AudioPlayer = media.createAudioPlayer();  //创建一个音频播放实例。
-audioPlayer.on('dataLoad', () => {            //设置'dataLoad'事件回调，src属性设置成功后，触发此回调。
+let audioPlayer: media.AudioPlayer = media.createAudioPlayer();  // 创建一个音频播放实例。
+audioPlayer.on('dataLoad', () => {            // 设置'dataLoad'事件回调，src属性设置成功后，触发此回调。
   console.info('audio set source called');
-  audioPlayer.play();                       //开始播放，并触发'play'事件回调。
+  audioPlayer.play();                       // 开始播放，并触发'play'事件回调。
 });
-audioPlayer.on('play', () => {                //设置'play'事件回调。
+audioPlayer.on('play', () => {                // 设置'play'事件回调。
   console.info('audio play called');
-  audioPlayer.seek(30000);                  //调用seek方法，并触发'timeUpdate'事件回调。
+  audioPlayer.seek(30000);                  // 调用seek方法，并触发'timeUpdate'事件回调。
 });
-audioPlayer.on('pause', () => {               //设置'pause'事件回调。
+audioPlayer.on('pause', () => {               // 设置'pause'事件回调。
   console.info('audio pause called');
-  audioPlayer.stop();                       //停止播放，并触发'stop'事件回调。
+  audioPlayer.stop();                       // 停止播放，并触发'stop'事件回调。
 });
-audioPlayer.on('reset', () => {               //设置'reset'事件回调。
+audioPlayer.on('reset', () => {               // 设置'reset'事件回调。
   console.info('audio reset called');
-  audioPlayer.release();                    //释放播放实例资源。
+  audioPlayer.release();                    // 释放播放实例资源。
   audioPlayer = undefined;
 });
-audioPlayer.on('timeUpdate', (seekDoneTime: number) => {  //设置'timeUpdate'事件回调。
+audioPlayer.on('timeUpdate', (seekDoneTime: number) => {  // 设置'timeUpdate'事件回调。
   if (seekDoneTime == null) {
     console.error('Failed to seek');
     return;
   }
   console.info('Succeeded in seek, and seek time is ' + seekDoneTime);
-  audioPlayer.setVolume(0.5);                //设置音量为50%，并触发'volumeChange'事件回调。
+  audioPlayer.setVolume(0.5);                // 设置音量为50%，并触发'volumeChange'事件回调。
 });
-audioPlayer.on('volumeChange', () => {         //设置'volumeChange'事件回调。
+audioPlayer.on('volumeChange', () => {         // 设置'volumeChange'事件回调。
   console.info('audio volumeChange called');
-  audioPlayer.pause();                       //暂停播放，并触发'pause'事件回调。
+  audioPlayer.pause();                       // 暂停播放，并触发'pause'事件回调。
 });
-audioPlayer.on('finish', () => {               //设置'finish'事件回调。
+audioPlayer.on('finish', () => {               // 设置'finish'事件回调。
   console.info('audio play finish');
-  audioPlayer.stop();                        //停止播放，并触发'stop'事件回调。
+  audioPlayer.stop();                        // 停止播放，并触发'stop'事件回调。
 });
-audioPlayer.on('error', (error: BusinessError) => {  //设置'error'事件回调。
+audioPlayer.on('error', (error: BusinessError) => {  // 设置'error'事件回调。
   console.error(`audio error called, error: ${error}`);
 });
 
