@@ -50,9 +50,11 @@ fail返回错误代码：
 | 300 | 出现I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
 export default {    
   move() {        
     file.move({            
@@ -68,6 +70,67 @@ export default {
   }
 }
 ```
+
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="move" class="button" onclick="move"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
+export default {
+  move() {
+    file.move({
+      srcUri: 'internal://app/myfiles1',
+      dstUri: 'internal://app/myfiles2',
+      success: function(uri) {
+        console.info('call success callback success');
+      },
+      fail: function(data, code) {
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);
+      },
+    });
+  }
+}
+```
+
 
 ## file.copy
 
@@ -99,9 +162,71 @@ fail返回错误代码：
 | 300 | 出现I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
+export default {    
+  copy() {        
+    file.copy({            
+      srcUri: 'internal://app/file.txt',            
+      dstUri: 'internal://app/file_copy.txt',            
+      success: function(uri) {                
+        console.info('call success callback success');            
+      },            
+      fail: function(data, code) {                
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
+      },
+    });    
+  }
+}
+```
+
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="copy" class="button" onclick="copy"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
 export default {    
   copy() {        
     file.copy({            
@@ -163,9 +288,70 @@ fail返回错误代码：
 | 300 | 出现I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
+export default {    
+  list() {        
+    file.list({            
+      uri: 'internal://app/pic',            
+      success: function(data) {                
+        console.info(JSON.stringify(data.fileList));            
+      },            
+      fail: function(data, code) {                
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
+      },        
+    });    
+  }
+}
+```
+
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="list" class="button" onclick="list"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
 export default {    
   list() {        
     file.list({            
@@ -222,9 +408,70 @@ fail返回错误代码：
 | 300 | 出现I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
+export default {    
+  get() {        
+    file.get({            
+      uri: 'internal://app/file',            
+      success: function(data) {                
+        console.info(data.uri);            
+      },            
+      fail: function(data, code) {                
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
+      },
+    });    
+  }
+}
+```
+
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="get" class="button" onclick="get"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
 export default {    
   get() {        
     file.get({            
@@ -270,9 +517,70 @@ fail返回错误代码：
 | 300 | I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
+export default {    
+  delete() {        
+    file.delete({            
+      uri: 'internal://app/my_file',            
+      success: function() {                
+        console.info('call delete success.');            
+      },            
+      fail: function(data, code) {                
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
+      },
+    });    
+  }
+}
+```
+
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="get" class="button" onclick="get"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
 export default {    
   delete() {        
     file.delete({            
@@ -320,9 +628,71 @@ fail返回错误代码：
 | 202 | 参数错误。 |
 | 300 | I/O错误。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
+export default {    
+  writeText() {        
+    file.writeText({            
+      uri: 'internal://app/test.txt',            
+      text: 'Text that just for test.',            
+      success: function() {                
+        console.info('call writeText success.');            
+      },            
+      fail: function(data, code) {                
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
+      },        
+    });    
+  }
+}
+```
+
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="writeText" class="button" onclick="writeText"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
 export default {    
   writeText() {        
     file.writeText({            
@@ -371,9 +741,71 @@ fail返回错误代码：
 | 202 | 出现参数错误。 |
 | 300 | 出现I/O错误。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
+export default {    
+  writeArrayBuffer() {       
+    file.writeArrayBuffer({           
+      uri: 'internal://app/test',           
+      buffer: new Uint8Array(8),// buffer为Uint8Array类型
+      success: function() {                
+        console.info('call writeArrayBuffer success.');            
+      },           
+      fail: function(data, code) {                
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
+      },
+    });    
+  }
+}
+```
+
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="writeArrayBuffer" class="button" onclick="writeArrayBuffer"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
 export default {    
   writeArrayBuffer() {       
     file.writeArrayBuffer({           
@@ -430,9 +862,70 @@ fail返回错误代码：
 | 301 | 文件或目录不存在。 |
 | 302 | 要读取的文件内容超过4KB。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
+export default {    
+  readText() {        
+    file.readText({            
+      uri: 'internal://app/text.txt',            
+      success: function(data) {                
+        console.info('call readText success: ' + data.text);            
+      },            
+      fail: function(data, code) {                
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
+      },        
+    });    
+  }
+}
+```
+
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="readText" class="button" onclick="readText"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
 export default {    
   readText() {        
     file.readText({            
@@ -486,9 +979,72 @@ fail返回错误代码：
 | 300 | 出现I/O错误。 |
 | 301 | 文件或目录不存在。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
+export default {    
+  readArrayBuffer() {        
+    file.readArrayBuffer({            
+      uri: 'internal://app/test',            
+      position: 10,            
+      length: 200,            
+      success: function(data) {                
+        console.info('call readArrayBuffer success: ' + data.buffer);            
+      },            
+      fail: function(data, code) {                
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
+      },
+    });    
+  }
+}
+```
+
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="readArrayBuffer" class="button" onclick="readArrayBuffer"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
 export default {    
   readArrayBuffer() {        
     file.readArrayBuffer({            
@@ -536,9 +1092,70 @@ fail返回错误代码：
 | 300 | 出现I/O&nbsp;错误。 |
 | 301 | 文件或目录不存在。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
+export default {    
+  access() {        
+    file.access({            
+      uri: 'internal://app/test',            
+      success: function() {                
+        console.info('call access success.');            
+      },            
+      fail: function(data, code) {                
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
+      },        
+    });    
+  }
+}
+```
+
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="access" class="button" onclick="access"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
 export default {    
   access() {        
     file.access({            
@@ -584,9 +1201,11 @@ fail返回错误代码：
 | 202 | 出现参数错误。 |
 | 300 | 出现I/O&nbsp;错误。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
 export default {    
   mkdir() {        
     file.mkdir({            
@@ -602,6 +1221,64 @@ export default {
 }
 ```
 
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="mkdir" class="button" onclick="mkdir"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
+export default {    
+  mkdir() {        
+    file.mkdir({            
+      uri: 'internal://app/test_directory',            
+      success: function() {                
+        console.info('call mkdir success.');            
+      },            
+      fail: function(data, code) {                
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
+      },
+    });    
+  }
+}
+```
 
 ## file.rmdir
 
@@ -633,9 +1310,70 @@ fail返回错误代码：
 | 300 | 出现I/O&nbsp;错误。 |
 | 301 | 文件或目录不存在。 |
 
-**示例：**
+**ArkTS示例：**
 
 ```ts
+import file from '@system.file';
+
+export default {    
+  rmdir() {        
+    file.rmdir({            
+      uri: 'internal://app/test_directory',            
+      success: function() {                
+        console.info('call rmdir success.');            
+      },            
+      fail: function(data, code) {                
+        console.error('call fail callback fail, code: ' + code + ', data: ' + data);            
+      },
+    });    
+  }
+}
+```
+
+**JS示例：**
+
+```xml
+<!-- xxx.hml -->
+<div class="container">
+  <text class="title" style="font-size: 30px;">test</text>
+  <input type="button" value="rmdir" class="button" onclick="rmdir"></input>
+</div>
+```
+
+```css
+/* xxx.css */
+.container {
+  display: flex;
+  justify-content: column;
+  align-items: center;
+  left: 0px;
+  top: 0px;
+  width: 454px;
+  height: 454px;
+}
+
+.title {
+  font-size: 100px;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+}
+
+.button {
+  font-size: 30px;
+  text-align: center;
+  width: 250px;
+  height: 60px;
+  background-color: #0078D7;
+  color: white;
+  border-radius: 5px;
+}
+```
+
+```js
+// xxx.js
+import file from '@system.file';
+
 export default {    
   rmdir() {        
     file.rmdir({            
