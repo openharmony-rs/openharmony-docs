@@ -4619,7 +4619,7 @@ contact.getContactList({ uiContext: ctx, selectionFilter: filter})
 
 ## FilterClause<sup>15+</sup>
 
-联系人过滤条件。多个筛选条件之间是"或者"的关系，如果参数是数组类型，数组最多只能包含3个元素。
+联系人过滤条件。多个筛选条件之间是“或者”的关系，如果参数是数组类型，数组最多只能包含3个元素。
 
 **原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。
 
@@ -4664,7 +4664,7 @@ contact.getContactList({ uiContext: ctx, selectionFilter: filter})
 
 ## DataFilter<sup>15+</sup>
 
-联系人数据过滤项。参数之间的关系为“或”，Array的最大长度为3。
+联系人数据过滤项。
 
 **原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。
 
@@ -4673,7 +4673,7 @@ contact.getContactList({ uiContext: ctx, selectionFilter: filter})
 |                名称               |                  类型                 |  只读  | 可选   |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
 | field         | [DataField](#datafield15) | 否  | 否  | 联系人数据字段。     |
-| options         | Array\<[FilterOptions](#filteroptions15)> | 否  | 否  | 过滤参数。     |
+| options         | Array\<[FilterOptions](#filteroptions15)> | 否  | 否  | 联系人过滤参数，数组中多个FilterOptions之间是“或”的关系，数组的最大长度为3。     |
 
 ## DataField<sup>15+</sup>
 
