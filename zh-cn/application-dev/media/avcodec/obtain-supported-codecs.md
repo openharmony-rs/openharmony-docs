@@ -787,18 +787,18 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
 }
 ```
 
-### 筛选特定MIME类型的安全编解码器（DRM播放场景）
+### 筛选特定MIME类型的安全解码器（DRM播放场景）
 
-在处理受数字版权管理 (DRM) 保护的加密媒体资源时，普通的编解码器无法进行处理，必须使用支持安全链路的“安全编解码器”。
+在处理受数字版权管理 (DRM) 保护的加密媒体资源时，可以使用支持安全链路的“安全解码器”。
 
-开发者可以通过获取编解码器列表，并结合MIME类型比对与安全特性查询，精准筛选出符合要求的安全解码器。
+开发者可以通过获取解码器列表，并结合MIME类型通过接口OH_AVCapability_IsSecure查询解码器类型，精准筛选出符合要求的安全解码器。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
 | OH_AVCodec_GetCapabilityList              | 获取指定类型（如视频解码器）的所有编解码能力实例列表。 |
-| OH_AVCapability_GetMimeType               | 获取该能力实例对应的 MIME 类型字符串。 |
-| OH_AVCapability_CheckMimeType             | 校验该能力实例的 MIME 类型是否与目标类型一致。 |
-| OH_AVCapability_IsSecure                  | 检查该能力实例是否描述了一个支持处理加密资源的安全编解码器。 |
+| OH_AVCapability_GetMimeType               | 获取该能力实例对应的MIME类型字符串。 |
+| OH_AVCapability_CheckMimeType             | 校验该能力实例的MIME类型是否与目标类型一致。 |
+| OH_AVCapability_IsSecure                  | 检查该能力实例是否描述了一个支持处理DRM资源的安全解码器。 |
 
 查找并创建 H.264 安全硬件解码器的示例代码如下：
 
