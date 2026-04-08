@@ -4086,7 +4086,7 @@ ArkTS-Dyn: enableEventPassthrough(enabled: boolean, eventType: RawInputEventType
 
 ArkTS-Sta: enableEventPassthrough(enabled: boolean | undefined, eventType: RawInputEventType): void
 
-启用或禁用事件直通。事件直通表示在事件分发过程中，不经过重采样直接下发给组件。未通过该接口设置时，默认禁用事件直通。
+启用或禁用事件直通。事件直通表示在事件分发过程中，不经过[重采样](../../ui/arkts-interaction-development-guide-touch-screen.md#重采样与历史点)直接下发给组件。未通过该接口设置时，默认禁用事件直通。
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
