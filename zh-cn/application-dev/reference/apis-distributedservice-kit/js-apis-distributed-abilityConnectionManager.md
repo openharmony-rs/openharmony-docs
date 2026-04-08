@@ -1519,17 +1519,9 @@ import abilityConnectionManager from '@ohos.distributedsched.abilityConnectionMa
 import hilog from '@ohos.hilog';
 import util from '@ohos.util';
 
-<<<<<<< HEAD
-  let sessionId = 100;
-  abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
-  }).catch(() => {
-    hilog.error(0x0000, 'testTag', "sendMessage failed");
-  })
-  ```
-=======
 let textEncoder = util.TextEncoder.create("utf-8");
-const arrayBuffer  = textEncoder.encodeInto("data send success");
+
+const arrayBuffer = textEncoder.encodeInto("data send success");
 
 let sessionId = 100;
 abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
@@ -1538,7 +1530,6 @@ abilityConnectionManager.sendData(sessionId, arrayBuffer.buffer).then(() => {
   hilog.info(0x0000, 'testTag', "sendMessage failed");
 })
 ```
->>>>>>> 7da8fd0cae7 (sync PR #125733 changes: update API docs for ArkTS-Dyn and ArkTS-Sta modes)
 
 ## PeerInfo
 
