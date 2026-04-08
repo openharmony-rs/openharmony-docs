@@ -43,10 +43,6 @@ getDevices(): Array&lt;Readonly&lt;USBDevice&gt;&gt;
 
 > **说明：**
 >
-> 当USB服务正常运行但无设备接入时，那么将会返回一个空的列表，这是正常情况，表示调用成功但当前没有连接的USB设备。
->
-> 在USB主机模式未开启、USB服务未正确初始化、USB服务连接失败（如开发者模式关闭）、权限不足或其它系统错误时，接口会返回`undefined`，注意需要对接口返回值做判空处理。
->
 > 三方应用没有权限获取serial字段读取设备序列号，需要通过[requestRight](#usbmanagerrequestright)申请权限后，自行发起控制传输获取。
 
 **系统能力：**  SystemCapability.USB.USBManager
@@ -877,7 +873,7 @@ usbCancelTransfer(transfer: UsbDataTransferParams): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，只需要填充[USBDevicePipe](#usbdevicepipe)和usbendpoint即可。|
+| transfer | [UsbDataTransferParams](#usbdatatransferparams18) | 是 | 在取消传输的接口中，只需要填充[USBDevicePipe](#usbdevicepipe)和[USBEndpoint](#usbendpoint)即可。|
 
 **错误码：**
 
