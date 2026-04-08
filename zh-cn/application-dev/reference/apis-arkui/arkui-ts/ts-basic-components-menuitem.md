@@ -14,7 +14,7 @@
 
 ## 接口
 
-MenuItem(value?: MenuItemOptions | CustomBuilder)
+MenuItem(value?: MenuItemOptions | CustomBuilder, content_?: CustomBuilder)
 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -24,11 +24,12 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
-| 参数名 | 类型                                                         | 必填 | 说明                         |
-| ------ | ------------------------------------------------------------ | ---- | ---------------------------- |
-| value  | [MenuItemOptions](#menuitemoptions对象说明)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 否   | 包含设置MenuItem的各项信息。 |
+| 参数名   | 类型                                                         | 必填 | 说明                                                         |
+| -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
+| value    | [MenuItemOptions](#menuitemoptions对象说明)&nbsp;\|&nbsp;[CustomBuilder](ts-types.md#custombuilder8) | 否   | 包含设置MenuItem的各项信息。 |
+| content_ | [CustomBuilder](ts-types.md#custombuilder8)                  | 否   | 菜单项的自定义内容构建器。 |
 
 ## MenuItemOptions对象说明
 
@@ -53,7 +54,7 @@ MenuItem(value?: MenuItemOptions | CustomBuilder)
 
 ArkTS-Dyn: selected(value: boolean)
 
-ArkTS-Sta: selected(value: boolean | undefined | Bindable\<boolean>)
+ArkTS-Sta: selected(value: boolean | undefined | Bindable\<boolean\>)
 
 设置菜单项是否选中。
 
@@ -72,7 +73,7 @@ ArkTS-Sta: selected(value: boolean | undefined | Bindable\<boolean>)
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
 | ------ | ------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined \| Bindable\<boolean> | 是   | 菜单项是否选中。<br />默认值：false<br/>值为true时，菜单项被选中。值为false时，菜单项不被选中。 |
+| value  | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined \| Bindable\<boolean\> | 是   | 菜单项是否选中。<br />默认值：false<br/>值为true时，菜单项被选中。值为false时，菜单项不被选中。 |
 
 ### selectIcon
 
@@ -94,7 +95,7 @@ ArkTS-Sta: selectIcon(value: boolean | ResourceStr | SymbolGlyphModifier | undef
 
 | 参数名 | 类型                                                         | 必填 | 说明                                                         |
 | ------ | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)<sup>12+</sup> <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)> \| undefined | 是   | 菜单项被选中时，是否显示被选中的图标。<br/>默认值：false<br/>true：显示默认的对勾图标。<br/>false：不显示图标。<br/>ResourceStr：显示指定的图标。<br/>SymbolGlyphModifier：显示指定的HMSymbol图标。 |
+| value  | ArkTS-Dyn: boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)<sup>10+</sup>\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md)<sup>12+</sup> <br/>ArkTS-Sta: boolean&nbsp;\|&nbsp;[ResourceStr](ts-types.md#resourcestr)\|&nbsp;[SymbolGlyphModifier](ts-universal-attributes-attribute-modifier.md) \| undefined | 是   | 菜单项被选中时，是否显示被选中的图标。<br/>默认值：false<br/>true：显示默认的对勾图标。<br/>false：不显示图标。<br/>ResourceStr：显示指定的图标。<br/>SymbolGlyphModifier：显示指定的HMSymbol图标。 |
 
 ### contentFont<sup>10+</sup>
 
@@ -178,11 +179,29 @@ ArkTS-Sta: labelFontColor(value: ResourceColor | undefined)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                                       | 必填 | 说明                         |
 | ------ | ------------------------------------------ | ---- | ---------------------------- |
 | value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor) <br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined| 是   | 菜单项中标签信息的字体颜色。<br />默认值：'#99000000' |
+
+### attributeModifier<sup>23+</sup>
+
+attributeModifier(modifier: AttributeModifier\<MenuItemAttribute\> | AttributeModifier\<CommonMethod\> | undefined): this
+
+设置MenuItem组件的属性修改器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                                                                              | 必填 | 说明                       |
+| --------- | ------------------------------------------------------------------------------------------------- | ---- | -------------------------- |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[MenuItemAttribute](#menuitemattribute)\>&nbsp;\|&nbsp;[AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[CommonMethod](ts-component-common-method.md)\>&nbsp;\|&nbsp;undefined | 是   | MenuItem组件的属性修改器。 |
 
 ## 事件
 
@@ -200,11 +219,35 @@ onChange(callback: (selected: boolean) => void)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
 | selected | boolean | 是   | 选中状态发生变化时，触发该回调。<br />返回值为true时，表示已选中，为false时，表示未选中。 |
+
+## MenuItemAttribute
+
+MenuItem组件的属性接口，用于配置MenuItem的各项属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+### attributeModifier
+
+attributeModifier(modifier: AttributeModifier\<MenuItemAttribute\> | AttributeModifier\<CommonMethod\> | undefined): this
+
+设置MenuItem组件的属性修改器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名    | 类型                                                                                              | 必填 | 说明                       |
+| --------- | ------------------------------------------------------------------------------------------------- | ---- | -------------------------- |
+| modifier  | [AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[MenuItemAttribute](#menuitemattribute)\>&nbsp;\|&nbsp;[AttributeModifier](ts-universal-attributes-attribute-modifier.md)\<[CommonMethod](ts-component-common-method.md)\>&nbsp;\|&nbsp;undefined | 是   | MenuItem组件的属性修改器。 |
 
 ## 示例
 

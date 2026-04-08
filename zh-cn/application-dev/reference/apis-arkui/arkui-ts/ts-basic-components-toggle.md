@@ -26,7 +26,7 @@ Toggle(options: ToggleOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型 | 必填   | 说明           |
 | ---- | ---------- | -----| -------------- |
@@ -69,23 +69,23 @@ Toggle的样式。
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称     | 说明                                                         |
-| -------- | ------------------------------------------------------------ |
-| Checkbox | 提供单选框样式。<br>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }。<br/>默认尺寸为：<br>{width:'20vp', height:'20vp'}。 |
-| Button   | 提供状态按钮样式。如子组件设置文本，文本内容将显示在按钮内。默认高度为28vp，宽度无默认值。 |
-| Switch   | 提供开关样式。<br>**说明：**<br/>[通用属性margin](ts-universal-attributes-size.md#margin)默认值为：<br>{<br/>&nbsp;top: '6px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '6px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br>{width:'36vp', height:'20vp'}。 |
+| 名称     | 值 | 说明                                                         |
+| -------- | ----- | ------------------------------------------------------------ |
+| Checkbox | 0 | 提供单选框样式。<br/>**说明：**<br/>API version 11开始，Checkbox默认样式由圆角方形变为圆形。<br/>[通用属性margin](ts-universal-attributes-size.md#margin)的默认值为：<br>{<br>&nbsp;top: '14px',<br>&nbsp;right: '14px',<br>&nbsp;bottom: '14px',<br>&nbsp;left: '14px'<br> }。<br/>默认尺寸为：<br>{width:'20vp', height:'20vp'}。 |
+| Button   | 1 | 提供状态按钮样式。如子组件设置文本，文本内容将显示在按钮内。默认高度为28vp，宽度无默认值。 |
+| Switch   | 2 | 提供开关样式。<br/>**说明：**<br/>[通用属性margin](ts-universal-attributes-size.md#margin)默认值为：<br>{<br/>&nbsp;top: '6px',<br/>&nbsp;right: '14px',<br/>&nbsp;bottom: '6px',<br/>&nbsp;left: '14px'<br/> }。<br/>默认尺寸为：<br>{width:'36vp', height:'20vp'}。 |
 
 ## 属性
 
 除支持[通用属性](ts-component-general-attributes.md)外，还支持以下属性：
 
-### selectedColor
+### selectedColor<sup>8+</sup>
+
+设置组件在打开状态下的背景颜色。
 
 ArkTS-Dyn: selectedColor(value: ResourceColor)
 
 ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
-
-设置组件在打开状态下的背景颜色。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -103,13 +103,13 @@ ArkTS-Sta: selectedColor(value: ResourceColor | undefined)
 | ------ | ------------------------------------------ | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [ResourceColor](ts-types.md#resourcecolor)<br/>ArkTS-Sta: [ResourceColor](ts-types.md#resourcecolor) \| undefined | 是   | 组件打开状态的背景颜色。<br/>默认值：<br/>当ToggleType为Switch时，默认值为`$r('sys.color.ohos_id_color_component_activated')`<br/>当ToggleType为Checkbox时，默认值为`$r('sys.color.ohos_id_color_component_activated')`<br/>当ToggleType为Button时，默认值为`$r('sys.color.ohos_id_color_component_activated')`混合`$r('sys.color.ohos_id_color_text_highlight_bg')`的透明度。 |
 
-### switchPointColor
+### switchPointColor<sup>8+</sup>
+
+设置Switch类型的圆形滑块颜色。仅对type为ToggleType.Switch生效。
 
 ArkTS-Dyn: switchPointColor(color: ResourceColor)
 
 ArkTS-Sta: switchPointColor(color: ResourceColor | undefined)
-
-设置Switch类型的圆形滑块颜色。仅对type为ToggleType.Switch生效。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -129,11 +129,11 @@ ArkTS-Sta: switchPointColor(color: ResourceColor | undefined)
 
 ### switchStyle<sup>12+</sup>
 
+设置Switch类型的样式。仅对type为ToggleType.Switch生效。
+
 ArkTS-Dyn: switchStyle(value: SwitchStyle)
 
 ArkTS-Sta: switchStyle(value: SwitchStyle | undefined)
-
-设置Switch类型的样式。仅对type为ToggleType.Switch生效。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -151,11 +151,11 @@ ArkTS-Sta: switchStyle(value: SwitchStyle | undefined)
 
 ### contentModifier<sup>12+</sup>
 
-ArkTS-Dyn: contentModifier(modifier: ContentModifier\<ToggleConfiguration>)
-
-ArkTS-Sta: contentModifier(modifier: ContentModifier\<ToggleConfiguration> | undefined)
-
 定制Toggle内容区的方法。
+
+ArkTS-Dyn: contentModifier(modifier: ContentModifier\<ToggleConfiguration\>)
+
+ArkTS-Sta: contentModifier(modifier: ContentModifier\<ToggleConfiguration\> | undefined)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -169,7 +169,7 @@ ArkTS-Sta: contentModifier(modifier: ContentModifier\<ToggleConfiguration> | und
 
 | 参数名 | 类型                                          | 必填 | 说明                                             |
 | ------ | --------------------------------------------- | ---- | ------------------------------------------------ |
-| modifier  | ArkTS-Dyn: [ContentModifier\<ToggleConfiguration>](#toggleconfiguration12对象说明)<br/>ArkTS-Sta: [ContentModifier\<ToggleConfiguration>](#toggleconfiguration12对象说明) \| undefined | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
+| modifier  | ArkTS-Dyn: [ContentModifier\<ToggleConfiguration\>](#toggleconfiguration12对象说明)<br/>ArkTS-Sta: [ContentModifier\<ToggleConfiguration\>](#toggleconfiguration12对象说明) \| undefined | 是   | 在Toggle组件上，定制内容区的方法。<br/>modifier：内容修改器，开发者需要自定义class实现ContentModifier接口。 |
 
 ## SwitchStyle<sup>12+</sup>对象说明
 
@@ -194,13 +194,13 @@ Switch类型的样式。
 
 除支持[通用事件](ts-component-general-events.md)外，还支持以下事件：
 
-### onChange
+### onChange<sup>8+</sup>
+
+开关状态切换时触发该事件。
 
 ArkTS-Dyn: onChange(callback:&nbsp;(isOn:&nbsp;boolean)&nbsp;=&gt;&nbsp;void)
 
 ArkTS-Sta: onChange(callback: ((isOn: boolean) => void) | undefined): this
-
-开关状态切换时触发该事件。
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
 
@@ -234,8 +234,7 @@ ArkTS-Sta: onChange(callback: ((isOn: boolean) => void) | undefined): this
 | ------ | ------ | ------ |-------------------------------- |-------------------------------- |
 | isOn   | boolean| 否  | 否 | 开关是否打开。<br/>默认值：false<br/>值为true时，开关打开。值为false时，开关关闭。 |
 | enabled | boolean | 否 | 否 | 是否可以切换状态。<br/>默认值：true<br/>值为true时，可以切换状态。值为false时，不可以切换状态。 |
-| triggerChange |Callback\<boolean>| 否 | 否 |触发switch选中状态变化。<br/>为true时，代表状态从关切换为开。false时，代表状态从开切换为关。 |
-
+| triggerChange |Callback\<boolean\>| 否 | 否 |触发switch选中状态变化。<br/>为true时，代表状态从关切换为开。false时，代表状态从开切换为关。 |
 
 ## 示例
 
