@@ -43,7 +43,7 @@ getTagInfo(): tag.TagInfo
 
 | 类型 | 说明                             |
 | ------------------ | --------------------------|
-| TagInfo  | NFC服务所提供的Tag数据对象。 |
+| [tag.TagInfo](js-apis-nfcTag.md#taginfo)  | NFC服务所提供的Tag数据对象。 |
 
 **示例：**
 
@@ -90,13 +90,17 @@ console.info("connectStatus: " + connectStatus);
 
 ### connect<sup>9+</sup>
 
-connect(): void;
+connect(): void
 
 和标签建立连接。在从标签读取数据或将数据写入标签之前，必须调用此方法。
 
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -159,6 +163,10 @@ resetConnection(): void
 **需要权限：** ohos.permission.NFC_TAG
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -224,6 +232,10 @@ isConnected(): boolean
 检查是否已与标签建立连接。如果返回未连接，则需要先调用[tagSession.connect](#connect9)建立连接。
 
 **系统能力：** SystemCapability.Communication.NFC.Tag
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -292,19 +304,19 @@ console.info("tag maxSendLen: " + maxSendLen);
 
 ArkTS-Dyn: getMaxTransmitSize(): number
 
-ArkTS-Dyn: getMaxTransmitSize(): int
+ArkTS-Sta: getMaxTransmitSize(): int
 
 查询可以发送到标签的最大数据长度。
 
 **需要权限：** ohos.permission.NFC_TAG
 
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
 **系统能力：** SystemCapability.Communication.NFC.Tag
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -400,7 +412,7 @@ ArkTS-Sta: getTimeout(): int
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -663,9 +675,9 @@ function tagSessionDemo() {
 
 ### transmit<sup>9+</sup>
 
-ArkTS-Dyn: transmit(data: number[]): Promise<number[]>
+ArkTS-Dyn: transmit(data: number[]): Promise\<number[]>
 
-ArkTS-Sta: transmit(data: int[]): Promise<int[]>
+ArkTS-Sta: transmit(data: int[]): Promise\<int[]>
 
 发送指令到Tag上，使用Promise方式作为异步方法。
 
@@ -689,7 +701,7 @@ ArkTS-Sta: transmit(data: int[]): Promise<int[]>
 
 | 类型 | 说明                             |
 | ------------------ | --------------------------|
-| Promise<int[]> | 对端Tag对指令的响应数据。每个int十六进制表示，范围是0x00~0xFF。|
+| ArkTS-Dyn: Promise\<number[]><br>ArkTS-Sta: Promise\<int[]> | 对端Tag对指令的响应数据。每个int十六进制表示，范围是0x00~0xFF。|
 
 **错误码：**
 

@@ -159,6 +159,37 @@ ArkTS-Sta: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses
 | --- | --- |
 |  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
+## borderRadius<sup>22+</sup>
+
+ArkTS-Dyn: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses, type?: RenderStrategy): T
+
+ArkTS-Sta: borderRadius(value: Length | BorderRadiuses | LocalizedBorderRadiuses | undefined, type?: RenderStrategy | undefined): this;
+
+设置边框的圆角半径和绘制圆角的模式。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                         | 必填 | 说明                                   |
+| ------ | ------------------------------------------------------------ | ---- | -------------------------------------- |
+| value  | [Length](ts-types.md#length)&nbsp;\|&nbsp;[BorderRadiuses](./ts-types.md#borderradiuses9)&nbsp;\|&nbsp;[LocalizedBorderRadiuses](./ts-types.md#localizedborderradiuses12) | 是   | 设置元素的边框圆角半径，支持百分比，百分比依据组件宽度。设置圆角后，可搭配[clip](./ts-universal-attributes-sharp-clipping.md#clip12)属性进行裁剪，避免子组件超出组件自身。|
+| type  | [RenderStrategy](ts-appendix-enums.md#renderstrategy22) | 否   |设置组件绘制圆角的模式。<br/>默认值：RenderStrategy.FAST|
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+|  ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
+
 ## BorderOptions对象说明
 
 | 名称   | 参数类型                                                     | 必填 | 描述               |
@@ -500,3 +531,68 @@ struct BorderExample {
 从右至左显示语言示例图
 
 ![zh-cm_image_border_rtl](figures/zh-cn_image_border_rtl.png)
+
+### 示例3（设置异形圆角）
+
+该示例通过[borderRadius](#borderradius)设置四个不同圆角值。当其中一个圆角值超过高度或宽度最小值的一半时，按值的比例绘制异形圆角。
+
+ArkTS-Dyn示例：
+
+```ts
+// xxx.ets
+@Entry
+@Component
+struct BorderExample {
+  build() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+        Text('Text')
+          .borderWidth(5)
+          .borderColor(0xAFEEEE)
+          .borderRadius({
+            topLeft: 2000,
+            topRight: 10,
+            bottomLeft: 30,
+            bottomRight: 50
+          })
+          .width(100)
+          .height(100)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+      }
+    }
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Text, Column, TextAlign, FlexAlign, Flex, ItemAlign } from '@ohos.arkui.component';
+
+@Entry
+@Component
+struct BorderExample {
+  build() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+        Text('Text')
+          .borderWidth(5)
+          .borderColor(0xAFEEEE)
+          .borderRadius({
+            topLeft: 2000,
+            topRight: 10,
+            bottomLeft: 30,
+            bottomRight: 50
+          })
+          .width(100)
+          .height(100)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+      }
+    }
+  }
+}
+```
+
+![borderRadius](figures/borderRadius.png)

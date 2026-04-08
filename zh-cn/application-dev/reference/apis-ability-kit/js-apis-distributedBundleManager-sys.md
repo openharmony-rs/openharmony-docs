@@ -874,14 +874,14 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   distributedBundleManager.getRemoteBundleVersionCode('1111', 'com.hap.myapplication').then((data: number) => {
-    console.info('getRemoteBundleVersionCode succeed:' + data);
+    console.info(`getRemoteBundleVersionCode succeed:` + data);
   }).catch((err: BusinessError) => {
-    console.error('getRemoteBundleVersionCode failed: error code is ${err.code}  and error msg is ${err.message}');
+    console.error(`getRemoteBundleVersionCode failed: error code is ${err.code}  and error msg is ${err.message}`);
   });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error('getRemoteBundleVersionCode failed: error code is ${code}  and error msg is ${message}');
+  console.error(`getRemoteBundleVersionCode failed: error code is ${code}  and error msg is ${message}`);
 }
 ```
 ArkTS-Sta:
@@ -891,15 +891,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
   distributedBundleManager.getRemoteBundleVersionCode('1111', 'com.hap.myapplication').then((data: long) => {
-    console.info('getRemoteBundleVersionCode succeed:' + data);
+    console.info(`getRemoteBundleVersionCode succeed:` + data);
   }).catch((err: Error) => {
-    console.error('getRemoteBundleVersionCode failed: error code is ${(err as BusinessError).code}' +
-      '  and error msg is ${(err as BusinessError).message}');
+    console.error(`getRemoteBundleVersionCode failed: error code is ${(err as BusinessError).code}` +
+      `  and error msg is ${(err as BusinessError).message}`);
   });
 } catch (err) {
   let code = (err as BusinessError).code;
   let message = (err as BusinessError).message;
-  console.error('getRemoteBundleVersionCode failed: error code is ${code}  and error msg is ${message}');
+  console.error(`getRemoteBundleVersionCode failed: error code is ${code}  and error msg is ${message}`);
 }
 ```
 

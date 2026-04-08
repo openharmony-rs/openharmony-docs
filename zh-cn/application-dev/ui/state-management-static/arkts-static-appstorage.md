@@ -12,9 +12,9 @@ AppStorage提供了API接口，允许开发者在自定义组件外手动触发A
 
 AppStorage是在应用启动时创建的单例，用于提供应用状态数据的中心存储。这些状态数据在应用级别可访问。AppStorage在应用运行过程中保留其属性。
 
-AppStorage中保存的属性通过唯一的字符串类型key值访问，该属性可以和UI组件同步，且可以在应用业务逻辑中被访问。
+AppStorage中保存的属性通过唯一的字符串类型key值访问，支持与UI组件同步，并可在应用业务逻辑中被访问。
 
-AppStorage支持应用的[主线程](../../application-models/thread-model-stage.md)内两个或更多[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
+AppStorage支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
 
 AppStorage中的属性通过唯一的字符串类型key值访问，支持与UI组件同步，并可在应用业务逻辑中被访问，同时支持应用的[主线程](../../application-models/thread-model-stage.md)内多个[UIAbility](../../reference/apis-ability-kit/js-apis-app-ability-uiAbility.md)实例间的UI状态数据共享。
 
@@ -54,6 +54,7 @@ import { StoragePropRef } from '@kit.ArkUI';
 | ----------------------- | ------------------------------------------------------------ |
 | 装饰器参数               | key：常量字符串，必填（字符串需要有引号）。                  |
 | 允许装饰的变量类型        | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持Map、Set、Date、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，需要和AppStorage中对应属性类型相同，否则会因类型不一致导致应用行为异常。<br/>支持上述类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[AppStorage支持联合类型](#appstorage支持联合类型)。 <br/>**注意**<br/>当使用undefined和null的时候，必须显式指定类型，遵循静态ArkTS类型校验，比如：`@StoragePropRef('AA') a: number \| null = null`能通过编译，`@StoragePropRef('AA') a: number = null`无法通过编译。 |
+| 不允许装饰的变量类型    | 不支持装饰Function类型。变量声明类型是Function时编译报错；变量声明类型是包含Function的联合类型并且实际类型是Function时会运行时报错。 |
 | 同步类型                | 单向同步：从AppStorage的对应属性到组件的状态变量。<br/>组件本地的修改是允许的，但是AppStorage中给定的属性一旦发生变化，将覆盖本地的修改。 |
 | 被装饰变量的初始值       | 必须指定，如果AppStorage实例中不存在属性，则用该初始值初始化该属性，并存入AppStorage中。 |
 
@@ -109,6 +110,7 @@ import { StorageLink } from '@kit.ArkUI';
 | ----------------------- | ------------------------------------------------------------ |
 | 装饰器参数              | key：常量字符串，必填（字符串需要有引号）。                  |
 | 允许装饰的变量类型      | Object、class、string、number、boolean、enum类型，以及这些类型的数组。<br/>支持[Map](#装饰map类型变量)、[Set](#装饰set类型变量)、[Date](#装饰date类型变量)、undefined和null类型。嵌套类型的场景请参考[观察变化和行为表现](#观察变化和行为表现)。<br/>类型必须被指定，需要和AppStorage中对应属性类型相同，否则会因类型不一致导致应用行为异常。<br/>支持上述类型的联合类型，比如string \| number, string \| undefined 或者 ClassA \| null，示例见[AppStorage支持联合类型](#appstorage支持联合类型)。 |
+| 不允许装饰的变量类型    | 不支持装饰Function类型。变量声明类型是Function时编译报错；变量声明类型是包含Function的联合类型并且实际类型是Function时会运行时报错。 |
 | 同步类型                | 双向同步：从AppStorage的对应属性到自定义组件，从自定义组件到AppStorage对应属性。 |
 | 被装饰变量的初始值      | 必须指定，如果AppStorage实例中不存在属性，则用该初始值初始化该属性，并存入AppStorage中。 |
 
@@ -129,7 +131,7 @@ import { StorageLink } from '@kit.ArkUI';
 
 - 当装饰的对象是数组时，可以观察到数组添加、删除、更新数组单元的变化。
 
-- 当装饰的对象是Date时，可以观察到Date整体的赋值，以及通过调用Date的接口`setFullYear`, `setMonth`, `setDate`, `setHours`, `setMinutes`, `setSeconds`, `setMilliseconds`, `setTime`, `setUTCFullYear`, `setUTCMonth`, `setUTCDate`, `setUTCHours`, `setUTCMinutes`, `setUTCSeconds`, `setUTCMilliseconds` 更新Date的属性。详见[装饰Date类型变量](#装饰date类型变量)。
+- 当装饰的对象是Date时，可以观察到Date整体的赋值，以及通过调用Date的接口`setFullYear`、`setMonth`、`setDate`、`setHours`、`setMinutes`、`setSeconds`、`setMilliseconds`、`setTime`、`setUTCFullYear`、`setUTCMonth`、`setUTCDate`、`setUTCHours`、`setUTCMinutes`、`setUTCSeconds`、`setUTCMilliseconds`更新Date的属性。详见[装饰Date类型变量](#装饰date类型变量)。
 
 - 当装饰的变量是Map时，可以观察到Map整体的赋值，以及通过调用Map的接口`set`、`clear`、`delete`更新Map的值。详见[装饰Map类型变量](#装饰map类型变量)。
 
@@ -141,7 +143,7 @@ import { StorageLink } from '@kit.ArkUI';
 
 2. AppStorage中key对应的数据一旦改变，其绑定的所有的数据（包括双向\@StorageLink和单向\@StoragePropRef）都将被同步修改。
 
-3. `@StorageLink(key)`装饰的数据是状态变量，其变化不仅会同步到AppStorage，还会触发自定义组件的重新渲染。
+3. \@StorageLink(key)装饰的数据是状态变量，其变化不仅会同步到AppStorage，还会触发自定义组件的重新渲染。
 
 
 ## 限制条件

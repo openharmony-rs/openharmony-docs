@@ -25,6 +25,7 @@
     - [VkSurfaceCreateInfoOHOS](_vk_surface_create_info_o_h_o_s.md)
 - ArkTS-Sta builtin变更文档<!--ArkTS-Dyn-to-ArkTS-Sta-migration-->
     - [Array](arkts-sta-array.md)
+    - [reflect](arkts-sta-reflect.md)
     - [jsonx](arkts-sta-jsonx.md)
     - [JSON](arkts-sta-json.md)
     - [Mutex (互斥锁)](arkts-sta-mutex.md)

@@ -71,49 +71,49 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 
 2. 从AppStorage中获取对应属性：
 
-  ```ts
-  AppStorage.get<number>('aProp'); // returns 47
-  ```
+   ```ts
+   AppStorage.get<number>('aProp'); // returns 47
+   ```
 
-  或在组件内部定义：
+   或在组件内部定义：
 
-  ```ts
-  @StorageLink('aProp') aProp: number = 48;
-  ```
+   ```ts
+   @StorageLink('aProp') aProp: number = 48;
+   ```
 
-完整代码如下：
-
-```ts
-'use static'
-
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { PersistentStorage, StorageLink, State } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  @State message: string = 'Hello World';
-  @StorageLink('aProp') aProp: number = 48;
-  // 在ArkTS-Sta中，全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移至static代码块中，以达到与ArkTS-Dyn一样的效果。
-  static {
-    PersistentStorage.persistProp<number>('aProp', 47);
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.message)
-        // 应用退出时会保存当前结果；重新启动后，会显示上一次的保存结果。
-        // 未修改时默认值为47
-        Text(`${this.aProp}`)
-          .onClick((e: ClickEvent) => {
-            this.aProp += 1;
-          })
-      }
-    }
-  }
-}
-```
+   完整代码如下：
+   
+   ```ts
+   'use static'
+   
+   import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
+   import { PersistentStorage, StorageLink, State } from '@kit.ArkUI';
+   
+   @Entry
+   @Component
+   struct Index {
+     @State message: string = 'Hello World';
+     @StorageLink('aProp') aProp: number = 48;
+     // 在ArkTS-Sta中，全局的逻辑代码不会默认执行。开发者可将需要执行的逻辑代码移至static代码块中，以达到与ArkTS-Dyn一样的效果。
+     static {
+       PersistentStorage.persistProp<number>('aProp', 47);
+     }
+   
+     build() {
+       Row() {
+         Column() {
+           Text(this.message)
+           // 应用退出时会保存当前结果；重新启动后，会显示上一次的保存结果。
+           // 未修改时默认值为47
+           Text(`${this.aProp}`)
+             .onClick((e: ClickEvent) => {
+               this.aProp += 1;
+             })
+         }
+       }
+     }
+   }
+   ```
 
 - 新应用安装后首次启动运行：
 

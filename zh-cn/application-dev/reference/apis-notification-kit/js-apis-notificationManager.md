@@ -2014,7 +2014,7 @@ requestEnableNotification(context: UIAbilityContext, callback: AsyncCallback\<vo
 > **说明：**
 >
 > - 仅当应用界面加载完成后（即调用[loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent)成功），方可使用该接口。
-> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult26)二次申请授权，拉起通知管理弹窗。
+> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult)二次申请授权，拉起通知管理弹窗。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2103,7 +2103,7 @@ requestEnableNotification(context: UIAbilityContext): Promise\<void\>
 > **说明：**
 >
 > - 仅当应用界面加载完成后（即调用[loadContent](../apis-ability-kit/js-apis-app-ability-uiExtensionContentSession.md#loadcontent)成功），方可使用该接口。
-> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult26)二次申请授权，拉起通知管理弹窗。
+> - 在使用该接口拉起通知授权弹窗后，如果用户拒绝授权，将无法使用该接口再次拉起弹窗。开发者可以调用[openNotificationSettingsWithResult](#notificationmanageropennotificationsettingswithresult)二次申请授权，拉起通知管理弹窗。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -2483,7 +2483,7 @@ class MyAbility extends UIAbility {
 }
 ```
 
-## notificationManager.openNotificationSettingsWithResult<sup>26+</sup>
+## notificationManager.openNotificationSettingsWithResult
 
 openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<NotificationSetting\>
 
@@ -2493,9 +2493,9 @@ openNotificationSettingsWithResult(context: UIAbilityContext): Promise\<Notifica
 
 **系统能力**：SystemCapability.Notification.NotificationSettings
 
-**ArkTS-Dyn起始版本**：26
+**ArkTS-Dyn起始版本**：26.0.0
 
-**ArkTS-Sta起始版本**：26
+**ArkTS-Sta起始版本**：26.0.0
 
 **参数：**
 
@@ -2751,10 +2751,10 @@ hilog.error(0x0000, 'testTag', '%{public}s',`isGeofenceEnabled failed, code is $
 | ---------------- | ------- | ---- | ---- | ------------------------------------------- |
 | vibrationEnabled | boolean | 否   |  否  | 表示是否开启振动。<br/> - true：开启。<br/> - false：关闭。 |
 | soundEnabled     | boolean | 否   |  否  | 表示是否开启响铃。<br/> - true：开启。<br/> - false：关闭。 |
-| lockScreenEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26<br/>**ArkTS-Sta起始版本**：26 |
-| bannerEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26<br/>**ArkTS-Sta起始版本**：26 |
-| badgeNumberEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示是否开启通知角标数字展示。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26<br/>**ArkTS-Sta起始版本**：26 |
-| notificationEnabled<sup>26+</sup>     | boolean | 否   |  是  | 表示应用通知使能状态。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26<br/>**ArkTS-Sta起始版本**：26 |
+| lockScreenEnabled    | boolean | 否   |  是  | 表示是否开启锁屏通知。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| bannerEnabled     | boolean | 否   |  是  | 表示是否开启横幅通知。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| badgeNumberEnabled     | boolean | 否   |  是  | 表示是否开启通知角标数字展示。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
+| notificationEnabled     | boolean | 否   |  是  | 表示应用通知使能状态。<br/>**模型约束**: 此接口仅可在Stage模型下使用。<br/> - true：开启。<br/> - false：关闭。<br/>**ArkTS-Dyn起始版本**：26.0.0<br/>**ArkTS-Sta起始版本**：26.0.0 |
 
 ## BundleOption
 

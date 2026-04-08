@@ -22,18 +22,24 @@ EmbeddedComponent只能在UIAbility中使用，且被拉起的EmbeddedUIExtensio
 
 ## 接口
 
-EmbeddedComponent(loader: Want, type: EmbeddedType)
+ArkTS-Dyn: EmbeddedComponent(loader: Want, type: EmbeddedType)
+
+ArkTS-Sta: EmbeddedComponent(loader: Want, type?: EmbeddedType)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名                | 类型                          | 必填 |说明   |
 | --------------------- | ---------------------------------------------------------- | ---- | ------------------------------------ |
 | loader                | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 是   | 要加载的EmbeddedUIExtensionAbility。 |
-| type                  | [EmbeddedType](ts-appendix-enums.md#embeddedtype12)                              | 是   | 提供方的类型。                       |
+| type                  | [EmbeddedType](ts-appendix-enums.md#embeddedtype12)        | ArkTS-Dyn: 是<br/>ArkTS-Sta: 否 | 提供方的类型。 |
 
 ## 属性
 
@@ -63,7 +69,7 @@ ArkTS-Sta: onTerminated(callback: Callback&lt;TerminationInfo&gt; | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -90,7 +96,7 @@ ArkTS-Sta: onError(callback: ErrorCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -115,11 +121,15 @@ ArkTS-Sta: onError(callback: ErrorCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ### 属性
 
 | 名称 | 类型                      | 只读 | 可选 | 说明                                                 |
 | ---- | -------------------------| ---- | ---- | ---------------------------------------------------- |
-| code | ArkTS1.1: number <br>ArkTS1.2: int                                                     | 否 | 否 | 被拉起EmbeddedUIExtensionAbility退出时返回的结果码。 |
+| code | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 否 | 被拉起EmbeddedUIExtensionAbility退出时返回的结果码。 |
 | want | [Want](../../apis-ability-kit/js-apis-app-ability-want.md) | 否 | 是 | 被拉起EmbeddedUIExtensionAbility退出时返回的数据。   |
 
 ## 示例（加载EmbeddedComponent）

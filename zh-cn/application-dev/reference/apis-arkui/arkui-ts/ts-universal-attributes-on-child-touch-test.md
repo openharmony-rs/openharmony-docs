@@ -14,7 +14,7 @@
 
 ArkTS-Dyn: onChildTouchTest(event: (value: Array&lt;TouchTestInfo&gt;) => TouchResult): T
 
-ArkTS-Sta: onChildTouchTest(event: ((value: Array<TouchTestInfo>) => TouchResult) | undefined): this
+ArkTS-Sta: onChildTouchTest(event: ((value: Array&lt;TouchTestInfo&gt;) => TouchResult) | undefined): this
 
 当前组件通过设置回调，可自定义触摸测试并控制触摸测试中的子节点行为。
 
@@ -30,7 +30,7 @@ ArkTS-Sta: onChildTouchTest(event: ((value: Array<TouchTestInfo>) => TouchResult
 
 | 参数名 | 类型                                       | 必填 | 说明                   |
 | ------ | ------------------------------------------ | ---- | ---------------------- |
-| value  | Array<[TouchTestInfo>](#touchtestinfo) | 是   | 包含子节点信息的数组。 |
+| event  | ArkTS-Dyn: (value: Array<[TouchTestInfo>](#touchtestinfo11)) => TouchResult<br/>ArkTS-Sta: ((value: Array<[TouchTestInfo>](#touchtestinfo11)) => TouchResult) \| undefined | 是   | 包含子节点信息的数组。 |
 
 **返回值：** 
 
@@ -85,6 +85,8 @@ ArkTS-Sta: onChildTouchTest(event: ((value: Array<TouchTestInfo>) => TouchResult
 ## TouchTestStrategy枚举说明
 
 事件的派发策略。
+
+**卡片能力：** 从API version 11开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 

@@ -1,4 +1,4 @@
-# @ohos.arkui.UIContext (UIContext)
+﻿# @ohos.arkui.UIContext (UIContext)
 
 在Stage模型中，WindowStage/Window可以通过[loadContent](arkts-apis-window-Window.md#loadcontent9)接口加载页面并创建UI的实例，并将页面内容渲染到关联的窗口中，所以UI实例和窗口是一一关联的。一些全局的UI接口是和具体UI实例的执行上下文相关的，在当前接口调用时，通过追溯调用链跟踪到UI的上下文，来确定具体的UI实例。若在非UI页面中或者一些异步回调中调用这类接口，可能无法跟踪到当前UI的上下文，导致接口执行失败。
 
@@ -418,7 +418,9 @@ static resolveUIContext(): ResolvedUIContext
 
 **ArkTS-Dyn起始版本：** 22
  	 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
 
 **返回值：**
 
@@ -658,7 +660,7 @@ getComponentUtils(): ComponentUtils
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -685,7 +687,7 @@ getUIInspector(): UIInspector
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -712,7 +714,7 @@ getUIObserver(): UIObserver
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
@@ -1700,6 +1702,155 @@ struct TextPickerDialogExample {
   }
 }
 ```
+
+## Magnifier<sup>22+</sup>
+
+提供控制放大镜的显示与隐藏的能力，放大镜会对组件内容进行放大显示，便于查看组件细节。
+
+### bind<sup>22+</sup>
+
+bind(id: string): void
+
+绑定放大镜与指定id的组件。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| id | string | 是 | 组件id，可通过通用属性id或key设置。当组件id为空字符串或未找到匹配id的组件时，不显示放大镜。|
+
+**示例：**
+
+请参考[getMagnifier](#getmagnifier22)的示例。
+
+### show<sup>22+</sup>
+
+ArkTS-Dyn: show(x: number, y: number): void
+
+ArkTS-Sta: show(x: double, y: double): void
+
+设置放大镜显示的组件内容相对于组件左上角的位置，设置成功后放大镜会对以该坐标点为中心的区域内容进行放大显示。
+
+> **说明：**
+>
+> 当与放大镜绑定的组件自身内容发生变化时，放大镜显示内容不会自动更新，需要主动调用show接口对放大镜显示内容进行更新。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| x | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 放大镜显示的组件内容相对组件水平方向坐标，单位为vp。当坐标值大于组件宽度或小于0时不显示放大镜；将值设为undefined时保持放大镜的当前显示状态。|
+| y | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是 | 放大镜显示的组件内容相对组件垂直方向坐标，单位为vp。当坐标值大于组件高度或小于0时不显示放大镜；将值设为undefined时保持放大镜的当前显示状态。|
+
+**示例：**
+
+请参考[getMagnifier](#getmagnifier22)的示例。
+
+### unbind<sup>22+</sup>
+
+unbind(): void
+
+解除放大镜与当前组件的绑定。
+
+> **说明：**
+>
+> 当与放大镜绑定的组件自身内容发生变化时，放大镜显示内容不会自动更新，需要主动调用show接口对放大镜显示内容进行更新。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**示例：**
+
+请参考[getMagnifier](#getmagnifier22)的示例。
+
+### getMagnifier<sup>22+</sup>
+
+getMagnifier(): Magnifier
+
+获取Magnifier对象以控制放大镜显示与隐藏。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [Magnifier](#magnifier22) | Magnifier对象，用于控制放大镜的显示与隐藏。|
+
+**示例：**
+
+```ts
+import { Entry, Component, Column, Image, $r, TouchEvent, TouchType, SourceTool } from '@kit.ArkUI';
+import { Magnifier } from '@ohos.arkui.UIContext';
+
+@Entry
+@Component
+struct MagnifierExample {
+  private magnifier: Magnifier = this.getUIContext().getMagnifier();
+
+  build() {
+    Column() {
+      Image($r('app.media.startIcon'))
+        .width(200)
+        .height(200)
+        .margin(50)
+        .id('image')
+        .onTouch((event?: TouchEvent) => {
+          if (!event || event.sourceTool !== SourceTool.Finger) {
+            return;
+          }
+
+          if (event.type === TouchType.Down) {
+            console.info('[MagnifierExample] Screen touch down.');
+            this.magnifier.bind('image');
+          } else if (event.type === TouchType.Move) {
+            console.info('[MagnifierExample] Screen touch moving.');
+            let x = event.touches[0].x;
+            let y = event.touches[0].y;
+            this.magnifier.show(x, y)
+          } else if (event.type === TouchType.Up) {
+            console.info('[MagnifierExample] Screen touch up.');
+            this.magnifier.unbind()
+          } else if (event.type === TouchType.Cancel) {
+            console.info('[MagnifierExample] Screen touch cancel.');
+            this.magnifier.unbind()
+          }
+        })
+    }
+  }
+}
+```
+
+![image](figures/magnifier_static.jpg)
 
 ## showTextPickerDialog<sup>20+</sup>
 
@@ -4590,7 +4741,7 @@ getRectangleById(id: string): componentUtils.ComponentInfo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -4847,15 +4998,37 @@ on(type: 'navDestinationUpdate', callback: Callback\<observer.NavDestinationInfo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationUpdate<sup>23+</sup>](#onnavdestinationupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
 | 参数名   | 类型                                                  | 必填 | 说明                                                         |
 | -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | type     | string                                                | 是   | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 是   | 回调函数。返回当前的NavDestination组件状态。                 |
+
+### onNavDestinationUpdate<sup>23+</sup>
+
+onNavDestinationUpdate(callback: Callback\<observer.NavDestinationInfo>): void
+
+监听NavDestination组件的状态变化。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta模式。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdate')](#onnavdestinationupdate11)。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 是   | 回调函数。返回当前的NavDestination组件状态。                 |
 
 **示例：**
@@ -4921,9 +5094,11 @@ off(type: 'navDestinationUpdate', callback?: Callback\<observer.NavDestinationIn
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationUpdate<sup>23+</sup>](#offnavdestinationupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -4936,6 +5111,26 @@ off(type: 'navDestinationUpdate', callback?: Callback\<observer.NavDestinationIn
 
 参考[uiObserver.on('navDestinationUpdate')](#onnavdestinationupdate11)示例。
 
+### offNavDestinationUpdate<sup>23+</sup>
+
+offNavDestinationUpdate(callback?: Callback\<observer.NavDestinationInfo\>): void
+
+取消监听NavDestination组件的状态变化。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta模式。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationUpdate')](#offnavdestinationupdate11)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                  | 必填 | 说明                                                                     |
+| -------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\> | 否   | 需要取消的监听回调，不传参数时，取消所有的Navigation监听回调。                 |
+
 ### on('navDestinationUpdate')<sup>11+</sup>
 
 on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callback: Callback\<observer.NavDestinationInfo\>): void
@@ -4946,9 +5141,11 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationUpdate<sup>23+</sup>](#onnavdestinationupdate23-1)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -4957,6 +5154,27 @@ on(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callbac
 | type     | string                                                       | 是   | 监听事件，固定为'navDestinationUpdate'，即NavDestination组件的状态变化。 |
 | options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | 是   | 指定监听的Navigation的id。                                   |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | 是   | 回调函数。返回当前的NavDestination组件状态。                 |
+
+### onNavDestinationUpdate<sup>23+</sup>
+
+onNavDestinationUpdate(options: observer.NavDestinationSwitchObserverOptions, callback: Callback<observer.NavDestinationInfo>): void
+
+监听NavDestination组件的状态变化。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdate')](#onnavdestinationupdate11-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| options  | [observer.NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12) | 是   | 指定监听的Navigation的id。                                               |
+| callback | Callback\<[observer.NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
 
 **示例：**
 
@@ -5019,9 +5237,11 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationUpdate<sup>23+</sup>](#offnavdestinationupdate23-1)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -5031,15 +5251,34 @@ off(type: 'navDestinationUpdate', options: { navigationId: ResourceStr }, callba
 | options  | { navigationId: [ResourceStr](arkui-ts/ts-types.md#resourcestr) } | 是   | 指定监听的Navigation的id。                                   |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>        | 否   |需要取消的监听回调，不传参数时，取消该Navigation上所有的监听回调。                 |
 
+### offNavDestinationUpdate<sup>23+</sup>
+
+offNavDestinationUpdate(options: observer.NavDestinationSwitchObserverOptions, callback?: Callback\<observer.NavDestinationInfo\>): void
+
+取消监听NavDestination组件的状态变化。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta模式。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationUpdate')](#offnavdestinationupdate11-1)。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| options  | observer.[NavDestinationSwitchObserverOptions](js-apis-arkui-observer.md#navdestinationswitchobserveroptions12) | 是   | 指定监听的Navigation的id。                                               |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 否   | 回调函数。返回当前的NavDestination组件状态。                             |
+
 **示例：**
 
 参考[uiObserver.on('navDestinationUpdate')](#onnavdestinationupdate11-1)示例。
 
 ### on('navDestinationUpdateByUniqueId')<sup>20+</sup>
 
-ArkTS-Dyn: on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback: Callback\<observer.NavDestinationInfo\>): void
-
-ArkTS-Sta: on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, callback: Callback\<observer.NavDestinationInfo\>): void
+on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback: Callback\<observer.NavDestinationInfo\>): void
 
 通过Navigation的uniqueId监听NavDestination组件的状态变化，uniqueId可通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。
 
@@ -5047,16 +5286,39 @@ ArkTS-Sta: on(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, c
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 20
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 22
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationUpdateByUniqueId<sup>23+</sup>](#onnavdestinationupdatebyuniqueid23)。
+
+**ArkTS-Dyn起始版本：** 20
 
 **参数：** 
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
 | type     | string                                                               | 是   | 监听事件，固定为'navDestinationUpdateByUniqueId'，即NavDestination组件的状态变化。 |
-| navigationUniqueId  | ArkTS-Dyn: number <br>ArkTS-Sta: int | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
+| navigationUniqueId  | number | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
+
+### onNavDestinationUpdateByUniqueId<sup>23+</sup>
+
+onNavDestinationUpdateByUniqueId(navigationUniqueId: int, callback: Callback\<observer.NavDestinationInfo\>): void
+
+通过Navigation的uniqueId监听NavDestination组件的状态变化，uniqueId可通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[on('navDestinationUpdateByUniqueId')](#onnavdestinationupdatebyuniqueid20)。
+
+**ArkTS-Dyn起始版本：** 23
+
+**参数：** 
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| navigationUniqueId  | int | 是   | 指定监听的Navigation的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 是   | 回调函数。返回当前的NavDestination组件状态。                             |
 
 **示例：**
@@ -5125,8 +5387,7 @@ struct Index {
 
 ### off('navDestinationUpdateByUniqueId')<sup>20+</sup>
 
-ArkTS-Dyn: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
-ArkTS-Sta: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, callback?: Callback\<observer.NavDestinationInfo\>): void
+off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: number, callback?: Callback\<observer.NavDestinationInfo\>): void
 
 取消通过navigationUniqueId监听NavDestination组件的变化。
 
@@ -5134,7 +5395,31 @@ ArkTS-Sta: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationUpdateByUniqueId](#offnavdestinationupdatebyuniqueid23)。
+
 **ArkTS-Dyn起始版本：** 20
+
+**参数：** 
+
+| 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
+| -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
+| type     | string                                                               | 是   | 监听事件，固定为'navDestinationUpdateByUniqueId'，即NavDestination组件的状态变化。 |
+| navigationUniqueId  | number | 是   | 指定监听的[Navigation](arkui-ts/ts-basic-components-navigation.md)的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
+| callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 否   | 需要取消的监听回调，不传参数时，取消该Navigation上所有的监听回调。                             |
+
+### offNavDestinationUpdateByUniqueId<sup>23+</sup>
+
+offNavDestinationUpdateByUniqueId(navigationUniqueId: int, callback?: Callback\<observer.NavDestinationInfo\>): void
+
+取消通过navigationUniqueId监听NavDestination组件的变化。使用Callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[off('navDestinationUpdateByUniqueId')d](#offnavdestinationupdatebyuniqueid20)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -5142,7 +5427,7 @@ ArkTS-Sta: off(type: 'navDestinationUpdateByUniqueId', navigationUniqueId: int, 
 
 | 参数名   | 类型                                                                 | 必填 | 说明                                                                     |
 | -------- | -------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------ |
-| type     | string                                                               | 是   | 监听事件，固定为'navDestinationUpdateByUniqueId'，即NavDestination组件的状态变化。 |
+| navigationUniqueId  | int | 是   | 指定监听的[Navigation](arkui-ts/ts-basic-components-navigation.md)的uniqueId，可以通过[queryNavigationInfo](arkui-ts/ts-custom-component-api.md#querynavigationinfo12)获取。                                               |
 | callback | Callback\<observer.[NavDestinationInfo](js-apis-arkui-observer.md#navdestinationinfo)\>                | 否   | 需要取消的监听回调，不传参数时，取消该Navigation上所有的监听回调。                             |
 
 **示例：**
@@ -5314,15 +5599,18 @@ struct Index {
 ### on('routerPageUpdate')<sup>11+</sup>
 
 on(type: 'routerPageUpdate', callback: Callback\<observer.RouterPageInfo\>): void
+
 监听router中page页面的状态变化。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onRouterPageUpdate](#onrouterpageupdate23)。
+
+**ArkTS-Dyn起始版本：** 11
 
 **参数：** 
 
@@ -5353,7 +5641,11 @@ off(type: 'routerPageUpdate', callback?: Callback\<observer.RouterPageInfo\>): v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offRouterPageUpdate](#offrouterpageupdate23)。
+
+**ArkTS-Dyn起始版本：** 11 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -5983,7 +6275,11 @@ on(type: 'navDestinationSwitch', callback: Callback\<observer.NavDestinationSwit
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onNavDestinationSwitch](#onnavdestinationswitch23)。
+
+**ArkTS-Dyn起始版本：** 12 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -6057,7 +6353,11 @@ off(type: 'navDestinationSwitch', callback?: Callback\<observer.NavDestinationSw
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationSwitch](#offnavdestinationswitch23)。
+
+**ArkTS-Dyn起始版本：** 12 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -6152,7 +6452,11 @@ off(type: 'navDestinationSwitch', observerOptions: observer.NavDestinationSwitch
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offNavDestinationSwitch](#offnavdestinationswitch23)。
+
+**ArkTS-Dyn起始版本：** 12 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -6564,7 +6868,11 @@ on(type: 'tabContentUpdate', callback: Callback\<observer.TabContentInfo\>): voi
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onTabContentUpdate](#ontabcontentupdate23)。
+
+**ArkTS-Dyn起始版本：** 12 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -6632,7 +6940,11 @@ off(type: 'tabContentUpdate', callback?: Callback\<observer.TabContentInfo\>): v
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**参数：** 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[offTabContentUpdate](#offtabcontentupdate23)。
+
+**ArkTS-Dyn起始版本：** 12 
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
@@ -7751,6 +8063,195 @@ offAfterPanEnd(callback?: PanListenerCallback): void
 
 参考[onBeforePanStart](#onbeforepanstart24)接口示例。
 
+### onTextChange<sup>24+</sup>
+
+onTextChange(callback: Callback<observer.TextChangeEventInfo>): void
+
+注册当文本框的文本内容发生变化时触发的回调函数。使用callback异步回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 是 | 当任意文本框的文本发生改变时，调用该回调函数。 |
+
+**示例：**
+
+```ts
+import { Entry, Component, Row, Column, Tabs, TextArea, TextInput, Search } from '@kit.ArkUI';
+import uiObserver from '@ohos.arkui.observer';
+
+function callbackFunc(info: uiObserver.TextChangeEventInfo) {
+  console.info('[id: ' + JSON.stringify(info.id) + '] [uniqueId: ' + JSON.stringify(info.uniqueId) + '] [content: ' + JSON.stringify(info.content) + ']');
+}
+
+@Entry
+@Component
+struct TabsExample {
+  aboutToAppear(): void {
+    this.getUIContext().getUIObserver().onTextChange(callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    this.getUIContext().getUIObserver().offTextChange(callbackFunc);
+  }
+
+  build() {
+    Column() {
+      TextArea({ text: "Hello World TextArea" })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id("TestId1")
+      TextInput({ text: "Hello World TextInput" })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id("TestId2")
+      Search({ value: "Hello World Search" })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id("TestId3")
+    }.width('100%')
+  }
+}
+```
+
+### offTextChange<sup>24+</sup>
+
+offTextChange(callback?: Callback<observer.TextChangeEventInfo>): void
+
+移除由[onTextChange](#ontextchange24)注册的回调函数。使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 否 | 由[onTextChange](#ontextchange24)注册的回调函数。 |
+
+**示例：**
+
+请参考[onTextChange](#ontextchange24)的示例。
+
+### onTextChange<sup>24+</sup>
+
+onTextChange(identity: observer.ObserverOptions, callback: Callback<observer.TextChangeEventInfo>): void
+
+为指定ID的组件注册文本框内文本变化时触发的回调函数，使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| identity | observer.[ObserverOptions](./js-apis-arkui-observer.md#observeroptions12) | 是 | 指定组件的ID。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 是 | 指定ID的文本框内文本变化时触发的回调函数。 |
+
+**示例：**
+
+```ts
+import { Entry, Component, Row, Column, Tabs, TextArea, TextInput, Search, ClickEvent, Button } from '@kit.ArkUI';
+import uiObserver from '@ohos.arkui.observer';
+
+function callbackFunc(info: uiObserver.TextChangeEventInfo) {
+  console.info('[id: ' + JSON.stringify(info.id) + '] [uniqueId: ' + JSON.stringify(info.uniqueId) + '] [content: ' + JSON.stringify(info.content) + ']');
+}
+
+@Entry
+@Component
+struct TabsExample {
+  aboutToAppear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    observer.onTextChange({ id: 'TestId1' }, callbackFunc);
+    observer.onTextChange({ id: 'TestId2' }, callbackFunc);
+    observer.onTextChange({ id: 'TestId3' }, callbackFunc);
+  }
+
+  aboutToDisappear(): void {
+    let observer = this.getUIContext().getUIObserver();
+    observer.offTextChange(callbackFunc);
+  }
+
+  build() {
+    Column() {
+      TextArea({ text: 'Hello World TextArea' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id('TestId1')
+      TextInput({ text: 'Hello World TextInput' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id('TestId2')
+      Search({ value: 'Hello World Search' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+        .id('TestId3')
+      TextArea({ text: 'Hello World TextArea' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+      TextInput({ text: 'Hello World TextInput' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+      Search({ value: 'Hello World Search' })
+        .width(336)
+        .height(56)
+        .backgroundColor('#FFFFFF')
+      Button().onClick((event: ClickEvent) => {
+        let observer = this.getUIContext().getUIObserver();
+        observer.onTextChange({ id: 'TestId1' }, callbackFunc);
+        observer.onTextChange({ id: 'TestId2' }, callbackFunc);
+        observer.onTextChange({ id: 'TestId3' }, callbackFunc);
+      })
+    }.width('100%')
+  }
+}
+```
+
+### offTextChange<sup>24+</sup>
+
+offTextChange(identity: observer.ObserverOptions, callback?: Callback<observer.TextChangeEventInfo>): void
+
+为指定ID的组件移除先前使用onTextChange注册的回调函数，使用callback异步回调。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| identity | observer.[ObserverOptions](./js-apis-arkui-observer.md#observeroptions12) | 是 | 指定组件的ID。 |
+| callback | [Callback](../apis-basic-services-kit/js-apis-base.md#callback)<observer.[TextChangeEventInfo](./js-apis-arkui-observer.md#textchangeeventinfo22)> | 否 | 指定ID的文本框内文本变化时触发的回调函数。 |
+
+**示例：**
+
+请参考[onTextChange](#ontextchange24-1)的示例。
 
 ## NodeIdentity<sup>20+</sup>
 
@@ -8091,6 +8592,10 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明         |
@@ -8177,6 +8682,10 @@ pushUrl(options: router.RouterOptions, mode: router.RouterMode, callback: AsyncC
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明         |
@@ -8260,6 +8769,10 @@ replaceUrl(options: router.RouterOptions): Promise&lt;void&gt;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明        |
@@ -8334,6 +8847,10 @@ replaceUrl(options: router.RouterOptions, callback: AsyncCallback&lt;void&gt;): 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
@@ -8404,6 +8921,10 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode): Promise&lt;v
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8486,6 +9007,10 @@ replaceUrl(options: router.RouterOptions, mode: router.RouterMode, callback: Asy
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8572,6 +9097,10 @@ pushNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8894,6 +9423,10 @@ pushNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt;vo
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
@@ -8925,6 +9458,10 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): Pro
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -8964,6 +9501,10 @@ pushNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, call
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明         |
@@ -8996,6 +9537,10 @@ replaceNamedRoute(options: router.NamedRouterOptions): Promise&lt;void&gt;
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9318,6 +9863,10 @@ replaceNamedRoute(options: router.NamedRouterOptions, callback: AsyncCallback&lt
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明        |
@@ -9348,6 +9897,10 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode): 
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9387,6 +9940,10 @@ replaceNamedRoute(options: router.NamedRouterOptions, mode: router.RouterMode, c
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型                                       | 必填   | 说明         |
@@ -9419,6 +9976,10 @@ back(options?: router.RouterOptions ): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名     | 类型                                       | 必填   | 说明                                       |
@@ -9447,7 +10008,7 @@ ArkTS-Sta: back(index: int, params?: Object): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9482,6 +10043,10 @@ clear(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 ```ts
@@ -9500,6 +10065,10 @@ getLength(): string
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -9526,6 +10095,10 @@ getState(): router.RouterState
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -9560,7 +10133,7 @@ ArkTS-Sta: getStateByIndex(index: int): router.RouterState | undefined
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9591,13 +10164,17 @@ if (options != undefined) {
 ```
 ### getStateByUrl<sup>12+</sup>
 
-getStateByUrl(url: string): Array<router.[RouterState](js-apis-router.md#routerstate)>
+getStateByUrl(url: string): Array\<router.RouterState>
 
 通过url获取当前页面的状态信息。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9635,6 +10212,10 @@ showAlertBeforeBackPage(options: router.EnableAlertOptions): void
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -9680,6 +10261,10 @@ hideAlertBeforeBackPage(): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
+
 **示例：**
 
 <!--code_no_check-->
@@ -9699,6 +10284,10 @@ getParams(): Object
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 10
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -11905,7 +12494,9 @@ struct Index {
 
 ### executeDrag<sup>11+</sup>
 
-executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragInfo, callback: AsyncCallback&lt;dragController.DragEventParam&gt;): void
+ArkTS-Dyn: executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragInfo, callback: AsyncCallback&lt;dragController.DragEventParam&gt;): void
+
+ArkTS-Sta: executeDrag(custom: CustomBuilder | DragItemInfo | undefined, dragInfo: dragController.DragInfo, callback: AsyncCallback&lt;dragController.DragEventParam&gt;): void
 
 主动发起拖拽能力，传入拖拽发起后跟手效果所拖拽的对象以及携带拖拽信息。通过回调返回拖拽事件结果。
 
@@ -11921,7 +12512,7 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 
 | 参数名   | 类型                                                         | 必填 | 说明                                                         |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo说明) | 是   | 拖拽发起后跟手效果所拖拽的对象。 <br/> **说明：** <br/>不支持全局builder。如果builder中使用了[Image](arkui-ts/ts-basic-components-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](arkui-ts/ts-basic-components-image.md#syncload8)为true。该builder只用于生成当次拖拽中显示的图片，builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。 |
+| custom   | ArkTS-Dyn: [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo说明) <br/>ArkTS-Sta: [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo说明) \| undefined | 是   | 拖拽发起后跟手效果所拖拽的对象。 <br/> **说明：** <br/>不支持全局builder。如果builder中使用了[Image](arkui-ts/ts-basic-components-image.md)组件，应尽量开启同步加载，即配置Image的[syncLoad](arkui-ts/ts-basic-components-image.md#syncload8)为true。该builder只用于生成当次拖拽中显示的图片，builder的修改不会同步到当前正在拖拽的图片，对builder的修改需要在下一次拖拽时生效。 |
 | dragInfo | [dragController.DragInfo](js-apis-arkui-dragController.md#draginfo) | 是   | 拖拽信息。                                                   |
 | callback | [AsyncCallback](../apis-basic-services-kit/js-apis-base.md#asynccallback)&lt;[dragController.DragEventParam](js-apis-arkui-dragController.md#drageventparam12)&gt; | 是   | 拖拽结束返回结果的回调<br/>- event：拖拽事件信息，仅包括拖拽结果。<br/>- extraParams：拖拽事件额外信息。 |
 
@@ -11989,7 +12580,9 @@ struct DragControllerPage {
 
 ### executeDrag<sup>11+</sup>
 
-executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragInfo): Promise&lt;dragController.DragEventParam&gt;
+ArkTS-Dyn: executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragInfo): Promise&lt;dragController.DragEventParam&gt;
+
+ArkTS-Sta: executeDrag(custom: CustomBuilder | DragItemInfo | undefined, dragInfo: dragController.DragInfo): Promise&lt;dragController.DragEventParam&gt; | null
 
 主动发起拖拽能力，传入拖拽发起后跟手效果所拖拽的对象以及携带拖拽信息。通过Promise返回拖拽事件结果。
 
@@ -11997,18 +12590,22 @@ executeDrag(custom: CustomBuilder | DragItemInfo, dragInfo: dragController.DragI
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                             |
 | -------- | ------------------------------------------------------------ | ---- | -------------------------------- |
-| custom   | [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo说明) | 是   | 拖拽发起后跟手效果所拖拽的对象。 |
+| custom   | ArkTS-Dyn: [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo说明) <br/>ArkTS-Sta: [CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo说明) \| undefined | 是   | 拖拽发起后跟手效果所拖拽的对象。 |
 | dragInfo | [dragController.DragInfo](js-apis-arkui-dragController.md#draginfo)                                        | 是   | 拖拽信息。                       |
 
 **返回值：**
 
 | 类型                                                         | 说明                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Promise&lt;[dragController.DragEventParam](js-apis-arkui-dragController.md#drageventparam12)&gt; | 拖拽结束返回结果的回调<br/>- event：拖拽事件信息，仅包括拖拽结果。<br/>- extraParams：拖拽事件额外信息。 |
+| ArkTS-Dyn: Promise&lt;[dragController.DragEventParam](js-apis-arkui-dragController.md#drageventparam12)&gt; <br/>ArkTS-Sta: Promise&lt;[dragController.DragEventParam](js-apis-arkui-dragController.md#drageventparam12)&gt; \| null | 拖拽结束返回结果的回调<br/>- event：拖拽事件信息，仅包括拖拽结果。<br/>- extraParams：拖拽事件额外信息。<br/>**说明：** ArkTS-Sta返回null表示入参校验失败或内部错误。 |
 
 **错误码：**
 以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)错误码。
@@ -12099,7 +12696,9 @@ struct DragControllerPage {
 
 ### createDragAction<sup>11+</sup>
 
-createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragInfo: dragController.DragInfo): dragController.DragAction
+ArkTS-Dyn: createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragInfo: dragController.DragInfo): dragController.DragAction
+
+ArkTS-Sta: createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt; | undefined, dragInfo: dragController.DragInfo): dragController.DragAction
 
 创建拖拽的Action对象，需要显式指定拖拽背板图(可多个)，以及拖拽的数据，跟手点等信息；当通过一个已创建的 Action 对象发起的拖拽未结束时，无法再次创建新的 Action 对象，接口会抛出异常；当Action对象的生命周期结束后，注册在该对象上的回调函数会失效，因此需要在一个尽量长的作用域下持有该对象，并在每次发起拖拽前通过createDragAction返回新的对象覆盖旧值。
 
@@ -12109,11 +12708,15 @@ createDragAction(customArray: Array&lt;CustomBuilder \| DragItemInfo&gt;, dragIn
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名   | 类型                                                         | 必填 | 说明                             |
 | --------      | ------------------------------------------------------------ | ---- | -------------------------------- |
-| customArray  | Array&lt;[CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo说明)&gt; | 是   | 拖拽发起后跟手效果所拖拽的对象。 |
+| customArray  | ArkTS-Dyn: Array&lt;[CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo说明)&gt; <br/>ArkTS-Sta: Array&lt;[CustomBuilder](arkui-ts/ts-types.md#custombuilder8) \| [DragItemInfo](arkui-ts/ts-universal-events-drag-drop.md#dragiteminfo说明)&gt; \| undefined | 是   | 拖拽发起后跟手效果所拖拽的对象。 |
 | dragInfo | [dragController.DragInfo](js-apis-arkui-dragController.md#draginfo)                                | 是   | 拖拽信息。                       |
 
 **返回值：**
@@ -12280,6 +12883,10 @@ getDragPreview(): dragController.DragPreview
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：** 
 
 | 类型                                                         | 说明                                                         |
@@ -12301,6 +12908,10 @@ setDragEventStrictReportingEnabled(enable: boolean): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** : SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -12343,6 +12954,10 @@ cancelDataLoading(key: string): void
 
 **系统能力：** : SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型    | 必填 | 说明                                                         |
@@ -12367,6 +12982,10 @@ notifyDragStartRequest(requestStatus: dragController.DragStartRequestStatus): vo
 **原子化服务API**: 从API version 18开始，该接口支持在原子化服务中使用。
 
 **系统能力**: SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13155,7 +13774,7 @@ clearFocus(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 20
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 
@@ -13213,6 +13832,10 @@ requestFocus(key: string): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13295,6 +13918,10 @@ activate(isActive: boolean, autoInactive?: boolean): void
 **原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13420,6 +14047,10 @@ setAutoFocusTransfer(isAutoFocusTransfer: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 14
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -13483,6 +14114,10 @@ setKeyProcessingMode(mode: KeyProcessingMode): void
 **原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 15
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13548,7 +14183,7 @@ type PointerStyle = pointer.PointerStyle
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 |类型|说明|
 | -- | -- |
@@ -13569,7 +14204,7 @@ restoreDefault(): void
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 **示例：**
 当光标移出绿框时，通过CursorController的restoreDefault方法恢复默认光标样式
@@ -13610,6 +14245,10 @@ setCursor(value: PointerStyle): void
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13834,6 +14473,98 @@ struct Index {
 }
 ```
 
+### getParagraphs<sup>20+</sup>
+
+getParagraphs(styledString: StyledString, options?: TextLayoutOptions): Array\<Paragraph\>
+
+获取属性字符串的布局信息。
+
+**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| styledString | [StyledString](./arkui-ts/ts-universal-styled-string.md#styledstring) | 是 | 属性字符串的值。 |
+| options | [TextLayoutOptions](./arkui-ts/ts-text-common.md#textlayoutoptions对象说明20) | 否 | 布局选项。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Array\<Paragraph\> | 属性字符串的段落数组。 | 
+
+**示例：**
+
+```ts
+import {
+  Entry, Component,Text, Column, Button, FontWeight, LengthMetrics, MutableStyledString, TextStyle, TextController, StyleOptions, State, StyledStringKey
+} from '@kit.ArkUI';
+
+@Entry
+@Component
+struct GetParagraphsDemo {
+  @State testStr: string = "Four score and seven years ago our fathers brought forth on this continent, a new nation, conceived in Liberty, and dedicated to the proposition that all men are created equal.";
+
+  testStyledString: MutableStyledString = new MutableStyledString(this.testStr, [{
+    start: 0,
+    length: 3,
+    styledKey: StyledStringKey.FONT,
+    styledValue: { fontSize: 20 } as TextStyle
+  } as StyleOptions]);
+
+  @State paragraphInfo: string = "";
+  textController: TextController = new TextController();
+
+  getParagraphsInfo(constraintWidth: LengthMetrics) {
+    const paragraphs = this.getUIContext().getMeasureUtils().getParagraphs(this.testStyledString, { constraintWidth });
+
+    let info = `总段落数：${paragraphs.length}\n`;
+    paragraphs.forEach((para, index) => {
+      info += `第${index+1}段行数：${para.getLineCount()}\n`;
+    });
+    this.paragraphInfo = info;
+
+    this.textController.setStyledString(this.testStyledString);
+  }
+
+  build() {
+    Column() {
+      Button('点击获取 Paragraphs 信息')
+        .onClick(() => this.getParagraphsInfo(LengthMetrics.px(500)))
+        .margin(10)
+
+      Text('Paragraphs 信息：')
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+
+      Text(this.paragraphInfo)
+        .fontSize(14)
+        .margin(5)
+        .width('100%')
+
+      Text('实际文本排版：')
+        .fontSize(16)
+        .fontWeight(FontWeight.Bold)
+
+      Text(undefined, { controller: this.textController })
+        .width('500px')
+        .fontSize(20)
+    }
+    .width('100%')
+    .padding(20)
+  }
+}
+```
+
+![image](figures/getParagraphsInfo_static.gif)
+
 ## ComponentSnapshot<sup>12+</sup>
 
 以下API需先使用UIContext中的[getComponentSnapshot()](js-apis-arkui-UIContext.md#getcomponentsnapshot12)方法获取ComponentSnapshot对象，再通过此实例调用对应方法。
@@ -13856,7 +14587,7 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: componentSnap
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 24
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13913,7 +14644,9 @@ struct SnapshotExample {
 
 ### get<sup>12+</sup>
 
-get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+ArkTS-Dyn: get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+
+ArkTS-Sta: get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null
 
 获取已加载的组件的截图，传入组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)，找到对应组件进行截图。通过Promise返回结果。
 
@@ -13924,6 +14657,10 @@ get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.Pixe
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -13936,7 +14673,7 @@ get(id: string, options?: componentSnapshot.SnapshotOptions): Promise<image.Pixe
 
 | 类型                                                         | 说明             |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 截图返回的结果。 |
+| ArkTS-Dyn: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; <br/>ArkTS-Sta: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; \| null | 截图返回的结果。<br/>**说明：** ArkTS-Sta返回null表示入参校验失败或内部错误。 |
 
 **错误码：** 
 
@@ -14005,7 +14742,7 @@ ArkTS-Sta: createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<ima
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -14088,7 +14825,7 @@ struct ComponentSnapshotExample {
 
 ArkTS-Dyn: createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-ArkTS-Sta: createFromBuilder(builder: CustomBuilder, delay?: int, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+ArkTS-Sta: createFromBuilder(builder: CustomBuilder, delay?: int, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null
 
 传入[CustomBuilder](arkui-ts/ts-types.md#custombuilder8)自定义组件，系统对其进行离屏构建后进行截图，并通过回调返回结果。
 
@@ -14104,7 +14841,7 @@ ArkTS-Sta: createFromBuilder(builder: CustomBuilder, delay?: int, checkImageStat
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -14119,7 +14856,7 @@ ArkTS-Sta: createFromBuilder(builder: CustomBuilder, delay?: int, checkImageStat
 
 | 类型                                                         | 说明             |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 截图返回的结果。 |
+| ArkTS-Dyn: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; <br/>ArkTS-Sta: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; \| null | 截图返回的结果。<br/>**说明：** ArkTS-Sta返回null表示入参校验失败或内部错误。 |
 
 **错误码：** 
 
@@ -14189,7 +14926,9 @@ struct ComponentSnapshotExample {
 
 ### getSync<sup>12+</sup>
 
-getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
+ArkTS-Dyn: getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
+
+ArkTS-Sta: getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap | null
 
 获取已加载的组件的截图，传入组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。
 
@@ -14200,6 +14939,10 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -14212,7 +14955,7 @@ getSync(id: string, options?: componentSnapshot.SnapshotOptions): image.PixelMap
 
 | 类型                            | 说明       |
 | ----------------------------- | -------- |
-| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 截图返回的结果。 |
+| ArkTS-Dyn: image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) <br/>ArkTS-Sta: image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| null | 截图返回的结果。<br/>**说明：** ArkTS-Sta返回null表示入参校验失败或内部错误。 |
 
 **错误码：** 
 
@@ -14263,7 +15006,7 @@ struct SnapshotExample {
 
 ArkTS-Dyn: getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-ArkTS-Sta: getWithUniqueId(uniqueId: int, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+ArkTS-Sta: getWithUniqueId(uniqueId: int, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null
 
 获取已加载的组件的截图，传入组件的[uniqueId](js-apis-arkui-frameNode.md#getuniqueid12)，找到对应组件进行截图。通过Promise返回结果。
 
@@ -14277,7 +15020,7 @@ ArkTS-Sta: getWithUniqueId(uniqueId: int, options?: componentSnapshot.SnapshotOp
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -14290,7 +15033,7 @@ ArkTS-Sta: getWithUniqueId(uniqueId: int, options?: componentSnapshot.SnapshotOp
 
 | 类型                                                         | 说明             |
 | ------------------------------------------------------------ | ---------------- |
-| Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | 截图返回的结果。 |
+| ArkTS-Dyn: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; <br/>ArkTS-Sta: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; \| null | 截图返回的结果。<br/>**说明：** ArkTS-Sta返回null表示入参校验失败或内部错误。 |
 
 **错误码：** 
 
@@ -14382,7 +15125,7 @@ ArkTS-Sta: getSyncWithUniqueId(uniqueId: int, options?: componentSnapshot.Snapsh
 
 **ArkTS-Dyn起始版本：** 15
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -14468,7 +15211,7 @@ struct SnapshotExample {
 
 ArkTS-Dyn: createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: number, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
 
-ArkTS-Sta: createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: int, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap>
+ArkTS-Sta: createFromComponent\<T extends Object>(content: ComponentContent\<T>, delay?: int, checkImageStatus?: boolean, options?: componentSnapshot.SnapshotOptions): Promise<image.PixelMap> | null
 
 将传入的content对象进行截图，并通过Promise返回结果。
 
@@ -14478,7 +15221,7 @@ ArkTS-Sta: createFromComponent\<T extends Object>(content: ComponentContent\<T>,
 
 **ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -14488,6 +15231,12 @@ ArkTS-Sta: createFromComponent\<T extends Object>(content: ComponentContent\<T>,
 | delay   | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否    | 指定触发截图指令的延迟时间。当布局中使用了图片组件时，需要指定延迟时间，以便系统解码图片资源。资源越大，解码需要的时间越长，建议尽量使用不需要解码的PixelMap资源。<br/> 当使用PixelMap资源或对Image组件设置syncload为true时，可以配置delay为0，强制不等待触发截图。该延迟时间并非指接口从调用到返回的时间，由于系统需要对传入的builder进行临时离屏构建，因此返回的时间通常要比该延迟时间长。<br/>**说明：** 截图接口传入的builder中，不应使用状态变量控制子组件的构建，如果必须要使用，在调用截图接口时，也不应再有变化，以避免出现截图不符合预期的情况。<br/> 取值范围：[0,+∞) ，小于0时按默认值处理。<br/>默认值：300 <br/> 单位：毫秒|
 | checkImageStatus  | boolean | 否    | 指定是否允许在截图之前，校验图片解码状态。如果为true，则会在截图之前检查所有Image组件是否已经解码完成，如果没有完成检查，则会放弃截图并返回异常。<br/>默认值：false|
 | options       | [componentSnapshot.SnapshotOptions](js-apis-arkui-componentSnapshot.md#snapshotoptions12) | 否    | 截图相关的自定义参数。可以指定截图时图形侧绘制pixelmap的缩放比例与是否强制等待系统执行截图指令前所有绘制指令都执行完成之后再截图。 |
+
+**返回值：**
+
+| 类型                                                         | 说明             |
+| ------------------------------------------------------------ | ---------------- |
+| ArkTS-Dyn: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; <br/>ArkTS-Sta: Promise&lt;image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; \| null | 截图返回的结果。<br/>**说明：** ArkTS-Sta返回null表示入参校验失败或内部错误。 |
 
 **错误码：** 
 
@@ -14760,6 +15509,10 @@ setFrameRateRange(range: ExpectedFrameRateRange): void
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型         | 必填   | 说明   |
@@ -14825,6 +15578,10 @@ getFrameRateRange(): ExpectedFrameRateRange
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：**  SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
 
 **返回值：**
 
@@ -15036,6 +15793,10 @@ setMenuOptions(options: TextMenuOptions): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 16
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型         | 必填   | 说明   |
@@ -15118,6 +15879,10 @@ static disableSystemServiceMenuItems(disable: boolean): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名      | 类型         | 必填   | 说明   |
@@ -15199,6 +15964,10 @@ static disableMenuItems(items: Array\<TextMenuItemId>): void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**ArkTS-Dyn起始版本：** 20
+
 **参数：**
 
 | 参数名      | 类型         | 必填   | 说明   |
@@ -15244,6 +16013,72 @@ struct Index {
           })
       }.width('100%')
     }
+    .height('100%')
+  }
+}
+```
+## enableEventPassthrough
+
+ArkTS-Dyn: enableEventPassthrough(enabled: boolean, eventType: RawInputEventType): void
+
+ArkTS-Sta: enableEventPassthrough(enabled: boolean | undefined, eventType: RawInputEventType): void
+
+启用或禁用事件直通。事件直通表示在事件分发过程中，不经过重采样直接下发给组件。未通过该接口设置时，默认禁用事件直通。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**参数：**
+
+| 参数名   | 类型                                       | 必填   | 说明                                    |
+| ----- | ---------------------------------------- | ---- | ------------------------------------- |
+| enabled | ArkTS-Dyn: boolean<br/>ArkTS-Sta: boolean \| undefined | 是    | 启用或禁用事件直通。true表示启用事件直通，false表示禁用事件直通，undefined表示禁用事件直通。 |
+| eventType | [RawInputEventType](./arkui-ts/ts-appendix-enums.md#rawinputeventtype) | 是    | 指定启用或禁用事件直通的原始输入事件类型。 |
+
+**示例：**
+
+ArkTS-Dyn示例：
+
+```ts
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Enable Event Passthrough')
+        .onClick(() => {
+          this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { Entry, Column, Component, Button, RawInputEventType } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Button('Enable Event Passthrough')
+        .onClick(() => {
+          this.getUIContext()?.enableEventPassthrough(true, RawInputEventType.TOUCH);
+        })
+    }
+    .width('100%')
     .height('100%')
   }
 }

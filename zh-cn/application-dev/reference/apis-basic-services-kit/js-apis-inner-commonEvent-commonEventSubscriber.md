@@ -1751,8 +1751,8 @@ ArkTS-Dyn中使用ArkTS-Sta的CommonEventSubscriber对象。
     subscriber = commonEventManager.createSubscriberSync(subscribeInfo);
     let dynamicHandler = transfer.transferDynamic(subscriber, 'CommonEventManager.CommonEventSubscriber');
     CommonEventSubscriberStaticToDynamic(dynamicHandler);
-  } catch (e: BusinessError) {
-    console.error('transferDynamic catch error：-----------' + e.message);
+  } catch (err) {
+    console.error('transferDynamic catch error：-----------' + err.message);
   }
   ```
 
@@ -1761,13 +1761,13 @@ ArkTS-Dyn中使用ArkTS-Sta的CommonEventSubscriber对象。
   ArkTS-Dyn示例：
   ```TypeScript
   import { commonEventManager, BusinessError } from '@kit.BasicServicesKit';
-  export function CommonEventSubscriberStaticToDynamic(subscriber_: any) {
+  export function CommonEventSubscriberStaticToDynamic(subscriber_: commonEventManager.CommonEventSubscriber) {
     try {
       let subscriber: commonEventManager.CommonEventSubscriber = subscriber_ as commonEventManager.CommonEventSubscriber;
       let subscribeInfo = subscriber.getSubscribeInfoSync();
       console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
-    } catch (e: BusinessError) {
-      console.error('CommonEventSubscriberStaticToDynamic catch Error: ' + e.message);
+    } catch (err) {
+      console.error('CommonEventSubscriberStaticToDynamic catch Error: ' + err.message);
     }
   }
   ```
@@ -1790,8 +1790,8 @@ ArkTS-Sta中使用ArkTS-Dyn的CommonEventSubscriber对象。
   try {
     dynamicSubscriber = commonEventManager.createSubscriberSync(subscribeInfo);
     CommonEventSubscriberDynamicToStatic(dynamicSubscriber);
-  } catch (e: BusinessError) {
-    console.error('transferDynamic catch error：' + e.message);
+  } catch (err) {
+    console.error('transferDynamic catch error：' + err.message);
   }
   ```
 
@@ -1807,8 +1807,8 @@ ArkTS-Sta中使用ArkTS-Dyn的CommonEventSubscriber对象。
       let staticSubscriber: commonEventManager.CommonEventSubscriber = transfer.transferStatic(dynObject, 'CommonEventManager.CommonEventSubscriber') as commonEventManager.CommonEventSubscriber;
       let subscribeInfo = staticSubscriber.getSubscribeInfoSync();
       console.info(`Succeeded in getting subscribe info, subscribe info is ${JSON.stringify(subscribeInfo)}`);
-    } catch (e: BusinessError) {
-        console.error('CommonEventSubscriberDynamicToStatic catch error：' + e.message);
+    } catch (err) {
+        console.error('CommonEventSubscriberDynamicToStatic catch error：' + err.message);
     }
   }
   ```

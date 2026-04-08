@@ -22,6 +22,10 @@ import { nfcController } from '@kit.ConnectivityKit';
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称 | 值 | 说明 |
 | -------- | -------- | -------- |
 | STATE_OFF | 1 | NFC已关闭状态。 |
@@ -38,7 +42,11 @@ isNfcAvailable(): boolean
 > **说明：**
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[canIUse("SystemCapability.Communication.NFC.Core")](../common/init.md#caniuse)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **系统能力：** SystemCapability.Communication.NFC.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -56,9 +64,13 @@ openNfc(): boolean
 > **说明：**
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[enableNfc](#nfccontrollerenablenfc9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.MANAGE_SECURE_SETTINGS（该权限仅系统应用可申请）
 
 **系统能力：** SystemCapability.Communication.NFC.Core
+
+**ArkTS-Dyn起始版本：** 7
 
 **返回值：**
 
@@ -75,6 +87,10 @@ enableNfc(): void
 **需要权限：** ohos.permission.MANAGE_SECURE_SETTINGS（该权限仅系统应用可申请）
 
 **系统能力：** SystemCapability.Communication.NFC.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -95,9 +111,13 @@ closeNfc(): boolean
 > **说明：**
 > 从 API version 7 开始支持，从 API version 9 开始废弃，建议使用[disableNfc](#nfccontrollerdisablenfc9)替代。
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
 **需要权限：** ohos.permission.MANAGE_SECURE_SETTINGS（该权限仅系统应用可申请）
 
 **系统能力：** SystemCapability.Communication.NFC.Core
+
+**ArkTS-Dyn起始版本：** 9
 
 **返回值：**
 
@@ -114,6 +134,10 @@ disableNfc(): void
 **需要权限：** ohos.permission.MANAGE_SECURE_SETTINGS（该权限仅系统应用可申请）
 
 **系统能力：** SystemCapability.Communication.NFC.Core
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **错误码：**
 
@@ -135,6 +159,10 @@ isNfcOpen(): boolean
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型 | 说明                            |
@@ -151,6 +179,10 @@ getNfcState(): [NfcState](#nfcstate)
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
 **返回值：**
 
 | 类型 | 说明               |
@@ -165,7 +197,7 @@ on(type: 'nfcStateChange', callback: Callback&lt;[NfcState](#nfcstate)&gt;): voi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[onNfcStateChange](#nfccontrolleronnfcstatechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[onNfcStateChange](#nfccontrolleronnfcstatechange23)。
 
 **系统能力：** SystemCapability.Communication.NFC.Core
 
@@ -180,7 +212,7 @@ on(type: 'nfcStateChange', callback: Callback&lt;[NfcState](#nfcstate)&gt;): voi
 | type | string | 是 | 固定填"nfcStateChange"字符串。 |
 | callback | Callback&lt;[NfcState](#nfcstate)&gt; | 是 | NFC状态改变通知的回调函数。 |
 
-## nfcController.onNfcStateChange<sup>22+</sup>
+## nfcController.onNfcStateChange<sup>23+</sup>
 
 onNfcStateChange(callback: Callback&lt;NfcState&gt;): void
 
@@ -192,7 +224,7 @@ onNfcStateChange(callback: Callback&lt;NfcState&gt;): void
 
 **系统能力：** SystemCapability.Communication.NFC.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
  
@@ -208,7 +240,7 @@ off(type: 'nfcStateChange', callback?: Callback&lt;[NfcState](#nfcstate)&gt;): v
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTS-Sta接口是[offNfcStateChange](#nfccontrolleroffnfcstatechange22)。
+**相关接口：** 该接口对应的ArkTS-Sta接口是[offNfcStateChange](#nfccontrolleroffnfcstatechange23)。
 
 **系统能力：** SystemCapability.Communication.NFC.Core
 
@@ -264,9 +296,9 @@ if (nfcController.isNfcOpen()) {
 nfcController.off("nfcStateChange");
 ```
 
-## nfcController.offNfcStateChange<sup>22+</sup>
+## nfcController.offNfcStateChange<sup>23+</sup>
 
-offNfcStateChange(callback: Callback&lt;NfcState&gt;): void
+offNfcStateChange(callback?: Callback&lt;NfcState&gt;): void
 
 注册NFC开关状态事件，通过Callback方式获取NFC状态的变化通知。
 
@@ -276,13 +308,13 @@ offNfcStateChange(callback: Callback&lt;NfcState&gt;): void
 
 **系统能力：** SystemCapability.Communication.NFC.Core
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数**
  
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[NfcState](#nfcstate)&gt; | 是 | NFC状态改变通知的回调函数。 |
+| callback | Callback&lt;[NfcState](#nfcstate)&gt; | 否 | NFC状态改变通知的回调函数。 |
 
 **示例**
 

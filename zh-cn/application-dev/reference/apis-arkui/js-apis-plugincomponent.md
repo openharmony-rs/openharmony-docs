@@ -51,7 +51,7 @@ ArkTS-Sta: type KVObject = Record<string, int | long | double | string | boolean
 
 | 名称    | 类型   | 只读 | 可选 | 说明                        |
 | ------- | ------ | ---- | ---- | --------------------------- |
-|  [key: string]  | ArkTS-Dyn: number \| string \| boolean \| [] \| [KVObject](#kvobject)<br/>ArkTS-Sta: string, int \| long \| double \| string \| boolean \| Array<KVObject> \| KVObject  | 否 | 否   | 键值对形式存储。<br/>number：键值，表示值类型为数字。<br/> string：键值，表示值类型为字符串，可取空字符串。<br/> boolean：键值，表示值类型为布尔值。<br/> []：键值，可取值为[]。<br/>[KVObject](#kvobject)：键值，表示值类型为KVObject。            |
+|  [key: string]  | ArkTS-Dyn: number \| string \| boolean \| [] \| [KVObject](#kvobject)<br/>ArkTS-Sta: int \| long \| double \| string \| boolean \| [Array&lt;KVObject&gt;](#kvobject) \| [KVObject](#kvobject)  | 否 | 否   | 键值对形式存储。<br/>number：键值，表示值类型为数字。<br/> string：键值，表示值类型为字符串，可取空字符串。<br/> boolean：键值，表示值类型为布尔值。<br/> []：键值，可取值为[]。<br/>[KVObject](#kvobject)：键值，表示值类型为KVObject。            |
 
 
 ### PushParameters

@@ -18,6 +18,8 @@
 
 ## 接口
 
+### GridRow
+
 GridRow(option?: GridRowOptions)
 
 栅格行布局容器。
@@ -28,7 +30,29 @@ GridRow(option?: GridRowOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[GridRow](#gridrow23)。
+
 **ArkTS-Dyn起始版本：** 9
+
+**参数：** 
+
+| 参数名 |类型|必填|说明|
+|-----|-----|----|----|
+| option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
+
+### GridRow<sup>23+</sup>
+
+GridRow(option?: GridRowOptions，content?: CustomBuilder)
+
+栅格行布局容器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[GridRow](#gridrow-1)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -37,6 +61,7 @@ GridRow(option?: GridRowOptions)
 | 参数名 |类型|必填|说明|
 |-----|-----|----|----|
 | option | [GridRowOptions](#gridrowoptions对象说明) | 否  | 栅格布局子组件参数。 |
+| content_  | [CustomBuilder](ts-types.md#custombuilder8) | 否    | 容器。 |
 
 ## GridRowOptions对象说明
 
@@ -131,6 +156,8 @@ GridRow(option?: GridRowOptions)
 
 | 名称   | 类型   | 必填   | 说明          |
 | ----- | ------ | ---- | ---------------------------------------- |
+| xs  | [Length](ts-types.md#length) | 否    | 在最小宽度类型设备上，栅格子组件的间距。    |
+| sm  | [Length](ts-types.md#length) | 否    | 在小宽度类型设备上，栅格子组件的间距。      |
 | md  | [Length](ts-types.md#length) | 否    | 在中等宽度类型设备上，栅格子组件的间距。    |
 | lg  | [Length](ts-types.md#length) | 否    | 在大宽度类型设备上，栅格子组件的间距。      |
 | xl  | [Length](ts-types.md#length) | 否    | 在特大宽度类型设备上，栅格子组件的间距。    |
@@ -231,6 +258,27 @@ ArkTS-Sta: alignItems(value: ItemAlign | undefined)
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
 | value  | ArkTS-Dyn: [ItemAlign](ts-appendix-enums.md#itemalign)<br/>ArkTS-Sta: [ItemAlign](ts-appendix-enums.md#itemalign) \| undefined | 是   | GridRow中的GridCol垂直主轴方向对齐方式。<br/>默认值：ItemAlign.Start<br/>**说明**：<br/>ItemAlign支持的枚举：ItemAlign.Start、ItemAlign.Center、ItemAlign.End、ItemAlign.Stretch。 |
 
+### attributeModifier<sup>12+</sup>
+
+ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<GridRowAttribute>)
+
+ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<GridRowAttribute> | AttributeModifier\<CommonMethod> | undefined)
+
+设置组件的动态属性。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridRowAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<GridRowAttribute> \| [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<CommonMethod> \| undefined | 是   | 动态设置GridRow组件的属性。 |
 
 ## 事件
 
@@ -238,7 +286,9 @@ ArkTS-Sta: alignItems(value: ItemAlign | undefined)
 
 ### onBreakpointChange<sup>9+</sup>
 
-onBreakpointChange(callback: (breakpoints: string) => void)
+ArkTS-Dyn: onBreakpointChange(callback: (breakpoints: string) => void)
+
+ArkTS-Sta: onBreakpointChange(callback: ((breakpoints: string) => void) | undefined)
 
 断点发生变化时触发回调。
 
@@ -250,7 +300,7 @@ onBreakpointChange(callback: (breakpoints: string) => void)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 9
+**ArkTS-Sta起始版本：** 23
 
 
 **参数：**

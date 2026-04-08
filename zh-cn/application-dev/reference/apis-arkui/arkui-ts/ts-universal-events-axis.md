@@ -10,13 +10,11 @@
 
 ## onAxisEvent
 
-ArkTS-Dyn: onAxisEvent(event: (event: AxisEvent) => void): T
+ArkTS-Dyn: onAxisEvent(event: Callback\<AxisEvent>): T
 
-ArkTS-Sta: onAxisEvent(event: Callback<AxisEvent> | undefined): this
+ArkTS-Sta: onAxisEvent(event: Callback\<AxisEvent> | undefined): this
 
 鼠标滚轮滚动或触控板双指移动触发该回调。
-
-**卡片能力：** 从API version 17开始，该接口支持在ArkTS卡片中使用。
 
 **原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。
 
@@ -30,7 +28,7 @@ ArkTS-Sta: onAxisEvent(event: Callback<AxisEvent> | undefined): this
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | ArkTS-Dyn: [AxisEvent](#axisevent) <br/>ArkTS-Sta: Callback\<[AxisEvent](#axisevent)> \|&nbsp;undefined | 是   | 获得[AxisEvent](#axisevent)对象。 |
+| event  | ArkTS-Dyn: Callback\<[AxisEvent](#axisevent)> <br/>ArkTS-Sta: Callback\<[AxisEvent](#axisevent)> \|&nbsp;undefined | 是   | 获得[AxisEvent](#axisevent)对象。 |
 
 **返回值：**
 
@@ -56,9 +54,25 @@ ArkTS-Sta: onAxisEvent(event: Callback<AxisEvent> | undefined): this
 | displayX            | ArkTS-Dyn: number<br/>ArkTS-Sta: double                 | 否   | 否   | 鼠标光标相对于当前屏幕左上角的X坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
 | displayY            | ArkTS-Dyn: number<br/>ArkTS-Sta: double                 | 否   | 否   | 鼠标光标相对于当前屏幕左上角的Y坐标。<br/>单位：vp<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。  <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
 | scrollStep          | ArkTS-Dyn: number<br/>ArkTS-Sta: int                 | 否   | 是   | 鼠标轴滚动步长配置。<br/> **说明：**&nbsp;仅支持鼠标滚轮，取值范围0~65535。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。 <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
-| propagation         | Callback\<void>        | 否   | 否   | 激活事件冒泡。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。   <br/>**ArkTS-Dyn起始版本：** 17<br/>**ArkTS-Sta起始版本：** 23 |
+| propagation         | Callback\<void>        | 否   | 否   | 激活事件冒泡。<br/>**原子化服务API：** 从API version 17开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**相关接口：** 该接口对应的ArkTS-Sta的接口是[propagation](#propagation23)。<br/>**ArkTS-Dyn起始版本：** 17 |
 | globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 鼠标光标相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
-| globalDisplayY<sup>24+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 鼠标光标相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+| globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否 | 是 | 鼠标光标相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+
+### propagation<sup>23+</sup>
+
+propagation(): void
+
+激活事件冒泡。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[propagation](#axisevent)。
+
+**ArkTS-Sta起始版本：** 23
 
 ### getHorizontalAxisValue
 
@@ -103,6 +117,54 @@ ArkTS-Sta: getVerticalAxisValue(): double
 | 类型              |说明       |
 | ------- | --------------------------------- | 
 | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 垂直轴值。<br>单位：vp |
+
+### getPinchAxisScaleValue<sup>21+</sup>
+
+ArkTS-Dyn: getPinchAxisScaleValue(): number
+
+ArkTS-Sta: getPinchAxisScaleValue(): double
+
+返回此次轴事件双指缩放的比例。
+
+**原子化服务API：** 从API version 21开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 21
+
+**ArkTS-Sta起始版本：** 23
+
+**返回值：**
+
+| 类型              |说明       |
+| ------- | --------------------------------- | 
+| ArkTS-Dyn: number<br/>ArkTS-Sta: double | 双指缩放比例。<br/> **说明：** 缩放比例指的是触控板双指缩放事件触发过程中双指当前的距离与双指最初按下时的距离的比值。<br/>默认值：0<br/>取值范围：[0, +∞)<br/> |
+
+### hasAxis<sup>22+</sup>
+
+hasAxis(axisType: AxisType): boolean
+
+检测此轴事件是否包含指定的轴类型。
+
+**原子化服务API：** 从API version 22开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 22
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                              | 必填 | 说明                 |
+| ------ | --------------------------------- | ---- | -------------------- |
+| axisType  | [AxisType](ts-appendix-enums.md#axistype22) | 是   | 轴事件的轴类型。 |
+
+**返回值：**
+
+| 类型              |说明       |
+| ------- | --------------------------------- | 
+| boolean | 此轴事件是否包含指定的轴类型。<br>true：包含指定的轴类型；false：不包含指定的轴类型。 |
 
 ## 示例
 

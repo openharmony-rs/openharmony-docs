@@ -1448,6 +1448,201 @@ try {
 ```
 
 
+### stringifyWithGetters
+
+static stringifyWithGetters(obj: Any): String
+
+将ArkTS-Sta对象转换成JSON字符串，同时调用使用`@JSONStringifyGetter`注解标记的`get`方法，并将其返回值包含在输出中。`get`方法名作为JSON的key，返回值作为对应的value。
+
+> **注意：** 
+>
+> `@JSONStringifyGetter`注解仅对`get`方法生效。普通方法即使标注了此注解也不会被调用。未标注`@JSONStringifyGetter`的`get`方法同样不会包含在输出中。父类中标注的`get`方法也会被包含。
+
+**参数：**
+
+| 参数名 | 类型 | 必填  | 说明          |
+| ----- | ---- | ----- | ------------- |
+| obj   | Any  | 是    | Any类型的对象。|
+
+**返回值：**
+
+| 类型   | 说明                                       |
+| ------ | ------------------------------------------ |
+| String | JSON格式的字符串，包含注解get方法的返回值。|
+
+**示例：**
+
+```ts
+class Person {
+    private _firstName: string;
+    private _lastName: string;
+
+    constructor(firstName: string, lastName: string) {
+        this._firstName = firstName;
+        this._lastName = lastName;
+    }
+
+    @JSONStringifyGetter
+    get firstName(): string {
+        return this._firstName;
+    }
+
+    @JSONStringifyGetter
+    get lastName(): string {
+        return this._lastName;
+    }
+
+    @JSONStringifyGetter
+    get fullName(): string {
+        return this._firstName + " " + this._lastName;
+    }
+}
+
+const p = new Person("John", "Doe");
+
+try {
+    const json = JSON.stringifyWithGetters(p);
+    console.info(json); // {"firstName":"John","lastName":"Doe","fullName":"John Doe"}
+} catch (error) {
+    const err: Error = error as Error;
+    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+
+### stringifyWithGetters
+
+static stringifyWithGetters(obj: Any, replacer: ((key: string, value: Any) => Any) | undefined | null, space?: int | string): string
+
+将ArkTS-Sta对象转换成JSON字符串，同时调用`@JSONStringifyGetter`注解标记的`get`方法，支持自定义过滤器和格式化参数。
+
+**参数：**
+
+| 参数名    | 类型                        | 必填 | 说明                     |
+| -------- | --------------------------- | --- | ------------------------- |
+| obj      | Any                         | 是  | 一个Any类型的对象。         |
+| replacer | function \|undefined \|null | 否  | 过滤方法，默认为undefined。 |
+| space    | int \| string               | 否  | 格式化参数，默认为undefined。|
+
+**返回值：**
+
+| 类型   | 说明                                       |
+| ------ | ------------------------------------------ |
+| string | JSON格式的字符串，包含注解get方法的返回值。|
+
+**示例：**
+
+```ts
+class Person {
+    private _firstName: string;
+    private _lastName: string;
+
+    constructor(firstName: string, lastName: string) {
+        this._firstName = firstName;
+        this._lastName = lastName;
+    }
+
+    @JSONStringifyGetter
+    get firstName(): string {
+        return this._firstName;
+    }
+
+    @JSONStringifyGetter
+    get lastName(): string {
+        return this._lastName;
+    }
+
+    @JSONStringifyGetter
+    get fullName(): string {
+        return this._firstName + " " + this._lastName;
+    }
+}
+
+const p = new Person("John", "Doe");
+
+function replacer(key: string, value: Any): Any {
+    if (key == "fullName") {
+        return undefined;
+    }
+    return value;
+}
+
+try {
+    const json = JSON.stringifyWithGetters(p, replacer, 2);
+    console.info(json); 
+    // {
+    //   "firstName": "John"
+    //   "lastName": "Doe",
+    // }
+} catch (error) {
+    const err: Error = error as Error;
+    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+
+### stringifyWithGetters
+
+static stringifyWithGetters(obj: Any, replacer: Array\<double | string> | Array\<string> | Array\<double>, space?: int | string): string
+
+将ArkTS-Sta对象转换成JSON字符串，同时调用`@JSONStringifyGetter`注解标记的`get`方法，支持数组过滤器和格式化参数。
+
+**参数：**
+
+| 参数名    | 类型                                                           | 必填  | 说明                       |
+| -------- | -------------------------------------------------------------- | ---- | -------------------------- |
+| obj      | Any                                                            | 是   | 要转换的对象。              |
+| replacer | Array\<double \| string> \| Array\<string> \| Array\<double>  | 是   | 过滤器数组。                |
+| space    | int \| string                                                  | 否   | 格式化缩进，默认为undefined。|
+
+**返回值：**
+
+| 类型   | 说明                                       |
+| ------ | ------------------------------------------ |
+| string | JSON格式的字符串，包含注解get方法的返回值。|
+
+**示例：**
+
+```ts
+class Person {
+    private _firstName: string;
+    private _lastName: string;
+
+    constructor(firstName: string, lastName: string) {
+        this._firstName = firstName;
+        this._lastName = lastName;
+    }
+
+    @JSONStringifyGetter
+    get firstName(): string {
+        return this._firstName;
+    }
+
+    @JSONStringifyGetter
+    get lastName(): string {
+        return this._lastName;
+    }
+
+    @JSONStringifyGetter
+    get fullName(): string {
+        return this._firstName + " " + this._lastName;
+    }
+}
+
+const p = new Person("John", "Doe");
+
+let arr: Array<string> = ["firstName", "fullName"];
+
+try {
+    const json = JSON.stringifyWithGetters(p, arr, 0);
+    console.info(json); // {"firstName":"John","fullName":"John Doe"}
+} catch (error) {
+    const err: Error = error as Error;
+    console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
+}
+```
+
+
 ### parse
 
 static parse\<T>(text: String, type: Type):Any
@@ -1524,6 +1719,217 @@ try {
     const err: Error = error as Error;
     console.error(`Failed to opt JSON. Code is ${err.code}, message is ${err.message}`);
 }
+```
+
+
+### parseUpdate
+
+static parseUpdate\<T>(json: string, instance: T): T
+
+解析JSON字符串并将结果填充到已有实例的字段中。与parse\<T>(json, type)不同，此方法不要求目标类具有默认构造函数。JSON中不存在的key对应的字段保留实例上的当前值（合并语义）。
+
+**数组字段处理：**
+
+- **FixedArray字段**：支持解析。运行时可以获取元素类型，JSON数组会被正确反序列化为对应的FixedArray。
+- **Array字段**：不支持解析。由于类型擦除，运行时无法获取Array的元素类型，解析时会抛出Error。如果JSON中不包含该字段的key，Array字段会保留原值。
+
+```ts
+class Scores {
+    label: string = "";
+    fixed: FixedArray<int> = [];    // 支持解析
+    resizable: double[] = [];       // 不支持解析，解析时抛出Error
+}
+
+const obj = new Scores();
+obj.resizable = [99, 100];
+
+// FixedArray字段正常解析
+JSON.parseUpdate<Scores>('{"label":"ok","fixed":[1,2,3]}', obj);
+console.info(obj.fixed.length); // 3
+console.info(obj.resizable[0]); // 99（JSON中无此key，保留原值）
+
+// Array字段解析会抛出Error
+try {
+    JSON.parseUpdate<Scores>('{"resizable":[10,20]}', obj);
+} catch (e) {
+    console.info(e.message); // "std.core.Array is expected, but get std.core.JSONArray"
+}
+```
+
+**参数：**
+
+| 参数名    | 类型   | 必填  | 说明                       |
+| -------- | ------ | ---- | -------------------------- |
+| json     | string | 是   | JSON格式的字符串。           |
+| instance | T      | 是   | 要填充字段的已有实例对象。    |
+
+**返回值：**
+
+| 类型  | 说明                    |
+| ---- | ----------------------- |
+| T    | 填充完成后的同一实例对象。 |
+
+**示例：**
+
+```ts
+class Config {
+    host: string = "localhost";
+    port: int = 8080;
+    debug: boolean = false;
+}
+
+const cfg = new Config();
+cfg.port = 9090;
+cfg.debug = true;
+
+JSON.parseUpdate<Config>('{"host":"example.com"}', cfg);
+
+console.info(cfg.host);  // example.com
+console.info(cfg.port);  // 9090（保留原值）
+console.info(cfg.debug); // true（保留原值）
+```
+
+**嵌套对象示例：**
+
+嵌套对象会递归填充，内部对象的引用保持不变。JSON中缺失的嵌套字段保留原值。
+
+```ts
+class Size {
+    width: double = 0;
+    height: double = 0;
+}
+
+class Widget {
+    name: string = "";
+    size: Size = new Size();
+}
+
+const w = new Widget();
+JSON.parseUpdate<Widget>('{"name":"button","size":{"width":100,"height":50}}', w);
+
+console.info(w.name);        // button
+console.info(w.size.width);  // 100
+console.info(w.size.height); // 50
+```
+
+**深层嵌套合并示例：**
+
+```ts
+class Address {
+    city: string = "";
+    zip: string = "";
+}
+
+class Department {
+    name: string = "";
+    address: Address = new Address();
+}
+
+class Employee {
+    name: string = "";
+    age: int = 0;
+    dept: Department = new Department();
+}
+
+const emp = new Employee();
+emp.name = "Bob";
+emp.age = 40;
+emp.dept.name = "Sales";
+emp.dept.address.city = "Munich";
+emp.dept.address.zip = "80331";
+
+JSON.parseUpdate<Employee>('{"dept":{"name":"Engineering"}}', emp);
+
+console.info(emp.name);              // Bob（保留原值）
+console.info(emp.age);               // 40（保留原值）
+console.info(emp.dept.name);         // Engineering
+console.info(emp.dept.address.city); // Munich（保留原值）
+console.info(emp.dept.address.zip);  // 80331（保留原值）
+```
+
+
+### parseUpdate
+
+static parseUpdate\<T>(json: string, reviver: ((key: string, value: Any) => Any) | undefined, instance: T, options?: jsonx.ParseOptions): T
+
+解析JSON字符串并将结果填充到已有实例的字段中，支持可选的reviver函数和解析参数。与parse\<T>(json, type)不同，此方法不要求目标类具有默认构造函数。JSON中不存在的key对应的字段保留实例上的当前值（合并语义）。
+
+**参数：**
+
+| 参数名    | 类型                                      | 必填  | 说明                       |
+| -------- | ----------------------------------------- | ---- | -------------------------- |
+| json     | string                                    | 是   | JSON格式的字符串。           |
+| reviver  | function \| undefined                     | 是   | 自定义值转换函数，或undefined。|
+| instance | T                                         | 是   | 要填充字段的已有实例对象。     |
+| options  | [jsonx.ParseOptions](arkts-sta-jsonx.md) | 否   | 解析操作参数，默认为undefined。|
+
+**返回值：**
+
+| 类型  | 说明                    |
+| ---- | ----------------------- |
+| T    | 填充完成后的同一实例对象。 |
+
+**示例：**
+
+```ts
+class Point {
+    x: double = 0;
+    y: double = 0;
+}
+
+const pt = new Point();
+
+const reviver = (key: string, val: Any): Any => {
+    if (key == "x") {
+        return (val as Double) * 10;
+    }
+    return val;
+};
+
+JSON.parseUpdate<Point>('{"x":3,"y":5}', reviver, pt);
+
+console.info(pt.x); // 30
+console.info(pt.y); // 5
+```
+
+**嵌套对象与reviver示例：**
+
+内部对象不需要默认构造函数也可以更新，引用保持不变。
+
+```ts
+class Engine {
+    model: string = "";
+
+    constructor(model: string) {
+        this.model = model;
+    }
+}
+
+class Car {
+    brand: string = "";
+    engine: Engine = new Engine("default");
+    year: int = 0;
+
+    constructor(brand: string, engine: Engine, year: int) {
+        this.brand = brand;
+        this.engine = engine;
+        this.year = year;
+    }
+}
+
+const engine = new Engine("V6");
+const car = new Car("Audi", engine, 2020);
+
+const reviver = (key: string, val: Any): Any => { return val; };
+
+JSON.parseUpdate<Car>(
+    '{"brand":"BMW","engine":{"model":"V8"},"year":2024}', reviver, car
+);
+
+console.info(car.brand);        // BMW
+console.info(car.year);         // 2024
+console.info(car.engine.model); // V8
+console.info(car.engine === engine); // true（引用保持不变）
 ```
 
 

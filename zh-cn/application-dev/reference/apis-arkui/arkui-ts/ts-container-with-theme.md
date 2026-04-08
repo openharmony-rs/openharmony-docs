@@ -107,6 +107,10 @@ dark.json数据示例：
     }
   ```
 
+### 示例1（指定局部深浅色模式）
+
+ArkTS-Dyn示例：
+
 ```ts
 // 指定局部深浅色模式
 @Entry
@@ -160,7 +164,77 @@ struct Index {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Text,
+  Column,
+  Component,
+  $r,
+  Entry,
+  WithTheme,
+  ThemeColorMode,
+  FlexAlign,
+  SafeAreaType,
+  SafeAreaEdge,
+  State
+} from "@kit.ArkUI"
+
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      // 系统默认
+      Column() {
+        Text('无WithTheme')
+          .fontSize(40)
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('33%')
+      .backgroundColor($r('sys.color.background_primary'))
+      // 设置组件为深色模式
+      WithTheme({ colorMode: ThemeColorMode.DARK }) {
+        Column() {
+          Text('WithTheme')
+            .fontSize(40)
+          Text('DARK')
+            .fontSize(40)
+        }
+        .justifyContent(FlexAlign.Center)
+        .width('100%')
+        .height('33%')
+        .backgroundColor($r('sys.color.background_primary'))
+      }
+      // 设置组件为浅色模式
+      WithTheme({ colorMode: ThemeColorMode.LIGHT }) {
+        Column() {
+          Text('WithTheme')
+            .fontSize(40)
+          Text('LIGHT')
+            .fontSize(40)
+        }
+        .justifyContent(FlexAlign.Center)
+        .width('100%')
+        .height('33%')
+        .backgroundColor($r('sys.color.background_primary'))
+      }
+    }
+    .height('100%')
+    .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.END, SafeAreaEdge.BOTTOM, SafeAreaEdge.START])
+  }
+}
+```
+
 ![withThemeColorMode](figures/witheThemeColorMode.png)
+
+### 示例2（自定义WithTheme作用域内组件缺省配色）
+
+ArkTS-Dyn示例：
 
 ```ts
 // 自定义WithTheme作用域内组件缺省配色
@@ -243,4 +317,84 @@ struct IndexPage {
   }
 }
 ```
+
+ArkTS-Sta示例：
+
+```ts
+import {
+  Text,
+  Column,
+  Component,
+  Button,
+  Entry,
+  ResourceColor,
+  WithTheme,
+  State
+} from "@kit.ArkUI"
+
+import { CustomColors, CustomTheme } from '@ohos.arkui.theme'
+
+class GreenColors implements CustomColors {
+  fontPrimary?: ResourceColor = '#ff049404';
+  fontEmphasize?: ResourceColor = '#FF00541F';
+  fontOnPrimary?: ResourceColor = '#FFFFFFFF';
+  compBackgroundTertiary?: ResourceColor = '#1111FF11';
+  backgroundEmphasize?: ResourceColor = '#FF00541F';
+  compEmphasizeSecondary?: ResourceColor = '#3322FF22';
+}
+
+class RedColors implements CustomColors {
+  fontPrimary?: ResourceColor = '#fff32b3c';
+  fontEmphasize?: ResourceColor = '#FFD53032';
+  fontOnPrimary?: ResourceColor = '#FFFFFFFF';
+  compBackgroundTertiary?: ResourceColor = '#44FF2222';
+  backgroundEmphasize?: ResourceColor = '#FFD00000';
+  compEmphasizeSecondary?: ResourceColor = '#33FF1111';
+}
+
+class PageCustomTheme implements CustomTheme {
+  colors?: CustomColors
+
+  constructor(colors: CustomColors) {
+    this.colors = colors
+  }
+}
+
+@Entry
+@Component
+struct IndexPage {
+  static readonly themeCount: int = 3;
+  themeNames: Array<string> = ['System', 'Custom (green)', 'Custom (red)'];
+  themeArray: Array<(CustomTheme | undefined)> = [
+    undefined, // System
+    new PageCustomTheme(new GreenColors()),
+    new PageCustomTheme(new RedColors())
+  ]
+  @State themeIndex: int = 0;
+
+  build() {
+    Column() {
+      Column() {
+        Text(`未使用WithTheme`)
+        // 点击按钮切换局部换肤
+        Button(`切换theme配色：${this.themeNames[this.themeIndex]}`)
+          .onClick(() => {
+            this.themeIndex = (this.themeIndex + 1) % IndexPage.themeCount;
+          })
+      }
+      .margin(8)
+
+      WithTheme({ theme: this.themeArray[this.themeIndex] }) {
+        // WithTheme作用域
+        Column() {
+          Text(`使用WithTheme`)
+        }
+        .width('100%')
+        .margin(8)
+      }
+    }
+  }
+}
+```
+
 ![withThemeSystem](figures/withThemeChangeTheme.gif)

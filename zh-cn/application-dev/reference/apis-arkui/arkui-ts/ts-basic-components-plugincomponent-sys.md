@@ -15,7 +15,6 @@
 
 无
 
-
 ## 接口
 
 PluginComponent(options: PluginComponentOptions)
@@ -26,11 +25,15 @@ PluginComponent(options: PluginComponentOptions)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名  | 类型                                                     | 必填 | 说明                                                     |
 | ------- | ----------------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| options | [PluginComponentOptions](#plugincomponentoptions18类型说明) | 是   | 定义用于构造插件组件的选项。 |
+| options<sup>18+</sup> | [PluginComponentOptions](#plugincomponentoptions18类型说明) | 是   | 定义用于构造插件组件的选项。 |
 
 ## PluginComponentOptions<sup>18+</sup>类型说明
 
@@ -40,33 +43,51 @@ PluginComponent(options: PluginComponentOptions)
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
-| 参数       | 类型   | 描述                        |
-| ---------- | ------ | --------------------------- |
-| template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9类型说明) | 组件模板，用于跟提供方定义的组件绑定。                |
-| data<sup>9+</sup>       | any    | 传给插件组件提供方使用的数据。 |
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称       | 类型   | 只读 | 可选 | 说明                        |
+| ---------- | ------ | ---- | ---- | --------------------------- |
+| template<sup>9+</sup>   | [PluginComponentTemplate](#plugincomponenttemplate9类型说明) | 否   | 否   | 组件模板，用于跟提供方定义的组件绑定。                |
+| data<sup>9+</sup>       | ArkTS-Dyn: any<br/>ArkTS-Sta: RecordData    | 否   | 否   | 传给插件组件提供方使用的数据。 |
 
 ## PluginComponentTemplate<sup>9+</sup>类型说明
 
-| 参数       | 类型   | 描述                        |
-| ---------- | ------ | --------------------------- |
-| source     | string | 组件模板名。                |
-| bundleName | string | 提供方Ability的bundleName。 |
+组件模板定义。
+
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称       | 类型   | 只读 | 可选 | 说明                        |
+| ---------- | ------ | ---- | ---- | --------------------------- |
+| source     | string | 否   | 否   | 组件模板名。                |
+| bundleName | string | 否   | 否   | 提供方Ability的bundleName。 |
 
 ## 属性
 
 必须显式设置组件宽高为非0有效值。
 
-**说明：**
-
-  模板支持两种提供方式：
-* 1.使用绝对路径进行资源提供：source字段填写模板绝对路径，bundleName不需要填写。仅适用于不需要加载资源的单独模板页面，不建议使用。
-* 2.通过应用包进行资源提供：bundleName字段需要填写应用包名；source字段填写相对hap包的模板相对路径，对于多hap场景，通过“相对路径&模块名称”的方式进行hap包的确认。
-
-  例如：{source: 'pages/PluginProviderExample.ets&entry', bundleName: 'com.example.provider'}
-
-  仅对FA模型支持source字段填写AbilityName、bundleName字段填写应用包名的方式进行资源提供。
-
-  例如：{source: 'plugin', bundleName: 'com.example.provider'}
+> **说明：**
+>
+> 模板支持两种提供方式：
+> - 使用绝对路径进行资源提供：source字段填写模板绝对路径，bundleName不需要填写。仅适用于不需要加载资源的单独模板页面，不建议使用。
+> - 通过应用包进行资源提供：bundleName字段需要填写应用包名；source字段填写相对hap包的模板相对路径，对于多hap场景，通过"相对路径&模块名称"的方式进行hap包的确认。
+>
+> 例如：{source: 'pages/PluginProviderExample.ets&entry', bundleName: 'com.example.provider'}
+>
+> 仅对FA模型支持source字段填写AbilityName、bundleName字段填写应用包名的方式进行资源提供。
+>
+> 例如：{source: 'plugin', bundleName: 'com.example.provider'}
 
 
 ## 事件
@@ -87,9 +108,9 @@ ArkTS-Sta: onComplete(callback:&nbsp;VoidCallback | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 18
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -111,7 +132,7 @@ ArkTS-Sta: onError(callback:&nbsp;PluginErrorCallback | undefined)
 
 **ArkTS-Dyn起始版本：** 9
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -121,11 +142,21 @@ ArkTS-Sta: onError(callback:&nbsp;PluginErrorCallback | undefined)
 
 ## PluginErrorCallback<sup>18+</sup>类型说明
 
+type PluginErrorCallback = (info: [PluginErrorData](#pluginerrordata18类型说明)) => void
+
 发生错误时调用回调。
 
-| 参数     | 类型               | 描述                        |
-| -------- | ------------------ | --------------------------- |
-| info     | [PluginErrorData](#pluginerrordata18类型说明)  | 发生错误时提供的数据。 |
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称     | 类型               | 只读 | 可选 | 说明                        |
+| -------- | ------------------ | ---- | ---- | --------------------------- |
+| info     | [PluginErrorData](#pluginerrordata18类型说明)  | 否   | 否   | 发生错误时提供的数据。 |
 
 ## PluginErrorData<sup>18+</sup>类型说明
 
@@ -135,10 +166,18 @@ ArkTS-Sta: onError(callback:&nbsp;PluginErrorCallback | undefined)
 >
 > 为规范匿名对象的定义，API 18版本修改了此处的元素定义。其中，保留了历史匿名对象的起始版本信息，会出现外层元素@since版本号高于内层元素版本号的情况，但这不影响接口的使用。
 
-| 参数       | 类型   | 描述                        |
-| ---------- | ------ | -------------------------- |
-| errcode    | ArkTS1.1: number <br>ArkTS1.2: int | 错误码。                    |
-| msg<sup>9+</sup>        | string | 错误信息。                  |
+**系统接口：** 此接口为系统接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称       | 类型   | 只读 | 可选 | 说明                        |
+| ---------- | ------ | ---- | ---- | -------------------------- |
+| errcode    | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否   | 否   | 错误码。                    |
+| msg<sup>9+</sup>        | string | 否   | 否   | 错误信息。                  |
 
 错误码1为默认错误码，错误信息和处理建议详见下表：
 

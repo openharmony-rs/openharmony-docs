@@ -85,7 +85,7 @@ import { Computed } from '@kit.ArkUI';
    }
    ```
 
-- 在\@Computed装饰的getter方法中，不能改变状态变量的值，以防止重复执行计算属性导致的appfreeze。
+- 在\@Computed装饰的getter方法中，不能改变状态变量的值，否则会抛出运行时异常。
 
    ```ts
    'use static'

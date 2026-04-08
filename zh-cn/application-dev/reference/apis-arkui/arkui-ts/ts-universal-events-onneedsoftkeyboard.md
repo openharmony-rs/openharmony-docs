@@ -55,7 +55,7 @@ XComponent组件使用该方法时，如果返回值为`true`且XComponent组件
 
 ## OnNeedSoftkeyboardCallback
 
-OnNeedSoftkeyboardCallback = () => boolean
+type OnNeedSoftkeyboardCallback = () => boolean
 
 当绑定该方法的组件判断是否需要键盘时，将触发此回调。
 

@@ -67,8 +67,8 @@ ArkTS-Sta: onAccessibilityActionIntercept(callback: AccessibilityActionIntercept
 
 该接口在无障碍模式下，可在无障碍控制操作触发前通知注册的回调函数，由注册方决定是否拦截该次无障碍动作，对不支持Click的组件注册也无法触发回调。
 
-**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。
-
+**卡片能力：** 从API version 20开始，该接口支持在ArkTS卡片中使用。 
+ 
 **原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -81,7 +81,7 @@ ArkTS-Sta: onAccessibilityActionIntercept(callback: AccessibilityActionIntercept
 
 | 参数名   | 类型    | 必填 | 说明                                                         |
 | -------- | ------- | ---- | ------------------------------------------------------------ |
-| callback | ArkTS-Dyn: [AccessibilityActionInterceptCallback](ts-universal-accessibility-event.md#accessibilityactioninterceptcallback20) <br/>ArkTS-Sta: [AccessibilityActionInterceptCallback](ts-universal-accessibility-event.md#accessibilityactioninterceptcallback20) \| undefined| 是   | 在无障碍控制操作触发前，向注册回调函数方通知，由注册方决定是否拦截该次无障碍控制操作。<br> 入参设置undefined时取消回调注册。 |
+| callback | ArkTS-Dyn: [AccessibilityActionInterceptCallback](ts-universal-accessibility-event.md#accessibilityactioninterceptcallback20) <br/>ArkTS-Sta: [AccessibilityActionInterceptCallback](ts-universal-accessibility-event.md#accessibilityactioninterceptcallback20) \| undefined| 是   | 在无障碍控制操作触发前，向注册回调函数方通知，由注册方决定是否拦截该次无障碍控制操作。<br/>入参设置undefined时取消回调注册。 |
 
 **返回值：**
 

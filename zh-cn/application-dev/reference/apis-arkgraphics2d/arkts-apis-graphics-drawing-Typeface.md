@@ -118,29 +118,30 @@ class TextRenderNode extends RenderNode {
 ArkTS-Sta示例：
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
+import drawing from "@ohos.graphics.drawing";
+import common2D from "@ohos.graphics.common2D";
+import { RenderNode, DrawContext } from '@ohos.arkui.node';
 
 class TextRenderNode extends RenderNode {
   async draw(context: DrawContext) {
     const canvas = context.canvas;
     let typeArguments = new drawing.TypefaceArguments();
-    typeArguments.addVariation("wght", 100.0);
+    typeArguments.addVariation("wght", 100);
     const myTypeFace = drawing.Typeface.makeFromFile("/system/fonts/HarmonyOS_Sans_SC.ttf");
     if (myTypeFace == undefined) {
       return;
     }
     const typeFace1 = myTypeFace.makeFromCurrent(typeArguments);
-    if (typeface1 == undefined) {
+    let font = new drawing.Font();
+    if (typeFace1 == undefined) {
       return;
     }
-    let font = new drawing.Font();
     font.setTypeface(typeFace1);
     const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
     if (textBlob == undefined) {
       return;
     }
-    canvas.drawTextBlob(textBlob, 60.0, 100.0);
+    canvas.drawTextBlob(textBlob, 60, 100);
   }
 }
 ```
@@ -203,7 +204,7 @@ class TextRenderNode extends RenderNode {
 
 ArkTS-Sta示例：
 ```ts
-import { RenderNode, DrawContext } from '@kit.ArkUI';
+import { RenderNode, DrawContext } from '@ohos.arkui.node';
 import { drawing } from '@kit.ArkGraphics2D';
 
 class TextRenderNode extends RenderNode {
@@ -427,24 +428,26 @@ class TextRenderNode extends RenderNode {
 ArkTS-Sta示例：
 
 ```ts
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
+import drawing from "@ohos.graphics.drawing";
+import common2D from "@ohos.graphics.common2D";
+import { $r, $rawfile, Color, ResourceColor } from '@ohos.arkui.component';
+import { RenderNode, DrawContext } from '@ohos.arkui.node';
 
 class TextRenderNode extends RenderNode {
   async draw(context: DrawContext) {
     const canvas = context.canvas;
     let font = new drawing.Font();
     let typeFaceArgument = new drawing.TypefaceArguments();
-    const myTypeFace = drawing.Typeface.makeFromRawFileWithArguments($rawfile('HarmonyOS_Sans_Bold.ttf'), typeFaceArgument);
+    const myTypeFace = drawing.Typeface.makeFromRawFileWithArguments($rawfile('HarmonyOS_Sans_SC.ttf'), typeFaceArgument);
     if (myTypeFace == undefined) {
-        return;
+      return;
     }
     font.setTypeface(myTypeFace);
     const textBlob = drawing.TextBlob.makeFromString("Hello World", font, drawing.TextEncoding.TEXT_ENCODING_UTF8);
     if (textBlob == undefined) {
       return;
     }
-    canvas.drawTextBlob(textBlob, 60.0, 100.0);
+    canvas.drawTextBlob(textBlob, 60, 100);
   }
 }
 ```

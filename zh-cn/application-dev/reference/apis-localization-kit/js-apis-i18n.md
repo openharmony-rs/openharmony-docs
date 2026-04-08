@@ -3191,6 +3191,57 @@ static getType(ch: string): string
   let unicodeType: string = i18n.Unicode.getType('a'); // unicodeType = 'U_LOWERCASE_LETTER'
   ```
 
+### detectEncoding
+
+static detectEncoding(bytes: Uint8Array): EncodingInfo
+
+识别输入字节流的编码信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+**参数：**
+
+| 参数名  | 类型     | 必填   | 说明    |
+| ---- | ------ | ---- | ----- |
+| bytes | Uint8Array | 是    | 输入字节流。 |
+
+**返回值：**
+
+| 类型      | 说明                                       |
+| ------- | ---------------------------------------- |
+| [EncodingInfo](#encodinginfo) | 编码信息，包含编码名称和置信度。 |
+
+**示例：**
+  ```ts
+  import { i18n } from '@kit.LocalizationKit';
+
+  let uint8Array = new Uint8Array([0xEF, 0xBB, 0xBF, 0xE4, 0xB8, 0xAD]);
+  let info = i18n.Unicode.detectEncoding(uint8Array); // info.encodingName = 'UTF-8', info.confidence = 100
+  ```
+
+## EncodingInfo
+
+编码信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Global.I18n
+
+| 名称  | 类型   | 只读   | 可选   | 说明                |
+| ---- | ---- | ---- | ---- | ----------------- |
+| encodingName | string | 否    | 否    | 编码名称，如UTF-8。 |
+| confidence | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否    | 否    | 识别结果的置信度，范围是0-100。值越大，识别结果越可靠。 |
+
 ## I18NUtil<sup>9+</sup>
 
 国际化工具类，提供单位转换、获取日期顺序、获取时段名称、区域匹配和路径本地化等能力。

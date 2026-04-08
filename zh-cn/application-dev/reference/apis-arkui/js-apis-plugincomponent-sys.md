@@ -24,6 +24,10 @@ import { pluginComponentManager } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称        | 类型                                  | 必填   | 说明                                       |
 | --------- | ----------------------------------- | ---- | ---------------------------------------- |
 | owner     | [Want](../apis-ability-kit/js-apis-application-want.md) | 是    | 组件提供方Ability信息。                          |
@@ -43,6 +47,10 @@ import { pluginComponentManager } from '@kit.ArkUI';
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
+
 | 名称       | 类型                                  | 必填   | 说明                                       |
 | -------- | ----------------------------------- | ---- | ---------------------------------------- |
 | owner    | [Want](../apis-ability-kit/js-apis-application-want.md) | 是    | 组件使用方Ability信息。                          |
@@ -60,6 +68,10 @@ push(param: PushParameterForStage, callback: AsyncCallback&lt;void&gt;): void
 **系统接口：** 此接口为系统接口。
 
 **模型约束：** 此接口仅适用于[Stage模型](arkui-ts/ts-basic-components-plugincomponent-sys.md#stage模型)。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 | 参数名      | 类型                                       | 必填   | 说明           |
@@ -108,6 +120,10 @@ request(param: RequestParameterForStage, callback: AsyncCallback&lt;RequestCallb
 **系统接口：** 此接口为系统接口。
 
 **模型约束：** 此接口仅适用于[Stage模型](arkui-ts/ts-basic-components-plugincomponent-sys.md#stage模型)。
+
+**ArkTS-Dyn起始版本：** 9
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 

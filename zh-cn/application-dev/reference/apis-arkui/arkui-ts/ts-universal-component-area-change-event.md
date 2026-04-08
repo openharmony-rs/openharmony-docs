@@ -36,8 +36,7 @@ ArkTS-Sta: onAreaChange(event: ((oldValue: Area, newValue: Area) => void) | unde
 
 | 参数名   | 类型                      | 必填 | 说明                                                         |
 | -------- | ------------------------- | ---- | ------------------------------------------------------------ |
-| oldValue | [Area](ts-types.md#area8) | 是   | 返回目标元素变化之前的宽高以及目标元素相对父元素和页面左上角的坐标位置。 |
-| newValue | [Area](ts-types.md#area8) | 是   | 返回目标元素变化之后的宽高以及目标元素相对父元素和页面左上角的坐标位置。 |
+| event | ArkTS-Dyn: (oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void<br/>ArkTS-Sta: ((oldValue: [Area](ts-types.md#area8), newValue: [Area](ts-types.md#area8)) => void) \| undefined  | 是   | 返回目标元素位置信息变化情况，oldValue为目标元素变化之前的宽高以及目标元素相对父元素和页面左上角的坐标位置。newValue为目标元素变化之后的宽高以及目标元素相对父元素和页面左上角的坐标位置。 |
 
 **返回值：**
 

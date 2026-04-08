@@ -27,7 +27,7 @@ onKeyEvent(event: (event: KeyEvent) => void): T
 
 | 参数名 | 类型                          | 必填 | 说明               |
 | ------ | ----------------------------- | ---- | ------------------ |
-| event  | [KeyEvent](#keyevent对象说明)  | 是   | 获得KeyEvent对象。 |
+| event  | (event: [KeyEvent](#keyevent对象说明)) => void  | 是   | 获得KeyEvent对象。 |
 
 **返回值：**
 
@@ -136,13 +136,57 @@ ArkTS-Sta: onKeyEventDispatch(event: Callback\<KeyEvent, boolean> | undefined): 
 | deviceId                              | ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 触发当前按键的输入设备ID。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23             |
 | metaKey                               | ArkTS-Dyn: number<br/>ArkTS-Sta: int     | 按键发生时元键（即键盘左下角紧挨Ctrl键或Fn标记了窗口logo的按键）的状态，1表示按压态，0表示未按压态。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
 | timestamp                             | ArkTS-Dyn: number<br/>ArkTS-Sta: long    | 事件时间戳。触发事件时距离系统启动的时间间隔，单位：ns。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| stopPropagation                       | () => void                               | 阻塞事件冒泡传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23                  |
+| stopPropagation                       | () => void                               | 阻塞事件冒泡传递。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**相关接口：** 该接口对应的ArkTS-Sta的接口是[stopPropagation](#stoppropagation23)。<br/>**ArkTS-Dyn起始版本：** 7                  |
 | intentionCode<sup>10+</sup>           | [IntentionCode](../../apis-input-kit/js-apis-intentioncode.md) | 按键对应的意图。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23       |
-| getModifierKeyState<sup>12+</sup> | (Array&lt;string&gt;) => boolean | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\|'Alt'\|'Shift'。<br/>**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23|
 | unicode<sup>14+</sup>                              | ArkTS-Dyn: number<br/>ArkTS-Sta: long          | 按键的unicode码值。支持范围为非空格的基本拉丁字符：0x0021-0x007E，不支持字符为0。组合键场景下，返回当前keyEvent对应按键的unicode码值。 <br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23|
 | isNumLockOn<sup>19+</sup>                          | boolean          |NumLock是否锁定。<br/>true表示NumLock锁定；false表示NumLock解锁。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 24|
 | isCapsLockOn<sup>19+</sup>                               | boolean         |  CapsLock是否锁定。<br/>true表示CapsLock锁定；false表示CapsLock解锁。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 24|
-| isScrollLockOn<sup>19+</sup>                               | boolean        | ScrollLock是否锁定。<br/>true表示ScrollLock锁定；false表示ScrollLock解锁。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 24| 
+| isScrollLockOn<sup>19+</sup>                               | boolean        | ScrollLock是否锁定。<br/>true表示ScrollLock锁定；false表示ScrollLock解锁。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。 <br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 24|
+| getModifierKeyState<sup>23+</sup> | [ModifierKeyStateGetter](./ts-types.md#modifierkeystategetter23) | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\|'Alt'\|'Shift'。<br/>**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**相关接口：** 该接口对应的ArkTS-Dyn的接口是[getModifierKeyState](#getmodifierkeystate12)。<br/>**ArkTS-Sta起始版本：** 23|
+
+### stopPropagation<sup>23+</sup>
+
+stopPropagation(): void
+
+阻塞事件冒泡传递。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[stopPropagation](#keyevent对象说明)。
+
+**ArkTS-Sta起始版本：** 23
+
+### getModifierKeyState<sup>12+</sup>
+
+getModifierKeyState?(keys: Array\<string>): boolean
+
+获取功能键按压状态。
+
+**原子化服务API：** 从API version 13开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[getModifierKeyState](#keyevent对象说明)。
+
+**ArkTS-Dyn起始版本：** 12
+
+**参数：** 
+
+| 参数名 | 类型                          | 必填 | 说明               |
+| ------ | ----------------------------- | ---- | ------------------ |
+| keys | Array&lt;string&gt; | 是   | 获取功能键按压状态。报错信息请参考以下错误码。支持功能键 'Ctrl'\| 'Alt' \| 'Shift'。<br/>**说明：**<br/>此接口不支持在手写笔场景下使用。 |
+
+**返回值：** 
+
+| 类型    | 说明                                                  |
+| ------- | ----------------------------------------------------- |
+| boolean | 功能键是否被按下。true表示被按下，false表示未被按下。 |
 
 **错误码**：
 

@@ -160,7 +160,7 @@ ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -174,7 +174,7 @@ ArkTS-Sta: effectStrategy(value: SymbolEffectStrategy | undefined)
 
 ArkTS-Dyn: attributeModifier(modifier: AttributeModifier\<SymbolSpanAttribute>)
 
-ArkTS-Sta: attributeModifier(modifier: AttributeModifier<SymbolSpanAttribute> | undefined)
+ArkTS-Sta: attributeModifier(modifier: AttributeModifier\<SymbolSpanAttribute> | undefined)
 
 设置组件的动态属性。
 
@@ -182,7 +182,7 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier<SymbolSpanAttribute> | 
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 11
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -191,6 +191,44 @@ ArkTS-Sta: attributeModifier(modifier: AttributeModifier<SymbolSpanAttribute> | 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
 | modifier  | ArkTS-Dyn: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute><br/>ArkTS-Sta: [AttributeModifier](ts-universal-attributes-attribute-modifier.md#attributemodifiert)\<SymbolSpanAttribute> \| undefined | 是   | 动态设置组件的属性。 |
+
+### key<sup>23+</sup>
+
+key(value: string | undefined)
+
+组件的唯一标识，唯一性由使用者保证。
+
+此接口仅用于对应用的测试。与id同时使用时，后赋值的属性会覆盖先赋值的属性，建议仅设置[id](#id23)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：'' |
+
+### id<sup>23+</sup>
+
+id(value: string | undefined)
+
+组件的唯一标识，唯一性由使用者保证。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型                                                | 必填 | 说明                                                         |
+| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
+| value  | string \| undefined | 是   |组件的唯一标识，唯一性由使用者保证。<br/>默认值：'' |
 
 ## 事件
 

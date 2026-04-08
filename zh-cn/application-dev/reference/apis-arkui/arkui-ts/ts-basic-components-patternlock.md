@@ -282,9 +282,7 @@ ArkTS-Sta: skipUnselectedPoint(skipped: boolean | undefined)
 
 ### onPatternComplete
 
-ArkTS-Dyn: onPatternComplete(callback: (input: Array\<number\>) => void)
-
-ArkTS-Sta: onPatternComplete(callback: Callback<Array\<int>> | undefined)
+onPatternComplete(callback: (input: Array\<number\>) => void)
 
 密码输入结束时触发该回调。
 
@@ -292,7 +290,29 @@ ArkTS-Sta: onPatternComplete(callback: Callback<Array\<int>> | undefined)
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onPatternComplete](#onpatterncomplete23)。
+
 **ArkTS-Dyn起始版本：** 9
+
+**参数：** 
+
+| 参数名 | 类型            | 必填 | 说明                                                         |
+| ------ | --------------- | ---- | ------------------------------------------------------------ |
+| input  | Array\<number\> | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。 |
+
+### onPatternComplete<sup>23+</sup>
+
+onPatternComplete(callback: Callback<Array\<int\>> | undefined)
+
+密码输入结束时触发该回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[onPatternComplete](#onpatterncomplete)。
 
 **ArkTS-Sta起始版本：** 23
 
@@ -300,11 +320,13 @@ ArkTS-Sta: onPatternComplete(callback: Callback<Array\<int>> | undefined)
 
 | 参数名 | 类型            | 必填 | 说明                                                         |
 | ------ | --------------- | ---- | ------------------------------------------------------------ |
-| input  | ArkTS-Dyn: Array\<number\> <br/>ArkTS-Sta: Array\<int> \| undefined | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。 |
+| callback  | [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)<Array\<int>> \| undefined | 是   | 与选中宫格圆点顺序一致的数字数组，每个数字表示选中宫格圆点的索引值（第一行圆点从左往右依次为0、1、2，第二行圆点依次为3、4、5，第三行圆点依次为6、7、8）。 |
 
 ### onDotConnect<sup>11+</sup>
 
-onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\>)
+ArkTS-Dyn: onDotConnect(callback: Callback\<number\>)
+
+ArkTS-Sta: onDotConnect(callback: Callback\<int\> | undefined)
 
 密码输入选中宫格圆点时触发该回调。
 
@@ -317,6 +339,12 @@ onDotConnect(callback: [Callback](../../apis-basic-services-kit/js-apis-base.md#
 **ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
+
+**参数：** 
+
+| 参数名 | 类型            | 必填 | 说明                                                         |
+| ------ | --------------- | ---- | ------------------------------------------------------------ |
+| callback  |ArkTS-Dyn: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<number\> <br/>ArkTS-Sta: [Callback](../../apis-basic-services-kit/js-apis-base.md#callback)\<int\> \| undefined | 是   | 密码输入选中宫格圆点时触发该回调。 |
 
 ## CircleStyleOptions<sup>12+</sup>对象说明
 

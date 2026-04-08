@@ -169,6 +169,7 @@ Enumerates keycode values.
 | KEYCODE_NUMPAD_EQUALS = 2120 | Key = on numeric keypad.|
 | KEYCODE_NUMPAD_LEFT_PAREN = 2121 | Key ( on numeric keypad.|
 | KEYCODE_NUMPAD_RIGHT_PAREN = 2122 | Key ) on numeric keypad.|
+| KEYCODE_AOD_SINGLE_CLICK = 2740 | Single tapping the smart phone's touch screen event, which is used when the Always On Display is enabled<br>**Since**: 24|
 | KEYCODE_DAGGER_CLICK = 3211 | Single tapping the smart watch's X-TAP sensor<br>**Since**: 18|
 | KEYCODE_DAGGER_DOUBLE_CLICK = 3212 | Double tapping the smart watch's X-TAP sensor<br>**Since**: 18|
 | KEYCODE_DAGGER_LONG_PRESS = 3213 | Long-pressing the smart watch's X-TAP sensor<br>**Since**: 18|

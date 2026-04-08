@@ -1,4 +1,11 @@
-# 注入事件开发指导
+# 事件注入开发指导（仅对系统应用开放）
+
+<!--Kit: Input Kit-->
+<!--Subsystem: MultimodalInput-->
+<!--Owner: @zhaoxueyuan-->
+<!--Designer: @hanruofei-->
+<!--Tester: @Lyuxin-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ## 场景介绍
 
@@ -12,7 +19,7 @@ import { inputEventClient } from '@kit.InputKit';
 
 ## 接口说明
 
-事件注入常用接口如下表所示，接口详细介绍请参考[ohos.multimodalInput.inputEventClient文档](../../reference/apis-input-kit/js-apis-inputeventclient-sys.md)。
+事件注入常用接口如下表所示，接口详细介绍请参考[@ohos.multimodalInput.inputEventClient (输入事件注入)(系统接口)](../../reference/apis-input-kit/js-apis-inputeventclient-sys.md)。
 
 | 接口名称  | 描述 |
 | -------------------------------------------- | -------------------------- |

@@ -34,7 +34,7 @@ ArkTS-Sta: onAttach(callback: VoidCallback | undefined): this
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void><br/>ArkTS-Sta: [VoidCallback](./ts-types.md#VoidCallback12) | 是   | onAttach事件的回调函数，表示组件已经挂载至组件树。 |
+| callback  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void><br/>ArkTS-Sta: [VoidCallback](./ts-types.md#VoidCallback12) \| undefined | 是   | onAttach事件的回调函数，表示组件已经挂载至组件树。 |
 
 **返回值：**
 
@@ -96,7 +96,7 @@ ArkTS-Sta: onAppear(event: (() => void) | undefined): this
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: () => void | undefined| 是   | onAppear事件的回调函数，表示组件已挂载显示。 |
+| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: (() => void) \| undefined| ArkTS-Dyn: 是<br/>ArkTS-Sta: 否   | onAppear事件的回调函数，表示组件已挂载显示。 |
 
 **返回值：**
 
@@ -126,7 +126,7 @@ ArkTS-Sta: onDisAppear(event: (() => void) | undefined): this
 
 | 参数名 | 类型  | 必填 | 说明                       |
 | ------ | ------ | ---- | -------------------------- |
-| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: () => void | undefined| 是   | onDisAppear事件的回调函数，表示组件已卸载消失。 |
+| event  | ArkTS-Dyn: () => void  <br/>ArkTS-Sta: (() => void) \| undefined| ArkTS-Dyn: 是<br/>ArkTS-Sta: 否   | onDisAppear事件的回调函数，表示组件已卸载消失。 |
 
 **返回值：**
 

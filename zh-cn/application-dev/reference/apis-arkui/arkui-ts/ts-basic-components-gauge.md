@@ -59,9 +59,9 @@ Gauge(options: GaugeOptions)
 
 | 名称 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是 | 量规图的当前数据值，即图中指针指向位置。用于组件创建时量规图初始值的预置。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>value不在min和max范围内时使用min作为默认值。 |
-| min<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否 | 当前数据段最小值。<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| max<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否 | 当前数据段最大值。<br/>默认值：100<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>max小于min时使用默认值0和100。<br/>max和min支持负数。 |
+| value<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 是 | 量规图的当前数据值，即图中指针指向位置。用于组件创建时量规图初始值的预置。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>value不在min和max范围内时使用min作为默认值。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| min<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否 | 当前数据段最小值。<br/>默认值：0<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
+| max<sup>8+</sup> | ArkTS-Dyn: number <br> ArkTS-Sta: double  | 否 | 当前数据段最大值。<br/>默认值：100<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**说明：** <br/>max小于min时使用默认值0和100。<br/>max和min支持负数。<br/>**ArkTS-Dyn起始版本：** 8 <br/> **ArkTS-Sta起始版本：** 23 |
 
 ## 属性
 
@@ -201,7 +201,7 @@ ArkTS-Sta: strokeWidth(length: Length | undefined)
 
 ArkTS-Dyn: description(value: CustomBuilder)
 
-ArkTS-Sta: description(value: CustomBuilder | undefined)
+ArkTS-Sta: description(value: CustomBuilder | undefined | null)
 
 设置说明内容。
 
@@ -217,13 +217,13 @@ ArkTS-Sta: description(value: CustomBuilder | undefined)
 
 | 参数名 | 类型                                        | 必填 | 说明                                                         |
 | ------ | ------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) <br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \|&nbsp;undefined | 是   | 说明内容。<br/>**说明：** <br/>@Builder中的内容由开发者自定义，建议使用文本或者图片。<br/>若自定义部分的宽高为百分比形式，则基准范围为圆环直径的44.4%*25.4%的矩形（图片为28.6%*28.6%），距离圆环底部0vp，左右居中。<br/>设置null则不显示内容。<br/>不设置则依赖是否设置数据最大最小值。<br/>若设置最大最小值或者只设置其中一个，则显示最大最小值。<br/>若未设置最大最小值，则不显示内容。<br/>最大最小值显示在圆环底部，位置不可移动，若圆环开口角度设置不恰当，存在圆环遮挡文字的情况。 |
+| value  | ArkTS-Dyn: [CustomBuilder](ts-types.md#custombuilder8) <br/>ArkTS-Sta: [CustomBuilder](ts-types.md#custombuilder8) \|&nbsp;undefined \|&nbsp; null| 是   | 说明内容。<br/>**说明：** <br/>@Builder中的内容由开发者自定义，建议使用文本或者图片。<br/>若自定义部分的宽高为百分比形式，则基准范围为圆环直径的44.4%*25.4%的矩形（图片为28.6%*28.6%），距离圆环底部0vp，左右居中。<br/>设置null则不显示内容。<br/>不设置则依赖是否设置数据最大最小值。<br/>若设置最大最小值或者只设置其中一个，则显示最大最小值。<br/>若未设置最大最小值，则不显示内容。<br/>最大最小值显示在圆环底部，位置不可移动，若圆环开口角度设置不恰当，存在圆环遮挡文字的情况。 |
 
 ### trackShadow<sup>11+</sup>
 
 ArkTS-Dyn: trackShadow(value: GaugeShadowOptions)
 
-ArkTS-Sta: trackShadow(value: GaugeShadowOptions | undefined)
+ArkTS-Sta: trackShadow(value: GaugeShadowOptions | undefined | null)
 
 设置阴影样式。
 
@@ -239,13 +239,13 @@ ArkTS-Sta: trackShadow(value: GaugeShadowOptions | undefined)
 
 | 参数名 | 类型                                                | 必填 | 说明                                                         |
 | ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| value  | ArkTS-Dyn: [GaugeShadowOptions](#gaugeshadowoptions11对象说明) <br/>ArkTS-Sta: [GaugeShadowOptions](#gaugeshadowoptions11对象说明) \|&nbsp;undefined | 是   | 阴影样式。<br/>**说明：** <br/>阴影颜色与圆环颜色一致。<br/>设置null为不开启投影。 |
+| value  | ArkTS-Dyn: [GaugeShadowOptions](#gaugeshadowoptions11对象说明) <br/>ArkTS-Sta: [GaugeShadowOptions](#gaugeshadowoptions11对象说明) \|&nbsp;undefined \|&nbsp; null | 是   | 阴影样式。<br/>**说明：** <br/>阴影颜色与圆环颜色一致。<br/>设置null为不开启投影。 |
 
 ### indicator<sup>11+</sup>
 
 ArkTS-Dyn: indicator(value: GaugeIndicatorOptions)
 
-ArkTS-Sta: indicator(value: GaugeIndicatorOptions | undefined)
+ArkTS-Sta: indicator(value: GaugeIndicatorOptions | undefined | null)
 
 设置指针样式。
 
@@ -261,7 +261,7 @@ ArkTS-Sta: indicator(value: GaugeIndicatorOptions | undefined)
 
 | 参数名 | 类型                                                      | 必填 | 说明                                                  |
 | ------ | --------------------------------------------------------- | ---- | ----------------------------------------------------- |
-| value  | ArkTS-Dyn: [GaugeIndicatorOptions](#gaugeindicatoroptions11对象说明) <br/>ArkTS-Sta: [GaugeIndicatorOptions](#gaugeindicatoroptions11对象说明) \|&nbsp;undefined | 是   | 指针样式。<br/>**说明：** <br/>设置null则不显示指针。 |
+| value  | ArkTS-Dyn: [GaugeIndicatorOptions](#gaugeindicatoroptions11对象说明) <br/>ArkTS-Sta: [GaugeIndicatorOptions](#gaugeindicatoroptions11对象说明) \|&nbsp;undefined \|&nbsp; null | 是   | 指针样式。<br/>**说明：** <br/>设置null则不显示指针。 |
 
 ### privacySensitive<sup>12+</sup>
 

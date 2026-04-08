@@ -1,4 +1,10 @@
 # @ohos.file.fs (文件管理)
+<!--Kit: Core File Kit-->
+<!--Subsystem: FileManagement-->
+<!--Owner: @wangke25; @gsl_1234; @wuchengjun5-->
+<!--Designer: @gsl_1234; @wangke25-->
+<!--Tester: @liuhonggang123; @yue-ye2; @juxiaopang-->
+<!--Adviser: @jinqiuheng-->
 
 该模块为基础文件操作API，提供基础文件操作能力，包括文件基本管理、文件目录管理、文件信息统计、文件流式读写等常用功能。
 
@@ -43,7 +49,7 @@ let pathDir = context.filesDir;
 
 获取沙箱路径的方式及其接口用法也可参考：[应用上下文Context-获取应用文件路径](../../application-models/application-context-stage.md#获取应用文件路径)。<br/>将指向资源的字符串称为URI。对于只支持沙箱路径作为入参的接口，可以使用构造fileUri对象并获取其沙箱路径的属性的方式将URI转换为沙箱路径，然后使用文件接口。URI定义解及其转换方式请参考：[文件URI](../../../application-dev/reference/apis-core-file-kit/js-apis-file-fileuri.md)。
 
-## fs.stat
+## fileIo.stat
 
 ArkTS-Dyn: stat(file: string | number): Promise&lt;Stat&gt;
 
@@ -64,7 +70,7 @@ ArkTS-Sta: stat(file: string | int): Promise&lt;Stat&gt;
 
 | 参数名 | 类型                                                 | 必填 | 说明                                               |
 | ------ | ---------------------------------------------------- | ---- | -------------------------------------------------- |
-| file   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件或目录应用沙箱路径path或已打开的文件描述符fd。 |
+| file   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   |  文件或目录应用沙箱路径path或已打开的文件描述符fd。 |
 
 **返回值：**
 
@@ -105,7 +111,7 @@ fs.stat(filePath).then((stat: fs.Stat) => {
 });
 ```
 
-## fs.stat
+## fileIo.stat
 
 ArkTS-Dyn: stat(file: string | number, callback: AsyncCallback&lt;Stat&gt;): void
 
@@ -126,7 +132,7 @@ ArkTS-Sta: stat(file: string | int, callback: AsyncCallback&lt;Stat&gt;): void
 
 | 参数名   | 类型                                                 | 必填 | 说明                                                 |
 | -------- | ---------------------------------------------------- | ---- | ---------------------------------------------------- |
-| file     | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件或目录的应用沙箱路径path或已打开的文件描述符fd。 |
+| file     | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件或目录的应用沙箱路径path、URI或已打开的文件描述符fd。 |
 | callback | AsyncCallback&lt;[Stat](#stat)&gt;                   | 是   | 异步获取文件或目录的信息之后的回调。                 |
 
 **错误码：**
@@ -162,7 +168,7 @@ fs.stat(pathDir, (err: BusinessError | null, stat: fs.Stat | undefined) => {
 });
 ```
 
-## fs.statSync
+## fileIo.statSync
 
 ArkTS-Dyn: statSync(file: string | number): Stat
 
@@ -183,7 +189,7 @@ ArkTS-Sta: statSync(file: string | int): Stat
 
 | 参数名 | 类型                                                 | 必填 | 说明                                               |
 | ------ | ---------------------------------------------------- | ---- | -------------------------------------------------- |
-| file   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件或目录应用沙箱路径path或已打开的文件描述符fd。 |
+| file   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件或目录的应用沙箱路径path或已打开的文件描述符fd。 |
 
 **返回值：**
 
@@ -203,7 +209,7 @@ let stat = fs.statSync(pathDir);
 console.info("get file info succeed, the size of file is " + stat.size);
 ```
 
-## fs.access
+## fileIo.access
 
 access(path: string, mode?: AccessModeType): Promise&lt;boolean&gt;
 
@@ -272,7 +278,7 @@ fs.access(filePath).then((res: boolean) => {
 });
 ```
 
-## fs.access
+## fileIo.access
 
 access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boolean&gt;
 
@@ -302,7 +308,7 @@ access(path: string, mode: AccessModeType, flag: AccessFlagType): Promise&lt;boo
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -340,7 +346,7 @@ fs.access(filePath, fs.AccessModeType.EXIST, fs.AccessFlagType.LOCAL).then((res:
 });
 ```
 
-## fs.access
+## fileIo.access
 
 access(path: string, callback: AsyncCallback&lt;boolean&gt;): void
 
@@ -405,7 +411,7 @@ fs.access(filePath, (err: BusinessError<void> | null, res: boolean | undefined) 
 });
 ```
 
-## fs.accessSync
+## fileIo.accessSync
 
 accessSync(path: string, mode?: AccessModeType): boolean
 
@@ -456,7 +462,7 @@ try {
 }
 ```
 
-## fs.accessSync
+## fileIo.accessSync<sup>12+</sup>
 
 accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
@@ -464,7 +470,7 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -473,9 +479,9 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
 | 参数名             | 类型                                | 必填 | 说明                   |
 | ------------------ | ----------------------------------- | ---- | ---------------------- |
-| path               | string                              | 是   | 文件应用沙箱路径。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23     |
-| mode<sup>12+</sup> | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
-| flag<sup>12+</sup> | [AccessFlagType](#accessflagtype12) | 是   | 文件或目录校验的位置。<br>**ArkTS-Dyn起始版本：** 12<br>**ArkTS-Sta起始版本：** 23 |
+| path               | string                              | 是   | 文件应用沙箱路径。 |
+| mode | [AccessModeType](#accessmodetype12) | 是   | 文件或目录校验的权限。 |
+| flag | [AccessFlagType](#accessflagtype12) | 是   | 文件或目录校验的位置。 |
 
 **返回值：**
 
@@ -486,7 +492,7 @@ accessSync(path: string, mode: AccessModeType, flag: AccessFlagType): boolean
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -506,7 +512,7 @@ try {
 }
 ```
 
-## fs.close
+## fileIo.close
 
 ArkTS-Dyn: close(file: number | File): Promise&lt;void&gt;
 
@@ -570,7 +576,7 @@ fs.close(file).then(() => {
 });
 ```
 
-## fs.close
+## fileIo.close
 
 ArkTS-Dyn: close(file: number | File, callback: AsyncCallback&lt;void&gt;): void
 
@@ -631,7 +637,7 @@ fs.close(file, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.closeSync
+## fileIo.closeSync
 
 ArkTS-Dyn: closeSync(file: number | File): void
 
@@ -666,7 +672,7 @@ let file = fs.openSync(filePath);
 fs.closeSync(file);
 ```
 
-## fs.copy<sup>11+</sup>
+## fileIo.copy<sup>11+</sup>
 
 copy(srcUri: string, destUri: string, options?: CopyOptions): Promise\<void>
 
@@ -699,7 +705,7 @@ copy(srcUri: string, destUri: string, options?: CopyOptions): Promise\<void>
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -719,11 +725,11 @@ let dstDirUriLocal: string = fileUri.getUriFromPath(dstDirPathLocal);
 let progressListener: fs.ProgressListener = (progress: fs.Progress) => {
   console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
 };
-let copyoption: fs.CopyOptions = {
+let copyOption: fs.CopyOptions = {
   "progressListener" : progressListener
 }
 try {
-  fs.copy(srcDirUriLocal, dstDirUriLocal, copyoption).then(()=>{
+  fs.copy(srcDirUriLocal, dstDirUriLocal, copyOption).then(()=>{
     console.info("Succeeded in copying.");
   }).catch((err: BusinessError)=>{
     console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
@@ -748,11 +754,11 @@ let dstDirUriLocal: string = fileUri.getUriFromPath(dstDirPathLocal);
 let progressListener: fs.ProgressListener = (progress: fs.Progress) => {
   console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
 };
-let copyoption: fs.CopyOptions = {
+let copyOption: fs.CopyOptions = {
   "progressListener" : progressListener
 }
 try {
-  fs.copy(srcDirUriLocal, dstDirUriLocal, copyoption).then(()=>{
+  fs.copy(srcDirUriLocal, dstDirUriLocal, copyOption).then(()=>{
     console.info('Succeeded in copying.');
   }).catch((error: Error)=>{
     let err: BusinessError = error as BusinessError;
@@ -764,7 +770,7 @@ try {
 }
 ```
 
-## fs.copy<sup>11+</sup>
+## fileIo.copy<sup>11+</sup>
 
 copy(srcUri: string, destUri: string, callback: AsyncCallback\<void>): void
 
@@ -790,7 +796,7 @@ copy(srcUri: string, destUri: string, callback: AsyncCallback\<void>): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -845,7 +851,7 @@ try {
 }
 ```
 
-## fs.copy<sup>11+</sup>
+## fileIo.copy<sup>11+</sup>
 
 copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallback\<void>): void
 
@@ -872,7 +878,7 @@ copy(srcUri: string, destUri: string, options: CopyOptions, callback: AsyncCallb
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -940,7 +946,7 @@ try {
 }
 ```
 
-## fs.copyFile
+## fileIo.copyFile
 
 ArkTS-Dyn: copyFile(src: string | number, dest: string | number, mode?: number): Promise&lt;void&gt;
 
@@ -1006,7 +1012,7 @@ fs.copyFile(srcPath, dstPath, 0).then(() => {
 });
 ```
 
-## fs.copyFile
+## fileIo.copyFile
 
 ArkTS-Dyn: copyFile(src: string | number, dest: string | number, mode: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1069,7 +1075,7 @@ fs.copyFile(srcPath, dstPath, 0, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.copyFile
+## fileIo.copyFile
 
 ArkTS-Dyn: copyFile(src: string | number, dest: string | number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -1131,7 +1137,7 @@ fs.copyFile(srcPath, dstPath, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.copyFileSync
+## fileIo.copyFileSync
 
 ArkTS-Dyn: copyFileSync(src: string | number, dest: string | number, mode?: number): void
 
@@ -1168,7 +1174,7 @@ let dstPath = pathDir + "/dstDir/test.txt";
 fs.copyFileSync(srcPath, dstPath);
 ```
 
-## fs.copyDir<sup>10+</sup>
+## fileIo.copyDir<sup>10+</sup>
 
 ArkTS-Dyn: copyDir(src: string, dest: string, mode?: number): Promise\<void>
 
@@ -1235,7 +1241,7 @@ fs.copyDir(srcPath, destPath, 0).then(() => {
 });
 ```
 
-## fs.copyDir<sup>10+</sup>
+## fileIo.copyDir<sup>10+</sup>
 
 copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -1243,7 +1249,7 @@ copyDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTs-Sta接口是[copyDirWithConflictFiles](#fscopydirwithconflictfiles23)。
+**相关接口：** 该接口对应的ArkTs-Sta接口是[copyDirWithConflictFiles](#fileiocopydirwithconflictfiles23)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1284,7 +1290,7 @@ fs.copyDir(srcPath, destPath, 0, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
-## fs.copyDirWithConflictFiles<sup>23+</sup>
+## fileIo.copyDirWithConflictFiles<sup>23+</sup>
 
 copyDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -1292,7 +1298,7 @@ copyDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCa
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTs-Dyn接口是[copyDir](#fscopydir10-1)。
+**相关接口：** 该接口对应的ArkTs-Dyn接口是[copyDir](#fileiocopydir10-1)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1335,7 +1341,7 @@ fs.copyDirWithConflictFiles(srcPath, destPath, 0, (err: BusinessError<Array<Conf
 });
 ```
 
-## fs.copyDir<sup>10+</sup>
+## fileIo.copyDir<sup>10+</sup>
 
 copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -1345,7 +1351,7 @@ copyDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTs-Sta接口是[copyDirWithConflictFiles](#fscopydirwithconflictfiles23-1)。
+**相关接口：** 该接口对应的ArkTs-Sta接口是[copyDirWithConflictFiles](#fileiocopydirwithconflictfiles23-1)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1385,7 +1391,7 @@ fs.copyDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
-## fs.copyDirWithConflictFiles<sup>23+</sup>
+## fileIo.copyDirWithConflictFiles<sup>23+</sup>
 
 copyDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -1395,7 +1401,7 @@ copyDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<voi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTs-Dyn接口是[copyDir](#fscopydir10-2)。
+**相关接口：** 该接口对应的ArkTs-Dyn接口是[copyDir](#fileiocopydir10-2)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1437,7 +1443,7 @@ fs.copyDirWithConflictFiles(srcPath, destPath, (err: BusinessError<Array<Conflic
 });
 ```
 
-## fs.copyDirSync<sup>10+</sup>
+## fileIo.copyDirSync<sup>10+</sup>
 
 ArkTS-Dyn: copyDirSync(src: string, dest: string, mode?: number): void
 
@@ -1479,7 +1485,7 @@ try {
 }
 ```
 
-## fs.dup<sup>10+</sup>
+## fileIo.dup<sup>10+</sup>
 
 ArkTS-Dyn: dup(fd: number): File
 
@@ -1537,7 +1543,7 @@ fs.closeSync(file1);
 fs.closeSync(file2);
 ```
 
-## fs.connectDfs<sup>12+</sup>
+## fileIo.connectDfs<sup>12+</sup>
 
 connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
@@ -1553,7 +1559,7 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 | 参数名    | 类型                              | 必填 | 说明                                                                                                                                                                                                                                |
 | --------- | --------------------------------- | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | networkId | string                            | 是   | 设备的网络Id。通过[distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)接口调用[deviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)获得。 |
-| listeners | [DfsListeners](#fsdfslisteners12) | 是   | 分布式文件系统状态监听器。                                                                                                                                                                                                          |
+| listeners | [DfsListeners](#fileiodfslisteners12) | 是   | 分布式文件系统状态监听器。                                                                                                                                                                                                          |
 
 **返回值：**
 
@@ -1564,7 +1570,7 @@ connectDfs(networkId: string, listeners: DfsListeners): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1590,7 +1596,7 @@ if (deviceInfoList && deviceInfoList.length > 0) {
 }
 ```
 
-## fs.disconnectDfs<sup>12+</sup>
+## fileIo.disconnectDfs<sup>12+</sup>
 
 disconnectDfs(networkId: string): Promise&lt;void&gt;
 
@@ -1605,7 +1611,7 @@ disconnectDfs(networkId: string): Promise&lt;void&gt;
 
 | 参数名    | 类型   | 必填 | 说明                                                                                                                                                                                                                                |
 | --------- | ------ | ---- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| networkId | string | 是   | 设备的网络Id。通过[distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)接口调用[deviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)获得。 |
+| networkId | string | 是   | 设备的网络Id。通过[distributedDeviceManager](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md)接口调用[DeviceBasicInfo](../apis-distributedservice-kit/js-apis-distributedDeviceManager.md#devicebasicinfo)获得。 |
 
 **返回值：**
 
@@ -1616,7 +1622,7 @@ disconnectDfs(networkId: string): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[空间统计错误码](errorcode-filemanagement.md#空间统计错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1637,11 +1643,11 @@ if (deviceInfoList && deviceInfoList.length > 0) {
 }
 ```
 
-## fs.setxattr<sup>12+</sup>
+## fileIo.setxattr<sup>12+</sup>
 
 setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
-设置文件或目录的扩展属性。
+设置文件或目录的扩展属性。使用promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1667,7 +1673,7 @@ setxattr(path: string, key: string, value: string): Promise&lt;void&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1706,7 +1712,7 @@ fs.setxattr(filePath, attrKey, attrValue).then(() => {
 
 ```
 
-## fs.setxattrSync<sup>12+</sup>
+## fileIo.setxattrSync<sup>12+</sup>
 
 setxattrSync(path: string, key: string, value: string): void
 
@@ -1729,7 +1735,7 @@ setxattrSync(path: string, key: string, value: string): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1770,11 +1776,11 @@ try {
 
 ```
 
-## fs.getxattr<sup>12+</sup>
+## fileIo.getxattr<sup>12+</sup>
 
 getxattr(path: string, key: string): Promise&lt;string&gt;
 
-获取文件或目录的扩展属性。
+获取文件或目录的扩展属性。使用promise异步回调。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -1799,7 +1805,7 @@ getxattr(path: string, key: string): Promise&lt;string&gt;
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1836,7 +1842,7 @@ fs.getxattr(filePath, attrKey).then((attrValue: string) => {
 
 ```
 
-## fs.getxattrSync<sup>12+</sup>
+## fileIo.getxattrSync<sup>12+</sup>
 
 getxattrSync(path: string, key: string): string
 
@@ -1865,7 +1871,7 @@ getxattrSync(path: string, key: string): string
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -1904,7 +1910,7 @@ try {
 
 ```
 
-## fs.mkdir
+## fileIo.mkdir
 
 mkdir(path: string): Promise&lt;void&gt;
 
@@ -1962,7 +1968,7 @@ fs.mkdir(dirPath).then(() => {
 });
 ```
 
-## fs.mkdir<sup>11+</sup>
+## fileIo.mkdir<sup>11+</sup>
 
 mkdir(path: string, recursion: boolean): Promise\<void>
 
@@ -2023,7 +2029,7 @@ fs.mkdir(dirPath, true).then(() => {
 });
 ```
 
-## fs.mkdir
+## fileIo.mkdir
 
 mkdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2079,7 +2085,7 @@ fs.mkdir(dirPath, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.mkdir<sup>11+</sup>
+## fileIo.mkdir<sup>11+</sup>
 
 mkdir(path: string, recursion: boolean, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2137,7 +2143,7 @@ fs.mkdir(dirPath, true, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.mkdirSync
+## fileIo.mkdirSync
 
 mkdirSync(path: string): void
 
@@ -2169,7 +2175,7 @@ let dirPath = pathDir + "/testDir";
 fs.mkdirSync(dirPath);
 ```
 
-## fs.mkdirSync<sup>11+</sup>
+## fileIo.mkdirSync<sup>11+</sup>
 
 mkdirSync(path: string, recursion: boolean): void
 
@@ -2202,7 +2208,7 @@ let dirPath = pathDir + "/testDir1/testDir2/testDir3";
 fs.mkdirSync(dirPath, true);
 ```
 
-## fs.open
+## fileIo.open
 
 ArkTS-Dyn: open(path: string, mode?: number): Promise&lt;File&gt;
 
@@ -2267,7 +2273,7 @@ fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE).then((file: fs.Fi
 });
 ```
 
-## fs.open
+## fileIo.open
 
 ArkTS-Dyn: open(path: string, mode: number, callback: AsyncCallback&lt;File&gt;): void
 
@@ -2331,7 +2337,7 @@ fs.open(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE, (err: BusinessErr
 });
 ```
 
-## fs.open
+## fileIo.open
 
 open(path: string, callback: AsyncCallback&lt;File&gt;): void
 
@@ -2390,7 +2396,7 @@ fs.open(filePath, (err: BusinessError<void> | null, file: fs.File | undefined) =
 });
 ```
 
-## fs.openSync
+## fileIo.openSync
 
 ArkTS-Dyn: openSync(path: string, mode?: number): File
 
@@ -2434,7 +2440,7 @@ console.info("file fd: " + file.fd);
 fs.closeSync(file);
 ```
 
-## fs.read
+## fileIo.read
 
 ArkTS-Dyn: read(fd: number, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;number&gt;
 
@@ -2457,14 +2463,14 @@ ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, options?: ReadOptions): Promise&lt
 | ------- | --------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 已打开的文件描述符。                                                                                                                                                             |
 | buffer  | ArrayBuffer                       | 是   | 用于保存读取到的文件数据的缓冲区。                                                                                                                                               |
-| options | [ReadOptions](#readoptions11)     | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。 |
+| options | [ReadOptions](#readoptions11)     | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 **返回值：**
 
 
 | 类型                                                             | 说明                                                |
 | ---------------------------------------------------------------- | --------------------------------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回实际读取的数据长度（单位：字节）。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -2512,7 +2518,7 @@ fs.read(file.fd, arrayBuffer).then((readLen: long) => {
 });
 ```
 
-## fs.read
+## fileIo.read
 
 ArkTS-Dyn: read(fd: number, buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallback&lt;number&gt;): void
 
@@ -2535,8 +2541,8 @@ ArkTS-Sta: read(fd: int, buffer: ArrayBuffer, options?: ReadOptions, callback: A
 | -------- | ---------------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | fd       | ArkTS-Dyn: number<br>ArkTS-Sta: int                                            | 是   | 已打开的文件描述符。                                                                                                                                                             |
 | buffer   | ArrayBuffer                                                                  | 是   | 用于保存读取到的文件数据的缓冲区。                                                                                                                                               |
-| options  | [ReadOptions](#readoptions11)                                                | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。 |
-| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 异步读取数据之后的回调。返回实际读取的数据长度，单位字节。                                                                                                                       |
+| options  | [ReadOptions](#readoptions11)                                                | 否   | 支持如下选项：<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
+| callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   |  异步读取数据之后的回调。返回实际读取的数据长度，单位为Byte。                                                                                                                       |
 
 **错误码：**
 
@@ -2585,7 +2591,7 @@ fs.read(file.fd, arrayBuffer, (err: BusinessError<void> | null, readLen: long | 
 });
 ```
 
-## fs.readSync
+## fileIo.readSync
 
 ArkTS-Dyn: readSync(fd: number, buffer: ArrayBuffer, options?: ReadOptions): number
 
@@ -2608,14 +2614,14 @@ ArkTS-Sta: readSync(fd: int, buffer: ArrayBuffer, options?: ReadOptions): long
 | ------- | --------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 已打开的文件描述符。                                                                                                                                                                                                                                                                                                                                                       |
 | buffer  | ArrayBuffer                       | 是   | 用于保存读取到的文件数据的缓冲区。                                                                                                                                                                                                                                                                                                                                         |
-| options | [ReadOptions](#readoptions11)     | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>-&nbsp;length，long类型，表示期望读取数据的长度。可选，默认缓冲区长度。 |
+| options | [ReadOptions](#readoptions11)     | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。 |
 
 **返回值：**
 
 
 | 类型                               | 说明                                   |
 | ---------------------------------- | -------------------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回实际读取的数据长度（单位：字节）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 返回实际读取的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -2631,11 +2637,11 @@ fs.readSync(file.fd, buf);
 fs.closeSync(file);
 ```
 
-## fs.rmdir
+## fileIo.rmdir
 
 rmdir(path: string): Promise&lt;void&gt;
 
-删除整个目录，使用promise异步回调。
+删除目录及其所有子目录和文件，使用promise异步回调。
 
 > **说明：**
 >
@@ -2695,11 +2701,11 @@ fs.rmdir(dirPath).then(() => {
 });
 ```
 
-## fs.rmdir
+## fileIo.rmdir
 
 rmdir(path: string, callback: AsyncCallback&lt;void&gt;): void
 
-删除整个目录，使用callback异步回调。
+删除目录及其所有子目录和文件，使用callback异步回调。
 
 > **说明：**
 >
@@ -2756,11 +2762,11 @@ fs.rmdir(dirPath, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.rmdirSync
+## fileIo.rmdirSync
 
 rmdirSync(path: string): void
 
-以同步方法删除目录。
+以同步方法删除目录及其所有子目录和文件。
 
 > **说明：**
 >
@@ -2792,7 +2798,7 @@ let dirPath = pathDir + "/testDir";
 fs.rmdirSync(dirPath);
 ```
 
-## fs.unlink
+## fileIo.unlink
 
 unlink(path: string): Promise&lt;void&gt;
 
@@ -2852,7 +2858,7 @@ fs.unlink(filePath).then(() => {
 });
 ```
 
-## fs.unlink
+## fileIo.unlink
 
 unlink(path: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -2909,7 +2915,7 @@ fs.unlink(filePath, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.unlinkSync
+## fileIo.unlinkSync
 
 unlinkSync(path: string): void
 
@@ -2941,7 +2947,7 @@ let filePath = pathDir + "/test.txt";
 fs.unlinkSync(filePath);
 ```
 
-## fs.write
+## fileIo.write
 
 ArkTS-Dyn: write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): Promise&lt;number&gt;
 
@@ -2964,14 +2970,14 @@ ArkTS-Sta: write(fd: int, buffer: ArrayBuffer | string, options?: WriteOptions):
 | ------- | --------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 已打开的文件描述符。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | buffer  | ArrayBuffer \| string              | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| options | [WriteOptions](#writeoptions11)   | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写入。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望写入文件的位置。可选，默认从当前位置开始写入。<br/>-&nbsp;length，long类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
+| options | [WriteOptions](#writeoptions11)   | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写入。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写入。<br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
 
 | 类型                                                             | 说明                                                |
 | ---------------------------------------------------------------- | --------------------------------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回实际写入的数据长度（单位：字节）。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -3013,7 +3019,7 @@ fs.write(file.fd, str).then((writeLen: long) => {
 });
 ```
 
-## fs.write
+## fileIo.write
 
 ArkTS-Dyn: write(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions, callback: AsyncCallback&lt;number&gt;): void
 
@@ -3036,7 +3042,7 @@ ArkTS-Sta: write(fd: int, buffer: ArrayBuffer | string, options?: WriteOptions, 
 | -------- | ---------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | fd       | ArkTS-Dyn: number<br>ArkTS-Sta: int                                            | 是   | 已打开的文件描述符。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | buffer   | ArrayBuffer \| string                                                         | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| options  | [WriteOptions](#writeoptions11)                                              | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，long类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
+| options  | [WriteOptions](#writeoptions11)                                              | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
 | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 异步将数据写入完成后执行的回调函数。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 
 **错误码：**
@@ -3080,7 +3086,7 @@ fs.write(file.fd, str, (err: BusinessError<void> | null, writeLen: long | undefi
 });
 ```
 
-## fs.writeSync
+## fileIo.writeSync
 
 ArkTS-Dyn: writeSync(fd: number, buffer: ArrayBuffer | string, options?: WriteOptions): number
 
@@ -3103,14 +3109,14 @@ ArkTS-Sta: writeSync(fd: int, buffer: ArrayBuffer | string, options?: WriteOptio
 | ------- | --------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | fd      | ArkTS-Dyn: number<br>ArkTS-Sta: int | 是   | 已打开的文件描述符。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | buffer  | ArrayBuffer \| string              | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| options | [WriteOptions](#writeoptions11)   | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;length，long类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
+| options | [WriteOptions](#writeoptions11)   | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。当前仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
 
 | 类型                              | 说明                                   |
 | --------------------------------- | -------------------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回实际写入的数据长度（单位：字节）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回实际写入的数据长度，单位为Byte。 |
 
 **错误码：**
 
@@ -3127,7 +3133,7 @@ console.info("write data to file succeed and size is:" + writeLen);
 fs.closeSync(file);
 ```
 
-## fs.truncate
+## fileIo.truncate
 
 ArkTS-Dyn: truncate(file: string | number, len?: number): Promise&lt;void&gt;
 
@@ -3149,7 +3155,7 @@ ArkTS-Sta: truncate(file: string | int, len?: long): Promise&lt;void&gt;
 | 参数名 | 类型                                                 | 必填 | 说明                                       |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------ |
 | file   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。 |
-| len    | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 否   | 文件截断后的长度（单位：字节）。默认为0。  |
+| len    | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 否   | 文件截断后的长度，单位为Byte。默认为0。  |
 
 **返回值：**
 
@@ -3192,7 +3198,7 @@ fs.truncate(filePath, len).then(() => {
 });
 ```
 
-## fs.truncate
+## fileIo.truncate
 
 ArkTS-Dyn: truncate(file: string | number, len?: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -3214,7 +3220,7 @@ ArkTS-Sta: truncate(file: string | int, len?: long, callback: AsyncCallback&lt;v
 | 参数名   | 类型                                                 | 必填 | 说明                                       |
 | -------- | ---------------------------------------------------- | ---- | ------------------------------------------ |
 | file     | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。 |
-| len      | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 否   | 文件截断后的长度，以字节为单位。默认为0。  |
+| len      | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 否   | 文件截断后的长度，单位为Byte。默认为0。  |
 | callback | AsyncCallback&lt;void&gt;                            | 是   | 回调函数，本调用无返回值。                 |
 
 **错误码：**
@@ -3254,7 +3260,7 @@ fs.truncate(filePath, len, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.truncateSync
+## fileIo.truncateSync
 
 ArkTS-Dyn: truncateSync(file: string | number, len?: number): void
 
@@ -3276,7 +3282,7 @@ ArkTS-Sta: truncateSync(file: string | int, len?: long): void
 | 参数名 | 类型                                                 | 必填 | 说明                                       |
 | ------ | ---------------------------------------------------- | ---- | ------------------------------------------ |
 | file   | ArkTS-Dyn: string \| number<br>ArkTS-Sta: string \| int | 是   | 文件的应用沙箱路径或已打开的文件描述符fd。 |
-| len    | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 否   | 文件截断后的长度（单位：字节）。默认为0。  |
+| len    | ArkTS-Dyn: number<br>ArkTS-Sta: long                   | 否   | 文件截断后的长度，单位为Byte。默认为0。  |
 
 **错误码：**
 
@@ -3300,7 +3306,7 @@ let len: long = 5;
 fs.truncateSync(filePath, len);
 ```
 
-## fs.readLines<sup>11+</sup>
+## fileIo.readLines<sup>11+</sup>
 
 readLines(filePath: string, options?: Options): Promise&lt;ReaderIterator&gt;
 
@@ -3371,7 +3377,7 @@ fs.readLines(filePath, options).then((readerIterator: fs.ReaderIterator) => {
 });
 ```
 
-## fs.readLines<sup>11+</sup>
+## fileIo.readLines<sup>11+</sup>
 
 readLines(filePath: string, options?: Options, callback: AsyncCallback&lt;ReaderIterator&gt;): void
 
@@ -3439,7 +3445,7 @@ fs.readLines(filePath, options, (err: BusinessError<void> | null, readerIterator
 });
 ```
 
-## fs.readLinesSync<sup>11+</sup>
+## fileIo.readLinesSync<sup>11+</sup>
 
 readLinesSync(filePath: string, options?: Options): ReaderIterator
 
@@ -3509,7 +3515,7 @@ next(): ReaderIteratorResult
 
 | 类型                                          | 说明                     |
 | --------------------------------------------- | ------------------------ |
-| [ReaderIteratorResult](#readeriteratorresult) | 文件读取迭代器返回结果。 |
+| [ReaderIteratorResult](#readeriteratorresult11) | 文件读取迭代器返回结果。 |
 
 **错误码：**
 
@@ -3559,13 +3565,13 @@ fs.readLines(filePath, options).then((readerIterator: fs.ReaderIterator) => {
 });
 ```
 
-## ReaderIteratorResult
+## ReaderIteratorResult<sup>11+</sup>
 
 文件读取迭代器返回结果，支持ReaderIterator接口使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 11
 
 **ArkTS-Sta起始版本：** 23
 
@@ -3575,7 +3581,7 @@ fs.readLines(filePath, options).then((readerIterator: fs.ReaderIterator) => {
 | done  | boolean | 迭代器是否已完成迭代。true：已完成迭代；false：未完成迭代。 |
 | value | string  | 逐行读取的文件文本内容。                                    |
 
-## fs.readText
+## fileIo.readText
 
 readText(filePath: string, options?: ReadTextOptions): Promise&lt;string&gt;
 
@@ -3595,7 +3601,7 @@ readText(filePath: string, options?: ReadTextOptions): Promise&lt;string&gt;
 | 参数名   | 类型                                  | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | -------- | ------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | filePath | string                                | 是   | 文件的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，long类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
@@ -3636,7 +3642,7 @@ fs.readText(filePath).then((str: string) => {
 });
 ```
 
-## fs.readText
+## fileIo.readText
 
 readText(filePath: string, options?: ReadTextOptions, callback: AsyncCallback&lt;string&gt;): void
 
@@ -3656,7 +3662,7 @@ readText(filePath: string, options?: ReadTextOptions, callback: AsyncCallback&lt
 | 参数名   | 类型                                  | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | -------- | ------------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | filePath | string                                | 是   | 文件的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，long类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 | callback | AsyncCallback&lt;string&gt;           | 是   | 回调函数，返回读取文件的内容。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 **错误码：**
@@ -3710,7 +3716,7 @@ fs.readText(filePath, readTextOption, (err: BusinessError<void> | null, str: str
 });
 ```
 
-## fs.readTextSync
+## fileIo.readTextSync
 
 readTextSync(filePath: string, options?: ReadTextOptions): string
 
@@ -3730,7 +3736,7 @@ readTextSync(filePath: string, options?: ReadTextOptions): string
 | 参数名   | 类型                                  | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | -------- | ------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | filePath | string                                | 是   | 文件的应用沙箱路径。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br/>-&nbsp;length，long类型，表示期望读取数据的长度。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
+| options  | [ReadTextOptions](#readtextoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;offset，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认文件长度。<br/>-&nbsp;encoding，string类型，当数据是&nbsp;string&nbsp;类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'，仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
@@ -3759,7 +3765,7 @@ let str = fs.readTextSync(filePath, readTextOptions);
 console.info("readText succeed:" + str);
 ```
 
-## fs.lstat
+## fileIo.lstat
 
 lstat(path: string): Promise&lt;Stat&gt;
 
@@ -3817,7 +3823,7 @@ fs.lstat(filePath).then((stat: fs.Stat) => {
 });
 ```
 
-## fs.lstat
+## fileIo.lstat
 
 lstat(path: string, callback: AsyncCallback&lt;Stat&gt;): void
 
@@ -3872,7 +3878,7 @@ fs.lstat(filePath, (err: BusinessError<void> | null, stat: fs.Stat | undefined) 
 });
 ```
 
-## fs.lstatSync
+## fileIo.lstatSync
 
 lstatSync(path: string): Stat
 
@@ -3910,7 +3916,7 @@ let fileStat = fs.lstatSync(filePath);
 console.info("lstat succeed, the size of file is" + fileStat.size);
 ```
 
-## fs.rename
+## fileIo.rename
 
 rename(oldPath: string, newPath: string): Promise&lt;void&gt;
 
@@ -3977,7 +3983,7 @@ fs.rename(srcFile, dstFile).then(() => {
 });
 ```
 
-## fs.rename
+## fileIo.rename
 
 rename(oldPath: string, newPath: string, callback: AsyncCallback&lt;void&gt;): void
 
@@ -4041,7 +4047,7 @@ fs.rename(srcFile, dstFile, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.renameSync
+## fileIo.renameSync
 
 renameSync(oldPath: string, newPath: string): void
 
@@ -4079,7 +4085,7 @@ let dstFile = pathDir + "/new.txt";
 fs.renameSync(srcFile, dstFile);
 ```
 
-## fs.fsync
+## fileIo.fsync
 
 ArkTS-Dyn: fsync(fd: number): Promise&lt;void&gt;
 
@@ -4145,7 +4151,7 @@ fs.fsync(file.fd).then(() => {
 });
 ```
 
-## fs.fsync
+## fileIo.fsync
 
 ArkTS-Dyn: fsync(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -4206,7 +4212,7 @@ fs.fsync(file.fd, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.fsyncSync
+## fileIo.fsyncSync
 
 ArkTS-Dyn: fsyncSync(fd: number): void
 
@@ -4240,7 +4246,7 @@ fs.fsyncSync(file.fd);
 fs.closeSync(file);
 ```
 
-## fs.fdatasync
+## fileIo.fdatasync
 
 ArkTS-Dyn: fdatasync(fd: number): Promise&lt;void&gt;
 
@@ -4306,7 +4312,7 @@ fs.fdatasync(file.fd).then(() => {
 });
 ```
 
-## fs.fdatasync
+## fileIo.fdatasync
 
 ArkTS-Dyn: fdatasync(fd: number, callback: AsyncCallback&lt;void&gt;): void
 
@@ -4367,7 +4373,7 @@ fs.fdatasync (file.fd, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.fdatasyncSync
+## fileIo.fdatasyncSync
 
 ArkTS-Dyn: fdatasyncSync(fd: number): void
 
@@ -4401,11 +4407,15 @@ fs.fdatasyncSync(file.fd);
 fs.closeSync(file);
 ```
 
-## fs.symlink
+## fileIo.symlink
 
 symlink(target: string, srcPath: string): Promise&lt;void&gt;
 
 基于文件路径创建符号链接，使用promise异步回调。
+
+> **说明：**
+>
+> 从API version 11开始，不支持三方应用使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4462,11 +4472,15 @@ fs.symlink(srcFile, dstFile).then(() => {
 });
 ```
 
-## fs.symlink
+## fileIo.symlink
 
 symlink(target: string, srcPath: string, callback: AsyncCallback&lt;void&gt;): void
 
 基于文件路径创建符号链接，使用callback异步回调。
+
+> **说明：**
+>
+> 从API version 11开始，不支持三方应用使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4520,11 +4534,15 @@ fs.symlink(srcFile, dstFile, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.symlinkSync
+## fileIo.symlinkSync
 
 symlinkSync(target: string, srcPath: string): void
 
 以同步的方法基于文件路径创建符号链接。
+
+> **说明：**
+>
+> 从API version 11开始，不支持三方应用使用。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4552,7 +4570,7 @@ let dstFile = pathDir + "/test";
 fs.symlinkSync(srcFile, dstFile);
 ```
 
-## fs.listFile
+## fileIo.listFile
 
 listFile(path: string, options?: ListFileOptions): Promise<string[]>
 
@@ -4578,10 +4596,9 @@ listFile(path: string, options?: ListFileOptions): Promise<string[]>
 
 **返回值：**
 
-
-| 类型                    | 说明                          |
-| ----------------------- | ----------------------------- |
-| Promise&lt;string[]&gt; | Promise对象。返回文件名数组。 |
+  | 类型                   | 说明         |
+  | --------------------- | ---------- |
+  | Promise&lt;string[]&gt; | Promise对象。返回文件名数组，默认以'utf-8'编码。|
 
 **错误码：**
 
@@ -4639,7 +4656,7 @@ fs.listFile(pathDir, listFileOption).then((filenames: Array<string>) => {
 });
 ```
 
-## fs.listFile
+## fileIo.listFile
 
 listFile(path: string, options?: ListFileOptions, callback: AsyncCallback<string[]>): void
 
@@ -4662,7 +4679,7 @@ listFile(path: string, options?: ListFileOptions, callback: AsyncCallback<string
 | -------- | ------------------------------------- | ---- | ------------------------------ |
 | path     | string                                | 是   | 目录的应用沙箱路径。           |
 | options  | [ListFileOptions](#listfileoptions11) | 否   | 文件过滤选项。默认不进行过滤。 |
-| callback | AsyncCallback&lt;string[]&gt;         | 是   | 异步列出文件名数组之后的回调。 |
+| callback | AsyncCallback&lt;string[]&gt;         | 是   | 异步列出文件名数组之后的回调，默认以'utf-8'编码。 |
 
 **错误码：**
 
@@ -4723,7 +4740,7 @@ fs.listFile(pathDir, listFileOption, (err: BusinessError<void> | null, filenames
 });
 ```
 
-## fs.listFileSync
+## fileIo.listFileSync
 
 listFileSync(path: string, options?: ListFileOptions): string[]
 
@@ -4752,7 +4769,7 @@ listFileSync(path: string, options?: ListFileOptions): string[]
 
 | 类型     | 说明             |
 | -------- | ---------------- |
-| string[] | 返回文件名数组。 |
+| string[] | 返回文件名数组，默认以'utf-8'编码。 |
 
 **错误码：**
 
@@ -4778,7 +4795,7 @@ for (let i = 0; i < filenames.length; i++) {
 }
 ```
 
-## fs.lseek<sup>11+</sup>
+## fileIo.lseek<sup>11+</sup>
 
 ArkTS-Dyn: lseek(fd: number, offset: number, whence?: WhenceType): number
 
@@ -4798,7 +4815,7 @@ ArkTS-Sta: lseek(fd: int, offset: long, whence?: WhenceType): long
 | 参数名 | 类型                               | 必填 | 说明                                                 |
 | ------ | ---------------------------------- | ---- | ---------------------------------------------------- |
 | fd     | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 文件描述符。                                         |
-| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 相对偏移位置，单位为字节。                           |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 相对偏移位置，单位为Byte。                           |
 | whence | [WhenceType](#whencetype11)        | 否   | 偏移指针相对位置类型。不指定则默认为文件起始位置处。 |
 
 **返回值：**
@@ -4806,7 +4823,7 @@ ArkTS-Sta: lseek(fd: int, offset: long, whence?: WhenceType): long
 
 | 类型                               | 说明                                                       |
 | ---------------------------------- | ---------------------------------------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: long | 当前文件偏移指针位置（相对于文件头的偏移量，单位为字节）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 当前文件偏移指针位置（相对于文件头的偏移量，单位为Byte）。 |
 
 **错误码：**
 
@@ -4821,7 +4838,7 @@ console.info('The current offset is at ' + fs.lseek(file.fd, 5, fs.WhenceType.SE
 fs.closeSync(file);
 ```
 
-## fs.moveDir<sup>10+</sup>
+## fileIo.moveDir<sup>10+</sup>
 
 ArkTS-Dyn: moveDir(src: string, dest: string, mode?: number): Promise\<void>
 
@@ -4887,7 +4904,7 @@ fs.moveDir(srcPath, destPath, 1).then(() => {
 });
 ```
 
-## fs.moveDir<sup>10+</sup>
+## fileIo.moveDir<sup>10+</sup>
 
 moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -4899,7 +4916,7 @@ moveDir(src: string, dest: string, mode: number, callback: AsyncCallback\<void, 
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTs-Sta接口是[moveDirWithConflictFiles](#fsmovedirwithconflictfiles23)。
+**相关接口：** 该接口对应的ArkTs-Sta接口是[moveDirWithConflictFiles](#fileiomovedirwithconflictfiles23)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4939,7 +4956,7 @@ fs.moveDir(srcPath, destPath, 1, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
-## fs.moveDirWithConflictFiles<sup>23+</sup>
+## fileIo.moveDirWithConflictFiles<sup>23+</sup>
 
 moveDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -4951,7 +4968,7 @@ moveDirWithConflictFiles(src: string, dest: string, mode: int, callback: AsyncCa
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTs-Dyn接口是[moveDir](#fsmovedir10-1)。
+**相关接口：** 该接口对应的ArkTs-Dyn接口是[moveDir](#fileiomovedir10-1)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -4994,7 +5011,7 @@ fs.moveDirWithConflictFiles(srcPath, destPath, 1, (err: BusinessError<Array<Conf
 });
 ```
 
-## fs.moveDir<sup>10+</sup>
+## fileIo.moveDir<sup>10+</sup>
 
 moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -5008,7 +5025,7 @@ moveDir(src: string, dest: string, callback: AsyncCallback\<void, Array\<Conflic
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**相关接口：** 该接口对应的ArkTs-Sta接口是[moveDirWithConflictFiles](#fsmovedirwithconflictfiles23-1)。
+**相关接口：** 该接口对应的ArkTs-Sta接口是[moveDirWithConflictFiles](#fileiomovedirwithconflictfiles23-1)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -5047,7 +5064,7 @@ fs.moveDir(srcPath, destPath, (err: BusinessError<Array<ConflictFiles>>) => {
 });
 ```
 
-## fs.moveDirWithConflictFiles<sup>23+</sup>
+## fileIo.moveDirWithConflictFiles<sup>23+</sup>
 
 moveDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<void, Array\<ConflictFiles>>): void
 
@@ -5061,7 +5078,7 @@ moveDirWithConflictFiles(src: string, dest: string, callback: AsyncCallback\<voi
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**相关接口：** 该接口对应的ArkTs-Dyn接口是[moveDir](#fsmovedir10-2)。
+**相关接口：** 该接口对应的ArkTs-Dyn接口是[moveDir](#fileiomovedir10-2)。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -5103,7 +5120,7 @@ fs.moveDirWithConflictFiles(srcPath, destPath, (err: BusinessError<Array<Conflic
 });
 ```
 
-## fs.moveDirSync<sup>10+</sup>
+## fileIo.moveDirSync<sup>10+</sup>
 
 ArkTS-Dyn: moveDirSync(src: string, dest: string, mode?: number): void
 
@@ -5156,7 +5173,7 @@ try {
 }
 ```
 
-## fs.moveFile
+## fileIo.moveFile
 
 ArkTS-Dyn: moveFile(src: string, dest: string, mode?: number): Promise\<void>
 
@@ -5224,7 +5241,7 @@ fs.moveFile(srcPath, destPath, 0).then(() => {
 });
 ```
 
-## fs.moveFile
+## fileIo.moveFile
 
 ArkTS-Dyn: moveFile(src: string, dest: string, mode: number, callback: AsyncCallback\<void>): void
 
@@ -5289,7 +5306,7 @@ fs.moveFile(srcPath, destPath, 0, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.moveFile
+## fileIo.moveFile
 
 moveFile(src: string, dest: string, callback: AsyncCallback\<void>): void
 
@@ -5351,7 +5368,7 @@ fs.moveFile(srcPath, destPath, (err: BusinessError<void> | null) => {
 });
 ```
 
-## fs.moveFileSync
+## fileIo.moveFileSync
 
 ArkTS-Dyn: moveFileSync(src: string, dest: string, mode?: number): void
 
@@ -5391,7 +5408,7 @@ fs.moveFileSync(srcPath, destPath, 0);
 console.info("move file succeed");
 ```
 
-## fs.mkdtemp
+## fileIo.mkdtemp
 
 mkdtemp(prefix: string): Promise&lt;string&gt;
 
@@ -5447,7 +5464,7 @@ fs.mkdtemp(pathDir + "/XXXXXX").then((dir: string) => {
 });
 ```
 
-## fs.mkdtemp
+## fileIo.mkdtemp
 
 mkdtemp(prefix: string, callback: AsyncCallback&lt;string&gt;): void
 
@@ -5500,7 +5517,7 @@ fs.mkdtemp(pathDir + "/XXXXXX", (err: BusinessError<void> | null, res: string | 
 });
 ```
 
-## fs.mkdtempSync
+## fileIo.mkdtempSync
 
 mkdtempSync(prefix: string): string
 
@@ -5536,13 +5553,13 @@ mkdtempSync(prefix: string): string
 let res = fs.mkdtempSync(pathDir + "/XXXXXX");
 ```
 
-## fs.utimes<sup>11+</sup>
+## fileIo.utimes<sup>11+</sup>
 
 ArkTS-Dyn: utimes(path: string, mtime: number): void
 
 ArkTS-Sta: utimes(path: string, mtime: double): void
 
-修改文件最近访问时间属性。
+更改文件上次修改该文件的时间。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -5572,7 +5589,7 @@ fs.closeSync(file);
 fs.utimes(filePath, new Date().getTime());
 ```
 
-## fs.createRandomAccessFile<sup>10+</sup>
+## fileIo.createRandomAccessFile<sup>10+</sup>
 
 ArkTS-Dyn: createRandomAccessFile(file: string | File, mode?: number): Promise&lt;RandomAccessFile&gt;
 
@@ -5642,7 +5659,7 @@ fs.createRandomAccessFile(file).then((randomAccessFile: fs.RandomAccessFile) => 
 });
 ```
 
-## fs.createRandomAccessFile<sup>10+</sup>
+## fileIo.createRandomAccessFile<sup>10+</sup>
 
 createRandomAccessFile(file: string | File, callback: AsyncCallback&lt;RandomAccessFile&gt;): void
 
@@ -5703,7 +5720,7 @@ fs.createRandomAccessFile(file, (err: BusinessError<void> | null, randomAccessFi
 });
 ```
 
-## fs.createRandomAccessFile<sup>10+</sup>
+## fileIo.createRandomAccessFile<sup>10+</sup>
 
 ArkTS-Dyn: createRandomAccessFile(file: string | File, mode: number, callback: AsyncCallback&lt;RandomAccessFile&gt;): void
 
@@ -5724,7 +5741,7 @@ ArkTS-Sta: createRandomAccessFile(file: string | File, mode: int, callback: Asyn
 | -------- | ---------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | file     | string \| [File](#file)                                     | 是   | 文件的应用沙箱路径或已打开的File对象。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | mode     | ArkTS-Dyn: number<br>ArkTS-Sta: int                          | 是   | 创建文件RandomAccessFile对象的[选项](#openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
-| callback | AsyncCallback&lt;[RandomAccessFile](#randomaccessfile)&gt; | 是   | 异步创建RandomAccessFile对象之后的回调。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| callback | AsyncCallback&lt;[RandomAccessFile](#randomaccessfile10)&gt; | 是   | 异步创建RandomAccessFile对象之后的回调。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 **错误码：**
 
@@ -5767,7 +5784,7 @@ fs.createRandomAccessFile(file, fs.OpenMode.READ_ONLY, (err: BusinessError<void>
 });
 ```
 
-## fs.createRandomAccessFile<sup>12+</sup>
+## fileIo.createRandomAccessFile<sup>12+</sup>
 
 ArkTS-Dyn: createRandomAccessFile(file: string | File, mode?: number, options?: RandomAccessFileOptions): Promise&lt;RandomAccessFile&gt;
 
@@ -5788,14 +5805,14 @@ ArkTS-Sta: createRandomAccessFile(file: string | File, mode?: int, options?: Ran
 | ------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | file    | string \| [File](#file)                                | 是   | 文件的应用沙箱路径或已打开的File对象。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | mode    | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 否   | 创建文件RandomAccessFile对象的[选项](#openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
-| options | [RandomAccessFileOptions](#randomaccessfileoptions12) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>- start，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置。可选，默认文件末尾。<br>ArkTS-Sta: <br/>- start，long类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>- end，long类型，表示期望读取结束的位置。可选，默认文件末尾。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| options | [RandomAccessFileOptions](#randomaccessfileoptions12) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>- start，number类型，，单位为Byte。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。<br>ArkTS-Sta: <br/>- start，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>- end，long类型，表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 **返回值：**
 
 
 | 类型                                                 | 说明                                          |
 | ---------------------------------------------------- | --------------------------------------------- |
-| Promise&lt;[RandomAccessFile](#randomaccessfile)&gt; | Promise对象。返回RandomAccessFile对象的结果。 |
+| Promise&lt;[RandomAccessFile](#randomaccessfile10)&gt; | Promise对象。返回RandomAccessFile对象的结果。 |
 
 **错误码：**
 
@@ -5835,7 +5852,7 @@ fs.createRandomAccessFile(filePath, fs.OpenMode.CREATE | fs.OpenMode.READ_WRITE,
   });
 ```
 
-## fs.createRandomAccessFileSync<sup>10+</sup>
+## fileIo.createRandomAccessFileSync<sup>10+</sup>
 
 ArkTS-Dyn: createRandomAccessFileSync(file: string | File, mode?: number): RandomAccessFile
 
@@ -5862,7 +5879,7 @@ ArkTS-Sta: createRandomAccessFileSync(file: string | File, mode?: int): RandomAc
 
 | 类型                                  | 说明                       |
 | ------------------------------------- | -------------------------- |
-| [RandomAccessFile](#randomaccessfile) | 返回RandomAccessFile对象。 |
+| [RandomAccessFile](#randomaccessfile10) | 返回RandomAccessFile对象。 |
 
 **错误码：**
 
@@ -5877,7 +5894,7 @@ let randomAccessFile = fs.createRandomAccessFileSync(file);
 randomAccessFile.close();
 ```
 
-## fs.createRandomAccessFileSync<sup>12+</sup>
+## fileIo.createRandomAccessFileSync<sup>12+</sup>
 
 ArkTS-Dyn: createRandomAccessFileSync(file: string | File, mode?: number,
 options?: RandomAccessFileOptions): RandomAccessFile
@@ -5900,14 +5917,14 @@ options?: RandomAccessFileOptions): RandomAccessFile
 | ------- | ----------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | file    | string \| [File](#file)                                | 是   | 文件的应用沙箱路径或已打开的File对象。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
 | mode    | ArkTS-Dyn: number<br>ArkTS-Sta: int                     | 否   | 创建文件RandomAccessFile对象的[选项](#openmode)，仅当传入文件沙箱路径时生效，必须指定如下选项中的一个，默认以只读方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读创建。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写创建。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写创建。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果RandomAccessFile对象存在且对应文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到RandomAccessFile对象末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式创建RandomAccessFile对象。 |
-| options | [RandomAccessFileOptions](#randomaccessfileoptions12) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>- start，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置。可选，默认文件末尾。<br>ArkTS-Sta: <br/>- start，long类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>- end，long类型，表示期望读取结束的位置。可选，默认文件末尾。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| options | [RandomAccessFileOptions](#randomaccessfileoptions12) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>- start，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。<br>ArkTS-Sta: <br/>- start，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>- end，long类型，表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 **返回值：**
 
 
 | 类型                                  | 说明                       |
 | ------------------------------------- | -------------------------- |
-| [RandomAccessFile](#randomaccessfile) | 返回RandomAccessFile对象。 |
+| [RandomAccessFile](#randomaccessfile10) | 返回RandomAccessFile对象。 |
 
 **错误码：**
 
@@ -5922,7 +5939,7 @@ let randomAccessFile = fs.createRandomAccessFileSync(filePath, fs.OpenMode.CREAT
 randomAccessFile.close();
 ```
 
-## fs.createStream
+## fileIo.createStream
 
 createStream(path: string, mode: string): Promise&lt;Stream&gt;
 
@@ -5985,7 +6002,7 @@ fs.createStream(filePath, "a+").then((stream: fs.Stream) => {
 });
 ```
 
-## fs.createStream
+## fileIo.createStream
 
 createStream(path: string, mode: string, callback: AsyncCallback&lt;Stream&gt;): void
 
@@ -6045,7 +6062,7 @@ fs.createStream(filePath, "r+", (err: BusinessError<void> | null, stream: fs.Str
 })
 ```
 
-## fs.createStreamSync
+## fileIo.createStreamSync
 
 createStreamSync(path: string, mode: string): Stream
 
@@ -6087,7 +6104,7 @@ console.info("createStream succeed");
 stream.closeSync();
 ```
 
-## fs.fdopenStream
+## fileIo.fdopenStream
 
 ArkTS-Dyn: fdopenStream(fd: number, mode: string): Promise&lt;Stream&gt;
 
@@ -6162,7 +6179,7 @@ fs.fdopenStream(file.fd, "r+").then((stream: fs.Stream) => {
 >
 > 使用文件描述符创建的文件流时，文件描述符的生命周期将由文件流对象管理。调用文件流的close()函数后，初始的文件描述符也会被关闭。
 
-## fs.fdopenStream
+## fileIo.fdopenStream
 
 ArkTS-Dyn: fdopenStream(fd: number, mode: string, callback: AsyncCallback&lt;Stream&gt;): void
 
@@ -6234,7 +6251,7 @@ fs.fdopenStream(file.fd, "r+", (err: BusinessError<void> | null, stream: fs.Stre
 >
 > 使用文件描述符创建的文件流，文件描述符的生命周期也交由文件流对象，在调用文件流的close()函数后，初始的文件描述符也会被关闭。
 
-## fs.fdopenStreamSync
+## fileIo.fdopenStreamSync
 
 ArkTS-Dyn: fdopenStreamSync(fd: number, mode: string): Stream
 
@@ -6282,7 +6299,7 @@ stream.closeSync();
 >
 > 使用文件描述符创建的文件流，文件描述符的生命周期也交由文件流对象，在调用文件流的close()函数后，初始的文件描述符也会被关闭。
 
-## fs.createReadStream<sup>12+</sup>
+## fileIo.createReadStream<sup>12+</sup>
 
 createReadStream(path: string, options?: ReadStreamOptions ): ReadStream
 
@@ -6300,7 +6317,7 @@ createReadStream(path: string, options?: ReadStreamOptions ): ReadStream
 | 参数名  | 类型                                      | 必填 | 说明                                                                                                                                                                                                                                                                                                                                       |
 | ------- | ----------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | path    | string                                    | 是   | 文件路径。                                                                                                                                                                                                                                                                                                                                 |
-| options | [ReadStreamOptions](#readstreamoptions12) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>- start，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置。可选，默认文件末尾。<br>ArkTS-Sta: <br/>- start，long类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/>- end，long类型，表示期望读取结束的位置。可选，默认文件末尾。 |
+| options | [ReadStreamOptions](#readstreamoptions12) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>- start，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>- end，number类型，表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。<br>ArkTS-Sta: <br/>- start，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/>- end，long类型，表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。 |
 
 **返回值：**
 
@@ -6311,7 +6328,7 @@ createReadStream(path: string, options?: ReadStreamOptions ): ReadStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -6354,7 +6371,7 @@ rs.on('readable', () => {
 });
 ```
 
-## fs.createWriteStream<sup>12+</sup>
+## fileIo.createWriteStream<sup>12+</sup>
 
 createWriteStream(path: string, options?: WriteStreamOptions): WriteStream
 
@@ -6372,7 +6389,7 @@ createWriteStream(path: string, options?: WriteStreamOptions): WriteStream
 | 参数名  | 类型                                        | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                            |
 | ------- | ------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | path    | string                                      | 是   | 文件路径。                                                                                                                                                                                                                                                                                                                                                                      |
-| options | [WriteStreamOptions](#writestreamoptions12) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>- start，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>- mode，number 类型，创建文件可写流的[选项](#openmode)，可选，默认以只写方式创建。<br>ArkTS-Sta: <br/>- start，long类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>- mode，int 类型，创建文件可写流的[选项](#openmode)，可选，默认以只写方式创建。 |
+| options | [WriteStreamOptions](#writestreamoptions12) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>- start，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- mode，number 类型，创建文件可写流的[选项](#openmode)，可选，默认以只写方式创建。<br>ArkTS-Sta: <br/>- start，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>- mode，int 类型，创建文件可写流的[选项](#openmode)，可选，默认以只写方式创建。 |
 
 **返回值：**
 
@@ -6383,7 +6400,7 @@ createWriteStream(path: string, options?: WriteStreamOptions): WriteStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -6482,7 +6499,7 @@ getBaseFile(): File
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -6500,8 +6517,8 @@ let pathDir = context.filesDir;
 
 try {
   let atomicFile = new fs.AtomicFile(`${pathDir}/write.txt`);
-  let writeSream = atomicFile.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = atomicFile.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     atomicFile.finishWrite();
     let File = atomicFile.getBaseFile();
     console.info('AtomicFile getBaseFile File.fd is: ' + File.fd + ' path: ' + File.path + ' name: ' + File.name);
@@ -6518,8 +6535,8 @@ import { common } from '@kit.AbilityKit';
 
 try {
   let atomicFile = new fs.AtomicFile(`${pathDir}/write.txt`);
-  let writeSream = atomicFile.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = atomicFile.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     atomicFile.finishWrite();
     let File = atomicFile.getBaseFile();
     console.info(`AtomicFile getting base file and File.fd is: ${File.fd}, path: ${File.path}, name: ${File.name}`);
@@ -6551,7 +6568,7 @@ openRead(): ReadStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -6569,8 +6586,8 @@ let pathDir = context.filesDir;
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/read.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
     setTimeout(()=>{
       let readStream = file.openRead();
@@ -6596,8 +6613,8 @@ import { common } from '@kit.AbilityKit';
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/read.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
     setTimeout(()=>{
       let readStream = file.openRead();
@@ -6638,7 +6655,7 @@ readFully(): ArrayBuffer
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -6657,8 +6674,8 @@ let pathDir = context.filesDir;
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/read.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
     setTimeout(()=>{
       let data = file.readFully();
@@ -6680,8 +6697,8 @@ import { util, buffer } from '@kit.ArkTS';
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/read.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
     setTimeout(()=>{
       let data = file.readFully();
@@ -6721,7 +6738,7 @@ startWrite(): WriteStream
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -6739,8 +6756,8 @@ let pathDir = context.filesDir;
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/write.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     console.info('AtomicFile write finished!');
   })
 } catch (err) {
@@ -6755,8 +6772,8 @@ import { common } from '@kit.AbilityKit';
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/write.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     console.info('Succeeded in AtomicFile write finished!');
   })
 } catch (error: Error) {
@@ -6779,7 +6796,7 @@ finishWrite(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -6797,8 +6814,8 @@ let pathDir = context.filesDir;
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/write.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
   })
 } catch (err) {
@@ -6813,8 +6830,8 @@ import { common } from '@kit.AbilityKit';
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/write.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
   })
 } catch (error: Error) {
@@ -6837,7 +6854,7 @@ failWrite(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -6855,8 +6872,8 @@ let pathDir = context.filesDir;
 
 let file = new fs.AtomicFile(`${pathDir}/write.txt`);
 try {
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     console.info('AtomicFile write succeed!');
   })
 } catch (err) {
@@ -6872,8 +6889,8 @@ import { common } from '@kit.AbilityKit';
 
 let file = new fs.AtomicFile(`${pathDir}/write.txt`);
 try {
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     console.info('Succeeded in AtomicFile write!');
   })
 } catch (error: Error) {
@@ -6897,7 +6914,7 @@ delete(): void
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
 
 **示例：**
 
@@ -6916,8 +6933,8 @@ let pathDir = context.filesDir;
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/read.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
     setTimeout(()=>{
       let data = file.readFully();
@@ -6940,8 +6957,8 @@ import { util } from '@kit.ArkTS';
 
 try {
   let file = new fs.AtomicFile(`${pathDir}/read.txt`);
-  let writeSream = file.startWrite();
-  writeSream.write("hello, world", "utf-8", ()=> {
+  let writeStream = file.startWrite();
+  writeStream.write("hello, world", "utf-8", ()=> {
     file.finishWrite();
     setTimeout(()=>{
       let data = file.readFully();
@@ -6957,7 +6974,7 @@ try {
 }
 ```
 
-## fs.createWatcher<sup>10+</sup>
+## fileIo.createWatcher<sup>10+</sup>
 
 ArkTS-Dyn: createWatcher(path: string, events: number, listener: WatchEventListener): Watcher
 
@@ -7068,8 +7085,8 @@ watcher.stop();
 
 | 名称          | 类型                               | 只读 | 可选 | 说明                 |
 | ------------- | ---------------------------------- | ---- | ---- | -------------------- |
-| processedSize | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 已拷贝的数据大小。   |
-| totalSize     | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 待拷贝的数据总大小。 |
+| processedSize | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 已拷贝的数据大小，单位为Byte。   |
+| totalSize     | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 待拷贝的数据总大小，单位为Byte。 |
 
 ## TaskSignal<sup>12+</sup>
 
@@ -7107,7 +7124,7 @@ ArkTS-Dyn示例：
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { fileUri } from '@kit.CoreFileKit';
-import common from '@ohos.app.ability.common';
+import { common } from '@kit.AbilityKit';
 
 // 请在组件内获取context，确保this.getUIContext().getHostContext()返回结果为UIAbilityContext
 let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
@@ -7149,7 +7166,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 import { fileUri } from '@kit.CoreFileKit';
-import common from '@ohos.app.ability.common';
+import { common } from '@kit.AbilityKit';
 
 let srcDirPathLocal: string = pathDir + "/src";
 let dstDirPathLocal: string = pathDir + "/dest";
@@ -7210,11 +7227,9 @@ onCancel(): Promise&lt;string&gt;
 
 ```ts
 import { fileIo as fs } from '@kit.CoreFileKit';
-import { TaskSignal } from '@ohos.file.fs';
+import { TaskSignal } from '@kit.CoreFileKit';
 let copySignal: fs.TaskSignal = new TaskSignal();
-copySignal.onCancel().then(() => {
-    console.info("copyFileWithCancel success.");
-});
+copySignal.onCancel();
 ```
 
 ## CopyOptions<sup>11+</sup>
@@ -7264,7 +7279,7 @@ let copyOption: fs.CopyOptions = {
 
 ## Stat
 
-文件具体信息，在调用Stat的方法前，需要先通过[stat()](#fsstat)方法（同步或异步）构建一个Stat实例。
+文件具体信息，在调用Stat的方法前，需要先通过[stat()](#fileiostat)方法（同步或异步）构建一个Stat实例。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -7281,7 +7296,7 @@ let copyOption: fs.CopyOptions = {
 | mode                   | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 表示文件权限，各特征位的含义如下：<br/>**说明**：以下值为八进制，取得的返回值为十进制，请换算后查看。<br/>-&nbsp;0o400：用户读。对于普通文件，所有者可读取文件；对于目录，所有者可读取目录项。<br/>-&nbsp;0o200：用户写。对于普通文件，所有者可写入文件；对于目录，所有者可创建/删除目录项。<br/>-&nbsp;0o100：用户执行。对于普通文件，所有者可执行文件；对于目录，所有者可在目录中搜索给定路径名。<br/>-&nbsp;0o040：用户组读。对于普通文件，所有用户组可读取文件；对于目录，所有用户组可读取目录项。<br/>-&nbsp;0o020：用户组写。对于普通文件，所有用户组可写入文件；对于目录，所有用户组可创建/删除目录项。<br/>-&nbsp;0o010：用户组执行。对于普通文件，所有用户组可执行文件；对于目录，所有用户组是否可在目录中搜索给定路径名。<br/>-&nbsp;0o004：其他读。对于普通文件，其余用户可读取文件；对于目录，其他用户组可读取目录项。<br/>-&nbsp;0o002：其他写。对于普通文件，其余用户可写入文件；对于目录，其他用户组可创建/删除目录项。<br/>-&nbsp;0o001：其他执行。对于普通文件，其余用户可执行文件；对于目录，其他用户组可在目录中搜索给定路径名。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23 |
 | uid                    | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 文件所有者的ID。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | gid                    | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 文件所有组的ID。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| size                   | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 文件的大小，以字节为单位。仅对普通文件有效。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| size                   | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 是   | 否   | 文件的大小，单位为Byte。仅对普通文件有效。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | atime                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 否   | 上次访问该文件的时间，表示距1970年1月1日0时0分0秒的秒数。<br>**注意**：目前用户数据分区默认以“noatime”方式挂载，atime更新被禁用。  <br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | mtime                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 否   | 上次修改该文件的时间，表示距1970年1月1日0时0分0秒的秒数。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ctime                  | ArkTS-Dyn: number<br>ArkTS-Sta: double | 是   | 否   | 最近改变文件状态的时间，表示距1970年1月1日0时0分0秒的秒数。<br>**ArkTS-Dyn起始版本：** 9<br>**ArkTS-Sta起始版本：** 23                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -7510,7 +7525,7 @@ let isSymbolicLink = fs.statSync(filePath).isSymbolicLink();
 
 ## Stream
 
-文件流，在调用Stream的方法前，需要先通过[fs.createStream](#fscreatestream)方法或者[fs.fdopenStream](#fsfdopenstream)（同步或异步）来构建一个Stream实例。
+文件流，在调用Stream的方法前，需要先通过[fs.createStream](#fileiocreatestream)方法或者[fs.fdopenStream](#fileiofdopenstream)（同步或异步）来构建一个Stream实例。
 
 **ArkTS-Dyn起始版本：** 9
 
@@ -7821,14 +7836,14 @@ ArkTS-Sta: write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&
 | 参数名  | 类型                            | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ------- | ------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | buffer  | ArrayBuffer \| string            | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| options | [WriteOptions](#writeoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
+| options | [WriteOptions](#writeoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
 
 | 类型                                                             | 说明                              |
 | ---------------------------------------------------------------- | --------------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回实际写入的长度。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -7900,7 +7915,7 @@ ArkTS-Sta: write(buffer: ArrayBuffer | string, options?: WriteOptions, callback:
 | 参数名   | 类型                                                                         | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | -------- | ---------------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | buffer   | ArrayBuffer \| string                                                         | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| options  | [WriteOptions](#writeoptions11)                                              | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
+| options  | [WriteOptions](#writeoptions11)                                              | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
 | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 异步写入完成后执行的回调函数。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 
 **错误码：**
@@ -7980,14 +7995,14 @@ ArkTS-Sta: writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): long
 | 参数名  | 类型                            | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ------- | ------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | buffer  | ArrayBuffer \| string            | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| options | [WriteOptions](#writeoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件的位置。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
+| options | [WriteOptions](#writeoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
 
 | 类型                               | 说明             |
 | ---------------------------------- | ---------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: long | 实际写入的长度。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -8030,14 +8045,14 @@ ArkTS-Sta: read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;long&gt;
 | 参数名  | 类型                          | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                       |
 | ------- | ----------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | buffer  | ArrayBuffer                   | 是   | 用于读取文件的缓冲区。                                                                                                                                                                                                                                                                                                                                                     |
-| options | [ReadOptions](#readoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望读取文件的位置。可选，默认从当前位置开始读。 |
+| options | [ReadOptions](#readoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。 |
 
 **返回值：**
 
 
 | 类型                                                             | 说明                          |
 | ---------------------------------------------------------------- | ----------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回读取的结果。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -8115,7 +8130,7 @@ ArkTS-Sta: read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallb
 | 参数名   | 类型                                                                         | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                           |
 | -------- | ---------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | buffer   | ArrayBuffer                                                                  | 是   | 用于读取文件的缓冲区。                                                                                                                                                                                                                                                                                                                                                         |
-| options  | [ReadOptions](#readoptions11)                                                | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望读取文件的位置。可选，默认从当前位置开始读取。 |
+| options  | [ReadOptions](#readoptions11)                                                | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。 |
 | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 异步读取完成后的回调。                                                                                                                                                                                                                                                                                                                                                         |
 
 **错误码：**
@@ -8197,14 +8212,14 @@ ArkTS-Sta: readSync(buffer: ArrayBuffer, options?: ReadOptions): long
 | 参数名  | 类型                          | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                            |
 | ------- | ----------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | buffer  | ArrayBuffer                   | 是   | 用于读取文件的缓冲区。                                                                                                                                                                                                                                                                                                                                                          |
-| options | [ReadOptions](#readoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望读取文件的位置。可选，默认从当前位置开始读。<br/> |
+| options | [ReadOptions](#readoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。<br/> |
 
 **返回值：**
 
 
 | 类型                               | 说明             |
 | ---------------------------------- | ---------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: long | 实际读取的长度。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 实际读取的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -8460,11 +8475,7 @@ console.log("unlock file succeed");
 fs.closeSync(file);
 ```
 
-## fs.DfsListeners<sup>12+</sup>
-
-interface DfsListeners {
-onStatus(networkId: string, status: number): void
-}
+## fileIo.DfsListeners<sup>12+</sup>
 
 事件监听类。创建DFSListener对象，用于监听分布式文件系统状态。
 
@@ -8474,7 +8485,7 @@ onStatus(networkId: string, status: number): void
 
 onStatus(networkId: string, status: number): void;
 
-事件回调类。参数由[connectDfs](#fsconnectdfs12)传入。
+事件回调类。参数由[connectDfs](#fileioconnectdfs12)传入。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
@@ -8486,13 +8497,13 @@ onStatus(networkId: string, status: number): void;
 | networkId | string                             | 是   | 设备的网络Id。                                                                                                                                                                                                                          |
 | status    | number | 是   | 分布式文件系统的状态码（以connectDfs回调onStatus的特定错误码作为入参）。触发场景为connectDfs调用过程中出现对端设备异常，对应错误码为：<br/>-&nbsp;[13900046](errorcode-filemanagement.md#13900046-软件造成连接中断)：软件造成连接中断。 |
 
-## RandomAccessFile
+## RandomAccessFile<sup>10+</sup>
 
 随机读写文件流。在调用RandomAccessFile的方法前，需要先通过createRandomAccessFile()方法（同步或异步）来构建一个RandomAccessFile实例。
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 10
 
 **ArkTS-Sta起始版本：** 23
 
@@ -8502,7 +8513,7 @@ onStatus(networkId: string, status: number): void;
 | 名称        | 类型                               | 只读 | 可选 | 说明                             |
 | ----------- | ---------------------------------- | ---- | ---- | -------------------------------- |
 | fd          | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 是   | 否   | 打开的文件描述符。               |
-| filePointer | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | RandomAccessFile对象的偏移指针。 |
+| filePointer | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | RandomAccessFile对象的偏移指针，单位为Byte。 |
 
 ### setFilePointer<sup>10+</sup>
 
@@ -8523,7 +8534,7 @@ ArkTS-Sta: setFilePointer(filePointer:long): void
 
 | 参数名      | 类型                               | 必填 | 说明                             |
 | ----------- | ---------------------------------- | ---- | -------------------------------- |
-| filePointer | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | RandomAccessFile对象的偏移指针。 |
+| filePointer | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | RandomAccessFile对象的偏移指针，单位为Byte。 |
 
 **错误码：**
 
@@ -8582,14 +8593,14 @@ ArkTS-Sta: write(buffer: ArrayBuffer | string, options?: WriteOptions): Promise&
 | 参数名  | 类型                            | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ------- | ------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | buffer  | ArrayBuffer \| string            | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| options | [WriteOptions](#writeoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度。默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
+| options | [WriteOptions](#writeoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
 
 | 类型                                                             | 说明                              |
 | ---------------------------------------------------------------- | --------------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回实际写入的长度。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -8671,7 +8682,7 @@ ArkTS-Sta: write(buffer: ArrayBuffer | string, options?: WriteOptions, callback:
 | 参数名   | 类型                                                                         | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | -------- | ---------------------------------------------------------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | buffer   | ArrayBuffer \| string                                                         | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-| options  | [WriteOptions](#writeoptions11)                                              | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
+| options  | [WriteOptions](#writeoptions11)                                              | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
 | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 异步写入完成后执行的回调函数。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 **错误码：**
@@ -8757,14 +8768,14 @@ ArkTS-Sta: writeSync(buffer: ArrayBuffer | string, options?: WriteOptions): long
 | 参数名  | 类型                            | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ------- | ------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | buffer  | ArrayBuffer \| string            | 是   | 待写入文件的数据，可来自缓冲区或字符串。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| options | [WriteOptions](#writeoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
+| options | [WriteOptions](#writeoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br/>-&nbsp;encoding，string类型，当数据是string类型时有效，表示数据的编码方式，默认&nbsp;'utf-8'。仅支持&nbsp;'utf-8'。 |
 
 **返回值：**
 
 
 | 类型                               | 说明             |
 | ---------------------------------- | ---------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: long | 实际写入的长度。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 实际写入的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -8805,14 +8816,14 @@ ArkTS-Sta: read(buffer: ArrayBuffer, options?: ReadOptions): Promise&lt;long&gt;
 | 参数名  | 类型                          | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 | ------- | ----------------------------- | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | buffer  | ArrayBuffer                   | 是   | 用于读取文件的缓冲区。                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| options | [ReadOptions](#readoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望读取数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
+| options | [ReadOptions](#readoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
 
 **返回值：**
 
 
 | 类型                                                             | 说明                          |
 | ---------------------------------------------------------------- | ----------------------------- |
-| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回读取的结果。 |
+| ArkTS-Dyn: Promise&lt;number&gt;<br>ArkTS-Sta: Promise&lt;long&gt; | Promise对象。返回读取的结果，单位为Byte。 |
 
 **错误码：**
 
@@ -8890,7 +8901,7 @@ ArkTS-Sta: read(buffer: ArrayBuffer, options?: ReadOptions, callback: AsyncCallb
 | 参数名   | 类型                                                                         | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | -------- | ---------------------------------------------------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | buffer   | ArrayBuffer                                                                  | 是   | 用于读取文件的缓冲区。                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| options  | [ReadOptions](#readoptions11)                                                | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示读取数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示读取数据的长度。可选，默认为缓冲区长度。<br/>-&nbsp;offset，long类型，表示读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。 |
+| options  | [ReadOptions](#readoptions11)                                                | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，number类型，表示读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示读取数据的长度，单位为Byte。可选，默认为缓冲区长度。<br/>-&nbsp;offset，long类型，表示读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从filePointer开始读。 |
 | callback | ArkTS-Dyn: AsyncCallback&lt;number&gt;<br>ArkTS-Sta: AsyncCallback&lt;long&gt; | 是   | 异步读取完成后的回调。                                                                                                                                                                                                                                                                                                                                                                                                                         |
 
 **错误码：**
@@ -8974,14 +8985,14 @@ ArkTS-Sta: readSync(buffer: ArrayBuffer, options?: ReadOptions): long
 | 参数名  | 类型                          | 必填 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ------- | ----------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | buffer  | ArrayBuffer                   | 是   | 用于读取文件的缓冲区。                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| options | [ReadOptions](#readoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望读取数据的长度。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望读取文件位置（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br/> |
+| options | [ReadOptions](#readoptions11) | 否   | 支持如下选项：<br>ArkTS-Dyn: <br/>-&nbsp;length，number类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，number类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br>ArkTS-Sta: <br/>-&nbsp;length，long类型，表示期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。<br/>-&nbsp;offset，long类型，表示期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。<br/> |
 
 **返回值：**
 
 
 | 类型                               | 说明             |
 | ---------------------------------- | ---------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: long | 实际读取的长度。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 实际读取的长度，单位为Byte。 |
 
 **错误码：**
 
@@ -9029,10 +9040,13 @@ getReadStream(): ReadStream
 
 **返回值：**
 
-
 | 类型                        | 说明         |
 | --------------------------- | ------------ |
 | [ReadStream](#readstream12) | 文件可读流。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -9058,10 +9072,13 @@ getWriteStream(): WriteStream
 
 **返回值：**
 
-
 | 类型                          | 说明         |
 | ----------------------------- | ------------ |
 | [WriteStream](#writestream12) | 文件可写流。 |
+
+**错误码：**
+
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -9167,15 +9184,14 @@ open接口flags参数常量。文件打开标签。
 
 **ArkTS-Sta起始版本：** 23
 
-
-| 名称              | 类型                                 | 必选 | 说明                                                                                     |
-| ----------------- | ------------------------------------ | ---- | ---------------------------------------------------------------------------------------- |
-| suffix            | Array&lt;string&gt;                  | 否   | 文件后缀名完全匹配，各个关键词OR关系。                                                   |
-| displayName       | Array&lt;string&gt;                  | 否   | 文件名模糊匹配，各个关键词OR关系。当前仅支持通配符*。                                    |
-| mimeType          | Array&lt;string&gt;                  | 否   | mime类型完全匹配，各个关键词OR关系。预留字段，暂不支持使用。                             |
-| fileSizeOver      | ArkTS-Dyn: number<br>ArkTS-Sta: long   | 否   | 文件大小匹配，大于指定大小的文件。                                                       |
-| lastModifiedAfter | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否   | 文件最近修改时间匹配，在指定时间点及之后的文件。                                         |
-| excludeMedia      | boolean                              | 否   | 是否排除Media中已有的文件。true：排除Media中已有的文件；false：不排除Media中已有的文件。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ------ | ------ | ---- | ---- | ----- |
+| suffix    | Array&lt;string&gt; | 否 | 是 | 文件后缀名完全匹配，各个关键词OR关系。 |
+| displayName | Array&lt;string&gt; | 否 | 是 | 文件名模糊匹配，各个关键词OR关系。当前仅支持通配符*。 |
+| mimeType | Array&lt;string&gt; | 否 | 是 | mime类型完全匹配，各个关键词OR关系。预留字段，暂不支持使用。 |
+| fileSizeOver | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 文件大小匹配，大于指定大小的文件，单位为Byte。 |
+| lastModifiedAfter | ArkTS-Dyn: number<br>ArkTS-Sta: double | 否 | 是 | 文件最近修改时间匹配，在指定时间点及之后的文件。 |
+| excludeMedia | boolean | 否 | 是 | 是否排除Media中已有的文件。true：排除Media中已有的文件；false：不排除Media中已有的文件。 |
 
 ## ConflictFiles<sup>10+</sup>
 
@@ -9291,8 +9307,9 @@ open接口flags参数常量。文件打开标签。
 
 | 名称   | 类型                               | 必选 | 说明                                                                                                             |
 | ------ | ---------------------------------- | ---- | ---------------------------------------------------------------------------------------------------------------- |
-| length | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望读取数据的长度，单位为字节。可选，默认缓冲区长度。                                                           |
-| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望读取文件位置，单位为字节（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望读取文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始读。 |
+| length | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望读取数据的长度，单位为Byte。可选，默认缓冲区长度。                                                           |
+
 
 ## ReadTextOptions<sup>11+</sup>
 
@@ -9307,8 +9324,8 @@ open接口flags参数常量。文件打开标签。
 
 | 名称     | 类型                               | 必选 | 说明                                                                                                                                                      |
 | -------- | ---------------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| length   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望读取数据的长度，单位为字节。可选，默认文件长度。                                                                                                      |
-| offset   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望读取文件的位置，单位为字节。可选，默认从当前位置开始读取。                                                                                            |
+| offset   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读取。                                                                                            |
+| length   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望读取数据的长度，单位为Byte。可选，默认文件长度。                                                                                                      |
 | encoding | string                             | 否   | 当数据是 string 类型时有效，表示数据的编码方式，默认 'utf-8'，仅支持 'utf-8'。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## WriteOptions<sup>11+</sup>
@@ -9324,8 +9341,8 @@ open接口flags参数常量。文件打开标签。
 
 | 名称     | 类型                               | 必选 | 说明                                                                                                                                                                                        |
 | -------- | ---------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| length   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望写入数据的长度，单位为字节。可选，默认缓冲区长度。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。                                                           |
-| offset   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望写入文件位置，单位为字节（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| offset   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望写入文件位置，单位为Byte（基于当前filePointer加上offset的位置）。可选，默认从偏移指针（filePointer）开始写。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。 |
+| length   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 期望写入数据的长度，单位为Byte。可选，默认缓冲区长度。<br>**原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。                                                           |
 | encoding | string                             | 否   | 当数据是string类型时有效，表示数据的编码方式。默认 'utf-8'。仅支持 'utf-8'。                                                                                                                |
 
 ## ListFileOptions<sup>11+</sup>
@@ -9349,7 +9366,7 @@ open接口flags参数常量。文件打开标签。
 
 ## ReadStream<sup>12+</sup>
 
-文件可读流，需要先通过[fs.createReadStream](#fscreatereadstream12)方法来构建一个ReadStream实例。ReadStream继承自数据流基类[stream](../apis-arkts/js-apis-stream.md#readable)。
+文件可读流，需要先通过[fs.createReadStream](#fileiocreatereadstream12)方法来构建一个ReadStream实例。ReadStream继承自数据流基类[stream](../apis-arkts/js-apis-stream.md#readable)。
 
 **规格**：ReadStream读到的数据为解码后的字符串，其编码格式当前仅支持'utf-8'。
 
@@ -9384,7 +9401,7 @@ ArkTS-Sta: seek(offset: long, whence?: WhenceType): long
 
 | 参数名 | 类型                               | 必填 | 说明                                                     |
 | ------ | ---------------------------------- | ---- | -------------------------------------------------------- |
-| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 相对偏移位置，单位为字节。                               |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 相对偏移位置，单位为Byte。                               |
 | whence | [WhenceType](#whencetype11)        | 否   | 偏移指针相对位置类型。默认值：SEEK_SET，文件起始位置处。 |
 
 **返回值：**
@@ -9392,11 +9409,11 @@ ArkTS-Sta: seek(offset: long, whence?: WhenceType): long
 
 | 类型                               | 说明                                                         |
 | ---------------------------------- | ------------------------------------------------------------ |
-| ArkTS-Dyn: number<br>ArkTS-Sta: long | 当前可读流偏移指针位置（相对于文件头的偏移量，单位为字节）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 当前可读流偏移指针位置（相对于文件头的偏移量，单位为Byte）。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -9408,7 +9425,7 @@ console.info(`current offset is ${curOff}`);
 rs.close();
 ```
 
-### close
+### close<sup>12+</sup>
 
 close(): void
 
@@ -9434,7 +9451,7 @@ rs.close();
 
 ## WriteStream<sup>12+</sup>
 
-文件可写流，需要先通过[fs.createWriteStream](#fscreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream](../apis-arkts/js-apis-stream.md#writable)。
+文件可写流，需要先通过[fs.createWriteStream](#fileiocreatewritestream12)方法来构建一个WriteStream实例。WriteStream继承自数据流基类[stream.Writable](../apis-arkts/js-apis-stream.md#writable)。
 
 **ArkTS-Dyn起始版本：** 12
 
@@ -9448,7 +9465,7 @@ rs.close();
 | bytesWritten | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 否   | 可写流已经写入的字节数。   |
 | path         | string                             | 是   | 否   | 当前可写流对应的文件路径。 |
 
-### Seek
+### seek<sup>12+</sup>
 
 ArkTS-Dyn: seek(offset: number, whence?: WhenceType): number
 
@@ -9458,7 +9475,7 @@ ArkTS-Sta: seek(offset: long, whence?: WhenceType): long
 
 **系统能力**：SystemCapability.FileManagement.File.FileIO
 
-**ArkTS-Dyn起始版本：** 9
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -9467,7 +9484,7 @@ ArkTS-Sta: seek(offset: long, whence?: WhenceType): long
 
 | 参数名 | 类型                               | 必填 | 说明                                                     |
 | ------ | ---------------------------------- | ---- | -------------------------------------------------------- |
-| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 相对偏移位置，单位为字节。                               |
+| offset | ArkTS-Dyn: number<br>ArkTS-Sta: long | 是   | 相对偏移位置，单位为Byte。                               |
 | whence | [WhenceType](#whencetype11)        | 否   | 偏移指针相对位置类型。默认值：SEEK_SET，文件起始位置处。 |
 
 **返回值：**
@@ -9475,11 +9492,11 @@ ArkTS-Sta: seek(offset: long, whence?: WhenceType): long
 
 | 类型                               | 说明                                                         |
 | ---------------------------------- | ------------------------------------------------------------ |
-| ArkTS-Dyn: number<br>ArkTS-Sta: long | 当前可写流偏移指针位置（相对于文件头的偏移量，单位为字节）。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: long | 当前可写流偏移指针位置（相对于文件头的偏移量，单位为Byte）。 |
 
 **错误码：**
 
-接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)。
+接口抛出错误码的详细介绍请参见[基础文件IO错误码](errorcode-filemanagement.md#基础文件io错误码)和[通用错误码](../errorcode-universal.md)。
 
 **示例：**
 
@@ -9526,10 +9543,10 @@ ws.close();
 **ArkTS-Sta起始版本：** 23
 
 
-| 名称  | 类型                               | 必选 | 说明                                                             |
-| ----- | ---------------------------------- | ---- | ---------------------------------------------------------------- |
-| start | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 表示期望读取文件的位置，单位为字节。可选，默认从当前位置开始读。 |
-| end   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 表示期望读取结束的位置，单位为字节。可选，默认文件末尾。         |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----------- | ----------- | -------- | -------- | ---------- |
+| start | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。 |
+| end | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。 |
 
 ## ReadStreamOptions<sup>12+</sup>
 
@@ -9542,10 +9559,10 @@ ws.close();
 **ArkTS-Sta起始版本：** 23
 
 
-| 名称  | 类型                               | 必选 | 说明                                                             |
-| ----- | ---------------------------------- | ---- | ---------------------------------------------------------------- |
-| start | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 表示期望读取文件的位置，单位为字节。可选，默认从当前位置开始读。 |
-| end   | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 表示期望读取结束的位置，单位为字节。可选，默认文件末尾。         |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----------- | ----------- | -------- | -------- | ---------- |
+| start | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 表示期望读取文件的位置，单位为Byte。可选，默认从当前位置开始读。 |
+| end | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 表示期望读取结束的位置，单位为Byte。可选，默认文件末尾。 |
 
 ## WriteStreamOptions<sup>12+</sup>
 
@@ -9558,7 +9575,7 @@ ws.close();
 **ArkTS-Sta起始版本：** 23
 
 
-| 名称  | 类型                               | 必选 | 说明                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| ----- | ---------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| start | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否   | 表示期望写入文件的位置，单位为字节。可选，默认文件起始位置。                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| mode  | ArkTS-Dyn: number<br>ArkTS-Sta: int  | 否   | 创建文件可写流的[选项](#openmode)，必须指定如下选项中的一个，默认只写方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。 |
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ----------- | ----------- | -------- | -------- | ---------- |
+| start | ArkTS-Dyn: number<br>ArkTS-Sta: long | 否 | 是 | 表示期望写入文件的位置，单位为Byte。可选，默认从当前位置开始写。 |
+| mode | ArkTS-Dyn: number<br>ArkTS-Sta: int | 否 | 是 | 创建文件可写流的[选项](#openmode)，必须指定如下选项中的一个，默认只写方式创建：<br/>-&nbsp;OpenMode.READ_ONLY(0o0)：只读。<br/>-&nbsp;OpenMode.WRITE_ONLY(0o1)：只写。<br/>-&nbsp;OpenMode.READ_WRITE(0o2)：读写。<br/>给定如下功能选项，以按位或的方式追加，默认不给定任何额外选项：<br/>-&nbsp;OpenMode.CREATE(0o100)：若文件不存在，则创建文件。<br/>-&nbsp;OpenMode.TRUNC(0o1000)：如果文件存在且文件具有写权限，则将其长度裁剪为零。<br/>-&nbsp;OpenMode.APPEND(0o2000)：以追加方式打开，后续写将追加到文件末尾。<br/>-&nbsp;OpenMode.NONBLOCK(0o4000)：如果path指向FIFO、块特殊文件或字符特殊文件，则本次打开及后续&nbsp;IO&nbsp;进行非阻塞操作。<br/>-&nbsp;OpenMode.DIR(0o200000)：如果path不指向目录，则出错。不允许附加写权限。<br/>-&nbsp;OpenMode.NOFOLLOW(0o400000)：如果path指向符号链接，则出错。<br/>-&nbsp;OpenMode.SYNC(0o4010000)：以同步IO的方式打开文件。 |

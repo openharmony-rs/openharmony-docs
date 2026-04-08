@@ -62,10 +62,10 @@ ArkTS-Sta: getTotalSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 ArkTS-Dyn示例：
 
 ```ts
-import volumemanager from "@ohos.file.volumeManager";
+import { volumeManager } from '@kit.CoreFileKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
-volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
   let uuid: string = volumes[0].uuid;
   storageStatistics.getTotalSizeOfVolume(uuid).then((totalSize: number) => {
     console.info("getTotalSizeOfVolume successfully:" + totalSize);
@@ -80,10 +80,10 @@ volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
 ArkTS-Sta示例：
 
 ```ts
-import volumemanager from "@ohos.file.volumeManager";
+import volumeManager from "@ohos.file.volumeManager";
 import { BusinessError } from '@kit.BasicServicesKit';
 
-volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
   let uuid: string = volumes[0].uuid;
   storageStatistics.getTotalSizeOfVolume(uuid).then((totalSize: long) => {
     console.info("getTotalSizeOfVolume successfully:" + totalSize);
@@ -138,10 +138,10 @@ ArkTS-Sta: getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;l
 ArkTS-Dyn示例：
 
 ```ts
-import volumemanager from "@ohos.file.volumeManager";
+import volumeManager from "@ohos.file.volumeManager";
 import { BusinessError } from '@kit.BasicServicesKit';
 
-volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
   let uuid: string = volumes[0].uuid;
   storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, totalSize: number) => {
     if (error) {
@@ -159,10 +159,10 @@ volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
 ArkTS-Sta示例：
 
 ```ts
-import volumemanager from "@ohos.file.volumeManager";
+import volumeManager from "@ohos.file.volumeManager";
 import { BusinessError } from '@kit.BasicServicesKit';
 
-volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
   let uuid: string = volumes[0].uuid;
   storageStatistics.getTotalSizeOfVolume(uuid, (error: BusinessError, totalSize: long): void => {
     if (error) {
@@ -225,10 +225,10 @@ ArkTS-Sta: getFreeSizeOfVolume(volumeUuid: string): Promise&lt;long&gt;
 ArkTS-Dyn示例：
 
 ```ts
-import volumemanager from "@ohos.file.volumeManager";
+import volumeManager from "@ohos.file.volumeManager";
 import { BusinessError } from '@kit.BasicServicesKit';
 
-volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
   let uuid: string = volumes[0].uuid;
   storageStatistics.getFreeSizeOfVolume(uuid).then((freeSize: number) => {
     console.info("getFreeSizeOfVolume successfully:" + number);
@@ -243,10 +243,10 @@ volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
 ArkTS-Sta示例：
 
 ```ts
-import volumemanager from "@ohos.file.volumeManager";
+import volumeManager from "@ohos.file.volumeManager";
 import { BusinessError } from '@kit.BasicServicesKit';
 
-volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
   let uuid: string = volumes[0].uuid;
   storageStatistics.getFreeSizeOfVolume(uuid).then((freeSize: long) => {
     console.info("getFreeSizeOfVolume successfully:" + freeSize);
@@ -301,10 +301,10 @@ ArkTS-Sta: getFreeSizeOfVolume(volumeUuid: string, callback: AsyncCallback&lt;lo
 ArkTS-Dyn示例：
 
 ```ts
-import volumemanager from "@ohos.file.volumeManager";
+import volumeManager from "@ohos.file.volumeManager";
 import { BusinessError } from '@kit.BasicServicesKit';
 
-volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
   let uuid: string = volumes[0].uuid;
   storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, freeSize: number) => {
     if (error) {
@@ -322,12 +322,12 @@ volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
 ArkTS-Sta示例：
 
 ```ts
-import volumemanager from "@ohos.file.volumeManager";
+import volumeManager from "@ohos.file.volumeManager";
 import { BusinessError } from '@kit.BasicServicesKit';
 
-volumemanager.getAllVolumes().then((volumes: Array<volumemanager.Volume>) => {
+volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
   let uuid: string = volumes[0].uuid;
-  storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, freeSize: long) => {
+  storageStatistics.getFreeSizeOfVolume(uuid, (error: BusinessError, freeSize: long): void => {
     if (error) {
       console.error("getFreeSizeOfVolume failed with error:" + JSON.stringify(error));
     } else {
@@ -428,14 +428,15 @@ try {
 
   let packageName:string = bundleName;
   let index:int = resourceInfo.appIndex;
-  storageStatistics.getBundleStats(packageName, index).then((BundleStats: storageStatistics.BundleStats) => {
+  storageStatistics.getBundleStats(packageName, index).then((BundleStats: storageStatistics.BundleStats): void => {
     hilog.info(0x0000, 'testTag', 'getBundleStats successfully. BundleStats: %{public}s', JSON.stringify(BundleStats));
   }).catch((err: BusinessError): void => {
     hilog.error(0x0000, 'testTag', 'getBundleStats failed with error: %{public}s', JSON.stringify(err));
   });
 
-} catch (err: BusinessError) {
-  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed with error: %{public}s', err);
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed with error: %{public}s', message);
 }
 ```
 
@@ -530,8 +531,9 @@ try {
     }
   }, index);
 
-} catch (err: BusinessError) {
-  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', err);
+} catch (err) {
+  let message = (err as BusinessError).message;
+  hilog.error(0x0000, 'testTag', 'getBundleResourceInfo failed: %{public}s', message);
 }
 ```
 
@@ -655,7 +657,7 @@ ArkTS-Sta示例：
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
-storageStatistics.getSystemSize((error: BusinessError, systemSize: long) => {
+storageStatistics.getSystemSize((error: BusinessError, systemSize: long): void => {
   if (error) {
     console.error("getSystemSize failed with error:" + JSON.stringify(error));
   } else {
@@ -701,6 +703,8 @@ getUserStorageStats(): Promise&lt;StorageStats&gt;
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -708,6 +712,18 @@ storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.St
   console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
 }).catch((err: BusinessError) => {
   console.error("getUserStorageStats failed with error:" + JSON.stringify(err));
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getUserStorageStats().then((storageStats: storageStatistics.StorageStats): void => {
+  console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+}).catch((err: BusinessError): void => {
+  console.error(`getUserStorageStats failed: Code: ${err.code}, Message: ${err.message}`);
 });
 ```
 
@@ -747,12 +763,29 @@ getUserStorageStats(callback: AsyncCallback&lt;StorageStats&gt;): void
 
 **示例：**
 
+ArkTS-Dyn示例：
+
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats) => {
   if (error) {
     console.error("getUserStorageStats failed with error:" + JSON.stringify(error));
+  } else {
+    // do something
+    console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
+  }
+});
+```
+
+ArkTS-Sta示例：
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+storageStatistics.getUserStorageStats((error: BusinessError, storageStats: storageStatistics.StorageStats): void => {
+  if (error) {
+    console.error(`getUserStorageStats failed: Code: ${error.code}, Message: ${error.message}`);
   } else {
     // do something
     console.info("getUserStorageStats successfully:" + JSON.stringify(storageStats));
@@ -1303,7 +1336,7 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 storageStatistics.getSystemDataSize().then((systemDataSize: long) => {
   console.info("getSystemDataSize successfully: " + systemDataSize);
-}).catch((err: BusinessError) => {
+}).catch((err: BusinessError): void => {
   console.error(`getSystemDataSize failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 ```

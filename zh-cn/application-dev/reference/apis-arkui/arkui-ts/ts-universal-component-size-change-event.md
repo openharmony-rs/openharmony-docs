@@ -30,7 +30,7 @@ ArkTS-Sta: onSizeChange(event: SizeChangeCallback | undefined): this
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -48,7 +48,7 @@ ArkTS-Sta: onSizeChange(event: SizeChangeCallback | undefined): this
 
 ## SizeChangeCallback
 
-SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void
+type SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void
 
 组件区域变化时的回调类型。
 
@@ -58,7 +58,7 @@ SizeChangeCallback = (oldValue: SizeOptions, newValue: SizeOptions) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 8
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 

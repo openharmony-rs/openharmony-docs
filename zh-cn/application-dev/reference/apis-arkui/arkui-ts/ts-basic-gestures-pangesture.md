@@ -1,4 +1,4 @@
-# PanGesture
+﻿# PanGesture
 
 滑动手势事件，当滑动的最小距离达到设定的最小值时触发滑动手势事件。
 
@@ -7,10 +7,11 @@
 | 触发方式              | 输入源类型           | 输入设备类型            | 备注                              | 
 |----------------------|---------------------|------------------------|-----------------------------------|
 | 手指按下滑动。          | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).Finger   | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).TouchScreen | axisVertical和axisHorizontal均为0。 |
-| 鼠标左键按下滑动。      | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).Mouse    | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).Mouse        | axisVertical和axisHorizontal均为0。 |
-| 鼠标滚轮滚动。          | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).Mouse    | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).Mouse        | axisVertical或axisHorizontal不为0。 |
-| 触摸板按下左键后滑动。  | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).TouchPad  | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).Unknown     | axisVertical和axisHorizontal均为0。 |
-| 触摸板双指滑动。       | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).TouchPad  | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).Unknown      | axisVertical或axisHorizontal不为0。 |
+| 鼠标左键按下滑动。      | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).MOUSE    | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).Mouse        | axisVertical和axisHorizontal均为0。 |
+| 鼠标滚轮滚动。          | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).MOUSE    | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).Mouse        | axisVertical或axisHorizontal不为0。 |
+| 触摸板按下左键后滑动。  | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).MOUSE  | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).Mouse     | axisVertical和axisHorizontal均为0。 |
+| 触摸板双指滑动。       | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).TOUCHPAD  | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).Mouse      | axisVertical或axisHorizontal不为0。 |
+| 手写笔滑动。       | [SourceTool](ts-gesture-settings.md#sourcetool枚举说明9).Pen  | [SourceType](ts-gesture-settings.md#sourcetype枚举说明8).TouchScreen      | axisVertical和axisHorizontal均为0。 |
 
 >  **说明：**
 >
@@ -41,7 +42,7 @@ PanGesture(value?: { fingers?: number, direction?: PanDirection, distance?: numb
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| value | { fingers?: number; direction?: [PanDirection](ts-basic-gestures-pangesture.md#pandirection枚举说明); distance?: number } \| [PanGestureOptions](#pangestureoptions) | 否 | 滑动手势参数。<br> - fingers：用于指定触发滑动的最少手指数，最小为1指，最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br> - direction：用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br> - distance：用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>取值范围：[0, +∞)<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。 |
+| value | { fingers?: number; direction?: [PanDirection](ts-basic-gestures-pangesture.md#pandirection枚举说明); distance?: number } \| [PanGestureOptions](#pangestureoptions) | 否 | 滑动手势参数。<br> - fingers：用于指定触发滑动的最少手指数，最小为1指，最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br> - direction：用于指定触发滑动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br> - distance：用于指定触发滑动手势事件的最小滑动距离，单位为vp。<br/>取值范围：[0, +∞)<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs](ts-container-tabs.md)组件滑动与该滑动手势事件同时存在时，可将distance值设为1，使滑动更灵敏，避免造成事件错乱。<br/>当设定的值小于0时，按默认值处理。<br/>当组件应用了[scale](./ts-universal-attributes-transformation.md#scale)缩放变换时，distance的实际识别距离会按照scale比例进行缩放。 |
 
 ### PanGesture<sup>15+</sup>
 
@@ -75,16 +76,24 @@ PanGesture(options?: PanGestureHandlerOptions)
 
 **ArkTS-Sta起始版本：** 23
 
-| 名称 | 描述 |
-| -------- | -------- |
-| All | 所有方向。 |
-| Horizontal | 水平方向。 |
-| Vertical | 竖直方向。 |
-| Left | 向左滑动。 |
-| Right | 向右滑动。 |
-| Up | 向上滑动。 |
-| Down | 向下滑动。 |
-| None | 任何方向都不可触发滑动手势事件。 |
+| 名称 | 值 | 说明 |
+| -------- | -------- | -------- |
+| None | 0 | 任何方向都不可触发滑动手势事件。 |
+| Left | 1 | 向左滑动。 |
+| Right | 2 | 向右滑动。 |
+| Horizontal | 3 | 水平方向。 |
+| Up | 4 | 向上滑动。 |
+| UP_LEFT<sup>23+</sup> | 5 | 向上或左滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| UP_RIGHT<sup>23+</sup> | 6 | 向上或右滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| UP_HORIZONTAL<sup>23+</sup> | 7 | 向上或水平滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| Down | 8 | 向下滑动。 |
+| DOWN_LEFT<sup>23+</sup> | 9 | 向下或左滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| DOWN_RIGHT<sup>23+</sup> | 10 | 向下或右滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| DOWN_HORIZONTAL<sup>23+</sup> | 11 | 向下或水平滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| Vertical | 12 | 竖直方向。 |
+| VERTICAL_LEFT<sup>23+</sup> | 13 | 竖直或左滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| VERTICAL_RIGHT<sup>23+</sup> | 14 | 竖直或右滑动。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Sta。<br/>**ArkTS-Sta起始版本：** 23 |
+| All | 15 | 所有方向。 |
 
 
 ## PanGestureOptions
@@ -137,7 +146,7 @@ ArkTS-Sta: setDirection(value: PanDirection): void
 
 ArkTS-Dyn: setDistance(value: number)
 
-ArkTS-Sta: setDistance(value: double)
+ArkTS-Sta: setDistance(value: double): void
 
 设置触发滑动手势事件的最小滑动距离，单位为vp。距离值不宜设置过大，避免因滑动脱手，响应时延过大等问题导致性能劣化。
 
@@ -159,7 +168,7 @@ ArkTS-Sta: setDistance(value: double)
 
 ArkTS-Dyn: setFingers(value: number)
 
-ArkTS-Sta: setFingers(value: int)
+ArkTS-Sta: setFingers(value: int): void
 
 设置触发滑动的最少手指数。
 
@@ -221,28 +230,117 @@ ArkTS-Sta: getDistance(): double
 
 ## 事件
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 >  **说明：**
 >
 >  在[GestureEvent](ts-gesture-settings.md#gestureevent对象说明)的fingerList元素中，手指索引编号与位置相对应，即fingerList[index]的id为index。对于先按下但未参与当前手势触发的手指，fingerList中对应的位置为空。建议优先使用fingerInfos。
 
-| 名称 | 功能描述 |
-| -------- | -------- |
-| onActionStart(event:&nbsp;(event:&nbsp;[GestureEvent](ts-gesture-settings.md#gestureevent对象说明))&nbsp;=&gt;&nbsp;void) | Pan手势识别成功回调。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| onActionUpdate(event:&nbsp;(event:&nbsp;[GestureEvent](ts-gesture-settings.md#gestureevent对象说明))&nbsp;=&gt;&nbsp;void) | Pan手势移动过程中回调。<br/>fingerList为多根手指时，该回调监听每次只会更新一根手指的位置信息。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| onActionEnd(event:&nbsp;(event:&nbsp;[GestureEvent](ts-gesture-settings.md#gestureevent对象说明))&nbsp;=&gt;&nbsp;void) | Pan手势识别成功，手指抬起后触发回调。 <br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| onActionCancel(event:&nbsp;()&nbsp;=&gt;&nbsp;void) | Pan手势识别成功，接收到触摸取消事件触发回调。不返回手势事件信息。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 7<br/>**ArkTS-Sta起始版本：** 23 |
-| onActionCancel(event:&nbsp;Callback<[GestureEvent](ts-gesture-settings.md#gestureevent对象说明)>)<sup>18+</sup> | Pan手势识别成功，接收到触摸取消事件触发回调。返回手势事件信息。<br/>**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 18<br/>**ArkTS-Sta起始版本：** 23 |
+### onActionStart
 
-## 属性
+ArkTS-Dyn: onActionStart(event: (event: GestureEvent) => void)
+
+ArkTS-Sta: onActionStart(event: Callback\<GestureEvent>)
+
+Pan手势识别成功回调。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-| 名称 | 类型    |描述                                        |
-| ----  | ------  | ---------------------------------------- |
-| tag<sup>11+</sup>   | string  | 设置Pan手势标志，用于自定义手势判定时区分绑定的手势。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 11<br/>**ArkTS-Sta起始版本：** 23 |
-| allowedTypes<sup>14+</sup> | Array\<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9)>  | 设置Pan手势支持的事件输入源。<br/>**原子化服务API：** 从API version 14开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 14<br/>**ArkTS-Sta起始版本：** 23  |
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | ArkTS-Dyn: (event: [GestureEvent](ts-gesture-settings.md#gestureevent对象说明)) => void<br/>ArkTS-Sta: Callback<[GestureEvent](ts-gesture-settings.md#gestureevent对象说明)> | 是 | Pan手势识别成功回调事件。 |
+
+### onActionUpdate
+
+ArkTS-Dyn: onActionUpdate(event: (event: GestureEvent) => void)
+
+ArkTS-Sta: onActionUpdate(event: Callback\<GestureEvent>)
+
+Pan手势移动过程中回调。fingerList为多根手指时，该回调监听每次只会更新一根手指的位置信息。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | ArkTS-Dyn: (event: [GestureEvent](ts-gesture-settings.md#gestureevent对象说明)) => void<br/>ArkTS-Sta: Callback<[GestureEvent](ts-gesture-settings.md#gestureevent对象说明)> | 是 | Pan手势移动过程中回调事件。 |
+
+### onActionEnd
+
+ArkTS-Dyn: onActionEnd(event: (event: GestureEvent) => void)
+
+ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>)
+
+Pan手势识别成功，手指抬起后触发回调。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 7
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | ArkTS-Dyn: (event: [GestureEvent](ts-gesture-settings.md#gestureevent对象说明)) => void<br/>ArkTS-Sta: Callback<[GestureEvent](ts-gesture-settings.md#gestureevent对象说明)> | 是 | Pan手势识别成功，手指抬起后触发回调事件。 |
+
+### onActionCancel
+
+onActionCancel(event: () => void)
+
+Pan手势识别成功，接收到触摸取消事件触发回调。不返回手势事件信息。
+
+**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onActionCancel](#onactioncancel18)。
+
+**ArkTS-Dyn起始版本：** 7
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | () => void | 是 | Pan手势识别成功，接收到触摸取消事件触发回调。 |
+
+### onActionCancel<sup>18+</sup>
+
+onActionCancel(event: Callback\<GestureEvent>)
+
+Pan手势识别成功，接收到触摸取消事件触发回调。返回手势事件信息。
+
+**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 18
+
+**ArkTS-Sta起始版本：** 23
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| -------- | -------- | -------- | -------- |
+| event | Callback<[GestureEvent](ts-gesture-settings.md#gestureevent对象说明)> | 是 | Pan手势识别成功，接收到触摸取消事件触发回调，返回手势事件信息。 |
 
 ## 示例
 

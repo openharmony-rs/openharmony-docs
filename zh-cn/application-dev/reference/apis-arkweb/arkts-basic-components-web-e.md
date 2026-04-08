@@ -690,3 +690,20 @@ WebView中新窗口的打开方式。
 | NEW_WINDOW                    | 1 | 在新窗口中打开。   |
 | NEW_BACKGROUND_TAB            | 2 | 在新标签页中以后台方式打开。 |
 | NEW_FOREGROUND_TAB            | 3 | 在新标签页中以前台方式打开。 |
+
+ ## ScrollDirectionalLockType
+
+定义滑动方向锁定的场景类型。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+| 名称           | 值 | 说明                           |
+| ------------- | -- | ------------------------------ |
+| ALL           | 0  | 所有场景都支持滑动锁定。     |
+| NESTED_SCROLL | 1  | 嵌套滚动场景下支持滑动锁定。 |
