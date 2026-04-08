@@ -62,7 +62,7 @@ try {
     console.info(`Enter the callback function.`);
   });
 } catch (err) {
-  console.error(`Failed to register selectionCompleted callback: ${err.code}, errormessage: ${err.message}`);
+  console.error(`Failed to register selectionCompleted callback: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -96,7 +96,7 @@ selectionManager.on('selectionCompleted', selectionChangeCallback);
 try {
   selectionManager.off('selectionCompleted', selectionChangeCallback);
 } catch (err) {
-  console.error(`Failed to unregister selectionCompleted: ${err.code}, errormessage: ${err.message}`);
+  console.error(`Failed to unregister selectionCompleted: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -137,7 +137,7 @@ selectionManager.on('selectionCompleted', async (info: selectionManager.Selectio
   try {
     let content = await selectionManager.getSelectionContent();
   } catch (err) {
-    console.error(`Failed to get selection content: ${err.code}, errormessage: ${err.message}`);
+    console.error(`Failed to get selection content: ${err.code}, error message: ${err.message}`);
   }
 });
 ```
@@ -211,7 +211,7 @@ class ServiceExtAbility extends SelectionExtensionAbility {
         selectionPanel = panel;
         console.info('Succeed in creating panel.');
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${err.code}, errormessage: ${err.message}`);
+      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -289,14 +289,14 @@ class ServiceExtAbility extends SelectionExtensionAbility {
             selectionManager.destroyPanel(selectionPanel).then(() => {
               console.info('Succeed in destroying panel.');
             }).catch((err: BusinessError) => {
-              console.error(`Failed to destroy panel: ${err.code}, errormessage: ${err.message}`);
+              console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
             });
           }
         } catch (err) {
-          console.error(`Failed to destroy panel: ${err.code}, errormessage: ${err.message}`);
+          console.error(`Failed to destroy panel: ${err.code}, error message: ${err.message}`);
         }
       }).catch((err: BusinessError) => {
-      console.error(`Failed to create panel: ${err.code}, errormessage: ${err.message}`);
+      console.error(`Failed to create panel: ${err.code}, error message: ${err.message}`);
     });
     return new SelectionAbilityStub('remote');
   }
@@ -377,10 +377,10 @@ try {
   selectionPanel.setUiContent('pages/Index').then(() => {
     console.info('Succeeded in setting the content.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to setUiContent: ${err.code}, errormessage: ${err.message}`);
+    console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to setUiContent: ${err.code}, errormessage: ${err.message}`);
+  console.error(`Failed to setUiContent: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -417,7 +417,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 selectionPanel.show().then(() => {
   console.info('Succeeded in showing the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to show panel: ${err.code}, errormessage: ${err.message}`);
+  console.error(`Failed to show panel: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -454,7 +454,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 selectionPanel.hide().then(() => {
   console.info('Succeeded in hiding the panel.');
 }).catch((err: BusinessError) => {
-  console.error(`Failed to hide panel: ${err.code}, errormessage: ${err.message}`);
+  console.error(`Failed to hide panel: ${err.code}, error message: ${err.message}`);
 });
 ```
 
@@ -499,7 +499,7 @@ RelativeContainer() {
       selectionPanel.startMoving().then(() => {   // selectionPanel为createPanel创建出的panel实例
         console.info('Succeeded in startMoving the panel.');
       }).catch((err: BusinessError) => {
-        console.error(`Failed to startMoving panel: ${err.code}, errormessage: ${err.message}`);
+        console.error(`Failed to startMoving panel: ${err.code}, error message: ${err.message}`);
       });
     }
   }
@@ -601,10 +601,10 @@ try {
   selectionPanel.moveToGlobalDisplay(200, 200).then(() => {
     console.info('Succeeded in moving the panel.');
   }).catch((err: BusinessError) => {
-    console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
+    console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
   });
 } catch (err) {
-  console.error(`Failed to move panel: ${err.code}, errormessage: ${err.message}`);
+  console.error(`Failed to move panel: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -632,10 +632,10 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 try {
   selectionPanel.on('destroyed', () => {
-    console.info('Panel has destroyed.');
+    console.info('Panel has been destroyed.');
   });
 } catch (err) {
-  console.error(`Failed to register destroyed callback: ${err.code}, errormessage: ${err.message}`);
+  console.error(`Failed to register destroyed callback: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -664,7 +664,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 try {
   selectionPanel.off('destroyed');
 } catch (err) {
-  console.error(`Failed to unregister destroyed: ${err.code}, errormessage: ${err.message}`);
+  console.error(`Failed to unregister destroyed: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -692,10 +692,10 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 
 try {
   selectionPanel.on('hidden', () => {
-    console.info('Panel has hidden.');
+    console.info('Panel has been hidden.');
   });
 } catch (err) {
-  console.error(`Failed to register hidden callback: ${err.code}, errormessage: ${err.message}`);
+  console.error(`Failed to register hidden callback: ${err.code}, error message: ${err.message}`);
 }
 ```
 
@@ -724,7 +724,7 @@ import { selectionManager, BusinessError } from '@kit.BasicServicesKit';
 try {
   selectionPanel.off('hidden');
 } catch (err) {
-  console.error(`Failed to unregister hidden: ${err.code}, errormessage: ${err.message}`);
+  console.error(`Failed to unregister hidden: ${err.code}, error message: ${err.message}`);
 }
 ```
 
