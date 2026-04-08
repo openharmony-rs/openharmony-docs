@@ -6,7 +6,7 @@
 <!--Tester: @ghiker-->
 <!--Adviser: @HelloShuo-->
 
-通过WebCookie可以控制Web组件中的cookie的各种行为，其中每个应用中的所有Web组件共享一个WebCookieManager实例。cookie的格式遵循[RFC6265](https://www.rfc-editor.org/rfc/rfc6265)标准。当前WebCookieManager的获取cookie接口不支持partitioned cookie。使用隐私模式浏览网页时，Cookie、缓存等数据不会写入本地持久化存储；隐私模式的Web组件销毁后，这些数据将被清除，不会保留。
+通过WebCookieManager可以控制Web组件中的cookie的各种行为，其中每个应用中的所有Web组件共享一个WebCookieManager实例。cookie的格式遵循[RFC6265](https://www.rfc-editor.org/rfc/rfc6265)标准。当前WebCookieManager的获取cookie接口不支持partitioned cookie。使用隐私模式浏览网页时，Cookie、缓存等数据不会写入本地持久化存储；隐私模式的Web组件销毁后，这些数据将被清除，不会保留。
 
 > **说明：**
 >
@@ -435,7 +435,7 @@ static configCookie(url: string, value: string, callback: AsyncCallback\<void>):
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
 | value  | string | 是   | 要设置的cookie的值。      |
 | callback | AsyncCallback\<void> | 是 | callback回调，用于获取设置cookie的结果 |
 
@@ -485,7 +485,7 @@ struct WebComponent {
 
 static configCookie(url: string, value: string): Promise\<void>
 
-以异步Promise方式为指定url设置单个cookie的值。
+以Promise方式异步为指定url设置单个cookie的值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -493,7 +493,7 @@ static configCookie(url: string, value: string): Promise\<void>
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
 | value  | string | 是   | 要设置的cookie的值。      |
 
 **返回值：**
@@ -550,7 +550,7 @@ struct WebComponent {
 
 static configCookie(url: string, value: string, incognito: boolean, includeHttpOnly: boolean): Promise\<void>
 
-以异步Promise方式为指定url设置单个cookie的值。
+以Promise方式异步为指定url设置单个cookie的值。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -558,7 +558,7 @@ static configCookie(url: string, value: string, incognito: boolean, includeHttpO
 
 | 参数名 | 类型   | 必填 | 说明                      |
 | ------ | ------ | ---- | :------------------------ |
-| url    | string | 是   | 要获取的cookie所属的url，建议使用完整的url。 |
+| url    | string | 是   | 要设置的cookie所属的url，建议使用完整的url。 |
 | value  | string | 是   | 要设置的cookie的值。      |
 | incognito    | boolean | 是   | true表示设置隐私模式下对应url的cookies，false表示设置正常非隐私模式下对应url的cookies。 |
 | includeHttpOnly    | boolean | 是   | true表示允许覆盖含有http-only的cookies，false表示不允许覆盖含有http-only的cookies。 |
@@ -1084,7 +1084,7 @@ struct WebComponent {
 
 static clearAllCookies(): Promise\<void>
 
-异步promise方式清除所有cookie。
+以Promise方式异步清除所有cookie。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1221,7 +1221,7 @@ struct WebComponent {
 
 static clearSessionCookie(): Promise\<void>
 
-异步promise方式清除所有会话cookie。
+以Promise方式异步清除所有会话cookie。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1388,7 +1388,7 @@ static getCookie(url: string): string
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[fetchCookieSync](#fetchcookiesync11)替代
+> 从API version 9开始支持，从API version 11开始废弃。建议使用[fetchCookieSync](#fetchcookiesync11)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1450,7 +1450,7 @@ static setCookie(url: string, value: string): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[configCookieSync<sup>11+</sup>](#configcookiesync11)替代
+> 从API version 9开始支持，从API version 11开始废弃。建议使用[configCookieSync<sup>11+</sup>](#configcookiesync11)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1507,7 +1507,7 @@ static deleteEntireCookie(): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[clearAllCookiesSync](#clearallcookiessync11)替代
+> 从API version 9开始支持，从API version 11开始废弃。建议使用[clearAllCookiesSync](#clearallcookiessync11)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -1542,7 +1542,7 @@ static deleteSessionCookie(): void
 
 > **说明：**
 >
-> 从API version 9开始支持，从API version 11开始废弃。建议使用[clearSessionCookieSync](#clearsessioncookiesync11)替代
+> 从API version 9开始支持，从API version 11开始废弃。建议使用[clearSessionCookieSync](#clearsessioncookiesync11)替代。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

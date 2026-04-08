@@ -289,7 +289,7 @@ export default class EntryAbility extends UIAbility {
    }
    ```
 
-3. 编写用于生成字节码缓存的组件，本例中的本地Javascript资源内容通过文件读取接口读取rawfile目录下的本地文件。
+3. 编写用于生成字节码缓存的组件，本例中的本地JavaScript资源内容通过文件读取接口读取rawfile目录下的本地文件。
 
    <!-- @[read_local_js_resource_from_rawfile_dir_via_file_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageLoadBrowse/AcceleratePageAccess/entry3/src/main/ets/pages/PrecompileWebview.ets) -->
    
