@@ -5699,6 +5699,20 @@ Allows a system application to launch another application to a specified page st
 
 **Valid since**: 26.0.0
 
+## ohos.permission.vehicle.CAR_MODE_MANAGEMENT
+
+Allows an application to obtain and set the car scenario mode.
+
+**Permission level**: system_basic
+
+**Authorization mode**: system_grant
+
+**Enable via ACL**: true
+
+**Device**: cars
+
+**Valid since**: 26.0.0
+
 ## ohos.permission.ENCRYPT_VOLUME_MANAGER
  	 
 Allows an application to call the API of storage manager for managing volume encryption.
