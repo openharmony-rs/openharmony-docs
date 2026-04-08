@@ -46685,9 +46685,9 @@
 						"start_line":16
 					},
 					{
-						"end_line":259,
+						"end_line":264,
 						"name":"timer_reminder",
-						"start_line":245
+						"start_line":247
 					}
 				]
 			},
@@ -46695,19 +46695,19 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/CalendarReminder.ets",
 				"functions":[
 					{
-						"end_line":77,
+						"end_line":85,
 						"name":"calendar_reminder",
-						"start_line":55
+						"start_line":59
 					},
 					{
-						"end_line":103,
+						"end_line":114,
 						"name":"publish_reminder",
-						"start_line":98
+						"start_line":109
 					},
 					{
-						"end_line":154,
+						"end_line":165,
 						"name":"cancel_reminder",
-						"start_line":151
+						"start_line":162
 					}
 				]
 			},
@@ -46715,9 +46715,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/BackGroundTasksKit/ReminderAgentManager/entry/src/main/ets/util/AlarmClockReminder.ets",
 				"functions":[
 					{
-						"end_line":84,
+						"end_line":92,
 						"name":"alarm_reminder",
-						"start_line":56
+						"start_line":59
 					}
 				]
 			}
