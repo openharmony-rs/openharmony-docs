@@ -5487,3 +5487,57 @@ onFirstScreenPaint(callback: OnFirstScreenPaintCallback)
     }
   }
   ```
+
+## onInputmethodAttached
+
+onInputmethodAttached(callback: OnInputmethodAttachedCallback)
+
+网页绑定输入法成功时触发此回调，使用callback异步回调。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+**参数：**
+
+| 参数名        | 类型    | 必填   | 说明          |
+| ---------- | ------- | ---- | ------------- |
+| callback | [OnInputmethodAttachedCallback](./arkts-basic-components-web-t.md#oninputmethodattachedcallback) | 是    | 回调函数，设置Web组件检测到输入法绑定成功时的回调。 |
+
+**示例：**
+
+  ```ts
+  import { webview } from '@kit.ArkWeb'
+  import { inputMethod } from '@kit.IMEKit';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController();
+
+    build() {
+      Column() {
+        Web({ src: 'www.example.com', controller: this.controller }).onInputmethodAttached(() => {
+          inputMethod.getController().showTextInput();
+        })
+      }
+    }
+  }
+  ```
+
+  加载的html文件。
+```html
+<!--test.html-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head><meta charset="UTF-8"><title>示例页面</title></head>
+  <body>
+    <div>
+      <label for="main-input">输入框</label>
+      <input type="text" id="main-input" name="keyword" placeholder="请输入关键词..." autofocus>
+    </div>
+  </body>
+</html>
+```
