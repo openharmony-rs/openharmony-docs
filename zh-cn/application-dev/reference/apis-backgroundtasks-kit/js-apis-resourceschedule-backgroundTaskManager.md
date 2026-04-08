@@ -1498,9 +1498,11 @@ export default class EntryAbility extends UIAbility {
 | SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE            | 10    | 申请MULTI_DEVICE_CONNECTION类型长时任务，但是未使用多设备互联。预留接口，暂未启用。        |
 | SYSTEM_CANCEL_USE_ILLEGALLY            | 11    | 使用非法类型的长时任务，如申请AUDIO_PLAYBACK类型长时任务，但是使用音视频播放及定位导航业务。预留接口，暂未启用。        |
 
-## ContinuousTaskDetailedCancelReason<sup>26+</sup>
+## ContinuousTaskDetailedCancelReason
 
 长时任务取消详细原因。
+
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -1550,20 +1552,20 @@ export default class EntryAbility extends UIAbility {
 | continuousTaskId | number | 否    | 否    | 被暂停的长时任务 Id。|
 | suspendState | boolean | 否    | 否    | 长时任务状态，false表示激活，true表示暂停。|
 | suspendReason | [ContinuousTaskSuspendReason](#continuoustasksuspendreason20) | 否    | 否    | 长时任务暂停原因。|
-| suspendMessage | [SuspendMessage](#SuspendMessage26) | 否    | 否    | 长时任务暂停信息。|
+| suspendMessage | [SuspendMessage](#suspendmessage26) | 否    | 否    | 长时任务暂停信息。|
 
-## SuspendMessage<sup>26+</sup>
+## SuspendMessage
 
 长时任务暂停原因。
 
-### 属性
+**起始版本：** 26.0.0
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
 | 名称             | 类型     | 只读   | 可选   | 说明                                       |
 | --------------- | ------ | ---- | ---- | ---------------------------------------- |
-| message       | string | 否    | 否    | 长时任务详细暂停原因信息。     |
-| reason       | [ContinuousTaskSuspendReason](#continuoustasksuspendreason20) | 否    | 否    | 长时任务详细暂停原因。     |
+| message       | string | 否    | 否    | 长时任务暂停的信息。     |
+| reason       | [ContinuousTaskSuspendReason](#continuoustasksuspendreason20) | 否    | 否    | 长时任务暂停的原因。     |
 
 ## ContinuousTaskSuspendReason<sup>20+</sup>
 
