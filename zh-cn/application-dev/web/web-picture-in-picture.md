@@ -91,7 +91,7 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
 
 * 画中画控制层UI控件：<br/>  
   画中画窗口控制层包含“关闭”（关闭画中画窗口）、“恢复”（从画中画窗口恢复到原应用界面）。<br/>  
-  播放控制包含暂停，播放，前进/后退（默认显示前进/后退UI控件，若原视频不支持前进后退，点击无响应）。<br/>
+  播放控制包含暂停，播放，前进/后退（默认显示前进/后退UI控件，若原视频不支持前进后退，单击无响应）。<br/>
   
   ![web-picture-in-picture](figures/web-picture-in-picture-ui.png)
 
@@ -167,7 +167,7 @@ videoElement.addEventListener('leavepictureinpicture', function (event) {
       togglePipButton.hidden =
         !document.pictureInPictureEnabled || video.disablePictureInPicture;
 
-      // 监听按钮点击事件，切换画中画模式
+      // 监听按钮单击事件，切换画中画模式
       togglePipButton.addEventListener("click", async () => {
         try {
           if (document.pictureInPictureElement) {
