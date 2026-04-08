@@ -290,7 +290,7 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 | 参数名       | 类型                      | 必填 | 说明         |
 | ---------- | ------------------------- | ---- | ------------ |
 | subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅者。 |
-| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | 否   | 通知订阅信息，默认为空（当为示订阅当前用户下所有应用的通知，否则表示订阅通知并指定订阅信息）。   |
+| info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | 是   | 通知订阅信息。   |
 
 **返回值：**
 
