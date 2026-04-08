@@ -749,9 +749,9 @@ try {
 
 ### notifyDataChange<sup>11+</sup>
 
-ArkTS-Dyn: notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallback&lt;void&gt;):void
+ArkTS-Dyn: static notifyDataChange(extInfo: ExtraData, userId: number,callback: AsyncCallback&lt;void&gt;):void
 
-ArkTS-Sta: notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback&lt;void&gt;): void
+ArkTS-Sta: static notifyDataChange(extInfo: ExtraData, userId: int, callback: AsyncCallback&lt;void&gt;): void
 
 通知云端的数据变更，可以通过extInfo中的extraData字段指定变更的数据库名和表名，可通过userId指定用户ID，使用callback异步回调。
 
