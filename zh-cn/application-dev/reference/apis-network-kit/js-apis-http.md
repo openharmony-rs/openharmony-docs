@@ -1054,11 +1054,13 @@ httpRequest.on("headersReceive", (header: Object) => {
 httpRequest.off("headersReceive");
 ```
 
-### offHeadersReceive<sup>26+</sup>
+### offHeadersReceive
 
 offHeadersReceive(callback?: Callback\<Record\<string, string\>\>): void
 
 取消订阅HTTP响应头事件。
+
+**起始版本**：26.0.0
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1116,11 +1118,13 @@ httpRequest.once("headersReceive", (header: Object) => {
 });
 ```
 
-### onceHeadersReceive<sup>26+</sup>
+### onceHeadersReceive
 
 onceHeadersReceive(callback: Callback\<Record\<string, string\>\>): void
 
 订阅HTTP响应头事件，只能触发一次。触发之后，订阅器就会被移除。使用callback方式作为异步方法。
+
+**起始版本**：26.0.0
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1178,11 +1182,13 @@ httpRequest.on("dataReceive", (data: ArrayBuffer) => {
 httpRequest.off("dataReceive");
 ```
 
-### onDataReceive<sup>26+</sup>
+### onDataReceive
 
 onDataReceive(callback: Callback\<ArrayBuffer\>): void
 
 订阅HTTP流式响应数据接收事件。
+
+**起始版本**：26.0.0
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1241,11 +1247,13 @@ httpRequest.on("dataReceive", (data: ArrayBuffer) => {
 httpRequest.off("dataReceive");
 ```
 
-### offDataReceive<sup>26+</sup>
+### offDataReceive
 
 offDataReceive(callback?: Callback\<ArrayBuffer\>): void
 
 取消订阅HTTP流式响应数据接收事件。
+
+**起始版本**：26.0.0
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1305,11 +1313,13 @@ httpRequest.on("dataEnd", () => {
 httpRequest.off("dataEnd");
 ```
 
-### onDataEnd<sup>26+</sup>
+### onDataEnd
 
 onDataEnd(callback: Callback\<void\>): void
 
 订阅HTTP流式响应数据接收完毕事件。
+
+**起始版本**：26.0.0
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1368,11 +1378,13 @@ httpRequest.on("dataEnd", () => {
 httpRequest.off("dataEnd");
 ```
 
-### offDataEnd<sup>26+</sup>
+### offDataEnd
 
 offDataEnd(callback?: Callback\<void\>): void
 
 取消订阅HTTP流式响应数据接收完毕事件。
+
+**起始版本**：26.0.0
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1431,11 +1443,13 @@ httpRequest.on("dataReceiveProgress", (data: http.DataReceiveProgressInfo) => {
 httpRequest.off("dataReceiveProgress");
 ```
 
-### onDataReceiveProgress<sup>26+</sup>
+### onDataReceiveProgress
 
 onDataReceiveProgress(callback: Callback\<DataReceiveProgressInfo\>): void
 
 订阅HTTP流式响应数据接收进度事件。
+
+**起始版本**：26.0.0
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1494,11 +1508,13 @@ httpRequest.on("dataReceiveProgress", (data: http.DataReceiveProgressInfo) => {
 httpRequest.off("dataReceiveProgress");
 ```
 
-### offDataReceiveProgress<sup>26+</sup>
+### offDataReceiveProgress
 
 offDataReceiveProgress(callback?: Callback\<DataReceiveProgressInfo\>): void
 
 取消订阅HTTP流式响应数据接收进度事件。
+
+**起始版本**：26.0.0
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1557,11 +1573,13 @@ httpRequest.on("dataSendProgress", (data: http.DataSendProgressInfo) => {
 httpRequest.off("dataSendProgress");
 ```
 
-### onDataSendProgress<sup>26+</sup>
+### onDataSendProgress
 
 onDataSendProgress(callback: Callback\<DataSendProgressInfo\>): void
 
 订阅HTTP网络请求数据发送进度事件。
+
+**起始版本**：26.0.0
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
@@ -1620,11 +1638,13 @@ httpRequest.on("dataSendProgress", (data: http.DataSendProgressInfo) => {
 httpRequest.off("dataSendProgress");
 ```
 
-### offDataSendProgress<sup>26+</sup>
+### offDataSendProgress
 
 off(type: 'dataSendProgress', callback?: Callback\<DataSendProgressInfo\>): void
 
 取消订阅HTTP网络请求数据发送进度事件。
+
+**起始版本**：26.0.0
 
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
