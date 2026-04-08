@@ -38,7 +38,6 @@ import { ChipSize, ChipGroup } from '@kit.ArkUI';
 ## ChipGroup
 
 ArkTS-Dyn:
-```ts
 ChipGroup({
   items: ChipGroupItemOptions[],
   itemStyle?: ChipItemStyle,
@@ -49,10 +48,8 @@ ChipGroup({
   onChange?: Callback<Array<number>>,
   suffix?: Callback<void>
 })
-```
 
 ArkTS-Sta:
-```ts
 ChipGroup({
   items: ChipGroupItemOptions[],
   itemStyle?: ChipItemStyle,
@@ -63,7 +60,6 @@ ChipGroup({
   onChange?: Callback<Array<int>>,
   suffix?: ChipGroupSuffixBuilder
 })
-```
 
 **装饰器类型：**@Component
 
@@ -322,6 +318,22 @@ type ChipGroupSuffixBuilder = () => void;
 **ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
+
+## ChipItemLabelOptions<sup>23+</sup>
+
+[ChipGroup](#chipgroup-1)定义标签选项。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称 | 类型                                   | 只读 | 可选 | 说明                                                         |
+| ---- | -------------------------------------- | ---- | ---- | ------------------------------------------------------------ |
+| text  | string | 否   | 否   | 文本内容。 |
 
 ## 示例
 

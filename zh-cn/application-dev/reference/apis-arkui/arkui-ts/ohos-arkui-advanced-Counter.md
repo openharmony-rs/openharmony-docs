@@ -242,9 +242,9 @@ DateData定义Date的基本属性和方法，如年、月、日等。
 
 ### constructor
 
-ArkTS-Dyn：constructor(year: number, month: number, day: number)
+ArkTS-Dyn: constructor(year: number, month: number, day: number)
 
-ArkTS-Sta：constructor(year: int, month: int, day: int)
+ArkTS-Sta: constructor(year: int, month: int, day: int)
 
 DateData的构造函数。
 
@@ -294,11 +294,13 @@ type OnCounterHoverCallback = (isHover: boolean) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS版本：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---------- | ------ | ------ | ---------------------------- |
@@ -312,11 +314,13 @@ type OnInlineCounterChange = (value: int) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS版本：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---------- | ------ | ------ | ---------------------------- |
@@ -330,11 +334,13 @@ type OnDateCounterChangeCallback = (date: DateData) => void
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS版本：** 该接口仅适用于ArkTS-Sta。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
 **ArkTS-Sta起始版本：** 23
 
 **设备行为差异：** 该接口在Wearable设备上使用时，应用程序运行异常，异常信息中提示接口未定义，在其他设备中可正常调用。
+
+**参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | ---------- | ------ | ------ | ---------------------------- |

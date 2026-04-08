@@ -36,8 +36,6 @@ import { TabSegmentButtonV2, CapsuleSegmentButtonV2, MultiCapsuleSegmentButtonV2
 ## TabSegmentButtonV2
 
 ArkTS-Dyn: 
-
-```ts
 TabSegmentButtonV2({
   items: SegmentButtonV2Items,
   selectedIndex: number,
@@ -73,11 +71,8 @@ TabSegmentButtonV2({
   languageDirection?: Direction,
   enableStateAnimation?: boolean
 });
-```
 
 ArkTS-Sta: 
-
-```ts
 TabSegmentButtonV2({
   items: SegmentButtonV2Items,
   selectedIndex: int,
@@ -113,7 +108,6 @@ TabSegmentButtonV2({
   languageDirection?: Direction,
   enableStateAnimation?: boolean
 });
-```
 
 **装饰器类型：** @ComponentV2
 
@@ -160,8 +154,6 @@ TabSegmentButtonV2({
 ## CapsuleSegmentButtonV2
 
 ArkTS-Dyn: 
-
-```ts
 CapsuleSegmentButtonV2({
   items: SegmentButtonV2Items,
   selectedIndex: number,
@@ -197,11 +189,8 @@ CapsuleSegmentButtonV2({
   languageDirection?: Direction,
   enableStateAnimation?: boolean
 });
-```
 
 ArkTS-Sta: 
-
-```ts
 CapsuleSegmentButtonV2({
   items: SegmentButtonV2Items,
   selectedIndex: int,
@@ -237,7 +226,6 @@ CapsuleSegmentButtonV2({
   languageDirection?: Direction,
   enableStateAnimation?: boolean
 });
-```
 
 **装饰器类型：** @ComponentV2
 
@@ -284,8 +272,6 @@ CapsuleSegmentButtonV2({
 ## MultiCapsuleSegmentButtonV2
 
 ArkTS-Dyn: 
-
-```ts
 MultiCapsuleSegmentButtonV2({
   items: SegmentButtonV2Items,
   selectedIndexes: number[],
@@ -316,11 +302,8 @@ MultiCapsuleSegmentButtonV2({
   itemPadding?: LocalizedPadding,
   languageDirection?: Direction
 })
-```
 
 ArkTS-Sta: 
-
-```ts
 MultiCapsuleSegmentButtonV2({
   items: SegmentButtonV2Items,
   selectedIndexes: int[],
@@ -351,7 +334,6 @@ MultiCapsuleSegmentButtonV2({
   itemPadding?: LocalizedPadding,
   languageDirection?: Direction
 })
-```
 
 **装饰器类型：** @ComponentV2
 
