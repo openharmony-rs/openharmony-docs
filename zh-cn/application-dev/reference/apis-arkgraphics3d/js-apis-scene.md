@@ -14,13 +14,13 @@
 
 ## Scene
 
-[Scene](js-apis-inner-scene.md)：ArkGraphics 3D基础模块，提供SceneResourceParameters、SceneNodeParameters等通用数据类型。同时提供glTF模型加载，场景元素、资源创建等基础方法。
+[Scene](js-apis-inner-scene.md)：ArkGraphics 3D基础模块，提供[SceneResourceParameters](js-apis-inner-scene.md#sceneresourceparameters)、[SceneNodeParameters](js-apis-inner-scene.md#scenenodeparameters)等通用数据类型。同时提供glTF模型加载，场景元素、资源创建等基础方法。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
 ## SceneNode
 
-[SceneNode](js-apis-inner-scene-nodes.md)：3D场景是以树状结构进行组织的，通过操作结点属性以及结点树结构可以改变3D场景。本模块提供3D图形中场景资源结点的类型及操作方法。
+[SceneNode](js-apis-inner-scene-nodes.md)：3D场景是以树状结构进行组织的，通过操作节点属性以及节点树结构可以改变3D场景。本模块提供3D图形中场景资源节点的类型及操作方法。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
