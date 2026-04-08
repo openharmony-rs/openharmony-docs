@@ -504,12 +504,12 @@ OH_AudioCommon_Result OH_AudioSessionManager_SetDefaultOutputDevice(OH_AudioSess
 
 **描述**
 
-设置默认本机内置发声设备。	 
+设置默认本机内置发声设备。 
  
  
- >**说明：** 	 
- > - 本接口适用范围如下：当设置的[OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene)为VoIP场景时，激活AudioSession后立即生效；如果[OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene)为非VoIP场景，激活AudioSession时不会生效，直到启动播放的[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)为语音消息、VoIP语音通话或VoIP视频通话时才生效。支持听筒、扬声器和系统默认设备。	 
- > - 本接口允许在[OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md)创建后随时调用。系统记录应用设置的默认本机内置发声设备，但只有激活AudioSession后才能生效。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。	 
+ >**说明：**  
+ > - 本接口适用范围如下：当设置的[OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene)为VoIP场景时，激活AudioSession后立即生效；如果[OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene)为非VoIP场景，激活AudioSession时不会生效，直到启动播放的[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)为语音消息、VoIP语音通话或VoIP视频通话时才生效。支持听筒、扬声器和系统默认设备。 
+ > - 本接口允许在[OH_AudioSessionManager](capi-ohaudio-oh-audiosessionmanager.md)创建后随时调用。系统记录应用设置的默认本机内置发声设备，但只有激活AudioSession后才能生效。应用启动播放时，若外接设备如蓝牙耳机或有线耳机已接入，系统优先从外接设备发声；否则，系统遵循应用设置的默认本机内置发声设备。 
  
  
  **设备行为差异：** 当该接口在无听筒的设备上设置默认发声设备为听筒时，将继续从扬声器发声。
@@ -889,7 +889,7 @@ OH_AudioCommon_Result OH_AudioSessionManager_EnableMuteSuggestionWhenMixWithOthe
 
 **描述**
 
-启用混音播放下接收静音播放建议通知功能。通常，当使用混音模式时，如果有其他应用的音频同时播放，此时两者会混合播放。部分场景下（如游戏或广播），应用可以通过启用静音建议通知，以给用户提供更好的体验。如果启用此功能，当订阅音频会话状态更改事件后静音建议和取消静音建议提示将通过[OH_AudioSession_StateChangedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_statechangedcallback)回调发送，该回调由[OH_AudioSessionManager_RegisterStateChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registerstatechangecallback)注册。<br> 收到静音建议表示其他应用程序开始播放音频，且播放的音频和本应用的音频不能混音。此功能仅支持已设置[OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene)并激活模式为[OH_AudioSession_ConcurrencyMode](capi-native-audio-session-manager-h.md#oh_audiosession_concurrencymode).CONCURRENCY_MIX_WITH_OTHERS的音频会话使用。<br> 并且仅在激活音频会话期间生效一次，每次激活音频会话前都必须重新启用。
+启用混音播放下接收静音播放建议通知功能。通常，当使用混音模式时，如果有其他应用的音频同时播放，此时两者会混合播放。部分场景下（如游戏或广播），应用可以通过启用静音建议通知，以给用户提供更好的体验。如果启用此功能，当订阅音频会话状态更改事件后静音建议和取消静音建议提示将通过[OH_AudioSession_StateChangedCallback](capi-native-audio-session-manager-h.md#oh_audiosession_statechangedcallback)回调发送，该回调由[OH_AudioSessionManager_RegisterStateChangeCallback](capi-native-audio-session-manager-h.md#oh_audiosessionmanager_registerstatechangecallback)注册。<br> 收到静音建议表示其他应用程序开始播放音频，且播放的音频和本应用的音频不能混音。此功能仅支持已设置[OH_AudioSession_Scene](capi-native-audio-session-manager-h.md#oh_audiosession_scene)并激活模式为[OH_AudioSession_ConcurrencyMode](capi-native-audio-session-base-h.md#oh_audiosession_concurrencymode).CONCURRENCY_MIX_WITH_OTHERS的音频会话使用。<br> 并且仅在激活音频会话期间生效一次，每次激活音频会话前都必须重新启用。
 
 **起始版本：** 23
 
