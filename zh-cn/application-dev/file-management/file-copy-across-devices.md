@@ -97,26 +97,26 @@
    import { distributedDeviceManager } from '@kit.DistributedServiceKit';
    ```
    <!--@[copy_distributed_to_sand](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/DistributedFileSample/entry/src/main/ets/pages/Index.ets)-->     
-
+   
    ``` TypeScript
-   // ···
+   // ...
    let pathDir: string = context.filesDir;
    let distributedPathDir: string = context.distributedFilesDir;
    // 待拷贝文件的目标路径(沙箱路径)
    let destPath: string = pathDir + '/dest.txt';
    // 获取目标路径uri
    let destUri = fileUri.getUriFromPath(destPath);
- 
+   
    // 拷贝源文件路径(分布式目录)
    let srcPath = distributedPathDir + '/src.txt';
    // 获取源路径uri
    let srcUri: string = fileUri.getUriFromPath(srcPath);
    
    // 定义拷贝回调
-   let progressListener: fs.ProgressListener = (progress: fs.Progress) => {
+   let progressListener: fileIo.ProgressListener = (progress: fileIo.Progress) => {
      console.info(`progressSize: ${progress.processedSize}, totalSize: ${progress.totalSize}`);
    };
-   let options: fs.CopyOptions = {
+   let options: fileIo.CopyOptions = {
      'progressListener' : progressListener
    };
    // 通过分布式设备管理的接口获取设备A的networkId信息
@@ -126,19 +126,19 @@
      console.info(`success to get available device list`);
      let networkId = deviceInfoList[0].networkId; // 这里只是两个设备连接，列表中首个即为A设备的networkId
      // 定义访问分布式目录的回调
-     let listeners : fs.DfsListeners = {
+     let listeners : fileIo.DfsListeners = {
        onStatus: (networkId: string, status: number): void => {
          console.error(`Failed to access public directory，${status}`);
        }
      };
      // 开始跨设备文件拷贝
-     fs.connectDfs(networkId, listeners).then(()=>{
+     fileIo.connectDfs(networkId, listeners).then(()=>{
        try {
          // 将分布式目录下的文件拷贝到其他沙箱路径下
-         fs.copy(srcUri, destUri, options).then(()=>{
-           console.info(`Succeeded in copying from distribted path`);
+         fileIo.copy(srcUri, destUri, options).then(()=>{
+           console.info(`Succeeded in copying from distributed path`);
            console.info(`src: ${srcUri} dest: ${destUri}`);
-           fs.unlinkSync(srcPath); // 拷贝完成后清理分布式目录下的临时文件
+           fileIo.unlinkSync(srcPath); // 拷贝完成后清理分布式目录下的临时文件
          }).catch((error: BusinessError)=>{
            let err: BusinessError = error as BusinessError;
            console.error(`Failed to copy. Code: ${err.code}, message: ${err.message}`);
