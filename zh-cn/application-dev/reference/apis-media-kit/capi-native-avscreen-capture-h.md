@@ -537,8 +537,7 @@ OH_AVSCREEN_CAPTURE_ErrCode OH_AVScreenCapture_SetCanvasRotation(struct OH_AVScr
 
 **描述**
 
-设置录屏屏幕数据旋转。<br> 调用该方法可以设置录屏屏幕数据是否旋转，当canvasRotation为true时，打开录屏屏幕数据旋转功能，录制的屏幕数据保持正向。<br> 默认为false。<br>
-从6.0版本开始支持区域旋转录屏。
+设置录屏屏幕数据旋转。<br> 调用该方法可以设置录屏屏幕数据是否旋转，当canvasRotation为true时，打开录屏屏幕数据旋转功能，录制的屏幕数据保持正向。<br> 默认为false。
 
 **系统能力：** SystemCapability.Multimedia.Media.AVScreenCapture
 
