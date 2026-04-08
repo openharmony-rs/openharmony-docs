@@ -16,7 +16,7 @@
 
 根据组件的功能，可以分为以下六大类：
 
-<!--Table: 20%; 80%-->
+<!--Table: 10%; 90%-->
 | 组件类型 | 主要组件 |
 | -------- | -------- |
 | 容器组件 | [badge](../reference/apis-arkui/arkui-js/js-components-container-badge.md)、[dialog](../reference/apis-arkui/arkui-js/js-components-container-dialog.md)、[div](../reference/apis-arkui/arkui-js/js-components-container-div.md)、[form](../reference/apis-arkui/arkui-js/js-components-container-form.md)、[list](../reference/apis-arkui/arkui-js/js-components-container-list.md)、[list-item](../reference/apis-arkui/arkui-js/js-components-container-list-item.md)、[list-item-group](../reference/apis-arkui/arkui-js/js-components-container-list-item-group.md)、[panel](../reference/apis-arkui/arkui-js/js-components-container-panel.md)、[popup](../reference/apis-arkui/arkui-js/js-components-container-popup.md)、[refresh](../reference/apis-arkui/arkui-js/js-components-container-refresh.md)、[stack](../reference/apis-arkui/arkui-js/js-components-container-stack.md)、[stepper](../reference/apis-arkui/arkui-js/js-components-container-stepper.md)、[stepper-item](../reference/apis-arkui/arkui-js/js-components-container-stepper-item.md)、[swiper](../reference/apis-arkui/arkui-js/js-components-container-swiper.md)、[tabs](../reference/apis-arkui/arkui-js/js-components-container-tabs.md)、[tab-bar](../reference/apis-arkui/arkui-js/js-components-container-tab-bar.md)、[tab-content](../reference/apis-arkui/arkui-js/js-components-container-tab-content.md) |
