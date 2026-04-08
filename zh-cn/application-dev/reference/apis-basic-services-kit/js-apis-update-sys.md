@@ -336,10 +336,9 @@ const descriptionOptions: update.DescriptionOptions = {
   language: "zh-cn" // 中文
 };
 
-updater.getNewVersionDescription(versionDigestInfo, descriptionOptions).then((info: Array<update.ComponentDescription>)=> {
-  console.info(`getNewVersionDescription promise info ${JSON.stringify(info)}`);
-}).catch((err: BusinessError) => {
-  console.error(`getNewVersionDescription promise error ${JSON.stringify(err)}`);
+updater.getNewVersionDescription(versionDigestInfo, descriptionOptions, (err, info) => {
+  console.info(`getNewVersionDescription info ${JSON.stringify(info)}`);
+ 	console.info(`getNewVersionDescription err ${JSON.stringify(err)}`);
 });
 ```
 
@@ -1624,7 +1623,7 @@ const upgradeFile: update.UpgradeFile = {
 };
 
 localUpdater.verifyUpgradePackage(upgradeFile, "cerstFilePath", (err) => {
-  console.info(`factoryReset error ${JSON.stringify(err)}`);
+  console.info(`verifyUpgradePackage error ${JSON.stringify(err)}`);
 });
 ```
 
