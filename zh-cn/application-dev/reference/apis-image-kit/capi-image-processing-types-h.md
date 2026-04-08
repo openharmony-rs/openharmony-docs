@@ -92,7 +92,7 @@ enum ImageProcessing_ErrorCode
 | 枚举项 | 描述 |
 | -- | -- |
 | IMAGE_PROCESSING_SUCCESS | 成功。 |
-| IMAGE_PROCESSING_ERROR_INVALID_PARAMETER = 401 | 输入参数无效。<br>在以下错误条件返回该错误码：<br>1. 输入或输出buffer无效，例如图片buffer为空。<br>2. 参数无效，例如参数为空。<br>3. 类型无效，例如在创建函数中传入的类型不存在。 |
+| IMAGE_PROCESSING_ERROR_INVALID_PARAMETER = 401 | 输入参数无效。<br>在以下错误条件下返回该错误码：<br>1. 输入或输出buffer无效，例如图片buffer为空。<br>2. 参数无效，例如参数为空。<br>3. 类型无效，例如在创建函数中传入的类型不存在。 |
 | IMAGE_PROCESSING_ERROR_UNKNOWN = 29200001 | 未知错误，例如GPU计算失败或memcpy失败。 |
 | IMAGE_PROCESSING_ERROR_INITIALIZE_FAILED | 全局环境初始化失败，例如GPU环境初始化失败。 |
 | IMAGE_PROCESSING_ERROR_CREATE_FAILED | 创建图片处理实例失败，例如实例数量超过上限。 |
