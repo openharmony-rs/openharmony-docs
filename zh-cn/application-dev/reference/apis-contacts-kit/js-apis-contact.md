@@ -4559,8 +4559,8 @@ contact.hasMatchedCallLog(context, phoneNumber, minDuration).then((hasMatch:bool
 |                名称               |                  类型                 | 只读  | 可选  |        说明      |
 | --------------------------------- | ------------------------------------- | ---- | ---- | ---------------- |
 | isMultiSelect<sup>10+</sup>         | boolean | 否   | 是   | 是否为多选，true:多选，false:单选。默认值为false。**原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。     |
-| maxSelectable<sup>15+</sup>         | number | 否   | 是   | 联系人数量上限。默认值为10000，超出上限则会抛出异常。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     | 
-| isDisplayedByName<sup>15+</sup>         | boolean | 否   | 是   | 是否按联系人姓名维度展示，默认值为false。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     |
+| maxSelectable<sup>15+</sup>         | number | 否   | 是   | 联系人数量上限。默认值为10000，超出上限则以默认值筛选。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     | 
+| isDisplayedByName<sup>15+</sup>         | boolean | 否   | 是   | 是否按联系人姓名维度展示，true:按联系人姓名维度展示，false:按联系人号码维度展示，默认值为false。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     |
 | filter<sup>15+</sup>         | [ContactSelectionFilter](#contactselectionfilter15) | 否   | 是   | 联系人查询过滤器。**原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。     |
 
 ## ContactSelectionFilter<sup>15+</sup>
@@ -4619,7 +4619,7 @@ contact.getContactList({ uiContext: ctx, selectionFilter: filter})
 
 ## FilterClause<sup>15+</sup>
 
-联系人过滤条件。各过滤条件参数之间的关系为“或”，Array的最大长度为3。
+联系人过滤条件。多个筛选条件参数之间是“或者”的关系，如果参数是数组类型，数组最多只能包含3个元素。
 
 **原子化服务API**：从API version 15 开始，该接口支持在原子化服务中使用。
 
