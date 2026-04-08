@@ -996,7 +996,7 @@ struct Index {
 
 static flushUIUpdates(): void
 
-Processes all state variable modifications before this API call and synchronizes the [dirty](../../ui/state-management/arkts-state-management-introduce.md#triggering-updates) UI nodes. However, it does not synchronize the execution of @Computed and @Monitor decorators. For details, see [applySync/flushUpdates/flushUIUpdates: Synchronous Update](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md).
+Processes all state variable modifications before this API call and synchronizes the [dirty](../../ui/state-management/arkts-state-management-introduce.md#triggering-updates) UI nodes. However, it does not synchronize the execution of @Computed and @Monitor decorators. For details, see [applySync/flushUpdates/flushUIUpdates APIs: Synchronous Update](../../ui/state-management/arkts-new-applySync-flushUpdates-flushUIUpdates.md).
 
 **Atomic service API**: This API can be used in atomic services since API version 22.
 

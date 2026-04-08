@@ -64,7 +64,7 @@ Defines the common types for the native module.
 | [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) | ArkUI_CustomProperty | Defines a struct for the custom property information.|
 | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | Defines a struct for the host window information.|
 | [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | Defines a struct for active child node information.|
-| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | Defines cross-language configuration options.|
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | Defines a cross-language configuration option.|
 | [AbilityBase_Want](capi-arkui-nativemodule-abilitybase-want.md) | AbilityBase_Want | Declares a **Want** object.|
 | [ArkUI_EmbeddedComponentOption](capi-arkui-nativemodule-arkui-embeddedcomponentoption.md) | ArkUI_EmbeddedComponentOption | Defines the **EmbeddedComponentOption** parameter for **EmbeddedComponent**.|
 | [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md) | ArkUI_AccessibilityState | Defines a struct for the component accessibility state.|
@@ -77,7 +77,7 @@ Defines the common types for the native module.
 | [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) | ArkUI_SwiperDigitIndicator | Defines the style of the digit navigation indicator for the **Swiper** component.|
 | [ArkUI_SwiperArrowStyle](capi-arkui-nativemodule-arkui-swiperarrowstyle.md) | ArkUI_SwiperArrowStyle | Defines the navigation arrow style for the **Swiper** component.|
 | [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) | ArkUI_StyledString_Descriptor | Defines a struct for the styled string descriptor object supported by the text component.|
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines a struct for snapshot options.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines snapshot options.|
 | [ArkUI_TextPickerRangeContentArray](capi-arkui-nativemodule-arkui-textpickerrangecontentarray.md) | ArkUI_TextPickerRangeContentArray | Defines the data selection list for the text picker.|
 | [ArkUI_TextCascadePickerRangeContentArray](capi-arkui-nativemodule-arkui-textcascadepickerrangecontentarray.md) | ArkUI_TextCascadePickerRangeContentArray | Defines the content array for a multi-column cascading data picker.|
 | [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Defines the created instance of visible area change event parameters.|
@@ -162,7 +162,7 @@ Defines the common types for the native module.
 | [ArkUI_BlendMode](#arkui_blendmode)                                 | ArkUI_BlendMode                 | Enumerates the blend modes.                         |
 | [ArkUI_Direction](#arkui_direction)                                 | ArkUI_Direction                 | Enumerates the modes in which components are laid out along the main axis of the container.              |
 | [ArkUI_ItemAlignment](#arkui_itemalignment)                         | ArkUI_ItemAlignment             | Enumerates the modes in which components are laid out along the cross axis of the container.            |
-| [ArkUI_ColorStrategy](#arkui_colorstrategy)                         | ArkUI_ColorStrategy             | Enumerates the foreground and shadow colors.                          |
+| [ArkUI_ColorStrategy](#arkui_colorstrategy)                         | ArkUI_ColorStrategy             | Enumerates foreground and shadow colors.                          |
 | [ArkUI_FlexAlignment](#arkui_flexalignment)                         | ArkUI_FlexAlignment             | Enumerates the vertical alignment modes.                      |
 | [ArkUI_FlexDirection](#arkui_flexdirection)                         | ArkUI_FlexDirection             | Enumerates the directions of the main axis in the flex container.                   |
 | [ArkUI_FlexWrap](#arkui_flexwrap)                                   | ArkUI_FlexWrap                  | Defines whether the flex container has a single line or multiple lines.                  |
@@ -464,8 +464,8 @@ Defines the common types for the native module.
 | [bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getscaneffectenabled) | - | Obtains the enabled status of the scan effect.|
 | [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokewidth) | - | Obtains the stroke width of the progress indicator.|
 | [float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearStyleOption* option)](#oh_arkui_progresslinearstyleoption_getstrokeradius) | - | Obtains the corner radius of the progress indicator.|
-| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | - | Creates a snapshot options object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.|
-| [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | - | Destroys a snapshot options object.|
+| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | - | Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.|
+| [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | - | Destroys a snapshot option object.|
 | [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | - | Sets the scale property in the snapshot options.|
 | [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | - | Creates an instance of the cross-language configuration option.|
 | [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | - | Destroys an instance of the cross-language configuration option.|
@@ -1994,7 +1994,7 @@ enum ArkUI_ColorStrategy
 **Description**
 
 
-Enumerates the foreground and shadow colors.
+Enumerates foreground and shadow colors.
 
 **Since**: 12
 
@@ -7083,7 +7083,7 @@ Expands the swipe action menu for the specified list item.
 | Name| Description|
 | -- | -- |
 | [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-node8h.md) node | **ListItem** node object.|
-| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Swipe action menu display directions for the **ListItem** component.|
+| [ArkUI_ListItemSwipeActionDirection](#arkui_listitemswipeactiondirection) direction | Swipe action menu display direction for the **ListItem** component.|
 
 **Returns**
 
@@ -8873,7 +8873,7 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 **Description**
 
 
-Creates a snapshot options object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.
+Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](#oh_arkui_destroysnapshotoptions) when no longer in use.
 
 **Since**: 15
 
@@ -8881,7 +8881,7 @@ Creates a snapshot options object, which must be released using [OH_ArkUI_Destro
 
 | Type                        | Description|
 |----------------------------| -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* | Pointer to the created snapshot options object. If a null pointer is returned, creation failed, possibly due to insufficient memory.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* | Pointer to the created snapshot option object. If a null pointer is returned, creation failed, possibly due to insufficient memory.|
 
 ### OH_ArkUI_DestroySnapshotOptions()
 
@@ -8892,7 +8892,7 @@ void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 **Description**
 
 
-Destroys a snapshot options object.
+Destroys a snapshot option object.
 
 **Since**: 15
 
@@ -8901,7 +8901,7 @@ Destroys a snapshot options object.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot options.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option.|
 
 ### OH_ArkUI_SnapshotOptions_SetScale()
 
@@ -8921,7 +8921,7 @@ Sets the scale property in the snapshot options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot options.|
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option.|
 | float scale | Scale factor.|
 
 **Returns**
@@ -9967,7 +9967,7 @@ Creates **Grid** layout options.
 
 | Type                               | Description|
 |-----------------------------------| -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* | Pointer to the **Grid** layout option.|
 
 ### OH_ArkUI_GridLayoutOptions_Dispose()
 
@@ -9977,7 +9977,7 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 
 **Description**
 
-Disposes of **Grid** layout options.
+Disposes of the **Grid** layout option.
 
 **Since**: 22
 
@@ -9986,7 +9986,7 @@ Disposes of **Grid** layout options.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option.|
 
 
 ### OH_ArkUI_GridLayoutOptions_SetIrregularIndexes()
@@ -10006,7 +10006,7 @@ Sets the irregular grid item index array for the grid layout.
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option.|
 | uint32_t* irregularIndexes |  Pointer to the **GridItem** index array.|
 | int32_t size | Size of the **GridItem** index array.|
 
@@ -10033,7 +10033,7 @@ Obtains the irregular grid item index array for the grid layout. When **OH_ArkUI
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option.|
 | uint32_t* irregularIndexes |  Pointer to the **GridItem** index array.|
 | int32_t size | Size of the **GridItem** index array.|
 
@@ -10060,7 +10060,7 @@ Registers a callback to obtain the row and column span for the grid item at the 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option.|
 | void* userData | Pointer to the user-defined data.|
 | ArkUI_GridItemSize (\*callback)(int32_t itemIndex, void* userData) | Callback that returns the row and column span for the grid item at the specified index.<br> **itemIndex**: grid item index, which must be within the range set by [OH_ArkUI_GridLayoutOptions_SetIrregularIndexes](capi-native-type-h.md#oh_arkui_gridlayoutoptions_setirregularindexes).|
 
@@ -10081,7 +10081,7 @@ Registers a callback to obtain the starting row, starting column, row span, and 
 
 | Name| Description|
 | -- | -- |
-| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout options.|
+| [ArkUI_GridLayoutOptions](capi-arkui-nativemodule-arkui-gridlayoutoptions.md)* option | Pointer to the **Grid** layout option.|
 | void* userData | Pointer to the user-defined data.|
 | ArkUI_GridItemRect (\*callback)(int32_t itemIndex, void* userData) | Callback that returns the starting row, starting column, row span, and column span for the grid item at the specified index.<br>   **itemIndex**: grid item index.|
 ### OH_ArkUI_ShowCounterConfig_Create()
@@ -10305,7 +10305,7 @@ Obtains the title of a text menu item.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode): The buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_TextMenuItem_SetIcon()
 
@@ -10357,7 +10357,7 @@ Obtains the icon path of a text menu item.
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode): The buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_TextMenuItem_SetLabelInfo()
 
@@ -10409,7 +10409,7 @@ Obtains the shortcut hint for a text menu item, for example, the shortcut hint f
 
 | Type| Description|
 | -- | -- |
-| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode): The buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
+| [ArkUI_ErrorCode](capi-native-type-h.md#arkui_errorcode) | Return result.<br> Returns [ARKUI_ERROR_CODE_NO_ERROR](capi-native-type-h.md#arkui_errorcode) if the operation is successful.<br> Returns [ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR](capi-native-type-h.md#arkui_errorcode) if the buffer size is insufficient.<br> Returns [ARKUI_ERROR_CODE_PARAM_INVALID](capi-native-type-h.md#arkui_errorcode) if a parameter error occurs.|
 
 ### OH_ArkUI_TextMenuItem_SetId()
 
@@ -10504,7 +10504,7 @@ Obtains the text menu item at a specified index from the text menu item array.
 | -- | -- |
 | [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object.|
 | int32_t index | Index position.|
-| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)** item | Level-2 pointer to the **ArkUI_TextMenuItem** object.|
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)** item | Double pointer to the **ArkUI_TextMenuItem** object.|
 
 **Returns**
 

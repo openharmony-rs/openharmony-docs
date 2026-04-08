@@ -364,7 +364,7 @@ int32_t (*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomS
 
 **Description**
 
-Specifies whether to use a custom style for a custom dialog box.
+Specifies whether to use a custom style for the custom dialog box.
 
 > **NOTE**
 >
