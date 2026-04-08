@@ -11,9 +11,9 @@
 
 ## onTouchIntercept
 
-ArkTS-Dyn: onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>)
+ArkTS-Dyn: onTouchIntercept(callback: Callback<TouchEvent, HitTestMode>): T
 
-ArkTS-Sta: onTouchIntercept(callback: Callback<TouchEvent, HitTestMode> | undefined)
+ArkTS-Sta: onTouchIntercept(callback: Callback<TouchEvent, HitTestMode> | undefined): this
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -29,6 +29,11 @@ ArkTS-Sta: onTouchIntercept(callback: Callback<TouchEvent, HitTestMode> | undefi
 | ---------- | -------------------------- | ------- | ----------------------------- |
 | callback      | ArkTS-Dyn: Callback<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明), [HitTestMode](ts-universal-attributes-hit-test-behavior.md#hittestmode枚举说明)><br/>ArkTS-Sta: Callback<[TouchEvent](ts-universal-events-touch.md#touchevent对象说明), [HitTestMode](ts-universal-attributes-hit-test-behavior.md#hittestmode枚举说明)> \| undefined  | 是     |  给组件绑定自定义事件拦截回调，并使能在做[触摸测试](../../../ui/arkts-interaction-basic-principles.md#触摸测试)时回调此函数。通过返回值设置组件的[触摸碰撞测试模式](ts-universal-attributes-hit-test-behavior.md)。 |
 
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTs-Dyn: T<br/>ArkTs-Sta: this | 返回当前组件。 |
 
 ## 示例
 

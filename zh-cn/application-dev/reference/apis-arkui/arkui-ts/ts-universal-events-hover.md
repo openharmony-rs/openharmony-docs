@@ -58,7 +58,7 @@ ArkTS-Sta: onHoverMove(event: Callback\<HoverEvent> | undefined): this
 
 | 参数名              | 类型                                | 必填 | 说明                                                         |
 | ------------------- | ----------------------------------- | ---- | ------------------------------------------------------------ |
-| event | ArkTS-Dyn: [HoverEvent](#hoverevent10对象说明) <br/>ArkTS-Sta: [HoverEvent](#hoverevent10对象说明) \|&nbsp;undefined | 是   |设置阻塞事件冒泡属性，以及获取鼠标或手写笔悬浮的位置坐标。                                      |
+| event | ArkTS-Dyn: Callback\<[HoverEvent](#hoverevent10对象说明)> <br/>ArkTS-Sta: Callback\<[HoverEvent](#hoverevent10对象说明)> \|&nbsp;undefined | 是   |设置阻塞事件冒泡属性，以及获取鼠标或手写笔悬浮的位置坐标。                                      |
 
 **返回值：**
 
@@ -80,9 +80,25 @@ ArkTS-Sta: onHoverMove(event: Callback\<HoverEvent> | undefined): this
 | windowY<sup>15+</sup> |ArkTS-Dyn: number<br/>ArkTS-Sta: double |否|是|手写笔位置相对于应用窗口左上角的y轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23|
 | displayX<sup>15+</sup> |ArkTS-Dyn: number<br/>ArkTS-Sta: double |否|是|手写笔位置相对于应用屏幕左上角的x轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23|
 | displayY<sup>15+</sup> |ArkTS-Dyn: number<br/>ArkTS-Sta: double |否|是|手写笔位置相对于应用屏幕左上角的y轴坐标。<br>单位：vp<br> **原子化服务API：**  从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23|
-| stopPropagation | () => void |否|否| 阻塞事件冒泡。 <br> **原子化服务API：**  从API version 10开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23|
+| stopPropagation | () => void |否|否| 阻塞事件冒泡。 <br> **原子化服务API：**  从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。<br/>**相关接口：** 该接口对应的ArkTS-Sta的接口是[stopPropagation](#stoppropagation23)。<br/>**ArkTS-Dyn起始版本：** 10|
 | globalDisplayX<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double |否|是| 手写笔位置相对于全局屏幕的左上角的X坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。<br/>**模型约束：** 此接口仅可在Stage模型下使用。   <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
 | globalDisplayY<sup>20+</sup> | ArkTS-Dyn: number<br/>ArkTS-Sta: double |否|是| 手写笔位置相对于全局屏幕的左上角的Y坐标。<br/>单位：vp<br/>取值范围：[0, +∞)<br/>**原子化服务API：** 从API version 20开始，该接口支持在原子化服务中使用。 <br/>**模型约束：** 此接口仅可在Stage模型下使用。  <br/>**ArkTS-Dyn起始版本：** 20<br/>**ArkTS-Sta起始版本：** 24 |
+
+### stopPropagation<sup>23+</sup>
+
+stopPropagation(): void
+
+阻塞事件冒泡。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[stopPropagation](#hoverevent10对象说明)。
+
+**ArkTS-Sta起始版本：** 23
 
 ## 示例
 

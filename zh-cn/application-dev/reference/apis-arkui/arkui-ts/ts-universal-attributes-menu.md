@@ -408,6 +408,24 @@ type BorderRadiusType = [Length](ts-types.md#length) | [BorderRadiuses](ts-types
 | ----- | -  | --------------------------------------|
 | SAFE_AREA  | 0  | 参考可布局区域大小为窗口大小减去上下左右安全边距。|
 
+## MenuKeyboardAvoidMode<sup>23+</sup>枚举说明
+
+菜单避让软键盘的模式。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 23
+
+**ArkTS-Sta起始版本：** 23
+
+| 名称  | 值 | 说明                                   |
+| ----- | -  | --------------------------------------|
+| NONE  | 0  | 菜单不避让软键盘。 |
+| TRANSLATE_AND_RESIZE | 1 | 菜单避让软键盘。如果空间不足，会平移或重新调整菜单大小避让软键盘。 |
 
 ## 示例
 

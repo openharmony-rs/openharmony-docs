@@ -39,9 +39,9 @@ ArkTS-Sta: onClick(event: Callback\<ClickEvent> | undefined, distanceThreshold: 
 
 **ArkTS-Dyn起始版本：** 12
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
@@ -82,13 +82,13 @@ ArkTS-Sta: onClick(event: ((event: ClickEvent) => void) | undefined): this
 
 **ArkTS-Dyn起始版本：** 7
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-**参数：** 
+**参数：**
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | ArkTS-Dyn: (event: [ClickEvent](#clickevent对象说明)) => void <br/>ArkTS-Sta: (event: [ClickEvent](#clickevent对象说明)) => void \|&nbsp;undefined | 是   | 点击事件的回调函数。 |
+| event  | ArkTS-Dyn: (event: [ClickEvent](#clickevent对象说明)) => void <br/>ArkTS-Sta: ((event: [ClickEvent](#clickevent对象说明)) => void) \|&nbsp;undefined | 是   | 点击事件的回调函数。 |
 
 **返回值：**
 
@@ -130,16 +130,12 @@ ArkTS-Sta: onClick(event: ((event: ClickEvent) => void) | undefined): this
 
 触发事件的元素对象显示区域。
 
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
-
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称   | 参数类型                      | 描述         |
 | ---- | ------------------------- | ---------- |
-| area | [Area](ts-types.md#area8) | 目标元素的区域信息。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
-| id<sup>15+</sup> | string | 开发者设置的节点id。默认值：undefined<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
+| area | [Area](ts-types.md#area8) | 目标元素的区域信息。<br/>**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| id<sup>15+</sup> | string | 开发者设置的节点id。默认值：undefined <br/>**卡片能力：** 从API version 15开始，该接口支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 15开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 15<br/>**ArkTS-Sta起始版本：** 23 |
 
 ## 示例
 

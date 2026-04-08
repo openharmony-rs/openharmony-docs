@@ -58,13 +58,12 @@ get(id: string, callback: AsyncCallback<image.PixelMap>, options?: SnapshotOptio
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息            |
 | -------- | ------------------- |
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001   | Invalid ID. |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：**
 
@@ -145,13 +144,12 @@ get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
 
 **示例：**
 
@@ -239,8 +237,6 @@ createFromBuilder(builder: CustomBuilder, callback: AsyncCallback<image.PixelMap
 | 401      | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed. |
 | 100001   | The builder is not a valid build function.                   |
 | 160001   | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
-| 160003   | Unsupported color space or dynamic range mode in snapshot options. |
-| 160004   | isAuto(true) is not supported for offscreen node snapshots. |
 
 **示例：**
 
@@ -356,8 +352,6 @@ createFromBuilder(builder: CustomBuilder, delay?: number, checkImageStatus?: boo
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | The builder is not a valid build function. |
 | 160001 | An image component in builder is not ready for taking a snapshot. The check for the ready state is required when the checkImageStatus option is enabled. |
-| 160003 | Unsupported color space or dynamic range mode in snapshot options. |
-| 160004 | isAuto(true) is not supported for offscreen node snapshots. |
 
 **示例：**
 
@@ -424,7 +418,9 @@ struct OffscreenSnapshotExample {
 
 ## componentSnapshot.getSync<sup>12+</sup>
 
-getSync(id: string, options?: SnapshotOptions): image.PixelMap
+ArkTS-Dyn: getSync(id: string, options?: SnapshotOptions): image.PixelMap
+
+ArkTS-Sta: getSync(id: string, options?: SnapshotOptions): image.PixelMap | null
 
 获取已加载的组件的截图，传入组件的[组件标识](arkui-ts/ts-universal-attributes-component-id.md)，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)。
 
@@ -436,7 +432,7 @@ getSync(id: string, options?: SnapshotOptions): image.PixelMap
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 10
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -451,15 +447,14 @@ getSync(id: string, options?: SnapshotOptions): image.PixelMap
 
 | 类型                            | 说明       |
 | ----------------------------- | -------- |
-| image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) | 截图返回的结果。 |
+| ArkTS-Dyn: image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)<br/>ArkTS-Sta: image.[PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md) \| null | 截图返回的结果。 |
 
 **错误码：** 
 
-以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[截图错误码](errorcode-snapshot.md)。
+以下错误码的详细介绍请参见[截图错误码](errorcode-snapshot.md)。
 
 | 错误码ID  | 错误信息                |
 | ------ | ------------------- |
-| 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2.Incorrect parameters types; 3. Parameter verification failed.   |
 | 100001 | Invalid ID. |
 | 160002 | Timeout. |
 | 160003 | Unsupported color space or dynamic range mode in snapshot options. |

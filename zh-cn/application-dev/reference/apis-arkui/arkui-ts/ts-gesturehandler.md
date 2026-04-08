@@ -196,7 +196,9 @@ constructor(options?: TapGestureHandlerOptions)
 
 ### onAction
 
-onAction(event: Callback\<GestureEvent>): TapGestureHandler
+ArkTS-Dyn: onAction(event: Callback\<GestureEvent>): TapGestureHandler
+
+ArkTS-Sta: onAction(event: Callback\<GestureEvent>): this
 
 设置点击手势处理器识别成功回调。
 
@@ -218,7 +220,7 @@ onAction(event: Callback\<GestureEvent>): TapGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [TapGestureHandler](#tapgesturehandler) | 返回当前点击手势处理器对象。 |
+| ArkTS-Dyn: [TapGestureHandler](#tapgesturehandler)<br/>ArkTS-Sta: this | 返回当前点击手势处理器对象。 |
 
 ## TapGestureHandlerOptions
 
@@ -260,7 +262,9 @@ constructor(options?: LongPressGestureHandlerOptions)
 
 ### onAction
 
-onAction(event: Callback\<GestureEvent>): LongPressGestureHandler
+ArkTS-Dyn: onAction(event: Callback\<GestureEvent>): LongPressGestureHandler
+
+ArkTS-Sta: onAction(event: Callback\<GestureEvent>): this
 
 设置长按手势处理器识别成功回调。
 
@@ -282,11 +286,13 @@ onAction(event: Callback\<GestureEvent>): LongPressGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [LongPressGestureHandler](#longpressgesturehandler) | 返回当前长按手势处理器对象。 |
+| ArkTS-Dyn: [LongPressGestureHandler](#longpressgesturehandler)<br/>ArkTS-Sta: this | 返回当前长按手势处理器对象。 |
 
 ### onActionEnd
 
-onActionEnd(event: Callback\<GestureEvent>): LongPressGestureHandler
+ArkTS-Dyn: onActionEnd(event: Callback\<GestureEvent>): LongPressGestureHandler
+
+ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>): this
 
 设置长按手势处理器结束回调。长按手势处理器识别成功后，最后一根手指抬起时触发回调。
 
@@ -308,7 +314,7 @@ onActionEnd(event: Callback\<GestureEvent>): LongPressGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [LongPressGestureHandler](#longpressgesturehandler) | 返回当前长按手势处理器对象。 |
+| ArkTS-Dyn: [LongPressGestureHandler](#longpressgesturehandler)<br/>ArkTS-Sta: this | 返回当前长按手势处理器对象。 |
 
 ### onActionCancel
 
@@ -320,9 +326,11 @@ onActionCancel(event: Callback\<void>): LongPressGestureHandler
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onActionCancel](#onactioncancel18)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -338,7 +346,9 @@ onActionCancel(event: Callback\<void>): LongPressGestureHandler
 
 ### onActionCancel<sup>18+</sup>
 
-onActionCancel(event: Callback\<GestureEvent>): LongPressGestureHandler
+ArkTS-Dyn: onActionCancel(event: Callback\<GestureEvent>): LongPressGestureHandler
+
+ArkTS-Sta: onActionCancel(event: Callback\<GestureEvent>): this
 
 设置长按手势处理器取消回调。长按手势处理器识别成功后，接收到触摸取消事件时触发回调。与[onActionCancel](#onactioncancel)接口相比，此接口返回手势事件信息。
 
@@ -360,7 +370,7 @@ onActionCancel(event: Callback\<GestureEvent>): LongPressGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [LongPressGestureHandler](#longpressgesturehandler) | 返回当前长按手势处理器对象。 |
+| ArkTS-Dyn: [LongPressGestureHandler](#longpressgesturehandler)<br/>ArkTS-Sta: this | 返回当前长按手势处理器对象。 |
 
 ## LongPressGestureHandlerOptions
 
@@ -403,7 +413,9 @@ constructor(options?: PanGestureHandlerOptions)
 
 ### onActionStart
 
-onActionStart(event: Callback\<GestureEvent>): PanGestureHandler
+ArkTS-Dyn: onActionStart(event: Callback\<GestureEvent>): PanGestureHandler
+
+ArkTS-Sta: onActionStart(event: Callback\<GestureEvent>): this
 
 设置滑动手势处理器识别成功回调。
 
@@ -425,11 +437,13 @@ onActionStart(event: Callback\<GestureEvent>): PanGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [PanGestureHandler](#pangesturehandler) | 返回当前滑动手势处理器对象。 |
+| ArkTS-Dyn: [PanGestureHandler](#pangesturehandler)<br/>ArkTS-Sta: this | 返回当前滑动手势处理器对象。 |
 
 ### onActionUpdate
 
-onActionUpdate(event: Callback\<GestureEvent>): PanGestureHandler
+ArkTS-Dyn: onActionUpdate(event: Callback\<GestureEvent>): PanGestureHandler
+
+ArkTS-Sta: onActionUpdate(event: Callback\<GestureEvent>): this
 
 设置滑动手势处理器更新回调。滑动手势处理器移动过程中触发回调。
 
@@ -451,11 +465,13 @@ onActionUpdate(event: Callback\<GestureEvent>): PanGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [PanGestureHandler](#pangesturehandler) | 返回当前滑动手势处理器对象。 |
+| ArkTS-Dyn: [PanGestureHandler](#pangesturehandler)<br/>ArkTS-Sta: this | 返回当前滑动手势处理器对象。 |
 
 ### onActionEnd
 
-onActionEnd(event: Callback\<GestureEvent>): PanGestureHandler
+ArkTS-Dyn: onActionEnd(event: Callback\<GestureEvent>): PanGestureHandler
+
+ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>): this
 
 设置滑动手势处理器结束回调。滑动手势处理器识别成功后，手指抬起时触发回调。
 
@@ -477,7 +493,7 @@ onActionEnd(event: Callback\<GestureEvent>): PanGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [PanGestureHandler](#pangesturehandler) | 返回当前滑动手势处理器对象。 |
+| ArkTS-Dyn: [PanGestureHandler](#pangesturehandler)<br/>ArkTS-Sta: this | 返回当前滑动手势处理器对象。 |
 
 ### onActionCancel
 
@@ -489,9 +505,11 @@ onActionCancel(event: Callback\<void>): PanGestureHandler
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onActionCancel](#onactioncancel18-1)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -507,7 +525,9 @@ onActionCancel(event: Callback\<void>): PanGestureHandler
 
 ### onActionCancel<sup>18+</sup>
 
-onActionCancel(event: Callback\<GestureEvent>): PanGestureHandler
+ArkTS-Dyn: onActionCancel(event: Callback\<GestureEvent>): PanGestureHandler
+
+ArkTS-Sta: onActionCancel(event: Callback\<GestureEvent>): this
 
 设置滑动手势处理器取消回调。滑动手势处理器识别成功后，接收到触摸取消事件时触发回调。与[onActionCancel](#onactioncancel-1)接口相比，此接口返回手势事件信息。
 
@@ -529,7 +549,7 @@ onActionCancel(event: Callback\<GestureEvent>): PanGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [PanGestureHandler](#pangesturehandler) | 返回当前滑动手势处理器对象。 |
+| ArkTS-Dyn: [PanGestureHandler](#pangesturehandler)<br/>ArkTS-Sta: this | 返回当前滑动手势处理器对象。 |
 
 ## PanGestureHandlerOptions
 
@@ -542,7 +562,7 @@ onActionCancel(event: Callback\<GestureEvent>): PanGestureHandler
 | fingers | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否| 是 | 用于指定触发拖动的最少手指数，最小为1指，&nbsp;最大取值为10指。<br/>默认值：1<br/>取值范围：[1, 10]<br/>**说明：** <br/>当设置的值小于1或不设置时，会被转化为默认值。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | direction | [PanDirection](./ts-basic-gestures-pangesture.md#pandirection枚举说明) | 否| 是 | 用于指定触发拖动的手势方向，此枚举值支持逻辑与(&amp;)和逻辑或（\|）运算。<br/>默认值：PanDirection.All<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
 | distance | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 否| 是 | 用于指定触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>**说明：**<br/>[Tabs组件](ts-container-tabs.md)滑动与该滑动手势事件同时存在时，可将distance值设为1，使拖动更灵敏，避免造成事件错乱。<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>从API version 19开始，手写笔默认值为8，单位为vp。<br/>**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 12<br/>**ArkTS-Sta起始版本：** 23 |
-| distanceMap<sup>19+</sup> |  Map<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), number> | 否| 是 | 用于指定不同输入源触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>**原子化服务API：** 从API version 19开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 23 |
+| distanceMap<sup>19+</sup> | ArkTS-Dyn: Map\<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), number><br/>ArkTS-Sta: Map\<[SourceTool](ts-gesture-settings.md#sourcetool枚举说明9), double> | 否| 是 | 用于指定不同输入源触发滑动手势事件的最小拖动距离，单位为vp。<br/>手写笔默认值：8，其余输入源默认值：5<br/>取值范围：[0, +∞)，当设定的值小于0时，按默认值处理。<br/>**原子化服务API：** 从API version 24开始，该接口支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 19<br/>**ArkTS-Sta起始版本：** 24 |
 
 ## SwipeGestureHandler
 
@@ -570,7 +590,9 @@ constructor(options?: SwipeGestureHandlerOptions)
 
 ### onAction
 
-onAction(event: Callback\<GestureEvent>): SwipeGestureHandler
+ArkTS-Dyn: onAction(event: Callback\<GestureEvent>): SwipeGestureHandler
+
+ArkTS-Sta: onAction(event: Callback\<GestureEvent>): this
 
 设置快滑手势处理器识别成功回调。
 
@@ -592,7 +614,7 @@ onAction(event: Callback\<GestureEvent>): SwipeGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [SwipeGestureHandler](#swipegesturehandler) | 返回当前快滑手势处理器对象。 |
+| ArkTS-Dyn: [SwipeGestureHandler](#swipegesturehandler)<br/>ArkTS-Sta: this | 返回当前快滑手势处理器对象。 |
 
 ## SwipeGestureHandlerOptions
 
@@ -636,7 +658,9 @@ constructor(options?: PinchGestureHandlerOptions)
 
 ### onActionStart
 
-onActionStart(event: Callback\<GestureEvent>): PinchGestureHandler
+ArkTS-Dyn: onActionStart(event: Callback\<GestureEvent>): PinchGestureHandler
+
+ArkTS-Sta: onActionStart(event: Callback\<GestureEvent>): this
 
 设置捏合手势处理器识别成功回调。
 
@@ -658,11 +682,13 @@ onActionStart(event: Callback\<GestureEvent>): PinchGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [PinchGestureHandler](#pinchgesturehandler) | 返回当前捏合手势处理器对象。 |
+| ArkTS-Dyn: [PinchGestureHandler](#pinchgesturehandler)<br/>ArkTS-Sta: this | 返回当前捏合手势处理器对象。 |
 
 ### onActionUpdate
 
-onActionUpdate(event: Callback\<GestureEvent>): PinchGestureHandler
+ArkTS-Dyn: onActionUpdate(event: Callback\<GestureEvent>): PinchGestureHandler
+
+ArkTS-Sta: onActionUpdate(event: Callback\<GestureEvent>): this
 
 设置捏合手势处理器更新回调。捏合手势处理器移动过程中触发回调。
 
@@ -684,11 +710,13 @@ onActionUpdate(event: Callback\<GestureEvent>): PinchGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [PinchGestureHandler](#pinchgesturehandler) | 返回当前捏合手势处理器对象。 |
+| ArkTS-Dyn: [PinchGestureHandler](#pinchgesturehandler)<br/>ArkTS-Sta: this | 返回当前捏合手势处理器对象。 |
 
 ### onActionEnd
 
-onActionEnd(event: Callback\<GestureEvent>): PinchGestureHandler
+ArkTS-Dyn: onActionEnd(event: Callback\<GestureEvent>): PinchGestureHandler
+
+ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>): this
 
 设置捏合手势处理器结束回调。捏合手势处理器识别成功后，手指抬起时触发回调。
 
@@ -710,7 +738,7 @@ onActionEnd(event: Callback\<GestureEvent>): PinchGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [PinchGestureHandler](#pinchgesturehandler) | 返回当前捏合手势处理器对象。 |
+| ArkTS-Dyn: [PinchGestureHandler](#pinchgesturehandler)<br/>ArkTS-Sta: this | 返回当前捏合手势处理器对象。 |
 
 ### onActionCancel
 
@@ -722,9 +750,11 @@ onActionCancel(event: Callback\<void>): PinchGestureHandler
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onActionCancel](#onactioncancel18-2)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -740,7 +770,9 @@ onActionCancel(event: Callback\<void>): PinchGestureHandler
 
 ### onActionCancel<sup>18+</sup>
 
-onActionCancel(event: Callback\<GestureEvent>): PinchGestureHandler
+ArkTS-Dyn: onActionCancel(event: Callback\<GestureEvent>): PinchGestureHandler
+
+ArkTS-Sta: onActionCancel(event: Callback\<GestureEvent>): this
 
 设置捏合手势处理器取消回调。捏合手势处理器识别成功后，接收到触摸取消事件时触发回调。与[onActionCancel](#onactioncancel-2)接口相比，此接口返回手势事件信息。
 
@@ -762,7 +794,7 @@ onActionCancel(event: Callback\<GestureEvent>): PinchGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [PinchGestureHandler](#pinchgesturehandler) | 返回当前捏合手势处理器对象。 |
+| ArkTS-Dyn: [PinchGestureHandler](#pinchgesturehandler)<br/>ArkTS-Sta: this | 返回当前捏合手势处理器对象。 |
 
 ## PinchGestureHandlerOptions
 
@@ -803,7 +835,9 @@ constructor(options?: RotationGestureHandlerOptions)
 
 ### onActionStart
 
-onActionStart(event: Callback\<GestureEvent>): RotationGestureHandler
+ArkTS-Dyn: onActionStart(event: Callback\<GestureEvent>): RotationGestureHandler
+
+ArkTS-Sta: onActionStart(event: Callback\<GestureEvent>): this
 
 设置旋转手势处理器识别成功回调。
 
@@ -825,11 +859,13 @@ onActionStart(event: Callback\<GestureEvent>): RotationGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [RotationGestureHandler](#rotationgesturehandler) | 返回当前旋转手势处理器对象。 |
+| ArkTS-Dyn: [RotationGestureHandler](#rotationgesturehandler)<br/>ArkTS-Sta: this | 返回当前旋转手势处理器对象。 |
 
 ### onActionUpdate
 
-onActionUpdate(event: Callback\<GestureEvent>): RotationGestureHandler
+ArkTS-Dyn: onActionUpdate(event: Callback\<GestureEvent>): RotationGestureHandler
+
+ArkTS-Sta: onActionUpdate(event: Callback\<GestureEvent>): this
 
 设置旋转手势处理器更新回调。旋转手势处理器移动过程中触发回调。
 
@@ -851,11 +887,13 @@ onActionUpdate(event: Callback\<GestureEvent>): RotationGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [RotationGestureHandler](#rotationgesturehandler) | 返回当前旋转手势处理器对象。 |
+| ArkTS-Dyn: [RotationGestureHandler](#rotationgesturehandler)<br/>ArkTS-Sta: this | 返回当前旋转手势处理器对象。 |
 
 ### onActionEnd
 
-onActionEnd(event: Callback\<GestureEvent>): RotationGestureHandler
+ArkTS-Dyn: onActionEnd(event: Callback\<GestureEvent>): RotationGestureHandler
+
+ArkTS-Sta: onActionEnd(event: Callback\<GestureEvent>): this
 
 设置旋转手势处理器结束回调。旋转手势处理器识别成功后，手指抬起时触发回调。
 
@@ -877,7 +915,7 @@ onActionEnd(event: Callback\<GestureEvent>): RotationGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [RotationGestureHandler](#rotationgesturehandler) | 返回当前旋转手势处理器对象。 |
+| ArkTS-Dyn: [RotationGestureHandler](#rotationgesturehandler)<br/>ArkTS-Sta: this | 返回当前旋转手势处理器对象。 |
 
 ### onActionCancel
 
@@ -889,9 +927,11 @@ onActionCancel(event: Callback\<void>): RotationGestureHandler
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
 
-**ArkTS-Sta起始版本：** 23
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[onActionCancel](#onactioncancel18-3)。
+
+**ArkTS-Dyn起始版本：** 12
 
 **参数：**
 
@@ -907,7 +947,9 @@ onActionCancel(event: Callback\<void>): RotationGestureHandler
 
 ### onActionCancel<sup>18+</sup>
 
-onActionCancel(event: Callback\<GestureEvent>): RotationGestureHandler
+ArkTS-Dyn: onActionCancel(event: Callback\<GestureEvent>): RotationGestureHandler
+
+ArkTS-Sta: onActionCancel(event: Callback\<GestureEvent>): this
 
 设置旋转手势处理器取消回调。旋转手势处理器识别成功后，接收到触摸取消事件时触发回调。与[onActionCancel](#onactioncancel-3)相比，此接口返回手势事件信息。
 
@@ -929,7 +971,7 @@ onActionCancel(event: Callback\<GestureEvent>): RotationGestureHandler
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [RotationGestureHandler](#rotationgesturehandler) | 返回当前旋转手势处理器对象。 |
+| ArkTS-Dyn: [RotationGestureHandler](#rotationgesturehandler)<br/>ArkTS-Sta: this | 返回当前旋转手势处理器对象。 |
 
 ## RotationGestureHandlerOptions
 
@@ -969,7 +1011,9 @@ constructor(options?: GestureGroupGestureHandlerOptions)
 
 ### onCancel
 
-onCancel(event: Callback\<void>): GestureGroupHandler
+ArkTS-Dyn: onCancel(event: Callback\<void>): GestureGroupHandler
+
+ArkTS-Sta: onCancel(event: VoidCallback): this
 
 设置手势组处理器取消回调。顺序组合手势（[GestureMode](./ts-combined-gestures.md#gesturemode枚举说明).Sequence）取消后触发回调。
 
@@ -985,13 +1029,13 @@ onCancel(event: Callback\<void>): GestureGroupHandler
 
 | 参数名 | 类型                              | 必填 | 说明                 |
 | ------ | --------------------------------- | ---- | -------------------- |
-| event  | [Callback](./ts-types.md#callback12)\<void> | 是 | 手势组处理器取消回调。 |
+| event  | ArkTS-Dyn: [Callback](./ts-types.md#callback12)\<void><br/>ArkTS-Sta: [VoidCallback](./ts-types.md#voidcallback12) | 是 | 手势组处理器取消回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -------- | -------- |
-| [GestureGroupHandler](#gesturegrouphandler) | 返回当前手势组处理器对象。 |
+| ArkTS-Dyn: [GestureGroupHandler](#gesturegrouphandler)<br/>ArkTS-Sta: this | 返回当前手势组处理器对象。 |
 
 ## GestureGroupGestureHandlerOptions
 
@@ -1008,7 +1052,7 @@ onCancel(event: Callback\<void>): GestureGroupHandler
 | 名称         | 类型                               | 只读    | 可选 | 说明                 |
 | ------------ | ---------------------------------|----- | ---- | -------------------- |
 | mode    | [GestureMode](./ts-combined-gestures.md#gesturemode枚举说明)                        | 否 | 否   | 设置[组合手势](ts-combined-gestures.md)识别模式。<br/>默认值：GestureMode.Sequence     |
-| gestures | [GestureHandler](#gesturehandlert)\<[TapGestureHandler](#tapgesturehandler) \| [LongPressGestureHandler](#longpressgesturehandler) \| [PanGestureHandler](#pangesturehandler) \| [SwipeGestureHandler](#swipegesturehandler) \| [PinchGestureHandler](#pinchgesturehandler) \| [RotationGestureHandler](#rotationgesturehandler) \| [GestureGroupHandler](#gesturegrouphandler)>[] | 否 | 否   | 手势组下需要包含的手势。<br/>**说明：**  <br/>当需要为一个组件同时添加单击和双击手势时，可在[组合手势](ts-combined-gestures.md)中添加两个[TapGesture](ts-basic-gestures-tapgesture.md)，需要双击手势在前，单击手势在后，否则不生效。 |
+| gestures | ArkTS-Dyn: [GestureHandler](#gesturehandlert12)\<[TapGestureHandler](#tapgesturehandler) \| [LongPressGestureHandler](#longpressgesturehandler) \| [PanGestureHandler](#pangesturehandler) \| [SwipeGestureHandler](#swipegesturehandler) \| [PinchGestureHandler](#pinchgesturehandler) \| [RotationGestureHandler](#rotationgesturehandler) \| [GestureGroupHandler](#gesturegrouphandler)>[]<br/>ArkTS-Sta: [GestureHandler](#gesturehandler23)[] | 否 | 否   | 手势组下需要包含的手势。<br/>**说明：**  <br/>当需要为一个组件同时添加单击和双击手势时，可在[组合手势](ts-combined-gestures.md)中添加两个[TapGesture](ts-basic-gestures-tapgesture.md)，需要双击手势在前，单击手势在后，否则不生效。 |
 
 ## GesturePriority枚举说明
 

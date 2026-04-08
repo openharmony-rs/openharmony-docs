@@ -1053,15 +1053,21 @@ type VP = string | double
 
 ## VoidCallback<sup>12+</sup>
 
-type VoidCallback：() => void;
+type VoidCallback = () => void
+
+返回值为空的函数回调。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ## Callback<sup>12+</sup>
 
-Callback<T,V = void> = (data: T) => V;
+Callback<T, V = void> = (data: T) => V
 
 带参数的函数回调。
 
@@ -1069,11 +1075,47 @@ Callback<T,V = void> = (data: T) => V;
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+
+**相关接口：** 该接口对应的ArkTS-Sta的接口是[Callback](#callback23)。
+
+**ArkTS-Dyn起始版本：** 12
+
+## Callback<sup>23+</sup>
+
+type Callback<T, V = void> = (data: T) => V
+
+带参数的函数回调。
+
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**相关接口：** 该接口对应的ArkTS-Dyn的接口是[Callback](#callback12)。
+
+**ArkTS-Sta起始版本：** 23
+
+## Optional\<T><sup>12+</sup>
+
+type Optional<T> = T | undefined
+
+可为undefined的泛型类型。
+
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 12
+
+**ArkTS-Sta起始版本：** 23
+
 ## HoverCallback<sup>12+</sup>
 
-hover事件的回调类型。
+type HoverCallback = (isHover: boolean, event: HoverEvent) => void
 
-type HoverCallback = (isHover: boolean, event: HoverEvent) => void;
+hover事件的回调类型。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -1083,43 +1125,31 @@ type HoverCallback = (isHover: boolean, event: HoverEvent) => void;
 | ------------- | ---------------------- | ---------------------------------------- |
 | HoverCallback | (isHover: boolean, event: HoverEvent) => void | hover事件的回调。 |
 
-## VisibleAreaEventOptions<sup>12+</sup>
+## ModifierKeyStateGetter<sup>23+</sup>
 
-关于区域变化相关的参数。
+type ModifierKeyStateGetter = (keys: Array\<string>) => boolean
 
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+修饰键状态查询函数类型。
 
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**ArkTS-Dyn起始版本：** 12
-
-**ArkTS-Sta起始版本：** 22
-
-| 参数名 | 类型                                                | 必填 | 说明                                                         |
-| ------ | --------------------------------------------------- | ---- | ------------------------------------------------------------ |
-| ratios | ArkTS-Dyn: Array&lt;number&gt;<br/>ArkTS-Sta: Array&lt;double&gt; | 是 | 阈值数组。其中，每个阈值代表组件可见面积（即组件在屏幕显示区的面积，只计算父组件内的面积，超出父组件部分不会计算）与组件自身面积的比值。每个阈值的取值范围为[0.0, 1.0]，如果开发者设置的阈值超出该范围，则会实际取值0.0或1.0。 |
-| expectedUpdateInterval | ArkTS-Dyn: number<br/>ArkTS-Sta: int | 否 | 定义了开发者期望的计算间隔，单位为ms。默认值：1000|
-
-## VisibleAreaChangeCallback<sup>12+</sup>
-
-ArkTS-Dyn: type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: number) => void
-
-ArkTS-Sta: type VisibleAreaChangeCallback = (isExpanding: boolean, currentRatio: double) => void
-
-组件可见区域变化事件的回调类型。
-
-**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 23开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 12
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
 
-**ArkTS-Sta起始版本：** 22
+**ArkTS-Sta起始版本：** 23
 
-| 参数名 | 类型 | 必填 |    说明                                                 |
-| ------ | --- | ---- | ------------------------------------------------------ |
-| isExpanding | boolean | 是 | 表示组件的可见面积与自身面积的比值与上一次变化相比的情况，比值变大为true，比值变小为false。 |
-| currentRatio | ArkTS-Dyn: number<br/>ArkTS-Sta: double | 是 | 触发回调时，组件可见面积与自身面积的比值。|
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| ------ | ---- | ---- | ---- |
+| keys | Array\<string> | 是 | 需要查询的修饰键列表。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| ---- | ---- |
+| boolean | 查询结果。true表示按下，false表示未按下。 |
 
 ## DividerStyleOptions<sup>12+</sup>
 

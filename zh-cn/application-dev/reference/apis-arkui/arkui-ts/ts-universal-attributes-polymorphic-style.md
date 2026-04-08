@@ -47,33 +47,33 @@ ArkTS-Sta: stateStyles(value: StateStyles | undefined): this
 
 ## CustomStyles
 
+type CustomStyles = (instance: CommonMethod) => void
+
 定义用于多态样式的回调类型。
 
-**ArkTS模式：** 该接口仅适用于ArkTS-Dyn。
+**ArkTS模式：** 该接口仅适用于ArkTS-Sta。
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
 | 参数名 | 类型                                | 必填 | 说明                     |
 | ------ | ----------------------------------- | ---- | ------------------------ |
-| value  | CommonMethod | 是   | 提供组件的实例。 |
+| instance  | CommonMethod | 是   | 提供组件的实例。 |
 
 
 ## StateStyles
-
-**卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
-
-**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 | 名称 | 类型 | 只读 | 可选 | 说明 |
 | -------- | -------- | -------- | -------- | -------- |
-| normal | ArkTS1.1: any <br/> ArkTS1.2: [CustomStyles](#customstyles) | 否 | 是 | 组件无状态的样式。<br/> ArkTS1.1: 仅支持使用@style修饰的样式代码块。 |
-| pressed | ArkTS1.1: any <br/> ArkTS1.2: [CustomStyles](#customstyles) | 否 | 是 | 组件按下状态的样式。<br/> ArkTS1.1: 仅支持使用@style修饰的样式代码块。 |
-| disabled | ArkTS1.1: any <br/> ArkTS1.2: [CustomStyles](#customstyles) | 否 | 是 | 组件禁用状态的样式。<br/> ArkTS1.1: 仅支持使用@style修饰的样式代码块。 |
-| focused | ArkTS1.1: any <br/> ArkTS1.2: [CustomStyles](#customstyles) | 否 | 是 | 组件获焦状态的样式。<br/> ArkTS1.1: 仅支持使用@style修饰的样式代码块。 |
-| clicked | ArkTS1.1: any <br/> ArkTS1.2: [CustomStyles](#customstyles) | 否 | 是 | 组件点击状态的样式。<br/> ArkTS1.1: 仅支持使用@style修饰的样式代码块。 |
-| selected<sup>10+</sup> | object | 否 | 是 | 组件选中状态的样式。<br/> ArkTS1.1: 仅支持使用@style修饰的样式代码块。<br/> |
+| normal | ArkTS-Dyn: any <br/> ArkTS-Sta: [CustomStyles](#customstyles) | 否 | 是 | 组件无状态的样式。<br/>**卡片能力：** 从API version 9开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| pressed | ArkTS-Dyn: any <br/> ArkTS-Sta: [CustomStyles](#customstyles) | 否 | 是 | 组件按下状态的样式。<br/>**卡片能力：** 从API version 9开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| disabled | ArkTS-Dyn: any <br/> ArkTS-Sta: [CustomStyles](#customstyles) | 否 | 是 | 组件禁用状态的样式。<br/>**卡片能力：** 从API version 9开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| focused | ArkTS-Dyn: any <br/> ArkTS-Sta: [CustomStyles](#customstyles) | 否 | 是 | 组件获焦状态的样式。<br/>**卡片能力：** 从API version 9开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| clicked | ArkTS-Dyn: any <br/> ArkTS-Sta: [CustomStyles](#customstyles) | 否 | 是 | 组件点击状态的样式。<br/>**卡片能力：** 从API version 9开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 8<br/>**ArkTS-Sta起始版本：** 23 |
+| selected<sup>10+</sup> | ArkTS-Dyn: object <br/> ArkTS-Sta: [CustomStyles](#customstyles) | 否 | 是 | 组件选中状态的样式。<br/>**卡片能力：** 从API version 10开始，该参数支持在ArkTS卡片中使用。<br/>**原子化服务API：** 从API version 11开始，该参数支持在原子化服务中使用。<br/>**ArkTS-Dyn起始版本：** 10<br/>**ArkTS-Sta起始版本：** 23 |
 
 **selected选中状态说明**
 
@@ -101,7 +101,7 @@ ArkTS-Sta: stateStyles(value: StateStyles | undefined): this
 
 该示例展示了状态为pressed和disabled时Text组件的样式变化。
 
-ArkTS1.1示例:
+ArkTS-Dyn示例:
 ```ts
 // xxx.ets
 @Entry
@@ -195,7 +195,7 @@ struct StyleExample {
   }
 }
 ```
-ArkTS1.2示例:
+ArkTS-Sta示例:
 ```ts
 // xxx.ets
 import { Entry, Component, CustomStyles, CommonMethod, Flex, BorderStyle, FlexDirection, ItemAlign, Text, TextAlign, Color, ClickEvent, Margin} from '@ohos.arkui.component'
@@ -298,7 +298,7 @@ struct StyleExample {
 
 该示例展示了状态为selected时Radio组件的样式变化。
 
-ArkTS1.1示例:
+ArkTS-Dyn示例:
 ```ts
 // xxx.ets
 @Entry
@@ -361,7 +361,7 @@ struct Index {
   }
 }
 ```
-ArkTS1.2示例:
+ArkTS-Sta示例:
 ```ts
 // xxx.ets
 import { Entry, Component, CommonMethod, Flex, Radio, Column, BorderStyle, FlexDirection, FlexAlign, ItemAlign, Text, TextAlign, ClickEvent, Padding, $$ } from '@ohos.arkui.component'
@@ -430,7 +430,7 @@ struct Index {
 
 该示例展示了状态为pressed时Builder组件的样式变化。
 
-ArkTS1.1示例:
+ArkTS-Dyn示例:
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -482,7 +482,7 @@ struct Index {
   }
 }
 ```
-ArkTS1.2示例:
+ArkTS-Sta示例:
 ```ts
 import { Entry, Component, CommonMethod, Builder, wrapBuilder, Button, Row, ComponentContent, ClickEvent, BusinessError, Color } from '@ohos.arkui.component'
 

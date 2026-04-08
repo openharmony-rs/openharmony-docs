@@ -4,23 +4,41 @@
 
 >  **说明：**
 >
->  从API version 20开始支持。后续版本如有新增内容，则采用上角标单独标记该内容的起始版本。
+> - 本模块同时支持ArkTS-Dyn、ArkTS-Sta。
 >
->  该toolbar为组件通用属性，请注意与[Navigation](ts-basic-components-navigation.md)组件自身的toolbar属性进行区分。
+> - 本模块首批接口从API version 20开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+>
+> - 该toolbar为组件通用属性，请注意与[Navigation](./ts-basic-components-navigation.md)组件自身的toolbar属性进行区分。
 
 ## toolbar
 
-toolbar(value: CustomBuilder)
+ArkTS-Dyn: toolbar(value: CustomBuilder): T
 
-为绑定该属性的组件，在窗口顶部标题栏相应分栏创建与该组件绑定的由[ToolBarItem](ts-basic-components-toolbaritem.md)构成的工具栏，分栏位置依据绑定该属性的组件所在分栏位置确定。[CustomBuilder](ts-types.md#custombuilder8)必须由[ToolBarItem](ts-basic-components-toolbaritem.md)构成，该工具栏才能生效。
+ArkTS-Sta: toolbar(value: CustomBuilder | undefined): this
+
+为绑定该属性的组件，在窗口顶部标题栏相应分栏创建与该组件绑定的由[ToolBarItem](./ts-basic-components-toolbaritem.md)构成的工具栏，分栏位置依据绑定该属性的组件所在分栏位置确定。[CustomBuilder](./ts-types.md#custombuilder8)必须由[ToolBarItem](./ts-basic-components-toolbaritem.md)构成，该工具栏才能生效。
+
+> **说明：**
+>
+> 该接口不支持在[attributeModifier](./ts-universal-attributes-attribute-modifier.md#attributemodifier)中调用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**ArkTS-Dyn起始版本：** 20
+
+**ArkTS-Sta起始版本：** 24
 
 **参数：** 
 
 | 参数名 | 类型                                        | 必填 | 说明                                            |
 | ------ | ------------------------------------------- | ---- | ----------------------------------------------- |
-| value  | [CustomBuilder](ts-types.md#custombuilder8) | 是   | 为当前组件配置CustomBuilder类型的自定义工具栏。 |
+| value  |  ArkTS-Dyn: [CustomBuilder](./ts-types.md#custombuilder8)<br/>ArkTS-Sta: [CustomBuilder](./ts-types.md#custombuilder8) \| undefined | ArkTS-Dyn: 是<br/>ArkTS-Sta: 否   | 为当前组件配置CustomBuilder类型的自定义工具栏。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| -------- | -------- |
+| ArkTS-Dyn: T<br/>ArkTS-Sta: this | 返回当前组件。 |
 
 >  **说明：**
 >  1. toolbar仅支持固定标题栏，不支持悬浮标题栏（仅限三键模式）。
@@ -32,14 +50,14 @@ toolbar(value: CustomBuilder)
 >  4. toolbar仅支持在[NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明)为Split的场景中使用。当[NavigationMode](ts-basic-components-navigation.md#navigationmode9枚举说明)设置为Stack或Auto时，无法应用toolbar。
 >
 >  5. 标题栏高度会根据toolbar内的[ToolBarItem](ts-basic-components-toolbaritem.md)组件在有限范围内浮动：
->     * [ToolBarItem](ts-basic-components-toolbaritem.md)组件的会与标题栏默认存在4VP的margin（外边距）。
+>     * [ToolBarItem](ts-basic-components-toolbaritem.md)组件与标题栏默认存在4VP的margin（外边距）。
 >     * 当[ToolBarItem](ts-basic-components-toolbaritem.md)组件的最大高度小于等于48VP时，标题栏高度会调整为56VP，此设置适用于标题栏、工具栏、搜索栏等通用组件。
 >     * 当[ToolBarItem](ts-basic-components-toolbaritem.md)组件的最大高度介于48VP到56VP之间时，标题栏高度会调整为64VP，此设置适用于图标与文字同时呈现的工具栏。
 >     * 当[ToolBarItem](ts-basic-components-toolbaritem.md)组件的最大高度超过56VP时，标题栏高度会调整为72VP。如果[ToolBarItem](ts-basic-components-toolbaritem.md)组件的最大高度超过64VP，则标题栏的高度保持为72VP，超出的区域会发生裁剪。
 
 ## 示例
 
-该示例通过为[Navigtion](ts-basic-components-navigation.md)下的[Button](ts-basic-components-button.md)组件绑定toolbar通用属性，为标题栏Navbar分栏开头位置添加包含两个[Button](ts-basic-components-button.md)组件工具栏项。为[NavDestination](ts-basic-components-navdestination.md)下的[Text](ts-basic-components-text.md)组件绑定toolbar通用属性，为标题栏NavDestination分栏末尾位置添加包含一个滑动条组件和一个搜索栏组件工具栏项。
+该示例通过为[Navigation](ts-basic-components-navigation.md)下的[Button](ts-basic-components-button.md)组件绑定toolbar通用属性，为标题栏Navbar分栏开头位置添加包含两个[Button](ts-basic-components-button.md)组件工具栏项。为[NavDestination](ts-basic-components-navdestination.md)下的[Text](ts-basic-components-text.md)组件绑定toolbar通用属性，为标题栏NavDestination分栏末尾位置添加包含一个滑动条组件和一个搜索栏组件工具栏项。
 
 ```ts
 // xxx.ets
@@ -76,7 +94,6 @@ struct SideBarContainerExample {
 
   @Builder
   PageNavDest(name: string) {
-    if (name = "1")
     NavDestination() {
       Column() {
         Text("add toolbar")
@@ -101,7 +118,7 @@ struct SideBarContainerExample {
           .onClick(() => {
             this.current = item
           })
-        }, (item: string) => item)
+        }, (item: number) => item.toString())
       }.width('100%')
       .justifyContent(FlexAlign.SpaceEvenly)
       .backgroundColor('#19000000')
@@ -148,3 +165,4 @@ struct SideBarContainerExample {
   }
 }
 ```
+![toolbar.png](figures/toolbar.png)
