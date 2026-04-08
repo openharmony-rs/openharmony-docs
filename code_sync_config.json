@@ -36,9 +36,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":559,
+						"end_line":566,
 						"name":"obtain_enrolled_capabilities",
-						"start_line":546
+						"start_line":553
 					}
 				]
 			}
@@ -32691,9 +32691,9 @@
 				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/UserAuthentication/entry/src/main/ets/pages/Index.ets",
 				"functions":[
 					{
-						"end_line":584,
+						"end_line":590,
 						"name":"obtain_auth_lock_state_capabilities",
-						"start_line":566
+						"start_line":572
 					}
 				]
 			}
