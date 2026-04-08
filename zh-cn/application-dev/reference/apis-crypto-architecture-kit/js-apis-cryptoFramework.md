@@ -711,7 +711,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | password | string \| Uint8Array | 否   | 否   | 用户输入的原始密码。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
 | iterations | number | 否   | 否   | 迭代次数，需要为正整数。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度。 |
+| keySize | number | 否   | 否   | 派生得到的密钥字节长度，单位为bytes。 |
 
 > **说明：**
 >
@@ -730,7 +730,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
 | salt | Uint8Array | 否   | 否   | 盐值。 |
 | info | Uint8Array | 否   | 否   | 拓展信息。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度。 |
+| keySize | number | 否   | 否   | 派生得到的密钥字节长度，单位为bytes。 |
 
 > **说明：**
 >
@@ -755,8 +755,8 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | n | number | 否   | 否   | 迭代次数，需要为正整数。 |
 | p | number | 否   | 否   | 并行化参数，需要为正整数。 |
 | r | number | 否   | 否   | 块大小参数，需要为正整数。 |
-| maxMemory | number | 否   | 否   | 最大内存限制参数，需要为正整数。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
+| maxMemory | number | 否   | 否   | 最大内存限制参数，需要为正整数，单位为bytes。 |
+| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
 >
@@ -774,7 +774,7 @@ API version 11系统能力为SystemCapability.Security.CryptoFramework；从API 
 | ------- | ------ | ---- | ---- | ------------ |
 | key | string \| Uint8Array | 否   | 否   | 密钥材料。|
 | info | Uint8Array | 否   | 否   | 附加信息。 |
-| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数。 |
+| keySize | number | 否   | 否   | 派生得到的密钥字节长度，需要为正整数，单位为bytes。 |
 
 > **说明：**
 >
@@ -1882,7 +1882,7 @@ convertKey(key: DataBlob, callback: AsyncCallback\<SymKey>): void
 
 > **说明：**
 >
-> 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定“HMAC|SHA256”），则需要传入与哈希长度一致的二进制密钥数据（如传入SHA256对应256位的密钥数据）。<br/>如果在创建对称密钥生成器时没有指定具体哈希算法，如仅指定“HMAC”，则支持传入长度在[1,4096]范围内（单位为byte）的任意二进制密钥数据。
+> 对于HMAC算法的对称密钥，如果已经在创建对称密钥生成器时指定了具体哈希算法（如指定“HMAC|SHA256”），则需要传入与哈希长度一致的二进制密钥数据（如传入SHA256对应256位的密钥数据）。<br/>如果在创建对称密钥生成器时没有指定具体哈希算法，如仅指定“HMAC”，则支持传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -6760,7 +6760,7 @@ init(key: SymKey, callback: AsyncCallback\<void>): void
 
   > **说明：**
   >
-  > 建议通过[HMAC密钥生成规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md#hmac)创建对称密钥生成器，调用[generateSymKey](#generatesymkey)随机生成对称密钥或调用[convertKey](#convertkey)传入与密钥规格长度一致的二进制密钥数据生成密钥。<br/>当指定“HMAC”生成对称密钥生成器时，仅支持调用[convertKey](#convertkey)传入长度在[1,4096]范围内（单位为byte）的任意二进制密钥数据生成密钥。
+  > 建议通过[HMAC密钥生成规格](../../security/CryptoArchitectureKit/crypto-sym-key-generation-conversion-spec.md#hmac)创建对称密钥生成器，调用[generateSymKey](#generatesymkey)随机生成对称密钥或调用[convertKey](#convertkey)传入与密钥规格长度一致的二进制密钥数据生成密钥。<br/>当指定“HMAC”生成对称密钥生成器时，仅支持调用[convertKey](#convertkey)传入长度在[1,4096]范围内（单位为bytes）的任意二进制密钥数据生成密钥。
 
 **原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
@@ -7232,7 +7232,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名   | 类型                     | 必填 | 说明                 |
 | -------- | ------------------------ | ---- | -------------------- |
-| len      | number                   | 是   | 表示生成随机数的长度，单位为byte，范围在[1, INT_MAX]。 |
+| len      | number                   | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
 | callback | AsyncCallback\<[DataBlob](#datablob)> | 是   | 回调函数，用于获取DataBlob数据。 |
 
 **错误码：**
@@ -7278,7 +7278,7 @@ API version 9-11系统能力为SystemCapability.Security.CryptoFramework；从AP
 
 | 参数名 | 类型   | 必填 | 说明                                                   |
 | ------ | ------ | ---- | ------------------------------------------------------ |
-| len    | number | 是   | 表示生成随机数的长度，单位为byte，范围在[1, INT_MAX]。 |
+| len    | number | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
 
 **返回值：**
 
@@ -7327,7 +7327,7 @@ API version 10-11系统能力为SystemCapability.Security.CryptoFramework；从A
 
 | 参数名 | 类型   | 必填 | 说明                 |
 | ------ | ------ | ---- | -------------------- |
-| len    | number | 是   | 表示生成随机数的长度，单位为byte，范围在[1, INT_MAX]。 |
+| len    | number | 是   | 表示生成随机数的长度，单位为bytes，范围在[1, INT_MAX]。 |
 
 **返回值：**
 
