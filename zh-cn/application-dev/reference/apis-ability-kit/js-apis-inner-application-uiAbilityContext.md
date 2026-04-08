@@ -1423,6 +1423,10 @@ setMissionContinueState(state: AbilityConstant.ContinueState, callback: AsyncCal
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
 
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
+
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
@@ -1442,6 +1446,7 @@ setMissionContinueState(state: AbilityConstant.ContinueState, callback: AsyncCal
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1449,6 +1454,22 @@ import { BusinessError } from '@kit.BasicServicesKit';
 export default class EntryAbility extends UIAbility {
   onForeground() {
     this.context.setMissionContinueState(AbilityConstant.ContinueState.INACTIVE, (result: BusinessError) => {
+      console.info(`setMissionContinueState: ${JSON.stringify(result)}`);
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+```ts
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    this.context.setMissionContinueState(AbilityConstant.ContinueState.INACTIVE, (result: BusinessError|null,data:string[]|undefined) => {
       console.info(`setMissionContinueState: ${JSON.stringify(result)}`);
     });
   }
@@ -1464,6 +1485,10 @@ setMissionContinueState(state: AbilityConstant.ContinueState): Promise&lt;void&g
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core
+
+**ArkTS-Dyn起始版本：** 11
+
+**ArkTS-Sta起始版本：** 23
 
 **参数：**
 
@@ -1489,6 +1514,7 @@ setMissionContinueState(state: AbilityConstant.ContinueState): Promise&lt;void&g
 
 **示例：**
 
+ArkTS-Dyn示例:
 ```ts
 import { UIAbility, AbilityConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1498,6 +1524,25 @@ export default class EntryAbility extends UIAbility {
     this.context.setMissionContinueState(AbilityConstant.ContinueState.INACTIVE).then(() => {
       console.info('success');
     }).catch((err: BusinessError) => {
+      console.error(`setMissionContinueState failed, code is ${err.code}, message is ${err.message}`);
+    });
+  }
+}
+```
+
+ArkTS-Sta示例：
+
+```ts
+import UIAbility from '@ohos.app.ability.UIAbility';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import Want from '@ohos.app.ability.Want';
+import { BusinessError } from '@ohos.base';
+
+export default class EntryAbility extends UIAbility {
+  onForeground() {
+    this.context.setMissionContinueState(AbilityConstant.ContinueState.INACTIVE).then(() => {
+      console.info('success');
+    }).catch((err: Error) => {
       console.error(`setMissionContinueState failed, code is ${err.code}, message is ${err.message}`);
     });
   }
