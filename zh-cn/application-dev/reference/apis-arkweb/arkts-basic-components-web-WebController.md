@@ -437,7 +437,7 @@ baseUrl为空时，通过”data“协议加载指定的一段字符串。
 
 loadUrl(options: { url: string | Resource, headers?: Array\<Header\> })
 
-使用指定的http头加载指定的URL。
+使用指定的HTTP头加载指定的URL。
 
 通过loadUrl注入的对象只在当前document有效，即通过loadUrl导航到新的页面会无效。
 
