@@ -1906,7 +1906,7 @@ setBackgroundPlayMode(mode: BackgroundPlayMode): Promise\<void>
 
 设置后台播放模式。使用promise异步回调。
 
-建议与应用内“是否支持后台播放开关”关联。如未设置，'audio'类型会话默认值为ENABLE_BACKGROUND_PLAY；'video'类型会话默认值为DISABLE_BACKGROUND_PLAY。
+建议与应用内"是否支持后台播放开关"关联。如未设置，'audio'类型会话默认值为ENABLE_BACKGROUND_PLAY；'video'类型会话默认值为DISABLE_BACKGROUND_PLAY。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
