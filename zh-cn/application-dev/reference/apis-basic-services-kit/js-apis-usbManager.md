@@ -134,7 +134,7 @@ connectDevice(device: USBDevice): Readonly&lt;USBDevicePipe&gt;
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | ---------------- |
-| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用getDevices获取的busNum和devAddress确定设备，当前其它属性不做处理。 |
+| device | [USBDevice](#usbdevice) | 是 | USB设备信息，用[getDevices](#usbmanagergetdevices)获取的busNum和devAddress确定设备，当前其它属性不做处理。 |
 
 **返回值：**
 
