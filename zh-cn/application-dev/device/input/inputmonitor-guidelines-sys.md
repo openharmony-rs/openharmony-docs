@@ -70,7 +70,7 @@ struct Index {
           } catch (error) {
             console.error(`Monitor on failed, error: ${JSON.stringify(error, ["code", "message"])}`);
           }
-          // 监听鼠标按下，按下callbackreturn true
+          // 监听鼠标按下，按下callback return true
           try {
             inputMonitor.off('mouse', callback); // 关闭监听鼠标事件
             console.info(`Monitor off success`);
