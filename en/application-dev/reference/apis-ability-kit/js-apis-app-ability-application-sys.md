@@ -19,7 +19,7 @@ You can use this module to create a [Context](../../application-models/applicati
 ```ts
 import { application } from '@kit.AbilityKit';
 ```
-## application.createModuleContext<sup>12+</sup>
+## application.createModuleContext
 
 createModuleContext(context: Context, bundleName: string, moduleName: string): Promise\<Context>
 
@@ -34,6 +34,8 @@ Creates the context for a module. This API uses a promise to return the result.
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **Parameters**
 
@@ -82,7 +84,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-## application.createBundleContext<sup>12+</sup>
+## application.createBundleContext
 
 createBundleContext(context: Context, bundleName: string): Promise\<Context>
 
@@ -95,6 +97,8 @@ Creates the context for an application. This API uses a promise to return the re
 **System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **System API**: This is a system API.
+
+**Required permissions**: ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
 **Parameters**
 
