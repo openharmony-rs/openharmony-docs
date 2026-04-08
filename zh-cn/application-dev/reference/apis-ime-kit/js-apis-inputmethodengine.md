@@ -787,6 +787,8 @@ getSecurityMode(): SecurityMode
 
 **错误码：**
 
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+
 | 错误码ID | 错误信息                       |
 | -------- | ------------------------------ |
 | 12800004 | not an input method application. |
@@ -821,6 +823,8 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback\<Panel>):
 
 **错误码：**
 
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
 | 401        | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -830,21 +834,28 @@ createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback\<Panel>):
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMethodEngine, InputMethodExtensionAbility } from '@kit.IMEKit';
+import { Want } from '@kit.AbilityKit';
 
 let panelInfo: inputMethodEngine.PanelInfo = {
   type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
 
-if (!this.context) {
-  inputMethodEngine.getInputMethodAbility()
-    .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
-      if (err) {
-        console.error(`Failed to createPanel. Code is ${err.code}, message is ${err.message}`);
-        return;
-      }
-      console.info('Succeed in creating panel.');
-    })
+class InputMethodExt extends InputMethodExtensionAbility {
+    onCreate(want: Want): void {
+        console.info(`onCreate, want: ${want.abilityName}`);
+        if (!this.context) {
+            inputMethodEngine.getInputMethodAbility()
+            .createPanel(this.context, panelInfo, (err: BusinessError, panel: inputMethodEngine.Panel) => {
+                if (err) {
+                console.error(`Failed to createPanel. Code is ${err.code}, message is ${err.message}`);
+                return;
+              }
+                console.info('Succeed in creating panel.');
+            })
+        }
+    }
 }
 ```
 
@@ -875,6 +886,8 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise\<Panel>
 
 **错误码：**
 
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+
 | 错误码ID   | 错误信息                       |
 | ---------- | ----------------------------- |
 | 401        | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
@@ -884,19 +897,26 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise\<Panel>
 
 ```ts
 import { BusinessError } from '@kit.BasicServicesKit';
+import { inputMethodEngine, InputMethodExtensionAbility } from '@kit.IMEKit';
+import { Want } from '@kit.AbilityKit';
 
 let panelInfo: inputMethodEngine.PanelInfo = {
   type: inputMethodEngine.PanelType.SOFT_KEYBOARD,
   flag: inputMethodEngine.PanelFlag.FLG_FIXED
 }
 
-if (this.context) {
-  inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo)
-    .then((panel: inputMethodEngine.Panel) => {
-      console.info('Succeed in creating panel.');
-    }).catch((err: BusinessError) => {
-    console.error(`Failed to create panel. Code is ${err.code}, message is ${err.message}`);
-  })
+class InputMethodExt extends InputMethodExtensionAbility {
+    onCreate(want: Want): void {
+        console.info(`onCreate, want: ${want.abilityName}`);
+        if (this.context) {
+            inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo)
+                .then((panel: inputMethodEngine.Panel) => {
+                console.info('Succeed in creating panel.');
+            }).catch((err: BusinessError) => {
+                console.error(`Failed to create panel. Code is ${err.code}, message is ${err.message}`);
+            })
+        }
+    }
 }
 ```
 
@@ -1039,8 +1059,8 @@ on(type: 'keyDown'|'keyUp', callback: (event: KeyEvent) => boolean): void
 
 ```ts
 inputMethodEngine.getKeyboardDelegate().on('keyUp', (keyEvent: inputMethodEngine.KeyEvent) => {
-  console.info(`inputMethodEngine keyCode.(keyDown): ${keyEvent.keyCode}`);
-  console.info(`inputMethodEngine keyAction.(keyDown): ${keyEvent.keyAction}`);
+  console.info(`inputMethodEngine keyCode.(keyUp): ${keyEvent.keyCode}`);
+  console.info(`inputMethodEngine keyAction.(keyUp): ${keyEvent.keyAction}`);
   return true;
 });
 inputMethodEngine.getKeyboardDelegate().on('keyDown', (keyEvent: inputMethodEngine.KeyEvent) => {
@@ -1852,7 +1872,7 @@ adjustPanelRect(flag: PanelFlag, rect: PanelRect): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                |
 | -------- | ------------------------------------------------------- |
@@ -1878,7 +1898,9 @@ let portraitRect: window.Rect = {
   height: 300
 };
 
+// 目标面板状态类型
 let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// 目标面板横屏状态及竖屏状态的横坐标，纵坐标，宽度以及高度
 let panelRect: inputMethodEngine.PanelRect = {
   landscapeRect: landscapeRect,
   portraitRect: portraitRect
@@ -1911,7 +1933,7 @@ adjustPanelRect(flag: PanelFlag, rect: EnhancedPanelRect): void
 
 **错误码：**
 
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)。
+以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息                                                     |
 | -------- | ------------------------------------------------------------ |
@@ -1939,8 +1961,9 @@ let portraitRect1: window.Rect = {
   height: 800
 }
 let portraitInputRegion: Array<window.Rect> = [portraitRect1];
-
+// 目标面板状态类型。
 let panelFlag: inputMethodEngine.PanelFlag = inputMethodEngine.PanelFlag.FLG_FIXED;
+// 目标面板横屏状态及竖屏状态的位置、大小、避让区域以及热区。
 let panelRect: inputMethodEngine.EnhancedPanelRect = {
   landscapeAvoidY: 650,
   landscapeInputRegion: landscapeInputRegion,
@@ -2773,7 +2796,7 @@ inputMethodEngine.getInputMethodAbility()
           console.info('OnTerminated.');
         },
         onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-          console.info('recv message.');
+          console.info(`recv message, msgId is ${msgId}, msgParam is ${JSON.stringify(msgParam)}`);
         }
       }
       inputClient.recvMessage(messageHandler);
@@ -2807,7 +2830,7 @@ inputMethodEngine.getInputMethodAbility()
           console.info('OnTerminated.');
         },
         onMessage(msgId: string, msgParam?: ArrayBuffer): void {
-          console.info('recv message.');
+          console.info(`recv message, msgId is ${msgId}, msgParam is ${JSON.stringify(msgParam)}`);
         }
       }
       inputClient.recvMessage(messageHandler);
@@ -4457,7 +4480,7 @@ recvMessage(msgHandler?: MessageHandler): void;
 
 **错误码：**
 
-以下错误码的详细介绍请参见[输入法框架错误码](errorcode-inputmethod-framework.md)，[通用错误码说明文档](../errorcode-universal.md)。
+以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)。
 
 | 错误码ID | 错误信息         |
 | -------- | ---------------- |
@@ -4821,7 +4844,7 @@ getForward(length:number): Promise&lt;string&gt;
 
 > **说明：**
 >
-> 从API version 8开始支持，API version 9开始废弃，建议使用[getForward](#getforward9)替代。
+> 从API version 8开始支持，API version 9开始废弃，建议使用[getForward](#getforward9-1)替代。
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
