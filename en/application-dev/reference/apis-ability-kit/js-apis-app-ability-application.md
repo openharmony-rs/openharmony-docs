@@ -33,7 +33,7 @@ Enumerates the preloading types of the current application process.
 | TYPE_CREATE_ABILITY_STAGE  | 2   |      Preloads the process up to the point of [AbilityStage](./js-apis-app-ability-abilityStage.md) creation completion.  |
 | TYPE_CREATE_WINDOW_STAGE        | 3   |    Preloads the process up to the point of [WindowStage](../apis-arkui/arkts-apis-window-WindowStage.md) creation completion.          |
 
-## application.createModuleContext<sup>12+</sup>
+## application.createModuleContext
 
 createModuleContext(context: Context, moduleName: string): Promise\<Context>
 
