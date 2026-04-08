@@ -124,8 +124,8 @@ tabBar(content: ComponentContent | SubTabBarStyle | BottomTabBarStyle | string |
 
 | 名称 | 类型         | 只读 | 可选 | 说明 |
 | -------- | -------- | --- | ----- | -------- |
-| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的图片内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
-| text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的文字内容。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| icon<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的图片内容。未设置时不显示图片。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
+| text<sup>7+</sup> | string \| [Resource](ts-types.md#resource) | 否 | 是 | 页签内的文字内容。未设置时不显示文字。<br/>**原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。 |
 
 ## SubTabBarStyle<sup>9+</sup>
 
@@ -335,7 +335,7 @@ padding(value: Padding | Dimension): SubTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | 是   | 子页签的内边距属性。<br />默认值：{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp} |
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) | 是   | 子页签的内边距属性。<br/>取值范围：[0, +∞]<br />默认值：{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp} |
 
 **返回值：**
 
@@ -357,7 +357,7 @@ padding(padding: LocalizedPadding): SubTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | 是   | 子页签的内边距属性。<br />默认值：{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8),<br/>top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)} |
+| padding | [LocalizedPadding](ts-types.md#localizedpadding12) | 是   | 子页签的内边距属性。<br/>取值范围：[0, +∞]<br />默认值：{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8),<br/>top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)} |
 
 **返回值：**
 
@@ -533,7 +533,7 @@ padding(value: Padding | Dimension | LocalizedPadding): BottomTabBarStyle
 
 | 参数名  | 类型                                   | 必填 | 说明           |
 | ------- | ------------------------------------- | ---- | ------------- |
-| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | 是   | 底部页签的内边距。<br/>默认值：{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}<br/>使用LocalizedPadding时，支持镜像能力。<br />默认值：{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),<br/>top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)} |
+| value | [Padding](ts-types.md#padding) \| [Dimension](ts-types.md#dimension10) \| [LocalizedPadding<sup>12+</sup>](ts-types.md#localizedpadding12) | 是   | 底部页签的内边距。<br/>取值范围：[0, +∞]<br/>默认值：{left:4.0vp,right:4.0vp,top:0.0vp,bottom:0.0vp}<br/>使用LocalizedPadding时，支持镜像能力。<br />默认值：{start:LengthMetrics.vp(4),end:LengthMetrics.vp(4),<br/>top:LengthMetrics.vp(0),bottom:LengthMetrics.vp(0)} |
 
 **返回值：**
 
@@ -1307,11 +1307,11 @@ struct TabsAttr {
           Column().width('100%').height('100%').backgroundColor(Color.Pink).borderRadius('12vp')
         }.tabBar(SubTabBarStyle.of('pink')
           .indicator({
-            color: this.indicatorColor, //下划线颜色
-            height: this.indicatorHeight, //下划线高度
-            width: this.indicatorWidth, //下划线宽度
-            borderRadius: this.indicatorBorderRadius, //下划线圆角半径
-            marginTop: this.indicatorSpace //下划线与文字间距
+            color: this.indicatorColor, // 下划线颜色
+            height: this.indicatorHeight, // 下划线高度
+            width: this.indicatorWidth, // 下划线宽度
+            borderRadius: this.indicatorBorderRadius, // 下划线圆角半径
+            marginTop: this.indicatorSpace // 下划线与文字间距
           })
           .selectedMode(this.selectedMode)
           .board({ borderRadius: this.subTabBorderRadius })

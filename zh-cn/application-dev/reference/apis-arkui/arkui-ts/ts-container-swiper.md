@@ -6,7 +6,7 @@
 <!--Tester: @Giacinta-->
 <!--Adviser: @Brilliantry_Rui-->
 
- 滑块视图容器，提供子组件滑动轮播显示的能力。 
+滑块视图容器，提供子组件滑动轮播显示的能力。 
 
 > **说明：**
 >
@@ -2939,7 +2939,7 @@ struct SwiperExample {
 
 该示例展示了Swiper组件基于断点配置显示个数的效果。
 
-从API version 22开始，新增[displaycount](#displaycount22)接口，用于设置Swiper视窗内元素显示个数。
+从API version 22开始，新增[displayCount](#displaycount22)接口，用于设置Swiper视窗内元素显示个数。
 
 ```ts
 class MyDataSource implements IDataSource {
