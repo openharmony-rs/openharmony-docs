@@ -29,7 +29,7 @@ import { SceneResourceType, SceneResource, Shader, MaterialType, CullMode, Blend
 | 名称 | 值 | 说明 |
 | ---- | ---- | ---- |
 | UNKNOWN | 0 | 未定义类型。 |
-| NODE | 1 | 结点类型。 |
+| NODE | 1 | 节点类型。 |
 | ENVIRONMENT | 2 | 环境类型。 |
 | MATERIAL | 3 | 材质类型。 |
 | MESH | 4 | 网格类型。 |
@@ -421,8 +421,6 @@ onStarted(callback: Callback\<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | ---- | ---- | ---- | ---- |
 | callback | Callback\<void> | 是 | 回调函数，返回值为空。 |
-
-动画开始时会执行传入的回调函数。
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
