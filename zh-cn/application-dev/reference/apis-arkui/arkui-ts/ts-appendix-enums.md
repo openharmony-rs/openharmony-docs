@@ -349,6 +349,25 @@
 | Rtl  | 元素从右到左布局。   |
 | Auto | 使用系统默认布局方向。 |
 
+## RawInputEventType
+
+原始输入事件类型。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+| 名称   | 值  | 说明       |
+| ------ | --- | ---------- |
+| TOUCH  | 0   | 触摸事件。 |
+| MOUSE  | 1   | 鼠标事件。 |
+
 ## BarState
 
 **卡片能力：** 从API version 9开始，该接口支持在ArkTS卡片中使用。
