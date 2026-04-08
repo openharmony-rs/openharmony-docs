@@ -81,16 +81,19 @@
       
       ``` TypeScript
       let timer: reminderAgentManager.ReminderRequestTimer = {
-        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER,  // 提醒类型为倒计时类型
+        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_TIMER, // 提醒类型为倒计时类型
         ringDuration: Constant.REMINDER_DURATION,
-        title: context.resourceManager.getStringSync($r('app.string.timer').id),  // 指明提醒标题, "app.string.timer"资源文件中的value值为"计时器"
-        content: context.resourceManager.getStringSync($r('app.string.countdown_close').id),  // 指明提醒内容, "app.string.countdown_close"资源文件中的value值为"计时器已结束"
-        wantAgent: {  // // 点击提醒通知后跳转的目标UIAbility信息
+        title: context.resourceManager.getStringSync($r('app.string.timer')
+          .id), // 指明提醒标题, "app.string.timer"资源文件中的value值为"计时器"
+        content: context.resourceManager.getStringSync($r('app.string.countdown_close')
+          .id), // 指明提醒内容, "app.string.countdown_close"资源文件中的value值为"计时器已结束"
+        wantAgent: {
+          // // 点击提醒通知后跳转的目标UIAbility信息
           pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
         },
         notificationId: 100, // 指明提醒使用的通知的ID号，相同ID号的提醒会覆盖
-        slotType: notificationManager.SlotType.CONTENT_INFORMATION,  // 指明提醒的Slot类型
+        slotType: notificationManager.SlotType.CONTENT_INFORMATION, // 指明提醒的Slot类型
         triggerTimeInSeconds: this.countdownTime
       };
       ```
@@ -101,24 +104,28 @@
       
       ``` TypeScript
       let calendar: reminderAgentManager.ReminderRequestCalendar = {
-        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_CALENDAR,  // 提醒类型为日历类型
-        dateTime: {  // 指明提醒的目标时间
+        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_CALENDAR, // 提醒类型为日历类型
+        dateTime: {
+          // 指明提醒的目标时间
           year: date.getFullYear(),
           month: date.getUTCMonth() + 1,
           day: date.getDate(),
           hour: date.getHours(),
           minute: date.getMinutes(),
         },
-        actionButton:  // 设置弹出的提醒通知信息上显示的按钮类型和标题
+        actionButton: // 设置弹出的提醒通知信息上显示的按钮类型和标题
         [{
-          title: context.resourceManager.getStringSync($r('app.string.calendar_close').id),  // "app.string.calendar_close"资源文件中的value值为"关闭日历提醒"
+          title: context.resourceManager.getStringSync($r('app.string.calendar_close')
+            .id), // "app.string.calendar_close"资源文件中的value值为"关闭日历提醒"
           type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
         }],
         // 点击提醒通知后跳转的目标UIAbility信息
         wantAgent: { pkgName: 'com.example.reminderagentmanager', abilityName: 'EntryAbility' },
-        ringDuration: Constant.REMINDER_DURATION,  // 指明响铃时长（单位：秒）
-        title: context.resourceManager.getStringSync($r('app.string.calendar').id),  // 指明提醒标题, "app.string.calendar"资源文件中的value值为"日历"
-        content: context.resourceManager.getStringSync($r('app.string.calendar_reach').id),  // 指明提醒内容, "app.string.calendar_reach"资源文件中的value值为"日历提醒时间到了"
+        ringDuration: Constant.REMINDER_DURATION, // 指明响铃时长（单位：秒）
+        title: context.resourceManager.getStringSync($r('app.string.calendar')
+          .id), // 指明提醒标题, "app.string.calendar"资源文件中的value值为"日历"
+        content: context.resourceManager.getStringSync($r('app.string.calendar_reach')
+          .id), // 指明提醒内容, "app.string.calendar_reach"资源文件中的value值为"日历提醒时间到了"
         slotType: notificationManager.SlotType.CONTENT_INFORMATION  // 指明提醒的Slot类型
       }
       ```
@@ -129,30 +136,35 @@
       
       ``` TypeScript
       let alarm: reminderAgentManager.ReminderRequestAlarm = {
-        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_ALARM,  // 提醒类型为闹钟类型
-        hour: time.hour,  // 指明提醒的目标时刻
-        minute: time.minute,  // 指明提醒的目标分钟
-        actionButton:  // 设置弹出的提醒通知信息上显示的按钮类型和标题
+        reminderType: reminderAgentManager.ReminderType.REMINDER_TYPE_ALARM, // 提醒类型为闹钟类型
+        hour: time.hour, // 指明提醒的目标时刻
+        minute: time.minute, // 指明提醒的目标分钟
+        actionButton: // 设置弹出的提醒通知信息上显示的按钮类型和标题
         [
           {
-            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close').id),  // "app.string.alarm_clock_close"资源文件中的value值为"关闭闹钟"
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_close')
+              .id), // "app.string.alarm_clock_close"资源文件中的value值为"关闭闹钟"
             type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_CLOSE
           },
           {
-            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone').id),  // "app.string.alarm_clock_postpone"资源文件中的value值为"推迟闹钟"
+            title: context.resourceManager.getStringSync($r('app.string.alarm_clock_postpone')
+              .id), // "app.string.alarm_clock_postpone"资源文件中的value值为"推迟闹钟"
             type: reminderAgentManager.ActionButtonType.ACTION_BUTTON_TYPE_SNOOZE
           }
         ],
-        slotType: notificationManager.SlotType.CONTENT_INFORMATION,  // 指明提醒的Slot类型
-        ringDuration: Constant.REMINDER_DURATION,  // 指明响铃时长（单位：秒）
-        wantAgent: {  // 点击提醒通知后跳转的目标UIAbility信息
+        slotType: notificationManager.SlotType.CONTENT_INFORMATION, // 指明提醒的Slot类型
+        ringDuration: Constant.REMINDER_DURATION, // 指明响铃时长（单位：秒）
+        wantAgent: {
+          // 点击提醒通知后跳转的目标UIAbility信息
           pkgName: 'com.example.reminderagentmanager',
           abilityName: 'EntryAbility'
         },
-        title: context.resourceManager.getStringSync($r('app.string.alarm_clock').id),  // 指明提醒标题, "app.string.alarm_clock"资源文件中的value值为"闹钟"
-        content: context.resourceManager.getStringSync($r('app.string.alarm_clock_reach').id),  // 指明提醒内容, "app.string.alarm_clock_reach"资源文件中的value值为"闹钟时间已到"
-        snoozeTimes: 0,  // 指明延迟提醒次数
-        timeInterval: 0,  // 执行延迟提醒间隔（单位：秒）
+        title: context.resourceManager.getStringSync($r('app.string.alarm_clock')
+          .id), // 指明提醒标题, "app.string.alarm_clock"资源文件中的value值为"闹钟"
+        content: context.resourceManager.getStringSync($r('app.string.alarm_clock_reach')
+          .id), // 指明提醒内容, "app.string.alarm_clock_reach"资源文件中的value值为"闹钟时间已到"
+        snoozeTimes: 0, // 指明延迟提醒次数
+        timeInterval: 0, // 执行延迟提醒间隔（单位：秒）
         daysOfWeek: []  // 指明每周哪几天需要重复提醒
       }
       ```
@@ -165,7 +177,7 @@
    let reminderId: number = await reminderAgentManager.publishReminder(
      this.calendarReminders[index].reminderRequestCalendar!);
    Logger.info(TAG, `publish reminder result: id is ${reminderId}`);
-   this.calendarReminders[index].reminderId = reminderId;  // 保存发布的提醒ID
+   this.calendarReminders[index].reminderId = reminderId; // 保存发布的提醒ID
    ```
 
 4. 根据需要删除提醒任务。
