@@ -1413,8 +1413,6 @@ selectContact(): Promise&lt;Array&lt;Contact&gt;&gt;
 >
 > 从API version 7 开始支持，从API version 10 开始废弃，建议使用[selectContacts](#contactselectcontacts10-1)替代。
 
-**需要权限**：ohos.permission.READ_CONTACTS
-
 **系统能力**：SystemCapability.Applications.Contacts
 
 **返回值：**
@@ -1442,8 +1440,6 @@ selectContacts(callback: AsyncCallback&lt;Array&lt;Contact&gt;&gt;): void
 调用选择联系人接口，打开选择联系人UI界面。使用callback异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
-
-**需要权限**：ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Applications.Contacts
 
@@ -1484,8 +1480,6 @@ selectContacts(): Promise&lt;Array&lt;Contact&gt;&gt;
 调用选择联系人接口，打开选择联系人UI界面。使用Promise异步回调。
 
 **原子化服务API**：从API version 11 开始，该接口支持在原子化服务中使用。
-
-**需要权限**：ohos.permission.READ_CONTACTS
 
 **系统能力**：SystemCapability.Applications.Contacts
 
