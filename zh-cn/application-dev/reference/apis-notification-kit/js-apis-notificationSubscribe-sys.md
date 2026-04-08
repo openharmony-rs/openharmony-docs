@@ -197,7 +197,7 @@ notificationSubscribe.subscribe(subscriber).then(() => {
 
 subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 
-订阅通知并指定订阅信息。使用Promise异步回调。
+订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
@@ -213,7 +213,7 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 
 | 参数名       | 类型                      | 必填 | 说明         |
 | ---------- | ------------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅者。 |
 
 **返回值：**
 
@@ -273,7 +273,7 @@ notificationSubscribe.subscribeNotification(subscriber).then(() => {
 
 subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubscribeInfo): Promise\<void\>
 
-订阅通知并指定订阅信息。使用Promise异步回调。
+订阅通知；订阅后，通过订阅者中的回调函数接收新消息。使用Promise异步回调。
 
 **起始版本**：26.0.0
 
@@ -289,7 +289,7 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 
 | 参数名       | 类型                      | 必填 | 说明         |
 | ---------- | ------------------------- | ---- | ------------ |
-| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](js-apis-inner-notification-notificationSubscriber-sys.md)    | 是   | 通知订阅者。 |
 | info       | [NotificationSubscribeInfo](js-apis-inner-notification-notificationSubscribeInfo-sys.md#notificationsubscribeinfo) | 否   | 通知订阅信息，默认为空（当为示订阅当前用户下所有应用的通知，否则表示订阅通知并指定订阅信息）。   |
 
 **返回值：**
