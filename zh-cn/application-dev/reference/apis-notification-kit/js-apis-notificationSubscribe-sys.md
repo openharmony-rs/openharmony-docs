@@ -233,7 +233,6 @@ subscribeNotification(subscriber: NotificationSubscriber): Promise\<void\>
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                    |
 
 **示例：**
 
@@ -310,7 +309,6 @@ subscribeNotification(subscriber: NotificationSubscriber, info: NotificationSubs
 | 1600001  | Internal error.                     |
 | 1600002  | Marshalling or unmarshalling error. |
 | 1600003  | Failed to connect to the service.          |
-| 1600012  | No memory space.                    |
 
 **示例：**
 
