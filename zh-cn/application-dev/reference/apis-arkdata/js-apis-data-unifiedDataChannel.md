@@ -102,7 +102,20 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 
 ## UriPermission<sup>26+</sup>
 
-定义用于拖拽场景的URI权限。
+定义拖拽场景下的URI授权策略。支持不授权、读、写、持久化四种权限策略，可组合使用，仅以下组合生效：
+1. 仅填不授权（或不授权）：不做任何文件授权。
+2. 读授权：仅做单次只读授权。
+3. 写授权：做单次读、写授权（写授权包含读授权）。
+4. 读授权+写授权：做单次读、写授权，与仅写授权等同。
+5. 读授权+持久化授权：做持久化读授权。
+6. 写授权+持久化授权：做持久化读、写授权。
+7. 读授权+写授权+持久化授权：做持久化读、写授权。
+除上述组合外，其余组合均无效，不会进行授权。
+
+授权策略应用规则（按优先级从高到低）：
+1. 单个数据级别：FileUri、HTML两个UDS以及File、Image、Video、Audio、Folder、HTML六个UDC数据结构支持配置授权策略参数，仅对单个数据单次生效，优先级最高。
+2. UnifiedDataProperties级别：UnifiedDataProperties中提供的授权参数对单次拖拽有效。若某个数据中配置了授权策略，则优先按照该数据的配置进行，优先级次之。
+3. 默认级别：若单个数据和UnifiedDataProperties均未配置授权策略，则按照拖拽原有逻辑进行代理授权。
 
 **原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。
 
@@ -114,7 +127,7 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 | ------------ | --- | ------------------------------------------- |
 | NONE | 0 | 表示未授予任何权限。 |
 | READ | 1 | 表示读取或查看数据的权限。 |
-| WRITE | 2 | 表示修改数据的权限。 |
+| WRITE | 2 | 表示修改数据的权限（包含READ）。 |
 | PERSIST | 3 | 表示持久化文件的权限。 |
 
 ## UnifiedDataProperties<sup>12+</sup>
@@ -132,7 +145,7 @@ type ValueType = number | string | boolean | image.PixelMap | Want | ArrayBuffer
 | timestamp | Date | 是 | 是 | [UnifiedData](#unifieddata)的生成时间戳。默认值为1970年1月1日（UTC）。 |
 | shareOptions | [ShareOptions](#shareoptions12) | 否 | 是 | 指示[UnifiedData](#unifieddata)支持的设备内使用范围，非必填字段，默认值为CROSS_APP。 |
 | getDelayData | [GetDelayData](#getdelaydata12) | 否 | 是 | 延迟获取数据回调。当前只支持同设备剪贴板场景，后续场景待开发。非必填字段，默认值为undefined。 |
-| uriAuthorizationPolicies<sup>26+</sup> | Array<[UriPermission](#uripermission26)> | 否 | 是 | 定义用于拖拽场景的URI授权策略。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies<sup>26+</sup> | Array<[UriPermission](#uripermission26)> | 否 | 是 | 定义用于拖拽场景的URI授权策略。默认值WRITE+READ+PERSIST<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
@@ -946,7 +959,7 @@ HTML类型数据，是[Text](#text)的子类，用于描述超文本标记语言
 | -------- | -------- | -------- | -------- | -------- |
 | htmlContent  | string | 否 | 否 | html格式内容。             |
 | plainContent | string | 否 | 是 | 去除html标签后的纯文本内容，非必填字段，默认值为空字符串。 |
-| uriAuthorizationPolicies<sup>26+</sup> | Array<[UriPermission](#uripermission26)> | 否 | 是 | 定义用于拖拽场景的URI授权策略。<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。 |
+| uriAuthorizationPolicies<sup>26+</sup> | Array<[UriPermission](#uripermission26)> | 否 | 是 | 定义用于拖拽场景的URI授权策略。默认值WRITE+READ+PERSIST<br/>**模型约束：** 此接口仅可在Stage模型下使用。<br/>**原子化服务API：** 从API version 26开始，该接口支持在原子化服务中使用。 |
 
 **示例：**
 
