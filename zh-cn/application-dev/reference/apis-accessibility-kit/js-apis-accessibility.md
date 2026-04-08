@@ -1106,8 +1106,6 @@ getCaptionsManager(): CaptionsManager
 
 **ArkTS-Dyn起始版本**：8
 
-**ArkTS-Sta起始版本**：23
-
 **返回值：**
 
 | 类型                                   | 说明         |
