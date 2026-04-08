@@ -2077,25 +2077,30 @@ nestedScroll(value: NestedScrollOptions | NestedScrollOptionsExt)
 
 ## enableScrollDirectionalLock
 
-enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType) 
+ArkTS-Dyn: enableScrollDirectionalLock(value: boolean, type: ScrollDirectionalLockType) 
 
-设置Web组件滑动方向锁定。不调用该方法进行设置时，默认在嵌套滚动场景下是支持滑动方向锁定的。
+ArkTS-Sta: enableScrollDirectionalLock(value: boolean | undefined, type: ScrollDirectionalLockType | undefined)
+
+设置Web组件滑动方向锁定。不调用该方法设置时，默认在嵌套滚动场景下支持滑动方向锁定。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-**起始版本：** 26.0.0
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 **参数：**
 
-| 参数名 | 类型                      | 必填 | 说明                                                                                                                                                |
-| ------ | ------------------------- | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 参数名 | 类型     | 必填 | 说明|
+| ------ | ---------------- | ---- | -------- |
 | value  | boolean                   | 是   | 是否支持滑动方向锁定。`true` 表示滑动方向锁定，滚动视图会根据用户初始滑动的方向来锁定滚动轴，`false` 表示不锁定。        |
 | type   | [ScrollDirectionalLockType](./arkts-basic-components-web-e.md#scrolldirectionallocktype) | 是   | 设置Web组件在哪些场景下希望滑动方向锁定。ALL表示所有场景都支持滑动锁定，NESTED_SCROLL表示在嵌套滚动场景下支持滑动锁定。 |
 
 **示例：**
 
+ArkTS-Dyn示例：
 ```ts
 // xxx.ets
 import { webview } from '@kit.ArkWeb';
@@ -2116,6 +2121,54 @@ struct WebComponent {
   }
 }
 ```
+
+ArkTS-Sta示例：
+  ```ts
+  // xxx.ets
+  'use static'
+  import { Web, Column, Component, Entry, $rawfile, ScrollDirectionalLockType } from '@kit.ArkUI';
+  import { webview } from '@kit.ArkWeb';
+
+  @Entry
+  @Component
+  struct WebComponent {
+    controller: webview.WebviewController = new webview.WebviewController(undefined);
+
+    build() {
+      Column() {
+        Web({ src: $rawfile("index.html"), controller: this.controller })
+          .width('100%')
+          .height('100%')
+          // 在所有场景下支持滑动方向的锁定
+          .enableScrollDirectionalLock(true, ScrollDirectionalLockType.ALL)
+      }
+    }
+  }
+  ```
+  
+  加载的html文件。
+  ```html
+  <!--index.html-->
+  <!DOCTYPE html>
+  <html>
+  <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Demo</title>
+      <style>
+        body {
+          width:2560px;
+          height:2560px;
+          padding-right:170px;
+          padding-left:170px;
+          border:5px solid blueviolet;
+        }
+      </style>
+  </head>
+  <body>
+  Scroll Test
+  </body>
+  </html>
+  ```
 
 ## bypassVsyncCondition<sup>20+</sup>
 
