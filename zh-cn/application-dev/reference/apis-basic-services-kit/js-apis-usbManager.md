@@ -1562,7 +1562,7 @@ USB配件句柄。
 
 | 名称         | 类型   | 只读  | 可选    |说明    |
 | ---------- | ------ | ---- | ----- |----- |
-| devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线号和设备地址，需要调用connectDevice获取。 |
+| devPipe | [USBDevicePipe](#usbdevicepipe) | 否 | 否 | 用于确定总线号和设备地址，需要调用[connectDevice](#usbmanagerconnectdevice)获取。 |
 | flags | [UsbTransferFlags](#usbtransferflags18) | 否 |否 | USB传输标志。 |
 | endpoint | number | 否 | 否 | 端点地址，正整数。 |
 | type | [UsbEndpointTransferType](#usbendpointtransfertype18) | 否 |否 | 传输类型。 |
