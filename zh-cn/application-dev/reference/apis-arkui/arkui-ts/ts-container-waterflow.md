@@ -236,7 +236,6 @@ type GetItemMainSizeByIndex = (index: number) => number
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-<!--Table: 20%; 15%; 65%-->
 | 名称 | 值 | 说明 |
 | ------ | ------ | -------------------- |
 | ALWAYS_TOP_DOWN | 0 | 默认的从上到下的布局模式。视窗内的FlowItem依赖视窗上方所有FlowItem的布局信息。因此跳转或切换列数时，需要计算出上方所有的FlowItem的布局信息。 |
