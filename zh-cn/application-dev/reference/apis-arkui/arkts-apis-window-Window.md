@@ -1747,7 +1747,7 @@ try {
 
 setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
 
-设置当前窗口是否开启获取悬浮三键导航类型的避让区域。使用Promise异步回调。
+设置当前窗口是否支持获取悬浮三键导航类型的避让区域。使用Promise异步回调。
 
 调用该接口使能后才可以通过[getWindowAvoidArea()](#getwindowavoidarea9)获取到[TYPE_FLOAT_NAVIGATION](arkts-apis-window-e.md#avoidareatype7)避让类型对应的避让区域或通过[on('avoidAreaChange')](#onavoidareachange9)监听TYPE_FLOAT_NAVIGATION避让类型对应的避让区域的变化。
 
@@ -1763,7 +1763,7 @@ setFloatNavigationAvoidAreaEnabled(enabled: boolean): Promise\<void>
 
 | 参数名      | 类型    | 必填 | 说明                                                         |
 | ---------- | ------- | ---- | ------------------------------------------------------------ |
-| enabled    | boolean | 是   | 是否开启获取悬浮三键导航类型的避让区域。<br>true表示开启，false表示关闭。</br> |
+| enabled    | boolean | 是   | 是否支持获取悬浮三键导航类型的避让区域。<br>true表示支持，false表示不支持。</br> |
 
 **返回值：**
 
@@ -1796,7 +1796,7 @@ try {
 
 isFloatNavigationAvoidAreaEnabled(): boolean
 
-查询当前窗口是否开启获取悬浮三键导航类型的避让区域。
+查询当前窗口是否支持获取悬浮三键导航类型的避让区域。
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -1810,7 +1810,7 @@ isFloatNavigationAvoidAreaEnabled(): boolean
 
 | 类型             | 说明              |
 | -------------- | --------------- |
-| boolean | 是否开启获取悬浮三键导航类型的避让区域。<br>true表示开启，false表示关闭。 |
+| boolean | 是否支持获取悬浮三键导航类型的避让区域。<br>true表示支持，false表示不支持。 |
 
 **错误码：**
 
