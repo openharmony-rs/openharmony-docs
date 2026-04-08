@@ -583,7 +583,7 @@ With this permission, the application can update print status and printer inform
 
 ## ohos.permission.ENTERPRISE_GET_INSTALLED_BUNDLE_LIST
 
-Allows an enterprise common application to obtain the list of all installed application.
+Allows an enterprise common application to obtain the list of all installed applications.
 
 **Permission level**: system_basic
 
