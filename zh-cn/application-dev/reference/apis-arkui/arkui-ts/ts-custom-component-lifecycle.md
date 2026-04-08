@@ -10,7 +10,9 @@
 
 ## aboutToAppear
 
-aboutToAppear?(): void
+ArkTS-Dyn: aboutToAppear?(): void
+
+ArkTS-Sta: default aboutToAppear(): void
 
 aboutToAppear函数在创建自定义组件的新实例后，在执行其build()函数之前执行。允许在aboutToAppear函数中改变状态变量，更改将在后续执行build()函数中生效。实现自定义布局的自定义组件的aboutToAppear生命周期在布局过程中触发。
 
@@ -29,17 +31,19 @@ aboutToAppear函数在创建自定义组件的新实例后，在执行其build()
 
 **ArkTS-Sta起始版本：** 23
 
-## onDidBuild<sup>18+</sup>
+## onDidBuild<sup>12+</sup>
 
-onDidBuild?(): void
+ArkTS-Dyn: onDidBuild?(): void
+
+ArkTS-Sta: default onDidBuild(): void
 
 onDidBuild函数在执行自定义组件的build()函数之后执行，开发者可以在这个阶段进行埋点数据上报等不影响实际UI的功能。不建议在onDidBuild函数中更改状态变量、使用animateTo等功能，这可能会导致不稳定的UI表现。
 
-**原子化服务API：** 从API version 18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API version 12开始，该接口支持在原子化服务中使用。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**ArkTS-Dyn起始版本：** 18
+**ArkTS-Dyn起始版本：** 12
 
 **ArkTS-Sta起始版本：** 23
 
@@ -151,7 +155,9 @@ struct IndexComponent {
 
 ## onNewParam<sup>19+</sup>
 
-onNewParam?(param: ESObject): void
+ArkTS-Dyn: onNewParam?(param: ESObject): void
+
+ArkTS-Sta: onNewParam?(param: object | undefined | null): void
 
 该回调仅生效于由[\@Entry](../../../../application-dev/ui/state-management/arkts-create-custom-components.md#entry)装饰的、作为[router路由](../js-apis-router.md)页面存在的自定义组件。当之前存在于路由栈中的页面，通过[单实例模式](../js-apis-router.md#routermode9)移动到栈顶时触发该回调。
 
@@ -167,7 +173,7 @@ onNewParam?(param: ESObject): void
 
 | 参数名 | 类型     |              说明         |
 |-------|----------|---------------------------|
-| param | ESObject | 路由跳转时传递到目标页面的数据。|
+| param | ArkTS-Dyn: ESObject<br/>ArkTS-Sta: object \| undefined \| null | 路由跳转时传递到目标页面的数据。|
 
 ```ts
 // pages/Index.ets
@@ -263,7 +269,7 @@ struct PageOne {
 
 ArkTS-Dyn: aboutToReuse?(params: Record\<string, Object | undefined | null>): void
 
-ArkTS-Sta: aboutToReuse(params: [ReuseObject](#reuseobject)): void
+ArkTS-Sta: aboutToReuse(params: [ReuseObject](#reuseobject23)): void
 
 当一个可复用的自定义组件从复用缓存中重新加入到节点树时，触发aboutToReuse生命周期回调，并将组件的构造参数传递给aboutToReuse。
 
@@ -284,7 +290,7 @@ ArkTS-Sta: aboutToReuse(params: [ReuseObject](#reuseobject)): void
 
 | 参数名  | 类型                                      | 说明                |
 |--------|-------------------------------------------|---------------------|
-| params | ArkTS-Dyn: Record\<string, Object \| undefined \| null><br>ArkTS-Sta: [ReuseObject](#reuseobject22+) | 自定义组件的构造参数。|
+| params | ArkTS-Dyn: Record\<string, Object \| undefined \| null><br>ArkTS-Sta: [ReuseObject](#reuseobject23) | 自定义组件的构造参数。|
 
 **示例：**
 

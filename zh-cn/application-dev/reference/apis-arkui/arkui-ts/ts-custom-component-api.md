@@ -47,7 +47,9 @@ struct MyComponent {
 
 ## getUniqueId<sup>12+</sup>
 
-getUniqueId(): number
+ArkTS-Dyn: getUniqueId(): number
+
+ArkTS-Sta: getUniqueId(): int
 
 获取当前Component的UniqueId。UniqueId为系统为每个组件分配的Id，可保证当前应用中的唯一性。若在组件对应的节点未创建或已销毁时获取，返回无效UniqueId：-1。
 
@@ -63,7 +65,7 @@ getUniqueId(): number
 
 | 类型                                                      | 说明                    |
 | --------------------------------------------------------- | ----------------------- |
-| number | 返回当前Component的UniqueId。 |
+| ArkTS-Dyn: number<br/>ArkTS-Sta: int | 返回当前Component的UniqueId。 |
 
 **示例：**
 
@@ -133,7 +135,9 @@ struct MyComponent {
 
 ## queryNavDestinationInfo<sup>18+</sup>
 
-queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
+ArkTS-Dyn: queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undefined
+
+ArkTS-Sta: queryNavDestinationInfo(isInner: boolean | undefined ): NavDestinationInfo | undefined
 
 查询当前自定义组件距离最近的NavDestination（NavPathStack栈中）信息，isInner为true表示向内查找，false表示向外查找。
 
@@ -149,7 +153,7 @@ queryNavDestinationInfo(isInner: Optional\<boolean>): NavDestinationInfo | undef
 
 | 参数名 | 类型                                          | 必填 | 说明                                          |
 | ------ | --------------------------------------------- | ---- | --------------------------------------------- |
-| isInner  | [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean> | 是   | true：向内查询最近的，且在栈内的NavDestinationinfo的详细信息。<br/>false：向外查询最近的，且在栈内的NavDestinationinfo的详细信息。|
+| isInner  | ArkTS-Dyn: [Optional](ts-universal-attributes-custom-property.md#optional12)\<boolean><br/>ArkTS-Sta: boolean \| undefined | 是   | true：向内查询最近的，且在栈内的NavDestinationinfo的详细信息。<br/>false：向外查询最近的，且在栈内的NavDestinationinfo的详细信息。|
 
 **返回值：**
 
