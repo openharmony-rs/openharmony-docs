@@ -137,6 +137,23 @@ let extraData: cloudData.ExtraData = {
 | action     | [ClearAction](#clearaction)           | 否   | 否   | 数据库默认数据清除方式。 |
 | tableInfo  | Record<string, [ClearAction](#clearaction)> | 否   | 是   | 要清除数据的表信息及清除规则。键为表名称，值为该表的清除方式。当未配置该参数时，默认使用数据库的数据清除方式。   |
 
+## BundleInfo
+
+端云协同应用信息。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+| 名称       | 类型            | 只读 | 可选 | 说明                       |
+| ---------- | -------------- | ---- | ---- | -------------------------- |
+| bundleName | string           | 否   | 否   | 应用包名。 |
+| storeId    | string | 否   | 是   | 数据库名称。默认值为空字符串。 |
+
 ## ClearConfig<sup>23+</sup>
 
 端云协同数据库级清除配置。
@@ -889,6 +906,196 @@ try {
 } catch(e) {
     let error = e as BusinessError;
   	console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### queryLastSyncInfo
+
+static queryLastSyncInfo(accountId: string, bundleInfos: Array&lt;BundleInfo&gt;): Promise&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;
+
+批量查询上一次端云同步的信息，使用Promise异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDDATA_CONFIG
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                                                         |
+| ---------- | ------ | ---- | ------------------------------------------------------------ |
+| accountId  | string | 是   | 具体打开的云账号ID。                                         |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 批量查询的应用信息数组。数组支持的最大长度为30，超过最大长度或者空数组返回14800001错误码。 |
+
+**返回值：**
+
+| 类型                                                         | 说明                                         |
+| ------------------------------------------------------------ | -------------------------------------------- |
+| Promise&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | Promise对象，返回应用包名以及对应数据库的上一次端云同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 14800001 | Invalid arguments. Possible causes: 1. the accountId is empty; 2. the bundleName is null; 3. the number of bundleInfos exceeds the upper limit or the number is 0.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const accountId: string = "accountId";
+const bundleInfos: Array<cloudData.BundleInfo> = [
+  { bundleName: "bundleName1", storeId: "storeId1" },
+  { bundleName: "bundleName2" }
+];
+
+try {
+  cloudData.Config.queryLastSyncInfo(accountId, bundleInfos).then((result) => {
+    console.info(`Succeeded in querying last sync info. Result is ${JSON.stringify(result)}`);
+  }).catch((err: BusinessError) => {
+    console.error(`Failed to query last sync info. Error code is ${err.code}, message is ${err.message}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### onSyncInfoChanged
+
+static onSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress: Callback&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;): void
+
+订阅应用同步信息变化，使用callback异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDDATA_CONFIG
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                                                         |
+| ---------- | ------ | ---- | ------------------------------------------------------------ |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 订阅的应用信息数组。数组支持的最大长度为30，超过最大长度或者空数组返回14800001错误码。 |
+| progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 是   | 同步信息变化回调函数。返回应用包名以及对应数据库的同步信息结果集。外层Record的键为应用包名，内层Record的键为数据库名。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 14800001 | Invalid arguments. Possible causes: 1. bundleName is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleInfos: Array<cloudData.BundleInfo> = [
+  { bundleName: "bundleName1", storeId: "storeId1" },
+  { bundleName: "bundleName2" }
+];
+
+try {
+  cloudData.Config.onSyncInfoChanged(bundleInfos, (result) => {
+    console.info(`Sync info changed. Result is ${JSON.stringify(result)}`);
+  });
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+### offSyncInfoChanged
+
+static offSyncInfoChanged(bundleInfos: Array&lt;BundleInfo&gt;, progress?: Callback&lt;Record&lt;string, Record&lt;string, SyncInfo&gt;&gt;&gt;): void
+
+取消订阅应用同步信息变化，使用callback异步回调。
+
+**ArkTS-Dyn起始版本：** 26.0.0
+
+**ArkTS-Sta起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**需要权限**：ohos.permission.CLOUDDATA_CONFIG
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Config
+
+**参数：**
+
+| 参数名     | 类型   | 必填 | 说明                                                         |
+| ---------- | ------ | ---- | ------------------------------------------------------------ |
+| bundleInfos | Array&lt;[BundleInfo](#bundleinfo)&gt; | 是   | 取消订阅的应用信息数组。数组支持的最大长度为30，超过最大长度或者空数组返回14800001错误码。取消订阅时应用信息的storeId需要与订阅时保持一致。 |
+| progress | Callback&lt;Record&lt;string, Record&lt;string, [SyncInfo](#syncinfo12)&gt;&gt;&gt; | 否   | 同步信息变化回调函数。如果不传此参数，则取消所有订阅。 |
+
+**错误码：**
+
+以下错误码的详细介绍请参见[通用错误码](../errorcode-universal.md)和[关系型数据库错误码](errorcode-data-rdb.md)。
+
+| 错误码ID | 错误信息                                             |
+| -------- | ---------------------------------------------------- |
+| 201      | Permission verification failed, usually the result returned by VerifyAccessToken.|
+| 202      | Permission verification failed, application which is not a system application uses system API.|
+| 801      | Capability not supported because the device does not support the device-cloud capability.|
+| 14800001 | Invalid arguments. Possible causes: 1. bundleName is null; 2. the number of bundleInfos exceeds the upper limit or the number is 0.|
+
+**示例：**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+const bundleInfos: Array<cloudData.BundleInfo> = [
+  { bundleName: "bundleName1", storeId: "storeId1" },
+  { bundleName: "bundleName2" }
+];
+
+const progressCallback = (result: Record<string, Record<string, cloudData.SyncInfo>>) => {
+  console.info(`Sync info changed. Result is ${JSON.stringify(result)}`);
+};
+
+// 订阅同步信息变化
+try {
+  cloudData.Config.onSyncInfoChanged(bundleInfos, progressCallback);
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+
+// 取消订阅指定的回调
+try {
+  cloudData.Config.offSyncInfoChanged(bundleInfos, progressCallback);
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
+}
+
+// 取消所有订阅
+try {
+  cloudData.Config.offSyncInfoChanged(bundleInfos);
+} catch(e) {
+  let error = e as BusinessError;
+  console.error(`An unexpected error occurred. Code: ${error.code}, message: ${error.message}`);
 }
 ```
 
