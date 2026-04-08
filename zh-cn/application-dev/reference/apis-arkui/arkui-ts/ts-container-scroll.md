@@ -889,7 +889,7 @@ currentOffset(): OffsetResult
 | -------- | -------- |
 |  [OffsetResult<sup>11+</sup>](#offsetresult11对象说明) | 返回当前的滚动总偏移量。|
 
-### offset<sup>23+<sup>
+### offset<sup>23+</sup>
 
 offset(): OffsetResult | undefined
 
@@ -1316,7 +1316,7 @@ struct ScrollExample {
       Button('scroll 100')
         .height('5%')
         .onClick(() => { // 点击后滑动到指定位置，即下滑100.0vp的距离，滑动过程配置有动画
-          let curve = curves.interpolatingSpring(10, 1, 228, 30); //创建一个弹簧曲线
+          let curve = curves.interpolatingSpring(10, 1, 228, 30); // 创建一个弹簧曲线
           const yOffset: number = this.scroller.currentOffset().yOffset;
           this.scroller.scrollTo({ xOffset: 0, yOffset: yOffset + 100, animation: { duration: 1000, curve: curve } });
         })
@@ -1810,7 +1810,7 @@ struct StickyNestedScroll {
     Column() {
       Row() {
         Button('有动画scrollTo').onClick(() => {
-          let curve = curves.interpolatingSpring(0.5, 5, 10, 15) //创建一个弹簧曲线
+          let curve = curves.interpolatingSpring(0.5, 5, 10, 15) // 创建一个弹簧曲线
           const yOffset: number = this.scroller.currentOffset().yOffset;
           this.scroller.scrollTo({
             xOffset: 0,
@@ -1842,8 +1842,8 @@ struct StickyNestedScroll {
         .height('100%')
       }
       .scrollable(ScrollDirection.Vertical)
-      .edgeEffect(EdgeEffect.Spring) //设置边缘效果
-      .fadingEdge(false) //关闭边缘渐隐效果
+      .edgeEffect(EdgeEffect.Spring) // 设置边缘效果
+      .fadingEdge(false) // 关闭边缘渐隐效果
       .scrollBar(BarState.Auto)
       .friction(undefined)
       .backgroundColor('#DCDCDC')
@@ -1927,7 +1927,7 @@ struct ScrollExample1 {
               this.contentHeight = this.scroller.contentSize().height;
             } catch (error) {
               let err: BusinessError = error as BusinessError;
-      		  console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
+              console.error(`Failed to get contentSize of the grid, code=${err.code}, message=${err.message}`);
             }
           })
         // 将获取到的内容尺寸信息通过文本进行呈现
