@@ -53,6 +53,14 @@
    // 获取指定硬件的视频AVC编码器能力实例。
    OH_AVCapability *capability = OH_AVCodec_GetCapabilityByCategory(OH_AVCODEC_MIMETYPE_VIDEO_AVC, true, HARDWARE);
    ```
+
+   方式三：通过OH_AVCodec_GetCapabilityList获取指定编解码器类型的全量能力实例列表。此方式适用于需要遍历系统支持的所有特定类型（如视频解码器）并根据多个条件进行组合筛选的场景。
+
+   ```c++
+   // 获取系统中所有视频解码器的能力实例列表。
+   uint32_t count = 0;
+   OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
+   ```
    若获取能力实例成功，继续向下执行。实例无显性释放接口，使用完毕后系统会自动回收。
    
 4. 按需调用相应的查询接口。详细的API说明请参考[native_avcapability.h](../../reference/apis-avcodec-kit/capi-native-avcapability-h.md)。
@@ -778,46 +786,45 @@ if (OH_VideoEncoder_Configure(videoEnc, format) != AV_ERR_OK) {
    // 异常处理。
 }
 ```
-# 查询编解码能力列表
 
-部分业务场景需要一次性获取某一类编解码器的全部能力信息，例如遍历设备支持的所有视频编码器、筛选特定MIME类型的能力项，或区分安全编解码器与普通编解码器。
+### 筛选特定MIME类型的安全编解码器（DRM播放场景）
 
-开发者可通过编解码器类型获取能力列表，再结合能力项的名称、MIME类型、是否硬件、是否安全等属性进行筛选。
+在处理受数字版权管理 (DRM) 保护的加密媒体资源时，普通的编解码器无法进行处理，必须使用支持安全链路的“安全编解码器”。
 
-## 接口说明
+开发者可以通过获取编解码器列表，并结合MIME类型比对与安全特性查询，精准筛选出符合要求的安全解码器。
 
 | 接口     | 功能描述                         |
 | -------- | ---------------------------- |
-| OH_AVCodec_GetCapabilityList              | 确认当前编解码器是否支持给定的特性。  |
-| OH_AVCapability_GetMimeType               | 获取当前编解码器支持的指定特性的属性。|
-| OH_AVCapability_CheckMimeType             | 获取当前编解码器支持的指定特性的属性。|
-| OH_AVCapability_IsSecure                  | 获取当前编解码器支持的指定特性的属性。|
+| OH_AVCodec_GetCapabilityList              | 获取指定类型（如视频解码器）的所有编解码能力实例列表。 |
+| OH_AVCapability_GetMimeType               | 获取该能力实例对应的 MIME 类型字符串。 |
+| OH_AVCapability_CheckMimeType             | 校验该能力实例的 MIME 类型是否与目标类型一致。 |
+| OH_AVCapability_IsSecure                  | 检查该能力实例是否描述了一个支持处理加密资源的安全编解码器。 |
 
-## 使用场景示例
-
-### 获取所有的视频解码器能力
-
-示例如下
+查找并创建 H.264 安全硬件解码器的示例代码如下：
 
 ```c++
+// 1. 定义期望的MIME类型
+const char *targetMime = OH_AVCODEC_MIMETYPE_VIDEO_AVC;
 uint32_t count = 0;
-OH_AVcapability **capList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODEZR, &count);
-if (capList == nullptr || count == 0) {
-   // 异常处理
+
+// 2. 获取所有视频解码器的能力列表
+OH_AVCapability **capabilityList = OH_AVCodec_GetCapabilityList(OH_AVCODEC_TYPE_VIDEO_DECODER, &count);
+
+if (capabilityList != nullptr && count > 0) {
+    for (uint32_t i = 0; i < count; i++) {
+        OH_AVCapability *cap = capabilityList[i];
+        
+        // 3. 检查是否为目标的MIME类型，且必须是安全解码器
+        if (OH_AVCapability_CheckMimeType(cap, targetMime) && OH_AVCapability_IsSecure(cap)) {
+            // 4. 找到符合条件的编解码器，获取其名称用于创建实例
+            const char *codecName = OH_AVCapability_GetName(cap);
+            OH_AVCodec *secureVideoDec = OH_VideoDecoder_CreateByName(codecName);
+            
+            if (secureVideoDec != nullptr) {
+                // 成功创建安全解码器，跳出循环执行后续业务
+                break;
+            }
+        }
+    }
 }
-
-for (uint32_t i = 0; i < count; i++) {
-   OH_AVCapability *cap = capList[i];
-   if (cap == nullprt) {
-      continue;
-   }
-
-   const char *name = OH_Capability_GetName(cap);
-   const char *mime = OH_AVCapability_GetMimeType(cap);
-   bool isHardware = OH_AVCapability_IsHardware(cap);
-   bool isHardware = OH_AVCapability_IsSecure(cap);
-
-   // 根据实际业务处理能力项
-}
-
 ```
