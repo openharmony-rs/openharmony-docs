@@ -46,7 +46,7 @@ import { State } from '@kit.ArkUI';
 
    ```ts
    'use static'
-   import { Observed, Entry, Component, State, Column, ColumnOptions, Text, Button } from '@kit.ArkUI';
+   import { Button, Column, ColumnOptions, Component, Entry, Observed, State, Text } from '@kit.ArkUI';
 
    @Observed
    class ObservedClass {
@@ -155,8 +155,7 @@ import { State } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
-  import { State } from '@kit.ArkUI';
+  import { ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -209,8 +208,7 @@ import { State } from '@kit.ArkUI';
 ```ts
 'use static'
 
-import { Entry, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+import { Button, ClickEvent, Component, Entry, State } from '@kit.ArkUI';
 @Entry
 @Component
 struct MyComponent {
@@ -232,7 +230,7 @@ struct MyComponent {
 ```ts
 'use static'
 
-import { Entry, Component, Column, ForEach, Divider, Text, Button, ClickEvent, Row, State } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Row, State, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -277,7 +275,7 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Component, Row, Column, ForEach, Divider, Text, Button, ClickEvent, State } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Row, State, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -318,8 +316,7 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct DateExample {
@@ -360,8 +357,7 @@ struct DateExample {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { State } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct MyComponent {

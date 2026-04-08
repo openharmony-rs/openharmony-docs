@@ -39,8 +39,7 @@ makeObserved支持以下类型的变量：
   ```ts
   'use static'
   
-  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
-  import { UIUtils } from '@kit.ArkUI';
+  import { ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -65,8 +64,7 @@ makeObserved支持以下类型的变量：
   ```ts
   'use static'
   
-  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
-  import { UIUtils } from '@kit.ArkUI';
+  import { ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -94,8 +92,7 @@ makeObserved支持以下类型的变量：
   ```ts
   'use static'
   
-  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
-  import { State, UIUtils } from '@kit.ArkUI';
+  import { ClickEvent, Column, Component, Entry, State, Text, UIUtils } from '@kit.ArkUI';
   interface Info {
     name: string;
     age: number;
@@ -156,8 +153,7 @@ makeObserved支持以下类型的变量：
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { UIUtils } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -187,8 +183,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Component, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
-import { UIUtils } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Row, Text, UIUtils } from '@kit.ArkUI';
 @Entry
 @Component
 struct MapSample {
@@ -227,8 +222,7 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Component, Row, Column, ForEach, Text, Divider, Button, ClickEvent } from '@kit.ArkUI';
-import { UIUtils } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Row, Text, UIUtils } from '@kit.ArkUI';
 @Entry
 @Component
 struct SetSample {
@@ -263,8 +257,7 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { UIUtils } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
 @Entry
 @Component
 struct DateExample {
@@ -298,8 +291,7 @@ struct DateExample {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
-import { UIUtils } from '@kit.ArkUI';
+import { ClickEvent, Column, Component, Entry, Text, UIUtils } from '@kit.ArkUI';
 interface Info {
   name: string,
   age: number

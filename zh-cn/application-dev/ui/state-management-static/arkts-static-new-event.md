@@ -55,8 +55,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent, Color } from '@kit.ArkUI';
-import { Local, Param, Event } from '@kit.ArkUI';
+import { Button, ClickEvent, Color, Column, ComponentV2, Entry, Event, Local, Param, Text } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -111,8 +110,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, ClickEvent } from '@kit.ArkUI';
-import { Local, Param, Event } from '@kit.ArkUI';
+import { ClickEvent, Column, ComponentV2, Entry, Event, Local, Param, Text } from '@kit.ArkUI';
 
 @ComponentV2
 struct Child {

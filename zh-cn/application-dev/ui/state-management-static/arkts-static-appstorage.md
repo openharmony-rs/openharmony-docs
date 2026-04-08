@@ -153,8 +153,7 @@ import { StorageLink } from '@kit.ArkUI';
     ```ts
     'use static'
     
-    import { Entry, Column, Component, Text } from '@kit.ArkUI';
-    import { AppStorage, StoragePropRef, StorageLink } from '@kit.ArkUI';
+    import { AppStorage, Column, Component, Entry, StorageLink, StoragePropRef, Text } from '@kit.ArkUI';
     
     @Entry
     @Component
@@ -200,7 +199,7 @@ import { StorageLink } from '@kit.ArkUI';
 AppStorage是单例，其所有API均为静态方法，使用方法类似于[LocalStorage](arkts-static-localstorage.md)中对应的非静态方法。
 
 ```ts
-import { LocalStorage, AppStorage, SubscribedAbstractProperty } from '@kit.ArkUI';
+import { AppStorage, LocalStorage, SubscribedAbstractProperty } from '@kit.ArkUI';
 
 AppStorage.setOrCreate<number>('PropA', 47);
 
@@ -229,8 +228,7 @@ link2!.get() // == 49
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { LocalStorage, AppStorage, StorageLink, LocalStorageLink } from '@kit.ArkUI';
+import { AppStorage, Button, ClickEvent, Column, Component, Entry, LocalStorage, LocalStorageLink, StorageLink, Text } from '@kit.ArkUI';
 
 class Data {
   code: number;
@@ -347,8 +345,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { AppStorage, StorageLink, StoragePropRef } from '@kit.ArkUI';
+import { AppStorage, Button, ClickEvent, Column, Component, Entry, Row, StorageLink, StoragePropRef, Text } from '@kit.ArkUI';
 
 @Component
 struct StorageLinkComponent {
@@ -412,8 +409,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { AppStorage, StorageLink } from '@kit.ArkUI';
+import { AppStorage, Button, ClickEvent, Column, Component, Entry, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -455,8 +451,7 @@ struct DateSample {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { AppStorage, StorageLink } from '@kit.ArkUI';
+import { AppStorage, Button, ClickEvent, Column, Component, Entry, Row, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -498,8 +493,7 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { AppStorage, StorageLink } from '@kit.ArkUI';
+import { AppStorage, Button, ClickEvent, Column, Component, Entry, Row, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component

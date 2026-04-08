@@ -37,8 +37,7 @@ import { PropRef } from '@kit.ArkUI';
   ```ts
   'use static'
 
-  import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-  import { State, PropRef } from '@kit.ArkUI';
+  import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
   @Entry
   @Component
   struct Index {
@@ -114,8 +113,7 @@ import { PropRef } from '@kit.ArkUI';
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { State, PropRef } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -221,8 +219,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { State, PropRef } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -257,8 +254,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { State, PropRef } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -293,8 +289,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { State, PropRef } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {
@@ -335,8 +330,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { State, PropRef } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, PropRef, State, Text } from '@kit.ArkUI';
 @Entry
 @Component
 struct Index {

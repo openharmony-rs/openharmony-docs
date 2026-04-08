@@ -86,8 +86,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
    ```ts
    'use static'
    
-   import { Entry, Text, Row, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-   import { PersistentStorage, StorageLink, State } from '@kit.ArkUI';
+   import { Button, ClickEvent, Column, Component, Entry, PersistentStorage, Row, State, StorageLink, Text } from '@kit.ArkUI';
    
    @Entry
    @Component
@@ -141,7 +140,7 @@ onWindowStageCreate(windowStage: window.WindowStage): void {
 ```ts
 'use static'
 
-import { PersistentStorage, AppStorage } from '@kit.ArkUI';
+import { AppStorage, PersistentStorage } from '@kit.ArkUI';
 
 let aProp = AppStorage.setOrCreate('aProp', 47);
 PersistentStorage.persistProp('aProp', 48);
@@ -158,7 +157,7 @@ PersistentStorage.persistProp('aProp', 48)：在PersistentStorage中查找到“
 ```ts
 'use static'
 
-import { PersistentStorage, AppStorage } from '@kit.ArkUI';
+import { AppStorage, PersistentStorage } from '@kit.ArkUI';
 
 PersistentStorage.persistProp('aProp', 48);
 if (AppStorage.get('aProp') > 50) {
@@ -177,8 +176,7 @@ if (AppStorage.get('aProp') > 50) {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { Observed, PersistentStorage, AppStorage, StorageLink } from '@kit.ArkUI';
+import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -243,8 +241,7 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { Observed, PersistentStorage, AppStorage, StorageLink } from '@kit.ArkUI';
+import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -300,8 +297,7 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { Observed, PersistentStorage, AppStorage, StorageLink } from '@kit.ArkUI';
+import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -367,8 +363,7 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { Observed, PersistentStorage, AppStorage, StorageLink } from '@kit.ArkUI';
+import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -434,8 +429,7 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent } from '@kit.ArkUI';
-import { Observed, PersistentStorage, AppStorage, StorageLink } from '@kit.ArkUI';
+import { AppStorage, Button, ClickEvent, Column, Component, Entry, Observed, PersistentStorage, StorageLink, Text } from '@kit.ArkUI';
 
 interface JsonSerializable {
   toJson(): jsonx.JsonElement;

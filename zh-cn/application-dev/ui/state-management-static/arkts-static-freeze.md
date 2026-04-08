@@ -33,8 +33,7 @@ V1自定义组件冻结支持场景为：
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button } from '@kit.ArkUI';
-import { Watch, StorageLink } from '@kit.ArkUI';
+import { Button, Column, Component, Entry, StorageLink, Text, Watch } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -72,8 +71,7 @@ struct Page1 {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Text, Button } from '@kit.ArkUI';
-import { Watch, StorageLink } from '@kit.ArkUI';
+import { Button, Column, Component, Entry, StorageLink, Text, Watch } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -130,8 +128,7 @@ struct Page2 {
 ```ts
 'use static'
 
-import { Entry, Component, ForEach, Column, Text, Button, Row, Tabs, TabContent, TabsController, FontWeight } from '@kit.ArkUI';
-import { State, Link, Watch } from '@kit.ArkUI';
+import { Button, Column, Component, Entry, FontWeight, ForEach, Link, Row, State, TabContent, Tabs, TabsController, Text, Watch } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -200,8 +197,7 @@ struct FreezeChild {
 ```ts
 'use static'
 
-import { Entry, Component, ForEach, TextAlign, Column, List, ListItem, Text, Button, FontWeight, Row, Color, LazyForEach, IDataSource, DataChangeListener } from '@kit.ArkUI';
-import { State, Link, Watch } from '@kit.ArkUI';
+import { Button, Color, Column, Component, DataChangeListener, Entry, FontWeight, ForEach, IDataSource, LazyForEach, Link, List, ListItem, Row, State, Text, TextAlign, Watch } from '@kit.ArkUI';
 
 class BasicDataSource<string> implements IDataSource<string> {
   private listeners: Array<DataChangeListener> = Array<DataChangeListener>();
@@ -349,8 +345,7 @@ struct FreezeChild {
 ```ts
 'use static'
 
-import { Entry, Component, Margin, NavPathStack, NavPathInfo, ClickEvent, NavDestination, Builder, Column, Navigation, Text, NavigationMode, Button, FontWeight, ButtonType } from '@kit.ArkUI';
-import { State, Link, Watch, StorageLink } from '@kit.ArkUI';
+import { Builder, Button, ButtonType, ClickEvent, Column, Component, Entry, FontWeight, Link, Margin, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, State, StorageLink, Text, Watch } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -564,8 +559,7 @@ struct NavigationContentMsgStack {
 ```ts
 'use static'
 
-import { Entry, Component, ClickEvent, ForEach, Column, List, ListItem, Text, Button, Row, Color, Reusable, LazyForEach, IDataSource, DataChangeListener } from '@kit.ArkUI';
-import { State, Link, Watch } from '@kit.ArkUI';
+import { Button, ClickEvent, Color, Column, Component, DataChangeListener, Entry, ForEach, IDataSource, LazyForEach, Link, List, ListItem, Reusable, Row, State, Text, Watch } from '@kit.ArkUI';
 
 @Reusable
 @Component
@@ -713,8 +707,7 @@ class TestDataSource extends BasicDataSource<string> {
 ```ts
 'use static'
 
-import { Entry, Component, Margin, NavPathStack, NavPathInfo, ClickEvent, NavDestination, Builder, Column, Navigation, Text, NavigationMode, Button, ButtonType, Row, Tabs, TabContent, TabsController, BarPosition, BarMode, Color } from '@kit.ArkUI';
-import { State, Link, Watch, StorageLink, PropRef } from '@kit.ArkUI';
+import { BarMode, BarPosition, Builder, Button, ButtonType, ClickEvent, Color, Column, Component, Entry, Link, Margin, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, PropRef, Row, State, StorageLink, TabContent, Tabs, TabsController, Text, Watch } from '@kit.ArkUI';
 
 @Component
 struct ChildOfParamComponent {

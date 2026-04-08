@@ -23,8 +23,7 @@
 ```typescript
 'use static'
 
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
-import { ComponentV2, Entry, Column, Button } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -88,8 +87,7 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
-import { ComponentV2, Entry, Column, Button } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -144,8 +142,7 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
-import { ComponentV2, Entry, Column, Button } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -202,8 +199,7 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, Local, IMonitorDecoratedVariable, IMonitor } from '@kit.ArkUI';
-import { Entry, ComponentV2, Column, Button, Text } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, Text, UIUtils } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -327,7 +323,7 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable, Param, LocalStorageLink, Require, ComponentV2, Entry, Column, Row, Button, Scroll, ForEach, Text, Divider, Set, DatePicker, TextAlign, FontWeight, Tabs, TabContent } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, DatePicker, Divider, Entry, FontWeight, ForEach, IMonitor, IMonitorDecoratedVariable, Local, LocalStorageLink, ObservedV2, Param, Require, Row, Scroll, Set, TabContent, Tabs, Text, TextAlign, Trace, UIUtils } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -394,8 +390,7 @@ struct FreezeChild {
 ```typescript
 'use static'
 
-import { UIUtils, IMonitorDecoratedVariable, IMonitor, State } from '@kit.ArkUI';
-import { Component, ComponentV2, Column, Text, Button, Entry, BusinessError } from '@kit.ArkUI';
+import { BusinessError, Button, Column, Component, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, State, Text, UIUtils } from '@kit.ArkUI';
 
 @Component
 struct Test {
@@ -445,8 +440,7 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
-import { ComponentV2, Entry, Column, Button } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -501,8 +495,7 @@ struct Page {
 
 ```typescript
 'use static'
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
-import { ComponentV2, Entry, Column, Button, Text } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -568,8 +561,7 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable, Monitor } from '@kit.ArkUI';
-import { ComponentV2, Entry, Column, Button } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, Monitor, ObservedV2, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -628,8 +620,7 @@ struct Page {
 
 ```typescript
 'use static'
-import { UIUtils, Local, Trace, ObservedV2, IMonitor, IMonitorDecoratedVariable } from '@kit.ArkUI';
-import { ComponentV2, Entry, Column, Button, Text } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 // class使用@ObservedV2修饰
 @ObservedV2
@@ -707,8 +698,7 @@ struct Page {
 ```typescript
 'use static'
 
-import { UIUtils, IMonitorDecoratedVariable, IMonitor, ObservedV2, Local, Trace } from '@kit.ArkUI';
-import { Entry, ComponentV2, Column, Button, Text } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class Test {
@@ -771,8 +761,7 @@ struct Page {
 ```typescript
 'use static'
 
-import { Local, IMonitor, IMonitorDecoratedVariable, UIUtils } from '@kit.ArkUI';
-import { ComponentV2, Column, Text, Entry, Button } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, Text, UIUtils } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -870,8 +859,7 @@ struct Page {
 ```typescript
 'use static'
 
-import { ObservedV2, Trace, Local, Param, Require, IMonitor, IMonitorDecoratedVariable, UIUtils } from '@kit.ArkUI';
-import { ComponentV2, Column, Entry, Button, Text } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, IMonitor, IMonitorDecoratedVariable, Local, ObservedV2, Param, Require, Text, Trace, UIUtils } from '@kit.ArkUI';
 
 @ObservedV2
 class User {

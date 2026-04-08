@@ -40,8 +40,7 @@ import { Link } from '@kit.ArkUI';
   ```ts
   'use static'
   
-  import { Entry, Component, Column, Text, ClickEvent } from '@kit.ArkUI';
-  import { State, Link } from '@kit.ArkUI';
+  import { ClickEvent, Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
   
   interface Info {
     name: string;
@@ -102,8 +101,7 @@ import { Link } from '@kit.ArkUI';
     ```ts
     'use static'
 
-    import { Entry, Component, Column, Text } from '@kit.ArkUI';
-    import { State, Link } from '@kit.ArkUI';
+    import { Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
     
     class Info {
       info: string = 'Hello';
@@ -148,8 +146,7 @@ import { Link } from '@kit.ArkUI';
     ```ts
     'use static'
 
-    import { Entry, Component, Column, Text } from '@kit.ArkUI';
-    import { State, Link } from '@kit.ArkUI';
+    import { Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
     
     class Info {
       info: string = 'Hello';
@@ -186,8 +183,7 @@ import { Link } from '@kit.ArkUI';
     ```ts
     'use static'
     
-    import { Entry, Component, Column, Text } from '@kit.ArkUI';
-    import { State, Link } from '@kit.ArkUI';
+    import { Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
     
     class Info {
       info: string = 'Hello';
@@ -223,8 +219,7 @@ import { Link } from '@kit.ArkUI';
     ```ts
     'use static'
     
-    import { Entry, Component, Column, Text } from '@kit.ArkUI';
-    import { State, Link } from '@kit.ArkUI';
+    import { Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
     
     class Info {
       info: string = 'Hello';
@@ -266,8 +261,7 @@ import { Link } from '@kit.ArkUI';
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
-import { State, Link } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
 
 @Component
 struct Child {
@@ -324,8 +318,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, ForEach, Text } from '@kit.ArkUI';
-import { State, Link } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, ForEach, Link, State, Text } from '@kit.ArkUI';
 @Component
 struct Child {
   @Link items: number[];
@@ -368,8 +361,7 @@ struct Parent {
 ```ts
 'use static'
 
-import { Entry, Component, Row, Column, Button, ClickEvent, ForEach, Text, Divider } from '@kit.ArkUI';
-import { State, Link } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Link, Row, State, Text } from '@kit.ArkUI';
 @Component
 struct Child {
   @Link value: Map<number, string>;
@@ -424,8 +416,7 @@ struct MapSample {
 ```ts
 'use static'
 
-import { Entry, Component, Row, Column, Button, ClickEvent, ForEach, Text, Divider } from '@kit.ArkUI';
-import { State, Link } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Divider, Entry, ForEach, Link, Row, State, Text } from '@kit.ArkUI';
 
 @Component
 struct Child {
@@ -478,8 +469,7 @@ struct SetSample {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
-import { State, Link } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
 
 @Component
 struct DateComponent {
@@ -534,8 +524,7 @@ struct ParentComponent {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
-import { State, Link, Watch } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, Link, State, Text, Watch } from '@kit.ArkUI';
 
 @Entry
 @Component
@@ -585,8 +574,7 @@ struct Child {
 ```ts
 'use static'
 
-import { Entry, Component, Column, Button, ClickEvent, Text } from '@kit.ArkUI';
-import { State, Link } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, Component, Entry, Link, State, Text } from '@kit.ArkUI';
 
 @Component
 struct Child {

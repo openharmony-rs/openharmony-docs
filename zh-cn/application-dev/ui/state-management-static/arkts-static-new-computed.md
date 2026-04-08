@@ -51,8 +51,7 @@ import { Computed } from '@kit.ArkUI';
    ```ts
    'use static'
 
-   import { Button, ClickEvent, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
-   import { Computed, Local } from '@kit.ArkUI';
+   import { Button, ClickEvent, Column, ComponentV2, Computed, Entry, Local, Text } from '@kit.ArkUI';
    
    @Entry
    @ComponentV2
@@ -90,8 +89,7 @@ import { Computed } from '@kit.ArkUI';
    ```ts
    'use static'
 
-   import { Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
-   import { Computed, Local } from '@kit.ArkUI';
+   import { Column, ComponentV2, Computed, Entry, Local, Text } from '@kit.ArkUI';
    
    @Entry
    @ComponentV2
@@ -128,8 +126,7 @@ import { Computed } from '@kit.ArkUI';
    ```ts
    'use static'
 
-   import { Button, ClickEvent, Column, ColumnOptions, ComponentV2, Entry, Scroll, Text } from '@kit.ArkUI';
-   import { Computed, Event, Local, Param } from '@kit.ArkUI';
+   import { Button, ClickEvent, Column, ColumnOptions, ComponentV2, Computed, Entry, Event, Local, Param, Scroll, Text } from '@kit.ArkUI';
 
    @ComponentV2
    struct Child {
@@ -199,8 +196,7 @@ import { Computed } from '@kit.ArkUI';
    ```ts
    'use static'
    
-   import { Button, ClickEvent, Column, ComponentV2, Divider, Entry, Text } from '@kit.ArkUI';
-   import { Computed, Local } from '@kit.ArkUI';
+   import { Button, ClickEvent, Column, ComponentV2, Computed, Divider, Entry, Local, Text } from '@kit.ArkUI';
    
    @Entry
    @ComponentV2
@@ -245,8 +241,7 @@ import { Computed } from '@kit.ArkUI';
    ```ts
    'use static'
    
-   import { Button, ClickEvent, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
-   import { Computed, ObservedV2, Trace } from '@kit.ArkUI';
+   import { Button, ClickEvent, Column, ComponentV2, Computed, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Name {
@@ -287,8 +282,7 @@ import { Computed } from '@kit.ArkUI';
    ```ts
    'use static'
    
-   import { Button, ClickEvent, Column, ComponentV2, Entry, Row, Text } from '@kit.ArkUI';
-   import { Computed, IMonitor, Local, ObservedV2, Monitor, Trace } from '@kit.ArkUI';
+   import { Button, ClickEvent, Column, ComponentV2, Computed, Entry, IMonitor, Local, Monitor, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
    
    @Entry
    @ComponentV2

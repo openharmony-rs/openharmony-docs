@@ -67,10 +67,7 @@ AppStorageV2使用connect接口即可实现对AppStorageV2中数据的修改和�
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent, ComponentV2, Divider } from '@kit.ArkUI';
-import { State, Link, LocalStorage, LocalStorageLink, Local, ObservedV2, Trace } from '@kit.ArkUI';
-import { PersistentStorage } from '@kit.ArkUI';
-import { AppStorageV2 } from '@kit.ArkUI';
+import { AppStorageV2, Button, ClickEvent, Column, Component, ComponentV2, Divider, Entry, Link, Local, LocalStorage, LocalStorageLink, ObservedV2, PersistentStorage, Row, State, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class Message {
@@ -180,12 +177,9 @@ export const ISampleType = Type.from<Sample>();
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent, ComponentV2, Divider, NavPathStack, Builder, ButtonType, NavigationMode, NavDestination, FontWeight, Navigation, NavPathInfo } from '@kit.ArkUI';
-import { State, Link, LocalStorage, LocalStorageLink, Local, ObservedV2, Trace } from '@kit.ArkUI';
-import { PersistentStorage } from '@kit.ArkUI';
-import { AppStorageV2 } from '@kit.ArkUI';
-import { Sample, ISampleType } from './Sample';
 import { Page2 } from './Page2';
+import { ISampleType, Sample } from './Sample';
+import { AppStorageV2, Builder, Button, ButtonType, ClickEvent, Column, Component, ComponentV2, Divider, Entry, FontWeight, Link, Local, LocalStorage, LocalStorageLink, NavDestination, NavPathInfo, NavPathStack, Navigation, NavigationMode, ObservedV2, PersistentStorage, Row, State, Text, Trace } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -257,11 +251,8 @@ struct Page1 {
 ```ts
 'use static'
 
-import { Entry, Text, Row, Column, Component, Button, ClickEvent, ComponentV2, Divider, NavPathStack, Builder, ButtonType, NavigationMode, NavDestination, FontWeight, Navigation, NavPathInfo, NavDestinationContext } from '@kit.ArkUI';
-import { State, Link, LocalStorage, LocalStorageLink, Local, ObservedV2, Trace } from '@kit.ArkUI';
-import { PersistentStorage } from '@kit.ArkUI';
-import { AppStorageV2 } from '@kit.ArkUI';
-import { Sample, ISampleType } from './Sample'
+import { ISampleType, Sample } from './Sample';
+import { AppStorageV2, Builder, Button, ButtonType, ClickEvent, Column, Component, ComponentV2, Divider, Entry, FontWeight, Link, Local, LocalStorage, LocalStorageLink, NavDestination, NavDestinationContext, NavPathInfo, NavPathStack, Navigation, NavigationMode, ObservedV2, PersistentStorage, Row, State, Text, Trace } from '@kit.ArkUI';
 
 @Builder
 export function Page2Builder() {

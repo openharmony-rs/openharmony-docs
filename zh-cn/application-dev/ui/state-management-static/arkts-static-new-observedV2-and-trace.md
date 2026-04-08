@@ -48,8 +48,7 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
    ```ts
    'use static'
    
-   import { Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
-   import { ObservedV2, Trace } from '@kit.ArkUI';
+   import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Son {
@@ -82,8 +81,7 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
    ```ts
    'use static'
    
-   import { Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
-   import { ObservedV2, Trace } from '@kit.ArkUI';
+   import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Father {
@@ -115,8 +113,7 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
    ```ts
    'use static'
    
-   import { Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
-   import { ObservedV2, Trace } from '@kit.ArkUI';
+   import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Manager {
@@ -156,8 +153,7 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
    ```ts
    'use static'
    
-   import { Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
-   import { ObservedV2, Trace } from '@kit.ArkUI';
+   import { Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Person {
@@ -246,8 +242,7 @@ import { ObservedV2, Trace } from '@kit.ArkUI';
 ```ts
 'use static'
 
-import { Button, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
-import { ObservedV2, Trace } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class Pencil {
@@ -301,8 +296,7 @@ struct Page {
 ```ts
 'use static'
 
-import { Button, Column, ComponentV2, Entry, FontWeight, Row, Text } from '@kit.ArkUI';
-import { ObservedV2, Trace } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, FontWeight, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class GrandFather {
@@ -492,7 +486,7 @@ struct Index {
    ```ts
    'use static'
    
-   import { Column, ComponentV2, Divider, Entry, ForEach, Row, Text, ObservedV2, Trace } from '@kit.ArkUI';
+   import { Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
    
    let nextId: number = 0;
    
@@ -565,8 +559,7 @@ struct Index {
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Divider, Entry, ForEach, Row, Text } from '@kit.ArkUI';
-   import { ObservedV2, Trace } from '@kit.ArkUI';
+   import { Button, Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -624,8 +617,7 @@ struct Index {
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Divider, Entry, ForEach, Row, Text } from '@kit.ArkUI';
-   import { ObservedV2, Trace } from '@kit.ArkUI';
+   import { Button, Column, ComponentV2, Divider, Entry, ForEach, ObservedV2, Row, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -677,8 +669,7 @@ struct Index {
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, DatePicker, Divider, Entry } from '@kit.ArkUI';
-   import { ObservedV2, Trace } from '@kit.ArkUI';
+   import { Button, Column, ComponentV2, DatePicker, Divider, Entry, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -733,8 +724,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button } from '@kit.ArkUI';
-import { Trace, ObservedV2, Local } from '@kit.ArkUI';
+import { Button, Column, ComponentV2, Entry, Local, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class Source {
@@ -773,8 +763,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button } from '@kit.ArkUI'
-import { Trace, ObservedV2, Local } from '@kit.ArkUI'
+import { Button, Column, ComponentV2, Entry, Local, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class Source {

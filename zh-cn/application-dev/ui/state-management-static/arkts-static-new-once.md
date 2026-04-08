@@ -62,8 +62,7 @@ import { Once } from '@kit.ArkUI';
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { Local, Param, Once } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Entry, Local, Once, Param, Text } from '@kit.ArkUI';
 
 @ComponentV2
 struct ChildComponent {
@@ -99,8 +98,7 @@ struct MyComponent {
 ```ts
 'use static'
 
-import { Entry, ComponentV2, Column, Text, Button, ClickEvent } from '@kit.ArkUI';
-import { Local, Param, Once, ObservedV2, Trace, Require } from '@kit.ArkUI';
+import { Button, ClickEvent, Column, ComponentV2, Entry, Local, ObservedV2, Once, Param, Require, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class Info {

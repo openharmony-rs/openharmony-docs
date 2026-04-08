@@ -47,8 +47,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry } from '@kit.ArkUI';
-   import { Local, IMonitor, Monitor } from '@kit.ArkUI';
+   import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor } from '@kit.ArkUI';
    @Entry
    @ComponentV2
    struct Index {
@@ -78,8 +77,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
-   import { Local, IMonitor, Monitor } from '@kit.ArkUI';
+   import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor, Text } from '@kit.ArkUI';
    
    class Info {
      name: string;
@@ -126,8 +124,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
-   import { Local, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
+   import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -185,7 +182,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry, Text, Local, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
+   import { Button, Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Inner {
@@ -267,8 +264,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry } from '@kit.ArkUI';
-   import { IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
+   import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -365,8 +361,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry } from '@kit.ArkUI';
-   import { IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
+   import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Info {
@@ -420,8 +415,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
    ```ts
    'use static'
    
-   import { Button, Column, ComponentV2, Entry } from '@kit.ArkUI';
-   import { IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
+   import { Button, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
    
    @ObservedV2
    class Frequence {
@@ -538,7 +532,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
   ```ts
   'use static'
   
-  import { Column, ComponentV2, Entry, Local, Param, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
+  import { Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Param, Trace } from '@kit.ArkUI';
   
   @ObservedV2
   class UserV2 {
@@ -577,7 +571,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
   ```ts
   'use static'
   
-  import { Column, ComponentV2, Entry, Local, IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
+  import { Column, ComponentV2, Entry, IMonitor, Local, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
   
   @ObservedV2 
   class UserV2 {
@@ -652,8 +646,7 @@ IMonitor类型和IMonitorValue\<T\>类型的接口说明参考API文档：[@Moni
 ```ts
 'use static'
 
-import { Button, Color, Column, ComponentV2, Entry, Text } from '@kit.ArkUI';
-import { IMonitor, Monitor, ObservedV2, Trace } from '@kit.ArkUI';
+import { Button, Color, Column, ComponentV2, Entry, IMonitor, Monitor, ObservedV2, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class Info {

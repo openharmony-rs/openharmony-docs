@@ -9,8 +9,7 @@
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button, ClickEvent, Color, ForEach } from '@kit.ArkUI';
-import { Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Local, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -58,8 +57,7 @@ struct MyComponent {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button, ClickEvent, Color, ForEach } from '@kit.ArkUI';
-import { Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Local, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -92,8 +90,7 @@ struct CompA {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button, ClickEvent, Color, ForEach, Row, Stack, Image, $r } from '@kit.ArkUI';
-import { Local, ObservedV2, Trace, Param, Require } from '@kit.ArkUI';
+import { $r, Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Image, Local, ObservedV2, Param, Require, Row, Stack, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class Translate {
@@ -160,8 +157,7 @@ struct Page {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button, ClickEvent, Color, ForEach, Row, Stack, Image, $r } from '@kit.ArkUI';
-import { Local, ObservedV2, Trace, Param, Require } from '@kit.ArkUI';
+import { $r, Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Image, Local, ObservedV2, Param, Require, Row, Stack, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class Translate {
@@ -218,8 +214,7 @@ struct Page1 {
 ```ts
 'use static'
 
-import { Entry, Text, Column, Component, Button, ClickEvent, Color, ForEach, Row, Stack } from '@kit.ArkUI';
-import { State, Observed, ObjectLink } from '@kit.ArkUI';
+import { Button, ClickEvent, Color, Column, Component, Entry, ForEach, ObjectLink, Observed, Row, Stack, State, Text } from '@kit.ArkUI';
 
 @Observed
 class ClassA {
@@ -278,8 +273,7 @@ struct Page {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button, ClickEvent, Color, ForEach, Row, Stack } from '@kit.ArkUI';
-import { Local, ObservedV2, Trace, Param, Require } from '@kit.ArkUI';
+import { Button, ClickEvent, Color, Column, ComponentV2, Entry, ForEach, Local, ObservedV2, Param, Require, Row, Stack, Text, Trace } from '@kit.ArkUI';
 
 @ObservedV2
 class ClassA {
@@ -340,8 +334,7 @@ struct Page {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button, ClickEvent, Color, ForEach, Row, Stack, FlexAlign, HorizontalAlign } from '@kit.ArkUI';
-import { Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -372,8 +365,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button, ClickEvent, Color, ForEach, Row, Stack, FlexAlign, HorizontalAlign } from '@kit.ArkUI';
-import { Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -411,8 +403,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button, ClickEvent, Color, ForEach, Row, Stack, FlexAlign, HorizontalAlign } from '@kit.ArkUI';
-import { Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 
 @Entry
@@ -450,8 +441,7 @@ struct Index {
 ```ts
 'use static'
 
-import { Entry, Text, Column, ComponentV2, Button, ClickEvent, Color, ForEach, Row, Stack, FlexAlign, HorizontalAlign } from '@kit.ArkUI';
-import { Local } from '@kit.ArkUI';
+import { Button, ClickEvent, Color, Column, ComponentV2, Entry, FlexAlign, ForEach, HorizontalAlign, Local, Row, Stack, Text } from '@kit.ArkUI';
 import { hiTraceMeter } from '@kit.PerformanceAnalysisKit';
 
 @Entry
