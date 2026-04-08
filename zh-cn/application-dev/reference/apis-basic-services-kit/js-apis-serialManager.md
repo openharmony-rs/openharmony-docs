@@ -236,7 +236,7 @@ function open() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -311,7 +311,7 @@ function getAttribute() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -394,7 +394,7 @@ function setAttribute() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -488,7 +488,7 @@ function read() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -575,7 +575,7 @@ function readSync() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -664,7 +664,7 @@ function write() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -752,7 +752,7 @@ function writeSync() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -830,7 +830,7 @@ function close() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
@@ -909,7 +909,7 @@ function cancelSerialRight() {
     serialManager.requestSerialRight(portId).then(result => {
       if (!result) {
         // 没有访问设备的权限且用户不授权则退出
-        console.error('user is not granted the operation  permission');
+        console.error('user is not granted the operation permission');
         return;
       } else {
         console.info('grant permission successfully');
