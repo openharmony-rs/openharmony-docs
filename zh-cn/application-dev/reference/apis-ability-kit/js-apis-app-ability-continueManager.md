@@ -30,7 +30,7 @@ on(type: 'prepareContinue', context: Context, callback: AsyncCallback&lt;Continu
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onPrepareContinue](#continueManageronPrepareContinue23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onPrepareContinue](#continuemanageronpreparecontinue23)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -101,7 +101,7 @@ onPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultInf
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('prepareContinue')](#continueManageron)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('prepareContinue')](#continuemanageron)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -172,7 +172,7 @@ off(type: 'prepareContinue', context: Context, callback?: AsyncCallback&lt;Conti
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offPrepareContinue](#continueManageroffPrepareContinue23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offPrepareContinue](#continuemanageroffpreparecontinue23)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 
@@ -243,7 +243,7 @@ offPrepareContinue(context: Context, callback: AsyncCallback&lt;ContinueResultIn
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('prepareContinue')](#continueManageroff)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('prepareContinue')](#continuemanageroff)。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Mission
 

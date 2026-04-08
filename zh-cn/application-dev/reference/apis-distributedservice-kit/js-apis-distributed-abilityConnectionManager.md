@@ -747,7 +747,7 @@ on(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Callba
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onConnect](#abilityConnectionManageronConnect23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onConnect](#abilityconnectionmanageronconnect23)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -789,7 +789,7 @@ onConnect(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('connect')](#abilityConnectionManageronConnect)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('connect')](#abilityconnectionmanageronconnect)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -830,7 +830,7 @@ off(type:&nbsp;'connect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;Call
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offConnect](#abilityConnectionManageroffConnect23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offConnect](#abilityconnectionmanageroffconnect23)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -869,7 +869,7 @@ offConnect(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): void
   
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('connect')](#abilityConnectionManageroffconnect)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('connect')](#abilityconnectionmanageroffconnect)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -907,7 +907,7 @@ on(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Cal
   
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onDisconnect](#abilityConnectionManageronDisconnect23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onDisconnect](#abilityconnectionmanagerondisconnect23)。
 
 **模型约束**：此接口仅可在Stage模型下使用。
 
@@ -951,7 +951,7 @@ onDisconnect(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
   
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('disconnect')](#abilityConnectionManageronDisconnect)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('disconnect')](#abilityconnectionmanagerondisconnect)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -992,7 +992,7 @@ off(type:&nbsp;'disconnect',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;C
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offDisconnect](#abilityConnectionManageroffDisconnect23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offDisconnect](#abilityconnectionmanageroffdisconnect23)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1032,7 +1032,7 @@ offDisconnect(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('disconnect')](#abilityConnectionManageroffDisconnect)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('disconnect')](#abilityconnectionmanageroffdisconnect)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1071,7 +1071,7 @@ on(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveMessage](#abilityConnectionManageronReceiveMessage23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveMessage](#abilityconnectionmanageronreceivemessage23)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1114,7 +1114,7 @@ onReceiveMessage(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): vo
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveMessage')](#abilityConnectionManageronreceiveMessage)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveMessage')](#abilityconnectionmanageronreceivemessage)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1155,7 +1155,7 @@ off(type:&nbsp;'receiveMessage',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nb
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveMessage](#abilityConnectionManageroffReceiveMessage23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveMessage](#abilityconnectionmanageroffreceivemessage23)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1195,7 +1195,7 @@ offReceiveMessage(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt; ):
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveMessage')](#abilityConnectionManageroffreceiveMessage)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveMessage')](#abilityconnectionmanageroffreceivemessage)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1236,7 +1236,7 @@ on(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback:&nbsp;Ca
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveData](#abilityConnectionManageronReceiveData23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[onReceiveData](#abilityconnectionmanageronreceivedata23)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1278,7 +1278,7 @@ onReceiveData(sessionId: int,callback: Callback&lt;EventCallbackInfo&gt;): void
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveData')](#abilityConnectionManageronreceiveData)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[on('receiveData')](#abilityconnectionmanageronreceivedata)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1319,7 +1319,7 @@ off(type:&nbsp;'receiveData',&nbsp;sessionId:&nbsp;number,&nbsp;callback?:&nbsp;
 
 **ArkTS模式**：该接口仅适用于ArkTS-Dyn。
 
-**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveData](#abilityConnectionManageroffReceiveData23)。
+**相关接口**：该接口对应的ArkTS-Sta接口是[offReceiveData](#abilityconnectionmanageroffreceivedata23)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
@@ -1359,7 +1359,7 @@ offReceiveData(sessionId: int,callback?: Callback&lt;EventCallbackInfo&gt;): voi
 
 **ArkTS模式**：该接口仅适用于ArkTS-Sta。
 
-**相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveData')](#abilityConnectionManageroffreceiveData)。
+**相关接口**：该接口对应的ArkTS-Dyn接口是[off('receiveData')](#abilityconnectionmanageroffreceivedata)。
 
 **系统能力**：SystemCapability.DistributedSched.AppCollaboration
 
